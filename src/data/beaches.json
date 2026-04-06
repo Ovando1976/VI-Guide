@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "magens-bay",
+    "title": "Magens Bay",
+    "islandCode": "st_thomas",
+    "areaSlug": "northside",
+    "description": "One of the most iconic beaches on St. Thomas with calm water and a broad crescent shoreline.",
+    "shortDescription": "Iconic calm-water beach on St. Thomas.",
+    "coverImage": "https://picsum.photos/seed/magens/1200/800",
+    "gallery": [
+      "https://picsum.photos/seed/magens1/800/600",
+      "https://picsum.photos/seed/magens2/800/600"
+    ],
+    "tags": ["calm water", "family-friendly", "scenic"],
+    "coordinates": { "lat": 18.369, "lng": -64.923 },
+    "amenities": ["parking", "food", "restrooms"],
+    "familyFriendly": true,
+    "snorkeling": false,
+    "swimmable": true,
+    "foodNearby": true,
+    "parkingInfo": "Paid parking available nearby.",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1710000000000
+  },
+  {
+    "slug": "trunk-bay",
+    "title": "Trunk Bay",
+    "islandCode": "st_john",
+    "areaSlug": "northshore",
+    "description": "Widely considered one of the most beautiful beaches in the world, featuring an underwater snorkeling trail.",
+    "shortDescription": "World-famous beach with underwater trail.",
+    "coverImage": "https://picsum.photos/seed/trunk/1200/800",
+    "gallery": [
+      "https://picsum.photos/seed/trunk1/800/600",
+      "https://picsum.photos/seed/trunk2/800/600"
+    ],
+    "tags": ["snorkeling", "national park", "crystal clear"],
+    "coordinates": { "lat": 18.352, "lng": -64.768 },
+    "amenities": ["showers", "snorkel rental", "lifeguards"],
+    "familyFriendly": true,
+    "snorkeling": true,
+    "swimmable": true,
+    "foodNearby": false,
+    "parkingInfo": "Limited parking in National Park lot.",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1710000000000
+  }
+]

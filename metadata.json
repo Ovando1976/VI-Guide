@@ -1,0 +1,7 @@
+{
+  "name": "VI Territory OS",
+  "description": "An AI-native territory-scale operating layer for the U.S. Virgin Islands, combining conversational intelligence, geographic context, and operational tooling.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

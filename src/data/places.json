@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "gladys-cafe",
+    "title": "Gladys Café",
+    "category": "restaurant",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte_amalie",
+    "description": "A well-known St. Thomas restaurant serving local Caribbean flavors in the heart of Charlotte Amalie.",
+    "shortDescription": "Classic local dining in Charlotte Amalie.",
+    "coverImage": "https://picsum.photos/seed/gladys/1200/800",
+    "gallery": [
+      "https://picsum.photos/seed/gladys1/1200/800",
+      "https://picsum.photos/seed/gladys2/1200/800"
+    ],
+    "tags": ["local food", "caribbean", "downtown"],
+    "coordinates": { "lat": 18.3419, "lng": -64.9314 },
+    "address": "Charlotte Amalie, St. Thomas, USVI",
+    "phone": "+1 340-774-6604",
+    "website": "",
+    "hours": {
+      "monday": "11:00 AM - 4:00 PM",
+      "tuesday": "11:00 AM - 4:00 PM",
+      "wednesday": "11:00 AM - 4:00 PM",
+      "thursday": "11:00 AM - 4:00 PM",
+      "friday": "11:00 AM - 4:00 PM",
+      "saturday": "11:00 AM - 4:00 PM",
+      "sunday": "Closed"
+    },
+    "priceTier": "$$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1710000000000
+  },
+  {
+    "slug": "old-stone-farmhouse",
+    "title": "Old Stone Farmhouse",
+    "category": "restaurant",
+    "islandCode": "st_thomas",
+    "areaSlug": "northside",
+    "description": "An upscale dining destination with a romantic atmosphere and a refined island dining experience.",
+    "shortDescription": "Upscale island dining with a memorable setting.",
+    "coverImage": "https://picsum.photos/seed/oldstone/1200/800",
+    "gallery": [
+      "https://picsum.photos/seed/oldstone1/1200/800",
+      "https://picsum.photos/seed/oldstone2/1200/800"
+    ],
+    "tags": ["fine dining", "romantic", "special occasion"],
+    "coordinates": { "lat": 18.3589, "lng": -64.9453 },
+    "address": "St. Thomas, USVI",
+    "phone": "",
+    "website": "",
+    "hours": {
+      "monday": "Closed",
+      "tuesday": "5:00 PM - 9:00 PM",
+      "wednesday": "5:00 PM - 9:00 PM",
+      "thursday": "5:00 PM - 9:00 PM",
+      "friday": "5:00 PM - 9:00 PM",
+      "saturday": "5:00 PM - 9:00 PM",
+      "sunday": "Closed"
+    },
+    "priceTier": "$$$$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1710000000000
+  },
+  {
+    "slug": "sunset-grille-at-secret-harbour",
+    "title": "Sunset Grille at Secret Harbour",
+    "category": "restaurant",
+    "islandCode": "st_thomas",
+    "areaSlug": "east_end",
+    "description": "A scenic dining option near the water with sunset appeal and a polished resort feel.",
+    "shortDescription": "Waterfront dining with East End sunset vibes.",
+    "coverImage": "https://picsum.photos/seed/sunsetgrille/1200/800",
+    "gallery": [
+      "https://picsum.photos/seed/sunsetgrille1/1200/800",
+      "https://picsum.photos/seed/sunsetgrille2/1200/800"
+    ],
+    "tags": ["waterfront", "sunset", "east end"],
+    "coordinates": { "lat": 18.3182, "lng": -64.8511 },
+    "address": "Nazareth, St. Thomas, USVI",
+    "phone": "",
+    "website": "",
+    "hours": {
+      "monday": "7:00 AM - 9:00 PM",
+      "tuesday": "7:00 AM - 9:00 PM",
+      "wednesday": "7:00 AM - 9:00 PM",
+      "thursday": "7:00 AM - 9:00 PM",
+      "friday": "7:00 AM - 9:00 PM",
+      "saturday": "7:00 AM - 9:00 PM",
+      "sunday": "7:00 AM - 9:00 PM"
+    },
+    "priceTier": "$$$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1710000000000
+  }
+]
