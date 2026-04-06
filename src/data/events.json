@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "carnival-village-2026",
+    "title": "St. Thomas Carnival Village",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "description": "The heart of the 2026 St. Thomas Carnival, featuring local food booths, live music, and cultural performances.",
+    "shortDescription": "Carnival food, music, and culture.",
+    "coverImage": "https://picsum.photos/seed/carnival/1200/800",
+    "coordinates": { "lat": 18.3419, "lng": -64.9307 },
+    "tags": ["culture", "festival", "food"],
+    "venueName": "Fort Christian Parking Lot",
+    "startAt": 1777507200000,
+    "price": "Free Admission",
+    "status": "published"
+  },
+  {
+    "slug": "jazz-on-the-beach",
+    "title": "Jazz on the Beach",
+    "islandCode": "st_john",
+    "areaSlug": "cruz-bay",
+    "description": "An evening of smooth jazz under the stars at Trunk Bay. Bring a blanket and enjoy the music.",
+    "shortDescription": "Jazz music at Trunk Bay.",
+    "coverImage": "https://picsum.photos/seed/jazz/1200/800",
+    "coordinates": { "lat": 18.3533, "lng": -64.7667 },
+    "tags": ["music", "beach", "nightlife"],
+    "venueName": "Trunk Bay",
+    "startAt": 1777593600000,
+    "price": "$25",
+    "status": "published"
+  }
+]
