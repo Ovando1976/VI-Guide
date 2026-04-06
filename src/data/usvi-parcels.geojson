@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": "STT-REDHOOK-001",
+        "label": "Parcel 1-12A • Nazareth",
+        "island": "stt",
+        "estateName": "Nazareth",
+        "estateGeoid": "stt_nazareth",
+        "address": "Red Hook Bay, St. Thomas",
+        "sourceParcelNo": "1-12A"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-64.8512, 18.3241],
+            [-64.8498, 18.3242],
+            [-64.8494, 18.3251],
+            [-64.8508, 18.3253],
+            [-64.8512, 18.3241]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": "STJ-CRUZBAY-014",
+        "label": "Parcel 14-3B • Cruz Bay",
+        "island": "stj",
+        "estateName": "Cruz Bay Quarter",
+        "estateGeoid": "stj_cruz_bay",
+        "address": "Cruz Bay, St. John",
+        "sourceParcelNo": "14-3B"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-64.7946, 18.3311],
+            [-64.7935, 18.3309],
+            [-64.7929, 18.3318],
+            [-64.7940, 18.3321],
+            [-64.7946, 18.3311]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcelId": "STX-CHRISTIANSTED-022",
+        "label": "Parcel 22-9 • Christiansted",
+        "island": "stx",
+        "estateName": "Company Quarter",
+        "estateGeoid": "stx_company_quarter",
+        "address": "Christiansted, St. Croix",
+        "sourceParcelNo": "22-9"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-64.7042, 17.7462],
+            [-64.7031, 17.7461],
+            [-64.7026, 17.7470],
+            [-64.7037, 17.7472],
+            [-64.7042, 17.7462]
+          ]
+        ]
+      }
+    }
+  ]
+}

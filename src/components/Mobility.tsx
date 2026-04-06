@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Car, 
   MapPin, 
@@ -38,6 +39,7 @@ import { createTripRequest, calculateQuote, subscribeToTrip, enrichLocation } fr
 import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 import { db } from '../firebase';
 import { format } from 'date-fns';
+import { EstateExplorerMap } from '../features/estates/components/estate-explorer-map';
 
 interface MobilityProps {
   selectedIsland: IslandCode;
@@ -45,6 +47,7 @@ interface MobilityProps {
 }
 
 export default function Mobility({ selectedIsland, user }: MobilityProps) {
+  const navigate = useNavigate();
   const [step, setStep] = useState<'request' | 'quote' | 'tracking'>('request');
   const [pickup, setPickup] = useState<string>('');
   const [dropoff, setDropoff] = useState<string>('');
@@ -342,6 +345,33 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
+
+            <div className="bg-white rounded-3xl p-4 shadow-xl border border-stone-100 space-y-3">
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-stone-500">Estate & parcel precision</h3>
+                <p className="text-xs text-stone-500 mt-1">Select a parcel for exact pickup or destination context.</p>
+              </div>
+              <EstateExplorerMap
+                selectedIsland={selectedIsland}
+                onUseParcelForRoute={(parcel) => {
+                  setDropoff(parcel.label);
+                  if (parcel.centroid.lat != null && parcel.centroid.lng != null) {
+                    setDropoffContext({
+                      lat: parcel.centroid.lat,
+                      lng: parcel.centroid.lng,
+                      estateName: parcel.estateName ?? undefined,
+                      parcelId: parcel.parcelId,
+                    });
+                  }
+                }}
+                onAskConcierge={(parcel) => {
+                  const params = new URLSearchParams();
+                  params.set('island', selectedIsland);
+                  params.set('prompt', `Build a realistic day plan starting from parcel ${parcel.parcelId} in ${parcel.estateName ?? 'this estate'}.`);
+                  navigate(`/concierge?${params.toString()}`);
+                }}
+              />
             </div>
 
             {/* Trip Options */}

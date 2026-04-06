@@ -1,0 +1,44 @@
+[
+  {
+    "parcelId": "STT-REDHOOK-001",
+    "sourceParcelNo": "1-12A",
+    "sourceParcelName": "Red Hook Bay Parcel",
+    "estateName": "Nazareth",
+    "estateGeoid": "stt_nazareth",
+    "island": "stt",
+    "address": "Red Hook Bay, St. Thomas",
+    "label": "Parcel 1-12A • Nazareth",
+    "searchText": "stt red hook bay parcel 1-12a nazareth red hook",
+    "centroid": { "lat": 18.3248, "lng": -64.8503 },
+    "bbox": [-64.8512, 18.3241, -64.8494, 18.3253],
+    "geometryType": "Polygon"
+  },
+  {
+    "parcelId": "STJ-CRUZBAY-014",
+    "sourceParcelNo": "14-3B",
+    "sourceParcelName": "Cruz Bay Hillside",
+    "estateName": "Cruz Bay Quarter",
+    "estateGeoid": "stj_cruz_bay",
+    "island": "stj",
+    "address": "Cruz Bay, St. John",
+    "label": "Parcel 14-3B • Cruz Bay",
+    "searchText": "stj cruz bay parcel 14-3b hillside quarter",
+    "centroid": { "lat": 18.3314, "lng": -64.7937 },
+    "bbox": [-64.7946, 18.3309, -64.7929, 18.3321],
+    "geometryType": "Polygon"
+  },
+  {
+    "parcelId": "STX-CHRISTIANSTED-022",
+    "sourceParcelNo": "22-9",
+    "sourceParcelName": "Christiansted Harbor Edge",
+    "estateName": "Company Quarter",
+    "estateGeoid": "stx_company_quarter",
+    "island": "stx",
+    "address": "Christiansted, St. Croix",
+    "label": "Parcel 22-9 • Christiansted",
+    "searchText": "stx christiansted harbor parcel 22-9 company quarter",
+    "centroid": { "lat": 17.7466, "lng": -64.7033 },
+    "bbox": [-64.7042, 17.7461, -64.7026, 17.7472],
+    "geometryType": "Polygon"
+  }
+]

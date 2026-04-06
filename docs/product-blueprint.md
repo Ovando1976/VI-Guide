@@ -125,3 +125,24 @@ src/
 ```
 
 This gives us clear ownership boundaries while keeping the current app stable.
+
+## Spatial Intelligence Extension (Estates + Parcels)
+
+The map stack now follows a three-tier model:
+1. Island context
+2. Estate browsing
+3. Parcel precision overlays
+
+### New domain modules
+- `src/features/geography/types.ts` — canonical parcel/search types.
+- `src/features/geography/lib/parcel-search.ts` — normalized parcel search utilities.
+- `src/features/geography/lib/parcel-filters.ts` — island/estate parcel filtering.
+- `src/features/geography/hooks/useParcelSearch.ts` — query/result state.
+- `src/features/geography/hooks/useParcelSelection.ts` — selected parcel state.
+- `src/features/geography/components/*` — parcel search, legend, and detail cards.
+- `src/features/estates/components/estate-explorer-map.tsx` — estate-first map with parcel overlays.
+
+### Initial data assets
+- `src/data/usvi-parcels.index.json` — searchable parcel metadata index.
+- `src/data/usvi-parcels.geojson` — lightweight parcel geometry sample.
+- `generated/usvi-estates.json` — estate geometry source converted to map features at runtime.
