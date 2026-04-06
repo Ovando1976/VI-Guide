@@ -3,15 +3,24 @@ import { motion } from 'motion/react';
 import { Compass, Search } from 'lucide-react';
 import IslandSelector from '../IslandSelector';
 import { IslandCode, IslandDoc } from '../../types';
-import { ISLAND_OPTIONS } from '../../lib/constants/islands';
 
 interface HomeHeroProps {
   islands: IslandDoc[];
   selectedIsland: IslandCode;
   onSelectIsland: (code: IslandCode) => void;
+  onSearch?: (query: string) => void;
 }
 
-export function HomeHero({ islands, selectedIsland, onSelectIsland }: HomeHeroProps) {
+export function HomeHero({ islands, selectedIsland, onSelectIsland, onSearch }: HomeHeroProps) {
+  const [query, setQuery] = React.useState('');
+
+  const submitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    onSearch?.(trimmed);
+  };
+
   return (
     <section className="relative h-[90vh] w-full overflow-hidden bg-stone-950">
       {/* Background Image with Overlay */}
@@ -73,7 +82,7 @@ export function HomeHero({ islands, selectedIsland, onSelectIsland }: HomeHeroPr
           transition={{ duration: 0.8, delay: 0.4 }}
           className="w-full max-w-2xl"
         >
-          <div className="relative group">
+          <form className="relative group" onSubmit={submitSearch}>
             <div className="absolute -inset-1 bg-gradient-to-r from-turquoise/50 to-ocean/50 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative flex items-center bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[2rem] overflow-hidden shadow-2xl">
               <Search className="ml-8 h-6 w-6 text-white/40" />
@@ -81,12 +90,18 @@ export function HomeHero({ islands, selectedIsland, onSelectIsland }: HomeHeroPr
                 type="text"
                 placeholder="Search beaches, dining, events..."
                 className="h-20 w-full bg-transparent px-6 text-white placeholder:text-white/30 focus:outline-none text-xl font-light"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                aria-label="Search across beaches, dining, and events"
               />
-              <button className="mr-3 bg-white text-ink px-10 py-4 rounded-[1.5rem] font-bold text-xs uppercase tracking-widest hover:bg-turquoise hover:text-white transition-all active:scale-95">
+              <button
+                type="submit"
+                className="mr-3 bg-white text-ink px-10 py-4 rounded-[1.5rem] font-bold text-xs uppercase tracking-widest hover:bg-turquoise hover:text-white transition-all active:scale-95"
+              >
                 Explore
               </button>
             </div>
-          </div>
+          </form>
         </motion.div>
       </div>
 

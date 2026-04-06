@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IslandCode, BeachDoc, PlaceDoc, EventDoc } from '../types';
 import { Search, Info, Waves, Utensils, ShoppingBag, Landmark, Compass, ShoppingCart, List, Map as MapIcon, X, Calendar as CalendarIcon } from 'lucide-react';
-import { APIProvider, Map, AdvancedMarker, Pin, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
+import { APIProvider, Map as GoogleMap, AdvancedMarker, Pin, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 import { BeachCard } from './cards/BeachCard';
@@ -28,35 +28,63 @@ const CATEGORIES = [
 
 export default function Explore({ 
   selectedIsland, 
+  initialSearchQuery = '',
   onSelectListing 
 }: { 
   selectedIsland: IslandCode;
+  initialSearchQuery?: string;
   onSelectListing: (listing: BeachDoc | PlaceDoc | EventDoc) => void 
 }) {
   const [beaches, setBeaches] = useState<BeachDoc[]>([]);
   const [places, setPlaces] = useState<PlaceDoc[]>([]);
   const [events, setEvents] = useState<EventDoc[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | 'all'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [selectedMarker, setSelectedMarker] = useState<BeachDoc | PlaceDoc | EventDoc | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSearchQuery(initialSearchQuery);
+  }, [initialSearchQuery]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // Fetch Beaches for selected island
-      const islandBeaches = await getBeachesByIsland(selectedIsland);
-      setBeaches(islandBeaches);
+      setIsLoading(true);
+      setLoadError(null);
+      try {
+        const [islandBeaches, upcomingEvents] = await Promise.all([
+          getBeachesByIsland(selectedIsland),
+          getUpcomingEvents(selectedIsland),
+        ]);
+        setBeaches(islandBeaches);
+        setEvents(upcomingEvents);
 
-      // Fetch Events
-      const upcomingEvents = await getUpcomingEvents(selectedIsland);
-      setEvents(upcomingEvents);
-
-      // Fetch Places for selected island
-      if (selectedCategory !== 'all' && selectedCategory !== 'beach' && selectedCategory !== 'event') {
-        const categoryPlaces = await getPlacesByCategory(selectedCategory as any, selectedIsland);
-        setPlaces(categoryPlaces);
-      } else {
-        setPlaces([]);
+        // Load all place categories in discovery mode for a fuller experience.
+        if (selectedCategory === 'all') {
+          const placeCategories = CATEGORIES
+            .map((category) => category.id)
+            .filter((id) => id !== 'beach' && id !== 'event');
+          const placeResponses = await Promise.all(
+            placeCategories.map((category) => getPlacesByCategory(category as any, selectedIsland, 8))
+          );
+          const uniquePlaces = new Map<string, PlaceDoc>();
+          placeResponses.flat().forEach((place) => {
+            uniquePlaces.set(place.slug, place);
+          });
+          setPlaces(Array.from(uniquePlaces.values()));
+        } else if (selectedCategory !== 'beach' && selectedCategory !== 'event') {
+          const categoryPlaces = await getPlacesByCategory(selectedCategory as any, selectedIsland);
+          setPlaces(categoryPlaces);
+        } else {
+          setPlaces([]);
+        }
+      } catch (error) {
+        console.error('Failed to load explore content', error);
+        setLoadError('We could not load fresh island discoveries right now. Please try again.');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -163,6 +191,18 @@ export default function Explore({
 
       {/* Content */}
       <div className="px-8 space-y-12">
+        {isLoading && (
+          <div className="py-24 text-center bg-white rounded-[3rem] border border-stone-100 shadow-inner">
+            <p className="text-stone-500 font-serif italic text-xl">Loading curated discoveries…</p>
+          </div>
+        )}
+        {loadError && (
+          <div className="py-10 px-8 text-center bg-rose-50 rounded-[2rem] border border-rose-100">
+            <p className="text-rose-700 text-sm font-medium">{loadError}</p>
+          </div>
+        )}
+        {!isLoading && !loadError && (
+          <>
         {viewMode === 'map' ? (
           <div className="relative aspect-[4/5] bg-stone-100 rounded-[3rem] border border-white overflow-hidden shadow-2xl shadow-stone-200/50">
             {!hasValidKey ? (
@@ -183,7 +223,7 @@ export default function Explore({
               </div>
             ) : (
               <APIProvider apiKey={API_KEY} version="weekly">
-                <Map
+                <GoogleMap
                   defaultCenter={ISLAND_CENTERS[selectedIsland]}
                   defaultZoom={12}
                   mapId="VI_EXPLORER_MAP"
@@ -200,7 +240,7 @@ export default function Explore({
                       isSelected={selectedMarker?.id === item.id || selectedMarker?.slug === item.slug}
                     />
                   ))}
-                </Map>
+                </GoogleMap>
 
                 {/* Floating Selected Card */}
                 {selectedMarker && (
@@ -268,13 +308,15 @@ export default function Explore({
             )}
           </div>
         )}
+          </>
+        )}
       </div>
     </div>
   );
 }
 
 function MapMarker({ item, onClick, isSelected }: { item: BeachDoc | PlaceDoc | EventDoc; onClick: () => void; isSelected: boolean }) {
-  const [markerRef, marker] = useAdvancedMarkerRef();
+  const [markerRef] = useAdvancedMarkerRef();
   
   const isEvent = 'startAt' in item;
   const isBeach = !('category' in item) && !isEvent;
