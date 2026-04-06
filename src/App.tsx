@@ -49,6 +49,7 @@ function AppContent() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const islandParam = searchParams.get('island');
+  const exploreQueryParam = searchParams.get('q') ?? '';
   const selectedIsland = isIslandCode(islandParam) ? islandParam : DEFAULT_ISLAND;
 
   useEffect(() => {
@@ -146,6 +147,12 @@ function AppContent() {
     navigate('/docs');
   };
 
+  const handleHeroSearch = (query: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('q', query);
+    navigate(`/?${newParams.toString()}#explore`);
+  };
+
   if (loading) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-stone-50">
@@ -170,14 +177,16 @@ function AppContent() {
                 islands={islands}
                 selectedIsland={selectedIsland}
                 onSelectIsland={handleSelectIsland}
+                onSearch={handleHeroSearch}
               />
-              <div className="mt-12">
+              <div className="mt-12" id="explore">
                 <FeaturedSection 
                   selectedIsland={selectedIsland}
                   onSelectListing={setSelectedListing}
                 />
                 <Explore 
                   selectedIsland={selectedIsland}
+                  initialSearchQuery={exploreQueryParam}
                   onSelectListing={setSelectedListing} 
                 />
               </div>
