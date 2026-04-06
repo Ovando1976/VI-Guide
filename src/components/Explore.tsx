@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { IslandCode, BeachDoc, PlaceDoc, EventDoc } from '../types';
+import React, { useState, useEffect, useMemo } from 'react';
+import { IslandCode, BeachDoc, PlaceDoc, EventDoc, PlaceCategory } from '../types';
 import { Search, Info, Waves, Utensils, ShoppingBag, Landmark, Compass, ShoppingCart, List, Map as MapIcon, X, Calendar as CalendarIcon } from 'lucide-react';
-import { APIProvider, Map, AdvancedMarker, Pin, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
+import { APIProvider, Map as GoogleMap, AdvancedMarker, Pin, useAdvancedMarkerRef } from '@vis.gl/react-google-maps';
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 import { BeachCard } from './cards/BeachCard';
@@ -24,53 +24,111 @@ const CATEGORIES = [
   { id: 'excursion', label: 'Tours', icon: Compass, color: 'bg-indigo-500' },
   { id: 'provisioning', label: 'Grocery', icon: ShoppingCart, color: 'bg-amber-500' },
   { id: 'event', label: 'Events', icon: CalendarIcon, color: 'bg-rose-500' },
-];
+] as const;
+
+type ExploreCategory = (typeof CATEGORIES)[number]['id'];
+type SelectedCategory = ExploreCategory | 'all';
+
+const DISCOVERY_PLACE_CATEGORIES: PlaceCategory[] = ['restaurant', 'shopping', 'attraction', 'excursion', 'provisioning'];
 
 export default function Explore({ 
   selectedIsland, 
+  initialSearchQuery = '',
   onSelectListing 
 }: { 
   selectedIsland: IslandCode;
+  initialSearchQuery?: string;
   onSelectListing: (listing: BeachDoc | PlaceDoc | EventDoc) => void 
 }) {
   const [beaches, setBeaches] = useState<BeachDoc[]>([]);
   const [places, setPlaces] = useState<PlaceDoc[]>([]);
   const [events, setEvents] = useState<EventDoc[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | 'all'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<SelectedCategory>('all');
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [selectedMarker, setSelectedMarker] = useState<BeachDoc | PlaceDoc | EventDoc | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
+    setSearchQuery(initialSearchQuery);
+  }, [initialSearchQuery]);
+
+  useEffect(() => {
+    let isMounted = true;
     const fetchData = async () => {
-      // Fetch Beaches for selected island
-      const islandBeaches = await getBeachesByIsland(selectedIsland);
-      setBeaches(islandBeaches);
+      setIsLoading(true);
+      setLoadError(null);
+      try {
+        const [islandBeaches, upcomingEvents] = await Promise.all([
+          getBeachesByIsland(selectedIsland),
+          getUpcomingEvents(selectedIsland),
+        ]);
+        if (!isMounted) return;
+        setBeaches(islandBeaches);
+        setEvents(upcomingEvents);
 
-      // Fetch Events
-      const upcomingEvents = await getUpcomingEvents(selectedIsland);
-      setEvents(upcomingEvents);
-
-      // Fetch Places for selected island
-      if (selectedCategory !== 'all' && selectedCategory !== 'beach' && selectedCategory !== 'event') {
-        const categoryPlaces = await getPlacesByCategory(selectedCategory as any, selectedIsland);
-        setPlaces(categoryPlaces);
-      } else {
-        setPlaces([]);
+        // Load all place categories in discovery mode for a fuller experience.
+        if (selectedCategory === 'all') {
+          const placeResponses = await Promise.all(
+            DISCOVERY_PLACE_CATEGORIES.map((category) => getPlacesByCategory(category, selectedIsland, 8))
+          );
+          const uniquePlaces = new Map<string, PlaceDoc>();
+          placeResponses.flat().forEach((place) => {
+            uniquePlaces.set(place.slug, place);
+          });
+          if (!isMounted) return;
+          setPlaces(Array.from(uniquePlaces.values()));
+        } else if (selectedCategory !== 'beach' && selectedCategory !== 'event') {
+          const categoryPlaces = await getPlacesByCategory(selectedCategory, selectedIsland);
+          if (!isMounted) return;
+          setPlaces(categoryPlaces);
+        } else {
+          if (!isMounted) return;
+          setPlaces([]);
+        }
+      } catch (error) {
+        if (!isMounted) return;
+        console.error('Failed to load explore content', error);
+        setLoadError('We could not load fresh island discoveries right now. Please try again.');
+      } finally {
+        if (!isMounted) return;
+        setIsLoading(false);
       }
     };
 
     fetchData();
+    return () => {
+      isMounted = false;
+    };
   }, [selectedIsland, selectedCategory]);
 
-  const filteredItems = [
-    ...(selectedCategory === 'all' || selectedCategory === 'beach' ? beaches : []),
-    ...(selectedCategory === 'all' || selectedCategory === 'event' ? events : []),
-    ...places
-  ].filter(item => 
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredItems = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const sourceItems = [
+      ...(selectedCategory === 'all' || selectedCategory === 'beach' ? beaches : []),
+      ...(selectedCategory === 'all' || selectedCategory === 'event' ? events : []),
+      ...places
+    ];
+
+    if (!normalizedQuery) return sourceItems;
+
+    return sourceItems.filter((item) =>
+      item.title.toLowerCase().includes(normalizedQuery) ||
+      item.description.toLowerCase().includes(normalizedQuery) ||
+      item.tags?.some((tag) => tag.toLowerCase().includes(normalizedQuery))
+    );
+  }, [beaches, events, places, searchQuery, selectedCategory]);
+
+  useEffect(() => {
+    if (!selectedMarker) return;
+    const markerStillVisible = filteredItems.some(
+      (item) => item.id === selectedMarker.id || item.slug === selectedMarker.slug
+    );
+    if (!markerStillVisible) {
+      setSelectedMarker(null);
+    }
+  }, [filteredItems, selectedMarker]);
 
   return (
     <div className="pb-24">
@@ -80,6 +138,7 @@ export default function Explore({
           <div className="flex bg-sand/50 p-1.5 rounded-2xl backdrop-blur-3xl border border-white/20 shadow-xl">
             <button 
               onClick={() => setViewMode('list')}
+              aria-pressed={viewMode === 'list'}
               className={cn(
                 "px-8 py-3 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] transition-all flex items-center gap-3",
                 viewMode === 'list' ? "bg-white text-ink shadow-2xl" : "text-stone-400 hover:text-ink"
@@ -90,6 +149,7 @@ export default function Explore({
             </button>
             <button 
               onClick={() => setViewMode('map')}
+              aria-pressed={viewMode === 'map'}
               className={cn(
                 "px-8 py-3 rounded-xl text-[10px] font-bold uppercase tracking-[0.3em] transition-all flex items-center gap-3",
                 viewMode === 'map' ? "bg-white text-ink shadow-2xl" : "text-stone-400 hover:text-ink"
@@ -111,9 +171,22 @@ export default function Explore({
               className="w-full pl-18 pr-8 py-6 bg-white border border-stone-100 rounded-[2.5rem] focus:ring-4 focus:ring-turquoise/5 focus:border-turquoise transition-all text-lg outline-none shadow-2xl shadow-stone-200/40 font-serif italic"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search discoveries"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-6 top-1/2 -translate-y-1/2 text-stone-400 hover:text-ink transition-colors"
+                aria-label="Clear search"
+              >
+                <X size={18} />
+              </button>
+            )}
           </div>
         </div>
+        <p className="text-[11px] uppercase tracking-[0.2em] text-stone-400 font-semibold">
+          {filteredItems.length} curated result{filteredItems.length === 1 ? '' : 's'}
+        </p>
       </div>
 
       {/* Categories */}
@@ -163,6 +236,18 @@ export default function Explore({
 
       {/* Content */}
       <div className="px-8 space-y-12">
+        {isLoading && (
+          <div className="py-24 text-center bg-white rounded-[3rem] border border-stone-100 shadow-inner">
+            <p className="text-stone-500 font-serif italic text-xl">Loading curated discoveries…</p>
+          </div>
+        )}
+        {loadError && (
+          <div className="py-10 px-8 text-center bg-rose-50 rounded-[2rem] border border-rose-100">
+            <p className="text-rose-700 text-sm font-medium">{loadError}</p>
+          </div>
+        )}
+        {!isLoading && !loadError && (
+          <>
         {viewMode === 'map' ? (
           <div className="relative aspect-[4/5] bg-stone-100 rounded-[3rem] border border-white overflow-hidden shadow-2xl shadow-stone-200/50">
             {!hasValidKey ? (
@@ -183,7 +268,7 @@ export default function Explore({
               </div>
             ) : (
               <APIProvider apiKey={API_KEY} version="weekly">
-                <Map
+                <GoogleMap
                   defaultCenter={ISLAND_CENTERS[selectedIsland]}
                   defaultZoom={12}
                   mapId="VI_EXPLORER_MAP"
@@ -200,7 +285,7 @@ export default function Explore({
                       isSelected={selectedMarker?.id === item.id || selectedMarker?.slug === item.slug}
                     />
                   ))}
-                </Map>
+                </GoogleMap>
 
                 {/* Floating Selected Card */}
                 {selectedMarker && (
@@ -268,13 +353,15 @@ export default function Explore({
             )}
           </div>
         )}
+          </>
+        )}
       </div>
     </div>
   );
 }
 
 function MapMarker({ item, onClick, isSelected }: { item: BeachDoc | PlaceDoc | EventDoc; onClick: () => void; isSelected: boolean }) {
-  const [markerRef, marker] = useAdvancedMarkerRef();
+  const [markerRef] = useAdvancedMarkerRef();
   
   const isEvent = 'startAt' in item;
   const isBeach = !('category' in item) && !isEvent;
