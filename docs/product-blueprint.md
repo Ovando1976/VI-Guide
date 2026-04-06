@@ -89,3 +89,39 @@ Enrich places/beaches/events with:
 3. **Phase 3:** Collaborative planning (share links, comments, revisions).
 4. **Phase 4:** Merchant AI assistant and offer tooling.
 5. **Phase 5:** Predictive ranking and real-time island intelligence.
+
+## Shell and Folder Architecture (Current Baseline)
+
+### App Shell Wiring
+- `src/app/AppProviders.tsx` — provider root (router and future global providers).
+- `src/app/AppRoutes.tsx` — route map and feature entry points.
+- `src/app/ProtectedRoute.tsx` — auth gate for protected surfaces (Plans/Merchant).
+- `src/hooks/useAppBootstrap.ts` — startup state orchestration (auth/profile/island bootstrap).
+- `src/App.tsx` — orchestration + overlays (listing/event details) + route props.
+
+### Feature-Oriented Folder Direction
+Move gradually from component piles to domain modules:
+
+```text
+src/
+  app/
+    AppProviders.tsx
+    AppRoutes.tsx
+    ProtectedRoute.tsx
+  hooks/
+    useAppBootstrap.ts
+  features/
+    discovery/
+    concierge/
+    mobility/
+    plans/
+    community/
+    merchant/
+  lib/
+    firestore/
+    ai/
+    prompts/
+    constants/
+```
+
+This gives us clear ownership boundaries while keeping the current app stable.
