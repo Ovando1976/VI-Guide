@@ -28,7 +28,8 @@ export default function Concierge({
   contextListing,
   userLocation,
   onSelectListing,
-  agentId = 'concierge'
+  agentId = 'concierge',
+  initialPrompt,
 }: { 
   user: User | null;
   profile?: UserProfile | null;
@@ -36,6 +37,7 @@ export default function Concierge({
   userLocation?: { lat: number; lng: number } | null;
   onSelectListing?: (listing: Listing) => void;
   agentId?: string;
+  initialPrompt?: string;
 }) {
   const agent = AGENT_REGISTRY[agentId] || AGENT_REGISTRY.concierge;
   const [messages, setMessages] = useState<{ 
@@ -67,6 +69,11 @@ export default function Concierge({
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isTyping]);
+
+  useEffect(() => {
+    if (!initialPrompt) return;
+    setInput(initialPrompt);
+  }, [initialPrompt]);
 
   const handleSend = async () => {
     if (!input.trim() || isTyping) return;

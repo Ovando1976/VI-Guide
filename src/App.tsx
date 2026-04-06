@@ -6,6 +6,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { UserProfile, BeachDoc, PlaceDoc, EventDoc, IslandCode, AIDocument, IslandDoc } from './types';
 import { MobileShell } from './components/app-shell/MobileShell';
 import { HomeHero } from './components/app-shell/HomeHero';
+import { HomeCommandCenter } from './components/app-shell/HomeCommandCenter';
 import Explore from './components/Explore';
 import Beaches from './components/Beaches';
 import Eat from './components/Eat';
@@ -50,6 +51,7 @@ function AppContent() {
   const [searchParams] = useSearchParams();
   const islandParam = searchParams.get('island');
   const exploreQueryParam = searchParams.get('q') ?? '';
+  const conciergePromptParam = searchParams.get('prompt') ?? '';
   const selectedIsland = isIslandCode(islandParam) ? islandParam : DEFAULT_ISLAND;
 
   useEffect(() => {
@@ -153,6 +155,28 @@ function AppContent() {
     navigate(`/?${newParams.toString()}#explore`);
   };
 
+  const handleHomeAction = (action: 'explore' | 'build_day' | 'concierge' | 'mobility' | 'plans') => {
+    const newParams = new URLSearchParams(searchParams);
+    switch (action) {
+      case 'explore':
+        navigate(`/?${newParams.toString()}#explore`);
+        break;
+      case 'build_day':
+        newParams.set('prompt', `Build me a personalized day plan for ${selectedIsland.replace('_', ' ')}.`);
+        navigate(`/concierge?${newParams.toString()}`);
+        break;
+      case 'concierge':
+        navigate(`/concierge?${newParams.toString()}`);
+        break;
+      case 'mobility':
+        navigate(`/mobility?${newParams.toString()}`);
+        break;
+      case 'plans':
+        navigate(`/plans?${newParams.toString()}`);
+        break;
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-stone-50">
@@ -179,6 +203,10 @@ function AppContent() {
                 onSelectIsland={handleSelectIsland}
                 onSearch={handleHeroSearch}
               />
+              <HomeCommandCenter
+                selectedIsland={selectedIsland}
+                onAction={handleHomeAction}
+              />
               <div className="mt-12" id="explore">
                 <FeaturedSection 
                   selectedIsland={selectedIsland}
@@ -195,6 +223,14 @@ function AppContent() {
           
           <Route path="/beaches" element={
             <Beaches onSelectBeach={setSelectedListing} />
+          } />
+
+          <Route path="/explore" element={
+            <Explore
+              selectedIsland={selectedIsland}
+              initialSearchQuery={exploreQueryParam}
+              onSelectListing={setSelectedListing}
+            />
           } />
 
           <Route path="/eat" element={
@@ -229,10 +265,20 @@ function AppContent() {
               contextListing={selectedListing}
               onSelectListing={setSelectedListing}
               agentId={activeAgent}
+              initialPrompt={conciergePromptParam}
             />
           } />
 
           <Route path="/docs" element={
+            <Documents 
+              user={user} 
+              profile={profile} 
+              initialDocument={selectedDocument}
+              onClearInitial={() => setSelectedDocument(null)}
+            />
+          } />
+
+          <Route path="/plans" element={
             <Documents 
               user={user} 
               profile={profile} 

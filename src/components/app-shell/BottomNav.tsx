@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Home, Palmtree, Utensils, Calendar, MessageSquare, Sparkles, FileText, Car } from 'lucide-react';
+import { Home, Compass, Sparkles, FileText, Car } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '../../lib/utils';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/', icon: Home },
-  { label: 'Ride', href: '/mobility', icon: Car },
+  { label: 'Explore', href: '/explore', icon: Compass },
+  { label: 'Mobility', href: '/mobility', icon: Car },
   { label: 'AI', href: '/concierge', icon: Sparkles, primary: true },
-  { label: 'Feed', href: '/community', icon: MessageSquare },
-  { label: 'Events', href: '/events', icon: Calendar },
+  { label: 'Plans', href: '/plans', icon: FileText },
 ];
 
 export function BottomNav() {
