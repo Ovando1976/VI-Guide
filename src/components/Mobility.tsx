@@ -366,10 +366,17 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
                   }
                 }}
                 onAskConcierge={(parcel) => {
-                  const params = new URLSearchParams();
-                  params.set('island', selectedIsland);
-                  params.set('prompt', `Build a realistic day plan starting from parcel ${parcel.parcelId} in ${parcel.estateName ?? 'this estate'}.`);
-                  navigate(`/concierge?${params.toString()}`);
+                  navigate('/concierge', {
+                    state: {
+                      parcelContext: {
+                        parcelId: parcel.parcelId,
+                        label: parcel.label,
+                        island: parcel.island,
+                        estateName: parcel.estateName,
+                        address: parcel.address,
+                      },
+                    },
+                  });
                 }}
               />
             </div>

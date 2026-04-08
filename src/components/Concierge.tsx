@@ -10,6 +10,7 @@ import { db } from '../firebase';
 import { format } from 'date-fns';
 import { ChatMessage, BeachDoc, PlaceDoc, EventDoc, IslandCode, UserProfile } from '../types';
 import { MapPin, Calendar as CalendarIcon, ChevronRight } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 type Listing = BeachDoc | PlaceDoc;
 type Event = EventDoc;
@@ -40,6 +41,10 @@ export default function Concierge({
   initialPrompt?: string;
 }) {
   const agent = AGENT_REGISTRY[agentId] || AGENT_REGISTRY.concierge;
+  const location = useLocation();
+  const parcelContext = (location.state as any)?.parcelContext as
+    | { parcelId: string; label: string; island: string; estateName?: string | null; address?: string | null }
+    | undefined;
   const [messages, setMessages] = useState<{ 
     role: 'user' | 'model', 
     text: string, 
@@ -220,6 +225,9 @@ export default function Concierge({
       }
       if (memories.length > 0) {
         contextPrompt += `Past user preferences/memories: ${memories.map(m => `${m.key}: ${JSON.stringify(m.value)}`).join(', ')}. `;
+      }
+      if (parcelContext) {
+        contextPrompt += `The user selected parcel ${parcelContext.parcelId} (${parcelContext.label}) on ${parcelContext.island.toUpperCase()} in ${parcelContext.estateName || 'an unknown estate'}. `;
       }
 
       const response = await ai.models.generateContent({

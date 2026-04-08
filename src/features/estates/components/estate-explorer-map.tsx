@@ -2,13 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { GeoJSON, MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import type { IslandCode } from '../../../types';
-import type { ParcelIslandCode, ParcelRecord } from '../../geography/types';
-import { filterParcelsByEstate, filterParcelsByIsland } from '../../geography/lib/parcel-filters';
+import type { GeographyIslandCode, ParcelFeatureProperties, ParcelIslandCode, ParcelRecord, SelectedParcel } from '../../geography/types';
 import { useParcelSearch } from '../../geography/hooks/useParcelSearch';
 import { useParcelSelection } from '../../geography/hooks/useParcelSelection';
 import { ParcelSearchBox } from '../../geography/components/ParcelSearchBox';
 import { ParcelDetailCard } from '../../geography/components/ParcelDetailCard';
 import { ParcelMapLegend } from '../../geography/components/ParcelMapLegend';
+import { matchesParcelFilter } from '../../geography/lib/parcel-map-filters';
 
 import estatesDatasetUrl from '../../../../generated/usvi-estates.json?url';
 import parcelsDatasetUrl from '../../../data/usvi-parcels.index.json?url';
@@ -23,32 +23,39 @@ const DEFAULT_CENTER: Record<IslandCode, [number, number]> = {
 
 export function EstateExplorerMap({
   selectedIsland,
+  selectedEstateGeoid: selectedEstateGeoidProp,
+  onSelectEstate,
+  onSelectParcel,
   onUseParcelForRoute,
   onAskConcierge,
 }: {
-  selectedIsland: IslandCode;
+  selectedIsland: IslandCode | "all" | GeographyIslandCode;
+  selectedEstateGeoid?: string | null;
+  onSelectEstate?: (estateGeoid: string | null) => void;
+  onSelectParcel?: (parcel: SelectedParcel) => void;
   onUseParcelForRoute?: (parcel: ParcelRecord) => void;
   onAskConcierge?: (parcel: ParcelRecord) => void;
 }) {
   const [estatesGeo, setEstatesGeo] = useState<any | null>(null);
   const [parcelsGeo, setParcelsGeo] = useState<any | null>(null);
   const [parcelRecords, setParcelRecords] = useState<ParcelRecord[]>([]);
-  const [selectedEstateGeoid, setSelectedEstateGeoid] = useState<string | null>(null);
+  const [selectedEstateGeoid, setSelectedEstateGeoid] = useState<string | null>(selectedEstateGeoidProp ?? null);
   const [zoom, setZoom] = useState(11);
+  const [hoveredParcelId, setHoveredParcelId] = useState<string | null>(null);
   const parcelIsland = mapIslandCode(selectedIsland);
 
-  const scopedByIsland = useMemo(
-    () => filterParcelsByIsland(parcelRecords, parcelIsland),
-    [parcelRecords, parcelIsland]
-  );
+  useEffect(() => {
+    setSelectedEstateGeoid(selectedEstateGeoidProp ?? null);
+  }, [selectedEstateGeoidProp]);
+
   const visibleParcels = useMemo(
-    () => filterParcelsByEstate(scopedByIsland, selectedEstateGeoid),
-    [scopedByIsland, selectedEstateGeoid]
+    () => parcelRecords.filter((record) => matchesParcelFilter(record, { island: parcelIsland, estateGeoid: selectedEstateGeoid ?? null })),
+    [parcelRecords, parcelIsland, selectedEstateGeoid]
   );
 
-  const { query, setQuery, results } = useParcelSearch(visibleParcels, parcelIsland);
-  const { selectedParcel, selectParcel } = useParcelSelection();
-  const showParcels = zoom >= 13 || Boolean(selectedEstateGeoid);
+  const { query, setQuery, results } = useParcelSearch(visibleParcels, parcelIsland === 'all' ? 'all' : parcelIsland);
+  const { selectedParcel, selectParcel, setSelectedParcel } = useParcelSelection();
+  const showParcels = zoom >= 14 || Boolean(selectedEstateGeoid);
 
   useEffect(() => {
     async function load() {
@@ -94,7 +101,7 @@ export function EstateExplorerMap({
       <ParcelSearchBox query={query} onQueryChange={setQuery} results={results} onSelect={selectParcel} />
       <div className="relative rounded-2xl overflow-hidden border border-stone-200">
         <MapContainer
-          center={DEFAULT_CENTER[selectedIsland]}
+          center={getDefaultCenter(selectedIsland)}
           zoom={11}
           className="h-80 w-full"
           scrollWheelZoom
@@ -116,7 +123,9 @@ export function EstateExplorerMap({
               })}
               onEachFeature={(feature: any, layer) => {
                 layer.on('click', () => {
-                  setSelectedEstateGeoid(feature?.properties?.geoid ?? null);
+                  const geoid = feature?.properties?.geoid ?? null;
+                  setSelectedEstateGeoid(geoid);
+                  onSelectEstate?.(geoid);
                 });
               }}
             />
@@ -126,15 +135,23 @@ export function EstateExplorerMap({
             <GeoJSON
               data={parcelGeoForMap as any}
               style={(feature: any) => ({
-                color: selectedParcel?.parcelId === feature?.properties?.parcelId ? '#fb7185' : '#f97316',
-                weight: selectedParcel?.parcelId === feature?.properties?.parcelId ? 2.4 : 1.2,
+                color: selectedParcel?.parcelId === feature?.properties?.parcelId ? '#065f46' : hoveredParcelId === feature?.properties?.parcelId ? '#34d399' : '#f97316',
+                weight: selectedParcel?.parcelId === feature?.properties?.parcelId ? 3 : hoveredParcelId === feature?.properties?.parcelId ? 2 : 1.2,
                 fillColor: '#fdba74',
                 fillOpacity: selectedParcel?.parcelId === feature?.properties?.parcelId ? 0.4 : 0.2,
               })}
               onEachFeature={(feature: any, layer) => {
+                layer.on('mouseover', () => {
+                  setHoveredParcelId(feature?.properties?.parcelId ?? null);
+                });
+                layer.on('mouseout', () => {
+                  setHoveredParcelId(null);
+                });
                 layer.on('click', () => {
-                  const match = visibleParcels.find((parcel) => parcel.parcelId === feature?.properties?.parcelId);
-                  if (match) selectParcel(match);
+                  const parcel = toSelectedParcel(feature?.properties as ParcelFeatureProperties);
+                  if (!parcel) return;
+                  setSelectedParcel(parcel);
+                  onSelectParcel?.(parcel);
                 });
               }}
             />
@@ -144,19 +161,25 @@ export function EstateExplorerMap({
         <div className="absolute bottom-3 left-3">
           <ParcelMapLegend parcelVisible={showParcels} />
         </div>
+        <ParcelDetailCard
+          parcel={selectedParcel}
+          onClose={() => {
+            setSelectedParcel(null);
+            onSelectParcel?.(null);
+          }}
+          onUseAsDestination={(parcel) => {
+            const match = visibleParcels.find((record) => record.parcelId === parcel.parcelId);
+            if (match) onUseParcelForRoute?.(match);
+          }}
+          onExploreNearby={(parcel) => {
+            console.log('Explore nearby parcel', parcel);
+          }}
+          onAskConcierge={(parcel) => {
+            const match = visibleParcels.find((record) => record.parcelId === parcel.parcelId);
+            if (match) onAskConcierge?.(match);
+          }}
+        />
       </div>
-
-      <ParcelDetailCard
-        parcel={selectedParcel}
-        onUseForRoute={(parcel) => {
-          const match = visibleParcels.find((record) => record.parcelId === parcel.parcelId);
-          if (match) onUseParcelForRoute?.(match);
-        }}
-        onAskConcierge={(parcel) => {
-          const match = visibleParcels.find((record) => record.parcelId === parcel.parcelId);
-          if (match) onAskConcierge?.(match);
-        }}
-      />
     </div>
   );
 }
@@ -170,7 +193,10 @@ function MapZoomObserver({ onZoomChange }: { onZoomChange: (zoom: number) => voi
   return null;
 }
 
-function mapIslandCode(code: IslandCode): ParcelIslandCode {
+function mapIslandCode(code: IslandCode | "all" | GeographyIslandCode): ParcelIslandCode | "all" {
+  if (code === 'all' || code === 'stt' || code === 'stj' || code === 'stx' || code === 'wat' || code === 'unk') {
+    return code;
+  }
   switch (code) {
     case 'st_thomas':
       return 'stt';
@@ -183,4 +209,30 @@ function mapIslandCode(code: IslandCode): ParcelIslandCode {
     default:
       return 'unk';
   }
+}
+
+function getDefaultCenter(code: IslandCode | "all" | GeographyIslandCode): [number, number] {
+  if (code === 'all') return DEFAULT_CENTER.st_thomas;
+  if (code === 'stt') return DEFAULT_CENTER.st_thomas;
+  if (code === 'stj') return DEFAULT_CENTER.st_john;
+  if (code === 'stx') return DEFAULT_CENTER.st_croix;
+  if (code === 'wat') return DEFAULT_CENTER.water_island;
+  return DEFAULT_CENTER[code];
+}
+
+function toSelectedParcel(properties: ParcelFeatureProperties | undefined): SelectedParcel {
+  if (!properties || typeof properties.parcelId !== "string") return null;
+  return {
+    parcelId: properties.parcelId,
+    label: properties.label?.trim() ? properties.label : properties.parcelId,
+    island: properties.island ?? 'unk',
+    estateName: properties.estateName ?? null,
+    estateGeoid: properties.estateGeoid ?? null,
+    address: properties.address ?? null,
+    sourceParcelNo: properties.sourceParcelNo ?? null,
+    centroid: {
+      lat: typeof properties.centroidLat === 'number' ? properties.centroidLat : null,
+      lng: typeof properties.centroidLng === 'number' ? properties.centroidLng : null,
+    },
+  };
 }

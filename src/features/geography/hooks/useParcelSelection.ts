@@ -13,6 +13,7 @@ export function useParcelSelection(initial: SelectedParcel = null) {
       island: parcel.island,
       centroid: parcel.centroid,
       address: parcel.address ?? null,
+      sourceParcelNo: parcel.sourceParcelNo ?? null,
     });
   };
 

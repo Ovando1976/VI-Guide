@@ -10,7 +10,9 @@
         "estateName": "Nazareth",
         "estateGeoid": "stt_nazareth",
         "address": "Red Hook Bay, St. Thomas",
-        "sourceParcelNo": "1-12A"
+        "sourceParcelNo": "1-12A",
+        "centroidLat": 18.3248,
+        "centroidLng": -64.8503
       },
       "geometry": {
         "type": "Polygon",
@@ -34,7 +36,9 @@
         "estateName": "Cruz Bay Quarter",
         "estateGeoid": "stj_cruz_bay",
         "address": "Cruz Bay, St. John",
-        "sourceParcelNo": "14-3B"
+        "sourceParcelNo": "14-3B",
+        "centroidLat": 18.3314,
+        "centroidLng": -64.7937
       },
       "geometry": {
         "type": "Polygon",
@@ -58,7 +62,9 @@
         "estateName": "Company Quarter",
         "estateGeoid": "stx_company_quarter",
         "address": "Christiansted, St. Croix",
-        "sourceParcelNo": "22-9"
+        "sourceParcelNo": "22-9",
+        "centroidLat": 17.7466,
+        "centroidLng": -64.7033
       },
       "geometry": {
         "type": "Polygon",

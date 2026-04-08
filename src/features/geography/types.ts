@@ -1,4 +1,5 @@
-export type ParcelIslandCode = "stt" | "stj" | "stx" | "wat" | "unk";
+export type GeographyIslandCode = "stt" | "stj" | "stx" | "wat" | "unk";
+export type ParcelIslandCode = GeographyIslandCode;
 
 export type ParcelRecord = {
   parcelId: string;
@@ -7,7 +8,7 @@ export type ParcelRecord = {
   sourceParcelName?: string | null;
   estateName?: string | null;
   estateGeoid?: string | null;
-  island: ParcelIslandCode;
+  island: GeographyIslandCode;
   address?: string | null;
   plotNumber?: string | null;
   lotNumber?: string | null;
@@ -26,11 +27,13 @@ export type ParcelRecord = {
 export type ParcelFeatureProperties = {
   parcelId: string;
   label: string;
-  island: ParcelIslandCode;
+  island: GeographyIslandCode;
   estateName: string | null;
   estateGeoid: string | null;
   address: string | null;
   sourceParcelNo: string | null;
+  centroidLat?: number | null;
+  centroidLng?: number | null;
 };
 
 export type SelectedParcel = {
@@ -38,7 +41,8 @@ export type SelectedParcel = {
   label: string;
   estateName: string | null;
   estateGeoid: string | null;
-  island: ParcelIslandCode;
-  centroid?: { lat: number | null; lng: number | null };
-  address?: string | null;
+  island: GeographyIslandCode;
+  address: string | null;
+  sourceParcelNo: string | null;
+  centroid: { lat: number | null; lng: number | null };
 } | null;
