@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   Car, 
   MapPin, 
@@ -46,8 +46,24 @@ interface MobilityProps {
   user: any;
 }
 
+type RouteTarget =
+  | {
+      kind: 'parcel';
+      parcelId: string;
+      label: string;
+      island: string;
+      estateName: string | null;
+      centroid: { lat: number | null; lng: number | null };
+    }
+  | {
+      kind: 'place';
+      id: string;
+      label: string;
+    };
+
 export default function Mobility({ selectedIsland, user }: MobilityProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState<'request' | 'quote' | 'tracking'>('request');
   const [pickup, setPickup] = useState<string>('');
   const [dropoff, setDropoff] = useState<string>('');
@@ -65,6 +81,25 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
   const [searchingFor, setSearchingFor] = useState<'pickup' | 'dropoff' | null>(null);
 
   const mobilityIsland: MobilityIsland = selectedIsland === 'st_thomas' ? 'stt' : selectedIsland === 'st_john' ? 'stj' : selectedIsland === 'st_croix' ? 'stx' : 'wat';
+
+  useEffect(() => {
+    const destination = (location.state as any)?.destination as RouteTarget | undefined;
+    if (!destination) return;
+    if (destination.kind === 'parcel') {
+      setDropoff(destination.label);
+      if (destination.centroid.lat != null && destination.centroid.lng != null) {
+        setDropoffContext({
+          lat: destination.centroid.lat,
+          lng: destination.centroid.lng,
+          estateName: destination.estateName ?? undefined,
+          parcelId: destination.parcelId,
+        });
+      }
+    }
+    if (destination.kind === 'place') {
+      setDropoff(destination.label);
+    }
+  }, [location.state]);
 
   // Search logic
   useEffect(() => {

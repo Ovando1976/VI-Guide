@@ -57,6 +57,22 @@ export function EstateExplorerMap({
   const { selectedParcel, selectParcel, setSelectedParcel } = useParcelSelection();
   const showParcels = zoom >= 14 || Boolean(selectedEstateGeoid);
 
+  const handleSearchSelect = (parcel: ParcelRecord) => {
+    selectParcel(parcel);
+    setSelectedEstateGeoid(parcel.estateGeoid ?? null);
+    onSelectEstate?.(parcel.estateGeoid ?? null);
+    onSelectParcel?.({
+      parcelId: parcel.parcelId,
+      label: parcel.label,
+      island: parcel.island,
+      estateName: parcel.estateName ?? null,
+      estateGeoid: parcel.estateGeoid ?? null,
+      address: parcel.address ?? null,
+      sourceParcelNo: parcel.sourceParcelNo ?? null,
+      centroid: parcel.centroid,
+    });
+  };
+
   useEffect(() => {
     async function load() {
       const [estatesResponse, parcelsResponse, parcelsGeoResponse] = await Promise.all([
@@ -98,7 +114,7 @@ export function EstateExplorerMap({
 
   return (
     <div className="space-y-3">
-      <ParcelSearchBox query={query} onQueryChange={setQuery} results={results} onSelect={selectParcel} />
+      <ParcelSearchBox query={query} onQueryChange={setQuery} results={results} onSelect={handleSearchSelect} />
       <div className="relative rounded-2xl overflow-hidden border border-stone-200">
         <MapContainer
           center={getDefaultCenter(selectedIsland)}
