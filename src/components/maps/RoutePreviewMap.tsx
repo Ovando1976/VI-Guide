@@ -3,12 +3,13 @@ import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Fix for default marker icons in Leaflet
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerIconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const DefaultIcon = L.icon({
   iconUrl: markerIcon,
+  iconRetinaUrl: markerIconRetina,
   shadowUrl: markerShadow,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -23,10 +24,16 @@ interface RoutePreviewMapProps {
 
 function MapAutoCenter({ pickup, dropoff }: RoutePreviewMapProps) {
   const map = useMap();
-  
+
   React.useEffect(() => {
     const bounds = L.latLngBounds([pickup.lat, pickup.lng], [dropoff.lat, dropoff.lng]);
     map.fitBounds(bounds, { padding: [50, 50] });
+
+    const frameId = window.requestAnimationFrame(() => map.invalidateSize());
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
   }, [map, pickup, dropoff]);
 
   return null;
@@ -34,7 +41,7 @@ function MapAutoCenter({ pickup, dropoff }: RoutePreviewMapProps) {
 
 export default function RoutePreviewMap({ pickup, dropoff }: RoutePreviewMapProps) {
   return (
-    <div className="h-full w-full rounded-3xl overflow-hidden border border-zinc-200 shadow-inner bg-zinc-100">
+    <div className="h-full w-full overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-100 shadow-inner">
       <MapContainer
         center={[pickup.lat, pickup.lng]}
         zoom={13}
@@ -47,9 +54,9 @@ export default function RoutePreviewMap({ pickup, dropoff }: RoutePreviewMapProp
         />
         <Marker position={[pickup.lat, pickup.lng]} />
         <Marker position={[dropoff.lat, dropoff.lng]} />
-        <Polyline 
-          positions={[[pickup.lat, pickup.lng], [dropoff.lat, dropoff.lng]]} 
-          color="#10b981" 
+        <Polyline
+          positions={[[pickup.lat, pickup.lng], [dropoff.lat, dropoff.lng]]}
+          color="#10b981"
           weight={4}
           dashArray="10, 10"
         />
