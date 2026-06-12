@@ -1,0 +1,156 @@
+[
+  {
+    "title": "Three Palms",
+    "imagePath": "/images/places/st-thomas/three-palms-1.jpg",
+    "query": "3 Palms Restaurant St Thomas USVI",
+    "matchedName": "3 Palms Restaurant",
+    "status": "downloaded"
+  },
+  {
+    "title": "Hook Line & Sinker",
+    "imagePath": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+    "query": "Hook Line and Sinker St Thomas USVI",
+    "matchedName": "Hook Line & Sinker",
+    "status": "no_photo"
+  },
+  {
+    "title": "Sea La Vie",
+    "imagePath": "/images/places/st-thomas/sea-la-vie-1.jpg",
+    "query": "Sea La Vie St Thomas USVI",
+    "matchedName": "Sea La Vie",
+    "status": "no_photo"
+  },
+  {
+    "title": "Bumpa's Breakfast",
+    "imagePath": "/images/places/st-thomas/bumpas-breakfast-1.jpg",
+    "query": "Bumpas Sandwich Shop St Thomas USVI",
+    "matchedName": "Bumpas Sandwich Shop",
+    "status": "downloaded"
+  },
+  {
+    "title": "Shama's Specialties",
+    "imagePath": "/images/places/st-thomas/shamas-specialties-1.jpg",
+    "query": "Shama's Specialties St Thomas USVI",
+    "matchedName": "SHAM'S ENT LLC",
+    "status": "downloaded"
+  },
+  {
+    "title": "El Gringos",
+    "imagePath": "/images/places/st-thomas/el-gringos-1.jpg",
+    "query": "El Gringos St Thomas USVI",
+    "matchedName": "Greengos Caribbean Cantina",
+    "status": "downloaded"
+  },
+  {
+    "title": "Rooftop Bar Charlotte Amalie",
+    "imagePath": "/images/places/st-thomas/rooftop-bar-charlotte-amalie-1.jpg",
+    "query": "Rooftop Bar Charlotte Amalie St Thomas USVI",
+    "matchedName": "Veranda Escape Bar & Restaurant",
+    "status": "downloaded"
+  },
+  {
+    "title": "Mooie's Bar",
+    "imagePath": "/images/places/st-john/mooies-bar-1.jpg",
+    "query": "Mooie's Bar St John USVI",
+    "matchedName": "The Windmill Bar",
+    "status": "downloaded"
+  },
+  {
+    "title": "Café Roma",
+    "imagePath": "/images/places/st-john/caf-roma-1.jpg",
+    "query": "Cafe Roma St John USVI",
+    "matchedName": "Cafe Roma",
+    "status": "downloaded"
+  },
+  {
+    "title": "Harvey's",
+    "imagePath": "/images/places/st-croix/harveys-1.jpg",
+    "query": "Harvey's Restaurant St Croix USVI",
+    "matchedName": "Hamilton’s",
+    "status": "downloaded"
+  },
+  {
+    "title": "40 Strand Eatery",
+    "imagePath": "/images/places/st-croix/40-strand-eatery-1.jpg",
+    "query": "40 Strand Eatery St Croix USVI",
+    "matchedName": "40 Eats and Drinks",
+    "status": "downloaded"
+  },
+  {
+    "title": "Kendricks",
+    "imagePath": "/images/places/st-croix/kendricks-1.jpg",
+    "query": "Kendricks Restaurant St Croix USVI",
+    "matchedName": "Harbour Prime",
+    "status": "downloaded"
+  },
+  {
+    "title": "Nauti Bar and Grille",
+    "imagePath": "/images/places/st-croix/nauti-bar-and-grille-1.jpg",
+    "query": "Nauti Bar and Grille St Croix USVI",
+    "matchedName": "Nauti Parrot",
+    "status": "downloaded"
+  },
+  {
+    "title": "Cheeseburgers in America's Paradise",
+    "imagePath": "/images/places/st-croix/cheeseburgers-in-americas-paradise-1.jpg",
+    "query": "Cheeseburgers in America's Paradise St Croix USVI",
+    "matchedName": "Cheeseburger in Paradise",
+    "status": "downloaded"
+  },
+  {
+    "title": "TLC Kitchen",
+    "imagePath": "/images/places/st-croix/tlc-kitchen-1.jpg",
+    "query": "TLC Kitchen St Croix USVI",
+    "matchedName": "B&B Kitchen",
+    "status": "downloaded"
+  },
+  {
+    "title": "Taco Shack",
+    "imagePath": "/images/places/st-croix/taco-shack-1.jpg",
+    "query": "Taco Shack St Croix USVI",
+    "matchedName": "Chupacabra Tacos USVI",
+    "status": "downloaded"
+  },
+  {
+    "title": "St. Thomas Synagogue",
+    "imagePath": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "query": "Hebrew Congregation of St Thomas Synagogue USVI",
+    "matchedName": "Hebrew Congregation of St. Thomas",
+    "status": "downloaded"
+  },
+  {
+    "title": "Red Hook Marina",
+    "imagePath": "/images/places/st-thomas/red-hook-marina-1.jpg",
+    "query": "Red Hook Marina St Thomas USVI",
+    "matchedName": "American Yacht Harbor",
+    "status": "downloaded"
+  },
+  {
+    "title": "Petroglyphs Trail",
+    "imagePath": "/images/places/st-john/petroglyphs-trail-1.jpg",
+    "query": "Reef Bay Petroglyph Trail St John USVI",
+    "matchedName": "Reef Bay Trail & Petroglyph Trail",
+    "status": "no_photo"
+  },
+  {
+    "title": "Cruz Bay Taxi Stand",
+    "imagePath": "/images/places/st-thomas/cruz-bay-taxi-stand-1.jpg",
+    "query": "Cruz Bay Taxi Stand St John USVI",
+    "matchedName": "Cruz Bay",
+    "status": "downloaded"
+  },
+  {
+    "title": "Coral Bay Taxi Stand",
+    "imagePath": "/images/places/st-john/coral-bay-taxi-stand-1.jpg",
+    "query": "Coral Bay Taxi Stand St John USVI",
+    "matchedName": "Island Girl Taxi and Tours",
+    "status": "downloaded"
+  },
+  {
+    "title": "Salt Pond Bay Beach",
+    "imagePath": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+    "query": "Salt Pond Bay Beach St John USVI",
+    "matchedName": "Saltpond Bay Trail",
+    "status": "no_photo"
+  }
+]

@@ -1,0 +1,2314 @@
+[
+  {
+    "slug": "coral-world-ocean-park",
+    "title": "Coral World Ocean Park",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Coral World Ocean Park is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/coral-world-ocean-park-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.349389,
+      "lng": -64.86359999999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206746884,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "6450 Coki Point, St Thomas, Virgin Islands 00802, USVI",
+    "googlePlaceId": "ChIJ391gV0gQBYwRfDVWVoH6Wc8"
+  },
+  {
+    "slug": "paradise-point-skyride",
+    "title": "Paradise Point Skyride",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Paradise Point Skyride is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/paradise-point-skyride-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3338809,
+      "lng": -64.9186206
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206747145,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "9617 Estate Thomas Charlotte Amalie, Charlotte Amalie East, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJdb-pfIcaBYwRjU6GGFH36U0"
+  },
+  {
+    "slug": "fort-christian",
+    "title": "Fort Christian",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Fort Christian is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3407892,
+      "lng": -64.92958949999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206747406,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJrZ_dLI0aBYwRxN8okumaCrU"
+  },
+  {
+    "slug": "mountain-top",
+    "title": "Mountain Top",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Mountain Top is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/mountain-top-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/mountain-top-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.355969,
+      "lng": -64.9470118
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206747660,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Mountain Top, Saint Peter, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJwQhHT-caBYwROJdrf68CleA"
+  },
+  {
+    "slug": "drakes-seat",
+    "title": "Drake's Seat",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Drake's Seat is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/drakes-seat-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/drakes-seat-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.35283,
+      "lng": -64.9271286
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206747917,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "933F+44Q, Rte 37, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJrQowcZUaBYwRQAMekK8DkAU"
+  },
+  {
+    "slug": "99-steps",
+    "title": "99 Steps",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "99 Steps is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/99-steps-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/99-steps-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3424668,
+      "lng": -64.9301286
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206748166,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "St Thomas, Charlotte Amalie, St Thomas 00801, USVI",
+    "googlePlaceId": "ChIJRcParvIaBYwR9Ha0mIyo-OU"
+  },
+  {
+    "slug": "blackbeards-castle",
+    "title": "Blackbeard's Castle",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Blackbeard's Castle is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3438889,
+      "lng": -64.9297222
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206748434,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "1001 Blackbeard's Hl, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsVnxsZIaBYwREuHbZKAP9-A"
+  },
+  {
+    "slug": "yacht-haven-grande",
+    "title": "Yacht Haven Grande",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Yacht Haven Grande is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/yacht-haven-grande-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3364134,
+      "lng": -64.9201485
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206748722,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "5304 Yacht Haven Grande, Suite 100, St. Thomas, US Virgin Islands 00802, USVI",
+    "googlePlaceId": "ChIJ2_cVKokaBYwRFIjCCiJMPdk"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district",
+    "title": "Charlotte Amalie Historic District",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Charlotte Amalie Historic District is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206749005,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "emancipation-garden",
+    "title": "Emancipation Garden",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Emancipation Garden is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/emancipation-garden-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/emancipation-garden-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3411557,
+      "lng": -64.93034349999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206749261,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+FV7 Emancipation Garden, ST THOMAS, St Thomas 00803, USVI",
+    "googlePlaceId": "ChIJt3egz_IaBYwReNMnNHUy-wk"
+  },
+  {
+    "slug": "vendors-plaza",
+    "title": "Vendor's Plaza",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Vendor's Plaza is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/vendors-plaza-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/vendors-plaza-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3406528,
+      "lng": -64.93040119999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206749518,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St. Thomas, Veterans Dr, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJ_3vB2fIaBYwRgImUiMH4RDY"
+  },
+  {
+    "slug": "st-thomas-synagogue",
+    "title": "St. Thomas Synagogue",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "St. Thomas Synagogue is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3426338,
+      "lng": -64.93267759999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206749776,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St Thomas, 2116 Krystal St, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJX02nYvIaBYwRGz_qBTizYPw"
+  },
+  {
+    "slug": "seven-arches-museum",
+    "title": "Seven Arches Museum",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Seven Arches Museum is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/seven-arches-museum-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/seven-arches-museum-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3427694,
+      "lng": -64.9285882
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206750040,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "St Thomas, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJyTPaWI0aBYwRjJsBQZt2D5Y"
+  },
+  {
+    "slug": "bluebeards-castle",
+    "title": "Bluebeard's Castle",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Bluebeard's Castle is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/bluebeards-castle-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/bluebeards-castle-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3405094,
+      "lng": -64.92375179999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206750300,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJP2eq2I0aBYwR236o4s0sabw"
+  },
+  {
+    "slug": "magens-bay-arboretum",
+    "title": "Magens Bay Arboretum",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Magens Bay Arboretum is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/magens-bay-arboretum-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/magens-bay-arboretum-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3589684,
+      "lng": -64.9238297
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206750555,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "935G+HFM, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJq7efVbkaBYwRgHKxAVT-kI0"
+  },
+  {
+    "slug": "vi-childrens-museum",
+    "title": "VI Children's Museum",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "VI Children's Museum is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/vi-childrens-museum-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/vi-childrens-museum-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3335847,
+      "lng": -64.9187955
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206750823,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Buccaneer Mall, Rte 30, St. Thomas, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJF32VyPIaBYwRawNmJDwPiYk"
+  },
+  {
+    "slug": "phantasea-tropical-botanical-garden",
+    "title": "Phantasea Tropical Botanical Garden",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Phantasea Tropical Botanical Garden is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/phantasea-tropical-botanical-garden-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/phantasea-tropical-botanical-garden-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3542565,
+      "lng": -64.9389492
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206751084,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "7D-5, ST THOMAS, VI 00802, USVI",
+    "googlePlaceId": "ChIJ0_QDMegaBYwRcjAmpW1hf6U"
+  },
+  {
+    "slug": "red-hook-marina",
+    "title": "Red Hook Marina",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Red Hook Marina is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/red-hook-marina-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/red-hook-marina-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3267563,
+      "lng": -64.85047550000002
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206751345,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Red Hook, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJuf8_VakRBYwRAameXn1iHWs"
+  },
+  {
+    "slug": "sapphire-marina",
+    "title": "Sapphire Marina",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Sapphire Marina is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/sapphire-marina-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/sapphire-marina-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3354972,
+      "lng": -64.85099819999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206751598,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Rte. 6 Smith Bay Smith Bay Road, Smith Bay, VI 00801, USVI",
+    "googlePlaceId": "ChIJCwVRTH9yBYwRIUbtLuxxlxg"
+  },
+  {
+    "slug": "secret-harbour-marina",
+    "title": "Secret Harbour Marina",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Secret Harbour Marina is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/secret-harbour-marina-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/secret-harbour-marina-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3184595,
+      "lng": -64.8522129
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206751868,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "6280 Estate Nazareth, Nazareth, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJa23swQYRBYwRkh69-bFf9go"
+  },
+  {
+    "slug": "coki-dive-center",
+    "title": "Coki Dive Center",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Coki Dive Center is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/coki-dive-center-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/coki-dive-center-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3496602,
+      "lng": -64.86554199999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206752128,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "6280 Estate Nazareth, Coki Point, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJ9zngvjYQBYwRMWwV8Bc5Lfo"
+  },
+  {
+    "slug": "havensight-mall",
+    "title": "Havensight Mall",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Havensight Mall is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/havensight-mall-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/havensight-mall-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3324511,
+      "lng": -64.9204285
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206752389,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83JH+XRP, Charlotte Amalie East, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJx3ByNYgaBYwRdqJpbp9m6CQ"
+  },
+  {
+    "slug": "crown-bay-center",
+    "title": "Crown Bay Center",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Crown Bay Center is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/crown-bay-center-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/crown-bay-center-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.332271,
+      "lng": -64.9549498
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206752644,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI",
+    "googlePlaceId": "ChIJgw-m6KobBYwRRkojUPF8tl4"
+  },
+  {
+    "slug": "water-island-fort-segarra",
+    "title": "Water Island Fort Segarra",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Water Island Fort Segarra is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/water-island-fort-segarra-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/water-island-fort-segarra-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3077328,
+      "lng": -64.95696339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206752908,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Water Island, 825V+36V, Charlotte Amalie West, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJe-DV66obBYwRwSj2_8bagXw"
+  },
+  {
+    "slug": "honeymoon-beach-water-island",
+    "title": "Honeymoon Beach Water Island",
+    "category": "attraction",
+    "islandCode": "st_thomas",
+    "areaSlug": "visitor-attractions",
+    "description": "Honeymoon Beach Water Island is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st thomas.",
+    "coverImage": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3168875,
+      "lng": -64.9563428
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206753175,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "828V+QF3, Main Rd, Water Island, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJrxjow1obBYwRtxw6TpSmHWM"
+  },
+  {
+    "slug": "cruz-bay-visitor-center",
+    "title": "Cruz Bay Visitor Center",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Cruz Bay Visitor Center is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/cruz-bay-visitor-center-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-visitor-center-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3327512,
+      "lng": -64.7937969
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206753460,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86M4+4F4, Virgin Island National Park, St John 00830, USVI",
+    "googlePlaceId": "ChIJ3_4i0T0SBYwRkogb_jIRxpU"
+  },
+  {
+    "slug": "virgin-islands-national-park",
+    "title": "Virgin Islands National Park",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Virgin Islands National Park is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/virgin-islands-national-park-1.jpg",
+    "gallery": [
+      "/images/places/st-john/virgin-islands-national-park-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3435164,
+      "lng": -64.7501256
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206753735,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Virgin Islands National Park, St John, USVI",
+    "googlePlaceId": "ChIJm6uiKCASBYwRBgHYhIjkW7c"
+  },
+  {
+    "slug": "annaberg-sugar-plantation",
+    "title": "Annaberg Sugar Plantation",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Annaberg Sugar Plantation is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3627174,
+      "lng": -64.72973
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206753994,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "977C+34J, St John 00830, USVI",
+    "googlePlaceId": "ChIJC6W9uEUNBYwRTlDssTUCpec"
+  },
+  {
+    "slug": "cinnamon-bay-archaeology-museum",
+    "title": "Cinnamon Bay Archaeology Museum",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Cinnamon Bay Archaeology Museum is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206754263,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "reef-bay-trail",
+    "title": "Reef Bay Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Reef Bay Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/reef-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/reef-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3352834,
+      "lng": -64.7397429
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206754535,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Reef Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJEwKsUZYSBYwREMTAoINFDDs"
+  },
+  {
+    "slug": "petroglyphs-trail",
+    "title": "Petroglyphs Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Petroglyphs Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/petroglyphs-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/petroglyphs-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3309455,
+      "lng": -64.7431316
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206754803,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Petroglyph Trl, Reef Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJJ3EMrpUSBYwRh2g4RSIJ3FQ"
+  },
+  {
+    "slug": "peace-hill-windmill",
+    "title": "Peace Hill Windmill",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Peace Hill Windmill is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/peace-hill-windmill-1.jpg",
+    "gallery": [
+      "/images/places/st-john/peace-hill-windmill-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.351433,
+      "lng": -64.77737379999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206755071,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "00830,, Dennis Bay/ Hawknest, St John 00830, USVI",
+    "googlePlaceId": "ChIJN6_iEXcSBYwRGHUYi7MWh-Q"
+  },
+  {
+    "slug": "catherineberg-ruins",
+    "title": "Catherineberg Ruins",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Catherineberg Ruins is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3443018,
+      "lng": -64.76100559999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206755333,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI",
+    "googlePlaceId": "ChIJPSb2BocSBYwRyG2V3MbR36Q"
+  },
+  {
+    "slug": "caneel-bay-overlook",
+    "title": "Caneel Bay Overlook",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Caneel Bay Overlook is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/caneel-bay-overlook-1.jpg",
+    "gallery": [
+      "/images/places/st-john/caneel-bay-overlook-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3413162,
+      "lng": -64.7840366
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206755602,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Caneel Bay, Cruz Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJGSaR0hISBYwRAITsy3457h4"
+  },
+  {
+    "slug": "trunk-bay-overlook",
+    "title": "Trunk Bay Overlook",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Trunk Bay Overlook is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    "gallery": [
+      "/images/places/st-john/trunk-bay-overlook-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3526952,
+      "lng": -64.7685432
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206755870,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Trunk Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJF3yORH8SBYwRI-HMrv4xaVM"
+  },
+  {
+    "slug": "maho-bay-overlook",
+    "title": "Maho Bay Overlook",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Maho Bay Overlook is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/maho-bay-overlook-1.jpg",
+    "gallery": [
+      "/images/places/st-john/maho-bay-overlook-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3570204,
+      "lng": -64.7451514
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206756128,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "9743+RW5 Maho Bay, Rte 20, St John 00830, USVI",
+    "googlePlaceId": "ChIJl3HKomYNBYwRgmt_7hIfJOY"
+  },
+  {
+    "slug": "coral-bay-lookout",
+    "title": "Coral Bay Lookout",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Coral Bay Lookout is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/coral-bay-lookout-1.jpg",
+    "gallery": [
+      "/images/places/st-john/coral-bay-lookout-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3480813,
+      "lng": -64.7141671
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206756407,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Coral Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJ9fQ4VqpyBYwRpCzahAZgFsU"
+  },
+  {
+    "slug": "salt-pond-trail",
+    "title": "Salt Pond Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Salt Pond Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/salt-pond-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/salt-pond-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3099374,
+      "lng": -64.7066103
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206756676,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Saltpond Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJyz8FzC9tBYwRea8HtXUr-gY"
+  },
+  {
+    "slug": "ram-head-trail",
+    "title": "Ram Head Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Ram Head Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/ram-head-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/ram-head-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3040769,
+      "lng": -64.7035344
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206756943,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Ram Head Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJ7QJKgihtBYwRwj6JM0DdzJg"
+  },
+  {
+    "slug": "bordeaux-mountain",
+    "title": "Bordeaux Mountain",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Bordeaux Mountain is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/bordeaux-mountain-1.jpg",
+    "gallery": [
+      "/images/places/st-john/bordeaux-mountain-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3275399,
+      "lng": -64.723894
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206757209,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Bordeaux Mountain Trail, Lameshur Complex, St John 00830, USVI",
+    "googlePlaceId": "ChIJAyV0-8gSBYwRhSgdsvsSRlM"
+  },
+  {
+    "slug": "johnny-horn-trail",
+    "title": "Johnny Horn Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Johnny Horn Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/johnny-horn-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/johnny-horn-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3571574,
+      "lng": -64.7134978
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206757476,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Johnny Horn Trl, St John 00830, USVI",
+    "googlePlaceId": "ChIJjWf4mqtyBYwRsI89JfFF1CQ"
+  },
+  {
+    "slug": "leinster-bay-trail",
+    "title": "Leinster Bay Trail",
+    "category": "attraction",
+    "islandCode": "st_john",
+    "areaSlug": "visitor-attractions",
+    "description": "Leinster Bay Trail is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st john.",
+    "coverImage": "/images/places/st-john/leinster-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/leinster-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3631894,
+      "lng": -64.7249799
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206757739,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Leinster Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJfaMm0UgNBYwRfpOMWNmOJb8"
+  },
+  {
+    "slug": "christiansted-national-historic-site",
+    "title": "Christiansted National Historic Site",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Christiansted National Historic Site is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7467366,
+      "lng": -64.7023078
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206758029,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "1 Company St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJww1quu21GowRD8wD18g_ThQ"
+  },
+  {
+    "slug": "fort-christiansvaern",
+    "title": "Fort Christiansvaern",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Fort Christiansvaern is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206758295,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "steeple-building",
+    "title": "Steeple Building",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Steeple Building is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/steeple-building-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/steeple-building-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206758582,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "scale-house",
+    "title": "Scale House",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Scale House is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/scale-house-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/scale-house-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469796,
+      "lng": -64.70302520000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206758830,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WW+QQX, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJf--7l-21GowRi5_cl1i0c7A"
+  },
+  {
+    "slug": "old-danish-customs-house",
+    "title": "Old Danish Customs House",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Old Danish Customs House is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/old-danish-customs-house-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7467647,
+      "lng": -64.7025147
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206759098,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WW+PX5, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJJVGLu-21GowRxvvBYdyeEcQ"
+  },
+  {
+    "slug": "government-house-christiansted",
+    "title": "Government House Christiansted",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Government House Christiansted is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/government-house-christiansted-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/government-house-christiansted-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7463177,
+      "lng": -64.70352129999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206759350,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "1105 King St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJDfBz7e21GowR-FgGLXNDOWE"
+  },
+  {
+    "slug": "buck-island-reef-national-monument",
+    "title": "Buck Island Reef National Monument",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Buck Island Reef National Monument is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/buck-island-reef-national-monument-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7870946,
+      "lng": -64.62061059999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206759603,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Buck Island, St Croix, USVI",
+    "googlePlaceId": "ChIJtxa9F1-zGowRFYYxWc1QXJs"
+  },
+  {
+    "slug": "point-udall",
+    "title": "Point Udall",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Point Udall is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/point-udall-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/point-udall-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7559417,
+      "lng": -64.5672306
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206759850,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "QC4M+94C, Rte 82, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJu3bd2viyGowRwsrtJ14_u4Y"
+  },
+  {
+    "slug": "sandy-point-national-wildlife-refuge",
+    "title": "Sandy Point National Wildlife Refuge",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Sandy Point National Wildlife Refuge is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6856009,
+      "lng": -64.8915351
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206760107,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Sandy Point National Wildlife Refuge, 71 Route 63, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJgYzq6-XPGowRu0zwFcwnNMc"
+  },
+  {
+    "slug": "estate-whim-plantation-museum",
+    "title": "Estate Whim Plantation Museum",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Estate Whim Plantation Museum is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-museum-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206760364,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "st-george-village-botanical-garden",
+    "title": "St. George Village Botanical Garden",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "St. George Village Botanical Garden is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7177571,
+      "lng": -64.83037329999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206760634,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "127 George Rd, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJyfybwsPOGowRZdFFIpwiIbY"
+  },
+  {
+    "slug": "salt-river-bay-national-historical-park",
+    "title": "Salt River Bay National Historical Park",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Salt River Bay National Historical Park is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7750581,
+      "lng": -64.75592619999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206760901,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Salt River Bay National Historical Park and Ecological Preserve, 2100 Church St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJyRp0ZVXKGowRQ7QlScQQCIE"
+  },
+  {
+    "slug": "cruzan-rum-distillery",
+    "title": "Cruzan Rum Distillery",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Cruzan Rum Distillery is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/cruzan-rum-distillery-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cruzan-rum-distillery-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7047479,
+      "lng": -64.82595979999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206761152,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "3A Diamond, Frederiksted, Diamond, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR9ylBMXNbPsU"
+  },
+  {
+    "slug": "captain-morgan-visitor-center",
+    "title": "Captain Morgan Visitor Center",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Captain Morgan Visitor Center is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/captain-morgan-visitor-center-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7144044,
+      "lng": -64.7759707
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206761433,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "1 Est, Annaberg and Shannon Grove, Annaberg And Shannon Grove, St Croix 00850, USVI",
+    "googlePlaceId": "ChIJLQGCu3PJGowRyLVdwQBRv20"
+  },
+  {
+    "slug": "frederiksted-pier",
+    "title": "Frederiksted Pier",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Frederiksted Pier is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-pier-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7140437,
+      "lng": -64.88433119999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206761678,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "St. Croix, Frederiksted, St Croix 00841, USVI",
+    "googlePlaceId": "ChIJQfPiijPOGowROy2geMihtiw"
+  },
+  {
+    "slug": "fort-frederik",
+    "title": "Fort Frederik",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Fort Frederik is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152523,
+      "lng": -64.8829241
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206761926,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Fort Frederick, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ7WloBTbOGowRq2s6D85qFd8"
+  },
+  {
+    "slug": "dorsch-beach",
+    "title": "Dorsch Beach",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Dorsch Beach is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/dorsch-beach-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/dorsch-beach-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7026089,
+      "lng": -64.8850942
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206762175,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Dorsch Beach, 144 Sugarhill Rd, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJvf6IgoLPGowRXl_uyqTVyuE"
+  },
+  {
+    "slug": "cane-bay-wall",
+    "title": "Cane Bay Wall",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Cane Bay Wall is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/cane-bay-wall-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cane-bay-wall-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.771639,
+      "lng": -64.81014499999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206762426,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cane Bay, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJOUze7onLGowR5r7YiZfVtXk"
+  },
+  {
+    "slug": "jack-and-isaac-bay-preserve",
+    "title": "Jack and Isaac Bay Preserve",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Jack and Isaac Bay Preserve is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7551875,
+      "lng": -64.5695625
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206762680,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Jack and Isaac Bay Preserve, St. Croix, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJL6uZHrazGowRzxFwnd_movw"
+  },
+  {
+    "slug": "gallows-bay",
+    "title": "Gallows Bay",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Gallows Bay is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/gallows-bay-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/gallows-bay-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7477477,
+      "lng": -64.7003138
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206762937,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Gallows Bay, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJ48AGjOy1GowRM8DgRCM528k"
+  },
+  {
+    "slug": "protestant-cay",
+    "title": "Protestant Cay",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Protestant Cay is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/protestant-cay-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/protestant-cay-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7496773,
+      "lng": -64.7027058
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206763182,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Protestant Cay, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJOXq_Oe21GowRAic2qsS5a7E"
+  },
+  {
+    "slug": "christiansted-boardwalk",
+    "title": "Christiansted Boardwalk",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Christiansted Boardwalk is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-boardwalk-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7472506,
+      "lng": -64.7051504
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206763434,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJ51HXb_K1GowRPvBOTJSE1uQ"
+  },
+  {
+    "slug": "frederiksted-waterfront",
+    "title": "Frederiksted Waterfront",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Frederiksted Waterfront is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-waterfront-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-waterfront-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7122979,
+      "lng": -64.8818053
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206763688,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Frederiksted, St Croix, USVI",
+    "googlePlaceId": "ChIJC5KRmDXOGowR_Pc28d6Ka5k"
+  },
+  {
+    "slug": "carambola-tide-pools",
+    "title": "Carambola Tide Pools",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Carambola Tide Pools is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/carambola-tide-pools-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/carambola-tide-pools-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7637898,
+      "lng": -64.8454892
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206763940,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Q573+GR6, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ739HFzrMGowR9-9SwDCCdXg"
+  },
+  {
+    "slug": "mount-eagle",
+    "title": "Mount Eagle",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Mount Eagle is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/mount-eagle-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/mount-eagle-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7608061,
+      "lng": -64.8115341
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206764189,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Mt Eagle, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJrc7DDgrMGowRT4eJZc58plA"
+  },
+  {
+    "slug": "hams-bluff-lighthouse",
+    "title": "Ham's Bluff Lighthouse",
+    "category": "attraction",
+    "islandCode": "st_croix",
+    "areaSlug": "visitor-attractions",
+    "description": "Ham's Bluff Lighthouse is a attraction destination in the U.S. Virgin Islands.",
+    "shortDescription": "attraction on st croix.",
+    "coverImage": "/images/places/st-croix/hams-bluff-lighthouse-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/hams-bluff-lighthouse-1.jpg"
+    ],
+    "tags": [
+      "attraction",
+      "visitor-attractions",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7691667,
+      "lng": -64.8708611
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206764436,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Northwest St Croix 00840, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJa6geGcbNGowRM99MNDqk7Fc"
+  }
+]
