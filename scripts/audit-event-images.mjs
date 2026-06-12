@@ -76,8 +76,13 @@ if (placeholders.length) {
 }
 
 if (review.length) {
+  const uniqueReview = Array.from(
+    new Map(review.map((item) => [item.slug, item])).values()
+  );
+
+  console.log(`Unique review slugs: ${uniqueReview.length}`);
   console.log("\nNeeds manual review:");
-  review.slice(0, 50).forEach((item) => {
+  uniqueReview.slice(0, 50).forEach((item) => {
     console.log(`- ${item.title}: ${item.image}`);
   });
 }
