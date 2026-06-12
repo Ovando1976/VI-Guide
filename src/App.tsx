@@ -232,22 +232,15 @@ function AppContent() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
-            path="/"
-            element={
-              <HomeScreen
-                user={user}
-                isAdmin={isAdmin}
-                seeding={seeding}
-                seedStatus={seedStatus}
-                selectedIsland={selectedIsland}
-                exploreQueryParam={exploreQueryParam}
-                onSeed={handleSeedFirebase}
-                onLogin={handleLogin}
-                onNavigate={navigate}
-                onSelectListing={setSelectedListing}
-              />
-            }
-          />
+  path="/"
+  element={
+    <VisitorHome
+      selectedIsland={selectedIsland}
+      onNavigate={navigate}
+      onSelectListing={setSelectedListing}
+    />
+  }
+/>
 
           <Route
             path="/explore"
