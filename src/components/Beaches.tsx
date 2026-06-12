@@ -1,106 +1,242 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { BeachDoc, IslandCode } from '../types';
-import { getBeachesByIsland } from '../lib/firestore/beaches';
-import { isIslandCode } from '../lib/utils/islands';
-import { Palmtree, Star, MapPin, Waves } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { BeachDoc, IslandCode } from "../types";
+import { getBeachesByIsland } from "../lib/firestore/beaches";
+import { isIslandCode } from "../lib/utils/islands";
+import { MapPin, Palmtree, Plus, Route, Waves } from "lucide-react";
+import { motion } from "motion/react";
 
 interface BeachesProps {
   onSelectBeach: (beach: BeachDoc) => void;
 }
 
+const STORAGE_KEY = "viNavigatorDayPlan";
+
+function getBeachId(beach: BeachDoc) {
+  return (
+    beach.slug || beach.id || beach.title.toLowerCase().replace(/\s+/g, "-")
+  );
+}
+
+function addBeachToPlan(beach: BeachDoc) {
+  if (!beach.coordinates) return;
+
+  const stop = {
+    id: getBeachId(beach),
+    title: beach.title,
+    type: "beach",
+    lat: beach.coordinates.lat,
+    lng: beach.coordinates.lng,
+    description: beach.shortDescription || beach.description || "Beach stop.",
+  };
+
+  const existing = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+
+  const next = existing.some((item: any) => item.id === stop.id)
+    ? existing
+    : [...existing, stop];
+
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+}
+
+function openDirections(beach: BeachDoc) {
+  if (!beach.coordinates) return;
+
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${beach.coordinates.lat},${beach.coordinates.lng}`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
 export default function Beaches({ onSelectBeach }: BeachesProps) {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
   const [beaches, setBeaches] = useState<BeachDoc[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
-  const islandParam = searchParams.get('island');
-  const islandCode = isIslandCode(islandParam) ? islandParam : 'st_thomas';
+  const islandParam = searchParams.get("island");
+  const islandCode: IslandCode = isIslandCode(islandParam)
+    ? islandParam
+    : "st_thomas";
 
   useEffect(() => {
+    let cancelled = false;
+
     async function loadBeaches() {
       setLoading(true);
+      setLoadError("");
+
       try {
         const data = await getBeachesByIsland(islandCode);
-        setBeaches(data);
+        console.log("BEACHES LOADED:", islandCode, data);
+
+        if (!cancelled) {
+          setBeaches(data);
+        }
       } catch (error) {
-        console.error('Error loading beaches:', error);
+        console.error("Error loading beaches:", error);
+
+        if (!cancelled) {
+          setLoadError(
+            error instanceof Error
+              ? error.message
+              : "Could not load beaches right now."
+          );
+        }
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
+
     loadBeaches();
+
+    return () => {
+      cancelled = true;
+    };
   }, [islandCode]);
 
-  if (loading) {
-    return (
-      <div className="flex flex-col gap-4 p-4">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="h-48 bg-zinc-100 animate-pulse rounded-2xl" />
-        ))}
-      </div>
-    );
-  }
+  const titleIsland = useMemo(
+    () => islandCode.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+    [islandCode]
+  );
 
   return (
-    <div className="p-4 pb-32">
+    <main className="min-h-screen bg-stone-50 px-4 pb-32 pt-6">
       <header className="mb-8">
-        <div className="flex items-center gap-2 text-emerald-600 mb-2">
-          <Palmtree className="w-5 h-5" />
-          <span className="text-sm font-bold uppercase tracking-widest">Beaches</span>
+        <div className="mb-2 flex items-center gap-2 text-emerald-600">
+          <Palmtree className="h-5 w-5" />
+          <span className="text-sm font-black uppercase tracking-widest">
+            Beaches
+          </span>
         </div>
-        <h1 className="text-3xl font-bold text-zinc-900">Island Shores</h1>
-        <p className="text-zinc-500 mt-1">The most beautiful beaches on {islandCode.replace('_', ' ')}</p>
+
+        <h1 className="text-3xl font-black text-stone-950">Island Shores</h1>
+
+        <p className="mt-1 text-sm text-stone-500">
+          The most beautiful beaches on {titleIsland}.
+        </p>
       </header>
 
-      <div className="grid gap-6">
-        {beaches.map((beach) => (
-          <motion.div
-            key={beach.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            onClick={() => onSelectBeach(beach)}
-            className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer border border-zinc-100"
-          >
-            <div className="aspect-[16/9] overflow-hidden">
-              <img
-                src={beach.coverImage || 'https://picsum.photos/seed/beach/800/600'}
-                alt={beach.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-emerald-600 shadow-sm flex items-center gap-1">
-                <Waves className="w-3 h-3" />
-                <span>Swimmable</span>
-              </div>
-            </div>
+      {loading && (
+        <div className="grid gap-6">
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="h-72 animate-pulse rounded-3xl bg-stone-200"
+            />
+          ))}
+        </div>
+      )}
 
-            <div className="p-5">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-bold text-zinc-900">{beach.title}</h3>
-              </div>
-              
-              <p className="text-zinc-500 text-sm line-clamp-2 mb-4">
-                {beach.shortDescription || beach.description}
-              </p>
+      {!loading && loadError && (
+        <div className="rounded-3xl bg-red-50 p-5 text-sm font-bold text-red-700 shadow">
+          {loadError}
+        </div>
+      )}
 
-              <div className="flex items-center gap-4 text-xs font-medium text-zinc-400">
-                <div className="flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
-                  <span>{beach.areaSlug?.replace('-', ' ')}</span>
+      {!loading && !loadError && beaches.length === 0 && (
+        <div className="rounded-3xl bg-white p-8 text-center shadow-xl">
+          <h3 className="text-xl font-bold text-stone-950">No beaches found</h3>
+          <p className="mt-2 text-sm text-stone-500">
+            Firestore returned zero beach records for {islandCode}.
+          </p>
+        </div>
+      )}
+
+      {!loading && !loadError && beaches.length > 0 && (
+        <div className="grid gap-6">
+          {beaches.map((beach, index) => (
+            <motion.article
+              key={getBeachId(beach)}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.04 }}
+              className="overflow-hidden rounded-3xl border border-stone-100 bg-white shadow-xl"
+            >
+              <button
+                onClick={() => onSelectBeach(beach)}
+                className="block w-full text-left"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
+                  <img
+                    src={
+                      beach.coverImage ||
+                      `https://picsum.photos/seed/${getBeachId(beach)}/1000/700`
+                    }
+                    alt={beach.title}
+                    className="h-full w-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+
+                  <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-emerald-700 shadow backdrop-blur">
+                    <Waves className="h-3 w-3" />
+                    Beach
+                  </div>
                 </div>
-                {beach.tags?.[0] && (
-                  <span className="px-2 py-0.5 bg-zinc-100 rounded-md uppercase tracking-wider">
-                    {beach.tags[0]}
-                  </span>
-                )}
+
+                <div className="p-5">
+                  <h2 className="text-2xl font-black text-stone-950">
+                    {beach.title}
+                  </h2>
+
+                  <p className="mt-2 line-clamp-2 text-sm text-stone-500">
+                    {beach.shortDescription || beach.description}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-bold text-stone-400">
+                    {beach.areaSlug && (
+                      <span className="flex items-center gap-1">
+                        <MapPin className="h-3 w-3" />
+                        {beach.areaSlug.replaceAll("-", " ")}
+                      </span>
+                    )}
+
+                    {beach.tags?.[0] && (
+                      <span className="rounded-full bg-stone-100 px-3 py-1 uppercase tracking-widest">
+                        {beach.tags[0]}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              <div className="grid grid-cols-3 gap-2 border-t border-stone-100 p-3">
+                <button
+                  onClick={() => onSelectBeach(beach)}
+                  className="rounded-2xl bg-stone-100 px-3 py-3 text-xs font-black text-stone-800"
+                >
+                  Details
+                </button>
+
+                <button
+                  onClick={() => {
+                    addBeachToPlan(beach);
+                    navigate("/cruise");
+                  }}
+                  className="flex items-center justify-center gap-1 rounded-2xl bg-emerald-950 px-3 py-3 text-xs font-black text-white"
+                >
+                  <Plus className="h-3 w-3" />
+                  Plan
+                </button>
+
+                <button
+                  onClick={() => openDirections(beach)}
+                  className="flex items-center justify-center gap-1 rounded-2xl bg-amber-300 px-3 py-3 text-xs font-black text-stone-950"
+                >
+                  <Route className="h-3 w-3" />
+                  Map
+                </button>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+            </motion.article>
+          ))}
+        </div>
+      )}
+    </main>
   );
 }
