@@ -564,12 +564,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-06-13",
     "endsAt": "YYYY-06-13",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/king-of-the-wing.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/king-of-the-wing.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/king-of-the-wing.jpg",
     "tags": [
       "event",
       "food",

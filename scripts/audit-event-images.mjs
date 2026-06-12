@@ -15,6 +15,12 @@ const missing = [];
 const placeholders = [];
 const review = [];
 
+function eventFamilyKey(event) {
+  return String(event.slug || event.title || "")
+    .replace(/-20[0-9]{2}-.+$/, "")
+    .replace(/-20[0-9]{2}$/, "");
+}
+
 for (const event of events) {
   if (!event.coverImage) {
     missing.push({ title: event.title, slug: event.slug, reason: "No coverImage" });
@@ -77,7 +83,7 @@ if (placeholders.length) {
 
 if (review.length) {
   const uniqueReview = Array.from(
-    new Map(review.map((item) => [item.slug, item])).values()
+    new Map(review.map((item) => [eventFamilyKey(item), item])).values()
   );
 
   console.log(`Unique review slugs: ${uniqueReview.length}`);
