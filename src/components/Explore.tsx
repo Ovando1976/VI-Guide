@@ -14,6 +14,7 @@ import { db } from "../firebase";
 import { cn } from "../lib/utils";
 import type { IslandCode, BeachDoc, PlaceDoc, EventDoc } from "../types";
 import { useSearchParams } from "react-router-dom";
+import ExploreMapView from "./ExploreMapView";
 
 type ExploreItem = {
   id: string;
@@ -146,6 +147,8 @@ export default function Explore({
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
+  const [viewMode, setViewMode] = useState<"list" | "map">("map");
+
   const [searchParams] = useSearchParams();
   const urlCategory = searchParams.get("category") ?? "all";
   const [selectedCategory, setSelectedCategory] = useState(urlCategory);
@@ -260,6 +263,32 @@ export default function Explore({
         </div>
       </div>
 
+      <div className="px-8 mb-6 flex gap-3">
+        <button
+          onClick={() => setViewMode("list")}
+          className={cn(
+            "rounded-2xl px-5 py-3 text-sm font-black",
+            viewMode === "list"
+              ? "bg-emerald-950 text-white"
+              : "bg-white text-stone-500"
+          )}
+        >
+          List
+        </button>
+
+        <button
+          onClick={() => setViewMode("map")}
+          className={cn(
+            "rounded-2xl px-5 py-3 text-sm font-black",
+            viewMode === "map"
+              ? "bg-emerald-950 text-white"
+              : "bg-white text-stone-500"
+          )}
+        >
+          Map
+        </button>
+      </div>
+
       <div className="px-8 space-y-8">
         {isLoading && (
           <div className="rounded-[3rem] border border-stone-100 bg-white py-24 text-center shadow-inner">
@@ -286,6 +315,19 @@ export default function Explore({
 
         {!isLoading &&
           !loadError &&
+          filteredItems.length > 0 &&
+          viewMode === "map" && (
+            <ExploreMapView
+              items={filteredItems}
+              selectedIsland={selectedIsland}
+              onSelectListing={onSelectListing as any}
+            />
+          )}
+
+        {!isLoading &&
+          !loadError &&
+          filteredItems.length > 0 &&
+          viewMode === "list" &&
           filteredItems.map((item) => (
             <button
               key={`${item.category}-${item.id}`}
