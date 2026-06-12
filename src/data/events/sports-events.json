@@ -19,12 +19,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-03",
     "endsAt": "YYYY-04-05",
-    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "coverImage": "/images/events/sports/st-thomas-international-regatta.jpg",
     "gallery": [
-      "/images/events/sports/rolex-regatta.jpg"
+      "/images/events/sports/st-thomas-international-regatta.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "imageSource": "/images/events/sports/st-thomas-international-regatta.jpg",
     "tags": [
       "event",
       "sports",
@@ -51,12 +51,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-06-14",
     "endsAt": "YYYY-06-21",
-    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "coverImage": "/images/events/sports/optimist-regatta.jpg",
     "gallery": [
-      "/images/events/sports/rolex-regatta.jpg"
+      "/images/events/sports/optimist-regatta.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "imageSource": "/images/events/sports/optimist-regatta.jpg",
     "tags": [
       "event",
       "sports",
@@ -211,12 +211,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-02-28",
     "endsAt": "YYYY-02-28",
-    "coverImage": "/images/events/sports/horse-racing.jpg",
+    "coverImage": "/images/events/sports/8-tuff-miles.jpg",
     "gallery": [
-      "/images/events/sports/horse-racing.jpg"
+      "/images/events/sports/8-tuff-miles.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/sports/horse-racing.jpg",
+    "imageSource": "/images/events/sports/8-tuff-miles.jpg",
     "tags": [
       "event",
       "sports",
