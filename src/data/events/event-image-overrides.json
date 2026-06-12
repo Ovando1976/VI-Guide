@@ -1,0 +1,14 @@
+{
+  "king-of-the-wing": {
+    "coverImage": "/images/events/food/king-of-the-wing.jpg",
+    "imageStatus": "needs_manual_upload"
+  },
+  "sunset-jazz": {
+    "coverImage": "/images/events/music/sunset-jazz.jpg",
+    "imageStatus": "needs_manual_upload"
+  },
+  "paradise-jam": {
+    "coverImage": "/images/events/sports/paradise-jam.jpg",
+    "imageStatus": "representative"
+  }
+}

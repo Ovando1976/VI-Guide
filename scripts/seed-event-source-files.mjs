@@ -1,7 +1,13 @@
 import fs from "fs";
 
 const EVENT_DIR = "src/data/events";
+const OVERRIDES_FILE = `${EVENT_DIR}/event-image-overrides.json`;
+
 fs.mkdirSync(EVENT_DIR, { recursive: true });
+
+const imageOverrides = fs.existsSync(OVERRIDES_FILE)
+  ? JSON.parse(fs.readFileSync(OVERRIDES_FILE, "utf8"))
+  : {};
 
 const img = {
   stt: "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
@@ -148,12 +154,17 @@ function baseEvent({
   sourceStatus = "projected_annual",
   tags = [],
 }) {
+  const slug = slugify(title);
+  const override = imageOverrides[slug] ?? {};
   const finalCategory = category ?? eventCategory(title);
-  const finalImage = coverImage ?? pickImage(title, islandCode === "st_croix" ? img.stx : islandCode === "st_john" ? img.stj : img.stt);
+  const finalImage =
+    override.coverImage ??
+    coverImage ??
+    pickImage(title, islandCode === "st_croix" ? img.stx : islandCode === "st_john" ? img.stj : img.stt);
 
   return {
     title,
-    slug: slugify(title),
+    slug,
     recurrence,
     dayOfMonth,
     weekday,
