@@ -13,6 +13,7 @@ import {
 import { db } from "../firebase";
 import { cn } from "../lib/utils";
 import type { IslandCode, BeachDoc, PlaceDoc, EventDoc } from "../types";
+import { useSearchParams } from "react-router-dom";
 
 type ExploreItem = {
   id: string;
@@ -126,6 +127,7 @@ async function loadCollection(
     .map((d) => normalizeItem(d.id, d.data(), fallbackCategory))
     .filter(
       (item) =>
+        selectedIsland === "all" ||
         normalizeIsland(item.islandCode) === normalizeIsland(selectedIsland)
     );
 }
@@ -140,10 +142,17 @@ export default function Explore({
   onSelectListing: (listing: BeachDoc | PlaceDoc | EventDoc) => void;
 }) {
   const [items, setItems] = useState<ExploreItem[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+
+  const [searchParams] = useSearchParams();
+  const urlCategory = searchParams.get("category") ?? "all";
+  const [selectedCategory, setSelectedCategory] = useState(urlCategory);
+
+  useEffect(() => {
+    setSelectedCategory(searchParams.get("category") ?? "all");
+  }, [searchParams]);
 
   useEffect(() => {
     setSearchQuery(initialSearchQuery);
