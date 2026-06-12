@@ -264,12 +264,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-27",
     "endsAt": "YYYY-04-27",
-    "coverImage": "/images/events/carnival/carnival-queen-show.jpg",
+    "coverImage": "/images/events/carnival/queen-show.jpg",
     "gallery": [
-      "/images/events/carnival/carnival-queen-show.jpg"
+      "/images/events/carnival/queen-show.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/carnival-queen-show.jpg",
+    "imageSource": "/images/events/carnival/queen-show.jpg",
     "tags": [
       "event",
       "culture",
@@ -299,12 +299,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-28",
     "endsAt": "YYYY-04-28",
-    "coverImage": "/images/events/culture/carnival-queen.jpg",
+    "coverImage": "/images/events/carnival/prince-and-princess-show.jpg",
     "gallery": [
-      "/images/events/culture/carnival-queen.jpg"
+      "/images/events/carnival/prince-and-princess-show.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/culture/carnival-queen.jpg",
+    "imageSource": "/images/events/carnival/prince-and-princess-show.jpg",
     "tags": [
       "event",
       "culture",
@@ -334,12 +334,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-29",
     "endsAt": "YYYY-04-29",
-    "coverImage": "/images/events/culture/carnival-queen.jpg",
+    "coverImage": "/images/events/carnival/festival-princess.jpg",
     "gallery": [
-      "/images/events/culture/carnival-queen.jpg"
+      "/images/events/carnival/festival-princess.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/culture/carnival-queen.jpg",
+    "imageSource": "/images/events/carnival/festival-princess.jpg",
     "tags": [
       "event",
       "culture",
