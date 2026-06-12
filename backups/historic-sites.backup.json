@@ -1,0 +1,5102 @@
+[
+  {
+    "slug": "fort-christian",
+    "title": "Fort Christian",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3407892,
+      "lng": -64.92958949999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206789456,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJrZ_dLI0aBYwRxN8okumaCrU"
+  },
+  {
+    "slug": "fort-frederik",
+    "title": "Fort Frederik",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christiansvaern",
+    "title": "Fort Christiansvaern",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "annaberg-sugar-plantation",
+    "title": "Annaberg Sugar Plantation",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "estate-whim-plantation",
+    "title": "Estate Whim Plantation",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "catherineberg-ruins",
+    "title": "Catherineberg Ruins",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3448304,
+      "lng": -64.93378
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsa1Gmu0aBYwR9f9x8pOrgf4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site",
+    "title": "Cinnamon Bay Archaeological Site",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeological-site-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeological-site-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district",
+    "title": "Charlotte Amalie Historic District",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206791166,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "christiansted-historic-district",
+    "title": "Christiansted Historic District",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "frederiksted-historic-district",
+    "title": "Frederiksted Historic District",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781278332672,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christian-reference-site-11",
+    "title": "Fort Christian Reference Site 11",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 11 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-reference-site-11-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-reference-site-11-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3405796,
+      "lng": -64.9297139
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206791966,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJPyNr0_IaBYwRqgbYUN6hHE4"
+  },
+  {
+    "slug": "fort-frederik-reference-site-12",
+    "title": "Fort Frederik Reference Site 12",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 12 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-frederik-reference-site-12-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-frederik-reference-site-12-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206792223,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-13",
+    "title": "Fort Christiansvaern Reference Site 13",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 13 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christiansvaern-reference-site-13-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christiansvaern-reference-site-13-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206792470,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-14",
+    "title": "Annaberg Sugar Plantation Reference Site 14",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 14 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-14-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-14-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206792739,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-15",
+    "title": "Estate Whim Plantation Reference Site 15",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 15 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/estate-whim-plantation-reference-site-15-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/estate-whim-plantation-reference-site-15-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206792991,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-16",
+    "title": "Catherineberg Ruins Reference Site 16",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 16 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/catherineberg-ruins-reference-site-16-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/catherineberg-ruins-reference-site-16-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3448304,
+      "lng": -64.93378
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206793243,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsa1Gmu0aBYwR9f9x8pOrgf4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-17",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 17",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 17 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-17-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-17-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206793498,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-18",
+    "title": "Charlotte Amalie Historic District Reference Site 18",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 18 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-18-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-18-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206793760,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-19",
+    "title": "Christiansted Historic District Reference Site 19",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 19 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/christiansted-historic-district-reference-site-19-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/christiansted-historic-district-reference-site-19-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206794023,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-20",
+    "title": "Frederiksted Historic District Reference Site 20",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 20 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/frederiksted-historic-district-reference-site-20-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/frederiksted-historic-district-reference-site-20-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206794284,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christian-reference-site-21",
+    "title": "Fort Christian Reference Site 21",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 21 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-reference-site-21-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-reference-site-21-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3405796,
+      "lng": -64.9297139
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206794540,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJPyNr0_IaBYwRqgbYUN6hHE4"
+  },
+  {
+    "slug": "fort-frederik-reference-site-22",
+    "title": "Fort Frederik Reference Site 22",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 22 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-frederik-reference-site-22-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-frederik-reference-site-22-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206794800,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-23",
+    "title": "Fort Christiansvaern Reference Site 23",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 23 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christiansvaern-reference-site-23-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christiansvaern-reference-site-23-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206795051,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-24",
+    "title": "Annaberg Sugar Plantation Reference Site 24",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 24 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-24-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-24-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206795310,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-25",
+    "title": "Estate Whim Plantation Reference Site 25",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 25 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/estate-whim-plantation-reference-site-25-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/estate-whim-plantation-reference-site-25-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206795579,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-26",
+    "title": "Catherineberg Ruins Reference Site 26",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 26 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/catherineberg-ruins-reference-site-26-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/catherineberg-ruins-reference-site-26-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3448304,
+      "lng": -64.93378
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206795830,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsa1Gmu0aBYwR9f9x8pOrgf4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-27",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 27",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 27 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-27-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-27-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206796081,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-28",
+    "title": "Charlotte Amalie Historic District Reference Site 28",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 28 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-28-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-28-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206796339,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-29",
+    "title": "Christiansted Historic District Reference Site 29",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 29 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/christiansted-historic-district-reference-site-29-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/christiansted-historic-district-reference-site-29-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206796591,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-30",
+    "title": "Frederiksted Historic District Reference Site 30",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 30 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/frederiksted-historic-district-reference-site-30-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/frederiksted-historic-district-reference-site-30-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206796846,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christian-reference-site-31",
+    "title": "Fort Christian Reference Site 31",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 31 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-reference-site-31-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-reference-site-31-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3407892,
+      "lng": -64.92958949999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206797106,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJrZ_dLI0aBYwRxN8okumaCrU"
+  },
+  {
+    "slug": "fort-frederik-reference-site-32",
+    "title": "Fort Frederik Reference Site 32",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 32 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-frederik-reference-site-32-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-frederik-reference-site-32-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206797371,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-33",
+    "title": "Fort Christiansvaern Reference Site 33",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 33 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christiansvaern-reference-site-33-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christiansvaern-reference-site-33-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206797628,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-34",
+    "title": "Annaberg Sugar Plantation Reference Site 34",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 34 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-34-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-34-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206797898,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-35",
+    "title": "Estate Whim Plantation Reference Site 35",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 35 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/estate-whim-plantation-reference-site-35-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/estate-whim-plantation-reference-site-35-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206798156,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-36",
+    "title": "Catherineberg Ruins Reference Site 36",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 36 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/catherineberg-ruins-reference-site-36-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/catherineberg-ruins-reference-site-36-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3448304,
+      "lng": -64.93378
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206798410,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsa1Gmu0aBYwR9f9x8pOrgf4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-37",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 37",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 37 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-37-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-37-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206798677,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-38",
+    "title": "Charlotte Amalie Historic District Reference Site 38",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 38 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-38-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-38-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206798935,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-39",
+    "title": "Christiansted Historic District Reference Site 39",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 39 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/christiansted-historic-district-reference-site-39-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/christiansted-historic-district-reference-site-39-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206799198,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-40",
+    "title": "Frederiksted Historic District Reference Site 40",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 40 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/frederiksted-historic-district-reference-site-40-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/frederiksted-historic-district-reference-site-40-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206799458,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christian-reference-site-41",
+    "title": "Fort Christian Reference Site 41",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 41 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christian-reference-site-41-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christian-reference-site-41-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3405796,
+      "lng": -64.9297139
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206799711,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJPyNr0_IaBYwRqgbYUN6hHE4"
+  },
+  {
+    "slug": "fort-frederik-reference-site-42",
+    "title": "Fort Frederik Reference Site 42",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 42 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-frederik-reference-site-42-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-frederik-reference-site-42-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206799970,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-43",
+    "title": "Fort Christiansvaern Reference Site 43",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 43 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/fort-christiansvaern-reference-site-43-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/fort-christiansvaern-reference-site-43-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206800214,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-44",
+    "title": "Annaberg Sugar Plantation Reference Site 44",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 44 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-44-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/annaberg-sugar-plantation-reference-site-44-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206800476,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-45",
+    "title": "Estate Whim Plantation Reference Site 45",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 45 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/estate-whim-plantation-reference-site-45-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/estate-whim-plantation-reference-site-45-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206800728,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-46",
+    "title": "Catherineberg Ruins Reference Site 46",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 46 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/catherineberg-ruins-reference-site-46-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/catherineberg-ruins-reference-site-46-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3448304,
+      "lng": -64.93378
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206800970,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJsa1Gmu0aBYwR9f9x8pOrgf4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-47",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 47",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 47 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-47-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/cinnamon-bay-archaeological-site-reference-site-47-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206801226,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-48",
+    "title": "Charlotte Amalie Historic District Reference Site 48",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 48 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-48-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-reference-site-48-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3420283,
+      "lng": -64.93071259999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206801480,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJs32f6vIaBYwRbRBFKtvTrjQ"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-49",
+    "title": "Christiansted Historic District Reference Site 49",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 49 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/christiansted-historic-district-reference-site-49-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/christiansted-historic-district-reference-site-49-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206801749,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-50",
+    "title": "Frederiksted Historic District Reference Site 50",
+    "category": "historic-site",
+    "islandCode": "st_thomas",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 50 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st thomas.",
+    "coverImage": "/images/places/st-thomas/frederiksted-historic-district-reference-site-50-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/frederiksted-historic-district-reference-site-50-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380965,
+      "lng": -64.8940946
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206802004,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Thomas, 00802, USVI",
+    "googlePlaceId": "ChIJtzUG3IkaBYwR5Jf28eeAEl0"
+  },
+  {
+    "slug": "fort-christian-reference-site-51",
+    "title": "Fort Christian Reference Site 51",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 51 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christian-reference-site-51-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christian-reference-site-51-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206802269,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-frederik-reference-site-52",
+    "title": "Fort Frederik Reference Site 52",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 52 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-frederik-reference-site-52-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-frederik-reference-site-52-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206802529,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-53",
+    "title": "Fort Christiansvaern Reference Site 53",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 53 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christiansvaern-reference-site-53-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christiansvaern-reference-site-53-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206802783,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-54",
+    "title": "Annaberg Sugar Plantation Reference Site 54",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 54 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-reference-site-54-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-reference-site-54-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3627174,
+      "lng": -64.72973
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206803044,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "977C+34J, St John 00830, USVI",
+    "googlePlaceId": "ChIJC6W9uEUNBYwRTlDssTUCpec"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-55",
+    "title": "Estate Whim Plantation Reference Site 55",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 55 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/estate-whim-plantation-reference-site-55-1.jpg",
+    "gallery": [
+      "/images/places/st-john/estate-whim-plantation-reference-site-55-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206803313,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-56",
+    "title": "Catherineberg Ruins Reference Site 56",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 56 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-reference-site-56-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-reference-site-56-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3443018,
+      "lng": -64.76100559999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206803574,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI",
+    "googlePlaceId": "ChIJPSb2BocSBYwRyG2V3MbR36Q"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-57",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 57",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 57 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-57-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-57-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206803840,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-58",
+    "title": "Charlotte Amalie Historic District Reference Site 58",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 58 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/charlotte-amalie-historic-district-reference-site-58-1.jpg",
+    "gallery": [
+      "/images/places/st-john/charlotte-amalie-historic-district-reference-site-58-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206804100,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-59",
+    "title": "Christiansted Historic District Reference Site 59",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 59 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/christiansted-historic-district-reference-site-59-1.jpg",
+    "gallery": [
+      "/images/places/st-john/christiansted-historic-district-reference-site-59-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206804383,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-60",
+    "title": "Frederiksted Historic District Reference Site 60",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 60 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/frederiksted-historic-district-reference-site-60-1.jpg",
+    "gallery": [
+      "/images/places/st-john/frederiksted-historic-district-reference-site-60-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206804657,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christian-reference-site-61",
+    "title": "Fort Christian Reference Site 61",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 61 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christian-reference-site-61-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christian-reference-site-61-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206804924,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-frederik-reference-site-62",
+    "title": "Fort Frederik Reference Site 62",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 62 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-frederik-reference-site-62-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-frederik-reference-site-62-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206805182,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-63",
+    "title": "Fort Christiansvaern Reference Site 63",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 63 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christiansvaern-reference-site-63-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christiansvaern-reference-site-63-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206805447,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-64",
+    "title": "Annaberg Sugar Plantation Reference Site 64",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 64 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-reference-site-64-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-reference-site-64-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3627174,
+      "lng": -64.72973
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206805719,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "977C+34J, St John 00830, USVI",
+    "googlePlaceId": "ChIJC6W9uEUNBYwRTlDssTUCpec"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-65",
+    "title": "Estate Whim Plantation Reference Site 65",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 65 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/estate-whim-plantation-reference-site-65-1.jpg",
+    "gallery": [
+      "/images/places/st-john/estate-whim-plantation-reference-site-65-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206805972,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-66",
+    "title": "Catherineberg Ruins Reference Site 66",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 66 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-reference-site-66-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-reference-site-66-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3443018,
+      "lng": -64.76100559999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206806235,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI",
+    "googlePlaceId": "ChIJPSb2BocSBYwRyG2V3MbR36Q"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-67",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 67",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 67 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-67-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-67-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206806493,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-68",
+    "title": "Charlotte Amalie Historic District Reference Site 68",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 68 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/charlotte-amalie-historic-district-reference-site-68-1.jpg",
+    "gallery": [
+      "/images/places/st-john/charlotte-amalie-historic-district-reference-site-68-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206806762,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-69",
+    "title": "Christiansted Historic District Reference Site 69",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 69 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/christiansted-historic-district-reference-site-69-1.jpg",
+    "gallery": [
+      "/images/places/st-john/christiansted-historic-district-reference-site-69-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206807031,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-70",
+    "title": "Frederiksted Historic District Reference Site 70",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 70 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/frederiksted-historic-district-reference-site-70-1.jpg",
+    "gallery": [
+      "/images/places/st-john/frederiksted-historic-district-reference-site-70-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206807298,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christian-reference-site-71",
+    "title": "Fort Christian Reference Site 71",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 71 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christian-reference-site-71-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christian-reference-site-71-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206807576,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-frederik-reference-site-72",
+    "title": "Fort Frederik Reference Site 72",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 72 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-frederik-reference-site-72-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-frederik-reference-site-72-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206807840,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-73",
+    "title": "Fort Christiansvaern Reference Site 73",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 73 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christiansvaern-reference-site-73-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christiansvaern-reference-site-73-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206808097,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-74",
+    "title": "Annaberg Sugar Plantation Reference Site 74",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 74 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-reference-site-74-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-reference-site-74-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3627174,
+      "lng": -64.72973
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206808383,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "977C+34J, St John 00830, USVI",
+    "googlePlaceId": "ChIJC6W9uEUNBYwRTlDssTUCpec"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-75",
+    "title": "Estate Whim Plantation Reference Site 75",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 75 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/estate-whim-plantation-reference-site-75-1.jpg",
+    "gallery": [
+      "/images/places/st-john/estate-whim-plantation-reference-site-75-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206808643,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-76",
+    "title": "Catherineberg Ruins Reference Site 76",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 76 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-reference-site-76-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-reference-site-76-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3443018,
+      "lng": -64.76100559999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206808890,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI",
+    "googlePlaceId": "ChIJPSb2BocSBYwRyG2V3MbR36Q"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-77",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 77",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 77 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-77-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-77-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206809151,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-78",
+    "title": "Charlotte Amalie Historic District Reference Site 78",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 78 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/charlotte-amalie-historic-district-reference-site-78-1.jpg",
+    "gallery": [
+      "/images/places/st-john/charlotte-amalie-historic-district-reference-site-78-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206809420,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-79",
+    "title": "Christiansted Historic District Reference Site 79",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 79 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/christiansted-historic-district-reference-site-79-1.jpg",
+    "gallery": [
+      "/images/places/st-john/christiansted-historic-district-reference-site-79-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206809680,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-80",
+    "title": "Frederiksted Historic District Reference Site 80",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 80 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/frederiksted-historic-district-reference-site-80-1.jpg",
+    "gallery": [
+      "/images/places/st-john/frederiksted-historic-district-reference-site-80-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206809956,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christian-reference-site-81",
+    "title": "Fort Christian Reference Site 81",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 81 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christian-reference-site-81-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christian-reference-site-81-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206810222,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-frederik-reference-site-82",
+    "title": "Fort Frederik Reference Site 82",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 82 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-frederik-reference-site-82-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-frederik-reference-site-82-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206810485,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-83",
+    "title": "Fort Christiansvaern Reference Site 83",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 83 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/fort-christiansvaern-reference-site-83-1.jpg",
+    "gallery": [
+      "/images/places/st-john/fort-christiansvaern-reference-site-83-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206810748,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-84",
+    "title": "Annaberg Sugar Plantation Reference Site 84",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 84 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/annaberg-sugar-plantation-reference-site-84-1.jpg",
+    "gallery": [
+      "/images/places/st-john/annaberg-sugar-plantation-reference-site-84-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3627174,
+      "lng": -64.72973
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206811015,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "977C+34J, St John 00830, USVI",
+    "googlePlaceId": "ChIJC6W9uEUNBYwRTlDssTUCpec"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-85",
+    "title": "Estate Whim Plantation Reference Site 85",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 85 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/estate-whim-plantation-reference-site-85-1.jpg",
+    "gallery": [
+      "/images/places/st-john/estate-whim-plantation-reference-site-85-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206811266,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-86",
+    "title": "Catherineberg Ruins Reference Site 86",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 86 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/catherineberg-ruins-reference-site-86-1.jpg",
+    "gallery": [
+      "/images/places/st-john/catherineberg-ruins-reference-site-86-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3443018,
+      "lng": -64.76100559999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206811525,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI",
+    "googlePlaceId": "ChIJPSb2BocSBYwRyG2V3MbR36Q"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-87",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 87",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 87 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-87-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-archaeological-site-reference-site-87-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3548967,
+      "lng": -64.7568756
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206811792,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cinnamon Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-88",
+    "title": "Charlotte Amalie Historic District Reference Site 88",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 88 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/charlotte-amalie-historic-district-reference-site-88-1.jpg",
+    "gallery": [
+      "/images/places/st-john/charlotte-amalie-historic-district-reference-site-88-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206812061,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-89",
+    "title": "Christiansted Historic District Reference Site 89",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 89 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/christiansted-historic-district-reference-site-89-1.jpg",
+    "gallery": [
+      "/images/places/st-john/christiansted-historic-district-reference-site-89-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206812322,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-90",
+    "title": "Frederiksted Historic District Reference Site 90",
+    "category": "historic-site",
+    "islandCode": "st_john",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 90 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st john.",
+    "coverImage": "/images/places/st-john/frederiksted-historic-district-reference-site-90-1.jpg",
+    "gallery": [
+      "/images/places/st-john/frederiksted-historic-district-reference-site-90-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3368114,
+      "lng": -64.7280952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206812578,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St John, 00830, USVI",
+    "googlePlaceId": "ChIJlXiAd5ASBYwRmmnTJdolT7U"
+  },
+  {
+    "slug": "fort-christian-reference-site-91",
+    "title": "Fort Christian Reference Site 91",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 91 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-91-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-91-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206812831,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-92",
+    "title": "Fort Frederik Reference Site 92",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 92 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-92-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-92-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206813076,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-93",
+    "title": "Fort Christiansvaern Reference Site 93",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 93 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-93-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-93-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206813318,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-94",
+    "title": "Annaberg Sugar Plantation Reference Site 94",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 94 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-94-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-94-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206813562,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-95",
+    "title": "Estate Whim Plantation Reference Site 95",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 95 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-95-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-95-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206813810,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-96",
+    "title": "Catherineberg Ruins Reference Site 96",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 96 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-96-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-96-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206814052,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-97",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 97",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 97 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-97-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-97-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206814299,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-98",
+    "title": "Charlotte Amalie Historic District Reference Site 98",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 98 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-98-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-98-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206814548,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-99",
+    "title": "Christiansted Historic District Reference Site 99",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 99 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-99-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-99-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206814787,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-100",
+    "title": "Frederiksted Historic District Reference Site 100",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 100 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-100-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-100-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206815053,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  },
+  {
+    "slug": "fort-christian-reference-site-101",
+    "title": "Fort Christian Reference Site 101",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 101 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-101-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-101-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206815297,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-102",
+    "title": "Fort Frederik Reference Site 102",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 102 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-102-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-102-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206815549,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-103",
+    "title": "Fort Christiansvaern Reference Site 103",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 103 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-103-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-103-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206815797,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-104",
+    "title": "Annaberg Sugar Plantation Reference Site 104",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 104 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-104-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-104-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206816038,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-105",
+    "title": "Estate Whim Plantation Reference Site 105",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 105 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-105-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-105-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206816283,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-106",
+    "title": "Catherineberg Ruins Reference Site 106",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 106 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-106-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-106-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7706825,
+      "lng": -64.8123059
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206816537,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Ruins, La Vallee, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJE-A54XXMGowR8k-vpVHlQN4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-107",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 107",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 107 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-107-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-107-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206816784,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-108",
+    "title": "Charlotte Amalie Historic District Reference Site 108",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 108 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-108-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-108-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206817039,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-109",
+    "title": "Christiansted Historic District Reference Site 109",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 109 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-109-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-109-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206817283,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-110",
+    "title": "Frederiksted Historic District Reference Site 110",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 110 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-110-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-110-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206817528,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  },
+  {
+    "slug": "fort-christian-reference-site-111",
+    "title": "Fort Christian Reference Site 111",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 111 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-111-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-111-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206817773,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-112",
+    "title": "Fort Frederik Reference Site 112",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 112 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-112-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-112-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206818022,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-113",
+    "title": "Fort Christiansvaern Reference Site 113",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 113 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-113-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-113-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206818256,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-114",
+    "title": "Annaberg Sugar Plantation Reference Site 114",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 114 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-114-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-114-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206818504,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-115",
+    "title": "Estate Whim Plantation Reference Site 115",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 115 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-115-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-115-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206818751,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-116",
+    "title": "Catherineberg Ruins Reference Site 116",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 116 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-116-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-116-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206818990,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-117",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 117",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 117 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-117-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-117-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206819237,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-118",
+    "title": "Charlotte Amalie Historic District Reference Site 118",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 118 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-118-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-118-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206819490,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-119",
+    "title": "Christiansted Historic District Reference Site 119",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 119 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-119-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-119-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206819728,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-120",
+    "title": "Frederiksted Historic District Reference Site 120",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 120 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-120-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-120-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206819973,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  },
+  {
+    "slug": "fort-christian-reference-site-121",
+    "title": "Fort Christian Reference Site 121",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 121 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-121-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-121-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206820220,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-122",
+    "title": "Fort Frederik Reference Site 122",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 122 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-122-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-122-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206820459,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-123",
+    "title": "Fort Christiansvaern Reference Site 123",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 123 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-123-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-123-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206820704,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-124",
+    "title": "Annaberg Sugar Plantation Reference Site 124",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 124 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-124-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-124-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206820946,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-125",
+    "title": "Estate Whim Plantation Reference Site 125",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 125 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-125-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-125-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206821173,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-126",
+    "title": "Catherineberg Ruins Reference Site 126",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 126 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-126-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-126-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7706825,
+      "lng": -64.8123059
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206821404,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Ruins, La Vallee, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJE-A54XXMGowR8k-vpVHlQN4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-127",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 127",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 127 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-127-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-127-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206821658,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-128",
+    "title": "Charlotte Amalie Historic District Reference Site 128",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 128 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-128-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-128-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206821912,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-129",
+    "title": "Christiansted Historic District Reference Site 129",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 129 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-129-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-129-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206822155,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-130",
+    "title": "Frederiksted Historic District Reference Site 130",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 130 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-130-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-130-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206822396,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  },
+  {
+    "slug": "fort-christian-reference-site-131",
+    "title": "Fort Christian Reference Site 131",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 131 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-131-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-131-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206822641,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-132",
+    "title": "Fort Frederik Reference Site 132",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 132 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-132-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-132-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206822893,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-133",
+    "title": "Fort Christiansvaern Reference Site 133",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 133 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-133-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-133-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206823144,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-134",
+    "title": "Annaberg Sugar Plantation Reference Site 134",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 134 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-134-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-134-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206823392,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-135",
+    "title": "Estate Whim Plantation Reference Site 135",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 135 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-135-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-135-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206823632,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-136",
+    "title": "Catherineberg Ruins Reference Site 136",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 136 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-136-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-136-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7706825,
+      "lng": -64.8123059
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206823871,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Ruins, La Vallee, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJE-A54XXMGowR8k-vpVHlQN4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-137",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 137",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 137 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-137-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-137-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206824131,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-138",
+    "title": "Charlotte Amalie Historic District Reference Site 138",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 138 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-138-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-138-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206824389,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-139",
+    "title": "Christiansted Historic District Reference Site 139",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 139 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-139-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-139-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206824636,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-140",
+    "title": "Frederiksted Historic District Reference Site 140",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 140 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-140-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-140-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206824875,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  },
+  {
+    "slug": "fort-christian-reference-site-141",
+    "title": "Fort Christian Reference Site 141",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christian Reference Site 141 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christian-reference-site-141-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christian-reference-site-141-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206825141,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "fort-frederik-reference-site-142",
+    "title": "Fort Frederik Reference Site 142",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Frederik Reference Site 142 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-frederik-reference-site-142-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-frederik-reference-site-142-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7152365,
+      "lng": -64.8835613
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206825385,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0xUvcErOGowRQT2XjQsZc4M"
+  },
+  {
+    "slug": "fort-christiansvaern-reference-site-143",
+    "title": "Fort Christiansvaern Reference Site 143",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Fort Christiansvaern Reference Site 143 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/fort-christiansvaern-reference-site-143-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/fort-christiansvaern-reference-site-143-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7469456,
+      "lng": -64.70178539999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206825626,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJjf6Flu21GowR_Wgdpo-EU9s"
+  },
+  {
+    "slug": "annaberg-sugar-plantation-reference-site-144",
+    "title": "Annaberg Sugar Plantation Reference Site 144",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Annaberg Sugar Plantation Reference Site 144 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/annaberg-sugar-plantation-reference-site-144-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaberg-sugar-plantation-reference-site-144-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7116411,
+      "lng": -64.77431190000001
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206825868,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Annaberg, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmd7B6A3JGowRhV3aAjj2cfU"
+  },
+  {
+    "slug": "estate-whim-plantation-reference-site-145",
+    "title": "Estate Whim Plantation Reference Site 145",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Estate Whim Plantation Reference Site 145 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/estate-whim-plantation-reference-site-145-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/estate-whim-plantation-reference-site-145-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6995602,
+      "lng": -64.8606353
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206826112,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJVcs5l6nPGowR-cOkKZCQnwg"
+  },
+  {
+    "slug": "catherineberg-ruins-reference-site-146",
+    "title": "Catherineberg Ruins Reference Site 146",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Catherineberg Ruins Reference Site 146 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/catherineberg-ruins-reference-site-146-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/catherineberg-ruins-reference-site-146-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7706825,
+      "lng": -64.8123059
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206826356,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Ruins, La Vallee, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJE-A54XXMGowR8k-vpVHlQN4"
+  },
+  {
+    "slug": "cinnamon-bay-archaeological-site-reference-site-147",
+    "title": "Cinnamon Bay Archaeological Site Reference Site 147",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Cinnamon Bay Archaeological Site Reference Site 147 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-147-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/cinnamon-bay-archaeological-site-reference-site-147-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206826603,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "charlotte-amalie-historic-district-reference-site-148",
+    "title": "Charlotte Amalie Historic District Reference Site 148",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Charlotte Amalie Historic District Reference Site 148 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-148-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/charlotte-amalie-historic-district-reference-site-148-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7245968,
+      "lng": -64.83479919999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206826857,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "St Croix, USVI",
+    "googlePlaceId": "ChIJ-4bpuRjKGowRXFqImZYbLyI"
+  },
+  {
+    "slug": "christiansted-historic-district-reference-site-149",
+    "title": "Christiansted Historic District Reference Site 149",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Christiansted Historic District Reference Site 149 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-historic-district-reference-site-149-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-historic-district-reference-site-149-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7473007,
+      "lng": -64.70230339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206827098,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJmUQY3O-1GowRJl0g4goJuPE"
+  },
+  {
+    "slug": "frederiksted-historic-district-reference-site-150",
+    "title": "Frederiksted Historic District Reference Site 150",
+    "category": "historic-site",
+    "islandCode": "st_croix",
+    "areaSlug": "historic-site",
+    "description": "Frederiksted Historic District Reference Site 150 is a historic site destination in the U.S. Virgin Islands.",
+    "shortDescription": "historic site on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-historic-district-reference-site-150-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-historic-district-reference-site-150-1.jpg"
+    ],
+    "tags": [
+      "historic-site",
+      "historic-site",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7108756,
+      "lng": -64.8831794
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206827348,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJz_MZcErOGowR7tfIu6rvIqk"
+  }
+]

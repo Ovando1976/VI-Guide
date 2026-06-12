@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "havensight-cruise-port",
+    "title": "Havensight Cruise Port",
+    "category": "transport",
+    "islandCode": "st_thomas",
+    "areaSlug": "cruise-port",
+    "description": "Havensight Cruise Port is a transport destination in the U.S. Virgin Islands.",
+    "shortDescription": "transport on st thomas.",
+    "coverImage": "/images/places/st-thomas/havensight-cruise-port-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/havensight-cruise-port-1.jpg"
+    ],
+    "tags": [
+      "transport",
+      "cruise-port",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.331695,
+      "lng": -64.9241385
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206778094,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83JG+M8H, Charlotte Amalie East, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJjb-pAooaBYwRNt4A3KDDQno"
+  },
+  {
+    "slug": "crown-bay-cruise-port",
+    "title": "Crown Bay Cruise Port",
+    "category": "transport",
+    "islandCode": "st_thomas",
+    "areaSlug": "cruise-port",
+    "description": "Crown Bay Cruise Port is a transport destination in the U.S. Virgin Islands.",
+    "shortDescription": "transport on st thomas.",
+    "coverImage": "/images/places/st-thomas/crown-bay-cruise-port-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/crown-bay-cruise-port-1.jpg"
+    ],
+    "tags": [
+      "transport",
+      "cruise-port",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.332271,
+      "lng": -64.9549498
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206778270,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI",
+    "googlePlaceId": "ChIJgw-m6KobBYwRRkojUPF8tl4"
+  },
+  {
+    "slug": "frederiksted-cruise-pier",
+    "title": "Frederiksted Cruise Pier",
+    "category": "transport",
+    "islandCode": "st_croix",
+    "areaSlug": "cruise-port",
+    "description": "Frederiksted Cruise Pier is a transport destination in the U.S. Virgin Islands.",
+    "shortDescription": "transport on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-cruise-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-cruise-pier-1.jpg"
+    ],
+    "tags": [
+      "transport",
+      "cruise-port",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7122979,
+      "lng": -64.8818053
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206778507,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Frederiksted, St Croix, USVI",
+    "googlePlaceId": "ChIJC5KRmDXOGowR_Pc28d6Ka5k"
+  },
+  {
+    "slug": "christiansted-harbor-tender-dock",
+    "title": "Christiansted Harbor Tender Dock",
+    "category": "transport",
+    "islandCode": "st_croix",
+    "areaSlug": "cruise-port",
+    "description": "Christiansted Harbor Tender Dock is a transport destination in the U.S. Virgin Islands.",
+    "shortDescription": "transport on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-harbor-tender-dock-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-harbor-tender-dock-1.jpg"
+    ],
+    "tags": [
+      "transport",
+      "cruise-port",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.75050597080127,
+      "lng": -64.70438844888334
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206778757,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Christiansted Harbor, Virgin Islands, St Croix, USVI",
+    "googlePlaceId": "ChIJ8SkcppK1GowRtkM9RFh3aBA"
+  }
+]

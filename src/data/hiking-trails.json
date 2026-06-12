@@ -1,0 +1,580 @@
+[
+  {
+    "slug": "reef-bay-trail",
+    "title": "Reef Bay Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Reef Bay Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/reef-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/reef-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3352834,
+      "lng": -64.7397429
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206785455,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Reef Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJEwKsUZYSBYwREMTAoINFDDs"
+  },
+  {
+    "slug": "ram-head-trail",
+    "title": "Ram Head Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Ram Head Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/ram-head-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/ram-head-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3040769,
+      "lng": -64.7035344
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206785630,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Ram Head Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJ7QJKgihtBYwRwj6JM0DdzJg"
+  },
+  {
+    "slug": "lind-point-trail",
+    "title": "Lind Point Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Lind Point Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/lind-point-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/lind-point-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3371495,
+      "lng": -64.7929643
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206785893,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Lind Point Trail, Caneel Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJ3eOwgxMSBYwRu6O5UU7YlZQ"
+  },
+  {
+    "slug": "cinnamon-bay-trail",
+    "title": "Cinnamon Bay Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Cinnamon Bay Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/cinnamon-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cinnamon-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3492583,
+      "lng": -64.7502449
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206786154,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "86XX+PW2, St John 00830, USVI",
+    "googlePlaceId": "ChIJR1TE_pwSBYwR8UwKn_fiXuY"
+  },
+  {
+    "slug": "johnny-horn-trail",
+    "title": "Johnny Horn Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Johnny Horn Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/johnny-horn-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/johnny-horn-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3571574,
+      "lng": -64.7134978
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206786330,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Johnny Horn Trl, St John 00830, USVI",
+    "googlePlaceId": "ChIJjWf4mqtyBYwRsI89JfFF1CQ"
+  },
+  {
+    "slug": "leinster-bay-trail",
+    "title": "Leinster Bay Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Leinster Bay Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/leinster-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/leinster-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3631894,
+      "lng": -64.7249799
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206786505,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Leinster Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJfaMm0UgNBYwRfpOMWNmOJb8"
+  },
+  {
+    "slug": "brown-bay-trail",
+    "title": "Brown Bay Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Brown Bay Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/brown-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/brown-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3600431,
+      "lng": -64.7066435
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206786777,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Brown Bay Trl, St John 00830, USVI",
+    "googlePlaceId": "ChIJHdvR-LByBYwRb9JRk6Pmxkc"
+  },
+  {
+    "slug": "bordeaux-mountain-trail",
+    "title": "Bordeaux Mountain Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Bordeaux Mountain Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/bordeaux-mountain-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/bordeaux-mountain-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3327275,
+      "lng": -64.7243261
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206787053,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "87MG+37V, Lameshur Complex, St John 00830, USVI",
+    "googlePlaceId": "ChIJM9QfZ7YSBYwRJfaeWdeXaQQ"
+  },
+  {
+    "slug": "peace-hill-trail",
+    "title": "Peace Hill Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Peace Hill Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/peace-hill-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/peace-hill-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3513972,
+      "lng": -64.777108
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206787314,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Peace Hl Trl, Dennis Bay/ Hawknest, St John 00830, USVI",
+    "googlePlaceId": "ChIJ30-HEncSBYwR_EdcVsizpP0"
+  },
+  {
+    "slug": "salt-pond-trail",
+    "title": "Salt Pond Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_john",
+    "areaSlug": "hiking",
+    "description": "Salt Pond Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st john.",
+    "coverImage": "/images/places/st-john/salt-pond-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-john/salt-pond-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3099374,
+      "lng": -64.7066103
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206787493,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Saltpond Bay Trail, St John 00830, USVI",
+    "googlePlaceId": "ChIJyz8FzC9tBYwRea8HtXUr-gY"
+  },
+  {
+    "slug": "jack-and-isaac-bay-trail",
+    "title": "Jack and Isaac Bay Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_croix",
+    "areaSlug": "hiking",
+    "description": "Jack and Isaac Bay Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st croix.",
+    "coverImage": "/images/places/st-croix/jack-and-isaac-bay-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/jack-and-isaac-bay-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7551875,
+      "lng": -64.5695625
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206787737,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Jack and Isaac Bay Preserve, St. Croix, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJL6uZHrazGowRzxFwnd_movw"
+  },
+  {
+    "slug": "annaly-bay-tide-pools-trail",
+    "title": "Annaly Bay Tide Pools Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_croix",
+    "areaSlug": "hiking",
+    "description": "Annaly Bay Tide Pools Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st croix.",
+    "coverImage": "/images/places/st-croix/annaly-bay-tide-pools-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/annaly-bay-tide-pools-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7637898,
+      "lng": -64.8454892
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206787975,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Q573+GR6, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ739HFzrMGowR9-9SwDCCdXg"
+  },
+  {
+    "slug": "hams-bluff-lighthouse-trail",
+    "title": "Ham's Bluff Lighthouse Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_croix",
+    "areaSlug": "hiking",
+    "description": "Ham's Bluff Lighthouse Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st croix.",
+    "coverImage": "/images/places/st-croix/hams-bluff-lighthouse-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/hams-bluff-lighthouse-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7691667,
+      "lng": -64.8708611
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206788223,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Northwest St Croix 00840, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJa6geGcbNGowRM99MNDqk7Fc"
+  },
+  {
+    "slug": "sandy-point-nature-trail",
+    "title": "Sandy Point Nature Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_croix",
+    "areaSlug": "hiking",
+    "description": "Sandy Point Nature Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st croix.",
+    "coverImage": "/images/places/st-croix/sandy-point-nature-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/sandy-point-nature-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.69192,
+      "lng": -64.8804241
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206788485,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Sandy Point, Frederiksted, St Croix 00840, USVI",
+    "googlePlaceId": "ChIJ0W63Nr_PGowRobthXrsbR_U"
+  },
+  {
+    "slug": "magens-bay-discovery-trail",
+    "title": "Magens Bay Discovery Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_thomas",
+    "areaSlug": "hiking",
+    "description": "Magens Bay Discovery Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st thomas.",
+    "coverImage": "/images/places/st-thomas/magens-bay-discovery-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/magens-bay-discovery-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3612418,
+      "lng": -64.9241171
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206788745,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Magens Bay Beach, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJ-4PsorAaBYwR87YtmyPj-dc"
+  },
+  {
+    "slug": "mermaids-chair-trail",
+    "title": "Mermaid's Chair Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_thomas",
+    "areaSlug": "hiking",
+    "description": "Mermaid's Chair Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st thomas.",
+    "coverImage": "/images/places/st-thomas/mermaids-chair-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/mermaids-chair-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3503061,
+      "lng": -65.0372404
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206789000,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Mermaid's Chair, Botany Bay, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJ-fW1hPkcBYwRSn1Pbc1Iam0"
+  },
+  {
+    "slug": "water-island-fort-segarra-trail",
+    "title": "Water Island Fort Segarra Trail",
+    "category": "hiking-trail",
+    "islandCode": "st_thomas",
+    "areaSlug": "hiking",
+    "description": "Water Island Fort Segarra Trail is a hiking trail destination in the U.S. Virgin Islands.",
+    "shortDescription": "hiking trail on st thomas.",
+    "coverImage": "/images/places/st-thomas/water-island-fort-segarra-trail-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/water-island-fort-segarra-trail-1.jpg"
+    ],
+    "tags": [
+      "hiking-trail",
+      "hiking",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3077328,
+      "lng": -64.95696339999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206789276,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "Water Island, 825V+36V, Charlotte Amalie West, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJe-DV66obBYwRwSj2_8bagXw"
+  }
+]
