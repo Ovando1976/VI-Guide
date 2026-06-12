@@ -248,15 +248,6 @@ function AppContent() {
               />
             }
           />
-          <Route
-            path="/"
-            element={
-              <VisitorHome
-                selectedIslandLabel="St. Thomas"
-                onNavigate={navigate}
-              />
-            }
-          />
 
           <Route
             path="/explore"
@@ -439,32 +430,39 @@ function HomeScreen({
               <HomeAction
                 icon={Waves}
                 label="Beaches"
-                onClick={() => onNavigate("/beaches")}
+                onClick={() =>
+                  onNavigate(`/explore?category=beach&island=${selectedIsland}`)
+                }
               />
+
               <HomeAction
                 icon={Map}
                 label="Live Map"
                 onClick={() => onNavigate("/map")}
               />
+
               <HomeAction
                 icon={Ship}
                 label="Cruise"
                 onClick={() => onNavigate("/cruise")}
               />
+
               <HomeAction
                 icon={CalendarDays}
                 label="Events"
                 onClick={() => onNavigate("/events")}
               />
+
               <HomeAction
                 icon={Sparkles}
                 label="AI Concierge"
                 onClick={() => onNavigate("/concierge")}
               />
+
               <HomeAction
                 icon={Compass}
                 label="Explore"
-                onClick={() => onNavigate("/explore")}
+                onClick={() => onNavigate(`/explore?island=${selectedIsland}`)}
               />
 
               {isAdmin && (
