@@ -27,18 +27,6 @@
     "coverImage": "/images/events/carnival/panorama.jpg",
     "imageStatus": "verified"
   },
-  "st-thomas-carnival-queen-show": {
-    "coverImage": "/images/events/carnival/carnival-queen-show.jpg",
-    "imageStatus": "verified"
-  },
-  "st-thomas-carnival-prince-and-princess-show": {
-    "coverImage": "/images/events/culture/carnival-queen.jpg",
-    "imageStatus": "verified"
-  },
-  "st-thomas-carnival-festival-princess": {
-    "coverImage": "/images/events/culture/carnival-queen.jpg",
-    "imageStatus": "verified"
-  },
 
   "paradise-jam": {
     "coverImage": "/images/events/sports/paradise-jam.jpg",
@@ -126,5 +114,30 @@
   "frederiksted-freedom-history-walk": {
     "coverImage": "/images/events/culture/frederiksted-freedom-walk.jpg",
     "imageStatus": "verified"
+  },
+    "st-thomas-carnival-prince-and-princess-show": {
+      "coverImage": "/images/events/carnival/prince-and-princess-show.jpg",
+      "imageStatus": "verified"
+    },
+    "st-thomas-carnival-festival-princess": {
+      "coverImage": "/images/events/carnival/festival-princess.jpg",
+      "imageStatus": "verified"
+    },
+    "st-thomas-carnival-queen-show": {
+      "coverImage": "/images/events/carnival/queen-show.jpg",
+      "imageStatus": "verified"
+    },
+    "christmas-on-main-street": {
+      "coverImage": "/images/events/holiday/christmas-on-main-street.jpg",
+      "imageStatus": "verified"
+    },
+    "lighted-boat-parade": {
+      "coverImage": "/images/events/holiday/lighted-boat-parade.jpg",
+      "imageStatus": "verified"
+    },
+    "virgin-islands-charter-yacht-show": {
+      "coverImage": "/images/events/marine/charter-yacht-show.jpg",
+      "imageStatus": "verified"
+    }
   }
-}
+
