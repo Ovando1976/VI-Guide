@@ -26,6 +26,8 @@ type ExploreItem = {
   startAt?: Date;
 };
 
+type IslandFilter = IslandCode | "all";
+
 const CATEGORIES = [
   { id: "all", label: "Discovery", icon: Compass },
   { id: "beach", label: "Beaches", icon: Waves },
@@ -36,6 +38,11 @@ const CATEGORIES = [
   { id: "event", label: "Events", icon: CalendarIcon },
   { id: "history", label: "History", icon: Landmark },
 ];
+function normalizeIsland(value?: string) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replaceAll("-", "_");
+}
 
 function getCoordinates(data: any) {
   const lat =
@@ -86,32 +93,41 @@ function normalizeItem(
 
 async function loadCollection(
   collectionName: string,
-  selectedIsland: IslandCode,
+  selectedIsland: IslandFilter,
   fallbackCategory: string
 ) {
   const ref = collection(db, collectionName);
 
-  try {
-    const q = query(ref, where("islandCode", "==", selectedIsland), limit(100));
-    const snap = await getDocs(q);
+  if (selectedIsland !== "all") {
+    try {
+      const q = query(
+        ref,
+        where("islandCode", "==", selectedIsland),
+        limit(100)
+      );
+      const snap = await getDocs(q);
 
-    if (!snap.empty) {
-      return snap.docs.map((d) =>
-        normalizeItem(d.id, d.data(), fallbackCategory)
+      if (!snap.empty) {
+        return snap.docs.map((d) =>
+          normalizeItem(d.id, d.data(), fallbackCategory)
+        );
+      }
+    } catch (error) {
+      console.warn(
+        `Filtered ${collectionName} query failed, falling back`,
+        error
       );
     }
-  } catch (error) {
-    console.warn(
-      `Filtered ${collectionName} query failed, falling back`,
-      error
-    );
   }
 
   const snap = await getDocs(query(ref, limit(100)));
 
   return snap.docs
     .map((d) => normalizeItem(d.id, d.data(), fallbackCategory))
-    .filter((item) => item.islandCode === selectedIsland);
+    .filter(
+      (item) =>
+        normalizeIsland(item.islandCode) === normalizeIsland(selectedIsland)
+    );
 }
 
 export default function Explore({
@@ -119,7 +135,7 @@ export default function Explore({
   initialSearchQuery = "",
   onSelectListing,
 }: {
-  selectedIsland: IslandCode;
+  selectedIsland: IslandFilter;
   initialSearchQuery?: string;
   onSelectListing: (listing: BeachDoc | PlaceDoc | EventDoc) => void;
 }) {
@@ -171,20 +187,25 @@ export default function Explore({
   }, [selectedIsland]);
 
   const filteredItems = useMemo(() => {
-    const queryText = searchQuery.toLowerCase();
+    const queryText = searchQuery.toLowerCase().trim();
 
     return items.filter((item) => {
+      const islandMatch =
+        selectedIsland === "all" ||
+        normalizeIsland(item.islandCode) === normalizeIsland(selectedIsland);
+
       const categoryMatch =
         selectedCategory === "all" || item.category === selectedCategory;
 
       const searchMatch =
+        !queryText ||
         item.title.toLowerCase().includes(queryText) ||
         item.description.toLowerCase().includes(queryText) ||
         item.category?.toLowerCase().includes(queryText);
 
-      return categoryMatch && searchMatch;
+      return islandMatch && categoryMatch && searchMatch;
     });
-  }, [items, selectedCategory, searchQuery]);
+  }, [items, selectedIsland, selectedCategory, searchQuery]);
 
   return (
     <div className="pb-24">
