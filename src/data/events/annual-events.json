@@ -19,12 +19,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-26",
     "endsAt": "YYYY-05-02",
-    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "coverImage": "/images/events/carnival/st-thomas-carnival.jpg",
     "gallery": [
-      "/images/events/carnival/parade-1.jpg"
+      "/images/events/carnival/st-thomas-carnival.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "imageSource": "/images/events/carnival/st-thomas-carnival.jpg",
     "tags": [
       "event",
       "culture",
@@ -123,12 +123,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-02-14",
     "endsAt": "YYYY-02-16",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/agrifest.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/agrifest.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/agrifest.jpg",
     "tags": [
       "event",
       "culture",
@@ -158,12 +158,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-18",
     "endsAt": "YYYY-04-18",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/taste-of-st-croix.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/taste-of-st-croix.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/taste-of-st-croix.jpg",
     "tags": [
       "event",
       "food",
@@ -192,12 +192,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-07-07",
     "endsAt": "YYYY-07-07",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/mango-melee.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/mango-melee.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/mango-melee.jpg",
     "tags": [
       "event",
       "food",
@@ -531,12 +531,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-08-17",
     "endsAt": "YYYY-08-17",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/texas-chili-cookoff.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/texas-chili-cookoff.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/texas-chili-cookoff.jpg",
     "tags": [
       "event",
       "food",
@@ -597,12 +597,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-12-14",
     "endsAt": "YYYY-12-14",
-    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "coverImage": "/images/events/food/coquito-festival.jpg",
     "gallery": [
-      "/images/events/carnival/food-fair.jpg"
+      "/images/events/food/coquito-festival.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "imageSource": "/images/events/food/coquito-festival.jpg",
     "tags": [
       "event",
       "food",

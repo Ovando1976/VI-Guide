@@ -159,12 +159,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-24",
     "endsAt": "YYYY-04-24",
-    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "coverImage": "/images/events/carnival/adult-parade.jpg",
     "gallery": [
-      "/images/events/carnival/parade-1.jpg"
+      "/images/events/carnival/adult-parade.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "imageSource": "/images/events/carnival/adult-parade.jpg",
     "tags": [
       "event",
       "culture",
@@ -264,12 +264,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-27",
     "endsAt": "YYYY-04-27",
-    "coverImage": "/images/events/culture/carnival-queen.jpg",
+    "coverImage": "/images/events/carnival/carnival-queen-show.jpg",
     "gallery": [
-      "/images/events/culture/carnival-queen.jpg"
+      "/images/events/carnival/carnival-queen-show.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/culture/carnival-queen.jpg",
+    "imageSource": "/images/events/carnival/carnival-queen-show.jpg",
     "tags": [
       "event",
       "culture",
@@ -369,12 +369,12 @@
     "verifiedAt": "2026-06-12",
     "startsAt": "YYYY-04-30",
     "endsAt": "YYYY-04-30",
-    "coverImage": "/images/events/music/steel-pan-night.jpg",
+    "coverImage": "/images/events/carnival/panorama.jpg",
     "gallery": [
-      "/images/events/music/steel-pan-night.jpg"
+      "/images/events/carnival/panorama.jpg"
     ],
     "imageCredits": "VI Navigator local event image library",
-    "imageSource": "/images/events/music/steel-pan-night.jpg",
+    "imageSource": "/images/events/carnival/panorama.jpg",
     "tags": [
       "event",
       "music",
