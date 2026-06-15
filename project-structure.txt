@@ -1,0 +1,93 @@
+src
+├── App.tsx
+├── app
+│   ├── AppProviders.tsx
+│   ├── AppRoutes.tsx
+│   └── ProtectedRoute.tsx
+├── components
+│   ├── Beaches.tsx
+│   ├── BottomNav.tsx
+│   ├── Community.tsx
+│   ├── Concierge.tsx
+│   ├── Documents.tsx
+│   ├── Eat.tsx
+│   ├── ErrorBoundary.tsx
+│   ├── EventCard.tsx
+│   ├── EventDetail.tsx
+│   ├── Events.tsx
+│   ├── Explore.tsx
+│   ├── FeaturedSection.tsx
+│   ├── IslandSelector.tsx
+│   ├── ListingDetail.tsx
+│   ├── MerchantDashboard.tsx
+│   ├── Mobility.tsx
+│   ├── Profile.tsx
+│   ├── SectionHeader.tsx
+│   ├── app-shell
+│   │   ├── BottomNav.tsx
+│   │   ├── HomeCommandCenter.tsx
+│   │   ├── HomeHero.tsx
+│   │   ├── IslandPicker.tsx
+│   │   └── MobileShell.tsx
+│   ├── cards
+│   │   ├── BeachCard.tsx
+│   │   ├── EventCard.tsx
+│   │   ├── ExplorerCard.tsx
+│   │   └── PlaceCard.tsx
+│   └── maps
+│       ├── LocationMap.tsx
+│       ├── LocationMapClient.tsx
+│       └── RoutePreviewMap.tsx
+├── data
+│   ├── beaches.json
+│   ├── events.json
+│   ├── places.json
+│   ├── usvi-parcels.geojson
+│   └── usvi-parcels.index.json
+├── features
+│   ├── estates
+│   │   └── components
+│   └── geography
+│       ├── components
+│       ├── hooks
+│       ├── lib
+│       └── types.ts
+├── firebase.ts
+├── hooks
+│   └── useAppBootstrap.ts
+├── index.css
+├── lib
+│   ├── agents
+│   │   ├── registry.ts
+│   │   └── types.ts
+│   ├── constants
+│   │   └── islands.ts
+│   ├── firestore
+│   │   ├── beaches.ts
+│   │   ├── community.ts
+│   │   ├── documents.ts
+│   │   ├── events.ts
+│   │   ├── featured.ts
+│   │   ├── islands.ts
+│   │   ├── memory.ts
+│   │   ├── mobility.ts
+│   │   ├── places.ts
+│   │   ├── stats.ts
+│   │   └── transit.ts
+│   ├── geo
+│   │   └── resolver.ts
+│   ├── prompts
+│   │   └── agents.ts
+│   ├── queries
+│   │   └── home.ts
+│   ├── usvi
+│   │   └── geography.ts
+│   ├── utils
+│   │   └── islands.ts
+│   └── utils.ts
+├── main.tsx
+├── seed.ts
+├── types.ts
+└── vite-env.d.ts
+
+24 directories, 67 files
