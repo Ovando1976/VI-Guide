@@ -10,15 +10,6 @@ import {
 } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  Compass,
-  Map,
-  Ship,
-  Waves,
-  CalendarDays,
-  Sparkles,
-  ShieldCheck,
-} from "lucide-react";
-import {
   GoogleAuthProvider,
   User,
   getRedirectResult,
@@ -52,11 +43,8 @@ import Profile from "./components/Profile";
 import MerchantDashboard from "./components/MerchantDashboard";
 import ListingDetail from "./components/ListingDetail";
 import EventDetail from "./components/EventDetail";
-import { FeaturedSection } from "./components/FeaturedSection";
 import CruisePlanner from "./components/CruisePlanner";
 import Maps from "./components/Maps";
-import PlatformStats from "./components/PlatformStats";
-
 import VisitorHome from "./components/VisitorHome";
 
 import { seedBeaches } from "./seedBeaches";
@@ -73,8 +61,8 @@ function createUserProfile(firebaseUser: User): UserProfile {
   return {
     uid: firebaseUser.uid,
     email,
-    displayName: firebaseUser.displayName || "Guest",
-    photoURL: firebaseUser.photoURL || "",
+    displayName: firebaseUser.displayName ?? "Guest",
+    photoURL: firebaseUser.photoURL ?? "",
     role: ADMIN_EMAILS.has(email.toLowerCase()) ? "admin" : "user",
     createdAt: Date.now(),
     updatedAt: Date.now(),
@@ -110,21 +98,17 @@ function AppContent() {
   const [seedStatus, setSeedStatus] = useState("");
   const [seeding, setSeeding] = useState(false);
 
-  const islandParam = searchParams.get("island");
-  const exploreQueryParam = searchParams.get("q") ?? "";
-
+  const islandParam = searchParams.get("island") ?? undefined;
   const selectedIsland: IslandCode = isIslandCode(islandParam)
     ? islandParam
     : DEFAULT_ISLAND;
 
   const isAdmin = useMemo(() => {
     const email = user?.email?.toLowerCase();
-    return (
-      profile?.role === "admin" || Boolean(email && ADMIN_EMAILS.has(email))
-    );
+    return profile?.role === "admin" || Boolean(email && ADMIN_EMAILS.has(email));
   }, [profile, user]);
 
-  const activeAgent =
+  const activeAgent: "concierge" | "operator" =
     profile?.role === "merchant" || profile?.role === "admin"
       ? "operator"
       : "concierge";
@@ -138,6 +122,8 @@ function AppContent() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setLoading(true);
+
       try {
         setUser(firebaseUser);
 
@@ -163,7 +149,7 @@ function AppContent() {
       }
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -179,8 +165,8 @@ function AppContent() {
     await signInWithRedirect(auth, provider);
   }, []);
 
-  const handleLogout = useCallback(() => {
-    auth.signOut();
+  const handleLogout = useCallback(async () => {
+    await auth.signOut();
   }, []);
 
   const handleSelectDocument = useCallback(
@@ -229,24 +215,43 @@ function AppContent() {
 
   return (
     <MobileShell isMerchant={profile?.role === "merchant"}>
+      {isAdmin && seedStatus && (
+        <div className="mx-4 mt-3 rounded-2xl bg-emerald-950 px-4 py-3 text-center text-xs font-bold text-emerald-50">
+          {seedStatus}
+        </div>
+      )}
+
+      {isAdmin && (
+        <div className="mx-4 mt-3">
+          <button
+            type="button"
+            onClick={handleSeedFirebase}
+            disabled={seeding}
+            className="w-full rounded-2xl bg-amber-300 px-4 py-3 text-sm font-black text-stone-950 disabled:opacity-50"
+          >
+            {seeding ? "Seeding Firebase..." : "Seed Firebase"}
+          </button>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
-  path="/"
-  element={
-    <VisitorHome
-      selectedIsland={selectedIsland}
-      onNavigate={navigate}
-      onSelectListing={setSelectedListing}
-    />
-  }
-/>
+            path="/"
+            element={
+              <VisitorHome
+                onNavigate={navigate}
+                
+              />
+            }
+          />
 
           <Route
             path="/explore"
             element={
               <Explore
                 selectedIsland={selectedIsland}
+                initialSearchQuery={searchParams.get("q") ?? ""}
                 onSelectListing={setSelectedListing}
               />
             }
@@ -256,11 +261,14 @@ function AppContent() {
             path="/beaches"
             element={<Beaches onSelectBeach={setSelectedListing} />}
           />
+
           <Route path="/cruise" element={<CruisePlanner />} />
+
           <Route
             path="/map"
             element={<Maps selectedIsland={selectedIsland} user={user} />}
           />
+
           <Route
             path="/eat"
             element={<Eat onSelectPlace={setSelectedListing} />}
@@ -373,151 +381,5 @@ function AppLoader() {
         className="h-12 w-12 rounded-full border-4 border-emerald-600 border-t-transparent"
       />
     </div>
-  );
-}
-
-function HomeScreen({
-  user,
-  isAdmin,
-  seeding,
-  seedStatus,
-  selectedIsland,
-  exploreQueryParam,
-  onSeed,
-  onLogin,
-  onNavigate,
-  onSelectListing,
-}: {
-  user: User | null;
-  isAdmin: boolean;
-  seeding: boolean;
-  seedStatus: string;
-  selectedIsland: IslandCode;
-  exploreQueryParam: string;
-  onSeed: () => void;
-  onLogin: () => void;
-  onNavigate: (path: string) => void;
-  onSelectListing: (listing: BeachDoc | PlaceDoc) => void;
-}) {
-  return (
-    <>
-      <section className="px-4 pt-6">
-        <div className="overflow-hidden rounded-[2rem] bg-emerald-950 text-white shadow-2xl">
-          <div className="p-5">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-emerald-200">
-              VI Navigator
-            </p>
-
-            <h1 className="mt-3 text-3xl font-black leading-tight">
-              The operating system for island discovery.
-            </h1>
-
-            <p className="mt-3 text-sm leading-relaxed text-emerald-50">
-              Beaches, dining, history, cruise planning, events, mobility, and
-              AI-powered local guidance across the Virgin Islands.
-            </p>
-
-            <PlatformStats />
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <HomeAction
-                icon={Waves}
-                label="Beaches"
-                onClick={() =>
-                  onNavigate(`/explore?category=beach&island=${selectedIsland}`)
-                }
-              />
-
-              <HomeAction
-                icon={Map}
-                label="Live Map"
-                onClick={() => onNavigate("/map")}
-              />
-
-              <HomeAction
-                icon={Ship}
-                label="Cruise"
-                onClick={() => onNavigate("/cruise")}
-              />
-
-              <HomeAction
-                icon={CalendarDays}
-                label="Events"
-                onClick={() => onNavigate("/events")}
-              />
-
-              <HomeAction
-                icon={Sparkles}
-                label="AI Concierge"
-                onClick={() => onNavigate("/concierge")}
-              />
-
-              <HomeAction
-                icon={Compass}
-                label="Explore"
-                onClick={() => onNavigate(`/explore?island=${selectedIsland}`)}
-              />
-
-              {isAdmin && (
-                <button
-                  onClick={user ? onSeed : onLogin}
-                  disabled={seeding}
-                  className="col-span-2 rounded-2xl bg-amber-300 px-4 py-3 text-sm font-black text-stone-950 disabled:opacity-50"
-                >
-                  {seeding ? "Seeding Firebase..." : "Seed Firebase"}
-                </button>
-              )}
-
-              {seedStatus && (
-                <div className="col-span-2 rounded-2xl bg-white/10 px-4 py-3 text-center text-xs font-bold text-emerald-100">
-                  {seedStatus}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 bg-white/5 px-5 py-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-emerald-100">
-              <ShieldCheck className="h-4 w-4" />
-              Curated USVI place data, map-ready coordinates, and local
-              discovery.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-10" id="explore">
-        <FeaturedSection
-          selectedIsland={selectedIsland}
-          onSelectListing={onSelectListing}
-        />
-
-        <Explore
-          selectedIsland={selectedIsland}
-          initialSearchQuery={exploreQueryParam}
-          onSelectListing={onSelectListing}
-        />
-      </section>
-    </>
-  );
-}
-
-function HomeAction({
-  icon: Icon,
-  label,
-  onClick,
-}: {
-  icon: React.ElementType;
-  label: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className="rounded-2xl bg-white px-4 py-4 text-left text-emerald-950 shadow-lg transition active:scale-[0.98]"
-    >
-      <Icon className="mb-3 h-6 w-6 text-emerald-700" />
-      <span className="text-sm font-black">{label}</span>
-    </button>
   );
 }
