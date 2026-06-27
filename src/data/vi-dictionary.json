@@ -2892,7 +2892,13 @@
     "relatedEntries": [
       "Banana Point",
       "Water Island"
-    ]
+    ],
+    "coordinates": {
+      "lat": 18.3246,
+      "lng": -64.9508
+    },
+    "coordinateStatus": "approximate",
+    "coordinateNotes": "Approximate: north end of Water Island, southeast of Banana Point."
   },
   {
     "id": "banana-point",
@@ -6310,7 +6316,13 @@
       "Providence Point",
       "Druif Point",
       "Water Island"
-    ]
+    ],
+    "coordinates": {
+      "lat": 18.3156,
+      "lng": -64.9566
+    },
+    "coordinateStatus": "approximate",
+    "coordinateNotes": "Approximate: west shore of Water Island."
   },
   {
     "id": "druif-point",
@@ -16370,7 +16382,13 @@
     "relatedPlaces": [
       "Carol Point",
       "Water Island"
-    ]
+    ],
+    "coordinates": {
+      "lat": 18.3139,
+      "lng": -64.9486
+    },
+    "coordinateStatus": "approximate",
+    "coordinateNotes": "Approximate: southeast shore of Water Island near Carol Point."
   },
   {
     "id": "limestone-rock",
