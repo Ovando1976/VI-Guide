@@ -116,8 +116,11 @@ function rankKnowledgeItem(
   if (archiveResearchQuery && source === "estate") score -= 350;
   if (visitorHistoricQuery && source === "dictionary") score -= 15;
 
+  if (item.coordinates) score += 250;
+
   return score;
 }
+
 
 function uniqueAndRankItems(
   items: GeographicIndexItem[],
@@ -125,32 +128,66 @@ function uniqueAndRankItems(
   detectedDomains: KnowledgeDomain[],
   limit: number,
 ) {
+  const q = normalizeKnowledgeText(query);
+
+  const ranked = items
+    .map((item) => {
+      let score = rankKnowledgeItem(item, query, detectedDomains);
+
+      const name = normalizeKnowledgeText(
+        item.name || item.displayName || item.id,
+      );
+
+      if (name === q) score += 500;
+      if (item.coordinates) score += 300;
+
+      return { item, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      const scoreDiff = b.score - a.score;
+      if (scoreDiff !== 0) return scoreDiff;
+
+      const aExact =
+        normalizeKnowledgeText(a.item.name || "") === q ? 1 : 0;
+      const bExact =
+        normalizeKnowledgeText(b.item.name || "") === q ? 1 : 0;
+
+      if (aExact !== bExact) return bExact - aExact;
+
+      const aCoords = a.item.coordinates ? 1 : 0;
+      const bCoords = b.item.coordinates ? 1 : 0;
+
+      if (aCoords !== bCoords) return bCoords - aCoords;
+
+      return String(a.item.id || "").localeCompare(
+        String(b.item.id || ""),
+      );
+    });
+
   const seen = new Set<string>();
 
-  return items
-    .map((item) => ({
-      item,
-      score: rankKnowledgeItem(item, query, detectedDomains),
-    }))
-    .filter(({ item, score }) => {
-      if (score <= 0) return false;
-      const name = normalizeKnowledgeText(item.name || item.displayName || item.id);
+  return ranked
+    .filter(({ item }) => {
+      const name = normalizeKnowledgeText(
+        item.name || item.displayName || item.id,
+      );
       const source = String(item.source || "");
       const island = String(item.island || "");
 
-      const sourceScopedKey = `${source}:${island}:${name}`;
-      const dictionarySemanticKey = `dictionary:any:${name}`;
-
-      const key = source === "dictionary" ? dictionarySemanticKey : sourceScopedKey;
+      const key =
+        source === "dictionary"
+          ? `dictionary:${island || "unknown"}:${name}`
+          : `${source}:${island}:${name}`;
 
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
     })
-    .sort((a, b) => b.score - a.score)
     .slice(0, limit)
     .map(({ item }) => item);
 }
+
 
 function detectDomains(query: string): KnowledgeDomain[] {
   const text = query.toLowerCase();
