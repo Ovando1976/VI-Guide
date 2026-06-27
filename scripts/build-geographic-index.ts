@@ -471,6 +471,14 @@ const DICTIONARY_COORDINATE_OVERRIDES: Record<string, GeoPoint> = {
   "elephant bay": { lat: 18.3219, lng: -64.9565 },
   "flamingo point": { lat: 18.3086, lng: -64.9518 },
   "flamingo rock": { lat: 18.3082, lng: -64.9524 },
+  "providence hill": { lat: 18.3169, lng: -64.9548 },
+  "druif point": { lat: 18.3147, lng: -64.9584 },
+  "flamingo hill": { lat: 18.3092, lng: -64.9515 },
+  "limestone point": { lat: 18.3142, lng: -64.9471 },
+  "gregerie harbor": { lat: 18.3232, lng: -64.9568 },
+  "gregerie channel": { lat: 18.3225, lng: -64.9592 },
+  "east gregerie channel": { lat: 18.3237, lng: -64.9518 },
+  "west gregerie channel": { lat: 18.3217, lng: -64.9602 },
 };
 
 function dictionaryOverrideKey(entry: any) {
