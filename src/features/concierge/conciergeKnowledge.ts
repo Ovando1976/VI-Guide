@@ -138,7 +138,9 @@ function uniqueAndRankItems(
         item.name || item.displayName || item.id,
       );
 
-      if (name === q) score += 500;
+      if (name === q) score += 2000;
+      if (name.startsWith(q) || q.startsWith(name)) score += 500;
+      if (item.island === "water_island") score += 150;
       if (item.coordinates) score += 300;
 
       return { item, score };
