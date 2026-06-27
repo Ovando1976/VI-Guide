@@ -455,6 +455,16 @@ const DICTIONARY_COORDINATE_OVERRIDES: Record<string, GeoPoint> = {
   "bandy point": { lat: 18.3249, lng: -64.9531 },
   "druif bay": { lat: 18.3156, lng: -64.9566 },
   "limestone bay": { lat: 18.3139, lng: -64.9486 },
+  "caroline point": { lat: 18.3237, lng: -64.9542 },
+  "carol point": { lat: 18.3129, lng: -64.9512 },
+  "sprat bay": { lat: 18.3125, lng: -64.9463 },
+  "sprat point": { lat: 18.3131, lng: -64.9428 },
+  "providence": { lat: 18.3164, lng: -64.9561 },
+  "providence point": { lat: 18.3184, lng: -64.9581 },
+  "sand bay": { lat: 18.3188, lng: -64.9457 },
+  "elephant bay": { lat: 18.3219, lng: -64.9565 },
+  "flamingo point": { lat: 18.3086, lng: -64.9518 },
+  "flamingo rock": { lat: 18.3082, lng: -64.9524 },
 };
 
 function dictionaryOverrideKey(entry: any) {
