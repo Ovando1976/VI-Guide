@@ -449,6 +449,12 @@ const beachRecords = Array.isArray(beaches) ? beaches : [];
 const civicPlaceRecords = Array.isArray(civicPlaces) ? civicPlaces : [];
 const archiveRecords = Array.isArray(danishArchives) ? danishArchives : [];
 
+
+const DICTIONARY_ISLAND_OVERRIDES: Record<string, string> = {
+  "carol point": "water_island",
+  "sand bay": "water_island",
+};
+
 const DICTIONARY_COORDINATE_OVERRIDES: Record<string, GeoPoint> = {
   "banana bay": { lat: 18.3246, lng: -64.9508 },
   "banana point": { lat: 18.3252, lng: -64.9516 },
@@ -712,7 +718,7 @@ const dictionaryItems: GeographicIndexItem[] = dictionaryRecords.map((entry: any
   const frenchRule = findGeographicFrenchCoastalRule(originalName);
   const alphaRule = findGeographicAlphabeticalCleanupRule(originalName, {
     description,
-    island: normalizeIsland(entry.island ?? entry.islandCode),
+    island: DICTIONARY_ISLAND_OVERRIDES[dictionaryOverrideKey(entry)] || normalizeIsland(entry.island ?? entry.islandCode),
   });
 
   const cleanupRule: any = alphaRule || frenchRule || ocrRule;
@@ -734,7 +740,10 @@ const dictionaryItems: GeographicIndexItem[] = dictionaryRecords.map((entry: any
     displayName,
     baseName: canonicalName,
     featureType: cleanupRule?.featureType || cleanText(entry.type) || "dictionary",
-    island: cleanupRule?.island || normalizeIsland(entry.island ?? entry.islandCode),
+    island:
+      cleanupRule?.island ||
+      DICTIONARY_ISLAND_OVERRIDES[dictionaryOverrideKey(entry)] ||
+      normalizeIsland(entry.island ?? entry.islandCode),
     category: cleanText(entry.category) || "dictionary",
     type: cleanText(entry.type) || "dictionaryEntry",
     description,
