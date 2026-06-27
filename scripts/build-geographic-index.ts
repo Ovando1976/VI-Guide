@@ -451,42 +451,119 @@ const archiveRecords = Array.isArray(danishArchives) ? danishArchives : [];
 
 
 const DICTIONARY_ISLAND_OVERRIDES: Record<string, string> = {
+  "banana bay": "water_island",
+  "banana point": "water_island",
+  "bandy point": "water_island",
+  "caroline point": "water_island",
   "carol point": "water_island",
-  "sand bay": "water_island",
+  "druif bay": "water_island",
   "druif point": "water_island",
+  "limestone bay": "water_island",
   "limestone point": "water_island",
-  "gregerie harbor": "water_island",
-  "gregerie channel": "water_island",
-  "east gregerie channel": "water_island",
-  "west gregerie channel": "water_island",
+  "sprat bay": "water_island",
+  "sprat point": "water_island",
+  "sand bay": "water_island",
+  "providence": "water_island",
+  "providence point": "water_island",
   "providence hill": "water_island",
+  "elephant bay": "water_island",
+  "flamingo point": "water_island",
+  "flamingo rock": "water_island",
   "flamingo hill": "water_island",
+  "gregerie harbor": "water_island",
+  "west gregerie channel": "water_island",
+  "east gregerie channel": "water_island",
 };
 
 const DICTIONARY_COORDINATE_OVERRIDES: Record<string, GeoPoint> = {
-  "banana bay": { lat: 18.3246, lng: -64.9508 },
-  "banana point": { lat: 18.3252, lng: -64.9516 },
-  "bandy point": { lat: 18.3249, lng: -64.9531 },
-  "druif bay": { lat: 18.3156, lng: -64.9566 },
-  "limestone bay": { lat: 18.3139, lng: -64.9486 },
-  "caroline point": { lat: 18.3237, lng: -64.9542 },
-  "carol point": { lat: 18.3129, lng: -64.9512 },
-  "sprat bay": { lat: 18.3125, lng: -64.9463 },
-  "sprat point": { lat: 18.3131, lng: -64.9428 },
-  "providence": { lat: 18.3164, lng: -64.9561 },
-  "providence point": { lat: 18.3184, lng: -64.9581 },
-  "sand bay": { lat: 18.3188, lng: -64.9457 },
-  "elephant bay": { lat: 18.3219, lng: -64.9565 },
-  "flamingo point": { lat: 18.3086, lng: -64.9518 },
-  "flamingo rock": { lat: 18.3082, lng: -64.9524 },
-  "providence hill": { lat: 18.3169, lng: -64.9548 },
-  "druif point": { lat: 18.3147, lng: -64.9584 },
-  "flamingo hill": { lat: 18.3092, lng: -64.9515 },
-  "limestone point": { lat: 18.3142, lng: -64.9471 },
-  "gregerie harbor": { lat: 18.3232, lng: -64.9568 },
-  "gregerie channel": { lat: 18.3225, lng: -64.9592 },
-  "east gregerie channel": { lat: 18.3237, lng: -64.9518 },
-  "west gregerie channel": { lat: 18.3217, lng: -64.9602 },
+  "banana bay": {
+    "lat": 18.3246,
+    "lng": -64.9508
+  },
+  "banana point": {
+    "lat": 18.3252,
+    "lng": -64.9516
+  },
+  "bandy point": {
+    "lat": 18.3249,
+    "lng": -64.9531
+  },
+  "caroline point": {
+    "lat": 18.3237,
+    "lng": -64.9542
+  },
+  "carol point": {
+    "lat": 18.3129,
+    "lng": -64.9512
+  },
+  "druif bay": {
+    "lat": 18.3156,
+    "lng": -64.9566
+  },
+  "druif point": {
+    "lat": 18.3147,
+    "lng": -64.9584
+  },
+  "limestone bay": {
+    "lat": 18.3139,
+    "lng": -64.9486
+  },
+  "limestone point": {
+    "lat": 18.3142,
+    "lng": -64.9471
+  },
+  "sprat bay": {
+    "lat": 18.3125,
+    "lng": -64.9463
+  },
+  "sprat point": {
+    "lat": 18.3131,
+    "lng": -64.9428
+  },
+  "sand bay": {
+    "lat": 18.3188,
+    "lng": -64.9457
+  },
+  "providence": {
+    "lat": 18.3164,
+    "lng": -64.9561
+  },
+  "providence point": {
+    "lat": 18.3184,
+    "lng": -64.9581
+  },
+  "providence hill": {
+    "lat": 18.3169,
+    "lng": -64.9548
+  },
+  "elephant bay": {
+    "lat": 18.3219,
+    "lng": -64.9565
+  },
+  "flamingo point": {
+    "lat": 18.3086,
+    "lng": -64.9518
+  },
+  "flamingo rock": {
+    "lat": 18.3082,
+    "lng": -64.9524
+  },
+  "flamingo hill": {
+    "lat": 18.3092,
+    "lng": -64.9515
+  },
+  "gregerie harbor": {
+    "lat": 18.3232,
+    "lng": -64.9568
+  },
+  "west gregerie channel": {
+    "lat": 18.3217,
+    "lng": -64.9602
+  },
+  "east gregerie channel": {
+    "lat": 18.3237,
+    "lng": -64.9518
+  }
 };
 
 function dictionaryOverrideKey(entry: any) {
