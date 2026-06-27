@@ -496,9 +496,48 @@ function dictionaryOverrideKey(entry: any) {
     .trim();
 }
 
-const dictionaryRecords = Array.isArray(geographicDictionaryEntries)
-  ? geographicDictionaryEntries
-  : [];
+
+const WATER_ISLAND_SYNTHETIC_DICTIONARY_RECORDS = [
+  {
+    id: "druif-point",
+    name: "Druif Point",
+    type: "point",
+    island: "water_island",
+    coordinates: { lat: 18.3147, lng: -64.9584 },
+    coordinateStatus: "approximate",
+    coordinateNotes: "Approximate: rocky neck forming part of Druif Bay on west shore of Water Island.",
+    description: "Druif Point; rocky neck associated with Druif Bay on the west shore of Water Island.",
+    tags: ["Water Island", "Druif Bay", "point"],
+  },
+  {
+    id: "limestone-point",
+    name: "Limestone Point",
+    type: "point",
+    island: "water_island",
+    coordinates: { lat: 18.3142, lng: -64.9471 },
+    coordinateStatus: "approximate",
+    coordinateNotes: "Approximate: point associated with Limestone Bay on southeast Water Island.",
+    description: "Limestone Point; coastal point associated with Limestone Bay on the southeast shore of Water Island.",
+    tags: ["Water Island", "Limestone Bay", "point"],
+  },
+  {
+    id: "east-gregerie-channel",
+    name: "East Gregerie Channel",
+    type: "channel",
+    island: "water_island",
+    coordinates: { lat: 18.3236, lng: -64.9518 },
+    coordinateStatus: "approximate",
+    coordinateNotes: "Approximate: eastern Gregerie passage area between Water Island and St. Thomas.",
+    description: "East Gregerie Channel; eastern channel approach associated with Gregerie Harbor and Water Island.",
+    tags: ["Water Island", "Gregerie Harbor", "channel"],
+  },
+];
+
+
+const dictionaryRecords = [
+  ...(Array.isArray(geographicDictionaryEntries) ? geographicDictionaryEntries : []),
+  ...WATER_ISLAND_SYNTHETIC_DICTIONARY_RECORDS,
+];
 
 const estateItems: GeographicIndexItem[] = estateRecords.map((estate: any, index: number) => {
   const id =
