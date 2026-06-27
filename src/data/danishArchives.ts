@@ -1,1 +1,1 @@
-export const danishArchives = [...]
+export const danishArchives: any[] = [];

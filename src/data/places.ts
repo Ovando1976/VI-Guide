@@ -1,1 +1,1 @@
-export const places = [...]
+export const places: any[] = [];

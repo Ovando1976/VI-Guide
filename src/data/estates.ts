@@ -1,1 +1,1 @@
-export const estates = [...]
+export const estates: any[] = [];

@@ -18,6 +18,20 @@ export type HeritageLayer =
   | "gallery"
   | "archives";
 
+export type RoutePoint = Record<string, unknown>;
+
+export type RouteLineInput = {
+  coordinates?: [number, number][];
+  points?: RoutePoint[];
+};
+
+export type FocusTarget = {
+  center?: [number, number] | number[];
+  zoom?: number;
+  pitch?: number;
+  bearing?: number;
+};
+
 export type MapPoint = {
   id: string;
   title: string;
@@ -36,6 +50,20 @@ export type MapPoint = {
 
 type IslandMapProps = {
   selectedIsland?: IslandCode;
+  embedded?: boolean;
+  embeddedMapHeight?: string;
+  interactive?: boolean;
+  className?: string;
+  focusTarget?: FocusTarget;
+  pickup?: RoutePoint;
+  dropoff?: RoutePoint;
+  routeLine?: RouteLineInput;
+  highlightEstate?: string;
+  showEstateBoundaries?: boolean;
+  showEstateLabels?: boolean;
+  showParcels?: boolean;
+  showParcelLabels?: boolean;
+  showControls?: boolean;
   activeFilter?: MapFilter;
   selectedPointId?: string | null;
   points?: MapPoint[];
@@ -50,6 +78,9 @@ export default function IslandMap({
   points = [],
   heritageLayer = "default",
   onSelectPoint,
+  embedded = false,
+  embeddedMapHeight,
+  className = "",
 }: IslandMapProps) {
   const visiblePoints =
     activeFilter === "all"
@@ -57,7 +88,11 @@ export default function IslandMap({
       : points.filter((point) => point.type === activeFilter);
 
   return (
-    <div className="overflow-hidden rounded-[2rem] bg-stone-950 text-white shadow-2xl">
+    <div
+      className={`overflow-hidden rounded-[2rem] bg-stone-950 text-white shadow-2xl ${className}`}
+      style={embeddedMapHeight ? { minHeight: embeddedMapHeight } : undefined}
+      data-embedded={embedded ? "true" : "false"}
+    >
       <div className="bg-gradient-to-br from-emerald-900 via-stone-950 to-black p-5">
         <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-300">
           Island Map
