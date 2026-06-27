@@ -453,6 +453,14 @@ const archiveRecords = Array.isArray(danishArchives) ? danishArchives : [];
 const DICTIONARY_ISLAND_OVERRIDES: Record<string, string> = {
   "carol point": "water_island",
   "sand bay": "water_island",
+  "druif point": "water_island",
+  "limestone point": "water_island",
+  "gregerie harbor": "water_island",
+  "gregerie channel": "water_island",
+  "east gregerie channel": "water_island",
+  "west gregerie channel": "water_island",
+  "providence hill": "water_island",
+  "flamingo hill": "water_island",
 };
 
 const DICTIONARY_COORDINATE_OVERRIDES: Record<string, GeoPoint> = {
