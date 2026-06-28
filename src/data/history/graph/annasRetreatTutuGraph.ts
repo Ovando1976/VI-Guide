@@ -1,0 +1,71 @@
+import type { HistoryGraph } from "./historyGraphTypes";
+
+export const annasRetreatTutuGraph: HistoryGraph = {
+  nodes: [
+    { id: "estate-tutu", type: "estate", label: "Tutu", island: "st_thomas", confidence: "high" },
+    { id: "estate-tabor", type: "estate", label: "Tabor", island: "st_thomas", confidence: "high" },
+    { id: "estate-harmonie", type: "estate", label: "Harmonie", island: "st_thomas", confidence: "high" },
+    { id: "complex-annas-retreat", type: "estate_complex", label: "Anna's Retreat", island: "st_thomas", confidence: "high" },
+
+    { id: "person-octavius-pogy", type: "person", label: "Octavius Pogy", confidence: "probable" },
+    { id: "person-erasmus-frederick-schifter", type: "person", label: "Erasmus Frederick Schifter", confidence: "probable" },
+    { id: "person-mariette-henriette-pogy", type: "person", label: "Mariette Henriette Pogy", confidence: "high" },
+    { id: "person-christian-goldmann", type: "person", label: "Christian Goldmann", confidence: "high" },
+
+    { id: "doc-1813-pogy-schifter-deed", type: "document", label: "1813 Pogy to Schifter deed", confidence: "unresolved" },
+    { id: "doc-1817-legal-notice", type: "document", label: "1817 legal notice naming Tutu, Tabor, and Harmonie as Anna's Retreat", confidence: "confirmed" },
+  ],
+  edges: [
+    {
+      id: "edge-tutu-component-annas-retreat",
+      from: "estate-tutu",
+      to: "complex-annas-retreat",
+      type: "component_of",
+      label: "Tutu became part of Anna's Retreat",
+      date: "1813/1817",
+      confidence: "confirmed",
+      source: "1817 legal notice",
+    },
+    {
+      id: "edge-tabor-component-annas-retreat",
+      from: "estate-tabor",
+      to: "complex-annas-retreat",
+      type: "component_of",
+      label: "Tabor became part of Anna's Retreat",
+      date: "1813/1817",
+      confidence: "confirmed",
+      source: "1817 legal notice",
+    },
+    {
+      id: "edge-harmonie-component-annas-retreat",
+      from: "estate-harmonie",
+      to: "complex-annas-retreat",
+      type: "component_of",
+      label: "Harmonie became part of Anna's Retreat",
+      date: "1813/1817",
+      confidence: "confirmed",
+      source: "1817 legal notice",
+    },
+    {
+      id: "edge-pogy-sold-schifter",
+      from: "person-octavius-pogy",
+      to: "person-erasmus-frederick-schifter",
+      type: "sold_to",
+      label: "Reported deed transfer of Anna's Retreat complex",
+      date: "1813",
+      confidence: "probable",
+      source: "Tutu Plantation House NRHP nomination",
+      notes: "Needs original deed verification.",
+    },
+    {
+      id: "edge-goldmann-guardian-pogy",
+      from: "person-christian-goldmann",
+      to: "person-mariette-henriette-pogy",
+      type: "guardian_of",
+      label: "Guardian of minor Mariette Henriette Pogy",
+      date: "1817",
+      confidence: "confirmed",
+      source: "1817 legal notice",
+    },
+  ],
+};

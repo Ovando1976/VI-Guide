@@ -1,0 +1,100 @@
+import type { TaxiFareRule } from "../lib/mobility/taxi/types";
+
+const accessedAt = "2026-06-16T00:00:00-04:00";
+
+const source = {
+  label: "Published 2022 St. Croix taxi rate sheet capture",
+  sourceType: "secondary_published_sheet" as const,
+  effectiveDate: "2022-10-24",
+  accessedAt,
+};
+
+const common = {
+  island: "stx" as const,
+  computationMode: "one_or_two_total_vs_three_plus_each" as const,
+  luggagePerBagAmount: 3,
+  oversizeBagMaxAmount: 6,
+  waitingPerMinuteAmount: 2,
+  waitingGraceMinutes: 5,
+  lateNightPerPersonAmount: 3,
+  lateNightWindow: { start: "00:00", end: "06:00" },
+  exclusivityRule: "pay_four_passengers" as const,
+  serviceClass: "either" as const,
+  source,
+  reviewStatus: "needs_review" as const,
+};
+
+function rule(
+  id: string,
+  originZoneId: string,
+  destinationZoneId: string,
+  oneOrTwoPeopleTotalAmount: number,
+  threePlusPerPersonAmount: number
+): TaxiFareRule {
+  return {
+    id,
+    ...common,
+    originZoneId,
+    destinationZoneId,
+    oneOrTwoPeopleTotalAmount,
+    threePlusPerPersonAmount,
+  };
+}
+
+export const taxiFareRulesSTX: TaxiFareRule[] = [
+  rule("stx_airport_to_stx_christiansted_2022", "stx_airport", "stx_christiansted", 24, 14),
+  rule("stx_airport_to_stx_frederiksted_2022", "stx_airport", "stx_frederiksted", 18, 9),
+  rule("stx_airport_to_stx_sunny_isle_2022", "stx_airport", "stx_sunny_isle", 18, 9),
+  rule("stx_airport_to_stx_golden_rock_2022", "stx_airport", "stx_golden_rock", 20, 12),
+  rule("stx_airport_to_stx_gallows_bay_2022", "stx_airport", "stx_gallows_bay", 26, 15),
+  rule("stx_airport_to_stx_buccaneer_2022", "stx_airport", "stx_buccaneer", 30, 16),
+  rule("stx_airport_to_stx_cane_bay_2022", "stx_airport", "stx_cane_bay", 24, 14),
+  rule("stx_airport_to_stx_kingshill_2022", "stx_airport", "stx_kingshill", 16, 8),
+  rule("stx_airport_to_stx_mid_island_2022", "stx_airport", "stx_mid_island", 18, 9),
+  rule("stx_airport_to_stx_rainbow_beach_2022", "stx_airport", "stx_rainbow_beach", 16, 8),
+  rule("stx_christiansted_to_stx_frederiksted_2022", "stx_christiansted", "stx_frederiksted", 40, 20),
+  rule("stx_christiansted_to_stx_sunny_isle_2022", "stx_christiansted", "stx_sunny_isle", 18, 9),
+  rule("stx_christiansted_to_stx_golden_rock_2022", "stx_christiansted", "stx_golden_rock", 12, 7),
+  rule("stx_christiansted_to_stx_gallows_bay_2022", "stx_christiansted", "stx_gallows_bay", 10, 6),
+  rule("stx_christiansted_to_stx_buccaneer_2022", "stx_christiansted", "stx_buccaneer", 14, 8),
+  rule("stx_christiansted_to_stx_cane_bay_2022", "stx_christiansted", "stx_cane_bay", 26, 15),
+  rule("stx_christiansted_to_stx_kingshill_2022", "stx_christiansted", "stx_kingshill", 20, 12),
+  rule("stx_christiansted_to_stx_mid_island_2022", "stx_christiansted", "stx_mid_island", 18, 10),
+  rule("stx_christiansted_to_stx_rainbow_beach_2022", "stx_christiansted", "stx_rainbow_beach", 42, 22),
+  rule("stx_frederiksted_to_stx_sunny_isle_2022", "stx_frederiksted", "stx_sunny_isle", 28, 15),
+  rule("stx_frederiksted_to_stx_golden_rock_2022", "stx_frederiksted", "stx_golden_rock", 34, 18),
+  rule("stx_frederiksted_to_stx_gallows_bay_2022", "stx_frederiksted", "stx_gallows_bay", 42, 22),
+  rule("stx_frederiksted_to_stx_buccaneer_2022", "stx_frederiksted", "stx_buccaneer", 44, 24),
+  rule("stx_frederiksted_to_stx_cane_bay_2022", "stx_frederiksted", "stx_cane_bay", 24, 14),
+  rule("stx_frederiksted_to_stx_kingshill_2022", "stx_frederiksted", "stx_kingshill", 20, 11),
+  rule("stx_frederiksted_to_stx_mid_island_2022", "stx_frederiksted", "stx_mid_island", 24, 13),
+  rule("stx_frederiksted_to_stx_rainbow_beach_2022", "stx_frederiksted", "stx_rainbow_beach", 10, 6),
+  rule("stx_sunny_isle_to_stx_golden_rock_2022", "stx_sunny_isle", "stx_golden_rock", 12, 7),
+  rule("stx_sunny_isle_to_stx_gallows_bay_2022", "stx_sunny_isle", "stx_gallows_bay", 18, 10),
+  rule("stx_sunny_isle_to_stx_buccaneer_2022", "stx_sunny_isle", "stx_buccaneer", 22, 12),
+  rule("stx_sunny_isle_to_stx_cane_bay_2022", "stx_sunny_isle", "stx_cane_bay", 20, 11),
+  rule("stx_sunny_isle_to_stx_kingshill_2022", "stx_sunny_isle", "stx_kingshill", 12, 7),
+  rule("stx_sunny_isle_to_stx_mid_island_2022", "stx_sunny_isle", "stx_mid_island", 10, 6),
+  rule("stx_sunny_isle_to_stx_rainbow_beach_2022", "stx_sunny_isle", "stx_rainbow_beach", 30, 16),
+  rule("stx_golden_rock_to_stx_gallows_bay_2022", "stx_golden_rock", "stx_gallows_bay", 10, 6),
+  rule("stx_golden_rock_to_stx_buccaneer_2022", "stx_golden_rock", "stx_buccaneer", 14, 8),
+  rule("stx_golden_rock_to_stx_cane_bay_2022", "stx_golden_rock", "stx_cane_bay", 24, 14),
+  rule("stx_golden_rock_to_stx_kingshill_2022", "stx_golden_rock", "stx_kingshill", 16, 9),
+  rule("stx_golden_rock_to_stx_mid_island_2022", "stx_golden_rock", "stx_mid_island", 14, 8),
+  rule("stx_golden_rock_to_stx_rainbow_beach_2022", "stx_golden_rock", "stx_rainbow_beach", 36, 18),
+  rule("stx_gallows_bay_to_stx_buccaneer_2022", "stx_gallows_bay", "stx_buccaneer", 10, 6),
+  rule("stx_gallows_bay_to_stx_cane_bay_2022", "stx_gallows_bay", "stx_cane_bay", 28, 16),
+  rule("stx_gallows_bay_to_stx_kingshill_2022", "stx_gallows_bay", "stx_kingshill", 22, 12),
+  rule("stx_gallows_bay_to_stx_mid_island_2022", "stx_gallows_bay", "stx_mid_island", 20, 11),
+  rule("stx_gallows_bay_to_stx_rainbow_beach_2022", "stx_gallows_bay", "stx_rainbow_beach", 44, 24),
+  rule("stx_buccaneer_to_stx_cane_bay_2022", "stx_buccaneer", "stx_cane_bay", 30, 17),
+  rule("stx_buccaneer_to_stx_kingshill_2022", "stx_buccaneer", "stx_kingshill", 24, 13),
+  rule("stx_buccaneer_to_stx_mid_island_2022", "stx_buccaneer", "stx_mid_island", 22, 12),
+  rule("stx_buccaneer_to_stx_rainbow_beach_2022", "stx_buccaneer", "stx_rainbow_beach", 46, 24),
+  rule("stx_cane_bay_to_stx_kingshill_2022", "stx_cane_bay", "stx_kingshill", 16, 9),
+  rule("stx_cane_bay_to_stx_mid_island_2022", "stx_cane_bay", "stx_mid_island", 18, 10),
+  rule("stx_cane_bay_to_stx_rainbow_beach_2022", "stx_cane_bay", "stx_rainbow_beach", 24, 14),
+  rule("stx_kingshill_to_stx_mid_island_2022", "stx_kingshill", "stx_mid_island", 10, 6),
+  rule("stx_kingshill_to_stx_rainbow_beach_2022", "stx_kingshill", "stx_rainbow_beach", 22, 12),
+  rule("stx_mid_island_to_stx_rainbow_beach_2022", "stx_mid_island", "stx_rainbow_beach", 26, 14),
+];

@@ -1,0 +1,6129 @@
+export const estateCoordinateLinks = [
+  {
+    "geoid": "1989",
+    "estateName": "ABRAHAMS FANCY / MAHO BAY",
+    "island": "stj",
+    "quarter": "3A MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.35492694156395,
+      "lng": -64.73652112922426
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1891",
+    "estateName": "ADRIAN",
+    "island": "stj",
+    "quarter": "18 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.342665470030198,
+      "lng": -64.7667732947042
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1982",
+    "estateName": "ANNABERG",
+    "island": "stj",
+    "quarter": "4-1, 1 MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.36479311179155,
+      "lng": -64.7385750100362
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "mary-ridge",
+        "sourceName": "Mary Ridge",
+        "normalizedName": "mary-ridge",
+        "lat": 18.3725,
+        "lng": -64.7475,
+        "rawLat": "18 22 21",
+        "rawLng": "64 44 51",
+        "possibleIsland": null,
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Mary Ridge; Triangulation station, summit of p n i n s u l a ending a t Mary Point. Ridge 1s 578 feet high, 75 mile long; position of summit, lat. 18\" 22' 21. 227\" (652. 6 metere), long. 64\" 44' 51. 534\" (1, 512. 8m. ). --O. R. 73713 I."
+      }
+    ]
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BELLEVUE",
+    "island": "stj",
+    "quarter": "12A CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.33037923226835,
+      "lng": -64.7691885039207
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1952",
+    "estateName": "BEN RUNNELL'S GUT",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3335698847857,
+      "lng": -64.7120529139155
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BETHANY",
+    "island": "stj",
+    "quarter": "6 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.32875985137175,
+      "lng": -64.78395168634535
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BEVERHOUDTSBERG",
+    "island": "stj",
+    "quarter": "7 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.334883331417153,
+      "lng": -64.76886598807245
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1978",
+    "estateName": "BORDEAUX",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3346047564803,
+      "lng": -64.72275003509866
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1990",
+    "estateName": "BROWNS BAY",
+    "island": "stj",
+    "quarter": "MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.3614381274039,
+      "lng": -64.7058491657759
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "leinster-hill",
+        "sourceName": "Leinster Hill",
+        "normalizedName": "leinster-hill",
+        "lat": 18.3663889,
+        "lng": -64.7130556,
+        "rawLat": "18 21 59",
+        "rawLng": "64 42 47",
+        "possibleIsland": "stj",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Leinster Hill; 477 feet high, 325 yards from northern coast a t Threudneedle Point, St. John. lat. 18\" 21' 59. 84\" (1839. 7). long. 64\" 42' 47\" (1, 378 m. ). -T. 3783, D. R."
+      }
+    ]
+  },
+  {
+    "geoid": "1649",
+    "estateName": "BUCK ISLAND",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.316202769484953,
+      "lng": -64.68853565565725
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2018",
+    "estateName": "CALABASH BOOM",
+    "island": "stj",
+    "quarter": "9 & 10 CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.329639602750348,
+      "lng": -64.7086034920477
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1893",
+    "estateName": "CANEEL BAY",
+    "island": "stj",
+    "quarter": "8 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.34305825172645,
+      "lng": -64.7874874960091
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2009",
+    "estateName": "CAROLINA",
+    "island": "stj",
+    "quarter": "1 CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.34652014852835,
+      "lng": -64.72762843003869
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1818",
+    "estateName": "CAVAL CAY",
+    "island": "stj",
+    "quarter": "GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3696541915186,
+      "lng": -64.79410767497025
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2004",
+    "estateName": "CHOCOLATE HOLE",
+    "island": "stj",
+    "quarter": "11 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.318586458466903,
+      "lng": -64.78430720192435
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1642",
+    "estateName": "CINNAMON CAY",
+    "island": "stj",
+    "quarter": "2 MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.356393692045,
+      "lng": -64.75644601064465
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1625",
+    "estateName": "CONCORDIA A",
+    "island": "stj",
+    "quarter": "15A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.30740743739495,
+      "lng": -64.70375086625529
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "belier",
+        "sourceName": "Belier",
+        "normalizedName": "belier",
+        "lat": 18.3044444,
+        "lng": -64.7016667,
+        "rawLat": "18 18 16",
+        "rawLng": "64 42 06",
+        "possibleIsland": "stj",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Belier; Spanish, Punta Carnero; by Lasscu, \" Sydspidsen af St. Jan. \" Ram Hill: 288 feet high; lat. 18\" 18' 16. 4\" (503. 9 meters), long. 64\" 42' 06. 6\" (103. 8 meters); 540 yicrfls north-nclrtheaut of Ram Heid, Coral-Bay Quarter, S. J. -0. R. 73713 I. Ram'8 Ilcnd: Ram Head, St. John. -P. D. J. : Mort."
+      }
+    ]
+  },
+  {
+    "geoid": "1627",
+    "estateName": "CONCORDIA B",
+    "island": "stj",
+    "quarter": "15A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.317367781204652,
+      "lng": -64.7097361486536
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1817",
+    "estateName": "CONGO CAY",
+    "island": "stj",
+    "quarter": "GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.36793575942825,
+      "lng": -64.8029093404089
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1871",
+    "estateName": "CONTANT",
+    "island": "stj",
+    "quarter": "2 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3233686913533,
+      "lng": -64.79179894512015
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1894",
+    "estateName": "CRUZ BAY TOWN",
+    "island": "stj",
+    "quarter": "1 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.33080615938465,
+      "lng": -64.7961253218629
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1914",
+    "estateName": "DENNIS BAY/ HAWKNEST",
+    "island": "stj",
+    "quarter": "17B CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3493795825669,
+      "lng": -64.7740474802858
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1964",
+    "estateName": "EDEN",
+    "island": "stj",
+    "quarter": "18B CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.349263313340252,
+      "lng": -64.70857040997706
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1966",
+    "estateName": "EMMAUS",
+    "island": "stj",
+    "quarter": "2 CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.351087161904047,
+      "lng": -64.71093074672964
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2003",
+    "estateName": "ENIGHED",
+    "island": "stj",
+    "quarter": "1 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.329311500712798,
+      "lng": -64.79193196712666
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1912",
+    "estateName": "FISH BAY",
+    "island": "stj",
+    "quarter": "8 REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.322660502196953,
+      "lng": -64.76261801033169
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1648",
+    "estateName": "FLANNIGAN ISLAND",
+    "island": "stj",
+    "quarter": "EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3263268562391,
+      "lng": -64.6509904374269
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1965",
+    "estateName": "FORTSBERG",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.344326192465203,
+      "lng": -64.70541184392684
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2017",
+    "estateName": "FREEMAN'S GROUND",
+    "island": "stj",
+    "quarter": "3A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3322080432784,
+      "lng": -64.7107281424398
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1635",
+    "estateName": "FRIISE",
+    "island": "stj",
+    "quarter": "13, 13A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3213357522002,
+      "lng": -64.70057721079274
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1988",
+    "estateName": "GIFFT & REGENBACK",
+    "island": "stj",
+    "quarter": "13A & 14A CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.32616629643505,
+      "lng": -64.77309772521559
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "qift-hill",
+        "sourceName": "Qift Hill",
+        "normalizedName": "qift-hill",
+        "lat": 18.325,
+        "lng": -64.7730556,
+        "rawLat": "18 19 30",
+        "rawLng": "64 46 23",
+        "possibleIsland": "stj",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Qift Hill; Summit, altitude 827 feet, lat. 18\" 19' 30\" (1, 201. 4in. ), long. 64\" 46' 23\" (669 m. ), % mlle north of Rendezvous I h y; top of mountain mass 1 mile wide between Bans Gut and Fish Bay, on boundtiry between Cruz Bny and Reef Bny Qunrtcrs, southwest portion of St. John Island. Locally known as Sessman Hill. ."
+      }
+    ]
+  },
+  {
+    "geoid": "1631",
+    "estateName": "GLUCKSBERG",
+    "island": "stj",
+    "quarter": "22 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3329838022163,
+      "lng": -64.77580007724475
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1917",
+    "estateName": "GREAT CINNAMON BAY",
+    "island": "stj",
+    "quarter": "MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.353326015201148,
+      "lng": -64.75360517385684
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1632",
+    "estateName": "GRUNWALD",
+    "island": "stj",
+    "quarter": "12B CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.33410699808615,
+      "lng": -64.77826179258105
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1977",
+    "estateName": "HAMMER FARM / CATHRINEBERG",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3452666380851,
+      "lng": -64.75895100996951
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1935",
+    "estateName": "HANSEN BAY",
+    "island": "stj",
+    "quarter": "6,7  EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.33926748296545,
+      "lng": -64.66960209213426
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1910",
+    "estateName": "HARD LABOR",
+    "island": "stj",
+    "quarter": "13BA, 13BB CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.324201659281748,
+      "lng": -64.7031502321739
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1936",
+    "estateName": "HAULOVER",
+    "island": "stj",
+    "quarter": "5 EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3491345940415,
+      "lng": -64.68502381640684
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1645",
+    "estateName": "HENLEY CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3532711821381,
+      "lng": -64.7930438770132
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "HERMITAGE",
+    "island": "stj",
+    "quarter": "3B CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.35487641116465,
+      "lng": -64.7005383044314
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "3630",
+    "estateName": "HOPE",
+    "island": "stj",
+    "quarter": "5 REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.34078922243555,
+      "lng": -64.73636106952304
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1634",
+    "estateName": "JOHNS FOLLY",
+    "island": "stj",
+    "quarter": "14A, 14B, 14C CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3193581313445,
+      "lng": -64.70304523695961
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1633",
+    "estateName": "L'ESPERANCE",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.33833907156755,
+      "lng": -64.75926500225845
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "3633",
+    "estateName": "LAMESHUR COMPLEX",
+    "island": "stj",
+    "quarter": "REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.3215083872189,
+      "lng": -64.72235457397085
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1638",
+    "estateName": "LEINSTER BAY",
+    "island": "stj",
+    "quarter": "MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.36092071796525,
+      "lng": -64.71843131202445
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1979",
+    "estateName": "LITTLE PLANTATION (Lohman)",
+    "island": "stj",
+    "quarter": "4A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.338279674410302,
+      "lng": -64.7164700652325
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1626",
+    "estateName": "LOVANGO CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3619271023656,
+      "lng": -64.8056650408506
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1629",
+    "estateName": "MANDAHL",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3113965331173,
+      "lng": -64.7124047177175
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1919",
+    "estateName": "MILAND",
+    "island": "stj",
+    "quarter": "MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.35490515668765,
+      "lng": -64.7461843645371
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1641",
+    "estateName": "MINGO CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.359631223485252,
+      "lng": -64.82018790394136
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1918",
+    "estateName": "MOLLEDAHL & LITTLE REEF BAY",
+    "island": "stj",
+    "quarter": "10A REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.32643757771295,
+      "lng": -64.75038943185126
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1934",
+    "estateName": "MT PLEASANT & RETREAT",
+    "island": "stj",
+    "quarter": "EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.356664937054447,
+      "lng": -64.6924915705215
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "6477",
+    "estateName": "NEWFOUND BAY",
+    "island": "stj",
+    "quarter": "9A  EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.344985055832147,
+      "lng": -64.66882684668585
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1637",
+    "estateName": "PALESTINA",
+    "island": "stj",
+    "quarter": null,
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.34836114006205,
+      "lng": -64.70660335072776
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1838",
+    "estateName": "PASTORY",
+    "island": "stj",
+    "quarter": "5 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3333478812037,
+      "lng": -64.78450558337934
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1636",
+    "estateName": "PETER BAY",
+    "island": "stj",
+    "quarter": "2AA MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.351925094693698,
+      "lng": -64.76364726021771
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1646",
+    "estateName": "RAM GOAT CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3551160406748,
+      "lng": -64.78944480445855
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1644",
+    "estateName": "RATA CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.355968979736453,
+      "lng": -64.79682105974845
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1624",
+    "estateName": "REEF BAY",
+    "island": "stj",
+    "quarter": "REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.3241492592502,
+      "lng": -64.7379062541914
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "white-point",
+        "sourceName": "White Point",
+        "normalizedName": "white-point",
+        "lat": 18.3161111,
+        "lng": -64.7325,
+        "rawLat": "18 18 58",
+        "rawLng": "64 43 57",
+        "possibleIsland": "stj",
+        "possibleQuarter": "REEF BAY",
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "White Point; Salient knob, 78 feet high, forming acute angle of southern shore of St. John, between Lameshur Bay and Reef Bay. Q. P. \" L a m \" : lat. 18\" 18' 58'' (1, 787 meters), long. 64\" 43' 57\" (1, 683 meters). Name Lameshur Point, claimable by two other points : this cnlled. White Pynt in eighteenth century; Spanish, Punta Blanca. See \" Wliite Cliffs. \""
+      }
+    ]
+  },
+  {
+    "geoid": "1987",
+    "estateName": "RENDEZVOUS & DITLEFF",
+    "island": "stj",
+    "quarter": "15A CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3182880929888,
+      "lng": -64.771809353005
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1623",
+    "estateName": "RUSTENBERG & ADVENTURE",
+    "island": "stj",
+    "quarter": "MAHO BAY",
+    "quarterGroup": "MAHO_BAY",
+    "estateCentroid": {
+      "lat": 18.343650311911652,
+      "lng": -64.74981043233481
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "camelberg",
+        "sourceName": "Camelberg",
+        "normalizedName": "camelberg",
+        "lat": 18.3388889,
+        "lng": -64.7536111,
+        "rawLat": "18 20 20",
+        "rawLng": "64 45 13",
+        "possibleIsland": "stj",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Camelberg; Peak, 1, 192 feet high; lat. 18\" 20' 20. 19'' (621 m. ); long. 64\" 45' 13. 82\" (406 m. ); near center of St. John Island; conspicuous from sea. Also spelled '' Camel, \" \" Cameelberg, \" \" Kamelberg, \" ''Kamelbjerg, \" and locally known as \"Makombi. \" Air at summit, cool and bracing."
+      }
+    ]
+  },
+  {
+    "geoid": "6077",
+    "estateName": "SABA BAY",
+    "island": "stj",
+    "quarter": "8  EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3477263233184,
+      "lng": -64.67235135170526
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2006",
+    "estateName": "SAN SOUCCI & GUINEA GUT",
+    "island": "stj",
+    "quarter": "9 & 10 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3287702164582,
+      "lng": -64.7791078022711
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1981",
+    "estateName": "SAUNDER'S GUT",
+    "island": "stj",
+    "quarter": "7 CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.33566130318645,
+      "lng": -64.71543448803669
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1985",
+    "estateName": "SIEBEN",
+    "island": "stj",
+    "quarter": "9A REEF BAY",
+    "quarterGroup": "REEF_BAY",
+    "estateCentroid": {
+      "lat": 18.33083556385315,
+      "lng": -64.76140560058866
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2039",
+    "estateName": "ST QUACCO & ZIMMERMAN",
+    "island": "stj",
+    "quarter": "11 & 12 CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.32702948137565,
+      "lng": -64.70437980532179
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1643",
+    "estateName": "STEVEN CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.33000650755955,
+      "lng": -64.80740381518945
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1913",
+    "estateName": "SUSANNABERG",
+    "island": "stj",
+    "quarter": "17A CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.34253801380865,
+      "lng": -64.77371409029226
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1892",
+    "estateName": "TRUNK BAY",
+    "island": "stj",
+    "quarter": "16 CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.351052018877652,
+      "lng": -64.76655786272164
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1647",
+    "estateName": "TRUNK CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3550296711977,
+      "lng": -64.7686847888134
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1628",
+    "estateName": "TURNER POINT",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.3420162496453,
+      "lng": -64.69090698795429
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1639",
+    "estateName": "USHER'S QUAY",
+    "island": "stj",
+    "quarter": "CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.34632122900375,
+      "lng": -64.70943660635311
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1640",
+    "estateName": "WHISTLING CAY",
+    "island": "stj",
+    "quarter": "CRUZ BAY",
+    "quarterGroup": "CRUZ_BAY",
+    "estateCentroid": {
+      "lat": 18.3702779125285,
+      "lng": -64.75705807719291
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1991",
+    "estateName": "ZOOTENVAL",
+    "island": "stj",
+    "quarter": "3A CORAL BAY",
+    "quarterGroup": "CORAL_BAY",
+    "estateCentroid": {
+      "lat": 18.352418025614952,
+      "lng": -64.70588966136235
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1795",
+    "estateName": "ADELPHI",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3503525854884,
+      "lng": -64.98204334502465
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1898",
+    "estateName": "AGNES FANCY",
+    "island": "stt",
+    "quarter": "8, 8H GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.34920423771985,
+      "lng": -64.93569329206
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2032",
+    "estateName": "ALTONA & WELGUNST",
+    "island": "stt",
+    "quarter": "KRONPRINDSENS",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 18.3412699576036,
+      "lng": -64.94410778172886
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2031",
+    "estateName": "ANNA'S FANCY",
+    "island": "stt",
+    "quarter": "KRONPRINDSENS",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 18.34260748795655,
+      "lng": -64.9413616106873
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2022",
+    "estateName": "ANNA'S RETREAT",
+    "island": "stt",
+    "quarter": "1 NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.34264445784635,
+      "lng": -64.88706827427085
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1897",
+    "estateName": "BAKKERO",
+    "island": "stt",
+    "quarter": "3 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.32437770527245,
+      "lng": -64.91758954396096
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BELLEVUE",
+    "island": "stt",
+    "quarter": "7, 3 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.3265528432309,
+      "lng": -64.9212594012035
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BETHESDA",
+    "island": "stt",
+    "quarter": "8 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3559062831591,
+      "lng": -65.00835365155365
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BOLONGO",
+    "island": "stt",
+    "quarter": "3, 8 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.3175123332078,
+      "lng": -64.89879745646965
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1999",
+    "estateName": "BONNE ESPERANCE",
+    "island": "stt",
+    "quarter": "2 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.35446178282435,
+      "lng": -64.9895367101718
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BONNE RESOLUTION",
+    "island": "stt",
+    "quarter": "5 LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.361258565753303,
+      "lng": -64.95740720803701
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1797",
+    "estateName": "BORDEAUX",
+    "island": "stt",
+    "quarter": "6, 8 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.356590458506503,
+      "lng": -65.01661868979055
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1943",
+    "estateName": "BOTANY BAY",
+    "island": "stt",
+    "quarter": "7 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.35401195896805,
+      "lng": -65.03347371262775
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1998",
+    "estateName": "BOVONI",
+    "island": "stt",
+    "quarter": "1, 2, & 3 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.3156803213225,
+      "lng": -64.8845745482555
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1833",
+    "estateName": "BOVONI CAY",
+    "island": "stt",
+    "quarter": "FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.31274648774975,
+      "lng": -64.87229899313834
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1821",
+    "estateName": "BUCK ISLAND",
+    "island": "stt",
+    "quarter": "FRENCHMANS BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.27684110476125,
+      "lng": -64.8922408046305
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1799",
+    "estateName": "CANAAN & SCHERPENJEWEL",
+    "island": "stt",
+    "quarter": "7A, 7B GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3562182671322,
+      "lng": -64.92165545470951
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1801",
+    "estateName": "CAREENING HOLE",
+    "island": "stt",
+    "quarter": "8A SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.33519459552995,
+      "lng": -64.94227345605105
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2015",
+    "estateName": "CARET BAY",
+    "island": "stt",
+    "quarter": "3 LITTLE NORTHSIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.36457293689035,
+      "lng": -64.97608543520525
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1831",
+    "estateName": "CAS CAY",
+    "island": "stt",
+    "quarter": "FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.30742565259155,
+      "lng": -64.8657587591797
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1011",
+    "estateName": "CATHERINEBERG",
+    "island": "stt",
+    "quarter": "8H GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3450964261188,
+      "lng": -64.93264931271824
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2029",
+    "estateName": "CHARLOTTE AMALIE",
+    "island": "stt",
+    "quarter": "NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.334078148116802,
+      "lng": -64.8876202944684
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1830",
+    "estateName": "COCULUS ROCK",
+    "island": "stt",
+    "quarter": "RED HOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.31372200975455,
+      "lng": -64.8648698763188
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1804",
+    "estateName": "COKI POINT",
+    "island": "stt",
+    "quarter": "EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3494408440535,
+      "lng": -64.8666342727888
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2024",
+    "estateName": "CONTANT 7A",
+    "island": "stt",
+    "quarter": "7A SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.34442312704015,
+      "lng": -64.95865161016525
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1868",
+    "estateName": "CONTANT 7b",
+    "island": "stt",
+    "quarter": "7b SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.34915095287075,
+      "lng": -64.95907934583704
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1865",
+    "estateName": "CONTANT 7B",
+    "island": "stt",
+    "quarter": "7B SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.338744215016852,
+      "lng": -64.9502818745422
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1874",
+    "estateName": "CONTANT 7BA",
+    "island": "stt",
+    "quarter": "7BA SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3423386243081,
+      "lng": -64.95299950842059
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "CONTANT 7Bb",
+    "island": "stt",
+    "quarter": "7Bb SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.33952906418795,
+      "lng": -64.95038436824115
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2016",
+    "estateName": "CROWN & HAWK",
+    "island": "stt",
+    "quarter": "3, 3B, 3D, 3F, 3H SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3516443841391,
+      "lng": -64.97518249799175
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1803",
+    "estateName": "DEMARARA",
+    "island": "stt",
+    "quarter": "KRONPRINDSENS",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 18.3389130819727,
+      "lng": -64.94160955785715
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1829",
+    "estateName": "DOG ISLAND",
+    "island": "stt",
+    "quarter": "REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.2961806253714,
+      "lng": -64.8159807710881
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1938",
+    "estateName": "DONOE",
+    "island": "stt",
+    "quarter": "2A NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.3360307539689,
+      "lng": -64.90137070522624
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1916",
+    "estateName": "DOROTHEA",
+    "island": "stt",
+    "quarter": "6, 7A LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.36245597302735,
+      "lng": -64.96542702087879
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1825",
+    "estateName": "DUTCHMAN CAP",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.37996707126645,
+      "lng": -65.0617794059329
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1791",
+    "estateName": "EASTERN WATER ISLAND / SPRAT BAY",
+    "island": "stt",
+    "quarter": "10 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.32355944219015,
+      "lng": -64.94466601043206
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1900",
+    "estateName": "ELIZABETH",
+    "island": "stt",
+    "quarter": "3I GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35136065410805,
+      "lng": -64.93523180616941
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1944",
+    "estateName": "FORTUNA",
+    "island": "stt",
+    "quarter": "8 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.34910707085145,
+      "lng": -65.0142865514324
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1920",
+    "estateName": "FRENCHMAN'S BAY",
+    "island": "stt",
+    "quarter": "4 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.31958030255245,
+      "lng": -64.9084111427579
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1942",
+    "estateName": "FRYDENDAL",
+    "island": "stt",
+    "quarter": "4 EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3484265706152,
+      "lng": -64.87336686139005
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2037",
+    "estateName": "FRYDENHOJ",
+    "island": "stt",
+    "quarter": "1, 2, & 3 REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.325067635068898,
+      "lng": -64.8674982907022
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1793",
+    "estateName": "GREAT ST JAMES ISLAND",
+    "island": "stt",
+    "quarter": "6A REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.3105321364764,
+      "lng": -64.8291316641308
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1828",
+    "estateName": "GREEN CAY",
+    "island": "stt",
+    "quarter": "FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.30961532150965,
+      "lng": -64.9080402474628
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1811",
+    "estateName": "HANSLOLLIK ISLAND",
+    "island": "stt",
+    "quarter": "10 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3966282110595,
+      "lng": -64.9083506345075
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1792",
+    "estateName": "HASSEL ISLAND / ORKANSHULLET",
+    "island": "stt",
+    "quarter": "9 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.329239586132402,
+      "lng": -64.93473549862091
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1896",
+    "estateName": "HAVENSIGHT",
+    "island": "stt",
+    "quarter": "6A, 6 FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.3297646929236,
+      "lng": -64.92094811684731
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2002",
+    "estateName": "HEERLEIN'S BUY",
+    "island": "stt",
+    "quarter": "GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.36125082859635,
+      "lng": -64.91927951865205
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2030",
+    "estateName": "HOFFMAN",
+    "island": "stt",
+    "quarter": "2B NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.33237718839525,
+      "lng": -64.8970447926404
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1802",
+    "estateName": "HONDURAS",
+    "island": "stt",
+    "quarter": "KRONPRINDSENS",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 18.3364577625297,
+      "lng": -64.94284931506209
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1807",
+    "estateName": "HOPE",
+    "island": "stt",
+    "quarter": "5 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3626612187422,
+      "lng": -65.001633113491
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1940",
+    "estateName": "HOSPITAL GROUND",
+    "island": "stt",
+    "quarter": "9 NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.34747443082285,
+      "lng": -64.92553210361164
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1808",
+    "estateName": "HULL",
+    "island": "stt",
+    "quarter": "2, 3, 4, 3, 4B, 4A LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.367754652070353,
+      "lng": -64.95262479216476
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1788",
+    "estateName": "INNER BRASS ISLAND",
+    "island": "stt",
+    "quarter": "6A LITTLE NORTHSIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.38173975861995,
+      "lng": -64.9707654257096
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1787",
+    "estateName": "JOHN BREWER'S",
+    "island": "stt",
+    "quarter": "4, 5 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3453824903421,
+      "lng": -64.97656230533175
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1824",
+    "estateName": "KALKUM CAY",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3504403569425,
+      "lng": -65.05770189420505
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2035",
+    "estateName": "KINGS' QUARTER",
+    "island": "stt",
+    "quarter": "KINGS",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 18.341951771996698,
+      "lng": -64.92744649382395
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1805",
+    "estateName": "KRONPRINSENS QUARTER",
+    "island": "stt",
+    "quarter": "KRONPRINDSENS",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 18.34141928853635,
+      "lng": -64.937199780302
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1869",
+    "estateName": "LANGMATH",
+    "island": "stt",
+    "quarter": "REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.3330248707287,
+      "lng": -64.87415279470736
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2019",
+    "estateName": "LERKENLUND",
+    "island": "stt",
+    "quarter": "2,9 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35975098547915,
+      "lng": -64.94000561367716
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2028",
+    "estateName": "LILLIENDAL & MARIENHOJ",
+    "island": "stt",
+    "quarter": "3A, 3 LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.354843145626802,
+      "lng": -64.95255478074375
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2025",
+    "estateName": "LINDBERGH BAY",
+    "island": "stt",
+    "quarter": "4, 4A SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3430570558884,
+      "lng": -64.97240794989139
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1826",
+    "estateName": "LITTLE FLAT CAY",
+    "island": "stt",
+    "quarter": "SOUTH SIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3176615035053,
+      "lng": -64.9888146529801
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1812",
+    "estateName": "LITTLE HANSLOLLIK",
+    "island": "stt",
+    "quarter": null,
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.409622883251153,
+      "lng": -64.90668228034755
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1794",
+    "estateName": "LITTLE ST JAMES ISLAND",
+    "island": "stt",
+    "quarter": "6A REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.3002094728063,
+      "lng": -64.8252077853455
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1820",
+    "estateName": "LITTLE THATCH KEY",
+    "island": "stt",
+    "quarter": "8 EASTEND",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.35853577829425,
+      "lng": -64.83321788469925
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1836",
+    "estateName": "LIVER POOL",
+    "island": "stt",
+    "quarter": "FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.32988349314345,
+      "lng": -64.92381194208124
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1994",
+    "estateName": "LOUISENHOJ",
+    "island": "stt",
+    "quarter": "4, 5, 5A GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35205982839385,
+      "lng": -64.92213183992129
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1937",
+    "estateName": "LOVENLUND",
+    "island": "stt",
+    "quarter": "2, 8 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3602620470275,
+      "lng": -64.9080186236434
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1909",
+    "estateName": "LOWER JOHN DUNKO",
+    "island": "stt",
+    "quarter": "3B, 3C LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.342796459548502,
+      "lng": -64.9495968439204
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1939",
+    "estateName": "LYTTON'S FANCY",
+    "island": "stt",
+    "quarter": "8GC GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.34718910017665,
+      "lng": -64.93068382402944
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1939",
+    "estateName": "MAFOLIE",
+    "island": "stt",
+    "quarter": "8F GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35057920990645,
+      "lng": -64.9310796581254
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2023",
+    "estateName": "MANDAHL",
+    "island": "stt",
+    "quarter": "1 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3560692464838,
+      "lng": -64.89543387653845
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1997",
+    "estateName": "MARIENDAL",
+    "island": "stt",
+    "quarter": "4, 9 REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.3287034601041,
+      "lng": -64.87492977521575
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1800",
+    "estateName": "MISGUNST",
+    "island": "stt",
+    "quarter": "5A, 6 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35687840900315,
+      "lng": -64.9333822333455
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1870",
+    "estateName": "NADIR",
+    "island": "stt",
+    "quarter": "1, 2 REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.32023334840565,
+      "lng": -64.87644806190285
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2038",
+    "estateName": "NAZARETH",
+    "island": "stt",
+    "quarter": "1, 3, 4 REDHOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.32057236303325,
+      "lng": -64.8471117829859
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1786",
+    "estateName": "NELTJEBERG",
+    "island": "stt",
+    "quarter": "6 LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3665217508679,
+      "lng": -64.96899307113131
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1911",
+    "estateName": "NEW HERNHUT",
+    "island": "stt",
+    "quarter": "5 NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.3304551017122,
+      "lng": -64.90137763028414
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1796",
+    "estateName": "NISKY",
+    "island": "stt",
+    "quarter": "6 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.33151089875325,
+      "lng": -64.9576625505323
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1921",
+    "estateName": "NULLYBERG",
+    "island": "stt",
+    "quarter": "4 NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.326305680630853,
+      "lng": -64.89736067271285
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1789",
+    "estateName": "OUTER BRASS ISLAND",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.396771896594352,
+      "lng": -64.97125115098954
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1832",
+    "estateName": "PATRICIA CAY",
+    "island": "stt",
+    "quarter": "FRENCHMAN BAY",
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.3061163569349,
+      "lng": -64.87250593307215
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "PEARL",
+    "island": "stt",
+    "quarter": "2, 7A SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3580766730493,
+      "lng": -64.9788318164592
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1813",
+    "estateName": "PELICAN CAY",
+    "island": "stt",
+    "quarter": null,
+    "quarterGroup": "FRENCHMAN_BAY",
+    "estateCentroid": {
+      "lat": 18.41475103862565,
+      "lng": -64.908838486356
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1992",
+    "estateName": "PERSEVERANCE",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3536211183031,
+      "lng": -64.9991791172871
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1872",
+    "estateName": "PETERBORG",
+    "island": "stt",
+    "quarter": "2, 12 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.37184097350785,
+      "lng": -64.9279227864161
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2036",
+    "estateName": "QUEENS' QUARTER",
+    "island": "stt",
+    "quarter": "QUEENS",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 18.34330263698985,
+      "lng": -64.93360069219719
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1996",
+    "estateName": "RAPHUNE",
+    "island": "stt",
+    "quarter": "5B, 5BA NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.33611739862115,
+      "lng": -64.90749670274926
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1867",
+    "estateName": "ROSS",
+    "island": "stt",
+    "quarter": "8, 8A NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.344385751337548,
+      "lng": -64.92106561631704
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1840",
+    "estateName": "ROTTO CAY",
+    "island": "stt",
+    "quarter": "RED HOOK",
+    "quarterGroup": "REDHOOK",
+    "estateCentroid": {
+      "lat": 18.315388964993453,
+      "lng": -64.8677568207732
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1835",
+    "estateName": "SABA ISLAND",
+    "island": "stt",
+    "quarter": "SOUTH SIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.305365213967647,
+      "lng": -65.0001933420265
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1823",
+    "estateName": "SALT CAY",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.361460176887647,
+      "lng": -65.05306615329525
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2000",
+    "estateName": "SANTA MARIA",
+    "island": "stt",
+    "quarter": "1 WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.359333337383298,
+      "lng": -64.98905345449211
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "5646",
+    "estateName": "SAVANA ISLAND",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.3409417799056,
+      "lng": -65.07956596206054
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1941",
+    "estateName": "SMITH BAY",
+    "island": "stt",
+    "quarter": "1, 2, & 3 EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.335278251441,
+      "lng": -64.86171891676014
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2021",
+    "estateName": "SOLBERG",
+    "island": "stt",
+    "quarter": "1,2,6,9,12 LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3502071369676,
+      "lng": -64.94474322134475
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1816",
+    "estateName": "SORGENFRI EASTERN PORTION",
+    "island": "stt",
+    "quarter": "1 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.367491600136248,
+      "lng": -64.98491852585181
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1815",
+    "estateName": "SORGENFRI WESTERN PORTION",
+    "island": "stt",
+    "quarter": "1 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.36575563600985,
+      "lng": -64.9862872772905
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2034",
+    "estateName": "ST JOSEPH & ROSENDAHL",
+    "island": "stt",
+    "quarter": "4 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.35369715902085,
+      "lng": -64.91366486842695
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "5631",
+    "estateName": "St. PETER",
+    "island": "stt",
+    "quarter": "3A, 3 LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3636778385126,
+      "lng": -64.94634233178459
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1806",
+    "estateName": "STAABI",
+    "island": "stt",
+    "quarter": "9A GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.34908224179825,
+      "lng": -64.9388313298573
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1844",
+    "estateName": "SUBBASE/CROWN BAY",
+    "island": "stt",
+    "quarter": "6 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.33443387499615,
+      "lng": -64.95001864008165
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1856",
+    "estateName": "TAARNEBERG",
+    "island": "stt",
+    "quarter": "KINGS",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 18.34002417994195,
+      "lng": -64.9237213738386
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1915",
+    "estateName": "TABOR & HARMONY",
+    "island": "stt",
+    "quarter": "5 & 6 EAST END",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.349611595744598,
+      "lng": -64.88284998096904
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1819",
+    "estateName": "THATCH CAY",
+    "island": "stt",
+    "quarter": "8 EASTEND",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 18.3592767020762,
+      "lng": -64.86191857744305
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1895",
+    "estateName": "THOMAS",
+    "island": "stt",
+    "quarter": "6F, 6, 6C 6E, 6K, 6B, 6H, 6I NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.33875237679775,
+      "lng": -64.91696678686151
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1810",
+    "estateName": "THOMAS - LONG BAY",
+    "island": "stt",
+    "quarter": "KINGS",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 18.3372628064215,
+      "lng": -64.91976801040366
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1809",
+    "estateName": "THOMAS - SUGAR ESTATE",
+    "island": "stt",
+    "quarter": "6A NEW",
+    "quarterGroup": "NEW",
+    "estateCentroid": {
+      "lat": 18.33908620282785,
+      "lng": -64.91779047822504
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1834",
+    "estateName": "TURTLE DOVE CAY",
+    "island": "stt",
+    "quarter": "SOUTH SIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3086275618696,
+      "lng": -65.0003906549153
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2027",
+    "estateName": "UPPER JOHN DUNKO",
+    "island": "stt",
+    "quarter": "3A LITTLE NORTH SIDE",
+    "quarterGroup": "LITTLE_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3468398283624,
+      "lng": -64.9513046384204
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1790",
+    "estateName": "WATER ISLAND",
+    "island": "stt",
+    "quarter": "10 SOUTHSIDE",
+    "quarterGroup": "SOUTHSIDE",
+    "estateCentroid": {
+      "lat": 18.31668503360855,
+      "lng": -64.95403999930821
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "wave-book",
+        "sourceName": "Wave Book",
+        "normalizedName": "wave-book",
+        "lat": 18.3111111,
+        "lng": -64.9533333,
+        "rawLat": "18 18 40",
+        "rawLng": "64 57 12",
+        "possibleIsland": null,
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Wave Book; 16 feet high. 16 yards wide: lat. 18\" 18' 40. 3\" (1, 289 m. ), long. 64\" 57' 12\" (381 m. ); at base of &foot cliff and 203-fuot hill, east shore of south end of Water I&nnd. -O. R, 73800-48; T. 3771,"
+      }
+    ]
+  },
+  {
+    "geoid": "1822",
+    "estateName": "WEST CAY",
+    "island": "stt",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 18.35872531090545,
+      "lng": -65.0462665723619
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2033",
+    "estateName": "WINTBERG",
+    "island": "stt",
+    "quarter": "3 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3499803674524,
+      "lng": -64.90399697526581
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "wintberg",
+        "sourceName": "Wintberg",
+        "normalizedName": "wintberg",
+        "lat": 18.3494444,
+        "lng": -64.9036111,
+        "rawLat": "18 20 58",
+        "rawLng": "64 54 13",
+        "possibleIsland": "stt",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Wintberg; Ruined Estate, on col of mnin ridge of St. Thomas, a t 710 feet elevation, lat. 18\" 20' 58\" (1, 776 meters), long. 64\" 54' 13\" (882 meters); 6OQ yards northeast of Wintberg P e a k. 4 R. 73600-49; T. 8771. Leas correctly, Winberg, Windberg. Named for colonial family De Wint; several members on record: Oerd, Ian, Anna, etc."
+      }
+    ]
+  },
+  {
+    "geoid": "1995",
+    "estateName": "ZUFRIENDENHEIT",
+    "island": "stt",
+    "quarter": "5 GREAT NORTHSIDE",
+    "quarterGroup": "GREAT_NORTHSIDE",
+    "estateCentroid": {
+      "lat": 18.3578511891453,
+      "lng": -64.92668300993085
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1923",
+    "estateName": "A PIECE OF LAND EAST",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.755309796812,
+      "lng": -64.5703082254501
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1947",
+    "estateName": "ALL FOR THE BETTER",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.746938661401998,
+      "lng": -64.655578791822
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1747",
+    "estateName": "ALLENDALE (BOG OF ALLEN)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7296110384528,
+      "lng": -64.84043440311095
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1683",
+    "estateName": "ALTONA",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.747965284366,
+      "lng": -64.69015943989746
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1845",
+    "estateName": "ALTONA (FORT LOUISE AUGUSTA)",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.75256859243155,
+      "lng": -64.69419391898154
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1709",
+    "estateName": "ANGUILLA",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.700321192376997,
+      "lng": -64.77482221435531
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1764",
+    "estateName": "ANNABERG & SHANNON GROVE",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.702388244987148,
+      "lng": -64.77330058691145
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1713",
+    "estateName": "ANNALY",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75340474357545,
+      "lng": -64.8533191452217
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1879",
+    "estateName": "ANNAS HOPE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7288671218071,
+      "lng": -64.72845063966261
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BARREN SPOT (EAST)",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.706703740658448,
+      "lng": -64.7399601124969
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BARREN SPOT (WEST)",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7294582171211,
+      "lng": -64.7660315060087
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BECK'S GROVE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.72717157526815,
+      "lng": -64.8519521743646
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1885",
+    "estateName": "BEESTON HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.739728868772353,
+      "lng": -64.72345206833634
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BELLEVUE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.746020712480302,
+      "lng": -64.73187786074041
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BETSY'S JEWEL",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76269465494095,
+      "lng": -64.7944420941048
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1781",
+    "estateName": "BETTYS HOPE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.69531579785525,
+      "lng": -64.816510915274
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BLESSING",
+    "island": "stx",
+    "quarter": "KINGS",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.70959081594485,
+      "lng": -64.7634544438253
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1725",
+    "estateName": "BODKIN",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75023931514295,
+      "lng": -64.8357929761099
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BODY SLOB",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.73581643988735,
+      "lng": -64.7763236519917
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BOETZBERG",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.74585335311665,
+      "lng": -64.67922114125466
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BONNE ESPERANCE (NORTH)",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76623687995135,
+      "lng": -64.78335798034175
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "-1",
+    "estateName": "BONNE ESPERANCE (SOUTH)",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.74356362461915,
+      "lng": -64.7692203635706
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1751",
+    "estateName": "BROOKS HILL",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.7252902998397,
+      "lng": -64.8575924804858
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2042",
+    "estateName": "BUCK ISLAND",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.786941147028898,
+      "lng": -64.61931028889666
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1745",
+    "estateName": "BUGBY HOLE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.72798575264105,
+      "lng": -64.70207328391885
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1883",
+    "estateName": "BULOWS MINDE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.73924717655035,
+      "lng": -64.72793560871304
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1886",
+    "estateName": "BURNS HILL",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.758095386224348,
+      "lng": -64.8751651290253
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1661",
+    "estateName": "BUTLER'S BAY",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.753232112647552,
+      "lng": -64.87980189785985
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1841",
+    "estateName": "CALDWELL (KARAVAL)",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.72178817636235,
+      "lng": -64.7510759172358
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1888",
+    "estateName": "CALEDONIA",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76172242200235,
+      "lng": -64.86961726911215
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2013",
+    "estateName": "CANAAN",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.760974916404052,
+      "lng": -64.7997957341543
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1957",
+    "estateName": "CANE",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.702682157254202,
+      "lng": -64.84359059453385
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1863",
+    "estateName": "CANE (South)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.6840127842219,
+      "lng": -64.833212443952
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1693",
+    "estateName": "CANE GARDEN",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7075211279452,
+      "lng": -64.72744417315695
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1756",
+    "estateName": "CANE VALLEY",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.71909500710795,
+      "lng": -64.84903999375955
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1733",
+    "estateName": "CARINA",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.736547414825,
+      "lng": -64.6789987761033
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1955",
+    "estateName": "CARLTON",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.6968615238159,
+      "lng": -64.84550134041919
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1758",
+    "estateName": "CASSAVA GARDEN",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7156785948025,
+      "lng": -64.74282498419035
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1773",
+    "estateName": "CASTLE COAKLEY",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7235456156969,
+      "lng": -64.7454573926021
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1681",
+    "estateName": "CASTLE NUGENT",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.719562371093147,
+      "lng": -64.6797022059518
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1873",
+    "estateName": "CATHERINE'S HOPE",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.748171162973698,
+      "lng": -64.61463417055546
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1961",
+    "estateName": "CATHERINE'S REST",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7251971907117,
+      "lng": -64.7108142816844
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1687",
+    "estateName": "CHRISTIANSTED",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7438319621595,
+      "lng": -64.70310604223886
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1660",
+    "estateName": "CLAIRMONT",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.773535739848,
+      "lng": -64.7779237775738
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1746",
+    "estateName": "CLAIRMONT",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.72877916048585,
+      "lng": -64.84649650538131
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1702",
+    "estateName": "CLIFTON HILL",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.72361301840465,
+      "lng": -64.7752949334902
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1668",
+    "estateName": "COAKLEY BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.75255735316205,
+      "lng": -64.642238675789
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1972",
+    "estateName": "COLQUOHOUN",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.74379739376225,
+      "lng": -64.79774653182555
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1774",
+    "estateName": "CONCORDIA",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7655740575354,
+      "lng": -64.76879180625855
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1859",
+    "estateName": "CONCORDIA (South)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.68729839035385,
+      "lng": -64.87607507441115
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1651",
+    "estateName": "CONCORDIA (West)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.704578438994503,
+      "lng": -64.8663103343153
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1904",
+    "estateName": "CONSTITUTION HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.736691318359547,
+      "lng": -64.732668653024
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "83",
+    "estateName": "CONTENTMENT",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7380551734812,
+      "lng": -64.71023866116394
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1769",
+    "estateName": "COOPERS",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.6951962167965,
+      "lng": -64.8094797486572
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1762",
+    "estateName": "CORN HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.714435013534647,
+      "lng": -64.70934733168505
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1753",
+    "estateName": "COTTAGE",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.72045411996215,
+      "lng": -64.7553435237315
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1669",
+    "estateName": "COTTON GROVE",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7354068317233,
+      "lng": -64.63955741808715
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1666",
+    "estateName": "COTTON VALLEY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7505957119428,
+      "lng": -64.624758401535
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1743",
+    "estateName": "DIAMOND",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.73047622999105,
+      "lng": -64.75251969049944
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1766",
+    "estateName": "DIAMOND",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7066663885597,
+      "lng": -64.71230920892344
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1958",
+    "estateName": "DIAMOND",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.703767689287602,
+      "lng": -64.8283365815319
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1928",
+    "estateName": "ELIZA'S RETREAT",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.73792006393145,
+      "lng": -64.68704327902995
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1768",
+    "estateName": "ENFIELD GREEN",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.69303429290325,
+      "lng": -64.8280281866584
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1846",
+    "estateName": "ENVY",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.696948227205148,
+      "lng": -64.80358819044139
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1933",
+    "estateName": "FAREHAM",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.719078631969403,
+      "lng": -64.6706772295901
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1653",
+    "estateName": "FOUNTAIN",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75211989177615,
+      "lng": -64.8266436496026
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2014",
+    "estateName": "FREDERIKSHAAB",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.715309449649553,
+      "lng": -64.86049092929986
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1664",
+    "estateName": "FREDERIKSTED",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.7124548975535,
+      "lng": -64.88349213990135
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "50",
+    "estateName": "FRIEDENSTHAL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.741878312717198,
+      "lng": -64.70978262139894
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1970",
+    "estateName": "GLYNN",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.75073674602215,
+      "lng": -64.7751250403044
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1889",
+    "estateName": "GOLDEN GROVE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.713211455432898,
+      "lng": -64.7975358411718
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1686",
+    "estateName": "GOLDEN ROCK",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.750492234111952,
+      "lng": -64.72131271062725
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1691",
+    "estateName": "GRANARD",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.71266124912905,
+      "lng": -64.71119155794855
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1880",
+    "estateName": "GRANGE (North)",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7313643710483,
+      "lng": -64.72092022272085
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1881",
+    "estateName": "GRANGE (South)",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.720406562603053,
+      "lng": -64.69837792699475
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1882",
+    "estateName": "GRANGE HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.73471697987775,
+      "lng": -64.72495242395705
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1877",
+    "estateName": "GREAT POND",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.72774285576095,
+      "lng": -64.6486757604458
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "mount-fancy",
+        "sourceName": "Mount Fancy",
+        "normalizedName": "mount-fancy",
+        "lat": 17.725,
+        "lng": -64.6402778,
+        "rawLat": "17 43 30",
+        "rawLng": "64 38 25",
+        "possibleIsland": null,
+        "possibleQuarter": "EASTEND",
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Mount Fancy; 245 feet high, lat. 17\" 43' 30\" (924 meters), long. 64\" 38' 25\" (729 meters). Con:. icuons double hill, forming east point of Great Pond Bay, southwest of Cottongrove, Eastend A Qr. , 8. coast of St. Oroir. Stock farm attached to Cottongrove. -8corpion."
+      }
+    ]
+  },
+  {
+    "geoid": "1680",
+    "estateName": "GREEN CAY",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7590180643778,
+      "lng": -64.6571138576055
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1750",
+    "estateName": "GROVE PLACE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.730883867683502,
+      "lng": -64.8230564385662
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1777",
+    "estateName": "GUMBS LAND",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.74174282924215,
+      "lng": -64.6320255158777
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1884",
+    "estateName": "HAFENSIGHT",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.74156939047285,
+      "lng": -64.72750968016081
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1887",
+    "estateName": "HAMS BAY",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76452693219865,
+      "lng": -64.87741529528941
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1656",
+    "estateName": "HAMS BLUFF",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76770637435705,
+      "lng": -64.8718015967397
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1650",
+    "estateName": "HANNAHS REST",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.6920091791526,
+      "lng": -64.87357327290755
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1779",
+    "estateName": "HARD LABOR",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.74250585600845,
+      "lng": -64.83197282458195
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1676",
+    "estateName": "HARTMAN",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.72625551725455,
+      "lng": -64.66062192582025
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1723",
+    "estateName": "HERMITAGE",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.7503563751561,
+      "lng": -64.80503857459999
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1962",
+    "estateName": "HERMON HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.73418300782975,
+      "lng": -64.71072853406909
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1954",
+    "estateName": "HOGENSBERG",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.71167459321845,
+      "lng": -64.84332390797235
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1851",
+    "estateName": "HOLGER'S HOPE",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.740052955492303,
+      "lng": -64.69269330504125
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1759",
+    "estateName": "HOPE",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7092930829718,
+      "lng": -64.75842071161856
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1907",
+    "estateName": "HOPE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.722404260617,
+      "lng": -64.8376072715154
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1776",
+    "estateName": "HOPE & CARTON HILL",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.745392084097247,
+      "lng": -64.6228374734714
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1967",
+    "estateName": "HUMBUG",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.713622127959248,
+      "lng": -64.72641614130066
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1926",
+    "estateName": "ISAACS BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7501568067893,
+      "lng": -64.5768382164355
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1927",
+    "estateName": "JACKS BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7491914308546,
+      "lng": -64.58396905449375
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1760",
+    "estateName": "JERUSALEM & FIGTREE HILL",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.711488976822,
+      "lng": -64.74898597605966
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1740",
+    "estateName": "JOLLY HILL",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.73330383297955,
+      "lng": -64.8604270031298
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1701",
+    "estateName": "JUDITHS FANCY",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7749468067485,
+      "lng": -64.7456709954797
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1754",
+    "estateName": "KINGSHILL",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.7225068189219,
+      "lng": -64.78311493823111
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1975",
+    "estateName": "LA GRANDE PRINCESSE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.757271983688298,
+      "lng": -64.73523993211084
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2011",
+    "estateName": "LA GRANGE",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.71823717741445,
+      "lng": -64.87445690853116
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1748",
+    "estateName": "LA PRESVALLEE",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.72900204100975,
+      "lng": -64.6825293509468
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1738",
+    "estateName": "LA REINE",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.73398053250315,
+      "lng": -64.7709332398327
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2010",
+    "estateName": "LA VALLEE",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.77190581223105,
+      "lng": -64.79952848959576
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1689",
+    "estateName": "LBJ GARDENS",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7492712176253,
+      "lng": -64.71505291569261
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1716",
+    "estateName": "LEBANON HILL",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.757008643445,
+      "lng": -64.783903138109
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1720",
+    "estateName": "LITTLE FOUNTAIN",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.75426074676825,
+      "lng": -64.79301752522281
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1782",
+    "estateName": "LITTLE LA GRANGE",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.7274493490267,
+      "lng": -64.86457808397245
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1842",
+    "estateName": "LITTLE MOUNT PLEASANT (MATR. 11)",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.761635987223897,
+      "lng": -64.78783017294566
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1960",
+    "estateName": "LITTLE PRINCESSE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.752520194277402,
+      "lng": -64.72602995975815
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1671",
+    "estateName": "LITTLE PROFIT",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7332867769719,
+      "lng": -64.63275648063961
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1924",
+    "estateName": "LONG POINT & COTTON GARDEN",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.756962341569448,
+      "lng": -64.58113017501906
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1930",
+    "estateName": "LONGFORD",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7159688633824,
+      "lng": -64.6914549952351
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1752",
+    "estateName": "LOWER LOVE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7222373747837,
+      "lng": -64.80923105535605
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1945",
+    "estateName": "LOWRY HILL",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.738359631802048,
+      "lng": -64.67317575378715
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1775",
+    "estateName": "MADAM CARTY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.739492713680953,
+      "lng": -64.61703701918981
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1707",
+    "estateName": "MANNING'S BAY",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7001112112578,
+      "lng": -64.79360773639004
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1946",
+    "estateName": "MARIENHOJ",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.740070172519502,
+      "lng": -64.6675315344861
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "sight-mill",
+        "sourceName": "Sight Mill",
+        "normalizedName": "sight-mill",
+        "lat": 17.7422222,
+        "lng": -64.6688889,
+        "rawLat": "17 44 32",
+        "rawLng": "64 40 08",
+        "possibleIsland": "stx",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Sight Mill; Prominent object observed by navigntors entering Buck Island Channel, north b? St. Croix. Mill 1s 2% miles east of Christinnsted, in lat. 17\" 44' 32. 01'' (1, 012 meters), long. 64\" 40' 08. 45\" (249 meters), on summit of 180-foot hill commanding view or I' sight \" of both north nnd south coasts, and in sight of mhriners off either: 175 yards east is 200-foot summlt; 260 yards east, 140-foot co1, where road across Island passes gap."
+      }
+    ]
+  },
+  {
+    "geoid": "1706",
+    "estateName": "MARS HILL & STONY GROUND",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.70225314302515,
+      "lng": -64.8736156586017
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1700",
+    "estateName": "MARY'S FANCY",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.74612636309525,
+      "lng": -64.7609306226064
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1890",
+    "estateName": "MINT",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.714879137738052,
+      "lng": -64.83313977322419
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1726",
+    "estateName": "MON BIJOU",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.74720177215735,
+      "lng": -64.786385513979
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1721",
+    "estateName": "MON BIJOU / BLUE MT",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.7529455104308,
+      "lng": -64.7968792990236
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1976",
+    "estateName": "MONTPELLIER",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.76469662632465,
+      "lng": -64.7564546972505
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1732",
+    "estateName": "MONTPELLIER (I)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.737932809402352,
+      "lng": -64.84327480354494
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1854",
+    "estateName": "MONTPELLIER (II)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7339882459477,
+      "lng": -64.8302931939088
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2007",
+    "estateName": "MORNING STAR",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.76267907047465,
+      "lng": -64.76127587077406
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1715",
+    "estateName": "MOUNT EAGLE",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7591120534563,
+      "lng": -64.80572739345705
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1672",
+    "estateName": "MOUNT FANCY",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.72544511080075,
+      "lng": -64.6362443031374
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1948",
+    "estateName": "MOUNT PLEASANT (East)",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7484405648394,
+      "lng": -64.67025465182769
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1711",
+    "estateName": "MOUNT PLEASANT (North)",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.76435422632035,
+      "lng": -64.7894888059914
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1763",
+    "estateName": "MOUNT PLEASANT (South)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.710623580919098,
+      "lng": -64.81799514312371
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1670",
+    "estateName": "MOUNT RETREAT",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.73429993722005,
+      "lng": -64.62999820808935
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1903",
+    "estateName": "MOUNT STEWART",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.747914595970848,
+      "lng": -64.84303041392059
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1722",
+    "estateName": "MOUNT VICTORY",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.750229247140048,
+      "lng": -64.8683053275065
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1929",
+    "estateName": "MOUNT WELCOME",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.73905288296575,
+      "lng": -64.6921601952163
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1761",
+    "estateName": "MOUNTAIN",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.71409151355645,
+      "lng": -64.835947393362
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1847",
+    "estateName": "NEGRO BAY",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.6978977833209,
+      "lng": -64.79979690740001
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1654",
+    "estateName": "NICHOLAS",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7538763734073,
+      "lng": -64.87378540868094
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1922",
+    "estateName": "NORTH GRAPETREE BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7540195420225,
+      "lng": -64.59206479110006
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1728",
+    "estateName": "NORTH HALL",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.74951173408035,
+      "lng": -64.87233148757599
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1665",
+    "estateName": "NORTH SLOB",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.753093424189153,
+      "lng": -64.60252216053621
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1784",
+    "estateName": "NORTH STAR",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7643827657991,
+      "lng": -64.8181934288463
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1659",
+    "estateName": "NORTHSIDE",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75974688135625,
+      "lng": -64.8840756495307
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1850",
+    "estateName": "OLD HOSPITAL GROUNDS",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7425717276822,
+      "lng": -64.69801599383246
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "353",
+    "estateName": "ORANGE GROVE (East)",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.74426814120315,
+      "lng": -64.71834693167139
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1735",
+    "estateName": "ORANGE GROVE (West)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.73627308260075,
+      "lng": -64.85226893732636
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1729",
+    "estateName": "OXFORD",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7422683253968,
+      "lng": -64.86055976885295
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1767",
+    "estateName": "PARADISE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.70445940301865,
+      "lng": -64.81587187905009
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1719",
+    "estateName": "PARASOL",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7558796915945,
+      "lng": -64.8170085737669
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1692",
+    "estateName": "PEARL",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.712807117425903,
+      "lng": -64.7370935892219
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1749",
+    "estateName": "PETER'S REST",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.726211395107647,
+      "lng": -64.7368568207058
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1734",
+    "estateName": "PETERS FARM",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7386075660445,
+      "lng": -64.70493696827656
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1742",
+    "estateName": "PETRONELLA",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.726353410392,
+      "lng": -64.66931123803585
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1724",
+    "estateName": "PLEASANT VALE",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7506203661121,
+      "lng": -64.8618986721966
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1778",
+    "estateName": "PLEASANT VALLEY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.74525344321135,
+      "lng": -64.63832751599111
+    },
+    "matched": true,
+    "coordinateCount": 2,
+    "coordinates": [
+      {
+        "entryId": "beverhoudt",
+        "sourceName": "Beverhoudt",
+        "normalizedName": "beverhoudt",
+        "lat": 17.7444444,
+        "lng": -64.6411111,
+        "rawLat": "17 44 40",
+        "rawLng": "64 38 28",
+        "possibleIsland": "stx",
+        "possibleQuarter": "EASTEND",
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Beverhoudt; Plantage, either of 2 estntes of General Kriegs-Commissaire Lucas van Beverhoudt; viz : Cottongrove in Eastend, and Work-and-Rest in Company Quarter, St. Croix. -Bellin; Beck. Also spelled Beverhout. I n the northern edge of the Beverhoudt estate, near eastern boundnry of Eastend A Quarter is the highest summit on St. Croix, east of Christians t e d; altitude 850 feet, lat. 17\" 44' 40. 2\" (1, 235 m. ), long. 64\" 38' 28. 8\" (849 m). Van Beverhoudt family &ill resident. -Holst."
+      },
+      {
+        "entryId": "washington",
+        "sourceName": "Washington",
+        "normalizedName": "washington",
+        "lat": 17.7444444,
+        "lng": -64.6411111,
+        "rawLat": "17 44 40",
+        "rawLng": "64 38 28",
+        "possibleIsland": null,
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Washington; 640-foOt peak f40 yards east; FGO-foot peak % mile east, marked G. P. \"Seven\"; 740-foot bench north of last; Pole Hill, 573 feet high, to northwest; and two other summit+ of 554 and 507 feet, respectlvely, on $pur recurving westward. G. P. , \" Seven \"; lat. 17\" 44' 40. 17\" (1, 235meters), long. 64\" 38' 28. 81\" (849 meters)."
+      }
+    ]
+  },
+  {
+    "geoid": "1780",
+    "estateName": "PLESSEN (North)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.73430006364915,
+      "lng": -64.82762389166996
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1755",
+    "estateName": "PLESSEN (South)",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.71875658316205,
+      "lng": -64.82048366575034
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1703",
+    "estateName": "PROFIT",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.71590430053505,
+      "lng": -64.78092833993534
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1744",
+    "estateName": "PROSPECT HILL",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7284304547927,
+      "lng": -64.67607938657555
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1839",
+    "estateName": "PROSPECT HILL WEST",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.74970062193465,
+      "lng": -64.88801845754045
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1663",
+    "estateName": "PROSPERITY",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.728048607641753,
+      "lng": -64.877872164136
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1652",
+    "estateName": "PROSPERITY EAST",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.761465524614003,
+      "lng": -64.82741751426175
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2041",
+    "estateName": "PROTESTANT CAY",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7496395174271,
+      "lng": -64.70268925261234
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1785",
+    "estateName": "PUBLIC PORT SITE (Filled Lands)",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.695258877802,
+      "lng": -64.76233022622525
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1731",
+    "estateName": "PUNCH",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.73965896466005,
+      "lng": -64.86899338708506
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "moirnb-f-w-y-hdiall",
+        "sourceName": "Moirnb F w y HdIall",
+        "normalizedName": "moirnb-f-w-y-hdiall",
+        "lat": 17.7397222,
+        "lng": -64.8666667,
+        "rawLat": "17 43 83",
+        "rawLng": "64 52 00",
+        "possibleIsland": "stx",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Moirnb F w y HdIall; Ridge, 303 feet hfgh, extending noTthntar8 from Mount Fancy Point, St. Croix. Name better restricted to %Ri-foothill at point. Ji&&t4?mw P d n t; Snore foot af Mount Fancy, east of Gireatpomi Bay, St. Croix. Mount Ztagctui~Hill, 393 feet high, lat. 17\" 43'83. 5'' (1, 029m. ), long. 64\"52' 00\" ( 4 m. ), immediately south of Little Lagrange E&ite-village, St, Croix. N&medrfor 6 Mhjor Fibgan, resident proprietor, 80 year8 BgO."
+      }
+    ]
+  },
+  {
+    "geoid": "1974",
+    "estateName": "RATTAN & BELVEDERE",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.749739825071998,
+      "lng": -64.74981364350225
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1855",
+    "estateName": "RECLAIMED LAND (FILLED)",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.6976795520269,
+      "lng": -64.74804734962734
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1684",
+    "estateName": "RECOVERY HILL",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.73688179370825,
+      "lng": -64.69789096304835
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1852",
+    "estateName": "RECOVERY-WELCOME",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.73650822305655,
+      "lng": -64.6933437766003
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1968",
+    "estateName": "RETREAT",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7095572671315,
+      "lng": -64.72505485811585
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1690",
+    "estateName": "RETREAT & PETER'S MINDE",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.70066297760405,
+      "lng": -64.7179528431993
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "53",
+    "estateName": "RICHMOND",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7454392029822,
+      "lng": -64.71220412944331
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2424",
+    "estateName": "RICHMOND (ALDERSVILLE)",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.741964444020752,
+      "lng": -64.71398026045216
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1727",
+    "estateName": "RIVER",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.742532430006,
+      "lng": -64.81851339729515
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1679",
+    "estateName": "ROBERTS HILL",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7508914374122,
+      "lng": -64.6775155324575
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1902",
+    "estateName": "ROSE HILL",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7515172839017,
+      "lng": -64.85901212227861
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1699",
+    "estateName": "RUBY",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.73869113141865,
+      "lng": -64.75529554587649
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1739",
+    "estateName": "SALLYS FANCY",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7340110135019,
+      "lng": -64.66552264191515
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2008",
+    "estateName": "SALT RIVER",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.774191067180702,
+      "lng": -64.7642277944249
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1677",
+    "estateName": "SEVEN HILLS",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7462147534703,
+      "lng": -64.6477516565729
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1655",
+    "estateName": "SHOYS",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.756881054978102,
+      "lng": -64.68080993897975
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1951",
+    "estateName": "SIGHT",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.73987143959825,
+      "lng": -64.6613933440346
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1905",
+    "estateName": "SION FARM",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.733099509712503,
+      "lng": -64.74405401882305
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1696",
+    "estateName": "SION HILL",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7413533677827,
+      "lng": -64.7466808919266
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1667",
+    "estateName": "SOLITUDE (East)",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.75400212327395,
+      "lng": -64.6345930997026
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1717",
+    "estateName": "SOLITUDE (North)",
+    "island": "stx",
+    "quarter": "NORTHSIDE B",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75739164600245,
+      "lng": -64.81161202563891
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1925",
+    "estateName": "SOUTH GRAPETREE BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.748278731624097,
+      "lng": -64.59115064473225
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1875",
+    "estateName": "SOUTH SLOB",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7480671806761,
+      "lng": -64.6006142929933
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1950",
+    "estateName": "SOUTHGATE FARM",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.75329505651455,
+      "lng": -64.66309280141385
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1708",
+    "estateName": "SPANISH TOWN",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.71556823232985,
+      "lng": -64.77254894847374
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1658",
+    "estateName": "SPRATT HALL",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.74306767792325,
+      "lng": -64.88348586636539
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "punch-hill",
+        "sourceName": "Punch Hill",
+        "normalizedName": "punch-hill",
+        "lat": 17.7441667,
+        "lng": -64.8752778,
+        "rawLat": "17 44 39",
+        "rawLng": "64 52 31",
+        "possibleIsland": "stx",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Punch Hill; 704 feet high, lat. 17\" 44' 39\" (1, 204meters), long. 64\" 52' 31\" (922 meters); 710 yards west of Punch Mill, on old Sebodker or Soebetker Estate, St. Croix."
+      }
+    ]
+  },
+  {
+    "geoid": "1712",
+    "estateName": "SPRING GARDEN",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7618197701666,
+      "lng": -64.86168761714396
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1931",
+    "estateName": "SPRING GUT",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.7283453618728,
+      "lng": -64.69475572276696
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1741",
+    "estateName": "SPRINGFIELD",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.73250369215545,
+      "lng": -64.83460195498935
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "mount-lookout",
+        "sourceName": "Mount Lookout",
+        "normalizedName": "mount-lookout",
+        "lat": 17.73,
+        "lng": -64.8338889,
+        "rawLat": "17 43 48",
+        "rawLng": "64 50 02",
+        "possibleIsland": "stx",
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Mount Lookout; Ridge rising steeply on eastern side of Prosperity Garden, St. Crdia, and commanding. a Ane view. Peak at western brow rises to 404 feet; another, 3/8 mile northeast, to fbbt. . Name sbportecl espeoially applicable to last: 1 b u n t iMoWilllam; ZZoak. ehaped ridge, with doubIe peak, elevations 763 and 777 feet, latter in lat. 17\" 43' 48. 7\" (1, 403m. ), long. 64\" 50' 02. 0\" (Sa m. ), on bordex of Two-Friendsand St. George Estate$ mi& noshwest of Grove Place, St. Croix. Named in honor of sa prominent and papular resident OP SO years ago. Y0zan. t:Xberg;. Ptdge south of Crequis Valley, in northern edge of Williams"
+      }
+    ]
+  },
+  {
+    "geoid": "1956",
+    "estateName": "ST GEORGES",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.720338285889298,
+      "lng": -64.83058165781915
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1757",
+    "estateName": "ST GEORGES HILL",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.717219913956598,
+      "lng": -64.85465839096796
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1973",
+    "estateName": "ST JOHN'S",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.76279682143985,
+      "lng": -64.74638254204584
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1682",
+    "estateName": "ST PETERS",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.74343239067965,
+      "lng": -64.68638037446959
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1770",
+    "estateName": "STONEY GROUND (East)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.6939307604063,
+      "lng": -64.8785502958437
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1862",
+    "estateName": "STONEY GROUND (West)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.685803888871952,
+      "lng": -64.89570216697985
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1698",
+    "estateName": "STRAWBERRY HILL",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7328185877428,
+      "lng": -64.75815600746235
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1718",
+    "estateName": "SWEET BOTTOM",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75804757654425,
+      "lng": -64.83680199033626
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1906",
+    "estateName": "TEAGUE BAY",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.75301681301925,
+      "lng": -64.61045350304195
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1932",
+    "estateName": "THE SPRINGS",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.72103927395715,
+      "lng": -64.68584754089756
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1695",
+    "estateName": "THOMAS",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.74401997439135,
+      "lng": -64.73823225721745
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1678",
+    "estateName": "TIPPERARY",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.74425251229635,
+      "lng": -64.65475143041975
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1675",
+    "estateName": "TURNER HOLE",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7395734788511,
+      "lng": -64.60978178464879
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "2026",
+    "estateName": "TWO BROTHERS / SMITHFIELD / HESSELBERG",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.70046990000005,
+      "lng": -64.88458695770751
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1730",
+    "estateName": "TWO FRIENDS",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.740684267348,
+      "lng": -64.8376442242562
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1876",
+    "estateName": "UNION & MOUNT WASHINGTON",
+    "island": "stx",
+    "quarter": "EASTEND A",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7367566591224,
+      "lng": -64.65108975122155
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1737",
+    "estateName": "UPPER LOVE",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7303688512917,
+      "lng": -64.81199600403966
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1971",
+    "estateName": "VICORP LAND",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.7228599037311,
+      "lng": -64.80093609185555
+    },
+    "matched": true,
+    "coordinateCount": 1,
+    "coordinates": [
+      {
+        "entryId": "canegarden-hill",
+        "sourceName": "Canegarden Hill",
+        "normalizedName": "canegarden-hill",
+        "lat": 17.7072222,
+        "lng": -64.8086111,
+        "rawLat": "17 42 26",
+        "rawLng": "64 48 31",
+        "possibleIsland": null,
+        "possibleQuarter": null,
+        "confidence": 100,
+        "matchMethod": "point-in-estate-polygon",
+        "description": "Canegarden Hill; 120 feet hlgh, lat. 17\" 42' 26. 96\"; long. 64\" 48' 31. 14\"; 330 yards from bay, crowned by Estatehouse, both BO called."
+      }
+    ]
+  },
+  {
+    "geoid": "1704",
+    "estateName": "VICORP LAND (BETHLEHEM & FRED)",
+    "island": "stx",
+    "quarter": "KING'S (KONGENS)",
+    "quarterGroup": "KING",
+    "estateCentroid": {
+      "lat": 17.72016363432865,
+      "lng": -64.7858009859371
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1908",
+    "estateName": "WALDBERGGAARD",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.72065511736185,
+      "lng": -64.84334261000215
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1657",
+    "estateName": "WASHINGTON HILL",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.74751099869765,
+      "lng": -64.88096992775709
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1783",
+    "estateName": "WHEEL OF FORTUNE",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.705799196575498,
+      "lng": -64.87120053327335
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1953",
+    "estateName": "WHIM (East)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.6987465950629,
+      "lng": -64.856134610222
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1858",
+    "estateName": "WHIM (West)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.68354253099725,
+      "lng": -64.89090051319594
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1772",
+    "estateName": "WHITE LADY",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.69154057388075,
+      "lng": -64.8839468550193
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1860",
+    "estateName": "WHITES BAY (East)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.686901929189702,
+      "lng": -64.87381669603064
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1771",
+    "estateName": "WHITES BAY (North)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.69344756430175,
+      "lng": -64.88455448608035
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1861",
+    "estateName": "WHITES BAY (South)",
+    "island": "stx",
+    "quarter": "WEST END",
+    "quarterGroup": "WEST_END",
+    "estateCentroid": {
+      "lat": 17.68953537761275,
+      "lng": -64.88339692489569
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1901",
+    "estateName": "WILL'S BAY",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.75828851965295,
+      "lng": -64.8438565677093
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1662",
+    "estateName": "WILLIAM",
+    "island": "stx",
+    "quarter": "NORTHSIDE A",
+    "quarterGroup": "NORTHSIDE",
+    "estateCentroid": {
+      "lat": 17.7361947584054,
+      "lng": -64.88053609237156
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1963",
+    "estateName": "WILLIAMS DELIGHT",
+    "island": "stx",
+    "quarter": "PRINCE",
+    "quarterGroup": "PRINCE",
+    "estateCentroid": {
+      "lat": 17.69714136940255,
+      "lng": -64.8364797961963
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1714",
+    "estateName": "WINDSOR",
+    "island": "stx",
+    "quarter": "QUEEN",
+    "quarterGroup": "QUEEN",
+    "estateCentroid": {
+      "lat": 17.7603909805568,
+      "lng": -64.77313377370525
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1674",
+    "estateName": "WOOD COTTAGE",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7355980616191,
+      "lng": -64.6251055171592
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1694",
+    "estateName": "WORK & REST",
+    "island": "stx",
+    "quarter": "COMPANY",
+    "quarterGroup": "COMPANY",
+    "estateCentroid": {
+      "lat": 17.721303820101852,
+      "lng": -64.72422807010045
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1843",
+    "estateName": "YELLOW CLIFF (North)",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.7474816855347,
+      "lng": -64.6188717208027
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  },
+  {
+    "geoid": "1673",
+    "estateName": "YELLOW CLIFF (South)",
+    "island": "stx",
+    "quarter": "EASTEND B",
+    "quarterGroup": "EAST_END",
+    "estateCentroid": {
+      "lat": 17.737139397091198,
+      "lng": -64.62040316410946
+    },
+    "matched": false,
+    "coordinateCount": 0,
+    "coordinates": []
+  }
+];
+
+export function getEstateCoordinateLinkByGeoid(geoid: string) {
+  return estateCoordinateLinks.find((link) => String(link.geoid) === String(geoid)) ?? null;
+}
+
+export function getEstateCoordinatesByGeoid(geoid: string) {
+  return getEstateCoordinateLinkByGeoid(geoid)?.coordinates ?? [];
+}

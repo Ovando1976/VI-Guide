@@ -1,0 +1,100 @@
+import type { TaxiFareRule } from "../lib/mobility/taxi/types";
+
+const accessedAt = "2026-06-16T00:00:00-04:00";
+
+const source = {
+  label: "Published 2022 St. John taxi rate sheet capture",
+  sourceType: "secondary_published_sheet" as const,
+  effectiveDate: "2022-10-24",
+  accessedAt,
+};
+
+const common = {
+  island: "stj" as const,
+  computationMode: "one_person_vs_two_plus_per_person" as const,
+  luggagePerBagAmount: 3,
+  oversizeBagMaxAmount: 6,
+  waitingPerMinuteAmount: 1,
+  waitingGraceMinutes: 5,
+  lateNightPerPersonAmount: 3,
+  lateNightWindow: { start: "00:00", end: "06:00" },
+  exclusivityRule: "negotiated" as const,
+  serviceClass: "either" as const,
+  source,
+  reviewStatus: "needs_review" as const,
+};
+
+function rule(
+  id: string,
+  originZoneId: string,
+  destinationZoneId: string,
+  onePersonAmount: number,
+  twoPlusPerPersonAmount: number
+): TaxiFareRule {
+  return {
+    id,
+    ...common,
+    originZoneId,
+    destinationZoneId,
+    onePersonAmount,
+    twoPlusPerPersonAmount,
+  };
+}
+
+export const taxiFareRulesSTJ: TaxiFareRule[] = [
+  rule("stj_cruz_bay_to_stj_caneel_bay_2022", "stj_cruz_bay", "stj_caneel_bay", 8, 6),
+  rule("stj_cruz_bay_to_stj_chocolate_hole_2022", "stj_cruz_bay", "stj_chocolate_hole", 8, 6),
+  rule("stj_cruz_bay_to_stj_great_cruz_bay_2022", "stj_cruz_bay", "stj_great_cruz_bay", 8, 6),
+  rule("stj_cruz_bay_to_stj_westin_2022", "stj_cruz_bay", "stj_westin", 8, 6),
+  rule("stj_cruz_bay_to_stj_trunk_bay_2022", "stj_cruz_bay", "stj_trunk_bay", 11, 8),
+  rule("stj_cruz_bay_to_stj_cinnamon_bay_2022", "stj_cruz_bay", "stj_cinnamon_bay", 12, 9),
+  rule("stj_cruz_bay_to_stj_maho_bay_2022", "stj_cruz_bay", "stj_maho_bay", 15, 12),
+  rule("stj_cruz_bay_to_stj_leinster_bay_2022", "stj_cruz_bay", "stj_leinster_bay", 18, 14),
+  rule("stj_cruz_bay_to_stj_coral_bay_2022", "stj_cruz_bay", "stj_coral_bay", 18, 14),
+  rule("stj_cruz_bay_to_stj_salt_pond_2022", "stj_cruz_bay", "stj_salt_pond", 20, 15),
+  rule("stj_coral_bay_to_stj_salt_pond_2022", "stj_coral_bay", "stj_salt_pond", 12, 9),
+  rule("stj_coral_bay_to_stj_leinster_bay_2022", "stj_coral_bay", "stj_leinster_bay", 12, 9),
+  rule("stj_coral_bay_to_stj_maho_bay_2022", "stj_coral_bay", "stj_maho_bay", 10, 8),
+  rule("stj_coral_bay_to_stj_cinnamon_bay_2022", "stj_coral_bay", "stj_cinnamon_bay", 18, 14),
+  rule("stj_coral_bay_to_stj_trunk_bay_2022", "stj_coral_bay", "stj_trunk_bay", 20, 15),
+  rule("stj_coral_bay_to_stj_caneel_bay_2022", "stj_coral_bay", "stj_caneel_bay", 22, 17),
+  rule("stj_coral_bay_to_stj_chocolate_hole_2022", "stj_coral_bay", "stj_chocolate_hole", 22, 17),
+  rule("stj_coral_bay_to_stj_great_cruz_bay_2022", "stj_coral_bay", "stj_great_cruz_bay", 22, 17),
+  rule("stj_coral_bay_to_stj_westin_2022", "stj_coral_bay", "stj_westin", 22, 17),
+  rule("stj_caneel_bay_to_stj_trunk_bay_2022", "stj_caneel_bay", "stj_trunk_bay", 8, 6),
+  rule("stj_caneel_bay_to_stj_cinnamon_bay_2022", "stj_caneel_bay", "stj_cinnamon_bay", 10, 8),
+  rule("stj_caneel_bay_to_stj_maho_bay_2022", "stj_caneel_bay", "stj_maho_bay", 14, 10),
+  rule("stj_caneel_bay_to_stj_leinster_bay_2022", "stj_caneel_bay", "stj_leinster_bay", 16, 12),
+  rule("stj_caneel_bay_to_stj_chocolate_hole_2022", "stj_caneel_bay", "stj_chocolate_hole", 10, 8),
+  rule("stj_caneel_bay_to_stj_great_cruz_bay_2022", "stj_caneel_bay", "stj_great_cruz_bay", 10, 8),
+  rule("stj_caneel_bay_to_stj_westin_2022", "stj_caneel_bay", "stj_westin", 10, 8),
+  rule("stj_caneel_bay_to_stj_salt_pond_2022", "stj_caneel_bay", "stj_salt_pond", 22, 17),
+  rule("stj_chocolate_hole_to_stj_great_cruz_bay_2022", "stj_chocolate_hole", "stj_great_cruz_bay", 6, 4),
+  rule("stj_chocolate_hole_to_stj_westin_2022", "stj_chocolate_hole", "stj_westin", 6, 4),
+  rule("stj_chocolate_hole_to_stj_trunk_bay_2022", "stj_chocolate_hole", "stj_trunk_bay", 12, 9),
+  rule("stj_chocolate_hole_to_stj_cinnamon_bay_2022", "stj_chocolate_hole", "stj_cinnamon_bay", 14, 10),
+  rule("stj_chocolate_hole_to_stj_maho_bay_2022", "stj_chocolate_hole", "stj_maho_bay", 16, 12),
+  rule("stj_chocolate_hole_to_stj_leinster_bay_2022", "stj_chocolate_hole", "stj_leinster_bay", 18, 14),
+  rule("stj_chocolate_hole_to_stj_salt_pond_2022", "stj_chocolate_hole", "stj_salt_pond", 22, 17),
+  rule("stj_great_cruz_bay_to_stj_westin_2022", "stj_great_cruz_bay", "stj_westin", 6, 4),
+  rule("stj_great_cruz_bay_to_stj_trunk_bay_2022", "stj_great_cruz_bay", "stj_trunk_bay", 12, 9),
+  rule("stj_great_cruz_bay_to_stj_cinnamon_bay_2022", "stj_great_cruz_bay", "stj_cinnamon_bay", 14, 10),
+  rule("stj_great_cruz_bay_to_stj_maho_bay_2022", "stj_great_cruz_bay", "stj_maho_bay", 16, 12),
+  rule("stj_great_cruz_bay_to_stj_leinster_bay_2022", "stj_great_cruz_bay", "stj_leinster_bay", 18, 14),
+  rule("stj_great_cruz_bay_to_stj_salt_pond_2022", "stj_great_cruz_bay", "stj_salt_pond", 22, 17),
+  rule("stj_westin_to_stj_trunk_bay_2022", "stj_westin", "stj_trunk_bay", 12, 9),
+  rule("stj_westin_to_stj_cinnamon_bay_2022", "stj_westin", "stj_cinnamon_bay", 14, 10),
+  rule("stj_westin_to_stj_maho_bay_2022", "stj_westin", "stj_maho_bay", 16, 12),
+  rule("stj_westin_to_stj_leinster_bay_2022", "stj_westin", "stj_leinster_bay", 18, 14),
+  rule("stj_westin_to_stj_salt_pond_2022", "stj_westin", "stj_salt_pond", 22, 17),
+  rule("stj_trunk_bay_to_stj_cinnamon_bay_2022", "stj_trunk_bay", "stj_cinnamon_bay", 8, 6),
+  rule("stj_trunk_bay_to_stj_maho_bay_2022", "stj_trunk_bay", "stj_maho_bay", 10, 8),
+  rule("stj_trunk_bay_to_stj_leinster_bay_2022", "stj_trunk_bay", "stj_leinster_bay", 14, 10),
+  rule("stj_trunk_bay_to_stj_salt_pond_2022", "stj_trunk_bay", "stj_salt_pond", 18, 14),
+  rule("stj_cinnamon_bay_to_stj_maho_bay_2022", "stj_cinnamon_bay", "stj_maho_bay", 8, 6),
+  rule("stj_cinnamon_bay_to_stj_leinster_bay_2022", "stj_cinnamon_bay", "stj_leinster_bay", 10, 8),
+  rule("stj_cinnamon_bay_to_stj_salt_pond_2022", "stj_cinnamon_bay", "stj_salt_pond", 18, 14),
+  rule("stj_maho_bay_to_stj_leinster_bay_2022", "stj_maho_bay", "stj_leinster_bay", 8, 6),
+  rule("stj_maho_bay_to_stj_salt_pond_2022", "stj_maho_bay", "stj_salt_pond", 20, 15),
+  rule("stj_leinster_bay_to_stj_salt_pond_2022", "stj_leinster_bay", "stj_salt_pond", 22, 17),
+];

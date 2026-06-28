@@ -1,0 +1,43 @@
+import type { MatriklerEntry } from "./matriklerTypes";
+
+export const annasRetreatMatriklerTargets: MatriklerEntry[] = [
+  {
+    id: "matrikler-stt-1755-tutu-target",
+    year: 1755,
+    island: "st_thomas",
+    quarter: "New Quarter / Ny Kvarter",
+    estateName: "Tutu",
+    historicalNames: ["Tutu"],
+    ownerNames: [],
+    neighboringEstates: ["Tabor", "Harmonie"],
+    sourceLabel: "St. Thomas Matrikler / land-tax roll",
+    confidence: "unresolved",
+    notes: "Target entry. Extract owner, acreage, enslaved count, and production data from original roll.",
+  },
+  {
+    id: "matrikler-stt-1755-tabor-target",
+    year: 1755,
+    island: "st_thomas",
+    quarter: "New Quarter / Ny Kvarter",
+    estateName: "Tabor",
+    historicalNames: ["Tabor"],
+    ownerNames: [],
+    neighboringEstates: ["Tutu", "Harmonie"],
+    sourceLabel: "St. Thomas Matrikler / land-tax roll",
+    confidence: "unresolved",
+    notes: "Target entry. Needed to reconstruct pre-merger Anna's Retreat footprint.",
+  },
+  {
+    id: "matrikler-stt-1755-harmonie-target",
+    year: 1755,
+    island: "st_thomas",
+    quarter: "New Quarter / Ny Kvarter",
+    estateName: "Harmonie",
+    historicalNames: ["Harmonie", "Harmoni"],
+    ownerNames: [],
+    neighboringEstates: ["Tutu", "Tabor"],
+    sourceLabel: "St. Thomas Matrikler / land-tax roll",
+    confidence: "unresolved",
+    notes: "Target entry. Needed to test Schifter, van Beverhoudt, de Windt, and Pogy connections.",
+  },
+];
