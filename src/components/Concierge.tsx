@@ -39,6 +39,7 @@ export default function Concierge({
   onSelectListing?: (listing: Listing) => void;
   agentId?: string;
   initialPrompt?: string;
+  selectedIsland?: IslandCode;
 }) {
   const agent = AGENT_REGISTRY[agentId] || AGENT_REGISTRY.concierge;
   const location = useLocation();
