@@ -1,0 +1,452 @@
+[
+  {
+    "id": "stt-fort-christian",
+    "name": "Fort Christian",
+    "source": "historicSite",
+    "type": "fort",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/fort-christian.jpg"
+  },
+  {
+    "id": "stt-blackbeards-castle",
+    "name": "Blackbeard’s Castle",
+    "source": "historicSite",
+    "type": "tower",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/blackbeards-castle.jpg"
+  },
+  {
+    "id": "stt-99-steps",
+    "name": "99 Steps",
+    "source": "historicSite",
+    "type": "historic-steps",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/99-steps.jpg"
+  },
+  {
+    "id": "stt-haagensen-house",
+    "name": "Haagensen House",
+    "source": "historicSite",
+    "type": "historic-house",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/haagensen-house.jpg"
+  },
+  {
+    "id": "stt-hotel-1829",
+    "name": "Hotel 1829",
+    "source": "historicSite",
+    "type": "historic-building",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/hotel-1829.jpg"
+  },
+  {
+    "id": "stt-emancipation-garden",
+    "name": "Emancipation Garden",
+    "source": "historicSite",
+    "type": "historic-park",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/emancipation-garden.jpg"
+  },
+  {
+    "id": "stt-legislature-building",
+    "name": "Legislature Building",
+    "source": "historicSite",
+    "type": "civic-building",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/legislature-building.jpg"
+  },
+  {
+    "id": "stt-market-square",
+    "name": "Market Square",
+    "source": "historicSite",
+    "type": "market",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/market-square.jpg"
+  },
+  {
+    "id": "stt-sts-peter-and-paul-cathedral",
+    "name": "Sts. Peter and Paul Cathedral",
+    "source": "historicSite",
+    "type": "church",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/sts-peter-and-paul-cathedral.jpg"
+  },
+  {
+    "id": "stt-frederick-lutheran-church",
+    "name": "Frederick Lutheran Church",
+    "source": "historicSite",
+    "type": "church",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/frederick-lutheran-church.jpg"
+  },
+  {
+    "id": "stt-st-thomas-synagogue",
+    "name": "Beracha Veshalom Vegimulth Hasidim Synagogue",
+    "source": "historicSite",
+    "type": "synagogue",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/beracha-veshalom-vegimulth-hasidim-synagogue.jpg"
+  },
+  {
+    "id": "stt-government-house",
+    "name": "Government House",
+    "source": "historicSite",
+    "type": "government-building",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/government-house.jpg"
+  },
+  {
+    "id": "stt-three-queens-statue",
+    "name": "Three Queens Statue",
+    "source": "historicSite",
+    "type": "monument",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/three-queens-statue.jpg"
+  },
+  {
+    "id": "stt-crown-house",
+    "name": "Crown House",
+    "source": "historicSite",
+    "type": "historic-building",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/crown-house.jpg"
+  },
+  {
+    "id": "stt-bluebeards-castle",
+    "name": "Bluebeard’s Castle",
+    "source": "historicSite",
+    "type": "tower",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/bluebeards-castle.jpg"
+  },
+  {
+    "id": "stt-hassel-island-historic-district",
+    "name": "Hassel Island Historic District",
+    "source": "historicSite",
+    "type": "historic-district",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/hassel-island-historic-district.jpg"
+  },
+  {
+    "id": "stt-cowell-battery",
+    "name": "Cowell Battery",
+    "source": "historicSite",
+    "type": "battery",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/cowell-battery.jpg"
+  },
+  {
+    "id": "stt-shipley-battery",
+    "name": "Shipley Battery",
+    "source": "historicSite",
+    "type": "battery",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/shipley-battery.jpg"
+  },
+  {
+    "id": "stt-signal-hill-battery",
+    "name": "Signal Hill Battery",
+    "source": "historicSite",
+    "type": "battery",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/signal-hill-battery.jpg"
+  },
+  {
+    "id": "stt-skytsborg-tower",
+    "name": "Skytsborg Tower",
+    "source": "historicSite",
+    "type": "tower",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/skytsborg-tower.jpg"
+  },
+  {
+    "id": "stj-annaberg-sugar-plantation",
+    "name": "Annaberg Sugar Plantation",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/annaberg-sugar-plantation.jpg"
+  },
+  {
+    "id": "stj-catherineberg-ruins",
+    "name": "Catherineberg Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/catherineberg-ruins.jpg"
+  },
+  {
+    "id": "stj-cinnamon-bay-plantation",
+    "name": "Cinnamon Bay Plantation",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/cinnamon-bay-plantation.jpg"
+  },
+  {
+    "id": "stj-reef-bay-sugar-mill",
+    "name": "Reef Bay Sugar Mill",
+    "source": "historicSite",
+    "type": "sugar-mill",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/reef-bay-sugar-mill.jpg"
+  },
+  {
+    "id": "stj-reef-bay-petroglyphs",
+    "name": "Reef Bay Petroglyphs",
+    "source": "historicSite",
+    "type": "archaeological-site",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/reef-bay-petroglyphs.jpg"
+  },
+  {
+    "id": "stj-lameshur-plantation",
+    "name": "Lameshur Plantation",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/lameshur-plantation.jpg"
+  },
+  {
+    "id": "stj-leinster-bay-ruins",
+    "name": "Leinster Bay Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/leinster-bay-ruins.jpg"
+  },
+  {
+    "id": "stj-susannaberg-ruins",
+    "name": "Estate Susannaberg Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/susannaberg-ruins.jpg"
+  },
+  {
+    "id": "stj-adrian-ruins",
+    "name": "Estate Adrian Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/adrian-ruins.jpg"
+  },
+  {
+    "id": "stj-carolina-ruins",
+    "name": "Estate Carolina Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/carolina-ruins.jpg"
+  },
+  {
+    "id": "stj-emmaus-ruins",
+    "name": "Estate Emmaus Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/emmaus-ruins.jpg"
+  },
+  {
+    "id": "stj-concordia-ruins",
+    "name": "Estate Concordia Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/concordia-ruins.jpg"
+  },
+  {
+    "id": "stj-caneel-bay-ruins",
+    "name": "Estate Caneel Bay Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/caneel-bay-ruins.jpg"
+  },
+  {
+    "id": "stj-maho-ruins",
+    "name": "Estate Maho Ruins",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/maho-ruins.jpg"
+  },
+  {
+    "id": "stx-fort-christiansvaern",
+    "name": "Fort Christiansværn",
+    "source": "historicSite",
+    "type": "fort",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/fort-christiansv-rn.jpg"
+  },
+  {
+    "id": "stx-fort-frederik",
+    "name": "Fort Frederik",
+    "source": "historicSite",
+    "type": "fort",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/fort-frederik.jpg"
+  },
+  {
+    "id": "stx-estate-whim-museum",
+    "name": "Estate Whim Museum",
+    "source": "historicSite",
+    "type": "plantation-museum",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/whim-museum.jpg"
+  },
+  {
+    "id": "stx-estate-little-princess",
+    "name": "Estate Little Princess",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/little-princess.jpg"
+  },
+  {
+    "id": "stx-estate-bethlehem-ruins",
+    "name": "Estate Bethlehem Ruins",
+    "source": "historicSite",
+    "type": "sugar-works",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/bethlehem-ruins.jpg"
+  },
+  {
+    "id": "stx-estate-rust-op-twist",
+    "name": "Estate Rust Op Twist",
+    "source": "historicSite",
+    "type": "plantation-ruins",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/rust-op-twist.jpg"
+  },
+  {
+    "id": "stx-estate-mount-washington",
+    "name": "Estate Mount Washington",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/mount-washington.jpg"
+  },
+  {
+    "id": "stx-st-george-village-botanical-garden",
+    "name": "Estate St. George Village Botanical Garden",
+    "source": "historicSite",
+    "type": "botanical-garden",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/st-george-village-botanical-garden.jpg"
+  },
+  {
+    "id": "stx-estate-two-friends",
+    "name": "Estate Two Friends",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/two-friends.jpg"
+  },
+  {
+    "id": "stx-estate-mount-victory",
+    "name": "Estate Mount Victory",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/mount-victory.jpg"
+  },
+  {
+    "id": "stx-estate-cane-garden",
+    "name": "Estate Cane Garden",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/cane-garden.jpg"
+  },
+  {
+    "id": "stx-estate-prosperity",
+    "name": "Estate Prosperity",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/prosperity.jpg"
+  },
+  {
+    "id": "stx-estate-judiths-fancy",
+    "name": "Estate Judith’s Fancy",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/judiths-fancy.jpg"
+  },
+  {
+    "id": "stx-estate-golden-rock",
+    "name": "Estate Golden Rock",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/golden-rock.jpg"
+  },
+  {
+    "id": "stx-estate-orange-grove",
+    "name": "Estate Orange Grove",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/orange-grove.jpg"
+  },
+  {
+    "id": "stx-estate-castle-coakley",
+    "name": "Estate Castle Coakley",
+    "source": "historicSite",
+    "type": "plantation-site",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/historicSite/castle-coakley.jpg"
+  }
+]

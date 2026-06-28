@@ -1,0 +1,1 @@
+export { taxiFareRules } from "../../../data/taxiFareRules";

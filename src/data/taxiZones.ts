@@ -1,0 +1,68 @@
+import type { TaxiZone } from "../types/taxi";
+
+export const taxiZones: TaxiZone[] = [
+  {
+    id: "stt-airport",
+    name: "Cyril E. King Airport",
+    island: "stt",
+    estateNames: ["Airport", "Lindbergh Bay", "Crown Bay"],
+    placeNames: ["Cyril E. King Airport", "STT Airport", "Airport"],
+    aliases: ["cek", "stt airport", "airport"],
+  },
+  {
+    id: "stt-charlotte-amalie",
+    name: "Charlotte Amalie",
+    island: "stt",
+    estateNames: ["Charlotte Amalie", "Hospital Ground", "Long Bay"],
+    placeNames: ["Charlotte Amalie", "Downtown", "Main Street", "Waterfront"],
+    aliases: ["town", "downtown", "charlotte amalie"],
+  },
+  {
+    id: "stt-havensight",
+    name: "Havensight / WICO",
+    island: "stt",
+    estateNames: ["Havensight", "Long Bay"],
+    placeNames: ["Havensight", "WICO", "Havensight Cruise Dock"],
+    aliases: ["wico", "havensight", "cruise dock"],
+  },
+  {
+    id: "stt-crown-bay",
+    name: "Crown Bay",
+    island: "stt",
+    estateNames: ["Crown Bay", "Subbase"],
+    placeNames: ["Crown Bay", "Crown Bay Cruise Port", "Crown Bay Marina"],
+    aliases: ["crown bay", "subbase"],
+  },
+  {
+    id: "stt-tutu",
+    name: "Tutu / Anna's Retreat",
+    island: "stt",
+    estateNames: ["Anna's Retreat", "Tutu"],
+    placeNames: ["Tutu", "Tutu Park Mall", "Anna's Retreat"],
+    aliases: ["tutu", "anna's retreat", "annas retreat"],
+  },
+  {
+    id: "stt-red-hook",
+    name: "Red Hook",
+    island: "stt",
+    estateNames: ["Red Hook", "Nazareth", "Frydenhoj"],
+    placeNames: ["Red Hook", "Red Hook Ferry Terminal", "American Yacht Harbor"],
+    aliases: ["red hook", "ferry terminal", "urman victor fredericks"],
+  },
+  {
+    id: "stt-smith-bay",
+    name: "Smith Bay / Coki",
+    island: "stt",
+    estateNames: ["Smith Bay"],
+    placeNames: ["Smith Bay", "Coki Point", "Coral World", "Lindquist Beach"],
+    aliases: ["smith bay", "coki", "coki point", "coral world", "lindquist"],
+  },
+  {
+    id: "stt-magens-bay",
+    name: "Magens Bay",
+    island: "stt",
+    estateNames: ["Magens Bay", "Peterborg"],
+    placeNames: ["Magens Bay", "Magens Bay Beach", "Peterborg"],
+    aliases: ["magens", "magens bay", "peterborg"],
+  },
+];

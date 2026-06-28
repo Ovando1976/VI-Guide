@@ -1,0 +1,92 @@
+[
+  {
+    "id": "archive-stt-charlotte-amalie-harbor-maps",
+    "name": "Charlotte Amalie Harbor Historic Maps",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/charlotte-amalie-harbor-historic-maps.jpg"
+  },
+  {
+    "id": "archive-stt-fort-christian-records",
+    "name": "Fort Christian Administrative and Military Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/fort-christian-administrative-and-military-records.jpg"
+  },
+  {
+    "id": "archive-stt-hassel-island-maritime-records",
+    "name": "Hassel Island Maritime and Military Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/hassel-island-maritime-and-military-records.jpg"
+  },
+  {
+    "id": "archive-stj-annaberg-plantation-records",
+    "name": "Annaberg Plantation Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/annaberg-plantation-records.jpg"
+  },
+  {
+    "id": "archive-stj-cinnamon-bay-plantation-archaeology",
+    "name": "Cinnamon Bay Plantation and Archaeology Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/cinnamon-bay-plantation-and-archaeology-records.jpg"
+  },
+  {
+    "id": "archive-stj-reef-bay-estate-records",
+    "name": "Reef Bay Estate and Sugar Works Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/reef-bay-estate-and-sugar-works-records.jpg"
+  },
+  {
+    "id": "archive-stx-christiansted-government-records",
+    "name": "Christiansted Government and Harbor Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/christiansted-government-and-harbor-records.jpg"
+  },
+  {
+    "id": "archive-stx-fort-frederik-emancipation-records",
+    "name": "Fort Frederik and Emancipation Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/fort-frederik-and-emancipation-records.jpg"
+  },
+  {
+    "id": "archive-stx-whim-plantation-records",
+    "name": "Estate Whim Plantation Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/whim-plantation-records.jpg"
+  },
+  {
+    "id": "archive-stx-salt-river-bay-records",
+    "name": "Salt River Bay Historic and Archaeological Records",
+    "source": "archive",
+    "type": "Danish West Indies Archives",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/archive/salt-river-bay-historic-and-archaeological-records.jpg"
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "type": "usvi-gaussian-splat-manifest",
+  "version": 1,
+  "layers": [
+    {
+      "id": "stt-stj-terrain",
+      "kind": "terrain",
+      "url": "/data/splats/stt-stj-terrain.png",
+      "bbox": [
+        -65.15,
+        18.17,
+        -64.55,
+        18.5
+      ],
+      "crs": "EPSG:4326"
+    },
+    {
+      "id": "stt-stj-highland",
+      "kind": "gaussian-splat",
+      "url": "/data/splats/stt-stj-highland.png",
+      "bbox": [
+        -65.15,
+        18.17,
+        -64.55,
+        18.5
+      ],
+      "crs": "EPSG:4326"
+    },
+    {
+      "id": "stx-terrain",
+      "kind": "terrain",
+      "url": "/data/splats/stx-terrain.png",
+      "bbox": [
+        -64.95,
+        17.6,
+        -64.5,
+        17.85
+      ],
+      "crs": "EPSG:4326"
+    },
+    {
+      "id": "stx-highland",
+      "kind": "gaussian-splat",
+      "url": "/data/splats/stx-highland.png",
+      "bbox": [
+        -64.95,
+        17.6,
+        -64.5,
+        17.85
+      ],
+      "crs": "EPSG:4326"
+    }
+  ]
+}

@@ -1,0 +1,963 @@
+import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  Anchor,
+  Briefcase,
+  Loader2,
+  MapPin,
+  Navigation,
+  Plane,
+  Search,
+  Shield,
+  Ship,
+  Users,
+  X,
+} from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { collection, getDocs, limit, query, where } from "firebase/firestore";
+
+import { db } from "../firebase";
+import { EstateExplorerMap } from "../features/estates/components/estate-explorer-map";
+import {
+  calculateQuote,
+  createTripRequest,
+  enrichLocation,
+  subscribeToTrip,
+} from "../lib/firestore/mobility";
+import { resolveParcelMobilityById } from "../lib/mobility/taxi/parcelZoneResolver";
+import { buildRouteLine } from "../lib/mobility/routeLine";
+import { cn } from "../lib/utils";
+import type {
+  AreaDoc,
+  BeachDoc,
+  EstateRecord,
+  IslandCode,
+  MobilityIsland,
+  ParcelRecord,
+  PlaceDoc,
+  ServiceClass,
+  Trip,
+  TripType,
+} from "../types";
+
+interface MobilityProps {
+  selectedIsland: IslandCode;
+  user: { uid?: string } | null;
+}
+
+type SearchResult = AreaDoc | BeachDoc | PlaceDoc | EstateRecord | ParcelRecord;
+
+
+type MobilityStep =
+  | "intent"
+  | "locations"
+  | "comfort"
+  | "quote"
+  | "confirm"
+  | "tracking"
+  | "complete";
+  
+type RouteTarget =
+  | {
+      kind: "parcel";
+      parcelId: string;
+      label: string;
+      island: string;
+      estateName: string | null;
+      centroid: { lat: number | null; lng: number | null };
+    }
+  | {
+      kind: "place";
+      id: string;
+      label: string;
+    };
+
+type LocationContext = {
+  lat: number;
+  lng: number;
+  estateName?: string;
+  parcelId?: string;
+  taxiZoneId?: string | null;
+};
+
+type TariffQuote = Trip["quote"] & {
+  pickupZoneId?: string;
+  dropoffZoneId?: string;
+  pickupZoneName?: string;
+  dropoffZoneName?: string;
+  reviewStatus?: string;
+  assumptions?: string[];
+  source?: {
+    label?: string;
+    sourceType?: string;
+    effectiveDate?: string;
+  };
+};
+
+function toMobilityIsland(value: IslandCode): MobilityIsland {
+  if (value === "st_thomas") return "stt";
+  if (value === "st_john") return "stj";
+  if (value === "st_croix") return "stx";
+  if (value === "water_island") return "wat";
+  return "unk";
+}
+
+function getIslandQuickZones(island: MobilityIsland) {
+  if (island === "stj") {
+    return {
+      airport: "stj_cruz_bay",
+      ferry: "stj_cruz_bay",
+      cruise: "stj_cruz_bay",
+      airportLabel: "Cruz Bay",
+      ferryLabel: "Cruz Bay Ferry",
+      cruiseLabel: "Cruz Bay",
+    };
+  }
+
+  if (island === "stx") {
+    return {
+      airport: "stx_airport",
+      ferry: "stx_christiansted",
+      cruise: "stx_christiansted",
+      airportLabel: "STX Airport",
+      ferryLabel: "Christiansted",
+      cruiseLabel: "Christiansted",
+    };
+  }
+
+  return {
+    airport: "stt_airport",
+    ferry: "stt_red_hook",
+    cruise: "stt_havensight",
+    airportLabel: "STT Airport",
+    ferryLabel: "Red Hook Ferry",
+    cruiseLabel: "Havensight",
+  };
+}
+
+function hasKey<K extends string>(
+  value: unknown,
+  key: K
+): value is Record<K, unknown> {
+  return Boolean(value && typeof value === "object" && key in value);
+}
+
+function asString(value: unknown, fallback = ""): string {
+  return typeof value === "string" && value.trim() ? value.trim() : fallback;
+}
+
+function asNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function getResultLabel(result: SearchResult): string {
+  if (hasKey(result, "name")) return asString(result.name, "Unnamed estate");
+  if (hasKey(result, "title")) return asString(result.title, "Untitled place");
+  if (hasKey(result, "address")) return asString(result.address, "Unnamed parcel");
+  if (hasKey(result, "parcelId")) return asString(result.parcelId, "Unnamed parcel");
+  return "Unknown location";
+}
+
+function getResultKey(result: SearchResult, fallback: string): string {
+  if (hasKey(result, "geoid")) return asString(result.geoid, fallback);
+  if (hasKey(result, "parcelId")) return asString(result.parcelId, fallback);
+  if (hasKey(result, "id")) return asString(result.id, fallback);
+  if (hasKey(result, "slug")) return asString(result.slug, fallback);
+  return fallback;
+}
+
+function getResultSubtitle(result: SearchResult): string {
+  if (hasKey(result, "geoid")) return "Estate";
+
+  if (hasKey(result, "parcelId")) {
+    const estateName = hasKey(result, "estateName") ? asString(result.estateName) : "";
+    return estateName ? `Parcel • ${estateName}` : "Parcel";
+  }
+
+  if (hasKey(result, "kind")) return asString(result.kind, "Area");
+  if (hasKey(result, "category")) return asString(result.category, "Place");
+
+  return "Destination";
+}
+
+function getLocationContext(result: SearchResult): LocationContext {
+  const coordinates = hasKey(result, "coordinates") ? result.coordinates : undefined;
+  const centroid = hasKey(result, "centroid") ? result.centroid : undefined;
+
+  const coordObj =
+    coordinates && typeof coordinates === "object"
+      ? (coordinates as { lat?: unknown; lng?: unknown })
+      : centroid && typeof centroid === "object"
+        ? (centroid as { lat?: unknown; lng?: unknown })
+        : {};
+
+  const lat = asNumber(coordObj.lat) ?? 0;
+  const lng = asNumber(coordObj.lng) ?? 0;
+
+  const estateName = hasKey(result, "estateName")
+    ? asString(result.estateName)
+    : hasKey(result, "geoid") && hasKey(result, "name")
+      ? asString(result.name)
+      : undefined;
+
+  const parcelId = hasKey(result, "parcelId") ? asString(result.parcelId) : undefined;
+
+  const taxiZoneId = hasKey(result, "taxiZoneId") ? asString(result.taxiZoneId) : null;
+
+  return {
+    lat,
+    lng,
+    estateName: estateName || undefined,
+    parcelId: parcelId || undefined,
+    taxiZoneId,
+  };
+}
+
+export default function Mobility({ selectedIsland, user }: MobilityProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [step, setStep] = useState<"request" | "quote" | "tracking">("request");
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
+  const [pickupContext, setPickupContext] = useState<LocationContext | null>(null);
+  const [dropoffContext, setDropoffContext] = useState<LocationContext | null>(null);
+  const [passengers, setPassengers] = useState(1);
+  const [luggage, setLuggage] = useState(0);
+  const [serviceClass, setServiceClass] = useState<ServiceClass>("shared");
+  const [tripType, setTripType] = useState<TripType>("direct");
+  const [loading, setLoading] = useState(false);
+  const [quote, setQuote] = useState<TariffQuote | null>(null);
+  const [activeTrip, setActiveTrip] = useState<Trip | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchingFor, setSearchingFor] = useState<"pickup" | "dropoff" | null>(null);
+
+  const mobilityIsland = useMemo(() => toMobilityIsland(selectedIsland), [selectedIsland]);
+  const quickZones = useMemo(() => getIslandQuickZones(mobilityIsland), [mobilityIsland]);
+
+  const routeLine = useMemo(
+    () => buildRouteLine(pickupContext, dropoffContext),
+    [pickupContext, dropoffContext]
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadDestination = async () => {
+      const destination = (location.state as { destination?: RouteTarget } | null)?.destination;
+      if (!destination) return;
+
+      setDropoff(destination.label);
+
+      if (destination.kind === "place") return;
+
+      const parcelMobility = await resolveParcelMobilityById(destination.parcelId);
+      if (cancelled) return;
+
+      if (destination.centroid.lat !== null && destination.centroid.lng !== null) {
+        setDropoffContext({
+          lat: destination.centroid.lat,
+          lng: destination.centroid.lng,
+          estateName: destination.estateName ?? parcelMobility?.estateName ?? undefined,
+          parcelId: destination.parcelId,
+          taxiZoneId: parcelMobility?.taxiZoneId ?? null,
+        });
+      }
+    };
+
+    void loadDestination();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [location.state]);
+
+  useEffect(() => {
+    const term = searchQuery.trim().toLowerCase();
+
+    if (term.length < 2) {
+      setSearchResults([]);
+      return;
+    }
+
+    let cancelled = false;
+
+    const performSearch = async () => {
+      try {
+        const results: SearchResult[] = [];
+
+        const estateSnap = await getDocs(
+          query(collection(db, "estates"), where("island", "==", mobilityIsland), limit(30))
+        );
+
+        results.push(
+          ...estateSnap.docs
+            .map((d) => ({ id: d.id, ...d.data() }) as unknown as EstateRecord)
+            .filter((estate) => {
+              const name = asString(estate.name).toLowerCase();
+              const aliasMatch = Array.isArray(estate.aliases)
+                ? estate.aliases.some((alias) => alias.toLowerCase().includes(term))
+                : false;
+
+              return name.includes(term) || aliasMatch;
+            })
+        );
+
+        const areaSnap = await getDocs(
+          query(collection(db, "areas"), where("islandCode", "==", selectedIsland), limit(20))
+        );
+
+        results.push(
+          ...areaSnap.docs
+            .map((d) => ({ id: d.id, ...d.data() }) as AreaDoc)
+            .filter((area) => area.name.toLowerCase().includes(term))
+        );
+
+        const beachSnap = await getDocs(
+          query(collection(db, "beaches"), where("islandCode", "==", selectedIsland), limit(20))
+        );
+
+        results.push(
+          ...beachSnap.docs
+            .map((d) => ({ id: d.id, ...d.data() }) as BeachDoc)
+            .filter((beach) => beach.title.toLowerCase().includes(term))
+        );
+
+        if (!cancelled) setSearchResults(results.slice(0, 8));
+      } catch (error) {
+        console.error("Mobility search failed:", error);
+        if (!cancelled) setSearchResults([]);
+      }
+    };
+
+    const debounce = window.setTimeout(performSearch, 300);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(debounce);
+    };
+  }, [searchQuery, selectedIsland, mobilityIsland]);
+
+  const setQuickDropoff = (
+    nextTripType: TripType,
+    label: string,
+    taxiZoneId: string
+  ) => {
+    setTripType(nextTripType);
+    setDropoff(label);
+    setDropoffContext({ lat: 0, lng: 0, taxiZoneId });
+  };
+
+  const handleGetQuote = async () => {
+    if (!pickup || !dropoff) return;
+
+    setLoading(true);
+
+    try {
+      const nextQuote = (await calculateQuote({
+        island: mobilityIsland,
+        tripType,
+        passengers,
+        luggage,
+        serviceClass,
+        originZone: pickupContext?.taxiZoneId ?? pickup,
+        destinationZone: dropoffContext?.taxiZoneId ?? dropoff,
+      })) as TariffQuote;
+
+      setQuote(nextQuote);
+      setStep("quote");
+    } catch (error) {
+      console.error("Quote failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRequestRide = async () => {
+    if (!quote || !user?.uid) return;
+
+    setLoading(true);
+
+    try {
+      const enrichedPickup = await enrichLocation({
+        label: pickup,
+        type: "custom",
+        lat: pickupContext?.lat ?? 0,
+        lng: pickupContext?.lng ?? 0,
+        island: mobilityIsland,
+        estateName: pickupContext?.estateName,
+        parcelId: pickupContext?.parcelId,
+      });
+
+      const enrichedDropoff = await enrichLocation({
+        label: dropoff,
+        type: "custom",
+        lat: dropoffContext?.lat ?? 0,
+        lng: dropoffContext?.lng ?? 0,
+        island: mobilityIsland,
+        estateName: dropoffContext?.estateName,
+        parcelId: dropoffContext?.parcelId,
+      });
+
+      const tripId = await createTripRequest({
+        riderId: user.uid,
+        driverId: null,
+        status: "requested",
+        tripType,
+        island: mobilityIsland,
+        pickup: enrichedPickup,
+        dropoff: enrichedDropoff,
+        passengers,
+        luggage,
+        serviceClass,
+        quote,
+      });
+
+      subscribeToTrip(tripId, (trip) => {
+        setActiveTrip(trip);
+        setStep("tracking");
+      });
+    } catch (error) {
+      console.error("Request failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const selectLocation = async (result: SearchResult) => {
+    const label = getResultLabel(result);
+    const context = getLocationContext(result);
+
+    let finalContext = context;
+
+    if (context.parcelId && !context.taxiZoneId) {
+      const parcelMobility = await resolveParcelMobilityById(context.parcelId);
+
+      finalContext = {
+        ...context,
+        estateName: context.estateName ?? parcelMobility?.estateName ?? undefined,
+        taxiZoneId: parcelMobility?.taxiZoneId ?? null,
+      };
+    }
+
+    if (searchingFor === "pickup") {
+      setPickup(label);
+      setPickupContext(finalContext);
+    }
+
+    if (searchingFor === "dropoff") {
+      setDropoff(label);
+      setDropoffContext(finalContext);
+    }
+
+    setSearchingFor(null);
+    setSearchQuery("");
+    setSearchResults([]);
+  };
+
+  return (
+    <main className="min-h-screen bg-[#071216] px-4 py-6 pb-32 text-white">
+      <div className="mx-auto max-w-5xl space-y-6">
+        <header className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-3xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(20,184,166,0.25),transparent_45%),linear-gradient(135deg,rgba(15,23,42,0.92),rgba(2,6,23,0.96))]" />
+
+          <div className="relative z-10">
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-turquoise">
+              VI Mobility
+            </p>
+
+            <h1 className="mt-3 text-5xl font-serif text-white">
+              Territory Mobility
+            </h1>
+
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/65">
+              Book island transportation with estate, parcel, ferry, airport, cruise, and tariff intelligence.
+            </p>
+          </div>
+        </header>
+
+        <AnimatePresence mode="wait">
+          {step === "request" && (
+            <motion.div
+              key="request"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <div className="grid grid-cols-3 gap-3">
+                <QuickActionButton icon={<Plane size={22} />} label="Airport" onClick={() => setQuickDropoff("airport", quickZones.airportLabel, quickZones.airport)} />
+                <QuickActionButton icon={<Ship size={22} />} label="Ferry" onClick={() => setQuickDropoff("ferry_transfer", quickZones.ferryLabel, quickZones.ferry)} />
+                <QuickActionButton icon={<Anchor size={22} />} label="Cruise" onClick={() => setQuickDropoff("cruise", quickZones.cruiseLabel, quickZones.cruise)} />
+              </div>
+
+              <div className="relative space-y-4 rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl">
+                <LocationInput
+                  icon={<MapPin size={18} />}
+                  accentClass="text-turquoise"
+                  placeholder="Pickup location — estate, hotel, beach..."
+                  value={pickup}
+                  badge={pickupContext?.estateName}
+                  onFocus={() => setSearchingFor("pickup")}
+                  onChange={(value) => {
+                    setPickup(value);
+                    setPickupContext(null);
+                  }}
+                />
+
+                <LocationInput
+                  icon={<Navigation size={18} />}
+                  accentClass="text-coral"
+                  placeholder="Where to?"
+                  value={dropoff}
+                  badge={dropoffContext?.estateName}
+                  onFocus={() => setSearchingFor("dropoff")}
+                  onChange={(value) => {
+                    setDropoff(value);
+                    setDropoffContext(null);
+                  }}
+                />
+
+                <AnimatePresence>
+                  {searchingFor && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute inset-x-0 top-full z-50 mt-2 overflow-hidden rounded-3xl border border-stone-100 bg-white text-ink shadow-2xl"
+                    >
+                      <div className="flex items-center gap-3 border-b border-stone-100 p-4">
+                        <Search size={18} className="text-stone-400" />
+
+                        <input
+                          autoFocus
+                          type="text"
+                          placeholder="Search estates, landmarks..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="flex-1 bg-transparent text-sm outline-none"
+                        />
+
+                        <button type="button" onClick={() => setSearchingFor(null)}>
+                          <X size={18} className="text-stone-400" />
+                        </button>
+                      </div>
+
+                      <div className="max-h-60 overflow-y-auto p-2">
+                        {searchResults.length > 0 ? (
+                          searchResults.map((result, index) => {
+                            const isEstate = hasKey(result, "geoid");
+                            const isParcel = hasKey(result, "parcelId");
+                            const label = getResultLabel(result);
+                            const sublabel = getResultSubtitle(result);
+                            const resultKey = getResultKey(result, `${label}-${index}`);
+
+                            return (
+                              <button
+                                key={resultKey}
+                                type="button"
+                                onClick={() => void selectLocation(result)}
+                                className="group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition hover:bg-stone-50"
+                              >
+                                <div
+                                  className={cn(
+                                    "grid h-10 w-10 place-items-center rounded-xl transition",
+                                    isEstate
+                                      ? "bg-turquoise/10 text-turquoise"
+                                      : isParcel
+                                        ? "bg-coral/10 text-coral"
+                                        : "bg-stone-100 text-stone-400 group-hover:text-turquoise"
+                                  )}
+                                >
+                                  {isParcel ? <Navigation size={18} /> : <MapPin size={18} />}
+                                </div>
+
+                                <div>
+                                  <p className="text-sm font-black text-ink">{label}</p>
+                                  <p className="text-[10px] uppercase tracking-widest text-stone-400">
+                                    {sublabel}
+                                  </p>
+                                </div>
+                              </button>
+                            );
+                          })
+                        ) : (
+                          <div className="p-8 text-center text-sm font-serif italic text-stone-400">
+                            {searchQuery.length < 2 ? "Start typing to search..." : "No results found."}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="space-y-4 rounded-[2rem] border border-white/10 bg-white p-5 text-ink shadow-2xl">
+                <div>
+                  <h3 className="text-sm font-black uppercase tracking-[0.25em] text-stone-500">
+                    Estate & Parcel Precision
+                  </h3>
+                  <p className="mt-1 text-xs text-stone-500">
+                    Select a parcel for exact pickup or destination context.
+                  </p>
+                </div>
+
+                <EstateExplorerMap
+                  selectedIsland={selectedIsland}
+                  routeLine={routeLine}
+                  onUseParcelForRoute={async (parcel) => {
+                    setDropoff(parcel.label);
+
+                    const parcelMobility = await resolveParcelMobilityById(parcel.parcelId);
+
+                    if (parcel.centroid.lat !== null && parcel.centroid.lng !== null) {
+                      setDropoffContext({
+                        lat: parcel.centroid.lat,
+                        lng: parcel.centroid.lng,
+                        estateName: parcel.estateName ?? parcelMobility?.estateName ?? undefined,
+                        parcelId: parcel.parcelId,
+                        taxiZoneId: parcelMobility?.taxiZoneId ?? null,
+                      });
+                    }
+                  }}
+                  onAskConcierge={(parcel) => {
+                    navigate("/concierge", {
+                      state: {
+                        parcelContext: {
+                          parcelId: parcel.parcelId,
+                          label: parcel.label,
+                          island: parcel.island,
+                          estateName: parcel.estateName,
+                          address: parcel.address,
+                        },
+                      },
+                    });
+                  }}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <CounterCard label="Passengers" icon={<Users size={18} />} value={passengers} min={1} max={12} onChange={setPassengers} />
+                <CounterCard label="Luggage" icon={<Briefcase size={18} />} value={luggage} min={0} max={10} onChange={setLuggage} />
+              </div>
+
+              <div className="flex rounded-3xl border border-white/10 bg-white/10 p-2 shadow-2xl backdrop-blur-xl">
+                <ServiceClassButton label="Shared Ride" active={serviceClass === "shared"} onClick={() => setServiceClass("shared")} />
+                <ServiceClassButton label="Private SUV" active={serviceClass === "private"} onClick={() => setServiceClass("private")} />
+              </div>
+
+              <button
+                type="button"
+                onClick={handleGetQuote}
+                disabled={!pickup || !dropoff || loading}
+                className="flex w-full items-center justify-center gap-3 rounded-3xl bg-turquoise py-5 text-[10px] font-black uppercase tracking-[0.3em] text-ink shadow-2xl transition hover:bg-white active:scale-95 disabled:opacity-50"
+              >
+                {loading ? <Loader2 className="animate-spin" size={18} /> : "Calculate Fare"}
+              </button>
+            </motion.div>
+          )}
+
+          {step === "quote" && quote && (
+            <QuoteStep
+              quote={quote}
+              pickup={pickup}
+              dropoff={dropoff}
+              tripType={tripType}
+              serviceClass={serviceClass}
+              loading={loading}
+              onBack={() => setStep("request")}
+              onRequestRide={handleRequestRide}
+            />
+          )}
+
+          {step === "tracking" && activeTrip && (
+            <TrackingStep
+              trip={activeTrip}
+              onCancel={() => {
+                setStep("request");
+                setActiveTrip(null);
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </main>
+  );
+}
+
+function LocationInput({
+  icon,
+  accentClass,
+  placeholder,
+  value,
+  badge,
+  onFocus,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  accentClass: string;
+  placeholder: string;
+  value: string;
+  badge?: string;
+  onFocus: () => void;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div className="relative">
+      <div className={cn("absolute left-4 top-1/2 z-10 -translate-y-1/2", accentClass)}>
+        {icon}
+      </div>
+
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={value}
+        onFocus={onFocus}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-2xl border border-white/10 bg-white px-12 py-4 text-sm font-semibold text-ink placeholder:text-stone-400 shadow-xl outline-none transition focus:ring-4 focus:ring-turquoise/20"
+      />
+
+      {badge ? (
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-turquoise/10 px-2 py-1 text-[8px] font-bold uppercase tracking-widest text-turquoise">
+          {badge}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function QuickActionButton({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="group flex flex-col items-center gap-3 rounded-[2rem] border border-white/10 bg-white/10 p-5 shadow-2xl backdrop-blur-xl transition hover:bg-white/20"
+    >
+      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-turquoise transition group-hover:bg-turquoise group-hover:text-ink">
+        {icon}
+      </div>
+      <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/70 group-hover:text-white">
+        {label}
+      </span>
+    </button>
+  );
+}
+
+function CounterCard({
+  icon,
+  label,
+  value,
+  min,
+  max,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <div className="flex items-center justify-between rounded-[2rem] border border-white/10 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
+      <div className="flex items-center gap-3">
+        <div className="grid h-10 w-10 place-items-center rounded-xl bg-turquoise/10 text-turquoise">
+          {icon}
+        </div>
+        <span className="text-sm font-bold text-white">{label}</span>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <button type="button" onClick={() => onChange(Math.max(min, value - 1))} className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-white">
+          -
+        </button>
+        <span className="w-4 text-center text-sm font-bold text-white">{value}</span>
+        <button type="button" onClick={() => onChange(Math.min(max, value + 1))} className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-white">
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ServiceClassButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "flex-1 rounded-2xl py-3 text-[10px] font-black uppercase tracking-[0.2em] transition",
+        active ? "bg-turquoise text-ink shadow-lg" : "text-white/50 hover:text-white"
+      )}
+    >
+      {label}
+    </button>
+  );
+}
+
+function QuoteStep({
+  quote,
+  pickup,
+  dropoff,
+  tripType,
+  serviceClass,
+  loading,
+  onBack,
+  onRequestRide,
+}: {
+  quote: TariffQuote;
+  pickup: string;
+  dropoff: string;
+  tripType: TripType;
+  serviceClass: ServiceClass;
+  loading: boolean;
+  onBack: () => void;
+  onRequestRide: () => void;
+}) {
+  return (
+    <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+      <div className="space-y-8 rounded-[2.5rem] border border-white/10 bg-white p-8 text-ink shadow-2xl">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-3xl font-serif italic text-ink">Trip Summary</h3>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-stone-400">
+              {serviceClass} Service • {tripType.replace("_", " ")}
+            </p>
+          </div>
+
+          <div className="text-right">
+            <p className="text-4xl font-serif italic text-ink">${quote.total}</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-stone-400">
+              Estimated Total
+            </p>
+          </div>
+        </div>
+
+        <TripLine icon={<MapPin size={18} />} label="Pickup" value={pickup} />
+        <TripLine icon={<Navigation size={18} />} label="Dropoff" value={dropoff} />
+
+        <div className="space-y-3 rounded-3xl bg-sand/30 p-6">
+          <FareLine label="Base Fare" value={quote.baseFare} />
+          {quote.luggageFee > 0 ? <FareLine label="Luggage Fee" value={quote.luggageFee} /> : null}
+          {quote.premiumFee > 0 ? <FareLine label="Premium / After Hours" value={quote.premiumFee} /> : null}
+        </div>
+
+        <TariffInfoCard quote={quote} />
+
+        <div className="flex items-center gap-3 rounded-2xl border border-turquoise/10 bg-turquoise/5 p-4">
+          <Shield size={18} className="text-turquoise" />
+          <p className="text-[10px] font-bold uppercase tracking-widest text-turquoise">
+            Licensed & Insured Drivers Only
+          </p>
+        </div>
+      </div>
+
+      <div className="flex gap-4">
+        <button type="button" onClick={onBack} className="flex-1 rounded-3xl border border-white/10 bg-white/10 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-white shadow-xl">
+          Back
+        </button>
+
+        <button type="button" onClick={onRequestRide} disabled={loading} className="flex-[2] rounded-3xl bg-turquoise py-5 text-[10px] font-black uppercase tracking-[0.3em] text-ink shadow-2xl transition hover:bg-white active:scale-95 disabled:opacity-50">
+          {loading ? <Loader2 className="mx-auto animate-spin" size={18} /> : "Request Ride"}
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
+function TrackingStep({ trip, onCancel }: { trip: Trip; onCancel: () => void }) {
+  return (
+    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="space-y-6">
+      <div className="space-y-8 rounded-[2.5rem] border border-white/10 bg-white p-8 text-center text-ink shadow-2xl">
+        <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-turquoise/10 text-turquoise">
+          <Loader2 className="animate-spin" size={48} />
+        </div>
+
+        <div>
+          <h3 className="text-3xl font-serif italic text-ink">Finding Your Driver</h3>
+          <p className="text-sm font-serif italic text-stone-500">
+            Matching you with the best licensed operator nearby...
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 pt-4">
+          <TrackingCard label="Status" value={trip.status.replace("_", " ")} />
+          <TrackingCard label="Trip ID" value={`#${trip.id.slice(-6)}`} />
+        </div>
+      </div>
+
+      <button type="button" onClick={onCancel} className="w-full rounded-3xl border border-white/10 bg-white/10 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-coral shadow-xl transition hover:bg-coral hover:text-white">
+        Cancel Request
+      </button>
+    </motion.div>
+  );
+}
+
+function TripLine({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-4">
+      <div className="grid h-10 w-10 place-items-center rounded-xl bg-sand text-turquoise">
+        {icon}
+      </div>
+      <div className="flex-1 border-b border-stone-100 pb-4">
+        <p className="text-[9px] font-bold uppercase tracking-widest text-stone-400">{label}</p>
+        <p className="text-sm font-bold text-ink">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+function FareLine({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-stone-500">
+      <span>{label}</span>
+      <span>${value}</span>
+    </div>
+  );
+}
+
+function TrackingCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-sand/30 p-4">
+      <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-stone-400">{label}</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-ink">{value}</p>
+    </div>
+  );
+}
+
+function TariffInfoCard({ quote }: { quote: TariffQuote }) {
+  return (
+    <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-5">
+      <p className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-800">
+        Official Tariff Layer
+      </p>
+
+      <div className="mt-4 grid gap-3 text-xs">
+        <InfoRow label="Pickup Zone" value={quote.pickupZoneName || "Not resolved"} />
+        <InfoRow label="Dropoff Zone" value={quote.dropoffZoneName || "Not resolved"} />
+        <InfoRow label="Status" value={quote.reviewStatus || "needs_review"} />
+        <InfoRow label="Source" value={quote.source?.label || "Fallback estimate"} />
+      </div>
+
+      {quote.assumptions?.length ? (
+        <div className="mt-4 rounded-2xl bg-white/70 p-3">
+          {quote.assumptions.map((item) => (
+            <p key={item} className="text-xs leading-relaxed text-stone-600">
+              • {item}
+            </p>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function InfoRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between gap-4">
+      <span className="font-bold uppercase tracking-widest text-emerald-800">{label}</span>
+      <span className="text-right font-bold text-stone-700">{value}</span>
+    </div>
+  );
+}

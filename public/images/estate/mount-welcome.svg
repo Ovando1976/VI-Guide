@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="55%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="980" cy="140" r="180" fill="#10b981" opacity="0.18"/>
+  <circle cx="160" cy="680" r="220" fill="#38bdf8" opacity="0.12"/>
+  <text x="80" y="110" fill="#6ee7b7" font-family="Arial" font-size="34" font-weight="700" letter-spacing="8">ESTATE</text>
+  <text x="80" y="390" fill="#ffffff" font-family="Georgia" font-size="62" font-weight="700">Estate MOUNT WELCOME</text>
+  <text x="80" y="465" fill="#d1fae5" font-family="Arial" font-size="26">VI Guide image placeholder</text>
+</svg>

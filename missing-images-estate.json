@@ -1,0 +1,3782 @@
+[
+  {
+    "id": "st_john:abrahams-fancy-maho-bay:3a-maho-bay",
+    "name": "Estate ABRAHAMS FANCY / MAHO BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/abrahams-fancy-maho-bay.jpg"
+  },
+  {
+    "id": "st_john:adrian:18-cruz-bay",
+    "name": "Estate ADRIAN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/adrian.jpg"
+  },
+  {
+    "id": "st_john:annaberg:4-1-1-maho-bay",
+    "name": "Estate ANNABERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annaberg.jpg"
+  },
+  {
+    "id": "st_john:bellevue:12a-cruz-bay",
+    "name": "Estate BELLEVUE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bellevue.jpg"
+  },
+  {
+    "id": "st_john:ben-runnells-gut:coral-bay",
+    "name": "Estate BEN RUNNELL'S GUT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/ben-runnells-gut.jpg"
+  },
+  {
+    "id": "st_john:bethany:6-cruz-bay",
+    "name": "Estate BETHANY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bethany.jpg"
+  },
+  {
+    "id": "st_john:beverhoudtsberg:7-cruz-bay",
+    "name": "Estate BEVERHOUDTSBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/beverhoudtsberg.jpg"
+  },
+  {
+    "id": "st_john:bordeaux:coral-bay",
+    "name": "Estate BORDEAUX",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bordeaux.jpg"
+  },
+  {
+    "id": "st_john:browns-bay:maho-bay",
+    "name": "Estate BROWNS BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/browns-bay.jpg"
+  },
+  {
+    "id": "st_john:buck-island:coral-bay",
+    "name": "Estate BUCK ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/buck-island.jpg"
+  },
+  {
+    "id": "st_john:calabash-boom:9-10-coral-bay",
+    "name": "Estate CALABASH BOOM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/calabash-boom.jpg"
+  },
+  {
+    "id": "st_john:caneel-bay:8-cruz-bay",
+    "name": "Estate CANEEL BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/caneel-bay.jpg"
+  },
+  {
+    "id": "st_john:carolina:1-coral-bay",
+    "name": "Estate CAROLINA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/carolina.jpg"
+  },
+  {
+    "id": "st_john:caval-cay:great-northside",
+    "name": "Estate CAVAL CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/caval-cay.jpg"
+  },
+  {
+    "id": "st_john:chocolate-hole:11-cruz-bay",
+    "name": "Estate CHOCOLATE HOLE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/chocolate-hole.jpg"
+  },
+  {
+    "id": "st_john:cinnamon-cay:2-maho-bay",
+    "name": "Estate CINNAMON CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cinnamon-cay.jpg"
+  },
+  {
+    "id": "st_john:concordia-a:15a-coral-bay",
+    "name": "Estate CONCORDIA A",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/concordia-a.jpg"
+  },
+  {
+    "id": "st_john:concordia-b:15a-coral-bay",
+    "name": "Estate CONCORDIA B",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/concordia-b.jpg"
+  },
+  {
+    "id": "st_john:congo-cay:great-northside",
+    "name": "Estate CONGO CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/congo-cay.jpg"
+  },
+  {
+    "id": "st_john:contant:2-cruz-bay",
+    "name": "Estate CONTANT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant.jpg"
+  },
+  {
+    "id": "st_john:cruz-bay-town:1-cruz-bay",
+    "name": "Estate CRUZ BAY TOWN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cruz-bay-town.jpg"
+  },
+  {
+    "id": "st_john:dennis-bay-hawknest:17b-cruz-bay",
+    "name": "Estate DENNIS BAY/ HAWKNEST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/dennis-bay-hawknest.jpg"
+  },
+  {
+    "id": "st_john:eden:18b-coral-bay",
+    "name": "Estate EDEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/eden.jpg"
+  },
+  {
+    "id": "st_john:emmaus:2-coral-bay",
+    "name": "Estate EMMAUS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/emmaus.jpg"
+  },
+  {
+    "id": "st_john:enighed:1-cruz-bay",
+    "name": "Estate ENIGHED",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/enighed.jpg"
+  },
+  {
+    "id": "st_john:fish-bay:8-reef-bay",
+    "name": "Estate FISH BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/fish-bay.jpg"
+  },
+  {
+    "id": "st_john:flannigan-island:east-end",
+    "name": "Estate FLANNIGAN ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/flannigan-island.jpg"
+  },
+  {
+    "id": "st_john:fortsberg:coral-bay",
+    "name": "Estate FORTSBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/fortsberg.jpg"
+  },
+  {
+    "id": "st_john:freemans-ground:3a-coral-bay",
+    "name": "Estate FREEMAN'S GROUND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/freemans-ground.jpg"
+  },
+  {
+    "id": "st_john:friise:13-13a-coral-bay",
+    "name": "Estate FRIISE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/friise.jpg"
+  },
+  {
+    "id": "st_john:gifft-regenback:13a-14a-cruz-bay",
+    "name": "Estate GIFFT & REGENBACK",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/gifft-and-regenback.jpg"
+  },
+  {
+    "id": "st_john:glucksberg:22-cruz-bay",
+    "name": "Estate GLUCKSBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/glucksberg.jpg"
+  },
+  {
+    "id": "st_john:great-cinnamon-bay:maho-bay",
+    "name": "Estate GREAT CINNAMON BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/great-cinnamon-bay.jpg"
+  },
+  {
+    "id": "st_john:grunwald:12b-cruz-bay",
+    "name": "Estate GRUNWALD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/grunwald.jpg"
+  },
+  {
+    "id": "st_john:hammer-farm-cathrineberg:cruz-bay",
+    "name": "Estate HAMMER FARM / CATHRINEBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hammer-farm-cathrineberg.jpg"
+  },
+  {
+    "id": "st_john:hansen-bay:6-7-east-end",
+    "name": "Estate HANSEN BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hansen-bay.jpg"
+  },
+  {
+    "id": "st_john:hard-labor:13ba-13bb-coral-bay",
+    "name": "Estate HARD LABOR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hard-labor.jpg"
+  },
+  {
+    "id": "st_john:haulover:5-east-end",
+    "name": "Estate HAULOVER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/haulover.jpg"
+  },
+  {
+    "id": "st_john:henley-cay:cruz-bay",
+    "name": "Estate HENLEY CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/henley-cay.jpg"
+  },
+  {
+    "id": "st_john:hermitage:3b-coral-bay",
+    "name": "Estate HERMITAGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hermitage.jpg"
+  },
+  {
+    "id": "st_john:hope:5-reef-bay",
+    "name": "Estate HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hope.jpg"
+  },
+  {
+    "id": "st_john:johns-folly:14a-14b-14c-coral-bay",
+    "name": "Estate JOHNS FOLLY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/johns-folly.jpg"
+  },
+  {
+    "id": "st_john:lesperance:cruz-bay",
+    "name": "Estate L'ESPERANCE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lesperance.jpg"
+  },
+  {
+    "id": "st_john:lameshur-complex:reef-bay",
+    "name": "Estate LAMESHUR COMPLEX",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lameshur-complex.jpg"
+  },
+  {
+    "id": "st_john:leinster-bay:maho-bay",
+    "name": "Estate LEINSTER BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/leinster-bay.jpg"
+  },
+  {
+    "id": "st_john:little-plantation-lohman:4a-coral-bay",
+    "name": "Estate LITTLE PLANTATION (Lohman)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-plantation-lohman.jpg"
+  },
+  {
+    "id": "st_john:lovango-cay:cruz-bay",
+    "name": "Estate LOVANGO CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lovango-cay.jpg"
+  },
+  {
+    "id": "st_john:mandahl:coral-bay",
+    "name": "Estate MANDAHL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mandahl.jpg"
+  },
+  {
+    "id": "st_john:miland:maho-bay",
+    "name": "Estate MILAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/miland.jpg"
+  },
+  {
+    "id": "st_john:mingo-cay:cruz-bay",
+    "name": "Estate MINGO CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mingo-cay.jpg"
+  },
+  {
+    "id": "st_john:molledahl-little-reef-bay:10a-reef-bay",
+    "name": "Estate MOLLEDAHL & LITTLE REEF BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/molledahl-and-little-reef-bay.jpg"
+  },
+  {
+    "id": "st_john:mt-pleasant-retreat:east-end",
+    "name": "Estate MT PLEASANT & RETREAT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mt-pleasant-and-retreat.jpg"
+  },
+  {
+    "id": "st_john:newfound-bay:9a-east-end",
+    "name": "Estate NEWFOUND BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/newfound-bay.jpg"
+  },
+  {
+    "id": "st_john:palestina:no-quarter",
+    "name": "Estate PALESTINA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/palestina.jpg"
+  },
+  {
+    "id": "st_john:pastory:5-cruz-bay",
+    "name": "Estate PASTORY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pastory.jpg"
+  },
+  {
+    "id": "st_john:peter-bay:2aa-maho-bay",
+    "name": "Estate PETER BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/peter-bay.jpg"
+  },
+  {
+    "id": "st_john:ram-goat-cay:cruz-bay",
+    "name": "Estate RAM GOAT CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/ram-goat-cay.jpg"
+  },
+  {
+    "id": "st_john:rata-cay:cruz-bay",
+    "name": "Estate RATA CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rata-cay.jpg"
+  },
+  {
+    "id": "st_john:reef-bay:reef-bay",
+    "name": "Estate REEF BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/reef-bay.jpg"
+  },
+  {
+    "id": "st_john:rendezvous-ditleff:15a-cruz-bay",
+    "name": "Estate RENDEZVOUS & DITLEFF",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rendezvous-and-ditleff.jpg"
+  },
+  {
+    "id": "st_john:rustenberg-adventure:maho-bay",
+    "name": "Estate RUSTENBERG & ADVENTURE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rustenberg-and-adventure.jpg"
+  },
+  {
+    "id": "st_john:saba-bay:8-east-end",
+    "name": "Estate SABA BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/saba-bay.jpg"
+  },
+  {
+    "id": "st_john:san-soucci-guinea-gut:9-10-cruz-bay",
+    "name": "Estate SAN SOUCCI & GUINEA GUT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/san-soucci-and-guinea-gut.jpg"
+  },
+  {
+    "id": "st_john:saunders-gut:7-coral-bay",
+    "name": "Estate SAUNDER'S GUT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/saunders-gut.jpg"
+  },
+  {
+    "id": "st_john:sieben:9a-reef-bay",
+    "name": "Estate SIEBEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sieben.jpg"
+  },
+  {
+    "id": "st_john:st-quacco-zimmerman:11-12-coral-bay",
+    "name": "Estate ST QUACCO & ZIMMERMAN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-quacco-and-zimmerman.jpg"
+  },
+  {
+    "id": "st_john:steven-cay:cruz-bay",
+    "name": "Estate STEVEN CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/steven-cay.jpg"
+  },
+  {
+    "id": "st_john:susannaberg:17a-cruz-bay",
+    "name": "Estate SUSANNABERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/susannaberg.jpg"
+  },
+  {
+    "id": "st_john:trunk-bay:16-cruz-bay",
+    "name": "Estate TRUNK BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/trunk-bay.jpg"
+  },
+  {
+    "id": "st_john:trunk-cay:cruz-bay",
+    "name": "Estate TRUNK CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/trunk-cay.jpg"
+  },
+  {
+    "id": "st_john:turner-point:coral-bay",
+    "name": "Estate TURNER POINT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/turner-point.jpg"
+  },
+  {
+    "id": "st_john:ushers-quay:coral-bay",
+    "name": "Estate USHER'S QUAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/ushers-quay.jpg"
+  },
+  {
+    "id": "st_john:whistling-cay:cruz-bay",
+    "name": "Estate WHISTLING CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whistling-cay.jpg"
+  },
+  {
+    "id": "st_john:zootenval:3a-coral-bay",
+    "name": "Estate ZOOTENVAL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_john",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/zootenval.jpg"
+  },
+  {
+    "id": "st_thomas:adelphi:west-end",
+    "name": "Estate ADELPHI",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/adelphi.jpg"
+  },
+  {
+    "id": "st_thomas:agnes-fancy:8-8h-great-northside",
+    "name": "Estate AGNES FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/agnes-fancy.jpg"
+  },
+  {
+    "id": "st_thomas:altona-welgunst:kronprindsens",
+    "name": "Estate ALTONA & WELGUNST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/altona-and-welgunst.jpg"
+  },
+  {
+    "id": "st_thomas:annas-fancy:kronprindsens",
+    "name": "Estate ANNA'S FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annas-fancy.jpg"
+  },
+  {
+    "id": "st_thomas:annas-retreat:1-new",
+    "name": "Estate ANNA'S RETREAT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annas-retreat.jpg"
+  },
+  {
+    "id": "st_thomas:bakkero:3-frenchman-bay",
+    "name": "Estate BAKKERO",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bakkero.jpg"
+  },
+  {
+    "id": "st_thomas:bellevue:7-3-frenchman-bay",
+    "name": "Estate BELLEVUE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bellevue.jpg"
+  },
+  {
+    "id": "st_thomas:bethesda:8-west-end",
+    "name": "Estate BETHESDA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bethesda.jpg"
+  },
+  {
+    "id": "st_thomas:bolongo:3-8-frenchman-bay",
+    "name": "Estate BOLONGO",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bolongo.jpg"
+  },
+  {
+    "id": "st_thomas:bonne-esperance:2-west-end",
+    "name": "Estate BONNE ESPERANCE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bonne-esperance.jpg"
+  },
+  {
+    "id": "st_thomas:bonne-resolution:5-little-north-side",
+    "name": "Estate BONNE RESOLUTION",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bonne-resolution.jpg"
+  },
+  {
+    "id": "st_thomas:bordeaux:6-8-west-end",
+    "name": "Estate BORDEAUX",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bordeaux.jpg"
+  },
+  {
+    "id": "st_thomas:botany-bay:7-west-end",
+    "name": "Estate BOTANY BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/botany-bay.jpg"
+  },
+  {
+    "id": "st_thomas:bovoni:1-2-3-frenchman-bay",
+    "name": "Estate BOVONI",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bovoni.jpg"
+  },
+  {
+    "id": "st_thomas:bovoni-cay:frenchman-bay",
+    "name": "Estate BOVONI CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bovoni-cay.jpg"
+  },
+  {
+    "id": "st_thomas:buck-island:frenchmans-bay",
+    "name": "Estate BUCK ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/buck-island.jpg"
+  },
+  {
+    "id": "st_thomas:canaan-scherpenjewel:7a-7b-great-northside",
+    "name": "Estate CANAAN & SCHERPENJEWEL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/canaan-and-scherpenjewel.jpg"
+  },
+  {
+    "id": "st_thomas:careening-hole:8a-southside",
+    "name": "Estate CAREENING HOLE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/careening-hole.jpg"
+  },
+  {
+    "id": "st_thomas:caret-bay:3-little-northside",
+    "name": "Estate CARET BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/caret-bay.jpg"
+  },
+  {
+    "id": "st_thomas:cas-cay:frenchman-bay",
+    "name": "Estate CAS CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cas-cay.jpg"
+  },
+  {
+    "id": "st_thomas:catherineberg:8h-great-northside",
+    "name": "Estate CATHERINEBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/catherineberg.jpg"
+  },
+  {
+    "id": "st_thomas:charlotte-amalie:new",
+    "name": "Estate CHARLOTTE AMALIE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/charlotte-amalie.jpg"
+  },
+  {
+    "id": "st_thomas:coculus-rock:red-hook",
+    "name": "Estate COCULUS ROCK",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/coculus-rock.jpg"
+  },
+  {
+    "id": "st_thomas:coki-point:east-end",
+    "name": "Estate COKI POINT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/coki-point.jpg"
+  },
+  {
+    "id": "st_thomas:contant-7a:7a-southside",
+    "name": "Estate CONTANT 7A",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant-7a.jpg"
+  },
+  {
+    "id": "st_thomas:contant-7b:7b-southside",
+    "name": "Estate CONTANT 7b",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant-7b.jpg"
+  },
+  {
+    "id": "st_thomas:contant-7b:7b-southside:2",
+    "name": "Estate CONTANT 7B",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant-7b.jpg"
+  },
+  {
+    "id": "st_thomas:contant-7ba:7ba-southside",
+    "name": "Estate CONTANT 7BA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant-7ba.jpg"
+  },
+  {
+    "id": "st_thomas:contant-7bb:7bb-southside",
+    "name": "Estate CONTANT 7Bb",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contant-7bb.jpg"
+  },
+  {
+    "id": "st_thomas:crown-hawk:3-3b-3d-3f-3h-southside",
+    "name": "Estate CROWN & HAWK",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/crown-and-hawk.jpg"
+  },
+  {
+    "id": "st_thomas:demarara:kronprindsens",
+    "name": "Estate DEMARARA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/demarara.jpg"
+  },
+  {
+    "id": "st_thomas:dog-island:redhook",
+    "name": "Estate DOG ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/dog-island.jpg"
+  },
+  {
+    "id": "st_thomas:donoe:2a-new",
+    "name": "Estate DONOE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/donoe.jpg"
+  },
+  {
+    "id": "st_thomas:dorothea:6-7a-little-north-side",
+    "name": "Estate DOROTHEA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/dorothea.jpg"
+  },
+  {
+    "id": "st_thomas:dutchman-cap:west-end",
+    "name": "Estate DUTCHMAN CAP",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/dutchman-cap.jpg"
+  },
+  {
+    "id": "st_thomas:eastern-water-island-sprat-bay:10-southside",
+    "name": "Estate EASTERN WATER ISLAND / SPRAT BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/eastern-water-island-sprat-bay.jpg"
+  },
+  {
+    "id": "st_thomas:elizabeth:3i-great-northside",
+    "name": "Estate ELIZABETH",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/elizabeth.jpg"
+  },
+  {
+    "id": "st_thomas:fortuna:8-west-end",
+    "name": "Estate FORTUNA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/fortuna.jpg"
+  },
+  {
+    "id": "st_thomas:frenchmans-bay:4-frenchman-bay",
+    "name": "Estate FRENCHMAN'S BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/frenchmans-bay.jpg"
+  },
+  {
+    "id": "st_thomas:frydendal:4-east-end",
+    "name": "Estate FRYDENDAL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/frydendal.jpg"
+  },
+  {
+    "id": "st_thomas:frydenhoj:1-2-3-redhook",
+    "name": "Estate FRYDENHOJ",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/frydenhoj.jpg"
+  },
+  {
+    "id": "st_thomas:great-st-james-island:6a-redhook",
+    "name": "Estate GREAT ST JAMES ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/great-st-james-island.jpg"
+  },
+  {
+    "id": "st_thomas:green-cay:frenchman-bay",
+    "name": "Estate GREEN CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/green-cay.jpg"
+  },
+  {
+    "id": "st_thomas:hanslollik-island:10-great-northside",
+    "name": "Estate HANSLOLLIK ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hanslollik-island.jpg"
+  },
+  {
+    "id": "st_thomas:hassel-island-orkanshullet:9-southside",
+    "name": "Estate HASSEL ISLAND / ORKANSHULLET",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hassel-island-orkanshullet.jpg"
+  },
+  {
+    "id": "st_thomas:havensight:6a-6-frenchman-bay",
+    "name": "Estate HAVENSIGHT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/havensight.jpg"
+  },
+  {
+    "id": "st_thomas:heerleins-buy:great-northside",
+    "name": "Estate HEERLEIN'S BUY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/heerleins-buy.jpg"
+  },
+  {
+    "id": "st_thomas:hoffman:2b-new",
+    "name": "Estate HOFFMAN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hoffman.jpg"
+  },
+  {
+    "id": "st_thomas:honduras:kronprindsens",
+    "name": "Estate HONDURAS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/honduras.jpg"
+  },
+  {
+    "id": "st_thomas:hope:5-west-end",
+    "name": "Estate HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hope.jpg"
+  },
+  {
+    "id": "st_thomas:hospital-ground:9-new",
+    "name": "Estate HOSPITAL GROUND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hospital-ground.jpg"
+  },
+  {
+    "id": "st_thomas:hull:2-3-4-3-4b-4a-little-north-side",
+    "name": "Estate HULL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hull.jpg"
+  },
+  {
+    "id": "st_thomas:inner-brass-island:6a-little-northside",
+    "name": "Estate INNER BRASS ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/inner-brass-island.jpg"
+  },
+  {
+    "id": "st_thomas:john-brewers:4-5-southside",
+    "name": "Estate JOHN BREWER'S",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/john-brewers.jpg"
+  },
+  {
+    "id": "st_thomas:kalkum-cay:west-end",
+    "name": "Estate KALKUM CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/kalkum-cay.jpg"
+  },
+  {
+    "id": "st_thomas:kings-quarter:kings",
+    "name": "Estate KINGS' QUARTER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/kings-quarter.jpg"
+  },
+  {
+    "id": "st_thomas:kronprinsens-quarter:kronprindsens",
+    "name": "Estate KRONPRINSENS QUARTER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/kronprinsens-quarter.jpg"
+  },
+  {
+    "id": "st_thomas:langmath:redhook",
+    "name": "Estate LANGMATH",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/langmath.jpg"
+  },
+  {
+    "id": "st_thomas:lerkenlund:2-9-great-northside",
+    "name": "Estate LERKENLUND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lerkenlund.jpg"
+  },
+  {
+    "id": "st_thomas:lilliendal-marienhoj:3a-3-little-north-side",
+    "name": "Estate LILLIENDAL & MARIENHOJ",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lilliendal-and-marienhoj.jpg"
+  },
+  {
+    "id": "st_thomas:lindbergh-bay:4-4a-southside",
+    "name": "Estate LINDBERGH BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lindbergh-bay.jpg"
+  },
+  {
+    "id": "st_thomas:little-flat-cay:south-side",
+    "name": "Estate LITTLE FLAT CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-flat-cay.jpg"
+  },
+  {
+    "id": "st_thomas:little-hanslollik:no-quarter",
+    "name": "Estate LITTLE HANSLOLLIK",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-hanslollik.jpg"
+  },
+  {
+    "id": "st_thomas:little-st-james-island:6a-redhook",
+    "name": "Estate LITTLE ST JAMES ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-st-james-island.jpg"
+  },
+  {
+    "id": "st_thomas:little-thatch-key:8-eastend",
+    "name": "Estate LITTLE THATCH KEY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-thatch-key.jpg"
+  },
+  {
+    "id": "st_thomas:liver-pool:frenchman-bay",
+    "name": "Estate LIVER POOL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/liver-pool.jpg"
+  },
+  {
+    "id": "st_thomas:louisenhoj:4-5-5a-great-northside",
+    "name": "Estate LOUISENHOJ",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/louisenhoj.jpg"
+  },
+  {
+    "id": "st_thomas:lovenlund:2-8-great-northside",
+    "name": "Estate LOVENLUND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lovenlund.jpg"
+  },
+  {
+    "id": "st_thomas:lower-john-dunko:3b-3c-little-north-side",
+    "name": "Estate LOWER JOHN DUNKO",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lower-john-dunko.jpg"
+  },
+  {
+    "id": "st_thomas:lyttons-fancy:8gc-great-northside",
+    "name": "Estate LYTTON'S FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lyttons-fancy.jpg"
+  },
+  {
+    "id": "st_thomas:mafolie:8f-great-northside",
+    "name": "Estate MAFOLIE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mafolie.jpg"
+  },
+  {
+    "id": "st_thomas:mandahl:1-great-northside",
+    "name": "Estate MANDAHL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mandahl.jpg"
+  },
+  {
+    "id": "st_thomas:mariendal:4-9-redhook",
+    "name": "Estate MARIENDAL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mariendal.jpg"
+  },
+  {
+    "id": "st_thomas:misgunst:5a-6-great-northside",
+    "name": "Estate MISGUNST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/misgunst.jpg"
+  },
+  {
+    "id": "st_thomas:nadir:1-2-redhook",
+    "name": "Estate NADIR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/nadir.jpg"
+  },
+  {
+    "id": "st_thomas:nazareth:1-3-4-redhook",
+    "name": "Estate NAZARETH",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/nazareth.jpg"
+  },
+  {
+    "id": "st_thomas:neltjeberg:6-little-north-side",
+    "name": "Estate NELTJEBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/neltjeberg.jpg"
+  },
+  {
+    "id": "st_thomas:new-hernhut:5-new",
+    "name": "Estate NEW HERNHUT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/new-hernhut.jpg"
+  },
+  {
+    "id": "st_thomas:nisky:6-southside",
+    "name": "Estate NISKY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/nisky.jpg"
+  },
+  {
+    "id": "st_thomas:nullyberg:4-new",
+    "name": "Estate NULLYBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/nullyberg.jpg"
+  },
+  {
+    "id": "st_thomas:outer-brass-island:west-end",
+    "name": "Estate OUTER BRASS ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/outer-brass-island.jpg"
+  },
+  {
+    "id": "st_thomas:patricia-cay:frenchman-bay",
+    "name": "Estate PATRICIA CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/patricia-cay.jpg"
+  },
+  {
+    "id": "st_thomas:pearl:2-7a-southside",
+    "name": "Estate PEARL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pearl.jpg"
+  },
+  {
+    "id": "st_thomas:pelican-cay:no-quarter",
+    "name": "Estate PELICAN CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pelican-cay.jpg"
+  },
+  {
+    "id": "st_thomas:perseverance:west-end",
+    "name": "Estate PERSEVERANCE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/perseverance.jpg"
+  },
+  {
+    "id": "st_thomas:peterborg:2-12-great-northside",
+    "name": "Estate PETERBORG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/peterborg.jpg"
+  },
+  {
+    "id": "st_thomas:queens-quarter:queens",
+    "name": "Estate QUEENS' QUARTER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/queens-quarter.jpg"
+  },
+  {
+    "id": "st_thomas:raphune:5b-5ba-new",
+    "name": "Estate RAPHUNE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/raphune.jpg"
+  },
+  {
+    "id": "st_thomas:ross:8-8a-new",
+    "name": "Estate ROSS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/ross.jpg"
+  },
+  {
+    "id": "st_thomas:rotto-cay:red-hook",
+    "name": "Estate ROTTO CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rotto-cay.jpg"
+  },
+  {
+    "id": "st_thomas:saba-island:south-side",
+    "name": "Estate SABA ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/saba-island.jpg"
+  },
+  {
+    "id": "st_thomas:salt-cay:west-end",
+    "name": "Estate SALT CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/salt-cay.jpg"
+  },
+  {
+    "id": "st_thomas:santa-maria:1-west-end",
+    "name": "Estate SANTA MARIA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/santa-maria.jpg"
+  },
+  {
+    "id": "st_thomas:savana-island:west-end",
+    "name": "Estate SAVANA ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/savana-island.jpg"
+  },
+  {
+    "id": "st_thomas:smith-bay:1-2-3-east-end",
+    "name": "Estate SMITH BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/smith-bay.jpg"
+  },
+  {
+    "id": "st_thomas:solberg:1-2-6-9-12-little-north-side",
+    "name": "Estate SOLBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/solberg.jpg"
+  },
+  {
+    "id": "st_thomas:sorgenfri-eastern-portion:1-southside",
+    "name": "Estate SORGENFRI EASTERN PORTION",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sorgenfri-eastern-portion.jpg"
+  },
+  {
+    "id": "st_thomas:sorgenfri-western-portion:1-southside",
+    "name": "Estate SORGENFRI WESTERN PORTION",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sorgenfri-western-portion.jpg"
+  },
+  {
+    "id": "st_thomas:st-joseph-rosendahl:4-great-northside",
+    "name": "Estate ST JOSEPH & ROSENDAHL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-joseph-and-rosendahl.jpg"
+  },
+  {
+    "id": "st_thomas:st-peter:3a-3-little-north-side",
+    "name": "Estate St. PETER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-peter.jpg"
+  },
+  {
+    "id": "st_thomas:staabi:9a-great-northside",
+    "name": "Estate STAABI",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/staabi.jpg"
+  },
+  {
+    "id": "st_thomas:subbase-crown-bay:6-southside",
+    "name": "Estate SUBBASE/CROWN BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/subbase-crown-bay.jpg"
+  },
+  {
+    "id": "st_thomas:taarneberg:kings",
+    "name": "Estate TAARNEBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/taarneberg.jpg"
+  },
+  {
+    "id": "st_thomas:tabor-harmony:5-6-east-end",
+    "name": "Estate TABOR & HARMONY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/tabor-and-harmony.jpg"
+  },
+  {
+    "id": "st_thomas:thatch-cay:8-eastend",
+    "name": "Estate THATCH CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/thatch-cay.jpg"
+  },
+  {
+    "id": "st_thomas:thomas:6f-6-6c-6e-6k-6b-6h-6i-new",
+    "name": "Estate THOMAS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/thomas.jpg"
+  },
+  {
+    "id": "st_thomas:thomas-long-bay:kings",
+    "name": "Estate THOMAS - LONG BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/thomas-long-bay.jpg"
+  },
+  {
+    "id": "st_thomas:thomas-sugar-estate:6a-new",
+    "name": "Estate THOMAS - SUGAR ESTATE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/thomas-sugar-estate.jpg"
+  },
+  {
+    "id": "st_thomas:turtle-dove-cay:south-side",
+    "name": "Estate TURTLE DOVE CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/turtle-dove-cay.jpg"
+  },
+  {
+    "id": "st_thomas:upper-john-dunko:3a-little-north-side",
+    "name": "Estate UPPER JOHN DUNKO",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/upper-john-dunko.jpg"
+  },
+  {
+    "id": "st_thomas:water-island:10-southside",
+    "name": "Estate WATER ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/water-island.jpg"
+  },
+  {
+    "id": "st_thomas:west-cay:west-end",
+    "name": "Estate WEST CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/west-cay.jpg"
+  },
+  {
+    "id": "st_thomas:wintberg:3-great-northside",
+    "name": "Estate WINTBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/wintberg.jpg"
+  },
+  {
+    "id": "st_thomas:zufriendenheit:5-great-northside",
+    "name": "Estate ZUFRIENDENHEIT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_thomas",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/zufriendenheit.jpg"
+  },
+  {
+    "id": "st_croix:a-piece-of-land-east:eastend-b",
+    "name": "Estate A PIECE OF LAND EAST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/a-piece-of-land-east.jpg"
+  },
+  {
+    "id": "st_croix:all-for-the-better:eastend-a",
+    "name": "Estate ALL FOR THE BETTER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/all-for-the-better.jpg"
+  },
+  {
+    "id": "st_croix:allendale-bog-of-allen:prince",
+    "name": "Estate ALLENDALE (BOG OF ALLEN)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/allendale-bog-of-allen.jpg"
+  },
+  {
+    "id": "st_croix:altona:eastend-a",
+    "name": "Estate ALTONA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/altona.jpg"
+  },
+  {
+    "id": "st_croix:altona-fort-louise-augusta:eastend-a",
+    "name": "Estate ALTONA (FORT LOUISE AUGUSTA)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/altona-fort-louise-augusta.jpg"
+  },
+  {
+    "id": "st_croix:anguilla:kings-kongens",
+    "name": "Estate ANGUILLA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/anguilla.jpg"
+  },
+  {
+    "id": "st_croix:annaberg-shannon-grove:kings-kongens",
+    "name": "Estate ANNABERG & SHANNON GROVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annaberg-and-shannon-grove.jpg"
+  },
+  {
+    "id": "st_croix:annaly:northside-a",
+    "name": "Estate ANNALY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annaly.jpg"
+  },
+  {
+    "id": "st_croix:annas-hope:company",
+    "name": "Estate ANNAS HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/annas-hope.jpg"
+  },
+  {
+    "id": "st_croix:barren-spot-east:queen",
+    "name": "Estate BARREN SPOT (EAST)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/barren-spot-east.jpg"
+  },
+  {
+    "id": "st_croix:barren-spot-west:queen",
+    "name": "Estate BARREN SPOT (WEST)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/barren-spot-west.jpg"
+  },
+  {
+    "id": "st_croix:becks-grove:prince",
+    "name": "Estate BECK'S GROVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/becks-grove.jpg"
+  },
+  {
+    "id": "st_croix:beeston-hill:company",
+    "name": "Estate BEESTON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/beeston-hill.jpg"
+  },
+  {
+    "id": "st_croix:bellevue:company",
+    "name": "Estate BELLEVUE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bellevue.jpg"
+  },
+  {
+    "id": "st_croix:betsys-jewel:northside-b",
+    "name": "Estate BETSY'S JEWEL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/betsys-jewel.jpg"
+  },
+  {
+    "id": "st_croix:bettys-hope:prince",
+    "name": "Estate BETTYS HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bettys-hope.jpg"
+  },
+  {
+    "id": "st_croix:blessing:kings",
+    "name": "Estate BLESSING",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/blessing.jpg"
+  },
+  {
+    "id": "st_croix:bodkin:northside-a",
+    "name": "Estate BODKIN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bodkin.jpg"
+  },
+  {
+    "id": "st_croix:body-slob:kings-kongens",
+    "name": "Estate BODY SLOB",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/body-slob.jpg"
+  },
+  {
+    "id": "st_croix:boetzberg:eastend-a",
+    "name": "Estate BOETZBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/boetzberg.jpg"
+  },
+  {
+    "id": "st_croix:bonne-esperance-north:northside-b",
+    "name": "Estate BONNE ESPERANCE (NORTH)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bonne-esperance-north.jpg"
+  },
+  {
+    "id": "st_croix:bonne-esperance-south:queen",
+    "name": "Estate BONNE ESPERANCE (SOUTH)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bonne-esperance-south.jpg"
+  },
+  {
+    "id": "st_croix:brooks-hill:west-end",
+    "name": "Estate BROOKS HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/brooks-hill.jpg"
+  },
+  {
+    "id": "st_croix:buck-island:eastend-b",
+    "name": "Estate BUCK ISLAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/buck-island.jpg"
+  },
+  {
+    "id": "st_croix:bugby-hole:company",
+    "name": "Estate BUGBY HOLE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bugby-hole.jpg"
+  },
+  {
+    "id": "st_croix:bulows-minde:company",
+    "name": "Estate BULOWS MINDE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/bulows-minde.jpg"
+  },
+  {
+    "id": "st_croix:burns-hill:northside-a",
+    "name": "Estate BURNS HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/burns-hill.jpg"
+  },
+  {
+    "id": "st_croix:butlers-bay:northside-a",
+    "name": "Estate BUTLER'S BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/butlers-bay.jpg"
+  },
+  {
+    "id": "st_croix:caldwell-karaval:queen",
+    "name": "Estate CALDWELL (KARAVAL)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/caldwell-karaval.jpg"
+  },
+  {
+    "id": "st_croix:caledonia:northside-a",
+    "name": "Estate CALEDONIA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/caledonia.jpg"
+  },
+  {
+    "id": "st_croix:canaan:northside-b",
+    "name": "Estate CANAAN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/canaan.jpg"
+  },
+  {
+    "id": "st_croix:cane:west-end",
+    "name": "Estate CANE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cane.jpg"
+  },
+  {
+    "id": "st_croix:cane-south:west-end",
+    "name": "Estate CANE (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cane-south.jpg"
+  },
+  {
+    "id": "st_croix:cane-garden:queen",
+    "name": "Estate CANE GARDEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cane-garden.jpg"
+  },
+  {
+    "id": "st_croix:cane-valley:west-end",
+    "name": "Estate CANE VALLEY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cane-valley.jpg"
+  },
+  {
+    "id": "st_croix:carina:eastend-a",
+    "name": "Estate CARINA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/carina.jpg"
+  },
+  {
+    "id": "st_croix:carlton:west-end",
+    "name": "Estate CARLTON",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/carlton.jpg"
+  },
+  {
+    "id": "st_croix:cassava-garden:queen",
+    "name": "Estate CASSAVA GARDEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cassava-garden.jpg"
+  },
+  {
+    "id": "st_croix:castle-coakley:queen",
+    "name": "Estate CASTLE COAKLEY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/castle-coakley.jpg"
+  },
+  {
+    "id": "st_croix:castle-nugent:eastend-a",
+    "name": "Estate CASTLE NUGENT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/castle-nugent.jpg"
+  },
+  {
+    "id": "st_croix:catherines-hope:eastend-b",
+    "name": "Estate CATHERINE'S HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/catherines-hope.jpg"
+  },
+  {
+    "id": "st_croix:catherines-rest:company",
+    "name": "Estate CATHERINE'S REST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/catherines-rest.jpg"
+  },
+  {
+    "id": "st_croix:christiansted:company",
+    "name": "Estate CHRISTIANSTED",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/christiansted.jpg"
+  },
+  {
+    "id": "st_croix:clairmont:northside-b",
+    "name": "Estate CLAIRMONT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/clairmont.jpg"
+  },
+  {
+    "id": "st_croix:clairmont:prince",
+    "name": "Estate CLAIRMONT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/clairmont.jpg"
+  },
+  {
+    "id": "st_croix:clifton-hill:kings-kongens",
+    "name": "Estate CLIFTON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/clifton-hill.jpg"
+  },
+  {
+    "id": "st_croix:coakley-bay:eastend-b",
+    "name": "Estate COAKLEY BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/coakley-bay.jpg"
+  },
+  {
+    "id": "st_croix:colquohoun:kings-kongens",
+    "name": "Estate COLQUOHOUN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/colquohoun.jpg"
+  },
+  {
+    "id": "st_croix:concordia:northside-b",
+    "name": "Estate CONCORDIA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/concordia.jpg"
+  },
+  {
+    "id": "st_croix:concordia-south:west-end",
+    "name": "Estate CONCORDIA (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/concordia-south.jpg"
+  },
+  {
+    "id": "st_croix:concordia-west:west-end",
+    "name": "Estate CONCORDIA (West)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/concordia-west.jpg"
+  },
+  {
+    "id": "st_croix:constitution-hill:company",
+    "name": "Estate CONSTITUTION HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/constitution-hill.jpg"
+  },
+  {
+    "id": "st_croix:contentment:company",
+    "name": "Estate CONTENTMENT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/contentment.jpg"
+  },
+  {
+    "id": "st_croix:coopers:prince",
+    "name": "Estate COOPERS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/coopers.jpg"
+  },
+  {
+    "id": "st_croix:corn-hill:company",
+    "name": "Estate CORN HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/corn-hill.jpg"
+  },
+  {
+    "id": "st_croix:cottage:queen",
+    "name": "Estate COTTAGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cottage.jpg"
+  },
+  {
+    "id": "st_croix:cotton-grove:eastend-b",
+    "name": "Estate COTTON GROVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cotton-grove.jpg"
+  },
+  {
+    "id": "st_croix:cotton-valley:eastend-b",
+    "name": "Estate COTTON VALLEY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/cotton-valley.jpg"
+  },
+  {
+    "id": "st_croix:diamond:queen",
+    "name": "Estate DIAMOND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/diamond.jpg"
+  },
+  {
+    "id": "st_croix:diamond:company",
+    "name": "Estate DIAMOND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/diamond.jpg"
+  },
+  {
+    "id": "st_croix:diamond:prince",
+    "name": "Estate DIAMOND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/diamond.jpg"
+  },
+  {
+    "id": "st_croix:elizas-retreat:eastend-a",
+    "name": "Estate ELIZA'S RETREAT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/elizas-retreat.jpg"
+  },
+  {
+    "id": "st_croix:enfield-green:prince",
+    "name": "Estate ENFIELD GREEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/enfield-green.jpg"
+  },
+  {
+    "id": "st_croix:envy:prince",
+    "name": "Estate ENVY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/envy.jpg"
+  },
+  {
+    "id": "st_croix:fareham:eastend-a",
+    "name": "Estate FAREHAM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/fareham.jpg"
+  },
+  {
+    "id": "st_croix:fountain:northside-a",
+    "name": "Estate FOUNTAIN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/fountain.jpg"
+  },
+  {
+    "id": "st_croix:frederikshaab:west-end",
+    "name": "Estate FREDERIKSHAAB",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/frederikshaab.jpg"
+  },
+  {
+    "id": "st_croix:frederiksted:west-end",
+    "name": "Estate FREDERIKSTED",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/frederiksted.jpg"
+  },
+  {
+    "id": "st_croix:friedensthal:company",
+    "name": "Estate FRIEDENSTHAL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/friedensthal.jpg"
+  },
+  {
+    "id": "st_croix:glynn:queen",
+    "name": "Estate GLYNN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/glynn.jpg"
+  },
+  {
+    "id": "st_croix:golden-grove:prince",
+    "name": "Estate GOLDEN GROVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/golden-grove.jpg"
+  },
+  {
+    "id": "st_croix:golden-rock:company",
+    "name": "Estate GOLDEN ROCK",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/golden-rock.jpg"
+  },
+  {
+    "id": "st_croix:granard:company",
+    "name": "Estate GRANARD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/granard.jpg"
+  },
+  {
+    "id": "st_croix:grange-north:company",
+    "name": "Estate GRANGE (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/grange-north.jpg"
+  },
+  {
+    "id": "st_croix:grange-south:company",
+    "name": "Estate GRANGE (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/grange-south.jpg"
+  },
+  {
+    "id": "st_croix:grange-hill:company",
+    "name": "Estate GRANGE HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/grange-hill.jpg"
+  },
+  {
+    "id": "st_croix:great-pond:eastend-a",
+    "name": "Estate GREAT POND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/great-pond.jpg"
+  },
+  {
+    "id": "st_croix:green-cay:eastend-a",
+    "name": "Estate GREEN CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/green-cay.jpg"
+  },
+  {
+    "id": "st_croix:grove-place:prince",
+    "name": "Estate GROVE PLACE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/grove-place.jpg"
+  },
+  {
+    "id": "st_croix:gumbs-land:eastend-b",
+    "name": "Estate GUMBS LAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/gumbs-land.jpg"
+  },
+  {
+    "id": "st_croix:hafensight:company",
+    "name": "Estate HAFENSIGHT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hafensight.jpg"
+  },
+  {
+    "id": "st_croix:hams-bay:northside-a",
+    "name": "Estate HAMS BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hams-bay.jpg"
+  },
+  {
+    "id": "st_croix:hams-bluff:northside-a",
+    "name": "Estate HAMS BLUFF",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hams-bluff.jpg"
+  },
+  {
+    "id": "st_croix:hannahs-rest:west-end",
+    "name": "Estate HANNAHS REST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hannahs-rest.jpg"
+  },
+  {
+    "id": "st_croix:hard-labor:prince",
+    "name": "Estate HARD LABOR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hard-labor.jpg"
+  },
+  {
+    "id": "st_croix:hartman:eastend-a",
+    "name": "Estate HARTMAN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hartman.jpg"
+  },
+  {
+    "id": "st_croix:hermitage:kings-kongens",
+    "name": "Estate HERMITAGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hermitage.jpg"
+  },
+  {
+    "id": "st_croix:hermon-hill:company",
+    "name": "Estate HERMON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hermon-hill.jpg"
+  },
+  {
+    "id": "st_croix:hogensberg:prince",
+    "name": "Estate HOGENSBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hogensberg.jpg"
+  },
+  {
+    "id": "st_croix:holgers-hope:eastend-a",
+    "name": "Estate HOLGER'S HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/holgers-hope.jpg"
+  },
+  {
+    "id": "st_croix:hope:queen",
+    "name": "Estate HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hope.jpg"
+  },
+  {
+    "id": "st_croix:hope:prince",
+    "name": "Estate HOPE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hope.jpg"
+  },
+  {
+    "id": "st_croix:hope-carton-hill:eastend-b",
+    "name": "Estate HOPE & CARTON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/hope-and-carton-hill.jpg"
+  },
+  {
+    "id": "st_croix:humbug:queen",
+    "name": "Estate HUMBUG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/humbug.jpg"
+  },
+  {
+    "id": "st_croix:isaacs-bay:eastend-b",
+    "name": "Estate ISAACS BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/isaacs-bay.jpg"
+  },
+  {
+    "id": "st_croix:jacks-bay:eastend-b",
+    "name": "Estate JACKS BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/jacks-bay.jpg"
+  },
+  {
+    "id": "st_croix:jerusalem-figtree-hill:queen",
+    "name": "Estate JERUSALEM & FIGTREE HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/jerusalem-and-figtree-hill.jpg"
+  },
+  {
+    "id": "st_croix:jolly-hill:west-end",
+    "name": "Estate JOLLY HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/jolly-hill.jpg"
+  },
+  {
+    "id": "st_croix:judiths-fancy:company",
+    "name": "Estate JUDITHS FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/judiths-fancy.jpg"
+  },
+  {
+    "id": "st_croix:kingshill:kings-kongens",
+    "name": "Estate KINGSHILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/kingshill.jpg"
+  },
+  {
+    "id": "st_croix:la-grande-princesse:company",
+    "name": "Estate LA GRANDE PRINCESSE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/la-grande-princesse.jpg"
+  },
+  {
+    "id": "st_croix:la-grange:west-end",
+    "name": "Estate LA GRANGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/la-grange.jpg"
+  },
+  {
+    "id": "st_croix:la-presvallee:eastend-a",
+    "name": "Estate LA PRESVALLEE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/la-presvallee.jpg"
+  },
+  {
+    "id": "st_croix:la-reine:queen",
+    "name": "Estate LA REINE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/la-reine.jpg"
+  },
+  {
+    "id": "st_croix:la-vallee:northside-b",
+    "name": "Estate LA VALLEE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/la-vallee.jpg"
+  },
+  {
+    "id": "st_croix:lbj-gardens:company",
+    "name": "Estate LBJ GARDENS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lbj-gardens.jpg"
+  },
+  {
+    "id": "st_croix:lebanon-hill:kings-kongens",
+    "name": "Estate LEBANON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lebanon-hill.jpg"
+  },
+  {
+    "id": "st_croix:little-fountain:kings-kongens",
+    "name": "Estate LITTLE FOUNTAIN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-fountain.jpg"
+  },
+  {
+    "id": "st_croix:little-la-grange:west-end",
+    "name": "Estate LITTLE LA GRANGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-la-grange.jpg"
+  },
+  {
+    "id": "st_croix:little-mount-pleasant-matr-11:northside-b",
+    "name": "Estate LITTLE MOUNT PLEASANT (MATR. 11)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-mount-pleasant-matr-11.jpg"
+  },
+  {
+    "id": "st_croix:little-princesse:company",
+    "name": "Estate LITTLE PRINCESSE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-princesse.jpg"
+  },
+  {
+    "id": "st_croix:little-profit:eastend-b",
+    "name": "Estate LITTLE PROFIT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/little-profit.jpg"
+  },
+  {
+    "id": "st_croix:long-point-cotton-garden:eastend-b",
+    "name": "Estate LONG POINT & COTTON GARDEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/long-point-and-cotton-garden.jpg"
+  },
+  {
+    "id": "st_croix:longford:company",
+    "name": "Estate LONGFORD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/longford.jpg"
+  },
+  {
+    "id": "st_croix:lower-love:prince",
+    "name": "Estate LOWER LOVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lower-love.jpg"
+  },
+  {
+    "id": "st_croix:lowry-hill:eastend-a",
+    "name": "Estate LOWRY HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/lowry-hill.jpg"
+  },
+  {
+    "id": "st_croix:madam-carty:eastend-b",
+    "name": "Estate MADAM CARTY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/madam-carty.jpg"
+  },
+  {
+    "id": "st_croix:mannings-bay:prince",
+    "name": "Estate MANNING'S BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mannings-bay.jpg"
+  },
+  {
+    "id": "st_croix:marienhoj:eastend-a",
+    "name": "Estate MARIENHOJ",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/marienhoj.jpg"
+  },
+  {
+    "id": "st_croix:mars-hill-stony-ground:west-end",
+    "name": "Estate MARS HILL & STONY GROUND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mars-hill-and-stony-ground.jpg"
+  },
+  {
+    "id": "st_croix:marys-fancy:queen",
+    "name": "Estate MARY'S FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/marys-fancy.jpg"
+  },
+  {
+    "id": "st_croix:mint:prince",
+    "name": "Estate MINT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mint.jpg"
+  },
+  {
+    "id": "st_croix:mon-bijou:kings-kongens",
+    "name": "Estate MON BIJOU",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mon-bijou.jpg"
+  },
+  {
+    "id": "st_croix:mon-bijou-blue-mt:kings-kongens",
+    "name": "Estate MON BIJOU / BLUE MT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mon-bijou-blue-mt.jpg"
+  },
+  {
+    "id": "st_croix:montpellier:queen",
+    "name": "Estate MONTPELLIER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/montpellier.jpg"
+  },
+  {
+    "id": "st_croix:montpellier-i:prince",
+    "name": "Estate MONTPELLIER (I)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/montpellier-i.jpg"
+  },
+  {
+    "id": "st_croix:montpellier-ii:prince",
+    "name": "Estate MONTPELLIER (II)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/montpellier-ii.jpg"
+  },
+  {
+    "id": "st_croix:morning-star:queen",
+    "name": "Estate MORNING STAR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/morning-star.jpg"
+  },
+  {
+    "id": "st_croix:mount-eagle:northside-b",
+    "name": "Estate MOUNT EAGLE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-eagle.jpg"
+  },
+  {
+    "id": "st_croix:mount-fancy:eastend-a",
+    "name": "Estate MOUNT FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-fancy.jpg"
+  },
+  {
+    "id": "st_croix:mount-pleasant-east:eastend-a",
+    "name": "Estate MOUNT PLEASANT (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-pleasant-east.jpg"
+  },
+  {
+    "id": "st_croix:mount-pleasant-north:northside-b",
+    "name": "Estate MOUNT PLEASANT (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-pleasant-north.jpg"
+  },
+  {
+    "id": "st_croix:mount-pleasant-south:prince",
+    "name": "Estate MOUNT PLEASANT (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-pleasant-south.jpg"
+  },
+  {
+    "id": "st_croix:mount-retreat:eastend-b",
+    "name": "Estate MOUNT RETREAT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-retreat.jpg"
+  },
+  {
+    "id": "st_croix:mount-stewart:northside-a",
+    "name": "Estate MOUNT STEWART",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-stewart.jpg"
+  },
+  {
+    "id": "st_croix:mount-victory:northside-a",
+    "name": "Estate MOUNT VICTORY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-victory.jpg"
+  },
+  {
+    "id": "st_croix:mount-welcome:eastend-a",
+    "name": "Estate MOUNT WELCOME",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mount-welcome.jpg"
+  },
+  {
+    "id": "st_croix:mountain:prince",
+    "name": "Estate MOUNTAIN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/mountain.jpg"
+  },
+  {
+    "id": "st_croix:negro-bay:prince",
+    "name": "Estate NEGRO BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/negro-bay.jpg"
+  },
+  {
+    "id": "st_croix:nicholas:northside-a",
+    "name": "Estate NICHOLAS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/nicholas.jpg"
+  },
+  {
+    "id": "st_croix:north-grapetree-bay:eastend-b",
+    "name": "Estate NORTH GRAPETREE BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/north-grapetree-bay.jpg"
+  },
+  {
+    "id": "st_croix:north-hall:northside-a",
+    "name": "Estate NORTH HALL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/north-hall.jpg"
+  },
+  {
+    "id": "st_croix:north-slob:eastend-b",
+    "name": "Estate NORTH SLOB",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/north-slob.jpg"
+  },
+  {
+    "id": "st_croix:north-star:northside-b",
+    "name": "Estate NORTH STAR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/north-star.jpg"
+  },
+  {
+    "id": "st_croix:northside:northside-a",
+    "name": "Estate NORTHSIDE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/northside.jpg"
+  },
+  {
+    "id": "st_croix:old-hospital-grounds:company",
+    "name": "Estate OLD HOSPITAL GROUNDS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/old-hospital-grounds.jpg"
+  },
+  {
+    "id": "st_croix:orange-grove-east:company",
+    "name": "Estate ORANGE GROVE (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/orange-grove-east.jpg"
+  },
+  {
+    "id": "st_croix:orange-grove-west:prince",
+    "name": "Estate ORANGE GROVE (West)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/orange-grove-west.jpg"
+  },
+  {
+    "id": "st_croix:oxford:northside-a",
+    "name": "Estate OXFORD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/oxford.jpg"
+  },
+  {
+    "id": "st_croix:paradise:prince",
+    "name": "Estate PARADISE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/paradise.jpg"
+  },
+  {
+    "id": "st_croix:parasol:northside-b",
+    "name": "Estate PARASOL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/parasol.jpg"
+  },
+  {
+    "id": "st_croix:pearl:queen",
+    "name": "Estate PEARL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pearl.jpg"
+  },
+  {
+    "id": "st_croix:peters-rest:queen",
+    "name": "Estate PETER'S REST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/peters-rest.jpg"
+  },
+  {
+    "id": "st_croix:peters-farm:company",
+    "name": "Estate PETERS FARM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/peters-farm.jpg"
+  },
+  {
+    "id": "st_croix:petronella:eastend-a",
+    "name": "Estate PETRONELLA",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/petronella.jpg"
+  },
+  {
+    "id": "st_croix:pleasant-vale:northside-a",
+    "name": "Estate PLEASANT VALE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pleasant-vale.jpg"
+  },
+  {
+    "id": "st_croix:pleasant-valley:eastend-b",
+    "name": "Estate PLEASANT VALLEY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/pleasant-valley.jpg"
+  },
+  {
+    "id": "st_croix:plessen-north:prince",
+    "name": "Estate PLESSEN (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/plessen-north.jpg"
+  },
+  {
+    "id": "st_croix:plessen-south:prince",
+    "name": "Estate PLESSEN (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/plessen-south.jpg"
+  },
+  {
+    "id": "st_croix:profit:kings-kongens",
+    "name": "Estate PROFIT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/profit.jpg"
+  },
+  {
+    "id": "st_croix:prospect-hill:eastend-a",
+    "name": "Estate PROSPECT HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/prospect-hill.jpg"
+  },
+  {
+    "id": "st_croix:prospect-hill-west:northside-a",
+    "name": "Estate PROSPECT HILL WEST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/prospect-hill-west.jpg"
+  },
+  {
+    "id": "st_croix:prosperity:west-end",
+    "name": "Estate PROSPERITY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/prosperity.jpg"
+  },
+  {
+    "id": "st_croix:prosperity-east:northside-a",
+    "name": "Estate PROSPERITY EAST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/prosperity-east.jpg"
+  },
+  {
+    "id": "st_croix:protestant-cay:company",
+    "name": "Estate PROTESTANT CAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/protestant-cay.jpg"
+  },
+  {
+    "id": "st_croix:public-port-site-filled-lands:kings-kongens",
+    "name": "Estate PUBLIC PORT SITE (Filled Lands)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/public-port-site-filled-lands.jpg"
+  },
+  {
+    "id": "st_croix:punch:northside-a",
+    "name": "Estate PUNCH",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/punch.jpg"
+  },
+  {
+    "id": "st_croix:rattan-belvedere:queen",
+    "name": "Estate RATTAN & BELVEDERE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rattan-and-belvedere.jpg"
+  },
+  {
+    "id": "st_croix:reclaimed-land-filled:queen",
+    "name": "Estate RECLAIMED LAND (FILLED)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/reclaimed-land-filled.jpg"
+  },
+  {
+    "id": "st_croix:recovery-hill:company",
+    "name": "Estate RECOVERY HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/recovery-hill.jpg"
+  },
+  {
+    "id": "st_croix:recovery-welcome:eastend-a",
+    "name": "Estate RECOVERY-WELCOME",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/recovery-welcome.jpg"
+  },
+  {
+    "id": "st_croix:retreat:queen",
+    "name": "Estate RETREAT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/retreat.jpg"
+  },
+  {
+    "id": "st_croix:retreat-peters-minde:company",
+    "name": "Estate RETREAT & PETER'S MINDE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/retreat-and-peters-minde.jpg"
+  },
+  {
+    "id": "st_croix:richmond:company",
+    "name": "Estate RICHMOND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/richmond.jpg"
+  },
+  {
+    "id": "st_croix:richmond-aldersville:company",
+    "name": "Estate RICHMOND (ALDERSVILLE)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/richmond-aldersville.jpg"
+  },
+  {
+    "id": "st_croix:river:prince",
+    "name": "Estate RIVER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/river.jpg"
+  },
+  {
+    "id": "st_croix:roberts-hill:eastend-a",
+    "name": "Estate ROBERTS HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/roberts-hill.jpg"
+  },
+  {
+    "id": "st_croix:rose-hill:northside-a",
+    "name": "Estate ROSE HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/rose-hill.jpg"
+  },
+  {
+    "id": "st_croix:ruby:queen",
+    "name": "Estate RUBY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/ruby.jpg"
+  },
+  {
+    "id": "st_croix:sallys-fancy:eastend-a",
+    "name": "Estate SALLYS FANCY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sallys-fancy.jpg"
+  },
+  {
+    "id": "st_croix:salt-river:northside-b",
+    "name": "Estate SALT RIVER",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/salt-river.jpg"
+  },
+  {
+    "id": "st_croix:seven-hills:eastend-a",
+    "name": "Estate SEVEN HILLS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/seven-hills.jpg"
+  },
+  {
+    "id": "st_croix:shoys:eastend-a",
+    "name": "Estate SHOYS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/shoys.jpg"
+  },
+  {
+    "id": "st_croix:sight:eastend-a",
+    "name": "Estate SIGHT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sight.jpg"
+  },
+  {
+    "id": "st_croix:sion-farm:queen",
+    "name": "Estate SION FARM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sion-farm.jpg"
+  },
+  {
+    "id": "st_croix:sion-hill:queen",
+    "name": "Estate SION HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sion-hill.jpg"
+  },
+  {
+    "id": "st_croix:solitude-east:eastend-b",
+    "name": "Estate SOLITUDE (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/solitude-east.jpg"
+  },
+  {
+    "id": "st_croix:solitude-north:northside-b",
+    "name": "Estate SOLITUDE (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/solitude-north.jpg"
+  },
+  {
+    "id": "st_croix:south-grapetree-bay:eastend-b",
+    "name": "Estate SOUTH GRAPETREE BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/south-grapetree-bay.jpg"
+  },
+  {
+    "id": "st_croix:south-slob:eastend-b",
+    "name": "Estate SOUTH SLOB",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/south-slob.jpg"
+  },
+  {
+    "id": "st_croix:southgate-farm:eastend-a",
+    "name": "Estate SOUTHGATE FARM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/southgate-farm.jpg"
+  },
+  {
+    "id": "st_croix:spanish-town:kings-kongens",
+    "name": "Estate SPANISH TOWN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/spanish-town.jpg"
+  },
+  {
+    "id": "st_croix:spratt-hall:northside-a",
+    "name": "Estate SPRATT HALL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/spratt-hall.jpg"
+  },
+  {
+    "id": "st_croix:spring-garden:northside-a",
+    "name": "Estate SPRING GARDEN",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/spring-garden.jpg"
+  },
+  {
+    "id": "st_croix:spring-gut:company",
+    "name": "Estate SPRING GUT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/spring-gut.jpg"
+  },
+  {
+    "id": "st_croix:springfield:prince",
+    "name": "Estate SPRINGFIELD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/springfield.jpg"
+  },
+  {
+    "id": "st_croix:st-georges:prince",
+    "name": "Estate ST GEORGES",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-georges.jpg"
+  },
+  {
+    "id": "st_croix:st-georges-hill:west-end",
+    "name": "Estate ST GEORGES HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-georges-hill.jpg"
+  },
+  {
+    "id": "st_croix:st-johns:queen",
+    "name": "Estate ST JOHN'S",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-johns.jpg"
+  },
+  {
+    "id": "st_croix:st-peters:eastend-a",
+    "name": "Estate ST PETERS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/st-peters.jpg"
+  },
+  {
+    "id": "st_croix:stoney-ground-east:west-end",
+    "name": "Estate STONEY GROUND (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/stoney-ground-east.jpg"
+  },
+  {
+    "id": "st_croix:stoney-ground-west:west-end",
+    "name": "Estate STONEY GROUND (West)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/stoney-ground-west.jpg"
+  },
+  {
+    "id": "st_croix:strawberry-hill:queen",
+    "name": "Estate STRAWBERRY HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/strawberry-hill.jpg"
+  },
+  {
+    "id": "st_croix:sweet-bottom:northside-a",
+    "name": "Estate SWEET BOTTOM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/sweet-bottom.jpg"
+  },
+  {
+    "id": "st_croix:teague-bay:eastend-b",
+    "name": "Estate TEAGUE BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/teague-bay.jpg"
+  },
+  {
+    "id": "st_croix:the-springs:eastend-a",
+    "name": "Estate THE SPRINGS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/the-springs.jpg"
+  },
+  {
+    "id": "st_croix:thomas:queen",
+    "name": "Estate THOMAS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/thomas.jpg"
+  },
+  {
+    "id": "st_croix:tipperary:eastend-a",
+    "name": "Estate TIPPERARY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/tipperary.jpg"
+  },
+  {
+    "id": "st_croix:turner-hole:eastend-b",
+    "name": "Estate TURNER HOLE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/turner-hole.jpg"
+  },
+  {
+    "id": "st_croix:two-brothers-smithfield-hesselberg:west-end",
+    "name": "Estate TWO BROTHERS / SMITHFIELD / HESSELBERG",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/two-brothers-smithfield-hesselberg.jpg"
+  },
+  {
+    "id": "st_croix:two-friends:prince",
+    "name": "Estate TWO FRIENDS",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/two-friends.jpg"
+  },
+  {
+    "id": "st_croix:union-mount-washington:eastend-a",
+    "name": "Estate UNION & MOUNT WASHINGTON",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/union-and-mount-washington.jpg"
+  },
+  {
+    "id": "st_croix:upper-love:prince",
+    "name": "Estate UPPER LOVE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/upper-love.jpg"
+  },
+  {
+    "id": "st_croix:vicorp-land:prince",
+    "name": "Estate VICORP LAND",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/vicorp-land.jpg"
+  },
+  {
+    "id": "st_croix:vicorp-land-bethlehem-fred:kings-kongens",
+    "name": "Estate VICORP LAND (BETHLEHEM & FRED)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/vicorp-land-bethlehem-and-fred.jpg"
+  },
+  {
+    "id": "st_croix:waldberggaard:prince",
+    "name": "Estate WALDBERGGAARD",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/waldberggaard.jpg"
+  },
+  {
+    "id": "st_croix:washington-hill:northside-a",
+    "name": "Estate WASHINGTON HILL",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/washington-hill.jpg"
+  },
+  {
+    "id": "st_croix:wheel-of-fortune:west-end",
+    "name": "Estate WHEEL OF FORTUNE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/wheel-of-fortune.jpg"
+  },
+  {
+    "id": "st_croix:whim-east:west-end",
+    "name": "Estate WHIM (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whim-east.jpg"
+  },
+  {
+    "id": "st_croix:whim-west:west-end",
+    "name": "Estate WHIM (West)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whim-west.jpg"
+  },
+  {
+    "id": "st_croix:white-lady:west-end",
+    "name": "Estate WHITE LADY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/white-lady.jpg"
+  },
+  {
+    "id": "st_croix:whites-bay-east:west-end",
+    "name": "Estate WHITES BAY (East)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whites-bay-east.jpg"
+  },
+  {
+    "id": "st_croix:whites-bay-north:west-end",
+    "name": "Estate WHITES BAY (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whites-bay-north.jpg"
+  },
+  {
+    "id": "st_croix:whites-bay-south:west-end",
+    "name": "Estate WHITES BAY (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/whites-bay-south.jpg"
+  },
+  {
+    "id": "st_croix:wills-bay:northside-a",
+    "name": "Estate WILL'S BAY",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/wills-bay.jpg"
+  },
+  {
+    "id": "st_croix:william:northside-a",
+    "name": "Estate WILLIAM",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/william.jpg"
+  },
+  {
+    "id": "st_croix:williams-delight:prince",
+    "name": "Estate WILLIAMS DELIGHT",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/williams-delight.jpg"
+  },
+  {
+    "id": "st_croix:windsor:queen",
+    "name": "Estate WINDSOR",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/windsor.jpg"
+  },
+  {
+    "id": "st_croix:wood-cottage:eastend-b",
+    "name": "Estate WOOD COTTAGE",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/wood-cottage.jpg"
+  },
+  {
+    "id": "st_croix:work-rest:company",
+    "name": "Estate WORK & REST",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/work-and-rest.jpg"
+  },
+  {
+    "id": "st_croix:yellow-cliff-north:eastend-b",
+    "name": "Estate YELLOW CLIFF (North)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/yellow-cliff-north.jpg"
+  },
+  {
+    "id": "st_croix:yellow-cliff-south:eastend-b",
+    "name": "Estate YELLOW CLIFF (South)",
+    "source": "estate",
+    "type": "estate",
+    "island": "st_croix",
+    "reason": "No imageUrl, coverImage, image, photoUrl, or thumbnailUrl found",
+    "suggestedFileName": "/images/estate/yellow-cliff-south.jpg"
+  }
+]

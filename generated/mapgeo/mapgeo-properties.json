@@ -1,0 +1,3410 @@
+[
+  {
+    "propertyId": "146",
+    "address": "1088 Kongens Gade, Kings Quarter, St. Thomas US. Virgin Islands",
+    "sourceUrl": "https://usvi.mapgeo.io/api/communities/146",
+    "raw": {
+      "community": {
+        "id": 146,
+        "name": "US Virgin Islands",
+        "subdomain": "usvi",
+        "maintenanceActive": false,
+        "maintenanceMessage": null,
+        "settings": {
+          "efc": {
+            "url": null,
+            "maxSearchDistance": null,
+            "initialSearchDistance": null
+          },
+          "logo": "https://mapgeo.s3.amazonaws.com/clients/usvi/assets/images/GISD-LOGO.PNG",
+          "theme": "green",
+          "contact": {
+            "name": "GIS Division, Office of the Lt. Governor",
+            "email": "geo.info@lgo.vi.gov",
+            "phone": "(340) 776-8505",
+            "address": "1088 Kongens Gade, Kings Quarter, St. Thomas US. Virgin Islands"
+          },
+          "oblique": [],
+          "website": "http://ltg.gov.vi/geographic-information-systems.html",
+          "property": {
+            "fieldGroups": []
+          },
+          "disclaimer": {
+            "title": "Disclaimer",
+            "message": "## US Virgin Islands \n\nThe data available here is updated in the normal course of business and may not always represent the most current information. In addition, some of the data contained herein may have been compiled from third-party sources and the accuracy of that information cannot be confirmed. \n\nThe USVI and Sanborn, respectively, do not make any warranty, representation, or guarantee as to the content, sequence, accuracy, timeliness, or completeness of any of the information provide herein. The user should not rely on the data provided herein without verifying its accuracy independently. The USVI and Sanborn, respectively, explicitly disclaim any representations and warranties including, without limitation, the implied warranties of merchantability and fitness for a particular purpose. \n\nThe USVI and Sanborn, respectively, shall assume no liability for any errors, omissions, or inaccuracies in the information provided regardless of how caused and for any decision made or action taken or not taken by the user in reliance upon any information of data furnished hereunder. \n\nIf you identify any data problems please use the \"Comments\" function to notify the USVI and Sanborn.\n\nBy using this site, you agree to MapGeo's <a href=\"https://help.mapgeo.io/privacy-policy.html\" target=\"_blank\"> Privacy Policy </a>and <a href=\"https://help.mapgeo.io/tos.html\" target=\"_blank\">Terms of Service</a>.\n",
+            "showLogo": true,
+            "showUpdateDates": true,
+            "hideOnSubsequent": true,
+            "requireAgreement": true,
+            "showOnFirstVisit": true
+          },
+          "membership": {
+            "defaultRoleId": "430",
+            "loginAccessOnly": false,
+            "googleOauthDomain": null,
+            "enableAccountRequest": false,
+            "googleOauthAutoRegister": false
+          },
+          "pictometry": {
+            "apikey": null,
+            "secretkey": null
+          },
+          "googleMapsKey": null,
+          "defaultDataset": "properties"
+        },
+        "datasets": [
+          {
+            "id": "properties",
+            "name": "Property",
+            "icon": "building",
+            "color": "#2196f3",
+            "published": true,
+            "configUpdated": "2026-03-30T19:00:33.783Z",
+            "description": null
+          },
+          {
+            "id": "stx-properties",
+            "name": "St Croix",
+            "icon": "building",
+            "color": "#2196f3",
+            "published": true,
+            "configUpdated": "2024-09-18T21:21:23.424Z",
+            "description": null
+          },
+          {
+            "id": "stj-properties",
+            "name": "St. John",
+            "icon": "building",
+            "color": "#2196f3",
+            "published": true,
+            "configUpdated": "2024-09-18T21:24:59.495Z",
+            "description": null
+          },
+          {
+            "id": "stt-properties",
+            "name": "St Thomas",
+            "icon": "building",
+            "color": "#2196f3",
+            "published": true,
+            "configUpdated": "2024-09-18T21:21:54.097Z",
+            "description": null
+          },
+          {
+            "id": "wi-properties",
+            "name": "Water Island",
+            "icon": "building",
+            "color": "#2196f3",
+            "published": true,
+            "configUpdated": "2024-09-18T21:23:36.234Z",
+            "description": null
+          }
+        ],
+        "piwikSiteId": "92",
+        "subtitle": null,
+        "shortName": null,
+        "config_id": "505521",
+        "published_on": "2026-03-30T19:00:34.277Z",
+        "published_by": "04db0424-624c-4baf-9af7-c61c3a7cd061"
+      }
+    }
+  },
+  {
+    "propertyId": "properties",
+    "sourceUrl": "https://usvi.mapgeo.io/api/config/datasets/properties",
+    "raw": {
+      "dataset": {
+        "slug": null,
+        "name": "Property",
+        "description": null,
+        "icon": "building",
+        "color": "#2196f3",
+        "itemName": null,
+        "itemsName": null,
+        "relatedItemName": "unit",
+        "configUpdated": "2026-03-30T19:00:33.783Z",
+        "configUpdatedBy": "04db0424-624c-4baf-9af7-c61c3a7cd061",
+        "published": true,
+        "fieldGroups": [
+          {
+            "pk": "7f89bea6-d055-49c0-a27f-7fa1c1bc7efc",
+            "name": "Property",
+            "type": "default",
+            "source": "property",
+            "required": true,
+            "collapsed": false,
+            "isShowOnMapDisabled": false,
+            "showCount": null,
+            "fields": [
+              {
+                "key": "id",
+                "property": "Property ID",
+                "template": "{ID}",
+                "required": true,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              },
+              {
+                "key": "displayName",
+                "property": "Address",
+                "template": "{displayName}",
+                "required": true,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              },
+              {
+                "key": null,
+                "property": "Island",
+                "template": "{island}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              }
+            ],
+            "filters": [],
+            "sortField": null,
+            "sortDescending": false,
+            "gridColumns": null,
+            "gridRows": null
+          },
+          {
+            "pk": "43e90ece-cdfe-4fb6-80a0-047e5ec7ebef",
+            "name": "Property Information",
+            "type": "table",
+            "source": "228c0bd0-7b5e-41d1-8d44-c3fac7412b42",
+            "required": false,
+            "collapsed": false,
+            "isShowOnMapDisabled": false,
+            "showCount": null,
+            "fields": [
+              {
+                "key": null,
+                "property": "OLG Map Number",
+                "template": "{map}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              },
+              {
+                "key": null,
+                "property": "DPNR Zone",
+                "template": "{dpnrZone}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              },
+              {
+                "key": null,
+                "property": "Acres",
+                "template": "{acre}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              }
+            ],
+            "filters": [
+              {
+                "type": "field",
+                "distance": 0.5,
+                "value": null,
+                "sourceKey": "parcelNo",
+                "datasetKey": "linkid"
+              }
+            ],
+            "sortField": null,
+            "sortDescending": false,
+            "gridColumns": null,
+            "gridRows": null
+          },
+          {
+            "pk": "c13b9f77-01fb-4b1f-8e95-55916747f5bf",
+            "name": "Ownership",
+            "type": "default",
+            "source": "property",
+            "required": false,
+            "collapsed": false,
+            "isShowOnMapDisabled": false,
+            "showCount": null,
+            "fields": [
+              {
+                "key": null,
+                "property": "Owner",
+                "template": "{ownerName}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              },
+              {
+                "key": null,
+                "property": "Address",
+                "template": "{ownAddress}\n{city}, {state} {zipCode}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              }
+            ],
+            "filters": [],
+            "sortField": null,
+            "sortDescending": false,
+            "gridColumns": null,
+            "gridRows": null
+          },
+          {
+            "pk": "95fe0a68-b4a4-4f2f-bae0-46f257116d8b",
+            "name": "Estates",
+            "type": "table",
+            "source": "3bde306e-fff9-4e38-acf7-f2622d1b161a",
+            "required": false,
+            "collapsed": false,
+            "isShowOnMapDisabled": false,
+            "showCount": 0,
+            "fields": [
+              {
+                "key": null,
+                "property": "Estate",
+                "template": "{estate}",
+                "required": false,
+                "displayType": null,
+                "tip": null,
+                "visibilityShow": false,
+                "imageLinkUrl": null,
+                "urlLabel": null,
+                "newWindow": false
+              }
+            ],
+            "filters": [
+              {
+                "type": "distance",
+                "distance": 1,
+                "value": null,
+                "sourceKey": "propertyId",
+                "datasetKey": null
+              }
+            ],
+            "sortField": "Estate",
+            "sortDescending": false,
+            "gridColumns": null,
+            "gridRows": null
+          }
+        ],
+        "abutterCards": [],
+        "downloads": {
+          "enableAbuttersReport": false,
+          "enableAbuttersReportSignature": false,
+          "labelTemplate": "{ownerName}\n{ownAddress}\n{state}\n",
+          "spreadsheetFields": [
+            {
+              "key": null,
+              "property": "Property ID",
+              "template": "{ID}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": null,
+              "property": "Legal Description",
+              "template": "{displayName}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": null,
+              "property": "Owner",
+              "template": "{ownerName}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": null,
+              "property": "Address",
+              "template": "{ownAddress}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": null,
+              "property": "City State Zip",
+              "template": "{state}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            }
+          ],
+          "abuttersReportFields": [],
+          "printFields": [
+            {
+              "key": "id",
+              "property": "Property ID",
+              "template": "{id}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": "displayName",
+              "property": "Location",
+              "template": "{displayName}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            },
+            {
+              "key": "ownerName",
+              "property": "Owner",
+              "template": "{ownerName}",
+              "required": false,
+              "displayType": null,
+              "tip": null,
+              "visibilityShow": false,
+              "imageLinkUrl": null,
+              "urlLabel": null,
+              "newWindow": false
+            }
+          ]
+        },
+        "links": [
+          {
+            "pk": "00149cf5-b3cf-4660-9887-175aabeccafc",
+            "name": "US Virgin Islands GIS",
+            "template": "https://ltg.gov.vi/departments/gis-program/"
+          }
+        ],
+        "uploader": {
+          "optinExperimental": true,
+          "optinExperimentalIntersection": true,
+          "geometryUpdatedDate": "March 2026",
+          "dataUpdatedDate": "March 2026",
+          "lastSyncRunDate": "2025-04-25T21:30:58.782Z"
+        },
+        "map": {
+          "fullExtent": "17.673884,-65.085457,18.412950,-64.565494",
+          "color": "#ffeb3b",
+          "disableLocate": false,
+          "abuttersFeetDistance": 120,
+          "abuttersFeetDistanceMax": 2500,
+          "downloadItemsMax": 500,
+          "propertyZoomLevel": 17,
+          "maxZoomLevel": 19,
+          "minZoomLevel": 10,
+          "basemaps": {
+            "defaultBasemap": "road",
+            "roadOverlayHasBuildings": false,
+            "disablePois": false,
+            "disableRoadLabels": false,
+            "roadOverlay": "",
+            "satelliteOverlay": ""
+          },
+          "customBasemaps": [
+            {
+              "pk": "7f8182f2-9377-4243-80db-e6408b7979e7",
+              "name": "Aerial Photo, 2023",
+              "primaryLayer": null,
+              "isPublished": true,
+              "isDefault": true,
+              "layers": [
+                "7f162ce9-02ca-4d15-9797-42103149db46",
+                "fa448bc9-0dde-4d49-bfb2-8c146d326f7a",
+                "usvioceanblues3",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "-- themes placeholder --"
+              ]
+            },
+            {
+              "pk": "d782a006-546d-45d6-a0fc-918fc5af23b8",
+              "name": "Aerial Photo, 2020",
+              "primaryLayer": null,
+              "isPublished": true,
+              "isDefault": false,
+              "layers": [
+                "79f7c315-4a65-4209-b709-9bdabee82b3c",
+                "usvioceanblues3",
+                "usvivizroads",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "-- themes placeholder --"
+              ]
+            },
+            {
+              "pk": "aerial-photo-2017",
+              "name": "Aerial Photo, 2017",
+              "primaryLayer": null,
+              "isPublished": true,
+              "isDefault": false,
+              "layers": [
+                "s3orthoimage2017",
+                "usvioceanblues3",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "usvivizroads",
+                "-- themes placeholder --"
+              ]
+            },
+            {
+              "pk": "aerial-photo-2010",
+              "name": "Aerial Photo, 2010",
+              "primaryLayer": null,
+              "isPublished": true,
+              "isDefault": false,
+              "layers": [
+                "usviorthoimages3",
+                "usvioceanblues3",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "usvivizroads",
+                "-- themes placeholder --"
+              ]
+            },
+            {
+              "pk": "hybrid",
+              "name": "Google Terrain",
+              "primaryLayer": "stockton-parcels",
+              "isPublished": true,
+              "isDefault": false,
+              "layers": [
+                "google-terrain-wo-labels",
+                "usvivizparcelsbase",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "-- themes placeholder --"
+              ]
+            },
+            {
+              "pk": "google-satellite",
+              "name": "Google Satellite",
+              "primaryLayer": null,
+              "isPublished": true,
+              "isDefault": false,
+              "layers": [
+                "google-satellite-wo-labels",
+                "usviparcelsortho",
+                "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+                "-- themes placeholder --"
+              ]
+            }
+          ],
+          "layers": [
+            {
+              "pk": "google-road-wo-buildings-or-labels",
+              "name": "Google Road w/o Buildings or Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "roadmap",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "geometry",
+                  "featureType": "administrative.land_parcel"
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels",
+                  "featureType": "administrative.land_parcel"
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels",
+                  "featureType": "road"
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels",
+                  "featureType": "poi"
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "geometry",
+                  "featureType": "landscape.man_made"
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "google-labels",
+              "name": "Google Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "roadmap",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ],
+                  "elementType": "labels"
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "google-inverted-labels",
+              "name": "Google Inverted Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "roadmap",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ]
+                },
+                {
+                  "stylers": [
+                    {
+                      "visibility": "on"
+                    }
+                  ],
+                  "elementType": "labels"
+                },
+                {
+                  "stylers": [
+                    {
+                      "invert_lightness": true
+                    }
+                  ]
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "google-satellite-wo-labels",
+              "name": "Google Satellite w/o Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "satellite",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels"
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "google-hybrid-wo-labels",
+              "name": "Google Hybrid w/o Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "hybrid",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels"
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "google-terrain-wo-labels",
+              "name": "Google Terrain w/o Labels",
+              "url": null,
+              "legendImage": null,
+              "attribution": null,
+              "type": "GOOGLE",
+              "mapType": "terrain",
+              "style": [
+                {
+                  "stylers": [
+                    {
+                      "visibility": "off"
+                    }
+                  ],
+                  "elementType": "labels"
+                }
+              ],
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvioceanblues3",
+              "name": "usvi_oceanblue_s3",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/ocean_blue",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usviorthoimages3",
+              "name": "usvi_orthoimage_s3",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/ortho_image",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvisoilss3",
+              "name": "usvi_soils_s3",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/soils",
+              "legendImage": "https://mapgeo.s3.amazonaws.com/clients/usvi/assets/legends/sg.png",
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvitopos3",
+              "name": "usvi_topo_s3",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/topo",
+              "legendImage": "https://mapgeo.s3.amazonaws.com/clients/usvi/assets/legends/to.png",
+              "attribution": "",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usviparcelsortho",
+              "name": "usvi_parcels_ortho",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/e4fe88c5-b235-4022-bd37-248d82ef4974/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvivizroads",
+              "name": "usvi_viz_roads",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/f2a268ef-4157-4436-963e-de81d467e0e0/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "noaa-navigational-charts",
+              "name": "NOAA Navigational Charts",
+              "url": "https://gis.charttools.noaa.gov/arcgis/rest/services/MarineChart_Services/NOAACharts/MapServer/tile",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": "0",
+              "srs": "EPSG:3857",
+              "mappings": []
+            },
+            {
+              "pk": "usvivizparcelsbase",
+              "name": "usvi_viz_parcelsbase",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/76de4e74-a779-4492-bcc9-b3906629b26b/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvivizpoi",
+              "name": "usvi_viz_historicdistricts",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/203c8e57-a88a-4e42-a9f7-a3ebca570402/viz.json",
+              "legendImage": "",
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "estatescopy",
+              "name": "usvi_viz_estates",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/d87b1c80-8082-4cd4-9ad5-8aa944ba59e0/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "irmatest",
+              "name": "Irma_test",
+              "url": "https://stormscdn.ngs.noaa.gov/20170916b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "This imagery was acquired by the NOAA Remote Sensing Division to support NOAA homeland security and emergency response requirements. In addition, it will be used for ongoing research efforts for testing and developing standards for airborne digital imagery. Individual images have been combined into a larger mosaic and tiled for distribution. The approximate ground sample distance (GSD) for each pixel is 50 cm / zoom level 18. The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170911argb",
+              "name": "20170911a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170911a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170911brgb",
+              "name": "20170911b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170911b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170912argb",
+              "name": "20170912a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170912a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170913argb",
+              "name": "20170913a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170913a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170913brgb",
+              "name": "20170913b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170913b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170914argb",
+              "name": "20170914a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170914a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170914brgb",
+              "name": "20170914b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170914b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170914crgb",
+              "name": "20170914c-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170914c-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "2017091516usvi",
+              "name": "20170915-16-usvi",
+              "url": "https://stormscdn.ngs.noaa.gov/20170915-16-usvi/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "This imagery was acquired by the NOAA Remote Sensing Division to support NOAA homeland security and emergency response requirements. In addition, it will be used for ongoing research efforts for testing and developing standards for airborne digital imagery. Individual images have been combined into a larger mosaic and tiled for distribution. The approximate ground sample distance (GSD) for each pixel is 50 cm / zoom level 18. The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170915argb",
+              "name": "20170915a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170915a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170915brgb",
+              "name": "20170915b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170915b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170916argb",
+              "name": "20170916a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170916a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170916brgb",
+              "name": "20170916b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170916b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170916crgb",
+              "name": "20170916c-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170916c-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170917argb",
+              "name": "20170917a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170917a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "This imagery was acquired by the NOAA Remote Sensing Division to support NOAA homeland security and emergency response requirements. In addition, it will be used for ongoing research efforts for testing and developing standards for airborne digital imagery. Individual images have been combined into a larger mosaic and tiled for distribution. The approximate ground sample distance (GSD) for each pixel is 50 cm / zoom level 18. The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170918argb",
+              "name": "20170918a-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170918a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170922argb",
+              "name": "20170922a_RGB",
+              "url": "https://stormscdn.ngs.noaa.gov/20170922a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170923argb",
+              "name": "20170923a_rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170923a-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "This imagery was acquired by the NOAA Remote Sensing Division to support NOAA homeland security and emergency response requirements. In addition, it will be used for ongoing research efforts for testing and developing standards for airborne digital imagery. Individual images have been combined into a larger mosaic and tiled for distribution. The approximate ground sample distance (GSD) for each pixel is ~25 cm / zoom level 19. The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "20170923brgb",
+              "name": "20170923b-rgb",
+              "url": "https://stormscdn.ngs.noaa.gov/20170923b-rgb/{z}/{x}/{y}",
+              "legendImage": null,
+              "attribution": "his imagery was acquired by the NOAA Remote Sensing Division to support NOAA homeland security and emergency response requirements. In addition, it will be used for ongoing research efforts for testing and developing standards for airborne digital imagery. Individual images have been combined into a larger mosaic and tiled for distribution. The approximate ground sample distance (GSD) for each pixel is ~25 cm / zoom level 19. The data provided on this site is for informational and planning purposes only.  Absolutely no accuracy or completeness guarantee is implied or intended.",
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvisaiaddresss3migrated",
+              "name": "usvi_saiaddress_s3_migrated",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/addresses",
+              "legendImage": "",
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "usvis3migratedfema",
+              "name": "usvi_s3_migrated_fema",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/flood",
+              "legendImage": "https://mapgeo.s3.amazonaws.com/clients/usvi/assets/legends/fz.png",
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "s3orthoimage2017",
+              "name": "s3_ortho_image_2017",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/ortho_image_2017",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "9b584528-6dc1-41c6-9be2-5b41eb4e3a06",
+              "name": "usvi_fema_panels_wms",
+              "url": "https://dsat.services.femadata.com:443/arcgis/services/ABFE_pub/US_Virgin_Islands_Advisory_Base_Flood_Elevation_Data/MapServer/WmsServer",
+              "legendImage": "http://mapgeo.s3.amazonaws.com/clients/usvi/assets/legends/fema_legend.png",
+              "attribution": "FEMA, as the administrator of the National Flood Insurance Program (NFIP), has created Advisory Base Flood Elevations (ABFEs) for the territory of US Virgin Islands. The ABFE information and related layers depicted on this web service for US Virgin Islands can serve as a guide to understanding current flood hazard conditions and higher elevations that communities should build to in order to reduce impacts of similar events in the future. All elevations included on the map are referenced to the Virgin Islands Vertical Datum 2009 (VIVD09). ",
+              "type": "WMS",
+              "mapType": null,
+              "wmsVersion": "1.3.0",
+              "layers": "2,3,4,5,6,7,8,9,10",
+              "srs": "EPSG:3857",
+              "mappings": []
+            },
+            {
+              "pk": "16bd9aeb-2e37-419e-9309-92998fbd0606",
+              "name": "usvi_viz_fema",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/bc019714-d01a-4679-8953-4385320d9489/viz.json",
+              "legendImage": null,
+              "attribution": "FEMA, as the administrator of the National Flood Insurance Program (NFIP), has created Advisory Base Flood Elevations (ABFEs) for the territory of US Virgin Islands. The ABFE information and related layers depicted on this web service for US Virgin Islands can serve as a guide to understanding current flood hazard conditions and higher elevations that communities should build to in order to reduce impacts of similar events in the future. All elevations included on the map are referenced to the Virgin Islands Vertical Datum 2009 (VIVD09). ",
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "2a9c8a7d-e9b4-4d0e-9682-b1e50834c50b",
+              "name": "usvi_viz_stj_br_address_pt",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/0f4c7ba2-7556-11eb-ae2f-72752ea62154/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "79f7c315-4a65-4209-b709-9bdabee82b3c",
+              "name": "2020_s3_cache",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/ortho_image_2020",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "08764d7d-8204-4903-b080-5847d17ade0e",
+              "name": "usvi_viz_archcontrol",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/1df80460-43f8-11ed-9426-0e6aaa52b2ef/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "82a6e050-c1ba-4ff4-bc57-1058ce16ee9b",
+              "name": "Imagery St.Croix 2024",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/Imagery_St.Croix",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "fa448bc9-0dde-4d49-bfb2-8c146d326f7a",
+              "name": "usvi_stcroix_2023imagery",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/FME_St.Croix/USVI/{z}/{x}/{y}.png",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "7f162ce9-02ca-4d15-9797-42103149db46",
+              "name": "usvi_stthomas_2023imagery",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/St.Thomas_FMEV2/FME_St.Thomas/{z}/{x}/{y}.png",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "79898344-ed56-4b12-ac8f-9a79083d4432",
+              "name": "usvi_stjohns_2023imagery",
+              "url": "https://mapgeo.s3.amazonaws.com/clients/usvi/tiles/FME_St.Johns/USVI-STj/{z}/{x}/{y}.png",
+              "legendImage": null,
+              "attribution": null,
+              "type": "LRC",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            },
+            {
+              "pk": "f7d6b7ff-ed6e-47c3-aa3c-9e8263a5d738",
+              "name": "usvi_parcels_ortho_326",
+              "url": "https://mapstudio.mapgeo.io/user/mapgeoprod/api/v2/viz/9b17092e-2413-11f1-8de8-4200a9fe0102/viz.json",
+              "legendImage": null,
+              "attribution": null,
+              "type": "CARTO",
+              "mapType": null,
+              "wmsVersion": null,
+              "layers": null,
+              "srs": null,
+              "mappings": []
+            }
+          ],
+          "thematicMaps": [
+            {
+              "pk": "points-of-interest",
+              "name": "Historic Registry Districts ",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "usvivizpoi"
+              ]
+            },
+            {
+              "pk": "noaa-navigation-charts",
+              "name": "NOAA Navigation Charts",
+              "isPublished": false,
+              "defaultOn": false,
+              "opacity": 0.89,
+              "layers": [
+                "noaa-navigational-charts"
+              ]
+            },
+            {
+              "pk": "estates",
+              "name": "Estates",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "estatescopy"
+              ]
+            },
+            {
+              "pk": "2b4cbca2-51ab-4a1c-bfba-1533bedc389e",
+              "name": "SAI Addresses",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "2a9c8a7d-e9b4-4d0e-9682-b1e50834c50b"
+              ]
+            },
+            {
+              "pk": "ad4cd5ea-05eb-4da1-9cc9-82571da9512f",
+              "name": "FEMA Flood Zones",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "16bd9aeb-2e37-419e-9309-92998fbd0606"
+              ]
+            },
+            {
+              "pk": "fema-flood-zones",
+              "name": "FEMA Flood Zones",
+              "isPublished": false,
+              "defaultOn": false,
+              "opacity": 0.56,
+              "layers": [
+                "usvis3migratedfema"
+              ]
+            },
+            {
+              "pk": "soils",
+              "name": "Soils",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "usvisoilss3"
+              ]
+            },
+            {
+              "pk": "topography",
+              "name": "Topography",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "usvitopos3"
+              ]
+            },
+            {
+              "pk": "test2",
+              "name": "NOAA Hurricane IRMA Aerial Imagery  - 9/15 & 16 (STJ & STT)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "2017091516usvi"
+              ]
+            },
+            {
+              "pk": "irma-test",
+              "name": "NOAA Hurricane IRMA Aerial Imagery - 9/16  (STJ & STT)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170916brgb"
+              ]
+            },
+            {
+              "pk": "test-3",
+              "name": "NOAA Hurricane IRMA Aerial Imagery  - 9/16 & 17 (All Islands)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170917argb",
+                "20170915brgb"
+              ]
+            },
+            {
+              "pk": "noaa-hurricane-irma-aerial-imagery-response-918",
+              "name": "NOAA Hurricane IRMA Aerial Imagery - 9/18 (STX)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170918argb"
+              ]
+            },
+            {
+              "pk": "noaa-hurricane-maria-aerial-imagery-response-918",
+              "name": "NOAA Hurricane MARIA Aerial Imagery - 9/22 (All Islands)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170922argb"
+              ]
+            },
+            {
+              "pk": "noaa-hurricane-maria-aerial-imagery-response-923-flight-1",
+              "name": "NOAA Hurricane MARIA Aerial Imagery - 9/23 - Flight 1 (STX)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170923argb"
+              ]
+            },
+            {
+              "pk": "noaa-hurricane-maria-aerial-imagery-response-923-flight-2",
+              "name": "NOAA Hurricane MARIA Aerial Imagery - 9/23 - Flight 2 (STX)",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "20170923brgb"
+              ]
+            },
+            {
+              "pk": "tile-test",
+              "name": "tile test",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "usvis3migratedfema"
+              ]
+            },
+            {
+              "pk": "aerial-photo-2017",
+              "name": "Aerial Photo, 2017",
+              "isPublished": false,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "s3orthoimage2017",
+                "usvioceanblues3"
+              ]
+            },
+            {
+              "pk": "da987419-0e23-4e98-b72a-1172cc454115",
+              "name": "Aerial Photo, 2020",
+              "isPublished": false,
+              "defaultOn": false,
+              "opacity": 1,
+              "layers": [
+                "79f7c315-4a65-4209-b709-9bdabee82b3c"
+              ]
+            },
+            {
+              "pk": "39ba8515-c15a-4acb-b3e6-b809ce2da48d",
+              "name": "Architectural Control Districts",
+              "isPublished": true,
+              "defaultOn": false,
+              "opacity": 0.8,
+              "layers": [
+                "08764d7d-8204-4903-b080-5847d17ade0e"
+              ]
+            }
+          ],
+          "themeGroups": [
+            {
+              "pk": "d2293c63-3462-4813-a876-0475a8c17bd7",
+              "name": "Reference",
+              "description": null,
+              "isPublished": true,
+              "collapsed": false,
+              "themes": [
+                "2b4cbca2-51ab-4a1c-bfba-1533bedc389e",
+                "estates",
+                "ad4cd5ea-05eb-4da1-9cc9-82571da9512f",
+                "fema-flood-zones",
+                "soils",
+                "topography",
+                "noaa-navigation-charts"
+              ]
+            },
+            {
+              "pk": "bbb7fb55-1a66-451e-a277-3411098052ce",
+              "name": "Hurricane Irma Aerial Photos",
+              "description": null,
+              "isPublished": false,
+              "collapsed": false,
+              "themes": [
+                "test2",
+                "irma-test",
+                "test-3",
+                "noaa-hurricane-irma-aerial-imagery-response-918"
+              ]
+            },
+            {
+              "pk": "672e19c0-e920-408c-8cd9-4067251311f1",
+              "name": "Hurricane Maria Aerial Photos",
+              "description": null,
+              "isPublished": false,
+              "collapsed": false,
+              "themes": [
+                "noaa-hurricane-maria-aerial-imagery-response-918",
+                "noaa-hurricane-maria-aerial-imagery-response-923-flight-1",
+                "noaa-hurricane-maria-aerial-imagery-response-923-flight-2"
+              ]
+            },
+            {
+              "pk": "default",
+              "name": "Map Themes",
+              "description": null,
+              "isPublished": false,
+              "collapsed": false,
+              "themes": [
+                "f63152d7-f259-465f-991a-445741fdc473",
+                "e205b1c3-75e7-4d7e-9f72-05ec25bd2970"
+              ]
+            },
+            {
+              "pk": "c3134141-4492-4032-9a9e-1c73bd0d13ce",
+              "name": "Virgin Islands Historic Preservation Commission's Historic Registry Districts and Historic and Architectural Control Districts",
+              "description": null,
+              "isPublished": true,
+              "collapsed": false,
+              "themes": [
+                "39ba8515-c15a-4acb-b3e6-b809ce2da48d",
+                "points-of-interest"
+              ]
+            }
+          ]
+        },
+        "search": {
+          "place": "US Virgin Islands",
+          "searchFields": [
+            {
+              "key": "displayName",
+              "name": "Address",
+              "type": "quicksearch",
+              "placeholder": null,
+              "rangeStep": null
+            },
+            {
+              "key": "id",
+              "name": "Property ID",
+              "type": "quicksearch",
+              "placeholder": null,
+              "rangeStep": null
+            },
+            {
+              "key": "ownerName",
+              "name": "Owner",
+              "type": "quicksearch",
+              "placeholder": null,
+              "rangeStep": null
+            }
+          ],
+          "tabularFields": [],
+          "cardFields": [
+            {
+              "key": "displayName",
+              "name": "Address"
+            },
+            {
+              "key": "ownerName",
+              "name": "Owner Name"
+            },
+            {
+              "key": "id",
+              "name": "Property ID"
+            }
+          ]
+        },
+        "layouts": {
+          "itemPreview": {
+            "pk": "c438fd89-f167-4760-9f7c-9b90dbbe4388",
+            "type": "itemPreview",
+            "name": "Preview Panel",
+            "layoutType": "default",
+            "headerType": "none",
+            "fieldGroups": [
+              {
+                "pk": "b84762d2-a3ad-42b8-8e27-5c31ea683577",
+                "name": "Property",
+                "type": "default",
+                "source": "property",
+                "required": true,
+                "collapsed": false,
+                "isShowOnMapDisabled": false,
+                "showCount": null,
+                "fields": [
+                  {
+                    "key": "id",
+                    "property": "Property ID",
+                    "template": "{ID}",
+                    "required": true,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": "displayName",
+                    "property": "Address",
+                    "template": "{displayName}",
+                    "required": true,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "Island",
+                    "template": "{island}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  }
+                ],
+                "filters": [],
+                "sortField": null,
+                "sortDescending": false,
+                "gridColumns": null,
+                "gridRows": null
+              },
+              {
+                "pk": "79c92ded-6e56-46e0-b8cc-0caf2ca521a9",
+                "name": "Property Information",
+                "type": "table",
+                "source": "228c0bd0-7b5e-41d1-8d44-c3fac7412b42",
+                "required": false,
+                "collapsed": false,
+                "isShowOnMapDisabled": false,
+                "showCount": null,
+                "fields": [
+                  {
+                    "key": null,
+                    "property": "OLG Map Number",
+                    "template": "{map}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "DPNR Zone",
+                    "template": "{dpnrZone}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "Acres",
+                    "template": "{acre}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  }
+                ],
+                "filters": [
+                  {
+                    "type": "field",
+                    "distance": 0.5,
+                    "value": null,
+                    "sourceKey": "primaryKey",
+                    "datasetKey": "ID"
+                  }
+                ],
+                "sortField": null,
+                "sortDescending": false,
+                "gridColumns": null,
+                "gridRows": null
+              },
+              {
+                "pk": "628d84fd-0bb6-45b2-86c0-c1932862f8de",
+                "name": "Ownership",
+                "type": "default",
+                "source": "property",
+                "required": false,
+                "collapsed": false,
+                "isShowOnMapDisabled": false,
+                "showCount": null,
+                "fields": [
+                  {
+                    "key": null,
+                    "property": "Owner",
+                    "template": "{ownerName}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "Address",
+                    "template": "{ownAddress}\n{city}, {state} {zipCode}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  }
+                ],
+                "filters": [],
+                "sortField": null,
+                "sortDescending": false,
+                "gridColumns": null,
+                "gridRows": null
+              },
+              {
+                "pk": "c585933f-483b-4e9d-8e6a-a9aa7637412e",
+                "name": "Estates",
+                "type": "table",
+                "source": "3bde306e-fff9-4e38-acf7-f2622d1b161a",
+                "required": false,
+                "collapsed": false,
+                "isShowOnMapDisabled": false,
+                "showCount": 0,
+                "fields": [
+                  {
+                    "key": null,
+                    "property": "Estate",
+                    "template": "{estate}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  }
+                ],
+                "filters": [
+                  {
+                    "type": "intersect",
+                    "distance": 1,
+                    "value": null,
+                    "sourceKey": "propertyId",
+                    "datasetKey": null
+                  }
+                ],
+                "sortField": "Estate",
+                "sortDescending": false,
+                "gridColumns": null,
+                "gridRows": null
+              },
+              {
+                "pk": "9968f7d9-2c41-4661-906f-bb9f0d50445d",
+                "name": "Valuation",
+                "type": "default",
+                "source": "data",
+                "required": false,
+                "collapsed": false,
+                "isShowOnMapDisabled": false,
+                "showCount": null,
+                "fields": [
+                  {
+                    "key": null,
+                    "property": "Land Value",
+                    "template": "${assessedLandvalue}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "Improved Value",
+                    "template": "${assessedImprovedvalue}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  },
+                  {
+                    "key": null,
+                    "property": "Total Value",
+                    "template": "${totalAssessedValue}",
+                    "required": false,
+                    "displayType": null,
+                    "tip": null,
+                    "visibilityShow": false,
+                    "imageLinkUrl": null,
+                    "urlLabel": null,
+                    "newWindow": false
+                  }
+                ],
+                "filters": [],
+                "sortField": null,
+                "sortDescending": false,
+                "gridColumns": null,
+                "gridRows": null
+              }
+            ],
+            "headerImageUrlTemplate": null
+          },
+          "itemDetails": [
+            {
+              "pk": "6ce7f1e1-bf12-4ffb-a993-083751396cf0",
+              "type": "itemDetails",
+              "name": "Details",
+              "layoutType": "grid",
+              "headerType": "streetview",
+              "fieldGroups": [
+                {
+                  "pk": "9320c46b-bf3d-4f11-b991-31144b9ebd60",
+                  "name": "Property",
+                  "type": "default",
+                  "source": "property",
+                  "required": true,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": "id",
+                      "property": "Property ID",
+                      "template": "{ID}",
+                      "required": true,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": "displayName",
+                      "property": "Address",
+                      "template": "{displayName}",
+                      "required": true,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Island",
+                      "template": "{island}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "90c388e7-00ed-495f-a17d-793473ea0891",
+                  "name": "Property Information",
+                  "type": "table",
+                  "source": "228c0bd0-7b5e-41d1-8d44-c3fac7412b42",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "OLG Map Number",
+                      "template": "{map}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "DPNR Zone",
+                      "template": "{dpnrZone}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Acres",
+                      "template": "{acre}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "type": "field",
+                      "distance": 0.5,
+                      "value": null,
+                      "sourceKey": "parcelNo",
+                      "datasetKey": "linkid"
+                    }
+                  ],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "2627c321-4673-453b-83b9-047c3ce2caae",
+                  "name": "Ownership",
+                  "type": "default",
+                  "source": "property",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "Owner",
+                      "template": "{ownerName}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Address",
+                      "template": "{ownAddress}\n{state} ",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "81ce1981-c8d7-4d14-9e6e-5a83061bd321",
+                  "name": "Estates",
+                  "type": "table",
+                  "source": "3bde306e-fff9-4e38-acf7-f2622d1b161a",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": 0,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "Estate",
+                      "template": "{estate}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "type": "distance",
+                      "distance": 1,
+                      "value": null,
+                      "sourceKey": "propertyId",
+                      "datasetKey": null
+                    }
+                  ],
+                  "sortField": "Estate",
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                }
+              ],
+              "headerImageUrlTemplate": null
+            },
+            {
+              "pk": "10757967-ddde-4e78-a271-2b6a19ac48c3",
+              "type": "itemDetails",
+              "name": "PRC",
+              "layoutType": "grid",
+              "headerType": "streetview",
+              "fieldGroups": [
+                {
+                  "pk": "55b1c987-b91b-4a17-9bf2-4d2d430a253a",
+                  "name": "Property",
+                  "type": "default",
+                  "source": "property",
+                  "required": true,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": "id",
+                      "property": "Property ID",
+                      "template": "{ID}",
+                      "required": true,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": "displayName",
+                      "property": "Address",
+                      "template": "{displayName}",
+                      "required": true,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Island",
+                      "template": "{island}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "3f4751fd-fe8e-452f-87f7-00f3e955d02f",
+                  "name": "Property Information",
+                  "type": "table",
+                  "source": "228c0bd0-7b5e-41d1-8d44-c3fac7412b42",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "OLG Map Number",
+                      "template": "{map}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "DPNR Zone",
+                      "template": "{dpnrZone}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Acres",
+                      "template": "{acre}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "type": "field",
+                      "distance": 0.5,
+                      "value": null,
+                      "sourceKey": "parcelNo",
+                      "datasetKey": "linkid"
+                    }
+                  ],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "1cc55b2e-6167-44b6-8d20-0ba57dcce040",
+                  "name": "Ownership",
+                  "type": "default",
+                  "source": "property",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": null,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "Owner",
+                      "template": "{ownerName}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    },
+                    {
+                      "key": null,
+                      "property": "Address",
+                      "template": "{ownAddress}\n{city}, {state} {zipCode}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [],
+                  "sortField": null,
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                },
+                {
+                  "pk": "593c87ec-ff41-4565-85e1-6ce2b4a14845",
+                  "name": "Estates",
+                  "type": "table",
+                  "source": "3bde306e-fff9-4e38-acf7-f2622d1b161a",
+                  "required": false,
+                  "collapsed": false,
+                  "isShowOnMapDisabled": false,
+                  "showCount": 0,
+                  "fields": [
+                    {
+                      "key": null,
+                      "property": "Estate",
+                      "template": "{estate}",
+                      "required": false,
+                      "displayType": null,
+                      "tip": null,
+                      "visibilityShow": false,
+                      "imageLinkUrl": null,
+                      "urlLabel": null,
+                      "newWindow": false
+                    }
+                  ],
+                  "filters": [
+                    {
+                      "type": "distance",
+                      "distance": 1,
+                      "value": null,
+                      "sourceKey": "propertyId",
+                      "datasetKey": null
+                    }
+                  ],
+                  "sortField": "Estate",
+                  "sortDescending": false,
+                  "gridColumns": null,
+                  "gridRows": null
+                }
+              ],
+              "headerImageUrlTemplate": null
+            }
+          ]
+        },
+        "dataMapping": {
+          "pk": "data",
+          "name": "Data",
+          "required": true,
+          "columns": [
+            {
+              "key": "id",
+              "column": "parcel",
+              "description": "Column name containing property id",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "displayName",
+              "column": "legal_description",
+              "description": "Column name containing property address",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "ownerName",
+              "column": "name",
+              "description": "Column name containing property owner's name",
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "jurisdictionId",
+              "column": "island",
+              "description": "Column name containing the jurisdiction id",
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "ownAddress",
+              "column": "address",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "state",
+              "column": "citystatezip",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "ID",
+              "column": "parcel",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "linkid",
+              "column": "parcel",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "island",
+              "column": "island",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "assessedImprovedvalue",
+              "column": "improved_value",
+              "description": null,
+              "required": false,
+              "type": "integer",
+              "format": null
+            },
+            {
+              "key": "assessedLandvalue",
+              "column": "land_value",
+              "description": null,
+              "required": false,
+              "type": "integer",
+              "format": null
+            },
+            {
+              "key": "totalAssessedValue",
+              "column": "total_assessed_value",
+              "description": null,
+              "required": false,
+              "type": "integer",
+              "format": null
+            }
+          ],
+          "otherKeys": [
+            "parcelId",
+            "lat",
+            "lng",
+            "defaultPropertyZoom"
+          ],
+          "multiTable": true,
+          "needsJoinKey": true,
+          "joinKey": "id",
+          "provider": {
+            "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+            "resource": "usvi_cama_2021"
+          },
+          "filters": []
+        },
+        "geometryMapping": {
+          "pk": "geometry",
+          "name": "Geometry",
+          "required": true,
+          "columns": [
+            {
+              "key": "id",
+              "column": "parcel_no",
+              "description": "Column name containing parcel id",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "geometry",
+              "column": "the_geom",
+              "description": "Column name containing parcel geometry",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "jurisdictionId",
+              "column": "island",
+              "description": "Column name containing the jurisdiction id",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "map",
+              "column": "map",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "dpnrZone",
+              "column": "dpnr_zone",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "acre",
+              "column": "acre",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "parcelNo",
+              "column": "parcel_no",
+              "description": null,
+              "required": false,
+              "type": null,
+              "format": null
+            }
+          ],
+          "otherKeys": [],
+          "multiTable": false,
+          "needsJoinKey": true,
+          "joinKey": "id",
+          "provider": {
+            "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+            "resource": "usvi_parcels"
+          },
+          "filters": []
+        },
+        "intersectionMapping": {
+          "pk": "intersection",
+          "name": "Intersection",
+          "required": true,
+          "columns": [
+            {
+              "key": "dataId",
+              "column": "propertyid",
+              "description": "Column name containing property id linking to parcel",
+              "required": true,
+              "type": null,
+              "format": null
+            },
+            {
+              "key": "geometryId",
+              "column": "parcelid",
+              "description": "Column name containing parcel id linking to the property",
+              "required": true,
+              "type": null,
+              "format": null
+            }
+          ],
+          "otherKeys": [],
+          "multiTable": false,
+          "needsJoinKey": false,
+          "joinKey": null,
+          "provider": {
+            "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+            "resource": "usvi_intersection"
+          },
+          "filters": []
+        },
+        "tableMappings": [
+          {
+            "pk": "3bde306e-fff9-4e38-acf7-f2622d1b161a",
+            "name": "Estates",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "estate",
+                "description": "Usually the column the dataset can be related to the property",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "estate",
+                "column": "estate",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_estates"
+            },
+            "filters": []
+          },
+          {
+            "pk": "228c0bd0-7b5e-41d1-8d44-c3fac7412b42",
+            "name": "parcelattributes",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "parcel_no",
+                "description": "Usually the column the dataset can be related to the property",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "parcel_no",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "dpnrZone",
+                "column": "dpnr_zone",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "acre",
+                "column": "acre",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "map",
+                "column": "map",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "parcelNam",
+                "column": "parcel_nam",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "parcelNo",
+                "column": "parcel_no",
+                "description": null,
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_parcelattributes_2021"
+            },
+            "filters": []
+          },
+          {
+            "pk": "1afebb66-1900-4cd9-914f-c71501016f08",
+            "name": "usvi_stx_centerlines",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can be related to the property",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stx_centerlines"
+            },
+            "filters": []
+          },
+          {
+            "pk": "3ba05965-31a9-4e51-a744-319be6e8b47c",
+            "name": "usvi_stt_centerlines",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can be related to the property",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stt_centerlines"
+            },
+            "filters": []
+          },
+          {
+            "pk": "a8d5fa82-27fc-45f8-abe5-04c189681827",
+            "name": "usvi_stj_centerlines",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can be related to the property",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stj_centerlines"
+            },
+            "filters": []
+          },
+          {
+            "pk": "2487e336-dc62-4719-b5aa-d33e5556ae03",
+            "name": "STJ - Address Point",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can uniquely identified by from the url and in the data",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "picture",
+                "column": "picture",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "completest",
+                "column": "completest",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "flyerLeft",
+                "column": "flyer_left",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "stjBridge",
+                "column": "stj_bridge",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "estate",
+                "column": "estate",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "addressnum",
+                "column": "addressnum",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vacantPro",
+                "column": "vacant_pro",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vehicleAc",
+                "column": "vehicle_ac",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "numSubadd",
+                "column": "num_subadd",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "side",
+                "column": "side",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "project",
+                "column": "project",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "islandPla",
+                "column": "island_pla",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "potential",
+                "column": "potential_",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "centerline",
+                "column": "centerline",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "id",
+                "column": "id",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "multipleD",
+                "column": "multiple_d",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "fullAddress",
+                "column": "full_address",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stj_br_address_pt_2021"
+            },
+            "filters": []
+          },
+          {
+            "pk": "809d34bf-77ac-4689-a029-16c9cb9670d5",
+            "name": "STT - Address Point",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can uniquely identified by from the url and in the data",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "picture",
+                "column": "picture",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "completest",
+                "column": "completest",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "centerline",
+                "column": "centerline",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "streetNam",
+                "column": "street_nam",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "estate",
+                "column": "estate",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "stType",
+                "column": "st_type",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "addressnum",
+                "column": "addressnum",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vacantPro",
+                "column": "vacant_pro",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vehicleAc",
+                "column": "vehicle_ac",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "numSubadd",
+                "column": "num_subadd",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "side",
+                "column": "side",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "project",
+                "column": "project",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "islandPla",
+                "column": "island_pla",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "lastEdi1",
+                "column": "last_edi_1",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "potential",
+                "column": "potential_",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "lastEdite",
+                "column": "last_edite",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "sttBridge",
+                "column": "stt_bridge",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "id",
+                "column": "id",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "flyerLeft",
+                "column": "flyer_left",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "multipleD",
+                "column": "multiple_d",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "postDir",
+                "column": "post_dir",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "anomaly",
+                "column": "anomaly",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "fullAddress",
+                "column": "full_address",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stt_br_address_pt_2021"
+            },
+            "filters": []
+          },
+          {
+            "pk": "8b4bf5ea-c683-4cba-9f78-0fe984f0610e",
+            "name": "STX - Address Point",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can uniquely identified by from the url and in the data",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "picture",
+                "column": "picture",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "completest",
+                "column": "completest",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "flyerLeft",
+                "column": "flyer_left",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "streetNam",
+                "column": "street_nam",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "estate",
+                "column": "estate",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "addressnum",
+                "column": "addressnum",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vacantPro",
+                "column": "vacant_pro",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "stxBridge",
+                "column": "stx_bridge",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "vehicleAc",
+                "column": "vehicle_ac",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "numSubadd",
+                "column": "num_subadd",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "side",
+                "column": "side",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "project",
+                "column": "project",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "islandPla",
+                "column": "island_pla",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "lastEdi1",
+                "column": "last_edi_1",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "potential",
+                "column": "potential_",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "lastEdite",
+                "column": "last_edite",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "centerline",
+                "column": "centerline",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "id",
+                "column": "id",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "multipleD",
+                "column": "multiple_d",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "stType",
+                "column": "st_type",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "anomaly",
+                "column": "anomaly",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "postDir",
+                "column": "post_dir",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "fullAddress",
+                "column": "full_address",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_stx_br_address_pt_2021"
+            },
+            "filters": []
+          },
+          {
+            "pk": "7a5f2e0d-d352-4a20-a0f4-165d4046ce9d",
+            "name": "Historic Districts",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can uniquely identified by from the url and in the data",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "districtT",
+                "column": "district_t",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "areaType",
+                "column": "area_type",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_histocicdist"
+            },
+            "filters": []
+          },
+          {
+            "pk": "58328c0b-cedd-4b71-8eb8-20cbaa9b6395",
+            "name": "Architecture Control ",
+            "required": false,
+            "columns": [
+              {
+                "key": "primaryKey",
+                "column": "the_geom",
+                "description": "Usually the column the dataset can uniquely identified by from the url and in the data",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "geometry",
+                "column": "the_geom",
+                "description": "Geometry column, if rendering on map",
+                "required": true,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "districtT",
+                "column": "district_t",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              },
+              {
+                "key": "areaType",
+                "column": "area_type",
+                "description": "",
+                "required": false,
+                "type": null,
+                "format": null
+              }
+            ],
+            "otherKeys": [],
+            "multiTable": false,
+            "needsJoinKey": false,
+            "joinKey": null,
+            "provider": {
+              "pk": "729dce3f-e616-4cb3-8a8a-b7f2e25e4307",
+              "resource": "usvi_archcont"
+            },
+            "filters": []
+          }
+        ],
+        "id": "properties"
+      }
+    }
+  },
+  {
+    "propertyId": "100102010100",
+    "address": "CRICKET ROCK WEST END QTR.",
+    "owner": "GOVERNMENT OF THE V.I.",
+    "sourceUrl": "https://usvi.mapgeo.io/api/datasets/properties/search?format=json",
+    "raw": {
+      "id": "100102010100",
+      "displayName": "CRICKET ROCK WEST END QTR.",
+      "ownerName": "GOVERNMENT OF THE V.I.",
+      "geometry": "{\"type\":\"Polygon\",\"coordinates\":[[[-65.049588563,18.407343014],[-65.04953522,18.407421236],[-65.049520022,18.407486087],[-65.049481927,18.407547136],[-65.049481971,18.407590999],[-65.049451462,18.407608181],[-65.049390513,18.407711201],[-65.049367631,18.407722657],[-65.049337166,18.407783702],[-65.049314292,18.407804694],[-65.049253384,18.407947762],[-65.049199998,18.407982122],[-65.049161834,18.407976424],[-65.049154246,18.408020291],[-65.049169536,18.408046981],[-65.049222998,18.408086999],[-65.049253574,18.408136564],[-65.049253633,18.408195685],[-65.049215542,18.408262455],[-65.049177417,18.408294899],[-65.049070625,18.408344547],[-65.049078323,18.408411291],[-65.049192865,18.40847797],[-65.049215765,18.408483679],[-65.049223473,18.408559957],[-65.049200667,18.408647697],[-65.04924655,18.408741117],[-65.049238936,18.408758286],[-65.049254226,18.408784976],[-65.049239024,18.408846013],[-65.049246738,18.408928012],[-65.049346096,18.409072892],[-65.049399537,18.409093838],[-65.049445282,18.409049948],[-65.049452882,18.409017523],[-65.049506268,18.408983164],[-65.049529131,18.408950729],[-65.049567277,18.408939263],[-65.049597821,18.408956409],[-65.049651303,18.409017404],[-65.049689577,18.409131806],[-65.049720148,18.409175651],[-65.049781229,18.409204221],[-65.049804162,18.409242349],[-65.049819443,18.409259504],[-65.049834733,18.409286194],[-65.049895824,18.409324299],[-65.049926357,18.409330002],[-65.05000264,18.409297535],[-65.05003311,18.409242211],[-65.050040702,18.409202158],[-65.050025412,18.409175468],[-65.049979606,18.409160238],[-65.049910916,18.409154559],[-65.049872741,18.409137418],[-65.049842144,18.409066874],[-65.049781085,18.409061189],[-65.049750509,18.409011623],[-65.049758084,18.408956313],[-65.049742766,18.408901016],[-65.049605285,18.408790487],[-65.049528946,18.408767647],[-65.049513656,18.408740957],[-65.049521249,18.408702812],[-65.04950598,18.408697099],[-65.049521214,18.408668483],[-65.049620392,18.408636003],[-65.049643298,18.408647433],[-65.049696641,18.40856921],[-65.049711788,18.408454775],[-65.049727036,18.408439509],[-65.049818603,18.408428011],[-65.049810893,18.408349825],[-65.049772658,18.408273565],[-65.049841202,18.408134305],[-65.049848742,18.40804276],[-65.049863966,18.408004609],[-65.049894324,18.407838674],[-65.049932437,18.407794788],[-65.049939984,18.407710871],[-65.049810109,18.407573638],[-65.049749113,18.407628981],[-65.049703391,18.407695757],[-65.049657612,18.407705319],[-65.049627068,18.407688174],[-65.049604103,18.407617625],[-65.049619283,18.407535611],[-65.049611634,18.407518452],[-65.049626841,18.407463137],[-65.049611545,18.407430726],[-65.049626759,18.407381132],[-65.0496191,18.407354437],[-65.049588563,18.407343014]]]}",
+      "centroid": "{\"type\":\"Point\",\"coordinates\":[-65.049536479,18.408313201]}",
+      "mapGeoSearchRank": 1
+    }
+  }
+]

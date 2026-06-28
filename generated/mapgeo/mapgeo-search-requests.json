@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://usvi.mapgeo.io/api/datasets/properties/search?format=json",
+    "method": "POST",
+    "postData": "{\"attributes\":[\"displayName\",\"ownerName\",\"id\"],\"quickSearch\":\"100102010100\",\"page\":1}",
+    "headers": {
+      "sec-ch-ua-platform": "\"Linux\"",
+      "authorization": "Bearer undefined",
+      "referer": "https://usvi.mapgeo.io/datasets/properties?abuttersDistance=120&latlng=18.043417%2C-64.825476&modal=disclaimer",
+      "sec-ch-ua": "\"HeadlessChrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "access-token": "undefined",
+      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36",
+      "content-type": "application/json"
+    }
+  },
+  {
+    "url": "https://usvi.mapgeo.io/api/datasets/properties/search?format=json",
+    "method": "POST",
+    "postData": "{\"attributes\":[\"displayName\",\"ownerName\",\"id\"],\"quickSearch\":\"100102010100\",\"page\":2}",
+    "headers": {
+      "sec-ch-ua-platform": "\"Linux\"",
+      "authorization": "Bearer undefined",
+      "referer": "https://usvi.mapgeo.io/datasets/properties?abuttersDistance=120&latlng=18.408904%2C-65.049438&modal=disclaimer&panel=search&zoom=19",
+      "sec-ch-ua": "\"HeadlessChrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "access-token": "undefined",
+      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36",
+      "content-type": "application/json"
+    }
+  }
+]
