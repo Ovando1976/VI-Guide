@@ -1,20 +1,40 @@
-import { useEffect, useMemo, useState } from "react";
-import { Route, Routes, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { AnimatePresence, motion } from "motion/react";
-import { onAuthStateChanged, signOut, type User } from "firebase/auth";
+// src/App.tsx
 
-import { auth } from "./firebase";
-import type { AIDocument, BeachDoc, EventDoc, IslandCode, PlaceDoc, UserProfile } from "./types";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  GoogleAuthProvider,
+  User,
+  getRedirectResult,
+  onAuthStateChanged,
+  signInWithRedirect,
+} from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+
+import { auth, db } from "./firebase";
+import type {
+  AIDocument,
+  BeachDoc,
+  EventDoc,
+  IslandCode,
+  IslandDoc,
+  PlaceDoc,
+  UserProfile,
+} from "./types";
 
 import ErrorBoundary from "./components/ErrorBoundary";
 import { MobileShell } from "./components/app-shell/MobileShell";
-
-import VisitorHome from "./components/VisitorHome";
 import Explore from "./components/Explore";
 import Beaches from "./components/Beaches";
 import Eat from "./components/Eat";
 import Events from "./components/Events";
-import HistoricSites from "./components/HistoricSites";
 import Community from "./components/Community";
 import Concierge from "./components/Concierge";
 import Mobility from "./components/Mobility";
@@ -25,32 +45,25 @@ import ListingDetail from "./components/ListingDetail";
 import EventDetail from "./components/EventDetail";
 import CruisePlanner from "./components/CruisePlanner";
 import Maps from "./components/Maps";
+import VisitorHome from "./components/VisitorHome";
 
-import TimelinePage from "./pages/history/TimelinePage";
-import GalleryPage from "./pages/history/GalleryPage";
-import ArchivesPage from "./pages/history/ArchivesPage";
-
+import { seedBeaches } from "./seedBeaches";
+import { seedMapData } from "./seedMapData";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
+import { getIslands } from "./lib/firestore/islands";
 
-type ListingSelection = BeachDoc | PlaceDoc;
+const ADMIN_EMAILS = new Set(["ovandorawlins@gmail.com"]);
 
-const ISLAND_LABELS: Record<IslandCode, string> = {
-  st_thomas: "St. Thomas",
-  st_john: "St. John",
-  st_croix: "St. Croix",
-  water_island: "Water Island",
-};
-
-function getProfile(user: User | null): UserProfile | null {
-  if (!user) return null;
+function createUserProfile(firebaseUser: User): UserProfile {
+  const email = firebaseUser.email ?? "";
 
   return {
-    uid: user.uid,
-    email: user.email ?? "",
-    displayName: user.displayName ?? "Guest",
-    photoURL: user.photoURL ?? "",
-    role: user.email === "ovandorawlins@gmail.com" ? "admin" : "user",
+    uid: firebaseUser.uid,
+    email,
+    displayName: firebaseUser.displayName ?? "Guest",
+    photoURL: firebaseUser.photoURL ?? "",
+    role: ADMIN_EMAILS.has(email.toLowerCase()) ? "admin" : "user",
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
@@ -71,67 +84,164 @@ function AppContent() {
 
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [islands, setIslands] = useState<IslandDoc[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedListing, setSelectedListing] = useState<ListingSelection | null>(null);
+  const [selectedListing, setSelectedListing] = useState<
+    BeachDoc | PlaceDoc | null
+  >(null);
   const [selectedEvent, setSelectedEvent] = useState<EventDoc | null>(null);
-  const [selectedDocument, setSelectedDocument] = useState<AIDocument | null>(null);
+  const [selectedDocument, setSelectedDocument] = useState<AIDocument | null>(
+    null
+  );
+
+  const [seedStatus, setSeedStatus] = useState("");
+  const [seeding, setSeeding] = useState(false);
 
   const islandParam = searchParams.get("island") ?? undefined;
-
   const selectedIsland: IslandCode = isIslandCode(islandParam)
     ? islandParam
     : DEFAULT_ISLAND;
 
-  const selectedIslandLabel =
-    ISLAND_LABELS[selectedIsland] ?? ISLAND_LABELS[DEFAULT_ISLAND];
+  const isAdmin = useMemo(() => {
+    const email = user?.email?.toLowerCase();
+    return profile?.role === "admin" || Boolean(email && ADMIN_EMAILS.has(email));
+  }, [profile, user]);
 
-  const activeAgent = useMemo(() => {
-    if (profile?.role === "admin" || profile?.role === "merchant") return "operator";
-    return "concierge";
-  }, [profile]);
+  const activeAgent: "concierge" | "operator" =
+    profile?.role === "merchant" || profile?.role === "admin"
+      ? "operator"
+      : "concierge";
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setProfile(getProfile(firebaseUser));
-      setLoading(false);
+    getRedirectResult(auth).catch((error) => {
+      console.error("Redirect login failed:", error);
+      setSeedStatus(error instanceof Error ? error.message : "Login failed.");
     });
-
-    return unsubscribe;
   }, []);
 
-  function go(path: string) {
-    navigate(path);
-  }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setLoading(true);
 
-  function handleLogin() {
-    navigate("/concierge");
-  }
+      try {
+        setUser(firebaseUser);
 
-  function handleLogout() {
-    void signOut(auth);
-  }
+        if (!firebaseUser) {
+          setProfile(null);
+          return;
+        }
 
-  function handleSelectDocument(document: AIDocument) {
-    setSelectedDocument(document);
-    navigate("/docs");
-  }
+        const userRef = doc(db, "users", firebaseUser.uid);
+        const userSnap = await getDoc(userRef);
 
-  if (loading) return <AppLoader />;
+        if (userSnap.exists()) {
+          setProfile(userSnap.data() as UserProfile);
+        } else {
+          const newProfile = createUserProfile(firebaseUser);
+          await setDoc(userRef, newProfile);
+          setProfile(newProfile);
+        }
+      } catch (error) {
+        console.error("Auth profile load failed:", error);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+
+    getIslands()
+      .then(setIslands)
+      .catch((error) => console.error("Island load failed:", error));
+  }, [loading]);
+
+  const handleLogin = useCallback(async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithRedirect(auth, provider);
+  }, []);
+
+  const handleLogout = useCallback(async () => {
+    await auth.signOut();
+  }, []);
+
+  const handleSelectDocument = useCallback(
+    (document: AIDocument) => {
+      setSelectedDocument(document);
+      navigate("/docs");
+    },
+    [navigate]
+  );
+
+  const handleSeedFirebase = useCallback(async () => {
+    if (seeding) return;
+
+    if (!user) {
+      await handleLogin();
+      return;
+    }
+
+    if (!isAdmin) {
+      setSeedStatus("Only an admin account can seed Firebase.");
+      return;
+    }
+
+    setSeeding(true);
+    setSeedStatus("Seeding Firebase...");
+
+    try {
+      await seedMapData();
+      await seedBeaches();
+
+      const refreshedIslands = await getIslands();
+      setIslands(refreshedIslands);
+
+      setSeedStatus("Firebase seeded successfully.");
+    } catch (error) {
+      console.error("Seed failed:", error);
+      setSeedStatus(error instanceof Error ? error.message : "Seed failed.");
+    } finally {
+      setSeeding(false);
+    }
+  }, [handleLogin, isAdmin, seeding, user]);
+
+  if (loading) {
+    return <AppLoader />;
+  }
 
   return (
     <MobileShell isMerchant={profile?.role === "merchant"}>
+      {isAdmin && seedStatus && (
+        <div className="mx-4 mt-3 rounded-2xl bg-emerald-950 px-4 py-3 text-center text-xs font-bold text-emerald-50">
+          {seedStatus}
+        </div>
+      )}
+
+      {isAdmin && (
+        <div className="mx-4 mt-3">
+          <button
+            type="button"
+            onClick={handleSeedFirebase}
+            disabled={seeding}
+            className="w-full rounded-2xl bg-amber-300 px-4 py-3 text-sm font-black text-stone-950 disabled:opacity-50"
+          >
+            {seeding ? "Seeding Firebase..." : "Seed Firebase"}
+          </button>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"
             element={
               <VisitorHome
-                selectedIsland={selectedIsland}
-                selectedIslandLabel={selectedIslandLabel}
-                onNavigate={go}
-                onSelectListing={setSelectedListing}
+                onNavigate={navigate}
+                
               />
             }
           />
@@ -141,49 +251,48 @@ function AppContent() {
             element={
               <Explore
                 selectedIsland={selectedIsland}
-                onSelectListing={(listing: BeachDoc | PlaceDoc) =>
-                  setSelectedListing(listing)
-                }
+                initialSearchQuery={searchParams.get("q") ?? ""}
+                onSelectListing={setSelectedListing}
               />
             }
           />
 
-          <Route path="/beaches" element={<Beaches onSelectBeach={setSelectedListing} />} />
-          <Route path="/eat" element={<Eat onSelectPlace={setSelectedListing} />} />
-
           <Route
-            path="/events"
-            element={
-              <Events selectedIsland={selectedIsland} onSelectEvent={setSelectedEvent} />
-            }
+            path="/beaches"
+            element={<Beaches onSelectBeach={setSelectedListing} />}
           />
 
           <Route path="/cruise" element={<CruisePlanner />} />
-          <Route path="/map" element={<Maps selectedIsland={selectedIsland} user={user} />} />
+
+          <Route
+            path="/map"
+            element={<Maps selectedIsland={selectedIsland} user={user} />}
+          />
+
+          <Route
+            path="/eat"
+            element={<Eat onSelectPlace={setSelectedListing} />}
+          />
 
           <Route
             path="/history"
             element={
-              <HistoricSites
-                selectedIsland="all"
-                onSelectSite={(site: PlaceDoc) => setSelectedListing(site)}
+              <Explore
+                selectedIsland={selectedIsland}
+                initialSearchQuery="history"
+                onSelectListing={setSelectedListing}
               />
             }
           />
 
           <Route
-            path="/history/timeline"
-            element={<TimelinePage selectedIsland={selectedIsland} />}
-          />
-
-          <Route
-            path="/history/gallery"
-            element={<GalleryPage selectedIsland={selectedIsland} />}
-          />
-
-          <Route
-            path="/history/archives"
-            element={<ArchivesPage selectedIsland={selectedIsland} />}
+            path="/events"
+            element={
+              <Events
+                selectedIsland={selectedIsland}
+                onSelectEvent={setSelectedEvent}
+              />
+            }
           />
 
           <Route
@@ -193,7 +302,9 @@ function AppContent() {
 
           <Route
             path="/community"
-            element={<Community selectedIsland={selectedIsland} user={profile} />}
+            element={
+              <Community selectedIsland={selectedIsland} user={profile} />
+            }
           />
 
           <Route
@@ -227,25 +338,34 @@ function AppContent() {
               <Profile
                 user={user}
                 profile={profile}
-                onLogin={handleLogin}
                 onLogout={handleLogout}
+                onLogin={handleLogin}
                 onSelectListing={setSelectedListing}
                 onSelectDocument={handleSelectDocument}
               />
             }
           />
 
-          <Route path="/merchant" element={<MerchantDashboard user={user} profile={profile} />} />
+          <Route
+            path="/merchant"
+            element={<MerchantDashboard user={user} profile={profile} />}
+          />
         </Routes>
       </AnimatePresence>
 
       <AnimatePresence>
         {selectedListing && (
-          <ListingDetail listing={selectedListing} onClose={() => setSelectedListing(null)} />
+          <ListingDetail
+            listing={selectedListing}
+            onClose={() => setSelectedListing(null)}
+          />
         )}
 
         {selectedEvent && (
-          <EventDetail event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+          <EventDetail
+            event={selectedEvent}
+            onClose={() => setSelectedEvent(null)}
+          />
         )}
       </AnimatePresence>
     </MobileShell>
@@ -257,7 +377,7 @@ function AppLoader() {
     <div className="flex h-screen w-screen items-center justify-center bg-stone-50">
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 1.4, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
         className="h-12 w-12 rounded-full border-4 border-emerald-600 border-t-transparent"
       />
     </div>
