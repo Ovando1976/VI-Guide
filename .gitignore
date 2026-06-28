@@ -6,3 +6,26 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Secrets
+.secrets/
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+
+# Local editor/runtime noise
+.vscode/
+.DS_Store
+tsx
+react-example@0.0.0
+
+# Local generated workspace data
+generated/
+missing-images*.json
+missing-images*.csv
+image-manifest-generated.json
+data/
+docs/
+public/
