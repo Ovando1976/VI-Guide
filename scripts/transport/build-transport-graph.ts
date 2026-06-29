@@ -4,6 +4,7 @@ import { canonicalDiscoveries } from "../../src/data/canonical/discoveriesCanoni
 import { transportNodes } from "../../src/data/transport/transportNodes";
 import { schoolTransportNodes } from "../../src/data/transport/schools";
 import { sportsTransportNodes } from "../../src/data/transport/sportsFacilities";
+import { vitranStopNodes } from "../../src/data/transport/vitranStops";
 import type { IslandCode } from "../../src/types";
 
 type GraphNodeType =
@@ -12,6 +13,7 @@ type GraphNodeType =
   | "cruise_port"
   | "taxi_stand"
   | "vitran_stop"
+  | "bus_stop"
   | "safari_stop"
   | "school"
   | "ball_park"
@@ -104,7 +106,7 @@ function inferType(record: (typeof canonicalDiscoveries)[number]): GraphNodeType
   return null;
 }
 
-const sourceTransportNodes = [...transportNodes, ...schoolTransportNodes, ...sportsTransportNodes];
+const sourceTransportNodes = [...transportNodes, ...schoolTransportNodes, ...sportsTransportNodes, ...vitranStopNodes];
 
 const manualNodes: TransportGraphNode[] = sourceTransportNodes.map((node) => ({
   id: node.id,
@@ -223,6 +225,7 @@ export type TransportGraphNodeType =
   | "cruise_port"
   | "taxi_stand"
   | "vitran_stop"
+  | "bus_stop"
   | "safari_stop"
   | "school"
   | "ball_park"

@@ -6,6 +6,7 @@ export type TransportGraphNodeType =
   | "cruise_port"
   | "taxi_stand"
   | "vitran_stop"
+  | "bus_stop"
   | "safari_stop"
   | "school"
   | "ball_park"

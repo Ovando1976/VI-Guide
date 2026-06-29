@@ -5,13 +5,17 @@ const missingCoords = transportGraphNodes.filter(
   (node) => !Number.isFinite(node.lat) || !Number.isFinite(node.lng),
 );
 
-const vitranWithoutRoutes = transportGraphNodes.filter(
-  (node) => node.type === "vitran_stop" && node.routes.length === 0,
+const busStopNodes = transportGraphNodes.filter(
+  (node) => node.type === "vitran_stop" || node.type === "bus_stop",
+);
+
+const vitranWithoutRoutes = busStopNodes.filter(
+  (node) => node.routes.length === 0,
 );
 
 const lowCoverageWarnings = [
-  transportGraphStats.byType.vitran_stop < 50
-    ? `VITRAN stop coverage is too low: ${transportGraphStats.byType.vitran_stop ?? 0}`
+  busStopNodes.length < 50
+    ? `VITRAN/bus stop coverage is too low: ${busStopNodes.length}`
     : null,
   transportGraphStats.byType.school < 40
     ? `School coverage is too low: ${transportGraphStats.byType.school ?? 0}`
