@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-06-29T16:37:22.338Z",
+  "generatedAt": "2026-06-29T16:44:16.381Z",
   "stats": {
-    "totalNodes": 448,
+    "totalNodes": 453,
     "byIsland": {
-      "st_croix": 166,
-      "st_john": 98,
+      "st_croix": 169,
+      "st_john": 100,
       "st_thomas": 182,
       "water_island": 2
     },
     "byType": {
       "attraction": 66,
-      "ball_park": 16,
+      "ball_park": 21,
       "beach": 47,
       "bus_stop": 33,
       "cruise_port": 3,
@@ -547,6 +547,63 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stx dc canegata ballpark d c canegata ballpark ball park sports and event transportation hub canegata dc canegata ballpark stx dc canegata ballpark d c canegata ballpark ball park christiansted area sports and event transportation hub canegata dc canegata ballpark"
+    },
+    {
+      "id": "stx-canegata-recreation-center",
+      "name": "D.C. Canegata Recreation Center",
+      "island": "st_croix",
+      "type": "ball_park",
+      "lat": 17.739,
+      "lng": -64.738,
+      "aliases": [
+        "canegata recreation",
+        "dc canegata center"
+      ],
+      "description": "Christiansted recreation complex and event transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-canegata-recreation-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx canegata recreation center d c canegata recreation center ball park christiansted recreation complex and event transportation hub canegata recreation dc canegata center"
+    },
+    {
+      "id": "stx-eliza-james-mcbean-recreation-center",
+      "name": "Eliza James-McBean Recreation Center",
+      "island": "st_croix",
+      "type": "ball_park",
+      "lat": 17.712,
+      "lng": -64.882,
+      "aliases": [
+        "eliza james mcbean",
+        "frederiksted recreation center"
+      ],
+      "description": "Frederiksted recreation center and sports transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-eliza-james-mcbean-recreation-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx eliza james mcbean recreation center eliza james mcbean recreation center ball park frederiksted recreation center and sports transportation hub eliza james mcbean frederiksted recreation center"
+    },
+    {
+      "id": "stx-vincent-mason-pool",
+      "name": "Vincent Mason Pool",
+      "island": "st_croix",
+      "type": "ball_park",
+      "lat": 17.711,
+      "lng": -64.881,
+      "aliases": [
+        "vincent mason",
+        "frederiksted pool"
+      ],
+      "description": "Frederiksted public pool and recreation transportation node.",
+      "source": "transportNodes",
+      "sourceId": "stx-vincent-mason-pool",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx vincent mason pool vincent mason pool ball park frederiksted public pool and recreation transportation node vincent mason frederiksted pool"
     },
     {
       "id": "discovery-beach-st_croix-annaly-bay-beach",
@@ -3685,6 +3742,44 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stj cruz bay ball field cruz bay ball field ball park st john sports and event transportation hub cruz bay field ball field"
+    },
+    {
+      "id": "stj-owen-roberts-ballfield",
+      "name": "Owen Roberts Ballfield",
+      "island": "st_john",
+      "type": "ball_park",
+      "lat": 18.331,
+      "lng": -64.795,
+      "aliases": [
+        "owen roberts field",
+        "cruz bay ballfield"
+      ],
+      "description": "Cruz Bay ballfield and St. John sports transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stj-owen-roberts-ballfield",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj owen roberts ballfield owen roberts ballfield ball park cruz bay ballfield and st john sports transportation hub owen roberts field cruz bay ballfield"
+    },
+    {
+      "id": "stj-pine-peace-basketball-court",
+      "name": "Pine Peace Basketball Court",
+      "island": "st_john",
+      "type": "ball_park",
+      "lat": 18.327,
+      "lng": -64.789,
+      "aliases": [
+        "pine peace court",
+        "pine peace recreation"
+      ],
+      "description": "Pine Peace community court and recreation pickup zone.",
+      "source": "transportNodes",
+      "sourceId": "stj-pine-peace-basketball-court",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj pine peace basketball court pine peace basketball court ball park pine peace community court and recreation pickup zone pine peace court pine peace recreation"
     },
     {
       "id": "discovery-beach-st_john-cinnamon-bay-beach",
