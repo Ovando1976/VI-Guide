@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-06-29T16:20:10.814Z",
+  "generatedAt": "2026-06-29T16:37:22.338Z",
   "stats": {
-    "totalNodes": 436,
+    "totalNodes": 448,
     "byIsland": {
       "st_croix": 166,
       "st_john": 98,
-      "st_thomas": 170,
+      "st_thomas": 182,
       "water_island": 2
     },
     "byType": {
       "attraction": 66,
-      "ball_park": 4,
+      "ball_park": 16,
       "beach": 47,
       "bus_stop": 33,
       "cruise_port": 3,
@@ -5784,6 +5784,67 @@
       "searchText": "discovery attraction st thomas yacht haven grande yacht haven grande attraction st thomas attraction yacht haven grande is a attraction destination in the u s virgin islands attraction st thomas yacht haven grande st thomas attraction yacht haven grande is a attraction destination in the u s virgin islands attraction st thomas attractions yacht haven grande"
     },
     {
+      "id": "stt-alvin-mcbean-recreational-complex",
+      "name": "Alvin McBean Sports Complex",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.348,
+      "lng": -64.891,
+      "aliases": [
+        "alvin mcbean recreational complex",
+        "tutu ballpark",
+        "tutu park ball field",
+        "alvin mcbean"
+      ],
+      "description": "Tutu-area recreational complex and major East End sports transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-alvin-mcbean-recreational-complex",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt alvin mcbean recreational complex alvin mcbean sports complex ball park tutu area recreational complex and major east end sports transportation hub alvin mcbean recreational complex tutu ballpark tutu park ball field alvin mcbean"
+    },
+    {
+      "id": "stt-bolongo-bowling-alley",
+      "name": "Bolongo Bowling Alley",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.313,
+      "lng": -64.899,
+      "aliases": [
+        "bolongo bowling",
+        "bowling alley",
+        "bolongo recreation"
+      ],
+      "description": "Bolongo recreation and bowling destination used as a local pickup/dropoff point.",
+      "source": "transportNodes",
+      "sourceId": "stt-bolongo-bowling-alley",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt bolongo bowling alley bolongo bowling alley ball park bolongo recreation and bowling destination used as a local pickup dropoff point bolongo bowling bowling alley bolongo recreation"
+    },
+    {
+      "id": "stt-doris-hodge-paddleball-tennis-complex",
+      "name": "Doris E. Hodge Paddle Ball & Tennis Complex",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.339,
+      "lng": -64.948,
+      "aliases": [
+        "doris hodge tennis center",
+        "doris hodge paddleball",
+        "subbase tennis"
+      ],
+      "description": "DSPR-listed paddle ball and tennis complex transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-doris-hodge-paddleball-tennis-complex",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt doris hodge paddleball tennis complex doris e hodge paddle ball and tennis complex ball park dspr listed paddle ball and tennis complex transportation hub doris hodge tennis center doris hodge paddleball subbase tennis"
+    },
+    {
       "id": "stt-emile-griffith-ballpark",
       "name": "Emile Griffith Ballpark",
       "island": "st_thomas",
@@ -5804,6 +5865,123 @@
       "searchText": "stt emile griffith ballpark emile griffith ballpark ball park sports and event transportation hub emile griffith ballpark stadium stt emile griffith ballpark emile griffith ballpark ball park downtown sports and event transportation hub emile griffith ballpark stadium"
     },
     {
+      "id": "stt-ezra-fredericks-ballpark",
+      "name": "Ezra Fredericks Ball Park & Basketball Court",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.343,
+      "lng": -64.934,
+      "aliases": [
+        "ezra fredericks ballpark",
+        "ezra fredericks court"
+      ],
+      "description": "DSPR-listed ball park and basketball court transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-ezra-fredericks-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt ezra fredericks ballpark ezra fredericks ball park and basketball court ball park dspr listed ball park and basketball court transportation hub ezra fredericks ballpark ezra fredericks court"
+    },
+    {
+      "id": "stt-fishman-family-field-antilles",
+      "name": "Fishman Family Field",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.3247,
+      "lng": -64.9097,
+      "aliases": [
+        "antilles field",
+        "fishman field",
+        "antilles athletic field"
+      ],
+      "description": "Antilles School outdoor athletic field and recreation transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-fishman-family-field-antilles",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt fishman family field antilles fishman family field ball park antilles school outdoor athletic field and recreation transportation hub antilles field fishman field antilles athletic field"
+    },
+    {
+      "id": "stt-frydenhoj-ballpark",
+      "name": "Frydenhoj Ballpark",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.326,
+      "lng": -64.877,
+      "aliases": [
+        "frydenhoj field",
+        "frydenhoj ball field"
+      ],
+      "description": "Frydenhoj community ballpark and East End sports pickup zone. Local facility name needs verification.",
+      "source": "transportNodes",
+      "sourceId": "stt-frydenhoj-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt frydenhoj ballpark frydenhoj ballpark ball park frydenhoj community ballpark and east end sports pickup zone local facility name needs verification frydenhoj field frydenhoj ball field"
+    },
+    {
+      "id": "stt-frenchtown-ballpark",
+      "name": "Joseph Aubain Ballpark",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.337,
+      "lng": -64.943,
+      "aliases": [
+        "frenchtown ballpark",
+        "frenchtown field",
+        "frenchtown ball field",
+        "joseph aubain ball park"
+      ],
+      "description": "Frenchtown neighborhood ballpark and waterfront sports pickup zone.",
+      "source": "transportNodes",
+      "sourceId": "stt-frenchtown-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt frenchtown ballpark joseph aubain ballpark ball park frenchtown neighborhood ballpark and waterfront sports pickup zone frenchtown ballpark frenchtown field frenchtown ball field joseph aubain ball park"
+    },
+    {
+      "id": "stt-kirwan-terrace-ballpark",
+      "name": "Kirwan Terrace Ballpark",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.35,
+      "lng": -64.939,
+      "aliases": [
+        "kirwan terrace ball park",
+        "kirwan field"
+      ],
+      "description": "Official DSPR ballpark and community sports transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-kirwan-terrace-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt kirwan terrace ballpark kirwan terrace ballpark ball park official dspr ballpark and community sports transportation hub kirwan terrace ball park kirwan field"
+    },
+    {
+      "id": "stt-lionel-smutt-richards-ballpark",
+      "name": "Lionel \"Smutt\" Richards Ball Park & Basketball Court",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.342,
+      "lng": -64.933,
+      "aliases": [
+        "lionel smutt richards",
+        "smutt richards ballpark"
+      ],
+      "description": "DSPR-listed ball park and basketball court transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-lionel-smutt-richards-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt lionel smutt richards ballpark lionel smutt richards ball park and basketball court ball park dspr listed ball park and basketball court transportation hub lionel smutt richards smutt richards ballpark"
+    },
+    {
       "id": "stt-lionel-roberts-stadium",
       "name": "Lionel Roberts Stadium",
       "island": "st_thomas",
@@ -5821,6 +5999,67 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stt lionel roberts stadium lionel roberts stadium ball park sports school and event transportation hub lionel roberts stadium"
+    },
+    {
+      "id": "stt-mark-c-marin-gym-antilles",
+      "name": "Mark C. Marin Center",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.318,
+      "lng": -64.897,
+      "aliases": [
+        "mark c marin gym",
+        "mcm center",
+        "antilles gym",
+        "antilles recreation grounds"
+      ],
+      "description": "Antilles School gym and recreation grounds used for school and community athletic events.",
+      "source": "transportNodes",
+      "sourceId": "stt-mark-c-marin-gym-antilles",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt mark c marin gym antilles mark c marin center ball park antilles school gym and recreation grounds used for school and community athletic events mark c marin gym mcm center antilles gym antilles recreation grounds"
+    },
+    {
+      "id": "stt-smith-bay-ballpark",
+      "name": "Smith Bay Ballpark",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.346,
+      "lng": -64.867,
+      "aliases": [
+        "smith bay field",
+        "smith bay ball field",
+        "coki point field"
+      ],
+      "description": "Smith Bay community sports and pickup/dropoff zone near the northeast corridor.",
+      "source": "transportNodes",
+      "sourceId": "stt-smith-bay-ballpark",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt smith bay ballpark smith bay ballpark ball park smith bay community sports and pickup dropoff zone near the northeast corridor smith bay field smith bay ball field coki point field"
+    },
+    {
+      "id": "stt-uvi-gym-recreation-grounds",
+      "name": "UVI Gym and Recreation Grounds",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.342,
+      "lng": -64.975,
+      "aliases": [
+        "uvi gym",
+        "uvi recreation grounds",
+        "uvi athletic field"
+      ],
+      "description": "University sports, gym, and recreation grounds serving students and community events.",
+      "source": "transportNodes",
+      "sourceId": "stt-uvi-gym-recreation-grounds",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt uvi gym recreation grounds uvi gym and recreation grounds ball park university sports gym and recreation grounds serving students and community events uvi gym uvi recreation grounds uvi athletic field"
     },
     {
       "id": "discovery-beach-st_thomas-bolongo-bay-beach",

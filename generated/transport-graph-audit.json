@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-06-29T16:20:12.476Z",
+  "generatedAt": "2026-06-29T16:37:24.808Z",
   "stats": {
-    "totalNodes": 436,
+    "totalNodes": 448,
     "byIsland": {
       "st_croix": 166,
       "st_john": 98,
-      "st_thomas": 170,
+      "st_thomas": 182,
       "water_island": 2
     },
     "byType": {
       "attraction": 66,
-      "ball_park": 4,
+      "ball_park": 16,
       "beach": 47,
       "bus_stop": 33,
       "cruise_port": 3,
@@ -675,7 +675,7 @@
     "lowCoverageWarnings": [
       "VITRAN/bus stop coverage is too low: 36",
       "School coverage is too low: 31",
-      "Ball park coverage is too low: 4"
+      "Ball park coverage is too low: 16"
     ]
   }
 }
