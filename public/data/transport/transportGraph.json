@@ -1,30 +1,30 @@
 {
-  "generatedAt": "2026-06-29T16:44:16.381Z",
+  "generatedAt": "2026-06-29T17:36:40.358Z",
   "stats": {
-    "totalNodes": 453,
+    "totalNodes": 515,
     "byIsland": {
-      "st_croix": 169,
-      "st_john": 100,
-      "st_thomas": 182,
+      "st_croix": 193,
+      "st_john": 110,
+      "st_thomas": 210,
       "water_island": 2
     },
     "byType": {
       "attraction": 66,
       "ball_park": 21,
       "beach": 47,
-      "bus_stop": 33,
+      "bus_stop": 62,
       "cruise_port": 3,
       "ferry_terminal": 8,
       "government": 12,
       "historic_site": 20,
       "hospital": 4,
       "restaurant": 152,
-      "school": 31,
+      "school": 48,
       "shopping": 30,
       "taxi_stand": 1,
       "transport": 21,
-      "airport": 1,
-      "vitran_stop": 3
+      "vitran_stop": 19,
+      "airport": 1
     }
   },
   "nodes": [
@@ -886,216 +886,431 @@
       "searchText": "discovery beach st croix tamarind reef beach tamarind reef beach beach st croix beach tamarind reef beach is a beach destination in the u s virgin islands beach st croix tamarind reef beach st croix beach tamarind reef beach is a beach destination in the u s virgin islands beach st croix beaches tamarind reef beach"
     },
     {
-      "id": "stx-christiansted-town-hub",
-      "name": "Christiansted Market Square Platform",
+      "id": "vitran_stx_annally",
+      "name": "Annally / West End Road",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.745,
-      "lng": -64.703,
+      "lat": 17.7411,
+      "lng": -64.8824,
       "aliases": [
-        "christiansted terminal",
-        "cc town hub",
-        "king street stop"
+        "annally stop"
       ],
-      "description": "Eastern coastal distribution point for cross-island Express runs.",
+      "description": "Route 58 Coastal Extension.",
       "source": "transportNodes",
-      "sourceId": "stx-christiansted-town-hub",
-      "routes": [],
+      "sourceId": "vitran_stx_annally",
+      "routes": [
+        "28-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx christiansted town hub christiansted market square platform bus stop eastern coastal distribution point for cross island express runs christiansted terminal cc town hub king street stop"
+      "searchText": "vitran stx annally annally west end road bus stop route 58 coastal extension annally stop 28 103"
     },
     {
-      "id": "stx-frederiksted-buddhoe-park-stop",
-      "name": "Frederiksted Buddhoe Park Terminal",
+      "id": "vitran_stx_barren_spot",
+      "name": "Barren Spot Intersection",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.712,
-      "lng": -64.881,
+      "lat": 17.7412,
+      "lng": -64.7432,
       "aliases": [
-        "frederiksted stop",
-        "fsted strand st",
-        "buddhoe park vitran"
+        "barren spot"
       ],
-      "description": "Western shoreline terminus directly servicing historical Frederiksted.",
+      "description": "Route 70 North Spur.",
       "source": "transportNodes",
-      "sourceId": "stx-frederiksted-buddhoe-park-stop",
-      "routes": [],
+      "sourceId": "vitran_stx_barren_spot",
+      "routes": [
+        "302"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx frederiksted buddhoe park stop frederiksted buddhoe park terminal bus stop western shoreline terminus directly servicing historical frederiksted frederiksted stop fsted strand st buddhoe park vitran"
+      "searchText": "vitran stx barren spot barren spot intersection bus stop route 70 north spur barren spot 302"
     },
     {
-      "id": "stx-golden-rock-stop",
-      "name": "Golden Rock Shopping Center Stop",
+      "id": "vitran_stx_beeston",
+      "name": "Beeston Hill Medical Center",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.751,
-      "lng": -64.722,
+      "lat": 17.7365,
+      "lng": -64.7081,
       "aliases": [
-        "golden rock vitran",
-        "pueblo golden rock"
+        "beeston hill"
       ],
-      "description": "North-side commercial route corridor checkpoint serving local residential communities.",
+      "description": "Route 751 Junction.",
       "source": "transportNodes",
-      "sourceId": "stx-golden-rock-stop",
-      "routes": [],
+      "sourceId": "vitran_stx_beeston",
+      "routes": [
+        "302"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx golden rock stop golden rock shopping center stop bus stop north side commercial route corridor checkpoint serving local residential communities golden rock vitran pueblo golden rock"
+      "searchText": "vitran stx beeston beeston hill medical center bus stop route 751 junction beeston hill 302"
     },
     {
-      "id": "stx-juan-luis-hospital-stop",
-      "name": "Governor Juan F. Luis Hospital Stop",
+      "id": "vitran_stx_calquohoun",
+      "name": "Calquohoun Road",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.731,
-      "lng": -64.761,
+      "lat": 17.7495,
+      "lng": -64.7915,
       "aliases": [
-        "jfl hospital stop",
-        "stx hospital vitran"
+        "calquohoun"
       ],
-      "description": "Dedicated medical loop terminal for passengers connecting to Sunny Isle.",
+      "description": "Route 64 Neighborhood Junction.",
       "source": "transportNodes",
-      "sourceId": "stx-juan-luis-hospital-stop",
-      "routes": [],
+      "sourceId": "vitran_stx_calquohoun",
+      "routes": [
+        "28-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx juan luis hospital stop governor juan f luis hospital stop bus stop dedicated medical loop terminal for passengers connecting to sunny isle jfl hospital stop stx hospital vitran"
+      "searchText": "vitran stx calquohoun calquohoun road bus stop route 64 neighborhood junction calquohoun 28 103"
     },
     {
-      "id": "stx-grove-place-stop",
-      "name": "Grove Place Baobab Tree Stop",
+      "id": "vitran_stx_campo_rico",
+      "name": "Campo Rico Neighborhood",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.734,
-      "lng": -64.832,
+      "lat": 17.7015,
+      "lng": -64.8632,
       "aliases": [
-        "grove place vitran",
-        "baobab stop"
+        "campo rico"
       ],
-      "description": "Historic West-Central community platform routing passengers along Route 70.",
+      "description": "Route 66 Southwest Loop.",
       "source": "transportNodes",
-      "sourceId": "stx-grove-place-stop",
-      "routes": [],
+      "sourceId": "vitran_stx_campo_rico",
+      "routes": [
+        "27-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx grove place stop grove place baobab tree stop bus stop historic west central community platform routing passengers along route 70 grove place vitran baobab stop"
+      "searchText": "vitran stx campo rico campo rico neighborhood bus stop route 66 southwest loop campo rico 27 103"
     },
     {
-      "id": "stx-la-reine-terminal",
-      "name": "La Reine Central Terminal",
+      "id": "vitran_stx_carlton",
+      "name": "Carlton Route 70",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.733,
-      "lng": -64.797,
+      "lat": 17.7102,
+      "lng": -64.8495,
       "aliases": [
-        "la reine terminal",
-        "la reine hub",
-        "fish market vitran"
+        "carlton stop"
       ],
-      "description": "Primary central transfer yard on St. Croix linking lines 103, 302, and 502.",
+      "description": "Queen Mary Highway Corridor.",
       "source": "transportNodes",
-      "sourceId": "stx-la-reine-terminal",
-      "routes": [],
+      "sourceId": "vitran_stx_carlton",
+      "routes": [
+        "27-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx la reine terminal la reine central terminal bus stop primary central transfer yard on st croix linking lines 103 302 and 502 la reine terminal la reine hub fish market vitran"
+      "searchText": "vitran stx carlton carlton route 70 bus stop queen mary highway corridor carlton stop 27 103"
     },
     {
-      "id": "stx-mon-bijou-turnaround",
-      "name": "Mon Bijou Loop Terminus",
+      "id": "vitran_stx_concordia",
+      "name": "Concordia West",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.761,
-      "lng": -64.789,
+      "lat": 17.7225,
+      "lng": -64.8751,
       "aliases": [
-        "mon bijou stop",
-        "mon bijou vitran"
+        "concordia west"
       ],
-      "description": "Northern neighborhood terminal point routing suburban passengers into the La Reine backbone.",
+      "description": "Route 702 Access.",
       "source": "transportNodes",
-      "sourceId": "stx-mon-bijou-turnaround",
-      "routes": [],
+      "sourceId": "vitran_stx_concordia",
+      "routes": [
+        "28-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx mon bijou turnaround mon bijou loop terminus bus stop northern neighborhood terminal point routing suburban passengers into the la reine backbone mon bijou stop mon bijou vitran"
+      "searchText": "vitran stx concordia concordia west bus stop route 702 access concordia west 28 103"
     },
     {
-      "id": "stx-sion-farm-stop",
-      "name": "Sion Farm Commercial Stop",
+      "id": "vitran_stx_whim_museum",
+      "name": "Estate Whim Museum Stop",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.739,
-      "lng": -64.752,
+      "lat": 17.7088,
+      "lng": -64.8592,
       "aliases": [
-        "sion farm vitran",
-        "sion farm intersection"
+        "whim museum"
       ],
-      "description": "Mid-island collection point routing traffic between Christiansted and the central plains.",
+      "description": "Route 70 Southwest.",
       "source": "transportNodes",
-      "sourceId": "stx-sion-farm-stop",
-      "routes": [],
+      "sourceId": "vitran_stx_whim_museum",
+      "routes": [
+        "27-103"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx sion farm stop sion farm commercial stop bus stop mid island collection point routing traffic between christiansted and the central plains sion farm vitran sion farm intersection"
+      "searchText": "vitran stx whim museum estate whim museum stop bus stop route 70 southwest whim museum 27 103"
     },
     {
-      "id": "stx-sunny-isle-hub",
-      "name": "Sunny Isle Shopping Center Hub",
+      "id": "vitran_stx_gallows",
+      "name": "Gallows Bay Center",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.728,
-      "lng": -64.764,
+      "lat": 17.7451,
+      "lng": -64.6932,
       "aliases": [
-        "sunny isle stop",
-        "sunny isle vitran"
+        "gallows bay"
       ],
-      "description": "High-traffic commercial distribution stop serving the center of the island.",
+      "description": "Route 75 East End Corridor.",
       "source": "transportNodes",
-      "sourceId": "stx-sunny-isle-hub",
-      "routes": [],
+      "sourceId": "vitran_stx_gallows",
+      "routes": [
+        "502"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx sunny isle hub sunny isle shopping center hub bus stop high traffic commercial distribution stop serving the center of the island sunny isle stop sunny isle vitran"
+      "searchText": "vitran stx gallows gallows bay center bus stop route 75 east end corridor gallows bay 502"
     },
     {
-      "id": "stx-sunshine-mall-terminal",
-      "name": "Sunshine Mall Transit Point",
+      "id": "vitran_stx_glynn",
+      "name": "Glynn Area Stop",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.711,
-      "lng": -64.872,
+      "lat": 17.7552,
+      "lng": -64.7614,
       "aliases": [
-        "sunshine mall stop",
-        "sunshine vitran"
+        "glynn stop"
       ],
-      "description": "West End transfer nexus facilitating Route 502 loop operations.",
+      "description": "Route 75 Crossing.",
       "source": "transportNodes",
-      "sourceId": "stx-sunshine-mall-terminal",
-      "routes": [],
+      "sourceId": "vitran_stx_glynn",
+      "routes": [
+        "302"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx sunshine mall terminal sunshine mall transit point bus stop west end transfer nexus facilitating route 502 loop operations sunshine mall stop sunshine vitran"
+      "searchText": "vitran stx glynn glynn area stop bus stop route 75 crossing glynn stop 302"
     },
     {
-      "id": "stx-tide-village-terminus",
-      "name": "Tide Village East End Terminus",
+      "id": "vitran_stx_jfl_hospital",
+      "name": "Governor Juan F. Luis Hospital",
       "island": "st_croix",
       "type": "bus_stop",
-      "lat": 17.741,
-      "lng": -64.675,
+      "lat": 17.7311,
+      "lng": -64.7335,
       "aliases": [
-        "tide village stop",
-        "route 302 east turnaround"
+        "jfl hospital",
+        "stx hospital"
       ],
-      "description": "The absolute eastern edge marker for the Route 302 transit pipeline.",
+      "description": "Estate Diamond Ruby Access.",
       "source": "transportNodes",
-      "sourceId": "stx-tide-village-terminus",
-      "routes": [],
+      "sourceId": "vitran_stx_jfl_hospital",
+      "routes": [
+        "302"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx tide village terminus tide village east end terminus bus stop the absolute eastern edge marker for the route 302 transit pipeline tide village stop route 302 east turnaround"
+      "searchText": "vitran stx jfl hospital governor juan f luis hospital bus stop estate diamond ruby access jfl hospital stx hospital 302"
+    },
+    {
+      "id": "vitran_stx_grove_place",
+      "name": "Grove Place Community Center",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7295,
+      "lng": -64.8212,
+      "aliases": [
+        "grove place"
+      ],
+      "description": "Route 68 North Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_grove_place",
+      "routes": [
+        "28-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx grove place grove place community center bus stop route 68 north loop grove place 28 103"
+    },
+    {
+      "id": "vitran_stx_mon_bijou",
+      "name": "Mon Bijou Terminus",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7612,
+      "lng": -64.7791,
+      "aliases": [
+        "mon bijou"
+      ],
+      "description": "Route 74 Mid-Island Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_mon_bijou",
+      "routes": [
+        "28-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx mon bijou mon bijou terminus bus stop route 74 mid island loop mon bijou 28 103"
+    },
+    {
+      "id": "vitran_stx_orange_grove",
+      "name": "Orange Grove (Golden Rock)",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7491,
+      "lng": -64.7121,
+      "aliases": [
+        "orange grove",
+        "golden rock"
+      ],
+      "description": "Golden Rock Shopping Center Entrance.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_orange_grove",
+      "routes": [
+        "302",
+        "502"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx orange grove orange grove golden rock bus stop golden rock shopping center entrance orange grove golden rock 302 502"
+    },
+    {
+      "id": "vitran_stx_paradise_mills",
+      "name": "Paradise Mills / Adventure Hill",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7221,
+      "lng": -64.8415,
+      "aliases": [
+        "paradise mills",
+        "adventure hill"
+      ],
+      "description": "Route 70 West Corridor.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_paradise_mills",
+      "routes": [
+        "27-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx paradise mills paradise mills adventure hill bus stop route 70 west corridor paradise mills adventure hill 27 103"
+    },
+    {
+      "id": "vitran_stx_peters_rest",
+      "name": "Peter's Rest Shopping Center",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7291,
+      "lng": -64.7115,
+      "aliases": [
+        "peters rest"
+      ],
+      "description": "Route 70 East corridor.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_peters_rest",
+      "routes": [
+        "302"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx peters rest peter s rest shopping center bus stop route 70 east corridor peters rest 302"
+    },
+    {
+      "id": "vitran_stx_richmond_dpw",
+      "name": "Richmond DPW Main Headquarters",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7482,
+      "lng": -64.7198,
+      "aliases": [
+        "richmond dpw"
+      ],
+      "description": "Route 75 Westbound Stop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_richmond_dpw",
+      "routes": [
+        "302",
+        "502"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx richmond dpw richmond dpw main headquarters bus stop route 75 westbound stop richmond dpw 302 502"
+    },
+    {
+      "id": "vitran_stx_sion_farm",
+      "name": "Sion Farm Shopping Center",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7368,
+      "lng": -64.7548,
+      "aliases": [
+        "sion farm"
+      ],
+      "description": "Route 70 Central Corridor.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_sion_farm",
+      "routes": [
+        "27-103",
+        "302"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx sion farm sion farm shopping center bus stop route 70 central corridor sion farm 27 103 302"
+    },
+    {
+      "id": "vitran_stx_central_hs",
+      "name": "St. Croix Central HS (Kingshill)",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7305,
+      "lng": -64.7938,
+      "aliases": [
+        "central high stop",
+        "kingshill stop"
+      ],
+      "description": "Route 70 Northside Entrance.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_central_hs",
+      "routes": [
+        "27-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx central hs st croix central hs kingshill bus stop route 70 northside entrance central high stop kingshill stop 27 103"
+    },
+    {
+      "id": "vitran_stx_strawberry",
+      "name": "Strawberry Hill Area",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7345,
+      "lng": -64.7212,
+      "aliases": [
+        "strawberry hill"
+      ],
+      "description": "Route 681 Junction.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_strawberry",
+      "routes": [
+        "302"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx strawberry strawberry hill area bus stop route 681 junction strawberry hill 302"
+    },
+    {
+      "id": "vitran_stx_tide_vly",
+      "name": "Tide Village Route 62",
+      "island": "st_croix",
+      "type": "bus_stop",
+      "lat": 17.7392,
+      "lng": -64.6851,
+      "aliases": [
+        "tide village"
+      ],
+      "description": "Route 62 East Bound Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_tide_vly",
+      "routes": [
+        "502"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx tide vly tide village route 62 bus stop route 62 east bound loop tide village 502"
     },
     {
       "id": "stx-ann-abramson-pier",
@@ -2615,235 +2830,325 @@
       "searchText": "discovery restaurant st croix twin city coffee house twin city coffee house restaurant st croix restaurant twin city coffee house is a restaurant destination in the u s virgin islands restaurant st croix twin city coffee house st croix restaurant twin city coffee house is a restaurant destination in the u s virgin islands restaurant st croix restaurants st croix twin city coffee house"
     },
     {
-      "id": "stx-alfredo-andrews-elementary",
+      "id": "stx-alexander-henderson-elementary-school",
+      "name": "Alexander Henderson Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7071,
+      "lng": -64.8712,
+      "aliases": [
+        "henderson",
+        "henderson elementary"
+      ],
+      "description": "Public elementary facility in Concordia.",
+      "source": "transportNodes",
+      "sourceId": "stx-alexander-henderson-elementary-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx alexander henderson elementary school alexander henderson elementary school school public elementary facility in concordia henderson henderson elementary"
+    },
+    {
+      "id": "stx-alfredo-andrews-elementary-school",
       "name": "Alfredo Andrews Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.731,
-      "lng": -64.792,
+      "lat": 17.7329,
+      "lng": -64.7821,
       "aliases": [
         "alfredo andrews",
         "andrews elementary"
       ],
-      "description": "Public primary facility located off Central Highway.",
+      "description": "Public elementary school transportation hub.",
       "source": "transportNodes",
-      "sourceId": "stx-alfredo-andrews-elementary",
+      "sourceId": "stx-alfredo-andrews-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx alfredo andrews elementary alfredo andrews elementary school school public primary facility located off central highway alfredo andrews andrews elementary"
+      "searchText": "stx alfredo andrews elementary school alfredo andrews elementary school school public elementary school transportation hub alfredo andrews andrews elementary"
     },
     {
-      "id": "stx-arthur-a-richards-k8",
+      "id": "stx-arthur-a-richards-k8-school",
       "name": "Arthur A. Richards K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.712,
-      "lng": -64.884,
+      "lat": 17.7125,
+      "lng": -64.8611,
       "aliases": [
         "arthur richards",
         "richards k8"
       ],
-      "description": "Public K-8 school campus serving the western district.",
+      "description": "Public K-8 school facility serving the West End.",
       "source": "transportNodes",
-      "sourceId": "stx-arthur-a-richards-k8",
+      "sourceId": "stx-arthur-a-richards-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx arthur a richards k8 arthur a richards k 8 school school public k 8 school campus serving the western district arthur richards richards k8"
+      "searchText": "stx arthur a richards k8 school arthur a richards k 8 school school public k 8 school facility serving the west end arthur richards richards k8"
     },
     {
-      "id": "stx-claude-o-markoe-elementary",
+      "id": "stx-az-academy",
+      "name": "AZ Academy",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7401,
+      "lng": -64.7188,
+      "aliases": [
+        "az academy"
+      ],
+      "description": "Private alternative educational institute facility in Orange Grove.",
+      "source": "transportNodes",
+      "sourceId": "stx-az-academy",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx az academy az academy school private alternative educational institute facility in orange grove az academy"
+    },
+    {
+      "id": "stx-charles-h-emanuel-elementary-school",
+      "name": "Charles H. Emanuel Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7214,
+      "lng": -64.7688,
+      "aliases": [
+        "emanuel",
+        "charles emanuel"
+      ],
+      "description": "Public elementary infrastructure serving mid-island routes.",
+      "source": "transportNodes",
+      "sourceId": "stx-charles-h-emanuel-elementary-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx charles h emanuel elementary school charles h emanuel elementary school school public elementary infrastructure serving mid island routes emanuel charles emanuel"
+    },
+    {
+      "id": "stx-claude-o-markoe-elementary-school",
       "name": "Claude O. Markoe Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.714,
-      "lng": -64.881,
+      "lat": 17.7152,
+      "lng": -64.8765,
       "aliases": [
         "claude markoe",
         "markoe elementary"
       ],
-      "description": "Public elementary school near Frederiksted town limits.",
+      "description": "Public elementary school near Frederiksted.",
       "source": "transportNodes",
-      "sourceId": "stx-claude-o-markoe-elementary",
+      "sourceId": "stx-claude-o-markoe-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx claude o markoe elementary claude o markoe elementary school school public elementary school near frederiksted town limits claude markoe markoe elementary"
+      "searchText": "stx claude o markoe elementary school claude o markoe elementary school school public elementary school near frederiksted claude markoe markoe elementary"
     },
     {
-      "id": "stx-elena-l-christian-junior-high",
+      "id": "stx-elena-l-christian-junior-high-school",
       "name": "Elena L. Christian Junior High School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.745,
-      "lng": -64.748,
+      "lat": 17.7461,
+      "lng": -64.7112,
       "aliases": [
         "elena christian",
-        "elc",
-        "christian junior high"
+        "elena christian junior"
       ],
-      "description": "Public junior high school in the Christiansted area.",
+      "description": "Public junior high transit point near Christiansted.",
       "source": "transportNodes",
-      "sourceId": "stx-elena-l-christian-junior-high",
+      "sourceId": "stx-elena-l-christian-junior-high-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx elena l christian junior high elena l christian junior high school school public junior high school in the christiansted area elena christian elc christian junior high"
+      "searchText": "stx elena l christian junior high school elena l christian junior high school school public junior high transit point near christiansted elena christian elena christian junior"
     },
     {
-      "id": "stx-eulalie-r-rivera-k8",
+      "id": "stx-eulalie-r-rivera-k8-school",
       "name": "Eulalie R. Rivera K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.715,
-      "lng": -64.861,
+      "lat": 17.7145,
+      "lng": -64.8312,
       "aliases": [
         "eulalie rivera",
         "rivera school"
       ],
-      "description": "Public primary and intermediate facility in Estate Grove Place.",
+      "description": "Public K-8 school near Grove Place.",
       "source": "transportNodes",
-      "sourceId": "stx-eulalie-r-rivera-k8",
+      "sourceId": "stx-eulalie-r-rivera-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx eulalie r rivera k8 eulalie r rivera k 8 school school public primary and intermediate facility in estate grove place eulalie rivera rivera school"
+      "searchText": "stx eulalie r rivera k8 school eulalie r rivera k 8 school school public k 8 school near grove place eulalie rivera rivera school"
     },
     {
-      "id": "stx-free-will-baptist-school",
+      "id": "stx-evelyn-williams-elementary",
+      "name": "Evelyn M. Williams Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7311,
+      "lng": -64.8195,
+      "aliases": [
+        "evelyn williams",
+        "evelyn williams elementary"
+      ],
+      "description": "Public school facilities layout situated within the western district.",
+      "source": "transportNodes",
+      "sourceId": "stx-evelyn-williams-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx evelyn williams elementary evelyn m williams elementary school school public school facilities layout situated within the western district evelyn williams evelyn williams elementary"
+    },
+    {
+      "id": "stx-free-will-baptist-christian-school",
       "name": "Free Will Baptist Christian School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.735,
-      "lng": -64.755,
+      "lat": 17.7264,
+      "lng": -64.7412,
       "aliases": [
-        "free will",
-        "baptist christian school"
+        "free will baptist"
       ],
-      "description": "Private Christian academy offering PK-12 options in Sion Farm.",
+      "description": "Private Christian educational transit point.",
       "source": "transportNodes",
-      "sourceId": "stx-free-will-baptist-school",
+      "sourceId": "stx-free-will-baptist-christian-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx free will baptist school free will baptist christian school school private christian academy offering pk 12 options in sion farm free will baptist christian school"
+      "searchText": "stx free will baptist christian school free will baptist christian school school private christian educational transit point free will baptist"
     },
     {
       "id": "stx-good-hope-country-day-school",
       "name": "Good Hope Country Day School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.72,
-      "lng": -64.83,
+      "lat": 17.7198,
+      "lng": -64.7845,
       "aliases": [
         "ghcds",
-        "good hope",
         "country day"
       ],
-      "description": "Co-educational independent college preparatory private school.",
+      "description": "Private college-preparatory academy and major transit junction.",
       "source": "transportNodes",
       "sourceId": "stx-good-hope-country-day-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx good hope country day school good hope country day school school co educational independent college preparatory private school ghcds good hope country day"
+      "searchText": "stx good hope country day school good hope country day school school private college preparatory academy and major transit junction ghcds country day"
     },
     {
-      "id": "stx-john-h-woodson-junior-high",
+      "id": "stx-john-h-woodson-junior-high-school",
       "name": "John H. Woodson Junior High School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.74,
-      "lng": -64.78,
+      "lat": 17.7412,
+      "lng": -64.7734,
       "aliases": [
         "woodson",
-        "john h woodson",
+        "john woodson",
         "woodson junior high"
       ],
-      "description": "Public junior high school located centrally on St. Croix.",
+      "description": "Public junior high school and St. Croix transportation hub.",
       "source": "transportNodes",
-      "sourceId": "stx-john-h-woodson-junior-high",
+      "sourceId": "stx-john-h-woodson-junior-high-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx john h woodson junior high john h woodson junior high school school public junior high school located centrally on st croix woodson john h woodson woodson junior high"
+      "searchText": "stx john h woodson junior high school john h woodson junior high school school public junior high school and st croix transportation hub woodson john woodson woodson junior high"
     },
     {
-      "id": "stx-juanita-gardine-k8",
+      "id": "stx-juanita-gardine-k8-school",
       "name": "Juanita Gardine K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.748,
-      "lng": -64.721,
+      "lat": 17.7511,
+      "lng": -64.7212,
       "aliases": [
         "juanita gardine",
-        "gardine school"
+        "gardine"
       ],
-      "description": "Public K-8 school situated outside Richmond, Christiansted.",
+      "description": "Public K-8 school transportation hub near Richmond.",
       "source": "transportNodes",
-      "sourceId": "stx-juanita-gardine-k8",
+      "sourceId": "stx-juanita-gardine-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx juanita gardine k8 juanita gardine k 8 school school public k 8 school situated outside richmond christiansted juanita gardine gardine school"
+      "searchText": "stx juanita gardine k8 school juanita gardine k 8 school school public k 8 school transportation hub near richmond juanita gardine gardine"
     },
     {
-      "id": "stx-lew-muckle-elementary",
+      "id": "stx-lew-muckle-elementary-school",
       "name": "Lew Muckle Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.739,
-      "lng": -64.761,
+      "lat": 17.7421,
+      "lng": -64.7391,
       "aliases": [
         "lew muckle",
         "muckle elementary"
       ],
-      "description": "Public elementary school situated in Estate Sion Farm.",
+      "description": "Public elementary school located in Estate Sion Farm.",
       "source": "transportNodes",
-      "sourceId": "stx-lew-muckle-elementary",
+      "sourceId": "stx-lew-muckle-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx lew muckle elementary lew muckle elementary school school public elementary school situated in estate sion farm lew muckle muckle elementary"
+      "searchText": "stx lew muckle elementary school lew muckle elementary school school public elementary school located in estate sion farm lew muckle muckle elementary"
     },
     {
-      "id": "stx-pearl-b-larsen-k8",
+      "id": "stx-pearl-b-larsen-k8-school",
       "name": "Pearl B. Larsen K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.74,
-      "lng": -64.69,
+      "lat": 17.7538,
+      "lng": -64.6945,
       "aliases": [
         "pearl larsen",
-        "larsen school"
+        "larsen"
       ],
-      "description": "Public K-8 school complex in Estate Peter's Rest.",
+      "description": "Public K-8 school transportation hub for East End paths.",
       "source": "transportNodes",
-      "sourceId": "stx-pearl-b-larsen-k8",
+      "sourceId": "stx-pearl-b-larsen-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx pearl b larsen k8 pearl b larsen k 8 school school public k 8 school complex in estate peter s rest pearl larsen larsen school"
+      "searchText": "stx pearl b larsen k8 school pearl b larsen k 8 school school public k 8 school transportation hub for east end paths pearl larsen larsen"
     },
     {
-      "id": "stx-ricardo-richards-elementary",
+      "id": "stx-ricardo-richards-elementary-school",
       "name": "Ricardo Richards Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.734,
-      "lng": -64.742,
+      "lat": 17.7388,
+      "lng": -64.7495,
       "aliases": [
         "ricardo richards",
-        "ricardo elementary"
+        "richards elementary"
       ],
-      "description": "Public primary facility in Estate Barren Spot.",
+      "description": "Public elementary school transportation hub.",
       "source": "transportNodes",
-      "sourceId": "stx-ricardo-richards-elementary",
+      "sourceId": "stx-ricardo-richards-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx ricardo richards elementary ricardo richards elementary school school public primary facility in estate barren spot ricardo richards ricardo elementary"
+      "searchText": "stx ricardo richards elementary school ricardo richards elementary school school public elementary school transportation hub ricardo richards richards elementary"
+    },
+    {
+      "id": "stx-good-shepherd-school",
+      "name": "School of the Good Shepherd",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7291,
+      "lng": -64.7312,
+      "aliases": [
+        "good shepherd school"
+      ],
+      "description": "Private parochial school serving community transit lanes.",
+      "source": "transportNodes",
+      "sourceId": "stx-good-shepherd-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx good shepherd school school of the good shepherd school private parochial school serving community transit lanes good shepherd school"
     },
     {
       "id": "stx-central-high-school",
@@ -2854,8 +3159,7 @@
       "lng": -64.778,
       "aliases": [
         "central high",
-        "st croix central",
-        "chs"
+        "st croix central"
       ],
       "description": "School and community transportation hub.",
       "source": "transportNodes",
@@ -2863,66 +3167,118 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central stx central high school st croix central high school school central st croix public high school and community transportation hub central high st croix central chs"
+      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central stx central high school st croix central high school school public high school and kingshill area school hub central high st croix central"
     },
     {
-      "id": "stx-educational-complex",
-      "name": "St. Croix Educational Complex",
+      "id": "stx-christian-academy",
+      "name": "St. Croix Christian Academy",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.702,
-      "lng": -64.831,
+      "lat": 17.7352,
+      "lng": -64.7441,
       "aliases": [
-        "educational complex",
-        "stx complex",
-        "scechs"
+        "stx christian academy"
       ],
-      "description": "Major public high school and career/technical education center in Frederiksted.",
+      "description": "Private local Christian educational programming complex.",
       "source": "transportNodes",
-      "sourceId": "stx-educational-complex",
+      "sourceId": "stx-christian-academy",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx educational complex st croix educational complex school major public high school and career technical education center in frederiksted educational complex stx complex scechs"
+      "searchText": "stx christian academy st croix christian academy school private local christian educational programming complex stx christian academy"
+    },
+    {
+      "id": "stx-educational-complex-high-school",
+      "name": "St. Croix Educational Complex High School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7335,
+      "lng": -64.8021,
+      "aliases": [
+        "educational complex",
+        "complex high",
+        "scec"
+      ],
+      "description": "Public high school and West End technical/vocational school hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-educational-complex-high-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx educational complex high school st croix educational complex high school school public high school and west end technical vocational school hub educational complex complex high scec"
+    },
+    {
+      "id": "stx-seventh-day-adventist-school",
+      "name": "St. Croix Seventh-day Adventist School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7319,
+      "lng": -64.7562,
+      "aliases": [
+        "stx sda",
+        "st croix sda"
+      ],
+      "description": "Private K-12 parochial school infrastructure.",
+      "source": "transportNodes",
+      "sourceId": "stx-seventh-day-adventist-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx seventh day adventist school st croix seventh day adventist school school private k 12 parochial school infrastructure stx sda st croix sda"
+    },
+    {
+      "id": "stx-st-joseph-catholic-high-school",
+      "name": "St. Joseph Catholic High School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.7288,
+      "lng": -64.7612,
+      "aliases": [
+        "st joseph high"
+      ],
+      "description": "Parochial high school with heavy mid-island student transit.",
+      "source": "transportNodes",
+      "sourceId": "stx-st-joseph-catholic-high-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx st joseph catholic high school st joseph catholic high school school parochial high school with heavy mid island student transit st joseph high"
     },
     {
       "id": "stx-st-marys-catholic-school",
       "name": "St. Mary's Catholic School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.746,
-      "lng": -64.704,
+      "lat": 17.7452,
+      "lng": -64.7041,
       "aliases": [
-        "st marys",
-        "marys catholic",
-        "stx catholic"
+        "st marys"
       ],
-      "description": "Parochial Catholic elementary and middle school in Christiansted.",
+      "description": "Parochial Catholic school in Christiansted.",
       "source": "transportNodes",
       "sourceId": "stx-st-marys-catholic-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx st marys catholic school st mary s catholic school school parochial catholic elementary and middle school in christiansted st marys marys catholic stx catholic"
+      "searchText": "stx st marys catholic school st mary s catholic school school parochial catholic school in christiansted st marys"
     },
     {
       "id": "stx-st-patricks-catholic-school",
       "name": "St. Patrick's Catholic School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.713,
-      "lng": -64.883,
+      "lat": 17.7111,
+      "lng": -64.8795,
       "aliases": [
-        "st patricks",
-        "patricks catholic"
+        "st patricks"
       ],
-      "description": "Parochial Catholic primary and intermediate school in Frederiksted.",
+      "description": "Parochial Catholic school in Frederiksted.",
       "source": "transportNodes",
       "sourceId": "stx-st-patricks-catholic-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx st patricks catholic school st patrick s catholic school school parochial catholic primary and intermediate school in frederiksted st patricks patricks catholic"
+      "searchText": "stx st patricks catholic school st patrick s catholic school school parochial catholic school in frederiksted st patricks"
     },
     {
       "id": "discovery-shopping-st_croix-christiansted-boardwalk",
@@ -3383,6 +3739,140 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery transport st croix yacht haven grande marina yacht haven grande marina transport st croix transport yacht haven grande marina is a transport destination in the u s virgin islands transport st croix yacht haven grande marina st croix transport yacht haven grande marina is a transport destination in the u s virgin islands transport st croix transportation yacht haven grande marina"
+    },
+    {
+      "id": "vitran_stx_csted_dock",
+      "name": "Christiansted Ferry Dock / Boardwalk",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7468,
+      "lng": -64.7032,
+      "aliases": [
+        "csted dock",
+        "christiansted waterfront"
+      ],
+      "description": "King Street Waterfront.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_csted_dock",
+      "routes": [
+        "302",
+        "502"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx csted dock christiansted ferry dock boardwalk vitran stop king street waterfront csted dock christiansted waterfront 302 502"
+    },
+    {
+      "id": "vitran_stx_fsted_town",
+      "name": "Frederiksted Downtown / Buddhoe Park",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7122,
+      "lng": -64.8812,
+      "aliases": [
+        "fsted downtown",
+        "frederiksted pier"
+      ],
+      "description": "Custom House Street Pier Access.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_fsted_town",
+      "routes": [
+        "27-103",
+        "28-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx fsted town frederiksted downtown buddhoe park vitran stop custom house street pier access fsted downtown frederiksted pier 27 103 28 103"
+    },
+    {
+      "id": "vitran_stx_la_reine",
+      "name": "La Reine Transit Terminal",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7381,
+      "lng": -64.7692,
+      "aliases": [
+        "la reine",
+        "la reine depot"
+      ],
+      "description": "Central Transit Hub and Depots.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_la_reine",
+      "routes": [
+        "27-103",
+        "28-103",
+        "302"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx la reine la reine transit terminal vitran stop central transit hub and depots la reine la reine depot 27 103 28 103 302"
+    },
+    {
+      "id": "vitran_stx_sunny_isle",
+      "name": "Sunny Isle Shopping Center Hub",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7285,
+      "lng": -64.7312,
+      "aliases": [
+        "sunny isle",
+        "sunny isle hub"
+      ],
+      "description": "Main Bus Shelter near Amphitheatre.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_sunny_isle",
+      "routes": [
+        "27-103",
+        "28-103",
+        "302",
+        "502"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx sunny isle sunny isle shopping center hub vitran stop main bus shelter near amphitheatre sunny isle sunny isle hub 27 103 28 103 302 502"
+    },
+    {
+      "id": "vitran_stx_sunshine_mall",
+      "name": "Sunshine Mall Transit Hub",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7125,
+      "lng": -64.8698,
+      "aliases": [
+        "sunshine mall"
+      ],
+      "description": "South Entry Parking Bay Terminal.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_sunshine_mall",
+      "routes": [
+        "27-103",
+        "28-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx sunshine mall sunshine mall transit hub vitran stop south entry parking bay terminal sunshine mall 27 103 28 103"
+    },
+    {
+      "id": "vitran_stx_uvi",
+      "name": "UVI St. Croix Campus",
+      "island": "st_croix",
+      "type": "vitran_stop",
+      "lat": 17.7212,
+      "lng": -64.7995,
+      "aliases": [
+        "uvi stx",
+        "university stx"
+      ],
+      "description": "UVI Research Extension Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stx_uvi",
+      "routes": [
+        "27-103",
+        "28-103"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stx uvi uvi st croix campus vitran stop uvi research extension loop uvi stx university stx 27 103 28 103"
     },
     {
       "id": "discovery-attraction-st_john-annaberg-sugar-plantation",
@@ -4062,159 +4552,271 @@
       "searchText": "discovery beach st john waterlemon cay beach waterlemon cay beach beach st john beach waterlemon cay beach is a beach destination in the u s virgin islands beach st john waterlemon cay beach st john beach waterlemon cay beach is a beach destination in the u s virgin islands beach st john beaches waterlemon cay beach"
     },
     {
-      "id": "stj-calabash-boom-terminus",
-      "name": "Calabash Boom Housing Terminus",
+      "id": "vitran_stj_adrian",
+      "name": "Adrian Senior Center",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.332,
-      "lng": -64.708,
+      "lat": 18.3339,
+      "lng": -64.7645,
       "aliases": [
-        "calabash boom stop",
-        "calabash vitran"
+        "adrian center",
+        "estate adrian"
       ],
-      "description": "Community loop point for residential neighborhood lines tracking out of Coral Bay.",
+      "description": "Centerline Road Estate Adrian.",
       "source": "transportNodes",
-      "sourceId": "stj-calabash-boom-terminus",
-      "routes": [],
+      "sourceId": "vitran_stj_adrian",
+      "routes": [
+        "101",
+        "108"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj calabash boom terminus calabash boom housing terminus bus stop community loop point for residential neighborhood lines tracking out of coral bay calabash boom stop calabash vitran"
+      "searchText": "vitran stj adrian adrian senior center bus stop centerline road estate adrian adrian center estate adrian 101 108"
     },
     {
-      "id": "stj-gifft-hill-adrian-stop",
-      "name": "Centerline Road Gift Hill Junction",
+      "id": "vitran_stj_calabash",
+      "name": "Calabash Boom Housing Complex",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.328,
-      "lng": -64.768,
+      "lat": 18.3321,
+      "lng": -64.7101,
       "aliases": [
-        "adrian stop",
-        "gifft hill junction vitran"
+        "calabash boom"
       ],
-      "description": "Mid-island arterial stop along Route 10 tracking across Centerline Road.",
+      "description": "Route 107 Southside Residential Stop.",
       "source": "transportNodes",
-      "sourceId": "stj-gifft-hill-adrian-stop",
-      "routes": [],
+      "sourceId": "vitran_stj_calabash",
+      "routes": [
+        "109"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj gifft hill adrian stop centerline road gift hill junction bus stop mid island arterial stop along route 10 tracking across centerline road adrian stop gifft hill junction vitran"
+      "searchText": "vitran stj calabash calabash boom housing complex bus stop route 107 southside residential stop calabash boom 109"
     },
     {
-      "id": "stj-coral-bay-triangle-hub",
-      "name": "Coral Bay Triangle Hub",
+      "id": "vitran_stj_catherineberg",
+      "name": "Catherineberg Overlook",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.347,
-      "lng": -64.714,
+      "lat": 18.3385,
+      "lng": -64.7395,
       "aliases": [
-        "coral bay stop",
-        "coral bay triangle",
-        "fire station stop stj"
+        "catherineberg trail"
       ],
-      "description": "East End operational anchor near the local service station and municipal structures.",
+      "description": "National Park Boundary Trailhead.",
       "source": "transportNodes",
-      "sourceId": "stj-coral-bay-triangle-hub",
-      "routes": [],
+      "sourceId": "vitran_stj_catherineberg",
+      "routes": [
+        "101"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj coral bay triangle hub coral bay triangle hub bus stop east end operational anchor near the local service station and municipal structures coral bay stop coral bay triangle fire station stop stj"
+      "searchText": "vitran stj catherineberg catherineberg overlook bus stop national park boundary trailhead catherineberg trail 101"
     },
     {
-      "id": "stj-cruz-bay-ferry-dock-hub",
-      "name": "Cruz Bay Ferry Dock Transit Stop",
+      "id": "vitran_stj_cinnamon_trail",
+      "name": "Centerline Road - Cinnamon Bay Trailhead",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.331,
-      "lng": -64.795,
+      "lat": 18.3411,
+      "lng": -64.7291,
       "aliases": [
-        "cruz bay vitran",
-        "customs dock stop",
-        "stj ferry bus stop"
+        "cinnamon bay centerline trailhead"
       ],
-      "description": "Primary departure platform next to public facilities; coordinates directly with cross-island maritime arrivals.",
+      "description": "Mid-Island High Ridge Access.",
       "source": "transportNodes",
-      "sourceId": "stj-cruz-bay-ferry-dock-hub",
-      "routes": [],
+      "sourceId": "vitran_stj_cinnamon_trail",
+      "routes": [
+        "101"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj cruz bay ferry dock hub cruz bay ferry dock transit stop bus stop primary departure platform next to public facilities coordinates directly with cross island maritime arrivals cruz bay vitran customs dock stop stj ferry bus stop"
+      "searchText": "vitran stj cinnamon trail centerline road cinnamon bay trailhead bus stop mid island high ridge access cinnamon bay centerline trailhead 101"
     },
     {
-      "id": "stj-emmaus-church-stop",
-      "name": "Emmaus Moravian Church Platform",
+      "id": "vitran_stj_cb_triangle",
+      "name": "Coral Bay Triangle (Moravian Church)",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.349,
-      "lng": -64.707,
+      "lat": 18.3458,
+      "lng": -64.7121,
       "aliases": [
-        "emmaus stop",
-        "coral bay northern terminus"
+        "coral bay triangle"
       ],
-      "description": "Intermediate neighborhood platform anchoring northern loops out of the inner bay.",
+      "description": "Emmaus Moravian Church Open Space.",
       "source": "transportNodes",
-      "sourceId": "stj-emmaus-church-stop",
-      "routes": [],
+      "sourceId": "vitran_stj_cb_triangle",
+      "routes": [
+        "101",
+        "109"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj emmaus church stop emmaus moravian church platform bus stop intermediate neighborhood platform anchoring northern loops out of the inner bay emmaus stop coral bay northern terminus"
+      "searchText": "vitran stj cb triangle coral bay triangle moravian church bus stop emmaus moravian church open space coral bay triangle 101 109"
     },
     {
-      "id": "stj-myrah-keating-health",
-      "name": "Myrah Keating Smith Health Center Stop",
+      "id": "vitran_stj_creek",
+      "name": "Cruz Bay Creek (Customs)",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.339,
-      "lng": -64.763,
+      "lat": 18.3325,
+      "lng": -64.7931,
       "aliases": [
-        "myrah keating stop",
-        "stj clinic vitran"
+        "cruz bay creek",
+        "stj customs"
       ],
-      "description": "Essential medical facility access node running along the mountain crest corridor.",
+      "description": "Route 10 East Terminal Spur.",
       "source": "transportNodes",
-      "sourceId": "stj-myrah-keating-health",
-      "routes": [],
+      "sourceId": "vitran_stj_creek",
+      "routes": [
+        "101"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj myrah keating health myrah keating smith health center stop bus stop essential medical facility access node running along the mountain crest corridor myrah keating stop stj clinic vitran"
+      "searchText": "vitran stj creek cruz bay creek customs bus stop route 10 east terminal spur cruz bay creek stj customs 101"
     },
     {
-      "id": "stj-salt-pond-bay-terminus",
-      "name": "Salt Pond Bay Terminal Node",
+      "id": "vitran_stj_gifft_hill",
+      "name": "Gifft Hill Road Intersection",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.312,
-      "lng": -64.713,
+      "lat": 18.3241,
+      "lng": -64.7812,
       "aliases": [
-        "salt pond stop",
-        "route 108 turnaround",
-        "route 109 end"
+        "gifft hill crossing"
       ],
-      "description": "Southernmost operational turnaround layout for the cross-island infrastructure.",
+      "description": "Route 104 Westin/Gifft Hill Cutoff.",
       "source": "transportNodes",
-      "sourceId": "stj-salt-pond-bay-terminus",
-      "routes": [],
+      "sourceId": "vitran_stj_gifft_hill",
+      "routes": [
+        "108"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj salt pond bay terminus salt pond bay terminal node bus stop southernmost operational turnaround layout for the cross island infrastructure salt pond stop route 108 turnaround route 109 end"
+      "searchText": "vitran stj gifft hill gifft hill road intersection bus stop route 104 westin gifft hill cutoff gifft hill crossing 108"
     },
     {
-      "id": "stj-susannaberg-intersection",
-      "name": "Susannaberg Route 10 Junction",
+      "id": "vitran_stj_maho_jct",
+      "name": "Maho Bay Road Intersection",
       "island": "st_john",
       "type": "bus_stop",
-      "lat": 18.335,
-      "lng": -64.776,
+      "lat": 18.3448,
+      "lng": -64.7198,
       "aliases": [
-        "susannaberg stop",
-        "centerline north shore turnoff"
+        "maho junction"
       ],
-      "description": "Strategic fork stop linking internal island commuter traffic and utility corridors.",
+      "description": "Route 10 North/East Split.",
       "source": "transportNodes",
-      "sourceId": "stj-susannaberg-intersection",
-      "routes": [],
+      "sourceId": "vitran_stj_maho_jct",
+      "routes": [
+        "101"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj susannaberg intersection susannaberg route 10 junction bus stop strategic fork stop linking internal island commuter traffic and utility corridors susannaberg stop centerline north shore turnoff"
+      "searchText": "vitran stj maho jct maho bay road intersection bus stop route 10 north east split maho junction 101"
+    },
+    {
+      "id": "vitran_stj_mongoose",
+      "name": "Mongoose Junction Shop Stop",
+      "island": "st_john",
+      "type": "bus_stop",
+      "lat": 18.3341,
+      "lng": -64.7915,
+      "aliases": [
+        "mongoose junction"
+      ],
+      "description": "North Shore Road Entrance.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_mongoose",
+      "routes": [
+        "101"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj mongoose mongoose junction shop stop bus stop north shore road entrance mongoose junction 101"
+    },
+    {
+      "id": "vitran_stj_mks_health",
+      "name": "Myrah Keating Smith Health Center",
+      "island": "st_john",
+      "type": "bus_stop",
+      "lat": 18.3355,
+      "lng": -64.7578,
+      "aliases": [
+        "mks health",
+        "stj clinic"
+      ],
+      "description": "Susannaberg Medical Access Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_mks_health",
+      "routes": [
+        "101"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj mks health myrah keating smith health center bus stop susannaberg medical access loop mks health stj clinic 101"
+    },
+    {
+      "id": "vitran_stj_pastory",
+      "name": "Pastory Area Route 10",
+      "island": "st_john",
+      "type": "bus_stop",
+      "lat": 18.3308,
+      "lng": -64.7824,
+      "aliases": [
+        "pastory"
+      ],
+      "description": "Centerline Road Mid-Ascent.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_pastory",
+      "routes": [
+        "101",
+        "108"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj pastory pastory area route 10 bus stop centerline road mid ascent pastory 101 108"
+    },
+    {
+      "id": "vitran_stj_skinny_legs",
+      "name": "Skinny Legs / Emmaus",
+      "island": "st_john",
+      "type": "bus_stop",
+      "lat": 18.3482,
+      "lng": -64.7108,
+      "aliases": [
+        "skinny legs stop"
+      ],
+      "description": "Route 10 East Shore Roadway.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_skinny_legs",
+      "routes": [
+        "101"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj skinny legs skinny legs emmaus bus stop route 10 east shore roadway skinny legs stop 101"
+    },
+    {
+      "id": "vitran_stj_susannaberg",
+      "name": "Susannaberg Area",
+      "island": "st_john",
+      "type": "bus_stop",
+      "lat": 18.3361,
+      "lng": -64.7532,
+      "aliases": [
+        "susannaberg"
+      ],
+      "description": "Route 10 Centerline Highway Corridor.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_susannaberg",
+      "routes": [
+        "101",
+        "108"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj susannaberg susannaberg area bus stop route 10 centerline highway corridor susannaberg 101 108"
     },
     {
       "id": "stj-coral-bay-dinghy-dock",
@@ -5143,39 +5745,74 @@
       "name": "Gifft Hill School",
       "island": "st_john",
       "type": "school",
-      "lat": 18.33,
-      "lng": -64.77,
+      "lat": 18.328,
+      "lng": -64.768,
       "aliases": [
         "gifft hill",
-        "ghs"
+        "gifft hill private school"
       ],
-      "description": "Independent co-educational private PK-12 school on Gifft Hill.",
+      "description": "Independent school on St. John.",
       "source": "transportNodes",
       "sourceId": "stj-gifft-hill-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj gifft hill school gifft hill school school independent co educational private pk 12 school on gifft hill gifft hill ghs"
+      "searchText": "stj gifft hill school gifft hill school school independent school on st john gifft hill gifft hill private school"
     },
     {
       "id": "stj-julius-e-sprauve-school",
       "name": "Julius E. Sprauve School",
       "island": "st_john",
       "type": "school",
-      "lat": 18.333,
-      "lng": -64.794,
+      "lat": 18.33,
+      "lng": -64.793,
       "aliases": [
         "sprauve",
-        "julius sprauve",
         "jess"
       ],
-      "description": "Public K-8 school and community transportation hub in Cruz Bay.",
+      "description": "Public school in Cruz Bay.",
       "source": "transportNodes",
       "sourceId": "stj-julius-e-sprauve-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj julius e sprauve school julius e sprauve school school public k 8 school and community transportation hub in cruz bay sprauve julius sprauve jess"
+      "searchText": "stj julius e sprauve school julius e sprauve school school public school in cruz bay sprauve jess"
+    },
+    {
+      "id": "stj-christian-academy",
+      "name": "St. John Christian Academy",
+      "island": "st_john",
+      "type": "school",
+      "lat": 18.3315,
+      "lng": -64.7885,
+      "aliases": [
+        "stj christian academy"
+      ],
+      "description": "Parochial Christian program node based in Cruz Bay area.",
+      "source": "transportNodes",
+      "sourceId": "stj-christian-academy",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj christian academy st john christian academy school parochial christian program node based in cruz bay area stj christian academy"
+    },
+    {
+      "id": "stj-st-john-montessori",
+      "name": "St. John Montessori",
+      "island": "st_john",
+      "type": "school",
+      "lat": 18.3292,
+      "lng": -64.7901,
+      "aliases": [
+        "st john montessori"
+      ],
+      "description": "Private early childhood academy facility.",
+      "source": "transportNodes",
+      "sourceId": "stj-st-john-montessori",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj st john montessori st john montessori school private early childhood academy facility st john montessori"
     },
     {
       "id": "discovery-shopping-st_john-c-and-d-supermarket",
@@ -5376,6 +6013,71 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery transport st john henry e rohlsen airport henry e rohlsen airport transport st john transport henry e rohlsen airport is a transport destination in the u s virgin islands transport st john henry e rohlsen airport st john transport henry e rohlsen airport is a transport destination in the u s virgin islands transport st john transportation henry e rohlsen airport"
+    },
+    {
+      "id": "vitran_stj_coral_bay_fire",
+      "name": "Coral Bay Fire Station Hub",
+      "island": "st_john",
+      "type": "vitran_stop",
+      "lat": 18.3461,
+      "lng": -64.7142,
+      "aliases": [
+        "coral bay fire station",
+        "coral bay hub"
+      ],
+      "description": "Route 10 East Terminus / Route 107 Apex.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_coral_bay_fire",
+      "routes": [
+        "101",
+        "109"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj coral bay fire coral bay fire station hub vitran stop route 10 east terminus route 107 apex coral bay fire station coral bay hub 101 109"
+    },
+    {
+      "id": "vitran_stj_cruz_bay",
+      "name": "Loredon Boynes Ferry Terminal (Cruz Bay)",
+      "island": "st_john",
+      "type": "vitran_stop",
+      "lat": 18.3312,
+      "lng": -64.7944,
+      "aliases": [
+        "cruz bay ferry",
+        "loredon boynes"
+      ],
+      "description": "Cruz Bay Main Waterfront Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_cruz_bay",
+      "routes": [
+        "101",
+        "108"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj cruz bay loredon boynes ferry terminal cruz bay vitran stop cruz bay main waterfront loop cruz bay ferry loredon boynes 101 108"
+    },
+    {
+      "id": "vitran_stj_salt_pond",
+      "name": "Salt Pond Bay Trailhead / Terminus",
+      "island": "st_john",
+      "type": "vitran_stop",
+      "lat": 18.3115,
+      "lng": -64.7135,
+      "aliases": [
+        "salt pond bay",
+        "salt pond terminus"
+      ],
+      "description": "Route 107 Southern Turnaround Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stj_salt_pond",
+      "routes": [
+        "109"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stj salt pond salt pond bay trailhead terminus vitran stop route 107 southern turnaround loop salt pond bay salt pond terminus 109"
     },
     {
       "id": "stt-airport",
@@ -6497,277 +7199,596 @@
       "searchText": "discovery beach st thomas vessup bay beach vessup bay beach beach st thomas beach vessup bay beach is a beach destination in the u s virgin islands beach st thomas vessup bay beach st thomas beach vessup bay beach is a beach destination in the u s virgin islands beach st thomas beaches vessup bay beach"
     },
     {
-      "id": "stt-bordeaux-terminus",
-      "name": "Bordeaux West Terminus",
+      "id": "vitran_stt_altona",
+      "name": "Altona / Kirwan Terrace",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.351,
-      "lng": -65.018,
+      "lat": 18.3361,
+      "lng": -64.9582,
       "aliases": [
-        "bordeaux stop",
-        "west end vitran turnaround"
+        "kirwan terrace stop"
       ],
-      "description": "Far western turnaround platform supporting Route 201 commuters.",
+      "description": "Route 30 West corridor.",
       "source": "transportNodes",
-      "sourceId": "stt-bordeaux-terminus",
-      "routes": [],
+      "sourceId": "vitran_stt_altona",
+      "routes": [
+        "201"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt bordeaux terminus bordeaux west terminus bus stop far western turnaround platform supporting route 201 commuters bordeaux stop west end vitran turnaround"
+      "searchText": "vitran stt altona altona kirwan terrace bus stop route 30 west corridor kirwan terrace stop 201"
     },
     {
-      "id": "stt-bovoni-community-stop",
-      "name": "Bovoni Center Intersection",
+      "id": "vitran_stt_annas_ret",
+      "name": "Anna's Retreat (Upper)",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.316,
-      "lng": -64.887,
+      "lat": 18.3511,
+      "lng": -64.8891,
       "aliases": [
-        "bovoni stop",
-        "bovoni vitran"
+        "annas retreat",
+        "upper tutu"
       ],
-      "description": "Southeastern route checkpoint matching the Route 501 loop.",
+      "description": "Route 38 North Corridor.",
       "source": "transportNodes",
-      "sourceId": "stt-bovoni-community-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_annas_ret",
+      "routes": [
+        "501",
+        "601"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt bovoni community stop bovoni center intersection bus stop southeastern route checkpoint matching the route 501 loop bovoni stop bovoni vitran"
+      "searchText": "vitran stt annas ret anna s retreat upper bus stop route 38 north corridor annas retreat upper tutu 501 601"
     },
     {
-      "id": "stt-cyril-king-airport-stop",
-      "name": "Cyril E. King Airport Bus Stop",
+      "id": "vitran_stt_barbel",
+      "name": "Barbel Plaza Stop",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.336,
-      "lng": -64.973,
+      "lat": 18.3405,
+      "lng": -64.9198,
       "aliases": [
-        "stt airport stop",
-        "airport bus terminal",
-        "stt airport vitran"
+        "barbel plaza"
       ],
-      "description": "Airport ground transit connection point situated outside the main terminal arrivals area.",
+      "description": "Weymouth Rhymer Highway West bound.",
       "source": "transportNodes",
-      "sourceId": "stt-cyril-king-airport-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_barbel",
+      "routes": [
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt cyril king airport stop cyril e king airport bus stop bus stop airport ground transit connection point situated outside the main terminal arrivals area stt airport stop airport bus terminal stt airport vitran"
+      "searchText": "vitran stt barbel barbel plaza stop bus stop weymouth rhymer highway west bound barbel plaza 301"
     },
     {
-      "id": "stt-fort-mylner-shopping",
-      "name": "Fort Mylner Shopping Center Stop",
+      "id": "vitran_stt_contant",
+      "name": "Contant (Old Mill)",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.343,
-      "lng": -64.899,
+      "lat": 18.3402,
+      "lng": -64.9545,
       "aliases": [
-        "fort mylner stop",
-        "mylner intersection"
+        "contant",
+        "old mill"
       ],
-      "description": "Critical crossroads stop linking the north-south Weymouth Rhymer Highway traffic.",
+      "description": "Route 304 Intersection loop.",
       "source": "transportNodes",
-      "sourceId": "stt-fort-mylner-shopping",
-      "routes": [],
+      "sourceId": "vitran_stt_contant",
+      "routes": [
+        "201"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt fort mylner shopping fort mylner shopping center stop bus stop critical crossroads stop linking the north south weymouth rhymer highway traffic fort mylner stop mylner intersection"
+      "searchText": "vitran stt contant contant old mill bus stop route 304 intersection loop contant old mill 201"
     },
     {
-      "id": "stt-frenchtown-stop",
-      "name": "Frenchtown Turnoff Stop",
+      "id": "vitran_stt_justice",
+      "name": "Criminal Justice / Fire Station",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.337,
-      "lng": -64.943,
+      "lat": 18.3421,
+      "lng": -64.9285,
       "aliases": [
-        "frenchtown vitran",
-        "altona stop"
+        "justice building",
+        "fire station stop"
       ],
-      "description": "Inbound/outbound coastal route stop serving the historic Frenchtown neighborhood.",
+      "description": "Norre Gade corridor.",
       "source": "transportNodes",
-      "sourceId": "stt-frenchtown-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_justice",
+      "routes": [
+        "401",
+        "501"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt frenchtown stop frenchtown turnoff stop bus stop inbound outbound coastal route stop serving the historic frenchtown neighborhood frenchtown vitran altona stop"
+      "searchText": "vitran stt justice criminal justice fire station bus stop norre gade corridor justice building fire station stop 401 501"
     },
     {
-      "id": "stt-lockhart-gardens-stop",
-      "name": "Lockhart Gardens Shopping Center Stop",
+      "id": "vitran_stt_bovoni",
+      "name": "Estate Bovoni Community Stop",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.341,
-      "lng": -64.915,
+      "lat": 18.3115,
+      "lng": -64.8841,
+      "aliases": [
+        "bovoni complex"
+      ],
+      "description": "Bovoni Housing Access Road.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_bovoni",
+      "routes": [
+        "301"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt bovoni estate bovoni community stop bus stop bovoni housing access road bovoni complex 301"
+    },
+    {
+      "id": "vitran_stt_donoe",
+      "name": "Estate Donoe Road",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3528,
+      "lng": -64.9075,
+      "aliases": [
+        "donoe road"
+      ],
+      "description": "Route 39 Crossing gate.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_donoe",
+      "routes": [
+        "601"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt donoe estate donoe road bus stop route 39 crossing gate donoe road 601"
+    },
+    {
+      "id": "vitran_stt_fortuna",
+      "name": "Fortuna Roadside Turnaround",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3495,
+      "lng": -65.0041,
+      "aliases": [
+        "fortuna stop"
+      ],
+      "description": "Route 30 West End Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_fortuna",
+      "routes": [
+        "201"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt fortuna fortuna roadside turnaround bus stop route 30 west end loop fortuna stop 201"
+    },
+    {
+      "id": "vitran_stt_frenchtown",
+      "name": "Frenchtown Turn",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3378,
+      "lng": -64.9442,
+      "aliases": [
+        "frenchtown",
+        "altona"
+      ],
+      "description": "Rue de Sainte Anne.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_frenchtown",
+      "routes": [
+        "201"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt frenchtown frenchtown turn bus stop rue de sainte anne frenchtown altona 201"
+    },
+    {
+      "id": "vitran_stt_hidden_vly",
+      "name": "Hidden Valley Entrance",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3551,
+      "lng": -64.9122,
+      "aliases": [
+        "hidden valley"
+      ],
+      "description": "Route 38 Northside Access point.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_hidden_vly",
+      "routes": [
+        "601"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt hidden vly hidden valley entrance bus stop route 38 northside access point hidden valley 601"
+    },
+    {
+      "id": "vitran_stt_home_depot",
+      "name": "Home Depot Complex",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3478,
+      "lng": -64.9035,
+      "aliases": [
+        "home depot"
+      ],
+      "description": "Donoe Bypass Road stop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_home_depot",
+      "routes": [
+        "301",
+        "601"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt home depot home depot complex bus stop donoe bypass road stop home depot 301 601"
+    },
+    {
+      "id": "vitran_stt_iekhs",
+      "name": "Ivanna Eudora Kean HS Stop",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3262,
+      "lng": -64.8558,
+      "aliases": [
+        "iekhs stop",
+        "kean high school"
+      ],
+      "description": "Route 32 Southside entry.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_iekhs",
+      "routes": [
+        "301",
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt iekhs ivanna eudora kean hs stop bus stop route 32 southside entry iekhs stop kean high school 301 501"
+    },
+    {
+      "id": "vitran_stt_roberts",
+      "name": "Lionel Roberts Stadium / Hospital Ground",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3441,
+      "lng": -64.9261,
+      "aliases": [
+        "roberts stadium",
+        "hospital ground"
+      ],
+      "description": "Hospital Ground Neighborhood route.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_roberts",
+      "routes": [
+        "401"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt roberts lionel roberts stadium hospital ground bus stop hospital ground neighborhood route roberts stadium hospital ground 401"
+    },
+    {
+      "id": "vitran_stt_lockhart_gdn",
+      "name": "Lockhart Gardens Shopping Center",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3392,
+      "lng": -64.9145,
       "aliases": [
         "lockhart gardens",
-        "k-mart town stop"
+        "kmart sugar estate"
       ],
-      "description": "High-density commercial stop tracking along the central valley pipeline.",
+      "description": "In front of K-Mart Sugar Estate.",
       "source": "transportNodes",
-      "sourceId": "stt-lockhart-gardens-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_lockhart_gdn",
+      "routes": [
+        "301",
+        "501",
+        "601"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt lockhart gardens stop lockhart gardens shopping center stop bus stop high density commercial stop tracking along the central valley pipeline lockhart gardens k mart town stop"
+      "searchText": "vitran stt lockhart gdn lockhart gardens shopping center bus stop in front of k mart sugar estate lockhart gardens kmart sugar estate 301 501 601"
     },
     {
-      "id": "stt-market-square-hub",
-      "name": "Market Square Downtown Hub",
+      "id": "vitran_stt_long_bay",
+      "name": "Long Bay / Yacht Haven Grande",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.342,
-      "lng": -64.934,
+      "lat": 18.3374,
+      "lng": -64.9221,
+      "aliases": [
+        "long bay",
+        "yacht haven"
+      ],
+      "description": "Long Bay Roadway Waterfront.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_long_bay",
+      "routes": [
+        "401",
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt long bay long bay yacht haven grande bus stop long bay roadway waterfront long bay yacht haven 401 501"
+    },
+    {
+      "id": "vitran_stt_margaritaville",
+      "name": "Margaritaville / Pineapple Village",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3468,
+      "lng": -64.8562,
+      "aliases": [
+        "margaritaville",
+        "pineapple village"
+      ],
+      "description": "Coki Point Roadway Fork.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_margaritaville",
+      "routes": [
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt margaritaville margaritaville pineapple village bus stop coki point roadway fork margaritaville pineapple village 501"
+    },
+    {
+      "id": "vitran_stt_market",
+      "name": "Market Square Stop",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3411,
+      "lng": -64.9348,
       "aliases": [
         "market square",
-        "downtown terminal",
-        "town vitran stop"
+        "savanne"
       ],
-      "description": "Central Charlotte Amalie urban transfer node serving core commercial lines.",
+      "description": "Main Street Western Terminus.",
       "source": "transportNodes",
-      "sourceId": "stt-market-square-hub",
-      "routes": [],
+      "sourceId": "vitran_stt_market",
+      "routes": [
+        "201",
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt market square hub market square downtown hub bus stop central charlotte amalie urban transfer node serving core commercial lines market square downtown terminal town vitran stop"
+      "searchText": "vitran stt market market square stop bus stop main street western terminus market square savanne 201 301"
     },
     {
-      "id": "stt-nisky-center-stop",
-      "name": "Nisky Center Bus Stop",
+      "id": "vitran_stt_nadir",
+      "name": "Nadir Intersection / Ballpark",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.339,
-      "lng": -64.959,
+      "lat": 18.3184,
+      "lng": -64.8892,
       "aliases": [
-        "nisky center",
-        "nisky vitran"
+        "nadir crossing",
+        "bovoni junction"
       ],
-      "description": "Crucial intermediate stop connecting commercial offices, retail, and the sub-base area.",
+      "description": "Route 32 Bovoni Road Junction.",
       "source": "transportNodes",
-      "sourceId": "stt-nisky-center-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_nadir",
+      "routes": [
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt nisky center stop nisky center bus stop bus stop crucial intermediate stop connecting commercial offices retail and the sub base area nisky center nisky vitran"
+      "searchText": "vitran stt nadir nadir intersection ballpark bus stop route 32 bovoni road junction nadir crossing bovoni junction 301"
     },
     {
-      "id": "stt-red-hook-ferry-stop",
-      "name": "Red Hook Ferry Terminal Connection",
+      "id": "vitran_stt_nazareth",
+      "name": "Nazareth Neighborhood Stop",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.324,
-      "lng": -64.852,
+      "lat": 18.3211,
+      "lng": -64.8615,
       "aliases": [
-        "red hook vitran",
-        "uvf terminal stop",
-        "red hook ferry bus"
+        "nazareth stop"
       ],
-      "description": "Multimodal hub linking route 401 directly to the St. John ferry arrivals.",
+      "description": "Route 322 Ridge Junction.",
       "source": "transportNodes",
-      "sourceId": "stt-red-hook-ferry-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_nazareth",
+      "routes": [
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt red hook ferry stop red hook ferry terminal connection bus stop multimodal hub linking route 401 directly to the st john ferry arrivals red hook vitran uvf terminal stop red hook ferry bus"
+      "searchText": "vitran stt nazareth nazareth neighborhood stop bus stop route 322 ridge junction nazareth stop 301"
     },
     {
-      "id": "stt-schneider-hospital-stop",
-      "name": "Schneider Regional Medical Center Stop",
+      "id": "vitran_stt_new_tutu",
+      "name": "New Tutu (Grandview)",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.336,
-      "lng": -64.919,
+      "lat": 18.3532,
+      "lng": -64.8821,
       "aliases": [
-        "schneider hospital",
-        "srmc stop",
-        "hospital bus stop"
+        "new tutu",
+        "grandview"
       ],
-      "description": "Medical district loop checkpoint connecting mid-island routes.",
+      "description": "Grandview Apartments Access Road.",
       "source": "transportNodes",
-      "sourceId": "stt-schneider-hospital-stop",
-      "routes": [],
+      "sourceId": "vitran_stt_new_tutu",
+      "routes": [
+        "501"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt schneider hospital stop schneider regional medical center stop bus stop medical district loop checkpoint connecting mid island routes schneider hospital srmc stop hospital bus stop"
+      "searchText": "vitran stt new tutu new tutu grandview bus stop grandview apartments access road new tutu grandview 501"
     },
     {
-      "id": "stt-smith-bay-intersection",
-      "name": "Smith Bay Road & Coki Point Junction",
+      "id": "vitran_stt_nisky",
+      "name": "Nisky Center Stop",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.346,
-      "lng": -64.867,
+      "lat": 18.3389,
+      "lng": -64.9495,
       "aliases": [
-        "smith bay stop",
-        "coki beach turnoff"
+        "nisky",
+        "nisky center"
       ],
-      "description": "Northeastern coastal route stop connecting local residents and Coral World commuters.",
+      "description": "Harwood Highway, Southside.",
       "source": "transportNodes",
-      "sourceId": "stt-smith-bay-intersection",
-      "routes": [],
+      "sourceId": "vitran_stt_nisky",
+      "routes": [
+        "201",
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt smith bay intersection smith bay road and coki point junction bus stop northeastern coastal route stop connecting local residents and coral world commuters smith bay stop coki beach turnoff"
+      "searchText": "vitran stt nisky nisky center stop bus stop harwood highway southside nisky nisky center 201 301"
     },
     {
-      "id": "stt-tutu-park-mall-hub",
-      "name": "Tutu Park Mall Transit Hub",
+      "id": "vitran_stt_old_tutu",
+      "name": "Old Tutu (Ras Valley)",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.348,
-      "lng": -64.891,
+      "lat": 18.3465,
+      "lng": -64.8854,
       "aliases": [
-        "tutu mall",
-        "tutu park hub",
-        "east end transit center"
+        "old tutu",
+        "ras valley"
       ],
-      "description": "Major East End transfer station connecting lines 301, 501, and 601.",
+      "description": "Route 386 Intersection drop.",
       "source": "transportNodes",
-      "sourceId": "stt-tutu-park-mall-hub",
-      "routes": [],
+      "sourceId": "vitran_stt_old_tutu",
+      "routes": [
+        "501"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt tutu park mall hub tutu park mall transit hub bus stop major east end transfer station connecting lines 301 501 and 601 tutu mall tutu park hub east end transit center"
+      "searchText": "vitran stt old tutu old tutu ras valley bus stop route 386 intersection drop old tutu ras valley 501"
     },
     {
-      "id": "stt-uvi-campus-terminal",
-      "name": "University of the Virgin Islands Terminal (STT)",
+      "id": "vitran_stt_raphune",
+      "name": "Raphune Hill (Top)",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.342,
-      "lng": -64.975,
+      "lat": 18.3409,
+      "lng": -64.9082,
       "aliases": [
-        "uvi terminal",
-        "university stop stt",
-        "uvi bus stop"
+        "raphune hill"
       ],
-      "description": "Western network hub serving the campus loops and local connection lines.",
+      "description": "Route 38 Skyline Descent.",
       "source": "transportNodes",
-      "sourceId": "stt-uvi-campus-terminal",
-      "routes": [],
+      "sourceId": "vitran_stt_raphune",
+      "routes": [
+        "301"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt uvi campus terminal university of the virgin islands terminal stt bus stop western network hub serving the campus loops and local connection lines uvi terminal university stop stt uvi bus stop"
+      "searchText": "vitran stt raphune raphune hill top bus stop route 38 skyline descent raphune hill 301"
     },
     {
-      "id": "stt-vitran-base-contant",
-      "name": "VITRAN Operations Base (Contant)",
+      "id": "vitran_stt_srmc",
+      "name": "Schneider Regional Medical Center",
       "island": "st_thomas",
       "type": "bus_stop",
-      "lat": 18.338,
-      "lng": -64.952,
+      "lat": 18.3375,
+      "lng": -64.9182,
       "aliases": [
-        "vitran base",
-        "contant yard",
-        "vitran headquarters"
+        "srmc",
+        "hospital stop",
+        "schneider"
       ],
-      "description": "Primary operations yard and maintenance facility; major dispatch node.",
+      "description": "Sugar Estate Road entryway.",
       "source": "transportNodes",
-      "sourceId": "stt-vitran-base-contant",
-      "routes": [],
+      "sourceId": "vitran_stt_srmc",
+      "routes": [
+        "301",
+        "501"
+      ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt vitran base contant vitran operations base contant bus stop primary operations yard and maintenance facility major dispatch node vitran base contant yard vitran headquarters"
+      "searchText": "vitran stt srmc schneider regional medical center bus stop sugar estate road entryway srmc hospital stop schneider 301 501"
+    },
+    {
+      "id": "vitran_stt_smith_bay",
+      "name": "Smith Bay Ballpark Stop",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3452,
+      "lng": -64.8623,
+      "aliases": [
+        "smith bay ballpark",
+        "smith bay stop"
+      ],
+      "description": "Route 38 East End.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_smith_bay",
+      "routes": [
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt smith bay smith bay ballpark stop bus stop route 38 east end smith bay ballpark smith bay stop 501"
+    },
+    {
+      "id": "vitran_stt_vendors",
+      "name": "Vendors Plaza / Fort Christian",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3402,
+      "lng": -64.9308,
+      "aliases": [
+        "vendors plaza",
+        "fort christian"
+      ],
+      "description": "Tolbod Gade near Emancipation Garden.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_vendors",
+      "routes": [
+        "201",
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt vendors vendors plaza fort christian bus stop tolbod gade near emancipation garden vendors plaza fort christian 201 501"
+    },
+    {
+      "id": "vitran_stt_rhymer_hwy",
+      "name": "Weymouth Rhymer Hwy (Gas Station)",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3421,
+      "lng": -64.8985,
+      "aliases": [
+        "rhymer highway stop"
+      ],
+      "description": "Route 38 Eastbound Corridor.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_rhymer_hwy",
+      "routes": [
+        "301",
+        "601"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt rhymer hwy weymouth rhymer hwy gas station bus stop route 38 eastbound corridor rhymer highway stop 301 601"
+    },
+    {
+      "id": "vitran_stt_windward",
+      "name": "Windward Passage Hotel / Waterfront",
+      "island": "st_thomas",
+      "type": "bus_stop",
+      "lat": 18.3398,
+      "lng": -64.9385,
+      "aliases": [
+        "windward",
+        "waterfront hotel"
+      ],
+      "description": "Veterans Drive Eastbound.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_windward",
+      "routes": [
+        "201",
+        "401"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt windward windward passage hotel waterfront bus stop veterans drive eastbound windward waterfront hotel 201 401"
     },
     {
       "id": "stt-crown-bay-cruise-port",
@@ -8307,26 +9328,6 @@
       "searchText": "discovery restaurant st thomas xo bistro xo bistro restaurant st thomas restaurant xo bistro is a restaurant destination in the u s virgin islands restaurant st thomas xo bistro st thomas restaurant xo bistro is a restaurant destination in the u s virgin islands restaurant st thomas restaurants st thomas xo bistro"
     },
     {
-      "id": "stt-addelita-cancryn-junior-high-school",
-      "name": "Addelita Cancryn Intermediate School",
-      "island": "st_thomas",
-      "type": "school",
-      "lat": 18.337,
-      "lng": -64.948,
-      "aliases": [
-        "cancryn",
-        "addelita cancryn",
-        "acjhs"
-      ],
-      "description": "Public intermediate school near Crown Bay.",
-      "source": "transportNodes",
-      "sourceId": "stt-addelita-cancryn-junior-high-school",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stt addelita cancryn junior high school addelita cancryn intermediate school school public intermediate school near crown bay cancryn addelita cancryn acjhs"
-    },
-    {
       "id": "stt-all-saints-cathedral-school",
       "name": "All Saints Cathedral School",
       "island": "st_thomas",
@@ -8335,54 +9336,73 @@
       "lng": -64.933,
       "aliases": [
         "all saints",
-        "ascs"
+        "all saints school"
       ],
-      "description": "Private Episcopal parochial school near Garden Street.",
+      "description": "Private Episcopal school on Commandant Gade.",
       "source": "transportNodes",
       "sourceId": "stt-all-saints-cathedral-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt all saints cathedral school all saints cathedral school school private episcopal parochial school near garden street all saints ascs"
+      "searchText": "stt all saints cathedral school all saints cathedral school school private episcopal school on commandant gade all saints all saints school"
     },
     {
       "id": "stt-antilles-school",
       "name": "Antilles School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.32,
-      "lng": -64.91,
+      "lat": 18.3247,
+      "lng": -64.9097,
       "aliases": [
         "antilles",
         "antilles private school"
       ],
-      "description": "Independent private PK-12 school in Frenchman's Bay.",
+      "description": "Private school campus with athletic and recreation facilities.",
       "source": "transportNodes",
       "sourceId": "stt-antilles-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt antilles school antilles school school independent private pk 12 school in frenchman s bay antilles antilles private school"
+      "searchText": "stt antilles school antilles school school private school campus with athletic and recreation facilities antilles antilles private school"
     },
     {
       "id": "stt-bertha-c-boschulte-middle-school",
       "name": "Bertha C. Boschulte Middle School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.32,
-      "lng": -64.89,
+      "lat": 18.324,
+      "lng": -64.876,
       "aliases": [
         "bcb",
-        "bertha boschulte",
-        "boschulte middle"
+        "boschulte",
+        "bertha boschulte"
       ],
-      "description": "Public middle school located in Bovoni.",
+      "description": "Public middle school and East End school transportation hub.",
       "source": "transportNodes",
       "sourceId": "stt-bertha-c-boschulte-middle-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt bertha c boschulte middle school bertha c boschulte middle school school public middle school located in bovoni bcb bertha boschulte boschulte middle"
+      "searchText": "stt bertha c boschulte middle school bertha c boschulte middle school school public middle school and east end school transportation hub bcb boschulte bertha boschulte"
+    },
+    {
+      "id": "stt-calvary-christian-academy",
+      "name": "Calvary Christian Academy",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3444,
+      "lng": -64.8875,
+      "aliases": [
+        "calvary",
+        "calvary christian"
+      ],
+      "description": "Private Christian academy handling local student transit options.",
+      "source": "transportNodes",
+      "sourceId": "stt-calvary-christian-academy",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt calvary christian academy calvary christian academy school private christian academy handling local student transit options calvary calvary christian"
     },
     {
       "id": "stt-charlotte-amalie-high-school",
@@ -8401,66 +9421,142 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt charlotte amalie high school charlotte amalie high school school major school and community transportation hub cahs charlotte amalie high stt charlotte amalie high school charlotte amalie high school school major high school and community transportation hub in charlotte amalie cahs charlotte amalie high"
+      "searchText": "stt charlotte amalie high school charlotte amalie high school school major school and community transportation hub cahs charlotte amalie high stt charlotte amalie high school charlotte amalie high school school public high school and major st thomas school transportation hub cahs charlotte amalie high"
+    },
+    {
+      "id": "stt-e-benjamin-oliver-elementary-school",
+      "name": "E. Benjamin Oliver Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3465,
+      "lng": -64.8921,
+      "aliases": [
+        "ebo",
+        "benjamin oliver"
+      ],
+      "description": "Public elementary school located in Estate Donoe.",
+      "source": "transportNodes",
+      "sourceId": "stt-e-benjamin-oliver-elementary-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt e benjamin oliver elementary school e benjamin oliver elementary school school public elementary school located in estate donoe ebo benjamin oliver"
+    },
+    {
+      "id": "stt-edith-williams-alternative",
+      "name": "Edith L. Williams Alternative Academy",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3419,
+      "lng": -64.9012,
+      "aliases": [
+        "edith williams",
+        "williams academy"
+      ],
+      "description": "Public alternative learning institute campus infrastructure.",
+      "source": "transportNodes",
+      "sourceId": "stt-edith-williams-alternative",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt edith williams alternative edith l williams alternative academy school public alternative learning institute campus infrastructure edith williams williams academy"
     },
     {
       "id": "stt-ivanna-eudora-kean-high-school",
       "name": "Ivanna Eudora Kean High School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.334,
-      "lng": -64.888,
+      "lat": 18.3262,
+      "lng": -64.8558,
       "aliases": [
         "kean",
         "iekhs",
         "ivanna eudora kean"
       ],
-      "description": "East-end high school and community transportation hub near Red Hook.",
+      "description": "Public high school and East End transportation hub.",
       "source": "transportNodes",
       "sourceId": "stt-ivanna-eudora-kean-high-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt ivanna eudora kean high school ivanna eudora kean high school school east end high school and community transportation hub near red hook kean iekhs ivanna eudora kean"
+      "searchText": "stt ivanna eudora kean high school ivanna eudora kean high school school public high school and east end transportation hub kean iekhs ivanna eudora kean"
     },
     {
-      "id": "stt-jane-e-tuitt-elementary",
+      "id": "stt-jane-e-tuitt-elementary-school",
       "name": "Jane E. Tuitt Elementary School",
       "island": "st_thomas",
       "type": "school",
       "lat": 18.343,
-      "lng": -64.936,
+      "lng": -64.938,
       "aliases": [
+        "jane tuitt",
         "tuitt elementary",
-        "jane tuitt"
+        "savan school"
       ],
-      "description": "Public primary school serving downtown Charlotte Amalie.",
+      "description": "Public elementary school and Savan-area transportation hub.",
       "source": "transportNodes",
-      "sourceId": "stt-jane-e-tuitt-elementary",
+      "sourceId": "stt-jane-e-tuitt-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt jane e tuitt elementary jane e tuitt elementary school school public primary school serving downtown charlotte amalie tuitt elementary jane tuitt"
+      "searchText": "stt jane e tuitt elementary school jane e tuitt elementary school school public elementary school and savan area transportation hub jane tuitt tuitt elementary savan school"
     },
     {
-      "id": "stt-joseph-sibilly-elementary",
+      "id": "stt-joseph-gomez-elementary-school",
+      "name": "Joseph Gomez Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.344,
+      "lng": -64.89,
+      "aliases": [
+        "gomez",
+        "joseph gomez"
+      ],
+      "description": "Public elementary school near Anna's Retreat.",
+      "source": "transportNodes",
+      "sourceId": "stt-joseph-gomez-elementary-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt joseph gomez elementary school joseph gomez elementary school school public elementary school near anna s retreat gomez joseph gomez"
+    },
+    {
+      "id": "stt-joseph-sibilly-elementary-school",
       "name": "Joseph Sibilly Elementary School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.356,
-      "lng": -64.931,
+      "lat": 18.3552,
+      "lng": -64.9311,
       "aliases": [
         "sibilly",
-        "joseph sibilly",
         "sibilly elementary"
       ],
-      "description": "Public elementary school located in the Northside district.",
+      "description": "Public elementary school serving the Northside region.",
       "source": "transportNodes",
-      "sourceId": "stt-joseph-sibilly-elementary",
+      "sourceId": "stt-joseph-sibilly-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt joseph sibilly elementary joseph sibilly elementary school school public elementary school located in the northside district sibilly joseph sibilly sibilly elementary"
+      "searchText": "stt joseph sibilly elementary school joseph sibilly elementary school school public elementary school serving the northside region sibilly sibilly elementary"
+    },
+    {
+      "id": "stt-leonard-dober-elementary-school",
+      "name": "Leonard Dober Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3422,
+      "lng": -64.9295,
+      "aliases": [
+        "dober",
+        "dober elementary"
+      ],
+      "description": "Historical town-area public educational facility.",
+      "source": "transportNodes",
+      "sourceId": "stt-leonard-dober-elementary-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt leonard dober elementary school leonard dober elementary school school historical town area public educational facility dober dober elementary"
     },
     {
       "id": "stt-lockhart-k8-school",
@@ -8468,100 +9564,153 @@
       "island": "st_thomas",
       "type": "school",
       "lat": 18.341,
-      "lng": -64.922,
+      "lng": -64.918,
       "aliases": [
-        "lockhart elementary",
-        "lockhart school",
-        "lockhart k8"
+        "lockhart",
+        "lockhart school"
       ],
-      "description": "Public primary and intermediate school facility in Charlotte Amalie.",
+      "description": "Public K-8 school and midtown transportation hub.",
       "source": "transportNodes",
       "sourceId": "stt-lockhart-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt lockhart k8 school lockhart k 8 school school public primary and intermediate school facility in charlotte amalie lockhart elementary lockhart school lockhart k8"
+      "searchText": "stt lockhart k8 school lockhart k 8 school school public k 8 school and midtown transportation hub lockhart lockhart school"
     },
     {
-      "id": "stt-saints-peter-and-paul-school",
-      "name": "Saints Peter and Paul Catholic School",
+      "id": "stt-memorial-moravian-school",
+      "name": "Memorial Moravian School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.342,
-      "lng": -64.935,
+      "lat": 18.3429,
+      "lng": -64.9261,
       "aliases": [
-        "peter and paul",
-        "spp",
-        "catholic school stt"
+        "moravian school",
+        "memorial moravian"
       ],
-      "description": "Parochial Catholic school in historic downtown Charlotte Amalie.",
+      "description": "Private parochial school facility in town zone.",
       "source": "transportNodes",
-      "sourceId": "stt-saints-peter-and-paul-school",
+      "sourceId": "stt-memorial-moravian-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt saints peter and paul school saints peter and paul catholic school school parochial catholic school in historic downtown charlotte amalie peter and paul spp catholic school stt"
+      "searchText": "stt memorial moravian school memorial moravian school school private parochial school facility in town zone moravian school memorial moravian"
     },
     {
-      "id": "stt-ulla-f-muller-elementary",
+      "id": "stt-sts-peter-and-paul-school",
+      "name": "Saints Peter and Paul School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.34,
+      "lng": -64.933,
+      "aliases": [
+        "st peter and paul",
+        "saints peter and paul",
+        "peter and paul"
+      ],
+      "description": "Private Catholic school in Charlotte Amalie.",
+      "source": "transportNodes",
+      "sourceId": "stt-sts-peter-and-paul-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt sts peter and paul school saints peter and paul school school private catholic school in charlotte amalie st peter and paul saints peter and paul peter and paul"
+    },
+    {
+      "id": "stt-seventh-day-adventist-school",
+      "name": "St. Thomas Seventh-day Adventist School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3451,
+      "lng": -64.8819,
+      "aliases": [
+        "stt sda",
+        "sda school"
+      ],
+      "description": "Private parochial school in Sugar Estate.",
+      "source": "transportNodes",
+      "sourceId": "stt-seventh-day-adventist-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt seventh day adventist school st thomas seventh day adventist school school private parochial school in sugar estate stt sda sda school"
+    },
+    {
+      "id": "stt-ulla-f-muller-elementary-school",
       "name": "Ulla F. Muller Elementary School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.345,
-      "lng": -64.942,
+      "lat": 18.34,
+      "lng": -64.95,
       "aliases": [
-        "muller elementary",
         "ulla muller",
-        "nisky school"
+        "muller elementary"
       ],
-      "description": "Public elementary school located near Contant/Nisky.",
+      "description": "Public elementary school and west-side school hub.",
       "source": "transportNodes",
-      "sourceId": "stt-ulla-f-muller-elementary",
+      "sourceId": "stt-ulla-f-muller-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt ulla f muller elementary ulla f muller elementary school school public elementary school located near contant nisky muller elementary ulla muller nisky school"
+      "searchText": "stt ulla f muller elementary school ulla f muller elementary school school public elementary school and west side school hub ulla muller muller elementary"
     },
     {
-      "id": "stt-vimsia-academy",
-      "name": "VI Montessori School & Peter Gruber International Academy",
+      "id": "stt-vi-montessori-school-and-peter-gruber-academy",
+      "name": "VI Montessori School & Peter Gruber Academy",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.32,
-      "lng": -64.85,
+      "lat": 18.3289,
+      "lng": -64.8631,
       "aliases": [
         "vimsia",
         "montessori",
-        "peter gruber",
-        "vi montessori"
+        "peter gruber"
       ],
-      "description": "Private Montessori and IB World Academy near Red Hook.",
+      "description": "Private independent IB world school near Red Hook.",
       "source": "transportNodes",
-      "sourceId": "stt-vimsia-academy",
+      "sourceId": "stt-vi-montessori-school-and-peter-gruber-academy",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt vimsia academy vi montessori school and peter gruber international academy school private montessori and ib world academy near red hook vimsia montessori peter gruber vi montessori"
+      "searchText": "stt vi montessori school and peter gruber academy vi montessori school and peter gruber academy school private independent ib world school near red hook vimsia montessori peter gruber"
     },
     {
-      "id": "stt-yvonne-milliner-bowsky-elementary",
+      "id": "stt-wesleyan-academy",
+      "name": "Wesleyan Academy",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3472,
+      "lng": -64.9041,
+      "aliases": [
+        "wesleyan",
+        "stt wesleyan"
+      ],
+      "description": "Private Christian educational node on St. Thomas.",
+      "source": "transportNodes",
+      "sourceId": "stt-wesleyan-academy",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt wesleyan academy wesleyan academy school private christian educational node on st thomas wesleyan stt wesleyan"
+    },
+    {
+      "id": "stt-yvonne-bowsky-elementary-school",
       "name": "Yvonne Milliner-Bowsky Elementary School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.353,
-      "lng": -64.898,
+      "lat": 18.354,
+      "lng": -64.881,
       "aliases": [
         "bowsky",
-        "yvonne bowsky",
-        "peace corps school"
+        "bowsky elementary"
       ],
-      "description": "Public elementary school situated in Estate Mandahl.",
+      "description": "Public elementary school and north-east corridor transportation hub.",
       "source": "transportNodes",
-      "sourceId": "stt-yvonne-milliner-bowsky-elementary",
+      "sourceId": "stt-yvonne-bowsky-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt yvonne milliner bowsky elementary yvonne milliner bowsky elementary school school public elementary school situated in estate mandahl bowsky yvonne bowsky peace corps school"
+      "searchText": "stt yvonne bowsky elementary school yvonne milliner bowsky elementary school school public elementary school and north east corridor transportation hub bowsky bowsky elementary"
     },
     {
       "id": "discovery-shopping-st_thomas-caribbean-fish-market",
@@ -8945,6 +10094,71 @@
       "searchText": "discovery transport st thomas red hook ferry terminal red hook ferry terminal transport st thomas transport red hook ferry terminal is a transport destination in the u s virgin islands transport st thomas red hook ferry terminal st thomas transport red hook ferry terminal is a transport destination in the u s virgin islands transport st thomas transportation red hook ferry terminal ferry terminals red hook ferry terminal"
     },
     {
+      "id": "vitran_stt_bordeaux",
+      "name": "Bordeaux Community Center Terminal",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3512,
+      "lng": -65.0185,
+      "aliases": [
+        "bordeaux terminal",
+        "west end depot"
+      ],
+      "description": "Route 318 Turnaround, West End.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_bordeaux",
+      "routes": [
+        "201"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt bordeaux bordeaux community center terminal vitran stop route 318 turnaround west end bordeaux terminal west end depot 201"
+    },
+    {
+      "id": "vitran_stt_blyden",
+      "name": "Edward Blyden Marine Terminal",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3391,
+      "lng": -64.9352,
+      "aliases": [
+        "blyden terminal",
+        "waterfront ferry"
+      ],
+      "description": "Waterfront Ferry Dock.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_blyden",
+      "routes": [
+        "201",
+        "401",
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt blyden edward blyden marine terminal vitran stop waterfront ferry dock blyden terminal waterfront ferry 201 401 501"
+    },
+    {
+      "id": "vitran_stt_havensight",
+      "name": "Havensight Cruise Pier Terminal",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3332,
+      "lng": -64.9205,
+      "aliases": [
+        "havensight mall",
+        "cruise dock stop"
+      ],
+      "description": "Havensight Mall West Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_havensight",
+      "routes": [
+        "401"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt havensight havensight cruise pier terminal vitran stop havensight mall west loop havensight mall cruise dock stop 401"
+    },
+    {
       "id": "stt-schneider-hospital-bus-stop",
       "name": "Schneider Hospital Bus Stop",
       "island": "st_thomas",
@@ -8966,6 +10180,72 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stt schneider hospital bus stop schneider hospital bus stop vitran stop hospital area vitran stop and medical transportation hub hospital bus stop schneider rls hospital 101 201"
+    },
+    {
+      "id": "vitran_stt_tutu_mall",
+      "name": "Tutu Park Mall Transit Hub",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3489,
+      "lng": -64.8912,
+      "aliases": [
+        "tutu mall",
+        "tutu hub"
+      ],
+      "description": "Main Canopy East Entrance.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_tutu_mall",
+      "routes": [
+        "301",
+        "501",
+        "601"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt tutu mall tutu park mall transit hub vitran stop main canopy east entrance tutu mall tutu hub 301 501 601"
+    },
+    {
+      "id": "vitran_stt_uvi",
+      "name": "University of the Virgin Islands Terminal",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3415,
+      "lng": -64.9664,
+      "aliases": [
+        "uvi",
+        "university terminal"
+      ],
+      "description": "UVI Campus Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_uvi",
+      "routes": [
+        "201"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt uvi university of the virgin islands terminal vitran stop uvi campus loop uvi university terminal 201"
+    },
+    {
+      "id": "vitran_stt_red_hook",
+      "name": "Urman Fredericks Marine Terminal (Red Hook)",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3245,
+      "lng": -64.8514,
+      "aliases": [
+        "red hook ferry",
+        "red hook dock"
+      ],
+      "description": "Red Hook Ferry Terminal Loop.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_red_hook",
+      "routes": [
+        "301",
+        "501"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt red hook urman fredericks marine terminal red hook vitran stop red hook ferry terminal loop red hook ferry red hook dock 301 501"
     },
     {
       "id": "stt-uvi-bus-stop",
@@ -9010,6 +10290,29 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stt vendor plaza bus stop vendor s plaza bus stop vitran stop downtown charlotte amalie vitran stop vendors plaza vendor plaza downtown bus stop 101"
+    },
+    {
+      "id": "vitran_stt_depot",
+      "name": "VITRAN Bus Depot (Sub Base)",
+      "island": "st_thomas",
+      "type": "vitran_stop",
+      "lat": 18.3372,
+      "lng": -64.9531,
+      "aliases": [
+        "vitran depot",
+        "sub base",
+        "dpw headquarters"
+      ],
+      "description": "8244 Sub Base, DPW Headquarters.",
+      "source": "transportNodes",
+      "sourceId": "vitran_stt_depot",
+      "routes": [
+        "201",
+        "301"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "vitran stt depot vitran bus depot sub base vitran stop 8244 sub base dpw headquarters vitran depot sub base dpw headquarters 201 301"
     },
     {
       "id": "discovery-beach-water_island-honeymoon-beach-water-island",

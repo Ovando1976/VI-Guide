@@ -1,20 +1,19 @@
 # Transport Graph Audit
 
-Generated: 2026-06-29T16:52:55.379Z
+Generated: 2026-06-29T17:36:41.318Z
 
 ## Stats
 
-- Total nodes: 453
-- By island: {"st_croix":169,"st_john":100,"st_thomas":182,"water_island":2}
-- By type: {"attraction":66,"ball_park":21,"beach":47,"bus_stop":33,"cruise_port":3,"ferry_terminal":8,"government":12,"historic_site":20,"hospital":4,"restaurant":152,"school":31,"shopping":30,"taxi_stand":1,"transport":21,"airport":1,"vitran_stop":3}
+- Total nodes: 515
+- By island: {"st_croix":193,"st_john":110,"st_thomas":210,"water_island":2}
+- By type: {"attraction":66,"ball_park":21,"beach":47,"bus_stop":62,"cruise_port":3,"ferry_terminal":8,"government":12,"historic_site":20,"hospital":4,"restaurant":152,"school":48,"shopping":30,"taxi_stand":1,"transport":21,"vitran_stop":19,"airport":1}
 
 ## Issues
 
 - Missing coordinates: 0
-- VITRAN stops without routes: 33
+- VITRAN stops without routes: 0
 - Duplicate names: 0
 
 ## Coverage warnings
 
-- VITRAN/bus stop coverage is too low: 36
-- School coverage is too low: 31
+- None
