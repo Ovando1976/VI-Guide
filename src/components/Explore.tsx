@@ -1,157 +1,142 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
-import {
-  Search,
-  Waves,
-  Utensils,
-  ShoppingBag,
-  Landmark,
-  Compass,
-  ShoppingCart,
-  Calendar as CalendarIcon,
-} from "lucide-react";
-import { db } from "../firebase";
-import { cn } from "../lib/utils";
-import type { IslandCode, BeachDoc, PlaceDoc, EventDoc } from "../types";
+// src/components/Explore.tsx
+
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import {
+  CalendarDays,
+  Car,
+  Compass,
+  Landmark,
+  List,
+  Map,
+  Search,
+  Ship,
+  ShoppingBag,
+  ShoppingCart,
+  Sun,
+  Trees,
+  Utensils,
+  Waves,
+} from "lucide-react";
+
+import { canonicalDiscoveries as discoveries } from "../data/canonical/discoveriesCanonical";
+import { cn } from "../lib/utils";
+import type { BeachDoc, EventDoc, PlaceDoc } from "../types";
 import ExploreMapView from "./ExploreMapView";
+import DiscoveryGrid from "./discover/DiscoveryGrid";
+import DiscoveryProfile from "./discover/DiscoveryProfile";
+import type { DiscoveryItem, IslandFilter } from "./discover/discoveryTypes";
 
-type ExploreItem = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  category?: string;
-  islandCode: IslandCode | string;
-  coordinates?: { lat: number; lng: number };
-  coverImage?: string;
-  startAt?: Date;
-};
-
-type IslandFilter = IslandCode | "all";
+const FALLBACK_IMAGE = "/images/beaches/magens-bay.jpg";
 
 const CATEGORIES = [
-  { id: "all", label: "Discovery", icon: Compass },
+  { id: "all", label: "All", icon: Compass },
   { id: "beach", label: "Beaches", icon: Waves },
-  { id: "restaurant", label: "Dining", icon: Utensils },
-  { id: "shopping", label: "Shopping", icon: ShoppingBag },
-  { id: "attraction", label: "Sights", icon: Landmark },
-  { id: "provisioning", label: "Grocery", icon: ShoppingCart },
-  { id: "event", label: "Events", icon: CalendarIcon },
+  { id: "restaurant", label: "Food", icon: Utensils },
   { id: "history", label: "History", icon: Landmark },
+  { id: "attraction", label: "Sights", icon: Landmark },
+  { id: "hiking-trail", label: "Trails", icon: Trees },
+  { id: "event", label: "Events", icon: CalendarDays },
+  { id: "shopping", label: "Shopping", icon: ShoppingBag },
+  { id: "provisioning", label: "Grocery", icon: ShoppingCart },
+  { id: "transport", label: "Transport", icon: Car },
+] as const;
+
+const LIVE_ITEMS = [
+  { label: "Weather", value: "84°", icon: Sun },
+  { label: "Cruise", value: "3 Ships", icon: Ship },
+  { label: "Beaches", value: "Excellent", icon: Waves },
+  { label: "Events", value: "6 Today", icon: CalendarDays },
+  { label: "Taxi", value: "Live", icon: Car },
 ];
-function normalizeIsland(value?: string) {
-  return String(value ?? "")
-    .toLowerCase()
-    .replaceAll("-", "_");
+
+function cleanImage(value: unknown) {
+  const src = String(value ?? "").trim();
+  return src && src !== "undefined" && src !== "null" ? src : FALLBACK_IMAGE;
 }
 
-function getCoordinates(data: any) {
-  const lat =
-    data.lat ??
-    data.latitude ??
-    data.coordinates?.lat ??
-    data.location?.lat ??
-    data.centroid?.lat;
+function normalizeIsland(value: unknown): IslandFilter {
+  const text = String(value ?? "").toLowerCase().trim();
 
-  const lng =
-    data.lng ??
-    data.longitude ??
-    data.coordinates?.lng ??
-    data.location?.lng ??
-    data.centroid?.lng;
+  if (text === "all") return "all";
+  if (text === "stt" || text.includes("thomas")) return "st_thomas";
+  if (text === "stj" || text.includes("john")) return "st_john";
+  if (text === "stx" || text.includes("croix")) return "st_croix";
+  if (text.includes("water")) return "water_island";
 
-  if (typeof lat !== "number" || typeof lng !== "number") return undefined;
-
-  return { lat, lng };
+  return (text || "st_thomas") as IslandFilter;
 }
 
-function normalizeItem(
-  id: string,
-  data: any,
-  fallbackCategory: string
-): ExploreItem {
+function normalizeCategory(value: unknown) {
+  let category = String(value ?? "discovery").toLowerCase().trim();
+
+  if (category === "beaches") category = "beach";
+  if (category.startsWith("restaurant")) category = "restaurant";
+  if (category === "historic_sites" || category === "historic-site") category = "history";
+  if (category === "hiking-trails") category = "hiking-trail";
+  if (category === "grocery") category = "provisioning";
+  if (category === "transportation") category = "transport";
+  if (category === "attractions") category = "attraction";
+  if (category === "events") category = "event";
+  if (category === "businesses") category = "business";
+
+  return category;
+}
+
+function normalizeDiscovery(data: (typeof discoveries)[number]): DiscoveryItem {
+  const category = normalizeCategory(data.category);
+
+  const coordinates =
+    typeof data.lat === "number" && typeof data.lng === "number"
+      ? { lat: data.lat, lng: data.lng }
+      : undefined;
+
   return {
-    id,
-    slug: data.slug ?? id,
-    title: data.title ?? data.name ?? data.businessName ?? "Untitled",
-    description:
-      data.description ??
-      data.summary ??
-      data.shortDescription ??
-      data.notes ??
-      "",
-    category: data.category ?? fallbackCategory,
-    islandCode: data.islandCode ?? data.island ?? "st_thomas",
-    coordinates: getCoordinates(data),
-    coverImage:
-      data.coverImage ??
-      data.image ??
-      data.images?.[0] ??
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-    startAt: data.startAt?.toDate?.() ?? data.startsAt?.toDate?.() ?? undefined,
+    id: data.id,
+    collectionName: category,
+    slug: data.id,
+    title: data.title || "Untitled",
+    description: data.description || "Island discovery record.",
+    category,
+    displayCategory: data.category || category,
+    islandCode: normalizeIsland(data.island),
+    areaSlug: "",
+    coordinates,
+    coverImage: cleanImage(data.imageUrl),
+    gallery: [],
+    featured: data.confidence >= 0.9 || data.duplicateCount > 0,
   };
 }
 
-async function loadCollection(
-  collectionName: string,
-  selectedIsland: IslandFilter,
-  fallbackCategory: string
-) {
-  const ref = collection(db, collectionName);
+const LOCAL_DISCOVERY_ITEMS = discoveries.map(normalizeDiscovery);
 
-  if (selectedIsland !== "all") {
-    try {
-      const q = query(
-        ref,
-        where("islandCode", "==", selectedIsland),
-        limit(100)
-      );
-      const snap = await getDocs(q);
-
-      if (!snap.empty) {
-        return snap.docs.map((d) =>
-          normalizeItem(d.id, d.data(), fallbackCategory)
-        );
-      }
-    } catch (error) {
-      console.warn(
-        `Filtered ${collectionName} query failed, falling back`,
-        error
-      );
-    }
-  }
-
-  const snap = await getDocs(query(ref, limit(100)));
-
-  return snap.docs
-    .map((d) => normalizeItem(d.id, d.data(), fallbackCategory))
-    .filter(
-      (item) =>
-        selectedIsland === "all" ||
-        normalizeIsland(item.islandCode) === normalizeIsland(selectedIsland)
-    );
+function loadLocalDiscoveries(selectedIsland: IslandFilter): DiscoveryItem[] {
+  return LOCAL_DISCOVERY_ITEMS.filter((item) => {
+    if (selectedIsland === "all") return true;
+    return normalizeIsland(item.islandCode) === selectedIsland;
+  });
 }
 
 export default function Explore({
-  selectedIsland,
+  selectedIsland = "st_thomas",
   initialSearchQuery = "",
   onSelectListing,
 }: {
-  selectedIsland: IslandFilter;
+  selectedIsland?: IslandFilter;
   initialSearchQuery?: string;
-  onSelectListing: (listing: BeachDoc | PlaceDoc | EventDoc) => void;
+  onSelectListing?: (listing: BeachDoc | PlaceDoc | EventDoc) => void;
 }) {
-  const [items, setItems] = useState<ExploreItem[]>([]);
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadError, setLoadError] = useState<string | null>(null);
-
-  const [viewMode, setViewMode] = useState<"list" | "map">("map");
-
   const [searchParams] = useSearchParams();
-  const urlCategory = searchParams.get("category") ?? "all";
-  const [selectedCategory, setSelectedCategory] = useState(urlCategory);
+
+  const [items, setItems] = useState<DiscoveryItem[]>(() =>
+    loadLocalDiscoveries(selectedIsland),
+  );
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
+  const [selectedItem, setSelectedItem] = useState<DiscoveryItem | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("category") ?? "all",
+  );
 
   useEffect(() => {
     setSelectedCategory(searchParams.get("category") ?? "all");
@@ -162,203 +147,159 @@ export default function Explore({
   }, [initialSearchQuery]);
 
   useEffect(() => {
-    let cancelled = false;
-
-    async function fetchData() {
-      setIsLoading(true);
-      setLoadError(null);
-
-      try {
-        const [beaches, places, historicSites, events] = await Promise.all([
-          loadCollection("beaches", selectedIsland, "beach"),
-          loadCollection("places", selectedIsland, "attraction"),
-          loadCollection("historic_sites", selectedIsland, "history"),
-          loadCollection("events", selectedIsland, "event"),
-        ]);
-
-        if (!cancelled) {
-          setItems([...beaches, ...places, ...historicSites, ...events]);
-        }
-      } catch (error) {
-        console.error("Failed to load explore content", error);
-        if (!cancelled) {
-          setLoadError(
-            "We could not load fresh island discoveries right now. Please try again."
-          );
-        }
-      } finally {
-        if (!cancelled) setIsLoading(false);
-      }
-    }
-
-    fetchData();
-
-    return () => {
-      cancelled = true;
-    };
+    setItems(loadLocalDiscoveries(selectedIsland));
   }, [selectedIsland]);
 
   const filteredItems = useMemo(() => {
     const queryText = searchQuery.toLowerCase().trim();
 
-    return items.filter((item) => {
-      const islandMatch =
-        selectedIsland === "all" ||
-        normalizeIsland(item.islandCode) === normalizeIsland(selectedIsland);
+    return items
+      .filter((item) => {
+        const categoryMatch =
+          selectedCategory === "all" || item.category === selectedCategory;
 
-      const categoryMatch =
-        selectedCategory === "all" || item.category === selectedCategory;
+        const searchText = [
+          item.title,
+          item.description,
+          item.category,
+          item.displayCategory,
+          item.areaSlug,
+          item.collectionName,
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
 
-      const searchMatch =
-        !queryText ||
-        item.title.toLowerCase().includes(queryText) ||
-        item.description.toLowerCase().includes(queryText) ||
-        item.category?.toLowerCase().includes(queryText);
+        return categoryMatch && (!queryText || searchText.includes(queryText));
+      })
+      .sort((a, b) => Number(b.featured) - Number(a.featured));
+  }, [items, selectedCategory, searchQuery]);
 
-      return islandMatch && categoryMatch && searchMatch;
-    });
-  }, [items, selectedIsland, selectedCategory, searchQuery]);
+  function openItem(item: DiscoveryItem) {
+    setSelectedItem(item);
+    onSelectListing?.(item as any);
+  }
 
   return (
-    <div className="pb-24">
-      <div className="px-8 mb-12 space-y-8">
-        <div className="relative">
-          <Search className="absolute left-8 top-1/2 h-6 w-6 -translate-y-1/2 text-stone-300" />
-          <input
-            type="text"
-            placeholder="Search the territory..."
-            className="w-full rounded-[2.5rem] border border-stone-100 bg-white py-6 pl-18 pr-8 font-serif text-lg italic shadow-2xl outline-none transition-all focus:border-turquoise focus:ring-4 focus:ring-turquoise/5"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-      </div>
+    <main className="min-h-screen bg-[#061016] px-5 pb-32 pt-6 text-white sm:px-8">
+      <section className="mx-auto max-w-6xl space-y-6">
+        <section className="rounded-[2.25rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl backdrop-blur">
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-emerald-300">
+            Discover
+          </p>
 
-      <div className="px-8 mb-12">
-        <div className="flex gap-6 overflow-x-auto pb-6">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={cn(
-                "flex shrink-0 flex-col items-center gap-4 transition-all active:scale-95",
-                selectedCategory === cat.id
-                  ? "opacity-100"
-                  : "opacity-40 grayscale"
-              )}
-            >
-              <div
+          <h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">
+            Search the territory
+          </h1>
+
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/65">
+            Beaches, restaurants, historic sites, events, rides, trails, shopping, and local intelligence.
+          </p>
+
+          <div className="relative mt-5">
+            <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-emerald-300" />
+            <input
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Ask anything about the Virgin Islands..."
+              className="w-full rounded-[1.75rem] border border-white/10 bg-slate-950/70 py-4 pl-14 pr-5 text-base font-semibold text-white outline-none placeholder:text-white/35 focus:border-emerald-300/50 focus:ring-4 focus:ring-emerald-300/10"
+            />
+          </div>
+        </section>
+
+        <section className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+          {LIVE_ITEMS.map(({ label, value, icon: Icon }) => (
+            <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl">
+              <Icon className="h-5 w-5 text-emerald-300" />
+              <p className="mt-3 text-lg font-black">{value}</p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">
+                {label}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        <section className="overflow-x-auto pb-2">
+          <div className="flex gap-3">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCategory(cat.id)}
                 className={cn(
-                  "flex h-24 w-24 items-center justify-center rounded-[2.5rem] shadow-2xl transition-all",
+                  "flex shrink-0 items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-black transition active:scale-95",
                   selectedCategory === cat.id
-                    ? "bg-ink text-turquoise scale-110"
-                    : "bg-white text-stone-400"
+                    ? "border-emerald-300/50 bg-emerald-300 text-slate-950"
+                    : "border-white/10 bg-white/[0.06] text-white/70",
                 )}
               >
-                <cat.icon className="h-10 w-10" />
-              </div>
-              <span className="micro-label">{cat.label}</span>
+                <cat.icon className="h-5 w-5" />
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-sm font-black text-emerald-300">Featured Right Now</p>
+            <h2 className="text-3xl font-black tracking-tight">
+              {filteredItems.length} discoveries
+            </h2>
+          </div>
+
+          <div className="flex rounded-2xl border border-white/10 bg-white/[0.06] p-1">
+            <button
+              type="button"
+              onClick={() => setViewMode("list")}
+              className={cn(
+                "flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-black",
+                viewMode === "list" ? "bg-white text-slate-950" : "text-white/60",
+              )}
+            >
+              <List className="h-4 w-4" />
+              List
             </button>
-          ))}
-        </div>
-      </div>
 
-      <div className="px-8 mb-6 flex gap-3">
-        <button
-          onClick={() => setViewMode("list")}
-          className={cn(
-            "rounded-2xl px-5 py-3 text-sm font-black",
-            viewMode === "list"
-              ? "bg-emerald-950 text-white"
-              : "bg-white text-stone-500"
-          )}
-        >
-          List
-        </button>
-
-        <button
-          onClick={() => setViewMode("map")}
-          className={cn(
-            "rounded-2xl px-5 py-3 text-sm font-black",
-            viewMode === "map"
-              ? "bg-emerald-950 text-white"
-              : "bg-white text-stone-500"
-          )}
-        >
-          Map
-        </button>
-      </div>
-
-      <div className="px-8 space-y-8">
-        {isLoading && (
-          <div className="rounded-[3rem] border border-stone-100 bg-white py-24 text-center shadow-inner">
-            <p className="font-serif text-xl italic text-stone-500">
-              Loading curated discoveries…
-            </p>
+            <button
+              type="button"
+              onClick={() => setViewMode("map")}
+              className={cn(
+                "flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-black",
+                viewMode === "map" ? "bg-white text-slate-950" : "text-white/60",
+              )}
+            >
+              <Map className="h-4 w-4" />
+              Map
+            </button>
           </div>
-        )}
+        </section>
 
-        {loadError && (
-          <div className="rounded-[2rem] border border-rose-100 bg-rose-50 px-8 py-10 text-center">
-            <p className="text-sm font-medium text-rose-700">{loadError}</p>
-          </div>
-        )}
-
-        {!isLoading && !loadError && filteredItems.length === 0 && (
-          <div className="rounded-[3rem] border border-stone-100 bg-white py-32 text-center shadow-inner">
-            <Compass className="mx-auto h-12 w-12 text-stone-200" />
-            <p className="mt-6 font-serif text-xl italic text-stone-400">
+        {filteredItems.length === 0 ? (
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] py-28 text-center">
+            <Compass className="mx-auto h-12 w-12 text-white/20" />
+            <p className="mt-6 text-lg font-bold text-white/45">
               No discoveries found in this category.
             </p>
           </div>
+        ) : viewMode === "map" ? (
+          <ExploreMapView
+            items={filteredItems}
+            selectedIsland={selectedIsland}
+            onSelectListing={openItem as any}
+          />
+        ) : (
+          <DiscoveryGrid items={filteredItems} onOpen={openItem} />
         )}
+      </section>
 
-        {!isLoading &&
-          !loadError &&
-          filteredItems.length > 0 &&
-          viewMode === "map" && (
-            <ExploreMapView
-              items={filteredItems}
-              selectedIsland={selectedIsland}
-              onSelectListing={onSelectListing as any}
-            />
-          )}
-
-        {!isLoading &&
-          !loadError &&
-          filteredItems.length > 0 &&
-          viewMode === "list" &&
-          filteredItems.map((item) => (
-            <button
-              key={`${item.category}-${item.id}`}
-              onClick={() => onSelectListing(item as any)}
-              className="w-full overflow-hidden rounded-[2.5rem] bg-white text-left shadow-xl transition active:scale-[0.98]"
-            >
-              <div className="h-52 overflow-hidden bg-stone-100">
-                <img
-                  src={item.coverImage}
-                  alt={item.title}
-                  className="h-full w-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-
-              <div className="p-8">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-700">
-                  {item.category}
-                </p>
-
-                <h3 className="mt-4 font-serif text-4xl italic leading-none text-ink">
-                  {item.title}
-                </h3>
-
-                <p className="mt-5 line-clamp-3 text-sm leading-relaxed text-stone-500">
-                  {item.description}
-                </p>
-              </div>
-            </button>
-          ))}
-      </div>
-    </div>
+      {selectedItem ? (
+        <DiscoveryProfile
+          item={selectedItem}
+          allItems={items}
+          onClose={() => setSelectedItem(null)}
+        />
+      ) : null}
+    </main>
   );
 }
