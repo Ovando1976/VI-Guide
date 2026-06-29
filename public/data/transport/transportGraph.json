@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T16:06:35.446Z",
+  "generatedAt": "2026-06-29T16:20:10.814Z",
   "stats": {
-    "totalNodes": 412,
+    "totalNodes": 436,
     "byIsland": {
-      "st_croix": 159,
-      "st_john": 93,
-      "st_thomas": 158,
+      "st_croix": 166,
+      "st_john": 98,
+      "st_thomas": 170,
       "water_island": 2
     },
     "byType": {
@@ -13,14 +13,16 @@
       "ball_park": 4,
       "beach": 47,
       "bus_stop": 33,
-      "government": 2,
+      "cruise_port": 3,
+      "ferry_terminal": 8,
+      "government": 12,
       "historic_site": 20,
+      "hospital": 4,
       "restaurant": 152,
       "school": 31,
       "shopping": 30,
       "taxi_stand": 1,
       "transport": 21,
-      "ferry_terminal": 1,
       "airport": 1,
       "vitran_stop": 3
     }
@@ -1039,24 +1041,122 @@
       "searchText": "stx tide village terminus tide village east end terminus bus stop the absolute eastern edge marker for the route 302 transit pipeline tide village stop route 302 east turnaround"
     },
     {
-      "id": "discovery-government-st_croix-government-house-christiansted",
-      "name": "Government House Christiansted",
+      "id": "stx-ann-abramson-pier",
+      "name": "Ann E. Abramson Marine Facility",
       "island": "st_croix",
-      "type": "government",
-      "lat": 17.7463177,
-      "lng": -64.70352129999999,
+      "type": "cruise_port",
+      "lat": 17.711,
+      "lng": -64.883,
       "aliases": [
-        "attraction",
-        "st_croix",
-        "government house christiansted"
+        "frederiksted pier",
+        "cruise pier",
+        "ann abramson pier"
       ],
-      "description": "Government House Christiansted is a attraction destination in the U.S. Virgin Islands.",
-      "source": "canonicalDiscoveries",
-      "sourceId": "st_croix-attraction-government-house-christiansted",
+      "description": "Frederiksted cruise pier and West End transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-ann-abramson-pier",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "discovery government st croix government house christiansted government house christiansted government st croix attraction government house christiansted is a attraction destination in the u s virgin islands attraction st croix government house christiansted st croix attraction government house christiansted is a attraction destination in the u s virgin islands attraction st croix attractions government house christiansted"
+      "searchText": "stx ann abramson pier ann e abramson marine facility cruise port frederiksted cruise pier and west end transportation hub frederiksted pier cruise pier ann abramson pier"
+    },
+    {
+      "id": "stx-gallows-bay-ferry-terminal",
+      "name": "Gallows Bay Ferry Terminal",
+      "island": "st_croix",
+      "type": "ferry_terminal",
+      "lat": 17.747,
+      "lng": -64.699,
+      "aliases": [
+        "gallows bay",
+        "christiansted ferry"
+      ],
+      "description": "Christiansted ferry and marine transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-gallows-bay-ferry-terminal",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx gallows bay ferry terminal gallows bay ferry terminal ferry terminal christiansted ferry and marine transportation hub gallows bay christiansted ferry"
+    },
+    {
+      "id": "stx-frederiksted-government-center",
+      "name": "Frederiksted Government Center",
+      "island": "st_croix",
+      "type": "government",
+      "lat": 17.712,
+      "lng": -64.882,
+      "aliases": [
+        "frederiksted government",
+        "west end government"
+      ],
+      "description": "Frederiksted public service and civic pickup point.",
+      "source": "transportNodes",
+      "sourceId": "stx-frederiksted-government-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx frederiksted government center frederiksted government center government frederiksted public service and civic pickup point frederiksted government west end government"
+    },
+    {
+      "id": "stx-christiansted-government-house",
+      "name": "Government House Christiansted",
+      "island": "st_croix",
+      "type": "government",
+      "lat": 17.746,
+      "lng": -64.704,
+      "aliases": [
+        "government house christiansted",
+        "christiansted government",
+        "attraction",
+        "st_croix"
+      ],
+      "description": "Christiansted government and civic transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-christiansted-government-house",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx christiansted government house government house christiansted government christiansted government and civic transportation hub government house christiansted christiansted government discovery government st croix government house christiansted government house christiansted government st croix attraction government house christiansted is a attraction destination in the u s virgin islands attraction st croix government house christiansted st croix attraction government house christiansted is a attraction destination in the u s virgin islands attraction st croix attractions government house christiansted"
+    },
+    {
+      "id": "stx-richmond-fire-station",
+      "name": "Richmond Fire Station",
+      "island": "st_croix",
+      "type": "government",
+      "lat": 17.748,
+      "lng": -64.715,
+      "aliases": [
+        "richmond fire",
+        "christiansted fire"
+      ],
+      "description": "Christiansted-area public safety transportation node.",
+      "source": "transportNodes",
+      "sourceId": "stx-richmond-fire-station",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx richmond fire station richmond fire station government christiansted area public safety transportation node richmond fire christiansted fire"
+    },
+    {
+      "id": "stx-wilbur-francis-command",
+      "name": "Wilbur H. Francis Command Police Station",
+      "island": "st_croix",
+      "type": "government",
+      "lat": 17.724,
+      "lng": -64.779,
+      "aliases": [
+        "st croix police",
+        "police station",
+        "wilbur francis"
+      ],
+      "description": "Central St. Croix police and public safety hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-wilbur-francis-command",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx wilbur francis command wilbur h francis command police station government central st croix police and public safety hub st croix police police station wilbur francis"
     },
     {
       "id": "discovery-historic_site-st_croix-christiansted-historic-district",
@@ -1237,6 +1337,45 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery historic site st croix steeple building steeple building historic site st croix history historic christiansted landmark associated with the danish colonial townscape history st croix steeple building st croix history historic christiansted landmark associated with the danish colonial townscape history st croix historic sites steeple building"
+    },
+    {
+      "id": "stx-frederiksted-health-care",
+      "name": "Frederiksted Health Care",
+      "island": "st_croix",
+      "type": "hospital",
+      "lat": 17.711,
+      "lng": -64.881,
+      "aliases": [
+        "frederiksted clinic",
+        "west end clinic"
+      ],
+      "description": "Frederiksted healthcare access and pickup point.",
+      "source": "transportNodes",
+      "sourceId": "stx-frederiksted-health-care",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx frederiksted health care frederiksted health care hospital frederiksted healthcare access and pickup point frederiksted clinic west end clinic"
+    },
+    {
+      "id": "stx-juan-f-luis-hospital",
+      "name": "Governor Juan F. Luis Hospital",
+      "island": "st_croix",
+      "type": "hospital",
+      "lat": 17.731,
+      "lng": -64.761,
+      "aliases": [
+        "jfl",
+        "jfl hospital",
+        "juan luis hospital"
+      ],
+      "description": "Major St. Croix hospital and medical transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stx-juan-f-luis-hospital",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx juan f luis hospital governor juan f luis hospital hospital major st croix hospital and medical transportation hub jfl jfl hospital juan luis hospital"
     },
     {
       "id": "discovery-restaurant-st_croix-40-strand-eatery",
@@ -3983,6 +4122,25 @@
       "searchText": "stj susannaberg intersection susannaberg route 10 junction bus stop strategic fork stop linking internal island commuter traffic and utility corridors susannaberg stop centerline north shore turnoff"
     },
     {
+      "id": "stj-coral-bay-dinghy-dock",
+      "name": "Coral Bay Dinghy Dock",
+      "island": "st_john",
+      "type": "ferry_terminal",
+      "lat": 18.345,
+      "lng": -64.714,
+      "aliases": [
+        "coral bay dock",
+        "dinghy dock"
+      ],
+      "description": "Coral Bay marine access and local pickup point.",
+      "source": "transportNodes",
+      "sourceId": "stj-coral-bay-dinghy-dock",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj coral bay dinghy dock coral bay dinghy dock ferry terminal coral bay marine access and local pickup point coral bay dock dinghy dock"
+    },
+    {
       "id": "stj-cruz-bay-ferry-terminal",
       "name": "Cruz Bay Ferry Terminal",
       "island": "st_john",
@@ -3992,7 +4150,9 @@
       "aliases": [
         "cruz bay",
         "st john ferry",
-        "ferry dock"
+        "ferry dock",
+        "cruz bay ferry",
+        "st john ferry dock"
       ],
       "description": "Primary ferry and transportation hub on St. John.",
       "source": "transportNodes",
@@ -4004,7 +4164,64 @@
       ],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj cruz bay ferry terminal cruz bay ferry terminal ferry terminal primary ferry and transportation hub on st john cruz bay st john ferry ferry dock 107 108 109"
+      "searchText": "stj cruz bay ferry terminal cruz bay ferry terminal ferry terminal primary ferry and transportation hub on st john cruz bay st john ferry ferry dock 107 108 109 stj cruz bay ferry terminal cruz bay ferry terminal ferry terminal main ferry terminal and transportation hub on st john cruz bay ferry st john ferry dock"
+    },
+    {
+      "id": "stj-boulon-center",
+      "name": "Boulon Center",
+      "island": "st_john",
+      "type": "government",
+      "lat": 18.331,
+      "lng": -64.794,
+      "aliases": [
+        "st john government",
+        "boulon"
+      ],
+      "description": "Cruz Bay government and public service hub.",
+      "source": "transportNodes",
+      "sourceId": "stj-boulon-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj boulon center boulon center government cruz bay government and public service hub st john government boulon"
+    },
+    {
+      "id": "stj-coral-bay-fire-station",
+      "name": "Coral Bay Fire Station",
+      "island": "st_john",
+      "type": "government",
+      "lat": 18.347,
+      "lng": -64.714,
+      "aliases": [
+        "coral bay fire",
+        "st john fire"
+      ],
+      "description": "Coral Bay public safety and transportation reference point.",
+      "source": "transportNodes",
+      "sourceId": "stj-coral-bay-fire-station",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj coral bay fire station coral bay fire station government coral bay public safety and transportation reference point coral bay fire st john fire"
+    },
+    {
+      "id": "stj-cruz-bay-police-station",
+      "name": "Cruz Bay Police Station",
+      "island": "st_john",
+      "type": "government",
+      "lat": 18.331,
+      "lng": -64.794,
+      "aliases": [
+        "st john police",
+        "cruz bay police"
+      ],
+      "description": "Cruz Bay public safety and civic transportation point.",
+      "source": "transportNodes",
+      "sourceId": "stj-cruz-bay-police-station",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj cruz bay police station cruz bay police station government cruz bay public safety and civic transportation point st john police cruz bay police"
     },
     {
       "id": "discovery-historic_site-st_john-annaberg-sugar-plantation",
@@ -4125,6 +4342,26 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery historic site st john reef bay sugar factory ruins reef bay sugar factory ruins historic site st john history historic sugar factory ruins within virgin islands national park history st john reef bay sugar factory ruins st john history historic sugar factory ruins within virgin islands national park history st john historic sites reef bay sugar factory"
+    },
+    {
+      "id": "stt-myrah-keating-smith-clinic",
+      "name": "Myrah Keating Smith Health Center",
+      "island": "st_john",
+      "type": "hospital",
+      "lat": 18.339,
+      "lng": -64.763,
+      "aliases": [
+        "myrah keating",
+        "st john clinic",
+        "health center"
+      ],
+      "description": "Primary St. John healthcare access point.",
+      "source": "transportNodes",
+      "sourceId": "stt-myrah-keating-smith-clinic",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt myrah keating smith clinic myrah keating smith health center hospital primary st john healthcare access point myrah keating st john clinic health center"
     },
     {
       "id": "discovery-restaurant-st_john-18-64-the-restaurant",
@@ -6199,6 +6436,204 @@
       "searchText": "stt vitran base contant vitran operations base contant bus stop primary operations yard and maintenance facility major dispatch node vitran base contant yard vitran headquarters"
     },
     {
+      "id": "stt-crown-bay-cruise-port",
+      "name": "Crown Bay Cruise Port",
+      "island": "st_thomas",
+      "type": "cruise_port",
+      "lat": 18.335,
+      "lng": -64.951,
+      "aliases": [
+        "crown bay",
+        "crown bay dock",
+        "cruise port"
+      ],
+      "description": "Major St. Thomas cruise ship and taxi pickup hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-crown-bay-cruise-port",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt crown bay cruise port crown bay cruise port cruise port major st thomas cruise ship and taxi pickup hub crown bay crown bay dock cruise port"
+    },
+    {
+      "id": "stt-havensight-cruise-pier",
+      "name": "Havensight Cruise Pier",
+      "island": "st_thomas",
+      "type": "cruise_port",
+      "lat": 18.3357,
+      "lng": -64.9207,
+      "aliases": [
+        "havensight",
+        "wico dock",
+        "cruise dock"
+      ],
+      "description": "Primary Charlotte Amalie cruise pier and visitor pickup hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-havensight-cruise-pier",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt havensight cruise pier havensight cruise pier cruise port primary charlotte amalie cruise pier and visitor pickup hub havensight wico dock cruise dock"
+    },
+    {
+      "id": "stt-charlotte-amalie-ferry-terminal",
+      "name": "Charlotte Amalie Ferry Terminal",
+      "island": "st_thomas",
+      "type": "ferry_terminal",
+      "lat": 18.3408,
+      "lng": -64.9326,
+      "aliases": [
+        "charlotte amalie ferry",
+        "downtown ferry",
+        "waterfront ferry"
+      ],
+      "description": "Downtown Charlotte Amalie ferry and visitor transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-charlotte-amalie-ferry-terminal",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt charlotte amalie ferry terminal charlotte amalie ferry terminal ferry terminal downtown charlotte amalie ferry and visitor transportation hub charlotte amalie ferry downtown ferry waterfront ferry"
+    },
+    {
+      "id": "stt-crown-bay-ferry-dock",
+      "name": "Crown Bay Ferry Dock",
+      "island": "st_thomas",
+      "type": "ferry_terminal",
+      "lat": 18.3347,
+      "lng": -64.9515,
+      "aliases": [
+        "crown bay ferry",
+        "water island ferry",
+        "crown bay dock"
+      ],
+      "description": "Crown Bay ferry dock and Water Island connection hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-crown-bay-ferry-dock",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt crown bay ferry dock crown bay ferry dock ferry terminal crown bay ferry dock and water island connection hub crown bay ferry water island ferry crown bay dock"
+    },
+    {
+      "id": "stt-frenchtown-marina",
+      "name": "Frenchtown Marina",
+      "island": "st_thomas",
+      "type": "ferry_terminal",
+      "lat": 18.3376,
+      "lng": -64.9437,
+      "aliases": [
+        "frenchtown marina",
+        "frenchtown dock",
+        "frenchtown boats"
+      ],
+      "description": "Frenchtown marina and marine pickup/dropoff reference point.",
+      "source": "transportNodes",
+      "sourceId": "stt-frenchtown-marina",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt frenchtown marina frenchtown marina ferry terminal frenchtown marina and marine pickup dropoff reference point frenchtown marina frenchtown dock frenchtown boats"
+    },
+    {
+      "id": "stt-red-hook-ferry-terminal",
+      "name": "Red Hook Ferry Terminal",
+      "island": "st_thomas",
+      "type": "ferry_terminal",
+      "lat": 18.3269,
+      "lng": -64.8496,
+      "aliases": [
+        "red hook",
+        "st john ferry",
+        "red hook ferry"
+      ],
+      "description": "Primary St. Thomas ferry terminal for St. John service.",
+      "source": "transportNodes",
+      "sourceId": "stt-red-hook-ferry-terminal",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt red hook ferry terminal red hook ferry terminal ferry terminal primary st thomas ferry terminal for st john service red hook st john ferry red hook ferry"
+    },
+    {
+      "id": "stt-tortola-wharf",
+      "name": "Tortola Wharf",
+      "island": "st_thomas",
+      "type": "ferry_terminal",
+      "lat": 18.341,
+      "lng": -64.932,
+      "aliases": [
+        "tortola ferry",
+        "bvi ferry",
+        "tortola wharf"
+      ],
+      "description": "Downtown international ferry wharf serving BVI connections.",
+      "source": "transportNodes",
+      "sourceId": "stt-tortola-wharf",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt tortola wharf tortola wharf ferry terminal downtown international ferry wharf serving bvi connections tortola ferry bvi ferry tortola wharf"
+    },
+    {
+      "id": "stt-alexander-farrelly-justice-center",
+      "name": "Alexander A. Farrelly Justice Center",
+      "island": "st_thomas",
+      "type": "government",
+      "lat": 18.341,
+      "lng": -64.934,
+      "aliases": [
+        "justice center",
+        "farrelly",
+        "police headquarters"
+      ],
+      "description": "Downtown justice, police, and civic transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-alexander-farrelly-justice-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt alexander farrelly justice center alexander a farrelly justice center government downtown justice police and civic transportation hub justice center farrelly police headquarters"
+    },
+    {
+      "id": "stt-bovoni-fire-station",
+      "name": "Bovoni Fire Station",
+      "island": "st_thomas",
+      "type": "government",
+      "lat": 18.317,
+      "lng": -64.887,
+      "aliases": [
+        "bovoni fire",
+        "fire station"
+      ],
+      "description": "Southside public safety and emergency services hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-bovoni-fire-station",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt bovoni fire station bovoni fire station government southside public safety and emergency services hub bovoni fire fire station"
+    },
+    {
+      "id": "stt-charlotte-amalie-courthouse",
+      "name": "Charlotte Amalie Courthouse",
+      "island": "st_thomas",
+      "type": "government",
+      "lat": 18.341,
+      "lng": -64.934,
+      "aliases": [
+        "courthouse",
+        "st thomas courthouse"
+      ],
+      "description": "Downtown civic and government transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-charlotte-amalie-courthouse",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt charlotte amalie courthouse charlotte amalie courthouse government downtown civic and government transportation hub courthouse st thomas courthouse"
+    },
+    {
       "id": "discovery-government-st_thomas-government-house",
       "name": "Government House",
       "island": "st_thomas",
@@ -6217,6 +6652,25 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery government st thomas government house government house government st thomas history historic government complex in charlotte amalie connected to the civic history of the virgin islands history st thomas government house st thomas history historic government complex in charlotte amalie connected to the civic history of the virgin islands history st thomas historic sites government house st thomas"
+    },
+    {
+      "id": "stt-government-house",
+      "name": "Government House St. Thomas",
+      "island": "st_thomas",
+      "type": "government",
+      "lat": 18.341,
+      "lng": -64.932,
+      "aliases": [
+        "government house",
+        "governor office"
+      ],
+      "description": "Central government office and civic pickup point.",
+      "source": "transportNodes",
+      "sourceId": "stt-government-house",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt government house government house st thomas government central government office and civic pickup point government house governor office"
     },
     {
       "id": "discovery-historic_site-st_thomas-99-steps",
@@ -6317,6 +6771,26 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery historic site st thomas hassel island historic district hassel island historic district historic site st thomas history historic harbor island with maritime military and industrial ruins near charlotte amalie history st thomas hassel island historic district st thomas history historic harbor island with maritime military and industrial ruins near charlotte amalie history st thomas historic sites hassel island"
+    },
+    {
+      "id": "stt-schneider-regional-medical-center",
+      "name": "Schneider Regional Medical Center",
+      "island": "st_thomas",
+      "type": "hospital",
+      "lat": 18.336,
+      "lng": -64.919,
+      "aliases": [
+        "schneider hospital",
+        "srmc",
+        "rls hospital"
+      ],
+      "description": "Major St. Thomas hospital and medical transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-schneider-regional-medical-center",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt schneider regional medical center schneider regional medical center hospital major st thomas hospital and medical transportation hub schneider hospital srmc rls hospital"
     },
     {
       "id": "discovery-restaurant-st_thomas-agave",

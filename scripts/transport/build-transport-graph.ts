@@ -5,6 +5,10 @@ import { transportNodes } from "../../src/data/transport/transportNodes";
 import { schoolTransportNodes } from "../../src/data/transport/schools";
 import { sportsTransportNodes } from "../../src/data/transport/sportsFacilities";
 import { vitranStopNodes } from "../../src/data/transport/vitranStops";
+import { publicSafetyTransportNodes } from "../../src/data/transport/publicSafetyHubs";
+import { governmentTransportNodes } from "../../src/data/transport/governmentHubs";
+import { healthcareTransportNodes } from "../../src/data/transport/healthcareHubs";
+import { marineTransportNodes } from "../../src/data/transport/marineHubs";
 import type { IslandCode } from "../../src/types";
 
 type GraphNodeType =
@@ -106,7 +110,7 @@ function inferType(record: (typeof canonicalDiscoveries)[number]): GraphNodeType
   return null;
 }
 
-const sourceTransportNodes = [...transportNodes, ...schoolTransportNodes, ...sportsTransportNodes, ...vitranStopNodes];
+const sourceTransportNodes = [...transportNodes, ...schoolTransportNodes, ...sportsTransportNodes, ...vitranStopNodes, ...marineTransportNodes, ...healthcareTransportNodes, ...governmentTransportNodes, ...publicSafetyTransportNodes];
 
 const manualNodes: TransportGraphNode[] = sourceTransportNodes.map((node) => ({
   id: node.id,
