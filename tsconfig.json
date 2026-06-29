@@ -21,6 +21,26 @@
       ]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "noEmit": true,
+    "strict": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src",
+    "scripts"
+  ],
+  "exclude": [
+    "**/*.disabled",
+    "build",
+    "data/disabled-ts",
+    "dist",
+    "generated",
+    "node_modules",
+    "scripts"
+  ]
 }
