@@ -2,6 +2,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 
 import { canonicalDiscoveries } from "../../src/data/canonical/discoveriesCanonical";
 import { transportNodes } from "../../src/data/transport/transportNodes";
+import { schoolTransportNodes } from "../../src/data/transport/schools";
+import { sportsTransportNodes } from "../../src/data/transport/sportsFacilities";
 import type { IslandCode } from "../../src/types";
 
 type GraphNodeType =
@@ -102,7 +104,9 @@ function inferType(record: (typeof canonicalDiscoveries)[number]): GraphNodeType
   return null;
 }
 
-const manualNodes: TransportGraphNode[] = transportNodes.map((node) => ({
+const sourceTransportNodes = [...transportNodes, ...schoolTransportNodes, ...sportsTransportNodes];
+
+const manualNodes: TransportGraphNode[] = sourceTransportNodes.map((node) => ({
   id: node.id,
   name: node.name,
   island: node.island,

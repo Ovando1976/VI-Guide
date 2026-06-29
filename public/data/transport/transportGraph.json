@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-06-29T15:37:00.648Z",
+  "generatedAt": "2026-06-29T15:48:51.389Z",
   "stats": {
-    "totalNodes": 348,
+    "totalNodes": 379,
     "byIsland": {
-      "st_croix": 133,
-      "st_john": 82,
-      "st_thomas": 131,
+      "st_croix": 148,
+      "st_john": 85,
+      "st_thomas": 144,
       "water_island": 2
     },
     "byType": {
       "attraction": 66,
-      "ball_park": 2,
+      "ball_park": 4,
       "beach": 47,
       "government": 2,
       "historic_site": 20,
       "restaurant": 152,
-      "school": 2,
+      "school": 31,
       "shopping": 30,
       "taxi_stand": 1,
       "transport": 21,
@@ -543,7 +543,7 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx dc canegata ballpark d c canegata ballpark ball park sports and event transportation hub canegata dc canegata ballpark"
+      "searchText": "stx dc canegata ballpark d c canegata ballpark ball park sports and event transportation hub canegata dc canegata ballpark stx dc canegata ballpark d c canegata ballpark ball park christiansted area sports and event transportation hub canegata dc canegata ballpark"
     },
     {
       "id": "discovery-beach-st_croix-annaly-bay-beach",
@@ -2206,6 +2206,237 @@
       "searchText": "discovery restaurant st croix twin city coffee house twin city coffee house restaurant st croix restaurant twin city coffee house is a restaurant destination in the u s virgin islands restaurant st croix twin city coffee house st croix restaurant twin city coffee house is a restaurant destination in the u s virgin islands restaurant st croix restaurants st croix twin city coffee house"
     },
     {
+      "id": "stx-alfredo-andrews-elementary",
+      "name": "Alfredo Andrews Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.731,
+      "lng": -64.792,
+      "aliases": [
+        "alfredo andrews",
+        "andrews elementary"
+      ],
+      "description": "Public primary facility located off Central Highway.",
+      "source": "transportNodes",
+      "sourceId": "stx-alfredo-andrews-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx alfredo andrews elementary alfredo andrews elementary school school public primary facility located off central highway alfredo andrews andrews elementary"
+    },
+    {
+      "id": "stx-arthur-a-richards-k8",
+      "name": "Arthur A. Richards K-8 School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.712,
+      "lng": -64.884,
+      "aliases": [
+        "arthur richards",
+        "richards k8"
+      ],
+      "description": "Public K-8 school campus serving the western district.",
+      "source": "transportNodes",
+      "sourceId": "stx-arthur-a-richards-k8",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx arthur a richards k8 arthur a richards k 8 school school public k 8 school campus serving the western district arthur richards richards k8"
+    },
+    {
+      "id": "stx-claude-o-markoe-elementary",
+      "name": "Claude O. Markoe Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.714,
+      "lng": -64.881,
+      "aliases": [
+        "claude markoe",
+        "markoe elementary"
+      ],
+      "description": "Public elementary school near Frederiksted town limits.",
+      "source": "transportNodes",
+      "sourceId": "stx-claude-o-markoe-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx claude o markoe elementary claude o markoe elementary school school public elementary school near frederiksted town limits claude markoe markoe elementary"
+    },
+    {
+      "id": "stx-elena-l-christian-junior-high",
+      "name": "Elena L. Christian Junior High School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.745,
+      "lng": -64.748,
+      "aliases": [
+        "elena christian",
+        "elc",
+        "christian junior high"
+      ],
+      "description": "Public junior high school in the Christiansted area.",
+      "source": "transportNodes",
+      "sourceId": "stx-elena-l-christian-junior-high",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx elena l christian junior high elena l christian junior high school school public junior high school in the christiansted area elena christian elc christian junior high"
+    },
+    {
+      "id": "stx-eulalie-r-rivera-k8",
+      "name": "Eulalie R. Rivera K-8 School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.715,
+      "lng": -64.861,
+      "aliases": [
+        "eulalie rivera",
+        "rivera school"
+      ],
+      "description": "Public primary and intermediate facility in Estate Grove Place.",
+      "source": "transportNodes",
+      "sourceId": "stx-eulalie-r-rivera-k8",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx eulalie r rivera k8 eulalie r rivera k 8 school school public primary and intermediate facility in estate grove place eulalie rivera rivera school"
+    },
+    {
+      "id": "stx-free-will-baptist-school",
+      "name": "Free Will Baptist Christian School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.735,
+      "lng": -64.755,
+      "aliases": [
+        "free will",
+        "baptist christian school"
+      ],
+      "description": "Private Christian academy offering PK-12 options in Sion Farm.",
+      "source": "transportNodes",
+      "sourceId": "stx-free-will-baptist-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx free will baptist school free will baptist christian school school private christian academy offering pk 12 options in sion farm free will baptist christian school"
+    },
+    {
+      "id": "stx-good-hope-country-day-school",
+      "name": "Good Hope Country Day School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.72,
+      "lng": -64.83,
+      "aliases": [
+        "ghcds",
+        "good hope",
+        "country day"
+      ],
+      "description": "Co-educational independent college preparatory private school.",
+      "source": "transportNodes",
+      "sourceId": "stx-good-hope-country-day-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx good hope country day school good hope country day school school co educational independent college preparatory private school ghcds good hope country day"
+    },
+    {
+      "id": "stx-john-h-woodson-junior-high",
+      "name": "John H. Woodson Junior High School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.74,
+      "lng": -64.78,
+      "aliases": [
+        "woodson",
+        "john h woodson",
+        "woodson junior high"
+      ],
+      "description": "Public junior high school located centrally on St. Croix.",
+      "source": "transportNodes",
+      "sourceId": "stx-john-h-woodson-junior-high",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx john h woodson junior high john h woodson junior high school school public junior high school located centrally on st croix woodson john h woodson woodson junior high"
+    },
+    {
+      "id": "stx-juanita-gardine-k8",
+      "name": "Juanita Gardine K-8 School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.748,
+      "lng": -64.721,
+      "aliases": [
+        "juanita gardine",
+        "gardine school"
+      ],
+      "description": "Public K-8 school situated outside Richmond, Christiansted.",
+      "source": "transportNodes",
+      "sourceId": "stx-juanita-gardine-k8",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx juanita gardine k8 juanita gardine k 8 school school public k 8 school situated outside richmond christiansted juanita gardine gardine school"
+    },
+    {
+      "id": "stx-lew-muckle-elementary",
+      "name": "Lew Muckle Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.739,
+      "lng": -64.761,
+      "aliases": [
+        "lew muckle",
+        "muckle elementary"
+      ],
+      "description": "Public elementary school situated in Estate Sion Farm.",
+      "source": "transportNodes",
+      "sourceId": "stx-lew-muckle-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx lew muckle elementary lew muckle elementary school school public elementary school situated in estate sion farm lew muckle muckle elementary"
+    },
+    {
+      "id": "stx-pearl-b-larsen-k8",
+      "name": "Pearl B. Larsen K-8 School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.74,
+      "lng": -64.69,
+      "aliases": [
+        "pearl larsen",
+        "larsen school"
+      ],
+      "description": "Public K-8 school complex in Estate Peter's Rest.",
+      "source": "transportNodes",
+      "sourceId": "stx-pearl-b-larsen-k8",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx pearl b larsen k8 pearl b larsen k 8 school school public k 8 school complex in estate peter s rest pearl larsen larsen school"
+    },
+    {
+      "id": "stx-ricardo-richards-elementary",
+      "name": "Ricardo Richards Elementary School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.734,
+      "lng": -64.742,
+      "aliases": [
+        "ricardo richards",
+        "ricardo elementary"
+      ],
+      "description": "Public primary facility in Estate Barren Spot.",
+      "source": "transportNodes",
+      "sourceId": "stx-ricardo-richards-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx ricardo richards elementary ricardo richards elementary school school public primary facility in estate barren spot ricardo richards ricardo elementary"
+    },
+    {
       "id": "stx-central-high-school",
       "name": "St. Croix Central High School",
       "island": "st_croix",
@@ -2214,7 +2445,8 @@
       "lng": -64.778,
       "aliases": [
         "central high",
-        "st croix central"
+        "st croix central",
+        "chs"
       ],
       "description": "School and community transportation hub.",
       "source": "transportNodes",
@@ -2222,7 +2454,66 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central"
+      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central stx central high school st croix central high school school central st croix public high school and community transportation hub central high st croix central chs"
+    },
+    {
+      "id": "stx-educational-complex",
+      "name": "St. Croix Educational Complex",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.702,
+      "lng": -64.831,
+      "aliases": [
+        "educational complex",
+        "stx complex",
+        "scechs"
+      ],
+      "description": "Major public high school and career/technical education center in Frederiksted.",
+      "source": "transportNodes",
+      "sourceId": "stx-educational-complex",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx educational complex st croix educational complex school major public high school and career technical education center in frederiksted educational complex stx complex scechs"
+    },
+    {
+      "id": "stx-st-marys-catholic-school",
+      "name": "St. Mary's Catholic School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.746,
+      "lng": -64.704,
+      "aliases": [
+        "st marys",
+        "marys catholic",
+        "stx catholic"
+      ],
+      "description": "Parochial Catholic elementary and middle school in Christiansted.",
+      "source": "transportNodes",
+      "sourceId": "stx-st-marys-catholic-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx st marys catholic school st mary s catholic school school parochial catholic elementary and middle school in christiansted st marys marys catholic stx catholic"
+    },
+    {
+      "id": "stx-st-patricks-catholic-school",
+      "name": "St. Patrick's Catholic School",
+      "island": "st_croix",
+      "type": "school",
+      "lat": 17.713,
+      "lng": -64.883,
+      "aliases": [
+        "st patricks",
+        "patricks catholic"
+      ],
+      "description": "Parochial Catholic primary and intermediate school in Frederiksted.",
+      "source": "transportNodes",
+      "sourceId": "stx-st-patricks-catholic-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stx st patricks catholic school st patrick s catholic school school parochial catholic primary and intermediate school in frederiksted st patricks patricks catholic"
     },
     {
       "id": "discovery-shopping-st_croix-christiansted-boardwalk",
@@ -3023,6 +3314,25 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "discovery attraction st john virgin islands national park virgin islands national park attraction st john attraction virgin islands national park is a attraction destination in the u s virgin islands attraction st john virgin islands national park st john attraction virgin islands national park is a attraction destination in the u s virgin islands attraction st john attractions virgin islands national park"
+    },
+    {
+      "id": "stj-cruz-bay-ball-field",
+      "name": "Cruz Bay Ball Field",
+      "island": "st_john",
+      "type": "ball_park",
+      "lat": 18.331,
+      "lng": -64.795,
+      "aliases": [
+        "cruz bay field",
+        "ball field"
+      ],
+      "description": "St. John sports and event transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stj-cruz-bay-ball-field",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj cruz bay ball field cruz bay ball field ball park st john sports and event transportation hub cruz bay field ball field"
     },
     {
       "id": "discovery-beach-st_john-cinnamon-bay-beach",
@@ -4129,6 +4439,45 @@
       "searchText": "discovery restaurant st john woody s seafood saloon woody s seafood saloon restaurant st john restaurant woody s seafood saloon is a restaurant destination in the u s virgin islands restaurant st john woodys seafood saloon st john restaurant woodys seafood saloon is a restaurant destination in the u s virgin islands restaurant st john restaurants st john woodys seafood saloon"
     },
     {
+      "id": "stj-gifft-hill-school",
+      "name": "Gifft Hill School",
+      "island": "st_john",
+      "type": "school",
+      "lat": 18.33,
+      "lng": -64.77,
+      "aliases": [
+        "gifft hill",
+        "ghs"
+      ],
+      "description": "Independent co-educational private PK-12 school on Gifft Hill.",
+      "source": "transportNodes",
+      "sourceId": "stj-gifft-hill-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj gifft hill school gifft hill school school independent co educational private pk 12 school on gifft hill gifft hill ghs"
+    },
+    {
+      "id": "stj-julius-e-sprauve-school",
+      "name": "Julius E. Sprauve School",
+      "island": "st_john",
+      "type": "school",
+      "lat": 18.333,
+      "lng": -64.794,
+      "aliases": [
+        "sprauve",
+        "julius sprauve",
+        "jess"
+      ],
+      "description": "Public K-8 school and community transportation hub in Cruz Bay.",
+      "source": "transportNodes",
+      "sourceId": "stj-julius-e-sprauve-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stj julius e sprauve school julius e sprauve school school public k 8 school and community transportation hub in cruz bay sprauve julius sprauve jess"
+    },
+    {
       "id": "discovery-shopping-st_john-c-and-d-supermarket",
       "name": "C & D Supermarket",
       "island": "st_john",
@@ -4847,7 +5196,26 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt emile griffith ballpark emile griffith ballpark ball park sports and event transportation hub emile griffith ballpark stadium"
+      "searchText": "stt emile griffith ballpark emile griffith ballpark ball park sports and event transportation hub emile griffith ballpark stadium stt emile griffith ballpark emile griffith ballpark ball park downtown sports and event transportation hub emile griffith ballpark stadium"
+    },
+    {
+      "id": "stt-lionel-roberts-stadium",
+      "name": "Lionel Roberts Stadium",
+      "island": "st_thomas",
+      "type": "ball_park",
+      "lat": 18.341,
+      "lng": -64.931,
+      "aliases": [
+        "lionel roberts",
+        "stadium"
+      ],
+      "description": "Sports, school, and event transportation hub.",
+      "source": "transportNodes",
+      "sourceId": "stt-lionel-roberts-stadium",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt lionel roberts stadium lionel roberts stadium ball park sports school and event transportation hub lionel roberts stadium"
     },
     {
       "id": "discovery-beach-st_thomas-bolongo-bay-beach",
@@ -6490,6 +6858,84 @@
       "searchText": "discovery restaurant st thomas xo bistro xo bistro restaurant st thomas restaurant xo bistro is a restaurant destination in the u s virgin islands restaurant st thomas xo bistro st thomas restaurant xo bistro is a restaurant destination in the u s virgin islands restaurant st thomas restaurants st thomas xo bistro"
     },
     {
+      "id": "stt-addelita-cancryn-junior-high-school",
+      "name": "Addelita Cancryn Intermediate School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.337,
+      "lng": -64.948,
+      "aliases": [
+        "cancryn",
+        "addelita cancryn",
+        "acjhs"
+      ],
+      "description": "Public intermediate school near Crown Bay.",
+      "source": "transportNodes",
+      "sourceId": "stt-addelita-cancryn-junior-high-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt addelita cancryn junior high school addelita cancryn intermediate school school public intermediate school near crown bay cancryn addelita cancryn acjhs"
+    },
+    {
+      "id": "stt-all-saints-cathedral-school",
+      "name": "All Saints Cathedral School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.344,
+      "lng": -64.933,
+      "aliases": [
+        "all saints",
+        "ascs"
+      ],
+      "description": "Private Episcopal parochial school near Garden Street.",
+      "source": "transportNodes",
+      "sourceId": "stt-all-saints-cathedral-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt all saints cathedral school all saints cathedral school school private episcopal parochial school near garden street all saints ascs"
+    },
+    {
+      "id": "stt-antilles-school",
+      "name": "Antilles School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.32,
+      "lng": -64.91,
+      "aliases": [
+        "antilles",
+        "antilles private school"
+      ],
+      "description": "Independent private PK-12 school in Frenchman's Bay.",
+      "source": "transportNodes",
+      "sourceId": "stt-antilles-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt antilles school antilles school school independent private pk 12 school in frenchman s bay antilles antilles private school"
+    },
+    {
+      "id": "stt-bertha-c-boschulte-middle-school",
+      "name": "Bertha C. Boschulte Middle School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.32,
+      "lng": -64.89,
+      "aliases": [
+        "bcb",
+        "bertha boschulte",
+        "boschulte middle"
+      ],
+      "description": "Public middle school located in Bovoni.",
+      "source": "transportNodes",
+      "sourceId": "stt-bertha-c-boschulte-middle-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt bertha c boschulte middle school bertha c boschulte middle school school public middle school located in bovoni bcb bertha boschulte boschulte middle"
+    },
+    {
       "id": "stt-charlotte-amalie-high-school",
       "name": "Charlotte Amalie High School",
       "island": "st_thomas",
@@ -6506,7 +6952,167 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt charlotte amalie high school charlotte amalie high school school major school and community transportation hub cahs charlotte amalie high"
+      "searchText": "stt charlotte amalie high school charlotte amalie high school school major school and community transportation hub cahs charlotte amalie high stt charlotte amalie high school charlotte amalie high school school major high school and community transportation hub in charlotte amalie cahs charlotte amalie high"
+    },
+    {
+      "id": "stt-ivanna-eudora-kean-high-school",
+      "name": "Ivanna Eudora Kean High School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.334,
+      "lng": -64.888,
+      "aliases": [
+        "kean",
+        "iekhs",
+        "ivanna eudora kean"
+      ],
+      "description": "East-end high school and community transportation hub near Red Hook.",
+      "source": "transportNodes",
+      "sourceId": "stt-ivanna-eudora-kean-high-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt ivanna eudora kean high school ivanna eudora kean high school school east end high school and community transportation hub near red hook kean iekhs ivanna eudora kean"
+    },
+    {
+      "id": "stt-jane-e-tuitt-elementary",
+      "name": "Jane E. Tuitt Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.343,
+      "lng": -64.936,
+      "aliases": [
+        "tuitt elementary",
+        "jane tuitt"
+      ],
+      "description": "Public primary school serving downtown Charlotte Amalie.",
+      "source": "transportNodes",
+      "sourceId": "stt-jane-e-tuitt-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt jane e tuitt elementary jane e tuitt elementary school school public primary school serving downtown charlotte amalie tuitt elementary jane tuitt"
+    },
+    {
+      "id": "stt-joseph-sibilly-elementary",
+      "name": "Joseph Sibilly Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.356,
+      "lng": -64.931,
+      "aliases": [
+        "sibilly",
+        "joseph sibilly",
+        "sibilly elementary"
+      ],
+      "description": "Public elementary school located in the Northside district.",
+      "source": "transportNodes",
+      "sourceId": "stt-joseph-sibilly-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt joseph sibilly elementary joseph sibilly elementary school school public elementary school located in the northside district sibilly joseph sibilly sibilly elementary"
+    },
+    {
+      "id": "stt-lockhart-k8-school",
+      "name": "Lockhart K-8 School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.341,
+      "lng": -64.922,
+      "aliases": [
+        "lockhart elementary",
+        "lockhart school",
+        "lockhart k8"
+      ],
+      "description": "Public primary and intermediate school facility in Charlotte Amalie.",
+      "source": "transportNodes",
+      "sourceId": "stt-lockhart-k8-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt lockhart k8 school lockhart k 8 school school public primary and intermediate school facility in charlotte amalie lockhart elementary lockhart school lockhart k8"
+    },
+    {
+      "id": "stt-saints-peter-and-paul-school",
+      "name": "Saints Peter and Paul Catholic School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.342,
+      "lng": -64.935,
+      "aliases": [
+        "peter and paul",
+        "spp",
+        "catholic school stt"
+      ],
+      "description": "Parochial Catholic school in historic downtown Charlotte Amalie.",
+      "source": "transportNodes",
+      "sourceId": "stt-saints-peter-and-paul-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt saints peter and paul school saints peter and paul catholic school school parochial catholic school in historic downtown charlotte amalie peter and paul spp catholic school stt"
+    },
+    {
+      "id": "stt-ulla-f-muller-elementary",
+      "name": "Ulla F. Muller Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.345,
+      "lng": -64.942,
+      "aliases": [
+        "muller elementary",
+        "ulla muller",
+        "nisky school"
+      ],
+      "description": "Public elementary school located near Contant/Nisky.",
+      "source": "transportNodes",
+      "sourceId": "stt-ulla-f-muller-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt ulla f muller elementary ulla f muller elementary school school public elementary school located near contant nisky muller elementary ulla muller nisky school"
+    },
+    {
+      "id": "stt-vimsia-academy",
+      "name": "VI Montessori School & Peter Gruber International Academy",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.32,
+      "lng": -64.85,
+      "aliases": [
+        "vimsia",
+        "montessori",
+        "peter gruber",
+        "vi montessori"
+      ],
+      "description": "Private Montessori and IB World Academy near Red Hook.",
+      "source": "transportNodes",
+      "sourceId": "stt-vimsia-academy",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt vimsia academy vi montessori school and peter gruber international academy school private montessori and ib world academy near red hook vimsia montessori peter gruber vi montessori"
+    },
+    {
+      "id": "stt-yvonne-milliner-bowsky-elementary",
+      "name": "Yvonne Milliner-Bowsky Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.353,
+      "lng": -64.898,
+      "aliases": [
+        "bowsky",
+        "yvonne bowsky",
+        "peace corps school"
+      ],
+      "description": "Public elementary school situated in Estate Mandahl.",
+      "source": "transportNodes",
+      "sourceId": "stt-yvonne-milliner-bowsky-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt yvonne milliner bowsky elementary yvonne milliner bowsky elementary school school public elementary school situated in estate mandahl bowsky yvonne bowsky peace corps school"
     },
     {
       "id": "discovery-shopping-st_thomas-caribbean-fish-market",
