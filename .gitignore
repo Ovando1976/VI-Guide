@@ -7,3 +7,9 @@ coverage/
 .env*
 !.env.example
 serviceAccountKey.json
+
+# Firebase/Admin secrets
+.secrets/
+secrets/
+firebase-admin.json
+firebase-service-account.json
