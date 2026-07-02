@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-02T10:00:07.341Z",
+  "generatedAt": "2026-07-02T10:09:53.656Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 883,
+    "issuesActual": 876,
     "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
@@ -32,7 +32,7 @@
   "totalRecords": 3323,
   "severityTotals": {
     "high": 0,
-    "medium": 883,
+    "medium": 876,
     "low": 0
   },
   "issueGroups": [
@@ -40,7 +40,7 @@
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 883,
+      "count": 876,
       "sampled": 200,
       "sampleLimit": 200
     }
@@ -359,16 +359,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 143,
-      "id": "st_thomas-historic-bluebeards-castle",
-      "name": "Bluebeard’s Castle",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 147,
       "id": "st_john-point-boatman-point",
       "name": "Boatman Point",
@@ -542,16 +532,6 @@
       "index": 199,
       "id": "st_thomas-estate-bourgen-estate",
       "name": "Bourgen Estate",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 210,
-      "id": "st_thomas-estate-brewers-bay",
-      "name": "Brewers Bay",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -2042,6 +2022,26 @@
       "index": 745,
       "id": "st_thomas-estate-enke-george-pauls-widow",
       "name": "Enke (George Paul's widow)",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 746,
+      "id": "st_thomas-estate-ensoiiihed",
+      "name": "Ensoiiihed",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 748,
+      "id": "st_thomas-estate-ensomhed-bay",
+      "name": "Ensomhed Bay",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."

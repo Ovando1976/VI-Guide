@@ -1,0 +1,620 @@
+{
+  "generatedAt": "2026-07-02T10:09:32.172Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.exact-coordinate-candidates.2026-07-02T10-09-32-054Z.ts",
+  "candidateReport": "reports/geographic-index-coordinate-candidates-full.json",
+  "exactCandidates": 32,
+  "applied": 32,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 143,
+      "id": "st_thomas-historic-bluebeards-castle",
+      "name": "Bluebeard’s Castle",
+      "type": "historic",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3387,
+        "lng": -64.9255
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 144,
+        "name": "Bluebeard’s Castle",
+        "id": "st_thomas-tower-bluebeards-castle",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 192,
+      "id": "st_thomas-bay-botany-bay",
+      "name": "Botany Bay",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.35401195896805,
+        "lng": -65.03347371262775
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 193,
+        "name": "BOTANY BAY",
+        "id": "st_thomas-estate-botany-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 202,
+      "id": "st_thomas-bay-bovoni-cay",
+      "name": "Bovoni Cay",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.31274648774975,
+        "lng": -64.87229899313834
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 203,
+        "name": "BOVONI CAY",
+        "id": "st_thomas-estate-bovoni-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 210,
+      "id": "st_thomas-estate-brewers-bay",
+      "name": "Brewers Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3444,
+        "lng": -64.9782
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 209,
+        "name": "Brewers Bay",
+        "id": "st_thomas-beach-brewers-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 235,
+      "id": "st_thomas-island-buck-island-st-thomas",
+      "name": "Buck Island, St. Thomas",
+      "type": "island",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.27684110476125,
+        "lng": -64.8922408046305
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 231,
+        "name": "BUCK ISLAND",
+        "id": "st_thomas-estate-buck-island",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 323,
+      "id": "st_john-bay-caneel-bay",
+      "name": "Caneel Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.34305825172645,
+        "lng": -64.7874874960091
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 324,
+        "name": "CANEEL BAY",
+        "id": "st_john-estate-caneel-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 464,
+      "id": "st_john-bay-cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3566,
+        "lng": -64.7582
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 463,
+        "name": "Cinnamon Bay",
+        "id": "st_john-beach-cinnamon-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 468,
+      "id": "st_john-bay-cinnamon-cay",
+      "name": "Cinnamon Cay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.356393692045,
+        "lng": -64.75644601064465
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 469,
+        "name": "CINNAMON CAY",
+        "id": "st_john-estate-cinnamon-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 649,
+      "id": "st_thomas-island-dog-island",
+      "name": "Dog Island",
+      "type": "island",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.2961806253714,
+        "lng": -64.8159807710881
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 650,
+        "name": "DOG ISLAND",
+        "id": "st_thomas-estate-dog-island",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 815,
+      "id": "st_thomas-government_office-fort-christian",
+      "name": "Fort Christian",
+      "type": "government_office",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3416,
+        "lng": -64.9307
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 816,
+        "name": "Fort Christian",
+        "id": "st_thomas-fort-fort-christian",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 835,
+      "id": "st_john-bay-francis-bay",
+      "name": "Francis Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3621,
+        "lng": -64.7469
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 834,
+        "name": "Francis Bay",
+        "id": "st_john-beach-francis-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 861,
+      "id": "st_croix-point-frederiksted",
+      "name": "Frederiksted",
+      "type": "point",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7124548975535,
+        "lng": -64.88349213990135
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 862,
+        "name": "FREDERIKSTED",
+        "id": "st_croix-estate-frederiksted",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1032,
+      "id": "st_john-bay-hansen-bay",
+      "name": "Hansen Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.33926748296545,
+        "lng": -64.66960209213426
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1033,
+        "name": "HANSEN BAY",
+        "id": "st_john-estate-hansen-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1072,
+      "id": "st_croix-hill-hermon-hill",
+      "name": "Hermon Hill",
+      "type": "hill",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.73418300782975,
+        "lng": -64.71072853406909
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1073,
+        "name": "HERMON HILL",
+        "id": "st_croix-estate-hermon-hill",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1155,
+      "id": "st_thomas-island-inner-brass-island",
+      "name": "Inner Brass Island",
+      "type": "island",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.38173975861995,
+        "lng": -64.9707654257096
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1156,
+        "name": "INNER BRASS ISLAND",
+        "id": "st_thomas-estate-inner-brass-island",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1402,
+      "id": "st_john-bay-leinster-bay",
+      "name": "Leinster Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.36092071796525,
+        "lng": -64.71843131202445
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1403,
+        "name": "LEINSTER BAY",
+        "id": "st_john-estate-leinster-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1478,
+      "id": "st_croix-estate-little-princess",
+      "name": "Little Princess",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.753763,
+        "lng": -64.726016
+      },
+      "candidate": {
+        "source": "historic_sites",
+        "sourceIndex": 26,
+        "name": "Estate Little Princess",
+        "id": "nrhp-stx-estate-little-princess",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1516,
+      "id": "st_john-island-lovango-cay",
+      "name": "Lovango Cay",
+      "type": "island",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3619271023656,
+        "lng": -64.8056650408506
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1517,
+        "name": "LOVANGO CAY",
+        "id": "st_john-estate-lovango-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1531,
+      "id": "st_croix-hill-lowry-hill",
+      "name": "Lowry Hill",
+      "type": "hill",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.738359631802048,
+        "lng": -64.67317575378715
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1532,
+        "name": "LOWRY HILL",
+        "id": "st_croix-estate-lowry-hill",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1556,
+      "id": "st_john-bay-maho-bay",
+      "name": "Maho Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3588,
+        "lng": -64.7432
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 1555,
+        "name": "Maho Bay",
+        "id": "st_john-beach-maho-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 1602,
+      "id": "st_john-estate-mary-point-estate",
+      "name": "Mary-Point Estate",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.368333,
+        "lng": -64.741389
+      },
+      "candidate": {
+        "source": "historic_sites",
+        "sourceIndex": 53,
+        "name": "Mary Point Estate",
+        "id": "nrhp-stj-mary-point-estate",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2030,
+      "id": "st_croix-island-protestant-cay",
+      "name": "Protestant Cay",
+      "type": "island",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7496395174271,
+        "lng": -64.70268925261234
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2031,
+        "name": "PROTESTANT CAY",
+        "id": "st_croix-estate-protestant-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2109,
+      "id": "st_croix-bay-recovery-hill",
+      "name": "Recovery Hill",
+      "type": "bay",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.73688179370825,
+        "lng": -64.69789096304835
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2110,
+        "name": "RECOVERY HILL",
+        "id": "st_croix-estate-recovery-hill",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2271,
+      "id": "st_croix-estate-sandy-point",
+      "name": "Sandy Point",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.6819,
+        "lng": -64.8997
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2270,
+        "name": "Sandy Point",
+        "id": "st_croix-beach-sandy-point",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2287,
+      "id": "st_thomas-island-savana-island",
+      "name": "Savana Island",
+      "type": "island",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3409417799056,
+        "lng": -65.07956596206054
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2288,
+        "name": "SAVANA ISLAND",
+        "id": "st_thomas-estate-savana-island",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2423,
+      "id": "st_john-bay-steven-cay",
+      "name": "Steven Cay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.33000650755955,
+        "lng": -64.80740381518945
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2424,
+        "name": "STEVEN CAY",
+        "id": "st_john-estate-steven-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2496,
+      "id": "st_thomas-cay-thatch-cay",
+      "name": "Thatch Cay",
+      "type": "cay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3592767020762,
+        "lng": -64.86191857744305
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2497,
+        "name": "THATCH CAY",
+        "id": "st_thomas-estate-thatch-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2551,
+      "id": "st_john-bay-trunk-bay",
+      "name": "Trunk Bay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3527,
+        "lng": -64.7694
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2550,
+        "name": "Trunk Bay",
+        "id": "st_john-beach-trunk-bay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2553,
+      "id": "st_john-bay-trunk-cay",
+      "name": "Trunk Cay",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3550296711977,
+        "lng": -64.7686847888134
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2554,
+        "name": "TRUNK CAY",
+        "id": "st_john-estate-trunk-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2622,
+      "id": "st_thomas-bay-venus-hill",
+      "name": "Venus Hill",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.353333,
+        "lng": -64.929444
+      },
+      "candidate": {
+        "source": "historic_sites",
+        "sourceIndex": 68,
+        "name": "Venus Hill",
+        "id": "nrhp-stt-venus-hill",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2686,
+      "id": "st_thomas-point-west-cay",
+      "name": "West Cay",
+      "type": "point",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.35872531090545,
+        "lng": -65.0462665723619
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2687,
+        "name": "WEST CAY",
+        "id": "st_thomas-estate-west-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 2717,
+      "id": "st_john-island-whistling-cay",
+      "name": "Whistling Cay",
+      "type": "island",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3702779125285,
+        "lng": -64.75705807719291
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2718,
+        "name": "WHISTLING CAY",
+        "id": "st_john-estate-whistling-cay",
+        "reason": "exact_slug",
+        "score": 1
+      }
+    }
+  ],
+  "skippedRecords": []
+}
