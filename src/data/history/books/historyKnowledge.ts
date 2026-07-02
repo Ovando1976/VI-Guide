@@ -30,6 +30,31 @@ import {
 } from "../sources";
 import { usviHistoryExtract } from "../generated/usviHistoryExtract";
 
+function asStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => String(item ?? "").trim())
+    .filter(Boolean);
+}
+
+function recordPlaces(record: any): string[] {
+  return asStringArray(record?.places);
+}
+
+function recordPeople(record: any): string[] {
+  return asStringArray(record?.people);
+}
+
+function recordEstates(record: any): string[] {
+  return asStringArray(record?.estates);
+}
+
+function recordTopics(record: any): string[] {
+  return asStringArray(record?.topics);
+}
+
+
+
 export type { HistoricalKnowledgeRecord };
 
 function sourceFactToKnowledgeRecord(
@@ -73,9 +98,9 @@ function generatedRecordToKnowledgeRecord(
   record: (typeof usviHistoryExtract)[number],
 ): HistoricalKnowledgeRecord {
   const island =
-    record.places.includes("St. John")
+    recordPlaces(record).includes("St. John")
       ? "st_john"
-      : record.places.includes("St. Croix")
+      : recordPlaces(record).includes("St. Croix")
         ? "st_croix"
         : "st_thomas";
 
@@ -85,8 +110,8 @@ function generatedRecordToKnowledgeRecord(
     type: record.type === "maritime" ? "industry" : "event",
     island,
     relatedPlaces: [
-      ...record.places,
-      ...(record.estates ?? []),
+      ...recordPlaces(record),
+      ...recordEstates(record),
       ...(record.historicSites ?? []),
     ],
     dateRange: record.year ? String(record.year) : undefined,
@@ -97,10 +122,10 @@ function generatedRecordToKnowledgeRecord(
     searchTerms: [
       record.title,
       record.type,
-      ...record.places,
-      ...record.people,
+      ...recordPlaces(record),
+      ...recordPeople(record),
       ...(record.organizations ?? []),
-      ...(record.estates ?? []),
+      ...recordEstates(record),
       ...(record.historicSites ?? []),
       record.source.title,
       record.source.file,

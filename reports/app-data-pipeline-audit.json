@@ -1,0 +1,306 @@
+{
+  "generatedAt": "2026-07-02T22:00:41.174Z",
+  "root": "/workspaces/VI-Guide",
+  "totals": {
+    "checks": 52,
+    "ok": 48,
+    "warnings": 4,
+    "errors": 0
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "name": "atlas-output:public/data/atlas/master-atlas.json",
+      "message": "Optional atlas output missing: public/data/atlas/master-atlas.json"
+    },
+    {
+      "name": "atlas-output:public/data/atlas/master-atlas.index.json",
+      "message": "Optional atlas output missing: public/data/atlas/master-atlas.index.json"
+    },
+    {
+      "name": "atlas-output:public/data/canonical/master-atlas.json",
+      "message": "Optional atlas output missing: public/data/canonical/master-atlas.json"
+    },
+    {
+      "name": "core-data:src/data/core/geographicIndex.data.ts",
+      "size": 299,
+      "roughRecordMarkers": 0
+    }
+  ],
+  "checks": [
+    {
+      "name": "file:package.json",
+      "status": "ok",
+      "size": 2660
+    },
+    {
+      "name": "json:package.json",
+      "status": "ok",
+      "type": "object",
+      "count": 7
+    },
+    {
+      "name": "package-script:dev",
+      "status": "ok",
+      "command": "vite --host 0.0.0.0 --port 3000 --strictPort"
+    },
+    {
+      "name": "package-script:build",
+      "status": "ok",
+      "command": "vite build"
+    },
+    {
+      "name": "package-script:atlas:build",
+      "status": "ok",
+      "command": "tsx scripts/build-master-atlas.ts"
+    },
+    {
+      "name": "package-script:atlas:audit",
+      "status": "ok",
+      "command": "tsx scripts/audit-master-atlas.ts"
+    },
+    {
+      "name": "package-script:atlas:verify",
+      "status": "ok",
+      "command": "npm run atlas:build && npm run atlas:sanitize && npm run atlas:audit && npx tsc --noEmit"
+    },
+    {
+      "name": "env:mapbox",
+      "status": "ok",
+      "envFiles": [
+        ".env.local"
+      ]
+    },
+    {
+      "name": "file:index.html",
+      "status": "ok",
+      "size": 311
+    },
+    {
+      "name": "file:src/main.tsx",
+      "status": "ok",
+      "size": 320
+    },
+    {
+      "name": "app-shell:createRoot",
+      "status": "ok",
+      "file": "src/main.tsx"
+    },
+    {
+      "name": "file:src/App.tsx",
+      "status": "ok",
+      "size": 6034
+    },
+    {
+      "name": "app-shell:map-route",
+      "status": "ok",
+      "message": "Map route appears to be referenced.",
+      "file": "src/App.tsx"
+    },
+    {
+      "name": "file:src/components/maps/IslandMap.tsx",
+      "status": "ok",
+      "size": 37338
+    },
+    {
+      "name": "file:src/components/Maps.tsx",
+      "status": "ok",
+      "size": 25936
+    },
+    {
+      "name": "file:src/hooks/useMapPoints.ts",
+      "status": "ok",
+      "size": 8446
+    },
+    {
+      "name": "file:src/data/core/geographicIndex.ts",
+      "status": "ok",
+      "size": 1055
+    },
+    {
+      "name": "file:src/data/core/geographicIndex.data.ts",
+      "status": "ok",
+      "size": 299
+    },
+    {
+      "name": "file:src/data/core/cleanGeographicIndex.ts",
+      "status": "ok",
+      "size": 1670
+    },
+    {
+      "name": "file:src/data/core/cleanGeographicIndex.data.js",
+      "status": "ok",
+      "size": 10231591
+    },
+    {
+      "name": "IslandMap:url:/geo/usvi-estates.geojson",
+      "status": "ok",
+      "publicPath": "public/geo/usvi-estates.geojson",
+      "size": 11144726
+    },
+    {
+      "name": "IslandMap:url:/geo/usvi-parcels.geojson",
+      "status": "ok",
+      "publicPath": "public/geo/usvi-parcels.geojson",
+      "size": 52
+    },
+    {
+      "name": "IslandMap:url:/geo/usvi-heat.geojson",
+      "status": "ok",
+      "publicPath": "public/geo/usvi-heat.geojson",
+      "size": 52
+    },
+    {
+      "name": "IslandMap:mapbox",
+      "status": "ok"
+    },
+    {
+      "name": "atlas-output:public/data/atlas/master-atlas.json",
+      "status": "warning",
+      "message": "Optional atlas output missing: public/data/atlas/master-atlas.json"
+    },
+    {
+      "name": "atlas-output:public/data/atlas/master-atlas.index.json",
+      "status": "warning",
+      "message": "Optional atlas output missing: public/data/atlas/master-atlas.index.json"
+    },
+    {
+      "name": "atlas-output:public/data/canonical/master-atlas.json",
+      "status": "warning",
+      "message": "Optional atlas output missing: public/data/canonical/master-atlas.json"
+    },
+    {
+      "name": "core-data:src/data/core/geographicIndex.data.ts",
+      "status": "warning",
+      "size": 299,
+      "roughRecordMarkers": 0
+    },
+    {
+      "name": "core-data:src/data/core/cleanGeographicIndex.data.js",
+      "status": "ok",
+      "size": 10231591,
+      "roughRecordMarkers": 18648
+    },
+    {
+      "name": "file:public/geo/usvi-estates.geojson",
+      "status": "ok",
+      "size": 11144726
+    },
+    {
+      "name": "json:public/geo/usvi-estates.geojson",
+      "status": "ok",
+      "type": "object",
+      "count": 415
+    },
+    {
+      "name": "geojson:public/geo/usvi-estates.geojson",
+      "status": "ok",
+      "featureCount": 415
+    },
+    {
+      "name": "file:public/geo/usvi-parcels.geojson",
+      "status": "ok",
+      "size": 52
+    },
+    {
+      "name": "json:public/geo/usvi-parcels.geojson",
+      "status": "ok",
+      "type": "object",
+      "count": 0
+    },
+    {
+      "name": "geojson:public/geo/usvi-parcels.geojson",
+      "status": "ok",
+      "featureCount": 0
+    },
+    {
+      "name": "file:public/data/estate-search-index.json",
+      "status": "ok",
+      "size": 52420
+    },
+    {
+      "name": "json:public/data/estate-search-index.json",
+      "status": "ok",
+      "type": "array",
+      "count": 420
+    },
+    {
+      "name": "file:public/data/nearby-places.json",
+      "status": "ok",
+      "size": 948045
+    },
+    {
+      "name": "json:public/data/nearby-places.json",
+      "status": "ok",
+      "type": "object",
+      "count": 317
+    },
+    {
+      "name": "file:public/data/places.json",
+      "status": "ok",
+      "size": 405456
+    },
+    {
+      "name": "json:public/data/places.json",
+      "status": "ok",
+      "type": "array",
+      "count": 317
+    },
+    {
+      "name": "file:public/data/place-image-manifest.json",
+      "status": "ok",
+      "size": 101005
+    },
+    {
+      "name": "json:public/data/place-image-manifest.json",
+      "status": "ok",
+      "type": "object",
+      "count": 317
+    },
+    {
+      "name": "file:public/data/usvi-parcels.index.json",
+      "status": "ok",
+      "size": 13462003
+    },
+    {
+      "name": "json:public/data/usvi-parcels.index.json",
+      "status": "ok",
+      "type": "array",
+      "count": 65547
+    },
+    {
+      "name": "file:public/data/usvi-parcels.estates.json",
+      "status": "ok",
+      "size": 14690794
+    },
+    {
+      "name": "json:public/data/usvi-parcels.estates.json",
+      "status": "ok",
+      "type": "array",
+      "count": 65547
+    },
+    {
+      "name": "file:public/data/usvi-parcels.mobility.json",
+      "status": "ok",
+      "size": 16783830
+    },
+    {
+      "name": "json:public/data/usvi-parcels.mobility.json",
+      "status": "ok",
+      "type": "array",
+      "count": 65547
+    },
+    {
+      "name": "gitignore:.env.local",
+      "status": "ok"
+    },
+    {
+      "name": "gitignore:node_modules",
+      "status": "ok"
+    },
+    {
+      "name": "gitignore:dist",
+      "status": "ok"
+    }
+  ]
+}

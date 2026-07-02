@@ -254,9 +254,9 @@ export default function EstateDetailPage() {
   const estateMapFocusTarget = hasCoords
     ? {
         center: [mapLng, mapLat] as [number, number],
-        zoom: 12,
-        pitch: 54,
-        bearing: -12,
+        zoom: 14.4,
+        pitch: 58,
+        bearing: -14,
         title,
         name: title,
       }

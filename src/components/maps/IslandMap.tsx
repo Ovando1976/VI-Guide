@@ -407,7 +407,7 @@ function featureMatchesEstate(
   if (!targetEstate) return false;
   const target = normalizeText(targetEstate);
   const name = normalizeText(getFeatureTitle(feature));
-  return Boolean(target && name && (name === target || name.includes(target) || target.includes(name)));
+  return Boolean(target && name && name === target);
 }
 
 function pointToFeature(point: MapPoint): GeoJSON.Feature<GeoJSON.Point> | null {

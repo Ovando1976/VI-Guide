@@ -1,0 +1,879 @@
+{
+  "generatedAt": "2026-07-02T22:00:41.422Z",
+  "root": "/workspaces/VI-Guide",
+  "checks": [
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-estates.geojson",
+      "message": "Found public/geo/usvi-estates.geojson",
+      "bytes": 11144726
+    },
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-parcels.geojson",
+      "message": "Found public/geo/usvi-parcels.geojson",
+      "bytes": 52
+    },
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-heat.geojson",
+      "message": "Found public/geo/usvi-heat.geojson",
+      "bytes": 52
+    },
+    {
+      "status": "ok",
+      "id": "file:public/data/estate-search-index.json",
+      "message": "Found public/data/estate-search-index.json",
+      "bytes": 52420
+    },
+    {
+      "status": "ok",
+      "id": "file:src/data/history/books/historyKnowledge.ts",
+      "message": "Found src/data/history/books/historyKnowledge.ts",
+      "bytes": 7881
+    },
+    {
+      "status": "ok",
+      "id": "file:src/components/maps/IslandMap.tsx",
+      "message": "Found src/components/maps/IslandMap.tsx",
+      "bytes": 37338
+    },
+    {
+      "status": "ok",
+      "id": "file:src/components/Maps.tsx",
+      "message": "Found src/components/Maps.tsx",
+      "bytes": 25936
+    },
+    {
+      "status": "ok",
+      "id": "file:src/pages/estates/EstateDetailPage.tsx",
+      "message": "Found src/pages/estates/EstateDetailPage.tsx",
+      "bytes": 21776
+    },
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-estates.geojson",
+      "message": "Found public/geo/usvi-estates.geojson",
+      "bytes": 11144726
+    },
+    {
+      "status": "ok",
+      "id": "geojson:estates",
+      "message": "estates FeatureCollection is valid.",
+      "features": 415
+    },
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-parcels.geojson",
+      "message": "Found public/geo/usvi-parcels.geojson",
+      "bytes": 52
+    },
+    {
+      "status": "ok",
+      "id": "geojson:parcels",
+      "message": "parcels FeatureCollection is valid.",
+      "features": 0
+    },
+    {
+      "status": "ok",
+      "id": "file:public/geo/usvi-heat.geojson",
+      "message": "Found public/geo/usvi-heat.geojson",
+      "bytes": 52
+    },
+    {
+      "status": "ok",
+      "id": "geojson:heat",
+      "message": "heat FeatureCollection is valid.",
+      "features": 0
+    },
+    {
+      "status": "ok",
+      "id": "estate:bovoni-records",
+      "message": "Found Bovoni-related records.",
+      "bovoni": [
+        {
+          "index": 87,
+          "id": "1998",
+          "name": "BOVONI",
+          "slug": "bovoni",
+          "sourceObjectId": "1998",
+          "geoid": "1998",
+          "quarter": "1, 2, & 3 FRENCHMAN BAY",
+          "island": "stt"
+        },
+        {
+          "index": 88,
+          "id": "1833",
+          "name": "BOVONI CAY",
+          "slug": "bovoni-cay",
+          "sourceObjectId": "1833",
+          "geoid": "1833",
+          "quarter": "FRENCHMAN BAY",
+          "island": "stt"
+        }
+      ]
+    },
+    {
+      "status": "ok",
+      "id": "estate:bovoni-separation",
+      "message": "Bovoni and Bovoni Cay exist as separate estate names."
+    },
+    {
+      "status": "ok",
+      "id": "estate:bovoni-id-collision",
+      "message": "Bovoni records have separate IDs.",
+      "ids": [
+        "1998",
+        "1833"
+      ]
+    },
+    {
+      "status": "warning",
+      "id": "estate:substring-collisions",
+      "message": "Estate substring name collisions exist. Highlighting must use exact IDs.",
+      "count": 70,
+      "examples": [
+        {
+          "a": {
+            "index": 2,
+            "id": "1982",
+            "name": "ANNABERG",
+            "slug": "annaberg"
+          },
+          "b": {
+            "index": 67,
+            "id": "1913",
+            "name": "SUSANNABERG",
+            "slug": "susannaberg"
+          }
+        },
+        {
+          "a": {
+            "index": 2,
+            "id": "1982",
+            "name": "ANNABERG",
+            "slug": "annaberg"
+          },
+          "b": {
+            "index": 193,
+            "id": "1764",
+            "name": "ANNABERG & SHANNON GROVE",
+            "slug": "annaberg-and-shannon-grove"
+          }
+        },
+        {
+          "a": {
+            "index": 11,
+            "id": "1893",
+            "name": "CANEEL BAY",
+            "slug": "caneel-bay"
+          },
+          "b": {
+            "index": 218,
+            "id": "1957",
+            "name": "CANE",
+            "slug": "cane"
+          }
+        },
+        {
+          "a": {
+            "index": 16,
+            "id": "1625",
+            "name": "CONCORDIA A",
+            "slug": "concordia-a"
+          },
+          "b": {
+            "index": 234,
+            "id": "1774",
+            "name": "CONCORDIA",
+            "slug": "concordia"
+          }
+        },
+        {
+          "a": {
+            "index": 17,
+            "id": "1627",
+            "name": "CONCORDIA B",
+            "slug": "concordia-b"
+          },
+          "b": {
+            "index": 234,
+            "id": "1774",
+            "name": "CONCORDIA",
+            "slug": "concordia"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 98,
+            "id": "2024",
+            "name": "CONTANT 7A",
+            "slug": "contant-7a"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 100,
+            "id": "1874",
+            "name": "CONTANT 7BA",
+            "slug": "contant-7ba"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 101,
+            "id": "-1",
+            "name": "CONTANT 7Bb",
+            "slug": "contant-7bb"
+          }
+        },
+        {
+          "a": {
+            "index": 22,
+            "id": "1964",
+            "name": "EDEN",
+            "slug": "eden"
+          },
+          "b": {
+            "index": 252,
+            "id": "50",
+            "name": "FRIEDENSTHAL",
+            "slug": "friedensthal"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 195,
+            "id": "1879",
+            "name": "ANNAS HOPE",
+            "slug": "annas-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 202,
+            "id": "1781",
+            "name": "BETTYS HOPE",
+            "slug": "bettys-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 227,
+            "id": "1873",
+            "name": "CATHERINE'S HOPE",
+            "slug": "catherines-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 273,
+            "id": "1851",
+            "name": "HOLGER'S HOPE",
+            "slug": "holgers-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 275,
+            "id": "1776",
+            "name": "HOPE & CARTON HILL",
+            "slug": "hope-and-carton-hill"
+          }
+        },
+        {
+          "a": {
+            "index": 50,
+            "id": "1918",
+            "name": "MOLLEDAHL & LITTLE REEF BAY",
+            "slug": "molledahl-and-little-reef-bay"
+          },
+          "b": {
+            "index": 58,
+            "id": "1624",
+            "name": "REEF BAY",
+            "slug": "reef-bay"
+          }
+        },
+        {
+          "a": {
+            "index": 51,
+            "id": "1934",
+            "name": "MT PLEASANT & RETREAT",
+            "slug": "mt-pleasant-and-retreat"
+          },
+          "b": {
+            "index": 354,
+            "id": "1968",
+            "name": "RETREAT",
+            "slug": "retreat"
+          }
+        },
+        {
+          "a": {
+            "index": 76,
+            "id": "2032",
+            "name": "ALTONA & WELGUNST",
+            "slug": "altona-and-welgunst"
+          },
+          "b": {
+            "index": 190,
+            "id": "1683",
+            "name": "ALTONA",
+            "slug": "altona"
+          }
+        },
+        {
+          "a": {
+            "index": 78,
+            "id": "2022",
+            "name": "ANNA'S RETREAT",
+            "slug": "annas-retreat"
+          },
+          "b": {
+            "index": 354,
+            "id": "1968",
+            "name": "RETREAT",
+            "slug": "retreat"
+          }
+        },
+        {
+          "a": {
+            "index": 83,
+            "id": "1999",
+            "name": "BONNE ESPERANCE",
+            "slug": "bonne-esperance"
+          },
+          "b": {
+            "index": 207,
+            "id": "-1",
+            "name": "BONNE ESPERANCE (NORTH)",
+            "slug": "bonne-esperance-north"
+          }
+        },
+        {
+          "a": {
+            "index": 83,
+            "id": "1999",
+            "name": "BONNE ESPERANCE",
+            "slug": "bonne-esperance"
+          },
+          "b": {
+            "index": 208,
+            "id": "-1",
+            "name": "BONNE ESPERANCE (SOUTH)",
+            "slug": "bonne-esperance-south"
+          }
+        },
+        {
+          "a": {
+            "index": 87,
+            "id": "1998",
+            "name": "BOVONI",
+            "slug": "bovoni"
+          },
+          "b": {
+            "index": 88,
+            "id": "1833",
+            "name": "BOVONI CAY",
+            "slug": "bovoni-cay"
+          }
+        },
+        {
+          "a": {
+            "index": 90,
+            "id": "1799",
+            "name": "CANAAN & SCHERPENJEWEL",
+            "slug": "canaan-and-scherpenjewel"
+          },
+          "b": {
+            "index": 217,
+            "id": "2013",
+            "name": "CANAAN",
+            "slug": "canaan"
+          }
+        },
+        {
+          "a": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          },
+          "b": {
+            "index": 100,
+            "id": "1874",
+            "name": "CONTANT 7BA",
+            "slug": "contant-7ba"
+          }
+        },
+        {
+          "a": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          },
+          "b": {
+            "index": 101,
+            "id": "-1",
+            "name": "CONTANT 7Bb",
+            "slug": "contant-7bb"
+          }
+        }
+      ]
+    },
+    {
+      "status": "ok",
+      "id": "map:fuzzy-highlight",
+      "message": "IslandMap does not contain the known fuzzy estate highlight pattern."
+    },
+    {
+      "status": "ok",
+      "id": "map:id-highlight",
+      "message": "IslandMap appears to use ID fields for estate highlighting."
+    },
+    {
+      "status": "ok",
+      "id": "estate-detail:highlight-id",
+      "message": "EstateDetailPage passes estateId first for highlightEstate."
+    },
+    {
+      "status": "ok",
+      "id": "estate-detail:duplicate-focus-target",
+      "message": "EstateDetailPage has no duplicate focusTarget prop."
+    },
+    {
+      "status": "ok",
+      "id": "history:unsafe-array-access",
+      "message": "historyKnowledge.ts has no known unsafe record array access."
+    },
+    {
+      "status": "ok",
+      "id": "history:safe-array-helper",
+      "message": "historyKnowledge.ts includes array safety handling."
+    }
+  ],
+  "warnings": [
+    {
+      "id": "estate:substring-collisions",
+      "message": "Estate substring name collisions exist. Highlighting must use exact IDs.",
+      "count": 70,
+      "examples": [
+        {
+          "a": {
+            "index": 2,
+            "id": "1982",
+            "name": "ANNABERG",
+            "slug": "annaberg"
+          },
+          "b": {
+            "index": 67,
+            "id": "1913",
+            "name": "SUSANNABERG",
+            "slug": "susannaberg"
+          }
+        },
+        {
+          "a": {
+            "index": 2,
+            "id": "1982",
+            "name": "ANNABERG",
+            "slug": "annaberg"
+          },
+          "b": {
+            "index": 193,
+            "id": "1764",
+            "name": "ANNABERG & SHANNON GROVE",
+            "slug": "annaberg-and-shannon-grove"
+          }
+        },
+        {
+          "a": {
+            "index": 11,
+            "id": "1893",
+            "name": "CANEEL BAY",
+            "slug": "caneel-bay"
+          },
+          "b": {
+            "index": 218,
+            "id": "1957",
+            "name": "CANE",
+            "slug": "cane"
+          }
+        },
+        {
+          "a": {
+            "index": 16,
+            "id": "1625",
+            "name": "CONCORDIA A",
+            "slug": "concordia-a"
+          },
+          "b": {
+            "index": 234,
+            "id": "1774",
+            "name": "CONCORDIA",
+            "slug": "concordia"
+          }
+        },
+        {
+          "a": {
+            "index": 17,
+            "id": "1627",
+            "name": "CONCORDIA B",
+            "slug": "concordia-b"
+          },
+          "b": {
+            "index": 234,
+            "id": "1774",
+            "name": "CONCORDIA",
+            "slug": "concordia"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 98,
+            "id": "2024",
+            "name": "CONTANT 7A",
+            "slug": "contant-7a"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 100,
+            "id": "1874",
+            "name": "CONTANT 7BA",
+            "slug": "contant-7ba"
+          }
+        },
+        {
+          "a": {
+            "index": 19,
+            "id": "1871",
+            "name": "CONTANT",
+            "slug": "contant"
+          },
+          "b": {
+            "index": 101,
+            "id": "-1",
+            "name": "CONTANT 7Bb",
+            "slug": "contant-7bb"
+          }
+        },
+        {
+          "a": {
+            "index": 22,
+            "id": "1964",
+            "name": "EDEN",
+            "slug": "eden"
+          },
+          "b": {
+            "index": 252,
+            "id": "50",
+            "name": "FRIEDENSTHAL",
+            "slug": "friedensthal"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 195,
+            "id": "1879",
+            "name": "ANNAS HOPE",
+            "slug": "annas-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 202,
+            "id": "1781",
+            "name": "BETTYS HOPE",
+            "slug": "bettys-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 227,
+            "id": "1873",
+            "name": "CATHERINE'S HOPE",
+            "slug": "catherines-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 273,
+            "id": "1851",
+            "name": "HOLGER'S HOPE",
+            "slug": "holgers-hope"
+          }
+        },
+        {
+          "a": {
+            "index": 40,
+            "id": "3630",
+            "name": "HOPE",
+            "slug": "hope"
+          },
+          "b": {
+            "index": 275,
+            "id": "1776",
+            "name": "HOPE & CARTON HILL",
+            "slug": "hope-and-carton-hill"
+          }
+        },
+        {
+          "a": {
+            "index": 50,
+            "id": "1918",
+            "name": "MOLLEDAHL & LITTLE REEF BAY",
+            "slug": "molledahl-and-little-reef-bay"
+          },
+          "b": {
+            "index": 58,
+            "id": "1624",
+            "name": "REEF BAY",
+            "slug": "reef-bay"
+          }
+        },
+        {
+          "a": {
+            "index": 51,
+            "id": "1934",
+            "name": "MT PLEASANT & RETREAT",
+            "slug": "mt-pleasant-and-retreat"
+          },
+          "b": {
+            "index": 354,
+            "id": "1968",
+            "name": "RETREAT",
+            "slug": "retreat"
+          }
+        },
+        {
+          "a": {
+            "index": 76,
+            "id": "2032",
+            "name": "ALTONA & WELGUNST",
+            "slug": "altona-and-welgunst"
+          },
+          "b": {
+            "index": 190,
+            "id": "1683",
+            "name": "ALTONA",
+            "slug": "altona"
+          }
+        },
+        {
+          "a": {
+            "index": 78,
+            "id": "2022",
+            "name": "ANNA'S RETREAT",
+            "slug": "annas-retreat"
+          },
+          "b": {
+            "index": 354,
+            "id": "1968",
+            "name": "RETREAT",
+            "slug": "retreat"
+          }
+        },
+        {
+          "a": {
+            "index": 83,
+            "id": "1999",
+            "name": "BONNE ESPERANCE",
+            "slug": "bonne-esperance"
+          },
+          "b": {
+            "index": 207,
+            "id": "-1",
+            "name": "BONNE ESPERANCE (NORTH)",
+            "slug": "bonne-esperance-north"
+          }
+        },
+        {
+          "a": {
+            "index": 83,
+            "id": "1999",
+            "name": "BONNE ESPERANCE",
+            "slug": "bonne-esperance"
+          },
+          "b": {
+            "index": 208,
+            "id": "-1",
+            "name": "BONNE ESPERANCE (SOUTH)",
+            "slug": "bonne-esperance-south"
+          }
+        },
+        {
+          "a": {
+            "index": 87,
+            "id": "1998",
+            "name": "BOVONI",
+            "slug": "bovoni"
+          },
+          "b": {
+            "index": 88,
+            "id": "1833",
+            "name": "BOVONI CAY",
+            "slug": "bovoni-cay"
+          }
+        },
+        {
+          "a": {
+            "index": 90,
+            "id": "1799",
+            "name": "CANAAN & SCHERPENJEWEL",
+            "slug": "canaan-and-scherpenjewel"
+          },
+          "b": {
+            "index": 217,
+            "id": "2013",
+            "name": "CANAAN",
+            "slug": "canaan"
+          }
+        },
+        {
+          "a": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          },
+          "b": {
+            "index": 100,
+            "id": "1874",
+            "name": "CONTANT 7BA",
+            "slug": "contant-7ba"
+          }
+        },
+        {
+          "a": {
+            "index": 99,
+            "id": "1868",
+            "name": "CONTANT 7b",
+            "slug": "contant-7b"
+          },
+          "b": {
+            "index": 101,
+            "id": "-1",
+            "name": "CONTANT 7Bb",
+            "slug": "contant-7bb"
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
