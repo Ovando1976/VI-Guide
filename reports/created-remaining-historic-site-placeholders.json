@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-07-02T09:39:48.960Z",
+  "updatedFile": "src/data/historicSites.ts",
+  "backupFile": "reports/backups/historicSites.remaining-placeholders.2026-07-02T09-39-48-945Z.ts",
+  "placeholderDir": "public/images/historicSite/placeholders",
+  "attempted": 13,
+  "applied": 13,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 10,
+      "name": "Columbus Landing Site",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg",
+      "publicPath": "/images/historicSite/placeholders/columbus-landing-site.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/columbus-landing-site.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 11,
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+      "publicPath": "/images/historicSite/placeholders/danish-west-india-and-guinea-company-warehouse.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/danish-west-india-and-guinea-company-warehouse.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 29,
+      "name": "Estate Niesky",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-niesky.jpg",
+      "publicPath": "/images/historicSite/placeholders/estate-niesky.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/estate-niesky.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 33,
+      "name": "Estate St. John",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-st-john.jpg",
+      "publicPath": "/images/historicSite/placeholders/estate-st-john.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/estate-st-john.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 37,
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+      "publicPath": "/images/historicSite/placeholders/friedensfeld-midlands-moravian-church-and-manse.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/friedensfeld-midlands-moravian-church-and-manse.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 39,
+      "name": "Ft. Frederik of US Virgin Islands",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
+      "publicPath": "/images/historicSite/placeholders/ft-frederik-of-us-virgin-islands.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/ft-frederik-of-us-virgin-islands.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 41,
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
+      "publicPath": "/images/historicSite/placeholders/hamburg-america-shipping-line-administrative-offices.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/hamburg-america-shipping-line-administrative-offices.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 45,
+      "name": "Jossie Gut Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
+      "publicPath": "/images/historicSite/placeholders/jossie-gut-historic-district.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/jossie-gut-historic-district.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 47,
+      "name": "La Grande Princesse School",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+      "publicPath": "/images/historicSite/placeholders/la-grande-princesse-school.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/la-grande-princesse-school.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 54,
+      "name": "More Hill Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
+      "publicPath": "/images/historicSite/placeholders/more-hill-historic-district.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/more-hill-historic-district.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 55,
+      "name": "New Herrnhut Moravian Church",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
+      "publicPath": "/images/historicSite/placeholders/new-herrnhut-moravian-church.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/new-herrnhut-moravian-church.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 59,
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
+      "publicPath": "/images/historicSite/placeholders/rustenberg-plantation-south-historic-district.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/rustenberg-plantation-south-historic-district.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 67,
+      "name": "Tutu Plantation House",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
+      "publicPath": "/images/historicSite/placeholders/tutu-plantation-house.svg",
+      "placeholderFile": "public/images/historicSite/placeholders/tutu-plantation-house.svg",
+      "occurrences": 3
+    }
+  ],
+  "skippedRecords": []
+}

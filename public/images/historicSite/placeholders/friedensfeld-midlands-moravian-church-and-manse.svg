@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Friedensfeld Midlands Moravian Church and Manse">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="55%" stop-color="#ead1a0"/>
+      <stop offset="100%" stop-color="#cfa86a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#fff8df" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#8f5f2f" stop-opacity="0.16"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#paper)"/>
+  <rect x="38" y="38" width="1124" height="724" rx="34" fill="url(#glow)" stroke="#7a4a22" stroke-width="5"/>
+  <path d="M155 198 C300 130 443 218 594 160 C742 104 880 166 1032 124" fill="none" stroke="#7a4a22" stroke-width="7" opacity="0.25"/>
+  <path d="M162 612 C322 538 472 650 612 584 C752 518 890 580 1038 520" fill="none" stroke="#7a4a22" stroke-width="7" opacity="0.22"/>
+  <circle cx="600" cy="190" r="68" fill="none" stroke="#6f3f1d" stroke-width="8" opacity="0.5"/>
+  <path d="M600 136 L614 188 L668 190 L624 220 L640 272 L600 242 L560 272 L576 220 L532 190 L586 188 Z" fill="#7a4a22" opacity="0.5"/>
+  <text x="600" y="270" text-anchor="middle" font-family="Georgia, serif" font-size="25" letter-spacing="4" fill="#6f3f1d">HISTORIC SITE</text>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#3b2a17">Friedensfeld Midlands Moravian</text>
+  <text x="600" y="386" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#3b2a17">Church and Manse</text>
+  <text x="600" y="610" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" fill="#5c3b1d">St. Croix</text>
+  <text x="600" y="668" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#7a4a22" opacity="0.82">Placeholder image · replace with site photography when available</text>
+</svg>

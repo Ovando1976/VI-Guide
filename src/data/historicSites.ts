@@ -324,9 +324,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1966.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg",
+    "imageUrl": "/images/historicSite/placeholders/columbus-landing-site.svg",
+    "coverImage": "/images/historicSite/placeholders/columbus-landing-site.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/columbus-landing-site.svg",
     "relatedEstates": [
       "Salt River Bay"
     ],
@@ -352,9 +352,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1974.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+    "imageUrl": "/images/historicSite/placeholders/danish-west-india-and-guinea-company-warehouse.svg",
+    "coverImage": "/images/historicSite/placeholders/danish-west-india-and-guinea-company-warehouse.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/danish-west-india-and-guinea-company-warehouse.svg",
     "relatedEstates": [
       "Christiansted"
     ],
@@ -896,9 +896,9 @@ export const historicSites: HistoricSite[] = [
       "lat": 18.338611,
       "lng": -64.951667
     },
-    "imageUrl": "/images/historicSite/nrhp-stt-estate-niesky.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-estate-niesky.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-estate-niesky.jpg",
+    "imageUrl": "/images/historicSite/placeholders/estate-niesky.svg",
+    "coverImage": "/images/historicSite/placeholders/estate-niesky.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/estate-niesky.svg",
     "relatedEstates": [
       "Niesky"
     ],
@@ -1017,9 +1017,9 @@ export const historicSites: HistoricSite[] = [
       "lat": 17.764892,
       "lng": -64.745118
     },
-    "imageUrl": "/images/historicSite/nrhp-stx-estate-st-john.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-estate-st-john.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-estate-st-john.jpg",
+    "imageUrl": "/images/historicSite/placeholders/estate-st-john.svg",
+    "coverImage": "/images/historicSite/placeholders/estate-st-john.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/estate-st-john.svg",
     "relatedEstates": [
       "St. John"
     ],
@@ -1129,9 +1129,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+    "imageUrl": "/images/historicSite/placeholders/friedensfeld-midlands-moravian-church-and-manse.svg",
+    "coverImage": "/images/historicSite/placeholders/friedensfeld-midlands-moravian-church-and-manse.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/friedensfeld-midlands-moravian-church-and-manse.svg",
     "relatedEstates": [
       "Midlands"
     ],
@@ -1185,9 +1185,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1997.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
+    "imageUrl": "/images/historicSite/placeholders/ft-frederik-of-us-virgin-islands.svg",
+    "coverImage": "/images/historicSite/placeholders/ft-frederik-of-us-virgin-islands.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/ft-frederik-of-us-virgin-islands.svg",
     "relatedEstates": [
       "Frederiksted"
     ],
@@ -1241,9 +1241,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
+    "imageUrl": "/images/historicSite/placeholders/hamburg-america-shipping-line-administrative-offices.svg",
+    "coverImage": "/images/historicSite/placeholders/hamburg-america-shipping-line-administrative-offices.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/hamburg-america-shipping-line-administrative-offices.svg",
     "relatedEstates": [
       "Charlotte Amalie"
     ],
@@ -1356,9 +1356,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
+    "imageUrl": "/images/historicSite/placeholders/jossie-gut-historic-district.svg",
+    "coverImage": "/images/historicSite/placeholders/jossie-gut-historic-district.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/jossie-gut-historic-district.svg",
     "relatedEstates": [
       "Reef Bay"
     ],
@@ -1412,9 +1412,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+    "imageUrl": "/images/historicSite/placeholders/la-grande-princesse-school.svg",
+    "coverImage": "/images/historicSite/placeholders/la-grande-princesse-school.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/la-grande-princesse-school.svg",
     "relatedEstates": [
       "La Grande Princesse"
     ],
@@ -1614,9 +1614,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
+    "imageUrl": "/images/historicSite/placeholders/more-hill-historic-district.svg",
+    "coverImage": "/images/historicSite/placeholders/more-hill-historic-district.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/more-hill-historic-district.svg",
     "relatedEstates": [
       "East End"
     ],
@@ -1642,9 +1642,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
+    "imageUrl": "/images/historicSite/placeholders/new-herrnhut-moravian-church.svg",
+    "coverImage": "/images/historicSite/placeholders/new-herrnhut-moravian-church.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/new-herrnhut-moravian-church.svg",
     "relatedEstates": [
       "Charlotte Amalie"
     ],
@@ -1754,9 +1754,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
+    "imageUrl": "/images/historicSite/placeholders/rustenberg-plantation-south-historic-district.svg",
+    "coverImage": "/images/historicSite/placeholders/rustenberg-plantation-south-historic-district.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/rustenberg-plantation-south-historic-district.svg",
     "relatedEstates": [
       "Cinnamon Bay"
     ],
@@ -1983,9 +1983,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
+    "imageUrl": "/images/historicSite/placeholders/tutu-plantation-house.svg",
+    "coverImage": "/images/historicSite/placeholders/tutu-plantation-house.svg",
+    "thumbnailUrl": "/images/historicSite/placeholders/tutu-plantation-house.svg",
     "relatedEstates": [
       "Tutu"
     ],

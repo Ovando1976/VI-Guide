@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-02T09:37:42.829Z",
+  "generatedAt": "2026-07-02T09:40:12.854Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
-    "publicImages": 3573
+    "publicImages": 3586
   },
   "sources": [
     {
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 65
+    "low": 52
   },
   "issueGroups": [
     {
@@ -44,12 +44,6 @@
       "source": "geographic_index",
       "issue": "missing_image",
       "count": 47
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "issue": "missing_local_image_file",
-      "count": 13
     },
     {
       "severity": "low",
@@ -2573,136 +2567,6 @@
       "issue": "missing_image",
       "detail": "Record type \"historic\" normally needs an image for the UI.",
       "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 10,
-      "id": "nrhp-stx-columbus-landing-site",
-      "name": "Columbus Landing Site",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-columbus-landing-site.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 11,
-      "id": "nrhp-stx-danish-west-india-and-guinea-company-warehouse",
-      "name": "Danish West India and Guinea Company Warehouse",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 29,
-      "id": "nrhp-stt-estate-niesky",
-      "name": "Estate Niesky",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-niesky.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 33,
-      "id": "nrhp-stx-estate-st-john",
-      "name": "Estate St. John",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-st-john.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 37,
-      "id": "nrhp-stx-friedensfeld-midlands-moravian-church-and-manse",
-      "name": "Friedensfeld Midlands Moravian Church and Manse",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 39,
-      "id": "nrhp-stx-ft-frederik-of-us-virgin-islands",
-      "name": "Ft. Frederik of US Virgin Islands",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 41,
-      "id": "nrhp-stt-hamburg-america-shipping-line-administrative-offices",
-      "name": "Hamburg-America Shipping Line Administrative Offices",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 45,
-      "id": "nrhp-stj-jossie-gut-historic-district",
-      "name": "Jossie Gut Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 47,
-      "id": "nrhp-stx-la-grande-princesse-school",
-      "name": "La Grande Princesse School",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 54,
-      "id": "nrhp-stj-more-hill-historic-district",
-      "name": "More Hill Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 55,
-      "id": "nrhp-stt-new-herrnhut-moravian-church",
-      "name": "New Herrnhut Moravian Church",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 59,
-      "id": "nrhp-stj-rustenberg-plantation-south-historic-district",
-      "name": "Rustenberg Plantation South Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 67,
-      "id": "nrhp-stt-tutu-plantation-house",
-      "name": "Tutu Plantation House",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
     }
   ]
 }
