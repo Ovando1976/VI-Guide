@@ -13,3 +13,11 @@ serviceAccountKey.json
 secrets/
 firebase-admin.json
 firebase-service-account.json
+
+# Large generated GIS parcel datasets - keep outside Git or publish as tiles/releases.
+generated/parcels.enriched.json
+generated/usvi-parcels.geojson
+generated/usvi-parcels.enriched.geojson
+generated/usvi-parcels.json
+public/data/usvi-parcels-addressed.geojson
+public/data/usvi-parcels-mapgeo-enriched.geojson
