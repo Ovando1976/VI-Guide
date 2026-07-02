@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-02T11:10:31.175Z",
+  "generatedAt": "2026-07-02T11:15:48.808Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 791,
+    "issuesActual": 763,
     "issuesSampled": 201,
     "issueSampleLimitPerKind": 200
   },
@@ -32,7 +32,7 @@
   "totalRecords": 3313,
   "severityTotals": {
     "high": 0,
-    "medium": 790,
+    "medium": 762,
     "low": 1
   },
   "issueGroups": [
@@ -40,7 +40,7 @@
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 790,
+      "count": 762,
       "sampled": 200,
       "sampleLimit": 200
     },
@@ -1847,16 +1847,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 808,
-      "id": "st_thomas-point-flat-cays",
-      "name": "Flat Cays",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 810,
       "id": "st_thomas-point-fointe-dol-nordoueete",
       "name": "Fointe dol Nordoueete",
@@ -2050,6 +2040,16 @@
       "index": 872,
       "id": "st_croix-estate-french-point",
       "name": "French Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 876,
+      "id": "st_thomas-point-fretti-clip-point",
+      "name": "Fretti/ Clip Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."

@@ -18959,7 +18959,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "port-crown-bay-cruise-port crown bay cruise port port crown bay port-crown-bay-cruise-port crown bay cruise port crown bay cruise port crown bay cruise port crown bay cruise port place crown bay cruise port civic port crown bay",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-port-crown-bay-cruise-port&island=st_thomas&context=Crown%20Bay%20Cruise%20Port",
       "map": "/map?q=Crown%20Bay%20Cruise%20Port&island=st_thomas"
@@ -18979,7 +18978,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-port-crown-bay-cruise-port"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.3516443841391, "lng": -64.97518249799175 },
+    "lat": 18.3516443841391,
+    "lng": -64.97518249799175,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "Crown Bay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-hill-crown-house",
@@ -25460,7 +25466,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Flat Cays; Two islets, 1jL: miles southwest of Red Point,",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-point-flat-cays&island=st_thomas&context=Flat%20Cays",
       "map": "/map?q=Flat%20Cays&island=st_thomas"
@@ -25480,7 +25485,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-point-flat-cays"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.3176615035053, "lng": -64.9888146529801 },
+    "lat": 18.3176615035053,
+    "lng": -64.9888146529801,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "Flat Cay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-island-flcncinyham",
@@ -27353,7 +27365,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "French Bay or Frenchbay; Qu:irter of St; 'I'hoi~ias I s I; i ~ i d, ernhrricing south shore from Piitrick Point west to St. Thomns Harbor; bomidecl enst rind north h y Hedliook and New Qurtrters, from alilch i t Is w~iiirfitedby a line runn!ng throiiyh Mangrove Lagoon, t h e m. over 878 iind 870 foot iiills, Nullilwrg rind E'lrig €1111, to e r i ~ teiid of Went 111tlit1Dock in Tmg liriy. Called l+'renchmun's Buy Qiirirter In Census Rrport (1917). l'opulni ion, 78; four-fifths white.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-french-bay-or-frenchbay&island=st_thomas&context=French%20Bay%20or%20Frenchbay",
       "map": "/map?q=French%20Bay%20or%20Frenchbay&island=st_thomas"
@@ -27373,7 +27384,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-bay-french-bay-or-frenchbay"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.31958030255245, "lng": -64.9084111427579 },
+    "lat": 18.31958030255245,
+    "lng": -64.9084111427579,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "French Bay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-bay-french-bay-road",
@@ -27472,7 +27490,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Frenchbay; Estate, plantation, or Stockfarm, on hillside, 250 yards n~lrtliw%t of heac-h fit I?rendi Elay, q. v. , south rorint of St. Thomas. Also wlled lc'renr h Hag Stock Eattite, I{'renchmai~Bay, Frendimarl's Bay I'lantage.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-frenchbay&island=st_thomas&context=Frenchbay",
       "map": "/map?q=Frenchbay&island=st_thomas"
@@ -27492,7 +27509,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-frenchbay"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.31958030255245, "lng": -64.9084111427579 },
+    "lat": 18.31958030255245,
+    "lng": -64.9084111427579,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "French Bay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-island-frenchcap-c-a-y",
@@ -42538,7 +42562,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Lagrange Garden; Valleyhead park, in southern part of Lfttle Lagrange Estate, at east end of trail 1 mile long, leading up valley from LagPange Estate, st. Croix. south coast of St. Croix. Croir. and Jack Bay, south coast of St. CroiX. Beverhaudt Peak, St. Croir. and mile from the mill; St. moix.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-lagrange-garden&island=st_croix&context=Lagrange%20Garden",
       "map": "/map?q=Lagrange%20Garden&island=st_croix"
@@ -42558,7 +42581,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-lagrange-garden"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.71823717741445, "lng": -64.87445690853116 },
+    "lat": 17.71823717741445,
+    "lng": -64.87445690853116,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "Lagrange",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-dictionaryEntry-laguile-ranlie",
@@ -51586,7 +51616,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Morningstar; Estate, 9 nhcl 4b, Queen (Dronning) Quarter, St. Croix; Mill on 1Safoot hill, mile southeast of Concordia C'reek. -Dewitz; Oxholm. Also spelled, Morning Star; German, Morgenstern; originally, Henry Ryan's plantation.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-morningstar&island=st_croix&context=Morningstar",
       "map": "/map?q=Morningstar&island=st_croix"
@@ -51606,7 +51635,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-morningstar"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.76267907047465, "lng": -64.76127587077406 },
+    "lat": 17.76267907047465,
+    "lng": -64.76127587077406,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "MORNING STAR",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-dictionaryEntry-morningstar-bay",
@@ -55477,7 +55513,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Northstar; Estate, 19 and 20, Northside B Qr. , southwest of Canehay, on northwest slope of Mount Eagle, St. Croix. -Dewita. North Star. -L L W. A deflection of the shore west of Cane Bay is marked by old mill-tower and ruins of Estate; about long. 64\" 49' 15\" (440 meters). Northatar and Prosperity, merged with Canebay,",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-northstar&island=st_croix&context=Northstar",
       "map": "/map?q=Northstar&island=st_croix"
@@ -55497,7 +55532,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-northstar"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.7643827657991, "lng": -64.8181934288463 },
+    "lat": 17.7643827657991,
+    "lng": -64.8181934288463,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "NORTH STAR",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-now-part-of-shoys-estate",
@@ -55622,7 +55664,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Nugent; Estate, also called Castle Nugent \"; comprlsfng tracts 41 (Betsalie Hughes) and south M of 28 (Francis Surlaine), with manse or estatehoum y2 mile from shore, between Springs and Fareham Estates, in Enstend A Quarter, sou'th coast, St. Croix. -P. D. J.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-nugent&island=st_croix&context=Nugent",
       "map": "/map?q=Nugent&island=st_croix"
@@ -55642,7 +55683,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-nugent"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.719562371093147, "lng": -64.6797022059518 },
+    "lat": 17.719562371093147,
+    "lng": -64.6797022059518,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "CASTLE NUGENT",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-point-nugent-point",
@@ -55680,7 +55728,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Nulliberg; Ridge forming watershed between valley of Charlotte Amalia Estate and New Herrnhut on the north, and southern shore of St. Thomas, distant 1 m:le. Nulliberg Ridge rises in two equally prominent summit4 872 feet high; one, 700 yards south of New Herrnhut; the other, 700 yards southeastward, and 850 yards north-northeast of Bolongo Estate, in lat. 18\" 19' 41\" (1, 213 meters), long. 64' 53' 48\" (1, 466 meters). -T. 3771 arid 3778a; Dan. 283; C. P. Scorpion survey restricts name to latter summit.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-nulliberg&island=st_thomas&context=Nulliberg",
       "map": "/map?q=Nulliberg&island=st_thomas"
@@ -55700,7 +55747,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-nulliberg"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.326305680630853, "lng": -64.89736067271285 },
+    "lat": 18.326305680630853,
+    "lng": -64.89736067271285,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "NULLYBERG",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-dictionaryEntry-nullyberg",
@@ -58264,7 +58318,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Parasol Hill; Ridge extending southeast from 747-foot penk about center of Parasol Estate, on Northside watershed, % mile from northern coust of St. Croix. -Eggers.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-parasol-hill&island=st_croix&context=Parasol%20Hill",
       "map": "/map?q=Parasol%20Hill&island=st_croix"
@@ -58284,7 +58337,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-parasol-hill"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.7558796915945, "lng": -64.8170085737669 },
+    "lat": 17.7558796915945,
+    "lng": -64.8170085737669,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PARASOL",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-estate-parforce",
@@ -60482,7 +60542,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Pless plantation; Now Plessen Estate. Property (1764) of Wm. Ryan's heirs; in Prlnce Quarter, St. Croix.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-pless-plantation&island=st_croix&context=Pless%20plantation",
       "map": "/map?q=Pless%20plantation&island=st_croix"
@@ -60502,7 +60561,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-pless-plantation"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.73430006364915, "lng": -64.82762389166996 },
+    "lat": 17.73430006364915,
+    "lng": -64.82762389166996,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PLESSEN (North)",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-plessen",
@@ -60511,7 +60577,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Plessen; Estate, 28 and 29, center of Prince Quarter, St. Croix; measuring 4, 000 by 3, 000 feet, on north side of Centerllne Road, and intersected bp south end of Northside Road, to east of which are estnte buildings on 117-foot rise. Produces sugar cane, provisions, and pasturage. Inheritance. from Wllllam Ryan. East % of tract 12, portion of John Baker's plantation, now belongu to Plessen. -Oxholrn; L. Sr W; Dewitr, Mount Pleasant, adjoining on south, united under ownership of Sir R. J. Want. --Scorpion.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-plessen&island=st_croix&context=Plessen",
       "map": "/map?q=Plessen&island=st_croix"
@@ -60531,7 +60596,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-plessen"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.73430006364915, "lng": -64.82762389166996 },
+    "lat": 17.73430006364915,
+    "lng": -64.82762389166996,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PLESSEN (North)",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-plessen-north",
@@ -62334,7 +62406,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Princess; Grand or Great Princess Estate, measuring 2, 100 yards north and south, about 1, 375 yards east and west, with frontage of 1, 200 yards on northern coast of St. Croix, 2 miles northwest of Christiansted; comprising equivalent of 4 tracts, at northern end of Company Quarter; including also tract 13 in Queen Quarter. Ledru (1801) stated, Princess Estate belonged to house of Schimmelman of Copenhagen. Variously called: La Princesa, La Princessn, La Princesse, La Grande Princesse, La Princeso Grande, Great Princess, Grand Princess, Plantagien Prinsessen, Prindsesse. Prinsesse, Yrintsessen, Princess, Prinzessin-Qunrtier.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-princess&island=st_croix&context=Princess",
       "map": "/map?q=Princess&island=st_croix"
@@ -62354,7 +62425,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-princess"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.757271983688298, "lng": -64.73523993211084 },
+    "lat": 17.757271983688298,
+    "lng": -64.73523993211084,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "LA GRANDE PRINCESSE",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-bay-princess-bay",
@@ -62450,7 +62528,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Princess School; Moravian School, on Princess Estate, Company Quarter, St. Croix--Dewitz. Danish, '' Prindsesse \"; French, \" La Princesse, \" name of present public school. -Ltb.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-princess-school&island=st_croix&context=Princess%20School",
       "map": "/map?q=Princess%20School&island=st_croix"
@@ -62470,7 +62547,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-princess-school"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.757271983688298, "lng": -64.73523993211084 },
+    "lat": 17.757271983688298,
+    "lng": -64.73523993211084,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "LA GRANDE PRINCESSE",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-princess-stock-estate",
@@ -63020,7 +63104,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Prosperity Clarden; I n lower portion of Prosperity V a l l t ~;, with a mahpgi1n. 1' grove, 800 to 1, OOO yards. east of Prosperity Estate village, Westend Quarter, St. Croix. -T. 3798.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-prosperity-clarden&island=st_croix&context=Prosperity%20Clarden",
       "map": "/map?q=Prosperity%20Clarden&island=st_croix"
@@ -63040,7 +63123,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-prosperity-clarden"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.728048607641753, "lng": -64.877872164136 },
+    "lat": 17.728048607641753,
+    "lng": -64.877872164136,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PROSPERITY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-prosperity-east",
@@ -63090,7 +63180,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Prosperity Gut; Torrentbed W mile long, from near northeastern corner of Prosperity Estate, watering Prosperity Valley a d Garden, Westend Quarter, St. Croix.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-prosperity-gut&island=st_croix&context=Prosperity%20Gut",
       "map": "/map?q=Prosperity%20Gut&island=st_croix"
@@ -63110,7 +63199,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-prosperity-gut"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.728048607641753, "lng": -64.877872164136 },
+    "lat": 17.728048607641753,
+    "lng": -64.877872164136,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PROSPERITY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-road-prosperity-ridge",
@@ -63738,7 +63834,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Punch Hill; 704 feet high, lat. 17\" 44' 39\" (1, 204meters), long. 64\" 52' 31\" (922 meters); 710 yards west of Punch Mill, on old Sebodker or Soebetker Estate, St. Croix.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-punch-hill&island=st_croix&context=Punch%20Hill",
       "map": "/map?q=Punch%20Hill&island=st_croix"
@@ -63758,7 +63853,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-punch-hill"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.73965896466005, "lng": -64.86899338708506 },
+    "lat": 17.73965896466005,
+    "lng": -64.86899338708506,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PUNCH",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-dictionaryEntry-punch-l-alen",
@@ -63796,7 +63898,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Punch Valley; One 00 three ravfnes heading in Punch Estate, Northside A Quarter, St. Croix; two supplied by springs; one in head of ravine 140 yards northwest of Punch Mill on 086-foot hill; whence flows a torrent 1, oOO yards northwest to join Crequis Gut, with waterfall 100 yards from mouth.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-punch-valley&island=st_croix&context=Punch%20Valley",
       "map": "/map?q=Punch%20Valley&island=st_croix"
@@ -63816,7 +63917,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-punch-valley"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.73965896466005, "lng": -64.86899338708506 },
+    "lat": 17.73965896466005,
+    "lng": -64.86899338708506,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "PUNCH",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-bay-punnett-bay",
@@ -64813,7 +64921,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Ramgoat Cay; 30 feet high, 180 yards long, area 2. 7 acres, second in size of Durloe Cays, 310 yards east-northeast of Henley Cay, 330 yards northwest of Hognest Peninsula, northwest shore of St. John I. '' Ramgoat \" is a kind of bush, F a g a m tragode8. -West; Eggers; 0. U.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-island-ramgoat-cay&island=st_john&context=Ramgoat%20Cay",
       "map": "/map?q=Ramgoat%20Cay&island=st_john"
@@ -64833,7 +64940,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-john-island-ramgoat-cay"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.3551160406748, "lng": -64.78944480445855 },
+    "lat": 18.3551160406748,
+    "lng": -64.78944480445855,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "RAM GOAT CAY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-bay-randez-vous-bap",
@@ -65185,7 +65299,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Rattan; Estate in Queen (Dronning) Quarter, St. Croix; comprising tract 14 (Atkins plantation), 15 with south I/a of 10 (Schuster plantation). Estatehouse and mill on southwest end of ridge rising to 550 feet.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-rattan&island=st_croix&context=Rattan",
       "map": "/map?q=Rattan&island=st_croix"
@@ -65205,7 +65318,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-rattan"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.749739825071998, "lng": -64.74981364350225 },
+    "lat": 17.749739825071998,
+    "lng": -64.74981364350225,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "RATTAN & BELVEDERE",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-rattan-and-belvedere",
@@ -66147,7 +66267,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Indigenous rock art site near Reef Bay.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-archaeological-site-reef-bay-petroglyphs&island=st_john&context=Reef%20Bay%20Petroglyphs",
       "map": "/map?q=Reef%20Bay%20Petroglyphs&island=st_john"
@@ -66167,7 +66286,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-john-archaeological-site-reef-bay-petroglyphs"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.3241492592502, "lng": -64.7379062541914 },
+    "lat": 18.3241492592502,
+    "lng": -64.7379062541914,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "REEF BAY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-estate-reef-bay-quarter",
@@ -66176,7 +66302,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Reef Bay; Reentrant rjght angle of south shore of St. John Island, more than a mile across base between Oyen Point and White Cliffs. Name a t r i m s lation of the Dutch equivalent, Rif, Danish B e v; with numerous vnrionts : Refbay, Reffbay, Reffbayen, Revbay, Rlfbay, Riffbay, and dlvided forms; Spanish, Bahia del Arrecife, From tho bayliead along the northwest beach for 700 yards, It I8 called \" Genli IJny. \" mefbay; Estate bordering on Reef Bay, sbuthern shore of St. John; having a banana-patch, coconut-grove, only wgar-mill now on the Island, I : r ~ ~ t l cattle ranch. C. & G. S. fleld sheet shows plantation as occupying'$laln from northeast beach north to junction of Esperance and Reef Bay BoadR: with latter road continuing to landing. Other authorities show Parforce occupying snme location; hence, identical. U. P. , Raefbag hause, lat. 187",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-reef-bay-quarter&island=st_john&context=Reef%20Bay%20Quarter",
       "map": "/map?q=Reef%20Bay%20Quarter&island=st_john"
@@ -66196,7 +66321,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-john-estate-reef-bay-quarter"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.3241492592502, "lng": -64.7379062541914 },
+    "lat": 18.3241492592502,
+    "lng": -64.7379062541914,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "REEF BAY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-sugar-mill-reef-bay-sugar-mill",
@@ -66877,7 +67009,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Richmond Jail; Penltentiary for the Virgin Islands of the United States, located 400 yards northwest of Richmond Estatehouse, St. Croix. -Lightbourn; Scorpton.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-richmond-jail&island=st_croix&context=Richmond%20Jail",
       "map": "/map?q=Richmond%20Jail&island=st_croix"
@@ -66897,7 +67028,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-richmond-jail"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.7454392029822, "lng": -64.71220412944331 },
+    "lat": 17.7454392029822,
+    "lng": -64.71220412944331,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "RICHMOND",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_john-estate-richmond-prisonland",
@@ -67874,7 +68012,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "Rosendal"
     ],
     "description": "Rosendal; Estate, 1, 100 yards northwest of Wintberg, St. Thomas. -Zabriskie; Map 3240, Rosenmall Estate, 500 yards southeast of main road from Canaan to tovenlund. -T. 3771. The locations coincide. RoRenvold is the name of a Danish family owning estates in St. Thomas, according to k a n s Lund. All these are compounds of \" Rosen \" (Rose), with one of several suffixes : \" Dal, \" (Dale, Valley); \" Wal \" (D. , Rampart, Bank); \" W a l d \" (Cer. ), Wood, Forest; \"Vold\" (Dab. ), Bank. .",
-    "coordinates": null,
     "routes": {
       "map": "/map?q=Rosendal&island=st_thomas",
       "knowledge": "/history/knowledge?estate=st-thomas-estate-rosendal&island=st_thomas&context=Rosendal"
@@ -67898,7 +68035,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "starterGazetteer": [
         "st-thomas-estate-rosendal"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.35369715902085, "lng": -64.91366486842695 },
+    "lat": 18.35369715902085,
+    "lng": -64.91366486842695,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "ST JOSEPH & ROSENDAHL",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-dictionaryEntry-rosenvold",
@@ -70729,7 +70873,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Banta maria Gut; Ravine and torrent draining into Sante Maria Bay, St. Thomas. -Eggers, p. 67.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-santa-maria-gut&island=st_thomas&context=Santa%20Maria%20Gut",
       "map": "/map?q=Santa%20Maria%20Gut&island=st_thomas"
@@ -70749,7 +70892,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-bay-santa-maria-gut"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
+    "lat": 18.359333337383298,
+    "lng": -64.98905345449211,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "Santa Maria Bay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-santa-maria-hill",
@@ -70758,7 +70908,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Santa Maria Hill; 639 feet high, 290 yards northwest of Santa Maria Estate, crest of sharp ridge extending 1, OOO yards northwest to Santa Maria Point, Westend Quarter, St. Thomas. U. P. , \" M a r i a \"; lat. 18\" 21' 42\" (1, 294 meters), long. 64\" 50' 16. 4'' (482 meters).",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-santa-maria-hill&island=st_thomas&context=Santa%20Maria%20Hill",
       "map": "/map?q=Santa%20Maria%20Hill&island=st_thomas"
@@ -70778,7 +70927,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-santa-maria-hill"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
+    "lat": 18.359333337383298,
+    "lng": -64.98905345449211,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SANTA MARIA",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-santa-maria-ridge",
@@ -70787,7 +70943,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Santa Maria Ridge; Extendfag aoutheast from Santa Maria Point, l, W yarda to Santa Maria Hill, 639 feet high, thence along watershed to Santa Maria Estate \" old works. \"",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-santa-maria-ridge&island=st_thomas&context=Santa%20Maria%20Ridge",
       "map": "/map?q=Santa%20Maria%20Ridge&island=st_thomas"
@@ -70807,7 +70962,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-santa-maria-ridge"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
+    "lat": 18.359333337383298,
+    "lng": -64.98905345449211,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SANTA MARIA",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-santa-maria-trail",
@@ -70816,7 +70978,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Banta Xaria Trail; Old abandoned road, leaving Bonne Eeperance Road near Santa Maria Estate \" d d works, \" thence west-northwest to near Santa Maria Bay, St. Thomas; thence southwest, passing John O l q, to the Saddle. A good road continues theltce to Perseverance &tab and Bay, southern coast. -T. 3770. Rantlago, la Bahia de; St. James Bay, q. v. -Der. , p. 288.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-santa-maria-trail&island=st_thomas&context=Santa%20Maria%20Trail",
       "map": "/map?q=Santa%20Maria%20Trail&island=st_thomas"
@@ -70836,7 +70997,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-santa-maria-trail"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
+    "lat": 18.359333337383298,
+    "lng": -64.98905345449211,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SANTA MARIA",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-bay-santa-xaria-point",
@@ -70845,7 +71013,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Santa Xaria Point; Rectangular attlient of bluff at foot of Santa Maria Ridge, eastern entrance of Santa Maria Bay proper, northern &ore of St Thomas.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-santa-xaria-point&island=st_thomas&context=Santa%20Xaria%20Point",
       "map": "/map?q=Santa%20Xaria%20Point&island=st_thomas"
@@ -70865,7 +71032,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-bay-santa-xaria-point"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
+    "lat": 18.359333337383298,
+    "lng": -64.98905345449211,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "Santa Maria Bay",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-island-saoana-passage",
@@ -71706,7 +71880,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Sevenhills; Estate, 1 6 ~(Isaac de la Motha and Calvallo), Eastend A Quarter. St. Croix. Old house and mill at head of glen traversed by road from Towers. Hills rimmlng glen present about seven summits. -Oxholm.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-sevenhills&island=st_croix&context=Sevenhills",
       "map": "/map?q=Sevenhills&island=st_croix"
@@ -71726,7 +71899,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-sevenhills"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.7462147534703, "lng": -64.6477516565729 },
+    "lat": 17.7462147534703,
+    "lng": -64.6477516565729,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SEVEN HILLS",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-sflbodker",
@@ -72745,7 +72925,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bmith's Field; Field or Estate of Thomas Smith; later known as Smithh'mith's H i l l; Site o f Fredericksfort, built in 1689, now known as Bluebeard",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-smiths-field&island=st_thomas&context=Smith%E2%80%99s%20Field",
       "map": "/map?q=Smith%E2%80%99s%20Field&island=st_thomas"
@@ -72765,7 +72944,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-smiths-field"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.335278251441, "lng": -64.86171891676014 },
+    "lat": 18.335278251441,
+    "lng": -64.86171891676014,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SMITH BAY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_thomas-estate-smithbay",
@@ -72774,7 +72960,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Smithbay; Estate, loc8ted by Heichel and Dawitz on south shore of Leinater or Waterlemop Bay, St. Job& near signal \"Bol\" on T. 3772; agreeing with description of Smith Boy in West Iqdies PllM of €3. A. and H. 0. See Smith Bay. 0. P. I' Miller, \" Estate Flgggole, described as I' at house on Smith Bay Estlite, owned by V, 1Cllller, \"--O. R. 78708-93.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-smithbay&island=st_thomas&context=Smithbay",
       "map": "/map?q=Smithbay&island=st_thomas"
@@ -72794,7 +72979,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-smithbay"
       ]
-    }
+    },
+    "coordinates": { "lat": 18.335278251441, "lng": -64.86171891676014 },
+    "lat": 18.335278251441,
+    "lng": -64.86171891676014,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SMITH BAY",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-estate-smithfleld",
@@ -74187,7 +74379,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Sprat; Dutch, S p of; Danish, Brlsling; Spanish, Sardineta or Machuelo. Sprat>IEall; Estate on west coast of St. Croix, Northside A Quarter, between",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-sprat&island=st_croix&context=Sprat",
       "map": "/map?q=Sprat&island=st_croix"
@@ -74207,7 +74398,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-sprat"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.74306767792325, "lng": -64.88348586636539 },
+    "lat": 17.74306767792325,
+    "lng": -64.88348586636539,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "SPRATT HALL",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "water_island-bay-sprat-bay",
@@ -77840,7 +78038,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "The Grange; (1) Lagrange Estate, Westend Quarter, St. Croix. -L. & W.",
-    "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-the-grange&island=st_croix&context=The%20Grange",
       "map": "/map?q=The%20Grange&island=st_croix"
@@ -77860,7 +78057,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-the-grange"
       ]
-    }
+    },
+    "coordinates": { "lat": 17.7313643710483, "lng": -64.72092022272085 },
+    "lat": 17.7313643710483,
+    "lng": -64.72092022272085,
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_3",
+    "coordinateConfidence": "reviewed",
+    "coordinateCandidate": "GRANGE (North)",
+    "coordinateReason": "reviewed_safe_candidate"
   },
   {
     "id": "st_croix-dictionaryEntry-the-lagooa",
