@@ -160,6 +160,48 @@ const MAPBOX_TOKEN =
 
 const ESTATES_URL = "/geo/usvi-estates.geojson";
 const PARCELS_URL = "/geo/usvi-parcels.geojson";
+
+function mapHasLayer(map: mapboxgl.Map, layerId: string) {
+  try {
+    return Boolean(map.getLayer(layerId));
+  } catch {
+    return false;
+  }
+}
+
+function isValidLngLatCenter(value: unknown): value is [number, number] {
+  return (
+    Array.isArray(value) &&
+    value.length >= 2 &&
+    typeof value[0] === "number" &&
+    typeof value[1] === "number" &&
+    Number.isFinite(value[0]) &&
+    Number.isFinite(value[1])
+  );
+}
+
+function safeQueryRenderedFeatures(
+  map: mapboxgl.Map,
+  options: { layers?: string[] } = {},
+) {
+  try {
+    const layers = options.layers ?? [];
+    const existingLayers = layers.filter((layerId) => mapHasLayer(map, layerId));
+
+    if (layers.length > 0 && existingLayers.length === 0) {
+      return [];
+    }
+
+    return map.queryRenderedFeatures({
+      ...options,
+      layers: existingLayers.length > 0 ? existingLayers : layers,
+    });
+  } catch (error) {
+    console.warn("[IslandMap] queryRenderedFeatures skipped", error);
+    return [];
+  }
+}
+
 const HEAT_URL = "/geo/usvi-heat.geojson";
 
 const emptyRoute: GeoJSON.Feature<GeoJSON.LineString> = {
@@ -1066,7 +1108,7 @@ map.on("mouseleave", "estates-hitbox", () => {
 
   const timeoutId = window.setTimeout(() => {
     try {
-      const renderedFeatures = map.queryRenderedFeatures({
+      const renderedFeatures = safeQueryRenderedFeatures(map, {
         layers: ["estates-hitbox", "estates-boundaries", "estates-fill"],
       });
 
@@ -1201,6 +1243,41 @@ map.on("mouseleave", "estates-hitbox", () => {
   const wrapperClassName = embedded
     ? `relative w-full overflow-hidden bg-[#020617] ${className}`
     : `relative h-full min-h-[100dvh] w-full overflow-hidden bg-[#020617] ${className}`;
+
+  useEffect(() => {
+    const map = mapRef.current;
+
+    if (!map || !isValidLngLatCenter(focusTarget?.center)) return;
+
+    const runFocus = () => {
+      if (!isValidLngLatCenter(focusTarget?.center)) return;
+
+      map.resize();
+
+      map.easeTo({
+        center: focusTarget.center,
+        zoom: focusTarget.zoom ?? 15.25,
+        pitch: focusTarget.pitch ?? 66,
+        bearing: focusTarget.bearing ?? -18,
+        duration: 900,
+        essential: true,
+      });
+    };
+
+    if (map.loaded()) {
+      window.setTimeout(runFocus, 150);
+    } else {
+      map.once("load", () => {
+        window.setTimeout(runFocus, 150);
+      });
+    }
+  }, [
+    focusTarget?.center?.[0],
+    focusTarget?.center?.[1],
+    focusTarget?.zoom,
+    focusTarget?.pitch,
+    focusTarget?.bearing,
+  ]);
 
   return (
     <div

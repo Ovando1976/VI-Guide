@@ -1,5 +1,5 @@
 // src/pages/estates/EstateDetailPage.tsx
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   Archive,
@@ -19,7 +19,6 @@ import { geographicIndexItems, type GeographicIndexItem } from "../../data/core/
 import { estates } from "../../data/estates";
 import { getEstateCoordinatesByGeoid } from "../../data/estateCoordinateLinks";
 import { getEstateKnowledgeForEstate } from "../../data/estateKnowledgeLookup";
-import { getHistoryForEstate } from "../../data/history/historyLinks";
 import { buildEstateNarrative } from "../../lib/estates/estateNarrative";
 
 type EstateLike = (typeof estates)[number];
@@ -50,6 +49,24 @@ function compactId(value: unknown): string {
 
 function safeNumber(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function isValidUsviLat(value: unknown): value is number {
+  return (
+    typeof value === "number" &&
+    Number.isFinite(value) &&
+    value >= 17.5 &&
+    value <= 18.6
+  );
+}
+
+function isValidUsviLng(value: unknown): value is number {
+  return (
+    typeof value === "number" &&
+    Number.isFinite(value) &&
+    value >= -65.2 &&
+    value <= -64.4
+  );
 }
 
 function getLoose(value: unknown, key: string): unknown {
@@ -209,7 +226,41 @@ export default function EstateDetailPage() {
 
   const lat = getEstateLat(estate);
   const lng = getEstateLng(estate);
-  const hasCoords = lat !== null && lng !== null;
+
+  const routeLat = Number(params.get("lat"));
+  const routeLng = Number(params.get("lng"));
+
+  const fallbackEstateCoords: Record<string, [number, number]> = {
+    bovoni: [-64.87282, 18.31496],
+    "estate-bovoni": [-64.87282, 18.31496],
+  };
+
+  const fallbackCoords = fallbackEstateCoords[normalize(title)];
+
+  const mapLat =
+    (isValidUsviLat(lat) ? lat : null) ??
+    (isValidUsviLat(routeLat) ? routeLat : null) ??
+    fallbackCoords?.[1] ??
+    null;
+
+  const mapLng =
+    (isValidUsviLng(lng) ? lng : null) ??
+    (isValidUsviLng(routeLng) ? routeLng : null) ??
+    fallbackCoords?.[0] ??
+    null;
+
+  const hasCoords = isValidUsviLat(mapLat) && isValidUsviLng(mapLng);
+
+  const estateMapFocusTarget = hasCoords
+    ? {
+        center: [mapLng, mapLat] as [number, number],
+        zoom: 12,
+        pitch: 54,
+        bearing: -12,
+        title,
+        name: title,
+      }
+    : undefined;
 
   const estateId = String(
     getLoose(estate, "geoid") ||
@@ -225,8 +276,8 @@ export default function EstateDetailPage() {
     String(getLoose(estate, "geoid") ?? estateId),
   );
 
-  const googleMapsUrl = hasCoords
-    ? `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
+  const googleMapsUrl = hasCoords && mapLat !== null && mapLng !== null
+    ? `https://www.google.com/maps/search/?api=1&query=${mapLat},${mapLng}`
     : "";
 
   const narrative = buildEstateNarrative({
@@ -241,11 +292,39 @@ export default function EstateDetailPage() {
     name: String(getLoose(estate, "name") ?? title),
   });
 
-  const linkedHistoryRecords = getHistoryForEstate({
-    name: title,
-    geoid: estateId,
-    estateId,
-  }).slice(0, 6);
+  const [linkedHistoryRecords, setLinkedHistoryRecords] = useState<any[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadHistory() {
+      try {
+        const module = await import("../../data/history/historyLinks");
+        const records = module
+          .getHistoryForEstate({
+            name: title,
+            geoid: estateId,
+            estateId,
+          })
+          .slice(0, 6);
+
+        if (!cancelled) {
+          setLinkedHistoryRecords(records);
+        }
+      } catch (error) {
+        console.warn("[EstateDetailPage] Failed to load linked history", error);
+        if (!cancelled) {
+          setLinkedHistoryRecords([]);
+        }
+      }
+    }
+
+    loadHistory();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [title, estateId]);
 
   const primaryDescription = knowledge?.description || narrative.summary;
   const primaryHistory = knowledge?.historicSummary || narrative.significance;
@@ -303,7 +382,7 @@ export default function EstateDetailPage() {
                 <DarkMetric label="Records" value={`${linkedHistoryRecords.length}`} />
                 <DarkMetric
                   label="Coordinates"
-                  value={hasCoords ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : "Missing"}
+                  value={hasCoords && mapLat !== null && mapLng !== null ? `${mapLat.toFixed(4)}, ${mapLng.toFixed(4)}` : "Missing"}
                 />
               </div>
             </div>
@@ -320,16 +399,12 @@ export default function EstateDetailPage() {
                 </div>
 
                 <IslandMap
+                  selectedIsland={island as any}
                   embedded
                   embeddedMapHeight="400px"
                   interactive
-                  focusTarget={{
-                    center: hasCoords ? [lng, lat] : [-64.86, 18.08],
-                    zoom: hasCoords ? 14.6 : 10.5,
-                    pitch: 62,
-                    bearing: -14,
-                  }}
-                  highlightEstate={title}
+                  focusTarget={estateMapFocusTarget}
+                  highlightEstate={estateId || title}
                   showEstateBoundaries
                   showEstateLabels
                   showParcels
@@ -369,7 +444,7 @@ export default function EstateDetailPage() {
             onClick={() =>
               navigate(
                 `/mobility?island=${island}&destination=${encodedTitle}${
-                  hasCoords ? `&lat=${lat}&lng=${lng}` : ""
+                  hasCoords && mapLat !== null && mapLng !== null ? `&lat=${mapLat}&lng=${mapLng}` : ""
                 }`,
               )
             }
@@ -420,7 +495,7 @@ export default function EstateDetailPage() {
             <InfoCard label="Estate ID" value={estateId} />
             <InfoCard
               label="Coordinates"
-              value={hasCoords ? `${lat.toFixed(5)}, ${lng.toFixed(5)}` : "Unavailable"}
+              value={hasCoords && mapLat !== null && mapLng !== null ? `${mapLat.toFixed(5)}, ${mapLng.toFixed(5)}` : "Unavailable"}
             />
           </div>
 
@@ -430,7 +505,7 @@ export default function EstateDetailPage() {
                 Navigation
               </p>
               <p className="mt-2 text-sm font-bold text-stone-700">
-                {lat.toFixed(5)}, {lng.toFixed(5)}
+                {hasCoords && mapLat !== null && mapLng !== null ? `${mapLat.toFixed(5)}, ${mapLng.toFixed(5)}` : "Coordinates unavailable"}
               </p>
               <button
                 type="button"

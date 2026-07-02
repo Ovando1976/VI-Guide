@@ -10,7 +10,6 @@ import IslandMap, {
   type AtlasSelection as IslandMapSelection,
 } from "./maps/IslandMap";
 import { useMapPoints } from "../hooks/useMapPoints";
-import { hydrateAtlasSelection } from "../data/canonical/atlasProfileResolver";
 import { getEstateProfileForSelection } from "../data/canonical/estateProfiles";
 import type { IslandCode } from "../types";
 
@@ -112,39 +111,85 @@ function getProp(selection: AtlasSelection, key: string) {
   return selection.properties?.[key];
 }
 
+async function hydrateSelectionLazily(selection: AtlasSelection) {
+  try {
+    const module = await import("../data/canonical/atlasProfileResolver");
+    return module.hydrateAtlasSelection(selection);
+  } catch (error) {
+    console.warn("[Maps] Failed to hydrate atlas selection", error);
+    return selection;
+  }
+}
+
+function slugifyEstate(value: unknown) {
+  return cleanString(value)
+    .replace(/^Estate\s+/i, "")
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function getEstateId(selection: AtlasSelection) {
   const props = selection.properties ?? {};
 
-  const officialId = cleanString(
-    getProp(selection, "officialId") ||
-      getProp(selection, "geoid") ||
-      getProp(selection, "GEOID") ||
-      getProp(selection, "sourceObjectId") ||
-      getProp(selection, "estateId") ||
-      props.officialId ||
-      props.geoid ||
-      props.GEOID ||
-      props.sourceObjectId ||
-      props.estateId ||
-      selection.geoid,
+  const candidates = [
+    props.canonicalId,
+    props.canonicalID,
+    props.officialId,
+    props.officialID,
+    props.geoid,
+    props.GEOID,
+    selection.geoid,
+    props.estateId,
+    props.ESTATE_ID,
+  ]
+    .map((value) => cleanString(value))
+    .filter(Boolean)
+    .filter((value) => value !== "-1");
+
+  const canonical = candidates.find((value) =>
+    value.includes(":") ||
+    value.includes("st_thomas") ||
+    value.includes("st_john") ||
+    value.includes("st_croix") ||
+    value.includes("water_island")
   );
 
-  /*
-    "-1" is not a real unique estate ID.
-    A bunch of estates have geoid -1, so routing to /estates/-1
-    causes the app to open the first -1 estate, which is Bellevue.
-  */
-  if (officialId && officialId !== "-1") return officialId;
+  if (canonical) return canonical;
 
-  return cleanString(
-    getProp(selection, "displayName") ||
-      getProp(selection, "name") ||
-      getProp(selection, "estate") ||
+  const estateName = cleanString(
+    selection.estate ||
       selection.name ||
-      selection.estate ||
-      selection.title,
-  ).replace(/^Estate\s+/i, "");
+      selection.title ||
+      props.estate ||
+      props.ESTATE ||
+      props.name ||
+      props.NAME ||
+      props.label ||
+      props.LABEL ||
+      props.displayName
+  );
+
+  const island = cleanString(
+    selection.island ||
+      props.island ||
+      props.ISLAND ||
+      props.islandCode ||
+      props.ISLAND_CODE ||
+      "st_thomas"
+  );
+
+  const estateSlug = slugifyEstate(estateName);
+
+  if (estateSlug && island) {
+    return `${island}:${estateSlug}`;
+  }
+
+  return candidates[0] || estateSlug || "";
 }
+
 
 function getEstateQuarter(selection: AtlasSelection) {
   const props = selection.properties ?? {};
@@ -174,8 +219,27 @@ function buildEstateRouteQuery(selection: AtlasSelection, islandFromUrl: IslandC
   const context = selectionTitle(selection);
   if (context) params.set("context", context);
 
+  const props = selection.properties ?? {};
+  const lat = selection.lat ?? selection.coords?.[1] ?? Number(props.lat ?? props.LAT ?? props.latitude);
+  const lng = selection.lng ?? selection.coords?.[0] ?? Number(props.lng ?? props.LNG ?? props.lon ?? props.longitude);
+
+  if (
+    typeof lat === "number" &&
+    typeof lng === "number" &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lng) &&
+    lat >= 17.5 &&
+    lat <= 18.6 &&
+    lng >= -65.2 &&
+    lng <= -64.4
+  ) {
+    params.set("lat", String(lat));
+    params.set("lng", String(lng));
+  }
+
   return params.toString();
 }
+
 
 function navigateHard(path: string, navigate: ReturnType<typeof useNavigate>) {
   try {
@@ -506,14 +570,14 @@ export default function Maps({ selectedIsland = "st_thomas" }: MapsProps) {
     };
 
     setSelectedPoint(point);
-    setSelectedFeature(hydrateAtlasSelection(normalizedSelection));
+    hydrateSelectionLazily(normalizedSelection).then(setSelectedFeature);
     setSearchQuery(point.title);
   }
 
   function selectFeature(feature: IslandMapSelection) {
     const normalizedFeature = normalizeFeature(feature);
 
-    setSelectedFeature(hydrateAtlasSelection(normalizedFeature));
+    hydrateSelectionLazily(normalizedFeature).then(setSelectedFeature);
 
     if (normalizedFeature.source === "point-marker" || normalizedFeature.isPoint) {
       const match = normalizedPoints.find(
