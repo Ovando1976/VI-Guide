@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-07-02T09:59:47.556Z",
+  "updatedFile": "scripts/audit-data-cleanliness.ts",
+  "backupFile": "reports/backups/audit-data-cleanliness.true-counts.2026-07-02T09-59-47-544Z.ts",
+  "changes": [
+    "addIssueFactory now tracks actual counts and sampled counts separately",
+    "severityTotals now uses actual counts from counts map",
+    "issueGroups now uses actual counts from counts map",
+    "report totals now includes issuesActual, issuesSampled, and issueSampleLimitPerKind"
+  ]
+}
