@@ -1,0 +1,7 @@
+{
+  "generatedAt": "2026-07-02T09:27:47.382Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.remove-junk-aliases.2026-07-02T09-27-47-352Z.ts",
+  "changed": true,
+  "removedValue": "aliases"
+}

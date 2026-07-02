@@ -14796,7 +14796,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["aliases","ChUU88On","Clairmont"],
+    "aliases": ["ChUU88On","Clairmont"],
     "id": "st_croix-estate-clairmont",
     "name": "CLAIRMONT",
     "type": "estate",
@@ -16392,7 +16392,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["aliases","ConstitutlonhUZ","Constitution Hill"],
+    "aliases": ["ConstitutlonhUZ","Constitution Hill"],
     "id": "st_croix-estate-constitution-hill",
     "name": "CONSTITUTION HILL",
     "type": "estate",
@@ -25839,7 +25839,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["aliases","Blp Fountain","Fountain"],
+    "aliases": ["Blp Fountain","Fountain"],
     "id": "st_croix-estate-fountain",
     "name": "FOUNTAIN",
     "type": "estate",
