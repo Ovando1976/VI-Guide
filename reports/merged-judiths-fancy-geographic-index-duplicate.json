@@ -1,0 +1,94 @@
+{
+  "action": "merged_judiths_fancy_duplicate",
+  "beforeCount": 2828,
+  "afterCount": 2827,
+  "keepIndex": 1228,
+  "removeIndex": 1229,
+  "keepId": "st_croix-estate-judiths-fancy",
+  "removedId": "st_croix-estate-judys-fancy",
+  "backupFile": "/workspaces/VI-Guide/reports/backups/geographicIndex.merge-judiths-fancy-duplicate.2026-07-02T11-36-50-991Z.ts",
+  "keptRecord": {
+    "id": "st_croix-estate-judiths-fancy",
+    "name": "JUDITHS FANCY",
+    "type": "estate",
+    "island": "st_croix",
+    "aliases": [
+      "JUDITHS FANCY",
+      "Judith's Fancy",
+      "Judy's Fancy",
+      "Judas Fancy",
+      "Iudiths",
+      "Hemers plantation"
+    ],
+    "description": "Judith's Fancy; Estate, occupying Hemer Peninsula on east side of Saltriver Bay, North coast of St. Croix. Comprises following tracts: 1 in Northside B, on which are Manse or Estatehouse and Mill; 1 in Queen (Di-onning) Quarter, on which is Governor's Castle; and north portion of 34 in Conipany Quarter. Originally patented to Jens Peter Hemer (or Hemmer); hence called by Oldendorp, Hemers plantation : but by Oxholm, Iudiths Local pronunciation note: Judy's Fancy; Local pronunciation of Judith's Fancy, estate in St. Croix; sometimes mispelled, Judas Fancy.",
+    "coordinates": {
+      "lat": 17.7749468067485,
+      "lng": -64.7456709954797
+    },
+    "routes": {
+      "knowledge": "/history/knowledge?estate=1701&island=st_croix&context=JUDITHS%20FANCY",
+      "map": "/map?estate=1701&island=st_croix",
+      "overview": "/estates/1701?island=st_croix",
+      "history": "/estates/1701/history?island=st_croix&context=JUDITHS%20FANCY",
+      "archives": "/estates/1701/archives?island=st_croix&context=JUDITHS%20FANCY"
+    },
+    "evidence": {
+      "estateLayer": true,
+      "geographicIndex": true,
+      "starterGazetteer": false,
+      "dictionary": false,
+      "archive": false,
+      "historicMap": false
+    },
+    "sources": [
+      "estates",
+      "geographicIndex"
+    ],
+    "sourceIds": {
+      "estates": [
+        "1701"
+      ],
+      "geographicIndex": [
+        "st-croix-estate-judiths-fancy",
+        "st-croix-estate-judys-fancy",
+        "st_croix-estate-judiths-fancy",
+        "st_croix-estate-judys-fancy"
+      ]
+    },
+    "relatedRecordIds": [
+      "st_croix-estate-judys-fancy"
+    ]
+  },
+  "removedRecord": {
+    "id": "st_croix-estate-judys-fancy",
+    "name": "Judith's Fancy",
+    "type": "estate",
+    "island": "st_croix",
+    "aliases": [],
+    "description": "Judy's Fancy; Local pronunciation of Judith's Fancy, estate in St. Croix; sometimes mispelled, Judas Fancy.",
+    "coordinates": {
+      "lat": 17.776914,
+      "lng": -64.747497
+    },
+    "routes": {
+      "knowledge": "/history/knowledge?estate=st-croix-estate-judys-fancy&island=st_croix&context=Judy's%20Fancy",
+      "map": "/map?q=Judy's%20Fancy&island=st_croix"
+    },
+    "evidence": {
+      "estateLayer": false,
+      "geographicIndex": true,
+      "starterGazetteer": false,
+      "dictionary": false,
+      "archive": false,
+      "historicMap": false
+    },
+    "sources": [
+      "geographicIndex"
+    ],
+    "sourceIds": {
+      "geographicIndex": [
+        "st-croix-estate-judys-fancy"
+      ]
+    }
+  }
+}
