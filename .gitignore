@@ -22,3 +22,13 @@ generated/usvi-parcels.json
 public/data/usvi-parcels-addressed.geojson
 public/data/usvi-parcels-mapgeo-enriched.geojson
 public/data/usvi-parcels.geojson
+
+# Local archive/import debug output
+reports/rigsarkivet-maps-and-drawings/debug/
+reports/rigsarkivet-maps-and-drawings/image-resolution/
+reports/rigsarkivet-maps-and-drawings/raw-collection-index.html
+scripts/debug/
+
+# Local index graph audit output
+reports/index-graph-accuracy/
+scripts/audit-index-graph-accuracy.ts
