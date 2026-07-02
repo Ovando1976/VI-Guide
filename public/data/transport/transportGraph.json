@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T17:36:40.358Z",
+  "generatedAt": "2026-06-29T20:49:21.699Z",
   "stats": {
-    "totalNodes": 515,
+    "totalNodes": 514,
     "byIsland": {
       "st_croix": 193,
-      "st_john": 110,
-      "st_thomas": 210,
+      "st_john": 108,
+      "st_thomas": 211,
       "water_island": 2
     },
     "byType": {
@@ -19,7 +19,7 @@
       "historic_site": 20,
       "hospital": 4,
       "restaurant": 152,
-      "school": 48,
+      "school": 47,
       "shopping": 30,
       "taxi_stand": 1,
       "transport": 21,
@@ -2849,42 +2849,41 @@
       "searchText": "stx alexander henderson elementary school alexander henderson elementary school school public elementary facility in concordia henderson henderson elementary"
     },
     {
-      "id": "stx-alfredo-andrews-elementary-school",
+      "id": "stx-alfredo-andrews-elementary",
       "name": "Alfredo Andrews Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7329,
-      "lng": -64.7821,
+      "lat": 17.734,
+      "lng": -64.808,
       "aliases": [
-        "alfredo andrews",
-        "andrews elementary"
+        "alfredo andrews"
       ],
-      "description": "Public elementary school transportation hub.",
+      "description": "Cruzan west-central public primary transportation lane connection point.",
       "source": "transportNodes",
-      "sourceId": "stx-alfredo-andrews-elementary-school",
+      "sourceId": "stx-alfredo-andrews-elementary",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx alfredo andrews elementary school alfredo andrews elementary school school public elementary school transportation hub alfredo andrews andrews elementary"
+      "searchText": "stx alfredo andrews elementary alfredo andrews elementary school school cruzan west central public primary transportation lane connection point alfredo andrews"
     },
     {
       "id": "stx-arthur-a-richards-k8-school",
       "name": "Arthur A. Richards K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7125,
-      "lng": -64.8611,
+      "lat": 17.712,
+      "lng": -64.852,
       "aliases": [
         "arthur richards",
         "richards k8"
       ],
-      "description": "Public K-8 school facility serving the West End.",
+      "description": "West end hub structure managing routes connecting regional neighborhoods.",
       "source": "transportNodes",
       "sourceId": "stx-arthur-a-richards-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx arthur a richards k8 school arthur a richards k 8 school school public k 8 school facility serving the west end arthur richards richards k8"
+      "searchText": "stx arthur a richards k8 school arthur a richards k 8 school school west end hub structure managing routes connecting regional neighborhoods arthur richards richards k8"
     },
     {
       "id": "stx-az-academy",
@@ -2943,23 +2942,22 @@
       "searchText": "stx claude o markoe elementary school claude o markoe elementary school school public elementary school near frederiksted claude markoe markoe elementary"
     },
     {
-      "id": "stx-elena-l-christian-junior-high-school",
+      "id": "stx-elena-christian-junior-high",
       "name": "Elena L. Christian Junior High School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7461,
-      "lng": -64.7112,
+      "lat": 17.741,
+      "lng": -64.718,
       "aliases": [
-        "elena christian",
-        "elena christian junior"
+        "elena christian"
       ],
-      "description": "Public junior high transit point near Christiansted.",
+      "description": "Christiansted urban area public middle educational transit terminal.",
       "source": "transportNodes",
-      "sourceId": "stx-elena-l-christian-junior-high-school",
+      "sourceId": "stx-elena-christian-junior-high",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx elena l christian junior high school elena l christian junior high school school public junior high transit point near christiansted elena christian elena christian junior"
+      "searchText": "stx elena christian junior high elena l christian junior high school school christiansted urban area public middle educational transit terminal elena christian"
     },
     {
       "id": "stx-eulalie-r-rivera-k8-school",
@@ -3037,43 +3035,42 @@
       "searchText": "stx good hope country day school good hope country day school school private college preparatory academy and major transit junction ghcds country day"
     },
     {
-      "id": "stx-john-h-woodson-junior-high-school",
+      "id": "stx-john-h-woodson-junior-high",
       "name": "John H. Woodson Junior High School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7412,
-      "lng": -64.7734,
+      "lat": 17.731,
+      "lng": -64.781,
       "aliases": [
         "woodson",
-        "john woodson",
-        "woodson junior high"
+        "john h woodson"
       ],
-      "description": "Public junior high school and St. Croix transportation hub.",
+      "description": "Mid-island public junior high facility hosting heavy localized transit operations.",
       "source": "transportNodes",
-      "sourceId": "stx-john-h-woodson-junior-high-school",
+      "sourceId": "stx-john-h-woodson-junior-high",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx john h woodson junior high school john h woodson junior high school school public junior high school and st croix transportation hub woodson john woodson woodson junior high"
+      "searchText": "stx john h woodson junior high john h woodson junior high school school mid island public junior high facility hosting heavy localized transit operations woodson john h woodson"
     },
     {
       "id": "stx-juanita-gardine-k8-school",
       "name": "Juanita Gardine K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7511,
-      "lng": -64.7212,
+      "lat": 17.747,
+      "lng": -64.724,
       "aliases": [
         "juanita gardine",
         "gardine"
       ],
-      "description": "Public K-8 school transportation hub near Richmond.",
+      "description": "Richmond area regional public educational distribution facility.",
       "source": "transportNodes",
       "sourceId": "stx-juanita-gardine-k8-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx juanita gardine k8 school juanita gardine k 8 school school public k 8 school transportation hub near richmond juanita gardine gardine"
+      "searchText": "stx juanita gardine k8 school juanita gardine k 8 school school richmond area regional public educational distribution facility juanita gardine gardine"
     },
     {
       "id": "stx-lew-muckle-elementary-school",
@@ -3099,8 +3096,8 @@
       "name": "Pearl B. Larsen K-8 School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7538,
-      "lng": -64.6945,
+      "lat": 17.749,
+      "lng": -64.685,
       "aliases": [
         "pearl larsen",
         "larsen"
@@ -3114,23 +3111,22 @@
       "searchText": "stx pearl b larsen k8 school pearl b larsen k 8 school school public k 8 school transportation hub for east end paths pearl larsen larsen"
     },
     {
-      "id": "stx-ricardo-richards-elementary-school",
+      "id": "stx-ricardo-richards-elementary",
       "name": "Ricardo Richards Elementary School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7388,
-      "lng": -64.7495,
+      "lat": 17.738,
+      "lng": -64.746,
       "aliases": [
-        "ricardo richards",
-        "richards elementary"
+        "ricardo richards"
       ],
-      "description": "Public elementary school transportation hub.",
+      "description": "Strawberry Hill zone community public primary school network asset.",
       "source": "transportNodes",
-      "sourceId": "stx-ricardo-richards-elementary-school",
+      "sourceId": "stx-ricardo-richards-elementary",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx ricardo richards elementary school ricardo richards elementary school school public elementary school transportation hub ricardo richards richards elementary"
+      "searchText": "stx ricardo richards elementary ricardo richards elementary school school strawberry hill zone community public primary school network asset ricardo richards"
     },
     {
       "id": "stx-good-shepherd-school",
@@ -3159,7 +3155,9 @@
       "lng": -64.778,
       "aliases": [
         "central high",
-        "st croix central"
+        "st croix central",
+        "chs",
+        "central"
       ],
       "description": "School and community transportation hub.",
       "source": "transportNodes",
@@ -3167,7 +3165,7 @@
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central stx central high school st croix central high school school public high school and kingshill area school hub central high st croix central"
+      "searchText": "stx central high school st croix central high school school school and community transportation hub central high st croix central stx central high school st croix central high school school central public secondary infrastructure facility and massive localized student transportation center chs central central high"
     },
     {
       "id": "stx-christian-academy",
@@ -3188,24 +3186,24 @@
       "searchText": "stx christian academy st croix christian academy school private local christian educational programming complex stx christian academy"
     },
     {
-      "id": "stx-educational-complex-high-school",
+      "id": "stx-st-croix-educational-complex",
       "name": "St. Croix Educational Complex High School",
       "island": "st_croix",
       "type": "school",
-      "lat": 17.7335,
-      "lng": -64.8021,
+      "lat": 17.728,
+      "lng": -64.794,
       "aliases": [
+        "scec",
         "educational complex",
-        "complex high",
-        "scec"
+        "complex"
       ],
-      "description": "Public high school and West End technical/vocational school hub.",
+      "description": "Major public secondary educational and central island bus transit system hub.",
       "source": "transportNodes",
-      "sourceId": "stx-educational-complex-high-school",
+      "sourceId": "stx-st-croix-educational-complex",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stx educational complex high school st croix educational complex high school school public high school and west end technical vocational school hub educational complex complex high scec"
+      "searchText": "stx st croix educational complex st croix educational complex high school school major public secondary educational and central island bus transit system hub scec educational complex complex"
     },
     {
       "id": "stx-seventh-day-adventist-school",
@@ -5745,74 +5743,37 @@
       "name": "Gifft Hill School",
       "island": "st_john",
       "type": "school",
-      "lat": 18.328,
-      "lng": -64.768,
+      "lat": 18.3224,
+      "lng": -64.7785,
       "aliases": [
-        "gifft hill",
-        "gifft hill private school"
+        "gifft hill"
       ],
-      "description": "Independent school on St. John.",
+      "description": "Private independent K-12 schooling installation acting as a primary cross-island transit vertex.",
       "source": "transportNodes",
       "sourceId": "stj-gifft-hill-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj gifft hill school gifft hill school school independent school on st john gifft hill gifft hill private school"
+      "searchText": "stj gifft hill school gifft hill school school private independent k 12 schooling installation acting as a primary cross island transit vertex gifft hill"
     },
     {
       "id": "stj-julius-e-sprauve-school",
       "name": "Julius E. Sprauve School",
       "island": "st_john",
       "type": "school",
-      "lat": 18.33,
-      "lng": -64.793,
+      "lat": 18.3312,
+      "lng": -64.7928,
       "aliases": [
         "sprauve",
-        "jess"
+        "julius sprauve"
       ],
-      "description": "Public school in Cruz Bay.",
+      "description": "Public elementary/middle school facility in Cruz Bay.",
       "source": "transportNodes",
       "sourceId": "stj-julius-e-sprauve-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stj julius e sprauve school julius e sprauve school school public school in cruz bay sprauve jess"
-    },
-    {
-      "id": "stj-christian-academy",
-      "name": "St. John Christian Academy",
-      "island": "st_john",
-      "type": "school",
-      "lat": 18.3315,
-      "lng": -64.7885,
-      "aliases": [
-        "stj christian academy"
-      ],
-      "description": "Parochial Christian program node based in Cruz Bay area.",
-      "source": "transportNodes",
-      "sourceId": "stj-christian-academy",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stj christian academy st john christian academy school parochial christian program node based in cruz bay area stj christian academy"
-    },
-    {
-      "id": "stj-st-john-montessori",
-      "name": "St. John Montessori",
-      "island": "st_john",
-      "type": "school",
-      "lat": 18.3292,
-      "lng": -64.7901,
-      "aliases": [
-        "st john montessori"
-      ],
-      "description": "Private early childhood academy facility.",
-      "source": "transportNodes",
-      "sourceId": "stj-st-john-montessori",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stj st john montessori st john montessori school private early childhood academy facility st john montessori"
+      "searchText": "stj julius e sprauve school julius e sprauve school school public elementary middle school facility in cruz bay sprauve julius sprauve"
     },
     {
       "id": "discovery-shopping-st_john-c-and-d-supermarket",
@@ -9332,38 +9293,36 @@
       "name": "All Saints Cathedral School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.344,
-      "lng": -64.933,
+      "lat": 18.3438,
+      "lng": -64.9315,
       "aliases": [
-        "all saints",
-        "all saints school"
+        "all saints"
       ],
-      "description": "Private Episcopal school on Commandant Gade.",
+      "description": "Private historic parochial school in downtown region.",
       "source": "transportNodes",
       "sourceId": "stt-all-saints-cathedral-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt all saints cathedral school all saints cathedral school school private episcopal school on commandant gade all saints all saints school"
+      "searchText": "stt all saints cathedral school all saints cathedral school school private historic parochial school in downtown region all saints"
     },
     {
       "id": "stt-antilles-school",
       "name": "Antilles School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3247,
-      "lng": -64.9097,
+      "lat": 18.3188,
+      "lng": -64.9085,
       "aliases": [
-        "antilles",
-        "antilles private school"
+        "antilles"
       ],
-      "description": "Private school campus with athletic and recreation facilities.",
+      "description": "Independent non-profit college-preparatory hub.",
       "source": "transportNodes",
       "sourceId": "stt-antilles-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt antilles school antilles school school private school campus with athletic and recreation facilities antilles antilles private school"
+      "searchText": "stt antilles school antilles school school independent non profit college preparatory hub antilles"
     },
     {
       "id": "stt-bertha-c-boschulte-middle-school",
@@ -9386,25 +9345,6 @@
       "searchText": "stt bertha c boschulte middle school bertha c boschulte middle school school public middle school and east end school transportation hub bcb boschulte bertha boschulte"
     },
     {
-      "id": "stt-calvary-christian-academy",
-      "name": "Calvary Christian Academy",
-      "island": "st_thomas",
-      "type": "school",
-      "lat": 18.3444,
-      "lng": -64.8875,
-      "aliases": [
-        "calvary",
-        "calvary christian"
-      ],
-      "description": "Private Christian academy handling local student transit options.",
-      "source": "transportNodes",
-      "sourceId": "stt-calvary-christian-academy",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stt calvary christian academy calvary christian academy school private christian academy handling local student transit options calvary calvary christian"
-    },
-    {
       "id": "stt-charlotte-amalie-high-school",
       "name": "Charlotte Amalie High School",
       "island": "st_thomas",
@@ -9424,42 +9364,78 @@
       "searchText": "stt charlotte amalie high school charlotte amalie high school school major school and community transportation hub cahs charlotte amalie high stt charlotte amalie high school charlotte amalie high school school public high school and major st thomas school transportation hub cahs charlotte amalie high"
     },
     {
-      "id": "stt-e-benjamin-oliver-elementary-school",
+      "id": "stt-e-benjamin-oliver-elementary",
       "name": "E. Benjamin Oliver Elementary School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3465,
-      "lng": -64.8921,
+      "lat": 18.3402,
+      "lng": -64.8851,
       "aliases": [
-        "ebo",
-        "benjamin oliver"
+        "oliver",
+        "oliver elementary"
       ],
-      "description": "Public elementary school located in Estate Donoe.",
+      "description": "East end public primary schooling complex.",
       "source": "transportNodes",
-      "sourceId": "stt-e-benjamin-oliver-elementary-school",
+      "sourceId": "stt-e-benjamin-oliver-elementary",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt e benjamin oliver elementary school e benjamin oliver elementary school school public elementary school located in estate donoe ebo benjamin oliver"
+      "searchText": "stt e benjamin oliver elementary e benjamin oliver elementary school school east end public primary schooling complex oliver oliver elementary"
     },
     {
-      "id": "stt-edith-williams-alternative",
+      "id": "stt-edith-l-williams-alternative",
       "name": "Edith L. Williams Alternative Academy",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3419,
-      "lng": -64.9012,
+      "lat": 18.3324,
+      "lng": -64.8992,
       "aliases": [
-        "edith williams",
-        "williams academy"
+        "edith williams"
       ],
-      "description": "Public alternative learning institute campus infrastructure.",
+      "description": "Alternative secondary school infrastructure support node.",
       "source": "transportNodes",
-      "sourceId": "stt-edith-williams-alternative",
+      "sourceId": "stt-edith-l-williams-alternative",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt edith williams alternative edith l williams alternative academy school public alternative learning institute campus infrastructure edith williams williams academy"
+      "searchText": "stt edith l williams alternative edith l williams alternative academy school alternative secondary school infrastructure support node edith williams"
+    },
+    {
+      "id": "stt-gladys-abraham-elementary",
+      "name": "Gladys A. Abraham Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3411,
+      "lng": -64.9688,
+      "aliases": [
+        "abraham",
+        "gladys abraham"
+      ],
+      "description": "Western sub-district education system node.",
+      "source": "transportNodes",
+      "sourceId": "stt-gladys-abraham-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt gladys abraham elementary gladys a abraham elementary school school western sub district education system node abraham gladys abraham"
+    },
+    {
+      "id": "stt-holy-trinity-lutheran-school",
+      "name": "Holy Trinity Lutheran School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3424,
+      "lng": -64.9281,
+      "aliases": [
+        "holy trinity"
+      ],
+      "description": "Private town corridor parochial academy location.",
+      "source": "transportNodes",
+      "sourceId": "stt-holy-trinity-lutheran-school",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt holy trinity lutheran school holy trinity lutheran school school private town corridor parochial academy location holy trinity"
     },
     {
       "id": "stt-ivanna-eudora-kean-high-school",
@@ -9480,6 +9456,25 @@
       "canPickup": true,
       "canDropoff": true,
       "searchText": "stt ivanna eudora kean high school ivanna eudora kean high school school public high school and east end transportation hub kean iekhs ivanna eudora kean"
+    },
+    {
+      "id": "stt-j-antonio-jarvis-elementary",
+      "name": "J. Antonio Jarvis Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3445,
+      "lng": -64.9295,
+      "aliases": [
+        "jarvis",
+        "jarvis elementary"
+      ],
+      "description": "Historic town area facility infrastructure.",
+      "source": "transportNodes",
+      "sourceId": "stt-j-antonio-jarvis-elementary",
+      "routes": [],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt j antonio jarvis elementary j antonio jarvis elementary school school historic town area facility infrastructure jarvis jarvis elementary"
     },
     {
       "id": "stt-jane-e-tuitt-elementary-school",
@@ -9540,25 +9535,6 @@
       "searchText": "stt joseph sibilly elementary school joseph sibilly elementary school school public elementary school serving the northside region sibilly sibilly elementary"
     },
     {
-      "id": "stt-leonard-dober-elementary-school",
-      "name": "Leonard Dober Elementary School",
-      "island": "st_thomas",
-      "type": "school",
-      "lat": 18.3422,
-      "lng": -64.9295,
-      "aliases": [
-        "dober",
-        "dober elementary"
-      ],
-      "description": "Historical town-area public educational facility.",
-      "source": "transportNodes",
-      "sourceId": "stt-leonard-dober-elementary-school",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stt leonard dober elementary school leonard dober elementary school school historical town area public educational facility dober dober elementary"
-    },
-    {
       "id": "stt-lockhart-k8-school",
       "name": "Lockhart K-8 School",
       "island": "st_thomas",
@@ -9578,62 +9554,40 @@
       "searchText": "stt lockhart k8 school lockhart k 8 school school public k 8 school and midtown transportation hub lockhart lockhart school"
     },
     {
-      "id": "stt-memorial-moravian-school",
-      "name": "Memorial Moravian School",
+      "id": "stt-saints-peter-paul-school",
+      "name": "Saints Peter & Paul Catholic School",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3429,
-      "lng": -64.9261,
+      "lat": 18.3419,
+      "lng": -64.9352,
       "aliases": [
-        "moravian school",
-        "memorial moravian"
-      ],
-      "description": "Private parochial school facility in town zone.",
-      "source": "transportNodes",
-      "sourceId": "stt-memorial-moravian-school",
-      "routes": [],
-      "canPickup": true,
-      "canDropoff": true,
-      "searchText": "stt memorial moravian school memorial moravian school school private parochial school facility in town zone moravian school memorial moravian"
-    },
-    {
-      "id": "stt-sts-peter-and-paul-school",
-      "name": "Saints Peter and Paul School",
-      "island": "st_thomas",
-      "type": "school",
-      "lat": 18.34,
-      "lng": -64.933,
-      "aliases": [
-        "st peter and paul",
-        "saints peter and paul",
         "peter and paul"
       ],
-      "description": "Private Catholic school in Charlotte Amalie.",
+      "description": "Parochial Catholic K-12 layout near town center.",
       "source": "transportNodes",
-      "sourceId": "stt-sts-peter-and-paul-school",
+      "sourceId": "stt-saints-peter-paul-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt sts peter and paul school saints peter and paul school school private catholic school in charlotte amalie st peter and paul saints peter and paul peter and paul"
+      "searchText": "stt saints peter paul school saints peter and paul catholic school school parochial catholic k 12 layout near town center peter and paul"
     },
     {
-      "id": "stt-seventh-day-adventist-school",
-      "name": "St. Thomas Seventh-day Adventist School",
+      "id": "stt-tutoring-plus-academy",
+      "name": "Tutoring Plus Academy of Excellence",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3451,
-      "lng": -64.8819,
+      "lat": 18.3412,
+      "lng": -64.9044,
       "aliases": [
-        "stt sda",
-        "sda school"
+        "tutoring plus"
       ],
-      "description": "Private parochial school in Sugar Estate.",
+      "description": "Specialized alternative private study support point.",
       "source": "transportNodes",
-      "sourceId": "stt-seventh-day-adventist-school",
+      "sourceId": "stt-tutoring-plus-academy",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt seventh day adventist school st thomas seventh day adventist school school private parochial school in sugar estate stt sda sda school"
+      "searchText": "stt tutoring plus academy tutoring plus academy of excellence school specialized alternative private study support point tutoring plus"
     },
     {
       "id": "stt-ulla-f-muller-elementary-school",
@@ -9655,43 +9609,62 @@
       "searchText": "stt ulla f muller elementary school ulla f muller elementary school school public elementary school and west side school hub ulla muller muller elementary"
     },
     {
-      "id": "stt-vi-montessori-school-and-peter-gruber-academy",
-      "name": "VI Montessori School & Peter Gruber Academy",
+      "id": "stt-vi-montessori-international",
+      "name": "VI Montessori School & Peter Gruber International Academy",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3289,
-      "lng": -64.8631,
+      "lat": 18.3275,
+      "lng": -64.8688,
       "aliases": [
         "vimsia",
-        "montessori",
-        "peter gruber"
+        "montessori"
       ],
-      "description": "Private independent IB world school near Red Hook.",
+      "description": "East End private International Baccalaureate academy anchor point.",
       "source": "transportNodes",
-      "sourceId": "stt-vi-montessori-school-and-peter-gruber-academy",
+      "sourceId": "stt-vi-montessori-international",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt vi montessori school and peter gruber academy vi montessori school and peter gruber academy school private independent ib world school near red hook vimsia montessori peter gruber"
+      "searchText": "stt vi montessori international vi montessori school and peter gruber international academy school east end private international baccalaureate academy anchor point vimsia montessori"
     },
     {
       "id": "stt-wesleyan-academy",
       "name": "Wesleyan Academy",
       "island": "st_thomas",
       "type": "school",
-      "lat": 18.3472,
-      "lng": -64.9041,
+      "lat": 18.3485,
+      "lng": -64.9452,
       "aliases": [
-        "wesleyan",
-        "stt wesleyan"
+        "wesleyan"
       ],
-      "description": "Private Christian educational node on St. Thomas.",
+      "description": "Private Christian educational track framework.",
       "source": "transportNodes",
       "sourceId": "stt-wesleyan-academy",
+      "routes": [
+        "vitran-stt-route-10"
+      ],
+      "canPickup": true,
+      "canDropoff": true,
+      "searchText": "stt wesleyan academy wesleyan academy school private christian educational track framework wesleyan vitran stt route 10"
+    },
+    {
+      "id": "stt-yvonne-marlin-elementary-school",
+      "name": "Yvonne Marlin Elementary School",
+      "island": "st_thomas",
+      "type": "school",
+      "lat": 18.3392,
+      "lng": -64.9011,
+      "aliases": [
+        "marlin",
+        "marlin elementary"
+      ],
+      "description": "Public school layout context serving community transit lanes.",
+      "source": "transportNodes",
+      "sourceId": "stt-yvonne-marlin-elementary-school",
       "routes": [],
       "canPickup": true,
       "canDropoff": true,
-      "searchText": "stt wesleyan academy wesleyan academy school private christian educational node on st thomas wesleyan stt wesleyan"
+      "searchText": "stt yvonne marlin elementary school yvonne marlin elementary school school public school layout context serving community transit lanes marlin marlin elementary"
     },
     {
       "id": "stt-yvonne-bowsky-elementary-school",

@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-29T17:36:41.318Z",
+  "generatedAt": "2026-06-29T20:49:23.904Z",
   "stats": {
-    "totalNodes": 515,
+    "totalNodes": 514,
     "byIsland": {
       "st_croix": 193,
-      "st_john": 110,
-      "st_thomas": 210,
+      "st_john": 108,
+      "st_thomas": 211,
       "water_island": 2
     },
     "byType": {
@@ -19,7 +19,7 @@
       "historic_site": 20,
       "hospital": 4,
       "restaurant": 152,
-      "school": 48,
+      "school": 47,
       "shopping": 30,
       "taxi_stand": 1,
       "transport": 21,
