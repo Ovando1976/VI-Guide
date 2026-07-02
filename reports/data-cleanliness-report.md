@@ -1,20 +1,20 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T09:47:47.045Z
+Generated: 2026-07-02T09:56:20.717Z
 
 ## Summary
 
 - Sources scanned: 3
-- Records scanned: 3328
+- Records scanned: 3323
 - High severity issues: 0
 - Medium severity issues: 200
-- Low severity issues: 5
+- Low severity issues: 0
 
 ## Sources
 
 | Source | Path | Records | Status |
 |---|---:|---:|---|
-| estates_geojson | public/geo/usvi-estates.geojson | 420 | OK |
+| estates_geojson | public/geo/usvi-estates.geojson | 415 | OK |
 | geographic_index | src/data/core/geographicIndex.ts | 2838 | OK |
 | historic_sites | src/data/historicSites.ts | 70 | OK |
 
@@ -23,17 +23,11 @@ Generated: 2026-07-02T09:47:47.045Z
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
 | medium | geographic_index | missing_coordinates | 200 |
-| low | estates_geojson | duplicate_name_type_island | 5 |
 
 ## Sample Issues
 
 | Severity | Source | Index | Name | Issue | Detail | Suggestion |
 |---|---|---:|---|---|---|---|
-| low | estates_geojson | 100 | Estate CONTANT 7B | duplicate_name_type_island | Duplicate of estates_geojson record index 99. | Confirm whether these are true duplicate records or whether one needs a more specific name. |
-| low | estates_geojson | 232 | Estate CLAIRMONT | duplicate_name_type_island | Duplicate of estates_geojson record index 231. | Confirm whether these are true duplicate records or whether one needs a more specific name. |
-| low | estates_geojson | 247 | Estate DIAMOND | duplicate_name_type_island | Duplicate of estates_geojson record index 246. | Confirm whether these are true duplicate records or whether one needs a more specific name. |
-| low | estates_geojson | 248 | Estate DIAMOND | duplicate_name_type_island | Duplicate of estates_geojson record index 246. | Confirm whether these are true duplicate records or whether one needs a more specific name. |
-| low | estates_geojson | 279 | Estate HOPE | duplicate_name_type_island | Duplicate of estates_geojson record index 278. | Confirm whether these are true duplicate records or whether one needs a more specific name. |
 | medium | geographic_index | 9 | Allendale Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 18 | Anna's Hope Gut | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 26 | Annaberg, St. Croix | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -149,6 +143,11 @@ Generated: 2026-07-02T09:47:47.045Z
 | medium | geographic_index | 403 | Catherineberg | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 406 | Cathriseberg | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 414 | CaZverts Punt | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 416 | Ceeeman HiZZ | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 417 | Cehterline Road | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 424 | CfaUdri | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 425 | Cfoodchild | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 428 | Cfroen ICny | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 
 ## Recommended Fix Order
 

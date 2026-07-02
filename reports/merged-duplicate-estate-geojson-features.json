@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-07-02T09:55:58.743Z",
+  "updatedFile": "public/geo/usvi-estates.geojson",
+  "backupFile": "reports/backups/usvi-estates.duplicate-merge.2026-07-02T09-55-58-510Z.geojson",
+  "duplicateGroups": 4,
+  "removedFeatures": 5,
+  "featureCountAfter": 415,
+  "mergedGroups": [
+    {
+      "key": "estate contant 7b::estate::stt",
+      "keptIndex": 99,
+      "keptId": "1868",
+      "removed": [
+        {
+          "index": 100,
+          "id": "1865",
+          "name": "Estate CONTANT 7B"
+        }
+      ],
+      "mergedGeometryType": "MultiPolygon",
+      "mergedFeatureIds": [
+        "1868",
+        "1865"
+      ]
+    },
+    {
+      "key": "estate clairmont::estate::stx",
+      "keptIndex": 231,
+      "keptId": "1660",
+      "removed": [
+        {
+          "index": 232,
+          "id": "1746",
+          "name": "Estate CLAIRMONT"
+        }
+      ],
+      "mergedGeometryType": "MultiPolygon",
+      "mergedFeatureIds": [
+        "1660",
+        "1746"
+      ]
+    },
+    {
+      "key": "estate diamond::estate::stx",
+      "keptIndex": 246,
+      "keptId": "1743",
+      "removed": [
+        {
+          "index": 247,
+          "id": "1766",
+          "name": "Estate DIAMOND"
+        },
+        {
+          "index": 248,
+          "id": "1958",
+          "name": "Estate DIAMOND"
+        }
+      ],
+      "mergedGeometryType": "MultiPolygon",
+      "mergedFeatureIds": [
+        "1743",
+        "1766",
+        "1958"
+      ]
+    },
+    {
+      "key": "estate hope::estate::stx",
+      "keptIndex": 278,
+      "keptId": "1759",
+      "removed": [
+        {
+          "index": 279,
+          "id": "1907",
+          "name": "Estate HOPE"
+        }
+      ],
+      "mergedGeometryType": "MultiPolygon",
+      "mergedFeatureIds": [
+        "1759",
+        "1907"
+      ]
+    }
+  ]
+}

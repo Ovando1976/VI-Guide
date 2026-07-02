@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T09:47:47.045Z",
+  "generatedAt": "2026-07-02T09:56:20.717Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -11,7 +11,7 @@
     {
       "name": "estates_geojson",
       "path": "public/geo/usvi-estates.geojson",
-      "records": 420,
+      "records": 415,
       "inferredType": "estate"
     },
     {
@@ -26,11 +26,11 @@
       "inferredType": "historicSite"
     }
   ],
-  "totalRecords": 3328,
+  "totalRecords": 3323,
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 5
+    "low": 0
   },
   "issueGroups": [
     {
@@ -38,60 +38,9 @@
       "source": "geographic_index",
       "issue": "missing_coordinates",
       "count": 200
-    },
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "issue": "duplicate_name_type_island",
-      "count": 5
     }
   ],
   "issues": [
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "index": 100,
-      "name": "Estate CONTANT 7B",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of estates_geojson record index 99.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "index": 232,
-      "name": "Estate CLAIRMONT",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of estates_geojson record index 231.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "index": 247,
-      "name": "Estate DIAMOND",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of estates_geojson record index 246.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "index": 248,
-      "name": "Estate DIAMOND",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of estates_geojson record index 246.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "estates_geojson",
-      "index": 279,
-      "name": "Estate HOPE",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of estates_geojson record index 278.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
     {
       "severity": "medium",
       "source": "geographic_index",
