@@ -14796,14 +14796,11 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["ChUU88On","Clairmont"],
+    "aliases": ["aliases","ChUU88On","Clairmont"],
     "id": "st_croix-estate-clairmont",
     "name": "CLAIRMONT",
     "type": "estate",
     "island": "st_croix",
-    "aliases": [
-      "CLAIRMONT"
-    ],
     "description": "Clairmont; Extensive estate in Northside B Quarter, St. Croix; tracts 3b, 4, 8, 9; estate house on hill W mile south of Baron BlufP, summit 880 feet; mill on northwest spur, elevation 835 feet. French, Clair, \"clear, \" and Mont, '' mount. \" Also spelled, '' Claremont, \" \" Clermont \"; called \"Bodkin's plantation, \" because patented to Laurence Bodkin, proprietor also of Windsor, adjacent estate on south, in Queen Quarter. Mudie's Estate (1851)embraced Clairmont with Windsor. 4corpWn.",
     "coordinates": {
       "lat": 17.773535739848,
@@ -16395,14 +16392,11 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["ConstitutlonhUZ","Constitution Hill"],
+    "aliases": ["aliases","ConstitutlonhUZ","Constitution Hill"],
     "id": "st_croix-estate-constitution-hill",
     "name": "CONSTITUTION HILL",
     "type": "estate",
     "island": "st_croix",
-    "aliases": [
-      "CONSTITUTION HILL"
-    ],
     "description": "Estate CONSTITUTION HILL is an official estate record in the U.S. Virgin Islands estate layer. Dictionary-linked evidence is being reviewed to connect this estate with historic place names, nearby features, and archive references.",
     "coordinates": {
       "lat": 17.736691318359547,
@@ -25845,14 +25839,11 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
-    "aliases": ["Blp Fountain","Fountain"],
+    "aliases": ["aliases","Blp Fountain","Fountain"],
     "id": "st_croix-estate-fountain",
     "name": "FOUNTAIN",
     "type": "estate",
     "island": "st_croix",
-    "aliases": [
-      "FOUNTAIN"
-    ],
     "description": "Fountain; Estate of hfaj. de Kully, comprising tract 11 in Northside A Quarter, 37 in Northside I: Quarter, and north % of tract 4 (Willett) In Prince Quarter, St. Croix; together occupying the upper valley with the headstreams of Jealousy Hek. Estate buildings in southwest coruer of former trtict, on rouiided bench of hills, 380 feet high. Also called, Big Fountain. -L. &. W. I n 1x56, as Camrning sugar plantations, had acquired Parasol stockfarm.",
     "coordinates": {
       "lat": 17.75211989177615,

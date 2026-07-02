@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-07-02T09:25:32.955Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.bare-quoted-alias-repair.2026-07-02T09-25-32-932Z.ts",
+  "targetIds": [
+    "st_croix-estate-fountain",
+    "st_croix-estate-clairmont",
+    "st_croix-estate-constitution-hill"
+  ],
+  "repaired": 3,
+  "skipped": 0,
+  "repairedRecords": [
+    {
+      "targetId": "st_croix-estate-fountain",
+      "aliasCountBefore": 2,
+      "aliases": [
+        "aliases",
+        "Blp Fountain",
+        "Fountain"
+      ]
+    },
+    {
+      "targetId": "st_croix-estate-clairmont",
+      "aliasCountBefore": 2,
+      "aliases": [
+        "aliases",
+        "ChUU88On",
+        "Clairmont"
+      ]
+    },
+    {
+      "targetId": "st_croix-estate-constitution-hill",
+      "aliasCountBefore": 2,
+      "aliases": [
+        "aliases",
+        "ConstitutlonhUZ",
+        "Constitution Hill"
+      ]
+    }
+  ],
+  "skippedRecords": []
+}
