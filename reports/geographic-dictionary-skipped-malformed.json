@@ -1,0 +1,455 @@
+[
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-island-unknown",
+      "name": "Island",
+      "normalizedName": "island",
+      "kind": "estate",
+      "island": "",
+      "description": "\" '' Maho ; Quarter ;\" \" Mafolle ; Estate.\" The abundance of alternative names and variant spellings in a polyglot com-",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text.",
+          "Likely alias or variant-name entry."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-hill-st-croix",
+      "name": "Hill",
+      "normalizedName": "hill",
+      "kind": "lagoon",
+      "island": "st_croix",
+      "description": "\" 1,350 yards northwest of shore of Krauw Lagoon, St. Croix.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-hill-unknown",
+      "name": "Hill",
+      "normalizedName": "hill",
+      "kind": "hill",
+      "island": "",
+      "description": "Estatehouse on 330-foot hill, 1 mile west-southwest of Christian-",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-bay-st-thomas",
+      "name": "Bay",
+      "normalizedName": "bay",
+      "kind": "bay",
+      "island": "st_thomas",
+      "description": "\" same as Magens Bay, St. Thomas.-Hornbeck.",
+      "aliases": [
+        "Magens Bay",
+        "St"
+      ],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": true,
+        "notes": [
+          "Likely alias or variant-name entry."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-estate-st-croix",
+      "name": "Estate",
+      "normalizedName": "",
+      "kind": "point",
+      "island": "st_croix",
+      "description": "Franch name of Canebay Point, St. Croix.-Bellin, I, 75.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-unknown",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "cay",
+      "island": "",
+      "description": "14 and 16, not indicated; 10, Concordia. Population (1917),345. Also spelled \" Coralbay.\" It includes Leduck Cay and Booby Hock.",
+      "aliases": [
+        "Coralbay"
+      ],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-hill-st-thomas",
+      "name": "hill",
+      "normalizedName": "hill",
+      "kind": "hill",
+      "island": "st_thomas",
+      "description": ":ind t h r :Itlj:icent indelitation between Cnreen Hill and JItiypiccr Hill I m r s thc legciid, I' de Grigri Ray : Hier knnnen groote S r h e e ~ ~ c ~ i en I<nrkcii :iiikc.rcm \" (Grigri B:iy ; here hrge ships and b:irBs caii :inchor). R c l l l ~ i ' s Petit Athis Alnrltime (1764), No. 78, shows thc French cqnivnlent, \" R:ige de Grigri.\" ICtiffner's map in Oldendorp's hlishionsgeuchicrrtc, nntl tvxt, p. 15, diow (irigribny of itlenticnl extent. See also, Century Dictionnry, Gruyru or Grigri. 0rigin:il :iuthentic form of n:tnir. BrCgrihoom, de-\" Tlic Grigri tree,\" nenr sliore of Grigribny, now Crown Hag, $t. Thomas.--Van Keulcn. O r o w E!/Zrrnd; Same a s Green Cng, St. Thomns.--\\'an Kculen.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-hill-unknown",
+      "name": "Hill",
+      "normalizedName": "hill",
+      "kind": "hill",
+      "island": "",
+      "description": "Estzitehouse on hill, so named, 1 mile southwest of Christiansted.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-island-unknown",
+      "name": "Island \"",
+      "normalizedName": "island",
+      "kind": "cay",
+      "island": "",
+      "description": "early name of Saba Cay.-Bellin, 1-77. See Isle R Crabe, etc.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-hill-st-john",
+      "name": "Hill",
+      "normalizedName": "hill",
+      "kind": "estate",
+      "island": "st_john",
+      "description": "doubtless Arst applied to the Kaneel Hill, near Klein Knneel Estate : later, another synonym for the Estate itself, on Durloe Bay, St. John I.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-cay-unknown",
+      "name": "Cay",
+      "normalizedName": "cay",
+      "kind": "place",
+      "island": "",
+      "description": "Itit. IS\" 21' 56.446\" (1,705ma),long. 64\" 48' 04.60'' (137 m.)--O. 11. 73713 1.",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text.",
+          "Feature type is generic and may need review."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-st-croix",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "estate",
+      "island": "st_croix",
+      "description": "but C. P., pp. 116, 130-1, extends limit west to Lucas Pdnt,-- H. 0. 3903, & Publ. 129. Spanislb Bahia, Perseverancia 6 BnaenQda de la Perseverancia. Called '' Flamingopop Bay,\" by -~oxAbeck;last applies k t to northwestern portion only, off low beach. Crolx. -- 148 of 215 -- GEOGRAPEZTC TJICTICINARY OF THE VIRGIN ISLANDS 145 Peru,: 'Bev&P&ntli trenfhry French Plantage, near present Humbug Estate, Peschdo, Gallo; Spanish equivrllent of Fleh Cay, St. John. Pcnmclo, lhtaenada ncl: Spanish name o f Fish Bay, 8t. John.-Den. Pet& Bay; Cove on dorth mast, w~sbof Ctnnamon Bag, St. John. Has",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-st-croix",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "quarter",
+      "island": "st_croix",
+      "description": "now called, Pull Point, northern coast, Eastend B Quarter., S t . Crolx.-Lapointe, etc. : Bellin, I, 76. p&nte Uakerte; Darly French name of Calvert or Stumpy Point.-Bellin.",
+      "aliases": [
+        "Pull Point",
+        "northern coast",
+        "Eastend B Quarter"
+      ],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-estate-st-thomas",
+      "name": "Estate",
+      "normalizedName": "",
+      "kind": "estate",
+      "island": "st_thomas",
+      "description": "southeast % to Abraham Howell; west 1/2 to JZrg Hardung. I n 1780 Howell and Hardung estates shown as belonging to \"Or. Schimel- mann's Arvinger,\" (Schfmmelmann heirs ; see Princess), who added Mount Pleasant or Thomas Hill, a n a made whole tract adjunct of Princess Estate. All pasture. PrZ%dseese; Old Danish, also spelled Printsesse ; modern Danish, Prinsesse",
+      "aliases": [
+        "Printsesse"
+      ],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-st-croix",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "quarter",
+      "island": "st_croix",
+      "description": "both so cnlled from Christopher Punnett, proprietor of tract 46, Eastend I3 Quarter, St. Croix.-Beck (1764). On early French maps, called, Anse du Poids (Cove of the Weight).",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-st-thomas",
+      "name": "(Point)",
+      "normalizedName": "point",
+      "kind": "bay",
+      "island": "st_thomas",
+      "description": "hence, Itedhook Point. On Yan Keylen's map of St. Thomas (173.9), this name appears, not as POW applied, but on the south side of \"Binnewuter van de Roode hoek\" (Redhook Bay), t h u s answering to the present Cabrita Point. The present Redhook Point h e names Oostent",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-st-john",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "quarter",
+      "island": "st_john",
+      "description": "or, more pnoperly, the southerly semlclrcular bight or cove, mile west of Cabcs Point, and % mile wide. Also called, Big Smith Bay, St. John's Uay, and Base de ,L'Est, q. v. Eastend Quarter, S. T . 4 . 8.",
+      "aliases": [
+        "Big Smith Bay",
+        "St"
+      ],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "high",
+        "needsReview": false,
+        "notes": []
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-unknown",
+      "name": "Point",
+      "normalizedName": "point",
+      "kind": "place",
+      "island": "",
+      "description": "a rectangular deflection terminating Santa ' Maria Ridge : Heh-",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text.",
+          "Feature type is generic and may need review."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  },
+  {
+    "dictionaryEntry": {
+      "id": "gdvi-point-unknown",
+      "name": "Point ''",
+      "normalizedName": "point",
+      "kind": "point",
+      "island": "",
+      "description": "one probably misreading of other. See \" Ryn Point.\"",
+      "aliases": [],
+      "source": {
+        "title": "Geographic Dictionary of the Virgin Islands of the United States",
+        "publicationYear": 1925,
+        "file": "source-materials/geographic-dictionary.pdf"
+      },
+      "extraction": {
+        "confidence": "medium",
+        "needsReview": true,
+        "notes": [
+          "Island not inferred from entry text."
+        ]
+      }
+    },
+    "reason": "Malformed or generic extracted dictionary name."
+  }
+]

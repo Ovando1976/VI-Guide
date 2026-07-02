@@ -13,7 +13,7 @@
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
-    "allowJs": true,
+    "allowJs": false,
     "jsx": "react-jsx",
     "paths": {
       "@/*": [
@@ -28,7 +28,9 @@
     "esModuleInterop": true,
     "types": [
       "node"
-    ]
+    ],
+    "checkJs": false,
+    "maxNodeModuleJsDepth": 0
   },
   "include": [
     "src",
@@ -41,6 +43,17 @@
     "dist",
     "generated",
     "node_modules",
-    "scripts"
+    "scripts",
+    "coverage",
+    "reports",
+    "reports/**/*",
+    "data-sources",
+    "data-sources/**/*",
+    "**/*.backup.ts",
+    "**/*.backup.tsx",
+    "**/*.bak.ts",
+    "**/*.bak.tsx",
+    "**/*.old.ts",
+    "**/*.old.tsx"
   ]
 }

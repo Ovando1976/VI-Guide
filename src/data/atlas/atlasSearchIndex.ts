@@ -1,33 +1,15 @@
-import atlasSearchIndexFile from "../../../public/data/atlas/atlasSearchIndex.json";
+// Compatibility wrapper for the old atlas search index.
+// Data now comes from the unified clean geographic index.
 
-export type AtlasSearchRecord = {
-  canonicalId: string;
-  displayName: string;
-  normalizedName: string;
-  island: string;
-  type: string;
-  category: string;
-  lat?: number;
-  lng?: number;
-  description?: string;
-  aliases: string[];
-  relatedNames: string[];
-  sources: string[];
-  sourceIds: string[];
-  relationshipCount: number;
-  tags?: string[];
-  id?: string;
-  name?: string;
-  estateId?: string;
-  [key: string]: unknown;
-};
+import {
+  cleanGeographicIndex,
+  type CleanGeographicIndexRecord,
+} from "../core/cleanGeographicIndex";
 
-type AtlasSearchIndexFile = {
-  metadata: Record<string, unknown>;
-  records: AtlasSearchRecord[];
-};
+export type AtlasSearchRecord = CleanGeographicIndexRecord & Record<string, any>;
 
-const data = atlasSearchIndexFile as unknown as AtlasSearchIndexFile;
+export const atlasSearchIndex = cleanGeographicIndex as AtlasSearchRecord[];
+export const atlasSearchRecords = atlasSearchIndex;
+export const atlasSearchItems = atlasSearchIndex;
 
-export const atlasSearchIndex = data.records;
-export const atlasSearchIndexMetadata = data.metadata;
+export default atlasSearchIndex;
