@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-07-02T15:48:18.104Z",
+  "collectionUrl": "https://arkivalieronline.rigsarkivet.dk/en/other/index-creator/153/2354827/20104126",
+  "totalRecords": 136,
+  "recordsWithImages": 136,
+  "totalImageIds": 136,
+  "downloadedImages": 0,
+  "unresolved": [],
+  "outputs": {
+    "json": "src/data/history/generated/rigsarkivetMapsAndDrawings.json",
+    "ts": "src/data/history/generated/rigsarkivetMapsAndDrawings.ts",
+    "imageDir": null,
+    "rawIndex": "reports/rigsarkivet-maps-and-drawings/raw-collection-index.html"
+  },
+  "notes": [
+    "Manifest generation is safe to run first.",
+    "If unresolved records remain, rerun with --browser after installing Playwright.",
+    "Bulk download is intentionally gated by RIGSARKIVET_BULK_DOWNLOAD_OK=1."
+  ]
+}
