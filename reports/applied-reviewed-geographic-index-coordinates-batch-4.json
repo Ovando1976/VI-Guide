@@ -1,411 +1,233 @@
 {
-  "generatedAt": "2026-07-02T11:26:23.309Z",
-  "reviewedAllowlist": 34,
-  "applied": 0,
-  "skipped": 34,
-  "appliedRecords": [],
-  "skippedRecords": [
+  "generatedAt": "2026-07-02T11:28:40.289Z",
+  "backupFile": "/workspaces/VI-Guide/reports/backups/geographicIndex.reviewed-coordinate-batch-4.2026-07-02T11-28-40-220Z.ts",
+  "appliedCount": 18,
+  "skippedCount": 0,
+  "applied": [
     {
-      "index": 593,
-      "expectedName": "Crown Bay Cruise Port",
-      "expectedType": "port",
-      "expectedIsland": "st_thomas",
-      "candidate": "Crown Bay",
-      "lat": 18.3516443841391,
-      "lng": -64.97518249799175,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 808,
-      "expectedName": "Flat Cays",
-      "expectedType": "point",
-      "expectedIsland": "st_thomas",
-      "candidate": "Flat Cay",
-      "lat": 18.3176615035053,
-      "lng": -64.9888146529801,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 869,
-      "expectedName": "French Bay or Frenchbay",
-      "expectedType": "bay",
-      "expectedIsland": "st_thomas",
-      "candidate": "French Bay",
-      "lat": 18.31958030255245,
-      "lng": -64.9084111427579,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 873,
-      "expectedName": "Frenchbay",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "French Bay",
-      "lat": 18.31958030255245,
-      "lng": -64.9084111427579,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1359,
-      "expectedName": "Lagrange Garden",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "Lagrange",
-      "lat": 17.71823717741445,
-      "lng": -64.87445690853116,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1646,
-      "expectedName": "Morningstar",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "MORNING STAR",
-      "lat": 17.76267907047465,
-      "lng": -64.76127587077406,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1769,
-      "expectedName": "Northstar",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "NORTH STAR",
-      "lat": 17.7643827657991,
-      "lng": -64.8181934288463,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1774,
-      "expectedName": "Nugent",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "CASTLE NUGENT",
-      "lat": 17.719562371093147,
-      "lng": -64.6797022059518,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1776,
-      "expectedName": "Nulliberg",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "NULLYBERG",
-      "lat": 18.326305680630853,
-      "lng": -64.89736067271285,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1861,
-      "expectedName": "Parasol Hill",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PARASOL",
-      "lat": 17.7558796915945,
-      "lng": -64.8170085737669,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1932,
-      "expectedName": "Pless plantation",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PLESSEN (North)",
-      "lat": 17.73430006364915,
-      "lng": -64.82762389166996,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1933,
-      "expectedName": "Plessen",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PLESSEN (North)",
-      "lat": 17.73430006364915,
-      "lng": -64.82762389166996,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1995,
-      "expectedName": "Princess",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "LA GRANDE PRINCESSE",
-      "lat": 17.757271983688298,
-      "lng": -64.73523993211084,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 1999,
-      "expectedName": "Princess School",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "LA GRANDE PRINCESSE",
-      "lat": 17.757271983688298,
-      "lng": -64.73523993211084,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2017,
-      "expectedName": "Prosperity Clarden",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PROSPERITY",
-      "lat": 17.728048607641753,
-      "lng": -64.877872164136,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2019,
-      "expectedName": "Prosperity Gut",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PROSPERITY",
-      "lat": 17.728048607641753,
-      "lng": -64.877872164136,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2040,
-      "expectedName": "Punch Hill",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PUNCH",
-      "lat": 17.73965896466005,
-      "lng": -64.86899338708506,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2042,
-      "expectedName": "Punch Valley",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "PUNCH",
-      "lat": 17.73965896466005,
-      "lng": -64.86899338708506,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2076,
-      "expectedName": "Ramgoat Cay",
-      "expectedType": "island",
-      "expectedIsland": "st_john",
-      "candidate": "RAM GOAT CAY",
-      "lat": 18.3551160406748,
-      "lng": -64.78944480445855,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2088,
-      "expectedName": "Rattan",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "RATTAN & BELVEDERE",
-      "lat": 17.749739825071998,
-      "lng": -64.74981364350225,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2119,
-      "expectedName": "Reef Bay Petroglyphs",
-      "expectedType": "archaeological-site",
-      "expectedIsland": "st_john",
-      "candidate": "REEF BAY",
-      "lat": 18.3241492592502,
-      "lng": -64.7379062541914,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2120,
-      "expectedName": "Reef Bay Quarter",
-      "expectedType": "estate",
-      "expectedIsland": "st_john",
-      "candidate": "REEF BAY",
-      "lat": 18.3241492592502,
-      "lng": -64.7379062541914,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2142,
-      "expectedName": "Richmond Jail",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "RICHMOND",
-      "lat": 17.7454392029822,
-      "lng": -64.71220412944331,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2175,
-      "expectedName": "Rosendal",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "ST JOSEPH & ROSENDAHL",
-      "lat": 18.35369715902085,
-      "lng": -64.91366486842695,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2268,
-      "expectedName": "Santa Maria Gut",
-      "expectedType": "bay",
-      "expectedIsland": "st_thomas",
-      "candidate": "Santa Maria Bay",
-      "lat": 18.359333337383298,
-      "lng": -64.98905345449211,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2269,
-      "expectedName": "Santa Maria Hill",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "SANTA MARIA",
-      "lat": 18.359333337383298,
-      "lng": -64.98905345449211,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2270,
-      "expectedName": "Santa Maria Ridge",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "SANTA MARIA",
-      "lat": 18.359333337383298,
-      "lng": -64.98905345449211,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2271,
-      "expectedName": "Santa Maria Trail",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "SANTA MARIA",
-      "lat": 18.359333337383298,
-      "lng": -64.98905345449211,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2272,
-      "expectedName": "Santa Xaria Point",
-      "expectedType": "bay",
-      "expectedIsland": "st_thomas",
-      "candidate": "Santa Maria Bay",
-      "lat": 18.359333337383298,
-      "lng": -64.98905345449211,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2300,
-      "expectedName": "Sevenhills",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "SEVEN HILLS",
-      "lat": 17.7462147534703,
-      "lng": -64.6477516565729,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2333,
-      "expectedName": "Smith’s Field",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "SMITH BAY",
-      "lat": 18.335278251441,
-      "lng": -64.86171891676014,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2334,
-      "expectedName": "Smithbay",
-      "expectedType": "estate",
-      "expectedIsland": "st_thomas",
-      "candidate": "SMITH BAY",
-      "lat": 18.335278251441,
-      "lng": -64.86171891676014,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2379,
-      "expectedName": "Sprat",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "SPRATT HALL",
-      "lat": 17.74306767792325,
-      "lng": -64.88348586636539,
-      "reason": "already has coordinates"
-    },
-    {
-      "index": 2494,
-      "expectedName": "The Grange",
-      "expectedType": "estate",
-      "expectedIsland": "st_croix",
-      "candidate": "GRANGE (North)",
+      "index": 943,
+      "name": "Grange Gut",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "The Grange",
       "lat": 17.7313643710483,
-      "lng": -64.72092022272085,
-      "reason": "already has coordinates"
+      "lng": -64.72092022272085
+    },
+    {
+      "index": 1348,
+      "name": "La Princesse",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "Princess",
+      "lat": 17.757271983688298,
+      "lng": -64.73523993211084
+    },
+    {
+      "index": 1580,
+      "name": "Maria Hill",
+      "type": "hill",
+      "island": "st_thomas",
+      "candidate": "Santa Maria Hill",
+      "lat": 18.359333337383298,
+      "lng": -64.98905345449211
+    },
+    {
+      "index": 1902,
+      "name": "Petroglyphs",
+      "type": "point",
+      "island": "st_john",
+      "candidate": "Reef Bay Petroglyphs",
+      "lat": 18.3241492592502,
+      "lng": -64.7379062541914
+    },
+    {
+      "index": 2090,
+      "name": "Rattan Hills",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "Rattan",
+      "lat": 17.749739825071998,
+      "lng": -64.74981364350225
+    },
+    {
+      "index": 2118,
+      "name": "Reef Bay Estate and Sugar Works Records",
+      "type": "archive_record",
+      "island": "st_john",
+      "candidate": "REEF BAY",
+      "lat": 18.3241492592502,
+      "lng": -64.7379062541914
+    },
+    {
+      "index": 2131,
+      "name": "Retreat",
+      "type": "estate",
+      "island": "st_thomas",
+      "candidate": "ANNA'S RETREAT",
+      "lat": 18.34264445784635,
+      "lng": -64.88706827427085
+    },
+    {
+      "index": 2150,
+      "name": "Robe Hill",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "ROSE HILL",
+      "lat": 17.7515172839017,
+      "lng": -64.85901212227861
+    },
+    {
+      "index": 2237,
+      "name": "Saint Georges Ilccli",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "ST GEORGES",
+      "lat": 17.720338285889298,
+      "lng": -64.83058165781915
+    },
+    {
+      "index": 2381,
+      "name": "Sprat Hole",
+      "type": "point",
+      "island": "st_croix",
+      "candidate": "Sprat",
+      "lat": 17.74306767792325,
+      "lng": -64.88348586636539
+    },
+    {
+      "index": 2561,
+      "name": "Turtledove Cay",
+      "type": "island",
+      "island": "st_thomas",
+      "candidate": "Turtle Dove Cay",
+      "lat": 18.3086275618696,
+      "lng": -65.0003906549153
+    },
+    {
+      "index": 2567,
+      "name": "Two Brothers",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "TWO BROTHERS / SMITHFIELD / HESSELBERG",
+      "lat": 17.70046990000005,
+      "lng": -64.88458695770751
+    },
+    {
+      "index": 2571,
+      "name": "Two-Friends Hill",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "TWO FRIENDS",
+      "lat": 17.740684267348,
+      "lng": -64.8376442242562
+    },
+    {
+      "index": 2637,
+      "name": "Walberggaard",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "WALDBERGGAARD",
+      "lat": 17.72065511736185,
+      "lng": -64.84334261000215
+    },
+    {
+      "index": 2718,
+      "name": "White's Bay",
+      "type": "bay",
+      "island": "st_croix",
+      "candidate": "WHITES BAY (East)",
+      "lat": 17.686901929189702,
+      "lng": -64.87381669603064
+    },
+    {
+      "index": 2730,
+      "name": "William valley",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "WILLIAM",
+      "lat": 17.7361947584054,
+      "lng": -64.88053609237156
+    },
+    {
+      "index": 2740,
+      "name": "Windsor Forest",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "WINDSOR",
+      "lat": 17.7603909805568,
+      "lng": -64.77313377370525
+    },
+    {
+      "index": 2798,
+      "name": "Yellow Cliff Bay",
+      "type": "bay",
+      "island": "st_croix",
+      "candidate": "YELLOW CLIFF (North)",
+      "lat": 17.7474816855347,
+      "lng": -64.6188717208027
     }
   ],
-  "blockedRecords": [
+  "skipped": [],
+  "blocked": [
     {
-      "index": 229,
       "name": "Buck Bay",
       "candidate": "BUCK ISLAND",
       "reason": "bay-to-island match is unsafe"
     },
     {
-      "index": 990,
       "name": "Grove",
       "candidate": "GROVE PLACE",
       "reason": "generic historic fragment"
     },
     {
-      "index": 1107,
       "name": "Hope Point",
       "candidate": "HOPE",
       "reason": "generic Hope match"
     },
     {
-      "index": 77,
       "name": "Beck Grove",
       "candidate": "GROVE PLACE",
       "reason": "generic Grove match"
     },
     {
-      "index": 397,
       "name": "Catharina's Hope",
       "candidate": "HOPE",
       "reason": "generic Hope match"
     },
     {
-      "index": 400,
       "name": "Catherine's Hope",
       "candidate": "HOPE",
       "reason": "generic Hope match"
     },
     {
-      "index": 566,
       "name": "Cottongrove Hill",
       "candidate": "GROVE PLACE",
       "reason": "wrong Grove candidate"
     },
     {
-      "index": 1811,
       "name": "Orangegrove",
       "candidate": "GROVE PLACE",
       "reason": "wrong Grove candidate"
     },
     {
-      "index": 1812,
       "name": "Orangegrove Road",
       "candidate": "GROVE PLACE",
       "reason": "wrong Grove candidate"
     },
     {
-      "index": 2490,
       "name": "Thatch Hill",
       "candidate": "Thatch Cay",
       "reason": "hill-to-cay match is unsafe"
+    },
+    {
+      "name": "Valley",
+      "candidate": "CANE VALLEY",
+      "reason": "generic fragment"
+    },
+    {
+      "name": "White",
+      "candidate": "WHITE LADY",
+      "reason": "generic fragment"
     }
   ]
 }

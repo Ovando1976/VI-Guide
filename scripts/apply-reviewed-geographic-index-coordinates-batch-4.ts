@@ -13,296 +13,150 @@ const REPORT_FILE = path.join(
 const BACKUP_DIR = path.join(ROOT, "reports/backups");
 
 const SAFE_FIXES = [
-  { index: 593, expectedName: "Crown Bay Cruise Port", expectedType: "port", expectedIsland: "st_thomas", candidate: "Crown Bay", lat: 18.3516443841391, lng: -64.97518249799175 },
-  { index: 808, expectedName: "Flat Cays", expectedType: "point", expectedIsland: "st_thomas", candidate: "Flat Cay", lat: 18.3176615035053, lng: -64.9888146529801 },
-  { index: 869, expectedName: "French Bay or Frenchbay", expectedType: "bay", expectedIsland: "st_thomas", candidate: "French Bay", lat: 18.31958030255245, lng: -64.9084111427579 },
-  { index: 873, expectedName: "Frenchbay", expectedType: "estate", expectedIsland: "st_thomas", candidate: "French Bay", lat: 18.31958030255245, lng: -64.9084111427579 },
-  { index: 1359, expectedName: "Lagrange Garden", expectedType: "estate", expectedIsland: "st_croix", candidate: "Lagrange", lat: 17.71823717741445, lng: -64.87445690853116 },
-  { index: 1646, expectedName: "Morningstar", expectedType: "estate", expectedIsland: "st_croix", candidate: "MORNING STAR", lat: 17.76267907047465, lng: -64.76127587077406 },
-  { index: 1769, expectedName: "Northstar", expectedType: "estate", expectedIsland: "st_croix", candidate: "NORTH STAR", lat: 17.7643827657991, lng: -64.8181934288463 },
-  { index: 1774, expectedName: "Nugent", expectedType: "estate", expectedIsland: "st_croix", candidate: "CASTLE NUGENT", lat: 17.719562371093147, lng: -64.6797022059518 },
-  { index: 1776, expectedName: "Nulliberg", expectedType: "estate", expectedIsland: "st_thomas", candidate: "NULLYBERG", lat: 18.326305680630853, lng: -64.89736067271285 },
-  { index: 1861, expectedName: "Parasol Hill", expectedType: "estate", expectedIsland: "st_croix", candidate: "PARASOL", lat: 17.7558796915945, lng: -64.8170085737669 },
-  { index: 1932, expectedName: "Pless plantation", expectedType: "estate", expectedIsland: "st_croix", candidate: "PLESSEN (North)", lat: 17.73430006364915, lng: -64.82762389166996 },
-  { index: 1933, expectedName: "Plessen", expectedType: "estate", expectedIsland: "st_croix", candidate: "PLESSEN (North)", lat: 17.73430006364915, lng: -64.82762389166996 },
-  { index: 1995, expectedName: "Princess", expectedType: "estate", expectedIsland: "st_croix", candidate: "LA GRANDE PRINCESSE", lat: 17.757271983688298, lng: -64.73523993211084 },
-  { index: 1999, expectedName: "Princess School", expectedType: "estate", expectedIsland: "st_croix", candidate: "LA GRANDE PRINCESSE", lat: 17.757271983688298, lng: -64.73523993211084 },
-  { index: 2017, expectedName: "Prosperity Clarden", expectedType: "estate", expectedIsland: "st_croix", candidate: "PROSPERITY", lat: 17.728048607641753, lng: -64.877872164136 },
-  { index: 2019, expectedName: "Prosperity Gut", expectedType: "estate", expectedIsland: "st_croix", candidate: "PROSPERITY", lat: 17.728048607641753, lng: -64.877872164136 },
-  { index: 2040, expectedName: "Punch Hill", expectedType: "estate", expectedIsland: "st_croix", candidate: "PUNCH", lat: 17.73965896466005, lng: -64.86899338708506 },
-  { index: 2042, expectedName: "Punch Valley", expectedType: "estate", expectedIsland: "st_croix", candidate: "PUNCH", lat: 17.73965896466005, lng: -64.86899338708506 },
-  { index: 2076, expectedName: "Ramgoat Cay", expectedType: "island", expectedIsland: "st_john", candidate: "RAM GOAT CAY", lat: 18.3551160406748, lng: -64.78944480445855 },
-  { index: 2088, expectedName: "Rattan", expectedType: "estate", expectedIsland: "st_croix", candidate: "RATTAN & BELVEDERE", lat: 17.749739825071998, lng: -64.74981364350225 },
-  { index: 2119, expectedName: "Reef Bay Petroglyphs", expectedType: "archaeological-site", expectedIsland: "st_john", candidate: "REEF BAY", lat: 18.3241492592502, lng: -64.7379062541914 },
-  { index: 2120, expectedName: "Reef Bay Quarter", expectedType: "estate", expectedIsland: "st_john", candidate: "REEF BAY", lat: 18.3241492592502, lng: -64.7379062541914 },
-  { index: 2142, expectedName: "Richmond Jail", expectedType: "estate", expectedIsland: "st_croix", candidate: "RICHMOND", lat: 17.7454392029822, lng: -64.71220412944331 },
-  { index: 2175, expectedName: "Rosendal", expectedType: "estate", expectedIsland: "st_thomas", candidate: "ST JOSEPH & ROSENDAHL", lat: 18.35369715902085, lng: -64.91366486842695 },
-  { index: 2268, expectedName: "Santa Maria Gut", expectedType: "bay", expectedIsland: "st_thomas", candidate: "Santa Maria Bay", lat: 18.359333337383298, lng: -64.98905345449211 },
-  { index: 2269, expectedName: "Santa Maria Hill", expectedType: "estate", expectedIsland: "st_thomas", candidate: "SANTA MARIA", lat: 18.359333337383298, lng: -64.98905345449211 },
-  { index: 2270, expectedName: "Santa Maria Ridge", expectedType: "estate", expectedIsland: "st_thomas", candidate: "SANTA MARIA", lat: 18.359333337383298, lng: -64.98905345449211 },
-  { index: 2271, expectedName: "Santa Maria Trail", expectedType: "estate", expectedIsland: "st_thomas", candidate: "SANTA MARIA", lat: 18.359333337383298, lng: -64.98905345449211 },
-  { index: 2272, expectedName: "Santa Xaria Point", expectedType: "bay", expectedIsland: "st_thomas", candidate: "Santa Maria Bay", lat: 18.359333337383298, lng: -64.98905345449211 },
-  { index: 2300, expectedName: "Sevenhills", expectedType: "estate", expectedIsland: "st_croix", candidate: "SEVEN HILLS", lat: 17.7462147534703, lng: -64.6477516565729 },
-  { index: 2333, expectedName: "Smith’s Field", expectedType: "estate", expectedIsland: "st_thomas", candidate: "SMITH BAY", lat: 18.335278251441, lng: -64.86171891676014 },
-  { index: 2334, expectedName: "Smithbay", expectedType: "estate", expectedIsland: "st_thomas", candidate: "SMITH BAY", lat: 18.335278251441, lng: -64.86171891676014 },
-  { index: 2379, expectedName: "Sprat", expectedType: "estate", expectedIsland: "st_croix", candidate: "SPRATT HALL", lat: 17.74306767792325, lng: -64.88348586636539 },
-  { index: 2494, expectedName: "The Grange", expectedType: "estate", expectedIsland: "st_croix", candidate: "GRANGE (North)", lat: 17.7313643710483, lng: -64.72092022272085 },
+  { expectedName: "Grange Gut", expectedType: "estate", expectedIsland: "st_croix", candidate: "The Grange", lat: 17.7313643710483, lng: -64.72092022272085 },
+  { expectedName: "La Princesse", expectedType: "estate", expectedIsland: "st_croix", candidate: "Princess", lat: 17.757271983688298, lng: -64.73523993211084 },
+  { expectedName: "Maria Hill", expectedType: "hill", expectedIsland: "st_thomas", candidate: "Santa Maria Hill", lat: 18.359333337383298, lng: -64.98905345449211 },
+  { expectedName: "Petroglyphs", expectedType: "point", expectedIsland: "st_john", candidate: "Reef Bay Petroglyphs", lat: 18.3241492592502, lng: -64.7379062541914 },
+  { expectedName: "Rattan Hills", expectedType: "estate", expectedIsland: "st_croix", candidate: "Rattan", lat: 17.749739825071998, lng: -64.74981364350225 },
+  { expectedName: "Reef Bay Estate and Sugar Works Records", expectedType: "archive_record", expectedIsland: "st_john", candidate: "REEF BAY", lat: 18.3241492592502, lng: -64.7379062541914 },
+  { expectedName: "Retreat", expectedType: "estate", expectedIsland: "st_thomas", candidate: "ANNA'S RETREAT", lat: 18.34264445784635, lng: -64.88706827427085 },
+  { expectedName: "Robe Hill", expectedType: "estate", expectedIsland: "st_croix", candidate: "ROSE HILL", lat: 17.7515172839017, lng: -64.85901212227861 },
+  { expectedName: "Saint Georges Ilccli", expectedType: "estate", expectedIsland: "st_croix", candidate: "ST GEORGES", lat: 17.720338285889298, lng: -64.83058165781915 },
+  { expectedName: "Sprat Hole", expectedType: "point", expectedIsland: "st_croix", candidate: "Sprat", lat: 17.74306767792325, lng: -64.88348586636539 },
+  { expectedName: "Turtledove Cay", expectedType: "island", expectedIsland: "st_thomas", candidate: "Turtle Dove Cay", lat: 18.3086275618696, lng: -65.0003906549153 },
+  { expectedName: "Two Brothers", expectedType: "estate", expectedIsland: "st_croix", candidate: "TWO BROTHERS / SMITHFIELD / HESSELBERG", lat: 17.70046990000005, lng: -64.88458695770751 },
+  { expectedName: "Two-Friends Hill", expectedType: "estate", expectedIsland: "st_croix", candidate: "TWO FRIENDS", lat: 17.740684267348, lng: -64.8376442242562 },
+  { expectedName: "Walberggaard", expectedType: "estate", expectedIsland: "st_croix", candidate: "WALDBERGGAARD", lat: 17.72065511736185, lng: -64.84334261000215 },
+  { expectedName: "White's Bay", expectedType: "bay", expectedIsland: "st_croix", candidate: "WHITES BAY (East)", lat: 17.686901929189702, lng: -64.87381669603064 },
+  { expectedName: "William valley", expectedType: "estate", expectedIsland: "st_croix", candidate: "WILLIAM", lat: 17.7361947584054, lng: -64.88053609237156 },
+  { expectedName: "Windsor Forest", expectedType: "estate", expectedIsland: "st_croix", candidate: "WINDSOR", lat: 17.7603909805568, lng: -64.77313377370525 },
+  { expectedName: "Yellow Cliff Bay", expectedType: "bay", expectedIsland: "st_croix", candidate: "YELLOW CLIFF (North)", lat: 17.7474816855347, lng: -64.6188717208027 },
 ];
 
 const BLOCKED = [
-  { index: 229, name: "Buck Bay", candidate: "BUCK ISLAND", reason: "bay-to-island match is unsafe" },
-  { index: 990, name: "Grove", candidate: "GROVE PLACE", reason: "generic historic fragment" },
-  { index: 1107, name: "Hope Point", candidate: "HOPE", reason: "generic Hope match" },
-  { index: 77, name: "Beck Grove", candidate: "GROVE PLACE", reason: "generic Grove match" },
-  { index: 397, name: "Catharina's Hope", candidate: "HOPE", reason: "generic Hope match" },
-  { index: 400, name: "Catherine's Hope", candidate: "HOPE", reason: "generic Hope match" },
-  { index: 566, name: "Cottongrove Hill", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
-  { index: 1811, name: "Orangegrove", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
-  { index: 1812, name: "Orangegrove Road", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
-  { index: 2490, name: "Thatch Hill", candidate: "Thatch Cay", reason: "hill-to-cay match is unsafe" },
+  { name: "Buck Bay", candidate: "BUCK ISLAND", reason: "bay-to-island match is unsafe" },
+  { name: "Grove", candidate: "GROVE PLACE", reason: "generic historic fragment" },
+  { name: "Hope Point", candidate: "HOPE", reason: "generic Hope match" },
+  { name: "Beck Grove", candidate: "GROVE PLACE", reason: "generic Grove match" },
+  { name: "Catharina's Hope", candidate: "HOPE", reason: "generic Hope match" },
+  { name: "Catherine's Hope", candidate: "HOPE", reason: "generic Hope match" },
+  { name: "Cottongrove Hill", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
+  { name: "Orangegrove", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
+  { name: "Orangegrove Road", candidate: "GROVE PLACE", reason: "wrong Grove candidate" },
+  { name: "Thatch Hill", candidate: "Thatch Cay", reason: "hill-to-cay match is unsafe" },
+  { name: "Valley", candidate: "CANE VALLEY", reason: "generic fragment" },
+  { name: "White", candidate: "WHITE LADY", reason: "generic fragment" },
 ];
 
 function timestamp() {
   return new Date().toISOString().replace(/[:.]/g, "-");
 }
 
-function countChar(line: string, char: string) {
-  return [...line].filter((c) => c === char).length;
-}
-
-function findArrayBounds(text: string) {
-  const markerAt = text.indexOf("export const geographicIndex");
-  if (markerAt < 0) throw new Error("Could not find geographicIndex export.");
-
-  const equalsAt = text.indexOf("=", markerAt);
-  if (equalsAt < 0) throw new Error("Could not find geographicIndex assignment.");
-
-  const open = text.indexOf("[", equalsAt);
-  if (open < 0) throw new Error("Could not find geographicIndex array start.");
-
-  let inString = false;
-  let quote = "";
-  let escaped = false;
-  let depth = 0;
-
-  for (let i = open; i < text.length; i++) {
-    const ch = text[i];
-
-    if (inString) {
-      if (escaped) escaped = false;
-      else if (ch === "\\") escaped = true;
-      else if (ch === quote) inString = false;
-      continue;
-    }
-
-    if (ch === '"' || ch === "'" || ch === "`") {
-      inString = true;
-      quote = ch;
-      continue;
-    }
-
-    if (ch === "[") depth++;
-    if (ch === "]") depth--;
-
-    if (depth === 0) return { start: open, end: i };
-  }
-
-  throw new Error("Could not find geographicIndex array end.");
-}
-
-function splitTopLevelObjects(text: string, bounds: { start: number; end: number }) {
-  const objects = [];
-  let inString = false;
-  let quote = "";
-  let escaped = false;
-  let depth = 0;
-  let objectStart = -1;
-
-  for (let i = bounds.start + 1; i < bounds.end; i++) {
-    const ch = text[i];
-
-    if (inString) {
-      if (escaped) escaped = false;
-      else if (ch === "\\") escaped = true;
-      else if (ch === quote) inString = false;
-      continue;
-    }
-
-    if (ch === '"' || ch === "'" || ch === "`") {
-      inString = true;
-      quote = ch;
-      continue;
-    }
-
-    if (ch === "{") {
-      if (depth === 0) objectStart = i;
-      depth++;
-    } else if (ch === "}") {
-      depth--;
-      if (depth === 0 && objectStart >= 0) {
-        objects.push({ start: objectStart, end: i + 1 });
-        objectStart = -1;
-      }
-    }
-  }
-
-  return objects;
-}
-
-function removeProperty(block: string, prop: string) {
-  const propRe = new RegExp(`^\\s*["']?${prop}["']?\\s*:`);
-  const lines = block.split("\n");
-  const out: string[] = [];
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    if (!propRe.test(line)) {
-      out.push(line);
-      continue;
-    }
-
-    let depth = countChar(line, "{") - countChar(line, "}");
-    while (depth > 0 && i + 1 < lines.length) {
-      i++;
-      depth += countChar(lines[i], "{") - countChar(lines[i], "}");
-    }
-  }
-
-  return out.join("\n");
-}
-
-function patchBlock(block: string, fix: any) {
-  let next = block;
-
-  for (const prop of [
-    "coordinates",
-    "lat",
-    "lng",
-    "coordinateSource",
-    "coordinateConfidence",
-    "coordinateCandidate",
-    "coordinateReason",
-  ]) {
-    next = removeProperty(next, prop);
-  }
-
-  const lines = next.split("\n");
-  const closeIndex = lines.map((line) => line.trim()).lastIndexOf("}");
-  if (closeIndex < 0) throw new Error(`Could not find object close for ${fix.expectedName}`);
-
-  let previous = closeIndex - 1;
-  while (previous >= 0 && !lines[previous].trim()) previous--;
-
-  if (previous >= 0 && !lines[previous].trim().endsWith(",")) {
-    lines[previous] = `${lines[previous]},`;
-  }
-
-  const indentMatch = lines.find((line) => /^\s+["']?\w+["']?\s*:/.test(line));
-  const indent = indentMatch?.match(/^(\s+)/)?.[1] ?? "  ";
-
-  const insert = [
-    `${indent}"coordinates": { "lat": ${fix.lat}, "lng": ${fix.lng} },`,
-    `${indent}"lat": ${fix.lat},`,
-    `${indent}"lng": ${fix.lng},`,
-    `${indent}"coordinateSource": "reviewed_geographic_index_coordinate_batch_4",`,
-    `${indent}"coordinateConfidence": "reviewed",`,
-    `${indent}"coordinateCandidate": ${JSON.stringify(fix.candidate)},`,
-    `${indent}"coordinateReason": "reviewed_safe_candidate"`,
-  ];
-
-  lines.splice(closeIndex, 0, ...insert);
-  return lines.join("\n");
+function hasCoordinates(record: any) {
+  return (
+    record?.coordinates &&
+    typeof record.coordinates.lat === "number" &&
+    typeof record.coordinates.lng === "number"
+  );
 }
 
 mkdirSync(BACKUP_DIR, { recursive: true });
 
-let source = readFileSync(TARGET_FILE, "utf8");
-const before = source;
-const bounds = findArrayBounds(source);
-const objects = splitTopLevelObjects(source, bounds);
+const originalText = readFileSync(TARGET_FILE, "utf8");
+const backupFile = path.join(
+  BACKUP_DIR,
+  `geographicIndex.reviewed-coordinate-batch-4.${timestamp()}.ts`
+);
+writeFileSync(backupFile, originalText);
 
-const replacements: { start: number; end: number; text: string }[] = [];
 const applied: any[] = [];
 const skipped: any[] = [];
 
-for (const fix of SAFE_FIXES) {
-  const runtime = geographicIndex[fix.index];
+const updated = geographicIndex.map((record: any, index: number) => {
+  const fix = SAFE_FIXES.find(
+    (item) =>
+      record.name === item.expectedName &&
+      record.type === item.expectedType &&
+      record.island === item.expectedIsland
+  );
 
-  if (!runtime) {
-    skipped.push({ ...fix, reason: "runtime record missing" });
-    continue;
+  if (!fix) return record;
+
+  if (hasCoordinates(record)) {
+    skipped.push({ index, ...fix, reason: "already has coordinates" });
+    return record;
   }
 
-  if (
-    runtime.name !== fix.expectedName ||
-    runtime.type !== fix.expectedType ||
-    runtime.island !== fix.expectedIsland
-  ) {
-    skipped.push({
-      ...fix,
-      reason: "runtime guard mismatch",
-      actualName: runtime.name,
-      actualType: runtime.type,
-      actualIsland: runtime.island,
-    });
-    continue;
-  }
+  const next = {
+    ...record,
+    coordinates: { lat: fix.lat, lng: fix.lng },
+    coordinateSource: "reviewed_geographic_index_coordinate_batch_4",
+    coordinateSourceName: fix.candidate,
+    coordinateConfidence: "reviewed",
+    coordinateReviewNote: `Reviewed batch 4: matched "${record.name}" to "${fix.candidate}".`,
+  };
 
-  if (runtime.coordinates && typeof runtime.coordinates.lat === "number" && typeof runtime.coordinates.lng === "number") {
-    skipped.push({ ...fix, reason: "already has coordinates" });
-    continue;
-  }
-
-  const objectBounds = objects[fix.index];
-  if (!objectBounds) {
-    skipped.push({ ...fix, reason: "source object missing" });
-    continue;
-  }
-
-  const oldBlock = source.slice(objectBounds.start, objectBounds.end);
-  const newBlock = patchBlock(oldBlock, fix);
-
-  replacements.push({ start: objectBounds.start, end: objectBounds.end, text: newBlock });
   applied.push({
-    index: fix.index,
-    name: fix.expectedName,
-    type: fix.expectedType,
-    island: fix.expectedIsland,
+    index,
+    name: record.name,
+    type: record.type,
+    island: record.island,
     candidate: fix.candidate,
     lat: fix.lat,
     lng: fix.lng,
   });
-}
 
-for (const r of replacements.sort((a, b) => b.start - a.start)) {
-  source = source.slice(0, r.start) + r.text + source.slice(r.end);
-}
+  return next;
+});
 
-if (source !== before) {
-  writeFileSync(
-    path.join(BACKUP_DIR, `geographicIndex.reviewed-coordinate-batch-4.${timestamp()}.ts`),
-    before
+for (const fix of SAFE_FIXES) {
+  const found = geographicIndex.some(
+    (record: any) =>
+      record.name === fix.expectedName &&
+      record.type === fix.expectedType &&
+      record.island === fix.expectedIsland
   );
-  writeFileSync(TARGET_FILE, source);
+
+  if (!found) {
+    skipped.push({ ...fix, reason: "record not found" });
+  }
 }
 
-writeFileSync(
-  REPORT_FILE,
-  JSON.stringify(
-    {
-      generatedAt: new Date().toISOString(),
-      reviewedAllowlist: SAFE_FIXES.length,
-      applied: applied.length,
-      skipped: skipped.length,
-      appliedRecords: applied,
-      skippedRecords: skipped,
-      blockedRecords: BLOCKED,
-    },
-    null,
-    2
-  ) + "\n"
-);
+const fileText = `export type GeographicIndexRecord = {
+  id?: string;
+  name: string;
+  type?: string;
+  island?: string;
+  description?: string;
+  aliases?: string[];
+  coordinates?: any;
+  image?: string;
+  imageUrl?: string;
+  [key: string]: any;
+};
+
+export const geographicIndex: GeographicIndexRecord[] = ${JSON.stringify(updated, null, 2)};
+
+export type GeographicIndexItem = GeographicIndexRecord;
+
+export const geographicIndexItems: GeographicIndexItem[] = geographicIndex;
+
+export default geographicIndex;
+`;
+
+writeFileSync(TARGET_FILE, fileText);
+
+const report = {
+  generatedAt: new Date().toISOString(),
+  backupFile,
+  appliedCount: applied.length,
+  skippedCount: skipped.length,
+  applied,
+  skipped,
+  blocked: BLOCKED,
+};
+
+writeFileSync(REPORT_FILE, JSON.stringify(report, null, 2) + "\n");
 
 console.log("Reviewed geographic index coordinate batch 4 complete.");
 console.log(`Applied: ${applied.length}`);
@@ -315,4 +169,3 @@ if (skipped.length) {
 }
 console.log("Blocked unsafe/generic matches:");
 console.table(BLOCKED);
-if (skipped.length) process.exitCode = 1;

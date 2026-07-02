@@ -1,21 +1,21 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:27:36.619Z
+Generated: 2026-07-02T11:29:58.994Z
 
 ## Summary
 
-- Candidate-audit missing coordinate records: 1137
-- Triaged records: 1137
-- Official data-cleanliness missing coordinates: 762
+- Candidate-audit missing coordinate records: 1119
+- Triaged records: 1119
+- Official data-cleanliness missing coordinates: 749
 - Official sampled missing-coordinate issues: 200
 
 ## By bucket
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 894 |
-| ocr_or_name_cleanup_first | 119 |
-| review_candidate | 91 |
+| research_clean_name_no_candidate | 891 |
+| ocr_or_name_cleanup_first | 118 |
+| review_candidate | 77 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
 
@@ -23,9 +23,9 @@ Generated: 2026-07-02T11:27:36.619Z
 
 | Confidence | Count |
 |---|---:|
-| none | 1034 |
-| review | 64 |
-| weak | 36 |
+| none | 1030 |
+| review | 46 |
+| weak | 40 |
 | exact | 3 |
 
 ## Best remaining review candidates
@@ -45,17 +45,14 @@ Generated: 2026-07-02T11:27:36.619Z
 | 436 | Charlotte Amalie High School | school | st_thomas | review | Charlotte Amalie | contains_clean_slug |
 | 566 | Cottongrove Hill | hill | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 926 | Goodhope Bay | bay | st_croix | review | HOPE | contains_clean_slug |
-| 943 | Grange Gut | estate | st_croix | review | The Grange | contains_clean_slug |
 | 1205 | Johiison Reef | hill | st_john | review | REEF BAY | contains_clean_slug |
 | 1218 | Johnson Reef | bay | st_john | review | REEF BAY | contains_clean_slug |
 | 1278 | Klein Bay | bay | st_john | review | Klein Cinnamon Road | contains_clean_slug |
 | 1284 | Klein Reef | point | st_john | review | REEF BAY | contains_clean_slug |
-| 1348 | La Princesse | estate | st_croix | review | Princess | contains_clean_slug |
 | 1465 | Little Lameshur Bay | bay | st_john | review | Great Lameshur Bay | contains_clean_slug |
 | 1535 | Lutheran church | estate | st_thomas | review | Frederick Lutheran Church | contains_clean_slug |
 | 1545 | Magen | estate | st_thomas | review | Magens Bay | contains_clean_slug |
 | 1549 | Maho Ball | estate | st_john | review | Maho | contains_clean_slug |
-| 1580 | Maria Hill | hill | st_thomas | review | Santa Maria Hill | contains_clean_slug |
 | 1599 | Mary's Point Buy | bay | st_john | review | Mary-Point Estate | contains_clean_slug |
 | 1707 | Nancy's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
 | 1758 | North Side | estate | st_croix | review | NORTHSIDE | similarity_or_token_overlap |
@@ -63,16 +60,10 @@ Generated: 2026-07-02T11:27:36.619Z
 | 1812 | Orangegrove Road | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 1893 | Peter Beach | point | st_thomas | review | St. PETER | contains_clean_slug |
 | 1928 | Pleasant Point | point | st_john | review | MT PLEASANT & RETREAT | contains_clean_slug |
-| 2090 | Rattan Hills | estate | st_croix | review | Rattan | contains_clean_slug |
-| 2118 | Reef Bay Estate and Sugar Works Records | archive_record | st_john | review | REEF BAY | contains_clean_slug |
-| 2131 | Retreat | estate | st_thomas | review | ANNA'S RETREAT | contains_clean_slug |
-| 2150 | Robe Hill | estate | st_croix | review | ROSE HILL | similarity_or_token_overlap |
 | 2184 | Round Bay | bay | st_john | review | FREEMAN'S GROUND | contains_clean_slug |
 | 2186 | Round Point | bay | st_thomas | review | HOSPITAL GROUND | contains_clean_slug |
-| 2237 | Saint Georges Ilccli | estate | st_croix | review | ST GEORGES | contains_clean_slug |
 | 2257 | Salt River Bay Historic and Archaeological Records | archive_record | st_croix | review | RIVER | contains_clean_slug |
 | 2359 | South Bay | estate | st_croix | review | BONNE ESPERANCE (SOUTH) | contains_clean_slug |
-| 2381 | Sprat Hole | point | st_croix | review | Sprat | contains_clean_slug |
 | 2384 | Spring Bay | bay | st_croix | review | SPRING GARDEN | contains_clean_slug |
 | 2417 | Stewart Bay | estate | st_croix | review | MOUNT STEWART | contains_clean_slug |
 | 2437 | Sugar Bay | estate | st_thomas | review | THOMAS - SUGAR ESTATE | contains_clean_slug |
@@ -80,16 +71,8 @@ Generated: 2026-07-02T11:27:36.619Z
 | 2497 | The Mountais | estate | st_croix | review | MOUNTAIN | similarity_or_token_overlap |
 | 2514 | Thomas Harbor | bay | st_thomas | review | THOMAS | contains_clean_slug |
 | 2515 | Thomas Hill | estate | st_croix | review | THOMAS | contains_clean_slug |
-| 2561 | Turtledove Cay | island | st_thomas | review | Turtle Dove Cay | similarity_or_token_overlap |
-| 2567 | Two Brothers | estate | st_croix | review | TWO BROTHERS / SMITHFIELD / HESSELBERG | contains_clean_slug |
-| 2571 | Two-Friends Hill | estate | st_croix | review | TWO FRIENDS | contains_clean_slug |
 | 2607 | Valley | estate | st_croix | review | CANE VALLEY | contains_clean_slug |
-| 2637 | Walberggaard | estate | st_croix | review | WALDBERGGAARD | similarity_or_token_overlap |
 | 2711 | White | estate | st_croix | review | WHITE LADY | contains_clean_slug |
-| 2718 | White's Bay | bay | st_croix | review | WHITES BAY (East) | contains_clean_slug |
-| 2730 | William valley | estate | st_croix | review | WILLIAM | contains_clean_slug |
-| 2740 | Windsor Forest | estate | st_croix | review | WINDSOR | contains_clean_slug |
-| 2798 | Yellow Cliff Bay | bay | st_croix | review | YELLOW CLIFF (North) | contains_clean_slug |
 | 82 | Beffron Hill | estate | st_croix | weak | BEESTON HILL | weak_similarity |
 | 120 | Beverhoutberg Estate | estate | st_john | weak | BEVERHOUDTSBERG | similarity_or_token_overlap |
 | 221 | Brown Estate | estate | st_thomas | weak | Crown Bay | weak_similarity |
@@ -108,18 +91,21 @@ Generated: 2026-07-02T11:27:36.619Z
 | 1568 | Mandal | estate | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
 | 1569 | Mandal Bay | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
 | 1570 | Mandal Point | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
+| 1592 | Mars Hill | estate | st_thomas | weak | Maria Hill | weak_similarity |
 | 1706 | Nancy Hill | hill | st_john | weak | Caneel Hill | weak_similarity |
 | 1829 | Owrettbay | estate | st_thomas | weak | Carettbay | weak_similarity |
 | 1920 | Pkaeant Vale | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
 | 1927 | Pleasant Hill | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
 | 1963 | Pollyberg | estate | st_thomas | weak | NULLYBERG | weak_similarity |
 | 1964 | Pollyberg Road | estate | st_thomas | weak | NULLYBERG | weak_similarity |
+| 2224 | Sabbat Hill | hill | st_thomas | weak | Maria Hill | weak_similarity |
 | 2248 | Salba Cay | point | st_thomas | weak | SALT CAY | weak_similarity |
+| 2275 | Sara Hill | bay | st_thomas | weak | Maria Hill | weak_similarity |
 | 2370 | Southside Road | point | st_croix | weak | NORTHSIDE | weak_similarity |
 | 2463 | Tague Bay | bay | st_croix | weak | TEAGUE BAY | weak_similarity |
 | 2476 | Tbatah Cay | island | st_thomas | weak | Thatch Cay | weak_similarity |
 | 2506 | Thomaa | estate | st_thomas | weak | THOMAS | weak_similarity |
-| 2562 | Turtledove Key | estate | st_thomas | weak | TURTLE DOVE CAY | weak_similarity |
+| 2562 | Turtledove Key | estate | st_thomas | weak | Turtledove Cay | similarity_or_token_overlap |
 | 2638 | Waldberb Guard | estate | st_croix | weak | WALDBERGGAARD | weak_similarity |
 | 2674 | Wells Bay | bay | st_croix | weak | WILL'S BAY | weak_similarity |
 | 2761 | Xalkun Cay | island | st_thomas | weak | KALKUM CAY | weak_similarity |
@@ -328,7 +314,6 @@ Generated: 2026-07-02T11:27:36.619Z
 | 1872 | Pct4r Canucbdg | estate | st_croix |
 | 1891 | Pet& Bay | bay | st_john |
 | 1899 | Peters F a d | estate | st_thomas |
-| 1902 | Petroglyphs | point | st_john |
 | 1914 | Piedra8 Sueltrcs | point | st_thomas |
 | 1939 | Plzcnte Bay | bay | st_croix |
 | 1958 | Points de Z'E8t | point | st_thomas |

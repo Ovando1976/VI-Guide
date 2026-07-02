@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T11:27:36.619Z",
+  "generatedAt": "2026-07-02T11:29:58.994Z",
   "sourceOfTruth": "reports/geographic-index-coordinate-candidates-full.json",
   "notes": [
     "This triage report intentionally uses the full coordinate candidate audit proposals as the missing-coordinate source of truth.",
@@ -7,40 +7,40 @@
     "The official data-cleanliness audit is stricter and may report a smaller high-value issue count."
   ],
   "summary": {
-    "candidateReportMissingCoordinateRecords": 1137,
-    "triagedRecords": 1137,
-    "officialDataCleanlinessMissingCoordinates": 762,
+    "candidateReportMissingCoordinateRecords": 1119,
+    "triagedRecords": 1119,
+    "officialDataCleanlinessMissingCoordinates": 749,
     "officialDataCleanlinessSampledIssues": 200,
     "byBucket": {
-      "review_candidate": 91,
-      "research_clean_name_no_candidate": 894,
+      "review_candidate": 77,
+      "research_clean_name_no_candidate": 891,
       "generic_fragment_do_not_coordinate": 31,
-      "ocr_or_name_cleanup_first": 119,
+      "ocr_or_name_cleanup_first": 118,
       "low_priority_non_map_record": 2
     },
     "byConfidence": {
-      "review": 64,
-      "none": 1034,
-      "weak": 36,
+      "review": 46,
+      "none": 1030,
+      "weak": 40,
       "exact": 3
     },
     "byTypeIsland": {
-      "archive_record::st_john": 2,
-      "estate::st_croix": 167,
-      "bay::st_croix": 49,
+      "archive_record::st_john": 1,
+      "estate::st_croix": 157,
+      "bay::st_croix": 47,
       "bay::st_thomas": 159,
-      "island::st_thomas": 22,
+      "island::st_thomas": 21,
       "bay::water_island": 7,
       "point::water_island": 5,
-      "point::st_croix": 46,
-      "estate::st_thomas": 242,
+      "point::st_croix": 45,
+      "estate::st_thomas": 241,
       "bay::st_john": 74,
       "historic::st_thomas": 19,
       "gut::st_croix": 2,
       "dictionaryEntry::st_thomas": 5,
-      "point::st_john": 41,
+      "point::st_john": 40,
       "hill::st_croix": 13,
-      "hill::st_thomas": 20,
+      "hill::st_thomas": 19,
       "estate::st_john": 44,
       "point::st_thomas": 185,
       "school::st_thomas": 2,
@@ -56,9 +56,9 @@
       "archive_record::st_croix": 2,
       "island::st_john": 3
     },
-    "reviewCandidateCount": 91,
-    "cleanNoCandidateCount": 894,
-    "ocrOrNameCleanupFirstCount": 119
+    "reviewCandidateCount": 77,
+    "cleanNoCandidateCount": 891,
+    "ocrOrNameCleanupFirstCount": 118
   },
   "reviewCandidates": [
     {
@@ -257,21 +257,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 943,
-      "id": "st_croix-estate-grange-gut",
-      "name": "Grange Gut",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "The Grange",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7313643710483,
-      "candidateLng": -64.72092022272085,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 1205,
       "id": "st_john-hill-johiison-reef",
       "name": "Johiison Reef",
@@ -332,21 +317,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 1348,
-      "id": "st_croix-estate-la-princesse",
-      "name": "La Princesse",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Princess",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.757271983688298,
-      "candidateLng": -64.73523993211084,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 1465,
       "id": "st_john-bay-little-lameshur-bay",
       "name": "Little Lameshur Bay",
@@ -404,21 +374,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.3588,
       "candidateLng": -64.7432,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 1580,
-      "id": "st_thomas-hill-maria-hill",
-      "name": "Maria Hill",
-      "type": "hill",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Santa Maria Hill",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.359333337383298,
-      "candidateLng": -64.98905345449211,
       "reason": "contains_clean_slug"
     },
     {
@@ -527,66 +482,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 2090,
-      "id": "st_croix-estate-rattan-hills",
-      "name": "Rattan Hills",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Rattan",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.749739825071998,
-      "candidateLng": -64.74981364350225,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2118,
-      "id": "st_john-archive_record-reef-bay-estate-and-sugar-works-records",
-      "name": "Reef Bay Estate and Sugar Works Records",
-      "type": "archive_record",
-      "island": "st_john",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "REEF BAY",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3241492592502,
-      "candidateLng": -64.7379062541914,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2131,
-      "id": "st_thomas-estate-retreat",
-      "name": "Retreat",
-      "type": "estate",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ANNA'S RETREAT",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.34264445784635,
-      "candidateLng": -64.88706827427085,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2150,
-      "id": "st_croix-estate-robe-hill",
-      "name": "Robe Hill",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ROSE HILL",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7515172839017,
-      "candidateLng": -64.85901212227861,
-      "reason": "similarity_or_token_overlap"
-    },
-    {
       "index": 2184,
       "id": "st_john-bay-round-bay",
       "name": "Round Bay",
@@ -617,21 +512,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 2237,
-      "id": "st_croix-estate-saint-georges-ilccli",
-      "name": "Saint Georges Ilccli",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ST GEORGES",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.720338285889298,
-      "candidateLng": -64.83058165781915,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2257,
       "id": "st_croix-archive_record-salt-river-bay-historic-and-archaeological-records",
       "name": "Salt River Bay Historic and Archaeological Records",
@@ -659,21 +539,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 17.74356362461915,
       "candidateLng": -64.7692203635706,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2381,
-      "id": "st_croix-point-sprat-hole",
-      "name": "Sprat Hole",
-      "type": "point",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Sprat",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.74306767792325,
-      "candidateLng": -64.88348586636539,
       "reason": "contains_clean_slug"
     },
     {
@@ -782,51 +647,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 2561,
-      "id": "st_thomas-island-turtledove-cay",
-      "name": "Turtledove Cay",
-      "type": "island",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Turtle Dove Cay",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3086275618696,
-      "candidateLng": -65.0003906549153,
-      "reason": "similarity_or_token_overlap"
-    },
-    {
-      "index": 2567,
-      "id": "st_croix-estate-two-brothers",
-      "name": "Two Brothers",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TWO BROTHERS / SMITHFIELD / HESSELBERG",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.70046990000005,
-      "candidateLng": -64.88458695770751,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2571,
-      "id": "st_croix-estate-two-friends-hill",
-      "name": "Two-Friends Hill",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TWO FRIENDS",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.740684267348,
-      "candidateLng": -64.8376442242562,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2607,
       "id": "st_croix-estate-valley",
       "name": "Valley",
@@ -842,21 +662,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 2637,
-      "id": "st_croix-estate-walberggaard",
-      "name": "Walberggaard",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WALDBERGGAARD",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.72065511736185,
-      "candidateLng": -64.84334261000215,
-      "reason": "similarity_or_token_overlap"
-    },
-    {
       "index": 2711,
       "id": "st_croix-estate-white",
       "name": "White",
@@ -869,66 +674,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 17.69154057388075,
       "candidateLng": -64.8839468550193,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2718,
-      "id": "st_croix-bay-whites-bay",
-      "name": "White's Bay",
-      "type": "bay",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WHITES BAY (East)",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.686901929189702,
-      "candidateLng": -64.87381669603064,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2730,
-      "id": "st_croix-estate-william-valley",
-      "name": "William valley",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WILLIAM",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7361947584054,
-      "candidateLng": -64.88053609237156,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2740,
-      "id": "st_croix-estate-windsor-forest",
-      "name": "Windsor Forest",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WINDSOR",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7603909805568,
-      "candidateLng": -64.77313377370525,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2798,
-      "id": "st_croix-bay-yellow-cliff-bay",
-      "name": "Yellow Cliff Bay",
-      "type": "bay",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "YELLOW CLIFF (North)",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7474816855347,
-      "candidateLng": -64.6188717208027,
       "reason": "contains_clean_slug"
     },
     {
@@ -1202,6 +947,21 @@
       "reason": "similarity_or_token_overlap"
     },
     {
+      "index": 1592,
+      "id": "st_thomas-estate-mars-hill",
+      "name": "Mars Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "confidence": "weak",
+      "bucket": "review_candidate",
+      "officialAuditSampled": false,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
+      "reason": "weak_similarity"
+    },
+    {
       "index": 1706,
       "id": "st_john-hill-nancy-hill",
       "name": "Nancy Hill",
@@ -1292,6 +1052,21 @@
       "reason": "weak_similarity"
     },
     {
+      "index": 2224,
+      "id": "st_thomas-hill-sabbat-hill",
+      "name": "Sabbat Hill",
+      "type": "hill",
+      "island": "st_thomas",
+      "confidence": "weak",
+      "bucket": "review_candidate",
+      "officialAuditSampled": false,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
+      "reason": "weak_similarity"
+    },
+    {
       "index": 2248,
       "id": "st_thomas-point-salba-cay",
       "name": "Salba Cay",
@@ -1304,6 +1079,21 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.361460176887647,
       "candidateLng": -65.05306615329525,
+      "reason": "weak_similarity"
+    },
+    {
+      "index": 2275,
+      "id": "st_thomas-bay-sara-hill",
+      "name": "Sara Hill",
+      "type": "bay",
+      "island": "st_thomas",
+      "confidence": "weak",
+      "bucket": "review_candidate",
+      "officialAuditSampled": false,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -1375,11 +1165,11 @@
       "confidence": "weak",
       "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
-      "reason": "weak_similarity"
+      "reason": "similarity_or_token_overlap"
     },
     {
       "index": 2638,
@@ -1737,10 +1527,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -2142,10 +1932,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bolongo Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3175123332078,
-      "candidateLng": -64.89879745646965,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -2277,10 +2067,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -2787,10 +2577,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -2832,10 +2622,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -3402,10 +3192,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -4032,10 +3822,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Flat Cays",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3176615035053,
-      "candidateLng": -64.9888146529801,
+      "candidateLat": 18.3086275618696,
+      "candidateLng": -65.0003906549153,
       "reason": "weak_similarity"
     },
     {
@@ -4842,10 +4632,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "CATHERINEBERG",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3450964261188,
-      "candidateLng": -64.93264931271824,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -5937,10 +5727,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -5997,10 +5787,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Donoe Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3360307539689,
-      "candidateLng": -64.90137070522624,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -6957,10 +6747,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "St. PETER",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3636778385126,
-      "candidateLng": -64.94634233178459,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -7377,10 +7167,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -8022,10 +7812,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -8142,10 +7932,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -8236,21 +8026,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.34652014852835,
       "candidateLng": -64.72762843003869,
-      "reason": "weak_similarity"
-    },
-    {
-      "index": 1592,
-      "id": "st_thomas-estate-mars-hill",
-      "name": "Mars Hill",
-      "type": "estate",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Venus Hill",
-      "candidateSource": "historic_sites",
-      "candidateLat": 18.353333,
-      "candidateLng": -64.929444,
       "reason": "weak_similarity"
     },
     {
@@ -8952,10 +8727,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -9327,10 +9102,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -9537,10 +9312,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "SORGENFRI WESTERN PORTION",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.36575563600985,
-      "candidateLng": -64.9862872772905,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -9732,10 +9507,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Arons Estate",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35358,
-      "candidateLng": -64.96938,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -10917,10 +10692,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -11067,7 +10842,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -11172,10 +10947,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "French Bay",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.31958030255245,
-      "candidateLng": -64.9084111427579,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -11202,10 +10977,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Rosendal",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35369715902085,
-      "candidateLng": -64.91366486842695,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -11397,10 +11172,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -11674,21 +11449,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2224,
-      "id": "st_thomas-hill-sabbat-hill",
-      "name": "Sabbat Hill",
-      "type": "hill",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
-      "reason": "weak_similarity"
-    },
-    {
       "index": 2226,
       "id": "st_john-point-sabbat-point",
       "name": "Sabbat Point",
@@ -11896,21 +11656,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.31372200975455,
       "candidateLng": -64.8648698763188,
-      "reason": "weak_similarity"
-    },
-    {
-      "index": 2275,
-      "id": "st_thomas-bay-sara-hill",
-      "name": "Sara Hill",
-      "type": "bay",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Santa Maria Hill",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.359333337383298,
-      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -12267,7 +12012,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Santa Maria Trail",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
       "candidateLat": 18.359333337383298,
       "candidateLng": -64.98905345449211,
@@ -12327,10 +12072,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "SOLBERG",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3502071369676,
-      "candidateLng": -64.94474322134475,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -12837,10 +12582,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -13227,7 +12972,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "ROSE HILL",
+      "candidateName": "Robe Hill",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7515172839017,
       "candidateLng": -64.85901212227861,
@@ -13617,10 +13362,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "NORTH SLOB",
+      "candidateName": "Rattan Hills",
       "candidateSource": "geographic_index",
-      "candidateLat": 17.753093424189153,
-      "candidateLng": -64.60252216053621,
+      "candidateLat": 17.749739825071998,
+      "candidateLng": -64.74981364350225,
       "reason": "weak_similarity"
     },
     {
@@ -13947,7 +13692,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "WALDBERGGAARD",
+      "candidateName": "Walberggaard",
       "candidateSource": "geographic_index",
       "candidateLat": 17.72065511736185,
       "candidateLng": -64.84334261000215,
@@ -14427,10 +14172,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -15966,21 +15711,6 @@
       "reason": "contains_clean_slug"
     },
     {
-      "index": 1902,
-      "id": "st_john-point-petroglyphs",
-      "name": "Petroglyphs",
-      "type": "point",
-      "island": "st_john",
-      "confidence": "review",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": false,
-      "candidateName": "Reef Bay Petroglyphs",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3241492592502,
-      "candidateLng": -64.7379062541914,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 1914,
       "id": "st_thomas-point-piedra8-sueltrcs",
       "name": "Piedra8 Sueltrcs",
@@ -16469,7 +16199,7 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "WHITES BAY (East)",
+      "candidateName": "White's Bay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.686901929189702,
       "candidateLng": -64.87381669603064,
@@ -16514,10 +16244,10 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "CATHERINEBERG",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3450964261188,
-      "candidateLng": -64.93264931271824,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -16589,10 +16319,10 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "Venus Hill",
-      "candidateSource": "historic_sites",
-      "candidateLat": 18.353333,
-      "candidateLng": -64.929444,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -16601,10 +16331,10 @@
       "name": "Yellvwcliff Bay",
       "type": "bay",
       "island": "st_croix",
-      "confidence": "none",
+      "confidence": "weak",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "YELLOW CLIFF (North)",
+      "candidateName": "Yellow Cliff Bay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7474816855347,
       "candidateLng": -64.6188717208027,
@@ -17056,10 +16786,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -17641,10 +17371,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bolongo Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3175123332078,
-      "candidateLng": -64.89879745646965,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -17791,10 +17521,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -18361,10 +18091,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -18421,10 +18151,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -19231,10 +18961,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -19936,10 +19666,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Flat Cays",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3176615035053,
-      "candidateLng": -64.9888146529801,
+      "candidateLat": 18.3086275618696,
+      "candidateLng": -65.0003906549153,
       "reason": "weak_similarity"
     },
     {
@@ -20896,10 +20626,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "CATHERINEBERG",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3450964261188,
-      "candidateLng": -64.93264931271824,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -21698,21 +21428,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 943,
-      "id": "st_croix-estate-grange-gut",
-      "name": "Grange Gut",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "The Grange",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7313643710483,
-      "candidateLng": -64.72092022272085,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 947,
       "id": "st_thomas-point-grasklip-point",
       "name": "Grasklip Point",
@@ -22261,10 +21976,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -22336,10 +22051,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Donoe Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3360307539689,
-      "candidateLng": -64.90137070522624,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -23521,10 +23236,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "St. PETER",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3636778385126,
-      "candidateLng": -64.94634233178459,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -24023,21 +23738,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 1348,
-      "id": "st_croix-estate-la-princesse",
-      "name": "La Princesse",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Princess",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.757271983688298,
-      "candidateLng": -64.73523993211084,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 1349,
       "id": "st_thomas-estate-la-ratea-del-sudoeste",
       "name": "La RatEa del Sudoeste",
@@ -24076,10 +23776,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -24826,10 +24526,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -24991,10 +24691,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -25193,33 +24893,18 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 1580,
-      "id": "st_thomas-hill-maria-hill",
-      "name": "Maria Hill",
-      "type": "hill",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Santa Maria Hill",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.359333337383298,
-      "candidateLng": -64.98905345449211,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 1592,
       "id": "st_thomas-estate-mars-hill",
       "name": "Mars Hill",
       "type": "estate",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "weak",
+      "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Venus Hill",
-      "candidateSource": "historic_sites",
-      "candidateLat": 18.353333,
-      "candidateLng": -64.929444,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -25981,10 +25666,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -26536,10 +26221,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -26806,10 +26491,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "SORGENFRI WESTERN PORTION",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.36575563600985,
-      "candidateLng": -64.9862872772905,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -27001,10 +26686,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Arons Estate",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35358,
-      "candidateLng": -64.96938,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -27275,21 +26960,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.3636778385126,
       "candidateLng": -64.94634233178459,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 1902,
-      "id": "st_john-point-petroglyphs",
-      "name": "Petroglyphs",
-      "type": "point",
-      "island": "st_john",
-      "confidence": "review",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": false,
-      "candidateName": "Reef Bay Petroglyphs",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3241492592502,
-      "candidateLng": -64.7379062541914,
       "reason": "contains_clean_slug"
     },
     {
@@ -28471,10 +28141,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -28598,21 +28268,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2090,
-      "id": "st_croix-estate-rattan-hills",
-      "name": "Rattan Hills",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Rattan",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.749739825071998,
-      "candidateLng": -64.74981364350225,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2097,
       "id": "st_thomas-point-rcattrlyo-de-la-luunta-rota",
       "name": "RcattrLyo de la l'uunta Rota",
@@ -28651,7 +28306,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -28733,21 +28388,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2118,
-      "id": "st_john-archive_record-reef-bay-estate-and-sugar-works-records",
-      "name": "Reef Bay Estate and Sugar Works Records",
-      "type": "archive_record",
-      "island": "st_john",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "REEF BAY",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3241492592502,
-      "candidateLng": -64.7379062541914,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2122,
       "id": "st_thomas-estate-reeolution",
       "name": "Reeolution",
@@ -28771,10 +28411,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "French Bay",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.31958030255245,
-      "candidateLng": -64.9084111427579,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -28801,10 +28441,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Rosendal",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35369715902085,
-      "candidateLng": -64.91366486842695,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -28821,21 +28461,6 @@
       "candidateLat": 17.702388244987148,
       "candidateLng": -64.77330058691145,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2131,
-      "id": "st_thomas-estate-retreat",
-      "name": "Retreat",
-      "type": "estate",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ANNA'S RETREAT",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.34264445784635,
-      "candidateLng": -64.88706827427085,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2134,
@@ -28926,21 +28551,6 @@
       "candidateLat": 18.3503525854884,
       "candidateLng": -64.98204334502465,
       "reason": ""
-    },
-    {
-      "index": 2150,
-      "id": "st_croix-estate-robe-hill",
-      "name": "Robe Hill",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ROSE HILL",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7515172839017,
-      "candidateLng": -64.85901212227861,
-      "reason": "similarity_or_token_overlap"
     },
     {
       "index": 2151,
@@ -29056,10 +28666,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -29443,13 +29053,13 @@
       "name": "Sabbat Hill",
       "type": "hill",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "weak",
+      "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Elizabeth Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.35136065410805,
-      "candidateLng": -64.93523180616941,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -29526,21 +29136,6 @@
       "candidateLat": 18.3360307539689,
       "candidateLng": -64.90137070522624,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2237,
-      "id": "st_croix-estate-saint-georges-ilccli",
-      "name": "Saint Georges Ilccli",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "ST GEORGES",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.720338285889298,
-      "candidateLng": -64.83058165781915,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2240,
@@ -29713,10 +29308,10 @@
       "name": "Sara Hill",
       "type": "bay",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "weak",
+      "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Santa Maria Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
       "candidateLat": 18.359333337383298,
       "candidateLng": -64.98905345449211,
@@ -30121,7 +29716,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Santa Maria Trail",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
       "candidateLat": 18.359333337383298,
       "candidateLng": -64.98905345449211,
@@ -30241,10 +29836,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "SOLBERG",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3502071369676,
-      "candidateLng": -64.94474322134475,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -30546,21 +30141,6 @@
       "candidateLat": 18.3195,
       "candidateLng": -64.9517,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2381,
-      "id": "st_croix-point-sprat-hole",
-      "name": "Sprat Hole",
-      "type": "point",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Sprat",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.74306767792325,
-      "candidateLng": -64.88348586636539,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2382,
@@ -30961,10 +30541,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Bethesda Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3559062831591,
-      "candidateLng": -65.00835365155365,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -31576,7 +31156,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "ROSE HILL",
+      "candidateName": "Robe Hill",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7515172839017,
       "candidateLng": -64.85901212227861,
@@ -31778,21 +31358,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2561,
-      "id": "st_thomas-island-turtledove-cay",
-      "name": "Turtledove Cay",
-      "type": "island",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Turtle Dove Cay",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3086275618696,
-      "candidateLng": -65.0003906549153,
-      "reason": "similarity_or_token_overlap"
-    },
-    {
       "index": 2562,
       "id": "st_thomas-estate-turtledove-key",
       "name": "Turtledove Key",
@@ -31801,11 +31366,11 @@
       "confidence": "weak",
       "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtledove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
-      "reason": "weak_similarity"
+      "reason": "similarity_or_token_overlap"
     },
     {
       "index": 2563,
@@ -31851,36 +31416,6 @@
       "candidateLat": 18.3592767020762,
       "candidateLng": -64.86191857744305,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2567,
-      "id": "st_croix-estate-two-brothers",
-      "name": "Two Brothers",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TWO BROTHERS / SMITHFIELD / HESSELBERG",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.70046990000005,
-      "candidateLng": -64.88458695770751,
-      "reason": "contains_clean_slug"
-    },
-    {
-      "index": 2571,
-      "id": "st_croix-estate-two-friends-hill",
-      "name": "Two-Friends Hill",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TWO FRIENDS",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.740684267348,
-      "candidateLng": -64.8376442242562,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2574,
@@ -32086,10 +31621,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "NORTH SLOB",
+      "candidateName": "Rattan Hills",
       "candidateSource": "geographic_index",
-      "candidateLat": 17.753093424189153,
-      "candidateLng": -64.60252216053621,
+      "candidateLat": 17.749739825071998,
+      "candidateLng": -64.74981364350225,
       "reason": "weak_similarity"
     },
     {
@@ -32356,26 +31891,11 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "WHITES BAY (East)",
+      "candidateName": "White's Bay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.686901929189702,
       "candidateLng": -64.87381669603064,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2637,
-      "id": "st_croix-estate-walberggaard",
-      "name": "Walberggaard",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WALDBERGGAARD",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.72065511736185,
-      "candidateLng": -64.84334261000215,
-      "reason": "similarity_or_token_overlap"
     },
     {
       "index": 2638,
@@ -32521,7 +32041,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "WALDBERGGAARD",
+      "candidateName": "Walberggaard",
       "candidateSource": "geographic_index",
       "candidateLat": 17.72065511736185,
       "candidateLng": -64.84334261000215,
@@ -32581,10 +32101,10 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "CATHERINEBERG",
+      "candidateName": "Retreat",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3450964261188,
-      "candidateLng": -64.93264931271824,
+      "candidateLat": 18.34264445784635,
+      "candidateLng": -64.88706827427085,
       "reason": "weak_similarity"
     },
     {
@@ -32963,21 +32483,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2718,
-      "id": "st_croix-bay-whites-bay",
-      "name": "White's Bay",
-      "type": "bay",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WHITES BAY (East)",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.686901929189702,
-      "candidateLng": -64.87381669603064,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2720,
       "id": "st_croix-estate-whiteladies",
       "name": "Whiteladies",
@@ -33006,21 +32511,6 @@
       "candidateLat": 18.3626,
       "candidateLng": -64.9307,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2730,
-      "id": "st_croix-estate-william-valley",
-      "name": "William valley",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WILLIAM",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7361947584054,
-      "candidateLng": -64.88053609237156,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2732,
@@ -33066,21 +32556,6 @@
       "candidateLat": 18.36479311179155,
       "candidateLng": -64.7385750100362,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 2740,
-      "id": "st_croix-estate-windsor-forest",
-      "name": "Windsor Forest",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "WINDSOR",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7603909805568,
-      "candidateLng": -64.77313377370525,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 2751,
@@ -33181,10 +32656,10 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "Contant Hill",
+      "candidateName": "Maria Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.34442312704015,
-      "candidateLng": -64.95865161016525,
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -33451,10 +32926,10 @@
       "confidence": "none",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "Venus Hill",
-      "candidateSource": "historic_sites",
-      "candidateLat": 18.353333,
-      "candidateLng": -64.929444,
+      "candidateName": "Maria Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.359333337383298,
+      "candidateLng": -64.98905345449211,
       "reason": "weak_similarity"
     },
     {
@@ -33488,30 +32963,15 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2798,
-      "id": "st_croix-bay-yellow-cliff-bay",
-      "name": "Yellow Cliff Bay",
-      "type": "bay",
-      "island": "st_croix",
-      "confidence": "review",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "YELLOW CLIFF (North)",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7474816855347,
-      "candidateLng": -64.6188717208027,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 2799,
       "id": "st_croix-bay-yellvwcliff-bay",
       "name": "Yellvwcliff Bay",
       "type": "bay",
       "island": "st_croix",
-      "confidence": "none",
+      "confidence": "weak",
       "bucket": "ocr_or_name_cleanup_first",
       "officialAuditSampled": false,
-      "candidateName": "YELLOW CLIFF (North)",
+      "candidateName": "Yellow Cliff Bay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7474816855347,
       "candidateLng": -64.6188717208027,
