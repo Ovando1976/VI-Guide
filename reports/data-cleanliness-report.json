@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T09:40:12.854Z",
+  "generatedAt": "2026-07-02T09:45:23.451Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 52
+    "low": 7
   },
   "issueGroups": [
     {
@@ -41,15 +41,15 @@
     },
     {
       "severity": "low",
-      "source": "geographic_index",
-      "issue": "missing_image",
-      "count": 47
-    },
-    {
-      "severity": "low",
       "source": "estates_geojson",
       "issue": "duplicate_name_type_island",
       "count": 5
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "issue": "missing_image",
+      "count": 2
     }
   ],
   "issues": [
@@ -197,16 +197,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 62,
-      "id": "st_thomas-historic-battery",
-      "name": "Battery)",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -429,16 +419,6 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 143,
-      "id": "st_thomas-historic-bluebeards-castle",
-      "name": "Bluebeard’s Castle",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
       "severity": "medium",
       "source": "geographic_index",
       "index": 147,
@@ -617,16 +597,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 209,
-      "id": "st_thomas-beach-brewers-bay",
-      "name": "Brewers Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -957,16 +927,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 314,
-      "id": "st_croix-beach-cane-bay",
-      "name": "Cane Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -1379,16 +1339,6 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 450,
-      "id": "st_thomas-historic-chrietiunsfort",
-      "name": "Chrietiunsfort",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
       "severity": "medium",
       "source": "geographic_index",
       "index": 460,
@@ -1397,16 +1347,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 460,
-      "id": "st_thomas-historic-christinns-fort",
-      "name": "Christinn's Fort",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -1417,16 +1357,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 463,
-      "id": "st_john-beach-cinnamon-bay",
-      "name": "Cinnamon Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -1477,16 +1407,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 496,
-      "id": "st_thomas-beach-coki-point",
-      "name": "Coki Point",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -1667,16 +1587,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 552,
-      "id": "st_thomas-historic-cotcell-playstarcg",
-      "name": "Cotcell Playstarcg",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     },
     {
       "severity": "medium",
@@ -2191,26 +2101,6 @@
     {
       "severity": "low",
       "source": "geographic_index",
-      "index": 813,
-      "id": "st_croix-historic-fort-1-iiytcuto",
-      "name": "Fort -1 iiytcuto",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 821,
-      "id": "st_croix-historic-fort-lovi",
-      "name": "Fort Lovi",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
       "index": 822,
       "id": "st_thomas-historic-fort-nt",
       "name": "Fort Nt",
@@ -2221,349 +2111,9 @@
     {
       "severity": "low",
       "source": "geographic_index",
-      "index": 834,
-      "id": "st_john-beach-francis-bay",
-      "name": "Francis Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 857,
-      "id": "st_thomas-historic-frederikalort",
-      "name": "Frederikalort",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 864,
-      "id": "st_thomas-historic-fredertksfort",
-      "name": "Fredertksfort",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 878,
-      "id": "st_croix-historic-fricdrirk-ufot-t",
-      "name": "Fricdrirk ufot t",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 964,
-      "id": "st_thomas-historic-great-middleground",
-      "name": "Great Middleground",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 991,
-      "id": "st_croix-historic-grove",
-      "name": "Grove",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1060,
-      "id": "st_john-beach-hawksnest-bay",
-      "name": "Hawksnest Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1100,
-      "id": "water_island-beach-honeymoon-beach",
-      "name": "Honeymoon Beach",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1122,
-      "id": "st_thomas-beach-hull-bay",
-      "name": "Hull Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1269,
-      "id": "st_thomas-historic-kings-wharf",
-      "name": "King's Wharf",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1320,
-      "id": "st_thomas-historic-krlntiamfort",
-      "name": "Krlntiamfort",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1323,
-      "id": "st_thomas-historic-kru2-thuya",
-      "name": "Kru2/thuya",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1358,
-      "id": "st_croix-historic-lagoon-b-a-n-k",
-      "name": "Lagoon B a n k",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1445,
-      "id": "st_thomas-beach-lindbergh-bay",
-      "name": "Lindbergh Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1447,
-      "id": "st_thomas-beach-lindquist-beach",
-      "name": "Lindquist Beach",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1551,
-      "id": "st_thomas-beach-magens-bay",
-      "name": "Magens Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1555,
-      "id": "st_john-beach-maho-bay",
-      "name": "Maho Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1696,
-      "id": "st_thomas-historic-muhlenfels-battery",
-      "name": "Muhlenfels Battery",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1729,
-      "id": "st_thomas-historic-negeru",
-      "name": "Negeru",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1852,
-      "id": "st_thomas-historic-pakhuye",
-      "name": "Pakhuye",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1994,
-      "id": "st_thomas-historic-prederikx-bnttcric",
-      "name": "Prederikx Bnttcric",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2077,
-      "id": "st_croix-beach-rainbow-beach",
-      "name": "Rainbow Beach",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2192,
-      "id": "st_thomas-historic-round-beef",
-      "name": "Round Beef",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2225,
-      "id": "st_croix-historic-rzltherjwd",
-      "name": "RzltherJwd",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2262,
-      "id": "st_john-beach-salt-pond-bay",
-      "name": "Salt Pond Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2270,
-      "id": "st_croix-beach-sandy-point",
-      "name": "Sandy Point",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2281,
-      "id": "st_thomas-beach-sapphire-beach",
-      "name": "Sapphire Beach",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2293,
-      "id": "st_thomas-historic-school-of-fish",
-      "name": "School-of-Fish",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2294,
-      "id": "st_thomas-historic-schooner-channel",
-      "name": "Schooner Channel",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2298,
-      "id": "st_thomas-beach-secret-harbour",
-      "name": "Secret Harbour",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2319,
-      "id": "st_croix-beach-shoys-beach",
-      "name": "Shoys Beach",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
       "index": 2406,
       "id": "st_croix-historic-st",
       "name": "St",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2550,
-      "id": "st_john-beach-trunk-bay",
-      "name": "Trunk Bay",
-      "issue": "missing_image",
-      "detail": "Record type \"beach\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2654,
-      "id": "st_thomas-historic-water-battery",
-      "name": "Water Battery",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2798,
-      "id": "st_croix-historic-yaandbcatterle",
-      "name": "Ya&bcatterle",
       "issue": "missing_image",
       "detail": "Record type \"historic\" normally needs an image for the UI.",
       "suggestion": "Add image, imageUrl, thumbnail, or heroImage."

@@ -1,0 +1,125 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-02T09:45:24.603Z",
+    "geographicIndexRecords": 2838,
+    "missingImageIssues": 2,
+    "imageFiles": 3586,
+    "confidenceTotals": {
+      "none": 2
+    }
+  },
+  "proposals": [
+    {
+      "index": 822,
+      "id": "st_thomas-historic-fort-nt",
+      "geoid": "",
+      "name": "Fort Nt",
+      "type": "historic",
+      "island": "st_thomas",
+      "currentImage": "",
+      "issueDetail": "Record type \"historic\" normally needs an image for the UI.",
+      "confidence": "none",
+      "bestScore": 0.03,
+      "bestMatch": {
+        "publicPath": "/images/historicSite/st-thomas-synagogue.jpg",
+        "fileName": "st-thomas-synagogue.jpg",
+        "score": 0.03,
+        "reason": "",
+        "matchedOn": ""
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+          "fileName": "charlotte-amalie-historic-district-1.jpg",
+          "score": 0.03,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/bolongo-bay-1.jpg",
+          "fileName": "bolongo-bay-1.jpg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/bolongo-bay-2.jpg",
+          "fileName": "bolongo-bay-2.jpg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/bolongo-bay-3.jpeg",
+          "fileName": "bolongo-bay-3.jpeg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/brewers-bay-1.jpg",
+          "fileName": "brewers-bay-1.jpg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        }
+      ]
+    },
+    {
+      "index": 2406,
+      "id": "st_croix-historic-st",
+      "geoid": "",
+      "name": "St",
+      "type": "historic",
+      "island": "st_croix",
+      "currentImage": "",
+      "issueDetail": "Record type \"historic\" normally needs an image for the UI.",
+      "confidence": "none",
+      "bestScore": 0.03,
+      "bestMatch": {
+        "publicPath": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+        "fileName": "christiansted-historic-district-1.jpg",
+        "score": 0.03,
+        "reason": "",
+        "matchedOn": ""
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+          "fileName": "christiansted-national-historic-site-1.jpg",
+          "score": 0.03,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+          "fileName": "frederiksted-historic-district-1.jpg",
+          "score": 0.03,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+          "fileName": "salt-river-bay-national-historical-park-1.jpg",
+          "score": 0.03,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-croix/buccaneer-beach.jpg",
+          "fileName": "buccaneer-beach.jpg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        },
+        {
+          "publicPath": "/images/beaches/st-croix/buck-island-1.jpg",
+          "fileName": "buck-island-1.jpg",
+          "score": 0.02,
+          "reason": "",
+          "matchedOn": ""
+        }
+      ]
+    }
+  ]
+}

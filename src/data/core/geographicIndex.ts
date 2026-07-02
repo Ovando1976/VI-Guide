@@ -2140,6 +2140,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-battery",
     "name": "Battery)",
+    "imageUrl": "/images/dictionary/battery.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -4645,6 +4646,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-bluebeards-castle",
     "name": "Bluebeard’s Castle",
+    "imageUrl": "/images/historicSite/bluebeards-castle.jpg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -6739,6 +6741,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-brewers-bay",
     "name": "Brewers Bay",
+    "imageUrl": "/images/beaches/brewers-bay.jpg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -9982,6 +9985,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-beach-cane-bay",
     "name": "Cane Bay",
+    "imageUrl": "/images/beaches/cane-bay.svg",
     "type": "beach",
     "island": "st_croix",
     "aliases": [],
@@ -14159,6 +14163,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-chrietiunsfort",
     "name": "Chrietiunsfort",
+    "imageUrl": "/images/dictionary/chrietiunsfort.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -14460,6 +14465,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-historic-christinns-fort",
+    "imageUrl": "/images/dictionary/christinns-fort.svg",
     "name": "Christinn's Fort",
     "type": "historic",
     "island": "st_thomas",
@@ -14548,6 +14554,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     {
     "id": "st_john-beach-cinnamon-bay",
     "name": "Cinnamon Bay",
+    "imageUrl": "/images/beaches/cinnamon-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -15570,6 +15577,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-coki-point",
     "name": "Coki Point",
+    "imageUrl": "/images/estate/coki-point.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -17401,6 +17409,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-cotcell-playstarcg",
     "name": "Cotcell Playstarcg",
+    "imageUrl": "/images/dictionary/cotcell-playstarcg.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -25257,6 +25266,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-fort-1-iiytcuto",
     "name": "Fort -1 iiytcuto",
+    "imageUrl": "/images/dictionary/fort-1-iiytcuto.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -25498,6 +25508,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-fort-lovi",
     "name": "Fort Lovi",
+    "imageUrl": "/images/dictionary/fort-lovi.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -25909,6 +25920,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_john-beach-francis-bay",
     "name": "Francis Bay",
+    "imageUrl": "/images/beaches/francis-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -26582,6 +26594,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-frederikalort",
     "name": "Frederikalort",
+    "imageUrl": "/images/dictionary/frederikalort.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -26809,6 +26822,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-fredertksfort",
     "name": "Fredertksfort",
+    "imageUrl": "/images/dictionary/fredertksfort.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -27239,6 +27253,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-fricdrirk-ufot-t",
     "name": "Fricdrirk ufot t",
+    "imageUrl": "/images/dictionary/fricdrirk-ufot-t.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -29917,6 +29932,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-great-middleground",
     "name": "Great Middleground",
+    "imageUrl": "/images/dictionary/great-middleground.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -30748,6 +30764,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-grove",
     "name": "Grove",
+    "imageUrl": "/images/dictionary/grove.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -32955,6 +32972,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_john-beach-hawksnest-bay",
     "name": "Hawksnest Bay",
+    "imageUrl": "/images/beaches/hawksnest-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -34226,6 +34244,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "water_island-beach-honeymoon-beach",
     "name": "Honeymoon Beach",
+    "imageUrl": "/images/beaches/honeymoon-beach.svg",
     "type": "beach",
     "island": "water_island",
     "aliases": [],
@@ -34949,6 +34968,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-hull-bay",
     "name": "Hull Bay",
+    "imageUrl": "/images/beaches/hull-bay.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -39341,6 +39361,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-historic-kings-wharf",
+    "imageUrl": "/images/dictionary/kings-wharf.svg",
     "name": "King's Wharf",
     "type": "historic",
     "island": "st_thomas",
@@ -40845,6 +40866,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-krlntiamfort",
     "name": "Krlntiamfort",
+    "imageUrl": "/images/dictionary/krlntiamfort.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -40944,6 +40966,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-kru2-thuya",
     "name": "Kru2/thuya",
+    "imageUrl": "/images/dictionary/kru2-thuya.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -42031,6 +42054,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-lagoon-b-a-n-k",
     "name": "Lagoon B a n k",
+    "imageUrl": "/images/dictionary/lagoon-b-a-n-k.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -44641,6 +44665,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-lindbergh-bay",
     "name": "Lindbergh Bay",
+    "imageUrl": "/images/estate/lindbergh-bay.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -44714,6 +44739,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-lindquist-beach",
     "name": "Lindquist Beach",
+    "imageUrl": "/images/beaches/lindquist-beach.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -48004,6 +48030,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-magens-bay",
     "name": "Magens Bay",
+    "imageUrl": "/images/beaches/magens-bay.jpg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -48133,6 +48160,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_john-beach-maho-bay",
     "name": "Maho Bay",
+    "imageUrl": "/images/beaches/maho-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -52579,6 +52607,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-muhlenfels-battery",
     "name": "Muhlenfels Battery",
+    "imageUrl": "/images/dictionary/muhlenfels-battery.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -53566,6 +53595,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-negeru",
     "name": "Negeru",
+    "imageUrl": "/images/dictionary/negeru.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -57351,6 +57381,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-pakhuye",
     "name": "Pakhuye",
+    "imageUrl": "/images/dictionary/pakhuye.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -61685,6 +61716,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-prederikx-bnttcric",
     "name": "Prederikx Bnttcric",
+    "imageUrl": "/images/dictionary/prederikx-bnttcric.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -64200,6 +64232,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-beach-rainbow-beach",
     "name": "Rainbow Beach",
+    "imageUrl": "/images/beaches/rainbow-beach.svg",
     "type": "beach",
     "island": "st_croix",
     "aliases": [],
@@ -67768,6 +67801,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-round-beef",
     "name": "Round Beef",
+    "imageUrl": "/images/dictionary/round-beef.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -68749,6 +68783,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-rzltherjwd",
     "name": "RzltherJwd",
+    "imageUrl": "/images/dictionary/rzltherjwd.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
@@ -69870,6 +69905,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_john-beach-salt-pond-bay",
     "name": "Salt Pond Bay",
+    "imageUrl": "/images/beaches/salt-pond-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -70129,6 +70165,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-beach-sandy-point",
     "name": "Sandy Point",
+    "imageUrl": "/images/beaches/sandy-point.svg",
     "type": "beach",
     "island": "st_croix",
     "aliases": [],
@@ -70463,6 +70500,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-sapphire-beach",
     "name": "Sapphire Beach",
+    "imageUrl": "/images/beaches/sapphire-beach.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -70838,6 +70876,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-school-of-fish",
     "name": "School-of-Fish",
+    "imageUrl": "/images/dictionary/school-of-fish.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -70867,6 +70906,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-schooner-channel",
     "name": "Schooner Channel",
+    "imageUrl": "/images/dictionary/schooner-channel.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -70983,6 +71023,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-beach-secret-harbour",
     "name": "Secret Harbour",
+    "imageUrl": "/images/beaches/secret-harbour.svg",
     "type": "beach",
     "island": "st_thomas",
     "aliases": [],
@@ -71619,6 +71660,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-beach-shoys-beach",
     "name": "Shoys Beach",
+    "imageUrl": "/images/beaches/shoys-beach.svg",
     "type": "beach",
     "island": "st_croix",
     "aliases": [],
@@ -78863,6 +78905,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_john-beach-trunk-bay",
     "name": "Trunk Bay",
+    "imageUrl": "/images/dictionary/trunk-bay.svg",
     "type": "beach",
     "island": "st_john",
     "aliases": [],
@@ -82069,6 +82112,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-water-battery",
     "name": "Water Battery",
+    "imageUrl": "/images/dictionary/water-battery.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -86452,6 +86496,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-yaandbcatterle",
     "name": "Ya&bcatterle",
+    "imageUrl": "/images/dictionary/yaandbcatterle.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],
