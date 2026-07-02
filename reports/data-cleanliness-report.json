@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-02T10:16:39.550Z",
+  "generatedAt": "2026-07-02T10:22:52.462Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 837,
+    "issuesActual": 802,
     "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
@@ -32,7 +32,7 @@
   "totalRecords": 3323,
   "severityTotals": {
     "high": 0,
-    "medium": 837,
+    "medium": 802,
     "low": 0
   },
   "issueGroups": [
@@ -40,7 +40,7 @@
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 837,
+      "count": 802,
       "sampled": 200,
       "sampleLimit": 200
     }
@@ -159,16 +159,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 87,
-      "id": "st_thomas-point-bellevue-hill",
-      "name": "Bellevue Hill",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 101,
       "id": "st_thomas-estate-bethel-estate",
       "name": "Bethel Estate",
@@ -279,16 +269,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 164,
-      "id": "st_thomas-estate-bonne-espbrance-road",
-      "name": "Bonne EspBrance Road",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 173,
       "id": "st_thomas-estate-bopcks-creek",
       "name": "BoPcks Creek",
@@ -369,16 +349,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 217,
-      "id": "st_croix-estate-brookhill-estate",
-      "name": "Brookhill Estate",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 221,
       "id": "st_thomas-estate-brown-estate",
       "name": "Brown Estate",
@@ -412,16 +382,6 @@
       "index": 242,
       "id": "st_thomas-point-bull-point",
       "name": "Bull Point",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 245,
-      "id": "st_croix-estate-bulowa-minde",
-      "name": "Bulow'a-Minde",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -749,16 +709,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 368,
-      "id": "st_john-estate-caroline",
-      "name": "Caroline",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 369,
       "id": "water_island-point-caroline-point",
       "name": "Caroline Point",
@@ -772,16 +722,6 @@
       "index": 375,
       "id": "st_thomas-estate-carton-dome",
       "name": "Carton Dome",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 376,
-      "id": "st_croix-estate-carty",
-      "name": "Carty",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1062,26 +1002,6 @@
       "index": 518,
       "id": "st_thomas-point-congo-point",
       "name": "Congo Point",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 520,
-      "id": "st_john-estate-conoordia",
-      "name": "Conoordia",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 528,
-      "id": "st_thomas-estate-contant-hill",
-      "name": "Contant Hill",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -2042,6 +1962,86 @@
       "index": 846,
       "id": "st_croix-estate-fredensfeld",
       "name": "Fredensfeld",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 852,
+      "id": "st_croix-estate-fredericks-izaab",
+      "name": "Fredericks IZaab",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 853,
+      "id": "st_thomas-point-frederik-battery",
+      "name": "Frederik Battery",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 855,
+      "id": "st_thomas-point-frederik-knoll",
+      "name": "Frederik Knoll",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 856,
+      "id": "st_thomas-point-frederik-p-o-i-n-t",
+      "name": "Frederik P o i n t",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 857,
+      "id": "st_thomas-historic-frederikalort",
+      "name": "Frederikalort",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 858,
+      "id": "st_thomas-point-frederiksberg-point",
+      "name": "Frederiksberg Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 859,
+      "id": "st_thomas-estate-frederikshaab",
+      "name": "Frederikshaab",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 863,
+      "id": "st_thomas-point-frederiksted-road",
+      "name": "Frederiksted Road",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."

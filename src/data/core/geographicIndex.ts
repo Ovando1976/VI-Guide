@@ -630,7 +630,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "AnguilJa Point; Shore turn, extended v4 mile by mangroTe peninsula, inclosing west side of Krause Lagoon, south conat of St. Croix. dnnaly Point; High, rounded projection, long. 64' 60' G5\", on east side of Annaly Bay, St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.700321192376997, "lng": -64.77482221435531 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-anguilla-point&island=st_croix&context=Anguilla%20Point",
       "map": "/map?q=Anguilla%20Point&island=st_croix"
@@ -1214,7 +1214,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Annaly School; On. Oxford Road, at foot of Oxford Ridge, west edge of",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75340474357545, "lng": -64.8533191452217 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-road-annaly-school&island=st_croix&context=Annaly%20School",
       "map": "/map?q=Annaly%20School&island=st_croix"
@@ -2083,7 +2083,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Battery Beach; Slight bight, 240 yards long, north of Battery Point, on west side of Hurricane Hole entrance, St. John. Called, by Oxholm and on H. 0. 2086, \"Battery B a y \"; a misnomer, as the indentation is imperceptible, the water shoaly and beset with rocks awash.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.344308, "lng": -64.702969 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-battery-beach&island=st_john&context=Battery%20Beach",
       "map": "/map?q=Battery%20Beach&island=st_john"
@@ -2930,7 +2930,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Lisenlund Hill; 314 feet high, 350 yards eoiith-southeast from Havensight Hill, and 940 yrirds froin Muhlenfels Point, St. Thonitis. Named for Estatehouse ou surninlt. --lawraure. Also called \" Bellevue Hill, \" on account of the lovely panoruma.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3265528432309, "lng": -64.9212594012035 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-point-bellevue-hill&island=st_thomas&context=Bellevue%20Hill",
       "map": "/map?q=Bellevue%20Hill&island=st_thomas"
@@ -3468,7 +3468,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bethesda Hill; 766 feet high, 580 yards northeast of Fortuna Hill, Westend Quarter, St. Thomas. -Map 3240; Lund.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3559062831591, "lng": -65.00835365155365 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-hill-bethesda-hill&island=st_thomas&context=Bethesda%20Hill",
       "map": "/map?q=Bethesda%20Hill&island=st_thomas"
@@ -3555,7 +3555,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Bethlehem Creek; Sources on south slope of Mount Eagle; course southsoutheast, chiefly through Bethlehem Estate; joins Jealousy Gut, which takes name \" Fairplain Creek, \" and empties into King Bay, at southwest corner of King Quarter, about long. 64\" 47' 18\". --Postroute map. Also called Uetlilehem Brek or Gut, Kingshill Gut.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.72016363432865, "lng": -64.7858009859371 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-bethlehem-gut&island=st_croix&context=Bethlehem%20Gut",
       "map": "/map?q=Bethlehem%20Gut&island=st_croix"
@@ -3584,7 +3584,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Bethlehem Hill; Ridge near Bethlehem New Works; summits, 220 and 159",
-    "coordinates": null,
+    "coordinates": { "lat": 17.72016363432865, "lng": -64.7858009859371 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-hill-bethlehem-hill&island=st_croix&context=Bethlehem%20Hill",
       "map": "/map?q=Bethlehem%20Hill&island=st_croix"
@@ -5117,7 +5117,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bolongo Bay; Oval opening, 300 yards wide, with beach and coconut grove, on east side of Coculus Point, long. 64' 53' 46\", south shore of St. Thomas. Identifled with \" Annadewint Bay \" of early Dutch charts, French, \" Bnye de la ReIne Anne \"; spelled by Rohde ' I Blungo Bay. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3175123332078, "lng": -64.89879745646965 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-bolongo-bay&island=st_thomas&context=Bolongo%20Bay",
       "map": "/map?q=Bolongo%20Bay&island=st_thomas"
@@ -5204,7 +5204,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bolongo Point; Rugged red bluff, 40 feet high, projecting from 70-foot ridge, east entrance of Bolongo Bay, St. Thomas.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3175123332078, "lng": -64.89879745646965 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-bolongo-point&island=st_thomas&context=Bolongo%20Point",
       "map": "/map?q=Bolongo%20Point&island=st_thomas"
@@ -5320,7 +5320,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bonne EspBrance Road; Continuation of Mosquito Bay Road, northwest; passing Brewers Bay, thence ascending ridge to junction with Westend Road and Bonne Esperance Estate, thence turnlng northeast to point a t 973 feet elevation, where Northside Road turns north and Crown Road southeast, St. Thomas. Less correctly, Bon Esperance Road. -T. 3770. The circuitous drive, from St. Thomas City, past Nlsky, Mosquito Bay, Brewers Bay, up the slope to Bonne Esperance, thence back eastward -- 42 of 215 GEOGRAPHIC DICTIONARY OF THE VIRGIN ISLANDS 39 around Northside, passing Santa Maria, Caretbay, Dorothea, Resolution, Solberg, and French Hill, affords a rich variety of scenery, with panoramas of the ocean and cays northward and eastward.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35446178282435, "lng": -64.9895367101718 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-bonne-espbrance-road&island=st_thomas&context=Bonne%20EspBrance%20Road",
       "map": "/map?q=Bonne%20EspBrance%20Road&island=st_thomas"
@@ -5472,7 +5472,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bonne Esperance; Estate on ridge a t 871 feet elevation, overlooking Perserverance Bay, 500 yards south-southwest, Westend Quarter, St. Thomas. B. A. Chart 2452; Hornbeck. Less correctly, Bon Espernnce. Spanlsh, I' Buena E#peranza. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35446178282435, "lng": -64.9895367101718 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bonne-esperance-estate&island=st_thomas&context=Bonne%20Esperance%20Estate",
       "map": "/map?q=Bonne%20Esperance%20Estate&island=st_thomas"
@@ -5885,7 +5885,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bordeaux Klyne Bay; Between Calvert Point and Bordeaux Bay, St. Thomas. See '' Petite Baye de Bordeaux \"; \" Petit-Bordeaux Bay. \" long. 65\" 00'",
-    "coordinates": null,
+    "coordinates": { "lat": 18.356590458506503, "lng": -65.01661868979055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-bordeaux-klyne-bay&island=st_thomas&context=Bordeaux%20Klyne%20Bay",
       "map": "/map?q=Bordeaux%20Klyne%20Bay&island=st_thomas"
@@ -5972,7 +5972,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bordeaux Point; 650 yards west of Bordeaux Bay, and 810 yards north of Bordeaux Hill, Westend Quarter, northern coast St. Thomas Island. -G. B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.356590458506503, "lng": -65.01661868979055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-bordeaux-point&island=st_thomas&context=Bordeaux%20Point",
       "map": "/map?q=Bordeaux%20Point&island=st_thomas"
@@ -6309,7 +6309,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Botany Point; Salient on northern side of Botany Bay, 1, 200 yards northenst of western end of St. Thomas 'Island. (Not Nordwest-Pent, Northwest, Pointe du Nordoueste, Target nor Westend). -G. B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35401195896805, "lng": -65.03347371262775 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-botany-point&island=st_thomas&context=Botany%20Point",
       "map": "/map?q=Botany%20Point&island=st_thomas"
@@ -6501,7 +6501,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bovoni Bay; R d n t r a n t angle of south coast, east of Bolongo Bay, St. Thomas. Zabriskie; T. 3778'. Also spelled Bovinibay, Bovonis-Bay.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3156803213225, "lng": -64.8845745482555 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-bovoni-bay&island=st_thomas&context=Bovoni%20Bay",
       "map": "/map?q=Bovoni%20Bay&island=st_thomas"
@@ -6984,7 +6984,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Brookhill; OId estate, at foot of 362-foot ridge, in soutll edge of present Jolly Hill Estate, Westend Quarter, St. Croix. Also, Brook Hill. -H. 0. 1423.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.727694, "lng": -64.859333 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-brookhill-estate&island=st_croix&context=Brookhill%20Estate",
       "map": "/map?q=Brookhill%20Estate&island=st_croix"
@@ -7054,7 +7054,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Brown Bay; Sheltered cove, 300 to 400 yards wide, 1 mile east of Leinster Point,. northern shore of St. John. 4. P. , p. 132. Brown's Bay, poseessive form, also used. By Oxholm named Brynes Bay, doubtless original form, and proper name, though \" Bryne \" in Danish also signifies '' Whetstone. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3614381274039, "lng": -64.7058491657759 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-brown-bay&island=st_john&context=Brown%20Bay",
       "map": "/map?q=Brown%20Bay&island=st_john"
@@ -7508,7 +7508,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Buck Island Bar; Extension of Buck Island Reef; coral bank sweeping around 1 mile north of Ruck Islitnd, St. Croix, forming beaklike spit, 1% miles long, east-west; shallow patches continuing southeastward 1% mI1es. H. 0. Publ. 129.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.786941147028898, "lng": -64.61931028889666 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-island-buck-island-bar&island=st_croix&context=Buck%20Island%20Bar",
       "map": "/map?q=Buck%20Island%20Bar&island=st_croix"
@@ -7868,7 +7868,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Bulow'a-Minde; Rulowminde Estate, St. Croix. Present usage, according to Lund.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.73924717655035, "lng": -64.72793560871304 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-bulowa-minde&island=st_croix&context=Bulow'a-Minde",
       "map": "/map?q=Bulow'a-Minde&island=st_croix"
@@ -8025,7 +8025,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Bulowsminde Hill; Hook-shaped ridge, 615 feet high, crowned by Bulowsminde mansion, 1% miles west of Christiansted, St. Croix. Old French name, '' Brunet. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 17.739247, "lng": -64.727936 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-hill-bulowsminde-hill&island=st_croix&context=Bulowsminde%20Hill",
       "map": "/map?q=Bulowsminde%20Hill&island=st_croix"
@@ -8269,7 +8269,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Butler'Bay; Cove, 160 yards wide, lat. 17\" 45' 20\", west coast of Northside A Quarter, St. Croix. 4. P. ; Map 3242. Also called '' I%utler'sBay; \" and by the early French, \"Anse a Galet \" (Gravel Cove). -I,.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.753232112647552, "lng": -64.87980189785985 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-butler-bay&island=st_croix&context=Butler%20Bay",
       "map": "/map?q=Butler%20Bay&island=st_croix"
@@ -8327,7 +8327,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Red Point; Huggrd red cliff, 40 to SO feet high, formlng salient at southern end 02 Cabritaberg Promontory, 218 feet high, western enclosure of Mosquito Bay, Southside Quarter, St. Thomas. -Dau. SO; U. A. 2432. Spanish, Punta Roja; early Dutch name, \" Leeger punt van Moschiete b a y \" (Lower Point of Mosquito Bay); also known as Csbritaberg Point, q. v.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.753232112647552, "lng": -64.87980189785985 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-butler-point&island=st_croix&context=Butler%20Point",
       "map": "/map?q=Butler%20Point&island=st_croix"
@@ -9187,7 +9187,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Caledonia Gut; Stream draining Caledonia Valley; a l w the valley itself; Northside A Quarter, St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.76172242200235, "lng": -64.86961726911215 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-gut-caledonia-gut&island=st_croix&context=Caledonia%20Gut",
       "map": "/map?q=Caledonia%20Gut&island=st_croix"
@@ -9216,7 +9216,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Caledonia Hill; 656 feet high, $OR north aide of Cakdonh Valley, and H mile south of Ham Bluff, St. Croix. See Horae Hill. .",
-    "coordinates": null,
+    "coordinates": { "lat": 17.76172242200235, "lng": -64.86961726911215 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-hill-caledonia-hill&island=st_croix&context=Caledonia%20Hill",
       "map": "/map?q=Caledonia%20Hill&island=st_croix"
@@ -10348,7 +10348,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Historic estate ruins in the Caneel Bay area.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.34305825172645, "lng": -64.7874874960091 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-plantation-ruins-caneel-bay-ruins&island=st_john&context=Caneel%20Bay%20Ruins",
       "map": "/map?q=Caneel%20Bay%20Ruins&island=st_john"
@@ -10377,7 +10377,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Kaneel Hill; 718 feet high; lat. 1s\" 20' 20. 5\" (630. 6 in. ), long, 64\" 47' 1. 44'' (422. 3 m. ); 600 yards south of Durloe Bay, and s/s mile east of Lint1 l'oint, Oruz Thy Quarter, St. John Island. F r o m Lhitch '' lCisileel, \" 1)rinixh \" I h ~ e l, \"meaning cinnamon; compoundrd with 'I Rerg, \" or \" Jljerg, \" meaning Hill, \" Kaneelberg, \" \" Kanelbjerg, \" (Cinn:inion Hill). Purloe Hay and the adjarent Estate were commoiily cvilled by a variety of na~iies, signifying \" Little Cinnamon \" Bay. Kfinec. 1 is often spellcd C'tinoel, Init this is less correct, and less easy to dfstlngulsh froin Camelberg, 2% miles east. The Creole natives have corrupted the name into Onnee. Name In most frequent local use is John-Solomon Hill. Salomon Ihiy, at uorlhwest foot, 600 yards from suinniit. The Point at foot of Kaneel H i l l and *% mile northwest of its summit, Is a shore-angle, marked by ?O-fwt blud on south side of Durloe Bay. by West.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.34305825172645, "lng": -64.7874874960091 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-hill-caneel-hill&island=st_john&context=Caneel%20Hill",
       "map": "/map?q=Caneel%20Hill&island=st_john"
@@ -10493,7 +10493,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Canegarden Bay; 1 mile wide, forming irregular crescent in south shore of St. Croix to west of Vagthus Point.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.707521, "lng": -64.727444 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-canegarden-bay&island=st_croix&context=Canegarden%20Bay",
       "map": "/map?q=Canegarden%20Bay&island=st_croix"
@@ -11155,7 +11155,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Caret Point; Rocky prominence on east side of Caret Bay, marked by semidetached 5-foot rock, lat. 18' 22' 889 m. ; long. 64' 58' 1, 885 m. ; with 286-foot hill 300 yards southeast, north shore Of St. Thomas. Called by Van Keulen, Carrett bay punt. --(f. B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36457293689035, "lng": -64.97608543520525 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-caret-point&island=st_thomas&context=Caret%20Point",
       "map": "/map?q=Caret%20Point&island=st_thomas"
@@ -11213,7 +11213,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Caretbay Gut; Torrentbed, '/a mile long, draining northwest into Caret Bay, north shore of St. Thomas. -Eggers, p. 117.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36457293689035, "lng": -64.97608543520525 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-caretbay-gut&island=st_thomas&context=Caretbay%20Gut",
       "map": "/map?q=Caretbay%20Gut&island=st_thomas"
@@ -11655,7 +11655,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Caroline; Carolina Estate, St. John. -Oxholm; Dewitz.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.34652014852835, "lng": -64.72762843003869 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-caroline&island=st_john&context=Caroline",
       "map": "/map?q=Caroline&island=st_john"
@@ -11887,7 +11887,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Carty; Estate of Madame Carty. formerly western portion of plantation of Darby Carty, on shore of Rod Bay; tract 14, Eastend B Quarter, south mast of St. Croix. -Oxholm; H. 0. 1423. On shore of Carty estate is a oonepicuoue point or projecting bluff, rising to 76-foot knoll, about middle of shore of Bod Bay. , CarVal Rock; Islet, 67 feet hlgh, 65 yards long, area 64 square rods; lat. 18' 22' l. 8\" (550 m. ); long. 64' 47' 41\" (1, 198 m. ); 440 yard6 eastward of",
-    "coordinates": null,
+    "coordinates": { "lat": 17.739492713680953, "lng": -64.61703701918981 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-carty&island=st_croix&context=Carty",
       "map": "/map?q=Carty&island=st_croix"
@@ -11916,7 +11916,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Carty Bay; 600 yards wide, with curving beach of sanl and shingle; being the eastern portion of Rod Bay, between Carty Point and Grass Point, south coast of St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.739492713680953, "lng": -64.61703701918981 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-carty-bay&island=st_croix&context=Carty%20Bay",
       "map": "/map?q=Carty%20Bay&island=st_croix"
@@ -11945,7 +11945,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Carty Point; Outstanding knoll, long. 64\" 36' 58\", between Carts B a y and Woodcottage Bay, subdivisions of Bod Bay, on Carty Hartate, south coast of St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.739492713680953, "lng": -64.61703701918981 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-carty-point&island=st_croix&context=Carty%20Point",
       "map": "/map?q=Carty%20Point&island=st_croix"
@@ -13720,7 +13720,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Research lead for historic maps showing Charlotte Amalie harbor, fortifications, waterfront, roads, and town structure.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3419, "lng": -64.9307 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-archive-record-charlotte-amalie-harbor-historic-maps&island=st_thomas&context=Charlotte%20Amalie%20Harbor%20Historic%20Maps",
       "map": "/map?q=Charlotte%20Amalie%20Harbor%20Historic%20Maps&island=st_thomas"
@@ -14383,7 +14383,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Research lead for records connected to Christiansted government, harbor administration, customs, military buildings, and town planning.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7438319621595, "lng": -64.70310604223886 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-archive-record-christiansted-government-and-harbor-records&island=st_croix&context=Christiansted%20Government%20and%20Harbor%20Records",
       "map": "/map?q=Christiansted%20Government%20and%20Harbor%20Records&island=st_croix"
@@ -14412,7 +14412,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Christiansted Harbor; Main basin 1% miles wide, sheltered on north by Long Reef. Situated 10 miles east of Ham Bluff, 794 miles west of East Point, St. Croix. In Danish called, \" Christlanssted Havn \" or '' Christiansteds H a m \"; popularly, '' Bassin Harbor \"; from the early French name (1761), Le Bassin, or Bassin, meaning a harbor basin. Described in \"Port0 Rico and Virgin Islands Coast Pilot, \" pp. 137-8. The inter-island packet, Vigilant, built in 1802 for a Danlsh privateer, defeated a Spanish gunboat, turned slaveship, sank in the 1916 hurricane, was raised and retimbered. In 1921 a preliminary examination of the harbor was made by the United States Corps of Engineers.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7438319621595, "lng": -64.70310604223886 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-christiansted-harbor&island=st_croix&context=Christiansted%20Harbor",
       "map": "/map?q=Christiansted%20Harbor&island=st_croix"
@@ -14652,7 +14652,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Research lead for archival records connected to Cinnamon Bay plantation, land use, estate labor, and later archaeological interpretation.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3566, "lng": -64.7582 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-archive-record-cinnamon-bay-plantation-and-archaeology-records&island=st_john&context=Cinnamon%20Bay%20Plantation%20and%20Archaeology%20Records",
       "map": "/map?q=Cinnamon%20Bay%20Plantation%20and%20Archaeology%20Records&island=st_john"
@@ -14681,7 +14681,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Cinnamon Bay Road; Same as Klein Cinnamon Road, St. John. -T. 3779.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3566, "lng": -64.7582 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-cinnamon-bay-road&island=st_john&context=Cinnamon%20Bay%20Road",
       "map": "/map?q=Cinnamon%20Bay%20Road&island=st_john"
@@ -15424,7 +15424,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Coculus Bay; Small bight on south shore of St. Thomas Island, just west of",
-    "coordinates": null,
+    "coordinates": { "lat": 18.31372200975455, "lng": -64.8648698763188 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-coculus-bay&island=st_thomas&context=Coculus%20Bay",
       "map": "/map?q=Coculus%20Bay&island=st_thomas"
@@ -15453,7 +15453,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Coculus Point; Bold, flattopped bluff salient, 77 feet high, southwest side of Bolongo Bay: 1. 6 miles east-southeast of Muhlenfels Point; and 24bd yards w&t-horthwest of Sthlley's Long Point, French-Bay Quarter, St. Thomas. a. P. \"Cocul. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.31372200975455, "lng": -64.8648698763188 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-coculus-point&island=st_thomas&context=Coculus%20Point",
       "map": "/map?q=Coculus%20Point&island=st_thomas"
@@ -16162,7 +16162,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Concordia Hill; 126 feet high, 275 yards north of Concordia or Zoutpan Bay, near southernmost turn of Southside Road, Coral Bay Quarter, St. John.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.30740743739495, "lng": -64.70375086625529 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-concordia-hill&island=st_john&context=Concordia%20Hill",
       "map": "/map?q=Concordia%20Hill&island=st_john"
@@ -16377,7 +16377,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Conoordia; BlstaCe 900 to 1, OOO yards northeast of Hiddle Point and near northkrnmost turn of Concordia Bay, southeast part of St. John Island. Not shown on recent survey by C. & G. S. (T. 3783), but Saltpond Estate. q. v. , only 27c, ynrds north of bay, on nearest hill, doubtless is identical.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.30740743739495, "lng": -64.70375086625529 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-conoordia&island=st_john&context=Conoordia",
       "map": "/map?q=Conoordia&island=st_john"
@@ -16681,7 +16681,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Contant Hill; 334 feet high, let. 18\" 19' 32. 74\" (1, 007 m. ), long. 84\" 47' 87. 63\" (1, 102 m. ), 1/9 mile southeast of Contant Estate, % mile north of Contant Point. G. P. , \" F l a g f@. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.34442312704015, "lng": -64.95865161016525 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-contant-hill&island=st_thomas&context=Contant%20Hill",
       "map": "/map?q=Contant%20Hill&island=st_thomas"
@@ -16983,7 +16983,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Cooper Bay; Estate 52, south shore of Prince Quarter, St. Croix. I n 1754 belonged to heirs of Alexander Cooper, whenee name; also called \"Montpellier. \" Sugar cane and pasture. I n 1851, still owned by Cooper family, and called '' Lower Negro Bay. \"--Scorpkw.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.6951962167965, "lng": -64.8094797486572 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-cooper-bay&island=st_croix&context=Cooper%20Bay",
       "map": "/map?q=Cooper%20Bay&island=st_croix"
@@ -18622,7 +18622,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Crown Bay; Cove on south shore of St. Thomas, northwest of Careen Hill.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3516443841391, "lng": -64.97518249799175 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-crown-bay&island=st_thomas&context=Crown%20Bay",
       "map": "/map?q=Crown%20Bay&island=st_thomas"
@@ -20453,7 +20453,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Dog-Island Cut; Boat-passage, 440 yard4 wide, with 1Ih-fatliom rock in middle, between Little St. James Island and Dog Island. Called in the Derrotero, ''El Freu de la Isla del I'crro. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.2961806253714, "lng": -64.8159807710881 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-island-dog-island-cut&island=st_thomas&context=Dog-Island%20Cut",
       "map": "/map?q=Dog-Island%20Cut&island=st_thomas"
@@ -20668,7 +20668,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Donoe Hill; 308 feet high, just in rear of Donoe Esttite, :KM) yards north of Tutu Iload, New Quarter, St. Thomas. -T. 3771. L)orlo h u, ' \\'* r'itirit of IJiirloe Bay, St. iolllt. -Oltlcndorg. 1). 46, spells i t \"Dorlobay. \" Sp:mish, Piedra del Perro. -- 70 of 215 GEOGRAPHIC] DICTIONARY OF THE VIRGIN ISLANDS 67",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3360307539689, "lng": -64.90137070522624 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-donoe-hill&island=st_thomas&context=Donoe%20Hill",
       "map": "/map?q=Donoe%20Hill&island=st_thomas"
@@ -20773,7 +20773,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Dorothea Bay; 400 ynrtls wide, betwrerl hrothea ant1 Huy I'oints, long. 61\" 57' 45\" W. , north coast of St. Thomas. Originally called \"IIammert R:iy, \" q. v. -7'. 3773 and D. R. ; G. B. , 3-2-21; C. P. , p. 118.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36245597302735, "lng": -64.96542702087879 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-dorothea-bay&island=st_thomas&context=Dorothea%20Bay",
       "map": "/map?q=Dorothea%20Bay&island=st_thomas"
@@ -20802,7 +20802,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Dorothea Point; Sharp projection between Dorothea Bay and IIull Ihty, L'ittle Nortlihidt~(>nxrtcr, St. Thomas. Local name. Fornierlv called '' Lammert Point. \"--G. B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36245597302735, "lng": -64.96542702087879 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-dorothea-point&island=st_thomas&context=Dorothea%20Point",
       "map": "/map?q=Dorothea%20Point&island=st_thomas"
@@ -22718,7 +22718,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Elizabeth Hill; South of Mngcns Rny, near Misgen, St. Thomas. -Holst.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35136065410805, "lng": -64.93523180616941 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-hill-elizabeth-hill&island=st_thomas&context=Elizabeth%20Hill",
       "map": "/map?q=Elizabeth%20Hill&island=st_thomas"
@@ -24231,7 +24231,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Bareham Bay; l / r mile wide, fronting Fareham BstaQ, Bk Crolr. Fla@nff Hill; 554 feet high, 1 mile aoutb of Black Point, and 5$1 mlle northeast of Mt. Washington, in Sevenhilt Range, St. Crois. Q. P. : \"Pole. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 17.719078631969403, "lng": -64.6706772295901 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-fareham-bay&island=st_croix&context=Fareham%20Bay",
       "map": "/map?q=Fareham%20Bay&island=st_croix"
@@ -25096,7 +25096,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Flat Cay; 1, :irger of h'lnt Cays. Also called Rig Firit, Isle I'late, Plzit, li'l'lnd. H n ~ o. Cr. E'. , \" Wit \"; Int. 18\" 19' 152 m. , long. 64\" 59' 724 m. ; on top o f a Itrrge slab of wenthm-worn rock, which runs f r t m the middle of the islrind to the cliff tit tht. south eiid. -D. Sta. No. 116. mile northetist of S t i l i a (':is. Ilaso or Big E'lnt, the larger, is 220 yards long, 32 feet high. area 2. 80 acres; the smaller, Itasito or Little Flat, i s 11 feet hlgh, 57 ytrrds long, tirea 0. 34 ticrcs; tokyther, 3. 27 acre8. Called by V:in Kt~nlen, Plat",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3176615035053, "lng": -64.9888146529801 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-island-flat-cay&island=st_thomas&context=Flat%20Cay",
       "map": "/map?q=Flat%20Cay&island=st_thomas"
@@ -25390,7 +25390,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Research lead for records connected to Fort Christian, colonial administration, military command, prison use, and harbor defense.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3416, "lng": -64.9307 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-archive-record-fort-christian-administrative-and-military-records&island=st_thomas&context=Fort%20Christian%20Administrative%20and%20Military%20Records",
       "map": "/map?q=Fort%20Christian%20Administrative%20and%20Military%20Records&island=st_thomas"
@@ -25483,7 +25483,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Research lead for Fort Frederik, Frederiksted harbor, colonial authority, and records connected to emancipation history.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7125, "lng": -64.8842 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-archive-record-fort-frederik-and-emancipation-records&island=st_croix&context=Fort%20Frederik%20and%20Emancipation%20Records",
       "map": "/map?q=Fort%20Frederik%20and%20Emancipation%20Records&island=st_croix"
@@ -25741,7 +25741,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Fortuna Bay; 1, 280 yards wide, consisting of two small grnvrlly hags, between David and Lucttq Points, south coast of St. Thomns. Nattepm Rag on the west is 340 yards wide. Harkcfall or Krohhepan 13ay on the cast is 400 yards wide. Krabbepan Point, separating the two, is hroad and rocky, frtced by 11 200-font preclpire, nnd crowned by a 3M-foot crag. -T. 3770;",
-    "coordinates": null,
+    "coordinates": { "lat": 18.34910707085145, "lng": -65.0142865514324 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-fortuna-bay&island=st_thomas&context=Fortuna%20Bay",
       "map": "/map?q=Fortuna%20Bay&island=st_thomas"
@@ -26985,7 +26985,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "French Bay; 1h nrilc widr, 1 mile east-southeast of Miihlenfels l'oint, south coast of St. Thomas Island. (Not Francaise, E'ransknuind, Frunsmrins. Pi*enc~hmnn, nor Dirk 8 n I o m o n. ) 4. E. Spnnish, \" I h l i i n de 11)s Franceses. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.31958030255245, "lng": -64.9084111427579 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-french-bay&island=st_thomas&context=French%20Bay",
       "map": "/map?q=French%20Bay&island=st_thomas"
@@ -27043,7 +27043,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "French Bay Road; 1, eavrc: IC:& Road ?& mile soufI~f~rist of' IIritwsiglit l'oint. ant1 rsttw(ls ::, :NO yartls souttiwsl to Frencah lhi. t'--'l'. :3771. (?!tipella cay^ tire attricliecl to t h ' x Qii:irter. -- 84 of 215 GECGIL4PII[C DICTIONARY OF THE VIRGIN ISLANDS 81: FrCtZClkR0v Stock-T:nfnte; same ns Frenc~lilxiy, St. Thomas, (1. v. --R. A. 215%",
-    "coordinates": null,
+    "coordinates": { "lat": 18.31958030255245, "lng": -64.9084111427579 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-french-bay-road&island=st_thomas&context=French%20Bay%20Road",
       "map": "/map?q=French%20Bay%20Road&island=st_thomas"
@@ -27952,7 +27952,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "George Hill; 86. 2 feet high. 1% miles enst-northeast of Frederiksted, on tract 26, Robe Hill Estate, Westend Quarter, St. Croix. -Dan. 80. Also called St. George Hill, o r Signal Hill. G. I>. ; h t. 17\" 43' 16. 54\" (GO9 m. ), long. 64\" 51' 24. 47\" (721 m. ).",
-    "coordinates": null,
+    "coordinates": { "lat": 17.717219913956598, "lng": -64.85465839096796 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-george-hill&island=st_croix&context=George%20Hill",
       "map": "/map?q=George%20Hill&island=st_croix"
@@ -29722,7 +29722,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bordeaum ffroote B a y; Dutch, meaning \"Bordeaux Grent Bay\"; same its Rordeaux Bay, St. Thomas. -K. Rendered into French as \" Grande Baye de Bordeaux. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 18.356590458506503, "lng": -65.01661868979055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-great-bordeaux-bay&island=st_thomas&context=Great%20Bordeaux%20Bay",
       "map": "/map?q=Great%20Bordeaux%20Bay&island=st_thomas"
@@ -29908,7 +29908,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Great Lameshur Bay; 500 yards wid(', 700 yartls long, enqternmost and largest arm of 1, nmerhur Thy, q. v. . affordin:: good shelter in 6 fathoms, 400 yards offshore, under lee of ('abritnhorn Point. with Ram Head shut i n; St. John. -H. 0. Publ. 129. Called also, (3roote Lameshuur B a y;",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3215083872189, "lng": -64.72235457397085 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-great-lameshur-bay&island=st_john&context=Great%20Lameshur%20Bay",
       "map": "/map?q=Great%20Lameshur%20Bay&island=st_john"
@@ -30066,7 +30066,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Anee de l'Eetanfl; French, \" B a y of the P o n d \"; answering to Great Pond Bay, south coast, Eastend €3 Quarter, St. Croix. -Lapointe. Spanish, \" Ensenada del Estanque Grande. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 17.72774285576095, "lng": -64.6486757604458 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-great-pond-bay&island=st_croix&context=Great%20Pond%20Bay",
       "map": "/map?q=Great%20Pond%20Bay&island=st_croix"
@@ -30124,7 +30124,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Great Saint James; Island, urea 156. 9 cicres, highest siiniinit 178 fect. 1eii~::lh 1 m i k, off enRtern extremity of St. Thomns Island. Tile nlterncitive i i n i i i ( ~ s m e 1111 trrinsinticlns : (Dutch), Groot St. Jems; (Gernirin) Gross St. Jairic. s; (Danish) Store St. James; (French) Grand S. Jainrr : ( Hprinish) Santiago Grande. Also called simply, Saint Janirs Island. --€I. 0. 3903; ?)an. 206. Gives nnme to Greatpond Estate and Grcnt Pond Day.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3105321364764, "lng": -64.8291316641308 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-great-saint-james&island=st_thomas&context=Great%20Saint%20James",
       "map": "/map?q=Great%20Saint%20James&island=st_thomas"
@@ -30334,7 +30334,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Greencay; Estate in ICastend A Quarter, St. Croix, on north coast, between C'henay Rny nntl Prune Bay, inr*luding tract 14, patented to Pirter Heyliger, with some accretions, 48, 12. -Map 3242. Danish, Gr$nkay, Q rj4n key. Orcenrvv & I ~ J; Translation of GrGnkeyba) en, or Grlinkeyhay.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7590180643778, "lng": -64.6571138576055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-greencay&island=st_croix&context=Greencay",
       "map": "/map?q=Greencay&island=st_croix"
@@ -30840,7 +30840,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Groveplace; Estate, 20 and 21 (village on h t t e r ), in tentral portion of Prince Quarter, St. Croix. Part of John Baker's plantation. Chiefly a sloping plain, wnlrretl by two streams, traversed and bordered by main rontlr. I'lnntctl with small patches of cane, with grass and provisions; squ:ittcrs' kind; p:isture. -Oxholm; T. 3798. Plaskct's Ustate ( l Y; i l ), including 1Iardl:ibor. a r u y r u or Origri; Variant sprllingx of Gerigcri, Gigiri, Gregeng, Gregcqy, etc.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.730883867683502, "lng": -64.8230564385662 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-groveplace&island=st_croix&context=Groveplace",
       "map": "/map?q=Groveplace&island=st_croix"
@@ -32532,7 +32532,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Hassel Island; About 1 mile long, 170 to 6. 50 yiirds wick, 207 feet high, area 13954 a c w x, or including 3 shore rocks 139. 7 awes; forming western side of St. Thomas Hzirbor. Also known as Orknnshullet IHland.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3358, "lng": -64.9393 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-island-hassel-island&island=st_thomas&context=Hassel%20Island",
       "map": "/map?q=Hassel%20Island&island=st_thomas"
@@ -32634,7 +32634,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Research lead for records related to Hassel Island, harbor defenses, batteries, marine railway, shipping, and military infrastructure.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3358, "lng": -64.9393 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-archive-record-hassel-island-maritime-and-military-records&island=st_thomas&context=Hassel%20Island%20Maritime%20and%20Military%20Records",
       "map": "/map?q=Hassel%20Island%20Maritime%20and%20Military%20Records&island=st_thomas"
@@ -32878,7 +32878,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Havenbight; Ebtste, on 185-foot hill, on east side of St. Thonias Harbor, tit which i t comniends a wide view. Dauish, \" 1I:tvnsii:te \" siguifies '' Nnrborviciw. \" Spelled by llohde, IIavensigt. -Dan. S O; Pr. 2312; U. A. 2183, 2452. northwest of IIatcnsiglit Estatehouse. BI:irkecl by IIiivelisigbt Wot~tljetty. -€1. 0. Publ. 129, pp. (2-3; B. A. 21S3: Der.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3297646929236, "lng": -64.92094811684731 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-havenbight&island=st_thomas&context=Havenbight",
       "map": "/map?q=Havenbight&island=st_thomas"
@@ -32948,7 +32948,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Havensight Point; On east sliorc of St. Thomas lliirbor, 400 yurtls",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3297646929236, "lng": -64.92094811684731 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-point-havensight-point&island=st_thomas&context=Havensight%20Point",
       "map": "/map?q=Havensight%20Point&island=st_thomas"
@@ -34220,7 +34220,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Honduras Hill or Gallows Hill; Knoll, 77 feet high, on isthinus north of Careen Hill, separating St. Thomas Harbor from Crowir Bay. So culled in Lightbourn's Annual, 1921, p. 63.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3364577625297, "lng": -64.94284931506209 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-honduras-hill-or-gallows-hill&island=st_thomas&context=Honduras%20Hill%20or%20Gallows%20Hill",
       "map": "/map?q=Honduras%20Hill%20or%20Gallows%20Hill&island=st_thomas"
@@ -36168,7 +36168,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Isaac Point; Bend of 60-foot Bluff, crowned hg 100-foot Knoll, at west side of Isaac Bay, 1, 620 yards southwest of East Point, on south coast of St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7501568067893, "lng": -64.5768382164355 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-isaac-point&island=st_croix&context=Isaac%20Point",
       "map": "/map?q=Isaac%20Point&island=st_croix"
@@ -37852,7 +37852,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Johns Folly Bay; 300 yards wide, but constricted by coral reel's on both sides to nvailuble entrance of 50 yards, midway between Stihbat Point and Nanny Point, southeast shore of St. John I. Low1 name. -C'. P. Called by Oxholm, E'riises LIay; in Danish orthography, l'ryse, nieiiniiig Preezc; but probably a proper name, spelled by Dewitr, Fries; also ~irobtiblyinislocated. since recent surveys place Iq'reeze Bay y2 ruile fnrther i)ortli.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3193581313445, "lng": -64.70304523695961 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-johns-folly-bay&island=st_john&context=Johns%20Folly%20Bay",
       "map": "/map?q=Johns%20Folly%20Bay&island=st_john"
@@ -38154,7 +38154,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Judith Point; (:. I?. ou salient jutting out L?O yards from trend nf shore a t Judith's Fancy Estate, 1, 600 yltrda southeast of Saltriver Point, north -- 105 of 215 102 U. S. COAST AND QEODETIC SURVEY coast of St. Croix. Formed by !%-foot pinnacle hill of shale, with 90-foot perpendicular cliff of black basalt on north side.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7749468067485, "lng": -64.7456709954797 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-judith-point&island=st_croix&context=Judith%20Point",
       "map": "/map?q=Judith%20Point&island=st_croix"
@@ -38990,7 +38990,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Kermon Hill; Estate, almost coextensive with old Lillie plantation, No. 11 in Company Quarter, St. Croix; tract L-shaped, extending east to Signal",
-    "coordinates": null,
+    "coordinates": { "lat": 17.73418300782975, "lng": -64.71072853406909 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-kermon-hill&island=st_croix&context=Kermon%20Hill",
       "map": "/map?q=Kermon%20Hill&island=st_croix"
@@ -39798,7 +39798,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Klein Cane Bay; German name of Little Cane Bay o r Lavallee Bay, St. Croix. -Old.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.702682157254202, "lng": -64.84359059453385 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-klein-cane-bay&island=st_croix&context=Klein%20Cane%20Bay",
       "map": "/map?q=Klein%20Cane%20Bay&island=st_croix"
@@ -39827,7 +39827,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Klein Cinnamon Road; 1/2 mile long, joining Northside Road and Centerllne Road, east of Klein Cinnamon Estate. Also called, K. C. Iload, Cinnamon Bay Iload, etc. ; in Cruz Bay Quarter, St. John. -T. 3779 DR.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.353326015201148, "lng": -64.75360517385684 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-klein-cinnamon-road&island=st_john&context=Klein%20Cinnamon%20Road",
       "map": "/map?q=Klein%20Cinnamon%20Road&island=st_john"
@@ -42147,7 +42147,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Lagrange; Large Estate, adjacent to Frederiksted on east, extending along west coast 700 yards; separated by Mahogany Road from Prosperity Estate on north; adjoining Little Grange and Frederikshaab on east, and Wheelof-Fortune on south. Lagrange occupies the equivalent of 4% tracts; approximate area, 1 square mile; 6, 000 by 4, 500 Danish feet in extent; most of which is a wide, well-watered plain, planted in sugar cane. Spurs of 3 ridges cross errst mnrqin. Estate village, \"great house\" ant1 inill, lh mile northeast of Frederiksted, with road ?& mile long leading to wharf on shore of Westend Day, St. Croix. Called by Beck, \"Plantagie la Grange \"; by L. C W. , \" The Grange \"; on H. 0. 1423, \" La Grange. \"",
-    "coordinates": null,
+    "coordinates": { "lat": 17.71823717741445, "lng": -64.87445690853116 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-lagrange&island=st_croix&context=Lagrange",
       "map": "/map?q=Lagrange&island=st_croix"
@@ -42350,7 +42350,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Lameshur; Estate, with Mornvlan Mission school, bay-oil still, lime-juice still, landing, well, etc. , a t head of Little Lameshur Bay, St. John. Bay twea and lime trees both grow wild. Estate house and flagstaff overlook lxiy from elevation of 200 feet, on shoulder of ridge or spur from the Hordedux Mountains. lat. 18' 18' 58\" (1, 784m. ), , long. 64' 43' 57\" (1, 683 ni. ). G. B. Nanie signifir'; \" Lemon-shore \" or \" Limeflhore. \"-liolst. 13y mistaken etymologies, converted into French \" 1, a Mcsure \" (the hlensurc), or 'I La Rlnsure\" (the old shack).",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3215083872189, "lng": -64.72235457397085 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-lameshur&island=st_john&context=Lameshur",
       "map": "/map?q=Lameshur&island=st_john"
@@ -42379,7 +42379,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Lameshur Bay; T>wp triple indentation on south const of St. John, between",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3215083872189, "lng": -64.72235457397085 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-lameshur-bay&island=st_john&context=Lameshur%20Bay",
       "map": "/map?q=Lameshur%20Bay&island=st_john"
@@ -42478,7 +42478,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Plantation-era ruin landscape on the south side of St. John.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3215083872189, "lng": -64.72235457397085 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-plantation-ruins-lameshur-plantation&island=st_john&context=Lameshur%20Plantation",
       "map": "/map?q=Lameshur%20Plantation&island=st_john"
@@ -42809,7 +42809,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Lareine; Estate, comprisinq tract 20 in Iiiiig Quarter with 103 in (Jnren Quarter, iiorth of Ceiiterlille Road, St. Croiu. French nunie, also hlN'lled, \" La Itpine, \" meaniug \" the Queen. \" I'm. 1 of the Estate- of 1:m'oii VOII Priik. Hills in northeast and south cavered with grass aotl trees: rem:iittder, sngnr platitxi ion. St. Croix. I'rirtcesa Gnintle. Ci~ix. --I'. D. J. ; TA Rr W. I; r c w i n c Bnlike; 1, nrcinr Hill, St. Croix. --li:ggers,",
-    "coordinates": null,
+    "coordinates": { "lat": 17.73398053250315, "lng": -64.7709332398327 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-lareine&island=st_croix&context=Lareine",
       "map": "/map?q=Lareine&island=st_croix"
@@ -43457,7 +43457,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Historic estate ruins near Leinster Bay.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36092071796525, "lng": -64.71843131202445 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-plantation-ruins-leinster-bay-ruins&island=st_john&context=Leinster%20Bay%20Ruins",
       "map": "/map?q=Leinster%20Bay%20Ruins&island=st_john"
@@ -43486,7 +43486,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Leinster Hill; 477 feet high, 325 yards from northern coast a t Threudneedle Point, St. John. lat. 18\" 21' 59. 84\" (1839. 7). long. 64\" 42' 47\" (1, 378 m. ). -T. 3783, D. R.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.36092071796525, "lng": -64.71843131202445 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-point-leinster-hill&island=st_john&context=Leinster%20Hill",
       "map": "/map?q=Leinster%20Hill&island=st_john"
@@ -43602,7 +43602,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Lerken Bay; Sinal1 bight or cove, on southwestern shore of Magens Bay, 550 yards northeast of Lerkenlund Hill and Estate, and '/z mile southeast of Tropaco Point, northern coast of St. Thomas. 4. B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35975098547915, "lng": -64.94000561367716 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-lerken-bay&island=st_thomas&context=Lerken%20Bay",
       "map": "/map?q=Lerken%20Bay&island=st_thomas"
@@ -44864,7 +44864,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Pc22t-Bqrdeaux Rail; See Bordeaux Klyne Bay. French name of Little Bordeaux Bay, St. ~, o ~ a s. - B e l l i n.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.356590458506503, "lng": -65.01661868979055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-little-bordeaux-bay&island=st_thomas&context=Little%20Bordeaux%20Bay",
       "map": "/map?q=Little%20Bordeaux%20Bay&island=st_thomas"
@@ -45149,7 +45149,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Mount Pleasant; Estate, 36 and 37, on south side of Centerline Road, Prince Qr. , St. Croix. Buildings on northwest slope of grassy hill, so-called, 4 miles east of Frederiksted. Tract 37 was Irwin's plantation, patented to Andreis Irvin. N. Jb of 36 belonged (1'7M) to Smith and Cunningham, remainder to \" Will. Ravensk. \"-Oxholm; D. Bounded north by Plessen, east by Adventure, south by Paradise, weat by (Big) Diamond Corn p:itch ( 525 yards square in southwest comer; remainder, except hill, in sugar cane, United to Plessen, as Qrant Estates. +fountPleasant; Mount Victory Estate, St. Urolx. --& 0. lrlw. ~ o u l a tPleasant; Testman's '' Little Fountain \" Estate, 11Northeide B Quarter, Yount Pleasant (Colquohoun) : Same a8 Colquohoun Mt. Pleasant, Q. v. , St.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75211989177615, "lng": -64.8266436496026 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-little-fountain-hill&island=st_croix&context=Little%20Fountain%20Hill",
       "map": "/map?q=Little%20Fountain%20Hill&island=st_croix"
@@ -45207,7 +45207,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Augustti; 400 y i ~ r d soff north coast of St. Croix. Cay rises in 2 knolls; southern 65 feet high; northern, G. P. \" Green \" knoll, 60 feet high, Iat. 17\" 46' 12. 2\" (375 m. ), long. 64\" 39' 5533'' (1630 in. ). North and northeast points are clearing marks, leading east of Scotch Bank. French mime, Ile Vrrte (confnwd with Bnrk Island); Spanish, Cnyo Vertle; Dutch, Groen Ryland; German, Griin K a y; Danish, Ordn Key. Alqo cnllecl 1, ittle Green Key.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7590180643778, "lng": -64.6571138576055 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-point-little-green-cay&island=st_croix&context=Little%20Green%20Cay",
       "map": "/map?q=Little%20Green%20Cay&island=st_croix"
@@ -45236,7 +45236,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Little Hans-Lollik; Island, 217 feet high, 1, oOO ynrds long, 700 yards \\vide; area 100. 48 ncres, to which ndd 19 square rods for S t e m Rock on east, and 140 square rmis for 1, edge nwiish on northeast. The Island lies 310 yrirtls north of Hnns-Lollik, to which i t is jolncti b y a corn1 ledge; i n 2% miles northeast of Picarn Point, and 3% miles west-wuthwect of Little Tohago. -Mnp 3240. Other nanies a r e tmnslntlons : l)unlsli, Lille lhnNlO1lik; Spanish, Isla Ohica de Hans-IdIik; German, ICleIn IIrinsLolk.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.409622883251153, "lng": -64.90668228034755 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-point-little-hans-lollik&island=st_thomas&context=Little%20Hans-Lollik",
       "map": "/map?q=Little%20Hans-Lollik&island=st_thomas"
@@ -45620,7 +45620,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Little Plantation; Estate in St. J a n (St. John). -Eggers, p. 102.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.338279674410302, "lng": -64.7164700652325 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-little-plantation&island=st_john&context=Little%20Plantation",
       "map": "/map?q=Little%20Plantation&island=st_john"
@@ -45690,7 +45690,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Little Princeasa; Same as Little Princess Estate, St. Croix. -L. BE W. Spelled by Oxholm, Little Princesse.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.753763, "lng": -64.726016 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-little-princeasa&island=st_croix&context=Little%20Princeasa",
       "map": "/map?q=Little%20Princeasa&island=st_croix"
@@ -47045,7 +47045,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Lovango Cny; Island, 1800 yards long, 300 yards wide, area llT. ; /n acrcs; l mile northwest of Hognest Point, St. John; sep:irnted frorii Atingo ( ' : ~ yo i i west by sboal passage 300 yrirds wide Height of hill a t east t w l, 227 fect; at west end, 255 fect. Crescentic bight, 1, 4 mile wide, oil south sli(~re; seceral houses along tiencli. Population 20; public uchool ol~e~iod, 1!117, ; ?':imr spellctl also : Auaugo, Lnvango, I, eva~iyo, I, onnpo, Liq)iingo, r u i i l Lovango Graride.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3619271023656, "lng": -64.8056650408506 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-point-lovango-cny&island=st_john&context=Lovango%20Cny",
       "map": "/map?q=Lovango%20Cny&island=st_john"
@@ -47209,7 +47209,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Lovenlund Bay; Rocky cove on north shore of Great Northsitle Quarter, St. Thomix, about 2 miles east-southeast of I'icara Point, SO0 yards uorth of Loveuliintl 15statr. V:ii*iuiits : Imwluntl. 1, uvelilund. I, ~venli~ntl. 'l'ht. '' I4~vc~iili~~rd Gallei \" was a fiinious old l'ripute of the Uiiiiirah Xavy in tlje 17th cent ury. -- 124 of 215 GEOORAPEIC D, IC!D, IONARY OF T H E VIRGIN ISLANDS 121",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3602620470275, "lng": -64.9080186236434 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-lovenlund-bay&island=st_thomas&context=Lovenlund%20Bay",
       "map": "/map?q=Lovenlund%20Bay&island=st_thomas"
@@ -47750,7 +47750,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Ma FoLie; I1Iafolie Estate, St. Tliomns. -Z. ; B. & F.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35057920990645, "lng": -64.9310796581254 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-ma-folie&island=st_thomas&context=Ma%20FoLie",
       "map": "/map?q=Ma%20FoLie&island=st_thomas"
@@ -47977,7 +47977,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Mafolie Road; Connerts T, crkenlnnd and Tmiirelioi Roads. iwst of Mafolic. Estate, St. TIio~nns. -T. 3771. Ascent sturtllngly s t e q i, but view siqrcrb. mile north of St. T l i o m ~ sHaibor. -- 125 of 215 122 U. S. COAST AND GEODETIC SURVEY",
-    "coordinates": null,
+    "coordinates": { "lat": 18.35057920990645, "lng": -64.9310796581254 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-mafolie-road&island=st_thomas&context=Mafolie%20Road",
       "map": "/map?q=Mafolie%20Road&island=st_thomas"
@@ -48107,7 +48107,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Maho; Quarter, Second or Northside subdivision of St. John Island, embracing the northern slope from Trunk Cay or Peter Reach to long. G4\" 41' 52\" or 42' 11. 76\". Its southern boundary in general follows the main rlividing-ridge or watershed, and touches all four of the other Oiinrters, ( T ~ w z Bay, Reef Bay, Coral Bay, and Eastend. Oxholm in 1780 located 11 Estates by number, viz. , 1, Rustenberg; 2, Caneelhiiy; 3, Old Works; 4, 5,",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3588, "lng": -64.7432 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-maho&island=st_john&context=Maho",
       "map": "/map?q=Maho&island=st_john"
@@ -48227,7 +48227,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Maho Point; Tip of short peninsula between Francis Bay and Maho Biiy, formed by spur of 198-foot hill 300 yards east, Maho Quarter, St. John.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3588, "lng": -64.7432 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-maho-point&island=st_john&context=Maho%20Point",
       "map": "/map?q=Maho%20Point&island=st_john"
@@ -53484,7 +53484,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Nazareth Bay; 625 to 700 yards wide, west of Beverhout Point, northeast of Jersey Bay, on south shore, and 1% miles from east end of St. Thomas Island. --G), B.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.32057236303325, "lng": -64.8471117829859 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-nazareth-bay&island=st_thomas&context=Nazareth%20Bay",
       "map": "/map?q=Nazareth%20Bay&island=st_thomas"
@@ -55045,7 +55045,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Northside Bay; 4 milee wide, irlwularly crescentic big& extending b e t w w Ham Bluff and Canebay Point, along shores of Northside A and Northside B Quarters, St. Croix. . . 4",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75974688135625, "lng": -64.8840756495307 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-bay-northside-bay&island=st_croix&context=Northside%20Bay",
       "map": "/map?q=Northside%20Bay&island=st_croix"
@@ -55074,7 +55074,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Northside Road; Turns off north from Centerline Road, St. Croix, betweenMount Pleasant and Plessen; skirts Groveplace; travereas Upper Love, River, Parasol, and Prosperity, to north coast; thence east alongshore passing Northstar, Canebay, Lavallee, and Rustoptwist Estates, arid Baron Bluff, to Salt River.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75974688135625, "lng": -64.8840756495307 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-northside-road&island=st_croix&context=Northside%20Road",
       "map": "/map?q=Northside%20Road&island=st_croix"
@@ -57038,7 +57038,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Oxford Road; Lenrcs n1:ihogany Roritl u t 'Jolly Hill Estate, ascends Oxford Giit, mund crosses hills north-northeast to Annnly, St. Croix. O d l < J h I; in 1661, X ~ t n t o sof F. von Oxholm embraced Dinmond nnd Ilr~by;",
-    "coordinates": null,
+    "coordinates": { "lat": 17.7422683253968, "lng": -64.86055976885295 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-oxford-road&island=st_croix&context=Oxford%20Road",
       "map": "/map?q=Oxford%20Road&island=st_croix"
@@ -58800,7 +58800,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bahia Perseverancia; Spanish form of Perseverance Bay, St. Thomas. -Der. llahiu Primavera; 'Spanish equivalent of Spring Bay, St. Thomas. -Sp. 260. Bahia, Redonda; Spanish for Round Bay, St. John. -Der. llukia Eunge; Spanish name of Sunsi Bay, St. Thomas. -Sp. 250.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3536211183031, "lng": -64.9991791172871 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-perseverance-bay&island=st_thomas&context=Perseverance%20Bay",
       "map": "/map?q=Perseverance%20Bay&island=st_thomas"
@@ -68225,7 +68225,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Baby; Estate, 21 in central portlan of &wan (Drwning) QuqrNr, St. Qroix. Part of Peter Heyligw's h&dLpga. Rqby apd Diqrpond (28, immediately sauuth) E:statss are Wtsd alike br. Btxk, #bwn RvlWqut division lines by Oxholm, but distinct on recent survey.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.73869113141865, "lng": -64.75529554587649 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-ruby-estate&island=st_croix&context=Ruby%20Estate",
       "map": "/map?q=Ruby%20Estate&island=st_croix"
@@ -69393,7 +69393,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Saint James Bay; Sound, % mile wide between St Thomas and Grent St. Jnmes Islands,. with excellent anchorage for a distance of 1 mile, from Uurrent IIolebto Cow and C h l f Rocks. Called by the Spanish, La Bahia det &mtiago. -Ceiitury Atlus.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3105321364764, "lng": -64.8291316641308 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-saint-james-bay&island=st_thomas&context=Saint%20James%20Bay",
       "map": "/map?q=Saint%20James%20Bay&island=st_thomas"
@@ -70302,7 +70302,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Santa Maria Bay; 1 mile wide, between Yluck Point and Stumpy Point, 2 miles east of Westend Qoint, 'in Westend Quarter, north &@re of St.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.359333337383298, "lng": -64.98905345449211 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-santa-maria-bay&island=st_thomas&context=Santa%20Maria%20Bay",
       "map": "/map?q=Santa%20Maria%20Bay&island=st_thomas"
@@ -72312,7 +72312,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Smith Bay Road; Parallel to northeast coast for 1, 640 yards, between forks to beach a t Water Bay and Smith Bay, St. Thomas. -T. 3778a.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.335278251441, "lng": -64.86171891676014 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-smith-bay-road&island=st_thomas&context=Smith%20Bay%20Road",
       "map": "/map?q=Smith%20Bay%20Road&island=st_thomas"
@@ -74835,7 +74835,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Bahia d e Santiago; Spanish name for St. James Bay, St. Thomas. -Der. Bahia Uioniaio; Spanish, name of Denis Bay, St. John. -Sp. 250.",
-    "coordinates": null,
+    "coordinates": { "lat": 18.3105321364764, "lng": -64.8291316641308 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-st-james-bay&island=st_thomas&context=St.%20James%20Bay",
       "map": "/map?q=St.%20James%20Bay&island=st_thomas"
@@ -77415,7 +77415,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "The Glynn; Glynn Estate, St. Croix, q. v. -Oxholm; Dewita.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75073674602215, "lng": -64.7751250403044 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-the-glynn&island=st_croix&context=The%20Glynn",
       "map": "/map?q=The%20Glynn&island=st_croix"

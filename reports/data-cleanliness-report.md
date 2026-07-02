@@ -1,13 +1,13 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T10:16:39.550Z
+Generated: 2026-07-02T10:22:52.462Z
 
 ## Summary
 
 - Sources scanned: 3
 - Records scanned: 3323
 - High severity issues: 0
-- Medium severity issues: 837
+- Medium severity issues: 802
 - Low severity issues: 0
 
 ## Sources
@@ -22,7 +22,7 @@ Generated: 2026-07-02T10:16:39.550Z
 
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
-| medium | geographic_index | missing_coordinates | 837 |
+| medium | geographic_index | missing_coordinates | 802 |
 
 ## Sample Issues
 
@@ -39,7 +39,6 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 75 | Beaucoeur Plantation | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 77 | Beck Grove | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 82 | Beffron Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 87 | Bellevue Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 101 | Bethel Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 116 | Beverhoudt Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 120 | Beverhoutberg Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -51,7 +50,6 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 141 | Blue Mountain | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 147 | Boatman Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 163 | Bonne EspBrance | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 164 | Bonne EspBrance Road | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 173 | BoPcks Creek | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 189 | Borgenfri | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 190 | Borpenfrei | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -60,12 +58,10 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 198 | Boulder Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 199 | Bourgen Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 213 | Brock Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 217 | Brookhill Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 221 | Brown Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 224 | Bt | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 225 | BtaZley Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 242 | Bull Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 245 | Bulow'a-Minde | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 247 | Bulowminde | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 251 | Buona Viata | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 252 | Buonavista | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -98,10 +94,8 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 348 | Careen Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 360 | Carlota Antalia | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 362 | Carlton Gut | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 368 | Caroline | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 369 | Caroline Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 375 | Carton Dome | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 376 | Carty | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 382 | Cassava Garden | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 384 | Cassi Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 387 | Castle Burke Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -130,8 +124,6 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 504 | Compass Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 516 | Congo Cay | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 518 | Congo Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 520 | Conoordia | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 528 | Contant Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 534 | Contentment Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 536 | Cook's Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 546 | Corn Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -148,6 +140,14 @@ Generated: 2026-07-02T10:16:39.550Z
 | medium | geographic_index | 577 | Crabhole Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 602 | Crumbuy | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 608 | Cuarentena | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 610 | Cudejarre P o i n t | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 612 | Cup d u Cudeiare | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 614 | Curha Mmntaln | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 615 | Current Hole | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 617 | Currenthole Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 622 | De Beftgem Road | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 625 | Deck Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 629 | Derrick Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 
 ## Recommended Fix Order
 
