@@ -1,21 +1,21 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:29:58.994Z
+Generated: 2026-07-02T11:33:19.701Z
 
 ## Summary
 
-- Candidate-audit missing coordinate records: 1119
-- Triaged records: 1119
-- Official data-cleanliness missing coordinates: 749
+- Candidate-audit missing coordinate records: 1113
+- Triaged records: 1113
+- Official data-cleanliness missing coordinates: 744
 - Official sampled missing-coordinate issues: 200
 
 ## By bucket
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 891 |
+| research_clean_name_no_candidate | 888 |
 | ocr_or_name_cleanup_first | 118 |
-| review_candidate | 77 |
+| review_candidate | 74 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
 
@@ -23,9 +23,9 @@ Generated: 2026-07-02T11:29:58.994Z
 
 | Confidence | Count |
 |---|---:|
-| none | 1030 |
-| review | 46 |
-| weak | 40 |
+| none | 1026 |
+| review | 45 |
+| weak | 39 |
 | exact | 3 |
 
 ## Best remaining review candidates
@@ -51,11 +51,7 @@ Generated: 2026-07-02T11:29:58.994Z
 | 1284 | Klein Reef | point | st_john | review | REEF BAY | contains_clean_slug |
 | 1465 | Little Lameshur Bay | bay | st_john | review | Great Lameshur Bay | contains_clean_slug |
 | 1535 | Lutheran church | estate | st_thomas | review | Frederick Lutheran Church | contains_clean_slug |
-| 1545 | Magen | estate | st_thomas | review | Magens Bay | contains_clean_slug |
-| 1549 | Maho Ball | estate | st_john | review | Maho | contains_clean_slug |
-| 1599 | Mary's Point Buy | bay | st_john | review | Mary-Point Estate | contains_clean_slug |
 | 1707 | Nancy's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
-| 1758 | North Side | estate | st_croix | review | NORTHSIDE | similarity_or_token_overlap |
 | 1811 | Orangegrove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 1812 | Orangegrove Road | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 1893 | Peter Beach | point | st_thomas | review | St. PETER | contains_clean_slug |
@@ -63,9 +59,11 @@ Generated: 2026-07-02T11:29:58.994Z
 | 2184 | Round Bay | bay | st_john | review | FREEMAN'S GROUND | contains_clean_slug |
 | 2186 | Round Point | bay | st_thomas | review | HOSPITAL GROUND | contains_clean_slug |
 | 2257 | Salt River Bay Historic and Archaeological Records | archive_record | st_croix | review | RIVER | contains_clean_slug |
-| 2359 | South Bay | estate | st_croix | review | BONNE ESPERANCE (SOUTH) | contains_clean_slug |
+| 2365 | Southgate Plain | estate | st_croix | review | South Bay | contains_clean_slug |
+| 2370 | Southside Road | point | st_croix | review | South Bay | contains_clean_slug |
+| 2372 | Southwest Anchorage | point | st_croix | review | South Bay | contains_clean_slug |
+| 2374 | Southwest Shoal | point | st_croix | review | South Bay | contains_clean_slug |
 | 2384 | Spring Bay | bay | st_croix | review | SPRING GARDEN | contains_clean_slug |
-| 2417 | Stewart Bay | estate | st_croix | review | MOUNT STEWART | contains_clean_slug |
 | 2437 | Sugar Bay | estate | st_thomas | review | THOMAS - SUGAR ESTATE | contains_clean_slug |
 | 2449 | Susannabarg | estate | st_john | review | Anna Point | contains_clean_slug |
 | 2497 | The Mountais | estate | st_croix | review | MOUNTAIN | similarity_or_token_overlap |
@@ -101,7 +99,6 @@ Generated: 2026-07-02T11:29:58.994Z
 | 2224 | Sabbat Hill | hill | st_thomas | weak | Maria Hill | weak_similarity |
 | 2248 | Salba Cay | point | st_thomas | weak | SALT CAY | weak_similarity |
 | 2275 | Sara Hill | bay | st_thomas | weak | Maria Hill | weak_similarity |
-| 2370 | Southside Road | point | st_croix | weak | NORTHSIDE | weak_similarity |
 | 2463 | Tague Bay | bay | st_croix | weak | TEAGUE BAY | weak_similarity |
 | 2476 | Tbatah Cay | island | st_thomas | weak | Thatch Cay | weak_similarity |
 | 2506 | Thomaa | estate | st_thomas | weak | THOMAS | weak_similarity |

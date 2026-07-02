@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-02T11:29:06.331Z",
+  "generatedAt": "2026-07-02T11:32:28.604Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 750,
+    "issuesActual": 745,
     "issuesSampled": 201,
     "issueSampleLimitPerKind": 200
   },
@@ -32,7 +32,7 @@
   "totalRecords": 3313,
   "severityTotals": {
     "high": 0,
-    "medium": 749,
+    "medium": 744,
     "low": 1
   },
   "issueGroups": [
@@ -40,7 +40,7 @@
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 749,
+      "count": 744,
       "sampled": 200,
       "sampleLimit": 200
     },

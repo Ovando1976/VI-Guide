@@ -474,7 +474,7 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 1301,st_thomas-estate-kolzgmzs-land,Kolzgmzs Land,estate,st_thomas,none,ocr_or_name_cleanup_first,false,KALKUM CAY,geographic_index,18.3504403569425,-65.05770189420505,weak_similarity
 1304,st_thomas-estate-konigberg,Konigberg,estate,st_thomas,none,research_clean_name_no_candidate,false,SOLBERG,geographic_index,18.3502071369676,-64.94474322134475,weak_similarity
 1305,st_thomas-bay-konink-point,Konink Point,bay,st_thomas,none,research_clean_name_no_candidate,false,Contant,geographic_index,18.34442312704015,-64.95865161016525,weak_similarity
-1309,st_thomas-point-krabbepan-point,Krabbepan Point,point,st_thomas,none,research_clean_name_no_candidate,false,PERSEVERANCE,geographic_index,18.3536211183031,-64.9991791172871,weak_similarity
+1309,st_thomas-point-krabbepan-point,Krabbepan Point,point,st_thomas,none,research_clean_name_no_candidate,false,Magen,geographic_index,18.3626,-64.9307,weak_similarity
 1311,st_croix-estate-krause-lagoon,Krause Lagoon,estate,st_croix,none,research_clean_name_no_candidate,false,Lagrange Garden,geographic_index,17.71823717741445,-64.87445690853116,weak_similarity
 1312,st_thomas-estate-krause-peninsula,Krause Peninsula,estate,st_thomas,none,research_clean_name_no_candidate,false,HASSEL ISLAND / ORKANSHULLET,geographic_index,18.329239586132402,-64.93473549862091,weak_similarity
 1313,st_croix-point-krause-point,Krause Point,point,st_croix,none,research_clean_name_no_candidate,false,PARADISE,geographic_index,17.70445940301865,-64.81587187905009,weak_similarity
@@ -556,8 +556,6 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 1533,st_croix-point-lungpoint,Lungpoint,point,st_croix,none,research_clean_name_no_candidate,false,LONGFORD,geographic_index,17.7159688633824,-64.6914549952351,weak_similarity
 1534,st_thomas-hill-lurhrtlin-hill,Lurhrtli'N Hill,hill,st_thomas,none,research_clean_name_no_candidate,false,Maria Hill,geographic_index,18.359333337383298,-64.98905345449211,weak_similarity
 1535,st_thomas-estate-lutheran-church,Lutheran church,estate,st_thomas,review,review_candidate,false,Frederick Lutheran Church,geographic_index,18.3417,-64.9318,contains_clean_slug
-1545,st_thomas-estate-magen,Magen,estate,st_thomas,review,review_candidate,false,Magens Bay,geographic_index,18.3626,-64.9307,contains_clean_slug
-1549,st_john-estate-maho-ball,Maho Ball,estate,st_john,review,review_candidate,false,Maho,geographic_index,18.3588,-64.7432,contains_clean_slug
 1556,st_thomas-estate-mahogany-road,Mahogany Road,estate,st_thomas,none,research_clean_name_no_candidate,false,BOTANY BAY,geographic_index,18.35401195896805,-65.03347371262775,weak_similarity
 1560,st_thomas-bay-mail-bay,Mail Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,MARIENDAL,geographic_index,18.3287034601041,-64.87492977521575,weak_similarity
 1562,st_thomas-estate-malleville,Malleville,estate,st_thomas,none,research_clean_name_no_candidate,false,BELLEVUE,geographic_index,18.3265528432309,-64.9212594012035,weak_similarity
@@ -571,7 +569,6 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 1592,st_thomas-estate-mars-hill,Mars Hill,estate,st_thomas,weak,review_candidate,false,Maria Hill,geographic_index,18.359333337383298,-64.98905345449211,weak_similarity
 1594,st_croix-bay-martel-bay,Martel Bay,bay,st_croix,none,research_clean_name_no_candidate,false,Carty Bay,geographic_index,17.739492713680953,-64.61703701918981,weak_similarity
 1596,st_thomas-point-mary-ridge,Mary Ridge,point,st_thomas,none,research_clean_name_no_candidate,false,Santa Maria Ridge,geographic_index,18.359333337383298,-64.98905345449211,weak_similarity
-1599,st_john-bay-marys-point-buy,Mary's Point Buy,bay,st_john,review,review_candidate,false,Mary-Point Estate,geographic_index,18.368333,-64.741389,contains_clean_slug
 1600,st_croix-estate-mbunk-stawatt-gut,Mbunk Stawatt Gut,estate,st_croix,none,research_clean_name_no_candidate,false,MOUNT STEWART,geographic_index,17.747914595970848,-64.84303041392059,weak_similarity
 1603,st_thomas-bay-meggir-hill,Meggir Hill,bay,st_thomas,none,research_clean_name_no_candidate,false,Benner Hill,geographic_index,18.330419,-64.859625,weak_similarity
 1604,st_thomas-bay-mennebeck-bay,Mennebeck Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,Benner Bay,geographic_index,18.330419,-64.859625,weak_similarity
@@ -584,7 +581,7 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 1619,st_thomas-point-mingo-point,Mingo Point,point,st_thomas,none,research_clean_name_no_candidate,false,BOLONGO,geographic_index,18.3175123332078,-64.89879745646965,weak_similarity
 1620,st_john-point-mingo-rock,Mingo Rock,point,st_john,none,research_clean_name_no_candidate,false,MINGO CAY,geographic_index,18.359631223485252,-64.82018790394136,weak_similarity
 1621,st_thomas-estate-mint,Mint,estate,st_thomas,none,generic_fragment_do_not_coordinate,false,MISGUNST,geographic_index,18.35687840900315,-64.9333822333455,weak_similarity
-1625,st_john-estate-mnhu-bav,Mnhu Bav,estate,st_john,none,research_clean_name_no_candidate,false,MINGO CAY,geographic_index,18.359631223485252,-64.82018790394136,weak_similarity
+1625,st_john-estate-mnhu-bav,Mnhu Bav,estate,st_john,none,research_clean_name_no_candidate,false,Maho Ball,geographic_index,18.3588,-64.7432,weak_similarity
 1627,st_thomas-bay-moachbete-bay,Moachbete Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,Brewers Bay,geographic_index,18.3444,-64.9782,weak_similarity
 1628,st_thomas-estate-moatpellier-mountain,Moatpellier Mountain,estate,st_thomas,none,research_clean_name_no_candidate,false,BONNE RESOLUTION,geographic_index,18.361258565753303,-64.95740720803701,weak_similarity
 1629,st_thomas-bay-moekite-bay,Moekite Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,Coki Point,geographic_index,18.3499,-64.8676,weak_similarity
@@ -640,17 +637,16 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 1746,st_thomas-point-nord-8lde-v-e-y,Nord 8lde V e y,point,st_thomas,none,ocr_or_name_cleanup_first,false,Bordeaux Hill,geographic_index,18.356590458506503,-65.01661868979055,weak_similarity
 1749,st_croix-estate-norgenetern,Norgenetern,estate,st_croix,none,research_clean_name_no_candidate,false,HOGENSBERG,geographic_index,17.71167459321845,-64.84332390797235,weak_similarity
 1751,st_thomas-bay-nortaglrle-bay,NortAglrle Bay,bay,st_thomas,none,ocr_or_name_cleanup_first,false,Bordeaux Klyne Bay,geographic_index,18.356590458506503,-65.01661868979055,weak_similarity
-1752,st_croix-point-north-cove,North Cove,point,st_croix,none,research_clean_name_no_candidate,false,NORTH HALL,geographic_index,17.74951173408035,-64.87233148757599,weak_similarity
+1752,st_croix-point-north-cove,North Cove,point,st_croix,none,research_clean_name_no_candidate,false,North Side,geographic_index,17.75974688135625,-64.8840756495307,weak_similarity
 1754,st_thomas-estate-north-hall,North Hall,estate,st_thomas,none,research_clean_name_no_candidate,false,Contant Hill,geographic_index,18.34442312704015,-64.95865161016525,weak_similarity
 1756,st_thomas-point-north-poi-ltt,North Poi-ltt,point,st_thomas,none,research_clean_name_no_candidate,false,Santa Maria Gut,geographic_index,18.359333337383298,-64.98905345449211,weak_similarity
-1757,st_croix-estate-north-siand,North Si&,estate,st_croix,none,ocr_or_name_cleanup_first,false,NORTH STAR,geographic_index,17.7643827657991,-64.8181934288463,weak_similarity
-1758,st_croix-estate-north-side,North Side,estate,st_croix,review,review_candidate,false,NORTHSIDE,geographic_index,17.75974688135625,-64.8840756495307,similarity_or_token_overlap
+1757,st_croix-estate-north-siand,North Si&,estate,st_croix,review,ocr_or_name_cleanup_first,false,North Side,geographic_index,17.75974688135625,-64.8840756495307,contains_clean_slug
 1762,st_thomas-point-north8ide-point,NOrth8ide Point,point,st_thomas,none,ocr_or_name_cleanup_first,false,BETHESDA,geographic_index,18.3559062831591,-65.00835365155365,weak_similarity
 1763,st_thomas-estate-northside,Northside,estate,st_thomas,none,research_clean_name_no_candidate,false,BETHESDA,geographic_index,18.3559062831591,-65.00835365155365,weak_similarity
 1765,st_thomas-estate-northside-a-quarter,Northside A Quarter,estate,st_thomas,none,research_clean_name_no_candidate,false,KRONPRINSENS QUARTER,geographic_index,18.34141928853635,-64.937199780302,weak_similarity
 1770,st_thomas-estate-now-part-of-shoys-estate,Now part of Shoy's estate,estate,st_thomas,none,research_clean_name_no_candidate,false,Contant Hill,geographic_index,18.34442312704015,-64.95865161016525,weak_similarity
 1772,st_thomas-point-nsrdatlanterhavet,Nsrdatlanterhavet,point,st_thomas,none,research_clean_name_no_candidate,false,ANNA'S RETREAT,geographic_index,18.34264445784635,-64.88706827427085,weak_similarity
-1775,st_thomas-point-nugent-point,Nugent Point,point,st_thomas,none,research_clean_name_no_candidate,false,Magens Bay,geographic_index,18.3626,-64.9307,weak_similarity
+1775,st_thomas-point-nugent-point,Nugent Point,point,st_thomas,none,research_clean_name_no_candidate,false,Magen,geographic_index,18.3626,-64.9307,weak_similarity
 1779,st_john-bay-nuzatle-bay,NuZatle Bay,bay,st_john,none,ocr_or_name_cleanup_first,false,Little Plantation,geographic_index,18.338279674410302,-64.7164700652325,weak_similarity
 1786,st_croix-estate-nzrmber-fwr-h-a-l,Nzrmber-Fwr H a l,estate,st_croix,none,ocr_or_name_cleanup_first,false,ROBERTS HILL,geographic_index,17.7508914374122,-64.6775155324575,weak_similarity
 1788,st_thomas-point-oatende,Oatende,point,st_thomas,none,research_clean_name_no_candidate,false,Haagensen House,geographic_index,18.3442,-64.9303,weak_similarity
@@ -853,7 +849,7 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 2236,st_thomas-bay-saint-george-hill,Saint George Hill,bay,st_thomas,none,research_clean_name_no_candidate,false,Donoe Hill,geographic_index,18.3360307539689,-64.90137070522624,weak_similarity
 2240,st_thomas-estate-saint-jnmes-islands,Saint Jnmes Islands,estate,st_thomas,none,research_clean_name_no_candidate,false,AGNES FANCY,geographic_index,18.34920423771985,-64.93569329206,weak_similarity
 2242,st_thomas-bay-saint-john-bay,Saint John Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,JOHN BREWER'S,geographic_index,18.3453824903421,-64.97656230533175,weak_similarity
-2244,st_thomas-estate-saint-martin,Saint Martin,estate,st_thomas,none,research_clean_name_no_candidate,false,MARIENDAL,geographic_index,18.3287034601041,-64.87492977521575,weak_similarity
+2244,st_thomas-estate-saint-martin,Saint Martin,estate,st_thomas,none,research_clean_name_no_candidate,false,Magen,geographic_index,18.3626,-64.9307,weak_similarity
 2247,st_thomas-estate-salancolt,Salancolt,estate,st_thomas,none,research_clean_name_no_candidate,false,SALT CAY,geographic_index,18.361460176887647,-65.05306615329525,weak_similarity
 2248,st_thomas-point-salba-cay,Salba Cay,point,st_thomas,weak,review_candidate,false,SALT CAY,geographic_index,18.361460176887647,-65.05306615329525,weak_similarity
 2251,st_croix-estate-salmon-hxl,Salmon HXl,estate,st_croix,none,research_clean_name_no_candidate,false,Altona Hill,geographic_index,17.74747,-64.69236,weak_similarity
@@ -906,15 +902,14 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 2351,st_thomas-estate-sorgenfri-glut,Sorgenfri Glut,estate,st_thomas,none,research_clean_name_no_candidate,false,SORGENFRI EASTERN PORTION,geographic_index,18.367491600136248,-64.98491852585181,weak_similarity
 2352,st_thomas-hill-sorgenfri-hill,Sorgenfri Hill,hill,st_thomas,none,research_clean_name_no_candidate,false,Bethesda Hill,geographic_index,18.3559062831591,-65.00835365155365,weak_similarity
 2353,st_thomas-point-sorgenfri-ridge,Sorgenfri Ridge,point,st_thomas,none,research_clean_name_no_candidate,false,Santa Maria Ridge,geographic_index,18.359333337383298,-64.98905345449211,weak_similarity
-2359,st_croix-estate-south-bay,South Bay,estate,st_croix,review,review_candidate,false,BONNE ESPERANCE (SOUTH),geographic_index,17.74356362461915,-64.7692203635706,contains_clean_slug
 2362,st_thomas-estate-southgate-farm,Southgate Farm,estate,st_thomas,none,research_clean_name_no_candidate,false,CONTANT 7A,geographic_index,18.34442312704015,-64.95865161016525,weak_similarity
-2365,st_croix-estate-southgate-plain,Southgate Plain,estate,st_croix,none,research_clean_name_no_candidate,false,SOUTHGATE FARM,geographic_index,17.75329505651455,-64.66309280141385,weak_similarity
+2365,st_croix-estate-southgate-plain,Southgate Plain,estate,st_croix,review,review_candidate,false,South Bay,geographic_index,17.74356362461915,-64.7692203635706,contains_clean_slug
 2367,st_thomas-point-southside,Southside,point,st_thomas,none,research_clean_name_no_candidate,false,Smith’s Field,geographic_index,18.335278251441,-64.86171891676014,weak_similarity
 2368,st_thomas-point-southside-k-a-b,Southside k a b,point,st_thomas,none,ocr_or_name_cleanup_first,false,Sapphire Beach,geographic_index,18.3348,-64.8493,weak_similarity
-2370,st_croix-point-southside-road,Southside Road,point,st_croix,weak,review_candidate,false,NORTHSIDE,geographic_index,17.75974688135625,-64.8840756495307,weak_similarity
-2372,st_croix-point-southwest-anchorage,Southwest Anchorage,point,st_croix,none,research_clean_name_no_candidate,false,SOUTH GRAPETREE BAY,geographic_index,17.748278731624097,-64.59115064473225,weak_similarity
+2370,st_croix-point-southside-road,Southside Road,point,st_croix,review,review_candidate,false,South Bay,geographic_index,17.74356362461915,-64.7692203635706,contains_clean_slug
+2372,st_croix-point-southwest-anchorage,Southwest Anchorage,point,st_croix,review,review_candidate,false,South Bay,geographic_index,17.74356362461915,-64.7692203635706,contains_clean_slug
 2373,st_thomas-estate-southwest-point,Southwest Point,estate,st_thomas,none,research_clean_name_no_candidate,false,ALTONA & WELGUNST,geographic_index,18.3412699576036,-64.94410778172886,weak_similarity
-2374,st_croix-point-southwest-shoal,Southwest Shoal,point,st_croix,none,research_clean_name_no_candidate,false,SOUTH SLOB,geographic_index,17.7480671806761,-64.6006142929933,weak_similarity
+2374,st_croix-point-southwest-shoal,Southwest Shoal,point,st_croix,review,review_candidate,false,South Bay,geographic_index,17.74356362461915,-64.7692203635706,contains_clean_slug
 2375,st_croix-point-sozo,SoZO,point,st_croix,none,generic_fragment_do_not_coordinate,false,SHOYS,geographic_index,17.756881054978102,-64.68080993897975,weak_similarity
 2378,st_john-estate-spanishtown,Spanishtown,estate,st_john,none,research_clean_name_no_candidate,false,PASTORY,geographic_index,18.3333478812037,-64.78450558337934,weak_similarity
 2380,water_island-bay-sprat-bay,Sprat Bay,bay,water_island,none,research_clean_name_no_candidate,false,Honeymoon Beach,geographic_index,18.3195,-64.9517,weak_similarity
@@ -932,7 +927,6 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 2401,st_thomas-point-st,St,point,st_thomas,none,generic_fragment_do_not_coordinate,false,Bellevue Hill,geographic_index,18.3265528432309,-64.9212594012035,
 2413,st_thomas-bay-stalley-bay,Stalley Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,STAABI,geographic_index,18.34908224179825,-64.9388313298573,weak_similarity
 2414,st_thomas-island-stepmar-cay,Stepmar Cay,island,st_thomas,none,research_clean_name_no_candidate,false,DUTCHMAN CAP,geographic_index,18.37996707126645,-65.0617794059329,weak_similarity
-2417,st_croix-estate-stewart-bay,Stewart Bay,estate,st_croix,review,review_candidate,false,MOUNT STEWART,geographic_index,17.747914595970848,-64.84303041392059,contains_clean_slug
 2418,st_croix-estate-stioha,Stioha,estate,st_croix,none,research_clean_name_no_candidate,false,SIGHT,geographic_index,17.73987143959825,-64.6613933440346,weak_similarity
 2421,st_thomas-bay-stony-bay,Stony Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,Botany Bay,geographic_index,18.35401195896805,-65.03347371262775,weak_similarity
 2422,st_john-estate-stonyground,Stonyground,estate,st_john,none,research_clean_name_no_candidate,false,FREEMAN'S GROUND,geographic_index,18.3322080432784,-64.7107281424398,weak_similarity
@@ -1075,7 +1069,7 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 2716,st_john-bay-white-point,White Point,bay,st_john,none,research_clean_name_no_candidate,false,HOPE,geographic_index,18.34078922243555,-64.73636106952304,weak_similarity
 2717,st_thomas-point-white-point-aud-cnhritahorn-point,White Point aud Cnhritahorn Point,point,st_thomas,none,research_clean_name_no_candidate,false,Three Queens Statue,geographic_index,18.341,-64.932,weak_similarity
 2720,st_croix-estate-whiteladies,Whiteladies,estate,st_croix,none,research_clean_name_no_candidate,false,WHITE LADY,geographic_index,17.69154057388075,-64.8839468550193,weak_similarity
-2726,st_thomas-estate-wildhagen,Wildhagen,estate,st_thomas,none,research_clean_name_no_candidate,false,Magens Bay,geographic_index,18.3626,-64.9307,weak_similarity
+2726,st_thomas-estate-wildhagen,Wildhagen,estate,st_thomas,none,research_clean_name_no_candidate,false,Magen,geographic_index,18.3626,-64.9307,weak_similarity
 2732,st_croix-estate-wilson,Wilson,estate,st_croix,none,research_clean_name_no_candidate,false,WINDSOR,geographic_index,17.7603909805568,-64.77313377370525,weak_similarity
 2734,st_thomas-estate-wimenog,Wimenog,estate,st_thomas,none,research_clean_name_no_candidate,false,LOUISENHOJ,geographic_index,18.35205982839385,-64.92213183992129,weak_similarity
 2736,st_john-estate-windberg,Windberg,estate,st_john,none,research_clean_name_no_candidate,false,ANNABERG,geographic_index,18.36479311179155,-64.7385750100362,weak_similarity

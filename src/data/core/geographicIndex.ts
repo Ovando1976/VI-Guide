@@ -48439,7 +48439,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Magen; Magens plantation, or Magen's Estate, shown by Oldendorp a t or near Neltjeberg, St. Thomas.",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 18.3626,
+      "lng": -64.9307
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-estate-magen&island=st_thomas&context=Magen",
       "map": "/map?q=Magen&island=st_thomas"
@@ -48459,7 +48462,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-thomas-estate-magen"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "Magens Bay",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"Magen\" to \"Magens Bay\"."
   },
   {
     "id": "st_thomas-beach-magens-bay",
@@ -48572,7 +48579,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Maho Ball; Mahobay Estate, St. John. -HZst; De Booy & Faris.",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 18.3588,
+      "lng": -64.7432
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-estate-maho-ball&island=st_john&context=Maho%20Ball",
       "map": "/map?q=Maho%20Ball&island=st_john"
@@ -48592,7 +48602,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-john-estate-maho-ball"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "Maho",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"Maho Ball\" to \"Maho\"."
   },
   {
     "id": "st_john-beach-maho-bay",
@@ -50138,7 +50152,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_john",
     "aliases": [],
     "description": "Mary's Point Buy; Francis Bay, St. John. Local narne. --l'. 3772.",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 18.368333,
+      "lng": -64.741389
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-john-bay-marys-point-buy&island=st_john&context=Mary's%20Point%20Buy",
       "map": "/map?q=Mary's%20Point%20Buy&island=st_john"
@@ -50158,7 +50175,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-john-bay-marys-point-buy"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "Mary-Point Estate",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"Mary's Point Buy\" to \"Mary-Point Estate\"."
   },
   {
     "id": "st_croix-estate-mbunk-stawatt-gut",
@@ -55181,7 +55202,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "North Side. -Dewitz; Z. Mahogany Road, St. Cmix. -Oxholm. in southern part of present Nicholas Estate, St. Croix. & G. 9. field party. North Side \"A\" and \" B \" Quwwa; St. Drok. See below.",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 17.75974688135625,
+      "lng": -64.8840756495307
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-north-side&island=st_croix&context=North%20Side",
       "map": "/map?q=North%20Side&island=st_croix"
@@ -55201,7 +55225,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-north-side"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "NORTHSIDE",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"North Side\" to \"NORTHSIDE\"."
   },
   {
     "id": "st_croix-road-north-side-road",
@@ -73900,7 +73928,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "South Bay; English equivalent of French \"JLnee du Sad, !' St. Cml&. Bluff, L3t. Croix. See Paiete 63ow4emnt. -Bellin. -- 184 of 215 GEOGRAPHIC DIC':ONARY OF TEE VIRGIN ISLANDS 181 South@&; Farm OT Eatdte, in EasteUU A Quarter, N. coast of iSt. Umix; embracing tracts 49a and 9 (Raron von Pr6k's plantation), 4% (David Morgan, later Testman's), 10, 11, and 60 (John Crawin's); ikluding 800 yards of coral barrier beach, west half of Southgate Pond, and rbost of",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 17.74356362461915,
+      "lng": -64.7692203635706
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-south-bay&island=st_croix&context=South%20Bay",
       "map": "/map?q=South%20Bay&island=st_croix"
@@ -73920,7 +73951,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-south-bay"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "BONNE ESPERANCE (SOUTH)",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"South Bay\" to \"BONNE ESPERANCE (SOUTH)\"."
   },
   {
     "id": "st_croix-estate-south-grapetree-bay",
@@ -75828,7 +75863,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Stewart Bay; 260 yards wide, long. 64\" 50' 41\"; affording safe anchorage, just west of Funnel Point, north coast of St. Croix. On shore of Mount Stewart Estate, named for original proprietor, Robert Stewart (1754).",
-    "coordinates": null,
+    "coordinates": {
+      "lat": 17.747914595970848,
+      "lng": -64.84303041392059
+    },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-stewart-bay&island=st_croix&context=Stewart%20Bay",
       "map": "/map?q=Stewart%20Bay&island=st_croix"
@@ -75848,7 +75886,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
       "geographicIndex": [
         "st-croix-estate-stewart-bay"
       ]
-    }
+    },
+    "coordinateSource": "reviewed_geographic_index_coordinate_batch_5",
+    "coordinateSourceName": "MOUNT STEWART",
+    "coordinateConfidence": "reviewed",
+    "coordinateReviewNote": "Reviewed batch 5: matched \"Stewart Bay\" to \"MOUNT STEWART\"."
   },
   {
     "id": "st_croix-estate-stioha",

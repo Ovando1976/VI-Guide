@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-07-02T11:32:10.071Z",
+  "backupFile": "/workspaces/VI-Guide/reports/backups/geographicIndex.reviewed-coordinate-batch-5.2026-07-02T11-32-09-930Z.ts",
+  "appliedCount": 6,
+  "skippedCount": 0,
+  "applied": [
+    {
+      "index": 1545,
+      "name": "Magen",
+      "type": "estate",
+      "island": "st_thomas",
+      "candidate": "Magens Bay",
+      "lat": 18.3626,
+      "lng": -64.9307
+    },
+    {
+      "index": 1549,
+      "name": "Maho Ball",
+      "type": "estate",
+      "island": "st_john",
+      "candidate": "Maho",
+      "lat": 18.3588,
+      "lng": -64.7432
+    },
+    {
+      "index": 1599,
+      "name": "Mary's Point Buy",
+      "type": "bay",
+      "island": "st_john",
+      "candidate": "Mary-Point Estate",
+      "lat": 18.368333,
+      "lng": -64.741389
+    },
+    {
+      "index": 1758,
+      "name": "North Side",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "NORTHSIDE",
+      "lat": 17.75974688135625,
+      "lng": -64.8840756495307
+    },
+    {
+      "index": 2359,
+      "name": "South Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "BONNE ESPERANCE (SOUTH)",
+      "lat": 17.74356362461915,
+      "lng": -64.7692203635706
+    },
+    {
+      "index": 2417,
+      "name": "Stewart Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "MOUNT STEWART",
+      "lat": 17.747914595970848,
+      "lng": -64.84303041392059
+    }
+  ],
+  "skipped": [],
+  "blocked": [
+    {
+      "name": "Buck Bay",
+      "candidate": "BUCK ISLAND",
+      "reason": "bay-to-island match is unsafe"
+    },
+    {
+      "name": "Grove",
+      "candidate": "GROVE PLACE",
+      "reason": "generic historic fragment"
+    },
+    {
+      "name": "Hope Point",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    },
+    {
+      "name": "Beck Grove",
+      "candidate": "GROVE PLACE",
+      "reason": "generic Grove match"
+    },
+    {
+      "name": "Catharina's Hope",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    },
+    {
+      "name": "Catherine's Hope",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    },
+    {
+      "name": "Goodhope Bay",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    },
+    {
+      "name": "Nancy's Hope",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    },
+    {
+      "name": "Cottongrove Hill",
+      "candidate": "GROVE PLACE",
+      "reason": "wrong Grove candidate"
+    },
+    {
+      "name": "Orangegrove",
+      "candidate": "GROVE PLACE",
+      "reason": "wrong Grove candidate"
+    },
+    {
+      "name": "Orangegrove Road",
+      "candidate": "GROVE PLACE",
+      "reason": "wrong Grove candidate"
+    },
+    {
+      "name": "Thatch Hill",
+      "candidate": "Thatch Cay",
+      "reason": "hill-to-cay match is unsafe"
+    },
+    {
+      "name": "Valley",
+      "candidate": "CANE VALLEY",
+      "reason": "generic fragment"
+    },
+    {
+      "name": "White",
+      "candidate": "WHITE LADY",
+      "reason": "generic fragment"
+    },
+    {
+      "name": "Thomas Harbor",
+      "candidate": "THOMAS",
+      "reason": "generic Thomas match"
+    },
+    {
+      "name": "Thomas Hill",
+      "candidate": "THOMAS",
+      "reason": "generic Thomas match"
+    },
+    {
+      "name": "Harbor",
+      "candidate": "Charlotte Amalie Harbor Historic Maps",
+      "reason": "generic harbor fragment"
+    }
+  ]
+}

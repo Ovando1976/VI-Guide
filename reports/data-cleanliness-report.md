@@ -1,13 +1,13 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T11:29:06.331Z
+Generated: 2026-07-02T11:32:28.604Z
 
 ## Summary
 
 - Sources scanned: 3
 - Records scanned: 3313
 - High severity issues: 0
-- Medium severity issues: 749
+- Medium severity issues: 744
 - Low severity issues: 1
 
 ## Sources
@@ -22,7 +22,7 @@ Generated: 2026-07-02T11:29:06.331Z
 
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
-| medium | geographic_index | missing_coordinates | 749 |
+| medium | geographic_index | missing_coordinates | 744 |
 | low | geographic_index | duplicate_name_type_island | 1 |
 
 ## Sample Issues

@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generatedAt": "2026-07-02T11:29:56.514Z",
+    "generatedAt": "2026-07-02T11:33:17.417Z",
     "geographicIndexRecords": 2828,
-    "missingCoordinateRecords": 1119,
-    "sourceCandidates": 1163,
+    "missingCoordinateRecords": 1113,
+    "sourceCandidates": 1169,
     "confidenceTotals": {
-      "review": 46,
-      "none": 1030,
-      "weak": 40,
+      "review": 45,
+      "none": 1026,
+      "weak": 39,
       "exact": 3
     }
   },
@@ -1087,6 +1087,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.444,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Base Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 513,
           "id": "st_john-bay-concordia-hill",
           "name": "Concordia Hill",
@@ -1112,20 +1126,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Base Hill",
           "matchedCandidateName": "Chocolate Hole"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 442,
-          "id": "st_john-estate-chocolate-hole",
-          "name": "CHOCOLATE HOLE",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.318586458466903,
-          "lng": -64.78430720192435,
-          "score": 0.357,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Base Hill",
-          "matchedCandidateName": "CHOCOLATE HOLE"
         }
       ]
     },
@@ -1168,6 +1168,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1599,
+          "id": "st_john-bay-marys-point-buy",
+          "name": "Mary's Point Buy",
+          "type": "bay",
+          "island": "st_john",
+          "lat": 18.368333,
+          "lng": -64.741389,
+          "score": 0.454,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Bass Gut",
+          "matchedCandidateName": "st_john-bay-marys-point-buy"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 90,
           "id": "st_john-estate-ben-runnells-gut",
           "name": "BEN RUNNELL'S GUT",
@@ -1207,20 +1221,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Bass Gut",
           "matchedCandidateName": "Estate BEN RUNNELL'S GUT"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 866,
-          "id": "st_john-estate-freemans-ground",
-          "name": "FREEMAN'S GROUND",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.3322080432784,
-          "lng": -64.7107281424398,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Bass Gut",
-          "matchedCandidateName": "st_john-estate-freemans-ground"
         }
       ]
     },
@@ -3476,6 +3476,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.357,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Blackrock Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 441,
           "id": "st_john-point-chocolate-hole",
           "name": "Chocolate Hole",
@@ -3487,20 +3501,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Blackrock Hill",
           "matchedCandidateName": "Chocolate Hole"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 364,
-          "id": "st_john-estate-carolina",
-          "name": "CAROLINA",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.34652014852835,
-          "lng": -64.72762843003869,
-          "score": 0.286,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Blackrock Hill",
-          "matchedCandidateName": "CAROLINA"
         }
       ]
     },
@@ -3679,18 +3679,18 @@
           "matchedCandidateName": "FORTSBERG"
         },
         {
-          "source": "estates_geojson",
-          "sourceIndex": 27,
-          "id": "1965",
-          "name": "Estate FORTSBERG",
+          "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
           "type": "estate",
           "island": "st_john",
-          "lat": 18.343535,
-          "lng": -64.705298,
+          "lat": 18.3588,
+          "lng": -64.7432,
           "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Blasbalg Point",
-          "matchedCandidateName": "Estate FORTSBERG"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
@@ -5049,6 +5049,20 @@
       "alternatives": [
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.439,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Bourgen Estate",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1511,
           "id": "st_thomas-estate-louisenhoj",
           "name": "LOUISENHOJ",
@@ -5102,20 +5116,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Bourgen Estate",
           "matchedCandidateName": "BORDEAUX"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 178,
-          "id": "st_thomas-estate-bordeaux-bay",
-          "name": "Bordeaux Bay",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.356590458506503,
-          "lng": -65.01661868979055,
-          "score": 0.385,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Bourgen Estate",
-          "matchedCandidateName": "Bordeaux Bay"
         }
       ]
     },
@@ -13365,6 +13365,20 @@
           "matchedCandidateName": "Lerken Bay"
         },
         {
+          "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.439,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Clausen",
+          "matchedCandidateName": "Magen"
+        },
+        {
           "source": "estates_geojson",
           "sourceIndex": 92,
           "id": "2015",
@@ -13391,20 +13405,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Clausen",
           "matchedCandidateName": "Caret Point"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1045,
-          "id": "st_thomas-island-hassel-island",
-          "name": "Hassel Island",
-          "type": "island",
-          "island": "st_thomas",
-          "lat": 18.3358,
-          "lng": -64.9393,
-          "score": 0.429,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Clausen",
-          "matchedCandidateName": "Hassel Island"
         }
       ]
     },
@@ -17004,17 +17004,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 730,
-          "id": "st_thomas-historic-park-emancipation-garden",
-          "name": "Emancipation Garden",
-          "type": "historic-park",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
           "island": "st_thomas",
-          "lat": 18.3412,
-          "lng": -64.9316,
-          "score": 0.368,
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.429,
           "reason": "weak_similarity",
           "matchedRecordName": "Ctarden Bay",
-          "matchedCandidateName": "Emancipation Garden"
+          "matchedCandidateName": "Magen"
         }
       ]
     },
@@ -18049,17 +18049,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2121,
-          "id": "st_john-sugar-mill-reef-bay-sugar-mill",
-          "name": "Reef Bay Sugar Mill",
-          "type": "sugar-mill",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
           "island": "st_john",
-          "lat": 18.3195,
-          "lng": -64.7335,
+          "lat": 18.3588,
+          "lng": -64.7432,
           "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Debt Hill",
-          "matchedCandidateName": "Reef Bay Sugar Mill"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
@@ -20150,17 +20150,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 441,
-          "id": "st_john-point-chocolate-hole",
-          "name": "Chocolate Hole",
-          "type": "point",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
           "island": "st_john",
-          "lat": 18.318586,
-          "lng": -64.784307,
-          "score": 0.286,
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.308,
           "reason": "weak_similarity",
           "matchedRecordName": "Dubloe/i Hill",
-          "matchedCandidateName": "Chocolate Hole"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
@@ -22155,6 +22155,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.343,
+          "reason": "weak_similarity",
+          "matchedRecordName": "EnAeld Green",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1702,
           "id": "st_thomas-estate-nadir",
           "name": "NADIR",
@@ -22166,20 +22180,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "EnAeld Green",
           "matchedCandidateName": "NADIR"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1717,
-          "id": "st_thomas-estate-nazareth",
-          "name": "NAZARETH",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.32057236303325,
-          "lng": -64.8471117829859,
-          "score": 0.343,
-          "reason": "weak_similarity",
-          "matchedRecordName": "EnAeld Green",
-          "matchedCandidateName": "NAZARETH"
         }
       ]
     },
@@ -31357,6 +31357,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.343,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Grange",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1889,
           "id": "st_thomas-estate-perseverance",
           "name": "PERSEVERANCE",
@@ -31382,20 +31396,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Grange",
           "matchedCandidateName": "Estate Perseverance"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 105,
-          "id": "1938",
-          "name": "Estate DONOE",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.335797,
-          "lng": -64.902773,
-          "score": 0.343,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Grange",
-          "matchedCandidateName": "Estate DONOE"
         }
       ]
     },
@@ -35850,17 +35850,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 1615,
-          "id": "st_john-estate-miland",
-          "name": "MILAND",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
           "type": "estate",
           "island": "st_john",
-          "lat": 18.35490515668765,
-          "lng": -64.7461843645371,
+          "lat": 18.3588,
+          "lng": -64.7432,
           "score": 0.343,
           "reason": "weak_similarity",
           "matchedRecordName": "Hill",
-          "matchedCandidateName": "MILAND"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
@@ -36297,6 +36297,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.444,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Hoe Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 513,
           "id": "st_john-bay-concordia-hill",
           "name": "Concordia Hill",
@@ -36322,20 +36336,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Hoe Hill",
           "matchedCandidateName": "Chocolate Hole"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 442,
-          "id": "st_john-estate-chocolate-hole",
-          "name": "CHOCOLATE HOLE",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.318586458466903,
-          "lng": -64.78430720192435,
-          "score": 0.429,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Hoe Hill",
-          "matchedCandidateName": "CHOCOLATE HOLE"
         }
       ]
     },
@@ -39636,6 +39636,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.333,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Jacob Bay",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 835,
           "id": "st_john-bay-francis-bay",
           "name": "Francis Bay",
@@ -39644,20 +39658,6 @@
           "lat": 18.3621,
           "lng": -64.7469,
           "score": 0.296,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Jacob Bay",
-          "matchedCandidateName": "Francis Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 834,
-          "id": "st_john-beach-francis-bay",
-          "name": "Francis Bay",
-          "type": "beach",
-          "island": "st_john",
-          "lat": 18.3621,
-          "lng": -64.7469,
-          "score": 0.286,
           "reason": "weak_similarity",
           "matchedRecordName": "Jacob Bay",
           "matchedCandidateName": "Francis Bay"
@@ -39988,6 +39988,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.5,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Janeen Point",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2238,
           "id": "st_thomas-bay-saint-james-bay",
           "name": "Saint James Bay",
@@ -40027,20 +40041,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Janeen Point",
           "matchedCandidateName": "Estate GREAT ST JAMES ISLAND"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1001,
-          "id": "st_thomas-historic-house-haagensen-house",
-          "name": "Haagensen House",
-          "type": "historic-house",
-          "island": "st_thomas",
-          "lat": 18.3442,
-          "lng": -64.9303,
-          "score": 0.444,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Janeen Point",
-          "matchedCandidateName": "Haagensen House"
         }
       ]
     },
@@ -40096,6 +40096,20 @@
           "matchedCandidateName": "GREAT ST JAMES ISLAND"
         },
         {
+          "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.51,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Jansen",
+          "matchedCandidateName": "Magen"
+        },
+        {
           "source": "estates_geojson",
           "sourceIndex": 114,
           "id": "1793",
@@ -40122,20 +40136,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Jansen",
           "matchedCandidateName": "Hassel Island"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1047,
-          "id": "st_thomas-historic-district-hassel-island-historic-district",
-          "name": "Hassel Island Historic District",
-          "type": "historic-district",
-          "island": "st_thomas",
-          "lat": 18.3358,
-          "lng": -64.9393,
-          "score": 0.5,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Jansen",
-          "matchedCandidateName": "Hassel Island Historic District"
         }
       ]
     },
@@ -42214,18 +42214,18 @@
           "matchedCandidateName": "Lerken Bay"
         },
         {
-          "source": "estates_geojson",
-          "sourceIndex": 79,
-          "id": "1897",
-          "name": "Estate BAKKERO",
+          "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
           "type": "estate",
           "island": "st_thomas",
-          "lat": 18.323167,
-          "lng": -64.919724,
+          "lat": 18.3626,
+          "lng": -64.9307,
           "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Kalk8teen Bay",
-          "matchedCandidateName": "Estate BAKKERO"
+          "matchedCandidateName": "Magen"
         }
       ]
     },
@@ -44424,19 +44424,33 @@
       "bestScore": 0.333,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1889,
-        "id": "st_thomas-estate-perseverance",
-        "name": "PERSEVERANCE",
+        "sourceIndex": 1545,
+        "id": "st_thomas-estate-magen",
+        "name": "Magen",
         "type": "estate",
         "island": "st_thomas",
-        "lat": 18.3536211183031,
-        "lng": -64.9991791172871,
+        "lat": 18.3626,
+        "lng": -64.9307,
         "score": 0.333,
         "reason": "weak_similarity",
         "matchedRecordName": "Krabbepan Point",
-        "matchedCandidateName": "PERSEVERANCE"
+        "matchedCandidateName": "Magen"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1889,
+          "id": "st_thomas-estate-perseverance",
+          "name": "PERSEVERANCE",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3536211183031,
+          "lng": -64.9991791172871,
+          "score": 0.333,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Krabbepan Point",
+          "matchedCandidateName": "PERSEVERANCE"
+        },
         {
           "source": "geographic_index",
           "sourceIndex": 1890,
@@ -44492,20 +44506,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Krabbepan Point",
           "matchedCandidateName": "Estate Perseverance"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 157,
-          "id": "1992",
-          "name": "Estate PERSEVERANCE",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.353365,
-          "lng": -64.997181,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Krabbepan Point",
-          "matchedCandidateName": "Estate PERSEVERANCE"
         }
       ]
     },
@@ -50842,6 +50842,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.333,
+          "reason": "weak_similarity",
+          "matchedRecordName": "LiZZe Kalzel Bay",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1402,
           "id": "st_john-point-leinster-hill",
           "name": "Leinster Hill",
@@ -50881,20 +50895,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "LiZZe Kalzel Bay",
           "matchedCandidateName": "Estate LITTLE PLANTATION (Lohman)"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 323,
-          "id": "st_john-bay-caneel-bay",
-          "name": "Caneel Bay",
-          "type": "bay",
-          "island": "st_john",
-          "lat": 18.34305825172645,
-          "lng": -64.7874874960091,
-          "score": 0.26,
-          "reason": "weak_similarity",
-          "matchedRecordName": "LiZZe Kalzel Bay",
-          "matchedCandidateName": "Caneel Bay"
         }
       ]
     },
@@ -52134,196 +52134,6 @@
       ]
     },
     {
-      "index": 1545,
-      "id": "st_thomas-estate-magen",
-      "name": "Magen",
-      "type": "estate",
-      "island": "st_thomas",
-      "confidence": "review",
-      "bestScore": 0.92,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 1546,
-        "id": "st_thomas-beach-magens-bay",
-        "name": "Magens Bay",
-        "type": "beach",
-        "island": "st_thomas",
-        "lat": 18.3626,
-        "lng": -64.9307,
-        "score": 0.92,
-        "reason": "contains_clean_slug",
-        "matchedRecordName": "st_thomas-estate-magen",
-        "matchedCandidateName": "st_thomas-beach-magens-bay"
-      },
-      "alternatives": [
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1547,
-          "id": "st_thomas-bay-magens-bay",
-          "name": "Magens Bay",
-          "type": "bay",
-          "island": "st_thomas",
-          "lat": 18.3637,
-          "lng": -64.9304,
-          "score": 0.92,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_thomas-estate-magen",
-          "matchedCandidateName": "Magens Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1582,
-          "id": "st_thomas-estate-mariendal",
-          "name": "MARIENDAL",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.3287034601041,
-          "lng": -64.87492977521575,
-          "score": 0.454,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Magen",
-          "matchedCandidateName": "MARIENDAL"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 145,
-          "id": "1997",
-          "name": "Estate MARIENDAL",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.329288,
-          "lng": -64.876078,
-          "score": 0.454,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Magen",
-          "matchedCandidateName": "Estate MARIENDAL"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1001,
-          "id": "st_thomas-historic-house-haagensen-house",
-          "name": "Haagensen House",
-          "type": "historic-house",
-          "island": "st_thomas",
-          "lat": 18.3442,
-          "lng": -64.9303,
-          "score": 0.444,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Magen",
-          "matchedCandidateName": "Haagensen House"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 351,
-          "id": "st_thomas-estate-caret-bay",
-          "name": "CARET BAY",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.36457293689035,
-          "lng": -64.97608543520525,
-          "score": 0.41,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Magen",
-          "matchedCandidateName": "CARET BAY"
-        }
-      ]
-    },
-    {
-      "index": 1549,
-      "id": "st_john-estate-maho-ball",
-      "name": "Maho Ball",
-      "type": "estate",
-      "island": "st_john",
-      "confidence": "review",
-      "bestScore": 0.93,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 1548,
-        "id": "st_john-estate-maho",
-        "name": "Maho",
-        "type": "estate",
-        "island": "st_john",
-        "lat": 18.3588,
-        "lng": -64.7432,
-        "score": 0.93,
-        "reason": "contains_clean_slug",
-        "matchedRecordName": "st_john-estate-maho-ball",
-        "matchedCandidateName": "st_john-estate-maho"
-      },
-      "alternatives": [
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1550,
-          "id": "st_john-beach-maho-bay",
-          "name": "Maho Bay",
-          "type": "beach",
-          "island": "st_john",
-          "lat": 18.3588,
-          "lng": -64.7432,
-          "score": 0.92,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_john-estate-maho-ball",
-          "matchedCandidateName": "Maho Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1551,
-          "id": "st_john-bay-maho-bay",
-          "name": "Maho Bay",
-          "type": "bay",
-          "island": "st_john",
-          "lat": 18.3588,
-          "lng": -64.7432,
-          "score": 0.92,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_john-estate-maho-ball",
-          "matchedCandidateName": "st_john-bay-maho-bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1552,
-          "id": "st_john-bay-maho-point",
-          "name": "Maho Point",
-          "type": "bay",
-          "island": "st_john",
-          "lat": 18.3588,
-          "lng": -64.7432,
-          "score": 0.92,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_john-estate-maho-ball",
-          "matchedCandidateName": "st_john-bay-maho-point"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1566,
-          "id": "st_john-estate-mandahl",
-          "name": "MANDAHL",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.3113965331173,
-          "lng": -64.7124047177175,
-          "score": 0.454,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Maho Ball",
-          "matchedCandidateName": "MANDAHL"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 47,
-          "id": "1629",
-          "name": "Estate MANDAHL",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.309267,
-          "lng": -64.714095,
-          "score": 0.454,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Maho Ball",
-          "matchedCandidateName": "Estate MANDAHL"
-        }
-      ]
-    },
-    {
       "index": 1556,
       "id": "st_thomas-estate-mahogany-road",
       "name": "Mahogany Road",
@@ -52359,6 +52169,20 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Mahogany Road",
           "matchedCandidateName": "Botany Bay Road"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.51,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Mahogany Road",
+          "matchedCandidateName": "Magen"
         },
         {
           "source": "historic_sites",
@@ -52401,20 +52225,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Mahogany Road",
           "matchedCandidateName": "Botany Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 195,
-          "id": "st_thomas-bay-botany-point",
-          "name": "Botany Point",
-          "type": "bay",
-          "island": "st_thomas",
-          "lat": 18.35401195896805,
-          "lng": -65.03347371262775,
-          "score": 0.5,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mahogany Road",
-          "matchedCandidateName": "Botany Point"
         }
       ]
     },
@@ -53150,6 +52960,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.395,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Margaret Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1566,
           "id": "st_john-estate-mandahl",
           "name": "MANDAHL",
@@ -53161,20 +52985,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Margaret Hill",
           "matchedCandidateName": "MANDAHL"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 47,
-          "id": "1629",
-          "name": "Estate MANDAHL",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.309267,
-          "lng": -64.714095,
-          "score": 0.395,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Margaret Hill",
-          "matchedCandidateName": "Estate MANDAHL"
         }
       ]
     },
@@ -53555,101 +53365,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Mary Ridge",
           "matchedCandidateName": "MARIENDAL"
-        }
-      ]
-    },
-    {
-      "index": 1599,
-      "id": "st_john-bay-marys-point-buy",
-      "name": "Mary's Point Buy",
-      "type": "bay",
-      "island": "st_john",
-      "confidence": "review",
-      "bestScore": 0.92,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 1597,
-        "id": "st_john-estate-mary-point-estate",
-        "name": "Mary-Point Estate",
-        "type": "estate",
-        "island": "st_john",
-        "lat": 18.368333,
-        "lng": -64.741389,
-        "score": 0.92,
-        "reason": "contains_clean_slug",
-        "matchedRecordName": "st_john-bay-marys-point-buy",
-        "matchedCandidateName": "st_john-estate-mary-point-estate"
-      },
-      "alternatives": [
-        {
-          "source": "historic_sites",
-          "sourceIndex": 53,
-          "id": "nrhp-stj-mary-point-estate",
-          "name": "Mary Point Estate",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.368333,
-          "lng": -64.741389,
-          "score": 0.92,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_john-bay-marys-point-buy",
-          "matchedCandidateName": "Mary Point Estate"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 2598,
-          "id": "st_john-estate-ushers-quay",
-          "name": "USHER'S QUAY",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.34632122900375,
-          "lng": -64.70943660635311,
-          "score": 0.417,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mary's Point Buy",
-          "matchedCandidateName": "USHER'S QUAY"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 71,
-          "id": "1639",
-          "name": "Estate USHER'S QUAY",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.345939,
-          "lng": -64.709881,
-          "score": 0.417,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mary's Point Buy",
-          "matchedCandidateName": "Estate USHER'S QUAY"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1035,
-          "id": "st_john-estate-hard-labor",
-          "name": "HARD LABOR",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.324201659281748,
-          "lng": -64.7031502321739,
-          "score": 0.4,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mary's Point Buy",
-          "matchedCandidateName": "HARD LABOR"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 36,
-          "id": "1910",
-          "name": "Estate HARD LABOR",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.324134,
-          "lng": -64.702609,
-          "score": 0.4,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mary's Point Buy",
-          "matchedCandidateName": "Estate HARD LABOR"
         }
       ]
     },
@@ -54800,22 +54515,36 @@
       "type": "estate",
       "island": "st_john",
       "confidence": "none",
-      "bestScore": 0.454,
+      "bestScore": 0.566,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1617,
-        "id": "st_john-estate-mingo-cay",
-        "name": "MINGO CAY",
+        "sourceIndex": 1549,
+        "id": "st_john-estate-maho-ball",
+        "name": "Maho Ball",
         "type": "estate",
         "island": "st_john",
-        "lat": 18.359631223485252,
-        "lng": -64.82018790394136,
-        "score": 0.454,
+        "lat": 18.3588,
+        "lng": -64.7432,
+        "score": 0.566,
         "reason": "weak_similarity",
         "matchedRecordName": "Mnhu Bav",
-        "matchedCandidateName": "MINGO CAY"
+        "matchedCandidateName": "Maho Ball"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1617,
+          "id": "st_john-estate-mingo-cay",
+          "name": "MINGO CAY",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.359631223485252,
+          "lng": -64.82018790394136,
+          "score": 0.454,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Mnhu Bav",
+          "matchedCandidateName": "MINGO CAY"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 49,
@@ -54860,31 +54589,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 1067,
-          "id": "st_john-estate-henley-cay",
-          "name": "HENLEY CAY",
-          "type": "estate",
+          "sourceIndex": 1599,
+          "id": "st_john-bay-marys-point-buy",
+          "name": "Mary's Point Buy",
+          "type": "bay",
           "island": "st_john",
-          "lat": 18.3532711821381,
-          "lng": -64.7930438770132,
-          "score": 0.31,
+          "lat": 18.368333,
+          "lng": -64.741389,
+          "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Mnhu Bav",
-          "matchedCandidateName": "HENLEY CAY"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 38,
-          "id": "1645",
-          "name": "Estate HENLEY CAY",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.353374,
-          "lng": -64.792982,
-          "score": 0.31,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mnhu Bav",
-          "matchedCandidateName": "Estate HENLEY CAY"
+          "matchedCandidateName": "st_john-bay-marys-point-buy"
         }
       ]
     },
@@ -57629,17 +57344,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 1617,
-          "id": "st_john-estate-mingo-cay",
-          "name": "MINGO CAY",
-          "type": "estate",
+          "sourceIndex": 1599,
+          "id": "st_john-bay-marys-point-buy",
+          "name": "Mary's Point Buy",
+          "type": "bay",
           "island": "st_john",
-          "lat": 18.359631223485252,
-          "lng": -64.82018790394136,
+          "lat": 18.368333,
+          "lng": -64.741389,
           "score": 0.308,
           "reason": "weak_similarity",
           "matchedRecordName": "Murdenhorouyh Point",
-          "matchedCandidateName": "MINGO CAY"
+          "matchedCandidateName": "Mary's Point Buy"
         }
       ]
     },
@@ -58280,6 +57995,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.4,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Nancy Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1566,
           "id": "st_john-estate-mandahl",
           "name": "MANDAHL",
@@ -58291,20 +58020,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Nancy Hill",
           "matchedCandidateName": "MANDAHL"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 47,
-          "id": "1629",
-          "name": "Estate MANDAHL",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.309267,
-          "lng": -64.714095,
-          "score": 0.4,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Nancy Hill",
-          "matchedCandidateName": "Estate MANDAHL"
         }
       ]
     },
@@ -58917,6 +58632,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.375,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Nattepan Bay",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2131,
           "id": "st_thomas-estate-retreat",
           "name": "Retreat",
@@ -58956,20 +58685,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Nattepan Bay",
           "matchedCandidateName": "Estate SALT CAY"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 17,
-          "id": "st_thomas-estate-annas-fancy",
-          "name": "ANNA'S FANCY",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.34260748795655,
-          "lng": -64.9413616106873,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Nattepan Bay",
-          "matchedCandidateName": "ANNA'S FANCY"
         }
       ]
     },
@@ -60120,22 +59835,36 @@
       "type": "point",
       "island": "st_croix",
       "confidence": "none",
-      "bestScore": 0.6,
+      "bestScore": 0.7,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1755,
-        "id": "st_croix-estate-north-hall",
-        "name": "NORTH HALL",
+        "sourceIndex": 1758,
+        "id": "st_croix-estate-north-side",
+        "name": "North Side",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.74951173408035,
-        "lng": -64.87233148757599,
-        "score": 0.6,
+        "lat": 17.75974688135625,
+        "lng": -64.8840756495307,
+        "score": 0.7,
         "reason": "weak_similarity",
         "matchedRecordName": "North Cove",
-        "matchedCandidateName": "NORTH HALL"
+        "matchedCandidateName": "North Side"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1755,
+          "id": "st_croix-estate-north-hall",
+          "name": "NORTH HALL",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.74951173408035,
+          "lng": -64.87233148757599,
+          "score": 0.6,
+          "reason": "weak_similarity",
+          "matchedRecordName": "North Cove",
+          "matchedCandidateName": "NORTH HALL"
+        },
         {
           "source": "geographic_index",
           "sourceIndex": 1760,
@@ -60191,20 +59920,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "North Cove",
           "matchedCandidateName": "Northside Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1768,
-          "id": "st_croix-estate-northside-road",
-          "name": "Northside Road",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.75974688135625,
-          "lng": -64.8840756495307,
-          "score": 0.6,
-          "reason": "weak_similarity",
-          "matchedRecordName": "North Cove",
-          "matchedCandidateName": "Northside Road"
         }
       ]
     },
@@ -60404,23 +60119,37 @@
       "name": "North Si&",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "none",
-      "bestScore": 0.737,
+      "confidence": "review",
+      "bestScore": 0.93,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1761,
-        "id": "st_croix-estate-north-star",
-        "name": "NORTH STAR",
+        "sourceIndex": 1758,
+        "id": "st_croix-estate-north-side",
+        "name": "North Side",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.7643827657991,
-        "lng": -64.8181934288463,
-        "score": 0.737,
-        "reason": "weak_similarity",
-        "matchedRecordName": "st_croix-estate-north-siand",
-        "matchedCandidateName": "NORTH STAR"
+        "lat": 17.75974688135625,
+        "lng": -64.8840756495307,
+        "score": 0.93,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "North Si&",
+        "matchedCandidateName": "st_croix-estate-north-side"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1761,
+          "id": "st_croix-estate-north-star",
+          "name": "NORTH STAR",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.7643827657991,
+          "lng": -64.8181934288463,
+          "score": 0.737,
+          "reason": "weak_similarity",
+          "matchedRecordName": "st_croix-estate-north-siand",
+          "matchedCandidateName": "NORTH STAR"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 326,
@@ -60476,115 +60205,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "North Si&",
           "matchedCandidateName": "NORTHSIDE"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1768,
-          "id": "st_croix-estate-northside-road",
-          "name": "Northside Road",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.75974688135625,
-          "lng": -64.8840756495307,
-          "score": 0.677,
-          "reason": "weak_similarity",
-          "matchedRecordName": "North Si&",
-          "matchedCandidateName": "Northside Road"
-        }
-      ]
-    },
-    {
-      "index": 1758,
-      "id": "st_croix-estate-north-side",
-      "name": "North Side",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.91,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 1764,
-        "id": "st_croix-estate-northside",
-        "name": "NORTHSIDE",
-        "type": "estate",
-        "island": "st_croix",
-        "lat": 17.75974688135625,
-        "lng": -64.8840756495307,
-        "score": 0.91,
-        "reason": "similarity_or_token_overlap",
-        "matchedRecordName": "North Side",
-        "matchedCandidateName": "NORTHSIDE"
-      },
-      "alternatives": [
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1768,
-          "id": "st_croix-estate-northside-road",
-          "name": "Northside Road",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.75974688135625,
-          "lng": -64.8840756495307,
-          "score": 0.91,
-          "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "North Side",
-          "matchedCandidateName": "Northside Road"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 327,
-          "id": "1659",
-          "name": "Estate NORTHSIDE",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.759625,
-          "lng": -64.888272,
-          "score": 0.91,
-          "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "North Side",
-          "matchedCandidateName": "Estate NORTHSIDE"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1767,
-          "id": "st_croix-bay-northside-bay",
-          "name": "Northside Bay",
-          "type": "bay",
-          "island": "st_croix",
-          "lat": 17.75974688135625,
-          "lng": -64.8840756495307,
-          "score": 0.9,
-          "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "North Side",
-          "matchedCandidateName": "Northside Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1760,
-          "id": "st_croix-estate-north-slob",
-          "name": "NORTH SLOB",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.753093424189153,
-          "lng": -64.60252216053621,
-          "score": 0.71,
-          "reason": "weak_similarity",
-          "matchedRecordName": "North Side",
-          "matchedCandidateName": "NORTH SLOB"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1761,
-          "id": "st_croix-estate-north-star",
-          "name": "NORTH STAR",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.7643827657991,
-          "lng": -64.8181934288463,
-          "score": 0.71,
-          "reason": "weak_similarity",
-          "matchedRecordName": "North Side",
-          "matchedCandidateName": "NORTH STAR"
         }
       ]
     },
@@ -61073,19 +60693,33 @@
       "bestScore": 0.5,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1546,
-        "id": "st_thomas-beach-magens-bay",
-        "name": "Magens Bay",
-        "type": "beach",
+        "sourceIndex": 1545,
+        "id": "st_thomas-estate-magen",
+        "name": "Magen",
+        "type": "estate",
         "island": "st_thomas",
         "lat": 18.3626,
         "lng": -64.9307,
         "score": 0.5,
         "reason": "weak_similarity",
         "matchedRecordName": "Nugent Point",
-        "matchedCandidateName": "Magens Bay"
+        "matchedCandidateName": "Magen"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1546,
+          "id": "st_thomas-beach-magens-bay",
+          "name": "Magens Bay",
+          "type": "beach",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.5,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Nugent Point",
+          "matchedCandidateName": "Magens Bay"
+        },
         {
           "source": "geographic_index",
           "sourceIndex": 1547,
@@ -61141,20 +60775,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Nugent Point",
           "matchedCandidateName": "NEW HERNHUT"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 150,
-          "id": "1911",
-          "name": "Estate NEW HERNHUT",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.331923,
-          "lng": -64.900937,
-          "score": 0.364,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Nugent Point",
-          "matchedCandidateName": "Estate NEW HERNHUT"
         }
       ]
     },
@@ -61401,6 +61021,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.429,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Oatende",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1546,
           "id": "st_thomas-beach-magens-bay",
           "name": "Magens Bay",
@@ -61426,20 +61060,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Oatende",
           "matchedCandidateName": "Magens Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 404,
-          "id": "st_thomas-estate-catherineberg",
-          "name": "CATHERINEBERG",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.3450964261188,
-          "lng": -64.93264931271824,
-          "score": 0.385,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Oatende",
-          "matchedCandidateName": "CATHERINEBERG"
         }
       ]
     },
@@ -64929,6 +64549,20 @@
           "matchedCandidateName": "Lerken Bay"
         },
         {
+          "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.439,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Parhien",
+          "matchedCandidateName": "Magen"
+        },
+        {
           "source": "estates_geojson",
           "sourceIndex": 92,
           "id": "2015",
@@ -64941,20 +64575,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Parhien",
           "matchedCandidateName": "Estate CARET BAY"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 352,
-          "id": "st_thomas-bay-caret-point",
-          "name": "Caret Point",
-          "type": "bay",
-          "island": "st_thomas",
-          "lat": 18.36457293689035,
-          "lng": -64.97608543520525,
-          "score": 0.429,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Parhien",
-          "matchedCandidateName": "Caret Point"
         }
       ]
     },
@@ -70724,6 +70344,20 @@
           "matchedCandidateName": "PEARL"
         },
         {
+          "source": "geographic_index",
+          "sourceIndex": 2359,
+          "id": "st_croix-estate-south-bay",
+          "name": "South Bay",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.74356362461915,
+          "lng": -64.7692203635706,
+          "score": 0.41,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Poul",
+          "matchedCandidateName": "South Bay"
+        },
+        {
           "source": "estates_geojson",
           "sourceIndex": 334,
           "id": "1692",
@@ -70736,20 +70370,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Poul",
           "matchedCandidateName": "Estate PEARL"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 2010,
-          "id": "st_croix-estate-profit",
-          "name": "PROFIT",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.71590430053505,
-          "lng": -64.78092833993534,
-          "score": 0.343,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Poul",
-          "matchedCandidateName": "PROFIT"
         }
       ]
     },
@@ -73305,17 +72925,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2121,
-          "id": "st_john-sugar-mill-reef-bay-sugar-mill",
-          "name": "Reef Bay Sugar Mill",
-          "type": "sugar-mill",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
           "island": "st_john",
-          "lat": 18.3195,
-          "lng": -64.7335,
+          "lat": 18.3588,
+          "lng": -64.7432,
           "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Qift Hill",
-          "matchedCandidateName": "Reef Bay Sugar Mill"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
@@ -74065,17 +73685,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2179,
-          "id": "st_thomas-estate-ross",
-          "name": "ROSS",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
           "type": "estate",
           "island": "st_thomas",
-          "lat": 18.344385751337548,
-          "lng": -64.92106561631704,
+          "lat": 18.3626,
+          "lng": -64.9307,
           "score": 0.343,
           "reason": "weak_similarity",
           "matchedRecordName": "Rapoon",
-          "matchedCandidateName": "ROSS"
+          "matchedCandidateName": "Magen"
         }
       ]
     },
@@ -74118,6 +73738,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.41,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Rapun",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2281,
           "id": "st_thomas-estate-savana-island",
           "name": "SAVANA ISLAND",
@@ -74153,20 +73787,6 @@
           "island": "st_thomas",
           "lat": 18.3626,
           "lng": -64.9307,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Rapun",
-          "matchedCandidateName": "Magens Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1547,
-          "id": "st_thomas-bay-magens-bay",
-          "name": "Magens Bay",
-          "type": "bay",
-          "island": "st_thomas",
-          "lat": 18.3637,
-          "lng": -64.9304,
           "score": 0.333,
           "reason": "weak_similarity",
           "matchedRecordName": "Rapun",
@@ -76721,6 +76341,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.4,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Roman Hill",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1566,
           "id": "st_john-estate-mandahl",
           "name": "MANDAHL",
@@ -76746,20 +76380,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Roman Hill",
           "matchedCandidateName": "Reef Bay Sugar Mill"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 47,
-          "id": "1629",
-          "name": "Estate MANDAHL",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.309267,
-          "lng": -64.714095,
-          "score": 0.4,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Roman Hill",
-          "matchedCandidateName": "Estate MANDAHL"
         }
       ]
     },
@@ -79310,6 +78930,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3588,
+          "lng": -64.7432,
+          "score": 0.333,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Sabbat Point",
+          "matchedCandidateName": "Maho Ball"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2314,
           "id": "st_john-estate-sieben",
           "name": "SIEBEN",
@@ -79335,20 +78969,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Sabbat Point",
           "matchedCandidateName": "Estate SIEBEN"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 523,
-          "id": "st_john-estate-contant",
-          "name": "CONTANT",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.3233686913533,
-          "lng": -64.79179894512015,
-          "score": 0.286,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Sabbat Point",
-          "matchedCandidateName": "CONTANT"
         }
       ]
     },
@@ -79929,22 +79549,36 @@
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
-      "bestScore": 0.454,
+      "bestScore": 0.51,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1582,
-        "id": "st_thomas-estate-mariendal",
-        "name": "MARIENDAL",
+        "sourceIndex": 1545,
+        "id": "st_thomas-estate-magen",
+        "name": "Magen",
         "type": "estate",
         "island": "st_thomas",
-        "lat": 18.3287034601041,
-        "lng": -64.87492977521575,
-        "score": 0.454,
+        "lat": 18.3626,
+        "lng": -64.9307,
+        "score": 0.51,
         "reason": "weak_similarity",
         "matchedRecordName": "Saint Martin",
-        "matchedCandidateName": "MARIENDAL"
+        "matchedCandidateName": "Magen"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1582,
+          "id": "st_thomas-estate-mariendal",
+          "name": "MARIENDAL",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3287034601041,
+          "lng": -64.87492977521575,
+          "score": 0.454,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Saint Martin",
+          "matchedCandidateName": "MARIENDAL"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 145,
@@ -80000,20 +79634,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Saint Martin",
           "matchedCandidateName": "FORTUNA"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1542,
-          "id": "st_thomas-estate-mafolie",
-          "name": "MAFOLIE",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.35057920990645,
-          "lng": -64.9310796581254,
-          "score": 0.439,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Saint Martin",
-          "matchedCandidateName": "MAFOLIE"
         }
       ]
     },
@@ -84958,101 +84578,6 @@
       ]
     },
     {
-      "index": 2359,
-      "id": "st_croix-estate-south-bay",
-      "name": "South Bay",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.93,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 167,
-        "id": "st_croix-estate-bonne-esperance-south",
-        "name": "BONNE ESPERANCE (SOUTH)",
-        "type": "estate",
-        "island": "st_croix",
-        "lat": 17.74356362461915,
-        "lng": -64.7692203635706,
-        "score": 0.93,
-        "reason": "contains_clean_slug",
-        "matchedRecordName": "st_croix-estate-south-bay",
-        "matchedCandidateName": "BONNE ESPERANCE (SOUTH)"
-      },
-      "alternatives": [
-        {
-          "source": "geographic_index",
-          "sourceIndex": 313,
-          "id": "st_croix-estate-cane-south",
-          "name": "CANE (South)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.6840127842219,
-          "lng": -64.833212443952,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-south-bay",
-          "matchedCandidateName": "CANE (South)"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 507,
-          "id": "st_croix-estate-concordia-south",
-          "name": "CONCORDIA (South)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.68729839035385,
-          "lng": -64.87607507441115,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-south-bay",
-          "matchedCandidateName": "CONCORDIA (South)"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 942,
-          "id": "st_croix-estate-grange-south",
-          "name": "GRANGE (South)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.720406562603053,
-          "lng": -64.69837792699475,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-south-bay",
-          "matchedCandidateName": "GRANGE (South)"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1665,
-          "id": "st_croix-estate-mount-pleasant-south",
-          "name": "MOUNT PLEASANT (South)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.710623580919098,
-          "lng": -64.81799514312371,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-south-bay",
-          "matchedCandidateName": "MOUNT PLEASANT (South)"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1935,
-          "id": "st_croix-estate-plessen-south",
-          "name": "PLESSEN (South)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.71875658316205,
-          "lng": -64.82048366575034,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-south-bay",
-          "matchedCandidateName": "PLESSEN (South)"
-        }
-      ]
-    },
-    {
       "index": 2362,
       "id": "st_thomas-estate-southgate-farm",
       "name": "Southgate Farm",
@@ -85153,23 +84678,37 @@
       "name": "Southgate Plain",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "none",
-      "bestScore": 0.743,
+      "confidence": "review",
+      "bestScore": 0.93,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 2363,
-        "id": "st_croix-estate-southgate-farm",
-        "name": "SOUTHGATE FARM",
+        "sourceIndex": 2359,
+        "id": "st_croix-estate-south-bay",
+        "name": "South Bay",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.75329505651455,
-        "lng": -64.66309280141385,
-        "score": 0.743,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Southgate Plain",
-        "matchedCandidateName": "SOUTHGATE FARM"
+        "lat": 17.74356362461915,
+        "lng": -64.7692203635706,
+        "score": 0.93,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "st_croix-estate-southgate-plain",
+        "matchedCandidateName": "st_croix-estate-south-bay"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 2363,
+          "id": "st_croix-estate-southgate-farm",
+          "name": "SOUTHGATE FARM",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.75329505651455,
+          "lng": -64.66309280141385,
+          "score": 0.743,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Southgate Plain",
+          "matchedCandidateName": "SOUTHGATE FARM"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 373,
@@ -85225,20 +84764,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Southgate Plain",
           "matchedCandidateName": "FOUNTAIN"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1678,
-          "id": "st_croix-estate-mountain",
-          "name": "MOUNTAIN",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.71409151355645,
-          "lng": -64.835947393362,
-          "score": 0.41,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Southgate Plain",
-          "matchedCandidateName": "MOUNTAIN"
         }
       ]
     },
@@ -85438,23 +84963,37 @@
       "name": "Southside Road",
       "type": "point",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.778,
+      "confidence": "review",
+      "bestScore": 0.92,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1764,
-        "id": "st_croix-estate-northside",
-        "name": "NORTHSIDE",
+        "sourceIndex": 2359,
+        "id": "st_croix-estate-south-bay",
+        "name": "South Bay",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.75974688135625,
-        "lng": -64.8840756495307,
-        "score": 0.778,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Southside Road",
-        "matchedCandidateName": "NORTHSIDE"
+        "lat": 17.74356362461915,
+        "lng": -64.7692203635706,
+        "score": 0.92,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "st_croix-point-southside-road",
+        "matchedCandidateName": "st_croix-estate-south-bay"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1764,
+          "id": "st_croix-estate-northside",
+          "name": "NORTHSIDE",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.75974688135625,
+          "lng": -64.8840756495307,
+          "score": 0.778,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Southside Road",
+          "matchedCandidateName": "NORTHSIDE"
+        },
         {
           "source": "geographic_index",
           "sourceIndex": 1767,
@@ -85499,31 +85038,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2361,
-          "id": "st_croix-estate-south-slob",
-          "name": "SOUTH SLOB",
+          "sourceIndex": 1758,
+          "id": "st_croix-estate-north-side",
+          "name": "North Side",
           "type": "estate",
           "island": "st_croix",
-          "lat": 17.7480671806761,
-          "lng": -64.6006142929933,
-          "score": 0.6,
+          "lat": 17.75974688135625,
+          "lng": -64.8840756495307,
+          "score": 0.7,
           "reason": "weak_similarity",
           "matchedRecordName": "Southside Road",
-          "matchedCandidateName": "SOUTH SLOB"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 372,
-          "id": "1875",
-          "name": "Estate SOUTH SLOB",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.745818,
-          "lng": -64.599065,
-          "score": 0.6,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Southside Road",
-          "matchedCandidateName": "Estate SOUTH SLOB"
+          "matchedCandidateName": "North Side"
         }
       ]
     },
@@ -85533,23 +85058,37 @@
       "name": "Southwest Anchorage",
       "type": "point",
       "island": "st_croix",
-      "confidence": "none",
-      "bestScore": 0.421,
+      "confidence": "review",
+      "bestScore": 0.92,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 2360,
-        "id": "st_croix-estate-south-grapetree-bay",
-        "name": "SOUTH GRAPETREE BAY",
+        "sourceIndex": 2359,
+        "id": "st_croix-estate-south-bay",
+        "name": "South Bay",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.748278731624097,
-        "lng": -64.59115064473225,
-        "score": 0.421,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Southwest Anchorage",
-        "matchedCandidateName": "SOUTH GRAPETREE BAY"
+        "lat": 17.74356362461915,
+        "lng": -64.7692203635706,
+        "score": 0.92,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "st_croix-point-southwest-anchorage",
+        "matchedCandidateName": "st_croix-estate-south-bay"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 2360,
+          "id": "st_croix-estate-south-grapetree-bay",
+          "name": "SOUTH GRAPETREE BAY",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.748278731624097,
+          "lng": -64.59115064473225,
+          "score": 0.421,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Southwest Anchorage",
+          "matchedCandidateName": "SOUTH GRAPETREE BAY"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 371,
@@ -85605,20 +85144,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Southwest Anchorage",
           "matchedCandidateName": "NORTH STAR"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1769,
-          "id": "st_croix-estate-northstar",
-          "name": "Northstar",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.7643827657991,
-          "lng": -64.8181934288463,
-          "score": 0.368,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Southwest Anchorage",
-          "matchedCandidateName": "Northstar"
         }
       ]
     },
@@ -85723,23 +85248,37 @@
       "name": "Southwest Shoal",
       "type": "point",
       "island": "st_croix",
-      "confidence": "none",
-      "bestScore": 0.533,
+      "confidence": "review",
+      "bestScore": 0.92,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 2361,
-        "id": "st_croix-estate-south-slob",
-        "name": "SOUTH SLOB",
+        "sourceIndex": 2359,
+        "id": "st_croix-estate-south-bay",
+        "name": "South Bay",
         "type": "estate",
         "island": "st_croix",
-        "lat": 17.7480671806761,
-        "lng": -64.6006142929933,
-        "score": 0.533,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Southwest Shoal",
-        "matchedCandidateName": "SOUTH SLOB"
+        "lat": 17.74356362461915,
+        "lng": -64.7692203635706,
+        "score": 0.92,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "st_croix-point-southwest-shoal",
+        "matchedCandidateName": "st_croix-estate-south-bay"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 2361,
+          "id": "st_croix-estate-south-slob",
+          "name": "SOUTH SLOB",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.7480671806761,
+          "lng": -64.6006142929933,
+          "score": 0.533,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Southwest Shoal",
+          "matchedCandidateName": "SOUTH SLOB"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 372,
@@ -85795,20 +85334,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Southwest Shoal",
           "matchedCandidateName": "NORTH SLOB"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1761,
-          "id": "st_croix-estate-north-star",
-          "name": "NORTH STAR",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.7643827657991,
-          "lng": -64.8181934288463,
-          "score": 0.4,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Southwest Shoal",
-          "matchedCandidateName": "NORTH STAR"
         }
       ]
     },
@@ -85835,6 +85360,20 @@
         "matchedCandidateName": "SHOYS"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 2359,
+          "id": "st_croix-estate-south-bay",
+          "name": "South Bay",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.74356362461915,
+          "lng": -64.7692203635706,
+          "score": 0.4,
+          "reason": "weak_similarity",
+          "matchedRecordName": "SoZO",
+          "matchedCandidateName": "South Bay"
+        },
         {
           "source": "estates_geojson",
           "sourceIndex": 365,
@@ -85890,20 +85429,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "SoZO",
           "matchedCandidateName": "GREAT POND"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 967,
-          "id": "st_croix-bay-great-pond-bay",
-          "name": "Great Pond Bay",
-          "type": "bay",
-          "island": "st_croix",
-          "lat": 17.72774285576095,
-          "lng": -64.6486757604458,
-          "score": 0.25,
-          "reason": "weak_similarity",
-          "matchedRecordName": "SoZO",
-          "matchedCandidateName": "Great Pond Bay"
         }
       ]
     },
@@ -87202,101 +86727,6 @@
       ]
     },
     {
-      "index": 2417,
-      "id": "st_croix-estate-stewart-bay",
-      "name": "Stewart Bay",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.93,
-      "bestMatch": {
-        "source": "geographic_index",
-        "sourceIndex": 1668,
-        "id": "st_croix-estate-mount-stewart",
-        "name": "MOUNT STEWART",
-        "type": "estate",
-        "island": "st_croix",
-        "lat": 17.747914595970848,
-        "lng": -64.84303041392059,
-        "score": 0.93,
-        "reason": "contains_clean_slug",
-        "matchedRecordName": "st_croix-estate-stewart-bay",
-        "matchedCandidateName": "MOUNT STEWART"
-      },
-      "alternatives": [
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 317,
-          "id": "1903",
-          "name": "Estate MOUNT STEWART",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.747186,
-          "lng": -64.841199,
-          "score": 0.93,
-          "reason": "contains_clean_slug",
-          "matchedRecordName": "st_croix-estate-stewart-bay",
-          "matchedCandidateName": "Estate MOUNT STEWART"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1876,
-          "id": "st_croix-estate-pearl",
-          "name": "PEARL",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.712807117425903,
-          "lng": -64.7370935892219,
-          "score": 0.439,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Stewart Bay",
-          "matchedCandidateName": "PEARL"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 2379,
-          "id": "st_croix-estate-sprat",
-          "name": "Sprat",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.74306767792325,
-          "lng": -64.88348586636539,
-          "score": 0.439,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Stewart Bay",
-          "matchedCandidateName": "Sprat"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 334,
-          "id": "1692",
-          "name": "Estate PEARL",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.708193,
-          "lng": -64.735491,
-          "score": 0.439,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Stewart Bay",
-          "matchedCandidateName": "Estate PEARL"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 2346,
-          "id": "st_croix-estate-solitude-east",
-          "name": "SOLITUDE (East)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.75400212327395,
-          "lng": -64.6345930997026,
-          "score": 0.395,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Stewart Bay",
-          "matchedCandidateName": "SOLITUDE (East)"
-        }
-      ]
-    },
-    {
       "index": 2418,
       "id": "st_croix-estate-stioha",
       "name": "Stioha",
@@ -87838,6 +87268,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 2417,
+          "id": "st_croix-estate-stewart-bay",
+          "name": "Stewart Bay",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.747914595970848,
+          "lng": -64.84303041392059,
+          "score": 0.41,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Strawberry",
+          "matchedCandidateName": "Stewart Bay"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2524,
           "id": "st_croix-estate-tipperary",
           "name": "TIPPERARY",
@@ -87849,20 +87293,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Strawberry",
           "matchedCandidateName": "TIPPERARY"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 390,
-          "id": "1678",
-          "name": "Estate TIPPERARY",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.743795,
-          "lng": -64.654244,
-          "score": 0.41,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Strawberry",
-          "matchedCandidateName": "Estate TIPPERARY"
         }
       ]
     },
@@ -89900,6 +89330,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.41,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Tague Point",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 2412,
           "id": "st_thomas-estate-staabi",
           "name": "STAABI",
@@ -89939,20 +89383,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Tague Point",
           "matchedCandidateName": "Caretbay Gut"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1001,
-          "id": "st_thomas-historic-house-haagensen-house",
-          "name": "Haagensen House",
-          "type": "historic-house",
-          "island": "st_thomas",
-          "lat": 18.3442,
-          "lng": -64.9303,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Tague Point",
-          "matchedCandidateName": "Haagensen House"
         }
       ]
     },
@@ -92697,17 +92127,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2567,
-          "id": "st_croix-estate-two-brothers",
-          "name": "Two Brothers",
+          "sourceIndex": 2417,
+          "id": "st_croix-estate-stewart-bay",
+          "name": "Stewart Bay",
           "type": "estate",
           "island": "st_croix",
-          "lat": 17.70046990000005,
-          "lng": -64.88458695770751,
-          "score": 0.427,
+          "lat": 17.747914595970848,
+          "lng": -64.84303041392059,
+          "score": 0.439,
           "reason": "weak_similarity",
           "matchedRecordName": "Towers",
-          "matchedCandidateName": "Two Brothers"
+          "matchedCandidateName": "Stewart Bay"
         }
       ]
     },
@@ -95016,6 +94446,20 @@
       "alternatives": [
         {
           "source": "geographic_index",
+          "sourceIndex": 1545,
+          "id": "st_thomas-estate-magen",
+          "name": "Magen",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.333,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Vagdhue Pgnt",
+          "matchedCandidateName": "Magen"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1546,
           "id": "st_thomas-beach-magens-bay",
           "name": "Magens Bay",
@@ -95069,20 +94513,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Vagdhue Pgnt",
           "matchedCandidateName": "Estate ADELPHI"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 160,
-          "id": "1996",
-          "name": "Estate RAPHUNE",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.335865,
-          "lng": -64.907498,
-          "score": 0.333,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Vagdhue Pgnt",
-          "matchedCandidateName": "Estate RAPHUNE"
         }
       ]
     },
@@ -95220,6 +94650,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1758,
+          "id": "st_croix-estate-north-side",
+          "name": "North Side",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.75974688135625,
+          "lng": -64.8840756495307,
+          "score": 0.3,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Vagthus Point",
+          "matchedCandidateName": "North Side"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 1760,
           "id": "st_croix-estate-north-slob",
           "name": "NORTH SLOB",
@@ -95259,20 +94703,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Vagthus Point",
           "matchedCandidateName": "SOUTH SLOB"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 325,
-          "id": "1665",
-          "name": "Estate NORTH SLOB",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.754798,
-          "lng": -64.602738,
-          "score": 0.3,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Vagthus Point",
-          "matchedCandidateName": "Estate NORTH SLOB"
         }
       ]
     },
@@ -100793,22 +100223,36 @@
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
-      "bestScore": 0.417,
+      "bestScore": 0.454,
       "bestMatch": {
         "source": "geographic_index",
-        "sourceIndex": 1546,
-        "id": "st_thomas-beach-magens-bay",
-        "name": "Magens Bay",
-        "type": "beach",
+        "sourceIndex": 1545,
+        "id": "st_thomas-estate-magen",
+        "name": "Magen",
+        "type": "estate",
         "island": "st_thomas",
         "lat": 18.3626,
         "lng": -64.9307,
-        "score": 0.417,
+        "score": 0.454,
         "reason": "weak_similarity",
         "matchedRecordName": "Wildhagen",
-        "matchedCandidateName": "st_thomas-beach-magens-bay"
+        "matchedCandidateName": "Magen"
       },
       "alternatives": [
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1546,
+          "id": "st_thomas-beach-magens-bay",
+          "name": "Magens Bay",
+          "type": "beach",
+          "island": "st_thomas",
+          "lat": 18.3626,
+          "lng": -64.9307,
+          "score": 0.417,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Wildhagen",
+          "matchedCandidateName": "st_thomas-beach-magens-bay"
+        },
         {
           "source": "geographic_index",
           "sourceIndex": 1406,
@@ -100864,20 +100308,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Wildhagen",
           "matchedCandidateName": "Magens Bay"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1430,
-          "id": "st_thomas-estate-lilliendal-and-marienhoj",
-          "name": "LILLIENDAL & MARIENHOJ",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.354843145626802,
-          "lng": -64.95255478074375,
-          "score": 0.31,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Wildhagen",
-          "matchedCandidateName": "LILLIENDAL & MARIENHOJ"
         }
       ]
     },
@@ -102250,6 +101680,20 @@
         },
         {
           "source": "geographic_index",
+          "sourceIndex": 1599,
+          "id": "st_john-bay-marys-point-buy",
+          "name": "Mary's Point Buy",
+          "type": "bay",
+          "island": "st_john",
+          "lat": 18.368333,
+          "lng": -64.741389,
+          "score": 0.357,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Xary Peninsula",
+          "matchedCandidateName": "Mary's Point Buy"
+        },
+        {
+          "source": "geographic_index",
           "sourceIndex": 16,
           "id": "st_john-estate-anna-point",
           "name": "Anna Point",
@@ -102289,20 +101733,6 @@
           "reason": "weak_similarity",
           "matchedRecordName": "Xary Peninsula",
           "matchedCandidateName": "LEINSTER BAY"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 1846,
-          "id": "st_john-estate-palestina",
-          "name": "PALESTINA",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.34836114006205,
-          "lng": -64.70660335072776,
-          "score": 0.296,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Xary Peninsula",
-          "matchedCandidateName": "PALESTINA"
         }
       ]
     },
@@ -104192,17 +103622,17 @@
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 1566,
-          "id": "st_john-estate-mandahl",
-          "name": "MANDAHL",
+          "sourceIndex": 1549,
+          "id": "st_john-estate-maho-ball",
+          "name": "Maho Ball",
           "type": "estate",
           "island": "st_john",
-          "lat": 18.3113965331173,
-          "lng": -64.7124047177175,
+          "lat": 18.3588,
+          "lng": -64.7432,
           "score": 0.31,
           "reason": "weak_similarity",
           "matchedRecordName": "Yssba Hill",
-          "matchedCandidateName": "MANDAHL"
+          "matchedCandidateName": "Maho Ball"
         }
       ]
     },
