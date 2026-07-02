@@ -38657,10 +38657,14 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_croix-estate-judys-fancy",
-    "name": "Judith's Fancy",
+    "name": "Judy's Fancy",
     "type": "estate",
     "island": "st_croix",
-    "aliases": [],
+    "aliases": [
+    "Judith's Fancy",
+    "Judas Fancy",
+    "local pronunciation of Judith's Fancy"
+  ],
     "description": "Judy's Fancy; Local pronunciation of Judith's Fancy, estate in St. Croix; sometimes mispelled, Judas Fancy.",
     "coordinates": {
       "lat": 17.776914,

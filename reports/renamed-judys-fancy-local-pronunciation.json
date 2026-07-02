@@ -1,0 +1,7 @@
+{
+  "action": "renamed_duplicate_pronunciation_record",
+  "id": "st_croix-estate-judys-fancy",
+  "oldName": "Judith's Fancy",
+  "newName": "Judy's Fancy",
+  "reason": "Avoid duplicate_name_type_island with the official Judiths Fancy estate record while preserving the local pronunciation record."
+}

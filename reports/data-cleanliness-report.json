@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T11:32:28.604Z",
+  "generatedAt": "2026-07-02T11:39:18.494Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 745,
-    "issuesSampled": 201,
+    "issuesActual": 744,
+    "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -33,7 +33,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 744,
-    "low": 1
+    "low": 0
   },
   "issueGroups": [
     {
@@ -42,14 +42,6 @@
       "issue": "missing_coordinates",
       "count": 744,
       "sampled": 200,
-      "sampleLimit": 200
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "issue": "duplicate_name_type_island",
-      "count": 1,
-      "sampled": 1,
       "sampleLimit": 200
     }
   ],
@@ -2053,15 +2045,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1229,
-      "name": "Judith's Fancy",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1228.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     }
   ]
 }
