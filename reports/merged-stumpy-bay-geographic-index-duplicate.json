@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-07-02T12:10:26.640Z",
+  "targetFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.before-merge-stumpy-bay.1782994226609.ts",
+  "keeper": {
+    "index": 2431,
+    "id": "st_thomas-bay-stumpy-bay",
+    "name": "Stumpy Bay",
+    "type": "bay",
+    "island": "st_thomas",
+    "aliasesBefore": [],
+    "coordinates": null
+  },
+  "removed": [
+    {
+      "index": 228,
+      "id": "st_thomas-bay-btwmphfar-bay",
+      "name": "Stumpy Bay",
+      "type": "bay",
+      "island": "st_thomas",
+      "aliases": [
+        "Btwmphfar Bay"
+      ],
+      "description": "Btwmphfar Bay; Stumpy Bay, north shore of St. Thomas. --!& 8tmmphiae Point; Stumpy Point, orbginally named Calvert Point, north shore",
+      "coordinates": null
+    }
+  ]
+}

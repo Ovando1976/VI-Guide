@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T12:06:38.636Z",
+  "generatedAt": "2026-07-02T12:10:34.993Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 750,
-    "issuesSampled": 201,
+    "issuesActual": 749,
+    "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -20,7 +20,7 @@
     {
       "name": "geographic_index",
       "path": "src/data/core/geographicIndex.ts",
-      "records": 2827
+      "records": 2826
     },
     {
       "name": "historic_sites",
@@ -29,11 +29,11 @@
       "inferredType": "historicSite"
     }
   ],
-  "totalRecords": 3312,
+  "totalRecords": 3311,
   "severityTotals": {
     "high": 0,
     "medium": 749,
-    "low": 1
+    "low": 0
   },
   "issueGroups": [
     {
@@ -42,14 +42,6 @@
       "issue": "missing_coordinates",
       "count": 749,
       "sampled": 200,
-      "sampleLimit": 200
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "issue": "duplicate_name_type_island",
-      "count": 1,
-      "sampled": 1,
       "sampleLimit": 200
     }
   ],
@@ -417,7 +409,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 239,
+      "index": 238,
       "id": "st_john-bay-buhvun-point",
       "name": "Ruhuun Point",
       "issue": "missing_coordinates",
@@ -427,7 +419,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 242,
+      "index": 241,
       "id": "st_thomas-point-bull-point",
       "name": "Bull Point",
       "issue": "missing_coordinates",
@@ -437,7 +429,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 247,
+      "index": 246,
       "id": "st_thomas-estate-bulowminde",
       "name": "Bulowminde",
       "issue": "missing_coordinates",
@@ -447,7 +439,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 251,
+      "index": 250,
       "id": "st_john-estate-buona-viata",
       "name": "Buona Vista",
       "issue": "missing_coordinates",
@@ -457,7 +449,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 252,
+      "index": 251,
       "id": "st_john-estate-buonavista",
       "name": "Buonavista",
       "issue": "missing_coordinates",
@@ -467,7 +459,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 253,
+      "index": 252,
       "id": "st_john-estate-buonavista-hill",
       "name": "Buonavista Hill",
       "issue": "missing_coordinates",
@@ -477,7 +469,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 257,
+      "index": 256,
       "id": "st_thomas-estate-busna-eaperanza",
       "name": "Buena Esperanza",
       "issue": "missing_coordinates",
@@ -487,7 +479,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 259,
+      "index": 258,
       "id": "st_thomas-estate-butler-bay-and-william-estate",
       "name": "Butler Bay and William Estate",
       "issue": "missing_coordinates",
@@ -497,7 +489,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 262,
+      "index": 261,
       "id": "st_croix-estate-butzberg-estate",
       "name": "Butzberg Estate",
       "issue": "missing_coordinates",
@@ -507,7 +499,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 268,
+      "index": 267,
       "id": "st_thomas-point-cabrita-hill",
       "name": "Cabrita Hill",
       "issue": "missing_coordinates",
@@ -517,7 +509,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 269,
+      "index": 268,
       "id": "st_thomas-point-cabrita-point",
       "name": "Cabrita Point",
       "issue": "missing_coordinates",
@@ -527,7 +519,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 272,
+      "index": 271,
       "id": "st_thomas-estate-cabrite",
       "name": "Cabrite",
       "issue": "missing_coordinates",
@@ -537,7 +529,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 273,
+      "index": 272,
       "id": "st_thomas-point-cabrite-point",
       "name": "Cabrite Point",
       "issue": "missing_coordinates",
@@ -547,7 +539,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 274,
+      "index": 273,
       "id": "st_thomas-point-cabriteberg-p-o-c-t",
       "name": "Cabriteberg Point",
       "issue": "missing_coordinates",
@@ -557,7 +549,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 276,
+      "index": 275,
       "id": "st_john-point-cabrithorn-point",
       "name": "Cabrithorn Point",
       "issue": "missing_coordinates",
@@ -567,7 +559,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 277,
+      "index": 276,
       "id": "st_croix-point-cabrito",
       "name": "Cabrito",
       "issue": "missing_coordinates",
@@ -577,7 +569,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 278,
+      "index": 277,
       "id": "st_thomas-estate-cabrittaberg",
       "name": "Cabrittaberg",
       "issue": "missing_coordinates",
@@ -587,7 +579,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 280,
+      "index": 279,
       "id": "st_john-bay-caeey-point",
       "name": "Casey Point",
       "issue": "missing_coordinates",
@@ -597,7 +589,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 281,
+      "index": 280,
       "id": "st_thomas-point-caetelpolnt",
       "name": "Castle Point",
       "issue": "missing_coordinates",
@@ -607,7 +599,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 282,
+      "index": 281,
       "id": "st_john-point-cahritahorn-point",
       "name": "Cabritahorn Point",
       "issue": "missing_coordinates",
@@ -617,7 +609,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 283,
+      "index": 282,
       "id": "st_thomas-estate-cahrztaberg",
       "name": "Cabritaberg",
       "issue": "missing_coordinates",
@@ -627,7 +619,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 290,
+      "index": 289,
       "id": "st_thomas-estate-caledonia-spring",
       "name": "Caledonia Spring",
       "issue": "missing_coordinates",
@@ -637,7 +629,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 297,
+      "index": 296,
       "id": "st_thomas-bay-calvert-point",
       "name": "Calvert Point",
       "issue": "missing_coordinates",
@@ -647,7 +639,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 298,
+      "index": 297,
       "id": "st_thomas-point-calverts-point",
       "name": "Calverts Point",
       "issue": "missing_coordinates",
@@ -657,7 +649,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 303,
+      "index": 302,
       "id": "st_croix-estate-camporico",
       "name": "Camporico",
       "issue": "missing_coordinates",
@@ -667,7 +659,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 304,
+      "index": 303,
       "id": "st_croix-estate-camporico-raltpond",
       "name": "Camporico Raltpond",
       "issue": "missing_coordinates",
@@ -677,7 +669,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 332,
+      "index": 331,
       "id": "st_thomas-estate-canegarden-hill",
       "name": "Canegarden Hill",
       "issue": "missing_coordinates",
@@ -687,7 +679,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 335,
+      "index": 334,
       "id": "st_john-point-cap-de-cudejarre",
       "name": "Cap de Cudejarre",
       "issue": "missing_coordinates",
@@ -697,7 +689,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 337,
+      "index": 336,
       "id": "st_thomas-point-capella-cays",
       "name": "Capella Cays",
       "issue": "missing_coordinates",
@@ -707,7 +699,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 338,
+      "index": 337,
       "id": "st_thomas-point-caprzcorn-point",
       "name": "Caprzcorn Point",
       "issue": "missing_coordinates",
@@ -717,7 +709,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 340,
+      "index": 339,
       "id": "st_croix-estate-caramaw-hall",
       "name": "Caramaw Hall",
       "issue": "missing_coordinates",
@@ -727,7 +719,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 344,
+      "index": 343,
       "id": "st_croix-estate-carden",
       "name": "Carden",
       "issue": "missing_coordinates",
@@ -737,7 +729,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 345,
+      "index": 344,
       "id": "st_croix-estate-carden-bay",
       "name": "Carden Bay",
       "issue": "missing_coordinates",
@@ -747,7 +739,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 348,
+      "index": 347,
       "id": "st_john-point-careen-point",
       "name": "Careen Point",
       "issue": "missing_coordinates",
@@ -757,7 +749,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 360,
+      "index": 359,
       "id": "st_thomas-estate-carlota-antalia",
       "name": "Carlota Antalia",
       "issue": "missing_coordinates",
@@ -767,7 +759,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 362,
+      "index": 361,
       "id": "st_john-estate-carlton-gut",
       "name": "Carlton Gut",
       "issue": "missing_coordinates",
@@ -777,7 +769,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 369,
+      "index": 368,
       "id": "water_island-point-caroline-point",
       "name": "Caroline Point",
       "issue": "missing_coordinates",
@@ -787,7 +779,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 375,
+      "index": 374,
       "id": "st_thomas-estate-carton-dome",
       "name": "Carton Dome",
       "issue": "missing_coordinates",
@@ -797,7 +789,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 382,
+      "index": 381,
       "id": "st_thomas-estate-cassava-garden",
       "name": "Cassava Garden",
       "issue": "missing_coordinates",
@@ -807,7 +799,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 384,
+      "index": 383,
       "id": "st_thomas-point-cassi-hill",
       "name": "Cassi Hill",
       "issue": "missing_coordinates",
@@ -817,7 +809,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 387,
+      "index": 386,
       "id": "st_croix-estate-castle-burke-estate",
       "name": "Castle Burke Estate",
       "issue": "missing_coordinates",
@@ -827,7 +819,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 388,
+      "index": 387,
       "id": "st_thomas-estate-castle-coakley",
       "name": "Castle Coakley",
       "issue": "missing_coordinates",
@@ -837,7 +829,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 394,
+      "index": 393,
       "id": "st_thomas-estate-catarinaberg",
       "name": "Catarinaberg",
       "issue": "missing_coordinates",
@@ -847,7 +839,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 397,
+      "index": 396,
       "id": "st_croix-estate-catharinas-hope",
       "name": "Catharina's Hope",
       "issue": "missing_coordinates",
@@ -857,7 +849,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 400,
+      "index": 399,
       "id": "st_thomas-estate-catherines-hope",
       "name": "Catherine's Hope",
       "issue": "missing_coordinates",
@@ -867,7 +859,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 406,
+      "index": 405,
       "id": "st_john-estate-cathriseberg",
       "name": "Cathriseberg",
       "issue": "missing_coordinates",
@@ -877,7 +869,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 414,
+      "index": 413,
       "id": "st_thomas-point-cazverts-punt",
       "name": "CaZverts Punt",
       "issue": "missing_coordinates",
@@ -887,7 +879,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 416,
+      "index": 415,
       "id": "st_thomas-estate-ceeeman-hizz",
       "name": "Ceeeman HiZZ",
       "issue": "missing_coordinates",
@@ -897,7 +889,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 417,
+      "index": 416,
       "id": "st_croix-point-cehterline-road",
       "name": "Centerline Road",
       "issue": "missing_coordinates",
@@ -907,7 +899,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 424,
+      "index": 423,
       "id": "st_croix-point-cfaudri",
       "name": "CfaUdri",
       "issue": "missing_coordinates",
@@ -917,7 +909,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 425,
+      "index": 424,
       "id": "st_croix-estate-cfoodchild",
       "name": "Cfoodchild",
       "issue": "missing_coordinates",
@@ -927,7 +919,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 428,
+      "index": 427,
       "id": "st_thomas-estate-cfroen-icny",
       "name": "Cfroen ICny",
       "issue": "missing_coordinates",
@@ -937,7 +929,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 430,
+      "index": 429,
       "id": "st_thomas-estate-chrlstianeted",
       "name": "Ch'rlstianeted'",
       "issue": "missing_coordinates",
@@ -947,7 +939,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 438,
+      "index": 437,
       "id": "st_croix-estate-chenay-bay",
       "name": "Chenay Bay",
       "issue": "missing_coordinates",
@@ -957,7 +949,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 439,
+      "index": 438,
       "id": "st_thomas-point-chickenhawk-point",
       "name": "Chickenhawk Point",
       "issue": "missing_coordinates",
@@ -967,7 +959,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 450,
+      "index": 449,
       "id": "st_thomas-historic-chrietiunsfort",
       "name": "Chrietiunsfort",
       "issue": "missing_coordinates",
@@ -977,7 +969,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 460,
+      "index": 459,
       "id": "st_thomas-historic-christinns-fort",
       "name": "Christinn's Fort",
       "issue": "missing_coordinates",
@@ -987,7 +979,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 462,
+      "index": 461,
       "id": "st_thomas-point-chshnel-rock",
       "name": "Chshnel Rock",
       "issue": "missing_coordinates",
@@ -997,7 +989,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 470,
+      "index": 469,
       "id": "st_croix-point-circcs-point",
       "name": "Circcs Point",
       "issue": "missing_coordinates",
@@ -1007,7 +999,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 473,
+      "index": 472,
       "id": "st_croix-estate-claremont",
       "name": "Claremont",
       "issue": "missing_coordinates",
@@ -1017,7 +1009,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 474,
+      "index": 473,
       "id": "st_thomas-estate-clausen",
       "name": "Clausen",
       "issue": "missing_coordinates",
@@ -1027,7 +1019,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 475,
+      "index": 474,
       "id": "st_croix-estate-clear-mount",
       "name": "Clear Mount",
       "issue": "missing_coordinates",
@@ -1037,7 +1029,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 476,
+      "index": 475,
       "id": "st_croix-estate-clermont",
       "name": "Clermont",
       "issue": "missing_coordinates",
@@ -1047,7 +1039,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 502,
+      "index": 501,
       "id": "st_thomas-bay-compagnles-plantagie",
       "name": "Compagnies Plantagie",
       "issue": "missing_coordinates",
@@ -1057,7 +1049,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 504,
+      "index": 503,
       "id": "st_thomas-point-compass-point",
       "name": "Compass Point",
       "issue": "missing_coordinates",
@@ -1067,7 +1059,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 516,
+      "index": 515,
       "id": "st_thomas-point-congo-cay",
       "name": "Congo Cay",
       "issue": "missing_coordinates",
@@ -1077,7 +1069,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 518,
+      "index": 517,
       "id": "st_thomas-point-congo-point",
       "name": "Congo Point",
       "issue": "missing_coordinates",
@@ -1087,7 +1079,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 534,
+      "index": 533,
       "id": "st_thomas-estate-contentment-hill",
       "name": "Contentment Hill",
       "issue": "missing_coordinates",
@@ -1097,7 +1089,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 536,
+      "index": 535,
       "id": "st_thomas-point-cooks-point",
       "name": "Cook's Point",
       "issue": "missing_coordinates",
@@ -1107,7 +1099,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 546,
+      "index": 545,
       "id": "st_thomas-estate-corn-hill",
       "name": "Corn Hill",
       "issue": "missing_coordinates",
@@ -1117,7 +1109,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 551,
+      "index": 550,
       "id": "st_croix-point-corteri",
       "name": "Corteri",
       "issue": "missing_coordinates",
@@ -1127,7 +1119,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 552,
+      "index": 551,
       "id": "st_thomas-historic-cotcell-playstarcg",
       "name": "Cotcell Playstarcg",
       "issue": "missing_coordinates",
@@ -1137,7 +1129,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 553,
+      "index": 552,
       "id": "st_thomas-point-coterado-p-d-n-t",
       "name": "Coterado P d n t",
       "issue": "missing_coordinates",
@@ -1147,7 +1139,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 561,
+      "index": 560,
       "id": "st_croix-estate-cottongarden",
       "name": "Cottongarden",
       "issue": "missing_coordinates",
@@ -1157,7 +1149,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 563,
+      "index": 562,
       "id": "st_croix-estate-cottongarden-peninsula",
       "name": "Cottongarden Peninsula",
       "issue": "missing_coordinates",
@@ -1167,7 +1159,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 564,
+      "index": 563,
       "id": "st_croix-estate-cottongarden-point",
       "name": "Cottongarden Point",
       "issue": "missing_coordinates",
@@ -1177,7 +1169,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 570,
+      "index": 569,
       "id": "st_thomas-point-cow-rock",
       "name": "Cow Rock",
       "issue": "missing_coordinates",
@@ -1187,7 +1179,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 571,
+      "index": 570,
       "id": "st_thomas-point-cowell-battery",
       "name": "Cowell Battery",
       "issue": "missing_coordinates",
@@ -1197,7 +1189,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 574,
+      "index": 573,
       "id": "st_thomas-point-cowell-point",
       "name": "Cowell Point",
       "issue": "missing_coordinates",
@@ -1207,7 +1199,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 577,
+      "index": 576,
       "id": "st_thomas-point-crabhole-point",
       "name": "Crabhole Point",
       "issue": "missing_coordinates",
@@ -1217,7 +1209,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 602,
+      "index": 601,
       "id": "st_thomas-estate-crumbuy",
       "name": "Crumbuy",
       "issue": "missing_coordinates",
@@ -1227,7 +1219,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 608,
+      "index": 607,
       "id": "st_thomas-point-cuarentena",
       "name": "Cuarentena",
       "issue": "missing_coordinates",
@@ -1237,7 +1229,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 610,
+      "index": 609,
       "id": "st_john-point-cudejarre-p-o-i-n-t",
       "name": "Cudejarre P o i n t",
       "issue": "missing_coordinates",
@@ -1247,7 +1239,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 612,
+      "index": 611,
       "id": "st_thomas-point-cup-d-u-cudeiare",
       "name": "Cup d u Cudeiare",
       "issue": "missing_coordinates",
@@ -1257,7 +1249,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 614,
+      "index": 613,
       "id": "st_croix-estate-curha-mmntaln",
       "name": "Curha Mmntaln",
       "issue": "missing_coordinates",
@@ -1267,7 +1259,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 615,
+      "index": 614,
       "id": "st_thomas-point-current-hole",
       "name": "Current Hole",
       "issue": "missing_coordinates",
@@ -1277,7 +1269,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 617,
+      "index": 616,
       "id": "st_thomas-point-currenthole-point",
       "name": "Currenthole Point",
       "issue": "missing_coordinates",
@@ -1287,7 +1279,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 622,
+      "index": 621,
       "id": "st_thomas-estate-de-beftgem-road",
       "name": "De Beftgem Road",
       "issue": "missing_coordinates",
@@ -1297,7 +1289,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 625,
+      "index": 624,
       "id": "st_thomas-point-deck-point",
       "name": "Deck Point",
       "issue": "missing_coordinates",
@@ -1307,7 +1299,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 629,
+      "index": 628,
       "id": "st_thomas-estate-derrick-point",
       "name": "Derrick Point",
       "issue": "missing_coordinates",
@@ -1317,7 +1309,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 630,
+      "index": 629,
       "id": "st_john-estate-description-op-stations",
       "name": "Description oP Stations",
       "issue": "missing_coordinates",
@@ -1327,7 +1319,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 631,
+      "index": 630,
       "id": "st_john-point-detlcr-point",
       "name": "Detlcr Point",
       "issue": "missing_coordinates",
@@ -1337,7 +1329,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 635,
+      "index": 634,
       "id": "st_thomas-estate-diainond-school",
       "name": "Diainond School",
       "issue": "missing_coordinates",
@@ -1347,7 +1339,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 636,
+      "index": 635,
       "id": "st_thomas-estate-diamond",
       "name": "Diamond",
       "issue": "missing_coordinates",
@@ -1357,7 +1349,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 640,
+      "index": 639,
       "id": "st_croix-estate-diedrichs",
       "name": "Diedrichs",
       "issue": "missing_coordinates",
@@ -1367,7 +1359,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 641,
+      "index": 640,
       "id": "st_croix-estate-diedrichs-point",
       "name": "Diedrichs Point",
       "issue": "missing_coordinates",
@@ -1377,7 +1369,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 642,
+      "index": 641,
       "id": "st_thomas-point-din-point",
       "name": "Din Point",
       "issue": "missing_coordinates",
@@ -1387,7 +1379,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 645,
+      "index": 644,
       "id": "st_thomas-point-ditlef-point",
       "name": "Ditlef Point",
       "issue": "missing_coordinates",
@@ -1397,7 +1389,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 647,
+      "index": 646,
       "id": "st_john-point-dittloff-point",
       "name": "Dittloff Point",
       "issue": "missing_coordinates",
@@ -1407,7 +1399,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 654,
+      "index": 653,
       "id": "st_croix-estate-doill-iiizl",
       "name": "Doill/ IIiZl",
       "issue": "missing_coordinates",
@@ -1417,7 +1409,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 656,
+      "index": 655,
       "id": "st_john-estate-dolly-efl1",
       "name": "Dolly Efl1",
       "issue": "missing_coordinates",
@@ -1427,7 +1419,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 657,
+      "index": 656,
       "id": "st_thomas-point-domkirk-rock",
       "name": "Domkirk Rock",
       "issue": "missing_coordinates",
@@ -1437,7 +1429,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 676,
+      "index": 675,
       "id": "st_croix-point-dry-lcdqc",
       "name": "Dry Lcdqc",
       "issue": "missing_coordinates",
@@ -1447,7 +1439,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 680,
+      "index": 679,
       "id": "st_croix-estate-duchr",
       "name": "DuC'hr",
       "issue": "missing_coordinates",
@@ -1457,7 +1449,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 683,
+      "index": 682,
       "id": "st_john-estate-dunker",
       "name": "Dunker",
       "issue": "missing_coordinates",
@@ -1467,7 +1459,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 686,
+      "index": 685,
       "id": "st_thomas-point-durloe-cays",
       "name": "Durloe Cays",
       "issue": "missing_coordinates",
@@ -1477,7 +1469,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 687,
+      "index": 686,
       "id": "st_john-point-durloe-channd",
       "name": "Durloe Channel",
       "issue": "missing_coordinates",
@@ -1487,7 +1479,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 689,
+      "index": 688,
       "id": "st_thomas-point-dutchcap-cay",
       "name": "Dutchcap Cay",
       "issue": "missing_coordinates",
@@ -1497,7 +1489,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 695,
+      "index": 694,
       "id": "st_john-point-eostcnd-cape",
       "name": "Eastend Cape",
       "issue": "missing_coordinates",
@@ -1507,7 +1499,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 697,
+      "index": 696,
       "id": "st_thomas-point-erance-gerclonneerde-iierk",
       "name": "E'rance Gerclonneerde Iierk",
       "issue": "missing_coordinates",
@@ -1517,7 +1509,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 704,
+      "index": 703,
       "id": "st_croix-point-east-point",
       "name": "East Point",
       "issue": "missing_coordinates",
@@ -1527,7 +1519,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 705,
+      "index": 704,
       "id": "st_thomas-point-eastend",
       "name": "Eastend",
       "issue": "missing_coordinates",
@@ -1537,7 +1529,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 707,
+      "index": 706,
       "id": "st_croix-estate-eastend-b",
       "name": "Eastend B",
       "issue": "missing_coordinates",
@@ -1547,7 +1539,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 710,
+      "index": 709,
       "id": "st_john-point-eastend-point",
       "name": "Eastend Point",
       "issue": "missing_coordinates",
@@ -1557,7 +1549,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 718,
+      "index": 717,
       "id": "st_thomas-estate-eemonzhed",
       "name": "Eemonzhed",
       "issue": "missing_coordinates",
@@ -1567,7 +1559,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 727,
+      "index": 726,
       "id": "st_croix-point-elizabeth-bank",
       "name": "Elizabeth Bank",
       "issue": "missing_coordinates",
@@ -1577,7 +1569,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 736,
+      "index": 735,
       "id": "st_thomas-estate-enaeld-green",
       "name": "EnAeld Green",
       "issue": "missing_coordinates",
@@ -1587,7 +1579,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 737,
+      "index": 736,
       "id": "st_thomas-estate-enat-foirzt",
       "name": "Enat f'oirzt",
       "issue": "missing_coordinates",
@@ -1597,7 +1589,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 738,
+      "index": 737,
       "id": "st_croix-estate-endracht",
       "name": "Endracht",
       "issue": "missing_coordinates",
@@ -1607,7 +1599,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 744,
+      "index": 743,
       "id": "st_john-point-eniqhed-point",
       "name": "Eniqhed Point",
       "issue": "missing_coordinates",
@@ -1617,7 +1609,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 745,
+      "index": 744,
       "id": "st_thomas-estate-enke-george-pauls-widow",
       "name": "Enke (George Paul's widow)",
       "issue": "missing_coordinates",
@@ -1627,7 +1619,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 746,
+      "index": 745,
       "id": "st_thomas-estate-ensoiiihed",
       "name": "Ensoiiihed",
       "issue": "missing_coordinates",
@@ -1637,7 +1629,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 748,
+      "index": 747,
       "id": "st_thomas-estate-ensomhed-bay",
       "name": "Ensomhed Bay",
       "issue": "missing_coordinates",
@@ -1647,7 +1639,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 750,
+      "index": 749,
       "id": "st_thomas-estate-envy",
       "name": "Envy",
       "issue": "missing_coordinates",
@@ -1657,7 +1649,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 752,
+      "index": 751,
       "id": "st_croix-point-eny",
       "name": "Eny",
       "issue": "missing_coordinates",
@@ -1667,7 +1659,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 753,
+      "index": 752,
       "id": "st_croix-estate-eobin-bay",
       "name": "Eobin Bay",
       "issue": "missing_coordinates",
@@ -1677,7 +1669,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 756,
+      "index": 755,
       "id": "st_thomas-point-espubola",
       "name": "Espubola",
       "issue": "missing_coordinates",
@@ -1687,7 +1679,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 757,
+      "index": 756,
       "id": "st_croix-point-estany-doux",
       "name": "Estany Doux",
       "issue": "missing_coordinates",
@@ -1697,7 +1689,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 758,
+      "index": 757,
       "id": "st_croix-estate-estate",
       "name": "Estate",
       "issue": "missing_coordinates",
@@ -1707,7 +1699,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 760,
+      "index": 759,
       "id": "st_croix-estate-euetogtwiet",
       "name": "Euetogtwiet",
       "issue": "missing_coordinates",
@@ -1717,7 +1709,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 761,
+      "index": 760,
       "id": "st_thomas-point-eupert-rock",
       "name": "Eupert Rock",
       "issue": "missing_coordinates",
@@ -1727,7 +1719,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 765,
+      "index": 764,
       "id": "st_thomas-point-eva-point",
       "name": "Eva Point",
       "issue": "missing_coordinates",
@@ -1737,7 +1729,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 769,
+      "index": 768,
       "id": "st_croix-point-fairham",
       "name": "Fairham",
       "issue": "missing_coordinates",
@@ -1747,7 +1739,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 770,
+      "index": 769,
       "id": "st_croix-estate-fairplain",
       "name": "Fairplain",
       "issue": "missing_coordinates",
@@ -1757,7 +1749,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 773,
+      "index": 772,
       "id": "st_thomas-point-fairplain-point",
       "name": "Fairplain Point",
       "issue": "missing_coordinates",
@@ -1767,7 +1759,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 774,
+      "index": 773,
       "id": "st_croix-estate-fancy-hill",
       "name": "Fancy Hill",
       "issue": "missing_coordinates",
@@ -1777,7 +1769,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 776,
+      "index": 775,
       "id": "st_croix-estate-fannys-fancy",
       "name": "Fanny's Fancy",
       "issue": "missing_coordinates",
@@ -1787,7 +1779,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 780,
+      "index": 779,
       "id": "st_croix-estate-farnhnm",
       "name": "Farnhnm",
       "issue": "missing_coordinates",
@@ -1797,7 +1789,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 781,
+      "index": 780,
       "id": "st_croix-estate-farrington",
       "name": "Farrington",
       "issue": "missing_coordinates",
@@ -1807,7 +1799,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 782,
+      "index": 781,
       "id": "st_thomas-point-ferrall-point",
       "name": "Ferrall Point",
       "issue": "missing_coordinates",
@@ -1817,7 +1809,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 784,
+      "index": 783,
       "id": "st_thomas-estate-fiigrlsk-klrke",
       "name": "Fiigrlsk Klrke",
       "issue": "missing_coordinates",
@@ -1827,7 +1819,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 789,
+      "index": 788,
       "id": "st_thomas-point-fish-point",
       "name": "Fish Point",
       "issue": "missing_coordinates",
@@ -1837,7 +1829,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 793,
+      "index": 792,
       "id": "st_thomas-point-flag-h-i-l-l",
       "name": "Flag Hill",
       "issue": "missing_coordinates",
@@ -1847,7 +1839,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 796,
+      "index": 795,
       "id": "st_thomas-estate-flagstok-hill",
       "name": "Flagstok Hill",
       "issue": "missing_coordinates",
@@ -1857,7 +1849,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 799,
+      "index": 798,
       "id": "water_island-point-flamingo-point",
       "name": "Flamingo Point",
       "issue": "missing_coordinates",
@@ -1867,7 +1859,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 800,
+      "index": 799,
       "id": "st_thomas-estate-flamingo-pond",
       "name": "Flamingo Pond",
       "issue": "missing_coordinates",
@@ -1877,7 +1869,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 801,
+      "index": 800,
       "id": "water_island-point-flamingo-rock",
       "name": "Flamingo Rock",
       "issue": "missing_coordinates",
@@ -1887,7 +1879,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 802,
+      "index": 801,
       "id": "st_thomas-estate-flamingopan-bay",
       "name": "Flamingopan Bay",
       "issue": "missing_coordinates",
@@ -1897,7 +1889,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 804,
+      "index": 803,
       "id": "st_john-point-flanagan-island",
       "name": "Flanagan Island",
       "issue": "missing_coordinates",
@@ -1907,7 +1899,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 805,
+      "index": 804,
       "id": "st_john-point-flanagan-pasw-ge",
       "name": "Flanagan Passage",
       "issue": "missing_coordinates",
@@ -1917,7 +1909,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 810,
+      "index": 809,
       "id": "st_thomas-point-fointe-dol-nordoueete",
       "name": "Pointe du Nordoueste",
       "issue": "missing_coordinates",
@@ -1927,7 +1919,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 812,
+      "index": 811,
       "id": "st_thomas-point-footer-point",
       "name": "Footer Point",
       "issue": "missing_coordinates",
@@ -1937,7 +1929,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 813,
+      "index": 812,
       "id": "st_croix-historic-fort-1-iiytcuto",
       "name": "Fort -1 iiytcuto",
       "issue": "missing_coordinates",
@@ -1947,7 +1939,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 821,
+      "index": 820,
       "id": "st_croix-historic-fort-lovi",
       "name": "Fort Lovi",
       "issue": "missing_coordinates",
@@ -1957,7 +1949,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 822,
+      "index": 821,
       "id": "st_thomas-historic-fort-nt",
       "name": "Fort Nt",
       "issue": "missing_coordinates",
@@ -1967,7 +1959,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 824,
+      "index": 823,
       "id": "st_thomas-point-fort-saint-jean",
       "name": "Fort Saint Jean",
       "issue": "missing_coordinates",
@@ -1977,7 +1969,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 825,
+      "index": 824,
       "id": "st_thomas-point-fortberg",
       "name": "Fortberg",
       "issue": "missing_coordinates",
@@ -1987,7 +1979,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 831,
+      "index": 830,
       "id": "st_thomas-estate-forturrr",
       "name": "Forturrr",
       "issue": "missing_coordinates",
@@ -1997,7 +1989,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 833,
+      "index": 832,
       "id": "st_croix-estate-fox",
       "name": "Fox",
       "issue": "missing_coordinates",
@@ -2007,7 +1999,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 843,
+      "index": 842,
       "id": "st_croix-estate-fredensborg",
       "name": "Fredensborg",
       "issue": "missing_coordinates",
@@ -2017,7 +2009,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 846,
+      "index": 845,
       "id": "st_croix-estate-fredensfeld",
       "name": "Fredensfeld",
       "issue": "missing_coordinates",
@@ -2027,7 +2019,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 852,
+      "index": 851,
       "id": "st_thomas-point-frederik-battery",
       "name": "Frederik Battery",
       "issue": "missing_coordinates",
@@ -2037,7 +2029,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 854,
+      "index": 853,
       "id": "st_thomas-point-frederik-knoll",
       "name": "Frederik Knoll",
       "issue": "missing_coordinates",
@@ -2047,21 +2039,12 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 855,
+      "index": 854,
       "id": "st_thomas-point-frederik-p-o-i-n-t",
       "name": "Frederik Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2431,
-      "name": "Stumpy Bay",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 228.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     }
   ]
 }

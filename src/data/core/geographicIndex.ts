@@ -7455,39 +7455,7 @@ export const geographicIndex: GeographicIndexRecord[] = [
         "st-thomas-bay-btore-midl4slgromd"
       ]
     }
-  },
-  {
-    "id": "st_thomas-bay-btwmphfar-bay",
-    "name": "Stumpy Bay",
-    "type": "bay",
-    "island": "st_thomas",
-    "aliases": [
-      "Btwmphfar Bay"
-    ],
-    "description": "Btwmphfar Bay; Stumpy Bay, north shore of St. Thomas. --!& 8tmmphiae Point; Stumpy Point, orbginally named Calvert Point, north shore",
-    "coordinates": null,
-    "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-bay-btwmphfar-bay&island=st_thomas&context=Stumpy%20Bay",
-      "map": "/map?q=Stumpy%20Bay&island=st_thomas"
-    },
-    "evidence": {
-      "estateLayer": false,
-      "geographicIndex": true,
-      "starterGazetteer": false,
-      "dictionary": false,
-      "archive": false,
-      "historicMap": false
-    },
-    "sources": [
-      "geographicIndex"
-    ],
-    "sourceIds": {
-      "geographicIndex": [
-        "st-thomas-bay-btwmphfar-bay"
-      ]
-    }
-  },
-  {
+  },  {
     "id": "st_thomas-bay-buck-bay",
     "name": "Buck Bay",
     "type": "bay",
@@ -76411,8 +76379,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "name": "Stumpy Bay",
     "type": "bay",
     "island": "st_thomas",
-    "aliases": [],
-    "description": "Stumpy Bay; 020 yards wide, Routh and west d Stumpy Point, 136- shore of Westend Quarter, S. T. 4 B. Called by Hombwk, Sthmgles Bay; by Zabriskie and others, Strumphias Bay.",
+    "aliases": [
+      "st_thomas-bay-btwmphfar-bay",
+      "Btwmphfar Bay"
+    ],
+    "description": "Stumpy Bay; 020 yards wide, Routh and west d Stumpy Point, 136- shore of Westend Quarter, S. T. 4 B. Called by Hombwk, Sthmgles Bay; by Zabriskie and others, Strumphias Bay. Merged duplicate OCR entry st_thomas-bay-btwmphfar-bay: Btwmphfar Bay; Stumpy Bay, north shore of St. Thomas. --!& 8tmmphiae Point; Stumpy Point, orbginally named Calvert Point, north shore",
     "coordinates": null,
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-bay-stumpy-bay&island=st_thomas&context=Stumpy%20Bay",
