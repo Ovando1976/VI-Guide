@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-07-02T11:56:12.630Z",
+  "backupFile": "reports/backups/geographicIndex.before-ocr-cleanup-batch-2.1782993372593.ts",
+  "targetFile": "src/data/core/geographicIndex.ts",
+  "appliedCount": 3,
+  "applied": [
+    {
+      "index": 72,
+      "id": "st_thomas-dictionaryEntry-bcotch-reef",
+      "oldName": "Bcotch Reef",
+      "newName": "Scotch Reef",
+      "type": "dictionaryEntry",
+      "island": "st_thomas",
+      "reason": "Bcotch is likely OCR for Scotch."
+    },
+    {
+      "index": 74,
+      "id": "st_john-point-beaehing-spit",
+      "oldName": "Beaehing Spit",
+      "newName": "Beaching Spit",
+      "type": "point",
+      "island": "st_john",
+      "reason": "Beaehing is likely OCR for Beaching."
+    },
+    {
+      "index": 417,
+      "id": "st_croix-point-cehterline-road",
+      "oldName": "Cehterline Road",
+      "newName": "Centerline Road",
+      "type": "point",
+      "island": "st_croix",
+      "reason": "Cehterline is likely OCR for Centerline."
+    }
+  ],
+  "skippedManualReviewCount": 24,
+  "note": "Applied only strong OCR corrections from batch 2. Manual review records were intentionally not changed."
+}

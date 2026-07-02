@@ -1,0 +1,440 @@
+{
+  "generatedAt": "2026-07-02T11:55:00.607Z",
+  "total": 27,
+  "strongReview": 3,
+  "manualReview": 24,
+  "rows": [
+    {
+      "index": 62,
+      "id": "st_thomas-historic-battery",
+      "name": "Battery)",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "historic",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Battery). -C. 1'. ; I h n. 219; Hansen's Chart of Christiansted Havn.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-historic-battery&island=st_thomas&context=Battery)",
+        "map": "/map?q=Battery)&island=st_thomas"
+      }
+    },
+    {
+      "index": 72,
+      "id": "st_thomas-dictionaryEntry-bcotch-reef",
+      "name": "Bcotch Reef",
+      "suggestedName": "Scotch Reef",
+      "confidence": "strong_review",
+      "reason": "Bcotch is likely OCR for Scotch.",
+      "type": "dictionaryEntry",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Bcotch Reef; Same a8 $catch Bank, qt. Croix; @ot& Shoal, more appropri: ate. -St. Thomas Almaaack (1878), p. 50. &even; Baape as Sieben, q. v. , St. John. -T, 3772, D&",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bcotch-reef&island=st_thomas&context=Bcotch%20Reef",
+        "map": "/map?q=Bcotch%20Reef&island=st_thomas"
+      }
+    },
+    {
+      "index": 74,
+      "id": "st_john-point-beaehing-spit",
+      "name": "Beaehing Spit",
+      "suggestedName": "Beaching Spit",
+      "confidence": "strong_review",
+      "reason": "Beaehing is likely OCR for Beaching.",
+      "type": "point",
+      "island": "st_john",
+      "coordinates": null,
+      "description": "Beaehing Spit; Gravel spit on east shore of Borck Creek, Hurricane Hole, St. John. \"Makes a splendid place for beaching a launch or sloop, as the land drops sharply just off the spit. \"-Descriptlve Report, T. 3783, p. 6. mile wide, on north side of long narrow peninsula enclosing Altona Lagoon, St. Croix. -Map 3242. Named \"Anse Beau regard '' on earliest French maps. -Lapointe (1671); Van Keulen (1719). Revived, there being no recent name.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-john-point-beaehing-spit&island=st_john&context=Beaehing%20Spit",
+        "map": "/map?q=Beaehing%20Spit&island=st_john"
+      }
+    },
+    {
+      "index": 79,
+      "id": "st_thomas-bay-bedhook-bay",
+      "name": "Bedhook Bay",
+      "suggestedName": "Red Hook Bay",
+      "confidence": "manual_review",
+      "reason": "Bedhook may be OCR for Red Hook; verify description first.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Bedhook Bay; Inlet, 1, 540 yards long, between Redhook Point and Uabrita point, near eastern end of St. Thomaa I. Outer portion of 3ay, includtng Muller Bay, is 660 yards wide, 660 y a r d long; inner portion, above Jack Croix. -Old. Spelled \" Raad Schuster, \" by Beck.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-bedhook-bay&island=st_thomas&context=Bedhook%20Bay",
+        "map": "/map?q=Bedhook%20Bay&island=st_thomas"
+      }
+    },
+    {
+      "index": 118,
+      "id": "st_thomas-bay-beverhout-plantation",
+      "name": "Beverhout Plantation",
+      "suggestedName": "Beverhoudt Plantation",
+      "confidence": "manual_review",
+      "reason": "May be Beverhoudt, but record type/island need verification.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Beverhout'a Pluntage; 1% mile north of Krum Bay, St. Thomas. -Old.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-beverhout-plantation&island=st_thomas&context=Beverhout%20Plantation",
+        "map": "/map?q=Beverhout%20Plantation&island=st_thomas"
+      }
+    },
+    {
+      "index": 119,
+      "id": "st_thomas-bay-beverhout-point",
+      "name": "Beverhout Point",
+      "suggestedName": "Beverhoudt Point",
+      "confidence": "manual_review",
+      "reason": "May be Beverhoudt, but record type/island need verification.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Beverhout Point; West angle of sninll peiiinsula with 90-foot knoll, projecting f / g mile at east entrance of Nazareth Bay, 1, 000 yards northwesterly from Deck Point, Redhook Quarter, St. Thomas. -G. B. This, or possibly Deck Point, was called by Van Keulen, \" Ioannis Beuerout Punt. \"",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-beverhout-point&island=st_thomas&context=Beverhout%20Point",
+        "map": "/map?q=Beverhout%20Point&island=st_thomas"
+      }
+    },
+    {
+      "index": 123,
+      "id": "st_john-bay-billington-hill",
+      "name": "Billington Hill",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": null,
+      "description": "Billington Hill; 639 feet high, summit of ridge east of Reef Bay, St. John. T. 3772.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-john-bay-billington-hill&island=st_john&context=Billington%20Hill",
+        "map": "/map?q=Billington%20Hill&island=st_john"
+      }
+    },
+    {
+      "index": 133,
+      "id": "st_john-bay-blasbalg-point",
+      "name": "Blasbalg Point",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": null,
+      "description": "Blasbalg Point; Right angle of bluff shore a t south side of Calvary Bay entrance, sounthwest part of St. John Island. Danish name, meaning \"Pale S h e a t h \"; found on Oxholm's map of St. John, and probably referred to adjacent bluff on south of point, rising sheer 60 feet, described on T. 3779 as \" Red Cliffs. \"",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-john-bay-blasbalg-point&island=st_john&context=Blasbalg%20Point",
+        "map": "/map?q=Blasbalg%20Point&island=st_john"
+      }
+    },
+    {
+      "index": 155,
+      "id": "st_thomas-island-boken-or-ruck-island",
+      "name": "Boken or Ruck Island",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "island",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Boken or Ruck Island; thence called '' Broken Island. \" Also called u Gmskaien \" (Grass Cay).",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-island-boken-or-ruck-island&island=st_thomas&context=Boken%20or%20Ruck%20Island",
+        "map": "/map?q=Boken%20or%20Ruck%20Island&island=st_thomas"
+      }
+    },
+    {
+      "index": 173,
+      "id": "st_thomas-estate-bopcks-creek",
+      "name": "BoPcks Creek",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "BoPcks Creek; Borck Creek, St. John. -H. 0. 2086; Oxholm. Bordeau, Plantagie van David; Dutch, '' Estate of David Bordeau, \" located about 450 yards northwest of Snelfelt Bay, q. v. , at or near Altona, St. Thomas. -K.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-estate-bopcks-creek&island=st_thomas&context=BoPcks%20Creek",
+        "map": "/map?q=BoPcks%20Creek&island=st_thomas"
+      }
+    },
+    {
+      "index": 224,
+      "id": "st_thomas-estate-bt",
+      "name": "Bt",
+      "suggestedName": null,
+      "confidence": "probably_fragment",
+      "reason": "Name is only Bt; likely fragment, not a map record.",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Bt. d l w l e; Santn Maria Estate, St. Thomas. -Hornbeck.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-estate-bt&island=st_thomas&context=Bt",
+        "map": "/map?q=Bt&island=st_thomas"
+      }
+    },
+    {
+      "index": 225,
+      "id": "st_thomas-estate-btazley-point",
+      "name": "BtaZley Point",
+      "suggestedName": "Staley Point",
+      "confidence": "manual_review",
+      "reason": "BtaZley may be Staley; verify description.",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "BtaZley Point; Old name of Long Point, southernmost extremity of St. Thomas Island, terminus of Ridge 261 feet high, crownlng peninsula 1 mile long, 4 extending southeast from Bovoni Estate, French Bay Quarter, and west of Mangrove Lagoon. Named '' Mr. Stalky's Punt \" by Van Keulep (1719). and \" Pointe de Stalley \" by Bellin (1764); also found 88 \" Stalleyn Point\" Purdy, Dessiou and Jefferys' Weat-India Atlas, erroneously transfers name Stalleys Point \" to Water Poiut at Curreat Hole, opposite S",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-estate-btazley-point&island=st_thomas&context=BtaZley%20Point",
+        "map": "/map?q=BtaZley%20Point&island=st_thomas"
+      }
+    },
+    {
+      "index": 228,
+      "id": "st_thomas-bay-btwmphfar-bay",
+      "name": "Btwmphfar Bay",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Btwmphfar Bay needs description review.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Btwmphfar Bay; Stumpy Bay, north shore of St. Thomas. --!& 8tmmphiae Point; Stumpy Point, orbginally named Calvert Point, north shore",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-btwmphfar-bay&island=st_thomas&context=Btwmphfar%20Bay",
+        "map": "/map?q=Btwmphfar%20Bay&island=st_thomas"
+      }
+    },
+    {
+      "index": 239,
+      "id": "st_john-bay-buhvun-point",
+      "name": "Buhvun Point",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": null,
+      "description": "Buhvun Point; Headland with 269-foot hill, west of Rendezvous Bay, at soufh extremity of west shore of St. John. --C. P. , p. 135; Dan. 265; R. A. 2452; H. 0. 3003. Spelled '' Ruhuun \" by Oxholni : erroneously '' Rnlivun. \" G. E'. at south tip: Iat. 18' '18' 45. 92\" (1, 412m. ); 84\" 46' 56. 28\" (1, 823m. ), G. P. '' Rend, \" summit of 209-foot hill; lat. 18\" 18' 50\" (1, 537 m. ); long. 64' 46' 54\" (1, 589m. ).",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-john-bay-buhvun-point&island=st_john&context=Buhvun%20Point",
+        "map": "/map?q=Buhvun%20Point&island=st_john"
+      }
+    },
+    {
+      "index": 280,
+      "id": "st_john-bay-caeey-point",
+      "name": "Caeey Point",
+      "suggestedName": "Casey Point",
+      "confidence": "manual_review",
+      "reason": "Caeey may be Casey; verify description.",
+      "type": "bay",
+      "island": "st_john",
+      "coordinates": null,
+      "description": "Caeey Point; Name suggested for Durloe Point, St. John, by fleld party of C. & G. S. , because Durloe Bay, immediately south, was sometimes called ''K, C. \" (sounding like Gamy), though in fact an abbreviation of Klein Cinnamon. Casieland; Cas Cay. -Reichel; Dewitz.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-john-bay-caeey-point&island=st_john&context=Caeey%20Point",
+        "map": "/map?q=Caeey%20Point&island=st_john"
+      }
+    },
+    {
+      "index": 283,
+      "id": "st_thomas-estate-cahrztaberg",
+      "name": "CahrZtaberg",
+      "suggestedName": "Cabritaberg",
+      "confidence": "manual_review",
+      "reason": "CahrZtaberg may be Cabritaberg; verify description/island.",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "CahrZtaberg; Estate near Mosquito Bay, Southside Quarter, St. Thomas. Hoist. Same a s \" Cabrite. \"",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-estate-cahrztaberg&island=st_thomas&context=CahrZtaberg",
+        "map": "/map?q=CahrZtaberg&island=st_thomas"
+      }
+    },
+    {
+      "index": 297,
+      "id": "st_thomas-bay-calvert-point",
+      "name": "Calvert Point",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Calvert Point; Projection between Santa Maria or Tallard and Bordeaux Bays,",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-calvert-point&island=st_thomas&context=Calvert%20Point",
+        "map": "/map?q=Calvert%20Point&island=st_thomas"
+      }
+    },
+    {
+      "index": 301,
+      "id": "st_thomas-bay-camp-bay",
+      "name": "Camp Bay",
+      "suggestedName": null,
+      "confidence": "manual_review",
+      "reason": "Needs description review before changing.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Camp Bay; Indentation, protected by reefs, through which boat passage gives access to beach at southeast end of Hans Lollik I s l a n d. 4. P.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-camp-bay&island=st_thomas&context=Camp%20Bay",
+        "map": "/map?q=Camp%20Bay&island=st_thomas"
+      }
+    },
+    {
+      "index": 417,
+      "id": "st_croix-point-cehterline-road",
+      "name": "Cehterline Road",
+      "suggestedName": "Centerline Road",
+      "confidence": "strong_review",
+      "reason": "Cehterline is likely OCR for Centerline.",
+      "type": "point",
+      "island": "st_croix",
+      "coordinates": null,
+      "description": "Cehterline Road; Prindpal thoroughfare of St. Croix; leaving Frederiksted turns south-southeast % mile to Hannah's Rest, thence east-northeast about 8 miles in tltraight line, except small detour around hill a t Lareine, south-southeast % mlle, east-northeast 2 miles, to Constitrltion Hill, thence wtnda over low hills 2 mires to Christiansted. Also called, \"Great Centerllne ROad \"; Danish, Centerveien : formerly Kongevei or King's Road. This road follows the \"Great Centerline\" (q. v. ) of the su",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-croix-point-cehterline-road&island=st_croix&context=Cehterline%20Road",
+        "map": "/map?q=Cehterline%20Road&island=st_croix"
+      }
+    },
+    {
+      "index": 502,
+      "id": "st_thomas-bay-compagnles-plantagie",
+      "name": "Compagnles Plantagie",
+      "suggestedName": "Compagnies Plantagie",
+      "confidence": "manual_review",
+      "reason": "Likely Dutch/Danish plantation wording; verify exact spelling.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Compagnles Plantagie; locally, Sugar Dstate; 'On Holst'r mapi ThommHorn. ; Reichel; BP. 2183; etc. &tint Thomas Harbor; Prindpal port In Virgin Sslazads; otcupying an area of 1% 8qnare miles in the crater of extinct voloano; sftuated w a r mlddle of southern coast of St. Thomari Zuiaad, lnclaeed on tho west by Bflswl -- 174 of 215 GEOGRAPHIC- DICTIONARY OF THE VIRGIN. ISLANDS 171 I&mtl: mlkh bdtlenmke6i entrance, and perfectly Iandlocked, Length, about 1% miles. Width, between Cowell and Mnhbnfe",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-compagnles-plantagie&island=st_thomas&context=Compagnles%20Plantagie",
+        "map": "/map?q=Compagnles%20Plantagie&island=st_thomas"
+      }
+    },
+    {
+      "index": 839,
+      "id": "st_thomas-bay-frcdcrucuted-jlirrbor",
+      "name": "FrcdcrUcuted Jlirrbor",
+      "suggestedName": "Frederiksted Harbor",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederiksted Harbor; verify description.",
+      "type": "bay",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "FrcdcrUcuted Jlirrbor; Anchornge in Westend Bay, off Frederikntrtl, Pt. Croix. Same as Frederiksted Road.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-bay-frcdcrucuted-jlirrbor&island=st_thomas&context=FrcdcrUcuted%20Jlirrbor",
+        "map": "/map?q=FrcdcrUcuted%20Jlirrbor&island=st_thomas"
+      }
+    },
+    {
+      "index": 840,
+      "id": "st_thomas-dictionaryEntry-frcder2lcs-knoll",
+      "name": "Frcder2lcs Knoll",
+      "suggestedName": "Frederik's Knoll",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederik's Knoll; verify description.",
+      "type": "dictionaryEntry",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Frcder2lcs Knoll; Same as Frederik Knoll, St. Thomas. -l~anish 80. Prodderikstuar?c; Danish, Fretlerik's Tower, now called Hluelward (hstle, St. Thomas.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-frcder2lcs-knoll&island=st_thomas&context=Frcder2lcs%20Knoll",
+        "map": "/map?q=Frcder2lcs%20Knoll&island=st_thomas"
+      }
+    },
+    {
+      "index": 841,
+      "id": "st_croix-dictionaryEntry-frcderickataod",
+      "name": "Frcderickataod",
+      "suggestedName": "Frederiksted",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederiksted; verify description.",
+      "type": "dictionaryEntry",
+      "island": "st_croix",
+      "coordinates": null,
+      "description": "Frcderickataod; 8nme as Frederikxteil, St. Croix. -W. I. Pilot.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-frcderickataod&island=st_croix&context=Frcderickataod",
+        "map": "/map?q=Frcderickataod&island=st_croix"
+      }
+    },
+    {
+      "index": 848,
+      "id": "st_croix-dictionaryEntry-frederdke-h-a-n-b",
+      "name": "Frederdke H a n b",
+      "suggestedName": "Frederik's Harbor",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederik's Harbor; verify exact entry.",
+      "type": "dictionaryEntry",
+      "island": "st_croix",
+      "coordinates": null,
+      "description": "Frederdke H a n b; Frederikshaab, St. Croix, q. v. -41. 0. 1400, 1423.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-frederdke-h-a-n-b&island=st_croix&context=Frederdke%20H%20a%20n%20b",
+        "map": "/map?q=Frederdke%20H%20a%20n%20b&island=st_croix"
+      }
+    },
+    {
+      "index": 849,
+      "id": "st_croix-dictionaryEntry-frederichated",
+      "name": "Frederichated",
+      "suggestedName": "Frederiksted",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederiksted; verify exact entry.",
+      "type": "dictionaryEntry",
+      "island": "st_croix",
+      "coordinates": null,
+      "description": "Frederichated; Frederiksted, St. Croix. -H. 0. 1002.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-frederichated&island=st_croix&context=Frederichated",
+        "map": "/map?q=Frederichated&island=st_croix"
+      }
+    },
+    {
+      "index": 1986,
+      "id": "st_thomas-historic-prederikx-bnttcric",
+      "name": "Prederikx Bnttcric",
+      "suggestedName": "Frederik's Batterie",
+      "confidence": "manual_review",
+      "reason": "Looks like OCR for Frederik's Batterie/Battery; verify St. Thomas fort record.",
+      "type": "historic",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Prederikx Bnttcric; Same as Frederik Battery, St. Thomas. -Rohde.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-historic-prederikx-bnttcric&island=st_thomas&context=Prederikx%20Bnttcric",
+        "map": "/map?q=Prederikx%20Bnttcric&island=st_thomas"
+      }
+    },
+    {
+      "index": 2067,
+      "id": "st_thomas-road-rada-de-prederiksted",
+      "name": "Rada de Prederiksted",
+      "suggestedName": "Rada de Frederiksted",
+      "confidence": "manual_review",
+      "reason": "Looks like Spanish/Danish harbor phrase for Frederiksted roadstead; verify.",
+      "type": "road",
+      "island": "st_thomas",
+      "coordinates": null,
+      "description": "Rada de Prederiksted; Spanish name o f Frederiksted Roadstead. -Der.",
+      "routes": {
+        "knowledge": "/history/knowledge?estate=st-thomas-road-rada-de-prederiksted&island=st_thomas&context=Rada%20de%20Prederiksted",
+        "map": "/map?q=Rada%20de%20Prederiksted&island=st_thomas"
+      }
+    }
+  ]
+}

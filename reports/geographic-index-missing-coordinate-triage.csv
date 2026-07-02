@@ -18,8 +18,8 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 63,st_croix-gut-baudouins-gut,Baudouins Gut,gut,st_croix,none,research_clean_name_no_candidate,false,Caledonia Gut,geographic_index,17.76172242200235,-64.86961726911215,weak_similarity
 64,st_thomas-estate-bay,Bay,estate,st_thomas,none,generic_fragment_do_not_coordinate,true,ADELPHI,geographic_index,18.3503525854884,-64.98204334502465,
 65,st_thomas-bay-bay,Bay,bay,st_thomas,none,generic_fragment_do_not_coordinate,false,Bolongo Bay,geographic_index,18.3175123332078,-64.89879745646965,
-72,st_thomas-dictionaryEntry-bcotch-reef,Bcotch Reef,dictionaryEntry,st_thomas,none,ocr_or_name_cleanup_first,false,Bonne Esperance Estate,geographic_index,18.35446178282435,-64.9895367101718,weak_similarity
-74,st_john-point-beaehing-spit,Beaehing Spit,point,st_john,none,research_clean_name_no_candidate,true,Hawksnest Bay,geographic_index,18.3541,-64.7792,weak_similarity
+72,st_thomas-dictionaryEntry-bcotch-reef,Scotch Reef,dictionaryEntry,st_thomas,none,research_clean_name_no_candidate,false,Bonne Esperance Estate,geographic_index,18.35446178282435,-64.9895367101718,weak_similarity
+74,st_john-point-beaehing-spit,Beaching Spit,point,st_john,none,research_clean_name_no_candidate,true,Hawksnest Bay,geographic_index,18.3541,-64.7792,weak_similarity
 75,st_croix-estate-beaucoeur-plantation,Beaucoeur Plantation,estate,st_croix,none,research_clean_name_no_candidate,true,Butler Bay,geographic_index,17.753232112647552,-64.87980189785985,weak_similarity
 76,st_croix-bay-beauregard-bay,Beauregard Bay,bay,st_croix,none,research_clean_name_no_candidate,false,Canegarda Point,geographic_index,17.702682157254202,-64.84359059453385,weak_similarity
 77,st_croix-estate-beck-grove,Beck Grove,estate,st_croix,review,review_candidate,true,GROVE PLACE,geographic_index,17.730883867683502,-64.8230564385662,contains_clean_slug
@@ -126,7 +126,7 @@ index,id,name,type,island,confidence,bucket,officialAuditSampled,candidateName,c
 410,st_thomas-bay-cay-bay,Cay Bay,bay,st_thomas,none,research_clean_name_no_candidate,false,Bovoni Cay,geographic_index,18.31274648774975,-64.87229899313834,weak_similarity
 414,st_thomas-point-cazverts-punt,CaZverts Punt,point,st_thomas,none,ocr_or_name_cleanup_first,true,Havensight Point,geographic_index,18.3297646929236,-64.92094811684731,weak_similarity
 416,st_thomas-estate-ceeeman-hizz,Ceeeman HiZZ,estate,st_thomas,none,ocr_or_name_cleanup_first,true,CAREENING HOLE,geographic_index,18.33519459552995,-64.94227345605105,weak_similarity
-417,st_croix-point-cehterline-road,Cehterline Road,point,st_croix,none,research_clean_name_no_candidate,true,CARINA,geographic_index,17.736547414825,-64.6789987761033,weak_similarity
+417,st_croix-point-cehterline-road,Centerline Road,point,st_croix,none,research_clean_name_no_candidate,true,CONTENTMENT,geographic_index,17.7380551734812,-64.71023866116394,weak_similarity
 424,st_croix-point-cfaudri,CfaUdri,point,st_croix,none,ocr_or_name_cleanup_first,true,Fort Frederik,geographic_index,17.7125,-64.8842,weak_similarity
 425,st_croix-estate-cfoodchild,Cfoodchild,estate,st_croix,none,research_clean_name_no_candidate,true,Brook Hill,geographic_index,17.727694,-64.859333,weak_similarity
 428,st_thomas-estate-cfroen-icny,Cfroen ICny,estate,st_thomas,none,research_clean_name_no_candidate,true,GREEN CAY,geographic_index,18.30961532150965,-64.9080402474628,weak_similarity

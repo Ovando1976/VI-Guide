@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T11:52:55.004Z",
+  "generatedAt": "2026-07-02T11:56:19.774Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -121,7 +121,7 @@
       "source": "geographic_index",
       "index": 74,
       "id": "st_john-point-beaehing-spit",
-      "name": "Beaehing Spit",
+      "name": "Beaching Spit",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -831,7 +831,7 @@
       "source": "geographic_index",
       "index": 417,
       "id": "st_croix-point-cehterline-road",
-      "name": "Cehterline Road",
+      "name": "Centerline Road",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."

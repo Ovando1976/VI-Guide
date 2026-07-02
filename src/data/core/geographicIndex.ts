@@ -2413,15 +2413,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-dictionaryEntry-bcotch-reef",
-    "name": "Bcotch Reef",
+    "name": "Scotch Reef",
     "type": "dictionaryEntry",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Bcotch Reef"
+    ],
     "description": "Bcotch Reef; Same a8 $catch Bank, qt. Croix; @ot& Shoal, more appropri: ate. -St. Thomas Almaaack (1878), p. 50. &even; Baape as Sieben, q. v. , St. John. -T, 3772, D&",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bcotch-reef&island=st_thomas&context=Bcotch%20Reef",
-      "map": "/map?q=Bcotch%20Reef&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bcotch-reef&island=st_thomas&context=Scotch%20Reef",
+      "map": "/map?q=Scotch%20Reef&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -2471,15 +2473,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-point-beaehing-spit",
-    "name": "Beaehing Spit",
+    "name": "Beaching Spit",
     "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Beaehing Spit"
+    ],
     "description": "Beaehing Spit; Gravel spit on east shore of Borck Creek, Hurricane Hole, St. John. \"Makes a splendid place for beaching a launch or sloop, as the land drops sharply just off the spit. \"-Descriptlve Report, T. 3783, p. 6. mile wide, on north side of long narrow peninsula enclosing Altona Lagoon, St. Croix. -Map 3242. Named \"Anse Beau regard '' on earliest French maps. -Lapointe (1671); Van Keulen (1719). Revived, there being no recent name.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-point-beaehing-spit&island=st_john&context=Beaehing%20Spit",
-      "map": "/map?q=Beaehing%20Spit&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-point-beaehing-spit&island=st_john&context=Beaching%20Spit",
+      "map": "/map?q=Beaching%20Spit&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -13402,15 +13406,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_croix-point-cehterline-road",
-    "name": "Cehterline Road",
+    "name": "Centerline Road",
     "type": "point",
     "island": "st_croix",
-    "aliases": [],
+    "aliases": [
+      "Cehterline Road"
+    ],
     "description": "Cehterline Road; Prindpal thoroughfare of St. Croix; leaving Frederiksted turns south-southeast % mile to Hannah's Rest, thence east-northeast about 8 miles in tltraight line, except small detour around hill a t Lareine, south-southeast % mlle, east-northeast 2 miles, to Constitrltion Hill, thence wtnda over low hills 2 mires to Christiansted. Also called, \"Great Centerllne ROad \"; Danish, Centerveien : formerly Kongevei or King's Road. This road follows the \"Great Centerline\" (q. v. ) of the survey made between 1134 and 1751. Where the Great Centerline has not been laid out as a road, \" i t is a path, which joins exactly the road a t another point. \"8 C W. &nlemeie?z; Danish, Centerline Road, St. Croix. -Eggers.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-point-cehterline-road&island=st_croix&context=Cehterline%20Road",
-      "map": "/map?q=Cehterline%20Road&island=st_croix"
+      "knowledge": "/history/knowledge?estate=st-croix-point-cehterline-road&island=st_croix&context=Centerline%20Road",
+      "map": "/map?q=Centerline%20Road&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,

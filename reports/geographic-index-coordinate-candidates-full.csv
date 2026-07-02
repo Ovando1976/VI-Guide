@@ -18,8 +18,8 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 63,Baudouins Gut,gut,st_croix,none,0.657,geographic_index,288,Caledonia Gut,17.76172242200235,-64.86961726911215,weak_similarity
 64,Bay,estate,st_thomas,none,0.01,geographic_index,3,ADELPHI,18.3503525854884,-64.98204334502465,
 65,Bay,bay,st_thomas,none,0.01,geographic_index,157,Bolongo Bay,18.3175123332078,-64.89879745646965,
-72,Bcotch Reef,dictionaryEntry,st_thomas,none,0.623,geographic_index,168,Bonne Esperance Estate,18.35446178282435,-64.9895367101718,weak_similarity
-74,Beaehing Spit,point,st_john,none,0.4,geographic_index,1058,Hawksnest Bay,18.3541,-64.7792,weak_similarity
+72,Scotch Reef,dictionaryEntry,st_thomas,none,0.623,geographic_index,168,Bonne Esperance Estate,18.35446178282435,-64.9895367101718,weak_similarity
+74,Beaching Spit,point,st_john,none,0.467,geographic_index,1058,Hawksnest Bay,18.3541,-64.7792,weak_similarity
 75,Beaucoeur Plantation,estate,st_croix,none,0.444,geographic_index,258,Butler Bay,17.753232112647552,-64.87980189785985,weak_similarity
 76,Beauregard Bay,bay,st_croix,none,0.5,geographic_index,328,Canegarda Point,17.702682157254202,-64.84359059453385,weak_similarity
 77,Beck Grove,estate,st_croix,review,0.93,geographic_index,990,GROVE PLACE,17.730883867683502,-64.8230564385662,contains_clean_slug
@@ -126,7 +126,7 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 410,Cay Bay,bay,st_thomas,none,0.51,geographic_index,202,Bovoni Cay,18.31274648774975,-64.87229899313834,weak_similarity
 414,CaZverts Punt,point,st_thomas,none,0.395,geographic_index,1057,Havensight Point,18.3297646929236,-64.92094811684731,weak_similarity
 416,Ceeeman HiZZ,estate,st_thomas,none,0.439,geographic_index,350,CAREENING HOLE,18.33519459552995,-64.94227345605105,weak_similarity
-417,Cehterline Road,point,st_croix,none,0.4,geographic_index,358,CARINA,17.736547414825,-64.6789987761033,weak_similarity
+417,Centerline Road,point,st_croix,none,0.455,geographic_index,531,CONTENTMENT,17.7380551734812,-64.71023866116394,weak_similarity
 424,CfaUdri,point,st_croix,none,0.375,geographic_index,819,Fort Frederik,17.7125,-64.8842,weak_similarity
 425,Cfoodchild,estate,st_croix,none,0.51,geographic_index,216,Brook Hill,17.727694,-64.859333,weak_similarity
 428,Cfroen ICny,estate,st_thomas,none,0.555,geographic_index,972,GREEN CAY,18.30961532150965,-64.9080402474628,weak_similarity

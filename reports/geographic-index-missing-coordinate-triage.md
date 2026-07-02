@@ -1,6 +1,6 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:53:46.918Z
+Generated: 2026-07-02T11:57:10.215Z
 
 ## Summary
 
@@ -13,8 +13,8 @@ Generated: 2026-07-02T11:53:46.918Z
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 887 |
-| ocr_or_name_cleanup_first | 113 |
+| research_clean_name_no_candidate | 888 |
+| ocr_or_name_cleanup_first | 112 |
 | review_candidate | 78 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
@@ -130,7 +130,8 @@ Generated: 2026-07-02T11:53:46.918Z
 | 58 | Base Hill | bay | st_john |
 | 59 | Bass Gut | bay | st_john |
 | 63 | Baudouins Gut | gut | st_croix |
-| 74 | Beaehing Spit | point | st_john |
+| 72 | Scotch Reef | dictionaryEntry | st_thomas |
+| 74 | Beaching Spit | point | st_john |
 | 75 | Beaucoeur Plantation | estate | st_croix |
 | 76 | Beauregard Bay | bay | st_croix |
 | 79 | Bedhook Bay | bay | st_thomas |
@@ -209,7 +210,7 @@ Generated: 2026-07-02T11:53:46.918Z
 | 388 | Castle Coakley | estate | st_thomas |
 | 395 | Cateen Hill | hill | st_thomas |
 | 410 | Cay Bay | bay | st_thomas |
-| 417 | Cehterline Road | point | st_croix |
+| 417 | Centerline Road | point | st_croix |
 | 425 | Cfoodchild | estate | st_croix |
 | 428 | Cfroen ICny | estate | st_thomas |
 | 430 | Ch'rlstianeted' | estate | st_thomas |
@@ -234,13 +235,11 @@ Generated: 2026-07-02T11:53:46.918Z
 | 536 | Cook's Point | point | st_thomas |
 | 540 | Coral Bay | dictionaryEntry | st_john |
 | 546 | Corn Hill | estate | st_thomas |
-| 550 | Corral-Bay | bay | st_john |
 
 ## OCR/name cleanup first
 
 | Index | Name | Type | Island |
 |---:|---|---|---|
-| 72 | Bcotch Reef | dictionaryEntry | st_thomas |
 | 94 | Benny Kenny Hill | bay | st_croix |
 | 173 | BoPcks Creek | estate | st_thomas |
 | 225 | BtaZley Point | estate | st_thomas |
