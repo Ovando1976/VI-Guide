@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-07-02T09:17:29.980Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.ocr-duplicate-merge.2026-07-02T09-17-29-941Z.ts",
+  "sourceDuplicateReport": "reports/geographic-index-duplicates.json",
+  "sourceOcrApplyReport": "reports/applied-geographic-index-ocr-name-corrections.json",
+  "planned": 3,
+  "merged": 3,
+  "skipped": 0,
+  "mergedRecords": [
+    {
+      "sourceIndex": 141,
+      "sourceId": "st_croix-estate-blp-fountain",
+      "sourceName": "Fountain",
+      "targetIndex": 835,
+      "targetId": "st_croix-estate-fountain",
+      "targetName": "FOUNTAIN",
+      "island": "st_croix",
+      "aliasesToAdd": [
+        "Blp Fountain",
+        "Fountain",
+        "Fountain"
+      ]
+    },
+    {
+      "sourceIndex": 464,
+      "sourceId": "st_croix-estate-chuu88on",
+      "sourceName": "Clairmont",
+      "targetIndex": 473,
+      "targetId": "st_croix-estate-clairmont",
+      "targetName": "CLAIRMONT",
+      "island": "st_croix",
+      "aliasesToAdd": [
+        "ChUU88On",
+        "Clairmont",
+        "Clairmont"
+      ]
+    },
+    {
+      "sourceIndex": 524,
+      "sourceId": "st_croix-estate-constitutlonhuz",
+      "sourceName": "Constitution Hill",
+      "targetIndex": 523,
+      "targetId": "st_croix-estate-constitution-hill",
+      "targetName": "CONSTITUTION HILL",
+      "island": "st_croix",
+      "aliasesToAdd": [
+        "ConstitutlonhUZ",
+        "Constitution Hill",
+        "Constitution Hill"
+      ]
+    }
+  ],
+  "skippedRecords": []
+}

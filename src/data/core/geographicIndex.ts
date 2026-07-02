@@ -4584,36 +4584,7 @@ export const geographicIndex: GeographicIndexItem[] = [
       ]
     }
   },
-  {
-    "id": "st_croix-estate-blp-fountain",
-    "name": "Fountain",
-    "type": "estate",
-    "island": "st_croix",
-    "aliases": [],
-    "description": "Blp Fountain; Fountain Estate, or Nully plantation, in Northside Quarter, St. Croix.",
-    "coordinates": { "lat": 17.75212, "lng": -64.826644 },
-    "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-estate-blp-fountain&island=st_croix&context=Blp%20Fountain",
-      "map": "/map?q=Blp%20Fountain&island=st_croix"
-    },
-    "evidence": {
-      "estateLayer": false,
-      "geographicIndex": true,
-      "starterGazetteer": false,
-      "dictionary": false,
-      "archive": false,
-      "historicMap": false
-    },
-    "sources": [
-      "geographicIndex"
-    ],
-    "sourceIds": {
-      "geographicIndex": [
-        "st-croix-estate-blp-fountain"
-      ]
-    }
-  },
-  {
+    {
     "id": "st_croix-estate-blue-mountain",
     "name": "Blue Mountain",
     "type": "estate",
@@ -14574,36 +14545,7 @@ export const geographicIndex: GeographicIndexItem[] = [
       ]
     }
   },
-  {
-    "id": "st_croix-estate-chuu88on",
-    "name": "Clairmont",
-    "type": "estate",
-    "island": "st_croix",
-    "aliases": [],
-    "description": "ChUU88On; Seventeenth century French plantation, on 122-foot hill 600 yards south of Pull Point, Greencay Estate, St. Croix. -L.",
-    "coordinates": { "lat": 17.773536, "lng": -64.777924 },
-    "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-estate-chuu88on&island=st_croix&context=ChUU88On",
-      "map": "/map?q=ChUU88On&island=st_croix"
-    },
-    "evidence": {
-      "estateLayer": false,
-      "geographicIndex": true,
-      "starterGazetteer": false,
-      "dictionary": false,
-      "archive": false,
-      "historicMap": false
-    },
-    "sources": [
-      "geographicIndex"
-    ],
-    "sourceIds": {
-      "geographicIndex": [
-        "st-croix-estate-chuu88on"
-      ]
-    }
-  },
-  {
+    {
     "id": "st_john-beach-cinnamon-bay",
     "name": "Cinnamon Bay",
     "type": "beach",
@@ -14854,6 +14796,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
+    "aliases": ["ChUU88On","Clairmont"],
     "id": "st_croix-estate-clairmont",
     "name": "CLAIRMONT",
     "type": "estate",
@@ -16452,6 +16395,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
+    "aliases": ["ConstitutlonhUZ","Constitution Hill"],
     "id": "st_croix-estate-constitution-hill",
     "name": "CONSTITUTION HILL",
     "type": "estate",
@@ -16492,36 +16436,7 @@ export const geographicIndex: GeographicIndexItem[] = [
       ]
     }
   },
-  {
-    "id": "st_croix-estate-constitutlonhuz",
-    "name": "Constitution Hill",
-    "type": "estate",
-    "island": "st_croix",
-    "aliases": [],
-    "description": "ConstitutlonhUZ; Estate, Constitution Hill, St. Croix. -Dewitz; Rekhel; Oxholm.",
-    "coordinates": { "lat": 17.736691, "lng": -64.732669 },
-    "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-estate-constitutlonhuz&island=st_croix&context=ConstitutlonhUZ",
-      "map": "/map?q=ConstitutlonhUZ&island=st_croix"
-    },
-    "evidence": {
-      "estateLayer": false,
-      "geographicIndex": true,
-      "starterGazetteer": false,
-      "dictionary": false,
-      "archive": false,
-      "historicMap": false
-    },
-    "sources": [
-      "geographicIndex"
-    ],
-    "sourceIds": {
-      "geographicIndex": [
-        "st-croix-estate-constitutlonhuz"
-      ]
-    }
-  },
-  {
+    {
     "id": "st_thomas-estate-contant",
     "name": "Contant",
     "type": "estate",
@@ -25930,6 +25845,7 @@ export const geographicIndex: GeographicIndexItem[] = [
     }
   },
   {
+    "aliases": ["Blp Fountain","Fountain"],
     "id": "st_croix-estate-fountain",
     "name": "FOUNTAIN",
     "type": "estate",

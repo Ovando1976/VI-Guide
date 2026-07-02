@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-07-02T09:20:11.764Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.duplicate-alias-repair.2026-07-02T09-20-11-596Z.ts",
+  "sourceMergeReport": "reports/merged-geographic-index-ocr-duplicates.json",
+  "attempted": 3,
+  "repaired": 0,
+  "skipped": 3,
+  "repairedRecords": [],
+  "skippedRecords": [
+    {
+      "targetId": "st_croix-estate-fountain",
+      "reason": "no_duplicate_aliases_found",
+      "duplicateProperties": 1
+    },
+    {
+      "targetId": "st_croix-estate-clairmont",
+      "reason": "no_duplicate_aliases_found",
+      "duplicateProperties": 1
+    },
+    {
+      "targetId": "st_croix-estate-constitution-hill",
+      "reason": "no_duplicate_aliases_found",
+      "duplicateProperties": 1
+    }
+  ]
+}
