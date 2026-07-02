@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2026-07-02T09:37:23.373Z",
+  "updatedFile": "src/data/historicSites.ts",
+  "backupFile": "reports/backups/historicSites.reviewed-image-paths.2026-07-02T09-37-23-366Z.ts",
+  "reviewedUpdates": 20,
+  "applied": 20,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 1,
+      "name": "Bethlehem Middle Works Historic District",
+      "beforePath": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+      "afterPath": "/images/dictionary/bethlehem.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 4,
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "beforePath": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+      "afterPath": "/images/dictionary/catherineberg.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 13,
+      "name": "Diamond School",
+      "beforePath": "/images/historicSite/nrhp-stx-diamond-school.jpg",
+      "afterPath": "/images/dictionary/diamond.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 14,
+      "name": "Emmaus Moravian Church and Manse",
+      "beforePath": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+      "afterPath": "/images/dictionary/emmaus.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 19,
+      "name": "Estate Butler's Bay",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+      "afterPath": "/images/estate/butlers-bay.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 20,
+      "name": "Estate Carolina Sugar Plantation",
+      "beforePath": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+      "afterPath": "/images/dictionary/carolina.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 23,
+      "name": "Estate Hogansborg",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+      "afterPath": "/images/dictionary/hogensborg.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 24,
+      "name": "Estate Judith's Fancy",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+      "afterPath": "/images/dictionary/judiths-fancy.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 34,
+      "name": "Fort Frederick",
+      "beforePath": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
+      "afterPath": "/images/historicSite/fort-frederik.jpg",
+      "occurrences": 3
+    },
+    {
+      "index": 38,
+      "name": "Friedensthal Mission",
+      "beforePath": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+      "afterPath": "/images/estate/friedensthal.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 40,
+      "name": "Green Kay",
+      "beforePath": "/images/historicSite/nrhp-stx-green-kay.jpg",
+      "afterPath": "/images/dictionary/green-cay.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 43,
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "beforePath": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+      "afterPath": "/images/dictionary/hassel-island.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 46,
+      "name": "L'Esperance Historic District",
+      "beforePath": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+      "afterPath": "/images/dictionary/lesperance.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 50,
+      "name": "Lind Point Fort",
+      "beforePath": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
+      "afterPath": "/images/dictionary/lind-point.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 52,
+      "name": "Mafolie Great House",
+      "beforePath": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+      "afterPath": "/images/dictionary/mafolie.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 56,
+      "name": "Reef Bay Great House Historic District",
+      "beforePath": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+      "afterPath": "/images/dictionary/reef-bay.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 57,
+      "name": "Reef Bay Sugar Factory Historic District",
+      "beforePath": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+      "afterPath": "/images/dictionary/reef-bay.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 58,
+      "name": "Richmond Prison Detention and Workhouse",
+      "beforePath": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+      "afterPath": "/images/dictionary/richmond.svg",
+      "occurrences": 3
+    },
+    {
+      "index": 64,
+      "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
+      "beforePath": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+      "afterPath": "/images/historicSite/st-thomas-synagogue.jpg",
+      "occurrences": 3
+    },
+    {
+      "index": 66,
+      "name": "Trunk Bay Sugar Factory",
+      "beforePath": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+      "afterPath": "/images/dictionary/trunk-bay.svg",
+      "occurrences": 3
+    }
+  ],
+  "skippedRecords": [],
+  "deferredReview": [
+    {
+      "index": 11,
+      "name": "Danish West India and Guinea Company Warehouse",
+      "reason": "Candidate /images/dictionary/company.svg is too generic."
+    },
+    {
+      "index": 37,
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "reason": "Candidate /images/dictionary/midland.svg is related but too broad."
+    },
+    {
+      "index": 47,
+      "name": "La Grande Princesse School",
+      "reason": "Candidate /images/dictionary/prince.svg is too generic."
+    }
+  ]
+}

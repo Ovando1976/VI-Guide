@@ -68,9 +68,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1988.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+    "imageUrl": "/images/dictionary/bethlehem.svg",
+    "coverImage": "/images/dictionary/bethlehem.svg",
+    "thumbnailUrl": "/images/dictionary/bethlehem.svg",
     "relatedEstates": [
       "Bethlehem"
     ],
@@ -156,9 +156,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+    "imageUrl": "/images/dictionary/catherineberg.svg",
+    "coverImage": "/images/dictionary/catherineberg.svg",
+    "thumbnailUrl": "/images/dictionary/catherineberg.svg",
     "relatedEstates": [
       "Catherineberg"
     ],
@@ -409,9 +409,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-diamond-school.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-diamond-school.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-diamond-school.jpg",
+    "imageUrl": "/images/dictionary/diamond.svg",
+    "coverImage": "/images/dictionary/diamond.svg",
+    "thumbnailUrl": "/images/dictionary/diamond.svg",
     "relatedEstates": [
       "Diamond"
     ],
@@ -437,9 +437,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1977.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+    "imageUrl": "/images/dictionary/emmaus.svg",
+    "coverImage": "/images/dictionary/emmaus.svg",
+    "thumbnailUrl": "/images/dictionary/emmaus.svg",
     "relatedEstates": [
       "Coral Bay"
     ],
@@ -589,9 +589,9 @@ export const historicSites: HistoricSite[] = [
       "lat": 17.75361,
       "lng": -64.880169
     },
-    "imageUrl": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+    "imageUrl": "/images/estate/butlers-bay.svg",
+    "coverImage": "/images/estate/butlers-bay.svg",
+    "thumbnailUrl": "/images/estate/butlers-bay.svg",
     "relatedEstates": [
       "Butler's Bay"
     ],
@@ -617,9 +617,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+    "imageUrl": "/images/dictionary/carolina.svg",
+    "coverImage": "/images/dictionary/carolina.svg",
+    "thumbnailUrl": "/images/dictionary/carolina.svg",
     "relatedEstates": [
       "Carolina"
     ],
@@ -710,9 +710,9 @@ export const historicSites: HistoricSite[] = [
       "lat": 17.7091,
       "lng": -64.8463
     },
-    "imageUrl": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+    "imageUrl": "/images/dictionary/hogensborg.svg",
+    "coverImage": "/images/dictionary/hogensborg.svg",
+    "thumbnailUrl": "/images/dictionary/hogensborg.svg",
     "relatedEstates": [
       "Hogansborg"
     ],
@@ -741,9 +741,9 @@ export const historicSites: HistoricSite[] = [
       "lat": 17.776914,
       "lng": -64.747497
     },
-    "imageUrl": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+    "imageUrl": "/images/dictionary/judiths-fancy.svg",
+    "coverImage": "/images/dictionary/judiths-fancy.svg",
+    "thumbnailUrl": "/images/dictionary/judiths-fancy.svg",
     "relatedEstates": [
       "Judith's Fancy"
     ],
@@ -1045,9 +1045,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1996.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
+    "imageUrl": "/images/historicSite/fort-frederik.jpg",
+    "coverImage": "/images/historicSite/fort-frederik.jpg",
+    "thumbnailUrl": "/images/historicSite/fort-frederik.jpg",
     "relatedEstates": [
       "Frederiksted"
     ],
@@ -1157,9 +1157,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+    "imageUrl": "/images/estate/friedensthal.svg",
+    "coverImage": "/images/estate/friedensthal.svg",
+    "thumbnailUrl": "/images/estate/friedensthal.svg",
     "relatedEstates": [
       "Christiansted"
     ],
@@ -1213,9 +1213,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1976.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-green-kay.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-green-kay.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-green-kay.jpg",
+    "imageUrl": "/images/dictionary/green-cay.svg",
+    "coverImage": "/images/dictionary/green-cay.svg",
+    "thumbnailUrl": "/images/dictionary/green-cay.svg",
     "relatedEstates": [
       "Christiansted"
     ],
@@ -1299,9 +1299,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+    "imageUrl": "/images/dictionary/hassel-island.svg",
+    "coverImage": "/images/dictionary/hassel-island.svg",
+    "thumbnailUrl": "/images/dictionary/hassel-island.svg",
     "relatedEstates": [
       "Hassel Island"
     ],
@@ -1384,9 +1384,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+    "imageUrl": "/images/dictionary/lesperance.svg",
+    "coverImage": "/images/dictionary/lesperance.svg",
+    "thumbnailUrl": "/images/dictionary/lesperance.svg",
     "relatedEstates": [
       "Reef Bay"
     ],
@@ -1496,9 +1496,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
+    "imageUrl": "/images/dictionary/lind-point.svg",
+    "coverImage": "/images/dictionary/lind-point.svg",
+    "thumbnailUrl": "/images/dictionary/lind-point.svg",
     "relatedEstates": [
       "Cruz Bay"
     ],
@@ -1555,9 +1555,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+    "imageUrl": "/images/dictionary/mafolie.svg",
+    "coverImage": "/images/dictionary/mafolie.svg",
+    "thumbnailUrl": "/images/dictionary/mafolie.svg",
     "relatedEstates": [
       "Mafolie"
     ],
@@ -1670,9 +1670,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+    "imageUrl": "/images/dictionary/reef-bay.svg",
+    "coverImage": "/images/dictionary/reef-bay.svg",
+    "thumbnailUrl": "/images/dictionary/reef-bay.svg",
     "relatedEstates": [
       "Reef Bay"
     ],
@@ -1698,9 +1698,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+    "imageUrl": "/images/dictionary/reef-bay.svg",
+    "coverImage": "/images/dictionary/reef-bay.svg",
+    "thumbnailUrl": "/images/dictionary/reef-bay.svg",
     "relatedEstates": [
       "Reef Bay"
     ],
@@ -1726,9 +1726,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1978.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
-    "coverImage": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+    "imageUrl": "/images/dictionary/richmond.svg",
+    "coverImage": "/images/dictionary/richmond.svg",
+    "thumbnailUrl": "/images/dictionary/richmond.svg",
     "relatedEstates": [
       "Richmond"
     ],
@@ -1898,9 +1898,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1997.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
-    "coverImage": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+    "imageUrl": "/images/historicSite/st-thomas-synagogue.jpg",
+    "coverImage": "/images/historicSite/st-thomas-synagogue.jpg",
+    "thumbnailUrl": "/images/historicSite/st-thomas-synagogue.jpg",
     "relatedEstates": [
       "Charlotte Amalie"
     ],
@@ -1955,9 +1955,9 @@ export const historicSites: HistoricSite[] = [
     "history": "National Register of Historic Places listing year: 1981.",
     "significance": "Official National Register historic resource; enrich with nomination text, coordinates, images, and local interpretation.",
     "coordinates": null,
-    "imageUrl": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
-    "coverImage": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
-    "thumbnailUrl": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+    "imageUrl": "/images/dictionary/trunk-bay.svg",
+    "coverImage": "/images/dictionary/trunk-bay.svg",
+    "thumbnailUrl": "/images/dictionary/trunk-bay.svg",
     "relatedEstates": [
       "Trunk Bay"
     ],

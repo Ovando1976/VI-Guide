@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T09:33:52.132Z",
+  "generatedAt": "2026-07-02T09:37:42.829Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 85
+    "low": 65
   },
   "issueGroups": [
     {
@@ -49,7 +49,7 @@
       "severity": "low",
       "source": "historic_sites",
       "issue": "missing_local_image_file",
-      "count": 33
+      "count": 13
     },
     {
       "severity": "low",
@@ -2577,26 +2577,6 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 1,
-      "id": "nrhp-stx-bethlehem-middle-works-historic-district",
-      "name": "Bethlehem Middle Works Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 4,
-      "id": "nrhp-stj-catherineberg-jockumsdahl-herman-farm",
-      "name": "Catherineberg-Jockumsdahl-Herman Farm",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 10,
       "id": "nrhp-stx-columbus-landing-site",
       "name": "Columbus Landing Site",
@@ -2612,66 +2592,6 @@
       "name": "Danish West India and Guinea Company Warehouse",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 13,
-      "id": "nrhp-stx-diamond-school",
-      "name": "Diamond School",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-diamond-school.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 14,
-      "id": "nrhp-stj-emmaus-moravian-church-and-manse",
-      "name": "Emmaus Moravian Church and Manse",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 19,
-      "id": "nrhp-stx-estate-butlers-bay",
-      "name": "Estate Butler's Bay",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 20,
-      "id": "nrhp-stj-estate-carolina-sugar-plantation",
-      "name": "Estate Carolina Sugar Plantation",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 23,
-      "id": "nrhp-stx-estate-hogansborg",
-      "name": "Estate Hogansborg",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-hogansborg.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 24,
-      "id": "nrhp-stx-estate-judiths-fancy",
-      "name": "Estate Judith's Fancy",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2697,31 +2617,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 34,
-      "id": "nrhp-stx-fort-frederick",
-      "name": "Fort Frederick",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-fort-frederick.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 37,
       "id": "nrhp-stx-friedensfeld-midlands-moravian-church-and-manse",
       "name": "Friedensfeld Midlands Moravian Church and Manse",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 38,
-      "id": "nrhp-stx-friedensthal-mission",
-      "name": "Friedensthal Mission",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensthal-mission.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2737,31 +2637,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 40,
-      "id": "nrhp-stx-green-kay",
-      "name": "Green Kay",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-green-kay.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 41,
       "id": "nrhp-stt-hamburg-america-shipping-line-administrative-offices",
       "name": "Hamburg-America Shipping Line Administrative Offices",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 43,
-      "id": "nrhp-stt-hassel-island-boundary-increase",
-      "name": "Hassel Island Historic District (Boundary Increase)",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2777,41 +2657,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 46,
-      "id": "nrhp-stj-lesperance-historic-district",
-      "name": "L'Esperance Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 47,
       "id": "nrhp-stx-la-grande-princesse-school",
       "name": "La Grande Princesse School",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 50,
-      "id": "nrhp-stj-lind-point-fort",
-      "name": "Lind Point Fort",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lind-point-fort.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 52,
-      "id": "nrhp-stt-mafolie-great-house",
-      "name": "Mafolie Great House",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-mafolie-great-house.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2837,61 +2687,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 56,
-      "id": "nrhp-stj-reef-bay-great-house-historic-district",
-      "name": "Reef Bay Great House Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 57,
-      "id": "nrhp-stj-reef-bay-sugar-factory-historic-district",
-      "name": "Reef Bay Sugar Factory Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 58,
-      "id": "nrhp-stx-richmond-prison-detention-and-workhouse",
-      "name": "Richmond Prison Detention and Workhouse",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 59,
       "id": "nrhp-stj-rustenberg-plantation-south-historic-district",
       "name": "Rustenberg Plantation South Historic District",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 64,
-      "id": "nrhp-stt-st-thomas-synagogue-beracha",
-      "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 66,
-      "id": "nrhp-stj-trunk-bay-sugar-factory",
-      "name": "Trunk Bay Sugar Factory",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
