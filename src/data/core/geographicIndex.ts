@@ -2632,15 +2632,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-bay-bedhook-bay",
-    "name": "Bedhook Bay",
+    "name": "Red Hook Bay",
     "type": "bay",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Redhook Bay",
+      "Bedhook Bay"
+    ],
     "description": "Bedhook Bay; Inlet, 1, 540 yards long, between Redhook Point and Uabrita point, near eastern end of St. Thomaa I. Outer portion of 3ay, includtng Muller Bay, is 660 yards wide, 660 y a r d long; inner portion, above Jack Croix. -Old. Spelled \" Raad Schuster, \" by Beck.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-bay-bedhook-bay&island=st_thomas&context=Bedhook%20Bay",
-      "map": "/map?q=Bedhook%20Bay&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-bay-bedhook-bay&island=st_thomas&context=Red%20Hook%20Bay",
+      "map": "/map?q=Red%20Hook%20Bay&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -3929,9 +3932,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
   {
     "id": "st_thomas-bay-beverhout-plantation",
     "name": "Beverhout Plantation",
-    "type": "bay",
+    "type": "estate",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Beverhout's Plantage"
+    ],
     "description": "Beverhout'a Pluntage; 1% mile north of Krum Bay, St. Thomas. -Old.",
     "coordinates": null,
     "routes": {
@@ -3958,9 +3963,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
   {
     "id": "st_thomas-bay-beverhout-point",
     "name": "Beverhout Point",
-    "type": "bay",
+    "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Ioannis Beuerout Punt"
+    ],
     "description": "Beverhout Point; West angle of sninll peiiinsula with 90-foot knoll, projecting f / g mile at east entrance of Nazareth Bay, 1, 000 yards northwesterly from Deck Point, Redhook Quarter, St. Thomas. -G. B. This, or possibly Deck Point, was called by Van Keulen, \" Ioannis Beuerout Punt. \"",
     "coordinates": null,
     "routes": {
@@ -4077,7 +4084,7 @@ export const geographicIndex: GeographicIndexRecord[] = [
   {
     "id": "st_john-bay-billington-hill",
     "name": "Billington Hill",
-    "type": "bay",
+    "type": "hill",
     "island": "st_john",
     "aliases": [],
     "description": "Billington Hill; 639 feet high, summit of ridge east of Reef Bay, St. John. T. 3772.",
@@ -4370,9 +4377,11 @@ export const geographicIndex: GeographicIndexRecord[] = [
   {
     "id": "st_john-bay-blasbalg-point",
     "name": "Blasbalg Point",
-    "type": "bay",
+    "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Red Cliffs"
+    ],
     "description": "Blasbalg Point; Right angle of bluff shore a t south side of Calvary Bay entrance, sounthwest part of St. John Island. Danish name, meaning \"Pale S h e a t h \"; found on Oxholm's map of St. John, and probably referred to adjacent bluff on south of point, rising sheer 60 feet, described on T. 3779 as \" Red Cliffs. \"",
     "coordinates": null,
     "routes": {
@@ -7356,15 +7365,21 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-estate-btazley-point",
-    "name": "BtaZley Point",
-    "type": "estate",
+    "name": "Stalley Point",
+    "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Stalleyn Point",
+      "Pointe de Stalley",
+      "Mr. Stalky's Punt",
+      "Staley Point",
+      "BtaZley Point"
+    ],
     "description": "BtaZley Point; Old name of Long Point, southernmost extremity of St. Thomas Island, terminus of Ridge 261 feet high, crownlng peninsula 1 mile long, 4 extending southeast from Bovoni Estate, French Bay Quarter, and west of Mangrove Lagoon. Named '' Mr. Stalky's Punt \" by Van Keulep (1719). and \" Pointe de Stalley \" by Bellin (1764); also found 88 \" Stalleyn Point\" Purdy, Dessiou and Jefferys' Weat-India Atlas, erroneously transfers name Stalleys Point \" to Water Poiut at Curreat Hole, opposite St. . Tames Island. Stalley or Long Point is called in Spanish, \"Punta ColQrada 6 Langue \" (Red or Long Point), both names much duplicated &a~&yr Pohtt; Same 8 6 Stalley Point, q, v. , properly reterrlng to pronmtory otherwise known a s Long Point, but misplaced on Purdy, Deaslou and Jefferys' Atlas to position of Water Point, 'S. T.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-estate-btazley-point&island=st_thomas&context=BtaZley%20Point",
-      "map": "/map?q=BtaZley%20Point&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-estate-btazley-point&island=st_thomas&context=Stalley%20Point",
+      "map": "/map?q=Stalley%20Point&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -7443,15 +7458,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-bay-btwmphfar-bay",
-    "name": "Btwmphfar Bay",
+    "name": "Stumpy Bay",
     "type": "bay",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Btwmphfar Bay"
+    ],
     "description": "Btwmphfar Bay; Stumpy Bay, north shore of St. Thomas. --!& 8tmmphiae Point; Stumpy Point, orbginally named Calvert Point, north shore",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-bay-btwmphfar-bay&island=st_thomas&context=Btwmphfar%20Bay",
-      "map": "/map?q=Btwmphfar%20Bay&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-bay-btwmphfar-bay&island=st_thomas&context=Stumpy%20Bay",
+      "map": "/map?q=Stumpy%20Bay&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -7819,15 +7836,19 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-bay-buhvun-point",
-    "name": "Buhvun Point",
-    "type": "bay",
+    "name": "Ruhuun Point",
+    "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Rnlivun",
+      "Ruhuun",
+      "Buhvun Point"
+    ],
     "description": "Buhvun Point; Headland with 269-foot hill, west of Rendezvous Bay, at soufh extremity of west shore of St. John. --C. P. , p. 135; Dan. 265; R. A. 2452; H. 0. 3003. Spelled '' Ruhuun \" by Oxholni : erroneously '' Rnlivun. \" G. E'. at south tip: Iat. 18' '18' 45. 92\" (1, 412m. ); 84\" 46' 56. 28\" (1, 823m. ), G. P. '' Rend, \" summit of 209-foot hill; lat. 18\" 18' 50\" (1, 537 m. ); long. 64' 46' 54\" (1, 589m. ).",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-bay-buhvun-point&island=st_john&context=Buhvun%20Point",
-      "map": "/map?q=Buhvun%20Point&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-bay-buhvun-point&island=st_john&context=Ruhuun%20Point",
+      "map": "/map?q=Ruhuun%20Point&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -9065,15 +9086,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-bay-caeey-point",
-    "name": "Caeey Point",
-    "type": "bay",
+    "name": "Casey Point",
+    "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "K.C. Point",
+      "Caeey Point"
+    ],
     "description": "Caeey Point; Name suggested for Durloe Point, St. John, by fleld party of C. & G. S. , because Durloe Bay, immediately south, was sometimes called ''K, C. \" (sounding like Gamy), though in fact an abbreviation of Klein Cinnamon. Casieland; Cas Cay. -Reichel; Dewitz.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-bay-caeey-point&island=st_john&context=Caeey%20Point",
-      "map": "/map?q=Caeey%20Point&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-bay-caeey-point&island=st_john&context=Casey%20Point",
+      "map": "/map?q=Casey%20Point&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -9156,15 +9180,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-estate-cahrztaberg",
-    "name": "CahrZtaberg",
+    "name": "Cabritaberg",
     "type": "estate",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Cabrite",
+      "CahrZtaberg"
+    ],
     "description": "CahrZtaberg; Estate near Mosquito Bay, Southside Quarter, St. Thomas. Hoist. Same a s \" Cabrite. \"",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-estate-cahrztaberg&island=st_thomas&context=CahrZtaberg",
-      "map": "/map?q=CahrZtaberg&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-estate-cahrztaberg&island=st_thomas&context=Cabritaberg",
+      "map": "/map?q=Cabritaberg&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -9614,7 +9641,7 @@ export const geographicIndex: GeographicIndexRecord[] = [
   {
     "id": "st_thomas-bay-calvert-point",
     "name": "Calvert Point",
-    "type": "bay",
+    "type": "point",
     "island": "st_thomas",
     "aliases": [],
     "description": "Calvert Point; Projection between Santa Maria or Tallard and Bordeaux Bays,",
@@ -16055,15 +16082,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-bay-compagnles-plantagie",
-    "name": "Compagnles Plantagie",
-    "type": "bay",
+    "name": "Compagnies Plantagie",
+    "type": "estate",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Sugar Estate",
+      "Compagnles Plantagie"
+    ],
     "description": "Compagnles Plantagie; locally, Sugar Dstate; 'On Holst'r mapi ThommHorn. ; Reichel; BP. 2183; etc. &tint Thomas Harbor; Prindpal port In Virgin Sslazads; otcupying an area of 1% 8qnare miles in the crater of extinct voloano; sftuated w a r mlddle of southern coast of St. Thomari Zuiaad, lnclaeed on tho west by Bflswl -- 174 of 215 GEOGRAPHIC- DICTIONARY OF THE VIRGIN. ISLANDS 171 I&mtl: mlkh bdtlenmke6i entrance, and perfectly Iandlocked, Length, about 1% miles. Width, between Cowell and Mnhbnfels Pdnts, 1, 200 yards; between Frederik and LieenLund Points, 730 yards;. pasalng Rupert Rock, 500 *yards; Basin, % wile; from Ung Bay to Mud Hole,. inclusive, 2~500yada. Best description In P. R. &, V. I, Coast Pilot, pp. 124-127. Beet representation on Coast and Geodetlc Survey Chart 933, Locally referred to simply as \" The Harbor \"; Danish, Havn, or aavnen; French La1 Radei etc, This harbor is one 04 the hest in the. Antilles, and enjoys a well deserved reputationwi a coaling station and port of refuge; although in 1867, a ayclane wredred or stranded every pessel Jn the Harbor, with the loss @f 1, 000 lives. 1t. affordi ample facilities for the expeditious coaling of eteamars by day or night, , and i s much resorted to by shipping on accopnt of Lts floating-dock, shipyaqlq marine slip#, wharves provided wuhl eleotrk qranes, oil reservoirs, coal depots, fresh-water tanks, machine shops, warehouses, and repair shops. The EIarbQr comqands the gateway into the Caxibbean through Virgin Passage, and is in close proximity to other flrst gateways. , It. IP the mrt call 00 passenger ateamers, Prom New. Eork a d European Wrts, for vessels bound for the Panama Canal, Central America, and for South. , America via, the, Lesser Antilles. Steamprs Iie alongside wharres. No landing fee. Fivq-days' trip from Newport News; six days from New Pork, distance 1, 4QO miles, ; distance to Laguaira 480 miles and to Colon 1, 020 milea Thie harbor has been celebrated since the days of, the buccaneers. Here merchanhnen seught refuge from pirates ar warships, or found a market for mawband or clandestine trade with the Spamish c a a b. Ober vlvldly dwrJbes the weird scene when malesn 6hlps. are coaled at night by 8 c~houtingblack women undeF, torchlight, adding that thi5 harbor is \"woi$bp of all &he, ad&cWes ope can heap umn &--magn&ent, glorious, gemlike, everything except hur-e praof * * % The sm!et, laad b r w brings oil the fragrance of a thoucsaqd. flowers @d. the atrange, , plangent odors of the $terrenetswicsc\"",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-bay-compagnles-plantagie&island=st_thomas&context=Compagnles%20Plantagie",
-      "map": "/map?q=Compagnles%20Plantagie&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-bay-compagnles-plantagie&island=st_thomas&context=Compagnies%20Plantagie",
+      "map": "/map?q=Compagnies%20Plantagie&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -26464,15 +26494,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-bay-frcdcrucuted-jlirrbor",
-    "name": "FrcdcrUcuted Jlirrbor",
+    "name": "Frederiksted Harbor",
     "type": "bay",
-    "island": "st_thomas",
-    "aliases": [],
+    "island": "st_croix",
+    "aliases": [
+      "Frederiksted Road",
+      "FrcdcrUcuted Jlirrbor"
+    ],
     "description": "FrcdcrUcuted Jlirrbor; Anchornge in Westend Bay, off Frederikntrtl, Pt. Croix. Same as Frederiksted Road.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-bay-frcdcrucuted-jlirrbor&island=st_thomas&context=FrcdcrUcuted%20Jlirrbor",
-      "map": "/map?q=FrcdcrUcuted%20Jlirrbor&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-bay-frcdcrucuted-jlirrbor&island=st_croix&context=Frederiksted%20Harbor",
+      "map": "/map?q=Frederiksted%20Harbor&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,
@@ -26493,15 +26526,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-dictionaryEntry-frcder2lcs-knoll",
-    "name": "Frcder2lcs Knoll",
+    "name": "Frederik's Knoll",
     "type": "dictionaryEntry",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Frederik Knoll",
+      "Frcder2lcs Knoll"
+    ],
     "description": "Frcder2lcs Knoll; Same as Frederik Knoll, St. Thomas. -l~anish 80. Prodderikstuar?c; Danish, Fretlerik's Tower, now called Hluelward (hstle, St. Thomas.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-frcder2lcs-knoll&island=st_thomas&context=Frcder2lcs%20Knoll",
-      "map": "/map?q=Frcder2lcs%20Knoll&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-frcder2lcs-knoll&island=st_thomas&context=Frederik's%20Knoll",
+      "map": "/map?q=Frederik's%20Knoll&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -26725,15 +26761,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_croix-dictionaryEntry-frederdke-h-a-n-b",
-    "name": "Frederdke H a n b",
+    "name": "Frederikshaab",
     "type": "dictionaryEntry",
     "island": "st_croix",
-    "aliases": [],
+    "aliases": [
+      "Frederdke H a n b"
+    ],
     "description": "Frederdke H a n b; Frederikshaab, St. Croix, q. v. -41. 0. 1400, 1423.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-frederdke-h-a-n-b&island=st_croix&context=Frederdke%20H%20a%20n%20b",
-      "map": "/map?q=Frederdke%20H%20a%20n%20b&island=st_croix"
+      "knowledge": "/history/knowledge?estate=st-croix-dictionaryentry-frederdke-h-a-n-b&island=st_croix&context=Frederikshaab",
+      "map": "/map?q=Frederikshaab&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,
@@ -62274,16 +62312,20 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-historic-prederikx-bnttcric",
-    "name": "Prederikx Bnttcric",
+    "name": "Frederik Battery",
     "imageUrl": "/images/dictionary/prederikx-bnttcric.svg",
     "type": "historic",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Frederik's Battery",
+      "Frederik's Batterie",
+      "Prederikx Bnttcric"
+    ],
     "description": "Prederikx Bnttcric; Same as Frederik Battery, St. Thomas. -Rohde.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-prederikx-bnttcric&island=st_thomas&context=Prederikx%20Bnttcric",
-      "map": "/map?q=Prederikx%20Bnttcric&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-historic-prederikx-bnttcric&island=st_thomas&context=Frederik%20Battery",
+      "map": "/map?q=Frederik%20Battery&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -64789,15 +64831,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-road-rada-de-prederiksted",
-    "name": "Rada de Prederiksted",
-    "type": "road",
-    "island": "st_thomas",
-    "aliases": [],
+    "name": "Rada de Frederiksted",
+    "type": "bay",
+    "island": "st_croix",
+    "aliases": [
+      "Frederiksted Roadstead",
+      "Rada de Prederiksted"
+    ],
     "description": "Rada de Prederiksted; Spanish name o f Frederiksted Roadstead. -Der.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-road-rada-de-prederiksted&island=st_thomas&context=Rada%20de%20Prederiksted",
-      "map": "/map?q=Rada%20de%20Prederiksted&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-road-rada-de-prederiksted&island=st_croix&context=Rada%20de%20Frederiksted",
+      "map": "/map?q=Rada%20de%20Frederiksted&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,

@@ -1,21 +1,21 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:59:16.800Z
+Generated: 2026-07-02T12:07:30.889Z
 
 ## Summary
 
-- Candidate-audit missing coordinate records: 1111
-- Triaged records: 1111
-- Official data-cleanliness missing coordinates: 742
+- Candidate-audit missing coordinate records: 1113
+- Triaged records: 1113
+- Official data-cleanliness missing coordinates: 749
 - Official sampled missing-coordinate issues: 200
 
 ## By bucket
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 888 |
-| ocr_or_name_cleanup_first | 112 |
-| review_candidate | 78 |
+| research_clean_name_no_candidate | 892 |
+| ocr_or_name_cleanup_first | 108 |
+| review_candidate | 80 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
 
@@ -24,9 +24,9 @@ Generated: 2026-07-02T11:59:16.800Z
 | Confidence | Count |
 |---|---:|
 | none | 1020 |
-| review | 48 |
+| review | 49 |
 | weak | 39 |
-| exact | 4 |
+| exact | 5 |
 
 ## Best remaining review candidates
 
@@ -34,6 +34,7 @@ Generated: 2026-07-02T11:59:16.800Z
 |---:|---|---|---|---|---|---|
 | 188 | Bordeaux plantation | dictionaryEntry | st_thomas | exact | BORDEAUX | contains_clean_slug |
 | 229 | Buck Bay | bay | st_thomas | exact | BUCK ISLAND | exact_clean_slug |
+| 839 | Frederiksted Harbor | bay | st_croix | exact | Fort Frederik | similarity_or_token_overlap |
 | 989 | Grove | historic | st_croix | exact | GROVE PLACE | contains_clean_slug |
 | 1106 | Hope Point | estate | st_thomas | exact | HOPE | exact_clean_slug |
 | 23 | Annaberg Plantation Records | archive_record | st_john | review | Anna Point | contains_clean_slug |
@@ -47,6 +48,7 @@ Generated: 2026-07-02T11:59:16.800Z
 | 397 | Catharina's Hope | estate | st_croix | review | HOPE | contains_clean_slug |
 | 400 | Catherine's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
 | 436 | Charlotte Amalie High School | school | st_thomas | review | Charlotte Amalie | contains_clean_slug |
+| 502 | Compagnies Plantagie | estate | st_thomas | review | THOMAS - SUGAR ESTATE | contains_clean_slug |
 | 566 | Cottongrove Hill | hill | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 925 | Goodhope Bay | bay | st_croix | review | HOPE | contains_clean_slug |
 | 1204 | Johiison Reef | hill | st_john | review | REEF BAY | contains_clean_slug |
@@ -134,18 +136,18 @@ Generated: 2026-07-02T11:59:16.800Z
 | 74 | Beaching Spit | point | st_john |
 | 75 | Beaucoeur Plantation | estate | st_croix |
 | 76 | Beauregard Bay | bay | st_croix |
-| 79 | Bedhook Bay | bay | st_thomas |
+| 79 | Red Hook Bay | bay | st_thomas |
 | 80 | Bee Hill | hill | st_croix |
 | 96 | Berg Hill | hill | st_thomas |
 | 101 | Bethel Estate | estate | st_thomas |
 | 116 | Beverhoudt Estate | estate | st_croix |
-| 118 | Beverhout Plantation | bay | st_thomas |
-| 119 | Beverhout Point | bay | st_thomas |
-| 123 | Billington Hill | bay | st_john |
+| 118 | Beverhout Plantation | estate | st_thomas |
+| 119 | Beverhout Point | point | st_thomas |
+| 123 | Billington Hill | hill | st_john |
 | 128 | Blackbeard Hill | hill | st_thomas |
 | 131 | Blackrock Hill | point | st_john |
 | 132 | Bladwell Estate | estate | st_croix |
-| 133 | Blasbalg Point | bay | st_john |
+| 133 | Blasbalg Point | point | st_john |
 | 142 | Bluebeard Hill | hill | st_thomas |
 | 145 | Bluegut Bay | bay | st_croix |
 | 147 | Boatman Point | point | st_john |
@@ -160,6 +162,9 @@ Generated: 2026-07-02T11:59:16.800Z
 | 212 | Broad Bay | bay | st_croix |
 | 213 | Brock Estate | estate | st_thomas |
 | 214 | Brommer Hill | bay | st_thomas |
+| 225 | Stalley Point | point | st_thomas |
+| 228 | Stumpy Bay | bay | st_thomas |
+| 239 | Ruhuun Point | point | st_john |
 | 242 | Bull Point | point | st_thomas |
 | 244 | Bulow Hill | hill | st_thomas |
 | 247 | Bulowminde | estate | st_thomas |
@@ -178,11 +183,12 @@ Generated: 2026-07-02T11:59:16.800Z
 | 276 | Cabrithorn Point | point | st_john |
 | 277 | Cabrito | point | st_croix |
 | 278 | Cabrittaberg | estate | st_thomas |
-| 280 | Caeey Point | bay | st_john |
+| 280 | Casey Point | point | st_john |
 | 282 | Cabritahorn Point | point | st_john |
+| 283 | Cabritaberg | estate | st_thomas |
 | 290 | Caledonia Spring | estate | st_thomas |
 | 296 | Calvary Bay | bay | st_john |
-| 297 | Calvert Point | bay | st_thomas |
+| 297 | Calvert Point | point | st_thomas |
 | 298 | Calverts Point | point | st_thomas |
 | 301 | Camp Bay | bay | st_thomas |
 | 302 | Camp House Bay | bay | st_croix |
@@ -231,10 +237,6 @@ Generated: 2026-07-02T11:59:16.800Z
 | 504 | Compass Point | point | st_thomas |
 | 516 | Congo Cay | point | st_thomas |
 | 518 | Congo Point | point | st_thomas |
-| 534 | Contentment Hill | estate | st_thomas |
-| 536 | Cook's Point | point | st_thomas |
-| 540 | Coral Bay | dictionaryEntry | st_john |
-| 546 | Corn Hill | estate | st_thomas |
 
 ## OCR/name cleanup first
 
@@ -242,10 +244,6 @@ Generated: 2026-07-02T11:59:16.800Z
 |---:|---|---|---|
 | 94 | Benny Kenny Hill | bay | st_croix |
 | 173 | BoPcks Creek | estate | st_thomas |
-| 225 | BtaZley Point | estate | st_thomas |
-| 228 | Btwmphfar Bay | bay | st_thomas |
-| 239 | Buhvun Point | bay | st_john |
-| 283 | CahrZtaberg | estate | st_thomas |
 | 304 | Camporico Raltpond | estate | st_croix |
 | 414 | CaZverts Punt | point | st_thomas |
 | 416 | Ceeeman HiZZ | estate | st_thomas |

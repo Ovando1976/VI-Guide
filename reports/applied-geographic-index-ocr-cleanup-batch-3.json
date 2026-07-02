@@ -1,0 +1,203 @@
+{
+  "generatedAt": "2026-07-02T12:06:30.166Z",
+  "backupFile": "reports/backups/geographicIndex.before-ocr-cleanup-batch-3.1782993990043.ts",
+  "targetFile": "src/data/core/geographicIndex.ts",
+  "appliedCount": 17,
+  "applied": [
+    {
+      "index": 79,
+      "id": "st_thomas-bay-bedhook-bay",
+      "oldName": "Bedhook Bay",
+      "newName": "Red Hook Bay",
+      "oldType": "bay",
+      "newType": "bay",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says inlet between Redhook Point and Cabrita Point near eastern St. Thomas."
+    },
+    {
+      "index": 118,
+      "id": "st_thomas-bay-beverhout-plantation",
+      "oldName": "Beverhout Plantation",
+      "newName": "Beverhout Plantation",
+      "oldType": "bay",
+      "newType": "estate",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says Beverhout's Plantage north of Krum Bay, St. Thomas; type is plantation/estate, not bay."
+    },
+    {
+      "index": 119,
+      "id": "st_thomas-bay-beverhout-point",
+      "oldName": "Beverhout Point",
+      "newName": "Beverhout Point",
+      "oldType": "bay",
+      "newType": "point",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says point at east entrance of Nazareth Bay."
+    },
+    {
+      "index": 123,
+      "id": "st_john-bay-billington-hill",
+      "oldName": "Billington Hill",
+      "newName": "Billington Hill",
+      "oldType": "bay",
+      "newType": "hill",
+      "oldIsland": "st_john",
+      "newIsland": "st_john",
+      "reason": "Description says 639-foot high hill east of Reef Bay, St. John."
+    },
+    {
+      "index": 133,
+      "id": "st_john-bay-blasbalg-point",
+      "oldName": "Blasbalg Point",
+      "newName": "Blasbalg Point",
+      "oldType": "bay",
+      "newType": "point",
+      "oldIsland": "st_john",
+      "newIsland": "st_john",
+      "reason": "Description says point at south side of Calvary Bay entrance, St. John."
+    },
+    {
+      "index": 225,
+      "id": "st_thomas-estate-btazley-point",
+      "oldName": "BtaZley Point",
+      "newName": "Stalley Point",
+      "oldType": "estate",
+      "newType": "point",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says old name of Long Point, southernmost extremity of St. Thomas."
+    },
+    {
+      "index": 228,
+      "id": "st_thomas-bay-btwmphfar-bay",
+      "oldName": "Btwmphfar Bay",
+      "newName": "Stumpy Bay",
+      "oldType": "bay",
+      "newType": "bay",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description explicitly says Stumpy Bay, north shore of St. Thomas."
+    },
+    {
+      "index": 239,
+      "id": "st_john-bay-buhvun-point",
+      "oldName": "Buhvun Point",
+      "newName": "Ruhuun Point",
+      "oldType": "bay",
+      "newType": "point",
+      "oldIsland": "st_john",
+      "newIsland": "st_john",
+      "reason": "Description says headland west of Rendezvous Bay and notes spelling Ruhuun by Oxholm."
+    },
+    {
+      "index": 280,
+      "id": "st_john-bay-caeey-point",
+      "oldName": "Caeey Point",
+      "newName": "Casey Point",
+      "oldType": "bay",
+      "newType": "point",
+      "oldIsland": "st_john",
+      "newIsland": "st_john",
+      "reason": "Description says name suggested for Durloe Point because Durloe Bay was sometimes called K.C."
+    },
+    {
+      "index": 283,
+      "id": "st_thomas-estate-cahrztaberg",
+      "oldName": "CahrZtaberg",
+      "newName": "Cabritaberg",
+      "oldType": "estate",
+      "newType": "estate",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says estate near Mosquito Bay, Southside Quarter, St. Thomas; same as Cabrite."
+    },
+    {
+      "index": 297,
+      "id": "st_thomas-bay-calvert-point",
+      "oldName": "Calvert Point",
+      "newName": "Calvert Point",
+      "oldType": "bay",
+      "newType": "point",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says projection between Santa Maria/Tallard and Bordeaux Bays."
+    },
+    {
+      "index": 502,
+      "id": "st_thomas-bay-compagnles-plantagie",
+      "oldName": "Compagnles Plantagie",
+      "newName": "Compagnies Plantagie",
+      "oldType": "bay",
+      "newType": "estate",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says locally Sugar Estate; OCR Compagnles corrected to Compagnies."
+    },
+    {
+      "index": 839,
+      "id": "st_thomas-bay-frcdcrucuted-jlirrbor",
+      "oldName": "FrcdcrUcuted Jlirrbor",
+      "newName": "Frederiksted Harbor",
+      "oldType": "bay",
+      "newType": "bay",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_croix",
+      "reason": "Description says anchorage in Westend Bay off Frederiksted, St. Croix; same as Frederiksted Road."
+    },
+    {
+      "index": 840,
+      "id": "st_thomas-dictionaryEntry-frcder2lcs-knoll",
+      "oldName": "Frcder2lcs Knoll",
+      "newName": "Frederik's Knoll",
+      "oldType": "dictionaryEntry",
+      "newType": "dictionaryEntry",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says same as Frederik Knoll, St. Thomas."
+    },
+    {
+      "index": 848,
+      "id": "st_croix-dictionaryEntry-frederdke-h-a-n-b",
+      "oldName": "Frederdke H a n b",
+      "newName": "Frederikshaab",
+      "oldType": "dictionaryEntry",
+      "newType": "dictionaryEntry",
+      "oldIsland": "st_croix",
+      "newIsland": "st_croix",
+      "reason": "Description explicitly says Frederikshaab, St. Croix."
+    },
+    {
+      "index": 1986,
+      "id": "st_thomas-historic-prederikx-bnttcric",
+      "oldName": "Prederikx Bnttcric",
+      "newName": "Frederik Battery",
+      "oldType": "historic",
+      "newType": "historic",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_thomas",
+      "reason": "Description says same as Frederik Battery, St. Thomas."
+    },
+    {
+      "index": 2067,
+      "id": "st_thomas-road-rada-de-prederiksted",
+      "oldName": "Rada de Prederiksted",
+      "newName": "Rada de Frederiksted",
+      "oldType": "road",
+      "newType": "bay",
+      "oldIsland": "st_thomas",
+      "newIsland": "st_croix",
+      "reason": "Description says Spanish name of Frederiksted Roadstead."
+    }
+  ],
+  "intentionallySkipped": [
+    "Battery)",
+    "BoPcks Creek",
+    "Bt",
+    "Frcderickataod",
+    "Frederichated"
+  ],
+  "note": "Applied only description-proven OCR/name/type/island fixes. Duplicate-prone Frederiksted variants were intentionally skipped for separate merge handling."
+}
