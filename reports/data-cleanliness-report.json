@@ -1,0 +1,3278 @@
+{
+  "generatedAt": "2026-07-02T09:00:12.044Z",
+  "options": {
+    "includeParcels": false,
+    "strict": false
+  },
+  "totals": {
+    "publicImages": 3573
+  },
+  "sources": [
+    {
+      "name": "estates_geojson",
+      "path": "public/geo/usvi-estates.geojson",
+      "records": 420,
+      "inferredType": "estate"
+    },
+    {
+      "name": "geographic_index",
+      "path": "src/data/core/geographicIndex.ts",
+      "records": 2841
+    },
+    {
+      "name": "historic_sites",
+      "path": "src/data/historicSites.ts",
+      "records": 70,
+      "inferredType": "historicSite"
+    }
+  ],
+  "totalRecords": 3331,
+  "severityTotals": {
+    "high": 0,
+    "medium": 200,
+    "low": 122
+  },
+  "issueGroups": [
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "issue": "missing_coordinates",
+      "count": 200
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "issue": "missing_local_image_file",
+      "count": 70
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "issue": "missing_image",
+      "count": 47
+    },
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "issue": "duplicate_name_type_island",
+      "count": 5
+    }
+  ],
+  "issues": [
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "index": 100,
+      "name": "Estate CONTANT 7B",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of estates_geojson record index 99.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "index": 232,
+      "name": "Estate CLAIRMONT",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of estates_geojson record index 231.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "index": 247,
+      "name": "Estate DIAMOND",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of estates_geojson record index 246.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "index": 248,
+      "name": "Estate DIAMOND",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of estates_geojson record index 246.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "estates_geojson",
+      "index": 279,
+      "name": "Estate HOPE",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of estates_geojson record index 278.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 9,
+      "id": "st_croix-estate-allendale-estate",
+      "name": "Allendale Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 18,
+      "id": "st_croix-estate-annas-hope-gut",
+      "name": "Anna's Hope Gut",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 26,
+      "id": "st_croix-estate-annaberg-st-croix",
+      "name": "Annaberg, St. Croix",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 34,
+      "id": "st_croix-estate-arnesen",
+      "name": "Arnesen",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 48,
+      "id": "water_island-point-bandy-point",
+      "name": "Bandy Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 49,
+      "id": "st_croix-estate-banson-plantation",
+      "name": "Banson Plantation",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 51,
+      "id": "st_croix-point-baron-bluff",
+      "name": "Baron Bluff",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 56,
+      "id": "st_croix-estate-barren-spot-estate",
+      "name": "Barren Spot Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 57,
+      "id": "st_thomas-estate-barrett-estate",
+      "name": "Barrett Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 62,
+      "id": "st_thomas-historic-battery",
+      "name": "Battery)",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 62,
+      "id": "st_thomas-historic-battery",
+      "name": "Battery)",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 64,
+      "id": "st_thomas-estate-bay",
+      "name": "Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 74,
+      "id": "st_john-point-beaehing-spit",
+      "name": "Beaehing Spit",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 75,
+      "id": "st_croix-estate-beaucoeur-plantation",
+      "name": "Beaucoeur Plantation",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 77,
+      "id": "st_croix-estate-beck-grove",
+      "name": "Beck Grove",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 82,
+      "id": "st_croix-estate-beffron-hill",
+      "name": "Beffron Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 87,
+      "id": "st_thomas-point-bellevue-hill",
+      "name": "Bellevue Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 88,
+      "id": "st_croix-estate-belvedere-estate",
+      "name": "Belvedere Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 91,
+      "id": "st_thomas-estate-benner-bay",
+      "name": "Benner Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 92,
+      "id": "st_thomas-estate-benner-estate",
+      "name": "Benner Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 101,
+      "id": "st_thomas-estate-bethel-estate",
+      "name": "Bethel Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 106,
+      "id": "st_croix-estate-bethlehem-estate",
+      "name": "Bethlehem Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 114,
+      "id": "st_croix-estate-bettys-hope-estate",
+      "name": "Betty’s Hope Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 116,
+      "id": "st_croix-estate-beverhoudt-estate",
+      "name": "Beverhoudt Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 120,
+      "id": "st_john-estate-beverhoutberg-estate",
+      "name": "Beverhoutberg Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 122,
+      "id": "st_croix-estate-big-diamond-estate",
+      "name": "Big Diamond Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 124,
+      "id": "st_thomas-point-billy-french-point",
+      "name": "Billy French Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 127,
+      "id": "st_thomas-point-black-point",
+      "name": "Black Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 131,
+      "id": "st_john-point-blackrock-hill",
+      "name": "Blackrock Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 132,
+      "id": "st_croix-estate-bladwell-estate",
+      "name": "Bladwell Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 138,
+      "id": "st_thomas-point-blg-faat-cay",
+      "name": "Blg Faat Cay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 141,
+      "id": "st_croix-estate-blp-fountain",
+      "name": "Blp Fountain",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 142,
+      "id": "st_croix-estate-blue-mountain",
+      "name": "Blue Mountain",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 144,
+      "id": "st_thomas-historic-bluebeards-castle",
+      "name": "Bluebeard’s Castle",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 144,
+      "id": "st_thomas-historic-bluebeards-castle",
+      "name": "Bluebeard’s Castle",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 148,
+      "id": "st_john-point-boatman-point",
+      "name": "Boatman Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 160,
+      "id": "st_thomas-estate-bolongo-hill",
+      "name": "Bolongo Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 163,
+      "id": "st_thomas-estate-bolongo-valley",
+      "name": "Bolongo Valley",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 164,
+      "id": "st_croix-estate-bonne-espbrance",
+      "name": "Bonne EspBrance",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 165,
+      "id": "st_thomas-estate-bonne-espbrance-road",
+      "name": "Bonne EspBrance Road",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 170,
+      "id": "st_thomas-estate-bonne-esperance-estatehouse",
+      "name": "Bonne Esperance Estatehouse",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 174,
+      "id": "st_thomas-estate-bopcks-creek",
+      "name": "BoPcks Creek",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 179,
+      "id": "st_thomas-estate-bordeaux-bay",
+      "name": "Bordeaux Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 181,
+      "id": "st_thomas-point-bordeaux-hill",
+      "name": "Bordeaux Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 184,
+      "id": "st_john-estate-bordeaux-mountains",
+      "name": "Bordeaux Mountains",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 186,
+      "id": "st_john-estate-bordeaux-roads",
+      "name": "Bordeaux Roads",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 190,
+      "id": "st_thomas-estate-borgenfri",
+      "name": "Borgenfri",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 191,
+      "id": "st_thomas-estate-borpenfrei",
+      "name": "Borpenfrei",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 192,
+      "id": "st_thomas-estate-bosehill",
+      "name": "Bosehill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 195,
+      "id": "st_thomas-estate-botany-bay-road",
+      "name": "Botany Bay Road",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 198,
+      "id": "st_thomas-point-boufron-point",
+      "name": "Boufron Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 199,
+      "id": "st_thomas-point-boulder-point",
+      "name": "Boulder Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 200,
+      "id": "st_thomas-estate-bourgen-estate",
+      "name": "Bourgen Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 210,
+      "id": "st_thomas-beach-brewers-bay",
+      "name": "Brewers Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 211,
+      "id": "st_thomas-estate-brewers-bay",
+      "name": "Brewers Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 214,
+      "id": "st_thomas-estate-brock-estate",
+      "name": "Brock Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 216,
+      "id": "st_croix-estate-brook-estate",
+      "name": "Brook Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 218,
+      "id": "st_croix-estate-brookhill-estate",
+      "name": "Brookhill Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 221,
+      "id": "st_john-estate-brown-bay-estate",
+      "name": "Brown Bay Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 222,
+      "id": "st_thomas-estate-brown-estate",
+      "name": "Brown Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 225,
+      "id": "st_thomas-estate-bt",
+      "name": "Bt",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 226,
+      "id": "st_thomas-estate-btazley-point",
+      "name": "BtaZley Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 235,
+      "id": "st_croix-point-buck-island-channel",
+      "name": "Buck Island Channel",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 243,
+      "id": "st_thomas-point-bull-point",
+      "name": "Bull Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 246,
+      "id": "st_croix-estate-bulowa-minde",
+      "name": "Bulow'a-Minde",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 248,
+      "id": "st_thomas-estate-bulowminde",
+      "name": "Bulowminde",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 252,
+      "id": "st_john-estate-buona-viata",
+      "name": "Buona Viata",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 253,
+      "id": "st_john-estate-buonavista",
+      "name": "Buonavista",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 254,
+      "id": "st_john-estate-buonavista-hill",
+      "name": "Buonavista Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 258,
+      "id": "st_thomas-estate-busna-eaperanza",
+      "name": "Busna Eaperanza",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 260,
+      "id": "st_thomas-estate-butler-bay-and-william-estate",
+      "name": "Butler Bay and William Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 263,
+      "id": "st_croix-estate-butzberg-estate",
+      "name": "Butzberg Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 269,
+      "id": "st_thomas-point-cabrita-hill",
+      "name": "Cabrita Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 270,
+      "id": "st_thomas-point-cabrita-point",
+      "name": "Cabrita Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 273,
+      "id": "st_thomas-estate-cabrite",
+      "name": "Cabrite",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 274,
+      "id": "st_thomas-point-cabrite-point",
+      "name": "Cabrite Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 275,
+      "id": "st_thomas-point-cabriteberg-p-o-c-t",
+      "name": "Cabriteberg P o C t",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 277,
+      "id": "st_john-point-cabrithorn-point",
+      "name": "Cabrithorn Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 278,
+      "id": "st_croix-point-cabrito",
+      "name": "Cabrito",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 279,
+      "id": "st_thomas-estate-cabrittaberg",
+      "name": "Cabrittaberg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 282,
+      "id": "st_thomas-point-caetelpolnt",
+      "name": "Caetelpolnt",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 283,
+      "id": "st_john-point-cahritahorn-point",
+      "name": "Cahritahorn Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 284,
+      "id": "st_thomas-estate-cahrztaberg",
+      "name": "CahrZtaberg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 291,
+      "id": "st_thomas-estate-caledonia-spring",
+      "name": "Caledonia Spring",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 299,
+      "id": "st_thomas-point-calverts-point",
+      "name": "Calverts Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 304,
+      "id": "st_croix-estate-camporico",
+      "name": "Camporico",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 305,
+      "id": "st_croix-estate-camporico-raltpond",
+      "name": "Camporico Raltpond",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 315,
+      "id": "st_croix-beach-cane-bay",
+      "name": "Cane Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 316,
+      "id": "st_croix-estate-cane-bay",
+      "name": "Cane Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 317,
+      "id": "st_croix-estate-cane-bay-estate",
+      "name": "Cane Bay Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 321,
+      "id": "st_croix-estate-canebay",
+      "name": "Canebay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 323,
+      "id": "st_croix-estate-canebay-point",
+      "name": "Canebay Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 328,
+      "id": "st_john-estate-caneelborn",
+      "name": "Caneelborn",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 329,
+      "id": "st_croix-point-canegarda-point",
+      "name": "Canegarda Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 333,
+      "id": "st_thomas-estate-canegarden-hill",
+      "name": "Canegarden Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 336,
+      "id": "st_john-point-cap-de-cudejarre",
+      "name": "Cap de Cudejarre",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 338,
+      "id": "st_thomas-point-capella-cays",
+      "name": "Capella Cays",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 339,
+      "id": "st_thomas-point-caprzcorn-point",
+      "name": "Caprzcorn Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 341,
+      "id": "st_croix-estate-caramaw-hall",
+      "name": "Caramaw Hall",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 345,
+      "id": "st_croix-estate-carden",
+      "name": "Carden",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 346,
+      "id": "st_croix-estate-carden-bay",
+      "name": "Carden Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 349,
+      "id": "st_john-point-careen-point",
+      "name": "Careen Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 356,
+      "id": "st_thomas-estate-carettbay",
+      "name": "Carettbay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 361,
+      "id": "st_thomas-estate-carlota-antalia",
+      "name": "Carlota Antalia",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 363,
+      "id": "st_john-estate-carlton-gut",
+      "name": "Carlton Gut",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 368,
+      "id": "st_john-estate-carolina-lyst",
+      "name": "Carolina-Lyst",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 369,
+      "id": "st_john-estate-caroline",
+      "name": "Caroline",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 370,
+      "id": "water_island-point-caroline-point",
+      "name": "Caroline Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 376,
+      "id": "st_thomas-estate-carton-dome",
+      "name": "Carton Dome",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 377,
+      "id": "st_croix-estate-carty",
+      "name": "Carty",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 383,
+      "id": "st_thomas-estate-cassava-garden",
+      "name": "Cassava Garden",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 385,
+      "id": "st_thomas-point-cassi-hill",
+      "name": "Cassi Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 388,
+      "id": "st_croix-estate-castle-burke-estate",
+      "name": "Castle Burke Estate",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 389,
+      "id": "st_thomas-estate-castle-coakley",
+      "name": "Castle Coakley",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 395,
+      "id": "st_thomas-estate-catarinaberg",
+      "name": "Catarinaberg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 398,
+      "id": "st_croix-estate-catharinas-hope",
+      "name": "Catharina's Hope",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 401,
+      "id": "st_thomas-estate-catherines-hope",
+      "name": "Catherine's Hope",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 404,
+      "id": "st_john-estate-catherineberg",
+      "name": "Catherineberg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 407,
+      "id": "st_john-estate-cathriseberg",
+      "name": "Cathriseberg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 415,
+      "id": "st_thomas-point-cazverts-punt",
+      "name": "CaZverts Punt",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 417,
+      "id": "st_thomas-estate-ceeeman-hizz",
+      "name": "Ceeeman HiZZ",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 418,
+      "id": "st_croix-point-cehterline-road",
+      "name": "Cehterline Road",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 425,
+      "id": "st_croix-point-cfaudri",
+      "name": "CfaUdri",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 426,
+      "id": "st_croix-estate-cfoodchild",
+      "name": "Cfoodchild",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 429,
+      "id": "st_thomas-estate-cfroen-icny",
+      "name": "Cfroen ICny",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 431,
+      "id": "st_thomas-estate-chrlstianeted",
+      "name": "Ch'rlstianeted'",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 439,
+      "id": "st_croix-estate-chenay-bay",
+      "name": "Chenay Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 440,
+      "id": "st_thomas-point-chickenhawk-point",
+      "name": "Chickenhawk Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 451,
+      "id": "st_thomas-historic-chrietiunsfort",
+      "name": "Chrietiunsfort",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 451,
+      "id": "st_thomas-historic-chrietiunsfort",
+      "name": "Chrietiunsfort",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 461,
+      "id": "st_thomas-historic-christinns-fort",
+      "name": "Christinn's Fort",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 461,
+      "id": "st_thomas-historic-christinns-fort",
+      "name": "Christinn's Fort",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 463,
+      "id": "st_thomas-point-chshnel-rock",
+      "name": "Chshnel Rock",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 464,
+      "id": "st_croix-estate-chuu88on",
+      "name": "ChUU88On",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 465,
+      "id": "st_john-beach-cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 472,
+      "id": "st_croix-point-circcs-point",
+      "name": "Circcs Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 475,
+      "id": "st_croix-estate-claremont",
+      "name": "Claremont",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 476,
+      "id": "st_thomas-estate-clausen",
+      "name": "Clausen",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 477,
+      "id": "st_croix-estate-clear-mount",
+      "name": "Clear Mount",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 478,
+      "id": "st_croix-estate-clermont",
+      "name": "Clermont",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 498,
+      "id": "st_thomas-beach-coki-point",
+      "name": "Coki Point",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 502,
+      "id": "st_croix-estate-colquohoun-mt",
+      "name": "Colquohoun Mt",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 506,
+      "id": "st_thomas-point-compass-point",
+      "name": "Compass Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 513,
+      "id": "st_john-estate-concordia-bay",
+      "name": "Concordia Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 514,
+      "id": "st_croix-estate-concordia-creek",
+      "name": "Concordia Creek",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 518,
+      "id": "st_thomas-point-congo-cay",
+      "name": "Congo Cay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 520,
+      "id": "st_thomas-point-congo-point",
+      "name": "Congo Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 522,
+      "id": "st_john-estate-conoordia",
+      "name": "Conoordia",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 524,
+      "id": "st_croix-estate-constitutlonhuz",
+      "name": "ConstitutlonhUZ",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 525,
+      "id": "st_thomas-estate-contant",
+      "name": "Contant",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 531,
+      "id": "st_thomas-estate-contant-hill",
+      "name": "Contant Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 532,
+      "id": "st_thomas-estate-contant-point",
+      "name": "Contant Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 536,
+      "id": "st_croix-estate-contentment-gut",
+      "name": "Contentment Gut",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 537,
+      "id": "st_thomas-estate-contentment-hill",
+      "name": "Contentment Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 538,
+      "id": "st_croix-estate-contentment-valley",
+      "name": "Contentment Valley",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 539,
+      "id": "st_thomas-point-cooks-point",
+      "name": "Cook's Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 540,
+      "id": "st_croix-estate-cooper",
+      "name": "Cooper",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 549,
+      "id": "st_thomas-estate-corn-hill",
+      "name": "Corn Hill",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 554,
+      "id": "st_croix-point-corteri",
+      "name": "Corteri",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 555,
+      "id": "st_thomas-historic-cotcell-playstarcg",
+      "name": "Cotcell Playstarcg",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 555,
+      "id": "st_thomas-historic-cotcell-playstarcg",
+      "name": "Cotcell Playstarcg",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 556,
+      "id": "st_thomas-point-coterado-p-d-n-t",
+      "name": "Coterado P d n t",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 558,
+      "id": "st_croix-estate-cotkongxove-bay",
+      "name": "Cotkongxove Bay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 564,
+      "id": "st_croix-estate-cottongarden",
+      "name": "Cottongarden",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 566,
+      "id": "st_croix-estate-cottongarden-peninsula",
+      "name": "Cottongarden Peninsula",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 567,
+      "id": "st_croix-estate-cottongarden-point",
+      "name": "Cottongarden Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 573,
+      "id": "st_thomas-point-cow-rock",
+      "name": "Cow Rock",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 574,
+      "id": "st_thomas-point-cowell-battery",
+      "name": "Cowell Battery",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 577,
+      "id": "st_thomas-point-cowell-point",
+      "name": "Cowell Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 580,
+      "id": "st_thomas-point-crabhole-point",
+      "name": "Crabhole Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 605,
+      "id": "st_thomas-estate-crumbuy",
+      "name": "Crumbuy",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 611,
+      "id": "st_thomas-point-cuarentena",
+      "name": "Cuarentena",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 613,
+      "id": "st_john-point-cudejarre-p-o-i-n-t",
+      "name": "Cudejarre P o i n t",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 615,
+      "id": "st_thomas-point-cup-d-u-cudeiare",
+      "name": "Cup d u Cudeiare",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 617,
+      "id": "st_croix-estate-curha-mmntaln",
+      "name": "Curha Mmntaln",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 618,
+      "id": "st_thomas-point-current-hole",
+      "name": "Current Hole",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 620,
+      "id": "st_thomas-point-currenthole-point",
+      "name": "Currenthole Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 625,
+      "id": "st_thomas-estate-de-beftgem-road",
+      "name": "De Beftgem Road",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 628,
+      "id": "st_thomas-point-deck-point",
+      "name": "Deck Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 632,
+      "id": "st_thomas-estate-derrick-point",
+      "name": "Derrick Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 633,
+      "id": "st_john-estate-description-op-stations",
+      "name": "Description oP Stations",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 634,
+      "id": "st_john-point-detlcr-point",
+      "name": "Detlcr Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 638,
+      "id": "st_thomas-estate-diainond-school",
+      "name": "Diainond School",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 639,
+      "id": "st_thomas-estate-diamond",
+      "name": "Diamond",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 643,
+      "id": "st_croix-estate-diedrichs",
+      "name": "Diedrichs",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 644,
+      "id": "st_croix-estate-diedrichs-point",
+      "name": "Diedrichs Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 645,
+      "id": "st_thomas-point-din-point",
+      "name": "Din Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 648,
+      "id": "st_thomas-point-ditlef-point",
+      "name": "Ditlef Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 650,
+      "id": "st_john-point-dittloff-point",
+      "name": "Dittloff Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 657,
+      "id": "st_croix-estate-doill-iiizl",
+      "name": "Doill/ IIiZl",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 659,
+      "id": "st_john-estate-dolly-efl1",
+      "name": "Dolly Efl1",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 660,
+      "id": "st_thomas-point-domkirk-rock",
+      "name": "Domkirk Rock",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 679,
+      "id": "st_croix-point-dry-lcdqc",
+      "name": "Dry Lcdqc",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 683,
+      "id": "st_croix-estate-duchr",
+      "name": "DuC'hr",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 686,
+      "id": "st_john-estate-dunker",
+      "name": "Dunker",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 689,
+      "id": "st_thomas-point-durloe-cays",
+      "name": "Durloe Cays",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 690,
+      "id": "st_john-point-durloe-channd",
+      "name": "Durloe Channd",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 692,
+      "id": "st_thomas-point-dutchcap-cay",
+      "name": "Dutchcap Cay",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 698,
+      "id": "st_john-point-eostcnd-cape",
+      "name": "E'ostcnd Cape",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 700,
+      "id": "st_thomas-point-erance-gerclonneerde-iierk",
+      "name": "E'rance Gerclonneerde Iierk",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 707,
+      "id": "st_croix-point-east-point",
+      "name": "East Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 708,
+      "id": "st_thomas-point-eastend",
+      "name": "Eastend",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 710,
+      "id": "st_croix-estate-eastend-b",
+      "name": "Eastend B",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 713,
+      "id": "st_john-point-eastend-point",
+      "name": "Eastend Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 721,
+      "id": "st_thomas-estate-eemonzhed",
+      "name": "Eemonzhed",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 730,
+      "id": "st_croix-point-elizabeth-bank",
+      "name": "Elizabeth Bank",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 739,
+      "id": "st_thomas-estate-enaeld-green",
+      "name": "EnAeld Green",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 740,
+      "id": "st_thomas-estate-enat-foirzt",
+      "name": "Enat f'oirzt",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 741,
+      "id": "st_croix-estate-endracht",
+      "name": "Endracht",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 816,
+      "id": "st_croix-historic-fort-1-iiytcuto",
+      "name": "Fort -1 iiytcuto",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 824,
+      "id": "st_croix-historic-fort-lovi",
+      "name": "Fort Lovi",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 825,
+      "id": "st_thomas-historic-fort-nt",
+      "name": "Fort Nt",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 837,
+      "id": "st_john-beach-francis-bay",
+      "name": "Francis Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 860,
+      "id": "st_thomas-historic-frederikalort",
+      "name": "Frederikalort",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 867,
+      "id": "st_thomas-historic-fredertksfort",
+      "name": "Fredertksfort",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 881,
+      "id": "st_croix-historic-fricdrirk-ufot-t",
+      "name": "Fricdrirk ufot t",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 967,
+      "id": "st_thomas-historic-great-middleground",
+      "name": "Great Middleground",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 994,
+      "id": "st_croix-historic-grove",
+      "name": "Grove",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1063,
+      "id": "st_john-beach-hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1103,
+      "id": "water_island-beach-honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1125,
+      "id": "st_thomas-beach-hull-bay",
+      "name": "Hull Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1272,
+      "id": "st_thomas-historic-kings-wharf",
+      "name": "King's Wharf",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1323,
+      "id": "st_thomas-historic-krlntiamfort",
+      "name": "Krlntiamfort",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1326,
+      "id": "st_thomas-historic-kru2-thuya",
+      "name": "Kru2/thuya",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1361,
+      "id": "st_croix-historic-lagoon-b-a-n-k",
+      "name": "Lagoon B a n k",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1448,
+      "id": "st_thomas-beach-lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1450,
+      "id": "st_thomas-beach-lindquist-beach",
+      "name": "Lindquist Beach",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1554,
+      "id": "st_thomas-beach-magens-bay",
+      "name": "Magens Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1558,
+      "id": "st_john-beach-maho-bay",
+      "name": "Maho Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1699,
+      "id": "st_thomas-historic-muhlenfels-battery",
+      "name": "Muhlenfels Battery",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1732,
+      "id": "st_thomas-historic-negeru",
+      "name": "Negeru",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1855,
+      "id": "st_thomas-historic-pakhuye",
+      "name": "Pakhuye",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1997,
+      "id": "st_thomas-historic-prederikx-bnttcric",
+      "name": "Prederikx Bnttcric",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2080,
+      "id": "st_croix-beach-rainbow-beach",
+      "name": "Rainbow Beach",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2195,
+      "id": "st_thomas-historic-round-beef",
+      "name": "Round Beef",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2228,
+      "id": "st_croix-historic-rzltherjwd",
+      "name": "RzltherJwd",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2265,
+      "id": "st_john-beach-salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2273,
+      "id": "st_croix-beach-sandy-point",
+      "name": "Sandy Point",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2284,
+      "id": "st_thomas-beach-sapphire-beach",
+      "name": "Sapphire Beach",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2296,
+      "id": "st_thomas-historic-school-of-fish",
+      "name": "School-of-Fish",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2297,
+      "id": "st_thomas-historic-schooner-channel",
+      "name": "Schooner Channel",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2301,
+      "id": "st_thomas-beach-secret-harbour",
+      "name": "Secret Harbour",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2322,
+      "id": "st_croix-beach-shoys-beach",
+      "name": "Shoys Beach",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2409,
+      "id": "st_croix-historic-st",
+      "name": "St",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2553,
+      "id": "st_john-beach-trunk-bay",
+      "name": "Trunk Bay",
+      "issue": "missing_image",
+      "detail": "Record type \"beach\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2657,
+      "id": "st_thomas-historic-water-battery",
+      "name": "Water Battery",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2801,
+      "id": "st_croix-historic-yaandbcatterle",
+      "name": "Ya&bcatterle",
+      "issue": "missing_image",
+      "detail": "Record type \"historic\" normally needs an image for the UI.",
+      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 0,
+      "id": "nrhp-stj-annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-annaberg-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 1,
+      "id": "nrhp-stx-bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 2,
+      "id": "nrhp-stt-bordeaux",
+      "name": "Bordeaux",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-bordeaux.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 3,
+      "id": "nrhp-stj-brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-brown-bay-plantation-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 4,
+      "id": "nrhp-stj-catherineberg-jockumsdahl-herman-farm",
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 5,
+      "id": "nrhp-stt-charlotte-amalie-historic-district",
+      "name": "Charlotte Amalie Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-charlotte-amalie-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 6,
+      "id": "nrhp-stx-christiansted-historic-district",
+      "name": "Christiansted Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-christiansted-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 7,
+      "id": "nrhp-stx-christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-christiansted-national-historic-site.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 8,
+      "id": "nrhp-stj-cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-cinnamon-bay-plantation.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 9,
+      "id": "nrhp-stx-coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-coakley-bay-estate.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 10,
+      "id": "nrhp-stx-columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-columbus-landing-site.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 11,
+      "id": "nrhp-stx-danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 12,
+      "id": "nrhp-stj-dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-dennis-bay-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 13,
+      "id": "nrhp-stx-diamond-school",
+      "name": "Diamond School",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-diamond-school.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 14,
+      "id": "nrhp-stj-emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 15,
+      "id": "nrhp-stj-enighed",
+      "name": "Enighed",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-enighed.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 16,
+      "id": "nrhp-stj-estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-estate-beverhoudt.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 17,
+      "id": "nrhp-stt-estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-botany-bay.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 18,
+      "id": "nrhp-stt-estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-brewers-bay.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 19,
+      "id": "nrhp-stx-estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 20,
+      "id": "nrhp-stj-estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 21,
+      "id": "nrhp-stx-estate-grove-place",
+      "name": "Estate Grove Place",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-grove-place.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 22,
+      "id": "nrhp-stt-estate-hafensight",
+      "name": "Estate Hafensight",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-hafensight.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 23,
+      "id": "nrhp-stx-estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 24,
+      "id": "nrhp-stx-estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 25,
+      "id": "nrhp-stx-estate-la-reine",
+      "name": "Estate La Reine",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-la-reine.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 26,
+      "id": "nrhp-stx-estate-little-princess",
+      "name": "Estate Little Princess",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-little-princess.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 27,
+      "id": "nrhp-stx-estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-mount-victory.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 28,
+      "id": "nrhp-stt-estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-neltjeberg.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 29,
+      "id": "nrhp-stt-estate-niesky",
+      "name": "Estate Niesky",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-niesky.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 30,
+      "id": "nrhp-stt-estate-perseverance",
+      "name": "Estate Perseverance",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-perseverance.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 31,
+      "id": "nrhp-stx-estate-prosperity",
+      "name": "Estate Prosperity",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-prosperity.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 32,
+      "id": "nrhp-stx-estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-saint-george-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 33,
+      "id": "nrhp-stx-estate-st-john",
+      "name": "Estate St. John",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-st-john.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 34,
+      "id": "nrhp-stx-fort-frederick",
+      "name": "Fort Frederick",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-fort-frederick.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 35,
+      "id": "nrhp-stj-fortsberg",
+      "name": "Fortsberg",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-fortsberg.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 36,
+      "id": "nrhp-stx-frederiksted-historic-district",
+      "name": "Frederiksted Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-frederiksted-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 37,
+      "id": "nrhp-stx-friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 38,
+      "id": "nrhp-stx-friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 39,
+      "id": "nrhp-stx-ft-frederik-of-us-virgin-islands",
+      "name": "Ft. Frederik of US Virgin Islands",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 40,
+      "id": "nrhp-stx-green-kay",
+      "name": "Green Kay",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-green-kay.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 41,
+      "id": "nrhp-stt-hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 42,
+      "id": "nrhp-stt-hassel-island",
+      "name": "Hassel Island",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 43,
+      "id": "nrhp-stt-hassel-island-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 44,
+      "id": "nrhp-stj-hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-hermitage-plantation-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 45,
+      "id": "nrhp-stj-jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 46,
+      "id": "nrhp-stj-lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 47,
+      "id": "nrhp-stx-la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 48,
+      "id": "nrhp-stj-lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lameshur-plantation.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 49,
+      "id": "nrhp-stj-liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-liever-marches-bay-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 50,
+      "id": "nrhp-stj-lind-point-fort",
+      "name": "Lind Point Fort",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lind-point-fort.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 51,
+      "id": "nrhp-stx-little-la-grange",
+      "name": "Little La Grange",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-little-la-grange.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 52,
+      "id": "nrhp-stt-mafolie-great-house",
+      "name": "Mafolie Great House",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 53,
+      "id": "nrhp-stj-mary-point-estate",
+      "name": "Mary Point Estate",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-mary-point-estate.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 54,
+      "id": "nrhp-stj-more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 55,
+      "id": "nrhp-stt-new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 56,
+      "id": "nrhp-stj-reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 57,
+      "id": "nrhp-stj-reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 58,
+      "id": "nrhp-stx-richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 59,
+      "id": "nrhp-stj-rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 60,
+      "id": "nrhp-stx-sion-hill",
+      "name": "Sion Hill",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-sion-hill.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 61,
+      "id": "nrhp-stt-skytsborg",
+      "name": "Skytsborg",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-skytsborg.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 62,
+      "id": "nrhp-stx-slob-historic-district",
+      "name": "Slob Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-slob-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 63,
+      "id": "nrhp-stt-st-thomas-synagogue",
+      "name": "St. Thomas Synagogue",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 64,
+      "id": "nrhp-stt-st-thomas-synagogue-beracha",
+      "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 65,
+      "id": "nrhp-stx-strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-strawberry-hill-historic-district.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 66,
+      "id": "nrhp-stj-trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 67,
+      "id": "nrhp-stt-tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 68,
+      "id": "nrhp-stt-venus-hill",
+      "name": "Venus Hill",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-venus-hill.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "index": 69,
+      "id": "nrhp-stx-whim",
+      "name": "Whim",
+      "issue": "missing_local_image_file",
+      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-whim.jpg",
+      "suggestion": "Add the file to public/ or update the image path."
+    }
+  ]
+}

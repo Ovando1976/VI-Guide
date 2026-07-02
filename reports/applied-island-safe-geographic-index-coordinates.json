@@ -1,0 +1,222 @@
+{
+  "generatedAt": "2026-07-02T08:57:47.005Z",
+  "sourceReport": "reports/geographic-index-coordinate-candidates.json",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.island-safe-coordinates.2026-07-02T08-57-46-936Z.ts",
+  "safeCandidates": 15,
+  "applied": 15,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 86,
+      "name": "Bellevue Estate, St. Croix",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BELLEVUE",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.746021,
+        "lng": -64.731878
+      }
+    },
+    {
+      "index": 103,
+      "name": "Bethesda Estate",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BETHESDA",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.355906,
+        "lng": -65.008354
+      }
+    },
+    {
+      "index": 113,
+      "name": "Betsy’s Jewel Estate",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BETSY'S JEWEL",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.762695,
+        "lng": -64.794442
+      }
+    },
+    {
+      "index": 151,
+      "name": "Bodkin Estate",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BODKIN",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.750239,
+        "lng": -64.835793
+      }
+    },
+    {
+      "index": 159,
+      "name": "Bolongo Estate",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BOLONGO",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.317512,
+        "lng": -64.898797
+      }
+    },
+    {
+      "index": 180,
+      "name": "Bordeaux Estate, St. Thomas",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BORDEAUX",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.35659,
+        "lng": -65.016619
+      }
+    },
+    {
+      "index": 197,
+      "name": "Botanybay",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate BOTANY BAY",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.354012,
+        "lng": -65.033474
+      }
+    },
+    {
+      "index": 205,
+      "name": "Bovoni Estate",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.98,
+      "match": "Estate BOVONI",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.31568,
+        "lng": -64.884575
+      }
+    },
+    {
+      "index": 250,
+      "name": "Bulowsminde",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate BULOWS MINDE",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.739247,
+        "lng": -64.727936
+      }
+    },
+    {
+      "index": 330,
+      "name": "Canegarden",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate CANE GARDEN",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.707521,
+        "lng": -64.727444
+      }
+    },
+    {
+      "index": 334,
+      "name": "Canevalley",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate CANE VALLEY",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.719095,
+        "lng": -64.84904
+      }
+    },
+    {
+      "index": 354,
+      "name": "Caretbay",
+      "island": "st_thomas",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate CARET BAY",
+      "sourceIsland": "st_thomas",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.364573,
+        "lng": -64.976085
+      }
+    },
+    {
+      "index": 442,
+      "name": "Chocolate Hole",
+      "island": "st_john",
+      "confidence": "exact",
+      "score": 1,
+      "match": "CHOCOLATE HOLE",
+      "sourceIsland": "st_john",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 18.318586,
+        "lng": -64.784307
+      }
+    },
+    {
+      "index": 481,
+      "name": "Cliftonhill",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate CLIFTON HILL",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.723613,
+        "lng": -64.775295
+      }
+    },
+    {
+      "index": 552,
+      "name": "Cornhill",
+      "island": "st_croix",
+      "confidence": "strong",
+      "score": 0.95,
+      "match": "Estate CORN HILL",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "coordinates": {
+        "lat": 17.714435,
+        "lng": -64.709347
+      }
+    }
+  ],
+  "skippedRecords": []
+}

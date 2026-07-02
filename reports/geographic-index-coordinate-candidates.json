@@ -1,0 +1,6755 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-02T08:51:47.356Z",
+    "missingIssues": 200,
+    "sourceCandidates": 1256,
+    "sourceFilesUsed": [
+      "public/geo/usvi-estates.geojson",
+      "public/data/usvi-parcels.geojson"
+    ],
+    "confidenceTotals": {
+      "weak": 89,
+      "none": 96,
+      "strong": 14,
+      "exact": 1
+    }
+  },
+  "proposals": [
+    {
+      "index": 9,
+      "name": "Allendale Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 190,
+        "sourceName": "Estate ALLENDALE (BOG OF ALLEN)",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.729611,
+          "lng": -64.840434
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 190,
+          "sourceName": "ALLENDALE (BOG OF ALLEN)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.729611,
+            "lng": -64.840434
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "name": "Anna's Hope Gut",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 278,
+        "sourceName": "Estate HOPE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.709293,
+          "lng": -64.758421
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 278,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.709293,
+            "lng": -64.758421
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "Estate HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "Estate ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "Estate BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "name": "Annaberg, St. Croix",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 194,
+        "sourceName": "Estate ANNABERG & SHANNON GROVE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.702388,
+          "lng": -64.773301
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 194,
+          "sourceName": "ANNABERG & SHANNON GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.702388,
+            "lng": -64.773301
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "name": "Arnesen",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 48,
+      "name": "Bandy Point",
+      "type": "point",
+      "island": "water_island",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 49,
+      "name": "Banson Plantation",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 51,
+      "name": "Baron Bluff",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 270,
+        "sourceName": "Estate HAMS BLUFF",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.767706,
+          "lng": -64.871802
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 270,
+          "sourceName": "HAMS BLUFF",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.767706,
+            "lng": -64.871802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "name": "Barren Spot Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.73,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 197,
+        "sourceName": "Estate BARREN SPOT (EAST)",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.706704,
+          "lng": -64.73996
+        },
+        "score": 0.73,
+        "reason": "canonical_contains_review_only"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 197,
+          "sourceName": "BARREN SPOT (EAST)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.706704,
+            "lng": -64.73996
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 198,
+          "sourceName": "Estate BARREN SPOT (WEST)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.729458,
+            "lng": -64.766032
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 198,
+          "sourceName": "BARREN SPOT (WEST)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.729458,
+            "lng": -64.766032
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "name": "Barrett Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 62,
+      "name": "Battery)",
+      "type": "historic",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 64,
+      "name": "Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 74,
+      "name": "Beaehing Spit",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 75,
+      "name": "Beaucoeur Plantation",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 77,
+      "name": "Beck Grove",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 199,
+        "sourceName": "Estate BECK'S GROVE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.727172,
+          "lng": -64.851952
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 199,
+          "sourceName": "BECK'S GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.727172,
+            "lng": -64.851952
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 244,
+          "sourceName": "Estate COTTON GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.735407,
+            "lng": -64.639557
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 244,
+          "sourceName": "COTTON GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.735407,
+            "lng": -64.639557
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 258,
+          "sourceName": "Estate GOLDEN GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.713211,
+            "lng": -64.797536
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 258,
+          "sourceName": "GOLDEN GROVE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.713211,
+            "lng": -64.797536
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 266,
+          "sourceName": "Estate GROVE PLACE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.730884,
+            "lng": -64.823056
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 266,
+          "sourceName": "GROVE PLACE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.730884,
+            "lng": -64.823056
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "name": "Beffron Hill",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 200,
+        "sourceName": "Estate BEESTON HILL",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.739729,
+          "lng": -64.723452
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 200,
+          "sourceName": "BEESTON HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.739729,
+            "lng": -64.723452
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 210,
+          "sourceName": "Estate BROOKS HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.72529,
+            "lng": -64.857592
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 210,
+          "sourceName": "BROOKS HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.72529,
+            "lng": -64.857592
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 214,
+          "sourceName": "Estate BURNS HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.758095,
+            "lng": -64.875165
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 214,
+          "sourceName": "BURNS HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.758095,
+            "lng": -64.875165
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 233,
+          "sourceName": "Estate CLIFTON HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.723613,
+            "lng": -64.775295
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 233,
+          "sourceName": "CLIFTON HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.723613,
+            "lng": -64.775295
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "name": "Bellevue Estate, St. Croix",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 201,
+        "sourceName": "Estate BELLEVUE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.746021,
+          "lng": -64.731878
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 201,
+          "sourceName": "BELLEVUE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.746021,
+            "lng": -64.731878
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "name": "Bellevue Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 80,
+        "sourceName": "Estate BELLEVUE",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.326553,
+          "lng": -64.921259
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 80,
+          "sourceName": "BELLEVUE",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.326553,
+            "lng": -64.921259
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "name": "Belvedere Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 355,
+        "sourceName": "Estate RATTAN & BELVEDERE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.74974,
+          "lng": -64.749814
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 355,
+          "sourceName": "RATTAN & BELVEDERE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.74974,
+            "lng": -64.749814
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "name": "Benner Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 86,
+        "sourceName": "Estate BOTANY BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354012,
+          "lng": -65.033474
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 89,
+          "sourceName": "FRENCHMANS BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.276841,
+            "lng": -64.892241
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "Estate CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 112,
+          "sourceName": "Estate FRENCHMAN'S BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.31958,
+            "lng": -64.908411
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "name": "Benner Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 101,
+      "name": "Bethel Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 103,
+      "name": "Bethesda Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 81,
+        "sourceName": "Estate BETHESDA",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.355906,
+          "lng": -65.008354
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 81,
+          "sourceName": "BETHESDA",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.355906,
+            "lng": -65.008354
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 106,
+      "name": "Bethlehem Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.21,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 402,
+        "sourceName": "Estate VICORP LAND (BETHLEHEM & FRED)",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.720164,
+          "lng": -64.785801
+        },
+        "score": 0.21,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 402,
+          "sourceName": "VICORP LAND (BETHLEHEM & FRED)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.720164,
+            "lng": -64.785801
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 113,
+      "name": "Betsy’s Jewel Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 202,
+        "sourceName": "Estate BETSY'S JEWEL",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.762695,
+          "lng": -64.794442
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 202,
+          "sourceName": "BETSY'S JEWEL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.762695,
+            "lng": -64.794442
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 114,
+      "name": "Betty’s Hope Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 278,
+        "sourceName": "Estate HOPE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.709293,
+          "lng": -64.758421
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 278,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.709293,
+            "lng": -64.758421
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "Estate HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "Estate ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "Estate BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 116,
+      "name": "Beverhoudt Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 120,
+      "name": "Beverhoutberg Estate",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 122,
+      "name": "Big Diamond Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 246,
+        "sourceName": "Estate DIAMOND",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.730476,
+          "lng": -64.75252
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 246,
+          "sourceName": "DIAMOND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.730476,
+            "lng": -64.75252
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 247,
+          "sourceName": "Estate DIAMOND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.706666,
+            "lng": -64.712309
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 247,
+          "sourceName": "DIAMOND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.706666,
+            "lng": -64.712309
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 248,
+          "sourceName": "Estate DIAMOND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.703768,
+            "lng": -64.828337
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 248,
+          "sourceName": "DIAMOND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.703768,
+            "lng": -64.828337
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 124,
+      "name": "Billy French Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 127,
+      "name": "Black Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 131,
+      "name": "Blackrock Hill",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 132,
+      "name": "Bladwell Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 138,
+      "name": "Blg Faat Cay",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 88,
+        "sourceName": "Estate BOVONI CAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.312746,
+          "lng": -64.872299
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "BOVONI CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "Estate CAS CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "CAS CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 116,
+          "sourceName": "Estate GREEN CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.309615,
+            "lng": -64.90804
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 116,
+          "sourceName": "GREEN CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.309615,
+            "lng": -64.90804
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 128,
+          "sourceName": "Estate KALKUM CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35044,
+            "lng": -65.057702
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 128,
+          "sourceName": "KALKUM CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35044,
+            "lng": -65.057702
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 141,
+      "name": "Blp Fountain",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 253,
+        "sourceName": "Estate FOUNTAIN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.75212,
+          "lng": -64.826644
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 253,
+          "sourceName": "FOUNTAIN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.75212,
+            "lng": -64.826644
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 295,
+          "sourceName": "Estate LITTLE FOUNTAIN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.754261,
+            "lng": -64.793018
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 295,
+          "sourceName": "LITTLE FOUNTAIN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.754261,
+            "lng": -64.793018
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 142,
+      "name": "Blue Mountain",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.21,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 311,
+        "sourceName": "Estate MON BIJOU / BLUE MT",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.752946,
+          "lng": -64.796879
+        },
+        "score": 0.21,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 311,
+          "sourceName": "MON BIJOU / BLUE MT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752946,
+            "lng": -64.796879
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 144,
+      "name": "Bluebeard’s Castle",
+      "type": "historic",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 148,
+      "name": "Boatman Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 151,
+      "name": "Bodkin Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 205,
+        "sourceName": "Estate BODKIN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.750239,
+          "lng": -64.835793
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 205,
+          "sourceName": "BODKIN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750239,
+            "lng": -64.835793
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 159,
+      "name": "Bolongo Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 82,
+        "sourceName": "Estate BOLONGO",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.317512,
+          "lng": -64.898797
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 82,
+          "sourceName": "BOLONGO",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.317512,
+            "lng": -64.898797
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 160,
+      "name": "Bolongo Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 82,
+        "sourceName": "Estate BOLONGO",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.317512,
+          "lng": -64.898797
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 82,
+          "sourceName": "BOLONGO",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.317512,
+            "lng": -64.898797
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 163,
+      "name": "Bolongo Valley",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 82,
+        "sourceName": "Estate BOLONGO",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.317512,
+          "lng": -64.898797
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 82,
+          "sourceName": "BOLONGO",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.317512,
+            "lng": -64.898797
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 164,
+      "name": "Bonne EspBrance",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 208,
+        "sourceName": "Estate BONNE ESPERANCE (NORTH)",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.766237,
+          "lng": -64.783358
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 208,
+          "sourceName": "BONNE ESPERANCE (NORTH)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.766237,
+            "lng": -64.783358
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 209,
+          "sourceName": "Estate BONNE ESPERANCE (SOUTH)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.743564,
+            "lng": -64.76922
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 209,
+          "sourceName": "BONNE ESPERANCE (SOUTH)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.743564,
+            "lng": -64.76922
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 165,
+      "name": "Bonne EspBrance Road",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 83,
+        "sourceName": "Estate BONNE ESPERANCE",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354462,
+          "lng": -64.989537
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 83,
+          "sourceName": "BONNE ESPERANCE",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354462,
+            "lng": -64.989537
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 84,
+          "sourceName": "Estate BONNE RESOLUTION",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.361259,
+            "lng": -64.957407
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 84,
+          "sourceName": "BONNE RESOLUTION",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.361259,
+            "lng": -64.957407
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 170,
+      "name": "Bonne Esperance Estatehouse",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.73,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 83,
+        "sourceName": "Estate BONNE ESPERANCE",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354462,
+          "lng": -64.989537
+        },
+        "score": 0.73,
+        "reason": "canonical_contains_review_only"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 83,
+          "sourceName": "BONNE ESPERANCE",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354462,
+            "lng": -64.989537
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 84,
+          "sourceName": "Estate BONNE RESOLUTION",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.361259,
+            "lng": -64.957407
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 84,
+          "sourceName": "BONNE RESOLUTION",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.361259,
+            "lng": -64.957407
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 174,
+      "name": "BoPcks Creek",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 179,
+      "name": "Bordeaux Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 85,
+        "sourceName": "Estate BORDEAUX",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.35659,
+          "lng": -65.016619
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 85,
+          "sourceName": "BORDEAUX",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35659,
+            "lng": -65.016619
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "Estate BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 89,
+          "sourceName": "FRENCHMANS BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.276841,
+            "lng": -64.892241
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "Estate CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 180,
+      "name": "Bordeaux Estate, St. Thomas",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 85,
+        "sourceName": "Estate BORDEAUX",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.35659,
+          "lng": -65.016619
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 85,
+          "sourceName": "BORDEAUX",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35659,
+            "lng": -65.016619
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 181,
+      "name": "Bordeaux Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 85,
+        "sourceName": "Estate BORDEAUX",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.35659,
+          "lng": -65.016619
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 85,
+          "sourceName": "BORDEAUX",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35659,
+            "lng": -65.016619
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 184,
+      "name": "Bordeaux Mountains",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 7,
+        "sourceName": "Estate BORDEAUX",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.334605,
+          "lng": -64.72275
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 7,
+          "sourceName": "BORDEAUX",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.334605,
+            "lng": -64.72275
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 186,
+      "name": "Bordeaux Roads",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 7,
+        "sourceName": "Estate BORDEAUX",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.334605,
+          "lng": -64.72275
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 7,
+          "sourceName": "BORDEAUX",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.334605,
+            "lng": -64.72275
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 190,
+      "name": "Borgenfri",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 191,
+      "name": "Borpenfrei",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 192,
+      "name": "Bosehill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 195,
+      "name": "Botany Bay Road",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.73,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 86,
+        "sourceName": "Estate BOTANY BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354012,
+          "lng": -65.033474
+        },
+        "score": 0.73,
+        "reason": "canonical_contains_review_only"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 89,
+          "sourceName": "FRENCHMANS BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.276841,
+            "lng": -64.892241
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "Estate CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 112,
+          "sourceName": "Estate FRENCHMAN'S BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.31958,
+            "lng": -64.908411
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 197,
+      "name": "Botanybay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 86,
+        "sourceName": "Estate BOTANY BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354012,
+          "lng": -65.033474
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 198,
+      "name": "Boufron Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 199,
+      "name": "Boulder Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 200,
+      "name": "Bourgen Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 205,
+      "name": "Bovoni Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.98,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 87,
+        "sourceName": "Estate BOVONI",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.31568,
+          "lng": -64.884575
+        },
+        "score": 0.98,
+        "reason": "canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 87,
+          "sourceName": "BOVONI",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.31568,
+            "lng": -64.884575
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "Estate BOVONI CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "BOVONI CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 211,
+      "name": "Brewers Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 86,
+        "sourceName": "Estate BOTANY BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.354012,
+          "lng": -65.033474
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 89,
+          "sourceName": "FRENCHMANS BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.276841,
+            "lng": -64.892241
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "Estate CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 112,
+          "sourceName": "Estate FRENCHMAN'S BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.31958,
+            "lng": -64.908411
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 214,
+      "name": "Brock Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 216,
+      "name": "Brook Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 218,
+      "name": "Brookhill Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 221,
+      "name": "Brown Bay Estate",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 4,
+        "sourceName": "CORAL BAY",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.33357,
+          "lng": -64.712053
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 7,
+          "sourceName": "CORAL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.334605,
+            "lng": -64.72275
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "Estate BROWNS BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "BROWNS BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "MAHO BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 9,
+          "sourceName": "CORAL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.316203,
+            "lng": -64.688536
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 11,
+          "sourceName": "Estate CANEEL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.343058,
+            "lng": -64.787487
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 11,
+          "sourceName": "CANEEL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.343058,
+            "lng": -64.787487
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 222,
+      "name": "Brown Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 225,
+      "name": "Bt",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 226,
+      "name": "BtaZley Point",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 235,
+      "name": "Buck Island Channel",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.73,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 211,
+        "sourceName": "Estate BUCK ISLAND",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.786941,
+          "lng": -64.61931
+        },
+        "score": 0.73,
+        "reason": "canonical_contains_review_only"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 211,
+          "sourceName": "BUCK ISLAND",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.786941,
+            "lng": -64.61931
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        }
+      ]
+    },
+    {
+      "index": 243,
+      "name": "Bull Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 246,
+      "name": "Bulow'a-Minde",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 213,
+        "sourceName": "Estate BULOWS MINDE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.739247,
+          "lng": -64.727936
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 213,
+          "sourceName": "BULOWS MINDE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.739247,
+            "lng": -64.727936
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 360,
+          "sourceName": "Estate RETREAT & PETER'S MINDE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.700663,
+            "lng": -64.717953
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 360,
+          "sourceName": "RETREAT & PETER'S MINDE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.700663,
+            "lng": -64.717953
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 248,
+      "name": "Bulowminde",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 250,
+      "name": "Bulowsminde",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 213,
+        "sourceName": "Estate BULOWS MINDE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.739247,
+          "lng": -64.727936
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 213,
+          "sourceName": "BULOWS MINDE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.739247,
+            "lng": -64.727936
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 252,
+      "name": "Buona Viata",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 253,
+      "name": "Buonavista",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 254,
+      "name": "Buonavista Hill",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 258,
+      "name": "Busna Eaperanza",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 260,
+      "name": "Butler Bay and William Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.26,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 87,
+        "sourceName": "1, 2, & 3 FRENCHMAN BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.31568,
+          "lng": -64.884575
+        },
+        "score": 0.26,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "Estate BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 86,
+          "sourceName": "BOTANY BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.354012,
+            "lng": -65.033474
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 89,
+          "sourceName": "FRENCHMANS BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.276841,
+            "lng": -64.892241
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "Estate CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "FRENCHMAN BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 263,
+      "name": "Butzberg Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 269,
+      "name": "Cabrita Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 270,
+      "name": "Cabrita Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 273,
+      "name": "Cabrite",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 274,
+      "name": "Cabrite Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 275,
+      "name": "Cabriteberg P o C t",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 277,
+      "name": "Cabrithorn Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 278,
+      "name": "Cabrito",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 279,
+      "name": "Cabrittaberg",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 282,
+      "name": "Caetelpolnt",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 283,
+      "name": "Cahritahorn Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 284,
+      "name": "CahrZtaberg",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 291,
+      "name": "Caledonia Spring",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 299,
+      "name": "Calverts Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 304,
+      "name": "Camporico",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 305,
+      "name": "Camporico Raltpond",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 316,
+      "name": "Cane Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 219,
+        "sourceName": "Estate CANE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.702682,
+          "lng": -64.843591
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 219,
+          "sourceName": "CANE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.702682,
+            "lng": -64.843591
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "Estate BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 220,
+          "sourceName": "Estate CANE (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.684013,
+            "lng": -64.833212
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 220,
+          "sourceName": "CANE (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.684013,
+            "lng": -64.833212
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 221,
+          "sourceName": "Estate CANE GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.707521,
+            "lng": -64.727444
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 221,
+          "sourceName": "CANE GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.707521,
+            "lng": -64.727444
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 317,
+      "name": "Cane Bay Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 219,
+        "sourceName": "Estate CANE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.702682,
+          "lng": -64.843591
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 219,
+          "sourceName": "CANE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.702682,
+            "lng": -64.843591
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "Estate BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 220,
+          "sourceName": "Estate CANE (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.684013,
+            "lng": -64.833212
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 220,
+          "sourceName": "CANE (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.684013,
+            "lng": -64.833212
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 221,
+          "sourceName": "Estate CANE GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.707521,
+            "lng": -64.727444
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 221,
+          "sourceName": "CANE GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.707521,
+            "lng": -64.727444
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 321,
+      "name": "Canebay",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 323,
+      "name": "Canebay Point",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.177,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 300,
+        "sourceName": "Estate LONG POINT & COTTON GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.756962,
+          "lng": -64.58113
+        },
+        "score": 0.177,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 300,
+          "sourceName": "LONG POINT & COTTON GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.756962,
+            "lng": -64.58113
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 328,
+      "name": "Caneelborn",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 329,
+      "name": "Canegarda Point",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.177,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 300,
+        "sourceName": "Estate LONG POINT & COTTON GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.756962,
+          "lng": -64.58113
+        },
+        "score": 0.177,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 300,
+          "sourceName": "LONG POINT & COTTON GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.756962,
+            "lng": -64.58113
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 330,
+      "name": "Canegarden",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 221,
+        "sourceName": "Estate CANE GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.707521,
+          "lng": -64.727444
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 221,
+          "sourceName": "CANE GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.707521,
+            "lng": -64.727444
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 333,
+      "name": "Canegarden Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 334,
+      "name": "Canevalley",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 222,
+        "sourceName": "Estate CANE VALLEY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.719095,
+          "lng": -64.84904
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 222,
+          "sourceName": "CANE VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.719095,
+            "lng": -64.84904
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 336,
+      "name": "Cap de Cudejarre",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 338,
+      "name": "Capella Cays",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 339,
+      "name": "Caprzcorn Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 341,
+      "name": "Caramaw Hall",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 329,
+        "sourceName": "Estate NORTH HALL",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.749512,
+          "lng": -64.872331
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 329,
+          "sourceName": "NORTH HALL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.749512,
+            "lng": -64.872331
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 380,
+          "sourceName": "Estate SPRATT HALL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.743068,
+            "lng": -64.883486
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 380,
+          "sourceName": "SPRATT HALL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.743068,
+            "lng": -64.883486
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 345,
+      "name": "Carden",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 346,
+      "name": "Carden Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 215,
+        "sourceName": "Estate BUTLER'S BAY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.753232,
+          "lng": -64.879802
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "Estate COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "Estate HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "Estate ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 349,
+      "name": "Careen Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 354,
+      "name": "Caretbay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 92,
+        "sourceName": "Estate CARET BAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.364573,
+          "lng": -64.976085
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 92,
+          "sourceName": "CARET BAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.364573,
+            "lng": -64.976085
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 356,
+      "name": "Carettbay",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 361,
+      "name": "Carlota Antalia",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 363,
+      "name": "Carlton Gut",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 63,
+        "sourceName": "Estate SAUNDER'S GUT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.335661,
+          "lng": -64.715434
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 63,
+          "sourceName": "SAUNDER'S GUT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.335661,
+            "lng": -64.715434
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 4,
+          "sourceName": "Estate BEN RUNNELL'S GUT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.33357,
+            "lng": -64.712053
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 4,
+          "sourceName": "BEN RUNNELL'S GUT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.33357,
+            "lng": -64.712053
+          },
+          "score": 0.26,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 62,
+          "sourceName": "Estate SAN SOUCCI & GUINEA GUT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.32877,
+            "lng": -64.779108
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 62,
+          "sourceName": "SAN SOUCCI & GUINEA GUT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.32877,
+            "lng": -64.779108
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 368,
+      "name": "Carolina-Lyst",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 12,
+        "sourceName": "Estate CAROLINA",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.34652,
+          "lng": -64.727628
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 12,
+          "sourceName": "CAROLINA",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.34652,
+            "lng": -64.727628
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 369,
+      "name": "Caroline",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 370,
+      "name": "Caroline Point",
+      "type": "point",
+      "island": "water_island",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 376,
+      "name": "Carton Dome",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 377,
+      "name": "Carty",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 304,
+        "sourceName": "Estate MADAM CARTY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.739493,
+          "lng": -64.617037
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 304,
+          "sourceName": "MADAM CARTY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.739493,
+            "lng": -64.617037
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 383,
+      "name": "Cassava Garden",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 385,
+      "name": "Cassi Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 388,
+      "name": "Castle Burke Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 226,
+        "sourceName": "Estate CASTLE COAKLEY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.723546,
+          "lng": -64.745457
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 226,
+          "sourceName": "CASTLE COAKLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.723546,
+            "lng": -64.745457
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 227,
+          "sourceName": "Estate CASTLE NUGENT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.719562,
+            "lng": -64.679702
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 227,
+          "sourceName": "CASTLE NUGENT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.719562,
+            "lng": -64.679702
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 389,
+      "name": "Castle Coakley",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 395,
+      "name": "Catarinaberg",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 398,
+      "name": "Catharina's Hope",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 278,
+        "sourceName": "Estate HOPE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.709293,
+          "lng": -64.758421
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 278,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.709293,
+            "lng": -64.758421
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "Estate HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 279,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.722404,
+            "lng": -64.837607
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "Estate ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 196,
+          "sourceName": "ANNAS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728867,
+            "lng": -64.728451
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "Estate BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 203,
+          "sourceName": "BETTYS HOPE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.695316,
+            "lng": -64.816511
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 401,
+      "name": "Catherine's Hope",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 123,
+        "sourceName": "Estate HOPE",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.362661,
+          "lng": -65.001633
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 123,
+          "sourceName": "HOPE",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.362661,
+            "lng": -65.001633
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 404,
+      "name": "Catherineberg",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 407,
+      "name": "Cathriseberg",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 415,
+      "name": "CaZverts Punt",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 417,
+      "name": "Ceeeman HiZZ",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 418,
+      "name": "Cehterline Road",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 425,
+      "name": "CfaUdri",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 426,
+      "name": "Cfoodchild",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 429,
+      "name": "Cfroen ICny",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 431,
+      "name": "Ch'rlstianeted'",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 439,
+      "name": "Chenay Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 215,
+        "sourceName": "Estate BUTLER'S BAY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.753232,
+          "lng": -64.879802
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "Estate COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "Estate HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "Estate ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 440,
+      "name": "Chickenhawk Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 442,
+      "name": "Chocolate Hole",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 1,
+      "confidence": "exact",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 14,
+        "sourceName": "CHOCOLATE HOLE",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.318586,
+          "lng": -64.784307
+        },
+        "score": 1,
+        "reason": "normalized_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 14,
+          "sourceName": "Estate CHOCOLATE HOLE",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.318586,
+            "lng": -64.784307
+          },
+          "score": 0.98,
+          "reason": "canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 451,
+      "name": "Chrietiunsfort",
+      "type": "historic",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 461,
+      "name": "Christinn's Fort",
+      "type": "historic",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 463,
+      "name": "Chshnel Rock",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 96,
+        "sourceName": "Estate COCULUS ROCK",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.313722,
+          "lng": -64.86487
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 96,
+          "sourceName": "COCULUS ROCK",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.313722,
+            "lng": -64.86487
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 464,
+      "name": "ChUU88On",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 472,
+      "name": "Circcs Point",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.177,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 300,
+        "sourceName": "Estate LONG POINT & COTTON GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.756962,
+          "lng": -64.58113
+        },
+        "score": 0.177,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 300,
+          "sourceName": "LONG POINT & COTTON GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.756962,
+            "lng": -64.58113
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 475,
+      "name": "Claremont",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 476,
+      "name": "Clausen",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 477,
+      "name": "Clear Mount",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 316,
+        "sourceName": "Estate MOUNT EAGLE",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.759112,
+          "lng": -64.805727
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 316,
+          "sourceName": "MOUNT EAGLE",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.759112,
+            "lng": -64.805727
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 317,
+          "sourceName": "Estate MOUNT FANCY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.725445,
+            "lng": -64.636244
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 317,
+          "sourceName": "MOUNT FANCY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.725445,
+            "lng": -64.636244
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 321,
+          "sourceName": "Estate MOUNT RETREAT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.7343,
+            "lng": -64.629998
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 321,
+          "sourceName": "MOUNT RETREAT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.7343,
+            "lng": -64.629998
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 322,
+          "sourceName": "Estate MOUNT STEWART",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.747915,
+            "lng": -64.84303
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 322,
+          "sourceName": "MOUNT STEWART",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.747915,
+            "lng": -64.84303
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 478,
+      "name": "Clermont",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 481,
+      "name": "Cliftonhill",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 233,
+        "sourceName": "Estate CLIFTON HILL",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.723613,
+          "lng": -64.775295
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 233,
+          "sourceName": "CLIFTON HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.723613,
+            "lng": -64.775295
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 502,
+      "name": "Colquohoun Mt",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 235,
+        "sourceName": "Estate COLQUOHOUN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.743797,
+          "lng": -64.797747
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 235,
+          "sourceName": "COLQUOHOUN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.743797,
+            "lng": -64.797747
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 311,
+          "sourceName": "Estate MON BIJOU / BLUE MT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752946,
+            "lng": -64.796879
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 311,
+          "sourceName": "MON BIJOU / BLUE MT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752946,
+            "lng": -64.796879
+          },
+          "score": 0.21,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 506,
+      "name": "Compass Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 513,
+      "name": "Concordia Bay",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.73,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 17,
+        "sourceName": "Estate CONCORDIA B",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.317368,
+          "lng": -64.709736
+        },
+        "score": 0.73,
+        "reason": "canonical_contains_review_only"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 17,
+          "sourceName": "CONCORDIA B",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.317368,
+            "lng": -64.709736
+          },
+          "score": 0.73,
+          "reason": "canonical_contains_review_only"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 4,
+          "sourceName": "CORAL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.33357,
+            "lng": -64.712053
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 7,
+          "sourceName": "CORAL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.334605,
+            "lng": -64.72275
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "Estate BROWNS BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "BROWNS BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 8,
+          "sourceName": "MAHO BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.361438,
+            "lng": -64.705849
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 9,
+          "sourceName": "CORAL BAY",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.316203,
+            "lng": -64.688536
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 514,
+      "name": "Concordia Creek",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 236,
+        "sourceName": "Estate CONCORDIA",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.765574,
+          "lng": -64.768792
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 236,
+          "sourceName": "CONCORDIA",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.765574,
+            "lng": -64.768792
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 237,
+          "sourceName": "Estate CONCORDIA (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.687298,
+            "lng": -64.876075
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 237,
+          "sourceName": "CONCORDIA (South)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.687298,
+            "lng": -64.876075
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 238,
+          "sourceName": "Estate CONCORDIA (West)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.704578,
+            "lng": -64.86631
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 238,
+          "sourceName": "CONCORDIA (West)",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.704578,
+            "lng": -64.86631
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 518,
+      "name": "Congo Cay",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 88,
+        "sourceName": "Estate BOVONI CAY",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.312746,
+          "lng": -64.872299
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 88,
+          "sourceName": "BOVONI CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.312746,
+            "lng": -64.872299
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "Estate CAS CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 93,
+          "sourceName": "CAS CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.307426,
+            "lng": -64.865759
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 116,
+          "sourceName": "Estate GREEN CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.309615,
+            "lng": -64.90804
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 116,
+          "sourceName": "GREEN CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.309615,
+            "lng": -64.90804
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 128,
+          "sourceName": "Estate KALKUM CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35044,
+            "lng": -65.057702
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 128,
+          "sourceName": "KALKUM CAY",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.35044,
+            "lng": -65.057702
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 520,
+      "name": "Congo Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 522,
+      "name": "Conoordia",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 524,
+      "name": "ConstitutlonhUZ",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 525,
+      "name": "Contant",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 98,
+        "sourceName": "Estate CONTANT 7A",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.344423,
+          "lng": -64.958652
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 98,
+          "sourceName": "CONTANT 7A",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.344423,
+            "lng": -64.958652
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "Estate CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "Estate CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 101,
+          "sourceName": "Estate CONTANT 7BA",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.342339,
+            "lng": -64.953
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 101,
+          "sourceName": "CONTANT 7BA",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.342339,
+            "lng": -64.953
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 531,
+      "name": "Contant Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 98,
+        "sourceName": "Estate CONTANT 7A",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.344423,
+          "lng": -64.958652
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 98,
+          "sourceName": "CONTANT 7A",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.344423,
+            "lng": -64.958652
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "Estate CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "Estate CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 101,
+          "sourceName": "Estate CONTANT 7BA",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.342339,
+            "lng": -64.953
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 101,
+          "sourceName": "CONTANT 7BA",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.342339,
+            "lng": -64.953
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 532,
+      "name": "Contant Point",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 98,
+          "sourceName": "Estate CONTANT 7A",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.344423,
+            "lng": -64.958652
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 98,
+          "sourceName": "CONTANT 7A",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.344423,
+            "lng": -64.958652
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "Estate CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 99,
+          "sourceName": "CONTANT 7b",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349151,
+            "lng": -64.959079
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "Estate CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 100,
+          "sourceName": "CONTANT 7B",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.338744,
+            "lng": -64.950282
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 536,
+      "name": "Contentment Gut",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 240,
+        "sourceName": "Estate CONTENTMENT",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.738055,
+          "lng": -64.710239
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 240,
+          "sourceName": "CONTENTMENT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.738055,
+            "lng": -64.710239
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 382,
+          "sourceName": "Estate SPRING GUT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728345,
+            "lng": -64.694756
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 382,
+          "sourceName": "SPRING GUT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.728345,
+            "lng": -64.694756
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 537,
+      "name": "Contentment Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 538,
+      "name": "Contentment Valley",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.51,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 240,
+        "sourceName": "Estate CONTENTMENT",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.738055,
+          "lng": -64.710239
+        },
+        "score": 0.51,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 240,
+          "sourceName": "CONTENTMENT",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.738055,
+            "lng": -64.710239
+          },
+          "score": 0.51,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 222,
+          "sourceName": "Estate CANE VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.719095,
+            "lng": -64.84904
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 222,
+          "sourceName": "CANE VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.719095,
+            "lng": -64.84904
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 245,
+          "sourceName": "Estate COTTON VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750596,
+            "lng": -64.624758
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 245,
+          "sourceName": "COTTON VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750596,
+            "lng": -64.624758
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 344,
+          "sourceName": "Estate PLEASANT VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.745253,
+            "lng": -64.638328
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 344,
+          "sourceName": "PLEASANT VALLEY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.745253,
+            "lng": -64.638328
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 539,
+      "name": "Cook's Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 540,
+      "name": "Cooper",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 549,
+      "name": "Corn Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 552,
+      "name": "Cornhill",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.95,
+      "confidence": "strong",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 242,
+        "sourceName": "Estate CORN HILL",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.714435,
+          "lng": -64.709347
+        },
+        "score": 0.95,
+        "reason": "compact_canonical_exact"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 242,
+          "sourceName": "CORN HILL",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.714435,
+            "lng": -64.709347
+          },
+          "score": 0.95,
+          "reason": "compact_canonical_exact"
+        }
+      ]
+    },
+    {
+      "index": 554,
+      "name": "Corteri",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 555,
+      "name": "Cotcell Playstarcg",
+      "type": "historic",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 556,
+      "name": "Coterado P d n t",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 558,
+      "name": "Cotkongxove Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 215,
+        "sourceName": "Estate BUTLER'S BAY",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.753232,
+          "lng": -64.879802
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 215,
+          "sourceName": "BUTLER'S BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.753232,
+            "lng": -64.879802
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "Estate COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 234,
+          "sourceName": "COAKLEY BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.752557,
+            "lng": -64.642239
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "Estate HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 269,
+          "sourceName": "HAMS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.764527,
+            "lng": -64.877415
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "Estate ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        },
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 282,
+          "sourceName": "ISAACS BAY",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.750157,
+            "lng": -64.576838
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 564,
+      "name": "Cottongarden",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 566,
+      "name": "Cottongarden Peninsula",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 567,
+      "name": "Cottongarden Point",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.177,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 300,
+        "sourceName": "Estate LONG POINT & COTTON GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.756962,
+          "lng": -64.58113
+        },
+        "score": 0.177,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 300,
+          "sourceName": "LONG POINT & COTTON GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.756962,
+            "lng": -64.58113
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 573,
+      "name": "Cow Rock",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 96,
+        "sourceName": "Estate COCULUS ROCK",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.313722,
+          "lng": -64.86487
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 96,
+          "sourceName": "COCULUS ROCK",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.313722,
+            "lng": -64.86487
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 574,
+      "name": "Cowell Battery",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 577,
+      "name": "Cowell Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 580,
+      "name": "Crabhole Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 605,
+      "name": "Crumbuy",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 611,
+      "name": "Cuarentena",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 613,
+      "name": "Cudejarre P o i n t",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 615,
+      "name": "Cup d u Cudeiare",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 617,
+      "name": "Curha Mmntaln",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 618,
+      "name": "Current Hole",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 91,
+        "sourceName": "Estate CAREENING HOLE",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.335195,
+          "lng": -64.942273
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 91,
+          "sourceName": "CAREENING HOLE",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.335195,
+            "lng": -64.942273
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 620,
+      "name": "Currenthole Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 625,
+      "name": "De Beftgem Road",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 628,
+      "name": "Deck Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 632,
+      "name": "Derrick Point",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 633,
+      "name": "Description oP Stations",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 634,
+      "name": "Detlcr Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 638,
+      "name": "Diainond School",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 639,
+      "name": "Diamond",
+      "type": "estate",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 643,
+      "name": "Diedrichs",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 644,
+      "name": "Diedrichs Point",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0.177,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 300,
+        "sourceName": "Estate LONG POINT & COTTON GARDEN",
+        "sourceIsland": "st_croix",
+        "coordinates": {
+          "lat": 17.756962,
+          "lng": -64.58113
+        },
+        "score": 0.177,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 300,
+          "sourceName": "LONG POINT & COTTON GARDEN",
+          "sourceIsland": "st_croix",
+          "coordinates": {
+            "lat": 17.756962,
+            "lng": -64.58113
+          },
+          "score": 0.177,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 645,
+      "name": "Din Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 648,
+      "name": "Ditlef Point",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 97,
+        "sourceName": "Estate COKI POINT",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.349441,
+          "lng": -64.866634
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 97,
+          "sourceName": "COKI POINT",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.349441,
+            "lng": -64.866634
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 650,
+      "name": "Dittloff Point",
+      "type": "point",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 70,
+        "sourceName": "Estate TURNER POINT",
+        "sourceIsland": "st_john",
+        "coordinates": {
+          "lat": 18.342016,
+          "lng": -64.690907
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 70,
+          "sourceName": "TURNER POINT",
+          "sourceIsland": "st_john",
+          "coordinates": {
+            "lat": 18.342016,
+            "lng": -64.690907
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 657,
+      "name": "Doill/ IIiZl",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 659,
+      "name": "Dolly Efl1",
+      "type": "estate",
+      "island": "st_john",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 660,
+      "name": "Domkirk Rock",
+      "type": "point",
+      "island": "st_thomas",
+      "issue": "missing_coordinates",
+      "bestScore": 0.343,
+      "confidence": "weak",
+      "bestMatch": {
+        "sourceFile": "public/geo/usvi-estates.geojson",
+        "sourceIndex": 96,
+        "sourceName": "Estate COCULUS ROCK",
+        "sourceIsland": "st_thomas",
+        "coordinates": {
+          "lat": 18.313722,
+          "lng": -64.86487
+        },
+        "score": 0.343,
+        "reason": "weak_token_overlap"
+      },
+      "alternatives": [
+        {
+          "sourceFile": "public/geo/usvi-estates.geojson",
+          "sourceIndex": 96,
+          "sourceName": "COCULUS ROCK",
+          "sourceIsland": "st_thomas",
+          "coordinates": {
+            "lat": 18.313722,
+            "lng": -64.86487
+          },
+          "score": 0.343,
+          "reason": "weak_token_overlap"
+        }
+      ]
+    },
+    {
+      "index": 679,
+      "name": "Dry Lcdqc",
+      "type": "point",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    },
+    {
+      "index": 683,
+      "name": "DuC'hr",
+      "type": "estate",
+      "island": "st_croix",
+      "issue": "missing_coordinates",
+      "bestScore": 0,
+      "confidence": "none",
+      "alternatives": []
+    }
+  ]
+}

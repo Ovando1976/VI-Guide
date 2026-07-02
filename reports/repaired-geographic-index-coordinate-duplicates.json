@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-07-02T08:59:50.675Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.duplicate-coordinate-repair.2026-07-02T08-59-50-584Z.ts",
+  "sourceApplyReport": "reports/applied-island-safe-geographic-index-coordinates.json",
+  "attempted": 15,
+  "repaired": 15,
+  "skipped": 0,
+  "repairedRecords": [
+    {
+      "index": 86,
+      "name": "Bellevue Estate, St. Croix",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.746021,
+        "lng": -64.731878
+      }
+    },
+    {
+      "index": 103,
+      "name": "Bethesda Estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.355906,
+        "lng": -65.008354
+      }
+    },
+    {
+      "index": 113,
+      "name": "Betsy’s Jewel Estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.762695,
+        "lng": -64.794442
+      }
+    },
+    {
+      "index": 151,
+      "name": "Bodkin Estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.750239,
+        "lng": -64.835793
+      }
+    },
+    {
+      "index": 159,
+      "name": "Bolongo Estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.317512,
+        "lng": -64.898797
+      }
+    },
+    {
+      "index": 180,
+      "name": "Bordeaux Estate, St. Thomas",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.35659,
+        "lng": -65.016619
+      }
+    },
+    {
+      "index": 197,
+      "name": "Botanybay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.354012,
+        "lng": -65.033474
+      }
+    },
+    {
+      "index": 205,
+      "name": "Bovoni Estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.31568,
+        "lng": -64.884575
+      }
+    },
+    {
+      "index": 250,
+      "name": "Bulowsminde",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.739247,
+        "lng": -64.727936
+      }
+    },
+    {
+      "index": 330,
+      "name": "Canegarden",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.707521,
+        "lng": -64.727444
+      }
+    },
+    {
+      "index": 334,
+      "name": "Canevalley",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.719095,
+        "lng": -64.84904
+      }
+    },
+    {
+      "index": 354,
+      "name": "Caretbay",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.364573,
+        "lng": -64.976085
+      }
+    },
+    {
+      "index": 442,
+      "name": "Chocolate Hole",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.318586,
+        "lng": -64.784307
+      }
+    },
+    {
+      "index": 481,
+      "name": "Cliftonhill",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.723613,
+        "lng": -64.775295
+      }
+    },
+    {
+      "index": 552,
+      "name": "Cornhill",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.714435,
+        "lng": -64.709347
+      }
+    }
+  ],
+  "skippedRecords": []
+}

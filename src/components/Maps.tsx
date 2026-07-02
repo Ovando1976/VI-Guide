@@ -10,9 +10,621 @@ type MapsProps = {
   user: any;
 };
 
-function openDirections(point: MapPoint) {
-  const url = `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+type AtlasSelection = {
+  id: string;
+  title: string;
+  name?: string;
+  label?: string;
+  description?: string;
+  summary?: string;
+  historicalContext?: string;
+  modernContext?: string;
+  sourceConfidence?: "high" | "medium" | "low";
+  sourceNotes?: string[];
+  sourceRefs?: string[];
+  relatedFeatures?: string[];
+  type: string;
+  source: string;
+  lat?: number;
+  lng?: number;
+  geoid?: string;
+  estate?: string;
+  quarter?: string;
+  quarterGroup?: string;
+  island?: IslandCode;
+  coords?: [number, number];
+  isEstate?: boolean;
+  isParcel?: boolean;
+  isPoint?: boolean;
+  properties?: Record<string, unknown>;
+};
+
+const ISLAND_LABELS: Record<IslandCode, string> = {
+  st_thomas: "St. Thomas",
+  st_john: "St. John",
+  st_croix: "St. Croix",
+  water_island: "Water Island",
+};
+
+const quickPlaces = [
+  ["Charlotte Amalie", "st_thomas"],
+  ["Red Hook", "st_thomas"],
+  ["Airport", "st_thomas"],
+  ["Cruz Bay", "st_john"],
+  ["Coral Bay", "st_john"],
+  ["Christiansted", "st_croix"],
+  ["Frederiksted", "st_croix"],
+] as const;
+
+function validIsland(value: string | null | undefined): IslandCode {
+  if (
+    value === "st_thomas" ||
+    value === "st_john" ||
+    value === "st_croix" ||
+    value === "water_island"
+  ) {
+    return value;
+  }
+
+  return "st_thomas";
+}
+
+function selectionTitle(selection: AtlasSelection) {
+  return selection.title || selection.name || selection.estate || "Selected place";
+}
+
+function cleanString(value: unknown) {
+  return String(value ?? "").trim();
+}
+
+function getProp(selection: AtlasSelection, key: string) {
+  return selection.properties?.[key];
+}
+
+function getEstateId(selection: AtlasSelection) {
+  const props = selection.properties ?? {};
+
+  const officialId = cleanString(
+    getProp(selection, "officialId") ||
+      getProp(selection, "geoid") ||
+      getProp(selection, "GEOID") ||
+      getProp(selection, "sourceObjectId") ||
+      getProp(selection, "estateId") ||
+      props.officialId ||
+      props.geoid ||
+      props.GEOID ||
+      props.sourceObjectId ||
+      props.estateId ||
+      selection.geoid,
+  );
+
+  if (officialId && officialId !== "-1") return officialId;
+
+  return cleanString(
+    getProp(selection, "displayName") ||
+      getProp(selection, "name") ||
+      getProp(selection, "estate") ||
+      selection.title,
+  ).replace(/^Estate\\s+/i, "");
+}
+
+function navigateHard(path: string, navigate: ReturnType<typeof useNavigate>) {
+  try {
+    navigate(path);
+  } catch {
+    window.location.href = path;
+  }
+}
+
+function buildEstatePath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  return `/estates/${safeEstateId}?island=${islandFromUrl}`;
+}
+
+function buildEstateHistoryPath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  const context = encodeURIComponent(selectionTitle(selection));
+  return `/history?estate=${safeEstateId}&island=${islandFromUrl}&context=${context}`;
+}
+
+function buildEstateArchivesPath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  const context = encodeURIComponent(selectionTitle(selection));
+  return `/estates/${safeEstateId}/archives?island=${islandFromUrl}&context=${context}`;
+}
+
+function getEstateHighlightKey(selection: AtlasSelection | null) {
+  if (!selection) return null;
+
+  const isEstate =
+    selection.isEstate ||
+    selection.type === "estate" ||
+    selection.source === "estate";
+
+  if (!isEstate) return null;
+
+  return (
+    cleanString(selection.geoid) ||
+    cleanString(getProp(selection, "geoid")) ||
+    cleanString(getProp(selection, "GEOID")) ||
+    cleanString(getProp(selection, "estateId")) ||
+    cleanString(getProp(selection, "name")) ||
+    cleanString(getProp(selection, "baseName")) ||
+    cleanString(getProp(selection, "fullName")) ||
+    cleanString(getProp(selection, "estate")) ||
+    cleanString(selection.name) ||
+    cleanString(selection.title) ||
+    cleanString(selection.id) ||
+    null
+  );
+}
+
+function getCoordsFromSelection(selection: AtlasSelection | MapPoint | null) {
+  if (!selection) return null;
+
+  if ("coords" in selection && Array.isArray(selection.coords)) {
+    const lng = Number(selection.coords[0]);
+    const lat = Number(selection.coords[1]);
+
+    if (Number.isFinite(lng) && Number.isFinite(lat)) {
+      return [lng, lat] as [number, number];
+    }
+  }
+
+  const lat = Number(selection.lat);
+  const lng = Number(selection.lng);
+
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    return [lng, lat] as [number, number];
+  }
+
+  return null;
+}
+
+function openDirections(selection: AtlasSelection) {
+  const lat = selection.lat ?? selection.coords?.[1];
+  const lng = selection.lng ?? selection.coords?.[0];
+
+  const query =
+    typeof lat === "number" && typeof lng === "number"
+      ? `${lat},${lng}`
+      : encodeURIComponent(selectionTitle(selection));
+
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${query}`,
+    "_blank",
+    "noopener,noreferrer",
+  );
+}
+
+function normalizeFeature(feature: IslandMapSelection): AtlasSelection {
+  const props = (feature.properties ?? {}) as Record<string, unknown>;
+
+  const profile = getEstateProfileForSelection({
+    id: feature.id,
+    geoid: feature.geoid,
+    name: feature.name,
+    title: feature.title,
+    estate: feature.estate,
+    properties: props,
+  });
+
+  const isEstate =
+    Boolean(feature.isEstate) ||
+    feature.source === "estate" ||
+    feature.type === "estate";
+
+  const isParcel =
+    Boolean(feature.isParcel) ||
+    feature.source === "parcel" ||
+    feature.type === "parcel";
+
+  const isPoint =
+    Boolean(feature.isPoint) ||
+    feature.source === "point-marker" ||
+    feature.type === "point-marker";
+
+  const fallbackTitle =
+    feature.title ||
+    feature.name ||
+    feature.estate ||
+    cleanString(props.title) ||
+    cleanString(props.name) ||
+    cleanString(props.baseName) ||
+    cleanString(props.fullName) ||
+    cleanString(props.estate) ||
+    "Selected location";
+
+  const title = profile?.displayName || fallbackTitle;
+
+  const id =
+    cleanString(profile?.estateId) ||
+    cleanString(feature.geoid) ||
+    cleanString(props.officialId) ||
+    cleanString(props.geoid) ||
+    cleanString(props.GEOID) ||
+    cleanString(props.sourceObjectId) ||
+    cleanString(props.estateId) ||
+    cleanString(props.ESTATE_ID) ||
+    cleanString(props.EstateID) ||
+    cleanString(props.id) ||
+    cleanString(props.ID) ||
+    cleanString(feature.id) ||
+    title;
+
+  const coords =
+    Array.isArray(feature.coords) && feature.coords.length >= 2
+      ? ([Number(feature.coords[0]), Number(feature.coords[1])] as [number, number])
+      : undefined;
+
+  const description = profile?.description || feature.description;
+
+  return {
+    id,
+    title,
+    name: profile?.displayName || feature.name || title,
+    description,
+    summary: profile?.summary,
+    historicalContext: profile?.historicalContext,
+    modernContext: profile?.modernContext,
+    sourceConfidence: profile?.sourceConfidence,
+    sourceNotes: profile?.sourceNotes,
+    sourceRefs: profile?.sourceRefs,
+    relatedFeatures: profile?.relatedFeatures,
+    type: isEstate ? "estate" : isParcel ? "parcel" : feature.type || "place",
+    source: feature.source || (isEstate ? "estate" : isParcel ? "parcel" : "map"),
+    lat: typeof feature.lat === "number" ? feature.lat : coords?.[1],
+    lng: typeof feature.lng === "number" ? feature.lng : coords?.[0],
+    geoid:
+      cleanString(feature.geoid) ||
+      cleanString(props.geoid) ||
+      cleanString(props.GEOID) ||
+      cleanString(props.estateId) ||
+      profile?.estateId ||
+      undefined,
+    estate:
+      profile?.displayName ||
+      feature.estate ||
+      cleanString(props.estate) ||
+      cleanString(props.ESTATE) ||
+      cleanString(props.name) ||
+      undefined,
+    quarter:
+      profile?.quarter ||
+      feature.quarter ||
+      cleanString(props.quarter) ||
+      undefined,
+    quarterGroup:
+      feature.quarterGroup || cleanString(props.quarterGroup) || undefined,
+    island: profile?.island || feature.island,
+    coords,
+    isEstate,
+    isParcel,
+    isPoint,
+    properties: {
+      ...props,
+      canonicalEstateId: profile?.estateId,
+      canonicalSlug: profile?.slug,
+      canonicalSummary: profile?.summary,
+      description,
+      summary: profile?.summary,
+      historicalContext: profile?.historicalContext,
+      modernContext: profile?.modernContext,
+      sourceConfidence: profile?.sourceConfidence,
+      sourceNotes: profile?.sourceNotes,
+      sourceRefs: profile?.sourceRefs,
+      relatedFeatures: profile?.relatedFeatures,
+    },
+  };
+  name?: string;
+  label?: string;
+  description?: string;
+  summary?: string;
+  historicalContext?: string;
+  modernContext?: string;
+  sourceConfidence?: "high" | "medium" | "low";
+  sourceNotes?: string[];
+  sourceRefs?: string[];
+  relatedFeatures?: string[];
+  type: string;
+  source: string;
+  lat?: number;
+  lng?: number;
+  geoid?: string;
+  estate?: string;
+  quarter?: string;
+  quarterGroup?: string;
+  island?: IslandCode;
+  coords?: [number, number];
+  isEstate?: boolean;
+  isParcel?: boolean;
+  isPoint?: boolean;
+  properties?: Record<string, unknown>;
+};
+
+const ISLAND_LABELS: Record<IslandCode, string> = {
+  st_thomas: "St. Thomas",
+  st_john: "St. John",
+  st_croix: "St. Croix",
+  water_island: "Water Island",
+};
+
+const quickPlaces = [
+  ["Charlotte Amalie", "st_thomas"],
+  ["Red Hook", "st_thomas"],
+  ["Airport", "st_thomas"],
+  ["Cruz Bay", "st_john"],
+  ["Coral Bay", "st_john"],
+  ["Christiansted", "st_croix"],
+  ["Frederiksted", "st_croix"],
+] as const;
+
+function validIsland(value: string | null | undefined): IslandCode {
+  if (
+    value === "st_thomas" ||
+    value === "st_john" ||
+    value === "st_croix" ||
+    value === "water_island"
+  ) {
+    return value;
+  }
+
+  return "st_thomas";
+}
+
+function selectionTitle(selection: AtlasSelection) {
+  return selection.title || selection.name || selection.estate || "Selected place";
+}
+
+function cleanString(value: unknown) {
+  return String(value ?? "").trim();
+}
+
+function getProp(selection: AtlasSelection, key: string) {
+  return selection.properties?.[key];
+}
+
+function getEstateId(selection: AtlasSelection) {
+  const props = selection.properties ?? {};
+
+  const officialId = cleanString(
+    getProp(selection, "officialId") ||
+      getProp(selection, "geoid") ||
+      getProp(selection, "GEOID") ||
+      getProp(selection, "sourceObjectId") ||
+      getProp(selection, "estateId") ||
+      props.officialId ||
+      props.geoid ||
+      props.GEOID ||
+      props.sourceObjectId ||
+      props.estateId ||
+      selection.geoid,
+  );
+
+  if (officialId && officialId !== "-1") return officialId;
+
+  return cleanString(
+    getProp(selection, "displayName") ||
+      getProp(selection, "name") ||
+      getProp(selection, "estate") ||
+      selection.title,
+  ).replace(/^Estate\\s+/i, "");
+}
+
+function navigateHard(path: string, navigate: ReturnType<typeof useNavigate>) {
+  try {
+    navigate(path);
+  } catch {
+    window.location.href = path;
+  }
+}
+
+function buildEstatePath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  return `/estates/${safeEstateId}?island=${islandFromUrl}`;
+}
+
+function buildEstateHistoryPath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  const context = encodeURIComponent(selectionTitle(selection));
+  return `/history?estate=${safeEstateId}&island=${islandFromUrl}&context=${context}`;
+}
+
+function buildEstateArchivesPath(selection: AtlasSelection, islandFromUrl: IslandCode) {
+  const estateId = getEstateId(selection);
+  const safeEstateId = encodeURIComponent(estateId || selection.id || selectionTitle(selection));
+  const context = encodeURIComponent(selectionTitle(selection));
+  return `/estates/${safeEstateId}/archives?island=${islandFromUrl}&context=${context}`;
+}
+
+function getEstateHighlightKey(selection: AtlasSelection | null) {
+  if (!selection) return null;
+
+  const isEstate =
+    selection.isEstate ||
+    selection.type === "estate" ||
+    selection.source === "estate";
+
+  if (!isEstate) return null;
+
+  return (
+    cleanString(selection.geoid) ||
+    cleanString(getProp(selection, "geoid")) ||
+    cleanString(getProp(selection, "GEOID")) ||
+    cleanString(getProp(selection, "estateId")) ||
+    cleanString(getProp(selection, "name")) ||
+    cleanString(getProp(selection, "baseName")) ||
+    cleanString(getProp(selection, "fullName")) ||
+    cleanString(getProp(selection, "estate")) ||
+    cleanString(selection.name) ||
+    cleanString(selection.title) ||
+    cleanString(selection.id) ||
+    null
+  );
+}
+
+function getCoordsFromSelection(selection: AtlasSelection | MapPoint | null) {
+  if (!selection) return null;
+
+  if ("coords" in selection && Array.isArray(selection.coords)) {
+    const lng = Number(selection.coords[0]);
+    const lat = Number(selection.coords[1]);
+
+    if (Number.isFinite(lng) && Number.isFinite(lat)) {
+      return [lng, lat] as [number, number];
+    }
+  }
+
+  const lat = Number(selection.lat);
+  const lng = Number(selection.lng);
+
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    return [lng, lat] as [number, number];
+  }
+
+  return null;
+}
+
+function openDirections(selection: AtlasSelection) {
+  const lat = selection.lat ?? selection.coords?.[1];
+  const lng = selection.lng ?? selection.coords?.[0];
+
+  const query =
+    typeof lat === "number" && typeof lng === "number"
+      ? `${lat},${lng}`
+      : encodeURIComponent(selectionTitle(selection));
+
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${query}`,
+    "_blank",
+    "noopener,noreferrer",
+  );
+}
+
+function normalizeFeature(feature: IslandMapSelection): AtlasSelection {
+  const props = (feature.properties ?? {}) as Record<string, unknown>;
+
+  const profile = getEstateProfileForSelection({
+    id: feature.id,
+    geoid: feature.geoid,
+    name: feature.name,
+    title: feature.title,
+    estate: feature.estate,
+    properties: props,
+  });
+
+  const isEstate =
+    Boolean(feature.isEstate) ||
+    feature.source === "estate" ||
+    feature.type === "estate";
+
+  const isParcel =
+    Boolean(feature.isParcel) ||
+    feature.source === "parcel" ||
+    feature.type === "parcel";
+
+  const isPoint =
+    Boolean(feature.isPoint) ||
+    feature.source === "point-marker" ||
+    feature.type === "point-marker";
+
+  const fallbackTitle =
+    feature.title ||
+    feature.name ||
+    feature.estate ||
+    cleanString(props.title) ||
+    cleanString(props.name) ||
+    cleanString(props.baseName) ||
+    cleanString(props.fullName) ||
+    cleanString(props.estate) ||
+    "Selected location";
+
+  const title = profile?.displayName || fallbackTitle;
+
+  const id =
+    cleanString(profile?.estateId) ||
+    cleanString(feature.geoid) ||
+    cleanString(props.officialId) ||
+    cleanString(props.geoid) ||
+    cleanString(props.GEOID) ||
+    cleanString(props.sourceObjectId) ||
+    cleanString(props.estateId) ||
+    cleanString(props.ESTATE_ID) ||
+    cleanString(props.EstateID) ||
+    cleanString(props.id) ||
+    cleanString(props.ID) ||
+    cleanString(feature.id) ||
+    title;
+
+  const coords =
+    Array.isArray(feature.coords) && feature.coords.length >= 2
+      ? ([Number(feature.coords[0]), Number(feature.coords[1])] as [number, number])
+      : undefined;
+
+  const description = profile?.description || feature.description;
+
+  return {
+    id,
+    title,
+    name: profile?.displayName || feature.name || title,
+    description,
+    summary: profile?.summary,
+    historicalContext: profile?.historicalContext,
+    modernContext: profile?.modernContext,
+    sourceConfidence: profile?.sourceConfidence,
+    sourceNotes: profile?.sourceNotes,
+    sourceRefs: profile?.sourceRefs,
+    relatedFeatures: profile?.relatedFeatures,
+    type: isEstate ? "estate" : isParcel ? "parcel" : feature.type || "place",
+    source: feature.source || (isEstate ? "estate" : isParcel ? "parcel" : "map"),
+    lat: typeof feature.lat === "number" ? feature.lat : coords?.[1],
+    lng: typeof feature.lng === "number" ? feature.lng : coords?.[0],
+    geoid:
+      cleanString(feature.geoid) ||
+      cleanString(props.geoid) ||
+      cleanString(props.GEOID) ||
+      cleanString(props.estateId) ||
+      profile?.estateId ||
+      undefined,
+    estate:
+      profile?.displayName ||
+      feature.estate ||
+      cleanString(props.estate) ||
+      cleanString(props.ESTATE) ||
+      cleanString(props.name) ||
+      undefined,
+    quarter:
+      profile?.quarter ||
+      feature.quarter ||
+      cleanString(props.quarter) ||
+      undefined,
+    quarterGroup:
+      feature.quarterGroup || cleanString(props.quarterGroup) || undefined,
+    island: profile?.island || feature.island,
+    coords,
+    isEstate,
+    isParcel,
+    isPoint,
+    properties: {
+      ...props,
+      canonicalEstateId: profile?.estateId,
+      canonicalSlug: profile?.slug,
+      canonicalSummary: profile?.summary,
+      description,
+      summary: profile?.summary,
+      historicalContext: profile?.historicalContext,
+      modernContext: profile?.modernContext,
+      sourceConfidence: profile?.sourceConfidence,
+      sourceNotes: profile?.sourceNotes,
+      sourceRefs: profile?.sourceRefs,
+      relatedFeatures: profile?.relatedFeatures,
+    },
+  };
 }
 
 export default function Maps({ selectedIsland }: MapsProps) {
