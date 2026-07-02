@@ -1,19 +1,19 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:48:30.762Z
+Generated: 2026-07-02T11:53:46.918Z
 
 ## Summary
 
-- Candidate-audit missing coordinate records: 1113
-- Triaged records: 1113
-- Official data-cleanliness missing coordinates: 744
+- Candidate-audit missing coordinate records: 1111
+- Triaged records: 1111
+- Official data-cleanliness missing coordinates: 742
 - Official sampled missing-coordinate issues: 200
 
 ## By bucket
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 889 |
+| research_clean_name_no_candidate | 887 |
 | ocr_or_name_cleanup_first | 113 |
 | review_candidate | 78 |
 | generic_fragment_do_not_coordinate | 31 |
@@ -23,7 +23,7 @@ Generated: 2026-07-02T11:48:30.762Z
 
 | Confidence | Count |
 |---|---:|
-| none | 1022 |
+| none | 1020 |
 | review | 48 |
 | weak | 39 |
 | exact | 4 |
@@ -34,8 +34,8 @@ Generated: 2026-07-02T11:48:30.762Z
 |---:|---|---|---|---|---|---|
 | 188 | Bordeaux plantation | dictionaryEntry | st_thomas | exact | BORDEAUX | contains_clean_slug |
 | 229 | Buck Bay | bay | st_thomas | exact | BUCK ISLAND | exact_clean_slug |
-| 990 | Grove | historic | st_croix | exact | GROVE PLACE | contains_clean_slug |
-| 1107 | Hope Point | estate | st_thomas | exact | HOPE | exact_clean_slug |
+| 989 | Grove | historic | st_croix | exact | GROVE PLACE | contains_clean_slug |
+| 1106 | Hope Point | estate | st_thomas | exact | HOPE | exact_clean_slug |
 | 23 | Annaberg Plantation Records | archive_record | st_john | review | Anna Point | contains_clean_slug |
 | 77 | Beck Grove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 124 | Billy French Point | point | st_thomas | review | French Bay | contains_clean_slug |
@@ -48,33 +48,33 @@ Generated: 2026-07-02T11:48:30.762Z
 | 400 | Catherine's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
 | 436 | Charlotte Amalie High School | school | st_thomas | review | Charlotte Amalie | contains_clean_slug |
 | 566 | Cottongrove Hill | hill | st_croix | review | GROVE PLACE | contains_clean_slug |
-| 926 | Goodhope Bay | bay | st_croix | review | HOPE | contains_clean_slug |
-| 1205 | Johiison Reef | hill | st_john | review | REEF BAY | contains_clean_slug |
-| 1218 | Johnson Reef | bay | st_john | review | REEF BAY | contains_clean_slug |
-| 1278 | Klein Bay | bay | st_john | review | Klein Cinnamon Road | contains_clean_slug |
-| 1284 | Klein Reef | point | st_john | review | REEF BAY | contains_clean_slug |
-| 1465 | Little Lameshur Bay | bay | st_john | review | Great Lameshur Bay | contains_clean_slug |
-| 1535 | Lutheran church | estate | st_thomas | review | Frederick Lutheran Church | contains_clean_slug |
-| 1707 | Nancy's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
-| 1811 | Orangegrove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
-| 1812 | Orangegrove Road | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
-| 1893 | Peter Beach | point | st_thomas | review | St. PETER | contains_clean_slug |
-| 1928 | Pleasant Point | point | st_john | review | MT PLEASANT & RETREAT | contains_clean_slug |
-| 2184 | Round Bay | bay | st_john | review | FREEMAN'S GROUND | contains_clean_slug |
-| 2186 | Round Point | bay | st_thomas | review | HOSPITAL GROUND | contains_clean_slug |
-| 2257 | Salt River Bay Historic and Archaeological Records | archive_record | st_croix | review | RIVER | contains_clean_slug |
-| 2365 | Southgate Plain | estate | st_croix | review | South Bay | contains_clean_slug |
-| 2370 | Southside Road | point | st_croix | review | South Bay | contains_clean_slug |
-| 2372 | Southwest Anchorage | point | st_croix | review | South Bay | contains_clean_slug |
-| 2374 | Southwest Shoal | point | st_croix | review | South Bay | contains_clean_slug |
-| 2384 | Spring Bay | bay | st_croix | review | SPRING GARDEN | contains_clean_slug |
-| 2437 | Sugar Bay | estate | st_thomas | review | THOMAS - SUGAR ESTATE | contains_clean_slug |
-| 2449 | Susannabarg | estate | st_john | review | Anna Point | contains_clean_slug |
-| 2497 | The Mountais | estate | st_croix | review | MOUNTAIN | similarity_or_token_overlap |
-| 2514 | Thomas Harbor | bay | st_thomas | review | THOMAS | contains_clean_slug |
-| 2515 | Thomas Hill | estate | st_croix | review | THOMAS | contains_clean_slug |
-| 2607 | Valley | estate | st_croix | review | CANE VALLEY | contains_clean_slug |
-| 2711 | White | estate | st_croix | review | WHITE LADY | contains_clean_slug |
+| 925 | Goodhope Bay | bay | st_croix | review | HOPE | contains_clean_slug |
+| 1204 | Johiison Reef | hill | st_john | review | REEF BAY | contains_clean_slug |
+| 1217 | Johnson Reef | bay | st_john | review | REEF BAY | contains_clean_slug |
+| 1277 | Klein Bay | bay | st_john | review | Klein Cinnamon Road | contains_clean_slug |
+| 1283 | Klein Reef | point | st_john | review | REEF BAY | contains_clean_slug |
+| 1464 | Little Lameshur Bay | bay | st_john | review | Great Lameshur Bay | contains_clean_slug |
+| 1534 | Lutheran church | estate | st_thomas | review | Frederick Lutheran Church | contains_clean_slug |
+| 1706 | Nancy's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
+| 1810 | Orangegrove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
+| 1811 | Orangegrove Road | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
+| 1892 | Peter Beach | point | st_thomas | review | St. PETER | contains_clean_slug |
+| 1927 | Pleasant Point | point | st_john | review | MT PLEASANT & RETREAT | contains_clean_slug |
+| 2183 | Round Bay | bay | st_john | review | FREEMAN'S GROUND | contains_clean_slug |
+| 2185 | Round Point | bay | st_thomas | review | HOSPITAL GROUND | contains_clean_slug |
+| 2256 | Salt River Bay Historic and Archaeological Records | archive_record | st_croix | review | RIVER | contains_clean_slug |
+| 2364 | Southgate Plain | estate | st_croix | review | South Bay | contains_clean_slug |
+| 2369 | Southside Road | point | st_croix | review | South Bay | contains_clean_slug |
+| 2371 | Southwest Anchorage | point | st_croix | review | South Bay | contains_clean_slug |
+| 2373 | Southwest Shoal | point | st_croix | review | South Bay | contains_clean_slug |
+| 2383 | Spring Bay | bay | st_croix | review | SPRING GARDEN | contains_clean_slug |
+| 2436 | Sugar Bay | estate | st_thomas | review | THOMAS - SUGAR ESTATE | contains_clean_slug |
+| 2448 | Susannabarg | estate | st_john | review | Anna Point | contains_clean_slug |
+| 2496 | The Mountais | estate | st_croix | review | MOUNTAIN | similarity_or_token_overlap |
+| 2513 | Thomas Harbor | bay | st_thomas | review | THOMAS | contains_clean_slug |
+| 2514 | Thomas Hill | estate | st_croix | review | THOMAS | contains_clean_slug |
+| 2606 | Valley | estate | st_croix | review | CANE VALLEY | contains_clean_slug |
+| 2710 | White | estate | st_croix | review | WHITE LADY | contains_clean_slug |
 | 82 | Beffron Hill | estate | st_croix | weak | BEESTON HILL | weak_similarity |
 | 120 | Beverhoutberg Estate | estate | st_john | weak | BEVERHOUDTSBERG | similarity_or_token_overlap |
 | 221 | Brown Estate | estate | st_thomas | weak | Crown Bay | weak_similarity |
@@ -86,30 +86,30 @@ Generated: 2026-07-02T11:48:30.762Z
 | 655 | Dolby Hill | hill | st_croix | weak | Lowry Hill | weak_similarity |
 | 744 | Eniqhed Point | point | st_john | weak | ENIGHED | similarity_or_token_overlap |
 | 804 | Flanagan Island | point | st_john | weak | FLANNIGAN ISLAND | weak_similarity |
-| 1011 | Halkun Cay | island | st_thomas | weak | KALKUM CAY | weak_similarity |
-| 1111 | Hornjag star | estate | st_croix | weak | MORNING STAR | weak_similarity |
-| 1172 | Jack Bay | bay | st_croix | weak | JACKS BAY | weak_similarity |
-| 1173 | Jack Bay Point | bay | st_croix | weak | JACKS BAY | weak_similarity |
-| 1568 | Mandal | estate | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
-| 1569 | Mandal Bay | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
-| 1570 | Mandal Point | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
-| 1592 | Mars Hill | estate | st_thomas | weak | Maria Hill | weak_similarity |
-| 1706 | Nancy Hill | hill | st_john | weak | Caneel Hill | weak_similarity |
-| 1829 | Owrettbay | estate | st_thomas | weak | Carettbay | weak_similarity |
-| 1920 | Pkaeant Vale | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
-| 1927 | Pleasant Hill | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
-| 1963 | Pollyberg | estate | st_thomas | weak | NULLYBERG | weak_similarity |
-| 1964 | Pollyberg Road | estate | st_thomas | weak | NULLYBERG | weak_similarity |
-| 2224 | Sabbat Hill | hill | st_thomas | weak | Maria Hill | weak_similarity |
-| 2248 | Salba Cay | point | st_thomas | weak | SALT CAY | weak_similarity |
-| 2275 | Sara Hill | bay | st_thomas | weak | Maria Hill | weak_similarity |
-| 2463 | Tague Bay | bay | st_croix | weak | TEAGUE BAY | weak_similarity |
-| 2476 | Tbatah Cay | island | st_thomas | weak | Thatch Cay | weak_similarity |
-| 2506 | Thomaa | estate | st_thomas | weak | THOMAS | weak_similarity |
-| 2562 | Turtledove Key | estate | st_thomas | weak | Turtledove Cay | similarity_or_token_overlap |
-| 2638 | Waldberb Guard | estate | st_croix | weak | WALDBERGGAARD | weak_similarity |
-| 2674 | Wells Bay | bay | st_croix | weak | WILL'S BAY | weak_similarity |
-| 2761 | Xalkun Cay | island | st_thomas | weak | KALKUM CAY | weak_similarity |
+| 1010 | Halkun Cay | island | st_thomas | weak | KALKUM CAY | weak_similarity |
+| 1110 | Hornjag star | estate | st_croix | weak | MORNING STAR | weak_similarity |
+| 1171 | Jack Bay | bay | st_croix | weak | JACKS BAY | weak_similarity |
+| 1172 | Jack Bay Point | bay | st_croix | weak | JACKS BAY | weak_similarity |
+| 1567 | Mandal | estate | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
+| 1568 | Mandal Bay | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
+| 1569 | Mandal Point | bay | st_thomas | weak | MANDAHL | similarity_or_token_overlap |
+| 1591 | Mars Hill | estate | st_thomas | weak | Maria Hill | weak_similarity |
+| 1705 | Nancy Hill | hill | st_john | weak | Caneel Hill | weak_similarity |
+| 1828 | Owrettbay | estate | st_thomas | weak | Carettbay | weak_similarity |
+| 1919 | Pkaeant Vale | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
+| 1926 | Pleasant Hill | estate | st_croix | weak | PLEASANT VALE | weak_similarity |
+| 1962 | Pollyberg | estate | st_thomas | weak | NULLYBERG | weak_similarity |
+| 1963 | Pollyberg Road | estate | st_thomas | weak | NULLYBERG | weak_similarity |
+| 2223 | Sabbat Hill | hill | st_thomas | weak | Maria Hill | weak_similarity |
+| 2247 | Salba Cay | point | st_thomas | weak | SALT CAY | weak_similarity |
+| 2274 | Sara Hill | bay | st_thomas | weak | Maria Hill | weak_similarity |
+| 2462 | Tague Bay | bay | st_croix | weak | TEAGUE BAY | weak_similarity |
+| 2475 | Tbatah Cay | island | st_thomas | weak | Thatch Cay | weak_similarity |
+| 2505 | Thomaa | estate | st_thomas | weak | THOMAS | weak_similarity |
+| 2561 | Turtledove Key | estate | st_thomas | weak | Turtledove Cay | similarity_or_token_overlap |
+| 2637 | Waldberb Guard | estate | st_croix | weak | WALDBERGGAARD | weak_similarity |
+| 2673 | Wells Bay | bay | st_croix | weak | WILL'S BAY | weak_similarity |
+| 2760 | Xalkun Cay | island | st_thomas | weak | KALKUM CAY | weak_similarity |
 
 ## Clean high-value records with no candidate
 
@@ -263,93 +263,93 @@ Generated: 2026-07-02T11:48:30.762Z
 | 736 | EnAeld Green | estate | st_thomas |
 | 776 | Fanny's Fancy | estate | st_croix |
 | 813 | Fort -1 iiytcuto | historic | st_croix |
-| 871 | French Hill | bay | st_thomas |
-| 880 | Fron8kmandeBayen | estate | st_thomas |
-| 888 | Funta Colorado 6 Longue | point | st_thomas |
-| 890 | Gabriel P o i n t | point | st_thomas |
-| 900 | George I I i l l | estate | st_croix |
-| 923 | Good A o p e | estate | st_thomas |
-| 924 | Good I l o p c | estate | st_thomas |
-| 938 | Grand Priwes8 | estate | st_croix |
-| 952 | Grcen C a g Point | point | st_thomas |
-| 1037 | Hard Ln7)our | estate | st_croix |
-| 1055 | Haunt WfLshlngtbn | estate | st_croix |
-| 1073 | Hglgcnsborg | estate | st_croix |
-| 1077 | Hndracht | estate | st_croix |
-| 1116 | Hpgens Borg | estate | st_croix |
-| 1134 | ICovaZrev | estate | st_croix |
-| 1156 | IohrLx Rest | estate | st_croix |
-| 1170 | IWdrichrrdnl | estate | st_john |
-| 1240 | Kalk8teen Bay | bay | st_thomas |
-| 1266 | King's Wharf | historic | st_thomas |
-| 1276 | KjjQrstaarn | point | st_john |
-| 1301 | Kolzgmzs Land | estate | st_thomas |
-| 1320 | Kru2/thuya | historic | st_thomas |
-| 1326 | KtikeZu | point | st_thomas |
-| 1349 | La RatEa del Sudoeste | estate | st_thomas |
-| 1355 | Lagoon B a n k | historic | st_croix |
-| 1364 | Lamb6 Bay | bay | st_croix |
-| 1393 | LebRnon Gut | gut | st_croix |
-| 1412 | LetaZone | estate | st_croix |
-| 1469 | Little N o r g e | estate | st_thomas |
-| 1491 | LiZZe Kalzel Bay | bay | st_john |
-| 1499 | Long P o h t | point | st_john |
-| 1518 | Love G u t | estate | st_croix |
-| 1529 | Lumrnert8 punt | point | st_thomas |
-| 1573 | Manila1 Bay | bay | st_john |
-| 1709 | Nanny Pynt | point | st_thomas |
-| 1714 | NathanZet Bay | bay | st_john |
-| 1745 | Noorddztfde B a d | estate | st_thomas |
-| 1746 | Nord 8lde V e y | point | st_thomas |
-| 1751 | NortAglrle Bay | bay | st_thomas |
-| 1757 | North Si& | estate | st_croix |
-| 1762 | NOrth8ide Point | point | st_thomas |
-| 1779 | NuZatle Bay | bay | st_john |
-| 1786 | Nzrmber-Fwr H a l | estate | st_croix |
-| 1822 | Ost-en&e-Pmt | point | st_thomas |
-| 1872 | Pct4r Canucbdg | estate | st_croix |
-| 1891 | Pet& Bay | bay | st_john |
-| 1899 | Peters F a d | estate | st_thomas |
-| 1914 | Piedra8 Sueltrcs | point | st_thomas |
-| 1939 | Plzcnte Bay | bay | st_croix |
-| 1958 | Points de Z'E8t | point | st_thomas |
-| 2007 | PrNnte E'apagaoZe | point | st_croix |
-| 2032 | Pstspidson | point | st_thomas |
-| 2052 | Qanee H i l l | estate | st_john |
-| 2097 | RcattrLyo de la l'uunta Rota | point | st_thomas |
-| 2147 | Rividre f3ulSe | point | st_thomas |
-| 2203 | Ruhuun K a y | point | st_john |
-| 2217 | Ryks DUV(dSe8 punt | point | st_thomas |
-| 2218 | RzltherJwd | historic | st_croix |
-| 2220 | S-8 Bay | estate | st_thomas |
-| 2279 | Savana Eill | point | st_thomas |
-| 2335 | Smithfleld | estate | st_croix |
-| 2336 | Smiths Punt | point | st_thomas |
-| 2337 | Sndth'8 Bay Point | bay | st_thomas |
-| 2368 | Southside k a b | point | st_thomas |
-| 2393 | Springgut Notch | estate | st_thomas |
-| 2427 | Stragglers | estate | st_thomas |
-| 2428 | Strawberry | estate | st_croix |
-| 2452 | Suttpcslane Bdy | estate | st_thomas |
-| 2457 | Sydvest Pvnt | point | st_croix |
-| 2475 | TaZZard Bay | estate | st_thomas |
-| 2490 | Thatch Hill | estate | st_thomas |
-| 2500 | The Sou& | estate | st_thomas |
-| 2502 | The W4lliarn | estate | st_croix |
-| 2503 | The WiWam D a h | estate | st_croix |
-| 2505 | Thoma8 Runs Bay | bay | st_thomas |
-| 2548 | Tu& Bay | bay | st_thomas |
-| 2590 | Upper L o n | estate | st_thomas |
-| 2596 | Urtrs I'llnt | point | st_croix |
-| 2632 | Vvndpunt | point | st_thomas |
-| 2636 | Waiter'8 Point | point | st_croix |
-| 2640 | Wan0 Point | bay | st_thomas |
-| 2652 | Water Qmuc2 | estate | st_thomas |
-| 2661 | WaterpEaata Bay | bay | st_thomas |
-| 2689 | Westend and Lfttle Nnrtbddrct Quaptera | estate | st_thomas |
-| 2695 | Wetter8 Point | point | st_croix |
-| 2783 | XRV Point | bay | st_john |
-| 2788 | Ya&bcatterle | historic | st_croix |
-| 2793 | Yar&u'8 H i l l | estate | st_thomas |
-| 2799 | Yellvwcliff Bay | bay | st_croix |
-| 2802 | Yohlexfels P o W | point | st_thomas |
+| 870 | French Hill | bay | st_thomas |
+| 879 | Fron8kmandeBayen | estate | st_thomas |
+| 887 | Funta Colorado 6 Longue | point | st_thomas |
+| 889 | Gabriel P o i n t | point | st_thomas |
+| 899 | George I I i l l | estate | st_croix |
+| 922 | Good A o p e | estate | st_thomas |
+| 923 | Good I l o p c | estate | st_thomas |
+| 937 | Grand Priwes8 | estate | st_croix |
+| 951 | Grcen C a g Point | point | st_thomas |
+| 1036 | Hard Ln7)our | estate | st_croix |
+| 1054 | Haunt WfLshlngtbn | estate | st_croix |
+| 1072 | Hglgcnsborg | estate | st_croix |
+| 1076 | Hndracht | estate | st_croix |
+| 1115 | Hpgens Borg | estate | st_croix |
+| 1133 | ICovaZrev | estate | st_croix |
+| 1155 | IohrLx Rest | estate | st_croix |
+| 1169 | IWdrichrrdnl | estate | st_john |
+| 1239 | Kalk8teen Bay | bay | st_thomas |
+| 1265 | King's Wharf | historic | st_thomas |
+| 1275 | KjjQrstaarn | point | st_john |
+| 1300 | Kolzgmzs Land | estate | st_thomas |
+| 1319 | Kru2/thuya | historic | st_thomas |
+| 1325 | KtikeZu | point | st_thomas |
+| 1348 | La RatEa del Sudoeste | estate | st_thomas |
+| 1354 | Lagoon B a n k | historic | st_croix |
+| 1363 | Lamb6 Bay | bay | st_croix |
+| 1392 | LebRnon Gut | gut | st_croix |
+| 1411 | LetaZone | estate | st_croix |
+| 1468 | Little N o r g e | estate | st_thomas |
+| 1490 | LiZZe Kalzel Bay | bay | st_john |
+| 1498 | Long P o h t | point | st_john |
+| 1517 | Love G u t | estate | st_croix |
+| 1528 | Lumrnert8 punt | point | st_thomas |
+| 1572 | Manila1 Bay | bay | st_john |
+| 1708 | Nanny Pynt | point | st_thomas |
+| 1713 | NathanZet Bay | bay | st_john |
+| 1744 | Noorddztfde B a d | estate | st_thomas |
+| 1745 | Nord 8lde V e y | point | st_thomas |
+| 1750 | NortAglrle Bay | bay | st_thomas |
+| 1756 | North Si& | estate | st_croix |
+| 1761 | NOrth8ide Point | point | st_thomas |
+| 1778 | NuZatle Bay | bay | st_john |
+| 1785 | Nzrmber-Fwr H a l | estate | st_croix |
+| 1821 | Ost-en&e-Pmt | point | st_thomas |
+| 1871 | Pct4r Canucbdg | estate | st_croix |
+| 1890 | Pet& Bay | bay | st_john |
+| 1898 | Peters F a d | estate | st_thomas |
+| 1913 | Piedra8 Sueltrcs | point | st_thomas |
+| 1938 | Plzcnte Bay | bay | st_croix |
+| 1957 | Points de Z'E8t | point | st_thomas |
+| 2006 | PrNnte E'apagaoZe | point | st_croix |
+| 2031 | Pstspidson | point | st_thomas |
+| 2051 | Qanee H i l l | estate | st_john |
+| 2096 | RcattrLyo de la l'uunta Rota | point | st_thomas |
+| 2146 | Rividre f3ulSe | point | st_thomas |
+| 2202 | Ruhuun K a y | point | st_john |
+| 2216 | Ryks DUV(dSe8 punt | point | st_thomas |
+| 2217 | RzltherJwd | historic | st_croix |
+| 2219 | S-8 Bay | estate | st_thomas |
+| 2278 | Savana Eill | point | st_thomas |
+| 2334 | Smithfleld | estate | st_croix |
+| 2335 | Smiths Punt | point | st_thomas |
+| 2336 | Sndth'8 Bay Point | bay | st_thomas |
+| 2367 | Southside k a b | point | st_thomas |
+| 2392 | Springgut Notch | estate | st_thomas |
+| 2426 | Stragglers | estate | st_thomas |
+| 2427 | Strawberry | estate | st_croix |
+| 2451 | Suttpcslane Bdy | estate | st_thomas |
+| 2456 | Sydvest Pvnt | point | st_croix |
+| 2474 | TaZZard Bay | estate | st_thomas |
+| 2489 | Thatch Hill | estate | st_thomas |
+| 2499 | The Sou& | estate | st_thomas |
+| 2501 | The W4lliarn | estate | st_croix |
+| 2502 | The WiWam D a h | estate | st_croix |
+| 2504 | Thoma8 Runs Bay | bay | st_thomas |
+| 2547 | Tu& Bay | bay | st_thomas |
+| 2589 | Upper L o n | estate | st_thomas |
+| 2595 | Urtrs I'llnt | point | st_croix |
+| 2631 | Vvndpunt | point | st_thomas |
+| 2635 | Waiter'8 Point | point | st_croix |
+| 2639 | Wan0 Point | bay | st_thomas |
+| 2651 | Water Qmuc2 | estate | st_thomas |
+| 2660 | WaterpEaata Bay | bay | st_thomas |
+| 2688 | Westend and Lfttle Nnrtbddrct Quaptera | estate | st_thomas |
+| 2694 | Wetter8 Point | point | st_croix |
+| 2782 | XRV Point | bay | st_john |
+| 2787 | Ya&bcatterle | historic | st_croix |
+| 2792 | Yar&u'8 H i l l | estate | st_thomas |
+| 2798 | Yellvwcliff Bay | bay | st_croix |
+| 2801 | Yohlexfels P o W | point | st_thomas |
