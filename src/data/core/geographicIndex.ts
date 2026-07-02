@@ -25538,6 +25538,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_thomas-historic-fort-nt",
     "name": "Fort Nt",
+    "imageUrl": "/images/geographicIndex/placeholders/fort-nt-822.svg",
     "type": "historic",
     "island": "st_thomas",
     "aliases": [],
@@ -74406,6 +74407,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   {
     "id": "st_croix-historic-st",
     "name": "St",
+    "imageUrl": "/images/geographicIndex/placeholders/st-2406.svg",
     "type": "historic",
     "island": "st_croix",
     "aliases": [],

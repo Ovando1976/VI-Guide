@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-02T09:45:23.451Z",
+  "generatedAt": "2026-07-02T09:47:47.045Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
-    "publicImages": 3586
+    "publicImages": 3588
   },
   "sources": [
     {
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 7
+    "low": 5
   },
   "issueGroups": [
     {
@@ -44,12 +44,6 @@
       "source": "estates_geojson",
       "issue": "duplicate_name_type_island",
       "count": 5
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "issue": "missing_image",
-      "count": 2
     }
   ],
   "issues": [
@@ -2097,26 +2091,6 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 822,
-      "id": "st_thomas-historic-fort-nt",
-      "name": "Fort Nt",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2406,
-      "id": "st_croix-historic-st",
-      "name": "St",
-      "issue": "missing_image",
-      "detail": "Record type \"historic\" normally needs an image for the UI.",
-      "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
     }
   ]
 }

@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-07-02T09:47:25.241Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.remaining-image-placeholders.2026-07-02T09-47-25-218Z.ts",
+  "placeholderDir": "public/images/geographicIndex/placeholders",
+  "attempted": 2,
+  "applied": 2,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 822,
+      "name": "Fort Nt",
+      "type": "historic",
+      "island": "st_thomas",
+      "publicPath": "/images/geographicIndex/placeholders/fort-nt-822.svg",
+      "placeholderFile": "public/images/geographicIndex/placeholders/fort-nt-822.svg",
+      "actualRecordName": "Fort Nt"
+    },
+    {
+      "index": 2406,
+      "name": "St",
+      "type": "historic",
+      "island": "st_croix",
+      "publicPath": "/images/geographicIndex/placeholders/st-2406.svg",
+      "placeholderFile": "public/images/geographicIndex/placeholders/st-2406.svg",
+      "actualRecordName": "St"
+    }
+  ],
+  "skippedRecords": []
+}
