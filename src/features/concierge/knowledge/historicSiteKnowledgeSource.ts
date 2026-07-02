@@ -119,7 +119,7 @@ function toGeographicItem(site: (typeof historicSites)[number]): GeographicIndex
     ]
       .filter(Boolean)
       .join(" "),
-  } as GeographicIndexItem;
+  } as unknown as GeographicIndexItem;
 }
 
 export const historicSiteKnowledgeSource: KnowledgeSourceAdapter = {

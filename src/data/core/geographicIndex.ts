@@ -88061,3 +88061,65 @@ export const geographicIndex: GeographicIndexRecord[] = [
     }
   }
 ];
+
+export type GeographicIndexCoordinates = {
+  lat: number;
+  lng: number;
+};
+
+export type GeographicIndexItem = Omit<
+  GeographicIndexRecord,
+  | "id"
+  | "name"
+  | "displayName"
+  | "title"
+  | "type"
+  | "category"
+  | "source"
+  | "sources"
+  | "island"
+  | "islands"
+  | "estateId"
+  | "historicSiteId"
+  | "coordinates"
+  | "lat"
+  | "lng"
+  | "description"
+  | "summary"
+  | "details"
+  | "tags"
+  | "aliases"
+  | "imageUrl"
+  | "image"
+  | "path"
+> & {
+  id: string;
+  name: string;
+  displayName?: string;
+  title?: string;
+  type: string;
+  category?: string;
+  source: string;
+  sources: string[];
+  island?: string;
+  islands?: string[];
+  estateId?: string;
+  historicSiteId?: string;
+  coordinates?: GeographicIndexCoordinates | null;
+  lat?: number;
+  lng?: number;
+  description?: string;
+  summary?: string;
+  details?: string;
+  tags?: string[];
+  aliases?: string[];
+  imageUrl?: string;
+  image?: string;
+  path?: string;
+  [key: string]: unknown;
+};
+
+export const geographicIndexItems: GeographicIndexItem[] =
+  geographicIndex as GeographicIndexItem[];
+
+export default geographicIndex;

@@ -128,7 +128,7 @@ function toGeographicItem(record: (typeof danishArchives)[number]): GeographicIn
     ]
       .filter(Boolean)
       .join(" "),
-  } as GeographicIndexItem;
+  } as unknown as GeographicIndexItem;
 }
 
 export const archiveKnowledgeSource: KnowledgeSourceAdapter = {

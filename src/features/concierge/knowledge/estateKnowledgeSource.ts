@@ -72,7 +72,7 @@ function toGeographicItem(record: (typeof estateKnowledge.records)[number]): Geo
       `${record.estateName} is an official USVI estate record.`,
     tags: record.tags,
     searchText: record.searchText,
-  } as GeographicIndexItem;
+  } as unknown as GeographicIndexItem;
 }
 
 export const estateKnowledgeSource: KnowledgeSourceAdapter = {

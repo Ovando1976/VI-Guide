@@ -116,7 +116,7 @@ function toGeographicItem(node: DictionaryNode): GeographicIndexItem {
       ocrPenalty(node) > 0 ? "needs-cleanup" : "cleaner-entry",
     ].filter(Boolean) as string[],
     searchText: node.searchText,
-  } as GeographicIndexItem;
+  } as unknown as GeographicIndexItem;
 }
 
 export const dictionaryKnowledgeSource: KnowledgeSourceAdapter = {
