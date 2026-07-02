@@ -4586,12 +4586,12 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-blp-fountain",
-    "name": "Blp Fountain",
+    "name": "Fountain",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
     "description": "Blp Fountain; Fountain Estate, or Nully plantation, in Northside Quarter, St. Croix.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.75212, "lng": -64.826644 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-blp-fountain&island=st_croix&context=Blp%20Fountain",
       "map": "/map?q=Blp%20Fountain&island=st_croix"
@@ -14576,12 +14576,12 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-chuu88on",
-    "name": "ChUU88On",
+    "name": "Clairmont",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
     "description": "ChUU88On; Seventeenth century French plantation, on 122-foot hill 600 yards south of Pull Point, Greencay Estate, St. Croix. -L.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.773536, "lng": -64.777924 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-chuu88on&island=st_croix&context=ChUU88On",
       "map": "/map?q=ChUU88On&island=st_croix"
@@ -16494,12 +16494,12 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-constitutlonhuz",
-    "name": "ConstitutlonhUZ",
+    "name": "Constitution Hill",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
     "description": "ConstitutlonhUZ; Estate, Constitution Hill, St. Croix. -Dewitz; Rekhel; Oxholm.",
-    "coordinates": null,
+    "coordinates": { "lat": 17.736691, "lng": -64.732669 },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-constitutlonhuz&island=st_croix&context=ConstitutlonhUZ",
       "map": "/map?q=ConstitutlonhUZ&island=st_croix"

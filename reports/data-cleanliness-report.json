@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T09:00:12.044Z",
+  "generatedAt": "2026-07-02T09:13:20.108Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 122
+    "low": 125
   },
   "issueGroups": [
     {
@@ -56,6 +56,12 @@
       "source": "estates_geojson",
       "issue": "duplicate_name_type_island",
       "count": 5
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "issue": "duplicate_name_type_island",
+      "count": 3
     }
   ],
   "issues": [
@@ -410,16 +416,6 @@
       "index": 138,
       "id": "st_thomas-point-blg-faat-cay",
       "name": "Blg Faat Cay",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 141,
-      "id": "st_croix-estate-blp-fountain",
-      "name": "Blp Fountain",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1435,16 +1431,6 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 464,
-      "id": "st_croix-estate-chuu88on",
-      "name": "ChUU88On",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
       "severity": "low",
       "source": "geographic_index",
       "index": 465,
@@ -1463,6 +1449,15 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 473,
+      "name": "CLAIRMONT",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 464.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     },
     {
       "severity": "medium",
@@ -1585,14 +1580,13 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "medium",
+      "severity": "low",
       "source": "geographic_index",
       "index": 524,
-      "id": "st_croix-estate-constitutlonhuz",
-      "name": "ConstitutlonhUZ",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+      "name": "Constitution Hill",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 523.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     },
     {
       "severity": "medium",
@@ -2195,6 +2189,36 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 746,
+      "id": "st_john-estate-enighed-pond",
+      "name": "Enighed Pond",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 747,
+      "id": "st_john-point-eniqhed-point",
+      "name": "Eniqhed Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 748,
+      "id": "st_thomas-estate-enke-george-pauls-widow",
+      "name": "Enke (George Paul's widow)",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
       "severity": "low",
       "source": "geographic_index",
       "index": 816,
@@ -2223,6 +2247,15 @@
       "issue": "missing_image",
       "detail": "Record type \"historic\" normally needs an image for the UI.",
       "suggestion": "Add image, imageUrl, thumbnail, or heroImage."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 835,
+      "name": "FOUNTAIN",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 141.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     },
     {
       "severity": "low",

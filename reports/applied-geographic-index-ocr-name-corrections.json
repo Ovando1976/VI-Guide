@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-07-02T09:12:58.045Z",
+  "sourceReport": "reports/geographic-index-ocr-name-candidates.json",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.ocr-name-corrections.2026-07-02T09-12-57-943Z.ts",
+  "strongCandidates": 3,
+  "applied": 3,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 141,
+      "originalName": "Blp Fountain",
+      "proposedName": "Fountain",
+      "island": "st_croix",
+      "sourceName": "Estate FOUNTAIN",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "score": 1,
+      "coordinates": {
+        "lat": 17.75212,
+        "lng": -64.826644
+      }
+    },
+    {
+      "index": 464,
+      "originalName": "ChUU88On",
+      "proposedName": "Clairmont",
+      "island": "st_croix",
+      "sourceName": "Estate CLAIRMONT",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "score": 1,
+      "coordinates": {
+        "lat": 17.773536,
+        "lng": -64.777924
+      }
+    },
+    {
+      "index": 524,
+      "originalName": "ConstitutlonhUZ",
+      "proposedName": "Constitution Hill",
+      "island": "st_croix",
+      "sourceName": "Estate CONSTITUTION HILL",
+      "sourceIsland": "st_croix",
+      "sourceFile": "public/geo/usvi-estates.geojson",
+      "score": 1,
+      "coordinates": {
+        "lat": 17.736691,
+        "lng": -64.732669
+      }
+    }
+  ],
+  "skippedRecords": [],
+  "reviewDeferred": [
+    {
+      "index": 522,
+      "originalName": "Conoordia",
+      "proposedName": "Concordia",
+      "island": "st_john",
+      "sourceName": "Estate CONCORDIA A",
+      "sourceIsland": "st_john",
+      "score": 0.9
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T09:00:12.044Z
+Generated: 2026-07-02T09:13:20.108Z
 
 ## Summary
 
@@ -8,7 +8,7 @@ Generated: 2026-07-02T09:00:12.044Z
 - Records scanned: 3331
 - High severity issues: 0
 - Medium severity issues: 200
-- Low severity issues: 122
+- Low severity issues: 125
 
 ## Sources
 
@@ -26,6 +26,7 @@ Generated: 2026-07-02T09:00:12.044Z
 | low | historic_sites | missing_local_image_file | 70 |
 | low | geographic_index | missing_image | 47 |
 | low | estates_geojson | duplicate_name_type_island | 5 |
+| low | geographic_index | duplicate_name_type_island | 3 |
 
 ## Sample Issues
 
@@ -67,7 +68,6 @@ Generated: 2026-07-02T09:00:12.044Z
 | medium | geographic_index | 131 | Blackrock Hill | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 132 | Bladwell Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 138 | Blg Faat Cay | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 141 | Blp Fountain | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 142 | Blue Mountain | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 144 | Bluebeard’s Castle | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | low | geographic_index | 144 | Bluebeard’s Castle | missing_image | Record type "historic" normally needs an image for the UI. | Add image, imageUrl, thumbnail, or heroImage. |
@@ -151,6 +151,7 @@ Generated: 2026-07-02T09:00:12.044Z
 | medium | geographic_index | 388 | Castle Burke Estate | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 389 | Castle Coakley | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 395 | Catarinaberg | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 398 | Catharina's Hope | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 
 ## Recommended Fix Order
 
