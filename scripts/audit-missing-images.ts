@@ -126,7 +126,7 @@ function findExistingImage(item: GeographicIndexItem): string | null {
   return null;
 }
 
-const items = geographicIndex.items as GeographicIndexItem[];
+const items = geographicIndex as GeographicIndexItem[];
 
 const missing: MissingImageRow[] = items
   .filter((item) => {

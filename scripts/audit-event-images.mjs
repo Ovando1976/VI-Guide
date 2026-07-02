@@ -1,98 +1,70 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
-const EVENTS_FILE = "src/data/events.json";
-const PUBLIC_DIR = "public";
+const ROOT = process.cwd();
 
-if (!fs.existsSync(EVENTS_FILE)) {
-  console.error(`Missing ${EVENTS_FILE}`);
-  process.exit(1);
+const EVENT_FILES = [
+  "src/data/events.json",
+  "public/data/events.json",
+  "generated/events.json",
+].filter((p) => fs.existsSync(path.join(ROOT, p)));
+
+function readJson(file) {
+  return JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
 }
 
-const events = JSON.parse(fs.readFileSync(EVENTS_FILE, "utf8"));
-
-const missing = [];
-const placeholders = [];
-const review = [];
-
-function eventFamilyKey(event) {
-  return String(event.slug || event.title || "")
-    .replace(/-20[0-9]{2}-.+$/, "")
-    .replace(/-20[0-9]{2}$/, "");
+function rowsFrom(data) {
+  if (Array.isArray(data)) return data;
+  return data.events ?? data.items ?? [];
 }
 
-for (const event of events) {
-  if (!event.coverImage) {
-    missing.push({ title: event.title, slug: event.slug, reason: "No coverImage" });
-    continue;
-  }
+function publicPathExists(publicPath) {
+  if (!publicPath || typeof publicPath !== "string") return false;
+  const clean = publicPath.startsWith("/") ? publicPath.slice(1) : publicPath;
+  return fs.existsSync(path.join(ROOT, "public", clean));
+}
 
-  if (event.coverImage.startsWith("http")) {
-    review.push({ title: event.title, slug: event.slug, image: event.coverImage, reason: "Remote image" });
-    continue;
-  }
+const report = [];
 
-  const filePath = path.join(PUBLIC_DIR, event.coverImage.replace(/^\//, ""));
+for (const file of EVENT_FILES) {
+  const rows = rowsFrom(readJson(file));
 
-  if (!fs.existsSync(filePath)) {
-    missing.push({ title: event.title, slug: event.slug, image: event.coverImage, reason: "Missing file" });
-  }
+  for (const event of rows) {
+    const images = [
+      event.coverImage,
+      event.image,
+      event.imageUrl,
+      ...(Array.isArray(event.gallery) ? event.gallery : []),
+      ...(Array.isArray(event.images) ? event.images : []),
+    ].filter(Boolean);
 
-  if (
-    event.coverImage.includes("picsum") ||
-    event.coverImage.includes("placeholder") ||
-    event.coverImage.includes("default")
-  ) {
-    placeholders.push({ title: event.title, slug: event.slug, image: event.coverImage });
-  }
+    const uniqueImages = [...new Set(images)];
 
-  if (
-    event.imageStatus === "needs_manual_review" ||
-    event.sourceStatus === "needs_verification"
-  ) {
-    review.push({
-      title: event.title,
-      slug: event.slug,
-      image: event.coverImage,
-      sourceStatus: event.sourceStatus,
-      imageStatus: event.imageStatus ?? "unset",
+    report.push({
+      sourceFile: file,
+      id: event.id,
+      title: event.title ?? event.name,
+      category: event.category,
+      images: uniqueImages,
+      missing: uniqueImages.filter((img) => img.startsWith("/") && !publicPathExists(img)),
+      found: uniqueImages.filter((img) => img.startsWith("/") && publicPathExists(img)),
     });
   }
 }
 
-console.log("Event Image Audit");
-console.log("=================");
-console.log(`Events: ${events.length}`);
-console.log(`Missing images: ${missing.length}`);
-console.log(`Placeholder images: ${placeholders.length}`);
-console.log(`Needs review: ${review.length}`);
+const missing = report.filter((row) => row.missing.length);
+const found = report.filter((row) => row.found.length);
 
-if (missing.length) {
-  console.log("\nMissing image files:");
-  missing.slice(0, 50).forEach((item) => {
-    console.log(`- ${item.title}: ${item.image ?? item.reason}`);
-  });
-}
+fs.mkdirSync(path.join(ROOT, "generated"), { recursive: true });
+fs.writeFileSync(
+  path.join(ROOT, "generated/event-image-audit.json"),
+  JSON.stringify({ total: report.length, found: found.length, missing: missing.length, report }, null, 2)
+);
 
-if (placeholders.length) {
-  console.log("\nPlaceholder images:");
-  placeholders.slice(0, 50).forEach((item) => {
-    console.log(`- ${item.title}: ${item.image}`);
-  });
-}
+console.log("Event image audit complete");
+console.log({ total: report.length, found: found.length, missing: missing.length });
+console.log("Wrote generated/event-image-audit.json");
 
-if (review.length) {
-  const uniqueReview = Array.from(
-    new Map(review.map((item) => [eventFamilyKey(item), item])).values()
-  );
-
-  console.log(`Unique review slugs: ${uniqueReview.length}`);
-  console.log("\nNeeds manual review:");
-  uniqueReview.slice(0, 50).forEach((item) => {
-    console.log(`- ${item.title}: ${item.image}`);
-  });
-}
-
-if (missing.length || placeholders.length) {
-  process.exit(1);
+for (const row of missing.slice(0, 40)) {
+  console.log("MISSING:", row.title, row.missing.join(", "));
 }

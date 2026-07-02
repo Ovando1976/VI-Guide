@@ -2,7 +2,7 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
-import { geographicDictionaryEntries } from "../src/data/geographicDictionaryEntries";
+import { dictionaryEntries as geographicDictionaryEntries } from "../src/data/viDictionary";
 
 const OUT_JSON = path.join(process.cwd(), "generated", "geographic-dictionary.coordinates.json");
 const OUT_TS = path.join(process.cwd(), "src/data/geographicDictionaryCoordinates.ts");

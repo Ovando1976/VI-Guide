@@ -79,7 +79,7 @@ status: "seed",
 sources: [],
     searchText: buildSearchText(
       estate.name,
-      estate.aliases,
+      Array.isArray(estate.aliases) ? estate.aliases : [],
       estate.quarter,
       estate.quarterGroup
       

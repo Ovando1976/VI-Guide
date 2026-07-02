@@ -26,8 +26,11 @@ function islandToMobility(value: unknown): "stt" | "stj" | "stx" | "wat" {
   return "wat";
 }
 
-function resolveZone(estateName: string, island: "stt" | "stj" | "stx" | "wat") {
-  const name = normalize(estateName);
+function resolveZone(
+  estateName: string | undefined,
+  island: "stt" | "stj" | "stx" | "wat"
+) {
+  const name = normalize(estateName ?? "");
 
   const direct = taxiZones.find((zone) => {
     if (zone.island !== island) return false;
@@ -64,7 +67,7 @@ const links = estates.map((estate) => {
   const resolved = resolveZone(estate.name, island);
 
   return {
-    id: `${island}:${slug(estate.name)}:${resolved.taxiZoneId}`,
+    id: `${island}:${slug(estate.name ?? "")}:${resolved.taxiZoneId}`,
     island,
     estateGeoid: estate.geoid,
     estateName: estate.name,

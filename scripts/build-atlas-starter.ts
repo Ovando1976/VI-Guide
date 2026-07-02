@@ -1,3 +1,4 @@
+// scripts/build-atlas-starter.ts
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 
@@ -26,242 +27,275 @@ type FeatureType =
   | "building"
   | "historic_site";
 
-type GazetteerFeature = {
+type SourceMap = {
   id: string;
+  title: string;
+  island: IslandCode;
+  imagePath: string;
+  status: "manual_transcription_started" | "draft" | "verified";
+  notes?: string;
+};
+
+type GazetteerFeatureInput = {
   canonicalName: string;
   featureType: FeatureType;
   island: IslandCode;
+  aliases?: string[];
+  coordinates?: { lat: number; lng: number } | null;
+  sourceMaps?: string[];
+  notes?: string;
+  relatedNames?: string[];
+};
+
+type GazetteerFeature = Required<
+  Omit<GazetteerFeatureInput, "aliases" | "coordinates" | "sourceMaps" | "notes" | "relatedNames">
+> & {
+  id: string;
+  canonicalName: string;
+  normalizedName: string;
+  displayName: string;
+  featureType: FeatureType;
+  category: FeatureType;
+  island: IslandCode;
+  islandLabel: string;
   aliases: string[];
   coordinates: { lat: number; lng: number } | null;
   sourceMaps: string[];
+  relatedNames: string[];
+  searchText: string;
   notes: string;
 };
 
-const sourceMap = {
+const sourceMap: SourceMap = {
   id: "st_thomas_historic_map_early",
   title: "Historic Map of St. Thomas",
   island: "st_thomas",
   imagePath: "/images/maps/st-thomas-historic-map.jpeg",
   status: "manual_transcription_started",
+  notes: "Starter transcription from uploaded historic St. Thomas map.",
 };
 
-const features: GazetteerFeature[] = [
-  {
-    id: "st_thomas_estate_dorothea",
-    canonicalName: "Dorothea",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Dorothea"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible on uploaded historic St. Thomas map.",
-  },
-  {
-    id: "st_thomas_estate_neltjeberg",
-    canonicalName: "Neltjeberg",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Neltjebjerg", "Estate Neltjeberg"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible on northwestern St. Thomas map area.",
-  },
-  {
-    id: "st_thomas_estate_hull",
-    canonicalName: "Hull",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Hull"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible near north central St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_st_peter",
-    canonicalName: "St. Peter",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Saint Peter", "Estate St. Peter"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible near central highlands.",
-  },
-  {
-    id: "st_thomas_estate_lovenlund",
-    canonicalName: "Lovenlund",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Løvenlund", "Estate Lovenlund"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible east of Charlotte Amalie area.",
-  },
-  {
-    id: "st_thomas_estate_rosendal",
-    canonicalName: "Rosendal",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Rosendahl", "Estate Rosendal"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible east of Charlotte Amalie.",
-  },
-  {
-    id: "st_thomas_estate_annas_retreat",
-    canonicalName: "Anna's Retreat",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Annas Retreat", "Estate Anna's Retreat"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible in eastern St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_tutu",
-    canonicalName: "Tutu",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Tutu"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible in eastern St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_nazareth",
-    canonicalName: "Nazareth",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Nazareth"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible near eastern St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_frydendal",
-    canonicalName: "Frydendal",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Fryden Dal", "Estate Frydendal"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible on eastern St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_bovoni",
-    canonicalName: "Bovoni",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Bovoni"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible in southeastern St. Thomas.",
-  },
-  {
-    id: "st_thomas_estate_bolongo",
-    canonicalName: "Bolongo",
-    featureType: "estate",
-    island: "st_thomas",
-    aliases: ["Estate Bolongo"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible on southern St. Thomas.",
-  },
-  {
-    id: "st_thomas_town_charlotte_amalie",
-    canonicalName: "Charlotte Amalie",
-    featureType: "town",
-    island: "st_thomas",
-    aliases: ["Charlotte Amalia", "Amalienborg"],
-    coordinates: { lat: 18.3419, lng: -64.9307 },
-    sourceMaps: [sourceMap.id],
-    notes: "Historic town center shown prominently on map.",
-  },
-  {
-    id: "st_thomas_bay_magens_bay",
-    canonicalName: "Magens Bay",
-    featureType: "bay",
-    island: "st_thomas",
-    aliases: ["Magen's Bay"],
-    coordinates: { lat: 18.3637, lng: -64.9304 },
-    sourceMaps: [sourceMap.id],
-    notes: "North shore bay visible on map.",
-  },
-  {
-    id: "st_thomas_cay_hans_lollik",
-    canonicalName: "Hans Lollik",
-    featureType: "cay",
-    island: "st_thomas",
-    aliases: ["Hans Lollick", "Hans Lollik Island"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Offshore island north of St. Thomas.",
-  },
-  {
-    id: "st_thomas_cay_inner_brass",
-    canonicalName: "Inner Brass",
-    featureType: "cay",
-    island: "st_thomas",
-    aliases: ["Inner Brass Island"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Offshore feature north of St. Thomas.",
-  },
-  {
-    id: "st_thomas_cay_outer_brass",
-    canonicalName: "Outer Brass",
-    featureType: "cay",
-    island: "st_thomas",
-    aliases: ["Outer Brass Island"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Offshore feature north of St. Thomas.",
-  },
-  {
-    id: "st_thomas_cay_thatch_cay",
-    canonicalName: "Thatch Cay",
-    featureType: "cay",
-    island: "st_thomas",
-    aliases: ["Thatch Island"],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible northeast of St. Thomas.",
-  },
-  {
-    id: "st_thomas_cay_grass_cay",
-    canonicalName: "Grass Cay",
-    featureType: "cay",
-    island: "st_thomas",
-    aliases: [],
-    coordinates: null,
-    sourceMaps: [sourceMap.id],
-    notes: "Visible near eastern offshore area.",
-  },
+const rawFeatures: GazetteerFeatureInput[] = [
+  estate("Dorothea"),
+  estate("Neltjeberg", ["Neltjebjerg", "Estate Neltjeberg"]),
+  estate("Hull"),
+  estate("St. Peter", ["Saint Peter", "Estate St. Peter"]),
+  estate("Lovenlund", ["Løvenlund", "Estate Lovenlund"]),
+  estate("Rosendal", ["Rosendahl, Estate Rosendal"]),
+  estate("Anna's Retreat", ["Annas Retreat", "Estate Anna's Retreat"]),
+  estate("Tutu"),
+  estate("Nazareth", ["Estate Nazareth"], ["Nazareth Bay", "Beverhout Point", "Bourgen Estate"]),
+  estate("Frydendal", ["Fryden Dal", "Estate Frydendal"]),
+  estate("Bovoni", ["Estate Bovoni", "Bovoni Estate"], ["Bovoni Bay", "Bovoni Cay", "Bovoni Estate", "Batzley Point"]),
+  estate("Bolongo"),
+
+  place("Charlotte Amalie", "town", ["Charlotte Amalia", "Amalienborg"], {
+    lat: 18.3419,
+    lng: -64.9307,
+  }),
+
+  place("Magens Bay", "bay", ["Magen's Bay"], {
+    lat: 18.3637,
+    lng: -64.9304,
+  }),
+
+  cay("Hans Lollik", ["Hans Lollick", "Hans Lollik Island"]),
+  cay("Inner Brass", ["Inner Brass Island"]),
+  cay("Outer Brass", ["Outer Brass Island"]),
+  cay("Thatch Cay", ["Thatch Island"]),
+  cay("Grass Cay"),
 ];
 
-function writeJson(path: string, data: unknown) {
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, JSON.stringify(data, null, 2));
-}
+const features = rawFeatures.map(normalizeFeature);
 
-function writeTs(path: string, name: string, data: unknown) {
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(
-    path,
-    `// Auto-generated by scripts/build-atlas-starter.ts\nexport const ${name} = ${JSON.stringify(
-      data,
-      null,
-      2
-    )} as const;\n`
-  );
-}
+const metadata = {
+  generatedAt: new Date().toISOString(),
+  title: "VI Guide Starter Gazetteer",
+  sourceMapId: sourceMap.id,
+  totalFeatures: features.length,
+  byIsland: countBy(features, "island"),
+  byFeatureType: countBy(features, "featureType"),
+};
 
 writeJson("data/maps/st_thomas_early_map/map-metadata.json", sourceMap);
 writeJson("data/master/gazetteer.json", features);
-writeTs("src/data/atlas/gazetteer.ts", "gazetteer", features);
-writeTs("src/data/atlas/sourceMaps.ts", "sourceMaps", [sourceMap]);
+writeJson("data/master/gazetteer-metadata.json", metadata);
+
+writeTs("src/data/atlas/gazetteer.ts", "gazetteer", features, "GazetteerFeature");
+writeTs("src/data/atlas/sourceMaps.ts", "sourceMaps", [sourceMap], "SourceMap");
+writeTs("src/data/atlas/gazetteerMetadata.ts", "gazetteerMetadata", metadata);
 
 console.log("Atlas starter built.");
-console.log(`Features: ${features.length}`);
+console.log(metadata);
 console.log("Wrote data/master/gazetteer.json");
 console.log("Wrote src/data/atlas/gazetteer.ts");
 console.log("Wrote src/data/atlas/sourceMaps.ts");
+
+function estate(
+  name: string,
+  aliases: string[] = [`Estate ${name}`],
+  relatedNames: string[] = [],
+): GazetteerFeatureInput {
+  return {
+    canonicalName: name,
+    featureType: "estate",
+    island: "st_thomas",
+    aliases,
+    coordinates: null,
+    sourceMaps: [sourceMap.id],
+    relatedNames,
+    notes: `Visible on uploaded historic St. Thomas map.`,
+  };
+}
+
+function cay(
+  name: string,
+  aliases: string[] = [],
+  coordinates: { lat: number; lng: number } | null = null,
+): GazetteerFeatureInput {
+  return place(name, "cay", aliases, coordinates);
+}
+
+function place(
+  canonicalName: string,
+  featureType: FeatureType,
+  aliases: string[] = [],
+  coordinates: { lat: number; lng: number } | null = null,
+): GazetteerFeatureInput {
+  return {
+    canonicalName,
+    featureType,
+    island: "st_thomas",
+    aliases,
+    coordinates,
+    sourceMaps: [sourceMap.id],
+    relatedNames: [],
+    notes: `Visible on uploaded historic St. Thomas map.`,
+  };
+}
+
+function normalizeFeature(input: GazetteerFeatureInput): GazetteerFeature {
+  const normalizedName = normalize(input.canonicalName);
+  const id = `${input.island}_${input.featureType}_${slug(input.canonicalName)}`;
+
+  const aliases = uniq([
+    ...(input.aliases || []),
+    input.featureType === "estate" ? `Estate ${input.canonicalName}` : "",
+  ]);
+
+  const searchText = uniq([
+    input.canonicalName,
+    ...aliases,
+    input.featureType,
+    input.island,
+    ...(input.relatedNames || []),
+    input.notes || "",
+  ])
+    .join(" ")
+    .toLowerCase();
+
+  return {
+    id,
+    canonicalName: input.canonicalName,
+    normalizedName,
+    displayName:
+      input.featureType === "estate"
+        ? `Estate ${input.canonicalName}`
+        : input.canonicalName,
+    featureType: input.featureType,
+    category: input.featureType,
+    island: input.island,
+    islandLabel: islandLabel(input.island),
+    aliases,
+    coordinates: input.coordinates ?? null,
+    sourceMaps: input.sourceMaps?.length ? input.sourceMaps : [sourceMap.id],
+    relatedNames: input.relatedNames || [],
+    searchText,
+    notes: input.notes || "",
+  };
+}
+
+function normalize(value: string) {
+  return value
+    .replace(/^Estate\s+/i, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/&/g, "and");
+}
+
+function slug(value: string) {
+  return normalize(value).replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+}
+
+function islandLabel(island: IslandCode) {
+  if (island === "st_thomas") return "St. Thomas";
+  if (island === "st_john") return "St. John";
+  if (island === "st_croix") return "St. Croix";
+  return "Water Island";
+}
+
+function uniq(values: string[]) {
+  return [...new Set(values.map((v) => v.trim()).filter(Boolean))];
+}
+
+function countBy<T extends Record<string, unknown>>(items: T[], key: keyof T) {
+  return items.reduce<Record<string, number>>((acc, item) => {
+    const value = String(item[key] ?? "unknown");
+    acc[value] = (acc[value] || 0) + 1;
+    return acc;
+  }, {});
+}
+
+function writeJson(path: string, data: unknown) {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+function writeTs(path: string, name: string, data: unknown, typeName?: string) {
+  mkdirSync(dirname(path), { recursive: true });
+
+  const typeExport =
+    typeName === "GazetteerFeature"
+      ? `
+export type IslandCode = "st_thomas" | "st_john" | "st_croix" | "water_island";
+
+export type GazetteerFeature = {
+  id: string;
+  canonicalName: string;
+  normalizedName: string;
+  displayName: string;
+  featureType: string;
+  category: string;
+  island: IslandCode;
+  islandLabel: string;
+  aliases: readonly string[];
+  coordinates: { lat: number; lng: number } | null;
+  sourceMaps: readonly string[];
+  relatedNames: readonly string[];
+  searchText: string;
+  notes: string;
+};
+`
+      : typeName === "SourceMap"
+        ? `
+export type SourceMap = {
+  id: string;
+  title: string;
+  island: "st_thomas" | "st_john" | "st_croix" | "water_island";
+  imagePath: string;
+  status: "manual_transcription_started" | "draft" | "verified";
+  notes?: string;
+};
+`
+        : "";
+
+  writeFileSync(
+    path,
+    `// Auto-generated by scripts/build-atlas-starter.ts
+${typeExport}
+export const ${name} = ${JSON.stringify(data, null, 2)} as const;
+`,
+  );
+}

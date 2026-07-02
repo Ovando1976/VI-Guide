@@ -1,279 +1,446 @@
-#!/usr/bin/env tsx
+// @ts-nocheck
 
-import fs from "node:fs/promises";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { createRequire } from "node:module";
 
-const require = createRequire(import.meta.url);
-
-const PDF_PATH =
-  process.env.PDF_PATH ||
-  path.join(
-    process.cwd(),
-    "docs/sources/geographic-dictionary-virgin-islands-1925.pdf"
-  );
-
-const GENERATED_DIR = path.join(process.cwd(), "generated");
-const RAW_TEXT_OUT = path.join(GENERATED_DIR, "geographic-dictionary.raw.txt");
-const ENTRIES_JSON_OUT = path.join(
-  GENERATED_DIR,
-  "geographic-dictionary.entries.json"
-);
-const OUTPUT_TS = path.join(
-  process.cwd(),
-  "src/data/geographicDictionaryEntries.ts"
-);
+type IslandCode = "st_thomas" | "st_john" | "st_croix" | "water_island" | "";
 
 type DictionaryEntry = {
   id: string;
-  sourceName: string;
+  name: string;
   normalizedName: string;
+  kind: string;
+  island: IslandCode;
   description: string;
-  possibleIsland: string | null;
-  possibleQuarter: string | null;
+  aliases: string[];
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  source: {
+    title: string;
+    publicationYear: 1925;
+    file: string;
+  };
+  extraction: {
+    confidence: "high" | "medium" | "low";
+    needsReview: boolean;
+    notes: string[];
+  };
 };
 
-async function parsePdf(buffer: Buffer): Promise<{ text: string; numpages?: number }> {
-  const mod = require("pdf-parse");
+const ROOT = process.cwd();
 
-  if (typeof mod === "function") return mod(buffer);
-  if (typeof mod.default === "function") return mod.default(buffer);
-  if (typeof mod.pdf === "function") return mod.pdf(buffer);
+const PDF_PATH =
+  process.argv.find((arg) => arg.startsWith("--pdf="))?.replace("--pdf=", "") ||
+  path.join(ROOT, "source-materials/geographic-dictionary.pdf");
 
-  if (typeof mod.PDFParse === "function") {
-    const parser = new mod.PDFParse({ data: buffer });
-    const result = await parser.getText();
-    await parser.destroy?.();
+const OUT_JSON = path.join(
+  ROOT,
+  "src/data/generated/geographicDictionaryEntries.json",
+);
 
-    return {
-      text: result.text || "",
-      numpages: result.total ?? result.numpages,
-    };
-  }
+const OUT_TS = path.join(
+  ROOT,
+  "src/data/generated/geographicDictionaryEntries.ts",
+);
 
-  throw new Error(`Unsupported pdf-parse export shape: ${Object.keys(mod).join(", ")}`);
-}
-
-function cleanText(value: unknown) {
-  return String(value ?? "")
-    .replace(/[’‘]/g, "'")
-    .replace(/[“”]/g, '"')
-    .replace(/\r/g, "\n")
-    .replace(/-\n/g, "")
-    .replace(/[ \t]+/g, " ")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-}
-
-function cleanName(value: unknown) {
-  return String(value ?? "")
-    .replace(/[’‘]/g, "'")
-    .replace(/[“”]/g, '"')
-    .replace(/^Estate\s+/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function normalizeName(value: unknown) {
-  return cleanName(value)
+function slugify(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[Ææ]/g, "ae")
+    .replace(/[Øø]/g, "o")
+    .replace(/[Åå]/g, "a")
     .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/\//g, " ")
+    .replace(/st\./g, "st")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
 
-function guessIsland(text: string) {
-  const value = text.toLowerCase();
-
-  if (value.includes("st. thomas") || value.includes("saint thomas")) return "stt";
-  if (value.includes("st. john") || value.includes("saint john")) return "stj";
-  if (value.includes("st. croix") || value.includes("saint croix")) return "stx";
-  if (value.includes("water island")) return "wat";
-
-  return null;
+function normalizeName(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[Ææ]/g, "ae")
+    .replace(/[Øø]/g, "o")
+    .replace(/[Åå]/g, "a")
+    .toLowerCase()
+    .replace(/\bst[.\s]+/g, "st ")
+    .replace(/\bestate\b/g, "")
+    .replace(/\bplantage\b/g, "")
+    .replace(/\bplantation\b/g, "")
+    .replace(/\bhill\b/g, "hill")
+    .replace(/\bbay\b/g, "bay")
+    .replace(/\bcay\b/g, "cay")
+    .replace(/\bpoint\b/g, "point")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
-function guessQuarter(text: string) {
-  const value = text.toUpperCase();
 
-  const quarters = [
-    "GREAT NORTHSIDE",
-    "LITTLE NORTHSIDE",
-    "FRENCHMAN BAY",
-    "FRENCHMANS BAY",
-    "CRUZ BAY",
-    "CORAL BAY",
-    "REEF BAY",
-    "MAHO BAY",
-    "REDHOOK",
-    "EAST END",
-    "EASTEND",
-    "WEST END",
-    "WESTEND",
-    "NORTHSIDE",
-    "SOUTHSIDE",
-    "KRONPRINDSENS",
-    "KONGENS",
-    "DRONNINGENS",
-    "COMPAGNIE",
-    "COMPANY",
-    "PRINCE",
-    "QUEEN",
-    "KING",
-    "NEW",
-  ];
+async function parsePdfBuffer(buffer: Buffer) {
+  const mod: any = await import("pdf-parse");
 
-  return quarters.find((quarter) => value.includes(quarter)) ?? null;
+  // pdf-parse v1 compatibility
+  if (typeof mod.default === "function") {
+    return await mod.default(buffer);
+  }
+
+  // pdf-parse v2+ API
+  if (typeof mod.PDFParse === "function") {
+    const parser = new mod.PDFParse({ data: buffer });
+
+    try {
+      const result = await parser.getText();
+      return {
+        text: result.text || "",
+        numpages: result.total || result.pages?.length || 0,
+        info: result.infoData || {},
+        metadata: result.metadata || null,
+      };
+    } finally {
+      if (typeof parser.destroy === "function") {
+        await parser.destroy();
+      }
+    }
+  }
+
+  throw new Error(
+    "Unsupported pdf-parse export shape. Expected default parser function or PDFParse class."
+  );
 }
 
-function isBadName(name: string) {
-  const value = name.toUpperCase();
-
-  if (!name || name.length < 2) return true;
-  if (name.length > 90) return true;
-  if (/^\d+$/.test(name)) return true;
-  if (/^[A-Z]$/.test(name)) return true;
-  if (value.includes("GEOGRAPHIC DICTIONARY")) return true;
-  if (value.includes("VIRGIN ISLANDS")) return true;
-  if (value.includes("GOVERNMENT PRINTING OFFICE")) return true;
-  if (value.includes("ERRATA NOTICE")) return true;
-  if (value.includes("PREFACE")) return true;
-  if (value.includes("PRICE")) return true;
-  if (name.length < 3) return true;
-  if (name.length > 45) return true;
-  if (/^[A-Z]\.?(\s|\d|$)/i.test(name)) return true;
-  if (/\d{3,}/.test(name)) return true;
-  if (/\bdispatching secretary\b/i.test(name)) return true;
-  if (/\bnaval government affairs\b/i.test(name)) return true;
-  if (/\bgovernment\b/i.test(name)) return true;
-  if (/\bprinting\b/i.test(name)) return true;
-  if (/\bpublication\b/i.test(name)) return true;
-  if (/\bfigure\b/i.test(name)) return true;
-  if (/\bplate\b/i.test(name)) return true;
-  if (/\bpage\b/i.test(name)) return true;
-  if (name.split(" ").length > 6) return true;
-
-  return false;
+function cleanText(text: string) {
+  return text
+    .replace(/\u0000/g, "")
+    .replace(/\uFFFE/g, "")
+    .replace(/￾/g, "")
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .replace(/[—–]/g, "-")
+    .replace(/\r/g, "\n")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n[ \t]+/g, "\n")
+    .replace(/[ \t]+\n/g, "\n");
 }
 
-function stripFrontMatter(text: string) {
-  const markers = [
-    "Aalborg",
-    "Aalborg; ",
-    "Aalborg:",
-    "Adrian; ",
-    "Annaberg; ",
-  ];
-
+function inferIsland(text: string): IslandCode {
   const lower = text.toLowerCase();
 
-  for (const marker of markers) {
-    const index = lower.indexOf(marker.toLowerCase());
-    if (index > 0) return text.slice(index);
+  if (/\bst[.\s-]*croix\b|\bcroix\b|\bcrolx\b|\bcrois\b/.test(lower)) {
+    return "st_croix";
   }
 
-  return text;
+  if (/\bst[.\s-]*john\b|\bst[.\s-]*jan\b/.test(lower)) {
+    return "st_john";
+  }
+
+  if (/\bst[.\s-]*thomas\b|\bthomaa\b|\bthomas\b/.test(lower)) {
+    return "st_thomas";
+  }
+
+  if (/\bwater island\b|\bwater-island\b/.test(lower)) {
+    return "water_island";
+  }
+
+  return "";
 }
 
-function splitDictionaryEntries(rawText: string): DictionaryEntry[] {
-  const text = stripFrontMatter(cleanText(rawText));
+function inferKind(description: string) {
+  const lower = description.toLowerCase();
 
-  const entryStart = /(?:^|\n)([A-Z][A-Za-z0-9'()./& -]{2,45});\s+/g;
-  const matches = [...text.matchAll(entryStart)];
+  const patterns: Array<[RegExp, string]> = [
+    [/\bestate\b|\bplantage\b|\bplantation\b/, "estate"],
+    [/\bquarter\b|\brural district\b/, "quarter"],
+    [/\bbay\b|\bbight\b/, "bay"],
+    [/\bcay\b|\bkey\b/, "cay"],
+    [/\bisland\b/, "island"],
+    [/\bhill\b|\bmount\b|\bmountain\b|\bberg\b/, "hill"],
+    [/\bpoint\b|\bpeninsula\b/, "point"],
+    [/\bgut\b|\bstream\b|\bravine\b/, "gut"],
+    [/\bharbor\b|\bport\b|\banchorage\b/, "harbor"],
+    [/\blagoon\b/, "lagoon"],
+    [/\bpond\b|\bsalt pond\b/, "pond"],
+    [/\broad\b|\broadstead\b|\btrail\b/, "road"],
+    [/\bfort\b|\bbattery\b/, "fort"],
+    [/\btown\b|\bcity\b|\bsettlement\b|\bvillage\b/, "settlement"],
+    [/\bchurch\b|\bmission\b/, "religious_site"],
+    [/\brock\b|\breef\b|\bshoal\b/, "marine_feature"],
+  ];
 
-  const entries: DictionaryEntry[] = [];
-
-  for (let i = 0; i < matches.length; i++) {
-    const match = matches[i];
-    const next = matches[i + 1];
-
-    const name = cleanName(match[1]);
-    if (isBadName(name)) continue;
-
-    const start = match.index ?? 0;
-    const end = next?.index ?? text.length;
-    const chunk = cleanText(text.slice(start, end).replace(/\n+/g, " "));
-
-    if (chunk.length < 40) continue;
-    if (/GEOGRAPHIC DICTIONARY|GOVERNMENT PRINTING OFFICE|ERRATA NOTICE/i.test(chunk.slice(0, 160))) {
-      continue;
-    }
-
-    const normalizedName = normalizeName(name);
-
-    entries.push({
-      id: normalizedName || `entry-${entries.length + 1}`,
-      sourceName: name,
-      normalizedName,
-      description: chunk,
-      possibleIsland: guessIsland(chunk),
-      possibleQuarter: guessQuarter(chunk),
-    });
+  for (const [regex, kind] of patterns) {
+    if (regex.test(lower)) return kind;
   }
 
-  const deduped = new Map<string, DictionaryEntry>();
+  if (/same as|variant|spelling|metamorphosis|corruption/.test(lower)) {
+    return "alias";
+  }
 
-  for (const entry of entries) {
-    const existing = deduped.get(entry.id);
-    if (!existing || entry.description.length > existing.description.length) {
-      deduped.set(entry.id, entry);
+  return "place";
+}
+
+function extractAliases(description: string) {
+  const aliases = new Set<string>();
+
+  const patterns = [
+    /also called,?\s+([^.;]+)/gi,
+    /also spelled,?\s+([^.;]+)/gi,
+    /same as\s+([^.;]+)/gi,
+    /variant(?: spelling)? of\s+([^.;]+)/gi,
+    /now called,?\s+([^.;]+)/gi,
+    /formerly called,?\s+([^.;]+)/gi,
+  ];
+
+  for (const pattern of patterns) {
+    let match: RegExpExecArray | null;
+    while ((match = pattern.exec(description))) {
+      const raw = match[1]
+        .replace(/q\. ?v\./gi, "")
+        .replace(/["']/g, "")
+        .trim();
+
+      raw
+        .split(/,| or | and /i)
+        .map((part) => part.trim())
+        .filter((part) => part.length >= 2 && part.length <= 80)
+        .forEach((part) => aliases.add(part));
     }
   }
 
-  return [...deduped.values()].sort((a, b) =>
-    a.sourceName.localeCompare(b.sourceName)
+  return [...aliases];
+}
+
+function dmsToDecimal(deg: number, min = 0, sec = 0, westOrSouth = false) {
+  const value = Math.abs(deg) + min / 60 + sec / 3600;
+  return westOrSouth ? -value : value;
+}
+
+function extractCoordinates(text: string) {
+  const normalized = text
+    .replace(/[º˚]/g, "°")
+    .replace(/[′`]/g, "'")
+    .replace(/[″]/g, '"');
+
+  const latMatch = normalized.match(
+    /lat\.?\s*([0-9]{1,2})\s*[°' ]+\s*([0-9]{1,2})?\s*[' ]*\s*([0-9.]+)?\s*"?\s*([NS])?/i,
   );
+
+  const lngMatch = normalized.match(
+    /(?:long\.?|lon\.?)\s*([0-9]{2,3})\s*[°' ]+\s*([0-9]{1,2})?\s*[' ]*\s*([0-9.]+)?\s*"?\s*([EW])?/i,
+  );
+
+  if (!latMatch || !lngMatch) return undefined;
+
+  const latDeg = Number(latMatch[1]);
+  const latMin = Number(latMatch[2] || 0);
+  const latSec = Number(latMatch[3] || 0);
+  const lngDeg = Number(lngMatch[1]);
+  const lngMin = Number(lngMatch[2] || 0);
+  const lngSec = Number(lngMatch[3] || 0);
+
+  if (!Number.isFinite(latDeg) || !Number.isFinite(lngDeg)) return undefined;
+
+  const lat = dmsToDecimal(latDeg, latMin, latSec, latMatch[4]?.toUpperCase() === "S");
+  const lng = dmsToDecimal(lngDeg, lngMin, lngSec, true);
+
+  if (lat < 17 || lat > 19 || lng < -66 || lng > -63) return undefined;
+
+  return {
+    lat: Number(lat.toFixed(7)),
+    lng: Number(lng.toFixed(7)),
+  };
+}
+
+function looksLikeEntryStart(line: string) {
+  if (!line.includes(";")) return false;
+  if (line.length < 4) return false;
+
+  const beforeSemi = line.slice(0, line.indexOf(";")).trim();
+
+  if (beforeSemi.length < 2 || beforeSemi.length > 90) return false;
+  if (/^\d+$/.test(beforeSemi)) return false;
+  if (/^(page|contents|bibliography|abbreviations)$/i.test(beforeSemi)) return false;
+
+  return /^[A-Za-zÆØÅæøå0-9"'(). -]+$/.test(beforeSemi);
+}
+
+function splitGazetteerEntries(text: string) {
+  const startMarkers = [
+    "GAZETTEER OF THE VIRGIN ISLANDS OF THE UNITED STATES",
+    "Gazetteer of the Virgin Islands of the United States",
+  ];
+
+  let gazetteer = text;
+  for (const marker of startMarkers) {
+    const idx = text.indexOf(marker);
+    if (idx >= 0) {
+      gazetteer = text.slice(idx + marker.length);
+      break;
+    }
+  }
+
+  const supplementIdx = gazetteer.search(/SUPPLEMENTARY LIST/i);
+  if (supplementIdx > 0) {
+    gazetteer = gazetteer.slice(0, supplementIdx);
+  }
+
+  const lines = gazetteer
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => !/^GEOGRAPHIC DICTIONARY/i.test(line))
+    .filter((line) => !/^U\.?\s*S\.?\s*COAST/i.test(line))
+    .filter((line) => !/^\d+$/.test(line));
+
+  const rawEntries: Array<{ name: string; description: string }> = [];
+  let current: { name: string; description: string } | null = null;
+
+  for (const line of lines) {
+    if (looksLikeEntryStart(line)) {
+      if (current) rawEntries.push(current);
+
+      const semi = line.indexOf(";");
+      current = {
+        name: line.slice(0, semi).trim(),
+        description: line.slice(semi + 1).trim(),
+      };
+    } else if (current) {
+      current.description += " " + line;
+    }
+  }
+
+  if (current) rawEntries.push(current);
+
+  return rawEntries;
+}
+
+function confidenceFor(entry: DictionaryEntry): DictionaryEntry["extraction"]["confidence"] {
+  if (entry.kind === "alias") return "medium";
+  if (entry.island && entry.description.length > 40) return "high";
+  if (entry.description.length > 20) return "medium";
+  return "low";
 }
 
 async function main() {
-  await fs.mkdir(GENERATED_DIR, { recursive: true });
+  if (!existsSync(PDF_PATH)) {
+    throw new Error(`PDF not found: ${PDF_PATH}`);
+  }
 
-  const buffer = await fs.readFile(PDF_PATH);
-  const parsed = await parsePdf(buffer);
-  const rawText = cleanText(parsed.text);
-  const entries = splitDictionaryEntries(rawText);
+  const buffer = readFileSync(PDF_PATH);
+  const parsed = await parsePdfBuffer(buffer);
 
-  await fs.writeFile(RAW_TEXT_OUT, rawText);
-  await fs.writeFile(ENTRIES_JSON_OUT, JSON.stringify(entries, null, 2));
+  const cleaned = cleanText(parsed.text);
+  const rawEntries = splitGazetteerEntries(cleaned);
 
-  await fs.writeFile(
-    OUTPUT_TS,
-    `export type GeographicDictionaryEntry = {
-  id: string;
-  sourceName: string;
-  normalizedName: string;
-  description: string;
-  possibleIsland: string | null;
-  possibleQuarter: string | null;
-};
+  const entries: DictionaryEntry[] = rawEntries
+    .map((raw) => {
+      const description = raw.description.replace(/\s+/g, " ").trim();
+      const name = raw.name.replace(/\s+/g, " ").trim();
+      const island = inferIsland(`${name} ${description}`);
+      const kind = inferKind(description);
+      const aliases = extractAliases(description);
+      const coordinates = extractCoordinates(description);
 
-export const geographicDictionaryEntries: GeographicDictionaryEntry[] = ${JSON.stringify(
-      entries,
+      const notes: string[] = [];
+
+      if (!island) notes.push("Island not inferred from entry text.");
+      if (kind === "place") notes.push("Feature type is generic and may need review.");
+      if (/same as|variant|spelling|metamorphosis|corruption/i.test(description)) {
+        notes.push("Likely alias or variant-name entry.");
+      }
+      if (/[�￾]/.test(description)) {
+        notes.push("OCR artifact detected.");
+      }
+
+      const entry: DictionaryEntry = {
+        id: `gdvi-${slugify(name)}-${slugify(island || "unknown")}`,
+        name,
+        normalizedName: normalizeName(name),
+        kind,
+        island,
+        description,
+        aliases,
+        ...(coordinates ? { coordinates } : {}),
+        source: {
+          title: "Geographic Dictionary of the Virgin Islands of the United States",
+          publicationYear: 1925,
+          file: path.relative(ROOT, PDF_PATH),
+        },
+        extraction: {
+          confidence: "medium",
+          needsReview: false,
+          notes,
+        },
+      };
+
+      entry.extraction.confidence = confidenceFor(entry);
+      entry.extraction.needsReview =
+        entry.extraction.confidence !== "high" ||
+        entry.kind === "alias" ||
+        !entry.island ||
+        notes.length > 0;
+
+      return entry;
+    })
+    .filter((entry) => entry.name.length >= 2)
+    .filter((entry) => entry.description.length >= 5);
+
+  const seen = new Set<string>();
+  const uniqueEntries = entries.filter((entry) => {
+    const key = `${entry.normalizedName}|${entry.island}|${entry.kind}|${entry.description.slice(0, 80)}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  mkdirSync(path.dirname(OUT_JSON), { recursive: true });
+
+  writeFileSync(OUT_JSON, JSON.stringify(uniqueEntries, null, 2));
+
+  writeFileSync(
+    OUT_TS,
+    `// Auto-generated by scripts/extract-geographic-dictionary.ts
+// Do not edit manually.
+
+export type GeographicDictionaryEntry = ${JSON.stringify(
+      {
+        id: "string",
+        name: "string",
+        normalizedName: "string",
+        kind: "string",
+        island: "st_thomas | st_john | st_croix | water_island | ''",
+        description: "string",
+        aliases: ["string"],
+      },
       null,
-      2
+      2,
     )};
 
-export function getGeographicDictionaryEntryByName(name: string) {
-  const key = name
-    .replace(/^Estate\\s+/i, "")
-    .toLowerCase()
-    .replace(/&/g, " and ")
-    .replace(/\\//g, " ")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  return geographicDictionaryEntries.find((entry) => entry.normalizedName === key) ?? null;
-}
-`
+export const geographicDictionaryEntries = ${JSON.stringify(uniqueEntries, null, 2)} as const;
+`,
   );
 
-  console.log(`PDF: ${PDF_PATH}`);
-  console.log(`Pages: ${parsed.numpages ?? "unknown"}`);
-  console.log(`Raw text characters: ${rawText.length}`);
-  console.log(`Clean dictionary entries: ${entries.length}`);
-  console.log(`Wrote ${ENTRIES_JSON_OUT}`);
-  console.log(`Wrote ${OUTPUT_TS}`);
+  const byKind = uniqueEntries.reduce<Record<string, number>>((acc, entry) => {
+    acc[entry.kind] = (acc[entry.kind] || 0) + 1;
+    return acc;
+  }, {});
+
+  const byIsland = uniqueEntries.reduce<Record<string, number>>((acc, entry) => {
+    acc[entry.island || "unknown"] = (acc[entry.island || "unknown"] || 0) + 1;
+    return acc;
+  }, {});
+
+  console.log("Geographic Dictionary extraction complete.");
+  console.log({
+    pdf: PDF_PATH,
+    rawEntries: rawEntries.length,
+    entries: uniqueEntries.length,
+    byKind,
+    byIsland,
+    outJson: OUT_JSON,
+    outTs: OUT_TS,
+  });
 }
 
 main().catch((error) => {

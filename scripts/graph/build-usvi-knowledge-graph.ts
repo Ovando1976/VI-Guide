@@ -1,6 +1,15 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import { transportGraphNodes } from "../../src/data/transport/transportGraph";
 import { atlasRecords } from "../../src/data/atlas/masterAtlas";
+
+const scriptDir = dirname(fileURLToPath(import.meta.url));
+const rootDir = join(scriptDir, "..", "..");
+const publicGraphDir = join(rootDir, "public/data/graph");
+const srcGraphDir = join(rootDir, "src/data/graph");
+const publicGraphFile = join(publicGraphDir, "usviKnowledgeGraph.json");
+const srcGraphIndex = join(srcGraphDir, "index.ts");
 
 // --- Types ---
 type GraphNode = { id: string; name: string; type: string; island?: string; lat?: number; lng?: number; source: string; sourceId: string; };

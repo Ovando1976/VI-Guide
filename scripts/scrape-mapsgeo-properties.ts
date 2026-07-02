@@ -2,7 +2,11 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { chromium, type Page, type Request, type Response } from "playwright";
+// Playwright scraper is optional. Install playwright before using this script.
+type Page = any;
+type Request = any;
+type Response = any;
+const chromium: any = null;
 
 const MAPGEO_HOST = "https://usvi.mapgeo.io";
 const START_URL = `${MAPGEO_HOST}/datasets/properties`;

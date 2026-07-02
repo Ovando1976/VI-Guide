@@ -1,4 +1,4 @@
-import masterAtlasFile from "../../../public/data/atlas/masterAtlas.json";
+import masterAtlasFile from "./masterAtlas.json";
 
 export type AtlasRecord = {
   id: string;

@@ -1,4 +1,4 @@
-import dictionaryEntriesFile from "../../public/data/dictionary/dictionaryEntries.json";
+import dictionaryEntriesFile from "./dictionary/dictionaryEntries.json";
 
 export type DictionaryEntry = {
   id?: string;

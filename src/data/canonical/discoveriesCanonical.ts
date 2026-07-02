@@ -1,4 +1,4 @@
-import canonicalFile from "../../../public/data/canonical/discoveries.canonical.json";
+import canonicalFile from "./discoveries.canonical.json";
 
 export type CanonicalDiscovery = {
   id: string;
