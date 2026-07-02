@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-07-02T11:49:58.719Z",
+  "generatedAt": "2026-07-02T11:51:49.965Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 744,
+    "issuesActual": 742,
     "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
@@ -20,7 +20,7 @@
     {
       "name": "geographic_index",
       "path": "src/data/core/geographicIndex.ts",
-      "records": 2828
+      "records": 2827
     },
     {
       "name": "historic_sites",
@@ -29,10 +29,10 @@
       "inferredType": "historicSite"
     }
   ],
-  "totalRecords": 3313,
+  "totalRecords": 3312,
   "severityTotals": {
     "high": 0,
-    "medium": 744,
+    "medium": 742,
     "low": 0
   },
   "issueGroups": [
@@ -40,7 +40,7 @@
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 744,
+      "count": 742,
       "sampled": 200,
       "sampleLimit": 200
     }
@@ -1979,16 +1979,6 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 856,
-      "id": "st_thomas-historic-frederikalort",
-      "name": "Frederiksfort",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
       "index": 857,
       "id": "st_thomas-point-frederiksberg-point",
       "name": "Frederiksberg Point",
@@ -2019,17 +2009,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 863,
-      "id": "st_thomas-historic-fredertksfort",
-      "name": "Frederiksfort OCR Variant",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 872,
+      "index": 871,
       "id": "st_croix-estate-french-point",
       "name": "French Point",
       "issue": "missing_coordinates",
@@ -2039,9 +2019,29 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 876,
+      "index": 875,
       "id": "st_thomas-point-fretti-clip-point",
       "name": "Fretti/ Clip Point",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 876,
+      "id": "st_croix-historic-fricdrirk-ufot-t",
+      "name": "Fricdrirk ufot t",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "medium",
+      "source": "geographic_index",
+      "index": 879,
+      "id": "st_thomas-estate-fron8kmandebayen",
+      "name": "Fron8kmandeBayen",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."

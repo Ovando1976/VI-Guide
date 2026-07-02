@@ -1,13 +1,13 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T11:49:58.719Z
+Generated: 2026-07-02T11:51:49.965Z
 
 ## Summary
 
 - Sources scanned: 3
-- Records scanned: 3313
+- Records scanned: 3312
 - High severity issues: 0
-- Medium severity issues: 744
+- Medium severity issues: 742
 - Low severity issues: 0
 
 ## Sources
@@ -15,14 +15,14 @@ Generated: 2026-07-02T11:49:58.719Z
 | Source | Path | Records | Status |
 |---|---:|---:|---|
 | estates_geojson | public/geo/usvi-estates.geojson | 415 | OK |
-| geographic_index | src/data/core/geographicIndex.ts | 2828 | OK |
+| geographic_index | src/data/core/geographicIndex.ts | 2827 | OK |
 | historic_sites | src/data/historicSites.ts | 70 | OK |
 
 ## Top Issue Groups
 
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
-| medium | geographic_index | missing_coordinates | 744 |
+| medium | geographic_index | missing_coordinates | 742 |
 
 ## Sample Issues
 

@@ -26955,25 +26955,34 @@ export const geographicIndex: GeographicIndexRecord[] = [
     }
   },
   {
-    "id": "st_thomas-historic-frederikalort",
-    "name": "Frederiksfort",
+    "id": "st_croix-historic-fort-frederik",
+    "name": "Fort Frederik",
     "imageUrl": "/images/dictionary/frederikalort.svg",
     "type": "historic",
-    "island": "st_thomas",
+    "island": "st_croix",
     "aliases": [
-      "Frederikalort"
+      "Fort Frederick",
+      "Fort Frederik",
+      "Fort Frederiksted",
+      "Frederikalort",
+      "Frederiksfort",
+      "Frederiksfort OCR Variant",
+      "Fredertksfort"
     ],
-    "description": "Frederikalort; On west coast, a t mouth of stream, northwest of Frederiksted, St. Oroiu. -Danish 80. Also called Fort, Friedrichsfort, Fridrichsfort, Fort Frederik.",
-    "coordinates": null,
+    "description": "Frederikalort; On west coast, a t mouth of stream, northwest of Frederiksted, St. Oroiu. -Danish 80. Also called Fort, Friedrichsfort, Fridrichsfort, Fort Frederik. Fredertksfort; 34-foot Tower, hujlt on Frcderlksberg or 1Huehe:ird IIill, St. Thomas, by the Danish Government in 1089, used till 173. 5; sold witli surrounding land in 1838. Now ctilled (( Bluebeard Castlt~. \"-Asplnall.",
+    "coordinates": {
+      "lat": 17.7129,
+      "lng": -64.8832
+    },
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-frederikalort&island=st_thomas&context=Frederiksfort",
-      "map": "/map?q=Frederiksfort&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-croix-historic-fort-frederik&island=st_croix&context=Fort%20Frederik",
+      "map": "/map?q=Fort%20Frederik&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,
       "geographicIndex": true,
       "starterGazetteer": false,
-      "dictionary": false,
+      "dictionary": true,
       "archive": false,
       "historicMap": false
     },
@@ -26982,7 +26991,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     ],
     "sourceIds": {
       "geographicIndex": [
-        "st-thomas-historic-frederikalort"
+        "st-thomas-historic-frederikalort",
+        "st-thomas-historic-fredertksfort",
+        "st_thomas-historic-frederikalort",
+        "st_thomas-historic-fredertksfort"
       ]
     }
   },
@@ -27193,38 +27205,6 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "sourceIds": {
       "geographicIndex": [
         "st-thomas-point-frederiksted-road"
-      ]
-    }
-  },
-  {
-    "id": "st_thomas-historic-fredertksfort",
-    "name": "Frederiksfort OCR Variant",
-    "imageUrl": "/images/dictionary/fredertksfort.svg",
-    "type": "historic",
-    "island": "st_thomas",
-    "aliases": [
-      "Fredertksfort"
-    ],
-    "description": "Fredertksfort; 34-foot Tower, hujlt on Frcderlksberg or 1Huehe:ird IIill, St. Thomas, by the Danish Government in 1089, used till 173. 5; sold witli surrounding land in 1838. Now ctilled (( Bluebeard Castlt~. \"-Asplnall.",
-    "coordinates": null,
-    "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-fredertksfort&island=st_thomas&context=Frederiksfort%20OCR%20Variant",
-      "map": "/map?q=Frederiksfort%20OCR%20Variant&island=st_thomas"
-    },
-    "evidence": {
-      "estateLayer": false,
-      "geographicIndex": true,
-      "starterGazetteer": false,
-      "dictionary": false,
-      "archive": false,
-      "historicMap": false
-    },
-    "sources": [
-      "geographicIndex"
-    ],
-    "sourceIds": {
-      "geographicIndex": [
-        "st-thomas-historic-fredertksfort"
       ]
     }
   },
@@ -38695,10 +38675,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "type": "estate",
     "island": "st_croix",
     "aliases": [
-    "Judith's Fancy",
-    "Judas Fancy",
-    "local pronunciation of Judith's Fancy"
-  ],
+      "Judith's Fancy",
+      "Judas Fancy",
+      "local pronunciation of Judith's Fancy"
+    ],
     "description": "Judy's Fancy; Local pronunciation of Judith's Fancy, estate in St. Croix; sometimes mispelled, Judas Fancy.",
     "coordinates": {
       "lat": 17.776914,

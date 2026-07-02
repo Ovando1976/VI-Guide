@@ -1,0 +1,50 @@
+{
+  "fixedAt": "2026-07-02T11:51:42.214Z",
+  "action": "Corrected Fort Frederik/Frederiksfort OCR records from St. Thomas to St. Croix and merged duplicate records.",
+  "keptOriginalIndex": 856,
+  "keptOriginalId": "st_thomas-historic-frederikalort",
+  "removedIds": [
+    "st_thomas-historic-fredertksfort"
+  ],
+  "before": [
+    {
+      "index": 856,
+      "id": "st_thomas-historic-frederikalort",
+      "name": "Frederiksfort",
+      "type": "historic",
+      "island": "st_thomas",
+      "coordinates": null
+    },
+    {
+      "index": 863,
+      "id": "st_thomas-historic-fredertksfort",
+      "name": "Frederiksfort OCR Variant",
+      "type": "historic",
+      "island": "st_thomas",
+      "coordinates": null
+    }
+  ],
+  "after": [
+    {
+      "index": 856,
+      "id": "st_croix-historic-fort-frederik",
+      "name": "Fort Frederik",
+      "type": "historic",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7129,
+        "lng": -64.8832
+      },
+      "aliases": [
+        "Fort Frederick",
+        "Fort Frederik",
+        "Fort Frederiksted",
+        "Frederikalort",
+        "Frederiksfort",
+        "Frederiksfort OCR Variant",
+        "Fredertksfort"
+      ]
+    }
+  ],
+  "removedCount": 1
+}
