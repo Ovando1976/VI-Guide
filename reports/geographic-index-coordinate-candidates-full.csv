@@ -40,17 +40,17 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 131,Blackrock Hill,point,st_john,none,0.5,geographic_index,513,Concordia Hill,18.30740743739495,-64.70375086625529,weak_similarity
 132,Bladwell Estate,estate,st_croix,none,0.439,geographic_index,89,Belvedere Hill,17.768944,-64.801944,weak_similarity
 133,Blasbalg Point,bay,st_john,none,0.4,geographic_index,910,GLUCKSBERG,18.3329838022163,-64.77580007724475,weak_similarity
-138,Blg Faat Cay,point,st_thomas,none,0.6,geographic_index,1454,LITTLE FLAT CAY,18.3176615035053,-64.9888146529801,weak_similarity
+138,Big Flat Cay,point,st_thomas,review,0.92,geographic_index,807,Flat Cay,18.3176615035053,-64.9888146529801,contains_clean_slug
 141,Blue Mountain,estate,st_croix,review,0.93,geographic_index,1678,MOUNTAIN,17.71409151355645,-64.835947393362,contains_clean_slug
 142,Bluebeard Hill,hill,st_thomas,none,0.647,geographic_index,143,Bluebeard’s Castle,18.3387,-64.9255,weak_similarity
 145,Bluegut Bay,bay,st_croix,none,0.5,geographic_index,85,BELLEVUE,17.746020712480302,-64.73187786074041,weak_similarity
 147,Boatman Point,point,st_john,none,0.429,geographic_index,100,BETHANY,18.32875985137175,-64.78395168634535,weak_similarity
 155,Boken or Ruck Island,island,st_thomas,none,0.438,geographic_index,1523,LOWER JOHN DUNKO,18.342796459548502,-64.9495968439204,weak_similarity
-163,Bonne EspBrance,estate,st_croix,none,0.677,geographic_index,166,BONNE ESPERANCE (NORTH),17.76623687995135,-64.78335798034175,weak_similarity
+163,Bonne Esperance,estate,st_croix,review,0.93,geographic_index,166,BONNE ESPERANCE (NORTH),17.76623687995135,-64.78335798034175,contains_clean_slug
 173,BoPcks Creek,estate,st_thomas,none,0.385,geographic_index,209,Brewers Bay,18.3444,-64.9782,weak_similarity
-188,Bordeouo plantation,dictionaryEntry,st_thomas,none,0.75,geographic_index,177,BORDEAUX,18.356590458506503,-65.01661868979055,weak_similarity
+188,Bordeaux plantation,dictionaryEntry,st_thomas,exact,1,geographic_index,177,BORDEAUX,18.356590458506503,-65.01661868979055,contains_clean_slug
 189,Borgenfri,estate,st_thomas,none,0.454,geographic_index,177,BORDEAUX,18.356590458506503,-65.01661868979055,weak_similarity
-190,Borpenfrei,estate,st_thomas,none,0.41,geographic_index,91,Benner Bay,18.330419,-64.859625,weak_similarity
+190,Borgenfrei,estate,st_thomas,none,0.41,geographic_index,91,Benner Bay,18.330419,-64.859625,weak_similarity
 191,Bosehill,estate,st_thomas,none,0.6,geographic_index,660,Donoe Hill,18.3360307539689,-64.90137070522624,weak_similarity
 197,Boufron Point,point,st_thomas,none,0.429,geographic_index,200,BOVONI,18.3156803213225,-64.8845745482555,weak_similarity
 198,Boulder Point,point,st_thomas,none,0.429,geographic_index,91,Benner Bay,18.330419,-64.859625,weak_similarity
@@ -68,11 +68,11 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 242,Bull Point,point,st_thomas,none,0.75,geographic_index,1119,HULL,18.367754652070353,-64.95262479216476,weak_similarity
 244,Bulow Hill,hill,st_thomas,none,0.677,geographic_index,1580,Maria Hill,18.359333337383298,-64.98905345449211,weak_similarity
 247,Bulowminde,estate,st_thomas,none,0.41,geographic_index,156,BOLONGO,18.3175123332078,-64.89879745646965,weak_similarity
-251,Buona Viata,estate,st_john,none,0.374,geographic_index,509,CONCORDIA A,18.30740743739495,-64.70375086625529,weak_similarity
+251,Buona Vista,estate,st_john,none,0.395,geographic_index,367,Carolina-Lyst,18.34652014852835,-64.72762843003869,weak_similarity
 252,Buonavista,estate,st_john,none,0.318,geographic_index,367,Carolina-Lyst,18.34652014852835,-64.72762843003869,weak_similarity
 253,Buonavista Hill,estate,st_john,none,0.533,geographic_index,513,Concordia Hill,18.30740743739495,-64.70375086625529,weak_similarity
 256,Bush Hill,hill,st_croix,none,0.7,geographic_index,255,BURNS HILL,17.758095386224348,-64.8751651290253,weak_similarity
-257,Busna Eaperanza,estate,st_thomas,none,0.61,geographic_index,165,BONNE ESPERANCE,18.35446178282435,-64.9895367101718,weak_similarity
+257,Buena Esperanza,estate,st_thomas,none,0.677,geographic_index,165,BONNE ESPERANCE,18.35446178282435,-64.9895367101718,weak_similarity
 259,Butler Bay and William Estate,estate,st_thomas,none,0.51,geographic_index,93,Benner Hill,18.330419,-64.859625,weak_similarity
 262,Butzberg Estate,estate,st_croix,weak,0.788,geographic_index,154,BOETZBERG,17.74585335311665,-64.67922114125466,weak_similarity
 264,Cabes Point,bay,st_thomas,none,0.61,geographic_index,352,Caret Point,18.36457293689035,-64.97608543520525,weak_similarity
@@ -80,13 +80,13 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 269,Cabrita Point,point,st_thomas,none,0.571,geographic_index,351,CARET BAY,18.36457293689035,-64.97608543520525,weak_similarity
 272,Cabrite,estate,st_thomas,none,0.581,geographic_index,351,CARET BAY,18.36457293689035,-64.97608543520525,weak_similarity
 273,Cabrite Point,point,st_thomas,none,0.571,geographic_index,351,CARET BAY,18.36457293689035,-64.97608543520525,weak_similarity
-274,Cabriteberg P o C t,point,st_thomas,none,0.368,geographic_index,350,CAREENING HOLE,18.33519459552995,-64.94227345605105,weak_similarity
+274,Cabriteberg Point,point,st_thomas,none,0.692,geographic_index,404,CATHERINEBERG,18.3450964261188,-64.93264931271824,weak_similarity
 276,Cabrithorn Point,point,st_john,none,0.5,geographic_index,327,Caneelborn,18.34305825172645,-64.7874874960091,weak_similarity
 277,Cabrito,point,st_croix,none,0.571,geographic_index,358,CARINA,17.736547414825,-64.6789987761033,weak_similarity
 278,Cabrittaberg,estate,st_thomas,none,0.548,geographic_index,404,CATHERINEBERG,18.3450964261188,-64.93264931271824,weak_similarity
 280,Caeey Point,bay,st_john,none,0.677,geographic_index,323,Caneel Bay,18.34305825172645,-64.7874874960091,weak_similarity
-281,Caetelpolnt,point,st_thomas,none,0.417,geographic_index,354,Caretbay Gut,18.36457293689035,-64.97608543520525,weak_similarity
-282,Cahritahorn Point,point,st_john,none,0.462,geographic_index,403,Catherineberg,18.3474,-64.7479,weak_similarity
+281,Castle Point,point,st_thomas,review,0.92,geographic_index,130,Blackbeard’s Castle,18.3445,-64.9302,contains_clean_slug
+282,Cabritahorn Point,point,st_john,none,0.462,geographic_index,403,Catherineberg,18.3474,-64.7479,weak_similarity
 283,CahrZtaberg,estate,st_thomas,none,0.625,geographic_index,404,CATHERINEBERG,18.3450964261188,-64.93264931271824,weak_similarity
 290,Caledonia Spring,estate,st_thomas,none,0.385,geographic_index,714,EASTERN WATER ISLAND / SPRAT BAY,18.32355944219015,-64.94466601043206,weak_similarity
 296,Calvary Bay,bay,st_john,none,0.444,geographic_index,407,CAVAL CAY,18.3696541915186,-64.79410767497025,weak_similarity
@@ -220,10 +220,10 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 684,Durlo Bay,bay,st_john,none,0.333,geographic_index,2553,TURNER POINT,18.3420162496453,-64.69090698795429,weak_similarity
 685,Durloe Bay,bay,st_john,none,0.375,geographic_index,368,Caroline,18.34652014852835,-64.72762843003869,weak_similarity
 686,Durloe Cays,point,st_thomas,none,0.571,geographic_index,2561,Turtledove Cay,18.3086275618696,-65.0003906549153,weak_similarity
-687,Durloe Channd,point,st_john,none,0.308,geographic_index,100,BETHANY,18.32875985137175,-64.78395168634535,weak_similarity
+687,Durloe Channel,point,st_john,none,0.357,geographic_index,323,Caneel Bay,18.34305825172645,-64.7874874960091,weak_similarity
 688,Durloe Point,bay,st_john,none,0.375,geographic_index,368,Caroline,18.34652014852835,-64.72762843003869,weak_similarity
 689,Dutchcap Cay,point,st_thomas,none,0.75,geographic_index,692,DUTCHMAN CAP,18.37996707126645,-65.0617794059329,weak_similarity
-695,E'ostcnd Cape,point,st_john,none,0.385,geographic_index,2709,Whistling Cay,18.3702779125285,-64.75705807719291,weak_similarity
+695,Eastend Cape,point,st_john,none,0.417,geographic_index,2086,RATA CAY,18.355968979736453,-64.79682105974845,weak_similarity
 697,E'rance Gerclonneerde Iierk,point,st_thomas,none,0.346,geographic_index,730,Emancipation Garden,18.3412,-64.9316,weak_similarity
 701,East Bay,bay,st_thomas,none,0.41,geographic_index,352,Caret Point,18.36457293689035,-64.97608543520525,weak_similarity
 704,East Point,point,st_croix,none,0.5,geographic_index,2018,PROSPERITY EAST,17.761465524614003,-64.82741751426175,weak_similarity
@@ -270,7 +270,7 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 788,Fish Cay,bay,st_thomas,none,0.625,geographic_index,380,CAS CAY,18.30742565259155,-64.8657587591797,weak_similarity
 789,Fish Point,point,st_thomas,none,0.4,geographic_index,1742,NISKY,18.33151089875325,-64.9576625505323,weak_similarity
 791,Fishermen's Point,bay,st_croix,none,0.438,geographic_index,1071,Hermon Hill,17.73418300782975,-64.71072853406909,weak_similarity
-793,Flag H i l l,point,st_thomas,none,0.417,geographic_index,1120,Hull Bay,18.3709,-64.9547,weak_similarity
+793,Flag Hill,point,st_thomas,none,0.583,geographic_index,159,Bolongo Hill,18.3175123332078,-64.89879745646965,weak_similarity
 796,Flagstok Hill,estate,st_thomas,none,0.5,geographic_index,728,Elizabeth Hill,18.35136065410805,-64.93523180616941,weak_similarity
 797,Flamingo Bay,bay,st_thomas,none,0.385,geographic_index,157,Bolongo Bay,18.3175123332078,-64.89879745646965,weak_similarity
 798,Flamingo Hill,bay,water_island,none,0.19,geographic_index,1098,Honeymoon Beach,18.3195,-64.9517,weak_similarity
@@ -279,8 +279,8 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 801,Flamingo Rock,point,water_island,none,0.238,geographic_index,1098,Honeymoon Beach,18.3195,-64.9517,weak_similarity
 802,Flamingopan Bay,estate,st_thomas,none,0.374,geographic_index,1377,LANGMATH,18.3330248707287,-64.87415279470736,weak_similarity
 804,Flanagan Island,point,st_john,weak,0.778,geographic_index,806,FLANNIGAN ISLAND,18.3263268562391,-64.6509904374269,weak_similarity
-805,Flanagan Pasw ge,point,st_john,none,0.375,geographic_index,806,FLANNIGAN ISLAND,18.3263268562391,-64.6509904374269,weak_similarity
-810,Fointe dol Nordoueete,point,st_thomas,none,0.333,geographic_index,1448,Little Bordeaux Bay,18.356590458506503,-65.01661868979055,weak_similarity
+805,Flanagan Passage,point,st_john,none,0.375,geographic_index,806,FLANNIGAN ISLAND,18.3263268562391,-64.6509904374269,weak_similarity
+810,Pointe du Nordoueste,point,st_thomas,none,0.35,geographic_index,1448,Little Bordeaux Bay,18.356590458506503,-65.01661868979055,weak_similarity
 812,Footer Point,point,st_thomas,none,0.5,geographic_index,662,DOROTHEA,18.36245597302735,-64.96542702087879,weak_similarity
 813,Fort -1 iiytcuto,historic,st_croix,none,0.25,geographic_index,2724,WHITES BAY (South),17.68953537761275,-64.88339692489569,weak_similarity
 814,Fort Catharina,hill,st_thomas,none,0.543,geographic_index,1580,Maria Hill,18.359333337383298,-64.98905345449211,weak_similarity
@@ -299,12 +299,12 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 846,Fredensfeld,estate,st_croix,none,0.593,geographic_index,861,FREDERIKSTED,17.7124548975535,-64.88349213990135,weak_similarity
 852,Frederik Battery,point,st_thomas,none,0.667,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
 854,Frederik Knoll,point,st_thomas,none,0.5,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
-855,Frederik P o i n t,point,st_thomas,none,0.444,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
-856,Frederikalort,historic,st_thomas,none,0.556,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
+855,Frederik Point,point,st_thomas,none,0.5,geographic_index,209,Brewers Bay,18.3444,-64.9782,weak_similarity
+856,Frederiksfort,historic,st_thomas,none,0.556,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
 857,Frederiksberg Point,point,st_thomas,none,0.556,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
 858,Frederikshaab,estate,st_thomas,none,0.556,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
 862,Frederiksted Road,point,st_thomas,none,0.556,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
-863,Fredertksfort,historic,st_thomas,none,0.444,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
+863,Frederiksfort,historic,st_thomas,none,0.5,geographic_index,851,Frederick Lutheran Church,18.3417,-64.9318,weak_similarity
 867,Freeze Bay,bay,st_john,none,0.5,geographic_index,879,FRIISE,18.3213357522002,-64.70057721079274,weak_similarity
 871,French Hill,bay,st_thomas,review,0.93,geographic_index,868,French Bay,18.31958030255245,-64.9084111427579,contains_clean_slug
 872,French Point,estate,st_croix,none,0.51,geographic_index,975,Greencay,17.7590180643778,-64.6571138576055,weak_similarity

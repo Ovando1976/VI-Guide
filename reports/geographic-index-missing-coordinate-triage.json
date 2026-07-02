@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T11:33:19.701Z",
+  "generatedAt": "2026-07-02T11:48:30.762Z",
   "sourceOfTruth": "reports/geographic-index-coordinate-candidates-full.json",
   "notes": [
     "This triage report intentionally uses the full coordinate candidate audit proposals as the missing-coordinate source of truth.",
@@ -12,17 +12,17 @@
     "officialDataCleanlinessMissingCoordinates": 744,
     "officialDataCleanlinessSampledIssues": 200,
     "byBucket": {
-      "review_candidate": 74,
-      "research_clean_name_no_candidate": 888,
+      "review_candidate": 78,
+      "research_clean_name_no_candidate": 889,
       "generic_fragment_do_not_coordinate": 31,
-      "ocr_or_name_cleanup_first": 118,
+      "ocr_or_name_cleanup_first": 113,
       "low_priority_non_map_record": 2
     },
     "byConfidence": {
-      "review": 45,
-      "none": 1026,
+      "review": 48,
+      "none": 1022,
       "weak": 39,
-      "exact": 3
+      "exact": 4
     },
     "byTypeIsland": {
       "archive_record::st_john": 1,
@@ -56,11 +56,26 @@
       "archive_record::st_croix": 2,
       "island::st_john": 3
     },
-    "reviewCandidateCount": 74,
-    "cleanNoCandidateCount": 888,
-    "ocrOrNameCleanupFirstCount": 118
+    "reviewCandidateCount": 78,
+    "cleanNoCandidateCount": 889,
+    "ocrOrNameCleanupFirstCount": 113
   },
   "reviewCandidates": [
+    {
+      "index": 188,
+      "id": "st_thomas-dictionaryEntry-bordeouo-plantation",
+      "name": "Bordeaux plantation",
+      "type": "dictionaryEntry",
+      "island": "st_thomas",
+      "confidence": "exact",
+      "bucket": "review_candidate",
+      "officialAuditSampled": false,
+      "candidateName": "BORDEAUX",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.356590458506503,
+      "candidateLng": -65.01661868979055,
+      "reason": "contains_clean_slug"
+    },
     {
       "index": 229,
       "id": "st_thomas-bay-buck-bay",
@@ -167,6 +182,21 @@
       "reason": "contains_clean_slug"
     },
     {
+      "index": 138,
+      "id": "st_thomas-point-blg-faat-cay",
+      "name": "Big Flat Cay",
+      "type": "point",
+      "island": "st_thomas",
+      "confidence": "review",
+      "bucket": "review_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "Flat Cay",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.3176615035053,
+      "candidateLng": -64.9888146529801,
+      "reason": "contains_clean_slug"
+    },
+    {
       "index": 141,
       "id": "st_croix-estate-blue-mountain",
       "name": "Blue Mountain",
@@ -179,6 +209,36 @@
       "candidateSource": "geographic_index",
       "candidateLat": 17.71409151355645,
       "candidateLng": -64.835947393362,
+      "reason": "contains_clean_slug"
+    },
+    {
+      "index": 163,
+      "id": "st_croix-estate-bonne-espbrance",
+      "name": "Bonne Esperance",
+      "type": "estate",
+      "island": "st_croix",
+      "confidence": "review",
+      "bucket": "review_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "BONNE ESPERANCE (NORTH)",
+      "candidateSource": "geographic_index",
+      "candidateLat": 17.76623687995135,
+      "candidateLng": -64.78335798034175,
+      "reason": "contains_clean_slug"
+    },
+    {
+      "index": 281,
+      "id": "st_thomas-point-caetelpolnt",
+      "name": "Castle Point",
+      "type": "point",
+      "island": "st_thomas",
+      "confidence": "review",
+      "bucket": "review_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "Blackbeard’s Castle",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.3445,
+      "candidateLng": -64.9302,
       "reason": "contains_clean_slug"
     },
     {
@@ -1624,21 +1684,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 138,
-      "id": "st_thomas-point-blg-faat-cay",
-      "name": "Blg Faat Cay",
-      "type": "point",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": true,
-      "candidateName": "LITTLE FLAT CAY",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3176615035053,
-      "candidateLng": -64.9888146529801,
-      "reason": "weak_similarity"
-    },
-    {
       "index": 142,
       "id": "st_thomas-hill-bluebeard-hill",
       "name": "Bluebeard Hill",
@@ -1699,21 +1744,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 188,
-      "id": "st_thomas-dictionaryEntry-bordeouo-plantation",
-      "name": "Bordeouo plantation",
-      "type": "dictionaryEntry",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "BORDEAUX",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.356590458506503,
-      "candidateLng": -65.01661868979055,
-      "reason": "weak_similarity"
-    },
-    {
       "index": 189,
       "id": "st_thomas-estate-borgenfri",
       "name": "Borgenfri",
@@ -1731,7 +1761,7 @@
     {
       "index": 190,
       "id": "st_thomas-estate-borpenfrei",
-      "name": "Borpenfrei",
+      "name": "Borgenfrei",
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
@@ -1911,16 +1941,16 @@
     {
       "index": 251,
       "id": "st_john-estate-buona-viata",
-      "name": "Buona Viata",
+      "name": "Buona Vista",
       "type": "estate",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "CONCORDIA A",
+      "candidateName": "Carolina-Lyst",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.30740743739495,
-      "candidateLng": -64.70375086625529,
+      "candidateLat": 18.34652014852835,
+      "candidateLng": -64.72762843003869,
       "reason": "weak_similarity"
     },
     {
@@ -1971,7 +2001,7 @@
     {
       "index": 257,
       "id": "st_thomas-estate-busna-eaperanza",
-      "name": "Busna Eaperanza",
+      "name": "Buena Esperanza",
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
@@ -2074,6 +2104,21 @@
       "reason": "weak_similarity"
     },
     {
+      "index": 274,
+      "id": "st_thomas-point-cabriteberg-p-o-c-t",
+      "name": "Cabriteberg Point",
+      "type": "point",
+      "island": "st_thomas",
+      "confidence": "none",
+      "bucket": "research_clean_name_no_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "CATHERINEBERG",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.3450964261188,
+      "candidateLng": -64.93264931271824,
+      "reason": "weak_similarity"
+    },
+    {
       "index": 276,
       "id": "st_john-point-cabrithorn-point",
       "name": "Cabrithorn Point",
@@ -2134,18 +2179,18 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 281,
-      "id": "st_thomas-point-caetelpolnt",
-      "name": "Caetelpolnt",
+      "index": 282,
+      "id": "st_john-point-cahritahorn-point",
+      "name": "Cabritahorn Point",
       "type": "point",
-      "island": "st_thomas",
+      "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Caretbay Gut",
+      "candidateName": "Catherineberg",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.36457293689035,
-      "candidateLng": -64.97608543520525,
+      "candidateLat": 18.3474,
+      "candidateLng": -64.7479,
       "reason": "weak_similarity"
     },
     {
@@ -3786,16 +3831,16 @@
     {
       "index": 687,
       "id": "st_john-point-durloe-channd",
-      "name": "Durloe Channd",
+      "name": "Durloe Channel",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "BETHANY",
+      "candidateName": "Caneel Bay",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.32875985137175,
-      "candidateLng": -64.78395168634535,
+      "candidateLat": 18.34305825172645,
+      "candidateLng": -64.7874874960091,
       "reason": "weak_similarity"
     },
     {
@@ -3831,16 +3876,16 @@
     {
       "index": 695,
       "id": "st_john-point-eostcnd-cape",
-      "name": "E'ostcnd Cape",
+      "name": "Eastend Cape",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Whistling Cay",
+      "candidateName": "RATA CAY",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3702779125285,
-      "candidateLng": -64.75705807719291,
+      "candidateLat": 18.355968979736453,
+      "candidateLng": -64.79682105974845,
       "reason": "weak_similarity"
     },
     {
@@ -4429,6 +4474,21 @@
       "reason": "weak_similarity"
     },
     {
+      "index": 793,
+      "id": "st_thomas-point-flag-h-i-l-l",
+      "name": "Flag Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "confidence": "none",
+      "bucket": "research_clean_name_no_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "Bolongo Hill",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.3175123332078,
+      "candidateLng": -64.89879745646965,
+      "reason": "weak_similarity"
+    },
+    {
       "index": 796,
       "id": "st_thomas-estate-flagstok-hill",
       "name": "Flagstok Hill",
@@ -4536,7 +4596,7 @@
     {
       "index": 805,
       "id": "st_john-point-flanagan-pasw-ge",
-      "name": "Flanagan Pasw ge",
+      "name": "Flanagan Passage",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
@@ -4551,7 +4611,7 @@
     {
       "index": 810,
       "id": "st_thomas-point-fointe-dol-nordoueete",
-      "name": "Fointe dol Nordoueete",
+      "name": "Pointe du Nordoueste",
       "type": "point",
       "island": "st_thomas",
       "confidence": "none",
@@ -4804,9 +4864,24 @@
       "reason": "weak_similarity"
     },
     {
+      "index": 855,
+      "id": "st_thomas-point-frederik-p-o-i-n-t",
+      "name": "Frederik Point",
+      "type": "point",
+      "island": "st_thomas",
+      "confidence": "none",
+      "bucket": "research_clean_name_no_candidate",
+      "officialAuditSampled": true,
+      "candidateName": "Brewers Bay",
+      "candidateSource": "geographic_index",
+      "candidateLat": 18.3444,
+      "candidateLng": -64.9782,
+      "reason": "weak_similarity"
+    },
+    {
       "index": 856,
       "id": "st_thomas-historic-frederikalort",
-      "name": "Frederikalort",
+      "name": "Frederiksfort",
       "type": "historic",
       "island": "st_thomas",
       "confidence": "none",
@@ -4866,7 +4941,7 @@
     {
       "index": 863,
       "id": "st_thomas-historic-fredertksfort",
-      "name": "Fredertksfort",
+      "name": "Frederiksfort",
       "type": "historic",
       "island": "st_thomas",
       "confidence": "none",
@@ -14526,21 +14601,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 163,
-      "id": "st_croix-estate-bonne-espbrance",
-      "name": "Bonne EspBrance",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": true,
-      "candidateName": "BONNE ESPERANCE (NORTH)",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.76623687995135,
-      "candidateLng": -64.78335798034175,
-      "reason": "weak_similarity"
-    },
-    {
       "index": 173,
       "id": "st_thomas-estate-bopcks-creek",
       "name": "BoPcks Creek",
@@ -14598,36 +14658,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 18.33037923226835,
       "candidateLng": -64.7691885039207,
-      "reason": "weak_similarity"
-    },
-    {
-      "index": 274,
-      "id": "st_thomas-point-cabriteberg-p-o-c-t",
-      "name": "Cabriteberg P o C t",
-      "type": "point",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": true,
-      "candidateName": "CAREENING HOLE",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.33519459552995,
-      "candidateLng": -64.94227345605105,
-      "reason": "weak_similarity"
-    },
-    {
-      "index": 282,
-      "id": "st_john-point-cahritahorn-point",
-      "name": "Cahritahorn Point",
-      "type": "point",
-      "island": "st_john",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": true,
-      "candidateName": "Catherineberg",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3474,
-      "candidateLng": -64.7479,
       "reason": "weak_similarity"
     },
     {
@@ -14871,21 +14901,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 793,
-      "id": "st_thomas-point-flag-h-i-l-l",
-      "name": "Flag H i l l",
-      "type": "point",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": true,
-      "candidateName": "Hull Bay",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3709,
-      "candidateLng": -64.9547,
-      "reason": "weak_similarity"
-    },
-    {
       "index": 813,
       "id": "st_croix-historic-fort-1-iiytcuto",
       "name": "Fort -1 iiytcuto",
@@ -14898,21 +14913,6 @@
       "candidateSource": "geographic_index",
       "candidateLat": 17.68953537761275,
       "candidateLng": -64.88339692489569,
-      "reason": "weak_similarity"
-    },
-    {
-      "index": 855,
-      "id": "st_thomas-point-frederik-p-o-i-n-t",
-      "name": "Frederik P o i n t",
-      "type": "point",
-      "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
-      "officialAuditSampled": true,
-      "candidateName": "Frederick Lutheran Church",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3417,
-      "candidateLng": -64.9318,
       "reason": "weak_similarity"
     },
     {
@@ -16885,17 +16885,17 @@
     {
       "index": 138,
       "id": "st_thomas-point-blg-faat-cay",
-      "name": "Blg Faat Cay",
+      "name": "Big Flat Cay",
       "type": "point",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "review",
+      "bucket": "review_candidate",
       "officialAuditSampled": true,
-      "candidateName": "LITTLE FLAT CAY",
+      "candidateName": "Flat Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3176615035053,
       "candidateLng": -64.9888146529801,
-      "reason": "weak_similarity"
+      "reason": "contains_clean_slug"
     },
     {
       "index": 141,
@@ -16975,17 +16975,17 @@
     {
       "index": 163,
       "id": "st_croix-estate-bonne-espbrance",
-      "name": "Bonne EspBrance",
+      "name": "Bonne Esperance",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
+      "confidence": "review",
+      "bucket": "review_candidate",
       "officialAuditSampled": true,
       "candidateName": "BONNE ESPERANCE (NORTH)",
       "candidateSource": "geographic_index",
       "candidateLat": 17.76623687995135,
       "candidateLng": -64.78335798034175,
-      "reason": "weak_similarity"
+      "reason": "contains_clean_slug"
     },
     {
       "index": 173,
@@ -17005,17 +17005,17 @@
     {
       "index": 188,
       "id": "st_thomas-dictionaryEntry-bordeouo-plantation",
-      "name": "Bordeouo plantation",
+      "name": "Bordeaux plantation",
       "type": "dictionaryEntry",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "exact",
+      "bucket": "review_candidate",
       "officialAuditSampled": false,
       "candidateName": "BORDEAUX",
       "candidateSource": "geographic_index",
       "candidateLat": 18.356590458506503,
       "candidateLng": -65.01661868979055,
-      "reason": "weak_similarity"
+      "reason": "contains_clean_slug"
     },
     {
       "index": 189,
@@ -17035,7 +17035,7 @@
     {
       "index": 190,
       "id": "st_thomas-estate-borpenfrei",
-      "name": "Borpenfrei",
+      "name": "Borgenfrei",
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
@@ -17305,16 +17305,16 @@
     {
       "index": 251,
       "id": "st_john-estate-buona-viata",
-      "name": "Buona Viata",
+      "name": "Buona Vista",
       "type": "estate",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "CONCORDIA A",
+      "candidateName": "Carolina-Lyst",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.30740743739495,
-      "candidateLng": -64.70375086625529,
+      "candidateLat": 18.34652014852835,
+      "candidateLng": -64.72762843003869,
       "reason": "weak_similarity"
     },
     {
@@ -17365,7 +17365,7 @@
     {
       "index": 257,
       "id": "st_thomas-estate-busna-eaperanza",
-      "name": "Busna Eaperanza",
+      "name": "Buena Esperanza",
       "type": "estate",
       "island": "st_thomas",
       "confidence": "none",
@@ -17485,16 +17485,16 @@
     {
       "index": 274,
       "id": "st_thomas-point-cabriteberg-p-o-c-t",
-      "name": "Cabriteberg P o C t",
+      "name": "Cabriteberg Point",
       "type": "point",
       "island": "st_thomas",
       "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
+      "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "CAREENING HOLE",
+      "candidateName": "CATHERINEBERG",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.33519459552995,
-      "candidateLng": -64.94227345605105,
+      "candidateLat": 18.3450964261188,
+      "candidateLng": -64.93264931271824,
       "reason": "weak_similarity"
     },
     {
@@ -17560,26 +17560,26 @@
     {
       "index": 281,
       "id": "st_thomas-point-caetelpolnt",
-      "name": "Caetelpolnt",
+      "name": "Castle Point",
       "type": "point",
       "island": "st_thomas",
-      "confidence": "none",
-      "bucket": "research_clean_name_no_candidate",
+      "confidence": "review",
+      "bucket": "review_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Caretbay Gut",
+      "candidateName": "Blackbeard’s Castle",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.36457293689035,
-      "candidateLng": -64.97608543520525,
-      "reason": "weak_similarity"
+      "candidateLat": 18.3445,
+      "candidateLng": -64.9302,
+      "reason": "contains_clean_slug"
     },
     {
       "index": 282,
       "id": "st_john-point-cahritahorn-point",
-      "name": "Cahritahorn Point",
+      "name": "Cabritahorn Point",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
+      "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
       "candidateName": "Catherineberg",
       "candidateSource": "geographic_index",
@@ -19585,16 +19585,16 @@
     {
       "index": 687,
       "id": "st_john-point-durloe-channd",
-      "name": "Durloe Channd",
+      "name": "Durloe Channel",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "BETHANY",
+      "candidateName": "Caneel Bay",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.32875985137175,
-      "candidateLng": -64.78395168634535,
+      "candidateLat": 18.34305825172645,
+      "candidateLng": -64.7874874960091,
       "reason": "weak_similarity"
     },
     {
@@ -19630,16 +19630,16 @@
     {
       "index": 695,
       "id": "st_john-point-eostcnd-cape",
-      "name": "E'ostcnd Cape",
+      "name": "Eastend Cape",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Whistling Cay",
+      "candidateName": "RATA CAY",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3702779125285,
-      "candidateLng": -64.75705807719291,
+      "candidateLat": 18.355968979736453,
+      "candidateLng": -64.79682105974845,
       "reason": "weak_similarity"
     },
     {
@@ -20335,16 +20335,16 @@
     {
       "index": 793,
       "id": "st_thomas-point-flag-h-i-l-l",
-      "name": "Flag H i l l",
+      "name": "Flag Hill",
       "type": "point",
       "island": "st_thomas",
       "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
+      "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Hull Bay",
+      "candidateName": "Bolongo Hill",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3709,
-      "candidateLng": -64.9547,
+      "candidateLat": 18.3175123332078,
+      "candidateLng": -64.89879745646965,
       "reason": "weak_similarity"
     },
     {
@@ -20470,7 +20470,7 @@
     {
       "index": 805,
       "id": "st_john-point-flanagan-pasw-ge",
-      "name": "Flanagan Pasw ge",
+      "name": "Flanagan Passage",
       "type": "point",
       "island": "st_john",
       "confidence": "none",
@@ -20485,7 +20485,7 @@
     {
       "index": 810,
       "id": "st_thomas-point-fointe-dol-nordoueete",
-      "name": "Fointe dol Nordoueete",
+      "name": "Pointe du Nordoueste",
       "type": "point",
       "island": "st_thomas",
       "confidence": "none",
@@ -20770,22 +20770,22 @@
     {
       "index": 855,
       "id": "st_thomas-point-frederik-p-o-i-n-t",
-      "name": "Frederik P o i n t",
+      "name": "Frederik Point",
       "type": "point",
       "island": "st_thomas",
       "confidence": "none",
-      "bucket": "ocr_or_name_cleanup_first",
+      "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "Frederick Lutheran Church",
+      "candidateName": "Brewers Bay",
       "candidateSource": "geographic_index",
-      "candidateLat": 18.3417,
-      "candidateLng": -64.9318,
+      "candidateLat": 18.3444,
+      "candidateLng": -64.9782,
       "reason": "weak_similarity"
     },
     {
       "index": 856,
       "id": "st_thomas-historic-frederikalort",
-      "name": "Frederikalort",
+      "name": "Frederiksfort",
       "type": "historic",
       "island": "st_thomas",
       "confidence": "none",
@@ -20845,7 +20845,7 @@
     {
       "index": 863,
       "id": "st_thomas-historic-fredertksfort",
-      "name": "Fredertksfort",
+      "name": "Frederiksfort",
       "type": "historic",
       "island": "st_thomas",
       "confidence": "none",

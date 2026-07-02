@@ -1,6 +1,6 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:33:19.701Z
+Generated: 2026-07-02T11:48:30.762Z
 
 ## Summary
 
@@ -13,9 +13,9 @@ Generated: 2026-07-02T11:33:19.701Z
 
 | Bucket | Count |
 |---|---:|
-| research_clean_name_no_candidate | 888 |
-| ocr_or_name_cleanup_first | 118 |
-| review_candidate | 74 |
+| research_clean_name_no_candidate | 889 |
+| ocr_or_name_cleanup_first | 113 |
+| review_candidate | 78 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
 
@@ -23,15 +23,16 @@ Generated: 2026-07-02T11:33:19.701Z
 
 | Confidence | Count |
 |---|---:|
-| none | 1026 |
-| review | 45 |
+| none | 1022 |
+| review | 48 |
 | weak | 39 |
-| exact | 3 |
+| exact | 4 |
 
 ## Best remaining review candidates
 
 | Index | Name | Type | Island | Confidence | Candidate | Reason |
 |---:|---|---|---|---|---|---|
+| 188 | Bordeaux plantation | dictionaryEntry | st_thomas | exact | BORDEAUX | contains_clean_slug |
 | 229 | Buck Bay | bay | st_thomas | exact | BUCK ISLAND | exact_clean_slug |
 | 990 | Grove | historic | st_croix | exact | GROVE PLACE | contains_clean_slug |
 | 1107 | Hope Point | estate | st_thomas | exact | HOPE | exact_clean_slug |
@@ -39,7 +40,10 @@ Generated: 2026-07-02T11:33:19.701Z
 | 77 | Beck Grove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 124 | Billy French Point | point | st_thomas | review | French Bay | contains_clean_slug |
 | 127 | Black Point | point | st_thomas | review | Blackbeard’s Castle | contains_clean_slug |
+| 138 | Big Flat Cay | point | st_thomas | review | Flat Cay | contains_clean_slug |
 | 141 | Blue Mountain | estate | st_croix | review | MOUNTAIN | contains_clean_slug |
+| 163 | Bonne Esperance | estate | st_croix | review | BONNE ESPERANCE (NORTH) | contains_clean_slug |
+| 281 | Castle Point | point | st_thomas | review | Blackbeard’s Castle | contains_clean_slug |
 | 397 | Catharina's Hope | estate | st_croix | review | HOPE | contains_clean_slug |
 | 400 | Catherine's Hope | estate | st_thomas | review | HOPE | contains_clean_slug |
 | 436 | Charlotte Amalie High School | school | st_thomas | review | Charlotte Amalie | contains_clean_slug |
@@ -141,14 +145,12 @@ Generated: 2026-07-02T11:33:19.701Z
 | 131 | Blackrock Hill | point | st_john |
 | 132 | Bladwell Estate | estate | st_croix |
 | 133 | Blasbalg Point | bay | st_john |
-| 138 | Blg Faat Cay | point | st_thomas |
 | 142 | Bluebeard Hill | hill | st_thomas |
 | 145 | Bluegut Bay | bay | st_croix |
 | 147 | Boatman Point | point | st_john |
 | 155 | Boken or Ruck Island | island | st_thomas |
-| 188 | Bordeouo plantation | dictionaryEntry | st_thomas |
 | 189 | Borgenfri | estate | st_thomas |
-| 190 | Borpenfrei | estate | st_thomas |
+| 190 | Borgenfrei | estate | st_thomas |
 | 191 | Bosehill | estate | st_thomas |
 | 197 | Boufron Point | point | st_thomas |
 | 198 | Boulder Point | point | st_thomas |
@@ -160,22 +162,23 @@ Generated: 2026-07-02T11:33:19.701Z
 | 242 | Bull Point | point | st_thomas |
 | 244 | Bulow Hill | hill | st_thomas |
 | 247 | Bulowminde | estate | st_thomas |
-| 251 | Buona Viata | estate | st_john |
+| 251 | Buona Vista | estate | st_john |
 | 252 | Buonavista | estate | st_john |
 | 253 | Buonavista Hill | estate | st_john |
 | 256 | Bush Hill | hill | st_croix |
-| 257 | Busna Eaperanza | estate | st_thomas |
+| 257 | Buena Esperanza | estate | st_thomas |
 | 259 | Butler Bay and William Estate | estate | st_thomas |
 | 264 | Cabes Point | bay | st_thomas |
 | 268 | Cabrita Hill | point | st_thomas |
 | 269 | Cabrita Point | point | st_thomas |
 | 272 | Cabrite | estate | st_thomas |
 | 273 | Cabrite Point | point | st_thomas |
+| 274 | Cabriteberg Point | point | st_thomas |
 | 276 | Cabrithorn Point | point | st_john |
 | 277 | Cabrito | point | st_croix |
 | 278 | Cabrittaberg | estate | st_thomas |
 | 280 | Caeey Point | bay | st_john |
-| 281 | Caetelpolnt | point | st_thomas |
+| 282 | Cabritahorn Point | point | st_john |
 | 290 | Caledonia Spring | estate | st_thomas |
 | 296 | Calvary Bay | bay | st_john |
 | 297 | Calvert Point | bay | st_thomas |
@@ -231,6 +234,7 @@ Generated: 2026-07-02T11:33:19.701Z
 | 536 | Cook's Point | point | st_thomas |
 | 540 | Coral Bay | dictionaryEntry | st_john |
 | 546 | Corn Hill | estate | st_thomas |
+| 550 | Corral-Bay | bay | st_john |
 
 ## OCR/name cleanup first
 
@@ -238,13 +242,10 @@ Generated: 2026-07-02T11:33:19.701Z
 |---:|---|---|---|
 | 72 | Bcotch Reef | dictionaryEntry | st_thomas |
 | 94 | Benny Kenny Hill | bay | st_croix |
-| 163 | Bonne EspBrance | estate | st_croix |
 | 173 | BoPcks Creek | estate | st_thomas |
 | 225 | BtaZley Point | estate | st_thomas |
 | 228 | Btwmphfar Bay | bay | st_thomas |
 | 239 | Buhvun Point | bay | st_john |
-| 274 | Cabriteberg P o C t | point | st_thomas |
-| 282 | Cahritahorn Point | point | st_john |
 | 283 | CahrZtaberg | estate | st_thomas |
 | 304 | Camporico Raltpond | estate | st_croix |
 | 414 | CaZverts Punt | point | st_thomas |
@@ -261,9 +262,7 @@ Generated: 2026-07-02T11:33:19.701Z
 | 676 | Dry Lcdqc | point | st_croix |
 | 736 | EnAeld Green | estate | st_thomas |
 | 776 | Fanny's Fancy | estate | st_croix |
-| 793 | Flag H i l l | point | st_thomas |
 | 813 | Fort -1 iiytcuto | historic | st_croix |
-| 855 | Frederik P o i n t | point | st_thomas |
 | 871 | French Hill | bay | st_thomas |
 | 880 | Fron8kmandeBayen | estate | st_thomas |
 | 888 | Funta Colorado 6 Longue | point | st_thomas |

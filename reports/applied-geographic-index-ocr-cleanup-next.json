@@ -1,0 +1,179 @@
+{
+  "startedAt": "2026-07-02T11:47:30.790Z",
+  "finishedAt": "2026-07-02T11:47:30.913Z",
+  "backupFile": "reports/backups/geographicIndex.before-ocr-cleanup-next.1782992850798.ts",
+  "targetFile": "src/data/core/geographicIndex.ts",
+  "appliedCount": 17,
+  "applied": [
+    {
+      "index": 138,
+      "id": "st_thomas-point-blg-faat-cay",
+      "oldName": "Blg Faat Cay",
+      "newName": "Big Flat Cay",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Blg%20Faat%20Cay",
+      "newEncoded": "Big%20Flat%20Cay"
+    },
+    {
+      "index": 163,
+      "id": "st_croix-estate-bonne-espbrance",
+      "oldName": "Bonne EspBrance",
+      "newName": "Bonne Esperance",
+      "type": "estate",
+      "island": "st_croix",
+      "oldEncoded": "Bonne%20EspBrance",
+      "newEncoded": "Bonne%20Esperance"
+    },
+    {
+      "index": 188,
+      "id": "st_thomas-dictionaryEntry-bordeouo-plantation",
+      "oldName": "Bordeouo plantation",
+      "newName": "Bordeaux plantation",
+      "type": "dictionaryEntry",
+      "island": "st_thomas",
+      "oldEncoded": "Bordeouo%20plantation",
+      "newEncoded": "Bordeaux%20plantation"
+    },
+    {
+      "index": 190,
+      "id": "st_thomas-estate-borpenfrei",
+      "oldName": "Borpenfrei",
+      "newName": "Borgenfrei",
+      "type": "estate",
+      "island": "st_thomas",
+      "oldEncoded": "Borpenfrei",
+      "newEncoded": "Borgenfrei"
+    },
+    {
+      "index": 251,
+      "id": "st_john-estate-buona-viata",
+      "oldName": "Buona Viata",
+      "newName": "Buona Vista",
+      "type": "estate",
+      "island": "st_john",
+      "oldEncoded": "Buona%20Viata",
+      "newEncoded": "Buona%20Vista"
+    },
+    {
+      "index": 257,
+      "id": "st_thomas-estate-busna-eaperanza",
+      "oldName": "Busna Eaperanza",
+      "newName": "Buena Esperanza",
+      "type": "estate",
+      "island": "st_thomas",
+      "oldEncoded": "Busna%20Eaperanza",
+      "newEncoded": "Buena%20Esperanza"
+    },
+    {
+      "index": 274,
+      "id": "st_thomas-point-cabriteberg-p-o-c-t",
+      "oldName": "Cabriteberg P o C t",
+      "newName": "Cabriteberg Point",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Cabriteberg%20P%20o%20C%20t",
+      "newEncoded": "Cabriteberg%20Point"
+    },
+    {
+      "index": 281,
+      "id": "st_thomas-point-caetelpolnt",
+      "oldName": "Caetelpolnt",
+      "newName": "Castle Point",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Caetelpolnt",
+      "newEncoded": "Castle%20Point"
+    },
+    {
+      "index": 282,
+      "id": "st_john-point-cahritahorn-point",
+      "oldName": "Cahritahorn Point",
+      "newName": "Cabritahorn Point",
+      "type": "point",
+      "island": "st_john",
+      "oldEncoded": "Cahritahorn%20Point",
+      "newEncoded": "Cabritahorn%20Point"
+    },
+    {
+      "index": 687,
+      "id": "st_john-point-durloe-channd",
+      "oldName": "Durloe Channd",
+      "newName": "Durloe Channel",
+      "type": "point",
+      "island": "st_john",
+      "oldEncoded": "Durloe%20Channd",
+      "newEncoded": "Durloe%20Channel"
+    },
+    {
+      "index": 695,
+      "id": "st_john-point-eostcnd-cape",
+      "oldName": "E'ostcnd Cape",
+      "newName": "Eastend Cape",
+      "type": "point",
+      "island": "st_john",
+      "oldEncoded": "E'ostcnd%20Cape",
+      "newEncoded": "Eastend%20Cape"
+    },
+    {
+      "index": 793,
+      "id": "st_thomas-point-flag-h-i-l-l",
+      "oldName": "Flag H i l l",
+      "newName": "Flag Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Flag%20H%20i%20l%20l",
+      "newEncoded": "Flag%20Hill"
+    },
+    {
+      "index": 805,
+      "id": "st_john-point-flanagan-pasw-ge",
+      "oldName": "Flanagan Pasw ge",
+      "newName": "Flanagan Passage",
+      "type": "point",
+      "island": "st_john",
+      "oldEncoded": "Flanagan%20Pasw%20ge",
+      "newEncoded": "Flanagan%20Passage"
+    },
+    {
+      "index": 810,
+      "id": "st_thomas-point-fointe-dol-nordoueete",
+      "oldName": "Fointe dol Nordoueete",
+      "newName": "Pointe du Nordoueste",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Fointe%20dol%20Nordoueete",
+      "newEncoded": "Pointe%20du%20Nordoueste"
+    },
+    {
+      "index": 855,
+      "id": "st_thomas-point-frederik-p-o-i-n-t",
+      "oldName": "Frederik P o i n t",
+      "newName": "Frederik Point",
+      "type": "point",
+      "island": "st_thomas",
+      "oldEncoded": "Frederik%20P%20o%20i%20n%20t",
+      "newEncoded": "Frederik%20Point"
+    },
+    {
+      "index": 856,
+      "id": "st_thomas-historic-frederikalort",
+      "oldName": "Frederikalort",
+      "newName": "Frederiksfort",
+      "type": "historic",
+      "island": "st_thomas",
+      "oldEncoded": "Frederikalort",
+      "newEncoded": "Frederiksfort"
+    },
+    {
+      "index": 863,
+      "id": "st_thomas-historic-fredertksfort",
+      "oldName": "Fredertksfort",
+      "newName": "Frederiksfort",
+      "type": "historic",
+      "island": "st_thomas",
+      "oldEncoded": "Fredertksfort",
+      "newEncoded": "Frederiksfort"
+    }
+  ]
+}

@@ -4522,15 +4522,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-blg-faat-cay",
-    "name": "Blg Faat Cay",
+    "name": "Big Flat Cay",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Blg Faat Cay"
+    ],
     "description": "Blg Faat Cay; Islet, 213 yards long, 70 to 90 yards wide, nrea 2. 9 ncres; 1% miles southwest of Red Point, St. Thomas. North Knoll is 32 feet high, South Knoll, 26 feet high, is Geographic Position \" F l a t \": lat. 18\" 19' 1M) m. , long. 64\" 50' 722 m. Spanish name, Cay0 1taso. -T. 3770 and D. R. , Dewitz. Quarter, St. Croix. -Dewitz. p. 12.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-blg-faat-cay&island=st_thomas&context=Blg%20Faat%20Cay",
-      "map": "/map?q=Blg%20Faat%20Cay&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-blg-faat-cay&island=st_thomas&context=Big%20Flat%20Cay",
+      "map": "/map?q=Big%20Flat%20Cay&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -5329,15 +5331,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_croix-estate-bonne-espbrance",
-    "name": "Bonne EspBrance",
+    "name": "Bonne Esperance",
     "type": "estate",
     "island": "st_croix",
-    "aliases": [],
+    "aliases": [
+      "Bonne EspBrance"
+    ],
     "description": "Bonne EspBrance; Estate, 18, Queen (Dronning) Quarter, St. Croix. Buildings on hill, 290 feet or more in height, center of tract; located by Dewitz on continuation of ridge to southwest, north of Lareine. Noted by Beck as property of \" Cr. IWd. Laur. Berg \"; by Oldendorp, a s 'I Laurberg's plantation. \" Bonne Esperancc-, French name meaning '' Good-Hope \"; so translated by L. C W. ; not to be confused with Goodhope Estate in",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-croix-estate-bonne-espbrance&island=st_croix&context=Bonne%20EspBrance",
-      "map": "/map?q=Bonne%20EspBrance&island=st_croix"
+      "knowledge": "/history/knowledge?estate=st-croix-estate-bonne-espbrance&island=st_croix&context=Bonne%20Esperance",
+      "map": "/map?q=Bonne%20Esperance&island=st_croix"
     },
     "evidence": {
       "estateLayer": false,
@@ -6162,15 +6166,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-dictionaryEntry-bordeouo-plantation",
-    "name": "Bordeouo plantation",
+    "name": "Bordeaux plantation",
     "type": "dictionaryEntry",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Bordeouo plantation"
+    ],
     "description": "Bordeouo plantation; Bordeaux Bistate, St, Thomas. -Ktiffner (1767). 44\" to 49\". -K. (Not Bordeau, Rourdeaux, nor Burdos. )-G. B. -- 43 of 215 40 U. S. COAST AND GEODETIC SURVEY",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bordeouo-plantation&island=st_thomas&context=Bordeouo%20plantation",
-      "map": "/map?q=Bordeouo%20plantation&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-dictionaryentry-bordeouo-plantation&island=st_thomas&context=Bordeaux%20plantation",
+      "map": "/map?q=Bordeaux%20plantation&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -6220,15 +6226,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-estate-borpenfrei",
-    "name": "Borpenfrei",
+    "name": "Borgenfrei",
     "type": "estate",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Borpenfrei"
+    ],
     "description": "Borpenfrei; German name of Sorgenfrl. -ReicheL Borgenfrey; Old German equivalent of modern German I' Sorgenfrei, \" Danish \" Sorgenfri; '' Estate 90 named on St. Thomas. 4ld.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-estate-borpenfrei&island=st_thomas&context=Borpenfrei",
-      "map": "/map?q=Borpenfrei&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-estate-borpenfrei&island=st_thomas&context=Borgenfrei",
+      "map": "/map?q=Borgenfrei&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -8176,15 +8184,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-estate-buona-viata",
-    "name": "Buona Viata",
+    "name": "Buona Vista",
     "type": "estate",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Buona Viata"
+    ],
     "description": "Buona Viata; Buonavista Estate, St. John. -Refchel; Dewitz.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-estate-buona-viata&island=st_john&context=Buona%20Viata",
-      "map": "/map?q=Buona%20Viata&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-estate-buona-viata&island=st_john&context=Buona%20Vista",
+      "map": "/map?q=Buona%20Vista&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -8362,15 +8372,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-estate-busna-eaperanza",
-    "name": "Busna Eaperanza",
+    "name": "Buena Esperanza",
     "type": "estate",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Busna Eaperanza"
+    ],
     "description": "Busna Eaperanza; Spanish name of Bonne Esperance Estate, St. Thomas. Sp. 250.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-estate-busna-eaperanza&island=st_thomas&context=Busna%20Eaperanza",
-      "map": "/map?q=Busna%20Eaperanza&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-estate-busna-eaperanza&island=st_thomas&context=Buena%20Esperanza",
+      "map": "/map?q=Buena%20Esperanza&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -8873,15 +8885,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-cabriteberg-p-o-c-t",
-    "name": "Cabriteberg P o C t",
+    "name": "Cabriteberg Point",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Cabriteberg P o C t"
+    ],
     "description": "Cabriteberg P o C t; Same as Red Point, aouth end of Uabritnborg Peninsula; hence better, Cabritaberg Point, St. Thomas. -Zabriskie.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-cabriteberg-p-o-c-t&island=st_thomas&context=Cabriteberg%20P%20o%20C%20t",
-      "map": "/map?q=Cabriteberg%20P%20o%20C%20t&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-cabriteberg-p-o-c-t&island=st_thomas&context=Cabriteberg%20Point",
+      "map": "/map?q=Cabriteberg%20Point&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -9076,15 +9090,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-caetelpolnt",
-    "name": "Caetelpolnt",
+    "name": "Castle Point",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Caetelpolnt"
+    ],
     "description": "Caetelpolnt; Variant spelling of Kastel Point, q. v. -Hornbeck.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-caetelpolnt&island=st_thomas&context=Caetelpolnt",
-      "map": "/map?q=Caetelpolnt&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-caetelpolnt&island=st_thomas&context=Castle%20Point",
+      "map": "/map?q=Castle%20Point&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -9105,15 +9121,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-point-cahritahorn-point",
-    "name": "Cahritahorn Point",
+    "name": "Cabritahorn Point",
     "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Cahritahorn Point"
+    ],
     "description": "Cahritahorn Point; Same as Cabrithorn Point, St. John.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-point-cahritahorn-point&island=st_john&context=Cahritahorn%20Point",
-      "map": "/map?q=Cahritahorn%20Point&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-point-cahritahorn-point&island=st_john&context=Cabritahorn%20Point",
+      "map": "/map?q=Cabritahorn%20Point&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -21786,15 +21804,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-point-durloe-channd",
-    "name": "Durloe Channd",
+    "name": "Durloe Channel",
     "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Durloe Channd"
+    ],
     "description": "Durloe Channd; P486inge between Durloe Uays and Hognest Point, St. John.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-point-durloe-channd&island=st_john&context=Durloe%20Channd",
-      "map": "/map?q=Durloe%20Channd&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-point-durloe-channd&island=st_john&context=Durloe%20Channel",
+      "map": "/map?q=Durloe%20Channel&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -22030,15 +22050,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-point-eostcnd-cape",
-    "name": "E'ostcnd Cape",
+    "name": "Eastend Cape",
     "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "E'ostcnd Cape"
+    ],
     "description": "E'ostcnd Cape; Eastend Point, St. John. Bn~tcnd ( H i W ); Triangulation Station on Nancy Hill. St. J. , q. v. for G. P.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-point-eostcnd-cape&island=st_john&context=E'ostcnd%20Cape",
-      "map": "/map?q=E'ostcnd%20Cape&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-point-eostcnd-cape&island=st_john&context=Eastend%20Cape",
+      "map": "/map?q=Eastend%20Cape&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -25004,15 +25026,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-flag-h-i-l-l",
-    "name": "Flag H i l l",
+    "name": "Flag Hill",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Flag H i l l"
+    ],
     "description": "Flag H i l l; E'OtIli, 980 feet high, 3. !WO yards northeast of Miihlenfels Point, 1, ooO yards east of Havensight Point, on line between New Quarter ilnd French Bng Quarter, S. T. So called by all recent cartographers. Earlier fornis of sanie nnme : Vlnggeberg, Flaggenberg, Flagbierget, Flngberg, Flaghill. Legend by Van Reulen (1719): \" Hier waayt wen Ueense Vlag, af als er Scheepen komen, hier op dese Berg heuden de Swarte de Waght\" ( IIere is displayed a Danish flag, whenever ships arrive; here on this hill the negroes keep watch). G. P. \" Flag \"; lat. 18\" 19' 55\" (1, 692. 8m. ), long. 64' 54' 41\" (1, 209m. ) Spanish, \"Cerro de la Handera. \"",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-flag-h-i-l-l&island=st_thomas&context=Flag%20H%20i%20l%20l",
-      "map": "/map?q=Flag%20H%20i%20l%20l&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-flag-h-i-l-l&island=st_thomas&context=Flag%20Hill",
+      "map": "/map?q=Flag%20Hill&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -25352,15 +25376,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_john-point-flanagan-pasw-ge",
-    "name": "Flanagan Pasw ge",
+    "name": "Flanagan Passage",
     "type": "point",
     "island": "st_john",
-    "aliases": [],
+    "aliases": [
+      "Flanagan Pasw ge"
+    ],
     "description": "Flanagan Pasw ge; C'hniiiicW with totnl width of over 21/2 miles, hrtwren St. John and Norman Island. The c-hnnnel between Privateer Point, St. John, rind B'lanagtin Island is mile wide; that between Flnnngsn Islwnd : I n d Inclirin Roc. ks is about 1% miles wide; that between Flanagnn Isliind and Norman Islnntl, over lV! miles wide. Named from Flnnagnn Island, sometjnies called Flemingltrim Cay, which lies within the channels. 13. A. 2600, 130, 2462; C. €'. -41~0called Flanigan Passage and Flanagxn Pass : Spanish name, \" Paso Consejos. \" I\"latiigalz I'rrssnge; E'l%inaganPn~s:ige. -H. 0. 3903.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-john-point-flanagan-pasw-ge&island=st_john&context=Flanagan%20Pasw%20ge",
-      "map": "/map?q=Flanagan%20Pasw%20ge&island=st_john"
+      "knowledge": "/history/knowledge?estate=st-john-point-flanagan-pasw-ge&island=st_john&context=Flanagan%20Passage",
+      "map": "/map?q=Flanagan%20Passage&island=st_john"
     },
     "evidence": {
       "estateLayer": false,
@@ -25521,15 +25547,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-fointe-dol-nordoueete",
-    "name": "Fointe dol Nordoueete",
+    "name": "Pointe du Nordoueste",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Fointe dol Nordoueete"
+    ],
     "description": "Fointe dol Nordoueete; E'rench, meaning ' I Northwest Point, \" aame as g of m y Point. -Bellin, I, 78. Powtte~de Pais-Perdr; French, \"Lostlaqd Ppiat \";. aalne &s Kralase Point, Sh",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-fointe-dol-nordoueete&island=st_thomas&context=Fointe%20dol%20Nordoueete",
-      "map": "/map?q=Fointe%20dol%20Nordoueete&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-fointe-dol-nordoueete&island=st_thomas&context=Pointe%20du%20Nordoueste",
+      "map": "/map?q=Pointe%20du%20Nordoueste&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -26897,15 +26925,17 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-point-frederik-p-o-i-n-t",
-    "name": "Frederik P o i n t",
+    "name": "Frederik Point",
     "type": "point",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Frederik P o i n t"
+    ],
     "description": "Frederik P o i n t; Easternmost angle of Hassel Island, east of Cowell Ilill, marked by old Fort, on west slde of St. Thomas Harbor entrance. Originally cnlled Jnnsen Point or West Hook.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-point-frederik-p-o-i-n-t&island=st_thomas&context=Frederik%20P%20o%20i%20n%20t",
-      "map": "/map?q=Frederik%20P%20o%20i%20n%20t&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-point-frederik-p-o-i-n-t&island=st_thomas&context=Frederik%20Point",
+      "map": "/map?q=Frederik%20Point&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -26926,16 +26956,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-historic-frederikalort",
-    "name": "Frederikalort",
+    "name": "Frederiksfort",
     "imageUrl": "/images/dictionary/frederikalort.svg",
     "type": "historic",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Frederikalort"
+    ],
     "description": "Frederikalort; On west coast, a t mouth of stream, northwest of Frederiksted, St. Oroiu. -Danish 80. Also called Fort, Friedrichsfort, Fridrichsfort, Fort Frederik.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-frederikalort&island=st_thomas&context=Frederikalort",
-      "map": "/map?q=Frederikalort&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-historic-frederikalort&island=st_thomas&context=Frederiksfort",
+      "map": "/map?q=Frederiksfort&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
@@ -27166,16 +27198,18 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-historic-fredertksfort",
-    "name": "Fredertksfort",
+    "name": "Frederiksfort",
     "imageUrl": "/images/dictionary/fredertksfort.svg",
     "type": "historic",
     "island": "st_thomas",
-    "aliases": [],
+    "aliases": [
+      "Fredertksfort"
+    ],
     "description": "Fredertksfort; 34-foot Tower, hujlt on Frcderlksberg or 1Huehe:ird IIill, St. Thomas, by the Danish Government in 1089, used till 173. 5; sold witli surrounding land in 1838. Now ctilled (( Bluebeard Castlt~. \"-Asplnall.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-fredertksfort&island=st_thomas&context=Fredertksfort",
-      "map": "/map?q=Fredertksfort&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-historic-fredertksfort&island=st_thomas&context=Frederiksfort",
+      "map": "/map?q=Frederiksfort&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,

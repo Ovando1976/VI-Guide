@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T11:41:55.872Z",
+  "generatedAt": "2026-07-02T11:47:39.092Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 744,
-    "issuesSampled": 200,
+    "issuesActual": 745,
+    "issuesSampled": 201,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -33,7 +33,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 744,
-    "low": 0
+    "low": 1
   },
   "issueGroups": [
     {
@@ -42,6 +42,14 @@
       "issue": "missing_coordinates",
       "count": 744,
       "sampled": 200,
+      "sampleLimit": 200
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "issue": "duplicate_name_type_island",
+      "count": 1,
+      "sampled": 1,
       "sampleLimit": 200
     }
   ],
@@ -231,7 +239,7 @@
       "source": "geographic_index",
       "index": 138,
       "id": "st_thomas-point-blg-faat-cay",
-      "name": "Blg Faat Cay",
+      "name": "Big Flat Cay",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -261,7 +269,7 @@
       "source": "geographic_index",
       "index": 163,
       "id": "st_croix-estate-bonne-espbrance",
-      "name": "Bonne EspBrance",
+      "name": "Bonne Esperance",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -291,7 +299,7 @@
       "source": "geographic_index",
       "index": 190,
       "id": "st_thomas-estate-borpenfrei",
-      "name": "Borpenfrei",
+      "name": "Borgenfrei",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -401,7 +409,7 @@
       "source": "geographic_index",
       "index": 251,
       "id": "st_john-estate-buona-viata",
-      "name": "Buona Viata",
+      "name": "Buona Vista",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -431,7 +439,7 @@
       "source": "geographic_index",
       "index": 257,
       "id": "st_thomas-estate-busna-eaperanza",
-      "name": "Busna Eaperanza",
+      "name": "Buena Esperanza",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -501,7 +509,7 @@
       "source": "geographic_index",
       "index": 274,
       "id": "st_thomas-point-cabriteberg-p-o-c-t",
-      "name": "Cabriteberg P o C t",
+      "name": "Cabriteberg Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -541,7 +549,7 @@
       "source": "geographic_index",
       "index": 281,
       "id": "st_thomas-point-caetelpolnt",
-      "name": "Caetelpolnt",
+      "name": "Castle Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -551,7 +559,7 @@
       "source": "geographic_index",
       "index": 282,
       "id": "st_john-point-cahritahorn-point",
-      "name": "Cahritahorn Point",
+      "name": "Cabritahorn Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1401,7 +1409,7 @@
       "source": "geographic_index",
       "index": 687,
       "id": "st_john-point-durloe-channd",
-      "name": "Durloe Channd",
+      "name": "Durloe Channel",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1421,7 +1429,7 @@
       "source": "geographic_index",
       "index": 695,
       "id": "st_john-point-eostcnd-cape",
-      "name": "E'ostcnd Cape",
+      "name": "Eastend Cape",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1761,7 +1769,7 @@
       "source": "geographic_index",
       "index": 793,
       "id": "st_thomas-point-flag-h-i-l-l",
-      "name": "Flag H i l l",
+      "name": "Flag Hill",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1831,7 +1839,7 @@
       "source": "geographic_index",
       "index": 805,
       "id": "st_john-point-flanagan-pasw-ge",
-      "name": "Flanagan Pasw ge",
+      "name": "Flanagan Passage",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1841,7 +1849,7 @@
       "source": "geographic_index",
       "index": 810,
       "id": "st_thomas-point-fointe-dol-nordoueete",
-      "name": "Fointe dol Nordoueete",
+      "name": "Pointe du Nordoueste",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1971,7 +1979,7 @@
       "source": "geographic_index",
       "index": 855,
       "id": "st_thomas-point-frederik-p-o-i-n-t",
-      "name": "Frederik P o i n t",
+      "name": "Frederik Point",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1981,7 +1989,7 @@
       "source": "geographic_index",
       "index": 856,
       "id": "st_thomas-historic-frederikalort",
-      "name": "Frederikalort",
+      "name": "Frederiksfort",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -2021,10 +2029,19 @@
       "source": "geographic_index",
       "index": 863,
       "id": "st_thomas-historic-fredertksfort",
-      "name": "Fredertksfort",
+      "name": "Frederiksfort",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 863,
+      "name": "Frederiksfort",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 856.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     },
     {
       "severity": "medium",
