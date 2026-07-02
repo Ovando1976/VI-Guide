@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generatedAt": "2026-07-02T10:40:58.488Z",
+    "generatedAt": "2026-07-02T10:50:34.887Z",
     "geographicIndexRecords": 2838,
     "missingCoordinateRecords": 1184,
     "sourceCandidates": 1108,
     "confidenceTotals": {
-      "review": 95,
+      "review": 92,
       "none": 1039,
-      "weak": 47,
-      "exact": 3
+      "weak": 37,
+      "exact": 16
     }
   },
   "proposals": [
@@ -15216,11 +15216,11 @@
     {
       "index": 555,
       "id": "st_croix-estate-cotkongxove-bay",
-      "name": "Cotkongxove Bay",
+      "name": "Cotton Grove Bay",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.76,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 558,
@@ -15230,9 +15230,9 @@
         "island": "st_croix",
         "lat": 17.7354068317233,
         "lng": -64.63955741808715,
-        "score": 0.76,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Cotkongxove Bay",
+        "score": 1,
+        "reason": "contains_clean_slug",
+        "matchedRecordName": "Cotton Grove Bay",
         "matchedCandidateName": "COTTON GROVE"
       },
       "alternatives": [
@@ -15245,10 +15245,52 @@
           "island": "st_croix",
           "lat": 17.734079,
           "lng": -64.640034,
-          "score": 0.76,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Cotkongxove Bay",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Cotton Grove Bay",
           "matchedCandidateName": "Estate COTTON GROVE"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 992,
+          "id": "st_croix-estate-grove-place",
+          "name": "GROVE PLACE",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.730883867683502,
+          "lng": -64.8230564385662,
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Cotton Grove Bay",
+          "matchedCandidateName": "GROVE PLACE"
+        },
+        {
+          "source": "historic_sites",
+          "sourceIndex": 21,
+          "id": "nrhp-stx-estate-grove-place",
+          "name": "Estate Grove Place",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.727104,
+          "lng": -64.824146,
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Cotton Grove Bay",
+          "matchedCandidateName": "Estate Grove Place"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 262,
+          "id": "1750",
+          "name": "Estate GROVE PLACE",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.727104,
+          "lng": -64.824146,
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Cotton Grove Bay",
+          "matchedCandidateName": "Estate GROVE PLACE"
         },
         {
           "source": "geographic_index",
@@ -15259,52 +15301,10 @@
           "island": "st_croix",
           "lat": 17.713211455432898,
           "lng": -64.7975358411718,
-          "score": 0.51,
+          "score": 0.677,
           "reason": "weak_similarity",
-          "matchedRecordName": "Cotkongxove Bay",
+          "matchedRecordName": "Cotton Grove Bay",
           "matchedCandidateName": "GOLDEN GROVE"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 254,
-          "id": "1889",
-          "name": "Estate GOLDEN GROVE",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.718482,
-          "lng": -64.800013,
-          "score": 0.51,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Cotkongxove Bay",
-          "matchedCandidateName": "Estate GOLDEN GROVE"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 560,
-          "id": "st_croix-estate-cotton-valley",
-          "name": "COTTON VALLEY",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.7505957119428,
-          "lng": -64.624758401535,
-          "score": 0.472,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Cotkongxove Bay",
-          "matchedCandidateName": "COTTON VALLEY"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 243,
-          "id": "1666",
-          "name": "Estate COTTON VALLEY",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.757341,
-          "lng": -64.622193,
-          "score": 0.472,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Cotkongxove Bay",
-          "matchedCandidateName": "Estate COTTON VALLEY"
         }
       ]
     },
@@ -27887,11 +27887,11 @@
     {
       "index": 852,
       "id": "st_croix-estate-fredericks-izaab",
-      "name": "Fredericks IZaab",
+      "name": "Frederikshaab",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.76,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 860,
@@ -27901,9 +27901,9 @@
         "island": "st_croix",
         "lat": 17.715309449649553,
         "lng": -64.86049092929986,
-        "score": 0.76,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Fredericks IZaab",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Frederikshaab",
         "matchedCandidateName": "FREDERIKSHAAB"
       },
       "alternatives": [
@@ -27916,10 +27916,24 @@
           "island": "st_croix",
           "lat": 17.714434,
           "lng": -64.86292,
-          "score": 0.76,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Fredericks IZaab",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Frederikshaab",
           "matchedCandidateName": "Estate FREDERIKSHAAB"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 819,
+          "id": "st_croix-fort-fort-frederik",
+          "name": "Fort Frederik",
+          "type": "fort",
+          "island": "st_croix",
+          "lat": 17.7125,
+          "lng": -64.8842,
+          "score": 0.92,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Frederikshaab",
+          "matchedCandidateName": "st_croix-fort-fort-frederik"
         },
         {
           "source": "geographic_index",
@@ -27930,9 +27944,9 @@
           "island": "st_croix",
           "lat": 17.7124548975535,
           "lng": -64.88349213990135,
-          "score": 0.573,
+          "score": 0.702,
           "reason": "weak_similarity",
-          "matchedRecordName": "Fredericks IZaab",
+          "matchedRecordName": "Frederikshaab",
           "matchedCandidateName": "FREDERIKSTED"
         },
         {
@@ -27944,9 +27958,9 @@
           "island": "st_croix",
           "lat": 17.712633,
           "lng": -64.883452,
-          "score": 0.573,
+          "score": 0.702,
           "reason": "weak_similarity",
-          "matchedRecordName": "Fredericks IZaab",
+          "matchedRecordName": "Frederikshaab",
           "matchedCandidateName": "Estate FREDERIKSTED"
         },
         {
@@ -27958,24 +27972,10 @@
           "island": "st_croix",
           "lat": 17.7124548975535,
           "lng": -64.88349213990135,
-          "score": 0.563,
+          "score": 0.692,
           "reason": "weak_similarity",
-          "matchedRecordName": "Fredericks IZaab",
+          "matchedRecordName": "Frederikshaab",
           "matchedCandidateName": "Frederiksted"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 819,
-          "id": "st_croix-fort-fort-frederik",
-          "name": "Fort Frederik",
-          "type": "fort",
-          "island": "st_croix",
-          "lat": 17.7125,
-          "lng": -64.8842,
-          "score": 0.5,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Fredericks IZaab",
-          "matchedCandidateName": "Fort Frederik"
         }
       ]
     },
@@ -36627,11 +36627,11 @@
     {
       "index": 1079,
       "id": "st_thomas-estate-hnvensigt",
-      "name": "Hnvensigt",
+      "name": "Havensight",
       "type": "estate",
       "island": "st_thomas",
-      "confidence": "weak",
-      "bestScore": 0.81,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1058,
@@ -36641,26 +36641,12 @@
         "island": "st_thomas",
         "lat": 18.3297646929236,
         "lng": -64.92094811684731,
-        "score": 0.81,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Hnvensigt",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Havensight",
         "matchedCandidateName": "HAVENSIGHT"
       },
       "alternatives": [
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 118,
-          "id": "1896",
-          "name": "Estate HAVENSIGHT",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.329422,
-          "lng": -64.92157,
-          "score": 0.81,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Hnvensigt",
-          "matchedCandidateName": "Estate HAVENSIGHT"
-        },
         {
           "source": "geographic_index",
           "sourceIndex": 1059,
@@ -36670,10 +36656,24 @@
           "island": "st_thomas",
           "lat": 18.3297646929236,
           "lng": -64.92094811684731,
-          "score": 0.8,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Hnvensigt",
-          "matchedCandidateName": "Havensight Point"
+          "score": 1,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Havensight",
+          "matchedCandidateName": "st_thomas-point-havensight-point"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 118,
+          "id": "1896",
+          "name": "Estate HAVENSIGHT",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.329422,
+          "lng": -64.92157,
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Havensight",
+          "matchedCandidateName": "Estate HAVENSIGHT"
         },
         {
           "source": "geographic_index",
@@ -36684,9 +36684,9 @@
           "island": "st_thomas",
           "lat": 18.3297646929236,
           "lng": -64.92094811684731,
-          "score": 0.71,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Hnvensigt",
+          "score": 0.91,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Havensight",
           "matchedCandidateName": "Havenbight"
         },
         {
@@ -36698,9 +36698,9 @@
           "island": "st_thomas",
           "lat": 18.329422,
           "lng": -64.92157,
-          "score": 0.71,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Hnvensigt",
+          "score": 0.91,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Havensight",
           "matchedCandidateName": "Estate Hafensight"
         },
         {
@@ -36714,7 +36714,7 @@
           "lng": -64.9313,
           "score": 0.4,
           "reason": "weak_similarity",
-          "matchedRecordName": "Hnvensigt",
+          "matchedRecordName": "st_thomas-estate-hnvensigt",
           "matchedCandidateName": "Government House"
         }
       ]
@@ -42897,11 +42897,11 @@
     {
       "index": 1231,
       "id": "st_croix-estate-judys-fancy",
-      "name": "Judy's Fancy",
+      "name": "Judith's Fancy",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.796,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "historic_sites",
         "sourceIndex": 24,
@@ -42911,9 +42911,9 @@
         "island": "st_croix",
         "lat": 17.776914,
         "lng": -64.747497,
-        "score": 0.796,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Judy's Fancy",
+        "score": 1,
+        "reason": "similarity_or_token_overlap",
+        "matchedRecordName": "Judith's Fancy",
         "matchedCandidateName": "Estate Judith's Fancy"
       },
       "alternatives": [
@@ -42926,9 +42926,9 @@
           "island": "st_croix",
           "lat": 17.7749468067485,
           "lng": -64.7456709954797,
-          "score": 0.779,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Judy's Fancy",
+          "score": 0.939,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Judith's Fancy",
           "matchedCandidateName": "JUDITHS FANCY"
         },
         {
@@ -42940,10 +42940,24 @@
           "island": "st_croix",
           "lat": 17.776914,
           "lng": -64.747497,
-          "score": 0.779,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Judy's Fancy",
+          "score": 0.939,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Judith's Fancy",
           "matchedCandidateName": "Estate JUDITHS FANCY"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1228,
+          "id": "st_croix-estate-judith-point",
+          "name": "Judith Point",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.7749468067485,
+          "lng": -64.7456709954797,
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Judith's Fancy",
+          "matchedCandidateName": "st_croix-estate-judith-point"
         },
         {
           "source": "geographic_index",
@@ -42954,24 +42968,10 @@
           "island": "st_croix",
           "lat": 17.74612636309525,
           "lng": -64.7609306226064,
-          "score": 0.76,
+          "score": 0.737,
           "reason": "weak_similarity",
-          "matchedRecordName": "Judy's Fancy",
-          "matchedCandidateName": "MARY'S FANCY"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 303,
-          "id": "1700",
-          "name": "Estate MARY'S FANCY",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.744143,
-          "lng": -64.759958,
-          "score": 0.76,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Judy's Fancy",
-          "matchedCandidateName": "Estate MARY'S FANCY"
+          "matchedRecordName": "st_croix-estate-judys-fancy",
+          "matchedCandidateName": "st_croix-estate-marys-fancy"
         },
         {
           "source": "geographic_index",
@@ -42992,11 +42992,11 @@
     {
       "index": 1242,
       "id": "st_john-estate-kalabasboom",
-      "name": "Kalabasboom",
+      "name": "Calabash Boom",
       "type": "estate",
       "island": "st_john",
-      "confidence": "weak",
-      "bestScore": 0.779,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 284,
@@ -43006,9 +43006,9 @@
         "island": "st_john",
         "lat": 18.329639602750348,
         "lng": -64.7086034920477,
-        "score": 0.779,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Kalabasboom",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Calabash Boom",
         "matchedCandidateName": "CALABASH BOOM"
       },
       "alternatives": [
@@ -43021,38 +43021,10 @@
           "island": "st_john",
           "lat": 18.330818,
           "lng": -64.70708,
-          "score": 0.779,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Kalabasboom",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Calabash Boom",
           "matchedCandidateName": "Estate CALABASH BOOM"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 20,
-          "id": "st_john-estate-annaberg",
-          "name": "ANNABERG",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.36479311179155,
-          "lng": -64.7385750100362,
-          "score": 0.283,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Kalabasboom",
-          "matchedCandidateName": "ANNABERG"
-        },
-        {
-          "source": "geographic_index",
-          "sourceIndex": 22,
-          "id": "st_john-estate-annaberg-estate-st-john",
-          "name": "Annaberg Estate, St. John",
-          "type": "estate",
-          "island": "st_john",
-          "lat": 18.364961,
-          "lng": -64.729911,
-          "score": 0.283,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Kalabasboom",
-          "matchedCandidateName": "Annaberg Estate, St. John"
         },
         {
           "source": "geographic_index",
@@ -43063,24 +43035,52 @@
           "island": "st_john",
           "lat": 18.34305825172645,
           "lng": -64.7874874960091,
-          "score": 0.283,
+          "score": 0.318,
           "reason": "weak_similarity",
-          "matchedRecordName": "Kalabasboom",
+          "matchedRecordName": "Calabash Boom",
           "matchedCandidateName": "Caneelborn"
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 911,
-          "id": "st_john-estate-glucksberg",
-          "name": "GLUCKSBERG",
+          "sourceIndex": 407,
+          "id": "st_john-estate-caval-cay",
+          "name": "CAVAL CAY",
           "type": "estate",
           "island": "st_john",
-          "lat": 18.3329838022163,
-          "lng": -64.77580007724475,
-          "score": 0.283,
+          "lat": 18.3696541915186,
+          "lng": -64.79410767497025,
+          "score": 0.318,
           "reason": "weak_similarity",
-          "matchedRecordName": "Kalabasboom",
-          "matchedCandidateName": "GLUCKSBERG"
+          "matchedRecordName": "Calabash Boom",
+          "matchedCandidateName": "CAVAL CAY"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1368,
+          "id": "st_john-estate-lameshur",
+          "name": "Lameshur",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.3215083872189,
+          "lng": -64.72235457397085,
+          "score": 0.318,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Calabash Boom",
+          "matchedCandidateName": "Lameshur"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 13,
+          "id": "1818",
+          "name": "Estate CAVAL CAY",
+          "type": "estate",
+          "island": "st_john",
+          "lat": 18.36965,
+          "lng": -64.794072,
+          "score": 0.318,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Calabash Boom",
+          "matchedCandidateName": "Estate CAVAL CAY"
         }
       ]
     },
@@ -52516,11 +52516,11 @@
     {
       "index": 1507,
       "id": "st_thomas-estate-longmat",
-      "name": "Longmat",
+      "name": "Langmath",
       "type": "estate",
       "island": "st_thomas",
-      "confidence": "weak",
-      "bestScore": 0.76,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1380,
@@ -52530,9 +52530,9 @@
         "island": "st_thomas",
         "lat": 18.3330248707287,
         "lng": -64.87415279470736,
-        "score": 0.76,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Longmat",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Langmath",
         "matchedCandidateName": "LANGMATH"
       },
       "alternatives": [
@@ -52545,9 +52545,9 @@
           "island": "st_thomas",
           "lat": 18.333029,
           "lng": -64.874909,
-          "score": 0.76,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Longmat",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Langmath",
           "matchedCandidateName": "Estate LANGMATH"
         },
         {
@@ -52561,7 +52561,7 @@
           "lng": -64.95865161016525,
           "score": 0.439,
           "reason": "weak_similarity",
-          "matchedRecordName": "Longmat",
+          "matchedRecordName": "st_thomas-estate-longmat",
           "matchedCandidateName": "Contant"
         },
         {
@@ -52575,7 +52575,7 @@
           "lng": -64.95865161016525,
           "score": 0.439,
           "reason": "weak_similarity",
-          "matchedRecordName": "Longmat",
+          "matchedRecordName": "st_thomas-estate-longmat",
           "matchedCandidateName": "Contant Point"
         },
         {
@@ -52589,7 +52589,7 @@
           "lng": -64.8970447926404,
           "score": 0.439,
           "reason": "weak_similarity",
-          "matchedRecordName": "Longmat",
+          "matchedRecordName": "st_thomas-estate-longmat",
           "matchedCandidateName": "HOFFMAN"
         },
         {
@@ -52603,7 +52603,7 @@
           "lng": -64.897571,
           "score": 0.439,
           "reason": "weak_similarity",
-          "matchedRecordName": "Longmat",
+          "matchedRecordName": "st_thomas-estate-longmat",
           "matchedCandidateName": "Estate HOFFMAN"
         }
       ]
@@ -52801,11 +52801,11 @@
     {
       "index": 1527,
       "id": "st_thomas-estate-lowelund",
-      "name": "Lowelund",
+      "name": "Lovenlund",
       "type": "estate",
       "island": "st_thomas",
-      "confidence": "weak",
-      "bestScore": 0.788,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1524,
@@ -52815,26 +52815,12 @@
         "island": "st_thomas",
         "lat": 18.3602620470275,
         "lng": -64.9080186236434,
-        "score": 0.788,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Lowelund",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Lovenlund",
         "matchedCandidateName": "LOVENLUND"
       },
       "alternatives": [
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 140,
-          "id": "1937",
-          "name": "Estate LOVENLUND",
-          "type": "estate",
-          "island": "st_thomas",
-          "lat": 18.362944,
-          "lng": -64.906782,
-          "score": 0.788,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Lowelund",
-          "matchedCandidateName": "Estate LOVENLUND"
-        },
         {
           "source": "geographic_index",
           "sourceIndex": 1525,
@@ -52844,10 +52830,24 @@
           "island": "st_thomas",
           "lat": 18.3602620470275,
           "lng": -64.9080186236434,
-          "score": 0.778,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Lowelund",
-          "matchedCandidateName": "Lovenlund Bay"
+          "score": 1,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Lovenlund",
+          "matchedCandidateName": "st_thomas-bay-lovenlund-bay"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 140,
+          "id": "1937",
+          "name": "Estate LOVENLUND",
+          "type": "estate",
+          "island": "st_thomas",
+          "lat": 18.362944,
+          "lng": -64.906782,
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Lovenlund",
+          "matchedCandidateName": "Estate LOVENLUND"
         },
         {
           "source": "geographic_index",
@@ -52858,9 +52858,9 @@
           "island": "st_thomas",
           "lat": 18.35975098547915,
           "lng": -64.94000561367716,
-          "score": 0.61,
+          "score": 0.71,
           "reason": "weak_similarity",
-          "matchedRecordName": "Lowelund",
+          "matchedRecordName": "Lovenlund",
           "matchedCandidateName": "LERKENLUND"
         },
         {
@@ -52872,24 +52872,24 @@
           "island": "st_thomas",
           "lat": 18.359692,
           "lng": -64.940228,
-          "score": 0.61,
+          "score": 0.71,
           "reason": "weak_similarity",
-          "matchedRecordName": "Lowelund",
+          "matchedRecordName": "Lovenlund",
           "matchedCandidateName": "Estate LERKENLUND"
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 12,
-          "id": "st_thomas-estate-altona-and-welgunst",
-          "name": "ALTONA & WELGUNST",
-          "type": "estate",
+          "sourceIndex": 931,
+          "id": "st_thomas-government-building-government-house",
+          "name": "Government House",
+          "type": "government-building",
           "island": "st_thomas",
-          "lat": 18.3412699576036,
-          "lng": -64.94410778172886,
-          "score": 0.477,
+          "lat": 18.3418,
+          "lng": -64.9313,
+          "score": 0.5,
           "reason": "weak_similarity",
-          "matchedRecordName": "Lowelund",
-          "matchedCandidateName": "ALTONA & WELGUNST"
+          "matchedRecordName": "Lovenlund",
+          "matchedCandidateName": "Government House"
         }
       ]
     },
@@ -56411,11 +56411,11 @@
     {
       "index": 1633,
       "id": "st_croix-estate-moalpellier",
-      "name": "Moalpellier",
+      "name": "Montpellier",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.828,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1645,
@@ -56425,9 +56425,9 @@
         "island": "st_croix",
         "lat": 17.76469662632465,
         "lng": -64.7564546972505,
-        "score": 0.828,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Moalpellier",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Montpellier",
         "matchedCandidateName": "MONTPELLIER"
       },
       "alternatives": [
@@ -56440,9 +56440,9 @@
           "island": "st_croix",
           "lat": 17.76799,
           "lng": -64.755324,
-          "score": 0.828,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Moalpellier",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Montpellier",
           "matchedCandidateName": "Estate MONTPELLIER"
         },
         {
@@ -56454,24 +56454,10 @@
           "island": "st_croix",
           "lat": 17.737932809402352,
           "lng": -64.84327480354494,
-          "score": 0.702,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Moalpellier",
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Montpellier",
           "matchedCandidateName": "MONTPELLIER (I)"
-        },
-        {
-          "source": "estates_geojson",
-          "sourceIndex": 308,
-          "id": "1732",
-          "name": "Estate MONTPELLIER (I)",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.738144,
-          "lng": -64.841296,
-          "score": 0.702,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Moalpellier",
-          "matchedCandidateName": "Estate MONTPELLIER (I)"
         },
         {
           "source": "geographic_index",
@@ -56482,10 +56468,24 @@
           "island": "st_croix",
           "lat": 17.7339882459477,
           "lng": -64.8302931939088,
-          "score": 0.653,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Moalpellier",
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Montpellier",
           "matchedCandidateName": "MONTPELLIER (II)"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 308,
+          "id": "1732",
+          "name": "Estate MONTPELLIER (I)",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.738144,
+          "lng": -64.841296,
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Montpellier",
+          "matchedCandidateName": "Estate MONTPELLIER (I)"
         },
         {
           "source": "estates_geojson",
@@ -56496,9 +56496,9 @@
           "island": "st_croix",
           "lat": 17.732263,
           "lng": -64.830122,
-          "score": 0.653,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Moalpellier",
+          "score": 0.93,
+          "reason": "contains_clean_slug",
+          "matchedRecordName": "Montpellier",
           "matchedCandidateName": "Estate MONTPELLIER (II)"
         }
       ]
@@ -58121,11 +58121,11 @@
     {
       "index": 1675,
       "id": "st_croix-estate-mount-stkwart",
-      "name": "Mount Stkwart",
+      "name": "Mount Stewart",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.933,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1674,
@@ -58135,9 +58135,9 @@
         "island": "st_croix",
         "lat": 17.747914595970848,
         "lng": -64.84303041392059,
-        "score": 0.933,
-        "reason": "similarity_or_token_overlap",
-        "matchedRecordName": "Mount Stkwart",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Mount Stewart",
         "matchedCandidateName": "MOUNT STEWART"
       },
       "alternatives": [
@@ -58150,9 +58150,9 @@
           "island": "st_croix",
           "lat": 17.747186,
           "lng": -64.841199,
-          "score": 0.933,
+          "score": 1,
           "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "Mount Stkwart",
+          "matchedRecordName": "Mount Stewart",
           "matchedCandidateName": "Estate MOUNT STEWART"
         },
         {
@@ -58166,7 +58166,7 @@
           "lng": -64.62999820808935,
           "score": 0.625,
           "reason": "weak_similarity",
-          "matchedRecordName": "Mount Stkwart",
+          "matchedRecordName": "Mount Stewart",
           "matchedCandidateName": "MOUNT RETREAT"
         },
         {
@@ -58180,8 +58180,22 @@
           "lng": -64.628416,
           "score": 0.625,
           "reason": "weak_similarity",
-          "matchedRecordName": "Mount Stkwart",
+          "matchedRecordName": "Mount Stewart",
           "matchedCandidateName": "Estate MOUNT RETREAT"
+        },
+        {
+          "source": "geographic_index",
+          "sourceIndex": 1664,
+          "id": "st_croix-estate-mount-eagle",
+          "name": "MOUNT EAGLE",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.7591120534563,
+          "lng": -64.80572739345705,
+          "score": 0.548,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Mount Stewart",
+          "matchedCandidateName": "MOUNT EAGLE"
         },
         {
           "source": "geographic_index",
@@ -58194,22 +58208,8 @@
           "lng": -64.8683053275065,
           "score": 0.548,
           "reason": "weak_similarity",
-          "matchedRecordName": "Mount Stkwart",
+          "matchedRecordName": "Mount Stewart",
           "matchedCandidateName": "MOUNT VICTORY"
-        },
-        {
-          "source": "historic_sites",
-          "sourceIndex": 27,
-          "id": "nrhp-stx-estate-mount-victory",
-          "name": "Estate Mount Victory",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.751862,
-          "lng": -64.86838,
-          "score": 0.548,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Mount Stkwart",
-          "matchedCandidateName": "Estate Mount Victory"
         }
       ]
     },
@@ -91264,11 +91264,11 @@
     {
       "index": 2397,
       "id": "st_croix-estate-springfleld",
-      "name": "Springfleld",
+      "name": "Springfield",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.919,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 2396,
@@ -91278,9 +91278,9 @@
         "island": "st_croix",
         "lat": 17.73250369215545,
         "lng": -64.83460195498935,
-        "score": 0.919,
-        "reason": "similarity_or_token_overlap",
-        "matchedRecordName": "Springfleld",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Springfield",
         "matchedCandidateName": "SPRINGFIELD"
       },
       "alternatives": [
@@ -91293,9 +91293,9 @@
           "island": "st_croix",
           "lat": 17.733564,
           "lng": -64.834515,
-          "score": 0.919,
+          "score": 1,
           "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "Springfleld",
+          "matchedRecordName": "Springfield",
           "matchedCandidateName": "Estate SPRINGFIELD"
         },
         {
@@ -91309,7 +91309,7 @@
           "lng": -64.69475572276696,
           "score": 0.555,
           "reason": "weak_similarity",
-          "matchedRecordName": "Springfleld",
+          "matchedRecordName": "Springfield",
           "matchedCandidateName": "SPRING GUT"
         },
         {
@@ -91323,7 +91323,7 @@
           "lng": -64.68584754089756,
           "score": 0.555,
           "reason": "weak_similarity",
-          "matchedRecordName": "Springfleld",
+          "matchedRecordName": "Springfield",
           "matchedCandidateName": "THE SPRINGS"
         },
         {
@@ -91337,7 +91337,7 @@
           "lng": -64.691637,
           "score": 0.555,
           "reason": "weak_similarity",
-          "matchedRecordName": "Springfleld",
+          "matchedRecordName": "Springfield",
           "matchedCandidateName": "Estate SPRING GUT"
         },
         {
@@ -91351,7 +91351,7 @@
           "lng": -64.689265,
           "score": 0.555,
           "reason": "weak_similarity",
-          "matchedRecordName": "Springfleld",
+          "matchedRecordName": "Springfield",
           "matchedCandidateName": "Estate THE SPRINGS"
         }
       ]
@@ -98671,11 +98671,11 @@
     {
       "index": 2566,
       "id": "st_thomas-island-turtle-40ve-cay",
-      "name": "Turtle 40ve Cay",
+      "name": "Turtle Dove Cay",
       "type": "island",
       "island": "st_thomas",
-      "confidence": "weak",
-      "bestScore": 0.867,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 2567,
@@ -98685,9 +98685,9 @@
         "island": "st_thomas",
         "lat": 18.3086275618696,
         "lng": -65.0003906549153,
-        "score": 0.867,
-        "reason": "similarity_or_token_overlap",
-        "matchedRecordName": "Turtle 40ve Cay",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Turtle Dove Cay",
         "matchedCandidateName": "TURTLE DOVE CAY"
       },
       "alternatives": [
@@ -98700,9 +98700,9 @@
           "island": "st_thomas",
           "lat": 18.308666,
           "lng": -65.000503,
-          "score": 0.867,
+          "score": 1,
           "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "Turtle 40ve Cay",
+          "matchedRecordName": "Turtle Dove Cay",
           "matchedCandidateName": "Estate TURTLE DOVE CAY"
         },
         {
@@ -98716,7 +98716,7 @@
           "lng": -64.9888146529801,
           "score": 0.533,
           "reason": "weak_similarity",
-          "matchedRecordName": "Turtle 40ve Cay",
+          "matchedRecordName": "Turtle Dove Cay",
           "matchedCandidateName": "LITTLE FLAT CAY"
         },
         {
@@ -98730,7 +98730,7 @@
           "lng": -64.988802,
           "score": 0.533,
           "reason": "weak_similarity",
-          "matchedRecordName": "Turtle 40ve Cay",
+          "matchedRecordName": "Turtle Dove Cay",
           "matchedCandidateName": "Estate LITTLE FLAT CAY"
         },
         {
@@ -98744,22 +98744,22 @@
           "lng": -64.9080402474628,
           "score": 0.4,
           "reason": "weak_similarity",
-          "matchedRecordName": "Turtle 40ve Cay",
+          "matchedRecordName": "Turtle Dove Cay",
           "matchedCandidateName": "GREEN CAY"
         },
         {
           "source": "geographic_index",
-          "sourceIndex": 2496,
-          "id": "st_thomas-cay-thatch-cay",
-          "name": "Thatch Cay",
-          "type": "cay",
+          "sourceIndex": 2187,
+          "id": "st_thomas-estate-rotto-cay",
+          "name": "ROTTO CAY",
+          "type": "estate",
           "island": "st_thomas",
-          "lat": 18.3592767020762,
-          "lng": -64.86191857744305,
+          "lat": 18.315388964993453,
+          "lng": -64.8677568207732,
           "score": 0.4,
           "reason": "weak_similarity",
-          "matchedRecordName": "Turtle 40ve Cay",
-          "matchedCandidateName": "Thatch Cay"
+          "matchedRecordName": "Turtle Dove Cay",
+          "matchedCandidateName": "ROTTO CAY"
         }
       ]
     },
@@ -107316,11 +107316,11 @@
     {
       "index": 2767,
       "id": "st_croix-estate-wwck-and-rest",
-      "name": "Wwck and Rest",
+      "name": "Work & Rest",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "weak",
-      "bestScore": 0.788,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 2761,
@@ -107330,9 +107330,9 @@
         "island": "st_croix",
         "lat": 17.721303820101852,
         "lng": -64.72422807010045,
-        "score": 0.788,
-        "reason": "weak_similarity",
-        "matchedRecordName": "Wwck and Rest",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Work & Rest",
         "matchedCandidateName": "WORK & REST"
       },
       "alternatives": [
@@ -107345,9 +107345,9 @@
           "island": "st_croix",
           "lat": 17.72447,
           "lng": -64.718589,
-          "score": 0.788,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Wwck and Rest",
+          "score": 1,
+          "reason": "similarity_or_token_overlap",
+          "matchedRecordName": "Work & Rest",
           "matchedCandidateName": "Estate WORK & REST"
         },
         {
@@ -107361,7 +107361,7 @@
           "lng": -64.89090051319594,
           "score": 0.566,
           "reason": "weak_similarity",
-          "matchedRecordName": "Wwck and Rest",
+          "matchedRecordName": "Work & Rest",
           "matchedCandidateName": "WHIM (West)"
         },
         {
@@ -107375,7 +107375,7 @@
           "lng": -64.889843,
           "score": 0.566,
           "reason": "weak_similarity",
-          "matchedRecordName": "Wwck and Rest",
+          "matchedRecordName": "Work & Rest",
           "matchedCandidateName": "Estate WHIM (West)"
         },
         {
@@ -107387,24 +107387,24 @@
           "island": "st_croix",
           "lat": 17.726211395107647,
           "lng": -64.7368568207058,
-          "score": 0.465,
+          "score": 0.555,
           "reason": "weak_similarity",
-          "matchedRecordName": "Wwck and Rest",
+          "matchedRecordName": "Work & Rest",
           "matchedCandidateName": "st_croix-estate-peters-rest"
         },
         {
-          "source": "geographic_index",
-          "sourceIndex": 2713,
-          "id": "st_croix-estate-whim-east",
-          "name": "WHIM (East)",
+          "source": "estates_geojson",
+          "sourceIndex": 335,
+          "id": "1749",
+          "name": "Estate PETER'S REST",
           "type": "estate",
           "island": "st_croix",
-          "lat": 17.6987465950629,
-          "lng": -64.856134610222,
-          "score": 0.454,
+          "lat": 17.727484,
+          "lng": -64.735648,
+          "score": 0.51,
           "reason": "weak_similarity",
-          "matchedRecordName": "Wwck and Rest",
-          "matchedCandidateName": "WHIM (East)"
+          "matchedRecordName": "Work & Rest",
+          "matchedCandidateName": "Estate PETER'S REST"
         }
       ]
     },
@@ -108266,11 +108266,11 @@
     {
       "index": 2780,
       "id": "st_croix-estate-xarys-fancy",
-      "name": "Xary's Fancy",
+      "name": "Mary's Fancy",
       "type": "estate",
       "island": "st_croix",
-      "confidence": "review",
-      "bestScore": 0.927,
+      "confidence": "exact",
+      "bestScore": 1,
       "bestMatch": {
         "source": "geographic_index",
         "sourceIndex": 1603,
@@ -108280,9 +108280,9 @@
         "island": "st_croix",
         "lat": 17.74612636309525,
         "lng": -64.7609306226064,
-        "score": 0.927,
-        "reason": "similarity_or_token_overlap",
-        "matchedRecordName": "Xary's Fancy",
+        "score": 1,
+        "reason": "exact_slug",
+        "matchedRecordName": "Mary's Fancy",
         "matchedCandidateName": "MARY'S FANCY"
       },
       "alternatives": [
@@ -108295,9 +108295,9 @@
           "island": "st_croix",
           "lat": 17.744143,
           "lng": -64.759958,
-          "score": 0.927,
+          "score": 1,
           "reason": "similarity_or_token_overlap",
-          "matchedRecordName": "Xary's Fancy",
+          "matchedRecordName": "Mary's Fancy",
           "matchedCandidateName": "Estate MARY'S FANCY"
         },
         {
@@ -108329,20 +108329,6 @@
           "matchedCandidateName": "Estate SALLYS FANCY"
         },
         {
-          "source": "historic_sites",
-          "sourceIndex": 24,
-          "id": "nrhp-stx-estate-judiths-fancy",
-          "name": "Estate Judith's Fancy",
-          "type": "estate",
-          "island": "st_croix",
-          "lat": 17.776914,
-          "lng": -64.747497,
-          "score": 0.581,
-          "reason": "weak_similarity",
-          "matchedRecordName": "Xary's Fancy",
-          "matchedCandidateName": "Estate Judith's Fancy"
-        },
-        {
           "source": "geographic_index",
           "sourceIndex": 1666,
           "id": "st_croix-estate-mount-fancy",
@@ -108351,10 +108337,24 @@
           "island": "st_croix",
           "lat": 17.72544511080075,
           "lng": -64.6362443031374,
-          "score": 0.555,
+          "score": 0.593,
           "reason": "weak_similarity",
-          "matchedRecordName": "st_croix-estate-xarys-fancy",
+          "matchedRecordName": "Mary's Fancy",
           "matchedCandidateName": "MOUNT FANCY"
+        },
+        {
+          "source": "estates_geojson",
+          "sourceIndex": 312,
+          "id": "1672",
+          "name": "Estate MOUNT FANCY",
+          "type": "estate",
+          "island": "st_croix",
+          "lat": 17.725293,
+          "lng": -64.636046,
+          "score": 0.593,
+          "reason": "weak_similarity",
+          "matchedRecordName": "Mary's Fancy",
+          "matchedCandidateName": "Estate MOUNT FANCY"
         }
       ]
     },

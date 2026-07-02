@@ -17496,7 +17496,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-cotkongxove-bay",
-    "name": "Cotkongxove Bay",
+    "name": "Cotton Grove Bay",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -26449,7 +26449,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-fredericks-izaab",
-    "name": "Fredericks IZaab",
+    "name": "Frederikshaab",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -33587,7 +33587,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-estate-hnvensigt",
-    "name": "Hnvensigt",
+    "name": "Havensight",
     "type": "estate",
     "island": "st_thomas",
     "aliases": [],
@@ -38248,7 +38248,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-judys-fancy",
-    "name": "Judy's Fancy",
+    "name": "Judith's Fancy",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -38567,7 +38567,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_john-estate-kalabasboom",
-    "name": "Kalabasboom",
+    "name": "Calabash Boom",
     "type": "estate",
     "island": "st_john",
     "aliases": [],
@@ -46639,7 +46639,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-estate-longmat",
-    "name": "Longmat",
+    "name": "Langmath",
     "type": "estate",
     "island": "st_thomas",
     "aliases": [],
@@ -47262,7 +47262,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-estate-lowelund",
-    "name": "Lowelund",
+    "name": "Lovenlund",
     "type": "estate",
     "island": "st_thomas",
     "aliases": [],
@@ -50561,7 +50561,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-moalpellier",
-    "name": "Moalpellier",
+    "name": "Montpellier",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -51950,7 +51950,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-mount-stkwart",
-    "name": "Mount Stkwart",
+    "name": "Mount Stewart",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -74145,7 +74145,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-springfleld",
-    "name": "Springfleld",
+    "name": "Springfield",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -79422,7 +79422,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_thomas-island-turtle-40ve-cay",
-    "name": "Turtle 40ve Cay",
+    "name": "Turtle Dove Cay",
     "type": "island",
     "island": "st_thomas",
     "aliases": [],
@@ -85598,7 +85598,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-wwck-and-rest",
-    "name": "Wwck and Rest",
+    "name": "Work & Rest",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],
@@ -85975,7 +85975,7 @@ export const geographicIndex: GeographicIndexItem[] = [
   },
   {
     "id": "st_croix-estate-xarys-fancy",
-    "name": "Xary's Fancy",
+    "name": "Mary's Fancy",
     "type": "estate",
     "island": "st_croix",
     "aliases": [],

@@ -1,7 +1,7 @@
 index,id,currentName,suggestedName,type,island,cleanupConfidence,score,source,reason,candidateConfidence,originalCandidateName,poolCandidateName,poolScore
 1675,st_croix-estate-mount-stkwart,Mount Stkwart,Mount Stewart,estate,st_croix,review,0.917,geographic_index,similarity_or_token_overlap,review,MOUNT STEWART,Mount Stewart,0.917
 2397,st_croix-estate-springfleld,Springfleld,Springfield,estate,st_croix,review,0.909,geographic_index,similarity_or_token_overlap,review,SPRINGFIELD,Spring Bay,0.545
-2780,st_croix-estate-xarys-fancy,Xary's Fancy,Mary'S Fancy,estate,st_croix,review,0.9,geographic_index,similarity_or_token_overlap,review,MARY'S FANCY,Judith’s Fancy,0.613
+2780,st_croix-estate-xarys-fancy,Xary's Fancy,Mary'S Fancy,estate,st_croix,review,0.9,geographic_index,similarity_or_token_overlap,review,MARY'S FANCY,Judith's Fancy,0.613
 460,st_thomas-historic-christinns-fort,Christinn's Fort,Chrietiunsfort,historic,st_thomas,review,0.857,geographic_index_pool,best_same_island_name_similarity,weak,Fort Christian,Chrietiunsfort,0.857
 2566,st_thomas-island-turtle-40ve-cay,Turtle 40ve Cay,Turtle Dove Cay,island,st_thomas,review,0.846,geographic_index,similarity_or_token_overlap,weak,TURTLE DOVE CAY,Turtledove Cay,0.846
 1242,st_john-estate-kalabasboom,Kalabasboom,Calabash Boom,estate,st_john,review,0.833,geographic_index,weak_similarity,weak,CALABASH BOOM,Mahotboom or Mahootboom,0.333
@@ -13,7 +13,7 @@ index,id,currentName,suggestedName,type,island,cleanupConfidence,score,source,re
 1527,st_thomas-estate-lowelund,Lowelund,Lovenlund,estate,st_thomas,review,0.778,geographic_index,weak_similarity,weak,LOVENLUND,Lovenlund,0.778
 1231,st_croix-estate-judys-fancy,Judy's Fancy,Judith’S Fancy,estate,st_croix,review,0.75,geographic_index_pool,best_same_island_name_similarity,weak,Estate Judith's Fancy,Judith’s Fancy,0.75
 1507,st_thomas-estate-longmat,Longmat,Langmath,estate,st_thomas,review,0.75,geographic_index,weak_similarity,weak,LANGMATH,Long Bay,0.714
-776,st_croix-estate-fannys-fancy,Fanny's Fancy,Mary'S Fancy,estate,st_croix,review,0.727,geographic_index,weak_similarity,weak,MARY'S FANCY,Judith’s Fancy,0.613
+776,st_croix-estate-fannys-fancy,Fanny's Fancy,Mary'S Fancy,estate,st_croix,review,0.727,geographic_index,weak_similarity,weak,MARY'S FANCY,Judith's Fancy,0.613
 2286,st_thomas-point-savana-eill,Savana Eill,Savanah Islalzd,point,st_thomas,review,0.643,geographic_index_pool,best_same_island_name_similarity,review,Savana Island,Savanah Islalzd,0.643
 872,st_thomas-bay-french-hill,French Hill,French Bay,bay,st_thomas,review,0.63,geographic_index_pool,best_same_island_name_similarity,review,French Bay,French Bay,0.63
 2498,st_thomas-estate-thatch-hill,Thatch Hill,Thatch Cay,estate,st_thomas,review,0.63,geographic_index_pool,best_same_island_name_similarity,review,Thatch Cay,Thatch Cay,0.63

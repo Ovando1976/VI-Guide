@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T10:40:59.731Z",
+  "generatedAt": "2026-07-02T10:50:36.166Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 802,
-    "issuesSampled": 200,
+    "issuesActual": 813,
+    "issuesSampled": 211,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -33,7 +33,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 802,
-    "low": 0
+    "low": 11
   },
   "issueGroups": [
     {
@@ -42,6 +42,14 @@
       "issue": "missing_coordinates",
       "count": 802,
       "sampled": 200,
+      "sampleLimit": 200
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "issue": "duplicate_name_type_island",
+      "count": 11,
+      "sampled": 11,
       "sampleLimit": 200
     }
   ],
@@ -1071,7 +1079,7 @@
       "source": "geographic_index",
       "index": 555,
       "id": "st_croix-estate-cotkongxove-bay",
-      "name": "Cotkongxove Bay",
+      "name": "Cotton Grove Bay",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -1971,7 +1979,7 @@
       "source": "geographic_index",
       "index": 852,
       "id": "st_croix-estate-fredericks-izaab",
-      "name": "Fredericks IZaab",
+      "name": "Frederikshaab",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
@@ -2037,6 +2045,15 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 860,
+      "name": "FREDERIKSHAAB",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 852.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
       "severity": "medium",
       "source": "geographic_index",
       "index": 863,
@@ -2045,6 +2062,96 @@
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1079,
+      "name": "Havensight",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1058.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1231,
+      "name": "Judith's Fancy",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1230.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1242,
+      "name": "Calabash Boom",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 284.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1507,
+      "name": "Langmath",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1380.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1527,
+      "name": "Lovenlund",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1524.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1645,
+      "name": "MONTPELLIER",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1633.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 1675,
+      "name": "Mount Stewart",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1674.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2397,
+      "name": "Springfield",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 2396.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2767,
+      "name": "Work & Rest",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 2761.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+    },
+    {
+      "severity": "low",
+      "source": "geographic_index",
+      "index": 2780,
+      "name": "Mary's Fancy",
+      "issue": "duplicate_name_type_island",
+      "detail": "Duplicate of geographic_index record index 1603.",
+      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     }
   ]
 }

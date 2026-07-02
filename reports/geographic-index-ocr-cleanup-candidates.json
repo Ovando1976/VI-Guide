@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T10:40:09.859Z",
+  "generatedAt": "2026-07-02T10:49:40.999Z",
   "sourceFiles": {
     "triage": "reports/geographic-index-missing-coordinate-triage.json",
     "coordinateCandidates": "reports/geographic-index-coordinate-candidates-full.json"
@@ -75,7 +75,7 @@
       "source": "geographic_index",
       "reason": "similarity_or_token_overlap",
       "originalCandidateName": "MARY'S FANCY",
-      "poolCandidateName": "Judith’s Fancy",
+      "poolCandidateName": "Judith's Fancy",
       "poolScore": 0.613,
       "hasWeirdOcr": true
     },
@@ -291,7 +291,7 @@
       "source": "geographic_index",
       "reason": "weak_similarity",
       "originalCandidateName": "MARY'S FANCY",
-      "poolCandidateName": "Judith’s Fancy",
+      "poolCandidateName": "Judith's Fancy",
       "poolScore": 0.613,
       "hasWeirdOcr": true
     },
@@ -491,7 +491,7 @@
       "source": "geographic_index",
       "reason": "similarity_or_token_overlap",
       "originalCandidateName": "MARY'S FANCY",
-      "poolCandidateName": "Judith’s Fancy",
+      "poolCandidateName": "Judith's Fancy",
       "poolScore": 0.613,
       "hasWeirdOcr": true
     },
@@ -707,7 +707,7 @@
       "source": "geographic_index",
       "reason": "weak_similarity",
       "originalCandidateName": "MARY'S FANCY",
-      "poolCandidateName": "Judith’s Fancy",
+      "poolCandidateName": "Judith's Fancy",
       "poolScore": 0.613,
       "hasWeirdOcr": true
     },

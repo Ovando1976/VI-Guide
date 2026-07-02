@@ -29,7 +29,7 @@ const SAFE_NAME_FIXES = [
     index: 2780,
     currentName: "Xary's Fancy",
     suggestedName: "Mary's Fancy",
-    reason: "OCR cleanup: Xary's -> Mary's",
+    reason: "OCR cleanup: Xary -> Mary",
   },
   {
     index: 2566,
@@ -41,7 +41,7 @@ const SAFE_NAME_FIXES = [
     index: 1242,
     currentName: "Kalabasboom",
     suggestedName: "Calabash Boom",
-    reason: "OCR cleanup: Kalabasboom -> Calabash Boom",
+    reason: "OCR cleanup: normalized estate name",
   },
   {
     index: 1633,
@@ -59,7 +59,7 @@ const SAFE_NAME_FIXES = [
     index: 852,
     currentName: "Fredericks IZaab",
     suggestedName: "Frederikshaab",
-    reason: "OCR cleanup: IZaab -> shaab",
+    reason: "OCR cleanup: historic estate spelling",
   },
   {
     index: 1079,
@@ -77,7 +77,7 @@ const SAFE_NAME_FIXES = [
     index: 1231,
     currentName: "Judy's Fancy",
     suggestedName: "Judith's Fancy",
-    reason: "OCR cleanup: Judy's -> Judith's",
+    reason: "OCR cleanup: Judy -> Judith",
   },
   {
     index: 1507,
@@ -91,321 +91,145 @@ const SAFE_NAME_FIXES = [
     suggestedName: "Cotton Grove Bay",
     reason: "OCR cleanup: Cotkongxove -> Cotton Grove",
   },
-] as const;
+];
 
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function timestampSlug(): string {
+function timestamp() {
   return new Date().toISOString().replace(/[:.]/g, "-");
 }
 
-function findArrayStart(text: string): number {
-  const marker = text.indexOf("geographicIndex");
-  if (marker < 0) throw new Error("Could not find geographicIndex marker.");
-
-  const start = text.indexOf("[", marker);
-  if (start < 0) throw new Error("Could not find geographicIndex array start.");
-
-  return start;
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function findObjectBlocks(text: string) {
-  const arrayStart = findArrayStart(text);
-  const blocks = [];
-
-  let depth = 0;
-  let objectStart = -1;
-  let quote: string | null = null;
-  let escaped = false;
-  let lineComment = false;
-  let blockComment = false;
-
-  for (let i = arrayStart; i < text.length; i += 1) {
-    const char = text[i];
-    const next = text[i + 1];
-
-    if (lineComment) {
-      if (char === "\n") lineComment = false;
-      continue;
-    }
-
-    if (blockComment) {
-      if (char === "*" && next === "/") {
-        blockComment = false;
-        i += 1;
-      }
-      continue;
-    }
-
-    if (quote) {
-      if (escaped) {
-        escaped = false;
-        continue;
-      }
-
-      if (char === "\\") {
-        escaped = true;
-        continue;
-      }
-
-      if (char === quote) {
-        quote = null;
-      }
-
-      continue;
-    }
-
-    if (char === "/" && next === "/") {
-      lineComment = true;
-      i += 1;
-      continue;
-    }
-
-    if (char === "/" && next === "*") {
-      blockComment = true;
-      i += 1;
-      continue;
-    }
-
-    if (char === '"' || char === "'" || char === "`") {
-      quote = char;
-      continue;
-    }
-
-    if (char === "{") {
-      if (depth === 0) objectStart = i;
-      depth += 1;
-      continue;
-    }
-
-    if (char === "}") {
-      depth -= 1;
-
-      if (depth === 0 && objectStart >= 0) {
-        blocks.push({ start: objectStart, end: i });
-        objectStart = -1;
-      }
-
-      continue;
-    }
-
-    if (char === "]" && depth === 0 && blocks.length > 0) {
-      break;
-    }
-  }
-
-  return blocks;
+function escapeSingle(value: string) {
+  return value.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 }
 
-function replaceNameLine(block: string, nextName: string) {
-  const lines = block.split("\n");
-  const nameLineIndex = lines.findIndex((line) =>
-    /^\s*(?:"name"|name)\s*:/.test(line)
-  );
-
-  if (nameLineIndex < 0) {
-    return {
-      changed: false,
-      block,
-      reason: "missing_name_line",
-    };
-  }
-
-  const oldLine = lines[nameLineIndex];
-  const indent = oldLine.match(/^\s*/)?.[0] ?? "";
-  const trailingComma = oldLine.trimEnd().endsWith(",") ? "," : "";
-
-  lines[nameLineIndex] = `${indent}name: ${JSON.stringify(nextName)}${trailingComma}`;
-
-  return {
-    changed: true,
-    block: lines.join("\n"),
-    reason: "name_replaced",
-  };
+function escapeBacktick(value: string) {
+  return value.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 }
 
-function insertAliasIfMissing(block: string, oldName: string) {
-  if (/(^|\n)\s*(?:"aliases"|aliases)\s*:/.test(block)) {
-    return block;
-  }
-
-  const lines = block.split("\n");
-  const nameLineIndex = lines.findIndex((line) =>
-    /^\s*(?:"name"|name)\s*:/.test(line)
-  );
-
-  if (nameLineIndex < 0) return block;
-
-  const indent = lines[nameLineIndex].match(/^\s*/)?.[0] ?? "  ";
-  lines.splice(nameLineIndex + 1, 0, `${indent}aliases: [${JSON.stringify(oldName)}],`);
-
-  return lines.join("\n");
-}
-
-function insertCleanupNoteIfMissing(block: string, oldName: string, reason: string) {
-  if (block.includes("ocrCorrectedFrom")) return block;
-
-  const lines = block.split("\n");
-  const nameLineIndex = lines.findIndex((line) =>
-    /^\s*(?:"name"|name)\s*:/.test(line)
-  );
-
-  if (nameLineIndex < 0) return block;
-
-  const indent = lines[nameLineIndex].match(/^\s*/)?.[0] ?? "  ";
-
-  lines.splice(
-    nameLineIndex + 1,
-    0,
-    `${indent}ocrCorrectedFrom: ${JSON.stringify(oldName)},`,
-    `${indent}ocrCorrectionReason: ${JSON.stringify(reason)},`
-  );
-
-  return lines.join("\n");
+function literalPattern(value: string) {
+  return [
+    escapeRegExp(JSON.stringify(value)),
+    `'${escapeRegExp(escapeSingle(value))}'`,
+    "`" + escapeRegExp(escapeBacktick(value)) + "`",
+  ].join("|");
 }
 
 if (!existsSync(TARGET_FILE)) {
-  throw new Error(`Missing target file: ${TARGET_FILE}`);
+  throw new Error(`Missing ${TARGET_FILE}`);
 }
 
 mkdirSync(BACKUP_DIR, { recursive: true });
 
-const originalText = readFileSync(TARGET_FILE, "utf8");
-const backupFile = path.join(
-  BACKUP_DIR,
-  `geographicIndex.safe-ocr-cleanups.${timestampSlug()}.ts`
+const beforeByIndex = new Map(
+  geographicIndex.map((record: any, index: number) => [index, record])
 );
 
-writeFileSync(backupFile, originalText);
+let source = readFileSync(TARGET_FILE, "utf8");
+const beforeSource = source;
 
-const blocks = findObjectBlocks(originalText);
-if (blocks.length !== geographicIndex.length) {
-  throw new Error(
-    `Object block count mismatch. Blocks: ${blocks.length}; geographicIndex records: ${geographicIndex.length}`
-  );
-}
-
-const appliedRecords = [];
-const skippedRecords = [];
-const replacements = [];
+const applied = [];
+const skipped = [];
 
 for (const fix of SAFE_NAME_FIXES) {
-  const record = geographicIndex[fix.index];
+  const runtimeRecord = beforeByIndex.get(fix.index);
 
-  if (!record) {
-    skippedRecords.push({
+  if (!runtimeRecord) {
+    skipped.push({
       ...fix,
       status: "skipped",
-      reason: "missing_record_at_index",
+      skipReason: "index_not_found_in_runtime_geographic_index",
     });
     continue;
   }
 
-  if (record.name !== fix.currentName) {
-    skippedRecords.push({
+  if (runtimeRecord.name !== fix.currentName) {
+    skipped.push({
       ...fix,
-      foundName: record.name,
+      runtimeName: runtimeRecord.name,
       status: "skipped",
-      reason: "current_name_mismatch",
+      skipReason: "runtime_name_mismatch",
     });
     continue;
   }
 
-  const blockInfo = blocks[fix.index];
-  if (!blockInfo) {
-    skippedRecords.push({
-      ...fix,
-      status: "skipped",
-      reason: "missing_source_block",
-    });
-    continue;
-  }
+  const pattern = new RegExp(
+    `(["']?name["']?\\s*:\\s*)(${literalPattern(fix.currentName)})`,
+    "g"
+  );
 
-  let block = originalText.slice(blockInfo.start, blockInfo.end + 1);
-
-  if (!new RegExp(`name\\s*:\\s*["'\`]${escapeRegExp(fix.currentName)}`).test(block)) {
-    skippedRecords.push({
-      ...fix,
-      status: "skipped",
-      reason: "source_block_name_mismatch",
-    });
-    continue;
-  }
-
-  const replaced = replaceNameLine(block, fix.suggestedName);
-
-  if (!replaced.changed) {
-    skippedRecords.push({
-      ...fix,
-      status: "skipped",
-      reason: replaced.reason,
-    });
-    continue;
-  }
-
-  block = replaced.block;
-  block = insertAliasIfMissing(block, fix.currentName);
-  block = insertCleanupNoteIfMissing(block, fix.currentName, fix.reason);
-
-  replacements.push({
-    start: blockInfo.start,
-    end: blockInfo.end + 1,
-    nextBlock: block,
+  let replacements = 0;
+  source = source.replace(pattern, (_match, prefix) => {
+    replacements += 1;
+    return `${prefix}${JSON.stringify(fix.suggestedName)}`;
   });
 
-  appliedRecords.push({
+  if (replacements < 1) {
+    skipped.push({
+      ...fix,
+      runtimeName: runtimeRecord.name,
+      status: "skipped",
+      skipReason: "source_name_property_not_found",
+    });
+    continue;
+  }
+
+  applied.push({
     ...fix,
-    id: record.id ?? "",
-    type: record.type ?? "",
-    island: record.island ?? "",
+    runtimeName: runtimeRecord.name,
+    replacements,
     status: "applied",
   });
 }
 
-let nextText = originalText;
-
-for (const replacement of replacements.sort((a, b) => b.start - a.start)) {
-  nextText =
-    nextText.slice(0, replacement.start) +
-    replacement.nextBlock +
-    nextText.slice(replacement.end);
+if (source !== beforeSource) {
+  const backupFile = path.join(
+    BACKUP_DIR,
+    `geographicIndex.safe-ocr-cleanups.${timestamp()}.ts`
+  );
+  writeFileSync(backupFile, beforeSource);
+  writeFileSync(TARGET_FILE, source);
 }
-
-writeFileSync(TARGET_FILE, nextText);
 
 const report = {
   generatedAt: new Date().toISOString(),
   targetFile: path.relative(ROOT, TARGET_FILE),
-  backupFile: path.relative(ROOT, backupFile),
   reviewedAllowlist: SAFE_NAME_FIXES.length,
-  applied: appliedRecords.length,
-  skipped: skippedRecords.length,
-  appliedRecords,
-  skippedRecords,
+  applied: applied.length,
+  skipped: skipped.length,
+  appliedRecords: applied,
+  skippedRecords: skipped,
 };
 
-writeFileSync(REPORT_FILE, JSON.stringify(report, null, 2));
+writeFileSync(REPORT_FILE, `${JSON.stringify(report, null, 2)}\n`);
 
 console.log("Safe geographic index OCR cleanups applied.");
-console.log(`Reviewed allowlist: ${report.reviewedAllowlist}`);
-console.log(`Applied: ${report.applied}`);
-console.log(`Skipped: ${report.skipped}`);
-console.log(`Backup: ${report.backupFile}`);
+console.log(`Reviewed allowlist: ${SAFE_NAME_FIXES.length}`);
+console.log(`Applied: ${applied.length}`);
+console.log(`Skipped: ${skipped.length}`);
 console.log(`Report: ${path.relative(ROOT, REPORT_FILE)}`);
 
+console.log("\nApplied:");
 console.table(
-  appliedRecords.map((record) => ({
-    index: record.index,
-    from: record.currentName,
-    to: record.suggestedName,
-    type: record.type,
-    island: record.island,
+  applied.map((row) => ({
+    index: row.index,
+    currentName: row.currentName,
+    suggestedName: row.suggestedName,
+    replacements: row.replacements,
   }))
 );
 
-if (skippedRecords.length) {
+if (skipped.length) {
   console.log("\nSkipped:");
-  console.table(skippedRecords);
+  console.table(
+    skipped.map((row) => ({
+      index: row.index,
+      currentName: row.currentName,
+      suggestedName: row.suggestedName,
+      runtimeName: row.runtimeName,
+      skipReason: row.skipReason,
+    }))
+  );
 }
