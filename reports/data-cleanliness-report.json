@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T11:47:39.092Z",
+  "generatedAt": "2026-07-02T11:49:58.719Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 745,
-    "issuesSampled": 201,
+    "issuesActual": 744,
+    "issuesSampled": 200,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -33,7 +33,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 744,
-    "low": 1
+    "low": 0
   },
   "issueGroups": [
     {
@@ -42,14 +42,6 @@
       "issue": "missing_coordinates",
       "count": 744,
       "sampled": 200,
-      "sampleLimit": 200
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "issue": "duplicate_name_type_island",
-      "count": 1,
-      "sampled": 1,
       "sampleLimit": 200
     }
   ],
@@ -2029,19 +2021,10 @@
       "source": "geographic_index",
       "index": 863,
       "id": "st_thomas-historic-fredertksfort",
-      "name": "Frederiksfort",
+      "name": "Frederiksfort OCR Variant",
       "issue": "missing_coordinates",
       "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 863,
-      "name": "Frederiksfort",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 856.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     },
     {
       "severity": "medium",

@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-07-02T11:49:51.477Z",
+  "backupFile": "reports/backups/geographicIndex.before-frederiksfort-duplicate-fix.1782992991454.ts",
+  "keeper": {
+    "index": 856,
+    "id": "st_thomas-historic-frederikalort",
+    "name": "Frederiksfort"
+  },
+  "variant": {
+    "index": 863,
+    "id": "st_thomas-historic-fredertksfort",
+    "oldName": "Frederiksfort",
+    "newName": "Frederiksfort OCR Variant",
+    "originalOcrName": "Fredertksfort"
+  }
+}

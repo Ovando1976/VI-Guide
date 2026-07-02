@@ -27198,7 +27198,7 @@ export const geographicIndex: GeographicIndexRecord[] = [
   },
   {
     "id": "st_thomas-historic-fredertksfort",
-    "name": "Frederiksfort",
+    "name": "Frederiksfort OCR Variant",
     "imageUrl": "/images/dictionary/fredertksfort.svg",
     "type": "historic",
     "island": "st_thomas",
@@ -27208,8 +27208,8 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "description": "Fredertksfort; 34-foot Tower, hujlt on Frcderlksberg or 1Huehe:ird IIill, St. Thomas, by the Danish Government in 1089, used till 173. 5; sold witli surrounding land in 1838. Now ctilled (( Bluebeard Castlt~. \"-Asplnall.",
     "coordinates": null,
     "routes": {
-      "knowledge": "/history/knowledge?estate=st-thomas-historic-fredertksfort&island=st_thomas&context=Frederiksfort",
-      "map": "/map?q=Frederiksfort&island=st_thomas"
+      "knowledge": "/history/knowledge?estate=st-thomas-historic-fredertksfort&island=st_thomas&context=Frederiksfort%20OCR%20Variant",
+      "map": "/map?q=Frederiksfort%20OCR%20Variant&island=st_thomas"
     },
     "evidence": {
       "estateLayer": false,
