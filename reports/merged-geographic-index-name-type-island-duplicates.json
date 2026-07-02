@@ -1,0 +1,260 @@
+{
+  "generatedAt": "2026-07-02T10:52:32.927Z",
+  "beforeCount": 2838,
+  "afterCount": 2828,
+  "mergedGroups": 10,
+  "removedRecords": 10,
+  "backupFile": "reports/backups/geographicIndex.merge-name-type-island-duplicates.2026-07-02T10-52-32-862Z.ts",
+  "groups": [
+    {
+      "key": "calabash boom||estate||st john",
+      "count": 2,
+      "keptName": "CALABASH BOOM",
+      "rows": [
+        {
+          "index": 284,
+          "id": "st_john-estate-calabash-boom",
+          "name": "CALABASH BOOM",
+          "type": "estate",
+          "island": "st_john",
+          "hasCoordinates": true,
+          "score": 1236
+        },
+        {
+          "index": 1242,
+          "id": "st_john-estate-kalabasboom",
+          "name": "Calabash Boom",
+          "type": "estate",
+          "island": "st_john",
+          "hasCoordinates": false,
+          "score": 307
+        }
+      ]
+    },
+    {
+      "key": "frederikshaab||estate||st croix",
+      "count": 2,
+      "keptName": "FREDERIKSHAAB",
+      "rows": [
+        {
+          "index": 852,
+          "id": "st_croix-estate-fredericks-izaab",
+          "name": "Frederikshaab",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 76
+        },
+        {
+          "index": 860,
+          "id": "st_croix-estate-frederikshaab",
+          "name": "FREDERIKSHAAB",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1236
+        }
+      ]
+    },
+    {
+      "key": "havensight||estate||st thomas",
+      "count": 2,
+      "keptName": "HAVENSIGHT",
+      "rows": [
+        {
+          "index": 1058,
+          "id": "st_thomas-estate-havensight",
+          "name": "HAVENSIGHT",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": true,
+          "score": 1129
+        },
+        {
+          "index": 1079,
+          "id": "st_thomas-estate-hnvensigt",
+          "name": "Havensight",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": false,
+          "score": 65
+        }
+      ]
+    },
+    {
+      "key": "langmath||estate||st thomas",
+      "count": 2,
+      "keptName": "LANGMATH",
+      "rows": [
+        {
+          "index": 1380,
+          "id": "st_thomas-estate-langmath",
+          "name": "LANGMATH",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": true,
+          "score": 1231
+        },
+        {
+          "index": 1507,
+          "id": "st_thomas-estate-longmat",
+          "name": "Langmath",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": false,
+          "score": 97
+        }
+      ]
+    },
+    {
+      "key": "lovenlund||estate||st thomas",
+      "count": 2,
+      "keptName": "LOVENLUND",
+      "rows": [
+        {
+          "index": 1524,
+          "id": "st_thomas-estate-lovenlund",
+          "name": "LOVENLUND",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": true,
+          "score": 1232
+        },
+        {
+          "index": 1527,
+          "id": "st_thomas-estate-lowelund",
+          "name": "Lovenlund",
+          "type": "estate",
+          "island": "st_thomas",
+          "hasCoordinates": false,
+          "score": 112
+        }
+      ]
+    },
+    {
+      "key": "mary s fancy||estate||st croix",
+      "count": 2,
+      "keptName": "MARY'S FANCY",
+      "rows": [
+        {
+          "index": 1603,
+          "id": "st_croix-estate-marys-fancy",
+          "name": "MARY'S FANCY",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1235
+        },
+        {
+          "index": 2780,
+          "id": "st_croix-estate-xarys-fancy",
+          "name": "Mary's Fancy",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 510
+        }
+      ]
+    },
+    {
+      "key": "montpellier||estate||st croix",
+      "count": 2,
+      "keptName": "MONTPELLIER",
+      "rows": [
+        {
+          "index": 1633,
+          "id": "st_croix-estate-moalpellier",
+          "name": "Montpellier",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 163
+        },
+        {
+          "index": 1645,
+          "id": "st_croix-estate-montpellier",
+          "name": "MONTPELLIER",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1234
+        }
+      ]
+    },
+    {
+      "key": "mount stewart||estate||st croix",
+      "count": 2,
+      "keptName": "MOUNT STEWART",
+      "rows": [
+        {
+          "index": 1674,
+          "id": "st_croix-estate-mount-stewart",
+          "name": "MOUNT STEWART",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1236
+        },
+        {
+          "index": 1675,
+          "id": "st_croix-estate-mount-stkwart",
+          "name": "Mount Stewart",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 327
+        }
+      ]
+    },
+    {
+      "key": "springfield||estate||st croix",
+      "count": 2,
+      "keptName": "SPRINGFIELD",
+      "rows": [
+        {
+          "index": 2396,
+          "id": "st_croix-estate-springfield",
+          "name": "SPRINGFIELD",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1234
+        },
+        {
+          "index": 2397,
+          "id": "st_croix-estate-springfleld",
+          "name": "Springfield",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 204
+        }
+      ]
+    },
+    {
+      "key": "work and rest||estate||st croix",
+      "count": 2,
+      "keptName": "WORK & REST",
+      "rows": [
+        {
+          "index": 2761,
+          "id": "st_croix-estate-work-and-rest",
+          "name": "WORK & REST",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": true,
+          "score": 1234
+        },
+        {
+          "index": 2767,
+          "id": "st_croix-estate-wwck-and-rest",
+          "name": "Work & Rest",
+          "type": "estate",
+          "island": "st_croix",
+          "hasCoordinates": false,
+          "score": 67
+        }
+      ]
+    }
+  ]
+}

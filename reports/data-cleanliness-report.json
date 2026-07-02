@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-07-02T10:50:36.166Z",
+  "generatedAt": "2026-07-02T10:52:50.072Z",
   "options": {
     "includeParcels": false,
     "strict": false
   },
   "totals": {
     "publicImages": 3588,
-    "issuesActual": 813,
-    "issuesSampled": 211,
+    "issuesActual": 793,
+    "issuesSampled": 201,
     "issueSampleLimitPerKind": 200
   },
   "sources": [
@@ -20,7 +20,7 @@
     {
       "name": "geographic_index",
       "path": "src/data/core/geographicIndex.ts",
-      "records": 2838
+      "records": 2828
     },
     {
       "name": "historic_sites",
@@ -29,18 +29,18 @@
       "inferredType": "historicSite"
     }
   ],
-  "totalRecords": 3323,
+  "totalRecords": 3313,
   "severityTotals": {
     "high": 0,
-    "medium": 802,
-    "low": 11
+    "medium": 792,
+    "low": 1
   },
   "issueGroups": [
     {
       "severity": "medium",
       "source": "geographic_index",
       "issue": "missing_coordinates",
-      "count": 802,
+      "count": 792,
       "sampled": 200,
       "sampleLimit": 200
     },
@@ -48,8 +48,8 @@
       "severity": "low",
       "source": "geographic_index",
       "issue": "duplicate_name_type_island",
-      "count": 11,
-      "sampled": 11,
+      "count": 1,
+      "sampled": 1,
       "sampleLimit": 200
     }
   ],
@@ -1978,16 +1978,6 @@
       "severity": "medium",
       "source": "geographic_index",
       "index": 852,
-      "id": "st_croix-estate-fredericks-izaab",
-      "name": "Frederikshaab",
-      "issue": "missing_coordinates",
-      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
-      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
-    },
-    {
-      "severity": "medium",
-      "source": "geographic_index",
-      "index": 853,
       "id": "st_thomas-point-frederik-battery",
       "name": "Frederik Battery",
       "issue": "missing_coordinates",
@@ -1997,7 +1987,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 855,
+      "index": 854,
       "id": "st_thomas-point-frederik-knoll",
       "name": "Frederik Knoll",
       "issue": "missing_coordinates",
@@ -2007,7 +1997,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 856,
+      "index": 855,
       "id": "st_thomas-point-frederik-p-o-i-n-t",
       "name": "Frederik P o i n t",
       "issue": "missing_coordinates",
@@ -2017,7 +2007,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 857,
+      "index": 856,
       "id": "st_thomas-historic-frederikalort",
       "name": "Frederikalort",
       "issue": "missing_coordinates",
@@ -2027,7 +2017,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 858,
+      "index": 857,
       "id": "st_thomas-point-frederiksberg-point",
       "name": "Frederiksberg Point",
       "issue": "missing_coordinates",
@@ -2037,7 +2027,7 @@
     {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 859,
+      "index": 858,
       "id": "st_thomas-estate-frederikshaab",
       "name": "Frederikshaab",
       "issue": "missing_coordinates",
@@ -2045,18 +2035,9 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 860,
-      "name": "FREDERIKSHAAB",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 852.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
       "severity": "medium",
       "source": "geographic_index",
-      "index": 863,
+      "index": 862,
       "id": "st_thomas-point-frederiksted-road",
       "name": "Frederiksted Road",
       "issue": "missing_coordinates",
@@ -2064,93 +2045,22 @@
       "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
-      "severity": "low",
+      "severity": "medium",
       "source": "geographic_index",
-      "index": 1079,
-      "name": "Havensight",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1058.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
+      "index": 863,
+      "id": "st_thomas-historic-fredertksfort",
+      "name": "Fredertksfort",
+      "issue": "missing_coordinates",
+      "detail": "Location-like record has no lat/lng, coordinates, center, centroid, or geometry.",
+      "suggestion": "Add coordinates or attach a valid GeoJSON geometry."
     },
     {
       "severity": "low",
       "source": "geographic_index",
-      "index": 1231,
+      "index": 1229,
       "name": "Judith's Fancy",
       "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1230.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1242,
-      "name": "Calabash Boom",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 284.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1507,
-      "name": "Langmath",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1380.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1527,
-      "name": "Lovenlund",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1524.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1645,
-      "name": "MONTPELLIER",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1633.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 1675,
-      "name": "Mount Stewart",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1674.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2397,
-      "name": "Springfield",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 2396.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2767,
-      "name": "Work & Rest",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 2761.",
-      "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
-    },
-    {
-      "severity": "low",
-      "source": "geographic_index",
-      "index": 2780,
-      "name": "Mary's Fancy",
-      "issue": "duplicate_name_type_island",
-      "detail": "Duplicate of geographic_index record index 1603.",
+      "detail": "Duplicate of geographic_index record index 1228.",
       "suggestion": "Confirm whether these are true duplicate records or whether one needs a more specific name."
     }
   ]
