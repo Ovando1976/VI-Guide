@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-07-02T10:39:48.984Z",
+  "targetFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.safe-ocr-cleanups.2026-07-02T10-39-48-938Z.ts",
+  "reviewedAllowlist": 13,
+  "applied": 0,
+  "skipped": 13,
+  "appliedRecords": [],
+  "skippedRecords": [
+    {
+      "index": 1675,
+      "currentName": "Mount Stkwart",
+      "suggestedName": "Mount Stewart",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 2397,
+      "currentName": "Springfleld",
+      "suggestedName": "Springfield",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 2780,
+      "currentName": "Xary's Fancy",
+      "suggestedName": "Mary's Fancy",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 2566,
+      "currentName": "Turtle 40ve Cay",
+      "suggestedName": "Turtle Dove Cay",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1242,
+      "currentName": "Kalabasboom",
+      "suggestedName": "Calabash Boom",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1633,
+      "currentName": "Moalpellier",
+      "suggestedName": "Montpellier",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 2767,
+      "currentName": "Wwck and Rest",
+      "suggestedName": "Work & Rest",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 852,
+      "currentName": "Fredericks IZaab",
+      "suggestedName": "Frederikshaab",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1079,
+      "currentName": "Hnvensigt",
+      "suggestedName": "Havensight",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1527,
+      "currentName": "Lowelund",
+      "suggestedName": "Lovenlund",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1231,
+      "currentName": "Judy's Fancy",
+      "suggestedName": "Judith's Fancy",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 1507,
+      "currentName": "Longmat",
+      "suggestedName": "Langmath",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    },
+    {
+      "index": 555,
+      "currentName": "Cotkongxove Bay",
+      "suggestedName": "Cotton Grove Bay",
+      "reason": "source_block_name_mismatch",
+      "status": "skipped"
+    }
+  ]
+}

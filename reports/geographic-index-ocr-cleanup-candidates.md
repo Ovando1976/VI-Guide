@@ -1,6 +1,6 @@
 # Geographic Index OCR Cleanup Candidates
 
-Generated: 2026-07-02T10:37:33.330Z
+Generated: 2026-07-02T10:40:09.859Z
 
 ## Summary
 

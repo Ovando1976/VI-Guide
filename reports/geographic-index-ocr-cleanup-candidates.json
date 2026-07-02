@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T10:37:33.330Z",
+  "generatedAt": "2026-07-02T10:40:09.859Z",
   "sourceFiles": {
     "triage": "reports/geographic-index-missing-coordinate-triage.json",
     "coordinateCandidates": "reports/geographic-index-coordinate-candidates-full.json"
