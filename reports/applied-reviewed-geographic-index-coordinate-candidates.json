@@ -1,0 +1,779 @@
+{
+  "generatedAt": "2026-07-02T10:16:18.371Z",
+  "updatedFile": "src/data/core/geographicIndex.ts",
+  "backupFile": "reports/backups/geographicIndex.reviewed-coordinate-candidates.2026-07-02T10-16-18-266Z.ts",
+  "candidateReport": "reports/geographic-index-coordinate-candidates-full.json",
+  "reviewedAllowlist": 39,
+  "blocklist": [
+    {
+      "index": 77,
+      "reason": "Beck Grove -> GROVE PLACE is not safe enough."
+    },
+    {
+      "index": 127,
+      "reason": "Black Point -> Blackbeard’s Castle is a false match."
+    },
+    {
+      "index": 141,
+      "reason": "Blue Mountain -> MOUNTAIN is too broad."
+    },
+    {
+      "index": 304,
+      "reason": "Camporico Raltpond -> GREAT POND is too uncertain."
+    },
+    {
+      "index": 397,
+      "reason": "Catharina's Hope -> HOPE is too broad."
+    },
+    {
+      "index": 400,
+      "reason": "Catherine's Hope -> HOPE is too broad."
+    }
+  ],
+  "applied": 39,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 315,
+      "id": "st_croix-estate-cane-bay",
+      "name": "Cane Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702682157254202,
+        "lng": -64.84359059453385
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 312,
+        "name": "CANE",
+        "id": "st_croix-estate-cane",
+        "reason": "exact_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 316,
+      "id": "st_croix-estate-cane-bay-estate",
+      "name": "Cane Bay Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702682157254202,
+        "lng": -64.84359059453385
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 312,
+        "name": "CANE",
+        "id": "st_croix-estate-cane",
+        "reason": "exact_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 9,
+      "id": "st_croix-estate-allendale-estate",
+      "name": "Allendale Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7296110384528,
+        "lng": -64.84043440311095
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 8,
+        "name": "ALLENDALE (BOG OF ALLEN)",
+        "id": "st_croix-estate-allendale-bog-of-allen",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 18,
+      "id": "st_croix-estate-annas-hope-gut",
+      "name": "Anna's Hope Gut",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7288671218071,
+        "lng": -64.72845063966261
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 33,
+        "name": "ANNAS HOPE",
+        "id": "st_croix-estate-annas-hope",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 26,
+      "id": "st_croix-estate-annaberg-st-croix",
+      "name": "Annaberg, St. Croix",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702388244987148,
+        "lng": -64.77330058691145
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 21,
+        "name": "ANNABERG & SHANNON GROVE",
+        "id": "st_croix-estate-annaberg-and-shannon-grove",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 56,
+      "id": "st_croix-estate-barren-spot-estate",
+      "name": "Barren Spot Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.706703740658448,
+        "lng": -64.7399601124969
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 54,
+        "name": "BARREN SPOT (EAST)",
+        "id": "st_croix-estate-barren-spot-east",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 88,
+      "id": "st_croix-estate-belvedere-estate",
+      "name": "Belvedere Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.768944,
+        "lng": -64.801944
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 89,
+        "name": "Belvedere Hill",
+        "id": "st_croix-estate-belvedere-hill",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 91,
+      "id": "st_thomas-estate-benner-bay",
+      "name": "Benner Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.330419,
+        "lng": -64.859625
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 93,
+        "name": "Benner Hill",
+        "id": "st_thomas-estate-benner-hill",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 92,
+      "id": "st_thomas-estate-benner-estate",
+      "name": "Benner Estate",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.330419,
+        "lng": -64.859625
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 93,
+        "name": "Benner Hill",
+        "id": "st_thomas-estate-benner-hill",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 106,
+      "id": "st_croix-estate-bethlehem-estate",
+      "name": "Bethlehem Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.72016363432865,
+        "lng": -64.7858009859371
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 2627,
+        "name": "VICORP LAND (BETHLEHEM & FRED)",
+        "id": "st_croix-estate-vicorp-land-bethlehem-and-fred",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 114,
+      "id": "st_croix-estate-bettys-hope-estate",
+      "name": "Betty’s Hope Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.69531579785525,
+        "lng": -64.816510915274
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 115,
+        "name": "BETTYS HOPE",
+        "id": "st_croix-estate-bettys-hope",
+        "reason": "contains_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 122,
+      "id": "st_croix-estate-big-diamond-estate",
+      "name": "Big Diamond Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.73047622999105,
+        "lng": -64.75251969049944
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 637,
+        "name": "DIAMOND",
+        "id": "st_croix-estate-diamond",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 159,
+      "id": "st_thomas-estate-bolongo-hill",
+      "name": "Bolongo Hill",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3175123332078,
+        "lng": -64.89879745646965
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 156,
+        "name": "BOLONGO",
+        "id": "st_thomas-estate-bolongo",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 162,
+      "id": "st_thomas-estate-bolongo-valley",
+      "name": "Bolongo Valley",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.3175123332078,
+        "lng": -64.89879745646965
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 156,
+        "name": "BOLONGO",
+        "id": "st_thomas-estate-bolongo",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 169,
+      "id": "st_thomas-estate-bonne-esperance-estatehouse",
+      "name": "Bonne Esperance Estatehouse",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.35446178282435,
+        "lng": -64.9895367101718
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 165,
+        "name": "BONNE ESPERANCE",
+        "id": "st_thomas-estate-bonne-esperance",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 178,
+      "id": "st_thomas-estate-bordeaux-bay",
+      "name": "Bordeaux Bay",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.356590458506503,
+        "lng": -65.01661868979055
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 177,
+        "name": "BORDEAUX",
+        "id": "st_thomas-estate-bordeaux",
+        "reason": "contains_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 180,
+      "id": "st_thomas-point-bordeaux-hill",
+      "name": "Bordeaux Hill",
+      "type": "point",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.356590458506503,
+        "lng": -65.01661868979055
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 177,
+        "name": "BORDEAUX",
+        "id": "st_thomas-estate-bordeaux",
+        "reason": "contains_clean_slug",
+        "score": 0.92
+      }
+    },
+    {
+      "index": 183,
+      "id": "st_john-estate-bordeaux-mountains",
+      "name": "Bordeaux Mountains",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3346047564803,
+        "lng": -64.72275003509866
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 176,
+        "name": "BORDEAUX",
+        "id": "st_john-estate-bordeaux",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 185,
+      "id": "st_john-estate-bordeaux-roads",
+      "name": "Bordeaux Roads",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3346047564803,
+        "lng": -64.72275003509866
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 176,
+        "name": "BORDEAUX",
+        "id": "st_john-estate-bordeaux",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 194,
+      "id": "st_thomas-estate-botany-bay-road",
+      "name": "Botany Bay Road",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.35401195896805,
+        "lng": -65.03347371262775
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 192,
+        "name": "Botany Bay",
+        "id": "st_thomas-bay-botany-bay",
+        "reason": "contains_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 215,
+      "id": "st_croix-estate-brook-estate",
+      "name": "Brook Estate",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.727694,
+        "lng": -64.859333
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 216,
+        "name": "Brook Hill",
+        "id": "st_croix-estate-brook-hill",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 220,
+      "id": "st_john-estate-brown-bay-estate",
+      "name": "Brown Bay Estate",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3614381274039,
+        "lng": -64.7058491657759
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 222,
+        "name": "BROWNS BAY",
+        "id": "st_john-estate-browns-bay",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 234,
+      "id": "st_croix-point-buck-island-channel",
+      "name": "Buck Island Channel",
+      "type": "point",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.786941147028898,
+        "lng": -64.61931028889666
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 232,
+        "name": "BUCK ISLAND",
+        "id": "st_croix-estate-buck-island",
+        "reason": "contains_clean_slug",
+        "score": 0.92
+      }
+    },
+    {
+      "index": 320,
+      "id": "st_croix-estate-canebay",
+      "name": "Canebay",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702682157254202,
+        "lng": -64.84359059453385
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 312,
+        "name": "CANE",
+        "id": "st_croix-estate-cane",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 322,
+      "id": "st_croix-estate-canebay-point",
+      "name": "Canebay Point",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702682157254202,
+        "lng": -64.84359059453385
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 312,
+        "name": "CANE",
+        "id": "st_croix-estate-cane",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 327,
+      "id": "st_john-estate-caneelborn",
+      "name": "Caneelborn",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.34305825172645,
+        "lng": -64.7874874960091
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 324,
+        "name": "CANEEL BAY",
+        "id": "st_john-estate-caneel-bay",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 328,
+      "id": "st_croix-point-canegarda-point",
+      "name": "Canegarda Point",
+      "type": "point",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.702682157254202,
+        "lng": -64.84359059453385
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 312,
+        "name": "CANE",
+        "id": "st_croix-estate-cane",
+        "reason": "contains_clean_slug",
+        "score": 0.92
+      }
+    },
+    {
+      "index": 355,
+      "id": "st_thomas-estate-carettbay",
+      "name": "Carettbay",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.36457293689035,
+        "lng": -64.97608543520525
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 351,
+        "name": "CARET BAY",
+        "id": "st_thomas-estate-caret-bay",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 367,
+      "id": "st_john-estate-carolina-lyst",
+      "name": "Carolina-Lyst",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.34652014852835,
+        "lng": -64.72762843003869
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 364,
+        "name": "CAROLINA",
+        "id": "st_john-estate-carolina",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 403,
+      "id": "st_john-estate-catherineberg",
+      "name": "Catherineberg",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.3474,
+        "lng": -64.7479
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 405,
+        "name": "Catherineberg Ruins",
+        "id": "st_john-plantation-ruins-catherineberg-ruins",
+        "reason": "contains_clean_slug",
+        "score": 1
+      }
+    },
+    {
+      "index": 500,
+      "id": "st_croix-estate-colquohoun-mt",
+      "name": "Colquohoun Mt",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.74379739376225,
+        "lng": -64.79774653182555
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 499,
+        "name": "COLQUOHOUN",
+        "id": "st_croix-estate-colquohoun",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 511,
+      "id": "st_john-estate-concordia-bay",
+      "name": "Concordia Bay",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.30740743739495,
+        "lng": -64.70375086625529
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 509,
+        "name": "CONCORDIA A",
+        "id": "st_john-estate-concordia-a",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 512,
+      "id": "st_croix-estate-concordia-creek",
+      "name": "Concordia Creek",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7655740575354,
+        "lng": -64.76879180625855
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 506,
+        "name": "CONCORDIA",
+        "id": "st_croix-estate-concordia",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 522,
+      "id": "st_thomas-estate-contant",
+      "name": "Contant",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.34442312704015,
+        "lng": -64.95865161016525
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 524,
+        "name": "CONTANT 7A",
+        "id": "st_thomas-estate-contant-7a",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 529,
+      "id": "st_thomas-estate-contant-point",
+      "name": "Contant Point",
+      "type": "estate",
+      "island": "st_thomas",
+      "coordinates": {
+        "lat": 18.34442312704015,
+        "lng": -64.95865161016525
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 524,
+        "name": "CONTANT 7A",
+        "id": "st_thomas-estate-contant-7a",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 533,
+      "id": "st_croix-estate-contentment-gut",
+      "name": "Contentment Gut",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7380551734812,
+        "lng": -64.71023866116394
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 531,
+        "name": "CONTENTMENT",
+        "id": "st_croix-estate-contentment",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 535,
+      "id": "st_croix-estate-contentment-valley",
+      "name": "Contentment Valley",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.7380551734812,
+        "lng": -64.71023866116394
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 531,
+        "name": "CONTENTMENT",
+        "id": "st_croix-estate-contentment",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 537,
+      "id": "st_croix-estate-cooper",
+      "name": "Cooper",
+      "type": "estate",
+      "island": "st_croix",
+      "coordinates": {
+        "lat": 17.6951962167965,
+        "lng": -64.8094797486572
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 539,
+        "name": "COOPERS",
+        "id": "st_croix-estate-coopers",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    },
+    {
+      "index": 743,
+      "id": "st_john-estate-enighed-pond",
+      "name": "Enighed Pond",
+      "type": "estate",
+      "island": "st_john",
+      "coordinates": {
+        "lat": 18.329311500712798,
+        "lng": -64.79193196712666
+      },
+      "candidate": {
+        "source": "geographic_index",
+        "sourceIndex": 742,
+        "name": "ENIGHED",
+        "id": "st_john-estate-enighed",
+        "reason": "contains_clean_slug",
+        "score": 0.93
+      }
+    }
+  ],
+  "skippedRecords": []
+}
