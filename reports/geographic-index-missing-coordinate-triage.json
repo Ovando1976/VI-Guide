@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T11:04:12.517Z",
+  "generatedAt": "2026-07-02T11:11:26.453Z",
   "sourceOfTruth": "reports/geographic-index-coordinate-candidates-full.json",
   "notes": [
     "This triage report intentionally uses the full coordinate candidate audit proposals as the missing-coordinate source of truth.",
@@ -7,12 +7,12 @@
     "The official data-cleanliness audit is stricter and may report a smaller high-value issue count."
   ],
   "summary": {
-    "candidateReportMissingCoordinateRecords": 1174,
-    "triagedRecords": 1174,
-    "officialDataCleanlinessMissingCoordinates": 792,
+    "candidateReportMissingCoordinateRecords": 1171,
+    "triagedRecords": 1171,
+    "officialDataCleanlinessMissingCoordinates": 790,
     "officialDataCleanlinessSampledIssues": 200,
     "byBucket": {
-      "review_candidate": 124,
+      "review_candidate": 121,
       "research_clean_name_no_candidate": 898,
       "generic_fragment_do_not_coordinate": 31,
       "ocr_or_name_cleanup_first": 119,
@@ -22,14 +22,14 @@
       "review": 92,
       "none": 1039,
       "weak": 37,
-      "exact": 6
+      "exact": 3
     },
     "byTypeIsland": {
       "archive_record::st_john": 2,
-      "estate::st_croix": 187,
+      "estate::st_croix": 185,
       "bay::st_croix": 49,
       "bay::st_thomas": 162,
-      "island::st_thomas": 23,
+      "island::st_thomas": 22,
       "bay::water_island": 7,
       "point::water_island": 5,
       "point::st_croix": 46,
@@ -58,7 +58,7 @@
       "island::water_island": 1,
       "archive_record::st_croix": 2
     },
-    "reviewCandidateCount": 124,
+    "reviewCandidateCount": 121,
     "cleanNoCandidateCount": 898,
     "ocrOrNameCleanupFirstCount": 119
   },
@@ -77,21 +77,6 @@
       "candidateLat": 18.27684110476125,
       "candidateLng": -64.8922408046305,
       "reason": "exact_clean_slug"
-    },
-    {
-      "index": 555,
-      "id": "st_croix-estate-cotkongxove-bay",
-      "name": "Cotton Grove Bay",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": true,
-      "candidateName": "COTTON GROVE",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7354068317233,
-      "candidateLng": -64.63955741808715,
-      "reason": "contains_clean_slug"
     },
     {
       "index": 990,
@@ -122,36 +107,6 @@
       "candidateLat": 18.3626612187422,
       "candidateLng": -65.001633113491,
       "reason": "exact_clean_slug"
-    },
-    {
-      "index": 1229,
-      "id": "st_croix-estate-judys-fancy",
-      "name": "Judith's Fancy",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Estate Judith's Fancy",
-      "candidateSource": "historic_sites",
-      "candidateLat": 17.776914,
-      "candidateLng": -64.747497,
-      "reason": "similarity_or_token_overlap"
-    },
-    {
-      "index": 2558,
-      "id": "st_thomas-island-turtle-40ve-cay",
-      "name": "Turtle Dove Cay",
-      "type": "island",
-      "island": "st_thomas",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3086275618696,
-      "candidateLng": -65.0003906549153,
-      "reason": "exact_slug"
     },
     {
       "index": 23,
@@ -1272,7 +1227,7 @@
       "confidence": "review",
       "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -4529,7 +4484,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -5653,7 +5608,7 @@
       "island": "st_croix",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
+      "officialAuditSampled": true,
       "candidateName": "Greencay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7590180643778,
@@ -9719,7 +9674,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -19630,21 +19585,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 555,
-      "id": "st_croix-estate-cotkongxove-bay",
-      "name": "Cotton Grove Bay",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": true,
-      "candidateName": "COTTON GROVE",
-      "candidateSource": "geographic_index",
-      "candidateLat": 17.7354068317233,
-      "candidateLng": -64.63955741808715,
-      "reason": "contains_clean_slug"
-    },
-    {
       "index": 557,
       "id": "st_thomas-hill-cottage-hill",
       "name": "Cottage Hill",
@@ -20523,7 +20463,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": true,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -21872,7 +21812,7 @@
       "island": "st_croix",
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
-      "officialAuditSampled": false,
+      "officialAuditSampled": true,
       "candidateName": "Greencay",
       "candidateSource": "geographic_index",
       "candidateLat": 17.7590180643778,
@@ -24038,21 +23978,6 @@
       "candidateLat": 18.367491600136248,
       "candidateLng": -64.98491852585181,
       "reason": "weak_similarity"
-    },
-    {
-      "index": 1229,
-      "id": "st_croix-estate-judys-fancy",
-      "name": "Judith's Fancy",
-      "type": "estate",
-      "island": "st_croix",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "Estate Judith's Fancy",
-      "candidateSource": "historic_sites",
-      "candidateLat": 17.776914,
-      "candidateLng": -64.747497,
-      "reason": "similarity_or_token_overlap"
     },
     {
       "index": 1240,
@@ -27003,7 +26928,7 @@
       "confidence": "none",
       "bucket": "research_clean_name_no_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,
@@ -32875,21 +32800,6 @@
       "reason": "weak_similarity"
     },
     {
-      "index": 2558,
-      "id": "st_thomas-island-turtle-40ve-cay",
-      "name": "Turtle Dove Cay",
-      "type": "island",
-      "island": "st_thomas",
-      "confidence": "exact",
-      "bucket": "review_candidate",
-      "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
-      "candidateSource": "geographic_index",
-      "candidateLat": 18.3086275618696,
-      "candidateLng": -65.0003906549153,
-      "reason": "exact_slug"
-    },
-    {
       "index": 2561,
       "id": "st_thomas-island-turtledove-cay",
       "name": "Turtledove Cay",
@@ -32898,7 +32808,7 @@
       "confidence": "review",
       "bucket": "review_candidate",
       "officialAuditSampled": false,
-      "candidateName": "TURTLE DOVE CAY",
+      "candidateName": "Turtle Dove Cay",
       "candidateSource": "geographic_index",
       "candidateLat": 18.3086275618696,
       "candidateLng": -65.0003906549153,

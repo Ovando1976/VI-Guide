@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-07-02T11:09:19.051Z",
+  "backupFile": "/workspaces/VI-Guide/reports/backups/geographicIndex.safe-exact-after-ocr.2026-07-02T11-09-18-840Z.ts",
+  "applied": [
+    {
+      "index": 555,
+      "name": "Cotton Grove Bay",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "COTTON GROVE",
+      "lat": 17.7354068317233,
+      "lng": -64.63955741808715
+    },
+    {
+      "index": 1229,
+      "name": "Judith's Fancy",
+      "type": "estate",
+      "island": "st_croix",
+      "candidate": "Estate Judith's Fancy",
+      "lat": 17.776914,
+      "lng": -64.747497
+    },
+    {
+      "index": 2558,
+      "name": "Turtle Dove Cay",
+      "type": "island",
+      "island": "st_thomas",
+      "candidate": "TURTLE DOVE CAY",
+      "lat": 18.3086275618696,
+      "lng": -65.0003906549153
+    }
+  ],
+  "skipped": [],
+  "blocked": [
+    {
+      "index": 229,
+      "name": "Buck Bay",
+      "candidate": "BUCK ISLAND",
+      "reason": "bay-to-island match is unsafe"
+    },
+    {
+      "index": 990,
+      "name": "Grove",
+      "candidate": "GROVE PLACE",
+      "reason": "generic historic fragment"
+    },
+    {
+      "index": 1107,
+      "name": "Hope Point",
+      "candidate": "HOPE",
+      "reason": "generic Hope match"
+    }
+  ]
+}

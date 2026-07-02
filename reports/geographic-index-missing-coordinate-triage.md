@@ -1,12 +1,12 @@
 # Geographic Index Missing Coordinate Triage
 
-Generated: 2026-07-02T11:04:12.517Z
+Generated: 2026-07-02T11:11:26.453Z
 
 ## Summary
 
-- Candidate-audit missing coordinate records: 1174
-- Triaged records: 1174
-- Official data-cleanliness missing coordinates: 792
+- Candidate-audit missing coordinate records: 1171
+- Triaged records: 1171
+- Official data-cleanliness missing coordinates: 790
 - Official sampled missing-coordinate issues: 200
 
 ## By bucket
@@ -14,7 +14,7 @@ Generated: 2026-07-02T11:04:12.517Z
 | Bucket | Count |
 |---|---:|
 | research_clean_name_no_candidate | 898 |
-| review_candidate | 124 |
+| review_candidate | 121 |
 | ocr_or_name_cleanup_first | 119 |
 | generic_fragment_do_not_coordinate | 31 |
 | low_priority_non_map_record | 2 |
@@ -26,18 +26,15 @@ Generated: 2026-07-02T11:04:12.517Z
 | none | 1039 |
 | review | 92 |
 | weak | 37 |
-| exact | 6 |
+| exact | 3 |
 
 ## Best remaining review candidates
 
 | Index | Name | Type | Island | Confidence | Candidate | Reason |
 |---:|---|---|---|---|---|---|
 | 229 | Buck Bay | bay | st_thomas | exact | BUCK ISLAND | exact_clean_slug |
-| 555 | Cotton Grove Bay | estate | st_croix | exact | COTTON GROVE | contains_clean_slug |
 | 990 | Grove | historic | st_croix | exact | GROVE PLACE | contains_clean_slug |
 | 1107 | Hope Point | estate | st_thomas | exact | HOPE | exact_clean_slug |
-| 1229 | Judith's Fancy | estate | st_croix | exact | Estate Judith's Fancy | similarity_or_token_overlap |
-| 2558 | Turtle Dove Cay | island | st_thomas | exact | TURTLE DOVE CAY | exact_slug |
 | 23 | Annaberg Plantation Records | archive_record | st_john | review | Anna Point | contains_clean_slug |
 | 77 | Beck Grove | estate | st_croix | review | GROVE PLACE | contains_clean_slug |
 | 124 | Billy French Point | point | st_thomas | review | French Bay | contains_clean_slug |
@@ -112,7 +109,7 @@ Generated: 2026-07-02T11:04:12.517Z
 | 2497 | The Mountais | estate | st_croix | review | MOUNTAIN | similarity_or_token_overlap |
 | 2514 | Thomas Harbor | bay | st_thomas | review | THOMAS | contains_clean_slug |
 | 2515 | Thomas Hill | estate | st_croix | review | THOMAS | contains_clean_slug |
-| 2561 | Turtledove Cay | island | st_thomas | review | TURTLE DOVE CAY | similarity_or_token_overlap |
+| 2561 | Turtledove Cay | island | st_thomas | review | Turtle Dove Cay | similarity_or_token_overlap |
 | 2567 | Two Brothers | estate | st_croix | review | TWO BROTHERS / SMITHFIELD / HESSELBERG | contains_clean_slug |
 | 2571 | Two-Friends Hill | estate | st_croix | review | TWO FRIENDS | contains_clean_slug |
 | 2607 | Valley | estate | st_croix | review | CANE VALLEY | contains_clean_slug |
@@ -152,6 +149,9 @@ Generated: 2026-07-02T11:04:12.517Z
 | 2463 | Tague Bay | bay | st_croix | weak | TEAGUE BAY | weak_similarity |
 | 2476 | Tbatah Cay | island | st_thomas | weak | Thatch Cay | weak_similarity |
 | 2506 | Thomaa | estate | st_thomas | weak | THOMAS | weak_similarity |
+| 2562 | Turtledove Key | estate | st_thomas | weak | TURTLE DOVE CAY | weak_similarity |
+| 2638 | Waldberb Guard | estate | st_croix | weak | WALDBERGGAARD | weak_similarity |
+| 2674 | Wells Bay | bay | st_croix | weak | WILL'S BAY | weak_similarity |
 
 ## Clean high-value records with no candidate
 

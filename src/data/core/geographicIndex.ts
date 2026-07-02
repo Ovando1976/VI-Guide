@@ -17803,7 +17803,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Cotkongxove Bay; 34 mile wide, open beach fronting Cottongrove Estate; por'tion of Robin Bay west of Madsen Point, mouth coast of St. Croix.",
-    "coordinates": null,
+    "coordinates": {
+    "lat": 17.7354068317233,
+    "lng": -64.63955741808715
+  },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-cotkongxove-bay&island=st_croix&context=Cotkongxove%20Bay",
       "map": "/map?q=Cotkongxove%20Bay&island=st_croix"
@@ -38626,7 +38629,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_croix",
     "aliases": [],
     "description": "Judy's Fancy; Local pronunciation of Judith's Fancy, estate in St. Croix; sometimes mispelled, Judas Fancy.",
-    "coordinates": null,
+    "coordinates": {
+    "lat": 17.776914,
+    "lng": -64.747497
+  },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-croix-estate-judys-fancy&island=st_croix&context=Judy's%20Fancy",
       "map": "/map?q=Judy's%20Fancy&island=st_croix"
@@ -79823,7 +79829,10 @@ export const geographicIndex: GeographicIndexRecord[] = [
     "island": "st_thomas",
     "aliases": [],
     "description": "Turtle 40ve Cay; Less correct form of Turtledove Cay. -B. A. 2452.",
-    "coordinates": null,
+    "coordinates": {
+    "lat": 18.3086275618696,
+    "lng": -65.0003906549153
+  },
     "routes": {
       "knowledge": "/history/knowledge?estate=st-thomas-island-turtle-40ve-cay&island=st_thomas&context=Turtle%2040ve%20Cay",
       "map": "/map?q=Turtle%2040ve%20Cay&island=st_thomas"

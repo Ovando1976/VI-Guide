@@ -162,7 +162,6 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 552,Cotcell Playstarcg,historic,st_thomas,none,0.333,geographic_index,493,COCULUS ROCK,18.31372200975455,-64.8648698763188,weak_similarity
 553,Coterado P d n t,point,st_thomas,none,0.438,geographic_index,1523,LOWER JOHN DUNKO,18.342796459548502,-64.9495968439204,weak_similarity
 554,CotfosVdl8y Bay,bay,st_thomas,none,0.364,geographic_index,2180,ROTTO CAY,18.315388964993453,-64.8677568207732,weak_similarity
-555,Cotton Grove Bay,estate,st_croix,exact,1,geographic_index,558,COTTON GROVE,17.7354068317233,-64.63955741808715,contains_clean_slug
 557,Cottage Hill,hill,st_thomas,none,0.75,geographic_index,528,Contant Hill,18.34442312704015,-64.95865161016525,weak_similarity
 561,Cottongarden,estate,st_croix,none,0.677,geographic_index,1500,LONG POINT & COTTON GARDEN,17.756962341569448,-64.58113017501906,weak_similarity
 562,Cottongarden Bay,bay,st_thomas,none,0.526,geographic_index,730,Emancipation Garden,18.3412,-64.9316,weak_similarity
@@ -221,7 +220,7 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 683,Dunker,estate,st_john,none,0.51,geographic_index,2553,TURNER POINT,18.3420162496453,-64.69090698795429,weak_similarity
 684,Durlo Bay,bay,st_john,none,0.333,geographic_index,2553,TURNER POINT,18.3420162496453,-64.69090698795429,weak_similarity
 685,Durloe Bay,bay,st_john,none,0.375,geographic_index,368,Caroline,18.34652014852835,-64.72762843003869,weak_similarity
-686,Durloe Cays,point,st_thomas,none,0.533,geographic_index,2559,TURTLE DOVE CAY,18.3086275618696,-65.0003906549153,weak_similarity
+686,Durloe Cays,point,st_thomas,none,0.533,geographic_index,2558,Turtle Dove Cay,18.3086275618696,-65.0003906549153,weak_similarity
 687,Durloe Channd,point,st_john,none,0.308,geographic_index,100,BETHANY,18.32875985137175,-64.78395168634535,weak_similarity
 688,Durloe Point,bay,st_john,none,0.375,geographic_index,368,Caroline,18.34652014852835,-64.72762843003869,weak_similarity
 689,Dutchcap Cay,point,st_thomas,none,0.75,geographic_index,692,DUTCHMAN CAP,18.37996707126645,-65.0617794059329,weak_similarity
@@ -456,7 +455,6 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 1220,Joknuons Bay,bay,st_john,none,0.375,geographic_index,523,CONTANT,18.3233686913533,-64.79179894512015,weak_similarity
 1221,Jolly Hill,estate,st_thomas,none,0.6,geographic_index,660,Donoe Hill,18.3360307539689,-64.90137070522624,weak_similarity
 1224,Jorgen Haneen-bdgller),estate,st_thomas,none,0.41,geographic_index,2350,SORGENFRI EASTERN PORTION,18.367491600136248,-64.98491852585181,weak_similarity
-1229,Judith's Fancy,estate,st_croix,exact,1,historic_sites,24,Estate Judith's Fancy,17.776914,-64.747497,similarity_or_token_overlap
 1240,Kalk8teen Bay,bay,st_thomas,none,0.4,geographic_index,1242,KALKUM CAY,18.3504403569425,-65.05770189420505,weak_similarity
 1241,Kalkstens Bay,bay,st_thomas,none,0.454,geographic_index,1547,Magens Bay,18.3637,-64.9304,weak_similarity
 1246,Karstens,point,st_thomas,none,0.5,geographic_index,0,99 Steps,18.3439,-64.9306,weak_similarity
@@ -653,7 +651,7 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 1751,NortAglrle Bay,bay,st_thomas,none,0.367,geographic_index,181,Bordeaux Klyne Bay,18.356590458506503,-65.01661868979055,weak_similarity
 1752,North Cove,point,st_croix,none,0.6,geographic_index,1755,NORTH HALL,17.74951173408035,-64.87233148757599,weak_similarity
 1754,North Hall,estate,st_thomas,none,0.51,geographic_index,528,Contant Hill,18.34442312704015,-64.95865161016525,weak_similarity
-1756,North Poi-ltt,point,st_thomas,none,0.333,geographic_index,2559,TURTLE DOVE CAY,18.3086275618696,-65.0003906549153,weak_similarity
+1756,North Poi-ltt,point,st_thomas,none,0.333,geographic_index,2558,Turtle Dove Cay,18.3086275618696,-65.0003906549153,weak_similarity
 1757,North Si&,estate,st_croix,none,0.737,geographic_index,1761,NORTH STAR,17.7643827657991,-64.8181934288463,weak_similarity
 1758,North Side,estate,st_croix,review,0.91,geographic_index,1764,NORTHSIDE,17.75974688135625,-64.8840756495307,similarity_or_token_overlap
 1762,NOrth8ide Point,point,st_thomas,none,0.333,geographic_index,102,BETHESDA,18.3559062831591,-65.00835365155365,weak_similarity
@@ -1045,8 +1043,7 @@ index,name,type,island,confidence,score,candidateSource,candidateIndex,candidate
 2550,Turnbull,estate,st_john,none,0.51,geographic_index,2553,TURNER POINT,18.3420162496453,-64.69090698795429,weak_similarity
 2556,Turret Bay,estate,st_thomas,none,0.51,geographic_index,351,CARET BAY,18.36457293689035,-64.97608543520525,weak_similarity
 2557,Turret Point,bay,st_thomas,none,0.51,geographic_index,352,Caret Point,18.36457293689035,-64.97608543520525,weak_similarity
-2558,Turtle Dove Cay,island,st_thomas,exact,1,geographic_index,2559,TURTLE DOVE CAY,18.3086275618696,-65.0003906549153,exact_slug
-2561,Turtledove Cay,island,st_thomas,review,0.933,geographic_index,2559,TURTLE DOVE CAY,18.3086275618696,-65.0003906549153,similarity_or_token_overlap
+2561,Turtledove Cay,island,st_thomas,review,0.943,geographic_index,2558,Turtle Dove Cay,18.3086275618696,-65.0003906549153,similarity_or_token_overlap
 2562,Turtledove Key,estate,st_thomas,weak,0.81,geographic_index,2559,TURTLE DOVE CAY,18.3086275618696,-65.0003906549153,weak_similarity
 2563,Tutu,estate,st_thomas,none,0.333,geographic_index,2488,Thatch Cay,18.3592767020762,-64.86191857744305,weak_similarity
 2564,Tutu Bay,estate,st_thomas,none,0.333,geographic_index,2488,Thatch Cay,18.3592767020762,-64.86191857744305,weak_similarity

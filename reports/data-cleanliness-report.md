@@ -1,13 +1,13 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T11:03:18.987Z
+Generated: 2026-07-02T11:10:31.175Z
 
 ## Summary
 
 - Sources scanned: 3
 - Records scanned: 3313
 - High severity issues: 0
-- Medium severity issues: 792
+- Medium severity issues: 790
 - Low severity issues: 1
 
 ## Sources
@@ -22,7 +22,7 @@ Generated: 2026-07-02T11:03:18.987Z
 
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
-| medium | geographic_index | missing_coordinates | 792 |
+| medium | geographic_index | missing_coordinates | 790 |
 | low | geographic_index | duplicate_name_type_island | 1 |
 
 ## Sample Issues
@@ -131,7 +131,6 @@ Generated: 2026-07-02T11:03:18.987Z
 | medium | geographic_index | 551 | Corteri | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 552 | Cotcell Playstarcg | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 553 | Coterado P d n t | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
-| medium | geographic_index | 555 | Cotton Grove Bay | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 561 | Cottongarden | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 563 | Cottongarden Peninsula | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 564 | Cottongarden Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
@@ -149,6 +148,7 @@ Generated: 2026-07-02T11:03:18.987Z
 | medium | geographic_index | 622 | De Beftgem Road | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 625 | Deck Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 | medium | geographic_index | 629 | Derrick Point | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
+| medium | geographic_index | 630 | Description oP Stations | missing_coordinates | Location-like record has no lat/lng, coordinates, center, centroid, or geometry. | Add coordinates or attach a valid GeoJSON geometry. |
 
 ## Recommended Fix Order
 
