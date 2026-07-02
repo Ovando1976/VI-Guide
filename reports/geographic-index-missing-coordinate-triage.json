@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T11:16:37.433Z",
+  "generatedAt": "2026-07-02T11:24:01.018Z",
   "sourceOfTruth": "reports/geographic-index-coordinate-candidates-full.json",
   "notes": [
     "This triage report intentionally uses the full coordinate candidate audit proposals as the missing-coordinate source of truth.",
