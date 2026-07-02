@@ -1,0 +1,715 @@
+{
+  "generatedAt": "2026-07-02T09:33:32.913Z",
+  "updatedFile": "src/data/historicSites.ts",
+  "backupFile": "reports/backups/historicSites.image-candidates-targeted.2026-07-02T09-33-32-900Z.ts",
+  "candidateReport": "reports/historic-site-image-candidates.json",
+  "safeCandidates": 37,
+  "applied": 37,
+  "skipped": 0,
+  "appliedRecords": [
+    {
+      "index": 0,
+      "id": "nrhp-stj-annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-annaberg-historic-district.jpg",
+      "afterPath": "/images/dictionary/annaberg.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 2,
+      "id": "nrhp-stt-bordeaux",
+      "name": "Bordeaux",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-bordeaux.jpg",
+      "afterPath": "/images/dictionary/bordeaux.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 3,
+      "id": "nrhp-stj-brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-brown-bay-plantation-historic-district.jpg",
+      "afterPath": "/images/dictionary/brown-bay.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 5,
+      "id": "nrhp-stt-charlotte-amalie-historic-district",
+      "name": "Charlotte Amalie Historic District",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-charlotte-amalie-historic-district.jpg",
+      "afterPath": "/images/dictionary/charlotte-amalie.jpg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 6,
+      "id": "nrhp-stx-christiansted-historic-district",
+      "name": "Christiansted Historic District",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-christiansted-historic-district.jpg",
+      "afterPath": "/images/dictionary/christiansted.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 7,
+      "id": "nrhp-stx-christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-christiansted-national-historic-site.jpg",
+      "afterPath": "/images/dictionary/christiansted.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 8,
+      "id": "nrhp-stj-cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-cinnamon-bay-plantation.jpg",
+      "afterPath": "/images/beaches/cinnamon-bay.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 9,
+      "id": "nrhp-stx-coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-coakley-bay-estate.jpg",
+      "afterPath": "/images/dictionary/coakley-bay.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 12,
+      "id": "nrhp-stj-dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-dennis-bay-historic-district.jpg",
+      "afterPath": "/images/estate/dennis-bay-hawknest.svg",
+      "occurrencesInObject": 3,
+      "confidence": "strong",
+      "score": 0.95,
+      "reason": "path_contains_record_slug"
+    },
+    {
+      "index": 15,
+      "id": "nrhp-stj-enighed",
+      "name": "Enighed",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-enighed.jpg",
+      "afterPath": "/images/dictionary/enighed.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 16,
+      "id": "nrhp-stj-estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-estate-beverhoudt.jpg",
+      "afterPath": "/images/dictionary/beverhoudt.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 17,
+      "id": "nrhp-stt-estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-botany-bay.jpg",
+      "afterPath": "/images/dictionary/botany-bay.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 18,
+      "id": "nrhp-stt-estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-brewers-bay.jpg",
+      "afterPath": "/images/beaches/brewers-bay.jpg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 21,
+      "id": "nrhp-stx-estate-grove-place",
+      "name": "Estate Grove Place",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-grove-place.jpg",
+      "afterPath": "/images/estate/grove-place.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 22,
+      "id": "nrhp-stt-estate-hafensight",
+      "name": "Estate Hafensight",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-hafensight.jpg",
+      "afterPath": "/images/estate/hafensight.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 25,
+      "id": "nrhp-stx-estate-la-reine",
+      "name": "Estate La Reine",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-la-reine.jpg",
+      "afterPath": "/images/estate/la-reine.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 26,
+      "id": "nrhp-stx-estate-little-princess",
+      "name": "Estate Little Princess",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-little-princess.jpg",
+      "afterPath": "/images/dictionary/little-princess.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 27,
+      "id": "nrhp-stx-estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-mount-victory.jpg",
+      "afterPath": "/images/estate/mount-victory.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 28,
+      "id": "nrhp-stt-estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-neltjeberg.jpg",
+      "afterPath": "/images/dictionary/neltjeberg.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 30,
+      "id": "nrhp-stt-estate-perseverance",
+      "name": "Estate Perseverance",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-estate-perseverance.jpg",
+      "afterPath": "/images/dictionary/perseverance.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 31,
+      "id": "nrhp-stx-estate-prosperity",
+      "name": "Estate Prosperity",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-prosperity.jpg",
+      "afterPath": "/images/dictionary/prosperity.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 32,
+      "id": "nrhp-stx-estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-estate-saint-george-historic-district.jpg",
+      "afterPath": "/images/dictionary/saint-george-beck.svg",
+      "occurrencesInObject": 3,
+      "confidence": "strong",
+      "score": 0.95,
+      "reason": "path_contains_record_slug"
+    },
+    {
+      "index": 35,
+      "id": "nrhp-stj-fortsberg",
+      "name": "Fortsberg",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-fortsberg.jpg",
+      "afterPath": "/images/estate/fortsberg.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 36,
+      "id": "nrhp-stx-frederiksted-historic-district",
+      "name": "Frederiksted Historic District",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-frederiksted-historic-district.jpg",
+      "afterPath": "/images/dictionary/frederiksted.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 42,
+      "id": "nrhp-stt-hassel-island",
+      "name": "Hassel Island",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-hassel-island.jpg",
+      "afterPath": "/images/dictionary/hassel-island.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 44,
+      "id": "nrhp-stj-hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-hermitage-plantation-historic-district.jpg",
+      "afterPath": "/images/dictionary/hermitage.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 48,
+      "id": "nrhp-stj-lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-lameshur-plantation.jpg",
+      "afterPath": "/images/dictionary/lameshur.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 49,
+      "id": "nrhp-stj-liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-liever-marches-bay-historic-district.jpg",
+      "afterPath": "/images/dictionary/liever-marches-bay.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 51,
+      "id": "nrhp-stx-little-la-grange",
+      "name": "Little La Grange",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-little-la-grange.jpg",
+      "afterPath": "/images/estate/little-la-grange.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 53,
+      "id": "nrhp-stj-mary-point-estate",
+      "name": "Mary Point Estate",
+      "island": "st_john",
+      "beforePath": "/images/historicSite/nrhp-stj-mary-point-estate.jpg",
+      "afterPath": "/images/dictionary/mary-point-estate.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 60,
+      "id": "nrhp-stx-sion-hill",
+      "name": "Sion Hill",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-sion-hill.jpg",
+      "afterPath": "/images/dictionary/sion-hill.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 61,
+      "id": "nrhp-stt-skytsborg",
+      "name": "Skytsborg",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-skytsborg.jpg",
+      "afterPath": "/images/historicSite/skytsborg-tower.jpg",
+      "occurrencesInObject": 3,
+      "confidence": "strong",
+      "score": 0.95,
+      "reason": "path_contains_record_slug"
+    },
+    {
+      "index": 62,
+      "id": "nrhp-stx-slob-historic-district",
+      "name": "Slob Historic District",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-slob-historic-district.jpg",
+      "afterPath": "/images/dictionary/slob.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 63,
+      "id": "nrhp-stt-st-thomas-synagogue",
+      "name": "St. Thomas Synagogue",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-st-thomas-synagogue.jpg",
+      "afterPath": "/images/historicSite/st-thomas-synagogue.jpg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 65,
+      "id": "nrhp-stx-strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-strawberry-hill-historic-district.jpg",
+      "afterPath": "/images/dictionary/strawberry-hill.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 68,
+      "id": "nrhp-stt-venus-hill",
+      "name": "Venus Hill",
+      "island": "st_thomas",
+      "beforePath": "/images/historicSite/nrhp-stt-venus-hill.jpg",
+      "afterPath": "/images/dictionary/venus-hill.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    },
+    {
+      "index": 69,
+      "id": "nrhp-stx-whim",
+      "name": "Whim",
+      "island": "st_croix",
+      "beforePath": "/images/historicSite/nrhp-stx-whim.jpg",
+      "afterPath": "/images/dictionary/whim.svg",
+      "occurrencesInObject": 3,
+      "confidence": "exact",
+      "score": 1,
+      "reason": "exact_slug"
+    }
+  ],
+  "skippedRecords": [],
+  "deferredReview": [
+    {
+      "index": 1,
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+      "candidate": "/images/dictionary/bethlehem.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 4,
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+      "candidate": "/images/dictionary/catherineberg.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 11,
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+      "candidate": "/images/dictionary/company.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 13,
+      "name": "Diamond School",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-diamond-school.jpg",
+      "candidate": "/images/dictionary/diamond.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 14,
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+      "candidate": "/images/dictionary/emmaus.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 19,
+      "name": "Estate Butler's Bay",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+      "candidate": "/images/estate/butlers-bay.svg",
+      "score": 0.917,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 20,
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+      "candidate": "/images/dictionary/carolina.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 23,
+      "name": "Estate Hogansborg",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+      "candidate": "/images/dictionary/hogensborg.svg",
+      "score": 0.9,
+      "reason": "similarity_or_token_overlap"
+    },
+    {
+      "index": 24,
+      "name": "Estate Judith's Fancy",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+      "candidate": "/images/dictionary/judiths-fancy.svg",
+      "score": 0.929,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 34,
+      "name": "Fort Frederick",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
+      "candidate": "/images/historicSite/fort-frederik.jpg",
+      "score": 0.929,
+      "reason": "similarity_or_token_overlap"
+    },
+    {
+      "index": 37,
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+      "candidate": "/images/dictionary/midland.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 38,
+      "name": "Friedensthal Mission",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+      "candidate": "/images/estate/friedensthal.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 40,
+      "name": "Green Kay",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-green-kay.jpg",
+      "candidate": "/images/dictionary/green-cay.svg",
+      "score": 0.889,
+      "reason": "similarity_or_token_overlap"
+    },
+    {
+      "index": 43,
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+      "candidate": "/images/dictionary/hassel-island.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 46,
+      "name": "L'Esperance Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+      "candidate": "/images/dictionary/lesperance.svg",
+      "score": 0.909,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 47,
+      "name": "La Grande Princesse School",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+      "candidate": "/images/dictionary/prince.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 50,
+      "name": "Lind Point Fort",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
+      "candidate": "/images/dictionary/lind-point.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 52,
+      "name": "Mafolie Great House",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+      "candidate": "/images/dictionary/mafolie.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 56,
+      "name": "Reef Bay Great House Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+      "candidate": "/images/dictionary/reef-bay.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 57,
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+      "candidate": "/images/dictionary/reef-bay.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 58,
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+      "candidate": "/images/dictionary/richmond.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 64,
+      "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+      "candidate": "/images/historicSite/st-thomas-synagogue.jpg",
+      "score": 0.92,
+      "reason": "record_contains_file_slug"
+    },
+    {
+      "index": 66,
+      "name": "Trunk Bay Sugar Factory",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+      "candidate": "/images/dictionary/trunk-bay.svg",
+      "score": 0.9,
+      "reason": "record_contains_file_slug"
+    }
+  ],
+  "deferredNoCandidate": [
+    {
+      "index": 10,
+      "name": "Columbus Landing Site",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg"
+    },
+    {
+      "index": 33,
+      "name": "Estate St. John",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-st-john.jpg"
+    },
+    {
+      "index": 39,
+      "name": "Ft. Frederik of US Virgin Islands",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg"
+    },
+    {
+      "index": 41,
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg"
+    },
+    {
+      "index": 45,
+      "name": "Jossie Gut Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg"
+    },
+    {
+      "index": 55,
+      "name": "New Herrnhut Moravian Church",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg"
+    },
+    {
+      "index": 59,
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg"
+    },
+    {
+      "index": 67,
+      "name": "Tutu Plantation House",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg"
+    }
+  ]
+}

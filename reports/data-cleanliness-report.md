@@ -1,6 +1,6 @@
 # VI Guide Data Cleanliness Report
 
-Generated: 2026-07-02T09:28:06.420Z
+Generated: 2026-07-02T09:33:52.132Z
 
 ## Summary
 
@@ -8,7 +8,7 @@ Generated: 2026-07-02T09:28:06.420Z
 - Records scanned: 3328
 - High severity issues: 0
 - Medium severity issues: 200
-- Low severity issues: 122
+- Low severity issues: 85
 
 ## Sources
 
@@ -23,8 +23,8 @@ Generated: 2026-07-02T09:28:06.420Z
 | Severity | Source | Issue | Count |
 |---|---|---|---:|
 | medium | geographic_index | missing_coordinates | 200 |
-| low | historic_sites | missing_local_image_file | 70 |
 | low | geographic_index | missing_image | 47 |
+| low | historic_sites | missing_local_image_file | 33 |
 | low | estates_geojson | duplicate_name_type_island | 5 |
 
 ## Sample Issues

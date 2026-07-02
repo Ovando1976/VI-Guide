@@ -1,0 +1,1600 @@
+{
+  "summary": {
+    "generatedAt": "2026-07-02T09:34:07.758Z",
+    "historicSites": 70,
+    "missingImageIssues": 33,
+    "targets": 33,
+    "imageFiles": 3577,
+    "confidenceTotals": {
+      "review": 23,
+      "none": 8,
+      "weak": 2
+    }
+  },
+  "proposals": [
+    {
+      "index": 1,
+      "id": "nrhp-stx-bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-bethlehem-middle-works-historic-district.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/bethlehem.svg",
+        "fileName": "bethlehem.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/bethlehem-ruins.svg",
+          "fileName": "bethlehem-ruins.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/estate-bethlehem-ruins.jpg",
+          "fileName": "estate-bethlehem-ruins.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/bethlehems-old-works.svg",
+          "fileName": "bethlehems-old-works.svg",
+          "score": 0.727,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/bethlehem-new-work.svg",
+          "fileName": "bethlehem-new-work.svg",
+          "score": 0.682,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/bethlehem-old-worck.svg",
+          "fileName": "bethlehem-old-worck.svg",
+          "score": 0.682,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "id": "nrhp-stj-catherineberg-jockumsdahl-herman-farm",
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/catherineberg.svg",
+        "fileName": "catherineberg.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/catherineberg.svg",
+          "fileName": "catherineberg.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/catherineberg-ruins.jpg",
+          "fileName": "catherineberg-ruins.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/catherineberg-ruins.svg",
+          "fileName": "catherineberg-ruins.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/herman-frrrm.svg",
+          "fileName": "herman-frrrm.svg",
+          "score": 0.405,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-john/catherineberg-ruins-1.jpg",
+          "fileName": "catherineberg-ruins-1.jpg",
+          "score": 0.398,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "id": "nrhp-stx-columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-columbus-landing-site.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-columbus-landing-site.jpg",
+      "confidence": "none",
+      "bestScore": 0.563,
+      "bestMatch": {
+        "publicPath": "/images/estate/gumbs-land.svg",
+        "fileName": "gumbs-land.svg",
+        "score": 0.563,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/places/st-john/cruz-bay-landing-1.jpg",
+          "fileName": "cruz-bay-landing-1.jpg",
+          "score": 0.556,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/coculus-point.svg",
+          "fileName": "coculus-point.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/kolzgmzs-land.svg",
+          "fileName": "kolzgmzs-land.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/coculus-bay.svg",
+          "fileName": "coculus-bay.svg",
+          "score": 0.438,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/holenbergs-plnntnge.svg",
+          "fileName": "holenbergs-plnntnge.svg",
+          "score": 0.421,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "id": "nrhp-stx-danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-danish-west-india-and-guinea-company-warehouse.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/company.svg",
+        "fileName": "company.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/san-soucci-and-guinea-gut.svg",
+          "fileName": "san-soucci-and-guinea-gut.svg",
+          "score": 0.391,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/bonne-esperance-estatehouse.svg",
+          "fileName": "bonne-esperance-estatehouse.svg",
+          "score": 0.348,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/funta-colorado-6-longue.svg",
+          "fileName": "funta-colorado-6-longue.svg",
+          "score": 0.348,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/punta-corsario.svg",
+          "fileName": "punta-corsario.svg",
+          "score": 0.348,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/wmte-horse.svg",
+          "fileName": "wmte-horse.svg",
+          "score": 0.348,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "id": "nrhp-stx-diamond-school",
+      "name": "Diamond School",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-diamond-school.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-diamond-school.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/diamond.svg",
+        "fileName": "diamond.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/diamond.svg",
+          "fileName": "diamond.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/diainond-school.svg",
+          "fileName": "diainond-school.svg",
+          "score": 0.867,
+          "reason": "similarity_or_token_overlap"
+        },
+        {
+          "publicPath": "/images/dictionary/princess-school.svg",
+          "fileName": "princess-school.svg",
+          "score": 0.533,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/annaly-school.svg",
+          "fileName": "annaly-school.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/barnspool.svg",
+          "fileName": "barnspool.svg",
+          "score": 0.429,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "id": "nrhp-stj-emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/emmaus.svg",
+        "fileName": "emmaus.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/emmaus.svg",
+          "fileName": "emmaus.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/emmaus-ruins.jpg",
+          "fileName": "emmaus-ruins.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/emmaus-ruins.svg",
+          "fileName": "emmaus-ruins.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/thatch-island-and-st.svg",
+          "fileName": "thatch-island-and-st.svg",
+          "score": 0.395,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/buck-island-channel.svg",
+          "fileName": "buck-island-channel.svg",
+          "score": 0.351,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "id": "nrhp-stx-estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-butlers-bay.jpg",
+      "confidence": "review",
+      "bestScore": 0.917,
+      "bestMatch": {
+        "publicPath": "/images/estate/butlers-bay.svg",
+        "fileName": "butlers-bay.svg",
+        "score": 0.917,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/butlerbay.svg",
+          "fileName": "butlerbay.svg",
+          "score": 0.75,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/beaches/brewers-bay.jpg",
+          "fileName": "brewers-bay.jpg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/beaches/brewers-bay.svg",
+          "fileName": "brewers-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/battery-bay.svg",
+          "fileName": "battery-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/brewers-bay.svg",
+          "fileName": "brewers-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "id": "nrhp-stj-estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-estate-carolina-sugar-plantation.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/carolina.svg",
+        "fileName": "carolina.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/carolina.svg",
+          "fileName": "carolina.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/carolina-ruins.jpg",
+          "fileName": "carolina-ruins.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/carolina-ruins.svg",
+          "fileName": "carolina-ruins.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/carolina-road.svg",
+          "fileName": "carolina-road.svg",
+          "score": 0.714,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/carolina-lyst.svg",
+          "fileName": "carolina-lyst.svg",
+          "score": 0.643,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "id": "nrhp-stx-estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-hogansborg.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/hogensborg.svg",
+        "fileName": "hogensborg.svg",
+        "score": 0.9,
+        "reason": "similarity_or_token_overlap"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/hogensberg.svg",
+          "fileName": "hogensberg.svg",
+          "score": 0.8,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/hglgcnsborg.svg",
+          "fileName": "hglgcnsborg.svg",
+          "score": 0.727,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/hpgens-borg.svg",
+          "fileName": "hpgens-borg.svg",
+          "score": 0.727,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/holenberg.svg",
+          "fileName": "holenberg.svg",
+          "score": 0.6,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fredensborg.svg",
+          "fileName": "fredensborg.svg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "id": "nrhp-stx-estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-judiths-fancy.jpg",
+      "confidence": "review",
+      "bestScore": 0.929,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/judiths-fancy.svg",
+        "fileName": "judiths-fancy.svg",
+        "score": 0.929,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/judiths-fancy.svg",
+          "fileName": "judiths-fancy.svg",
+          "score": 0.929,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/estate-judiths-fancy.jpg",
+          "fileName": "estate-judiths-fancy.jpg",
+          "score": 0.929,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/judiths-fancy.svg",
+          "fileName": "judiths-fancy.svg",
+          "score": 0.929,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/judys-fancy.svg",
+          "fileName": "judys-fancy.svg",
+          "score": 0.714,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fancy-or-judiths-fancy.svg",
+          "fileName": "fancy-or-judiths-fancy.svg",
+          "score": 0.636,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "id": "nrhp-stt-estate-niesky",
+      "name": "Estate Niesky",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-estate-niesky.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-niesky.jpg",
+      "confidence": "weak",
+      "bestScore": 0.833,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/nisky.svg",
+        "fileName": "nisky.svg",
+        "score": 0.833,
+        "reason": "similarity_or_token_overlap"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/nisky.svg",
+          "fileName": "nisky.svg",
+          "score": 0.833,
+          "reason": "similarity_or_token_overlap"
+        },
+        {
+          "publicPath": "/images/dictionary/neck.svg",
+          "fileName": "neck.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/kijnigsbay.svg",
+          "fileName": "kijnigsbay.svg",
+          "score": 0.4,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/whites-bay.svg",
+          "fileName": "whites-bay.svg",
+          "score": 0.4,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/cnnnebny.svg",
+          "fileName": "cnnnebny.svg",
+          "score": 0.375,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "id": "nrhp-stx-estate-st-john",
+      "name": "Estate St. John",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-estate-st-john.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-st-john.jpg",
+      "confidence": "none",
+      "bestScore": 0.52,
+      "bestMatch": {
+        "publicPath": "/images/places/st-croix/brew-stx-1.jpg",
+        "fileName": "brew-stx-1.jpg",
+        "score": 0.52,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/north-star.svg",
+          "fileName": "north-star.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/north-poi-ltt.svg",
+          "fileName": "north-poi-ltt.svg",
+          "score": 0.462,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/north-side.svg",
+          "fileName": "north-side.svg",
+          "score": 0.4,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/north-slob.svg",
+          "fileName": "north-slob.svg",
+          "score": 0.4,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/groot-st.svg",
+          "fileName": "groot-st.svg",
+          "score": 0.375,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "id": "nrhp-stx-fort-frederick",
+      "name": "Fort Frederick",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-fort-frederick.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-fort-frederick.jpg",
+      "confidence": "review",
+      "bestScore": 0.929,
+      "bestMatch": {
+        "publicPath": "/images/historicSite/fort-frederik.jpg",
+        "fileName": "fort-frederik.jpg",
+        "score": 0.929,
+        "reason": "similarity_or_token_overlap"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/fort-frederik.svg",
+          "fileName": "fort-frederik.svg",
+          "score": 0.929,
+          "reason": "similarity_or_token_overlap"
+        },
+        {
+          "publicPath": "/images/places/st-croix/fort-frederik-1.jpg",
+          "fileName": "fort-frederik-1.jpg",
+          "score": 0.82,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fort-catharina.svg",
+          "fileName": "fort-catharina.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/gorret-rock.svg",
+          "fileName": "gorret-rock.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-john/north-shore-deli-1.jpg",
+          "fileName": "north-shore-deli-1.jpg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "id": "nrhp-stx-friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensfeld-midlands-moravian-church-and-manse.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/midland.svg",
+        "fileName": "midland.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/frederick-lutheran-church.jpg",
+          "fileName": "frederick-lutheran-church.jpg",
+          "score": 0.362,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/frederick-lutheran-church.svg",
+          "fileName": "frederick-lutheran-church.svg",
+          "score": 0.362,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-thomas/cravin-crabs-1.jpg",
+          "fileName": "cravin-crabs-1.jpg",
+          "score": 0.362,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-croix/marias-cantina-1.jpg",
+          "fileName": "marias-cantina-1.jpg",
+          "score": 0.36,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/hassel-island-orkanshullet.svg",
+          "fileName": "hassel-island-orkanshullet.svg",
+          "score": 0.34,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "id": "nrhp-stx-friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-friedensthal-mission.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/estate/friedensthal.svg",
+        "fileName": "friedensthal.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/fredensborg-hill.svg",
+          "fileName": "fredensborg-hill.svg",
+          "score": 0.45,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fredensdal.svg",
+          "fileName": "fredensdal.svg",
+          "score": 0.45,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fredensthd.svg",
+          "fileName": "fredensthd.svg",
+          "score": 0.45,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/fredensfeld.svg",
+          "fileName": "fredensfeld.svg",
+          "score": 0.4,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-croix/frederiksted-pier-1.jpg",
+          "fileName": "frederiksted-pier-1.jpg",
+          "score": 0.37,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "id": "nrhp-stx-ft-frederik-of-us-virgin-islands",
+      "name": "Ft. Frederik of US Virgin Islands",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-ft-frederik-of-us-virgin-islands.jpg",
+      "confidence": "none",
+      "bestScore": 0.5,
+      "bestMatch": {
+        "publicPath": "/images/archive/fort-frederik-and-emancipation-records.jpg",
+        "fileName": "fort-frederik-and-emancipation-records.jpg",
+        "score": 0.5,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/places/st-john/virgin-islands-national-park-1.jpg",
+          "fileName": "virgin-islands-national-park-1.jpg",
+          "score": 0.469,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/frederik-p-o-i-n-t.svg",
+          "fileName": "frederik-p-o-i-n-t.svg",
+          "score": 0.438,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/frederiksberg-point.svg",
+          "fileName": "frederiksberg-point.svg",
+          "score": 0.406,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/flannigan-island.svg",
+          "fileName": "flannigan-island.svg",
+          "score": 0.406,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/hans-lollik-islands.svg",
+          "fileName": "hans-lollik-islands.svg",
+          "score": 0.378,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "id": "nrhp-stx-green-kay",
+      "name": "Green Kay",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-green-kay.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-green-kay.jpg",
+      "confidence": "review",
+      "bestScore": 0.889,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/green-cay.svg",
+        "fileName": "green-cay.svg",
+        "score": 0.889,
+        "reason": "similarity_or_token_overlap"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/green-cay.svg",
+          "fileName": "green-cay.svg",
+          "score": 0.889,
+          "reason": "similarity_or_token_overlap"
+        },
+        {
+          "publicPath": "/images/dictionary/greencay.svg",
+          "fileName": "greencay.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/great-bay.svg",
+          "fileName": "great-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/reef-bay.svg",
+          "fileName": "reef-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/reef-bay.svg",
+          "fileName": "reef-bay.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "id": "nrhp-stt-hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hamburg-america-shipping-line-administrative-offices.jpg",
+      "confidence": "none",
+      "bestScore": 0.369,
+      "bestMatch": {
+        "publicPath": "/images/archive/fort-christian-administrative-and-military-records.jpg",
+        "fileName": "fort-christian-administrative-and-military-records.jpg",
+        "score": 0.369,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/emancipation-garden.jpg",
+          "fileName": "emancipation-garden.jpg",
+          "score": 0.308,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/emancipation-garden.svg",
+          "fileName": "emancipation-garden.svg",
+          "score": 0.308,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/estate-little-princess.jpg",
+          "fileName": "estate-little-princess.jpg",
+          "score": 0.308,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/little-princess.svg",
+          "fileName": "little-princess.svg",
+          "score": 0.308,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-john/lind-point-trail-1.jpg",
+          "fileName": "lind-point-trail-1.jpg",
+          "score": 0.308,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "id": "nrhp-stt-hassel-island-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/hassel-island.svg",
+        "fileName": "hassel-island.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/hassel-island-historic-district.jpg",
+          "fileName": "hassel-island-historic-district.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/hassel-island-historic-district.svg",
+          "fileName": "hassel-island-historic-district.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/estate/hassel-island-orkanshullet.svg",
+          "fileName": "hassel-island-orkanshullet.svg",
+          "score": 0.548,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/archive/hassel-island-maritime-and-military-records.jpg",
+          "fileName": "hassel-island-maritime-and-military-records.jpg",
+          "score": 0.488,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/thatch-island-and-st.svg",
+          "fileName": "thatch-island-and-st.svg",
+          "score": 0.419,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "id": "nrhp-stj-jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-jossie-gut-historic-district.jpg",
+      "confidence": "none",
+      "bestScore": 0.7,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/joshee-out.svg",
+        "fileName": "joshee-out.svg",
+        "score": 0.7,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/bass-gut.svg",
+          "fileName": "bass-gut.svg",
+          "score": 0.6,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/brozone-gut.svg",
+          "fileName": "brozone-gut.svg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/baas-gut.svg",
+          "fileName": "baas-gut.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/grange-gut.svg",
+          "fileName": "grange-gut.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/gut.svg",
+          "fileName": "gut.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "id": "nrhp-stj-lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lesperance-historic-district.jpg",
+      "confidence": "review",
+      "bestScore": 0.909,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/lesperance.svg",
+        "fileName": "lesperance.svg",
+        "score": 0.909,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/lesperance.svg",
+          "fileName": "lesperance.svg",
+          "score": 0.909,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/esperance.svg",
+          "fileName": "esperance.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/bon-esperance.svg",
+          "fileName": "bon-esperance.svg",
+          "score": 0.769,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/bonne-esperance.svg",
+          "fileName": "bonne-esperance.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/bonne-esperance.svg",
+          "fileName": "bonne-esperance.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "id": "nrhp-stx-la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-la-grande-princesse-school.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/prince.svg",
+        "fileName": "prince.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/princess.svg",
+          "fileName": "princess.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/estate/la-grande-princesse.svg",
+          "fileName": "la-grande-princesse.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/princess-school.svg",
+          "fileName": "princess-school.svg",
+          "score": 0.577,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/events/carnival/prince-and-princess-show.jpg",
+          "fileName": "prince-and-princess-show.jpg",
+          "score": 0.538,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/la-gratidc-privrexse.svg",
+          "fileName": "la-gratidc-privrexse.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "id": "nrhp-stj-lind-point-fort",
+      "name": "Lind Point Fort",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-lind-point-fort.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lind-point-fort.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/lind-point.svg",
+        "fileName": "lind-point.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/point.svg",
+          "fileName": "point.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/fort-point.svg",
+          "fileName": "fort-point.svg",
+          "score": 0.667,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-john/lind-point-trail-1.jpg",
+          "fileName": "lind-point-trail-1.jpg",
+          "score": 0.631,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/sandy-point-rock.svg",
+          "fileName": "sandy-point-rock.svg",
+          "score": 0.625,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/long-point-bay.svg",
+          "fileName": "long-point-bay.svg",
+          "score": 0.6,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "id": "nrhp-stt-mafolie-great-house",
+      "name": "Mafolie Great House",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-mafolie-great-house.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/mafolie.svg",
+        "fileName": "mafolie.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/mafolie.jpg",
+          "fileName": "mafolie.jpg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/estate/mafolie.svg",
+          "fileName": "mafolie.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/mafolie-road.svg",
+          "fileName": "mafolie-road.svg",
+          "score": 0.526,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/government-house.jpg",
+          "fileName": "government-house.jpg",
+          "score": 0.526,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/government-house.svg",
+          "fileName": "government-house.svg",
+          "score": 0.526,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "id": "nrhp-stj-more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-more-hill-historic-district.jpg",
+      "confidence": "weak",
+      "bestScore": 0.778,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/corn-hill.svg",
+        "fileName": "corn-hill.svg",
+        "score": 0.778,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/hoe-hill.svg",
+          "fileName": "hoe-hill.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/mars-hill.svg",
+          "fileName": "mars-hill.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/pole-hill.svg",
+          "fileName": "pole-hill.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/robe-hill.svg",
+          "fileName": "robe-hill.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/corn-hill.svg",
+          "fileName": "corn-hill.svg",
+          "score": 0.778,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "id": "nrhp-stt-new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-new-herrnhut-moravian-church.jpg",
+      "confidence": "none",
+      "bestScore": 0.429,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/lutheran-church.svg",
+        "fileName": "lutheran-church.svg",
+        "score": 0.429,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/frederick-lutheran-church.jpg",
+          "fileName": "frederick-lutheran-church.jpg",
+          "score": 0.429,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/frederick-lutheran-church.svg",
+          "fileName": "frederick-lutheran-church.svg",
+          "score": 0.429,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/new-hernhut.svg",
+          "fileName": "new-hernhut.svg",
+          "score": 0.393,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/new-hernhut.svg",
+          "fileName": "new-hernhut.svg",
+          "score": 0.393,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/moravian-point.svg",
+          "fileName": "moravian-point.svg",
+          "score": 0.375,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "id": "nrhp-stj-reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-great-house-historic-district.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/reef-bay.svg",
+        "fileName": "reef-bay.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/reef-bay.svg",
+          "fileName": "reef-bay.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/places/st-john/reef-bay-trail-1.jpg",
+          "fileName": "reef-bay-trail-1.jpg",
+          "score": 0.57,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.jpg",
+          "fileName": "reef-bay-sugar-mill.jpg",
+          "score": 0.55,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.svg",
+          "fileName": "reef-bay-sugar-mill.svg",
+          "score": 0.55,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/great-bay.svg",
+          "fileName": "great-bay.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "id": "nrhp-stj-reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-reef-bay-sugar-factory-historic-district.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/reef-bay.svg",
+        "fileName": "reef-bay.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/reef-bay.svg",
+          "fileName": "reef-bay.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.jpg",
+          "fileName": "reef-bay-sugar-mill.jpg",
+          "score": 0.682,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.svg",
+          "fileName": "reef-bay-sugar-mill.svg",
+          "score": 0.682,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/central-sugarfactorp.svg",
+          "fileName": "central-sugarfactorp.svg",
+          "score": 0.636,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/archive/reef-bay-estate-and-sugar-works-records.jpg",
+          "fileName": "reef-bay-estate-and-sugar-works-records.jpg",
+          "score": 0.531,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "id": "nrhp-stx-richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "st_croix",
+      "currentImage": "/images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-richmond-prison-detention-and-workhouse.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/richmond.svg",
+        "fileName": "richmond.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/richmond.svg",
+          "fileName": "richmond.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/richmond-prisonland.svg",
+          "fileName": "richmond-prisonland.svg",
+          "score": 0.462,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/bordeouo-plantation.svg",
+          "fileName": "bordeouo-plantation.svg",
+          "score": 0.385,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/crown-house.svg",
+          "fileName": "crown-house.svg",
+          "score": 0.385,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/goodhope.svg",
+          "fileName": "goodhope.svg",
+          "score": 0.385,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "id": "nrhp-stj-rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-rustenberg-plantation-south-historic-district.jpg",
+      "confidence": "none",
+      "bestScore": 0.5,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/rueteqberg.svg",
+        "fileName": "rueteqberg.svg",
+        "score": 0.5,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/cane-south.svg",
+          "fileName": "cane-south.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/grange-south.svg",
+          "fileName": "grange-south.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/plessen-south.svg",
+          "fileName": "plessen-south.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/rustenberg-and-adventure.svg",
+          "fileName": "rustenberg-and-adventure.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/estate/whites-bay-south.svg",
+          "fileName": "whites-bay-south.svg",
+          "score": 0.5,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "id": "nrhp-stt-st-thomas-synagogue-beracha",
+      "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
+      "confidence": "review",
+      "bestScore": 0.92,
+      "bestMatch": {
+        "publicPath": "/images/historicSite/st-thomas-synagogue.jpg",
+        "fileName": "st-thomas-synagogue.jpg",
+        "score": 0.92,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/historicSite/beracha-veshalom-vegimulth-hasidim-synagogue.svg",
+          "fileName": "beracha-veshalom-vegimulth-hasidim-synagogue.svg",
+          "score": 0.531,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+          "fileName": "st-thomas-synagogue-1.jpg",
+          "score": 0.405,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/revenge-beach.svg",
+          "fileName": "revenge-beach.svg",
+          "score": 0.385,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/vessup-bay-1.jpg",
+          "fileName": "vessup-bay-1.jpg",
+          "score": 0.376,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/beaches/st-thomas/vessup-bay-2.jpg",
+          "fileName": "vessup-bay-2.jpg",
+          "score": 0.376,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "id": "nrhp-stj-trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "island": "st_john",
+      "currentImage": "/images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-trunk-bay-sugar-factory.jpg",
+      "confidence": "review",
+      "bestScore": 0.9,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/trunk-bay.svg",
+        "fileName": "trunk-bay.svg",
+        "score": 0.9,
+        "reason": "record_contains_file_slug"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/estate/trunk-bay.svg",
+          "fileName": "trunk-bay.svg",
+          "score": 0.9,
+          "reason": "record_contains_file_slug"
+        },
+        {
+          "publicPath": "/images/dictionary/central-sugarfactorp.svg",
+          "fileName": "central-sugarfactorp.svg",
+          "score": 0.609,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/places/st-john/trunk-bay-beach-1.jpg",
+          "fileName": "trunk-bay-beach-1.jpg",
+          "score": 0.542,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.jpg",
+          "fileName": "reef-bay-sugar-mill.jpg",
+          "score": 0.522,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/reef-bay-sugar-mill.svg",
+          "fileName": "reef-bay-sugar-mill.svg",
+          "score": 0.522,
+          "reason": "weak_similarity"
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "id": "nrhp-stt-tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "island": "st_thomas",
+      "currentImage": "/images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
+      "issueDetail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
+      "confidence": "none",
+      "bestScore": 0.6,
+      "bestMatch": {
+        "publicPath": "/images/dictionary/tutu-road.svg",
+        "fileName": "tutu-road.svg",
+        "score": 0.6,
+        "reason": "weak_similarity"
+      },
+      "alternatives": [
+        {
+          "publicPath": "/images/dictionary/wmte-horse.svg",
+          "fileName": "wmte-horse.svg",
+          "score": 0.6,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/crown-house.svg",
+          "fileName": "crown-house.svg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/dictionary/white-horse.svg",
+          "fileName": "white-horse.svg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/crown-house.jpg",
+          "fileName": "crown-house.jpg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        },
+        {
+          "publicPath": "/images/historicSite/crown-house.svg",
+          "fileName": "crown-house.svg",
+          "score": 0.545,
+          "reason": "weak_similarity"
+        }
+      ]
+    }
+  ]
+}

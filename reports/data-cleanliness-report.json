@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T09:28:06.420Z",
+  "generatedAt": "2026-07-02T09:33:52.132Z",
   "options": {
     "includeParcels": false,
     "strict": false
@@ -30,7 +30,7 @@
   "severityTotals": {
     "high": 0,
     "medium": 200,
-    "low": 122
+    "low": 85
   },
   "issueGroups": [
     {
@@ -41,15 +41,15 @@
     },
     {
       "severity": "low",
-      "source": "historic_sites",
-      "issue": "missing_local_image_file",
-      "count": 70
-    },
-    {
-      "severity": "low",
       "source": "geographic_index",
       "issue": "missing_image",
       "count": 47
+    },
+    {
+      "severity": "low",
+      "source": "historic_sites",
+      "issue": "missing_local_image_file",
+      "count": 33
     },
     {
       "severity": "low",
@@ -2577,16 +2577,6 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 0,
-      "id": "nrhp-stj-annaberg-historic-district",
-      "name": "Annaberg Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-annaberg-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 1,
       "id": "nrhp-stx-bethlehem-middle-works-historic-district",
       "name": "Bethlehem Middle Works Historic District",
@@ -2597,81 +2587,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 2,
-      "id": "nrhp-stt-bordeaux",
-      "name": "Bordeaux",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-bordeaux.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 3,
-      "id": "nrhp-stj-brown-bay-plantation-historic-district",
-      "name": "Brown Bay Plantation Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-brown-bay-plantation-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 4,
       "id": "nrhp-stj-catherineberg-jockumsdahl-herman-farm",
       "name": "Catherineberg-Jockumsdahl-Herman Farm",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-catherineberg-jockumsdahl-herman-farm.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 5,
-      "id": "nrhp-stt-charlotte-amalie-historic-district",
-      "name": "Charlotte Amalie Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-charlotte-amalie-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 6,
-      "id": "nrhp-stx-christiansted-historic-district",
-      "name": "Christiansted Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-christiansted-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 7,
-      "id": "nrhp-stx-christiansted-national-historic-site",
-      "name": "Christiansted National Historic Site",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-christiansted-national-historic-site.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 8,
-      "id": "nrhp-stj-cinnamon-bay-plantation",
-      "name": "Cinnamon Bay Plantation",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-cinnamon-bay-plantation.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 9,
-      "id": "nrhp-stx-coakley-bay-estate",
-      "name": "Coakley Bay Estate",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-coakley-bay-estate.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2697,16 +2617,6 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 12,
-      "id": "nrhp-stj-dennis-bay-historic-district",
-      "name": "Dennis Bay Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-dennis-bay-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 13,
       "id": "nrhp-stx-diamond-school",
       "name": "Diamond School",
@@ -2722,46 +2632,6 @@
       "name": "Emmaus Moravian Church and Manse",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-emmaus-moravian-church-and-manse.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 15,
-      "id": "nrhp-stj-enighed",
-      "name": "Enighed",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-enighed.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 16,
-      "id": "nrhp-stj-estate-beverhoudt",
-      "name": "Estate Beverhoudt",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-estate-beverhoudt.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 17,
-      "id": "nrhp-stt-estate-botany-bay",
-      "name": "Estate Botany Bay",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-botany-bay.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 18,
-      "id": "nrhp-stt-estate-brewers-bay",
-      "name": "Estate Brewers Bay",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-brewers-bay.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2787,26 +2657,6 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 21,
-      "id": "nrhp-stx-estate-grove-place",
-      "name": "Estate Grove Place",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-grove-place.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 22,
-      "id": "nrhp-stt-estate-hafensight",
-      "name": "Estate Hafensight",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-hafensight.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 23,
       "id": "nrhp-stx-estate-hogansborg",
       "name": "Estate Hogansborg",
@@ -2827,81 +2677,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 25,
-      "id": "nrhp-stx-estate-la-reine",
-      "name": "Estate La Reine",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-la-reine.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 26,
-      "id": "nrhp-stx-estate-little-princess",
-      "name": "Estate Little Princess",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-little-princess.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 27,
-      "id": "nrhp-stx-estate-mount-victory",
-      "name": "Estate Mount Victory",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-mount-victory.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 28,
-      "id": "nrhp-stt-estate-neltjeberg",
-      "name": "Estate Neltjeberg",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-neltjeberg.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 29,
       "id": "nrhp-stt-estate-niesky",
       "name": "Estate Niesky",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-niesky.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 30,
-      "id": "nrhp-stt-estate-perseverance",
-      "name": "Estate Perseverance",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-estate-perseverance.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 31,
-      "id": "nrhp-stx-estate-prosperity",
-      "name": "Estate Prosperity",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-prosperity.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 32,
-      "id": "nrhp-stx-estate-saint-george-historic-district",
-      "name": "Estate Saint George Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-estate-saint-george-historic-district.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2922,26 +2702,6 @@
       "name": "Fort Frederick",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-fort-frederick.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 35,
-      "id": "nrhp-stj-fortsberg",
-      "name": "Fortsberg",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-fortsberg.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 36,
-      "id": "nrhp-stx-frederiksted-historic-district",
-      "name": "Frederiksted Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-frederiksted-historic-district.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -2997,31 +2757,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 42,
-      "id": "nrhp-stt-hassel-island",
-      "name": "Hassel Island",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 43,
       "id": "nrhp-stt-hassel-island-boundary-increase",
       "name": "Hassel Island Historic District (Boundary Increase)",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-hassel-island-boundary-increase.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 44,
-      "id": "nrhp-stj-hermitage-plantation-historic-district",
-      "name": "Hermitage Plantation Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-hermitage-plantation-historic-district.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -3057,26 +2797,6 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 48,
-      "id": "nrhp-stj-lameshur-plantation",
-      "name": "Lameshur Plantation",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-lameshur-plantation.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 49,
-      "id": "nrhp-stj-liever-marches-bay-historic-district",
-      "name": "Liever Marches Bay Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-liever-marches-bay-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 50,
       "id": "nrhp-stj-lind-point-fort",
       "name": "Lind Point Fort",
@@ -3087,31 +2807,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 51,
-      "id": "nrhp-stx-little-la-grange",
-      "name": "Little La Grange",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-little-la-grange.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 52,
       "id": "nrhp-stt-mafolie-great-house",
       "name": "Mafolie Great House",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-mafolie-great-house.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 53,
-      "id": "nrhp-stj-mary-point-estate",
-      "name": "Mary Point Estate",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stj-mary-point-estate.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -3177,61 +2877,11 @@
     {
       "severity": "low",
       "source": "historic_sites",
-      "index": 60,
-      "id": "nrhp-stx-sion-hill",
-      "name": "Sion Hill",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-sion-hill.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 61,
-      "id": "nrhp-stt-skytsborg",
-      "name": "Skytsborg",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-skytsborg.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 62,
-      "id": "nrhp-stx-slob-historic-district",
-      "name": "Slob Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-slob-historic-district.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 63,
-      "id": "nrhp-stt-st-thomas-synagogue",
-      "name": "St. Thomas Synagogue",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
       "index": 64,
       "id": "nrhp-stt-st-thomas-synagogue-beracha",
       "name": "St. Thomas Synagogue--Beracha Veshalom Vegemiluth Hasadim",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-st-thomas-synagogue-beracha.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 65,
-      "id": "nrhp-stx-strawberry-hill-historic-district",
-      "name": "Strawberry Hill Historic District",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-strawberry-hill-historic-district.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     },
     {
@@ -3252,26 +2902,6 @@
       "name": "Tutu Plantation House",
       "issue": "missing_local_image_file",
       "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-tutu-plantation-house.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 68,
-      "id": "nrhp-stt-venus-hill",
-      "name": "Venus Hill",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stt-venus-hill.jpg",
-      "suggestion": "Add the file to public/ or update the image path."
-    },
-    {
-      "severity": "low",
-      "source": "historic_sites",
-      "index": 69,
-      "id": "nrhp-stx-whim",
-      "name": "Whim",
-      "issue": "missing_local_image_file",
-      "detail": "Image path does not exist under public/: /images/historicSite/nrhp-stx-whim.jpg",
       "suggestion": "Add the file to public/ or update the image path."
     }
   ]
