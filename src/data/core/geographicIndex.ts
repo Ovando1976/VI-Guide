@@ -1,5 +1,5 @@
 // Generated geographic index.
-// Duplicate name/type/island rows were safely merged by scripts/merge-geographic-index-name-type-island-duplicates.ts.
+// Remaining duplicate name/type/island rows merged by scripts/merge-remaining-geographic-index-duplicates.ts.
 
 export type GeographicIndexRecord = {
   id?: string;
