@@ -13,17 +13,14 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import IslandMap from "../../components/maps/IslandMap";
+import { EstateIntelligenceTabs } from "../../components/estates/EstateIntelligenceTabs";
+import { geographicIndexItems, type GeographicIndexItem } from "../../data/core/geographicIndex";
 import { estates } from "../../data/estates";
-import {
-  geographicIndexItems,
-  type GeographicIndexItem,
-} from "../../data/core/geographicIndex";
 import { getEstateCoordinatesByGeoid } from "../../data/estateCoordinateLinks";
 import { getEstateKnowledgeForEstate } from "../../data/estateKnowledgeLookup";
-import { EstateIntelligenceTabs } from "../../components/estates/EstateIntelligenceTabs";
-import { buildEstateNarrative } from "../../lib/estates/estateNarrative";
-import IslandMap from "../../components/maps/IslandMap";
 import { getHistoryForEstate } from "../../data/history/historyLinks";
+import { buildEstateNarrative } from "../../lib/estates/estateNarrative";
 
 type EstateLike = (typeof estates)[number];
 type LooseRecord = Record<string, unknown>;
@@ -191,7 +188,6 @@ export default function EstateDetailPage() {
             This estate could not be matched by ID, name, alias, GEOID, or
             geographic index.
           </p>
-
           <p className="mt-4 rounded-2xl bg-black/30 p-4 text-xs text-white/50">
             Requested estate:{" "}
             <span className="font-bold text-white">{geoid || "missing"}</span>
@@ -263,24 +259,24 @@ export default function EstateDetailPage() {
     <main className="min-h-screen bg-[#020617] px-4 py-5 pb-[calc(140px+env(safe-area-inset-bottom))] text-white sm:px-6">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_5%,rgba(16,185,129,0.18),transparent_28%),radial-gradient(circle_at_85%_10%,rgba(56,189,248,0.14),transparent_28%),linear-gradient(to_bottom,#020617,#07111f_45%,#020617)]" />
 
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-7xl">
         <button
           type="button"
-          onClick={() => navigate("/map")}
-          className="mb-5 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white/80 shadow-xl backdrop-blur-xl"
+          onClick={() => navigate(`/map?island=${island}`)}
+          className="mb-5 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white/80 shadow-xl backdrop-blur-xl transition hover:bg-white/15"
         >
           <ChevronLeft className="h-4 w-4" />
-          Map
+          Back to Atlas
         </button>
 
-        <section className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.06] shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
-          <div className="grid gap-0 lg:grid-cols-[1fr_480px]">
+        <section className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.06] shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+          <div className="grid lg:grid-cols-[1fr_520px]">
             <div className="p-6 sm:p-8">
               <p className="text-[10px] font-black uppercase tracking-[0.42em] text-emerald-300">
                 Estate Intelligence
               </p>
 
-              <h1 className="mt-3 font-serif text-5xl font-black leading-none tracking-[-0.05em] text-white sm:text-6xl">
+              <h1 className="mt-3 font-serif text-5xl font-black leading-none tracking-[-0.05em] text-white sm:text-7xl">
                 Estate {title}
               </h1>
 
@@ -288,6 +284,7 @@ export default function EstateDetailPage() {
                 <Pill label={quarter} />
                 <Pill label={islandLabel(island)} />
                 <Pill label={`ID ${estateId}`} />
+                <Pill label={hasCoords ? "Mapped" : "Coordinates Needed"} />
               </div>
 
               <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70">
@@ -299,22 +296,32 @@ export default function EstateDetailPage() {
                   {primaryHistory}
                 </p>
               ) : null}
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <DarkMetric label="Island" value={islandLabel(island)} />
+                <DarkMetric label="Quarter" value={quarter} />
+                <DarkMetric label="Records" value={`${linkedHistoryRecords.length}`} />
+                <DarkMetric
+                  label="Coordinates"
+                  value={hasCoords ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : "Missing"}
+                />
+              </div>
             </div>
 
             <div className="border-t border-white/10 bg-[#020617]/55 p-4 lg:border-l lg:border-t-0">
-              <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-stone-950 shadow-2xl">
+              <div className="overflow-hidden rounded-[1.9rem] border border-white/10 bg-stone-950 shadow-2xl">
                 <div className="border-b border-white/10 bg-white/[0.04] p-4">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-300">
-                    Boundary Map
+                    Atlas Boundary View
                   </p>
                   <p className="mt-1 text-sm text-white/60">
-                    Focused terrain view of Estate {title}.
+                    Estate boundary, surrounding parcels, and nearby geography.
                   </p>
                 </div>
 
                 <IslandMap
                   embedded
-                  embeddedMapHeight="360px"
+                  embeddedMapHeight="400px"
                   interactive
                   focusTarget={{
                     center: hasCoords ? [lng, lat] : [-64.86, 18.08],
@@ -325,58 +332,30 @@ export default function EstateDetailPage() {
                   highlightEstate={title}
                   showEstateBoundaries
                   showEstateLabels
-                  showParcels={false}
-                  showParcelLabels={false}
+                  showParcels
+                  showParcelLabels
                   showControls
                 />
               </div>
             </div>
           </div>
         </section>
-        {linkedHistoryRecords.length > 0 ? (
-  <section className="mt-5 rounded-[2rem] border border-white/10 bg-white p-5 text-stone-950 shadow-xl">
-    <h2 className="text-2xl font-black">Linked History Records</h2>
-
-    <div className="mt-4 grid gap-3">
-      {linkedHistoryRecords.map((record) => (
-        <div key={record.id} className="rounded-2xl bg-stone-50 p-4">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
-            {record.dateRange || record.type}
-          </p>
-          <h3 className="mt-2 text-sm font-black">{record.title}</h3>
-          <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-stone-600">
-            {record.summary}
-          </p>
-          <p className="mt-3 text-[11px] font-bold text-stone-400">
-            {record.source.title} · {record.source.pages}
-          </p>
-        </div>
-      ))}
-    </div>
-  </section>
-) : null}
 
         <section className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
           <Action
             label="History"
             icon={History}
             onClick={() =>
-              navigate(
-                `/estates/${encodedId}/history?island=${island}&context=${encodedTitle}`,
-              )
+              navigate(`/estates/${encodedId}/history?island=${island}&context=${encodedTitle}`)
             }
           />
-
           <Action
             label="Archives"
             icon={Archive}
             onClick={() =>
-              navigate(
-                `/history/knowledge?estate=${encodedId}&island=${island}&context=${encodedTitle}`,
-              )
+              navigate(`/history/knowledge?estate=${encodedId}&island=${island}&context=${encodedTitle}`)
             }
           />
-
           <Action
             label="Ask AI"
             icon={MessageCircle}
@@ -384,7 +363,6 @@ export default function EstateDetailPage() {
               navigate(`/concierge?island=${island}&context=${encodedTitle}`)
             }
           />
-
           <Action
             label="Plan Ride"
             icon={Route}
@@ -398,6 +376,29 @@ export default function EstateDetailPage() {
           />
         </section>
 
+        {linkedHistoryRecords.length > 0 ? (
+          <section className="mt-5 rounded-[2rem] border border-white/10 bg-white p-5 text-stone-950 shadow-xl">
+            <h2 className="text-2xl font-black">Linked History Records</h2>
+
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              {linkedHistoryRecords.map((record) => (
+                <div key={record.id} className="rounded-2xl bg-stone-50 p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+                    {record.dateRange || record.type}
+                  </p>
+                  <h3 className="mt-2 text-sm font-black">{record.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-stone-600">
+                    {record.summary}
+                  </p>
+                  <p className="mt-3 text-[11px] font-bold text-stone-400">
+                    {record.source.title} · {record.source.pages}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="mt-5 rounded-[2rem] border border-white/10 bg-white p-5 text-stone-950 shadow-xl">
           <div className="flex items-start gap-3">
             <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-800">
@@ -407,10 +408,8 @@ export default function EstateDetailPage() {
             <div>
               <h2 className="text-2xl font-black">What this estate unlocks</h2>
               <p className="mt-3 text-sm leading-relaxed text-stone-600">
-                Visitors can learn where this estate is, what quarter it belongs
-                to, what historic records may exist, what civic places are
-                connected, what nearby places are worth visiting, and how to get
-                there.
+                This estate connects the Atlas to historic records, dictionary coordinates,
+                nearby parcels, mobility planning, routes, AI context, and visitor discovery.
               </p>
             </div>
           </div>
@@ -421,9 +420,7 @@ export default function EstateDetailPage() {
             <InfoCard label="Estate ID" value={estateId} />
             <InfoCard
               label="Coordinates"
-              value={
-                hasCoords ? `${lat.toFixed(5)}, ${lng.toFixed(5)}` : "Unavailable"
-              }
+              value={hasCoords ? `${lat.toFixed(5)}, ${lng.toFixed(5)}` : "Unavailable"}
             />
           </div>
 
@@ -437,9 +434,7 @@ export default function EstateDetailPage() {
               </p>
               <button
                 type="button"
-                onClick={() =>
-                  window.open(googleMapsUrl, "_blank", "noopener,noreferrer")
-                }
+                onClick={() => window.open(googleMapsUrl, "_blank", "noopener,noreferrer")}
                 className="mt-4 flex items-center gap-2 rounded-2xl bg-sky-100 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-sky-950"
               >
                 <MapPinned className="h-4 w-4" />
@@ -465,13 +460,12 @@ export default function EstateDetailPage() {
               <div>
                 <h2 className="text-2xl font-black">Dictionary Coordinates</h2>
                 <p className="mt-2 text-sm leading-relaxed text-stone-600">
-                  Coordinate entries extracted from the Geographic Dictionary
-                  and linked to this estate.
+                  Coordinate entries extracted from the Geographic Dictionary and linked to this estate.
                 </p>
               </div>
             </div>
 
-            <div className="mt-5 grid gap-3">
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
               {dictionaryCoords.map((coord) => {
                 const coordUrl = `https://www.google.com/maps/search/?api=1&query=${coord.lat},${coord.lng}`;
 
@@ -489,9 +483,7 @@ export default function EstateDetailPage() {
                     </p>
                     <button
                       type="button"
-                      onClick={() =>
-                        window.open(coordUrl, "_blank", "noopener,noreferrer")
-                      }
+                      onClick={() => window.open(coordUrl, "_blank", "noopener,noreferrer")}
                       className="mt-4 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-stone-800 shadow"
                     >
                       <MapPinned className="h-4 w-4" />
@@ -513,6 +505,17 @@ function Pill({ label }: { label: string }) {
     <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-black text-white/80">
       {label}
     </span>
+  );
+}
+
+function DarkMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-4">
+      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">
+        {label}
+      </p>
+      <p className="mt-2 break-words text-sm font-black text-white">{value}</p>
+    </div>
   );
 }
 

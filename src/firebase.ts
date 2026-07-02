@@ -1,17 +1,43 @@
+// src/firebase.ts
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+
 import firebaseConfig from "../firebase-applet-config.json";
 
-const app = initializeApp(firebaseConfig);
+// Extract your explicit custom Firebase database instance token
+const FIRESTORE_DATABASE_ID =
+  firebaseConfig.firestoreDatabaseId ||
+  "ai-studio-ef9b22ac-987a-4e06-8e0f-d7e4254a2671";
 
-export const auth = getAuth(app);
-export const db = getFirestore(
+// 1. Initialize the Core Application Module
+export const app = initializeApp(firebaseConfig);
+
+// 2. Initialize Firestore utilizing its matching method signature:
+//    initializeFirestore(app, settings, databaseId)
+export const db = initializeFirestore(
   app,
-  firebaseConfig.firestoreDatabaseId || "(default)"
+  {
+    experimentalAutoDetectLongPolling: true,
+    localCache: persistentLocalCache({
+      tabManager: persistentMultipleTabManager(),
+    }),
+  },
+  FIRESTORE_DATABASE_ID,
 );
+
+// 3. Bind downstream auxiliary services
+export const auth = getAuth(app);
 export const storage = getStorage(app);
+
+console.log("Firebase projectId:", firebaseConfig.projectId);
+console.log("Firestore databaseId:", FIRESTORE_DATABASE_ID);
 
 export enum OperationType {
   CREATE = "create",
@@ -44,10 +70,12 @@ export interface FirestoreErrorInfo {
 export function handleFirestoreError(
   error: unknown,
   operationType: OperationType,
-  path: string | null
+  path: string | null,
 ) {
   const errInfo: FirestoreErrorInfo = {
     error: error instanceof Error ? error.message : String(error),
+    operationType,
+    path,
     authInfo: {
       userId: auth.currentUser?.uid,
       email: auth.currentUser?.email || undefined,
@@ -62,9 +90,8 @@ export function handleFirestoreError(
           photoUrl: provider.photoURL,
         })) || [],
     },
-    operationType,
-    path,
   };
-  console.error("Firestore Error: ", JSON.stringify(errInfo));
+
+  console.error("Firestore Error:", errInfo);
   throw new Error(JSON.stringify(errInfo));
 }

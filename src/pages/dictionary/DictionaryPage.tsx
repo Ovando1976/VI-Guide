@@ -93,10 +93,10 @@ export default function DictionaryPage() {
           </p>
 
           <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <Stat label="Nodes" value={dictionaryGraph.stats.nodes} />
-            <Stat label="Links" value={dictionaryGraph.stats.relationships} />
-            <Stat label="Entries" value={dictionaryGraph.stats.dictionaryEntries} />
-            <Stat label="Places" value={dictionaryGraph.stats.standalonePlaces} />
+            <Stat label="Nodes" value={(dictionaryGraph as any).stats.nodes} />
+            <Stat label="Links" value={(dictionaryGraph as any).stats.relationships} />
+            <Stat label="Entries" value={(dictionaryGraph as any).stats.dictionaryEntries} />
+            <Stat label="Places" value={(dictionaryGraph as any).stats.standalonePlaces} />
           </div>
         </section>
 

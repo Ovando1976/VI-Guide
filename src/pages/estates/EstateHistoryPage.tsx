@@ -16,7 +16,7 @@ import { estateHistories } from "../../data/estateHistories";
 import { geographicIndexItems, type GeographicIndexItem } from "../../data/core/geographicIndex";
 import { EstateExplorerMap } from "../../features/estates/components/estate-explorer-map";
 import type { IslandCode } from "../../types";
-import type { GeographyIslandCode } from "../../features/geography/types";
+import type { IslandCode as GeographyIslandCode } from "../../types";
 
 type EstateLike = (typeof estates)[number];
 type EstateMapIsland = IslandCode | GeographyIslandCode | "all";
@@ -128,30 +128,20 @@ function findEstateByParam(rawParam: string): EstateLike | undefined {
 
   return directMatch ?? findEstateFromIndex(decoded);
 }
-
 function toEstateMapIsland(
   value: string | null | undefined,
   fallback: string,
 ): EstateMapIsland {
-  const candidate = value || fallback;
+  const candidate = String(value || fallback || "").toLowerCase();
 
-  if (
-    candidate === "st_thomas" ||
-    candidate === "st_john" ||
-    candidate === "st_croix" ||
-    candidate === "water_island" ||
-    candidate === "stt" ||
-    candidate === "stj" ||
-    candidate === "stx" ||
-    candidate === "wat" ||
-    candidate === "unk" ||
-    candidate === "all"
-  ) {
-    return candidate;
-  }
+  if (candidate === "stt" || candidate === "st_thomas") return "st_thomas";
+  if (candidate === "stj" || candidate === "st_john") return "st_john";
+  if (candidate === "stx" || candidate === "st_croix") return "st_croix";
+  if (candidate === "wat" || candidate === "water_island") return "water_island";
 
-  return "all";
+  return "st_thomas";
 }
+
 
 function islandName(value: unknown): string {
   const key = String(value ?? "").toLowerCase();
