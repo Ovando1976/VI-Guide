@@ -170,20 +170,20 @@ export default function EstateHistoryPage() {
   const sixtoExtract =
     getSixtoEstateExtract(title) ||
     getSixtoEstateExtract(fallbackTitle) ||
-    getSixtoEstateExtract(title.replace(/^Estate\\s+/i, '')) ||
+    getSixtoEstateExtract(title.replace(/^Estate\s+/i, '')) ||
     null;
 
   const sixtoAcreage =
     getSixtoEstateAcreage1902(title) ||
     getSixtoEstateAcreage1902(fallbackTitle) ||
-    getSixtoEstateAcreage1902(title.replace(/^Estate\\s+/i, '')) ||
+    getSixtoEstateAcreage1902(title.replace(/^Estate\s+/i, '')) ||
     null;
 
   const sixtoNarrative =
     getSixtoEstateNarrative1902(title) ||
     getSixtoEstateNarrative1902(fallbackTitle) ||
     getSixtoEstateNarrative1902(estateId) ||
-    getSixtoEstateNarrative1902(title.replace(/^Estate\\s+/i, '')) ||
+    getSixtoEstateNarrative1902(title.replace(/^Estate\s+/i, '')) ||
     null;
 
   const estateSourceIndex =
@@ -191,6 +191,8 @@ export default function EstateHistoryPage() {
     getEstateSourceIndexEntry(title) ||
     getEstateSourceIndexEntry(fallbackTitle) ||
     null;
+
+  const developmentTimeline: never[] = [];
 
   const encodedTitle = encodeURIComponent(title);
   const encodedId = encodeURIComponent(estateId || title);
@@ -228,9 +230,9 @@ export default function EstateHistoryPage() {
               </div>
 
               <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
-                This dedicated estate history page gathers the historical context,
-                archive links, map context, source records, and AI routes for the
-                selected estate.
+                {estateSourceIndex?.historicalDescription ||
+                  estateDescription?.historicalDescription ||
+                  "This dedicated estate history page gathers the historical context, archive links, map context, source records, and AI routes for the selected estate."}
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -254,8 +256,9 @@ export default function EstateHistoryPage() {
                 </h2>
 
                 <p className="mt-3 text-sm leading-relaxed text-white/65">
-                  The atlas History action now opens this dedicated estate page
-                  instead of dropping the user into the generic history hub.
+                  {estateSourceIndex?.shortDescription ||
+                    estateDescription?.shortDescription ||
+                    "The atlas History action now opens this dedicated estate page instead of dropping the user into the generic history hub."}
                 </p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -287,6 +290,49 @@ export default function EstateHistoryPage() {
           </div>
         </section>
 
+
+        {estateSourceIndex ? (
+          <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-800">
+                <LibraryBig className="h-6 w-6" />
+              </div>
+
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-700">
+                  Estate Timeline Contrast
+                </p>
+                <h2 className="mt-1 font-serif text-3xl font-black">
+                  {estateSourceIndex.name}
+                </h2>
+                {estateSourceIndex.historicalDescription ? (
+                  <p className="mt-3 text-sm leading-7 text-stone-700">
+                    {estateSourceIndex.historicalDescription}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+
+            {estateSourceIndex.keyFacts.length ? (
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {estateSourceIndex.keyFacts.slice(0, 6).map((fact) => (
+                  <div
+                    key={fact}
+                    className="rounded-3xl border border-stone-200 bg-stone-50 p-4 text-sm font-bold leading-relaxed text-stone-700"
+                  >
+                    {fact}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            {estateSourceIndex.sourceRefs.length ? (
+              <p className="mt-5 text-xs font-bold leading-5 text-stone-400">
+                Primary source: {estateSourceIndex.sourceRefs[0]}
+              </p>
+            ) : null}
+          </section>
+        ) : null}
 
         {sixtoAcreage ? (
           <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
@@ -356,7 +402,7 @@ export default function EstateHistoryPage() {
             </div>
 
             <p className="mt-4 text-xs font-bold text-stone-400">
-              Source: Adolph Sixto, Time and I; or, Looking Forward, San Juan News, c. 1902.
+              Primary source: Adolph Sixto, Time and I; or, Looking Forward, San Juan News, c. 1902.
             </p>
           </section>
         ) : null}
@@ -370,7 +416,7 @@ export default function EstateHistoryPage() {
 
             <div>
               <h2 className="font-serif text-3xl font-black">
-                Linked Estate History
+                Linked Historical Records
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-stone-600">
                 These records are pulled from the VI Guide historical knowledge base

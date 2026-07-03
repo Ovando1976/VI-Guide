@@ -1,4 +1,5 @@
 import { getEstateHistoryDescription } from "./estateHistoryDescriptions";
+import { getEstateProfile } from "./estateProfiles";
 import { getManualEstateHistoryOverride } from "./manualEstateHistoryOverrides";
 import { getSixtoEstateAcreage1902 } from "../history/sources/sixtoEstateAcreage1902";
 import { getSixtoEstateNarrative1902 } from "../history/sources/sixtoEstateNarratives1902";
@@ -12,49 +13,12 @@ function baseEstateName(value: unknown): string {
   return clean(value).replace(/^Estate\s+/i, "");
 }
 
-function professionalShortDescription(name: string, narrative?: string, fallback?: string) {
-  const text = clean(narrative || fallback);
-
-  if (/bovoni/i.test(name)) {
-    return "Bovoni is a Frenchman’s Bay estate and modern St. Thomas community with residential housing, commercial businesses, gas stations, schools, community facilities, and the Clinton E. Phipps Racetrack.";
-  }
-
-  return text || `${name} is linked to the VI Guide estate-history source index.`;
-}
-
-function professionalHistoricalDescription(name: string, narrative?: string, fallback?: string) {
-  const text = clean(narrative || fallback);
-
-  if (/bovoni/i.test(name)) {
-    return "Bovoni is a historic estate and present-day community in the Frenchman’s Bay area of St. Thomas. Historic source material describes the estate landscape as including a lagoon with small islets, sea crabs, pelicans, and other coastal wildlife. Around the turn of the twentieth century, the area was described as isolated or underused. Today, Bovoni includes residential housing, community facilities, school and shelter functions, gas stations, shopping and commercial business areas, and the Clinton E. Phipps Racetrack.";
-  }
-
-  return text || `${name} is linked to the VI Guide estate-history source index.`;
-}
-
-function professionalKeyFacts(name: string, facts: string[]) {
-  if (/bovoni/i.test(name)) {
-    return [
-      "Historic estate in the Frenchman’s Bay area of St. Thomas.",
-      "Historic landscape includes a lagoon and small islets.",
-      "Associated coastal wildlife includes sea crabs, pelicans, and other wild birds.",
-      "Described around the turn of the twentieth century as isolated or underused.",
-      "Present-day Bovoni includes residential housing.",
-      "Present-day Bovoni includes school and shelter functions.",
-      "Present-day Bovoni includes gas stations.",
-      "Present-day Bovoni includes shopping and commercial business areas.",
-      "Clinton E. Phipps Racetrack is located in Estate Bovoni."
-    ];
-  }
-
-  return facts;
-}
-
 export type EstateSourceIndexEntry = {
   name: string;
   estateId?: string;
   shortDescription?: string;
   historicalDescription?: string;
+  modernDescription?: string;
   confidence?: string;
   researchStatus?: string;
   sixto?: {
@@ -76,6 +40,10 @@ export function getEstateSourceIndexEntry(
   const raw = clean(idOrName);
   const base = baseEstateName(raw);
 
+  const profile =
+    getEstateProfile(raw) ||
+    getEstateProfile(base);
+
   const manual =
     getManualEstateHistoryOverride(raw) ||
     getManualEstateHistoryOverride(base);
@@ -96,11 +64,13 @@ export function getEstateSourceIndexEntry(
     getSixtoEstateExtract(raw) ||
     getSixtoEstateExtract(base);
 
-  if (!manual && !generated && !sixtoAcreage && !sixtoNarrative && !sixtoExtract) {
+  if (!profile && !manual && !generated && !sixtoAcreage && !sixtoNarrative && !sixtoExtract) {
     return null;
   }
 
   const name =
+    profile?.displayName ||
+    profile?.name ||
     manual?.name ||
     generated?.name ||
     sixtoAcreage?.name ||
@@ -108,21 +78,35 @@ export function getEstateSourceIndexEntry(
     sixtoExtract?.estateName ||
     raw;
 
-  const rawKeyFacts = [
-    ...(manual?.keyFacts ?? []),
-    ...(sixtoNarrative?.keyFacts ?? []),
-    sixtoAcreage
-      ? `Sixto lists ${sixtoAcreage.name} in the 1902 Estates and Acreage of St. Thomas table.`
-      : "",
-    sixtoAcreage?.acres !== null && sixtoAcreage?.acres !== undefined
-      ? `Sixto acreage: ${sixtoAcreage.acres} acres.`
-      : "",
-    sixtoAcreage?.category
-      ? `Sixto category: ${sixtoAcreage.category.replaceAll("-", " ")}.`
-      : "",
-  ].filter(Boolean);
+  const keyFacts =
+    profile?.slug === "bovoni"
+      ? [
+          "Late Danish-period Bovoni was a quiet coastal estate landscape.",
+          "The older estate landscape included lagoon features, small islets, mangroves, open land, and coastal wildlife.",
+          "A villa or resort future was imagined, but that did not become the main modern outcome.",
+          "Modern Bovoni became a major south-shore residential community.",
+          "Bovoni includes a large public housing presence.",
+          "Bovoni includes a large private homeowner community.",
+          "Part of the former lagoon/coastal landscape became associated with landfill and dump use.",
+          "Modern Bovoni also includes public facilities, school and shelter functions, gas stations, shopping areas, commercial business complexes, transportation services, and the Clinton E. Phipps Racetrack.",
+        ]
+      : [
+          ...(profile?.sourceNotes ?? []),
+          ...(manual?.keyFacts ?? []),
+          ...(sixtoNarrative?.keyFacts ?? []),
+          sixtoAcreage
+            ? `Sixto acreage table entry: ${sixtoAcreage.name}.`
+            : "",
+          sixtoAcreage?.acres !== null && sixtoAcreage?.acres !== undefined
+            ? `Acreage listed: ${sixtoAcreage.acres} acres.`
+            : "",
+          sixtoAcreage?.category
+            ? `Acreage table category: ${sixtoAcreage.category.replaceAll("-", " ")}.`
+            : "",
+        ].filter(Boolean);
 
   const sourceRefs = [
+    ...(profile?.sourceRefs ?? []),
     ...(manual?.sourceRefs ?? []),
     ...(generated?.sourceRefs ?? []),
     sixtoAcreage
@@ -136,26 +120,32 @@ export function getEstateSourceIndexEntry(
       : "",
   ].filter(Boolean);
 
-  const narrativeDescription =
+  const historicalDescription =
+    profile?.description ||
+    profile?.historicalContext ||
     sixtoNarrative?.historicalDescription ||
     manual?.historicalDescription ||
     generated?.historicalDescription;
 
-  const narrativeSummary =
+  const shortDescription =
+    profile?.summary ||
     sixtoNarrative?.summary ||
     manual?.shortDescription ||
     generated?.shortDescription;
 
   return {
     name,
-    estateId: manual?.id || generated?.id,
-    shortDescription: professionalShortDescription(name, narrativeSummary, narrativeDescription),
-    historicalDescription: professionalHistoricalDescription(name, narrativeDescription, narrativeSummary),
+    estateId: profile?.estateId || manual?.id || generated?.id,
+    shortDescription,
+    historicalDescription,
+    modernDescription: profile?.modernContext,
     confidence:
+      profile?.sourceConfidence ||
       manual?.confidence ||
       generated?.confidence ||
       sixtoNarrative?.researchStatus,
     researchStatus:
+      profile ? "profile-linked" :
       manual?.researchStatus ||
       generated?.researchStatus ||
       sixtoNarrative?.researchStatus,
@@ -168,7 +158,7 @@ export function getEstateSourceIndexEntry(
       narrativePages: sixtoNarrative?.sourcePages,
       excerpts: sixtoNarrative?.excerpts || sixtoExtract?.excerpts,
     },
-    keyFacts: professionalKeyFacts(name, rawKeyFacts),
+    keyFacts,
     sourceRefs,
   };
 }
