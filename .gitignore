@@ -38,3 +38,6 @@ scripts/audit-index-graph-accuracy.ts
 generated/rigsarkivet/**/images/
 generated/rigsarkivet/**/raw-html/
 generated/rigsarkivet/viewer-js/
+
+# Local historic map image downloads
+generated/history/historic-maps/images/

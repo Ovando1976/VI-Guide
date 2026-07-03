@@ -1,0 +1,469 @@
+# Rigsarkivet West Indies Map Image IDs
+
+Source: https://arkivalieronline.rigsarkivet.dk/en/other/index-creator/153/2354827/20104126
+
+Total records: 136
+Identified image IDs: 0
+Missing image IDs: 136
+
+## First 80 records
+
+- 337 8: Kort over St. Croix 1898, tegnet af E. E.
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282887
+- 337 10: Bykort over Christiansted p&aring; St. Croix 1856, tegnet af Christian Ludvig Schellerup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282889
+- 337 11: Bykort over Frederiksted p&aring; St. Croix 1863, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282890
+- 337 12: Bykort over Frederiksted p&aring; St. Croix 1856, Christian Ludvig Schellerup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282891
+- 337 16: Kort over St. Thomas havn, indsat nederst er landtoning af indsejlingen Opm&aring;lt 1851, trykt 1853, tegnet af G. B. Lawrance
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282895
+- 337 17: Kort over St. Thomas by 1871, tegnet af Th. Thorsen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282896
+- 337 33: Kort over Dansk Vestindien, Puerto Rico og de britiske Jomfru&oslash;er, indsat er kort over St. Thomas havn 1849, rettet til 1894, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282910
+- 337 34: Kort over St. Thomas havn, indsat nederst er landtoning af indsejlingen Opm&aring;lt 1851, korrigeret 1864 og 1873 og 1875 og 1885, tegnet af G. B. Lawrance (1851) og Nares (1873)
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282911
+- 337 35: Foto af havnen i Charlotte Amalie p&aring; St. Thomas Udateret
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282912
+- 337 36: Kort over St. Croix Trykt 1894, udsendt 1906, tegnet af L. F. von Wimpffen og A. Klakring
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282913
+- 337 38: Kort over St. Croix, projekteret jernbane anf&oslash;rt med r&oslash;dt Udarbejdet 1794, trykt 1799, med nyere tilf&oslash;jelse, tegnet af Peter Lotharius Oxholm
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282915
+- 337 39: Foto af gendarmerikasernen p&aring; havnen i Charlotte Amalie p&aring; St. Thomas Udateret (efter 1874, hvor kasernen blev bygget)
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282916
+- 337 40: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856, tegnet af John Parsons
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282917
+- 337 41: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856 (med nyere p&aring;tegninger formentlig ang&aring;ende p&aring;t&aelig;nkt jernbane), tegnet af John Parsons
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282918
+- 337 42: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856 (med nyere p&aring;tegninger formentlig ang&aring;ende p&aring;t&aelig;nkt jernbane), tegnet af John Parsons
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282919
+- 337 233: Kort over Atlanten med transatlantisk telegraflinie Udarbejdet 1852, oprindelig trykt 1854, korrigeret 1859-1861, tegnet af P. Daussy
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282989
+- 337 234: Tavle med forklaring til forl&oslash;bet af transatlantisk telegraflinie Udateret, skrevet af Albert Balestrini
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#282990
+- 337 407: Kingshill politi- og milit&aelig;rstation, situationsplan 1882, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283041
+- 337 408: Kort over det nordvestligste af St. Croix, veje og vandl&oslash;b 1891, tegnet af Anders Peter J&oslash;rgensen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283042
+- 337 409: Nivellement af midterste gut i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283043
+- 337 410: Beskrivelse af indretning og funktion af fyret p&aring; Buck Island Skrevet 1916 a-f
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283044
+- 337 411: Fyret p&aring; Buck Island, bl&aring;tryk af snit og plan af lanterne 1915, formentlig tegnet af Hans Viggo Ravn
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283045
+- 337 412: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af fundament Formentlig 1915, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283046
+- 337 413: Fyret p&aring; Buck Island, bl&aring;tryk af plan af fyrapparatet 1915, tegnet af C. Seydner
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283047
+- 337 414: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af ventilationsd&oslash;r i lanterne Formentlig 1915, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283048
+- 337 415: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af ventilationsd&oslash;r i lanterne Formentlig 1915, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283049
+- 337 416: Hestestald, plan og snit og facader Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283050
+- 337 417: Vaskebassin ved kasernen i Charlotte Amalie p&aring; St. Thomas, plan og snit 1882, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283051
+- 337 418: Bro ved La Grange, snit og facade 1889, tegnet af Anders Peter J&oslash;rgensen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283052
+- 337 419: Skitse til &aring;ben torvehal p&aring; St. Thomas Udateret, Tegnerens initialer st&aring;r til venstre i midten, men er ikke umiddelbart l&aelig;selige
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283053
+- 337 420: Plan for opfyldning og udvidelse af havnepladsen i Charlotte Amalie p&aring; St. Thomas, med &oslash;konomiske overslag 1864, tegnet af Nicolai Jacobsen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283054
+- 337 421: Musikpavillon i Emancipation Garden i Charlotte Amalie p&aring; St. Thomas 1879, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283055
+- 337 422: K&oslash;kkenbygning, grundplan og snit Formentlig 1875, formentlig tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283056
+- 337 423: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellement 1877, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283057
+- 337 424: Ubekendt bygning, grundplan Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283058
+- 337 425: Bykort over Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283059
+- 337 425: Bykort over Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst a
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283060
+- 337 426: Kort over en del af inderhavnen i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283061
+- 337 427: Kort over St. Croix' vestlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283062
+- 337 428: Forslag til regulering af b&aring;dehavnen ved Kongev&aelig;rftet i Charlotte Amalie p&aring; St. Thomas 1873, tegnet af William A. Thulstrup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283063
+- 337 429: Projekt til gendarmerikaserne, facade 1914, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283064
+- 337 430: Haveplan vedr&oslash;rende Kommandantbakken i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283065
+- 337 431: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellementer 1877, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283066
+- 337 432: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, arbejdstegning Formentlig 1877, formentlig tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283067
+- 337 433: Vejbro syd for Corn Hill p&aring; St. Croix, front, snit, plan, nivellementer 1906, tegnet af V. Boserup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283068
+- 337 434: Kort over St. Croix' &oslash;stlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283069
+- 337 435: Kort over St. Croix' &oslash;stlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283070
+- 337 436: Gendarmerikasernen i Charlotte Amalie p&aring; St. Thomas, grundplan af stueetage Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283071
+- 337 437: Projekt til gendarmerikaserne, plan, snit og facade 1915, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283072
+- 337 438: Gendarmerikaserne, facade Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283073
+- 337 439: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856, tegnet af John Parsons
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283074
+- 337 440: Skitse til vejanl&aelig;g p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283075
+- 337 441: Tegning af landingsbro i Cruz Bay p&aring; St. Jan 1884, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283076
+- 337 442: To grundtegninger af N&oslash;rregade i Charlotte Amalie p&aring; St. Thomas 1869, tegnet af J. Jensen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283077
+- 337 443: Plan til forh&oslash;jelse af skorsten i k&oslash;kkenbygning 1875, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283078
+- 337 444: Plan til lig- og obduktionsstue p&aring; Kommunehospitalet i Charlotte Amalie p&aring; St. Thomas 1890, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283079
+- 337 445: Plan over Adventure Guts passage af Centerline Road p&aring; St. Croix 1889, tegnet af Ander Peter J&oslash;rgensen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283080
+- 337 446: Plan for lemmestiftelse og lighus p&aring; Peter Farm p&aring; St. Croix, grundplaner 1885, tegnet af Christian Vilhelm Meyer
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283081
+- 337 447: Plan for lemmestiftelse ved Peter Farm p&aring; St. Croix, plan og snit 1885, tegnet af Christian Vilhelm Meyer
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283082
+- 337 448: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellementer 1877, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283083
+- 337 449: Forslag til udvidelse af havnekaj Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283084
+- 337 451: Toldbod i Frederiksted p&aring; St. Croix, snit og planer samt tagbj&aelig;lkelag 1881, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283086
+- 337 461: Tegning til overd&aelig;kket indgangsbygning til kirkeg&aring;rd (formentlig ved Charlotte Amalie p&aring; St. Thomas) 1885, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283096
+- 337 462: Udkast til mur og indgangsparti p&aring; ny kirkeg&aring;rd (formentlig ved Charlotte Amalie p&aring; St. Thomas) Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283097
+- 337 463: Kort over Christiansted Havn p&aring; St. Croix, med indsat landkending af indsejlingen Opm&aring;lt 1906, trykt 1907, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283098
+- 337 464: Forslag til opf&oslash;relse af vaskehus og kogehus ved kasernen i Christiansted p&aring; St. Croix 1883, tegnet af Christian Vilhelm Meyer
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283099
+- 337 465: Kort over Charlotte Amalie p&aring; St. Thomas med indtegnet forslag til vandledning til byen fra Staabi og John Duncko gutter 1873, tegnet af William A. Thulstrup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283100
+- 337 466: Forslag til genopf&oslash;relse af skolebygningen p&aring; Kingshill p&aring; St. Croix, planer og snit 1884, tegnet af Christian Vilhelm Meyer
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283101
+- 337 467: Forslag til &aelig;ndring af bygning for veneriske patienter p&aring; Frederiksted Hospital p&aring; St. Croix, facade 1851, tegnet af Frederik Herman M&oslash;ller
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283102
+- 337 468: Hospitalet i Frederiksted p&aring; St. Croix, facade 1851, tegnet af Frederik Herman M&oslash;ller
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283103
+- 337 469: Hospitalet i Frederiksted p&aring; St. Croix, facader 1851, tegnet af Frederik Herman M&oslash;ller
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283104
+- 337 470: Trappe Udateret, tegner uoplyst
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283105
+- 337 474: Skole og kirke (formentlig Betania) p&aring; St. Jan, facader, grundplan og snit 1877, tegnet af J. Andersen
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283109
+- 337 475: F&aelig;ngslet og hospitalet ved Richmond p&aring; St. Croix, planer og snit 1882, tegnet af Christian Vilhelm Meyer
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283110
+- 337 476: Kort over St. Croix' vestlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283111
+- 337 477: Kontorbygning i Charlotte Amalie p&aring; St. Thomas for post-, told-, lods- og havnemyndigheder, facader og grundplaner 1870, modificeret 1872, tegnet af NN og William A. Thulstrup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283112
+- 337 478: N&oslash;rregade og Domini Tv&aelig;rgade i Charlotte Amalie p&aring; St. Thomas, gadeforl&oslash;b og nivellement 1874, tegnet af William A. Thulstrup
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283113
+- 337 501: Kasernen i Charlotte Amalie p&aring; St. Thomas, situationsplan og grundplaner 1904, tegnet af Carl Frederik Suhr Schouboe
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283117
+- 337 502: Kasernen i Charlotte Amalie p&aring; St. Thomas, facade og snit 1904, tegnet af Carl Frederik Suhr Schouboe
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283118
+- 337 503: Kasernen i Charlotte Amalie p&aring; St. Thomas, grundplaner 1904, tegnet af Carl Frederik Suhr Schouboe
+  - bsid: 
+  - image: 
+  - viewer: https://arkivalieronline.rigsarkivet.dk/en/billedviser?epid=20104126#283119
+
+## Missing image IDs
+
+- 337 8: Kort over St. Croix 1898, tegnet af E. E.
+- 337 10: Bykort over Christiansted p&aring; St. Croix 1856, tegnet af Christian Ludvig Schellerup
+- 337 11: Bykort over Frederiksted p&aring; St. Croix 1863, tegner uoplyst
+- 337 12: Bykort over Frederiksted p&aring; St. Croix 1856, Christian Ludvig Schellerup
+- 337 16: Kort over St. Thomas havn, indsat nederst er landtoning af indsejlingen Opm&aring;lt 1851, trykt 1853, tegnet af G. B. Lawrance
+- 337 17: Kort over St. Thomas by 1871, tegnet af Th. Thorsen
+- 337 33: Kort over Dansk Vestindien, Puerto Rico og de britiske Jomfru&oslash;er, indsat er kort over St. Thomas havn 1849, rettet til 1894, tegner uoplyst
+- 337 34: Kort over St. Thomas havn, indsat nederst er landtoning af indsejlingen Opm&aring;lt 1851, korrigeret 1864 og 1873 og 1875 og 1885, tegnet af G. B. Lawrance (1851) og Nares (1873)
+- 337 35: Foto af havnen i Charlotte Amalie p&aring; St. Thomas Udateret
+- 337 36: Kort over St. Croix Trykt 1894, udsendt 1906, tegnet af L. F. von Wimpffen og A. Klakring
+- 337 38: Kort over St. Croix, projekteret jernbane anf&oslash;rt med r&oslash;dt Udarbejdet 1794, trykt 1799, med nyere tilf&oslash;jelse, tegnet af Peter Lotharius Oxholm
+- 337 39: Foto af gendarmerikasernen p&aring; havnen i Charlotte Amalie p&aring; St. Thomas Udateret (efter 1874, hvor kasernen blev bygget)
+- 337 40: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856, tegnet af John Parsons
+- 337 41: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856 (med nyere p&aring;tegninger formentlig ang&aring;ende p&aring;t&aelig;nkt jernbane), tegnet af John Parsons
+- 337 42: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856 (med nyere p&aring;tegninger formentlig ang&aring;ende p&aring;t&aelig;nkt jernbane), tegnet af John Parsons
+- 337 233: Kort over Atlanten med transatlantisk telegraflinie Udarbejdet 1852, oprindelig trykt 1854, korrigeret 1859-1861, tegnet af P. Daussy
+- 337 234: Tavle med forklaring til forl&oslash;bet af transatlantisk telegraflinie Udateret, skrevet af Albert Balestrini
+- 337 407: Kingshill politi- og milit&aelig;rstation, situationsplan 1882, tegnet af J. Andersen
+- 337 408: Kort over det nordvestligste af St. Croix, veje og vandl&oslash;b 1891, tegnet af Anders Peter J&oslash;rgensen
+- 337 409: Nivellement af midterste gut i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 410: Beskrivelse af indretning og funktion af fyret p&aring; Buck Island Skrevet 1916 a-f
+- 337 411: Fyret p&aring; Buck Island, bl&aring;tryk af snit og plan af lanterne 1915, formentlig tegnet af Hans Viggo Ravn
+- 337 412: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af fundament Formentlig 1915, tegner uoplyst
+- 337 413: Fyret p&aring; Buck Island, bl&aring;tryk af plan af fyrapparatet 1915, tegnet af C. Seydner
+- 337 414: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af ventilationsd&oslash;r i lanterne Formentlig 1915, tegner uoplyst
+- 337 415: Fyret p&aring; Buck Island, bl&aring;tryk af plan og snit af ventilationsd&oslash;r i lanterne Formentlig 1915, tegner uoplyst
+- 337 416: Hestestald, plan og snit og facader Udateret, tegner uoplyst
+- 337 417: Vaskebassin ved kasernen i Charlotte Amalie p&aring; St. Thomas, plan og snit 1882, tegnet af J. Andersen
+- 337 418: Bro ved La Grange, snit og facade 1889, tegnet af Anders Peter J&oslash;rgensen
+- 337 419: Skitse til &aring;ben torvehal p&aring; St. Thomas Udateret, Tegnerens initialer st&aring;r til venstre i midten, men er ikke umiddelbart l&aelig;selige
+- 337 420: Plan for opfyldning og udvidelse af havnepladsen i Charlotte Amalie p&aring; St. Thomas, med &oslash;konomiske overslag 1864, tegnet af Nicolai Jacobsen
+- 337 421: Musikpavillon i Emancipation Garden i Charlotte Amalie p&aring; St. Thomas 1879, tegnet af J. Andersen
+- 337 422: K&oslash;kkenbygning, grundplan og snit Formentlig 1875, formentlig tegnet af J. Andersen
+- 337 423: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellement 1877, tegnet af J. Andersen
+- 337 424: Ubekendt bygning, grundplan Udateret, tegner uoplyst
+- 337 425: Bykort over Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 425: Bykort over Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst a
+- 337 426: Kort over en del af inderhavnen i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 427: Kort over St. Croix' vestlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+- 337 428: Forslag til regulering af b&aring;dehavnen ved Kongev&aelig;rftet i Charlotte Amalie p&aring; St. Thomas 1873, tegnet af William A. Thulstrup
+- 337 429: Projekt til gendarmerikaserne, facade 1914, tegner uoplyst
+- 337 430: Haveplan vedr&oslash;rende Kommandantbakken i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 431: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellementer 1877, tegnet af J. Andersen
+- 337 432: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, arbejdstegning Formentlig 1877, formentlig tegnet af J. Andersen
+- 337 433: Vejbro syd for Corn Hill p&aring; St. Croix, front, snit, plan, nivellementer 1906, tegnet af V. Boserup
+- 337 434: Kort over St. Croix' &oslash;stlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+- 337 435: Kort over St. Croix' &oslash;stlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+- 337 436: Gendarmerikasernen i Charlotte Amalie p&aring; St. Thomas, grundplan af stueetage Udateret, tegner uoplyst
+- 337 437: Projekt til gendarmerikaserne, plan, snit og facade 1915, tegner uoplyst
+- 337 438: Gendarmerikaserne, facade Udateret, tegner uoplyst
+- 337 439: Kort over St. Croix, indsat er kort over havnen i Christiansted, desuden seks landtoninger af nordkysten 1856, tegnet af John Parsons
+- 337 440: Skitse til vejanl&aelig;g p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 441: Tegning af landingsbro i Cruz Bay p&aring; St. Jan 1884, tegner uoplyst
+- 337 442: To grundtegninger af N&oslash;rregade i Charlotte Amalie p&aring; St. Thomas 1869, tegnet af J. Jensen
+- 337 443: Plan til forh&oslash;jelse af skorsten i k&oslash;kkenbygning 1875, tegnet af J. Andersen
+- 337 444: Plan til lig- og obduktionsstue p&aring; Kommunehospitalet i Charlotte Amalie p&aring; St. Thomas 1890, tegnet af J. Andersen
+- 337 445: Plan over Adventure Guts passage af Centerline Road p&aring; St. Croix 1889, tegnet af Ander Peter J&oslash;rgensen
+- 337 446: Plan for lemmestiftelse og lighus p&aring; Peter Farm p&aring; St. Croix, grundplaner 1885, tegnet af Christian Vilhelm Meyer
+- 337 447: Plan for lemmestiftelse ved Peter Farm p&aring; St. Croix, plan og snit 1885, tegnet af Christian Vilhelm Meyer
+- 337 448: Plan til regulering af veje p&aring; Kommandantbakken i Charlotte Amalie p&aring; St. Thomas, kort og nivellementer 1877, tegnet af J. Andersen
+- 337 449: Forslag til udvidelse af havnekaj Udateret, tegner uoplyst
+- 337 451: Toldbod i Frederiksted p&aring; St. Croix, snit og planer samt tagbj&aelig;lkelag 1881, tegnet af J. Andersen
+- 337 461: Tegning til overd&aelig;kket indgangsbygning til kirkeg&aring;rd (formentlig ved Charlotte Amalie p&aring; St. Thomas) 1885, tegnet af J. Andersen
+- 337 462: Udkast til mur og indgangsparti p&aring; ny kirkeg&aring;rd (formentlig ved Charlotte Amalie p&aring; St. Thomas) Udateret, tegner uoplyst
+- 337 463: Kort over Christiansted Havn p&aring; St. Croix, med indsat landkending af indsejlingen Opm&aring;lt 1906, trykt 1907, tegner uoplyst
+- 337 464: Forslag til opf&oslash;relse af vaskehus og kogehus ved kasernen i Christiansted p&aring; St. Croix 1883, tegnet af Christian Vilhelm Meyer
+- 337 465: Kort over Charlotte Amalie p&aring; St. Thomas med indtegnet forslag til vandledning til byen fra Staabi og John Duncko gutter 1873, tegnet af William A. Thulstrup
+- 337 466: Forslag til genopf&oslash;relse af skolebygningen p&aring; Kingshill p&aring; St. Croix, planer og snit 1884, tegnet af Christian Vilhelm Meyer
+- 337 467: Forslag til &aelig;ndring af bygning for veneriske patienter p&aring; Frederiksted Hospital p&aring; St. Croix, facade 1851, tegnet af Frederik Herman M&oslash;ller
+- 337 468: Hospitalet i Frederiksted p&aring; St. Croix, facade 1851, tegnet af Frederik Herman M&oslash;ller
+- 337 469: Hospitalet i Frederiksted p&aring; St. Croix, facader 1851, tegnet af Frederik Herman M&oslash;ller
+- 337 470: Trappe Udateret, tegner uoplyst
+- 337 474: Skole og kirke (formentlig Betania) p&aring; St. Jan, facader, grundplan og snit 1877, tegnet af J. Andersen
+- 337 475: F&aelig;ngslet og hospitalet ved Richmond p&aring; St. Croix, planer og snit 1882, tegnet af Christian Vilhelm Meyer
+- 337 476: Kort over St. Croix' vestlige del Udarbejdet 1794, trykt 1799, med tilf&oslash;jelse 1904, tegnet af Peter Lotharius Oxholm
+- 337 477: Kontorbygning i Charlotte Amalie p&aring; St. Thomas for post-, told-, lods- og havnemyndigheder, facader og grundplaner 1870, modificeret 1872, tegnet af NN og William A. Thulstrup
+- 337 478: N&oslash;rregade og Domini Tv&aelig;rgade i Charlotte Amalie p&aring; St. Thomas, gadeforl&oslash;b og nivellement 1874, tegnet af William A. Thulstrup
+- 337 501: Kasernen i Charlotte Amalie p&aring; St. Thomas, situationsplan og grundplaner 1904, tegnet af Carl Frederik Suhr Schouboe
+- 337 502: Kasernen i Charlotte Amalie p&aring; St. Thomas, facade og snit 1904, tegnet af Carl Frederik Suhr Schouboe
+- 337 503: Kasernen i Charlotte Amalie p&aring; St. Thomas, grundplaner 1904, tegnet af Carl Frederik Suhr Schouboe
+- 337 504: Kasernen i Charlotte Amalie p&aring; St. Thomas, grundplaner 1905, tegnet af Albert Jensen
+- 337 505: Hospitalsomr&aring;de, skitse til situationsplan Udateret, tegner uoplyst
+- 337 506: Ny afdeling for sindssyge ved hospitalet p&aring; Richmond p&aring; St. Croix, situationsplan, grundplaner og snit 1909, tegnet af Ejnar K&aelig;rn
+- 337 507: Ny afdeling for sindssyge ved hospitalet p&aring; Richmond p&aring; St. Croix, facade, grundplaner og snit 1909, tegnet af Ejnar K&aelig;rn
+- 337 508: Ny afdeling for sindssyge ved hospitalet p&aring; Richmond p&aring; St. Croix, situationsplan, facade, grundplaner og snit 1909, tegnet af Ejnar K&aelig;rn
+- 337 509: Kort over indsejlingen til Christiansted havn p&aring; St. Croix 1905-1906, tegnet af Einar Jessen
+- 337 510: Forslag til regulering af pladsen ved Christiansfort i Charlotte Amalie p&aring; St. Thomas, situationsplan og snit 1872, tegnet af William A. Thulstrup
+- 337 511: Enkebolig, facader 1866, tegnet af Vilhelm Petersen
+- 337 512: Enkebolig, facader og snit 1866, tegnet af Vilhelm Petersen
+- 337 513: Enkebolig, grundplaner 1866, tegnet af Vilhelm Petersen
+- 337 514: Enkebolig, snit og k&aelig;ldergrundplan 1866, tegnet af Vilhelm Petersen
+- 337 515: Forslag til gaderegulering i Charlotte Amalie p&aring; St. Thomas, planer, tv&aelig;rprofiler og nivelleringer 1872, tegnet af William A. Thulstrup
+- 337 516: Batterier ved Cowell Point og kasernen i Charlotte Amalie p&aring; St. Thomas, planer og snit 1884, tegnet af Christian Vilhelm Meyer
+- 337 517: Situationsplan over St. Thomas b&aring;dehavn og n&aelig;rmest liggende arealer 1873, tegnet af William A. Thulstrup
+- 337 518: Christiansfort i Charlotte Amalie p&aring; St. Thomas, facade, grundplaner og snit 1872, tegnet af William A. Thulstrup
+- 337 522: Tekstdokument, Overslag over Udgifter ved Opf&oslash;relsen af en Bygning til Havnekontor i St. Thomas 1883, af J. Andersen 522-522a
+- 337 523: Tekstdokument, Translation, Estimate of costs of erecting a building to serve as Harbour Office in St. Thomas 1883, af J. Andersen 523-523a
+- 337 524: Tekstdokument, Udgiftsberegning vedr&oslash;rende regulering af gader i Charlotte Amalie p&aring; St. Thomas 1874, af William A. Thulstrup 524-524a
+- 337 525: Tekstdokument, Udgiftsberegning vedr&oslash;rende regulering af gade i Charlotte Amalie p&aring; St. Thomas 1875, forfatter uoplyst
+- 337 526: Projekt til oml&aelig;gning af N&oslash;rregade i Charlotte Amalie p&aring; St. Thomas, profiler af rendestene m.v. 1869, tilf&oslash;jelser 1873 og 1874, tegnet af J. Jensen
+- 337 527: &Oslash;verste etage i ubekendt bygning, grundplan Udateret, tegner uoplyst
+- 337 528: Tekstdokument, Anl&aelig;g og Drift af en Bane mellem Christiansted og Frederiksted paa St. Croix 1904, af Holger Petersen, bestyrelsen for Plantageselskabet Dansk Vestindien 528, 528a, 528b
+- 337 529: Forslag til nyt salutbatteri ved kasernen p&aring; havnen i Charlotte Amalie p&aring; St. Thomas, situationsplan og snit 1873, tegnet af William A. Thulstrup
+- 337 530: Plan for regulering af pladsen ved Christiansfort i Charlotte Amalie p&aring; St. Thomas, situationsplan 1875, tegnet af J. Andersen
+- 337 531: Kort over den sydlige halvdel af Hassel Island i havnen i Charlotte Amalie p&aring; St. Thomas 1851, tegner uoplyst
+- 337 532: Vindeltrappe i de nye guvernementskontorer (formentlig i Charlotte Amalie p&aring; St. Thomas) 1884, tegnet af J. Andersen
+- 337 533: Opmudringsfelt i havnen i Charlotte Amalie p&aring; St. Thomas Udateret, tegner uoplyst
+- 337 534: Plan til udt&oslash;rring af lagunen ved Long Bay i havnen i Charlotte Amalie p&aring; St. Croix 1867, tegnet af NN
+- 337 535: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, plan og snit Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 536: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, planer Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 537: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, snit Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 538: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegninger Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 539: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegning Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 540: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegninger Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 541: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegninger Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 542: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegninger Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 543: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, detailtegninger Udateret (En flydedok l&aring; i havnen fra 1867), Waterlow & Sons, Lithographers
+- 337 544: Flydedok i havnen i Charlotte Amalie p&aring; St. Thomas, maskintegninger Udateret (En flydedok l&aring; i havnen fra 1867)
+- 337 545: Plan for havnekontor i Charlotte Amalie p&aring; St. Thomas, grundplan, facader og snit 1883, tegnet af J. Andersen
+- 337 546: Plan til brol&aelig;gning af det vestlige gut i Charlotte Amalie p&aring; St. Thomas, nivellement og snit 1883, tegnet af J. Andersen
+- 337 547: Forslag til gaderegulering i Charlotte Amalie p&aring; St. Thomas, planer og snit 1872, tegnet af William A. Thulstrup
+- 337 548: Forslag til gaderegulering i Charlotte Amalie p&aring; St. Thomas, plan, snit og nivellement 1874, tegnet af William A. Thulstrup
+- 337 549: Forslag til gaderegulering i Charlotte Amalie p&aring; St. Thomas, plan, tv&aelig;rprofiler og nivelleringer 1872, tegnet af William A. Thulstrup
+- 337 551: Kort over havnen i Charlotte Amalie p&aring; St. Thomas, planer for uddybninger Opm&aring;lt 1906, trykt 1907, tilf&oslash;jelser 1909
+- 337 552: Fyret p&aring; Buck Island uden for indsejlingen til havnen i Charlotte Amalie p&aring; St. Thomas, bl&aring;tryk af facader 1915, formentlig tegnet af Hans Viggo Ravn
+- 337 553: Bro ved Long Bay, sidetegning og plan 1879, tegnet af J. Andersen
+- 337 554: Plads &oslash;st for Christiansfort i Charlotte Amalie p&aring; St. Thomas 1875, tegnet af J. Andersen
+- 337 555: Kort over to parceller solgt fra Ross Estate p&aring; St. Thomas 1877, tegnet af J. Andersen
+- 337 601: Plan til tilbygning for sovestue i Fort Frederiksv&aelig;rn i Frederiksted p&aring; St. Croix 1849, tegnet af Frederik Herman M&oslash;ller
+- 337 608: Hospitalet i Frederiksted p&aring; St. Croix, facader 1851, tegnet af Frederik Herman M&oslash;ller
+- 337 616: Jernr&aelig;kv&aelig;rk til trappe ved ny vejerbod i Christiansted p&aring; St. Croix 1856, tegnet af Christian Ludvig Schellerup
+- 337 619: Officerskvarterer p&aring; kaserne, ubestemt, grundplan 1877, formentlig tegnet af Henrik Andreas Raupach
+- 337 628: Christiansv&aelig;rn Fort i Christiansted p&aring; St. Croix, grundplan Udateret, tegnet af Alslev
+- 337 632: Skitse til ubekendt bygning, facade Udateret (muligvis udkast til kasernen, opf&oslash;rt 1874 i Charlotte Amalie p&aring; St. Thomas), tegner uoplyst
+- 337 701: Oversigt over guineiske kort
+- 337 709: Egnen omkring Kongensten og Voltaflodens udl&oslash;b 1849, tegnet af H. Mossin, efter W. Svedstrups tegning 1847
