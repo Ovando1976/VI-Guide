@@ -19,6 +19,7 @@ import { getManualEstateHistoryOverride } from "../../data/canonical/manualEstat
 import { getSixtoEstateExtract } from "../../data/history/sources/sixtoTimeAndIExtracts";
 import { getSixtoEstateAcreage1902 } from "../../data/history/sources/sixtoEstateAcreage1902";
 import { getEstateSourceIndexEntry } from "../../data/canonical/estateSourceIndex";
+import { getEstateDevelopmentTimeline } from "../../data/canonical/estateDevelopmentTimelines";
 import { getSixtoEstateNarrative1902 } from "../../data/history/sources/sixtoEstateNarratives1902";
 
 type LooseRecord = Record<string, unknown>;
@@ -192,7 +193,7 @@ export default function EstateHistoryPage() {
     getEstateSourceIndexEntry(fallbackTitle) ||
     null;
 
-  const developmentTimeline: never[] = [];
+  const developmentTimeline = getEstateDevelopmentTimeline("bovoni");
 
   const encodedTitle = encodeURIComponent(title);
   const encodedId = encodeURIComponent(estateId || title);
@@ -404,6 +405,64 @@ export default function EstateHistoryPage() {
             <p className="mt-4 text-xs font-bold text-stone-400">
               Primary source: Adolph Sixto, Time and I; or, Looking Forward, San Juan News, c. 1902.
             </p>
+          </section>
+        ) : null}
+
+
+        {developmentTimeline.length ? (
+          <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-800">
+                <Landmark className="h-6 w-6" />
+              </div>
+
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-700">
+                  Development Timeline
+                </p>
+                <h2 className="mt-1 font-serif text-3xl font-black">
+                  From lagoon estate to modern Bovoni
+                </h2>
+                <p className="mt-3 max-w-4xl text-sm leading-7 text-stone-700">
+                  This timeline tracks the major development changes that reshaped Bovoni after the late Danish-period estate landscape.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              {developmentTimeline.map((item) => (
+                <article
+                  key={item.id}
+                  className="rounded-3xl border border-stone-200 bg-stone-50 p-5"
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-stone-950 px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-white">
+                      {item.yearLabel}
+                    </span>
+                    <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-amber-800">
+                      {item.category.replaceAll("-", " ")}
+                    </span>
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-stone-500 ring-1 ring-stone-200">
+                      {item.confidence}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 font-serif text-2xl font-black text-stone-950">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm font-semibold leading-7 text-stone-700">
+                    {item.description}
+                  </p>
+
+                  {item.sourceRefs.length ? (
+                    <p className="mt-4 text-xs font-bold leading-5 text-stone-400">
+                      {item.sourceRefs[0]}
+                    </p>
+                  ) : null}
+                </article>
+              ))}
+            </div>
           </section>
         ) : null}
 
