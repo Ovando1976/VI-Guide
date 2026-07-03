@@ -39,20 +39,29 @@ export const estateProfiles: EstateProfile[] = [
       "Long Point",
     ],
     summary:
-      "Estate Bovoni is a historic Frenchman Bay estate on the southeastern side of St. Thomas, associated with Bovoni Bay, Bovoni Cay, and the island’s south-shore geography.",
+      "Estate Bovoni is a historic Frenchman Bay estate whose modern identity differs sharply from its late Danish-period landscape: once a quiet coastal estate of lagoon, islets, and open land, it is now a major south-shore community with public housing, private homeowners, commerce, public facilities, the landfill, and the Clinton E. Phipps Racetrack.",
     description:
-      "Estate Bovoni is a historic estate area on the southeastern side of St. Thomas, within the Frenchman Bay quarter. The Geographic Dictionary describes Bovoni as an estate situated on a hill of the same name, overlooking Bovoni Bay and lying roughly 300 yards from the south shore. By the mid-twentieth century, the estate was described as a stock estate, suggesting its later use was associated with grazing or livestock rather than intensive plantation cultivation.",
+      "Estate Bovoni is a historic south-shore estate in the Frenchman Bay quarter of St. Thomas. Before the United States acquired the Danish West Indies in 1917, Bovoni belonged to the older estate landscape of St. Thomas: coastal land, lagoon features, small islets, mangroves, sea crabs, pelicans, and open stock-estate country. At the end of the Danish colonial period, the area was still largely quiet, isolated, and underused. Its later development took a different path from the villa or resort future imagined in early twentieth-century writing. Modern Bovoni became a lived-in south-shore community, dominated by public housing and a large private homeowner community, with neighborhood roads, public facilities, schools and shelter functions, gas stations, shopping areas, commercial business complexes, the Clinton E. Phipps Racetrack, and the island’s landfill/dump area. The change from lagoon estate landscape to residential, commercial, recreational, and infrastructure zone is the central story of Bovoni.",
     historicalContext:
-      "Dictionary-linked evidence identifies Bovoni as a ruined estate overlooking Bovoni Bay. The same source cluster connects the estate with nearby coastal and geographic names including Bovoni Bay, Bovoni Cay, Patricia Cay, Mangrove Lagoon, and older or variant place names. Because several OCR-derived records contain spelling noise, this profile should be treated as a cleaned interpretive summary based on the strongest matching records.",
+      "Bovoni’s historic importance comes from the contrast between the late Danish-period estate landscape and the modern community that developed after the transfer to the United States. The older estate profile centers on coastal geography, lagoon ecology, open land, stock-estate use, and unrealized resort or villa expectations.",
     modernContext:
-      "Today, Bovoni is an important geographic reference point for the south shore of St. Thomas. In the VI Guide atlas, it should function as both a modern estate boundary and a historic place-name cluster linking estate geography, coastal landmarks, dictionary records, parcels, and mobility routing.",
+      "Modern Bovoni is a major south-shore residential and service community. Its present-day identity is shaped by public housing, private homeowners, public facilities, school and shelter functions, commerce, transportation services, landfill/dump use, and the Clinton E. Phipps Racetrack.",
     sourceConfidence: "medium",
     sourceNotes: [
       "Estate polygon source identifies BOVONI as estate ID 1998.",
       "Estate source places BOVONI in 1, 2, & 3 Frenchman Bay.",
-      "Dictionary graph includes a Bovoni entry describing the estate as ruined, on a hill, overlooking Bovoni Bay, about 300 yards from the south shore.",
-      "Related dictionary records include Bovoni Bay, Bovoni Cay, Patricia Cay, Mangrove Lagoon, and variant spellings.",
-      "OCR cleanup is still needed for several linked records, so this profile uses medium confidence.",
+      "Before the 1917 transfer, Bovoni belonged to the older Danish-period estate landscape of St. Thomas.",
+      "The older estate landscape included Bovoni Bay, lagoon features, small islets, mangroves, sea crabs, pelicans, open land, and coastal wildlife.",
+      "At the end of the Danish colonial period, Bovoni was still largely quiet, isolated, and underused.",
+      "Early twentieth-century writing imagined a possible villa or resort future for the estate.",
+      "The actual modern community developed gradually from that Cattle in the street to today’s east end town atmosphere.",
+      "Part of the former lagoon/coastal landscape became associated with landfill and dump use.",
+      "Present-day Bovoni is mix of a densely populated residential area combined with and ever expanding commercial development.",
+      "Present-day Bovoni includes a large public housing presence.",
+      "Present-day Bovoni includes Bovoni U.S.V.I Public Housing Project as well as an extensive private homeowner community.",
+      "Present-day Bovoni includes the Bertha C. Boschulte Middle School, the  only public middle school serving the East end of the island along community facilities such te school school gym and other facilities.",
+      "Present-day Bovoni includes gas stations, shopping areas, and commercial business complexes.",
+      "Present-day Bovoni includes the island landfill/dump area.",
     ],
     sourceRefs: [
       "public/geo/usvi-estates.geojson",
@@ -62,6 +71,10 @@ export const estateProfiles: EstateProfile[] = [
       "src/data/dictionaryGraph",
       "src/data/core/geographicIndex",
       "src/data/atlas/masterAtlas",
+      "Adolph Sixto, Time and I; or, Looking Forward, San Juan News, c. 1902, Bovoni passage around PDF page 104.",
+      "Sixto is used here as a pre-1917 witness to the late Danish-period estate landscape.",
+      "generated/sources/sixto-time-and-i-1902.txt",
+      "reports/estate-history/sixto-review-packet-001.md",
     ],
   },
 ];
@@ -136,6 +149,15 @@ export function getEstateProfileForSelection(selection?: {
     getEstateProfileByName(selection.estate) ||
     getEstateProfileByName(selection.properties?.name as string | undefined) ||
     getEstateProfileByName(selection.properties?.ESTATE as string | undefined) ||
+    null
+  );
+}
+
+
+export function getEstateProfile(idOrName?: string | number | null) {
+  return (
+    getEstateProfileById(idOrName) ||
+    getEstateProfileByName(String(idOrName ?? "")) ||
     null
   );
 }
