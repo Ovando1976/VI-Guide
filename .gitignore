@@ -32,3 +32,9 @@ scripts/debug/
 # Local index graph audit output
 reports/index-graph-accuracy/
 scripts/audit-index-graph-accuracy.ts
+.env.local
+
+# Large local archive downloads
+generated/rigsarkivet/**/images/
+generated/rigsarkivet/**/raw-html/
+generated/rigsarkivet/viewer-js/
