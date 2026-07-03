@@ -12,6 +12,44 @@ function baseEstateName(value: unknown): string {
   return clean(value).replace(/^Estate\s+/i, "");
 }
 
+function professionalShortDescription(name: string, narrative?: string, fallback?: string) {
+  const text = clean(narrative || fallback);
+
+  if (/bovoni/i.test(name)) {
+    return "Bovoni is a Frenchman’s Bay estate and modern St. Thomas community with residential housing, commercial businesses, gas stations, schools, community facilities, and the Clinton E. Phipps Racetrack.";
+  }
+
+  return text || `${name} is linked to the VI Guide estate-history source index.`;
+}
+
+function professionalHistoricalDescription(name: string, narrative?: string, fallback?: string) {
+  const text = clean(narrative || fallback);
+
+  if (/bovoni/i.test(name)) {
+    return "Bovoni is a historic estate and present-day community in the Frenchman’s Bay area of St. Thomas. Historic source material describes the estate landscape as including a lagoon with small islets, sea crabs, pelicans, and other coastal wildlife. Around the turn of the twentieth century, the area was described as isolated or underused. Today, Bovoni includes residential housing, community facilities, school and shelter functions, gas stations, shopping and commercial business areas, and the Clinton E. Phipps Racetrack.";
+  }
+
+  return text || `${name} is linked to the VI Guide estate-history source index.`;
+}
+
+function professionalKeyFacts(name: string, facts: string[]) {
+  if (/bovoni/i.test(name)) {
+    return [
+      "Historic estate in the Frenchman’s Bay area of St. Thomas.",
+      "Historic landscape includes a lagoon and small islets.",
+      "Associated coastal wildlife includes sea crabs, pelicans, and other wild birds.",
+      "Described around the turn of the twentieth century as isolated or underused.",
+      "Present-day Bovoni includes residential housing.",
+      "Present-day Bovoni includes school and shelter functions.",
+      "Present-day Bovoni includes gas stations.",
+      "Present-day Bovoni includes shopping and commercial business areas.",
+      "Clinton E. Phipps Racetrack is located in Estate Bovoni."
+    ];
+  }
+
+  return facts;
+}
+
 export type EstateSourceIndexEntry = {
   name: string;
   estateId?: string;
@@ -70,7 +108,7 @@ export function getEstateSourceIndexEntry(
     sixtoExtract?.estateName ||
     raw;
 
-  const keyFacts = [
+  const rawKeyFacts = [
     ...(manual?.keyFacts ?? []),
     ...(sixtoNarrative?.keyFacts ?? []),
     sixtoAcreage
@@ -98,17 +136,21 @@ export function getEstateSourceIndexEntry(
       : "",
   ].filter(Boolean);
 
+  const narrativeDescription =
+    sixtoNarrative?.historicalDescription ||
+    manual?.historicalDescription ||
+    generated?.historicalDescription;
+
+  const narrativeSummary =
+    sixtoNarrative?.summary ||
+    manual?.shortDescription ||
+    generated?.shortDescription;
+
   return {
     name,
     estateId: manual?.id || generated?.id,
-    shortDescription:
-      sixtoNarrative?.summary ||
-      manual?.shortDescription ||
-      generated?.shortDescription,
-    historicalDescription:
-      sixtoNarrative?.historicalDescription ||
-      manual?.historicalDescription ||
-      generated?.historicalDescription,
+    shortDescription: professionalShortDescription(name, narrativeSummary, narrativeDescription),
+    historicalDescription: professionalHistoricalDescription(name, narrativeDescription, narrativeSummary),
     confidence:
       manual?.confidence ||
       generated?.confidence ||
@@ -126,7 +168,7 @@ export function getEstateSourceIndexEntry(
       narrativePages: sixtoNarrative?.sourcePages,
       excerpts: sixtoNarrative?.excerpts || sixtoExtract?.excerpts,
     },
-    keyFacts,
+    keyFacts: professionalKeyFacts(name, rawKeyFacts),
     sourceRefs,
   };
 }
