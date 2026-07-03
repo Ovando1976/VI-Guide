@@ -1,0 +1,6265 @@
+export type StThomasLandListRecord1688_1718 = {
+  id: string;
+  year: string;
+  islandName: string;
+  plantationNumber: string;
+  plantationNumberLine: string;
+  residentName: string;
+  residentRole: string;
+  residentRaw: string;
+  page: number;
+  url?: string;
+  proofread: boolean;
+  comments: string[];
+  termsOfInterest: string[];
+};
+
+export type StThomasLandListNumberIndex1688_1718 = {
+  plantationNumber: string;
+  years: string[];
+  names: string[];
+  roles: string[];
+  pages: number[];
+  termsOfInterest: string[];
+  records: StThomasLandListRecord1688_1718[];
+};
+
+export const stThomasLandListRecords1688_1718 = [
+  {
+    "id": "st-thomas-landlist-3-1-1",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Berrents: (Berrentsen)",
+    "residentRole": "A1",
+    "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-2",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Berrents: (Berrentsen)",
+    "residentRole": "A1",
+    "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-3",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Berrents: (Berrentsen)",
+    "residentRole": "A1",
+    "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-4",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Ana (Anna) Berentz: (Berentzen)",
+    "residentRole": "hustru, A1",
+    "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-5",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Ana (Anna) Berentz: (Berentzen)",
+    "residentRole": "hustru, A1",
+    "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-6",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Ana (Anna) Berentz: (Berentzen)",
+    "residentRole": "hustru, A1",
+    "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-7",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Maria Berns",
+    "residentRole": "barn A1",
+    "residentRaw": "Maria Berns, barn A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-8",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Maria Berns",
+    "residentRole": "barn A1",
+    "residentRaw": "Maria Berns, barn A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-9",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Maria Berns",
+    "residentRole": "barn A1",
+    "residentRaw": "Maria Berns, barn A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-10",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Dorte Berns",
+    "residentRole": "barn, A1",
+    "residentRaw": "Dorte Berns, barn, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-11",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Dorte Berns",
+    "residentRole": "barn, A1",
+    "residentRaw": "Dorte Berns, barn, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-12",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Dorte Berns",
+    "residentRole": "barn, A1",
+    "residentRaw": "Dorte Berns, barn, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-13",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Hans Christoffersen Kröger",
+    "residentRole": "Saruing, A1",
+    "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-14",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Hans Christoffersen Kröger",
+    "residentRole": "Saruing, A1",
+    "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-15",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Hans Christoffersen Kröger",
+    "residentRole": "Saruing, A1",
+    "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-16",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jahn Carmul",
+    "residentRole": "Planter, A2",
+    "residentRaw": "Jahn Carmul, Planter, A2",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-17",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jahn Carmul",
+    "residentRole": "Planter, A2",
+    "residentRaw": "Jahn Carmul, Planter, A2",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-18",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jahn Carmul",
+    "residentRole": "Planter, A2",
+    "residentRaw": "Jahn Carmul, Planter, A2",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-19",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Pedersen",
+    "residentRole": "Planter, A3",
+    "residentRaw": "Rasmus Pedersen, Planter, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-20",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Pedersen",
+    "residentRole": "Planter, A3",
+    "residentRaw": "Rasmus Pedersen, Planter, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-21",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Pedersen",
+    "residentRole": "Planter, A3",
+    "residentRaw": "Rasmus Pedersen, Planter, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-22",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Sara Siranis",
+    "residentRole": "hustru, A3",
+    "residentRaw": "Sara Siranis, hustru, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-23",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Sara Siranis",
+    "residentRole": "hustru, A3",
+    "residentRaw": "Sara Siranis, hustru, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-24",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Sara Siranis",
+    "residentRole": "hustru, A3",
+    "residentRaw": "Sara Siranis, hustru, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-25",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Peter Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Peter Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-26",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Peter Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Peter Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-27",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Peter Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Peter Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-28",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Tomas Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-29",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Tomas Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-30",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Tomas Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Tomas Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-31",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Rasmusen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Rasmus Rasmusen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-32",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Rasmusen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Rasmus Rasmusen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-33",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Rasmus Rasmusen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Rasmus Rasmusen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-34",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Johan Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Johan Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-35",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Johan Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Johan Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-36",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Johan Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Johan Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-1-37",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "1",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jacob Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Jacob Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-2-38",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "2",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jacob Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Jacob Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-3-3-39",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "3",
+    "plantationNumberLine": "1, 2, 3",
+    "residentName": "Jacob Rasmussen",
+    "residentRole": "søn, A3",
+    "residentRaw": "Jacob Rasmussen, søn, A3",
+    "page": 3,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+    "proofread": true,
+    "comments": [
+      "Evt. Hans Christoffersen Kroÿer",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-4-40",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "4",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Harris",
+    "residentRole": "Planter",
+    "residentRaw": "Johan Harris, Planter,",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-5-41",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "5",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Harris",
+    "residentRole": "Planter",
+    "residentRaw": "Johan Harris, Planter,",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-6-42",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "6",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Harris",
+    "residentRole": "Planter",
+    "residentRaw": "Johan Harris, Planter,",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-4-43",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "4",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Duncker",
+    "residentRole": "A6",
+    "residentRaw": "Johan Duncker, A6",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-5-44",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "5",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Duncker",
+    "residentRole": "A6",
+    "residentRaw": "Johan Duncker, A6",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-4-6-45",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "6",
+    "plantationNumberLine": "4, 5, 6",
+    "residentName": "Johan Duncker",
+    "residentRole": "A6",
+    "residentRaw": "Johan Duncker, A6",
+    "page": 4,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+    "proofread": true,
+    "comments": [
+      "Nr. 6 er ikke beboet",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-46",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Simon Luck",
+    "residentRole": "",
+    "residentRaw": "Simon Luck, 7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-47",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Maria Wads",
+    "residentRole": "hustru",
+    "residentRaw": "Maria Wads, hustru,7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-48",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Mathias Tropke",
+    "residentRole": "",
+    "residentRaw": "Mathias Tropke, 7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-49",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Martin Tropke",
+    "residentRole": "",
+    "residentRaw": "Martin Tropke, 7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-50",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Christian Luck",
+    "residentRole": "",
+    "residentRaw": "Christian Luck,7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-7-51",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "7",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Holger Paulsen",
+    "residentRole": "",
+    "residentRaw": "Holger Paulsen,7",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-8-52",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "8",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Sidsel Pedersdaatter",
+    "residentRole": "",
+    "residentRaw": "Sidsel Pedersdaatter, 8",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-8-53",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "8",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Maria Pad",
+    "residentRole": "",
+    "residentRaw": "Maria Pad, 8",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-8-54",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "8",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Siselle Pad",
+    "residentRole": "",
+    "residentRaw": "Siselle Pad, 8",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-8-55",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "8",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Laura Pad",
+    "residentRole": "",
+    "residentRaw": "Laura Pad, 8",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-5-8-56",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "8",
+    "plantationNumberLine": "7, 8",
+    "residentName": "Ølle Pedersen",
+    "residentRole": "",
+    "residentRaw": "Ølle Pedersen, 8",
+    "page": 5,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-9-57",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "9",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Nicolaj Reny",
+    "residentRole": "",
+    "residentRaw": "Nicolaj Reny,9",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-9-58",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "9",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Johanne Reny",
+    "residentRole": "",
+    "residentRaw": "Johanne Reny,9",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-9-59",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "9",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Anna Reny",
+    "residentRole": "",
+    "residentRaw": "Anna Reny,9",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-9-60",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "9",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Johan Hansen",
+    "residentRole": "",
+    "residentRaw": "Johan Hansen, 9",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-9-61",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "9",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Thomas Hansen",
+    "residentRole": "",
+    "residentRaw": "Thomas Hansen,9",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-10-62",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "10",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Hary David",
+    "residentRole": "Planter",
+    "residentRaw": "Hary David, Planter,10",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-11-63",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "11",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Catrine Kar",
+    "residentRole": "",
+    "residentRaw": "Catrine Kar,11",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-6-11-64",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "11",
+    "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+    "residentName": "Hary David",
+    "residentRole": "Barn",
+    "residentRaw": "Hary David, Barn, 11",
+    "page": 6,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+    "proofread": true,
+    "comments": [
+      "Nr. 10: ingen navne nævnt på beboerne.",
+      "Anden tekst",
+      "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-12-65",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "12",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Tomula Congandi",
+    "residentRole": "Planter",
+    "residentRaw": "Tomula Congandi, Planter,12",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-12-66",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "12",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Jancke L. Weber",
+    "residentRole": "hustru",
+    "residentRaw": "Jancke L. Weber, hustru,12",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-13-67",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "13",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Lasaris Segyret",
+    "residentRole": "Planter",
+    "residentRaw": "Lasaris Segyret, Planter,13",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-13-68",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "13",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Maria de Konning",
+    "residentRole": "hustru",
+    "residentRaw": "Maria de Konning, hustru,13",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-13-69",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "13",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Andreas Segyret",
+    "residentRole": "barn",
+    "residentRaw": "Andreas Segyret, barn,13",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-13-70",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "13",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Jacob Segyret",
+    "residentRole": "barn",
+    "residentRaw": "Jacob Segyret, barn,13",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-15-71",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "15",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Robert Lamar",
+    "residentRole": "Planter",
+    "residentRaw": "Robert Lamar, Planter,15",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-15-72",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "15",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Maria Wil",
+    "residentRole": "hustru",
+    "residentRaw": "Maria Wil, hustru,15",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-7-16-73",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "16",
+    "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+    "residentName": "Jan de Wint",
+    "residentRole": "",
+    "residentRaw": "Jan de Wint,16",
+    "page": 7,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+    "proofread": true,
+    "comments": [
+      "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-17-74",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "17",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Peder Nielsen",
+    "residentRole": "Mestert",
+    "residentRaw": "Peder Nielsen, Mestert,17",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-17-75",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "17",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Michell Andersen",
+    "residentRole": "",
+    "residentRaw": "Michell Andersen, 17",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-17-76",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "17",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Margrette Sontomb",
+    "residentRole": "Serving",
+    "residentRaw": "Margrette Sontomb, Serving",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-77",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Margrette Sontomb",
+    "residentRole": "Serving",
+    "residentRaw": "Margrette Sontomb, Serving",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-78",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Margrette Sontomb",
+    "residentRole": "Serving",
+    "residentRaw": "Margrette Sontomb, Serving",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-79",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Johan Cramul",
+    "residentRole": "Planter",
+    "residentRaw": "Johan Cramul, Planter,18",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-80",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Wilm Cramul",
+    "residentRole": "barn",
+    "residentRaw": "Wilm Cramul, barn,18",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-81",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Johan Cramul",
+    "residentRole": "barn",
+    "residentRaw": "Johan Cramul, barn,18",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-82",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Mariche Cramul",
+    "residentRole": "barn",
+    "residentRaw": "Mariche Cramul, barn,18",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-18-83",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "18",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Maria Swanis",
+    "residentRole": "",
+    "residentRaw": "Maria Swanis, 18",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-84",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Daniel Mooy",
+    "residentRole": "Capt",
+    "residentRaw": "Daniel Mooy, Capt,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-85",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Dorte Swains",
+    "residentRole": "hustru",
+    "residentRaw": "Dorte Swains, hustru,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-86",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Cornelia Mooy",
+    "residentRole": "barn",
+    "residentRaw": "Cornelia Mooy, barn,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-87",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Sara Mooy",
+    "residentRole": "barn",
+    "residentRaw": "Sara Mooy, barn,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-88",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Lars Andersen",
+    "residentRole": "Sarving",
+    "residentRaw": "Lars Andersen, Sarving,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-89",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Andres Reins",
+    "residentRole": "Mester K",
+    "residentRaw": "Andres Reins, Mester K,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-8-19-90",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "19",
+    "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+    "residentName": "Maria Clars",
+    "residentRole": "hustru",
+    "residentRaw": "Maria Clars, hustru,19",
+    "page": 8,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-20-91",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "20",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Sebilla Swain",
+    "residentRole": "",
+    "residentRaw": "Sebilla Swain, 20",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-92",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Johan Bull",
+    "residentRole": "Planter",
+    "residentRaw": "Johan Bull, Planter,21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-93",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Beatis Robbert",
+    "residentRole": "hustru",
+    "residentRaw": "Beatis Robbert, hustru,21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-94",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Else Bull",
+    "residentRole": "barn",
+    "residentRaw": "Else Bull, barn,21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-95",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Beatis Bull",
+    "residentRole": "barn",
+    "residentRaw": "Beatis Bull, barn,21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-96",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Alita Bull",
+    "residentRole": "barn",
+    "residentRaw": "Alita Bull, barn, 21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-21-97",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "21",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Else",
+    "residentRole": "en gammel enke, til huse hos Johan Bull",
+    "residentRaw": "Else, en gammel enke, til huse hos Johan Bull,21",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-98",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Antonij D&#039;Konig",
+    "residentRole": "Planter",
+    "residentRaw": "Antonij D&#039;Konig, Planter, 22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-99",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Anthonette Klery",
+    "residentRole": "hustru",
+    "residentRaw": "Anthonette Klery, hustru,22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-100",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Agustinj D&#039;Konig",
+    "residentRole": "søn",
+    "residentRaw": "Agustinj D&#039;Konig, søn,22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-101",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Antoni D&#039;Konig",
+    "residentRole": "søn 22",
+    "residentRaw": "Antoni D&#039;Konig, søn 22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-102",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Jacob D&#039;Konig",
+    "residentRole": "søn",
+    "residentRaw": "Jacob D&#039;Konig, søn,22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-103",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Gertrud D&#039;Konig",
+    "residentRole": "datter",
+    "residentRaw": "Gertrud D&#039;Konig, datter, 22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-104",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Lisabet D&#039;Konig",
+    "residentRole": "datter",
+    "residentRaw": "Lisabet D&#039;Konig, datter,22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-9-22-105",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "22",
+    "plantationNumberLine": "20, 21, 22",
+    "residentName": "Rachel D&#039;Konig",
+    "residentRole": "datter",
+    "residentRaw": "Rachel D&#039;Konig, datter, 22",
+    "page": 9,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-23-106",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "23",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Hr. Jens Fredrichsen Hoffman",
+    "residentRole": "",
+    "residentRaw": "Hr. Jens Fredrichsen Hoffman, 23",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-24-107",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "24",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Christine Pieters",
+    "residentRole": "",
+    "residentRaw": "Christine Pieters,24",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-23-108",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "23",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Gertrud Pietters",
+    "residentRole": "datter",
+    "residentRaw": "Gertrud Pietters, datter",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-24-109",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "24",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Gertrud Pietters",
+    "residentRole": "datter",
+    "residentRaw": "Gertrud Pietters, datter",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-110",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Gertrud Pietters",
+    "residentRole": "datter",
+    "residentRaw": "Gertrud Pietters, datter",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-111",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Pieter Hansen",
+    "residentRole": "Planter",
+    "residentRaw": "Pieter Hansen, Planter, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-112",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Catrina Elisabet",
+    "residentRole": "hustru",
+    "residentRaw": "Catrina Elisabet, hustru, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-113",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Jørgen Hansen",
+    "residentRole": "",
+    "residentRaw": "Jørgen Hansen, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-114",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Anna Maria D&#039;Hem",
+    "residentRole": "",
+    "residentRaw": "Anna Maria D&#039;Hem, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-115",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Ole Hansen",
+    "residentRole": "",
+    "residentRaw": "Ole Hansen, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-116",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Ole Matiasen",
+    "residentRole": "",
+    "residentRaw": "Ole Matiasen ,25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-117",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Jan Röneberg",
+    "residentRole": "",
+    "residentRaw": "Jan Röneberg,25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-10-25-118",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "25",
+    "plantationNumberLine": "23, 24, 25",
+    "residentName": "Maren Nielsdatter",
+    "residentRole": "hustru",
+    "residentRaw": "Maren Nielsdatter, hustru, 25",
+    "page": 10,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+    "proofread": true,
+    "comments": [
+      "&laquo; Forrige billede"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-119",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Dina Daniels",
+    "residentRole": "",
+    "residentRaw": "Dina Daniels, 26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-120",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Pieter Marce",
+    "residentRole": "barn",
+    "residentRaw": "Pieter Marce, barn, 26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-121",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Gouerdt Marce",
+    "residentRole": "barn",
+    "residentRaw": "Gouerdt Marce, barn, 26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-122",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Diana Marce",
+    "residentRole": "barn",
+    "residentRaw": "Diana Marce, barn, 26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-123",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Antonette Giesell",
+    "residentRole": "barn",
+    "residentRaw": "Antonette Giesell, barn,26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-26-124",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "26",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Moses Catro",
+    "residentRole": "",
+    "residentRaw": "Moses Catro,26",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-27-125",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "27",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Hais Dufo",
+    "residentRole": "",
+    "residentRaw": "Hais Dufo, 27",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-11-28-126",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "28",
+    "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+    "residentName": "Dina Daniels",
+    "residentRole": "",
+    "residentRaw": "Dina Daniels, 28",
+    "page": 11,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+    "proofread": true,
+    "comments": [
+      "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+      "Anden tekst",
+      "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-127",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Lucas Folckers",
+    "residentRole": "Planter",
+    "residentRaw": "Lucas Folckers, Planter,29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-128",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Maria Schwain",
+    "residentRole": "hustru",
+    "residentRaw": "Maria Schwain, hustru,29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-129",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Folckers",
+    "residentRole": "barn",
+    "residentRaw": "Folckers, barn, 29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-130",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Margreta",
+    "residentRole": "barn",
+    "residentRaw": "Margreta, barn,29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-131",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Christopher",
+    "residentRole": "barn",
+    "residentRaw": "Christopher, barn,29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-132",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Jannica Gaf",
+    "residentRole": "barn",
+    "residentRaw": "Jannica Gaf, barn, 29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-29-133",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "29",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Peder Peders",
+    "residentRole": "Serving",
+    "residentRaw": "Peder Peders , Serving, 29",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-30-134",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "30",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Jan D&#039; Wint",
+    "residentRole": "Planter",
+    "residentRaw": "Jan D&#039; Wint, Planter, 30",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-30-135",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "30",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Suhsanna Luckers",
+    "residentRole": "hustru",
+    "residentRaw": "Suhsanna Luckers, hustru, 30",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-30-136",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "30",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Tohmas D&#039; Wint",
+    "residentRole": "barn",
+    "residentRaw": "Tohmas D&#039; Wint, barn, 30",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-30-137",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "30",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Johannes D&#039; Wint",
+    "residentRole": "barn",
+    "residentRaw": "Johannes D&#039; Wint, barn, 30",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-30-138",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "30",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Suhsanna D&#039; Wint",
+    "residentRole": "barn",
+    "residentRaw": "Suhsanna D&#039; Wint, barn, 30",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-31-139",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "31",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Boy Cornelius",
+    "residentRole": "Capetain Paa Compagn. Barck",
+    "residentRaw": "Boy Cornelius, Capetain Paa Compagn. Barck, 31",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-12-31-140",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "31",
+    "plantationNumberLine": "29, 30, 31",
+    "residentName": "Catrina Bavil",
+    "residentRole": "hustru",
+    "residentRaw": "Catrina Bavil, hustru, 31",
+    "page": 12,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+    "proofread": true,
+    "comments": [
+      "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+      "Kommentarer"
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-32-141",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "32",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Margrete Grehs",
+    "residentRole": "Thomas Suains enke, Planterinde",
+    "residentRaw": "Margrete Grehs, Thomas Suains enke, Planterinde, 32",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-32-142",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "32",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Christians Wads",
+    "residentRole": "barn",
+    "residentRaw": "Christians Wads, barn, 32",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-32-143",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "32",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Thomas Swain",
+    "residentRole": "barn",
+    "residentRaw": "Thomas Swain, barn, 32",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-32-144",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "32",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Margreta Swain",
+    "residentRole": "barn",
+    "residentRaw": "Margreta Swain, barn, 32",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-32-145",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "32",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Sara Swain",
+    "residentRole": "barn",
+    "residentRaw": "Sara Swain, barn, 32",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-33-146",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "33",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Thio Secia Samans",
+    "residentRole": "Andrius Samans enke, Planterinde",
+    "residentRaw": "Thio Secia Samans, Andrius Samans enke, Planterinde, 33",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-33-147",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "33",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Gilbare Saman",
+    "residentRole": "søn",
+    "residentRaw": "Gilbare Saman, søn, 33",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-33-148",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "33",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Magdelena",
+    "residentRole": "datter",
+    "residentRaw": "Magdelena, datter, 33",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-34-149",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "34",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Hendrick Jansen",
+    "residentRole": "Planter",
+    "residentRaw": "Hendrick Jansen, Planter, 34",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-34-150",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "34",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Janicke Saman",
+    "residentRole": "hustru",
+    "residentRaw": "Janicke Saman, hustru, 34",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-34-151",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "34",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Sussana Janckis",
+    "residentRole": "barn",
+    "residentRaw": "Sussana Janckis, barn, 34",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  },
+  {
+    "id": "st-thomas-landlist-13-34-152",
+    "year": "1688",
+    "islandName": "St. Thomas",
+    "plantationNumber": "34",
+    "plantationNumberLine": "32, 33, 34",
+    "residentName": "Pieter D&#039; Clar",
+    "residentRole": "",
+    "residentRaw": "Pieter D&#039; Clar,34",
+    "page": 13,
+    "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+    "proofread": true,
+    "comments": [
+      "Anden tekst",
+      "Saman er En Encke med it Liedet Barn."
+    ],
+    "termsOfInterest": []
+  }
+] satisfies StThomasLandListRecord1688_1718[];
+
+export const stThomasLandListNumberIndex1688_1718 = [
+  {
+    "plantationNumber": "1",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Tomas Berrents: (Berrentsen)",
+      "Ana (Anna) Berentz: (Berentzen)",
+      "Maria Berns",
+      "Dorte Berns",
+      "Hans Christoffersen Kröger",
+      "Jahn Carmul",
+      "Rasmus Pedersen",
+      "Sara Siranis",
+      "Peter Rasmussen",
+      "Tomas Rasmussen",
+      "Rasmus Rasmusen",
+      "Johan Rasmussen",
+      "Jacob Rasmussen"
+    ],
+    "roles": [
+      "A1",
+      "hustru, A1",
+      "barn A1",
+      "barn, A1",
+      "Saruing, A1",
+      "Planter, A2",
+      "Planter, A3",
+      "hustru, A3",
+      "søn, A3"
+    ],
+    "pages": [
+      3
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-3-1-1",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Berrents: (Berrentsen)",
+        "residentRole": "A1",
+        "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-4",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Ana (Anna) Berentz: (Berentzen)",
+        "residentRole": "hustru, A1",
+        "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-7",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Maria Berns",
+        "residentRole": "barn A1",
+        "residentRaw": "Maria Berns, barn A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-10",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Dorte Berns",
+        "residentRole": "barn, A1",
+        "residentRaw": "Dorte Berns, barn, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-13",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Hans Christoffersen Kröger",
+        "residentRole": "Saruing, A1",
+        "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-16",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jahn Carmul",
+        "residentRole": "Planter, A2",
+        "residentRaw": "Jahn Carmul, Planter, A2",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-19",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Pedersen",
+        "residentRole": "Planter, A3",
+        "residentRaw": "Rasmus Pedersen, Planter, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-22",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Sara Siranis",
+        "residentRole": "hustru, A3",
+        "residentRaw": "Sara Siranis, hustru, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-25",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Peter Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Peter Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-28",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Tomas Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-31",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Rasmusen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Rasmus Rasmusen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-34",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Johan Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Johan Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-1-37",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "1",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jacob Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Jacob Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "2",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Tomas Berrents: (Berrentsen)",
+      "Ana (Anna) Berentz: (Berentzen)",
+      "Maria Berns",
+      "Dorte Berns",
+      "Hans Christoffersen Kröger",
+      "Jahn Carmul",
+      "Rasmus Pedersen",
+      "Sara Siranis",
+      "Peter Rasmussen",
+      "Tomas Rasmussen",
+      "Rasmus Rasmusen",
+      "Johan Rasmussen",
+      "Jacob Rasmussen"
+    ],
+    "roles": [
+      "A1",
+      "hustru, A1",
+      "barn A1",
+      "barn, A1",
+      "Saruing, A1",
+      "Planter, A2",
+      "Planter, A3",
+      "hustru, A3",
+      "søn, A3"
+    ],
+    "pages": [
+      3
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-3-2-2",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Berrents: (Berrentsen)",
+        "residentRole": "A1",
+        "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-5",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Ana (Anna) Berentz: (Berentzen)",
+        "residentRole": "hustru, A1",
+        "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-8",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Maria Berns",
+        "residentRole": "barn A1",
+        "residentRaw": "Maria Berns, barn A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-11",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Dorte Berns",
+        "residentRole": "barn, A1",
+        "residentRaw": "Dorte Berns, barn, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-14",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Hans Christoffersen Kröger",
+        "residentRole": "Saruing, A1",
+        "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-17",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jahn Carmul",
+        "residentRole": "Planter, A2",
+        "residentRaw": "Jahn Carmul, Planter, A2",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-20",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Pedersen",
+        "residentRole": "Planter, A3",
+        "residentRaw": "Rasmus Pedersen, Planter, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-23",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Sara Siranis",
+        "residentRole": "hustru, A3",
+        "residentRaw": "Sara Siranis, hustru, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-26",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Peter Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Peter Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-29",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Tomas Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-32",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Rasmusen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Rasmus Rasmusen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-35",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Johan Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Johan Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-2-38",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "2",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jacob Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Jacob Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "3",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Tomas Berrents: (Berrentsen)",
+      "Ana (Anna) Berentz: (Berentzen)",
+      "Maria Berns",
+      "Dorte Berns",
+      "Hans Christoffersen Kröger",
+      "Jahn Carmul",
+      "Rasmus Pedersen",
+      "Sara Siranis",
+      "Peter Rasmussen",
+      "Tomas Rasmussen",
+      "Rasmus Rasmusen",
+      "Johan Rasmussen",
+      "Jacob Rasmussen"
+    ],
+    "roles": [
+      "A1",
+      "hustru, A1",
+      "barn A1",
+      "barn, A1",
+      "Saruing, A1",
+      "Planter, A2",
+      "Planter, A3",
+      "hustru, A3",
+      "søn, A3"
+    ],
+    "pages": [
+      3
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-3-3-3",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Berrents: (Berrentsen)",
+        "residentRole": "A1",
+        "residentRaw": "Tomas Berrents: (Berrentsen), A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-6",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Ana (Anna) Berentz: (Berentzen)",
+        "residentRole": "hustru, A1",
+        "residentRaw": "Ana (Anna) Berentz: (Berentzen), hustru, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-9",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Maria Berns",
+        "residentRole": "barn A1",
+        "residentRaw": "Maria Berns, barn A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-12",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Dorte Berns",
+        "residentRole": "barn, A1",
+        "residentRaw": "Dorte Berns, barn, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-15",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Hans Christoffersen Kröger",
+        "residentRole": "Saruing, A1",
+        "residentRaw": "Hans Christoffersen Kröger, Saruing, A1",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-18",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jahn Carmul",
+        "residentRole": "Planter, A2",
+        "residentRaw": "Jahn Carmul, Planter, A2",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-21",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Pedersen",
+        "residentRole": "Planter, A3",
+        "residentRaw": "Rasmus Pedersen, Planter, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-24",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Sara Siranis",
+        "residentRole": "hustru, A3",
+        "residentRaw": "Sara Siranis, hustru, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-27",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Peter Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Peter Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-30",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Tomas Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Tomas Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-33",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Rasmus Rasmusen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Rasmus Rasmusen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-36",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Johan Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Johan Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-3-3-39",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "3",
+        "plantationNumberLine": "1, 2, 3",
+        "residentName": "Jacob Rasmussen",
+        "residentRole": "søn, A3",
+        "residentRaw": "Jacob Rasmussen, søn, A3",
+        "page": 3,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=3",
+        "proofread": true,
+        "comments": [
+          "Evt. Hans Christoffersen Kroÿer",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "4",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Johan Harris",
+      "Johan Duncker"
+    ],
+    "roles": [
+      "Planter",
+      "A6"
+    ],
+    "pages": [
+      4
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-4-4-40",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "4",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Harris",
+        "residentRole": "Planter",
+        "residentRaw": "Johan Harris, Planter,",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-4-4-43",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "4",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Duncker",
+        "residentRole": "A6",
+        "residentRaw": "Johan Duncker, A6",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "5",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Johan Harris",
+      "Johan Duncker"
+    ],
+    "roles": [
+      "Planter",
+      "A6"
+    ],
+    "pages": [
+      4
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-4-5-41",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "5",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Harris",
+        "residentRole": "Planter",
+        "residentRaw": "Johan Harris, Planter,",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-4-5-44",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "5",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Duncker",
+        "residentRole": "A6",
+        "residentRaw": "Johan Duncker, A6",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "6",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Johan Harris",
+      "Johan Duncker"
+    ],
+    "roles": [
+      "Planter",
+      "A6"
+    ],
+    "pages": [
+      4
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-4-6-42",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "6",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Harris",
+        "residentRole": "Planter",
+        "residentRaw": "Johan Harris, Planter,",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-4-6-45",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "6",
+        "plantationNumberLine": "4, 5, 6",
+        "residentName": "Johan Duncker",
+        "residentRole": "A6",
+        "residentRaw": "Johan Duncker, A6",
+        "page": 4,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=4",
+        "proofread": true,
+        "comments": [
+          "Nr. 6 er ikke beboet",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "7",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Simon Luck",
+      "Maria Wads",
+      "Mathias Tropke",
+      "Martin Tropke",
+      "Christian Luck",
+      "Holger Paulsen"
+    ],
+    "roles": [
+      "hustru"
+    ],
+    "pages": [
+      5
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-5-7-46",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Simon Luck",
+        "residentRole": "",
+        "residentRaw": "Simon Luck, 7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-7-47",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Maria Wads",
+        "residentRole": "hustru",
+        "residentRaw": "Maria Wads, hustru,7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-7-48",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Mathias Tropke",
+        "residentRole": "",
+        "residentRaw": "Mathias Tropke, 7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-7-49",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Martin Tropke",
+        "residentRole": "",
+        "residentRaw": "Martin Tropke, 7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-7-50",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Christian Luck",
+        "residentRole": "",
+        "residentRaw": "Christian Luck,7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-7-51",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "7",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Holger Paulsen",
+        "residentRole": "",
+        "residentRaw": "Holger Paulsen,7",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "8",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Sidsel Pedersdaatter",
+      "Maria Pad",
+      "Siselle Pad",
+      "Laura Pad",
+      "Ølle Pedersen"
+    ],
+    "roles": [],
+    "pages": [
+      5
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-5-8-52",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "8",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Sidsel Pedersdaatter",
+        "residentRole": "",
+        "residentRaw": "Sidsel Pedersdaatter, 8",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-8-53",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "8",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Maria Pad",
+        "residentRole": "",
+        "residentRaw": "Maria Pad, 8",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-8-54",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "8",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Siselle Pad",
+        "residentRole": "",
+        "residentRaw": "Siselle Pad, 8",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-8-55",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "8",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Laura Pad",
+        "residentRole": "",
+        "residentRaw": "Laura Pad, 8",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-5-8-56",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "8",
+        "plantationNumberLine": "7, 8",
+        "residentName": "Ølle Pedersen",
+        "residentRole": "",
+        "residentRaw": "Ølle Pedersen, 8",
+        "page": 5,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=5",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "(hos Sidsel Pedersdatter) 2de hendes Søsterbørn Som haver huercken Fader eller Moder Nembl (Nemblig) 1 Dreng og 1 Pige"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "9",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Nicolaj Reny",
+      "Johanne Reny",
+      "Anna Reny",
+      "Johan Hansen",
+      "Thomas Hansen"
+    ],
+    "roles": [],
+    "pages": [
+      6
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-6-9-57",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "9",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Nicolaj Reny",
+        "residentRole": "",
+        "residentRaw": "Nicolaj Reny,9",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-6-9-58",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "9",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Johanne Reny",
+        "residentRole": "",
+        "residentRaw": "Johanne Reny,9",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-6-9-59",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "9",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Anna Reny",
+        "residentRole": "",
+        "residentRaw": "Anna Reny,9",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-6-9-60",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "9",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Johan Hansen",
+        "residentRole": "",
+        "residentRaw": "Johan Hansen, 9",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-6-9-61",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "9",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Thomas Hansen",
+        "residentRole": "",
+        "residentRaw": "Thomas Hansen,9",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "10",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Hary David"
+    ],
+    "roles": [
+      "Planter"
+    ],
+    "pages": [
+      6
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-6-10-62",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "10",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Hary David",
+        "residentRole": "Planter",
+        "residentRaw": "Hary David, Planter,10",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "11",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Catrine Kar",
+      "Hary David"
+    ],
+    "roles": [
+      "Barn"
+    ],
+    "pages": [
+      6
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-6-11-63",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "11",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Catrine Kar",
+        "residentRole": "",
+        "residentRaw": "Catrine Kar,11",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-6-11-64",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "11",
+        "plantationNumberLine": "9, Rasmus Pedersens 5 Drengebørns Plantage + 10, 11",
+        "residentName": "Hary David",
+        "residentRole": "Barn",
+        "residentRaw": "Hary David, Barn, 11",
+        "page": 6,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=6",
+        "proofread": true,
+        "comments": [
+          "Nr. 10: ingen navne nævnt på beboerne.",
+          "Anden tekst",
+          "(Nr. 10) Rasmus Pedersens 5 Drengebørns Plan: som dend af Francois Giga er Testementeret, Smaa umyndige"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "12",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Tomula Congandi",
+      "Jancke L. Weber"
+    ],
+    "roles": [
+      "Planter",
+      "hustru"
+    ],
+    "pages": [
+      7
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-7-12-65",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "12",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Tomula Congandi",
+        "residentRole": "Planter",
+        "residentRaw": "Tomula Congandi, Planter,12",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-7-12-66",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "12",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Jancke L. Weber",
+        "residentRole": "hustru",
+        "residentRaw": "Jancke L. Weber, hustru,12",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "13",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Lasaris Segyret",
+      "Maria de Konning",
+      "Andreas Segyret",
+      "Jacob Segyret"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "barn"
+    ],
+    "pages": [
+      7
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-7-13-67",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "13",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Lasaris Segyret",
+        "residentRole": "Planter",
+        "residentRaw": "Lasaris Segyret, Planter,13",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-7-13-68",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "13",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Maria de Konning",
+        "residentRole": "hustru",
+        "residentRaw": "Maria de Konning, hustru,13",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-7-13-69",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "13",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Andreas Segyret",
+        "residentRole": "barn",
+        "residentRaw": "Andreas Segyret, barn,13",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-7-13-70",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "13",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Jacob Segyret",
+        "residentRole": "barn",
+        "residentRaw": "Jacob Segyret, barn,13",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "15",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Robert Lamar",
+      "Maria Wil"
+    ],
+    "roles": [
+      "Planter",
+      "hustru"
+    ],
+    "pages": [
+      7
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-7-15-71",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "15",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Robert Lamar",
+        "residentRole": "Planter",
+        "residentRaw": "Robert Lamar, Planter,15",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-7-15-72",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "15",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Maria Wil",
+        "residentRole": "hustru",
+        "residentRaw": "Maria Wil, hustru,15",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "16",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Jan de Wint"
+    ],
+    "roles": [],
+    "pages": [
+      7
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-7-16-73",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "16",
+        "plantationNumberLine": "12, 13, Jørgen Iversens Plantage + 14, 15, 16",
+        "residentName": "Jan de Wint",
+        "residentRole": "",
+        "residentRaw": "Jan de Wint,16",
+        "page": 7,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=7",
+        "proofread": true,
+        "comments": [
+          "Nr. 15 er ubeboet. Nr. 16: Jan de Witt, intet anført om titel eller erhverv.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "17",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Peder Nielsen",
+      "Michell Andersen",
+      "Margrette Sontomb"
+    ],
+    "roles": [
+      "Mestert",
+      "Serving"
+    ],
+    "pages": [
+      8
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-8-17-74",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "17",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Peder Nielsen",
+        "residentRole": "Mestert",
+        "residentRaw": "Peder Nielsen, Mestert,17",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-17-75",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "17",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Michell Andersen",
+        "residentRole": "",
+        "residentRaw": "Michell Andersen, 17",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-17-76",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "17",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Margrette Sontomb",
+        "residentRole": "Serving",
+        "residentRaw": "Margrette Sontomb, Serving",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "18",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Margrette Sontomb",
+      "Johan Cramul",
+      "Wilm Cramul",
+      "Mariche Cramul",
+      "Maria Swanis"
+    ],
+    "roles": [
+      "Serving",
+      "Planter",
+      "barn"
+    ],
+    "pages": [
+      8
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-8-18-77",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Margrette Sontomb",
+        "residentRole": "Serving",
+        "residentRaw": "Margrette Sontomb, Serving",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-18-79",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Johan Cramul",
+        "residentRole": "Planter",
+        "residentRaw": "Johan Cramul, Planter,18",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-18-80",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Wilm Cramul",
+        "residentRole": "barn",
+        "residentRaw": "Wilm Cramul, barn,18",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-18-81",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Johan Cramul",
+        "residentRole": "barn",
+        "residentRaw": "Johan Cramul, barn,18",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-18-82",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Mariche Cramul",
+        "residentRole": "barn",
+        "residentRaw": "Mariche Cramul, barn,18",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-18-83",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "18",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Maria Swanis",
+        "residentRole": "",
+        "residentRaw": "Maria Swanis, 18",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "19",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Margrette Sontomb",
+      "Daniel Mooy",
+      "Dorte Swains",
+      "Cornelia Mooy",
+      "Sara Mooy",
+      "Lars Andersen",
+      "Andres Reins",
+      "Maria Clars"
+    ],
+    "roles": [
+      "Serving",
+      "Capt",
+      "hustru",
+      "barn",
+      "Sarving",
+      "Mester K"
+    ],
+    "pages": [
+      8
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-8-19-78",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Margrette Sontomb",
+        "residentRole": "Serving",
+        "residentRaw": "Margrette Sontomb, Serving",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-84",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Daniel Mooy",
+        "residentRole": "Capt",
+        "residentRaw": "Daniel Mooy, Capt,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-85",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Dorte Swains",
+        "residentRole": "hustru",
+        "residentRaw": "Dorte Swains, hustru,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-86",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Cornelia Mooy",
+        "residentRole": "barn",
+        "residentRaw": "Cornelia Mooy, barn,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-87",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Sara Mooy",
+        "residentRole": "barn",
+        "residentRaw": "Sara Mooy, barn,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-88",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Lars Andersen",
+        "residentRole": "Sarving",
+        "residentRaw": "Lars Andersen, Sarving,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-89",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Andres Reins",
+        "residentRole": "Mester K",
+        "residentRaw": "Andres Reins, Mester K,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-8-19-90",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "19",
+        "plantationNumberLine": "Mons Engelbret Christian + 17, 18, 19",
+        "residentName": "Maria Clars",
+        "residentRole": "hustru",
+        "residentRaw": "Maria Clars, hustru,19",
+        "page": 8,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=8",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Mons Engelbret Christian, Borger udj Kiobenh: mens holder Mester Knegt herpaa"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "20",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Sebilla Swain"
+    ],
+    "roles": [],
+    "pages": [
+      9
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-9-20-91",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "20",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Sebilla Swain",
+        "residentRole": "",
+        "residentRaw": "Sebilla Swain, 20",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "21",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Johan Bull",
+      "Beatis Robbert",
+      "Else Bull",
+      "Beatis Bull",
+      "Alita Bull",
+      "Else"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "barn",
+      "en gammel enke, til huse hos Johan Bull"
+    ],
+    "pages": [
+      9
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-9-21-92",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Johan Bull",
+        "residentRole": "Planter",
+        "residentRaw": "Johan Bull, Planter,21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-21-93",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Beatis Robbert",
+        "residentRole": "hustru",
+        "residentRaw": "Beatis Robbert, hustru,21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-21-94",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Else Bull",
+        "residentRole": "barn",
+        "residentRaw": "Else Bull, barn,21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-21-95",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Beatis Bull",
+        "residentRole": "barn",
+        "residentRaw": "Beatis Bull, barn,21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-21-96",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Alita Bull",
+        "residentRole": "barn",
+        "residentRaw": "Alita Bull, barn, 21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-21-97",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "21",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Else",
+        "residentRole": "en gammel enke, til huse hos Johan Bull",
+        "residentRaw": "Else, en gammel enke, til huse hos Johan Bull,21",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "22",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Antonij D&#039;Konig",
+      "Anthonette Klery",
+      "Agustinj D&#039;Konig",
+      "Antoni D&#039;Konig",
+      "Jacob D&#039;Konig",
+      "Gertrud D&#039;Konig",
+      "Lisabet D&#039;Konig",
+      "Rachel D&#039;Konig"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "søn",
+      "søn 22",
+      "datter"
+    ],
+    "pages": [
+      9
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-9-22-98",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Antonij D&#039;Konig",
+        "residentRole": "Planter",
+        "residentRaw": "Antonij D&#039;Konig, Planter, 22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-99",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Anthonette Klery",
+        "residentRole": "hustru",
+        "residentRaw": "Anthonette Klery, hustru,22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-100",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Agustinj D&#039;Konig",
+        "residentRole": "søn",
+        "residentRaw": "Agustinj D&#039;Konig, søn,22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-101",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Antoni D&#039;Konig",
+        "residentRole": "søn 22",
+        "residentRaw": "Antoni D&#039;Konig, søn 22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-102",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Jacob D&#039;Konig",
+        "residentRole": "søn",
+        "residentRaw": "Jacob D&#039;Konig, søn,22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-103",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Gertrud D&#039;Konig",
+        "residentRole": "datter",
+        "residentRaw": "Gertrud D&#039;Konig, datter, 22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-104",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Lisabet D&#039;Konig",
+        "residentRole": "datter",
+        "residentRaw": "Lisabet D&#039;Konig, datter,22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-9-22-105",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "22",
+        "plantationNumberLine": "20, 21, 22",
+        "residentName": "Rachel D&#039;Konig",
+        "residentRole": "datter",
+        "residentRaw": "Rachel D&#039;Konig, datter, 22",
+        "page": 9,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=9",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "23",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Hr. Jens Fredrichsen Hoffman",
+      "Gertrud Pietters"
+    ],
+    "roles": [
+      "datter"
+    ],
+    "pages": [
+      10
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-10-23-106",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "23",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Hr. Jens Fredrichsen Hoffman",
+        "residentRole": "",
+        "residentRaw": "Hr. Jens Fredrichsen Hoffman, 23",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-23-108",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "23",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Gertrud Pietters",
+        "residentRole": "datter",
+        "residentRaw": "Gertrud Pietters, datter",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "24",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Christine Pieters",
+      "Gertrud Pietters"
+    ],
+    "roles": [
+      "datter"
+    ],
+    "pages": [
+      10
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-10-24-107",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "24",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Christine Pieters",
+        "residentRole": "",
+        "residentRaw": "Christine Pieters,24",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-24-109",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "24",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Gertrud Pietters",
+        "residentRole": "datter",
+        "residentRaw": "Gertrud Pietters, datter",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "25",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Gertrud Pietters",
+      "Pieter Hansen",
+      "Catrina Elisabet",
+      "Jørgen Hansen",
+      "Anna Maria D&#039;Hem",
+      "Ole Hansen",
+      "Ole Matiasen",
+      "Jan Röneberg",
+      "Maren Nielsdatter"
+    ],
+    "roles": [
+      "datter",
+      "Planter",
+      "hustru"
+    ],
+    "pages": [
+      10
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-10-25-110",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Gertrud Pietters",
+        "residentRole": "datter",
+        "residentRaw": "Gertrud Pietters, datter",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-111",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Pieter Hansen",
+        "residentRole": "Planter",
+        "residentRaw": "Pieter Hansen, Planter, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-112",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Catrina Elisabet",
+        "residentRole": "hustru",
+        "residentRaw": "Catrina Elisabet, hustru, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-113",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Jørgen Hansen",
+        "residentRole": "",
+        "residentRaw": "Jørgen Hansen, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-114",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Anna Maria D&#039;Hem",
+        "residentRole": "",
+        "residentRaw": "Anna Maria D&#039;Hem, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-115",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Ole Hansen",
+        "residentRole": "",
+        "residentRaw": "Ole Hansen, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-116",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Ole Matiasen",
+        "residentRole": "",
+        "residentRaw": "Ole Matiasen ,25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-117",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Jan Röneberg",
+        "residentRole": "",
+        "residentRaw": "Jan Röneberg,25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-10-25-118",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "25",
+        "plantationNumberLine": "23, 24, 25",
+        "residentName": "Maren Nielsdatter",
+        "residentRole": "hustru",
+        "residentRaw": "Maren Nielsdatter, hustru, 25",
+        "page": 10,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=10",
+        "proofread": true,
+        "comments": [
+          "&laquo; Forrige billede"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "26",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Dina Daniels",
+      "Pieter Marce",
+      "Gouerdt Marce",
+      "Diana Marce",
+      "Antonette Giesell",
+      "Moses Catro"
+    ],
+    "roles": [
+      "barn"
+    ],
+    "pages": [
+      11
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-11-26-119",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Dina Daniels",
+        "residentRole": "",
+        "residentRaw": "Dina Daniels, 26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-11-26-120",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Pieter Marce",
+        "residentRole": "barn",
+        "residentRaw": "Pieter Marce, barn, 26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-11-26-121",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Gouerdt Marce",
+        "residentRole": "barn",
+        "residentRaw": "Gouerdt Marce, barn, 26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-11-26-122",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Diana Marce",
+        "residentRole": "barn",
+        "residentRaw": "Diana Marce, barn, 26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-11-26-123",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Antonette Giesell",
+        "residentRole": "barn",
+        "residentRaw": "Antonette Giesell, barn,26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-11-26-124",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "26",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Moses Catro",
+        "residentRole": "",
+        "residentRaw": "Moses Catro,26",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "27",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Hais Dufo"
+    ],
+    "roles": [],
+    "pages": [
+      11
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-11-27-125",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "27",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Hais Dufo",
+        "residentRole": "",
+        "residentRaw": "Hais Dufo, 27",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "28",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Dina Daniels"
+    ],
+    "roles": [],
+    "pages": [
+      11
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-11-28-126",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "28",
+        "plantationNumberLine": "26, 27, Dina Daniels&#039; Plantage + 28",
+        "residentName": "Dina Daniels",
+        "residentRole": "",
+        "residentRaw": "Dina Daniels, 28",
+        "page": 11,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=11",
+        "proofread": true,
+        "comments": [
+          "Usikkert om der står Hais Dufo. Nr. 28: ingen beboere nævnt.",
+          "Anden tekst",
+          "(Nr. 27) Dend Brandenborgske Directeur Monsr. Callie Mester Knegt Hais Dufo. (Nr. 28) Dina Daniels noch 1 Plant:"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "29",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Lucas Folckers",
+      "Maria Schwain",
+      "Folckers",
+      "Margreta",
+      "Christopher",
+      "Jannica Gaf",
+      "Peder Peders"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "barn",
+      "Serving"
+    ],
+    "pages": [
+      12
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-12-29-127",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Lucas Folckers",
+        "residentRole": "Planter",
+        "residentRaw": "Lucas Folckers, Planter,29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-128",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Maria Schwain",
+        "residentRole": "hustru",
+        "residentRaw": "Maria Schwain, hustru,29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-129",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Folckers",
+        "residentRole": "barn",
+        "residentRaw": "Folckers, barn, 29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-130",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Margreta",
+        "residentRole": "barn",
+        "residentRaw": "Margreta, barn,29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-131",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Christopher",
+        "residentRole": "barn",
+        "residentRaw": "Christopher, barn,29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-132",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Jannica Gaf",
+        "residentRole": "barn",
+        "residentRaw": "Jannica Gaf, barn, 29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-29-133",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "29",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Peder Peders",
+        "residentRole": "Serving",
+        "residentRaw": "Peder Peders , Serving, 29",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "30",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Jan D&#039; Wint",
+      "Suhsanna Luckers",
+      "Tohmas D&#039; Wint",
+      "Johannes D&#039; Wint",
+      "Suhsanna D&#039; Wint"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "barn"
+    ],
+    "pages": [
+      12
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-12-30-134",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "30",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Jan D&#039; Wint",
+        "residentRole": "Planter",
+        "residentRaw": "Jan D&#039; Wint, Planter, 30",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-30-135",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "30",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Suhsanna Luckers",
+        "residentRole": "hustru",
+        "residentRaw": "Suhsanna Luckers, hustru, 30",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-30-136",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "30",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Tohmas D&#039; Wint",
+        "residentRole": "barn",
+        "residentRaw": "Tohmas D&#039; Wint, barn, 30",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-30-137",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "30",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Johannes D&#039; Wint",
+        "residentRole": "barn",
+        "residentRaw": "Johannes D&#039; Wint, barn, 30",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-30-138",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "30",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Suhsanna D&#039; Wint",
+        "residentRole": "barn",
+        "residentRaw": "Suhsanna D&#039; Wint, barn, 30",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "31",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Boy Cornelius",
+      "Catrina Bavil"
+    ],
+    "roles": [
+      "Capetain Paa Compagn. Barck",
+      "hustru"
+    ],
+    "pages": [
+      12
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-12-31-139",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "31",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Boy Cornelius",
+        "residentRole": "Capetain Paa Compagn. Barck",
+        "residentRaw": "Boy Cornelius, Capetain Paa Compagn. Barck, 31",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-12-31-140",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "31",
+        "plantationNumberLine": "29, 30, 31",
+        "residentName": "Catrina Bavil",
+        "residentRole": "hustru",
+        "residentRaw": "Catrina Bavil, hustru, 31",
+        "page": 12,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=12",
+        "proofread": true,
+        "comments": [
+          "Vedr. Suhsanna, Jan D&#039; Wints hustru: andre kilder har Luckers.",
+          "Kommentarer"
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "32",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Margrete Grehs",
+      "Christians Wads",
+      "Thomas Swain",
+      "Margreta Swain",
+      "Sara Swain"
+    ],
+    "roles": [
+      "Thomas Suains enke, Planterinde",
+      "barn"
+    ],
+    "pages": [
+      13
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-13-32-141",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "32",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Margrete Grehs",
+        "residentRole": "Thomas Suains enke, Planterinde",
+        "residentRaw": "Margrete Grehs, Thomas Suains enke, Planterinde, 32",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-32-142",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "32",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Christians Wads",
+        "residentRole": "barn",
+        "residentRaw": "Christians Wads, barn, 32",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-32-143",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "32",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Thomas Swain",
+        "residentRole": "barn",
+        "residentRaw": "Thomas Swain, barn, 32",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-32-144",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "32",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Margreta Swain",
+        "residentRole": "barn",
+        "residentRaw": "Margreta Swain, barn, 32",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-32-145",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "32",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Sara Swain",
+        "residentRole": "barn",
+        "residentRaw": "Sara Swain, barn, 32",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "33",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Thio Secia Samans",
+      "Gilbare Saman",
+      "Magdelena"
+    ],
+    "roles": [
+      "Andrius Samans enke, Planterinde",
+      "søn",
+      "datter"
+    ],
+    "pages": [
+      13
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-13-33-146",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "33",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Thio Secia Samans",
+        "residentRole": "Andrius Samans enke, Planterinde",
+        "residentRaw": "Thio Secia Samans, Andrius Samans enke, Planterinde, 33",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-33-147",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "33",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Gilbare Saman",
+        "residentRole": "søn",
+        "residentRaw": "Gilbare Saman, søn, 33",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-33-148",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "33",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Magdelena",
+        "residentRole": "datter",
+        "residentRaw": "Magdelena, datter, 33",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  },
+  {
+    "plantationNumber": "34",
+    "years": [
+      "1688"
+    ],
+    "names": [
+      "Hendrick Jansen",
+      "Janicke Saman",
+      "Sussana Janckis",
+      "Pieter D&#039; Clar"
+    ],
+    "roles": [
+      "Planter",
+      "hustru",
+      "barn"
+    ],
+    "pages": [
+      13
+    ],
+    "termsOfInterest": [],
+    "records": [
+      {
+        "id": "st-thomas-landlist-13-34-149",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "34",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Hendrick Jansen",
+        "residentRole": "Planter",
+        "residentRaw": "Hendrick Jansen, Planter, 34",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-34-150",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "34",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Janicke Saman",
+        "residentRole": "hustru",
+        "residentRaw": "Janicke Saman, hustru, 34",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-34-151",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "34",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Sussana Janckis",
+        "residentRole": "barn",
+        "residentRaw": "Sussana Janckis, barn, 34",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      },
+      {
+        "id": "st-thomas-landlist-13-34-152",
+        "year": "1688",
+        "islandName": "St. Thomas",
+        "plantationNumber": "34",
+        "plantationNumberLine": "32, 33, 34",
+        "residentName": "Pieter D&#039; Clar",
+        "residentRole": "",
+        "residentRaw": "Pieter D&#039; Clar,34",
+        "page": 13,
+        "url": "https://cs.rigsarkivet.dk/picture/view-origin-values/39278711?picture_series_id=1514&page=13",
+        "proofread": true,
+        "comments": [
+          "Anden tekst",
+          "Saman er En Encke med it Liedet Barn."
+        ],
+        "termsOfInterest": []
+      }
+    ]
+  }
+] satisfies StThomasLandListNumberIndex1688_1718[];
+
+export function getStThomasLandListRecordsByNumber(plantationNumber: string | number) {
+  const target = String(plantationNumber);
+
+  return stThomasLandListRecords1688_1718.filter(
+    (record) => record.plantationNumber === target,
+  );
+}
+
+export function searchStThomasLandListRecords(query: string) {
+  const target = query.toLowerCase();
+
+  return stThomasLandListRecords1688_1718.filter((record) =>
+    [
+      record.plantationNumber,
+      record.plantationNumberLine,
+      record.residentName,
+      record.residentRole,
+      record.residentRaw,
+      ...record.comments,
+      ...record.termsOfInterest,
+    ]
+      .join(" ")
+      .toLowerCase()
+      .includes(target),
+  );
+}

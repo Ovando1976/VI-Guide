@@ -1,0 +1,117 @@
+# St. Thomas Landslister Transcription Queue
+
+The Rigsarkivet crowdsourcing pages expose structured transcription fields for only part of the series.
+
+Pages needing image transcription: 682
+
+## First 100 pages needing transcription
+
+- Page 1, picture unknown — 
+- Page 2, picture unknown — 
+- Page 14, picture unknown — 
+- Page 15, picture unknown — 
+- Page 16, picture unknown — 
+- Page 17, picture unknown — 
+- Page 18, picture unknown — 
+- Page 19, picture unknown — 
+- Page 20, picture unknown — 
+- Page 21, picture unknown — 
+- Page 22, picture unknown — 
+- Page 23, picture unknown — 
+- Page 24, picture unknown — 
+- Page 25, picture unknown — 
+- Page 26, picture unknown — 
+- Page 27, picture unknown — 
+- Page 28, picture unknown — 
+- Page 29, picture unknown — 
+- Page 30, picture unknown — 
+- Page 31, picture unknown — 
+- Page 32, picture unknown — 
+- Page 33, picture unknown — 
+- Page 34, picture unknown — 
+- Page 35, picture unknown — 
+- Page 36, picture unknown — 
+- Page 37, picture unknown — 
+- Page 38, picture unknown — 
+- Page 39, picture unknown — 
+- Page 40, picture unknown — 
+- Page 41, picture unknown — 
+- Page 42, picture unknown — 
+- Page 43, picture unknown — 
+- Page 44, picture unknown — 
+- Page 45, picture unknown — 
+- Page 46, picture unknown — 
+- Page 47, picture unknown — 
+- Page 48, picture unknown — 
+- Page 49, picture unknown — 
+- Page 50, picture unknown — 
+- Page 51, picture unknown — 
+- Page 52, picture unknown — 
+- Page 53, picture unknown — 
+- Page 54, picture unknown — 
+- Page 55, picture unknown — 
+- Page 56, picture unknown — 
+- Page 57, picture unknown — 
+- Page 58, picture unknown — 
+- Page 59, picture unknown — 
+- Page 60, picture unknown — 
+- Page 61, picture unknown — 
+- Page 62, picture unknown — 
+- Page 63, picture unknown — 
+- Page 64, picture unknown — 
+- Page 65, picture unknown — 
+- Page 66, picture unknown — 
+- Page 67, picture unknown — 
+- Page 68, picture unknown — 
+- Page 69, picture unknown — 
+- Page 70, picture unknown — 
+- Page 71, picture unknown — 
+- Page 72, picture unknown — 
+- Page 73, picture unknown — 
+- Page 74, picture unknown — 
+- Page 75, picture unknown — 
+- Page 76, picture unknown — 
+- Page 77, picture unknown — 
+- Page 78, picture unknown — 
+- Page 79, picture unknown — 
+- Page 80, picture unknown — 
+- Page 81, picture unknown — 
+- Page 82, picture unknown — 
+- Page 83, picture unknown — 
+- Page 84, picture unknown — 
+- Page 85, picture unknown — 
+- Page 86, picture unknown — 
+- Page 87, picture unknown — 
+- Page 88, picture unknown — 
+- Page 89, picture unknown — 
+- Page 90, picture unknown — 
+- Page 91, picture unknown — 
+- Page 92, picture unknown — 
+- Page 93, picture unknown — 
+- Page 94, picture unknown — 
+- Page 95, picture unknown — 
+- Page 96, picture unknown — 
+- Page 97, picture unknown — 
+- Page 98, picture unknown — 
+- Page 99, picture unknown — 
+- Page 100, picture unknown — 
+- Page 101, picture unknown — 
+- Page 102, picture unknown — 
+- Page 103, picture unknown — 
+- Page 104, picture unknown — 
+- Page 105, picture unknown — 
+- Page 106, picture unknown — 
+- Page 107, picture unknown — 
+- Page 108, picture unknown — 
+- Page 109, picture unknown — 
+- Page 110, picture unknown — 
+- Page 111, picture unknown — 
+
+## Target fields
+
+- Årstal
+- Øens navn
+- Gadenavn eller plantagenavn og matrikelnr.
+- Beboere / Beboer
+- Anden tekst
+- Kommentarer
