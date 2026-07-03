@@ -1,48 +1,40 @@
-// src/pages/estates/EstateHistoryPage.tsx
 import { useMemo } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
-  ArrowLeft,
   Archive,
-  Compass,
-  History,
+  ChevronLeft,
+  Landmark,
+  LibraryBig,
   MapPinned,
+  MessageCircle,
   Route,
-  type LucideIcon,
+  ScrollText,
 } from "lucide-react";
 
-import { estates } from "../../data/estates";
-import { estateHistories } from "../../data/estateHistories";
-import { geographicIndexItems, type GeographicIndexItem } from "../../data/core/geographicIndex";
-import { EstateExplorerMap } from "../../features/estates/components/estate-explorer-map";
-import type { IslandCode } from "../../types";
-import type { IslandCode as GeographyIslandCode } from "../../types";
+import { geographicIndexItems } from "../../data/core/geographicIndex";
+import { getHistoryForHistoricSite } from "../../data/history/historyLinks";
+import { historySourceLine } from "../../data/history/normalizeHistoryRecord";
+import { getEstateHistoryDescription } from "../../data/canonical/estateHistoryDescriptions";
+import { getManualEstateHistoryOverride } from "../../data/canonical/manualEstateHistoryOverrides";
+import { getSixtoEstateExtract } from "../../data/history/sources/sixtoTimeAndIExtracts";
+import { getSixtoEstateAcreage1902 } from "../../data/history/sources/sixtoEstateAcreage1902";
+import { getEstateSourceIndexEntry } from "../../data/canonical/estateSourceIndex";
+import { getSixtoEstateNarrative1902 } from "../../data/history/sources/sixtoEstateNarratives1902";
 
-type EstateLike = (typeof estates)[number];
-type EstateMapIsland = IslandCode | GeographyIslandCode | "all";
 type LooseRecord = Record<string, unknown>;
 
 function clean(value: unknown): string {
-  return String(value ?? "")
-    .replace(/^Estate\s+/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  return String(value ?? "").replace(/\s+/g, " ").trim();
 }
 
 function normalize(value: unknown): string {
   return clean(value)
     .toLowerCase()
+    .replace(/^estate\s+/i, "")
     .replace(/['’]/g, "")
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
-}
-
-function compactId(value: unknown): string {
-  return String(value ?? "")
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]/g, "");
 }
 
 function getLoose(value: unknown, key: string): unknown {
@@ -50,124 +42,95 @@ function getLoose(value: unknown, key: string): unknown {
 }
 
 function safeNumber(value: unknown): number | null {
-  return typeof value === "number" && Number.isFinite(value) ? value : null;
+  const parsed = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
 }
 
-function isLooseMatch(a: unknown, b: unknown): boolean {
-  const an = normalize(a);
-  const bn = normalize(b);
-  const ac = compactId(a);
-  const bc = compactId(b);
-
-  if (!an || !bn || !ac || !bc) return false;
-
-  return (
-    an === bn ||
-    ac === bc ||
-    an.includes(bn) ||
-    bn.includes(an) ||
-    ac.includes(bc) ||
-    bc.includes(ac)
-  );
-}
-
-function getEstateCandidates(estate: EstateLike): unknown[] {
-  return [
-    getLoose(estate, "id"),
-    getLoose(estate, "estateId"),
-    getLoose(estate, "geoid"),
-    getLoose(estate, "name"),
-    getLoose(estate, "normalizedName"),
-    getLoose(estate, "quarter"),
-    getLoose(estate, "quarterGroup"),
-    ...(Array.isArray(getLoose(estate, "aliases"))
-      ? (getLoose(estate, "aliases") as unknown[])
-      : []),
-  ];
-}
-
-function getIndexCandidates(item: GeographicIndexItem): unknown[] {
-  return [
-    getLoose(item, "id"),
-    getLoose(item, "estateId"),
-    getLoose(item, "geoid"),
-    getLoose(item, "name"),
-    getLoose(item, "estateName"),
-    getLoose(item, "searchText"),
-    getLoose(item, "quarter"),
-    getLoose(item, "quarterGroup"),
-  ];
-}
-
-function findEstateFromIndex(rawParam: string): EstateLike | undefined {
-  const indexMatch = geographicIndexItems.find((item) => {
-    if (getLoose(item, "source") !== "estate") return false;
-
-    return getIndexCandidates(item).some((value) =>
-      isLooseMatch(value, rawParam),
-    );
-  });
-
-  if (!indexMatch) return undefined;
-
-  return estates.find((estate) =>
-    getEstateCandidates(estate).some((estateValue) =>
-      getIndexCandidates(indexMatch).some((indexValue) =>
-        isLooseMatch(estateValue, indexValue),
-      ),
-    ),
-  );
-}
-
-function findEstateByParam(rawParam: string): EstateLike | undefined {
-  const decoded = decodeURIComponent(rawParam);
-
-  const directMatch = estates.find((estate) =>
-    getEstateCandidates(estate).some((value) => isLooseMatch(value, decoded)),
-  );
-
-  return directMatch ?? findEstateFromIndex(decoded);
-}
-function toEstateMapIsland(
-  value: string | null | undefined,
-  fallback: string,
-): EstateMapIsland {
-  const candidate = String(value || fallback || "").toLowerCase();
-
-  if (candidate === "stt" || candidate === "st_thomas") return "st_thomas";
-  if (candidate === "stj" || candidate === "st_john") return "st_john";
-  if (candidate === "stx" || candidate === "st_croix") return "st_croix";
-  if (candidate === "wat" || candidate === "water_island") return "water_island";
-
-  return "st_thomas";
-}
-
-
-function islandName(value: unknown): string {
-  const key = String(value ?? "").toLowerCase();
-
-  if (key === "stt" || key === "st_thomas") return "St. Thomas";
-  if (key === "stj" || key === "st_john") return "St. John";
-  if (key === "stx" || key === "st_croix") return "St. Croix";
-  if (key === "wat" || key === "water_island") return "Water Island";
-
+function islandLabel(value?: string | null): string {
+  if (value === "st_thomas" || value === "stt") return "St. Thomas";
+  if (value === "st_john" || value === "stj") return "St. John";
+  if (value === "st_croix" || value === "stx") return "St. Croix";
+  if (value === "water_island" || value === "wat") return "Water Island";
   return "U.S. Virgin Islands";
 }
 
-function getLat(estate: EstateLike): number | null {
+function readCoordinates(record: LooseRecord) {
+  const coords = getLoose(record, "coordinates") || getLoose(record, "coords") || getLoose(record, "centroid");
+
+  if (Array.isArray(coords) && coords.length >= 2) {
+    const a = safeNumber(coords[0]);
+    const b = safeNumber(coords[1]);
+
+    if (a !== null && b !== null) {
+      if (a < -40 && b > 0) return { lng: a, lat: b };
+      if (b < -40 && a > 0) return { lat: a, lng: b };
+    }
+  }
+
+  if (coords && typeof coords === "object") {
+    const obj = coords as LooseRecord;
+    const lat = safeNumber(obj.lat ?? obj.latitude);
+    const lng = safeNumber(obj.lng ?? obj.lon ?? obj.longitude);
+
+    if (lat !== null && lng !== null) return { lat, lng };
+  }
+
+  return null;
+}
+
+function recordName(record: LooseRecord): string {
   return (
-    safeNumber(getLoose(getLoose(estate, "centroid"), "lat")) ??
-    safeNumber(getLoose(getLoose(estate, "coordinates"), "lat")) ??
-    safeNumber((getLoose(estate, "bbox") as unknown[] | undefined)?.[1])
+    clean(getLoose(record, "name")) ||
+    clean(getLoose(record, "title")) ||
+    clean(getLoose(record, "label")) ||
+    clean(getLoose(record, "estate")) ||
+    "Unnamed Estate"
   );
 }
 
-function getLng(estate: EstateLike): number | null {
-  return (
-    safeNumber(getLoose(getLoose(estate, "centroid"), "lng")) ??
-    safeNumber(getLoose(getLoose(estate, "coordinates"), "lng")) ??
-    safeNumber((getLoose(estate, "bbox") as unknown[] | undefined)?.[0])
-  );
+function findEstate(geoid: string, context?: string | null) {
+  const decoded = decodeURIComponent(geoid || "");
+  const target = normalize(decoded);
+  const contextTarget = normalize(context || "");
+
+  return geographicIndexItems.find((item) => {
+    const record = item as LooseRecord;
+    const type = normalize(getLoose(record, "type"));
+    const source = normalize(getLoose(record, "source"));
+
+    const isEstate =
+      type === "estate" ||
+      source === "estate" ||
+      clean(getLoose(record, "estate")) !== "";
+
+    if (!isEstate) return false;
+
+    const candidates = [
+      getLoose(record, "id"),
+      getLoose(record, "geoid"),
+      getLoose(record, "slug"),
+      getLoose(record, "name"),
+      getLoose(record, "title"),
+      getLoose(record, "label"),
+      getLoose(record, "estate"),
+    ].map(normalize);
+
+    return candidates.includes(target) || Boolean(contextTarget && candidates.includes(contextTarget));
+  }) as LooseRecord | undefined;
+}
+
+function findEstateHistory(title: string, id: string) {
+  const direct = getHistoryForHistoricSite({
+    name: title,
+    siteId: id,
+  });
+
+  if (direct.length > 0) return direct;
+
+  return getHistoryForHistoricSite({
+    name: title.replace(/^Estate\s+/i, ""),
+    siteId: id,
+  });
 }
 
 export default function EstateHistoryPage() {
@@ -175,275 +138,339 @@ export default function EstateHistoryPage() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
 
-  const estate = useMemo(() => findEstateByParam(geoid), [geoid]);
-
-  if (!estate) {
-    return (
-      <main className="min-h-screen bg-stone-50 p-6 text-stone-950">
-        <h1 className="text-3xl font-black">Estate not found</h1>
-
-        <p className="mt-3 rounded-2xl bg-white p-4 text-sm text-stone-600 shadow">
-          Requested estate: <span className="font-black text-stone-950">{decodeURIComponent(geoid || "missing")}</span>
-        </p>
-
-        <button
-          type="button"
-          onClick={() => navigate("/map")}
-          className="mt-4 rounded-2xl bg-stone-950 px-5 py-3 font-bold text-white"
-        >
-          Back to Map
-        </button>
-      </main>
-    );
-  }
-
-  const estateId = String(
-    getLoose(estate, "geoid") ||
-      getLoose(estate, "estateId") ||
-      getLoose(estate, "id") ||
-      normalize(getLoose(estate, "name")),
+  const estate = useMemo(
+    () => findEstate(geoid, params.get("context")),
+    [geoid, params],
   );
 
-  const history = estateHistories.find((item) =>
-    [item.geoid, item.sourceName, item.name].some((value) =>
-      isLooseMatch(value, estateId) || isLooseMatch(value, getLoose(estate, "name")),
-    ),
+  const fallbackTitle = clean(params.get("context")) || decodeURIComponent(geoid || "Estate");
+  const title = estate ? recordName(estate) : fallbackTitle;
+  const estateId = clean(getLoose(estate, "id")) || clean(getLoose(estate, "geoid")) || decodeURIComponent(geoid || title);
+  const island = clean(params.get("island")) || clean(getLoose(estate, "island")) || "st_thomas";
+  const quarter =
+    clean(params.get("quarter")) ||
+    clean(getLoose(estate, "quarter")) ||
+    clean(getLoose(estate, "quarterGroup")) ||
+    "Unknown quarter";
+  const coords = estate ? readCoordinates(estate) : null;
+
+  const historyRecords = useMemo(
+    () => findEstateHistory(title, estateId).slice(0, 18),
+    [title, estateId],
   );
 
-  const title = clean(getLoose(estate, "name")) || "Unnamed Estate";
-  const island = String(getLoose(estate, "island") || getLoose(estate, "islandCode") || "st_thomas");
-  const selectedIsland = toEstateMapIsland(params.get("island") || island, island);
-  const islandLabel = islandName(island);
-  const quarter = clean(getLoose(estate, "quarter")) || clean(getLoose(estate, "quarterGroup")) || "Unknown Quarter";
+  const estateDescription =
+    getManualEstateHistoryOverride(estateId) ||
+    getManualEstateHistoryOverride(title) ||
+    getManualEstateHistoryOverride(fallbackTitle) ||
+    getEstateHistoryDescription(estateId) ||
+    getEstateHistoryDescription(title) ||
+    getEstateHistoryDescription(fallbackTitle);
 
-  const lat = getLat(estate);
-  const lng = getLng(estate);
-  const hasCoords = lat !== null && lng !== null;
+  const sixtoExtract =
+    getSixtoEstateExtract(title) ||
+    getSixtoEstateExtract(fallbackTitle) ||
+    getSixtoEstateExtract(title.replace(/^Estate\\s+/i, '')) ||
+    null;
+
+  const sixtoAcreage =
+    getSixtoEstateAcreage1902(title) ||
+    getSixtoEstateAcreage1902(fallbackTitle) ||
+    getSixtoEstateAcreage1902(title.replace(/^Estate\\s+/i, '')) ||
+    null;
+
+  const sixtoNarrative =
+    getSixtoEstateNarrative1902(title) ||
+    getSixtoEstateNarrative1902(fallbackTitle) ||
+    getSixtoEstateNarrative1902(estateId) ||
+    getSixtoEstateNarrative1902(title.replace(/^Estate\\s+/i, '')) ||
+    null;
+
+  const estateSourceIndex =
+    getEstateSourceIndexEntry(estateId) ||
+    getEstateSourceIndexEntry(title) ||
+    getEstateSourceIndexEntry(fallbackTitle) ||
+    null;
+
   const encodedTitle = encodeURIComponent(title);
-  const encodedId = encodeURIComponent(estateId);
-
-  const summary =
-    history?.summary ||
-    `${title} is part of the historic estate geography of the U.S. Virgin Islands. Historical records for this estate are still being expanded from maps, census records, plantation documents, Danish archives, and local historical sources.`;
+  const encodedId = encodeURIComponent(estateId || title);
 
   return (
-    <main className="min-h-screen bg-stone-50 px-5 py-6 pb-32 text-stone-950">
-      <button
-        type="button"
-        onClick={() => navigate(-1)}
-        className="mb-5 flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-black shadow"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back
-      </button>
+    <main className="min-h-screen bg-[#05070d] px-5 py-8 pb-[calc(120px+env(safe-area-inset-bottom))] text-white">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.18),transparent_30%),radial-gradient(circle_at_80%_10%,rgba(16,185,129,0.12),transparent_30%),linear-gradient(to_bottom,#05070d,#111827_50%,#05070d)]" />
 
-      <section className="rounded-[2rem] bg-stone-950 p-6 text-white shadow-2xl">
-        <p className="text-[10px] font-black uppercase tracking-[0.35em] text-emerald-300">
-          Estate History
-        </p>
+      <div className="relative mx-auto max-w-7xl">
+        <button
+          type="button"
+          onClick={() => navigate(`/map?island=${island}`)}
+          className="mb-5 inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/10 px-5 py-3 text-sm font-black shadow-xl backdrop-blur-xl transition hover:bg-white/15"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Back to Atlas
+        </button>
 
-        <h1 className="mt-3 text-5xl font-black leading-tight">{title}</h1>
+        <section className="overflow-hidden rounded-[2.75rem] border border-white/10 bg-white/[0.06] shadow-2xl backdrop-blur-2xl">
+          <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="p-8 sm:p-10">
+              <p className="text-[10px] font-black uppercase tracking-[0.45em] text-amber-300">
+                Estate History
+              </p>
 
-        <p className="mt-3 text-sm font-bold text-stone-300">
-          {quarter} · {islandLabel}
-        </p>
-      </section>
+              <h1 className="mt-6 font-serif text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-7xl">
+                {title}
+              </h1>
 
-      <section className="mt-5 overflow-hidden rounded-[2rem] bg-white shadow-xl">
-        <div className="p-5">
-          <h2 className="text-2xl font-black">Estate Location</h2>
-          <p className="mt-2 text-sm text-stone-600">
-            Explore the estate boundary and surrounding area.
-          </p>
-        </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Pill label={islandLabel(island)} />
+                <Pill label={quarter} />
+                <Pill label={`ID ${estateId || "pending"}`} />
+                <Pill label={`${historyRecords.length} linked records`} />
+              </div>
 
-        <EstateExplorerMap
-          selectedIsland={selectedIsland}
-          selectedEstateGeoid={estateId}
-        />
-      </section>
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
+                This dedicated estate history page gathers the historical context,
+                archive links, map context, source records, and AI routes for the
+                selected estate.
+              </p>
 
-      <section className="mt-5 grid grid-cols-2 gap-3">
-        <FactCard label="Island" value={islandLabel} />
-        <FactCard label="Quarter" value={quarter} />
-        <FactCard label="Estate ID" value={estateId} />
-        <FactCard
-          label="Coordinates"
-          value={hasCoords ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : "Not available"}
-        />
-      </section>
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                <DarkMetric label="Island" value={islandLabel(island)} />
+                <DarkMetric label="Quarter" value={quarter} />
+                <DarkMetric
+                  label="Coordinates"
+                  value={coords ? `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}` : "Needed"}
+                />
+              </div>
+            </div>
 
-      <section className="mt-5 rounded-[2rem] bg-white p-5 shadow-xl">
-        <div className="flex items-start gap-3">
-          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-800">
-            <History className="h-6 w-6" />
+            <div className="grid gap-4 bg-[#020617]/60 p-5">
+              <div className="rounded-[2rem] border border-white/10 bg-black/40 p-6">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-amber-300 text-slate-950">
+                  <Landmark className="h-7 w-7" />
+                </div>
+
+                <h2 className="mt-5 font-serif text-3xl font-black">
+                  Estate history card
+                </h2>
+
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
+                  The atlas History action now opens this dedicated estate page
+                  instead of dropping the user into the generic history hub.
+                </p>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <Action
+                    label="Archives"
+                    icon={Archive}
+                    onClick={() => navigate(`/estates/${encodedId}/archives?island=${island}&context=${encodedTitle}`)}
+                  />
+                  <Action
+                    label="Ask AI"
+                    icon={MessageCircle}
+                    onClick={() => navigate(`/concierge?island=${island}&context=${encodedTitle}&type=estate-history`)}
+                  />
+                  <Action
+                    label="Route"
+                    icon={Route}
+                    onClick={() =>
+                      navigate(`/mobility?island=${island}&destination=${encodedTitle}${coords ? `&lat=${coords.lat}&lng=${coords.lng}` : ""}`)
+                    }
+                  />
+                  <Action
+                    label="Map"
+                    icon={MapPinned}
+                    onClick={() => navigate(`/map?island=${island}&context=${encodedTitle}`)}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="min-w-0 flex-1">
-            <h2 className="text-2xl font-black">Historical Profile</h2>
 
-            <p className="mt-3 text-sm leading-relaxed text-stone-600">
-              {summary}
-            </p>
+        {sixtoAcreage ? (
+          <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-800">
+                <LibraryBig className="h-6 w-6" />
+              </div>
 
-            {history?.source ? (
-              <div className="mt-4 rounded-2xl bg-emerald-50 p-3">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-emerald-700">
-                  Source
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-700">
+                  Sixto 1902 Estate Table
                 </p>
-
-                <p className="mt-1 text-sm font-bold text-stone-700">
-                  {history.source}
-                </p>
-
-                {history.sourceName ? (
-                  <p className="mt-1 text-xs text-stone-500">
-                    Matched entry: {history.sourceName}
-                  </p>
-                ) : null}
-
-                {typeof history.confidence === "number" && history.confidence > 0 ? (
-                  <p className="mt-1 text-xs text-stone-500">
-                    Match confidence: {history.confidence}
-                  </p>
-                ) : null}
-
-                <p
-                  className={`mt-3 inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${
-                    history.verified
-                      ? "bg-emerald-100 text-emerald-900"
-                      : "bg-amber-100 text-amber-900"
-                  }`}
-                >
-                  {history.publicLabel || (history.verified ? "Verified" : "Needs review")}
+                <h2 className="mt-1 font-serif text-3xl font-black">
+                  {sixtoAcreage.name}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                  Adolph Sixto listed this estate in his “Estates and Acreage of St. Thomas”
+                  table on PDF page {sixtoAcreage.sourcePage}.
                 </p>
               </div>
+            </div>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <Info label="Sixto acreage" value={sixtoAcreage.acres !== null ? `${sixtoAcreage.acres} acres` : "Unclear"} />
+              <Info label="Sixto category" value={sixtoAcreage.category.replaceAll("-", " ")} />
+              <Info label="Source page" value={`PDF page ${sixtoAcreage.sourcePage}`} />
+            </div>
+
+            {sixtoAcreage.note ? (
+              <p className="mt-5 rounded-3xl bg-amber-50 p-5 text-sm font-bold leading-relaxed text-amber-900">
+                {sixtoAcreage.note}
+              </p>
             ) : null}
-          </div>
-        </div>
-
-        <div className="mt-5 grid gap-3 text-sm">
-          <Info label="Estate" value={title} />
-          <Info label="Quarter" value={quarter} />
-          <Info label="Island" value={islandLabel} />
-          <Info label="Estate ID" value={estateId} />
-        </div>
-      </section>
-
-      <section className="mt-5 rounded-[2rem] bg-white p-5 shadow-xl">
-        <h2 className="text-2xl font-black">Why this estate matters</h2>
-
-        <div className="mt-4 grid gap-3">
-          <StoryCard
-            icon={Compass}
-            title="Geography"
-            text={`${title} belongs to ${quarter} on ${islandLabel}. Estate boundaries help explain older roads, neighborhoods, place names, and local movement patterns.`}
-          />
-
-          <StoryCard
-            icon={Archive}
-            title="Archive pathway"
-            text="The archive gallery can connect this estate to maps, census records, plantation-era documents, historic photographs, and Danish West Indies records as the database grows."
-          />
-
-          <StoryCard
-            icon={MapPinned}
-            title="Modern use"
-            text="Visitors can use this estate record to plan routes, understand nearby landmarks, explore historical context, and connect map geography with real island experience."
-          />
-        </div>
-      </section>
-
-      <section className="mt-5 rounded-[2rem] bg-white p-5 shadow-xl">
-        <h2 className="text-2xl font-black">What to explore next</h2>
-
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <button
-            type="button"
-            onClick={() =>
-              navigate(
-                `/history/knowledge?estate=${encodedId}&island=${selectedIsland}&context=${encodedTitle}`,
-              )
-            }
-            className="rounded-2xl bg-amber-100 p-4 text-xs font-black uppercase tracking-[0.16em] text-amber-950"
-          >
-            <Archive className="mx-auto mb-2 h-5 w-5" />
-            Archives
-          </button>
-
-          <button
-            type="button"
-            onClick={() =>
-              navigate(
-                `/mobility?island=${selectedIsland}&destination=${encodedTitle}${
-                  hasCoords ? `&lat=${lat}&lng=${lng}` : ""
-                }`,
-              )
-            }
-            className="rounded-2xl bg-emerald-100 p-4 text-xs font-black uppercase tracking-[0.16em] text-emerald-950"
-          >
-            <Route className="mx-auto mb-2 h-5 w-5" />
-            Plan Ride
-          </button>
-        </div>
-
-        {hasCoords ? (
-          <button
-            type="button"
-            onClick={() =>
-              window.open(
-                `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
-                "_blank",
-                "noopener,noreferrer",
-              )
-            }
-            className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-sky-100 px-4 py-4 text-xs font-black uppercase tracking-[0.16em] text-sky-950"
-          >
-            <MapPinned className="h-4 w-4" />
-            Open Directions
-          </button>
+          </section>
         ) : null}
-      </section>
+
+        {sixtoExtract ? (
+          <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-800">
+                <LibraryBig className="h-6 w-6" />
+              </div>
+
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-700">
+                  Primary Source
+                </p>
+                <h2 className="mt-1 font-serif text-3xl font-black">
+                  Adolph Sixto: Time and I
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                  Matched estate reference from Adolph Sixto&apos;s early twentieth-century account.
+                  {sixtoExtract.pages.length ? ` PDF page${sixtoExtract.pages.length === 1 ? "" : "s"}: ${sixtoExtract.pages.join(", ")}.` : ""}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-4">
+              {sixtoExtract.excerpts.slice(0, 3).map((excerpt) => (
+                <blockquote
+                  key={excerpt}
+                  className="rounded-3xl border-l-4 border-amber-400 bg-stone-50 p-5 text-sm leading-relaxed text-stone-700"
+                >
+                  {excerpt}
+                </blockquote>
+              ))}
+            </div>
+
+            <p className="mt-4 text-xs font-bold text-stone-400">
+              Source: Adolph Sixto, Time and I; or, Looking Forward, San Juan News, c. 1902.
+            </p>
+          </section>
+        ) : null}
+
+
+        <section className="mt-6 rounded-[2rem] bg-white p-6 text-stone-950 shadow-xl">
+          <div className="flex items-start gap-4">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-800">
+              <ScrollText className="h-6 w-6" />
+            </div>
+
+            <div>
+              <h2 className="font-serif text-3xl font-black">
+                Linked Estate History
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                These records are pulled from the VI Guide historical knowledge base
+                using the estate name and identifier.
+              </p>
+            </div>
+          </div>
+
+          {historyRecords.length > 0 ? (
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {historyRecords.map((record) => (
+                <article key={record.id} className="rounded-3xl border border-stone-200 bg-stone-50 p-5">
+                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-700">
+                    {record.dateRange || record.type}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl font-black">
+                    {record.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-stone-700">
+                    {record.summary}
+                  </p>
+                  <p className="mt-4 text-xs font-bold text-stone-400">
+                    {historySourceLine(record)}
+                  </p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-6 rounded-3xl border border-dashed border-stone-300 bg-stone-50 p-6">
+              <h3 className="font-serif text-2xl font-black">
+                No linked records yet
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                This estate route is ready. Next we can improve matching between
+                estate names, Danish archive records, dictionary entries, and
+                generated historical records.
+              </p>
+            </div>
+          )}
+        </section>
+
+        <section className="mt-6 grid gap-3 md:grid-cols-3">
+          <Info label="Estate ID" value={estateId || "Unavailable"} />
+          <Info label="Island" value={islandLabel(island)} />
+          <Info label="Quarter" value={quarter} />
+        </section>
+      </div>
     </main>
   );
 }
 
-function FactCard({ label, value }: { label: string; value: string }) {
+function Pill({ label }: { label: string }) {
   return (
-    <div className="rounded-[1.5rem] bg-white p-4 shadow-xl">
-      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700">
+    <span className="rounded-full bg-white/15 px-4 py-2 text-xs font-black text-white/85">
+      {label}
+    </span>
+  );
+}
+
+function DarkMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/[0.05] p-4">
+      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-300">
         {label}
       </p>
-      <p className="mt-2 break-words text-sm font-black text-stone-900">{value}</p>
+      <p className="mt-2 break-words text-sm font-black text-white">{value}</p>
     </div>
+  );
+}
+
+function Action({
+  label,
+  icon: Icon,
+  onClick,
+}: {
+  label: string;
+  icon: typeof Archive;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="rounded-2xl bg-white p-4 text-left text-stone-950 shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl"
+    >
+      <Icon className="h-5 w-5 text-amber-700" />
+      <p className="mt-3 text-xs font-black uppercase tracking-[0.18em]">
+        {label}
+      </p>
+    </button>
   );
 }
 
 function Info({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-stone-50 p-4">
-      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700">
+    <div className="rounded-3xl bg-white p-5 text-stone-950 shadow-xl">
+      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-700">
         {label}
       </p>
-      <p className="mt-1 break-words font-bold text-stone-800">{value}</p>
-    </div>
-  );
-}
-
-function StoryCard({
-  icon: Icon,
-  title,
-  text,
-}: {
-  icon: LucideIcon;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="rounded-2xl bg-stone-50 p-4">
-      <Icon className="h-5 w-5 text-emerald-700" />
-      <h3 className="mt-3 text-base font-black">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-stone-600">{text}</p>
+      <p className="mt-2 break-words text-sm font-black">{value}</p>
     </div>
   );
 }
