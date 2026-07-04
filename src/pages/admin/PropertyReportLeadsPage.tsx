@@ -8,10 +8,14 @@ import {
   CreditCard,
   Crown,
   ExternalLink,
+  FileText,
   Mail,
+  PackageCheck,
   RefreshCw,
+  Save,
   Search,
   ShieldCheck,
+  StickyNote,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -45,7 +49,16 @@ type LeadRecord = {
   status?: LeadStatus | string;
   priority?: string;
   leadSummary?: string;
+  reportUrl?: string;
+  internalNotes?: string;
+  deliveredAt?: any;
+  updatedAt?: any;
   createdAt?: any;
+};
+
+type LeadDeliveryDraft = {
+  reportUrl: string;
+  internalNotes: string;
 };
 
 const STATUS_OPTIONS: { value: LeadStatus; label: string }[] = [
@@ -189,6 +202,7 @@ export default function PropertyReportLeadsPage() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState("");
+  const [deliveryDrafts, setDeliveryDrafts] = useState<Record<string, LeadDeliveryDraft>>({});
   const [error, setError] = useState("");
   const hasAnyPaymentLink = Object.values(PAYMENT_LINKS).some(Boolean);
 
@@ -240,6 +254,8 @@ export default function PropertyReportLeadsPage() {
         lead.tier,
         lead.status,
         lead.priority,
+        lead.reportUrl,
+        lead.internalNotes,
         lead.notes,
       ]
         .join(" ")
@@ -291,6 +307,98 @@ export default function PropertyReportLeadsPage() {
     } catch (err) {
       console.error("Failed to update lead status", err);
       setError("Could not update lead status. Check Firestore update rules.");
+    } finally {
+      setUpdatingId("");
+    }
+  }
+
+
+  function getDeliveryDraft(lead: LeadRecord): LeadDeliveryDraft {
+    return (
+      deliveryDrafts[lead.id] || {
+        reportUrl: clean(lead.reportUrl, ""),
+        internalNotes: clean(lead.internalNotes, ""),
+      }
+    );
+  }
+
+  function updateDeliveryDraft(
+    leadId: string,
+    field: keyof LeadDeliveryDraft,
+    value: string,
+  ) {
+    setDeliveryDrafts((current) => ({
+      ...current,
+      [leadId]: {
+        reportUrl: current[leadId]?.reportUrl || "",
+        internalNotes: current[leadId]?.internalNotes || "",
+        [field]: value,
+      },
+    }));
+  }
+
+  async function saveDeliveryWorkspace(lead: LeadRecord) {
+    const draft = getDeliveryDraft(lead);
+    const reportUrl = draft.reportUrl.trim();
+    const internalNotes = draft.internalNotes.trim();
+
+    setUpdatingId(lead.id);
+    setError("");
+
+    try {
+      await updateDoc(doc(db, "propertyReportLeads", lead.id), {
+        reportUrl,
+        internalNotes,
+        updatedAt: serverTimestamp(),
+      });
+
+      setLeads((current) =>
+        current.map((item) =>
+          item.id === lead.id ? { ...item, reportUrl, internalNotes } : item,
+        ),
+      );
+    } catch (err) {
+      console.error("Failed to save delivery workspace", err);
+      setError("Could not save delivery details. Check Firestore update rules.");
+    } finally {
+      setUpdatingId("");
+    }
+  }
+
+  async function markLeadDelivered(lead: LeadRecord) {
+    const draft = getDeliveryDraft(lead);
+    const reportUrl = draft.reportUrl.trim();
+    const internalNotes = draft.internalNotes.trim();
+    const deliveredAt = new Date().toISOString();
+
+    setUpdatingId(lead.id);
+    setError("");
+
+    try {
+      await updateDoc(doc(db, "propertyReportLeads", lead.id), {
+        status: "delivered",
+        reportUrl,
+        internalNotes,
+        deliveredAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+      });
+
+      setLeads((current) =>
+        current.map((item) =>
+          item.id === lead.id
+            ? {
+                ...item,
+                status: "delivered",
+                reportUrl,
+                internalNotes,
+                deliveredAt,
+              }
+            : item,
+        ),
+      );
+    } catch (err) {
+      console.error("Failed to mark lead delivered", err);
+      setError("Could not mark this lead delivered. Check Firestore update rules.");
     } finally {
       setUpdatingId("");
     }
@@ -409,6 +517,8 @@ export default function PropertyReportLeadsPage() {
           {filtered.map((lead) => {
             const tier = getTierDetails(lead);
             const paymentLink = getPaymentLink(lead);
+            const deliveryDraft = getDeliveryDraft(lead);
+            const activeReportUrl = deliveryDraft.reportUrl.trim();
 
             const reviewEmailHref = lead.email
               ? `mailto:${lead.email}?subject=${encodeURIComponent(
@@ -536,6 +646,79 @@ export default function PropertyReportLeadsPage() {
                         </button>
                       );
                     })}
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-white/40">
+                    <FileText className="h-4 w-4 text-amber-300" />
+                    Report Delivery Workspace
+                  </p>
+
+                  <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto]">
+                    <label className="block">
+                      <span className="text-[10px] font-black uppercase tracking-[0.16em] text-white/35">
+                        Report URL
+                      </span>
+                      <input
+                        value={deliveryDraft.reportUrl}
+                        onChange={(event) =>
+                          updateDeliveryDraft(lead.id, "reportUrl", event.target.value)
+                        }
+                        placeholder="Paste Google Drive, PDF, or delivery link..."
+                        className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-amber-300/50"
+                      />
+                    </label>
+
+                    {activeReportUrl ? (
+                      <a
+                        href={activeReportUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-black text-white hover:bg-white/15 md:self-end"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Open report
+                      </a>
+                    ) : null}
+                  </div>
+
+                  <label className="mt-4 block">
+                    <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-white/35">
+                      <StickyNote className="h-4 w-4 text-amber-300" />
+                      Internal Delivery Notes
+                    </span>
+                    <textarea
+                      value={deliveryDraft.internalNotes}
+                      onChange={(event) =>
+                        updateDeliveryDraft(lead.id, "internalNotes", event.target.value)
+                      }
+                      rows={4}
+                      placeholder="Track research status, missing sources, customer requests, and fulfillment details..."
+                      className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 text-sm leading-6 text-white outline-none placeholder:text-white/30 focus:border-amber-300/50"
+                    />
+                  </label>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      disabled={updatingId === lead.id}
+                      onClick={() => void saveDeliveryWorkspace(lead)}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15 disabled:opacity-50"
+                    >
+                      <Save className="h-4 w-4" />
+                      Save delivery info
+                    </button>
+
+                    <button
+                      type="button"
+                      disabled={updatingId === lead.id}
+                      onClick={() => void markLeadDelivered(lead)}
+                      className="inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300 px-4 py-2 text-xs font-black text-zinc-950 hover:bg-amber-200 disabled:opacity-50"
+                    >
+                      <PackageCheck className="h-4 w-4" />
+                      Mark delivered
+                    </button>
                   </div>
                 </div>
 
