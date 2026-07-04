@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-07-04T07:19:42.439Z",
+  "source": "public/data/parcel-addresses.json",
+  "total": 51881,
+  "nearestZoneFilled": 7,
+  "withAddress": 29398,
+  "withMapGeoPhysicalAddress": 29398,
+  "withTaxiZone": 51881,
+  "missingTaxiZone": 0,
+  "byIsland": {
+    "st_croix": 27763,
+    "st_john": 4616,
+    "st_thomas": 19502
+  },
+  "files": {
+    "st_croix": "public/data/parcels/st_croix.json",
+    "st_john": "public/data/parcels/st_john.json",
+    "st_thomas": "public/data/parcels/st_thomas.json"
+  },
+  "allFile": "public/data/parcels/all.json"
+}

@@ -1,0 +1,217 @@
+{
+  "generatedAt": "2026-07-04T07:17:10.620Z",
+  "baseFile": "public/data/parcel-addresses.json",
+  "backup": "public/data/parcel-addresses.before-mapgeo-merge.json",
+  "mapgeoGeojson": "public/data/usvi-parcels-mapgeo-enriched.geojson",
+  "baseRows": 51881,
+  "mapgeoFeatures": 51881,
+  "mapgeoLookupKeys": 51881,
+  "matched": 51881,
+  "unmatched": 0,
+  "physicalAddressed": 29398,
+  "mailingAddressed": 0,
+  "ownerNamed": 29399,
+  "output": "public/data/parcel-addresses.json",
+  "samplePhysicalAddresses": [
+    {
+      "parcelId": "200100016300",
+      "address": "72-EG CLAIRMONT",
+      "label": "72-EG CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200100040100",
+      "address": "REM 155 LA VALLEE",
+      "label": "REM 155 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "200100040200",
+      "address": "156 LA VALLEE",
+      "label": "156 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "200100040300",
+      "address": "72-EE CLAIRMONT",
+      "label": "72-EE CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200100040400",
+      "address": "155-A LA VALLEE",
+      "label": "155-A LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "200116010400",
+      "address": "72-EC CLAIRMONT",
+      "label": "72-EC CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200116011000",
+      "address": "72-ED CLAIRMONT",
+      "label": "72-ED CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200200030100",
+      "address": "2 & 3 CLAIRMONT",
+      "label": "2 & 3 CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200200030300",
+      "address": "4 CLAIRMONT",
+      "label": "4 CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200200030600",
+      "address": "4-A CLAIRMONT",
+      "label": "4-A CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200200030700",
+      "address": "72-E CLAIRMONT",
+      "label": "72-E CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200200031100",
+      "address": "69-A CLAIRMONT",
+      "label": "69-A CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "200500040100",
+      "address": "BUCK ISLAND",
+      "label": "BUCK ISLAND",
+      "island": "st_croix",
+      "estateName": "Buck Island",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "201000151800",
+      "address": "72-EF CLAIRMONT",
+      "label": "72-EF CLAIRMONT",
+      "island": "st_croix",
+      "estateName": "Clairmont",
+      "taxiZoneId": "stx_christiansted"
+    },
+    {
+      "parcelId": "201100010100",
+      "address": "58-A LA VALLEE",
+      "label": "58-A LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010200",
+      "address": "58-B LA VALLEE",
+      "label": "58-B LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010300",
+      "address": "51-A LA VALLEE",
+      "label": "51-A LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010400",
+      "address": "51 LA VALLEE",
+      "label": "51 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010500",
+      "address": "67 LA VALLEE BELVEDERE",
+      "label": "67 LA VALLEE BELVEDERE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010600",
+      "address": "65 LA VALLEE",
+      "label": "65 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010800",
+      "address": "64 & 1-A (ROAD)LA VALLEE RUST UP TWIST",
+      "label": "64 & 1-A (ROAD)LA VALLEE RUST UP TWIST",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100010900",
+      "address": "71 LA VALLEE",
+      "label": "71 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100011000",
+      "address": "72 LA VALLEE",
+      "label": "72 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100011100",
+      "address": "66 LA VALLEE",
+      "label": "66 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    },
+    {
+      "parcelId": "201100011200",
+      "address": "73 LA VALLEE",
+      "label": "73 LA VALLEE",
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "taxiZoneId": "stx_cane_bay"
+    }
+  ]
+}

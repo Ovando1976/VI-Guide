@@ -1,10 +1,11 @@
 {
   "startedAt": "2026-06-19T15:17:51.600Z",
-  "updatedAt": "2026-06-28T19:43:53.327Z",
+  "updatedAt": "2026-07-04T07:15:04.687Z",
   "totalUniqueIds": 51881,
-  "targetCount": 0,
+  "targetCount": 1000,
   "processedCount": 30830,
   "matchedCount": 29399,
   "emptyCount": 1431,
-  "failedCount": 0
+  "failedCount": 0,
+  "lastParcelId": "202606011700"
 }
