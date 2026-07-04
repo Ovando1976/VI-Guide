@@ -69,7 +69,7 @@ const tiers: {
     id: "premium",
     title: "Premium Research Packet",
     price: "$299+",
-    description: "Best for serious research, family history, legal prep, or investment context.",
+    description: "Best for serious research, family history, due-diligence prep, or investment context.",
     features: [
       "Custom archive/source review",
       "Map, site, and neighborhood context",
@@ -252,7 +252,7 @@ export default function PropertyReportRequestPage() {
             <div className="rounded-[2rem] border border-white/10 bg-black/25 p-5 shadow-2xl">
               <p className="flex items-center gap-2 text-sm font-black text-amber-300">
                 <Sparkles className="h-4 w-4" />
-                Starting at {selectedTier.price}
+                Selected package · {selectedTier.price}
               </p>
               <h2 className="mt-3 text-2xl font-black">{selectedTier.title}</h2>
               <p className="mt-2 text-sm leading-6 text-white/60">
@@ -323,8 +323,8 @@ export default function PropertyReportRequestPage() {
               </p>
               <h2 className="mt-1 text-3xl font-black">Property report intake</h2>
               <p className="mt-2 text-sm leading-6 text-white/55">
-                Capture the lead first. Payment and Stripe can come after the
-                offer is validated.
+                Submit the request today. We’ll review the property, confirm the
+                scope, and follow up with next steps.
               </p>
             </div>
           </div>
@@ -431,7 +431,7 @@ export default function PropertyReportRequestPage() {
               className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-5 py-3 text-sm font-black text-zinc-950 shadow-lg shadow-amber-950/30 transition hover:-translate-y-0.5 hover:bg-yellow-200 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Sparkles className="h-4 w-4" />
-              {isSubmitting ? "Submitting..." : "Submit request"}
+              {isSubmitting ? "Submitting..." : "Request my report"}
             </button>
 
             <button
@@ -470,8 +470,7 @@ export default function PropertyReportRequestPage() {
                 Request captured
               </p>
               <p className="mt-2 text-sm leading-6 text-emerald-50/70">
-                This lead was saved to Firestore and backed up locally in this browser.
-                Next build step: add owner notifications and Stripe checkout.
+                Your request was received. We’ll review the property details and follow up with the next step.
               </p>
             </div>
           ) : null}
