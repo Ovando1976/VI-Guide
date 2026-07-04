@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { createPropertyReportLead } from "../../lib/firestore/propertyReportLeads";
 import {
   ArrowLeft,
   Building2,
@@ -119,6 +121,8 @@ export default function PropertyReportRequestPage() {
   const [lead, setLead] = useState<PropertyReportLead>(initialLead);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const selectedTier = tiers.find((item) => item.id === lead.tier) ?? tiers[0];
 
@@ -154,25 +158,52 @@ export default function PropertyReportRequestPage() {
     }
   }
 
-  function submitLead() {
-    if (!canSubmit) return;
+  async function submitLead() {
+    if (!canSubmit || isSubmitting) return;
 
     const completedLead: PropertyReportLead = {
       ...lead,
       createdAt: new Date().toISOString(),
     };
 
-    const previous = JSON.parse(
-      localStorage.getItem("viGuidePropertyReportLeads") || "[]",
-    ) as PropertyReportLead[];
+    setIsSubmitting(true);
+    setSubmitError("");
 
-    localStorage.setItem(
-      "viGuidePropertyReportLeads",
-      JSON.stringify([completedLead, ...previous].slice(0, 50)),
-    );
+    try {
+      await createPropertyReportLead({
+        name: completedLead.name.trim(),
+        email: completedLead.email.trim(),
+        phone: completedLead.phone.trim(),
+        island: completedLead.island,
+        propertyName: completedLead.propertyName.trim(),
+        parcelId: completedLead.parcelId.trim(),
+        address: completedLead.address.trim(),
+        purpose: completedLead.purpose,
+        tier: completedLead.tier,
+        notes: completedLead.notes.trim(),
+        leadSummary: buildLeadSummary(completedLead),
+        source: "history-property-report-page",
+      });
 
-    setLead(completedLead);
-    setSubmitted(true);
+      const previous = JSON.parse(
+        localStorage.getItem("viGuidePropertyReportLeads") || "[]",
+      ) as PropertyReportLead[];
+
+      localStorage.setItem(
+        "viGuidePropertyReportLeads",
+        JSON.stringify([completedLead, ...previous].slice(0, 50)),
+      );
+
+      setLead(completedLead);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Failed to submit property report lead", error);
+      setSubmitError(
+        "We could not save this request yet. Copy the request and send it manually.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const mailtoHref = SALES_EMAIL
@@ -395,12 +426,12 @@ export default function PropertyReportRequestPage() {
           <div className="mt-5 flex flex-wrap gap-3">
             <button
               type="button"
-              disabled={!canSubmit}
+              disabled={!canSubmit || isSubmitting}
               onClick={submitLead}
               className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-5 py-3 text-sm font-black text-zinc-950 shadow-lg shadow-amber-950/30 transition hover:-translate-y-0.5 hover:bg-yellow-200 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Sparkles className="h-4 w-4" />
-              Submit request
+              {isSubmitting ? "Submitting..." : "Submit request"}
             </button>
 
             <button
@@ -423,6 +454,15 @@ export default function PropertyReportRequestPage() {
             ) : null}
           </div>
 
+          {submitError ? (
+            <div className="mt-5 rounded-3xl border border-red-300/20 bg-red-300/10 p-4">
+              <p className="text-sm font-black text-red-200">Submission issue</p>
+              <p className="mt-2 text-sm leading-6 text-red-50/70">
+                {submitError}
+              </p>
+            </div>
+          ) : null}
+
           {submitted ? (
             <div className="mt-5 rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-4">
               <p className="flex items-center gap-2 text-sm font-black text-emerald-200">
@@ -430,8 +470,8 @@ export default function PropertyReportRequestPage() {
                 Request captured
               </p>
               <p className="mt-2 text-sm leading-6 text-emerald-50/70">
-                This lead was saved locally for now. Next build step: connect
-                this form to Firestore, email, CRM, or Stripe checkout.
+                This lead was saved to Firestore and backed up locally in this browser.
+                Next build step: add owner notifications and Stripe checkout.
               </p>
             </div>
           ) : null}
