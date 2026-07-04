@@ -167,6 +167,73 @@ function buildReviewEmailBody(lead: LeadRecord) {
   ].join("\n");
 }
 
+
+function buildReportOutline(lead: LeadRecord) {
+  const tier = getTierDetails(lead);
+
+  return [
+    `# VI Guide Property History Report`,
+    ``,
+    `## Property`,
+    `Property / estate name: ${clean(lead.propertyName)}`,
+    `Island: ${clean(lead.island)}`,
+    `Parcel ID: ${clean(lead.parcelId)}`,
+    `Address / area: ${clean(lead.address)}`,
+    ``,
+    `## Client Request`,
+    `Client: ${clean(lead.name)}`,
+    `Email: ${clean(lead.email)}`,
+    `Phone: ${clean(lead.phone)}`,
+    `Purpose: ${clean(lead.purpose)}`,
+    `Package: ${tier.label} — ${tier.price}`,
+    ``,
+    `## Executive Summary`,
+    `Write a plain-English summary of what is known about this property, its historic name, island context, estate or parcel relationship, and why it matters.`,
+    ``,
+    `## Historical Identity`,
+    `- Historic estate / place names:`,
+    `- Alternate spellings:`,
+    `- Quarter / district:`,
+    `- Related nearby places:`,
+    ``,
+    `## Map and Geography Notes`,
+    `- Modern location:`,
+    `- Historic map references:`,
+    `- Parcel / boundary notes:`,
+    `- Neighboring estates or landmarks:`,
+    ``,
+    `## Archive Leads`,
+    `- Danish West Indies records:`,
+    `- Rigsarkivet references:`,
+    `- NARA / local archive references:`,
+    `- Deeds, tax, probate, church, census, or land list leads:`,
+    ``,
+    `## Ownership / Use Timeline`,
+    `| Period | Person / Entity | Evidence | Notes |`,
+    `|---|---|---|---|`,
+    `| Unknown | Unknown | Needs research | Add findings here |`,
+    ``,
+    `## Findings`,
+    `1. `,
+    `2. `,
+    `3. `,
+    ``,
+    `## Recommended Next Research`,
+    `- `,
+    `- `,
+    `- `,
+    ``,
+    `## Customer Notes`,
+    `${clean(lead.notes)}`,
+    ``,
+    `## Internal Fulfillment Notes`,
+    `${clean(lead.internalNotes)}`,
+    ``,
+    `---`,
+    `Prepared by VI Guide`,
+  ].join("\n");
+}
+
 function buildPaymentEmailBody(lead: LeadRecord) {
   const tier = getTierDetails(lead);
   const paymentLink = getPaymentLink(lead);
@@ -285,6 +352,11 @@ export default function PropertyReportLeadsPage() {
 
   async function copyLead(lead: LeadRecord) {
     await navigator.clipboard.writeText(buildLeadSummary(lead));
+  }
+
+
+  async function copyReportOutline(lead: LeadRecord) {
+    await navigator.clipboard.writeText(buildReportOutline(lead));
   }
 
   async function copyPaymentRequest(lead: LeadRecord) {
@@ -600,6 +672,15 @@ export default function PropertyReportLeadsPage() {
                     >
                       <Clipboard className="h-4 w-4" />
                       Copy payment
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => void copyReportOutline(lead)}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Copy report outline
                     </button>
                   </div>
                 </div>
