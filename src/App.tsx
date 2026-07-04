@@ -21,6 +21,8 @@ const Beaches = lazy(() => import("./components/Beaches"));
 const Eat = lazy(() => import("./components/Eat"));
 const Events = lazy(() => import("./components/Events"));
 const Mobility = lazy(() => import("./components/Mobility"));
+const MobilityDispatchPage = lazy(() => import("./pages/admin/MobilityDispatchPage"));
+const DriverConsolePage = lazy(() => import("./pages/driver/DriverConsolePage"));
 const Concierge = lazy(() => import("./components/Concierge"));
 const Documents = lazy(() => import("./components/Documents"));
 const Profile = lazy(() => import("./components/Profile"));
@@ -198,6 +200,8 @@ function AppRoutes() {
       <Route path="/property-report-template" element={<Navigate to="/admin/property-report-template" replace />} />
       <Route path="/history/property-report" element={<PropertyReportRequestPage />} />
       <Route path="/admin/property-report-leads" element={<PropertyReportLeadsPage />} />
+      <Route path="/admin/mobility" element={<MobilityDispatchPage />} />
+      <Route path="/driver" element={<DriverConsolePage />} />
       <Route path="/admin/property-report-template" element={<PropertyReportTemplatePage />} />
       <Route path="/history/knowledge" element={<Navigate to="/history" replace />} />
       <Route path="/history/timeline" element={<HistoryPage initialView="timeline" />} />

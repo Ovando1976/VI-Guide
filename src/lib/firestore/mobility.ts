@@ -28,7 +28,7 @@ import { resolveGeoContext } from '../geo/resolver';
 
 const DRIVERS_COL = 'mobility_drivers';
 const VEHICLES_COL = 'mobility_vehicles';
-const TRIPS_COL = 'mobility_trips';
+export const TRIPS_COL = 'mobility_trips';
 const FARE_RULES_COL = 'mobility_fare_rules';
 const PARTNERS_COL = 'mobility_partners';
 
