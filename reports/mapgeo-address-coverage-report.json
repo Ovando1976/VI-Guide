@@ -1,0 +1,394 @@
+{
+  "generatedAt": "2026-07-04T07:24:36.765Z",
+  "source": "public/data/parcel-addresses.json",
+  "total": 51881,
+  "addressed": 29398,
+  "missing": 22483,
+  "coveragePercent": 56.66,
+  "byIsland": {
+    "st_croix": {
+      "total": 27763,
+      "addressed": 10456,
+      "missing": 17307,
+      "coveragePercent": 37.66
+    },
+    "st_john": {
+      "total": 4616,
+      "addressed": 2,
+      "missing": 4614,
+      "coveragePercent": 0.04
+    },
+    "st_thomas": {
+      "total": 19499,
+      "addressed": 18937,
+      "missing": 562,
+      "coveragePercent": 97.12
+    },
+    "water_island": {
+      "total": 3,
+      "addressed": 3,
+      "missing": 0,
+      "coveragePercent": 100
+    }
+  },
+  "outputs": {
+    "json": "generated/mapgeo/missing-mapgeo-addresses.json",
+    "csv": "reports/missing-mapgeo-addresses.csv",
+    "byEstate": "reports/missing-mapgeo-addresses-by-estate.csv",
+    "byZone": "reports/missing-mapgeo-addresses-by-zone.csv"
+  },
+  "topMissingEstates": [
+    {
+      "island": "st_croix",
+      "estateName": "Barren Spot (West)",
+      "missing": 890,
+      "sampleParcelId": "2026500023100",
+      "sampleLabel": "Parcel 2026500023100 · Estate Barren Spot (West)"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Carlton",
+      "missing": 707,
+      "sampleParcelId": "406000043200",
+      "sampleLabel": "Parcel 406000043200 · Estate Carlton"
+    },
+    {
+      "island": "st_john",
+      "estateName": "Carolina",
+      "missing": 705,
+      "sampleParcelId": "304004010500",
+      "sampleLabel": "Parcel 304004010500 · Estate Carolina"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Grove Place",
+      "missing": 650,
+      "sampleParcelId": "404200004600",
+      "sampleLabel": "Parcel 404200004600 · Estate Grove Place"
+    },
+    {
+      "island": "st_john",
+      "estateName": "Chocolate Hole",
+      "missing": 552,
+      "sampleParcelId": "308101260900",
+      "sampleLabel": "Parcel 308101260900 · Estate Chocolate Hole"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "La Grande Princesse",
+      "missing": 548,
+      "sampleParcelId": "201400045400",
+      "sampleLabel": "Parcel 201400045400 · Estate La Grande Princesse"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Christiansted",
+      "missing": 539,
+      "sampleParcelId": "204902051800",
+      "sampleLabel": "Parcel 204902051800 · Estate Christiansted"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "La Grange",
+      "missing": 534,
+      "sampleParcelId": "402100014600",
+      "sampleLabel": "Parcel 402100014600 · Estate La Grange"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Diamond",
+      "missing": 523,
+      "sampleParcelId": "204600004000",
+      "sampleLabel": "Parcel 204600004000 · Estate Diamond"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "MOUNT PLEASANT (South)",
+      "missing": 462,
+      "sampleParcelId": "406200036400",
+      "sampleLabel": "Parcel 406200036400 · Estate MOUNT PLEASANT (South)"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Frederiksted",
+      "missing": 454,
+      "sampleParcelId": "405816010100",
+      "sampleLabel": "Parcel 405816010100 · Estate Frederiksted"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Eliza'S Retreat",
+      "missing": 443,
+      "sampleParcelId": "205000010800",
+      "sampleLabel": "Parcel 205000010800 · Estate Eliza'S Retreat"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Two Brothers / Smithfield / Hesselberg",
+      "missing": 443,
+      "sampleParcelId": "407500040100",
+      "sampleLabel": "Parcel 407500040100 · Estate Two Brothers / Smithfield / Hesselberg"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Vicorp Land",
+      "missing": 408,
+      "sampleParcelId": "204400040200",
+      "sampleLabel": "Parcel 204400040200 · Estate Vicorp Land"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "La Vallee",
+      "missing": 350,
+      "sampleParcelId": "201100015200",
+      "sampleLabel": "Parcel 201100015200 · Estate La Vallee"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "CONCORDIA (West)",
+      "missing": 336,
+      "sampleParcelId": "407600015200",
+      "sampleLabel": "Parcel 407600015200 · Estate CONCORDIA (West)"
+    },
+    {
+      "island": "st_john",
+      "estateName": "Caneel Bay",
+      "missing": 333,
+      "sampleParcelId": "303703020100",
+      "sampleLabel": "Parcel 303703020100 · Estate Caneel Bay"
+    },
+    {
+      "island": "st_john",
+      "estateName": "Fish Bay",
+      "missing": 306,
+      "sampleParcelId": "308202034000",
+      "sampleLabel": "Parcel 308202034000 · Estate Fish Bay"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Colquohoun",
+      "missing": 305,
+      "sampleParcelId": "204400001070",
+      "sampleLabel": "Parcel 204400001070 · Estate Colquohoun"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Catherine'S Rest",
+      "missing": 305,
+      "sampleParcelId": "2049000300A1",
+      "sampleLabel": "Parcel 2049000300A1 · Estate Catherine'S Rest"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Clifton Hill",
+      "missing": 302,
+      "sampleParcelId": "206500010000",
+      "sampleLabel": "Parcel 206500010000 · Estate Clifton Hill"
+    },
+    {
+      "island": "st_john",
+      "estateName": "Enighed",
+      "missing": 300,
+      "sampleParcelId": "306003020100",
+      "sampleLabel": "Parcel 306003020100 · Estate Enighed"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Castle Coakley",
+      "missing": 296,
+      "sampleParcelId": "206600021700",
+      "sampleLabel": "Parcel 206600021700 · Estate Castle Coakley"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Bugby Hole",
+      "missing": 286,
+      "sampleParcelId": "2027000012000",
+      "sampleLabel": "Parcel 2027000012000 · Estate Bugby Hole"
+    },
+    {
+      "island": "st_croix",
+      "estateName": "Boetzberg",
+      "missing": 285,
+      "sampleParcelId": "203000000500",
+      "sampleLabel": "Parcel 203000000500 · Estate Boetzberg"
+    }
+  ],
+  "topMissingZones": [
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_christiansted",
+      "missing": 14184,
+      "sampleParcelId": "2-05400-0414-00",
+      "sampleLabel": "Parcel 2-05400-0414-00 · Estate Wood Cottage"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_cruz_bay",
+      "missing": 2541,
+      "sampleParcelId": "301701010100",
+      "sampleLabel": "Parcel 301701010100 · Estate Whistling Cay"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_sunny_isle",
+      "missing": 982,
+      "sampleParcelId": "2026500023100",
+      "sampleLabel": "Parcel 2026500023100 · Estate Barren Spot (West)"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_frederiksted",
+      "missing": 912,
+      "sampleParcelId": "403800040100",
+      "sampleLabel": "Parcel 403800040100 · Estate William"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_coral_bay",
+      "missing": 823,
+      "sampleParcelId": "304004010500",
+      "sampleLabel": "Parcel 304004010500 · Estate Carolina"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_chocolate_hole",
+      "missing": 552,
+      "sampleParcelId": "308101260900",
+      "sampleLabel": "Parcel 308101260900 · Estate Chocolate Hole"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_buccaneer",
+      "missing": 362,
+      "sampleParcelId": "203000001200",
+      "sampleLabel": "Parcel 203000001200 · Estate Shoys"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_cane_bay",
+      "missing": 350,
+      "sampleParcelId": "201100015200",
+      "sampleLabel": "Parcel 201100015200 · Estate La Vallee"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_caneel_bay",
+      "missing": 333,
+      "sampleParcelId": "303703020100",
+      "sampleLabel": "Parcel 303703020100 · Estate Caneel Bay"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_charlotte_amalie",
+      "missing": 287,
+      "sampleParcelId": "100904011500",
+      "sampleLabel": "Parcel 100904011500 · Estate Sorgenfri Eastern Portion"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_golden_rock",
+      "missing": 230,
+      "sampleParcelId": "2027000300A8",
+      "sampleLabel": "Parcel 2027000300A8 · Estate Golden Rock"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_mid_island",
+      "missing": 230,
+      "sampleParcelId": "206700020100",
+      "sampleLabel": "Parcel 206700020100 · Estate Peter'S Rest"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_salt_pond",
+      "missing": 161,
+      "sampleParcelId": "306404030100",
+      "sampleLabel": "Parcel 306404030100 · Estate Lameshur Complex"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_trunk_bay",
+      "missing": 117,
+      "sampleParcelId": "303802020100",
+      "sampleLabel": "Parcel 303802020100 · Estate Trunk Bay"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_red_hook",
+      "missing": 80,
+      "sampleParcelId": "105702021200",
+      "sampleLabel": "Parcel 105702021200 · Estate Frydendal"
+    },
+    {
+      "island": "st_croix",
+      "taxiZoneId": "stx_kingshill",
+      "missing": 57,
+      "sampleParcelId": "202410031000",
+      "sampleLabel": "Parcel 202410031000 · Estate Glynn"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_maho_bay",
+      "missing": 57,
+      "sampleParcelId": "301801010100",
+      "sampleLabel": "Parcel 301801010100 · Estate Annaberg"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_tutu",
+      "missing": 37,
+      "sampleParcelId": "103103050000",
+      "sampleLabel": "Parcel 103103050000 · Estate Anna'S Retreat"
+    },
+    {
+      "island": "st_john",
+      "taxiZoneId": "stj_cinnamon_bay",
+      "missing": 25,
+      "sampleParcelId": "303901010200",
+      "sampleLabel": "Parcel 303901010200 · Estate Great Cinnamon Bay"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_west_end",
+      "missing": 22,
+      "sampleParcelId": "101003042100",
+      "sampleLabel": "Parcel 101003042100 · Estate Caret Bay"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_water_island_ferry",
+      "missing": 22,
+      "sampleParcelId": "107104020700",
+      "sampleLabel": "Parcel 107104020700 · Estate Water Island"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_hull_bay",
+      "missing": 19,
+      "sampleParcelId": "101102010100",
+      "sampleLabel": "Parcel 101102010100 · Estate Hull"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_smith_bay",
+      "missing": 15,
+      "sampleParcelId": "105702030100",
+      "sampleLabel": "Parcel 105702030100 · Estate Smith Bay"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_bolongo",
+      "missing": 13,
+      "sampleParcelId": "107402028400",
+      "sampleLabel": "Parcel 107402028400 · Estate Bolongo"
+    },
+    {
+      "island": "st_thomas",
+      "taxiZoneId": "stt_airport",
+      "missing": 11,
+      "sampleParcelId": "102604020900",
+      "sampleLabel": "Parcel 102604020900 · Estate Lindbergh Bay"
+    }
+  ]
+}
