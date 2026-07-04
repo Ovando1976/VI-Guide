@@ -287,6 +287,8 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
   const [loading, setLoading] = useState(false);
   const [quote, setQuote] = useState<Trip["quote"] | null>(null);
   const [activeTrip, setActiveTrip] = useState<Trip | null>(null);
+  const [requestError, setRequestError] = useState("");
+  const [requestSuccess, setRequestSuccess] = useState("");
   const [step, setStep] = useState<"request" | "quote" | "tracking">("request");
 
   const tariffOptions = useMemo(
@@ -340,18 +342,24 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
     setTripType("direct");
     setQuote(null);
     setActiveTrip(null);
+    setRequestError("");
+    setRequestSuccess("");
     setStep("request");
   }
 
   function setPickupZone(value: string) {
     setPickup(value);
     setQuote(null);
+    setRequestError("");
+    setRequestSuccess("");
     setStep("request");
   }
 
   function setDropoffZone(value: string) {
     setDropoff(value);
     setQuote(null);
+    setRequestError("");
+    setRequestSuccess("");
     setStep("request");
   }
 
@@ -420,9 +428,11 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
   }
 
   async function handleRequestRide() {
-    if (!quote) return;
+    if (!quote || loading) return;
 
     setLoading(true);
+    setRequestError("");
+    setRequestSuccess("");
 
     try {
       const pickupPoint = getZonePoint(pickup);
@@ -448,22 +458,32 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
         parcelId: undefined,
       });
 
-      const tripId = await createTripRequest({
-        riderId: user?.uid || "guest",
-        customerName: user?.displayName || user?.email || "Guest rider",
-        customerEmail: user?.email || "",
-        customerPhone: user?.phoneNumber || "",
-        driverId: null,
-        status: "requested",
-        tripType,
-        island: mobilityIsland,
-        pickup: enrichedPickup,
-        dropoff: enrichedDropoff,
-        passengers,
-        luggage,
-        serviceClass,
-        quote,
-      });
+      const tripId = await Promise.race([
+        createTripRequest({
+          riderId: user?.uid || "guest",
+          customerName: user?.displayName || user?.email || "Guest rider",
+          customerEmail: user?.email || "",
+          customerPhone: user?.phoneNumber || "",
+          driverId: null,
+          status: "requested",
+          tripType,
+          island: mobilityIsland,
+          pickup: enrichedPickup,
+          dropoff: enrichedDropoff,
+          passengers,
+          luggage,
+          serviceClass,
+          quote,
+        }),
+        new Promise<string>((_, reject) => {
+          window.setTimeout(
+            () => reject(new Error("Dispatch request timed out. Check Firestore rules or network.")),
+            10000,
+          );
+        }),
+      ]);
+
+      setRequestSuccess(`Dispatch request created: #${tripId.slice(-6)}`);
 
       subscribeToTrip(tripId, (trip) => {
         setActiveTrip(trip);
@@ -471,6 +491,11 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
       });
     } catch (error) {
       console.error("Request failed:", error);
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Could not send this ride request to dispatch.";
+      setRequestError(message);
     } finally {
       setLoading(false);
     }
@@ -597,6 +622,8 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
               serviceClass={serviceClass}
               tripType={tripType}
               loading={loading}
+              requestError={requestError}
+              requestSuccess={requestSuccess}
               canRequest={true}
               onRequest={handleRequestRide}
             />
@@ -1089,6 +1116,8 @@ function TripSummary({
   serviceClass,
   tripType,
   loading,
+  requestError,
+  requestSuccess,
   canRequest,
   onRequest,
 }: {
@@ -1103,6 +1132,8 @@ function TripSummary({
   serviceClass: ServiceClass;
   tripType: TripType;
   loading: boolean;
+  requestError: string;
+  requestSuccess: string;
   canRequest: boolean;
   onRequest: () => void;
 }) {
@@ -1174,6 +1205,18 @@ function TripSummary({
           USVI Taxi-Zone Dispatch
         </p>
       </div>
+
+      {requestSuccess ? (
+        <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-black text-emerald-800">
+          {requestSuccess}
+        </div>
+      ) : null}
+
+      {requestError ? (
+        <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-black text-rose-700">
+          {requestError}
+        </div>
+      ) : null}
 
       {canRequest ? (
         <button
