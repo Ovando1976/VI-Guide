@@ -16,8 +16,8 @@ const offers = [
     icon: Archive,
   },
   {
-    title: "Estate Reports",
-    text: "Premium estate-history packets for researchers, families, schools, and local investors.",
+    title: "Property Reports",
+    text: "Premium property-history packets for researchers, families, schools, and local investors.",
     icon: Building2,
   },
   {
@@ -53,7 +53,7 @@ export default function HistoryRevenueStrip() {
 
           <p className="mt-3 max-w-2xl text-sm leading-7 text-amber-50/70">
             Keep public browsing free, then monetize deeper archive access,
-            estate reports, map downloads, school packets, tourism sponsorships,
+            property reports, map downloads, school packets, tourism sponsorships,
             and local heritage research.
           </p>
 
@@ -69,11 +69,11 @@ export default function HistoryRevenueStrip() {
 
             <button
               type="button"
-              onClick={() => navigate("/concierge?context=estate-report")}
+              onClick={() => navigate("/concierge?context=property-report")}
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black text-white transition hover:-translate-y-0.5 hover:bg-white/15"
             >
               <FileText className="h-4 w-4" />
-              Request estate report
+              Request property report
             </button>
           </div>
         </div>
