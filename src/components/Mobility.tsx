@@ -508,6 +508,8 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
                   </span>
                 ))}
               </div>
+
+              <AdminMobilityShortcuts />
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 lg:w-[520px]">
@@ -1263,6 +1265,29 @@ function TrackingPanel({ trip, onCancel }: { trip: Trip; onCancel: () => void })
         Close Request View
       </button>
     </motion.div>
+  );
+}
+
+
+function AdminMobilityShortcuts() {
+  return (
+    <div className="mt-6 flex flex-wrap gap-3">
+      <a
+        href="/admin/mobility"
+        className="inline-flex items-center gap-3 rounded-2xl bg-emerald-300 px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-slate-950 shadow-xl transition hover:bg-white"
+      >
+        <Shield className="h-4 w-4" />
+        Admin Dispatch
+      </a>
+
+      <a
+        href="/driver"
+        className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.08] px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-white shadow-xl transition hover:border-emerald-300/50 hover:bg-white/[0.14]"
+      >
+        <Car className="h-4 w-4 text-emerald-300" />
+        Driver Console
+      </a>
+    </div>
   );
 }
 
