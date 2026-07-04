@@ -52,7 +52,9 @@ export async function enrichLocation(location: TripLocation): Promise<TripLocati
 
 // --- Trips ---
 
-export async function createTripRequest(tripData: Omit<Trip, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+export async function createTripRequest(
+  tripData: Omit<Trip, 'id' | 'createdAt' | 'updatedAt'> & Record<string, unknown>,
+): Promise<string> {
   try {
     const now = Date.now();
     const docRef = await addDoc(collection(db, TRIPS_COL), {

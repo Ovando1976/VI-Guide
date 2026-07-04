@@ -420,7 +420,7 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
   }
 
   async function handleRequestRide() {
-    if (!quote || !user) return;
+    if (!quote) return;
 
     setLoading(true);
 
@@ -449,7 +449,10 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
       });
 
       const tripId = await createTripRequest({
-        riderId: user.uid,
+        riderId: user?.uid || "guest",
+        customerName: user?.displayName || user?.email || "Guest rider",
+        customerEmail: user?.email || "",
+        customerPhone: user?.phoneNumber || "",
         driverId: null,
         status: "requested",
         tripType,
@@ -474,7 +477,7 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#05070b] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#05070b] pb-28 text-white xl:pb-0">
       <section className="relative border-b border-white/10 bg-[radial-gradient(circle_at_16%_0%,rgba(16,185,129,0.24),transparent_32%),radial-gradient(circle_at_82%_10%,rgba(14,165,233,0.16),transparent_34%),linear-gradient(135deg,#020617,#061016_52%,#03120d)] px-5 py-8 sm:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -560,6 +563,17 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
             activeIsland={activeIsland}
           />
 
+          <LocalRouteNotes
+            activeIsland={activeIsland}
+            pickupLabel={pickupLabel}
+            dropoffLabel={dropoffLabel}
+            pickup={pickup}
+            dropoff={dropoff}
+            tripType={tripType}
+            serviceClass={serviceClass}
+            quote={quote}
+          />
+
           {step === "tracking" && activeTrip ? (
             <TrackingPanel
               trip={activeTrip}
@@ -570,6 +584,7 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
             />
           ) : (
             <TripSummary
+              activeIsland={activeIsland}
               quote={quote}
               pickup={pickup}
               dropoff={dropoff}
@@ -580,7 +595,7 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
               serviceClass={serviceClass}
               tripType={tripType}
               loading={loading}
-              canRequest={Boolean(user)}
+              canRequest={true}
               onRequest={handleRequestRide}
             />
           )}
@@ -601,6 +616,17 @@ export default function Mobility({ selectedIsland, user }: MobilityProps) {
           <SafetyCard />
         </aside>
       </section>
+
+      <MobileFareBar
+        pickupLabel={pickupLabel}
+        dropoffLabel={dropoffLabel}
+        pickup={pickup}
+        dropoff={dropoff}
+        quote={quote}
+        canCalculate={Boolean(pickup && dropoff)}
+        loading={loading}
+        onCalculate={handleGetQuote}
+      />
     </main>
   );
 }
@@ -785,6 +811,143 @@ function RoutePreview({
   );
 }
 
+
+function LocalRouteNotes({
+  activeIsland,
+  pickupLabel,
+  dropoffLabel,
+  pickup,
+  dropoff,
+  tripType,
+  serviceClass,
+  quote,
+}: {
+  activeIsland: IslandCode;
+  pickupLabel: string;
+  dropoffLabel: string;
+  pickup: string;
+  dropoff: string;
+  tripType: TripType;
+  serviceClass: ServiceClass;
+  quote: Trip["quote"] | null;
+}) {
+  const pickupText = pickupLabel || pickup || "Pickup not selected";
+  const dropoffText = dropoffLabel || dropoff || "Dropoff not selected";
+  const routeReady = Boolean(pickup && dropoff);
+
+  const notes = [
+    routeReady
+      ? `Official ${islandLabels[activeIsland]} taxi-zone estimate.`
+      : `Choose both official zones to create a dispatch-ready estimate.`,
+    tripType === "ferry_transfer"
+      ? "Good for ferry timing, dock pickup, and inter-island handoff planning."
+      : tripType === "cruise"
+        ? "Good for cruise day routing, port return timing, and visitor coordination."
+        : tripType === "airport"
+          ? "Good for airport arrival, luggage count, and hotel or villa transfer planning."
+          : "Good for hotel, villa, beach, estate, and local point-to-point routing.",
+    serviceClass === "private"
+      ? "Private service selected for direct pickup and fewer shared-route assumptions."
+      : "Shared service selected for a basic local fare estimate.",
+  ];
+
+  return (
+    <section className="rounded-[2rem] border border-amber-200/20 bg-[#f5e8c8] p-5 text-[#182018] shadow-2xl">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-800">
+            Local Route Notes
+          </p>
+          <h3 className="mt-2 text-2xl font-black tracking-tight">
+            {pickupText} → {dropoffText}
+          </h3>
+        </div>
+
+        <MapPin className="h-6 w-6 text-emerald-800" />
+      </div>
+
+      <div className="mt-4 space-y-3">
+        {notes.map((note) => (
+          <div
+            key={note}
+            className="flex gap-3 rounded-2xl border border-amber-900/10 bg-white/45 p-3"
+          >
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-800" />
+            <p className="text-sm font-bold leading-6 text-slate-800">{note}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 grid grid-cols-3 gap-2">
+        <LocalMiniStat label="Trip" value={tripType.replace("_", " ")} />
+        <LocalMiniStat label="Service" value={serviceClass} />
+        <LocalMiniStat label="Fare" value={quote ? `$${quote.total}` : "Pending"} />
+      </div>
+    </section>
+  );
+}
+
+function LocalMiniStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-amber-950/10 p-3">
+      <p className="text-[9px] font-black uppercase tracking-[0.16em] text-slate-500">
+        {label}
+      </p>
+      <p className="mt-1 truncate text-xs font-black capitalize text-slate-950">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+function MobileFareBar({
+  pickupLabel,
+  dropoffLabel,
+  pickup,
+  dropoff,
+  quote,
+  canCalculate,
+  loading,
+  onCalculate,
+}: {
+  pickupLabel: string;
+  dropoffLabel: string;
+  pickup: string;
+  dropoff: string;
+  quote: Trip["quote"] | null;
+  canCalculate: boolean;
+  loading: boolean;
+  onCalculate: () => void;
+}) {
+  const routeText =
+    pickup || dropoff
+      ? `${pickupLabel || pickup || "Pickup"} → ${dropoffLabel || dropoff || "Dropoff"}`
+      : "Select pickup and dropoff";
+
+  return (
+    <div className="fixed inset-x-3 bottom-3 z-[80] rounded-[1.5rem] border border-white/10 bg-slate-950/95 p-3 shadow-2xl backdrop-blur-xl xl:hidden">
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate text-xs font-black text-white">{routeText}</p>
+          <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-300">
+            {quote ? `Estimated fare $${quote.total}` : "Fare not calculated"}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={onCalculate}
+          disabled={!canCalculate || loading}
+          className="shrink-0 rounded-2xl bg-emerald-300 px-4 py-3 text-[10px] font-black uppercase tracking-[0.14em] text-slate-950 disabled:opacity-40"
+        >
+          {loading ? "..." : quote ? `$${quote.total}` : "Fare"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
 function MobilityHandoffPanel({
   activeIsland,
   pickup,
@@ -851,10 +1014,10 @@ function MobilityHandoffPanel({
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-300">
-            Fancy Handoff
+            Island Handoff
           </p>
           <h3 className="mt-2 text-2xl font-black tracking-tight">
-            Tie this trip into the app.
+            Connect this ride to your island plan.
           </h3>
         </div>
 
@@ -871,7 +1034,7 @@ function MobilityHandoffPanel({
         >
           <span className="flex items-center gap-3">
             <MapPinned className="h-5 w-5 text-emerald-300" />
-            Open route on map
+            Open on Island Map
           </span>
           <span>→</span>
         </a>
@@ -882,7 +1045,7 @@ function MobilityHandoffPanel({
         >
           <span className="flex items-center gap-3">
             <Sparkles className="h-5 w-5 text-emerald-300" />
-            Send to Concierge
+            Ask Concierge
           </span>
           <span>→</span>
         </a>
@@ -894,7 +1057,7 @@ function MobilityHandoffPanel({
         >
           <span className="flex items-center gap-3">
             <FileText className="h-5 w-5 text-emerald-300" />
-            {copied ? "Trip brief copied" : "Copy trip brief"}
+            {copied ? "Dispatch Brief Copied" : "Copy Dispatch Brief"}
           </span>
           <span>↗</span>
         </button>
@@ -913,6 +1076,7 @@ function MobilityHandoffPanel({
 }
 
 function TripSummary({
+  activeIsland,
   quote,
   pickup,
   dropoff,
@@ -926,6 +1090,7 @@ function TripSummary({
   canRequest,
   onRequest,
 }: {
+  activeIsland: IslandCode;
   quote: Trip["quote"] | null;
   pickup: string;
   dropoff: string;
@@ -939,20 +1104,41 @@ function TripSummary({
   canRequest: boolean;
   onRequest: () => void;
 }) {
+  const pickupText = pickupLabel || pickup || "Pickup not selected";
+  const dropoffText = dropoffLabel || dropoff || "Dropoff not selected";
+  const dispatchBrief = [
+    "VI Guide Ride Request",
+    "",
+    `Island: ${islandLabels[activeIsland]}`,
+    `Pickup: ${pickupText}`,
+    `Dropoff: ${dropoffText}`,
+    `Trip type: ${tripType.replace("_", " ")}`,
+    `Service: ${serviceClass}`,
+    `Passengers: ${passengers}`,
+    `Luggage: ${luggage}`,
+    `Estimated fare: ${quote ? `$${quote.total}` : "Not calculated"}`,
+    "",
+    "Please help coordinate this ride request.",
+  ].join("\n");
+
+  const conciergeHref =
+    `/concierge?agentId=concierge&topic=mobility` +
+    `&context=${encodeURIComponent(dispatchBrief)}`;
+
   return (
     <motion.div
       key="summary"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-[2rem] bg-white p-6 text-slate-950 shadow-2xl"
+      className="rounded-[2rem] border border-amber-200/70 bg-[#fff6dc] p-6 text-slate-950 shadow-2xl"
     >
-      <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
-        Trip Summary
+      <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-800">
+        Island Fare Summary
       </p>
 
       <div className="mt-4 flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-black">Trip Quote</h2>
+          <h2 className="text-3xl font-black">Local Trip Quote</h2>
           <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
             {serviceClass} · {tripType.replace("_", " ")}
           </p>
@@ -983,18 +1169,32 @@ function TripSummary({
       <div className="mt-5 flex items-center gap-3 rounded-2xl bg-emerald-50 p-4 text-emerald-800">
         <CheckCircle2 className="h-5 w-5" />
         <p className="text-xs font-black uppercase tracking-[0.16em]">
-          Licensed driver network
+          USVI Taxi-Zone Dispatch
         </p>
       </div>
 
-      <button
-        type="button"
-        onClick={onRequest}
-        disabled={!quote || loading || !canRequest}
-        className="mt-5 w-full rounded-2xl bg-slate-950 px-4 py-4 text-xs font-black uppercase tracking-[0.2em] text-white disabled:opacity-40"
-      >
-        {loading ? "Requesting..." : canRequest ? "Request Ride" : "Login Required"}
-      </button>
+      {canRequest ? (
+        <button
+          type="button"
+          onClick={onRequest}
+          disabled={!quote || loading}
+          className="mt-5 w-full rounded-2xl bg-slate-950 px-4 py-4 text-xs font-black uppercase tracking-[0.2em] text-white disabled:opacity-40"
+        >
+          {loading ? "Requesting..." : "Send to Dispatch"}
+        </button>
+      ) : (
+        <a
+          href={conciergeHref}
+          className={cn(
+            "mt-5 block w-full rounded-2xl px-4 py-4 text-center text-xs font-black uppercase tracking-[0.2em]",
+            quote
+              ? "bg-slate-950 text-white"
+              : "pointer-events-none bg-slate-400 text-white opacity-50",
+          )}
+        >
+          Send to Dispatch
+        </a>
+      )}
     </motion.div>
   );
 }
@@ -1013,11 +1213,11 @@ function SafetyCard() {
     <div className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-5 shadow-2xl">
       <p className="flex items-center gap-2 text-sm font-black text-emerald-300">
         <Shield className="h-4 w-4" />
-        Territory Certified
+        USVI Taxi-Zone Ready
       </p>
       <p className="mt-2 text-sm font-semibold leading-relaxed text-white/55">
-        Every booking is built around official zones, transparent fare calculation,
-        passenger count, luggage count, and licensed-driver dispatch readiness.
+        Built for official USVI taxi-zone estimates, hotel concierge planning,
+        airport and ferry transfers, cruise-day coordination, and visitor route handoffs.
       </p>
     </div>
   );
@@ -1029,15 +1229,15 @@ function TrackingPanel({ trip, onCancel }: { trip: Trip; onCancel: () => void })
       key="tracking"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-[2rem] bg-white p-6 text-slate-950 shadow-2xl"
+      className="rounded-[2rem] border border-amber-200/70 bg-[#fff6dc] p-6 text-slate-950 shadow-2xl"
     >
       <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-emerald-100 text-emerald-700">
         <Loader2 className="h-12 w-12 animate-spin" />
       </div>
 
-      <h2 className="mt-5 text-center text-3xl font-black">Finding Your Driver</h2>
+      <h2 className="mt-5 text-center text-3xl font-black">Request Sent to Dispatch</h2>
       <p className="mt-2 text-center text-sm font-semibold text-slate-500">
-        Matching with the best licensed operator nearby.
+        Your ride request is now in the admin dispatch board for driver assignment.
       </p>
 
       <div className="mt-6 grid grid-cols-2 gap-3">
@@ -1060,7 +1260,7 @@ function TrackingPanel({ trip, onCancel }: { trip: Trip; onCancel: () => void })
         onClick={onCancel}
         className="mt-5 w-full rounded-2xl border border-rose-200 px-4 py-4 text-xs font-black uppercase tracking-[0.2em] text-rose-600"
       >
-        Cancel Request
+        Close Request View
       </button>
     </motion.div>
   );
@@ -1383,3 +1583,4 @@ function CounterCard({
     </div>
   );
 }
+``
