@@ -234,6 +234,33 @@ function buildReportOutline(lead: LeadRecord) {
   ].join("\n");
 }
 
+
+function buildDeliveryEmailBody(lead: LeadRecord) {
+  const tier = getTierDetails(lead);
+  const reportUrl = clean(lead.reportUrl, "");
+
+  return [
+    `Hi ${clean(lead.name, "there")},`,
+    ``,
+    `Your VI Guide property history report for ${clean(
+      lead.propertyName,
+      "your property",
+    )} is ready.`,
+    ``,
+    `Package: ${tier.label}`,
+    `Price: ${tier.price}`,
+    ``,
+    reportUrl === "Not provided"
+      ? `Report link: I will send the report link separately.`
+      : `Report link:\n${reportUrl}`,
+    ``,
+    `Please review it and let us know if you need a follow-up research packet, map export, archive lookup, or expanded ownership timeline.`,
+    ``,
+    `Best,`,
+    `VI Guide`,
+  ].join("\n");
+}
+
 function buildPaymentEmailBody(lead: LeadRecord) {
   const tier = getTierDetails(lead);
   const paymentLink = getPaymentLink(lead);
@@ -354,6 +381,11 @@ export default function PropertyReportLeadsPage() {
     await navigator.clipboard.writeText(buildLeadSummary(lead));
   }
 
+
+
+  async function copyDeliveryEmail(lead: LeadRecord) {
+    await navigator.clipboard.writeText(buildDeliveryEmailBody(lead));
+  }
 
   async function copyReportOutline(lead: LeadRecord) {
     await navigator.clipboard.writeText(buildReportOutline(lead));
@@ -681,6 +713,15 @@ export default function PropertyReportLeadsPage() {
                     >
                       <FileText className="h-4 w-4" />
                       Copy report outline
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => void copyDeliveryEmail(lead)}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
+                    >
+                      <PackageCheck className="h-4 w-4" />
+                      Copy delivery email
                     </button>
                   </div>
                 </div>
