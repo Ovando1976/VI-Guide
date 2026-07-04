@@ -185,6 +185,11 @@ function AppRoutes() {
 
       <Route path="/history/site/:siteId" element={<HistoricSiteDetailPage />} />
       <Route path="/history" element={<HistoryPage />} />
+
+      <Route path="/admin" element={<Navigate to="/admin/property-report-leads" replace />} />
+      <Route path="/property-report" element={<Navigate to="/history/property-report" replace />} />
+      <Route path="/property-report-leads" element={<Navigate to="/admin/property-report-leads" replace />} />
+      <Route path="/property-report-template" element={<Navigate to="/admin/property-report-template" replace />} />
       <Route path="/history/property-report" element={<PropertyReportRequestPage />} />
       <Route path="/admin/property-report-leads" element={<PropertyReportLeadsPage />} />
       <Route path="/admin/property-report-template" element={<PropertyReportTemplatePage />} />
