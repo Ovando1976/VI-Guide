@@ -214,21 +214,6 @@ export default function PropertyReportRequestPage() {
 
   return (
     <main className="min-h-screen bg-[#05060a] pb-[calc(96px+env(safe-area-inset-bottom))] text-white">
-      <div className="fixed bottom-5 right-5 z-[80] flex flex-col gap-2">
-        <a
-          href="/admin/property-report-leads"
-          className="rounded-full border border-amber-300/40 bg-amber-300 px-5 py-3 text-xs font-black text-zinc-950 shadow-2xl shadow-amber-950/30 hover:bg-amber-200"
-        >
-          Admin lead inbox
-        </a>
-        <a
-          href="/admin/property-report-template"
-          className="rounded-full border border-white/10 bg-zinc-950/90 px-5 py-3 text-xs font-black text-white shadow-2xl hover:bg-zinc-900"
-        >
-          Report template
-        </a>
-      </div>
-
       <section className="border-b border-white/10 bg-[radial-gradient(circle_at_18%_0%,rgba(251,191,36,0.2),transparent_32%),radial-gradient(circle_at_82%_0%,rgba(20,184,166,0.12),transparent_34%),linear-gradient(135deg,#020617,#09090f_55%,#1c1206)] px-5 py-8">
         <div className="mx-auto max-w-6xl">
           <button
