@@ -1,17 +1,34 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   Building2,
+  CheckCircle2,
   Clipboard,
+  CreditCard,
   Crown,
+  ExternalLink,
   Mail,
   RefreshCw,
   Search,
+  ShieldCheck,
+  type LucideIcon,
 } from "lucide-react";
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 
 import { db } from "../../firebase";
+
+type LeadStatus = "new" | "contacted" | "quoted" | "paid" | "delivered" | "closed";
+type PropertyReportTier = "starter" | "full" | "premium";
 
 type LeadRecord = {
   id: string;
@@ -25,10 +42,40 @@ type LeadRecord = {
   purpose?: string;
   tier?: string;
   notes?: string;
-  status?: string;
+  status?: LeadStatus | string;
   priority?: string;
   leadSummary?: string;
   createdAt?: any;
+};
+
+const STATUS_OPTIONS: { value: LeadStatus; label: string }[] = [
+  { value: "new", label: "New" },
+  { value: "contacted", label: "Contacted" },
+  { value: "quoted", label: "Quoted" },
+  { value: "paid", label: "Paid" },
+  { value: "delivered", label: "Delivered" },
+  { value: "closed", label: "Closed" },
+];
+
+const TIER_DETAILS: Record<PropertyReportTier, { label: string; price: string }> = {
+  starter: {
+    label: "Starter Property Snapshot",
+    price: "$49",
+  },
+  full: {
+    label: "Full Property History Report",
+    price: "$149",
+  },
+  premium: {
+    label: "Premium Research Packet",
+    price: "$299+",
+  },
+};
+
+const PAYMENT_LINKS: Record<PropertyReportTier, string> = {
+  starter: String(import.meta.env.VITE_PROPERTY_REPORT_STARTER_PAYMENT_URL || ""),
+  full: String(import.meta.env.VITE_PROPERTY_REPORT_FULL_PAYMENT_URL || ""),
+  premium: String(import.meta.env.VITE_PROPERTY_REPORT_PREMIUM_PAYMENT_URL || ""),
 };
 
 function clean(value: unknown, fallback = "Not provided") {
@@ -39,8 +86,101 @@ function clean(value: unknown, fallback = "Not provided") {
 function formatDate(value: any) {
   if (!value) return "No date";
   if (typeof value?.toDate === "function") return value.toDate().toLocaleString();
+
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "Date unavailable" : date.toLocaleString();
+}
+
+function normalizeTier(value: unknown): PropertyReportTier {
+  const tier = String(value ?? "").toLowerCase();
+
+  if (tier.includes("premium")) return "premium";
+  if (tier.includes("full")) return "full";
+  return "starter";
+}
+
+function getTierDetails(lead: LeadRecord) {
+  return TIER_DETAILS[normalizeTier(lead.tier)];
+}
+
+function getPaymentLink(lead: LeadRecord) {
+  return PAYMENT_LINKS[normalizeTier(lead.tier)];
+}
+
+function buildLeadSummary(lead: LeadRecord) {
+  const tier = getTierDetails(lead);
+
+  return (
+    lead.leadSummary ||
+    [
+      "VI Guide Property Report Lead",
+      "",
+      `Name: ${clean(lead.name)}`,
+      `Email: ${clean(lead.email)}`,
+      `Phone: ${clean(lead.phone)}`,
+      `Island: ${clean(lead.island)}`,
+      `Property: ${clean(lead.propertyName)}`,
+      `Parcel ID: ${clean(lead.parcelId)}`,
+      `Address / Area: ${clean(lead.address)}`,
+      `Purpose: ${clean(lead.purpose)}`,
+      `Tier: ${tier.label} — ${tier.price}`,
+      `Status: ${clean(lead.status, "new")}`,
+      `Priority: ${clean(lead.priority, "normal")}`,
+      "",
+      "Notes:",
+      clean(lead.notes),
+    ].join("\n")
+  );
+}
+
+function buildReviewEmailBody(lead: LeadRecord) {
+  return [
+    `Hi ${clean(lead.name, "there")},`,
+    "",
+    `Thank you for requesting a VI Guide property history report for ${clean(
+      lead.propertyName,
+      "your property",
+    )}.`,
+    "",
+    "We received your request and will review the property details, available map references, old place names, archive leads, and historical context.",
+    "",
+    "Next step: we will confirm the scope, delivery timeline, and payment option before beginning the report.",
+    "",
+    "Request summary:",
+    buildLeadSummary(lead),
+    "",
+    "Best,",
+    "VI Guide",
+  ].join("\n");
+}
+
+function buildPaymentEmailBody(lead: LeadRecord) {
+  const tier = getTierDetails(lead);
+  const paymentLink = getPaymentLink(lead);
+
+  return [
+    `Hi ${clean(lead.name, "there")},`,
+    "",
+    `We reviewed your property report request for ${clean(
+      lead.propertyName,
+      "your property",
+    )}.`,
+    "",
+    `Recommended package: ${tier.label}`,
+    `Price: ${tier.price}`,
+    "",
+    paymentLink
+      ? `You can complete payment here:\n${paymentLink}`
+      : "Payment link: I will send the secure payment link separately.",
+    "",
+    "Once payment is confirmed, we will begin preparing the property history report.",
+    "",
+    "Request summary:",
+    buildLeadSummary(lead),
+    "",
+    "Best,",
+    "VI Guide",
+  ].join("\n");
 }
 
 export default function PropertyReportLeadsPage() {
@@ -48,7 +188,9 @@ export default function PropertyReportLeadsPage() {
   const [leads, setLeads] = useState<LeadRecord[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [updatingId, setUpdatingId] = useState("");
   const [error, setError] = useState("");
+  const hasAnyPaymentLink = Object.values(PAYMENT_LINKS).some(Boolean);
 
   async function loadLeads() {
     setLoading(true);
@@ -64,9 +206,9 @@ export default function PropertyReportLeadsPage() {
       const snapshot = await getDocs(leadsQuery);
 
       setLeads(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...(doc.data() as Omit<LeadRecord, "id">),
+        snapshot.docs.map((leadDoc) => ({
+          id: leadDoc.id,
+          ...(leadDoc.data() as Omit<LeadRecord, "id">),
         })),
       );
     } catch (err) {
@@ -106,27 +248,52 @@ export default function PropertyReportLeadsPage() {
     );
   }, [leads, search]);
 
-  async function copyLead(lead: LeadRecord) {
-    const summary =
-      lead.leadSummary ||
-      [
-        "VI Guide Property Report Lead",
-        "",
-        `Name: ${clean(lead.name)}`,
-        `Email: ${clean(lead.email)}`,
-        `Phone: ${clean(lead.phone)}`,
-        `Island: ${clean(lead.island)}`,
-        `Property: ${clean(lead.propertyName)}`,
-        `Parcel ID: ${clean(lead.parcelId)}`,
-        `Address / Area: ${clean(lead.address)}`,
-        `Purpose: ${clean(lead.purpose)}`,
-        `Tier: ${clean(lead.tier)}`,
-        "",
-        "Notes:",
-        clean(lead.notes),
-      ].join("\n");
+  const counts = useMemo(() => {
+    return STATUS_OPTIONS.reduce<Record<LeadStatus, number>>(
+      (acc, option) => {
+        acc[option.value] = leads.filter(
+          (lead) => (lead.status || "new") === option.value,
+        ).length;
+        return acc;
+      },
+      {
+        new: 0,
+        contacted: 0,
+        quoted: 0,
+        paid: 0,
+        delivered: 0,
+        closed: 0,
+      },
+    );
+  }, [leads]);
 
-    await navigator.clipboard.writeText(summary);
+  async function copyLead(lead: LeadRecord) {
+    await navigator.clipboard.writeText(buildLeadSummary(lead));
+  }
+
+  async function copyPaymentRequest(lead: LeadRecord) {
+    await navigator.clipboard.writeText(buildPaymentEmailBody(lead));
+  }
+
+  async function updateLeadStatus(lead: LeadRecord, status: LeadStatus) {
+    setUpdatingId(lead.id);
+    setError("");
+
+    try {
+      await updateDoc(doc(db, "propertyReportLeads", lead.id), {
+        status,
+        updatedAt: serverTimestamp(),
+      });
+
+      setLeads((current) =>
+        current.map((item) => (item.id === lead.id ? { ...item, status } : item)),
+      );
+    } catch (err) {
+      console.error("Failed to update lead status", err);
+      setError("Could not update lead status. Check Firestore update rules.");
+    } finally {
+      setUpdatingId("");
+    }
   }
 
   return (
@@ -154,7 +321,8 @@ export default function PropertyReportLeadsPage() {
               </h1>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-300">
-                Review incoming paid report requests, copy the lead summary, and follow up.
+                Review incoming report requests, send the right payment request,
+                update the sales status, and track delivery.
               </p>
             </div>
 
@@ -167,6 +335,31 @@ export default function PropertyReportLeadsPage() {
               </p>
             </div>
           </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {STATUS_OPTIONS.map((option) => (
+              <div
+                key={option.value}
+                className="rounded-2xl border border-white/10 bg-white/[0.045] p-3"
+              >
+                <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/40">
+                  {option.label}
+                </p>
+                <p className="mt-1 text-2xl font-black text-white">
+                  {counts[option.value].toLocaleString()}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {!hasAnyPaymentLink ? (
+            <div className="mt-5 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4 text-sm leading-6 text-amber-50/80">
+              Payment links are not configured yet. Add Stripe or checkout URLs
+              to <code className="rounded bg-black/30 px-1">.env.local</code>.
+              Payment email drafts will still work and say the secure link will
+              be sent separately.
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -195,7 +388,7 @@ export default function PropertyReportLeadsPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-6">
         {error ? (
-          <div className="rounded-[2rem] border border-red-300/20 bg-red-300/10 p-5 text-sm leading-7 text-red-50/80">
+          <div className="mb-4 rounded-[2rem] border border-red-300/20 bg-red-300/10 p-5 text-sm leading-7 text-red-50/80">
             {error}
           </div>
         ) : null}
@@ -213,75 +406,175 @@ export default function PropertyReportLeadsPage() {
         ) : null}
 
         <div className="grid gap-4">
-          {filtered.map((lead) => (
-            <article
-              key={lead.id}
-              className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl"
-            >
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="rounded-full bg-amber-300 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-zinc-950">
-                      {clean(lead.tier, "tier")}
-                    </span>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white/60">
-                      {clean(lead.status, "new")}
-                    </span>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white/60">
-                      {clean(lead.priority, "normal")}
-                    </span>
+          {filtered.map((lead) => {
+            const tier = getTierDetails(lead);
+            const paymentLink = getPaymentLink(lead);
+
+            const reviewEmailHref = lead.email
+              ? `mailto:${lead.email}?subject=${encodeURIComponent(
+                  `VI Guide Property Report: ${clean(lead.propertyName, "your property")}`,
+                )}&body=${encodeURIComponent(buildReviewEmailBody(lead))}`
+              : "";
+
+            const paymentEmailHref = lead.email
+              ? `mailto:${lead.email}?subject=${encodeURIComponent(
+                  `Payment link: ${tier.label} for ${clean(
+                    lead.propertyName,
+                    "your property",
+                  )}`,
+                )}&body=${encodeURIComponent(buildPaymentEmailBody(lead))}`
+              : "";
+
+            return (
+              <article
+                key={lead.id}
+                className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-2xl"
+              >
+                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge tone="gold">
+                        {tier.label} · {tier.price}
+                      </Badge>
+                      <Badge>{clean(lead.status, "new")}</Badge>
+                      <Badge>{clean(lead.priority, "normal")}</Badge>
+                    </div>
+
+                    <h2 className="mt-4 text-2xl font-black text-white">
+                      {clean(lead.propertyName, "Unnamed property")}
+                    </h2>
+
+                    <p className="mt-2 text-sm leading-6 text-white/55">
+                      {clean(lead.purpose)} · {clean(lead.island)} ·{" "}
+                      {formatDate(lead.createdAt)}
+                    </p>
                   </div>
 
-                  <h2 className="mt-4 text-2xl font-black text-white">
-                    {clean(lead.propertyName, "Unnamed property")}
-                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    {reviewEmailHref ? (
+                      <a
+                        href={reviewEmailHref}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
+                      >
+                        <Mail className="h-4 w-4" />
+                        Review reply
+                      </a>
+                    ) : null}
 
-                  <p className="mt-2 text-sm leading-6 text-white/55">
-                    {clean(lead.purpose)} · {clean(lead.island)} · {formatDate(lead.createdAt)}
-                  </p>
-                </div>
+                    {paymentEmailHref ? (
+                      <a
+                        href={paymentEmailHref}
+                        className="inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300 px-4 py-2 text-xs font-black text-zinc-950 hover:bg-amber-200"
+                      >
+                        <CreditCard className="h-4 w-4" />
+                        Payment email
+                      </a>
+                    ) : null}
 
-                <div className="flex flex-wrap gap-2">
-                  {lead.email ? (
-                    <a
-                      href={`mailto:${lead.email}`}
+                    {paymentLink ? (
+                      <a
+                        href={paymentLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Open link
+                      </a>
+                    ) : null}
+
+                    <button
+                      type="button"
+                      onClick={() => void copyPaymentRequest(lead)}
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
                     >
-                      <Mail className="h-4 w-4" />
-                      Email
-                    </a>
-                  ) : null}
-
-                  <button
-                    type="button"
-                    onClick={() => void copyLead(lead)}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
-                  >
-                    <Clipboard className="h-4 w-4" />
-                    Copy
-                  </button>
+                      <Clipboard className="h-4 w-4" />
+                      Copy payment
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
-                <Info icon={Building2} label="Requester" value={`${clean(lead.name)} · ${clean(lead.email)}`} />
-                <Info icon={Clipboard} label="Parcel / address" value={`${clean(lead.parcelId)} · ${clean(lead.address)}`} />
-                <Info icon={Mail} label="Phone" value={clean(lead.phone)} />
-              </div>
+                <div className="mt-5 grid gap-3 md:grid-cols-3">
+                  <Info
+                    icon={Building2}
+                    label="Requester"
+                    value={`${clean(lead.name)} · ${clean(lead.email)}`}
+                  />
+                  <Info
+                    icon={Clipboard}
+                    label="Parcel / address"
+                    value={`${clean(lead.parcelId)} · ${clean(lead.address)}`}
+                  />
+                  <Info icon={Mail} label="Phone" value={clean(lead.phone)} />
+                </div>
 
-              {lead.notes ? (
                 <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/40">
-                    Notes
+                  <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-white/40">
+                    <ShieldCheck className="h-4 w-4 text-amber-300" />
+                    Sales Status
                   </p>
-                  <p className="mt-2 text-sm leading-7 text-white/70">{lead.notes}</p>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {STATUS_OPTIONS.map((option) => {
+                      const active = (lead.status || "new") === option.value;
+                      const updating = updatingId === lead.id;
+
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          disabled={updating}
+                          onClick={() => void updateLeadStatus(lead, option.value)}
+                          className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-[11px] font-black uppercase tracking-[0.12em] transition disabled:opacity-50 ${
+                            active
+                              ? "bg-amber-300 text-zinc-950"
+                              : "bg-white/10 text-white/55 hover:bg-white/15 hover:text-white"
+                          }`}
+                        >
+                          {active ? <CheckCircle2 className="h-3.5 w-3.5" /> : null}
+                          {option.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              ) : null}
-            </article>
-          ))}
+
+                {lead.notes ? (
+                  <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/40">
+                      Notes
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-white/70">
+                      {lead.notes}
+                    </p>
+                  </div>
+                ) : null}
+              </article>
+            );
+          })}
         </div>
       </section>
     </main>
+  );
+}
+
+function Badge({
+  children,
+  tone = "default",
+}: {
+  children: ReactNode;
+  tone?: "default" | "gold";
+}) {
+  return (
+    <span
+      className={`rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] ${
+        tone === "gold"
+          ? "bg-amber-300 text-zinc-950"
+          : "bg-white/10 text-white/60"
+      }`}
+    >
+      {children}
+    </span>
   );
 }
 
@@ -290,7 +583,7 @@ function Info({
   label,
   value,
 }: {
-  icon: typeof Building2;
+  icon: LucideIcon;
   label: string;
   value: string;
 }) {
