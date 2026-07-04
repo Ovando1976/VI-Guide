@@ -34,6 +34,7 @@ import HistoricMapsPanel from "./history/panels/HistoricMapsPanel";
 import HistoricSitesPanel from "./history/panels/HistoricSitesPanel";
 import HistoryDictionaryPanel from "./history/panels/HistoryDictionaryPanel";
 import HistoryGalleryPanel from "./history/panels/HistoryGalleryPanel";
+import HistoryRevenueStrip from "./history/HistoryRevenueStrip";
 import InteractiveHistoryTimeline from "./history/InteractiveHistoryTimeline";
 import InteractiveGovernorsView from "./history/InteractiveGovernorsView";
 
@@ -337,7 +338,25 @@ export default function HistoryKnowledgePage({
             St. Thomas source facts.
           </p>
 
-          <div className="mt-6 flex gap-2 overflow-x-auto pb-1">
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <HeroMetric
+              label="Searchable records"
+              value={historyKnowledge.length}
+              detail="People, places, ships, laws, companies"
+            />
+            <HeroMetric
+              label="Timeline events"
+              value={stThomasEarlyTimeline.length}
+              detail="Early St. Thomas and colonial source events"
+            />
+            <HeroMetric
+              label="Governance records"
+              value={governorRecords.length}
+              detail="Danish West Indies administrations"
+            />
+          </div>
+
+          <div className="mt-6 flex gap-2 overflow-x-auto rounded-[1.5rem] border border-white/10 bg-black/20 p-2">
             <ModeButton active={view === "hub"} icon={Database} label="Hub" onClick={() => goToView("hub")} />
             <ModeButton active={view === "records"} icon={BookOpen} label="Records" onClick={() => goToView("records")} />
             <ModeButton active={view === "timeline"} icon={Clock3} label="Timeline" onClick={() => goToView("timeline")} />
@@ -350,6 +369,12 @@ export default function HistoryKnowledgePage({
           </div>
         </div>
       </section>
+
+      {view === "hub" ? (
+        <section className="mx-auto max-w-6xl px-5 pt-6">
+          <HistoryRevenueStrip />
+        </section>
+      ) : null}
 
       <section className="sticky top-0 z-30 border-b border-white/10 bg-[#05060a]/92 px-5 py-4 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl">
@@ -572,6 +597,28 @@ function RecordsView({
         )}
       </article>
     </section>
+  );
+}
+
+function HeroMetric({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: number;
+  detail: string;
+}) {
+  return (
+    <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20">
+      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-300/80">
+        {label}
+      </p>
+      <p className="mt-2 text-3xl font-black leading-none text-white">
+        {value.toLocaleString()}
+      </p>
+      <p className="mt-2 text-xs leading-5 text-white/45">{detail}</p>
+    </div>
   );
 }
 
