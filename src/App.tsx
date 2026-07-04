@@ -30,6 +30,7 @@ const Maps = lazy(() => import("./components/Maps"));
 const HistoryPage = lazy(() => import("./components/HistoryKnowledgePage"));
 const PropertyReportRequestPage = lazy(() => import("./pages/history/PropertyReportRequestPage"));
 const PropertyReportLeadsPage = lazy(() => import("./pages/admin/PropertyReportLeadsPage"));
+const PropertyReportTemplatePage = lazy(() => import("./pages/admin/PropertyReportTemplatePage"));
 const GovernorsPage = lazy(() => import("./components/history/GovernorsPage"));
 const VisitorHome = lazy(() => import("./components/VisitorHome"));
 const EstateDetailPage = lazy(() => import("./pages/estates/EstateDetailPage"));
@@ -186,6 +187,7 @@ function AppRoutes() {
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/history/property-report" element={<PropertyReportRequestPage />} />
       <Route path="/admin/property-report-leads" element={<PropertyReportLeadsPage />} />
+      <Route path="/admin/property-report-template" element={<PropertyReportTemplatePage />} />
       <Route path="/history/knowledge" element={<Navigate to="/history" replace />} />
       <Route path="/history/timeline" element={<HistoryPage initialView="timeline" />} />
       <Route path="/history/governors" element={<HistoryPage initialView="governors" />} />
