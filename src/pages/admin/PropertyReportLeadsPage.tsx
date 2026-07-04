@@ -168,6 +168,34 @@ function buildReviewEmailBody(lead: LeadRecord) {
 }
 
 
+
+function buildTemplateDraft(lead: LeadRecord) {
+  const tier = getTierDetails(lead);
+
+  return {
+    clientName: clean(lead.name, ""),
+    clientEmail: clean(lead.email, ""),
+    propertyName: clean(lead.propertyName, ""),
+    island: clean(lead.island, ""),
+    parcelId: clean(lead.parcelId, ""),
+    address: clean(lead.address, ""),
+    packageName: `${tier.label} — ${tier.price}`,
+    executiveSummary:
+      "Summarize what is known about this property, its historic name, island context, estate or parcel relationship, and why it matters.",
+    historicalIdentity:
+      "- Historic estate / place names:\n- Alternate spellings:\n- Quarter / district:\n- Related nearby places:",
+    mapNotes:
+      "- Modern location:\n- Historic map references:\n- Parcel / boundary notes:\n- Neighboring estates or landmarks:",
+    archiveLeads:
+      "- Danish West Indies records:\n- Rigsarkivet references:\n- NARA / local archive references:\n- Deeds, tax, probate, church, census, or land list leads:",
+    ownershipTimeline:
+      "Period | Person / Entity | Evidence | Notes\nUnknown | Unknown | Needs research | Add findings here",
+    findings: "1. \n2. \n3. ",
+    recommendedNextResearch: "- \n- \n- ",
+    customerNotes: clean(lead.notes, ""),
+  };
+}
+
 function buildReportOutline(lead: LeadRecord) {
   const tier = getTierDetails(lead);
 
@@ -385,6 +413,18 @@ export default function PropertyReportLeadsPage() {
 
   async function copyDeliveryEmail(lead: LeadRecord) {
     await navigator.clipboard.writeText(buildDeliveryEmailBody(lead));
+  }
+
+
+  function openReportTemplate(lead: LeadRecord) {
+    localStorage.setItem(
+      "viGuidePropertyReportDraft",
+      JSON.stringify(buildTemplateDraft(lead)),
+    );
+
+    localStorage.setItem("viGuidePropertyReportOutline", buildReportOutline(lead));
+
+    navigate("/admin/property-report-template");
   }
 
   async function copyReportOutline(lead: LeadRecord) {
@@ -717,7 +757,7 @@ export default function PropertyReportLeadsPage() {
 
                     <button
                       type="button"
-                      onClick={() => navigate("/admin/property-report-template")}
+                      onClick={() => openReportTemplate(lead)}
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
                     >
                       <FileText className="h-4 w-4" />
