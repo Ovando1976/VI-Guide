@@ -3,10 +3,11 @@ import React, { Suspense, lazy, useState } from "react";
 import { Navigate, Route, Routes, useNavigate, useSearchParams } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 
-import VisitorHome from "./components/VisitorHome";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
+import HistoricSiteDetailPage from "./pages/history/HistoricSiteDetailPage";
+import EnhancedPhotosPage from "./components/history/EnhancedPhotosPage";
 import type {
   AIDocument,
   BeachDoc,
@@ -14,9 +15,6 @@ import type {
   IslandCode,
   PlaceDoc,
 } from "./types";
-import EstateDetailPage from "./pages/estates/EstateDetailPage";
-import EstateHistoryPage from "./pages/estates/EstateHistoryPage";
-import EstateArchivesPage from "./pages/estates/EstateArchivesPage";
 
 const Explore = lazy(() => import("./components/Explore"));
 const Beaches = lazy(() => import("./components/Beaches"));
@@ -29,8 +27,14 @@ const Profile = lazy(() => import("./components/Profile"));
 const MerchantDashboard = lazy(() => import("./components/MerchantDashboard"));
 const CruisePlanner = lazy(() => import("./components/CruisePlanner"));
 const Maps = lazy(() => import("./components/Maps"));
-const HistoryKnowledgePage = lazy(() => import("./components/HistoryKnowledgePage"));
+const HistoryPage = lazy(() => import("./components/HistoryKnowledgePage"));
 const GovernorsPage = lazy(() => import("./components/history/GovernorsPage"));
+const VisitorHome = lazy(() => import("./components/VisitorHome"));
+const EstateDetailPage = lazy(() => import("./pages/estates/EstateDetailPage"));
+const EstateHistoryPage = lazy(() => import("./pages/estates/EstateHistoryPage"));
+const EstateArchivesPage = lazy(() => import("./pages/estates/EstateArchivesPage"));
+
+
 
 function PageLoader() {
   return (
@@ -176,15 +180,17 @@ function AppRoutes() {
       <Route path="/merchant" element={<MerchantDashboard user={null} profile={null} />} />
       <Route path="/cruise" element={<CruisePlanner />} />
 
-      <Route path="/history" element={<HistoryKnowledgePage />} />
+      <Route path="/history/site/:siteId" element={<HistoricSiteDetailPage />} />
+      <Route path="/history" element={<HistoryPage />} />
       <Route path="/history/knowledge" element={<Navigate to="/history" replace />} />
-      <Route path="/history/timeline" element={<HistoryKnowledgePage />} />
-      <Route path="/history/governors" element={<GovernorsPage />} />
+      <Route path="/history/timeline" element={<HistoryPage initialView="timeline" />} />
+      <Route path="/history/governors" element={<HistoryPage initialView="governors" />} />
       <Route path="/history/*" element={<Navigate to="/history" replace />} />
 
       <Route path="/estates/:geoid" element={<EstateDetailPage />} />
       <Route path="/estates/:geoid/history" element={<EstateHistoryPage />} />
       <Route path="/estates/:geoid/archives" element={<EstateArchivesPage />} />
+      <Route path="/history/enhanced-photos" element={<EnhancedPhotosPage />} />
 
 
 

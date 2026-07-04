@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import {
   Archive,
   BookOpen,
@@ -22,20 +23,48 @@ import {
   historyKnowledge,
   type HistoricalKnowledgeRecord,
 } from "../data/history/books/historyKnowledge";
-import { stThomasEarlyTimeline } from "../data/history/timelines";
+import { stThomasEarlyTimeline } from "../data/history/timelines/unifiedHistoryTimelineCompat";
 import {
-  danishWestIndiesGovernors,
-  type DanishWestIndiesGovernorRecord,
-} from "../data/history/danishWestIndiesGovernors";
+  allGovernorRecords,
+  type GovernanceRecord,
+} from "../data/history/governancePeriods";
 
-type ViewMode = "hub" | "records" | "timeline" | "governors";
+import HistoricArchivesPanel from "./history/panels/HistoricArchivesPanel";
+import HistoricMapsPanel from "./history/panels/HistoricMapsPanel";
+import HistoricSitesPanel from "./history/panels/HistoricSitesPanel";
+import HistoryDictionaryPanel from "./history/panels/HistoryDictionaryPanel";
+import HistoryGalleryPanel from "./history/panels/HistoryGalleryPanel";
+import InteractiveHistoryTimeline from "./history/InteractiveHistoryTimeline";
+import InteractiveGovernorsView from "./history/InteractiveGovernorsView";
+
+type ViewMode =
+  | "hub"
+  | "records"
+  | "timeline"
+  | "governors"
+  | "archives"
+  | "maps"
+  | "sites"
+  | "dictionary"
+  | "gallery";
 
 type HistoryKnowledgePageProps = {
   initialView?: ViewMode;
 };
 
-const governorRecords =
-  danishWestIndiesGovernors as readonly DanishWestIndiesGovernorRecord[];
+const VIEW_MODES: readonly ViewMode[] = [
+  "hub",
+  "records",
+  "timeline",
+  "governors",
+  "archives",
+  "maps",
+  "sites",
+  "dictionary",
+  "gallery",
+] as const;
+
+const governorRecords = allGovernorRecords as readonly GovernanceRecord[];
 
 const TYPE_LABELS: Partial<Record<HistoricalKnowledgeRecord["type"], string>> = {
   place: "Places",
@@ -53,7 +82,14 @@ const TYPE_LABELS: Partial<Record<HistoricalKnowledgeRecord["type"], string>> = 
   economic_shift: "Economic Shifts",
 };
 
-const historyModules = [
+type HistoryModule = {
+  title: string;
+  subtitle: string;
+  view: ViewMode;
+  icon: LucideIcon;
+};
+
+const historyModules: readonly HistoryModule[] = [
   {
     title: "Records",
     subtitle: "Search people, places, events, ships, laws, and archive records.",
@@ -75,34 +111,34 @@ const historyModules = [
   {
     title: "Archives",
     subtitle: "Danish records, NARA materials, maps, and historical documents.",
-    path: "/history/archives",
+    view: "archives",
     icon: Archive,
   },
   {
     title: "Historic Maps",
     subtitle: "Historic map layers, old place names, and Atlas evidence.",
-    path: "/map?filter=history",
+    view: "maps",
     icon: Map,
   },
   {
     title: "Historic Sites",
     subtitle: "Forts, churches, estates, ruins, and protected sites.",
-    path: "/map?filter=history",
+    view: "sites",
     icon: Landmark,
   },
   {
     title: "Dictionary",
     subtitle: "Search the Geographic Dictionary and place-name records.",
-    path: "/dictionary",
+    view: "dictionary",
     icon: BookOpen,
   },
   {
     title: "Gallery",
     subtitle: "Historic photos, documents, scans, and visual records.",
-    path: "/history/gallery",
+    view: "gallery",
     icon: Camera,
   },
-] as const;
+];
 
 function asArray<T>(value: readonly T[] | T[] | null | undefined): T[] {
   return Array.isArray(value) ? [...value] : [];
@@ -116,35 +152,47 @@ function typeLabel(type: HistoricalKnowledgeRecord["type"]) {
   return TYPE_LABELS[type] ?? String(type).replaceAll("_", " ");
 }
 
+function isViewMode(value: unknown): value is ViewMode {
+  return VIEW_MODES.includes(value as ViewMode);
+}
+
+function getViewFromSearch(search: string): ViewMode | null {
+  const value = new URLSearchParams(search).get("view");
+  return isViewMode(value) ? value : null;
+}
+
 export default function HistoryKnowledgePage({
   initialView = "hub",
 }: HistoryKnowledgePageProps) {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const safeInitialView: ViewMode =
-    ["hub", "records", "timeline", "governors"].includes(initialView)
-      ? initialView
-      : "hub";
+  const safeInitialView: ViewMode = isViewMode(initialView) ? initialView : "hub";
 
   const [query, setQuery] = useState("");
-  const [view, setView] = useState<ViewMode>(safeInitialView);
+  const [view, setView] = useState<ViewMode>(
+    () => getViewFromSearch(location.search) ?? safeInitialView,
+  );
+
   const [type, setType] = useState<"all" | HistoricalKnowledgeRecord["type"]>(
     "all",
   );
   const [selected, setSelected] = useState<HistoricalKnowledgeRecord | null>(
     historyKnowledge[0] ?? null,
   );
-  const [governorOffice, setGovernorOffice] = useState("all");
+
+  useEffect(() => {
+    const routeView = getViewFromSearch(location.search);
+    if (routeView) setView(routeView);
+  }, [location.search]);
+
+  function goToView(nextView: ViewMode) {
+    setView(nextView);
+    navigate(nextView === "hub" ? "/history" : `/history?view=${nextView}`);
+  }
 
   const types = useMemo(() => {
     return Array.from(new Set(historyKnowledge.map((item) => item.type))).sort();
-  }, []);
-
-  const governorOffices = useMemo(() => {
-    return [
-      "all",
-      ...Array.from(new Set(governorRecords.map((item) => item.office))),
-    ];
   }, []);
 
   const filtered = useMemo(() => {
@@ -198,8 +246,6 @@ export default function HistoryKnowledgePage({
     const q = normalizeSearch(query);
 
     return governorRecords.filter((item) => {
-      const officeMatch = governorOffice === "all" || item.office === governorOffice;
-
       const haystack = [
         item.name,
         item.office,
@@ -212,9 +258,9 @@ export default function HistoryKnowledgePage({
         .join(" ")
         .toLowerCase();
 
-      return officeMatch && (!q || haystack.includes(q));
+      return !q || haystack.includes(q);
     });
-  }, [query, governorOffice]);
+  }, [query]);
 
   const relatedRecords = useMemo(() => {
     if (!selected) return [];
@@ -237,25 +283,48 @@ export default function HistoryKnowledgePage({
     }
   }, [filtered, selected, view]);
 
+  const activePanel =
+    view === "archives" ? (
+      <HistoricArchivesPanel />
+    ) : view === "maps" ? (
+      <HistoricMapsPanel />
+    ) : view === "sites" ? (
+      <HistoricSitesPanel />
+    ) : view === "dictionary" ? (
+      <HistoryDictionaryPanel />
+    ) : view === "gallery" ? (
+      <HistoryGalleryPanel />
+    ) : null;
+
   return (
     <main className="min-h-screen bg-[#05060a] pb-[calc(120px+env(safe-area-inset-bottom))] text-white">
       <section className="border-b border-white/10 bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.18),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(20,184,166,0.12),transparent_32%),linear-gradient(135deg,#020617,#080811_55%,#1c1206)] px-5 py-8">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-300 text-zinc-950 shadow-lg">
-              <ShipWheel className="h-6 w-6" />
-            </span>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-300 text-zinc-950 shadow-lg">
+                <ShipWheel className="h-6 w-6" />
+              </span>
 
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.32em] text-amber-300">
-                VI Guide History
-              </p>
-              <p className="mt-1 text-xs font-semibold text-white/45">
-                {historyKnowledge.length.toLocaleString()} records ·{" "}
-                {stThomasEarlyTimeline.length.toLocaleString()} timeline events ·{" "}
-                {governorRecords.length.toLocaleString()} governors
-              </p>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.32em] text-amber-300">
+                  VI Guide History
+                </p>
+                <p className="mt-1 text-xs font-semibold text-white/45">
+                  {historyKnowledge.length.toLocaleString()} records ·{" "}
+                  {stThomasEarlyTimeline.length.toLocaleString()} timeline events ·{" "}
+                  {governorRecords.length.toLocaleString()} governors
+                </p>
+              </div>
             </div>
+
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2.5 text-xs font-black text-white/80 transition hover:bg-white/15"
+            >
+              ← Back Home
+            </button>
           </div>
 
           <h1 className="mt-5 font-serif text-4xl font-black leading-none tracking-[-0.05em] sm:text-6xl">
@@ -264,14 +333,20 @@ export default function HistoryKnowledgePage({
 
           <p className="mt-5 max-w-3xl text-sm leading-6 text-zinc-300 sm:text-base">
             Search historical records, timelines, governors, people, places,
-            companies, ships, archives, maps, and early St. Thomas source facts.
+            companies, ships, archives, maps, historic sites, images, and early
+            St. Thomas source facts.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            <ModeButton active={view === "hub"} icon={Database} label="Hub" onClick={() => setView("hub")} />
-            <ModeButton active={view === "records"} icon={BookOpen} label="Records" onClick={() => setView("records")} />
-            <ModeButton active={view === "timeline"} icon={Clock3} label="Timeline" onClick={() => setView("timeline")} />
-            <ModeButton active={view === "governors"} icon={Crown} label="Governors" onClick={() => setView("governors")} />
+          <div className="mt-6 flex gap-2 overflow-x-auto pb-1">
+            <ModeButton active={view === "hub"} icon={Database} label="Hub" onClick={() => goToView("hub")} />
+            <ModeButton active={view === "records"} icon={BookOpen} label="Records" onClick={() => goToView("records")} />
+            <ModeButton active={view === "timeline"} icon={Clock3} label="Timeline" onClick={() => goToView("timeline")} />
+            <ModeButton active={view === "governors"} icon={Crown} label="Governors" onClick={() => goToView("governors")} />
+            <ModeButton active={view === "archives"} icon={Archive} label="Archives" onClick={() => goToView("archives")} />
+            <ModeButton active={view === "maps"} icon={MapPinned} label="Maps" onClick={() => goToView("maps")} />
+            <ModeButton active={view === "sites"} icon={Landmark} label="Sites" onClick={() => goToView("sites")} />
+            <ModeButton active={view === "dictionary"} icon={BookOpen} label="Dictionary" onClick={() => goToView("dictionary")} />
+            <ModeButton active={view === "gallery"} icon={Camera} label="Gallery" onClick={() => goToView("gallery")} />
           </div>
         </div>
       </section>
@@ -301,15 +376,18 @@ export default function HistoryKnowledgePage({
         </div>
       </section>
 
-      {view === "hub" ? <HistoryHub setView={setView} navigate={navigate} /> : null}
-      {view === "timeline" ? <TimelineView timeline={timeline} /> : null}
+      {view === "hub" ? <HistoryHub setView={goToView} navigate={navigate} /> : null}
+
+      {activePanel ? (
+        <section className="mx-auto max-w-6xl px-5 py-6">{activePanel}</section>
+      ) : null}
+
+      {view === "timeline" ? <InteractiveHistoryTimeline timeline={timeline} /> : null}
 
       {view === "governors" ? (
-        <GovernorsView
-          governors={governors}
-          governorOffice={governorOffice}
-          governorOffices={governorOffices}
-          setGovernorOffice={setGovernorOffice}
+        <InteractiveGovernorsView
+          governors={[...governors]}
+          timeline={stThomasEarlyTimeline}
         />
       ) : null}
 
@@ -345,10 +423,7 @@ function HistoryHub({
             <button
               key={module.title}
               type="button"
-              onClick={() => {
-                if ("view" in module) setView(module.view);
-                if ("path" in module) navigate(module.path);
-              }}
+              onClick={() => setView(module.view)}
               className="group rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 text-left shadow-xl transition hover:-translate-y-1 hover:bg-white/10"
             >
               <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-amber-300 transition group-hover:bg-amber-300 group-hover:text-zinc-950">
@@ -372,9 +447,9 @@ function HistoryHub({
           </p>
           <h2 className="mt-3 text-3xl font-black">Ask the island’s past</h2>
           <p className="mt-3 text-sm leading-relaxed text-white/60">
-            This section connects governors, estates, historic sites, dictionary
-            entries, archive records, old maps, images, and the Territory Atlas
-            into one searchable knowledge system.
+            This page now owns the public history hub, searchable records,
+            timeline, governors, archives, historic maps, historic sites,
+            dictionary view, gallery, and research navigation.
           </p>
         </div>
 
@@ -386,110 +461,10 @@ function HistoryHub({
 
           <div className="mt-4 grid gap-2">
             <QuickButton label="Open Territory Atlas" onClick={() => navigate("/map")} icon={MapPinned} />
-            <QuickButton label="Open Dictionary" onClick={() => navigate("/dictionary")} icon={BookOpen} />
+            <QuickButton label="Open Dictionary" onClick={() => setView("dictionary")} icon={BookOpen} />
             <QuickButton label="Ask Concierge" onClick={() => navigate("/concierge?context=history")} icon={Sparkles} />
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function TimelineView({ timeline }: { timeline: typeof stThomasEarlyTimeline }) {
-  return (
-    <section className="mx-auto max-w-5xl px-5 py-6">
-      {timeline.length > 0 ? (
-        <div className="space-y-4">
-          {timeline.map((item) => (
-            <article key={item.id} className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-xl">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-300">
-                {item.year ?? item.yearRange}
-              </p>
-              <h2 className="mt-2 font-serif text-2xl font-black">{item.title}</h2>
-              <p className="mt-3 text-sm leading-6 text-zinc-300">{item.summary}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {asArray(item.places).map((place) => (
-                  <Chip key={place} label={place} />
-                ))}
-              </div>
-              <p className="mt-4 text-xs text-zinc-500">
-                Source: {item.sourceTitle}, p. {item.sourcePage}
-              </p>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <EmptyState title="No timeline records found" />
-      )}
-    </section>
-  );
-}
-
-function GovernorsView({
-  governors,
-  governorOffice,
-  governorOffices,
-  setGovernorOffice,
-}: {
-  governors: readonly DanishWestIndiesGovernorRecord[];
-  governorOffice: string;
-  governorOffices: string[];
-  setGovernorOffice: (value: string) => void;
-}) {
-  return (
-    <section className="mx-auto max-w-6xl px-5 py-6">
-      <div className="mb-5 flex justify-end">
-        <select
-          value={governorOffice}
-          onChange={(event) => setGovernorOffice(event.target.value)}
-          className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm font-black text-white outline-none"
-        >
-          {governorOffices.map((office) => (
-            <option key={office} value={office}>
-              {office === "all" ? "All offices" : office}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="grid gap-4">
-        {governors.map((item) => (
-          <article key={item.id} className="grid gap-4 rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 shadow-xl md:grid-cols-[80px_1fr]">
-            <div className="grid h-20 w-20 place-items-center overflow-hidden rounded-2xl bg-white/10">
-              {item.portraitUrl ? (
-                <img src={item.portraitUrl} alt={item.name} className="h-full w-full object-cover" referrerPolicy="no-referrer" />
-              ) : (
-                <Crown className="h-7 w-7 text-amber-300" />
-              )}
-            </div>
-
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-xl font-black">{item.name}</h2>
-                {item.acting ? (
-                  <span className="rounded-full bg-amber-300 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-zinc-950">
-                    Acting
-                  </span>
-                ) : null}
-              </div>
-
-              <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-amber-300">
-                {item.office}
-              </p>
-              <p className="mt-3 text-sm font-bold text-white/75">{item.termText}</p>
-
-              {item.notes ? (
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
-                  {item.notes}
-                </p>
-              ) : null}
-
-              <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.16em] text-white/35">
-                Source: {item.sourceTitle}
-              </p>
-            </div>
-          </article>
-        ))}
       </div>
     </section>
   );
@@ -600,26 +575,70 @@ function RecordsView({
   );
 }
 
-function ModeButton({ active, icon: Icon, label, onClick }: { active: boolean; icon: LucideIcon; label: string; onClick: () => void }) {
+function ModeButton({
+  active,
+  icon: Icon,
+  label,
+  onClick,
+}: {
+  active: boolean;
+  icon: LucideIcon;
+  label: string;
+  onClick: () => void;
+}) {
   return (
-    <button type="button" onClick={onClick} className={`flex items-center gap-2 rounded-full px-5 py-3 text-xs font-black uppercase tracking-[0.16em] transition ${active ? "bg-amber-300 text-zinc-950 shadow-lg" : "bg-white/10 text-zinc-300 hover:bg-white/15"}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-3 text-xs font-black uppercase tracking-[0.16em] transition ${
+        active
+          ? "bg-amber-300 text-zinc-950 shadow-lg"
+          : "bg-white/10 text-zinc-300 hover:bg-white/15"
+      }`}
+    >
       <Icon className="h-4 w-4" />
       {label}
     </button>
   );
 }
 
-function FilterChip({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
+function FilterChip({
+  active,
+  label,
+  onClick,
+}: {
+  active: boolean;
+  label: string;
+  onClick: () => void;
+}) {
   return (
-    <button type="button" onClick={onClick} className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-black transition ${active ? "bg-amber-300 text-zinc-950" : "bg-white/10 text-zinc-300 hover:bg-white/15"}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-black transition ${
+        active ? "bg-amber-300 text-zinc-950" : "bg-white/10 text-zinc-300 hover:bg-white/15"
+      }`}
+    >
       {label}
     </button>
   );
 }
 
-function QuickButton({ icon: Icon, label, onClick }: { icon: LucideIcon; label: string; onClick: () => void }) {
+function QuickButton({
+  icon: Icon,
+  label,
+  onClick,
+}: {
+  icon: LucideIcon;
+  label: string;
+  onClick: () => void;
+}) {
   return (
-    <button type="button" onClick={onClick} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 text-left text-sm font-bold text-white/75 transition hover:bg-white/15">
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 text-left text-sm font-bold text-white/75 transition hover:bg-white/15"
+    >
       <Icon className="h-4 w-4 text-amber-300" />
       {label}
     </button>
@@ -635,10 +654,6 @@ function DetailBlock({ title, text }: { title: string; text?: string }) {
       </p>
     </section>
   );
-}
-
-function Chip({ label }: { label: string }) {
-  return <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-300">{label}</span>;
 }
 
 function EmptyState({ title, compact = false }: { title: string; compact?: boolean }) {
