@@ -717,6 +717,15 @@ export default function PropertyReportLeadsPage() {
 
                     <button
                       type="button"
+                      onClick={() => navigate("/admin/property-report-template")}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Open template
+                    </button>
+
+                    <button
+                      type="button"
                       onClick={() => void copyDeliveryEmail(lead)}
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-black text-white hover:bg-white/15"
                     >
