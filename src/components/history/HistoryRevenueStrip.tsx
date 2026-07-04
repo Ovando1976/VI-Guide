@@ -69,7 +69,7 @@ export default function HistoryRevenueStrip() {
 
             <button
               type="button"
-              onClick={() => navigate("/concierge?context=property-report")}
+              onClick={() => navigate("/history/property-report")}
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black text-white transition hover:-translate-y-0.5 hover:bg-white/15"
             >
               <FileText className="h-4 w-4" />
