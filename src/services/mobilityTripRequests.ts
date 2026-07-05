@@ -37,6 +37,13 @@ export type MobilityTripDispatchStatus =
   | "completed"
   | "cancelled";
 
+export type MobilityAssignedDriver = {
+  driverId: string;
+  driverName: string;
+  vehicleId?: string;
+  vehicleLabel?: string;
+};
+
 export type MobilityTripRequestLineItem = {
   label: string;
   amountCents: number;
@@ -159,6 +166,12 @@ export type SavedMobilityTripRequest = {
   confidence?: "high" | "medium" | "low";
   lineItems?: MobilityTripRequestLineItem[];
   notes?: string[];
+
+  assignedDriverId?: string;
+  assignedDriverName?: string;
+  assignedVehicleId?: string;
+  assignedVehicleLabel?: string;
+  assignedAt?: string;
 };
 
 function normalizeMobilityTripRequest(
@@ -217,6 +230,63 @@ export async function updateMobilityTripRequestStatus(args: {
   return {
     firestoreId: args.firestoreId,
     status: args.status,
+    updatedAt,
+  };
+}
+
+export async function assignMobilityTripRequestDriver(args: {
+  firestoreId: string;
+  driver: MobilityAssignedDriver;
+}) {
+  const db = getMobilityFirestore();
+  const updatedAt = new Date().toISOString();
+
+  const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+
+  await updateDoc(requestRef, {
+    status: "accepted",
+    dispatchStatus: "accepted",
+    assignedDriverId: args.driver.driverId,
+    assignedDriverName: args.driver.driverName,
+    assignedVehicleId: args.driver.vehicleId ?? "",
+    assignedVehicleLabel: args.driver.vehicleLabel ?? "",
+    assignedAt: updatedAt,
+    updatedAt,
+    updatedAtServer: serverTimestamp(),
+  });
+
+  return {
+    firestoreId: args.firestoreId,
+    status: "accepted" as const,
+    assignedDriverId: args.driver.driverId,
+    assignedDriverName: args.driver.driverName,
+    updatedAt,
+  };
+}
+
+export async function clearMobilityTripRequestDriver(args: {
+  firestoreId: string;
+}) {
+  const db = getMobilityFirestore();
+  const updatedAt = new Date().toISOString();
+
+  const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+
+  await updateDoc(requestRef, {
+    status: "requested",
+    dispatchStatus: "requested",
+    assignedDriverId: "",
+    assignedDriverName: "",
+    assignedVehicleId: "",
+    assignedVehicleLabel: "",
+    assignedAt: "",
+    updatedAt,
+    updatedAtServer: serverTimestamp(),
+  });
+
+  return {
+    firestoreId: args.firestoreId,
+    status: "requested" as const,
     updatedAt,
   };
 }

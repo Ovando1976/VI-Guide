@@ -232,16 +232,62 @@ service cloud.firestore {
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
           "status",
           "dispatchStatus",
+          "assignedDriverId",
+          "assignedDriverName",
+          "assignedVehicleId",
+          "assignedVehicleLabel",
+          "assignedAt",
           "updatedAt",
           "updatedAtServer"
         ])
         && validMobilityDispatchStatus(request.resource.data.status)
         && validMobilityDispatchStatus(request.resource.data.dispatchStatus)
         && request.resource.data.status == request.resource.data.dispatchStatus
+
         && request.resource.data.updatedAt is string
         && request.resource.data.updatedAt.size() >= 10
         && request.resource.data.updatedAt.size() <= 80
-        && request.resource.data.updatedAtServer is timestamp;
+        && request.resource.data.updatedAtServer is timestamp
+
+        && (
+          !request.resource.data.keys().hasAny(["assignedDriverId"]) ||
+          (
+            request.resource.data.assignedDriverId is string &&
+            request.resource.data.assignedDriverId.size() <= 120
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["assignedDriverName"]) ||
+          (
+            request.resource.data.assignedDriverName is string &&
+            request.resource.data.assignedDriverName.size() <= 160
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["assignedVehicleId"]) ||
+          (
+            request.resource.data.assignedVehicleId is string &&
+            request.resource.data.assignedVehicleId.size() <= 120
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["assignedVehicleLabel"]) ||
+          (
+            request.resource.data.assignedVehicleLabel is string &&
+            request.resource.data.assignedVehicleLabel.size() <= 160
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["assignedAt"]) ||
+          (
+            request.resource.data.assignedAt is string &&
+            request.resource.data.assignedAt.size() <= 80
+          )
+        );
     }
 
     match /admins/{uid} {
