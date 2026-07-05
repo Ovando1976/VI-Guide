@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   Clock,
   MapPin,
+  Navigation,
   RefreshCw,
   UserCheck,
   X,
@@ -239,7 +240,7 @@ export default function MobilityCustomerTripStatus() {
             />
           </div>
 
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 grid gap-3 md:grid-cols-4">
             <div className="rounded-2xl bg-white p-4 ring-1 ring-emerald-100">
               <Clock className="mb-3 h-5 w-5 text-emerald-700" />
               <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
@@ -261,6 +262,23 @@ export default function MobilityCustomerTripStatus() {
               {request.assignedVehicleLabel ? (
                 <p className="mt-1 text-sm font-semibold text-slate-500">
                   {request.assignedVehicleLabel}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="rounded-2xl bg-white p-4 ring-1 ring-emerald-100">
+              <Navigation className="mb-3 h-5 w-5 text-emerald-700" />
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                Driver location
+              </p>
+              <p className="mt-1 font-black text-slate-950">
+                {request.driverLocationLabel || "No location update yet"}
+              </p>
+              {typeof request.driverLat === "number" &&
+              typeof request.driverLng === "number" ? (
+                <p className="mt-1 text-xs font-bold text-slate-500">
+                  {request.driverLat.toFixed(5)},{" "}
+                  {request.driverLng.toFixed(5)}
                 </p>
               ) : null}
             </div>

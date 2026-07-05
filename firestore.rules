@@ -57,6 +57,16 @@ service cloud.firestore {
       ];
     }
 
+    function mobilityStatusNeedsAssignedDriver(value) {
+      return value in [
+        "accepted",
+        "driver_arriving",
+        "arrived",
+        "in_progress",
+        "completed"
+      ];
+    }
+
     function validPropertyReportLeadCreate() {
       return request.resource.data.keys().hasOnly([
           "name",
@@ -237,6 +247,10 @@ service cloud.firestore {
           "assignedVehicleId",
           "assignedVehicleLabel",
           "assignedAt",
+          "driverLat",
+          "driverLng",
+          "driverLocationLabel",
+          "driverLocationUpdatedAt",
           "updatedAt",
           "updatedAtServer"
         ])
@@ -286,6 +300,42 @@ service cloud.firestore {
           (
             request.resource.data.assignedAt is string &&
             request.resource.data.assignedAt.size() <= 80
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["driverLat"]) ||
+          (
+            (request.resource.data.driverLat is int ||
+              request.resource.data.driverLat is float) &&
+            request.resource.data.driverLat >= 17.0 &&
+            request.resource.data.driverLat <= 19.0
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["driverLng"]) ||
+          (
+            (request.resource.data.driverLng is int ||
+              request.resource.data.driverLng is float) &&
+            request.resource.data.driverLng >= -66.0 &&
+            request.resource.data.driverLng <= -64.0
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["driverLocationLabel"]) ||
+          (
+            request.resource.data.driverLocationLabel is string &&
+            request.resource.data.driverLocationLabel.size() <= 240
+          )
+        )
+
+        && (
+          !request.resource.data.keys().hasAny(["driverLocationUpdatedAt"]) ||
+          (
+            request.resource.data.driverLocationUpdatedAt is string &&
+            request.resource.data.driverLocationUpdatedAt.size() <= 80
           )
         );
     }
@@ -377,6 +427,45 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    function validMobilityDriverLocationUpdate() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "driverLat",
+          "driverLng",
+          "driverLocationLabel",
+          "driverLocationUpdatedAt",
+          "updatedAt",
+          "updatedAtServer"
+        ])
+
+        && (
+          request.resource.data.driverLat is int ||
+          request.resource.data.driverLat is float
+        )
+        && request.resource.data.driverLat >= 17.0
+        && request.resource.data.driverLat <= 19.0
+
+        && (
+          request.resource.data.driverLng is int ||
+          request.resource.data.driverLng is float
+        )
+        && request.resource.data.driverLng >= -66.0
+        && request.resource.data.driverLng <= -64.0
+
+        && request.resource.data.driverLocationLabel is string
+        && request.resource.data.driverLocationLabel.size() >= 2
+        && request.resource.data.driverLocationLabel.size() <= 240
+
+        && request.resource.data.driverLocationUpdatedAt is string
+        && request.resource.data.driverLocationUpdatedAt.size() >= 10
+        && request.resource.data.driverLocationUpdatedAt.size() <= 80
+
+        && request.resource.data.updatedAt is string
+        && request.resource.data.updatedAt.size() >= 10
+        && request.resource.data.updatedAt.size() <= 80
+
+        && request.resource.data.updatedAtServer is timestamp;
+    }
+
     match /mobilityTripRequests/{requestId} {
       allow create: if validMobilityTripRequestCreate();
 
@@ -384,7 +473,7 @@ service cloud.firestore {
       // Dispatch board reads and status buttons work before admin auth is wired.
       // Production should be admin-only for get/list/update/delete.
       allow get, list: if true;
-      allow update: if isAdmin() || validMobilityTripRequestUpdate();
+      allow update: if isAdmin() || validMobilityTripRequestUpdate() || validMobilityDriverLocationUpdate();
       allow delete: if isAdmin();
     }
 

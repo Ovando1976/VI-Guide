@@ -193,6 +193,11 @@ export type SavedMobilityTripRequest = {
   assignedVehicleId?: string;
   assignedVehicleLabel?: string;
   assignedAt?: string;
+
+  driverLat?: number;
+  driverLng?: number;
+  driverLocationLabel?: string;
+  driverLocationUpdatedAt?: string;
 };
 
 function normalizeMobilityTripRequest(
@@ -422,4 +427,38 @@ export function subscribeAssignedMobilityTripRequests(args: {
     },
     onError: args.onError,
   });
+}
+
+
+export type MobilityDriverLocationUpdate = {
+  lat: number;
+  lng: number;
+  label: string;
+};
+
+export async function updateMobilityTripRequestDriverLocation(args: {
+  firestoreId: string;
+  location: MobilityDriverLocationUpdate;
+}) {
+  const db = getMobilityFirestore();
+  const updatedAt = new Date().toISOString();
+
+  const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+
+  await updateDoc(requestRef, {
+    driverLat: args.location.lat,
+    driverLng: args.location.lng,
+    driverLocationLabel: args.location.label,
+    driverLocationUpdatedAt: updatedAt,
+    updatedAt,
+    updatedAtServer: serverTimestamp(),
+  });
+
+  return {
+    firestoreId: args.firestoreId,
+    driverLat: args.location.lat,
+    driverLng: args.location.lng,
+    driverLocationLabel: args.location.label,
+    driverLocationUpdatedAt: updatedAt,
+  };
 }
