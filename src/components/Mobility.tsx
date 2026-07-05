@@ -306,7 +306,7 @@ function buildTripQuote(args: {
       `${luggage} ${plural(
         luggage,
         "bag"
-      )} captured. Baggage surcharges are not added until baggage tariff rules are modeled.`
+      )} included using the modeled baggage tariff.`
     );
   }
 
