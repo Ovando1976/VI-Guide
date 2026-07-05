@@ -1,402 +1,362 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  Clipboard,
-  CreditCard,
+  AlertTriangle,
+  Car,
+  CheckCircle2,
+  Clock,
+  Database,
   MapPin,
-  Phone,
   RefreshCw,
-  UserRoundCheck,
+  Ship,
+  Users,
 } from "lucide-react";
 
-import { cn } from "../../lib/utils";
-import {
-  addDispatcherNotes,
-  assignDriverToTrip,
-  buildDriverSmsText,
-  buildTripDispatchBrief,
-  getTripDropoffLabel,
-  getTripPickupLabel,
-  subscribeAdminMobilityTrips,
-  subscribeDriverProfiles,
-  updateTripPaymentStatus,
-  updateTripStatus,
-  type AdminMobilityTrip,
-  type DriverProfile,
-  type MobilityTripStatus,
-  type PaymentStatus,
-} from "../../lib/firestore/mobilityAdmin";
+import type { SavedMobilityTripRequest } from "../../services/mobilityTripRequests";
 
-const statusTabs: Array<{ id: "all" | MobilityTripStatus; label: string }> = [
-  { id: "all", label: "All" },
-  { id: "requested", label: "New" },
-  { id: "assigned", label: "Assigned" },
-  { id: "accepted", label: "Accepted" },
-  { id: "driver_arriving", label: "En route" },
-  { id: "arrived", label: "Arrived" },
-  { id: "in_progress", label: "In progress" },
-  { id: "completed", label: "Completed" },
-  { id: "cancelled", label: "Cancelled" },
-];
+const ISLAND_LABELS: Record<string, string> = {
+  st_thomas: "St. Thomas",
+  st_john: "St. John",
+  st_croix: "St. Croix",
+  water_island: "Water Island",
+};
 
-const nextStatuses: Array<{ value: MobilityTripStatus; label: string }> = [
-  { value: "quoted", label: "Quoted" },
-  { value: "assigned", label: "Assigned" },
-  { value: "accepted", label: "Accepted" },
-  { value: "driver_arriving", label: "Driver en route" },
-  { value: "arrived", label: "Arrived" },
-  { value: "in_progress", label: "In progress" },
-  { value: "completed", label: "Completed" },
-  { value: "cancelled", label: "Cancelled" },
-  { value: "closed", label: "Closed" },
-];
+function moneyFromCents(cents?: number) {
+  const safeCents = typeof cents === "number" ? cents : 0;
 
-const paymentStatuses: Array<{ value: PaymentStatus; label: string }> = [
-  { value: "unpaid", label: "Unpaid" },
-  { value: "payment_sent", label: "Payment sent" },
-  { value: "paid", label: "Paid" },
-  { value: "cash", label: "Cash" },
-  { value: "comped", label: "Comped" },
-];
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: safeCents % 100 === 0 ? 0 : 2,
+    maximumFractionDigits: safeCents % 100 === 0 ? 0 : 2,
+  }).format(safeCents / 100);
+}
 
-function fare(trip: AdminMobilityTrip) {
-  return trip.quote?.total ? `$${trip.quote.total}` : "Pending";
+function formatDate(value?: string) {
+  if (!value) return "Unknown time";
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
+
+function statusLabel(status?: string) {
+  if (!status) return "Unknown";
+  return status.replaceAll("_", " ");
+}
+
+function statusBadgeClass(status?: string) {
+  if (status === "requested") {
+    return "border-emerald-200 bg-emerald-50 text-emerald-800";
+  }
+
+  if (status === "cancelled" || status === "disputed") {
+    return "border-red-200 bg-red-50 text-red-800";
+  }
+
+  return "border-amber-200 bg-amber-50 text-amber-800";
+}
+
+function RequestCard({ request }: { request: SavedMobilityTripRequest }) {
+  return (
+    <article className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
+      <div className="border-b border-slate-100 bg-slate-50 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={`rounded-full border px-3 py-1 text-xs font-black uppercase tracking-[0.18em] ${statusBadgeClass(
+                  request.status,
+                )}`}
+              >
+                {statusLabel(request.status)}
+              </span>
+
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-bold text-slate-500">
+                {request.connectorLabel ?? "Local"}
+              </span>
+            </div>
+
+            <h3 className="mt-3 text-xl font-black text-slate-950">
+              {request.pickupName ?? "Unknown pickup"} →{" "}
+              {request.dropoffName ?? "Unknown dropoff"}
+            </h3>
+
+            <p className="mt-1 text-sm font-semibold text-slate-500">
+              {ISLAND_LABELS[String(request.pickupIsland)] ??
+                request.pickupIsland ??
+                "Unknown island"}{" "}
+              →{" "}
+              {ISLAND_LABELS[String(request.dropoffIsland)] ??
+                request.dropoffIsland ??
+                "Unknown island"}
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-white px-5 py-4 text-right shadow-sm">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+              Fare
+            </p>
+            <p className="text-2xl font-black text-slate-950">
+              {moneyFromCents(request.totalFareCents)}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-3 p-5 sm:grid-cols-4">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4">
+          <Clock className="mb-3 h-5 w-5 text-amber-700" />
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+            Requested
+          </p>
+          <p className="mt-1 font-black">{formatDate(request.requestedAt)}</p>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-4">
+          <Users className="mb-3 h-5 w-5 text-amber-700" />
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+            Riders
+          </p>
+          <p className="mt-1 font-black">
+            {request.passengers ?? 0} passenger(s)
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-4">
+          <Car className="mb-3 h-5 w-5 text-amber-700" />
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+            Service
+          </p>
+          <p className="mt-1 font-black capitalize">
+            {request.serviceClass ?? "Unknown"}
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-4">
+          <Ship className="mb-3 h-5 w-5 text-amber-700" />
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+            Bags
+          </p>
+          <p className="mt-1 font-black">{request.luggage ?? 0}</p>
+        </div>
+      </div>
+
+      <div className="border-t border-slate-100 p-5">
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+            Route
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+            {request.routeDescription ?? "No route description saved."}
+          </p>
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-xl border border-slate-200 bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+              Taxi
+            </p>
+            <p className="mt-1 font-black">
+              {moneyFromCents(request.taxiFareCents)}
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-slate-200 bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+              Ferry
+            </p>
+            <p className="mt-1 font-black">
+              {moneyFromCents(request.ferryFareCents)}
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-slate-200 bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+              Firestore
+            </p>
+            <p className="mt-1 truncate text-sm font-black">{request.path}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
 }
 
 export default function MobilityDispatchPage() {
-  const [trips, setTrips] = useState<AdminMobilityTrip[]>([]);
-  const [drivers, setDrivers] = useState<DriverProfile[]>([]);
-  const [activeStatus, setActiveStatus] = useState<"all" | MobilityTripStatus>("all");
-  const [selectedTripId, setSelectedTripId] = useState("");
-  const [notes, setNotes] = useState("");
+  const [requests, setRequests] = useState<SavedMobilityTripRequest[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const unsubscribeTrips = subscribeAdminMobilityTrips(setTrips);
-    const unsubscribeDrivers = subscribeDriverProfiles(setDrivers);
+    let cancelled = false;
+    let unsubscribe: (() => void) | null = null;
+
+    async function connectDispatchFeed() {
+      setLoaded(false);
+      setError(null);
+
+      try {
+        const { subscribeRecentMobilityTripRequests } = await import(
+          "../../services/mobilityTripRequests"
+        );
+
+        if (cancelled) return;
+
+        unsubscribe = subscribeRecentMobilityTripRequests({
+          limitCount: 50,
+          onData: (nextRequests) => {
+            if (cancelled) return;
+            setRequests(nextRequests);
+            setLoaded(true);
+          },
+          onError: (nextError) => {
+            if (cancelled) return;
+            setError(nextError.message);
+            setLoaded(true);
+          },
+        });
+      } catch (nextError) {
+        if (cancelled) return;
+
+        setError(
+          nextError instanceof Error
+            ? nextError.message
+            : "Could not load Firebase dispatch service.",
+        );
+        setLoaded(true);
+      }
+    }
+
+    connectDispatchFeed();
 
     return () => {
-      unsubscribeTrips();
-      unsubscribeDrivers();
+      cancelled = true;
+      unsubscribe?.();
     };
   }, []);
 
-  const filteredTrips = useMemo(() => {
-    if (activeStatus === "all") return trips;
-    return trips.filter((trip) => trip.status === activeStatus);
-  }, [activeStatus, trips]);
+  const requestedCount = useMemo(() => {
+    return requests.filter((request) => request.status === "requested").length;
+  }, [requests]);
 
-  const selectedTrip = useMemo(
-    () => trips.find((trip) => trip.id === selectedTripId) || filteredTrips[0] || null,
-    [filteredTrips, selectedTripId, trips],
-  );
-
-  const counts = useMemo(() => {
-    return trips.reduce<Record<string, number>>((acc, trip) => {
-      const key = trip.status || "requested";
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-  }, [trips]);
-
-  async function copyBrief(trip: AdminMobilityTrip) {
-    await navigator.clipboard.writeText(buildTripDispatchBrief(trip));
-  }
-
-  async function saveNotes(trip: AdminMobilityTrip) {
-    await addDispatcherNotes(trip.id, notes || trip.dispatcherNotes || "");
-  }
+  const totalFareCents = useMemo(() => {
+    return requests.reduce((sum, request) => {
+      return sum + (request.totalFareCents ?? 0);
+    }, 0);
+  }, [requests]);
 
   return (
-    <main className="min-h-screen bg-[#05070b] px-5 py-7 text-white sm:px-8">
-      <section className="mx-auto max-w-7xl">
-        <header className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.32em] text-emerald-300">
-              VI Guide Admin
-            </p>
-            <h1 className="mt-3 font-serif text-5xl font-black tracking-[-0.05em] sm:text-7xl">
-              Mobility Dispatch
-            </h1>
-            <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-white/55">
-              Manage ride requests, assign verified local drivers, coordinate payment,
-              and close trips from one board.
-            </p>
+    <main className="min-h-screen bg-[#f7edcf] px-4 py-8 text-slate-950 sm:px-6 lg:px-10">
+      <section className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-amber-100 bg-white shadow-2xl shadow-amber-950/10">
+        <div className="bg-[#020617] px-6 py-10 text-white sm:px-10 lg:px-12">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-amber-300 px-3 py-1 text-xs font-black uppercase tracking-[0.35em] text-slate-950">
+              USVI Dispatch
+            </span>
+            <span className="rounded-full border border-white/15 px-3 py-1 text-xs font-bold text-white/70">
+              Live read-only board
+            </span>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3 lg:w-[520px]">
-            <Metric label="New" value={String(counts.requested || 0)} />
-            <Metric
-              label="Active"
-              value={String(
-                (counts.assigned || 0) +
-                  (counts.accepted || 0) +
-                  (counts.driver_arriving || 0) +
-                  (counts.in_progress || 0),
-              )}
-            />
-            <Metric label="Drivers" value={String(drivers.filter((driver) => driver.active).length)} />
-          </div>
-        </header>
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+            <div>
+              <h1 className="max-w-4xl text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                Mobility dispatch dashboard.
+              </h1>
+              <p className="mt-5 max-w-3xl text-base font-medium leading-8 text-slate-300 sm:text-lg">
+                This page is route-safe. Firebase loads after render, so the
+                admin route will not blank the app if Firestore has an issue.
+              </p>
 
-        <div className="mb-5 flex gap-2 overflow-x-auto pb-2">
-          {statusTabs.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveStatus(tab.id)}
-              className={cn(
-                "shrink-0 rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.14em]",
-                activeStatus === tab.id
-                  ? "border-emerald-300 bg-emerald-300 text-slate-950"
-                  : "border-white/10 bg-white/[0.06] text-white/65",
-              )}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+              <a
+                href="/mobility"
+                className="mt-6 inline-flex rounded-2xl bg-amber-300 px-5 py-4 text-sm font-black text-slate-950 shadow-lg shadow-amber-950/20"
+              >
+                Back to Mobility
+              </a>
+            </div>
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_430px]">
-          <section className="space-y-3">
-            {filteredTrips.length ? (
-              filteredTrips.map((trip) => (
-                <button
-                  key={trip.id}
-                  type="button"
-                  onClick={() => {
-                    setSelectedTripId(trip.id);
-                    setNotes(trip.dispatcherNotes || "");
-                  }}
-                  className={cn(
-                    "w-full rounded-[1.75rem] border p-5 text-left shadow-xl transition",
-                    selectedTrip?.id === trip.id
-                      ? "border-emerald-300 bg-emerald-300/10"
-                      : "border-white/10 bg-white/[0.055] hover:border-emerald-300/40",
-                  )}
-                >
-                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">
-                        #{trip.id.slice(-6)} · {String(trip.status || "requested").replace("_", " ")}
-                      </p>
-                      <h2 className="mt-2 text-2xl font-black">
-                        {getTripPickupLabel(trip)} → {getTripDropoffLabel(trip)}
-                      </h2>
-                      <p className="mt-2 text-sm font-semibold text-white/50">
-                        {trip.tripType?.replace("_", " ") || "direct"} · {trip.serviceClass || "shared"} · {trip.passengers || 1} passenger · {trip.luggage || 0} luggage
-                      </p>
-                    </div>
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <Database className="mb-3 h-6 w-6 text-amber-300" />
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200">
+                  Loaded
+                </p>
+                <p className="mt-1 text-3xl font-black">{requests.length}</p>
+              </div>
 
-                    <div className="rounded-2xl bg-white p-4 text-slate-950">
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">
-                        Fare
-                      </p>
-                      <p className="mt-1 text-3xl font-black">{fare(trip)}</p>
-                    </div>
-                  </div>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <CheckCircle2 className="mb-3 h-6 w-6 text-amber-300" />
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200">
+                  Requested
+                </p>
+                <p className="mt-1 text-3xl font-black">{requestedCount}</p>
+              </div>
 
-                  <div className="mt-4 grid gap-2 sm:grid-cols-3">
-                    <MiniPill icon={<UserRoundCheck />} label={trip.assignedDriverName || "Unassigned"} />
-                    <MiniPill icon={<CreditCard />} label={trip.paymentStatus || "unpaid"} />
-                    <MiniPill icon={<MapPin />} label={trip.island || "island"} />
-                  </div>
-                </button>
-              ))
-            ) : (
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-8 text-center">
-                <RefreshCw className="mx-auto h-8 w-8 text-emerald-300" />
-                <p className="mt-4 text-lg font-black">No trips in this lane.</p>
-                <p className="mt-2 text-sm font-semibold text-white/45">
-                  New ride requests will appear here.
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <MapPin className="mb-3 h-6 w-6 text-amber-300" />
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-200">
+                  Fare volume
+                </p>
+                <p className="mt-1 text-3xl font-black">
+                  {moneyFromCents(totalFareCents)}
                 </p>
               </div>
-            )}
-          </section>
+            </div>
+          </div>
+        </div>
 
-          <aside className="space-y-5">
-            {selectedTrip ? (
-              <TripControlPanel
-                trip={selectedTrip}
-                drivers={drivers}
-                notes={notes}
-                setNotes={setNotes}
-                onCopy={() => copyBrief(selectedTrip)}
-                onSaveNotes={() => saveNotes(selectedTrip)}
-              />
-            ) : (
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.055] p-6">
-                <p className="text-lg font-black">Select a trip</p>
+        <div className="bg-[#fff9e8] p-6 sm:p-8 lg:p-10">
+          {error ? (
+            <div className="rounded-3xl border border-red-200 bg-red-50 p-5 text-red-900">
+              <div className="flex gap-3">
+                <AlertTriangle className="mt-1 h-5 w-5 shrink-0" />
+                <div>
+                  <p className="font-black">Could not load dispatch requests</p>
+                  <p className="mt-1 text-sm font-semibold leading-6">
+                    {error}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6">
+                    The page itself is stable. This is now a Firebase config,
+                    auth, or Firestore rules issue.
+                  </p>
+                </div>
               </div>
-            )}
-          </aside>
+            </div>
+          ) : null}
+
+          {!error && !loaded ? (
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
+              <RefreshCw className="mx-auto mb-4 h-8 w-8 animate-spin text-amber-700" />
+              <p className="text-lg font-black">Loading dispatch requests…</p>
+            </div>
+          ) : null}
+
+          {!error && loaded && requests.length === 0 ? (
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
+              <Database className="mx-auto mb-4 h-8 w-8 text-amber-700" />
+              <p className="text-lg font-black">No trip requests yet.</p>
+              <p className="mt-2 text-sm font-semibold text-slate-500">
+                Create one from the Mobility planner, then return here.
+              </p>
+            </div>
+          ) : null}
+
+          {!error && requests.length > 0 ? (
+            <div className="space-y-5">
+              {requests.map((request) => (
+                <RequestCard key={request.firestoreId} request={request} />
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
     </main>
-  );
-}
-
-function TripControlPanel({
-  trip,
-  drivers,
-  notes,
-  setNotes,
-  onCopy,
-  onSaveNotes,
-}: {
-  trip: AdminMobilityTrip;
-  drivers: DriverProfile[];
-  notes: string;
-  setNotes: (value: string) => void;
-  onCopy: () => void;
-  onSaveNotes: () => void;
-}) {
-  const availableDrivers = drivers.filter((driver) => driver.active);
-
-  return (
-    <section className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 shadow-2xl">
-      <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-300">
-        Dispatch Controls
-      </p>
-
-      <h2 className="mt-3 text-3xl font-black">
-        {getTripPickupLabel(trip)} → {getTripDropoffLabel(trip)}
-      </h2>
-
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <ControlStat label="Fare" value={fare(trip)} />
-        <ControlStat label="Status" value={String(trip.status || "requested").replace("_", " ")} />
-        <ControlStat label="Payment" value={trip.paymentStatus || "unpaid"} />
-        <ControlStat label="Driver" value={trip.assignedDriverName || "Unassigned"} />
-      </div>
-
-      <div className="mt-5 space-y-3">
-        <label className="block">
-          <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/40">
-            Assign Driver
-          </span>
-          <select
-            value={trip.assignedDriverId || ""}
-            onChange={(event) => {
-              const driver = availableDrivers.find((item) => item.id === event.target.value);
-              if (driver) void assignDriverToTrip(trip.id, driver);
-            }}
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm font-black text-white outline-none"
-          >
-            <option value="">Unassigned</option>
-            {availableDrivers.map((driver) => (
-              <option key={driver.id} value={driver.id}>
-                {driver.name} · {driver.online ? "online" : "offline"} · {driver.phone}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <div className="grid grid-cols-2 gap-3">
-          <label className="block">
-            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/40">
-              Trip Status
-            </span>
-            <select
-              value={trip.status || "requested"}
-              onChange={(event) =>
-                void updateTripStatus(trip.id, event.target.value as MobilityTripStatus)
-              }
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm font-black text-white outline-none"
-            >
-              {nextStatuses.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="block">
-            <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/40">
-              Payment
-            </span>
-            <select
-              value={trip.paymentStatus || "unpaid"}
-              onChange={(event) =>
-                void updateTripPaymentStatus(trip.id, event.target.value as PaymentStatus)
-              }
-              className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm font-black text-white outline-none"
-            >
-              {paymentStatuses.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <textarea
-          value={notes}
-          onChange={(event) => setNotes(event.target.value)}
-          placeholder="Dispatcher notes..."
-          className="min-h-28 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm font-bold text-white outline-none placeholder:text-white/30"
-        />
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <button
-            type="button"
-            onClick={onSaveNotes}
-            className="rounded-2xl bg-white px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-slate-950"
-          >
-            Save Notes
-          </button>
-
-          <button
-            type="button"
-            onClick={onCopy}
-            className="flex items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-slate-950"
-          >
-            <Clipboard className="h-4 w-4" />
-            Copy Brief
-          </button>
-        </div>
-
-        {trip.assignedDriverPhone ? (
-          <a
-            href={`sms:${trip.assignedDriverPhone}?&body=${buildDriverSmsText(trip)}`}
-            className="flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white"
-          >
-            <Phone className="h-4 w-4" />
-            Text Driver
-          </a>
-        ) : null}
-      </div>
-    </section>
-  );
-}
-
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.055] px-5 py-4">
-      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/35">
-        {label}
-      </p>
-      <p className="mt-2 text-2xl font-black text-emerald-300">{value}</p>
-    </div>
-  );
-}
-
-function ControlStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl bg-slate-950 p-4">
-      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/35">
-        {label}
-      </p>
-      <p className="mt-2 truncate text-sm font-black capitalize">{value}</p>
-    </div>
-  );
-}
-
-function MiniPill({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <div className="flex min-w-0 items-center gap-2 rounded-2xl bg-black/25 px-3 py-2 text-xs font-black text-white/70">
-      <span className="text-emerald-300 [&_svg]:h-4 [&_svg]:w-4">{icon}</span>
-      <span className="truncate capitalize">{label.replace("_", " ")}</span>
-    </div>
   );
 }

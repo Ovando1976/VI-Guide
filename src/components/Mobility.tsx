@@ -12,10 +12,6 @@ import {
 import { ferryRoutes } from "../data/mobility/ferryRoutes";
 import { mobilityPlaces } from "../data/mobility/mobilityPlaces";
 import { calculateTaxiTariffCents } from "../data/mobility/taxiTariffs";
-import {
-  saveMobilityTripRequest,
-  type SaveMobilityTripRequestResult,
-} from "../services/mobilityTripRequests";
 import type {
   MobilityIslandCode,
   MobilityPlace,
@@ -483,10 +479,6 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   const [serviceClass, setServiceClass] = useState<ServiceClass>("shared");
   const [tripDraft, setTripDraft] =
     useState<LocalTripRequestDraft | null>(null);
-  const [dispatchResult, setDispatchResult] =
-    useState<SaveMobilityTripRequestResult | null>(null);
-  const [dispatchError, setDispatchError] = useState<string | null>(null);
-  const [isDispatching, setIsDispatching] = useState(false);
 
   const origin = placeById(originId);
   const destination = placeById(destinationId);
@@ -503,9 +495,6 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
 
   useEffect(() => {
     setTripDraft(null);
-    setDispatchResult(null);
-    setDispatchError(null);
-    setIsDispatching(false);
   }, [originId, destinationId, passengers, luggage, serviceClass]);
 
   function createLocalTripDraft() {
@@ -536,26 +525,6 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
     });
   }
 
-
-  async function sendDraftToFirebase() {
-    if (!tripDraft || isDispatching) return;
-
-    setIsDispatching(true);
-    setDispatchError(null);
-
-    try {
-      const result = await saveMobilityTripRequest(tripDraft);
-      setDispatchResult(result);
-    } catch (error) {
-      setDispatchError(
-        error instanceof Error
-          ? error.message
-          : "Could not save this trip request to Firebase."
-      );
-    } finally {
-      setIsDispatching(false);
-    }
-  }
 
 
   return (
@@ -600,6 +569,13 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               <p className="mt-4 text-sm leading-6 text-slate-300">
                 Source: {quote.sourceLabel}. Confidence: {quote.confidence}.
               </p>
+
+              <a
+                href="/admin/mobility"
+                className="mt-5 block rounded-2xl bg-amber-300 px-5 py-4 text-center text-sm font-black text-slate-950 shadow-lg shadow-amber-950/20 transition hover:-translate-y-0.5 hover:bg-amber-200"
+              >
+                Open dispatch board
+              </a>
             </div>
           </div>
         </div>
@@ -919,50 +895,6 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   </div>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-                  <p className="text-sm font-black uppercase tracking-[0.22em] text-slate-500">
-                    Firebase dispatch
-                  </p>
-                  <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
-                    This writes the request to Firestore as a requested trip.
-                    Driver matching is still disabled.
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={sendDraftToFirebase}
-                    disabled={isDispatching || Boolean(dispatchResult)}
-                    className="mt-4 w-full rounded-2xl bg-slate-950 px-5 py-4 text-sm font-black text-white shadow-md transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {isDispatching
-                      ? "Sending to Firebase..."
-                      : dispatchResult
-                        ? "Request saved to Firebase"
-                        : "Send draft to Firebase dispatch"}
-                  </button>
-
-                  {dispatchResult ? (
-                    <div className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50 p-3">
-                      <p className="text-sm font-black text-emerald-900">
-                        Saved successfully
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-emerald-800">
-                        Path: {dispatchResult.path}
-                      </p>
-                    </div>
-                  ) : null}
-
-                  {dispatchError ? (
-                    <div className="mt-3 rounded-xl border border-red-200 bg-red-50 p-3">
-                      <p className="text-sm font-black text-red-900">
-                        Firebase save failed
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-red-800">
-                        {dispatchError}
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
               </div>
             ) : null}
           </section>
