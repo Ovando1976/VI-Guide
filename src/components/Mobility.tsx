@@ -618,6 +618,13 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               >
                 Open dispatch board
               </a>
+
+                <a
+                  href="/driver/mobility"
+                  className="mt-3 block rounded-2xl bg-white/10 px-5 py-4 text-center text-sm font-black text-white ring-1 ring-white/15 transition hover:-translate-y-0.5 hover:bg-white/15"
+                >
+                  Open driver board
+                </a>
             </div>
           </div>
         </div>

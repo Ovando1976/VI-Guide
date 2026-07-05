@@ -588,12 +588,21 @@ export default function MobilityDispatchPage() {
                 Mobility requests.
               </p>
 
-              <a
-                href="/mobility"
-                className="mt-6 inline-flex rounded-2xl bg-amber-300 px-5 py-4 text-sm font-black text-slate-950 shadow-lg shadow-amber-950/20"
-              >
-                Back to Mobility
-              </a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/mobility"
+                  className="inline-flex rounded-2xl bg-amber-300 px-5 py-4 text-sm font-black text-slate-950 shadow-lg shadow-amber-950/20"
+                >
+                  Back to Mobility
+                </a>
+
+                <a
+                  href="/driver/mobility"
+                  className="inline-flex rounded-2xl bg-white/10 px-5 py-4 text-sm font-black text-white ring-1 ring-white/15"
+                >
+                  Open driver board
+                </a>
+              </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-4 lg:grid-cols-1">

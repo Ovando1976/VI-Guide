@@ -404,3 +404,22 @@ export function clearLastMobilityTripRequest() {
     // Ignore storage failures.
   }
 }
+
+export function subscribeAssignedMobilityTripRequests(args: {
+  driverId: string;
+  limitCount?: number;
+  onData: (requests: SavedMobilityTripRequest[]) => void;
+  onError?: (error: FirestoreError) => void;
+}): Unsubscribe {
+  return subscribeRecentMobilityTripRequests({
+    limitCount: args.limitCount ?? 50,
+    onData: (requests) => {
+      args.onData(
+        requests.filter(
+          (request) => request.assignedDriverId === args.driverId,
+        ),
+      );
+    },
+    onError: args.onError,
+  });
+}

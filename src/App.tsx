@@ -29,6 +29,7 @@ const Eat = lazy(() => import("./components/Eat"));
 const Events = lazy(() => import("./components/Events"));
 const Maps = lazy(() => import("./components/Maps"));
 const Mobility = lazy(() => import("./components/Mobility"));
+const MobilityDriverPage = lazy(() => import("./pages/driver/MobilityDriverPage"));
 const MobilityDispatchPage = lazy(
   () => import("./pages/admin/MobilityDispatchPage"),
 );
@@ -254,6 +255,7 @@ function AppRoutes() {
 
       {/* This is the route your dispatch button needs. */}
       <Route path="/admin/mobility" element={<MobilityDispatchPage />} />
+              <Route path="/driver/mobility" element={<MobilityDriverPage />} />
 
       <Route path="/driver" element={<DriverConsolePage />} />
 
