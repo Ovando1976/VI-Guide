@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   Car,
@@ -48,6 +48,30 @@ type TripQuote = {
   isInterIsland: boolean;
   connectorLabel: string;
   routeDescription: string;
+};
+
+type LocalTripRequestDraft = {
+  id: string;
+  status: "draft";
+  createdAt: string;
+  pickupPlaceId: string;
+  dropoffPlaceId: string;
+  pickupName: string;
+  dropoffName: string;
+  pickupIsland: MobilityIslandCode;
+  dropoffIsland: MobilityIslandCode;
+  passengers: number;
+  luggage: number;
+  serviceClass: ServiceClass;
+  totalFareCents: number;
+  taxiFareCents: number;
+  ferryFareCents: number;
+  connectorLabel: string;
+  routeDescription: string;
+  sourceLabel: string;
+  confidence: TripQuote["confidence"];
+  lineItems: QuoteLineItem[];
+  notes: string[];
 };
 
 const ISLAND_LABELS: Record<MobilityIslandCode, string> = {
@@ -453,6 +477,8 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   const [passengers, setPassengers] = useState(2);
   const [luggage, setLuggage] = useState(1);
   const [serviceClass, setServiceClass] = useState<ServiceClass>("shared");
+  const [tripDraft, setTripDraft] =
+    useState<LocalTripRequestDraft | null>(null);
 
   const origin = placeById(originId);
   const destination = placeById(destinationId);
@@ -466,6 +492,38 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
       serviceClass,
     });
   }, [origin, destination, passengers, luggage, serviceClass]);
+
+  useEffect(() => {
+    setTripDraft(null);
+  }, [originId, destinationId, passengers, luggage, serviceClass]);
+
+  function createLocalTripDraft() {
+    const createdAt = new Date().toISOString();
+
+    setTripDraft({
+      id: `mobility-draft-${Date.now().toString(36)}`,
+      status: "draft",
+      createdAt,
+      pickupPlaceId: origin.id,
+      dropoffPlaceId: destination.id,
+      pickupName: origin.name,
+      dropoffName: destination.name,
+      pickupIsland: origin.island,
+      dropoffIsland: destination.island,
+      passengers,
+      luggage,
+      serviceClass,
+      totalFareCents: quote.totalFareCents,
+      taxiFareCents: quote.taxiFareCents,
+      ferryFareCents: quote.ferryFareCents,
+      connectorLabel: quote.connectorLabel,
+      routeDescription: quote.routeDescription,
+      sourceLabel: quote.sourceLabel,
+      confidence: quote.confidence,
+      lineItems: quote.lineItems,
+      notes: quote.notes,
+    });
+  }
 
   return (
     <main className="min-h-screen bg-[#f7edcf] px-4 py-8 text-slate-950 sm:px-6 lg:px-10">
@@ -768,11 +826,72 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
 
             <button
               type="button"
-              disabled
-              className="mt-6 w-full rounded-2xl bg-slate-950 px-5 py-4 text-base font-black text-white opacity-60"
+              onClick={createLocalTripDraft}
+              className="mt-6 w-full rounded-2xl bg-slate-950 px-5 py-4 text-base font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
-              Request service coming next
+              Create local request draft
             </button>
+
+            {tripDraft ? (
+              <div className="mt-4 rounded-2xl border border-amber-200 bg-[#fff9e8] p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-black uppercase tracking-[0.22em] text-amber-800">
+                      Draft ready
+                    </p>
+                    <p className="mt-2 text-lg font-black text-slate-950">
+                      {tripDraft.pickupName} → {tripDraft.dropoffName}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-600">
+                      Draft ID: {tripDraft.id}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-white px-4 py-3 text-right shadow-sm">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+                      Total
+                    </p>
+                    <p className="text-xl font-black">
+                      {moneyFromCents(tripDraft.totalFareCents)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-xl bg-white p-3">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                      Status
+                    </p>
+                    <p className="mt-1 font-black capitalize">
+                      {tripDraft.status}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-white p-3">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                      Service
+                    </p>
+                    <p className="mt-1 font-black capitalize">
+                      {tripDraft.serviceClass}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-white p-3">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                      Connector
+                    </p>
+                    <p className="mt-1 font-black">
+                      {tripDraft.connectorLabel}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm font-semibold leading-6 text-slate-700">
+                  This is local-only. The next layer will send this same draft
+                  shape to Firebase dispatch.
+                </p>
+              </div>
+            ) : null}
           </section>
         </div>
 
