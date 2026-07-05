@@ -50,3 +50,418 @@ service cloud.firestore {
     }
   }
 }
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isOwnerAdminEmail() {
+      return signedIn() &&
+        request.auth.token.email == "ovandorawlins@gmail.com";
+    }
+
+    function isAdmin() {
+      return signedIn() &&
+        (
+          isOwnerAdminEmail() ||
+          exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        );
+    }
+
+    function ownsBusinessId(businessId) {
+      return signedIn() &&
+        exists(/databases/$(database)/documents/businesses/$(businessId)) &&
+        get(/databases/$(database)/documents/businesses/$(businessId)).data.ownerId == request.auth.uid;
+    }
+
+    function requiredString(field, minLength, maxLength) {
+      return request.resource.data.keys().hasAll([field]) &&
+        request.resource.data[field] is string &&
+        request.resource.data[field].size() >= minLength &&
+        request.resource.data[field].size() <= maxLength;
+    }
+
+    function optionalString(field, maxLength) {
+      return !request.resource.data.keys().hasAny([field]) ||
+        (
+          request.resource.data[field] is string &&
+          request.resource.data[field].size() <= maxLength
+        );
+    }
+
+    function validPropertyReportLeadCreate() {
+      return request.resource.data.keys().hasOnly([
+          "name",
+          "email",
+          "phone",
+          "island",
+          "propertyName",
+          "parcelId",
+          "address",
+          "purpose",
+          "tier",
+          "notes",
+          "leadSummary",
+          "source",
+          "status",
+          "priority",
+          "createdAt",
+          "updatedAt"
+        ])
+        && requiredString("name", 2, 120)
+        && requiredString("email", 5, 180)
+        && requiredString("island", 2, 80)
+        && requiredString("propertyName", 2, 200)
+        && requiredString("purpose", 2, 120)
+        && requiredString("source", 2, 120)
+        && optionalString("phone", 80)
+        && optionalString("parcelId", 120)
+        && optionalString("address", 240)
+        && optionalString("notes", 5000)
+        && optionalString("leadSummary", 12000)
+        && request.resource.data.tier in ["starter", "full", "premium"]
+        && request.resource.data.status == "new"
+        && request.resource.data.priority in ["normal", "high"]
+        && request.resource.data.source == "history-property-report-page"
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.updatedAt is timestamp;
+    }
+
+    function validMobilityTripRequestCreate() {
+      return request.resource.data.keys().hasOnly([
+          "id",
+          "draftId",
+          "status",
+          "createdAt",
+          "pickupPlaceId",
+          "dropoffPlaceId",
+          "pickupName",
+          "dropoffName",
+          "pickupIsland",
+          "dropoffIsland",
+          "passengers",
+          "luggage",
+          "serviceClass",
+          "totalFareCents",
+          "taxiFareCents",
+          "ferryFareCents",
+          "connectorLabel",
+          "routeDescription",
+          "sourceLabel",
+          "confidence",
+          "lineItems",
+          "notes",
+          "requestedAt",
+          "updatedAt",
+          "firestoreSchemaVersion",
+          "firebaseSource",
+          "createdAtServer",
+          "updatedAtServer"
+        ])
+        && request.resource.data.status == "requested"
+        && request.resource.data.firestoreSchemaVersion == 1
+        && request.resource.data.firebaseSource == "mobility_page"
+
+        && request.resource.data.id is string
+        && request.resource.data.id.size() >= 8
+        && request.resource.data.id.size() <= 120
+
+        && request.resource.data.draftId is string
+        && request.resource.data.draftId.size() >= 8
+        && request.resource.data.draftId.size() <= 120
+
+        && request.resource.data.pickupPlaceId is string
+        && request.resource.data.pickupPlaceId.size() >= 2
+        && request.resource.data.pickupPlaceId.size() <= 160
+
+        && request.resource.data.dropoffPlaceId is string
+        && request.resource.data.dropoffPlaceId.size() >= 2
+        && request.resource.data.dropoffPlaceId.size() <= 160
+
+        && request.resource.data.pickupName is string
+        && request.resource.data.pickupName.size() >= 2
+        && request.resource.data.pickupName.size() <= 180
+
+        && request.resource.data.dropoffName is string
+        && request.resource.data.dropoffName.size() >= 2
+        && request.resource.data.dropoffName.size() <= 180
+
+        && request.resource.data.pickupIsland in [
+          "st_thomas",
+          "st_john",
+          "st_croix",
+          "water_island"
+        ]
+
+        && request.resource.data.dropoffIsland in [
+          "st_thomas",
+          "st_john",
+          "st_croix",
+          "water_island"
+        ]
+
+        && request.resource.data.passengers is int
+        && request.resource.data.passengers >= 1
+        && request.resource.data.passengers <= 12
+
+        && request.resource.data.luggage is int
+        && request.resource.data.luggage >= 0
+        && request.resource.data.luggage <= 20
+
+        && request.resource.data.serviceClass in ["shared", "private"]
+
+        && request.resource.data.totalFareCents is int
+        && request.resource.data.totalFareCents >= 0
+        && request.resource.data.totalFareCents <= 250000
+
+        && request.resource.data.taxiFareCents is int
+        && request.resource.data.taxiFareCents >= 0
+        && request.resource.data.taxiFareCents <= 250000
+
+        && request.resource.data.ferryFareCents is int
+        && request.resource.data.ferryFareCents >= 0
+        && request.resource.data.ferryFareCents <= 250000
+
+        && request.resource.data.connectorLabel is string
+        && request.resource.data.connectorLabel.size() >= 2
+        && request.resource.data.connectorLabel.size() <= 80
+
+        && request.resource.data.routeDescription is string
+        && request.resource.data.routeDescription.size() >= 2
+        && request.resource.data.routeDescription.size() <= 1000
+
+        && request.resource.data.sourceLabel is string
+        && request.resource.data.sourceLabel.size() >= 2
+        && request.resource.data.sourceLabel.size() <= 120
+
+        && request.resource.data.confidence in ["high", "medium", "low"]
+
+        && request.resource.data.lineItems is list
+        && request.resource.data.lineItems.size() <= 20
+
+        && request.resource.data.notes is list
+        && request.resource.data.notes.size() <= 20
+
+        && request.resource.data.createdAt is string
+        && request.resource.data.createdAt.size() >= 10
+        && request.resource.data.createdAt.size() <= 80
+
+        && request.resource.data.requestedAt is string
+        && request.resource.data.requestedAt.size() >= 10
+        && request.resource.data.requestedAt.size() <= 80
+
+        && request.resource.data.updatedAt is string
+        && request.resource.data.updatedAt.size() >= 10
+        && request.resource.data.updatedAt.size() <= 80
+
+        && request.resource.data.createdAtServer is timestamp
+        && request.resource.data.updatedAtServer is timestamp;
+    }
+
+    // Admins
+    match /admins/{uid} {
+      allow get: if isOwner(uid) || isAdmin();
+      allow list: if isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // Unified Discovery Engine
+    match /discoveries/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // Public discovery source collections
+    match /islands/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /areas/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /beaches/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /places/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /attractions/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /historic_sites/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /shopping/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /grocery/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /events/{id} { allow get, list: if true; allow write: if isAdmin(); }
+
+    match /restaurants-st-thomas/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /restaurants-st-john/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /restaurants-st-croix/{id} { allow get, list: if true; allow write: if isAdmin(); }
+
+    match /transportation/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /hiking-trails/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /ferry-terminals/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /ferry-terminals.json/{id} { allow get, list: if true; allow write: if isAdmin(); }
+    match /cruise-ports/{id} { allow get, list: if true; allow write: if isAdmin(); }
+
+    // Featured sections
+    match /featured_sections/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    match /featuredSections/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // Geography
+    match /estates/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    match /parcels/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // Transit / mobility
+    match /transit_routes/{id} {
+      allow get, list: if true;
+      allow create, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /mobility_fare_rules/{id} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    match /trips/{tripId} {
+      allow create, read, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /drivers/{driverId} {
+      allow read, create, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /vehicles/{vehicleId} {
+      allow read, create, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /mobility_drivers/{driverId} {
+      allow read, create, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /mobility_trips/{tripId} {
+      allow create, read, update: if signedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /mobilityTripRequests/{requestId} {
+      allow create: if validMobilityTripRequestCreate();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Business / revenue
+    match /businesses/{businessId} {
+      allow get, list: if true;
+      allow create: if signedIn();
+      allow update: if isAdmin() || ownsBusinessId(businessId);
+      allow delete: if isAdmin();
+    }
+
+    match /businessLeads/{leadId} {
+      allow create: if true;
+      allow read, update: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow delete: if isAdmin();
+    }
+
+    match /businessAnalytics/{businessId} {
+      allow read: if isAdmin() || ownsBusinessId(businessId);
+      allow create, update: if true;
+      allow delete: if isAdmin();
+    }
+
+    match /businessSubscriptions/{subscriptionId} {
+      allow read: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow write: if isAdmin();
+    }
+
+    match /businessInvoices/{invoiceId} {
+      allow read: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow write: if isAdmin();
+    }
+
+    match /businessClaims/{claimId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Property report revenue funnel
+    match /propertyReportLeads/{leadId} {
+      allow create: if validPropertyReportLeadCreate();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Community
+    match /community_posts/{postId} {
+      allow get, list: if true;
+      allow create: if signedIn();
+      allow update: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    match /community_comments/{commentId} {
+      allow get, list: if true;
+      allow create: if signedIn();
+      allow update, delete: if isAdmin();
+    }
+
+    match /communityPosts/{postId} {
+      allow get, list: if true;
+      allow create: if signedIn();
+      allow update: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+    }
+
+    // Users
+    match /users/{uid} {
+      allow create: if isOwner(uid);
+      allow read, update: if isOwner(uid) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /users/{uid}/favorites/{favoriteId} {
+      allow read, write: if isOwner(uid);
+    }
+
+    match /user_memories/{id} {
+      allow create, read, update, delete: if signedIn()
+    }
+    
+
+    // Documents
+    match /documents/{docId} {
+      allow create: if signedIn();
+
+      allow read: if signedIn() &&
+        (
+          resource.data.userId == request.auth.uid ||
+          request.auth.uid in resource.data.sharedWith ||
+          isAdmin()
+        );
+
+      allow update, delete: if signedIn() &&
+        (
+          resource.data.userId == request.auth.uid ||
+          isAdmin()
+        );
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}    
