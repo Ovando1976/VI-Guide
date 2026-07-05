@@ -9,6 +9,7 @@ import {
   collection,
   doc,
   getFirestore,
+  getDoc,
   limit,
   onSnapshot,
   orderBy,
@@ -206,6 +207,16 @@ function normalizeMobilityTripRequest(
   } as SavedMobilityTripRequest;
 }
 
+function mobilityStatusNeedsDriver(status: MobilityTripDispatchStatus) {
+  return [
+    "accepted",
+    "driver_arriving",
+    "arrived",
+    "in_progress",
+    "completed",
+  ].includes(status);
+}
+
 export function subscribeRecentMobilityTripRequests(args: {
   limitCount?: number;
   onData: (requests: SavedMobilityTripRequest[]) => void;
@@ -239,6 +250,20 @@ export async function updateMobilityTripRequestStatus(args: {
   const updatedAt = new Date().toISOString();
 
   const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+  const snapshot = await getDoc(requestRef);
+
+  if (!snapshot.exists()) {
+    throw new Error("Trip request not found.");
+  }
+
+  const existingRequest = snapshot.data() as SavedMobilityTripRequest;
+
+  if (
+    mobilityStatusNeedsDriver(args.status) &&
+    !existingRequest.assignedDriverId
+  ) {
+    throw new Error("Assign a driver before moving this trip forward.");
+  }
 
   await updateDoc(requestRef, {
     status: args.status,
