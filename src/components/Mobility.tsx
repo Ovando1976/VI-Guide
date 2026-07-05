@@ -1,3 +1,8 @@
+import MobilityCustomerTripStatus from "./mobility/MobilityCustomerTripStatus";
+import type {
+  MobilityTripRequestDraftPayload,
+  SaveMobilityTripRequestResult,
+} from "../services/mobilityTripRequests";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -478,8 +483,11 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   const [luggage, setLuggage] = useState(1);
   const [serviceClass, setServiceClass] = useState<ServiceClass>("shared");
   const [tripDraft, setTripDraft] =
-    useState<LocalTripRequestDraft | null>(null);
-
+    useState<MobilityTripRequestDraftPayload | null>(null);
+  const [dispatchSaving, setDispatchSaving] = useState(false);
+  const [dispatchError, setDispatchError] = useState<string | null>(null);
+  const [dispatchResult, setDispatchResult] =
+    useState<SaveMobilityTripRequestResult | null>(null);
   const origin = placeById(originId);
   const destination = placeById(destinationId);
 
@@ -497,12 +505,12 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
     setTripDraft(null);
   }, [originId, destinationId, passengers, luggage, serviceClass]);
 
-  function createLocalTripDraft() {
+  async function createLocalTripDraft() {
     const createdAt = new Date().toISOString();
 
-    setTripDraft({
+    const nextTripDraft = {
       id: `mobility-draft-${Date.now().toString(36)}`,
-      status: "draft",
+      status: "draft" as const,
       createdAt,
       pickupPlaceId: origin.id,
       dropoffPlaceId: destination.id,
@@ -522,13 +530,47 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
       confidence: quote.confidence,
       lineItems: quote.lineItems,
       notes: quote.notes,
-    });
+    };
+
+    setTripDraft(nextTripDraft);
+    setDispatchSaving(true);
+    setDispatchError(null);
+    setDispatchResult(null);
+
+    try {
+      const { saveMobilityTripRequest } = await import(
+        "../services/mobilityTripRequests"
+      );
+
+      const result = await saveMobilityTripRequest(
+        nextTripDraft as Parameters<typeof saveMobilityTripRequest>[0],
+      );
+
+      setDispatchResult(result);
+
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("viGuide:mobilityTripRequestSaved", {
+            detail: result,
+          }),
+        );
+      }
+    } catch (nextError) {
+      setDispatchError(
+        nextError instanceof Error
+          ? nextError.message
+          : "Could not send this trip request to dispatch.",
+      );
+    } finally {
+      setDispatchSaving(false);
+    }
   }
 
 
 
   return (
     <main className="min-h-screen bg-[#f7edcf] px-4 py-8 text-slate-950 sm:px-6 lg:px-10">
+      <MobilityCustomerTripStatus />
       <section className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-amber-100 bg-white shadow-2xl shadow-amber-950/10">
         <div className="bg-[#020617] px-6 py-10 text-white sm:px-10 lg:px-12">
           <div className="mb-4 flex flex-wrap items-center gap-3">
@@ -547,8 +589,8 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </h1>
               <p className="mt-5 max-w-3xl text-base font-medium leading-8 text-slate-300 sm:text-lg">
                 This layer uses your real mobility places, taxi tariff pairs,
-                and ferry connector data while keeping Firebase and map
-                dispatch disabled.
+                and ferry connector data with Firebase dispatch and customer
+                tracking enabled.
               </p>
             </div>
 
@@ -805,9 +847,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   Dispatch status
                 </p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
-                  Trip request saving is still disabled. This layer only proves
-                  the real fare data can drive the planner safely.
-                </p>
+                  {dispatchSaving ? "Saving request to dispatch..." : dispatchResult ? `Saved to dispatch: ${dispatchResult.path}` : dispatchError ? dispatchError : "Ready to send this request to dispatch."}</p>
               </div>
 
               <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
@@ -838,7 +878,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               onClick={createLocalTripDraft}
               className="mt-6 w-full rounded-2xl bg-slate-950 px-5 py-4 text-base font-black text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
-              Create local request draft
+              {dispatchSaving ? "Sending request..." : dispatchResult ? "Request sent to dispatch" : "Send request to dispatch"}
             </button>
 
             {tripDraft ? (

@@ -28,6 +28,9 @@ const firebaseConfig = firebaseConfigJson as FirebaseOptions & {
   firestoreDatabaseId?: string;
 };
 
+export const MOBILITY_LAST_REQUEST_STORAGE_KEY =
+  "viGuide.lastMobilityTripRequest";
+
 export type MobilityTripDispatchStatus =
   | "requested"
   | "accepted"
@@ -110,6 +113,19 @@ function getMobilityFirestore() {
   return getFirestore(app);
 }
 
+function rememberLastMobilityTripRequest(result: SaveMobilityTripRequestResult) {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.localStorage.setItem(
+      MOBILITY_LAST_REQUEST_STORAGE_KEY,
+      JSON.stringify(result),
+    );
+  } catch {
+    // Ignore storage failures. Firestore still saved the request.
+  }
+}
+
 export async function saveMobilityTripRequest(
   draft: MobilityTripRequestDraftPayload,
 ): Promise<SaveMobilityTripRequestResult> {
@@ -131,11 +147,15 @@ export async function saveMobilityTripRequest(
 
   const docRef = await addDoc(collection(db, "mobilityTripRequests"), request);
 
-  return {
+  const result = {
     firestoreId: docRef.id,
     path: `mobilityTripRequests/${docRef.id}`,
     requestedAt,
   };
+
+  rememberLastMobilityTripRequest(result);
+
+  return result;
 }
 
 export type SavedMobilityTripRequest = {
@@ -289,4 +309,73 @@ export async function clearMobilityTripRequestDriver(args: {
     status: "requested" as const,
     updatedAt,
   };
+}
+
+
+export function subscribeMobilityTripRequestById(args: {
+  firestoreId: string;
+  onData: (request: SavedMobilityTripRequest | null) => void;
+  onError?: (error: FirestoreError) => void;
+}): Unsubscribe {
+  const db = getMobilityFirestore();
+  const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+
+  return onSnapshot(
+    requestRef,
+    (snapshot) => {
+      if (!snapshot.exists()) {
+        args.onData(null);
+        return;
+      }
+
+      const data = snapshot.data() as Record<string, unknown>;
+
+      args.onData({
+        ...data,
+        firestoreId: snapshot.id,
+        path: snapshot.ref.path,
+      } as SavedMobilityTripRequest);
+    },
+    (error) => {
+      args.onError?.(error);
+    },
+  );
+}
+
+export function readLastMobilityTripRequest():
+  | SaveMobilityTripRequestResult
+  | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const rawValue = window.localStorage.getItem(
+      MOBILITY_LAST_REQUEST_STORAGE_KEY,
+    );
+
+    if (!rawValue) return null;
+
+    const parsed = JSON.parse(rawValue) as Partial<SaveMobilityTripRequestResult>;
+
+    if (!parsed.firestoreId || !parsed.path || !parsed.requestedAt) {
+      return null;
+    }
+
+    return {
+      firestoreId: parsed.firestoreId,
+      path: parsed.path,
+      requestedAt: parsed.requestedAt,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function clearLastMobilityTripRequest() {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.localStorage.removeItem(MOBILITY_LAST_REQUEST_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures.
+  }
 }
