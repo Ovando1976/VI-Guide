@@ -130,6 +130,16 @@ function statusBadgeClass(status?: string) {
   return "border-stone-200 bg-stone-50 text-stone-800";
 }
 
+function dispatchStatusNeedsDriver(status: MobilityTripDispatchStatus) {
+  return [
+    "accepted",
+    "driver_arriving",
+    "arrived",
+    "in_progress",
+    "completed",
+  ].includes(status);
+}
+
 function driversForRequest(request: SavedMobilityTripRequest) {
   const islandDrivers = DRIVER_OPTIONS.filter(
     (driver) => driver.island === request.pickupIsland,
@@ -359,6 +369,12 @@ function RequestCard({
             Dispatch actions
           </p>
 
+          {!request.assignedDriverId ? (
+            <p className="mt-2 text-sm font-bold text-amber-900">
+              Assign a driver before moving this trip forward.
+            </p>
+          ) : null}
+
           <div className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
             {([
               ["accepted", "Accept"],
@@ -368,17 +384,32 @@ function RequestCard({
               ["completed", "Complete"],
               ["cancelled", "Cancel"],
             ] as Array<[MobilityTripDispatchStatus, string]>).map(
-              ([status, label]) => (
-                <button
-                  key={status}
-                  type="button"
-                  disabled={updating || currentStatus === status}
-                  onClick={() => onStatusChange(request.firestoreId, status)}
-                  className="rounded-xl bg-slate-950 px-3 py-3 text-xs font-black text-white shadow-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  {updating ? "Updating..." : label}
-                </button>
-              ),
+              ([status, label]) => {
+                const blockedByMissingDriver =
+                  dispatchStatusNeedsDriver(status) &&
+                  !request.assignedDriverId;
+
+                return (
+                  <button
+                    key={status}
+                    type="button"
+                    disabled={
+                      updating ||
+                      currentStatus === status ||
+                      blockedByMissingDriver
+                    }
+                    title={
+                      blockedByMissingDriver
+                        ? "Assign a driver before moving this trip forward."
+                        : undefined
+                    }
+                    onClick={() => onStatusChange(request.firestoreId, status)}
+                    className="rounded-xl bg-slate-950 px-3 py-3 text-xs font-black text-white shadow-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
+                  >
+                    {updating ? "Updating..." : label}
+                  </button>
+                );
+              },
             )}
           </div>
         </div>
