@@ -3,7 +3,6 @@ import {
   AlertTriangle,
   Car,
   CheckCircle2,
-  Clock,
   MapPin,
   Navigation,
   RefreshCw,
@@ -11,6 +10,7 @@ import {
 } from "lucide-react";
 
 import type {
+  MobilityDriverLocationUpdate,
   MobilityTripDispatchStatus,
   SavedMobilityTripRequest,
 } from "../../services/mobilityTripRequests";
@@ -91,19 +91,119 @@ function activeTrips(requests: SavedMobilityTripRequest[]) {
   });
 }
 
+function placeCoordinates(name?: string): { lat: number; lng: number } {
+  const text = String(name ?? "").toLowerCase();
+
+  if (text.includes("red hook")) {
+    return { lat: 18.3269, lng: -64.8496 };
+  }
+
+  if (text.includes("sapphire")) {
+    return { lat: 18.3347, lng: -64.8491 };
+  }
+
+  if (text.includes("cyril") || text.includes("king") || text.includes("airport")) {
+    return { lat: 18.3373, lng: -64.9734 };
+  }
+
+  if (text.includes("havensight")) {
+    return { lat: 18.3357, lng: -64.9207 };
+  }
+
+  if (text.includes("cruz bay")) {
+    return { lat: 18.3317, lng: -64.7944 };
+  }
+
+  if (text.includes("christiansted")) {
+    return { lat: 17.7466, lng: -64.7041 };
+  }
+
+  return { lat: 18.3419, lng: -64.9307 };
+}
+
+function midpoint(
+  a: { lat: number; lng: number },
+  b: { lat: number; lng: number },
+) {
+  return {
+    lat: Number(((a.lat + b.lat) / 2).toFixed(6)),
+    lng: Number(((a.lng + b.lng) / 2).toFixed(6)),
+  };
+}
+
+function simulatedLocationForRequest(
+  request: SavedMobilityTripRequest,
+  statusOverride?: MobilityTripDispatchStatus,
+): MobilityDriverLocationUpdate {
+  const status = statusOverride ?? displayStatus(request);
+  const pickup = placeCoordinates(request.pickupName);
+  const dropoff = placeCoordinates(request.dropoffName);
+
+  if (status === "arrived") {
+    return {
+      ...pickup,
+      label: `Arrived at pickup: ${request.pickupName ?? "pickup"}`,
+    };
+  }
+
+  if (status === "in_progress") {
+    return {
+      ...midpoint(pickup, dropoff),
+      label: `On trip: ${request.pickupName ?? "pickup"} to ${
+        request.dropoffName ?? "dropoff"
+      }`,
+    };
+  }
+
+  if (status === "completed") {
+    return {
+      ...dropoff,
+      label: `Completed near dropoff: ${request.dropoffName ?? "dropoff"}`,
+    };
+  }
+
+  if (status === "driver_arriving") {
+    const nearPickup = midpoint(pickup, {
+      lat: pickup.lat + 0.012,
+      lng: pickup.lng - 0.012,
+    });
+
+    return {
+      ...nearPickup,
+      label: `Approaching pickup: ${request.pickupName ?? "pickup"}`,
+    };
+  }
+
+  return {
+    ...midpoint(pickup, {
+      lat: pickup.lat + 0.018,
+      lng: pickup.lng - 0.018,
+    }),
+    label: `Staged near pickup: ${request.pickupName ?? "pickup"}`,
+  };
+}
+
 function DriverTripCard({
   request,
   updating,
+  locating,
   onStatusChange,
+  onLocationUpdate,
 }: {
   request: SavedMobilityTripRequest;
   updating: boolean;
+  locating: boolean;
   onStatusChange: (
-    firestoreId: string,
+    request: SavedMobilityTripRequest,
     status: MobilityTripDispatchStatus,
+  ) => void;
+  onLocationUpdate: (
+    firestoreId: string,
+    location: MobilityDriverLocationUpdate,
   ) => void;
 }) {
   const status = displayStatus(request);
+  const simulatedLocation = simulatedLocationForRequest(request);
 
   return (
     <article className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm">
@@ -166,6 +266,35 @@ function DriverTripCard({
       <div className="border-t border-slate-100 p-5">
         <div className="rounded-2xl bg-slate-50 p-4">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
+            Driver location
+          </p>
+
+          <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
+            {request.driverLocationLabel ?? "No location update sent yet."}
+          </p>
+
+          {typeof request.driverLat === "number" &&
+          typeof request.driverLng === "number" ? (
+            <p className="mt-1 text-xs font-bold text-slate-500">
+              {request.driverLat.toFixed(5)}, {request.driverLng.toFixed(5)} ·{" "}
+              {formatDate(request.driverLocationUpdatedAt)}
+            </p>
+          ) : null}
+
+          <button
+            type="button"
+            disabled={locating}
+            onClick={() =>
+              onLocationUpdate(request.firestoreId, simulatedLocation)
+            }
+            className="mt-4 rounded-2xl bg-emerald-700 px-4 py-3 text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
+          >
+            {locating ? "Updating location..." : "Update my location"}
+          </button>
+        </div>
+
+        <div className="mt-4 rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">
             Route
           </p>
           <p className="mt-2 text-sm font-bold leading-6 text-slate-700">
@@ -190,7 +319,7 @@ function DriverTripCard({
                   status === "completed" ||
                   status === "cancelled"
                 }
-                onClick={() => onStatusChange(request.firestoreId, nextStatus)}
+                onClick={() => onStatusChange(request, nextStatus)}
                 className="rounded-2xl bg-slate-950 px-4 py-4 text-sm font-black text-white shadow-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
               >
                 {updating ? "Updating..." : label}
@@ -217,6 +346,7 @@ export default function MobilityDriverPage() {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [locatingId, setLocatingId] = useState<string | null>(null);
 
   const selectedDriver =
     DRIVER_OPTIONS.find((driver) => driver.driverId === driverId) ||
@@ -276,29 +406,62 @@ export default function MobilityDriverPage() {
   }, [driverId]);
 
   async function handleStatusChange(
-    firestoreId: string,
+    request: SavedMobilityTripRequest,
     status: MobilityTripDispatchStatus,
   ) {
-    setUpdatingId(firestoreId);
+    setUpdatingId(request.firestoreId);
     setError(null);
 
     try {
-      const { updateMobilityTripRequestStatus } = await import(
-        "../../services/mobilityTripRequests"
-      );
+      const {
+        updateMobilityTripRequestStatus,
+        updateMobilityTripRequestDriverLocation,
+      } = await import("../../services/mobilityTripRequests");
 
       await updateMobilityTripRequestStatus({
-        firestoreId,
+        firestoreId: request.firestoreId,
         status,
+      });
+
+      await updateMobilityTripRequestDriverLocation({
+        firestoreId: request.firestoreId,
+        location: simulatedLocationForRequest(request, status),
       });
     } catch (nextError) {
       setError(
         nextError instanceof Error
           ? nextError.message
-          : "Could not update trip status.",
+          : "Could not update trip status and driver location.",
       );
     } finally {
       setUpdatingId(null);
+    }
+  }
+
+  async function handleLocationUpdate(
+    firestoreId: string,
+    location: MobilityDriverLocationUpdate,
+  ) {
+    setLocatingId(firestoreId);
+    setError(null);
+
+    try {
+      const { updateMobilityTripRequestDriverLocation } = await import(
+        "../../services/mobilityTripRequests"
+      );
+
+      await updateMobilityTripRequestDriverLocation({
+        firestoreId,
+        location,
+      });
+    } catch (nextError) {
+      setError(
+        nextError instanceof Error
+          ? nextError.message
+          : "Could not update driver location.",
+      );
+    } finally {
+      setLocatingId(null);
     }
   }
 
@@ -422,7 +585,9 @@ export default function MobilityDriverPage() {
                   key={request.firestoreId}
                   request={request}
                   updating={updatingId === request.firestoreId}
+                  locating={locatingId === request.firestoreId}
                   onStatusChange={handleStatusChange}
+                  onLocationUpdate={handleLocationUpdate}
                 />
               ))}
             </div>
