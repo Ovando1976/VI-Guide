@@ -3,6 +3,7 @@ import {
   Car,
   CheckCircle2,
   Clock,
+  ExternalLink,
   MapPin,
   Navigation,
   RefreshCw,
@@ -43,6 +44,39 @@ function statusIndex(status?: string) {
 
 function displayStatus(request: SavedMobilityTripRequest | null) {
   return request?.dispatchStatus || request?.status || "requested";
+}
+
+function hasDriverLocation(request: SavedMobilityTripRequest) {
+  return (
+    typeof request.driverLat === "number" &&
+    typeof request.driverLng === "number"
+  );
+}
+
+function driverMapsUrl(request: SavedMobilityTripRequest) {
+  if (!hasDriverLocation(request)) return "#";
+
+  const lat = Number(request.driverLat);
+  const lng = Number(request.driverLng);
+  const label = encodeURIComponent(
+    request.driverLocationLabel || "Driver location",
+  );
+
+  return `https://maps.apple.com/?ll=${lat},${lng}&q=${label}`;
+}
+
+function estimatedArrivalText(request: SavedMobilityTripRequest) {
+  const status = displayStatus(request);
+
+  if (status === "requested") return "Waiting for dispatch";
+  if (status === "accepted") return "6–12 min";
+  if (status === "driver_arriving") return "3–7 min";
+  if (status === "arrived") return "At pickup";
+  if (status === "in_progress") return "On trip";
+  if (status === "completed") return "Trip complete";
+  if (status === "cancelled") return "Cancelled";
+
+  return "Calculating";
 }
 
 function formatDate(value?: string) {
@@ -271,15 +305,40 @@ export default function MobilityCustomerTripStatus() {
               <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">
                 Driver location
               </p>
+
               <p className="mt-1 font-black text-slate-950">
                 {request.driverLocationLabel || "No location update yet"}
               </p>
-              {typeof request.driverLat === "number" &&
-              typeof request.driverLng === "number" ? (
+
+              {hasDriverLocation(request) ? (
                 <p className="mt-1 text-xs font-bold text-slate-500">
-                  {request.driverLat.toFixed(5)},{" "}
-                  {request.driverLng.toFixed(5)}
+                  {request.driverLat?.toFixed(5)},{" "}
+                  {request.driverLng?.toFixed(5)}
+                  {request.driverLocationUpdatedAt
+                    ? ` · ${formatDate(request.driverLocationUpdatedAt)}`
+                    : ""}
                 </p>
+              ) : null}
+
+              <div className="mt-3 rounded-xl bg-emerald-50 px-3 py-2">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-800">
+                  Estimated arrival
+                </p>
+                <p className="mt-1 text-sm font-black text-emerald-950">
+                  {estimatedArrivalText(request)}
+                </p>
+              </div>
+
+              {hasDriverLocation(request) ? (
+                <a
+                  href={driverMapsUrl(request)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-3 py-2 text-xs font-black text-white"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Open map
+                </a>
               ) : null}
             </div>
 
