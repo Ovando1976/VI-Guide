@@ -4,6 +4,7 @@ import { Navigate, Route, Routes, useNavigate, useSearchParams } from "react-rou
 import { Loader2 } from "lucide-react";
 
 import ErrorBoundary from "./components/ErrorBoundary";
+import MobilityDispatchDashboard from "./components/mobility/MobilityDispatchDashboard";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
 import HistoricSiteDetailPage from "./pages/history/HistoricSiteDetailPage";
@@ -139,7 +140,8 @@ function AppRoutes() {
 
       <Route
         path="/mobility"
-        element={<Mobility selectedIsland={selectedIsland} user={null} />}
+        element={<Mobility selectedIsland={selectedIsland} user={null} />
+<Route path="/mobility-dispatch" element={<MobilityDispatchDashboard />} />}
       />
 
       <Route
