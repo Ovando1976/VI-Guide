@@ -37,6 +37,16 @@ const STATUS_LABELS: Record<string, string> = {
 
 const SAVED_EVENT_NAME = "viGuide:mobilityTripRequestSaved";
 
+type Coord = {
+  lat: number;
+  lng: number;
+};
+
+type MiniMapPoint = Coord & {
+  id: "driver" | "pickup" | "dropoff";
+  label: string;
+};
+
 function statusIndex(status?: string) {
   const index = STATUS_STEPS.indexOf(status as (typeof STATUS_STEPS)[number]);
   return index >= 0 ? index : 0;
@@ -91,6 +101,247 @@ function formatDate(value?: string) {
     hour: "numeric",
     minute: "2-digit",
   }).format(date);
+}
+
+function placeCoordinates(name?: string): Coord {
+  const text = String(name ?? "").toLowerCase();
+
+  if (text.includes("red hook")) {
+    return { lat: 18.3269, lng: -64.8496 };
+  }
+
+  if (text.includes("sapphire")) {
+    return { lat: 18.3347, lng: -64.8491 };
+  }
+
+  if (text.includes("cyril") || text.includes("king") || text.includes("airport")) {
+    return { lat: 18.3373, lng: -64.9734 };
+  }
+
+  if (text.includes("havensight")) {
+    return { lat: 18.3357, lng: -64.9207 };
+  }
+
+  if (text.includes("cruz bay")) {
+    return { lat: 18.3317, lng: -64.7944 };
+  }
+
+  if (text.includes("trunk")) {
+    return { lat: 18.3548, lng: -64.7686 };
+  }
+
+  if (text.includes("christiansted")) {
+    return { lat: 17.7466, lng: -64.7041 };
+  }
+
+  if (text.includes("frederiksted")) {
+    return { lat: 17.7125, lng: -64.8821 };
+  }
+
+  return { lat: 18.3419, lng: -64.9307 };
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function projectPoint(point: Coord, bounds: {
+  minLat: number;
+  maxLat: number;
+  minLng: number;
+  maxLng: number;
+}) {
+  const lngSpan = bounds.maxLng - bounds.minLng || 0.001;
+  const latSpan = bounds.maxLat - bounds.minLat || 0.001;
+
+  return {
+    x: clamp(((point.lng - bounds.minLng) / lngSpan) * 100, 6, 94),
+    y: clamp(100 - ((point.lat - bounds.minLat) / latSpan) * 100, 8, 92),
+  };
+}
+
+function miniMapPoints(request: SavedMobilityTripRequest): MiniMapPoint[] {
+  const pickup = placeCoordinates(request.pickupName);
+  const dropoff = placeCoordinates(request.dropoffName);
+
+  const points: MiniMapPoint[] = [
+    {
+      id: "pickup",
+      label: request.pickupName || "Pickup",
+      ...pickup,
+    },
+    {
+      id: "dropoff",
+      label: request.dropoffName || "Dropoff",
+      ...dropoff,
+    },
+  ];
+
+  if (hasDriverLocation(request)) {
+    points.unshift({
+      id: "driver",
+      label: request.driverLocationLabel || "Driver",
+      lat: Number(request.driverLat),
+      lng: Number(request.driverLng),
+    });
+  }
+
+  return points;
+}
+
+function MiniTripMap({ request }: { request: SavedMobilityTripRequest }) {
+  const points = miniMapPoints(request);
+  const pickup = points.find((point) => point.id === "pickup") ?? points[0];
+  const dropoff = points.find((point) => point.id === "dropoff") ?? points[1];
+  const driver = points.find((point) => point.id === "driver");
+
+  const latValues = points.map((point) => point.lat);
+  const lngValues = points.map((point) => point.lng);
+
+  const latPadding = Math.max(
+    (Math.max(...latValues) - Math.min(...latValues)) * 0.25,
+    0.01,
+  );
+  const lngPadding = Math.max(
+    (Math.max(...lngValues) - Math.min(...lngValues)) * 0.25,
+    0.01,
+  );
+
+  const bounds = {
+    minLat: Math.min(...latValues) - latPadding,
+    maxLat: Math.max(...latValues) + latPadding,
+    minLng: Math.min(...lngValues) - lngPadding,
+    maxLng: Math.max(...lngValues) + lngPadding,
+  };
+
+  const pickupProjected = projectPoint(pickup, bounds);
+  const dropoffProjected = projectPoint(dropoff, bounds);
+  const driverProjected = driver ? projectPoint(driver, bounds) : null;
+
+  return (
+    <div className="mt-4 overflow-hidden rounded-3xl border border-emerald-200 bg-white shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-emerald-100 bg-emerald-50 px-4 py-3">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-emerald-800">
+            In-app mini map
+          </p>
+          <p className="mt-1 text-sm font-bold text-emerald-950">
+            Driver, pickup, and dropoff preview
+          </p>
+        </div>
+
+        {hasDriverLocation(request) ? (
+          <a
+            href={driverMapsUrl(request)}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-3 py-2 text-xs font-black text-white"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Open map
+          </a>
+        ) : null}
+      </div>
+
+      <div className="relative h-72 overflow-hidden bg-[#dff8ef]">
+        <div className="absolute inset-0 opacity-70">
+          <div className="absolute -left-16 top-20 h-64 w-64 rounded-full bg-emerald-200 blur-3xl" />
+          <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-sky-200 blur-3xl" />
+          <div className="absolute bottom-[-5rem] left-1/3 h-56 w-56 rounded-full bg-amber-100 blur-3xl" />
+        </div>
+
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d={`M ${pickupProjected.x} ${pickupProjected.y} C ${
+              (pickupProjected.x + dropoffProjected.x) / 2
+            } ${pickupProjected.y - 18}, ${
+              (pickupProjected.x + dropoffProjected.x) / 2
+            } ${dropoffProjected.y + 18}, ${dropoffProjected.x} ${
+              dropoffProjected.y
+            }`}
+            fill="none"
+            stroke="rgba(15, 23, 42, 0.25)"
+            strokeDasharray="3 3"
+            strokeLinecap="round"
+            strokeWidth="1.7"
+          />
+
+          {driverProjected ? (
+            <path
+              d={`M ${driverProjected.x} ${driverProjected.y} L ${pickupProjected.x} ${pickupProjected.y}`}
+              fill="none"
+              stroke="rgba(4, 120, 87, 0.7)"
+              strokeLinecap="round"
+              strokeWidth="1.8"
+            />
+          ) : null}
+        </svg>
+
+        <div
+          className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            left: `${pickupProjected.x}%`,
+            top: `${pickupProjected.y}%`,
+          }}
+        >
+          <div className="rounded-2xl bg-slate-950 px-3 py-2 text-xs font-black text-white shadow-lg">
+            Pickup
+          </div>
+          <div className="mx-auto mt-1 h-4 w-4 rounded-full border-4 border-white bg-slate-950 shadow-lg" />
+        </div>
+
+        <div
+          className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            left: `${dropoffProjected.x}%`,
+            top: `${dropoffProjected.y}%`,
+          }}
+        >
+          <div className="rounded-2xl bg-amber-300 px-3 py-2 text-xs font-black text-slate-950 shadow-lg">
+            Dropoff
+          </div>
+          <div className="mx-auto mt-1 h-4 w-4 rounded-full border-4 border-white bg-amber-400 shadow-lg" />
+        </div>
+
+        {driver && driverProjected ? (
+          <div
+            className="absolute z-20 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              left: `${driverProjected.x}%`,
+              top: `${driverProjected.y}%`,
+            }}
+          >
+            <div className="animate-pulse rounded-2xl bg-emerald-700 px-3 py-2 text-xs font-black text-white shadow-lg">
+              Driver
+            </div>
+            <div className="mx-auto mt-1 grid h-8 w-8 place-items-center rounded-full border-4 border-white bg-emerald-700 text-white shadow-xl">
+              <Car className="h-4 w-4" />
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="grid gap-2 border-t border-emerald-100 p-4 text-xs font-bold text-slate-600 sm:grid-cols-3">
+        <div>
+          <span className="block text-slate-400">Pickup</span>
+          {pickup.label}
+        </div>
+        <div>
+          <span className="block text-slate-400">Dropoff</span>
+          {dropoff.label}
+        </div>
+        <div>
+          <span className="block text-slate-400">Driver</span>
+          {driver?.label ?? "Waiting for location"}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function MobilityCustomerTripStatus() {
@@ -352,6 +603,8 @@ export default function MobilityCustomerTripStatus() {
               </p>
             </div>
           </div>
+
+          <MiniTripMap request={request} />
 
           <div className="mt-4 grid gap-2 sm:grid-cols-6">
             {STATUS_STEPS.map((step, index) => {
