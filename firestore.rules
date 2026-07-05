@@ -2,58 +2,6 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /mobilityTripRequests/{requestId} {
-      allow create: if isValidMobilityTripRequest();
-      allow read, update, delete: if false;
-    }
-
-    function isValidMobilityTripRequest() {
-      return request.resource.data.keys().hasAll([
-        "draftId",
-        "status",
-        "pickupPlaceId",
-        "dropoffPlaceId",
-        "pickupName",
-        "dropoffName",
-        "pickupIsland",
-        "dropoffIsland",
-        "passengers",
-        "luggage",
-        "serviceClass",
-        "totalFareCents",
-        "taxiFareCents",
-        "ferryFareCents",
-        "connectorLabel",
-        "routeDescription",
-        "sourceLabel",
-        "confidence",
-        "lineItems",
-        "notes",
-        "requestedAt",
-        "updatedAt",
-        "firestoreSchemaVersion",
-        "firebaseSource"
-      ])
-      && request.resource.data.status == "requested"
-      && request.resource.data.firestoreSchemaVersion == 1
-      && request.resource.data.firebaseSource == "mobility_page"
-      && request.resource.data.passengers is int
-      && request.resource.data.passengers >= 1
-      && request.resource.data.passengers <= 12
-      && request.resource.data.luggage is int
-      && request.resource.data.luggage >= 0
-      && request.resource.data.luggage <= 20
-      && request.resource.data.totalFareCents is int
-      && request.resource.data.totalFareCents >= 0
-      && request.resource.data.serviceClass in ["shared", "private"]
-      && request.resource.data.confidence in ["high", "medium", "low"];
-    }
-  }
-}
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
     function signedIn() {
       return request.auth != null;
     }
@@ -77,6 +25,7 @@ service cloud.firestore {
 
     function ownsBusinessId(businessId) {
       return signedIn() &&
+        businessId is string &&
         exists(/databases/$(database)/documents/businesses/$(businessId)) &&
         get(/databases/$(database)/documents/businesses/$(businessId)).data.ownerId == request.auth.uid;
     }
@@ -94,6 +43,18 @@ service cloud.firestore {
           request.resource.data[field] is string &&
           request.resource.data[field].size() <= maxLength
         );
+    }
+
+    function validMobilityDispatchStatus(value) {
+      return value in [
+        "requested",
+        "accepted",
+        "driver_arriving",
+        "arrived",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ];
     }
 
     function validPropertyReportLeadCreate() {
@@ -139,6 +100,7 @@ service cloud.firestore {
           "id",
           "draftId",
           "status",
+          "dispatchStatus",
           "createdAt",
           "pickupPlaceId",
           "dropoffPlaceId",
@@ -166,6 +128,7 @@ service cloud.firestore {
           "updatedAtServer"
         ])
         && request.resource.data.status == "requested"
+        && request.resource.data.dispatchStatus == "requested"
         && request.resource.data.firestoreSchemaVersion == 1
         && request.resource.data.firebaseSource == "mobility_page"
 
@@ -265,20 +228,33 @@ service cloud.firestore {
         && request.resource.data.updatedAtServer is timestamp;
     }
 
-    // Admins
+    function validMobilityTripRequestUpdate() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "status",
+          "dispatchStatus",
+          "updatedAt",
+          "updatedAtServer"
+        ])
+        && validMobilityDispatchStatus(request.resource.data.status)
+        && validMobilityDispatchStatus(request.resource.data.dispatchStatus)
+        && request.resource.data.status == request.resource.data.dispatchStatus
+        && request.resource.data.updatedAt is string
+        && request.resource.data.updatedAt.size() >= 10
+        && request.resource.data.updatedAt.size() <= 80
+        && request.resource.data.updatedAtServer is timestamp;
+    }
+
     match /admins/{uid} {
       allow get: if isOwner(uid) || isAdmin();
       allow list: if isAdmin();
       allow write: if isAdmin();
     }
 
-    // Unified Discovery Engine
     match /discoveries/{id} {
       allow get, list: if true;
       allow write: if isAdmin();
     }
 
-    // Public discovery source collections
     match /islands/{id} { allow get, list: if true; allow write: if isAdmin(); }
     match /areas/{id} { allow get, list: if true; allow write: if isAdmin(); }
     match /beaches/{id} { allow get, list: if true; allow write: if isAdmin(); }
@@ -299,7 +275,6 @@ service cloud.firestore {
     match /ferry-terminals.json/{id} { allow get, list: if true; allow write: if isAdmin(); }
     match /cruise-ports/{id} { allow get, list: if true; allow write: if isAdmin(); }
 
-    // Featured sections
     match /featured_sections/{id} {
       allow get, list: if true;
       allow write: if isAdmin();
@@ -310,7 +285,6 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Geography
     match /estates/{id} {
       allow get, list: if true;
       allow write: if isAdmin();
@@ -321,7 +295,6 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Transit / mobility
     match /transit_routes/{id} {
       allow get, list: if true;
       allow create, update: if signedIn();
@@ -360,10 +333,15 @@ service cloud.firestore {
 
     match /mobilityTripRequests/{requestId} {
       allow create: if validMobilityTripRequestCreate();
-      allow read, update, delete: if isAdmin();
+
+      // DEV MODE:
+      // Dispatch board reads and status buttons work before admin auth is wired.
+      // Production should be admin-only for get/list/update/delete.
+      allow get, list: if true;
+      allow update: if isAdmin() || validMobilityTripRequestUpdate();
+      allow delete: if isAdmin();
     }
 
-    // Business / revenue
     match /businesses/{businessId} {
       allow get, list: if true;
       allow create: if signedIn();
@@ -373,7 +351,11 @@ service cloud.firestore {
 
     match /businessLeads/{leadId} {
       allow create: if true;
-      allow read, update: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow read, update: if isAdmin() ||
+        (
+          resource.data.businessId is string &&
+          ownsBusinessId(resource.data.businessId)
+        );
       allow delete: if isAdmin();
     }
 
@@ -384,12 +366,20 @@ service cloud.firestore {
     }
 
     match /businessSubscriptions/{subscriptionId} {
-      allow read: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow read: if isAdmin() ||
+        (
+          resource.data.businessId is string &&
+          ownsBusinessId(resource.data.businessId)
+        );
       allow write: if isAdmin();
     }
 
     match /businessInvoices/{invoiceId} {
-      allow read: if isAdmin() || ownsBusinessId(resource.data.businessId);
+      allow read: if isAdmin() ||
+        (
+          resource.data.businessId is string &&
+          ownsBusinessId(resource.data.businessId)
+        );
       allow write: if isAdmin();
     }
 
@@ -398,13 +388,11 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // Property report revenue funnel
     match /propertyReportLeads/{leadId} {
       allow create: if validPropertyReportLeadCreate();
       allow read, update, delete: if isAdmin();
     }
 
-    // Community
     match /community_posts/{postId} {
       allow get, list: if true;
       allow create: if signedIn();
@@ -425,7 +413,6 @@ service cloud.firestore {
       allow delete: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
     }
 
-    // Users
     match /users/{uid} {
       allow create: if isOwner(uid);
       allow read, update: if isOwner(uid) || isAdmin();
@@ -437,18 +424,19 @@ service cloud.firestore {
     }
 
     match /user_memories/{id} {
-      allow create, read, update, delete: if signedIn()
+      allow create, read, update, delete: if signedIn();
     }
-    
 
-    // Documents
     match /documents/{docId} {
       allow create: if signedIn();
 
       allow read: if signedIn() &&
         (
           resource.data.userId == request.auth.uid ||
-          request.auth.uid in resource.data.sharedWith ||
+          (
+            resource.data.sharedWith is list &&
+            request.auth.uid in resource.data.sharedWith
+          ) ||
           isAdmin()
         );
 
@@ -459,9 +447,8 @@ service cloud.firestore {
         );
     }
 
-    // Default deny
     match /{document=**} {
       allow read, write: if false;
     }
   }
-}    
+}

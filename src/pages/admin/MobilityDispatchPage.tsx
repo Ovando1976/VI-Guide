@@ -11,7 +11,10 @@ import {
   Users,
 } from "lucide-react";
 
-import type { SavedMobilityTripRequest } from "../../services/mobilityTripRequests";
+import type {
+  MobilityTripDispatchStatus,
+  SavedMobilityTripRequest,
+} from "../../services/mobilityTripRequests";
 
 const ISLAND_LABELS: Record<string, string> = {
   st_thomas: "St. Thomas",
@@ -62,7 +65,18 @@ function statusBadgeClass(status?: string) {
   return "border-amber-200 bg-amber-50 text-amber-800";
 }
 
-function RequestCard({ request }: { request: SavedMobilityTripRequest }) {
+function RequestCard({
+  request,
+  updating,
+  onStatusChange,
+}: {
+  request: SavedMobilityTripRequest;
+  updating: boolean;
+  onStatusChange: (
+    firestoreId: string,
+    status: MobilityTripDispatchStatus,
+  ) => void;
+}) {
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
       <div className="border-b border-slate-100 bg-slate-50 p-5">
@@ -183,6 +197,35 @@ function RequestCard({ request }: { request: SavedMobilityTripRequest }) {
             <p className="mt-1 truncate text-sm font-black">{request.path}</p>
           </div>
         </div>
+
+        <div className="mt-4 rounded-2xl border border-amber-200 bg-[#fff9e8] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-800">
+            Dispatch actions
+          </p>
+
+          <div className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
+            {([
+              ["accepted", "Accept"],
+              ["driver_arriving", "Arriving"],
+              ["arrived", "Arrived"],
+              ["in_progress", "Start"],
+              ["completed", "Complete"],
+              ["cancelled", "Cancel"],
+            ] as Array<[MobilityTripDispatchStatus, string]>).map(
+              ([status, label]) => (
+                <button
+                  key={status}
+                  type="button"
+                  disabled={updating || request.status === status}
+                  onClick={() => onStatusChange(request.firestoreId, status)}
+                  className="rounded-xl bg-slate-950 px-3 py-3 text-xs font-black text-white shadow-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45"
+                >
+                  {updating ? "Updating..." : label}
+                </button>
+              ),
+            )}
+          </div>
+        </div>
       </div>
     </article>
   );
@@ -192,6 +235,7 @@ export default function MobilityDispatchPage() {
   const [requests, setRequests] = useState<SavedMobilityTripRequest[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -240,6 +284,33 @@ export default function MobilityDispatchPage() {
       unsubscribe?.();
     };
   }, []);
+
+  async function handleStatusChange(
+    firestoreId: string,
+    status: MobilityTripDispatchStatus,
+  ) {
+    setUpdatingId(firestoreId);
+    setError(null);
+
+    try {
+      const { updateMobilityTripRequestStatus } = await import(
+        "../../services/mobilityTripRequests"
+      );
+
+      await updateMobilityTripRequestStatus({
+        firestoreId,
+        status,
+      });
+    } catch (nextError) {
+      setError(
+        nextError instanceof Error
+          ? nextError.message
+          : "Could not update the dispatch request.",
+      );
+    } finally {
+      setUpdatingId(null);
+    }
+  }
 
   const requestedCount = useMemo(() => {
     return requests.filter((request) => request.status === "requested").length;
@@ -351,7 +422,12 @@ export default function MobilityDispatchPage() {
           {!error && requests.length > 0 ? (
             <div className="space-y-5">
               {requests.map((request) => (
-                <RequestCard key={request.firestoreId} request={request} />
+                <RequestCard
+                  key={request.firestoreId}
+                  request={request}
+                  updating={updatingId === request.firestoreId}
+                  onStatusChange={handleStatusChange}
+                />
               ))}
             </div>
           ) : null}

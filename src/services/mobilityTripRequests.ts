@@ -1,13 +1,20 @@
-import { getApp, getApps, initializeApp, type FirebaseOptions } from "firebase/app";
+import {
+  getApp,
+  getApps,
+  initializeApp,
+  type FirebaseOptions,
+} from "firebase/app";
 import {
   addDoc,
   collection,
+  doc,
   getFirestore,
   limit,
   onSnapshot,
   orderBy,
   query,
   serverTimestamp,
+  updateDoc,
   type FieldValue,
   type FirestoreError,
   type QueryDocumentSnapshot,
@@ -20,6 +27,15 @@ import type { MobilityIslandCode } from "../types/mobility";
 const firebaseConfig = firebaseConfigJson as FirebaseOptions & {
   firestoreDatabaseId?: string;
 };
+
+export type MobilityTripDispatchStatus =
+  | "requested"
+  | "accepted"
+  | "driver_arriving"
+  | "arrived"
+  | "in_progress"
+  | "completed"
+  | "cancelled";
 
 export type MobilityTripRequestLineItem = {
   label: string;
@@ -56,6 +72,7 @@ export type FirebaseMobilityTripRequest = Omit<
   "status"
 > & {
   status: "requested";
+  dispatchStatus: "requested";
   draftId: string;
   requestedAt: string;
   updatedAt: string;
@@ -87,7 +104,7 @@ function getMobilityFirestore() {
 }
 
 export async function saveMobilityTripRequest(
-  draft: MobilityTripRequestDraftPayload
+  draft: MobilityTripRequestDraftPayload,
 ): Promise<SaveMobilityTripRequestResult> {
   const db = getMobilityFirestore();
   const requestedAt = new Date().toISOString();
@@ -96,6 +113,7 @@ export async function saveMobilityTripRequest(
     ...draft,
     draftId: draft.id,
     status: "requested",
+    dispatchStatus: "requested",
     requestedAt,
     updatedAt: requestedAt,
     firestoreSchemaVersion: 1,
@@ -118,7 +136,8 @@ export type SavedMobilityTripRequest = {
   path: string;
   id?: string;
   draftId?: string;
-  status?: string;
+  status?: MobilityTripDispatchStatus | string;
+  dispatchStatus?: MobilityTripDispatchStatus | string;
   createdAt?: string;
   requestedAt?: string;
   updatedAt?: string;
@@ -143,7 +162,7 @@ export type SavedMobilityTripRequest = {
 };
 
 function normalizeMobilityTripRequest(
-  snapshot: QueryDocumentSnapshot
+  snapshot: QueryDocumentSnapshot,
 ): SavedMobilityTripRequest {
   const data = snapshot.data() as Record<string, unknown>;
 
@@ -165,7 +184,7 @@ export function subscribeRecentMobilityTripRequests(args: {
   const requestsQuery = query(
     collection(db, "mobilityTripRequests"),
     orderBy("requestedAt", "desc"),
-    limit(limitCount)
+    limit(limitCount),
   );
 
   return onSnapshot(
@@ -175,7 +194,29 @@ export function subscribeRecentMobilityTripRequests(args: {
     },
     (error) => {
       args.onError?.(error);
-    }
+    },
   );
 }
 
+export async function updateMobilityTripRequestStatus(args: {
+  firestoreId: string;
+  status: MobilityTripDispatchStatus;
+}) {
+  const db = getMobilityFirestore();
+  const updatedAt = new Date().toISOString();
+
+  const requestRef = doc(db, "mobilityTripRequests", args.firestoreId);
+
+  await updateDoc(requestRef, {
+    status: args.status,
+    dispatchStatus: args.status,
+    updatedAt,
+    updatedAtServer: serverTimestamp(),
+  });
+
+  return {
+    firestoreId: args.firestoreId,
+    status: args.status,
+    updatedAt,
+  };
+}
