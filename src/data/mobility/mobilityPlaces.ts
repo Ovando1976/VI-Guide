@@ -111,7 +111,7 @@ export const mobilityPlaces: MobilityPlace[] = [
     lat: 18.3533,
     lng: -64.7681,
     aliases: ["Trunk Bay Beach"],
-    taxiZoneId: "stj_north_shore",
+    taxiZoneId: "stj_trunk_bay",
     tags: ["beach", "national park"],
   },
   {
@@ -122,7 +122,7 @@ export const mobilityPlaces: MobilityPlace[] = [
     lat: 18.3568,
     lng: -64.7556,
     aliases: ["Cinnamon Bay Beach"],
-    taxiZoneId: "stj_north_shore",
+    taxiZoneId: "stj_cinnamon_bay",
     tags: ["beach", "campground", "national park"],
   },
   {

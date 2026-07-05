@@ -1,3 +1,10 @@
+import {
+  baseZoneFares,
+  tariffSettings,
+  tariffZones,
+} from "./tariffRules";
+import type { TaxiZoneId } from "./tariffRules";
+
 export type TaxiTariffPair = {
   fromZoneId: string;
   toZoneId: string;
@@ -6,101 +13,7 @@ export type TaxiTariffPair = {
   notes?: string[];
 };
 
-export const taxiTariffPairs: TaxiTariffPair[] = [
-  {
-    fromZoneId: "stt_airport",
-    toZoneId: "stt_charlotte_amalie",
-    sharedFareCents: 1000,
-    privateFareCents: 4500,
-  },
-  {
-    fromZoneId: "stt_airport",
-    toZoneId: "stt_havensight",
-    sharedFareCents: 1200,
-    privateFareCents: 5000,
-  },
-  {
-    fromZoneId: "stt_airport",
-    toZoneId: "stt_red_hook",
-    sharedFareCents: 2300,
-    privateFareCents: 9000,
-  },
-  {
-    fromZoneId: "stt_charlotte_amalie",
-    toZoneId: "stt_havensight",
-    sharedFareCents: 600,
-    privateFareCents: 3000,
-  },
-  {
-    fromZoneId: "stt_red_hook",
-    toZoneId: "stt_sapphire",
-    sharedFareCents: 600,
-    privateFareCents: 3000,
-  },
-  {
-    fromZoneId: "stt_charlotte_amalie",
-    toZoneId: "stt_magens_bay",
-    sharedFareCents: 1500,
-    privateFareCents: 6500,
-  },
-  {
-    fromZoneId: "stt_havensight",
-    toZoneId: "stt_magens_bay",
-    sharedFareCents: 1500,
-    privateFareCents: 6500,
-  },
-  {
-    fromZoneId: "stj_cruz_bay",
-    toZoneId: "stj_north_shore",
-    sharedFareCents: 1200,
-    privateFareCents: 5500,
-  },
-  {
-    fromZoneId: "stj_cruz_bay",
-    toZoneId: "stj_coral_bay",
-    sharedFareCents: 2200,
-    privateFareCents: 8500,
-  },
-  {
-    fromZoneId: "stx_airport",
-    toZoneId: "stx_christiansted",
-    sharedFareCents: 2500,
-    privateFareCents: 8500,
-  },
-  {
-    fromZoneId: "stx_airport",
-    toZoneId: "stx_frederiksted",
-    sharedFareCents: 1600,
-    privateFareCents: 6500,
-  },
-  {
-    fromZoneId: "stx_christiansted",
-    toZoneId: "stx_frederiksted",
-    sharedFareCents: 3000,
-    privateFareCents: 9500,
-  },
-];
-
-export function findTaxiTariff(fromZoneId?: string, toZoneId?: string) {
-  if (!fromZoneId || !toZoneId) return undefined;
-
-  return taxiTariffPairs.find((pair) => {
-    const direct =
-      pair.fromZoneId === fromZoneId && pair.toZoneId === toZoneId;
-    const reverse =
-      pair.fromZoneId === toZoneId && pair.toZoneId === fromZoneId;
-
-    return direct || reverse;
-  });
-}
-
-export type TaxiTariffLookup = {
-  fromZoneId: string;
-  toZoneId: string;
-  sharedFareCents: number;
-  privateFareCents?: number;
-  notes?: string[];
-};
+export type TaxiTariffLookup = TaxiTariffPair;
 
 function dollarsToCents(value: number) {
   return Math.round(value * 100);
@@ -132,6 +45,28 @@ export function findBaseZoneFareDollars(
   return undefined;
 }
 
+export const taxiTariffPairs: TaxiTariffPair[] = Object.entries(
+  baseZoneFares
+).flatMap(([fromZoneId, destinations]) => {
+  return Object.entries(destinations ?? {}).map(([toZoneId, fareDollars]) => {
+    const sharedFareCents = dollarsToCents(Number(fareDollars));
+    const privateFareCents = dollarsToCents(
+      Math.max(
+        tariffSettings.minimumFare,
+        Number(fareDollars) * tariffSettings.privateServiceMultiplier
+      )
+    );
+
+    return {
+      fromZoneId,
+      toZoneId,
+      sharedFareCents,
+      privateFareCents,
+      notes: ["Fare generated from official seeded VITC zone matrix."],
+    };
+  });
+});
+
 export function findTaxiTariff(
   fromZoneId?: string,
   toZoneId?: string
@@ -142,16 +77,16 @@ export function findTaxiTariff(
     return undefined;
   }
 
-  const privateFareDollars = Math.max(
-    tariffSettings.minimumFare,
-    baseFareDollars * tariffSettings.privateServiceMultiplier
-  );
-
   return {
     fromZoneId: fromZoneId ?? "",
     toZoneId: toZoneId ?? "",
     sharedFareCents: dollarsToCents(baseFareDollars),
-    privateFareCents: dollarsToCents(privateFareDollars),
+    privateFareCents: dollarsToCents(
+      Math.max(
+        tariffSettings.minimumFare,
+        baseFareDollars * tariffSettings.privateServiceMultiplier
+      )
+    ),
     notes: [
       "Fare matched official seeded VITC zone matrix.",
       "Shared fare is stored as the single-passenger base fare.",
@@ -169,6 +104,7 @@ export function calculateTaxiTariffCents(args: {
 }) {
   const passengers = Math.max(1, args.passengers || 1);
   const luggage = Math.max(0, args.luggage || 0);
+
   const baseFareDollars = findBaseZoneFareDollars(
     args.fromZoneId,
     args.toZoneId
@@ -188,11 +124,12 @@ export function calculateTaxiTariffCents(args: {
   const sharedTotalDollars =
     baseFareDollars + passengerFeeDollars + luggageFeeDollars;
 
-  const privateTotalDollars =
-    Math.max(
-      tariffSettings.minimumFare,
-      baseFareDollars * tariffSettings.privateServiceMultiplier
-    ) + luggageFeeDollars;
+  const privateBaseDollars = Math.max(
+    tariffSettings.minimumFare,
+    baseFareDollars * tariffSettings.privateServiceMultiplier
+  );
+
+  const privateTotalDollars = privateBaseDollars + luggageFeeDollars;
 
   const cruiseMultiplier = args.cruiseTransfer
     ? tariffSettings.cruiseDemandMultiplier

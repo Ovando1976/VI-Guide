@@ -9,176 +9,456 @@ import {
   Users,
 } from "lucide-react";
 
-type IslandCode = "st_thomas" | "st_john" | "st_croix";
-type ServiceClass = "shared" | "private";
+import { ferryRoutes } from "../data/mobility/ferryRoutes";
+import { mobilityPlaces } from "../data/mobility/mobilityPlaces";
+import { calculateTaxiTariffCents } from "../data/mobility/taxiTariffs";
+import type {
+  MobilityIslandCode,
+  MobilityPlace,
+} from "../types/mobility";
 
 type MobilityProps = {
   selectedIsland?: string;
   user?: unknown;
 };
 
-type TripPoint = {
-  id: string;
-  name: string;
-  island: IslandCode;
-  kind: "airport" | "ferry" | "cruise" | "beach" | "town";
-  zone: string;
+type ServiceClass = "shared" | "private";
+
+type QuoteLineItem = {
+  label: string;
+  amountCents: number;
+  detail?: string;
 };
 
-const ISLAND_LABELS: Record<IslandCode, string> = {
+type SegmentQuote = {
+  amountCents: number;
+  lineItems: QuoteLineItem[];
+  notes: string[];
+  usedTariff: boolean;
+};
+
+type TripQuote = {
+  totalFareCents: number;
+  taxiFareCents: number;
+  ferryFareCents: number;
+  lineItems: QuoteLineItem[];
+  notes: string[];
+  sourceLabel: string;
+  confidence: "high" | "medium" | "low";
+  isInterIsland: boolean;
+  connectorLabel: string;
+  routeDescription: string;
+};
+
+const ISLAND_LABELS: Record<MobilityIslandCode, string> = {
   st_thomas: "St. Thomas",
   st_john: "St. John",
   st_croix: "St. Croix",
+  water_island: "Water Island",
 };
 
-const POINTS: TripPoint[] = [
-  {
-    id: "stt_airport",
-    name: "Cyril E. King Airport",
-    island: "st_thomas",
-    kind: "airport",
-    zone: "Airport",
-  },
-  {
-    id: "red_hook",
-    name: "Red Hook Ferry Terminal",
-    island: "st_thomas",
-    kind: "ferry",
-    zone: "Red Hook",
-  },
-  {
-    id: "havensight",
-    name: "Havensight Cruise Pier",
-    island: "st_thomas",
-    kind: "cruise",
-    zone: "Havensight",
-  },
-  {
-    id: "charlotte_amalie",
-    name: "Charlotte Amalie",
-    island: "st_thomas",
-    kind: "town",
-    zone: "Town",
-  },
-  {
-    id: "magens_bay",
-    name: "Magens Bay",
-    island: "st_thomas",
-    kind: "beach",
-    zone: "Northside",
-  },
-  {
-    id: "stj_cruz_bay",
-    name: "Cruz Bay Ferry Terminal",
-    island: "st_john",
-    kind: "ferry",
-    zone: "Cruz Bay",
-  },
-  {
-    id: "trunk_bay",
-    name: "Trunk Bay",
-    island: "st_john",
-    kind: "beach",
-    zone: "North Shore",
-  },
-  {
-    id: "stx_airport",
-    name: "Henry E. Rohlsen Airport",
-    island: "st_croix",
-    kind: "airport",
-    zone: "Airport",
-  },
-  {
-    id: "christiansted",
-    name: "Christiansted",
-    island: "st_croix",
-    kind: "town",
-    zone: "Christiansted",
-  },
-  {
-    id: "frederiksted",
-    name: "Frederiksted",
-    island: "st_croix",
-    kind: "town",
-    zone: "Frederiksted",
-  },
-];
-
 const TEST_ROUTES: Array<[string, string]> = [
-  ["stt_airport", "red_hook"],
-  ["stt_airport", "trunk_bay"],
-  ["havensight", "magens_bay"],
-  ["stx_airport", "christiansted"],
-  ["christiansted", "frederiksted"],
-  ["stj_cruz_bay", "trunk_bay"],
+  ["stt-airport-cyril-e-king", "stt-red-hook-ferry-terminal"],
+  ["stt-airport-cyril-e-king", "stj-trunk-bay"],
+  ["stt-havensight-cruise-pier", "stt-magens-bay"],
+  ["stx-airport-henry-e-rohlsen", "stx-christiansted"],
+  ["stx-christiansted", "stx-frederiksted"],
+  ["stj-cruz-bay-ferry-terminal", "stj-trunk-bay"],
 ];
 
-function pointById(id: string): TripPoint {
-  return POINTS.find((point) => point.id === id) ?? POINTS[0]!;
-}
+function firstPlace(): MobilityPlace {
+  const first = mobilityPlaces[0];
 
-function money(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
-
-function routeLabel(originId: string, destinationId: string) {
-  return `${pointById(originId).name} → ${pointById(destinationId).name}`;
-}
-
-function estimateFare(args: {
-  origin: TripPoint;
-  destination: TripPoint;
-  passengers: number;
-  luggage: number;
-  serviceClass: ServiceClass;
-}) {
-  const { origin, destination, passengers, luggage, serviceClass } = args;
-
-  let base = 12;
-
-  if (origin.island !== destination.island) {
-    base = 48;
-  } else if (origin.kind === "airport" || destination.kind === "airport") {
-    base = 22;
-  } else if (origin.kind === "cruise" || destination.kind === "cruise") {
-    base = 18;
-  } else if (origin.zone !== destination.zone) {
-    base = 16;
+  if (!first) {
+    throw new Error("mobilityPlaces is empty");
   }
 
-  const passengerCharge = Math.max(0, passengers - 1) * 6;
-  const luggageCharge = luggage * 2;
-  const privateCharge = serviceClass === "private" ? 35 : 0;
-  const connectorCharge = origin.island !== destination.island ? 18 : 0;
+  return first;
+}
 
-  return base + passengerCharge + luggageCharge + privateCharge + connectorCharge;
+function placeById(id: string): MobilityPlace {
+  return mobilityPlaces.find((place) => place.id === id) ?? firstPlace();
 }
 
 function defaultOriginForIsland(selectedIsland?: string) {
-  if (selectedIsland === "st_john") return "stj_cruz_bay";
-  if (selectedIsland === "st_croix") return "stx_airport";
-  return "stt_airport";
+  if (selectedIsland === "st_john") return "stj-cruz-bay-ferry-terminal";
+  if (selectedIsland === "st_croix") return "stx-airport-henry-e-rohlsen";
+  if (selectedIsland === "water_island") return "wat-water-island-ferry-terminal";
+  return "stt-airport-cyril-e-king";
+}
+
+function defaultDestinationForIsland(selectedIsland?: string) {
+  if (selectedIsland === "st_john") return "stj-trunk-bay";
+  if (selectedIsland === "st_croix") return "stx-christiansted";
+  if (selectedIsland === "water_island") return "wat-honeymoon-beach";
+  return "stt-red-hook-ferry-terminal";
+}
+
+function moneyFromCents(cents: number) {
+  const dollars = cents / 100;
+
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: cents % 100 === 0 ? 0 : 2,
+    maximumFractionDigits: cents % 100 === 0 ? 0 : 2,
+  }).format(dollars);
+}
+
+function plural(value: number, singular: string, pluralLabel = `${singular}s`) {
+  return value === 1 ? singular : pluralLabel;
+}
+
+function routeLabel(originId: string, destinationId: string) {
+  return `${placeById(originId).name} → ${placeById(destinationId).name}`;
+}
+
+function samePlace(a: MobilityPlace, b: MobilityPlace) {
+  return a.id === b.id;
+}
+
+function terminalPlaceById(terminalId: string) {
+  return mobilityPlaces.find((place) => place.ferryTerminalId === terminalId);
+}
+
+function findBestFerryRoute(
+  fromIsland: MobilityIslandCode,
+  toIsland: MobilityIslandCode
+) {
+  const candidates = ferryRoutes
+    .filter((route) => {
+      const direct =
+        route.fromIsland === fromIsland && route.toIsland === toIsland;
+      const reverse =
+        route.fromIsland === toIsland && route.toIsland === fromIsland;
+
+      return direct || reverse;
+    })
+    .sort((a, b) => a.durationMinutes - b.durationMinutes);
+
+  return candidates[0];
+}
+
+function terminalForIsland(
+  route: NonNullable<ReturnType<typeof findBestFerryRoute>>,
+  island: MobilityIslandCode
+) {
+  const terminalId =
+    route.fromIsland === island ? route.fromTerminalId : route.toTerminalId;
+
+  return terminalPlaceById(terminalId);
+}
+
+function fallbackTaxiFareCents(args: {
+  from: MobilityPlace;
+  to: MobilityPlace;
+  passengers: number;
+  luggage?: number;
+  serviceClass: ServiceClass;
+}) {
+  const { from, to, passengers, serviceClass } = args;
+  const luggage = Math.max(0, args.luggage ?? 0);
+  const luggageFeeCents = luggage * 300;
+
+  let sharedBaseCents = 1200;
+
+  if (from.island !== to.island) {
+    sharedBaseCents = 4800;
+  } else if (from.type === "airport" || to.type === "airport") {
+    sharedBaseCents = 2200;
+  } else if (from.type === "cruise_port" || to.type === "cruise_port") {
+    sharedBaseCents = 1800;
+  } else if (from.taxiZoneId !== to.taxiZoneId) {
+    sharedBaseCents = 1600;
+  }
+
+  if (serviceClass === "private") {
+    return Math.max(3000, sharedBaseCents * 3) + luggageFeeCents;
+  }
+
+  return sharedBaseCents * Math.max(1, passengers) + luggageFeeCents;
+}
+
+function buildTaxiSegmentQuote(args: {
+  from: MobilityPlace;
+  to: MobilityPlace;
+  passengers: number;
+  luggage: number;
+  serviceClass: ServiceClass;
+}): SegmentQuote {
+  const { from, to, passengers, luggage, serviceClass } = args;
+
+  if (samePlace(from, to)) {
+    return {
+      amountCents: 0,
+      lineItems: [],
+      notes: [`No taxi segment needed at ${from.name}.`],
+      usedTariff: true,
+    };
+  }
+
+  const tariff = calculateTaxiTariffCents({
+    fromZoneId: from.taxiZoneId,
+    toZoneId: to.taxiZoneId,
+    passengers,
+    luggage,
+    serviceClass,
+    cruiseTransfer: from.type === "cruise_port" || to.type === "cruise_port",
+  });
+
+  if (tariff) {
+    const amountCents = tariff.totalFareCents;
+
+    const detailParts = [
+      `${moneyFromCents(tariff.baseFareCents)} base zone fare`,
+      tariff.passengerFeeCents > 0
+        ? `${moneyFromCents(tariff.passengerFeeCents)} passenger fee`
+        : "",
+      tariff.luggageFeeCents > 0
+        ? `${moneyFromCents(tariff.luggageFeeCents)} luggage fee`
+        : "",
+    ].filter(Boolean);
+
+    return {
+      amountCents,
+      lineItems: [
+        {
+          label:
+            serviceClass === "private"
+              ? `Private taxi: ${from.name} → ${to.name}`
+              : `Shared taxi: ${from.name} → ${to.name}`,
+          amountCents,
+          detail: detailParts.join(" + "),
+        },
+      ],
+      notes: tariff.notes,
+      usedTariff: true,
+    };
+  }
+
+  const fallbackCents = fallbackTaxiFareCents({
+    from,
+    to,
+    passengers,
+    luggage,
+    serviceClass,
+  });
+
+  return {
+    amountCents: fallbackCents,
+    lineItems: [
+      {
+        label: `Planning taxi estimate: ${from.name} → ${to.name}`,
+        amountCents: fallbackCents,
+        detail: "No exact official tariff pair found yet for these taxi zones.",
+      },
+    ],
+    notes: [
+      `Missing official tariff pair for ${from.taxiZoneId ?? "unknown"} ↔ ${
+        to.taxiZoneId ?? "unknown"
+      }.`,
+      "This segment uses the safe fallback estimate until the tariff matrix is expanded.",
+    ],
+    usedTariff: false,
+  };
+}
+
+function buildTripQuote(args: {
+  origin: MobilityPlace;
+  destination: MobilityPlace;
+  passengers: number;
+  luggage: number;
+  serviceClass: ServiceClass;
+}): TripQuote {
+  const { origin, destination, passengers, luggage, serviceClass } = args;
+  const notes: string[] = [];
+  const lineItems: QuoteLineItem[] = [];
+  let taxiFareCents = 0;
+  let ferryFareCents = 0;
+  let usedFallback = false;
+
+  if (luggage > 0) {
+    notes.push(
+      `${luggage} ${plural(
+        luggage,
+        "bag"
+      )} captured. Baggage surcharges are not added until baggage tariff rules are modeled.`
+    );
+  }
+
+  if (origin.island === destination.island) {
+    const taxi = buildTaxiSegmentQuote({
+      from: origin,
+      to: destination,
+      passengers,
+      luggage,
+      serviceClass,
+    });
+
+    taxiFareCents += taxi.amountCents;
+    lineItems.push(...taxi.lineItems);
+    notes.push(...taxi.notes);
+    usedFallback = usedFallback || !taxi.usedTariff;
+
+    return {
+      totalFareCents: taxiFareCents,
+      taxiFareCents,
+      ferryFareCents,
+      lineItems,
+      notes,
+      sourceLabel: usedFallback
+        ? "Tariff fallback estimate"
+        : "Taxi tariff table",
+      confidence: usedFallback ? "medium" : "high",
+      isInterIsland: false,
+      connectorLabel: "Local",
+      routeDescription: `${origin.name} → ${destination.name}`,
+    };
+  }
+
+  const ferryRoute = findBestFerryRoute(origin.island, destination.island);
+
+  if (!ferryRoute) {
+    const fallback = fallbackTaxiFareCents({
+      from: origin,
+      to: destination,
+      passengers,
+      luggage,
+      serviceClass,
+    });
+
+    lineItems.push({
+      label: `Inter-island planning estimate: ${origin.name} → ${destination.name}`,
+      amountCents: fallback,
+      detail: "No ferry connector exists yet for this island pair.",
+    });
+
+    return {
+      totalFareCents: fallback,
+      taxiFareCents: fallback,
+      ferryFareCents: 0,
+      lineItems,
+      notes: [
+        ...notes,
+        `No ferry route found for ${ISLAND_LABELS[origin.island]} ↔ ${
+          ISLAND_LABELS[destination.island]
+        }.`,
+      ],
+      sourceLabel: "Fallback estimate",
+      confidence: "low",
+      isInterIsland: true,
+      connectorLabel: "Missing ferry",
+      routeDescription: `${origin.name} → ${destination.name}`,
+    };
+  }
+
+  const fromTerminal = terminalForIsland(ferryRoute, origin.island);
+  const toTerminal = terminalForIsland(ferryRoute, destination.island);
+
+  if (!fromTerminal || !toTerminal) {
+    const fallback = fallbackTaxiFareCents({
+      from: origin,
+      to: destination,
+      passengers,
+      luggage,
+      serviceClass,
+    });
+
+    lineItems.push({
+      label: `Inter-island planning estimate: ${origin.name} → ${destination.name}`,
+      amountCents: fallback,
+      detail: "Ferry route exists, but a terminal place is missing.",
+    });
+
+    return {
+      totalFareCents: fallback,
+      taxiFareCents: fallback,
+      ferryFareCents: 0,
+      lineItems,
+      notes: [
+        ...notes,
+        `Missing terminal place for ferry route ${ferryRoute.name}.`,
+      ],
+      sourceLabel: "Fallback estimate",
+      confidence: "low",
+      isInterIsland: true,
+      connectorLabel: "Terminal missing",
+      routeDescription: `${origin.name} → ${destination.name}`,
+    };
+  }
+
+  const pickupTaxi = buildTaxiSegmentQuote({
+    from: origin,
+    to: fromTerminal,
+    passengers,
+    luggage,
+    serviceClass,
+  });
+
+  taxiFareCents += pickupTaxi.amountCents;
+  lineItems.push(...pickupTaxi.lineItems);
+  notes.push(...pickupTaxi.notes);
+  usedFallback = usedFallback || !pickupTaxi.usedTariff;
+
+  const ferryCents = ferryRoute.passengerFareCents * Math.max(1, passengers);
+  ferryFareCents += ferryCents;
+  lineItems.push({
+    label: ferryRoute.name,
+    amountCents: ferryCents,
+    detail: `${moneyFromCents(ferryRoute.passengerFareCents)} × ${passengers} ${plural(
+      passengers,
+      "passenger"
+    )}.`,
+  });
+  notes.push(...(ferryRoute.notes ?? []));
+
+  const dropoffTaxi = buildTaxiSegmentQuote({
+    from: toTerminal,
+    to: destination,
+    passengers,
+    luggage,
+    serviceClass,
+  });
+
+  taxiFareCents += dropoffTaxi.amountCents;
+  lineItems.push(...dropoffTaxi.lineItems);
+  notes.push(...dropoffTaxi.notes);
+  usedFallback = usedFallback || !dropoffTaxi.usedTariff;
+
+  const totalFareCents = taxiFareCents + ferryFareCents;
+
+  return {
+    totalFareCents,
+    taxiFareCents,
+    ferryFareCents,
+    lineItems,
+    notes,
+    sourceLabel: usedFallback
+      ? "Taxi tariffs + ferry estimate"
+      : "Taxi tariffs + ferry estimate",
+    confidence: usedFallback ? "medium" : "high",
+    isInterIsland: true,
+    connectorLabel: "Ferry",
+    routeDescription: `${origin.name} → ${fromTerminal.name} → ${toTerminal.name} → ${destination.name}`,
+  };
 }
 
 export default function Mobility({ selectedIsland }: MobilityProps) {
   const [originId, setOriginId] = useState(() =>
     defaultOriginForIsland(selectedIsland)
   );
-  const [destinationId, setDestinationId] = useState("red_hook");
+  const [destinationId, setDestinationId] = useState(() =>
+    defaultDestinationForIsland(selectedIsland)
+  );
   const [passengers, setPassengers] = useState(2);
   const [luggage, setLuggage] = useState(1);
   const [serviceClass, setServiceClass] = useState<ServiceClass>("shared");
 
-  const origin = pointById(originId);
-  const destination = pointById(destinationId);
-  const isInterIsland = origin.island !== destination.island;
+  const origin = placeById(originId);
+  const destination = placeById(destinationId);
 
   const quote = useMemo(() => {
-    return estimateFare({
+    return buildTripQuote({
       origin,
       destination,
       passengers,
@@ -196,7 +476,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               USVI Mobility
             </span>
             <span className="rounded-full border border-white/15 px-3 py-1 text-xs font-bold text-white/70">
-              Safe rebuild layer 1
+              Real tariff layer
             </span>
           </div>
 
@@ -206,9 +486,9 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 Transportation system restored.
               </h1>
               <p className="mt-5 max-w-3xl text-base font-medium leading-8 text-slate-300 sm:text-lg">
-                The route is stable again. This layer adds a local trip planner,
-                fare preview, ferry connector detection, and clickable test
-                routes without touching Firebase or the map yet.
+                This layer uses your real mobility places, taxi tariff pairs,
+                and ferry connector data while keeping Firebase and map
+                dispatch disabled.
               </p>
             </div>
 
@@ -221,12 +501,13 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   <p className="text-sm font-black uppercase tracking-[0.24em] text-amber-200">
                     Live quote preview
                   </p>
-                  <p className="text-3xl font-black">{money(quote)}</p>
+                  <p className="text-3xl font-black">
+                    {moneyFromCents(quote.totalFareCents)}
+                  </p>
                 </div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-300">
-                Estimate only. Official tariff tables and dispatch return after
-                this screen proves stable.
+                Source: {quote.sourceLabel}. Confidence: {quote.confidence}.
               </p>
             </div>
           </div>
@@ -256,9 +537,9 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   onChange={(event) => setOriginId(event.target.value)}
                   className="w-full rounded-2xl border border-amber-200 bg-white px-4 py-4 text-base font-bold shadow-sm outline-none focus:border-amber-500"
                 >
-                  {POINTS.map((point) => (
-                    <option key={point.id} value={point.id}>
-                      {point.name} — {ISLAND_LABELS[point.island]}
+                  {mobilityPlaces.map((place) => (
+                    <option key={place.id} value={place.id}>
+                      {place.name} — {ISLAND_LABELS[place.island]}
                     </option>
                   ))}
                 </select>
@@ -273,9 +554,9 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   onChange={(event) => setDestinationId(event.target.value)}
                   className="w-full rounded-2xl border border-amber-200 bg-white px-4 py-4 text-base font-bold shadow-sm outline-none focus:border-amber-500"
                 >
-                  {POINTS.map((point) => (
-                    <option key={point.id} value={point.id}>
-                      {point.name} — {ISLAND_LABELS[point.island]}
+                  {mobilityPlaces.map((place) => (
+                    <option key={place.id} value={place.id}>
+                      {place.name} — {ISLAND_LABELS[place.island]}
                     </option>
                   ))}
                 </select>
@@ -331,7 +612,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   >
                     Shared taxi
                     <span className="mt-1 block text-sm font-semibold opacity-70">
-                      Lower cost route
+                      Per passenger tariff
                     </span>
                   </button>
 
@@ -346,7 +627,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   >
                     Private transfer
                     <span className="mt-1 block text-sm font-semibold opacity-70">
-                      Dedicated vehicle
+                      Vehicle tariff where available
                     </span>
                   </button>
                 </div>
@@ -375,7 +656,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   </p>
                   <p className="mt-2 text-lg font-black">{origin.name}</p>
                   <p className="text-sm font-semibold text-slate-500">
-                    {ISLAND_LABELS[origin.island]} · {origin.zone}
+                    {ISLAND_LABELS[origin.island]} · {origin.taxiZoneId ?? origin.type}
                   </p>
                 </div>
 
@@ -389,7 +670,8 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   </p>
                   <p className="mt-2 text-lg font-black">{destination.name}</p>
                   <p className="text-sm font-semibold text-slate-500">
-                    {ISLAND_LABELS[destination.island]} · {destination.zone}
+                    {ISLAND_LABELS[destination.island]} ·{" "}
+                    {destination.taxiZoneId ?? destination.type}
                   </p>
                 </div>
               </div>
@@ -404,15 +686,50 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 <div className="rounded-2xl border border-slate-200 bg-white p-4">
                   <Ship className="mb-3 h-5 w-5 text-amber-700" />
                   <p className="text-sm font-bold text-slate-500">Connector</p>
-                  <p className="text-xl font-black">
-                    {isInterIsland ? "Ferry" : "Local"}
-                  </p>
+                  <p className="text-xl font-black">{quote.connectorLabel}</p>
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white p-4">
                   <CheckCircle2 className="mb-3 h-5 w-5 text-amber-700" />
                   <p className="text-sm font-bold text-slate-500">Estimate</p>
-                  <p className="text-xl font-black">{money(quote)}</p>
+                  <p className="text-xl font-black">
+                    {moneyFromCents(quote.totalFareCents)}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-slate-500">
+                  Fare breakdown
+                </p>
+
+                <div className="mt-3 space-y-3">
+                  {quote.lineItems.length ? (
+                    quote.lineItems.map((item, index) => (
+                      <div
+                        key={`${item.label}-${index}`}
+                        className="flex gap-4 rounded-xl bg-slate-50 p-3"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="font-black text-slate-950">
+                            {item.label}
+                          </p>
+                          {item.detail ? (
+                            <p className="mt-1 text-sm font-semibold leading-5 text-slate-500">
+                              {item.detail}
+                            </p>
+                          ) : null}
+                        </div>
+                        <p className="shrink-0 font-black">
+                          {moneyFromCents(item.amountCents)}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm font-semibold text-slate-500">
+                      No paid segment needed for this selection.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -421,10 +738,31 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   Dispatch status
                 </p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
-                  Trip request saving is intentionally disabled in this layer.
-                  Next layer should connect this quote to the existing Firebase
-                  trip request service.
+                  Trip request saving is still disabled. This layer only proves
+                  the real fare data can drive the planner safely.
                 </p>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-slate-500">
+                  Route logic
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+                  {quote.routeDescription}
+                </p>
+
+                {quote.notes.length ? (
+                  <ul className="mt-3 space-y-2">
+                    {quote.notes.slice(0, 5).map((note, index) => (
+                      <li
+                        key={`${note}-${index}`}
+                        className="text-sm font-semibold leading-5 text-slate-500"
+                      >
+                        • {note}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             </div>
 
@@ -443,7 +781,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
             <p className="text-xs font-black uppercase tracking-[0.3em] text-amber-800">
               Test routes
             </p>
-            <h2 className="text-2xl font-black">Tap a route to test the planner</h2>
+            <h2 className="text-2xl font-black">Tap a route to test tariffs</h2>
           </div>
 
           <div className="grid gap-3 lg:grid-cols-2">
