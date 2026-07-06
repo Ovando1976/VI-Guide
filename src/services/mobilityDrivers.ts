@@ -155,9 +155,45 @@ function normalizeDriverProfile(
   };
 }
 
+
+
+export function mobilityDriverStatusRank(driver: Pick<MobilityDriverProfile, "active" | "status">) {
+  if (!driver.active) return 99;
+  if (driver.status === "available") return 0;
+  if (driver.status === "busy") return 1;
+  if (driver.status === "offline") return 2;
+  return 50;
+}
+
+export function isMobilityDriverAssignable(
+  driver: Pick<MobilityDriverProfile, "active" | "status">,
+) {
+  return driver.active && driver.status === "available";
+}
+
+export function formatMobilityDriverLabel(driver: MobilityDriverProfile) {
+  const statusLabel =
+    !driver.active
+      ? "DISABLED"
+      : driver.status === "available"
+        ? ""
+        : driver.status.toUpperCase();
+
+  return [
+    `${driver.driverName || driver.name} — ${driver.vehicleLabel}`,
+    statusLabel,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
 function sortDrivers(drivers: MobilityDriverProfile[]) {
   return [...drivers].sort((a, b) => {
+    const statusDelta = mobilityDriverStatusRank(a) - mobilityDriverStatusRank(b);
+    if (statusDelta !== 0) return statusDelta;
+
     if (a.sortOrder !== b.sortOrder) return a.sortOrder - b.sortOrder;
+
     return a.name.localeCompare(b.name);
   });
 }

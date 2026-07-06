@@ -3,6 +3,8 @@ import MobilityDriverManagementPanel from "../../components/mobility/MobilityDri
 import {
   DEFAULT_MOBILITY_DRIVER_PROFILES,
   subscribeActiveMobilityDrivers,
+  formatMobilityDriverLabel,
+  isMobilityDriverAssignable,
   type MobilityDriverProfile,
 } from "../../services/mobilityDrivers";
 import {

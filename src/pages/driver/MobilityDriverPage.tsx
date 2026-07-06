@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   DEFAULT_MOBILITY_DRIVER_PROFILES,
   subscribeActiveMobilityDrivers,
+  formatMobilityDriverLabel,
   type MobilityDriverProfile,
 } from "../../services/mobilityDrivers";
 import {
@@ -528,7 +529,7 @@ export default function MobilityDriverPage() {
             >
               {driverProfiles.map((driver) => (
                 <option key={driver.driverId} value={driver.driverId}>
-                  {driver.driverName} — {driver.vehicleLabel}
+                  {formatMobilityDriverLabel(driver)}
                 </option>
               ))}
             </select>
