@@ -48,6 +48,7 @@ import Community from "./components/Community";
 import Concierge from "./components/Concierge";
 import Mobility from "./components/Mobility";
 import MobilityDispatchDemo from "./components/MobilityDispatchDemo";
+import DemoHub from "./components/DemoHub";
 import Documents from "./components/Documents";
 import Profile from "./components/Profile";
 import MerchantDashboard from "./components/MerchantDashboard";
@@ -344,6 +345,11 @@ function AppContent() {
                 onSelectDocument={handleSelectDocument}
               />
             }
+          />
+
+          <Route
+            path="/demo"
+            element={<DemoHub />}
           />
 
           <Route

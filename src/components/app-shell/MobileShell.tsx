@@ -9,6 +9,7 @@ interface MobileShellProps {
 }
 
 const PRESENTATION_ROUTES = [
+  "/demo",
   "/partners",
   "/merchant/demo",
   "/mobility/dispatch",
