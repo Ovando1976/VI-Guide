@@ -159,6 +159,13 @@ export default function VisitorHome({
 
         <div className="mt-4 grid grid-cols-2 gap-3 pb-8">
           <button
+            onClick={() => onNavigate("/demo")}
+            className="col-span-2 rounded-3xl bg-turquoise px-5 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
+          >
+            Open Business Demo Hub
+          </button>
+
+          <button
             onClick={() => onNavigate("/partners")}
             className="rounded-3xl bg-ink px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
           >
