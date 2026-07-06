@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import {
+  DEFAULT_MOBILITY_DRIVER_PROFILES,
+  subscribeActiveMobilityDrivers,
+  type MobilityDriverProfile,
+} from "../../services/mobilityDrivers";
+import {
   AlertTriangle,
   Car,
   CheckCircle2,
@@ -15,33 +20,7 @@ import type {
   SavedMobilityTripRequest,
 } from "../../services/mobilityTripRequests";
 
-const DRIVER_OPTIONS = [
-  {
-    driverId: "stt-dispatch-driver-01",
-    driverName: "St. Thomas Driver 1",
-    vehicleLabel: "STT Van 1",
-  },
-  {
-    driverId: "stt-dispatch-driver-02",
-    driverName: "St. Thomas Driver 2",
-    vehicleLabel: "STT SUV 1",
-  },
-  {
-    driverId: "stj-dispatch-driver-01",
-    driverName: "St. John Driver 1",
-    vehicleLabel: "STJ Jeep 1",
-  },
-  {
-    driverId: "stx-dispatch-driver-01",
-    driverName: "St. Croix Driver 1",
-    vehicleLabel: "STX Van 1",
-  },
-  {
-    driverId: "wat-dispatch-driver-01",
-    driverName: "Water Island Driver 1",
-    vehicleLabel: "Water Island Cart 1",
-  },
-];
+const DRIVER_OPTIONS = DEFAULT_MOBILITY_DRIVER_PROFILES;
 
 const DRIVER_STORAGE_KEY = "viGuide.mobilityDriverId";
 
@@ -333,6 +312,16 @@ function DriverTripCard({
 }
 
 export default function MobilityDriverPage() {
+
+  const [driverProfiles, setDriverProfiles] =
+    useState<MobilityDriverProfile[]>(DRIVER_OPTIONS);
+
+  useEffect(() => {
+    return subscribeActiveMobilityDrivers({
+      onData: setDriverProfiles,
+      onError: () => setDriverProfiles(DRIVER_OPTIONS),
+    });
+  }, []);
   const [driverId, setDriverId] = useState(() => {
     if (typeof window === "undefined") return DRIVER_OPTIONS[0].driverId;
 
@@ -349,7 +338,7 @@ export default function MobilityDriverPage() {
   const [locatingId, setLocatingId] = useState<string | null>(null);
 
   const selectedDriver =
-    DRIVER_OPTIONS.find((driver) => driver.driverId === driverId) ||
+    driverProfiles.find((driver) => driver.driverId === driverId) ||
     DRIVER_OPTIONS[0];
 
   useEffect(() => {
@@ -537,7 +526,7 @@ export default function MobilityDriverPage() {
               onChange={(event) => setDriverId(event.target.value)}
               className="mt-3 w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-base font-black text-slate-950 outline-none"
             >
-              {DRIVER_OPTIONS.map((driver) => (
+              {driverProfiles.map((driver) => (
                 <option key={driver.driverId} value={driver.driverId}>
                   {driver.driverName} — {driver.vehicleLabel}
                 </option>

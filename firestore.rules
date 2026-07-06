@@ -582,6 +582,15 @@ service cloud.firestore {
         );
     }
 
+    match /mobilityDrivers/{driverId} {
+      allow get, list: if true;
+
+      // Development mode for the mobility MVP.
+      // Lock this down to admin-only before production.
+      allow create, update: if true;
+      allow delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

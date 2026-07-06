@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import {
+  DEFAULT_MOBILITY_DRIVER_PROFILES,
+  subscribeActiveMobilityDrivers,
+  type MobilityDriverProfile,
+} from "../../services/mobilityDrivers";
+import {
   AlertTriangle,
   Car,
   CheckCircle2,
@@ -26,47 +31,7 @@ const ISLAND_LABELS: Record<string, string> = {
   water_island: "Water Island",
 };
 
-const DRIVER_OPTIONS: Array<
-  MobilityAssignedDriver & {
-    island: "st_thomas" | "st_john" | "st_croix" | "water_island" | "territory";
-  }
-> = [
-  {
-    driverId: "stt-dispatch-driver-01",
-    driverName: "St. Thomas Driver 1",
-    vehicleId: "stt-van-01",
-    vehicleLabel: "STT Van 1",
-    island: "st_thomas",
-  },
-  {
-    driverId: "stt-dispatch-driver-02",
-    driverName: "St. Thomas Driver 2",
-    vehicleId: "stt-suv-01",
-    vehicleLabel: "STT SUV 1",
-    island: "st_thomas",
-  },
-  {
-    driverId: "stj-dispatch-driver-01",
-    driverName: "St. John Driver 1",
-    vehicleId: "stj-jeep-01",
-    vehicleLabel: "STJ Jeep 1",
-    island: "st_john",
-  },
-  {
-    driverId: "stx-dispatch-driver-01",
-    driverName: "St. Croix Driver 1",
-    vehicleId: "stx-van-01",
-    vehicleLabel: "STX Van 1",
-    island: "st_croix",
-  },
-  {
-    driverId: "wat-dispatch-driver-01",
-    driverName: "Water Island Driver 1",
-    vehicleId: "wat-cart-01",
-    vehicleLabel: "Water Island Cart 1",
-    island: "water_island",
-  },
-];
+const DRIVER_OPTIONS = DEFAULT_MOBILITY_DRIVER_PROFILES;
 
 function moneyFromCents(cents?: number) {
   const safeCents = typeof cents === "number" ? cents : 0;
@@ -419,6 +384,16 @@ function RequestCard({
 }
 
 export default function MobilityDispatchPage() {
+
+  const [driverProfiles, setDriverProfiles] =
+    useState<MobilityDriverProfile[]>(DRIVER_OPTIONS);
+
+  useEffect(() => {
+    return subscribeActiveMobilityDrivers({
+      onData: setDriverProfiles,
+      onError: () => setDriverProfiles(DRIVER_OPTIONS),
+    });
+  }, []);
   const [requests, setRequests] = useState<SavedMobilityTripRequest[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
