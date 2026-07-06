@@ -13,6 +13,10 @@ import {
   type DemoMobilityRequest,
   type DemoMobilityRequestStatus,
 } from "../lib/mobility/demoMobilityStore";
+import {
+  subscribeToFirestoreMobilityRequests,
+  updateFirestoreMobilityRequestStatus,
+} from "../lib/firestore/mobilityRequests";
 
 const statusFlow: DemoMobilityRequestStatus[] = [
   "new",
@@ -54,11 +58,39 @@ export default function MobilityDispatchDemo() {
   }
 
   useEffect(() => {
+    let unsubscribe: undefined | (() => void);
+
+    try {
+      unsubscribe = subscribeToFirestoreMobilityRequests(
+        (firestoreRequests) => {
+          if (firestoreRequests.length > 0) {
+            setRequests(
+              firestoreRequests.map((request) => ({
+                ...request,
+                createdAt: new Date(request.createdAt).toISOString(),
+                updatedAt: new Date(request.updatedAt).toISOString(),
+              }))
+            );
+          } else {
+            refresh();
+          }
+        },
+        (error) => {
+          console.warn("Firestore mobility subscription failed; using local demo store.", error);
+          refresh();
+        }
+      );
+    } catch (error) {
+      console.warn("Firestore mobility subscription unavailable; using local demo store.", error);
+      refresh();
+    }
+
     const handler = () => refresh();
     window.addEventListener("vi-guide-demo-mobility-updated", handler);
     window.addEventListener("storage", handler);
 
     return () => {
+      unsubscribe?.();
       window.removeEventListener("vi-guide-demo-mobility-updated", handler);
       window.removeEventListener("storage", handler);
     };
@@ -78,9 +110,17 @@ export default function MobilityDispatchDemo() {
     completed: requests.filter((request) => request.status === "completed").length,
   };
 
-  function advance(request: DemoMobilityRequest) {
-    updateDemoMobilityRequestStatus(request.id, nextStatus(request.status));
+  async function advance(request: DemoMobilityRequest) {
+    const status = nextStatus(request.status);
+
+    updateDemoMobilityRequestStatus(request.id, status);
     refresh();
+
+    try {
+      await updateFirestoreMobilityRequestStatus(request.id, status, request.status);
+    } catch (error) {
+      console.warn("Firestore status update failed; local demo status was still updated.", error);
+    }
   }
 
   function reset() {
@@ -245,9 +285,19 @@ export default function MobilityDispatchDemo() {
                       )}
 
                       <button
-                        onClick={() => {
+                        onClick={async () => {
                           updateDemoMobilityRequestStatus(request.id, "cancelled");
                           refresh();
+
+                          try {
+                            await updateFirestoreMobilityRequestStatus(
+                              request.id,
+                              "cancelled",
+                              request.status
+                            );
+                          } catch (error) {
+                            console.warn("Firestore cancel update failed; local demo status was still updated.", error);
+                          }
                         }}
                         className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-stone-600 ring-1 ring-stone-200 active:scale-95"
                       >

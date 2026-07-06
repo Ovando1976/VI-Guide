@@ -3,6 +3,8 @@ import { ArrowRight, Building2, Mail, MessageSquare, Phone, User, X } from "luci
 
 import type { DemoPartner } from "../data/demoPartners";
 import { logDemoPartnerEvent } from "../lib/demoPartnerEvents";
+import { createPartnerClaim } from "../lib/firestore/partnerClaims";
+import { createMerchantLead } from "../lib/firestore/merchantLeads";
 
 type ClaimBusinessModalProps = {
   partner: DemoPartner | null;
@@ -21,27 +23,64 @@ export default function ClaimBusinessModal({
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   if (!partner) return null;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const claimedBusiness = businessName.trim() || partner.name;
     const owner = ownerName.trim() || "A business owner";
+    const leadMessage = `${owner} submitted a claim request for ${claimedBusiness}. ${email ? `Email: ${email}. ` : ""}${phone ? `Phone: ${phone}. ` : ""}${message ? `Message: ${message}` : ""}`;
+
+    setSaving(true);
+    setSaveError(null);
 
     logDemoPartnerEvent({
       partnerId: partner.id,
       partnerName: partner.name,
       action: "request_info",
-      message: `${owner} submitted a claim request for ${claimedBusiness}. ${email ? `Email: ${email}. ` : ""}${phone ? `Phone: ${phone}. ` : ""}${message ? `Message: ${message}` : ""}`,
+      message: leadMessage,
     });
 
-    setSubmitted(true);
+    try {
+      await createPartnerClaim({
+        partnerId: partner.id,
+        partnerName: partner.name,
+        partnerTier: partner.partnerTier,
+        islandCode: partner.islandCode,
+        area: partner.area,
+        ownerName: owner,
+        businessName: claimedBusiness,
+        email,
+        phone,
+        message,
+        source: "partner_page",
+      });
 
-    window.setTimeout(() => {
-      onSuccess?.();
-    }, 700);
+      await createMerchantLead({
+        partnerId: partner.id,
+        partnerName: partner.name,
+        action: "claim_business",
+        message: leadMessage,
+        visitorName: owner,
+        visitorPhone: phone,
+        visitorEmail: email,
+        source: "claim_modal",
+      });
+    } catch (error) {
+      console.error("Failed to save partner claim to Firestore", error);
+      setSaveError("Saved locally for the demo, but Firestore did not accept the claim yet.");
+    } finally {
+      setSaving(false);
+      setSubmitted(true);
+
+      window.setTimeout(() => {
+        onSuccess?.();
+      }, 700);
+    }
   }
 
   return (
@@ -194,11 +233,18 @@ export default function ClaimBusinessModal({
               </p>
             </div>
 
+            {saveError && (
+              <div className="rounded-2xl bg-amber-50 p-3 text-sm font-bold text-amber-900">
+                {saveError}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
+              disabled={saving}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl disabled:opacity-60 active:scale-95"
             >
-              Submit Claim Request
+              {saving ? "Saving Claim..." : "Submit Claim Request"}
               <ArrowRight className="h-4 w-4" />
             </button>
           </form>

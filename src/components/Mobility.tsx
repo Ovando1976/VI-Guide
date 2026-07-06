@@ -22,6 +22,7 @@ import {
   type DemoMobilityIsland,
   type DemoMobilityServiceType,
 } from "../lib/mobility/demoMobilityStore";
+import { createFirestoreMobilityRequest } from "../lib/firestore/mobilityRequests";
 
 const serviceOptions: Array<{
   id: DemoMobilityServiceType;
@@ -99,13 +100,18 @@ export default function Mobility(_props: MobilityProps) {
   const [visitorPhone, setVisitorPhone] = useState("(340) 555-1010");
   const [notes, setNotes] = useState("Need a reliable transfer and clear pickup instructions.");
   const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const estimatedFare = useMemo(
     () => calculateDemoFare({ serviceType, passengers, luggage }),
     [serviceType, passengers, luggage]
   );
 
-  function submitRequest() {
+  async function submitRequest() {
+    setSaving(true);
+    setSaveError(null);
+
     const request = createDemoMobilityRequest({
       island,
       serviceType,
@@ -120,6 +126,30 @@ export default function Mobility(_props: MobilityProps) {
     });
 
     setSubmittedId(request.id);
+
+    try {
+      const firestoreRequest = await createFirestoreMobilityRequest({
+        island,
+        serviceType,
+        pickup,
+        dropoff,
+        pickupTime,
+        passengers,
+        luggage,
+        visitorName,
+        visitorPhone,
+        notes,
+        estimatedFare,
+        source: "mobility_page",
+      });
+
+      setSubmittedId(firestoreRequest.id);
+    } catch (error) {
+      console.error("Failed to save mobility request to Firestore", error);
+      setSaveError("Saved locally for the demo, but Firestore did not accept the request yet.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   return (
@@ -391,12 +421,22 @@ export default function Mobility(_props: MobilityProps) {
               </div>
             )}
 
+            {saveError && (
+              <div className="mt-5 rounded-3xl bg-amber-50 p-4">
+                <p className="font-black text-amber-950">Firestore fallback active.</p>
+                <p className="mt-1 text-sm text-amber-900/75">
+                  {saveError}
+                </p>
+              </div>
+            )}
+
             <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
               <button
                 onClick={submitRequest}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
+                disabled={saving}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl disabled:opacity-60 active:scale-95"
               >
-                Submit Mobility Request
+                {saving ? "Saving Request..." : "Submit Mobility Request"}
                 <ArrowRight className="h-4 w-4" />
               </button>
 
