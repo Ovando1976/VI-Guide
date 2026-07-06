@@ -15,6 +15,8 @@ import type {
   SaveMobilityTripRequestResult,
   SavedMobilityTripRequest,
 } from "../../services/mobilityTripRequests";
+import MobilityMapboxMiniMap from "./MobilityMapboxMiniMap";
+import MobilityTripHistoryActions from "./MobilityTripHistoryActions";
 
 const STATUS_STEPS = [
   "requested",
@@ -604,7 +606,12 @@ export default function MobilityCustomerTripStatus() {
             </div>
           </div>
 
-          <MiniTripMap request={request} />
+          <MobilityMapboxMiniMap request={request} />
+
+          <MobilityTripHistoryActions
+            request={request}
+            onStartNew={() => setDismissed(true)}
+          />
 
           <div className="mt-4 grid gap-2 sm:grid-cols-6">
             {STATUS_STEPS.map((step, index) => {
