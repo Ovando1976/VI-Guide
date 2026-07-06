@@ -8,7 +8,11 @@ interface MobileShellProps {
   isMerchant?: boolean;
 }
 
-const PRESENTATION_ROUTES = ["/partners", "/merchant/demo"];
+const PRESENTATION_ROUTES = [
+  "/partners",
+  "/merchant/demo",
+  "/mobility/dispatch",
+];
 
 function isPresentationPath(pathname: string) {
   return PRESENTATION_ROUTES.some(
@@ -24,7 +28,9 @@ export function MobileShell({ children }: MobileShellProps) {
     <div
       className={[
         "relative min-h-screen overflow-x-hidden bg-sand font-sans text-ink selection:bg-turquoise/30",
-        isPresentationRoute ? "pb-[calc(env(safe-area-inset-bottom)+5rem)]" : "pb-40",
+        isPresentationRoute
+          ? "pb-[calc(env(safe-area-inset-bottom)+5rem)]"
+          : "pb-40",
       ].join(" ")}
     >
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
@@ -41,7 +47,12 @@ export function MobileShell({ children }: MobileShellProps) {
         </header>
       )}
 
-      <main className={["relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", isPresentationRoute ? "pt-8 md:pt-10" : ""].join(" ")}>
+      <main
+        className={[
+          "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
+          isPresentationRoute ? "pt-8 md:pt-10" : "",
+        ].join(" ")}
+      >
         <div
           className={
             isPresentationRoute ? "mx-auto max-w-6xl" : "mx-auto max-w-4xl"

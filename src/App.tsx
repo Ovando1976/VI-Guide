@@ -47,6 +47,7 @@ import Events from "./components/Events";
 import Community from "./components/Community";
 import Concierge from "./components/Concierge";
 import Mobility from "./components/Mobility";
+import MobilityDispatchDemo from "./components/MobilityDispatchDemo";
 import Documents from "./components/Documents";
 import Profile from "./components/Profile";
 import MerchantDashboard from "./components/MerchantDashboard";
@@ -287,6 +288,11 @@ function AppContent() {
                 onSelectEvent={setSelectedEvent}
               />
             }
+          />
+
+          <Route
+            path="/mobility/dispatch"
+            element={<MobilityDispatchDemo />}
           />
 
           <Route

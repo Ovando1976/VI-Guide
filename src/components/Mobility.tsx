@@ -1,571 +1,416 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Car, 
-  MapPin, 
-  Users, 
-  Briefcase, 
-  ChevronRight, 
-  Clock, 
-  Shield, 
-  Star, 
-  Navigation, 
-  Info, 
-  ArrowRight, 
-  Plane, 
-  Ship, 
-  Anchor, 
-  Search, 
-  X, 
-  CheckCircle2, 
-  AlertCircle,
-  Loader2
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { cn } from '../lib/utils';
-import { 
-  Trip, 
-  TripType, 
-  ServiceClass, 
-  MobilityIsland, 
-  IslandCode, 
-  AreaDoc, 
-  BeachDoc, 
-  PlaceDoc,
-  EstateRecord,
-  ParcelRecord
-} from '../types';
-import { createTripRequest, calculateQuote, subscribeToTrip, enrichLocation } from '../lib/firestore/mobility';
-import { collection, getDocs, query, where, limit } from 'firebase/firestore';
-import { db } from '../firebase';
-import { format } from 'date-fns';
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarClock,
+  Car,
+  CheckCircle2,
+  MapPin,
+  Plane,
+  Sailboat,
+  Ship,
+  Sparkles,
+  Users,
+} from "lucide-react";
 
-interface MobilityProps {
-  selectedIsland: IslandCode;
-  user: any;
-}
+import {
+  calculateDemoFare,
+  createDemoMobilityRequest,
+  islandLabels,
+  serviceLabels,
+  type DemoMobilityIsland,
+  type DemoMobilityServiceType,
+} from "../lib/mobility/demoMobilityStore";
 
-export default function Mobility({ selectedIsland, user }: MobilityProps) {
-  const [step, setStep] = useState<'request' | 'quote' | 'tracking'>('request');
-  const [pickup, setPickup] = useState<string>('');
-  const [dropoff, setDropoff] = useState<string>('');
-  const [pickupContext, setPickupContext] = useState<{ lat: number; lng: number; estateName?: string; parcelId?: string } | null>(null);
-  const [dropoffContext, setDropoffContext] = useState<{ lat: number; lng: number; estateName?: string; parcelId?: string } | null>(null);
-  const [passengers, setPassengers] = useState(1);
-  const [luggage, setLuggage] = useState(0);
-  const [serviceClass, setServiceClass] = useState<ServiceClass>('shared');
-  const [tripType, setTripType] = useState<TripType>('direct');
-  const [loading, setLoading] = useState(false);
-  const [quote, setQuote] = useState<Trip['quote'] | null>(null);
-  const [activeTrip, setActiveTrip] = useState<Trip | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<(AreaDoc | BeachDoc | PlaceDoc | EstateRecord | ParcelRecord)[]>([]);
-  const [searchingFor, setSearchingFor] = useState<'pickup' | 'dropoff' | null>(null);
+const serviceOptions: Array<{
+  id: DemoMobilityServiceType;
+  title: string;
+  description: string;
+  icon: typeof Car;
+}> = [
+  {
+    id: "airport",
+    title: "Airport Transfer",
+    description: "Airport to hotel, villa, ferry, or beach.",
+    icon: Plane,
+  },
+  {
+    id: "cruise",
+    title: "Cruise Pickup",
+    description: "Cruise dock pickups and short island day plans.",
+    icon: Ship,
+  },
+  {
+    id: "ferry_transfer",
+    title: "Ferry Transfer",
+    description: "Red Hook, Cruz Bay, Crown Bay, and inter-island transfers.",
+    icon: Sailboat,
+  },
+  {
+    id: "beach_day",
+    title: "Beach Day Ride",
+    description: "Beach drop-off and return pickup coordination.",
+    icon: MapPin,
+  },
+  {
+    id: "dinner",
+    title: "Dinner / Nightlife",
+    description: "Evening rides to restaurants, bars, and events.",
+    icon: Sparkles,
+  },
+  {
+    id: "island_tour",
+    title: "Island Tour",
+    description: "Private or group sightseeing route request.",
+    icon: Car,
+  },
+];
 
-  const mobilityIsland: MobilityIsland = selectedIsland === 'st_thomas' ? 'stt' : selectedIsland === 'st_john' ? 'stj' : selectedIsland === 'st_croix' ? 'stx' : 'wat';
+const quickPlaces = [
+  "Cyril E. King Airport",
+  "Havensight Cruise Port",
+  "Crown Bay",
+  "Red Hook Ferry Terminal",
+  "Sapphire Beach",
+  "Magens Bay",
+  "Coral World",
+  "Charlotte Amalie",
+  "Cruz Bay Ferry Terminal",
+  "Christiansted",
+];
 
-  // Search logic
-  useEffect(() => {
-    if (searchQuery.length < 2) {
-      setSearchResults([]);
-      return;
-    }
+type MobilityProps = {
+  selectedIsland?: unknown;
+  user?: unknown;
+};
 
-    const performSearch = async () => {
-      const results: (AreaDoc | BeachDoc | PlaceDoc | EstateRecord | ParcelRecord)[] = [];
-      
-      // 1. Search Estates (Priority)
-      const estatesRef = collection(db, 'estates');
-      const qEstates = query(estatesRef, where('island', '==', mobilityIsland), limit(5));
-      const estateSnap = await getDocs(qEstates);
-      results.push(...estateSnap.docs
-        .map(d => ({ ...d.data() } as EstateRecord))
-        .filter(e => e.name.toLowerCase().includes(searchQuery.toLowerCase()) || e.aliases.some(a => a.toLowerCase().includes(searchQuery.toLowerCase())))
-      );
+export default function Mobility(_props: MobilityProps) {
+  const navigate = useNavigate();
 
-      // 2. Search Areas
-      const areasRef = collection(db, 'areas');
-      const qAreas = query(areasRef, where('islandCode', '==', selectedIsland), limit(5));
-      const areaSnap = await getDocs(qAreas);
-      results.push(...areaSnap.docs
-        .map(d => ({ id: d.id, ...d.data() } as AreaDoc))
-        .filter(a => a.name.toLowerCase().includes(searchQuery.toLowerCase()))
-      );
+  const [serviceType, setServiceType] = useState<DemoMobilityServiceType>("airport");
+  const [island, setIsland] = useState<DemoMobilityIsland>("st_thomas");
+  const [pickup, setPickup] = useState("Cyril E. King Airport");
+  const [dropoff, setDropoff] = useState("Red Hook Ferry Terminal");
+  const [pickupTime, setPickupTime] = useState("Today · 4:30 PM");
+  const [passengers, setPassengers] = useState(2);
+  const [luggage, setLuggage] = useState(2);
+  const [visitorName, setVisitorName] = useState("Demo Visitor");
+  const [visitorPhone, setVisitorPhone] = useState("(340) 555-1010");
+  const [notes, setNotes] = useState("Need a reliable transfer and clear pickup instructions.");
+  const [submittedId, setSubmittedId] = useState<string | null>(null);
 
-      // 3. Search Beaches
-      const beachesRef = collection(db, 'beaches');
-      const qBeaches = query(beachesRef, where('islandCode', '==', selectedIsland), limit(5));
-      const beachSnap = await getDocs(qBeaches);
-      results.push(...beachSnap.docs
-        .map(d => ({ id: d.id, ...d.data() } as BeachDoc))
-        .filter(b => b.title.toLowerCase().includes(searchQuery.toLowerCase()))
-      );
-
-      setSearchResults(results.slice(0, 8));
-    };
-
-    const debounce = setTimeout(performSearch, 300);
-    return () => clearTimeout(debounce);
-  }, [searchQuery, selectedIsland, mobilityIsland]);
-
-  const handleGetQuote = async () => {
-    if (!pickup || !dropoff) return;
-    setLoading(true);
-    try {
-      const q = await calculateQuote({
-        island: mobilityIsland,
-        tripType,
-        passengers,
-        luggage,
-        serviceClass,
-        originZone: pickup,
-        destinationZone: dropoff
-      });
-      setQuote(q);
-      setStep('quote');
-    } catch (error) {
-      console.error('Quote failed:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleRequestRide = async () => {
-    if (!quote || !user) return;
-    setLoading(true);
-    try {
-      // Enrich locations with estate/parcel context
-      const enrichedPickup = await enrichLocation({
-        label: pickup,
-        type: 'custom',
-        lat: pickupContext?.lat || 0,
-        lng: pickupContext?.lng || 0,
-        island: mobilityIsland,
-        estateName: pickupContext?.estateName,
-        parcelId: pickupContext?.parcelId
-      });
-
-      const enrichedDropoff = await enrichLocation({
-        label: dropoff,
-        type: 'custom',
-        lat: dropoffContext?.lat || 0,
-        lng: dropoffContext?.lng || 0,
-        island: mobilityIsland,
-        estateName: dropoffContext?.estateName,
-        parcelId: dropoffContext?.parcelId
-      });
-
-      const tripId = await createTripRequest({
-        riderId: user.uid,
-        driverId: null,
-        status: 'requested',
-        tripType,
-        island: mobilityIsland,
-        pickup: enrichedPickup,
-        dropoff: enrichedDropoff,
-        passengers,
-        luggage,
-        serviceClass,
-        quote
-      });
-
-      // Subscribe to trip updates
-      subscribeToTrip(tripId, (trip) => {
-        setActiveTrip(trip);
-        setStep('tracking');
-      });
-    } catch (error) {
-      console.error('Request failed:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const selectLocation = (loc: any) => {
-    const label = loc.title || loc.name || loc.parcelId;
-    const coords = loc.coordinates || loc.centroid || { lat: 0, lng: 0 };
-    const estateName = loc.estateName || (loc.geoid ? loc.name : undefined);
-    const parcelId = loc.parcelId;
-
-    if (searchingFor === 'pickup') {
-      setPickup(label);
-      setPickupContext({ ...coords, estateName, parcelId });
-    }
-    if (searchingFor === 'dropoff') {
-      setDropoff(label);
-      setDropoffContext({ ...coords, estateName, parcelId });
-    }
-    setSearchingFor(null);
-    setSearchQuery('');
-  };
-
-  return (
-    <div className="max-w-2xl mx-auto p-4 space-y-6 pb-32">
-      <header className="space-y-2">
-        <h1 className="text-4xl font-serif italic text-ink">Territory Mobility</h1>
-        <p className="text-stone-500 text-sm font-serif italic">The island's transportation operating system.</p>
-      </header>
-
-      <AnimatePresence mode="wait">
-        {step === 'request' && (
-          <motion.div 
-            key="request"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="space-y-6"
-          >
-            {/* Quick Actions */}
-            <div className="grid grid-cols-3 gap-3">
-              <QuickActionButton 
-                icon={<Plane size={20} />} 
-                label="Airport" 
-                onClick={() => { setTripType('airport'); setDropoff('STT Airport'); }}
-              />
-              <QuickActionButton 
-                icon={<Ship size={20} />} 
-                label="Ferry" 
-                onClick={() => { setTripType('ferry_transfer'); setDropoff('Red Hook Ferry'); }}
-              />
-              <QuickActionButton 
-                icon={<Anchor size={20} />} 
-                label="Cruise" 
-                onClick={() => { setTripType('cruise'); setDropoff('Havensight'); }}
-              />
-            </div>
-
-            {/* Location Inputs */}
-            <div className="bg-white rounded-3xl p-6 shadow-xl border border-stone-100 space-y-4 relative">
-              <div className="space-y-4">
-                <div className="relative">
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 flex justify-center text-turquoise">
-                    <MapPin size={18} />
-                  </div>
-                  <div className="flex-1">
-                    <input 
-                      type="text"
-                      placeholder="Pickup location (Estate, Hotel, Beach...)"
-                      value={pickup}
-                      onFocus={() => setSearchingFor('pickup')}
-                      onChange={(e) => setPickup(e.target.value)}
-                      className="w-full pl-10 pr-4 py-4 bg-sand/30 rounded-2xl text-sm font-serif italic focus:outline-none focus:ring-2 focus:ring-turquoise/20 transition-all"
-                    />
-                    {pickupContext?.estateName && (
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2">
-                        <span className="text-[8px] font-bold uppercase tracking-widest bg-turquoise/10 text-turquoise px-2 py-1 rounded-full">
-                          {pickupContext.estateName}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 flex justify-center text-coral">
-                    <Navigation size={18} />
-                  </div>
-                  <div className="flex-1">
-                    <input 
-                      type="text"
-                      placeholder="Where to?"
-                      value={dropoff}
-                      onFocus={() => setSearchingFor('dropoff')}
-                      onChange={(e) => setDropoff(e.target.value)}
-                      className="w-full pl-10 pr-4 py-4 bg-sand/30 rounded-2xl text-sm font-serif italic focus:outline-none focus:ring-2 focus:ring-turquoise/20 transition-all"
-                    />
-                    {dropoffContext?.estateName && (
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2">
-                        <span className="text-[8px] font-bold uppercase tracking-widest bg-coral/10 text-coral px-2 py-1 rounded-full">
-                          {dropoffContext.estateName}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Search Overlay */}
-              <AnimatePresence>
-                {searchingFor && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute inset-x-0 top-full mt-2 bg-white rounded-3xl shadow-2xl border border-stone-100 z-50 overflow-hidden"
-                  >
-                    <div className="p-4 border-b border-stone-50 flex items-center gap-3">
-                      <Search size={18} className="text-stone-400" />
-                      <input 
-                        autoFocus
-                        type="text"
-                        placeholder="Search estates, landmarks..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="flex-1 bg-transparent text-sm focus:outline-none"
-                      />
-                      <button onClick={() => setSearchingFor(null)}>
-                        <X size={18} className="text-stone-400" />
-                      </button>
-                    </div>
-                    <div className="max-h-60 overflow-y-auto p-2">
-                      {searchResults.length > 0 ? (
-                        searchResults.map((res) => {
-                          const isEstate = 'geoid' in res;
-                          const isParcel = 'parcelId' in res;
-                          const label = isEstate ? res.name : isParcel ? res.parcelId : ('title' in res ? res.title : res.name);
-                          const sublabel = isEstate ? 'Estate' : isParcel ? `Parcel • ${res.estateName}` : ('kind' in res ? res.kind : 'Beach');
-                          
-                          return (
-                            <button
-                              key={isEstate ? res.geoid : isParcel ? res.parcelId : ('id' in res ? res.id : res.slug)}
-                              onClick={() => selectLocation(res)}
-                              className="w-full flex items-center gap-4 p-4 hover:bg-sand/30 rounded-2xl transition-all text-left group"
-                            >
-                              <div className={cn(
-                                "w-10 h-10 rounded-xl flex items-center justify-center transition-all",
-                                isEstate ? "bg-turquoise/10 text-turquoise" : isParcel ? "bg-coral/10 text-coral" : "bg-sand text-stone-400 group-hover:bg-white group-hover:text-turquoise"
-                              )}>
-                                {isEstate ? <MapPin size={18} /> : isParcel ? <Navigation size={18} /> : <MapPin size={18} />}
-                              </div>
-                              <div>
-                                <p className="text-sm font-bold text-ink">{label}</p>
-                                <p className="text-[10px] text-stone-400 uppercase tracking-widest">{sublabel}</p>
-                              </div>
-                            </button>
-                          );
-                        })
-                      ) : (
-                        <div className="p-8 text-center text-stone-400 text-sm font-serif italic">
-                          {searchQuery.length < 2 ? 'Start typing to search...' : 'No results found.'}
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Trip Options */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-3xl p-4 shadow-xl border border-stone-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-sand rounded-xl flex items-center justify-center text-turquoise">
-                    <Users size={18} />
-                  </div>
-                  <span className="text-sm font-bold text-ink">Passengers</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button 
-                    onClick={() => setPassengers(Math.max(1, passengers - 1))}
-                    className="w-8 h-8 rounded-lg bg-sand flex items-center justify-center text-ink"
-                  >
-                    -
-                  </button>
-                  <span className="text-sm font-bold w-4 text-center">{passengers}</span>
-                  <button 
-                    onClick={() => setPassengers(Math.min(12, passengers + 1))}
-                    className="w-8 h-8 rounded-lg bg-sand flex items-center justify-center text-ink"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-3xl p-4 shadow-xl border border-stone-100 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-sand rounded-xl flex items-center justify-center text-ocean">
-                    <Briefcase size={18} />
-                  </div>
-                  <span className="text-sm font-bold text-ink">Luggage</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button 
-                    onClick={() => setLuggage(Math.max(0, luggage - 1))}
-                    className="w-8 h-8 rounded-lg bg-sand flex items-center justify-center text-ink"
-                  >
-                    -
-                  </button>
-                  <span className="text-sm font-bold w-4 text-center">{luggage}</span>
-                  <button 
-                    onClick={() => setLuggage(Math.min(10, luggage + 1))}
-                    className="w-8 h-8 rounded-lg bg-sand flex items-center justify-center text-ink"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Service Class Toggle */}
-            <div className="bg-white rounded-3xl p-2 shadow-xl border border-stone-100 flex">
-              <button 
-                onClick={() => setServiceClass('shared')}
-                className={cn(
-                  "flex-1 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] transition-all",
-                  serviceClass === 'shared' ? "bg-ink text-white shadow-lg" : "text-stone-400 hover:text-ink"
-                )}
-              >
-                Shared Ride
-              </button>
-              <button 
-                onClick={() => setServiceClass('private')}
-                className={cn(
-                  "flex-1 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] transition-all",
-                  serviceClass === 'private' ? "bg-ink text-white shadow-lg" : "text-stone-400 hover:text-ink"
-                )}
-              >
-                Private SUV
-              </button>
-            </div>
-
-            <button 
-              onClick={handleGetQuote}
-              disabled={!pickup || !dropoff || loading}
-              className="w-full bg-ink text-white py-5 rounded-3xl font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl shadow-ink/20 hover:bg-ocean transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
-            >
-              {loading ? <Loader2 className="animate-spin" size={18} /> : 'Calculate Fare'}
-            </button>
-          </motion.div>
-        )}
-
-        {step === 'quote' && quote && (
-          <motion.div 
-            key="quote"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
-          >
-            <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl border border-stone-100 space-y-8">
-              <div className="flex justify-between items-start">
-                <div className="space-y-1">
-                  <h3 className="text-3xl font-serif italic text-ink">Trip Summary</h3>
-                  <p className="text-[10px] text-stone-400 font-bold uppercase tracking-widest">{serviceClass} Service • {tripType.replace('_', ' ')}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-4xl font-serif italic text-ink">${quote.total}</p>
-                  <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Estimated Total</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-sand rounded-xl flex items-center justify-center text-turquoise">
-                    <MapPin size={18} />
-                  </div>
-                  <div className="flex-1 border-b border-stone-50 pb-4">
-                    <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Pickup</p>
-                    <p className="text-sm font-bold text-ink">{pickup}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-sand rounded-xl flex items-center justify-center text-coral">
-                    <Navigation size={18} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Dropoff</p>
-                    <p className="text-sm font-bold text-ink">{dropoff}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-sand/30 rounded-3xl p-6 space-y-3">
-                <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-stone-500">
-                  <span>Base Fare</span>
-                  <span>${quote.baseFare}</span>
-                </div>
-                {quote.luggageFee > 0 && (
-                  <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-stone-500">
-                    <span>Luggage Fee</span>
-                    <span>${quote.luggageFee}</span>
-                  </div>
-                )}
-                {quote.premiumFee > 0 && (
-                  <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-stone-500">
-                    <span>Private Premium</span>
-                    <span>${quote.premiumFee}</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex items-center gap-3 p-4 bg-turquoise/5 rounded-2xl border border-turquoise/10">
-                <Shield size={18} className="text-turquoise" />
-                <p className="text-[10px] text-turquoise font-bold uppercase tracking-widest">Licensed & Insured Drivers Only</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button 
-                onClick={() => setStep('request')}
-                className="flex-1 bg-white text-ink py-5 rounded-3xl font-bold text-[10px] uppercase tracking-[0.3em] border border-stone-100 shadow-xl hover:bg-sand transition-all"
-              >
-                Back
-              </button>
-              <button 
-                onClick={handleRequestRide}
-                disabled={loading}
-                className="flex-[2] bg-ink text-white py-5 rounded-3xl font-bold text-[10px] uppercase tracking-[0.3em] shadow-2xl shadow-ink/20 hover:bg-ocean transition-all active:scale-95 flex items-center justify-center gap-3"
-              >
-                {loading ? <Loader2 className="animate-spin" size={18} /> : 'Request Ride'}
-              </button>
-            </div>
-          </motion.div>
-        )}
-
-        {step === 'tracking' && activeTrip && (
-          <motion.div 
-            key="tracking"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="space-y-6"
-          >
-            <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl border border-stone-100 space-y-8 text-center">
-              <div className="w-24 h-24 bg-turquoise/10 rounded-full flex items-center justify-center mx-auto text-turquoise">
-                <Loader2 className="animate-spin" size={48} />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-3xl font-serif italic text-ink">Finding Your Driver</h3>
-                <p className="text-stone-500 text-sm font-serif italic">Matching you with the best licensed operator nearby...</p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 bg-sand/30 rounded-2xl">
-                  <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1">Status</p>
-                  <p className="text-xs font-bold text-ink uppercase tracking-widest">{activeTrip.status.replace('_', ' ')}</p>
-                </div>
-                <div className="p-4 bg-sand/30 rounded-2xl">
-                  <p className="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1">Trip ID</p>
-                  <p className="text-xs font-bold text-ink uppercase tracking-widest">#{activeTrip.id.slice(-6)}</p>
-                </div>
-              </div>
-            </div>
-
-            <button 
-              onClick={() => {
-                // Cancel logic would go here
-                setStep('request');
-                setActiveTrip(null);
-              }}
-              className="w-full bg-white text-coral py-5 rounded-3xl font-bold text-[10px] uppercase tracking-[0.3em] border border-stone-100 shadow-xl hover:bg-coral hover:text-white transition-all"
-            >
-              Cancel Request
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+  const estimatedFare = useMemo(
+    () => calculateDemoFare({ serviceType, passengers, luggage }),
+    [serviceType, passengers, luggage]
   );
-}
 
-function QuickActionButton({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick: () => void }) {
+  function submitRequest() {
+    const request = createDemoMobilityRequest({
+      island,
+      serviceType,
+      pickup,
+      dropoff,
+      pickupTime,
+      passengers,
+      luggage,
+      visitorName,
+      visitorPhone,
+      notes,
+    });
+
+    setSubmittedId(request.id);
+  }
+
   return (
-    <button 
-      onClick={onClick}
-      className="bg-white p-4 rounded-3xl shadow-xl border border-stone-100 flex flex-col items-center gap-2 hover:bg-sand transition-all group"
-    >
-      <div className="w-10 h-10 bg-sand rounded-xl flex items-center justify-center text-stone-400 group-hover:bg-white group-hover:text-turquoise transition-all">
-        {icon}
-      </div>
-      <span className="text-[9px] font-bold uppercase tracking-widest text-stone-400 group-hover:text-ink">{label}</span>
-    </button>
+    <div className="min-h-screen pb-48 pt-24">
+      <section className="mx-auto max-w-6xl px-4">
+        <div className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-2xl">
+          <div className="grid gap-8 p-6 md:grid-cols-[1.05fr_0.95fr] md:p-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-turquoise/15 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-turquoise">
+                <Car className="h-4 w-4" />
+                VI Mobility
+              </div>
+
+              <h1 className="mt-6 text-4xl font-black leading-tight md:text-6xl">
+                Taxi, ferry, cruise, and tour requests in one local flow.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/75">
+                This is a coordination layer for licensed operators and local partners.
+                Visitors request transportation, and dispatchers see organized,
+                high-intent leads.
+              </p>
+
+              <div className="mt-7 grid grid-cols-3 gap-3">
+                {[
+                  ["Airport", "Transfers"],
+                  ["Cruise", "Pickups"],
+                  ["Ferry", "Timing"],
+                ].map(([top, bottom]) => (
+                  <div key={top} className="rounded-3xl bg-white/10 p-4">
+                    <p className="text-2xl font-black">{top}</p>
+                    <p className="mt-1 text-xs font-bold text-white/55">{bottom}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-white/10 bg-white/10 p-5">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-turquoise">
+                Demo quote
+              </p>
+
+              <div className="mt-5 rounded-[2rem] bg-white p-5 text-ink">
+                <p className="text-sm font-black text-stone-500">
+                  {serviceLabels[serviceType]}
+                </p>
+
+                <div className="mt-4 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-5xl font-black">${estimatedFare}</p>
+                    <p className="mt-1 text-xs font-bold text-stone-500">
+                      estimated demo fare
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-emerald-50 p-3 text-emerald-700">
+                    <CheckCircle2 className="h-7 w-7" />
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-3 text-sm font-bold text-stone-600">
+                  <p className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-emerald-700" />
+                    {pickup} → {dropoff}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-emerald-700" />
+                    {passengers} passenger{passengers === 1 ? "" : "s"}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Briefcase className="h-4 w-4 text-emerald-700" />
+                    {luggage} bag{luggage === 1 ? "" : "s"}
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => navigate("/mobility/dispatch")}
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-4 text-sm font-black text-white active:scale-95"
+                >
+                  Open Dispatch Dashboard
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid border-t border-white/10 md:grid-cols-4">
+            {[
+              "Visitor request",
+              "Tariff-aware estimate",
+              "Operator dispatch",
+              "Partner reporting",
+            ].map((item) => (
+              <div key={item} className="border-white/10 p-5 md:border-r">
+                <p className="text-sm font-black text-white">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-8 max-w-6xl px-4">
+        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="rounded-[2.25rem] bg-white p-5 shadow-xl ring-1 ring-black/5">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-emerald-700">
+              Step 1
+            </p>
+            <h2 className="mt-2 text-3xl font-black">Choose service type</h2>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {serviceOptions.map((option) => {
+                const Icon = option.icon;
+                const active = serviceType === option.id;
+
+                return (
+                  <button
+                    key={option.id}
+                    onClick={() => setServiceType(option.id)}
+                    className={[
+                      "rounded-3xl p-4 text-left transition active:scale-95",
+                      active
+                        ? "bg-ink text-white shadow-xl"
+                        : "bg-stone-50 text-ink hover:bg-white hover:shadow-lg",
+                    ].join(" ")}
+                  >
+                    <Icon className={active ? "h-6 w-6 text-turquoise" : "h-6 w-6 text-emerald-700"} />
+                    <p className="mt-3 font-black">{option.title}</p>
+                    <p className={["mt-1 text-sm leading-6", active ? "text-white/65" : "text-stone-500"].join(" ")}>
+                      {option.description}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="rounded-[2.25rem] bg-white p-5 shadow-xl ring-1 ring-black/5">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-emerald-700">
+              Step 2
+            </p>
+            <h2 className="mt-2 text-3xl font-black">Request details</h2>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Island
+                </span>
+                <select
+                  value={island}
+                  onChange={(event) => setIsland(event.target.value as DemoMobilityIsland)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                >
+                  {Object.entries(islandLabels).map(([value, label]) => (
+                    <option key={value} value={value}>{label}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Pickup time
+                </span>
+                <input
+                  value={pickupTime}
+                  onChange={(event) => setPickupTime(event.target.value)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Pickup
+                </span>
+                <input
+                  list="quick-mobility-places"
+                  value={pickup}
+                  onChange={(event) => setPickup(event.target.value)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Dropoff
+                </span>
+                <input
+                  list="quick-mobility-places"
+                  value={dropoff}
+                  onChange={(event) => setDropoff(event.target.value)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <datalist id="quick-mobility-places">
+                {quickPlaces.map((place) => (
+                  <option key={place} value={place} />
+                ))}
+              </datalist>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Passengers
+                </span>
+                <input
+                  type="number"
+                  min={1}
+                  max={14}
+                  value={passengers}
+                  onChange={(event) => setPassengers(Number(event.target.value))}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Luggage
+                </span>
+                <input
+                  type="number"
+                  min={0}
+                  max={20}
+                  value={luggage}
+                  onChange={(event) => setLuggage(Number(event.target.value))}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Name
+                </span>
+                <input
+                  value={visitorName}
+                  onChange={(event) => setVisitorName(event.target.value)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Phone
+                </span>
+                <input
+                  value={visitorPhone}
+                  onChange={(event) => setVisitorPhone(event.target.value)}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                />
+              </label>
+
+              <label className="block md:col-span-2">
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                  Notes
+                </span>
+                <textarea
+                  rows={3}
+                  value={notes}
+                  onChange={(event) => setNotes(event.target.value)}
+                  className="mt-2 w-full resize-none rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold leading-6 outline-none focus:border-emerald-500"
+                />
+              </label>
+            </div>
+
+            {submittedId && (
+              <div className="mt-5 rounded-3xl bg-emerald-50 p-4">
+                <p className="font-black text-emerald-950">Request created.</p>
+                <p className="mt-1 text-sm text-emerald-900/75">
+                  This transportation request is now visible in the dispatch dashboard.
+                </p>
+              </div>
+            )}
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
+              <button
+                onClick={submitRequest}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
+              >
+                Submit Mobility Request
+                <ArrowRight className="h-4 w-4" />
+              </button>
+
+              <button
+                onClick={() => navigate("/mobility/dispatch")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
+              >
+                Dispatch
+                <CalendarClock className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

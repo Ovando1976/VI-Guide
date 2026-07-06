@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { ArrowRight, BarChart3, CheckCircle2, Compass, Crown, Handshake, MapPin, MessageSquare, MousePointerClick, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { demoPartners, type DemoPartner, type DemoPartnerAction } from "../data/demoPartners";
 import { logDemoPartnerEvent } from "../lib/demoPartnerEvents";
+import ClaimBusinessModal from "./ClaimBusinessModal";
 
 const pricing = [
   {
@@ -36,6 +38,16 @@ function track(partner: DemoPartner, action: DemoPartnerAction) {
 
 export default function PartnersPage() {
   const navigate = useNavigate();
+  const [claimPartner, setClaimPartner] = useState<DemoPartner | null>(null);
+
+  function closeClaimModal() {
+    setClaimPartner(null);
+  }
+
+  function openDashboardAfterClaim() {
+    setClaimPartner(null);
+    navigate("/merchant/demo");
+  }
 
   return (
     <div className="min-h-screen pb-32 pt-8 md:pt-10">
@@ -73,6 +85,14 @@ export default function PartnersPage() {
                 >
                   See Visitor App
                   <Compass className="h-5 w-5" />
+                </button>
+
+                <button
+                  onClick={() => setClaimPartner(demoPartners[0])}
+                  className="inline-flex items-center justify-center gap-3 rounded-2xl border border-turquoise/40 bg-turquoise/10 px-6 py-4 text-sm font-black text-turquoise transition active:scale-95"
+                >
+                  Claim a Business
+                  <Handshake className="h-5 w-5" />
                 </button>
               </div>
             </div>
@@ -182,24 +202,30 @@ export default function PartnersPage() {
                   {partner.description}
                 </p>
 
-                <div className="mt-4 grid grid-cols-3 gap-2">
+                <div className="mt-4 grid grid-cols-2 gap-2">
                   <button
                     onClick={() => track(partner, "call")}
-                    className="rounded-2xl bg-stone-100 px-3 py-2 text-xs font-black text-stone-700 active:scale-95"
+                    className="rounded-2xl bg-stone-100 px-3 py-3 text-xs font-black text-stone-700 active:scale-95"
                   >
                     Call
                   </button>
                   <button
                     onClick={() => track(partner, "directions")}
-                    className="rounded-2xl bg-stone-100 px-3 py-2 text-xs font-black text-stone-700 active:scale-95"
+                    className="rounded-2xl bg-stone-100 px-3 py-3 text-xs font-black text-stone-700 active:scale-95"
                   >
                     Directions
                   </button>
                   <button
                     onClick={() => track(partner, "request_info")}
-                    className="rounded-2xl bg-emerald-700 px-3 py-2 text-xs font-black text-white active:scale-95"
+                    className="rounded-2xl bg-emerald-700 px-3 py-3 text-xs font-black text-white active:scale-95"
                   >
-                    Lead
+                    Demo Lead
+                  </button>
+                  <button
+                    onClick={() => setClaimPartner(partner)}
+                    className="rounded-2xl bg-ink px-3 py-3 text-xs font-black text-white active:scale-95"
+                  >
+                    Claim
                   </button>
                 </div>
               </div>
@@ -279,6 +305,11 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+      <ClaimBusinessModal
+        partner={claimPartner}
+        onClose={closeClaimModal}
+        onSuccess={openDashboardAfterClaim}
+      />
     </div>
   );
 }
