@@ -218,3 +218,129 @@ export function subscribeActiveMobilityDrivers(args: {
     },
   );
 }
+
+
+export type MobilityDriverProfileInput = {
+  driverId?: string;
+  driverName: string;
+  island: MobilityDriverIsland;
+  vehicleId?: string;
+  vehicleLabel: string;
+  phone?: string;
+  status?: MobilityDriverStatus;
+  active?: boolean;
+  sortOrder?: number;
+};
+
+function makeDriverId(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+}
+
+function buildDriverId(input: MobilityDriverProfileInput) {
+  const explicitId = cleanString(input.driverId);
+
+  if (explicitId) {
+    return makeDriverId(explicitId);
+  }
+
+  const islandPrefix =
+    input.island === "st_thomas"
+      ? "stt"
+      : input.island === "st_john"
+        ? "stj"
+        : input.island === "st_croix"
+          ? "stx"
+          : input.island === "water_island"
+            ? "wat"
+            : "territory";
+
+  return makeDriverId(`${islandPrefix}-${input.driverName}-${input.vehicleLabel}`);
+}
+
+export function subscribeMobilityDrivers(args: {
+  onData: (drivers: MobilityDriverProfile[]) => void;
+  onError?: (error: unknown) => void;
+}) {
+  return onSnapshot(
+    collection(db, MOBILITY_DRIVERS_COLLECTION),
+    (snapshot) => {
+      const drivers = sortDrivers(
+        snapshot.docs.map((driverDoc) =>
+          normalizeDriverProfile(driverDoc.id, driverDoc.data()),
+        ),
+      );
+
+      if (!drivers.length) {
+        args.onData(DEFAULT_MOBILITY_DRIVER_PROFILES);
+
+        if (!attemptedDefaultSeed) {
+          attemptedDefaultSeed = true;
+          ensureDefaultMobilityDrivers().catch(() => {
+            // Fallback drivers keep the UI working if seeding is blocked.
+          });
+        }
+
+        return;
+      }
+
+      args.onData(drivers);
+    },
+    (error) => {
+      args.onError?.(error);
+      args.onData(DEFAULT_MOBILITY_DRIVER_PROFILES);
+    },
+  );
+}
+
+export async function saveMobilityDriverProfile(
+  input: MobilityDriverProfileInput,
+) {
+  const now = new Date().toISOString();
+  const driverId = buildDriverId(input);
+
+  const driver: MobilityDriverProfile = {
+    id: driverId,
+    driverId,
+    name: input.driverName.trim(),
+    driverName: input.driverName.trim(),
+    island: input.island,
+    vehicleId: cleanString(input.vehicleId, `${driverId}-vehicle`),
+    vehicleLabel: input.vehicleLabel.trim(),
+    phone: cleanString(input.phone),
+    status: input.status || "available",
+    active: input.active !== false,
+    sortOrder:
+      typeof input.sortOrder === "number" && Number.isFinite(input.sortOrder)
+        ? input.sortOrder
+        : 999,
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  await setDoc(doc(db, MOBILITY_DRIVERS_COLLECTION, driverId), driver, {
+    merge: true,
+  });
+
+  return driver;
+}
+
+export async function updateMobilityDriverProfile(
+  driverId: string,
+  updates: Partial<MobilityDriverProfileInput>,
+) {
+  const cleanDriverId = makeDriverId(driverId);
+
+  await setDoc(
+    doc(db, MOBILITY_DRIVERS_COLLECTION, cleanDriverId),
+    {
+      ...updates,
+      updatedAt: new Date().toISOString(),
+    },
+    { merge: true },
+  );
+}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import MobilityDriverManagementPanel from "../../components/mobility/MobilityDriverManagementPanel";
 import {
   DEFAULT_MOBILITY_DRIVER_PROFILES,
   subscribeActiveMobilityDrivers,
@@ -542,6 +543,7 @@ export default function MobilityDispatchPage() {
 
   return (
     <main className="min-h-screen bg-[#f7edcf] px-4 py-8 text-slate-950 sm:px-6 lg:px-10">
+      <MobilityDriverManagementPanel />
       <section className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-amber-100 bg-white shadow-2xl shadow-amber-950/10">
         <div className="bg-[#020617] px-6 py-10 text-white sm:px-10 lg:px-12">
           <div className="mb-4 flex flex-wrap items-center gap-3">
