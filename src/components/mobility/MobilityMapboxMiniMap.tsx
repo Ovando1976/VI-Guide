@@ -265,9 +265,9 @@ export default function MobilityMapboxMiniMap({
       container: containerRef.current,
       style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [centerLng, centerLat],
-      zoom: 12,
-      pitch: 64,
-      bearing: -22,
+      zoom: 13.2,
+      pitch: 52,
+      bearing: -12,
       antialias: true,
       attributionControl: false,
       cooperativeGestures: true,
@@ -322,8 +322,8 @@ export default function MobilityMapboxMiniMap({
         source: "mobility-mini-route",
         paint: {
           "line-color": "#10b981",
-          "line-width": 5,
-          "line-dasharray": [1.5, 0.8],
+          "line-width": 6,
+          "line-dasharray": [1.2, 0.7],
         },
       });
 
@@ -355,10 +355,10 @@ export default function MobilityMapboxMiniMap({
       });
 
       map.fitBounds(bounds, {
-        padding: 68,
-        maxZoom: 13.7,
-        pitch: 64,
-        bearing: -22,
+        padding: 88,
+        maxZoom: 14.4,
+        pitch: 52,
+        bearing: -12,
         duration: 900,
       });
 
