@@ -1,11 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  DEFAULT_MOBILITY_DRIVER_PROFILES,
-  subscribeActiveMobilityDrivers,
-  formatMobilityDriverLabel,
-  type MobilityDriverProfile,
-} from "../../services/mobilityDrivers";
-import {
   AlertTriangle,
   Car,
   CheckCircle2,
@@ -15,6 +9,13 @@ import {
   UserCheck,
 } from "lucide-react";
 
+import MobilityDriverSelfStatusPanel from "../../components/mobility/MobilityDriverSelfStatusPanel";
+import {
+  DEFAULT_MOBILITY_DRIVER_PROFILES,
+  formatMobilityDriverLabel,
+  subscribeActiveMobilityDrivers,
+  type MobilityDriverProfile,
+} from "../../services/mobilityDrivers";
 import type {
   MobilityDriverLocationUpdate,
   MobilityTripDispatchStatus,
@@ -82,7 +83,11 @@ function placeCoordinates(name?: string): { lat: number; lng: number } {
     return { lat: 18.3347, lng: -64.8491 };
   }
 
-  if (text.includes("cyril") || text.includes("king") || text.includes("airport")) {
+  if (
+    text.includes("cyril") ||
+    text.includes("king") ||
+    text.includes("airport")
+  ) {
     return { lat: 18.3373, lng: -64.9734 };
   }
 
@@ -238,7 +243,8 @@ function DriverTripCard({
             Riders
           </p>
           <p className="mt-1 font-black">
-            {request.passengers ?? 0} passenger(s), {request.luggage ?? 0} bag(s)
+            {request.passengers ?? 0} passenger(s), {request.luggage ?? 0}{" "}
+            bag(s)
           </p>
         </div>
       </div>
@@ -313,16 +319,9 @@ function DriverTripCard({
 }
 
 export default function MobilityDriverPage() {
-
   const [driverProfiles, setDriverProfiles] =
     useState<MobilityDriverProfile[]>(DRIVER_OPTIONS);
 
-  useEffect(() => {
-    return subscribeActiveMobilityDrivers({
-      onData: setDriverProfiles,
-      onError: () => setDriverProfiles(DRIVER_OPTIONS),
-    });
-  }, []);
   const [driverId, setDriverId] = useState(() => {
     if (typeof window === "undefined") return DRIVER_OPTIONS[0].driverId;
 
@@ -338,8 +337,19 @@ export default function MobilityDriverPage() {
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [locatingId, setLocatingId] = useState<string | null>(null);
 
+  useEffect(() => {
+    return subscribeActiveMobilityDrivers({
+      onData: (drivers) => {
+        setDriverProfiles(drivers.length ? drivers : DRIVER_OPTIONS);
+      },
+      onError: () => setDriverProfiles(DRIVER_OPTIONS),
+    });
+  }, []);
+
   const selectedDriver =
     driverProfiles.find((driver) => driver.driverId === driverId) ||
+    driverProfiles.find((driver) => driver.id === driverId) ||
+    driverProfiles[0] ||
     DRIVER_OPTIONS[0];
 
   useEffect(() => {
@@ -363,7 +373,10 @@ export default function MobilityDriverPage() {
 
         unsubscribe = subscribeAssignedMobilityTripRequests({
           driverId,
-          limitCount: 50,
+          driverName: selectedDriver?.driverName || selectedDriver?.name,
+          vehicleId: selectedDriver?.vehicleId,
+          vehicleLabel: selectedDriver?.vehicleLabel,
+          limitCount: 75,
           onData: (nextRequests) => {
             if (cancelled) return;
             setRequests(nextRequests);
@@ -371,7 +384,11 @@ export default function MobilityDriverPage() {
           },
           onError: (nextError) => {
             if (cancelled) return;
-            setError(nextError instanceof Error ? nextError.message : "Could not load assigned trips.");
+            setError(
+              nextError instanceof Error
+                ? nextError.message
+                : "Could not load assigned trips.",
+            );
             setLoaded(true);
           },
         });
@@ -393,7 +410,13 @@ export default function MobilityDriverPage() {
       cancelled = true;
       unsubscribe?.();
     };
-  }, [driverId]);
+  }, [
+    driverId,
+    selectedDriver?.driverName,
+    selectedDriver?.name,
+    selectedDriver?.vehicleId,
+    selectedDriver?.vehicleLabel,
+  ]);
 
   async function handleStatusChange(
     request: SavedMobilityTripRequest,
@@ -535,8 +558,10 @@ export default function MobilityDriverPage() {
             </select>
           </div>
 
+          <MobilityDriverSelfStatusPanel selectedDriver={selectedDriver} />
+
           {error ? (
-            <div className="mb-5 rounded-3xl border border-red-200 bg-red-50 p-5 text-red-900">
+            <div className="mb-5 mt-6 rounded-3xl border border-red-200 bg-red-50 p-5 text-red-900">
               <div className="flex gap-3">
                 <AlertTriangle className="mt-1 h-5 w-5 shrink-0" />
                 <div>
@@ -550,14 +575,14 @@ export default function MobilityDriverPage() {
           ) : null}
 
           {!error && !loaded ? (
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
+            <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-8 text-center">
               <RefreshCw className="mx-auto mb-4 h-8 w-8 animate-spin text-amber-700" />
               <p className="text-lg font-black">Loading assigned trips…</p>
             </div>
           ) : null}
 
           {!error && loaded && active.length === 0 ? (
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
+            <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-8 text-center">
               <CheckCircle2 className="mx-auto mb-4 h-8 w-8 text-emerald-700" />
               <p className="text-lg font-black">
                 No active trips for {selectedDriver.driverName}.
@@ -569,7 +594,7 @@ export default function MobilityDriverPage() {
           ) : null}
 
           {active.length > 0 ? (
-            <div className="space-y-5">
+            <div className="mt-6 space-y-5">
               {active.map((request) => (
                 <DriverTripCard
                   key={request.firestoreId}
