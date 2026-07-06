@@ -50,6 +50,8 @@ import Mobility from "./components/Mobility";
 import Documents from "./components/Documents";
 import Profile from "./components/Profile";
 import MerchantDashboard from "./components/MerchantDashboard";
+import PartnersPage from "./components/PartnersPage";
+import MerchantDemoDashboard from "./components/MerchantDemoDashboard";
 import ListingDetail from "./components/ListingDetail";
 import EventDetail from "./components/EventDetail";
 import { FeaturedSection } from "./components/FeaturedSection";
@@ -336,6 +338,16 @@ function AppContent() {
                 onSelectDocument={handleSelectDocument}
               />
             }
+          />
+
+          <Route
+            path="/partners"
+            element={<PartnersPage />}
+          />
+
+          <Route
+            path="/merchant/demo"
+            element={<MerchantDemoDashboard />}
           />
 
           <Route

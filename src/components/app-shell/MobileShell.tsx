@@ -1,35 +1,57 @@
-import React from 'react';
-import { BottomNav } from './BottomNav';
-import { IslandPicker } from './IslandPicker';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import { BottomNav } from "./BottomNav";
+import { IslandPicker } from "./IslandPicker";
 
 interface MobileShellProps {
   children: React.ReactNode;
   isMerchant?: boolean;
 }
 
+const PRESENTATION_ROUTES = ["/partners", "/merchant/demo"];
+
+function isPresentationPath(pathname: string) {
+  return PRESENTATION_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+}
+
 export function MobileShell({ children }: MobileShellProps) {
+  const location = useLocation();
+  const isPresentationRoute = isPresentationPath(location.pathname);
+
   return (
-    <div className="min-h-screen bg-sand pb-32 font-sans text-ink selection:bg-turquoise/30 relative overflow-x-hidden">
-      {/* Atmospheric Background Elements */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-turquoise/5 rounded-full blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] bg-ocean/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[20%] w-[50%] h-[50%] bg-coral/5 rounded-full blur-[150px]" />
+    <div
+      className={[
+        "relative min-h-screen overflow-x-hidden bg-sand font-sans text-ink selection:bg-turquoise/30",
+        isPresentationRoute ? "pb-[calc(env(safe-area-inset-bottom)+5rem)]" : "pb-40",
+      ].join(" ")}
+    >
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-turquoise/5 blur-[120px]" />
+        <div className="absolute -right-[10%] top-[20%] h-[30%] w-[30%] rounded-full bg-ocean/5 blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[20%] h-[50%] w-[50%] rounded-full bg-coral/5 blur-[150px]" />
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center pointer-events-none">
-        <div className="pointer-events-auto">
-          <IslandPicker />
-        </div>
-      </header>
+      {!isPresentationRoute && (
+        <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6">
+          <div className="pointer-events-auto rounded-2xl bg-white/75 px-3 py-2 shadow-lg ring-1 ring-black/5 backdrop-blur-xl">
+            <IslandPicker />
+          </div>
+        </header>
+      )}
 
-      <main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <main className={["relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", isPresentationRoute ? "pt-8 md:pt-10" : ""].join(" ")}>
+        <div
+          className={
+            isPresentationRoute ? "mx-auto max-w-6xl" : "mx-auto max-w-4xl"
+          }
+        >
           {children}
         </div>
       </main>
 
-      <BottomNav />
+      {!isPresentationRoute && <BottomNav />}
     </div>
   );
 }

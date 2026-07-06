@@ -14,8 +14,10 @@ import {
 } from "lucide-react";
 
 type VisitorHomeProps = {
+  selectedIsland?: string;
   selectedIslandLabel?: string;
   onNavigate: (path: string) => void;
+  onSelectListing?: (listing: unknown) => void;
 };
 
 const highlights = [
@@ -57,7 +59,7 @@ export default function VisitorHome({
   onNavigate,
 }: VisitorHomeProps) {
   return (
-    <div className="min-h-screen pb-28 text-white">
+    <div className="min-h-screen pb-52 text-white">
       <section className="relative overflow-hidden rounded-b-[3rem] bg-emerald-950 px-5 pb-8 pt-8 shadow-2xl">
         <div className="absolute inset-0 opacity-30">
           <img
@@ -154,6 +156,23 @@ export default function VisitorHome({
           <Map className="h-6 w-6" />
           Open Live Island Map
         </button>
+
+        <div className="mt-4 grid grid-cols-2 gap-3 pb-8">
+          <button
+            onClick={() => onNavigate("/partners")}
+            className="rounded-3xl bg-ink px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
+          >
+            Partner Portal
+          </button>
+
+          <button
+            onClick={() => onNavigate("/merchant/demo")}
+            className="rounded-3xl bg-white px-5 py-4 text-sm font-black text-emerald-800 shadow-xl active:scale-95"
+          >
+            Demo Dashboard
+          </button>
+        </div>
+
       </section>
     </div>
   );
