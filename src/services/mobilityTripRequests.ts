@@ -412,18 +412,39 @@ export function clearLastMobilityTripRequest() {
 
 export function subscribeAssignedMobilityTripRequests(args: {
   driverId: string;
+  driverName?: string;
+  vehicleId?: string;
+  vehicleLabel?: string;
   limitCount?: number;
   onData: (requests: SavedMobilityTripRequest[]) => void;
-  onError?: (error: FirestoreError) => void;
+  onError?: (error: unknown) => void;
 }): Unsubscribe {
+  const normalize = (value: unknown) =>
+    typeof value === "string" ? value.trim().toLowerCase() : "";
+
+  const wantedDriverId = normalize(args.driverId);
+  const wantedDriverName = normalize(args.driverName);
+  const wantedVehicleId = normalize(args.vehicleId);
+  const wantedVehicleLabel = normalize(args.vehicleLabel);
+
   return subscribeRecentMobilityTripRequests({
-    limitCount: args.limitCount ?? 50,
+    limitCount: args.limitCount ?? 75,
     onData: (requests) => {
-      args.onData(
-        requests.filter(
-          (request) => request.assignedDriverId === args.driverId,
-        ),
-      );
+      const assignedRequests = requests.filter((request) => {
+        const assignedDriverId = normalize(request.assignedDriverId);
+        const assignedDriverName = normalize(request.assignedDriverName);
+        const assignedVehicleId = normalize(request.assignedVehicleId);
+        const assignedVehicleLabel = normalize(request.assignedVehicleLabel);
+
+        return (
+          (!!wantedDriverId && assignedDriverId === wantedDriverId) ||
+          (!!wantedDriverName && assignedDriverName === wantedDriverName) ||
+          (!!wantedVehicleId && assignedVehicleId === wantedVehicleId) ||
+          (!!wantedVehicleLabel && assignedVehicleLabel === wantedVehicleLabel)
+        );
+      });
+
+      args.onData(assignedRequests);
     },
     onError: args.onError,
   });

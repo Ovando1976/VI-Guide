@@ -370,7 +370,7 @@ export default function MobilityDriverPage() {
           },
           onError: (nextError) => {
             if (cancelled) return;
-            setError(nextError.message);
+            setError(nextError instanceof Error ? nextError.message : "Could not load assigned trips.");
             setLoaded(true);
           },
         });
