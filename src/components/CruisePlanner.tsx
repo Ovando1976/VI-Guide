@@ -289,7 +289,33 @@ export default function CruisePlanner() {
 
       <section className="mt-6 space-y-6">
         <div className="rounded-3xl bg-white p-5 shadow-xl">
-          <p className="text-xs uppercase tracking-[0.25em] text-emerald-700">
+          
+        <section className="mt-6 rounded-[2rem] bg-white p-5 text-ink shadow-xl">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+                Stays & booking help
+              </p>
+              <h2 className="mt-2 text-2xl font-black">
+                Need a hotel, villa, boat charter, or tour?
+              </h2>
+              <p className="mt-2 text-sm font-bold leading-6 text-stone-500">
+                Send one direct inquiry and connect your trip plan with lodging,
+                charters, tours, and transportation.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => window.location.assign("/hotels")}
+              className="inline-flex shrink-0 items-center justify-center rounded-2xl bg-turquoise px-5 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
+            >
+              Book Stay / Charter
+            </button>
+          </div>
+        </section>
+
+<p className="text-xs uppercase tracking-[0.25em] text-emerald-700">
             Route Preview
           </p>
 

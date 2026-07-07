@@ -1,4 +1,5 @@
 import {
+  BedDouble,
   Bell,
   CalendarDays,
   Car,
@@ -127,13 +128,38 @@ export default function VisitorHome({
             className="mt-6 flex w-full items-center gap-3 rounded-3xl bg-white px-5 py-4 text-left text-stone-500 shadow-xl"
           >
             <Search className="h-5 w-5" />
-            <span className="flex-1 text-sm">Search beaches, restaurants, places...</span>
+            <span className="flex-1 text-sm">
+              Search beaches, restaurants, places...
+            </span>
             <Mic className="h-5 w-5" />
           </button>
         </div>
       </section>
 
       <section className="px-5 pt-6">
+        <button
+          onClick={() => onNavigate("/hotels")}
+          className="mb-4 flex w-full items-center justify-between rounded-3xl bg-white px-5 py-5 text-left text-ink shadow-xl active:scale-95"
+        >
+          <span className="flex items-center gap-4">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-emerald-700">
+              <BedDouble className="h-7 w-7" />
+            </span>
+
+            <span>
+              <span className="block text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+                Stays & booking
+              </span>
+              <span className="mt-1 block text-lg font-black">
+                Hotels, Villas & Charters
+              </span>
+              <span className="mt-1 block text-xs font-bold text-stone-500">
+                Request lodging, boat days, tours, and pickup help.
+              </span>
+            </span>
+          </span>
+        </button>
+
         <div className="grid grid-cols-4 gap-3">
           {actions.map((action) => (
             <button
@@ -179,7 +205,6 @@ export default function VisitorHome({
             Demo Dashboard
           </button>
         </div>
-
       </section>
     </div>
   );
