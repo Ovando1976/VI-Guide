@@ -187,7 +187,7 @@ function getRenderItems(points: MapPoint[], zoom: number): RenderItem[] {
   const cellSize = getClusterCellSize(zoom);
 
   if (cellSize === 0) {
-    return valid.map((point) => ({ kind: "point", point }));
+    return valid.map((point): RenderPoint => ({ kind: "point", point }));
   }
 
   const buckets = new Map<string, MapPoint[]>();
@@ -197,28 +197,38 @@ function getRenderItems(points: MapPoint[], zoom: number): RenderItem[] {
     const y = Math.round(point.lat / cellSize);
     const key = `${x}:${y}`;
 
-    buckets.set(key, [...(buckets.get(key) || []), point]);
+    const bucket = buckets.get(key) || [];
+    bucket.push(point);
+    buckets.set(key, bucket);
   }
 
-  return Array.from(buckets.entries()).flatMap(([key, bucket]) => {
+  const items: RenderItem[] = [];
+
+  for (const [key, bucket] of buckets.entries()) {
     if (bucket.length === 1) {
-      return [{ kind: "point", point: bucket[0] } satisfies RenderPoint];
+      items.push({
+        kind: "point",
+        point: bucket[0],
+      });
+      continue;
     }
 
-    const lat = bucket.reduce((sum, point) => sum + point.lat, 0) / bucket.length;
-    const lng = bucket.reduce((sum, point) => sum + point.lng, 0) / bucket.length;
+    const lat =
+      bucket.reduce((sum, point) => sum + point.lat, 0) / bucket.length;
+    const lng =
+      bucket.reduce((sum, point) => sum + point.lng, 0) / bucket.length;
 
-    return [
-      {
-        kind: "cluster",
-        id: key,
-        points: bucket,
-        lat,
-        lng,
-        dominantType: dominantType(bucket),
-      } satisfies RenderCluster,
-    ];
-  });
+    items.push({
+      kind: "cluster",
+      id: key,
+      points: bucket,
+      lat,
+      lng,
+      dominantType: dominantType(bucket),
+    });
+  }
+
+  return items;
 }
 
 function makeIconSvg(type: Exclude<MapFilter, "all">, size: number) {
