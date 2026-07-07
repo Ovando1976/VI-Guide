@@ -87,7 +87,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
   const [fitToResultsTrigger, setFitToResultsTrigger] = useState(0);
 
   const navigate = useNavigate();
-  const { points, loading, error } = useMapPoints(selectedIsland);
+  const { points: basePoints, loading, error } = useMapPoints(selectedIsland);
   const [partnerListings, setPartnerListings] = useState<PartnerListing[]>(() =>
     readPartnerListings()
   );
@@ -111,6 +111,43 @@ export default function Maps({ selectedIsland }: MapsProps) {
   const mapPartnerListings = useMemo(
     () => activePartnerListings(partnerListings),
     [partnerListings]
+  );
+
+  const partnerMapPoints = useMemo(
+    () =>
+      mapPartnerListings
+        .filter((listing) => Number.isFinite(Number(listing.lat)) && Number.isFinite(Number(listing.lng)))
+        .map((listing): MapPoint => {
+          const category = String(listing.category || "").toLowerCase();
+          const type =
+            category.includes("restaurant") || category.includes("bar")
+              ? "food"
+              : category.includes("taxi") || category.includes("transport")
+                ? "transport"
+                : category.includes("historic")
+                  ? "history"
+                  : "attraction";
+
+          return {
+            id: `partner-${listing.id}`,
+            title: listing.businessName,
+            description:
+              listing.offer ||
+              listing.description ||
+              "Active VI Guide partner listing.",
+            type,
+            island: selectedIsland,
+            lat: Number(listing.lat),
+            lng: Number(listing.lng),
+            source: "partner_listing",
+          };
+        }),
+    [mapPartnerListings, selectedIsland]
+  );
+
+  const points = useMemo(
+    () => [...partnerMapPoints, ...basePoints],
+    [basePoints, partnerMapPoints]
   );
 
   const selectPoint = (

@@ -39,6 +39,8 @@ type PartnerProspect = {
     rides?: number;
     taps?: number;
     estimatedValue?: number;
+    lat?: number;
+    lng?: number;
   } | null;
 };
 

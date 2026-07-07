@@ -16,6 +16,8 @@ export type PartnerListing = {
   listingStatus: PartnerListingStatus;
   logoUrl: string;
   heroImageUrl: string;
+  lat?: number | null;
+  lng?: number | null;
   createdAt: string;
   updatedAt: string;
 };
