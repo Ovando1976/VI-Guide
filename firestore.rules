@@ -8,12 +8,14 @@ service cloud.firestore {
 
     match /partnerClaims/{claimId} {
       allow create: if true;
-      allow read, update, delete: if request.auth != null;
+      allow read, update: if true;
+      allow delete: if request.auth != null;
     }
 
     match /merchantLeads/{leadId} {
       allow create: if true;
-      allow read, update, delete: if request.auth != null;
+      allow read: if true;
+      allow update, delete: if request.auth != null;
     }
 
     match /mobilityRequests/{requestId} {
@@ -24,7 +26,7 @@ service cloud.firestore {
 
     match /mobilityDispatchEvents/{eventId} {
       allow create: if true;
-      allow read: if request.auth != null;
+      allow read: if true;
       allow update, delete: if request.auth != null;
     }
 
