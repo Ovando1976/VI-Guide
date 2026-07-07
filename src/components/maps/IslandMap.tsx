@@ -1,6 +1,17 @@
 import React, { useEffect, useMemo, useRef } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import {
+  CalendarDays,
+  Landmark,
+  MapPin,
+  Ship,
+  Sparkles,
+  Umbrella,
+  Utensils,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { IslandCode } from "../../types";
 
 export type MapFilter =
@@ -11,6 +22,8 @@ export type MapFilter =
   | "food"
   | "event"
   | "attraction";
+
+export type MapStyleMode = "streets" | "outdoors" | "satellite";
 
 export type MapPoint = {
   id: string;
@@ -26,6 +39,7 @@ type IslandMapProps = {
   activeFilter: MapFilter;
   selectedPointId: string | null;
   points: MapPoint[];
+  mapStyleMode?: MapStyleMode;
   onSelectPoint: (point: MapPoint) => void;
 };
 
@@ -39,10 +53,13 @@ export const MAP_FILTERS: { id: MapFilter; label: string }[] = [
   { id: "attraction", label: "Attractions" },
 ];
 
-const MAPBOX_TOKEN =
+const MAPBOX_TOKEN = String(
   import.meta.env.VITE_MAPBOX_TOKEN ||
-  import.meta.env.VITE_MAPBOX_ACCESS_TOKEN ||
-  "";
+    import.meta.env.VITE_MAPBOX_ACCESS_TOKEN ||
+    ""
+)
+  .replace(/^["']|["']$/g, "")
+  .trim();
 
 const ISLAND_CENTER: Record<
   string,
@@ -51,31 +68,156 @@ const ISLAND_CENTER: Record<
   st_thomas: { center: [-64.9307, 18.3419], zoom: 12 },
   st_john: { center: [-64.7281, 18.3358], zoom: 12 },
   st_croix: { center: [-64.8348, 17.7246], zoom: 11 },
+  water_island: { center: [-64.95, 18.319], zoom: 13 },
 };
 
-function getColor(type: MapPoint["type"]) {
-  if (type === "beach") return "#0891b2";
-  if (type === "history") return "#b45309";
-  if (type === "transport") return "#059669";
-  if (type === "food") return "#dc2626";
-  if (type === "event") return "#7c3aed";
-  return "#4f46e5";
+const MAP_STYLES: Record<MapStyleMode, string> = {
+  streets: "mapbox://styles/mapbox/streets-v12",
+  outdoors: "mapbox://styles/mapbox/outdoors-v12",
+  satellite: "mapbox://styles/mapbox/satellite-streets-v12",
+};
+
+type MarkerStyle = {
+  icon: LucideIcon;
+  label: string;
+  background: string;
+  foreground: string;
+};
+
+export function getMapMarkerStyle(
+  type: Exclude<MapFilter, "all">
+): MarkerStyle {
+  if (type === "beach") {
+    return {
+      icon: Umbrella,
+      label: "Beach",
+      background: "#0891b2",
+      foreground: "#ffffff",
+    };
+  }
+
+  if (type === "history") {
+    return {
+      icon: Landmark,
+      label: "History",
+      background: "#92400e",
+      foreground: "#ffffff",
+    };
+  }
+
+  if (type === "transport") {
+    return {
+      icon: Ship,
+      label: "Transport",
+      background: "#2563eb",
+      foreground: "#ffffff",
+    };
+  }
+
+  if (type === "food") {
+    return {
+      icon: Utensils,
+      label: "Food",
+      background: "#dc2626",
+      foreground: "#ffffff",
+    };
+  }
+
+  if (type === "event") {
+    return {
+      icon: CalendarDays,
+      label: "Event",
+      background: "#7c3aed",
+      foreground: "#ffffff",
+    };
+  }
+
+  return {
+    icon: Sparkles,
+    label: "Attraction",
+    background: "#4f46e5",
+    foreground: "#ffffff",
+  };
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function makeMarkerElement(point: MapPoint, selected: boolean) {
+  const style = getMapMarkerStyle(point.type);
+  const Icon = style.icon;
+
   const el = document.createElement("button");
+  const outerSize = selected ? 52 : 40;
+  const innerSize = selected ? 42 : 32;
+
+  const iconSvg = renderToStaticMarkup(
+    <Icon size={selected ? 20 : 17} strokeWidth={2.8} aria-hidden="true" />
+  );
 
   el.type = "button";
-  el.setAttribute("aria-label", point.title);
-  el.className =
-    "grid place-items-center rounded-full border-white shadow-xl transition active:scale-95";
+  el.setAttribute("aria-label", `${style.label}: ${point.title}`);
+  el.title = point.title;
+  el.style.width = `${outerSize}px`;
+  el.style.height = `${outerSize}px`;
+  el.style.border = "0";
+  el.style.padding = "0";
+  el.style.borderRadius = "999px";
+  el.style.background = selected
+    ? "rgba(45, 212, 191, 0.22)"
+    : "rgba(255,255,255,0.82)";
+  el.style.display = "grid";
+  el.style.placeItems = "center";
+  el.style.cursor = "pointer";
+  el.style.boxShadow = selected
+    ? "0 0 0 8px rgba(20,184,166,0.24), 0 18px 34px rgba(15,23,42,0.32)"
+    : "0 10px 24px rgba(15,23,42,0.26)";
+  el.style.transform = selected ? "scale(1.08)" : "scale(1)";
+  el.style.transition = "transform 160ms ease, box-shadow 160ms ease";
+  el.style.zIndex = selected ? "30" : "1";
 
-  el.style.width = selected ? "30px" : "22px";
-  el.style.height = selected ? "30px" : "22px";
-  el.style.borderWidth = selected ? "5px" : "3px";
-  el.style.background = getColor(point.type);
+  el.innerHTML = `
+    <span
+      style="
+        width:${innerSize}px;
+        height:${innerSize}px;
+        display:grid;
+        place-items:center;
+        border-radius:999px;
+        border:${selected ? "3px" : "2px"} solid white;
+        background:${style.background};
+        color:${style.foreground};
+        box-shadow:0 8px 18px rgba(15,23,42,0.22);
+      "
+    >
+      ${iconSvg}
+    </span>
+  `;
+
+  el.addEventListener("mouseenter", () => {
+    el.style.transform = "scale(1.16)";
+  });
+
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = selected ? "scale(1.08)" : "scale(1)";
+  });
 
   return el;
+}
+
+function isValidPoint(point: MapPoint) {
+  return (
+    Number.isFinite(Number(point.lat)) &&
+    Number.isFinite(Number(point.lng)) &&
+    Math.abs(Number(point.lat)) <= 90 &&
+    Math.abs(Number(point.lng)) <= 180
+  );
 }
 
 export default function IslandMap({
@@ -83,6 +225,7 @@ export default function IslandMap({
   activeFilter,
   selectedPointId,
   points,
+  mapStyleMode = "streets",
   onSelectPoint,
 }: IslandMapProps) {
   const mapNodeRef = useRef<HTMLDivElement | null>(null);
@@ -94,9 +237,11 @@ export default function IslandMap({
     ISLAND_CENTER.st_thomas;
 
   const visiblePoints = useMemo(() => {
+    const validPoints = points.filter(isValidPoint);
+
     return activeFilter === "all"
-      ? points
-      : points.filter((point) => point.type === activeFilter);
+      ? validPoints
+      : validPoints.filter((point) => point.type === activeFilter);
   }, [activeFilter, points]);
 
   const selectedPoint = useMemo(
@@ -116,7 +261,7 @@ export default function IslandMap({
 
     const map = new mapboxgl.Map({
       container: mapNodeRef.current,
-      style: "mapbox://styles/mapbox/streets-v12",
+      style: MAP_STYLES[mapStyleMode],
       center: center.center,
       zoom: center.zoom,
       attributionControl: false,
@@ -124,7 +269,12 @@ export default function IslandMap({
 
     mapRef.current = map;
 
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    map.addControl(
+      new mapboxgl.NavigationControl({
+        visualizePitch: true,
+      }),
+      "top-right"
+    );
 
     map.once("load", () => {
       map.resize();
@@ -149,6 +299,13 @@ export default function IslandMap({
     const map = mapRef.current;
     if (!map) return;
 
+    map.setStyle(MAP_STYLES[mapStyleMode]);
+  }, [mapStyleMode]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
     map.flyTo({
       center: center.center,
       zoom: center.zoom,
@@ -168,16 +325,28 @@ export default function IslandMap({
       const selected = point.id === selectedPointId;
       const element = makeMarkerElement(point, selected);
 
-      element.addEventListener("click", () => {
+      element.addEventListener("click", (event) => {
+        event.stopPropagation();
         onSelectPoint(point);
+
+        map.flyTo({
+          center: [point.lng, point.lat],
+          zoom: Math.max(map.getZoom(), 14),
+          duration: 650,
+          essential: true,
+        });
       });
 
       const popup = new mapboxgl.Popup({
-        offset: 18,
+        offset: 26,
         closeButton: false,
         className: "vi-map-popup",
       }).setHTML(
-        `<strong>${point.title}</strong><br/><span>${point.description}</span>`
+        `<div style="max-width:220px">
+          <strong>${escapeHtml(point.title)}</strong>
+          <br/>
+          <span>${escapeHtml(point.description)}</span>
+        </div>`
       );
 
       const marker = new mapboxgl.Marker({
@@ -194,7 +363,7 @@ export default function IslandMap({
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !selectedPoint) return;
+    if (!map || !selectedPoint || !isValidPoint(selectedPoint)) return;
 
     map.flyTo({
       center: [selectedPoint.lng, selectedPoint.lat],
