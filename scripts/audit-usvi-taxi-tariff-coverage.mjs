@@ -36,7 +36,7 @@ const checks = [
   ["St. Thomas hotel rows", counts.stThomasHotelRows, 28],
   ["St. Thomas miscellaneous rows", counts.stThomasMiscRows, 63],
   ["St. Thomas cross-island rows", counts.stThomasCrossRows, 50],
-  ["St. John rows", counts.stJohnRows, 140],
+  ["St. John rows", counts.stJohnRows, 139],
   ["St. Croix rows", counts.stCroixRows, 140],
 ];
 

@@ -32,8 +32,8 @@ import {
   islandLabels,
   serviceLabels,
   statusLabels,
-  type DemoMobilityRequestStatus,
-} from "../lib/mobility/demoMobilityStore";
+  type MobilityRequestStatus,
+} from "../lib/mobility/mobilityOs";
 import type {
   MerchantLeadDoc,
   MobilityRequestDoc,
@@ -49,12 +49,13 @@ const claimStatuses: PartnerClaimStatus[] = [
   "rejected",
 ];
 
-const mobilityStatuses: DemoMobilityRequestStatus[] = [
+const mobilityStatuses: MobilityRequestStatus[] = [
   "new",
   "quoted",
   "accepted",
   "driver_en_route",
   "arrived",
+  "in_progress",
   "completed",
   "cancelled",
 ];
@@ -78,6 +79,32 @@ function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
+function titleize(value: unknown) {
+  return String(value || "Unknown")
+    .replaceAll("_", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function mobilityStatusLabel(status: unknown) {
+  return statusLabels[String(status) as keyof typeof statusLabels] || titleize(status);
+}
+
+function mobilityServiceLabel(serviceType: unknown) {
+  return (
+    serviceLabels[String(serviceType) as keyof typeof serviceLabels] ||
+    titleize(serviceType)
+  );
+}
+
+function mobilityIslandLabel(island: unknown) {
+  return islandLabels[String(island) as keyof typeof islandLabels] || titleize(island);
+}
+
+function mobilityFare(value: unknown) {
+  const amount = Number(value || 0);
+  return amount > 0 ? `$${amount.toLocaleString()}` : "Dispatcher review";
+}
+
 function safeTel(phone?: string) {
   if (!phone) return "";
   return `tel:${phone.replace(/[^\d+]/g, "")}`;
@@ -98,8 +125,8 @@ function mailtoLink({
   )}`;
 }
 
-function nextMobilityStatus(status: DemoMobilityRequestStatus) {
-  const order: DemoMobilityRequestStatus[] = [
+function nextMobilityStatus(status: MobilityRequestStatus) {
+  const order: MobilityRequestStatus[] = [
     "new",
     "quoted",
     "accepted",
@@ -143,15 +170,15 @@ function mobilityDispatchNote(request: MobilityRequestDoc) {
   return `Mobility request
 
 Route: ${request.pickup} → ${request.dropoff}
-Island: ${islandLabels[request.island]}
-Service: ${serviceLabels[request.serviceType]}
-Status: ${statusLabels[request.status]}
+Island: ${mobilityIslandLabel(request.island)}
+Service: ${mobilityServiceLabel(request.serviceType)}
+Status: ${mobilityStatusLabel(request.status)}
 Pickup time: ${request.pickupTime}
 Passenger: ${request.visitorName}
 Phone: ${request.visitorPhone}
 Passengers: ${request.passengers}
 Luggage: ${request.luggage}
-Estimated fare: $${request.estimatedFare}
+Estimated fare: ${mobilityFare(request.estimatedFare)}
 Notes: ${request.notes || "None"}`;
 }
 
@@ -208,7 +235,30 @@ export default function AdminLeadsDashboard() {
     try {
       unsubscribers.push(
         subscribeToFirestoreMobilityRequests(
-          setMobilityRequests,
+          (requests: any[]) =>
+            setMobilityRequests(
+              requests.map((request) => ({
+                ...request,
+                id: String(request.id || request.clientRequestId || ""),
+                serviceType: request.serviceType || "custom_ride",
+                island: request.island || "st_thomas",
+                pickup: request.pickup || "Unknown pickup",
+                dropoff: request.dropoff || "Unknown dropoff",
+                pickupTime: request.pickupTime || "ASAP / next available",
+                passengers: Number(request.passengers || 1),
+                luggage: Number(request.luggage || 0),
+                visitorName: request.visitorName || "Unknown rider",
+                visitorPhone: request.visitorPhone || "",
+                estimatedFare: Number(request.estimatedFare || 0),
+                status: request.status || "new",
+                tariffStatus: request.tariffStatus || "",
+                tariffSource: request.tariffSource || "",
+                tariffComplianceNote: request.tariffComplianceNote || "",
+                tariffBreakdown: Array.isArray(request.tariffBreakdown)
+                  ? request.tariffBreakdown
+                  : [],
+              })) as any
+            ),
           (error) =>
             setErrors((existing) => ({
               ...existing,
@@ -282,13 +332,13 @@ export default function AdminLeadsDashboard() {
 
   async function moveMobilityRequest(
     request: MobilityRequestDoc,
-    status: DemoMobilityRequestStatus
+    status: MobilityRequestStatus
   ) {
     try {
       await updateFirestoreMobilityRequestStatus(
         request.id,
-        status,
-        request.status
+        status as any,
+        request.status as any
       );
     } catch (error) {
       setErrors((existing) => ({
@@ -651,12 +701,12 @@ export default function AdminLeadsDashboard() {
                         <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
                           <div>
                             <div className="flex flex-wrap gap-2">
-                              <Badge label={statusLabels[request.status]} />
+                              <Badge label={mobilityStatusLabel(request.status)} />
                               <Badge
-                                label={serviceLabels[request.serviceType]}
+                                label={mobilityServiceLabel(request.serviceType)}
                                 muted
                               />
-                              <Badge label={islandLabels[request.island]} muted />
+                              <Badge label={mobilityIslandLabel(request.island)} muted />
                             </div>
 
                             <h3 className="mt-3 text-2xl font-black">
@@ -674,7 +724,7 @@ export default function AdminLeadsDashboard() {
                               </p>
                               <p className="flex items-center gap-2">
                                 <MapPin className="h-4 w-4 text-emerald-700" />
-                                ${request.estimatedFare}
+                                {mobilityFare(request.estimatedFare)}
                               </p>
                             </div>
 
@@ -716,7 +766,7 @@ export default function AdminLeadsDashboard() {
                                   className="inline-flex items-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-xs font-black text-ink active:scale-95"
                                 >
                                   <ArrowRight className="h-4 w-4" />
-                                  Move to {statusLabels[nextStatus]}
+                                  Move to {mobilityStatusLabel(nextStatus)}
                                 </button>
                               )}
 
@@ -749,7 +799,7 @@ export default function AdminLeadsDashboard() {
                                     : "bg-white text-stone-600 ring-1 ring-stone-200",
                                 ].join(" ")}
                               >
-                                {statusLabels[status]}
+                                {mobilityStatusLabel(status)}
                               </button>
                             ))}
                           </div>
