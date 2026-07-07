@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import BusinessRouteTestButtons from "./BusinessRouteTestButtons";
 
 const demoCards = [
   {
@@ -87,6 +88,7 @@ export default function DemoHub() {
   return (
 
     <div className="min-h-screen pb-32 pt-8 md:pt-10">
+      <BusinessRouteTestButtons />
       <div className="mx-auto mb-4 flex max-w-6xl justify-end px-4">
         <a
           href="/taxi-demo"

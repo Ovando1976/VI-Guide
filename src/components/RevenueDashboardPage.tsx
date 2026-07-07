@@ -20,6 +20,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { readAccommodationPartnerPages } from "../lib/accommodations/accommodationPartnerPages";
+import BusinessRouteTestButtons from "./BusinessRouteTestButtons";
 
 type BookingRequest = {
   id: string;
@@ -70,8 +71,12 @@ function readRecord(key: string): Record<string, string> {
   if (typeof window === "undefined") return {};
 
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(key) || "{}") as Record<string, string>;
-    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    const parsed = JSON.parse(
+      window.localStorage.getItem(key) || "{}"
+    ) as Record<string, string>;
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed
+      : {};
   } catch {
     return {};
   }
@@ -120,7 +125,9 @@ export default function RevenueDashboardPage() {
     });
 
     const booked = enrichedRequests.filter((item) => item.status === "booked");
-    const open = enrichedRequests.filter((item) => !["booked", "lost"].includes(item.status));
+    const open = enrichedRequests.filter(
+      (item) => !["booked", "lost"].includes(item.status)
+    );
     const quoted = enrichedRequests.filter((item) => item.status === "quoted");
     const lost = enrichedRequests.filter((item) => item.status === "lost");
 
@@ -133,8 +140,14 @@ export default function RevenueDashboardPage() {
     );
 
     const monthlyPartnerRevenue =
-      activeAccommodationPages.reduce((sum, page) => sum + partnerMonthlyValue(page.pageStatus), 0) +
-      activeBookingPartners.reduce((sum, partner) => sum + partnerMonthlyValue(partner.status), 0);
+      activeAccommodationPages.reduce(
+        (sum, page) => sum + partnerMonthlyValue(page.pageStatus),
+        0
+      ) +
+      activeBookingPartners.reduce(
+        (sum, partner) => sum + partnerMonthlyValue(partner.status),
+        0
+      );
 
     const bookedValue = booked.reduce((sum, item) => sum + item.value, 0);
     const quotedValue = quoted.reduce((sum, item) => sum + item.value, 0);
@@ -189,6 +202,7 @@ export default function RevenueDashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <BusinessRouteTestButtons />
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-[2.75rem] bg-ink p-6 text-white shadow-2xl md:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -203,15 +217,32 @@ export default function RevenueDashboardPage() {
               </h1>
 
               <p className="mt-4 max-w-3xl text-sm font-bold leading-7 text-white/70">
-                This ties the hotel, villa, charter, tour, partner-page, and booking-inbox system into one money view.
+                This ties the hotel, villa, charter, tour, partner-page, and
+                booking-inbox system into one money view.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[520px]">
-              <HeroStat label="Monthly partner revenue" value={formatMoney(data.monthlyPartnerRevenue)} icon={Banknote} />
-              <HeroStat label="Booked value" value={formatMoney(data.bookedValue)} icon={CheckCircle2} />
-              <HeroStat label="Referral estimate" value={formatMoney(data.referralEstimate)} icon={BadgeDollarSign} />
-              <HeroStat label="Annualized MRR" value={formatMoney(data.annualizedMrr)} icon={TrendingUp} />
+              <HeroStat
+                label="Monthly partner revenue"
+                value={formatMoney(data.monthlyPartnerRevenue)}
+                icon={Banknote}
+              />
+              <HeroStat
+                label="Booked value"
+                value={formatMoney(data.bookedValue)}
+                icon={CheckCircle2}
+              />
+              <HeroStat
+                label="Referral estimate"
+                value={formatMoney(data.referralEstimate)}
+                icon={BadgeDollarSign}
+              />
+              <HeroStat
+                label="Annualized MRR"
+                value={formatMoney(data.annualizedMrr)}
+                icon={TrendingUp}
+              />
             </div>
           </div>
         </div>
@@ -224,12 +255,36 @@ export default function RevenueDashboardPage() {
               </p>
 
               <div className="mt-4 grid gap-3">
-                <QuickButton label="Partner Outreach" icon={Mail} onClick={() => navigate("/partner-outreach")} />
-                <QuickButton label="Booking Inbox" icon={Inbox} onClick={() => navigate("/booking-inbox")} />
-                <QuickButton label="Hotels / Stays" icon={Hotel} onClick={() => navigate("/hotels")} />
-                <QuickButton label="Partner Manager" icon={BedDouble} onClick={() => navigate("/accommodation-partner")} />
-                <QuickButton label="Booking Partners" icon={Building2} onClick={() => navigate("/booking-partners")} />
-                <QuickButton label="Meeting Mode" icon={Sparkles} onClick={() => navigate("/meeting-mode")} />
+                <QuickButton
+                  label="Partner Outreach"
+                  icon={Mail}
+                  onClick={() => navigate("/partner-outreach")}
+                />
+                <QuickButton
+                  label="Booking Inbox"
+                  icon={Inbox}
+                  onClick={() => navigate("/booking-inbox")}
+                />
+                <QuickButton
+                  label="Hotels / Stays"
+                  icon={Hotel}
+                  onClick={() => navigate("/hotels")}
+                />
+                <QuickButton
+                  label="Partner Manager"
+                  icon={BedDouble}
+                  onClick={() => navigate("/accommodation-partner")}
+                />
+                <QuickButton
+                  label="Booking Partners"
+                  icon={Building2}
+                  onClick={() => navigate("/booking-partners")}
+                />
+                <QuickButton
+                  label="Meeting Mode"
+                  icon={Sparkles}
+                  onClick={() => navigate("/meeting-mode")}
+                />
               </div>
             </section>
 
@@ -294,22 +349,31 @@ export default function RevenueDashboardPage() {
               <div className="mt-5 grid gap-3">
                 {topOpportunities.length ? (
                   topOpportunities.map((item) => (
-                    <article key={item.key} className="rounded-2xl bg-stone-50 p-4">
+                    <article
+                      key={item.key}
+                      className="rounded-2xl bg-stone-50 p-4"
+                    >
                       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                         <div>
                           <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-700">
-                            {item.status.replace("_", " ")} · {item.request.island || "Island"}
+                            {item.status.replace("_", " ")} ·{" "}
+                            {item.request.island || "Island"}
                           </p>
                           <h3 className="mt-1 text-xl font-black">
-                            {item.request.requestedPartnerName || item.request.preferredArea || "Booking inquiry"}
+                            {item.request.requestedPartnerName ||
+                              item.request.preferredArea ||
+                              "Booking inquiry"}
                           </h3>
                           <p className="mt-1 text-sm font-bold text-stone-500">
-                            {item.request.guestName || "Guest"} · {item.request.dates || "Dates not provided"}
+                            {item.request.guestName || "Guest"} ·{" "}
+                            {item.request.dates || "Dates not provided"}
                           </p>
                         </div>
 
                         <div className="rounded-2xl bg-white px-5 py-4 text-right">
-                          <p className="text-2xl font-black">{formatMoney(item.value)}</p>
+                          <p className="text-2xl font-black">
+                            {formatMoney(item.value)}
+                          </p>
                           <p className="mt-1 text-[10px] font-black uppercase tracking-[0.14em] text-stone-400">
                             Est. value
                           </p>
@@ -350,15 +414,21 @@ export default function RevenueDashboardPage() {
               <div className="mt-5 grid gap-3">
                 {activePartners.length ? (
                   activePartners.map((partner) => (
-                    <article key={`${partner.source}-${partner.id}`} className="rounded-2xl bg-stone-50 p-4">
+                    <article
+                      key={`${partner.source}-${partner.id}`}
+                      className="rounded-2xl bg-stone-50 p-4"
+                    >
                       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                         <div>
                           <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-700">
                             {partner.type} · {partner.island}
                           </p>
-                          <h3 className="mt-1 text-xl font-black">{partner.name}</h3>
+                          <h3 className="mt-1 text-xl font-black">
+                            {partner.name}
+                          </h3>
                           <p className="mt-1 text-sm font-bold text-stone-500">
-                            {partner.source} · {partner.status.replace("_", " ")}
+                            {partner.source} ·{" "}
+                            {partner.status.replace("_", " ")}
                           </p>
                         </div>
 

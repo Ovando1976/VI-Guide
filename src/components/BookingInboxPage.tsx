@@ -319,6 +319,22 @@ export default function BookingInboxPage() {
               </p>
 
               <div className="mt-4 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => navigate("/partner-billing")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Partner Billing
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/revenue-dashboard")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Revenue Dashboard
+                </button>
+
                 <Metric label="Open inquiries" value={stats.open} />
                 <Metric label="Partner options" value={stats.partners} />
                 <Metric label="Booked value" value={`$${Math.round(stats.totalValue).toLocaleString()}`} />

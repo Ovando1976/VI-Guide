@@ -16,6 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { subscribeToMerchantLeads } from "../lib/firestore/merchantLeads";
+import BusinessRouteTestButtons from "./BusinessRouteTestButtons";
 
 type ProofLead = {
   id?: string;
@@ -188,6 +189,7 @@ export default function BusinessProofDashboard() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <BusinessRouteTestButtons />
       <section className="mx-auto max-w-7xl px-4 pt-6">
         <button
           type="button"

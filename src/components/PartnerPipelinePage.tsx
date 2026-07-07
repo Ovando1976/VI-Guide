@@ -20,6 +20,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { subscribeToMerchantLeads } from "../lib/firestore/merchantLeads";
+import BusinessRouteTestButtons from "./BusinessRouteTestButtons";
 
 type PipelineStatus = "new" | "contacted" | "demo_scheduled" | "won" | "lost";
 
@@ -296,6 +297,7 @@ export default function PartnerPipelinePage() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <BusinessRouteTestButtons />
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-[2.75rem] bg-ink p-5 text-white shadow-2xl md:p-8 lg:p-10">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">

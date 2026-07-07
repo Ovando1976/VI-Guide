@@ -241,6 +241,22 @@ export default function PartnerOutreachPage() {
               <div className="mt-4 grid gap-3">
                 <button
                   type="button"
+                  onClick={() => navigate("/partner-billing")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Partner Billing
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/booking-inbox")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Booking Inbox
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => navigate("/meeting-mode")}
                   className="rounded-2xl bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink active:scale-95"
                 >

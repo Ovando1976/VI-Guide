@@ -392,6 +392,22 @@ export default function AccommodationPartnerPortalPage() {
               </h2>
 
               <div className="mt-5 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => navigate("/accommodation-review")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Review Queue
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/partner-outreach")}
+                  className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Partner Outreach
+                </button>
+
                 {matchingInquiries.length ? (
                   matchingInquiries.map((request) => (
                     <article key={request.id} className="rounded-2xl bg-stone-50 p-4">
