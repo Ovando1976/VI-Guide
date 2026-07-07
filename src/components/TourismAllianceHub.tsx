@@ -305,8 +305,15 @@ export default function TourismAllianceHub() {
 
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[420px]">
               <button
-                onClick={() => navigate("/taxi-demo")}
+                onClick={() => navigate("/meeting-mode")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Meeting Mode
+              </button>
+
+              <button
+                onClick={() => navigate("/taxi-demo")}
+                className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
               >
                 Taxi Demo
               </button>
