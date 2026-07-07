@@ -14,6 +14,7 @@ import {
   MapPinned,
   Megaphone,
   Route,
+  ShieldCheck,
   Ship,
   Sparkles,
   Store,
@@ -43,6 +44,19 @@ const visitorSections: DeskSection[] = [
     title: "Plan the visit",
     subtitle: "The public-facing visitor flow.",
     links: [
+      {
+        label: "Account",
+        path: "/account",
+        description: "Sign in as visitor, paid visitor, partner, or admin.",
+        icon: Users,
+      },
+      {
+        label: "Visitor Checkout",
+        path: "/visitor-checkout",
+        description: "Activate a visitor pass and unlock premium planning.",
+        icon: CreditCard,
+        highlight: true,
+      },
       {
         label: "Cruise Planner",
         path: "/cruise-planner",
@@ -108,6 +122,13 @@ const adminSections: DeskSection[] = [
     title: "Money loop",
     subtitle: "Owner dashboard for revenue, booking, and partner activity.",
     links: [
+      {
+        label: "Admin Roles",
+        path: "/admin-roles",
+        description: "Assign real Firebase admin, partner, and visitor claims.",
+        icon: ShieldCheck,
+        highlight: true,
+      },
       {
         label: "Revenue Dashboard",
         path: "/revenue-dashboard",

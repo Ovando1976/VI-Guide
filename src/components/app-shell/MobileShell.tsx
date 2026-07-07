@@ -24,6 +24,10 @@ import RevenueDashboardPage from "../RevenueDashboardPage";
 import PartnerOutreachPage from "../PartnerOutreachPage";
 import PartnerBillingPage from "../PartnerBillingPage";
 import { AdminDeskPage, PartnerDeskPage, VisitorDeskPage } from "../AppDeskPages";
+import AccountPage from "../AccountPage";
+import VisitorCheckoutPage from "../VisitorCheckoutPage";
+import RequireAccess from "../auth/RequireAccess";
+import AdminRoleManagerPage from "../AdminRoleManagerPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -85,29 +89,35 @@ export function MobileShell({ children }: MobileShellProps) {
     ) : location.pathname === "/alliance-pipeline" ? (
       <AlliancePipelinePage />
     ) : location.pathname === "/meeting-mode" ? (
-      <MeetingModePage />
+      <RequireAccess access="admin"><MeetingModePage /></RequireAccess>
     ) : location.pathname === "/direct-booking" ? (
-      <DirectBookingHub />
+      <RequireAccess access="admin"><DirectBookingHub /></RequireAccess>
+    ) : location.pathname === "/account" ? (
+      <AccountPage />
+    ) : location.pathname === "/visitor-checkout" ? (
+      <VisitorCheckoutPage />
     ) : location.pathname === "/visitor-desk" ? (
-      <VisitorDeskPage />
+      <RequireAccess access="visitor_paid"><VisitorDeskPage /></RequireAccess>
+    ) : location.pathname === "/admin-roles" ? (
+      <AdminRoleManagerPage />
     ) : location.pathname === "/admin-desk" ? (
-      <AdminDeskPage />
+      <RequireAccess access="admin"><AdminDeskPage /></RequireAccess>
     ) : location.pathname === "/partner-desk" ? (
-      <PartnerDeskPage />
+      <RequireAccess access="partner"><PartnerDeskPage /></RequireAccess>
     ) : location.pathname === "/partner-billing" ? (
-      <PartnerBillingPage />
+      <RequireAccess access="admin"><PartnerBillingPage /></RequireAccess>
     ) : location.pathname === "/partner-outreach" ? (
-      <PartnerOutreachPage />
+      <RequireAccess access="admin"><PartnerOutreachPage /></RequireAccess>
     ) : location.pathname === "/revenue-dashboard" ? (
-      <RevenueDashboardPage />
+      <RequireAccess access="admin"><RevenueDashboardPage /></RequireAccess>
     ) : location.pathname === "/booking-inbox" ? (
-      <BookingInboxPage />
+      <RequireAccess access="partner"><BookingInboxPage /></RequireAccess>
     ) : location.pathname === "/booking-partners" ? (
-      <BookingPartnersPage />
+      <RequireAccess access="admin"><BookingPartnersPage /></RequireAccess>
     ) : location.pathname === "/accommodation-partner" ? (
-      <AccommodationPartnerPortalPage />
+      <RequireAccess access="partner"><AccommodationPartnerPortalPage /></RequireAccess>
     ) : location.pathname === "/accommodation-review" ? (
-      <AccommodationReviewPage />
+      <RequireAccess access="admin"><AccommodationReviewPage /></RequireAccess>
     ) : ["/hotels", "/stays", "/lodging"].some((prefix) =>
       location.pathname.startsWith(`${prefix}/`)
     ) ? (
