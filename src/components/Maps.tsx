@@ -153,7 +153,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f0da] pb-36 text-ink">
+    <main className="min-h-screen bg-[#f8f0da] pb-64 text-ink">
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
           <div className="grid gap-6 p-5 md:p-8 lg:grid-cols-[1fr_0.8fr] lg:p-10">
