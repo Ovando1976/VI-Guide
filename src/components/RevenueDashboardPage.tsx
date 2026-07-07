@@ -10,6 +10,7 @@ import {
   ClipboardList,
   Hotel,
   Inbox,
+  KeyRound,
   LineChart,
   Mail,
   Search,

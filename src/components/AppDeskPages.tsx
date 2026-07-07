@@ -10,6 +10,7 @@ import {
   Compass,
   CreditCard,
   Hotel,
+  KeyRound,
   Inbox,
   MapPinned,
   Megaphone,
@@ -127,6 +128,13 @@ const adminSections: DeskSection[] = [
         path: "/admin-roles",
         description: "Assign real Firebase admin, partner, and visitor claims.",
         icon: ShieldCheck,
+        highlight: true,
+      },
+      {
+        label: "Admin Rules / Roles",
+        path: "/admin-roles",
+        description: "Sign in, refresh Firebase claims, and assign admin, partner, or paid visitor access.",
+        icon: KeyRound,
         highlight: true,
       },
       {

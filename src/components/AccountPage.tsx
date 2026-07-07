@@ -136,6 +136,15 @@ export default function AccountPage() {
 
               <button
                 type="button"
+                onClick={() => navigate("/admin-roles")}
+                className="rounded-2xl bg-emerald-950 px-5 py-4 text-sm font-black text-white active:scale-95"
+              >
+                <ShieldCheck className="mr-2 inline h-4 w-4" />
+                Admin Rules / Roles
+              </button>
+
+              <button
+                type="button"
                 onClick={signOut}
                 className="rounded-2xl bg-stone-100 px-5 py-4 text-sm font-black text-ink active:scale-95"
               >
