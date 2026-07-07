@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -24,6 +24,11 @@ import IslandMap, {
 } from "./maps/IslandMap";
 import { useMapPoints } from "../hooks/useMapPoints";
 import { trackMapLeadAction } from "../lib/businessDemo/mapLeadTracking";
+import {
+  activePartnerListings,
+  readPartnerListings,
+  type PartnerListing,
+} from "../lib/businessDemo/partnerListings";
 import type { IslandCode } from "../types";
 
 type MapsProps = {
@@ -83,6 +88,30 @@ export default function Maps({ selectedIsland }: MapsProps) {
 
   const navigate = useNavigate();
   const { points, loading, error } = useMapPoints(selectedIsland);
+  const [partnerListings, setPartnerListings] = useState<PartnerListing[]>(() =>
+    readPartnerListings()
+  );
+
+  useEffect(() => {
+    const refreshPartnerListings = () => {
+      setPartnerListings(readPartnerListings());
+    };
+
+    refreshPartnerListings();
+
+    window.addEventListener("focus", refreshPartnerListings);
+    window.addEventListener("storage", refreshPartnerListings);
+
+    return () => {
+      window.removeEventListener("focus", refreshPartnerListings);
+      window.removeEventListener("storage", refreshPartnerListings);
+    };
+  }, []);
+
+  const mapPartnerListings = useMemo(
+    () => activePartnerListings(partnerListings),
+    [partnerListings]
+  );
 
   const selectPoint = (
     point: MapPoint,
@@ -582,7 +611,102 @@ export default function Maps({ selectedIsland }: MapsProps) {
           </div>
         </section>
       </section>
-    </main>
+    
+        {mapPartnerListings.length > 0 ? (
+          <section className="mx-auto mt-6 max-w-7xl px-4 pb-16">
+            <div className="rounded-[2.25rem] bg-ink p-5 text-white shadow-2xl md:p-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-turquoise">
+                    Featured partner listings
+                  </p>
+                  <h2 className="mt-2 text-3xl font-black">
+                    Businesses activated from the sales engine
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm font-bold leading-6 text-white/60">
+                    These are onboarded partners from the Partner Directory. Search or feature them from here while we wire them deeper into the map layer.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/partner-directory")}
+                  className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+                >
+                  Partner Directory
+                </button>
+              </div>
+
+              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                {mapPartnerListings.slice(0, 6).map((listing) => (
+                  <article
+                    key={listing.id}
+                    className="overflow-hidden rounded-[2rem] bg-white text-ink shadow-xl"
+                  >
+                    <div className="grid h-28 place-items-center bg-emerald-950 text-white">
+                      {listing.heroImageUrl ? (
+                        <img
+                          src={listing.heroImageUrl}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <Sparkles className="h-9 w-9 text-turquoise" />
+                      )}
+                    </div>
+
+                    <div className="p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">
+                            {listing.category} · {listing.listingStatus}
+                          </p>
+                          <h3 className="mt-1 text-xl font-black">
+                            {listing.businessName}
+                          </h3>
+                          <p className="mt-1 text-xs font-bold text-stone-500">
+                            {listing.island} · {listing.planTier}
+                          </p>
+                        </div>
+
+                        <span className="rounded-full bg-turquoise px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-ink">
+                          Partner
+                        </span>
+                      </div>
+
+                      <p className="mt-3 line-clamp-2 text-sm font-bold leading-6 text-stone-600">
+                        {listing.offer || listing.description || "Active VI Guide partner listing."}
+                      </p>
+
+                      <div className="mt-4 grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSearchQuery(listing.businessName);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="rounded-2xl bg-emerald-950 px-4 py-3 text-sm font-black text-white active:scale-95"
+                        >
+                          Find on Map
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => navigate("/partner-directory")}
+                          className="rounded-2xl bg-stone-100 px-4 py-3 text-sm font-black text-ink active:scale-95"
+                        >
+                          Manage
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+      </main>
   );
 }
 
