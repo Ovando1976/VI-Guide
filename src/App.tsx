@@ -49,6 +49,7 @@ import Concierge from "./components/Concierge";
 import Mobility from "./components/Mobility";
 import MobilityDispatchDemo from "./components/MobilityDispatchDemo";
 import DemoHub from "./components/DemoHub";
+import AdminLeadsDashboard from "./components/AdminLeadsDashboard";
 import Documents from "./components/Documents";
 import Profile from "./components/Profile";
 import MerchantDashboard from "./components/MerchantDashboard";
@@ -345,6 +346,11 @@ function AppContent() {
                 onSelectDocument={handleSelectDocument}
               />
             }
+          />
+
+          <Route
+            path="/admin/leads"
+            element={<AdminLeadsDashboard />}
           />
 
           <Route
