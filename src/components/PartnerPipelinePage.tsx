@@ -289,6 +289,11 @@ export default function PartnerPipelinePage() {
     }
   };
 
+  const startOnboarding = (lead: PipelineLead) => {
+    window.localStorage.setItem("viNavigatorOnboardingPartnerLead", JSON.stringify(lead));
+    navigate("/partner-onboarding");
+  };
+
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
       <section className="mx-auto max-w-7xl px-4 py-8">
@@ -462,8 +467,17 @@ export default function PartnerPipelinePage() {
 
                         <button
                           type="button"
-                          onClick={() => navigate("/partner-close")}
+                          onClick={() => startOnboarding(lead)}
                           className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-sm font-black text-ink active:scale-95"
+                        >
+                          Onboard Partner
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => navigate("/partner-close")}
+                          className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-black text-ink active:scale-95"
                         >
                           New Close
                           <ArrowRight className="h-4 w-4" />
