@@ -7,6 +7,7 @@ import TaxiAssociationDemoPage from "../TaxiAssociationDemoPage";
 import MapIntentDashboard from "../MapIntentDashboard";
 import BusinessProofDashboard from "../BusinessProofDashboard";
 import PartnerClosePage from "../PartnerClosePage";
+import PartnerPipelinePage from "../PartnerPipelinePage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ const PRESENTATION_ROUTES = [
   "/map-intent",
   "/business-proof",
   "/partner-close",
+  "/partner-pipeline",
   "/mobility",
   "/admin/leads",
   "/partners",
@@ -46,6 +48,8 @@ export function MobileShell({ children }: MobileShellProps) {
       <BusinessProofDashboard />
     ) : location.pathname === "/partner-close" ? (
       <PartnerClosePage />
+    ) : location.pathname === "/partner-pipeline" ? (
+      <PartnerPipelinePage />
     ) : (
       children
     );

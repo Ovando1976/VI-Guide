@@ -235,7 +235,9 @@ export default function PartnerClosePage() {
             {saved ? (
               <div className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm font-bold leading-6 text-emerald-950">
                 Saved. This prospect is now part of the business sales pipeline.
-                Check <button type="button" onClick={() => navigate("/admin/leads")} className="font-black underline">Admin Leads</button>.
+                Check <button type="button" onClick={() => navigate("/partner-pipeline")} className="font-black underline">Partner Pipeline</button>
+                {" "}or{" "}
+                <button type="button" onClick={() => navigate("/admin/leads")} className="font-black underline">Admin Leads</button>.
               </div>
             ) : null}
           </form>
