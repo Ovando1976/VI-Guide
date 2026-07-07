@@ -181,6 +181,18 @@ function partnerToCatalogRecord(partner: BookingPartner): CustomerBookingRecord 
   };
 }
 
+function staySlug(record: CustomerBookingRecord) {
+  return (
+    record.id ||
+    record.businessName
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[’']/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+  );
+}
+
 function categoryLabel(category: string) {
   return categoryMeta[category as CustomerBookingCategory]?.customerLabel || "Booking";
 }
@@ -615,14 +627,24 @@ export default function CustomerStaysPage() {
                             ) : null}
                           </div>
 
-                          <button
-                            type="button"
-                            onClick={() => chooseRecord(record)}
-                            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-sm font-black text-ink active:scale-95"
-                          >
-                            Request This Option
-                            <ArrowRight className="h-4 w-4" />
-                          </button>
+                          <div className="mt-3 grid gap-2 md:grid-cols-2">
+                            <button
+                              type="button"
+                              onClick={() => navigate(`/hotels/${staySlug(record)}`)}
+                              className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-black text-ink active:scale-95"
+                            >
+                              Details
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => chooseRecord(record)}
+                              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-sm font-black text-ink active:scale-95"
+                            >
+                              Request
+                              <ArrowRight className="h-4 w-4" />
+                            </button>
+                          </div>
                         </div>
                       </article>
                     );
