@@ -92,7 +92,7 @@ export default function DemoHub() {
           href="/taxi-demo"
           className="inline-flex items-center rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink shadow-2xl active:scale-95"
         >
-          Taxi Association Demo →
+          Taxi Association Demo →</a><a href="/map-intent" className="ml-2 inline-flex items-center rounded-2xl bg-emerald-950 px-5 py-3 text-sm font-black text-white shadow-2xl active:scale-95">Map Intent →
         </a>
       </div>
       <section className="mx-auto max-w-6xl px-4">

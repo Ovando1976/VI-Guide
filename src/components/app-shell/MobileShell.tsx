@@ -4,6 +4,7 @@ import { BottomNav } from "./BottomNav";
 import { IslandPicker } from "./IslandPicker";
 import JoinPage from "../JoinPage";
 import TaxiAssociationDemoPage from "../TaxiAssociationDemoPage";
+import MapIntentDashboard from "../MapIntentDashboard";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ const PRESENTATION_ROUTES = [
   "/demo",
   "/join",
   "/taxi-demo",
+  "/map-intent",
   "/mobility",
   "/admin/leads",
   "/partners",
@@ -34,6 +36,8 @@ export function MobileShell({ children }: MobileShellProps) {
       <JoinPage />
     ) : location.pathname === "/taxi-demo" ? (
       <TaxiAssociationDemoPage />
+    ) : location.pathname === "/map-intent" ? (
+      <MapIntentDashboard />
     ) : (
       children
     );

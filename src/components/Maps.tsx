@@ -215,6 +215,17 @@ export default function Maps({ selectedIsland }: MapsProps) {
                 <HeroStat label="Showing" value={filteredPoints.length} />
                 <HeroStat label="Day Plan" value={dayPlan.length} />
               </div>
+
+              <div className="mt-5">
+                <button
+                  type="button"
+                  onClick={() => navigate("/map-intent")}
+                  className="inline-flex items-center gap-2 rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+                >
+                  View Map Intent Dashboard
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
             </div>
 
             <aside className="rounded-[2.25rem] bg-white p-5 text-ink">
