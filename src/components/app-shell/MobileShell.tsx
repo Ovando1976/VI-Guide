@@ -152,14 +152,5 @@ export function MobileShell({ children }: MobileShellProps) {
 
       {!isPresentationRoute && <BottomNav />}
     </div>
-      {location.pathname !== "/meeting-mode" ? (
-        <button
-          type="button"
-          onClick={() => navigate("/meeting-mode")}
-          className="fixed bottom-24 right-4 z-[9999] rounded-full bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink shadow-2xl active:scale-95"
-        >
-          Meeting Mode
-        </button>
-      ) : null}
   );
 }
