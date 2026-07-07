@@ -500,20 +500,19 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </div>
 
               <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-                Official tariff ride request.
+                Mobility ride request.
               </h1>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
-                Select an island, official tariff pickup, official tariff
-                dropoff, rider details, and add-on charges. The request saves to
+                Select an island, pickup, dropoff, rider details, and add-on charges. The request saves to
                 dispatch with the fare basis attached.
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
                 {[
-                  ["Tariff-first", "Customer chooses from loaded official tariff places."],
+                  ["Route-first", "Customer chooses from published places."],
                   ["Dispatch-ready", "Requests flow into the taxi operator board."],
-                  ["No fake fares", "Unmatched routes require dispatcher review."],
+                  ["No fake pricing", "Unmatched routes require dispatcher review."],
                 ].map(([title, text]) => (
                   <div key={title} className="rounded-[2rem] bg-white/10 p-4">
                     <p className="text-sm font-black">{title}</p>
@@ -527,7 +526,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
-                    Live official quote
+                    Live quote
                   </p>
 
                   <h2 className="mt-2 text-4xl font-black">
@@ -595,7 +594,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
 
         <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.92fr]">
           <div className="space-y-5">
-            <Panel title="1. Official route picker" eyebrow="Tariff route">
+            <Panel title="1. Choose pickup and dropoff" eyebrow="Customer route">
               <div className="grid gap-3 md:grid-cols-2">
                 <label>
                   <FieldLabel>Island</FieldLabel>
@@ -624,7 +623,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
 
               <div className="mt-3 grid gap-3 md:grid-cols-2">
                 <label>
-                  <FieldLabel>Official tariff pickup</FieldLabel>
+                  <FieldLabel>Pickup place</FieldLabel>
                   <select
                     value={pickup}
                     onChange={(event) => setPickup(event.target.value)}
@@ -639,7 +638,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 </label>
 
                 <label>
-                  <FieldLabel>Official tariff dropoff</FieldLabel>
+                  <FieldLabel>Dropoff place</FieldLabel>
                   <select
                     value={dropoff}
                     onChange={(event) => setDropoff(event.target.value)}
@@ -661,7 +660,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </div>
 
               <div className="mt-4">
-                <FieldLabel>Common official demo routes</FieldLabel>
+                <FieldLabel>Common demo routes</FieldLabel>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {demoRoutes
                     .filter((route) => route.island === island)
