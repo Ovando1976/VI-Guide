@@ -304,8 +304,15 @@ export default function DirectBookingHub() {
 
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[430px]">
               <button
-                onClick={() => navigate("/booking-partners")}
+                onClick={() => navigate("/hotels")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Customer Page
+              </button>
+
+              <button
+                onClick={() => navigate("/booking-partners")}
+                className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
               >
                 Booking Partners
               </button>
