@@ -9,6 +9,7 @@ import {
   Clipboard,
   ClipboardCheck,
   ClipboardList,
+  CreditCard,
   Mail,
   MapPin,
   Phone,
@@ -325,6 +326,14 @@ export default function AdminLeadsDashboard() {
               >
                 Demo Hub
                 <ArrowRight className="h-4 w-4" />
+              </button>
+
+              <button
+                onClick={() => navigate("/join")}
+                className="inline-flex items-center gap-2 rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Join Page
+                <CreditCard className="h-4 w-4" />
               </button>
 
               <button
