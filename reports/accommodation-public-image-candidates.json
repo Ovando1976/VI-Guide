@@ -1,0 +1,810 @@
+{
+  "generatedAt": "2026-07-07T12:47:49.910Z",
+  "totalTargets": 20,
+  "targetsWithCandidates": 14,
+  "results": [
+    {
+      "businessName": "The Ritz-Carlton St. Thomas",
+      "category": "resort",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+      "candidateCount": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/rz-sttrz-rc-st-thomas-14503-79098:Wide-Hor?wid=1336&fit=constrain",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://cache.marriott.com/content/dam/marriott-digital/rz/global-property-shared/en_us/logo/assets/rz_logo_L_W.png",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://cache.marriott.com/content/dam/marriott-digital/rz/global-property-shared/en_us/logo/assets/rz_logo_L.png",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/rz-sttrz-rc-st-thomas-14503-79098:Feature-Hor?wid=1920&fit=constrain",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/rz-sttrz-rc-st-thomas-154-12271:Feature-Hor?wid=1920&fit=constrain",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/rz-sttrz-rc-st-thomas-14503-79098:Wide-Hor?wid=2880&fit=constrain",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/sttrz-attraction-beach-50713591:Classic-Ver?wid=270&fit=constrain",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 8,
+          "imageUrl": "https://cache.marriott.com/content/dam/marriott-digital/rz/cala/hws/s/sttrz/en_us/photo/unlimited/assets/sttrz-beach-cabana-7107.tif",
+          "sourcePage": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Frenchman's Reef",
+      "category": "resort",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.frenchmansreefstthomas.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.frenchmansreefstthomas.com/",
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+          "sourcePage": "https://www.frenchmansreefstthomas.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Secret Harbour Beach Resort",
+      "category": "hotel",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.secretharbourvi.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.secretharbourvi.com/",
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+          "sourcePage": "https://www.secretharbourvi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Bolongo Bay Beach Resort",
+      "category": "resort",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.bolongobay.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://bolongobay.com/",
+      "candidateCount": 3,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://bolongobay.com/wp-content/uploads/2020/07/779845A620C1EEAE7F69CE654362750F-scaled.jpg",
+          "sourcePage": "https://bolongobay.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://bolongobay.com/images/ico-hotel-small.svg",
+          "sourcePage": "https://bolongobay.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://bolongobay.com/wp-content/uploads/2022/11/IMG_6897-scaled.jpg",
+          "sourcePage": "https://bolongobay.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Emerald Beach Resort",
+      "category": "hotel",
+      "island": "St. Thomas",
+      "officialUrl": "https://emeraldbeach.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "candidateCount": 0,
+      "error": "fetch failed",
+      "candidates": []
+    },
+    {
+      "businessName": "Windward Passage Hotel",
+      "category": "hotel",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.windwardpassage.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.windwardpassage.com/",
+      "candidateCount": 7,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://www.windwardpassage.com/wp-content/uploads/2025/06/wp-social.jpg",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://www.windwardpassage.com/wp-content/uploads/2025/08/IMG_6549.jpg",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://www.windwardpassage.com/wp-content/uploads/2025/05/Windward-Passage-Hotel-148.jpg",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://www.windwardpassage.com/Ly93d3cud2luZHdhcmRwYXNzYWdlLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyNS8wOC9JTUdfNjU0OS5qcGc=",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://www.windwardpassage.com/Ly93d3cud2luZHdhcmRwYXNzYWdlLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyNS8wNS9XaW5kd2FyZC1QYXNzYWdlLUhvdGVsLTE0OC5qcGc=",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://www.windwardpassage.com/wp-content/uploads/2025/06/windward-passage-cocktails.jpg",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://www.windwardpassage.com/wp-content/uploads/2025/05/Windward-Passage-Hotel-074.jpg",
+          "sourcePage": "https://www.windwardpassage.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Margaritaville Vacation Club St. Thomas",
+      "category": "resort",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+      "candidateCount": 7,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/imagepool/65faf099d672b.svg",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/margaritaville-perks.png",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b91db8e.jpg/1920x1080/fit/80/a8a95767fd3652bf1e163c85d2f2f81c.jpg",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b9e5972.jpg/1920x1080/fit/80/3fec5ecbe867d82d5dba9a9cb8e73378.jpg",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b9a4c97.jpg/1000x640/fit/80/de23ed227646cafb70c6477e12979122.jpg",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/privacyoptions123x59.png",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/user.png",
+          "sourcePage": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Sapphire Beach Resort and Marina",
+      "category": "hotel",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.sapphirebeachresortvi.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "candidateCount": 0,
+      "error": "fetch failed",
+      "candidates": []
+    },
+    {
+      "businessName": "The Westin St. John Resort Villas",
+      "category": "resort",
+      "island": "St. John",
+      "officialUrl": "https://www.marriott.com/en-us/hotels/sttwi-the-westin-st-john-resort-villas/overview/",
+      "fetchStatus": 403,
+      "finalUrl": "https://www.marriott.com/en-us/hotels/sttwi-the-westin-st-john-resort-villas/overview/",
+      "candidateCount": 0,
+      "candidates": []
+    },
+    {
+      "businessName": "Gallows Point Resort",
+      "category": "hotel",
+      "island": "St. John",
+      "officialUrl": "https://www.gallowspointresort.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://gallowspointresort.com/",
+      "candidateCount": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "http://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-color.png",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-color.png",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-255x153.png",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-5-550x824.jpg",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-7-550x824.jpg",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-4-550x824.jpg",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-6-550x824.jpg",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 8,
+          "imageUrl": "https://gallowspointresort.com/wp-content/uploads/2025/04/gallows-point-pool-550x824.jpg",
+          "sourcePage": "https://gallowspointresort.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Estate Lindholm",
+      "category": "hotel",
+      "island": "St. John",
+      "officialUrl": "https://www.estatelindholm.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://estatelindholm.com/",
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://img1.wsimg.com/isteam/ip/2e0e1b76-86d3-4c5b-8891-20e147ec3c84/DJI_20251103163951_0219_D.jpg",
+          "sourcePage": "https://estatelindholm.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Coconut Coast Villas",
+      "category": "villa",
+      "island": "St. John",
+      "officialUrl": "https://www.coconutcoastvillas.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "candidateCount": 0,
+      "error": "fetch failed",
+      "candidates": []
+    },
+    {
+      "businessName": "Lovango Resort + Beach Club",
+      "category": "resort",
+      "island": "St. John",
+      "officialUrl": "https://www.lovangovi.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.lovangovi.com/",
+      "candidateCount": 6,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/2020/11/lovango-resort-and-beach-club-seal.png",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/2022/09/lovango-resort-and-beach-club-logo.png",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/elementor/thumbs/ABC04835_websize-1-e1769450996584-ri8h9b7ichqpqvs6euv28uq8fy0smg9l42z8wdty1c.jpg",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/elementor/thumbs/CRS3099_websize-ri8ftbqsjkdlrnpp0fxn58vxrxhcnk38vlpx5enz2k.jpg",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/2024/12/lovango-resort-and-beach-club-seal.png",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://www.lovangovi.com/wp-content/uploads/2024/12/little-gem-resorts_0000_LOV.png",
+          "sourcePage": "https://www.lovangovi.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "The Buccaneer Beach & Golf Resort",
+      "category": "resort",
+      "island": "St. Croix",
+      "officialUrl": "https://www.thebuccaneer.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://thebuccaneer.com/",
+      "candidateCount": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2025/12/st-croix-resort-the-buccaneer-usvi.jpg",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2025/04/the-buccaneer-beach-resort-st-croix-2-780x356.jpg",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2026/03/golf-resort-st-croix.png",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2025/05/private-island-resort-st-croix-379x336.jpg",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2026/03/tripadvisor-award-2025-150x150.png",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2026/03/conde-nast-award-winner-150x150.png",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2026/03/readers-choice-award-winner-150x150.png",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 8,
+          "imageUrl": "https://thebuccaneer.com/wp-content/uploads/2026/03/trip-advisor-award-winner-150x150.png",
+          "sourcePage": "https://thebuccaneer.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "King Christian Hotel",
+      "category": "hotel",
+      "island": "St. Croix",
+      "officialUrl": "https://www.kingchristianhotel.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.kingchristianhotel.com/",
+      "candidateCount": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11158/kingchristianhotel_meredithzimmermanphotography-10.jpg",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/1/kch_primary-gold-1.png?1q6yru",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/1/rdvc.png?1q72t3",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11158/kingchristianhotel_meredithzimmermanphotography-10.2000x1334.jpg?1q6z0b",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11217/kingchristian_room216_meredithzimmermanphotography-35.2000x1334.jpg?1qaqx1",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11210/king_christian_hotel.2000x1334.jpg?1qc11v",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room222_meredithzimmermanphotography-4.1200x900.jpg?1q73vk",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 8,
+          "imageUrl": "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room220_meredithzimmermanphotography-27.1200x900.jpg?1q73vh",
+          "sourcePage": "https://www.kingchristianhotel.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Company House Hotel",
+      "category": "hotel",
+      "island": "St. Croix",
+      "officialUrl": "https://www.companyhousehotel.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "candidateCount": 0,
+      "error": "fetch failed",
+      "candidates": []
+    },
+    {
+      "businessName": "Carambola Beach Resort",
+      "category": "resort",
+      "island": "St. Croix",
+      "officialUrl": "https://www.carambolabeachresortstcroix.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "candidateCount": 0,
+      "error": "fetch failed",
+      "candidates": []
+    },
+    {
+      "businessName": "Sand Castle on the Beach",
+      "category": "hotel",
+      "island": "St. Croix",
+      "officialUrl": "https://sandcastleonthebeach.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://sandcastleonthebeach.com/",
+      "candidateCount": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-home_sliders-1.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/600x255_sandcastlelogo.png",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/150x38_waves.png",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-001.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-002.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-003.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 7,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-004.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 8,
+          "imageUrl": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-005.jpg",
+          "sourcePage": "https://sandcastleonthebeach.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "Tamarind Reef Resort",
+      "category": "hotel",
+      "island": "St. Croix",
+      "officialUrl": "https://www.tamarindreefresort.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://tamarindreef.com/",
+      "candidateCount": 1,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://tamarindreef.com/images/template/logo-scroll.svg",
+          "sourcePage": "https://tamarindreef.com/",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    },
+    {
+      "businessName": "McLaughlin Anderson Luxury Villas",
+      "category": "villa",
+      "island": "St. Thomas",
+      "officialUrl": "https://www.mclaughlinanderson.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+      "candidateCount": 6,
+      "candidates": [
+        {
+          "rank": 1,
+          "imageUrl": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66a19ba62ccc427a4aef55c1_Luxury-Private-Villas_1500x1002_opt.webp",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 2,
+          "imageUrl": "https://cdn.prod.website-files.com/65e833bea1b16d061a87a15a/65ef812725db080ef8f41dd4_icon-email.svg",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 3,
+          "imageUrl": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/6712ad8de843ab5a682aac02_BeautifulPlaces_Aquamare_villas_viewed_from_water.jpg",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 4,
+          "imageUrl": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66cf9c00d8eca01c54840c95_BeautifulPlaces_Sunrise_0015-hero2.jpg",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 5,
+          "imageUrl": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/6852f3d1080324d1e3cb5f70_pritchard-hill-hero.jpg",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        },
+        {
+          "rank": 6,
+          "imageUrl": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66a19bab8dfd72b4e9639fd6_villa-mas-crop.webp",
+          "sourcePage": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+          "sourceName": "Official website public image candidate",
+          "imageStatus": "needs_review",
+          "usageNote": "Publicly discoverable image candidate. Do not download or publish until license/permission is confirmed."
+        }
+      ]
+    }
+  ]
+}
