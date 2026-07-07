@@ -21,14 +21,10 @@ service cloud.firestore {
       );
     }
 
-    // User-owned account, visitor pass, and session data.
     match /users/{userId}/{document=**} {
       allow read, write: if isSelf(userId) || isAdmin();
     }
 
-    // Stripe/Firebase Functions records.
-    // Client should not write these directly.
-    // Cloud Functions Admin SDK can still write regardless of these rules.
     match /checkoutSessions/{sessionId} {
       allow read, write: if isAdmin();
     }
@@ -41,43 +37,34 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
-    // Public partner claim form.
-    // Anyone can submit. Only admin can read/manage.
     match /partnerClaims/{claimId} {
       allow create: if true;
       allow read, update, delete: if isAdmin();
     }
 
-    // Public merchant/partner lead form.
-    // Anyone can submit. Only admin can read/manage.
     match /merchantLeads/{leadId} {
       allow create: if true;
       allow read, update, delete: if isAdmin();
     }
 
-    // Public mobility request creation.
-    // Only admin/partner dispatch users should read/update.
     match /mobilityRequests/{requestId} {
       allow create: if true;
       allow read, update: if isAdmin() || isPartner();
       allow delete: if isAdmin();
     }
 
-    // Dispatch audit/event stream.
     match /mobilityDispatchEvents/{eventId} {
       allow create: if isAdmin() || isPartner();
       allow read: if isAdmin() || isPartner();
       allow update, delete: if isAdmin();
     }
 
-    // Booking/customer inquiry records.
     match /bookingRequests/{requestId} {
       allow create: if true;
       allow read, update: if isAdmin() || isPartner();
       allow delete: if isAdmin();
     }
 
-    // Partner page profiles and edits.
     match /partnerPages/{partnerPageId} {
       allow read: if true;
       allow create, update: if isAdmin() || isPartner();
@@ -89,7 +76,6 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // Default deny.
     match /{document=**} {
       allow read, write: if false;
     }

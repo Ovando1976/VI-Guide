@@ -7,3 +7,10 @@ coverage/
 .env*
 !.env.example
 serviceAccountKey.json
+.env.local
+
+# Firebase / local env
+firebase-applet-config.json
+
+# Firebase functions build output
+functions/lib/
