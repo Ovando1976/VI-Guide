@@ -15,11 +15,17 @@ import {
   type UserAccount,
   type VisitorPass,
 } from "../../lib/accounts/userAccount";
+import {
+  getCurrentClaims,
+  watchFirebaseUser,
+} from "../../lib/firebase/firebaseClient";
 
 type RequireAccessProps = {
   access: AccessLevel;
   children: ReactNode;
 };
+
+type Claims = Record<string, unknown> | null;
 
 const accessCopy: Record<AccessLevel, { title: string; text: string; action: string; path: string }> = {
   public: {
@@ -48,26 +54,89 @@ const accessCopy: Record<AccessLevel, { title: string; text: string; action: str
   },
 };
 
+function claimValue(claims: Claims, key: string) {
+  return claims ? claims[key] === true : false;
+}
+
+function claimRole(claims: Claims) {
+  return claims && typeof claims.role === "string" ? claims.role : "";
+}
+
+function canAccessWithClaims(access: AccessLevel, claims: Claims) {
+  if (access === "public") return true;
+
+  const isAdmin = claimValue(claims, "admin") || claimRole(claims) === "admin";
+  const isPartner = claimValue(claims, "partner") || claimRole(claims) === "partner";
+  const isPaidVisitor =
+    claimValue(claims, "visitor_paid") || claimRole(claims) === "visitor_paid";
+
+  if (isAdmin) return true;
+
+  if (access === "admin") return isAdmin;
+  if (access === "partner") return isPartner;
+  if (access === "visitor_paid") return isPaidVisitor || isPartner;
+
+  return false;
+}
+
+function claimsLabel(claims: Claims) {
+  if (!claims) return "No Firebase claims";
+
+  if (claimValue(claims, "admin") || claimRole(claims) === "admin") {
+    return "Firebase Admin";
+  }
+
+  if (claimValue(claims, "partner") || claimRole(claims) === "partner") {
+    return "Firebase Partner";
+  }
+
+  if (claimValue(claims, "visitor_paid") || claimRole(claims) === "visitor_paid") {
+    return "Firebase Paid Visitor";
+  }
+
+  return "Firebase Visitor";
+}
+
 export default function RequireAccess({ access, children }: RequireAccessProps) {
   const [account, setAccount] = useState<UserAccount | null>(() => getCurrentAccount());
   const [pass, setPass] = useState<VisitorPass | null>(() => getVisitorPass());
+  const [claims, setClaims] = useState<Claims>(null);
 
   useEffect(() => {
-    const refresh = () => {
+    let cancelled = false;
+
+    const refresh = async () => {
       setAccount(getCurrentAccount());
       setPass(getVisitorPass());
+
+      const nextClaims = await getCurrentClaims(true);
+
+      if (!cancelled) {
+        setClaims((nextClaims || null) as Claims);
+      }
     };
+
+    const unsubscribe = watchFirebaseUser(() => {
+      void refresh();
+    });
 
     window.addEventListener("viNavigatorAccountChanged", refresh);
     window.addEventListener("storage", refresh);
 
+    void refresh();
+
     return () => {
+      cancelled = true;
+      unsubscribe();
       window.removeEventListener("viNavigatorAccountChanged", refresh);
       window.removeEventListener("storage", refresh);
     };
   }, []);
 
-  if (canAccess(access, account)) {
+  const allowedByLocalDemo = canAccess(access, account);
+  const allowedByFirebaseClaims = canAccessWithClaims(access, claims);
+
+  if (allowedByLocalDemo || allowedByFirebaseClaims) {
     return <>{children}</>;
   }
 
@@ -90,15 +159,23 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
           {copy.text}
         </p>
 
-        <div className="mt-6 grid gap-3 rounded-[2rem] bg-stone-50 p-4 text-left md:grid-cols-2">
+        <div className="mt-6 grid gap-3 rounded-[2rem] bg-stone-50 p-4 text-left md:grid-cols-3">
           <div className="rounded-2xl bg-white p-4">
             <UserRound className="h-5 w-5 text-emerald-700" />
             <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-stone-400">
-              Current account
+              Demo account
             </p>
             <p className="mt-1 text-lg font-black">
               {account ? `${account.name} · ${roleLabel(account.role)}` : "Signed out"}
             </p>
+          </div>
+
+          <div className="rounded-2xl bg-white p-4">
+            <ShieldCheck className="h-5 w-5 text-emerald-700" />
+            <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-stone-400">
+              Firebase claims
+            </p>
+            <p className="mt-1 text-lg font-black">{claimsLabel(claims)}</p>
           </div>
 
           <div className="rounded-2xl bg-white p-4">
@@ -123,11 +200,11 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
 
           <button
             type="button"
-            onClick={() => window.location.assign("/account")}
+            onClick={() => window.location.assign("/admin-roles")}
             className="rounded-2xl bg-emerald-950 px-6 py-4 text-sm font-black text-white active:scale-95"
           >
             <ShieldCheck className="mr-2 inline h-4 w-4" />
-            Switch Account
+            Firebase Roles
           </button>
         </div>
       </section>
