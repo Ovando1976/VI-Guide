@@ -299,8 +299,8 @@ function makePointElement(point: MapPoint, selected: boolean) {
 
 function makeClusterElement(cluster: RenderCluster) {
   const count = cluster.points.length;
-  const size = count >= 250 ? 74 : count >= 75 ? 66 : count >= 20 ? 58 : 50;
-  const label = count >= 100 ? "places" : "nearby";
+  const size = count >= 250 ? 70 : count >= 75 ? 62 : count >= 20 ? 54 : 46;
+  const showLabel = count >= 100;
 
   const el = document.createElement("button");
   el.type = "button";
@@ -312,13 +312,14 @@ function makeClusterElement(cluster: RenderCluster) {
   el.style.border = "0";
   el.style.padding = "0";
   el.style.borderRadius = "999px";
-  el.style.background = "rgba(15,23,42,0.14)";
+  el.style.background = "rgba(15,23,42,0.12)";
   el.style.display = "grid";
   el.style.placeItems = "center";
   el.style.cursor = "pointer";
   el.style.boxShadow =
-    "0 0 0 8px rgba(15,23,42,0.10), 0 18px 34px rgba(15,23,42,0.28)";
+    "0 0 0 7px rgba(15,23,42,0.10), 0 16px 30px rgba(15,23,42,0.26)";
   el.style.transition = "transform 160ms ease, box-shadow 160ms ease";
+  el.style.zIndex = count >= 100 ? "30" : "20";
 
   el.innerHTML = `
     <span
@@ -329,34 +330,38 @@ function makeClusterElement(cluster: RenderCluster) {
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        gap:1px;
+        gap:${showLabel ? "2px" : "0"};
         border-radius:999px;
         border:4px solid white;
-        background:#062f2a;
+        background:#052f2a;
         color:white;
         line-height:1;
       "
     >
       <strong
         style="
-          font-size:${count >= 100 ? 18 : 16}px;
+          font-size:${count >= 100 ? 18 : 15}px;
           font-weight:950;
           letter-spacing:-0.04em;
         "
       >
         ${count}
       </strong>
-      <span
-        style="
-          font-size:8px;
-          font-weight:900;
-          letter-spacing:0.12em;
-          text-transform:uppercase;
-          opacity:.72;
-        "
-      >
-        ${label}
-      </span>
+      ${
+        showLabel
+          ? `<span
+              style="
+                font-size:7px;
+                font-weight:900;
+                letter-spacing:0.14em;
+                text-transform:uppercase;
+                opacity:.7;
+              "
+            >
+              places
+            </span>`
+          : ""
+      }
     </span>
   `;
 

@@ -442,7 +442,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-4 md:grid-cols-[0.8fr_1.2fr]">
+        <section className="mt-6 grid gap-4 pb-40 md:grid-cols-[0.8fr_1.2fr]">
           <div className="rounded-[2rem] bg-white p-5 shadow-xl">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
               Day Plan
