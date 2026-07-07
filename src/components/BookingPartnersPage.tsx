@@ -362,7 +362,21 @@ export default function BookingPartnersPage() {
                 Customer Page
               </button>
 
-              <button
+                                          <button
+                onClick={() => navigate("/revenue-dashboard")}
+                className="rounded-2xl bg-[#ffcf32] px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Revenue Dashboard
+              </button>
+
+<button
+                onClick={() => navigate("/booking-inbox")}
+                className="rounded-2xl bg-[#ffcf32] px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Booking Inbox
+              </button>
+
+<button
                 onClick={() => navigate("/direct-booking")}
                 className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
               >

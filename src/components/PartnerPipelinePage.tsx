@@ -323,6 +323,13 @@ export default function PartnerPipelinePage() {
                 Meeting Mode
               </button>
 
+              <button
+                onClick={() => navigate("/revenue-dashboard")}
+                className="rounded-2xl bg-[#ffcf32] px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Revenue Dashboard
+              </button>
+
 <button
                 onClick={() => navigate("/booking-partners")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"

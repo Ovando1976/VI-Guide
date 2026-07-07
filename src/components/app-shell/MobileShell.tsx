@@ -19,6 +19,8 @@ import CustomerStaysPage from "../CustomerStaysPage";
 import CustomerAccommodationDetailPage from "../CustomerAccommodationDetailPage";
 import AccommodationPartnerPortalPage from "../AccommodationPartnerPortalPage";
 import AccommodationReviewPage from "../AccommodationReviewPage";
+import BookingInboxPage from "../BookingInboxPage";
+import RevenueDashboardPage from "../RevenueDashboardPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -83,6 +85,10 @@ export function MobileShell({ children }: MobileShellProps) {
       <MeetingModePage />
     ) : location.pathname === "/direct-booking" ? (
       <DirectBookingHub />
+    ) : location.pathname === "/revenue-dashboard" ? (
+      <RevenueDashboardPage />
+    ) : location.pathname === "/booking-inbox" ? (
+      <BookingInboxPage />
     ) : location.pathname === "/booking-partners" ? (
       <BookingPartnersPage />
     ) : location.pathname === "/accommodation-partner" ? (
