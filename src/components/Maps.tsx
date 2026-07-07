@@ -23,6 +23,7 @@ import IslandMap, {
   type MapStyleMode,
 } from "./maps/IslandMap";
 import { useMapPoints } from "../hooks/useMapPoints";
+import { trackMapLeadAction } from "../lib/businessDemo/mapLeadTracking";
 import type { IslandCode } from "../types";
 
 type MapsProps = {
@@ -44,6 +45,12 @@ const styleOptions: Array<{ id: MapStyleMode; label: string }> = [
 ];
 
 function openDirections(point: MapPoint) {
+  void trackMapLeadAction({
+    action: "directions_click",
+    point,
+    source: "map_directions_button",
+  });
+
   const url = `https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`;
   window.open(url, "_blank", "noopener,noreferrer");
 }
@@ -76,6 +83,22 @@ export default function Maps({ selectedIsland }: MapsProps) {
 
   const navigate = useNavigate();
   const { points, loading, error } = useMapPoints(selectedIsland);
+
+  const selectPoint = (
+    point: MapPoint,
+    source:
+      | "map_marker_select"
+      | "search_result_select"
+      | "featured_card_select"
+      | "day_plan_select" = "map_marker_select"
+  ) => {
+    setSelectedPoint(point);
+    void trackMapLeadAction({
+      action: source,
+      point,
+      source: `map_${source}`,
+    });
+  };
 
   const activeLabel = useMemo(
     () =>
@@ -124,6 +147,12 @@ export default function Maps({ selectedIsland }: MapsProps) {
   }, [filteredPoints]);
 
   const addToDayPlan = (point: MapPoint) => {
+    void trackMapLeadAction({
+      action: "day_plan_save",
+      point,
+      source: "map_day_plan_button",
+    });
+
     setDayPlan((current) => {
       const next = current.some((item) => item.id === point.id)
         ? current
@@ -141,6 +170,12 @@ export default function Maps({ selectedIsland }: MapsProps) {
   };
 
   const requestRideToPoint = (point: MapPoint) => {
+    void trackMapLeadAction({
+      action: "ride_request_start",
+      point,
+      source: "map_request_ride_button",
+    });
+
     window.localStorage.setItem(
       "viNavigatorRideDestination",
       JSON.stringify({
@@ -274,7 +309,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
                     <button
                       key={`${point.type}-${point.id}`}
                       onClick={() => {
-                        setSelectedPoint(point);
+                        selectPoint(point, "search_result_select");
                         setSearchQuery(point.title);
                       }}
                       className="flex w-full items-start gap-3 border-b border-stone-100 p-4 text-left last:border-b-0 hover:bg-stone-50"
@@ -359,7 +394,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
               points={filteredPoints}
               mapStyleMode={mapStyleMode}
               fitToResultsTrigger={fitToResultsTrigger}
-              onSelectPoint={setSelectedPoint}
+              onSelectPoint={(point) => selectPoint(point, "map_marker_select")}
             />
 
             <div className="absolute left-4 top-4 z-[500] rounded-2xl bg-white/95 px-4 py-3 shadow-xl backdrop-blur">
@@ -460,7 +495,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
                 {dayPlan.slice(0, 5).map((point, index) => (
                   <button
                     key={`${point.id}-${index}`}
-                    onClick={() => setSelectedPoint(point)}
+                    onClick={() => selectPoint(point, "featured_card_select")}
                     className="flex w-full items-center justify-between gap-3 rounded-2xl bg-stone-50 px-4 py-3 text-left"
                   >
                     <span>
@@ -520,7 +555,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
               {featuredPoints.map((point) => (
                 <button
                   key={point.id}
-                  onClick={() => setSelectedPoint(point)}
+                  onClick={() => selectPoint(point, "featured_card_select")}
                   className="rounded-2xl bg-stone-50 p-4 text-left transition hover:-translate-y-1 active:scale-[0.99]"
                 >
                   <PointTypeBadge type={point.type} />
