@@ -391,6 +391,7 @@ export default function IslandMap({
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
   const pointsRef = useRef<MapPoint[]>(points);
+  const visiblePointsRef = useRef<MapPoint[]>([]);
   const selectedPointIdRef = useRef<string | null>(selectedPointId);
 
   pointsRef.current = points;
@@ -408,6 +409,8 @@ export default function IslandMap({
       : valid.filter((point) => point.type === activeFilter);
   }, [activeFilter, points]);
 
+  visiblePointsRef.current = visiblePoints;
+
   const selectedPoint = useMemo(
     () => points.find((point) => point.id === selectedPointId) ?? null,
     [points, selectedPointId]
@@ -421,7 +424,7 @@ export default function IslandMap({
     markersRef.current = [];
 
     const zoom = map.getZoom();
-    const items = getRenderItems(visiblePoints, zoom);
+    const items = getRenderItems(visiblePointsRef.current, zoom);
 
     for (const item of items) {
       if (item.kind === "cluster") {
@@ -492,7 +495,7 @@ export default function IslandMap({
 
       markersRef.current.push(marker);
     }
-  }, [onSelectPoint, visiblePoints]);
+  }, [onSelectPoint]);
 
   useEffect(() => {
     if (!mapNodeRef.current || mapRef.current) return;
@@ -533,12 +536,10 @@ export default function IslandMap({
     });
 
     map.on("zoomend", renderMarkers);
-    map.on("moveend", renderMarkers);
 
     return () => {
       resizeObserver.disconnect();
       map.off("zoomend", renderMarkers);
-      map.off("moveend", renderMarkers);
       markersRef.current.forEach((marker) => marker.remove());
       markersRef.current = [];
       map.remove();
@@ -569,8 +570,9 @@ export default function IslandMap({
   }, [center.center, center.zoom, renderMarkers]);
 
   useEffect(() => {
+    visiblePointsRef.current = visiblePoints;
     renderMarkers();
-  }, [renderMarkers, selectedPointId]);
+  }, [visiblePoints, selectedPointId, renderMarkers]);
 
   useEffect(() => {
     const map = mapRef.current;
