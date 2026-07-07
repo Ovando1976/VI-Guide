@@ -85,7 +85,16 @@ export default function DemoHub() {
   const navigate = useNavigate();
 
   return (
+
     <div className="min-h-screen pb-32 pt-8 md:pt-10">
+      <div className="mx-auto mb-4 flex max-w-6xl justify-end px-4">
+        <a
+          href="/taxi-demo"
+          className="inline-flex items-center rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink shadow-2xl active:scale-95"
+        >
+          Taxi Association Demo →
+        </a>
+      </div>
       <section className="mx-auto max-w-6xl px-4">
         <div className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
           <div className="grid gap-8 p-6 md:grid-cols-[1.05fr_0.95fr] md:p-10 lg:p-12">

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
 import { IslandPicker } from "./IslandPicker";
 import JoinPage from "../JoinPage";
+import TaxiAssociationDemoPage from "../TaxiAssociationDemoPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -12,6 +13,8 @@ interface MobileShellProps {
 const PRESENTATION_ROUTES = [
   "/demo",
   "/join",
+  "/taxi-demo",
+  "/mobility",
   "/admin/leads",
   "/partners",
   "/merchant/demo",
@@ -26,7 +29,14 @@ function isPresentationPath(pathname: string) {
 
 export function MobileShell({ children }: MobileShellProps) {
   const location = useLocation();
-  const routeContent = location.pathname === "/join" ? <JoinPage /> : children;
+  const routeContent =
+    location.pathname === "/join" ? (
+      <JoinPage />
+    ) : location.pathname === "/taxi-demo" ? (
+      <TaxiAssociationDemoPage />
+    ) : (
+      children
+    );
   const showRevenueJoinCta =
     location.pathname === "/demo" || location.pathname === "/partners";
   const isPresentationRoute = isPresentationPath(location.pathname);
