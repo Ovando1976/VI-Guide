@@ -1,0 +1,284 @@
+{
+  "generatedAt": "2026-07-07T12:51:12.531Z",
+  "total": 21,
+  "selected": 12,
+  "records": [
+    {
+      "businessName": "The Ritz-Carlton St. Thomas",
+      "officialUrl": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.ritzcarlton.com/en/hotels/sttrz-the-ritz-carlton-st-thomas/overview/",
+      "selectedImage": "https://cache.marriott.com/content/dam/marriott-digital/rz/global-property-shared/en_us/logo/assets/rz_logo_L_W.png",
+      "candidates": [
+        "https://cache.marriott.com/content/dam/marriott-digital/rz/global-property-shared/en_us/logo/assets/rz_logo_L_W.png",
+        "https://cache.marriott.com/content/dam/marriott-digital/rz/global-property-shared/en_us/logo/assets/rz_logo_L.png"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Frenchman's Reef",
+      "officialUrl": "https://www.frenchmansreefstthomas.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.frenchmansreefstthomas.com/",
+      "selectedImage": "",
+      "candidates": [],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Secret Harbour Beach Resort",
+      "officialUrl": "https://www.secretharbourvi.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.secretharbourvi.com/",
+      "selectedImage": "",
+      "candidates": [],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Bolongo Bay Beach Resort",
+      "officialUrl": "https://www.bolongobay.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://bolongobay.com/",
+      "selectedImage": "https://bolongobay.com/wp-content/uploads/2020/07/779845A620C1EEAE7F69CE654362750F-scaled.jpg",
+      "candidates": [
+        "https://bolongobay.com/wp-content/uploads/2020/07/779845A620C1EEAE7F69CE654362750F-scaled.jpg",
+        "https://bolongobay.com/wp-content/uploads/2022/11/IMG_6897-scaled.jpg"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Bluebeard's Beach Club",
+      "officialUrl": "https://www.limetree.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.limetree.com/",
+      "selectedImage": "https://www.limetree.com/wp-content/themes/limert/images/bannerImage.jpg",
+      "candidates": [
+        "https://www.limetree.com/wp-content/themes/limert/images/bannerImage.jpg",
+        "https://www.limetree.com/wp-content/themes/limert/images/Limetree-Logo.png",
+        "https://www.limetree.com/wp-content/themes/limert/images/prop-map.jpg",
+        "https://limetree.com/wp-content/uploads/2020/02/limetree-decorative.png"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Emerald Beach Resort",
+      "officialUrl": "https://emeraldbeach.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "selectedImage": "",
+      "candidates": [],
+      "error": "fetch failed",
+      "usageNote": "Could not fetch official image candidate. Keep placeholder until manual review."
+    },
+    {
+      "businessName": "Windward Passage Hotel",
+      "officialUrl": "https://www.windwardpassage.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.windwardpassage.com/",
+      "selectedImage": "https://www.windwardpassage.com/wp-content/uploads/2025/06/wp-social.jpg",
+      "candidates": [
+        "https://www.windwardpassage.com/wp-content/uploads/2025/06/wp-social.jpg",
+        "https://www.windwardpassage.com/wp-content/uploads/2025/08/IMG_6549.jpg",
+        "https://www.windwardpassage.com/wp-content/uploads/2025/05/Windward-Passage-Hotel-148.jpg",
+        "https://www.windwardpassage.com/wp-content/uploads/2025/06/windward-passage-cocktails.jpg",
+        "https://www.windwardpassage.com/wp-content/uploads/2025/05/Windward-Passage-Hotel-074.jpg"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Margaritaville Vacation Club St. Thomas",
+      "officialUrl": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.margaritavilleresorts.com/margaritaville-vacation-club-st-thomas",
+      "selectedImage": "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/margaritaville-perks.png",
+      "candidates": [
+        "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/margaritaville-perks.png",
+        "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b91db8e.jpg/1920x1080/fit/80/a8a95767fd3652bf1e163c85d2f2f81c.jpg",
+        "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b9e5972.jpg/1920x1080/fit/80/3fec5ecbe867d82d5dba9a9cb8e73378.jpg",
+        "https://d1l4e1efm2qo9x.cloudfront.net/margaritavilleresorts.com-1367967347/cms/cache/v2/5eebd8b9a4c97.jpg/1000x640/fit/80/de23ed227646cafb70c6477e12979122.jpg",
+        "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/privacyoptions123x59.png",
+        "https://www.margaritavilleresorts.com/skins/skin-prodmargaritavilleresorts/assets/desktop/images/user.png"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Sapphire Beach Resort and Marina",
+      "officialUrl": "https://www.sapphirebeachresortvi.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "selectedImage": "",
+      "candidates": [],
+      "error": "fetch failed",
+      "usageNote": "Could not fetch official image candidate. Keep placeholder until manual review."
+    },
+    {
+      "businessName": "The Westin St. John Resort Villas",
+      "officialUrl": "https://www.marriott.com/en-us/hotels/sttwi-the-westin-st-john-resort-villas/overview/",
+      "fetchStatus": 403,
+      "finalUrl": "https://www.marriott.com/en-us/hotels/sttwi-the-westin-st-john-resort-villas/overview/",
+      "selectedImage": "",
+      "candidates": [],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Gallows Point Resort",
+      "officialUrl": "https://www.gallowspointresort.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://gallowspointresort.com/",
+      "selectedImage": "http://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-color.png",
+      "candidates": [
+        "http://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-color.png",
+        "https://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-color.png",
+        "https://gallowspointresort.com/wp-content/uploads/2025/04/website-logo-255x153.png",
+        "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-5-550x824.jpg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-7-550x824.jpg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-4-550x824.jpg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/03/Untitled-6-550x824.jpg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/04/gallows-point-pool-550x824.jpg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/04/image-scaled-2-780x520.jpeg",
+        "https://gallowspointresort.com/wp-content/uploads/2025/04/image-1-scaled-1-780x520.jpeg"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Estate Lindholm",
+      "officialUrl": "https://www.estatelindholm.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://estatelindholm.com/",
+      "selectedImage": "https://img1.wsimg.com/isteam/ip/2e0e1b76-86d3-4c5b-8891-20e147ec3c84/DJI_20251103163951_0219_D.jpg",
+      "candidates": [
+        "https://img1.wsimg.com/isteam/ip/2e0e1b76-86d3-4c5b-8891-20e147ec3c84/DJI_20251103163951_0219_D.jpg"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Coconut Coast Villas",
+      "officialUrl": "https://www.coconutcoastvillas.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "selectedImage": "",
+      "candidates": [],
+      "error": "fetch failed",
+      "usageNote": "Could not fetch official image candidate. Keep placeholder until manual review."
+    },
+    {
+      "businessName": "Lovango Resort + Beach Club",
+      "officialUrl": "https://www.lovangovi.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.lovangovi.com/",
+      "selectedImage": "https://www.lovangovi.com/wp-content/uploads/2020/11/lovango-resort-and-beach-club-seal.png",
+      "candidates": [
+        "https://www.lovangovi.com/wp-content/uploads/2020/11/lovango-resort-and-beach-club-seal.png",
+        "https://www.lovangovi.com/wp-content/uploads/2022/09/lovango-resort-and-beach-club-logo.png",
+        "https://www.lovangovi.com/wp-content/uploads/elementor/thumbs/ABC04835_websize-1-e1769450996584-ri8h9b7ichqpqvs6euv28uq8fy0smg9l42z8wdty1c.jpg",
+        "https://www.lovangovi.com/wp-content/uploads/elementor/thumbs/CRS3099_websize-ri8ftbqsjkdlrnpp0fxn58vxrxhcnk38vlpx5enz2k.jpg",
+        "https://www.lovangovi.com/wp-content/uploads/2024/12/lovango-resort-and-beach-club-seal.png",
+        "https://www.lovangovi.com/wp-content/uploads/2024/12/little-gem-resorts_0000_LOV.png"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "The Buccaneer Beach & Golf Resort",
+      "officialUrl": "https://www.thebuccaneer.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://thebuccaneer.com/",
+      "selectedImage": "https://thebuccaneer.com/wp-content/uploads/2025/12/st-croix-resort-the-buccaneer-usvi.jpg",
+      "candidates": [
+        "https://thebuccaneer.com/wp-content/uploads/2025/12/st-croix-resort-the-buccaneer-usvi.jpg",
+        "https://thebuccaneer.com/wp-content/uploads/2025/04/the-buccaneer-beach-resort-st-croix-2-780x356.jpg",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/golf-resort-st-croix.png",
+        "https://thebuccaneer.com/wp-content/uploads/2025/05/private-island-resort-st-croix-379x336.jpg",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/tripadvisor-award-2025-150x150.png",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/conde-nast-award-winner-150x150.png",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/readers-choice-award-winner-150x150.png",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/trip-advisor-award-winner-150x150.png",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/USA-TODAY-2025-150x150.png",
+        "https://thebuccaneer.com/wp-content/uploads/2026/03/award-winning-resort-150x150.png"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "King Christian Hotel",
+      "officialUrl": "https://www.kingchristianhotel.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.kingchristianhotel.com/",
+      "selectedImage": "https://www.kingchristianhotel.com/site/assets/files/11158/kingchristianhotel_meredithzimmermanphotography-10.jpg",
+      "candidates": [
+        "https://www.kingchristianhotel.com/site/assets/files/11158/kingchristianhotel_meredithzimmermanphotography-10.jpg",
+        "https://www.kingchristianhotel.com/site/assets/files/1/kch_primary-gold-1.png?1q6yru",
+        "https://www.kingchristianhotel.com/site/assets/files/1/rdvc.png?1q72t3",
+        "https://www.kingchristianhotel.com/site/assets/files/11158/kingchristianhotel_meredithzimmermanphotography-10.2000x1334.jpg?1q6z0b",
+        "https://www.kingchristianhotel.com/site/assets/files/11217/kingchristian_room216_meredithzimmermanphotography-35.2000x1334.jpg?1qaqx1",
+        "https://www.kingchristianhotel.com/site/assets/files/11210/king_christian_hotel.2000x1334.jpg?1qc11v",
+        "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room222_meredithzimmermanphotography-4.1200x900.jpg?1q73vk",
+        "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room220_meredithzimmermanphotography-27.1200x900.jpg?1q73vh",
+        "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room326_meredithzimmermanphotography-6.1200x900.jpg?1q73vi",
+        "https://www.kingchristianhotel.com/site/assets/files/11297/kingchristian_room222_meredithzimmermanphotography-26.1200x900.jpg?1q73vj"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Company House Hotel",
+      "officialUrl": "https://www.companyhousehotel.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "selectedImage": "",
+      "candidates": [],
+      "error": "fetch failed",
+      "usageNote": "Could not fetch official image candidate. Keep placeholder until manual review."
+    },
+    {
+      "businessName": "Carambola Beach Resort",
+      "officialUrl": "https://www.carambolabeachresortstcroix.com/",
+      "fetchStatus": "error",
+      "finalUrl": "",
+      "selectedImage": "",
+      "candidates": [],
+      "error": "fetch failed",
+      "usageNote": "Could not fetch official image candidate. Keep placeholder until manual review."
+    },
+    {
+      "businessName": "Sand Castle on the Beach",
+      "officialUrl": "https://sandcastleonthebeach.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://sandcastleonthebeach.com/",
+      "selectedImage": "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-home_sliders-1.jpg",
+      "candidates": [
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-home_sliders-1.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/600x255_sandcastlelogo.png",
+        "https://sandcastleonthebeach.com/wp-content/uploads/150x38_waves.png",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-001.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-002.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-003.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-004.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-005.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-006.jpg",
+        "https://sandcastleonthebeach.com/wp-content/uploads/1920x1080-sandcastleonthebeach-hero-01-007.jpg"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "Tamarind Reef Resort",
+      "officialUrl": "https://www.tamarindreefresort.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://tamarindreef.com/",
+      "selectedImage": "",
+      "candidates": [],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    },
+    {
+      "businessName": "McLaughlin Anderson Luxury Villas",
+      "officialUrl": "https://www.mclaughlinanderson.com/",
+      "fetchStatus": 200,
+      "finalUrl": "https://www.beautiful-places.com/vacation-homes/virgin-islands/homes-for-rent",
+      "selectedImage": "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66a19ba62ccc427a4aef55c1_Luxury-Private-Villas_1500x1002_opt.webp",
+      "candidates": [
+        "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66a19ba62ccc427a4aef55c1_Luxury-Private-Villas_1500x1002_opt.webp",
+        "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/6712ad8de843ab5a682aac02_BeautifulPlaces_Aquamare_villas_viewed_from_water.jpg",
+        "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66cf9c00d8eca01c54840c95_BeautifulPlaces_Sunrise_0015-hero2.jpg",
+        "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/6852f3d1080324d1e3cb5f70_pritchard-hill-hero.jpg",
+        "https://cdn.prod.website-files.com/65e83515799429dd36b8f980/66a19bab8dfd72b4e9639fd6_villa-mas-crop.webp"
+      ],
+      "usageNote": "Official public image candidate. Use provisionally; replace with partner-approved image or remove if business declines."
+    }
+  ]
+}

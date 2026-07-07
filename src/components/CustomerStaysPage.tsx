@@ -540,14 +540,20 @@ export default function CustomerStaysPage() {
                         <div className="relative h-36 bg-emerald-950">
                           <img
                             src={record.image}
-                            alt=""
+                            alt={record.imageAlt || `${record.businessName} accommodation image`}
                             className="h-full w-full object-cover opacity-70"
                             loading="lazy"
                           />
                           <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-800">
-                            {record.verificationStatus === "partner_confirmed"
-                              ? "Partner"
-                              : "Curated"}
+                            {record.imageStatus === "verified"
+                              ? "Verified photo"
+                              : record.imageStatus === "partner_supplied"
+                                ? "Partner photo"
+                                : record.imageStatus === "official_public_candidate"
+                                  ? "Official photo"
+                                : record.verificationStatus === "partner_confirmed"
+                                  ? "Partner"
+                                  : "Image pending"}
                           </div>
                         </div>
 

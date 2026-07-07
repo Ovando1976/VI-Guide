@@ -23,31 +23,40 @@ function extractArray(text) {
 }
 
 function existsPublicImage(imagePath) {
-  if (!imagePath || !imagePath.startsWith("/")) return false;
+  if (!imagePath) return false;
+  if (/^https?:\/\//i.test(imagePath)) return true;
+  if (!imagePath.startsWith("/")) return false;
+
   const full = path.resolve("public", imagePath.replace(/^\//, ""));
   return fs.existsSync(full);
+}
+
+function imageKind(imagePath) {
+  if (/^https?:\/\//i.test(imagePath || "")) return "remote_public_candidate";
+  if ((imagePath || "").includes("/_pending/")) return "pending_placeholder";
+  if ((imagePath || "").startsWith("/images/accommodations/")) return "local_accommodation";
+  return "other_local";
 }
 
 const text = fs.readFileSync(generatedPath, "utf8");
 const records = extractArray(text);
 
 const audit = records.map((record) => {
+  const kind = imageKind(record.image);
   const imageExists = existsPublicImage(record.image);
-  const hasSpecificAccommodationPath =
-    typeof record.image === "string" &&
-    record.image.startsWith("/images/accommodations/") &&
-    !record.image.includes("/_pending/");
 
   const status =
-    imageExists &&
-    hasSpecificAccommodationPath &&
-    ["verified", "partner_supplied"].includes(record.imageStatus)
-      ? "ready"
-      : imageExists && record.image.includes("/_pending/")
-        ? "needs_property_image"
-        : !imageExists
-          ? "missing_file"
-          : "needs_review";
+    kind === "remote_public_candidate"
+      ? "official_public_candidate"
+      : imageExists &&
+          kind === "local_accommodation" &&
+          ["verified", "partner_supplied"].includes(record.imageStatus)
+        ? "ready"
+        : imageExists && kind === "pending_placeholder"
+          ? "needs_property_image"
+          : !imageExists
+            ? "missing_file"
+            : "needs_review";
 
   return {
     id: record.id,
@@ -55,6 +64,7 @@ const audit = records.map((record) => {
     category: record.category,
     island: record.island,
     image: record.image,
+    imageKind: kind,
     imageExists,
     imageStatus: record.imageStatus || "needs_image",
     imageSourceName: record.imageSourceName || "",
@@ -71,6 +81,9 @@ fs.writeFileSync(
       generatedAt: new Date().toISOString(),
       total: audit.length,
       ready: audit.filter((item) => item.status === "ready").length,
+      officialPublicCandidates: audit.filter(
+        (item) => item.status === "official_public_candidate"
+      ).length,
       needsPropertyImage: audit.filter((item) => item.status === "needs_property_image").length,
       missingFile: audit.filter((item) => item.status === "missing_file").length,
       needsReview: audit.filter((item) => item.status === "needs_review").length,
@@ -85,6 +98,9 @@ console.log(`Accommodation image audit written to ${reportPath}`);
 console.table({
   total: audit.length,
   ready: audit.filter((item) => item.status === "ready").length,
+  officialPublicCandidates: audit.filter(
+    (item) => item.status === "official_public_candidate"
+  ).length,
   needsPropertyImage: audit.filter((item) => item.status === "needs_property_image").length,
   missingFile: audit.filter((item) => item.status === "missing_file").length,
   needsReview: audit.filter((item) => item.status === "needs_review").length,

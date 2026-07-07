@@ -19,6 +19,10 @@ export type CustomerBookingRecord = {
   bookingOffer: string;
   mobilityNote: string;
   image: string;
+  imageAlt?: string;
+  imageSourceName?: string;
+  imageSourceUrl?: string;
+  imageStatus?: "verified" | "partner_supplied" | "official_public_candidate" | "needs_image" | "needs_review";
   website?: string;
   phone?: string;
   sourceName?: string;
@@ -308,6 +312,10 @@ export const enrichedCustomerBookingCatalog: CustomerBookingRecord[] =
     sourceName: record.sourceName || "VI Guide starter catalog",
     sourceUrl: record.sourceUrl || "",
     lastVerified: record.lastVerified || "needs_review",
+    imageAlt: record.imageAlt || `${record.businessName} accommodation image`,
+    imageSourceName: record.imageSourceName || "Image pending verification",
+    imageSourceUrl: record.imageSourceUrl || "",
+    imageStatus: record.imageStatus || "needs_image",
     inventoryScope:
       record.inventoryScope ||
       (record.category === "villa" || record.category === "airbnb_operator"
