@@ -223,6 +223,7 @@ export default function RevenueDashboardPage() {
               </p>
 
               <div className="mt-4 grid gap-3">
+                <QuickButton label="Partner Outreach" icon={Mail} onClick={() => navigate("/partner-outreach")} />
                 <QuickButton label="Booking Inbox" icon={Inbox} onClick={() => navigate("/booking-inbox")} />
                 <QuickButton label="Hotels / Stays" icon={Hotel} onClick={() => navigate("/hotels")} />
                 <QuickButton label="Partner Manager" icon={BedDouble} onClick={() => navigate("/accommodation-partner")} />
