@@ -53,6 +53,10 @@ type MobilityRide = {
   visitorPhone: string;
   notes?: string;
   estimatedFare: number;
+  tariffStatus?: string;
+  tariffSource?: string;
+  tariffComplianceNote?: string;
+  tariffBreakdown?: Array<{ label: string; amount: number }>;
   status: MobilityRequestStatus;
   source?: string;
   assignedDriverId?: string;
@@ -90,6 +94,10 @@ function normalizeRide(raw: any): MobilityRide {
     visitorPhone: raw.visitorPhone || "",
     notes: raw.notes || "",
     estimatedFare: Number(raw.estimatedFare || 0),
+    tariffStatus: raw.tariffStatus || "",
+    tariffSource: raw.tariffSource || "",
+    tariffComplianceNote: raw.tariffComplianceNote || "",
+    tariffBreakdown: Array.isArray(raw.tariffBreakdown) ? raw.tariffBreakdown : [],
     status: raw.status || "new",
     source: raw.source || "",
     assignedDriverId: raw.assignedDriverId || "",
@@ -126,7 +134,9 @@ Rider: ${ride.visitorName}
 Phone: ${ride.visitorPhone}
 Passengers: ${ride.passengers}
 Luggage: ${ride.luggage}
-Estimated fare: ${formatMoney(ride.estimatedFare)}
+Estimated fare: ${ride.estimatedFare ? formatMoney(ride.estimatedFare) : "Dispatcher review required"}
+Tariff status: ${ride.tariffStatus || "Not recorded"}
+Tariff note: ${ride.tariffComplianceNote || "No tariff note recorded"}
 
 Assigned driver: ${ride.assignedDriverName || "Unassigned"}
 Vehicle: ${ride.assignedVehicle || "Unassigned"}
@@ -539,6 +549,32 @@ export default function MobilityDispatchDemo() {
                   <p className="mt-2 text-sm font-bold leading-6 text-stone-700">
                     {selectedRide.notes || "No rider notes."}
                   </p>
+                </div>
+
+                <div className="mt-5 rounded-[2rem] bg-emerald-50 p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+                    Tariff compliance
+                  </p>
+                  <p className="mt-2 text-sm font-bold leading-6 text-emerald-950">
+                    {selectedRide.tariffComplianceNote ||
+                      "No tariff compliance note recorded for this request."}
+                  </p>
+
+                  {selectedRide.tariffBreakdown?.length ? (
+                    <div className="mt-3 space-y-2">
+                      {selectedRide.tariffBreakdown.map((item) => (
+                        <div
+                          key={item.label}
+                          className="flex items-center justify-between gap-3 rounded-xl bg-white px-3 py-2 text-xs font-black"
+                        >
+                          <span className="text-stone-600">{item.label}</span>
+                          <span className="text-emerald-700">
+                            {formatMoney(item.amount)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
 
                 <div className="mt-5 rounded-[2rem] bg-ink p-4 text-white">

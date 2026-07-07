@@ -1,3 +1,4 @@
+import { calculateOfficialTaxiFare as calculateOfficialTaxiFareInternal } from "./viOfficialTaxiTariff";
 export type MobilityIsland =
   | "st_thomas"
   | "st_john"
@@ -296,47 +297,16 @@ export function nextMobilityStatus(status: MobilityRequestStatus) {
 }
 
 export function estimateMobilityFare(input: MobilityFareInput) {
-  const serviceBase: Record<MobilityServiceType, number> = {
-    airport_transfer: 32,
-    cruise_pickup: 28,
-    ferry_transfer: 35,
-    beach_trip: 24,
-    dinner_nightlife: 26,
-    private_group: 60,
-    custom_ride: 30,
-  };
+  const quote = calculateOfficialTaxiFareInternal({
+    island: input.island,
+    pickup: input.pickup,
+    dropoff: input.dropoff,
+    passengerCount: input.passengers,
+    luggageCount: input.luggage,
+    exclusiveRide: input.serviceType === "private_group",
+  });
 
-  const islandPremium: Record<MobilityIsland, number> = {
-    st_thomas: 0,
-    st_john: 8,
-    st_croix: 4,
-    water_island: 12,
-  };
-
-  const passengerCharge = Math.max(input.passengers - 1, 0) * 6;
-  const luggageCharge = Math.max(input.luggage - 1, 0) * 3;
-
-  const airportOrFerry =
-    /airport|ferry|red hook|cruz bay/i.test(`${input.pickup} ${input.dropoff}`)
-      ? 6
-      : 0;
-
-  const cruise =
-    /cruise|havensight|crown bay|frederiksted/i.test(
-      `${input.pickup} ${input.dropoff}`
-    )
-      ? 5
-      : 0;
-
-  const total =
-    serviceBase[input.serviceType] +
-    islandPremium[input.island] +
-    passengerCharge +
-    luggageCharge +
-    airportOrFerry +
-    cruise;
-
-  return Math.max(18, Math.round(total));
+  return quote.totalFare ?? 0;
 }
 
 export function formatMoney(value: number | string | undefined) {
@@ -358,3 +328,7 @@ export function formatDateTime(value: number | string | undefined) {
     return String(value);
   }
 }
+
+export { calculateOfficialTaxiFare } from "./viOfficialTaxiTariff";
+export type { OfficialTaxiFareQuote } from "./viOfficialTaxiTariff";
+export { getTaxiTariffPlaces, getTaxiFareRules, TAXI_ADDITIONAL_CHARGES } from "./usviTaxiRateData";

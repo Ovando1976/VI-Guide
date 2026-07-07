@@ -1,15 +1,18 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
 import {
   ArrowRight,
   Briefcase,
   Car,
   CheckCircle2,
   Clock,
+  Info,
   MapPin,
   Navigation,
   Phone,
   Plane,
   RefreshCw,
+  ShieldCheck,
   Ship,
   Sparkles,
   Utensils,
@@ -20,19 +23,30 @@ import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import {
-  estimateMobilityFare,
+  calculateOfficialTaxiFare,
   formatMoney,
+  getTaxiTariffPlaces,
   islandLabels,
   mobilityServices,
   serviceLabels,
   type MobilityIsland,
   type MobilityServiceType,
-  zonePresets,
 } from "../lib/mobility/mobilityOs";
 
 type MobilityProps = {
   selectedIsland?: unknown;
   user?: unknown;
+};
+
+type OfficialRoute = {
+  label: string;
+  island: MobilityIsland;
+  serviceType: MobilityServiceType;
+  pickup: string;
+  dropoff: string;
+  passengers: number;
+  luggage: number;
+  notes: string;
 };
 
 const iconMap: Record<string, LucideIcon> = {
@@ -45,12 +59,109 @@ const iconMap: Record<string, LucideIcon> = {
   car: Car,
 };
 
+const supportedIslands: MobilityIsland[] = [
+  "st_thomas",
+  "st_john",
+  "st_croix",
+];
+
+const officialRouteDefaults: Record<MobilityIsland, { pickup: string; dropoff: string }> = {
+  st_thomas: {
+    pickup: "Cyril E. King Airport",
+    dropoff: "Red Hook",
+  },
+  st_john: {
+    pickup: "Cruz Bay",
+    dropoff: "Trunk Bay",
+  },
+  st_croix: {
+    pickup: "Airport",
+    dropoff: "Christiansted",
+  },
+  water_island: {
+    pickup: "Water Island Ferry",
+    dropoff: "Honeymoon Beach",
+  },
+};
+
+const demoRoutes: OfficialRoute[] = [
+  {
+    label: "STT Airport → Red Hook",
+    island: "st_thomas",
+    serviceType: "airport_transfer",
+    pickup: "Cyril E. King Airport",
+    dropoff: "Red Hook",
+    passengers: 2,
+    luggage: 2,
+    notes: "Need ferry-aware transfer timing.",
+  },
+  {
+    label: "Havensight → Magens Bay",
+    island: "st_thomas",
+    serviceType: "cruise_pickup",
+    pickup: "Havensight (WICO)",
+    dropoff: "Magens Bay",
+    passengers: 4,
+    luggage: 0,
+    notes: "Cruise beach day pickup.",
+  },
+  {
+    label: "Charlotte Amalie → Red Hook",
+    island: "st_thomas",
+    serviceType: "ferry_transfer",
+    pickup: "Charlotte Amalie",
+    dropoff: "Red Hook",
+    passengers: 2,
+    luggage: 1,
+    notes: "Heading to ferry terminal.",
+  },
+  {
+    label: "Cruz Bay → Trunk Bay",
+    island: "st_john",
+    serviceType: "beach_trip",
+    pickup: "Cruz Bay",
+    dropoff: "Trunk Bay",
+    passengers: 2,
+    luggage: 2,
+    notes: "Beach day request.",
+  },
+  {
+    label: "Cruz Bay → Coral Bay",
+    island: "st_john",
+    serviceType: "private_group",
+    pickup: "Cruz Bay",
+    dropoff: "Coral Bay",
+    passengers: 3,
+    luggage: 1,
+    notes: "Private group transfer.",
+  },
+  {
+    label: "STX Airport → Christiansted",
+    island: "st_croix",
+    serviceType: "airport_transfer",
+    pickup: "Airport",
+    dropoff: "Christiansted",
+    passengers: 2,
+    luggage: 2,
+    notes: "Airport arrival transfer.",
+  },
+  {
+    label: "Frederiksted → Christiansted",
+    island: "st_croix",
+    serviceType: "cruise_pickup",
+    pickup: "Frederiksted",
+    dropoff: "Christiansted",
+    passengers: 4,
+    luggage: 0,
+    notes: "Cruise visitor transfer.",
+  },
+];
+
 function coerceIsland(value: unknown): MobilityIsland {
   if (
     value === "st_thomas" ||
     value === "st_john" ||
-    value === "st_croix" ||
-    value === "water_island"
+    value === "st_croix"
   ) {
     return value;
   }
@@ -65,63 +176,166 @@ function errorMessage(error: unknown) {
 export default function Mobility({ selectedIsland }: MobilityProps) {
   const navigate = useNavigate();
 
+  const initialIsland = coerceIsland(selectedIsland);
+
   const [serviceType, setServiceType] =
     useState<MobilityServiceType>("airport_transfer");
-  const [island, setIsland] = useState<MobilityIsland>(
-    coerceIsland(selectedIsland)
-  );
-  const [pickup, setPickup] = useState("Cyril E. King Airport");
-  const [dropoff, setDropoff] = useState("Red Hook Ferry Terminal");
+  const [island, setIsland] = useState<MobilityIsland>(initialIsland);
+  const [pickup, setPickup] = useState(officialRouteDefaults[initialIsland].pickup);
+  const [dropoff, setDropoff] = useState(officialRouteDefaults[initialIsland].dropoff);
   const [pickupTime, setPickupTime] = useState("ASAP / next available");
   const [passengers, setPassengers] = useState(2);
   const [luggage, setLuggage] = useState(2);
+  const [oversizedLuggage, setOversizedLuggage] = useState(0);
+  const [waitingMinutes, setWaitingMinutes] = useState(0);
+  const [roundTrip, setRoundTrip] = useState(false);
+  const [afterHours, setAfterHours] = useState(false);
+  const [radioCall, setRadioCall] = useState(false);
+  const [exclusiveRide, setExclusiveRide] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorPhone, setVisitorPhone] = useState("");
+  const [visitorEmail, setVisitorEmail] = useState("");
   const [notes, setNotes] = useState("Need ferry-aware timing.");
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [submittedRequestId, setSubmittedRequestId] = useState("");
 
-  const quote = useMemo(
+  const tariffPlaces = useMemo(() => getTaxiTariffPlaces(island), [island]);
+
+  useEffect(() => {
+    const defaults = officialRouteDefaults[island];
+
+    if (tariffPlaces.length === 0) return;
+
+    if (!tariffPlaces.includes(pickup)) {
+      setPickup(defaults.pickup);
+    }
+
+    if (!tariffPlaces.includes(dropoff)) {
+      setDropoff(defaults.dropoff);
+    }
+  }, [island, tariffPlaces]);
+
+  const tariffQuote = useMemo(
     () =>
-      estimateMobilityFare({
-        serviceType,
+      calculateOfficialTaxiFare({
         island,
         pickup,
         dropoff,
-        passengers,
-        luggage,
+        passengerCount: passengers,
+        luggageCount: luggage,
+        oversizedLuggageCount: oversizedLuggage,
+        waitingMinutes,
+        roundTrip,
+        afterHours,
+        radioCall,
+        exclusiveRide: exclusiveRide || serviceType === "private_group",
       }),
-    [dropoff, island, luggage, passengers, pickup, serviceType]
+    [
+      afterHours,
+      dropoff,
+      exclusiveRide,
+      island,
+      luggage,
+      oversizedLuggage,
+      passengers,
+      pickup,
+      radioCall,
+      roundTrip,
+      serviceType,
+      waitingMinutes,
+    ]
   );
 
-  const selectedService = useMemo(
-    () => mobilityServices.find((service) => service.id === serviceType),
-    [serviceType]
-  );
+  const quote = tariffQuote.totalFare ?? 0;
+  const isOfficialMatch = tariffQuote.status === "official_match";
+
+  function applyRoute(route: OfficialRoute) {
+    setIsland(route.island);
+    setServiceType(route.serviceType);
+    setPickup(route.pickup);
+    setDropoff(route.dropoff);
+    setPassengers(route.passengers);
+    setLuggage(route.luggage);
+    setNotes(route.notes);
+    setOversizedLuggage(0);
+    setWaitingMinutes(0);
+    setRoundTrip(false);
+    setAfterHours(false);
+    setRadioCall(false);
+    setExclusiveRide(route.serviceType === "private_group");
+  }
+
+  function changeIsland(nextIsland: MobilityIsland) {
+    const defaults = officialRouteDefaults[nextIsland];
+    setIsland(nextIsland);
+    setPickup(defaults.pickup);
+    setDropoff(defaults.dropoff);
+  }
 
   function selectService(nextService: MobilityServiceType) {
     setServiceType(nextService);
 
-    const service = mobilityServices.find((item) => item.id === nextService);
-    if (service?.defaultPickup) setPickup(service.defaultPickup);
-    if (service?.defaultDropoff) setDropoff(service.defaultDropoff);
+    if (nextService === "private_group") {
+      setExclusiveRide(true);
+    }
+
+    if (nextService === "airport_transfer") {
+      if (island === "st_thomas") {
+        setPickup("Cyril E. King Airport");
+        setDropoff("Red Hook");
+      } else if (island === "st_croix") {
+        setPickup("Airport");
+        setDropoff("Christiansted");
+      } else if (island === "st_john") {
+        setPickup("Cruz Bay");
+        setDropoff("Trunk Bay");
+      }
+      return;
+    }
+
+    if (nextService === "cruise_pickup") {
+      if (island === "st_thomas") {
+        setPickup("Havensight (WICO)");
+        setDropoff("Magens Bay");
+      } else if (island === "st_croix") {
+        setPickup("Frederiksted");
+        setDropoff("Christiansted");
+      }
+      return;
+    }
+
+    if (nextService === "ferry_transfer") {
+      if (island === "st_thomas") {
+        setPickup("Cyril E. King Airport");
+        setDropoff("Red Hook");
+      } else if (island === "st_john") {
+        setPickup("Cruz Bay");
+        setDropoff("Coral Bay");
+      }
+      return;
+    }
+
+    const defaults = officialRouteDefaults[island];
+    setPickup(defaults.pickup);
+    setDropoff(defaults.dropoff);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!pickup.trim() || !dropoff.trim() || !visitorName.trim() || !visitorPhone.trim()) {
-      setSaveError("Pickup, dropoff, rider name, and phone are required.");
+      setSaveError("Pickup, dropoff, rider name, and rider phone are required.");
       return;
     }
 
     setSaving(true);
     setSaveError("");
 
-    const clientRequestId = `mobility-${Date.now()}`;
+    const now = Date.now();
+    const clientRequestId = `mobility-${now}`;
 
-    const payload: any = {
+    const payload: Record<string, unknown> = {
       clientRequestId,
       serviceType,
       island,
@@ -130,18 +344,32 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
       pickupTime: pickupTime.trim(),
       passengers,
       luggage,
+      oversizedLuggage,
+      waitingMinutes,
+      roundTrip,
+      afterHours,
+      radioCall,
+      exclusiveRide: exclusiveRide || serviceType === "private_group",
       visitorName: visitorName.trim(),
       visitorPhone: visitorPhone.trim(),
+      visitorEmail: visitorEmail.trim(),
       notes: notes.trim(),
       estimatedFare: quote,
+      tariffStatus: tariffQuote.status,
+      tariffSource: tariffQuote.sourceLabel,
+      tariffComplianceNote: tariffQuote.complianceNote,
+      tariffBreakdown: tariffQuote.breakdown,
+      tariffRouteName: tariffQuote.routeName,
+      tariffMatchedRuleId: tariffQuote.matchedRuleId || "",
+      tariffMatchedSourceTable: tariffQuote.matchedSourceTable || "",
       status: "new",
       source: "mobility_rider_app",
       assignedDriverName: "",
       assignedDriverPhone: "",
       assignedVehicle: "",
       dispatcherNotes: "",
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
+      createdAt: now,
+      updatedAt: now,
     };
 
     try {
@@ -149,7 +377,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
         "../lib/firestore/mobilityRequests"
       );
 
-      const created = await createFirestoreMobilityRequest(payload);
+      const created = await createFirestoreMobilityRequest(payload as any);
 
       try {
         const previous = JSON.parse(
@@ -160,7 +388,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
           JSON.stringify([payload, ...previous].slice(0, 25))
         );
       } catch {
-        // Local fallback is only for demos. Firestore is the source of truth.
+        // Firestore is the source of truth. Local storage is only a demo fallback.
       }
 
       const id =
@@ -180,7 +408,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
 
   if (submittedRequestId) {
     return (
-      <div className="min-h-screen bg-[#f8f0da] px-4 pb-32 pt-8 text-ink">
+      <div className="min-h-screen bg-[#f8f0da] px-4 pb-80 pt-8 text-ink">
         <div className="mx-auto max-w-5xl rounded-[2.75rem] bg-ink p-5 text-white shadow-2xl md:p-10">
           <div className="mx-auto max-w-2xl text-center">
             <CheckCircle2 className="mx-auto h-16 w-16 text-turquoise" />
@@ -188,15 +416,17 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               Ride request sent.
             </h1>
             <p className="mt-4 text-sm leading-7 text-white/70 md:text-base">
-              This request is now available to the admin inbox and dispatch
-              board. This is the core taxi association demo flow.
+              The request is now available in the dispatch board and admin lead
+              inbox with the tariff status, fare basis, and rider details.
             </p>
 
             <div className="mt-7 rounded-[2rem] bg-white p-5 text-left text-ink">
               <div className="flex flex-wrap gap-2">
                 <Badge>{serviceLabels[serviceType]}</Badge>
                 <Badge>{islandLabels[island]}</Badge>
-                <Badge>{formatMoney(quote)} estimate</Badge>
+                <Badge>
+                  {isOfficialMatch ? formatMoney(quote) : "Dispatcher Review"}
+                </Badge>
               </div>
 
               <h2 className="mt-4 text-2xl font-black">
@@ -221,6 +451,10 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   {visitorPhone}
                 </p>
               </div>
+
+              <div className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm font-bold leading-6 text-emerald-950">
+                {tariffQuote.complianceNote}
+              </div>
             </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
@@ -231,6 +465,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 Open Dispatch Board
                 <ArrowRight className="h-4 w-4" />
               </button>
+
               <button
                 onClick={() => navigate("/admin/leads")}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-sm font-black text-ink active:scale-95"
@@ -238,6 +473,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 Admin Leads
                 <ArrowRight className="h-4 w-4" />
               </button>
+
               <button
                 onClick={() => setSubmittedRequestId("")}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-sm font-black text-white active:scale-95"
@@ -253,8 +489,8 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f0da] pb-72 text-ink">
-      <form onSubmit={handleSubmit} className="mx-auto max-w-7xl px-4 py-8 pb-72">
+    <div className="min-h-screen bg-[#f8f0da] pb-96 text-ink">
+      <form onSubmit={handleSubmit} className="mx-auto max-w-7xl px-4 py-8 pb-96">
         <section className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
           <div className="grid gap-6 p-5 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
             <div>
@@ -264,19 +500,20 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </div>
 
               <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-                Taxi association demo ride flow.
+                Official tariff ride request.
               </h1>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
-                Create a visitor transportation request, estimate the ride, and
-                send it directly into the dispatch board and admin lead inbox.
+                Select an island, official tariff pickup, official tariff
+                dropoff, rider details, and add-on charges. The request saves to
+                dispatch with the fare basis attached.
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
                 {[
-                  ["Rider request", "Pickup, dropoff, rider contact, timing."],
-                  ["Dispatch board", "Assign driver and move ride status."],
-                  ["Partner revenue", "Taxi operators can pay for request flow."],
+                  ["Tariff-first", "Customer chooses from loaded official tariff places."],
+                  ["Dispatch-ready", "Requests flow into the taxi operator board."],
+                  ["No fake fares", "Unmatched routes require dispatcher review."],
                 ].map(([title, text]) => (
                   <div key={title} className="rounded-[2rem] bg-white/10 p-4">
                     <p className="text-sm font-black">{title}</p>
@@ -287,14 +524,33 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
             </div>
 
             <aside className="rounded-[2.25rem] bg-white p-5 text-ink">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
-                Live quote
-              </p>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
+                    Live official quote
+                  </p>
 
-              <h2 className="mt-2 text-4xl font-black">{formatMoney(quote)}</h2>
+                  <h2 className="mt-2 text-4xl font-black">
+                    {isOfficialMatch ? formatMoney(quote) : "Review"}
+                  </h2>
+                </div>
+
+                <span
+                  className={[
+                    "rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]",
+                    isOfficialMatch
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-amber-100 text-amber-900",
+                  ].join(" ")}
+                >
+                  {isOfficialMatch ? "Official match" : "Dispatcher review"}
+                </span>
+              </div>
+
               <p className="mt-2 text-sm leading-6 text-stone-600">
-                Demo fare estimate for {serviceLabels[serviceType]} on{" "}
-                {islandLabels[island]}.
+                {isOfficialMatch
+                  ? `Tariff-based fare for ${serviceLabels[serviceType]} on ${islandLabels[island]}.`
+                  : "This route is not matched to a loaded tariff row yet."}
               </p>
 
               <div className="mt-5 space-y-3">
@@ -309,18 +565,121 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 />
               </div>
 
-              <div className="mt-5 rounded-2xl bg-emerald-50 p-4 text-sm font-bold leading-6 text-emerald-950">
-                This request will save to Firestore and appear inside{" "}
-                <span className="font-black">/admin/leads</span> and{" "}
-                <span className="font-black">/mobility/dispatch</span>.
+              <div className="mt-5 rounded-2xl bg-stone-50 p-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-400">
+                  Tariff compliance
+                </p>
+                <p className="mt-2 text-sm font-bold leading-6 text-stone-700">
+                  {tariffQuote.complianceNote}
+                </p>
+
+                {tariffQuote.breakdown.length > 0 ? (
+                  <div className="mt-3 space-y-2">
+                    {tariffQuote.breakdown.map((item) => (
+                      <div
+                        key={item.label}
+                        className="flex items-center justify-between gap-3 rounded-xl bg-white px-3 py-2 text-xs font-black"
+                      >
+                        <span className="text-stone-600">{item.label}</span>
+                        <span className="text-emerald-700">
+                          {formatMoney(item.amount)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </aside>
           </div>
         </section>
 
-        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.9fr]">
+        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.92fr]">
           <div className="space-y-5">
-            <Panel title="1. Select ride type" eyebrow="Service template">
+            <Panel title="1. Official route picker" eyebrow="Tariff route">
+              <div className="grid gap-3 md:grid-cols-2">
+                <label>
+                  <FieldLabel>Island</FieldLabel>
+                  <select
+                    value={island}
+                    onChange={(event) => changeIsland(event.target.value as MobilityIsland)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  >
+                    {supportedIslands.map((value) => (
+                      <option key={value} value={value}>
+                        {islandLabels[value]}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label>
+                  <FieldLabel>Pickup time</FieldLabel>
+                  <input
+                    value={pickupTime}
+                    onChange={(event) => setPickupTime(event.target.value)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  />
+                </label>
+              </div>
+
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                <label>
+                  <FieldLabel>Official tariff pickup</FieldLabel>
+                  <select
+                    value={pickup}
+                    onChange={(event) => setPickup(event.target.value)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  >
+                    {tariffPlaces.map((place) => (
+                      <option key={`pickup-${place}`} value={place}>
+                        {place}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label>
+                  <FieldLabel>Official tariff dropoff</FieldLabel>
+                  <select
+                    value={dropoff}
+                    onChange={(event) => setDropoff(event.target.value)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  >
+                    {tariffPlaces.map((place) => (
+                      <option key={`dropoff-${place}`} value={place}>
+                        {place}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <div className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm font-bold leading-6 text-emerald-950">
+                Pickup and dropoff are loaded from the published tariff tables.
+                Unmatched destinations are handled as dispatcher review instead
+                of invented fares.
+              </div>
+
+              <div className="mt-4">
+                <FieldLabel>Common official demo routes</FieldLabel>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {demoRoutes
+                    .filter((route) => route.island === island)
+                    .map((route) => (
+                      <button
+                        key={route.label}
+                        type="button"
+                        onClick={() => applyRoute(route)}
+                        className="rounded-2xl bg-stone-100 px-4 py-3 text-xs font-black text-stone-700 active:scale-95"
+                      >
+                        {route.label}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            </Panel>
+
+            <Panel title="2. Select ride type" eyebrow="Service template">
               <div className="grid gap-3 md:grid-cols-2">
                 {mobilityServices.map((service) => {
                   const Icon = iconMap[service.icon] || Car;
@@ -358,74 +717,9 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 })}
               </div>
             </Panel>
-
-            <Panel title="2. Pickup and dropoff" eyebrow="Route">
-              <div className="grid gap-3 md:grid-cols-2">
-                <label>
-                  <FieldLabel>Island</FieldLabel>
-                  <select
-                    value={island}
-                    onChange={(event) => setIsland(event.target.value as MobilityIsland)}
-                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
-                  >
-                    {Object.entries(islandLabels).map(([value, label]) => (
-                      <option key={value} value={value}>
-                        {label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label>
-                  <FieldLabel>Pickup time</FieldLabel>
-                  <input
-                    value={pickupTime}
-                    onChange={(event) => setPickupTime(event.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
-                  />
-                </label>
-              </div>
-
-              <div className="mt-3 grid gap-3 md:grid-cols-2">
-                <Field
-                  label="Pickup"
-                  value={pickup}
-                  onChange={setPickup}
-                  placeholder="Airport, hotel, villa, beach..."
-                />
-                <Field
-                  label="Dropoff"
-                  value={dropoff}
-                  onChange={setDropoff}
-                  placeholder="Ferry, beach, restaurant..."
-                />
-              </div>
-
-              <div className="mt-4">
-                <FieldLabel>Quick locations</FieldLabel>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {zonePresets[island].map((zone) => (
-                    <button
-                      key={zone.id}
-                      type="button"
-                      onClick={() => {
-                        if (!pickup || pickup === selectedService?.defaultPickup) {
-                          setPickup(zone.name);
-                        } else {
-                          setDropoff(zone.name);
-                        }
-                      }}
-                      className="rounded-2xl bg-stone-100 px-4 py-3 text-xs font-black text-stone-700 active:scale-95"
-                    >
-                      {zone.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </Panel>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-5 pb-64">
             <Panel title="3. Rider details" eyebrow="Contact and load">
               <div className="grid gap-3 md:grid-cols-2">
                 <Field
@@ -439,6 +733,17 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   value={visitorPhone}
                   onChange={setVisitorPhone}
                   placeholder="(340) 555-0101"
+                  type="tel"
+                />
+              </div>
+
+              <div className="mt-3">
+                <Field
+                  label="Rider email"
+                  value={visitorEmail}
+                  onChange={setVisitorEmail}
+                  placeholder="Optional email"
+                  type="email"
                 />
               </div>
 
@@ -459,6 +764,46 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                 />
               </div>
 
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                <NumberField
+                  label="Oversized luggage"
+                  value={oversizedLuggage}
+                  onChange={setOversizedLuggage}
+                  min={0}
+                  max={20}
+                />
+                <NumberField
+                  label="Waiting minutes"
+                  value={waitingMinutes}
+                  onChange={setWaitingMinutes}
+                  min={0}
+                  max={240}
+                />
+              </div>
+
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                <Toggle
+                  label="Round trip"
+                  checked={roundTrip}
+                  onChange={setRoundTrip}
+                />
+                <Toggle
+                  label="After-hours"
+                  checked={afterHours}
+                  onChange={setAfterHours}
+                />
+                <Toggle
+                  label="Radio / phone call"
+                  checked={radioCall}
+                  onChange={setRadioCall}
+                />
+                <Toggle
+                  label="Exclusive taxi"
+                  checked={exclusiveRide || serviceType === "private_group"}
+                  onChange={setExclusiveRide}
+                />
+              </div>
+
               <label className="mt-3 block">
                 <FieldLabel>Notes</FieldLabel>
                 <textarea
@@ -471,7 +816,29 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </label>
             </Panel>
 
-            <div className="pb-20"><Panel title="4. Submit to dispatch" eyebrow="Taxi association demo">
+            <Panel title="4. Review and send" eyebrow="Dispatch submission">
+              <div
+                className={[
+                  "mb-4 rounded-2xl p-4 text-sm font-bold leading-6",
+                  isOfficialMatch
+                    ? "bg-emerald-50 text-emerald-950"
+                    : "bg-amber-100 text-amber-950",
+                ].join(" ")}
+              >
+                <div className="flex items-start gap-2">
+                  {isOfficialMatch ? (
+                    <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0" />
+                  ) : (
+                    <Info className="mt-0.5 h-5 w-5 shrink-0" />
+                  )}
+                  <p>
+                    {isOfficialMatch
+                      ? `Ready to submit with tariff-based fare ${formatMoney(quote)}.`
+                      : "This request can be submitted, but dispatch must review the fare before confirming."}
+                  </p>
+                </div>
+              </div>
+
               {saveError ? (
                 <div className="mb-4 rounded-2xl bg-amber-100 p-3 text-sm font-bold leading-6 text-amber-950">
                   {saveError}
@@ -503,7 +870,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   Admin Leads
                 </button>
               </div>
-            </Panel></div>
+            </Panel>
           </div>
         </section>
       </form>
@@ -518,7 +885,7 @@ function Panel({
 }: {
   eyebrow: string;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <section className="rounded-[2.25rem] bg-white p-5 shadow-xl">
@@ -531,7 +898,7 @@ function Panel({
   );
 }
 
-function FieldLabel({ children }: { children: React.ReactNode }) {
+function FieldLabel({ children }: { children: ReactNode }) {
   return (
     <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
       {children}
@@ -544,11 +911,13 @@ function Field({
   value,
   onChange,
   placeholder,
+  type = "text",
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   placeholder: string;
+  type?: string;
 }) {
   return (
     <label className="block">
@@ -557,6 +926,7 @@ function Field({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
+        type={type}
         className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
       />
     </label>
@@ -591,6 +961,31 @@ function NumberField({
   );
 }
 
+function Toggle({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: (value: boolean) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onChange(!checked)}
+      className={[
+        "rounded-2xl px-4 py-3 text-left text-xs font-black uppercase tracking-[0.16em] ring-1 active:scale-95",
+        checked
+          ? "bg-emerald-700 text-white ring-emerald-700"
+          : "bg-white text-stone-600 ring-stone-200",
+      ].join(" ")}
+    >
+      {label}
+    </button>
+  );
+}
+
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl bg-stone-50 p-3">
@@ -602,7 +997,7 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Badge({ children }: { children: React.ReactNode }) {
+function Badge({ children }: { children: ReactNode }) {
   return (
     <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-emerald-800">
       {children}
