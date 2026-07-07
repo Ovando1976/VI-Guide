@@ -73,12 +73,6 @@ const MAP_STYLES: Record<MapStyleMode, string> = {
   satellite: "mapbox://styles/mapbox/satellite-streets-v12",
 };
 
-const SOURCE_ID = "vi-points-source";
-const CLUSTER_LAYER_ID = "vi-point-clusters";
-const CLUSTER_COUNT_LAYER_ID = "vi-point-cluster-count";
-const SELECTED_HALO_LAYER_ID = "vi-point-selected-halo";
-const UNCLUSTERED_LAYER_ID = "vi-point-unclustered";
-
 type MarkerStyle = {
   icon: LucideIcon;
   label: string;
@@ -86,7 +80,9 @@ type MarkerStyle = {
   foreground: string;
 };
 
-export function getMapMarkerStyle(type: Exclude<MapFilter, "all">): MarkerStyle {
+export function getMapMarkerStyle(
+  type: Exclude<MapFilter, "all">
+): MarkerStyle {
   if (type === "beach") {
     return {
       icon: Umbrella,
@@ -140,14 +136,21 @@ export function getMapMarkerStyle(type: Exclude<MapFilter, "all">): MarkerStyle 
   };
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+type RenderCluster = {
+  kind: "cluster";
+  id: string;
+  points: MapPoint[];
+  lat: number;
+  lng: number;
+  dominantType: Exclude<MapFilter, "all">;
+};
+
+type RenderPoint = {
+  kind: "point";
+  point: MapPoint;
+};
+
+type RenderItem = RenderCluster | RenderPoint;
 
 function isValidPoint(point: MapPoint) {
   return (
@@ -158,246 +161,212 @@ function isValidPoint(point: MapPoint) {
   );
 }
 
-function buildGeoJson(points: MapPoint[]) {
-  return {
-    type: "FeatureCollection" as const,
-    features: points.filter(isValidPoint).map((point) => ({
-      type: "Feature" as const,
-      geometry: {
-        type: "Point" as const,
-        coordinates: [Number(point.lng), Number(point.lat)],
-      },
-      properties: {
-        id: point.id,
-        title: point.title,
-        type: point.type,
-        description: point.description,
-      },
-    })),
-  };
+function getClusterCellSize(zoom: number) {
+  if (zoom < 10) return 0.08;
+  if (zoom < 11) return 0.045;
+  if (zoom < 12) return 0.026;
+  if (zoom < 13) return 0.014;
+  if (zoom < 14) return 0.007;
+  return 0;
 }
 
-function getImageId(type: Exclude<MapFilter, "all">) {
-  return `vi-marker-${type}`;
+function dominantType(points: MapPoint[]): Exclude<MapFilter, "all"> {
+  const counts = points.reduce<Record<string, number>>((acc, point) => {
+    acc[point.type] = (acc[point.type] || 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] as Exclude<
+    MapFilter,
+    "all"
+  >;
 }
 
-function buildMarkerSvg(type: Exclude<MapFilter, "all">) {
-  const style = getMapMarkerStyle(type);
-  const Icon = style.icon;
+function getRenderItems(points: MapPoint[], zoom: number): RenderItem[] {
+  const valid = points.filter(isValidPoint);
+  const cellSize = getClusterCellSize(zoom);
 
-  const iconMarkup = renderToStaticMarkup(
-    <Icon
-      size={18}
-      strokeWidth={2.7}
-      color={style.foreground}
-      stroke={style.foreground}
-    />
-  ).replace(
-    "<svg",
-    '<svg x="15" y="15" width="18" height="18" viewBox="0 0 24 24"'
-  );
+  if (cellSize === 0) {
+    return valid.map((point) => ({ kind: "point", point }));
+  }
 
-  return `
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-      <defs>
-        <filter id="shadow" x="-60%" y="-60%" width="220%" height="220%">
-          <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.28"/>
-        </filter>
-      </defs>
-      <circle cx="24" cy="24" r="17" fill="${style.background}" stroke="#ffffff" stroke-width="3" filter="url(#shadow)" />
-      ${iconMarkup}
-    </svg>
-  `.trim();
-}
+  const buckets = new Map<string, MapPoint[]>();
 
-function svgToDataUrl(svg: string) {
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-}
+  for (const point of valid) {
+    const x = Math.round(point.lng / cellSize);
+    const y = Math.round(point.lat / cellSize);
+    const key = `${x}:${y}`;
 
-function loadImage(url: string) {
-  return new Promise<HTMLImageElement>((resolve, reject) => {
-    const image = new Image();
-    image.onload = () => resolve(image);
-    image.onerror = reject;
-    image.src = url;
+    buckets.set(key, [...(buckets.get(key) || []), point]);
+  }
+
+  return Array.from(buckets.entries()).flatMap(([key, bucket]) => {
+    if (bucket.length === 1) {
+      return [{ kind: "point", point: bucket[0] } satisfies RenderPoint];
+    }
+
+    const lat = bucket.reduce((sum, point) => sum + point.lat, 0) / bucket.length;
+    const lng = bucket.reduce((sum, point) => sum + point.lng, 0) / bucket.length;
+
+    return [
+      {
+        kind: "cluster",
+        id: key,
+        points: bucket,
+        lat,
+        lng,
+        dominantType: dominantType(bucket),
+      } satisfies RenderCluster,
+    ];
   });
 }
 
-async function ensureMarkerImages(map: mapboxgl.Map) {
-  const types: Array<Exclude<MapFilter, "all">> = [
-    "beach",
-    "history",
-    "transport",
-    "food",
-    "event",
-    "attraction",
-  ];
+function makeIconSvg(type: Exclude<MapFilter, "all">, size: number) {
+  const style = getMapMarkerStyle(type);
+  const Icon = style.icon;
 
-  for (const type of types) {
-    const imageId = getImageId(type);
-
-    if (map.hasImage(imageId)) continue;
-
-    const image = await loadImage(svgToDataUrl(buildMarkerSvg(type)));
-    map.addImage(imageId, image, { pixelRatio: 2 });
-  }
+  return renderToStaticMarkup(
+    <Icon size={size} strokeWidth={2.75} color={style.foreground} />
+  );
 }
 
-function ensureSourceAndLayers(map: mapboxgl.Map) {
-  if (!map.getSource(SOURCE_ID)) {
-    map.addSource(SOURCE_ID, {
-      type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: [],
-      },
-      cluster: true,
-      clusterRadius: 64,
-      clusterMaxZoom: 13,
-    });
-  }
+function makePointElement(point: MapPoint, selected: boolean) {
+  const style = getMapMarkerStyle(point.type);
+  const outerSize = selected ? 36 : 28;
+  const innerSize = selected ? 30 : 23;
+  const iconSize = selected ? 16 : 13;
 
-  if (!map.getLayer(CLUSTER_LAYER_ID)) {
-    map.addLayer({
-      id: CLUSTER_LAYER_ID,
-      type: "circle",
-      source: SOURCE_ID,
-      filter: ["has", "point_count"],
-      paint: {
-        "circle-color": [
-          "step",
-          ["get", "point_count"],
-          "#0f4f45",
-          10,
-          "#12695b",
-          25,
-          "#13806e",
-          50,
-          "#17a38d",
-        ],
-        "circle-radius": [
-          "step",
-          ["get", "point_count"],
-          26,
-          10,
-          32,
-          25,
-          38,
-          50,
-          44,
-        ],
-        "circle-stroke-width": 5,
-        "circle-stroke-color": "#ffffff",
-        "circle-opacity": 0.97,
-      },
-    });
-  }
+  const el = document.createElement("button");
+  el.type = "button";
+  el.title = point.title;
+  el.setAttribute("aria-label", `${style.label}: ${point.title}`);
 
-  if (!map.getLayer(CLUSTER_COUNT_LAYER_ID)) {
-    map.addLayer({
-      id: CLUSTER_COUNT_LAYER_ID,
-      type: "symbol",
-      source: SOURCE_ID,
-      filter: ["has", "point_count"],
-      layout: {
-        "text-field": ["get", "point_count_abbreviated"],
-        "text-size": [
-          "step",
-          ["get", "point_count"],
-          14,
-          10,
-          16,
-          25,
-          18,
-        ],
-        "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-      },
-      paint: {
-        "text-color": "#ffffff",
-      },
-    });
-  }
+  el.style.width = `${outerSize}px`;
+  el.style.height = `${outerSize}px`;
+  el.style.border = "0";
+  el.style.padding = "0";
+  el.style.borderRadius = "999px";
+  el.style.background = selected
+    ? "rgba(45, 212, 191, 0.24)"
+    : "rgba(255,255,255,0.82)";
+  el.style.display = "grid";
+  el.style.placeItems = "center";
+  el.style.cursor = "pointer";
+  el.style.boxShadow = selected
+    ? "0 0 0 7px rgba(20,184,166,0.22), 0 14px 28px rgba(15,23,42,0.28)"
+    : "0 7px 16px rgba(15,23,42,0.22)";
+  el.style.transform = selected ? "scale(1.12)" : "scale(1)";
+  el.style.transition = "transform 160ms ease, box-shadow 160ms ease";
 
-  if (!map.getLayer(SELECTED_HALO_LAYER_ID)) {
-    map.addLayer({
-      id: SELECTED_HALO_LAYER_ID,
-      type: "circle",
-      source: SOURCE_ID,
-      filter: [
-        "all",
-        ["!", ["has", "point_count"]],
-        ["==", ["get", "id"], "__none__"],
-      ],
-      paint: {
-        "circle-radius": 23,
-        "circle-color": "#2dd4bf",
-        "circle-opacity": 0.24,
-        "circle-stroke-color": "#2dd4bf",
-        "circle-stroke-width": 3,
-        "circle-stroke-opacity": 0.6,
-      },
-    });
-  }
+  el.innerHTML = `
+    <span
+      style="
+        width:${innerSize}px;
+        height:${innerSize}px;
+        display:grid;
+        place-items:center;
+        border-radius:999px;
+        border:${selected ? "3px" : "2px"} solid white;
+        background:${style.background};
+        color:${style.foreground};
+      "
+    >
+      ${makeIconSvg(point.type, iconSize)}
+    </span>
+  `;
 
-  if (!map.getLayer(UNCLUSTERED_LAYER_ID)) {
-    map.addLayer({
-      id: UNCLUSTERED_LAYER_ID,
-      type: "symbol",
-      source: SOURCE_ID,
-      filter: ["!", ["has", "point_count"]],
-      layout: {
-        "icon-image": [
-          "match",
-          ["get", "type"],
-          "beach",
-          getImageId("beach"),
-          "history",
-          getImageId("history"),
-          "transport",
-          getImageId("transport"),
-          "food",
-          getImageId("food"),
-          "event",
-          getImageId("event"),
-          "attraction",
-          getImageId("attraction"),
-          getImageId("attraction"),
-        ],
-        "icon-size": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          10,
-          0.46,
-          12,
-          0.56,
-          14,
-          0.72,
-          16,
-          0.88,
-        ],
-        "icon-allow-overlap": true,
-        "icon-ignore-placement": true,
-      },
-    });
-  }
+  el.addEventListener("mouseenter", () => {
+    el.style.transform = "scale(1.18)";
+  });
+
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = selected ? "scale(1.12)" : "scale(1)";
+  });
+
+  return el;
 }
 
-function setSourceData(map: mapboxgl.Map, data: ReturnType<typeof buildGeoJson>) {
-  const source = map.getSource(SOURCE_ID) as mapboxgl.GeoJSONSource | undefined;
-  if (!source) return;
+function makeClusterElement(cluster: RenderCluster) {
+  const style = getMapMarkerStyle(cluster.dominantType);
+  const count = cluster.points.length;
+  const size = count >= 50 ? 70 : count >= 25 ? 62 : count >= 10 ? 56 : 50;
+  const iconSize = count >= 25 ? 20 : 18;
 
-  source.setData(data as GeoJSON.FeatureCollection);
+  const el = document.createElement("button");
+  el.type = "button";
+  el.title = `${count} places`;
+  el.setAttribute("aria-label", `${count} places`);
+
+  el.style.width = `${size}px`;
+  el.style.height = `${size}px`;
+  el.style.border = "0";
+  el.style.padding = "0";
+  el.style.borderRadius = "999px";
+  el.style.background = "rgba(15,23,42,0.15)";
+  el.style.display = "grid";
+  el.style.placeItems = "center";
+  el.style.cursor = "pointer";
+  el.style.boxShadow =
+    "0 0 0 8px rgba(15,23,42,0.12), 0 18px 34px rgba(15,23,42,0.3)";
+  el.style.transition = "transform 160ms ease, box-shadow 160ms ease";
+
+  el.innerHTML = `
+    <span
+      style="
+        width:${size - 8}px;
+        height:${size - 8}px;
+        display:grid;
+        place-items:center;
+        border-radius:999px;
+        border:4px solid white;
+        background:#073f36;
+        color:white;
+        position:relative;
+      "
+    >
+      <span style="position:absolute; top:8px; display:grid; place-items:center; opacity:.9;">
+        ${makeIconSvg(cluster.dominantType, iconSize)}
+      </span>
+      <span
+        style="
+          position:absolute;
+          bottom:8px;
+          min-width:26px;
+          height:20px;
+          display:grid;
+          place-items:center;
+          border-radius:999px;
+          background:${style.background};
+          color:white;
+          font-size:12px;
+          font-weight:900;
+          line-height:1;
+          padding:0 7px;
+        "
+      >
+        ${count}
+      </span>
+    </span>
+  `;
+
+  el.addEventListener("mouseenter", () => {
+    el.style.transform = "scale(1.08)";
+  });
+
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = "scale(1)";
+  });
+
+  return el;
 }
 
-function setSelectedFilter(map: mapboxgl.Map, selectedPointId: string | null) {
-  if (!map.getLayer(SELECTED_HALO_LAYER_ID)) return;
-
-  map.setFilter(SELECTED_HALO_LAYER_ID, [
-    "all",
-    ["!", ["has", "point_count"]],
-    ["==", ["get", "id"], selectedPointId ?? "__none__"],
-  ]);
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 export default function IslandMap({
@@ -410,15 +379,12 @@ export default function IslandMap({
 }: IslandMapProps) {
   const mapNodeRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
-  const latestGeoJsonRef = useRef(buildGeoJson([]));
-  const latestSelectedIdRef = useRef<string | null>(selectedPointId);
-  const latestPointsRef = useRef<MapPoint[]>(points);
-  const onSelectPointRef = useRef(onSelectPoint);
-  const syncRetryRef = useRef<number | null>(null);
+  const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const pointsRef = useRef<MapPoint[]>(points);
+  const selectedPointIdRef = useRef<string | null>(selectedPointId);
 
-  latestPointsRef.current = points;
-  latestSelectedIdRef.current = selectedPointId;
-  onSelectPointRef.current = onSelectPoint;
+  pointsRef.current = points;
+  selectedPointIdRef.current = selectedPointId;
 
   const center =
     ISLAND_CENTER[selectedIsland as keyof typeof ISLAND_CENTER] ??
@@ -432,36 +398,91 @@ export default function IslandMap({
       : valid.filter((point) => point.type === activeFilter);
   }, [activeFilter, points]);
 
-  const geoJson = useMemo(() => buildGeoJson(visiblePoints), [visiblePoints]);
-
   const selectedPoint = useMemo(
     () => points.find((point) => point.id === selectedPointId) ?? null,
     [points, selectedPointId]
   );
 
-  latestGeoJsonRef.current = geoJson;
-
-  const syncMapVisuals = useCallback(async () => {
+  const renderMarkers = useCallback(() => {
     const map = mapRef.current;
     if (!map) return;
 
-    if (!map.loaded() || !map.isStyleLoaded()) {
-      if (syncRetryRef.current) {
-        window.clearTimeout(syncRetryRef.current);
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+
+    const zoom = map.getZoom();
+    const items = getRenderItems(visiblePoints, zoom);
+
+    for (const item of items) {
+      if (item.kind === "cluster") {
+        const element = makeClusterElement(item);
+
+        element.addEventListener("click", (event) => {
+          event.stopPropagation();
+
+          const bounds = new mapboxgl.LngLatBounds();
+
+          item.points.forEach((point) => {
+            bounds.extend([point.lng, point.lat]);
+          });
+
+          map.fitBounds(bounds, {
+            padding: 90,
+            maxZoom: Math.max(map.getZoom() + 1.2, 13.5),
+            duration: 650,
+            essential: true,
+          });
+        });
+
+        const marker = new mapboxgl.Marker({
+          element,
+          anchor: "center",
+        })
+          .setLngLat([item.lng, item.lat])
+          .addTo(map);
+
+        markersRef.current.push(marker);
+        continue;
       }
 
-      syncRetryRef.current = window.setTimeout(() => {
-        void syncMapVisuals();
-      }, 120);
+      const point = item.point;
+      const selected = point.id === selectedPointIdRef.current;
+      const element = makePointElement(point, selected);
 
-      return;
+      element.addEventListener("click", (event) => {
+        event.stopPropagation();
+        onSelectPoint(point);
+
+        map.flyTo({
+          center: [point.lng, point.lat],
+          zoom: Math.max(map.getZoom(), 14.4),
+          duration: 650,
+          essential: true,
+        });
+      });
+
+      const popup = new mapboxgl.Popup({
+        offset: 18,
+        closeButton: false,
+        className: "vi-map-popup",
+      }).setHTML(
+        `<div style="max-width:220px">
+          <strong>${escapeHtml(point.title)}</strong><br/>
+          <span>${escapeHtml(point.description)}</span>
+        </div>`
+      );
+
+      const marker = new mapboxgl.Marker({
+        element,
+        anchor: "center",
+      })
+        .setLngLat([point.lng, point.lat])
+        .setPopup(popup)
+        .addTo(map);
+
+      markersRef.current.push(marker);
     }
-
-    await ensureMarkerImages(map);
-    ensureSourceAndLayers(map);
-    setSourceData(map, latestGeoJsonRef.current);
-    setSelectedFilter(map, latestSelectedIdRef.current);
-  }, []);
+  }, [onSelectPoint, visiblePoints]);
 
   useEffect(() => {
     if (!mapNodeRef.current || mapRef.current) return;
@@ -496,87 +517,32 @@ export default function IslandMap({
 
     resizeObserver.observe(mapNodeRef.current);
 
-    const handleClick = (event: mapboxgl.MapMouseEvent) => {
-      const clusterFeatures = map.queryRenderedFeatures(event.point, {
-        layers: [CLUSTER_LAYER_ID],
-      });
-
-      if (clusterFeatures.length > 0) {
-        const clusterFeature = clusterFeatures[0];
-        const clusterId = clusterFeature.properties?.cluster_id;
-        const source = map.getSource(SOURCE_ID) as mapboxgl.GeoJSONSource;
-
-        if (!source || clusterId == null) return;
-
-        source.getClusterExpansionZoom(clusterId, (error, zoom) => {
-          if (error) return;
-
-          const coordinates = (clusterFeature.geometry as GeoJSON.Point)
-            .coordinates as [number, number];
-
-          map.easeTo({
-            center: coordinates,
-            zoom,
-            duration: 550,
-          });
-        });
-
-        return;
-      }
-
-      const pointFeatures = map.queryRenderedFeatures(event.point, {
-        layers: [UNCLUSTERED_LAYER_ID],
-      });
-
-      if (pointFeatures.length > 0) {
-        const pointId = String(pointFeatures[0].properties?.id || "");
-        const point = latestPointsRef.current.find((item) => item.id === pointId);
-
-        if (point) {
-          onSelectPointRef.current(point);
-        }
-      }
-    };
-
-    const handleMouseMove = (event: mapboxgl.MapMouseEvent) => {
-      const features = map.queryRenderedFeatures(event.point, {
-        layers: [CLUSTER_LAYER_ID, UNCLUSTERED_LAYER_ID],
-      });
-
-      map.getCanvas().style.cursor = features.length > 0 ? "pointer" : "";
-    };
-
     map.on("load", () => {
-      void syncMapVisuals();
       map.resize();
+      renderMarkers();
     });
 
-    map.on("style.load", () => {
-      void syncMapVisuals();
-    });
-
-    map.on("click", handleClick);
-    map.on("mousemove", handleMouseMove);
+    map.on("zoomend", renderMarkers);
+    map.on("moveend", renderMarkers);
 
     return () => {
-      if (syncRetryRef.current) {
-        window.clearTimeout(syncRetryRef.current);
-      }
-
       resizeObserver.disconnect();
-      map.off("click", handleClick);
-      map.off("mousemove", handleMouseMove);
+      map.off("zoomend", renderMarkers);
+      map.off("moveend", renderMarkers);
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current = [];
       map.remove();
       mapRef.current = null;
     };
-  }, [center.center, center.zoom, mapStyleMode, syncMapVisuals]);
+  }, []);
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
 
     map.setStyle(MAP_STYLES[mapStyleMode]);
-  }, [mapStyleMode]);
+    window.setTimeout(renderMarkers, 250);
+  }, [mapStyleMode, renderMarkers]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -588,11 +554,13 @@ export default function IslandMap({
       duration: 700,
       essential: true,
     });
-  }, [center.center, center.zoom]);
+
+    window.setTimeout(renderMarkers, 250);
+  }, [center.center, center.zoom, renderMarkers]);
 
   useEffect(() => {
-    void syncMapVisuals();
-  }, [geoJson, selectedPointId, syncMapVisuals]);
+    renderMarkers();
+  }, [renderMarkers, selectedPointId]);
 
   useEffect(() => {
     const map = mapRef.current;
