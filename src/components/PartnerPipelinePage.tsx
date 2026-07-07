@@ -323,6 +323,13 @@ export default function PartnerPipelinePage() {
                 Business Proof
               </button>
               <button
+                onClick={() => navigate("/partner-directory")}
+                className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Partner Directory
+              </button>
+
+              <button
                 onClick={() => navigate("/partner-close")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
               >
