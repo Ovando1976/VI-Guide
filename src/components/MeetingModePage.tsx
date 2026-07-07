@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
-import type { LucideIcon   ShieldCheck,
-} from "lucide-react";
+import { LucideIcon, ShieldCheck } from "lucide-react";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -66,10 +65,26 @@ const audiences: MeetingAudience[] = [
       "Taxi partners become part of the visitor journey, not an afterthought.",
     ],
     demoPath: [
-      { label: "Map", path: "/map", reason: "Show visitor destination discovery." },
-      { label: "Mobility", path: "/mobility", reason: "Show ride request flow." },
-      { label: "Dispatch", path: "/mobility/dispatch", reason: "Show command center." },
-      { label: "Taxi Demo", path: "/taxi-demo", reason: "Show association-ready story." },
+      {
+        label: "Map",
+        path: "/map",
+        reason: "Show visitor destination discovery.",
+      },
+      {
+        label: "Mobility",
+        path: "/mobility",
+        reason: "Show ride request flow.",
+      },
+      {
+        label: "Dispatch",
+        path: "/mobility/dispatch",
+        reason: "Show command center.",
+      },
+      {
+        label: "Taxi Demo",
+        path: "/taxi-demo",
+        reason: "Show association-ready story.",
+      },
     ],
     ask: [
       "Review the tariff and dispatcher workflow.",
@@ -102,8 +117,16 @@ const audiences: MeetingAudience[] = [
     demoPath: [
       { label: "Map", path: "/map", reason: "Show guest discovery." },
       { label: "Mobility", path: "/mobility", reason: "Show ride handoff." },
-      { label: "Partner Directory", path: "/partner-directory", reason: "Show local network." },
-      { label: "Tourism Alliance", path: "/tourism-alliance", reason: "Show territory-wide fit." },
+      {
+        label: "Partner Directory",
+        path: "/partner-directory",
+        reason: "Show local network.",
+      },
+      {
+        label: "Tourism Alliance",
+        path: "/tourism-alliance",
+        reason: "Show territory-wide fit.",
+      },
     ],
     ask: [
       "Identify hotel pilot properties.",
@@ -134,10 +157,26 @@ const audiences: MeetingAudience[] = [
       "Map placement connects discovery to real visitor action.",
     ],
     demoPath: [
-      { label: "Business Proof", path: "/business-proof", reason: "Show measurable ROI." },
-      { label: "Partner Close", path: "/partner-close", reason: "Show sales workflow." },
-      { label: "Partner Pipeline", path: "/partner-pipeline", reason: "Show partner management." },
-      { label: "Partner Directory", path: "/partner-directory", reason: "Show member directory." },
+      {
+        label: "Business Proof",
+        path: "/business-proof",
+        reason: "Show measurable ROI.",
+      },
+      {
+        label: "Partner Close",
+        path: "/partner-close",
+        reason: "Show sales workflow.",
+      },
+      {
+        label: "Partner Pipeline",
+        path: "/partner-pipeline",
+        reason: "Show partner management.",
+      },
+      {
+        label: "Partner Directory",
+        path: "/partner-directory",
+        reason: "Show member directory.",
+      },
     ],
     ask: [
       "Provide a pilot member list.",
@@ -168,9 +207,21 @@ const audiences: MeetingAudience[] = [
       "One alliance pipeline for hotels, taxis, chambers, and tourism groups.",
     ],
     demoPath: [
-      { label: "Tourism Alliance", path: "/tourism-alliance", reason: "Show ecosystem story." },
-      { label: "Alliance Pipeline", path: "/alliance-pipeline", reason: "Show outreach management." },
-      { label: "Map Intent", path: "/map-intent", reason: "Show visitor behavior." },
+      {
+        label: "Tourism Alliance",
+        path: "/tourism-alliance",
+        reason: "Show ecosystem story.",
+      },
+      {
+        label: "Alliance Pipeline",
+        path: "/alliance-pipeline",
+        reason: "Show outreach management.",
+      },
+      {
+        label: "Map Intent",
+        path: "/map-intent",
+        reason: "Show visitor behavior.",
+      },
       { label: "Map", path: "/map", reason: "Show product core." },
     ],
     ask: [
@@ -203,9 +254,21 @@ const audiences: MeetingAudience[] = [
     ],
     demoPath: [
       { label: "Map", path: "/map", reason: "Show discovery." },
-      { label: "Business Proof", path: "/business-proof", reason: "Show ROI proof." },
-      { label: "Partner Onboarding", path: "/partner-onboarding", reason: "Show setup." },
-      { label: "Partner Directory", path: "/partner-directory", reason: "Show active listing." },
+      {
+        label: "Business Proof",
+        path: "/business-proof",
+        reason: "Show ROI proof.",
+      },
+      {
+        label: "Partner Onboarding",
+        path: "/partner-onboarding",
+        reason: "Show setup.",
+      },
+      {
+        label: "Partner Directory",
+        path: "/partner-directory",
+        reason: "Show active listing.",
+      },
     ],
     ask: [
       "Provide business details, photos, address, and offer.",
@@ -238,8 +301,16 @@ const audiences: MeetingAudience[] = [
     demoPath: [
       { label: "Map", path: "/map", reason: "Show quick discovery." },
       { label: "Mobility", path: "/mobility", reason: "Show ride handoff." },
-      { label: "Partner Directory", path: "/partner-directory", reason: "Show partner network." },
-      { label: "Business Proof", path: "/business-proof", reason: "Show visitor intent." },
+      {
+        label: "Partner Directory",
+        path: "/partner-directory",
+        reason: "Show partner network.",
+      },
+      {
+        label: "Business Proof",
+        path: "/business-proof",
+        reason: "Show visitor intent.",
+      },
     ],
     ask: [
       "Identify port-area priority businesses.",
@@ -259,8 +330,16 @@ const quickLinks = [
   { label: "Map Intent", path: "/map-intent", icon: MapPin },
   { label: "Business Proof", path: "/business-proof", icon: BadgeDollarSign },
   { label: "Hotels / Stays", path: "/hotels", icon: Hotel },
-  { label: "Accommodation Partner", path: "/accommodation-partner", icon: Hotel },
-  { label: "Accommodation Review", path: "/accommodation-review", icon: ShieldCheck },
+  {
+    label: "Accommodation Partner",
+    path: "/accommodation-partner",
+    icon: Hotel,
+  },
+  {
+    label: "Accommodation Review",
+    path: "/accommodation-review",
+    icon: ShieldCheck,
+  },
   { label: "Direct Booking", path: "/direct-booking", icon: BedDouble },
   { label: "Booking Partners", path: "/booking-partners", icon: Building2 },
   { label: "Partner Pipeline", path: "/partner-pipeline", icon: Rocket },
@@ -319,9 +398,21 @@ export default function MeetingModePage() {
           </div>
 
           <div className="mt-7 grid gap-3 md:grid-cols-4">
-            <HeroStat label="Pitch audience" value={audience.label} icon={AudienceIcon} />
-            <HeroStat label="Demo stops" value={audience.demoPath.length} icon={ClipboardList} />
-            <HeroStat label="Core ask" value={audience.ask.length} icon={CheckCircle2} />
+            <HeroStat
+              label="Pitch audience"
+              value={audience.label}
+              icon={AudienceIcon}
+            />
+            <HeroStat
+              label="Demo stops"
+              value={audience.demoPath.length}
+              icon={ClipboardList}
+            />
+            <HeroStat
+              label="Core ask"
+              value={audience.ask.length}
+              icon={CheckCircle2}
+            />
             <HeroStat label="Goal" value="Pilot buy-in" icon={Sparkles} />
           </div>
         </div>
@@ -349,7 +440,11 @@ export default function MeetingModePage() {
                           : "bg-stone-50 text-ink hover:bg-stone-100"
                       }`}
                     >
-                      <Icon className={`h-5 w-5 ${active ? "text-turquoise" : "text-emerald-700"}`} />
+                      <Icon
+                        className={`h-5 w-5 ${
+                          active ? "text-turquoise" : "text-emerald-700"
+                        }`}
+                      />
                       {item.label}
                     </button>
                   );
@@ -417,7 +512,9 @@ export default function MeetingModePage() {
               <p className="text-xs font-black uppercase tracking-[0.22em] text-turquoise">
                 Live demo path
               </p>
-              <h2 className="mt-2 text-3xl font-black">Open these screens in order.</h2>
+              <h2 className="mt-2 text-3xl font-black">
+                Open these screens in order.
+              </h2>
 
               <div className="mt-5 grid gap-3 md:grid-cols-2">
                 {audience.demoPath.map((step, index) => (
@@ -447,13 +544,20 @@ export default function MeetingModePage() {
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
                   The ask
                 </p>
-                <h2 className="mt-2 text-3xl font-black">What we need from them</h2>
+                <h2 className="mt-2 text-3xl font-black">
+                  What we need from them
+                </h2>
 
                 <div className="mt-5 space-y-3">
                   {audience.ask.map((item) => (
-                    <div key={item} className="flex items-start gap-3 rounded-2xl bg-stone-50 p-4">
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 rounded-2xl bg-stone-50 p-4"
+                    >
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" />
-                      <p className="text-sm font-bold leading-6 text-stone-700">{item}</p>
+                      <p className="text-sm font-bold leading-6 text-stone-700">
+                        {item}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -507,7 +611,9 @@ function PitchBlock({
       <div className="flex items-center gap-3">
         <div
           className={`grid h-12 w-12 place-items-center rounded-2xl ${
-            tone === "emerald" ? "bg-emerald-950 text-turquoise" : "bg-stone-100 text-emerald-700"
+            tone === "emerald"
+              ? "bg-emerald-950 text-turquoise"
+              : "bg-stone-100 text-emerald-700"
           }`}
         >
           <Icon className="h-6 w-6" />
