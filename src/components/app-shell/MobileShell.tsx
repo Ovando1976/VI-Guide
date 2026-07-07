@@ -17,6 +17,8 @@ import DirectBookingHub from "../DirectBookingHub";
 import BookingPartnersPage from "../BookingPartnersPage";
 import CustomerStaysPage from "../CustomerStaysPage";
 import CustomerAccommodationDetailPage from "../CustomerAccommodationDetailPage";
+import AccommodationPartnerPortalPage from "../AccommodationPartnerPortalPage";
+import AccommodationReviewPage from "../AccommodationReviewPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -83,6 +85,10 @@ export function MobileShell({ children }: MobileShellProps) {
       <DirectBookingHub />
     ) : location.pathname === "/booking-partners" ? (
       <BookingPartnersPage />
+    ) : location.pathname === "/accommodation-partner" ? (
+      <AccommodationPartnerPortalPage />
+    ) : location.pathname === "/accommodation-review" ? (
+      <AccommodationReviewPage />
     ) : ["/hotels", "/stays", "/lodging"].some((prefix) =>
       location.pathname.startsWith(`${prefix}/`)
     ) ? (

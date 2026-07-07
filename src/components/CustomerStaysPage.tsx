@@ -28,6 +28,7 @@ import {
   type CustomerBookingRecord,
 } from "../data/customerBookingCatalog";
 import { generatedCustomerBookingCatalog } from "../data/customerBookingCatalog.generated";
+import { applyAccommodationPartnerOverrides } from "../lib/accommodations/accommodationPartnerPages";
 
 type BookingPartnerStatus =
   | "target"
@@ -228,12 +229,14 @@ export default function CustomerStaysPage() {
     const combined: CustomerBookingRecord[] = [...activePartnerRecords, ...generatedCustomerBookingCatalog, ...enrichedCustomerBookingCatalog];
     const seen = new Set<string>();
 
-    return combined.filter((record) => {
+    const deduped = combined.filter((record) => {
       const key = `${record.category}-${record.island}-${record.businessName}`.toLowerCase();
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
     });
+
+    return applyAccommodationPartnerOverrides(deduped);
   }, [partners]);
 
   const categoryCounts = useMemo(() => {

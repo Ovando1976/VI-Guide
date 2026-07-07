@@ -349,6 +349,13 @@ export default function BookingPartnersPage() {
 
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[430px]">
               <button
+                onClick={() => navigate("/accommodation-partner")}
+                className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Partner Page Manager
+              </button>
+
+              <button
                 onClick={() => navigate("/hotels")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
               >

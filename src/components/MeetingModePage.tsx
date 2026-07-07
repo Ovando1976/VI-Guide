@@ -258,6 +258,8 @@ const quickLinks = [
   { label: "Map Intent", path: "/map-intent", icon: MapPin },
   { label: "Business Proof", path: "/business-proof", icon: BadgeDollarSign },
   { label: "Hotels / Stays", path: "/hotels", icon: Hotel },
+  { label: "Accommodation Partner", path: "/accommodation-partner", icon: Hotel },
+  { label: "Accommodation Review", path: "/accommodation-review", icon: ShieldCheck },
   { label: "Direct Booking", path: "/direct-booking", icon: BedDouble },
   { label: "Booking Partners", path: "/booking-partners", icon: Building2 },
   { label: "Partner Pipeline", path: "/partner-pipeline", icon: Rocket },

@@ -30,6 +30,7 @@ import {
   type CustomerBookingRecord,
 } from "../data/customerBookingCatalog";
 import { generatedCustomerBookingCatalog } from "../data/customerBookingCatalog.generated";
+import { applyAccommodationPartnerOverrides } from "../lib/accommodations/accommodationPartnerPages";
 import {
   accommodationSlug,
   saveAccommodationMapFocus,
@@ -180,12 +181,14 @@ export default function CustomerAccommodationDetailPage() {
 
     const seen = new Set<string>();
 
-    return combined.filter((record) => {
+    const deduped = combined.filter((record) => {
       const key = `${record.category}-${record.island}-${record.businessName}`.toLowerCase();
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
     });
+
+    return applyAccommodationPartnerOverrides(deduped);
   }, []);
 
   const record = records.find(
