@@ -311,6 +311,26 @@ export default function PartnerBillingPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <section className="mx-auto max-w-7xl px-4 pt-5">
+        <button
+          type="button"
+          onClick={() => window.location.assign("/partner-desk")}
+          className="mb-5 flex w-full items-center justify-between rounded-[2rem] bg-[#ffcf32] px-6 py-5 text-left text-ink shadow-xl active:scale-95"
+        >
+          <span>
+            <span className="block text-xs font-black uppercase tracking-[0.22em] text-emerald-900">
+              Organized partner app
+            </span>
+            <span className="mt-1 block text-2xl font-black">Partner Desk</span>
+            <span className="mt-1 block text-sm font-bold text-stone-700">
+              Manage profile, leads, review status, billing, and partner workflow.
+            </span>
+          </span>
+          <span className="text-2xl font-black">→</span>
+        </button>
+      </section>
+
+
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-[2.75rem] bg-ink p-6 text-white shadow-2xl md:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">

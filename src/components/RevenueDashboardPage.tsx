@@ -202,6 +202,26 @@ export default function RevenueDashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <section className="mx-auto max-w-7xl px-4 pt-5">
+        <button
+          type="button"
+          onClick={() => window.location.assign("/admin-desk")}
+          className="mb-5 flex w-full items-center justify-between rounded-[2rem] bg-[#ffcf32] px-6 py-5 text-left text-ink shadow-xl active:scale-95"
+        >
+          <span>
+            <span className="block text-xs font-black uppercase tracking-[0.22em] text-emerald-900">
+              Organized admin app
+            </span>
+            <span className="mt-1 block text-2xl font-black">Admin Desk</span>
+            <span className="mt-1 block text-sm font-bold text-stone-700">
+              Revenue, bookings, outreach, billing, demos, and dispatch in one command center.
+            </span>
+          </span>
+          <span className="text-2xl font-black">→</span>
+        </button>
+      </section>
+
+
       <BusinessRouteTestButtons />
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-[2.75rem] bg-ink p-6 text-white shadow-2xl md:p-8">
