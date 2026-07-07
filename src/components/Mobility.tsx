@@ -1,456 +1,611 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FormEvent, useMemo, useState } from "react";
 import {
   ArrowRight,
   Briefcase,
-  CalendarClock,
   Car,
   CheckCircle2,
+  Clock,
   MapPin,
+  Navigation,
+  Phone,
   Plane,
-  Sailboat,
+  RefreshCw,
   Ship,
   Sparkles,
+  Utensils,
   Users,
+  Waves,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import {
-  calculateDemoFare,
-  createDemoMobilityRequest,
+  estimateMobilityFare,
+  formatMoney,
   islandLabels,
+  mobilityServices,
   serviceLabels,
-  type DemoMobilityIsland,
-  type DemoMobilityServiceType,
-} from "../lib/mobility/demoMobilityStore";
-import { createFirestoreMobilityRequest } from "../lib/firestore/mobilityRequests";
-
-const serviceOptions: Array<{
-  id: DemoMobilityServiceType;
-  title: string;
-  description: string;
-  icon: typeof Car;
-}> = [
-  {
-    id: "airport",
-    title: "Airport Transfer",
-    description: "Airport to hotel, villa, ferry, or beach.",
-    icon: Plane,
-  },
-  {
-    id: "cruise",
-    title: "Cruise Pickup",
-    description: "Cruise dock pickups and short island day plans.",
-    icon: Ship,
-  },
-  {
-    id: "ferry_transfer",
-    title: "Ferry Transfer",
-    description: "Red Hook, Cruz Bay, Crown Bay, and inter-island transfers.",
-    icon: Sailboat,
-  },
-  {
-    id: "beach_day",
-    title: "Beach Day Ride",
-    description: "Beach drop-off and return pickup coordination.",
-    icon: MapPin,
-  },
-  {
-    id: "dinner",
-    title: "Dinner / Nightlife",
-    description: "Evening rides to restaurants, bars, and events.",
-    icon: Sparkles,
-  },
-  {
-    id: "island_tour",
-    title: "Island Tour",
-    description: "Private or group sightseeing route request.",
-    icon: Car,
-  },
-];
-
-const quickPlaces = [
-  "Cyril E. King Airport",
-  "Havensight Cruise Port",
-  "Crown Bay",
-  "Red Hook Ferry Terminal",
-  "Sapphire Beach",
-  "Magens Bay",
-  "Coral World",
-  "Charlotte Amalie",
-  "Cruz Bay Ferry Terminal",
-  "Christiansted",
-];
+  type MobilityIsland,
+  type MobilityServiceType,
+  zonePresets,
+} from "../lib/mobility/mobilityOs";
 
 type MobilityProps = {
   selectedIsland?: unknown;
   user?: unknown;
 };
 
-export default function Mobility(_props: MobilityProps) {
+const iconMap: Record<string, LucideIcon> = {
+  plane: Plane,
+  ship: Ship,
+  navigation: Navigation,
+  waves: Waves,
+  utensils: Utensils,
+  users: Users,
+  car: Car,
+};
+
+function coerceIsland(value: unknown): MobilityIsland {
+  if (
+    value === "st_thomas" ||
+    value === "st_john" ||
+    value === "st_croix" ||
+    value === "water_island"
+  ) {
+    return value;
+  }
+
+  return "st_thomas";
+}
+
+function errorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
+export default function Mobility({ selectedIsland }: MobilityProps) {
   const navigate = useNavigate();
 
-  const [serviceType, setServiceType] = useState<DemoMobilityServiceType>("airport");
-  const [island, setIsland] = useState<DemoMobilityIsland>("st_thomas");
+  const [serviceType, setServiceType] =
+    useState<MobilityServiceType>("airport_transfer");
+  const [island, setIsland] = useState<MobilityIsland>(
+    coerceIsland(selectedIsland)
+  );
   const [pickup, setPickup] = useState("Cyril E. King Airport");
   const [dropoff, setDropoff] = useState("Red Hook Ferry Terminal");
-  const [pickupTime, setPickupTime] = useState("Today · 4:30 PM");
+  const [pickupTime, setPickupTime] = useState("ASAP / next available");
   const [passengers, setPassengers] = useState(2);
   const [luggage, setLuggage] = useState(2);
-  const [visitorName, setVisitorName] = useState("Demo Visitor");
-  const [visitorPhone, setVisitorPhone] = useState("(340) 555-1010");
-  const [notes, setNotes] = useState("Need a reliable transfer and clear pickup instructions.");
-  const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [visitorName, setVisitorName] = useState("");
+  const [visitorPhone, setVisitorPhone] = useState("");
+  const [notes, setNotes] = useState("Need ferry-aware timing.");
   const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState("");
+  const [submittedRequestId, setSubmittedRequestId] = useState("");
 
-  const estimatedFare = useMemo(
-    () => calculateDemoFare({ serviceType, passengers, luggage }),
-    [serviceType, passengers, luggage]
-  );
-
-  async function submitRequest() {
-    setSaving(true);
-    setSaveError(null);
-
-    const request = createDemoMobilityRequest({
-      island,
-      serviceType,
-      pickup,
-      dropoff,
-      pickupTime,
-      passengers,
-      luggage,
-      visitorName,
-      visitorPhone,
-      notes,
-    });
-
-    setSubmittedId(request.id);
-
-    try {
-      const firestoreRequest = await createFirestoreMobilityRequest({
-        island,
+  const quote = useMemo(
+    () =>
+      estimateMobilityFare({
         serviceType,
+        island,
         pickup,
         dropoff,
-        pickupTime,
         passengers,
         luggage,
-        visitorName,
-        visitorPhone,
-        notes,
-        estimatedFare,
-        source: "mobility_page",
-      });
+      }),
+    [dropoff, island, luggage, passengers, pickup, serviceType]
+  );
 
-      setSubmittedId(firestoreRequest.id);
+  const selectedService = useMemo(
+    () => mobilityServices.find((service) => service.id === serviceType),
+    [serviceType]
+  );
+
+  function selectService(nextService: MobilityServiceType) {
+    setServiceType(nextService);
+
+    const service = mobilityServices.find((item) => item.id === nextService);
+    if (service?.defaultPickup) setPickup(service.defaultPickup);
+    if (service?.defaultDropoff) setDropoff(service.defaultDropoff);
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!pickup.trim() || !dropoff.trim() || !visitorName.trim() || !visitorPhone.trim()) {
+      setSaveError("Pickup, dropoff, rider name, and phone are required.");
+      return;
+    }
+
+    setSaving(true);
+    setSaveError("");
+
+    const clientRequestId = `mobility-${Date.now()}`;
+
+    const payload: any = {
+      clientRequestId,
+      serviceType,
+      island,
+      pickup: pickup.trim(),
+      dropoff: dropoff.trim(),
+      pickupTime: pickupTime.trim(),
+      passengers,
+      luggage,
+      visitorName: visitorName.trim(),
+      visitorPhone: visitorPhone.trim(),
+      notes: notes.trim(),
+      estimatedFare: quote,
+      status: "new",
+      source: "mobility_rider_app",
+      assignedDriverName: "",
+      assignedDriverPhone: "",
+      assignedVehicle: "",
+      dispatcherNotes: "",
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+
+    try {
+      const { createFirestoreMobilityRequest } = await import(
+        "../lib/firestore/mobilityRequests"
+      );
+
+      const created = await createFirestoreMobilityRequest(payload);
+
+      try {
+        const previous = JSON.parse(
+          window.localStorage.getItem("vi-demo-mobility-requests") || "[]"
+        );
+        window.localStorage.setItem(
+          "vi-demo-mobility-requests",
+          JSON.stringify([payload, ...previous].slice(0, 25))
+        );
+      } catch {
+        // Local fallback is only for demos. Firestore is the source of truth.
+      }
+
+      const id =
+        typeof created === "string"
+          ? created
+          : created && typeof created === "object" && "id" in created
+            ? String((created as { id?: unknown }).id)
+            : clientRequestId;
+
+      setSubmittedRequestId(id);
     } catch (error) {
-      console.error("Failed to save mobility request to Firestore", error);
-      setSaveError("Saved locally for the demo, but Firestore did not accept the request yet.");
+      setSaveError(errorMessage(error));
     } finally {
       setSaving(false);
     }
   }
 
-  return (
-    <div className="min-h-screen pb-48 pt-24">
-      <section className="mx-auto max-w-6xl px-4">
-        <div className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-2xl">
-          <div className="grid gap-8 p-6 md:grid-cols-[1.05fr_0.95fr] md:p-10">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-turquoise/15 px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-turquoise">
-                <Car className="h-4 w-4" />
-                VI Mobility
+  if (submittedRequestId) {
+    return (
+      <div className="min-h-screen bg-[#f8f0da] px-4 pb-32 pt-8 text-ink">
+        <div className="mx-auto max-w-5xl rounded-[2.75rem] bg-ink p-5 text-white shadow-2xl md:p-10">
+          <div className="mx-auto max-w-2xl text-center">
+            <CheckCircle2 className="mx-auto h-16 w-16 text-turquoise" />
+            <h1 className="mt-5 text-4xl font-black md:text-6xl">
+              Ride request sent.
+            </h1>
+            <p className="mt-4 text-sm leading-7 text-white/70 md:text-base">
+              This request is now available to the admin inbox and dispatch
+              board. This is the core taxi association demo flow.
+            </p>
+
+            <div className="mt-7 rounded-[2rem] bg-white p-5 text-left text-ink">
+              <div className="flex flex-wrap gap-2">
+                <Badge>{serviceLabels[serviceType]}</Badge>
+                <Badge>{islandLabels[island]}</Badge>
+                <Badge>{formatMoney(quote)} estimate</Badge>
               </div>
 
-              <h1 className="mt-6 text-4xl font-black leading-tight md:text-6xl">
-                Taxi, ferry, cruise, and tour requests in one local flow.
-              </h1>
+              <h2 className="mt-4 text-2xl font-black">
+                {pickup} → {dropoff}
+              </h2>
 
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/75">
-                This is a coordination layer for licensed operators and local partners.
-                Visitors request transportation, and dispatchers see organized,
-                high-intent leads.
-              </p>
-
-              <div className="mt-7 grid grid-cols-3 gap-3">
-                {[
-                  ["Airport", "Transfers"],
-                  ["Cruise", "Pickups"],
-                  ["Ferry", "Timing"],
-                ].map(([top, bottom]) => (
-                  <div key={top} className="rounded-3xl bg-white/10 p-4">
-                    <p className="text-2xl font-black">{top}</p>
-                    <p className="mt-1 text-xs font-bold text-white/55">{bottom}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-white/10 bg-white/10 p-5">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-turquoise">
-                Demo quote
-              </p>
-
-              <div className="mt-5 rounded-[2rem] bg-white p-5 text-ink">
-                <p className="text-sm font-black text-stone-500">
-                  {serviceLabels[serviceType]}
+              <div className="mt-4 grid gap-3 text-sm font-bold text-stone-600 md:grid-cols-2">
+                <p className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-emerald-700" />
+                  {pickupTime}
                 </p>
-
-                <div className="mt-4 flex items-end justify-between gap-4">
-                  <div>
-                    <p className="text-5xl font-black">${estimatedFare}</p>
-                    <p className="mt-1 text-xs font-bold text-stone-500">
-                      estimated demo fare
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-emerald-50 p-3 text-emerald-700">
-                    <CheckCircle2 className="h-7 w-7" />
-                  </div>
-                </div>
-
-                <div className="mt-5 space-y-3 text-sm font-bold text-stone-600">
-                  <p className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-emerald-700" />
-                    {pickup} → {dropoff}
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-emerald-700" />
-                    {passengers} passenger{passengers === 1 ? "" : "s"}
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Briefcase className="h-4 w-4 text-emerald-700" />
-                    {luggage} bag{luggage === 1 ? "" : "s"}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => navigate("/mobility/dispatch")}
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-4 text-sm font-black text-white active:scale-95"
-                >
-                  Open Dispatch Dashboard
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+                <p className="flex items-center gap-2">
+                  <Users className="h-4 w-4 text-emerald-700" />
+                  {passengers} passenger{passengers === 1 ? "" : "s"}
+                </p>
+                <p className="flex items-center gap-2">
+                  <Briefcase className="h-4 w-4 text-emerald-700" />
+                  {luggage} luggage
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-emerald-700" />
+                  {visitorPhone}
+                </p>
               </div>
             </div>
-          </div>
 
-          <div className="grid border-t border-white/10 md:grid-cols-4">
-            {[
-              "Visitor request",
-              "Tariff-aware estimate",
-              "Operator dispatch",
-              "Partner reporting",
-            ].map((item) => (
-              <div key={item} className="border-white/10 p-5 md:border-r">
-                <p className="text-sm font-black text-white">{item}</p>
-              </div>
-            ))}
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <button
+                onClick={() => navigate("/mobility/dispatch")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-turquoise px-5 py-4 text-sm font-black text-ink active:scale-95"
+              >
+                Open Dispatch Board
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => navigate("/admin/leads")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-sm font-black text-ink active:scale-95"
+              >
+                Admin Leads
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setSubmittedRequestId("")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-sm font-black text-white active:scale-95"
+              >
+                Create Another
+                <RefreshCw className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    );
+  }
 
-      <section className="mx-auto mt-8 max-w-6xl px-4">
-        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-[2.25rem] bg-white p-5 shadow-xl ring-1 ring-black/5">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-emerald-700">
-              Step 1
-            </p>
-            <h2 className="mt-2 text-3xl font-black">Choose service type</h2>
+  return (
+    <div className="min-h-screen bg-[#f8f0da] pb-36 text-ink">
+      <form onSubmit={handleSubmit} className="mx-auto max-w-7xl px-4 py-8">
+        <section className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
+          <div className="grid gap-6 p-5 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-turquoise/15 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-turquoise">
+                <Car className="h-4 w-4" />
+                VI Guide Mobility OS
+              </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {serviceOptions.map((option) => {
-                const Icon = option.icon;
-                const active = serviceType === option.id;
+              <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
+                Taxi association demo ride flow.
+              </h1>
 
-                return (
-                  <button
-                    key={option.id}
-                    onClick={() => setServiceType(option.id)}
-                    className={[
-                      "rounded-3xl p-4 text-left transition active:scale-95",
-                      active
-                        ? "bg-ink text-white shadow-xl"
-                        : "bg-stone-50 text-ink hover:bg-white hover:shadow-lg",
-                    ].join(" ")}
-                  >
-                    <Icon className={active ? "h-6 w-6 text-turquoise" : "h-6 w-6 text-emerald-700"} />
-                    <p className="mt-3 font-black">{option.title}</p>
-                    <p className={["mt-1 text-sm leading-6", active ? "text-white/65" : "text-stone-500"].join(" ")}>
-                      {option.description}
-                    </p>
-                  </button>
-                );
-              })}
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
+                Create a visitor transportation request, estimate the ride, and
+                send it directly into the dispatch board and admin lead inbox.
+              </p>
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                {[
+                  ["Rider request", "Pickup, dropoff, rider contact, timing."],
+                  ["Dispatch board", "Assign driver and move ride status."],
+                  ["Partner revenue", "Taxi operators can pay for request flow."],
+                ].map(([title, text]) => (
+                  <div key={title} className="rounded-[2rem] bg-white/10 p-4">
+                    <p className="text-sm font-black">{title}</p>
+                    <p className="mt-2 text-xs leading-5 text-white/60">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            <aside className="rounded-[2.25rem] bg-white p-5 text-ink">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">
+                Live quote
+              </p>
+
+              <h2 className="mt-2 text-4xl font-black">{formatMoney(quote)}</h2>
+              <p className="mt-2 text-sm leading-6 text-stone-600">
+                Demo fare estimate for {serviceLabels[serviceType]} on{" "}
+                {islandLabels[island]}.
+              </p>
+
+              <div className="mt-5 space-y-3">
+                <SummaryRow label="Pickup" value={pickup || "Not set"} />
+                <SummaryRow label="Dropoff" value={dropoff || "Not set"} />
+                <SummaryRow label="Time" value={pickupTime || "Not set"} />
+                <SummaryRow
+                  label="Load"
+                  value={`${passengers} passenger${
+                    passengers === 1 ? "" : "s"
+                  } · ${luggage} luggage`}
+                />
+              </div>
+
+              <div className="mt-5 rounded-2xl bg-emerald-50 p-4 text-sm font-bold leading-6 text-emerald-950">
+                This request will save to Firestore and appear inside{" "}
+                <span className="font-black">/admin/leads</span> and{" "}
+                <span className="font-black">/mobility/dispatch</span>.
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.9fr]">
+          <div className="space-y-5">
+            <Panel title="1. Select ride type" eyebrow="Service template">
+              <div className="grid gap-3 md:grid-cols-2">
+                {mobilityServices.map((service) => {
+                  const Icon = iconMap[service.icon] || Car;
+                  const active = serviceType === service.id;
+
+                  return (
+                    <button
+                      key={service.id}
+                      type="button"
+                      onClick={() => selectService(service.id)}
+                      className={[
+                        "rounded-[2rem] p-4 text-left ring-1 transition active:scale-[0.99]",
+                        active
+                          ? "bg-emerald-700 text-white ring-emerald-700"
+                          : "bg-white text-ink ring-stone-200 hover:-translate-y-0.5",
+                      ].join(" ")}
+                    >
+                      <Icon
+                        className={[
+                          "h-6 w-6",
+                          active ? "text-turquoise" : "text-emerald-700",
+                        ].join(" ")}
+                      />
+                      <p className="mt-3 text-lg font-black">{service.title}</p>
+                      <p
+                        className={[
+                          "mt-1 text-sm leading-6",
+                          active ? "text-white/70" : "text-stone-600",
+                        ].join(" ")}
+                      >
+                        {service.subtitle}
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </Panel>
+
+            <Panel title="2. Pickup and dropoff" eyebrow="Route">
+              <div className="grid gap-3 md:grid-cols-2">
+                <label>
+                  <FieldLabel>Island</FieldLabel>
+                  <select
+                    value={island}
+                    onChange={(event) => setIsland(event.target.value as MobilityIsland)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  >
+                    {Object.entries(islandLabels).map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label>
+                  <FieldLabel>Pickup time</FieldLabel>
+                  <input
+                    value={pickupTime}
+                    onChange={(event) => setPickupTime(event.target.value)}
+                    className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  />
+                </label>
+              </div>
+
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                <Field
+                  label="Pickup"
+                  value={pickup}
+                  onChange={setPickup}
+                  placeholder="Airport, hotel, villa, beach..."
+                />
+                <Field
+                  label="Dropoff"
+                  value={dropoff}
+                  onChange={setDropoff}
+                  placeholder="Ferry, beach, restaurant..."
+                />
+              </div>
+
+              <div className="mt-4">
+                <FieldLabel>Quick locations</FieldLabel>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {zonePresets[island].map((zone) => (
+                    <button
+                      key={zone.id}
+                      type="button"
+                      onClick={() => {
+                        if (!pickup || pickup === selectedService?.defaultPickup) {
+                          setPickup(zone.name);
+                        } else {
+                          setDropoff(zone.name);
+                        }
+                      }}
+                      className="rounded-2xl bg-stone-100 px-4 py-3 text-xs font-black text-stone-700 active:scale-95"
+                    >
+                      {zone.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </Panel>
           </div>
 
-          <div className="rounded-[2.25rem] bg-white p-5 shadow-xl ring-1 ring-black/5">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-emerald-700">
-              Step 2
-            </p>
-            <h2 className="mt-2 text-3xl font-black">Request details</h2>
-
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Island
-                </span>
-                <select
-                  value={island}
-                  onChange={(event) => setIsland(event.target.value as DemoMobilityIsland)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
-                >
-                  {Object.entries(islandLabels).map(([value, label]) => (
-                    <option key={value} value={value}>{label}</option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Pickup time
-                </span>
-                <input
-                  value={pickupTime}
-                  onChange={(event) => setPickupTime(event.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+          <div className="space-y-5">
+            <Panel title="3. Rider details" eyebrow="Contact and load">
+              <div className="grid gap-3 md:grid-cols-2">
+                <Field
+                  label="Rider name"
+                  value={visitorName}
+                  onChange={setVisitorName}
+                  placeholder="Visitor or group name"
                 />
-              </label>
-
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Pickup
-                </span>
-                <input
-                  list="quick-mobility-places"
-                  value={pickup}
-                  onChange={(event) => setPickup(event.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                <Field
+                  label="Rider phone"
+                  value={visitorPhone}
+                  onChange={setVisitorPhone}
+                  placeholder="(340) 555-0101"
                 />
-              </label>
+              </div>
 
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Dropoff
-                </span>
-                <input
-                  list="quick-mobility-places"
-                  value={dropoff}
-                  onChange={(event) => setDropoff(event.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
-                />
-              </label>
-
-              <datalist id="quick-mobility-places">
-                {quickPlaces.map((place) => (
-                  <option key={place} value={place} />
-                ))}
-              </datalist>
-
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Passengers
-                </span>
-                <input
-                  type="number"
-                  min={1}
-                  max={14}
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                <NumberField
+                  label="Passengers"
                   value={passengers}
-                  onChange={(event) => setPassengers(Number(event.target.value))}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
+                  onChange={setPassengers}
+                  min={1}
+                  max={20}
                 />
-              </label>
-
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Luggage
-                </span>
-                <input
-                  type="number"
+                <NumberField
+                  label="Luggage"
+                  value={luggage}
+                  onChange={setLuggage}
                   min={0}
                   max={20}
-                  value={luggage}
-                  onChange={(event) => setLuggage(Number(event.target.value))}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
                 />
-              </label>
+              </div>
 
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Name
-                </span>
-                <input
-                  value={visitorName}
-                  onChange={(event) => setVisitorName(event.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
-                />
-              </label>
-
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Phone
-                </span>
-                <input
-                  value={visitorPhone}
-                  onChange={(event) => setVisitorPhone(event.target.value)}
-                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold outline-none focus:border-emerald-500"
-                />
-              </label>
-
-              <label className="block md:col-span-2">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  Notes
-                </span>
+              <label className="mt-3 block">
+                <FieldLabel>Notes</FieldLabel>
                 <textarea
-                  rows={3}
                   value={notes}
                   onChange={(event) => setNotes(event.target.value)}
-                  className="mt-2 w-full resize-none rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-bold leading-6 outline-none focus:border-emerald-500"
+                  rows={4}
+                  className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+                  placeholder="Ferry timing, elderly guest, accessibility, return pickup..."
                 />
               </label>
-            </div>
+            </Panel>
 
-            {submittedId && (
-              <div className="mt-5 rounded-3xl bg-emerald-50 p-4">
-                <p className="font-black text-emerald-950">Request created.</p>
-                <p className="mt-1 text-sm text-emerald-900/75">
-                  This transportation request is now visible in the dispatch dashboard.
-                </p>
-              </div>
-            )}
-
-            {saveError && (
-              <div className="mt-5 rounded-3xl bg-amber-50 p-4">
-                <p className="font-black text-amber-950">Firestore fallback active.</p>
-                <p className="mt-1 text-sm text-amber-900/75">
+            <Panel title="4. Submit to dispatch" eyebrow="Taxi association demo">
+              {saveError ? (
+                <div className="mb-4 rounded-2xl bg-amber-100 p-3 text-sm font-bold leading-6 text-amber-950">
                   {saveError}
-                </p>
-              </div>
-            )}
+                </div>
+              ) : null}
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
               <button
-                onClick={submitRequest}
+                type="submit"
                 disabled={saving}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white shadow-xl disabled:opacity-60 active:scale-95"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-5 py-4 text-sm font-black text-white disabled:opacity-60 active:scale-95"
               >
-                {saving ? "Saving Request..." : "Submit Mobility Request"}
+                {saving ? "Sending to Dispatch..." : "Send Ride Request"}
                 <ArrowRight className="h-4 w-4" />
               </button>
 
-              <button
-                onClick={() => navigate("/mobility/dispatch")}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
-              >
-                Dispatch
-                <CalendarClock className="h-4 w-4" />
-              </button>
-            </div>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => navigate("/mobility/dispatch")}
+                  className="rounded-2xl bg-stone-100 px-5 py-3 text-sm font-black text-ink active:scale-95"
+                >
+                  Open Dispatch Board
+                </button>
+                <button
+                  type="button"
+                  onClick={() => navigate("/admin/leads")}
+                  className="rounded-2xl bg-stone-100 px-5 py-3 text-sm font-black text-ink active:scale-95"
+                >
+                  Admin Leads
+                </button>
+              </div>
+            </Panel>
           </div>
-        </div>
-      </section>
+        </section>
+      </form>
     </div>
+  );
+}
+
+function Panel({
+  eyebrow,
+  title,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="rounded-[2.25rem] bg-white p-5 shadow-xl">
+      <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+        {eyebrow}
+      </p>
+      <h2 className="mt-2 text-2xl font-black">{title}</h2>
+      <div className="mt-5">{children}</div>
+    </section>
+  );
+}
+
+function FieldLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+      {children}
+    </span>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  return (
+    <label className="block">
+      <FieldLabel>{label}</FieldLabel>
+      <input
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+      />
+    </label>
+  );
+}
+
+function NumberField({
+  label,
+  value,
+  onChange,
+  min,
+  max,
+}: {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+  min: number;
+  max: number;
+}) {
+  return (
+    <label className="block">
+      <FieldLabel>{label}</FieldLabel>
+      <input
+        value={value}
+        min={min}
+        max={max}
+        type="number"
+        onChange={(event) => onChange(Number(event.target.value))}
+        className="mt-2 w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm font-bold outline-none ring-emerald-700/20 focus:ring-4"
+      />
+    </label>
+  );
+}
+
+function SummaryRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-stone-50 p-3">
+      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-400">
+        {label}
+      </p>
+      <p className="mt-1 text-sm font-black text-ink">{value}</p>
+    </div>
+  );
+}
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-emerald-800">
+      {children}
+    </span>
   );
 }
