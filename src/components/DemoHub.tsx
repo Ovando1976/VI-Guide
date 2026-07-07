@@ -123,7 +123,15 @@ export default function DemoHub() {
                   <ArrowRight className="h-5 w-5" />
                 </button>
 
-                <button
+                              <button
+                type="button"
+                onClick={() => window.location.assign("/meeting-mode")}
+                className="rounded-2xl bg-[#ffcf32] px-6 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
+              >
+                Meeting Mode →
+              </button>
+
+<button
                   onClick={() => navigate("/mobility")}
                   className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-6 py-4 text-sm font-black text-white active:scale-95"
                 >

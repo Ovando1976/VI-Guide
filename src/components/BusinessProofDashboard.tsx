@@ -188,6 +188,27 @@ export default function BusinessProofDashboard() {
 
   return (
     <main className="min-h-screen bg-[#f8f0da] pb-40 text-ink">
+      <section className="mx-auto max-w-7xl px-4 pt-6">
+        <button
+          type="button"
+          onClick={() => window.location.assign("/meeting-mode")}
+          className="mb-5 flex w-full items-center justify-between rounded-[2rem] bg-[#ffcf32] px-6 py-5 text-left text-ink shadow-xl active:scale-95"
+        >
+          <span>
+            <span className="block text-xs font-black uppercase tracking-[0.22em] text-emerald-900">
+              Business presentation
+            </span>
+            <span className="mt-1 block text-2xl font-black">
+              Meeting Mode
+            </span>
+            <span className="mt-1 block text-sm font-bold text-stone-700">
+              Open the taxi, hotel, chamber, tourism, and partner pitch path.
+            </span>
+          </span>
+          <span className="text-2xl font-black">→</span>
+        </button>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="rounded-[2.75rem] bg-ink p-5 text-white shadow-2xl md:p-8 lg:p-10">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
