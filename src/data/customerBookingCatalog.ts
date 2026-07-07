@@ -21,7 +21,11 @@ export type CustomerBookingRecord = {
   image: string;
   website?: string;
   phone?: string;
-  verificationStatus: "partner_confirmed" | "partner_unconfirmed";
+  sourceName?: string;
+  sourceUrl?: string;
+  lastVerified?: string;
+  inventoryScope?: "single_property" | "management_company" | "inquiry_lane";
+  verificationStatus: "partner_confirmed" | "partner_unconfirmed" | "needs_review";
 };
 
 export const customerBookingCatalog: CustomerBookingRecord[] = [
@@ -296,3 +300,18 @@ export const customerBookingCatalog: CustomerBookingRecord[] = [
     verificationStatus: "partner_unconfirmed",
   },
 ];
+
+
+
+export const enrichedCustomerBookingCatalog: CustomerBookingRecord[] =
+  customerBookingCatalog.map((record): CustomerBookingRecord => ({
+    sourceName: record.sourceName || "VI Guide starter catalog",
+    sourceUrl: record.sourceUrl || "",
+    lastVerified: record.lastVerified || "needs_review",
+    inventoryScope:
+      record.inventoryScope ||
+      (record.category === "villa" || record.category === "airbnb_operator"
+        ? "inquiry_lane"
+        : "single_property"),
+    ...record,
+  }));

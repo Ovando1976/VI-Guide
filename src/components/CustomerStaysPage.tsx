@@ -23,10 +23,11 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import {
-  customerBookingCatalog,
+  enrichedCustomerBookingCatalog,
   type CustomerBookingCategory,
   type CustomerBookingRecord,
 } from "../data/customerBookingCatalog";
+import { generatedCustomerBookingCatalog } from "../data/customerBookingCatalog.generated";
 
 type BookingPartnerStatus =
   | "target"
@@ -207,12 +208,12 @@ export default function CustomerStaysPage() {
   const [requestedPartner, setRequestedPartner] = useState<CustomerBookingRecord | null>(null);
   const [saved, setSaved] = useState(false);
 
-  const records = useMemo(() => {
+  const records = useMemo<CustomerBookingRecord[]>(() => {
     const activePartnerRecords = partners
       .filter((partner) => ["active_partner", "won", "pilot"].includes(partner.status))
       .map(partnerToCatalogRecord);
 
-    const combined = [...activePartnerRecords, ...customerBookingCatalog];
+    const combined: CustomerBookingRecord[] = [...activePartnerRecords, ...generatedCustomerBookingCatalog, ...enrichedCustomerBookingCatalog];
     const seen = new Set<string>();
 
     return combined.filter((record) => {
