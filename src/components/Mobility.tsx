@@ -253,8 +253,8 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f0da] pb-36 text-ink">
-      <form onSubmit={handleSubmit} className="mx-auto max-w-7xl px-4 py-8">
+    <div className="min-h-screen bg-[#f8f0da] pb-72 text-ink">
+      <form onSubmit={handleSubmit} className="mx-auto max-w-7xl px-4 py-8 pb-72">
         <section className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
           <div className="grid gap-6 p-5 md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
             <div>
@@ -471,7 +471,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
               </label>
             </Panel>
 
-            <Panel title="4. Submit to dispatch" eyebrow="Taxi association demo">
+            <div className="pb-20"><Panel title="4. Submit to dispatch" eyebrow="Taxi association demo">
               {saveError ? (
                 <div className="mb-4 rounded-2xl bg-amber-100 p-3 text-sm font-bold leading-6 text-amber-950">
                   {saveError}
@@ -503,7 +503,7 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
                   Admin Leads
                 </button>
               </div>
-            </Panel>
+            </Panel></div>
           </div>
         </section>
       </form>
