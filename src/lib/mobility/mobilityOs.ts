@@ -332,3 +332,6 @@ export function formatDateTime(value: number | string | undefined) {
 export { calculateOfficialTaxiFare } from "./viOfficialTaxiTariff";
 export type { OfficialTaxiFareQuote } from "./viOfficialTaxiTariff";
 export { getTaxiTariffPlaces, getTaxiFareRules, TAXI_ADDITIONAL_CHARGES } from "./usviTaxiRateData";
+
+export { calculateMobilityCustomerQuote } from "./customMobilityPricing";
+export type { CustomerMobilityQuote, RoadConditionFlag } from "./customMobilityPricing";
