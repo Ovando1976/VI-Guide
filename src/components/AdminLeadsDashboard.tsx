@@ -248,20 +248,29 @@ export default function AdminLeadsDashboard() {
 
           <div className="mt-7 grid grid-cols-2 gap-3 md:grid-cols-5">
             {[
-              ["Claims", stats.claims, Building2],
-              ["New Claims", stats.newClaims, BadgeCheck],
-              ["Merchant Leads", stats.merchantLeads, BarChart3],
-              ["Mobility", stats.mobilityRequests, Car],
-              ["New Rides", stats.newMobility, RefreshCw],
-            ].map(([label, value, Icon]) => (
-              <div key={String(label)} className="rounded-[2rem] bg-white p-4 text-ink">
-                <Icon className="h-6 w-6 text-emerald-700" />
-                <p className="mt-4 text-4xl font-black">{String(value)}</p>
-                <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-stone-500">
-                  {String(label)}
-                </p>
-              </div>
-            ))}
+              { label: "Claims", value: stats.claims, icon: Building2 },
+              { label: "New Claims", value: stats.newClaims, icon: BadgeCheck },
+              { label: "Merchant Leads", value: stats.merchantLeads, icon: BarChart3 },
+              { label: "Mobility", value: stats.mobilityRequests, icon: Car },
+              { label: "New Rides", value: stats.newMobility, icon: RefreshCw },
+            ].map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <div
+                  key={card.label}
+                  className="rounded-[2rem] bg-white p-4 text-ink"
+                >
+                  <Icon className="h-6 w-6 text-emerald-700" />
+                  <p className="mt-4 text-4xl font-black">
+                    {card.value.toLocaleString()}
+                  </p>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-stone-500">
+                    {card.label}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="mt-7 grid gap-6">
