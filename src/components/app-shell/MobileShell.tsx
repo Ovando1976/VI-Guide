@@ -14,6 +14,7 @@ import TourismAllianceHub from "../TourismAllianceHub";
 import AlliancePipelinePage from "../AlliancePipelinePage";
 import MeetingModePage from "../MeetingModePage";
 import DirectBookingHub from "../DirectBookingHub";
+import BookingPartnersPage from "../BookingPartnersPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ const PRESENTATION_ROUTES = [
   "/alliance-pipeline",
   "/meeting-mode",
   "/direct-booking",
+  "/booking-partners",
   "/mobility",
   "/admin/leads",
   "/partners",
@@ -74,6 +76,8 @@ export function MobileShell({ children }: MobileShellProps) {
       <MeetingModePage />
     ) : location.pathname === "/direct-booking" ? (
       <DirectBookingHub />
+    ) : location.pathname === "/booking-partners" ? (
+      <BookingPartnersPage />
     ) : (
       children
     );
