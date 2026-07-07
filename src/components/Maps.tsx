@@ -8,6 +8,7 @@ import {
   MapPin,
   Search,
   Ship,
+  Target,
   Sparkles,
   Umbrella,
   Utensils,
@@ -71,6 +72,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
     }
   });
   const [mapStyleMode, setMapStyleMode] = useState<MapStyleMode>("streets");
+  const [fitToResultsTrigger, setFitToResultsTrigger] = useState(0);
 
   const navigate = useNavigate();
   const { points, loading, error } = useMapPoints(selectedIsland);
@@ -153,7 +155,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#f8f0da] pb-64 text-ink">
+    <main className="min-h-screen bg-[#f8f0da] pb-72 text-ink">
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="overflow-hidden rounded-[2.75rem] bg-ink text-white shadow-2xl">
           <div className="grid gap-6 p-5 md:p-8 lg:grid-cols-[1fr_0.8fr] lg:p-10">
@@ -334,6 +336,21 @@ export default function Maps({ selectedIsland }: MapsProps) {
             })}
           </div>
 
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={() => setFitToResultsTrigger((value) => value + 1)}
+              className="inline-flex items-center gap-2 rounded-2xl bg-emerald-950 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white shadow-sm active:scale-95"
+            >
+              <Target className="h-4 w-4" />
+              Zoom to Results
+            </button>
+
+            <p className="text-xs font-bold text-stone-500">
+              Tap a cluster to zoom in. Tap an icon to plan, route, or request a ride.
+            </p>
+          </div>
+
           <div className="relative h-[72vh] min-h-[620px] overflow-hidden rounded-[2rem] bg-stone-200 shadow-2xl">
             <IslandMap
               selectedIsland={selectedIsland}
@@ -341,6 +358,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
               selectedPointId={selectedPoint?.id ?? null}
               points={filteredPoints}
               mapStyleMode={mapStyleMode}
+              fitToResultsTrigger={fitToResultsTrigger}
               onSelectPoint={setSelectedPoint}
             />
 
@@ -377,7 +395,7 @@ export default function Maps({ selectedIsland }: MapsProps) {
             )}
 
             {selectedPoint && (
-              <div className="absolute inset-x-4 bottom-4 z-[600] rounded-[2rem] bg-white p-4 shadow-2xl md:left-auto md:w-[420px]">
+              <div className="absolute inset-x-4 bottom-28 z-[600] rounded-[2rem] bg-white p-4 shadow-2xl md:bottom-4 md:left-auto md:w-[420px]">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <PointTypeBadge type={selectedPoint.type} />

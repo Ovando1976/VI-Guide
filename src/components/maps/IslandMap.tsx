@@ -39,6 +39,7 @@ type IslandMapProps = {
   selectedPointId: string | null;
   points: MapPoint[];
   mapStyleMode?: MapStyleMode;
+  fitToResultsTrigger?: number;
   onSelectPoint: (point: MapPoint) => void;
 };
 
@@ -297,10 +298,9 @@ function makePointElement(point: MapPoint, selected: boolean) {
 }
 
 function makeClusterElement(cluster: RenderCluster) {
-  const style = getMapMarkerStyle(cluster.dominantType);
   const count = cluster.points.length;
-  const size = count >= 50 ? 70 : count >= 25 ? 62 : count >= 10 ? 56 : 50;
-  const iconSize = count >= 25 ? 20 : 18;
+  const size = count >= 250 ? 74 : count >= 75 ? 66 : count >= 20 ? 58 : 50;
+  const label = count >= 100 ? "places" : "nearby";
 
   const el = document.createElement("button");
   el.type = "button";
@@ -312,12 +312,12 @@ function makeClusterElement(cluster: RenderCluster) {
   el.style.border = "0";
   el.style.padding = "0";
   el.style.borderRadius = "999px";
-  el.style.background = "rgba(15,23,42,0.15)";
+  el.style.background = "rgba(15,23,42,0.14)";
   el.style.display = "grid";
   el.style.placeItems = "center";
   el.style.cursor = "pointer";
   el.style.boxShadow =
-    "0 0 0 8px rgba(15,23,42,0.12), 0 18px 34px rgba(15,23,42,0.3)";
+    "0 0 0 8px rgba(15,23,42,0.10), 0 18px 34px rgba(15,23,42,0.28)";
   el.style.transition = "transform 160ms ease, box-shadow 160ms ease";
 
   el.innerHTML = `
@@ -325,36 +325,37 @@ function makeClusterElement(cluster: RenderCluster) {
       style="
         width:${size - 8}px;
         height:${size - 8}px;
-        display:grid;
-        place-items:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:1px;
         border-radius:999px;
         border:4px solid white;
-        background:#073f36;
+        background:#062f2a;
         color:white;
-        position:relative;
+        line-height:1;
       "
     >
-      <span style="position:absolute; top:8px; display:grid; place-items:center; opacity:.9;">
-        ${makeIconSvg(cluster.dominantType, iconSize)}
-      </span>
-      <span
+      <strong
         style="
-          position:absolute;
-          bottom:8px;
-          min-width:26px;
-          height:20px;
-          display:grid;
-          place-items:center;
-          border-radius:999px;
-          background:${style.background};
-          color:white;
-          font-size:12px;
-          font-weight:900;
-          line-height:1;
-          padding:0 7px;
+          font-size:${count >= 100 ? 18 : 16}px;
+          font-weight:950;
+          letter-spacing:-0.04em;
         "
       >
         ${count}
+      </strong>
+      <span
+        style="
+          font-size:8px;
+          font-weight:900;
+          letter-spacing:0.12em;
+          text-transform:uppercase;
+          opacity:.72;
+        "
+      >
+        ${label}
       </span>
     </span>
   `;
@@ -379,12 +380,47 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
+function fitMapToPoints(map: mapboxgl.Map, points: MapPoint[]) {
+  const valid = points.filter(isValidPoint);
+
+  if (valid.length === 0) return;
+
+  if (valid.length === 1) {
+    map.flyTo({
+      center: [valid[0].lng, valid[0].lat],
+      zoom: 14.5,
+      duration: 700,
+      essential: true,
+    });
+    return;
+  }
+
+  const bounds = new mapboxgl.LngLatBounds();
+
+  valid.slice(0, 250).forEach((point) => {
+    bounds.extend([point.lng, point.lat]);
+  });
+
+  map.fitBounds(bounds, {
+    padding: {
+      top: 90,
+      right: 90,
+      bottom: 150,
+      left: 90,
+    },
+    maxZoom: 13.6,
+    duration: 800,
+    essential: true,
+  });
+}
+
 export default function IslandMap({
   selectedIsland,
   activeFilter,
   selectedPointId,
   points,
   mapStyleMode = "streets",
+  fitToResultsTrigger = 0,
   onSelectPoint,
 }: IslandMapProps) {
   const mapNodeRef = useRef<HTMLDivElement | null>(null);
@@ -585,6 +621,14 @@ export default function IslandMap({
       essential: true,
     });
   }, [selectedPoint]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || fitToResultsTrigger <= 0) return;
+
+    fitMapToPoints(map, visiblePoints);
+    window.setTimeout(renderMarkers, 850);
+  }, [fitToResultsTrigger, visiblePoints, renderMarkers]);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
