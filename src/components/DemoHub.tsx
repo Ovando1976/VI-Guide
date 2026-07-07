@@ -8,6 +8,7 @@ import {
   MapPinned,
   MousePointerClick,
   Route,
+  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -40,6 +41,13 @@ const demoCards = [
     path: "/mobility",
     icon: Car,
     eyebrow: "Visitor mobility",
+  },
+  {
+    title: "Admin Leads",
+    subtitle: "Review partner claims, merchant activity, and mobility leads.",
+    path: "/admin/leads",
+    icon: ShieldCheck,
+    eyebrow: "Operator inbox",
   },
   {
     title: "Dispatch Board",
@@ -170,7 +178,7 @@ export default function DemoHub() {
       </section>
 
       <section className="mx-auto mt-8 max-w-6xl px-4">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
           {demoCards.map((card) => {
             const Icon = card.icon;
 
