@@ -30,6 +30,11 @@ import {
   type CustomerBookingRecord,
 } from "../data/customerBookingCatalog";
 import { generatedCustomerBookingCatalog } from "../data/customerBookingCatalog.generated";
+import {
+  accommodationSlug,
+  saveAccommodationMapFocus,
+  saveAccommodationToTripPlan,
+} from "../lib/accommodations/customerAccommodationActions";
 
 type BookingRequest = {
   id: string;
@@ -196,6 +201,7 @@ export default function CustomerAccommodationDetailPage() {
   const [budget, setBudget] = useState("");
   const [notes, setNotes] = useState(record ? `I am interested in ${record.businessName}.` : "");
   const [saved, setSaved] = useState(false);
+  const [planned, setPlanned] = useState(false);
 
   if (!record) {
     return (
@@ -220,6 +226,26 @@ export default function CustomerAccommodationDetailPage() {
 
   const meta = categoryMeta[record.category];
   const Icon = meta.icon;
+
+  const relatedRecords = records
+    .filter((item) => item.id !== record.id)
+    .filter(
+      (item) =>
+        item.island === record.island ||
+        item.category === record.category
+    )
+    .slice(0, 4);
+
+  const addToPlan = () => {
+    saveAccommodationToTripPlan(record);
+    setPlanned(true);
+    window.setTimeout(() => setPlanned(false), 1600);
+  };
+
+  const openMap = () => {
+    saveAccommodationMapFocus(record);
+    navigate("/map");
+  };
 
   const submitInquiry = (event: FormEvent) => {
     event.preventDefault();
@@ -296,7 +322,7 @@ export default function CustomerAccommodationDetailPage() {
               </button>
               <button
                 type="button"
-                onClick={() => navigate("/map")}
+                onClick={openMap}
                 className="grid h-14 w-14 place-items-center rounded-full bg-white/90 text-ink shadow-xl active:scale-95"
               >
                 <Map className="h-5 w-5" />
@@ -333,7 +359,35 @@ export default function CustomerAccommodationDetailPage() {
         </div>
       </section>
 
-      <section className="mx-auto -mt-20 grid max-w-7xl gap-6 px-4 lg:grid-cols-[1fr_390px]">
+      <section className="sticky top-0 z-20 mx-auto -mt-10 max-w-5xl px-4">
+        <div className="grid grid-cols-3 gap-3 rounded-[2rem] bg-white/90 p-3 shadow-2xl backdrop-blur">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: window.innerHeight * 0.7, behavior: "smooth" })}
+            className="rounded-2xl bg-stone-100 px-4 py-4 text-sm font-black text-ink active:scale-95"
+          >
+            Details
+          </button>
+
+          <button
+            type="button"
+            onClick={addToPlan}
+            className="rounded-2xl bg-emerald-950 px-4 py-4 text-sm font-black text-white active:scale-95"
+          >
+            {planned ? "Added" : "+ Plan"}
+          </button>
+
+          <button
+            type="button"
+            onClick={openMap}
+            className="rounded-2xl bg-[#ffcf32] px-4 py-4 text-sm font-black text-ink active:scale-95"
+          >
+            Map
+          </button>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-6 grid max-w-7xl gap-6 px-4 lg:grid-cols-[1fr_390px]">
         <div className="space-y-6">
           <section className="rounded-[2.5rem] bg-white p-6 shadow-xl">
             <div className="flex items-center gap-3">
@@ -406,8 +460,72 @@ export default function CustomerAccommodationDetailPage() {
                 Plan Ride
                 <Car className="h-4 w-4" />
               </button>
+
+              <button
+                type="button"
+                onClick={openMap}
+                className="inline-flex items-center gap-2 rounded-2xl bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink active:scale-95"
+              >
+                View Map
+                <Map className="h-4 w-4" />
+              </button>
             </div>
           </section>
+
+          {relatedRecords.length ? (
+            <section className="rounded-[2.5rem] bg-white p-6 shadow-xl">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+                Related options
+              </p>
+              <h2 className="mt-2 text-3xl font-black">
+                More stays and experiences
+              </h2>
+
+              <div className="mt-5 grid gap-4 md:grid-cols-2">
+                {relatedRecords.map((item) => {
+                  const RelatedIcon = categoryMeta[item.category].icon;
+
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => navigate(`/hotels/${accommodationSlug(item)}`)}
+                      className="overflow-hidden rounded-[2rem] bg-stone-50 text-left shadow-sm active:scale-95"
+                    >
+                      <div className="h-32 bg-emerald-950">
+                        <img
+                          src={item.image}
+                          alt={item.imageAlt || `${item.businessName} accommodation image`}
+                          className="h-full w-full object-cover opacity-80"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <div className="p-4">
+                        <div className="flex items-start gap-3">
+                          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-950 text-turquoise">
+                            <RelatedIcon className="h-5 w-5" />
+                          </div>
+
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-700">
+                              {categoryMeta[item.category].label} · {item.island}
+                            </p>
+                            <p className="mt-1 text-lg font-black text-ink">
+                              {item.businessName}
+                            </p>
+                            <p className="mt-1 text-xs font-bold text-stone-500">
+                              {item.area}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
         </div>
 
         <aside className="lg:sticky lg:top-6 lg:self-start">
