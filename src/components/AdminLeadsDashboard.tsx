@@ -6,11 +6,14 @@ import {
   Building2,
   Car,
   CheckCircle2,
+  Clipboard,
+  ClipboardCheck,
   ClipboardList,
   Mail,
   MapPin,
   Phone,
   RefreshCw,
+  ShieldCheck,
   User,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -74,13 +77,93 @@ function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
+function safeTel(phone?: string) {
+  if (!phone) return "";
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
+function mailtoLink({
+  email,
+  subject,
+  body,
+}: {
+  email?: string;
+  subject: string;
+  body: string;
+}) {
+  if (!email) return "";
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    body
+  )}`;
+}
+
+function nextMobilityStatus(status: DemoMobilityRequestStatus) {
+  const order: DemoMobilityRequestStatus[] = [
+    "new",
+    "quoted",
+    "accepted",
+    "driver_en_route",
+    "arrived",
+    "completed",
+  ];
+
+  const index = order.indexOf(status);
+  if (index === -1 || index === order.length - 1) return status;
+  return order[index + 1];
+}
+
+function claimFollowUpMessage(claim: PartnerClaimDoc) {
+  return `Hi ${claim.ownerName || "there"},
+
+Thanks for your interest in claiming ${claim.businessName || claim.partnerName} inside VI Guide.
+
+We are onboarding founding partners now. Your profile can help visitors find your business, tap for calls and directions, and appear in AI concierge recommendations when relevant.
+
+The founding partner offer starts at $49/month for verified visibility, lead tracking, and monthly reporting.
+
+Would you like to schedule a quick walkthrough?
+
+- VI Guide`;
+}
+
+function merchantLeadSummary(lead: MerchantLeadDoc) {
+  return `Merchant lead: ${lead.partnerName}
+
+Action: ${lead.action}
+Source: ${lead.source}
+Message: ${lead.message}
+Visitor: ${lead.visitorName || "Unknown"}
+Phone: ${lead.visitorPhone || "N/A"}
+Email: ${lead.visitorEmail || "N/A"}
+Created: ${formatDate(lead.createdAt)}`;
+}
+
+function mobilityDispatchNote(request: MobilityRequestDoc) {
+  return `Mobility request
+
+Route: ${request.pickup} → ${request.dropoff}
+Island: ${islandLabels[request.island]}
+Service: ${serviceLabels[request.serviceType]}
+Status: ${statusLabels[request.status]}
+Pickup time: ${request.pickupTime}
+Passenger: ${request.visitorName}
+Phone: ${request.visitorPhone}
+Passengers: ${request.passengers}
+Luggage: ${request.luggage}
+Estimated fare: $${request.estimatedFare}
+Notes: ${request.notes || "None"}`;
+}
+
 export default function AdminLeadsDashboard() {
   const navigate = useNavigate();
 
   const [claims, setClaims] = useState<PartnerClaimDoc[]>([]);
   const [merchantLeads, setMerchantLeads] = useState<MerchantLeadDoc[]>([]);
-  const [mobilityRequests, setMobilityRequests] = useState<MobilityRequestDoc[]>([]);
+  const [mobilityRequests, setMobilityRequests] = useState<MobilityRequestDoc[]>(
+    []
+  );
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [copied, setCopied] = useState<string | null>(null);
 
   useEffect(() => {
     const unsubscribers: Array<() => void> = [];
@@ -159,6 +242,32 @@ export default function AdminLeadsDashboard() {
     };
   }, [claims, merchantLeads, mobilityRequests]);
 
+  async function copyText(label: string, text: string) {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+
+      setCopied(label);
+      window.setTimeout(() => setCopied(null), 1600);
+    } catch (error) {
+      setErrors((existing) => ({
+        ...existing,
+        copy: errorMessage(error),
+      }));
+    }
+  }
+
   async function moveClaim(claim: PartnerClaimDoc, status: PartnerClaimStatus) {
     try {
       await updatePartnerClaimStatus(claim.id, status);
@@ -204,9 +313,8 @@ export default function AdminLeadsDashboard() {
               </h1>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
-                This page reads from Firestore and gives you a simple operating
-                inbox for business claims, merchant lead activity, and mobility
-                transportation requests.
+                Manage business claims, visitor lead activity, and mobility
+                transportation requests from one operating inbox.
               </p>
             </div>
 
@@ -229,6 +337,15 @@ export default function AdminLeadsDashboard() {
             </div>
           </div>
 
+          {copied && (
+            <div className="mt-6 rounded-[2rem] bg-emerald-100 p-4 text-emerald-950">
+              <p className="flex items-center gap-2 font-black">
+                <ClipboardCheck className="h-5 w-5" />
+                Copied {copied}
+              </p>
+            </div>
+          )}
+
           {Object.keys(errors).length > 0 && (
             <div className="mt-6 rounded-[2rem] bg-amber-100 p-4 text-amber-950">
               <p className="font-black">Firestore notice</p>
@@ -239,10 +356,6 @@ export default function AdminLeadsDashboard() {
                   </p>
                 ))}
               </div>
-              <p className="mt-2 text-xs font-bold text-amber-900/70">
-                If this says permission denied, sign in or deploy the updated
-                Firestore rules.
-              </p>
             </div>
           )}
 
@@ -250,7 +363,11 @@ export default function AdminLeadsDashboard() {
             {[
               { label: "Claims", value: stats.claims, icon: Building2 },
               { label: "New Claims", value: stats.newClaims, icon: BadgeCheck },
-              { label: "Merchant Leads", value: stats.merchantLeads, icon: BarChart3 },
+              {
+                label: "Merchant Leads",
+                value: stats.merchantLeads,
+                icon: BarChart3,
+              },
               { label: "Mobility", value: stats.mobilityRequests, icon: Car },
               { label: "New Rides", value: stats.newMobility, icon: RefreshCw },
             ].map((card) => {
@@ -305,7 +422,9 @@ export default function AdminLeadsDashboard() {
                         <div>
                           <div className="flex flex-wrap gap-2">
                             <Badge label={claim.status} />
-                            {claim.partnerTier && <Badge label={claim.partnerTier} muted />}
+                            {claim.partnerTier && (
+                              <Badge label={claim.partnerTier} muted />
+                            )}
                             {claim.area && <Badge label={claim.area} muted />}
                           </div>
 
@@ -333,6 +452,60 @@ export default function AdminLeadsDashboard() {
                               {claim.message}
                             </p>
                           )}
+
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {claim.phone && (
+                              <a
+                                href={safeTel(claim.phone)}
+                                className="inline-flex items-center gap-2 rounded-2xl bg-emerald-700 px-4 py-3 text-xs font-black text-white active:scale-95"
+                              >
+                                <Phone className="h-4 w-4" />
+                                Call
+                              </a>
+                            )}
+
+                            {claim.email && (
+                              <a
+                                href={mailtoLink({
+                                  email: claim.email,
+                                  subject: `VI Guide claim for ${
+                                    claim.businessName || claim.partnerName
+                                  }`,
+                                  body: claimFollowUpMessage(claim),
+                                })}
+                                className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black text-ink ring-1 ring-stone-200 active:scale-95"
+                              >
+                                <Mail className="h-4 w-4" />
+                                Email
+                              </a>
+                            )}
+
+                            <button
+                              onClick={() =>
+                                copyText("claim follow-up", claimFollowUpMessage(claim))
+                              }
+                              className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black text-ink ring-1 ring-stone-200 active:scale-95"
+                            >
+                              <Clipboard className="h-4 w-4" />
+                              Copy Follow-up
+                            </button>
+
+                            <button
+                              onClick={() => moveClaim(claim, "contacted")}
+                              className="inline-flex items-center gap-2 rounded-2xl bg-ink px-4 py-3 text-xs font-black text-white active:scale-95"
+                            >
+                              <CheckCircle2 className="h-4 w-4" />
+                              Mark Contacted
+                            </button>
+
+                            <button
+                              onClick={() => moveClaim(claim, "approved")}
+                              className="inline-flex items-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-xs font-black text-ink active:scale-95"
+                            >
+                              <ShieldCheck className="h-4 w-4" />
+                              Approve
+                            </button>
+                          </div>
 
                           <p className="mt-3 text-xs font-bold text-stone-400">
                             Created {formatDate(claim.createdAt)}
@@ -387,6 +560,43 @@ export default function AdminLeadsDashboard() {
                       <p className="mt-2 text-sm leading-6 text-stone-600">
                         {lead.message}
                       </p>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {lead.visitorPhone && (
+                          <a
+                            href={safeTel(lead.visitorPhone)}
+                            className="inline-flex items-center gap-2 rounded-2xl bg-emerald-700 px-4 py-3 text-xs font-black text-white active:scale-95"
+                          >
+                            <Phone className="h-4 w-4" />
+                            Call
+                          </a>
+                        )}
+
+                        {lead.visitorEmail && (
+                          <a
+                            href={mailtoLink({
+                              email: lead.visitorEmail,
+                              subject: `VI Guide follow-up: ${lead.partnerName}`,
+                              body: merchantLeadSummary(lead),
+                            })}
+                            className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black text-ink ring-1 ring-stone-200 active:scale-95"
+                          >
+                            <Mail className="h-4 w-4" />
+                            Email
+                          </a>
+                        )}
+
+                        <button
+                          onClick={() =>
+                            copyText("merchant lead", merchantLeadSummary(lead))
+                          }
+                          className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black text-ink ring-1 ring-stone-200 active:scale-95"
+                        >
+                          <Clipboard className="h-4 w-4" />
+                          Copy Lead
+                        </button>
+                      </div>
+
                       <p className="mt-3 text-xs font-bold text-stone-400">
                         Created {formatDate(lead.createdAt)}
                       </p>
@@ -421,65 +631,123 @@ export default function AdminLeadsDashboard() {
                     text="Submit a transportation request from the Mobility page."
                   />
                 ) : (
-                  mobilityRequests.map((request) => (
-                    <article key={request.id} className="rounded-[2rem] bg-stone-50 p-4">
-                      <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
-                        <div>
-                          <div className="flex flex-wrap gap-2">
-                            <Badge label={statusLabels[request.status]} />
-                            <Badge label={serviceLabels[request.serviceType]} muted />
-                            <Badge label={islandLabels[request.island]} muted />
+                  mobilityRequests.map((request) => {
+                    const nextStatus = nextMobilityStatus(request.status);
+
+                    return (
+                      <article
+                        key={request.id}
+                        className="rounded-[2rem] bg-stone-50 p-4"
+                      >
+                        <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
+                          <div>
+                            <div className="flex flex-wrap gap-2">
+                              <Badge label={statusLabels[request.status]} />
+                              <Badge
+                                label={serviceLabels[request.serviceType]}
+                                muted
+                              />
+                              <Badge label={islandLabels[request.island]} muted />
+                            </div>
+
+                            <h3 className="mt-3 text-2xl font-black">
+                              {request.pickup} → {request.dropoff}
+                            </h3>
+
+                            <div className="mt-3 grid gap-2 text-sm font-bold text-stone-600 md:grid-cols-3">
+                              <p className="flex items-center gap-2">
+                                <User className="h-4 w-4 text-emerald-700" />
+                                {request.visitorName}
+                              </p>
+                              <p className="flex items-center gap-2">
+                                <Phone className="h-4 w-4 text-emerald-700" />
+                                {request.visitorPhone}
+                              </p>
+                              <p className="flex items-center gap-2">
+                                <MapPin className="h-4 w-4 text-emerald-700" />
+                                ${request.estimatedFare}
+                              </p>
+                            </div>
+
+                            {request.notes && (
+                              <p className="mt-3 rounded-2xl bg-white p-3 text-sm leading-6 text-stone-600">
+                                {request.notes}
+                              </p>
+                            )}
+
+                            <div className="mt-4 flex flex-wrap gap-2">
+                              {request.visitorPhone && (
+                                <a
+                                  href={safeTel(request.visitorPhone)}
+                                  className="inline-flex items-center gap-2 rounded-2xl bg-emerald-700 px-4 py-3 text-xs font-black text-white active:scale-95"
+                                >
+                                  <Phone className="h-4 w-4" />
+                                  Call Visitor
+                                </a>
+                              )}
+
+                              <button
+                                onClick={() =>
+                                  copyText(
+                                    "dispatch note",
+                                    mobilityDispatchNote(request)
+                                  )
+                                }
+                                className="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-xs font-black text-ink ring-1 ring-stone-200 active:scale-95"
+                              >
+                                <Clipboard className="h-4 w-4" />
+                                Copy Dispatch Note
+                              </button>
+
+                              {nextStatus !== request.status && (
+                                <button
+                                  onClick={() =>
+                                    moveMobilityRequest(request, nextStatus)
+                                  }
+                                  className="inline-flex items-center gap-2 rounded-2xl bg-turquoise px-4 py-3 text-xs font-black text-ink active:scale-95"
+                                >
+                                  <ArrowRight className="h-4 w-4" />
+                                  Move to {statusLabels[nextStatus]}
+                                </button>
+                              )}
+
+                              {request.status !== "cancelled" && (
+                                <button
+                                  onClick={() =>
+                                    moveMobilityRequest(request, "cancelled")
+                                  }
+                                  className="inline-flex items-center gap-2 rounded-2xl bg-ink px-4 py-3 text-xs font-black text-white active:scale-95"
+                                >
+                                  Cancel
+                                </button>
+                              )}
+                            </div>
+
+                            <p className="mt-3 text-xs font-bold text-stone-400">
+                              Created {formatDate(request.createdAt)}
+                            </p>
                           </div>
 
-                          <h3 className="mt-3 text-2xl font-black">
-                            {request.pickup} → {request.dropoff}
-                          </h3>
-
-                          <div className="mt-3 grid gap-2 text-sm font-bold text-stone-600 md:grid-cols-3">
-                            <p className="flex items-center gap-2">
-                              <User className="h-4 w-4 text-emerald-700" />
-                              {request.visitorName}
-                            </p>
-                            <p className="flex items-center gap-2">
-                              <Phone className="h-4 w-4 text-emerald-700" />
-                              {request.visitorPhone}
-                            </p>
-                            <p className="flex items-center gap-2">
-                              <MapPin className="h-4 w-4 text-emerald-700" />
-                              ${request.estimatedFare}
-                            </p>
+                          <div className="flex flex-wrap gap-2 lg:w-56 lg:flex-col">
+                            {mobilityStatuses.map((status) => (
+                              <button
+                                key={status}
+                                onClick={() => moveMobilityRequest(request, status)}
+                                className={[
+                                  "rounded-2xl px-4 py-3 text-xs font-black uppercase tracking-[0.16em] active:scale-95",
+                                  request.status === status
+                                    ? "bg-emerald-700 text-white"
+                                    : "bg-white text-stone-600 ring-1 ring-stone-200",
+                                ].join(" ")}
+                              >
+                                {statusLabels[status]}
+                              </button>
+                            ))}
                           </div>
-
-                          {request.notes && (
-                            <p className="mt-3 rounded-2xl bg-white p-3 text-sm leading-6 text-stone-600">
-                              {request.notes}
-                            </p>
-                          )}
-
-                          <p className="mt-3 text-xs font-bold text-stone-400">
-                            Created {formatDate(request.createdAt)}
-                          </p>
                         </div>
-
-                        <div className="flex flex-wrap gap-2 lg:w-56 lg:flex-col">
-                          {mobilityStatuses.map((status) => (
-                            <button
-                              key={status}
-                              onClick={() => moveMobilityRequest(request, status)}
-                              className={[
-                                "rounded-2xl px-4 py-3 text-xs font-black uppercase tracking-[0.16em] active:scale-95",
-                                request.status === status
-                                  ? "bg-emerald-700 text-white"
-                                  : "bg-white text-stone-600 ring-1 ring-stone-200",
-                              ].join(" ")}
-                            >
-                              {statusLabels[status]}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </article>
-                  ))
+                      </article>
+                    );
+                  })
                 )}
               </div>
             </section>
