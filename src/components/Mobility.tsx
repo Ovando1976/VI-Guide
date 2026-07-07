@@ -32,6 +32,7 @@ import {
   type MobilityIsland,
   type MobilityServiceType,
 } from "../lib/mobility/mobilityOs";
+import MobilityRoadPreviewMap from "./mobility/MobilityRoadPreviewMap";
 
 type MobilityProps = {
   selectedIsland?: unknown;
@@ -409,6 +410,13 @@ export default function Mobility({ selectedIsland }: MobilityProps) {
   if (submittedRequestId) {
     return (
       <div className="min-h-screen bg-[#f8f0da] px-4 pb-80 pt-8 text-ink">
+
+        <MobilityRoadPreviewMap
+          title="Road preview"
+          subtitle="Preview the requested ride route on real roads before matching or dispatch."
+        />
+
+
         <div className="mx-auto max-w-5xl rounded-[2.75rem] bg-ink p-5 text-white shadow-2xl md:p-10">
           <div className="mx-auto max-w-2xl text-center">
             <CheckCircle2 className="mx-auto h-16 w-16 text-turquoise" />

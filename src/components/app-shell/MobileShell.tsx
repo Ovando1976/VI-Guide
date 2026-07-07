@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
 import { IslandPicker } from "./IslandPicker";
 import JoinPage from "../JoinPage";
@@ -58,7 +58,6 @@ function isPresentationPath(pathname: string) {
 
 export function MobileShell({ children }: MobileShellProps) {
   const location = useLocation();
-  const navigate = useNavigate();
   const routeContent =
     location.pathname === "/join" ? (
       <JoinPage />
