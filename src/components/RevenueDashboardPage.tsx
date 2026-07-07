@@ -11,6 +11,7 @@ import {
   Hotel,
   Inbox,
   LineChart,
+  Mail,
   Search,
   Sparkles,
   TrendingUp,
