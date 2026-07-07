@@ -12,6 +12,7 @@ import {
   Utensils,
   Waves,
   Mic,
+  Presentation,
 } from "lucide-react";
 
 type VisitorHomeProps = {
@@ -101,7 +102,29 @@ export default function VisitorHome({
 
           <div className="mt-8">
             <p className="mb-3 text-sm font-bold">Today's Highlights</p>
-            <div className="grid grid-cols-2 gap-3">
+            <button
+          onClick={() => onNavigate("/meeting-mode")}
+          className="mb-4 flex w-full items-center justify-between rounded-3xl bg-[#ffcf32] px-5 py-5 text-left text-ink shadow-xl active:scale-95"
+        >
+          <span className="flex items-center gap-4">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-ink text-[#ffcf32]">
+              <Presentation className="h-7 w-7" />
+            </span>
+            <span>
+              <span className="block text-xs font-black uppercase tracking-[0.18em] text-emerald-900">
+                Business presentation
+              </span>
+              <span className="mt-1 block text-lg font-black">
+                Meeting Mode
+              </span>
+              <span className="mt-1 block text-xs font-bold text-stone-700">
+                Open the hotel, taxi, chamber, tourism, and partner pitch.
+              </span>
+            </span>
+          </span>
+        </button>
+
+        <div className="grid grid-cols-2 gap-3">
               {highlights.map((item) => (
                 <div
                   key={item.title}

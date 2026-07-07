@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
 import { IslandPicker } from "./IslandPicker";
 import JoinPage from "../JoinPage";
@@ -58,6 +58,7 @@ function isPresentationPath(pathname: string) {
 
 export function MobileShell({ children }: MobileShellProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const routeContent =
     location.pathname === "/join" ? (
       <JoinPage />
@@ -151,5 +152,14 @@ export function MobileShell({ children }: MobileShellProps) {
 
       {!isPresentationRoute && <BottomNav />}
     </div>
+      {location.pathname !== "/meeting-mode" ? (
+        <button
+          type="button"
+          onClick={() => navigate("/meeting-mode")}
+          className="fixed bottom-24 right-4 z-[9999] rounded-full bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink shadow-2xl active:scale-95"
+        >
+          Meeting Mode
+        </button>
+      ) : null}
   );
 }
