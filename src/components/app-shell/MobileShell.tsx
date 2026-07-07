@@ -27,6 +27,8 @@ function isPresentationPath(pathname: string) {
 export function MobileShell({ children }: MobileShellProps) {
   const location = useLocation();
   const routeContent = location.pathname === "/join" ? <JoinPage /> : children;
+  const showRevenueJoinCta =
+    location.pathname === "/demo" || location.pathname === "/partners";
   const isPresentationRoute = isPresentationPath(location.pathname);
 
   return (
@@ -63,7 +65,16 @@ export function MobileShell({ children }: MobileShellProps) {
             isPresentationRoute ? "mx-auto max-w-6xl" : "mx-auto max-w-4xl"
           }
         >
-          {routeContent}
+          {showRevenueJoinCta ? (
+        <a
+          href="/join"
+          className="fixed bottom-6 left-4 right-4 z-[90] inline-flex items-center justify-center rounded-2xl bg-turquoise px-5 py-4 text-sm font-black text-ink shadow-2xl ring-1 ring-black/10 active:scale-95 md:left-auto md:right-8 md:w-auto"
+        >
+          Join as Founding Partner
+        </a>
+      ) : null}
+
+      {routeContent}
         </div>
       </main>
 
