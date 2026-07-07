@@ -317,8 +317,15 @@ export default function PartnerPipelinePage() {
 
             <div className="flex flex-wrap gap-3">
               <button
-                onClick={() => navigate("/tourism-alliance")}
+                onClick={() => navigate("/alliance-pipeline")}
                 className="rounded-2xl bg-turquoise px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Alliance Pipeline
+              </button>
+
+              <button
+                onClick={() => navigate("/tourism-alliance")}
+                className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
               >
                 Tourism Alliance
               </button>

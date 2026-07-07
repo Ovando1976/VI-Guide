@@ -11,6 +11,7 @@ import PartnerPipelinePage from "../PartnerPipelinePage";
 import PartnerOnboardingPage from "../PartnerOnboardingPage";
 import PartnerDirectoryPage from "../PartnerDirectoryPage";
 import TourismAllianceHub from "../TourismAllianceHub";
+import AlliancePipelinePage from "../AlliancePipelinePage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ const PRESENTATION_ROUTES = [
   "/partner-onboarding",
   "/partner-directory",
   "/tourism-alliance",
+  "/alliance-pipeline",
   "/mobility",
   "/admin/leads",
   "/partners",
@@ -62,6 +64,8 @@ export function MobileShell({ children }: MobileShellProps) {
       <PartnerDirectoryPage />
     ) : location.pathname === "/tourism-alliance" ? (
       <TourismAllianceHub />
+    ) : location.pathname === "/alliance-pipeline" ? (
+      <AlliancePipelinePage />
     ) : (
       children
     );

@@ -311,8 +311,15 @@ export default function TourismAllianceHub() {
                 Taxi Demo
               </button>
               <button
-                onClick={() => navigate("/partner-pipeline")}
+                onClick={() => navigate("/alliance-pipeline")}
                 className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-ink active:scale-95"
+              >
+                Alliance Pipeline
+              </button>
+
+              <button
+                onClick={() => navigate("/partner-pipeline")}
+                className="rounded-2xl bg-white/10 px-5 py-3 text-sm font-black text-white active:scale-95"
               >
                 Partner Pipeline
               </button>
