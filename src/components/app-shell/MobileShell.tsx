@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { BottomNav } from "./BottomNav";
 import { IslandPicker } from "./IslandPicker";
+import JoinPage from "../JoinPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ function isPresentationPath(pathname: string) {
 
 export function MobileShell({ children }: MobileShellProps) {
   const location = useLocation();
+  const routeContent = location.pathname === "/join" ? <JoinPage /> : children;
   const isPresentationRoute = isPresentationPath(location.pathname);
 
   return (
@@ -61,7 +63,7 @@ export function MobileShell({ children }: MobileShellProps) {
             isPresentationRoute ? "mx-auto max-w-6xl" : "mx-auto max-w-4xl"
           }
         >
-          {children}
+          {routeContent}
         </div>
       </main>
 
