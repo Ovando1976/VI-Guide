@@ -136,10 +136,8 @@ export default function Maps({ selectedIsland }: MapsProps) {
               listing.description ||
               "Active VI Guide partner listing.",
             type,
-            island: selectedIsland,
             lat: Number(listing.lat),
             lng: Number(listing.lng),
-            source: "partner_listing",
           };
         }),
     [mapPartnerListings, selectedIsland]
