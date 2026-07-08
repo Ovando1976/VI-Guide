@@ -24,8 +24,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import {
 import FeaturedIslandPicks from "./FeaturedIslandPicks";
+import {
   homepageCards,
   homepageFeatureImages,
   homepageHeroImage,
@@ -84,17 +84,17 @@ const exploreActions: SmallAction[] = [
   { label: "Beaches", path: "/beaches", icon: Waves },
   { label: "Explore", path: "/explore", icon: Compass },
   { label: "Events", path: "/events", icon: CalendarDays },
-  { label: "Accommodations",
-    path: "/hotels",
-    icon: BedDouble,
-  },
+  { label: "Accommodations", path: "/hotels", icon: BedDouble },
   {
     label: "Restaurants",
     path: "/eat",
     icon: Utensils,
   },
   {
-    label: "VI Connect", path: "/connect", icon: Users },
+    label: "VI Connect",
+    path: "/connect",
+    icon: Users,
+  },
   { label: "Concierge", path: "/concierge", icon: MessageSquareText },
 ];
 
@@ -410,9 +410,9 @@ export default function VisitorHome({
           </div>
         </section>
 
-              <FeaturedIslandPicks selectedIsland={selectedIsland} />
+        <FeaturedIslandPicks selectedIsland={selectedIsland} />
 
-<section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
+        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
             <div className="mb-5 h-36 overflow-hidden rounded-[2rem] bg-stone-100 md:h-44">
               <img

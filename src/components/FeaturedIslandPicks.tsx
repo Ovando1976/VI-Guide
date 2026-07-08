@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BedDouble, MapPin, Utensils, Waves } from "lucide-react";
 
+import { isIslandCode } from "../lib/utils/islands";
 import type { IslandCode } from "../types";
 
 type PickKind = "beaches" | "restaurants" | "stays";
@@ -19,7 +20,7 @@ type FeaturedPick = {
 };
 
 type FeaturedIslandPicksProps = {
-  selectedIsland?: IslandCode;
+  selectedIsland?: IslandCode | string;
 };
 
 const islandLabels: Record<IslandCode, string> = {
@@ -219,17 +220,20 @@ function kindLabel(kind: PickKind) {
 
 function FeaturedIslandPicks({ selectedIsland = "st_thomas" }: FeaturedIslandPicksProps) {
   const navigate = useNavigate();
+  const safeSelectedIsland: IslandCode = isIslandCode(selectedIsland)
+    ? selectedIsland
+    : "st_thomas";
   const [activeTab, setActiveTab] = useState<"all" | PickKind>("all");
 
   const visiblePicks = useMemo(() => {
-    const islandPicks = featuredPicks.filter((pick) => pick.island === selectedIsland);
+    const islandPicks = featuredPicks.filter((pick) => pick.island === safeSelectedIsland);
     const filtered =
       activeTab === "all"
         ? islandPicks
         : islandPicks.filter((pick) => pick.kind === activeTab);
 
     return filtered.length ? filtered : islandPicks;
-  }, [activeTab, selectedIsland]);
+  }, [activeTab, safeSelectedIsland]);
 
   return (
     <section className="mx-auto mt-8 max-w-5xl rounded-[2rem] bg-white p-5 shadow-xl shadow-black/5">
@@ -242,7 +246,7 @@ function FeaturedIslandPicks({ selectedIsland = "st_thomas" }: FeaturedIslandPic
             Beaches, restaurants, and stays.
           </h2>
           <p className="mt-2 text-sm font-semibold text-zinc-500">
-            Curated starting points for {islandLabels[selectedIsland]}.
+            Curated starting points for {islandLabels[safeSelectedIsland]}.
           </p>
         </div>
 
