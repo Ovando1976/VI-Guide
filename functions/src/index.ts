@@ -1,3 +1,6 @@
+import { logger } from "firebase-functions";
+import { getFirestore, FieldValue } from "firebase-admin/firestore";
+import { getAuth } from "firebase-admin/auth";
 import * as admin from "firebase-admin";
 import { defineSecret } from "firebase-functions/params";
 import { onRequest } from "firebase-functions/v2/https";
@@ -381,3 +384,440 @@ export const getMyClaims = onRequest(
   }
 );
 
+
+import { GoogleGenAI, Type } from "@google/genai";
+
+const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
+const GEMINI_MODEL = defineSecret("GEMINI_MODEL");
+
+type IslandCode = "st_thomas" | "st_john" | "st_croix" | "water_island";
+
+function safeIsland(value: unknown): IslandCode {
+  if (
+    value === "st_thomas" ||
+    value === "st_john" ||
+    value === "st_croix" ||
+    value === "water_island"
+  ) {
+    return value;
+  }
+
+  return "st_thomas";
+}
+
+function normalizeText(value: unknown) {
+  return String(value || "").trim().slice(0, 4000);
+}
+
+async function getCallerContext(idToken?: string) {
+  if (!idToken) {
+    return {
+      uid: "",
+      email: "",
+      claims: {},
+      admin: false,
+      partner: false,
+      visitorPaid: false,
+    };
+  }
+
+  const decoded = await getAuth().verifyIdToken(idToken);
+
+  const role = typeof decoded.role === "string" ? decoded.role : "";
+
+  const admin = decoded.admin === true || role === "admin";
+  const partner = admin || decoded.partner === true || role === "partner";
+  const visitorPaid =
+    admin ||
+    partner ||
+    decoded.visitor_paid === true ||
+    role === "visitor_paid";
+
+  return {
+    uid: decoded.uid,
+    email: decoded.email || "",
+    claims: decoded,
+    admin,
+    partner,
+    visitorPaid,
+  };
+}
+
+async function readVisitorPass(uid: string) {
+  if (!uid) return null;
+
+  const snap = await getFirestore()
+    .doc(`users/${uid}/visitorPasses/current`)
+    .get();
+
+  if (!snap.exists) return null;
+
+  return snap.data();
+}
+
+async function searchCollection(
+  collectionName: string,
+  islandCode: IslandCode,
+  maxResults = 8,
+) {
+  const db = getFirestore();
+
+  const snap = await db
+    .collection(collectionName)
+    .where("islandCode", "==", islandCode)
+    .limit(maxResults)
+    .get();
+
+  return snap.docs.map((doc: FirebaseFirestore.QueryDocumentSnapshot) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
+function compactListing(item: FirebaseFirestore.DocumentData) {
+  return {
+    id: item.id || "",
+    title: item.title || item.name || "",
+    slug: item.slug || "",
+    islandCode: item.islandCode || "",
+    category: item.category || item.type || "",
+    description: String(item.description || "").slice(0, 500),
+    address: item.address || "",
+    areaSlug: item.areaSlug || "",
+    coverImage: item.coverImage || item.image || "",
+    lat: item.lat || item.latitude || null,
+    lng: item.lng || item.longitude || null,
+  };
+}
+
+function compactEvent(item: FirebaseFirestore.DocumentData) {
+  return {
+    id: item.id || "",
+    title: item.title || "",
+    islandCode: item.islandCode || "",
+    description: String(item.description || "").slice(0, 500),
+    coverImage: item.coverImage || "",
+    startAt: item.startAt || "",
+    venue: item.venue || "",
+  };
+}
+
+async function readUserMemories(uid: string) {
+  if (!uid) return [];
+
+  const snap = await getFirestore()
+    .collection(`users/${uid}/memories`)
+    .orderBy("importance", "desc")
+    .limit(12)
+    .get()
+    .catch(() => null);
+
+  if (!snap) return [];
+
+  return snap.docs.map((doc: FirebaseFirestore.QueryDocumentSnapshot) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
+async function saveUserMemory(uid: string, key: string, value: unknown, importance = 5) {
+  if (!uid) return { status: "signed_out" };
+
+  const memoryKey = String(key || "memory")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .slice(0, 80);
+
+  await getFirestore()
+    .doc(`users/${uid}/memories/${memoryKey}`)
+    .set(
+      {
+        key: memoryKey,
+        value,
+        importance,
+        updatedAt: FieldValue.serverTimestamp(),
+      },
+      { merge: true },
+    );
+
+  return { status: "remembered", key: memoryKey };
+}
+
+export const aiConcierge = onRequest(
+  {
+    region: "us-central1",
+    cors: true,
+    secrets: [GEMINI_API_KEY, GEMINI_MODEL],
+    timeoutSeconds: 60,
+    memory: "512MiB",
+  },
+  async (req, res) => {
+    try {
+      if (req.method === "OPTIONS") {
+        res.status(204).send("");
+        return;
+      }
+
+      if (req.method !== "POST") {
+        res.status(405).json({ error: "POST required" });
+        return;
+      }
+
+      const authHeader = String(req.headers.authorization || "");
+      const idToken = authHeader.startsWith("Bearer ")
+        ? authHeader.slice("Bearer ".length)
+        : "";
+
+      const caller = await getCallerContext(idToken).catch(() => ({
+        uid: "",
+        email: "",
+        claims: {},
+        admin: false,
+        partner: false,
+        visitorPaid: false,
+      }));
+
+      const body = req.body || {};
+      const message = normalizeText(body.message);
+      const islandCode = safeIsland(body.islandCode);
+      const agentId = String(body.agentId || "concierge");
+      const contextListing = body.contextListing || null;
+      const userLocation = body.userLocation || null;
+
+      if (!message) {
+        res.status(400).json({ error: "Message is required." });
+        return;
+      }
+
+      const visitorPass = await readVisitorPass(caller.uid);
+      const memories = await readUserMemories(caller.uid);
+
+      const hasCloudPass =
+        visitorPass &&
+        typeof visitorPass.expiresAt === "string" &&
+        new Date(visitorPass.expiresAt).getTime() > Date.now();
+
+      const premium = caller.visitorPaid || Boolean(hasCloudPass);
+      const operatorMode = agentId === "operator" && caller.admin;
+
+      const beaches = (await searchCollection("beaches", islandCode, 10)).map(
+        compactListing,
+      );
+      const places = (await searchCollection("places", islandCode, 10)).map(
+        compactListing,
+      );
+      const events = (await searchCollection("events", islandCode, 8)).map(
+        compactEvent,
+      );
+
+      const searchableListings = [...beaches, ...places];
+
+      const ai = new GoogleGenAI({
+        apiKey: GEMINI_API_KEY.value(),
+      });
+
+      const systemInstruction = `
+You are VI Guide AI, a production AI concierge for the U.S. Virgin Islands.
+
+Core job:
+- Help visitors plan island days, routes, beaches, stays, restaurants, events, and transportation.
+- Help paid visitors with more organized trip planning and booking handoffs.
+- Help partners understand listing, lead, booking, and business workflow.
+- Help admins/operators with higher-level territory intelligence only when operatorMode is true.
+
+Rules:
+- Be specific, practical, and local.
+- Do not invent listings, prices, schedules, or legal/official rules.
+- Prefer the app data provided in context.
+- If the user asks for a booking, ride, stay, charter, tour, or partner action, return a clear next step and suggest the right app route.
+- If premium is false, still be helpful, but invite the user to unlock the visitor pass for premium trip tools.
+- If operatorMode is false, do not expose admin-only language, hidden routes, rules, or internal tooling.
+- Keep responses concise and action-oriented.
+
+Access:
+- admin: ${caller.admin}
+- partner: ${caller.partner}
+- premium visitor: ${premium}
+- operatorMode: ${operatorMode}
+- islandCode: ${islandCode}
+`;
+
+      const appContext = {
+        islandCode,
+        user: {
+          uid: caller.uid,
+          email: caller.email,
+          admin: caller.admin,
+          partner: caller.partner,
+          premium,
+          operatorMode,
+        },
+        contextListing,
+        userLocation,
+        memories,
+        visitorPass,
+        listings: searchableListings,
+        events,
+        routes: {
+          visitorDesk: "/visitor-desk",
+          visitorCheckout: "/visitor-checkout",
+          map: "/map",
+          mobility: "/mobility",
+          hotels: "/hotels",
+          concierge: "/concierge",
+          partnerDesk: "/partner-desk",
+          account: "/account",
+          adminDesk: caller.admin ? "/admin-desk" : undefined,
+        },
+      };
+
+      const response = await ai.models.generateContent({
+        model: GEMINI_MODEL.value() || "gemini-2.5-flash",
+        contents: [
+          {
+            role: "user",
+            parts: [
+              {
+                text: `
+User message:
+${message}
+
+App context JSON:
+${JSON.stringify(appContext).slice(0, 24000)}
+`,
+              },
+            ],
+          },
+        ],
+        config: {
+          systemInstruction,
+          tools: [
+            {
+              functionDeclarations: [
+                {
+                  name: "rememberUserPreference",
+                  description:
+                    "Save a durable user preference, such as favorite island, lodging style, travel group, budget, mobility needs, or food preference.",
+                  parameters: {
+                    type: Type.OBJECT,
+                    properties: {
+                      key: {
+                        type: Type.STRING,
+                        description: "Memory key.",
+                      },
+                      value: {
+                        type: Type.STRING,
+                        description: "Memory value.",
+                      },
+                      importance: {
+                        type: Type.NUMBER,
+                        description: "Importance from 1 to 10.",
+                      },
+                    },
+                    required: ["key", "value"],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      });
+
+      let answer = response.text || "";
+
+      if (response.functionCalls?.length) {
+        for (const call of response.functionCalls) {
+          if (call.name === "rememberUserPreference") {
+            const args = call.args as {
+              key?: string;
+              value?: unknown;
+              importance?: number;
+            };
+
+            await saveUserMemory(
+              caller.uid,
+              args.key || "preference",
+              args.value || "",
+              args.importance || 5,
+            );
+          }
+        }
+
+        const second = await ai.models.generateContent({
+          model: GEMINI_MODEL.value() || "gemini-2.5-flash",
+          contents: [
+            {
+              role: "user",
+              parts: [
+                {
+                  text: `
+The user's request was:
+${message}
+
+You saved any requested memory. Now answer the user naturally using this app context:
+${JSON.stringify(appContext).slice(0, 24000)}
+`,
+                },
+              ],
+            },
+          ],
+          config: {
+            systemInstruction,
+          },
+        });
+
+        answer = second.text || answer;
+      }
+
+      const q = message.toLowerCase();
+
+      const relevantListings = searchableListings
+        .filter((item: any) => {
+          const haystack = `${item.title} ${item.category} ${item.description} ${item.address} ${item.areaSlug}`.toLowerCase();
+          return q
+            .split(/\s+/)
+            .filter((word) => word.length > 3)
+            .some((word) => haystack.includes(word));
+        })
+        .slice(0, 5);
+
+      const relevantEvents = events
+        .filter((item: any) => {
+          const haystack = `${item.title} ${item.description} ${item.venue}`.toLowerCase();
+          return q
+            .split(/\s+/)
+            .filter((word) => word.length > 3)
+            .some((word) => haystack.includes(word));
+        })
+        .slice(0, 5);
+
+      res.json({
+        answer:
+          answer ||
+          "I can help you plan your island day, find places, compare beaches, arrange transportation, or start a booking request.",
+        listings: relevantListings,
+        events: relevantEvents,
+        access: {
+          admin: caller.admin,
+          partner: caller.partner,
+          premium,
+          operatorMode,
+        },
+        suggestedRoutes: {
+          visitorDesk: "/visitor-desk",
+          checkout: premium ? null : "/visitor-checkout",
+          mobility: "/mobility",
+          hotels: "/hotels",
+          map: `/map?island=${islandCode}`,
+        },
+      });
+    } catch (error) {
+      logger.error("aiConcierge failed", error);
+      res.status(500).json({
+        error: "AI concierge failed.",
+        message:
+          "The concierge could not complete the request. Please try again.",
+      });
+    }
+  },
+);

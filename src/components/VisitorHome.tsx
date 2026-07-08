@@ -116,8 +116,8 @@ export default function VisitorHome({
   const island = islandName(selectedIsland);
 
   return (
-    <main className="min-h-screen bg-[#f8f0da] pb-56 text-ink">
-      <section className="mx-auto max-w-7xl px-4 py-6">
+    <main className="min-h-screen bg-[#f8f0da] pb-72 text-ink">
+      <section className="mx-auto max-w-7xl px-4 py-6 md:px-6">
         <header className="flex items-center justify-between rounded-full bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
           <button
             type="button"
@@ -164,7 +164,7 @@ export default function VisitorHome({
         </header>
 
         <section className="mt-5 overflow-hidden rounded-[2.75rem] bg-emerald-950 text-white shadow-2xl">
-          <div className="relative min-h-[560px] p-6 md:p-8 lg:min-h-[620px]">
+          <div className="relative min-h-[520px] p-6 md:p-8 lg:min-h-[560px]">
             <div className="absolute inset-0">
               <img
                 src={homepageHeroImage}
@@ -175,14 +175,14 @@ export default function VisitorHome({
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(64,220,202,0.35),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(255,207,50,0.25),transparent_28%)]" />
             </div>
 
-            <div className="relative z-10 grid min-h-[500px] gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div className="relative z-10 grid min-h-[460px] gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div className="max-w-3xl">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
                   <SunMedium className="h-4 w-4" />
                   {island} today
                 </div>
 
-                <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
+                <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-7xl xl:text-8xl">
                   Your island day, organized.
                 </h1>
 
@@ -222,7 +222,7 @@ export default function VisitorHome({
                   ))}
                 </div>
 
-                <div className="mt-7 grid grid-cols-3 gap-3">
+                <div className="mt-7 hidden grid-cols-3 gap-3 md:grid">
                   {homepageFeatureImages.map((src) => (
                     <div
                       key={src}
@@ -296,7 +296,7 @@ export default function VisitorHome({
                 card.featured ? "bg-[#ffcf32] text-ink" : "bg-white text-ink"
               }`}
             >
-              <div className="mb-5 h-36 overflow-hidden rounded-[1.75rem] bg-stone-100">
+              <div className="mb-5 h-32 overflow-hidden rounded-[1.75rem] bg-stone-100 md:h-36">
                 <img
                   src={
                     card.path === "/visitor-desk"
@@ -379,7 +379,7 @@ export default function VisitorHome({
 
         <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
-            <div className="mb-5 h-44 overflow-hidden rounded-[2rem] bg-stone-100">
+            <div className="mb-5 h-36 overflow-hidden rounded-[2rem] bg-stone-100 md:h-44">
               <img
                 src={homepageCards.pass}
                 alt="Virgin Islands beach visitor pass"
@@ -415,7 +415,7 @@ export default function VisitorHome({
           </article>
 
           <article className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-xl">
-            <div className="h-52 bg-stone-900">
+            <div className="h-40 bg-stone-900 md:h-52">
               <img
                 src={homepageCards.partner}
                 alt="Virgin Islands local partner business"
