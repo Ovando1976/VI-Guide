@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "deploy:rules": "npx firebase-tools deploy --only firestore:rules,storage"
+    "deploy:rules": "npx firebase-tools deploy --only firestore:rules,storage",
+    "seed:restaurants:dry": "node scripts/seed-restaurants-firestore.mjs --dry-run",
+    "seed:restaurants": "node scripts/seed-restaurants-firestore.mjs --write"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

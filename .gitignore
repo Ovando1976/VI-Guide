@@ -14,3 +14,5 @@ firebase-applet-config.json
 
 # Firebase functions build output
 functions/lib/
+.secrets/
+*.service-account.json
