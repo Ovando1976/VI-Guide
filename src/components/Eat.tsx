@@ -1,28 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion } from "motion/react";
-import { MapPin, Search, Star, Utensils } from "lucide-react";
+import { Database, MapPin, Search, Star, Utensils } from "lucide-react";
 
-import stCroixRestaurants from "../data/restaurants-st-croix.json";
-import stJohnRestaurants from "../data/restaurants-st-john.json";
-import stThomasRestaurants from "../data/restaurants-st-thomas.json";
-import waterIslandRestaurants from "../data/restaurants-water-island.json";
-import { getPlacesByCategory } from "../lib/firestore/places";
+import { useRestaurantPlaces } from "../hooks/useRestaurantPlaces";
 import { isIslandCode } from "../lib/utils/islands";
 import type { IslandCode, PlaceDoc } from "../types";
 
 interface EatProps {
   onSelectPlace: (place: PlaceDoc) => void;
 }
-
-type RestaurantRecord = Record<string, unknown>;
-
-const restaurantDataByIsland: Record<IslandCode, unknown[]> = {
-  st_thomas: stThomasRestaurants as unknown[],
-  st_john: stJohnRestaurants as unknown[],
-  st_croix: stCroixRestaurants as unknown[],
-  water_island: waterIslandRestaurants as unknown[],
-};
 
 const islandLabels: Record<IslandCode, string> = {
   st_thomas: "St. Thomas",
@@ -31,120 +18,8 @@ const islandLabels: Record<IslandCode, string> = {
   water_island: "Water Island",
 };
 
-function asText(value: unknown, fallback = "") {
-  return typeof value === "string" && value.trim() ? value.trim() : fallback;
-}
-
-function asNumber(value: unknown) {
-  if (typeof value === "number" && Number.isFinite(value)) return value;
-  if (typeof value === "string" && value.trim()) {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : undefined;
-  }
-  return undefined;
-}
-
-function asStringArray(value: unknown) {
-  if (Array.isArray(value)) {
-    return value
-      .map((item) => String(item || "").trim())
-      .filter(Boolean)
-      .slice(0, 8);
-  }
-
-  if (typeof value === "string" && value.trim()) {
-    return value
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean)
-      .slice(0, 8);
-  }
-
-  return [];
-}
-
-function normalizeRestaurant(
-  record: RestaurantRecord,
-  islandCode: IslandCode,
-  index: number
-): PlaceDoc {
-  const title =
-    asText(record.title) ||
-    asText(record.name) ||
-    asText(record.restaurantName) ||
-    `Restaurant ${index + 1}`;
-
-  const slug =
-    asText(record.slug) ||
-    title
-      .toLowerCase()
-      .replace(/&/g, "and")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
-
-  const id =
-    asText(record.id) ||
-    asText(record.placeId) ||
-    `${islandCode}-restaurant-${slug || index}`;
-
-  const coverImage =
-    asText(record.coverImage) ||
-    asText(record.image) ||
-    asText(record.imageUrl) ||
-    asText(record.photoUrl) ||
-    asText(record.thumbnail) ||
-    `/images/places/${islandCode.replace("_", "-")}/${slug}-1.jpg`;
-
-  const description =
-    asText(record.shortDescription) ||
-    asText(record.description) ||
-    asText(record.summary) ||
-    `A local dining option on ${islandLabels[islandCode]}.`;
-
-  return {
-    ...(record as Partial<PlaceDoc>),
-    id,
-    title,
-    name: asText(record.name, title),
-    slug,
-    islandCode,
-    island: islandCode,
-    category: "restaurant",
-    type: "restaurant",
-    coverImage,
-    image: coverImage,
-    shortDescription: asText(record.shortDescription, description),
-    description,
-    areaSlug:
-      asText(record.areaSlug) ||
-      asText(record.neighborhood) ||
-      asText(record.area) ||
-      islandCode,
-    address: asText(record.address),
-    priceTier: asText(record.priceTier) || asText(record.price) || "",
-    rating: asNumber(record.rating),
-    tags: asStringArray(record.tags).length
-      ? asStringArray(record.tags)
-      : [
-          asText(record.cuisine),
-          asText(record.category),
-          asText(record.neighborhood),
-        ].filter(Boolean),
-    lat: asNumber(record.lat) ?? asNumber(record.latitude),
-    lng: asNumber(record.lng) ?? asNumber(record.longitude),
-  } as PlaceDoc;
-}
-
-function getStaticRestaurants(islandCode: IslandCode) {
-  return (restaurantDataByIsland[islandCode] || [])
-    .filter((item): item is RestaurantRecord => Boolean(item) && typeof item === "object")
-    .map((record, index) => normalizeRestaurant(record, islandCode, index));
-}
-
 export default function Eat({ onSelectPlace }: EatProps) {
   const [searchParams] = useSearchParams();
-  const [places, setPlaces] = useState<PlaceDoc[]>([]);
-  const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
 
   const islandParam = searchParams.get("island");
@@ -152,40 +27,11 @@ export default function Eat({ onSelectPlace }: EatProps) {
     ? islandParam
     : "st_thomas";
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadPlaces() {
-      setLoading(true);
-
-      try {
-        const cloudData = await getPlacesByCategory("restaurant", islandCode);
-        const localData = getStaticRestaurants(islandCode);
-
-        const merged = cloudData?.length ? cloudData : localData;
-
-        if (!cancelled) {
-          setPlaces(merged);
-        }
-      } catch (error) {
-        console.error("Error loading restaurants. Falling back to local JSON:", error);
-
-        if (!cancelled) {
-          setPlaces(getStaticRestaurants(islandCode));
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadPlaces();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [islandCode]);
+  const {
+    restaurants: places,
+    source,
+    loading,
+  } = useRestaurantPlaces(islandCode);
 
   const filteredPlaces = useMemo(() => {
     const cleanQuery = query.trim().toLowerCase();
@@ -195,7 +41,6 @@ export default function Eat({ onSelectPlace }: EatProps) {
     return places.filter((place) => {
       const haystack = [
         place.title,
-        (place as { name?: string }).name,
         place.description,
         place.shortDescription,
         place.areaSlug,
@@ -248,8 +93,12 @@ export default function Eat({ onSelectPlace }: EatProps) {
           />
         </label>
 
-        <div className="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400">
-          {filteredPlaces.length} dining spots
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400">
+          <span>{filteredPlaces.length} dining spots</span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-500">
+            <Database className="h-3 w-3" />
+            {source === "firestore" ? "Firestore" : "Local fallback"}
+          </span>
         </div>
       </header>
 
@@ -265,7 +114,7 @@ export default function Eat({ onSelectPlace }: EatProps) {
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
               <img
-                src={place.coverImage || (place as { image?: string }).image || "https://picsum.photos/seed/food/900/650"}
+                src={place.coverImage || "https://picsum.photos/seed/food/900/650"\}
                 alt={place.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -300,7 +149,9 @@ export default function Eat({ onSelectPlace }: EatProps) {
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-zinc-400">
                 <div className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5" />
-                  <span>{place.areaSlug?.replace(/-/g, " ") || islandLabels[islandCode]}</span>
+                  <span>
+                    {place.areaSlug?.replace(/-/g, " ") || islandLabels[islandCode]}
+                  </span>
                 </div>
 
                 {place.tags?.slice(0, 3).map((tag) => (
