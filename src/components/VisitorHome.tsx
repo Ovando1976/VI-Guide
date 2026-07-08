@@ -1,211 +1,457 @@
 import {
+  ArrowRight,
+  BadgeDollarSign,
   BedDouble,
-  Bell,
   CalendarDays,
   Car,
+  CheckCircle2,
   Compass,
-  Landmark,
-  Map,
+  CreditCard,
+  Hotel,
+  LockKeyhole,
+  MapPinned,
+  Menu,
+  MessageSquareText,
+  Plane,
   Search,
   Ship,
-  ShoppingBag,
-  Utensils,
+  Sparkles,
+  SunMedium,
   Waves,
-  Mic,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 type VisitorHomeProps = {
   selectedIsland?: string;
-  selectedIslandLabel?: string;
-  onNavigate: (path: string) => void;
-  onSelectListing?: (listing: unknown) => void;
+  onNavigate?: (path: string) => void;
+  user?: unknown;
 };
 
-const highlights = [
+type FeatureCard = {
+  label: string;
+  title: string;
+  text: string;
+  path: string;
+  icon: LucideIcon;
+  featured?: boolean;
+};
+
+type SmallAction = {
+  label: string;
+  path: string;
+  icon: LucideIcon;
+};
+
+const visitorActions: FeatureCard[] = [
   {
-    label: "Best Beach",
-    title: "Magens Bay",
-    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
+    label: "Start here",
+    title: "Plan my visit",
+    text: "Build a day plan, map stops, check routes, and save your trip flow.",
+    path: "/visitor-desk",
+    icon: Compass,
+    featured: true,
   },
   {
-    label: "Trending Restaurant",
-    title: "Oceana",
-    image: "/images/places/st-thomas/oceana-restaurant-1.jpg",
+    label: "Stays & booking",
+    title: "Hotels, villas & charters",
+    text: "Request lodging, boat days, tours, pickup help, and local recommendations.",
+    path: "/hotels",
+    icon: Hotel,
   },
   {
-    label: "Tonight's Event",
-    title: "Village Night",
-    image: "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
-  },
-  {
-    label: "Traffic",
-    title: "Heavy",
-    image: "/images/places/st-thomas/red-hook-marina-1.jpg",
+    label: "Getting around",
+    title: "Ride & route preview",
+    text: "Preview routes and request transportation with better pickup context.",
+    path: "/mobility",
+    icon: Car,
   },
 ];
 
-const actions = [
-  { label: "Beaches", icon: Waves, path: "/beaches" },
-  { label: "Dining", icon: Utensils, path: "/eat" },
-  { label: "Shopping", icon: ShoppingBag, path: "/explore?category=shopping" },
-  { label: "Sights", icon: Landmark, path: "/explore?category=attraction" },
-  { label: "Events", icon: CalendarDays, path: "/events" },
-  { label: "Mobility", icon: Car, path: "/mobility" },
-  { label: "Cruise Planner", icon: Ship, path: "/cruise" },
-  { label: "History", icon: Compass, path: "/history" },
+const exploreActions: SmallAction[] = [
+  { label: "Map", path: "/map", icon: MapPinned },
+  { label: "Cruise Planner", path: "/cruise-planner", icon: Ship },
+  { label: "Beaches", path: "/beaches", icon: Waves },
+  { label: "Explore", path: "/explore", icon: Compass },
+  { label: "Events", path: "/events", icon: CalendarDays },
+  { label: "Concierge", path: "/concierge", icon: MessageSquareText },
 ];
+
+const trustItems = [
+  "Road previews for trip planning",
+  "Hotels, villas, charters, and tours",
+  "Partner-managed listings",
+  "Visitor pass access controls",
+];
+
+function islandName(value?: string) {
+  if (!value) return "St. Thomas";
+
+  return {
+    st_thomas: "St. Thomas",
+    st_john: "St. John",
+    st_croix: "St. Croix",
+    water_island: "Water Island",
+  }[value] || value.replace(/_/g, " ");
+}
 
 export default function VisitorHome({
-  selectedIslandLabel = "St. Thomas",
+  selectedIsland = "st_thomas",
   onNavigate,
 }: VisitorHomeProps) {
+  const navigate = useNavigate();
+
+  const go = (path: string) => {
+    if (onNavigate) {
+      onNavigate(path);
+      return;
+    }
+
+    navigate(path);
+  };
+
+  const island = islandName(selectedIsland);
+
   return (
-    <div className="min-h-screen pb-52 text-white">
-      <section className="relative overflow-hidden rounded-b-[3rem] bg-emerald-950 px-5 pb-8 pt-8 shadow-2xl">
-        <div className="absolute inset-0 opacity-30">
-          <img
-            src="/images/places/st-thomas/magens-bay-beach-1.jpg"
-            alt=""
-            className="h-full w-full object-cover"
-          />
-        </div>
-
-        <div className="relative z-10">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-sm text-emerald-100">Good Morning,</p>
-              <h1 className="mt-1 text-4xl font-black tracking-tight">
-                {selectedIslandLabel}
-              </h1>
-            </div>
-
-            <button className="relative rounded-full bg-white/15 p-3 backdrop-blur">
-              <Bell className="h-5 w-5" />
-              <span className="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full bg-red-500 text-[10px] font-bold">
-                3
+    <main className="min-h-screen bg-[#f8f0da] pb-56 text-ink">
+      <section className="mx-auto max-w-7xl px-4 py-6">
+        <header className="flex items-center justify-between rounded-full bg-white/80 px-4 py-3 shadow-sm backdrop-blur">
+          <button
+            type="button"
+            onClick={() => go("/visitor-desk")}
+            className="flex items-center gap-3 active:scale-95"
+          >
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-emerald-950 text-turquoise">
+              <Sparkles className="h-5 w-5" />
+            </span>
+            <span className="text-left">
+              <span className="block text-sm font-black">VI Guide</span>
+              <span className="block text-[10px] font-black uppercase tracking-[0.18em] text-stone-400">
+                Virgin Islands
               </span>
+            </span>
+          </button>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => go("/account")}
+              className="hidden rounded-full bg-stone-100 px-4 py-3 text-xs font-black text-ink active:scale-95 md:inline-flex"
+            >
+              Account
+            </button>
+
+            <button
+              type="button"
+              onClick={() => go("/visitor-checkout")}
+              className="rounded-full bg-[#ffcf32] px-4 py-3 text-xs font-black text-ink shadow-sm active:scale-95"
+            >
+              Visitor Pass
+            </button>
+
+            <button
+              type="button"
+              onClick={() => go("/visitor-desk")}
+              className="grid h-11 w-11 place-items-center rounded-full bg-ink text-white active:scale-95"
+              aria-label="Open visitor desk"
+            >
+              <Menu className="h-5 w-5" />
             </button>
           </div>
+        </header>
 
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-3xl font-black">🌤️ 84°F</p>
-              <p className="text-xs text-emerald-100">Partly cloudy</p>
+        <section className="mt-5 overflow-hidden rounded-[2.75rem] bg-emerald-950 text-white shadow-2xl">
+          <div className="relative min-h-[560px] p-6 md:p-8 lg:min-h-[620px]">
+            <div className="absolute inset-0 opacity-40">
+              <div className="h-full w-full bg-[radial-gradient(circle_at_20%_15%,rgba(64,220,202,0.55),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(255,207,50,0.35),transparent_28%),linear-gradient(135deg,#022c22,#063f3a_45%,#081a1a)]" />
             </div>
 
-            <div className="text-right">
-              <p className="text-3xl font-black">4</p>
-              <p className="text-xs text-emerald-100">Cruise ships in port</p>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <p className="mb-3 text-sm font-bold">Today's Highlights</p>
-<div className="grid grid-cols-2 gap-3">
-              {highlights.map((item) => (
-                <div
-                  key={item.title}
-                  className="relative overflow-hidden rounded-2xl bg-white/10 p-3 shadow-lg backdrop-blur"
-                >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover opacity-35"
-                  />
-                  <div className="relative z-10">
-                    <p className="text-[10px] font-bold uppercase text-emerald-100">
-                      {item.label}
-                    </p>
-                    <p className="mt-8 text-sm font-black">{item.title}</p>
-                  </div>
+            <div className="relative z-10 grid min-h-[500px] gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
+                  <SunMedium className="h-4 w-4" />
+                  {island} today
                 </div>
-              ))}
+
+                <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
+                  Your island day, organized.
+                </h1>
+
+                <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/75 md:text-lg">
+                  Plan where to go, where to stay, how to get around, and what to book across the U.S. Virgin Islands.
+                </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={() => go("/visitor-desk")}
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#ffcf32] px-6 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
+                  >
+                    Start planning
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => go("/hotels")}
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
+                  >
+                    Find stays & charters
+                    <BedDouble className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  {trustItems.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3 text-sm font-black text-white/85"
+                    >
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-turquoise" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-[2.5rem] bg-white p-4 text-ink shadow-2xl md:p-5">
+                <div className="rounded-[2rem] bg-[#f8f0da] p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+                    Trip snapshot
+                  </p>
+
+                  <div className="mt-4 grid gap-3">
+                    <TripRow
+                      icon={Plane}
+                      label="Arrival"
+                      title="Airport, cruise, ferry, or hotel pickup"
+                    />
+                    <TripRow
+                      icon={MapPinned}
+                      label="Discover"
+                      title="Beaches, food, history, events, and local places"
+                    />
+                    <TripRow
+                      icon={Car}
+                      label="Move"
+                      title="Road previews and mobility handoff"
+                    />
+                    <TripRow
+                      icon={CreditCard}
+                      label="Unlock"
+                      title="Visitor pass for premium trip tools"
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => go("/visitor-checkout")}
+                    className="mt-5 flex w-full items-center justify-between rounded-2xl bg-ink px-5 py-4 text-left text-sm font-black text-white active:scale-95"
+                  >
+                    <span>
+                      <span className="block text-[10px] uppercase tracking-[0.18em] text-turquoise">
+                        Premium access
+                      </span>
+                      <span className="mt-1 block">Unlock visitor pass</span>
+                    </span>
+                    <BadgeDollarSign className="h-5 w-5 text-[#ffcf32]" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <button
-            onClick={() => onNavigate("/explore")}
-            className="mt-6 flex w-full items-center gap-3 rounded-3xl bg-white px-5 py-4 text-left text-stone-500 shadow-xl"
-          >
-            <Search className="h-5 w-5" />
-            <span className="flex-1 text-sm">
-              Search beaches, restaurants, places...
-            </span>
-            <Mic className="h-5 w-5" />
-          </button>
-        </div>
-      </section>
-
-      <section className="px-5 pt-6">
-        <button
-          onClick={() => onNavigate("/hotels")}
-          className="mb-4 flex w-full items-center justify-between rounded-3xl bg-white px-5 py-5 text-left text-ink shadow-xl active:scale-95"
-        >
-          <span className="flex items-center gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-emerald-700">
-              <BedDouble className="h-7 w-7" />
-            </span>
-
-            <span>
-              <span className="block text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
-                Stays & booking
-              </span>
-              <span className="mt-1 block text-lg font-black">
-                Hotels, Villas & Charters
-              </span>
-              <span className="mt-1 block text-xs font-bold text-stone-500">
-                Request lodging, boat days, tours, and pickup help.
-              </span>
-            </span>
-          </span>
-        </button>
-
-        <div className="grid grid-cols-4 gap-3">
-          {actions.map((action) => (
+        <section className="mt-6 grid gap-4 lg:grid-cols-3">
+          {visitorActions.map((card) => (
             <button
-              key={action.label}
-              onClick={() => onNavigate(action.path)}
-              className="rounded-3xl bg-white p-4 text-center text-stone-800 shadow-lg active:scale-95"
+              key={card.path}
+              type="button"
+              onClick={() => go(card.path)}
+              className={`group rounded-[2.25rem] p-5 text-left shadow-xl active:scale-95 ${
+                card.featured ? "bg-[#ffcf32] text-ink" : "bg-white text-ink"
+              }`}
             >
-              <action.icon className="mx-auto h-7 w-7 text-emerald-700" />
-              <p className="mt-2 text-[11px] font-bold leading-tight">
-                {action.label}
+              <div
+                className={`grid h-14 w-14 place-items-center rounded-2xl ${
+                  card.featured ? "bg-ink text-[#ffcf32]" : "bg-emerald-950 text-turquoise"
+                }`}
+              >
+                <card.icon className="h-7 w-7" />
+              </div>
+
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+                {card.label}
               </p>
+
+              <h2 className="mt-2 text-2xl font-black md:text-3xl">{card.title}</h2>
+
+              <p className="mt-3 text-sm font-bold leading-7 text-stone-600">
+                {card.text}
+              </p>
+
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-black">
+                Open
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
             </button>
           ))}
-        </div>
+        </section>
 
-        <button
-          onClick={() => onNavigate("/map")}
-          className="mt-6 flex w-full items-center justify-center gap-3 rounded-3xl bg-emerald-700 px-5 py-5 text-lg font-black shadow-xl"
-        >
-          <Map className="h-6 w-6" />
-          Open Live Island Map
-        </button>
+        <section className="mt-6 rounded-[2.5rem] bg-white p-5 shadow-xl">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+                Explore faster
+              </p>
+              <h2 className="mt-2 font-serif text-4xl">Choose what you need next.</h2>
+            </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-3 pb-8">
-          <button
-            onClick={() => onNavigate("/demo")}
-            className="col-span-2 rounded-3xl bg-turquoise px-5 py-4 text-sm font-black text-ink shadow-xl active:scale-95"
-          >
-            Open Business Demo Hub
-          </button>
+            <label className="relative block md:w-[360px]">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-stone-400" />
+              <button
+                type="button"
+                onClick={() => go("/concierge")}
+                className="w-full rounded-2xl bg-stone-50 py-4 pl-12 pr-4 text-left text-sm font-bold text-stone-500 active:scale-95"
+              >
+                Ask VI Guide anything...
+              </button>
+            </label>
+          </div>
 
-          <button
-            onClick={() => onNavigate("/partners")}
-            className="rounded-3xl bg-ink px-5 py-4 text-sm font-black text-white shadow-xl active:scale-95"
-          >
-            Partner Portal
-          </button>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {exploreActions.map((action) => (
+              <button
+                key={action.path}
+                type="button"
+                onClick={() => go(action.path)}
+                className="flex items-center justify-between rounded-2xl bg-stone-50 p-4 text-left active:scale-95"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700">
+                    <action.icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm font-black">{action.label}</span>
+                </span>
+                <ArrowRight className="h-4 w-4 text-stone-400" />
+              </button>
+            ))}
+          </div>
+        </section>
 
-          <button
-            onClick={() => onNavigate("/merchant/demo")}
-            className="rounded-3xl bg-white px-5 py-4 text-sm font-black text-emerald-800 shadow-xl active:scale-95"
-          >
-            Demo Dashboard
-          </button>
-        </div>
+        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
+          <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
+              Premium visitor pass
+            </p>
+
+            <h2 className="mt-2 font-serif text-4xl">
+              Unlock better planning for the whole trip.
+            </h2>
+
+            <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-stone-500">
+              Use a visitor pass to access the organized visitor desk, premium trip planning, route previews, and booking tools.
+            </p>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <PassMini label="Cruise Day" price="$9" />
+              <PassMini label="Trip Pass" price="$19" featured />
+              <PassMini label="Concierge" price="$49" />
+            </div>
+
+            <button
+              type="button"
+              onClick={() => go("/visitor-checkout")}
+              className="mt-5 rounded-2xl bg-emerald-950 px-6 py-4 text-sm font-black text-white active:scale-95"
+            >
+              View visitor pass options
+            </button>
+          </article>
+
+          <article className="rounded-[2.5rem] bg-ink p-5 text-white shadow-xl md:p-6">
+            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-turquoise text-ink">
+              <Hotel className="h-7 w-7" />
+            </div>
+
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
+              Local partners
+            </p>
+
+            <h2 className="mt-2 font-serif text-4xl">
+              Hotels, villas, charters, tours, and local businesses.
+            </h2>
+
+            <p className="mt-3 text-sm font-bold leading-7 text-white/70">
+              Claim your listing, manage booking inquiries, and connect with visitors planning a Virgin Islands trip.
+            </p>
+
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                onClick={() => go("/partner-desk")}
+                className="rounded-2xl bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink active:scale-95"
+              >
+                Partner access
+              </button>
+
+              <button
+                type="button"
+                onClick={() => go("/accommodation-partner")}
+                className="rounded-2xl bg-white/10 px-5 py-4 text-sm font-black text-white active:scale-95"
+              >
+                Claim a business
+              </button>
+            </div>
+          </article>
+        </section>
       </section>
+    </main>
+  );
+}
+
+function TripRow({
+  icon: Icon,
+  label,
+  title,
+}: {
+  icon: LucideIcon;
+  label: string;
+  title: string;
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700">
+        <Icon className="h-5 w-5" />
+      </span>
+
+      <span>
+        <span className="block text-[10px] font-black uppercase tracking-[0.18em] text-stone-400">
+          {label}
+        </span>
+        <span className="mt-1 block text-sm font-black">{title}</span>
+      </span>
+    </div>
+  );
+}
+
+function PassMini({
+  label,
+  price,
+  featured,
+}: {
+  label: string;
+  price: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`rounded-2xl p-4 ${
+        featured ? "bg-[#ffcf32] text-ink" : "bg-stone-50 text-ink"
+      }`}
+    >
+      <LockKeyhole className="h-5 w-5 text-emerald-700" />
+      <p className="mt-3 text-sm font-black">{label}</p>
+      <p className="mt-1 text-3xl font-black">{price}</p>
     </div>
   );
 }
