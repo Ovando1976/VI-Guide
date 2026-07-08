@@ -143,6 +143,38 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+
+    match /connectConversations/{conversationId} {
+      allow read: if signedIn()
+        && (request.auth.uid in resource.data.participantUids || isAdmin());
+
+      allow create: if signedIn()
+        && (request.auth.uid in request.resource.data.participantUids || isAdmin());
+
+      allow update: if signedIn()
+        && (request.auth.uid in resource.data.participantUids || isAdmin());
+
+      allow delete: if signedIn()
+        && (request.auth.uid in resource.data.participantUids || isAdmin());
+
+      match /messages/{messageId} {
+        allow read: if signedIn()
+          && (
+            request.auth.uid in get(/databases/$(database)/documents/connectConversations/$(conversationId)).data.participantUids
+            || isAdmin()
+          );
+
+        allow create: if signedIn()
+          && request.resource.data.senderUid == request.auth.uid
+          && (
+            request.auth.uid in get(/databases/$(database)/documents/connectConversations/$(conversationId)).data.participantUids
+            || isAdmin()
+          );
+
+        allow update, delete: if false;
+      }
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

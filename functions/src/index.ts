@@ -673,7 +673,7 @@ function sanitizeConciergeAnswer(answer: string, allowedAppNames: string[]) {
 
   for (const [name, replacement] of guardedReplacements) {
     if (!allowed.has(name.toLowerCase())) {
-      safe = safe.replaceAll(name, replacement);
+      safe = safe.split(name).join(replacement);
     }
   }
 

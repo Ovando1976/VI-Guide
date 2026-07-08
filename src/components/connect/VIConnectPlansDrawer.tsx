@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+
+        <a
+          href="/connect/messages"
+          className="mb-4 inline-flex w-full items-center justify-center rounded-2xl bg-cyan-300 px-4 py-3 text-sm font-black text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:bg-cyan-200"
+        >
+          Open VI Connect Messages
+        </a>
+import { MessageCircle, useEffect, useMemo, useState } from "react";
 import {
   CalendarDays,
   Car,
