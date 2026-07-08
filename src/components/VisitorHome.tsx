@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -120,73 +120,230 @@ function islandName(value?: string) {
 }
 
 
-function islandCodeFromBeachImage(src: string) {
-  if (src.includes("/st-croix/")) return "st_croix";
-  if (src.includes("/st-john/")) return "st_john";
-  if (src.includes("/water-island/")) return "water_island";
-  return "st_thomas";
-}
 
-function beachSlugFromImageSrc(src: string) {
-  const fileName = src.split("/").pop() || "";
 
-  return fileName
-    .replace(/\.(jpe?g|jpeg|png|webp|svg)$/i, "")
-    .replace(/-\d+$/g, "")
-    .replace(/-beach$/g, "")
-    .replace(/-st-john$/g, "")
-    .replace(/-water-island$/g, "")
-    .trim();
-}
+
+type HomeHeroFeaturedPick = {
+  id: string;
+  island: string;
+  kind: "Beach" | "Restaurant" | "Stay";
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  route: string;
+  tags: string[];
+};
+
+const homeHeroFeaturedPicks: HomeHeroFeaturedPick[] = [
+  {
+    id: "stt-magens",
+    island: "st_thomas",
+    kind: "Beach",
+    title: "Magens Bay",
+    subtitle: "Classic St. Thomas beach day with calm water and easy planning.",
+    imageUrl: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    route: "/beaches?island=st_thomas&beach=magens-bay",
+    tags: ["Beach", "Classic", "Family"],
+  },
+  {
+    id: "stt-sapphire",
+    island: "st_thomas",
+    kind: "Beach",
+    title: "Sapphire Beach",
+    subtitle: "East End beach energy, water views, and food nearby.",
+    imageUrl: "/images/beaches/st-thomas/sapphire-beach-1.jpg",
+    route: "/beaches?island=st_thomas&beach=sapphire-beach",
+    tags: ["Beach", "East End", "Views"],
+  },
+  {
+    id: "stt-gladys",
+    island: "st_thomas",
+    kind: "Restaurant",
+    title: "Gladys Café",
+    subtitle: "Classic local dining in downtown Charlotte Amalie.",
+    imageUrl: "/images/places/st-thomas/gladys-cafe-1.jpg",
+    route: "/eat?island=st_thomas&restaurant=gladys-cafe",
+    tags: ["Local Food", "Caribbean", "Downtown"],
+  },
+  {
+    id: "stt-secret-harbour",
+    island: "st_thomas",
+    kind: "Stay",
+    title: "Secret Harbour stay zone",
+    subtitle: "A strong East End stay base for beach, dining, and route planning.",
+    imageUrl: "/images/places/st-thomas/secret-harbour-beach-1.jpg",
+    route: "/hotels?island=st_thomas",
+    tags: ["Stay", "East End", "Beach"],
+  },
+
+  {
+    id: "stj-trunk",
+    island: "st_john",
+    kind: "Beach",
+    title: "Trunk Bay",
+    subtitle: "Iconic St. John beach stop with postcard water.",
+    imageUrl: "/images/beaches/st-john/trunk-bay-1.jpg",
+    route: "/beaches?island=st_john&beach=trunk-bay",
+    tags: ["Beach", "Iconic", "North Shore"],
+  },
+  {
+    id: "stj-longboard",
+    island: "st_john",
+    kind: "Restaurant",
+    title: "The Longboard",
+    subtitle: "Cruz Bay food and drinks with a polished island feel.",
+    imageUrl: "/images/places/st-john/the-longboard-1.jpg",
+    route: "/eat?island=st_john&restaurant=the-longboard",
+    tags: ["Restaurant", "Cruz Bay", "Drinks"],
+  },
+  {
+    id: "stj-caneel",
+    island: "st_john",
+    kind: "Stay",
+    title: "Caneel Bay area",
+    subtitle: "Premium stay zone close to North Shore beach planning.",
+    imageUrl: "/images/places/st-john/caneel-bay-overlook-1.jpg",
+    route: "/hotels?island=st_john",
+    tags: ["Stay", "North Shore", "Views"],
+  },
+
+  {
+    id: "stx-rainbow",
+    island: "st_croix",
+    kind: "Beach",
+    title: "Rainbow Beach",
+    subtitle: "Frederiksted beach day with food, water, and sunset energy.",
+    imageUrl: "/images/beaches/st-croix/rainbow-beach-1.jpg",
+    route: "/beaches?island=st_croix&beach=rainbow-beach",
+    tags: ["Beach", "Sunset", "Frederiksted"],
+  },
+  {
+    id: "stx-ama",
+    island: "st_croix",
+    kind: "Restaurant",
+    title: "Ama at Cane Bay",
+    subtitle: "Waterfront dining on the St. Croix North Shore.",
+    imageUrl: "/images/places/st-croix/ama-at-cane-bay-1.jpg",
+    route: "/eat?island=st_croix&restaurant=ama-at-cane-bay",
+    tags: ["Restaurant", "Waterfront", "North Shore"],
+  },
+  {
+    id: "stx-buccaneer",
+    island: "st_croix",
+    kind: "Stay",
+    title: "Buccaneer area",
+    subtitle: "A strong stay anchor for beach, golf, and Christiansted access.",
+    imageUrl: "/images/places/st-croix/buccaneer-beach-1.jpg",
+    route: "/hotels?island=st_croix",
+    tags: ["Stay", "Beach", "Christiansted"],
+  },
+
+  {
+    id: "wi-honeymoon",
+    island: "water_island",
+    kind: "Beach",
+    title: "Honeymoon Beach",
+    subtitle: "Water Island beach day with ferry-friendly planning.",
+    imageUrl: "/images/beaches/water-island/honeymoon-beach-water-island.jpg",
+    route: "/beaches?island=water_island&beach=honeymoon-beach-water-island",
+    tags: ["Beach", "Ferry", "Relaxed"],
+  },
+  {
+    id: "wi-dinghys",
+    island: "water_island",
+    kind: "Restaurant",
+    title: "Dinghy’s Beach Bar",
+    subtitle: "Casual beach food and drinks right by the water.",
+    imageUrl: "/images/places/water-island/dinghys-beach-bar-1.jpg",
+    route: "/eat?island=water_island&restaurant=dinghys-beach-bar",
+    tags: ["Restaurant", "Beach Bar", "Water Island"],
+  },
+];
 
 export default function VisitorHome({
   selectedIsland = "st_thomas",
   onNavigate,
 }: VisitorHomeProps) {
   const navigate = useNavigate();
+  const [selectedHeroPick, setSelectedHeroPick] =
+    useState<HomeHeroFeaturedPick | null>(null);
 
   useEffect(() => {
-    function handleBeachImageClick(event: MouseEvent) {
+    const activeIsland = String(selectedIsland || "st_thomas");
+    const islandPicks = homeHeroFeaturedPicks.filter(
+      (pick) => pick.island === activeIsland
+    );
+    const picks = islandPicks.length
+      ? islandPicks
+      : homeHeroFeaturedPicks.filter((pick) => pick.island === "st_thomas");
+
+    let tick = 0;
+
+    function thumbnailImages() {
+      return Array.from(
+        document.querySelectorAll<HTMLImageElement>(
+          'img[data-home-feature-pick="true"], img[src*="/images/beaches/"]'
+        )
+      ).filter((image) => {
+        const width = image.clientWidth || image.width;
+        const height = image.clientHeight || image.height;
+        return width > 40 && width <= 190 && height > 40 && height <= 190;
+      });
+    }
+
+    function paintThumbnails() {
+      const images = thumbnailImages().slice(0, 3);
+
+      images.forEach((image, index) => {
+        const pick = picks[(tick + index) % picks.length];
+        if (!pick) return;
+
+        image.src = pick.imageUrl;
+        image.alt = pick.title;
+        image.dataset.homeFeaturePick = "true";
+        image.dataset.homeFeaturePickId = pick.id;
+        image.style.cursor = "pointer";
+        image.setAttribute("role", "button");
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("aria-label", `Open ${pick.title}`);
+      });
+
+      tick += 1;
+    }
+
+    function handleFeaturedPickClick(event: MouseEvent) {
       if (!(event.target instanceof Element)) return;
 
-      const image = event.target.closest("img") as HTMLImageElement | null;
+      const image = event.target.closest(
+        'img[data-home-feature-pick-id]'
+      ) as HTMLImageElement | null;
+
       if (!image) return;
 
-      const src = image.getAttribute("src") || "";
-      if (!src.includes("/images/beaches/")) return;
+      const pick = homeHeroFeaturedPicks.find(
+        (item) => item.id === image.dataset.homeFeaturePickId
+      );
 
-      const island = islandCodeFromBeachImage(src);
-      const beach = beachSlugFromImageSrc(src);
-
-      if (!beach) return;
+      if (!pick) return;
 
       event.preventDefault();
       event.stopPropagation();
 
-      navigate(`/beaches?island=${island}&beach=${beach}`);
+      setSelectedHeroPick(pick);
     }
 
-    function markBeachImagesClickable() {
-      document
-        .querySelectorAll<HTMLImageElement>('img[src*="/images/beaches/"]')
-        .forEach((image) => {
-          image.style.cursor = "pointer";
-          image.setAttribute("role", "button");
-          image.setAttribute("tabindex", "0");
-          image.setAttribute("aria-label", "Open beach details");
-        });
-    }
+    paintThumbnails();
 
-    markBeachImagesClickable();
-    const interval = window.setInterval(markBeachImagesClickable, 1000);
-
-    document.addEventListener("click", handleBeachImageClick, true);
+    const paintTimer = window.setInterval(paintThumbnails, 4500);
+    document.addEventListener("click", handleFeaturedPickClick, true);
 
     return () => {
-      window.clearInterval(interval);
-      document.removeEventListener("click", handleBeachImageClick, true);
+      window.clearInterval(paintTimer);
+      document.removeEventListener("click", handleFeaturedPickClick, true);
     };
-  }, [navigate]);
+  }, [selectedIsland]);
+
+
 
   const go = (path: string) => {
     if (onNavigate) {
@@ -562,7 +719,72 @@ export default function VisitorHome({
           </article>
         </section>
       </section>
-    </main>
+    
+      {selectedHeroPick ? (
+        <div className="fixed inset-0 z-[90] flex items-end justify-center bg-slate-950/60 p-4 backdrop-blur-sm sm:items-center">
+          <button
+            type="button"
+            className="absolute inset-0"
+            aria-label="Close featured card"
+            onClick={() => setSelectedHeroPick(null)}
+          />
+
+          <article className="relative w-full max-w-xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
+            <div className="relative aspect-[16/10] bg-zinc-100">
+              <img
+                src={selectedHeroPick.imageUrl}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-emerald-700 shadow-sm">
+                {selectedHeroPick.kind}
+              </span>
+            </div>
+
+            <div className="p-5">
+              <h3 className="text-3xl font-black tracking-tight text-zinc-950">
+                {selectedHeroPick.title}
+              </h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-zinc-500">
+                {selectedHeroPick.subtitle}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {selectedHeroPick.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-emerald-700"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedHeroPick(null);
+                    navigate(selectedHeroPick.route);
+                  }}
+                  className="rounded-2xl bg-emerald-700 px-4 py-3 text-sm font-black text-white"
+                >
+                  Open this card
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedHeroPick(null)}
+                  className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm font-black text-zinc-700"
+                >
+                  Stay here
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      ) : null}
+</main>
   );
 }
 
