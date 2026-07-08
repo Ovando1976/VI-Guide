@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { lazy, useCallback, useEffect, useMemo, useState } from "react";
+import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Route,
   Routes,
@@ -40,9 +40,6 @@ import type {
 
 import ErrorBoundary from "./components/ErrorBoundary";
 import { MobileShell } from "./components/app-shell/MobileShell";
-import Explore from "./components/Explore";
-import Beaches from "./components/Beaches";
-import Eat from "./components/Eat";
 import Events from "./components/Events";
 import Community from "./components/Community";
 import Concierge from "./components/Concierge";
@@ -64,12 +61,13 @@ import PlatformStats from "./components/PlatformStats";
 
 import VisitorHome from "./components/VisitorHome";
 
-import { seedBeaches } from "./seedBeaches";
-import { seedMapData } from "./seedMapData";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
 import { getIslands } from "./lib/firestore/islands";
 
+const Explore = lazy(() => import("./components/Explore"));
+const Beaches = lazy(() => import("./components/Beaches"));
+const Eat = lazy(() => import("./components/Eat"));
 const VIConnect = lazy(() => import("./components/VIConnect"));
 
 const ADMIN_EMAILS = new Set(["ovandorawlins@gmail.com"]);
@@ -216,6 +214,11 @@ function AppContent() {
     setSeedStatus("Seeding Firebase...");
 
     try {
+      const [{ seedMapData }, { seedBeaches }] = await Promise.all([
+        import("./seedMapData"),
+        import("./seedBeaches"),
+      ]);
+
       await seedMapData();
       await seedBeaches();
 
