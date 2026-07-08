@@ -27,5 +27,9 @@
       "react",
       "react-dom"
     ]
-  }
+  },
+  "exclude": [
+    "functions",
+    "functions/**"
+  ]
 }

@@ -17,8 +17,9 @@ import {
   Ship,
   Sparkles,
   SunMedium,
-  Waves,
   Users,
+  Utensils,
+  Waves,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +83,17 @@ const exploreActions: SmallAction[] = [
   { label: "Beaches", path: "/beaches", icon: Waves },
   { label: "Explore", path: "/explore", icon: Compass },
   { label: "Events", path: "/events", icon: CalendarDays },
-  { label: "VI Connect", path: "/connect", icon: Users },
+  { label: "Accommodations",
+    path: "/hotels",
+    icon: BedDouble,
+  },
+  {
+    label: "Restaurants",
+    path: "/eat",
+    icon: Utensils,
+  },
+  {
+    label: "VI Connect", path: "/connect", icon: Users },
   { label: "Concierge", path: "/concierge", icon: MessageSquareText },
 ];
 
