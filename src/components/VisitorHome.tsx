@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -118,11 +119,74 @@ function islandName(value?: string) {
   );
 }
 
+
+function islandCodeFromBeachImage(src: string) {
+  if (src.includes("/st-croix/")) return "st_croix";
+  if (src.includes("/st-john/")) return "st_john";
+  if (src.includes("/water-island/")) return "water_island";
+  return "st_thomas";
+}
+
+function beachSlugFromImageSrc(src: string) {
+  const fileName = src.split("/").pop() || "";
+
+  return fileName
+    .replace(/\.(jpe?g|jpeg|png|webp|svg)$/i, "")
+    .replace(/-\d+$/g, "")
+    .replace(/-beach$/g, "")
+    .replace(/-st-john$/g, "")
+    .replace(/-water-island$/g, "")
+    .trim();
+}
+
 export default function VisitorHome({
   selectedIsland = "st_thomas",
   onNavigate,
 }: VisitorHomeProps) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleBeachImageClick(event: MouseEvent) {
+      if (!(event.target instanceof Element)) return;
+
+      const image = event.target.closest("img") as HTMLImageElement | null;
+      if (!image) return;
+
+      const src = image.getAttribute("src") || "";
+      if (!src.includes("/images/beaches/")) return;
+
+      const island = islandCodeFromBeachImage(src);
+      const beach = beachSlugFromImageSrc(src);
+
+      if (!beach) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      navigate(`/beaches?island=${island}&beach=${beach}`);
+    }
+
+    function markBeachImagesClickable() {
+      document
+        .querySelectorAll<HTMLImageElement>('img[src*="/images/beaches/"]')
+        .forEach((image) => {
+          image.style.cursor = "pointer";
+          image.setAttribute("role", "button");
+          image.setAttribute("tabindex", "0");
+          image.setAttribute("aria-label", "Open beach details");
+        });
+    }
+
+    markBeachImagesClickable();
+    const interval = window.setInterval(markBeachImagesClickable, 1000);
+
+    document.addEventListener("click", handleBeachImageClick, true);
+
+    return () => {
+      window.clearInterval(interval);
+      document.removeEventListener("click", handleBeachImageClick, true);
+    };
+  }, [navigate]);
 
   const go = (path: string) => {
     if (onNavigate) {
