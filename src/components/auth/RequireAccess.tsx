@@ -2,32 +2,43 @@ import { useEffect, useState, type ReactNode } from "react";
 import {
   BadgeDollarSign,
   LockKeyhole,
+  RefreshCw,
   ShieldCheck,
   UserRound,
 } from "lucide-react";
 
+import type { AccessLevel } from "../../lib/accounts/userAccount";
 import {
-  canAccess,
-  getCurrentAccount,
-  getVisitorPass,
-  roleLabel,
-  type AccessLevel,
-  type UserAccount,
-  type VisitorPass,
-} from "../../lib/accounts/userAccount";
-import {
-  getCurrentClaims,
-  watchFirebaseUser,
-} from "../../lib/firebase/firebaseClient";
+  canAccessSnapshot,
+  getCloudAccessSnapshot,
+  type CloudAccessSnapshot,
+} from "../../lib/accounts/cloudAccess";
+import { watchFirebaseUser } from "../../lib/firebase/firebaseClient";
 
 type RequireAccessProps = {
   access: AccessLevel;
   children: ReactNode;
 };
 
-type Claims = Record<string, unknown> | null;
+const emptySnapshot: CloudAccessSnapshot = {
+  loading: true,
+  uid: "",
+  email: "",
+  displayName: "",
+  localAccount: null,
+  localVisitorPass: null,
+  cloudVisitorPass: null,
+  claims: {},
+  admin: false,
+  partner: false,
+  visitorPaid: false,
+  label: "Checking access...",
+};
 
-const accessCopy: Record<AccessLevel, { title: string; text: string; action: string; path: string }> = {
+const accessCopy: Record<
+  AccessLevel,
+  { title: string; text: string; action: string; path: string }
+> = {
   public: {
     title: "Public access",
     text: "This page is public.",
@@ -36,107 +47,61 @@ const accessCopy: Record<AccessLevel, { title: string; text: string; action: str
   },
   visitor_paid: {
     title: "Visitor pass required",
-    text: "This area is for visitors with an active trip pass.",
+    text: "This area unlocks after a Stripe visitor pass payment or paid visitor claim.",
     action: "Get Visitor Pass",
     path: "/visitor-checkout",
   },
   partner: {
     title: "Partner access required",
-    text: "This area is for hotel, villa, charter, tour, and business partners.",
+    text: "This area is for businesses with a Firebase partner claim.",
     action: "Open Account",
     path: "/account",
   },
   admin: {
     title: "Admin access required",
-    text: "This area is for the owner/admin command center.",
-    action: "Open Account",
-    path: "/account",
+    text: "This area is for users with a Firebase admin claim.",
+    action: "Admin Rules / Roles",
+    path: "/admin-roles",
   },
 };
 
-function claimValue(claims: Claims, key: string) {
-  return claims ? claims[key] === true : false;
-}
-
-function claimRole(claims: Claims) {
-  return claims && typeof claims.role === "string" ? claims.role : "";
-}
-
-function canAccessWithClaims(access: AccessLevel, claims: Claims) {
-  if (access === "public") return true;
-
-  const isAdmin = claimValue(claims, "admin") || claimRole(claims) === "admin";
-  const isPartner = claimValue(claims, "partner") || claimRole(claims) === "partner";
-  const isPaidVisitor =
-    claimValue(claims, "visitor_paid") || claimRole(claims) === "visitor_paid";
-
-  if (isAdmin) return true;
-
-  if (access === "admin") return isAdmin;
-  if (access === "partner") return isPartner;
-  if (access === "visitor_paid") return isPaidVisitor || isPartner;
-
-  return false;
-}
-
-function claimsLabel(claims: Claims) {
-  if (!claims) return "No Firebase claims";
-
-  if (claimValue(claims, "admin") || claimRole(claims) === "admin") {
-    return "Firebase Admin";
-  }
-
-  if (claimValue(claims, "partner") || claimRole(claims) === "partner") {
-    return "Firebase Partner";
-  }
-
-  if (claimValue(claims, "visitor_paid") || claimRole(claims) === "visitor_paid") {
-    return "Firebase Paid Visitor";
-  }
-
-  return "Firebase Visitor";
-}
-
 export default function RequireAccess({ access, children }: RequireAccessProps) {
-  const [account, setAccount] = useState<UserAccount | null>(() => getCurrentAccount());
-  const [pass, setPass] = useState<VisitorPass | null>(() => getVisitorPass());
-  const [claims, setClaims] = useState<Claims>(null);
+  const [snapshot, setSnapshot] = useState<CloudAccessSnapshot>(emptySnapshot);
+
+  const refresh = async () => {
+    const next = await getCloudAccessSnapshot();
+    setSnapshot(next);
+  };
 
   useEffect(() => {
     let cancelled = false;
 
-    const refresh = async () => {
-      setAccount(getCurrentAccount());
-      setPass(getVisitorPass());
-
-      const nextClaims = await getCurrentClaims(true);
+    const safeRefresh = async () => {
+      const next = await getCloudAccessSnapshot();
 
       if (!cancelled) {
-        setClaims((nextClaims || null) as Claims);
+        setSnapshot(next);
       }
     };
 
     const unsubscribe = watchFirebaseUser(() => {
-      void refresh();
+      void safeRefresh();
     });
 
-    window.addEventListener("viNavigatorAccountChanged", refresh);
-    window.addEventListener("storage", refresh);
+    window.addEventListener("viNavigatorAccountChanged", safeRefresh);
+    window.addEventListener("storage", safeRefresh);
 
-    void refresh();
+    void safeRefresh();
 
     return () => {
       cancelled = true;
       unsubscribe();
-      window.removeEventListener("viNavigatorAccountChanged", refresh);
-      window.removeEventListener("storage", refresh);
+      window.removeEventListener("viNavigatorAccountChanged", safeRefresh);
+      window.removeEventListener("storage", safeRefresh);
     };
   }, []);
 
-  const allowedByLocalDemo = canAccess(access, account);
-  const allowedByFirebaseClaims = canAccessWithClaims(access, claims);
-
-  if (allowedByLocalDemo || allowedByFirebaseClaims) {
+  if (canAccessSnapshot(access, snapshot)) {
     return <>{children}</>;
   }
 
@@ -153,7 +118,9 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
           Restricted area
         </p>
 
-        <h1 className="mt-3 text-4xl font-black md:text-5xl">{copy.title}</h1>
+        <h1 className="mt-3 text-4xl font-black md:text-5xl">
+          {snapshot.loading ? "Checking access..." : copy.title}
+        </h1>
 
         <p className="mx-auto mt-4 max-w-xl text-sm font-bold leading-7 text-stone-500">
           {copy.text}
@@ -163,19 +130,19 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
           <div className="rounded-2xl bg-white p-4">
             <UserRound className="h-5 w-5 text-emerald-700" />
             <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-stone-400">
-              Demo account
+              Firebase user
             </p>
-            <p className="mt-1 text-lg font-black">
-              {account ? `${account.name} · ${roleLabel(account.role)}` : "Signed out"}
+            <p className="mt-1 break-words text-lg font-black">
+              {snapshot.email || snapshot.displayName || "Not signed in"}
             </p>
           </div>
 
           <div className="rounded-2xl bg-white p-4">
             <ShieldCheck className="h-5 w-5 text-emerald-700" />
             <p className="mt-3 text-xs font-black uppercase tracking-[0.18em] text-stone-400">
-              Firebase claims
+              Access claim
             </p>
-            <p className="mt-1 text-lg font-black">{claimsLabel(claims)}</p>
+            <p className="mt-1 text-lg font-black">{snapshot.label}</p>
           </div>
 
           <div className="rounded-2xl bg-white p-4">
@@ -184,12 +151,14 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
               Visitor pass
             </p>
             <p className="mt-1 text-lg font-black">
-              {pass ? `${pass.planName}` : "No active pass"}
+              {snapshot.cloudVisitorPass?.planName ||
+                snapshot.localVisitorPass?.planName ||
+                "No active pass"}
             </p>
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-2">
+        <div className="mt-6 grid gap-3 md:grid-cols-3">
           <button
             type="button"
             onClick={() => window.location.assign(copy.path)}
@@ -200,11 +169,19 @@ export default function RequireAccess({ access, children }: RequireAccessProps) 
 
           <button
             type="button"
-            onClick={() => window.location.assign("/admin-roles")}
+            onClick={() => window.location.assign("/account")}
+            className="rounded-2xl bg-stone-100 px-6 py-4 text-sm font-black text-ink active:scale-95"
+          >
+            Account / Sign In
+          </button>
+
+          <button
+            type="button"
+            onClick={() => void refresh()}
             className="rounded-2xl bg-emerald-950 px-6 py-4 text-sm font-black text-white active:scale-95"
           >
-            <ShieldCheck className="mr-2 inline h-4 w-4" />
-            Firebase Roles
+            <RefreshCw className="mr-2 inline h-4 w-4" />
+            Refresh Access
           </button>
         </div>
       </section>

@@ -131,6 +131,13 @@ const adminSections: DeskSection[] = [
         highlight: true,
       },
       {
+        label: "Access Status",
+        path: "/access-status",
+        description: "Verify Firebase claims, Stripe visitor pass, and active gates.",
+        icon: ShieldCheck,
+        highlight: true,
+      },
+      {
         label: "Admin Rules / Roles",
         path: "/admin-roles",
         description: "Sign in, refresh Firebase claims, and assign admin, partner, or paid visitor access.",

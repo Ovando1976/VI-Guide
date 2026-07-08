@@ -28,6 +28,7 @@ import AccountPage from "../AccountPage";
 import VisitorCheckoutPage from "../VisitorCheckoutPage";
 import RequireAccess from "../auth/RequireAccess";
 import AdminRoleManagerPage from "../AdminRoleManagerPage";
+import AccessStatusPage from "../AccessStatusPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
@@ -98,6 +99,8 @@ export function MobileShell({ children }: MobileShellProps) {
       <VisitorCheckoutPage />
     ) : location.pathname === "/visitor-desk" ? (
       <RequireAccess access="visitor_paid"><VisitorDeskPage /></RequireAccess>
+    ) : location.pathname === "/access-status" ? (
+      <AccessStatusPage />
     ) : location.pathname === "/admin-roles" ? (
       <AdminRoleManagerPage />
     ) : location.pathname === "/admin-desk" ? (
