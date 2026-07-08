@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "dinghys-beach-bar",
+    "title": "Dinghy's Beach Bar",
+    "category": "restaurant",
+    "islandCode": "water_island",
+    "areaSlug": "honeymoon-beach",
+    "description": "Dinghy's Beach Bar is a restaurant destination in the U.S. Virgin Islands.",
+    "shortDescription": "restaurant on water island.",
+    "coverImage": "/images/places/water-island/dinghys-beach-bar-1.jpg",
+    "gallery": [
+      "/images/places/water-island/dinghys-beach-bar-1.jpg"
+    ],
+    "tags": [
+      "restaurant",
+      "honeymoon-beach",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3160514,
+      "lng": -64.9565819
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206746113,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Honeymoon Beach Lane, Water Island, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJXSX2qLUbBYwR8U_CO0iOUuw"
+  },
+  {
+    "slug": "heidis-honeymoon-grill",
+    "title": "Heidi's Honeymoon Grill",
+    "category": "restaurant",
+    "islandCode": "water_island",
+    "areaSlug": "honeymoon-beach",
+    "description": "Heidi's Honeymoon Grill is a restaurant destination in the U.S. Virgin Islands.",
+    "shortDescription": "restaurant on water island.",
+    "coverImage": "/images/places/water-island/heidis-honeymoon-grill-1.jpg",
+    "gallery": [
+      "/images/places/water-island/heidis-honeymoon-grill-1.jpg"
+    ],
+    "tags": [
+      "restaurant",
+      "honeymoon-beach",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.319763,
+      "lng": -64.95523709999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206746363,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "829V+WW2, Water Island, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJQftO9rQbBYwRCJBZiFhydQY"
+  },
+  {
+    "slug": "water-island-beach-bar",
+    "title": "Water Island Beach Bar",
+    "category": "restaurant",
+    "islandCode": "water_island",
+    "areaSlug": "honeymoon-beach",
+    "description": "Water Island Beach Bar is a restaurant destination in the U.S. Virgin Islands.",
+    "shortDescription": "restaurant on water island.",
+    "coverImage": "/images/places/water-island/water-island-beach-bar-1.jpg",
+    "gallery": [
+      "/images/places/water-island/water-island-beach-bar-1.jpg"
+    ],
+    "tags": [
+      "restaurant",
+      "honeymoon-beach",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3258514,
+      "lng": -64.94450429999999
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206746617,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Water Island, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJ__oJG40RBYwRySBd5WbhI2A"
+  }
+]

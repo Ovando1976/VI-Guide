@@ -1,0 +1,410 @@
+[
+  {
+    "title": "Cruise Ship Arrival",
+    "slug": "cruise-ship-arrival",
+    "recurrence": "monthly",
+    "dayOfMonth": 5,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_thomas",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Cruise Ship Arrival is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Cruise Ship Arrival is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "gallery": [
+      "/images/events/sports/rolex-regatta.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Mega Ship Arrival",
+    "slug": "mega-ship-arrival",
+    "recurrence": "monthly",
+    "dayOfMonth": 6,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_croix",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Mega Ship Arrival is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Mega Ship Arrival is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-pier-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Yacht Arrival",
+    "slug": "yacht-arrival",
+    "recurrence": "monthly",
+    "dayOfMonth": 7,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_john",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Yacht Arrival is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Yacht Arrival is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-landing-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Restaurant Week",
+    "slug": "restaurant-week",
+    "recurrence": "monthly",
+    "dayOfMonth": 8,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_thomas",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Restaurant Week is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Restaurant Week is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "gallery": [
+      "/images/events/sports/rolex-regatta.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Tourism Showcase",
+    "slug": "tourism-showcase",
+    "recurrence": "monthly",
+    "dayOfMonth": 9,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_croix",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Tourism Showcase is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Tourism Showcase is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-pier-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Travel Expo",
+    "slug": "travel-expo",
+    "recurrence": "monthly",
+    "dayOfMonth": 10,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_john",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Travel Expo is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Travel Expo is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-landing-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Dive Expo",
+    "slug": "dive-expo",
+    "recurrence": "monthly",
+    "dayOfMonth": 11,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_thomas",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Dive Expo is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Dive Expo is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "gallery": [
+      "/images/events/sports/rolex-regatta.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Marine Expo",
+    "slug": "marine-expo",
+    "recurrence": "monthly",
+    "dayOfMonth": 12,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_croix",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Marine Expo is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Marine Expo is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-pier-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Heritage Month Activities",
+    "slug": "heritage-month-activities",
+    "recurrence": "monthly",
+    "dayOfMonth": 13,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_john",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Heritage Month Activities is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Heritage Month Activities is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-landing-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Historic Walking Tours",
+    "slug": "historic-walking-tours",
+    "recurrence": "monthly",
+    "dayOfMonth": 14,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_thomas",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Historic Walking Tours is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Historic Walking Tours is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "gallery": [
+      "/images/events/sports/rolex-regatta.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "National Park Programs",
+    "slug": "national-park-programs",
+    "recurrence": "monthly",
+    "dayOfMonth": 15,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_croix",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "National Park Programs is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "National Park Programs is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-pier-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-croix/frederiksted-pier-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  },
+  {
+    "title": "Visitor Welcome Events",
+    "slug": "visitor-welcome-events",
+    "recurrence": "monthly",
+    "dayOfMonth": 16,
+    "startDate": "2026-06-01",
+    "endDate": "2028-12-31",
+    "islandCode": "st_john",
+    "areaSlug": "tourism",
+    "category": "tourism",
+    "description": "Visitor Welcome Events is a tourism-related calendar item for visitor planning.",
+    "shortDescription": "Visitor Welcome Events is a tourism-related calendar item for visitor planning.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "Tourism calendar staging dataset",
+    "sourceStatus": "needs_verification",
+    "verifiedAt": "2026-06-12",
+    "coverImage": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-landing-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/places/st-john/cruz-bay-landing-1.jpg",
+    "tags": [
+      "event",
+      "tourism",
+      "usvi",
+      "visitor"
+    ]
+  }
+]

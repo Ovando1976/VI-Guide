@@ -1,49 +1,69 @@
-import React from 'react';
-import { Compass, Calendar, Sparkles, User, FileText } from 'lucide-react';
-import { cn } from '../lib/utils';
+import React from "react";
+import { Calendar, Car, Home, MapPin, MessageSquare } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { cn } from "../lib/utils";
+
+type BottomTabId = "home" | "ride" | "map" | "feed" | "events";
 
 interface BottomNavProps {
-  activeTab: string;
-  onTabChange: (tab: any) => void;
+  activeTab?: string;
+  onTabChange?: (tab: BottomTabId) => void;
 }
 
+const tabs: {
+  id: BottomTabId;
+  label: string;
+  path: string;
+  icon: React.ElementType;
+  center?: boolean;
+}[] = [
+  { id: "home", label: "Home", path: "/", icon: Home },
+  { id: "ride", label: "Ride", path: "/mobility", icon: Car },
+  { id: "map", label: "Map", path: "/map", icon: MapPin, center: true },
+  { id: "feed", label: "Feed", path: "/community", icon: MessageSquare },
+  { id: "events", label: "Events", path: "/events", icon: Calendar },
+];
+
 export default function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
-  const tabs = [
-    { id: 'explore', label: 'Explore', icon: Compass },
-    { id: 'events', label: 'Events', icon: Calendar },
-    { id: 'concierge', label: 'Concierge', icon: Sparkles },
-    { id: 'docs', label: 'Docs', icon: FileText },
-    { id: 'profile', label: 'Profile', icon: User },
-  ];
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handleTab(tab: (typeof tabs)[number]) {
+    onTabChange?.(tab.id);
+    navigate(tab.path);
+  }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-stone-200 px-6 py-3 pb-8 z-50">
-      <div className="max-w-md mx-auto flex justify-between items-center">
+    <nav className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2">
+      <div className="flex items-center gap-3 rounded-[2rem] border border-white/60 bg-white/80 px-4 py-3 shadow-2xl backdrop-blur-xl">
         {tabs.map((tab) => {
           const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          
+          const isActive =
+            activeTab === tab.id || location.pathname === tab.path;
+
           return (
             <button
               key={tab.id}
-              onClick={() => onTabChange(tab.id)}
+              type="button"
+              onClick={() => handleTab(tab)}
+              aria-label={tab.label}
               className={cn(
-                "flex flex-col items-center gap-1 transition-all duration-300",
-                isActive ? "text-emerald-600 scale-110" : "text-stone-400 hover:text-stone-600"
+                "grid place-items-center transition active:scale-95",
+                tab.center
+                  ? "relative -mt-10 h-20 w-20 rounded-full bg-ink text-turquoise shadow-2xl"
+                  : "h-14 w-14 rounded-2xl",
+                isActive && !tab.center
+                  ? "bg-white text-turquoise shadow"
+                  : "text-stone-400"
               )}
             >
-              <div className={cn(
-                "p-1 rounded-xl transition-colors",
-                isActive ? "bg-emerald-50" : "bg-transparent"
-              )}>
-                <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
-              </div>
-              <span className={cn(
-                "text-[10px] font-bold uppercase tracking-widest transition-opacity",
-                isActive ? "opacity-100" : "opacity-0"
-              )}>
-                {tab.label}
-              </span>
+              <Icon className={tab.center ? "h-8 w-8" : "h-5 w-5"} />
+
+              {!tab.center && (
+                <span className="mt-1 text-[9px] font-black uppercase tracking-[0.2em]">
+                  {tab.label}
+                </span>
+              )}
             </button>
           );
         })}

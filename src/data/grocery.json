@@ -1,0 +1,872 @@
+[
+  {
+    "id": "baked-in-the-sun-st-john",
+    "slug": "baked-in-the-sun-st-john",
+    "title": "Baked in the Sun",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Baked in the Sun is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "bakery",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3302312,
+      "lng": -64.7920644
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/1260356089",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "big-ben-s-superette-st-john",
+    "slug": "big-ben-s-superette-st-john",
+    "title": "Big Ben's Superette",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Big Ben's Superette is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3899141,
+      "lng": -64.6778154
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/398759740",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "c-and-d-supermarket-st-john",
+    "slug": "c-and-d-supermarket-st-john",
+    "title": "C & D Supermarket",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "C & D Supermarket is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.4008189,
+      "lng": -64.6360529
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/398759739",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "cost-u-less-st-thomas",
+    "slug": "cost-u-less-st-thomas",
+    "title": "Cost U Less",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Cost U Less is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3361018,
+      "lng": -64.9037141
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/522551478",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "dolphin-market-st-john",
+    "slug": "dolphin-market-st-john",
+    "title": "Dolphin Market",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Dolphin Market is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3307303,
+      "lng": -64.7926009
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/998751166",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "food-center-st-thomas",
+    "slug": "food-center-st-thomas",
+    "title": "Food Center",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Food Center is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3226015,
+      "lng": -64.8666708
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/453128398",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "food-town-st-croix",
+    "slug": "food-town-st-croix",
+    "title": "Food Town",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Food Town is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7532152,
+      "lng": -64.7278289
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/7387334885",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "gallows-point-gift-and-gourmet-st-john",
+    "slug": "gallows-point-gift-and-gourmet-st-john",
+    "title": "Gallows Point Gift & Gourmet",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Gallows Point Gift & Gourmet is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3299616,
+      "lng": -64.7983169
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/386014968",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "leonard-mini-mart-st-john",
+    "slug": "leonard-mini-mart-st-john",
+    "title": "Leonard Mini Mart",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Leonard Mini Mart is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.4103168,
+      "lng": -64.6717416
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/398815954",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "love-city-mini-mart-st-john",
+    "slug": "love-city-mini-mart-st-john",
+    "title": "Love City Mini Mart",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Love City Mini Mart is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3463084,
+      "lng": -64.7164866
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/4548717224",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "moe-s-fresh-market-northside-st-thomas",
+    "slug": "moe-s-fresh-market-northside-st-thomas",
+    "title": "Moe's Fresh Market Northside",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Moe's Fresh Market Northside is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3567134,
+      "lng": -64.9605358
+    },
+    "address": "5F Dorothea Estate St Thomas",
+    "phone": "+1-340-693-0121",
+    "website": "https://moesvi.com/",
+    "osmId": "way/522514979",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "moe-s-fresh-market-waterfront-st-thomas",
+    "slug": "moe-s-fresh-market-waterfront-st-thomas",
+    "title": "Moe's Fresh Market Waterfront",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Moe's Fresh Market Waterfront is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "greengrocer",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3399548,
+      "lng": -64.9350538
+    },
+    "address": "3082 Kronprindensens Gade",
+    "phone": "+1 340-693-1910",
+    "website": "",
+    "osmId": "node/6096984960",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "moe-s-fresh-market-yachet-haven-grande-st-thomas",
+    "slug": "moe-s-fresh-market-yachet-haven-grande-st-thomas",
+    "title": "Moe's Fresh Market Yachet Haven Grande",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Moe's Fresh Market Yachet Haven Grande is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3353052,
+      "lng": -64.9191089
+    },
+    "address": "5304 Yacht Haven Grande St Thomas",
+    "phone": "+1-340-693-0413",
+    "website": "",
+    "osmId": "node/13337045988",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "natural-food-grocery-and-deli-st-thomas",
+    "slug": "natural-food-grocery-and-deli-st-thomas",
+    "title": "Natural Food Grocery and Deli",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Natural Food Grocery and Deli is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "greengrocer",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.335109,
+      "lng": -64.9178204
+    },
+    "address": "",
+    "phone": "+1 340-775-3737",
+    "website": "",
+    "osmId": "node/5253084821",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "ollie-s-at-the-reef-st-croix",
+    "slug": "ollie-s-at-the-reef-st-croix",
+    "title": "Ollie’s At The Reef",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Ollie’s At The Reef is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7539017,
+      "lng": -64.6083516
+    },
+    "address": "22 Teague Bay Christiansted",
+    "phone": "+1-340-249-0735",
+    "website": "",
+    "osmId": "node/12175402162",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "pastry-hut-st-croix",
+    "slug": "pastry-hut-st-croix",
+    "title": "Pastry Hut",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Pastry Hut is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "bakery",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7052732,
+      "lng": -64.8510069
+    },
+    "address": "Estate Carlton Frederiksted",
+    "phone": "",
+    "website": "",
+    "osmId": "way/253651973",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "pueblo-st-thomas",
+    "slug": "pueblo-st-thomas",
+    "title": "Pueblo",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Pueblo is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3355513,
+      "lng": -64.9172727
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/451981210",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.327Z",
+    "status": "published"
+  },
+  {
+    "id": "pueblo-st-croix",
+    "slug": "pueblo-st-croix",
+    "title": "Pueblo",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Pueblo is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.745821,
+      "lng": -64.7202233
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/526129833",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "rite-way-st-john",
+    "slug": "rite-way-st-john",
+    "title": "Rite Way",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Rite Way is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.411483,
+      "lng": -64.6146885
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/4601923291",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "sam-and-jack-s-deli-st-john",
+    "slug": "sam-and-jack-s-deli-st-john",
+    "title": "Sam & Jack's Deli",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Sam & Jack's Deli is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3277121,
+      "lng": -64.7906357
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/1260356088",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "st-john-market-st-john",
+    "slug": "st-john-market-st-john",
+    "title": "St John Market",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "St John Market is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3252713,
+      "lng": -64.7854876
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/1260356096",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "starfish-market-st-john",
+    "slug": "starfish-market-st-john",
+    "title": "Starfish Market",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "Starfish Market is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3275614,
+      "lng": -64.7910548
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/998751843",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "stop-and-shop-supermarket-st-croix",
+    "slug": "stop-and-shop-supermarket-st-croix",
+    "title": "Stop and Shop Supermarket",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Stop and Shop Supermarket is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.6976882,
+      "lng": -64.8721004
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/5118721193",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "sunshine-supermarket-st-croix",
+    "slug": "sunshine-supermarket-st-croix",
+    "title": "Sunshine Supermarket",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "Sunshine Supermarket is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7068451,
+      "lng": -64.8421966
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/9742104964",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "the-fishtrap-seafood-shop-st-john",
+    "slug": "the-fishtrap-seafood-shop-st-john",
+    "title": "The Fishtrap Seafood Shop",
+    "category": "provisioning",
+    "islandCode": "st_john",
+    "areaSlug": "grocery",
+    "description": "The Fishtrap Seafood Shop is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "seafood",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3300105,
+      "lng": -64.795233
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/1260356082",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "the-fruit-bowl-st-thomas",
+    "slug": "the-fruit-bowl-st-thomas",
+    "title": "The Fruit Bowl",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "The Fruit Bowl is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "greengrocer",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3379876,
+      "lng": -64.914475
+    },
+    "address": "",
+    "phone": "+1 340-774-8565",
+    "website": "",
+    "osmId": "node/5253085021",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "the-market-stt-st-thomas",
+    "slug": "the-market-stt-st-thomas",
+    "title": "The Market STT",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "The Market STT is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3397064,
+      "lng": -64.8896868
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/451997994",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "the-market-stx-st-croix",
+    "slug": "the-market-stx-st-croix",
+    "title": "The Market STX",
+    "category": "provisioning",
+    "islandCode": "st_croix",
+    "areaSlug": "grocery",
+    "description": "The Market STX is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "supermarket",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7156904,
+      "lng": -64.8200164
+    },
+    "address": "14 Plessen Road Frederiksted",
+    "phone": "+1-340-719-1870",
+    "website": "https://themarketstx.com",
+    "osmId": "way/398259797",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "total-st-thomas",
+    "slug": "total-st-thomas",
+    "title": "Total",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "Total is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3386772,
+      "lng": -64.8879275
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "way/521685714",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  },
+  {
+    "id": "wi-mart-st-thomas",
+    "slug": "wi-mart-st-thomas",
+    "title": "WI-Mart",
+    "category": "provisioning",
+    "islandCode": "st_thomas",
+    "areaSlug": "grocery",
+    "description": "WI-Mart is a grocery or provisioning stop in the U.S. Virgin Islands.",
+    "shortDescription": "Grocery and provisioning stop.",
+    "coverImage": "",
+    "gallery": [],
+    "tags": [
+      "grocery",
+      "provisioning",
+      "convenience",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3199883,
+      "lng": -64.9572268
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "osmId": "node/11892298540",
+    "source": "OpenStreetMap Overpass API",
+    "verifiedAt": "2026-06-12T19:11:52.328Z",
+    "status": "published"
+  }
+]

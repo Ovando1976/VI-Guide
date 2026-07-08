@@ -1,0 +1,444 @@
+[
+  {
+    "slug": "downtown-charlotte-amalie",
+    "title": "Downtown Charlotte Amalie",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Downtown Charlotte Amalie is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/downtown-charlotte-amalie-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/downtown-charlotte-amalie-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3418571,
+      "lng": -64.93106
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206779014,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Charlotte Amalie, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJDwNU0PMaBYwR2-ZBJ5-i1uw"
+  },
+  {
+    "slug": "havensight-mall",
+    "title": "Havensight Mall",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Havensight Mall is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/havensight-mall-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/havensight-mall-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3324511,
+      "lng": -64.9204285
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206779189,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "83JH+XRP, Charlotte Amalie East, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJx3ByNYgaBYwRdqJpbp9m6CQ"
+  },
+  {
+    "slug": "yacht-haven-grande",
+    "title": "Yacht Haven Grande",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Yacht Haven Grande is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/yacht-haven-grande-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3364134,
+      "lng": -64.9201485
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206779365,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "5304 Yacht Haven Grande, Suite 100, St. Thomas, US Virgin Islands 00802, USVI",
+    "googlePlaceId": "ChIJ2_cVKokaBYwRFIjCCiJMPdk"
+  },
+  {
+    "slug": "crown-bay-center",
+    "title": "Crown Bay Center",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Crown Bay Center is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/crown-bay-center-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/crown-bay-center-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.332271,
+      "lng": -64.9549498
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206779540,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI",
+    "googlePlaceId": "ChIJgw-m6KobBYwRRkojUPF8tl4"
+  },
+  {
+    "slug": "red-hook-plaza",
+    "title": "Red Hook Plaza",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Red Hook Plaza is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/red-hook-plaza-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/red-hook-plaza-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3216185,
+      "lng": -64.8647387
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": true,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206779821,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Red Hook Rd, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJBaz8LvkQBYwRLGCTwNPw534"
+  },
+  {
+    "slug": "tutu-park-mall",
+    "title": "Tutu Park Mall",
+    "category": "shopping",
+    "islandCode": "st_thomas",
+    "areaSlug": "shopping",
+    "description": "Tutu Park Mall is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st thomas.",
+    "coverImage": "/images/places/st-thomas/tutu-park-mall-1.jpg",
+    "gallery": [
+      "/images/places/st-thomas/tutu-park-mall-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3380681,
+      "lng": -64.8899127
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206780072,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Tutu Park Mall, Anna's Retreat, St Thomas 00802, USVI",
+    "googlePlaceId": "ChIJN2e162UQBYwR00rcugM7gn8"
+  },
+  {
+    "slug": "mongoose-junction",
+    "title": "Mongoose Junction",
+    "category": "shopping",
+    "islandCode": "st_john",
+    "areaSlug": "shopping",
+    "description": "Mongoose Junction is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st john.",
+    "coverImage": "/images/places/st-john/mongoose-junction-1.jpg",
+    "gallery": [
+      "/images/places/st-john/mongoose-junction-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3326719,
+      "lng": -64.7923493
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206780340,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "St. John, 513 Mongoose Jct, Cruz Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJBbivLvcTBYwRHUaTfOhNVAc"
+  },
+  {
+    "slug": "cruz-bay-shops",
+    "title": "Cruz Bay Shops",
+    "category": "shopping",
+    "islandCode": "st_john",
+    "areaSlug": "shopping",
+    "description": "Cruz Bay Shops is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st john.",
+    "coverImage": "/images/places/st-john/cruz-bay-shops-1.jpg",
+    "gallery": [
+      "/images/places/st-john/cruz-bay-shops-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3304513,
+      "lng": -64.792952
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206780591,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Cruz Bay, St John 00830, USVI",
+    "googlePlaceId": "ChIJS66BdkkSBYwR6ph8MBq3db0"
+  },
+  {
+    "slug": "wharfside-village",
+    "title": "Wharfside Village",
+    "category": "shopping",
+    "islandCode": "st_john",
+    "areaSlug": "shopping",
+    "description": "Wharfside Village is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st john.",
+    "coverImage": "/images/places/st-john/wharfside-village-1.jpg",
+    "gallery": [
+      "/images/places/st-john/wharfside-village-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 18.3305698,
+      "lng": -64.7956093
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206780860,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "4A Cruz Bay Quarter, Cruz Bay, St John 00831, USVI",
+    "googlePlaceId": "ChIJveHd-AYTBYwRPBuRTlsS6B4"
+  },
+  {
+    "slug": "christiansted-boardwalk",
+    "title": "Christiansted Boardwalk",
+    "category": "shopping",
+    "islandCode": "st_croix",
+    "areaSlug": "shopping",
+    "description": "Christiansted Boardwalk is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st croix.",
+    "coverImage": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/christiansted-boardwalk-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7472506,
+      "lng": -64.7051504
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206781034,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "ROOFTOP",
+    "geocodedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJ51HXb_K1GowRPvBOTJSE1uQ"
+  },
+  {
+    "slug": "company-street-shops",
+    "title": "Company Street Shops",
+    "category": "shopping",
+    "islandCode": "st_croix",
+    "areaSlug": "shopping",
+    "description": "Company Street Shops is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st croix.",
+    "coverImage": "/images/places/st-croix/company-street-shops-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/company-street-shops-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7448373,
+      "lng": -64.7043934
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206781295,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "GEOMETRIC_CENTER",
+    "geocodedAddress": "Company St, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJt4EC_fG1GowRdE-DdnBXu5A"
+  },
+  {
+    "slug": "frederiksted-waterfront-shops",
+    "title": "Frederiksted Waterfront Shops",
+    "category": "shopping",
+    "islandCode": "st_croix",
+    "areaSlug": "shopping",
+    "description": "Frederiksted Waterfront Shops is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st croix.",
+    "coverImage": "/images/places/st-croix/frederiksted-waterfront-shops-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/frederiksted-waterfront-shops-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7122979,
+      "lng": -64.8818053
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206781539,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Frederiksted, St Croix, USVI",
+    "googlePlaceId": "ChIJC5KRmDXOGowR_Pc28d6Ka5k"
+  },
+  {
+    "slug": "sunny-isle-shopping-center",
+    "title": "Sunny Isle Shopping Center",
+    "category": "shopping",
+    "islandCode": "st_croix",
+    "areaSlug": "shopping",
+    "description": "Sunny Isle Shopping Center is a shopping destination in the U.S. Virgin Islands.",
+    "shortDescription": "shopping on st croix.",
+    "coverImage": "/images/places/st-croix/sunny-isle-shopping-center-1.jpg",
+    "gallery": [
+      "/images/places/st-croix/sunny-isle-shopping-center-1.jpg"
+    ],
+    "tags": [
+      "shopping",
+      "shopping",
+      "usvi"
+    ],
+    "coordinates": {
+      "lat": 17.7269182,
+      "lng": -64.7484778
+    },
+    "address": "",
+    "phone": "",
+    "website": "",
+    "priceTier": "$",
+    "featured": false,
+    "status": "published",
+    "createdAt": 1710000000000,
+    "updatedAt": 1781206781789,
+    "coordinateSource": "google_geocoding",
+    "coordinateConfidence": "APPROXIMATE",
+    "geocodedAddress": "Sunny Isle, Christiansted, St Croix 00820, USVI",
+    "googlePlaceId": "ChIJqxEH_I7JGowRaasRFr86Xmk"
+  }
+]

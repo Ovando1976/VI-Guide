@@ -1,0 +1,11 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "storage": {
+    "rules": "firebase/rules/vi-connect.storage.rules"
+  }
+}

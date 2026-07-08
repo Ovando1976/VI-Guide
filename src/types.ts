@@ -2,18 +2,9 @@
  * VI Explorer - Canonical Type System
  */
 
-export type IslandCode =
-  | "st_thomas"
-  | "st_john"
-  | "st_croix"
-  | "water_island";
+export type IslandCode = "st_thomas" | "st_john" | "st_croix" | "water_island";
 
-export type AreaKind =
-  | "town"
-  | "estate"
-  | "district"
-  | "harbor"
-  | "beach_area";
+export type AreaKind = "town" | "estate" | "district" | "harbor" | "beach_area";
 
 export type Coordinates = {
   lat: number;
@@ -94,11 +85,28 @@ export type PlaceDoc = BaseContentDoc & {
 };
 
 export type EventDoc = BaseContentDoc & {
-  category?: string;
+  category?:
+    | "event"
+    | "music"
+    | "culture"
+    | "food"
+    | "sports"
+    | "nightlife"
+    | "tourism";
   venueName?: string;
+  address?: string;
+  website?: string;
+  source?: string;
+  sourceStatus?: string;
+  verifiedAt?: string;
+
   startAt: number;
   endAt?: number;
+
   price?: string;
+
+  imageCredits?: string;
+  imageSource?: string;
 };
 
 export type FeaturedSectionKey =
@@ -121,9 +129,10 @@ export type FeaturedSectionDoc = {
 };
 
 // User & Auth Types
-export type UserRole = 'user' | 'merchant' | 'admin';
+export type UserRole = "user" | "merchant" | "admin";
 
 export interface UserProfile {
+  selectedIsland: string;
   uid: string;
   email: string;
   displayName: string;
@@ -144,19 +153,24 @@ export interface Inquiry {
   userName: string;
   userEmail: string;
   message: string;
-  status: 'new' | 'read' | 'replied' | 'archived';
+  status: "new" | "read" | "replied" | "archived";
   createdAt: number;
 }
 
 export interface ChatMessage {
   id: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   timestamp: Date;
 }
 
 // Document & Collaboration Types
-export type DocumentType = 'report' | 'proposal' | 'memo' | 'itinerary' | 'draft';
+export type DocumentType =
+  | "report"
+  | "proposal"
+  | "memo"
+  | "itinerary"
+  | "draft";
 
 export interface AIDocument {
   id: string;
@@ -190,7 +204,12 @@ export interface CommunityPost {
 }
 
 // Transit & Logistics Types
-export type TransitType = 'ferry' | 'shuttle' | 'bus' | 'helicopter' | 'seaplane';
+export type TransitType =
+  | "ferry"
+  | "shuttle"
+  | "bus"
+  | "helicopter"
+  | "seaplane";
 
 export interface TransitRoute {
   id: string;
@@ -202,7 +221,7 @@ export interface TransitRoute {
   to: string; // Hub or Estate
   schedule: string; // Human readable or structured
   price: string;
-  status: 'active' | 'delayed' | 'cancelled';
+  status: "active" | "delayed" | "cancelled";
   lastUpdated: number;
 }
 
@@ -218,20 +237,34 @@ export interface UserMemory {
 }
 
 // Mobility & Ride-Sharing Types
-export type MobilityIsland = 'stt' | 'stj' | 'stx' | 'wat' | 'unk';
-export type TripStatus = 'requested' | 'quoted' | 'matched' | 'driver_en_route' | 'arrived' | 'in_progress' | 'ferry_leg' | 'completed' | 'cancelled';
-export type TripType = 'direct' | 'shared' | 'airport' | 'cruise' | 'ferry_transfer';
-export type ServiceClass = 'private' | 'shared';
-export type VehicleClass = 'standard' | 'premium' | 'shared';
-export type ServiceMode = 'airport' | 'town' | 'ferry' | 'shared' | 'private';
-export type VehicleType = 'sedan' | 'suv' | 'van' | 'safari';
+export type MobilityIsland = "stt" | "stj" | "stx" | "wat" | "unk";
+export type TripStatus =
+  | "requested"
+  | "quoted"
+  | "matched"
+  | "driver_en_route"
+  | "arrived"
+  | "in_progress"
+  | "ferry_leg"
+  | "completed"
+  | "cancelled";
+export type TripType =
+  | "direct"
+  | "shared"
+  | "airport"
+  | "cruise"
+  | "ferry_transfer";
+export type ServiceClass = "private" | "shared";
+export type VehicleClass = "standard" | "premium" | "shared";
+export type ServiceMode = "airport" | "town" | "ferry" | "shared" | "private";
+export type VehicleType = "sedan" | "suv" | "van" | "safari";
 
 export interface Driver {
   id: string;
   fullName: string;
   phone: string;
   island: MobilityIsland;
-  status: 'pending' | 'active' | 'suspended';
+  status: "pending" | "active" | "suspended";
   serviceModes: ServiceMode[];
   vehicleType: VehicleType;
   seats: number;
@@ -268,7 +301,7 @@ export interface Trip {
   driverId: string | null;
   status: TripStatus;
   tripType: TripType;
-  island: MobilityIsland | 'multi';
+  island: MobilityIsland | "multi";
   pickup: TripLocation;
   dropoff: TripLocation;
   passengers: number;
@@ -280,10 +313,10 @@ export interface Trip {
     waitingFee: number;
     premiumFee: number;
     total: number;
-    currency: 'USD';
+    currency: "USD";
   };
   ferryPlan?: {
-    route: 'red_hook_cruz_bay' | 'crown_bay_cruz_bay';
+    route: "red_hook_cruz_bay" | "crown_bay_cruz_bay";
     departureWindow?: string;
     leg1DriverId?: string;
     leg3DriverId?: string;
@@ -296,7 +329,14 @@ export type TripLocation = {
   label: string;
   lat: number;
   lng: number;
-  type: 'estate' | 'hotel' | 'beach' | 'airport' | 'ferry' | 'custom' | 'parcel';
+  type:
+    | "estate"
+    | "hotel"
+    | "beach"
+    | "airport"
+    | "ferry"
+    | "custom"
+    | "parcel";
   estateGeoid?: string;
   estateName?: string;
   parcelId?: string;
@@ -350,17 +390,24 @@ export type GeoContext = {
   place?: {
     id: string;
     label: string;
-    kind: "hotel" | "villa" | "business" | "beach" | "airport" | "ferry" | "custom";
+    kind:
+      | "hotel"
+      | "villa"
+      | "business"
+      | "beach"
+      | "airport"
+      | "ferry"
+      | "custom";
   };
 };
 
 export interface FareRule {
   id: string;
-  island: MobilityIsland | 'multi';
-  serviceType: 'standard' | 'private' | 'shared' | 'airport' | 'ferry_transfer';
+  island: MobilityIsland | "multi";
+  serviceType: "standard" | "private" | "shared" | "airport" | "ferry_transfer";
   originZone: string;
   destinationZone: string;
-  pricingMode: 'fixed' | 'per_person' | 'distance_plus_fixed';
+  pricingMode: "fixed" | "per_person" | "distance_plus_fixed";
   baseAmount: number;
   perPassengerAmount?: number;
   luggageAmount?: number;
@@ -372,10 +419,10 @@ export interface FareRule {
 export interface Partner {
   id: string;
   name: string;
-  type: 'hotel' | 'villa_manager' | 'fleet' | 'excursion' | 'marina';
+  type: "hotel" | "villa_manager" | "fleet" | "excursion" | "marina";
   contactEmail: string;
   contactPhone?: string;
-  status: 'active' | 'inactive';
+  status: "active" | "inactive";
   createdAt: number;
 }
 

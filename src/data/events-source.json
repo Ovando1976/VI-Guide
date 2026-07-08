@@ -1,0 +1,21 @@
+[
+    {
+      "title": "St. Thomas Carnival",
+      "slug": "st-thomas-carnival",
+      "islandCode": "st_thomas",
+      "areaSlug": "charlotte-amalie",
+      "category": "event",
+      "description": "Official annual St. Thomas Carnival celebration with village events, parades, music, food, and cultural programming.",
+      "shortDescription": "Annual St. Thomas Carnival celebration.",
+      "coordinates": { "lat": 18.3419, "lng": -64.9307 },
+      "address": "Charlotte Amalie, St. Thomas, USVI",
+      "website": "https://www.visitusvi.com",
+      "source": "Visit USVI official tourism calendar",
+      "verifiedAt": "2026-06-12",
+      "startsAt": null,
+      "endsAt": null,
+      "coverImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "gallery": ["/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"],
+      "tags": ["event", "carnival", "culture", "st thomas"]
+    }
+  ]

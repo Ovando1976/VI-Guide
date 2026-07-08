@@ -1,35 +1,187 @@
-import React from 'react';
-import { BottomNav } from './BottomNav';
-import { IslandPicker } from './IslandPicker';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import { BottomNav } from "./BottomNav";
+import { IslandPicker } from "./IslandPicker";
+import JoinPage from "../JoinPage";
+import TaxiAssociationDemoPage from "../TaxiAssociationDemoPage";
+import MapIntentDashboard from "../MapIntentDashboard";
+import BusinessProofDashboard from "../BusinessProofDashboard";
+import PartnerClosePage from "../PartnerClosePage";
+import PartnerPipelinePage from "../PartnerPipelinePage";
+import PartnerOnboardingPage from "../PartnerOnboardingPage";
+import PartnerDirectoryPage from "../PartnerDirectoryPage";
+import TourismAllianceHub from "../TourismAllianceHub";
+import AlliancePipelinePage from "../AlliancePipelinePage";
+import MeetingModePage from "../MeetingModePage";
+import DirectBookingHub from "../DirectBookingHub";
+import BookingPartnersPage from "../BookingPartnersPage";
+import CustomerStaysPage from "../CustomerStaysPage";
+import CustomerAccommodationDetailPage from "../CustomerAccommodationDetailPage";
+import AccommodationPartnerPortalPage from "../AccommodationPartnerPortalPage";
+import AccommodationReviewPage from "../AccommodationReviewPage";
+import BookingInboxPage from "../BookingInboxPage";
+import RevenueDashboardPage from "../RevenueDashboardPage";
+import PartnerOutreachPage from "../PartnerOutreachPage";
+import PartnerBillingPage from "../PartnerBillingPage";
+import { AdminDeskPage, PartnerDeskPage, VisitorDeskPage } from "../AppDeskPages";
+import AccountPage from "../AccountPage";
+import VisitorCheckoutPage from "../VisitorCheckoutPage";
+import RequireAccess from "../auth/RequireAccess";
+import AdminRoleManagerPage from "../AdminRoleManagerPage";
+import AccessStatusPage from "../AccessStatusPage";
 
 interface MobileShellProps {
   children: React.ReactNode;
   isMerchant?: boolean;
 }
 
+const PRESENTATION_ROUTES = [
+  "/demo",
+  "/join",
+  "/taxi-demo",
+  "/map-intent",
+  "/business-proof",
+  "/partner-close",
+  "/partner-pipeline",
+  "/partner-onboarding",
+  "/partner-directory",
+  "/tourism-alliance",
+  "/alliance-pipeline",
+  "/meeting-mode",
+  "/direct-booking",
+  "/booking-partners",
+  "/lodging",
+  "/stays",
+  "/hotels",
+  "/mobility",
+  "/admin/leads",
+  "/partners",
+  "/merchant/demo",
+  "/mobility/dispatch",
+];
+
+function isPresentationPath(pathname: string) {
+  return PRESENTATION_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+}
+
 export function MobileShell({ children }: MobileShellProps) {
+  const location = useLocation();
+  const routeContent =
+    location.pathname === "/join" ? (
+      <JoinPage />
+    ) : location.pathname === "/taxi-demo" ? (
+      <TaxiAssociationDemoPage />
+    ) : location.pathname === "/map-intent" ? (
+      <MapIntentDashboard />
+    ) : location.pathname === "/business-proof" ? (
+      <BusinessProofDashboard />
+    ) : location.pathname === "/partner-close" ? (
+      <PartnerClosePage />
+    ) : location.pathname === "/partner-pipeline" ? (
+      <PartnerPipelinePage />
+    ) : location.pathname === "/partner-onboarding" ? (
+      <PartnerOnboardingPage />
+    ) : location.pathname === "/partner-directory" ? (
+      <PartnerDirectoryPage />
+    ) : location.pathname === "/tourism-alliance" ? (
+      <TourismAllianceHub />
+    ) : location.pathname === "/alliance-pipeline" ? (
+      <AlliancePipelinePage />
+    ) : location.pathname === "/meeting-mode" ? (
+      <RequireAccess access="admin"><MeetingModePage /></RequireAccess>
+    ) : location.pathname === "/direct-booking" ? (
+      <RequireAccess access="admin"><DirectBookingHub /></RequireAccess>
+    ) : location.pathname === "/account" ? (
+      <AccountPage />
+    ) : location.pathname === "/visitor-checkout" ? (
+      <VisitorCheckoutPage />
+    ) : location.pathname === "/visitor-desk" ? (
+      <RequireAccess access="visitor_paid"><VisitorDeskPage /></RequireAccess>
+    ) : location.pathname === "/access-status" ? (
+      <AccessStatusPage />
+    ) : location.pathname === "/admin-roles" ? (
+      <AdminRoleManagerPage />
+    ) : location.pathname === "/admin-desk" ? (
+      <RequireAccess access="admin"><AdminDeskPage /></RequireAccess>
+    ) : location.pathname === "/partner-desk" ? (
+      <RequireAccess access="partner"><PartnerDeskPage /></RequireAccess>
+    ) : location.pathname === "/partner-billing" ? (
+      <RequireAccess access="admin"><PartnerBillingPage /></RequireAccess>
+    ) : location.pathname === "/partner-outreach" ? (
+      <RequireAccess access="admin"><PartnerOutreachPage /></RequireAccess>
+    ) : location.pathname === "/revenue-dashboard" ? (
+      <RequireAccess access="admin"><RevenueDashboardPage /></RequireAccess>
+    ) : location.pathname === "/booking-inbox" ? (
+      <RequireAccess access="partner"><BookingInboxPage /></RequireAccess>
+    ) : location.pathname === "/booking-partners" ? (
+      <RequireAccess access="admin"><BookingPartnersPage /></RequireAccess>
+    ) : location.pathname === "/accommodation-partner" ? (
+      <RequireAccess access="partner"><AccommodationPartnerPortalPage /></RequireAccess>
+    ) : location.pathname === "/accommodation-review" ? (
+      <RequireAccess access="admin"><AccommodationReviewPage /></RequireAccess>
+    ) : ["/hotels", "/stays", "/lodging"].some((prefix) =>
+      location.pathname.startsWith(`${prefix}/`)
+    ) ? (
+      <CustomerAccommodationDetailPage />
+    ) : ["/hotels", "/stays", "/lodging"].includes(location.pathname) ? (
+      <CustomerStaysPage />
+    ) : (
+      children
+    );
+  const showRevenueJoinCta =
+    location.pathname === "/demo" || location.pathname === "/partners";
+  const isPresentationRoute = isPresentationPath(location.pathname);
+
   return (
-    <div className="min-h-screen bg-sand pb-32 font-sans text-ink selection:bg-turquoise/30 relative overflow-x-hidden">
-      {/* Atmospheric Background Elements */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-turquoise/5 rounded-full blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] w-[30%] h-[30%] bg-ocean/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] left-[20%] w-[50%] h-[50%] bg-coral/5 rounded-full blur-[150px]" />
+    <div
+      className={[
+        "relative min-h-screen overflow-x-hidden bg-sand font-sans text-ink selection:bg-turquoise/30",
+        isPresentationRoute
+          ? "pb-[calc(env(safe-area-inset-bottom)+5rem)]"
+          : "pb-40",
+      ].join(" ")}
+    >
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-turquoise/5 blur-[120px]" />
+        <div className="absolute -right-[10%] top-[20%] h-[30%] w-[30%] rounded-full bg-ocean/5 blur-[100px]" />
+        <div className="absolute bottom-[10%] left-[20%] h-[50%] w-[50%] rounded-full bg-coral/5 blur-[150px]" />
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center pointer-events-none">
-        <div className="pointer-events-auto">
-          <IslandPicker />
-        </div>
-      </header>
+      {!isPresentationRoute && (
+        <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6">
+          <div className="pointer-events-auto rounded-2xl bg-white/75 px-3 py-2 shadow-lg ring-1 ring-black/5 backdrop-blur-xl">
+            <IslandPicker />
+          </div>
+        </header>
+      )}
 
-      <main className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {children}
+      <main
+        className={[
+          "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
+          isPresentationRoute ? "pt-8 md:pt-10" : "",
+        ].join(" ")}
+      >
+        <div
+          className={
+            isPresentationRoute ? "mx-auto max-w-6xl" : "mx-auto max-w-4xl"
+          }
+        >
+          {showRevenueJoinCta ? (
+        <a
+          href="/join"
+          className="fixed bottom-6 left-4 right-4 z-[90] inline-flex items-center justify-center rounded-2xl bg-turquoise px-5 py-4 text-sm font-black text-ink shadow-2xl ring-1 ring-black/10 active:scale-95 md:left-auto md:right-8 md:w-auto"
+        >
+          Join as Founding Partner
+        </a>
+      ) : null}
+
+      {routeContent}
         </div>
       </main>
 
-      <BottomNav />
+      {!isPresentationRoute && <BottomNav />}
     </div>
   );
 }

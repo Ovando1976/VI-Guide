@@ -1,0 +1,910 @@
+[
+  {
+    "title": "St. Thomas Carnival",
+    "slug": "st-thomas-carnival",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "St. Thomas Carnival is the island's major annual celebration with Carnival Village, parades, music, food, pageants, J'Ouvert, and cultural programming.",
+    "shortDescription": "St. Thomas Carnival is the island's major annual celebration with Carnival Village, parades, music, food, pageants, J'Ouvert, and cultural programming.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-26",
+    "endsAt": "YYYY-05-02",
+    "coverImage": "/images/events/carnival/st-thomas-carnival.jpg",
+    "gallery": [
+      "/images/events/carnival/st-thomas-carnival.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/st-thomas-carnival.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "carnival",
+      "parade",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. John Celebration",
+    "slug": "st-john-celebration",
+    "recurrence": "annual",
+    "islandCode": "st_john",
+    "areaSlug": "cruz-bay",
+    "category": "culture",
+    "description": "St. John Celebration is the island's annual festival season with village events, food fair, parade, music, culture, and fireworks.",
+    "shortDescription": "St. John Celebration is the island's annual festival season with village events, food fair, parade, music, culture, and fireworks.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-06-14",
+    "endsAt": "YYYY-07-04",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "st john"
+    ]
+  },
+  {
+    "title": "Crucian Christmas Festival",
+    "slug": "crucian-christmas-festival",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "frederiksted",
+    "category": "culture",
+    "description": "The Crucian Christmas Festival is St. Croix's annual holiday festival season with music, parades, village events, food, and Crucian culture.",
+    "shortDescription": "The Crucian Christmas Festival is St. Croix's annual holiday festival season with music, parades, village events, food, and Crucian culture.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-26",
+    "endsAt": "YYYY-12-31",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "christmas",
+      "st croix"
+    ]
+  },
+  {
+    "title": "Agrifest",
+    "slug": "agrifest",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "estate-lower-love",
+    "category": "culture",
+    "description": "Agrifest is the Virgin Islands Agriculture and Food Fair, highlighting local farming, food, livestock, crafts, vendors, and culture.",
+    "shortDescription": "Agrifest is the Virgin Islands Agriculture and Food Fair, highlighting local farming, food, livestock, crafts, vendors, and culture.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-02-14",
+    "endsAt": "YYYY-02-16",
+    "coverImage": "/images/events/food/agrifest.jpg",
+    "gallery": [
+      "/images/events/food/agrifest.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/agrifest.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "food",
+      "agriculture",
+      "fair"
+    ]
+  },
+  {
+    "title": "Taste of St. Croix",
+    "slug": "taste-of-st-croix",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "food",
+    "description": "Taste of St. Croix is a signature culinary event featuring restaurants, chefs, drinks, and local food culture.",
+    "shortDescription": "Taste of St. Croix is a signature culinary event featuring restaurants, chefs, drinks, and local food culture.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-18",
+    "endsAt": "YYYY-04-18",
+    "coverImage": "/images/events/food/taste-of-st-croix.jpg",
+    "gallery": [
+      "/images/events/food/taste-of-st-croix.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/taste-of-st-croix.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "culinary",
+      "restaurant"
+    ]
+  },
+  {
+    "title": "Mango Melee",
+    "slug": "mango-melee",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "st-george-village",
+    "category": "food",
+    "description": "Mango Melee celebrates local mangoes with food, contests, vendors, family activities, music, and island culture.",
+    "shortDescription": "Mango Melee celebrates local mangoes with food, contests, vendors, family activities, music, and island culture.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-07-07",
+    "endsAt": "YYYY-07-07",
+    "coverImage": "/images/events/food/mango-melee.jpg",
+    "gallery": [
+      "/images/events/food/mango-melee.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/mango-melee.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "mango",
+      "festival"
+    ]
+  },
+  {
+    "title": "Paradise Jam",
+    "slug": "paradise-jam",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "uvi",
+    "category": "sports",
+    "description": "Paradise Jam is an annual college basketball tournament hosted at the University of the Virgin Islands on St. Thomas.",
+    "shortDescription": "Paradise Jam is an annual college basketball tournament hosted at the University of the Virgin Islands on St. Thomas.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-11-20",
+    "endsAt": "YYYY-11-28",
+    "coverImage": "/images/events/sports/paradise-jam.jpg",
+    "gallery": [
+      "/images/events/sports/paradise-jam.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/paradise-jam.jpg",
+    "tags": [
+      "event",
+      "sports",
+      "usvi",
+      "basketball"
+    ]
+  },
+  {
+    "title": "Virgin Islands Charter Yacht Show",
+    "slug": "virgin-islands-charter-yacht-show",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "yacht-haven",
+    "category": "culture",
+    "description": "The Virgin Islands Charter Yacht Show brings charter yachts, brokers, crews, and marine industry professionals to St. Thomas.",
+    "shortDescription": "The Virgin Islands Charter Yacht Show brings charter yachts, brokers, crews, and marine industry professionals to St. Thomas.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-11-14",
+    "endsAt": "YYYY-11-17",
+    "coverImage": "/images/events/marine/charter-yacht-show.jpg",
+    "gallery": [
+      "/images/events/marine/charter-yacht-show.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/marine/charter-yacht-show.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "marine",
+      "yacht",
+      "tourism"
+    ]
+  },
+  {
+    "title": "Christmas on Main Street",
+    "slug": "christmas-on-main-street",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Christmas on Main Street is a downtown holiday event with shopping, music, food, lights, and community celebration.",
+    "shortDescription": "Christmas on Main Street is a downtown holiday event with shopping, music, food, lights, and community celebration.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-13",
+    "endsAt": "YYYY-12-13",
+    "coverImage": "/images/events/holiday/christmas-on-main-street.jpg",
+    "gallery": [
+      "/images/events/holiday/christmas-on-main-street.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/holiday/christmas-on-main-street.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "holiday",
+      "shopping"
+    ]
+  },
+  {
+    "title": "Miracle on Main Street",
+    "slug": "miracle-on-main-street",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Miracle on Main Street is a holiday celebration in Charlotte Amalie with lights, music, shopping, and seasonal community events.",
+    "shortDescription": "Miracle on Main Street is a holiday celebration in Charlotte Amalie with lights, music, shopping, and seasonal community events.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-20",
+    "endsAt": "YYYY-12-20",
+    "coverImage": "/images/events/culture/emancipation-garden.jpg",
+    "gallery": [
+      "/images/events/culture/emancipation-garden.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/culture/emancipation-garden.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "holiday"
+    ]
+  },
+  {
+    "title": "Lighted Boat Parade",
+    "slug": "lighted-boat-parade",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie-harbor",
+    "category": "culture",
+    "description": "The Lighted Boat Parade features decorated boats in Charlotte Amalie Harbor during the holiday season.",
+    "shortDescription": "The Lighted Boat Parade features decorated boats in Charlotte Amalie Harbor during the holiday season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-20",
+    "endsAt": "YYYY-12-20",
+    "coverImage": "/images/events/holiday/lighted-boat-parade.jpg",
+    "gallery": [
+      "/images/events/holiday/lighted-boat-parade.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/holiday/lighted-boat-parade.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "holiday",
+      "marine",
+      "boat"
+    ]
+  },
+  {
+    "title": "Transfer Day",
+    "slug": "transfer-day",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Transfer Day commemorates the March 31, 1917 transfer of the Danish West Indies to the United States.",
+    "shortDescription": "Transfer Day commemorates the March 31, 1917 transfer of the Danish West Indies to the United States.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-03-31",
+    "endsAt": "YYYY-03-31",
+    "coverImage": "/images/events/culture/fort-christian.jpg",
+    "gallery": [
+      "/images/events/culture/fort-christian.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/culture/fort-christian.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "history"
+    ]
+  },
+  {
+    "title": "St. Croix Pride",
+    "slug": "st-croix-pride",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "culture",
+    "description": "St. Croix Pride is an annual community celebration with events, visibility, culture, and local gathering.",
+    "shortDescription": "St. Croix Pride is an annual community celebration with events, visibility, culture, and local gathering.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-06-20",
+    "endsAt": "YYYY-06-22",
+    "coverImage": "/images/events/culture/emancipation-garden.jpg",
+    "gallery": [
+      "/images/events/culture/emancipation-garden.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/culture/emancipation-garden.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "community",
+      "festival"
+    ]
+  },
+  {
+    "title": "Mardi Croix",
+    "slug": "mardi-croix",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "north-shore",
+    "category": "culture",
+    "description": "Mardi Croix is a St. Croix Mardi Gras-style celebration with costumes, parade energy, music, and community festivities.",
+    "shortDescription": "Mardi Croix is a St. Croix Mardi Gras-style celebration with costumes, parade energy, music, and community festivities.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-02-21",
+    "endsAt": "YYYY-02-21",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "parade"
+    ]
+  },
+  {
+    "title": "Christiansted Dog Parade",
+    "slug": "christiansted-dog-parade",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "culture",
+    "description": "The Christiansted Dog Parade is a community parade and family-friendly event in downtown Christiansted.",
+    "shortDescription": "The Christiansted Dog Parade is a community parade and family-friendly event in downtown Christiansted.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-02-15",
+    "endsAt": "YYYY-02-15",
+    "coverImage": "/images/events/culture/emancipation-garden.jpg",
+    "gallery": [
+      "/images/events/culture/emancipation-garden.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/culture/emancipation-garden.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "parade",
+      "family"
+    ]
+  },
+  {
+    "title": "Texas Society Chili Cook-Off",
+    "slug": "texas-society-chili-cook-off",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "brewers-bay",
+    "category": "food",
+    "description": "The Texas Society Chili Cook-Off is a popular food fundraiser and beachside community event on St. Thomas.",
+    "shortDescription": "The Texas Society Chili Cook-Off is a popular food fundraiser and beachside community event on St. Thomas.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-08-17",
+    "endsAt": "YYYY-08-17",
+    "coverImage": "/images/events/food/texas-chili-cookoff.jpg",
+    "gallery": [
+      "/images/events/food/texas-chili-cookoff.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/texas-chili-cookoff.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "fundraiser"
+    ]
+  },
+  {
+    "title": "King of the Wing",
+    "slug": "king-of-the-wing",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "magens-bay",
+    "category": "food",
+    "description": "King of the Wing is a St. Thomas food festival and wing competition at Magens Bay.",
+    "shortDescription": "King of the Wing is a St. Thomas food festival and wing competition at Magens Bay.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-06-13",
+    "endsAt": "YYYY-06-13",
+    "coverImage": "/images/events/food/king-of-the-wing.jpg",
+    "gallery": [
+      "/images/events/food/king-of-the-wing.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/king-of-the-wing.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "festival"
+    ]
+  },
+  {
+    "title": "Coquito Festival",
+    "slug": "coquito-festival",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "food",
+    "description": "Coquito Festival celebrates holiday flavors, local vendors, music, food, and community culture.",
+    "shortDescription": "Coquito Festival celebrates holiday flavors, local vendors, music, food, and community culture.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-14",
+    "endsAt": "YYYY-12-14",
+    "coverImage": "/images/events/food/coquito-festival.jpg",
+    "gallery": [
+      "/images/events/food/coquito-festival.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/food/coquito-festival.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "holiday"
+    ]
+  },
+  {
+    "title": "Crucian Coconut Festival",
+    "slug": "crucian-coconut-festival",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "frederiksted",
+    "category": "food",
+    "description": "Crucian Coconut Festival is a coconut-themed cultural event with food, vendors, music, and family activities.",
+    "shortDescription": "Crucian Coconut Festival is a coconut-themed cultural event with food, vendors, music, and family activities.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-07",
+    "endsAt": "YYYY-12-07",
+    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "gallery": [
+      "/images/events/carnival/food-fair.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "festival"
+    ]
+  },
+  {
+    "title": "Garden of Lights",
+    "slug": "garden-of-lights",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "st-george-village",
+    "category": "culture",
+    "description": "Garden of Lights is a holiday light experience at St. George Village Botanical Garden.",
+    "shortDescription": "Garden of Lights is a holiday light experience at St. George Village Botanical Garden.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-01",
+    "endsAt": "YYYY-12-31",
+    "coverImage": "/images/events/culture/emancipation-garden.jpg",
+    "gallery": [
+      "/images/events/culture/emancipation-garden.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/culture/emancipation-garden.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "holiday"
+    ]
+  },
+  {
+    "title": "Bush Cook Chef Cook Week",
+    "slug": "bush-cook-chef-cook-week",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "islandwide",
+    "category": "food",
+    "description": "Bush Cook Chef Cook Week highlights local cooking traditions, food culture, and culinary creativity.",
+    "shortDescription": "Bush Cook Chef Cook Week highlights local cooking traditions, food culture, and culinary creativity.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-10-05",
+    "endsAt": "YYYY-10-12",
+    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "gallery": [
+      "/images/events/carnival/food-fair.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "culture"
+    ]
+  },
+  {
+    "title": "Tart Wars",
+    "slug": "tart-wars",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "food",
+    "description": "Tart Wars is a food competition celebrating Virgin Islands tart-making traditions.",
+    "shortDescription": "Tart Wars is a food competition celebrating Virgin Islands tart-making traditions.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-11-09",
+    "endsAt": "YYYY-11-09",
+    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "gallery": [
+      "/images/events/carnival/food-fair.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "culture"
+    ]
+  },
+  {
+    "title": "Coral Reef Swim Race",
+    "slug": "coral-reef-swim-race",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "east-end",
+    "category": "sports",
+    "description": "Coral Reef Swim Race is an annual open-water swim event on St. Croix.",
+    "shortDescription": "Coral Reef Swim Race is an annual open-water swim event on St. Croix.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-11-02",
+    "endsAt": "YYYY-11-02",
+    "coverImage": "/images/events/sports/horse-racing.jpg",
+    "gallery": [
+      "/images/events/sports/horse-racing.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/horse-racing.jpg",
+    "tags": [
+      "event",
+      "sports",
+      "usvi",
+      "swim"
+    ]
+  },
+  {
+    "title": "St. Croix Triathlon",
+    "slug": "st-croix-triathlon",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "sports",
+    "description": "St. Croix Triathlon is a recurring endurance sports event on St. Croix.",
+    "shortDescription": "St. Croix Triathlon is a recurring endurance sports event on St. Croix.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-12-01",
+    "endsAt": "YYYY-12-01",
+    "coverImage": "/images/events/sports/horse-racing.jpg",
+    "gallery": [
+      "/images/events/sports/horse-racing.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/horse-racing.jpg",
+    "tags": [
+      "event",
+      "sports",
+      "usvi",
+      "triathlon"
+    ]
+  },
+  {
+    "title": "St. Patrick's Day Parade",
+    "slug": "st-patrick-s-day-parade",
+    "recurrence": "annual",
+    "islandCode": "st_croix",
+    "areaSlug": "christiansted",
+    "category": "culture",
+    "description": "The St. Patrick's Day Parade is an annual Christiansted parade and community celebration.",
+    "shortDescription": "The St. Patrick's Day Parade is an annual Christiansted parade and community celebration.",
+    "coordinates": {
+      "lat": 17.7466,
+      "lng": -64.7032
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-03-17",
+    "endsAt": "YYYY-03-17",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "parade"
+    ]
+  },
+  {
+    "title": "Blue Marlin Tournament",
+    "slug": "blue-marlin-tournament",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "american-yacht-harbor",
+    "category": "sports",
+    "description": "The Blue Marlin Tournament is a major sportfishing event connected to the Virgin Islands marine calendar.",
+    "shortDescription": "The Blue Marlin Tournament is a major sportfishing event connected to the Virgin Islands marine calendar.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-08-24",
+    "endsAt": "YYYY-08-28",
+    "coverImage": "/images/events/sports/rolex-regatta.jpg",
+    "gallery": [
+      "/images/events/sports/rolex-regatta.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/sports/rolex-regatta.jpg",
+    "tags": [
+      "event",
+      "sports",
+      "usvi",
+      "fishing"
+    ]
+  },
+  {
+    "title": "Blue Bay Jazz Festival",
+    "slug": "blue-bay-jazz-festival",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "music",
+    "description": "Blue Bay Jazz Festival is a music event celebrating jazz and live performance in the Virgin Islands.",
+    "shortDescription": "Blue Bay Jazz Festival is a music event celebrating jazz and live performance in the Virgin Islands.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/",
+    "source": "VI Navigator curated event source",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-10-18",
+    "endsAt": "YYYY-10-19",
+    "coverImage": "/images/events/music/jazz-sunset.jpg",
+    "gallery": [
+      "/images/events/music/jazz-sunset.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/music/jazz-sunset.jpg",
+    "tags": [
+      "event",
+      "music",
+      "usvi",
+      "jazz"
+    ]
+  }
+]

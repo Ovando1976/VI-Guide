@@ -1,0 +1,492 @@
+[
+  {
+    "title": "St. Thomas Carnival Carnival Village",
+    "slug": "st-thomas-carnival-carnival-village",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Carnival Village is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Carnival Village is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-20",
+    "endsAt": "YYYY-04-20",
+    "coverImage": "/images/events/carnival/carnival-village.jpg",
+    "gallery": [
+      "/images/events/carnival/carnival-village.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/carnival-village.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Food Fair",
+    "slug": "st-thomas-carnival-food-fair",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "food",
+    "description": "Food Fair is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Food Fair is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-21",
+    "endsAt": "YYYY-04-21",
+    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "gallery": [
+      "/images/events/carnival/food-fair.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival J'Ouvert",
+    "slug": "st-thomas-carnival-j-ouvert",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "J'Ouvert is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "J'Ouvert is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-22",
+    "endsAt": "YYYY-04-22",
+    "coverImage": "/images/events/carnival/jouvert.jpg",
+    "gallery": [
+      "/images/events/carnival/jouvert.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/jouvert.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Children's Parade",
+    "slug": "st-thomas-carnival-children-s-parade",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Children's Parade is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Children's Parade is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-23",
+    "endsAt": "YYYY-04-23",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Adult Parade",
+    "slug": "st-thomas-carnival-adult-parade",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Adult Parade is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Adult Parade is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-24",
+    "endsAt": "YYYY-04-24",
+    "coverImage": "/images/events/carnival/adult-parade.jpg",
+    "gallery": [
+      "/images/events/carnival/adult-parade.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/adult-parade.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Calypso Monarch",
+    "slug": "st-thomas-carnival-calypso-monarch",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "music",
+    "description": "Calypso Monarch is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Calypso Monarch is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-25",
+    "endsAt": "YYYY-04-25",
+    "coverImage": "/images/events/music/reggae-night.jpg",
+    "gallery": [
+      "/images/events/music/reggae-night.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/music/reggae-night.jpg",
+    "tags": [
+      "event",
+      "music",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Soca Monarch",
+    "slug": "st-thomas-carnival-soca-monarch",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "music",
+    "description": "Soca Monarch is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Soca Monarch is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-26",
+    "endsAt": "YYYY-04-26",
+    "coverImage": "/images/events/music/reggae-night.jpg",
+    "gallery": [
+      "/images/events/music/reggae-night.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/music/reggae-night.jpg",
+    "tags": [
+      "event",
+      "music",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Queen Show",
+    "slug": "st-thomas-carnival-queen-show",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Queen Show is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Queen Show is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-27",
+    "endsAt": "YYYY-04-27",
+    "coverImage": "/images/events/carnival/queen-show.jpg",
+    "gallery": [
+      "/images/events/carnival/queen-show.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/queen-show.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Prince and Princess Show",
+    "slug": "st-thomas-carnival-prince-and-princess-show",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Prince and Princess Show is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Prince and Princess Show is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-28",
+    "endsAt": "YYYY-04-28",
+    "coverImage": "/images/events/carnival/prince-and-princess-show.jpg",
+    "gallery": [
+      "/images/events/carnival/prince-and-princess-show.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/prince-and-princess-show.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Festival Princess",
+    "slug": "st-thomas-carnival-festival-princess",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "culture",
+    "description": "Festival Princess is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Festival Princess is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-29",
+    "endsAt": "YYYY-04-29",
+    "coverImage": "/images/events/carnival/festival-princess.jpg",
+    "gallery": [
+      "/images/events/carnival/festival-princess.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/festival-princess.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Panorama",
+    "slug": "st-thomas-carnival-panorama",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "music",
+    "description": "Panorama is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Panorama is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-30",
+    "endsAt": "YYYY-04-30",
+    "coverImage": "/images/events/carnival/panorama.jpg",
+    "gallery": [
+      "/images/events/carnival/panorama.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/panorama.jpg",
+    "tags": [
+      "event",
+      "music",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Village Nights",
+    "slug": "st-thomas-carnival-village-nights",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "nightlife",
+    "description": "Village Nights is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Village Nights is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-30",
+    "endsAt": "YYYY-04-30",
+    "coverImage": "/images/events/carnival/carnival-village.jpg",
+    "gallery": [
+      "/images/events/carnival/carnival-village.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/carnival-village.jpg",
+    "tags": [
+      "event",
+      "nightlife",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. Thomas Carnival Emancipation Garden Food Fair",
+    "slug": "st-thomas-carnival-emancipation-garden-food-fair",
+    "recurrence": "annual",
+    "islandCode": "st_thomas",
+    "areaSlug": "charlotte-amalie",
+    "category": "food",
+    "description": "Emancipation Garden Food Fair is part of the annual St. Thomas Carnival season.",
+    "shortDescription": "Emancipation Garden Food Fair is part of the annual St. Thomas Carnival season.",
+    "coordinates": {
+      "lat": 18.3419,
+      "lng": -64.9307
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-thomas-carnival/",
+    "source": "VisitUSVI / VI Carnival schedule",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-04-30",
+    "endsAt": "YYYY-04-30",
+    "coverImage": "/images/events/carnival/food-fair.jpg",
+    "gallery": [
+      "/images/events/carnival/food-fair.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/food-fair.jpg",
+    "tags": [
+      "event",
+      "food",
+      "usvi",
+      "festival",
+      "carnival",
+      "st thomas"
+    ]
+  },
+  {
+    "title": "St. John Celebration Fireworks",
+    "slug": "st-john-celebration-fireworks",
+    "recurrence": "annual",
+    "islandCode": "st_john",
+    "areaSlug": "cruz-bay",
+    "category": "culture",
+    "description": "Fireworks over Cruz Bay Harbor during St. John Celebration.",
+    "shortDescription": "Fireworks over Cruz Bay Harbor during St. John Celebration.",
+    "coordinates": {
+      "lat": 18.3304,
+      "lng": -64.7943
+    },
+    "address": "U.S. Virgin Islands",
+    "website": "https://www.visitusvi.com/events/st-john-celebration/",
+    "source": "VisitUSVI",
+    "sourceStatus": "projected_annual",
+    "verifiedAt": "2026-06-12",
+    "startsAt": "YYYY-07-04",
+    "endsAt": "YYYY-07-04",
+    "coverImage": "/images/events/carnival/parade-1.jpg",
+    "gallery": [
+      "/images/events/carnival/parade-1.jpg"
+    ],
+    "imageCredits": "VI Navigator local event image library",
+    "imageSource": "/images/events/carnival/parade-1.jpg",
+    "tags": [
+      "event",
+      "culture",
+      "usvi",
+      "fireworks",
+      "st john",
+      "festival"
+    ]
+  }
+]

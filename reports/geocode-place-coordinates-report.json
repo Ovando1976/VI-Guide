@@ -1,0 +1,4849 @@
+{
+  "generatedAt": "2026-06-11T19:38:23.684Z",
+  "updated": [
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "gladys-caf",
+      "title": "Gladys Café",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3409468,
+      "lng": -64.93272999999999,
+      "formattedAddress": "St. Thomas, 5600 Royal Dane Mall Suite 9, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "oceana-restaurant",
+      "title": "Oceana Restaurant",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3346389,
+      "lng": -64.94076790000001,
+      "formattedAddress": "St. Thomas, 8 Honduras, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "blue-eleven",
+      "title": "Blue Eleven",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3374901,
+      "lng": -64.9210507,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "old-stone-farmhouse",
+      "title": "Old Stone Farmhouse",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3588307,
+      "lng": -64.91126059999999,
+      "formattedAddress": "Mahogany Run Rd, Mandahl, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "fish-bar",
+      "title": "Fish Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3659739,
+      "lng": -64.9497726,
+      "formattedAddress": "15 Hull Bay Rd, Saint Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "duffys-love-shack",
+      "title": "Duffy's Love Shack",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3256893,
+      "lng": -64.85221109999999,
+      "formattedAddress": "6500 Red Hook Rd, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "pesce-italian",
+      "title": "Pesce Italian",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3250925,
+      "lng": -64.85280449999999,
+      "formattedAddress": "1 American Yacht Harbour, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "agave",
+      "title": "Agave",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3251848,
+      "lng": -64.85264699999999,
+      "formattedAddress": "Emile Milo Francis Memorial Dr, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sunset-grille-at-secret-harbour",
+      "title": "Sunset Grille at Secret Harbour",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3184941,
+      "lng": -64.8521707,
+      "formattedAddress": "6280 Estate Nazareth, Nazareth, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sun-and-sea-bar-and-grill",
+      "title": "Sun & Sea Bar & Grill",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3458573,
+      "lng": -64.8667403,
+      "formattedAddress": "84WM+7CW, Smith Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "three-palms",
+      "title": "Three Palms",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3249599,
+      "lng": -64.8525402,
+      "formattedAddress": "Saint Thomas, 6100 Red Hook Rd, Saint Thomas, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "mims-seaside-bistro",
+      "title": "Mims Seaside Bistro",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.31169,
+      "lng": -64.8979768,
+      "formattedAddress": "Watergate Villas, St. Thomas, Bolongo Bay Rd Bld -15, Bolongo, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "hook-line-and-sinker",
+      "title": "Hook Line & Sinker",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3369197,
+      "lng": -64.9404507,
+      "formattedAddress": "62 Honduras Frenchtown St Thomas VI, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "greengos-caribbean-cantina",
+      "title": "Greengo's Caribbean Cantina",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.341113,
+      "lng": -64.93181899999999,
+      "formattedAddress": "34-35 Dronningens Gade, Charlotte Amalie, St Thomas 00801, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "virgilios",
+      "title": "Virgilio's",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.341595,
+      "lng": -64.933565,
+      "formattedAddress": "5150 Dronningens Gade Suite 7, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "amalia-caf",
+      "title": "Amalia Café",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3408339,
+      "lng": -64.9331515,
+      "formattedAddress": "VI, St. Thomas, 5143 Palm Passage Downtown, Charlotte Amalie, St Thomas 00801, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "the-twisted-cork",
+      "title": "The Twisted Cork",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3370197,
+      "lng": -64.9419514,
+      "formattedAddress": "St. Thomas, 3525 Honduras, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sea-la-vie",
+      "title": "Sea La Vie",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3372959,
+      "lng": -64.9406035,
+      "formattedAddress": "Unnamed Road, 83P5+WQ6, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "petit-pump-room",
+      "title": "Petit Pump Room",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3387041,
+      "lng": -64.9386116,
+      "formattedAddress": "St. Thomas, 3400 Veterans Dr Ste 6, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "tickles-dockside-pub",
+      "title": "Tickles Dockside Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3345194,
+      "lng": -64.9522083,
+      "formattedAddress": "8168 Crown Bay Marina #308, St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sibs-on-the-mountain",
+      "title": "Sibs on the Mountain",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3517929,
+      "lng": -64.9333226,
+      "formattedAddress": "33-5 Estate Elizabeth, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "french-quarter-bistro",
+      "title": "French Quarter Bistro",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.337182,
+      "lng": -64.941642,
+      "formattedAddress": "Rue De Bethamny, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "the-shack-at-hull-bay",
+      "title": "The Shack at Hull Bay",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3692098,
+      "lng": -64.9514894,
+      "formattedAddress": "Hull Bay Beach, 9 1 Estate, northside, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "pangea-terra-table",
+      "title": "Pangea Terra Table",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3353302,
+      "lng": -64.8547826,
+      "formattedAddress": "6400 estate Smith Bay, Smith Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "smoke-up-fusion-bbq",
+      "title": "Smoke Up Fusion BBQ",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3332879,
+      "lng": -64.95324550000001,
+      "formattedAddress": "169 Crown Bay Marina, 168 Crown Bay Road, Marina, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "caribbean-fish-market",
+      "title": "Caribbean Fish Market",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3180849,
+      "lng": -64.8443254,
+      "formattedAddress": "6800 Nazareth Rd, Nazareth, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "iggies-beach-bar",
+      "title": "Iggies Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3129923,
+      "lng": -64.8968792,
+      "formattedAddress": "7150 Bolongo, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "lanai-at-limetree",
+      "title": "Lanai at Limetree",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.31736,
+      "lng": -64.913161,
+      "formattedAddress": "7511 Frenchman's Bay, 100 Saint Thomas, Frenchman's Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "prime-at-paradise-point",
+      "title": "Prime at Paradise Point",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.330187,
+      "lng": -64.9142877,
+      "formattedAddress": "9617 Paradise Point 2656, Estate Thomas, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "tap-and-still-red-hook",
+      "title": "Tap and Still Red Hook",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.325744,
+      "lng": -64.85167100000001,
+      "formattedAddress": "American Yacht Harbor, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "tap-and-still-havensight",
+      "title": "Tap and Still Havensight",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3335472,
+      "lng": -64.9198206,
+      "formattedAddress": "18°20'00.5\"N 64°55'11 Havensight Mall St Thomas, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "xo-bistro",
+      "title": "XO Bistro",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3258124,
+      "lng": -64.85242939999999,
+      "formattedAddress": "6501 RED HOOK PLAZA #1, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "melt-mexican-grill",
+      "title": "Melt Mexican Grill",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3251934,
+      "lng": -64.85267809999999,
+      "formattedAddress": "3 American Yacht Harbor, 6501 Redhook Plaza, Suite 201, St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "island-time-pub",
+      "title": "Island Time Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3250579,
+      "lng": -64.8521313,
+      "formattedAddress": "American Yacht Harbor, St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "pie-whole-pizza",
+      "title": "Pie Whole Pizza",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3373332,
+      "lng": -64.9407569,
+      "formattedAddress": "24a Honduras, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "the-easterly",
+      "title": "The Easterly",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3260676,
+      "lng": -64.8511735,
+      "formattedAddress": "6100 Red Hook Quarter, Suite GS, 1 Red Hook Rd, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sangrias-beachside-bistro",
+      "title": "Sangria's Beachside Bistro",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3179544,
+      "lng": -64.8436056,
+      "formattedAddress": "Elysian Beach Resort, 6800 Estate Nazareth, Nazareth, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "enkai-sushi-bar",
+      "title": "Enkai Sushi Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3367881,
+      "lng": -64.9212484,
+      "formattedAddress": "5328 Yacht Haven Grande, Building C, Suite 101, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "carigas-island-caf",
+      "title": "Carigas Island Café",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3214578,
+      "lng": -64.86755939999999,
+      "formattedAddress": "42, frydenhoj, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "brooks-bar",
+      "title": "Brooks Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3562598,
+      "lng": -64.9148715,
+      "formattedAddress": "6200 Magen's Bay Rd, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "udder-delights",
+      "title": "Udder Delights",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.36008,
+      "lng": -64.9147837,
+      "formattedAddress": "No. 3A Estate Lovenlund, St. Thomas, 6200 Magen's Bay Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "the-greenhouse-st-thomas",
+      "title": "The Greenhouse St. Thomas",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3403585,
+      "lng": -64.93331739999999,
+      "formattedAddress": "Water front harbor Charlotte Amalie, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "rum-island-pub",
+      "title": "Rum Island Pub",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3406053,
+      "lng": -64.9322352,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "the-smoking-rooster",
+      "title": "The Smoking Rooster",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3329804,
+      "lng": -64.9205447,
+      "formattedAddress": "83MH+5QW, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "northside-bistro",
+      "title": "Northside Bistro",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3656218,
+      "lng": -64.9495797,
+      "formattedAddress": "9382+65V, Hull Bay Rd, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "side-street-pub",
+      "title": "Side Street Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3413679,
+      "lng": -64.9326318,
+      "formattedAddress": "5130 Bjerge Gade, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "bumpas-breakfast",
+      "title": "Bumpa's Breakfast",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.340869,
+      "lng": -64.93128399999999,
+      "formattedAddress": "38-A Waterfront Hwy, Charlotte Amalie, St Thomas 00804, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "barefoot-buddha",
+      "title": "Barefoot Buddha",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3323633,
+      "lng": -64.9195369,
+      "formattedAddress": "83JJ+V58, Rte 30, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "cravin-crabs",
+      "title": "Cravin' Crabs",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3345189,
+      "lng": -64.91805149999999,
+      "formattedAddress": "Frenchman Bay Road Charlotte Amalie, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sugarcane-grille",
+      "title": "Sugarcane Grille",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3432159,
+      "lng": -64.9308586,
+      "formattedAddress": "Bunker Hill Hotel, 2307 Commandant Gade, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sudis-caribbean-bar-and-grille",
+      "title": "Sudi's Caribbean Bar & Grille",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3322127,
+      "lng": -64.8487899,
+      "formattedAddress": "Sapphire Village, Smith Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "shamas-specialties",
+      "title": "Shama's Specialties",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "petras-dushi-by-the-sea",
+      "title": "Petra's Dushi by the Sea",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3488253,
+      "lng": -64.8664294,
+      "formattedAddress": "Rte 388, Coki Point, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "hull-bay-hideaway",
+      "title": "Hull Bay Hideaway",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3695365,
+      "lng": -64.9512393,
+      "formattedAddress": "7725 Lower Hull Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "sapphire-beach-bar",
+      "title": "Sapphire Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3350841,
+      "lng": -64.8507882,
+      "formattedAddress": "16-1-10, Smith Bay Rd, Smith Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "margaritaville-restaurant",
+      "title": "Margaritaville Restaurant",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3466427,
+      "lng": -64.8681835,
+      "formattedAddress": "49-19 Estate, 84WJ+JQV, Frydendal, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "taphus-beer-house",
+      "title": "Taphus Beer House",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3418966,
+      "lng": -64.9324068,
+      "formattedAddress": "5120 Dronningens Gade Suite 7, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "el-gringos",
+      "title": "El Gringos",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "dog-house-pub",
+      "title": "Dog House Pub",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3317978,
+      "lng": -64.9197025,
+      "formattedAddress": "St. Thomas, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-thomas.json",
+      "slug": "rooftop-bar-charlotte-amalie",
+      "title": "Rooftop Bar Charlotte Amalie",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3418571,
+      "lng": -64.93106,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "morgans-mango",
+      "title": "Morgan's Mango",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3323212,
+      "lng": -64.7928731,
+      "formattedAddress": "St. John, 18 First Street, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "the-longboard",
+      "title": "The Longboard",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3310915,
+      "lng": -64.7941936,
+      "formattedAddress": "USVI, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "the-lime-inn",
+      "title": "The Lime Inn",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3303025,
+      "lng": -64.79467350000002,
+      "formattedAddress": "St. John, 2C Vester Gade, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "the-beach-bar",
+      "title": "The Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3304298,
+      "lng": -64.7960951,
+      "formattedAddress": "4A Wharfside Village, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "high-tide-bar-and-seafood-grill",
+      "title": "High Tide Bar & Seafood Grill",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3310171,
+      "lng": -64.79535899999999,
+      "formattedAddress": "4-B Wharfside Landing Cruz Bay, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "sun-dog-caf",
+      "title": "Sun Dog Café",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3325184,
+      "lng": -64.7924086,
+      "formattedAddress": "18 Mongoose Jct o2, St. John, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "extra-virgin-bistro",
+      "title": "Extra Virgin Bistro",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3307745,
+      "lng": -64.79347299999999,
+      "formattedAddress": "6D Cruz Bay, Saint John, VI 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "18-64-the-restaurant",
+      "title": "18°64° The Restaurant",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3325585,
+      "lng": -64.791992,
+      "formattedAddress": "503 Mongoose Jct, Cruz Bay, Saint John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "cruz-bay-landing",
+      "title": "Cruz Bay Landing",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3312499,
+      "lng": -64.7946736,
+      "formattedAddress": "6 D Cruz Bay Town, St John, VI 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "sam-and-jacks-deli",
+      "title": "Sam & Jack's Deli",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3277317,
+      "lng": -64.79109609999999,
+      "formattedAddress": "5000 Estate Enighed 3rd floor, Marketplace, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "woodys-seafood-saloon",
+      "title": "Woody's Seafood Saloon",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.330831,
+      "lng": -64.7941592,
+      "formattedAddress": "St. John, Prince St, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "la-tapa",
+      "title": "La Tapa",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3307965,
+      "lng": -64.7955766,
+      "formattedAddress": "Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "dave-and-jerrys-steakhouse",
+      "title": "Dave & Jerry's Steakhouse",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3303675,
+      "lng": -64.7948854,
+      "formattedAddress": "74-2 Cruz Bay Town Cruz Bay, Cruz Bay, Saint John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "lovango-rum-bar",
+      "title": "Lovango Rum Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.330231,
+      "lng": -64.79658309999999,
+      "formattedAddress": "St John 1 Bay Street Cruz Bay, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "skinny-legs",
+      "title": "Skinny Legs",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3475299,
+      "lng": -64.71125409999999,
+      "formattedAddress": "87XQ+2G3, Connections East Shopping Center, 9901 Estate Emmaus, Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "aqua-bistro",
+      "title": "Aqua Bistro",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3426687,
+      "lng": -64.714922,
+      "formattedAddress": "87VP+328, Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "miss-lucys",
+      "title": "Miss Lucy's",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.323303,
+      "lng": -64.7002424,
+      "formattedAddress": "Route 107, Friis Bay, U.S., St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "rhumb-lines",
+      "title": "Rhumb Lines",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3482295,
+      "lng": -64.71252299999999,
+      "formattedAddress": "3 Estate Emmaus, Coral Bay, Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "north-shore-deli",
+      "title": "North Shore Deli",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.332631,
+      "lng": -64.7920133,
+      "formattedAddress": "St. John, 507 Mongoose Jct, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "the-terrace",
+      "title": "The Terrace",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3301543,
+      "lng": -64.7962757,
+      "formattedAddress": "3 FA Cruz Bay Quarter Cruz Bay, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "hillside-terrace",
+      "title": "Hillside Terrace",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.32955,
+      "lng": -64.79340069999999,
+      "formattedAddress": "St John, St. John, Frank St, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "mooies-bar",
+      "title": "Mooie's Bar",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "stj-speakeasy",
+      "title": "STJ Speakeasy",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3316893,
+      "lng": -64.7931144,
+      "formattedAddress": "Estate Enighed, Parcel 18-38 Cruz Bay Rd, 1 Cruz Bay QRT, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "st-john-brewers-tap-room",
+      "title": "St. John Brewers Tap Room",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3326381,
+      "lng": -64.7921305,
+      "formattedAddress": "St. John, Mongoose Jct 2nd Floor, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "pizza-pi",
+      "title": "Pizza Pi",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3185615,
+      "lng": -64.8665709,
+      "formattedAddress": "Compass Point Marina, St Thomas 00801, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "uncle-joes-bbq",
+      "title": "Uncle Joe's BBQ",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3315874,
+      "lng": -64.7940554,
+      "formattedAddress": "86J4+J9P St John, Henry Samuel St, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "our-market-smoothies",
+      "title": "Our Market Smoothies",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3313781,
+      "lng": -64.79400509999999,
+      "formattedAddress": "king st, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "shambles",
+      "title": "Shambles",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3410633,
+      "lng": -64.7725378,
+      "formattedAddress": "Route 10 St. John, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "surf-club-cantina",
+      "title": "Surf Club Cantina",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3429555,
+      "lng": -64.7150338,
+      "formattedAddress": "ST. JOHN, 13A Cottage Ln, Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "caf-roma",
+      "title": "Café Roma",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3311792,
+      "lng": -64.79411449999999,
+      "formattedAddress": "1-C, St John, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "banana-deck",
+      "title": "Banana Deck",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3302811,
+      "lng": -64.7960038,
+      "formattedAddress": "Bay St, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "420-to-center",
+      "title": "420 to Center",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3303693,
+      "lng": -64.7952742,
+      "formattedAddress": "St John, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "caneel-beach-bar",
+      "title": "Caneel Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3427149,
+      "lng": -64.78669,
+      "formattedAddress": "00830, Caneel Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "windmill-bar",
+      "title": "Windmill Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3431682,
+      "lng": -64.77246509999999,
+      "formattedAddress": "17 A, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "restaurants-st-john.json",
+      "slug": "johnny-lime",
+      "title": "Johnny Lime",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3431857,
+      "lng": -64.7154354,
+      "formattedAddress": "Carolina, Coral Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "ama-at-cane-bay",
+      "title": "Ama at Cane Bay",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7765349,
+      "lng": -64.80872819999999,
+      "formattedAddress": "112 C of Estate Cane Bay, N Shr Rd, La Vallee, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "savant",
+      "title": "Savant",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7456637,
+      "lng": -64.7014808,
+      "formattedAddress": "4C Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "rhythms-at-rainbow-beach",
+      "title": "Rhythms at Rainbow Beach",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7294173,
+      "lng": -64.8877356,
+      "formattedAddress": "Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "the-mill-boardwalk-bar-and-pizza",
+      "title": "The Mill Boardwalk Bar & Pizza",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472226,
+      "lng": -64.7045562,
+      "formattedAddress": "1 Strand Street, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "the-landing-beach-bar",
+      "title": "The Landing Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.772364,
+      "lng": -64.810729,
+      "formattedAddress": "110c Cane Bay, Christiansted, VI 00851, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "bon-manjer",
+      "title": "Bon Manjer",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7295667,
+      "lng": -64.74242319999999,
+      "formattedAddress": "4500 Queen Mary Hwy Ste 4, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "harveys",
+      "title": "Harvey's",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7142045,
+      "lng": -64.7826183,
+      "formattedAddress": "99 Ramirez St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "beach-side-caf",
+      "title": "Beach Side Café",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7015014,
+      "lng": -64.88582749999999,
+      "formattedAddress": "Veterans Shore Drive at Sand Castle on the Beach Frederiksted VI, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "ziggys-island-market",
+      "title": "Ziggy's Island Market",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.756253,
+      "lng": -64.6319622,
+      "formattedAddress": "5088 Estate, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "la-reine-chicken-shack",
+      "title": "La Reine Chicken Shack",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7304757,
+      "lng": -64.7747868,
+      "formattedAddress": "24-I, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "duggans-reef",
+      "title": "Duggan's Reef",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7562327,
+      "lng": -64.608958,
+      "formattedAddress": "5A Teague Bay Christiansted, Teagues Bay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "nates-boathouse",
+      "title": "Nate's Boathouse",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.746948,
+      "lng": -64.7062664,
+      "formattedAddress": "1 King Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "shupes-on-the-boardwalk",
+      "title": "Shupe's on the Boardwalk",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472127,
+      "lng": -64.704876,
+      "formattedAddress": "1102 Strand Street Suite 39A, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "too-chez",
+      "title": "Too Chez",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7449311,
+      "lng": -64.70451419999999,
+      "formattedAddress": "51ABC, Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "the-terrace-restaurant",
+      "title": "The Terrace Restaurant",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7549202,
+      "lng": -64.6815072,
+      "formattedAddress": "5007, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "harbour-prime-steak-and-seafood",
+      "title": "Harbour Prime Steak and Seafood",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "no-bones-caf",
+      "title": "No Bones Café",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7468733,
+      "lng": -64.6975867,
+      "formattedAddress": "Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "carolines-breakfast",
+      "title": "Caroline's Breakfast",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7471154,
+      "lng": -64.70338559999999,
+      "formattedAddress": "59 King St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "brew-stx",
+      "title": "Brew STX",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7471707,
+      "lng": -64.7043663,
+      "formattedAddress": "55 King's Alley Walk, Strand Ln, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "pollys-at-the-pier",
+      "title": "Polly's at the Pier",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7137817,
+      "lng": -64.8834691,
+      "formattedAddress": "3A Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "six-nine-restaurant-and-bar",
+      "title": "Six Nine Restaurant & Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7139808,
+      "lng": -64.88319419999999,
+      "formattedAddress": "69a King St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "tap-deck-bar-and-billiards",
+      "title": "Tap Deck Bar & Billiards",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.714156,
+      "lng": -64.88356399999999,
+      "formattedAddress": "1D Strand Street, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "flyers-bar-and-grill",
+      "title": "Flyers Bar & Grill",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.713099,
+      "lng": -64.8833284,
+      "formattedAddress": "7 Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "louie-and-nachos-beach-bar",
+      "title": "Louie & Nacho's Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7087716,
+      "lng": -64.8834364,
+      "formattedAddress": "St Croix, 37 Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "turtles-deli",
+      "title": "Turtle's Deli",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7089181,
+      "lng": -64.8831843,
+      "formattedAddress": "St. Croix, 37 Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "ci-bo-n",
+      "title": "Ci Bo Né",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7136403,
+      "lng": -64.8828774,
+      "formattedAddress": "P478+FR5, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "40-strand-eatery",
+      "title": "40 Strand Eatery",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7467592,
+      "lng": -64.7042233,
+      "formattedAddress": "40 Strand Street, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "balter",
+      "title": "balter",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7452789,
+      "lng": -64.70368719999999,
+      "formattedAddress": "39 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "the-bombay-club",
+      "title": "The Bombay Club",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7454769,
+      "lng": -64.7044903,
+      "formattedAddress": "5A King St, Christiansted, VI 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "rum-runners",
+      "title": "Rum Runners",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472449,
+      "lng": -64.7053105,
+      "formattedAddress": "1044 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "hamiltons",
+      "title": "Hamilton's",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7452625,
+      "lng": -64.7037088,
+      "formattedAddress": "39 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "toast-diner",
+      "title": "Toast Diner",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.746951,
+      "lng": -64.7047037,
+      "formattedAddress": "1120, Pan Am Pavillion, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "marias-cantina",
+      "title": "Maria's Cantina",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7458913,
+      "lng": -64.69606910000002,
+      "formattedAddress": "Arawak Building, 5032 Anchor Way Suite 1, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "singhs-fast-food",
+      "title": "Singh's Fast Food",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7435155,
+      "lng": -64.70713909999999,
+      "formattedAddress": "United States, 23-B King St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "kendricks",
+      "title": "Kendricks",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "cast-iron-pot",
+      "title": "Cast Iron Pot",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7540596,
+      "lng": -64.7299895,
+      "formattedAddress": "10 A, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "el-sol-bar-and-restaurant",
+      "title": "El Sol Bar and Restaurant",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7246061,
+      "lng": -64.7409997,
+      "formattedAddress": "226 Peter's Rest Road, Christiansted, St Croix 00823, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "nauti-bar-and-grille",
+      "title": "Nauti Bar and Grille",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "off-the-wall",
+      "title": "Off the Wall",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7745625,
+      "lng": -64.8095625,
+      "formattedAddress": "Q5FR+R5, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "spratnet-beach-bar",
+      "title": "Spratnet Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7720446,
+      "lng": -64.8114183,
+      "formattedAddress": "Cane Bay Rd, Frederiksted, St Croix 00822, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "rowdy-joes",
+      "title": "Rowdy Joe's",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7768067,
+      "lng": -64.7989978,
+      "formattedAddress": "71, A Estate, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "leatherback-brewing-company",
+      "title": "Leatherback Brewing Company",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7063154,
+      "lng": -64.8019942,
+      "formattedAddress": "9902 Industrial Park, Kingshill, St Croix 00850, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "the-fred-beach-bar",
+      "title": "The Fred Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7092609,
+      "lng": -64.883099,
+      "formattedAddress": "605 Strand St, Frederiksted, VI 00840, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "goat-soup-and-whiskey",
+      "title": "Goat Soup and Whiskey",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7579685,
+      "lng": -64.6363118,
+      "formattedAddress": "5000 Estate Coakley Bay, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "sion-farm-distillery",
+      "title": "Sion Farm Distillery",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472702,
+      "lng": -64.70464,
+      "formattedAddress": "40 Strand Street, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "deep-end-bar",
+      "title": "Deep End Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7606342,
+      "lng": -64.6700905,
+      "formattedAddress": "5001 Tamarind Reef Christiansted St. Croix, Southgate Farm, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "cheeseburgers-in-americas-paradise",
+      "title": "Cheeseburgers in America's Paradise",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7554252,
+      "lng": -64.662201,
+      "formattedAddress": "5067, Southgate Gdns, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "tlc-kitchen",
+      "title": "TLC Kitchen",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.746279,
+      "lng": -64.7040638,
+      "formattedAddress": "53 King St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "blues-backyard-bbq",
+      "title": "Blues' Backyard BBQ",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7580016,
+      "lng": -64.7377726,
+      "formattedAddress": "32K Estate La Grande Princesse, Rte 75, La Grande Princesse, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "twin-city-coffee-house",
+      "title": "Twin City Coffee House",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7460194,
+      "lng": -64.70283789999999,
+      "formattedAddress": "2101 Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "common-cents-pub",
+      "title": "Common Cents Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7455726,
+      "lng": -64.7035386,
+      "formattedAddress": "2110 Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "salt-great-pond",
+      "title": "Salt Great Pond",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7280389,
+      "lng": -64.6680456,
+      "formattedAddress": "Lot 6, Petronella Rd, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "paradise-pizza",
+      "title": "Paradise Pizza",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7531088,
+      "lng": -64.7264235,
+      "formattedAddress": "Q73F+6CW, La Grande Princesse, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "st-croix-cellars",
+      "title": "St. Croix Cellars",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7461551,
+      "lng": -64.7043736,
+      "formattedAddress": "Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "cafe-fresco",
+      "title": "Cafe Fresco",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7458115,
+      "lng": -64.6950035,
+      "formattedAddress": "5007 Starboard St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "taco-shack",
+      "title": "Taco Shack",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "kims-restaurant",
+      "title": "Kim's Restaurant",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7449161,
+      "lng": -64.70562869999999,
+      "formattedAddress": "45 King St Christiansted, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "chicken-shack",
+      "title": "Chicken Shack",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7304757,
+      "lng": -64.7747868,
+      "formattedAddress": "24-I, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "eden-south",
+      "title": "Eden South",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7458337,
+      "lng": -64.7030418,
+      "formattedAddress": "3 Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "seaside-market-deli",
+      "title": "Seaside Market Deli",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7451578,
+      "lng": -64.6940208,
+      "formattedAddress": "2001, Mt Welcome Rd, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-st-croix.json",
+      "slug": "caf-christine",
+      "title": "Café Christine",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7452958,
+      "lng": -64.70307989999999,
+      "formattedAddress": "6 Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "restaurants-water-island.json",
+      "slug": "dinghys-beach-bar",
+      "title": "Dinghy's Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3160514,
+      "lng": -64.9565819,
+      "formattedAddress": "Honeymoon Beach Lane, Water Island, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-water-island.json",
+      "slug": "heidis-honeymoon-grill",
+      "title": "Heidi's Honeymoon Grill",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.319763,
+      "lng": -64.95523709999999,
+      "formattedAddress": "829V+WW2, Water Island, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "restaurants-water-island.json",
+      "slug": "water-island-beach-bar",
+      "title": "Water Island Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3258514,
+      "lng": -64.94450429999999,
+      "formattedAddress": "Water Island, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "coral-world-ocean-park",
+      "title": "Coral World Ocean Park",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.349389,
+      "lng": -64.86359999999999,
+      "formattedAddress": "6450 Coki Point, St Thomas, Virgin Islands 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "paradise-point-skyride",
+      "title": "Paradise Point Skyride",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3338809,
+      "lng": -64.9186206,
+      "formattedAddress": "9617 Estate Thomas Charlotte Amalie, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "fort-christian",
+      "title": "Fort Christian",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3407892,
+      "lng": -64.92958949999999,
+      "formattedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "mountain-top",
+      "title": "Mountain Top",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.355969,
+      "lng": -64.9470118,
+      "formattedAddress": "Mountain Top, Saint Peter, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "drakes-seat",
+      "title": "Drake's Seat",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.35283,
+      "lng": -64.9271286,
+      "formattedAddress": "933F+44Q, Rte 37, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "99-steps",
+      "title": "99 Steps",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3424668,
+      "lng": -64.9301286,
+      "formattedAddress": "St Thomas, Charlotte Amalie, St Thomas 00801, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "blackbeards-castle",
+      "title": "Blackbeard's Castle",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3438889,
+      "lng": -64.9297222,
+      "formattedAddress": "1001 Blackbeard's Hl, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "yacht-haven-grande",
+      "title": "Yacht Haven Grande",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3364134,
+      "lng": -64.9201485,
+      "formattedAddress": "5304 Yacht Haven Grande, Suite 100, St. Thomas, US Virgin Islands 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "charlotte-amalie-historic-district",
+      "title": "Charlotte Amalie Historic District",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "emancipation-garden",
+      "title": "Emancipation Garden",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3411557,
+      "lng": -64.93034349999999,
+      "formattedAddress": "83R9+FV7 Emancipation Garden, ST THOMAS, St Thomas 00803, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "vendors-plaza",
+      "title": "Vendor's Plaza",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3406528,
+      "lng": -64.93040119999999,
+      "formattedAddress": "St. Thomas, Veterans Dr, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "st-thomas-synagogue",
+      "title": "St. Thomas Synagogue",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3426338,
+      "lng": -64.93267759999999,
+      "formattedAddress": "St Thomas, 2116 Krystal St, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "seven-arches-museum",
+      "title": "Seven Arches Museum",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3427694,
+      "lng": -64.9285882,
+      "formattedAddress": "St Thomas, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "bluebeards-castle",
+      "title": "Bluebeard's Castle",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3405094,
+      "lng": -64.92375179999999,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "magens-bay-arboretum",
+      "title": "Magens Bay Arboretum",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3589684,
+      "lng": -64.9238297,
+      "formattedAddress": "935G+HFM, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "vi-childrens-museum",
+      "title": "VI Children's Museum",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3335847,
+      "lng": -64.9187955,
+      "formattedAddress": "Buccaneer Mall, Rte 30, St. Thomas, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "phantasea-tropical-botanical-garden",
+      "title": "Phantasea Tropical Botanical Garden",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3542565,
+      "lng": -64.9389492,
+      "formattedAddress": "7D-5, ST THOMAS, VI 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "red-hook-marina",
+      "title": "Red Hook Marina",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3267563,
+      "lng": -64.85047550000002,
+      "formattedAddress": "Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "sapphire-marina",
+      "title": "Sapphire Marina",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3354972,
+      "lng": -64.85099819999999,
+      "formattedAddress": "Rte. 6 Smith Bay Smith Bay Road, Smith Bay, VI 00801, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "secret-harbour-marina",
+      "title": "Secret Harbour Marina",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3184595,
+      "lng": -64.8522129,
+      "formattedAddress": "6280 Estate Nazareth, Nazareth, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "coki-dive-center",
+      "title": "Coki Dive Center",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3496602,
+      "lng": -64.86554199999999,
+      "formattedAddress": "6280 Estate Nazareth, Coki Point, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "havensight-mall",
+      "title": "Havensight Mall",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3324511,
+      "lng": -64.9204285,
+      "formattedAddress": "83JH+XRP, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "crown-bay-center",
+      "title": "Crown Bay Center",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.332271,
+      "lng": -64.9549498,
+      "formattedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "water-island-fort-segarra",
+      "title": "Water Island Fort Segarra",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3077328,
+      "lng": -64.95696339999999,
+      "formattedAddress": "Water Island, 825V+36V, Charlotte Amalie West, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "honeymoon-beach-water-island",
+      "title": "Honeymoon Beach Water Island",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3168875,
+      "lng": -64.9563428,
+      "formattedAddress": "828V+QF3, Main Rd, Water Island, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "cruz-bay-visitor-center",
+      "title": "Cruz Bay Visitor Center",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3327512,
+      "lng": -64.7937969,
+      "formattedAddress": "86M4+4F4, Virgin Island National Park, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "virgin-islands-national-park",
+      "title": "Virgin Islands National Park",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3435164,
+      "lng": -64.7501256,
+      "formattedAddress": "Virgin Islands National Park, St John, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "annaberg-sugar-plantation",
+      "title": "Annaberg Sugar Plantation",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3627174,
+      "lng": -64.72973,
+      "formattedAddress": "977C+34J, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "cinnamon-bay-archaeology-museum",
+      "title": "Cinnamon Bay Archaeology Museum",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "reef-bay-trail",
+      "title": "Reef Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3352834,
+      "lng": -64.7397429,
+      "formattedAddress": "Reef Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "petroglyphs-trail",
+      "title": "Petroglyphs Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3309455,
+      "lng": -64.7431316,
+      "formattedAddress": "Petroglyph Trl, Reef Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "peace-hill-windmill",
+      "title": "Peace Hill Windmill",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.351433,
+      "lng": -64.77737379999999,
+      "formattedAddress": "00830,, Dennis Bay/ Hawknest, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "catherineberg-ruins",
+      "title": "Catherineberg Ruins",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3443018,
+      "lng": -64.76100559999999,
+      "formattedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "caneel-bay-overlook",
+      "title": "Caneel Bay Overlook",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3413162,
+      "lng": -64.7840366,
+      "formattedAddress": "Caneel Bay, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "trunk-bay-overlook",
+      "title": "Trunk Bay Overlook",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3526952,
+      "lng": -64.7685432,
+      "formattedAddress": "Trunk Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "maho-bay-overlook",
+      "title": "Maho Bay Overlook",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3570204,
+      "lng": -64.7451514,
+      "formattedAddress": "9743+RW5 Maho Bay, Rte 20, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "coral-bay-lookout",
+      "title": "Coral Bay Lookout",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3480813,
+      "lng": -64.7141671,
+      "formattedAddress": "Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "salt-pond-trail",
+      "title": "Salt Pond Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3099374,
+      "lng": -64.7066103,
+      "formattedAddress": "Saltpond Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "ram-head-trail",
+      "title": "Ram Head Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3040769,
+      "lng": -64.7035344,
+      "formattedAddress": "Ram Head Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "bordeaux-mountain",
+      "title": "Bordeaux Mountain",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3275399,
+      "lng": -64.723894,
+      "formattedAddress": "Bordeaux Mountain Trail, Lameshur Complex, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "johnny-horn-trail",
+      "title": "Johnny Horn Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3571574,
+      "lng": -64.7134978,
+      "formattedAddress": "Johnny Horn Trl, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "leinster-bay-trail",
+      "title": "Leinster Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3631894,
+      "lng": -64.7249799,
+      "formattedAddress": "Leinster Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "christiansted-national-historic-site",
+      "title": "Christiansted National Historic Site",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7467366,
+      "lng": -64.7023078,
+      "formattedAddress": "1 Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "fort-christiansvaern",
+      "title": "Fort Christiansvaern",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "steeple-building",
+      "title": "Steeple Building",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "scale-house",
+      "title": "Scale House",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469796,
+      "lng": -64.70302520000001,
+      "formattedAddress": "P7WW+QQX, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "old-danish-customs-house",
+      "title": "Old Danish Customs House",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7467647,
+      "lng": -64.7025147,
+      "formattedAddress": "P7WW+PX5, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "government-house-christiansted",
+      "title": "Government House Christiansted",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7463177,
+      "lng": -64.70352129999999,
+      "formattedAddress": "1105 King St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "buck-island-reef-national-monument",
+      "title": "Buck Island Reef National Monument",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7870946,
+      "lng": -64.62061059999999,
+      "formattedAddress": "Buck Island, St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "point-udall",
+      "title": "Point Udall",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7559417,
+      "lng": -64.5672306,
+      "formattedAddress": "QC4M+94C, Rte 82, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "sandy-point-national-wildlife-refuge",
+      "title": "Sandy Point National Wildlife Refuge",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.6856009,
+      "lng": -64.8915351,
+      "formattedAddress": "Sandy Point National Wildlife Refuge, 71 Route 63, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "estate-whim-plantation-museum",
+      "title": "Estate Whim Plantation Museum",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "st-george-village-botanical-garden",
+      "title": "St. George Village Botanical Garden",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7177571,
+      "lng": -64.83037329999999,
+      "formattedAddress": "127 George Rd, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "salt-river-bay-national-historical-park",
+      "title": "Salt River Bay National Historical Park",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7750581,
+      "lng": -64.75592619999999,
+      "formattedAddress": "Salt River Bay National Historical Park and Ecological Preserve, 2100 Church St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "cruzan-rum-distillery",
+      "title": "Cruzan Rum Distillery",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7047479,
+      "lng": -64.82595979999999,
+      "formattedAddress": "3A Diamond, Frederiksted, Diamond, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "captain-morgan-visitor-center",
+      "title": "Captain Morgan Visitor Center",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7144044,
+      "lng": -64.7759707,
+      "formattedAddress": "1 Est, Annaberg and Shannon Grove, Annaberg And Shannon Grove, St Croix 00850, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "frederiksted-pier",
+      "title": "Frederiksted Pier",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7140437,
+      "lng": -64.88433119999999,
+      "formattedAddress": "St. Croix, Frederiksted, St Croix 00841, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "fort-frederik",
+      "title": "Fort Frederik",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7152523,
+      "lng": -64.8829241,
+      "formattedAddress": "Fort Frederick, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "dorsch-beach",
+      "title": "Dorsch Beach",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7026089,
+      "lng": -64.8850942,
+      "formattedAddress": "Dorsch Beach, 144 Sugarhill Rd, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "cane-bay-wall",
+      "title": "Cane Bay Wall",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.771639,
+      "lng": -64.81014499999999,
+      "formattedAddress": "Cane Bay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "jack-and-isaac-bay-preserve",
+      "title": "Jack and Isaac Bay Preserve",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7551875,
+      "lng": -64.5695625,
+      "formattedAddress": "Jack and Isaac Bay Preserve, St. Croix, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "gallows-bay",
+      "title": "Gallows Bay",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7477477,
+      "lng": -64.7003138,
+      "formattedAddress": "Gallows Bay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "protestant-cay",
+      "title": "Protestant Cay",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7496773,
+      "lng": -64.7027058,
+      "formattedAddress": "Protestant Cay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "christiansted-boardwalk",
+      "title": "Christiansted Boardwalk",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472506,
+      "lng": -64.7051504,
+      "formattedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "frederiksted-waterfront",
+      "title": "Frederiksted Waterfront",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7122979,
+      "lng": -64.8818053,
+      "formattedAddress": "Frederiksted, St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "carambola-tide-pools",
+      "title": "Carambola Tide Pools",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7637898,
+      "lng": -64.8454892,
+      "formattedAddress": "Q573+GR6, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "mount-eagle",
+      "title": "Mount Eagle",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7608061,
+      "lng": -64.8115341,
+      "formattedAddress": "Mt Eagle, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "hams-bluff-lighthouse",
+      "title": "Ham's Bluff Lighthouse",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7691667,
+      "lng": -64.8708611,
+      "formattedAddress": "Northwest St Croix 00840, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-69",
+      "title": "USVI Attraction 69",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-70",
+      "title": "USVI Attraction 70",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-71",
+      "title": "USVI Attraction 71",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-72",
+      "title": "USVI Attraction 72",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-73",
+      "title": "USVI Attraction 73",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-74",
+      "title": "USVI Attraction 74",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-75",
+      "title": "USVI Attraction 75",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-76",
+      "title": "USVI Attraction 76",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-77",
+      "title": "USVI Attraction 77",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-78",
+      "title": "USVI Attraction 78",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-79",
+      "title": "USVI Attraction 79",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-80",
+      "title": "USVI Attraction 80",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-81",
+      "title": "USVI Attraction 81",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-82",
+      "title": "USVI Attraction 82",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-83",
+      "title": "USVI Attraction 83",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-84",
+      "title": "USVI Attraction 84",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-85",
+      "title": "USVI Attraction 85",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-86",
+      "title": "USVI Attraction 86",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-87",
+      "title": "USVI Attraction 87",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-88",
+      "title": "USVI Attraction 88",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-89",
+      "title": "USVI Attraction 89",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-90",
+      "title": "USVI Attraction 90",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-91",
+      "title": "USVI Attraction 91",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-92",
+      "title": "USVI Attraction 92",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-93",
+      "title": "USVI Attraction 93",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-94",
+      "title": "USVI Attraction 94",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-95",
+      "title": "USVI Attraction 95",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-96",
+      "title": "USVI Attraction 96",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-97",
+      "title": "USVI Attraction 97",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-98",
+      "title": "USVI Attraction 98",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-99",
+      "title": "USVI Attraction 99",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "attractions.json",
+      "slug": "usvi-attraction-100",
+      "title": "USVI Attraction 100",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "cyril-e-king-airport",
+      "title": "Cyril E. King Airport",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3355669,
+      "lng": -64.97088409999999,
+      "formattedAddress": "Cyril E. King Airport, St Thomas, Airport Rd, Charlotte Amalie West, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "havensight-cruise-port",
+      "title": "Havensight Cruise Port",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.331695,
+      "lng": -64.9241385,
+      "formattedAddress": "83JG+M8H, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "crown-bay-cruise-port",
+      "title": "Crown Bay Cruise Port",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.332271,
+      "lng": -64.9549498,
+      "formattedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "red-hook-ferry-terminal",
+      "title": "Red Hook Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3267563,
+      "lng": -64.85047550000002,
+      "formattedAddress": "Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "charlotte-amalie-ferry-terminal",
+      "title": "Charlotte Amalie Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3418571,
+      "lng": -64.93106,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "cruz-bay-ferry-dock",
+      "title": "Cruz Bay Ferry Dock",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "cruz-bay-taxi-stand",
+      "title": "Cruz Bay Taxi Stand",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "coral-bay-taxi-stand",
+      "title": "Coral Bay Taxi Stand",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3480813,
+      "lng": -64.7141671,
+      "formattedAddress": "Coral Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "henry-e-rohlsen-airport",
+      "title": "Henry E. Rohlsen Airport",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "gallows-bay-ferry-terminal",
+      "title": "Gallows Bay Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7477477,
+      "lng": -64.7003138,
+      "formattedAddress": "Gallows Bay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "christiansted-seaplane-terminal",
+      "title": "Christiansted Seaplane Terminal",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7471149,
+      "lng": -64.7077065,
+      "formattedAddress": "Christiansted Harbor Seaplane Base (SSB), Christiansted, St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "frederiksted-pier",
+      "title": "Frederiksted Pier",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7140437,
+      "lng": -64.88433119999999,
+      "formattedAddress": "St. Croix, Frederiksted, St Croix 00841, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "water-island-ferry-terminal",
+      "title": "Water Island Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "crown-bay-marina",
+      "title": "Crown Bay Marina",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "yacht-haven-grande-marina",
+      "title": "Yacht Haven Grande Marina",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7542494,
+      "lng": -64.5990283,
+      "formattedAddress": "2c, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "american-yacht-harbor",
+      "title": "American Yacht Harbor",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3250626,
+      "lng": -64.8521434,
+      "formattedAddress": "84GX+24H, Smith Bay Rd, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "sapphire-marina",
+      "title": "Sapphire Marina",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "compass-point-marina",
+      "title": "Compass Point Marina",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "transportation.json",
+      "slug": "christiansted-boardwalk-ferry-dock",
+      "title": "Christiansted Boardwalk Ferry Dock",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472506,
+      "lng": -64.7051504,
+      "formattedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "red-hook-ferry-terminal",
+      "title": "Red Hook Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3267563,
+      "lng": -64.85047550000002,
+      "formattedAddress": "Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "charlotte-amalie-ferry-terminal",
+      "title": "Charlotte Amalie Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3418571,
+      "lng": -64.93106,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "cruz-bay-ferry-dock",
+      "title": "Cruz Bay Ferry Dock",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "gallows-bay-ferry-terminal",
+      "title": "Gallows Bay Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7477477,
+      "lng": -64.7003138,
+      "formattedAddress": "Gallows Bay, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "water-island-ferry-terminal",
+      "title": "Water Island Ferry Terminal",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "ferry-terminals.json",
+      "slug": "christiansted-boardwalk-ferry-dock",
+      "title": "Christiansted Boardwalk Ferry Dock",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472506,
+      "lng": -64.7051504,
+      "formattedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "cruise-ports.json",
+      "slug": "havensight-cruise-port",
+      "title": "Havensight Cruise Port",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.331695,
+      "lng": -64.9241385,
+      "formattedAddress": "83JG+M8H, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "cruise-ports.json",
+      "slug": "crown-bay-cruise-port",
+      "title": "Crown Bay Cruise Port",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.332271,
+      "lng": -64.9549498,
+      "formattedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "cruise-ports.json",
+      "slug": "frederiksted-cruise-pier",
+      "title": "Frederiksted Cruise Pier",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7122979,
+      "lng": -64.8818053,
+      "formattedAddress": "Frederiksted, St Croix, USVI"
+    },
+    {
+      "fileName": "cruise-ports.json",
+      "slug": "christiansted-harbor-tender-dock",
+      "title": "Christiansted Harbor Tender Dock",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.75050597080127,
+      "lng": -64.70438844888334,
+      "formattedAddress": "Christiansted Harbor, Virgin Islands, St Croix, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "downtown-charlotte-amalie",
+      "title": "Downtown Charlotte Amalie",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3418571,
+      "lng": -64.93106,
+      "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "havensight-mall",
+      "title": "Havensight Mall",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3324511,
+      "lng": -64.9204285,
+      "formattedAddress": "83JH+XRP, Charlotte Amalie East, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "yacht-haven-grande",
+      "title": "Yacht Haven Grande",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3364134,
+      "lng": -64.9201485,
+      "formattedAddress": "5304 Yacht Haven Grande, Suite 100, St. Thomas, US Virgin Islands 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "crown-bay-center",
+      "title": "Crown Bay Center",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.332271,
+      "lng": -64.9549498,
+      "formattedAddress": "161-A Subbase, Charlotte Amalie West St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "red-hook-plaza",
+      "title": "Red Hook Plaza",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3216185,
+      "lng": -64.8647387,
+      "formattedAddress": "Red Hook Rd, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "tutu-park-mall",
+      "title": "Tutu Park Mall",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3380681,
+      "lng": -64.8899127,
+      "formattedAddress": "Tutu Park Mall, Anna's Retreat, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "mongoose-junction",
+      "title": "Mongoose Junction",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3326719,
+      "lng": -64.7923493,
+      "formattedAddress": "St. John, 513 Mongoose Jct, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "cruz-bay-shops",
+      "title": "Cruz Bay Shops",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3304513,
+      "lng": -64.792952,
+      "formattedAddress": "Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "wharfside-village",
+      "title": "Wharfside Village",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3305698,
+      "lng": -64.7956093,
+      "formattedAddress": "4A Cruz Bay Quarter, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "christiansted-boardwalk",
+      "title": "Christiansted Boardwalk",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7472506,
+      "lng": -64.7051504,
+      "formattedAddress": "81 Queen Cross St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "company-street-shops",
+      "title": "Company Street Shops",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7448373,
+      "lng": -64.7043934,
+      "formattedAddress": "Company St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "frederiksted-waterfront-shops",
+      "title": "Frederiksted Waterfront Shops",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7122979,
+      "lng": -64.8818053,
+      "formattedAddress": "Frederiksted, St Croix, USVI"
+    },
+    {
+      "fileName": "shopping.json",
+      "slug": "sunny-isle-shopping-center",
+      "title": "Sunny Isle Shopping Center",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7269182,
+      "lng": -64.7484778,
+      "formattedAddress": "Sunny Isle, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "duffys-love-shack",
+      "title": "Duffy's Love Shack",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "the-beach-bar-st-john",
+      "title": "The Beach Bar St. John",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3304298,
+      "lng": -64.7960951,
+      "formattedAddress": "4A Wharfside Village, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "woodys-seafood-saloon",
+      "title": "Woody's Seafood Saloon",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.330831,
+      "lng": -64.7941592,
+      "formattedAddress": "St. John, Prince St, Cruz Bay, St John 00831, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "the-tap-room-st-john",
+      "title": "The Tap Room St. John",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3326381,
+      "lng": -64.7921305,
+      "formattedAddress": "St. John, Mongoose Jct 2nd Floor, Cruz Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "dinghys-beach-bar",
+      "title": "Dinghy's Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3160514,
+      "lng": -64.9565819,
+      "formattedAddress": "Honeymoon Beach Lane, Water Island, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "rhythms-at-rainbow-beach",
+      "title": "Rhythms at Rainbow Beach",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7294173,
+      "lng": -64.8877356,
+      "formattedAddress": "Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "the-fred-beach-bar",
+      "title": "The Fred Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7092609,
+      "lng": -64.883099,
+      "formattedAddress": "605 Strand St, Frederiksted, VI 00840, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "brew-stx",
+      "title": "Brew STX",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7471707,
+      "lng": -64.7043663,
+      "formattedAddress": "55 King's Alley Walk, Strand Ln, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "tap-and-still-red-hook",
+      "title": "Tap and Still Red Hook",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "xo-bistro",
+      "title": "XO Bistro",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3258124,
+      "lng": -64.85242939999999,
+      "formattedAddress": "6501 RED HOOK PLAZA #1, Red Hook, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "island-time-pub",
+      "title": "Island Time Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3250579,
+      "lng": -64.8521313,
+      "formattedAddress": "American Yacht Harbor, St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "tickles-dockside-pub",
+      "title": "Tickles Dockside Pub",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3345194,
+      "lng": -64.9522083,
+      "formattedAddress": "8168 Crown Bay Marina #308, St. Thomas, VI 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "rum-runners",
+      "title": "Rum Runners",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "shupes-on-the-boardwalk",
+      "title": "Shupe's on the Boardwalk",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "louie-and-nachos-beach-bar",
+      "title": "Louie & Nacho's Beach Bar",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3350841,
+      "lng": -64.8507882,
+      "formattedAddress": "16-1-10, Smith Bay Rd, Smith Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "nightlife.json",
+      "slug": "leatherback-brewing-company",
+      "title": "Leatherback Brewing Company",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3313681,
+      "lng": -64.920078,
+      "formattedAddress": "9718 Estate Thomas, St. Thomas, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "reef-bay-trail",
+      "title": "Reef Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3352834,
+      "lng": -64.7397429,
+      "formattedAddress": "Reef Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "ram-head-trail",
+      "title": "Ram Head Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3040769,
+      "lng": -64.7035344,
+      "formattedAddress": "Ram Head Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "lind-point-trail",
+      "title": "Lind Point Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3371495,
+      "lng": -64.7929643,
+      "formattedAddress": "Lind Point Trail, Caneel Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "cinnamon-bay-trail",
+      "title": "Cinnamon Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3492583,
+      "lng": -64.7502449,
+      "formattedAddress": "86XX+PW2, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "johnny-horn-trail",
+      "title": "Johnny Horn Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3571574,
+      "lng": -64.7134978,
+      "formattedAddress": "Johnny Horn Trl, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "leinster-bay-trail",
+      "title": "Leinster Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3631894,
+      "lng": -64.7249799,
+      "formattedAddress": "Leinster Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "brown-bay-trail",
+      "title": "Brown Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3600431,
+      "lng": -64.7066435,
+      "formattedAddress": "Brown Bay Trl, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "bordeaux-mountain-trail",
+      "title": "Bordeaux Mountain Trail",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3327275,
+      "lng": -64.7243261,
+      "formattedAddress": "87MG+37V, Lameshur Complex, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "peace-hill-trail",
+      "title": "Peace Hill Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3513972,
+      "lng": -64.777108,
+      "formattedAddress": "Peace Hl Trl, Dennis Bay/ Hawknest, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "salt-pond-trail",
+      "title": "Salt Pond Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3099374,
+      "lng": -64.7066103,
+      "formattedAddress": "Saltpond Bay Trail, St John 00830, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "jack-and-isaac-bay-trail",
+      "title": "Jack and Isaac Bay Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7551875,
+      "lng": -64.5695625,
+      "formattedAddress": "Jack and Isaac Bay Preserve, St. Croix, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "annaly-bay-tide-pools-trail",
+      "title": "Annaly Bay Tide Pools Trail",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7637898,
+      "lng": -64.8454892,
+      "formattedAddress": "Q573+GR6, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "hams-bluff-lighthouse-trail",
+      "title": "Ham's Bluff Lighthouse Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.7691667,
+      "lng": -64.8708611,
+      "formattedAddress": "Northwest St Croix 00840, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "sandy-point-nature-trail",
+      "title": "Sandy Point Nature Trail",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.69192,
+      "lng": -64.8804241,
+      "formattedAddress": "Sandy Point, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "magens-bay-discovery-trail",
+      "title": "Magens Bay Discovery Trail",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3612418,
+      "lng": -64.9241171,
+      "formattedAddress": "Magens Bay Beach, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "mermaids-chair-trail",
+      "title": "Mermaid's Chair Trail",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3503061,
+      "lng": -65.0372404,
+      "formattedAddress": "Mermaid's Chair, Botany Bay, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "hiking-trails.json",
+      "slug": "water-island-fort-segarra-trail",
+      "title": "Water Island Fort Segarra Trail",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3077328,
+      "lng": -64.95696339999999,
+      "formattedAddress": "Water Island, 825V+36V, Charlotte Amalie West, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian",
+      "title": "Fort Christian",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3407892,
+      "lng": -64.92958949999999,
+      "formattedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik",
+      "title": "Fort Frederik",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern",
+      "title": "Fort Christiansvaern",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation",
+      "title": "Annaberg Sugar Plantation",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation",
+      "title": "Estate Whim Plantation",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins",
+      "title": "Catherineberg Ruins",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3448304,
+      "lng": -64.93378,
+      "formattedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site",
+      "title": "Cinnamon Bay Archaeological Site",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district",
+      "title": "Charlotte Amalie Historic District",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district",
+      "title": "Christiansted Historic District",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district",
+      "title": "Frederiksted Historic District",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-11",
+      "title": "Fort Christian Reference Site 11",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3405796,
+      "lng": -64.9297139,
+      "formattedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-12",
+      "title": "Fort Frederik Reference Site 12",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-13",
+      "title": "Fort Christiansvaern Reference Site 13",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-14",
+      "title": "Annaberg Sugar Plantation Reference Site 14",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-15",
+      "title": "Estate Whim Plantation Reference Site 15",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-16",
+      "title": "Catherineberg Ruins Reference Site 16",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3448304,
+      "lng": -64.93378,
+      "formattedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-17",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 17",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-18",
+      "title": "Charlotte Amalie Historic District Reference Site 18",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-19",
+      "title": "Christiansted Historic District Reference Site 19",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-20",
+      "title": "Frederiksted Historic District Reference Site 20",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-21",
+      "title": "Fort Christian Reference Site 21",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3405796,
+      "lng": -64.9297139,
+      "formattedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-22",
+      "title": "Fort Frederik Reference Site 22",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-23",
+      "title": "Fort Christiansvaern Reference Site 23",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-24",
+      "title": "Annaberg Sugar Plantation Reference Site 24",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-25",
+      "title": "Estate Whim Plantation Reference Site 25",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-26",
+      "title": "Catherineberg Ruins Reference Site 26",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3448304,
+      "lng": -64.93378,
+      "formattedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-27",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 27",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-28",
+      "title": "Charlotte Amalie Historic District Reference Site 28",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-29",
+      "title": "Christiansted Historic District Reference Site 29",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-30",
+      "title": "Frederiksted Historic District Reference Site 30",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-31",
+      "title": "Fort Christian Reference Site 31",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3407892,
+      "lng": -64.92958949999999,
+      "formattedAddress": "Fort Christian, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-32",
+      "title": "Fort Frederik Reference Site 32",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-33",
+      "title": "Fort Christiansvaern Reference Site 33",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-34",
+      "title": "Annaberg Sugar Plantation Reference Site 34",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-35",
+      "title": "Estate Whim Plantation Reference Site 35",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-36",
+      "title": "Catherineberg Ruins Reference Site 36",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3448304,
+      "lng": -64.93378,
+      "formattedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-37",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 37",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-38",
+      "title": "Charlotte Amalie Historic District Reference Site 38",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-39",
+      "title": "Christiansted Historic District Reference Site 39",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-40",
+      "title": "Frederiksted Historic District Reference Site 40",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-41",
+      "title": "Fort Christian Reference Site 41",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3405796,
+      "lng": -64.9297139,
+      "formattedAddress": "St. Thomas, Forts Straede, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-42",
+      "title": "Fort Frederik Reference Site 42",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-43",
+      "title": "Fort Christiansvaern Reference Site 43",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-44",
+      "title": "Annaberg Sugar Plantation Reference Site 44",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-45",
+      "title": "Estate Whim Plantation Reference Site 45",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-46",
+      "title": "Catherineberg Ruins Reference Site 46",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 18.3448304,
+      "lng": -64.93378,
+      "formattedAddress": "Catherineberg Rd, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-47",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 47",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-48",
+      "title": "Charlotte Amalie Historic District Reference Site 48",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3420283,
+      "lng": -64.93071259999999,
+      "formattedAddress": "83R9+RP7 St. Thomas, Tolbod Pldn, Charlotte Amalie, St Thomas 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-49",
+      "title": "Christiansted Historic District Reference Site 49",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-50",
+      "title": "Frederiksted Historic District Reference Site 50",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3380965,
+      "lng": -64.8940946,
+      "formattedAddress": "St Thomas, 00802, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-51",
+      "title": "Fort Christian Reference Site 51",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-52",
+      "title": "Fort Frederik Reference Site 52",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-53",
+      "title": "Fort Christiansvaern Reference Site 53",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-54",
+      "title": "Annaberg Sugar Plantation Reference Site 54",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3627174,
+      "lng": -64.72973,
+      "formattedAddress": "977C+34J, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-55",
+      "title": "Estate Whim Plantation Reference Site 55",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-56",
+      "title": "Catherineberg Ruins Reference Site 56",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3443018,
+      "lng": -64.76100559999999,
+      "formattedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-57",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 57",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-58",
+      "title": "Charlotte Amalie Historic District Reference Site 58",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-59",
+      "title": "Christiansted Historic District Reference Site 59",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-60",
+      "title": "Frederiksted Historic District Reference Site 60",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-61",
+      "title": "Fort Christian Reference Site 61",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-62",
+      "title": "Fort Frederik Reference Site 62",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-63",
+      "title": "Fort Christiansvaern Reference Site 63",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-64",
+      "title": "Annaberg Sugar Plantation Reference Site 64",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3627174,
+      "lng": -64.72973,
+      "formattedAddress": "977C+34J, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-65",
+      "title": "Estate Whim Plantation Reference Site 65",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-66",
+      "title": "Catherineberg Ruins Reference Site 66",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3443018,
+      "lng": -64.76100559999999,
+      "formattedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-67",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 67",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-68",
+      "title": "Charlotte Amalie Historic District Reference Site 68",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-69",
+      "title": "Christiansted Historic District Reference Site 69",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-70",
+      "title": "Frederiksted Historic District Reference Site 70",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-71",
+      "title": "Fort Christian Reference Site 71",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-72",
+      "title": "Fort Frederik Reference Site 72",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-73",
+      "title": "Fort Christiansvaern Reference Site 73",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-74",
+      "title": "Annaberg Sugar Plantation Reference Site 74",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3627174,
+      "lng": -64.72973,
+      "formattedAddress": "977C+34J, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-75",
+      "title": "Estate Whim Plantation Reference Site 75",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-76",
+      "title": "Catherineberg Ruins Reference Site 76",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3443018,
+      "lng": -64.76100559999999,
+      "formattedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-77",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 77",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-78",
+      "title": "Charlotte Amalie Historic District Reference Site 78",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-79",
+      "title": "Christiansted Historic District Reference Site 79",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-80",
+      "title": "Frederiksted Historic District Reference Site 80",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-81",
+      "title": "Fort Christian Reference Site 81",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-82",
+      "title": "Fort Frederik Reference Site 82",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-83",
+      "title": "Fort Christiansvaern Reference Site 83",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-84",
+      "title": "Annaberg Sugar Plantation Reference Site 84",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3627174,
+      "lng": -64.72973,
+      "formattedAddress": "977C+34J, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-85",
+      "title": "Estate Whim Plantation Reference Site 85",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-86",
+      "title": "Catherineberg Ruins Reference Site 86",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 18.3443018,
+      "lng": -64.76100559999999,
+      "formattedAddress": "86VQ+PHH, Rte 206, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-87",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 87",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3548967,
+      "lng": -64.7568756,
+      "formattedAddress": "Cinnamon Bay, St John 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-88",
+      "title": "Charlotte Amalie Historic District Reference Site 88",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-89",
+      "title": "Christiansted Historic District Reference Site 89",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-90",
+      "title": "Frederiksted Historic District Reference Site 90",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 18.3368114,
+      "lng": -64.7280952,
+      "formattedAddress": "St John, 00830, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-91",
+      "title": "Fort Christian Reference Site 91",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-92",
+      "title": "Fort Frederik Reference Site 92",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-93",
+      "title": "Fort Christiansvaern Reference Site 93",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-94",
+      "title": "Annaberg Sugar Plantation Reference Site 94",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-95",
+      "title": "Estate Whim Plantation Reference Site 95",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-96",
+      "title": "Catherineberg Ruins Reference Site 96",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-97",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 97",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-98",
+      "title": "Charlotte Amalie Historic District Reference Site 98",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-99",
+      "title": "Christiansted Historic District Reference Site 99",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-100",
+      "title": "Frederiksted Historic District Reference Site 100",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-101",
+      "title": "Fort Christian Reference Site 101",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-102",
+      "title": "Fort Frederik Reference Site 102",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-103",
+      "title": "Fort Christiansvaern Reference Site 103",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-104",
+      "title": "Annaberg Sugar Plantation Reference Site 104",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-105",
+      "title": "Estate Whim Plantation Reference Site 105",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-106",
+      "title": "Catherineberg Ruins Reference Site 106",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7706825,
+      "lng": -64.8123059,
+      "formattedAddress": "Ruins, La Vallee, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-107",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 107",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-108",
+      "title": "Charlotte Amalie Historic District Reference Site 108",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-109",
+      "title": "Christiansted Historic District Reference Site 109",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-110",
+      "title": "Frederiksted Historic District Reference Site 110",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-111",
+      "title": "Fort Christian Reference Site 111",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-112",
+      "title": "Fort Frederik Reference Site 112",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-113",
+      "title": "Fort Christiansvaern Reference Site 113",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-114",
+      "title": "Annaberg Sugar Plantation Reference Site 114",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-115",
+      "title": "Estate Whim Plantation Reference Site 115",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-116",
+      "title": "Catherineberg Ruins Reference Site 116",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-117",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 117",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-118",
+      "title": "Charlotte Amalie Historic District Reference Site 118",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-119",
+      "title": "Christiansted Historic District Reference Site 119",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-120",
+      "title": "Frederiksted Historic District Reference Site 120",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-121",
+      "title": "Fort Christian Reference Site 121",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-122",
+      "title": "Fort Frederik Reference Site 122",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-123",
+      "title": "Fort Christiansvaern Reference Site 123",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-124",
+      "title": "Annaberg Sugar Plantation Reference Site 124",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-125",
+      "title": "Estate Whim Plantation Reference Site 125",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-126",
+      "title": "Catherineberg Ruins Reference Site 126",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7706825,
+      "lng": -64.8123059,
+      "formattedAddress": "Ruins, La Vallee, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-127",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 127",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-128",
+      "title": "Charlotte Amalie Historic District Reference Site 128",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-129",
+      "title": "Christiansted Historic District Reference Site 129",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-130",
+      "title": "Frederiksted Historic District Reference Site 130",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-131",
+      "title": "Fort Christian Reference Site 131",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-132",
+      "title": "Fort Frederik Reference Site 132",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-133",
+      "title": "Fort Christiansvaern Reference Site 133",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-134",
+      "title": "Annaberg Sugar Plantation Reference Site 134",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-135",
+      "title": "Estate Whim Plantation Reference Site 135",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-136",
+      "title": "Catherineberg Ruins Reference Site 136",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7706825,
+      "lng": -64.8123059,
+      "formattedAddress": "Ruins, La Vallee, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-137",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 137",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-138",
+      "title": "Charlotte Amalie Historic District Reference Site 138",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-139",
+      "title": "Christiansted Historic District Reference Site 139",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-140",
+      "title": "Frederiksted Historic District Reference Site 140",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christian-reference-site-141",
+      "title": "Fort Christian Reference Site 141",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-frederik-reference-site-142",
+      "title": "Fort Frederik Reference Site 142",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7152365,
+      "lng": -64.8835613,
+      "formattedAddress": "P488+3HW, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "fort-christiansvaern-reference-site-143",
+      "title": "Fort Christiansvaern Reference Site 143",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7469456,
+      "lng": -64.70178539999999,
+      "formattedAddress": "P7WX+Q7G, Hospital St, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "annaberg-sugar-plantation-reference-site-144",
+      "title": "Annaberg Sugar Plantation Reference Site 144",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7116411,
+      "lng": -64.77431190000001,
+      "formattedAddress": "Annaberg, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "estate-whim-plantation-reference-site-145",
+      "title": "Estate Whim Plantation Reference Site 145",
+      "source": "google_geocoding",
+      "confidence": "GEOMETRIC_CENTER",
+      "lat": 17.6995602,
+      "lng": -64.8606353,
+      "formattedAddress": "52 Estate Whim, 00840, United States, Frederiksted, St Croix 00840, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "catherineberg-ruins-reference-site-146",
+      "title": "Catherineberg Ruins Reference Site 146",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7706825,
+      "lng": -64.8123059,
+      "formattedAddress": "Ruins, La Vallee, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "cinnamon-bay-archaeological-site-reference-site-147",
+      "title": "Cinnamon Bay Archaeological Site Reference Site 147",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "charlotte-amalie-historic-district-reference-site-148",
+      "title": "Charlotte Amalie Historic District Reference Site 148",
+      "source": "google_geocoding",
+      "confidence": "APPROXIMATE",
+      "lat": 17.7245968,
+      "lng": -64.83479919999999,
+      "formattedAddress": "St Croix, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "christiansted-historic-district-reference-site-149",
+      "title": "Christiansted Historic District Reference Site 149",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7473007,
+      "lng": -64.70230339999999,
+      "formattedAddress": "P7WX+W3G, Christiansted, St Croix 00820, USVI"
+    },
+    {
+      "fileName": "historic-sites.json",
+      "slug": "frederiksted-historic-district-reference-site-150",
+      "title": "Frederiksted Historic District Reference Site 150",
+      "source": "google_geocoding",
+      "confidence": "ROOFTOP",
+      "lat": 17.7108756,
+      "lng": -64.8831794,
+      "formattedAddress": "P468+9P4, Strand St, Frederiksted, St Croix 00840, USVI"
+    }
+  ],
+  "skippedAlreadyHadCoordinates": [],
+  "unresolved": [],
+  "rejected": [],
+  "errors": []
+}
