@@ -132,6 +132,7 @@ export type FeaturedSectionDoc = {
 export type UserRole = "user" | "merchant" | "admin";
 
 export interface UserProfile {
+  selectedIsland: string;
   uid: string;
   email: string;
   displayName: string;

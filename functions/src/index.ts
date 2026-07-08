@@ -1004,6 +1004,66 @@ function buildConciergeDisplayAnswer(input: {
   );
 }
 
+
+function scoreConciergeListing(message: string, intent: ConciergeIntent, item: any) {
+  const q = message.toLowerCase();
+  const title = String(item.title || "").toLowerCase();
+  const text = `${item.title || ""} ${item.description || ""} ${item.category || ""} ${item.areaSlug || ""} ${item.address || ""}`.toLowerCase();
+
+  let score = 0;
+
+  for (const word of q.split(/\s+/).filter((part) => part.length > 3)) {
+    if (title.includes(word)) score += 12;
+    if (text.includes(word)) score += 4;
+  }
+
+  if (intent === "beach_day") {
+    if (title.includes("coki")) score += 35;
+    if (title.includes("magens")) score += 32;
+    if (title.includes("sapphire")) score += 28;
+    if (title.includes("brewers")) score += 24;
+    if (title.includes("hull")) score += 18;
+    if (title.includes("bolongo")) score += 12;
+    if (text.includes("snorkel")) score += 10;
+    if (text.includes("food")) score += 8;
+    if (text.includes("calm")) score += 6;
+  }
+
+  if (intent === "cruise_day") {
+    if (title.includes("coki")) score += 34;
+    if (title.includes("magens")) score += 32;
+    if (title.includes("sapphire")) score += 26;
+    if (title.includes("bolongo")) score += 16;
+    if (text.includes("food")) score += 8;
+    if (text.includes("snorkel")) score += 8;
+  }
+
+  if (intent === "ride") {
+    if (text.includes("airport")) score += 20;
+    if (text.includes("ferry")) score += 16;
+    if (text.includes("cruise")) score += 16;
+  }
+
+  if (intent === "stay") {
+    if (text.includes("hotel")) score += 24;
+    if (text.includes("villa")) score += 24;
+    if (text.includes("resort")) score += 18;
+    if (text.includes("charter")) score += 18;
+  }
+
+  return score;
+}
+
+function rankConciergeRecommendations(message: string, intent: ConciergeIntent, listings: any[]) {
+  return [...listings]
+    .map((item) => ({
+      item,
+      score: scoreConciergeListing(message, intent, item),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .map(({ item }) => item);
+}
+
 export const aiConcierge = onRequest(
   {
     region: "us-central1",
@@ -1072,6 +1132,15 @@ export const aiConcierge = onRequest(
       );
 
       const searchableListings = [...beaches, ...places];
+      const currentIntent = inferConciergeIntent(message, operatorMode);
+      const rankedConciergeListings = rankConciergeRecommendations(
+        message,
+        currentIntent,
+        searchableListings,
+      );
+      const conciergeListings = rankedConciergeListings.length
+        ? rankedConciergeListings
+        : searchableListings;
 
       const allowedAppNames = Array.from(
         new Set(
@@ -1129,7 +1198,7 @@ Access:
         memories,
         visitorPass,
         allowedAppNames,
-        listings: searchableListings,
+        listings: conciergeListings.slice(0, 12),
         events,
         routes: {
           visitorDesk: "/visitor-desk",
@@ -1153,9 +1222,9 @@ Access:
       const modelAnswer = sanitizeConciergeAnswer(rawAnswer, allowedAppNames);
 
       const answer = buildConciergeDisplayAnswer({
-        intent: inferConciergeIntent(message, operatorMode),
+        intent: currentIntent,
         islandCode,
-        topListing: searchableListings[0] || null,
+        topListing: conciergeListings[0] || null,
         premium,
         modelAnswer,
       });
@@ -1163,13 +1232,7 @@ Access:
       const q = message.toLowerCase();
       const words = q.split(/\s+/).filter((word) => word.length > 3);
 
-      const relevantListings = searchableListings
-        .filter((item: any) => {
-          const haystack =
-            `${item.title} ${item.category} ${item.description} ${item.address} ${item.areaSlug}`.toLowerCase();
-          return words.some((word) => haystack.includes(word));
-        })
-        .slice(0, 5);
+      const relevantListings = conciergeListings.slice(0, 5);
 
       const wantsEvents =
         /\b(event|events|carnival|festival|music|concert|show|tonight|today|weekend|this week)\b/.test(
@@ -1186,12 +1249,12 @@ Access:
             .slice(0, 5)
         : [];
 
-      const intent = inferConciergeIntent(message, operatorMode);
+      const intent = currentIntent;
 
       const plan = buildConciergePlan({
         intent,
         islandCode,
-        listings: relevantListings,
+        listings: conciergeListings.slice(0, 5),
         premium,
       });
 
