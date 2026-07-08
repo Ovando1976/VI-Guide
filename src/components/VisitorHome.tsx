@@ -18,11 +18,16 @@ import {
   Sparkles,
   SunMedium,
   Waves,
+  Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { homepageCards, homepageFeatureImages, homepageHeroImage } from "../data/generated/homepageImages";
+import {
+  homepageCards,
+  homepageFeatureImages,
+  homepageHeroImage,
+} from "../data/generated/homepageImages";
 
 type VisitorHomeProps = {
   selectedIsland?: string;
@@ -77,6 +82,7 @@ const exploreActions: SmallAction[] = [
   { label: "Beaches", path: "/beaches", icon: Waves },
   { label: "Explore", path: "/explore", icon: Compass },
   { label: "Events", path: "/events", icon: CalendarDays },
+  { label: "VI Connect", path: "/connect", icon: Users },
   { label: "Concierge", path: "/concierge", icon: MessageSquareText },
 ];
 
@@ -90,12 +96,14 @@ const trustItems = [
 function islandName(value?: string) {
   if (!value) return "St. Thomas";
 
-  return {
-    st_thomas: "St. Thomas",
-    st_john: "St. John",
-    st_croix: "St. Croix",
-    water_island: "Water Island",
-  }[value] || value.replace(/_/g, " ");
+  return (
+    {
+      st_thomas: "St. Thomas",
+      st_john: "St. John",
+      st_croix: "St. Croix",
+      water_island: "Water Island",
+    }[value] || value.replace(/_/g, " ")
+  );
 }
 
 export default function VisitorHome({
@@ -187,7 +195,8 @@ export default function VisitorHome({
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/75 md:text-lg">
-                  Plan where to go, where to stay, how to get around, and what to book across the U.S. Virgin Islands.
+                  Plan where to go, where to stay, how to get around, and what
+                  to book across the U.S. Virgin Islands.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -302,8 +311,8 @@ export default function VisitorHome({
                     card.path === "/visitor-desk"
                       ? homepageCards.plan
                       : card.path === "/hotels"
-                        ? homepageCards.stays
-                        : homepageCards.mobility
+                      ? homepageCards.stays
+                      : homepageCards.mobility
                   }
                   alt={card.title}
                   className="h-full w-full object-cover"
@@ -312,7 +321,9 @@ export default function VisitorHome({
 
               <div
                 className={`grid h-14 w-14 place-items-center rounded-2xl ${
-                  card.featured ? "bg-ink text-[#ffcf32]" : "bg-emerald-950 text-turquoise"
+                  card.featured
+                    ? "bg-ink text-[#ffcf32]"
+                    : "bg-emerald-950 text-turquoise"
                 }`}
               >
                 <card.icon className="h-7 w-7" />
@@ -322,7 +333,9 @@ export default function VisitorHome({
                 {card.label}
               </p>
 
-              <h2 className="mt-2 text-2xl font-black md:text-3xl">{card.title}</h2>
+              <h2 className="mt-2 text-2xl font-black md:text-3xl">
+                {card.title}
+              </h2>
 
               <p className="mt-3 text-sm font-bold leading-7 text-stone-600">
                 {card.text}
@@ -342,7 +355,9 @@ export default function VisitorHome({
               <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
                 Explore faster
               </p>
-              <h2 className="mt-2 font-serif text-4xl">Choose what you need next.</h2>
+              <h2 className="mt-2 font-serif text-4xl">
+                Choose what you need next.
+              </h2>
             </div>
 
             <label className="relative block md:w-[360px]">
@@ -362,7 +377,13 @@ export default function VisitorHome({
               <button
                 key={action.path}
                 type="button"
-                onClick={() => go(action.path)}
+                onClick={() =>
+                  go(
+                    action.path === "/connect"
+                      ? `/connect?island=${selectedIsland}`
+                      : action.path
+                  )
+                }
                 className="flex items-center justify-between rounded-2xl bg-stone-50 p-4 text-left active:scale-95"
               >
                 <span className="flex items-center gap-3">
@@ -396,7 +417,8 @@ export default function VisitorHome({
             </h2>
 
             <p className="mt-3 max-w-3xl text-sm font-bold leading-7 text-stone-500">
-              Use a visitor pass to access the organized visitor desk, premium trip planning, route previews, and booking tools.
+              Use a visitor pass to access the organized visitor desk, premium
+              trip planning, route previews, and booking tools.
             </p>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">
@@ -428,35 +450,36 @@ export default function VisitorHome({
                 <Hotel className="h-7 w-7" />
               </div>
 
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
-              Local partners
-            </p>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
+                Local partners
+              </p>
 
-            <h2 className="mt-2 font-serif text-4xl">
-              Hotels, villas, charters, tours, and local businesses.
-            </h2>
+              <h2 className="mt-2 font-serif text-4xl">
+                Hotels, villas, charters, tours, and local businesses.
+              </h2>
 
-            <p className="mt-3 text-sm font-bold leading-7 text-white/70">
-              Claim your listing, manage booking inquiries, and connect with visitors planning a Virgin Islands trip.
-            </p>
+              <p className="mt-3 text-sm font-bold leading-7 text-white/70">
+                Claim your listing, manage booking inquiries, and connect with
+                visitors planning a Virgin Islands trip.
+              </p>
 
-            <div className="mt-5 grid gap-3">
-              <button
-                type="button"
-                onClick={() => go("/partner-desk")}
-                className="rounded-2xl bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink active:scale-95"
-              >
-                Partner access
-              </button>
+              <div className="mt-5 grid gap-3">
+                <button
+                  type="button"
+                  onClick={() => go("/partner-desk")}
+                  className="rounded-2xl bg-[#ffcf32] px-5 py-4 text-sm font-black text-ink active:scale-95"
+                >
+                  Partner access
+                </button>
 
-              <button
-                type="button"
-                onClick={() => go("/accommodation-partner")}
-                className="rounded-2xl bg-white/10 px-5 py-4 text-sm font-black text-white active:scale-95"
-              >
-                Claim a business
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => go("/accommodation-partner")}
+                  className="rounded-2xl bg-white/10 px-5 py-4 text-sm font-black text-white active:scale-95"
+                >
+                  Claim a business
+                </button>
+              </div>
             </div>
           </article>
         </section>

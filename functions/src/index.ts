@@ -872,93 +872,41 @@ function buildConciergeActions(input: {
     label: string;
     description: string;
     path: string;
-    kind:
-      | "map"
-      | "mobility"
-      | "booking"
-      | "checkout"
-      | "partner"
-      | "admin"
-      | "general";
+    kind: "map" | "mobility" | "booking" | "checkout" | "partner" | "admin" | "general";
   }> = [];
 
   const add = (
     label: string,
     description: string,
     path: string,
-    kind:
-      | "map"
-      | "mobility"
-      | "booking"
-      | "checkout"
-      | "partner"
-      | "admin"
-      | "general"
+    kind: "map" | "mobility" | "booking" | "checkout" | "partner" | "admin" | "general",
   ) => {
     actions.push({ label, description, path, kind });
   };
 
   if (input.intent === "ride") {
-    add(
-      "Preview the ride",
-      "Map the pickup, destination, and route.",
-      "/mobility",
-      "mobility"
-    );
+    add("Preview the ride", "Map the pickup, destination, and route.", "/mobility", "mobility");
   } else if (input.intent === "stay") {
-    add(
-      "Compare stays",
-      "Review stays that fit this plan.",
-      "/hotels",
-      "booking"
-    );
+    add("Compare stays", "Review stays that fit this plan.", "/hotels", "booking");
   } else if (input.intent === "events") {
-    add(
-      "Check events",
-      "See what fits around this plan.",
-      "/events",
-      "general"
-    );
+    add("Check events", "See what fits around this plan.", "/events", "general");
   } else if (input.intent === "partner" && input.partner) {
-    add(
-      "Open partner desk",
-      "Manage listing, leads, and business workflow.",
-      "/partner-desk",
-      "partner"
-    );
+    add("Open partner desk", "Manage listing, leads, and business workflow.", "/partner-desk", "partner");
   } else if (input.intent === "operator" && input.admin) {
-    add(
-      "Open admin desk",
-      "Review operations and partner workflow.",
-      "/admin-desk",
-      "admin"
-    );
+    add("Open admin desk", "Review operations and partner workflow.", "/admin-desk", "admin");
   } else {
-    add(
-      "Show this on map",
-      "See the location and nearby context.",
-      `/map?island=${input.islandCode}`,
-      "map"
-    );
-    add(
-      "Plan pickup",
-      "Preview transportation for this plan.",
-      "/mobility",
-      "mobility"
-    );
+    add("Show this on map", "See the location and nearby context.", `/map?island=${input.islandCode}`, "map");
+    add("Plan pickup", "Preview transportation for this plan.", "/mobility", "mobility");
   }
 
   if (input.premium) {
-    add(
-      "Save this plan",
-      "Keep this itinerary in your visitor desk.",
-      "/visitor-desk",
-      "general"
-    );
+    add("Save this plan", "Keep this itinerary in your visitor desk.", "/visitor-desk", "general");
   }
 
   return actions.slice(0, 3);
 }
+
+
 
 function buildConciergeDisplayAnswer(input: {
   intent: ConciergeIntent;
@@ -971,15 +919,16 @@ function buildConciergeDisplayAnswer(input: {
     input.islandCode === "st_john"
       ? "St. John"
       : input.islandCode === "st_croix"
-      ? "St. Croix"
-      : input.islandCode === "water_island"
-      ? "Water Island"
-      : "St. Thomas";
+        ? "St. Croix"
+        : input.islandCode === "water_island"
+          ? "Water Island"
+          : "St. Thomas";
 
   const placeName = input.topListing?.title || "your best matching stop";
   const area = input.topListing?.areaSlug
     ? String(input.topListing.areaSlug).replace(/-/g, " ")
     : islandName;
+
   const description =
     typeof input.topListing?.description === "string"
       ? input.topListing.description
@@ -994,14 +943,12 @@ function buildConciergeDisplayAnswer(input: {
     input.intent === "cruise_day"
       ? `**Best cruise-day anchor: ${placeName}.**`
       : input.intent === "beach_day"
-      ? `**Best beach anchor: ${placeName}.**`
-      : `**Best starting point: ${placeName}.**`;
+        ? `**Best beach anchor: ${placeName}.**`
+        : `**Best starting point: ${placeName}.**`;
 
   const hasUsefulModelAnswer =
     model.length >= 450 &&
-    /\b(food|lunch|dining|vendor|ride|taxi|transport|pickup|route|timing|plan|why|recommend)\b/i.test(
-      model
-    );
+    /\b(food|lunch|dining|vendor|ride|taxi|transport|pickup|route|timing|plan|why|recommend)\b/i.test(model);
 
   if (hasUsefulModelAnswer) {
     return model.toLowerCase().includes(String(placeName).toLowerCase())
@@ -1013,10 +960,7 @@ function buildConciergeDisplayAnswer(input: {
     return `${anchorLine}
 
 **Why this works**
-${
-  description ||
-  `${placeName} gives you a focused stop around ${area}, so the day stays simple and realistic for a port visit.`
-}
+${description || `${placeName} gives you a focused stop around ${area}, so the day stays realistic for a port visit.`}
 
 **Simple cruise-day flow**
 Start from the cruise port, ride to ${placeName}, spend your main beach block there, use a nearby food stop or beach vendor, then return toward the ship with a comfortable buffer.
@@ -1028,28 +972,25 @@ Keep food close to the beach or on the way back toward port. For a cruise day, a
 Use a taxi, private ride, mobility request, or driver pickup. The cleanest route is port → ${placeName} → food stop → port.
 
 **Timing**
-Try to leave yourself 60–90 minutes of return buffer before all-aboard time.
+Leave yourself 60–90 minutes of return buffer before all-aboard time.
 
-I can also help adjust this by cruise port, group size, beach vibe, or pickup time.`;
+I can also adjust this by cruise port, group size, beach vibe, or pickup time.`;
   }
 
   if (input.intent === "beach_day") {
     return `${anchorLine}
 
 **Why this works**
-${
-  description ||
-  `${placeName} is the strongest match for this ${islandName} beach-day request based on the available app data.`
-}
+${description || `${placeName} is the strongest match for this ${islandName} beach-day request based on the available app data.`}
 
 **Suggested day flow**
-Make ${placeName} the main stop. Spend most of the day there, then add food and transportation around that anchor instead of trying to bounce between too many places.
+Make ${placeName} the main stop. Spend most of the day there, then add food and transportation around that anchor instead of bouncing between too many places.
 
 **Food nearby**
 Use a nearby food stop, beach vendor, or nearby dining area unless you already have a specific restaurant in mind.
 
 **Transportation**
-Use a taxi, private ride, mobility request, or driver pickup. Previewing the pickup and destination helps keep the ride simple.
+Use a taxi, private ride, mobility request, or driver pickup. Previewing pickup and destination keeps the ride simple.
 
 **Best move**
 Start with ${placeName}, keep the middle of the day flexible, and adjust based on weather, crowd level, and how much beach time you want.
@@ -1100,6 +1041,8 @@ Beach or daytime activity first, food second, event third. That keeps the day fr
 Use ${placeName} as the anchor, then build the food, transportation, and timing around it. I can tailor the plan based on who is going, where you are starting from, and how much time you have.`
   );
 }
+
+
 
 function scoreConciergeListing(
   message: string,

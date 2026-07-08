@@ -76,6 +76,73 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+
+    // ------------------------------------------------------------
+    // VI Connect
+    // Dating / friendship / social layer
+    // ------------------------------------------------------------
+
+    match /connectProfiles/{userId} {
+      // MVP: signed-in users can discover visible profiles.
+      // Owners and admins can read their own profile even if hidden.
+      allow read: if signedIn() && (
+        resource.data.isVisible == true ||
+        isSelf(userId) ||
+        isAdmin()
+      );
+
+      allow create, update: if isSelf(userId) || isAdmin();
+      allow delete: if isSelf(userId) || isAdmin();
+    }
+
+    match /connectEngagement/{userId} {
+      allow read, create, update, delete: if isSelf(userId) || isAdmin();
+    }
+
+    match /connectLikes/{likeId} {
+      allow create, update: if signedIn()
+        && request.resource.data.fromUid == request.auth.uid;
+
+      allow read: if signedIn() && (
+        resource.data.fromUid == request.auth.uid ||
+        resource.data.toProfileId == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow delete: if signedIn() && (
+        resource.data.fromUid == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    match /connectPasses/{passId} {
+      allow create, update: if signedIn()
+        && request.resource.data.fromUid == request.auth.uid;
+
+      allow read, delete: if signedIn() && (
+        resource.data.fromUid == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    match /connectBlocks/{blockId} {
+      allow create, update: if signedIn()
+        && request.resource.data.fromUid == request.auth.uid;
+
+      allow read, delete: if signedIn() && (
+        resource.data.fromUid == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    match /connectReports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.fromUid == request.auth.uid;
+
+      // Reports should only be readable/moderated by admins.
+      allow read, update, delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

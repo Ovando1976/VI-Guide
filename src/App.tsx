@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { lazy, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Route,
   Routes,
@@ -69,6 +69,8 @@ import { seedMapData } from "./seedMapData";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
 import { getIslands } from "./lib/firestore/islands";
+
+const VIConnect = lazy(() => import("./components/VIConnect"));
 
 const ADMIN_EMAILS = new Set(["ovandorawlins@gmail.com"]);
 
@@ -238,15 +240,15 @@ function AppContent() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
-  path="/"
-  element={
-    <VisitorHome
-      selectedIsland={selectedIsland}
-      onNavigate={navigate}
-      onSelectListing={setSelectedListing}
-    />
-  }
-/>
+            path="/"
+            element={
+              <VisitorHome
+                selectedIsland={selectedIsland}
+                onNavigate={navigate}
+                onSelectListing={setSelectedListing}
+              />
+            }
+          />
 
           <Route
             path="/explore"
@@ -292,11 +294,12 @@ function AppContent() {
               />
             }
           />
-
           <Route
-            path="/mobility/dispatch"
-            element={<MobilityDispatchDemo />}
+            path="/connect"
+            element={<VIConnect selectedIsland={selectedIsland} user={user} />}
           />
+
+          <Route path="/mobility/dispatch" element={<MobilityDispatchDemo />} />
 
           <Route
             path="/mobility"
@@ -349,25 +352,13 @@ function AppContent() {
             }
           />
 
-          <Route
-            path="/admin/leads"
-            element={<AdminLeadsDashboard />}
-          />
+          <Route path="/admin/leads" element={<AdminLeadsDashboard />} />
 
-          <Route
-            path="/demo"
-            element={<DemoHub />}
-          />
+          <Route path="/demo" element={<DemoHub />} />
 
-          <Route
-            path="/partners"
-            element={<PartnersPage />}
-          />
+          <Route path="/partners" element={<PartnersPage />} />
 
-          <Route
-            path="/merchant/demo"
-            element={<MerchantDemoDashboard />}
-          />
+          <Route path="/merchant/demo" element={<MerchantDemoDashboard />} />
 
           <Route
             path="/merchant"
