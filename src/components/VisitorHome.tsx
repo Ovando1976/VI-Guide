@@ -134,6 +134,14 @@ type HomeHeroFeaturedPick = {
   tags: string[];
 };
 
+
+function heroPickOpenLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Dine here";
+  if (kind === "Beach") return "Open beach";
+  if (kind === "Stay") return "Find stays";
+  return "Open this card";
+}
+
 const homeHeroFeaturedPicks: HomeHeroFeaturedPick[] = [
   {
     id: "stt-magens",
