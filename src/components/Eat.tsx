@@ -195,7 +195,7 @@ export default function Eat({ onSelectPlace }: EatProps) {
     return places.filter((place) => {
       const haystack = [
         place.title,
-        place.name,
+        (place as { name?: string }).name,
         place.description,
         place.shortDescription,
         place.areaSlug,
@@ -265,7 +265,7 @@ export default function Eat({ onSelectPlace }: EatProps) {
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
               <img
-                src={place.coverImage || place.image || "https://picsum.photos/seed/food/900/650"}
+                src={place.coverImage || (place as { image?: string }).image || "https://picsum.photos/seed/food/900/650"}
                 alt={place.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
