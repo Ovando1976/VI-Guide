@@ -25,6 +25,7 @@ import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import {
+import FeaturedIslandPicks from "./FeaturedIslandPicks";
   homepageCards,
   homepageFeatureImages,
   homepageHeroImage,
@@ -409,7 +410,9 @@ export default function VisitorHome({
           </div>
         </section>
 
-        <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
+              <FeaturedIslandPicks selectedIsland={selectedIsland} />
+
+<section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
             <div className="mb-5 h-36 overflow-hidden rounded-[2rem] bg-stone-100 md:h-44">
               <img
