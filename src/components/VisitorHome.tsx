@@ -142,6 +142,36 @@ function heroPickOpenLabel(kind: HomeHeroFeaturedPick["kind"]) {
   return "Open this card";
 }
 
+function heroPickFullPageLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Open full dining page";
+  if (kind === "Beach") return "Open full beaches page";
+  if (kind === "Stay") return "Open stays page";
+  return "Open full page";
+}
+
+function heroPickDetailLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Dining detail";
+  if (kind === "Beach") return "Beach detail";
+  if (kind === "Stay") return "Stay detail";
+  return "Featured detail";
+}
+
+function heroPickDetailCopy(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") {
+    return "This is the selected restaurant card. Review the dining pick here first, then open the full dining page only if you want the complete restaurant list.";
+  }
+
+  if (kind === "Beach") {
+    return "This is the selected beach card. Review the beach pick here first, then open the full beaches page only if you want the complete beach list.";
+  }
+
+  if (kind === "Stay") {
+    return "This is the selected stay card. Review the stay area here first, then open the stays page only if you want lodging options and booking flow.";
+  }
+
+  return "Review this featured pick here first, then open the full page when you are ready.";
+}
+
 const homeHeroFeaturedPicks: HomeHeroFeaturedPick[] = [
   {
     id: "stt-magens",
@@ -275,6 +305,7 @@ export default function VisitorHome({
   const navigate = useNavigate();
   const [selectedHeroPick, setSelectedHeroPick] =
     useState<HomeHeroFeaturedPick | null>(null);
+  const [heroPickExpanded, setHeroPickExpanded] = useState(false);
 
   useEffect(() => {
     const activeIsland = String(selectedIsland || "st_thomas");
@@ -337,6 +368,7 @@ export default function VisitorHome({
       event.preventDefault();
       event.stopPropagation();
 
+      setHeroPickExpanded(false);
       setSelectedHeroPick(pick);
     }
 
@@ -768,6 +800,30 @@ export default function VisitorHome({
                 ))}
               </div>
 
+
+              {heroPickExpanded ? (
+                <div className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+                    {heroPickDetailLabel(selectedHeroPick.kind)}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-zinc-600">
+                    {heroPickDetailCopy(selectedHeroPick.kind)}
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setHeroPickExpanded(false);
+                      setSelectedHeroPick(null);
+                      navigate(selectedHeroPick.route);
+                    }}
+                    className="mt-4 w-full rounded-2xl bg-zinc-950 px-4 py-3 text-sm font-black text-white"
+                  >
+                    {heroPickFullPageLabel(selectedHeroPick.kind)}
+                  </button>
+                </div>
+              ) : null}
+
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <button
                   type="button"
@@ -776,17 +832,13 @@ export default function VisitorHome({
                     navigate(selectedHeroPick.route);
                   }}
                   className="rounded-2xl bg-emerald-700 px-4 py-3 text-sm font-black text-white"
-                >
-                  Open this card
-                </button>
+                >{heroPickOpenLabel(selectedHeroPick.kind)}</button>
 
                 <button
                   type="button"
                   onClick={() => setSelectedHeroPick(null)}
                   className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm font-black text-zinc-700"
-                >
-                  Stay here
-                </button>
+                >Keep browsing</button>
               </div>
             </div>
           </article>
