@@ -58,7 +58,10 @@ export default function Eat({ onSelectPlace }: EatProps) {
     return (
       <div className="flex flex-col gap-4 p-4 pb-32">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="h-64 animate-pulse rounded-[2rem] bg-zinc-100" />
+          <div
+            key={i}
+            className="h-64 animate-pulse rounded-[2rem] bg-zinc-100"
+          />
         ))}
       </div>
     );
@@ -97,7 +100,7 @@ export default function Eat({ onSelectPlace }: EatProps) {
           <span>{filteredPlaces.length} dining spots</span>
           <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-500">
             <Database className="h-3 w-3" />
-            {source === "firestore" ? "Firestore" : "Local fallback"}
+            {source === "firestore" ? "Firestore" : source === "merged" ? "Firestore + local" : "Local fallback"}
           </span>
         </div>
       </header>
@@ -114,7 +117,9 @@ export default function Eat({ onSelectPlace }: EatProps) {
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
               <img
-                src={place.coverImage || "https://picsum.photos/seed/food/900/650"\}
+                src={
+                  place.coverImage || "https://picsum.photos/seed/food/900/650"
+                }
                 alt={place.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
@@ -150,7 +155,8 @@ export default function Eat({ onSelectPlace }: EatProps) {
                 <div className="flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5" />
                   <span>
-                    {place.areaSlug?.replace(/-/g, " ") || islandLabels[islandCode]}
+                    {place.areaSlug?.replace(/-/g, " ") ||
+                      islandLabels[islandCode]}
                   </span>
                 </div>
 

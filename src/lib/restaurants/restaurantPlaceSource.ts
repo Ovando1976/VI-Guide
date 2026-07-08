@@ -7,6 +7,8 @@ import type { IslandCode, PlaceDoc } from "../../types";
 
 type RestaurantRecord = Record<string, unknown>;
 
+export type RestaurantPlaceSource = "firestore" | "local-json" | "merged";
+
 const restaurantDataByIsland: Record<IslandCode, unknown[]> = {
   st_thomas: stThomasRestaurants as unknown[],
   st_john: stJohnRestaurants as unknown[],
@@ -64,6 +66,13 @@ function slugify(value: string) {
     .replace(/['’]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+}
+
+function restaurantKey(place: Partial<PlaceDoc>) {
+  const title = String(place.title || "").trim();
+  const slug = String(place.slug || slugify(title)).trim();
+  const island = String(place.islandCode || (place as { island?: string }).island || "").trim();
+  return `${island}::${slug || slugify(title)}`.toLowerCase();
 }
 
 export function normalizeRestaurantPlace(
@@ -132,18 +141,53 @@ export function normalizeRestaurantPlace(
 
 export function getLocalRestaurantPlaces(islandCode: IslandCode) {
   return (restaurantDataByIsland[islandCode] || [])
-    .filter((item): item is RestaurantRecord => Boolean(item) && typeof item === "object")
+    .filter(
+      (item): item is RestaurantRecord => Boolean(item) && typeof item === "object"
+    )
     .map((record, index) => normalizeRestaurantPlace(record, islandCode, index));
 }
 
+function mergeRestaurantPlaces(
+  firestoreRestaurants: PlaceDoc[],
+  localRestaurants: PlaceDoc[]
+) {
+  const merged = new Map<string, PlaceDoc>();
+
+  // Add local first so Firestore can override matching docs.
+  for (const restaurant of localRestaurants) {
+    merged.set(restaurantKey(restaurant), restaurant);
+  }
+
+  for (const restaurant of firestoreRestaurants) {
+    merged.set(restaurantKey(restaurant), restaurant);
+  }
+
+  return Array.from(merged.values()).sort((a, b) =>
+    String(a.title || "").localeCompare(String(b.title || ""))
+  );
+}
+
 export async function getRestaurantPlaces(islandCode: IslandCode) {
+  const localRestaurants = getLocalRestaurantPlaces(islandCode);
+
   try {
     const firestoreRestaurants = await getPlacesByCategory("restaurant", islandCode);
+
+    if (firestoreRestaurants.length && localRestaurants.length) {
+      return {
+        source: "merged" as const,
+        restaurants: mergeRestaurantPlaces(firestoreRestaurants, localRestaurants),
+        firestoreCount: firestoreRestaurants.length,
+        localCount: localRestaurants.length,
+      };
+    }
 
     if (firestoreRestaurants.length) {
       return {
         source: "firestore" as const,
         restaurants: firestoreRestaurants,
+        firestoreCount: firestoreRestaurants.length,
+        localCount: 0,
       };
     }
   } catch (error) {
@@ -152,6 +196,8 @@ export async function getRestaurantPlaces(islandCode: IslandCode) {
 
   return {
     source: "local-json" as const,
-    restaurants: getLocalRestaurantPlaces(islandCode),
+    restaurants: localRestaurants,
+    firestoreCount: 0,
+    localCount: localRestaurants.length,
   };
 }

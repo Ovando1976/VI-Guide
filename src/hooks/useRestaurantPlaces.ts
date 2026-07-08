@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { getRestaurantPlaces } from "../lib/restaurants/restaurantPlaceSource";
+import { getRestaurantPlaces, type RestaurantPlaceSource } from "../lib/restaurants/restaurantPlaceSource";
 import type { IslandCode, PlaceDoc } from "../types";
-
-type RestaurantSource = "firestore" | "local-json";
 
 export function useRestaurantPlaces(islandCode: IslandCode) {
   const [restaurants, setRestaurants] = useState<PlaceDoc[]>([]);
-  const [source, setSource] = useState<RestaurantSource>("firestore");
+  const [source, setSource] = useState<RestaurantPlaceSource>("firestore");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 

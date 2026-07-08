@@ -143,6 +143,15 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+
+    match /places/{placeId} {
+      // Public destination, beach, restaurant, attraction, and transportation data.
+      allow read: if true;
+
+      // Writes stay restricted. Restaurant seeding uses Admin SDK and bypasses rules.
+      allow create, update, delete: if isAdmin() || isPartner();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
