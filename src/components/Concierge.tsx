@@ -412,6 +412,8 @@ function MessageBubble({
   onSelectListing?: (listing: Listing) => void;
 }) {
   const isUser = message.role === "user";
+  const topListing = !isUser && message.listings?.length ? message.listings[0] : null;
+  const otherListings = !isUser && message.listings?.length ? message.listings.slice(1, 5) : [];
 
   return (
     <div className={cn("flex gap-4", isUser ? "flex-row-reverse" : "flex-row")}>
@@ -426,50 +428,119 @@ function MessageBubble({
 
       <article
         className={cn(
-          "max-w-[82%] rounded-[2rem] p-5 shadow-xl md:p-6",
+          "max-w-[86%] rounded-[2rem] p-5 shadow-xl md:p-6",
           isUser
             ? "rounded-tr-none bg-ink text-white"
             : "rounded-tl-none bg-white text-ink",
         )}
       >
+        {topListing ? (
+          <button
+            type="button"
+            onClick={() => onSelectListing?.(topListing)}
+            className="mb-5 grid w-full gap-4 overflow-hidden rounded-[1.75rem] bg-emerald-950 text-left text-white shadow-xl active:scale-[0.99] md:grid-cols-[140px_1fr]"
+          >
+            <div className="h-36 bg-stone-800 md:h-full">
+              <img
+                src={topListing.coverImage || "/images/places/st-thomas/sapphire-marina-1.jpg"}
+                alt={topListing.title}
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            <div className="p-5">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-turquoise">
+                Top recommendation
+              </p>
+              <h3 className="mt-2 font-serif text-3xl leading-none">{topListing.title}</h3>
+              <p className="mt-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-white/60">
+                <MapPin className="h-3 w-3 text-turquoise" />
+                {listingLocation(topListing)}
+              </p>
+            </div>
+          </button>
+        ) : null}
+
         <div
           className={cn(
             "prose prose-sm max-w-none leading-7",
-            isUser ? "prose-invert" : "prose-stone",
+            isUser ? "prose-invert" : "prose-stone rounded-[1.5rem] bg-stone-50/70 p-4",
           )}
         >
           <ReactMarkdown>{message.text}</ReactMarkdown>
         </div>
 
-        {message.listings?.length ? (
-          <div className="mt-5 grid gap-3">
-            {message.listings.map((listing) => (
-              <button
-                key={listing.id}
-                type="button"
-                onClick={() => onSelectListing?.(listing)}
-                className="group flex items-center gap-4 rounded-2xl border border-stone-100 bg-stone-50 p-3 text-left transition hover:bg-white hover:shadow-xl active:scale-95"
-              >
-                <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-stone-200">
-                  <img
-                    src={listing.coverImage || "/images/places/st-thomas/sapphire-marina-1.jpg"}
-                    alt={listing.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
+        {message.plan?.length ? (
+          <div className="mt-5 rounded-[1.75rem] border border-emerald-100 bg-emerald-50/80 p-4">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
+                Smart plan
+              </p>
+              <span className="rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-emerald-800">
+                {message.plan.length} steps
+              </span>
+            </div>
 
-                <div className="min-w-0 flex-1">
-                  <h4 className="truncate text-base font-black text-ink">{listing.title}</h4>
-                  <p className="mt-1 flex items-center gap-2 truncate text-xs font-bold text-stone-400">
-                    <MapPin className="h-3 w-3 text-emerald-700" />
-                    {listingLocation(listing)}
-                  </p>
-                </div>
+            <div className="mt-4 grid gap-3">
+              {message.plan.map((step, index) => (
+                <button
+                  key={`${step.title}-${index}`}
+                  type="button"
+                  onClick={() => step.path && window.location.assign(step.path)}
+                  className="grid gap-3 rounded-2xl bg-white p-4 text-left shadow-sm transition active:scale-[0.99] md:grid-cols-[72px_1fr]"
+                >
+                  <span className="rounded-2xl bg-ink px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-turquoise">
+                    {step.time || `Step ${index + 1}`}
+                  </span>
 
-                <ChevronRight className="h-4 w-4 text-stone-300 group-hover:text-emerald-700" />
-              </button>
-            ))}
+                  <span className="min-w-0">
+                    <span className="block text-sm font-black text-ink">{step.title}</span>
+                    <span className="mt-1 block text-xs font-bold leading-5 text-stone-500">
+                      {step.detail}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {otherListings.length ? (
+          <div className="mt-5 rounded-[1.75rem] bg-stone-50 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-stone-400">
+              Other good matches
+            </p>
+
+            <div className="mt-3 grid gap-3">
+              {otherListings.map((listing) => (
+                <button
+                  key={listing.id}
+                  type="button"
+                  onClick={() => onSelectListing?.(listing)}
+                  className="group flex items-center gap-4 rounded-2xl bg-white p-3 text-left shadow-sm transition hover:shadow-xl active:scale-[0.99]"
+                >
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-stone-200">
+                    <img
+                      src={listing.coverImage || "/images/places/st-thomas/sapphire-marina-1.jpg"}
+                      alt={listing.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <h4 className="truncate text-base font-black text-ink">{listing.title}</h4>
+                    <p className="mt-1 flex items-center gap-2 truncate text-xs font-bold text-stone-400">
+                      <MapPin className="h-3 w-3 text-emerald-700" />
+                      {listingLocation(listing)}
+                    </p>
+                  </div>
+
+                  <ChevronRight className="h-4 w-4 text-stone-300 group-hover:text-emerald-700" />
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
 
@@ -501,57 +572,41 @@ function MessageBubble({
           </div>
         ) : null}
 
-
-        {message.plan?.length ? (
-          <div className="mt-5 rounded-[1.75rem] border border-emerald-100 bg-emerald-50/70 p-4">
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
-              Smart plan
+        {message.actions?.length ? (
+          <div className="mt-5 rounded-[1.75rem] bg-ink p-4 text-white">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-turquoise">
+              Next actions
             </p>
 
-            <div className="mt-4 grid gap-3">
-              {message.plan.map((step, index) => (
+            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              {message.actions.map((action) => (
                 <button
-                  key={`${step.title}-${index}`}
+                  key={`${action.label}-${action.path}`}
                   type="button"
-                  onClick={() => step.path && window.location.assign(step.path)}
-                  className="flex gap-3 rounded-2xl bg-white p-4 text-left shadow-sm transition active:scale-95"
+                  onClick={() => window.location.assign(action.path)}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-left shadow-lg transition active:scale-[0.98]",
+                    action.kind === "checkout"
+                      ? "bg-[#ffcf32] text-ink"
+                      : "bg-white/10 text-white",
+                  )}
                 >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-ink text-turquoise text-xs font-black">
-                    {step.time || index + 1}
-                  </span>
-
-                  <span className="min-w-0">
-                    <span className="block text-sm font-black text-ink">{step.title}</span>
-                    <span className="mt-1 block text-xs font-bold leading-5 text-stone-500">
-                      {step.detail}
+                  <span className="block text-sm font-black">{action.label}</span>
+                  {action.description ? (
+                    <span
+                      className={cn(
+                        "mt-1 block text-xs font-bold leading-5",
+                        action.kind === "checkout" ? "text-ink/60" : "text-white/60",
+                      )}
+                    >
+                      {action.description}
                     </span>
-                  </span>
+                  ) : null}
                 </button>
               ))}
             </div>
           </div>
         ) : null}
-
-        {message.actions?.length ? (
-          <div className="mt-5 grid gap-2 sm:grid-cols-2">
-            {message.actions.map((action) => (
-              <button
-                key={`${action.label}-${action.path}`}
-                type="button"
-                onClick={() => window.location.assign(action.path)}
-                className="rounded-2xl bg-ink px-4 py-3 text-left text-white shadow-lg transition active:scale-95"
-              >
-                <span className="block text-sm font-black">{action.label}</span>
-                {action.description ? (
-                  <span className="mt-1 block text-xs font-bold leading-5 text-white/60">
-                    {action.description}
-                  </span>
-                ) : null}
-              </button>
-            ))}
-          </div>
-        ) : null}
-
 
         {message.provider ? (
           <div className="mt-4 inline-flex rounded-full bg-stone-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">
@@ -559,7 +614,7 @@ function MessageBubble({
           </div>
         ) : null}
 
-        {message.suggestedRoutes ? (
+        {!message.actions?.length && message.suggestedRoutes ? (
           <div className="mt-5 flex flex-wrap gap-2">
             {Object.entries(message.suggestedRoutes)
               .filter(([, path]) => Boolean(path))

@@ -80,6 +80,7 @@ function createUserProfile(firebaseUser: User): UserProfile {
     email,
     displayName: firebaseUser.displayName || "Guest",
     photoURL: firebaseUser.photoURL || "",
+    selectedIsland: DEFAULT_ISLAND,
     role: ADMIN_EMAILS.has(email.toLowerCase()) ? "admin" : "user",
     createdAt: Date.now(),
     updatedAt: Date.now(),

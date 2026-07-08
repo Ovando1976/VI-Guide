@@ -942,6 +942,68 @@ function buildConciergeActions(input: {
   return actions.slice(0, 5);
 }
 
+
+function buildConciergeDisplayAnswer(input: {
+  intent: ConciergeIntent;
+  islandCode: IslandCode;
+  topListing: any;
+  premium: boolean;
+  modelAnswer: string;
+}) {
+  const islandName =
+    input.islandCode === "st_john"
+      ? "St. John"
+      : input.islandCode === "st_croix"
+        ? "St. Croix"
+        : input.islandCode === "water_island"
+          ? "Water Island"
+          : "St. Thomas";
+
+  const placeName = input.topListing?.title || "your best matching stop";
+
+  const premiumLine = input.premium
+    ? "I added the next workflow steps below so you can save or route the plan."
+    : "Unlock the visitor pass when you want this organized into premium trip tools.";
+
+  if (input.intent === "cruise_day") {
+    return `**Best anchor: ${placeName}.** For a cruise day on ${islandName}, keep the plan simple: one strong beach stop, one nearby food stop, and a return ride with buffer. Use the Smart Plan below to move from port, to beach, to food, then back toward the ship. ${premiumLine}`;
+  }
+
+  if (input.intent === "beach_day") {
+    return `**Best beach anchor: ${placeName}.** Build the day around ${placeName}, then add nearby food and a ride preview instead of bouncing between too many stops. ${premiumLine}`;
+  }
+
+  if (input.intent === "ride") {
+    return `**Best next move: plan the ride.** Start with pickup, destination, passengers, luggage, and timing. Then open Mobility to preview the route and create a cleaner transportation handoff. ${premiumLine}`;
+  }
+
+  if (input.intent === "stay") {
+    return `**Best next move: compare stays.** Start with location, group size, budget, and whether you want hotel, villa, resort, or charter-style options. Then use Hotels to move into a booking inquiry. ${premiumLine}`;
+  }
+
+  if (input.intent === "events") {
+    return `**Best next move: check events around your route.** Pick your main island plan first, then add one event if it fits the timing. Use Events and Visitor Desk to avoid overloading the day. ${premiumLine}`;
+  }
+
+  if (input.intent === "partner") {
+    return `**Best next move: open the partner workflow.** Claim or manage the listing, review booking inquiries, and connect the business to visitor demand. ${premiumLine}`;
+  }
+
+  if (input.intent === "operator") {
+    return `**Operator view ready.** Use the actions below to move between map context, mobility, partner workflow, and admin review.`;
+  }
+
+  return (
+    input.modelAnswer
+      .split("\\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .slice(0, 4)
+      .join("\\n") ||
+    `**Start with ${placeName}.** Use the recommendation, plan, and action buttons below to move from advice into workflow.`
+  );
+}
+
 export const aiConcierge = onRequest(
   {
     region: "us-central1",
@@ -1033,6 +1095,8 @@ Core job:
 
 Rules:
 - Be specific, practical, concise, and local.
+- Keep the natural-language answer short. The UI already renders plan cards, action cards, listings, and route buttons.
+- Do not write a long itinerary essay unless the user explicitly asks for a detailed itinerary.
 - Do not invent official prices, ferry times, laws, schedules, or guarantees.
 - Do not name a specific business, driver, guide, hotel, restaurant, attraction, or service unless the exact name appears in allowedAppNames.
 - For transportation, say "taxi", "private ride", "mobility request", or "driver pickup" unless a specific provider exists in allowedAppNames.
@@ -1086,7 +1150,15 @@ Access:
         appContext,
       });
 
-      const answer = sanitizeConciergeAnswer(rawAnswer, allowedAppNames);
+      const modelAnswer = sanitizeConciergeAnswer(rawAnswer, allowedAppNames);
+
+      const answer = buildConciergeDisplayAnswer({
+        intent: inferConciergeIntent(message, operatorMode),
+        islandCode,
+        topListing: searchableListings[0] || null,
+        premium,
+        modelAnswer,
+      });
 
       const q = message.toLowerCase();
       const words = q.split(/\s+/).filter((word) => word.length > 3);
