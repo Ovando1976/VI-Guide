@@ -630,7 +630,7 @@ async function callOpenAIConcierge(input: {
           ],
         },
       ],
-      max_output_tokens: 900,
+      max_output_tokens: 1200,
     }),
   });
 
@@ -855,7 +855,7 @@ function buildConciergePlan(input: {
         : "Unlock the visitor pass",
       detail: input.premium
         ? "Keep the plan, route, booking handoffs, and notes together."
-        : "Unlock premium planning tools when you want the organized trip desk.",
+        : "I can help organize this into a trip plan when you are ready.",
       path: input.premium ? "/visitor-desk" : "/visitor-checkout",
     },
   ];
@@ -868,80 +868,97 @@ function buildConciergeActions(input: {
   partner: boolean;
   admin: boolean;
 }) {
-  const actions = [
-    {
-      label: "Open map",
-      description: "See nearby places and island context.",
-      path: `/map?island=${input.islandCode}`,
-      kind: "map",
-    },
-    {
-      label: "Plan ride",
-      description: "Preview pickup, destination, and route.",
-      path: "/mobility",
-      kind: "mobility",
-    },
-  ];
+  const actions: Array<{
+    label: string;
+    description: string;
+    path: string;
+    kind:
+      | "map"
+      | "mobility"
+      | "booking"
+      | "checkout"
+      | "partner"
+      | "admin"
+      | "general";
+  }> = [];
 
-  if (
-    input.intent === "stay" ||
-    input.intent === "cruise_day" ||
-    input.intent === "general"
-  ) {
-    actions.push({
-      label: "Find stays",
-      description: "Hotels, villas, charters, and booking inquiries.",
-      path: "/hotels",
-      kind: "booking",
-    });
-  }
+  const add = (
+    label: string,
+    description: string,
+    path: string,
+    kind:
+      | "map"
+      | "mobility"
+      | "booking"
+      | "checkout"
+      | "partner"
+      | "admin"
+      | "general"
+  ) => {
+    actions.push({ label, description, path, kind });
+  };
 
-  if (input.intent === "events") {
-    actions.push({
-      label: "View events",
-      description: "See local events and cultural activity.",
-      path: "/events",
-      kind: "general",
-    });
-  }
-
-  if (!input.premium) {
-    actions.push({
-      label: "Unlock visitor pass",
-      description: "Premium trip planning and organized visitor tools.",
-      path: "/visitor-checkout",
-      kind: "checkout",
-    });
+  if (input.intent === "ride") {
+    add(
+      "Preview the ride",
+      "Map the pickup, destination, and route.",
+      "/mobility",
+      "mobility"
+    );
+  } else if (input.intent === "stay") {
+    add(
+      "Compare stays",
+      "Review stays that fit this plan.",
+      "/hotels",
+      "booking"
+    );
+  } else if (input.intent === "events") {
+    add(
+      "Check events",
+      "See what fits around this plan.",
+      "/events",
+      "general"
+    );
+  } else if (input.intent === "partner" && input.partner) {
+    add(
+      "Open partner desk",
+      "Manage listing, leads, and business workflow.",
+      "/partner-desk",
+      "partner"
+    );
+  } else if (input.intent === "operator" && input.admin) {
+    add(
+      "Open admin desk",
+      "Review operations and partner workflow.",
+      "/admin-desk",
+      "admin"
+    );
   } else {
-    actions.push({
-      label: "Open visitor desk",
-      description: "Save and organize this plan.",
-      path: "/visitor-desk",
-      kind: "general",
-    });
+    add(
+      "Show this on map",
+      "See the location and nearby context.",
+      `/map?island=${input.islandCode}`,
+      "map"
+    );
+    add(
+      "Plan pickup",
+      "Preview transportation for this plan.",
+      "/mobility",
+      "mobility"
+    );
   }
 
-  if (input.partner) {
-    actions.push({
-      label: "Partner desk",
-      description: "Manage listing, leads, and business workflow.",
-      path: "/partner-desk",
-      kind: "partner",
-    });
+  if (input.premium) {
+    add(
+      "Save this plan",
+      "Keep this itinerary in your visitor desk.",
+      "/visitor-desk",
+      "general"
+    );
   }
 
-  if (input.admin) {
-    actions.push({
-      label: "Admin desk",
-      description: "Review operations, revenue, and partner workflow.",
-      path: "/admin-desk",
-      kind: "admin",
-    });
-  }
-
-  return actions.slice(0, 5);
+  return actions.slice(0, 3);
 }
-
 
 function buildConciergeDisplayAnswer(input: {
   intent: ConciergeIntent;
@@ -954,61 +971,146 @@ function buildConciergeDisplayAnswer(input: {
     input.islandCode === "st_john"
       ? "St. John"
       : input.islandCode === "st_croix"
-        ? "St. Croix"
-        : input.islandCode === "water_island"
-          ? "Water Island"
-          : "St. Thomas";
+      ? "St. Croix"
+      : input.islandCode === "water_island"
+      ? "Water Island"
+      : "St. Thomas";
 
   const placeName = input.topListing?.title || "your best matching stop";
+  const area = input.topListing?.areaSlug
+    ? String(input.topListing.areaSlug).replace(/-/g, " ")
+    : islandName;
+  const description =
+    typeof input.topListing?.description === "string"
+      ? input.topListing.description
+      : "";
 
-  const premiumLine = input.premium
-    ? "I added the next workflow steps below so you can save or route the plan."
-    : "Unlock the visitor pass when you want this organized into premium trip tools.";
+  const model = input.modelAnswer
+    .replace(/\r\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+  const anchorLine =
+    input.intent === "cruise_day"
+      ? `**Best cruise-day anchor: ${placeName}.**`
+      : input.intent === "beach_day"
+      ? `**Best beach anchor: ${placeName}.**`
+      : `**Best starting point: ${placeName}.**`;
+
+  const hasUsefulModelAnswer =
+    model.length >= 450 &&
+    /\b(food|lunch|dining|vendor|ride|taxi|transport|pickup|route|timing|plan|why|recommend)\b/i.test(
+      model
+    );
+
+  if (hasUsefulModelAnswer) {
+    return model.toLowerCase().includes(String(placeName).toLowerCase())
+      ? model
+      : `${anchorLine}\n\n${model}`;
+  }
 
   if (input.intent === "cruise_day") {
-    return `**Best anchor: ${placeName}.** For a cruise day on ${islandName}, keep the plan simple: one strong beach stop, one nearby food stop, and a return ride with buffer. Use the Smart Plan below to move from port, to beach, to food, then back toward the ship. ${premiumLine}`;
+    return `${anchorLine}
+
+**Why this works**
+${
+  description ||
+  `${placeName} gives you a focused stop around ${area}, so the day stays simple and realistic for a port visit.`
+}
+
+**Simple cruise-day flow**
+Start from the cruise port, ride to ${placeName}, spend your main beach block there, use a nearby food stop or beach vendor, then return toward the ship with a comfortable buffer.
+
+**Food nearby**
+Keep food close to the beach or on the way back toward port. For a cruise day, avoiding extra transfers is usually better than trying to fit in too many stops.
+
+**Transportation**
+Use a taxi, private ride, mobility request, or driver pickup. The cleanest route is port → ${placeName} → food stop → port.
+
+**Timing**
+Try to leave yourself 60–90 minutes of return buffer before all-aboard time.
+
+I can also help adjust this by cruise port, group size, beach vibe, or pickup time.`;
   }
 
   if (input.intent === "beach_day") {
-    return `**Best beach anchor: ${placeName}.** Build the day around ${placeName}, then add nearby food and a ride preview instead of bouncing between too many stops. ${premiumLine}`;
+    return `${anchorLine}
+
+**Why this works**
+${
+  description ||
+  `${placeName} is the strongest match for this ${islandName} beach-day request based on the available app data.`
+}
+
+**Suggested day flow**
+Make ${placeName} the main stop. Spend most of the day there, then add food and transportation around that anchor instead of trying to bounce between too many places.
+
+**Food nearby**
+Use a nearby food stop, beach vendor, or nearby dining area unless you already have a specific restaurant in mind.
+
+**Transportation**
+Use a taxi, private ride, mobility request, or driver pickup. Previewing the pickup and destination helps keep the ride simple.
+
+**Best move**
+Start with ${placeName}, keep the middle of the day flexible, and adjust based on weather, crowd level, and how much beach time you want.
+
+I can also tailor this for families, couples, snorkeling, calmer water, or a cruise schedule.`;
   }
 
   if (input.intent === "ride") {
-    return `**Best next move: plan the ride.** Start with pickup, destination, passengers, luggage, and timing. Then open Mobility to preview the route and create a cleaner transportation handoff. ${premiumLine}`;
+    return `**Ride plan.**
+
+Start by confirming pickup, destination, passengers, luggage, and timing.
+
+**Best next step**
+Preview the route before committing to the ride.
+
+**What to include**
+Tell the driver whether this is airport, cruise, ferry, beach, hotel, dinner, or multi-stop transportation.
+
+**Why it matters**
+A cleaner route makes pickup easier and avoids confusion once the trip starts.`;
   }
 
   if (input.intent === "stay") {
-    return `**Best next move: compare stays.** Start with location, group size, budget, and whether you want hotel, villa, resort, or charter-style options. Then use Hotels to move into a booking inquiry. ${premiumLine}`;
+    return `**Stay planning.**
+
+Start with island, group size, budget, arrival point, and the kind of stay you want.
+
+**What to compare**
+Look at beach access, restaurant access, transportation needs, and whether the stay fits the trip style.
+
+**Best next step**
+Narrow the stay type first: hotel, villa, resort, or charter-style option.`;
   }
 
   if (input.intent === "events") {
-    return `**Best next move: check events around your route.** Pick your main island plan first, then add one event if it fits the timing. Use Events and Visitor Desk to avoid overloading the day. ${premiumLine}`;
-  }
+    return `**Event planning.**
 
-  if (input.intent === "partner") {
-    return `**Best next move: open the partner workflow.** Claim or manage the listing, review booking inquiries, and connect the business to visitor demand. ${premiumLine}`;
-  }
+Start with your main island route first, then add an event only if the timing works.
 
-  if (input.intent === "operator") {
-    return `**Operator view ready.** Use the actions below to move between map context, mobility, partner workflow, and admin review.`;
+**Best flow**
+Beach or daytime activity first, food second, event third. That keeps the day from getting overloaded.`;
   }
 
   return (
-    input.modelAnswer
-      .split("\\n")
-      .map((line) => line.trim())
-      .filter(Boolean)
-      .slice(0, 4)
-      .join("\\n") ||
-    `**Start with ${placeName}.** Use the recommendation, plan, and action buttons below to move from advice into workflow.`
+    model ||
+    `${anchorLine}
+
+Use ${placeName} as the anchor, then build the food, transportation, and timing around it. I can tailor the plan based on who is going, where you are starting from, and how much time you have.`
   );
 }
 
-
-function scoreConciergeListing(message: string, intent: ConciergeIntent, item: any) {
+function scoreConciergeListing(
+  message: string,
+  intent: ConciergeIntent,
+  item: any
+) {
   const q = message.toLowerCase();
   const title = String(item.title || "").toLowerCase();
-  const text = `${item.title || ""} ${item.description || ""} ${item.category || ""} ${item.areaSlug || ""} ${item.address || ""}`.toLowerCase();
+  const text = `${item.title || ""} ${item.description || ""} ${
+    item.category || ""
+  } ${item.areaSlug || ""} ${item.address || ""}`.toLowerCase();
 
   let score = 0;
 
@@ -1054,7 +1156,11 @@ function scoreConciergeListing(message: string, intent: ConciergeIntent, item: a
   return score;
 }
 
-function rankConciergeRecommendations(message: string, intent: ConciergeIntent, listings: any[]) {
+function rankConciergeRecommendations(
+  message: string,
+  intent: ConciergeIntent,
+  listings: any[]
+) {
   return [...listings]
     .map((item) => ({
       item,
@@ -1136,7 +1242,7 @@ export const aiConcierge = onRequest(
       const rankedConciergeListings = rankConciergeRecommendations(
         message,
         currentIntent,
-        searchableListings,
+        searchableListings
       );
       const conciergeListings = rankedConciergeListings.length
         ? rankedConciergeListings
@@ -1164,15 +1270,17 @@ Core job:
 
 Rules:
 - Be specific, practical, concise, and local.
-- Keep the natural-language answer short. The UI already renders plan cards, action cards, listings, and route buttons.
-- Do not write a long itinerary essay unless the user explicitly asks for a detailed itinerary.
+- Give a complete concierge answer that can stand on its own. Cards and buttons support the answer; they do not replace it.
+- Act like a knowledgeable Virgin Islands host, not a link directory.
+- Use compact sections such as recommendation, why it works, food nearby, transportation, timing, and next step.
+- Do not push admin, partner, checkout, or dashboard links unless the user asks for that mode.
 - Do not invent official prices, ferry times, laws, schedules, or guarantees.
 - Do not name a specific business, driver, guide, hotel, restaurant, attraction, or service unless the exact name appears in allowedAppNames.
 - For transportation, say "taxi", "private ride", "mobility request", or "driver pickup" unless a specific provider exists in allowedAppNames.
 - For food, say "nearby food stop", "beach vendor", or "nearby dining area" unless the exact restaurant exists in allowedAppNames.
 - Prefer the app data provided in context.
 - If the user asks for booking, ride, stay, charter, tour, or partner action, suggest the right app route.
-- If premium is false, still help, but invite the user to unlock the visitor pass for premium tools.
+- If premium is false, still help fully. Do not push checkout unless the user asks to save, upgrade, or unlock premium tools.
 - If operatorMode is false, do not reveal admin-only routes or internal tooling.
 
 Access:

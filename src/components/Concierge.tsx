@@ -450,7 +450,7 @@ function MessageBubble({
             </div>
 
             <div className="p-5">
-              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-turquoise">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
                 Top recommendation
               </p>
               <h3 className="mt-2 font-serif text-3xl leading-none">{topListing.title}</h3>
@@ -573,9 +573,9 @@ function MessageBubble({
         ) : null}
 
         {message.actions?.length ? (
-          <div className="mt-5 rounded-[1.75rem] bg-ink p-4 text-white">
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-turquoise">
-              Next actions
+          <div className="mt-5 rounded-[1.75rem] border border-stone-100 bg-stone-50 p-4 text-ink">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
+              Host handoff
             </p>
 
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -588,7 +588,7 @@ function MessageBubble({
                     "rounded-2xl px-4 py-3 text-left shadow-lg transition active:scale-[0.98]",
                     action.kind === "checkout"
                       ? "bg-[#ffcf32] text-ink"
-                      : "bg-white/10 text-white",
+                      : "border border-stone-100 bg-white text-ink",
                   )}
                 >
                   <span className="block text-sm font-black">{action.label}</span>
@@ -596,7 +596,7 @@ function MessageBubble({
                     <span
                       className={cn(
                         "mt-1 block text-xs font-bold leading-5",
-                        action.kind === "checkout" ? "text-ink/60" : "text-white/60",
+                        action.kind === "checkout" ? "text-ink/60" : "text-stone-500",
                       )}
                     >
                       {action.description}
@@ -605,12 +605,6 @@ function MessageBubble({
                 </button>
               ))}
             </div>
-          </div>
-        ) : null}
-
-        {message.provider ? (
-          <div className="mt-4 inline-flex rounded-full bg-stone-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">
-            Provider: {message.provider}
           </div>
         ) : null}
 
