@@ -3,10 +3,34 @@ import type { BeachDoc, EventDoc, IslandCode, PlaceDoc } from "../../types";
 
 export type ConciergeListing = BeachDoc | PlaceDoc;
 
+export type ConciergePlanStep = {
+  time?: string;
+  title: string;
+  detail: string;
+  path?: string;
+};
+
+export type ConciergeAction = {
+  label: string;
+  description?: string;
+  path: string;
+  kind?:
+    | "map"
+    | "mobility"
+    | "booking"
+    | "checkout"
+    | "partner"
+    | "admin"
+    | "general";
+};
+
 export type ConciergeResponse = {
   answer: string;
   listings?: ConciergeListing[];
   events?: EventDoc[];
+  plan?: ConciergePlanStep[];
+  actions?: ConciergeAction[];
+  provider?: string;
   access?: {
     admin?: boolean;
     partner?: boolean;
@@ -44,9 +68,25 @@ export async function askAiConcierge(input: {
     }),
   });
 
-  if (!response.ok) {
-    throw new Error(`AI concierge failed: ${response.status}`);
+  const raw = await response.text();
+  let data: ConciergeResponse | { error?: string; message?: string } = {};
+
+  try {
+    data = raw ? JSON.parse(raw) : {};
+  } catch {
+    data = { error: raw };
   }
 
-  return (await response.json()) as ConciergeResponse;
+  if (!response.ok) {
+    const detail =
+      "message" in data && data.message
+        ? data.message
+        : "error" in data && data.error
+        ? data.error
+        : `HTTP ${response.status}`;
+
+    throw new Error(`AI concierge failed: ${detail}`);
+  }
+
+  return data as ConciergeResponse;
 }

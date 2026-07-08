@@ -31,6 +31,19 @@ type ConciergeMessage = {
   text: string;
   listings?: Listing[];
   events?: EventDoc[];
+  plan?: Array<{
+    time?: string;
+    title: string;
+    detail: string;
+    path?: string;
+  }>;
+  actions?: Array<{
+    label: string;
+    description?: string;
+    path: string;
+    kind?: string;
+  }>;
+  provider?: string;
   access?: {
     admin?: boolean;
     partner?: boolean;
@@ -159,6 +172,9 @@ export default function Concierge({
           text: result.answer,
           listings: result.listings || [],
           events: result.events || [],
+          plan: result.plan || [],
+          actions: result.actions || [],
+          provider: result.provider,
           access: result.access,
           suggestedRoutes: result.suggestedRoutes,
         },
@@ -482,6 +498,64 @@ function MessageBubble({
                 </div>
               </div>
             ))}
+          </div>
+        ) : null}
+
+
+        {message.plan?.length ? (
+          <div className="mt-5 rounded-[1.75rem] border border-emerald-100 bg-emerald-50/70 p-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-emerald-700">
+              Smart plan
+            </p>
+
+            <div className="mt-4 grid gap-3">
+              {message.plan.map((step, index) => (
+                <button
+                  key={`${step.title}-${index}`}
+                  type="button"
+                  onClick={() => step.path && window.location.assign(step.path)}
+                  className="flex gap-3 rounded-2xl bg-white p-4 text-left shadow-sm transition active:scale-95"
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-ink text-turquoise text-xs font-black">
+                    {step.time || index + 1}
+                  </span>
+
+                  <span className="min-w-0">
+                    <span className="block text-sm font-black text-ink">{step.title}</span>
+                    <span className="mt-1 block text-xs font-bold leading-5 text-stone-500">
+                      {step.detail}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {message.actions?.length ? (
+          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+            {message.actions.map((action) => (
+              <button
+                key={`${action.label}-${action.path}`}
+                type="button"
+                onClick={() => window.location.assign(action.path)}
+                className="rounded-2xl bg-ink px-4 py-3 text-left text-white shadow-lg transition active:scale-95"
+              >
+                <span className="block text-sm font-black">{action.label}</span>
+                {action.description ? (
+                  <span className="mt-1 block text-xs font-bold leading-5 text-white/60">
+                    {action.description}
+                  </span>
+                ) : null}
+              </button>
+            ))}
+          </div>
+        ) : null}
+
+
+        {message.provider ? (
+          <div className="mt-4 inline-flex rounded-full bg-stone-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">
+            Provider: {message.provider}
           </div>
         ) : null}
 
