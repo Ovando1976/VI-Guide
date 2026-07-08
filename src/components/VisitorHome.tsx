@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 type VisitorHomeProps = {
   selectedIsland?: string;
   onNavigate?: (path: string) => void;
+  onSelectListing?: unknown;
   user?: unknown;
 };
 
