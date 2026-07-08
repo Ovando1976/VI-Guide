@@ -22,6 +22,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+import { homepageCards, homepageFeatureImages, homepageHeroImage } from "../data/generated/homepageImages";
+
 type VisitorHomeProps = {
   selectedIsland?: string;
   onNavigate?: (path: string) => void;
@@ -163,8 +165,14 @@ export default function VisitorHome({
 
         <section className="mt-5 overflow-hidden rounded-[2.75rem] bg-emerald-950 text-white shadow-2xl">
           <div className="relative min-h-[560px] p-6 md:p-8 lg:min-h-[620px]">
-            <div className="absolute inset-0 opacity-40">
-              <div className="h-full w-full bg-[radial-gradient(circle_at_20%_15%,rgba(64,220,202,0.55),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(255,207,50,0.35),transparent_28%),linear-gradient(135deg,#022c22,#063f3a_45%,#081a1a)]" />
+            <div className="absolute inset-0">
+              <img
+                src={homepageHeroImage}
+                alt="Virgin Islands marina and island scenery"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/95 via-emerald-950/80 to-ink/85" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(64,220,202,0.35),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(255,207,50,0.25),transparent_28%)]" />
             </div>
 
             <div className="relative z-10 grid min-h-[500px] gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
@@ -210,6 +218,21 @@ export default function VisitorHome({
                     >
                       <CheckCircle2 className="h-5 w-5 shrink-0 text-turquoise" />
                       {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7 grid grid-cols-3 gap-3">
+                  {homepageFeatureImages.map((src) => (
+                    <div
+                      key={src}
+                      className="h-24 overflow-hidden rounded-2xl bg-white/10 shadow-lg md:h-32"
+                    >
+                      <img
+                        src={src}
+                        alt="Virgin Islands preview"
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                   ))}
                 </div>
@@ -273,6 +296,20 @@ export default function VisitorHome({
                 card.featured ? "bg-[#ffcf32] text-ink" : "bg-white text-ink"
               }`}
             >
+              <div className="mb-5 h-36 overflow-hidden rounded-[1.75rem] bg-stone-100">
+                <img
+                  src={
+                    card.path === "/visitor-desk"
+                      ? homepageCards.plan
+                      : card.path === "/hotels"
+                        ? homepageCards.stays
+                        : homepageCards.mobility
+                  }
+                  alt={card.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
               <div
                 className={`grid h-14 w-14 place-items-center rounded-2xl ${
                   card.featured ? "bg-ink text-[#ffcf32]" : "bg-emerald-950 text-turquoise"
@@ -342,6 +379,14 @@ export default function VisitorHome({
 
         <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
+            <div className="mb-5 h-44 overflow-hidden rounded-[2rem] bg-stone-100">
+              <img
+                src={homepageCards.pass}
+                alt="Virgin Islands beach visitor pass"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
             <p className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">
               Premium visitor pass
             </p>
@@ -369,10 +414,19 @@ export default function VisitorHome({
             </button>
           </article>
 
-          <article className="rounded-[2.5rem] bg-ink p-5 text-white shadow-xl md:p-6">
-            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-turquoise text-ink">
-              <Hotel className="h-7 w-7" />
+          <article className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-xl">
+            <div className="h-52 bg-stone-900">
+              <img
+                src={homepageCards.partner}
+                alt="Virgin Islands local partner business"
+                className="h-full w-full object-cover opacity-80"
+              />
             </div>
+
+            <div className="p-5 md:p-6">
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-turquoise text-ink">
+                <Hotel className="h-7 w-7" />
+              </div>
 
             <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-turquoise">
               Local partners
@@ -402,6 +456,7 @@ export default function VisitorHome({
               >
                 Claim a business
               </button>
+            </div>
             </div>
           </article>
         </section>

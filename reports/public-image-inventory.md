@@ -1,0 +1,133 @@
+# Public Image Inventory
+
+Total images: **471**
+
+## By extension
+
+- `.jpg`: 464
+- `.jpeg`: 5
+- `.svg`: 1
+- `.webp`: 1
+
+## By folder
+
+- `images/places/st-thomas`: 127
+- `images/places/st-croix`: 124
+- `images/places/st-john`: 86
+- `images/beaches/st-thomas`: 40
+- `images/beaches/st-john`: 23
+- `images/beaches/st-croix`: 19
+- `images/events/carnival`: 12
+- `images/events/culture`: 8
+- `images/places/water-island`: 7
+- `images/events/food`: 6
+- `images/events/sports`: 6
+- `images/events/music`: 5
+- `images/beaches/water-island`: 3
+- `images/events/holiday`: 2
+- `images`: 1
+- `images/accommodations/_pending`: 1
+- `images/events/marine`: 1
+
+## First 100 images
+
+- `/images/usvi-logo.jpeg` — 46.8 KB
+- `/images/accommodations/_pending/hero.svg` — 0.7 KB
+- `/images/beaches/st-croix/buccaneer-beach.jpg` — 12.9 KB
+- `/images/beaches/st-croix/buck-island-1.jpg` — 2513.2 KB
+- `/images/beaches/st-croix/buck-island-2.jpg` — 211.5 KB
+- `/images/beaches/st-croix/buck-island-3.jpg` — 59.2 KB
+- `/images/beaches/st-croix/cane-bay-1.jpg` — 201.6 KB
+- `/images/beaches/st-croix/cane-bay-2.jpg` — 54.5 KB
+- `/images/beaches/st-croix/chenay-bay.jpg` — 58.3 KB
+- `/images/beaches/st-croix/dorsch-beach.jpg` — 102.5 KB
+- `/images/beaches/st-croix/grapetree-bay.jpg` — 269.2 KB
+- `/images/beaches/st-croix/haypenny-beach.jpg` — 269.2 KB
+- `/images/beaches/st-croix/isaac-bay.jpg` — 463.9 KB
+- `/images/beaches/st-croix/jack-bay.jpg` — 50.2 KB
+- `/images/beaches/st-croix/protestant-cay.jpg` — 115.7 KB
+- `/images/beaches/st-croix/rainbow-beach-1.jpg` — 278.6 KB
+- `/images/beaches/st-croix/rainbow-beach-2.jpg` — 398.0 KB
+- `/images/beaches/st-croix/sandy-point-1.jpg` — 116.0 KB
+- `/images/beaches/st-croix/sandy-point-2.jpg` — 23.8 KB
+- `/images/beaches/st-croix/shoys-beach.jpg` — 85.4 KB
+- `/images/beaches/st-croix/tamarind-reef.jpg` — 561.7 KB
+- `/images/beaches/st-john/cinnamon-bay-1.jpeg` — 2211.5 KB
+- `/images/beaches/st-john/cinnamon-bay-2.jpg` — 180.3 KB
+- `/images/beaches/st-john/drunk-bay.jpg` — 112.7 KB
+- `/images/beaches/st-john/francis-bay.jpg` — 300.0 KB
+- `/images/beaches/st-john/gibney-beach.jpg` — 106.8 KB
+- `/images/beaches/st-john/great-cruz-bay.jpg` — 394.7 KB
+- `/images/beaches/st-john/hansen-bay.jpg` — 141.8 KB
+- `/images/beaches/st-john/hawksnest-bay-1.jpg` — 122.5 KB
+- `/images/beaches/st-john/hawksnest-bay-2.jpg` — 272.7 KB
+- `/images/beaches/st-john/honeymoon-beach-st-john-1.jpg` — 304.4 KB
+- `/images/beaches/st-john/honeymoon-beach-st-john-2.jpg` — 125.6 KB
+- `/images/beaches/st-john/honeymoon-beach-st-john-3.jpg` — 244.5 KB
+- `/images/beaches/st-john/lameshur-bay.jpg` — 429.6 KB
+- `/images/beaches/st-john/leinster-bay.jpg` — 90.2 KB
+- `/images/beaches/st-john/little-lameshur-bay.jpg` — 327.9 KB
+- `/images/beaches/st-john/maho-bay-1.jpeg` — 2211.5 KB
+- `/images/beaches/st-john/maho-bay-2.jpg` — 180.3 KB
+- `/images/beaches/st-john/salomon-beach.jpg` — 20.3 KB
+- `/images/beaches/st-john/salt-pond-bay.jpg` — 247.7 KB
+- `/images/beaches/st-john/trunk-bay-1.jpg` — 274.3 KB
+- `/images/beaches/st-john/trunk-bay-2.jpg` — 225.7 KB
+- `/images/beaches/st-john/trunk-bay-3.jpg` — 288.1 KB
+- `/images/beaches/st-john/waterlemon-cay.jpg` — 41.4 KB
+- `/images/beaches/st-thomas/bolongo-bay-1.jpg` — 76.6 KB
+- `/images/beaches/st-thomas/bolongo-bay-2.jpg` — 127.9 KB
+- `/images/beaches/st-thomas/bolongo-bay-3.jpeg` — 71.2 KB
+- `/images/beaches/st-thomas/brewers-bay-1.jpg` — 67.3 KB
+- `/images/beaches/st-thomas/brewers-bay-2.jpg` — 983.4 KB
+- `/images/beaches/st-thomas/brewers-bay-3.jpg` — 80.6 KB
+- `/images/beaches/st-thomas/coki-point-beach-1.jpg` — 133.6 KB
+- `/images/beaches/st-thomas/coki-point-beach-2.jpg` — 16.9 KB
+- `/images/beaches/st-thomas/coral-world-marine-park.jpg` — 86.1 KB
+- `/images/beaches/st-thomas/dorothea-beach-1.jpg` — 701.2 KB
+- `/images/beaches/st-thomas/dorothea-beach-2.jpg` — 96.9 KB
+- `/images/beaches/st-thomas/dorothea-beach-3.jpg` — 139.6 KB
+- `/images/beaches/st-thomas/hull-bay-1.jpg` — 216.0 KB
+- `/images/beaches/st-thomas/hull-bay-2.jpg` — 54.6 KB
+- `/images/beaches/st-thomas/hull-bay-3.jpg` — 252.6 KB
+- `/images/beaches/st-thomas/limetree-beach-1.jpg` — 61.7 KB
+- `/images/beaches/st-thomas/limetree-beach-2.jpg` — 523.6 KB
+- `/images/beaches/st-thomas/limetree-beach-3.jpg` — 14.2 KB
+- `/images/beaches/st-thomas/lindbergh-bay-1.jpg` — 111.2 KB
+- `/images/beaches/st-thomas/lindbergh-bay-2.jpg` — 153.7 KB
+- `/images/beaches/st-thomas/lindbergh-bay-3.jpg` — 789.3 KB
+- `/images/beaches/st-thomas/lindquist-beach-1.jpg` — 72.7 KB
+- `/images/beaches/st-thomas/lindquist-beach-2.jpg` — 77.6 KB
+- `/images/beaches/st-thomas/lindquist-beach-3.jpg` — 43.6 KB
+- `/images/beaches/st-thomas/magens-bay-1.jpg` — 244.1 KB
+- `/images/beaches/st-thomas/magens-bay-2.jpg` — 105.5 KB
+- `/images/beaches/st-thomas/magens-bay-3.jpg` — 134.5 KB
+- `/images/beaches/st-thomas/mandahl-bay-1.jpg` — 708.9 KB
+- `/images/beaches/st-thomas/mandahl-bay-2.jpg` — 42.6 KB
+- `/images/beaches/st-thomas/mandahl-bay-3.jpg` — 1213.6 KB
+- `/images/beaches/st-thomas/morningstar-beach-1.jpg` — 228.3 KB
+- `/images/beaches/st-thomas/morningstar-beach-2.jpg` — 44.1 KB
+- `/images/beaches/st-thomas/morningstar-beach-3.jpg` — 543.7 KB
+- `/images/beaches/st-thomas/sapphire-beach-1.jpg` — 804.4 KB
+- `/images/beaches/st-thomas/secret-harbour-1.jpg` — 378.7 KB
+- `/images/beaches/st-thomas/secret-harbour-2.jpg` — 227.0 KB
+- `/images/beaches/st-thomas/secret-harbour-3.jpg` — 225.8 KB
+- `/images/beaches/st-thomas/vessup-bay-1.jpg` — 457.7 KB
+- `/images/beaches/st-thomas/vessup-bay-2.jpg` — 286.9 KB
+- `/images/beaches/st-thomas/vessup-bay-3.jpg` — 258.0 KB
+- `/images/beaches/water-island/honeymoon-beach-water-island-2.jpg` — 180.3 KB
+- `/images/beaches/water-island/honeymoon-beach-water-island.jpg` — 136.1 KB
+- `/images/beaches/water-island/sprat-bay.jpg` — 58.8 KB
+- `/images/events/carnival/adult-parade.jpg` — 554.4 KB
+- `/images/events/carnival/carnival-queen-show.jpg` — 85.4 KB
+- `/images/events/carnival/carnival-village.jpg` — 534.0 KB
+- `/images/events/carnival/childrens-parade.jpg` — 78.4 KB
+- `/images/events/carnival/festival-princess.jpg` — 266.1 KB
+- `/images/events/carnival/food-fair.jpg` — 120.8 KB
+- `/images/events/carnival/jouvert.jpg` — 72.8 KB
+- `/images/events/carnival/panorama.jpg` — 29.4 KB
+- `/images/events/carnival/parade-1.jpg` — 554.4 KB
+- `/images/events/carnival/prince-and-princess-show.jpg` — 160.9 KB
+- `/images/events/carnival/queen-show.jpg` — 85.4 KB
+- `/images/events/carnival/st-thomas-carnival.jpg` — 591.3 KB
+- `/images/events/culture/annnaberg-plantation.jpg` — 24.5 KB
