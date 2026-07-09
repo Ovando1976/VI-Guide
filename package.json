@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "deploy:rules": "npx firebase-tools deploy --only firestore:rules,storage"
+    "deploy:rules": "npx firebase-tools deploy --only firestore:rules,storage",
+    "preview:mobile": "vite build && vite preview --host 0.0.0.0 --port 4173 --strictPort"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
