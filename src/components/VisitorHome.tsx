@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -25,13 +25,13 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import FeaturedIslandPicks from "./FeaturedIslandPicks";
 import {
   homepageCards,
   homepageFeatureImages,
   homepageHeroImage,
 } from "../data/generated/homepageImages";
 
+const FeaturedIslandPicks = lazy(() => import("./FeaturedIslandPicks"));
 type VisitorHomeProps = {
   selectedIsland?: string;
   onNavigate?: (path: string) => void;
@@ -119,10 +119,6 @@ function islandName(value?: string) {
   );
 }
 
-
-
-
-
 type HomeHeroFeaturedPick = {
   id: string;
   island: string;
@@ -133,7 +129,6 @@ type HomeHeroFeaturedPick = {
   route: string;
   tags: string[];
 };
-
 
 function heroPickOpenLabel(kind: HomeHeroFeaturedPick["kind"]) {
   if (kind === "Restaurant") return "Dine here";
@@ -208,7 +203,8 @@ const homeHeroFeaturedPicks: HomeHeroFeaturedPick[] = [
     island: "st_thomas",
     kind: "Stay",
     title: "Secret Harbour stay zone",
-    subtitle: "A strong East End stay base for beach, dining, and route planning.",
+    subtitle:
+      "A strong East End stay base for beach, dining, and route planning.",
     imageUrl: "/images/places/st-thomas/secret-harbour-beach-1.jpg",
     route: "/hotels?island=st_thomas",
     tags: ["Stay", "East End", "Beach"],
@@ -303,9 +299,19 @@ export default function VisitorHome({
   onNavigate,
 }: VisitorHomeProps) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setShowBelowFold(true);
+    }, 350);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const [selectedHeroPick, setSelectedHeroPick] =
     useState<HomeHeroFeaturedPick | null>(null);
   const [heroPickExpanded, setHeroPickExpanded] = useState(false);
+  const [showBelowFold, setShowBelowFold] = useState(false);
 
   useEffect(() => {
     const activeIsland = String(selectedIsland || "st_thomas");
@@ -354,7 +360,7 @@ export default function VisitorHome({
       if (!(event.target instanceof Element)) return;
 
       const image = event.target.closest(
-        'img[data-home-feature-pick-id]'
+        "img[data-home-feature-pick-id]"
       ) as HTMLImageElement | null;
 
       if (!image) return;
@@ -382,8 +388,6 @@ export default function VisitorHome({
       document.removeEventListener("click", handleFeaturedPickClick, true);
     };
   }, [selectedIsland]);
-
-
 
   const go = (path: string) => {
     if (onNavigate) {
@@ -447,7 +451,7 @@ export default function VisitorHome({
         <section className="mt-5 overflow-hidden rounded-[2.75rem] bg-emerald-950 text-white shadow-2xl">
           <div className="relative min-h-[520px] p-6 md:p-8 lg:min-h-[560px]">
             <div className="absolute inset-0">
-              <img
+              <img draggable={false} loading="eager" decoding="async"
                 src={homepageHeroImage}
                 alt="Virgin Islands marina and island scenery"
                 className="h-full w-full object-cover"
@@ -510,7 +514,7 @@ export default function VisitorHome({
                       key={src}
                       className="h-24 overflow-hidden rounded-2xl bg-white/10 shadow-lg md:h-32"
                     >
-                      <img
+                      <img draggable={false} loading="lazy" decoding="async"
                         src={src}
                         alt="Virgin Islands preview"
                         className="h-full w-full object-cover"
@@ -531,21 +535,29 @@ export default function VisitorHome({
                       icon={Plane}
                       label="Arrival"
                       title="Airport, cruise, ferry, or hotel pickup"
+                      path={`/mobility?island=${selectedIsland}&intent=arrival`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={MapPinned}
                       label="Discover"
                       title="Beaches, food, history, events, and local places"
+                      path={`/explore?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={Car}
                       label="Move"
                       title="Road previews and mobility handoff"
+                      path={`/mobility?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={CreditCard}
                       label="Unlock"
                       title="Visitor pass for premium trip tools"
+                      path={`/visitor-checkout?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                   </div>
 
@@ -579,7 +591,7 @@ export default function VisitorHome({
               }`}
             >
               <div className="mb-5 h-32 overflow-hidden rounded-[1.75rem] bg-stone-100 md:h-36">
-                <img
+                <img draggable={false} loading="lazy" decoding="async"
                   src={
                     card.path === "/visitor-desk"
                       ? homepageCards.plan
@@ -671,12 +683,26 @@ export default function VisitorHome({
           </div>
         </section>
 
-        <FeaturedIslandPicks selectedIsland={selectedIsland} />
+        {showBelowFold ? (
+          <Suspense
+            fallback={
+              <div className="mx-auto mt-8 max-w-6xl rounded-[3rem] bg-white/70 p-10 text-center shadow-sm">
+                <p className="font-serif text-lg italic text-stone-400">
+                  Loading island picks…
+                </p>
+              </div>
+            }
+          >
+            {showBelowFold ? (
+            <FeaturedIslandPicks selectedIsland={selectedIsland} />
+          ) : null}
+          </Suspense>
+        ) : null}
 
         <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
             <div className="mb-5 h-36 overflow-hidden rounded-[2rem] bg-stone-100 md:h-44">
-              <img
+              <img draggable={false} loading="lazy" decoding="async"
                 src={homepageCards.pass}
                 alt="Virgin Islands beach visitor pass"
                 className="h-full w-full object-cover"
@@ -713,7 +739,7 @@ export default function VisitorHome({
 
           <article className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-xl">
             <div className="h-40 bg-stone-900 md:h-52">
-              <img
+              <img draggable={false} loading="lazy" decoding="async"
                 src={homepageCards.partner}
                 alt="Virgin Islands local partner business"
                 className="h-full w-full object-cover opacity-80"
@@ -759,7 +785,7 @@ export default function VisitorHome({
           </article>
         </section>
       </section>
-    
+
       {selectedHeroPick ? (
         <div className="fixed inset-0 z-[90] flex items-end justify-center bg-slate-950/60 p-4 backdrop-blur-sm sm:items-center">
           <button
@@ -771,7 +797,7 @@ export default function VisitorHome({
 
           <article className="relative w-full max-w-xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
             <div className="relative aspect-[16/10] bg-zinc-100">
-              <img
+              <img draggable={false} loading="eager" decoding="async"
                 src={selectedHeroPick.imageUrl}
                 alt=""
                 className="h-full w-full object-cover"
@@ -799,7 +825,6 @@ export default function VisitorHome({
                   </span>
                 ))}
               </div>
-
 
               {heroPickExpanded ? (
                 <div className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
@@ -832,19 +857,23 @@ export default function VisitorHome({
                     navigate(selectedHeroPick.route);
                   }}
                   className="rounded-2xl bg-emerald-700 px-4 py-3 text-sm font-black text-white"
-                >{heroPickOpenLabel(selectedHeroPick.kind)}</button>
+                >
+                  {heroPickOpenLabel(selectedHeroPick.kind)}
+                </button>
 
                 <button
                   type="button"
                   onClick={() => setSelectedHeroPick(null)}
                   className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm font-black text-zinc-700"
-                >Keep browsing</button>
+                >
+                  Keep browsing
+                </button>
               </div>
             </div>
           </article>
         </div>
       ) : null}
-</main>
+    </main>
   );
 }
 
@@ -852,13 +881,17 @@ function TripRow({
   icon: Icon,
   label,
   title,
+  path,
+  onOpen,
 }: {
   icon: LucideIcon;
   label: string;
   title: string;
+  path?: string;
+  onOpen?: (path: string) => void;
 }) {
-  return (
-    <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+  const content = (
+    <>
       <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700">
         <Icon className="h-5 w-5" />
       </span>
@@ -869,6 +902,24 @@ function TripRow({
         </span>
         <span className="mt-1 block text-sm font-black">{title}</span>
       </span>
+    </>
+  );
+
+  if (path && onOpen) {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpen(path)}
+        className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-left shadow-sm transition active:scale-95"
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+      {content}
     </div>
   );
 }
