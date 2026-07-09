@@ -8,7 +8,6 @@ import { LogOut, Settings, Heart, Bell, Shield, HelpCircle, ChevronRight, User a
 import { format } from 'date-fns';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
-import { seedCanonicalData } from '../seed';
 
 export default function Profile({ 
   user, 
@@ -367,6 +366,7 @@ export default function Profile({
               onClick={async () => {
                 setIsSeeding(true);
                 try {
+                  const { seedCanonicalData } = await import("../seed");
                   await seedCanonicalData();
                   window.location.reload();
                 } catch (error) {

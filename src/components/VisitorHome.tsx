@@ -1,3 +1,4 @@
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -30,6 +31,7 @@ import {
   homepageHeroImage,
 } from "../data/generated/homepageImages";
 
+const FeaturedIslandPicks = lazy(() => import("./FeaturedIslandPicks"));
 type VisitorHomeProps = {
   selectedIsland?: string;
   onNavigate?: (path: string) => void;
@@ -83,17 +85,17 @@ const exploreActions: SmallAction[] = [
   { label: "Beaches", path: "/beaches", icon: Waves },
   { label: "Explore", path: "/explore", icon: Compass },
   { label: "Events", path: "/events", icon: CalendarDays },
-  { label: "Accommodations",
-    path: "/hotels",
-    icon: BedDouble,
-  },
+  { label: "Accommodations", path: "/hotels", icon: BedDouble },
   {
     label: "Restaurants",
     path: "/eat",
     icon: Utensils,
   },
   {
-    label: "VI Connect", path: "/connect", icon: Users },
+    label: "VI Connect",
+    path: "/connect",
+    icon: Users,
+  },
   { label: "Concierge", path: "/concierge", icon: MessageSquareText },
 ];
 
@@ -117,11 +119,275 @@ function islandName(value?: string) {
   );
 }
 
+type HomeHeroFeaturedPick = {
+  id: string;
+  island: string;
+  kind: "Beach" | "Restaurant" | "Stay";
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  route: string;
+  tags: string[];
+};
+
+function heroPickOpenLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Dine here";
+  if (kind === "Beach") return "Open beach";
+  if (kind === "Stay") return "Find stays";
+  return "Open this card";
+}
+
+function heroPickFullPageLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Open full dining page";
+  if (kind === "Beach") return "Open full beaches page";
+  if (kind === "Stay") return "Open stays page";
+  return "Open full page";
+}
+
+function heroPickDetailLabel(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") return "Dining detail";
+  if (kind === "Beach") return "Beach detail";
+  if (kind === "Stay") return "Stay detail";
+  return "Featured detail";
+}
+
+function heroPickDetailCopy(kind: HomeHeroFeaturedPick["kind"]) {
+  if (kind === "Restaurant") {
+    return "This is the selected restaurant card. Review the dining pick here first, then open the full dining page only if you want the complete restaurant list.";
+  }
+
+  if (kind === "Beach") {
+    return "This is the selected beach card. Review the beach pick here first, then open the full beaches page only if you want the complete beach list.";
+  }
+
+  if (kind === "Stay") {
+    return "This is the selected stay card. Review the stay area here first, then open the stays page only if you want lodging options and booking flow.";
+  }
+
+  return "Review this featured pick here first, then open the full page when you are ready.";
+}
+
+const homeHeroFeaturedPicks: HomeHeroFeaturedPick[] = [
+  {
+    id: "stt-magens",
+    island: "st_thomas",
+    kind: "Beach",
+    title: "Magens Bay",
+    subtitle: "Classic St. Thomas beach day with calm water and easy planning.",
+    imageUrl: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    route: "/beaches?island=st_thomas&beach=magens-bay",
+    tags: ["Beach", "Classic", "Family"],
+  },
+  {
+    id: "stt-sapphire",
+    island: "st_thomas",
+    kind: "Beach",
+    title: "Sapphire Beach",
+    subtitle: "East End beach energy, water views, and food nearby.",
+    imageUrl: "/images/beaches/st-thomas/sapphire-beach-1.jpg",
+    route: "/beaches?island=st_thomas&beach=sapphire-beach",
+    tags: ["Beach", "East End", "Views"],
+  },
+  {
+    id: "stt-gladys",
+    island: "st_thomas",
+    kind: "Restaurant",
+    title: "Gladys Café",
+    subtitle: "Classic local dining in downtown Charlotte Amalie.",
+    imageUrl: "/images/places/st-thomas/gladys-cafe-1.jpg",
+    route: "/eat?island=st_thomas&restaurant=gladys-cafe",
+    tags: ["Local Food", "Caribbean", "Downtown"],
+  },
+  {
+    id: "stt-secret-harbour",
+    island: "st_thomas",
+    kind: "Stay",
+    title: "Secret Harbour stay zone",
+    subtitle:
+      "A strong East End stay base for beach, dining, and route planning.",
+    imageUrl: "/images/places/st-thomas/secret-harbour-beach-1.jpg",
+    route: "/hotels?island=st_thomas",
+    tags: ["Stay", "East End", "Beach"],
+  },
+
+  {
+    id: "stj-trunk",
+    island: "st_john",
+    kind: "Beach",
+    title: "Trunk Bay",
+    subtitle: "Iconic St. John beach stop with postcard water.",
+    imageUrl: "/images/beaches/st-john/trunk-bay-1.jpg",
+    route: "/beaches?island=st_john&beach=trunk-bay",
+    tags: ["Beach", "Iconic", "North Shore"],
+  },
+  {
+    id: "stj-longboard",
+    island: "st_john",
+    kind: "Restaurant",
+    title: "The Longboard",
+    subtitle: "Cruz Bay food and drinks with a polished island feel.",
+    imageUrl: "/images/places/st-john/the-longboard-1.jpg",
+    route: "/eat?island=st_john&restaurant=the-longboard",
+    tags: ["Restaurant", "Cruz Bay", "Drinks"],
+  },
+  {
+    id: "stj-caneel",
+    island: "st_john",
+    kind: "Stay",
+    title: "Caneel Bay area",
+    subtitle: "Premium stay zone close to North Shore beach planning.",
+    imageUrl: "/images/places/st-john/caneel-bay-overlook-1.jpg",
+    route: "/hotels?island=st_john",
+    tags: ["Stay", "North Shore", "Views"],
+  },
+
+  {
+    id: "stx-rainbow",
+    island: "st_croix",
+    kind: "Beach",
+    title: "Rainbow Beach",
+    subtitle: "Frederiksted beach day with food, water, and sunset energy.",
+    imageUrl: "/images/beaches/st-croix/rainbow-beach-1.jpg",
+    route: "/beaches?island=st_croix&beach=rainbow-beach",
+    tags: ["Beach", "Sunset", "Frederiksted"],
+  },
+  {
+    id: "stx-ama",
+    island: "st_croix",
+    kind: "Restaurant",
+    title: "Ama at Cane Bay",
+    subtitle: "Waterfront dining on the St. Croix North Shore.",
+    imageUrl: "/images/places/st-croix/ama-at-cane-bay-1.jpg",
+    route: "/eat?island=st_croix&restaurant=ama-at-cane-bay",
+    tags: ["Restaurant", "Waterfront", "North Shore"],
+  },
+  {
+    id: "stx-buccaneer",
+    island: "st_croix",
+    kind: "Stay",
+    title: "Buccaneer area",
+    subtitle: "A strong stay anchor for beach, golf, and Christiansted access.",
+    imageUrl: "/images/places/st-croix/buccaneer-beach-1.jpg",
+    route: "/hotels?island=st_croix",
+    tags: ["Stay", "Beach", "Christiansted"],
+  },
+
+  {
+    id: "wi-honeymoon",
+    island: "water_island",
+    kind: "Beach",
+    title: "Honeymoon Beach",
+    subtitle: "Water Island beach day with ferry-friendly planning.",
+    imageUrl: "/images/beaches/water-island/honeymoon-beach-water-island.jpg",
+    route: "/beaches?island=water_island&beach=honeymoon-beach-water-island",
+    tags: ["Beach", "Ferry", "Relaxed"],
+  },
+  {
+    id: "wi-dinghys",
+    island: "water_island",
+    kind: "Restaurant",
+    title: "Dinghy’s Beach Bar",
+    subtitle: "Casual beach food and drinks right by the water.",
+    imageUrl: "/images/places/water-island/dinghys-beach-bar-1.jpg",
+    route: "/eat?island=water_island&restaurant=dinghys-beach-bar",
+    tags: ["Restaurant", "Beach Bar", "Water Island"],
+  },
+];
+
 export default function VisitorHome({
   selectedIsland = "st_thomas",
   onNavigate,
 }: VisitorHomeProps) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setShowBelowFold(true);
+    }, 350);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const [selectedHeroPick, setSelectedHeroPick] =
+    useState<HomeHeroFeaturedPick | null>(null);
+  const [heroPickExpanded, setHeroPickExpanded] = useState(false);
+  const [showBelowFold, setShowBelowFold] = useState(false);
+
+  useEffect(() => {
+    const activeIsland = String(selectedIsland || "st_thomas");
+    const islandPicks = homeHeroFeaturedPicks.filter(
+      (pick) => pick.island === activeIsland
+    );
+    const picks = islandPicks.length
+      ? islandPicks
+      : homeHeroFeaturedPicks.filter((pick) => pick.island === "st_thomas");
+
+    let tick = 0;
+
+    function thumbnailImages() {
+      return Array.from(
+        document.querySelectorAll<HTMLImageElement>(
+          'img[data-home-feature-pick="true"], img[src*="/images/beaches/"]'
+        )
+      ).filter((image) => {
+        const width = image.clientWidth || image.width;
+        const height = image.clientHeight || image.height;
+        return width > 40 && width <= 190 && height > 40 && height <= 190;
+      });
+    }
+
+    function paintThumbnails() {
+      const images = thumbnailImages().slice(0, 3);
+
+      images.forEach((image, index) => {
+        const pick = picks[(tick + index) % picks.length];
+        if (!pick) return;
+
+        image.src = pick.imageUrl;
+        image.alt = pick.title;
+        image.dataset.homeFeaturePick = "true";
+        image.dataset.homeFeaturePickId = pick.id;
+        image.style.cursor = "pointer";
+        image.setAttribute("role", "button");
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("aria-label", `Open ${pick.title}`);
+      });
+
+      tick += 1;
+    }
+
+    function handleFeaturedPickClick(event: MouseEvent) {
+      if (!(event.target instanceof Element)) return;
+
+      const image = event.target.closest(
+        "img[data-home-feature-pick-id]"
+      ) as HTMLImageElement | null;
+
+      if (!image) return;
+
+      const pick = homeHeroFeaturedPicks.find(
+        (item) => item.id === image.dataset.homeFeaturePickId
+      );
+
+      if (!pick) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      setHeroPickExpanded(false);
+      setSelectedHeroPick(pick);
+    }
+
+    paintThumbnails();
+
+    const paintTimer = window.setInterval(paintThumbnails, 4500);
+    document.addEventListener("click", handleFeaturedPickClick, true);
+
+    return () => {
+      window.clearInterval(paintTimer);
+      document.removeEventListener("click", handleFeaturedPickClick, true);
+    };
+  }, [selectedIsland]);
 
   const go = (path: string) => {
     if (onNavigate) {
@@ -185,7 +451,7 @@ export default function VisitorHome({
         <section className="mt-5 overflow-hidden rounded-[2.75rem] bg-emerald-950 text-white shadow-2xl">
           <div className="relative min-h-[520px] p-6 md:p-8 lg:min-h-[560px]">
             <div className="absolute inset-0">
-              <img
+              <img draggable={false} loading="eager" decoding="async"
                 src={homepageHeroImage}
                 alt="Virgin Islands marina and island scenery"
                 className="h-full w-full object-cover"
@@ -248,7 +514,7 @@ export default function VisitorHome({
                       key={src}
                       className="h-24 overflow-hidden rounded-2xl bg-white/10 shadow-lg md:h-32"
                     >
-                      <img
+                      <img draggable={false} loading="lazy" decoding="async"
                         src={src}
                         alt="Virgin Islands preview"
                         className="h-full w-full object-cover"
@@ -269,21 +535,29 @@ export default function VisitorHome({
                       icon={Plane}
                       label="Arrival"
                       title="Airport, cruise, ferry, or hotel pickup"
+                      path={`/mobility?island=${selectedIsland}&intent=arrival`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={MapPinned}
                       label="Discover"
                       title="Beaches, food, history, events, and local places"
+                      path={`/explore?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={Car}
                       label="Move"
                       title="Road previews and mobility handoff"
+                      path={`/mobility?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                     <TripRow
                       icon={CreditCard}
                       label="Unlock"
                       title="Visitor pass for premium trip tools"
+                      path={`/visitor-checkout?island=${selectedIsland}`}
+                      onOpen={go}
                     />
                   </div>
 
@@ -317,7 +591,7 @@ export default function VisitorHome({
               }`}
             >
               <div className="mb-5 h-32 overflow-hidden rounded-[1.75rem] bg-stone-100 md:h-36">
-                <img
+                <img draggable={false} loading="lazy" decoding="async"
                   src={
                     card.path === "/visitor-desk"
                       ? homepageCards.plan
@@ -409,10 +683,26 @@ export default function VisitorHome({
           </div>
         </section>
 
+        {showBelowFold ? (
+          <Suspense
+            fallback={
+              <div className="mx-auto mt-8 max-w-6xl rounded-[3rem] bg-white/70 p-10 text-center shadow-sm">
+                <p className="font-serif text-lg italic text-stone-400">
+                  Loading island picks…
+                </p>
+              </div>
+            }
+          >
+            {showBelowFold ? (
+            <FeaturedIslandPicks selectedIsland={selectedIsland} />
+          ) : null}
+          </Suspense>
+        ) : null}
+
         <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.85fr]">
           <article className="rounded-[2.5rem] bg-white p-5 shadow-xl md:p-6">
             <div className="mb-5 h-36 overflow-hidden rounded-[2rem] bg-stone-100 md:h-44">
-              <img
+              <img draggable={false} loading="lazy" decoding="async"
                 src={homepageCards.pass}
                 alt="Virgin Islands beach visitor pass"
                 className="h-full w-full object-cover"
@@ -449,7 +739,7 @@ export default function VisitorHome({
 
           <article className="overflow-hidden rounded-[2.5rem] bg-ink text-white shadow-xl">
             <div className="h-40 bg-stone-900 md:h-52">
-              <img
+              <img draggable={false} loading="lazy" decoding="async"
                 src={homepageCards.partner}
                 alt="Virgin Islands local partner business"
                 className="h-full w-full object-cover opacity-80"
@@ -495,6 +785,94 @@ export default function VisitorHome({
           </article>
         </section>
       </section>
+
+      {selectedHeroPick ? (
+        <div className="fixed inset-0 z-[90] flex items-end justify-center bg-slate-950/60 p-4 backdrop-blur-sm sm:items-center">
+          <button
+            type="button"
+            className="absolute inset-0"
+            aria-label="Close featured card"
+            onClick={() => setSelectedHeroPick(null)}
+          />
+
+          <article className="relative w-full max-w-xl overflow-hidden rounded-[2rem] bg-white shadow-2xl">
+            <div className="relative aspect-[16/10] bg-zinc-100">
+              <img draggable={false} loading="eager" decoding="async"
+                src={selectedHeroPick.imageUrl}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-emerald-700 shadow-sm">
+                {selectedHeroPick.kind}
+              </span>
+            </div>
+
+            <div className="p-5">
+              <h3 className="text-3xl font-black tracking-tight text-zinc-950">
+                {selectedHeroPick.title}
+              </h3>
+              <p className="mt-2 text-sm font-semibold leading-6 text-zinc-500">
+                {selectedHeroPick.subtitle}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {selectedHeroPick.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-emerald-700"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {heroPickExpanded ? (
+                <div className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">
+                    {heroPickDetailLabel(selectedHeroPick.kind)}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-zinc-600">
+                    {heroPickDetailCopy(selectedHeroPick.kind)}
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setHeroPickExpanded(false);
+                      setSelectedHeroPick(null);
+                      navigate(selectedHeroPick.route);
+                    }}
+                    className="mt-4 w-full rounded-2xl bg-zinc-950 px-4 py-3 text-sm font-black text-white"
+                  >
+                    {heroPickFullPageLabel(selectedHeroPick.kind)}
+                  </button>
+                </div>
+              ) : null}
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedHeroPick(null);
+                    navigate(selectedHeroPick.route);
+                  }}
+                  className="rounded-2xl bg-emerald-700 px-4 py-3 text-sm font-black text-white"
+                >
+                  {heroPickOpenLabel(selectedHeroPick.kind)}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedHeroPick(null)}
+                  className="rounded-2xl bg-zinc-100 px-4 py-3 text-sm font-black text-zinc-700"
+                >
+                  Keep browsing
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      ) : null}
     </main>
   );
 }
@@ -503,13 +881,17 @@ function TripRow({
   icon: Icon,
   label,
   title,
+  path,
+  onOpen,
 }: {
   icon: LucideIcon;
   label: string;
   title: string;
+  path?: string;
+  onOpen?: (path: string) => void;
 }) {
-  return (
-    <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+  const content = (
+    <>
       <span className="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-emerald-700">
         <Icon className="h-5 w-5" />
       </span>
@@ -520,6 +902,24 @@ function TripRow({
         </span>
         <span className="mt-1 block text-sm font-black">{title}</span>
       </span>
+    </>
+  );
+
+  if (path && onOpen) {
+    return (
+      <button
+        type="button"
+        onClick={() => onOpen(path)}
+        className="flex w-full items-center gap-3 rounded-2xl bg-white p-4 text-left shadow-sm transition active:scale-95"
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm">
+      {content}
     </div>
   );
 }

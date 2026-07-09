@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { lazy, useCallback, useEffect, useMemo, useState } from "react";
+import React, { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Route,
   Routes,
@@ -9,25 +9,19 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  Compass,
-  Map,
-  Ship,
-  Waves,
-  CalendarDays,
-  Sparkles,
-  ShieldCheck,
-} from "lucide-react";
-import {
-  GoogleAuthProvider,
-  User,
-  getRedirectResult,
-  onAuthStateChanged,
-  signInWithRedirect,
-} from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import type { User } from "firebase/auth";
+function RouteLoadingFallback() {
+  return (
+    <div className="flex min-h-[50vh] items-center justify-center px-8 text-center">
+      <div className="rounded-[2rem] bg-white/80 px-8 py-6 shadow-xl">
+        <p className="font-serif text-xl italic text-stone-500">
+          Loading island tools…
+        </p>
+      </div>
+    </div>
+  );
+}
 
-import { auth, db } from "./firebase";
 import type {
   AIDocument,
   BeachDoc,
@@ -40,54 +34,34 @@ import type {
 
 import ErrorBoundary from "./components/ErrorBoundary";
 import { MobileShell } from "./components/app-shell/MobileShell";
-import Explore from "./components/Explore";
-import Beaches from "./components/Beaches";
-import Eat from "./components/Eat";
-import Events from "./components/Events";
-import Community from "./components/Community";
-import Concierge from "./components/Concierge";
-import Mobility from "./components/Mobility";
-import MobilityDispatchDemo from "./components/MobilityDispatchDemo";
-import DemoHub from "./components/DemoHub";
-import AdminLeadsDashboard from "./components/AdminLeadsDashboard";
-import Documents from "./components/Documents";
-import Profile from "./components/Profile";
-import MerchantDashboard from "./components/MerchantDashboard";
-import PartnersPage from "./components/PartnersPage";
-import MerchantDemoDashboard from "./components/MerchantDemoDashboard";
-import ListingDetail from "./components/ListingDetail";
-import EventDetail from "./components/EventDetail";
-import { FeaturedSection } from "./components/FeaturedSection";
-import CruisePlanner from "./components/CruisePlanner";
-import Maps from "./components/Maps";
-import PlatformStats from "./components/PlatformStats";
-
 import VisitorHome from "./components/VisitorHome";
 
-import { seedBeaches } from "./seedBeaches";
-import { seedMapData } from "./seedMapData";
 import { DEFAULT_ISLAND } from "./lib/constants/islands";
 import { isIslandCode } from "./lib/utils/islands";
-import { getIslands } from "./lib/firestore/islands";
-
+const Explore = lazy(() => import("./components/Explore"));
+const Beaches = lazy(() => import("./components/Beaches"));
+const Eat = lazy(() => import("./components/Eat"));
 const VIConnect = lazy(() => import("./components/VIConnect"));
+const CruisePlanner = lazy(() => import("./components/CruisePlanner"));
+const Maps = lazy(() => import("./components/Maps"));
+const Events = lazy(() => import("./components/Events"));
+const MobilityDispatchDemo = lazy(() => import("./components/MobilityDispatchDemo"));
+const Mobility = lazy(() => import("./components/Mobility"));
+const Community = lazy(() => import("./components/Community"));
+const Concierge = lazy(() => import("./components/Concierge"));
+const Documents = lazy(() => import("./components/Documents"));
+const Profile = lazy(() => import("./components/Profile"));
+const AdminLeadsDashboard = lazy(() => import("./components/AdminLeadsDashboard"));
+const DemoHub = lazy(() => import("./components/DemoHub"));
+const PartnersPage = lazy(() => import("./components/PartnersPage"));
+const MerchantDemoDashboard = lazy(() => import("./components/MerchantDemoDashboard"));
+const MerchantDashboard = lazy(() => import("./components/MerchantDashboard"));
+const ListingDetail = lazy(() => import("./components/ListingDetail"));
+const EventDetail = lazy(() => import("./components/EventDetail"));
+const PlatformStats = lazy(() => import("./components/PlatformStats"));
 
 const ADMIN_EMAILS = new Set(["ovandorawlins@gmail.com"]);
 
-function createUserProfile(firebaseUser: User): UserProfile {
-  const email = firebaseUser.email ?? "";
-
-  return {
-    uid: firebaseUser.uid,
-    email,
-    displayName: firebaseUser.displayName || "Guest",
-    photoURL: firebaseUser.photoURL || "",
-    selectedIsland: DEFAULT_ISLAND,
-    role: ADMIN_EMAILS.has(email.toLowerCase()) ? "admin" : "user",
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
-  };
-}
 
 export default function App() {
   return (
@@ -105,7 +79,7 @@ function AppContent() {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [islands, setIslands] = useState<IslandDoc[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const [selectedListing, setSelectedListing] = useState<
     BeachDoc | PlaceDoc | null
@@ -119,11 +93,47 @@ function AppContent() {
   const [seeding, setSeeding] = useState(false);
 
   const islandParam = searchParams.get("island");
-  const exploreQueryParam = searchParams.get("q") ?? "";
-
   const selectedIsland: IslandCode = isIslandCode(islandParam)
     ? islandParam
     : DEFAULT_ISLAND;
+
+  useEffect(() => {
+    let cancelled = false;
+    let unsubscribe: (() => void) | undefined;
+
+    const timer = window.setTimeout(() => {
+      import("./lib/appAuth")
+        .then((authModule) => {
+          if (cancelled) return;
+
+          authModule.completeRedirectSignIn().catch((error) => {
+            console.error("Redirect login failed:", error);
+            setSeedStatus(error instanceof Error ? error.message : "Login failed.");
+          });
+
+          unsubscribe = authModule.startAppAuth({
+            setUser,
+            setProfile,
+          });
+        })
+        .catch((error) => {
+          console.warn("Firebase auth module failed to load:", error);
+        });
+    }, 1200);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+      unsubscribe?.();
+    };
+  }, []);
+
+  useEffect(() => {
+    import("./lib/firestore/islands")
+      .then(({ getIslands }) => getIslands())
+      .then(setIslands)
+      .catch((error) => console.error("Island load failed:", error));
+  }, []);
 
   const isAdmin = useMemo(() => {
     const email = user?.email?.toLowerCase();
@@ -137,58 +147,16 @@ function AppContent() {
       ? "operator"
       : "concierge";
 
-  useEffect(() => {
-    getRedirectResult(auth).catch((error) => {
-      console.error("Redirect login failed:", error);
-      setSeedStatus(error instanceof Error ? error.message : "Login failed.");
-    });
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      try {
-        setUser(firebaseUser);
-
-        if (!firebaseUser) {
-          setProfile(null);
-          return;
-        }
-
-        const userRef = doc(db, "users", firebaseUser.uid);
-        const userSnap = await getDoc(userRef);
-
-        if (userSnap.exists()) {
-          setProfile(userSnap.data() as UserProfile);
-        } else {
-          const newProfile = createUserProfile(firebaseUser);
-          await setDoc(userRef, newProfile);
-          setProfile(newProfile);
-        }
-      } catch (error) {
-        console.error("Auth profile load failed:", error);
-      } finally {
-        setLoading(false);
-      }
-    });
-
-    return unsubscribe;
-  }, []);
-
-  useEffect(() => {
-    if (loading) return;
-
-    getIslands()
-      .then(setIslands)
-      .catch((error) => console.error("Island load failed:", error));
-  }, [loading]);
-
-  const handleLogin = useCallback(async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider);
+const handleLogin = useCallback(async () => {
+    await import("./lib/appAuth").then((authModule) =>
+      authModule.signInWithGoogle()
+    );
   }, []);
 
   const handleLogout = useCallback(() => {
-    auth.signOut();
+    void import("./lib/appAuth").then((authModule) =>
+      authModule.signOutOfApp()
+    );
   }, []);
 
   const handleSelectDocument = useCallback(
@@ -216,9 +184,16 @@ function AppContent() {
     setSeedStatus("Seeding Firebase...");
 
     try {
+      const [{ seedMapData }, { seedBeaches }] = await Promise.all([
+        import("./seedMapData"),
+        import("./seedBeaches"),
+      ]);
+
       await seedMapData();
       await seedBeaches();
 
+    
+      const { getIslands } = await import("./lib/firestore/islands");
       const refreshedIslands = await getIslands();
       setIslands(refreshedIslands);
 
@@ -238,7 +213,7 @@ function AppContent() {
   return (
     <MobileShell isMerchant={profile?.role === "merchant"}>
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+        <Suspense fallback={<RouteLoadingFallback />}><Routes location={location} key={location.pathname}>
           <Route
             path="/"
             element={
@@ -364,7 +339,7 @@ function AppContent() {
             path="/merchant"
             element={<MerchantDashboard user={user} profile={profile} />}
           />
-        </Routes>
+        </Routes></Suspense>
       </AnimatePresence>
 
       <AnimatePresence>
@@ -395,151 +370,5 @@ function AppLoader() {
         className="h-12 w-12 rounded-full border-4 border-emerald-600 border-t-transparent"
       />
     </div>
-  );
-}
-
-function HomeScreen({
-  user,
-  isAdmin,
-  seeding,
-  seedStatus,
-  selectedIsland,
-  exploreQueryParam,
-  onSeed,
-  onLogin,
-  onNavigate,
-  onSelectListing,
-}: {
-  user: User | null;
-  isAdmin: boolean;
-  seeding: boolean;
-  seedStatus: string;
-  selectedIsland: IslandCode;
-  exploreQueryParam: string;
-  onSeed: () => void;
-  onLogin: () => void;
-  onNavigate: (path: string) => void;
-  onSelectListing: (listing: BeachDoc | PlaceDoc) => void;
-}) {
-  return (
-    <>
-      <section className="px-4 pt-6">
-        <div className="overflow-hidden rounded-[2rem] bg-emerald-950 text-white shadow-2xl">
-          <div className="p-5">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-emerald-200">
-              VI Navigator
-            </p>
-
-            <h1 className="mt-3 text-3xl font-black leading-tight">
-              The operating system for island discovery.
-            </h1>
-
-            <p className="mt-3 text-sm leading-relaxed text-emerald-50">
-              Beaches, dining, history, cruise planning, events, mobility, and
-              AI-powered local guidance across the Virgin Islands.
-            </p>
-
-            <PlatformStats />
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <HomeAction
-                icon={Waves}
-                label="Beaches"
-                onClick={() =>
-                  onNavigate(`/explore?category=beach&island=${selectedIsland}`)
-                }
-              />
-
-              <HomeAction
-                icon={Map}
-                label="Live Map"
-                onClick={() => onNavigate("/map")}
-              />
-
-              <HomeAction
-                icon={Ship}
-                label="Cruise"
-                onClick={() => onNavigate("/cruise")}
-              />
-
-              <HomeAction
-                icon={CalendarDays}
-                label="Events"
-                onClick={() => onNavigate("/events")}
-              />
-
-              <HomeAction
-                icon={Sparkles}
-                label="AI Concierge"
-                onClick={() => onNavigate("/concierge")}
-              />
-
-              <HomeAction
-                icon={Compass}
-                label="Explore"
-                onClick={() => onNavigate(`/explore?island=${selectedIsland}`)}
-              />
-
-              {isAdmin && (
-                <button
-                  onClick={user ? onSeed : onLogin}
-                  disabled={seeding}
-                  className="col-span-2 rounded-2xl bg-amber-300 px-4 py-3 text-sm font-black text-stone-950 disabled:opacity-50"
-                >
-                  {seeding ? "Seeding Firebase..." : "Seed Firebase"}
-                </button>
-              )}
-
-              {seedStatus && (
-                <div className="col-span-2 rounded-2xl bg-white/10 px-4 py-3 text-center text-xs font-bold text-emerald-100">
-                  {seedStatus}
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 bg-white/5 px-5 py-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-emerald-100">
-              <ShieldCheck className="h-4 w-4" />
-              Curated USVI place data, map-ready coordinates, and local
-              discovery.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-10" id="explore">
-        <FeaturedSection
-          selectedIsland={selectedIsland}
-          onSelectListing={onSelectListing}
-        />
-
-        <Explore
-          selectedIsland={selectedIsland}
-          initialSearchQuery={exploreQueryParam}
-          onSelectListing={onSelectListing}
-        />
-      </section>
-    </>
-  );
-}
-
-function HomeAction({
-  icon: Icon,
-  label,
-  onClick,
-}: {
-  icon: React.ElementType;
-  label: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className="rounded-2xl bg-white px-4 py-4 text-left text-emerald-950 shadow-lg transition active:scale-[0.98]"
-    >
-      <Icon className="mb-3 h-6 w-6 text-emerald-700" />
-      <span className="text-sm font-black">{label}</span>
-    </button>
   );
 }
