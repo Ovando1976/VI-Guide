@@ -6,10 +6,14 @@ import { defineSecret } from "firebase-functions/params";
 import { onRequest } from "firebase-functions/v2/https";
 import Stripe from "stripe";
 
+export { viIntelligence } from "./viIntelligence";
+
 const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 const OPENAI_MODEL = defineSecret("OPENAI_MODEL");
 
-admin.initializeApp();
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
 
 const stripeSecretKey = defineSecret("STRIPE_SECRET_KEY");
 const stripeWebhookSecret = defineSecret("STRIPE_WEBHOOK_SECRET");
@@ -50,7 +54,7 @@ function stripeClient() {
 function corsHeaders(origin?: string) {
   return {
     "Access-Control-Allow-Origin": origin || "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "POST,OPTIONS",
   };
 }
@@ -872,41 +876,93 @@ function buildConciergeActions(input: {
     label: string;
     description: string;
     path: string;
-    kind: "map" | "mobility" | "booking" | "checkout" | "partner" | "admin" | "general";
+    kind:
+      | "map"
+      | "mobility"
+      | "booking"
+      | "checkout"
+      | "partner"
+      | "admin"
+      | "general";
   }> = [];
 
   const add = (
     label: string,
     description: string,
     path: string,
-    kind: "map" | "mobility" | "booking" | "checkout" | "partner" | "admin" | "general",
+    kind:
+      | "map"
+      | "mobility"
+      | "booking"
+      | "checkout"
+      | "partner"
+      | "admin"
+      | "general"
   ) => {
     actions.push({ label, description, path, kind });
   };
 
   if (input.intent === "ride") {
-    add("Preview the ride", "Map the pickup, destination, and route.", "/mobility", "mobility");
+    add(
+      "Preview the ride",
+      "Map the pickup, destination, and route.",
+      "/mobility",
+      "mobility"
+    );
   } else if (input.intent === "stay") {
-    add("Compare stays", "Review stays that fit this plan.", "/hotels", "booking");
+    add(
+      "Compare stays",
+      "Review stays that fit this plan.",
+      "/hotels",
+      "booking"
+    );
   } else if (input.intent === "events") {
-    add("Check events", "See what fits around this plan.", "/events", "general");
+    add(
+      "Check events",
+      "See what fits around this plan.",
+      "/events",
+      "general"
+    );
   } else if (input.intent === "partner" && input.partner) {
-    add("Open partner desk", "Manage listing, leads, and business workflow.", "/partner-desk", "partner");
+    add(
+      "Open partner desk",
+      "Manage listing, leads, and business workflow.",
+      "/partner-desk",
+      "partner"
+    );
   } else if (input.intent === "operator" && input.admin) {
-    add("Open admin desk", "Review operations and partner workflow.", "/admin-desk", "admin");
+    add(
+      "Open admin desk",
+      "Review operations and partner workflow.",
+      "/admin-desk",
+      "admin"
+    );
   } else {
-    add("Show this on map", "See the location and nearby context.", `/map?island=${input.islandCode}`, "map");
-    add("Plan pickup", "Preview transportation for this plan.", "/mobility", "mobility");
+    add(
+      "Show this on map",
+      "See the location and nearby context.",
+      `/map?island=${input.islandCode}`,
+      "map"
+    );
+    add(
+      "Plan pickup",
+      "Preview transportation for this plan.",
+      "/mobility",
+      "mobility"
+    );
   }
 
   if (input.premium) {
-    add("Save this plan", "Keep this itinerary in your visitor desk.", "/visitor-desk", "general");
+    add(
+      "Save this plan",
+      "Keep this itinerary in your visitor desk.",
+      "/visitor-desk",
+      "general"
+    );
   }
 
   return actions.slice(0, 3);
 }
-
-
 
 function buildConciergeDisplayAnswer(input: {
   intent: ConciergeIntent;
@@ -919,10 +975,10 @@ function buildConciergeDisplayAnswer(input: {
     input.islandCode === "st_john"
       ? "St. John"
       : input.islandCode === "st_croix"
-        ? "St. Croix"
-        : input.islandCode === "water_island"
-          ? "Water Island"
-          : "St. Thomas";
+      ? "St. Croix"
+      : input.islandCode === "water_island"
+      ? "Water Island"
+      : "St. Thomas";
 
   const placeName = input.topListing?.title || "your best matching stop";
   const area = input.topListing?.areaSlug
@@ -943,12 +999,14 @@ function buildConciergeDisplayAnswer(input: {
     input.intent === "cruise_day"
       ? `**Best cruise-day anchor: ${placeName}.**`
       : input.intent === "beach_day"
-        ? `**Best beach anchor: ${placeName}.**`
-        : `**Best starting point: ${placeName}.**`;
+      ? `**Best beach anchor: ${placeName}.**`
+      : `**Best starting point: ${placeName}.**`;
 
   const hasUsefulModelAnswer =
     model.length >= 450 &&
-    /\b(food|lunch|dining|vendor|ride|taxi|transport|pickup|route|timing|plan|why|recommend)\b/i.test(model);
+    /\b(food|lunch|dining|vendor|ride|taxi|transport|pickup|route|timing|plan|why|recommend)\b/i.test(
+      model
+    );
 
   if (hasUsefulModelAnswer) {
     return model.toLowerCase().includes(String(placeName).toLowerCase())
@@ -960,7 +1018,10 @@ function buildConciergeDisplayAnswer(input: {
     return `${anchorLine}
 
 **Why this works**
-${description || `${placeName} gives you a focused stop around ${area}, so the day stays realistic for a port visit.`}
+${
+  description ||
+  `${placeName} gives you a focused stop around ${area}, so the day stays realistic for a port visit.`
+}
 
 **Simple cruise-day flow**
 Start from the cruise port, ride to ${placeName}, spend your main beach block there, use a nearby food stop or beach vendor, then return toward the ship with a comfortable buffer.
@@ -981,7 +1042,10 @@ I can also adjust this by cruise port, group size, beach vibe, or pickup time.`;
     return `${anchorLine}
 
 **Why this works**
-${description || `${placeName} is the strongest match for this ${islandName} beach-day request based on the available app data.`}
+${
+  description ||
+  `${placeName} is the strongest match for this ${islandName} beach-day request based on the available app data.`
+}
 
 **Suggested day flow**
 Make ${placeName} the main stop. Spend most of the day there, then add food and transportation around that anchor instead of bouncing between too many places.
@@ -1041,8 +1105,6 @@ Beach or daytime activity first, food second, event third. That keeps the day fr
 Use ${placeName} as the anchor, then build the food, transportation, and timing around it. I can tailor the plan based on who is going, where you are starting from, and how much time you have.`
   );
 }
-
-
 
 function scoreConciergeListing(
   message: string,
@@ -1111,6 +1173,160 @@ function rankConciergeRecommendations(
     }))
     .sort((a, b) => b.score - a.score)
     .map(({ item }) => item);
+}
+
+type ViIntent =
+  | "general_help"
+  | "trip_plan"
+  | "beach_recommendation"
+  | "restaurant_recommendation"
+  | "ride_request"
+  | "stay_planning"
+  | "event_discovery"
+  | "booking_lead"
+  | "route_planning"
+  | "local_history"
+  | "operator_insight"
+  | "emergency_or_safety";
+
+function mapConciergeIntentToViIntent(intent: ConciergeIntent): ViIntent {
+  switch (intent) {
+    case "cruise_day":
+      return "trip_plan";
+    case "beach_day":
+      return "beach_recommendation";
+    case "ride":
+      return "ride_request";
+    case "stay":
+      return "stay_planning";
+    case "food":
+      return "restaurant_recommendation";
+    case "events":
+      return "event_discovery";
+    case "partner":
+      return "booking_lead";
+    case "operator":
+      return "operator_insight";
+    default:
+      return "general_help";
+  }
+}
+
+function buildLeadDraftFromMessage(message: string, fallbackEmail = "") {
+  const emailMatch = message.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const phoneMatch = message.match(
+    /(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/
+  );
+  const partyMatch = message.match(
+    /\b(?:party of|group of|for|we are|there are)\s+(\d{1,2})\b/i
+  );
+
+  return {
+    name: null,
+    email: emailMatch?.[0] || fallbackEmail || null,
+    phone: phoneMatch?.[0] || null,
+    partySize: partyMatch?.[1] ? Number(partyMatch[1]) : null,
+    preferredDate: null,
+    preferredTime: null,
+    pickupLocation: null,
+    destination: null,
+    budget: null,
+    notes: message.slice(0, 500) || null,
+  };
+}
+
+function inferMissingFieldsForIntent(
+  intent: ViIntent,
+  leadDraft: ReturnType<typeof buildLeadDraftFromMessage>
+) {
+  const missing = new Set<string>();
+
+  if (intent === "ride_request" || intent === "route_planning") {
+    if (!leadDraft.pickupLocation) missing.add("pickupLocation");
+    if (!leadDraft.destination) missing.add("destination");
+    if (!leadDraft.preferredDate) missing.add("preferredDate");
+    if (!leadDraft.preferredTime) missing.add("preferredTime");
+    if (!leadDraft.partySize) missing.add("partySize");
+  }
+
+  if (intent === "booking_lead" || intent === "stay_planning") {
+    if (!leadDraft.email) missing.add("email");
+    if (!leadDraft.partySize) missing.add("partySize");
+    if (!leadDraft.preferredDate) missing.add("preferredDate");
+  }
+
+  if (intent === "trip_plan") {
+    if (!leadDraft.partySize) missing.add("partySize");
+    if (!leadDraft.preferredDate) missing.add("preferredDate");
+  }
+
+  return Array.from(missing);
+}
+
+function buildMemorySignalsFromMessage(message: string) {
+  const lower = message.toLowerCase();
+
+  const signals: Array<{
+    key: string;
+    value: string;
+    confidence: "low" | "medium" | "high";
+    shouldSave: boolean;
+    reason: string | null;
+  }> = [];
+
+  if (/\b(snorkel|snorkeling)\b/.test(lower)) {
+    signals.push({
+      key: "likes_snorkeling",
+      value: "User showed interest in snorkeling.",
+      confidence: "medium",
+      shouldSave: true,
+      reason: "Stable travel preference.",
+    });
+  }
+
+  if (/\b(kids|children|family|child)\b/.test(lower)) {
+    signals.push({
+      key: "family_friendly_preference",
+      value: "User may prefer family-friendly recommendations.",
+      confidence: "medium",
+      shouldSave: true,
+      reason: "Helpful for future trip planning.",
+    });
+  }
+
+  if (/\b(luxury|high end|premium|private|vip)\b/.test(lower)) {
+    signals.push({
+      key: "premium_travel_style",
+      value: "User may prefer premium or private experiences.",
+      confidence: "medium",
+      shouldSave: true,
+      reason: "Helpful for future concierge recommendations.",
+    });
+  }
+
+  if (/\b(budget|cheap|affordable|low cost)\b/.test(lower)) {
+    signals.push({
+      key: "budget_conscious",
+      value: "User may prefer affordable options.",
+      confidence: "medium",
+      shouldSave: true,
+      reason: "Helpful for future recommendation filtering.",
+    });
+  }
+
+  if (
+    /\b(accessible|wheelchair|mobility issue|limited mobility)\b/.test(lower)
+  ) {
+    signals.push({
+      key: "accessibility_preference",
+      value: "User may need accessibility-aware recommendations.",
+      confidence: "high",
+      shouldSave: true,
+      reason: "Important for safer future planning.",
+    });
+  }
+
+  return signals;
 }
 
 export const aiConcierge = onRequest(
@@ -1317,28 +1533,52 @@ Access:
         admin: caller.admin,
       });
 
+      const viIntent = mapConciergeIntentToViIntent(intent);
+      const leadDraft = buildLeadDraftFromMessage(message, caller.email);
+      const missingFields = inferMissingFieldsForIntent(viIntent, leadDraft);
+
       res.json({
         answer:
           answer ||
           "I can help you plan your island day, find places, compare beaches, arrange transportation, or start a booking request.",
+
+        intent: viIntent,
+        confidence:
+          relevantListings.length || relevantEvents.length ? "high" : "medium",
+
         listings: relevantListings,
         events: relevantEvents,
         plan,
         actions,
+
+        leadDraft,
+        missingFields,
+        memorySignals: buildMemorySignalsFromMessage(message),
+
         access: {
           admin: caller.admin,
           partner: caller.partner,
           premium,
           operatorMode,
         },
+
         suggestedRoutes: {
           visitorDesk: "/visitor-desk",
           checkout: premium ? null : "/visitor-checkout",
           mobility: "/mobility",
           hotels: "/hotels",
           map: `/map?island=${islandCode}`,
+          concierge: "/concierge",
         },
+
         provider: "openai",
+
+        debug: {
+          agentUsed: agentId,
+          toolsUsed: ["firestore", "openai", "local-ranker"],
+          reason:
+            "aiConcierge legacy endpoint normalized to VI Intelligence response format.",
+        },
       });
     } catch (error) {
       logger.error("aiConcierge failed", error);
@@ -1388,18 +1628,29 @@ Access:
         admin: false,
       });
 
+      const fallbackViIntent = mapConciergeIntentToViIntent(fallbackIntent);
+
       res.status(200).json({
         answer,
+        intent: fallbackViIntent,
+        confidence: "low",
+
         listings: [],
         events: [],
         plan: fallbackPlan,
         actions: fallbackActions,
+
+        leadDraft: buildLeadDraftFromMessage(message),
+        missingFields: [],
+        memorySignals: [],
+
         access: {
           admin: false,
           partner: false,
           premium: false,
           operatorMode: false,
         },
+
         suggestedRoutes: {
           visitorDesk: "/visitor-desk",
           checkout: "/visitor-checkout",
@@ -1408,9 +1659,13 @@ Access:
           map: `/map?island=${islandCode}`,
           concierge: "/concierge",
         },
+
         provider: "local-fallback",
+
         debug: {
           fallback: true,
+          agentUsed: "local-fallback",
+          toolsUsed: ["local-rules"],
           reason: "OPENAI_GATEWAY_ERROR",
           userMessage: message.slice(0, 160),
           errorMessage:
