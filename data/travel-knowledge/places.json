@@ -6,7 +6,7 @@
     "island": "stt",
     "category": "historic",
     "description": "A landmark stairway in Charlotte Amalie connecting the town’s historic hillside streets.",
-    "heroImage": "/images/places/fallbacks/historic-stt.svg",
+    "heroImage": "/images/places/st-thomas/99-steps-1.jpg",
     "tags": [
       "historic",
       "walkable",
@@ -36,7 +36,7 @@
     "island": "stj",
     "category": "historic",
     "description": "A major historic site within Virgin Islands National Park interpreting plantation-era industry and labor history.",
-    "heroImage": "/images/places/fallbacks/historic-stj.svg",
+    "heroImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
     "tags": [
       "ruins",
       "history",
@@ -126,7 +126,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A relaxed west-side bay near the airport and university, popular for swimming and watching sea turtles.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
     "tags": [
       "beach",
       "turtles",
@@ -141,7 +141,7 @@
     "island": "stx",
     "category": "nature",
     "description": "A protected marine destination known for reef ecosystems, snorkeling, and boat excursions.",
-    "heroImage": "/images/places/fallbacks/nature-stx.svg",
+    "heroImage": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
     "tags": [
       "snorkeling",
       "reef",
@@ -171,7 +171,7 @@
     "island": "stx",
     "category": "nature",
     "description": "A renowned north-shore dive area where the seafloor drops sharply into deep water.",
-    "heroImage": "/images/places/fallbacks/nature-stx.svg",
+    "heroImage": "/images/places/st-croix/cane-bay-wall-1.jpg",
     "tags": [
       "diving",
       "north shore",
@@ -186,7 +186,7 @@
     "island": "stj",
     "category": "viewpoint",
     "description": "A scenic roadside overlook along the North Shore Road.",
-    "heroImage": "/images/places/fallbacks/viewpoint-stj.svg",
+    "heroImage": "/images/places/st-john/caneel-bay-overlook-1.jpg",
     "tags": [
       "viewpoint",
       "north shore",
@@ -201,7 +201,7 @@
     "island": "stx",
     "category": "attraction",
     "description": "A visitor experience connected to modern rum production on St. Croix.",
-    "heroImage": "/images/places/fallbacks/attraction-stx.svg",
+    "heroImage": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg",
     "tags": [
       "rum",
       "tour",
@@ -246,7 +246,7 @@
     "island": "stx",
     "category": "district",
     "description": "A walkable waterfront district with historic architecture, dining, shopping, and harbor excursions.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "heroImage": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
     "tags": [
       "boardwalk",
       "dining",
@@ -263,7 +263,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A waterfront historic district preserving major buildings from the Danish colonial period.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
     "tags": [
       "history",
       "architecture",
@@ -278,7 +278,7 @@
     "island": "stj",
     "category": "museum",
     "description": "A small park facility presenting archaeological and cultural history connected to Cinnamon Bay.",
-    "heroImage": "/images/places/fallbacks/museum-stj.svg",
+    "heroImage": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg",
     "tags": [
       "museum",
       "archaeology",
@@ -308,7 +308,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A lively East End coastal destination known for beach access, snorkeling, and nearby marine attractions.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/coki-point-beach-1.jpg",
     "tags": [
       "snorkeling",
       "beach",
@@ -368,7 +368,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A marine-life attraction at Coki Point featuring exhibits and ocean-focused experiences.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
     "tags": [
       "family",
       "marine life",
@@ -383,7 +383,7 @@
     "island": "stt",
     "category": "shopping",
     "description": "A cruise-port shopping and visitor-services complex on the western side of Charlotte Amalie harbor.",
-    "heroImage": "/images/places/fallbacks/shopping-stt.svg",
+    "heroImage": "/images/places/st-thomas/crown-bay-center-1.jpg",
     "tags": [
       "cruise port",
       "shopping",
@@ -430,7 +430,7 @@
     "island": "stx",
     "category": "attraction",
     "description": "A long-established St. Croix rum distillery offering a look at local rum production.",
-    "heroImage": "/images/places/fallbacks/attraction-stx.svg",
+    "heroImage": "/images/places/st-croix/cruzan-rum-distillery-1.jpg",
     "tags": [
       "rum",
       "tour",
@@ -445,7 +445,7 @@
     "island": "stt",
     "category": "viewpoint",
     "description": "A roadside overlook above Magens Bay with one of the island’s best-known panoramic views.",
-    "heroImage": "/images/places/fallbacks/viewpoint-stt.svg",
+    "heroImage": "/images/places/st-thomas/drakes-seat-1.jpg",
     "tags": [
       "viewpoint",
       "magens bay",
@@ -520,7 +520,7 @@
     "island": "stt",
     "category": "park",
     "description": "A civic park beside Fort Christian in central Charlotte Amalie.",
-    "heroImage": "/images/places/fallbacks/park-stt.svg",
+    "heroImage": "/images/places/st-thomas/emancipation-garden-1.jpg",
     "tags": [
       "park",
       "history",
@@ -550,7 +550,7 @@
     "island": "stt",
     "category": "historic",
     "description": "A defining historic landmark on the Charlotte Amalie waterfront.",
-    "heroImage": "/images/places/fallbacks/historic-stt.svg",
+    "heroImage": "/images/places/st-thomas/fort-christian-1.jpg",
     "tags": [
       "fort",
       "museum",
@@ -565,7 +565,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A prominent yellow fort anchoring Christiansted’s historic waterfront.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
     "tags": [
       "fort",
       "christiansted",
@@ -580,7 +580,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A major Frederiksted waterfront fort associated with emancipation history.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/fort-frederik-1.jpg",
     "tags": [
       "fort",
       "frederiksted",
@@ -610,7 +610,7 @@
     "island": "stx",
     "category": "attraction",
     "description": "A prominent west-end pier used for cruise calls, diving, snorkeling, and waterfront events.",
-    "heroImage": "/images/places/fallbacks/attraction-stx.svg",
+    "heroImage": "/images/places/st-croix/frederiksted-pier-1.jpg",
     "tags": [
       "pier",
       "diving",
@@ -625,7 +625,7 @@
     "island": "stx",
     "category": "attraction",
     "description": "A west-end waterfront corridor with historic buildings, beaches, dining, and sunset views.",
-    "heroImage": "/images/places/fallbacks/attraction-stx.svg",
+    "heroImage": "/images/places/st-croix/frederiksted-waterfront-1.jpg",
     "tags": [
       "waterfront",
       "sunset",
@@ -670,7 +670,7 @@
     "island": "stx",
     "category": "neighborhood",
     "description": "A waterfront district east of Christiansted with marina services, shops, dining, and ferry activity.",
-    "heroImage": "/images/places/fallbacks/neighborhood-stx.svg",
+    "heroImage": "/images/places/st-croix/gallows-bay-1.jpg",
     "tags": [
       "marina",
       "dining",
@@ -685,7 +685,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A significant civic and architectural landmark in central Christiansted.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/government-house-christiansted-1.jpg",
     "tags": [
       "government",
       "architecture",
@@ -715,7 +715,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "Greengos Caribbean Cantina is a local St. Thomas dining and gathering spot included in the VI Guide travel catalog.",
-    "heroImage": "/images/directory/places/stt-greengos-caribbean-cantina.svg",
+    "heroImage": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg",
     "tags": [
       "local favorite",
       "food",
@@ -730,7 +730,7 @@
     "island": "stt",
     "category": "shopping",
     "description": "A major visitor shopping and dining area beside the Havensight cruise pier.",
-    "heroImage": "/images/places/fallbacks/shopping-stt.svg",
+    "heroImage": "/images/places/st-thomas/havensight-mall-1.jpg",
     "tags": [
       "shopping",
       "cruise port",
@@ -745,7 +745,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "A waterfront seafood restaurant in Frenchtown known for a casual harbor setting and island dining.",
-    "heroImage": "/images/places/hook-line-sinker.jpg",
+    "heroImage": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
     "tags": [
       "waterfront",
       "seafood",
@@ -760,7 +760,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A north-side coastal area known for local character, water access, and sunset views.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/hull-bay-beach-1.jpg",
     "tags": [
       "local",
       "sunset",
@@ -775,7 +775,7 @@
     "island": "stx",
     "category": "nature",
     "description": "A protected coastal landscape with hiking access, beaches, and important habitat.",
-    "heroImage": "/images/places/fallbacks/nature-stx.svg",
+    "heroImage": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg",
     "tags": [
       "hiking",
       "nature",
@@ -820,7 +820,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "One of St. Thomas’s signature coastal destinations, popular for swimming, picnics, and scenic bay views.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/magens-bay-beach-1.jpg",
     "tags": [
       "beach",
       "family",
@@ -895,7 +895,7 @@
     "island": "stj",
     "category": "shopping",
     "description": "A distinctive Cruz Bay shopping and dining complex built in a Caribbean-inspired architectural style.",
-    "heroImage": "/images/places/fallbacks/shopping-stj.svg",
+    "heroImage": "/images/places/st-john/mongoose-junction-1.jpg",
     "tags": [
       "shopping",
       "dining",
@@ -910,7 +910,7 @@
     "island": "stx",
     "category": "viewpoint",
     "description": "The highest point on St. Croix, surrounded by scenic interior landscapes.",
-    "heroImage": "/images/places/fallbacks/viewpoint-stx.svg",
+    "heroImage": "/images/places/st-croix/mount-eagle-1.jpg",
     "tags": [
       "viewpoint",
       "scenic drive",
@@ -925,7 +925,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A high-elevation visitor stop with panoramic views across St. Thomas and neighboring islands.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/mountain-top-1.jpg",
     "tags": [
       "viewpoint",
       "shopping",
@@ -985,7 +985,7 @@
     "island": "stx",
     "category": "viewpoint",
     "description": "A dramatic eastern overlook marked by the Millennium Monument.",
-    "heroImage": "/images/places/fallbacks/viewpoint-stx.svg",
+    "heroImage": "/images/places/st-croix/point-udall-1.jpg",
     "tags": [
       "viewpoint",
       "sunrise",
@@ -1000,7 +1000,7 @@
     "island": "stx",
     "category": "attraction",
     "description": "A small harbor cay reached by passenger ferry from Christiansted.",
-    "heroImage": "/images/places/fallbacks/attraction-stx.svg",
+    "heroImage": "/images/places/st-croix/protestant-cay-1.jpg",
     "tags": [
       "ferry",
       "beach",
@@ -1015,7 +1015,7 @@
     "island": "stj",
     "category": "trail",
     "description": "A dramatic coastal hike beginning near Salt Pond Bay and ending at a windswept headland.",
-    "heroImage": "/images/places/fallbacks/trail-stj.svg",
+    "heroImage": "/images/places/st-john/ram-head-trail-1.jpg",
     "tags": [
       "hiking",
       "views",
@@ -1045,7 +1045,7 @@
     "island": "stj",
     "category": "historic",
     "description": "A culturally important rock-carving site reached by trail within Virgin Islands National Park.",
-    "heroImage": "/images/places/fallbacks/historic-stj.svg",
+    "heroImage": "/images/places/st-john/petroglyphs-trail-1.jpg",
     "tags": [
       "petroglyphs",
       "hiking",
@@ -1060,7 +1060,7 @@
     "island": "stj",
     "category": "trail",
     "description": "A well-known national park trail descending through forest, historic ruins, and cultural landscapes.",
-    "heroImage": "/images/places/fallbacks/trail-stj.svg",
+    "heroImage": "/images/places/st-john/reef-bay-trail-1.jpg",
     "tags": [
       "hiking",
       "ruins",
@@ -1075,7 +1075,7 @@
     "island": "stj",
     "category": "attraction",
     "description": "A South Shore bay offering swimming, snorkeling, and access to Ram Head Trail.",
-    "heroImage": "/images/places/fallbacks/attraction-stj.svg",
+    "heroImage": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
     "tags": [
       "snorkeling",
       "hiking",
@@ -1090,7 +1090,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A nationally significant cultural and natural landscape on St. Croix’s north shore.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
     "tags": [
       "national park",
       "history",
@@ -1105,7 +1105,7 @@
     "island": "stx",
     "category": "nature",
     "description": "A protected west-end coastal refuge known for nesting sea turtles and seasonal public access.",
-    "heroImage": "/images/places/fallbacks/nature-stx.svg",
+    "heroImage": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg",
     "tags": [
       "wildlife",
       "turtles",
@@ -1120,7 +1120,7 @@
     "island": "stt",
     "category": "marina",
     "description": "A marina and excursion departure area beside Sapphire Beach on the East End.",
-    "heroImage": "/images/places/sapphire-marina.jpg",
+    "heroImage": "/images/places/st-thomas/sapphire-marina-1.jpg",
     "tags": [
       "marina",
       "excursions",
@@ -1135,7 +1135,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A sheltered East End bay with beach access, snorkeling, dining, and resort services.",
-    "heroImage": "/images/places/secret-harbour.jpg",
+    "heroImage": "/images/places/st-thomas/secret-harbour-beach-1.jpg",
     "tags": [
       "snorkeling",
       "dining",
@@ -1180,7 +1180,7 @@
     "island": "stx",
     "category": "garden",
     "description": "A botanical and historic garden set among the ruins of a former estate.",
-    "heroImage": "/images/places/fallbacks/garden-stx.svg",
+    "heroImage": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
     "tags": [
       "garden",
       "history",
@@ -1195,7 +1195,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A major historic structure within Christiansted National Historic Site.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/steeple-building-1.jpg",
     "tags": [
       "history",
       "architecture",
@@ -1285,7 +1285,7 @@
     "island": "stt",
     "category": "marina",
     "description": "A waterfront marina district with restaurants, shops, events, and harbor views.",
-    "heroImage": "/images/places/fallbacks/marina-stt.svg",
+    "heroImage": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
     "tags": [
       "marina",
       "dining",

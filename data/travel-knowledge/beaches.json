@@ -44,7 +44,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Brewers Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/brewers-bay.svg",
+    "heroImage": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -82,7 +82,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Cane Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/cane-bay.svg",
+    "heroImage": "/images/places/st-croix/cane-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -158,7 +158,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Cinnamon Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/cinnamon-bay.svg",
+    "heroImage": "/images/places/st-john/cinnamon-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -177,7 +177,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Coki Point is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/coki-point.svg",
+    "heroImage": "/images/places/st-thomas/coki-point-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -215,7 +215,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Cowpet Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/cowpet-bay.svg",
+    "heroImage": "/images/places/st-thomas/cowpet-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -234,7 +234,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Denis Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/denis-bay.svg",
+    "heroImage": "/images/places/st-john/denis-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -253,7 +253,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Dorothea Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/dorothea-beach.svg",
+    "heroImage": "/images/places/st-thomas/dorothea-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -272,7 +272,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Dorsch Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/dorsch-beach.svg",
+    "heroImage": "/images/places/st-croix/dorsch-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -291,7 +291,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Francis Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/francis-bay.svg",
+    "heroImage": "/images/places/st-john/francis-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -310,7 +310,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Gibney Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/gibney-beach.svg",
+    "heroImage": "/images/places/st-john/gibney-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -329,7 +329,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Grapetree Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/grapetree-bay.svg",
+    "heroImage": "/images/places/st-croix/grapetree-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -348,7 +348,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Hansen Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/hansen-bay.svg",
+    "heroImage": "/images/places/st-john/hansen-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -367,7 +367,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Haulover Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/haulover-bay.svg",
+    "heroImage": "/images/places/st-john/haulover-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -481,7 +481,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Jumbie Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/jumbie-bay.svg",
+    "heroImage": "/images/places/st-john/jumbie-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -519,7 +519,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Lindquist Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/lindquist-beach.svg",
+    "heroImage": "/images/places/st-thomas/lindquist-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -538,7 +538,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Magens Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/magens-bay.svg",
+    "heroImage": "/images/places/st-thomas/magens-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -557,7 +557,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Maho Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/maho-bay.svg",
+    "heroImage": "/images/places/st-john/maho-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -576,7 +576,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Mermaids Chair is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/mermaids-chair.svg",
+    "heroImage": "/images/places/st-thomas/mermaids-chair-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -614,7 +614,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Morningstar Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/morningstar-beach.svg",
+    "heroImage": "/images/places/st-thomas/morningstar-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -652,7 +652,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Pelican Cove is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/pelican-cove.svg",
+    "heroImage": "/images/places/st-croix/pelican-cove-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -671,7 +671,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Rainbow Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/rainbow-beach.svg",
+    "heroImage": "/images/places/st-croix/rainbow-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -728,7 +728,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Salt Pond Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/salt-pond-bay.svg",
+    "heroImage": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -747,7 +747,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Sandy Point is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/sandy-point.svg",
+    "heroImage": "/images/places/st-croix/sandy-point-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -785,7 +785,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Shoys Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/shoys-beach.svg",
+    "heroImage": "/images/places/st-croix/shoys-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -823,7 +823,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Trunk Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/trunk-bay.svg",
+    "heroImage": "/images/places/st-john/trunk-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -861,7 +861,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Vessup Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/vessup-bay.svg",
+    "heroImage": "/images/places/st-thomas/vessup-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",

@@ -7,8 +7,10 @@
     "category": "landmark",
     "description": "A celebrated historic staircase in Charlotte Amalie connecting the town’s hillside streets.",
     "shortDescription": "99 Steps is a historic site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/99-steps-1.jpg",
+    "images": [
+      "/images/places/st-thomas/99-steps-1.jpg"
+    ],
     "tags": [
       "site",
       "STT",
@@ -19,7 +21,7 @@
       "stt"
     ],
     "featured": true,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "99_steps__99_steps.jpeg"
     ],
@@ -81,8 +83,10 @@
     "category": "ruins",
     "description": "National park plantation ruins that interpret St. John’s colonial and agricultural history.",
     "shortDescription": "Annaberg Sugar Plantation is a historic site in St. John, U.S. Virgin Islands.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
-    "images": [],
+    "heroImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+    "images": [
+      "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    ],
     "tags": [
       "site",
       "STJ",
@@ -93,7 +97,7 @@
       "stj"
     ],
     "featured": true,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "annaberg_sugar_plantation__annaberg_sugar_plantation.jpeg"
     ],
@@ -463,8 +467,10 @@
     "category": "district",
     "description": "Charlotte Amalie Historic District is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Charlotte Amalie Historic District is a federally recognized historic district in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
     "tags": [
       "district",
       "STT",
@@ -473,7 +479,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Roughly bounded by Nytvaer, Berg and Government Hills, Bjebre Gade and St. Thomas Harbor, Charlotte Amalie",
     "designation": "National Register of Historic Places",
@@ -538,8 +544,10 @@
     "category": "district",
     "description": "Christiansted Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Christiansted Historic District is a federally recognized historic district in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-croix/christiansted-historic-district-1.jpg"
+    ],
     "tags": [
       "district",
       "STX",
@@ -548,7 +556,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Roughly bounded by Christiansted Harbor, New, Peter's Farm Hospital, and West Sts., Christiansted",
     "designation": "National Register of Historic Places",
@@ -575,7 +583,7 @@
     "island": "stx",
     "category": "district",
     "description": "A waterfront collection of historic Danish colonial buildings and public spaces.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "heroImage": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
     "tags": [
       "history",
       "district",
@@ -590,8 +598,10 @@
       "Wharf Area,Christiansted"
     ],
     "shortDescription": "Christiansted National Historic Site is a federally recognized historic district in St. Croix.",
-    "images": [],
-    "imageCount": 0,
+    "images": [
+      "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    ],
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Bounded by King, Queen, and Queens Cross Sts. and Christiansted Harbor, Christiansted",
     "designation": "National Register of Historic Places",
@@ -1112,8 +1122,10 @@
     "category": "garden",
     "description": "Emancipation Garden is a historic garden and cultural site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Emancipation Garden is a historic garden and cultural site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/emancipation-garden-1.jpg",
+    "images": [
+      "/images/places/st-thomas/emancipation-garden-1.jpg"
+    ],
     "tags": [
       "garden",
       "STT",
@@ -1121,7 +1133,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "emancipation_garden__emancipation_garden.jpeg"
     ],
@@ -2026,8 +2038,10 @@
     "category": "fort",
     "description": "Charlotte Amalie’s landmark red fort and one of the territory’s most recognizable historic structures.",
     "shortDescription": "Fort Christian is a historic fort site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/fort-christian-1.jpg",
+    "images": [
+      "/images/places/st-thomas/fort-christian-1.jpg"
+    ],
     "tags": [
       "fort",
       "STT",
@@ -2038,7 +2052,7 @@
       "nrhp"
     ],
     "featured": true,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "fort_christian__fort_christian.jpeg"
     ],
@@ -2066,13 +2080,17 @@
     "island": "stx",
     "category": "fort",
     "description": "The yellow Danish fort anchoring Christiansted National Historic Site.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "heroImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
     "tags": [
       "history",
       "fort",
       "stx"
     ],
-    "featured": true
+    "featured": true,
+    "images": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
+    "imageCount": 1
   },
   {
     "id": "fort-frederik",
@@ -2082,8 +2100,10 @@
     "category": "fort",
     "description": "A waterfront fort in Frederiksted associated with emancipation and St. Croix history.",
     "shortDescription": "Fort Frederik is a historic fort site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
     "tags": [
       "fort",
       "STX",
@@ -2094,7 +2114,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "fort_frederik__fort_frederik.jpeg"
     ],
@@ -2217,8 +2237,10 @@
     "category": "district",
     "description": "Frederiksted Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Frederiksted Historic District is a federally recognized historic district in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-croix/frederiksted-historic-district-1.jpg"
+    ],
     "tags": [
       "district",
       "STX",
@@ -2227,7 +2249,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Roughly bounded by Fisher St., the cemetery, Fort Frederick,, Frederiksted",
     "designation": "National Register of Historic Places",
@@ -2371,8 +2393,10 @@
     "category": "site",
     "description": "Government House, Christiansted is a historic site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Government House, Christiansted is a historic site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/government-house-christiansted-1.jpg",
+    "images": [
+      "/images/places/st-croix/government-house-christiansted-1.jpg"
+    ],
     "tags": [
       "site",
       "STX",
@@ -2380,7 +2404,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "gov_house_christiansted__gov_house_christiansted.jpeg"
     ],
@@ -3638,8 +3662,10 @@
     "category": "site",
     "description": "Salt River Bay National Historical Park is a historic site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Salt River Bay National Historical Park is a historic site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+    "images": [
+      "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    ],
     "tags": [
       "site",
       "STX",
@@ -3647,7 +3673,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "salt_river_bay_nhp__salt_river_bay_nhp.jpeg"
     ],
@@ -3698,7 +3724,7 @@
     "island": "stt",
     "category": "landmark",
     "description": "A hilltop historic landmark overlooking Charlotte Amalie and its harbor.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "heroImage": "/images/places/st-thomas/blackbeards-castle-1.jpg",
     "tags": [
       "history",
       "landmark",
@@ -3715,8 +3741,10 @@
       "Blackbeard's Castle"
     ],
     "shortDescription": "Skytsborg is a federally recognized historic landmark in St. Thomas.",
-    "images": [],
-    "imageCount": 0,
+    "images": [
+      "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    ],
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "39 Donningens Gade, Charlotte Amalie",
     "designation": "National Register of Historic Places",
@@ -3836,8 +3864,10 @@
     "category": "estate",
     "description": "A botanical garden set among the ruins and structures of a historic sugar estate.",
     "shortDescription": "St. George Village Botanical Garden is a historic garden and cultural site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+    "images": [
+      "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    ],
     "tags": [
       "garden",
       "STX",
@@ -3848,7 +3878,7 @@
       "stx"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "st_george_village_botanical_garden__st_george_village_botanical_garden.jpeg"
     ],
@@ -3907,8 +3937,10 @@
     "category": "church",
     "description": "St. Thomas Synagogue is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "St. Thomas Synagogue is a federally recognized historic church in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
     "tags": [
       "church",
       "STT",
@@ -3917,7 +3949,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Crystal Gade #16AB, Queens Quarters, Charlotte",
     "designation": "National Register of Historic Places",
