@@ -1,0 +1,29 @@
+[
+    {
+      "dictionaryNormalizedName": "beckmans",
+      "modernGeoid": "7801XXXXX",
+      "modernBaseName": "Sallys Fancy"
+    },
+    {
+      "dictionaryNormalizedName": "bourgen",
+      "modernGeoid": "7803XXXXX",
+      "modernBaseName": "Nazareth area estate candidate"
+    },
+  
+    {
+      "dictionaryId": "gd-stx-coakley-bay",
+      "modernGeoid": "7801023200"
+    },
+    {
+      "dictionaryId": "gd-stx-mount-xisery",
+      "modernGeoid": "7801057880"
+    },
+    {
+      "dictionaryId": "gd-stx-pless",
+      "modernGeoid": "7801064630"
+    },
+    {
+      "dictionaryId": "gd-stx-pless",
+      "modernGeoid": "7801064660"
+    }
+  ]

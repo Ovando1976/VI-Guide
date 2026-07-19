@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#083b59"/><stop offset=".55" stop-color="#16859a"/><stop offset="1" stop-color="#f0b35a"/></linearGradient></defs>
+  <rect width="1600" height="1000" fill="url(#a)"/><circle cx="1270" cy="220" r="115" fill="#ffe7a7"/>
+  <path d="M0 570C180 420 350 430 500 575C700 390 880 420 1050 590C1240 450 1410 480 1600 590V1000H0Z" fill="#174f43"/>
+  <path d="M0 690C280 610 490 760 760 650C1030 540 1260 730 1600 620V1000H0Z" fill="#0a5870"/>
+  <rect x="100" y="710" width="850" height="190" rx="32" fill="#041f2b" opacity=".82"/>
+  <text x="150" y="790" font-family="Arial" font-size="66" font-weight="700" fill="white">Market</text>
+  <text x="150" y="850" font-family="Arial" font-size="34" fill="#dff7fa">St. Thomas · VI Guide</text></svg>

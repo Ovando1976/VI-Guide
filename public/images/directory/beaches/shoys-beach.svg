@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title description">
+  <title id="title">Shoys Beach</title>
+  <desc id="description">VI Guide location cover for Shoys Beach on St. Croix</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#082f49"/><stop offset="0.62" stop-color="#0369a1"/><stop offset="1" stop-color="#67e8f9"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#99f6e4" stop-opacity=".9"/><stop offset="1" stop-color="#082f49"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="970" cy="150" r="92" fill="#f59e0b" opacity=".95"/>
+  <circle cx="950" cy="130" r="150" fill="#fff" opacity=".12" filter="url(#soft)"/>
+  <path d="M0 430 C170 370 300 465 470 420 C650 370 805 390 1200 300 L1200 800 L0 800Z" fill="url(#sea)"/>
+  <path d="M0 570 C210 500 370 625 590 555 C790 490 945 560 1200 485" fill="none" stroke="#fff" stroke-opacity=".62" stroke-width="12"/>
+  <path d="M735 434 C815 300 930 282 1040 407 C943 380 836 392 735 434Z" fill="#082f49" opacity=".88"/>
+  <rect x="50" y="48" width="1100" height="704" rx="42" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2"/>
+  <text x="72" y="104" fill="#f59e0b" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="8">VI GUIDE · BEACH</text>
+  <text x="72" y="520" fill="#fff" font-family="Arial, sans-serif" font-size="58" font-weight="800"><tspan x="72" dy="0">Shoys Beach</tspan></text>
+  <text x="74" y="706" fill="#fff" fill-opacity=".86" font-family="Arial, sans-serif" font-size="25" font-weight="600" letter-spacing="4">ST. CROIX · U.S. VIRGIN ISLANDS</text>
+</svg>
