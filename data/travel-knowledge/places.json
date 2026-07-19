@@ -285,6 +285,21 @@
     "featured": false
   },
   {
+    "id": "bordeaux-mountain",
+    "slug": "bordeaux-mountain",
+    "name": "Bordeaux Mountain",
+    "island": "stj",
+    "category": "attraction",
+    "description": "Bordeaux Mountain is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-john/bordeaux-mountain-1.jpg",
+    "tags": [
+      "attraction",
+      "stj",
+      "local catalog"
+    ],
+    "featured": false
+  },
+  {
     "id": "brew-stx",
     "slug": "brew-stx",
     "name": "Brew STX",
@@ -446,6 +461,21 @@
       "rum",
       "tour",
       "visitor center"
+    ],
+    "featured": false
+  },
+  {
+    "id": "carambola-tide-pools",
+    "slug": "carambola-tide-pools",
+    "name": "Carambola Tide Pools",
+    "island": "stx",
+    "category": "attraction",
+    "description": "Carambola Tide Pools is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-croix/carambola-tide-pools-1.jpg",
+    "tags": [
+      "attraction",
+      "stx",
+      "local catalog"
     ],
     "featured": false
   },
@@ -812,6 +842,21 @@
       "heritage"
     ],
     "featured": true
+  },
+  {
+    "id": "cyril-e-king-airport",
+    "slug": "cyril-e-king-airport",
+    "name": "Cyril E. King Airport",
+    "island": "stt",
+    "category": "transport",
+    "description": "Cyril E. King Airport is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-thomas/cyril-e-king-airport-1.jpg",
+    "tags": [
+      "transport",
+      "stt",
+      "local catalog"
+    ],
+    "featured": false
   },
   {
     "id": "dave-and-jerrys-steakhouse",
@@ -1564,6 +1609,21 @@
     "featured": false
   },
   {
+    "id": "limestone-bay-beach",
+    "slug": "limestone-bay-beach",
+    "name": "Limestone Bay Beach",
+    "island": "wi",
+    "category": "beach",
+    "description": "Limestone Bay Beach is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/water-island/limestone-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "wi",
+      "local catalog"
+    ],
+    "featured": false
+  },
+  {
     "id": "lindbergh-bay",
     "slug": "lindbergh-bay",
     "name": "Lindbergh Bay",
@@ -1615,7 +1675,7 @@
     "island": "stt",
     "category": "shopping",
     "description": "The principal downtown shopping corridor, lined with historic buildings and local businesses.",
-    "heroImage": "/images/places/fallbacks/shopping-stt.svg",
+    "heroImage": "/images/places/st-thomas/downtown-charlotte-amalie-1.jpg",
     "tags": [
       "shopping",
       "walkable",
@@ -1705,7 +1765,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "Mim's Seafood Bistro is a local St. Thomas dining and gathering spot included in the VI Guide travel catalog.",
-    "heroImage": "/images/directory/places/stt-mim-s-seafood-bistro.svg",
+    "heroImage": "/images/places/st-thomas/mims-seaside-bistro-1.jpg",
     "tags": [
       "local favorite",
       "food",
@@ -1960,7 +2020,7 @@
     "island": "stt",
     "category": "viewpoint",
     "description": "A hillside attraction overlooking Charlotte Amalie harbor and the cruise-ship district.",
-    "heroImage": "/images/places/fallbacks/viewpoint-stt.svg",
+    "heroImage": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
     "tags": [
       "viewpoint",
       "harbor",
@@ -1975,7 +2035,7 @@
     "island": "stj",
     "category": "historic",
     "description": "A short trail leading to a hilltop ruin and sweeping North Shore views.",
-    "heroImage": "/images/places/fallbacks/historic-stj.svg",
+    "heroImage": "/images/places/st-john/peace-hill-trail-1.jpg",
     "tags": [
       "trail",
       "ruin",
@@ -2340,6 +2400,21 @@
       "snorkeling",
       "dining",
       "east end"
+    ],
+    "featured": false
+  },
+  {
+    "id": "seven-arches-museum",
+    "slug": "seven-arches-museum",
+    "name": "Seven Arches Museum",
+    "island": "stt",
+    "category": "attraction",
+    "description": "Seven Arches Museum is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-thomas/seven-arches-museum-1.jpg",
+    "tags": [
+      "attraction",
+      "stt",
+      "local catalog"
     ],
     "featured": false
   },
@@ -2925,6 +3000,36 @@
       "food",
       "stj",
       "local business"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vendors-plaza",
+    "slug": "vendors-plaza",
+    "name": "Vendor's Plaza",
+    "island": "stt",
+    "category": "shopping",
+    "description": "Vendor's Plaza is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-thomas/vendors-plaza-1.jpg",
+    "tags": [
+      "shopping",
+      "stt",
+      "local catalog"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vi-childrens-museum",
+    "slug": "vi-childrens-museum",
+    "name": "VI Children's Museum",
+    "island": "stt",
+    "category": "attraction",
+    "description": "VI Children's Museum is a visitor destination included in the VI Guide island catalog.",
+    "heroImage": "/images/places/st-thomas/vi-childrens-museum-1.jpg",
+    "tags": [
+      "attraction",
+      "stt",
+      "local catalog"
     ],
     "featured": false
   },

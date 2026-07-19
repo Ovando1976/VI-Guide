@@ -192,8 +192,10 @@
     "category": "church",
     "description": "Beracha Veshalom Synagogue is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Beracha Veshalom Synagogue is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
     "tags": [
       "church",
       "STT",
@@ -201,7 +203,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "synagogue_beracha_veshalom__synagogue_beracha_veshalom.jpeg"
     ],
@@ -429,8 +431,10 @@
     "category": "district",
     "description": "Catherineberg-Jockumsdahl-Herman Farm is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Catherineberg-Jockumsdahl-Herman Farm is a federally recognized historic district in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-john/catherineberg-ruins-1.jpg",
+    "images": [
+      "/images/places/st-john/catherineberg-ruins-1.jpg"
+    ],
     "tags": [
       "district",
       "STJ",
@@ -439,7 +443,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "E of Cruz Bay, Cruz Bay",
     "designation": "National Register of Historic Places",
@@ -635,8 +639,10 @@
     "category": "site",
     "description": "Christiansted NHS Custom House is a historic site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Christiansted NHS Custom House is a historic site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+    "images": [
+      "/images/places/st-croix/old-danish-customs-house-1.jpg"
+    ],
     "tags": [
       "site",
       "STX",
@@ -644,7 +650,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "christiansted_nhs_custom_house__christiansted_nhs_custom_house.jpeg"
     ],
@@ -1966,8 +1972,10 @@
     "category": "estate",
     "description": "Estate Whim Greathouse is a historic estate site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Estate Whim Greathouse is a historic estate site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    ],
     "tags": [
       "estate",
       "STX",
@@ -1975,7 +1983,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "estate_whim_greathouse__estate_whim_greathouse.jpeg"
     ],
@@ -2372,8 +2380,10 @@
     "category": "landmark",
     "description": "Ft. Frederik of US Virgin Islands is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Ft. Frederik of US Virgin Islands is a federally recognized historic landmark in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
     "tags": [
       "landmark",
       "STX",
@@ -2382,7 +2392,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "S. of jct. of Mahogany Rd. and VI 631, N end of Frederiksted, Frederiksted",
     "designation": "National Register of Historic Places",
@@ -2538,8 +2548,10 @@
     "category": "landmark",
     "description": "Hams Bluff Light is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Hams Bluff Light is a federally recognized historic landmark in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/hams-bluff-lighthouse-1.jpg",
+    "images": [
+      "/images/places/st-croix/hams-bluff-lighthouse-1.jpg"
+    ],
     "tags": [
       "landmark",
       "STX",
@@ -2548,7 +2560,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "Crest of Hams Bluff, 1400 feet east of N. end of Hams Bluff Rd., Frederiksted",
     "designation": "National Register of Historic Places",
@@ -4239,8 +4251,10 @@
     "category": "landmark",
     "description": "Whim is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Whim is a federally recognized historic landmark in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    ],
     "tags": [
       "landmark",
       "STX",
@@ -4249,7 +4263,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "1.7 mi. SE of Frederiksted on Centerline Rd., Frederiksted",
     "designation": "National Register of Historic Places",
