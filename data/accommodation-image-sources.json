@@ -146,7 +146,8 @@
   "inn-on-strand-street": {
     "propertyWebsite": "https://www.innonstrandstreet.com",
     "error": "property site returned 502",
-    "retrievedAt": "2026-07-17T00:18:15.924Z"
+    "retrievedAt": "2026-07-19T15:52:07.073Z",
+    "localPath": "/images/accommodations/inn-on-strand-street.jpg"
   },
   "king-christian-hotel": {
     "localPath": "/images/accommodations/king-christian-hotel.jpg",
@@ -279,5 +280,9 @@
     "sourceUrl": "https://sunsetgardensguesthouse.com/wp-content/uploads/2026/03/sunsetentry20260110_113415.jpg",
     "propertyWebsite": "https://sunsetgardensguesthouse.com/",
     "retrievedAt": "2026-07-17T13:15:09.299Z"
+  },
+  "hotel": {
+    "localPath": "/images/accommodations/hotel-1829.jpg",
+    "retrievedAt": "2026-07-19T15:52:07.073Z"
   }
 }

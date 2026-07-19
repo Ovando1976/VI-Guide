@@ -11,6 +11,29 @@ const datasets = [
   "data/travel-knowledge/historic-sites.json",
 ];
 
+const islandFolders = {
+  stt: "st-thomas", st_thomas: "st-thomas",
+  stj: "st-john", st_john: "st-john",
+  stx: "st-croix", st_croix: "st-croix",
+  wi: "water-island", water_island: "water-island",
+};
+
+function walk(directory) {
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const target = path.join(directory, entry.name);
+    return entry.isDirectory() ? walk(target) : [target];
+  });
+}
+
+const localPhotos = walk(path.join(root, "public/images"))
+  .filter((file) => /\.(?:avif|jpe?g|png|webp)$/i.test(file))
+  .map((file) => ({
+    file,
+    url: `/${path.relative(path.join(root, "public"), file).split(path.sep).join("/")}`,
+    stem: path.basename(file).replace(/\.(?:avif|jpe?g|png|webp)$/i, "").replace(/-\d+$/, ""),
+  }));
+
 const islandCodes = {
   stt: "st_thomas",
   st_thomas: "st_thomas",
@@ -79,8 +102,18 @@ for (const relativePath of datasets) {
     }
 
     if (!match) {
-      unmatched.push({ dataset: relativePath, id: record.id ?? "", name: record.name ?? "", island: record.island ?? "" });
-      continue;
+      const folder = islandFolders[record.island] ?? islandFolders[record.islandCode];
+      const slugs = candidates(record);
+      const direct = localPhotos.find((photo) =>
+        slugs.includes(photo.stem) && (!folder || photo.url.includes(`/${folder}/`))
+      );
+      if (direct) {
+        match = { validImages: [direct.url] };
+        matchSlug = direct.stem;
+      } else {
+        unmatched.push({ dataset: relativePath, id: record.id ?? "", name: record.name ?? "", island: record.island ?? "" });
+        continue;
+      }
     }
 
     const previous = record.heroImage ?? "";
@@ -94,6 +127,19 @@ for (const relativePath of datasets) {
   }
 
   if (apply && changed) fs.writeFileSync(absolutePath, `${JSON.stringify(records, null, 2)}\n`);
+}
+
+const accommodationSourcesPath = path.join(root, "data/accommodation-image-sources.json");
+if (fs.existsSync(accommodationSourcesPath)) {
+  const sources = JSON.parse(fs.readFileSync(accommodationSourcesPath, "utf8"));
+  const accommodationPhotos = localPhotos.filter((photo) => photo.url.startsWith("/images/accommodations/"));
+  for (const photo of accommodationPhotos) {
+    if (!sources[photo.stem]?.localPath) {
+      sources[photo.stem] = { ...(sources[photo.stem] ?? {}), localPath: photo.url, retrievedAt: new Date().toISOString() };
+      linked.push({ dataset: "data/accommodation-image-sources.json", id: photo.stem, manifestSlug: photo.stem, previous: "", image: photo.url });
+    }
+  }
+  if (apply) fs.writeFileSync(accommodationSourcesPath, `${JSON.stringify(sources, null, 2)}\n`);
 }
 
 fs.mkdirSync(reportDir, { recursive: true });

@@ -139,7 +139,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Chenay Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/chenay-bay.svg",
+    "heroImage": "/images/beaches/st-croix/chenay-bay.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -386,7 +386,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Hawksnest Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/hawksnest-bay.svg",
+    "heroImage": "/images/beaches/st-john/hawksnest-bay-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -443,7 +443,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Isaac Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/isaac-bay.svg",
+    "heroImage": "/images/beaches/st-croix/isaac-bay.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -462,7 +462,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Jack Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/jack-bay.svg",
+    "heroImage": "/images/beaches/st-croix/jack-bay.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -500,7 +500,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Lameshur Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/lameshur-bay.svg",
+    "heroImage": "/images/beaches/st-john/lameshur-bay.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -709,7 +709,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Salomon Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/salomon-beach.svg",
+    "heroImage": "/images/beaches/st-john/salomon-beach.jpg",
     "tags": [
       "beach",
       "swimming",

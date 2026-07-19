@@ -21,7 +21,7 @@
     "island": "stt",
     "category": "marina",
     "description": "A Red Hook marina complex with restaurants, shops, boating services, and ferry access nearby.",
-    "heroImage": "/images/places/fallbacks/marina-stt.svg",
+    "heroImage": "/images/places/st-thomas/american-yacht-harbor-1.jpg",
     "tags": [
       "marina",
       "red hook",
@@ -805,7 +805,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "A convenient west-side beach and hotel zone close to Cyril E. King Airport.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/beaches/st-thomas/lindbergh-bay-1.jpg",
     "tags": [
       "beach",
       "airport",
