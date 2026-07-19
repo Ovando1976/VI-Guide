@@ -728,13 +728,14 @@
     "island": "stj",
     "category": "neighborhood",
     "description": "A laid-back East End community with restaurants, boating, trails, and access to quieter parts of St. John.",
-    "heroImage": "/images/places/fallbacks/neighborhood-stj.svg",
+    "heroImage": "/images/sourced/place/stj/coral-bay.jpg",
     "tags": [
       "dining",
       "boating",
       "east end"
     ],
-    "featured": true
+    "featured": true,
+    "image": "/images/sourced/place/stj/coral-bay.jpg"
   },
   {
     "id": "coral-bay-harbor",
@@ -892,7 +893,7 @@
     "id": "dinghys-beach-bar",
     "slug": "dinghys-beach-bar",
     "name": "Dinghy's Beach Bar",
-    "island": "wi",
+    "island": "stt",
     "category": "food",
     "description": "Dinghy's Beach Bar is a local dining and gathering place included in the VI Guide island catalog.",
     "heroImage": "/images/places/water-island/dinghys-beach-bar-1.jpg",
@@ -1165,13 +1166,14 @@
     "island": "stj",
     "category": "historic",
     "description": "A historic hilltop fortification overlooking Coral Bay and surrounding waters.",
-    "heroImage": "/images/places/fallbacks/historic-stj.svg",
+    "heroImage": "/images/sourced/place/stj/fortsberg.jpg",
     "tags": [
       "fort",
       "history",
       "coral bay"
     ],
-    "featured": false
+    "featured": false,
+    "image": "/images/sourced/place/stj/fortsberg.jpg"
   },
   {
     "id": "frederiksted-pier",
@@ -1402,7 +1404,7 @@
     "id": "heidis-honeymoon-grill",
     "slug": "heidis-honeymoon-grill",
     "name": "Heidi's Honeymoon Grill",
-    "island": "wi",
+    "island": "stt",
     "category": "food",
     "description": "Heidi's Honeymoon Grill is a local dining and gathering place included in the VI Guide island catalog.",
     "heroImage": "/images/places/water-island/heidis-honeymoon-grill-1.jpg",
@@ -1612,7 +1614,7 @@
     "id": "limestone-bay-beach",
     "slug": "limestone-bay-beach",
     "name": "Limestone Bay Beach",
-    "island": "wi",
+    "island": "stt",
     "category": "beach",
     "description": "Limestone Bay Beach is a visitor destination included in the VI Guide island catalog.",
     "heroImage": "/images/places/water-island/limestone-bay-beach-1.jpg",
@@ -3067,7 +3069,7 @@
     "id": "water-island-beach-bar",
     "slug": "water-island-beach-bar",
     "name": "Water Island Beach Bar",
-    "island": "wi",
+    "island": "stt",
     "category": "food",
     "description": "Water Island Beach Bar is a local dining and gathering place included in the VI Guide island catalog.",
     "heroImage": "/images/places/water-island/water-island-beach-bar-1.jpg",

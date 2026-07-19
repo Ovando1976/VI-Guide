@@ -804,7 +804,7 @@
     "island": "stx",
     "category": "beach",
     "description": "Teague Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/teague-bay.svg",
+    "heroImage": "/images/sourced/beach/stx/teague-bay.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -814,7 +814,8 @@
     "bestFor": [
       "beach day",
       "island views"
-    ]
+    ],
+    "image": "/images/sourced/beach/stx/teague-bay.jpg"
   },
   {
     "id": "trunk-bay",

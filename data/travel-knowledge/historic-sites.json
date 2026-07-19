@@ -340,8 +340,10 @@
     "category": "landmark",
     "description": "Bordeaux is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Bordeaux is a federally recognized historic landmark in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/sourced/historic/stt/bordeaux.png",
+    "images": [
+      "/images/sourced/historic/stt/bordeaux.png"
+    ],
     "tags": [
       "landmark",
       "STT",
@@ -368,7 +370,8 @@
       "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "image": "/images/sourced/historic/stt/bordeaux.png"
   },
   {
     "id": "brown-bay-plantation-historic-district",
@@ -2236,8 +2239,10 @@
     "category": "church",
     "description": "Frederick Lutheran Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Frederick Lutheran Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    "images": [
+      "/images/sourced/historic/stt/frederick-lutheran-church.jpg"
+    ],
     "tags": [
       "church",
       "STT",
@@ -2250,7 +2255,8 @@
       "frederick_lutheran_church__frederick_lutheran_church.jpeg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-07-17T21:00:56.170Z",
+    "image": "/images/sourced/historic/stt/frederick-lutheran-church.jpg"
   },
   {
     "id": "frederiksted-historic-district",

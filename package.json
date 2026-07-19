@@ -27,7 +27,8 @@
     "historic:export": "tsx scripts/export-historic-sites.ts",
     "coordinates:audit": "tsx scripts/resolve-territory-coordinates.ts",
     "coordinates:resolve": "tsx scripts/resolve-territory-coordinates.ts --apply",
-    "coordinates:retry": "tsx scripts/resolve-territory-coordinates.ts --apply --retry-all"
+    "coordinates:retry": "tsx scripts/resolve-territory-coordinates.ts --apply --retry-all",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^6.8.0",
