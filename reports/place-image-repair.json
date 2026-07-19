@@ -1,0 +1,443 @@
+{
+  "generatedAt": "2026-07-18T02:30:02.863Z",
+  "total": 86,
+  "recovered": 2,
+  "fallbacks": 68,
+  "corrected": 2,
+  "records": [
+    {
+      "slug": "99-steps",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stt.svg"
+    },
+    {
+      "slug": "american-yacht-harbor",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/marina-stt.svg"
+    },
+    {
+      "slug": "annaberg-sugar-plantation",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stj.svg"
+    },
+    {
+      "slug": "stt-arian-s",
+      "status": "existing",
+      "image": "/images/directory/places/stt-arian-s.svg"
+    },
+    {
+      "slug": "stt-benito-s-burritos",
+      "status": "existing",
+      "image": "/images/directory/places/stt-benito-s-burritos.svg"
+    },
+    {
+      "slug": "stt-bernie-s-bar-grill",
+      "status": "existing",
+      "image": "/images/directory/places/stt-bernie-s-bar-grill.svg"
+    },
+    {
+      "slug": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "status": "existing",
+      "image": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg"
+    },
+    {
+      "slug": "stt-bonita-s-cantina",
+      "status": "existing",
+      "image": "/images/directory/places/stt-bonita-s-cantina.svg"
+    },
+    {
+      "slug": "brewers-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "buck-island-reef-national-monument",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/nature-stx.svg"
+    },
+    {
+      "slug": "stt-bumpa-s",
+      "status": "existing",
+      "image": "/images/directory/places/stt-bumpa-s.svg"
+    },
+    {
+      "slug": "cane-bay-wall",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/nature-stx.svg"
+    },
+    {
+      "slug": "caneel-bay-overlook",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/viewpoint-stj.svg"
+    },
+    {
+      "slug": "captain-morgan-visitor-center",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stx.svg"
+    },
+    {
+      "slug": "waterfront-charlotte-amalie",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "charlotte-amalie-waterfront",
+      "status": "existing",
+      "image": "/images/usvi-harbor-hero.jpg"
+    },
+    {
+      "slug": "christiansted-boardwalk",
+      "status": "existing",
+      "image": "/images/usvi-harbor-hero.jpg"
+    },
+    {
+      "slug": "christiansted-national-historic-site",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "cinnamon-bay-archaeology-lab",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/museum-stj.svg"
+    },
+    {
+      "slug": "cinnamon-bay-campground",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/campground-stj.svg"
+    },
+    {
+      "slug": "coki-point",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "columbus-landing-site",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "coral-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg"
+    },
+    {
+      "slug": "coral-bay-harbor",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/marina-stj.svg"
+    },
+    {
+      "slug": "coral-world-ocean-park",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "crown-bay-center",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/shopping-stt.svg"
+    },
+    {
+      "slug": "cruz-bay",
+      "status": "existing",
+      "image": "/images/usvi-harbor-hero.jpg"
+    },
+    {
+      "slug": "cruz-bay-waterfront",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stj.svg"
+    },
+    {
+      "slug": "cruzan-rum-distillery",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stx.svg"
+    },
+    {
+      "slug": "drakes-seat",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/viewpoint-stt.svg"
+    },
+    {
+      "slug": "stt-duffy-s-love-shack",
+      "status": "existing",
+      "image": "/images/directory/places/stt-duffy-s-love-shack.svg"
+    },
+    {
+      "slug": "stt-e-s-garden-teahouse",
+      "status": "existing",
+      "image": "/images/directory/places/stt-e-s-garden-teahouse.svg"
+    },
+    {
+      "slug": "east-end-st-john",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg"
+    },
+    {
+      "slug": "eliza-james-mchen-beach-park",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/park-stx.svg"
+    },
+    {
+      "slug": "emancipation-garden",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/park-stt.svg"
+    },
+    {
+      "slug": "estate-whim-museum",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/museum-stx.svg"
+    },
+    {
+      "slug": "fort-christian",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stt.svg"
+    },
+    {
+      "slug": "fort-christiansvaern",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "fort-frederik",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "fortsberg",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stj.svg"
+    },
+    {
+      "slug": "frederiksted-pier",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stx.svg"
+    },
+    {
+      "slug": "frederiksted-waterfront",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stx.svg"
+    },
+    {
+      "slug": "frenchtown",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg"
+    },
+    {
+      "slug": "frenchtown-market",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/market-stt.svg"
+    },
+    {
+      "slug": "gallows-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/neighborhood-stx.svg"
+    },
+    {
+      "slug": "government-house-christiansted",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "green-cay-marina",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/marina-stx.svg"
+    },
+    {
+      "slug": "stt-greengos-caribbean-cantina",
+      "status": "existing",
+      "image": "/images/directory/places/stt-greengos-caribbean-cantina.svg"
+    },
+    {
+      "slug": "havensight-mall",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/shopping-stt.svg"
+    },
+    {
+      "slug": "hook-line-sinker",
+      "status": "existing",
+      "image": "/images/places/hook-line-sinker.jpg"
+    },
+    {
+      "slug": "hull-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "jack-and-isaac-bay-preserve",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/nature-stx.svg"
+    },
+    {
+      "slug": "johns-folly-learning-institute",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/cultural-stj.svg"
+    },
+    {
+      "slug": "lindbergh-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "magens-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "main-street-charlotte-amalie",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/shopping-stt.svg"
+    },
+    {
+      "slug": "market-square-st-thomas",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stt.svg"
+    },
+    {
+      "slug": "millennium-monument",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/monument-stx.svg"
+    },
+    {
+      "slug": "stt-mim-s-seafood-bistro",
+      "status": "existing",
+      "image": "/images/directory/places/stt-mim-s-seafood-bistro.svg"
+    },
+    {
+      "slug": "mongoose-junction",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/shopping-stj.svg"
+    },
+    {
+      "slug": "mount-eagle",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/viewpoint-stx.svg"
+    },
+    {
+      "slug": "mountaintop-st-thomas",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "old-danish-custom-house",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "paradise-point",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/viewpoint-stt.svg"
+    },
+    {
+      "slug": "peace-hill",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stj.svg"
+    },
+    {
+      "slug": "point-udall",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/viewpoint-stx.svg"
+    },
+    {
+      "slug": "protestant-cay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stx.svg"
+    },
+    {
+      "slug": "ram-head-trail",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/trail-stj.svg"
+    },
+    {
+      "slug": "red-hook",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg"
+    },
+    {
+      "slug": "petroglyphs-trail",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stj.svg"
+    },
+    {
+      "slug": "reef-bay-trail",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/trail-stj.svg"
+    },
+    {
+      "slug": "salt-pond-bay",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stj.svg"
+    },
+    {
+      "slug": "salt-river-bay-national-historical-park",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "sandy-point-national-wildlife-refuge",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/nature-stx.svg"
+    },
+    {
+      "slug": "sapphire-marina",
+      "status": "recovered",
+      "score": 8,
+      "source": "public/images/accommodations/sapphire-beach-resort-and-marina.jpg",
+      "image": "/images/places/sapphire-marina.jpg"
+    },
+    {
+      "slug": "secret-harbour",
+      "status": "recovered",
+      "score": 8,
+      "source": "public/images/accommodations/secret-harbour-beach-resort.jpg",
+      "image": "/images/places/secret-harbour.jpg"
+    },
+    {
+      "slug": "skyride-to-paradise-point",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/attraction-stt.svg"
+    },
+    {
+      "slug": "rainforest-st-croix",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/nature-stx.svg"
+    },
+    {
+      "slug": "st-george-village-botanical-garden",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/garden-stx.svg"
+    },
+    {
+      "slug": "steeple-building",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/historic-stx.svg"
+    },
+    {
+      "slug": "stt-sudi-s-caribbean-bar-grille",
+      "status": "existing",
+      "image": "/images/directory/places/stt-sudi-s-caribbean-bar-grille.svg"
+    },
+    {
+      "slug": "leap-st-croix",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/shopping-stx.svg"
+    },
+    {
+      "slug": "stt-virgilio-s-italian",
+      "status": "existing",
+      "image": "/images/directory/places/stt-virgilio-s-italian.svg"
+    },
+    {
+      "slug": "virgin-islands-national-park-visitor-center",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/visitor-center-stj.svg"
+    },
+    {
+      "slug": "water-island-ferry-terminal",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/transport-stt.svg"
+    },
+    {
+      "slug": "yacht-haven-grande",
+      "status": "fallback",
+      "image": "/images/places/fallbacks/marina-stt.svg"
+    }
+  ]
+}

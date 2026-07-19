@@ -1,35 +1,42 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "module": "ESNext",
+    "target": "ES2021",
+    "moduleResolution": "Bundler",
     "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
+      "dom",
+      "dom.iterable",
+      "es2021"
     ],
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
     "allowJs": true,
-    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": [
         "./*"
       ]
-    },
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "types": [
-      "vite/client",
-      "react",
-      "react-dom"
-    ]
+    }
   },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next-dev/types/**/*.ts"
+  ],
   "exclude": [
-    "functions",
-    "functions/**"
+    "node_modules"
   ]
 }

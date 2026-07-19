@@ -1,146 +1,64 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() {
-      return request.auth != null;
+    function signedIn() { return request.auth != null; }
+    function role(name) { return signedIn() && request.auth.token.role == name; }
+    function staff() { return role('admin') || role('dispatcher'); }
+    function driverId() {
+      return request.auth.token.driverId != null
+        ? request.auth.token.driverId
+        : request.auth.uid;
     }
 
-    function isSelf(userId) {
-      return signedIn() && request.auth.uid == userId;
-    }
-
-    function isAdmin() {
-      return signedIn() && request.auth.token.admin == true;
-    }
-
-    function isPartner() {
-      return signedIn() && (
-        request.auth.token.partner == true ||
-        request.auth.token.admin == true
+    match /bookings/{bookingId} {
+      allow read: if signedIn() && (
+        resource.data.riderId == request.auth.uid ||
+        resource.data.driverId == driverId() ||
+        (role('driver') && resource.data.status == 'requested' && resource.data.paymentStatus == 'paid') ||
+        staff()
       );
+      allow write: if false;
+      match /events/{eventId} {
+        allow read: if signedIn() && (
+          get(/databases/$(database)/documents/bookings/$(bookingId)).data.riderId == request.auth.uid ||
+          get(/databases/$(database)/documents/bookings/$(bookingId)).data.driverId == driverId() || staff()
+        );
+        allow write: if false;
+      }
     }
 
-    match /users/{userId}/{document=**} {
-      allow read, write: if isSelf(userId) || isAdmin();
+    match /drivers/{id} {
+      allow read: if role('driver') || staff();
+      allow write: if false;
     }
 
-    match /checkoutSessions/{sessionId} {
-      allow read, write: if isAdmin();
+    match /taxiAssociations/{id} {
+      allow read: if role('driver') || staff();
+      allow write: if false;
     }
 
-    match /payments/{paymentId} {
-      allow read, write: if isAdmin();
+    match /vehicles/{id} {
+      allow read: if staff() || (role('driver') && resource.data.driverId == driverId());
+      allow write: if false;
     }
 
-    match /roleAssignments/{userId} {
-      allow read, write: if isAdmin();
-    }
-
-    match /partnerClaims/{claimId} {
-      allow create: if true;
-      allow read, update, delete: if isAdmin();
-    }
-
-    match /merchantLeads/{leadId} {
-      allow create: if true;
-      allow read, update, delete: if isAdmin();
-    }
-
-    match /mobilityRequests/{requestId} {
-      allow create: if true;
-      allow read, update: if isAdmin() || isPartner();
-      allow delete: if isAdmin();
-    }
-
-    match /mobilityDispatchEvents/{eventId} {
-      allow create: if isAdmin() || isPartner();
-      allow read: if isAdmin() || isPartner();
-      allow update, delete: if isAdmin();
-    }
-
-    match /bookingRequests/{requestId} {
-      allow create: if true;
-      allow read, update: if isAdmin() || isPartner();
-      allow delete: if isAdmin();
-    }
-
-    match /partnerPages/{partnerPageId} {
+    match /taxiTariffs/{id} {
       allow read: if true;
-      allow create, update: if isAdmin() || isPartner();
-      allow delete: if isAdmin();
+      allow write: if false;
     }
 
-    match /partnerPageChangeRequests/{requestId} {
-      allow create: if true;
-      allow read, update, delete: if isAdmin();
+    match /taxiOperationsAudit/{id} {
+      allow read: if staff();
+      allow write: if false;
     }
 
-
-    // ------------------------------------------------------------
-    // VI Connect
-    // Dating / friendship / social layer
-    // ------------------------------------------------------------
-
-    match /connectProfiles/{userId} {
-      // MVP: signed-in users can discover visible profiles.
-      // Owners and admins can read their own profile even if hidden.
+    match /tripEvents/{eventId} {
       allow read: if signedIn() && (
-        resource.data.isVisible == true ||
-        isSelf(userId) ||
-        isAdmin()
+        get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.riderId == request.auth.uid ||
+        get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.driverId == driverId() ||
+        staff()
       );
-
-      allow create, update: if isSelf(userId) || isAdmin();
-      allow delete: if isSelf(userId) || isAdmin();
-    }
-
-    match /connectEngagement/{userId} {
-      allow read, create, update, delete: if isSelf(userId) || isAdmin();
-    }
-
-    match /connectLikes/{likeId} {
-      allow create, update: if signedIn()
-        && request.resource.data.fromUid == request.auth.uid;
-
-      allow read: if signedIn() && (
-        resource.data.fromUid == request.auth.uid ||
-        resource.data.toProfileId == request.auth.uid ||
-        isAdmin()
-      );
-
-      allow delete: if signedIn() && (
-        resource.data.fromUid == request.auth.uid ||
-        isAdmin()
-      );
-    }
-
-    match /connectPasses/{passId} {
-      allow create, update: if signedIn()
-        && request.resource.data.fromUid == request.auth.uid;
-
-      allow read, delete: if signedIn() && (
-        resource.data.fromUid == request.auth.uid ||
-        isAdmin()
-      );
-    }
-
-    match /connectBlocks/{blockId} {
-      allow create, update: if signedIn()
-        && request.resource.data.fromUid == request.auth.uid;
-
-      allow read, delete: if signedIn() && (
-        resource.data.fromUid == request.auth.uid ||
-        isAdmin()
-      );
-    }
-
-    match /connectReports/{reportId} {
-      allow create: if signedIn()
-        && request.resource.data.fromUid == request.auth.uid;
-
-      // Reports should only be readable/moderated by admins.
-      allow read, update, delete: if isAdmin();
+      allow write: if false;
     }
 
     match /{document=**} {

@@ -2,8 +2,8 @@
   // These tasks will run in order when initializing your CodeSandbox project.
   "setupTasks": [
     {
-      "name": "Installing Dependencies",
-      "command": "npm install"
+      "command": "npm install",
+      "name": "Install Dependencies"
     }
   ],
 
@@ -11,7 +11,7 @@
   "tasks": {
     "dev": {
       "name": "dev",
-      "command": "npm run dev",
+      "command": "yarn dev",
       "runAtStart": true,
       "preview": {
         "port": 3000
@@ -19,23 +19,15 @@
     },
     "build": {
       "name": "build",
-      "command": "npm run build",
-      "runAtStart": false
+      "command": "yarn build"
     },
-    "preview": {
-      "name": "preview",
-      "command": "npm run preview",
-      "runAtStart": false
-    },
-    "clean": {
-      "name": "clean",
-      "command": "npm run clean",
-      "runAtStart": false
+    "start": {
+      "name": "start",
+      "command": "yarn start"
     },
     "lint": {
       "name": "lint",
-      "command": "npm run lint",
-      "runAtStart": false
+      "command": "yarn lint"
     }
   }
 }
