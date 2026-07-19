@@ -1,0 +1,288 @@
+[
+  {
+    "id": "gd-stt-arons",
+    "name": "Arons",
+    "normalizedName": "arons",
+    "aliases": [
+      "arons",
+      "estate arons"
+    ],
+    "island": "stt",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Arons;Plantage, old estate1mile northeast of BrewersBuy,R t.Thomas.-Old. AntQZerhavet;Danish, the Antillean Sea”,1.e.,Caribbean.-Lassen."
+  },
+  {
+    "id": "gd-stx-banson",
+    "name": "Banson",
+    "normalizedName": "banson",
+    "aliases": [
+      "banson",
+      "estate banson"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Banson;Seventeenth century French Plantage,warSlob Estate,I8t.Croix.- Lnpointe. BantaCruz;Spanish name ofSaint Croix;socalled by ChristopherColum-"
+  },
+  {
+    "id": "gd-stx-beckmans",
+    "name": "Beckman’s",
+    "normalizedName": "beckmans",
+    "aliases": [
+      "beckmans",
+      "estate beckmans"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Beckman’s;Estate31,EastendAQuarter,St.Croix; formerly Plantage of Herman Helm’s widow, now called Sally’s Fancy.-Oxholm. Beoka Grove;same a s Beck Grove, St. Croix.--0xholm;L.81W."
+  },
+  {
+    "id": "gd-stt-bethel",
+    "name": "Bethel",
+    "normalizedName": "bethel",
+    "aliases": [
+      "bethel",
+      "estate bethel"
+    ],
+    "island": "stt",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Bethel; Old EstateorMission,Wmile westsouthwestofNew Herrnhut, New Quarter,St.Thomas.-Old. Bethesda;Estateon southeast side of road northeastofFortuna Estate and"
+  },
+  {
+    "id": "gd-stx-beverhoudt",
+    "name": "Beverhoudt",
+    "normalizedName": "beverhoudt",
+    "aliases": [
+      "beverhoudt",
+      "estate beverhoudt"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Beverhoudt; Plantage, eitherof2estntesofGeneral Kriegs-Commissaire Lucas vanBeverhoudt;viz:CottongroveinEastend,andWork-and-Restin CompanyQuarter,St.Croix.-Bellin;Beck. AlsospelledBeverhout."
+  },
+  {
+    "id": "gd-stx-bfoncccur",
+    "name": "Bfoncccur",
+    "normalizedName": "bfoncccur",
+    "aliases": [
+      "bfoncccur",
+      "estate bfoncccur"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Bfoncccur;Seventeenth century French plantation,somewhereneapPenrlEs- tate, St. Uroix.--Lapainte. diousieurbuBois,CfocuverneurdeL'lste;MansionoftheFrench *Qovbrmrof"
+  },
+  {
+    "id": "gd-stt-bourgen",
+    "name": "Bourgen",
+    "normalizedName": "bourgen",
+    "aliases": [
+      "bourgen",
+      "estate bourgen"
+    ],
+    "island": "stt",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Bourgen;Old Estate, called by Oldendorp, Bourgens Plantage, the only one shown on the trine peninsula east ofNazareth,St.Thomas."
+  },
+  {
+    "id": "gd-stx-cfaudri",
+    "name": "Cfaudri",
+    "normalizedName": "cfaudri",
+    "aliases": [
+      "cfaudri",
+      "estate cfaudri"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "CfaUdri;Seventeenth-century French Plantage,on285-fOotHillsouthofAltona. St. Croix.-Lapointe. Gedegen;DanishequivalentofBuckIsland,St.Croix.-Geogr. Tidskrtft,"
+  },
+  {
+    "id": "gd-stx-coakley-bay",
+    "name": "Coakley Bay",
+    "normalizedName": "coakley bay",
+    "aliases": [
+      "coakley bay",
+      "coakleybay",
+      "estate coakley bay"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Coakley Bay; Old estate,1in EastendBQuarter, St. Croix; plantationof JohnCoakly, sr.-Z.: Dewitz.Buildingsonpoint betweentwo bights: both called Coakley Bay; namenowahlsigned to western."
+  },
+  {
+    "id": "gd-stj-corteri",
+    "name": "Corteri",
+    "normalizedName": "corteri",
+    "aliases": [
+      "corteri",
+      "estate corteri"
+    ],
+    "island": "stj",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Corteri;Seventeenth century French Plantage, near south coast ofSt.Croix, not far from Longford.--Lapointe. Corral-Bay;Variant spellingofCoral Bay,StJohn.-H@st,p.4."
+  },
+  {
+    "id": "gd-stx-cui%",
+    "name": "Cui%",
+    "normalizedName": "cui%",
+    "aliases": [
+      "cui%",
+      "estate cui%"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Cui%;SameRSCane Plantation, Westend Quarter, St. Croix.-Oxholm; L.& W.;P.D.Y. Celcbasboom;Same a s Ralabasboom,St.John.-Zabriskie."
+  },
+  {
+    "id": "gd-stx-hontufn",
+    "name": "Hontufn",
+    "normalizedName": "hontufn",
+    "aliases": [
+      "estate hontufn",
+      "hontufn"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Hontufn;Seventeenth century Freiich Plantage,nearPrincess Estate-village, St. Croix. Hope;Estate on WestendRoad,whcreI trounds shoulderofrirlgca t 330-foot"
+  },
+  {
+    "id": "gd-stx-kermonhill",
+    "name": "Kermonhill",
+    "normalizedName": "kermonhill",
+    "aliases": [
+      "estate kermonhill",
+      "kermonhill"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "KermonHill;Estate, almost coextensive witholdLillie Plantage,No.11in CompanyQuarter,St.Croix;tractL-shaped, extending easttoSignal Hill; Estzitehouse onhill,sonamed,1mile southwestofChristiansted."
+  },
+  {
+    "id": "gd-stt-konigberg",
+    "name": "Konigberg",
+    "normalizedName": "konigberg",
+    "aliases": [
+      "estate konigberg",
+      "konigberg"
+    ],
+    "island": "stt",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Konigberg; Old Estate, between Kragh nnd Schinimelmnnn, about 2,470 meters northeastofSt. Thomas Ilnrbor, and1,060meters westofNew IIerrn- hut, southofWintberg Peak, St. Thomas.-Old."
+  },
+  {
+    "id": "gd-stx-kopman",
+    "name": "Kopman",
+    "normalizedName": "kopman",
+    "aliases": [
+      "estate kopman",
+      "kopman"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Kopman;I<opnian’s Plantage, propertyofAdam Koopma11.-Berk.Qa,Enst- elidBQr., St. Croix.The tract ran out toapohtbetween the two small bays fronting the GardenandHodge Eatates."
+  },
+  {
+    "id": "gd-stx-little-plantation",
+    "name": "Little Plantation",
+    "normalizedName": "little plantation",
+    "aliases": [
+      "estate little plantation",
+      "little plantation",
+      "littleplantation"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Little Plantation; Estate inSt.J a n(St.John).-Eggers, p.102. LittlePrincess;EstateinCompanyQuarter, St.Croix;comprisinghouse, mill,andsettlement withlandingatwestern extremity ofChristiansted"
+  },
+  {
+    "id": "gd-stj-magen",
+    "name": "Magen",
+    "normalizedName": "magen",
+    "aliases": [
+      "estate magen",
+      "magen"
+    ],
+    "island": "stj",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Magen; Magens Plantage,orMagen’s Estate, shown by Oldendorp a tornear Neltjeberg,St.Thomas. MnhuBav;Mahobay Estnte, on east side of Maho Bay, St. John.---Znbrisltie."
+  },
+  {
+    "id": "gd-stx-mount-xisery",
+    "name": "Mount Xisery",
+    "normalizedName": "mount xisery",
+    "aliases": [
+      "estate mount xisery",
+      "mount xisery",
+      "mountxisery"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Mount Xisery; Old Estate at footof678-foot ridge so-called, on southern side ofCrequis Valley, westofPunch Trail,ia8.%oftract 15, NorthsideA Qr.,St. Croix.-H.0.1423.Now part of Mount Victory Estate, q.v."
+  },
+  {
+    "id": "gd-stt-musquite-bay",
+    "name": "Musquite-Bay",
+    "normalizedName": "musquite-bay",
+    "aliases": [
+      "estate musquite-bay",
+      "estate musquite-bay plantage",
+      "musquite-bay",
+      "musquite-bay plantage",
+      "musquite-bayplantage"
+    ],
+    "island": "stt",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Musquite-Bay Plantage;MosquitoBay Estate,St.Thomas.-Rohde. Musquitobay;Estate on northsideofroad passing Bayofsame name,St. Thomas.-Reichel;Hornbeck;Dewitz."
+  },
+  {
+    "id": "gd-stx-nally-bornethisname",
+    "name": "Nally Bornethisname",
+    "normalizedName": "nally bornethisname",
+    "aliases": [
+      "estate nally bornethisname",
+      "nally bornethisname",
+      "nallybornethisname"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "nally bornethisname; latter feature being on old Poul Plantage (modera Danish, Povl;English, Paul). pow8Point:SameasPow Pt., St. Croix."
+  },
+  {
+    "id": "gd-stx-pless",
+    "name": "Pless",
+    "normalizedName": "pless",
+    "aliases": [
+      "estate pless",
+      "estate pless plantage",
+      "pless",
+      "pless plantage",
+      "plessplantage"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Pless Plantage;Now Plessen Estate.Property(1764)ofWm. Ryan’s heirs; in Prlnce Quarter, St. Croix. Plessen;Estate,28and29,centerofPrince Quarter, St.Croix;measuring"
+  },
+  {
+    "id": "gd-stx-towers",
+    "name": "Towers",
+    "normalizedName": "towers",
+    "aliases": [
+      "estate towers",
+      "towers"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Towers;Small old Estate, tract 17, patrimonyofEdward Pour’s heirs, Eastend AQuarter, St. Croix. Towers; Estate houses at foot of Contentment Hill, within present limitsof"
+  },
+  {
+    "id": "gd-stx-valley",
+    "name": "Valley",
+    "normalizedName": "valley",
+    "aliases": [
+      "estate valley",
+      "valley"
+    ],
+    "island": "stx",
+    "source": "geographic_dictionary",
+    "dictionarySummary": "Valley;Estate,3and4a,Daniel Mallet’s Plantage, Eastend BQuarter,St. Croix.Estate hoiise rulnainhcadofglen reached by trail from Hodge"
+  }
+]

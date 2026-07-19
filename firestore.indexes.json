@@ -1,0 +1,24 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "drivers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "availability", "order": "ASCENDING" },
+        { "fieldPath": "authorizationStatus", "order": "ASCENDING" },
+        { "fieldPath": "verified", "order": "ASCENDING" },
+        { "fieldPath": "islands", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "reliabilityScore", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "taxiTariffs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "island", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

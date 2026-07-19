@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-07-19T00:01:37.918Z",
+  "sources": {
+    "listingsCsv": "https://www.nps.gov/common/uploads/sortable_dataset/nationalregister/53699964-0893-68AA-5273CB1C614B8BB3/nri-national-register-listed20260522.csv?t=1780613186835",
+    "pointLayer": "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/0",
+    "polygonLayer": "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/1"
+  },
+  "counts": {
+    "officialPublicListings": 84,
+    "generatedOfficialRecords": 84,
+    "curatedNonNrhpRecordsPreserved": 31,
+    "totalHistoricRecords": 115,
+    "pointLayerFeatures": 49,
+    "polygonLayerFeatures": 24,
+    "uniqueSpatialMatches": 72,
+    "exactPointCoordinates": 49,
+    "representativePolygonCoordinates": 23,
+    "unresolvedOfficialListings": 12
+  },
+  "unresolved": [
+    {
+      "refNumber": "100010644",
+      "name": "Barracks No. 2",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010650",
+      "name": "Benjamin Franklin School",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100009346",
+      "name": "Charlotte Amalie Historic District (Boundary Increase)",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "16000699",
+      "name": "Cruz Bay Town Historic District",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010648",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010645",
+      "name": "Evelyn E. Marcelli Elementary School",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010641",
+      "name": "Holy Cross Episcopal Church",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010640",
+      "name": "Kingshill Lutheran Church",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010647",
+      "name": "La Grange Historic District",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "01000280",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "100010646",
+      "name": "Sprat Hall Historic District",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    },
+    {
+      "refNumber": "78002733",
+      "name": "Venus Hill",
+      "reason": "No matching public NPS point or polygon feature was returned"
+    }
+  ]
+}

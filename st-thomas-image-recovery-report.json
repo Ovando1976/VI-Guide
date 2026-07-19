@@ -1,0 +1,26 @@
+{
+  "recovered": 17,
+  "failed": 4,
+  "failures": [
+    {
+      "slug": "sapphire-village-resort",
+      "propertyWebsite": "https://sapphirevillage.com/photos/",
+      "error": "No usable official image (HTTP 403)"
+    },
+    {
+      "slug": "flamboyan-on-the-bay-resort-villas",
+      "propertyWebsite": "https://www.fbrvi.com/resort/",
+      "error": "https://www.fbrvi.com/resort/: HTTP 403; http://www.fbrvi.com/resort/: HTTP 403; https://fbrvi.com/resort/: HTTP 403; http://fbrvi.com/resort/: HTTP 403"
+    },
+    {
+      "slug": "windward-passage-hotel",
+      "propertyWebsite": "https://www.windwardpassage.com/photo-gallery/",
+      "error": "https://www.windwardpassage.com/photo-gallery/: HTTP 403; http://www.windwardpassage.com/photo-gallery/: HTTP 403; https://windwardpassage.com/photo-gallery/: HTTP 403; http://windwardpassage.com/photo-gallery/: HTTP 403"
+    },
+    {
+      "slug": "pavilions-and-pools-resort",
+      "propertyWebsite": "http://www.pavilionsandpools.com/virtualtour.html",
+      "error": "https://www.pavilionsandpools.com/virtualtour.html: fetch failed; http://www.pavilionsandpools.com/virtualtour.html: no usable image markup; https://pavilionsandpools.com/virtualtour.html: fetch failed; http://pavilionsandpools.com/virtualtour.html: no usable image markup"
+    }
+  ]
+}
