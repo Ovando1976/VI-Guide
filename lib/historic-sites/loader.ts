@@ -145,6 +145,7 @@ function parseHistoricSite(value: unknown, index: number): HistoricSite {
   const name = requiredString(record.name, `historicSites[${index}].name`);
   const slug = optionalString(record.slug) ?? normalizeSlug(name);
   const island = parseIsland(record.island, index);
+  const images = stringArray(record.images);
 
   return {
     id,
@@ -163,13 +164,15 @@ function parseHistoricSite(value: unknown, index: number): HistoricSite {
       optionalString(record.description) ??
       `${name} is a historic place in the U.S. Virgin Islands.`,
     heroImage:
-      optionalString(record.heroImage) ?? "/images/historic/placeholder.svg",
-    images: stringArray(record.images),
+      optionalString(record.heroImage) ??
+      images[0] ??
+      "/images/historic/placeholder.svg",
+    images,
     tags: stringArray(record.tags),
     featured: optionalBoolean(record.featured) ?? false,
     imageCount:
       optionalNonNegativeInteger(record.imageCount) ??
-      stringArray(record.images).length,
+      images.length,
     sourceImageIds: stringArray(record.sourceImageIds),
     location: optionalString(record.location),
     designation: optionalString(record.designation),

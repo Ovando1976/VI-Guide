@@ -1208,7 +1208,7 @@ function TerritoryEntityCard({
     typeof entity.attributes.location === "string"
       ? entity.attributes.location
       : null;
-  const cover = entity.media?.hero;
+  const cover = entity.media?.hero ?? entity.media?.images?.[0];
 
   return (
     <article className="group flex min-h-40 flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/10 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.035] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
@@ -1217,18 +1217,11 @@ function TerritoryEntityCard({
         aria-label={`Open ${entity.title}`}
         className="relative block h-28 overflow-hidden bg-[linear-gradient(135deg,#12303b,#07131b)]"
       >
-        {cover ? (
-          <span
-            role="img"
-            aria-label={entity.title}
-            className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-[1.03]"
-            style={{ backgroundImage: `url(${JSON.stringify(cover)})` }}
-          />
-        ) : (
-          <span className="absolute inset-0 grid place-items-center text-4xl font-black uppercase text-white/[0.08]">
-            {entityKindLabel(entity.kind)}
-          </span>
-        )}
+        <TerritoryCardCover
+          src={cover}
+          title={entity.title}
+          kind={entity.kind}
+        />
         <span className="absolute inset-0 bg-gradient-to-t from-[#07131b] via-transparent to-transparent" />
         <span
           className={`absolute right-3 top-3 rounded-full border px-2 py-1 text-[8px] font-extrabold uppercase tracking-[0.12em] backdrop-blur ${
@@ -1305,6 +1298,39 @@ function TerritoryEntityCard({
         </div>
       </div>
     </article>
+  );
+}
+
+function TerritoryCardCover({
+  src,
+  title,
+  kind,
+}: {
+  src?: string;
+  title: string;
+  kind: TerritoryEntity["kind"];
+}) {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <span className="absolute inset-0 grid place-items-center bg-[radial-gradient(circle_at_30%_20%,rgba(62,215,230,0.18),transparent_45%),linear-gradient(135deg,#12303b,#07131b)] text-3xl font-black uppercase tracking-[0.12em] text-white/[0.12]">
+        {entityKindLabel(kind)}
+      </span>
+    );
+  }
+
+  return (
+    // Native img lets the card recover from invalid remote and local URLs.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={title}
+      loading="lazy"
+      decoding="async"
+      onError={() => setFailed(true)}
+      className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+    />
   );
 }
 
