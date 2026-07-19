@@ -460,7 +460,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "Duffy's Love Shack is a local St. Thomas dining and gathering spot included in the VI Guide travel catalog.",
-    "heroImage": "/images/directory/places/stt-duffy-s-love-shack.svg",
+    "heroImage": "/images/places/st-thomas/duffys-love-shack-1.jpg",
     "tags": [
       "local favorite",
       "food",
@@ -535,7 +535,7 @@
     "island": "stx",
     "category": "museum",
     "description": "A preserved sugar-estate complex interpreting St. Croix history and plantation-era life.",
-    "heroImage": "/images/places/fallbacks/museum-stx.svg",
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
     "tags": [
       "museum",
       "estate",
@@ -940,7 +940,7 @@
     "island": "stx",
     "category": "historic",
     "description": "A landmark government building on Christiansted’s historic waterfront.",
-    "heroImage": "/images/places/fallbacks/historic-stx.svg",
+    "heroImage": "/images/places/st-croix/old-danish-customs-house-1.jpg",
     "tags": [
       "history",
       "architecture",
@@ -1150,7 +1150,7 @@
     "island": "stt",
     "category": "attraction",
     "description": "An aerial tram experience rising from Havensight to a scenic overlook above Charlotte Amalie.",
-    "heroImage": "/images/places/fallbacks/attraction-stt.svg",
+    "heroImage": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
     "tags": [
       "tram",
       "viewpoint",
@@ -1210,7 +1210,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "Sudi's Caribbean Bar Grille is a local St. Thomas dining and gathering spot included in the VI Guide travel catalog.",
-    "heroImage": "/images/directory/places/stt-sudi-s-caribbean-bar-grille.svg",
+    "heroImage": "/images/places/st-thomas/sudis-caribbean-bar-and-grille-1.jpg",
     "tags": [
       "local favorite",
       "food",
@@ -1240,7 +1240,7 @@
     "island": "stt",
     "category": "restaurant",
     "description": "Virgilio's Italian is a local St. Thomas dining and gathering spot included in the VI Guide travel catalog.",
-    "heroImage": "/images/directory/places/stt-virgilio-s-italian.svg",
+    "heroImage": "/images/places/st-thomas/virgilios-1.jpg",
     "tags": [
       "local favorite",
       "food",
@@ -1255,7 +1255,7 @@
     "island": "stj",
     "category": "visitor-center",
     "description": "A key starting point for learning about trails, beaches, history, and park conditions on St. John.",
-    "heroImage": "/images/places/fallbacks/visitor-center-stj.svg",
+    "heroImage": "/images/places/st-john/virgin-islands-national-park-1.jpg",
     "tags": [
       "national park",
       "visitor center",

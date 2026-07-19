@@ -283,8 +283,10 @@
     "category": "landmark",
     "description": "Blackbeard's Castle (Skytsborg) is a historic site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Blackbeard's Castle (Skytsborg) is a historic site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+    "images": [
+      "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    ],
     "tags": [
       "landmark",
       "STT",
@@ -292,7 +294,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "blackbeards_castle_skytsborg__blackbeards_castle_skytsborg.jpeg"
     ],
@@ -307,8 +309,10 @@
     "category": "landmark",
     "description": "Bluebeard's Castle Tower is a historic site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Bluebeard's Castle Tower is a historic site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/bluebeards-castle-1.jpg",
+    "images": [
+      "/images/places/st-thomas/bluebeards-castle-1.jpg"
+    ],
     "tags": [
       "landmark",
       "STT",
@@ -316,7 +320,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "bluebeards_castle_tower__bluebeards_castle_tower.jpeg"
     ],
@@ -506,8 +510,10 @@
     "category": "district",
     "description": "Charlotte Amalie Historic District (Boundary Increase) is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Charlotte Amalie Historic District (Boundary Increase) is a federally recognized historic district in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
     "tags": [
       "district",
       "STT",
@@ -516,7 +522,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "61-62 Kronprinsdsens Gade, Charlotte Amalie",
     "designation": "National Register of Historic Places",
@@ -653,8 +659,10 @@
     "category": "fort",
     "description": "Christiansted NHS Fort Christiansvaern is a historic fort site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Christiansted NHS Fort Christiansvaern is a historic fort site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
     "tags": [
       "fort",
       "STX",
@@ -662,7 +670,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "christiansted_nhs_fort_christiansvaern__christiansted_nhs_fort_christiansvaern.jpeg"
     ],
@@ -677,8 +685,10 @@
     "category": "site",
     "description": "Christiansted NHS Scale House is a historic site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Christiansted NHS Scale House is a historic site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/scale-house-1.jpg",
+    "images": [
+      "/images/places/st-croix/scale-house-1.jpg"
+    ],
     "tags": [
       "site",
       "STX",
@@ -686,7 +696,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "christiansted_nhs_scale_house__christiansted_nhs_scale_house.jpeg"
     ],
@@ -701,8 +711,10 @@
     "category": "site",
     "description": "Christiansted NHS Steeple Building is a historic site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Christiansted NHS Steeple Building is a historic site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-croix/steeple-building-1.jpg",
+    "images": [
+      "/images/places/st-croix/steeple-building-1.jpg"
+    ],
     "tags": [
       "site",
       "STX",
@@ -710,7 +722,7 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
       "christiansted_nhs_steeple_building__christiansted_nhs_steeple_building.jpeg"
     ],
@@ -1977,13 +1989,17 @@
     "island": "stx",
     "category": "estate",
     "description": "A preserved sugar estate landscape interpreting plantation-era life and industry.",
-    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
     "tags": [
       "history",
       "estate",
       "stx"
     ],
-    "featured": false
+    "featured": false,
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-museum-1.jpg"
+    ],
+    "imageCount": 1
   },
   {
     "id": "evelyn-e-marcelli-elementary-school",
@@ -3982,8 +3998,10 @@
     "category": "church",
     "description": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim is a federally recognized historic church in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
     "tags": [
       "church",
       "STT",
@@ -3992,7 +4010,7 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [],
     "location": "16AB Krystal Gade, Charlotte Amalie",
     "designation": "National Register of Historic Places",

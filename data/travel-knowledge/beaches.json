@@ -405,7 +405,7 @@
     "island": "stj",
     "category": "beach",
     "description": "Honeymoon Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/honeymoon-beach.svg",
+    "heroImage": "/images/places/st-john/honeymoon-beach-st-john-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -424,7 +424,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Honeymoon Water Island is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/honeymoon-water-island.svg",
+    "heroImage": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg",
     "tags": [
       "beach",
       "swimming",
@@ -766,7 +766,7 @@
     "island": "stt",
     "category": "beach",
     "description": "Santa Maria Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
-    "heroImage": "/images/directory/beaches/santa-maria-beach.svg",
+    "heroImage": "/images/places/st-thomas/santa-maria-bay-beach-1.jpg",
     "tags": [
       "beach",
       "swimming",
