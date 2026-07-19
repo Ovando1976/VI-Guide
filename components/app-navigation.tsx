@@ -1,5 +1,7 @@
 "use client";
 
+import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -28,8 +30,12 @@ export function AppNavigation() {
 
   return (
     <nav aria-label="Primary navigation" className="app-nav">
-      <div className="app-nav__brand" aria-hidden="true">
-        <span>VI</span>
+      <div
+        className="app-nav__brand"
+        aria-hidden="true"
+        style={{ background: "transparent", border: 0, boxShadow: "none" }}
+      >
+        <ViBrandMark className="h-9 w-9 shrink-0" />
       </div>
       {ITEMS.map(({ href, label, icon: Icon }) => {
         const active =

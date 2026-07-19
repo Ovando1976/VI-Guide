@@ -1,3 +1,4 @@
+import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -46,7 +47,7 @@ export default function Home() {
 
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
           <Link href="/" className="inline-flex items-center gap-3" aria-label="VI Guide home">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#f5b942] text-xs font-black tracking-[.1em] text-[#043331] shadow-lg">VI</span>
+            <ViBrandMark className="h-11 w-11" priority />
             <span><strong className="block text-sm font-black tracking-[.02em]">VI Guide</strong><span className="block text-[9px] font-bold uppercase tracking-[.23em] text-white/55">The territory, connected</span></span>
           </Link>
           <Link href="/map?concierge=open" className="hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur transition hover:bg-white/15 sm:inline-flex"><Sparkles size={15} /> Ask the concierge</Link>

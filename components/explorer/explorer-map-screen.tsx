@@ -1,5 +1,7 @@
 "use client";
 
+import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -1378,9 +1380,7 @@ function LoadingState() {
       </div>
       <div className="grid min-h-[620px] place-items-center rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.08),transparent_35%),rgba(255,255,255,0.035)] p-6 text-center">
         <div>
-          <span className="mx-auto grid h-14 w-14 animate-pulse place-items-center rounded-2xl border border-cyan-200/20 bg-cyan-200/[0.08] text-lg font-black text-cyan-100">
-            VI
-          </span>
+          <ViBrandMark className="mx-auto h-14 w-14 animate-pulse" />
           <h1 className="mt-5 text-xl font-extrabold text-white">
             Opening the territory map
           </h1>
