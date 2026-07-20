@@ -8,6 +8,7 @@ import {
   BedDouble,
   Compass,
   House,
+  Landmark,
   Map,
   Navigation,
   Waves,
@@ -20,6 +21,7 @@ const ITEMS = [
   { href: "/map", label: "Map", icon: Map },
   { href: "/places", label: "Explore", icon: Compass },
   { href: "/beaches", label: "Beaches", icon: Waves },
+  { href: "/heritage", label: "Heritage", icon: Landmark },
   { href: "/accommodations", label: "Stays", icon: BedDouble },
   { href: "/mobility", label: "Ride", icon: Navigation },
 ] as const;
@@ -41,7 +43,10 @@ export function AppNavigation() {
         const active =
           href === "/"
             ? pathname === "/"
-            : pathname === href || pathname.startsWith(`${href}/`);
+            : pathname === href ||
+              pathname.startsWith(`${href}/`) ||
+              (href === "/heritage" &&
+                (pathname === "/historic" || pathname.startsWith("/historic/")));
         return (
           <Link
             key={href}
