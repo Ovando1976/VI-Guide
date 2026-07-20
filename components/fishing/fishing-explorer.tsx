@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
   Anchor,
@@ -44,6 +44,7 @@ export function FishingExplorer() {
         item.group,
         item.summary,
         item.habitat,
+        item.handling,
         ...item.searchTerms,
       ]
         .join(" ")
@@ -132,6 +133,7 @@ export function FishingExplorer() {
                 <div className="mt-5 space-y-4 border-t border-white/10 pt-5 text-sm">
                   <Info icon={<Compass size={16} />} label="Habitat" value={item.habitat} />
                   <Info icon={<ShieldCheck size={16} />} label="Before keeping" value={item.regulationNote} />
+                  <Info icon={<Fish size={16} />} label="Handle and release" value={item.handling} />
                 </div>
               </div>
             </article>
@@ -148,6 +150,6 @@ function Stat({ value, label }: { value: string; label: string }) {
   return <div className="rounded-2xl border border-white/10 bg-black/10 px-3 py-4"><strong className="block text-lg font-black text-[#f5c85a]">{value}</strong><span className="mt-1 block text-[9px] font-black uppercase tracking-[.16em] text-white/45">{label}</span></div>;
 }
 
-function Info({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function Info({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
   return <div className="flex gap-3"><span className="mt-0.5 text-cyan-200">{icon}</span><div><p className="text-[10px] font-black uppercase tracking-[.16em] text-white/40">{label}</p><p className="mt-1 leading-5 text-white/65">{value}</p></div></div>;
 }
