@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import {
   BedDouble,
   Compass,
+  Fish,
   House,
   Map,
   Navigation,
@@ -20,6 +21,7 @@ const ITEMS = [
   { href: "/map", label: "Map", icon: Map },
   { href: "/places", label: "Explore", icon: Compass },
   { href: "/beaches", label: "Beaches", icon: Waves },
+  { href: "/fishing", label: "Fishing", icon: Fish },
   { href: "/accommodations", label: "Stays", icon: BedDouble },
   { href: "/mobility", label: "Ride", icon: Navigation },
 ] as const;
