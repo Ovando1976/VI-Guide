@@ -24,10 +24,9 @@ Rules:
 - Never invent dates, people, ownership, architecture, events, quotations, opening hours, admission, accessibility, travel times, or current conditions.
 - When the supplied evidence is insufficient, state what is unknown instead of filling the gap.
 - Do not silently move a traveler between islands.
-- For an itinerary, keep the sequence realistic and explain any island transfer.
-- Mention the evidence record titles that support the answer naturally in the response.
-- Provide the smallest useful next step.
-- Do not claim a booking, ride, message, purchase, or external action occurred.
+- Keep itineraries realistic and explain any island transfer.
+- Mention supporting evidence record titles naturally.
+- Never claim a booking, ride, purchase, message, or external action occurred.
 
 Style: warm, precise, concise, culturally respectful, and free of tourism-brochure filler.
 `;
@@ -38,7 +37,6 @@ function validIdentifier(value: unknown) {
 
 function normalizeHistory(value: unknown): ConciergeMessage[] {
   if (!Array.isArray(value)) return [];
-
   return value
     .filter((item): item is ConciergeMessage => {
       if (!item || typeof item !== "object") return false;
@@ -59,23 +57,19 @@ function normalizeHistory(value: unknown): ConciergeMessage[] {
 
 function extractOutputText(payload: Record<string, unknown>) {
   if (typeof payload.output_text === "string") return payload.output_text;
-
   const output = Array.isArray(payload.output) ? payload.output : [];
   const parts: string[] = [];
-
   for (const item of output) {
     if (!item || typeof item !== "object") continue;
     const content = Array.isArray((item as { content?: unknown }).content)
       ? (item as { content: unknown[] }).content
       : [];
-
     for (const part of content) {
       if (!part || typeof part !== "object") continue;
       const text = (part as { text?: unknown }).text;
       if (typeof text === "string") parts.push(text);
     }
   }
-
   return parts.join("\n");
 }
 
@@ -92,13 +86,12 @@ function localAnswer(
   const lead =
     names.length === 1
       ? names[0]
-      : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
-
+      : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
   const planningIntent = /plan|route|day|visit|tour|itinerary|nearby/i.test(message);
 
   return planningIntent
-    ? `A grounded ${islandName} heritage starting set is ${lead}. These are reviewed VI Guide place records, but current access, hours, admission, and on-site conditions still need local verification. Open the individual records for map and transportation handoffs, then keep the route on one island unless you intentionally plan a ferry or flight transfer.`
-    : `The strongest reviewed ${islandName} heritage matches are ${lead}. I can describe only what the current VI Guide records support; dates, people, or historical claims not present in those records should be treated as unverified until source material is connected.`;
+    ? `A grounded ${islandName} heritage starting set is ${lead}. These are reviewed VI Guide place records, but current access, hours, admission, and on-site conditions still need local verification. Open the individual records for map and transportation handoffs, and keep the route on one island unless you intentionally plan a transfer.`
+    : `The strongest reviewed ${islandName} heritage matches are ${lead}. I can describe only what the current VI Guide records support; claims absent from those records remain unverified until source material is connected.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -129,11 +122,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (
-      context.island !== "stt" &&
-      context.island !== "stj" &&
-      context.island !== "stx"
-    ) {
+    if (context.island !== "stt" && context.island !== "stj" && context.island !== "stx") {
       return NextResponse.json(
         { error: "The selected island is invalid." },
         { status: 400 },
@@ -149,14 +138,11 @@ export async function POST(request: NextRequest) {
 
     let provider: ConciergeReply["provider"] = "local";
     let answer = localAnswer(context.islandName, message, evidence);
-    let outputTokens = 0;
+    let outputTokensUsed = 0;
 
     if (process.env.OPENAI_API_KEY) {
       const controller = new AbortController();
-      const timeout = setTimeout(
-        () => controller.abort(),
-        MAX_RUNTIME_MS - 1500,
-      );
+      const timeout = setTimeout(() => controller.abort(), MAX_RUNTIME_MS - 1500);
 
       try {
         const response = await fetch("https://api.openai.com/v1/responses", {
@@ -183,10 +169,9 @@ export async function POST(request: NextRequest) {
           }),
         });
 
-        const payload = (await response.json().catch(() => null)) as Record<
-          string,
-          unknown
-        > | null;
+        const payload = (await response.json().catch(() => null)) as
+          | Record<string, unknown>
+          | null;
 
         if (response.ok && payload) {
           const generated = extractOutputText(payload).trim();
@@ -194,7 +179,7 @@ export async function POST(request: NextRequest) {
             answer = generated.slice(0, 5000);
             provider = "openai";
             const usage = payload.usage as { output_tokens?: unknown } | undefined;
-            outputTokens =
+            outputTokensUsed =
               typeof usage?.output_tokens === "number" ? usage.output_tokens : 0;
           }
         }
@@ -222,10 +207,15 @@ export async function POST(request: NextRequest) {
         .map((item) => `Tell me more about ${item.title}`),
       actions: [],
       provider,
+      memoryStatus: "session-only",
       budget: {
+        maxModelCalls: 1,
         modelCallsUsed: provider === "openai" ? 1 : 0,
-        outputTokens,
+        maxOutputTokens: MAX_OUTPUT_TOKENS,
+        outputTokensUsed,
+        maxRuntimeMs: MAX_RUNTIME_MS,
         runtimeMs: Date.now() - startedAt,
+        externalSpendLimitCents: 0,
         externalSpendCents: 0,
       },
     };
