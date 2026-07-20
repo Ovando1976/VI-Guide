@@ -1,8 +1,19 @@
 import type { ConciergeChatRequest, ConciergeReply } from "@/types/concierge";
-import type { ConciergeDirectoryEvidence } from "@/lib/concierge-directory-evidence";
+
+export type ConciergeEvidenceItem = {
+  type: "place" | "beach" | "stay" | "historic";
+  name: string;
+  description: string;
+  category: string;
+  island: string;
+  estateGeoid: string | null;
+  href: string;
+  score: number;
+  tags: string[];
+};
 
 export type UnifiedConciergeReply = ConciergeReply & {
-  evidence: ConciergeDirectoryEvidence[];
+  evidence: ConciergeEvidenceItem[];
   evidenceMeta: {
     query: string;
     island: string;
@@ -15,7 +26,7 @@ type EvidenceResponse = {
   query: string;
   island: string;
   count: number;
-  evidence: ConciergeDirectoryEvidence[];
+  evidence: ConciergeEvidenceItem[];
 };
 
 export async function requestUnifiedConcierge(
