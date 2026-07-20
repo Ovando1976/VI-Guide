@@ -6,6 +6,7 @@
     "dev": "rm -rf .next-dev && NEXT_DIST_DIR=.next-dev next dev",
     "build": "next build",
     "start": "next start",
+    "release:check": "npm run typecheck && npm run build",
     "migrate:historic-sites": "tsx scripts/migrate-historic-sites.ts",
     "auth:set-role": "tsx scripts/set-user-role.ts",
     "stays:seed": "tsx scripts/seed-stays.ts",
