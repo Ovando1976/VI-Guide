@@ -1,0 +1,52 @@
+{
+  "reviewedAt": "2026-07-20",
+  "sourceGeneratedAt": "2026-07-20T06:43:19.972Z",
+  "policy": "Google Places is used only for beach identity, address, and coordinates. It does not establish public access, amenities, safety, or operating status.",
+  "accepted": [
+    "abi-beach",
+    "banana-bay",
+    "brewers-bay",
+    "cane-bay",
+    "caneel-bay",
+    "chenay-bay",
+    "columbus-landing",
+    "cowpet-bay",
+    "denis-bay",
+    "dorothea-beach",
+    "dorsch-beach",
+    "gibney-beach",
+    "grapetree-bay",
+    "hansen-bay",
+    "honeymoon-water-island",
+    "isaac-bay",
+    "jack-bay",
+    "jumbie-bay",
+    "mermaids-chair",
+    "morningstar-beach",
+    "nazareth-bay",
+    "pelican-cove",
+    "rainbow-beach",
+    "reef-bay",
+    "santa-maria-beach",
+    "shoys-beach",
+    "teague-bay",
+    "vessup-bay",
+    "water-bay"
+  ],
+  "geographicConfirmations": [
+    "caret-bay"
+  ],
+  "rejected": [
+    "michelles-beach"
+  ],
+  "overrides": {
+    "banana-bay": {
+      "island": "stt"
+    },
+    "caret-bay": {
+      "sourceLabel": "Caret Bay shoreline and Estate Caret Bay geographic confirmation",
+      "sourceUrl": "https://www.usvirealestate.com/real-estate-guides/caret-bay-villas/",
+      "hoursNote": "Caret Bay is both a public shoreline and the name of the surrounding estate. The shoreline is open to public use under USVI law; the practical landward route, parking, and entry conditions should still be confirmed before traveling."
+    }
+  }
+}

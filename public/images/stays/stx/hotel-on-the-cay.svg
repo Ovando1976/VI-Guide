@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title description">
+  <title id="title">Hotel on the Cay</title>
+  <desc id="description">Branded cover for Hotel on the Cay in Christiansted Harbor</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102a43"/><stop offset="1" stop-color="#35617d"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#25b7b1"/><stop offset="1" stop-color="#05717b"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#001b20" flood-opacity=".32"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <circle cx="966" cy="150" r="112" fill="#f6ad55" opacity=".95"/>
+  <path d="M0 515 C180 462, 330 620, 560 520 S890 420,1200 535 V800 H0Z" fill="url(#sea)"/>
+  <path d="M0 585 C220 515, 420 650, 670 570 S970 500,1200 610" fill="none" stroke="#d9fffb" stroke-width="10" opacity=".72"/>
+  <path d="M760 500 l90 -160 85 160z M870 500 l110 -205 125 205z" fill="#062e33" opacity=".55"/>
+  <g opacity=".9"><path d="M1040 522 v-180" stroke="#071f25" stroke-width="12"/><path d="M1040 350 q-95 -80 -150 5 q90 -17 150 38 q65 -72 150 -28 q-80 4 -150 45" fill="#0b3e39"/></g>
+  <g filter="url(#shadow)"><rect x="52" y="72" width="690" height="405" rx="38" fill="#03272c" opacity=".88"/></g>
+  <text x="74" y="125" fill="#f6ad55" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="800" letter-spacing="5">ST. CROIX · HOTEL</text>
+  <text x="74" y="290" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" letter-spacing="-1">Hotel on the Cay</text>
+  <text x="75" y="395" fill="#d9fffb" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">Christiansted Harbor</text>
+  <rect x="74" y="420" width="76" height="8" rx="4" fill="#f6ad55"/>
+  <text x="75" y="735" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="4" opacity=".9">VI GUIDE · VERIFIED STAY</text>
+</svg>

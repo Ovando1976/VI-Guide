@@ -1,0 +1,203 @@
+{
+  "updatedCount": 15,
+  "createdCount": 7,
+  "updated": [
+    {
+      "dataset": "places.json",
+      "id": "hull-bay",
+      "photo": "hull-bay-beach",
+      "image": "/images/places/st-thomas/hull-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "main-street-charlotte-amalie",
+      "photo": "downtown-charlotte-amalie",
+      "image": "/images/places/st-thomas/downtown-charlotte-amalie-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-mim-s-seafood-bistro",
+      "photo": "mims-seaside-bistro",
+      "image": "/images/places/st-thomas/mims-seaside-bistro-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "paradise-point",
+      "photo": "paradise-point-skyride",
+      "image": "/images/places/st-thomas/paradise-point-skyride-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "peace-hill",
+      "photo": "peace-hill-trail",
+      "image": "/images/places/st-john/peace-hill-trail-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "secret-harbour",
+      "photo": "secret-harbour-beach",
+      "image": "/images/places/st-thomas/secret-harbour-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "isaac-bay",
+      "photo": "jack-and-isaac-bay-beach",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "jack-bay",
+      "photo": "jack-and-isaac-bay-beach",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "synagogue-beracha-veshalom",
+      "photo": "st-thomas-synagogue",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "catherineberg-jockumsdahl-herman-farm",
+      "photo": "catherineberg-ruins",
+      "image": "/images/places/st-john/catherineberg-ruins-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-nhs-custom-house",
+      "photo": "old-danish-customs-house",
+      "image": "/images/places/st-croix/old-danish-customs-house-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-whim-greathouse",
+      "photo": "estate-whim-plantation",
+      "image": "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "ft-frederik-of-us-virgin-islands",
+      "photo": "fort-frederik",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "hams-bluff-light",
+      "photo": "hams-bluff-lighthouse",
+      "image": "/images/places/st-croix/hams-bluff-lighthouse-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "whim",
+      "photo": "estate-whim-plantation",
+      "image": "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    }
+  ],
+  "created": [
+    {
+      "id": "bordeaux-mountain",
+      "slug": "bordeaux-mountain",
+      "name": "Bordeaux Mountain",
+      "island": "stj",
+      "category": "attraction",
+      "description": "Bordeaux Mountain is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/bordeaux-mountain-1.jpg",
+      "tags": [
+        "attraction",
+        "stj",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "carambola-tide-pools",
+      "slug": "carambola-tide-pools",
+      "name": "Carambola Tide Pools",
+      "island": "stx",
+      "category": "attraction",
+      "description": "Carambola Tide Pools is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/carambola-tide-pools-1.jpg",
+      "tags": [
+        "attraction",
+        "stx",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "cyril-e-king-airport",
+      "slug": "cyril-e-king-airport",
+      "name": "Cyril E. King Airport",
+      "island": "stt",
+      "category": "transport",
+      "description": "Cyril E. King Airport is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/cyril-e-king-airport-1.jpg",
+      "tags": [
+        "transport",
+        "stt",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "limestone-bay-beach",
+      "slug": "limestone-bay-beach",
+      "name": "Limestone Bay Beach",
+      "island": "wi",
+      "category": "beach",
+      "description": "Limestone Bay Beach is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/water-island/limestone-bay-beach-1.jpg",
+      "tags": [
+        "beach",
+        "wi",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "seven-arches-museum",
+      "slug": "seven-arches-museum",
+      "name": "Seven Arches Museum",
+      "island": "stt",
+      "category": "attraction",
+      "description": "Seven Arches Museum is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/seven-arches-museum-1.jpg",
+      "tags": [
+        "attraction",
+        "stt",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "vendors-plaza",
+      "slug": "vendors-plaza",
+      "name": "Vendor's Plaza",
+      "island": "stt",
+      "category": "shopping",
+      "description": "Vendor's Plaza is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/vendors-plaza-1.jpg",
+      "tags": [
+        "shopping",
+        "stt",
+        "local catalog"
+      ],
+      "featured": false
+    },
+    {
+      "id": "vi-childrens-museum",
+      "slug": "vi-childrens-museum",
+      "name": "VI Children's Museum",
+      "island": "stt",
+      "category": "attraction",
+      "description": "VI Children's Museum is a visitor destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/vi-childrens-museum-1.jpg",
+      "tags": [
+        "attraction",
+        "stt",
+        "local catalog"
+      ],
+      "featured": false
+    }
+  ]
+}

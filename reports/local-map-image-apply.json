@@ -1,0 +1,1611 @@
+{
+  "mode": "apply",
+  "linked": 96,
+  "unmatched": 155,
+  "linkedRows": [
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "99-steps",
+      "manifestSlug": "99-steps",
+      "previous": "/images/places/st-thomas/99-steps-1.jpg",
+      "image": "/images/places/st-thomas/99-steps-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "american-yacht-harbor",
+      "manifestSlug": "american-yacht-harbor",
+      "previous": "/images/places/fallbacks/marina-stt.svg",
+      "image": "/images/places/st-thomas/american-yacht-harbor-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "annaberg-sugar-plantation",
+      "manifestSlug": "annaberg-sugar-plantation",
+      "previous": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "brewers-bay",
+      "manifestSlug": "brewers-bay-beach",
+      "previous": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "buck-island-reef-national-monument",
+      "manifestSlug": "buck-island-reef-national-monument",
+      "previous": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+      "image": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cane-bay-wall",
+      "manifestSlug": "cane-bay-wall",
+      "previous": "/images/places/st-croix/cane-bay-wall-1.jpg",
+      "image": "/images/places/st-croix/cane-bay-wall-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "caneel-bay-overlook",
+      "manifestSlug": "caneel-bay-overlook",
+      "previous": "/images/places/st-john/caneel-bay-overlook-1.jpg",
+      "image": "/images/places/st-john/caneel-bay-overlook-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "captain-morgan-visitor-center",
+      "manifestSlug": "captain-morgan-visitor-center",
+      "previous": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg",
+      "image": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "christiansted-boardwalk",
+      "manifestSlug": "christiansted-boardwalk",
+      "previous": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+      "image": "/images/places/st-croix/christiansted-boardwalk-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "christiansted-national-historic-site",
+      "manifestSlug": "christiansted-national-historic-site",
+      "previous": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cinnamon-bay-archaeology-lab",
+      "manifestSlug": "cinnamon-bay-archaeology-museum",
+      "previous": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg",
+      "image": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "coki-point",
+      "manifestSlug": "coki-point-beach",
+      "previous": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "coral-world-ocean-park",
+      "manifestSlug": "coral-world-ocean-park",
+      "previous": "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+      "image": "/images/places/st-thomas/coral-world-ocean-park-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "crown-bay-center",
+      "manifestSlug": "crown-bay-center",
+      "previous": "/images/places/st-thomas/crown-bay-center-1.jpg",
+      "image": "/images/places/st-thomas/crown-bay-center-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cruzan-rum-distillery",
+      "manifestSlug": "cruzan-rum-distillery",
+      "previous": "/images/places/st-croix/cruzan-rum-distillery-1.jpg",
+      "image": "/images/places/st-croix/cruzan-rum-distillery-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "drakes-seat",
+      "manifestSlug": "drakes-seat",
+      "previous": "/images/places/st-thomas/drakes-seat-1.jpg",
+      "image": "/images/places/st-thomas/drakes-seat-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "emancipation-garden",
+      "manifestSlug": "emancipation-garden",
+      "previous": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "fort-christian",
+      "manifestSlug": "fort-christian",
+      "previous": "/images/places/st-thomas/fort-christian-1.jpg",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "fort-christiansvaern",
+      "manifestSlug": "fort-christiansvaern",
+      "previous": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "fort-frederik",
+      "manifestSlug": "fort-frederik",
+      "previous": "/images/places/st-croix/fort-frederik-1.jpg",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "frederiksted-pier",
+      "manifestSlug": "frederiksted-pier",
+      "previous": "/images/places/st-croix/frederiksted-pier-1.jpg",
+      "image": "/images/places/st-croix/frederiksted-pier-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "frederiksted-waterfront",
+      "manifestSlug": "frederiksted-waterfront",
+      "previous": "/images/places/st-croix/frederiksted-waterfront-1.jpg",
+      "image": "/images/places/st-croix/frederiksted-waterfront-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "gallows-bay",
+      "manifestSlug": "gallows-bay",
+      "previous": "/images/places/st-croix/gallows-bay-1.jpg",
+      "image": "/images/places/st-croix/gallows-bay-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "government-house-christiansted",
+      "manifestSlug": "government-house-christiansted",
+      "previous": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-greengos-caribbean-cantina",
+      "manifestSlug": "greengos-caribbean-cantina",
+      "previous": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg",
+      "image": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "havensight-mall",
+      "manifestSlug": "havensight-mall",
+      "previous": "/images/places/st-thomas/havensight-mall-1.jpg",
+      "image": "/images/places/st-thomas/havensight-mall-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "hook-line-sinker",
+      "manifestSlug": "hook-line-and-sinker",
+      "previous": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+      "image": "/images/places/st-thomas/hook-line-and-sinker-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "hull-bay",
+      "manifestSlug": "hull-bay-beach",
+      "previous": "/images/places/st-thomas/hull-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/hull-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "jack-and-isaac-bay-preserve",
+      "manifestSlug": "jack-and-isaac-bay-preserve",
+      "previous": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "lindbergh-bay",
+      "manifestSlug": "lindbergh-bay",
+      "previous": "/images/places/fallbacks/attraction-stt.svg",
+      "image": "/images/beaches/st-thomas/lindbergh-bay-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "magens-bay",
+      "manifestSlug": "magens-bay-beach",
+      "previous": "/images/places/st-thomas/magens-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/magens-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "mongoose-junction",
+      "manifestSlug": "mongoose-junction",
+      "previous": "/images/places/st-john/mongoose-junction-1.jpg",
+      "image": "/images/places/st-john/mongoose-junction-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "mount-eagle",
+      "manifestSlug": "mount-eagle",
+      "previous": "/images/places/st-croix/mount-eagle-1.jpg",
+      "image": "/images/places/st-croix/mount-eagle-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "mountaintop-st-thomas",
+      "manifestSlug": "mountain-top",
+      "previous": "/images/places/st-thomas/mountain-top-1.jpg",
+      "image": "/images/places/st-thomas/mountain-top-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "point-udall",
+      "manifestSlug": "point-udall",
+      "previous": "/images/places/st-croix/point-udall-1.jpg",
+      "image": "/images/places/st-croix/point-udall-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "protestant-cay",
+      "manifestSlug": "protestant-cay",
+      "previous": "/images/places/st-croix/protestant-cay-1.jpg",
+      "image": "/images/places/st-croix/protestant-cay-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "ram-head-trail",
+      "manifestSlug": "ram-head-trail",
+      "previous": "/images/places/st-john/ram-head-trail-1.jpg",
+      "image": "/images/places/st-john/ram-head-trail-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "petroglyphs-trail",
+      "manifestSlug": "petroglyphs-trail",
+      "previous": "/images/places/st-john/petroglyphs-trail-1.jpg",
+      "image": "/images/places/st-john/petroglyphs-trail-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "reef-bay-trail",
+      "manifestSlug": "reef-bay-trail",
+      "previous": "/images/places/st-john/reef-bay-trail-1.jpg",
+      "image": "/images/places/st-john/reef-bay-trail-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "salt-pond-bay",
+      "manifestSlug": "salt-pond-bay-beach",
+      "previous": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "salt-river-bay-national-historical-park",
+      "manifestSlug": "salt-river-bay-national-historical-park",
+      "previous": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "sandy-point-national-wildlife-refuge",
+      "manifestSlug": "sandy-point-national-wildlife-refuge",
+      "previous": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg",
+      "image": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "sapphire-marina",
+      "manifestSlug": "sapphire-marina",
+      "previous": "/images/places/st-thomas/sapphire-marina-1.jpg",
+      "image": "/images/places/st-thomas/sapphire-marina-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "secret-harbour",
+      "manifestSlug": "secret-harbour-beach",
+      "previous": "/images/places/st-thomas/secret-harbour-beach-1.jpg",
+      "image": "/images/places/st-thomas/secret-harbour-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "st-george-village-botanical-garden",
+      "manifestSlug": "st-george-village-botanical-garden",
+      "previous": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "steeple-building",
+      "manifestSlug": "steeple-building",
+      "previous": "/images/places/st-croix/steeple-building-1.jpg",
+      "image": "/images/places/st-croix/steeple-building-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "yacht-haven-grande",
+      "manifestSlug": "yacht-haven-grande",
+      "previous": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
+      "image": "/images/places/st-thomas/yacht-haven-grande-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "brewers-bay",
+      "manifestSlug": "brewers-bay-beach",
+      "previous": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "cane-bay",
+      "manifestSlug": "cane-bay-beach",
+      "previous": "/images/places/st-croix/cane-bay-beach-1.jpg",
+      "image": "/images/places/st-croix/cane-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "chenay-bay",
+      "manifestSlug": "chenay-bay",
+      "previous": "/images/directory/beaches/chenay-bay.svg",
+      "image": "/images/beaches/st-croix/chenay-bay.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "cinnamon-bay",
+      "manifestSlug": "cinnamon-bay-beach",
+      "previous": "/images/places/st-john/cinnamon-bay-beach-1.jpg",
+      "image": "/images/places/st-john/cinnamon-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "coki-point",
+      "manifestSlug": "coki-point-beach",
+      "previous": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "cowpet-bay",
+      "manifestSlug": "cowpet-bay-beach",
+      "previous": "/images/places/st-thomas/cowpet-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/cowpet-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "denis-bay",
+      "manifestSlug": "denis-bay-beach",
+      "previous": "/images/places/st-john/denis-bay-beach-1.jpg",
+      "image": "/images/places/st-john/denis-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "dorothea-beach",
+      "manifestSlug": "dorothea-beach",
+      "previous": "/images/places/st-thomas/dorothea-beach-1.jpg",
+      "image": "/images/places/st-thomas/dorothea-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "dorsch-beach",
+      "manifestSlug": "dorsch-beach",
+      "previous": "/images/places/st-croix/dorsch-beach-1.jpg",
+      "image": "/images/places/st-croix/dorsch-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "francis-bay",
+      "manifestSlug": "francis-bay-beach",
+      "previous": "/images/places/st-john/francis-bay-beach-1.jpg",
+      "image": "/images/places/st-john/francis-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "gibney-beach",
+      "manifestSlug": "gibney-beach",
+      "previous": "/images/places/st-john/gibney-beach-1.jpg",
+      "image": "/images/places/st-john/gibney-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "grapetree-bay",
+      "manifestSlug": "grapetree-bay-beach",
+      "previous": "/images/places/st-croix/grapetree-bay-beach-1.jpg",
+      "image": "/images/places/st-croix/grapetree-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "hansen-bay",
+      "manifestSlug": "hansen-bay-beach",
+      "previous": "/images/places/st-john/hansen-bay-beach-1.jpg",
+      "image": "/images/places/st-john/hansen-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "haulover-bay",
+      "manifestSlug": "haulover-bay-beach",
+      "previous": "/images/places/st-john/haulover-bay-beach-1.jpg",
+      "image": "/images/places/st-john/haulover-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "hawksnest-bay",
+      "manifestSlug": "hawksnest-bay",
+      "previous": "/images/directory/beaches/hawksnest-bay.svg",
+      "image": "/images/beaches/st-john/hawksnest-bay-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "isaac-bay",
+      "manifestSlug": "isaac-bay",
+      "previous": "/images/directory/beaches/isaac-bay.svg",
+      "image": "/images/beaches/st-croix/isaac-bay.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "jack-bay",
+      "manifestSlug": "jack-bay",
+      "previous": "/images/directory/beaches/jack-bay.svg",
+      "image": "/images/beaches/st-croix/jack-bay.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "jumbie-bay",
+      "manifestSlug": "jumbie-bay-beach",
+      "previous": "/images/places/st-john/jumbie-bay-beach-1.jpg",
+      "image": "/images/places/st-john/jumbie-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "lameshur-bay",
+      "manifestSlug": "lameshur-bay",
+      "previous": "/images/directory/beaches/lameshur-bay.svg",
+      "image": "/images/beaches/st-john/lameshur-bay.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "lindquist-beach",
+      "manifestSlug": "lindquist-beach",
+      "previous": "/images/places/st-thomas/lindquist-beach-1.jpg",
+      "image": "/images/places/st-thomas/lindquist-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "magens-bay",
+      "manifestSlug": "magens-bay-beach",
+      "previous": "/images/places/st-thomas/magens-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/magens-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "maho-bay",
+      "manifestSlug": "maho-bay-beach",
+      "previous": "/images/places/st-john/maho-bay-beach-1.jpg",
+      "image": "/images/places/st-john/maho-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "mermaids-chair",
+      "manifestSlug": "mermaids-chair",
+      "previous": "/images/places/st-thomas/mermaids-chair-1.jpg",
+      "image": "/images/places/st-thomas/mermaids-chair-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "morningstar-beach",
+      "manifestSlug": "morningstar-beach",
+      "previous": "/images/places/st-thomas/morningstar-beach-1.jpg",
+      "image": "/images/places/st-thomas/morningstar-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "pelican-cove",
+      "manifestSlug": "pelican-cove-beach",
+      "previous": "/images/places/st-croix/pelican-cove-beach-1.jpg",
+      "image": "/images/places/st-croix/pelican-cove-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "rainbow-beach",
+      "manifestSlug": "rainbow-beach",
+      "previous": "/images/places/st-croix/rainbow-beach-1.jpg",
+      "image": "/images/places/st-croix/rainbow-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "salomon-beach",
+      "manifestSlug": "salomon-beach",
+      "previous": "/images/directory/beaches/salomon-beach.svg",
+      "image": "/images/beaches/st-john/salomon-beach.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "salt-pond-bay",
+      "manifestSlug": "salt-pond-bay-beach",
+      "previous": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "sandy-point",
+      "manifestSlug": "sandy-point-beach",
+      "previous": "/images/places/st-croix/sandy-point-beach-1.jpg",
+      "image": "/images/places/st-croix/sandy-point-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "shoys-beach",
+      "manifestSlug": "shoys-beach",
+      "previous": "/images/places/st-croix/shoys-beach-1.jpg",
+      "image": "/images/places/st-croix/shoys-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "trunk-bay",
+      "manifestSlug": "trunk-bay-beach",
+      "previous": "/images/places/st-john/trunk-bay-beach-1.jpg",
+      "image": "/images/places/st-john/trunk-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "vessup-bay",
+      "manifestSlug": "vessup-bay-beach",
+      "previous": "/images/places/st-thomas/vessup-bay-beach-1.jpg",
+      "image": "/images/places/st-thomas/vessup-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "99-steps",
+      "manifestSlug": "99-steps",
+      "previous": "/images/places/st-thomas/99-steps-1.jpg",
+      "image": "/images/places/st-thomas/99-steps-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "annaberg-sugar-plantation",
+      "manifestSlug": "annaberg-sugar-plantation",
+      "previous": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "charlotte-amalie-historic-district",
+      "manifestSlug": "charlotte-amalie-historic-district",
+      "previous": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "image": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-historic-district",
+      "manifestSlug": "christiansted-historic-district",
+      "previous": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+      "image": "/images/places/st-croix/christiansted-historic-district-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-national-historic-site",
+      "manifestSlug": "christiansted-national-historic-site",
+      "previous": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "emancipation-garden",
+      "manifestSlug": "emancipation-garden",
+      "previous": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "fort-christian",
+      "manifestSlug": "fort-christian",
+      "previous": "/images/places/st-thomas/fort-christian-1.jpg",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "fort-christiansvaern",
+      "manifestSlug": "fort-christiansvaern",
+      "previous": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "fort-frederik",
+      "manifestSlug": "fort-frederik",
+      "previous": "/images/places/st-croix/fort-frederik-1.jpg",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "frederiksted-historic-district",
+      "manifestSlug": "frederiksted-historic-district",
+      "previous": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+      "image": "/images/places/st-croix/frederiksted-historic-district-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "gov-house-christiansted",
+      "manifestSlug": "government-house-christiansted",
+      "previous": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "salt-river-bay-nhp",
+      "manifestSlug": "salt-river-bay-national-historical-park",
+      "previous": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "blackbeards-castle",
+      "manifestSlug": "blackbeards-castle",
+      "previous": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+      "image": "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "st-george-village-botanical-garden",
+      "manifestSlug": "st-george-village-botanical-garden",
+      "previous": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "st-thomas-synagogue",
+      "manifestSlug": "st-thomas-synagogue",
+      "previous": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    },
+    {
+      "dataset": "data/accommodation-image-sources.json",
+      "id": "hotel",
+      "manifestSlug": "hotel",
+      "previous": "",
+      "image": "/images/accommodations/hotel-1829.jpg"
+    },
+    {
+      "dataset": "data/accommodation-image-sources.json",
+      "id": "inn-on-strand-street",
+      "manifestSlug": "inn-on-strand-street",
+      "previous": "",
+      "image": "/images/accommodations/inn-on-strand-street.jpg"
+    }
+  ],
+  "unmatchedRows": [
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "charlotte-amalie-waterfront",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "coral-bay",
+      "name": "Coral Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cruz-bay",
+      "name": "Cruz Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-duffy-s-love-shack",
+      "name": "Duffy's Love Shack",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "east-end-st-john",
+      "name": "East End St. John",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "eliza-james-mchen-beach-park",
+      "name": "Eliza James-McBean Clock Tower and Park",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "frenchtown",
+      "name": "Frenchtown",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "frenchtown-market",
+      "name": "Frenchtown Market",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "green-cay-marina",
+      "name": "Green Cay Marina",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "johns-folly-learning-institute",
+      "name": "John's Folly Learning Institute",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "main-street-charlotte-amalie",
+      "name": "Main Street Charlotte Amalie",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "market-square-st-thomas",
+      "name": "Market Square",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "millennium-monument",
+      "name": "Millennium Monument",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-mim-s-seafood-bistro",
+      "name": "Mim's Seafood Bistro",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "old-danish-custom-house",
+      "name": "Old Danish Custom House",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "paradise-point",
+      "name": "Paradise Point",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "peace-hill",
+      "name": "Peace Hill",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "red-hook",
+      "name": "Red Hook",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "skyride-to-paradise-point",
+      "name": "Skyride to Paradise Point",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "rainforest-st-croix",
+      "name": "St. Croix Rainforest",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-sudi-s-caribbean-bar-grille",
+      "name": "Sudi's Caribbean Bar Grille",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "leap-st-croix",
+      "name": "The Leap",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "stt-virgilio-s-italian",
+      "name": "Virgilio's Italian",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "virgin-islands-national-park-visitor-center",
+      "name": "Virgin Islands National Park Visitor Center",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/places.json",
+      "id": "water-island-ferry-terminal",
+      "name": "Water Island Ferry Terminal",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Water Island",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/beaches.json",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "barracks-no-2",
+      "name": "Barracks No. 2",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "benjamin-franklin-school",
+      "name": "Benjamin Franklin School",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "synagogue-beracha-veshalom",
+      "name": "Beracha Veshalom Synagogue",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "bethlehem-sugar-factory",
+      "name": "Bethlehem Sugar Factory",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "blackbeards-castle-skytsborg",
+      "name": "Blackbeard's Castle (Skytsborg)",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "bluebeards-castle-tower",
+      "name": "Bluebeard's Castle Tower",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "bordeaux",
+      "name": "Bordeaux",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "catherineberg-jockumsdahl-herman-farm",
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "charlotte-amalie-historic-district-boundary-increase",
+      "name": "Charlotte Amalie Historic District (Boundary Increase)",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-nhs-custom-house",
+      "name": "Christiansted NHS Custom House",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-nhs-fort-christiansvaern",
+      "name": "Christiansted NHS Fort Christiansvaern",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-nhs-scale-house",
+      "name": "Christiansted NHS Scale House",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "christiansted-nhs-steeple-building",
+      "name": "Christiansted NHS Steeple Building",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "cinnamon-bay-archaeology",
+      "name": "Cinnamon Bay Archaeology Site",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "cinnamon-bay-sugar-works",
+      "name": "Cinnamon Bay Sugar Works",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "cruz-bay-battery",
+      "name": "Cruz Bay Battery",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "cruz-bay-town-historic-district",
+      "name": "Cruz Bay Town Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "diamond-school",
+      "name": "Diamond School",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "emmaus-moravian-church",
+      "name": "Emmaus Moravian Church",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "enighed",
+      "name": "Enighed",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-grove-place",
+      "name": "Estate Grove Place",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-hafensight",
+      "name": "Estate Hafensight",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-la-reine",
+      "name": "Estate La Reine",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-little-princess",
+      "name": "Estate Little Princess",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-niesky",
+      "name": "Estate Niesky",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-perseverance",
+      "name": "Estate Perseverance",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-prosperity",
+      "name": "Estate Prosperity",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-st-john",
+      "name": "Estate St. John",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-whim-greathouse",
+      "name": "Estate Whim Greathouse",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "evelyn-e-marcelli-elementary-school",
+      "name": "Evelyn E. Marcelli Elementary School",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "fortsberg-corral-bay",
+      "name": "Fortsberg Corral Bay",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "frederick-lutheran-church",
+      "name": "Frederick Lutheran Church",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "ft-frederik-of-us-virgin-islands",
+      "name": "Ft. Frederik of US Virgin Islands",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "government-house-stt",
+      "name": "Government House, St. Thomas",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "green-kay",
+      "name": "Green Kay",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hams-bluff-light",
+      "name": "Hams Bluff Light",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hassel-island-additional-documentation",
+      "name": "Hassel Island (Additional Documentation)",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hassel-island-creque-marine-railway",
+      "name": "Hassel Island Creque Marine Railway",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hassel-island-fort-willoughby",
+      "name": "Hassel Island Fort Willoughby",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hassel-island-historic-district-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "holy-cross-episcopal-church",
+      "name": "Holy Cross Episcopal Church",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "kingshill-lutheran-church",
+      "name": "Kingshill Lutheran Church",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "la-grange-historic-district",
+      "name": "La Grange Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "lind-point-fort",
+      "name": "Lind Point Fort",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "little-la-grange",
+      "name": "Little La Grange",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "mafolie-great-house",
+      "name": "Mafolie Great House",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "market-square-pladsen",
+      "name": "Market Square (Pladsen)",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "mary-point-estate",
+      "name": "Mary Point Estate",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "peace-hill-ruins",
+      "name": "Peace Hill Ruins",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "reef-bay-sugar-mill",
+      "name": "Reef Bay Sugar Mill",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "reformed-dutch-church-stt",
+      "name": "Reformed Dutch Church, St. Thomas",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "sion-hill",
+      "name": "Sion Hill",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "slob-historic-district",
+      "name": "Slob Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "sprat-hall-historic-district",
+      "name": "Sprat Hall Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "st-johns-episcopal-church",
+      "name": "St. John's Episcopal Church",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim",
+      "name": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "island": "stx"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "susannaberg-estate",
+      "name": "Susannaberg Estate",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "island": "stj"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "venus-hill",
+      "name": "Venus Hill",
+      "island": "stt"
+    },
+    {
+      "dataset": "data/travel-knowledge/historic-sites.json",
+      "id": "whim",
+      "name": "Whim",
+      "island": "stx"
+    }
+  ]
+}

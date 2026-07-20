@@ -1,0 +1,4523 @@
+{
+  "id": "stt-taxi-tariff-2022-candidate",
+  "title": "STT researched taxi tariff transcription",
+  "version": "2022-10-24-candidate-1",
+  "island": "stt",
+  "status": "draft",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "sourceUrl": "https://www.vinow.com/stthomas/getting_around_stt/taxi_stt/",
+  "sources": [
+    {
+      "url": "https://www.vinow.com/stthomas/getting_around_stt/taxi_stt/",
+      "label": "Published 2022 taxi rate tables",
+      "publisher": "VInow",
+      "sourceType": "verified_transcription",
+      "retrievedAt": "2026-07-20T00:00:00-04:00"
+    }
+  ],
+  "issuingAuthority": "Virgin Islands Taxicab Commission",
+  "currency": "USD",
+  "verificationNotes": "Draft only. Obtain and hash the Commission-issued schedule before activation.",
+  "rules": [
+    {
+      "id": "stt-charlotte-amalie-anchorage",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Anchorage"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-anchorage",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Anchorage"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-blackbeard-s-castle",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Blackbeard's Castle"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-blackbeard-s-castle",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Blackbeard's Castle"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bluebeard-s-castle",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bluebeard's Castle"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bluebeard-s-castle",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bluebeard's Castle"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bolongo-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bolongo Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bolongo-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bolongo Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-carib-beach-resort",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Carib Beach Resort"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-carib-beach-resort",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Carib Beach Resort"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-compass-point",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Compass Point"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-compass-point",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Compass Point"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-cowpet-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Cowpet Bay"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-cowpet-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Cowpet Bay"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-danish-chalet-inn",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Danish Chalet Inn"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-danish-chalet-inn",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Danish Chalet Inn"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-elysian-resort",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Elysian Resort"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-elysian-resort",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Elysian Resort"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-emerald-beach-resort",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Emerald Beach Resort"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-emerald-beach-resort",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Emerald Beach Resort"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-frenchman-s-reef-cove",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Frenchman's Reef & Cove"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-frenchman-s-reef-cove",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Frenchman's Reef & Cove"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-hotel-1829",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Hotel 1829"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-hotel-1829",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Hotel 1829"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-islander-beachcomber",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Islander Beachcomber"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-islander-beachcomber",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Islander Beachcomber"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-island-view-inn",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Island View Inn"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-island-view-inn",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Island View Inn"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-limetree",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-limetree",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-mafolie-hotel",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Mafolie Hotel"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-mafolie-hotel",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Mafolie Hotel"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-flamboyan",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Flamboyan"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-flamboyan",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Flamboyan"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-palms-court-harborview",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Palms Court Harborview"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-palms-court-harborview",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Palms Court Harborview"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-pavillions-and-pools",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Pavillions and Pools"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-pavillions-and-pools",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Pavillions and Pools"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-point-pleasant",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Point Pleasant"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-point-pleasant",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Point Pleasant"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-margaritaville-pineapple-beach",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Margaritaville/Pineapple Beach"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-margaritaville-pineapple-beach",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Margaritaville/Pineapple Beach"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-ritz-carlton-resort-club",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Ritz Carlton Resort & Club"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-ritz-carlton-resort-club",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Ritz Carlton Resort & Club"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-sapphire-beach-resort",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Sapphire Beach Resort"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-sapphire-beach-resort",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Sapphire Beach Resort"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-secret-harbor-resort",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Secret Harbor Resort"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-secret-harbor-resort",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Secret Harbor Resort"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-thatch-farm",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Thatch Farm"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-thatch-farm",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Thatch Farm"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-windward-passage-hotel",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Windward Passage Hotel"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-windward-passage-hotel",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Windward Passage Hotel"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-wyndham-sugar-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Wyndham Sugar Bay"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-wyndham-sugar-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Wyndham Sugar Bay"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-yacht-haven-havensight",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Yacht Haven - Havensight"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-yacht-haven-havensight",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Yacht Haven - Havensight"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-agnes-fancy",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Agnes Fancy"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-agnes-fancy",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Agnes Fancy"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-blackpoint",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "BlackPoint"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-blackpoint",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "BlackPoint"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bonne-esperance",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bonne Esperance"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bonne-esperance",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bonne Esperance"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bolongo",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bolongo",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bordeaux",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bordeaux"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bordeaux",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bordeaux"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-botany-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Botany Bay"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 16
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-botany-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Botany Bay"
+      ],
+      "onePassengerFare": 19,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 19
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 16
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bournefield",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bournefield"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bournefield",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bournefield"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-bovoni",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Bovoni"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-bovoni",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Bovoni"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-brookman-estate",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Brookman Estate"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-brookman-estate",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Brookman Estate"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-canaan-estate",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Canaan Estate"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-canaan-estate",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Canaan Estate"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-caret-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Caret Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-caret-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Caret Bay"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-caret-bay-lower",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Caret Bay Lower"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-caret-bay-lower",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Caret Bay Lower"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-caret-bay-upper",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Caret Bay Upper"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-caret-bay-upper",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Caret Bay Upper"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-cassi-hill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Cassi Hill"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-cassi-hill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Cassi Hill"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-coki-point",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Coki Point"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-coki-point",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Coki Point"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-contant-development",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Contant Development"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-contant-development",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Contant Development"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-contant-soto-town",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Contant Soto Town"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-contant-soto-town",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Contant Soto Town"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-crown-mountain",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Crown Mountain"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-crown-mountain",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Crown Mountain"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-crown-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Crown Bay"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-crown-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Crown Bay"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-dorothea-estate",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Dorothea Estate"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-dorothea-estate",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Dorothea Estate"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-dorothea-lower",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Dorothea Lower"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-dorothea-lower",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Dorothea Lower"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-dorothea-upper",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Dorothea Upper"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-dorothea-upper",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Dorothea Upper"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-drake-s-seat",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Drake's Seat"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-drake-s-seat",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Drake's Seat"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-elizabeth-estate",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Elizabeth Estate"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-elizabeth-estate",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Elizabeth Estate"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-estate-thomas-new-quarter",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Estate Thomas New Quarter"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-estate-thomas-new-quarter",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Estate Thomas New Quarter"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-flag-hill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Flag Hill"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-flag-hill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Flag Hill"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-fort-mylner",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Fort Mylner"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-fort-mylner",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Fort Mylner"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-fortuna-mill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Fortuna Mill"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-fortuna-mill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Fortuna Mill"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-fortuna-point",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Fortuna Point"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-fortuna-point",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Fortuna Point"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-frenchtown",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Frenchtown"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-frenchtown",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Frenchtown"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-fredenhoj",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Fredenhoj"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-fredenhoj",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Fredenhoj"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-frenchman-s-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Frenchman's Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-frenchman-s-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Frenchman's Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-havensight-crossroad",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Havensight Crossroad"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-havensight-crossroad",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Havensight Crossroad"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-hawk-hill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Hawk Hill"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-hawk-hill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Hawk Hill"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-hull-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Hull Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-hull-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Hull Bay"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-louisenhoj-castle",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Louisenhoj Castle"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-louisenhoj-castle",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Louisenhoj Castle"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-lovenlund",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Lovenlund"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-lovenlund",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Lovenlund"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-lower-john-dunkoe",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Lower John Dunkoe"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-lower-john-dunkoe",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Lower John Dunkoe"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-magens-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Magens Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-magens-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Magens Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-mahogany-run",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Mahogany Run"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-mahogany-run",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Mahogany Run"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-mandahl-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Mandahl Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-mandahl-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Mandahl Bay"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-market-square-east",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Market Square East"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-market-square-east",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Market Square East"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-mountain-top",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-mountain-top",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-nadir-hill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Nadir Hill"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-nadir-hill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Nadir Hill"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-nisky",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Nisky"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-nisky",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Nisky"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-paradise-point",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Paradise Point"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-paradise-point",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Paradise Point"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-peterborg",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Peterborg"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-peterborg",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Peterborg"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-estate-pearl",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Estate Pearl"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-estate-pearl",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Estate Pearl"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-raphune-hill",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Raphune Hill"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-raphune-hill",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Raphune Hill"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-red-hook",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Red Hook"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-red-hook",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Red Hook"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-rosendahl",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Rosendahl"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-rosendahl",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Rosendahl"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-scott-free",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Scott Free"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-scott-free",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Scott Free"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-smith-bay",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Smith Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-smith-bay",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Smith Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-solberg-lookout",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Solberg Lookout"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-solberg-lookout",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Solberg Lookout"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-solberg-upper",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Solberg Upper"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-solberg-upper",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Solberg Upper"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-sorgenfri",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Sorgenfri"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-sorgenfri",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Sorgenfri"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-st-peter-mountain",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "St. Peter Mountain"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-st-peter-mountain",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "St. Peter Mountain"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-tabor-harmony",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Tabor/Harmony"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-tabor-harmony",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Tabor/Harmony"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-tutu",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Tutu"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-tutu",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Tutu"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-university-of-the-virgin-islands",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "University of the Virgin Islands"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-university-of-the-virgin-islands",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "University of the Virgin Islands"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-west-indian-dock",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "West Indian Dock"
+      ],
+      "onePassengerFare": 6,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 6
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-west-indian-dock",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "West Indian Dock"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-charlotte-amalie-wintberg",
+      "originNames": [
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Wintberg"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stt-cyril-e-king-airport-wintberg",
+      "originNames": [
+        "Cyril E. King Airport"
+      ],
+      "destinationNames": [
+        "Wintberg"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    }
+  ]
+}

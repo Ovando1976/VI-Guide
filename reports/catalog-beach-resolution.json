@@ -1,0 +1,607 @@
+{
+  "generatedAt": "2026-07-20T06:43:19.972Z",
+  "results": [
+    {
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJSRqXWQcbBYwR52vySj1Mtw4",
+        "formattedAddress": "837R+XX St. Thomas, Estate Bovoni, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.314895699999997,
+          "longitude": -64.9075833
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Abi Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJbchfSlcaBYwR8x0-YjhfitU",
+        "formattedAddress": "Banana Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.328644300000004,
+          "longitude": -64.94303219999999
+        },
+        "displayName": {
+          "text": "Banana Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ-bOjSHQbBYwRyh7-KEatTM0",
+        "formattedAddress": "Brewers Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3426327,
+          "longitude": -64.98083369999999
+        },
+        "displayName": {
+          "text": "Brewers Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJOUze7onLGowR5r7YiZfVtXk",
+        "formattedAddress": "Cane Bay, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.771639,
+          "longitude": -64.81014499999999
+        },
+        "displayName": {
+          "text": "Cane Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJGSaR0hISBYwRAITsy3457h4",
+        "formattedAddress": "Caneel Bay, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.341316199999998,
+          "longitude": -64.7840366
+        },
+        "displayName": {
+          "text": "Caneel Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJSeIscj8bBYwR4LuIcYrKCL0",
+        "formattedAddress": "Caret Bay Estate, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3634568,
+          "longitude": -64.9760165
+        },
+        "displayName": {
+          "text": "Caret Bay Estate",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ071JLVG0GowRBLXHXPPbloU",
+        "formattedAddress": "Chenay Bay, St Croix, USVI",
+        "location": {
+          "latitude": 17.761468,
+          "longitude": -64.6603128
+        },
+        "displayName": {
+          "text": "Chenay Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx",
+      "status": "candidate",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJV7c9lVXKGowR4_8GQgRLOdQ",
+        "formattedAddress": "Q6HR+H7P, Salt River, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.778950299999998,
+          "longitude": -64.7592974
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Columbus Landing Site",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJUYkzEQkRBYwRez6ljtLcQdA",
+        "formattedAddress": "Cowpet Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.315096099999998,
+          "longitude": -64.84295159999999
+        },
+        "displayName": {
+          "text": "Cowpet Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJAwMQHHgSBYwRx8s9Yxu_4hA",
+        "formattedAddress": "Denis Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3534193,
+          "longitude": -64.7751442
+        },
+        "displayName": {
+          "text": "Denis Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJFyLSiSUbBYwRP4oJF6h-7nI",
+        "formattedAddress": "00802, Dorothea, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3695105,
+          "longitude": -64.9613495
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dorothea Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJvf6IgoLPGowRXl_uyqTVyuE",
+        "formattedAddress": "144 Sugarhill Rd, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.702608899999998,
+          "longitude": -64.8850942
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dorsch Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJnd5HmncSBYwRRoGnsYNnXVY",
+        "formattedAddress": "Gibney Beach, Dennis Bay/ Hawknest, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3524536,
+          "longitude": -64.7765268
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Gibney Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJBTDErryzGowRypboM4JgBMU",
+        "formattedAddress": "Grapetree Bay, St Croix, USVI",
+        "location": {
+          "latitude": 17.745908699999998,
+          "longitude": -64.5921753
+        },
+        "displayName": {
+          "text": "Grapetree Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJwTNAhYFyBYwRmVHBv8Ogwo8",
+        "formattedAddress": "Parcel 6ab Hansen Bay, East End, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3422792,
+          "longitude": -64.6741153
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Hansen Bay Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Water Island",
+      "island": "stt",
+      "status": "candidate",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJrxjow1obBYwRtxw6TpSmHWM",
+        "formattedAddress": "828V+QF3, Main Rd, Water Island, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3168875,
+          "longitude": -64.9563428
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Honeymoon Beach",
+          "languageCode": "de"
+        }
+      }
+    },
+    {
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJg0omnVSyGowRjznT_bPS6SQ",
+        "formattedAddress": "Isaac Bay, St Croix, USVI",
+        "location": {
+          "latitude": 17.7499067,
+          "longitude": -64.57144079999999
+        },
+        "displayName": {
+          "text": "Isaac Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJRQFCbK6zGowRTOpcITvuyFU",
+        "formattedAddress": "Jack Bay, St Croix, USVI",
+        "location": {
+          "latitude": 17.7463321,
+          "longitude": -64.5803268
+        },
+        "displayName": {
+          "text": "Jack Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJtwodSHgSBYwRaW_JaXBIqgE",
+        "formattedAddress": "Jumbie Bay, Dennis Bay/ Hawknest, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3521759,
+          "longitude": -64.7740268
+        },
+        "displayName": {
+          "text": "Jumbie Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "mermaids-chair",
+      "name": "Mermaids Chair",
+      "island": "stt",
+      "status": "review",
+      "score": 0.4,
+      "candidate": {
+        "id": "ChIJZwa0ZvkcBYwRRpAj4L8mTjw",
+        "formattedAddress": "St Thomas, Charlotte Amalie West, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.352659,
+          "longitude": -65.04059699999999
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Mermaid's Chair",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJTZoobNobBYwRFqt_wwXtIrI",
+        "formattedAddress": "83C4+3R St. Thomas, Charlotte Amalie West, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3202064,
+          "longitude": -64.9429329
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Michelle's Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJHdaUfGUaBYwRj5U_8UAEXF4",
+        "formattedAddress": "Morningstar Beach, St Thomas 00801, USVI",
+        "location": {
+          "latitude": 18.319955099999998,
+          "longitude": -64.9201441
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Morningstar Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ35QACQERBYwROERWzfIpZT8",
+        "formattedAddress": "Nazareth Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3181343,
+          "longitude": -64.8548101
+        },
+        "displayName": {
+          "text": "Nazareth Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ8XzLoGjKGowR-y65IrIIFxs",
+        "formattedAddress": "Pelican Cove Beach, La Grande Princesse, St Croix, USVI",
+        "location": {
+          "latitude": 17.765805399999998,
+          "longitude": -64.7351429
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Pelican Cove Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ-yWtZhbOGowRQVRKhoOIADU",
+        "formattedAddress": "Rainbow Beach, William, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.7301441,
+          "longitude": -64.8880629
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Rainbow Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ7634sL8SBYwRKUoYTH-m_A0",
+        "formattedAddress": "Reef Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.329806899999998,
+          "longitude": -64.7369858
+        },
+        "displayName": {
+          "text": "Reef Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJk6ygO14bBYwRq2jTtUTP1ms",
+        "formattedAddress": "Santa Maria Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.364205899999998,
+          "longitude": -64.9971461
+        },
+        "displayName": {
+          "text": "Santa Maria Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "island": "stx",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJnUoS0621GowRSkZ9HAMaj2M",
+        "formattedAddress": "Shoys Beach, St Croix, USVI",
+        "location": {
+          "latitude": 17.759479499999998,
+          "longitude": -64.6739237
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Shoys Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "stx",
+      "status": "candidate",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJV8cMwZuzGowRMXAQ9oiwH1U",
+        "formattedAddress": "Teagues Bay, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7545371,
+          "longitude": -64.60933310000001
+        },
+        "displayName": {
+          "text": "Teagues Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJz-LsaqkRBYwRjNfK-1BBuB0",
+        "formattedAddress": "Vessup Bay, Red Hook, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3247935,
+          "longitude": -64.85073369999999
+        },
+        "displayName": {
+          "text": "Vessup Bay",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt",
+      "status": "candidate",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJgeCmcDYQBYwRiakaZ3Rjel0",
+        "formattedAddress": "Water Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3471342,
+          "longitude": -64.8651867
+        },
+        "displayName": {
+          "text": "Water Bay",
+          "languageCode": "en"
+        }
+      }
+    }
+  ]
+}

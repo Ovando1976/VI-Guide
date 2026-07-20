@@ -1,0 +1,1845 @@
+{
+  "generatedAt": "2026-07-20T06:51:51.713Z",
+  "policy": {
+    "staleDays": 180,
+    "strict": false,
+    "note": "Operating status and hours are volatile and require a dated authoritative or first-party source."
+  },
+  "summary": {
+    "restaurant": {
+      "records": 128,
+      "withUsableImage": 128,
+      "withSource": 113,
+      "recentlyVerified": 113,
+      "confirmedOperating": 0,
+      "errors": 0,
+      "warnings": 172
+    },
+    "beach": {
+      "records": 48,
+      "withUsableImage": 48,
+      "withSource": 47,
+      "recentlyVerified": 47,
+      "confirmedOperating": 14,
+      "errors": 0,
+      "warnings": 35
+    },
+    "stay": {
+      "records": 51,
+      "withUsableImage": 51,
+      "withSource": 51,
+      "recentlyVerified": 51,
+      "confirmedOperating": 0,
+      "errors": 0,
+      "warnings": 51
+    }
+  },
+  "findings": [
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "18-64-the-restaurant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "40-strand-eatery",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "40-strand-eatery",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "40-strand-eatery",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "40-strand-eatery",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "40-strand-eatery",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "420-to-center",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "agave",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "amalia-caf",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-arian-s",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "barefoot-buddha",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bernie-s-bar-grill",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "blue-eleven",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "blues-backyard-bbq",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bonita-s-cantina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "brew-stx",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bumpa-s",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bumpa-s",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bumpa-s",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bumpa-s",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-bumpa-s",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "bumpas-breakfast",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "cafe-fresco",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "caf-roma",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "carigas-island-caf",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "carolines-breakfast",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "cheeseburgers-in-americas-paradise",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "chicken-shack",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "ci-bo-n",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "common-cents-pub",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "cravin-crabs",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "deep-end-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "dinghys-beach-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "dog-house-pub",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-duffy-s-love-shack",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-e-s-garden-teahouse",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "eden-south",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-gringos",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-gringos",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-gringos",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-gringos",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-gringos",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "el-sol-bar-and-restaurant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "enkai-sushi-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "extra-virgin-bistro",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "flyers-bar-and-grill",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "french-quarter-bistro",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "gladys-caf",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "goat-soup-and-whiskey",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-greengos-caribbean-cantina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hamiltons",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harbour-prime-steak-and-seafood",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harveys",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harveys",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harveys",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harveys",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "harveys",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "heidis-honeymoon-grill",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "high-tide-bar-and-seafood-grill",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hillside-terrace",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hook-line-sinker",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hook-line-sinker",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hook-line-sinker",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hook-line-sinker",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "hook-line-sinker",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "island-time-pub",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "johnny-lime",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "kendricks",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "kendricks",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "kendricks",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "kendricks",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "kendricks",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "la-tapa",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "leatherback-brewing-company",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "lovango-rum-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "margaritaville-restaurant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "marias-cantina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-mim-s-seafood-bistro",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "miss-lucys",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "mooies-bar",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "mooies-bar",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "mooies-bar",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "mooies-bar",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "mooies-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "morgans-mango",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "nauti-bar-and-grille",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "nauti-bar-and-grille",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "nauti-bar-and-grille",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "nauti-bar-and-grille",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "nauti-bar-and-grille",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "no-bones-caf",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "north-shore-deli",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "oceana-restaurant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "old-stone-farmhouse",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "our-market-smoothies",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "pangea-terra-table",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "paradise-pizza",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "paradise-pizza",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "paradise-pizza",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "paradise-pizza",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "paradise-pizza",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "petit-pump-room",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "petras-dushi-by-the-sea",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "petras-dushi-by-the-sea",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "pie-whole-pizza",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "pizza-pi",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "rum-island-pub",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "sam-and-jacks-deli",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "sangrias-beachside-bistro",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "savant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "seaside-market-deli",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shamas-specialties",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shamas-specialties",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shamas-specialties",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shamas-specialties",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shamas-specialties",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "shambles",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "side-street-pub",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "singhs-fast-food",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "skinny-legs",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "smoke-up-fusion-bbq",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "st-john-brewers-tap-room",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stj-speakeasy",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-sudi-s-caribbean-bar-grille",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "sun-dog-caf",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "surf-club-cantina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taco-shack",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taco-shack",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taco-shack",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taco-shack",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taco-shack",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tap-deck-bar-and-billiards",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "taphus-beer-house",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-bombay-club",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-easterly",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-lime-inn",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-longboard",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-smoking-rooster",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-tap-room-st-john",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-tap-room-st-john",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-tap-room-st-john",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-tap-room-st-john",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-tap-room-st-john",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-terrace",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-terrace-restaurant",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "the-twisted-cork",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "three-palms",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tlc-kitchen",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tlc-kitchen",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tlc-kitchen",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tlc-kitchen",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "tlc-kitchen",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "toast-diner",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "too-chez",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "turtles-deli",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "twin-city-coffee-house",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "udder-delights",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "uncle-joes-bbq",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "stt-virgilio-s-italian",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "water-island-beach-bar",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "water-island-beach-bar",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "water-island-beach-bar",
+      "field": "contact",
+      "message": "no direct website or phone"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "water-island-beach-bar",
+      "field": "location",
+      "message": "no address or coordinates"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "water-island-beach-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "windmill-bar",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "woodys-seafood-saloon",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "restaurant",
+      "id": "ziggys-island-market",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "abi-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "banana-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "brewers-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "cane-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "caneel-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "caret-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "chenay-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "coki-point",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "columbus-landing",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "cowpet-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "denis-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "dorothea-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "dorsch-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "gibney-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "grapetree-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "hansen-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "honeymoon-water-island",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "isaac-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "jack-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "jumbie-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "magens-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "mermaids-chair",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "michelles-beach",
+      "field": "sourceUrl",
+      "message": "no verification source"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "michelles-beach",
+      "field": "verifiedAt",
+      "message": "no verification date"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "michelles-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "morningstar-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "nazareth-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "pelican-cove",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "rainbow-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "reef-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "santa-maria-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "shoys-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "teague-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "vessup-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "beach",
+      "id": "water-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "bolongo-bay-beach-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "buoy-haus-st-thomas-beach-resort-autograph-collection",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "emerald-beach-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "lindbergh-bay-hotel-villas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "point-pleasant-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "secret-harbour-beach-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-green-iguana-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-hideaway-at-hull-bay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-westin-beach-resort-spa-at-frenchmans-reef",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "at-home-in-the-tropics",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "magens-hideaway",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "hampton-by-hilton-st-thomas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-ritz-carlton-st-thomas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "marriotts-frenchmans-cove",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "margaritaville-vacation-club-st-thomas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "bluebeards-castle-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "limetree-beach-resort-by-club-wyndham",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "elysian-beach-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "sapphire-beach-resort-and-marina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "sapphire-village-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "flamboyan-on-the-bay-resort-villas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "windward-passage-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-mafolie-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-pink-palm-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "hotel-1829",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "bunker-hill-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "galleon-house-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-island-view-guesthouse",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "sunset-gardens-guesthouse",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "boundless-bliss-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "pavilions-and-pools-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "tillett-gardens-guest-house",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "lovango-resort-beach-club",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "gallows-point-resort",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "coconut-coast-villas",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "arawak-bay-the-inn-at-salt-river",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-buccaneer-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "caravelle-hotel-casino",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "caribbean-breeze",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "company-house-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "divi-carina-bay-beach-resort-casino",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "club-comanche-hotel-st-croix",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "cottages-by-the-sea",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "the-fred",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "hotel-on-the-cay",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "inn-on-strand-street",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "king-christian-hotel",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "sugar-apple-bed-breakfast",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "sand-castle-on-the-beach",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "tamarind-reef-resort-spa-marina",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    },
+    {
+      "severity": "warning",
+      "kind": "stay",
+      "id": "villa-dawn",
+      "field": "operatingStatus",
+      "message": "status is unconfirmed"
+    }
+  ]
+}

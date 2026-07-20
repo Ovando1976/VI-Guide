@@ -1,0 +1,2725 @@
+{
+  "generatedAt": "2026-07-19T18:13:42.321Z",
+  "policy": {
+    "automaticApplication": false,
+    "minimumScore": 0.34,
+    "requiresHumanReview": true
+  },
+  "rows": [
+    {
+      "kind": "place",
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-arian-s.svg",
+      "queries": [
+        "Arian S Saint Thomas USVI",
+        "Arian S Saint Thomas Virgin Islands",
+        "Arian S place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-benito-s-burritos.svg",
+      "queries": [
+        "Benito's Burritos Saint Thomas USVI",
+        "Benito's Burritos Saint Thomas Virgin Islands",
+        "Benito's Burritos place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "queries": [
+        "Bernie's Bar Grill Saint Thomas USVI",
+        "Bernie's Bar Grill Saint Thomas Virgin Islands",
+        "Bernie's Bar Grill place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "queries": [
+        "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares Saint Thomas USVI",
+        "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares Saint Thomas Virgin Islands",
+        "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "queries": [
+        "Bonita's Cantina Saint Thomas USVI",
+        "Bonita's Cantina Saint Thomas Virgin Islands",
+        "Bonita's Cantina place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bumpa-s.svg",
+      "queries": [
+        "Bumpa S Saint Thomas USVI",
+        "Bumpa S Saint Thomas Virgin Islands",
+        "Bumpa S place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/attraction-stt.svg",
+      "queries": [
+        "Charlotte Amalie Waterfront Saint Thomas USVI",
+        "Charlotte Amalie Waterfront Saint Thomas Virgin Islands",
+        "Charlotte Amalie Waterfront place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/campground-stj.svg",
+      "queries": [
+        "Cinnamon Bay Campground Saint John USVI",
+        "Cinnamon Bay Campground Saint John Virgin Islands",
+        "Cinnamon Bay Campground place Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/historic-stx.svg",
+      "queries": [
+        "Columbus Landing Site Saint Croix USVI",
+        "Columbus Landing Site Saint Croix Virgin Islands",
+        "Columbus Landing Site place Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay",
+      "name": "Coral Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg",
+      "queries": [
+        "Coral Bay Saint John USVI",
+        "Coral Bay Saint John Virgin Islands",
+        "Coral Bay place Saint John"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:USVI - St. John - Coral Bay - Map from 1720.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/USVI_-_St._John_-_Coral_Bay_-_Map_from_1720.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:USVI_-_St._John_-_Coral_Bay_-_Map_from_1720.jpg",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:USVI - St. John - Coral Bay - Map from 1720.jpg Map of the harbor and surroundings at Coral Bay on St. John. This map was made in 1720 and sent to the board of directors of the West India and Guinea Company in Copenhagen. 1720 in the Caribbean|Files with no machine-readable author|PD Old|Media lacking author information|Maps of the history of colonies of Denmark|1720 maps|CC-PD-Mark|PD-old missing SDC copyright status|Maps of Saint John, United States Virgin Islands|Maps of the Danish West Indies",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:HABS Frederiks Fort St John USVI.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "license": "Public domain",
+          "creator": "   Jack Boucher   ",
+          "context": "File:HABS Frederiks Fort St John USVI.jpg Frederiks Fort at Fortsberg — located southeast of Coral Bay, on  St Johns Island , US Virgin Islands. \n  On the NRHP since September 1, 1976.   Historic American Buildings Survey of the United States Virgin Islands|Forts in the United States Virgin Islands|PD US Government|Saint John, United States Virgin Islands|United States Virgin Islands in the 1960s|Walls in the United States Virgin Islands|Forts on the National Register of Historic Places in the United States Virgin Islands|National Register of Historic Places with known IDs|CC-PD-Mark|Photographs by Jack Boucher",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:St. John, U.S. Virgin Islands.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/St._John%2C_U.S._Virgin_Islands.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._John,_U.S._Virgin_Islands.jpg",
+          "license": "Public domain",
+          "creator": "Jesse Allen and Robert Simmon",
+          "context": "File:St. John, U.S. Virgin Islands.jpg Natural-colour image of the Island of   St. John island   in the  United States Virgin Islands .\n  The  BVI are in the upper portion on the photo. \n Settlements—marked by curving roads and light roofs—line the irregular coastline. \n The pinpoints of white in Coral Bay are probably boats. \n The island’s interior is carpeted with varying shades of  green . Temperatures vary little throughout the year, ranging between the mid-20s to mid-30s Celsius. Although the vegetation appears lush, much of it is second-generation growth, according to the U.S. National Park Service (NPS). During the colonial period, large swaths of the island were clear-cut to accommodate  sugar  cane production.   PD NASA|Saint John, United States Virgin Islands|Images with annotations|United States Virgin Islands in the 2000s|Satellite pictures of the United States Virgin Islands|Images with extracted images|NASA Earth Observing-1 images",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 1 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_1_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_1_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 1 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 2 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_2_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_2_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 2 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 3 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_3_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_3_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 3 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 4 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_4_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_4_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 4 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:NPS virgin-islands-st-john-map.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/NPS_virgin-islands-st-john-map.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:NPS_virgin-islands-st-john-map.jpg",
+          "license": "Public domain",
+          "creator": "U.S. National Park Service, restoration/cleanup by National Park Maps ( https://npmaps.com )",
+          "context": "File:NPS virgin-islands-st-john-map.jpg This detail map of St. John shows the sights in the main park brochure map in much more detail including coral reefs, bays, islands, and other shoreline features. Maps of Virgin Islands National Park|PD US NPS|Files from the National Park Service uploaded by RKBot|Topographic maps of Virgin Islands National Park|Bathymetric maps of the Caribbean|Maps of Saint John, United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:St. John, U.S. Virgin Islands (5373126196).jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/St._John%2C_U.S._Virgin_Islands_%285373126196%29.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._John,_U.S._Virgin_Islands_(5373126196).jpg",
+          "license": "Public domain",
+          "creator": " NASA Goddard Space Flight Center  from Greenbelt, MD, USA",
+          "context": "File:St. John, U.S. Virgin Islands (5373126196).jpg  NASA image acquired June 24, 2007\n  Part of the U.S. Virgin Islands, the island of St. John incorporates both a land-based national park and a sea-based national monument. First established in 1956 and later expanded by the U.S. Congress, the Virgin Islands National Park covers more than 7,000 acres (2,800 hectares). Coral Reef National Monument—established ten years ago this week by presidential proclamation—encompasses submerged lands within 3 miles (5 kilometers) of the St. John coast.\n  The Advanced Land Imager (ALI) on NASA’s Earth Observing-1 (EO-1) satellite captured this natural-color image of the eastern half of St. John on June 24, 2007. Settlements—marked by curving roads and light roofs—line the irregular coastline. The pinpoints of white in Coral Bay are probably boats.\n  The island’s interior is carpeted with varying shades of green. Temperatures vary little throughout the year, ranging between the low 80s to mid-90s Fahrenheit (mid-20s to mid-30s Celsius). Although the vegetation appears lush, much of it is second-generation growth, according to the U.S. National Park Service (NPS). During the colonial period, large swaths of the island were clear-cut to accommodate sugar cane production.\n  Along the fringes of the island, the complex seafloor of varying depths colors the water different shades of blue. The Coral Reef National Monument is comprised of interdependent and fragile ecosystems, including coral reefs, mangrove forests, and beds of seagrass. In addition to these ecosystems, the monument incorporates historical artifacts such as shipwrecks, which are rare in the Caribbean.\n  NASA Earth Observatory image created by Jesse Allen and Robert Simmon, using EO-1 ALI data provided courtesy of the NASA EO-1 team. Caption by Michon Scott.\n  Instrument: EO-1 - ALI\n  Credit:   a href=\" http://www.earthobservatory.nasa.gov/ \" rel=\"nofollow\"  NASA Earth Observatory /a  \n  Go here to download the full high res file:  a href=\" http://earthobservatory.nasa.gov/images/imagerecords/48000/48615/avinp_ali_2007175_lrg.jpg \" rel=\"nofollow\" earthobservatory.nasa.gov/images/imagerecords/48000/48615... /a \n    a href=\" http://www.nasa.gov/centers/goddard/home/index.html \" rel=\"nofollow\" NASA Goddard Space Flight Center /a   enables NASA’s mission through four scientific endeavors: Earth Science, Heliophysics, Solar System Exploration, and Astrophysics. Goddard plays a leading role in NASA’s accomplishments by contributing compelling scientific knowledge to advance the Agency’s mission.\n   Follow us on  a href=\" https://twitter.com/NASA_GoddardPix \" rel=\"nofollow\" Twitter /a  \n \n Join us on  a href=\" http://www.facebook.com/pages/Greenbelt-MD/NASA-Goddard/395013845897?ref=tsd \" rel=\"nofollow\" Facebook /a   PD NASA|Saint John, United States Virgin Islands|Flickr images reviewed by FlickreviewR 2|USGov files uploaded by OceanAtoll|Files from NASA Goddard Space Flight Center Flickr stream|Media from Goddard Space Flight Center",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "openverse",
+          "title": "Coral Bay Saint John Virgin Islands 2022-04-20",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Coral_Bay_Saint_John_Virgin_Islands_2022-04-20.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=117932859",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/911e2282-e083-46f4-b342-a46bf56a6d5d/thumb/",
+          "license": "cc0 1.0",
+          "creator": "Eoghanacht",
+          "context": "Coral Bay Saint John Virgin Islands 2022-04-20 ",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:W end of St. Thomas, Great-, Little Saint James, Dog Island, Steven Cay, W part of St. John, U.S. Virgin Islands (cropped).jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/W_end_of_St._Thomas%2C_Great-%2C_Little_Saint_James%2C_Dog_Island%2C_Steven_Cay%2C_W_part_of_St._John%2C_U.S._Virgin_Islands_%28cropped%29.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:W_end_of_St._Thomas,_Great-,_Little_Saint_James,_Dog_Island,_Steven_Cay,_W_part_of_St._John,_U.S._Virgin_Islands_(cropped).jpg",
+          "license": "Public domain",
+          "creator": "Jesse Allen and Robert Simmon",
+          "context": "File:W end of St. Thomas, Great-, Little Saint James, Dog Island, Steven Cay, W part of St. John, U.S. Virgin Islands (cropped).jpg Natural-colour image of the Island of   St. John island   in the  United States Virgin Islands .\n  The  BVI are in the upper portion on the photo. \n Settlements—marked by curving roads and light roofs—line the irregular coastline. \n The pinpoints of white in Coral Bay are probably boats. \n The island’s interior is carpeted with varying shades of  green . Temperatures vary little throughout the year, ranging between the mid-20s to mid-30s Celsius. Although the vegetation appears lush, much of it is second-generation growth, according to the U.S. National Park Service (NPS). During the colonial period, large swaths of the island were clear-cut to accommodate  sugar  cane production.   PD NASA|Saint John, United States Virgin Islands|Great Saint James, U.S. Virgin Islands|Little Saint James, U.S. Virgin Islands|Images with annotations|United States Virgin Islands in the 2000s|Satellite pictures of the United States Virgin Islands|Dog Island, United States Virgin Islands|Extracted images|NASA Earth Observing-1 images",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Map of St. John 1720.png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Map_of_St._John_1720.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Map_of_St._John_1720.png",
+          "license": "CC BY-SA 4.0",
+          "creator": " Tinkaer1991 ",
+          "context": "File:Map of St. John 1720.png Map of Coral Bay on St. Jan, 1720, drawn by Anders Sørensen Duus Coral Bay|Self-published work|Maps of Saint John, United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/marina-stj.svg",
+      "queries": [
+        "Coral Bay Harbor Saint John USVI",
+        "Coral Bay Harbor Saint John Virgin Islands",
+        "Coral Bay Harbor place Saint John"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:USVI - St. John - Coral Bay - Map from 1720.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/USVI_-_St._John_-_Coral_Bay_-_Map_from_1720.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:USVI_-_St._John_-_Coral_Bay_-_Map_from_1720.jpg",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:USVI - St. John - Coral Bay - Map from 1720.jpg Map of the harbor and surroundings at Coral Bay on St. John. This map was made in 1720 and sent to the board of directors of the West India and Guinea Company in Copenhagen. 1720 in the Caribbean|Files with no machine-readable author|PD Old|Media lacking author information|Maps of the history of colonies of Denmark|1720 maps|CC-PD-Mark|PD-old missing SDC copyright status|Maps of Saint John, United States Virgin Islands|Maps of the Danish West Indies",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/attraction-stj.svg",
+      "queries": [
+        "Cruz Bay Waterfront Saint John USVI",
+        "Cruz Bay Waterfront Saint John Virgin Islands",
+        "Cruz Bay Waterfront place Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-e-s-garden-teahouse.svg",
+      "queries": [
+        "E's Garden Teahouse Saint Thomas USVI",
+        "E's Garden Teahouse Saint Thomas Virgin Islands",
+        "E's Garden Teahouse place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "east-end-st-john",
+      "name": "East End St. John",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg",
+      "queries": [
+        "East End St. John Saint John USVI",
+        "East End St. John Saint John Virgin Islands",
+        "East End St. John place Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "eliza-james-mchen-beach-park",
+      "name": "Eliza James-McBean Clock Tower and Park",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/park-stx.svg",
+      "queries": [
+        "Eliza James-McBean Clock Tower and Park Saint Croix USVI",
+        "Eliza James-McBean Clock Tower and Park Saint Croix Virgin Islands",
+        "Eliza James-McBean Clock Tower and Park place Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/historic-stj.svg",
+      "queries": [
+        "Fortsberg Saint John USVI",
+        "Fortsberg Saint John Virgin Islands",
+        "Fortsberg place Saint John"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:HABS Frederiks Fort St John USVI.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "license": "Public domain",
+          "creator": "   Jack Boucher   ",
+          "context": "File:HABS Frederiks Fort St John USVI.jpg Frederiks Fort at Fortsberg — located southeast of Coral Bay, on  St Johns Island , US Virgin Islands. \n  On the NRHP since September 1, 1976.   Historic American Buildings Survey of the United States Virgin Islands|Forts in the United States Virgin Islands|PD US Government|Saint John, United States Virgin Islands|United States Virgin Islands in the 1960s|Walls in the United States Virgin Islands|Forts on the National Register of Historic Places in the United States Virgin Islands|National Register of Historic Places with known IDs|CC-PD-Mark|Photographs by Jack Boucher",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Fortsberg.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Fortsberg.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fortsberg.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Heptazane ",
+          "context": "File:Fortsberg.jpg A hill on a peninsula next to Coral Bay, St. John, USVI, on which Fortsberg is. Self-published work|Landscapes of the United States",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown",
+      "name": "Frenchtown",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "queries": [
+        "Frenchtown Saint Thomas USVI",
+        "Frenchtown Saint Thomas Virgin Islands",
+        "Frenchtown place Saint Thomas"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:STT Frenchtown Heritage Museum 2011.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/STT_Frenchtown_Heritage_Museum_2011.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:STT_Frenchtown_Heritage_Museum_2011.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Gruepig ",
+          "context": "File:STT Frenchtown Heritage Museum 2011.jpg French Heritage Museum, Frenchtown, St. Thomas, USVI, Dec 2011. Frenchtown, U.S. Virgin Islands|Self-published work|Files with coordinates missing SDC location of creation",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:STT Frenchtown Instruments 2011.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/STT_Frenchtown_Instruments_2011.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:STT_Frenchtown_Instruments_2011.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Gruepig ",
+          "context": "File:STT Frenchtown Instruments 2011.jpg Instruments, Frenchtown, French Heritage Museum, St. Thomas, USVI, Dec 2011. Frenchtown, U.S. Virgin Islands|Self-published work|Files with coordinates missing SDC location of creation",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:STT Frenchtown Hats 2011.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/STT_Frenchtown_Hats_2011.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:STT_Frenchtown_Hats_2011.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Gruepig ",
+          "context": "File:STT Frenchtown Hats 2011.jpg Hats, French Heritage Museum, Frenchtown, St. Thomas, USVI, Dec 2011. Frenchtown, U.S. Virgin Islands|Self-published work|Files with coordinates missing SDC location of creation",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown-market",
+      "name": "Frenchtown Market",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/market-stt.svg",
+      "queries": [
+        "Frenchtown Market Saint Thomas USVI",
+        "Frenchtown Market Saint Thomas Virgin Islands",
+        "Frenchtown Market place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "green-cay-marina",
+      "name": "Green Cay Marina",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/marina-stx.svg",
+      "queries": [
+        "Green Cay Marina Saint Croix USVI",
+        "Green Cay Marina Saint Croix Virgin Islands",
+        "Green Cay Marina place Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "johns-folly-learning-institute",
+      "name": "John's Folly Learning Institute",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/cultural-stj.svg",
+      "queries": [
+        "John's Folly Learning Institute Saint John USVI",
+        "John's Folly Learning Institute Saint John Virgin Islands",
+        "John's Folly Learning Institute place Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "market-square-st-thomas",
+      "name": "Market Square",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/historic-stt.svg",
+      "queries": [
+        "Market Square Saint Thomas USVI",
+        "Market Square Saint Thomas Virgin Islands",
+        "Market Square place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "millennium-monument",
+      "name": "Millennium Monument",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/monument-stx.svg",
+      "queries": [
+        "Millennium Monument Saint Croix USVI",
+        "Millennium Monument Saint Croix Virgin Islands",
+        "Millennium Monument place Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "red-hook",
+      "name": "Red Hook",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "queries": [
+        "Red Hook Saint Thomas USVI",
+        "Red Hook Saint Thomas Virgin Islands",
+        "Red Hook place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "rainforest-st-croix",
+      "name": "St. Croix Rainforest",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/nature-stx.svg",
+      "queries": [
+        "St. Croix Rainforest Saint Croix USVI",
+        "St. Croix Rainforest Saint Croix Virgin Islands",
+        "St. Croix Rainforest place Saint Croix"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:2008-07-17 St. George Village Botanical Gardens St. Croix USVI.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/2008-07-17_St._George_Village_Botanical_Gardens_St._Croix_USVI.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:2008-07-17_St._George_Village_Botanical_Gardens_St._Croix_USVI.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": " Jpheym  Jason P. Heym / Seascape Pool Center Inc.",
+          "context": "File:2008-07-17 St. George Village Botanical Gardens St. Croix USVI.jpg Gardens and rainforest canopy in St. George Village Botanical Gardens — on  St. Croix  island, United States Virgin Islands. Flora of the United States Virgin Islands|Botanical gardens in the United States Virgin Islands|GFDL|Taken with Canon PowerShot A560|Saint Croix|United States Virgin Islands in the 2000s|License migration redundant|Self-published work",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "leap-st-croix",
+      "name": "The Leap",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/shopping-stx.svg",
+      "queries": [
+        "The Leap Saint Croix USVI",
+        "The Leap Saint Croix Virgin Islands",
+        "The Leap place Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "water-island-ferry-terminal",
+      "name": "Water Island Ferry Terminal",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/transport-stt.svg",
+      "queries": [
+        "Water Island Ferry Terminal Saint Thomas USVI",
+        "Water Island Ferry Terminal Saint Thomas Virgin Islands",
+        "Water Island Ferry Terminal place Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/abi-beach.svg",
+      "queries": [
+        "Abi Beach Saint Thomas USVI",
+        "Abi Beach Saint Thomas Virgin Islands",
+        "Abi Beach beach Saint Thomas",
+        "Abi Beach shore Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/banana-bay.svg",
+      "queries": [
+        "Banana Bay Saint John USVI",
+        "Banana Bay Saint John Virgin Islands",
+        "Banana Bay beach Saint John",
+        "Banana Bay shore Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/brown-bay.svg",
+      "queries": [
+        "Brown Bay Saint John USVI",
+        "Brown Bay Saint John Virgin Islands",
+        "Brown Bay beach Saint John",
+        "Brown Bay shore Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/caneel-bay.svg",
+      "queries": [
+        "Caneel Bay Saint John USVI",
+        "Caneel Bay Saint John Virgin Islands",
+        "Caneel Bay beach Saint John",
+        "Caneel Bay shore Saint John"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "North View from Caneel Hill",
+          "url": "https://live.staticflickr.com/1530/25748606334_02dd1d0a0b_b.jpg",
+          "sourceUrl": "https://www.flickr.com/photos/44768401@N07/25748606334",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/95ec48fd-d5a2-46bc-8eb0-655392d51c35/thumb/",
+          "license": "by-sa 2.0",
+          "creator": "ThatMattWade",
+          "context": "North View from Caneel Hill atlantic bay beach blue caribbean city island islands john love paradise resort saint st stj usvi virgin",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "openverse",
+          "title": "South View from Caneel Hill",
+          "url": "https://live.staticflickr.com/1481/26080706920_213da25c66_b.jpg",
+          "sourceUrl": "https://www.flickr.com/photos/44768401@N07/26080706920",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/fbf7f6d4-2258-475c-86da-da6bb4f93344/thumb/",
+          "license": "by-sa 2.0",
+          "creator": "ThatMattWade",
+          "context": "South View from Caneel Hill bay caneel caribbean cruz islands john national nps park saint service st stj usvi vinp virgin",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "openverse",
+          "title": "Near Caneel Bay Saint John, U.S. Virgin Islands",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Near_Caneel_Bay_Saint_John%2C_U.S._Virgin_Islands.png",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=44386652",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/8dbce67b-2c09-43c8-bf11-e0740993877b/thumb/",
+          "license": "by-sa 4.0",
+          "creator": "Jasonshortes",
+          "context": "Near Caneel Bay Saint John, U.S. Virgin Islands ",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "beach",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/caret-bay.svg",
+      "queries": [
+        "Caret Bay Saint Thomas USVI",
+        "Caret Bay Saint Thomas Virgin Islands",
+        "Caret Bay beach Saint Thomas",
+        "Caret Bay shore Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/columbus-landing.svg",
+      "queries": [
+        "Columbus Landing Saint Croix USVI",
+        "Columbus Landing Saint Croix Virgin Islands",
+        "Columbus Landing beach Saint Croix",
+        "Columbus Landing shore Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/michelles-beach.svg",
+      "queries": [
+        "Michelles Beach Saint Croix USVI",
+        "Michelles Beach Saint Croix Virgin Islands",
+        "Michelles Beach beach Saint Croix",
+        "Michelles Beach shore Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/nazareth-bay.svg",
+      "queries": [
+        "Nazareth Bay Saint Thomas USVI",
+        "Nazareth Bay Saint Thomas Virgin Islands",
+        "Nazareth Bay beach Saint Thomas",
+        "Nazareth Bay shore Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/reef-bay.svg",
+      "queries": [
+        "Reef Bay Saint John USVI",
+        "Reef Bay Saint John Virgin Islands",
+        "Reef Bay beach Saint John",
+        "Reef Bay shore Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/teague-bay.svg",
+      "queries": [
+        "Teague Bay Saint Croix USVI",
+        "Teague Bay Saint Croix Virgin Islands",
+        "Teague Bay beach Saint Croix",
+        "Teague Bay shore Saint Croix"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:2008-01-28 Tague Bay St. Croix.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/2008-01-28_Tague_Bay_St._Croix.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:2008-01-28_Tague_Bay_St._Croix.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": " Jpheym  Jason P. Heym / Seascape Pool Center Inc.",
+          "context": "File:2008-01-28 Tague Bay St. Croix.jpg East end of St. Croix, United States Virgin Islands. Facing east. Tague / Teague Bay and St. Croix Yacht Club on the left. Reef Golf and Beach Resort in the center. GFDL|Taken with Canon PowerShot A530|Saint Croix|License migration redundant|Self-published work",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:2008-01-27 Teague Bay Beach St. Croix USVI.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/2008-01-27_Teague_Bay_Beach_St._Croix_USVI.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:2008-01-27_Teague_Bay_Beach_St._Croix_USVI.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": " Jpheym  Jason P. Heym / Seascape Pool Center Inc.",
+          "context": "File:2008-01-27 Teague Bay Beach St. Croix USVI.jpg Teague / Tague Bay Beach and St. Croix Yacht Club, St. Croix, United States Virgin Islands. Facing north west. Buck Island in center. GFDL|Taken with Canon PowerShot A530|Saint Croix|License migration redundant|Self-published work",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "beach",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "queries": [
+        "Turtle Beach Buck Island Saint Croix USVI",
+        "Turtle Beach Buck Island Saint Croix Virgin Islands",
+        "Turtle Beach Buck Island beach Saint Croix",
+        "Turtle Beach Buck Island shore Saint Croix"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/water-bay.svg",
+      "queries": [
+        "Water Bay Saint Thomas USVI",
+        "Water Bay Saint Thomas Virgin Islands",
+        "Water Bay beach Saint Thomas",
+        "Water Bay shore Saint Thomas"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "Charlotte Amalie",
+          "url": "https://live.staticflickr.com/829/41095937415_462cfafe42_b.jpg",
+          "sourceUrl": "https://www.flickr.com/photos/34128007@N04/41095937415",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/957201f3-e2f5-4b42-b1f1-086322f0c522/thumb/",
+          "license": "by 2.0",
+          "creator": "Prayitno / Thank you for (12 millions +) view",
+          "context": "Charlotte Amalie amalie bay beach beautiful beauty blue caribbean charlotte cove day front island konomark line ocean outdoor panorama panoramic play rocky saint scenery scenic secluded serene shore sky st states sunny teluk thomas time united us usvi view virgin water",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "beach",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/waterlemon-bay.svg",
+      "queries": [
+        "Waterlemon Bay Saint John USVI",
+        "Waterlemon Bay Saint John Virgin Islands",
+        "Waterlemon Bay beach Saint John",
+        "Waterlemon Bay shore Saint John"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Annaberg Historic District Saint John USVI",
+        "Annaberg Saint John Virgin Islands",
+        "Annaberg historic Saint John",
+        "Annaberg NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "barracks-no-2",
+      "name": "Barracks No. 2",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Barracks No. 2 Saint Thomas USVI",
+        "Barracks No. 2 Saint Thomas Virgin Islands",
+        "Barracks No. 2 historic Saint Thomas",
+        "Barracks No. 2 NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "benjamin-franklin-school",
+      "name": "Benjamin Franklin School",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Benjamin Franklin School Saint John USVI",
+        "Benjamin Franklin School Saint John Virgin Islands",
+        "Benjamin Franklin School historic Saint John",
+        "Benjamin Franklin School NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Bethlehem Middle Works Historic District Saint Croix USVI",
+        "Bethlehem Middle Works Saint Croix Virgin Islands",
+        "Bethlehem Middle Works historic Saint Croix",
+        "Bethlehem Middle Works NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-sugar-factory",
+      "name": "Bethlehem Sugar Factory",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Bethlehem Sugar Factory Saint Thomas USVI",
+        "Bethlehem Sugar Factory Saint Thomas Virgin Islands",
+        "Bethlehem Sugar Factory historic Saint Thomas",
+        "Bethlehem Sugar Factory NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "bordeaux",
+      "name": "Bordeaux",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Bordeaux Saint Thomas USVI",
+        "Bordeaux Saint Thomas Virgin Islands",
+        "Bordeaux historic Saint Thomas",
+        "Bordeaux NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Bordeaux Great House, St Thomas.png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Bordeaux_Great_House%2C_St_Thomas.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bordeaux_Great_House,_St_Thomas.png",
+          "license": "Public domain",
+          "creator": "Douglas Richards",
+          "context": "File:Bordeaux Great House, St Thomas.png Estate Bordeaux Great House, St. Thomas, U.S. Virgin Islands Plantations in the United States Virgin Islands|Structures on the National Register of Historic Places in the United States Virgin Islands|PD US NPS|National Register of Historic Places with known IDs|Files with coordinates missing SDC location of creation|Images from NPGallery|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|History of Saint Thomas, United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Brown Bay Plantation Historic District Saint John USVI",
+        "Brown Bay Plantation Saint John Virgin Islands",
+        "Brown Bay Plantation historic Saint John",
+        "Brown Bay Plantation NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Cinnamon Bay Plantation Saint John USVI",
+        "Cinnamon Bay Plantation Saint John Virgin Islands",
+        "Cinnamon Bay Plantation historic Saint John",
+        "Cinnamon Bay Plantation NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "File:Cinnamon Bay Plantation; Saint John, United States Virgin Islands.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Cinnamon_Bay_Plantation%3B_Saint_John%2C_United_States_Virgin_Islands.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=4384752",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/0b31c293-b6d2-4ee2-b032-7acccad7093c/thumb/",
+          "license": "by-sa 4.0",
+          "creator": "FloNight (Sydney Poore) and Russell Poore",
+          "context": "File:Cinnamon Bay Plantation; Saint John, United States Virgin Islands.jpg ",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Plumeria alba2709449426.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Plumeria_alba2709449426.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plumeria_alba2709449426.jpg",
+          "license": "CC BY 2.0",
+          "creator": " Doug  from Troutville, VA, USA",
+          "context": "File:Plumeria alba2709449426.jpg    Plumeria alba  . Location: Cinnamon Bay, St. John, US Virgin Islands\n \nMore information:  University of Florida extension  Plumeria alba|United States Virgin Islands|Cinnamon Bay Plantation|Flickr images reviewed by File Upload Bot (Magnus Manske)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Cinnamon Bay Plantation ruins.JPG",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Cinnamon_Bay_Plantation_ruins.JPG",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cinnamon_Bay_Plantation_ruins.JPG",
+          "license": "CC BY-SA 4.0",
+          "creator": " Farragutful ",
+          "context": "File:Cinnamon Bay Plantation ruins.JPG Ruins of the Cinnamon Bay Plantation on Saint John, United States Virgin Islands. 2015 in the United States Virgin Islands|Cinnamon Bay Plantation|Ruins in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|United States photographs taken on 2015-03-09|Files by User:Farragutful",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-sugar-works",
+      "name": "Cinnamon Bay Sugar Works",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Cinnamon Bay Sugar Works Saint John USVI",
+        "Cinnamon Bay Sugar Works Saint John Virgin Islands",
+        "Cinnamon Bay Sugar Works historic Saint John",
+        "Cinnamon Bay Sugar Works NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Coakley Bay Estate Saint Croix USVI",
+        "Coakley Bay Estate Saint Croix Virgin Islands",
+        "Coakley Bay Estate historic Saint Croix",
+        "Coakley Bay Estate NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Columbus Landing Site Saint Croix USVI",
+        "Columbus Landing Site Saint Croix Virgin Islands",
+        "Columbus Landing Site historic Saint Croix",
+        "Columbus Landing Site NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-battery",
+      "name": "Cruz Bay Battery",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Cruz Bay Battery Saint John USVI",
+        "Cruz Bay Battery Saint John Virgin Islands",
+        "Cruz Bay Battery historic Saint John",
+        "Cruz Bay Battery NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Cruz Bay Battery - Fritz Melbye.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Cruz_Bay_Battery_-_Fritz_Melbye.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cruz_Bay_Battery_-_Fritz_Melbye.jpg",
+          "license": "Public domain",
+          "creator": "   Fritz Melbye   ",
+          "context": "File:Cruz Bay Battery - Fritz Melbye.jpg  Saint John, United States Virgin Islands|Caribbean in the 1850s|PD-Art (PD-old-100)|Artworks with Wikidata item|CC-PD-Mark|Artworks missing digital representation of for 2D work|Artworks with Wikidata item missing genre|Artworks with SDC link missing|Danish West Indies in art|Paintings by Fritz Melbye",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-town-historic-district",
+      "name": "Cruz Bay Town Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Cruz Bay Town Historic District Saint John USVI",
+        "Cruz Bay Town Saint John Virgin Islands",
+        "Cruz Bay Town historic Saint John",
+        "Cruz Bay Town NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "File:Landing pier at Cruz Bay, Saint John, United States Virgin Islands 5-28-2008 12-33-25.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Landing_pier_at_Cruz_Bay%2C_Saint_John%2C_United_States_Virgin_Islands_5-28-2008_12-33-25.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=4381098",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/3d7c7a6c-2296-43a6-b24b-748127a332ae/thumb/",
+          "license": "by-sa 3.0",
+          "creator": "FloNight (Sydney Poore) and Russell Poore",
+          "context": "File:Landing pier at Cruz Bay, Saint John, United States Virgin Islands 5-28-2008 12-33-25.jpg ",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "openverse",
+          "title": "File:Cruz Bay, Saint John; United States Virgin Islands.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Cruz_Bay%2C_Saint_John%3B_United_States_Virgin_Islands.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=4381123",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/0c4bb527-2f77-4d07-8d7c-9eef989628ff/thumb/",
+          "license": "by-sa 3.0",
+          "creator": "FloNight (Sydney Poore) and Russell Poore",
+          "context": "File:Cruz Bay, Saint John; United States Virgin Islands.jpg ",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:St John Cruz Bay 1.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/St_John_Cruz_Bay_1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_John_Cruz_Bay_1.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": "Fred Hsu ( Wikipedia:User:Fred Hsu  on  en.wikipedia )",
+          "context": "File:St John Cruz Bay 1.jpg   Cruz Bay    — at  St. John island  Bays of the United States Virgin Islands|GFDL|Taken with Nikon D700|Cruz Bay|License migration redundant|Transport in the United States Virgin Islands|Self-published work|Files by User:Fredhsu from en.wikipedia|Files with coordinates missing SDC location of creation|Boats in the Caribbean",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:St John Cruz Bay 2.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/St_John_Cruz_Bay_2.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_John_Cruz_Bay_2.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": "Fred Hsu ( Wikipedia:User:Fred Hsu  on  en.wikipedia )",
+          "context": "File:St John Cruz Bay 2.jpg  Cruz Bay  at  St. John  Buildings in the United States Virgin Islands|GFDL|Taken with Nikon D700|Cruz Bay|License migration redundant|Self-published work|Files by User:Fredhsu from en.wikipedia|Files with coordinates missing SDC location of creation",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:St John Cruz Bay 3.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/St_John_Cruz_Bay_3.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_John_Cruz_Bay_3.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": "Fred Hsu ( Wikipedia:User:Fred Hsu  on  en.wikipedia )",
+          "context": "File:St John Cruz Bay 3.jpg   Cruz Bay   — at  St. John island , United States Virgin Islands. GFDL|Taken with Nikon D700|Cruz Bay|License migration redundant|Self-published work|Files by User:Fredhsu from en.wikipedia|Files with coordinates missing SDC location of creation",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Mongoose Junction Shopping Plaza (Cruz Bay, St. John Is., USVI).JPG",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Mongoose_Junction_Shopping_Plaza_%28Cruz_Bay%2C_St._John_Is.%2C_USVI%29.JPG",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mongoose_Junction_Shopping_Plaza_(Cruz_Bay,_St._John_Is.,_USVI).JPG",
+          "license": "CC BY 2.0 de",
+          "creator": "",
+          "context": "File:Mongoose Junction Shopping Plaza (Cruz Bay, St. John Is., USVI).JPG  Mongoose Junction Shopping Plaza (Cruz Bay, St. John Is., USVI)\n \n \n  \n      \n \n \n This is an image of a place or building that is listed on the  National Register of Historic Places  in the  United States of America . Its reference number is   16000699   ( Wikidata ). \n \n     Cruz Bay|Files with no machine-readable author|Taken with Panasonic Lumix DMC-TZ61|Media lacking author information|National Register of Historic Places with known IDs|User:Mattes/Contributions/Topics/The Americas/United States|File uploads by User:Mattes (flat)|User:Mattes/Contributions/Topics/Cultural heritage monuments|Work by Mattes 2015|User:Mattes/Contributions/Topics/Nature|Ambiguous location in EXIF",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Cruz Bay, St John, USVI - panoramio.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Cruz_Bay%2C_St_John%2C_USVI_-_panoramio.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cruz_Bay,_St_John,_USVI_-_panoramio.jpg",
+          "license": "CC BY 3.0",
+          "creator": " Scott Long ",
+          "context": "File:Cruz Bay, St John, USVI - panoramio.jpg Cruz Bay, St John, USVI Cruz Bay|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|United States photographs taken on 2013-03-31",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Cruz Bay, St John, USVI - panoramio (1).jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Cruz_Bay%2C_St_John%2C_USVI_-_panoramio_%281%29.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cruz_Bay,_St_John,_USVI_-_panoramio_(1).jpg",
+          "license": "CC BY 3.0",
+          "creator": " Scott Long ",
+          "context": "File:Cruz Bay, St John, USVI - panoramio (1).jpg Cruz Bay, St John, USVI Cruz Bay|Panoramio files uploaded by Panoramio upload bot|Panoramio images reviewed by trusted users|Photos from Panoramio|Files with coordinates missing SDC location of creation|United States photographs taken on 2013-04-02|Media needing category review as of 2 March 2017",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Cruz Bay ~ St. John (22546808673).jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Cruz_Bay_~_St._John_%2822546808673%29.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cruz_Bay_~_St._John_(22546808673).jpg",
+          "license": "CC BY 2.0",
+          "creator": " Prayitno / Thank you for (12 millions +) view  from Los Angeles, USA",
+          "context": "File:Cruz Bay ~ St. John (22546808673).jpg U.S. Virgin Islands Saint John, United States Virgin Islands|Files with coordinates missing SDC location of creation|Flickr images reviewed by FlickreviewR 2|Files from prayitnophotography Flickr stream",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Danish West India and Guinea Company Warehouse Saint Croix USVI",
+        "Danish West India and Guinea Company Warehouse Saint Croix Virgin Islands",
+        "Danish West India and Guinea Company Warehouse historic Saint Croix",
+        "Danish West India and Guinea Company Warehouse NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Dennis Bay Historic District Saint John USVI",
+        "Dennis Bay Saint John Virgin Islands",
+        "Dennis Bay historic Saint John",
+        "Dennis Bay NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Dennis Bay windmill.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Dennis_Bay_windmill.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Bay_windmill.jpg",
+          "license": "Public domain",
+          "creator": "John Milner for HABS",
+          "context": "File:Dennis Bay windmill.jpg Windmill in Denis Bay Historic District on the NRHP since July 23, 1981. \n  Located northeast of Cruz Bay off North Shore Road in the Central region of St. John, US Virgin Islands (in the Virgin Islands National Park). \n Part of the Virgin Islands National Park MRA submission.   Historic American Buildings Survey of the United States Virgin Islands|PD US Government|Denis Bay Historic District|Windmills in the United States Virgin Islands|National Register of Historic Places with known IDs|CC-PD-Mark|Windmill plans",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Peace Hill Windmill.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Peace_Hill_Windmill.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Madlabscientist ",
+          "context": "File:Peace Hill Windmill.jpg View from the base on the north-facing side, looking up and into the Peace Hill Windmill ruins on the Dennis Bay Historic District on the island of St. John in the United States Virgin Islands. Located on the north side of the island, this windmill is only a ten-minute hike from North Shore Road, overlooking Trunk and Dennis Bays to the east and Hawksnest Bay to the west. Images from Wiki Loves Monuments 2023 in the United States Virgin Islands|2023 in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Images from Wiki Loves Monuments 2023|Uploaded via Campaign:wlm-us|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|Images from Wiki Loves Monuments 2023 in the United States|Peace Hill (Saint John, VI)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Peace Hill Windmill Ruins.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Peace_Hill_Windmill_Ruins.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill_Ruins.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Madlabscientist ",
+          "context": "File:Peace Hill Windmill Ruins.jpg Referred to as the \"Peace Hill Windmill\", these ruins are the remnant of an 1800s windmill tower on the Dennis Bay Historic District on the island of St. John in the United States Virgin Islands. The background overlooks Dennis and Trunk Bays on the north side of the island. Images from Wiki Loves Monuments 2023 in the United States Virgin Islands|2023 in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Images from Wiki Loves Monuments 2023|Uploaded via Campaign:wlm-us|Images from Wiki Loves Monuments 2023 in the United States|Peace Hill (Saint John, VI)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "diamond-school",
+      "name": "Diamond School",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Diamond School Saint Croix USVI",
+        "Diamond School Saint Croix Virgin Islands",
+        "Diamond School historic Saint Croix",
+        "Diamond School NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "East End Schoolhouse: St. John US Virgin Islands Saint John USVI",
+        "East End Schoolhouse: St. John Saint John Virgin Islands",
+        "East End Schoolhouse: St. John historic Saint John",
+        "East End Schoolhouse: St. John NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church",
+      "name": "Emmaus Moravian Church",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Emmaus Moravian Church Saint Thomas USVI",
+        "Emmaus Moravian Church Saint Thomas Virgin Islands",
+        "Emmaus Moravian Church historic Saint Thomas",
+        "Emmaus Moravian Church NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Emmaus Moravian Church and Manse Saint John USVI",
+        "Emmaus Moravian Church and Manse Saint John Virgin Islands",
+        "Emmaus Moravian Church and Manse historic Saint John",
+        "Emmaus Moravian Church and Manse NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "enighed",
+      "name": "Enighed",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Enighed Saint John USVI",
+        "Enighed Saint John Virgin Islands",
+        "Enighed historic Saint John",
+        "Enighed NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "Enighed, Saint John, U.S. Virgin Islands",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Enighed%2C_Saint_John%2C_U.S._Virgin_Islands.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=147540881",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/82b0d870-2ed2-462e-b1cb-1109bc69af34/thumb/",
+          "license": "by 4.0",
+          "creator": "LittleT889",
+          "context": "Enighed, Saint John, U.S. Virgin Islands ",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Enighed 01.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Enighed_01.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Enighed_01.jpg",
+          "license": "Public domain",
+          "creator": "Samuel N. Stokes",
+          "context": "File:Enighed 01.jpg Enighed in Cruz Bay, Saint James, US Virgin Islands. \n \n  \n      \n \n \n This is an image of a place or building that is listed on the  National Register of Historic Places  in the  United States of America . Its reference number is   76002219   ( Wikidata ). \n \n     1976 in the United States Virgin Islands|PD US DOI|National Register of Historic Places with known IDs|National Register of Historic Places missing SDC location of creation|PD-USGov missing SDC copyright status|NRHP uploads by Ktkvtsh|Enighed (Cruz Bay, Saint John)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Enighed 02.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Enighed_02.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Enighed_02.jpg",
+          "license": "Public domain",
+          "creator": "Samuel N. Stokes",
+          "context": "File:Enighed 02.jpg Enighed in Cruz Bay, Saint James, US Virgin Islands. \n \n  \n      \n \n \n This is an image of a place or building that is listed on the  National Register of Historic Places  in the  United States of America . Its reference number is   76002219   ( Wikidata ). \n \n     1976 in the United States Virgin Islands|PD US DOI|National Register of Historic Places with known IDs|National Register of Historic Places missing SDC location of creation|PD-USGov missing SDC copyright status|NRHP uploads by Ktkvtsh|Enighed (Cruz Bay, Saint John)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Beverhoudt Saint John USVI",
+        "Estate Beverhoudt Saint John Virgin Islands",
+        "Estate Beverhoudt historic Saint John",
+        "Estate Beverhoudt NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Botany Bay Saint Thomas USVI",
+        "Estate Botany Bay Saint Thomas Virgin Islands",
+        "Estate Botany Bay historic Saint Thomas",
+        "Estate Botany Bay NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Botany Bay 02.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Estate_Botany_Bay_02.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Botany_Bay_02.jpg",
+          "license": "Public domain",
+          "creator": "Samuel N. Stokes",
+          "context": "File:Estate Botany Bay 02.jpg Estate Botany Bay in Saint Thomas, US Virgin Islands. \n \n  \n      \n \n \n This is an image of a place or building that is listed on the  National Register of Historic Places  in the  United States of America . Its reference number is   76001861   ( Wikidata ). \n \n     1976 in the United States Virgin Islands|PD US DOI|National Register of Historic Places with known IDs|National Register of Historic Places missing SDC location of creation|PD-USGov missing SDC copyright status|NRHP uploads by Ktkvtsh|Estate Botany Bay",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Botany Bay 01.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Estate_Botany_Bay_01.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Botany_Bay_01.jpg",
+          "license": "Public domain",
+          "creator": "Samuel N. Stokes",
+          "context": "File:Estate Botany Bay 01.jpg Estate Botany Bay in Saint Thomas, US Virgin Islands. \n \n  \n      \n \n \n This is an image of a place or building that is listed on the  National Register of Historic Places  in the  United States of America . Its reference number is   76001861   ( Wikidata ). \n \n     1976 in the United States Virgin Islands|PD US DOI|National Register of Historic Places with known IDs|National Register of Historic Places missing SDC location of creation|PD-USGov missing SDC copyright status|NRHP uploads by Ktkvtsh|Estate Botany Bay",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Brewers Bay Saint Thomas USVI",
+        "Estate Brewers Bay Saint Thomas Virgin Islands",
+        "Estate Brewers Bay historic Saint Thomas",
+        "Estate Brewers Bay NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Butler's Bay Saint Croix USVI",
+        "Estate Butler's Bay Saint Croix Virgin Islands",
+        "Estate Butler's Bay historic Saint Croix",
+        "Estate Butler's Bay NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Carolina Sugar Plantation Saint John USVI",
+        "Estate Carolina Sugar Plantation Saint John Virgin Islands",
+        "Estate Carolina Sugar Plantation historic Saint John",
+        "Estate Carolina Sugar Plantation NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:ESTATE CAROLINA SUGAR PLANTATION.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/ESTATE_CAROLINA_SUGAR_PLANTATION.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:ESTATE_CAROLINA_SUGAR_PLANTATION.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": " JERRYE   ROY KLOTZ MD ",
+          "context": "File:ESTATE CAROLINA SUGAR PLANTATION.jpg LOOKING DOWN ON WHAT WAS ONCE CAROLINA ESTATE - THE LARGEST ON THE ISLAND of Saint John.  \n  THE MILL IS VISIBLE NEAR THE TOP OF THE PICTURE. \n  United States Virgin Islands .   Plantations in the United States Virgin Islands|National Register of Historic Places in the United States Virgin Islands|Taken with Nikon D3|Saint John, United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Photographs by User:KLOTZ",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "estate-grove-place",
+      "name": "Estate Grove Place",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Grove Place Saint Croix USVI",
+        "Estate Grove Place Saint Croix Virgin Islands",
+        "Estate Grove Place historic Saint Croix",
+        "Estate Grove Place NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:GroveRuins20230926 101042.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/GroveRuins20230926_101042.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:GroveRuins20230926_101042.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " CaptJayRuffins ",
+          "context": "File:GroveRuins20230926 101042.jpg Grove settlement on the island of St. Croix at Grove Saint Croix|Ruins in the United States Virgin Islands|Estate Grove Place|Self-published work|National Register of Historic Places with known IDs|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Baobab 20230926 100418.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Baobab_20230926_100418.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baobab_20230926_100418.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " CaptJayRuffins ",
+          "context": "File:Baobab 20230926 100418.jpg 250 plus year old BaoBab tree in Grove Place, Fredericksted, ST. Croix USVI Adansonia|Trees in the United States Virgin Islands|Images from Wiki Loves Monuments 2023 in the United States Virgin Islands|Estate Grove Place|2023 in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Images from Wiki Loves Monuments 2023|Uploaded via Campaign:wlm-us|United States photographs taken on 2023-09-26|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|NRHP site pictures by user:CaptJayRuffins|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|Images from Wiki Loves Monuments 2023 in the United States|Wiki Loves Monuments 2023 in the United States unreviewed|Adansonia digitata in the United States",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hafensight",
+      "name": "Estate Hafensight",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Hafensight Saint Thomas USVI",
+        "Estate Hafensight Saint Thomas Virgin Islands",
+        "Estate Hafensight historic Saint Thomas",
+        "Estate Hafensight NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Hogansborg Saint Croix USVI",
+        "Estate Hogansborg Saint Croix Virgin Islands",
+        "Estate Hogansborg historic Saint Croix",
+        "Estate Hogansborg NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Judith's Fancy Saint Croix USVI",
+        "Estate Judith's Fancy Saint Croix Virgin Islands",
+        "Estate Judith's Fancy historic Saint Croix",
+        "Estate Judith's Fancy NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-la-reine",
+      "name": "Estate La Reine",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate La Reine Saint Croix USVI",
+        "Estate La Reine Saint Croix Virgin Islands",
+        "Estate La Reine historic Saint Croix",
+        "Estate La Reine NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-little-princess",
+      "name": "Estate Little Princess",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Little Princess Saint Croix USVI",
+        "Estate Little Princess Saint Croix Virgin Islands",
+        "Estate Little Princess historic Saint Croix",
+        "Estate Little Princess NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Little Princess building.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Estate_Little_Princess_building.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Little_Princess_building.jpg",
+          "license": "CC BY-SA 3.0",
+          "creator": " Turn685 ",
+          "context": "File:Estate Little Princess building.jpg The Danish hospital building located at   Estate Little Princess   — on  St. Croix  in the Christiansted region,  United States Virgin Islands .\n  Estate Little Princess was  Danish colonial sugar plantation  during the  Danish West Indies  era. \n A  National Historic Landmark , and on the  National Register of Historic Places in the United States Virgin Islands .   Plantations in the United States Virgin Islands|National Register of Historic Places in the United States Virgin Islands|Buildings in the United States Virgin Islands|Saint Croix|United States Virgin Islands in the 2000s|Self-published work|Danish colonial architecture in the United States|National Register of Historic Places with known IDs",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Plantation ruins estate little princess.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Plantation_ruins_estate_little_princess.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plantation_ruins_estate_little_princess.jpg",
+          "license": "Public domain",
+          "creator": "   Jack Delano   ",
+          "context": "File:Plantation ruins estate little princess.jpg Ruins of a sugar mill chimney at   Estate Little Princess   — on  St. Croix  in the Christiansted region,  United States Virgin Islands .\n  Estate Little Princess was  Danish colonial sugar plantation  during the  Danish West Indies  era. \n A  National Historic Landmark , and on the  National Register of Historic Places in the United States Virgin Islands .   Plantations in the United States Virgin Islands|National Register of Historic Places in the United States Virgin Islands|PD US Government|Saint Croix|Sugar production in the United States Virgin Islands|Ruins in the United States Virgin Islands|Chimneys in the United States Virgin Islands|National Register of Historic Places with known IDs|CC-PD-Mark|Photographs by Jack Delano|Color photographs from the Farm Security Administration|Farm Security Administration photographs of the United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Mount Victory Saint Croix USVI",
+        "Estate Mount Victory Saint Croix Virgin Islands",
+        "Estate Mount Victory historic Saint Croix",
+        "Estate Mount Victory NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Neltjeberg Saint Thomas USVI",
+        "Estate Neltjeberg Saint Thomas Virgin Islands",
+        "Estate Neltjeberg historic Saint Thomas",
+        "Estate Neltjeberg NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-niesky",
+      "name": "Estate Niesky",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Niesky Saint Thomas USVI",
+        "Estate Niesky Saint Thomas Virgin Islands",
+        "Estate Niesky historic Saint Thomas",
+        "Estate Niesky NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-perseverance",
+      "name": "Estate Perseverance",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Perseverance Saint Thomas USVI",
+        "Estate Perseverance Saint Thomas Virgin Islands",
+        "Estate Perseverance historic Saint Thomas",
+        "Estate Perseverance NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-prosperity",
+      "name": "Estate Prosperity",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Prosperity Saint Croix USVI",
+        "Estate Prosperity Saint Croix Virgin Islands",
+        "Estate Prosperity historic Saint Croix",
+        "Estate Prosperity NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate Saint George Historic District Saint Croix USVI",
+        "Estate Saint George Saint Croix Virgin Islands",
+        "Estate Saint George historic Saint Croix",
+        "Estate Saint George NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "estate-st-john",
+      "name": "Estate St. John",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Estate St. John Saint Croix USVI",
+        "Estate St. John Saint Croix Virgin Islands",
+        "Estate St. John historic Saint Croix",
+        "Estate St. John NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "evelyn-e-marcelli-elementary-school",
+      "name": "Evelyn E. Marcelli Elementary School",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Evelyn E. Marcelli Elementary School Saint Thomas USVI",
+        "Evelyn E. Marcelli Elementary School Saint Thomas Virgin Islands",
+        "Evelyn E. Marcelli Elementary School historic Saint Thomas",
+        "Evelyn E. Marcelli Elementary School NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Fortsberg Saint John USVI",
+        "Fortsberg Saint John Virgin Islands",
+        "Fortsberg historic Saint John",
+        "Fortsberg NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:HABS Frederiks Fort St John USVI.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg",
+          "license": "Public domain",
+          "creator": "   Jack Boucher   ",
+          "context": "File:HABS Frederiks Fort St John USVI.jpg Frederiks Fort at Fortsberg — located southeast of Coral Bay, on  St Johns Island , US Virgin Islands. \n  On the NRHP since September 1, 1976.   Historic American Buildings Survey of the United States Virgin Islands|Forts in the United States Virgin Islands|PD US Government|Saint John, United States Virgin Islands|United States Virgin Islands in the 1960s|Walls in the United States Virgin Islands|Forts on the National Register of Historic Places in the United States Virgin Islands|National Register of Historic Places with known IDs|CC-PD-Mark|Photographs by Jack Boucher",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Fortsberg.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Fortsberg.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fortsberg.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Heptazane ",
+          "context": "File:Fortsberg.jpg A hill on a peninsula next to Coral Bay, St. John, USVI, on which Fortsberg is. Self-published work|Landscapes of the United States",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg-corral-bay",
+      "name": "Fortsberg Corral Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Fortsberg Corral Bay Saint John USVI",
+        "Fortsberg Corral Bay Saint John Virgin Islands",
+        "Fortsberg Corral Bay historic Saint John",
+        "Fortsberg Corral Bay NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "frederick-lutheran-church",
+      "name": "Frederick Lutheran Church",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Frederick Lutheran Church Saint Thomas USVI",
+        "Frederick Lutheran Church Saint Thomas Virgin Islands",
+        "Frederick Lutheran Church historic Saint Thomas",
+        "Frederick Lutheran Church NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "openverse",
+          "title": "Frederick Evangelical Lutheran Church",
+          "url": "https://live.staticflickr.com/1542/23853962999_d718b899ec_b.jpg",
+          "sourceUrl": "https://www.flickr.com/photos/44768401@N07/23853962999",
+          "thumbnailUrl": "https://api.openverse.org/v1/images/498989da-a8d1-4ffd-abdd-7345fb49b2d8/thumb/",
+          "license": "by-sa 2.0",
+          "creator": "ThatMattWade",
+          "context": "Frederick Evangelical Lutheran Church caribbean church frederick islands lutheran saint st stt thomas usvi virgin",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Friedensfeld Midlands Moravian Church and Manse Saint Croix USVI",
+        "Friedensfeld Midlands Moravian Church and Manse Saint Croix Virgin Islands",
+        "Friedensfeld Midlands Moravian Church and Manse historic Saint Croix",
+        "Friedensfeld Midlands Moravian Church and Manse NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Friedensthal Mission Saint Croix USVI",
+        "Friedensthal Mission Saint Croix Virgin Islands",
+        "Friedensthal Mission historic Saint Croix",
+        "Friedensthal Mission NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "government-house-stt",
+      "name": "Government House, St. Thomas",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Government House, St. Thomas Saint Thomas USVI",
+        "Government House, St. Thomas Saint Thomas Virgin Islands",
+        "Government House, St. Thomas historic Saint Thomas",
+        "Government House, St. Thomas NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "green-kay",
+      "name": "Green Kay",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Green Kay Saint Croix USVI",
+        "Green Kay Saint Croix Virgin Islands",
+        "Green Kay historic Saint Croix",
+        "Green Kay NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hamburg-America Shipping Line Administrative Offices Saint Thomas USVI",
+        "Hamburg-America Shipping Line Administrative Offices Saint Thomas Virgin Islands",
+        "Hamburg-America Shipping Line Administrative Offices historic Saint Thomas",
+        "Hamburg-America Shipping Line Administrative Offices NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-additional-documentation",
+      "name": "Hassel Island (Additional Documentation)",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hassel Island (Additional Documentation) Saint Thomas USVI",
+        "Hassel Island (Additional Documentation) Saint Thomas Virgin Islands",
+        "Hassel Island (Additional Documentation) historic Saint Thomas",
+        "Hassel Island (Additional Documentation) NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-creque-marine-railway",
+      "name": "Hassel Island Creque Marine Railway",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hassel Island Creque Marine Railway Saint Thomas USVI",
+        "Hassel Island Creque Marine Railway Saint Thomas Virgin Islands",
+        "Hassel Island Creque Marine Railway historic Saint Thomas",
+        "Hassel Island Creque Marine Railway NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-fort-willoughby",
+      "name": "Hassel Island Fort Willoughby",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hassel Island Fort Willoughby Saint Thomas USVI",
+        "Hassel Island Fort Willoughby Saint Thomas Virgin Islands",
+        "Hassel Island Fort Willoughby historic Saint Thomas",
+        "Hassel Island Fort Willoughby NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-historic-district-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hassel Island Historic District (Boundary Increase) Saint Thomas USVI",
+        "Hassel Island  (Boundary Increase) Saint Thomas Virgin Islands",
+        "Hassel Island  (Boundary Increase) historic Saint Thomas",
+        "Hassel Island  (Boundary Increase) NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Hermitage Plantation Historic District Saint John USVI",
+        "Hermitage Plantation Saint John Virgin Islands",
+        "Hermitage Plantation historic Saint John",
+        "Hermitage Plantation NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "holy-cross-episcopal-church",
+      "name": "Holy Cross Episcopal Church",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Holy Cross Episcopal Church Saint Croix USVI",
+        "Holy Cross Episcopal Church Saint Croix Virgin Islands",
+        "Holy Cross Episcopal Church historic Saint Croix",
+        "Holy Cross Episcopal Church NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Jossie Gut Historic District Saint John USVI",
+        "Jossie Gut Saint John Virgin Islands",
+        "Jossie Gut historic Saint John",
+        "Jossie Gut NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "kingshill-lutheran-church",
+      "name": "Kingshill Lutheran Church",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Kingshill Lutheran Church Saint Croix USVI",
+        "Kingshill Lutheran Church Saint Croix Virgin Islands",
+        "Kingshill Lutheran Church historic Saint Croix",
+        "Kingshill Lutheran Church NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "L'Esperance Historic District Saint John USVI",
+        "L'Esperance Saint John Virgin Islands",
+        "L'Esperance historic Saint John",
+        "L'Esperance NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "La Grande Princesse School Saint Croix USVI",
+        "La Grande Princesse School Saint Croix Virgin Islands",
+        "La Grande Princesse School historic Saint Croix",
+        "La Grande Princesse School NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "la-grange-historic-district",
+      "name": "La Grange Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "La Grange Historic District Saint Croix USVI",
+        "La Grange Saint Croix Virgin Islands",
+        "La Grange historic Saint Croix",
+        "La Grange NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Lameshur Plantation Saint John USVI",
+        "Lameshur Plantation Saint John Virgin Islands",
+        "Lameshur Plantation historic Saint John",
+        "Lameshur Plantation NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Liever Marches Bay Historic District Saint John USVI",
+        "Liever Marches Bay Saint John Virgin Islands",
+        "Liever Marches Bay historic Saint John",
+        "Liever Marches Bay NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "lind-point-fort",
+      "name": "Lind Point Fort",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Lind Point Fort Saint John USVI",
+        "Lind Point Fort Saint John Virgin Islands",
+        "Lind Point Fort historic Saint John",
+        "Lind Point Fort NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "little-la-grange",
+      "name": "Little La Grange",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Little La Grange Saint Croix USVI",
+        "Little La Grange Saint Croix Virgin Islands",
+        "Little La Grange historic Saint Croix",
+        "Little La Grange NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "mafolie-great-house",
+      "name": "Mafolie Great House",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Mafolie Great House Saint Thomas USVI",
+        "Mafolie Great House Saint Thomas Virgin Islands",
+        "Mafolie Great House historic Saint Thomas",
+        "Mafolie Great House NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Mafolie Great House, St Thomas.png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Mafolie_Great_House%2C_St_Thomas.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mafolie_Great_House,_St_Thomas.png",
+          "license": "Public domain",
+          "creator": "Russell Wright",
+          "context": "File:Mafolie Great House, St Thomas.png Mafolie Great House, St Thomas, U.S. Virgin Islands National Register of Historic Places in the United States Virgin Islands|PD US NPS|National Register of Historic Places with known IDs|Files with coordinates missing SDC location of creation|Images from NPGallery|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|History of Saint Thomas, United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "market-square-pladsen",
+      "name": "Market Square (Pladsen)",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Market Square (Pladsen) Saint Thomas USVI",
+        "Market Square (Pladsen) Saint Thomas Virgin Islands",
+        "Market Square (Pladsen) historic Saint Thomas",
+        "Market Square (Pladsen) NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "mary-point-estate",
+      "name": "Mary Point Estate",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Mary Point Estate Saint John USVI",
+        "Mary Point Estate Saint John Virgin Islands",
+        "Mary Point Estate historic Saint John",
+        "Mary Point Estate NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "More Hill Historic District Saint John USVI",
+        "More Hill Saint John Virgin Islands",
+        "More Hill historic Saint John",
+        "More Hill NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 1 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_1_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_1_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 1 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 2 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_2_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_2_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 2 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 3 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_3_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_3_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 3 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 4 of 4).png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Estate_Carolina%2C_Windmill%2C_North_of_King_Hill_Road%2C_Coral_Bay%2C_St._John%2C_VI_HABS_VI%2C2-CORBA%2C2-A-_%28sheet_4_of_4%29.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Estate_Carolina,_Windmill,_North_of_King_Hill_Road,_Coral_Bay,_St._John,_VI_HABS_VI,2-CORBA,2-A-_(sheet_4_of_4).png",
+          "license": "Public domain",
+          "creator": "",
+          "context": "File:Estate Carolina, Windmill, North of King Hill Road, Coral Bay, St. John, VI HABS VI,2-CORBA,2-A- (sheet 4 of 4).png  \nvon Schimmelmann, Heinrich; Gjessing, Frederik C, field team; Edwards, Steven, field team; Milner, John D, delineator  Saint John, United States Virgin Islands|Files with no machine-readable author|Images uploaded by Fæ|PD US NPS|Files from the Historic American Buildings Survey|GWToolset Batch Upload|Uploads by Fæ (over 50 MP)",
+          "score": 0.7,
+          "islandConfirmed": true,
+          "decision": "review"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "New Herrnhut Moravian Church Saint Thomas USVI",
+        "New Herrnhut Moravian Church Saint Thomas Virgin Islands",
+        "New Herrnhut Moravian Church historic Saint Thomas",
+        "New Herrnhut Moravian Church NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:New Herrnhut Moravian Church, St. Thomas.png",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/New_Herrnhut_Moravian_Church%2C_St._Thomas.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Herrnhut_Moravian_Church,_St._Thomas.png",
+          "license": "Public domain",
+          "creator": "Samuel N. Stokes",
+          "context": "File:New Herrnhut Moravian Church, St. Thomas.png New Herrnhut Moravian Church, St. Thomas, United States Virgin Islands National Register of Historic Places in the United States Virgin Islands|Moravian churches in the United States Virgin Islands|PD US NPS|National Register of Historic Places with known IDs|Images from NPGallery|History of Saint Thomas, United States Virgin Islands",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "peace-hill-ruins",
+      "name": "Peace Hill Ruins",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Peace Hill Ruins Saint John USVI",
+        "Peace Hill Ruins Saint John Virgin Islands",
+        "Peace Hill Ruins historic Saint John",
+        "Peace Hill Ruins NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Peace Hill Windmill.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Peace_Hill_Windmill.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Madlabscientist ",
+          "context": "File:Peace Hill Windmill.jpg View from the base on the north-facing side, looking up and into the Peace Hill Windmill ruins on the Dennis Bay Historic District on the island of St. John in the United States Virgin Islands. Located on the north side of the island, this windmill is only a ten-minute hike from North Shore Road, overlooking Trunk and Dennis Bays to the east and Hawksnest Bay to the west. Images from Wiki Loves Monuments 2023 in the United States Virgin Islands|2023 in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Images from Wiki Loves Monuments 2023|Uploaded via Campaign:wlm-us|Files with coordinates missing SDC location of creation|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|Images from Wiki Loves Monuments 2023 in the United States|Peace Hill (Saint John, VI)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Peace Hill Windmill Ruins.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Peace_Hill_Windmill_Ruins.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill_Ruins.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Madlabscientist ",
+          "context": "File:Peace Hill Windmill Ruins.jpg Referred to as the \"Peace Hill Windmill\", these ruins are the remnant of an 1800s windmill tower on the Dennis Bay Historic District on the island of St. John in the United States Virgin Islands. The background overlooks Dennis and Trunk Bays on the north side of the island. Images from Wiki Loves Monuments 2023 in the United States Virgin Islands|2023 in the United States Virgin Islands|Self-published work|National Register of Historic Places with known IDs|Images from Wiki Loves Monuments 2023|Uploaded via Campaign:wlm-us|Images from Wiki Loves Monuments 2023 in the United States|Peace Hill (Saint John, VI)",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Denis Bay Historic District Peace Hill Ruins sunrise.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Denis_Bay_Historic_District_Peace_Hill_Ruins_sunrise.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Denis_Bay_Historic_District_Peace_Hill_Ruins_sunrise.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Anonnymock5 ",
+          "context": "File:Denis Bay Historic District Peace Hill Ruins sunrise.jpg Ruin of a sugar mill during sunrise in Denis Bay Historic District overlooking Denis Bay Self-published work|National Register of Historic Places with known IDs|Uploaded via Campaign:wlm-us|Images from Wiki Loves Monuments missing SDC inception|Images from Wiki Loves Monuments missing SDC creator|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Images from Wiki Loves Monuments missing SDC source of file|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|Images from Wiki Loves Monuments 2025|Images from Wiki Loves Monuments 2025 in the United States|Peace Hill (Saint John, VI)|Images from Wiki Loves Monuments 2025 in the United States Virgin Islands|Buildings from Wiki Loves Monuments 2025 in the United States|Images from Wiki Loves Monuments 2025 in the United States uploaded on 2025-10-11",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        },
+        {
+          "provider": "wikimedia",
+          "title": "File:Denis Bay Historic District Peace Hill Ruins.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Denis_Bay_Historic_District_Peace_Hill_Ruins.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Denis_Bay_Historic_District_Peace_Hill_Ruins.jpg",
+          "license": "CC BY-SA 4.0",
+          "creator": " Anonnymock5 ",
+          "context": "File:Denis Bay Historic District Peace Hill Ruins.jpg Ruin of a sugar mill during sunrise in Denis Bay Historic District overlooking Denis Bay Self-published work|National Register of Historic Places with known IDs|Uploaded via Campaign:wlm-us|Images from Wiki Loves Monuments missing SDC inception|Images from Wiki Loves Monuments missing SDC creator|Images from Wiki Loves Monuments missing SDC depicts|Images from Wiki Loves Monuments missing SDC location of creation|Images from Wiki Loves Monuments missing SDC source of file|National Register of Historic Places missing SDC location of creation|National Register of Historic Places missing SDC depicts|Images from Wiki Loves Monuments 2025|Images from Wiki Loves Monuments 2025 in the United States|Peace Hill (Saint John, VI)|Images from Wiki Loves Monuments 2025 in the United States Virgin Islands|Buildings from Wiki Loves Monuments 2025 in the United States|Images from Wiki Loves Monuments 2025 in the United States uploaded on 2025-10-11",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Reef Bay Great House Historic District Saint John USVI",
+        "Reef Bay Great House Saint John Virgin Islands",
+        "Reef Bay Great House historic Saint John",
+        "Reef Bay Great House NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Reef Bay Sugar Factory Historic District Saint John USVI",
+        "Reef Bay Sugar Factory Saint John Virgin Islands",
+        "Reef Bay Sugar Factory historic Saint John",
+        "Reef Bay Sugar Factory NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-mill",
+      "name": "Reef Bay Sugar Mill",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Reef Bay Sugar Mill Saint John USVI",
+        "Reef Bay Sugar Mill Saint John Virgin Islands",
+        "Reef Bay Sugar Mill historic Saint John",
+        "Reef Bay Sugar Mill NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "reformed-dutch-church-stt",
+      "name": "Reformed Dutch Church, St. Thomas",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Reformed Dutch Church, St. Thomas Saint Thomas USVI",
+        "Reformed Dutch Church, St. Thomas Saint Thomas Virgin Islands",
+        "Reformed Dutch Church, St. Thomas historic Saint Thomas",
+        "Reformed Dutch Church, St. Thomas NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:St Tom USVI Reformed Church.JPG",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/St_Tom_USVI_Reformed_Church.JPG",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:St_Tom_USVI_Reformed_Church.JPG",
+          "license": "CC0",
+          "creator": " Smallbones ",
+          "context": "File:St Tom USVI Reformed Church.JPG Dutch Reformed Church in Charlotte Amalie, St Thomas, US Virgin Islands Taken with Nikon Coolpix S4100|CC-Zero|Saint Thomas Reformed Church (Charlotte Amalie)|Church facades in the United States Virgin Islands|Self-published work|Churches in the United States photographed in 2011|Red doors in the United States",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Richmond Prison Detention and Workhouse Saint Croix USVI",
+        "Richmond Prison Detention and Workhouse Saint Croix Virgin Islands",
+        "Richmond Prison Detention and Workhouse historic Saint Croix",
+        "Richmond Prison Detention and Workhouse NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Rustenberg Plantation South Historic District Saint John USVI",
+        "Rustenberg Plantation South Saint John Virgin Islands",
+        "Rustenberg Plantation South historic Saint John",
+        "Rustenberg Plantation South NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Salt River Bay National Historic Site and Ecological Preserve Saint Croix USVI",
+        "Salt River Bay National Historic Site and Ecological Preserve Saint Croix Virgin Islands",
+        "Salt River Bay National Historic Site and Ecological Preserve historic Saint Croix",
+        "Salt River Bay National Historic Site and Ecological Preserve NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "sion-hill",
+      "name": "Sion Hill",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Sion Hill Saint Croix USVI",
+        "Sion Hill Saint Croix Virgin Islands",
+        "Sion Hill historic Saint Croix",
+        "Sion Hill NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "slob-historic-district",
+      "name": "Slob Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Slob Historic District Saint Croix USVI",
+        "Slob Saint Croix Virgin Islands",
+        "Slob historic Saint Croix",
+        "Slob NRHP Virgin Islands"
+      ],
+      "candidates": [
+        {
+          "provider": "wikimedia",
+          "title": "File:Slob (Danish West Indies).jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Slob_%28Danish_West_Indies%29.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Slob_(Danish_West_Indies).jpg",
+          "license": "Public domain",
+          "creator": "Unknown author Unknown author ",
+          "context": "File:Slob (Danish West Indies).jpg The plantation Slob on Saint Croix in the Danish West Indies. Saint Croix|United States Virgin Islands in the 19th century|PD-Art (PD-old-70)|Template Unknown (author)|CC-PD-Mark|PD-Art missing SDC copyright status|PD-old missing SDC copyright status|Danish West Indies in art|Plantations in the Danish West Indies",
+          "score": 1.2,
+          "islandConfirmed": true,
+          "decision": "review-high"
+        }
+      ]
+    },
+    {
+      "kind": "historic",
+      "id": "sprat-hall-historic-district",
+      "name": "Sprat Hall Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Sprat Hall Historic District Saint Croix USVI",
+        "Sprat Hall Saint Croix Virgin Islands",
+        "Sprat Hall historic Saint Croix",
+        "Sprat Hall NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "st-johns-episcopal-church",
+      "name": "St. John's Episcopal Church",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "St. John's Episcopal Church Saint Croix USVI",
+        "St. John's Episcopal Church Saint Croix Virgin Islands",
+        "St. John's Episcopal Church historic Saint Croix",
+        "St. John's Episcopal Church NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Strawberry Hill Historic District Saint Croix USVI",
+        "Strawberry Hill Saint Croix Virgin Islands",
+        "Strawberry Hill historic Saint Croix",
+        "Strawberry Hill NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "susannaberg-estate",
+      "name": "Susannaberg Estate",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Susannaberg Estate Saint John USVI",
+        "Susannaberg Estate Saint John Virgin Islands",
+        "Susannaberg Estate historic Saint John",
+        "Susannaberg Estate NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Trunk Bay Sugar Factory Saint John USVI",
+        "Trunk Bay Sugar Factory Saint John Virgin Islands",
+        "Trunk Bay Sugar Factory historic Saint John",
+        "Trunk Bay Sugar Factory NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Tutu Plantation House Saint Thomas USVI",
+        "Tutu Plantation House Saint Thomas Virgin Islands",
+        "Tutu Plantation House historic Saint Thomas",
+        "Tutu Plantation House NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "historic",
+      "id": "venus-hill",
+      "name": "Venus Hill",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/historic/placeholder.svg",
+      "queries": [
+        "Venus Hill Saint Thomas USVI",
+        "Venus Hill Saint Thomas Virgin Islands",
+        "Venus Hill historic Saint Thomas",
+        "Venus Hill NRHP Virgin Islands"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "stay",
+      "id": "sapphire-village-resort",
+      "name": "Sapphire Village Resort",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/stays/stt/sapphire-village-resort.svg",
+      "queries": [
+        "Sapphire Village Resort Saint Thomas USVI",
+        "Sapphire Village Resort Saint Thomas Virgin Islands",
+        "Sapphire Village Resort stay Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "stay",
+      "id": "flamboyan-on-the-bay-resort-villas",
+      "name": "Flamboyan on the Bay Resort & Villas",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/stays/stt/flamboyan-on-the-bay-resort-villas.svg",
+      "queries": [
+        "Flamboyan on the Bay Resort & Villas Saint Thomas USVI",
+        "Flamboyan on the Bay Resort & Villas Saint Thomas Virgin Islands",
+        "Flamboyan on the Bay Resort & Villas stay Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "stay",
+      "id": "windward-passage-hotel",
+      "name": "Windward Passage Hotel",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/stays/stt/windward-passage-hotel.svg",
+      "queries": [
+        "Windward Passage Hotel Saint Thomas USVI",
+        "Windward Passage Hotel Saint Thomas Virgin Islands",
+        "Windward Passage Hotel stay Saint Thomas"
+      ],
+      "candidates": []
+    },
+    {
+      "kind": "stay",
+      "id": "pavilions-and-pools-resort",
+      "name": "Pavilions and Pools Resort",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/stays/stt/pavilions-and-pools-resort.svg",
+      "queries": [
+        "Pavilions and Pools Resort Saint Thomas USVI",
+        "Pavilions and Pools Resort Saint Thomas Virgin Islands",
+        "Pavilions and Pools Resort stay Saint Thomas"
+      ],
+      "candidates": []
+    }
+  ]
+}

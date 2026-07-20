@@ -1,0 +1,42 @@
+import "server-only";
+
+import type { DocumentData, DocumentSnapshot } from "firebase-admin/firestore";
+import type { RideBooking } from "@/types/mobility";
+import type { DriverProfile, VehicleRecord } from "@/types/driver";
+import type { TaxiAssociation } from "@/types/taxi-operations";
+
+function futureOrUnspecified(value?: string | null) {
+  return !value || new Date(value).getTime() > Date.now();
+}
+
+export function assertDispatchEligible(params: {
+  booking: RideBooking;
+  driverSnapshot: DocumentSnapshot<DocumentData>;
+  vehicleSnapshot: DocumentSnapshot<DocumentData>;
+  associationSnapshot: DocumentSnapshot<DocumentData>;
+}) {
+  if (!params.driverSnapshot.exists) throw new Error("Driver record not found.");
+  if (!params.vehicleSnapshot.exists) throw new Error("Assigned fleet vehicle not found.");
+  if (!params.associationSnapshot.exists) throw new Error("Taxi association record not found.");
+
+  const driver = { id: params.driverSnapshot.id, ...params.driverSnapshot.data() } as DriverProfile;
+  const vehicle = { id: params.vehicleSnapshot.id, ...params.vehicleSnapshot.data() } as VehicleRecord;
+  const association = { id: params.associationSnapshot.id, ...params.associationSnapshot.data() } as TaxiAssociation;
+
+  if (!driver.verified || driver.authorizationStatus !== "active") throw new Error("Driver is not actively authorized for taxi dispatch.");
+  if (!driver.taxiCommissionBadgeNumber || !futureOrUnspecified(driver.taxiCommissionBadgeExpiresAt)) throw new Error("Driver Taxicab Commission credential is missing or expired.");
+  if (!driver.licenseClass || !futureOrUnspecified(driver.licenseExpiresAt)) throw new Error("Driver license credential is missing or expired.");
+  if (driver.availability !== "available") throw new Error("Driver is not available.");
+  if (!driver.islands.includes(params.booking.island)) throw new Error("Driver is not authorized for the booking island.");
+  if (!driver.associationId || driver.associationId !== association.id || association.status !== "active") throw new Error("Driver does not belong to an active taxi association.");
+  if (params.booking.associationId && params.booking.associationId !== association.id) throw new Error("Driver belongs to a different taxi association than the assigned dispatch.");
+  if (!vehicle.active || vehicle.driverId !== driver.id || vehicle.associationId !== association.id) throw new Error("Vehicle is not active in the driver's association fleet.");
+  if (vehicle.inspectionStatus !== "active" || !futureOrUnspecified(vehicle.inspectionExpiresAt)) throw new Error("Vehicle inspection is missing or expired.");
+  if (vehicle.insuranceStatus !== "active" || !futureOrUnspecified(vehicle.insuranceExpiresAt)) throw new Error("Vehicle insurance is missing or expired.");
+  if (!vehicle.taxiPlate || !vehicle.medallionNumber) throw new Error("Vehicle taxi plate or medallion is missing.");
+  if (vehicle.capacity < params.booking.passengers) throw new Error("Vehicle passenger capacity is too small for this trip.");
+  if (vehicle.luggageCapacity < params.booking.luggage) throw new Error("Vehicle luggage capacity is too small for this trip.");
+
+  return { driver, vehicle, association };
+}
+

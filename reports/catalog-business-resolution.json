@@ -1,0 +1,2788 @@
+{
+  "generatedAt": "2026-07-20T06:20:19.381Z",
+  "results": [
+    {
+      "id": "18-64-the-restaurant",
+      "name": "18°64° The Restaurant",
+      "island": "stj",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJ6ZTzG8cTBYwReP2n2d65nJ4",
+        "nationalPhoneNumber": "(340) 774-1864",
+        "formattedAddress": "503 Mongoose Jct, Cruz Bay, Saint John 00830, USVI",
+        "location": {
+          "latitude": 18.332558499999998,
+          "longitude": -64.791992
+        },
+        "websiteUri": "http://1864therestaurant.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "1864 The Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "40-strand-eatery",
+      "name": "40 Strand Eatery",
+      "island": "stx",
+      "status": "review",
+      "score": 0.3333333333333333,
+      "candidate": {
+        "id": "ChIJk21Viu21GowRNyL9mUUyai0",
+        "nationalPhoneNumber": "(340) 692-0524",
+        "formattedAddress": "1101 Strand Street, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7467155,
+          "longitude": -64.70420829999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "40 Eats and Drinks",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "420-to-center",
+      "name": "420 to Center",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ87fGcTwSBYwRv8YKNntyadk",
+        "formattedAddress": "St John, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.330369299999997,
+          "longitude": -64.7952742
+        },
+        "businessStatus": "CLOSED_TEMPORARILY",
+        "displayName": {
+          "text": "420 to Center",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "agave",
+      "name": "Agave",
+      "island": "stt",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJ54DPV58RBYwRSu9aVUQSkfc",
+        "nationalPhoneNumber": "(340) 714-7874",
+        "formattedAddress": "Emile Milo Francis Memorial Dr, Red Hook, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3251848,
+          "longitude": -64.85264699999999
+        },
+        "websiteUri": "https://agavevi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Agave Tequila Bar & Mexican Kitchen",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "amalia-caf",
+      "name": "Amalia Café",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJR-3ZrfMaBYwROL9hgLpgevk",
+        "nationalPhoneNumber": "(340) 714-7373",
+        "formattedAddress": "VI, St. Thomas, 5143 Palm Passage Downtown, Charlotte Amalie, St Thomas 00801, USVI",
+        "location": {
+          "latitude": 18.3408339,
+          "longitude": -64.9331515
+        },
+        "websiteUri": "http://www.amaliacafe.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Amalia Café Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "aqua-bistro",
+      "name": "Aqua Bistro",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJwa2V3FRtBYwROtapnyygyBA",
+        "nationalPhoneNumber": "(340) 776-5336",
+        "formattedAddress": "87VP+328, Coral Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3426687,
+          "longitude": -64.714922
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Aqua Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJNRJI2qsbBYwRwEn6jEiaMqM",
+        "nationalPhoneNumber": "(340) 776-1401",
+        "formattedAddress": "St. Thomas, 103 Subbase Rd, Charlotte Amalie West, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.332565100000004,
+          "longitude": -64.9588215
+        },
+        "websiteUri": "https://www.facebook.com/Arians-Bar-Restaurant-105914567710985/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Arians Bar & Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "balter",
+      "name": "balter",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ8cUu_e21GowR5OKsG7xKw0U",
+        "nationalPhoneNumber": "(340) 719-5896",
+        "formattedAddress": "39 Queen Cross St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7452789,
+          "longitude": -64.70368719999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "balter",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "barefoot-buddha",
+      "name": "Barefoot Buddha",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJzROTIvAaBYwRdy6GWw7L_g0",
+        "nationalPhoneNumber": "(340) 777-3668",
+        "formattedAddress": "83JJ+V58, Rte 30, Charlotte Amalie East, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3323633,
+          "longitude": -64.9195369
+        },
+        "websiteUri": "http://www.barefootbuddhavi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Barefoot Buddha",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJTbs3BrUbBYwR-GB-2aiQ0bc",
+        "nationalPhoneNumber": "(340) 227-6848",
+        "formattedAddress": "Al Cohen's Mall, Havensight, 83JJ+G2G, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3313108,
+          "longitude": -64.9199258
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Benito's Burritos",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJN1K5WakRBYwRP8H_IdYShSg",
+        "nationalPhoneNumber": "(340) 201-5603",
+        "formattedAddress": "6100 Red Hook Quarters #2, B2-7, Red Hook, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3253509,
+          "longitude": -64.8520468
+        },
+        "websiteUri": "https://www.facebook.com/berniesusvi/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Bernie's Bar & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "blue-eleven",
+      "name": "Blue Eleven",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJf46CHwUbBYwRV5QWYwtWgX0",
+        "nationalPhoneNumber": "(340) 777-2511",
+        "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3374901,
+          "longitude": -64.9210507
+        },
+        "websiteUri": "https://blue11vi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Blue Eleven",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt",
+      "status": "review",
+      "score": 0.7142857142857143,
+      "candidate": {
+        "id": "ChIJk5N02o0aBYwRDHvCUKXdYkc",
+        "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3402595,
+          "longitude": -64.9242172
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Hilltop Villas at Bluebeard's Castle",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "blues-backyard-bbq",
+      "name": "Blues' Backyard BBQ",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJmSr792rKGowRKB-tJdc398Q",
+        "nationalPhoneNumber": "(340) 514-2541",
+        "formattedAddress": "32K Estate La Grande Princesse, Rte 75, La Grande Princesse, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7580016,
+          "longitude": -64.7377726
+        },
+        "websiteUri": "https://m.facebook.com/bluesbackyardbbq/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Blues' Backyard BBQ & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "bon-manjer",
+      "name": "Bon Manjer",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJnfBbr5fJGowRNvgTOAE9TEA",
+        "nationalPhoneNumber": "(340) 713-5588",
+        "formattedAddress": "4500 Queen Mary Hwy Ste 4, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7295667,
+          "longitude": -64.74242319999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Bon Manjer Restaurant & Ultra Lounge",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJT5dnGwAbBYwRwueMoTaxl_o",
+        "nationalPhoneNumber": "(340) 774-0066",
+        "formattedAddress": "Saint Thomas, 8000 Shopping Ctr Ste 12, Charlotte Amalie West, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.336277499999998,
+          "longitude": -64.9537273
+        },
+        "websiteUri": "https://www.clover.com/online-ordering/bonitas-cantina-st-thomas",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Bonita's Cantina 'NEW'",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "brew-stx",
+      "name": "Brew STX",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJP-Ei9-21GowRXLjxrrmbItg",
+        "nationalPhoneNumber": "(340) 719-6339",
+        "formattedAddress": "55 King's Alley Walk, Strand Ln, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.747170699999998,
+          "longitude": -64.7043663
+        },
+        "websiteUri": "http://www.brewstx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Brew STX",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJAQAAAAAbBYwRF2z9hX9sksI",
+        "nationalPhoneNumber": "(340) 776-5674",
+        "formattedAddress": "38-A Waterfront Hwy, Charlotte Amalie, St Thomas 00804, USVI",
+        "location": {
+          "latitude": 18.340868999999998,
+          "longitude": -64.93128399999999
+        },
+        "websiteUri": "https://www.facebook.com/pages/Bumpas/155996817780781",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Bumpas Sandwich Shop",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "bumpas-breakfast",
+      "name": "Bumpa's Breakfast",
+      "island": "stt",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJAQAAAAAbBYwRF2z9hX9sksI",
+        "nationalPhoneNumber": "(340) 776-5674",
+        "formattedAddress": "38-A Waterfront Hwy, Charlotte Amalie, St Thomas 00804, USVI",
+        "location": {
+          "latitude": 18.340868999999998,
+          "longitude": -64.93128399999999
+        },
+        "websiteUri": "https://www.facebook.com/pages/Bumpas/155996817780781",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Bumpas Sandwich Shop",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "caf-christine",
+      "name": "Café Christine",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJGZz-6e21GowRVFlyxUAxhRk",
+        "nationalPhoneNumber": "(340) 713-1500",
+        "formattedAddress": "6 Company St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7452958,
+          "longitude": -64.70307989999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Café Christine",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cafe-fresco",
+      "name": "Cafe Fresco",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJcYBMlvG1GowRPfPGEqPyqCQ",
+        "nationalPhoneNumber": "(340) 719-0126",
+        "formattedAddress": "5007 Starboard St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7458115,
+          "longitude": -64.6950035
+        },
+        "websiteUri": "http://www.cafefrescousvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Cafe Fresco",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "caf-roma",
+      "name": "Café Roma",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJFYwyFjwSBYwRoWmIGe3tkpI",
+        "nationalPhoneNumber": "(340) 776-6524",
+        "formattedAddress": "1-C, St John, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.331179199999998,
+          "longitude": -64.79411449999999
+        },
+        "websiteUri": "http://caferomastjohn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Cafe Roma",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "carigas-island-caf",
+      "name": "Carigas Island Café",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ5bzZ5fgQBYwRgj8x3D1H6Tc",
+        "nationalPhoneNumber": "(340) 514-4574",
+        "formattedAddress": "42, frydenhoj, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.321457799999997,
+          "longitude": -64.86755939999999
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Carigas island cafe",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "carolines-breakfast",
+      "name": "Caroline's Breakfast",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJlUQBu1u1GowRdrnLq9kMKU0",
+        "nationalPhoneNumber": "(340) 773-6330",
+        "formattedAddress": "59 King St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7471154,
+          "longitude": -64.70338559999999
+        },
+        "websiteUri": "http://carolinesbreakfast.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Caroline's Breakfast",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cast-iron-pot",
+      "name": "Cast Iron Pot",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJmyMTzBLKGowRZ1Pqmw7UQCA",
+        "nationalPhoneNumber": "(340) 692-2477",
+        "formattedAddress": "10 A, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.754059599999998,
+          "longitude": -64.7299895
+        },
+        "websiteUri": "https://www.facebook.com/Cast-Iron-Pot-Restaurant-and-Bar-436089086570687/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Cast Iron Pot",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cheeseburgers-in-americas-paradise",
+      "name": "Cheeseburgers in America's Paradise",
+      "island": "stx",
+      "status": "review",
+      "score": 0.5,
+      "candidate": {
+        "id": "ChIJLUdMG060GowR7W8U4y1sQ64",
+        "nationalPhoneNumber": "(340) 718-1118",
+        "formattedAddress": "5067, Southgate Gdns, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.755425199999998,
+          "longitude": -64.662201
+        },
+        "websiteUri": "http://www.cheeseburgersvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Cheeseburger in Paradise",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "chicken-shack",
+      "name": "Chicken Shack",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJe_2l2HrJGowRtqZ7aSaAnRA",
+        "nationalPhoneNumber": "(340) 778-5717",
+        "formattedAddress": "24-I, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7304757,
+          "longitude": -64.7747868
+        },
+        "websiteUri": "https://facebook.com/La-Reine-Chicken-Shack-159088867437143/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "La Reine Chicken Shack",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "ci-bo-n",
+      "name": "Ci Bo Né",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJqy4p8DXOGowRsfMWOPaMh1o",
+        "nationalPhoneNumber": "(340) 719-2663",
+        "formattedAddress": "P478+FR5, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.713640299999998,
+          "longitude": -64.8828774
+        },
+        "websiteUri": "https://www.facebook.com/profile.php?id=100063559454397",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Ci Bo Ne",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "common-cents-pub",
+      "name": "Common Cents Pub",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJoQfd5O21GowRbffJpH0XcL4",
+        "nationalPhoneNumber": "(340) 713-2510",
+        "formattedAddress": "2110 Company St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7455726,
+          "longitude": -64.7035386
+        },
+        "websiteUri": "https://www.facebook.com/commoncentspubstx/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Common Cents Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "cravin-crabs",
+      "name": "Cravin' Crabs",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJP3m5mIgaBYwR4faj3WhsUz4",
+        "nationalPhoneNumber": "(340) 715-0670",
+        "formattedAddress": "Frenchman Bay Road Charlotte Amalie, Charlotte Amalie East, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3345189,
+          "longitude": -64.91805149999999
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Cravin' Crabs",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "dave-and-jerrys-steakhouse",
+      "name": "Dave & Jerry's Steakhouse",
+      "island": "stj",
+      "status": "review",
+      "score": 0.8888888888888888,
+      "candidate": {
+        "id": "ChIJlTwu8YATBYwRQtm70fswnAg",
+        "nationalPhoneNumber": "(340) 779-9614",
+        "formattedAddress": "74-2 Cruz Bay Town Cruz Bay, Cruz Bay, Saint John 00830, USVI",
+        "location": {
+          "latitude": 18.330367499999998,
+          "longitude": -64.7948854
+        },
+        "websiteUri": "https://www.daveandjerrys.com/",
+        "businessStatus": "CLOSED_TEMPORARILY",
+        "displayName": {
+          "text": "Dave & Jerry's Island Steakhouse",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "deep-end-bar",
+      "name": "Deep End Bar",
+      "island": "stx",
+      "status": "approved",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJ11DCw6y1GowReElmCOBRIfc",
+        "nationalPhoneNumber": "(208) 252-9173",
+        "formattedAddress": "5001 Tamarind Reef Christiansted St. Croix, Southgate Farm, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7606342,
+          "longitude": -64.6700905
+        },
+        "websiteUri": "http://www.newdeepend.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The \"New\" Deep End Bar & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "dinghys-beach-bar",
+      "name": "Dinghy's Beach Bar",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJXSX2qLUbBYwR8U_CO0iOUuw",
+        "nationalPhoneNumber": "(340) 227-5525",
+        "formattedAddress": "Honeymoon Beach Lane, Water Island, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3160514,
+          "longitude": -64.9565819
+        },
+        "websiteUri": "https://dinghysbeachbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dinghy's Beach Bar & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "dog-house-pub",
+      "name": "Dog House Pub",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJUffPPogaBYwRLxzv7B0pVSk",
+        "nationalPhoneNumber": "(340) 513-8586",
+        "formattedAddress": "St. Thomas, Charlotte Amalie East, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3317978,
+          "longitude": -64.9197025
+        },
+        "websiteUri": "http://dhpvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dog House Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-duffy-s-love-shack",
+      "name": "Duffy's Love Shack",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJY7zztfgQBYwRl9-CwVo-d8Q",
+        "nationalPhoneNumber": "(340) 779-2080",
+        "formattedAddress": "6500 Red Hook Rd, Red Hook, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3256893,
+          "longitude": -64.85221109999999
+        },
+        "websiteUri": "http://www.duffysloveshack.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Duffy's Love Shack",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ1bQlYO0aBYwR45Xq8r7IqAo",
+        "nationalPhoneNumber": "(340) 776-2577",
+        "formattedAddress": "2, Commandant Gade, Charlotte Amalie, St Thomas 00801, USVI",
+        "location": {
+          "latitude": 18.3426273,
+          "longitude": -64.931255
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "E's Garden Teahouse",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "eden-south",
+      "name": "Eden South",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJgcZE6O21GowRIBS3hN_44Kk",
+        "nationalPhoneNumber": "(340) 713-1003",
+        "formattedAddress": "3 Company St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7458337,
+          "longitude": -64.7030418
+        },
+        "websiteUri": "http://edensouth.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Eden South",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "el-gringos",
+      "name": "El Gringos",
+      "island": "stt",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJaZbfAfMaBYwRSy6MLv7cw20",
+        "nationalPhoneNumber": "(340) 714-8282",
+        "formattedAddress": "34-35 Dronningens Gade, Charlotte Amalie, St Thomas 00801, USVI",
+        "location": {
+          "latitude": 18.341113,
+          "longitude": -64.93181899999999
+        },
+        "websiteUri": "http://greengosvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Greengos Caribbean Cantina",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "el-sol-bar-and-restaurant",
+      "name": "El Sol Bar and Restaurant",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJv-WCO43JGowRhaLu6Q4SgaM",
+        "nationalPhoneNumber": "(340) 778-6986",
+        "formattedAddress": "226 Peter's Rest Road, Christiansted, St Croix 00823, USVI",
+        "location": {
+          "latitude": 17.7246061,
+          "longitude": -64.7409997
+        },
+        "websiteUri": "https://www.facebook.com/Elsolstx?mibextid=LQQJ4d",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "El Sol Bar & Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "enkai-sushi-bar",
+      "name": "Enkai Sushi Bar",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJgWi2hvgaBYwRAx5C0WZGsAc",
+        "nationalPhoneNumber": "(340) 201-1458",
+        "formattedAddress": "5328 Yacht Haven Grande, Building C, Suite 101, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3367881,
+          "longitude": -64.9212484
+        },
+        "websiteUri": "http://www.enkaisushibar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Enkai Sushi Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "extra-virgin-bistro",
+      "name": "Extra Virgin Bistro",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ91AUoD4SBYwR4bxSXrEzu7Y",
+        "nationalPhoneNumber": "(340) 715-1864",
+        "formattedAddress": "6D Cruz Bay, Saint John, VI 00830, USVI",
+        "location": {
+          "latitude": 18.3307745,
+          "longitude": -64.79347299999999
+        },
+        "websiteUri": "http://www.extravirginbistro.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Extra Virgin Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "flyers-bar-and-grill",
+      "name": "Flyers Bar & Grill",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJLZfF61DKGowRDr1lzw6MwOk",
+        "nationalPhoneNumber": "(340) 772-3222",
+        "formattedAddress": "7 Strand St, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.713099,
+          "longitude": -64.8833284
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Flyers Bar & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJHeYOx3gRBYwRhc4wZ80urh0",
+        "nationalPhoneNumber": "(340) 774-6539",
+        "formattedAddress": "Rue De Bethamny, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.337182,
+          "longitude": -64.941642
+        },
+        "websiteUri": "http://www.frenchquarterbistrovi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "French Quarter Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "gladys-caf",
+      "name": "Gladys Café",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJVVWVSPIaBYwRFMDo1Pgwxb0",
+        "nationalPhoneNumber": "(340) 774-6604",
+        "formattedAddress": "St. Thomas, 5600 Royal Dane Mall Suite 9, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.340946799999998,
+          "longitude": -64.93272999999999
+        },
+        "websiteUri": "http://www.gladyscafe.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Gladys' Café",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "goat-soup-and-whiskey",
+      "name": "Goat Soup and Whiskey",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJMdeup1q1GowR5kwzwF8bnWg",
+        "nationalPhoneNumber": "(340) 773-3333",
+        "formattedAddress": "5000 Estate Coakley Bay, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7579685,
+          "longitude": -64.6363118
+        },
+        "websiteUri": "https://soupandwhiskey.wixsite.com/goatsoupandwhiskey",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Goat Soup & Whiskey",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJaZbfAfMaBYwRSy6MLv7cw20",
+        "nationalPhoneNumber": "(340) 714-8282",
+        "formattedAddress": "34-35 Dronningens Gade, Charlotte Amalie, St Thomas 00801, USVI",
+        "location": {
+          "latitude": 18.341113,
+          "longitude": -64.93181899999999
+        },
+        "websiteUri": "http://greengosvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Greengos Caribbean Cantina",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "hamiltons",
+      "name": "Hamilton's",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJf1jFkXe1GowRBDHR7BK-m80",
+        "nationalPhoneNumber": "(340) 773-5393",
+        "formattedAddress": "39 Queen Cross St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.745262500000003,
+          "longitude": -64.7037088
+        },
+        "websiteUri": "https://www.instagram.com/hamiltonsvi/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Hamilton’s",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "harbour-prime-steak-and-seafood",
+      "name": "Harbour Prime Steak and Seafood",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJBXUGD961GowRbRh66jKiXBE",
+        "nationalPhoneNumber": "(340) 208-3918",
+        "formattedAddress": "1102 Kings Wharf Street, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7472981,
+          "longitude": -64.7035803
+        },
+        "websiteUri": "http://harbourprimestx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Harbour Prime",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "harveys",
+      "name": "Harvey's",
+      "island": "stx",
+      "status": "review",
+      "score": 0.4,
+      "candidate": {
+        "id": "ChIJ9cT96DXOGowR7T3QTDIU5to",
+        "nationalPhoneNumber": "(340) 719-9434",
+        "formattedAddress": "3A Strand St, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.7137817,
+          "longitude": -64.8834691
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Polly's At the Pier Cafe",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "heidis-honeymoon-grill",
+      "name": "Heidi's Honeymoon Grill",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJQftO9rQbBYwRCJBZiFhydQY",
+        "nationalPhoneNumber": "(340) 777-5288",
+        "formattedAddress": "829V+WW2, Water Island, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.319763,
+          "longitude": -64.95523709999999
+        },
+        "websiteUri": "https://www.facebook.com/Heidishoneymoon/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Heidi's Honeymoon Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "high-tide-bar-and-seafood-grill",
+      "name": "High Tide Bar & Seafood Grill",
+      "island": "stj",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJxSW0C90TBYwRP_djayaCTag",
+        "nationalPhoneNumber": "(340) 714-6169",
+        "formattedAddress": "4-B Wharfside Landing Cruz Bay, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3310171,
+          "longitude": -64.79535899999999
+        },
+        "websiteUri": "http://hightidevi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "High Tide",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "hillside-terrace",
+      "name": "Hillside Terrace",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJn-hKdaYTBYwRnL7ZJqHbFV4",
+        "nationalPhoneNumber": "(340) 715-1036",
+        "formattedAddress": "St John, St. John, Frank St, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.329549999999998,
+          "longitude": -64.79340069999999
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Hillside Terrace",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "hook-line-sinker",
+      "name": "Hook, Line & Sinker",
+      "island": "stt",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJh8Ms5PkaBYwRpghNbVe5ukM",
+        "nationalPhoneNumber": "(340) 643-3693",
+        "formattedAddress": "62 Honduras Frenchtown St Thomas VI, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.336919700000003,
+          "longitude": -64.9404507
+        },
+        "businessStatus": "CLOSED_TEMPORARILY",
+        "displayName": {
+          "text": "U Transport",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "island-time-pub",
+      "name": "Island Time Pub",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ-xgAZ6kRBYwRgHATDSvnvqo",
+        "nationalPhoneNumber": "(340) 774-2929",
+        "formattedAddress": "American Yacht Harbor, St. Thomas, VI 00802, USVI",
+        "location": {
+          "latitude": 18.3250579,
+          "longitude": -64.8521313
+        },
+        "websiteUri": "https://www.facebook.com/IslandTimePub/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Island Time Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "johnny-lime",
+      "name": "Johnny Lime",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJHbBZEOBtBYwRusS0Zp2N21Q",
+        "nationalPhoneNumber": "(340) 513-0032",
+        "formattedAddress": "Carolina, Coral Bay, St John 00831, USVI",
+        "location": {
+          "latitude": 18.3431857,
+          "longitude": -64.7154354
+        },
+        "websiteUri": "https://www.johnnylime.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Johnny Lime",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "kendricks",
+      "name": "Kendricks",
+      "island": "stx",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJay5mlO21GowReju2_aFaUHA",
+        "nationalPhoneNumber": "(340) 773-9800",
+        "formattedAddress": "5A Teague Bay Christiansted, Teagues Bay, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.756232699999998,
+          "longitude": -64.608958
+        },
+        "websiteUri": "http://duggansreefstx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Duggan's Reef",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "kims-restaurant",
+      "name": "Kim's Restaurant",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJQw1m8vG1GowRpw5E3wvqTUA",
+        "nationalPhoneNumber": "(340) 773-3377",
+        "formattedAddress": "45 King St Christiansted, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.744916099999998,
+          "longitude": -64.70562869999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Kim's Restaurant Inc",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "la-tapa",
+      "name": "La Tapa",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJU978Hz0SBYwRtVGdNsf71BI",
+        "nationalPhoneNumber": "(340) 693-7755",
+        "formattedAddress": "Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.330796499999998,
+          "longitude": -64.7955766
+        },
+        "websiteUri": "http://www.latapastjohn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "La Tapa",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "lanai-at-limetree",
+      "name": "Lanai at Limetree",
+      "island": "stt",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJdTTvdfobBYwR21x8mKZbB-M",
+        "nationalPhoneNumber": "(340) 693-6007",
+        "formattedAddress": "St Thomas, 7511 Frenchman's Heights, Frenchman's Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3172164,
+          "longitude": -64.9131816
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Lanai Restaurant @ Limetree Beach",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "leatherback-brewing-company",
+      "name": "Leatherback Brewing Company",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJqSX99JbJGowRQFsABebuvLc",
+        "nationalPhoneNumber": "(340) 772-2337",
+        "formattedAddress": "9902 Industrial Park, Kingshill, St Croix 00850, USVI",
+        "location": {
+          "latitude": 17.7063154,
+          "longitude": -64.8019942
+        },
+        "websiteUri": "http://www.leatherbackbrewing.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Leatherback Brewing Company",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "lovango-rum-bar",
+      "name": "Lovango Rum Bar",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ5-2_xGcTBYwREujaUoOi-d4",
+        "nationalPhoneNumber": "(305) 929-0994",
+        "formattedAddress": "St John 1 Bay Street Cruz Bay, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.330230999999998,
+          "longitude": -64.79658309999999
+        },
+        "websiteUri": "https://lovangorumbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Lovango Rum Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "island": "stt",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJ79QyE3UQBYwR_sqBj9DeyHM",
+        "nationalPhoneNumber": "(340) 775-8310",
+        "formattedAddress": "49-19 Estate, 84WJ+JQV, Frydendal, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3466427,
+          "longitude": -64.8681835
+        },
+        "websiteUri": "http://www.margaritavillecaribbean.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Jimmy Buffets Margaritaville Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "marias-cantina",
+      "name": "Maria's Cantina",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJEeYvt-u1GowRh31ujboFY_A",
+        "nationalPhoneNumber": "(340) 713-0222",
+        "formattedAddress": "Arawak Building, 5032 Anchor Way Ste 1, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7458913,
+          "longitude": -64.69606910000002
+        },
+        "websiteUri": "http://mariascantina-stx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Maria's Cantina",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "melt-mexican-grill",
+      "name": "Melt Mexican Grill",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJf-uWyqsRBYwRVdNF_cOcxgA",
+        "nationalPhoneNumber": "(340) 714-7874",
+        "formattedAddress": "3 American Yacht Harbor, 6501 Redhook Plaza, Suite 201, St. Thomas, VI 00802, USVI",
+        "location": {
+          "latitude": 18.3251934,
+          "longitude": -64.85267809999999
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "MeLT Mexican Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-mim-s-seafood-bistro",
+      "name": "Mim's Seafood Bistro",
+      "island": "stt",
+      "status": "review",
+      "score": 0.75,
+      "candidate": {
+        "id": "ChIJXZzNyZsQBYwRAcfQe2SbIEU",
+        "nationalPhoneNumber": "(340) 775-2081",
+        "formattedAddress": "Watergate Villas, St. Thomas, Bolongo Bay Rd Bld -15, Bolongo, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.31169,
+          "longitude": -64.8979768
+        },
+        "websiteUri": "https://www.mimsseaside.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Mim's Seaside Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "miss-lucys",
+      "name": "Miss Lucy's",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJaa5fE0dtBYwRnYiyjYFuTKU",
+        "nationalPhoneNumber": "(340) 693-5244",
+        "formattedAddress": "Route 107, Friis Bay, U.S., St John 00830, USVI",
+        "location": {
+          "latitude": 18.323303,
+          "longitude": -64.7002424
+        },
+        "websiteUri": "https://misslucysrestaurant.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Miss Lucy's",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "mooies-bar",
+      "name": "Mooie's Bar",
+      "island": "stj",
+      "status": "review",
+      "score": 0,
+      "candidate": {
+        "id": "ChIJ82Uml7cTBYwRdZU6V51IlcY",
+        "nationalPhoneNumber": "(340) 244-6002",
+        "formattedAddress": "17 A, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3431682,
+          "longitude": -64.77246509999999
+        },
+        "websiteUri": "http://www.windmillbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Windmill Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "morgans-mango",
+      "name": "Morgan's Mango",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJYSw-JDwSBYwRqppGDliAw5c",
+        "nationalPhoneNumber": "(340) 693-8141",
+        "formattedAddress": "St. John, 18 First Street, Cruz Bay, St John 00831, USVI",
+        "location": {
+          "latitude": 18.3323212,
+          "longitude": -64.7928731
+        },
+        "websiteUri": "http://www.morgansmango.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Morgan's Mango",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "nates-boathouse",
+      "name": "Nate's Boathouse",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJg_ghQPK1GowRK0-yICKaIpE",
+        "nationalPhoneNumber": "(340) 692-6283",
+        "formattedAddress": "1 King Cross St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.746948,
+          "longitude": -64.7062664
+        },
+        "websiteUri": "http://www.stxboathouse.com/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Nate's Boathouse",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "nauti-bar-and-grille",
+      "name": "Nauti Bar and Grille",
+      "island": "stx",
+      "status": "review",
+      "score": 0.5,
+      "candidate": {
+        "id": "ChIJVYqXNuy1GowRJWc42nJGeW4",
+        "nationalPhoneNumber": "(340) 718-0544",
+        "formattedAddress": "43 Queen Cross St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.745351,
+          "longitude": -64.703578
+        },
+        "websiteUri": "http://www.nautiparrotstx.com/",
+        "businessStatus": "CLOSED_TEMPORARILY",
+        "displayName": {
+          "text": "Nauti Parrot",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "no-bones-caf",
+      "name": "No Bones Café",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJw2r6nOu1GowRHvZTgIpqmew",
+        "nationalPhoneNumber": "(340) 773-2128",
+        "formattedAddress": "Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7468733,
+          "longitude": -64.6975867
+        },
+        "websiteUri": "http://nobonescafe.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "No Bones Cafe",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "north-shore-deli",
+      "name": "North Shore Deli",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJscXZZz4SBYwREkeTnod3wuU",
+        "nationalPhoneNumber": "(340) 777-3061",
+        "formattedAddress": "St. John, 507 Mongoose Jct, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.332631000000003,
+          "longitude": -64.7920133
+        },
+        "websiteUri": "https://www.northshoredelistj.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "North Shore Deli",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "oceana-restaurant",
+      "name": "Oceana Restaurant",
+      "island": "stt",
+      "status": "approved",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJg4Lqm_caBYwRSBeJpPL4e88",
+        "nationalPhoneNumber": "(340) 774-4262",
+        "formattedAddress": "St. Thomas, 8 Honduras, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.334638899999998,
+          "longitude": -64.94076790000001
+        },
+        "websiteUri": "http://www.oceanavi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Oceana Restaurant & Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJtVrE-6YaBYwRuuJ9sBPkm6o",
+        "nationalPhoneNumber": "(340) 725-6279",
+        "formattedAddress": "Mahogany Run Rd, Mandahl, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3588307,
+          "longitude": -64.91126059999999
+        },
+        "websiteUri": "http://www.oldstonefarmhouse.net/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Old Stone Farmhouse",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "our-market-smoothies",
+      "name": "Our Market Smoothies",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJty58qDkSBYwR2e98nFzbm8E",
+        "nationalPhoneNumber": "(340) 693-9160",
+        "formattedAddress": "king st, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3313781,
+          "longitude": -64.79400509999999
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Our Market Smoothies",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "pangea-terra-table",
+      "name": "Pangea Terra Table",
+      "island": "stt",
+      "status": "review",
+      "score": 0.6666666666666666,
+      "candidate": {
+        "id": "ChIJ9ahmFDIRBYwRj08jCTnUBUs",
+        "nationalPhoneNumber": "(340) 690-0963",
+        "formattedAddress": "6400 estate Smith Bay, Smith Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.335330199999998,
+          "longitude": -64.8547826
+        },
+        "websiteUri": "http://www.pangeausvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Pangea Terra & Ocean to Table Sustainable Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "paradise-pizza",
+      "name": "Paradise Pizza",
+      "island": "stx",
+      "status": "review",
+      "score": 0.6666666666666666,
+      "candidate": {
+        "id": "ChIJaXutHQAbBYwR2UPy_Y-8aQA",
+        "nationalPhoneNumber": "(340) 777-4992",
+        "formattedAddress": "St. Thomas, 47e Kronprindsens Gade Ste 1, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.339138,
+          "longitude": -64.9400836
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Paradise Pate's and Pizza",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "petit-pump-room",
+      "name": "Petit Pump Room",
+      "island": "stt",
+      "status": "review",
+      "score": 0.5,
+      "candidate": {
+        "id": "ChIJn3xEK_caBYwR-p559oUCUlM",
+        "nationalPhoneNumber": "(340) 776-2976",
+        "formattedAddress": "St. Thomas, 3400 Veterans Dr Ste 6, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.338704099999998,
+          "longitude": -64.9386116
+        },
+        "websiteUri": "https://www.petitepumproom.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Petite Pump Room Bar & Restaurant St. Thomas",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "petras-dushi-by-the-sea",
+      "name": "Petra's Dushi by the Sea",
+      "island": "stt",
+      "status": "review",
+      "score": 0.8888888888888888,
+      "candidate": {
+        "id": "ChIJte1xkR8RBYwRp2LCV70WlRg",
+        "formattedAddress": "Rte 388, Coki Point, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.348825299999998,
+          "longitude": -64.8664294
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dushi’s by the sea",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "pie-whole-pizza",
+      "name": "Pie Whole Pizza",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJVzWW1vkaBYwRSiOPz2unPUQ",
+        "nationalPhoneNumber": "(340) 642-5074",
+        "formattedAddress": "24a Honduras, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3373332,
+          "longitude": -64.9407569
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Pie Whole Pizza",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "pizza-pi",
+      "name": "Pizza Pi",
+      "island": "stj",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJqSioX3IRBYwRzJ1FCi98nlA",
+        "formattedAddress": "Christmas Cove, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3089594,
+          "longitude": -64.8321016
+        },
+        "websiteUri": "http://www.pizza-pi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Pizza Pi VI",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "rhumb-lines",
+      "name": "Rhumb Lines",
+      "island": "stj",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJYSw-JDwSBYwRy49MunZ1eQ0",
+        "nationalPhoneNumber": "(340) 776-0303",
+        "formattedAddress": "3 Estate Emmaus, Coral Bay, Coral Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3482295,
+          "longitude": -64.71252299999999
+        },
+        "websiteUri": "https://www.facebook.com/rhumblinesstjohn/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Rhumb Lines Cuisine in Indigo Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "rowdy-joes",
+      "name": "Rowdy Joe's",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJ05nJylnLGowRshjoRqkbOwo",
+        "nationalPhoneNumber": "(340) 725-9140",
+        "formattedAddress": "71, A Estate, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.776806699999998,
+          "longitude": -64.7989978
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Rowdy Joe's Northshore Eatery",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "rum-island-pub",
+      "name": "Rum Island Pub",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ5dUJ_vIaBYwR5DHRHqywR30",
+        "formattedAddress": "Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3406053,
+          "longitude": -64.9322352
+        },
+        "websiteUri": "http://www.rumisland.pub/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Rum Island Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "salt-great-pond",
+      "name": "Salt Great Pond",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJrUUijS-1GowRi7dBRpr2bJs",
+        "nationalPhoneNumber": "(340) 718-7258",
+        "formattedAddress": "Lot 6, Petronella Rd, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.728038899999998,
+          "longitude": -64.6680456
+        },
+        "websiteUri": "http://saltstx.com/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Salt at the Dairy (Salt Great Pond)",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "sam-and-jacks-deli",
+      "name": "Sam & Jack's Deli",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJFanRGDkSBYwRhYnMBK0t1j8",
+        "nationalPhoneNumber": "(340) 714-3354",
+        "formattedAddress": "5000 Estate Enighed 3rd floor, Marketplace, St John 00830, USVI",
+        "location": {
+          "latitude": 18.327731699999998,
+          "longitude": -64.79109609999999
+        },
+        "websiteUri": "http://www.samandjacksdeli.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Sam & Jack's Deli",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "sangrias-beachside-bistro",
+      "name": "Sangria's Beachside Bistro",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJtRwO8wgRBYwRBmQRsI1zXtc",
+        "nationalPhoneNumber": "(340) 714-7874",
+        "formattedAddress": "Elysian Beach Resort, 6800 Estate Nazareth, Nazareth, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.317954399999998,
+          "longitude": -64.8436056
+        },
+        "websiteUri": "http://www.sangriasvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Sangria's Beachside Bistro",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "savant",
+      "name": "Savant",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJBUE0LOy1GowRPZhM2dl4ST0",
+        "nationalPhoneNumber": "(340) 713-8666",
+        "formattedAddress": "4C Hospital St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.745663699999998,
+          "longitude": -64.7014808
+        },
+        "websiteUri": "https://savantstx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Savant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "sea-la-vie",
+      "name": "Sea La Vie",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJs0a_R-gbBYwR9Rf_dpE1xmQ",
+        "nationalPhoneNumber": "(340) 693-7808",
+        "formattedAddress": "Unnamed Road, 83P5+WQ6, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3372959,
+          "longitude": -64.9406035
+        },
+        "websiteUri": "https://www.facebook.com/Sea-La-Vie-St-Thomas-305582353397949/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Sea La Vie",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "seaside-market-deli",
+      "name": "Seaside Market Deli",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJzzOebeq1GowR5UkXbFTk8X8",
+        "nationalPhoneNumber": "(340) 719-9393",
+        "formattedAddress": "2001, Mt Welcome Rd, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.745157799999998,
+          "longitude": -64.6940208
+        },
+        "websiteUri": "http://www.seasidemarketstx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Seaside Market & Deli",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "shamas-specialties",
+      "name": "Shama's Specialties",
+      "island": "stt",
+      "status": "review",
+      "score": 0.2857142857142857,
+      "candidate": {
+        "id": "ChIJ2TbszeUbBYwR8JKFx0sIfXM",
+        "nationalPhoneNumber": "(340) 344-6081",
+        "formattedAddress": "St. Thomas, St. Thomas, 6 Wimmelskafts Gade, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.342148299999998,
+          "longitude": -64.9323306
+        },
+        "businessStatus": "CLOSED_TEMPORARILY",
+        "displayName": {
+          "text": "SHAM'S ENT LLC",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "shambles",
+      "name": "Shambles",
+      "island": "stj",
+      "status": "approved",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJQ49Cf1MTBYwRb1NaPc966lg",
+        "nationalPhoneNumber": "(340) 777-4015",
+        "formattedAddress": "Route 10 St. John, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3410633,
+          "longitude": -64.7725378
+        },
+        "websiteUri": "http://www.shamblesvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Shambles Island Bar and Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "side-street-pub",
+      "name": "Side Street Pub",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJY8yeevIaBYwRQKPhVHY6LoQ",
+        "nationalPhoneNumber": "(340) 775-5131",
+        "formattedAddress": "5130 Bjerge Gade, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.341367899999998,
+          "longitude": -64.9326318
+        },
+        "websiteUri": "https://www.facebook.com/Gblivin1/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Side Street Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "singhs-fast-food",
+      "name": "Singh's Fast Food",
+      "island": "stx",
+      "status": "review",
+      "score": 0.5714285714285714,
+      "candidate": {
+        "id": "ChIJZ-iSqPG1GowRwrx05rAK2ow",
+        "nationalPhoneNumber": "(340) 773-7357",
+        "formattedAddress": "United States, 23-B King St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7435155,
+          "longitude": -64.70713909999999
+        },
+        "websiteUri": "http://www.facebook.com/singhfastfood",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Singhs Fast Food",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "six-nine-restaurant-and-bar",
+      "name": "Six Nine Restaurant & Bar",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJv1-7tybPGowRG8rze9rgeuk",
+        "nationalPhoneNumber": "(340) 690-5420",
+        "formattedAddress": "69a King St, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.713980799999998,
+          "longitude": -64.88319419999999
+        },
+        "websiteUri": "http://www.sixninestx.com/",
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Six Nine Restaurant & Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "skinny-legs",
+      "name": "Skinny Legs",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ396XOqpyBYwRBr_8K-7oz30",
+        "nationalPhoneNumber": "(340) 779-4982",
+        "formattedAddress": "87XQ+2G3, Connections East Shopping Center, 9901 Estate Emmaus, Coral Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.347529899999998,
+          "longitude": -64.71125409999999
+        },
+        "websiteUri": "http://skinnylegsvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Skinny Legs",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "smoke-up-fusion-bbq",
+      "name": "Smoke Up Fusion BBQ",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJB01sodMbBYwRkzeo9NWstpE",
+        "nationalPhoneNumber": "(305) 998-9314",
+        "formattedAddress": "169 Crown Bay Marina, 168 Crown Bay Road, Marina, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3332879,
+          "longitude": -64.95324550000001
+        },
+        "websiteUri": "https://www.facebook.com/profile.php?id=61556585666618&mibextid=LQQJ4d",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Smoke Up Fusion BBQ",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "st-john-brewers-tap-room",
+      "name": "St. John Brewers Tap Room",
+      "island": "stj",
+      "status": "approved",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJUdslYT4SBYwRfmP1dZZyJ8I",
+        "nationalPhoneNumber": "(340) 715-7775",
+        "formattedAddress": "St. John, Mongoose Jct 2nd Floor, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.332738199999998,
+          "longitude": -64.7919804
+        },
+        "websiteUri": "https://stjohnbrewers.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "St John Brewers - Tap Room Brewpub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stj-speakeasy",
+      "name": "STJ Speakeasy",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJcZ-0jL4TBYwRGH9II1O-Uq4",
+        "nationalPhoneNumber": "(340) 210-5002",
+        "formattedAddress": "Estate Enighed, Parcel 18-38 Cruz Bay Rd, 1 Cruz Bay QRT, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3316893,
+          "longitude": -64.7931144
+        },
+        "websiteUri": "https://www.stjspeakeasy.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "STJ Speakeasy",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-sudi-s-caribbean-bar-grille",
+      "name": "Sudi's Caribbean Bar Grille",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ9a0hL7ARBYwRb0y7nKwBHXE",
+        "nationalPhoneNumber": "(340) 777-5423",
+        "formattedAddress": "Sapphire Village, Smith Bay, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3322127,
+          "longitude": -64.8487899
+        },
+        "websiteUri": "http://sudisvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Sudi's Caribbean Bar & Grille",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "sun-dog-caf",
+      "name": "Sun Dog Café",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJYSw-JDwSBYwRfP2cy6SKI68",
+        "nationalPhoneNumber": "(340) 693-8340",
+        "formattedAddress": "18 Mongoose Jct o2, St. John, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.332518399999998,
+          "longitude": -64.7924086
+        },
+        "websiteUri": "http://www.sundogcafe.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Sun Dog Cafe",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "surf-club-cantina",
+      "name": "Surf Club Cantina",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJzfGEklRtBYwRVJRwk67vWGg",
+        "nationalPhoneNumber": "(340) 725-8272",
+        "formattedAddress": "ST. JOHN, 13A Cottage Ln, Coral Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3429555,
+          "longitude": -64.7150338
+        },
+        "websiteUri": "https://surfclubcantina.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "SURF CLUB CANTINA",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "taco-shack",
+      "name": "Taco Shack",
+      "island": "stx",
+      "status": "review",
+      "score": 0.3333333333333333,
+      "candidate": {
+        "id": "ChIJe_2l2HrJGowRtqZ7aSaAnRA",
+        "nationalPhoneNumber": "(340) 778-5717",
+        "formattedAddress": "24-I, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7304757,
+          "longitude": -64.7747868
+        },
+        "websiteUri": "https://facebook.com/La-Reine-Chicken-Shack-159088867437143/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "La Reine Chicken Shack",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "tap-deck-bar-and-billiards",
+      "name": "Tap Deck Bar & Billiards",
+      "island": "stx",
+      "status": "review",
+      "score": 0.6666666666666666,
+      "candidate": {
+        "id": "ChIJH_q25zXOGowRyVhqqXunKt4",
+        "nationalPhoneNumber": "(340) 773-5227",
+        "formattedAddress": "1D Strand Street, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.714156000000003,
+          "longitude": -64.88356399999999
+        },
+        "websiteUri": "http://www.tapdeckbistroandbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Tap Deck Bistro and Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "taphus-beer-house",
+      "name": "Taphus Beer House",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJOQv8adkbBYwRE78jqUxQ5_s",
+        "nationalPhoneNumber": "(340) 715-6138",
+        "formattedAddress": "5120 Dronningens Gade Ste 7, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3418966,
+          "longitude": -64.9324068
+        },
+        "websiteUri": "https://taphusbeerhousevi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Taphus Beer House",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-bombay-club",
+      "name": "The Bombay Club",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJgVd9pPG1GowRHpsxt9f83SI",
+        "nationalPhoneNumber": "(340) 773-1838",
+        "formattedAddress": "5A King St, Christiansted, VI 00820, USVI",
+        "location": {
+          "latitude": 17.7454769,
+          "longitude": -64.7044903
+        },
+        "websiteUri": "https://www.facebook.com/bombaystcroix/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Bombay Club",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-easterly",
+      "name": "The Easterly",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJJYjKpt8RBYwR4vr13Jmhew4",
+        "nationalPhoneNumber": "(340) 714-1000",
+        "formattedAddress": "6100 Red Hook Quarter, Suite GS, 1 Red Hook Rd, Red Hook, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.326067600000002,
+          "longitude": -64.8511735
+        },
+        "websiteUri": "http://www.theeasterlystthomas.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Easterly",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-lime-inn",
+      "name": "The Lime Inn",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJYSw-JDwSBYwRDGdruTPTAkg",
+        "nationalPhoneNumber": "(340) 776-6425",
+        "formattedAddress": "St. John, 2C Vester Gade, Cruz Bay, St John 00831, USVI",
+        "location": {
+          "latitude": 18.3303025,
+          "longitude": -64.79467350000002
+        },
+        "websiteUri": "http://www.thelimeinn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Lime Inn",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-longboard",
+      "name": "The Longboard",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJx-IOPTwSBYwR77YuY9Vabbk",
+        "nationalPhoneNumber": "(340) 715-2210",
+        "formattedAddress": "USVI, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3310915,
+          "longitude": -64.7941936
+        },
+        "websiteUri": "https://www.thelongboardstjohn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Longboard",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-smoking-rooster",
+      "name": "The Smoking Rooster",
+      "island": "stt",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJkzROUogaBYwR8hNAi44C12s",
+        "nationalPhoneNumber": "(340) 715-2625",
+        "formattedAddress": "83MH+5QW, Charlotte Amalie East, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3329804,
+          "longitude": -64.9205447
+        },
+        "websiteUri": "http://www.thesmokingrooster.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Smoking Rooster",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-tap-room-st-john",
+      "name": "The Tap Room St. John",
+      "island": "stj",
+      "status": "review",
+      "score": 0.8,
+      "candidate": {
+        "id": "ChIJUdslYT4SBYwRfmP1dZZyJ8I",
+        "nationalPhoneNumber": "(340) 715-7775",
+        "formattedAddress": "St. John, Mongoose Jct 2nd Floor, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.332738199999998,
+          "longitude": -64.7919804
+        },
+        "websiteUri": "https://stjohnbrewers.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "St John Brewers - Tap Room Brewpub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-terrace",
+      "name": "The Terrace",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJE7pRhzwSBYwR2iuTHBBLRkw",
+        "nationalPhoneNumber": "(340) 779-8550",
+        "formattedAddress": "3 FA Cruz Bay Quarter Cruz Bay, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3301543,
+          "longitude": -64.7962757
+        },
+        "websiteUri": "http://theterracestjohn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Terrace",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-terrace-restaurant",
+      "name": "The Terrace Restaurant",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ2_68FvO1GowRf7i51TJYh2I",
+        "nationalPhoneNumber": "(340) 712-2100",
+        "formattedAddress": "5007, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7549202,
+          "longitude": -64.6815072
+        },
+        "websiteUri": "https://www.theterracestjohn.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Terrace Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "the-twisted-cork",
+      "name": "The Twisted Cork",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJI3Yt0fkaBYwRmjhbhXyZM8o",
+        "nationalPhoneNumber": "(340) 775-2675",
+        "formattedAddress": "St. Thomas, 3525 Honduras, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3370197,
+          "longitude": -64.9419514
+        },
+        "websiteUri": "http://www.twistedcorkvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Twisted Cork Cafe",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "three-palms",
+      "name": "Three Palms",
+      "island": "stt",
+      "status": "review",
+      "score": 0.5,
+      "candidate": {
+        "id": "ChIJH8MloCoRBYwRls8oyESS2Nk",
+        "nationalPhoneNumber": "(340) 643-3429",
+        "formattedAddress": "Saint Thomas, 6100 Red Hook Rd, Saint Thomas, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3249599,
+          "longitude": -64.8525402
+        },
+        "websiteUri": "http://3palmsvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "3 Palms Restaurant",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "island": "stt",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJIWmzXFUaBYwRNKbOv46Jky4",
+        "nationalPhoneNumber": "(340) 776-1595",
+        "formattedAddress": "8168 Crown Bay Marina #308, St. Thomas, VI 00802, USVI",
+        "location": {
+          "latitude": 18.334519399999998,
+          "longitude": -64.9522083
+        },
+        "businessStatus": "CLOSED_PERMANENTLY",
+        "displayName": {
+          "text": "Tickles Dockside Pub",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "tlc-kitchen",
+      "name": "TLC Kitchen",
+      "island": "stx",
+      "status": "review",
+      "score": 0.25,
+      "candidate": {
+        "id": "ChIJz_MZcErOGowRcc1xWlpZR6E",
+        "nationalPhoneNumber": "(340) 772-5063",
+        "formattedAddress": "P478+RQ6, Custom House St, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.7145424,
+          "longitude": -64.8831093
+        },
+        "websiteUri": "https://www.facebook.com/pages/Ucas-Kitchen/397709436940415",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Uca's Kitchen & Rastafarian Cultural Center",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "toast-diner",
+      "name": "Toast Diner",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ4U6Mc_K1GowRSSbGjNMEEv8",
+        "nationalPhoneNumber": "(340) 692-0313",
+        "formattedAddress": "1120, Pan Am Pavillion, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.746951,
+          "longitude": -64.7047037
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Toast Diner",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "too-chez",
+      "name": "Too Chez",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJy7NdCha1GowRWLRPSbfNzXc",
+        "nationalPhoneNumber": "(340) 713-8888",
+        "formattedAddress": "51ABC, Company St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.7449311,
+          "longitude": -64.70451419999999
+        },
+        "websiteUri": "http://www.toochezstx.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Too.Chez Restaurant And Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "turtles-deli",
+      "name": "Turtle's Deli",
+      "island": "stx",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJjQAlbjXOGowRB3pt5I5EwNk",
+        "nationalPhoneNumber": "(340) 772-3676",
+        "formattedAddress": "St. Croix, 37 Strand St, Frederiksted, St Croix 00840, USVI",
+        "location": {
+          "latitude": 17.708918099999998,
+          "longitude": -64.8831843
+        },
+        "websiteUri": "https://m.facebook.com/TurlesDeli/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Turtle's Deli",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "twin-city-coffee-house",
+      "name": "Twin City Coffee House",
+      "island": "stx",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJE9sZwu21GowRDdzTmKPHWZk",
+        "nationalPhoneNumber": "(340) 773-9400",
+        "formattedAddress": "2101 Company St, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.746019399999998,
+          "longitude": -64.70283789999999
+        },
+        "websiteUri": "https://twincitycoffeehouse.myshopify.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Twin City Coffee House",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "udder-delights",
+      "name": "Udder Delights",
+      "island": "stt",
+      "status": "approved",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJlSNe_6QaBYwRvWtyOgioECU",
+        "nationalPhoneNumber": "(340) 774-7256",
+        "formattedAddress": "No. 3A Estate Lovenlund, St. Thomas, 6200 Magen's Bay Rd, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.36008,
+          "longitude": -64.9147837
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Udder Delights Ice Cream Parlor",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "uncle-joes-bbq",
+      "name": "Uncle Joe's BBQ",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJIbJgOjwSBYwRdhUjMX6nlmw",
+        "nationalPhoneNumber": "(340) 693-8806",
+        "formattedAddress": "86J4+J9P St John, Henry Samuel St, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3315874,
+          "longitude": -64.7940554
+        },
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Uncle Joe's BBQ",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "stt-virgilio-s-italian",
+      "name": "Virgilio's Italian",
+      "island": "stt",
+      "status": "review",
+      "score": 0.6666666666666666,
+      "candidate": {
+        "id": "ChIJdzqYd5IaBYwRKFD3lzuTVFc",
+        "nationalPhoneNumber": "(340) 776-4920",
+        "formattedAddress": "5150 Dronningens Gade Ste 7, Charlotte Amalie, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.341594999999998,
+          "longitude": -64.933565
+        },
+        "websiteUri": "http://www.virgiliosvi.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Virgilio's Cuisine",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "water-island-beach-bar",
+      "name": "Water Island Beach Bar",
+      "island": "stt",
+      "status": "review",
+      "score": 0.3333333333333333,
+      "candidate": {
+        "id": "ChIJXSX2qLUbBYwR8U_CO0iOUuw",
+        "nationalPhoneNumber": "(340) 227-5525",
+        "formattedAddress": "Honeymoon Beach Lane, Water Island, St Thomas 00802, USVI",
+        "location": {
+          "latitude": 18.3160514,
+          "longitude": -64.9565819
+        },
+        "websiteUri": "https://dinghysbeachbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Dinghy's Beach Bar & Grill",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "windmill-bar",
+      "name": "Windmill Bar",
+      "island": "stj",
+      "status": "review",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJ82Uml7cTBYwRdZU6V51IlcY",
+        "nationalPhoneNumber": "(340) 244-6002",
+        "formattedAddress": "17 A, Cruz Bay, St John 00830, USVI",
+        "location": {
+          "latitude": 18.3431682,
+          "longitude": -64.77246509999999
+        },
+        "websiteUri": "http://www.windmillbar.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "The Windmill Bar",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "woodys-seafood-saloon",
+      "name": "Woody's Seafood Saloon",
+      "island": "stj",
+      "status": "approved",
+      "score": 1,
+      "candidate": {
+        "id": "ChIJuSRWFjwSBYwRDVD1QmHTo9A",
+        "nationalPhoneNumber": "(340) 779-4625",
+        "formattedAddress": "St. John, Prince St, Cruz Bay, St John 00831, USVI",
+        "location": {
+          "latitude": 18.330831,
+          "longitude": -64.7941592
+        },
+        "websiteUri": "https://www.woodysseafood.com/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Woody's Seafood Saloon",
+          "languageCode": "en"
+        }
+      }
+    },
+    {
+      "id": "ziggys-island-market",
+      "name": "Ziggy's Island Market",
+      "island": "stx",
+      "status": "review",
+      "score": 0.9,
+      "candidate": {
+        "id": "ChIJX-gzQnu0GowRSW3Il5kCNxo",
+        "nationalPhoneNumber": "(340) 773-8382",
+        "formattedAddress": "5088 Estate, Christiansted, St Croix 00820, USVI",
+        "location": {
+          "latitude": 17.756253,
+          "longitude": -64.6319622
+        },
+        "websiteUri": "https://www.facebook.com/ZiggysIslandMarketSTX/",
+        "businessStatus": "OPERATIONAL",
+        "displayName": {
+          "text": "Ziggy's Island Market, LLC",
+          "languageCode": "en"
+        }
+      }
+    }
+  ]
+}

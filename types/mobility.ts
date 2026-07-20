@@ -1,0 +1,141 @@
+import type { IslandCode } from "@/types/usvi";
+
+export type RideMode =
+  | "standard"
+  | "premium"
+  | "shared"
+  | "safari"
+  | "airport"
+  | "ferry-transfer"
+  | "tour"
+  | "delivery"
+  | "executive";
+
+export type BookingStatus =
+  | "draft"
+  | "requested"
+  | "matched"
+  | "driver_en_route"
+  | "arrived"
+  | "in_progress"
+  | "completed"
+  | "cancelled";
+
+export type RideBookingPaymentStatus =
+  | "unpaid"
+  | "requires_payment_method"
+  | "processing"
+  | "paid"
+  | "failed"
+  | "canceled";
+
+export type PickupContext = {
+  lat: number;
+  lng: number;
+  estateGeoid: string;
+  estateName: string;
+  notes?: string;
+  pickupConfidence: number;
+  accessType: "roadside" | "villa" | "beach" | "airport" | "ferry" | "resort";
+};
+
+export type FareBreakdown = {
+  pricingModel: "official_usvi_taxi_tariff";
+  quoteStatus: "official" | "provisional";
+  currency: "USD";
+  tariffId: string;
+  tariffTitle: string;
+  tariffVersion: string;
+  tariffSourceUrl: string;
+  tariffEffectiveAt: string;
+  quotedAt: string;
+  expiresAt: string;
+  rateRuleId: string;
+  matchedOrigin: string;
+  matchedDestination: string;
+  routeFare: number;
+  passengerFare: number;
+  luggageFare: number;
+  authorizedAdditionalCharges: number;
+  total: number;
+  ruleNotes?: string;
+};
+
+export type RideBookingDraft = {
+  originEstateGeoid: string;
+  destinationEstateGeoid: string;
+  mode: RideMode;
+  passengers: number;
+  luggage: number;
+  scheduledAt?: string | null;
+  notes?: string;
+  pickupLabel?: string;
+  destinationLabel?: string;
+};
+
+export type TaxiRateReviewStatus = "pending" | "resolved" | "rejected";
+
+export type TaxiRateReviewRequest = {
+  id: string;
+  riderId: string;
+  status: TaxiRateReviewStatus;
+  island: IslandCode;
+  originEstateGeoid: string;
+  destinationEstateGeoid: string;
+  originEstateName: string;
+  destinationEstateName: string;
+  pickupLabel?: string;
+  destinationLabel?: string;
+  mode: RideMode;
+  passengers: number;
+  luggage: number;
+  reason: string;
+  createdAt?: string;
+  updatedAt?: string;
+};
+
+export type RideBooking = {
+  id: string;
+  riderId: string;
+  driverId?: string;
+  associationId?: string | null;
+  vehicleId?: string | null;
+  status: BookingStatus;
+  paymentStatus?: RideBookingPaymentStatus;
+  paymentIntentId?: string | null;
+  amountAuthorized?: number | null;
+  amountCaptured?: number | null;
+  mode: RideMode;
+  island: IslandCode;
+  origin: PickupContext;
+  destination: PickupContext;
+  passengers: number;
+  luggage: number;
+  quotedFare: FareBreakdown;
+  assignmentComplianceSnapshot?: {
+    driverAuthorizationStatus: string;
+    associationStatus: string;
+    vehicleInspectionStatus: string;
+    vehicleInsuranceStatus: string;
+    verifiedAt: string;
+  };
+  finalFare?: number;
+  scheduledAt?: string | null;
+  notes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  statusTimestamps?: Partial<Record<BookingStatus, string>>;
+  payout?: {
+    grossFare: number;
+    commissionRate: number;
+    platformRevenue: number;
+    driverPayout: number;
+  };
+  settlement?: {
+    status: "pending_review" | "approved" | "paid" | "failed";
+    grossFare: number;
+    serviceFee?: number;
+    operatorSettlement?: number;
+    feeAgreementId?: string;
+  };
+};

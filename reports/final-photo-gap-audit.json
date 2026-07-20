@@ -1,0 +1,4399 @@
+{
+  "summary": {
+    "totalEntries": 425,
+    "photographed": 303,
+    "gaps": 122,
+    "grouped": {
+      "place:stt": 13,
+      "place:stj": 5,
+      "place:stx": 6,
+      "beach:stt": 4,
+      "beach:stj": 5,
+      "beach:stx": 3,
+      "historic:stj": 30,
+      "historic:stt": 22,
+      "historic:stx": 30,
+      "stay:stt": 4
+    }
+  },
+  "gaps": [
+    {
+      "kind": "place",
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt",
+      "image": "/images/directory/places/stt-arian-s.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt",
+      "image": "/images/directory/places/stt-benito-s-burritos.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bumpa-s.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt",
+      "image": "/images/places/fallbacks/attraction-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "island": "stj",
+      "image": "/images/places/fallbacks/campground-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "image": "/images/places/fallbacks/historic-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "island": "stj",
+      "image": "/images/places/fallbacks/marina-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "island": "stj",
+      "image": "/images/places/fallbacks/attraction-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "island": "stt",
+      "image": "/images/directory/places/stt-e-s-garden-teahouse.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "east-end-st-john",
+      "name": "East End St. John",
+      "island": "stj",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "eliza-james-mchen-beach-park",
+      "name": "Eliza James-McBean Clock Tower and Park",
+      "island": "stx",
+      "image": "/images/places/fallbacks/park-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown",
+      "name": "Frenchtown",
+      "island": "stt",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown-market",
+      "name": "Frenchtown Market",
+      "island": "stt",
+      "image": "/images/places/fallbacks/market-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "green-cay-marina",
+      "name": "Green Cay Marina",
+      "island": "stx",
+      "image": "/images/places/fallbacks/marina-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "johns-folly-learning-institute",
+      "name": "John's Folly Learning Institute",
+      "island": "stj",
+      "image": "/images/places/fallbacks/cultural-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "market-square-st-thomas",
+      "name": "Market Square",
+      "island": "stt",
+      "image": "/images/places/fallbacks/historic-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "millennium-monument",
+      "name": "Millennium Monument",
+      "island": "stx",
+      "image": "/images/places/fallbacks/monument-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "red-hook",
+      "name": "Red Hook",
+      "island": "stt",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "rainforest-st-croix",
+      "name": "St. Croix Rainforest",
+      "island": "stx",
+      "image": "/images/places/fallbacks/nature-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "leap-st-croix",
+      "name": "The Leap",
+      "island": "stx",
+      "image": "/images/places/fallbacks/shopping-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "water-island-ferry-terminal",
+      "name": "Water Island Ferry Terminal",
+      "island": "stt",
+      "image": "/images/places/fallbacks/transport-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt",
+      "image": "/images/directory/beaches/abi-beach.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/banana-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/brown-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/caneel-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/caret-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx",
+      "image": "/images/directory/beaches/columbus-landing.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx",
+      "image": "/images/directory/beaches/michelles-beach.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/nazareth-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/reef-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "island": "stx",
+      "image": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/water-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/waterlemon-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "barracks-no-2",
+      "name": "Barracks No. 2",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "benjamin-franklin-school",
+      "name": "Benjamin Franklin School",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-sugar-factory",
+      "name": "Bethlehem Sugar Factory",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-sugar-works",
+      "name": "Cinnamon Bay Sugar Works",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-battery",
+      "name": "Cruz Bay Battery",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-town-historic-district",
+      "name": "Cruz Bay Town Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "diamond-school",
+      "name": "Diamond School",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church",
+      "name": "Emmaus Moravian Church",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "enighed",
+      "name": "Enighed",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-grove-place",
+      "name": "Estate Grove Place",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hafensight",
+      "name": "Estate Hafensight",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-la-reine",
+      "name": "Estate La Reine",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-little-princess",
+      "name": "Estate Little Princess",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-niesky",
+      "name": "Estate Niesky",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-perseverance",
+      "name": "Estate Perseverance",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-prosperity",
+      "name": "Estate Prosperity",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-st-john",
+      "name": "Estate St. John",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "evelyn-e-marcelli-elementary-school",
+      "name": "Evelyn E. Marcelli Elementary School",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg-corral-bay",
+      "name": "Fortsberg Corral Bay",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "government-house-stt",
+      "name": "Government House, St. Thomas",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "green-kay",
+      "name": "Green Kay",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-additional-documentation",
+      "name": "Hassel Island (Additional Documentation)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-creque-marine-railway",
+      "name": "Hassel Island Creque Marine Railway",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-fort-willoughby",
+      "name": "Hassel Island Fort Willoughby",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-historic-district-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "holy-cross-episcopal-church",
+      "name": "Holy Cross Episcopal Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "kingshill-lutheran-church",
+      "name": "Kingshill Lutheran Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "la-grange-historic-district",
+      "name": "La Grange Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lind-point-fort",
+      "name": "Lind Point Fort",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "little-la-grange",
+      "name": "Little La Grange",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "mafolie-great-house",
+      "name": "Mafolie Great House",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "market-square-pladsen",
+      "name": "Market Square (Pladsen)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "mary-point-estate",
+      "name": "Mary Point Estate",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "peace-hill-ruins",
+      "name": "Peace Hill Ruins",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-mill",
+      "name": "Reef Bay Sugar Mill",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reformed-dutch-church-stt",
+      "name": "Reformed Dutch Church, St. Thomas",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "sion-hill",
+      "name": "Sion Hill",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "slob-historic-district",
+      "name": "Slob Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "sprat-hall-historic-district",
+      "name": "Sprat Hall Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "st-johns-episcopal-church",
+      "name": "St. John's Episcopal Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "susannaberg-estate",
+      "name": "Susannaberg Estate",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "venus-hill",
+      "name": "Venus Hill",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "sapphire-village-resort",
+      "name": "Sapphire Village Resort",
+      "island": "stt",
+      "image": "/images/stays/stt/sapphire-village-resort.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "flamboyan-on-the-bay-resort-villas",
+      "name": "Flamboyan on the Bay Resort & Villas",
+      "island": "stt",
+      "image": "/images/stays/stt/flamboyan-on-the-bay-resort-villas.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "windward-passage-hotel",
+      "name": "Windward Passage Hotel",
+      "island": "stt",
+      "image": "/images/stays/stt/windward-passage-hotel.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "pavilions-and-pools-resort",
+      "name": "Pavilions and Pools Resort",
+      "island": "stt",
+      "image": "/images/stays/stt/pavilions-and-pools-resort.svg",
+      "status": "placeholder"
+    }
+  ],
+  "rows": [
+    {
+      "kind": "place",
+      "id": "18-64-the-restaurant",
+      "name": "18°64° The Restaurant",
+      "island": "stj",
+      "image": "/images/places/st-john/18-64-the-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "40-strand-eatery",
+      "name": "40 Strand Eatery",
+      "island": "stx",
+      "image": "/images/places/st-croix/40-strand-eatery-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "420-to-center",
+      "name": "420 to Center",
+      "island": "stj",
+      "image": "/images/places/st-john/420-to-center-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "99-steps",
+      "name": "99 Steps",
+      "island": "stt",
+      "image": "/images/places/st-thomas/99-steps-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "agave",
+      "name": "Agave",
+      "island": "stt",
+      "image": "/images/places/st-thomas/agave-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "amalia-caf",
+      "name": "Amalia Café",
+      "island": "stt",
+      "image": "/images/places/st-thomas/amalia-caf-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "american-yacht-harbor",
+      "name": "American Yacht Harbor",
+      "island": "stt",
+      "image": "/images/places/st-thomas/american-yacht-harbor-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "annaberg-sugar-plantation",
+      "name": "Annaberg Sugar Plantation",
+      "island": "stj",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "aqua-bistro",
+      "name": "Aqua Bistro",
+      "island": "stj",
+      "image": "/images/places/st-john/aqua-bistro-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt",
+      "image": "/images/directory/places/stt-arian-s.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "balter",
+      "name": "balter",
+      "island": "stx",
+      "image": "/images/places/st-croix/balter-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "barefoot-buddha",
+      "name": "Barefoot Buddha",
+      "island": "stt",
+      "image": "/images/places/st-thomas/barefoot-buddha-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt",
+      "image": "/images/directory/places/stt-benito-s-burritos.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "blue-eleven",
+      "name": "Blue Eleven",
+      "island": "stt",
+      "image": "/images/places/st-thomas/blue-eleven-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "blues-backyard-bbq",
+      "name": "Blues' Backyard BBQ",
+      "island": "stx",
+      "image": "/images/places/st-croix/blues-backyard-bbq-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "bon-manjer",
+      "name": "Bon Manjer",
+      "island": "stx",
+      "image": "/images/places/st-croix/bon-manjer-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "bordeaux-mountain",
+      "name": "Bordeaux Mountain",
+      "island": "stj",
+      "image": "/images/places/st-john/bordeaux-mountain-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "brew-stx",
+      "name": "Brew STX",
+      "island": "stx",
+      "image": "/images/places/st-croix/brew-stx-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "buck-island-reef-national-monument",
+      "name": "Buck Island Reef National Monument",
+      "island": "stx",
+      "image": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt",
+      "image": "/images/directory/places/stt-bumpa-s.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "bumpas-breakfast",
+      "name": "Bumpa's Breakfast",
+      "island": "stt",
+      "image": "/images/places/st-thomas/bumpas-breakfast-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "caf-christine",
+      "name": "Café Christine",
+      "island": "stx",
+      "image": "/images/places/st-croix/caf-christine-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cafe-fresco",
+      "name": "Cafe Fresco",
+      "island": "stx",
+      "image": "/images/places/st-croix/cafe-fresco-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "caf-roma",
+      "name": "Café Roma",
+      "island": "stj",
+      "image": "/images/places/st-john/caf-roma-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cane-bay-wall",
+      "name": "Cane Bay Wall",
+      "island": "stx",
+      "image": "/images/places/st-croix/cane-bay-wall-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "caneel-bay-overlook",
+      "name": "Caneel Bay Overlook",
+      "island": "stj",
+      "image": "/images/places/st-john/caneel-bay-overlook-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "captain-morgan-visitor-center",
+      "name": "Captain Morgan Visitor Center",
+      "island": "stx",
+      "image": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "carambola-tide-pools",
+      "name": "Carambola Tide Pools",
+      "island": "stx",
+      "image": "/images/places/st-croix/carambola-tide-pools-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "carigas-island-caf",
+      "name": "Carigas Island Café",
+      "island": "stt",
+      "image": "/images/places/st-thomas/carigas-island-caf-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "carolines-breakfast",
+      "name": "Caroline's Breakfast",
+      "island": "stx",
+      "image": "/images/places/st-croix/carolines-breakfast-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cast-iron-pot",
+      "name": "Cast Iron Pot",
+      "island": "stx",
+      "image": "/images/places/st-croix/cast-iron-pot-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt",
+      "image": "/images/places/fallbacks/attraction-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "charlotte-amalie-waterfront",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt",
+      "image": "/images/usvi-harbor-hero.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cheeseburgers-in-americas-paradise",
+      "name": "Cheeseburgers in America's Paradise",
+      "island": "stx",
+      "image": "/images/places/st-croix/cheeseburgers-in-americas-paradise-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "chicken-shack",
+      "name": "Chicken Shack",
+      "island": "stx",
+      "image": "/images/places/st-croix/chicken-shack-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "christiansted-boardwalk",
+      "name": "Christiansted Boardwalk",
+      "island": "stx",
+      "image": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "island": "stx",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "ci-bo-n",
+      "name": "Ci Bo Né",
+      "island": "stx",
+      "image": "/images/places/st-croix/ci-bo-n-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cinnamon-bay-archaeology-lab",
+      "name": "Cinnamon Bay Archaeology Museum",
+      "island": "stj",
+      "image": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "island": "stj",
+      "image": "/images/places/fallbacks/campground-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "island": "stt",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "image": "/images/places/fallbacks/historic-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "common-cents-pub",
+      "name": "Common Cents Pub",
+      "island": "stx",
+      "image": "/images/places/st-croix/common-cents-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "company-street-shops",
+      "name": "Company Street Shops",
+      "island": "stx",
+      "image": "/images/places/st-croix/company-street-shops-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay",
+      "name": "Coral Bay",
+      "island": "stj",
+      "image": "/images/sourced/place/stj/coral-bay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "island": "stj",
+      "image": "/images/places/fallbacks/marina-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "coral-world-ocean-park",
+      "name": "Coral World Ocean Park",
+      "island": "stt",
+      "image": "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cravin-crabs",
+      "name": "Cravin' Crabs",
+      "island": "stt",
+      "image": "/images/places/st-thomas/cravin-crabs-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "crown-bay-center",
+      "name": "Crown Bay Center",
+      "island": "stt",
+      "image": "/images/places/st-thomas/crown-bay-center-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cruz-bay",
+      "name": "Cruz Bay",
+      "island": "stj",
+      "image": "/images/usvi-harbor-hero.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "island": "stj",
+      "image": "/images/places/fallbacks/attraction-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "cruzan-rum-distillery",
+      "name": "Cruzan Rum Distillery",
+      "island": "stx",
+      "image": "/images/places/st-croix/cruzan-rum-distillery-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "cyril-e-king-airport",
+      "name": "Cyril E. King Airport",
+      "island": "stt",
+      "image": "/images/places/st-thomas/cyril-e-king-airport-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "dave-and-jerrys-steakhouse",
+      "name": "Dave & Jerry's Steakhouse",
+      "island": "stj",
+      "image": "/images/places/st-john/dave-and-jerrys-steakhouse-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "deep-end-bar",
+      "name": "Deep End Bar",
+      "island": "stx",
+      "image": "/images/places/st-croix/deep-end-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "dinghys-beach-bar",
+      "name": "Dinghy's Beach Bar",
+      "island": "wi",
+      "image": "/images/places/water-island/dinghys-beach-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "dog-house-pub",
+      "name": "Dog House Pub",
+      "island": "stt",
+      "image": "/images/places/st-thomas/dog-house-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "drakes-seat",
+      "name": "Drake's Seat",
+      "island": "stt",
+      "image": "/images/places/st-thomas/drakes-seat-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-duffy-s-love-shack",
+      "name": "Duffy's Love Shack",
+      "island": "stt",
+      "image": "/images/places/st-thomas/duffys-love-shack-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "island": "stt",
+      "image": "/images/directory/places/stt-e-s-garden-teahouse.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "east-end-st-john",
+      "name": "East End St. John",
+      "island": "stj",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "eden-south",
+      "name": "Eden South",
+      "island": "stx",
+      "image": "/images/places/st-croix/eden-south-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "el-gringos",
+      "name": "El Gringos",
+      "island": "stt",
+      "image": "/images/places/st-thomas/el-gringos-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "el-sol-bar-and-restaurant",
+      "name": "El Sol Bar and Restaurant",
+      "island": "stx",
+      "image": "/images/places/st-croix/el-sol-bar-and-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "eliza-james-mchen-beach-park",
+      "name": "Eliza James-McBean Clock Tower and Park",
+      "island": "stx",
+      "image": "/images/places/fallbacks/park-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "emancipation-garden",
+      "name": "Emancipation Garden",
+      "island": "stt",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "enkai-sushi-bar",
+      "name": "Enkai Sushi Bar",
+      "island": "stt",
+      "image": "/images/places/st-thomas/enkai-sushi-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "island": "stx",
+      "image": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "extra-virgin-bistro",
+      "name": "Extra Virgin Bistro",
+      "island": "stj",
+      "image": "/images/places/st-john/extra-virgin-bistro-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "flyers-bar-and-grill",
+      "name": "Flyers Bar & Grill",
+      "island": "stx",
+      "image": "/images/places/st-croix/flyers-bar-and-grill-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "fort-christian",
+      "name": "Fort Christian",
+      "island": "stt",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "fort-christiansvaern",
+      "name": "Fort Christiansvaern",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "fort-frederik",
+      "name": "Fort Frederik",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj",
+      "image": "/images/sourced/place/stj/fortsberg.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "frederiksted-pier",
+      "name": "Frederiksted Pier",
+      "island": "stx",
+      "image": "/images/places/st-croix/frederiksted-pier-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "frederiksted-waterfront",
+      "name": "Frederiksted Waterfront",
+      "island": "stx",
+      "image": "/images/places/st-croix/frederiksted-waterfront-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "island": "stt",
+      "image": "/images/places/st-thomas/french-quarter-bistro-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown",
+      "name": "Frenchtown",
+      "island": "stt",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "frenchtown-market",
+      "name": "Frenchtown Market",
+      "island": "stt",
+      "image": "/images/places/fallbacks/market-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "gallows-bay",
+      "name": "Gallows Bay",
+      "island": "stx",
+      "image": "/images/places/st-croix/gallows-bay-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "gladys-caf",
+      "name": "Gladys Café",
+      "island": "stt",
+      "image": "/images/places/st-thomas/gladys-caf-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "goat-soup-and-whiskey",
+      "name": "Goat Soup and Whiskey",
+      "island": "stx",
+      "image": "/images/places/st-croix/goat-soup-and-whiskey-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "government-house-christiansted",
+      "name": "Government House Christiansted",
+      "island": "stx",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "green-cay-marina",
+      "name": "Green Cay Marina",
+      "island": "stx",
+      "image": "/images/places/fallbacks/marina-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "island": "stt",
+      "image": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "hamiltons",
+      "name": "Hamilton's",
+      "island": "stx",
+      "image": "/images/places/st-croix/hamiltons-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "harbour-prime-steak-and-seafood",
+      "name": "Harbour Prime Steak and Seafood",
+      "island": "stx",
+      "image": "/images/places/st-croix/harbour-prime-steak-and-seafood-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "harveys",
+      "name": "Harvey's",
+      "island": "stx",
+      "image": "/images/places/st-croix/harveys-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "havensight-mall",
+      "name": "Havensight Mall",
+      "island": "stt",
+      "image": "/images/places/st-thomas/havensight-mall-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "heidis-honeymoon-grill",
+      "name": "Heidi's Honeymoon Grill",
+      "island": "wi",
+      "image": "/images/places/water-island/heidis-honeymoon-grill-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "high-tide-bar-and-seafood-grill",
+      "name": "High Tide Bar & Seafood Grill",
+      "island": "stj",
+      "image": "/images/places/st-john/high-tide-bar-and-seafood-grill-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "hillside-terrace",
+      "name": "Hillside Terrace",
+      "island": "stj",
+      "image": "/images/places/st-john/hillside-terrace-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "hook-line-sinker",
+      "name": "Hook, Line & Sinker",
+      "island": "stt",
+      "image": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "hull-bay",
+      "name": "Hull Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/hull-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "island-time-pub",
+      "name": "Island Time Pub",
+      "island": "stt",
+      "image": "/images/places/st-thomas/island-time-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "jack-and-isaac-bay-preserve",
+      "name": "Jack and Isaac Bay Preserve",
+      "island": "stx",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "johns-folly-learning-institute",
+      "name": "John's Folly Learning Institute",
+      "island": "stj",
+      "image": "/images/places/fallbacks/cultural-stj.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "johnny-lime",
+      "name": "Johnny Lime",
+      "island": "stj",
+      "image": "/images/places/st-john/johnny-lime-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "kendricks",
+      "name": "Kendricks",
+      "island": "stx",
+      "image": "/images/places/st-croix/kendricks-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "kims-restaurant",
+      "name": "Kim's Restaurant",
+      "island": "stx",
+      "image": "/images/places/st-croix/kims-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "la-tapa",
+      "name": "La Tapa",
+      "island": "stj",
+      "image": "/images/places/st-john/la-tapa-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "lanai-at-limetree",
+      "name": "Lanai at Limetree",
+      "island": "stt",
+      "image": "/images/places/st-thomas/lanai-at-limetree-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "leatherback-brewing-company",
+      "name": "Leatherback Brewing Company",
+      "island": "stx",
+      "image": "/images/places/st-croix/leatherback-brewing-company-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "limestone-bay-beach",
+      "name": "Limestone Bay Beach",
+      "island": "wi",
+      "image": "/images/places/water-island/limestone-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "island": "stt",
+      "image": "/images/beaches/st-thomas/lindbergh-bay-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "lovango-rum-bar",
+      "name": "Lovango Rum Bar",
+      "island": "stj",
+      "image": "/images/places/st-john/lovango-rum-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/magens-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "main-street-charlotte-amalie",
+      "name": "Main Street Charlotte Amalie",
+      "island": "stt",
+      "image": "/images/places/st-thomas/downtown-charlotte-amalie-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "island": "stt",
+      "image": "/images/places/st-thomas/margaritaville-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "marias-cantina",
+      "name": "Maria's Cantina",
+      "island": "stx",
+      "image": "/images/places/st-croix/marias-cantina-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "market-square-st-thomas",
+      "name": "Market Square",
+      "island": "stt",
+      "image": "/images/places/fallbacks/historic-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "melt-mexican-grill",
+      "name": "Melt Mexican Grill",
+      "island": "stt",
+      "image": "/images/places/st-thomas/melt-mexican-grill-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "millennium-monument",
+      "name": "Millennium Monument",
+      "island": "stx",
+      "image": "/images/places/fallbacks/monument-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "stt-mim-s-seafood-bistro",
+      "name": "Mim's Seafood Bistro",
+      "island": "stt",
+      "image": "/images/places/st-thomas/mims-seaside-bistro-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "miss-lucys",
+      "name": "Miss Lucy's",
+      "island": "stj",
+      "image": "/images/places/st-john/miss-lucys-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "mongoose-junction",
+      "name": "Mongoose Junction",
+      "island": "stj",
+      "image": "/images/places/st-john/mongoose-junction-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "mooies-bar",
+      "name": "Mooie's Bar",
+      "island": "stj",
+      "image": "/images/places/st-john/mooies-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "morgans-mango",
+      "name": "Morgan's Mango",
+      "island": "stj",
+      "image": "/images/places/st-john/morgans-mango-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "mount-eagle",
+      "name": "Mount Eagle",
+      "island": "stx",
+      "image": "/images/places/st-croix/mount-eagle-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "mountaintop-st-thomas",
+      "name": "Mountain Top",
+      "island": "stt",
+      "image": "/images/places/st-thomas/mountain-top-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "nates-boathouse",
+      "name": "Nate's Boathouse",
+      "island": "stx",
+      "image": "/images/places/st-croix/nates-boathouse-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "nauti-bar-and-grille",
+      "name": "Nauti Bar and Grille",
+      "island": "stx",
+      "image": "/images/places/st-croix/nauti-bar-and-grille-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "no-bones-caf",
+      "name": "No Bones Café",
+      "island": "stx",
+      "image": "/images/places/st-croix/no-bones-caf-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "north-shore-deli",
+      "name": "North Shore Deli",
+      "island": "stj",
+      "image": "/images/places/st-john/north-shore-deli-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "oceana-restaurant",
+      "name": "Oceana Restaurant",
+      "island": "stt",
+      "image": "/images/places/st-thomas/oceana-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "old-danish-custom-house",
+      "name": "Old Danish Custom House",
+      "island": "stx",
+      "image": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "island": "stt",
+      "image": "/images/places/st-thomas/old-stone-farmhouse-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "our-market-smoothies",
+      "name": "Our Market Smoothies",
+      "island": "stj",
+      "image": "/images/places/st-john/our-market-smoothies-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "pangea-terra-table",
+      "name": "Pangea Terra Table",
+      "island": "stt",
+      "image": "/images/places/st-thomas/pangea-terra-table-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "paradise-pizza",
+      "name": "Paradise Pizza",
+      "island": "stx",
+      "image": "/images/places/st-croix/paradise-pizza-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "paradise-point",
+      "name": "Paradise Point",
+      "island": "stt",
+      "image": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "peace-hill",
+      "name": "Peace Hill",
+      "island": "stj",
+      "image": "/images/places/st-john/peace-hill-trail-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "petit-pump-room",
+      "name": "Petit Pump Room",
+      "island": "stt",
+      "image": "/images/places/st-thomas/petit-pump-room-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "petras-dushi-by-the-sea",
+      "name": "Petra's Dushi by the Sea",
+      "island": "stt",
+      "image": "/images/places/st-thomas/petras-dushi-by-the-sea-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "pie-whole-pizza",
+      "name": "Pie Whole Pizza",
+      "island": "stt",
+      "image": "/images/places/st-thomas/pie-whole-pizza-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "pizza-pi",
+      "name": "Pizza Pi",
+      "island": "stj",
+      "image": "/images/places/st-john/pizza-pi-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "point-udall",
+      "name": "Point Udall",
+      "island": "stx",
+      "image": "/images/places/st-croix/point-udall-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "protestant-cay",
+      "name": "Protestant Cay",
+      "island": "stx",
+      "image": "/images/places/st-croix/protestant-cay-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "ram-head-trail",
+      "name": "Ram Head Trail",
+      "island": "stj",
+      "image": "/images/places/st-john/ram-head-trail-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "red-hook",
+      "name": "Red Hook",
+      "island": "stt",
+      "image": "/images/places/fallbacks/neighborhood-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "petroglyphs-trail",
+      "name": "Reef Bay Petroglyphs",
+      "island": "stj",
+      "image": "/images/places/st-john/petroglyphs-trail-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "reef-bay-trail",
+      "name": "Reef Bay Trail",
+      "island": "stj",
+      "image": "/images/places/st-john/reef-bay-trail-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "rhumb-lines",
+      "name": "Rhumb Lines",
+      "island": "stj",
+      "image": "/images/places/st-john/rhumb-lines-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "rowdy-joes",
+      "name": "Rowdy Joe's",
+      "island": "stx",
+      "image": "/images/places/st-croix/rowdy-joes-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "rum-island-pub",
+      "name": "Rum Island Pub",
+      "island": "stt",
+      "image": "/images/places/st-thomas/rum-island-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "salt-great-pond",
+      "name": "Salt Great Pond",
+      "island": "stx",
+      "image": "/images/places/st-croix/salt-great-pond-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "salt-river-bay-national-historical-park",
+      "name": "Salt River Bay National Historical Park",
+      "island": "stx",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sam-and-jacks-deli",
+      "name": "Sam & Jack's Deli",
+      "island": "stj",
+      "image": "/images/places/st-john/sam-and-jacks-deli-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sandy-point-national-wildlife-refuge",
+      "name": "Sandy Point National Wildlife Refuge",
+      "island": "stx",
+      "image": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sangrias-beachside-bistro",
+      "name": "Sangria's Beachside Bistro",
+      "island": "stt",
+      "image": "/images/places/st-thomas/sangrias-beachside-bistro-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sapphire-marina",
+      "name": "Sapphire Marina",
+      "island": "stt",
+      "image": "/images/places/st-thomas/sapphire-marina-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "savant",
+      "name": "Savant",
+      "island": "stx",
+      "image": "/images/places/st-croix/savant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sea-la-vie",
+      "name": "Sea La Vie",
+      "island": "stt",
+      "image": "/images/places/st-thomas/sea-la-vie-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "seaside-market-deli",
+      "name": "Seaside Market Deli",
+      "island": "stx",
+      "image": "/images/places/st-croix/seaside-market-deli-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "secret-harbour",
+      "name": "Secret Harbour",
+      "island": "stt",
+      "image": "/images/places/st-thomas/secret-harbour-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "seven-arches-museum",
+      "name": "Seven Arches Museum",
+      "island": "stt",
+      "image": "/images/places/st-thomas/seven-arches-museum-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "shamas-specialties",
+      "name": "Shama's Specialties",
+      "island": "stt",
+      "image": "/images/places/st-thomas/shamas-specialties-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "shambles",
+      "name": "Shambles",
+      "island": "stj",
+      "image": "/images/places/st-john/shambles-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "side-street-pub",
+      "name": "Side Street Pub",
+      "island": "stt",
+      "image": "/images/places/st-thomas/side-street-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "singhs-fast-food",
+      "name": "Singh's Fast Food",
+      "island": "stx",
+      "image": "/images/places/st-croix/singhs-fast-food-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "six-nine-restaurant-and-bar",
+      "name": "Six Nine Restaurant & Bar",
+      "island": "stx",
+      "image": "/images/places/st-croix/six-nine-restaurant-and-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "skinny-legs",
+      "name": "Skinny Legs",
+      "island": "stj",
+      "image": "/images/places/st-john/skinny-legs-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "skyride-to-paradise-point",
+      "name": "Skyride to Paradise Point",
+      "island": "stt",
+      "image": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "smoke-up-fusion-bbq",
+      "name": "Smoke Up Fusion BBQ",
+      "island": "stt",
+      "image": "/images/places/st-thomas/smoke-up-fusion-bbq-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "rainforest-st-croix",
+      "name": "St. Croix Rainforest",
+      "island": "stx",
+      "image": "/images/places/fallbacks/nature-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "st-george-village-botanical-garden",
+      "name": "St. George Village Botanical Garden",
+      "island": "stx",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "st-john-brewers-tap-room",
+      "name": "St. John Brewers Tap Room",
+      "island": "stj",
+      "image": "/images/places/st-john/st-john-brewers-tap-room-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "steeple-building",
+      "name": "Steeple Building",
+      "island": "stx",
+      "image": "/images/places/st-croix/steeple-building-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stj-speakeasy",
+      "name": "STJ Speakeasy",
+      "island": "stj",
+      "image": "/images/places/st-john/stj-speakeasy-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-sudi-s-caribbean-bar-grille",
+      "name": "Sudi's Caribbean Bar Grille",
+      "island": "stt",
+      "image": "/images/places/st-thomas/sudis-caribbean-bar-and-grille-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sun-dog-caf",
+      "name": "Sun Dog Café",
+      "island": "stj",
+      "image": "/images/places/st-john/sun-dog-caf-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "sunny-isle-shopping-center",
+      "name": "Sunny Isle Shopping Center",
+      "island": "stx",
+      "image": "/images/places/st-croix/sunny-isle-shopping-center-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "surf-club-cantina",
+      "name": "Surf Club Cantina",
+      "island": "stj",
+      "image": "/images/places/st-john/surf-club-cantina-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "taco-shack",
+      "name": "Taco Shack",
+      "island": "stx",
+      "image": "/images/places/st-croix/taco-shack-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "tap-deck-bar-and-billiards",
+      "name": "Tap Deck Bar & Billiards",
+      "island": "stx",
+      "image": "/images/places/st-croix/tap-deck-bar-and-billiards-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "taphus-beer-house",
+      "name": "Taphus Beer House",
+      "island": "stt",
+      "image": "/images/places/st-thomas/taphus-beer-house-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-bombay-club",
+      "name": "The Bombay Club",
+      "island": "stx",
+      "image": "/images/places/st-croix/the-bombay-club-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-easterly",
+      "name": "The Easterly",
+      "island": "stt",
+      "image": "/images/places/st-thomas/the-easterly-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "leap-st-croix",
+      "name": "The Leap",
+      "island": "stx",
+      "image": "/images/places/fallbacks/shopping-stx.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "the-lime-inn",
+      "name": "The Lime Inn",
+      "island": "stj",
+      "image": "/images/places/st-john/the-lime-inn-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-longboard",
+      "name": "The Longboard",
+      "island": "stj",
+      "image": "/images/places/st-john/the-longboard-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-smoking-rooster",
+      "name": "The Smoking Rooster",
+      "island": "stt",
+      "image": "/images/places/st-thomas/the-smoking-rooster-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-tap-room-st-john",
+      "name": "The Tap Room St. John",
+      "island": "stj",
+      "image": "/images/places/st-john/the-tap-room-st-john-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-terrace",
+      "name": "The Terrace",
+      "island": "stj",
+      "image": "/images/places/st-john/the-terrace-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-terrace-restaurant",
+      "name": "The Terrace Restaurant",
+      "island": "stx",
+      "image": "/images/places/st-croix/the-terrace-restaurant-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "the-twisted-cork",
+      "name": "The Twisted Cork",
+      "island": "stt",
+      "image": "/images/places/st-thomas/the-twisted-cork-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "three-palms",
+      "name": "Three Palms",
+      "island": "stt",
+      "image": "/images/places/st-thomas/three-palms-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "island": "stt",
+      "image": "/images/places/st-thomas/tickles-dockside-pub-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "tlc-kitchen",
+      "name": "TLC Kitchen",
+      "island": "stx",
+      "image": "/images/places/st-croix/tlc-kitchen-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "toast-diner",
+      "name": "Toast Diner",
+      "island": "stx",
+      "image": "/images/places/st-croix/toast-diner-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "too-chez",
+      "name": "Too Chez",
+      "island": "stx",
+      "image": "/images/places/st-croix/too-chez-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "turtles-deli",
+      "name": "Turtle's Deli",
+      "island": "stx",
+      "image": "/images/places/st-croix/turtles-deli-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "twin-city-coffee-house",
+      "name": "Twin City Coffee House",
+      "island": "stx",
+      "image": "/images/places/st-croix/twin-city-coffee-house-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "udder-delights",
+      "name": "Udder Delights",
+      "island": "stt",
+      "image": "/images/places/st-thomas/udder-delights-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "uncle-joes-bbq",
+      "name": "Uncle Joe's BBQ",
+      "island": "stj",
+      "image": "/images/places/st-john/uncle-joes-bbq-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "vendors-plaza",
+      "name": "Vendor's Plaza",
+      "island": "stt",
+      "image": "/images/places/st-thomas/vendors-plaza-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "vi-childrens-museum",
+      "name": "VI Children's Museum",
+      "island": "stt",
+      "image": "/images/places/st-thomas/vi-childrens-museum-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "stt-virgilio-s-italian",
+      "name": "Virgilio's Italian",
+      "island": "stt",
+      "image": "/images/places/st-thomas/virgilios-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "virgin-islands-national-park-visitor-center",
+      "name": "Virgin Islands National Park Visitor Center",
+      "island": "stj",
+      "image": "/images/places/st-john/virgin-islands-national-park-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "water-island-beach-bar",
+      "name": "Water Island Beach Bar",
+      "island": "wi",
+      "image": "/images/places/water-island/water-island-beach-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "water-island-ferry-terminal",
+      "name": "Water Island Ferry Terminal",
+      "island": "stt",
+      "image": "/images/places/fallbacks/transport-stt.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "place",
+      "id": "wharfside-village",
+      "name": "Wharfside Village",
+      "island": "stj",
+      "image": "/images/places/st-john/wharfside-village-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "windmill-bar",
+      "name": "Windmill Bar",
+      "island": "stj",
+      "image": "/images/places/st-john/windmill-bar-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "woodys-seafood-saloon",
+      "name": "Woody's Seafood Saloon",
+      "island": "stj",
+      "image": "/images/places/st-john/woodys-seafood-saloon-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "yacht-haven-grande",
+      "name": "Yacht Haven Grande",
+      "island": "stt",
+      "image": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "place",
+      "id": "ziggys-island-market",
+      "name": "Ziggy's Island Market",
+      "island": "stx",
+      "image": "/images/places/st-croix/ziggys-island-market-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt",
+      "image": "/images/directory/beaches/abi-beach.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/banana-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/brown-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "island": "stx",
+      "image": "/images/places/st-croix/cane-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/caneel-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/caret-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "island": "stx",
+      "image": "/images/beaches/st-croix/chenay-bay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/cinnamon-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "island": "stt",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx",
+      "image": "/images/directory/beaches/columbus-landing.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/cowpet-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/denis-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "island": "stt",
+      "image": "/images/places/st-thomas/dorothea-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "island": "stx",
+      "image": "/images/places/st-croix/dorsch-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "francis-bay",
+      "name": "Francis Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/francis-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "island": "stj",
+      "image": "/images/places/st-john/gibney-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "island": "stx",
+      "image": "/images/places/st-croix/grapetree-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/hansen-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "haulover-bay",
+      "name": "Haulover Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/haulover-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "island": "stj",
+      "image": "/images/beaches/st-john/hawksnest-bay-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "island": "stj",
+      "image": "/images/places/st-john/honeymoon-beach-st-john-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Water Island",
+      "island": "stt",
+      "image": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "island": "stx",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "island": "stx",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/jumbie-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "lameshur-bay",
+      "name": "Lameshur Bay",
+      "island": "stj",
+      "image": "/images/beaches/st-john/lameshur-bay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "lindquist-beach",
+      "name": "Lindquist Beach",
+      "island": "stt",
+      "image": "/images/places/st-thomas/lindquist-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/magens-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "maho-bay",
+      "name": "Maho Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/maho-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "mermaids-chair",
+      "name": "Mermaids Chair",
+      "island": "stt",
+      "image": "/images/places/st-thomas/mermaids-chair-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx",
+      "image": "/images/directory/beaches/michelles-beach.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "island": "stt",
+      "image": "/images/places/st-thomas/morningstar-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/nazareth-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "island": "stx",
+      "image": "/images/places/st-croix/pelican-cove-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "island": "stx",
+      "image": "/images/places/st-croix/rainbow-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/reef-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "salomon-beach",
+      "name": "Salomon Beach",
+      "island": "stj",
+      "image": "/images/beaches/st-john/salomon-beach.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "sandy-point",
+      "name": "Sandy Point",
+      "island": "stx",
+      "image": "/images/places/st-croix/sandy-point-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "stt",
+      "image": "/images/places/st-thomas/santa-maria-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "island": "stx",
+      "image": "/images/places/st-croix/shoys-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "stx",
+      "image": "/images/sourced/beach/stx/teague-bay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "trunk-bay",
+      "name": "Trunk Bay",
+      "island": "stj",
+      "image": "/images/places/st-john/trunk-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "island": "stx",
+      "image": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "island": "stt",
+      "image": "/images/places/st-thomas/vessup-bay-beach-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "beach",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt",
+      "image": "/images/directory/beaches/water-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "beach",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "stj",
+      "image": "/images/directory/beaches/waterlemon-bay.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "99-steps",
+      "name": "99 Steps",
+      "island": "stt",
+      "image": "/images/places/st-thomas/99-steps-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "annaberg-historic-district",
+      "name": "Annaberg Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "annaberg-sugar-plantation",
+      "name": "Annaberg Sugar Plantation",
+      "island": "stj",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "barracks-no-2",
+      "name": "Barracks No. 2",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "benjamin-franklin-school",
+      "name": "Benjamin Franklin School",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "synagogue-beracha-veshalom",
+      "name": "Beracha Veshalom Synagogue",
+      "island": "stt",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "bethlehem-sugar-factory",
+      "name": "Bethlehem Sugar Factory",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "blackbeards-castle-skytsborg",
+      "name": "Blackbeard's Castle (Skytsborg)",
+      "island": "stt",
+      "image": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "bluebeards-castle-tower",
+      "name": "Bluebeard's Castle Tower",
+      "island": "stt",
+      "image": "/images/places/st-thomas/bluebeards-castle-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "bordeaux",
+      "name": "Bordeaux",
+      "island": "stt",
+      "image": "/images/sourced/historic/stt/bordeaux.png",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "catherineberg-jockumsdahl-herman-farm",
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "island": "stj",
+      "image": "/images/places/st-john/catherineberg-ruins-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "charlotte-amalie-historic-district",
+      "name": "Charlotte Amalie Historic District",
+      "island": "stt",
+      "image": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "charlotte-amalie-historic-district-boundary-increase",
+      "name": "Charlotte Amalie Historic District (Boundary Increase)",
+      "island": "stt",
+      "image": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-historic-district",
+      "name": "Christiansted Historic District",
+      "island": "stx",
+      "image": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "island": "stx",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-nhs-custom-house",
+      "name": "Christiansted NHS Custom House",
+      "island": "stx",
+      "image": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-nhs-fort-christiansvaern",
+      "name": "Christiansted NHS Fort Christiansvaern",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-nhs-scale-house",
+      "name": "Christiansted NHS Scale House",
+      "island": "stx",
+      "image": "/images/places/st-croix/scale-house-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "christiansted-nhs-steeple-building",
+      "name": "Christiansted NHS Steeple Building",
+      "island": "stx",
+      "image": "/images/places/st-croix/steeple-building-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-archaeology",
+      "name": "Cinnamon Bay Archaeology Site",
+      "island": "stj",
+      "image": "/images/usvi-harbor-hero.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cinnamon-bay-sugar-works",
+      "name": "Cinnamon Bay Sugar Works",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-battery",
+      "name": "Cruz Bay Battery",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "cruz-bay-town-historic-district",
+      "name": "Cruz Bay Town Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "danish-west-india-and-guinea-company-warehouse",
+      "name": "Danish West India and Guinea Company Warehouse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "dennis-bay-historic-district",
+      "name": "Dennis Bay Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "diamond-school",
+      "name": "Diamond School",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "emancipation-garden",
+      "name": "Emancipation Garden",
+      "island": "stt",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church",
+      "name": "Emmaus Moravian Church",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "emmaus-moravian-church-and-manse",
+      "name": "Emmaus Moravian Church and Manse",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "enighed",
+      "name": "Enighed",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-beverhoudt",
+      "name": "Estate Beverhoudt",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-botany-bay",
+      "name": "Estate Botany Bay",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-grove-place",
+      "name": "Estate Grove Place",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hafensight",
+      "name": "Estate Hafensight",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-judiths-fancy",
+      "name": "Estate Judith's Fancy",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-la-reine",
+      "name": "Estate La Reine",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-little-princess",
+      "name": "Estate Little Princess",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-niesky",
+      "name": "Estate Niesky",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-perseverance",
+      "name": "Estate Perseverance",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-prosperity",
+      "name": "Estate Prosperity",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-st-john",
+      "name": "Estate St. John",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-whim-greathouse",
+      "name": "Estate Whim Greathouse",
+      "island": "stx",
+      "image": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "island": "stx",
+      "image": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "evelyn-e-marcelli-elementary-school",
+      "name": "Evelyn E. Marcelli Elementary School",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "fort-christian",
+      "name": "Fort Christian",
+      "island": "stt",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "fort-christiansvaern",
+      "name": "Fort Christiansværn",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "fort-frederik",
+      "name": "Fort Frederik",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg",
+      "name": "Fortsberg",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "fortsberg-corral-bay",
+      "name": "Fortsberg Corral Bay",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "frederick-lutheran-church",
+      "name": "Frederick Lutheran Church",
+      "island": "stt",
+      "image": "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "frederiksted-historic-district",
+      "name": "Frederiksted Historic District",
+      "island": "stx",
+      "image": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "friedensfeld-midlands-moravian-church-and-manse",
+      "name": "Friedensfeld Midlands Moravian Church and Manse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "friedensthal-mission",
+      "name": "Friedensthal Mission",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "ft-frederik-of-us-virgin-islands",
+      "name": "Ft. Frederik of US Virgin Islands",
+      "island": "stx",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "gov-house-christiansted",
+      "name": "Government House, Christiansted",
+      "island": "stx",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "government-house-stt",
+      "name": "Government House, St. Thomas",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "green-kay",
+      "name": "Green Kay",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hamburg-america-shipping-line-administrative-offices",
+      "name": "Hamburg-America Shipping Line Administrative Offices",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hams-bluff-light",
+      "name": "Hams Bluff Light",
+      "island": "stx",
+      "image": "/images/places/st-croix/hams-bluff-lighthouse-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-additional-documentation",
+      "name": "Hassel Island (Additional Documentation)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-creque-marine-railway",
+      "name": "Hassel Island Creque Marine Railway",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-fort-willoughby",
+      "name": "Hassel Island Fort Willoughby",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hassel-island-historic-district-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "hermitage-plantation-historic-district",
+      "name": "Hermitage Plantation Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "holy-cross-episcopal-church",
+      "name": "Holy Cross Episcopal Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "jossie-gut-historic-district",
+      "name": "Jossie Gut Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "kingshill-lutheran-church",
+      "name": "Kingshill Lutheran Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lesperance-historic-district",
+      "name": "L'Esperance Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "la-grande-princesse-school",
+      "name": "La Grande Princesse School",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "la-grange-historic-district",
+      "name": "La Grange Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "liever-marches-bay-historic-district",
+      "name": "Liever Marches Bay Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "lind-point-fort",
+      "name": "Lind Point Fort",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "little-la-grange",
+      "name": "Little La Grange",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "mafolie-great-house",
+      "name": "Mafolie Great House",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "market-square-pladsen",
+      "name": "Market Square (Pladsen)",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "mary-point-estate",
+      "name": "Mary Point Estate",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "more-hill-historic-district",
+      "name": "More Hill Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "new-herrnhut-moravian-church",
+      "name": "New Herrnhut Moravian Church",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "peace-hill-ruins",
+      "name": "Peace Hill Ruins",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reef-bay-sugar-mill",
+      "name": "Reef Bay Sugar Mill",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "reformed-dutch-church-stt",
+      "name": "Reformed Dutch Church, St. Thomas",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "richmond-prison-detention-and-workhouse",
+      "name": "Richmond Prison Detention and Workhouse",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "rustenberg-plantation-south-historic-district",
+      "name": "Rustenberg Plantation South Historic District",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "salt-river-bay-nhp",
+      "name": "Salt River Bay National Historical Park",
+      "island": "stx",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "sion-hill",
+      "name": "Sion Hill",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "blackbeards-castle",
+      "name": "Skytsborg",
+      "island": "stt",
+      "image": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "slob-historic-district",
+      "name": "Slob Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "sprat-hall-historic-district",
+      "name": "Sprat Hall Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "st-george-village-botanical-garden",
+      "name": "St. George Village Botanical Garden",
+      "island": "stx",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "st-johns-episcopal-church",
+      "name": "St. John's Episcopal Church",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "st-thomas-synagogue",
+      "name": "St. Thomas Synagogue",
+      "island": "stt",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim",
+      "name": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim",
+      "island": "stt",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "historic",
+      "id": "strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "island": "stx",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "susannaberg-estate",
+      "name": "Susannaberg Estate",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "island": "stj",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "tutu-plantation-house",
+      "name": "Tutu Plantation House",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "venus-hill",
+      "name": "Venus Hill",
+      "island": "stt",
+      "image": "/images/historic/placeholder.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "historic",
+      "id": "whim",
+      "name": "Whim",
+      "island": "stx",
+      "image": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "bolongo-bay-beach-resort",
+      "name": "Bolongo Bay Beach Resort",
+      "island": "stt",
+      "image": "/images/accommodations/bolongo-bay-beach-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "buoy-haus-st-thomas-beach-resort-autograph-collection",
+      "name": "Buoy Haus St. Thomas Beach Resort, Autograph Collection",
+      "island": "stt",
+      "image": "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "emerald-beach-resort",
+      "name": "Emerald Beach Resort",
+      "island": "stt",
+      "image": "/images/accommodations/emerald-beach-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "lindbergh-bay-hotel-villas",
+      "name": "Lindbergh Bay Hotel & Villas",
+      "island": "stt",
+      "image": "/images/accommodations/lindbergh-bay-hotel-villas.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "point-pleasant-resort",
+      "name": "Point Pleasant Resort",
+      "island": "stt",
+      "image": "/images/accommodations/point-pleasant-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "secret-harbour-beach-resort",
+      "name": "Secret Harbour Beach Resort",
+      "island": "stt",
+      "image": "/images/accommodations/secret-harbour-beach-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-green-iguana-hotel",
+      "name": "The Green Iguana Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/the-green-iguana-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-hideaway-at-hull-bay",
+      "name": "The Hideaway at Hull Bay",
+      "island": "stt",
+      "image": "/images/accommodations/the-hideaway-at-hull-bay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-westin-beach-resort-spa-at-frenchmans-reef",
+      "name": "The Westin Beach Resort & Spa at Frenchman's Reef",
+      "island": "stt",
+      "image": "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "at-home-in-the-tropics",
+      "name": "At Home in the Tropics",
+      "island": "stt",
+      "image": "/images/accommodations/at-home-in-the-tropics.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "magens-hideaway",
+      "name": "Magens Hideaway",
+      "island": "stt",
+      "image": "/images/accommodations/magens-hideaway.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "hampton-by-hilton-st-thomas",
+      "name": "Hampton by Hilton St. Thomas",
+      "island": "stt",
+      "image": "/images/accommodations/hampton-by-hilton-st-thomas.avif",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-ritz-carlton-st-thomas",
+      "name": "The Ritz-Carlton, St. Thomas",
+      "island": "stt",
+      "image": "/images/accommodations/the-ritz-carlton-st-thomas.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "marriotts-frenchmans-cove",
+      "name": "Marriott's Frenchman's Cove",
+      "island": "stt",
+      "image": "/images/accommodations/marriotts-frenchmans-cove.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "margaritaville-vacation-club-st-thomas",
+      "name": "Margaritaville Vacation Club - St. Thomas",
+      "island": "stt",
+      "image": "/images/accommodations/margaritaville-vacation-club-st-thomas.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "bluebeards-castle-resort",
+      "name": "Bluebeard's Castle Resort",
+      "island": "stt",
+      "image": "/images/accommodations/bluebeards-castle-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "limetree-beach-resort-by-club-wyndham",
+      "name": "Limetree Beach Resort by Club Wyndham",
+      "island": "stt",
+      "image": "/images/accommodations/limetree-beach-resort-by-club-wyndham.webp",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "elysian-beach-resort",
+      "name": "Elysian Beach Resort",
+      "island": "stt",
+      "image": "/images/accommodations/elysian-beach-resort.avif",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "sapphire-beach-resort-and-marina",
+      "name": "Sapphire Beach Resort and Marina",
+      "island": "stt",
+      "image": "/images/accommodations/sapphire-beach-resort-and-marina.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "sapphire-village-resort",
+      "name": "Sapphire Village Resort",
+      "island": "stt",
+      "image": "/images/stays/stt/sapphire-village-resort.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "flamboyan-on-the-bay-resort-villas",
+      "name": "Flamboyan on the Bay Resort & Villas",
+      "island": "stt",
+      "image": "/images/stays/stt/flamboyan-on-the-bay-resort-villas.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "windward-passage-hotel",
+      "name": "Windward Passage Hotel",
+      "island": "stt",
+      "image": "/images/stays/stt/windward-passage-hotel.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "the-mafolie-hotel",
+      "name": "The Mafolie Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/the-mafolie-hotel.webp",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-pink-palm-hotel",
+      "name": "The Pink Palm Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/the-pink-palm-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "hotel-1829",
+      "name": "Hotel 1829",
+      "island": "stt",
+      "image": "/images/accommodations/hotel-1829.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "bunker-hill-hotel",
+      "name": "Bunker Hill Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/bunker-hill-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "galleon-house-hotel",
+      "name": "Galleon House Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/galleon-house-hotel.webp",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-island-view-guesthouse",
+      "name": "The Island View Guesthouse",
+      "island": "stt",
+      "image": "/images/accommodations/the-island-view-guesthouse.webp",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "sunset-gardens-guesthouse",
+      "name": "Sunset Gardens Guesthouse",
+      "island": "stt",
+      "image": "/images/accommodations/sunset-gardens-guesthouse.webp",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "boundless-bliss-hotel",
+      "name": "Boundless Bliss Hotel",
+      "island": "stt",
+      "image": "/images/accommodations/boundless-bliss-hotel.png",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "pavilions-and-pools-resort",
+      "name": "Pavilions and Pools Resort",
+      "island": "stt",
+      "image": "/images/stays/stt/pavilions-and-pools-resort.svg",
+      "status": "placeholder"
+    },
+    {
+      "kind": "stay",
+      "id": "tillett-gardens-guest-house",
+      "name": "Tillett Gardens Guest House",
+      "island": "stt",
+      "image": "/images/accommodations/tillett-gardens-guest-house.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "lovango-resort-beach-club",
+      "name": "Lovango Resort + Beach Club",
+      "island": "stj",
+      "image": "/images/accommodations/lovango-resort-beach-club.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "gallows-point-resort",
+      "name": "Gallows Point Resort",
+      "island": "stj",
+      "image": "/images/accommodations/gallows-point-resort.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "coconut-coast-villas",
+      "name": "Coconut Coast Villas",
+      "island": "stj",
+      "image": "/images/accommodations/coconut-coast-villas.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "arawak-bay-the-inn-at-salt-river",
+      "name": "Arawak Bay: The Inn at Salt River",
+      "island": "stx",
+      "image": "/images/accommodations/arawak-bay-the-inn-at-salt-river.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-buccaneer-hotel",
+      "name": "The Buccaneer Hotel",
+      "island": "stx",
+      "image": "/images/accommodations/the-buccaneer-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "caravelle-hotel-casino",
+      "name": "Caravelle Hotel & Casino",
+      "island": "stx",
+      "image": "/images/accommodations/caravelle-hotel-casino.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "caribbean-breeze",
+      "name": "Caribbean Breeze",
+      "island": "stx",
+      "image": "/images/accommodations/caribbean-breeze.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "company-house-hotel",
+      "name": "Company House Hotel",
+      "island": "stx",
+      "image": "/images/accommodations/company-house-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "divi-carina-bay-beach-resort-casino",
+      "name": "Divi Carina Bay Beach Resort & Casino",
+      "island": "stx",
+      "image": "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "club-comanche-hotel-st-croix",
+      "name": "Club Comanche Hotel St. Croix",
+      "island": "stx",
+      "image": "/images/accommodations/club-comanche-hotel-st-croix.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "cottages-by-the-sea",
+      "name": "Cottages by the Sea",
+      "island": "stx",
+      "image": "/images/accommodations/cottages-by-the-sea.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "the-fred",
+      "name": "The Fred",
+      "island": "stx",
+      "image": "/images/accommodations/the-fred.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "hotel-on-the-cay",
+      "name": "Hotel on the Cay",
+      "island": "stx",
+      "image": "/images/accommodations/hotel-on-the-cay.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "inn-on-strand-street",
+      "name": "Inn on Strand Street",
+      "island": "stx",
+      "image": "/images/accommodations/inn-on-strand-street.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "king-christian-hotel",
+      "name": "King Christian Hotel",
+      "island": "stx",
+      "image": "/images/accommodations/king-christian-hotel.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "sugar-apple-bed-breakfast",
+      "name": "Sugar Apple Bed & Breakfast",
+      "island": "stx",
+      "image": "/images/accommodations/sugar-apple-bed-breakfast.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "sand-castle-on-the-beach",
+      "name": "Sand Castle on the Beach",
+      "island": "stx",
+      "image": "/images/accommodations/sand-castle-on-the-beach.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "tamarind-reef-resort-spa-marina",
+      "name": "Tamarind Reef Resort, Spa & Marina",
+      "island": "stx",
+      "image": "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+      "status": "local"
+    },
+    {
+      "kind": "stay",
+      "id": "villa-dawn",
+      "name": "Villa Dawn",
+      "island": "stx",
+      "image": "/images/accommodations/villa-dawn.jpg",
+      "status": "local"
+    }
+  ]
+}

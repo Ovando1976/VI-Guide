@@ -1,0 +1,32 @@
+{
+  "/images/sourced/place/stj/coral-bay.jpg": {
+    "title": "coral-bay",
+    "creator": "Eoghanacht",
+    "license": "CC0 1.0",
+    "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=117932859"
+  },
+  "/images/sourced/place/stj/fortsberg.jpg": {
+    "title": "fortsberg",
+    "creator": "Jack Boucher",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg"
+  },
+  "/images/sourced/beach/stx/teague-bay.jpg": {
+    "title": "teague-bay",
+    "creator": "Jason P. Heym / Seascape Pool Center Inc.",
+    "license": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2008-01-27_Teague_Bay_Beach_St._Croix_USVI.jpg"
+  },
+  "/images/sourced/historic/stt/bordeaux.png": {
+    "title": "bordeaux",
+    "creator": "Douglas Richards",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bordeaux_Great_House,_St_Thomas.png"
+  },
+  "/images/sourced/historic/stt/frederick-lutheran-church.jpg": {
+    "title": "frederick-lutheran-church",
+    "creator": "ThatMattWade",
+    "license": "CC BY-SA 2.0",
+    "sourceUrl": "https://www.flickr.com/photos/44768401@N07/23853962999"
+  }
+}

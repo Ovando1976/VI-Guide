@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role(name) { return signedIn() && request.auth.token.role == name; }
+    function staff() { return role('admin') || role('dispatcher'); }
+    function driverId() {
+      return request.auth.token.driverId != null
+        ? request.auth.token.driverId
+        : request.auth.uid;
+    }
+
+    match /bookings/{bookingId} {
+      allow read: if signedIn() && (
+        resource.data.riderId == request.auth.uid ||
+        resource.data.driverId == driverId() ||
+        (role('driver') && resource.data.status == 'requested' && resource.data.paymentStatus == 'paid') ||
+        staff()
+      );
+      allow write: if false;
+      match /events/{eventId} {
+        allow read: if signedIn() && (
+          get(/databases/$(database)/documents/bookings/$(bookingId)).data.riderId == request.auth.uid ||
+          get(/databases/$(database)/documents/bookings/$(bookingId)).data.driverId == driverId() || staff()
+        );
+        allow write: if false;
+      }
+    }
+
+    match /drivers/{id} {
+      allow read: if role('driver') || staff();
+      allow write: if false;
+    }
+
+    match /taxiAssociations/{id} {
+      allow read: if role('driver') || staff();
+      allow write: if false;
+    }
+
+    match /vehicles/{id} {
+      allow read: if staff() || (role('driver') && resource.data.driverId == driverId());
+      allow write: if false;
+    }
+
+    match /taxiTariffs/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /taxiOperationsAudit/{id} {
+      allow read: if staff();
+      allow write: if false;
+    }
+
+    match /tripEvents/{eventId} {
+      allow read: if signedIn() && (
+        get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.riderId == request.auth.uid ||
+        get(/databases/$(database)/documents/bookings/$(resource.data.bookingId)).data.driverId == driverId() ||
+        staff()
+      );
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

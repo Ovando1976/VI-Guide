@@ -1,0 +1,1778 @@
+{
+  "mode": "apply",
+  "createdCount": 118,
+  "skippedCount": 0,
+  "created": [
+    {
+      "id": "18-64-the-restaurant",
+      "slug": "18-64-the-restaurant",
+      "name": "18°64° The Restaurant",
+      "island": "stj",
+      "category": "food",
+      "description": "18°64° The Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/18-64-the-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "40-strand-eatery",
+      "slug": "40-strand-eatery",
+      "name": "40 Strand Eatery",
+      "island": "stx",
+      "category": "food",
+      "description": "40 Strand Eatery is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/40-strand-eatery-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "420-to-center",
+      "slug": "420-to-center",
+      "name": "420 to Center",
+      "island": "stj",
+      "category": "food",
+      "description": "420 to Center is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/420-to-center-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "agave",
+      "slug": "agave",
+      "name": "Agave",
+      "island": "stt",
+      "category": "food",
+      "description": "Agave is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/agave-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "amalia-caf",
+      "slug": "amalia-caf",
+      "name": "Amalia Café",
+      "island": "stt",
+      "category": "food",
+      "description": "Amalia Café is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/amalia-caf-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "aqua-bistro",
+      "slug": "aqua-bistro",
+      "name": "Aqua Bistro",
+      "island": "stj",
+      "category": "food",
+      "description": "Aqua Bistro is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/aqua-bistro-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "balter",
+      "slug": "balter",
+      "name": "balter",
+      "island": "stx",
+      "category": "food",
+      "description": "balter is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/balter-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "barefoot-buddha",
+      "slug": "barefoot-buddha",
+      "name": "Barefoot Buddha",
+      "island": "stt",
+      "category": "food",
+      "description": "Barefoot Buddha is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/barefoot-buddha-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "blue-eleven",
+      "slug": "blue-eleven",
+      "name": "Blue Eleven",
+      "island": "stt",
+      "category": "food",
+      "description": "Blue Eleven is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/blue-eleven-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "blues-backyard-bbq",
+      "slug": "blues-backyard-bbq",
+      "name": "Blues' Backyard BBQ",
+      "island": "stx",
+      "category": "food",
+      "description": "Blues' Backyard BBQ is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/blues-backyard-bbq-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "bon-manjer",
+      "slug": "bon-manjer",
+      "name": "Bon Manjer",
+      "island": "stx",
+      "category": "food",
+      "description": "Bon Manjer is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/bon-manjer-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "brew-stx",
+      "slug": "brew-stx",
+      "name": "Brew STX",
+      "island": "stx",
+      "category": "food",
+      "description": "Brew STX is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/brew-stx-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "bumpas-breakfast",
+      "slug": "bumpas-breakfast",
+      "name": "Bumpa's Breakfast",
+      "island": "stt",
+      "category": "food",
+      "description": "Bumpa's Breakfast is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/bumpas-breakfast-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "caf-christine",
+      "slug": "caf-christine",
+      "name": "Café Christine",
+      "island": "stx",
+      "category": "food",
+      "description": "Café Christine is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/caf-christine-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "cafe-fresco",
+      "slug": "cafe-fresco",
+      "name": "Cafe Fresco",
+      "island": "stx",
+      "category": "food",
+      "description": "Cafe Fresco is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/cafe-fresco-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "caf-roma",
+      "slug": "caf-roma",
+      "name": "Café Roma",
+      "island": "stj",
+      "category": "food",
+      "description": "Café Roma is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/caf-roma-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "carigas-island-caf",
+      "slug": "carigas-island-caf",
+      "name": "Carigas Island Café",
+      "island": "stt",
+      "category": "food",
+      "description": "Carigas Island Café is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/carigas-island-caf-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "carolines-breakfast",
+      "slug": "carolines-breakfast",
+      "name": "Caroline's Breakfast",
+      "island": "stx",
+      "category": "food",
+      "description": "Caroline's Breakfast is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/carolines-breakfast-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "cast-iron-pot",
+      "slug": "cast-iron-pot",
+      "name": "Cast Iron Pot",
+      "island": "stx",
+      "category": "food",
+      "description": "Cast Iron Pot is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/cast-iron-pot-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "cheeseburgers-in-americas-paradise",
+      "slug": "cheeseburgers-in-americas-paradise",
+      "name": "Cheeseburgers in America's Paradise",
+      "island": "stx",
+      "category": "food",
+      "description": "Cheeseburgers in America's Paradise is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/cheeseburgers-in-americas-paradise-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "chicken-shack",
+      "slug": "chicken-shack",
+      "name": "Chicken Shack",
+      "island": "stx",
+      "category": "food",
+      "description": "Chicken Shack is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/chicken-shack-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "ci-bo-n",
+      "slug": "ci-bo-n",
+      "name": "Ci Bo Né",
+      "island": "stx",
+      "category": "food",
+      "description": "Ci Bo Né is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/ci-bo-n-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "common-cents-pub",
+      "slug": "common-cents-pub",
+      "name": "Common Cents Pub",
+      "island": "stx",
+      "category": "food",
+      "description": "Common Cents Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/common-cents-pub-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "company-street-shops",
+      "slug": "company-street-shops",
+      "name": "Company Street Shops",
+      "island": "stx",
+      "category": "shopping",
+      "description": "Company Street Shops is a local shopping destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/company-street-shops-1.jpg",
+      "tags": [
+        "shopping",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "cravin-crabs",
+      "slug": "cravin-crabs",
+      "name": "Cravin' Crabs",
+      "island": "stt",
+      "category": "food",
+      "description": "Cravin' Crabs is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/cravin-crabs-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "dave-and-jerrys-steakhouse",
+      "slug": "dave-and-jerrys-steakhouse",
+      "name": "Dave & Jerry's Steakhouse",
+      "island": "stj",
+      "category": "food",
+      "description": "Dave & Jerry's Steakhouse is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/dave-and-jerrys-steakhouse-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "deep-end-bar",
+      "slug": "deep-end-bar",
+      "name": "Deep End Bar",
+      "island": "stx",
+      "category": "food",
+      "description": "Deep End Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/deep-end-bar-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "dinghys-beach-bar",
+      "slug": "dinghys-beach-bar",
+      "name": "Dinghy's Beach Bar",
+      "island": "wi",
+      "category": "food",
+      "description": "Dinghy's Beach Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/water-island/dinghys-beach-bar-1.jpg",
+      "tags": [
+        "food",
+        "wi",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "dog-house-pub",
+      "slug": "dog-house-pub",
+      "name": "Dog House Pub",
+      "island": "stt",
+      "category": "food",
+      "description": "Dog House Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/dog-house-pub-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "eden-south",
+      "slug": "eden-south",
+      "name": "Eden South",
+      "island": "stx",
+      "category": "food",
+      "description": "Eden South is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/eden-south-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "el-gringos",
+      "slug": "el-gringos",
+      "name": "El Gringos",
+      "island": "stt",
+      "category": "food",
+      "description": "El Gringos is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/el-gringos-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "el-sol-bar-and-restaurant",
+      "slug": "el-sol-bar-and-restaurant",
+      "name": "El Sol Bar and Restaurant",
+      "island": "stx",
+      "category": "food",
+      "description": "El Sol Bar and Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/el-sol-bar-and-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "enkai-sushi-bar",
+      "slug": "enkai-sushi-bar",
+      "name": "Enkai Sushi Bar",
+      "island": "stt",
+      "category": "food",
+      "description": "Enkai Sushi Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/enkai-sushi-bar-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "extra-virgin-bistro",
+      "slug": "extra-virgin-bistro",
+      "name": "Extra Virgin Bistro",
+      "island": "stj",
+      "category": "food",
+      "description": "Extra Virgin Bistro is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/extra-virgin-bistro-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "flyers-bar-and-grill",
+      "slug": "flyers-bar-and-grill",
+      "name": "Flyers Bar & Grill",
+      "island": "stx",
+      "category": "food",
+      "description": "Flyers Bar & Grill is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/flyers-bar-and-grill-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "french-quarter-bistro",
+      "slug": "french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "island": "stt",
+      "category": "food",
+      "description": "French Quarter Bistro is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/french-quarter-bistro-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "gladys-caf",
+      "slug": "gladys-caf",
+      "name": "Gladys Café",
+      "island": "stt",
+      "category": "food",
+      "description": "Gladys Café is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/gladys-caf-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "goat-soup-and-whiskey",
+      "slug": "goat-soup-and-whiskey",
+      "name": "Goat Soup and Whiskey",
+      "island": "stx",
+      "category": "food",
+      "description": "Goat Soup and Whiskey is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/goat-soup-and-whiskey-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "hamiltons",
+      "slug": "hamiltons",
+      "name": "Hamilton's",
+      "island": "stx",
+      "category": "food",
+      "description": "Hamilton's is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/hamiltons-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "harbour-prime-steak-and-seafood",
+      "slug": "harbour-prime-steak-and-seafood",
+      "name": "Harbour Prime Steak and Seafood",
+      "island": "stx",
+      "category": "food",
+      "description": "Harbour Prime Steak and Seafood is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/harbour-prime-steak-and-seafood-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "harveys",
+      "slug": "harveys",
+      "name": "Harvey's",
+      "island": "stx",
+      "category": "food",
+      "description": "Harvey's is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/harveys-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "heidis-honeymoon-grill",
+      "slug": "heidis-honeymoon-grill",
+      "name": "Heidi's Honeymoon Grill",
+      "island": "wi",
+      "category": "food",
+      "description": "Heidi's Honeymoon Grill is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/water-island/heidis-honeymoon-grill-1.jpg",
+      "tags": [
+        "food",
+        "wi",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "high-tide-bar-and-seafood-grill",
+      "slug": "high-tide-bar-and-seafood-grill",
+      "name": "High Tide Bar & Seafood Grill",
+      "island": "stj",
+      "category": "food",
+      "description": "High Tide Bar & Seafood Grill is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/high-tide-bar-and-seafood-grill-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "hillside-terrace",
+      "slug": "hillside-terrace",
+      "name": "Hillside Terrace",
+      "island": "stj",
+      "category": "food",
+      "description": "Hillside Terrace is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/hillside-terrace-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "island-time-pub",
+      "slug": "island-time-pub",
+      "name": "Island Time Pub",
+      "island": "stt",
+      "category": "food",
+      "description": "Island Time Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/island-time-pub-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "johnny-lime",
+      "slug": "johnny-lime",
+      "name": "Johnny Lime",
+      "island": "stj",
+      "category": "food",
+      "description": "Johnny Lime is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/johnny-lime-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "kendricks",
+      "slug": "kendricks",
+      "name": "Kendricks",
+      "island": "stx",
+      "category": "food",
+      "description": "Kendricks is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/kendricks-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "kims-restaurant",
+      "slug": "kims-restaurant",
+      "name": "Kim's Restaurant",
+      "island": "stx",
+      "category": "food",
+      "description": "Kim's Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/kims-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "la-tapa",
+      "slug": "la-tapa",
+      "name": "La Tapa",
+      "island": "stj",
+      "category": "food",
+      "description": "La Tapa is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/la-tapa-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "lanai-at-limetree",
+      "slug": "lanai-at-limetree",
+      "name": "Lanai at Limetree",
+      "island": "stt",
+      "category": "food",
+      "description": "Lanai at Limetree is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/lanai-at-limetree-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "leatherback-brewing-company",
+      "slug": "leatherback-brewing-company",
+      "name": "Leatherback Brewing Company",
+      "island": "stx",
+      "category": "food",
+      "description": "Leatherback Brewing Company is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/leatherback-brewing-company-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "lovango-rum-bar",
+      "slug": "lovango-rum-bar",
+      "name": "Lovango Rum Bar",
+      "island": "stj",
+      "category": "food",
+      "description": "Lovango Rum Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/lovango-rum-bar-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "margaritaville-restaurant",
+      "slug": "margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "island": "stt",
+      "category": "food",
+      "description": "Margaritaville Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/margaritaville-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "marias-cantina",
+      "slug": "marias-cantina",
+      "name": "Maria's Cantina",
+      "island": "stx",
+      "category": "food",
+      "description": "Maria's Cantina is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/marias-cantina-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "melt-mexican-grill",
+      "slug": "melt-mexican-grill",
+      "name": "Melt Mexican Grill",
+      "island": "stt",
+      "category": "food",
+      "description": "Melt Mexican Grill is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/melt-mexican-grill-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "miss-lucys",
+      "slug": "miss-lucys",
+      "name": "Miss Lucy's",
+      "island": "stj",
+      "category": "food",
+      "description": "Miss Lucy's is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/miss-lucys-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "mooies-bar",
+      "slug": "mooies-bar",
+      "name": "Mooie's Bar",
+      "island": "stj",
+      "category": "food",
+      "description": "Mooie's Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/mooies-bar-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "morgans-mango",
+      "slug": "morgans-mango",
+      "name": "Morgan's Mango",
+      "island": "stj",
+      "category": "food",
+      "description": "Morgan's Mango is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/morgans-mango-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "nates-boathouse",
+      "slug": "nates-boathouse",
+      "name": "Nate's Boathouse",
+      "island": "stx",
+      "category": "food",
+      "description": "Nate's Boathouse is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/nates-boathouse-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "nauti-bar-and-grille",
+      "slug": "nauti-bar-and-grille",
+      "name": "Nauti Bar and Grille",
+      "island": "stx",
+      "category": "food",
+      "description": "Nauti Bar and Grille is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/nauti-bar-and-grille-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "no-bones-caf",
+      "slug": "no-bones-caf",
+      "name": "No Bones Café",
+      "island": "stx",
+      "category": "food",
+      "description": "No Bones Café is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/no-bones-caf-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "north-shore-deli",
+      "slug": "north-shore-deli",
+      "name": "North Shore Deli",
+      "island": "stj",
+      "category": "food",
+      "description": "North Shore Deli is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/north-shore-deli-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "oceana-restaurant",
+      "slug": "oceana-restaurant",
+      "name": "Oceana Restaurant",
+      "island": "stt",
+      "category": "food",
+      "description": "Oceana Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/oceana-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "old-stone-farmhouse",
+      "slug": "old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "island": "stt",
+      "category": "food",
+      "description": "Old Stone Farmhouse is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/old-stone-farmhouse-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "our-market-smoothies",
+      "slug": "our-market-smoothies",
+      "name": "Our Market Smoothies",
+      "island": "stj",
+      "category": "food",
+      "description": "Our Market Smoothies is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/our-market-smoothies-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "pangea-terra-table",
+      "slug": "pangea-terra-table",
+      "name": "Pangea Terra Table",
+      "island": "stt",
+      "category": "food",
+      "description": "Pangea Terra Table is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/pangea-terra-table-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "paradise-pizza",
+      "slug": "paradise-pizza",
+      "name": "Paradise Pizza",
+      "island": "stx",
+      "category": "food",
+      "description": "Paradise Pizza is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/paradise-pizza-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "petit-pump-room",
+      "slug": "petit-pump-room",
+      "name": "Petit Pump Room",
+      "island": "stt",
+      "category": "food",
+      "description": "Petit Pump Room is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/petit-pump-room-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "petras-dushi-by-the-sea",
+      "slug": "petras-dushi-by-the-sea",
+      "name": "Petra's Dushi by the Sea",
+      "island": "stt",
+      "category": "food",
+      "description": "Petra's Dushi by the Sea is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/petras-dushi-by-the-sea-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "pie-whole-pizza",
+      "slug": "pie-whole-pizza",
+      "name": "Pie Whole Pizza",
+      "island": "stt",
+      "category": "food",
+      "description": "Pie Whole Pizza is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/pie-whole-pizza-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "pizza-pi",
+      "slug": "pizza-pi",
+      "name": "Pizza Pi",
+      "island": "stj",
+      "category": "food",
+      "description": "Pizza Pi is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/pizza-pi-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "rhumb-lines",
+      "slug": "rhumb-lines",
+      "name": "Rhumb Lines",
+      "island": "stj",
+      "category": "food",
+      "description": "Rhumb Lines is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/rhumb-lines-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "rowdy-joes",
+      "slug": "rowdy-joes",
+      "name": "Rowdy Joe's",
+      "island": "stx",
+      "category": "food",
+      "description": "Rowdy Joe's is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/rowdy-joes-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "rum-island-pub",
+      "slug": "rum-island-pub",
+      "name": "Rum Island Pub",
+      "island": "stt",
+      "category": "food",
+      "description": "Rum Island Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/rum-island-pub-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "salt-great-pond",
+      "slug": "salt-great-pond",
+      "name": "Salt Great Pond",
+      "island": "stx",
+      "category": "food",
+      "description": "Salt Great Pond is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/salt-great-pond-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "sam-and-jacks-deli",
+      "slug": "sam-and-jacks-deli",
+      "name": "Sam & Jack's Deli",
+      "island": "stj",
+      "category": "food",
+      "description": "Sam & Jack's Deli is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/sam-and-jacks-deli-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "sangrias-beachside-bistro",
+      "slug": "sangrias-beachside-bistro",
+      "name": "Sangria's Beachside Bistro",
+      "island": "stt",
+      "category": "food",
+      "description": "Sangria's Beachside Bistro is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/sangrias-beachside-bistro-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "savant",
+      "slug": "savant",
+      "name": "Savant",
+      "island": "stx",
+      "category": "food",
+      "description": "Savant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/savant-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "sea-la-vie",
+      "slug": "sea-la-vie",
+      "name": "Sea La Vie",
+      "island": "stt",
+      "category": "food",
+      "description": "Sea La Vie is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/sea-la-vie-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "seaside-market-deli",
+      "slug": "seaside-market-deli",
+      "name": "Seaside Market Deli",
+      "island": "stx",
+      "category": "food",
+      "description": "Seaside Market Deli is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/seaside-market-deli-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "shamas-specialties",
+      "slug": "shamas-specialties",
+      "name": "Shama's Specialties",
+      "island": "stt",
+      "category": "food",
+      "description": "Shama's Specialties is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/shamas-specialties-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "shambles",
+      "slug": "shambles",
+      "name": "Shambles",
+      "island": "stj",
+      "category": "food",
+      "description": "Shambles is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/shambles-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "side-street-pub",
+      "slug": "side-street-pub",
+      "name": "Side Street Pub",
+      "island": "stt",
+      "category": "food",
+      "description": "Side Street Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/side-street-pub-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "singhs-fast-food",
+      "slug": "singhs-fast-food",
+      "name": "Singh's Fast Food",
+      "island": "stx",
+      "category": "food",
+      "description": "Singh's Fast Food is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/singhs-fast-food-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "six-nine-restaurant-and-bar",
+      "slug": "six-nine-restaurant-and-bar",
+      "name": "Six Nine Restaurant & Bar",
+      "island": "stx",
+      "category": "food",
+      "description": "Six Nine Restaurant & Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/six-nine-restaurant-and-bar-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "skinny-legs",
+      "slug": "skinny-legs",
+      "name": "Skinny Legs",
+      "island": "stj",
+      "category": "food",
+      "description": "Skinny Legs is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/skinny-legs-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "smoke-up-fusion-bbq",
+      "slug": "smoke-up-fusion-bbq",
+      "name": "Smoke Up Fusion BBQ",
+      "island": "stt",
+      "category": "food",
+      "description": "Smoke Up Fusion BBQ is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/smoke-up-fusion-bbq-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "st-john-brewers-tap-room",
+      "slug": "st-john-brewers-tap-room",
+      "name": "St. John Brewers Tap Room",
+      "island": "stj",
+      "category": "food",
+      "description": "St. John Brewers Tap Room is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/st-john-brewers-tap-room-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "stj-speakeasy",
+      "slug": "stj-speakeasy",
+      "name": "STJ Speakeasy",
+      "island": "stj",
+      "category": "food",
+      "description": "STJ Speakeasy is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/stj-speakeasy-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "sun-dog-caf",
+      "slug": "sun-dog-caf",
+      "name": "Sun Dog Café",
+      "island": "stj",
+      "category": "food",
+      "description": "Sun Dog Café is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/sun-dog-caf-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "sunny-isle-shopping-center",
+      "slug": "sunny-isle-shopping-center",
+      "name": "Sunny Isle Shopping Center",
+      "island": "stx",
+      "category": "shopping",
+      "description": "Sunny Isle Shopping Center is a local shopping destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/sunny-isle-shopping-center-1.jpg",
+      "tags": [
+        "shopping",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "surf-club-cantina",
+      "slug": "surf-club-cantina",
+      "name": "Surf Club Cantina",
+      "island": "stj",
+      "category": "food",
+      "description": "Surf Club Cantina is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/surf-club-cantina-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "taco-shack",
+      "slug": "taco-shack",
+      "name": "Taco Shack",
+      "island": "stx",
+      "category": "food",
+      "description": "Taco Shack is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/taco-shack-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "tap-deck-bar-and-billiards",
+      "slug": "tap-deck-bar-and-billiards",
+      "name": "Tap Deck Bar & Billiards",
+      "island": "stx",
+      "category": "food",
+      "description": "Tap Deck Bar & Billiards is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/tap-deck-bar-and-billiards-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "taphus-beer-house",
+      "slug": "taphus-beer-house",
+      "name": "Taphus Beer House",
+      "island": "stt",
+      "category": "food",
+      "description": "Taphus Beer House is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/taphus-beer-house-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-bombay-club",
+      "slug": "the-bombay-club",
+      "name": "The Bombay Club",
+      "island": "stx",
+      "category": "food",
+      "description": "The Bombay Club is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/the-bombay-club-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-easterly",
+      "slug": "the-easterly",
+      "name": "The Easterly",
+      "island": "stt",
+      "category": "food",
+      "description": "The Easterly is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/the-easterly-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-lime-inn",
+      "slug": "the-lime-inn",
+      "name": "The Lime Inn",
+      "island": "stj",
+      "category": "food",
+      "description": "The Lime Inn is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/the-lime-inn-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-longboard",
+      "slug": "the-longboard",
+      "name": "The Longboard",
+      "island": "stj",
+      "category": "food",
+      "description": "The Longboard is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/the-longboard-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-smoking-rooster",
+      "slug": "the-smoking-rooster",
+      "name": "The Smoking Rooster",
+      "island": "stt",
+      "category": "food",
+      "description": "The Smoking Rooster is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/the-smoking-rooster-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-tap-room-st-john",
+      "slug": "the-tap-room-st-john",
+      "name": "The Tap Room St. John",
+      "island": "stj",
+      "category": "food",
+      "description": "The Tap Room St. John is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/the-tap-room-st-john-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-terrace",
+      "slug": "the-terrace",
+      "name": "The Terrace",
+      "island": "stj",
+      "category": "food",
+      "description": "The Terrace is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/the-terrace-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-terrace-restaurant",
+      "slug": "the-terrace-restaurant",
+      "name": "The Terrace Restaurant",
+      "island": "stx",
+      "category": "food",
+      "description": "The Terrace Restaurant is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/the-terrace-restaurant-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "the-twisted-cork",
+      "slug": "the-twisted-cork",
+      "name": "The Twisted Cork",
+      "island": "stt",
+      "category": "food",
+      "description": "The Twisted Cork is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/the-twisted-cork-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "three-palms",
+      "slug": "three-palms",
+      "name": "Three Palms",
+      "island": "stt",
+      "category": "food",
+      "description": "Three Palms is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/three-palms-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "tickles-dockside-pub",
+      "slug": "tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "island": "stt",
+      "category": "food",
+      "description": "Tickles Dockside Pub is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/tickles-dockside-pub-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "tlc-kitchen",
+      "slug": "tlc-kitchen",
+      "name": "TLC Kitchen",
+      "island": "stx",
+      "category": "food",
+      "description": "TLC Kitchen is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/tlc-kitchen-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "toast-diner",
+      "slug": "toast-diner",
+      "name": "Toast Diner",
+      "island": "stx",
+      "category": "food",
+      "description": "Toast Diner is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/toast-diner-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "too-chez",
+      "slug": "too-chez",
+      "name": "Too Chez",
+      "island": "stx",
+      "category": "food",
+      "description": "Too Chez is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/too-chez-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "turtles-deli",
+      "slug": "turtles-deli",
+      "name": "Turtle's Deli",
+      "island": "stx",
+      "category": "food",
+      "description": "Turtle's Deli is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/turtles-deli-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "twin-city-coffee-house",
+      "slug": "twin-city-coffee-house",
+      "name": "Twin City Coffee House",
+      "island": "stx",
+      "category": "food",
+      "description": "Twin City Coffee House is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/twin-city-coffee-house-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "udder-delights",
+      "slug": "udder-delights",
+      "name": "Udder Delights",
+      "island": "stt",
+      "category": "food",
+      "description": "Udder Delights is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-thomas/udder-delights-1.jpg",
+      "tags": [
+        "food",
+        "stt",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "uncle-joes-bbq",
+      "slug": "uncle-joes-bbq",
+      "name": "Uncle Joe's BBQ",
+      "island": "stj",
+      "category": "food",
+      "description": "Uncle Joe's BBQ is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/uncle-joes-bbq-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "water-island-beach-bar",
+      "slug": "water-island-beach-bar",
+      "name": "Water Island Beach Bar",
+      "island": "wi",
+      "category": "food",
+      "description": "Water Island Beach Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/water-island/water-island-beach-bar-1.jpg",
+      "tags": [
+        "food",
+        "wi",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "wharfside-village",
+      "slug": "wharfside-village",
+      "name": "Wharfside Village",
+      "island": "stj",
+      "category": "shopping",
+      "description": "Wharfside Village is a local shopping destination included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/wharfside-village-1.jpg",
+      "tags": [
+        "shopping",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "windmill-bar",
+      "slug": "windmill-bar",
+      "name": "Windmill Bar",
+      "island": "stj",
+      "category": "food",
+      "description": "Windmill Bar is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/windmill-bar-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "woodys-seafood-saloon",
+      "slug": "woodys-seafood-saloon",
+      "name": "Woody's Seafood Saloon",
+      "island": "stj",
+      "category": "food",
+      "description": "Woody's Seafood Saloon is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-john/woodys-seafood-saloon-1.jpg",
+      "tags": [
+        "food",
+        "stj",
+        "local business"
+      ],
+      "featured": false
+    },
+    {
+      "id": "ziggys-island-market",
+      "slug": "ziggys-island-market",
+      "name": "Ziggy's Island Market",
+      "island": "stx",
+      "category": "food",
+      "description": "Ziggy's Island Market is a local dining and gathering place included in the VI Guide island catalog.",
+      "heroImage": "/images/places/st-croix/ziggys-island-market-1.jpg",
+      "tags": [
+        "food",
+        "stx",
+        "local business"
+      ],
+      "featured": false
+    }
+  ],
+  "skipped": []
+}

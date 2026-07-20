@@ -1,0 +1,2236 @@
+{
+  "generatedAt": "2026-07-17T15:46:45.583Z",
+  "summary": {
+    "totalRecords": 206,
+    "localImages": 49,
+    "needsReview": 0,
+    "byStatus": {
+      "valid-local": 71,
+      "remote": 135
+    }
+  },
+  "rows": [
+    {
+      "collection": "beaches",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/abi-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "banana-bay",
+      "name": "Banana Bay Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/banana-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "bolongo-bay",
+      "name": "Bolongo Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/accommodations/bolongo-bay-beach-resort.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/bolongo-bay-beach-resort.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/brewers-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/brown-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "buccaneer-beach",
+      "name": "Buccaneer Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/accommodations/the-buccaneer-hotel.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/the-buccaneer-hotel.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/cane-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/caneel-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/caret-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/chenay-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/cinnamon-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/coki-point.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/gallows-point-resort.jpg",
+        "/images/accommodations/point-pleasant-resort.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/columbus-landing.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/cowpet-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/denis-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/dorothea-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/dorsch-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "francis-bay",
+      "name": "Francis Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/francis-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/gibney-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/grapetree-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/hansen-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "haulover-bay",
+      "name": "Haulover Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/haulover-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/hawksnest-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/honeymoon-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/honeymoon-water-island.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "hull-bay",
+      "name": "Hull Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/accommodations/the-hideaway-at-hull-bay.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/the-hideaway-at-hull-bay.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/isaac-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/jack-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/jumbie-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "lameshur-bay",
+      "name": "Lameshur Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/lameshur-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/accommodations/lindbergh-bay-hotel-villas.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/lindbergh-bay-hotel-villas.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "lindquist-beach",
+      "name": "Lindquist Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/lindquist-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/magens-bay.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/magens-hideaway.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "maho-bay",
+      "name": "Maho Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/maho-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "mermaids-chair",
+      "name": "Mermaid's Chair",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/mermaids-chair.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "michelles-beach",
+      "name": "Michelle's Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/michelles-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/morningstar-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/nazareth-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/pelican-cove.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/marriotts-frenchmans-cove.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "protestant-cay",
+      "name": "Protestant Cay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/accommodations/hotel-on-the-cay.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/hotel-on-the-cay.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/rainbow-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/reef-bay.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+        "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "salomon-beach",
+      "name": "Salomon Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/salomon-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/salt-pond-bay.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/arawak-bay-the-inn-at-salt-river.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "sandy-point",
+      "name": "Sandy Point",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/sandy-point.svg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/gallows-point-resort.jpg",
+        "/images/accommodations/point-pleasant-resort.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/santa-maria-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "sapphire-beach",
+      "name": "Sapphire Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/accommodations/sapphire-beach-resort-and-marina.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/sapphire-beach-resort-and-marina.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "secret-harbor",
+      "name": "Secret Harbor",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/accommodations/secret-harbour-beach-resort.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/secret-harbour-beach-resort.jpg",
+        "/images/usvi-harbor-hero.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/shoys-beach.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "tamarind-reef",
+      "name": "Tamarind Reef",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+        "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg"
+      ]
+    },
+    {
+      "collection": "beaches",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/teague-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "trunk-bay",
+      "name": "Trunk Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/trunk-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/vessup-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/directory/beaches/water-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "beaches",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/directory/beaches/waterlemon-bay.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-amalia-cafe",
+      "name": "Amalia Cafe",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "amalia-cafe.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-american-yacht-harbor-red-hook",
+      "name": "American Yacht Harbor (Red Hook)",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "american-yacht-harbor-red-hook.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-and-xo-bistro",
+      "name": "and XO Bistro",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "and-xo-bistro.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-arc-vodka-distillery",
+      "name": "ARC Vodka Distillery",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "arc-vodka-distillery.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-arian-s",
+      "name": "Arian’s",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-arian-s.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-artistic-villas-by-donald-schnell",
+      "name": "Artistic Villas by Donald Schnell",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "artistic-villas-by-donald-schnell.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-at-home-in-the-tropics-b-b",
+      "name": "At Home in the Tropics B&B",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "at-home-in-the-tropics-b-b.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/at-home-in-the-tropics.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-beach-bar-and-grill-at-lindbergh-beach",
+      "name": "Beach Bar and Grill at Lindbergh Beach",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "beach-bar-and-grill-at-lindbergh-beach.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-beach-bar-at-emerald-beach",
+      "name": "Beach Bar at Emerald Beach",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "beach-bar-at-emerald-beach.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/emerald-beach-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-bellavista-bed-breakfast",
+      "name": "Bellavista Bed & Breakfast",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "bellavista-bed-breakfast.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/sugar-apple-bed-breakfast.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-beni-iguanas-sushi-bar",
+      "name": "Beni Iguanas Sushi Bar",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "beni-iguanas-sushi-bar.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-benito-s-burritos",
+      "name": "Benito’s Burritos",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-benito-s-burritos.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bernie-s-bar-grill",
+      "name": "Bernie’s Bar & Grill",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-blue-11",
+      "name": "Blue 11",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "blue-11.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard’s Castle Hilltop Villas & Marriott’s Frenchman’s Cove (timeshares)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-resort",
+      "name": "Bluebeard’s Castle Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "/images/accommodations/bluebeards-castle-resort.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/bluebeards-castle-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-bolongo-bay-beach-resort",
+      "name": "Bolongo Bay Beach Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "bolongo-bay-beach-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/bolongo-bay-beach-resort.jpg",
+        "/images/accommodations/bluebeards-castle-resort.jpg",
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+        "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg",
+        "/images/accommodations/elysian-beach-resort.avif"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-bonita-s-cantina",
+      "name": "Bonita’s Cantina",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-brooks-bar",
+      "name": "Brooks Bar",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "brooks-bar.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-buddha-sushi",
+      "name": "Buddha Sushi",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "buddha-sushi.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bumpa-s",
+      "name": "Bumpa’s",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-bumpa-s.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bungalows-on-the-bay-chenay",
+      "name": "Bungalows on the Bay (Chenay)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "bungalows-on-the-bay-chenay.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-bunker-hill-hotel",
+      "name": "Bunker Hill Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "bunker-hill-hotel.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/bunker-hill-hotel.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-buoy-haus-beach-resort-at-frenchman-s-reef",
+      "name": "Buoy Haus Beach Resort at Frenchman’s Reef",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-burger-maxx",
+      "name": "Burger Maxx",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "burger-maxx.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-cafe-amici",
+      "name": "Cafe Amici",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "cafe-amici.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-caneel-bay-resort-currently-closed",
+      "name": "Caneel Bay Resort (currently closed)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "caneel-bay-resort-currently-closed.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-carambola-beach-resort",
+      "name": "Carambola Beach Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "carambola-beach-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/bluebeards-castle-resort.jpg",
+        "/images/accommodations/bolongo-bay-beach-resort.jpg",
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+        "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg",
+        "/images/accommodations/elysian-beach-resort.avif"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-caribbean-fish-market",
+      "name": "Caribbean Fish Market",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "caribbean-fish-market.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-caribbean-saloon-steak",
+      "name": "Caribbean Saloon (steak)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "caribbean-saloon-steak.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-carigas-island-cafe",
+      "name": "Carigas Island Cafe",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "carigas-island-cafe.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-carina-bay-campground-cane-bay",
+      "name": "Carina Bay Campground (Cane Bay)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "carina-bay-campground-cane-bay.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-catered-to-vacation-homes",
+      "name": "Catered To Vacation Homes",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "catered-to-vacation-homes.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-china-king",
+      "name": "China King",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "china-king.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/king-christian-hotel.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-club-st-croix-beach-tennis-resort",
+      "name": "Club St. Croix Beach & Tennis Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "club-st-croix-beach-tennis-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/club-comanche-hotel-st-croix.jpg",
+        "/images/accommodations/limetree-beach-resort-by-club-wyndham.webp",
+        "/images/accommodations/lovango-resort-beach-club.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-coconuts-bar-grill",
+      "name": "Coconuts Bar & Grill",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "coconuts-bar-grill.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-colony-cove",
+      "name": "Colony Cove",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "colony-cove.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/marriotts-frenchmans-cove.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-company-house-hotel",
+      "name": "Company House Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "company-house-hotel.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/company-house-hotel.jpg",
+        "/images/accommodations/galleon-house-hotel.webp"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-concordia-eco-resort",
+      "name": "Concordia Eco‑Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "concordia-eco-resort.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-cottages-by-the-sea",
+      "name": "Cottages by the Sea",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "cottages-by-the-sea.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/cottages-by-the-sea.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-cravin-crabs",
+      "name": "Cravin Crabs",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "cravin-crabs.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-crown-bay-center",
+      "name": "Crown Bay Center",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "crown-bay-center.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-cruz-bay-boutique-hotel",
+      "name": "Cruz Bay Boutique Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "cruz-bay-boutique-hotel.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-delly-deck",
+      "name": "Delly Deck",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "delly-deck.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-divi-carina-bay-all-inclusive-beach-resort-casino",
+      "name": "Divi Carina Bay All‑Inclusive Beach Resort & Casino",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "divi-carina-bay-all-inclusive-beach-resort-casino.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-dog-house-pub",
+      "name": "Dog House Pub",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "dog-house-pub.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-duffy-s-love-shack",
+      "name": "Duffy’s Love Shack",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-duffy-s-love-shack.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-e-s-garden-teahouse",
+      "name": "E’s Garden Teahouse",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-e-s-garden-teahouse.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-eco-serendib-villa-and-spa",
+      "name": "Eco Serendib Villa and Spa",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "eco-serendib-villa-and-spa.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-elysian-beach-resort-club-wyndham",
+      "name": "Elysian Beach Resort (Club Wyndham)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "elysian-beach-resort-club-wyndham.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/limetree-beach-resort-by-club-wyndham.webp",
+        "/images/accommodations/elysian-beach-resort.avif",
+        "/images/accommodations/lovango-resort-beach-club.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-emerald-beach-resort",
+      "name": "Emerald Beach Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "emerald-beach-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/emerald-beach-resort.jpg",
+        "/images/accommodations/bluebeards-castle-resort.jpg",
+        "/images/accommodations/bolongo-bay-beach-resort.jpg",
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+        "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-estate-lindholm",
+      "name": "Estate Lindholm",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "estate-lindholm.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-feather-leaf-inn",
+      "name": "Feather Leaf Inn",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "feather-leaf-inn.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-flamboyan-on-the-bay-resort-villas-at-magens-point",
+      "name": "Flamboyan on the Bay Resort & Villas at Magens Point",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "flamboyan-on-the-bay-resort-villas-at-magens-point.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "french-quarter-bistro.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchman-s-cove",
+      "name": "Frenchman’s Cove",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "/images/accommodations/marriotts-frenchmans-cove.jpg",
+      "status": "valid-local",
+      "candidates": [
+        "/images/accommodations/marriotts-frenchmans-cove.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchtown-brewing-company-brewery",
+      "name": "Frenchtown Brewing Company (brewery)",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "frenchtown-brewing-company-brewery.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchtown-deli",
+      "name": "Frenchtown Deli",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "frenchtown-deli.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-galleon-house",
+      "name": "Galleon House",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "galleon-house.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/galleon-house-hotel.webp",
+        "/images/accommodations/company-house-hotel.jpg",
+        "/images/accommodations/tillett-gardens-guest-house.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-gallows-point-resort",
+      "name": "Gallows Point Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "gallows-point-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/gallows-point-resort.jpg",
+        "/images/accommodations/point-pleasant-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-gladys-cafe",
+      "name": "Gladys’ Cafe",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "gladys-cafe.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-grande-bay-resort",
+      "name": "Grande Bay Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "grande-bay-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/bluebeards-castle-resort.jpg",
+        "/images/accommodations/bolongo-bay-beach-resort.jpg",
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+        "/images/accommodations/divi-carina-bay-beach-resort-casino.jpg",
+        "/images/accommodations/elysian-beach-resort.avif"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-great-wall",
+      "name": "Great Wall",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "great-wall.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-great-wall-chinese",
+      "name": "Great Wall (Chinese)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "great-wall-chinese.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-greengos",
+      "name": "Greengos",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "greengos.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "4m4fUywBvLCqIGO2lnJV",
+      "name": "Greengos Caribbean Cantina",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "https://…/photo.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-greengos-caribbean-cantina.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-havensight-shopping-mall",
+      "name": "Havensight Shopping Mall",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "havensight-shopping-mall.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-hook-line-sinker",
+      "name": "Hook Line & Sinker",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "hook-line-sinker.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-ideal-roti",
+      "name": "Ideal Roti",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "ideal-roti.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-iggies-oasis",
+      "name": "Iggies Oasis",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "iggies-oasis.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-flavor",
+      "name": "Island Flavor",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "island-flavor.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-time-pub-pizza",
+      "name": "Island Time Pub (pizza)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "island-time-pub-pizza.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-view-guest-house",
+      "name": "Island View Guest House",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "island-view-guest-house.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/tillett-gardens-guest-house.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-king-christian-hotel",
+      "name": "King Christian Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "king-christian-hotel.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/king-christian-hotel.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-lindbergh-bay-hotel-villas",
+      "name": "Lindbergh Bay Hotel & Villas",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "lindbergh-bay-hotel-villas.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/lindbergh-bay-hotel-villas.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-lockhart-gardens-tutu-park-mall-nisky-center-paradise-point-and-mountain-top",
+      "name": "Lockhart Gardens, Tutu Park Mall, Nisky Center, Paradise Point and Mountain Top",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "lockhart-gardens-tutu-park-mall-nisky-center-paradise-point-and-mountain-top.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-lovango-resort-beach-club",
+      "name": "Lovango Resort & Beach Club",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "lovango-resort-beach-club.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/lovango-resort-beach-club.jpg",
+        "/images/accommodations/limetree-beach-resort-by-club-wyndham.webp"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-mafolie-hotel",
+      "name": "Mafolie Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "mafolie-hotel.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-mafolie-hotel.webp",
+        "/images/accommodations/boundless-bliss-hotel.png",
+        "/images/accommodations/bunker-hill-hotel.jpg",
+        "/images/accommodations/caravelle-hotel-casino.jpg",
+        "/images/accommodations/club-comanche-hotel-st-croix.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-mafolie-restaurant",
+      "name": "Mafolie Restaurant",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "mafolie-restaurant.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-mafolie-hotel.webp"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-magens-bay-cafe-pizzeria",
+      "name": "Magens Bay Cafe & Pizzeria",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "magens-bay-cafe-pizzeria.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-maho-bay-camps",
+      "name": "Maho Bay Camps",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "maho-bay-camps.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "margaritaville-restaurant.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/margaritaville-vacation-club-st-thomas.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-margaritaville-vacation-club-by-wyndham",
+      "name": "Margaritaville Vacation Club by Wyndham",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "margaritaville-vacation-club-by-wyndham.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/margaritaville-vacation-club-st-thomas.jpg",
+        "/images/accommodations/limetree-beach-resort-by-club-wyndham.webp"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-mim-s-seafood-bistro",
+      "name": "Mim’s Seafood Bistro",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-mim-s-seafood-bistro.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-oceana-multicuisine",
+      "name": "Oceana (multicuisine)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "oceana-multicuisine.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "old-stone-farmhouse.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pangea-terra-table-farm-to-table",
+      "name": "Pangea Terra Table (farm‑to‑table)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pangea-terra-table-farm-to-table.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-paradise-point-bar-restaurant",
+      "name": "Paradise Point Bar & Restaurant",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "paradise-point-bar-restaurant.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pesce-italian",
+      "name": "Pesce (Italian)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pesce-italian.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-petit-pump-room",
+      "name": "Petit Pump Room",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "petit-pump-room.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pie-whole-pizza",
+      "name": "Pie Whole (pizza)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pie-whole-pizza.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pita-express",
+      "name": "Pita Express",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pita-express.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pizza-amore",
+      "name": "Pizza Amore",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pizza-amore.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-pizza-pi-floating-pizza-boat",
+      "name": "Pizza Pi (floating pizza boat)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "pizza-pi-floating-pizza-boat.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-point-pleasant-resort",
+      "name": "Point Pleasant Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "point-pleasant-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/point-pleasant-resort.jpg",
+        "/images/accommodations/gallows-point-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-prime-at-paradise-point",
+      "name": "PRIME at Paradise Point",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "prime-at-paradise-point.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-prime-at-paradise-point-steak",
+      "name": "PRIME at Paradise Point (steak)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "prime-at-paradise-point-steak.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-rancho-latino",
+      "name": "Rancho Latino",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "rancho-latino.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-raw-sushi-sake-bar",
+      "name": "RAW Sushi & Sake Bar",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "raw-sushi-sake-bar.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-ritz-carlton-club-timeshare",
+      "name": "Ritz‑Carlton Club (timeshare)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "ritz-carlton-club-timeshare.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-ritz-carlton-st-thomas.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-rum-island-pub",
+      "name": "Rum Island Pub",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "rum-island-pub.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-rum-shandy",
+      "name": "Rum Shandy",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "rum-shandy.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-sabroso-restaurant",
+      "name": "Sabroso Restaurant",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "sabroso-restaurant.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-sand-castle-on-the-beach",
+      "name": "Sand Castle on the Beach",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "sand-castle-on-the-beach.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/sand-castle-on-the-beach.jpg",
+        "/images/accommodations/bluebeards-castle-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-sand-castle-on-the-beach-again",
+      "name": "Sand Castle On the Beach (again)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "sand-castle-on-the-beach-again.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/sand-castle-on-the-beach.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-sapphire-beach-bar",
+      "name": "Sapphire Beach Bar",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "sapphire-beach-bar.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/sapphire-beach-resort-and-marina.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-secret-harbour-beach-resort",
+      "name": "Secret Harbour Beach Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "secret-harbour-beach-resort.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/secret-harbour-beach-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-senor-pizza",
+      "name": "Senor Pizza",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "senor-pizza.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-sibs-mountain-bar-restaurant",
+      "name": "Sibs Mountain Bar & Restaurant",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "sibs-mountain-bar-restaurant.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-side-street-pub",
+      "name": "Side Street Pub",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "side-street-pub.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-smoking-rooster",
+      "name": "Smoking Rooster",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "smoking-rooster.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-smoky-rooster",
+      "name": "Smoky Rooster",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "smoky-rooster.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-speedy-redemption",
+      "name": "Speedy Redemption",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "speedy-redemption.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-st-john-inn",
+      "name": "St John Inn",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "st-john-inn.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/arawak-bay-the-inn-at-salt-river.jpg",
+        "/images/accommodations/inn-on-strand-street.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-st-croix-timeshares-e-g-chenay-bay-beach-resort",
+      "name": "St. Croix timeshares (e.g., Chenay Bay Beach Resort)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "st-croix-timeshares-e-g-chenay-bay-beach-resort.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-stir-it-up",
+      "name": "Stir It Up",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "stir-it-up.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-stir-it-up-coffee",
+      "name": "Stir It Up (coffee)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "stir-it-up-coffee.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-stone-house-cafe",
+      "name": "Stone House Cafe",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "stone-house-cafe.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-sudi-s-caribbean-bar-grille",
+      "name": "Sudi’s Caribbean Bar & Grille",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-sudi-s-caribbean-bar-grille.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-sugar-apple-bed-breakfast",
+      "name": "Sugar Apple Bed & Breakfast",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "sugar-apple-bed-breakfast.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/sugar-apple-bed-breakfast.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-sunset-grille-secret-harbour",
+      "name": "Sunset Grille – Secret Harbour",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "sunset-grille-secret-harbour.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/secret-harbour-beach-resort.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-tap-and-still",
+      "name": "Tap and Still",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "tap-and-still.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-taphus-beer-house",
+      "name": "Taphus Beer House",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "taphus-beer-house.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-taphus-beer-house-brewery",
+      "name": "Taphus Beer House (brewery)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "taphus-beer-house-brewery.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-texas-pit",
+      "name": "Texas Pit",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "texas-pit.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-thali-indian-grill",
+      "name": "Thali Indian Grill",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "thali-indian-grill.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-box-bar",
+      "name": "The Box Bar",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-box-bar.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-buccaneer",
+      "name": "The Buccaneer",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-buccaneer.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-buccaneer-hotel.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-buccaneer-hotel",
+      "name": "The Buccaneer Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-buccaneer-hotel.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-buccaneer-hotel.jpg",
+        "/images/accommodations/boundless-bliss-hotel.png",
+        "/images/accommodations/bunker-hill-hotel.jpg",
+        "/images/accommodations/caravelle-hotel-casino.jpg",
+        "/images/accommodations/club-comanche-hotel-st-croix.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-dive-bar",
+      "name": "The Dive Bar",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-dive-bar.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-easterly",
+      "name": "The Easterly",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-easterly.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-fred",
+      "name": "The Fred",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-fred.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-fred.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-green-house",
+      "name": "The Green House",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-green-house.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/company-house-hotel.jpg",
+        "/images/accommodations/galleon-house-hotel.webp",
+        "/images/accommodations/the-green-iguana-hotel.jpg",
+        "/images/accommodations/tillett-gardens-guest-house.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-holger-danske-hotel",
+      "name": "The Holger Danske Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-holger-danske-hotel.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-meat-up",
+      "name": "The Meat Up",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-meat-up.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-ritz-carlton-st-thomas",
+      "name": "The Ritz‑Carlton, St. Thomas",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-ritz-carlton-st-thomas.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-ritz-carlton-st-thomas.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-tuck-shop",
+      "name": "The Tuck Shop",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-tuck-shop.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-twisted-cork-cafe",
+      "name": "The Twisted Cork Cafe",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "the-twisted-cork-cafe.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-waves-at-cane-bay",
+      "name": "The Waves at Cane Bay",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-waves-at-cane-bay.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-waves-cane-bay",
+      "name": "The Waves Cane Bay",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-waves-cane-bay.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-westin-st-john-resort-villas",
+      "name": "The Westin St. John Resort Villas",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "the-westin-st-john-resort-villas.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "tickles-dockside-pub.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-tickles-dockside-pub-and-virgin-islands-coffee-roasters",
+      "name": "Tickles Dockside Pub and Virgin Islands Coffee Roasters",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "tickles-dockside-pub-and-virgin-islands-coffee-roasters.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-tillett-gardens",
+      "name": "Tillett Gardens",
+      "island": "STT",
+      "category": "shops",
+      "currentImage": "tillett-gardens.jpg",
+      "status": "remote",
+      "candidates": [
+        "/images/accommodations/tillett-gardens-guest-house.jpg",
+        "/images/accommodations/sunset-gardens-guesthouse.webp"
+      ]
+    },
+    {
+      "collection": "places",
+      "id": "STT-two-sandals-by-the-sea",
+      "name": "Two Sandals by the Sea",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "two-sandals-by-the-sea.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-virgilio-s-italian",
+      "name": "Virgilio’s (Italian)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "/images/directory/places/stt-virgilio-s-italian.svg",
+      "status": "valid-local",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-virgin-islands-coffee-roasters-coffee",
+      "name": "Virgin Islands Coffee Roasters (coffee)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "virgin-islands-coffee-roasters-coffee.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-windward-passage-hotel",
+      "name": "Windward Passage Hotel",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "windward-passage-hotel.jpg",
+      "status": "remote",
+      "candidates": []
+    },
+    {
+      "collection": "places",
+      "id": "STT-yacht-haven-grande-marina",
+      "name": "Yacht Haven Grande Marina",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "yacht-haven-grande-marina.jpg",
+      "status": "remote",
+      "candidates": []
+    }
+  ]
+}

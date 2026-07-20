@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-07-19T16:36:04.379Z",
+  "rows": [
+    {
+      "kind": "beach",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/abi-beach.svg",
+      "query": "Abi Beach St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/banana-bay.svg",
+      "query": "Banana Bay St John US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/brown-bay.svg",
+      "query": "Brown Bay St John US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/caneel-bay.svg",
+      "query": "Caneel Bay St John US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/caret-bay.svg",
+      "query": "Caret Bay St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/columbus-landing.svg",
+      "query": "Columbus Landing St Croix US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/michelles-beach.svg",
+      "query": "Michelles Beach St Croix US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/nazareth-bay.svg",
+      "query": "Nazareth Bay St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/reef-bay.svg",
+      "query": "Reef Bay St John US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/teague-bay.svg",
+      "query": "Teague Bay St Croix US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "beach",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "query": "Turtle Beach Buck Island St Croix US Virgin Islands",
+      "candidates": [],
+      "error": "rate-limited"
+    },
+    {
+      "kind": "beach",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/water-bay.svg",
+      "query": "Water Bay St Thomas US Virgin Islands",
+      "candidates": [],
+      "error": "rate-limited"
+    },
+    {
+      "kind": "beach",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/directory/beaches/waterlemon-bay.svg",
+      "query": "Waterlemon Bay St John US Virgin Islands",
+      "candidates": [
+        {
+          "title": "File:Virgin Islands NP lionfish.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Virgin_Islands_NP_lionfish.jpg",
+          "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Virgin_Islands_NP_lionfish.jpg",
+          "license": "Public domain",
+          "artist": "<a href=\"https://en.wikipedia.org/wiki/National_Park_Service\" class=\"extiw\" title=\"en:National Park Service\">National Park Service</a>",
+          "credit": "NPS Digest<br>Daily Headlines<br><a rel=\"nofollow\" class=\"external free\" href=\"http://home.nps.gov/applications/digest/headline.cfm?type=Announcements&amp;id=8803\">http://home.nps.gov/applications/digest/headline.cfm?type=Announcements&amp;id=8803</a>",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "kind": "place",
+      "id": "stt-arian-s",
+      "name": "Arian S",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-arian-s.svg",
+      "query": "Arian S St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-benito-s-burritos",
+      "name": "Benito's Burritos",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-benito-s-burritos.svg",
+      "query": "Benito's Burritos St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "query": "Bernie's Bar Grill St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "query": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "query": "Bonita's Cantina St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "stt-bumpa-s",
+      "name": "Bumpa S",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/directory/places/stt-bumpa-s.svg",
+      "query": "Bumpa S St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "island": "stt",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/attraction-stt.svg",
+      "query": "Charlotte Amalie Waterfront St Thomas US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/campground-stj.svg",
+      "query": "Cinnamon Bay Campground St John US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "columbus-landing-site",
+      "name": "Columbus Landing Site",
+      "island": "stx",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/historic-stx.svg",
+      "query": "Columbus Landing Site St Croix US Virgin Islands",
+      "candidates": []
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay",
+      "name": "Coral Bay",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/neighborhood-stj.svg",
+      "query": "Coral Bay St John US Virgin Islands",
+      "candidates": [],
+      "error": "rate-limited"
+    },
+    {
+      "kind": "place",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/marina-stj.svg",
+      "query": "Coral Bay Harbor St John US Virgin Islands",
+      "candidates": [],
+      "error": "rate-limited"
+    },
+    {
+      "kind": "place",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "island": "stj",
+      "status": "placeholder",
+      "image": "/images/places/fallbacks/attraction-stj.svg",
+      "query": "Cruz Bay Waterfront St John US Virgin Islands",
+      "candidates": [],
+      "error": "rate-limited"
+    }
+  ]
+}

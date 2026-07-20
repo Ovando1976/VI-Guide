@@ -1,0 +1,50 @@
+{
+  "jurisdiction": "United States Virgin Islands",
+  "issuingAuthority": "Virgin Islands Taxicab Commission",
+  "researchedAt": "2026-07-20T00:00:00-04:00",
+  "legalAuthority": [
+    {
+      "label": "V.I. Code tit. 20, § 404 — Tariff of automobiles for hire",
+      "url": "https://law.justia.com/codes/virgin-islands/2019/title-20/part-ii/chapter-37/subchapter-i/404/",
+      "finding": "The Taxicab Commission fixes maximum rates and a complete tariff must be posted in every vehicle for hire."
+    },
+    {
+      "label": "V.I. Code tit. 20, § 405 — statutory schedules",
+      "url": "https://law.justia.com/codes/virgin-islands/2019/title-20/part-ii/chapter-37/subchapter-i/405/",
+      "finding": "Contains historical island schedules and the nearest-tariffed-place rule; later Commission schedules supersede rates changed by the Commission."
+    }
+  ],
+  "governmentEvidence": [
+    {
+      "label": "Virgin Islands Taxicab Commission",
+      "url": "https://dpp.vi.gov/government-agencies/virgin-islands-taxicab-commission/",
+      "finding": "Current government contact page; it does not expose downloadable rate schedules."
+    },
+    {
+      "label": "Legislature budget record",
+      "url": "https://legvi.org/taxicab-commission-port-authority-and-bureau-of-corrections-defend-fiscal-year-2023-budget/",
+      "finding": "Records the Commission board's June 2022 vote for an overall 50 percent tariff increase."
+    }
+  ],
+  "candidateTranscriptions": [
+    {
+      "island": "stt",
+      "effectiveDateClaim": "2022-10-24",
+      "url": "https://www.vinow.com/stthomas/getting_around_stt/taxi_stt/",
+      "status": "secondary_source_requires_commission_schedule"
+    },
+    {
+      "island": "stj",
+      "effectiveDateClaim": "2022-10-24",
+      "url": "https://www.vinow.com/stjohn/getting_around_stj/taxis-rates/",
+      "status": "secondary_source_requires_commission_schedule"
+    },
+    {
+      "island": "stx",
+      "effectiveDateClaim": "2022-10-24",
+      "url": "https://www.vinow.com/stcroix/getting_around_stx/taxis-rates/",
+      "status": "secondary_source_requires_commission_schedule"
+    }
+  ],
+  "activationPolicy": "A candidate transcription remains draft until the corresponding Commission-issued schedule is obtained, hashed, attached as a commission_schedule source, and approved by an identified reviewer."
+}

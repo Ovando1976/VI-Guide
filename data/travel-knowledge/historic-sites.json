@@ -1,0 +1,4290 @@
+[
+  {
+    "id": "99-steps",
+    "slug": "99-steps",
+    "name": "99 Steps",
+    "island": "stt",
+    "category": "landmark",
+    "description": "A celebrated historic staircase in Charlotte Amalie connecting the town’s hillside streets.",
+    "shortDescription": "99 Steps is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/99-steps-1.jpg",
+    "images": [
+      "/images/places/st-thomas/99-steps-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STT",
+      "historic",
+      "usvi",
+      "history",
+      "landmark",
+      "stt"
+    ],
+    "featured": true,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "99_steps__99_steps.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "annaberg-historic-district",
+    "slug": "annaberg-historic-district",
+    "name": "Annaberg Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Annaberg Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Annaberg Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NW of Coral Bay, Leinster Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000090",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518829",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "annaberg-sugar-plantation",
+    "slug": "annaberg-sugar-plantation",
+    "name": "Annaberg Sugar Plantation",
+    "island": "stj",
+    "category": "ruins",
+    "description": "National park plantation ruins that interpret St. John’s colonial and agricultural history.",
+    "shortDescription": "Annaberg Sugar Plantation is a historic site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+    "images": [
+      "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STJ",
+      "historic",
+      "usvi",
+      "history",
+      "ruins",
+      "stj"
+    ],
+    "featured": true,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "annaberg_sugar_plantation__annaberg_sugar_plantation.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "barracks-no-2",
+    "slug": "barracks-no-2",
+    "name": "Barracks No. 2",
+    "aliases": [
+      "Enlisted Men�s Barracks No. 2",
+      "Submarine Base Building 18"
+    ],
+    "island": "stt",
+    "category": "landmark",
+    "description": "Barracks No. 2 is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Barracks No. 2 is a federally recognized historic landmark in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "8189 Subbase Road, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010644",
+    "nrhpListedDate": "7/30/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Enlisted Men�s Barracks No. 2",
+      "Submarine Base Building 18"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "benjamin-franklin-school",
+    "slug": "benjamin-franklin-school",
+    "name": "Benjamin Franklin School",
+    "aliases": [
+      "Guy Benjamin Elementary School"
+    ],
+    "island": "stj",
+    "category": "landmark",
+    "description": "Benjamin Franklin School is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Benjamin Franklin School is a federally recognized historic landmark in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "2 Estate Emmaus, Coral Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010650",
+    "nrhpListedDate": "7/30/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Guy Benjamin Elementary School"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "synagogue-beracha-veshalom",
+    "slug": "synagogue-beracha-veshalom",
+    "name": "Beracha Veshalom Synagogue",
+    "island": "stt",
+    "category": "church",
+    "description": "Beracha Veshalom Synagogue is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Beracha Veshalom Synagogue is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "synagogue_beracha_veshalom__synagogue_beracha_veshalom.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "bethlehem-middle-works-historic-district",
+    "slug": "bethlehem-middle-works-historic-district",
+    "name": "Bethlehem Middle Works Historic District",
+    "aliases": [
+      "Estate Bethlehem Middle Works",
+      "Bethlehem Middle Works"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Bethlehem Middle Works Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Bethlehem Middle Works Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "King's Quarter, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "87001932",
+    "nrhpListedDate": "7/6/1988",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Estate Bethlehem Middle Works",
+      "Bethlehem Middle Works"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518856",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "bethlehem-sugar-factory",
+    "slug": "bethlehem-sugar-factory",
+    "name": "Bethlehem Sugar Factory",
+    "island": "stt",
+    "category": "ruin",
+    "description": "Bethlehem Sugar Factory is a historic ruin and heritage site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Bethlehem Sugar Factory is a historic ruin and heritage site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "ruin",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "bethlehem_sugar_factory__bethlehem_sugar_factory.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "blackbeards-castle-skytsborg",
+    "slug": "blackbeards-castle-skytsborg",
+    "name": "Blackbeard's Castle (Skytsborg)",
+    "island": "stt",
+    "category": "landmark",
+    "description": "Blackbeard's Castle (Skytsborg) is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Blackbeard's Castle (Skytsborg) is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+    "images": [
+      "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    ],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "blackbeards_castle_skytsborg__blackbeards_castle_skytsborg.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "bluebeards-castle-tower",
+    "slug": "bluebeards-castle-tower",
+    "name": "Bluebeard's Castle Tower",
+    "island": "stt",
+    "category": "landmark",
+    "description": "Bluebeard's Castle Tower is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Bluebeard's Castle Tower is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/bluebeards-castle-1.jpg",
+    "images": [
+      "/images/places/st-thomas/bluebeards-castle-1.jpg"
+    ],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "bluebeards_castle_tower__bluebeards_castle_tower.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "bordeaux",
+    "slug": "bordeaux",
+    "name": "Bordeaux",
+    "aliases": [
+      "Estate Bordeaux"
+    ],
+    "island": "stt",
+    "category": "landmark",
+    "description": "Bordeaux is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Bordeaux is a federally recognized historic landmark in St. Thomas.",
+    "heroImage": "/images/sourced/historic/stt/bordeaux.png",
+    "images": [
+      "/images/sourced/historic/stt/bordeaux.png"
+    ],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002726",
+    "nrhpListedDate": "11/15/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Estate Bordeaux"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518935",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "image": "/images/sourced/historic/stt/bordeaux.png"
+  },
+  {
+    "id": "brown-bay-plantation-historic-district",
+    "slug": "brown-bay-plantation-historic-district",
+    "name": "Brown Bay Plantation Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Brown Bay Plantation Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Brown Bay Plantation Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "N of Palestina, Brown Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000089",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518827",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "catherineberg-jockumsdahl-herman-farm",
+    "slug": "catherineberg-jockumsdahl-herman-farm",
+    "name": "Catherineberg-Jockumsdahl-Herman Farm",
+    "aliases": [
+      "Hammer Farm",
+      "Herman Farm",
+      "NR Control Nos. 053177871",
+      "053177870"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Catherineberg-Jockumsdahl-Herman Farm is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Catherineberg-Jockumsdahl-Herman Farm is a federally recognized historic district in St. John.",
+    "heroImage": "/images/places/st-john/catherineberg-ruins-1.jpg",
+    "images": [
+      "/images/places/st-john/catherineberg-ruins-1.jpg"
+    ],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "E of Cruz Bay, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78000270",
+    "nrhpListedDate": "3/30/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Hammer Farm",
+      "Herman Farm",
+      "NR Control Nos. 053177871",
+      "053177870"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518813",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "charlotte-amalie-historic-district",
+    "slug": "charlotte-amalie-historic-district",
+    "name": "Charlotte Amalie Historic District",
+    "aliases": [],
+    "island": "stt",
+    "category": "district",
+    "description": "Charlotte Amalie Historic District is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Charlotte Amalie Historic District is a federally recognized historic district in St. Thomas.",
+    "heroImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
+    "tags": [
+      "district",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Roughly bounded by Nytvaer, Berg and Government Hills, Bjebre Gade and St. Thomas Harbor, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001860",
+    "nrhpListedDate": "7/19/1976",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518938",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "charlotte-amalie-historic-district-boundary-increase",
+    "slug": "charlotte-amalie-historic-district-boundary-increase",
+    "name": "Charlotte Amalie Historic District (Boundary Increase)",
+    "aliases": [],
+    "island": "stt",
+    "category": "district",
+    "description": "Charlotte Amalie Historic District (Boundary Increase) is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Charlotte Amalie Historic District (Boundary Increase) is a federally recognized historic district in St. Thomas.",
+    "heroImage": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    ],
+    "tags": [
+      "district",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "61-62 Kronprinsdsens Gade, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100009346",
+    "nrhpListedDate": "7/3/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518938",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "christiansted-historic-district",
+    "slug": "christiansted-historic-district",
+    "name": "Christiansted Historic District",
+    "aliases": [
+      "See Also:Christiansted National Historic Site"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Christiansted Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Christiansted Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-croix/christiansted-historic-district-1.jpg"
+    ],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Roughly bounded by Christiansted Harbor, New, Peter's Farm Hospital, and West Sts., Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76002266",
+    "nrhpListedDate": "7/30/1976",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "See Also:Christiansted National Historic Site"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518858",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "christiansted-national-historic-site",
+    "slug": "christiansted-national-historic-site",
+    "name": "Christiansted National Historic Site",
+    "island": "stx",
+    "category": "district",
+    "description": "A waterfront collection of historic Danish colonial buildings and public spaces.",
+    "heroImage": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+    "tags": [
+      "history",
+      "district",
+      "stx",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "aliases": [
+      "Wharf Area,Christiansted"
+    ],
+    "shortDescription": "Christiansted National Historic Site is a federally recognized historic district in St. Croix.",
+    "images": [
+      "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    ],
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Bounded by King, Queen, and Queens Cross Sts. and Christiansted Harbor, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "66000077",
+    "nrhpListedDate": "10/15/1966",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Wharf Area,Christiansted"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518860",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "christiansted-nhs-custom-house",
+    "slug": "christiansted-nhs-custom-house",
+    "name": "Christiansted NHS Custom House",
+    "island": "stx",
+    "category": "site",
+    "description": "Christiansted NHS Custom House is a historic site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Christiansted NHS Custom House is a historic site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+    "images": [
+      "/images/places/st-croix/old-danish-customs-house-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "christiansted_nhs_custom_house__christiansted_nhs_custom_house.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "christiansted-nhs-fort-christiansvaern",
+    "slug": "christiansted-nhs-fort-christiansvaern",
+    "name": "Christiansted NHS Fort Christiansvaern",
+    "island": "stx",
+    "category": "fort",
+    "description": "Christiansted NHS Fort Christiansvaern is a historic fort site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Christiansted NHS Fort Christiansvaern is a historic fort site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
+    "tags": [
+      "fort",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "christiansted_nhs_fort_christiansvaern__christiansted_nhs_fort_christiansvaern.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "christiansted-nhs-scale-house",
+    "slug": "christiansted-nhs-scale-house",
+    "name": "Christiansted NHS Scale House",
+    "island": "stx",
+    "category": "site",
+    "description": "Christiansted NHS Scale House is a historic site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Christiansted NHS Scale House is a historic site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/scale-house-1.jpg",
+    "images": [
+      "/images/places/st-croix/scale-house-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "christiansted_nhs_scale_house__christiansted_nhs_scale_house.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "christiansted-nhs-steeple-building",
+    "slug": "christiansted-nhs-steeple-building",
+    "name": "Christiansted NHS Steeple Building",
+    "island": "stx",
+    "category": "site",
+    "description": "Christiansted NHS Steeple Building is a historic site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Christiansted NHS Steeple Building is a historic site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/steeple-building-1.jpg",
+    "images": [
+      "/images/places/st-croix/steeple-building-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "christiansted_nhs_steeple_building__christiansted_nhs_steeple_building.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "cinnamon-bay-archaeology",
+    "slug": "cinnamon-bay-archaeology",
+    "name": "Cinnamon Bay Archaeology Site",
+    "island": "stj",
+    "category": "archaeology",
+    "description": "A nationally significant cultural landscape preserving Indigenous and colonial-era history.",
+    "heroImage": "/images/usvi-harbor-hero.jpg",
+    "tags": [
+      "history",
+      "archaeology",
+      "stj"
+    ],
+    "featured": true
+  },
+  {
+    "id": "cinnamon-bay-plantation",
+    "slug": "cinnamon-bay-plantation",
+    "name": "Cinnamon Bay Plantation",
+    "aliases": [
+      "Caneel Bay",
+      "NR Control Nos. PH0508675",
+      "060881191",
+      "053177870",
+      "053"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Cinnamon Bay Plantation is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Cinnamon Bay Plantation is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Cruz Bay on Cinnamon Bay, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78000269",
+    "nrhpListedDate": "7/11/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Caneel Bay",
+      "NR Control Nos. PH0508675",
+      "060881191",
+      "053177870",
+      "053"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518815",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "cinnamon-bay-sugar-works",
+    "slug": "cinnamon-bay-sugar-works",
+    "name": "Cinnamon Bay Sugar Works",
+    "island": "stj",
+    "category": "ruin",
+    "description": "Cinnamon Bay Sugar Works is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Cinnamon Bay Sugar Works is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "ruin",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "cinnamon_bay_sugar_works__cinnamon_bay_sugar_works.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "coakley-bay-estate",
+    "slug": "coakley-bay-estate",
+    "name": "Coakley Bay Estate",
+    "aliases": [],
+    "island": "stx",
+    "category": "district",
+    "description": "Coakley Bay Estate is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Coakley Bay Estate is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001841",
+    "nrhpListedDate": "7/23/1976",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518862",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "columbus-landing-site",
+    "slug": "columbus-landing-site",
+    "name": "Columbus Landing Site",
+    "aliases": [],
+    "island": "stx",
+    "category": "site",
+    "description": "Columbus Landing Site is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Columbus Landing Site is a federally recognized historic site in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Greig Hill on Salt River Bay, Salt River Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "66000743",
+    "nrhpListedDate": "10/15/1966",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518845",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "cruz-bay-battery",
+    "slug": "cruz-bay-battery",
+    "name": "Cruz Bay Battery",
+    "island": "stj",
+    "category": "battery",
+    "description": "Cruz Bay Battery is a historic military battery site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Cruz Bay Battery is a historic military battery site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "battery",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "cruz_bay_battery__cruz_bay_battery.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.169Z",
+    "updatedAt": "2026-07-17T21:00:56.169Z"
+  },
+  {
+    "id": "cruz-bay-town-historic-district",
+    "slug": "cruz-bay-town-historic-district",
+    "name": "Cruz Bay Town Historic District",
+    "aliases": [
+      "Christiansbay",
+      "Christians Bye",
+      "Cruzbay By"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Cruz Bay Town Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Cruz Bay Town Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Town boundary, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "16000699",
+    "nrhpListedDate": "10/4/2016",
+    "nrhpCategory": "district",
+    "nrhpOtherNames": [
+      "Christiansbay",
+      "Christians Bye",
+      "Cruzbay By"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "danish-west-india-and-guinea-company-warehouse",
+    "slug": "danish-west-india-and-guinea-company-warehouse",
+    "name": "Danish West India and Guinea Company Warehouse",
+    "aliases": [
+      "Old Post Office &amp",
+      "Customs House on the Wharf",
+      "See Also:Christ"
+    ],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Danish West India and Guinea Company Warehouse is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Danish West India and Guinea Company Warehouse is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Church and Company Sts., Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "74001940",
+    "nrhpListedDate": "10/9/1974",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Old Post Office &amp",
+      "Customs House on the Wharf",
+      "See Also:Christ"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518864",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "dennis-bay-historic-district",
+    "slug": "dennis-bay-historic-district",
+    "name": "Dennis Bay Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Dennis Bay Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Dennis Bay Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Cruz Bay off North Shore Rd., Dennis Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000095",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518839",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "diamond-school",
+    "slug": "diamond-school",
+    "name": "Diamond School",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Diamond School is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Diamond School is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Christiansted on Centerline Rd., Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001842",
+    "nrhpListedDate": "7/1/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518866",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+    "slug": "east-end-schoolhouse-st-john-us-virgin-islands",
+    "name": "East End Schoolhouse: St. John US Virgin Islands",
+    "aliases": [
+      "Parcel 6-K Hansen Bay A (Also known as 1 Hansen Bay), East End Quarter"
+    ],
+    "island": "stj",
+    "category": "landmark",
+    "description": "East End Schoolhouse: St. John US Virgin Islands is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "East End Schoolhouse: St. John US Virgin Islands is a federally recognized historic landmark in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "6-K Hansen Bay, St. John",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010648",
+    "nrhpListedDate": "7/29/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Parcel 6-K Hansen Bay A (Also known as 1 Hansen Bay), East End Quarter"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "emancipation-garden",
+    "slug": "emancipation-garden",
+    "name": "Emancipation Garden",
+    "island": "stt",
+    "category": "garden",
+    "description": "Emancipation Garden is a historic garden and cultural site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Emancipation Garden is a historic garden and cultural site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/emancipation-garden-1.jpg",
+    "images": [
+      "/images/places/st-thomas/emancipation-garden-1.jpg"
+    ],
+    "tags": [
+      "garden",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "emancipation_garden__emancipation_garden.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "emmaus-moravian-church",
+    "slug": "emmaus-moravian-church",
+    "name": "Emmaus Moravian Church",
+    "island": "stt",
+    "category": "church",
+    "description": "Emmaus Moravian Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Emmaus Moravian Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "emmaus_moravian_church__emmaus_moravian_church.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "emmaus-moravian-church-and-manse",
+    "slug": "emmaus-moravian-church-and-manse",
+    "name": "Emmaus Moravian Church and Manse",
+    "aliases": [],
+    "island": "stj",
+    "category": "church",
+    "description": "Emmaus Moravian Church and Manse is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Emmaus Moravian Church and Manse is a federally recognized historic church in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Palestina, Coral Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "77001531",
+    "nrhpListedDate": "11/7/1977",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518923",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "enighed",
+    "slug": "enighed",
+    "name": "Enighed",
+    "aliases": [
+      "Enighed Pond Ruins"
+    ],
+    "island": "stj",
+    "category": "site",
+    "description": "Enighed is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Enighed is a federally recognized historic site in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Cruz Bay Quarter, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76002219",
+    "nrhpListedDate": "7/1/1976",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "Enighed Pond Ruins"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518925",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-beverhoudt",
+    "slug": "estate-beverhoudt",
+    "name": "Estate Beverhoudt",
+    "aliases": [
+      "Beverhoudt Plantation",
+      "Beverhoutsberg"
+    ],
+    "island": "stj",
+    "category": "estate",
+    "description": "Estate Beverhoudt is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Estate Beverhoudt is a federally recognized historic estate in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "1.5 mi. E. of Cruz Bay off Center Line Rd., Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78003170",
+    "nrhpListedDate": "8/29/1978",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "Beverhoudt Plantation",
+      "Beverhoutsberg"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518927",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-botany-bay",
+    "slug": "estate-botany-bay",
+    "name": "Estate Botany Bay",
+    "aliases": [],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Botany Bay is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Botany Bay is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001861",
+    "nrhpListedDate": "7/30/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518940",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-brewers-bay",
+    "slug": "estate-brewers-bay",
+    "name": "Estate Brewers Bay",
+    "aliases": [],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Brewers Bay is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Brewers Bay is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "2 mi. (3.2 km) W of Charlotte Amalie at Brewers Bay, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002727",
+    "nrhpListedDate": "7/31/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518942",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-butlers-bay",
+    "slug": "estate-butlers-bay",
+    "name": "Estate Butler's Bay",
+    "aliases": [
+      "Bottler's Bay"
+    ],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Butler's Bay is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Butler's Bay is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "N of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002722",
+    "nrhpListedDate": "8/25/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Bottler's Bay"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518868",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-carolina-sugar-plantation",
+    "slug": "estate-carolina-sugar-plantation",
+    "name": "Estate Carolina Sugar Plantation",
+    "aliases": [],
+    "island": "stj",
+    "category": "estate",
+    "description": "Estate Carolina Sugar Plantation is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Estate Carolina Sugar Plantation is a federally recognized historic estate in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Coral Bay on King Hill Rd., Coral Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76002217",
+    "nrhpListedDate": "7/19/1976",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518929",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-grove-place",
+    "slug": "estate-grove-place",
+    "name": "Estate Grove Place",
+    "aliases": [],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Grove Place is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Grove Place is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "4 mi. (6.4 km) E of Frederiksted off Centerline Rd., Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002721",
+    "nrhpListedDate": "7/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518870",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-hafensight",
+    "slug": "estate-hafensight",
+    "name": "Estate Hafensight",
+    "aliases": [
+      "Havensight"
+    ],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Hafensight is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Hafensight is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "S of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002728",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Havensight"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518944",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-hogansborg",
+    "slug": "estate-hogansborg",
+    "name": "Estate Hogansborg",
+    "aliases": [
+      "Estate Hogensborg"
+    ],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Hogansborg is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Hogansborg is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Frederiksted off Centerline Rd., Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002723",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Estate Hogensborg"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518872",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-judiths-fancy",
+    "slug": "estate-judiths-fancy",
+    "name": "Estate Judith's Fancy",
+    "aliases": [],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Judith's Fancy is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Judith's Fancy is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "4 mi. (3.2 km) NW of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002717",
+    "nrhpListedDate": "7/17/1978",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518874",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-la-reine",
+    "slug": "estate-la-reine",
+    "name": "Estate La Reine",
+    "aliases": [
+      "The Queen"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Estate La Reine is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate La Reine is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "20 Kings Quarter and 19 Queens Quarter, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "80003994",
+    "nrhpListedDate": "11/24/1980",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "The Queen"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518876",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-little-princess",
+    "slug": "estate-little-princess",
+    "name": "Estate Little Princess",
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Little Princess is a historic estate site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Little Princess is a historic estate site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "estate_little_princess__estate_little_princess.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "aliases": [
+      "Estate Little Princessa"
+    ],
+    "location": "NW of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "80003995",
+    "nrhpListedDate": "6/9/1980",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Estate Little Princessa"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518878",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ]
+  },
+  {
+    "id": "estate-mount-victory",
+    "slug": "estate-mount-victory",
+    "name": "Estate Mount Victory",
+    "aliases": [],
+    "island": "stx",
+    "category": "district",
+    "description": "Estate Mount Victory is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Mount Victory is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002724",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518880",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-neltjeberg",
+    "slug": "estate-neltjeberg",
+    "name": "Estate Neltjeberg",
+    "aliases": [],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Neltjeberg is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Neltjeberg is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NW of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002729",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518946",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-niesky",
+    "slug": "estate-niesky",
+    "name": "Estate Niesky",
+    "aliases": [
+      "Nisky Moravian Mission",
+      "Estate Nisky"
+    ],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Niesky is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Niesky is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "1.5 mi. W of Charlotte Amalie off Harwood Hwy., Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78003092",
+    "nrhpListedDate": "8/29/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Nisky Moravian Mission",
+      "Estate Nisky"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518948",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-perseverance",
+    "slug": "estate-perseverance",
+    "name": "Estate Perseverance",
+    "aliases": [],
+    "island": "stt",
+    "category": "estate",
+    "description": "Estate Perseverance is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Estate Perseverance is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002730",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518950",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-prosperity",
+    "slug": "estate-prosperity",
+    "name": "Estate Prosperity",
+    "aliases": [],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Prosperity is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Prosperity is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "N of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002725",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518882",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-saint-george-historic-district",
+    "slug": "estate-saint-george-historic-district",
+    "name": "Estate Saint George Historic District",
+    "aliases": [],
+    "island": "stx",
+    "category": "district",
+    "description": "Estate Saint George Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Saint George Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Prince Quarter, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "86003351",
+    "nrhpListedDate": "10/24/1986",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518884",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-st-john",
+    "slug": "estate-st-john",
+    "name": "Estate St. John",
+    "aliases": [
+      "St. Jan Plantage"
+    ],
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate St. John is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate St. John is a federally recognized historic estate in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "3 mi. (4.8 km) NW of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002718",
+    "nrhpListedDate": "6/9/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "St. Jan Plantage"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518886",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "estate-whim-greathouse",
+    "slug": "estate-whim-greathouse",
+    "name": "Estate Whim Greathouse",
+    "island": "stx",
+    "category": "estate",
+    "description": "Estate Whim Greathouse is a historic estate site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Estate Whim Greathouse is a historic estate site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    ],
+    "tags": [
+      "estate",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "estate_whim_greathouse__estate_whim_greathouse.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "estate-whim-museum",
+    "slug": "estate-whim-museum",
+    "name": "Estate Whim Museum",
+    "island": "stx",
+    "category": "estate",
+    "description": "A preserved sugar estate landscape interpreting plantation-era life and industry.",
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+    "tags": [
+      "history",
+      "estate",
+      "stx"
+    ],
+    "featured": false,
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-museum-1.jpg"
+    ],
+    "imageCount": 1
+  },
+  {
+    "id": "evelyn-e-marcelli-elementary-school",
+    "slug": "evelyn-e-marcelli-elementary-school",
+    "name": "Evelyn E. Marcelli Elementary School",
+    "aliases": [
+      "Marine and Strangers� Hospital",
+      "Backerdahl Home",
+      "Tailtal Home",
+      "George Washington Elementary School"
+    ],
+    "island": "stt",
+    "category": "landmark",
+    "description": "Evelyn E. Marcelli Elementary School is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Evelyn E. Marcelli Elementary School is a federally recognized historic landmark in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Haabets Gade 4, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010645",
+    "nrhpListedDate": "7/25/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Marine and Strangers� Hospital",
+      "Backerdahl Home",
+      "Tailtal Home",
+      "George Washington Elementary School"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "fort-christian",
+    "slug": "fort-christian",
+    "name": "Fort Christian",
+    "island": "stt",
+    "category": "fort",
+    "description": "Charlotte Amalie’s landmark red fort and one of the territory’s most recognizable historic structures.",
+    "shortDescription": "Fort Christian is a historic fort site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-thomas/fort-christian-1.jpg",
+    "images": [
+      "/images/places/st-thomas/fort-christian-1.jpg"
+    ],
+    "tags": [
+      "fort",
+      "STT",
+      "historic",
+      "usvi",
+      "history",
+      "stt",
+      "nrhp"
+    ],
+    "featured": true,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "fort_christian__fort_christian.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "aliases": [],
+    "location": "At St. Thomas Harbor, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "77001329",
+    "nrhpListedDate": "5/5/1977",
+    "nrhpCategory": "STRUCTURE",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518849",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ]
+  },
+  {
+    "id": "fort-christiansvaern",
+    "slug": "fort-christiansvaern",
+    "name": "Fort Christiansværn",
+    "island": "stx",
+    "category": "fort",
+    "description": "The yellow Danish fort anchoring Christiansted National Historic Site.",
+    "heroImage": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+    "tags": [
+      "history",
+      "fort",
+      "stx"
+    ],
+    "featured": true,
+    "images": [
+      "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    ],
+    "imageCount": 1
+  },
+  {
+    "id": "fort-frederik",
+    "slug": "fort-frederik",
+    "name": "Fort Frederik",
+    "island": "stx",
+    "category": "fort",
+    "description": "A waterfront fort in Frederiksted associated with emancipation and St. Croix history.",
+    "shortDescription": "Fort Frederik is a historic fort site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
+    "tags": [
+      "fort",
+      "STX",
+      "historic",
+      "usvi",
+      "history",
+      "stx",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "fort_frederik__fort_frederik.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "aliases": [
+      "Frederiksfort"
+    ],
+    "location": "S of jct. of Mahogany Rd. and Rt. 631, N end of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "96001073",
+    "nrhpListedDate": "10/8/1996",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Frederiksfort"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518847",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ]
+  },
+  {
+    "id": "fortsberg",
+    "slug": "fortsberg",
+    "name": "Fortsberg",
+    "aliases": [
+      "Frederiksvaern"
+    ],
+    "island": "stj",
+    "category": "fort",
+    "description": "Fortsberg is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Fortsberg is a federally recognized historic fort in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "fort",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "SE of Coral Bay, Coral Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76002218",
+    "nrhpListedDate": "9/1/1976",
+    "nrhpCategory": "STRUCTURE",
+    "nrhpOtherNames": [
+      "Frederiksvaern"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518931",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "fortsberg-corral-bay",
+    "slug": "fortsberg-corral-bay",
+    "name": "Fortsberg Corral Bay",
+    "island": "stj",
+    "category": "fort",
+    "description": "Fortsberg Corral Bay is a historic fort site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Fortsberg Corral Bay is a historic fort site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "fort",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "fortsberg_corral_bay__fortsberg_corral_bay.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "frederick-lutheran-church",
+    "slug": "frederick-lutheran-church",
+    "name": "Frederick Lutheran Church",
+    "island": "stt",
+    "category": "church",
+    "description": "Frederick Lutheran Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Frederick Lutheran Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    "images": [
+      "/images/sourced/historic/stt/frederick-lutheran-church.jpg"
+    ],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "frederick_lutheran_church__frederick_lutheran_church.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z",
+    "image": "/images/sourced/historic/stt/frederick-lutheran-church.jpg"
+  },
+  {
+    "id": "frederiksted-historic-district",
+    "slug": "frederiksted-historic-district",
+    "name": "Frederiksted Historic District",
+    "aliases": [],
+    "island": "stx",
+    "category": "district",
+    "description": "Frederiksted Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Frederiksted Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+    "images": [
+      "/images/places/st-croix/frederiksted-historic-district-1.jpg"
+    ],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Roughly bounded by Fisher St., the cemetery, Fort Frederick,, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001853",
+    "nrhpListedDate": "8/9/1976",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518892",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "friedensfeld-midlands-moravian-church-and-manse",
+    "slug": "friedensfeld-midlands-moravian-church-and-manse",
+    "name": "Friedensfeld Midlands Moravian Church and Manse",
+    "aliases": [],
+    "island": "stx",
+    "category": "church",
+    "description": "Friedensfeld Midlands Moravian Church and Manse is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Friedensfeld Midlands Moravian Church and Manse is a federally recognized historic church in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001844",
+    "nrhpListedDate": "7/1/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518894",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "friedensthal-mission",
+    "slug": "friedensthal-mission",
+    "name": "Friedensthal Mission",
+    "aliases": [
+      "Friedensthal Moravian Church"
+    ],
+    "island": "stx",
+    "category": "church",
+    "description": "Friedensthal Mission is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Friedensthal Mission is a federally recognized historic church in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "SW of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002719",
+    "nrhpListedDate": "8/25/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Friedensthal Moravian Church"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518896",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "ft-frederik-of-us-virgin-islands",
+    "slug": "ft-frederik-of-us-virgin-islands",
+    "name": "Ft. Frederik of US Virgin Islands",
+    "aliases": [
+      "Frederiksfort"
+    ],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Ft. Frederik of US Virgin Islands is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Ft. Frederik of US Virgin Islands is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/places/st-croix/fort-frederik-1.jpg",
+    "images": [
+      "/images/places/st-croix/fort-frederik-1.jpg"
+    ],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "S. of jct. of Mahogany Rd. and VI 631, N end of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "97001269",
+    "nrhpListedDate": "9/25/1997",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Frederiksfort"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "gov-house-christiansted",
+    "slug": "gov-house-christiansted",
+    "name": "Government House, Christiansted",
+    "island": "stx",
+    "category": "site",
+    "description": "Government House, Christiansted is a historic site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Government House, Christiansted is a historic site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/government-house-christiansted-1.jpg",
+    "images": [
+      "/images/places/st-croix/government-house-christiansted-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "gov_house_christiansted__gov_house_christiansted.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "government-house-stt",
+    "slug": "government-house-stt",
+    "name": "Government House, St. Thomas",
+    "island": "stt",
+    "category": "site",
+    "description": "Government House, St. Thomas is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Government House, St. Thomas is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "government_house_stt__government_house_stt.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "green-kay",
+    "slug": "green-kay",
+    "name": "Green Kay",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Green Kay is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Green Kay is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001846",
+    "nrhpListedDate": "7/19/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518899",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "hamburg-america-shipping-line-administrative-offices",
+    "slug": "hamburg-america-shipping-line-administrative-offices",
+    "name": "Hamburg-America Shipping Line Administrative Offices",
+    "aliases": [
+      "United States District Courts Building"
+    ],
+    "island": "stt",
+    "category": "landmark",
+    "description": "Hamburg-America Shipping Line Administrative Offices is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Hamburg-America Shipping Line Administrative Offices is a federally recognized historic landmark in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "48B Tolbod Gade, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002731",
+    "nrhpListedDate": "10/10/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "United States District Courts Building"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518952",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "hams-bluff-light",
+    "slug": "hams-bluff-light",
+    "name": "Hams Bluff Light",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Hams Bluff Light is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Hams Bluff Light is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/places/st-croix/hams-bluff-lighthouse-1.jpg",
+    "images": [
+      "/images/places/st-croix/hams-bluff-lighthouse-1.jpg"
+    ],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Crest of Hams Bluff, 1400 feet east of N. end of Hams Bluff Rd., Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100004382",
+    "nrhpListedDate": "9/16/2019",
+    "nrhpCategory": "structure",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "hassel-island-additional-documentation",
+    "slug": "hassel-island-additional-documentation",
+    "name": "Hassel Island (Additional Documentation)",
+    "aliases": [
+      "Orkanshullet",
+      "Hurricanehole",
+      "See Also:Hassel Island Historic D"
+    ],
+    "island": "stt",
+    "category": "district",
+    "description": "Hassel Island (Additional Documentation) is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Hassel Island (Additional Documentation) is a federally recognized historic district in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "S of Charlotte Amalie in St. Thomas Harbor, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001862",
+    "nrhpListedDate": "7/19/1976",
+    "nrhpCategory": "district",
+    "nrhpOtherNames": [
+      "Orkanshullet",
+      "Hurricanehole",
+      "See Also:Hassel Island Historic D"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518954",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "hassel-island-creque-marine-railway",
+    "slug": "hassel-island-creque-marine-railway",
+    "name": "Hassel Island Creque Marine Railway",
+    "island": "stt",
+    "category": "site",
+    "description": "Hassel Island Creque Marine Railway is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Hassel Island Creque Marine Railway is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "hassel_island_creque_marine_railway__hassel_island_creque_marine_railway.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "hassel-island-fort-willoughby",
+    "slug": "hassel-island-fort-willoughby",
+    "name": "Hassel Island Fort Willoughby",
+    "island": "stt",
+    "category": "fort",
+    "description": "Hassel Island Fort Willoughby is a historic fort site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Hassel Island Fort Willoughby is a historic fort site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "fort",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "hassel_island_fort_willoughby__hassel_island_fort_willoughby.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "hassel-island-historic-district-boundary-increase",
+    "slug": "hassel-island-historic-district-boundary-increase",
+    "name": "Hassel Island Historic District (Boundary Increase)",
+    "aliases": [
+      "Hassel Island",
+      "Orkanshullet",
+      "Hurricanehole",
+      "See Also:Hassel Isl"
+    ],
+    "island": "stt",
+    "category": "district",
+    "description": "Hassel Island Historic District (Boundary Increase) is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Hassel Island Historic District (Boundary Increase) is a federally recognized historic district in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "S of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78003093",
+    "nrhpListedDate": "8/29/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Hassel Island",
+      "Orkanshullet",
+      "Hurricanehole",
+      "See Also:Hassel Isl"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518956",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "hermitage-plantation-historic-district",
+    "slug": "hermitage-plantation-historic-district",
+    "name": "Hermitage Plantation Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Hermitage Plantation Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Hermitage Plantation Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "East End Rd., Hurricane Hole",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000094",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518819",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "holy-cross-episcopal-church",
+    "slug": "holy-cross-episcopal-church",
+    "name": "Holy Cross Episcopal Church",
+    "aliases": [
+      "Holy Cross Anglican Church",
+      "Church of the Holy Cross"
+    ],
+    "island": "stx",
+    "category": "church",
+    "description": "Holy Cross Episcopal Church is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Holy Cross Episcopal Church is a federally recognized historic church in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "1 Estate Upper Love, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010641",
+    "nrhpListedDate": "7/25/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Holy Cross Anglican Church",
+      "Church of the Holy Cross"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "jossie-gut-historic-district",
+    "slug": "jossie-gut-historic-district",
+    "name": "Jossie Gut Historic District",
+    "aliases": [
+      "H-14,5",
+      "H-14,6",
+      "H-14,4",
+      "H-14,3",
+      "H-14,1",
+      "H-14,2",
+      "NR Control Nos. PH"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Jossie Gut Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Jossie Gut Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Coral Bay off Center Line Rd., Reef Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000086",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "H-14,5",
+      "H-14,6",
+      "H-14,4",
+      "H-14,3",
+      "H-14,1",
+      "H-14,2",
+      "NR Control Nos. PH"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518835",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "kingshill-lutheran-church",
+    "slug": "kingshill-lutheran-church",
+    "name": "Kingshill Lutheran Church",
+    "aliases": [
+      "Kingshill Church"
+    ],
+    "island": "stx",
+    "category": "church",
+    "description": "Kingshill Lutheran Church is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Kingshill Lutheran Church is a federally recognized historic church in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "18-AA Upper Bethlehem, St. Croix, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010640",
+    "nrhpListedDate": "7/25/2024",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "Kingshill Church"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "lesperance-historic-district",
+    "slug": "lesperance-historic-district",
+    "name": "L'Esperance Historic District",
+    "aliases": [
+      "NR Control Nos. PH050865",
+      "0531778760",
+      "05177867",
+      "053177911"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "L'Esperance Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "L'Esperance Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Cruz Bay off Center Line Rd., Reef Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000699",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050865",
+      "0531778760",
+      "05177867",
+      "053177911"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518841",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "la-grande-princesse-school",
+    "slug": "la-grande-princesse-school",
+    "name": "La Grande Princesse School",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "La Grande Princesse School is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "La Grande Princesse School is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001847",
+    "nrhpListedDate": "7/12/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518901",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "la-grange-historic-district",
+    "slug": "la-grange-historic-district",
+    "name": "La Grange Historic District",
+    "aliases": [
+      "Estate La Grange",
+      "La Granderie",
+      "La Grand"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "La Grange Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "La Grange Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Parcels 74, 75, 242, 40, 64 Estate La Grange, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010647",
+    "nrhpListedDate": "7/29/2024",
+    "nrhpCategory": "district",
+    "nrhpOtherNames": [
+      "Estate La Grange",
+      "La Granderie",
+      "La Grand"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "lameshur-plantation",
+    "slug": "lameshur-plantation",
+    "name": "Lameshur Plantation",
+    "aliases": [
+      "NR Control Nos. 060881191",
+      "053177871",
+      "053177867",
+      "PH0508675"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Lameshur Plantation is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Lameshur Plantation is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Cruz Bay on Little Lameshur Bay, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78000271",
+    "nrhpListedDate": "6/23/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "NR Control Nos. 060881191",
+      "053177871",
+      "053177867",
+      "PH0508675"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518809",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "liever-marches-bay-historic-district",
+    "slug": "liever-marches-bay-historic-district",
+    "name": "Liever Marches Bay Historic District",
+    "aliases": [
+      "NR Control Nos. PH050865",
+      "053177870",
+      "05177867",
+      "053177911"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Liever Marches Bay Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Liever Marches Bay Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Brown Bay, Brown Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000087",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050865",
+      "053177870",
+      "05177867",
+      "053177911"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518817",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "lind-point-fort",
+    "slug": "lind-point-fort",
+    "name": "Lind Point Fort",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "fort",
+    "description": "Lind Point Fort is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Lind Point Fort is a federally recognized historic fort in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "fort",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NW of Cruz Bay, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000085",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518825",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "little-la-grange",
+    "slug": "little-la-grange",
+    "name": "Little La Grange",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Little La Grange is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Little La Grange is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Frederiksted, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001854",
+    "nrhpListedDate": "10/22/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518903",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "mafolie-great-house",
+    "slug": "mafolie-great-house",
+    "name": "Mafolie Great House",
+    "aliases": [],
+    "island": "stt",
+    "category": "landmark",
+    "description": "Mafolie Great House is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Mafolie Great House is a federally recognized historic landmark in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "N of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002732",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518960",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "market-square-pladsen",
+    "slug": "market-square-pladsen",
+    "name": "Market Square (Pladsen)",
+    "island": "stt",
+    "category": "site",
+    "description": "Market Square (Pladsen) is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Market Square (Pladsen) is a historic site in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "market_square_pladsen__market_square_pladsen.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "mary-point-estate",
+    "slug": "mary-point-estate",
+    "name": "Mary Point Estate",
+    "aliases": [
+      "Mary Point Great House and Factory",
+      "NR Control Nos. 060881191"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Mary Point Estate is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Mary Point Estate is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Cruz Bay, Cruz Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78000272",
+    "nrhpListedDate": "5/22/1978",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Mary Point Great House and Factory",
+      "NR Control Nos. 060881191"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518811",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "more-hill-historic-district",
+    "slug": "more-hill-historic-district",
+    "name": "More Hill Historic District",
+    "aliases": [
+      "Mt. Pleasant",
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "05"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "More Hill Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "More Hill Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Off East End Rd., East End",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000092",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "Mt. Pleasant",
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "05"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518843",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "new-herrnhut-moravian-church",
+    "slug": "new-herrnhut-moravian-church",
+    "name": "New Herrnhut Moravian Church",
+    "aliases": [],
+    "island": "stt",
+    "category": "church",
+    "description": "New Herrnhut Moravian Church is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "New Herrnhut Moravian Church is a federally recognized historic church in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001866",
+    "nrhpListedDate": "10/8/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518963",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "peace-hill-ruins",
+    "slug": "peace-hill-ruins",
+    "name": "Peace Hill Ruins",
+    "island": "stj",
+    "category": "ruin",
+    "description": "Peace Hill Ruins is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Peace Hill Ruins is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "ruin",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "peace_hill_ruins__peace_hill_ruins.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "reef-bay-great-house-historic-district",
+    "slug": "reef-bay-great-house-historic-district",
+    "name": "Reef Bay Great House Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Reef Bay Great House Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Reef Bay Great House Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Bordeaux, Reef Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000091",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518821",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "reef-bay-sugar-factory-historic-district",
+    "slug": "reef-bay-sugar-factory-historic-district",
+    "name": "Reef Bay Sugar Factory Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Reef Bay Sugar Factory Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Reef Bay Sugar Factory Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "E of Cruz Bay, Reef Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000084",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518823",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "reef-bay-sugar-mill",
+    "slug": "reef-bay-sugar-mill",
+    "name": "Reef Bay Sugar Mill",
+    "island": "stj",
+    "category": "ruin",
+    "description": "Reef Bay Sugar Mill is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Reef Bay Sugar Mill is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "ruin",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "reef_bay_sugar_mill__reef_bay_sugar_mill.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "reformed-dutch-church-stt",
+    "slug": "reformed-dutch-church-stt",
+    "name": "Reformed Dutch Church, St. Thomas",
+    "island": "stt",
+    "category": "church",
+    "description": "Reformed Dutch Church, St. Thomas is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Reformed Dutch Church, St. Thomas is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "reformed_dutch_church_stt__reformed_dutch_church_stt.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "richmond-prison-detention-and-workhouse",
+    "slug": "richmond-prison-detention-and-workhouse",
+    "name": "Richmond Prison Detention and Workhouse",
+    "aliases": [
+      "Richmond Penitentiary"
+    ],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Richmond Prison Detention and Workhouse is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Richmond Prison Detention and Workhouse is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002720",
+    "nrhpListedDate": "2/14/1978",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Richmond Penitentiary"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518907",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "rustenberg-plantation-south-historic-district",
+    "slug": "rustenberg-plantation-south-historic-district",
+    "name": "Rustenberg Plantation South Historic District",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "district",
+    "description": "Rustenberg Plantation South Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Rustenberg Plantation South Historic District is a federally recognized historic district in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Coral Bay off Center Line Rd., Cinnamon Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000093",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "053177867",
+      "053177871"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518837",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+    "slug": "salt-river-bay-national-historic-site-and-ecological-preserve",
+    "name": "Salt River Bay National Historic Site and Ecological Preserve",
+    "aliases": [],
+    "island": "stx",
+    "category": "district",
+    "description": "Salt River Bay National Historic Site and Ecological Preserve is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Salt River Bay National Historic Site and Ecological Preserve is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "2100 Church St., Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "01000280",
+    "nrhpListedDate": "2/24/1992",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518910",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "salt-river-bay-nhp",
+    "slug": "salt-river-bay-nhp",
+    "name": "Salt River Bay National Historical Park",
+    "island": "stx",
+    "category": "site",
+    "description": "Salt River Bay National Historical Park is a historic site in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Salt River Bay National Historical Park is a historic site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+    "images": [
+      "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    ],
+    "tags": [
+      "site",
+      "STX",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "salt_river_bay_nhp__salt_river_bay_nhp.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "sion-hill",
+    "slug": "sion-hill",
+    "name": "Sion Hill",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Sion Hill is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Sion Hill is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "W of Christiansted, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001850",
+    "nrhpListedDate": "7/19/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518912",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "blackbeards-castle",
+    "slug": "blackbeards-castle",
+    "name": "Skytsborg",
+    "island": "stt",
+    "category": "landmark",
+    "description": "A hilltop historic landmark overlooking Charlotte Amalie and its harbor.",
+    "heroImage": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+    "tags": [
+      "history",
+      "landmark",
+      "stt",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": true,
+    "aliases": [
+      "Fogarthy's Castle",
+      "Kjaer's Castle",
+      "Blackbeard's Castle"
+    ],
+    "shortDescription": "Skytsborg is a federally recognized historic landmark in St. Thomas.",
+    "images": [
+      "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    ],
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "39 Donningens Gade, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "91001844",
+    "nrhpListedDate": "12/20/1991",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Fogarthy's Castle",
+      "Kjaer's Castle",
+      "Blackbeard's Castle"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518851",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "slob-historic-district",
+    "slug": "slob-historic-district",
+    "name": "Slob Historic District",
+    "aliases": [
+      "Estate Slob",
+      "Body Slob",
+      "Slob"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Slob Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Slob Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "King's Quarter, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "87001929",
+    "nrhpListedDate": "11/12/1987",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Estate Slob",
+      "Body Slob",
+      "Slob"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518914",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "sprat-hall-historic-district",
+    "slug": "sprat-hall-historic-district",
+    "name": "Sprat Hall Historic District",
+    "aliases": [
+      "Estate Sprat Hall",
+      "Spratt Hall",
+      "Sprat Hole",
+      "Sprat Hool"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Sprat Hall Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Sprat Hall Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "29 Sprat Hall, Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "100010646",
+    "nrhpListedDate": "7/29/2024",
+    "nrhpCategory": "district",
+    "nrhpOtherNames": [
+      "Estate Sprat Hall",
+      "Spratt Hall",
+      "Sprat Hole",
+      "Sprat Hool"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "st-george-village-botanical-garden",
+    "slug": "st-george-village-botanical-garden",
+    "name": "St. George Village Botanical Garden",
+    "island": "stx",
+    "category": "estate",
+    "description": "A botanical garden set among the ruins and structures of a historic sugar estate.",
+    "shortDescription": "St. George Village Botanical Garden is a historic garden and cultural site in St. Croix, U.S. Virgin Islands.",
+    "heroImage": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+    "images": [
+      "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    ],
+    "tags": [
+      "garden",
+      "STX",
+      "historic",
+      "usvi",
+      "history",
+      "estate",
+      "stx"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [
+      "st_george_village_botanical_garden__st_george_village_botanical_garden.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "st-johns-episcopal-church",
+    "slug": "st-johns-episcopal-church",
+    "name": "St. John's Episcopal Church",
+    "aliases": [
+      "St. John's Anglican Church"
+    ],
+    "island": "stx",
+    "category": "church",
+    "description": "St. John's Episcopal Church is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "St. John's Episcopal Church is a federally recognized historic church in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "church",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Plot #27 King St., Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "16000698",
+    "nrhpListedDate": "10/4/2016",
+    "nrhpCategory": "building",
+    "nrhpOtherNames": [
+      "St. John's Anglican Church"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "st-thomas-synagogue",
+    "slug": "st-thomas-synagogue",
+    "name": "St. Thomas Synagogue",
+    "aliases": [
+      "Beracha Veshalom Vegemiluth Hasadim",
+      "The Synagogue"
+    ],
+    "island": "stt",
+    "category": "church",
+    "description": "St. Thomas Synagogue is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "St. Thomas Synagogue is a federally recognized historic church in St. Thomas.",
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "Crystal Gade #16AB, Queens Quarters, Charlotte",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "97001270",
+    "nrhpListedDate": "9/25/1997",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "Beracha Veshalom Vegemiluth Hasadim",
+      "The Synagogue"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518853",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim",
+    "slug": "st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim",
+    "name": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim",
+    "aliases": [
+      "St. Thomas Synagogue",
+      "The Synagogue"
+    ],
+    "island": "stt",
+    "category": "church",
+    "description": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim is a federally recognized historic church in St. Thomas.",
+    "heroImage": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+    "images": [
+      "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    ],
+    "tags": [
+      "church",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "16AB Krystal Gade, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "97000853",
+    "nrhpListedDate": "8/15/1997",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [
+      "St. Thomas Synagogue",
+      "The Synagogue"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518967",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "strawberry-hill-historic-district",
+    "slug": "strawberry-hill-historic-district",
+    "name": "Strawberry Hill Historic District",
+    "aliases": [
+      "Estate Strawberry Hill",
+      "Tuite",
+      "Strawberry Hill",
+      "Plots 29 &amp",
+      "20b"
+    ],
+    "island": "stx",
+    "category": "district",
+    "description": "Strawberry Hill Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Strawberry Hill Historic District is a federally recognized historic district in St. Croix.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "district",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "Queen's Quarter, Christiansted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "87001934",
+    "nrhpListedDate": "10/2/1987",
+    "nrhpCategory": "DISTRICT",
+    "nrhpOtherNames": [
+      "Estate Strawberry Hill",
+      "Tuite",
+      "Strawberry Hill",
+      "Plots 29 &amp",
+      "20b"
+    ],
+    "coordinateStatus": "representative",
+    "coordinateGeometry": "polygon-representative",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518917",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "susannaberg-estate",
+    "slug": "susannaberg-estate",
+    "name": "Susannaberg Estate",
+    "island": "stj",
+    "category": "estate",
+    "description": "Susannaberg Estate is a historic estate site in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Susannaberg Estate is a historic estate site in St. John, U.S. Virgin Islands.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STJ",
+      "historic",
+      "usvi"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [
+      "susannaberg_estate__susannaberg_estate.jpeg"
+    ],
+    "createdAt": "2026-07-17T21:00:56.170Z",
+    "updatedAt": "2026-07-17T21:00:56.170Z"
+  },
+  {
+    "id": "trunk-bay-sugar-factory",
+    "slug": "trunk-bay-sugar-factory",
+    "name": "Trunk Bay Sugar Factory",
+    "aliases": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "island": "stj",
+    "category": "site",
+    "description": "Trunk Bay Sugar Factory is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
+    "shortDescription": "Trunk Bay Sugar Factory is a federally recognized historic site in St. John.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STJ",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "NE of Cruz Bay on North Shore Rd., Trunk Bay",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "81000088",
+    "nrhpListedDate": "7/23/1981",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "NR Control Nos. PH050867",
+      "053177870",
+      "05177867",
+      "053177871"
+    ],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518833",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "tutu-plantation-house",
+    "slug": "tutu-plantation-house",
+    "name": "Tutu Plantation House",
+    "aliases": [],
+    "island": "stt",
+    "category": "estate",
+    "description": "Tutu Plantation House is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Tutu Plantation House is a federally recognized historic estate in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "estate",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "3 mi. NE of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001867",
+    "nrhpListedDate": "7/12/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518969",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "venus-hill",
+    "slug": "venus-hill",
+    "name": "Venus Hill",
+    "aliases": [
+      "Mafolie Observatory",
+      "Venus Pillar"
+    ],
+    "island": "stt",
+    "category": "site",
+    "description": "Venus Hill is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
+    "shortDescription": "Venus Hill is a federally recognized historic site in St. Thomas.",
+    "heroImage": "/images/historic/placeholder.svg",
+    "images": [],
+    "tags": [
+      "site",
+      "STT",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 0,
+    "sourceImageIds": [],
+    "location": "N of Charlotte Amalie, Charlotte Amalie",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "78002733",
+    "nrhpListedDate": "2/17/1978",
+    "nrhpCategory": "SITE",
+    "nrhpOtherNames": [
+      "Mafolie Observatory",
+      "Venus Pillar"
+    ],
+    "coordinateStatus": "unresolved",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518971",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  },
+  {
+    "id": "whim",
+    "slug": "whim",
+    "name": "Whim",
+    "aliases": [],
+    "island": "stx",
+    "category": "landmark",
+    "description": "Whim is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
+    "shortDescription": "Whim is a federally recognized historic landmark in St. Croix.",
+    "heroImage": "/images/places/st-croix/estate-whim-plantation-1.jpg",
+    "images": [
+      "/images/places/st-croix/estate-whim-plantation-1.jpg"
+    ],
+    "tags": [
+      "landmark",
+      "STX",
+      "historic",
+      "usvi",
+      "nrhp"
+    ],
+    "featured": false,
+    "imageCount": 1,
+    "sourceImageIds": [],
+    "location": "1.7 mi. SE of Frederiksted on Centerline Rd., Frederiksted",
+    "designation": "National Register of Historic Places",
+    "nrhpReferenceNumber": "76001858",
+    "nrhpListedDate": "7/30/1976",
+    "nrhpCategory": "BUILDING",
+    "nrhpOtherNames": [],
+    "coordinateStatus": "verified",
+    "coordinateGeometry": "point",
+    "sourceUrls": [
+      "https://catalog.archives.gov/id/131518920",
+      "https://www.nps.gov/subjects/nationalregister/database-research.htm",
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+    ],
+    "createdAt": "2026-07-18T20:33:37.869Z",
+    "updatedAt": "2026-07-19T00:01:37.918Z"
+  }
+]

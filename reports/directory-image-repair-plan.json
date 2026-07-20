@@ -1,0 +1,897 @@
+{
+  "generatedAt": "2026-07-17T15:46:30.195Z",
+  "apply": true,
+  "rows": [
+    {
+      "collection": "beaches",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/abi-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "banana-bay",
+      "name": "Banana Bay Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/banana-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "bolongo-bay",
+      "name": "Bolongo Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/bolongo-bay-beach-resort.jpg"
+      ],
+      "imageUrl": "/images/accommodations/bolongo-bay-beach-resort.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/brewers-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/brown-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "buccaneer-beach",
+      "name": "Buccaneer Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/the-buccaneer-hotel.jpg"
+      ],
+      "imageUrl": "/images/accommodations/the-buccaneer-hotel.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/cane-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/cane-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/caneel-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/caret-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/chenay-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/cinnamon-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/cinnamon-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/coki-point.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/gallows-point-resort.jpg",
+        "/images/accommodations/point-pleasant-resort.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/coki-point.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/columbus-landing.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/cowpet-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/denis-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/dorothea-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/dorsch-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "francis-bay",
+      "name": "Francis Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/francis-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/gibney-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/grapetree-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/hansen-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "haulover-bay",
+      "name": "Haulover Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/haulover-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/hawksnest-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/hawksnest-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/honeymoon-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/honeymoon-water-island.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "hull-bay",
+      "name": "Hull Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/hull-bay.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/the-hideaway-at-hull-bay.jpg"
+      ],
+      "imageUrl": "/images/accommodations/the-hideaway-at-hull-bay.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/isaac-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/isaac-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/jack-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/jack-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/jumbie-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "lameshur-bay",
+      "name": "Lameshur Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/lameshur-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/lindbergh-bay-hotel-villas.jpg"
+      ],
+      "imageUrl": "/images/accommodations/lindbergh-bay-hotel-villas.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "lindquist-beach",
+      "name": "Lindquist Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/lindquist-beach.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/lindquist-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/magens-bay.jpg",
+      "status": "generic",
+      "candidates": [
+        "/images/accommodations/magens-hideaway.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/magens-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "maho-bay",
+      "name": "Maho Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/maho-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/maho-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "mermaids-chair",
+      "name": "Mermaid's Chair",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/mermaids-chair.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "michelles-beach",
+      "name": "Michelle's Beach",
+      "island": "WAT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/michelles-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/morningstar-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/nazareth-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/marriotts-frenchmans-cove.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/pelican-cove.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "protestant-cay",
+      "name": "Protestant Cay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/hotel-on-the-cay.jpg"
+      ],
+      "imageUrl": "/images/accommodations/hotel-on-the-cay.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/rainbow-beach.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/rainbow-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+        "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/reef-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "salomon-beach",
+      "name": "Salomon Beach",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/salomon-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/salt-pond-bay.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/arawak-bay-the-inn-at-salt-river.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/salt-pond-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "sandy-point",
+      "name": "Sandy Point",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/sandy-point.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/gallows-point-resort.jpg",
+        "/images/accommodations/point-pleasant-resort.jpg"
+      ],
+      "imageUrl": "/images/directory/beaches/sandy-point.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/santa-maria-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "sapphire-beach",
+      "name": "Sapphire Beach",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/sapphire-beach.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/sapphire-beach-resort-and-marina.jpg"
+      ],
+      "imageUrl": "/images/accommodations/sapphire-beach-resort-and-marina.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "secret-harbor",
+      "name": "Secret Harbor",
+      "island": "STT",
+      "category": "",
+      "currentImage": "/images/secret-harbor.jpg",
+      "status": "broken-local",
+      "candidates": [
+        "/images/accommodations/secret-harbour-beach-resort.jpg",
+        "/images/usvi-harbor-hero.jpg"
+      ],
+      "imageUrl": "/images/accommodations/secret-harbour-beach-resort.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "/images/shoys-beach.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/shoys-beach.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "tamarind-reef",
+      "name": "Tamarind Reef",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+        "/images/accommodations/the-westin-beach-resort-spa-at-frenchmans-reef.jpg"
+      ],
+      "imageUrl": "/images/accommodations/tamarind-reef-resort-spa-marina.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "beaches",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/teague-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "trunk-bay",
+      "name": "Trunk Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "/images/trunk-bay.jpg",
+      "status": "broken-local",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/trunk-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach",
+      "island": "STX",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/turtle-beach-buck-island.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/vessup-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "STT",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/water-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "beaches",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "STJ",
+      "category": "",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/beaches/waterlemon-bay.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-arian-s",
+      "name": "Arian’s",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-arian-s.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-benito-s-burritos",
+      "name": "Benito’s Burritos",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-benito-s-burritos.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-bernie-s-bar-grill",
+      "name": "Bernie’s Bar & Grill",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-bernie-s-bar-grill.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard’s Castle Hilltop Villas & Marriott’s Frenchman’s Cove (timeshares)",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-resort",
+      "name": "Bluebeard’s Castle Resort",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/bluebeards-castle-resort.jpg"
+      ],
+      "imageUrl": "/images/accommodations/bluebeards-castle-resort.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "places",
+      "id": "STT-bonita-s-cantina",
+      "name": "Bonita’s Cantina",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-bonita-s-cantina.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-bumpa-s",
+      "name": "Bumpa’s",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-bumpa-s.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-buoy-haus-beach-resort-at-frenchman-s-reef",
+      "name": "Buoy Haus Beach Resort at Frenchman’s Reef",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg"
+      ],
+      "imageUrl": "/images/accommodations/buoy-haus-st-thomas-beach-resort-autograph-collection.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "places",
+      "id": "STT-duffy-s-love-shack",
+      "name": "Duffy’s Love Shack",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-duffy-s-love-shack.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-e-s-garden-teahouse",
+      "name": "E’s Garden Teahouse",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-e-s-garden-teahouse.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchman-s-cove",
+      "name": "Frenchman’s Cove",
+      "island": "STT",
+      "category": "stays",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [
+        "/images/accommodations/marriotts-frenchmans-cove.jpg"
+      ],
+      "imageUrl": "/images/accommodations/marriotts-frenchmans-cove.jpg",
+      "strategy": "verified-local-photo"
+    },
+    {
+      "collection": "places",
+      "id": "STT-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-greengos-caribbean-cantina.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-mim-s-seafood-bistro",
+      "name": "Mim’s Seafood Bistro",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-mim-s-seafood-bistro.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-sudi-s-caribbean-bar-grille",
+      "name": "Sudi’s Caribbean Bar & Grille",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-sudi-s-caribbean-bar-grille.svg",
+      "strategy": "branded-location-cover"
+    },
+    {
+      "collection": "places",
+      "id": "STT-virgilio-s-italian",
+      "name": "Virgilio’s (Italian)",
+      "island": "STT",
+      "category": "food",
+      "currentImage": "",
+      "status": "missing",
+      "candidates": [],
+      "imageUrl": "/images/directory/places/stt-virgilio-s-italian.svg",
+      "strategy": "branded-location-cover"
+    }
+  ]
+}

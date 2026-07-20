@@ -1,0 +1,2682 @@
+{
+  "mode": "dry-run",
+  "automaticCount": 217,
+  "ambiguousCount": 99,
+  "orphanCount": 4,
+  "automatic": [
+    {
+      "dataset": "places.json",
+      "id": "18-64-the-restaurant",
+      "name": "18°64° The Restaurant",
+      "photo": "18-64-the-restaurant",
+      "image": "/images/places/st-john/18-64-the-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/18-64-the-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "40-strand-eatery",
+      "name": "40 Strand Eatery",
+      "photo": "40-strand-eatery",
+      "image": "/images/places/st-croix/40-strand-eatery-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/40-strand-eatery-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "420-to-center",
+      "name": "420 to Center",
+      "photo": "420-to-center",
+      "image": "/images/places/st-john/420-to-center-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/420-to-center-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "99-steps",
+      "name": "99 Steps",
+      "photo": "99-steps",
+      "image": "/images/places/st-thomas/99-steps-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/99-steps-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "agave",
+      "name": "Agave",
+      "photo": "agave",
+      "image": "/images/places/st-thomas/agave-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/agave-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "amalia-caf",
+      "name": "Amalia Café",
+      "photo": "amalia-caf",
+      "image": "/images/places/st-thomas/amalia-caf-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/amalia-caf-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "annaberg-sugar-plantation",
+      "name": "Annaberg Sugar Plantation",
+      "photo": "annaberg-sugar-plantation",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "aqua-bistro",
+      "name": "Aqua Bistro",
+      "photo": "aqua-bistro",
+      "image": "/images/places/st-john/aqua-bistro-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/aqua-bistro-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "balter",
+      "name": "balter",
+      "photo": "balter",
+      "image": "/images/places/st-croix/balter-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/balter-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "barefoot-buddha",
+      "name": "Barefoot Buddha",
+      "photo": "barefoot-buddha",
+      "image": "/images/places/st-thomas/barefoot-buddha-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/barefoot-buddha-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "blue-eleven",
+      "name": "Blue Eleven",
+      "photo": "blue-eleven",
+      "image": "/images/places/st-thomas/blue-eleven-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/blue-eleven-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "blues-backyard-bbq",
+      "name": "Blues' Backyard BBQ",
+      "photo": "blues-backyard-bbq",
+      "image": "/images/places/st-croix/blues-backyard-bbq-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/blues-backyard-bbq-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "bon-manjer",
+      "name": "Bon Manjer",
+      "photo": "bon-manjer",
+      "image": "/images/places/st-croix/bon-manjer-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/bon-manjer-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "brew-stx",
+      "name": "Brew STX",
+      "photo": "brew-stx",
+      "image": "/images/places/st-croix/brew-stx-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/brew-stx-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "photo": "brewers-bay-beach",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/brewers-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "buck-island-reef-national-monument",
+      "name": "Buck Island Reef National Monument",
+      "photo": "buck-island-reef-national-monument",
+      "image": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/buck-island-reef-national-monument-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "bumpas-breakfast",
+      "name": "Bumpa's Breakfast",
+      "photo": "bumpas-breakfast",
+      "image": "/images/places/st-thomas/bumpas-breakfast-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/bumpas-breakfast-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "caf-christine",
+      "name": "Café Christine",
+      "photo": "caf-christine",
+      "image": "/images/places/st-croix/caf-christine-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/caf-christine-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cafe-fresco",
+      "name": "Cafe Fresco",
+      "photo": "cafe-fresco",
+      "image": "/images/places/st-croix/cafe-fresco-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/cafe-fresco-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "caf-roma",
+      "name": "Café Roma",
+      "photo": "caf-roma",
+      "image": "/images/places/st-john/caf-roma-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/caf-roma-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cane-bay-wall",
+      "name": "Cane Bay Wall",
+      "photo": "cane-bay-wall",
+      "image": "/images/places/st-croix/cane-bay-wall-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/cane-bay-wall-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "caneel-bay-overlook",
+      "name": "Caneel Bay Overlook",
+      "photo": "caneel-bay-overlook",
+      "image": "/images/places/st-john/caneel-bay-overlook-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/caneel-bay-overlook-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "captain-morgan-visitor-center",
+      "name": "Captain Morgan Visitor Center",
+      "photo": "captain-morgan-visitor-center",
+      "image": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/captain-morgan-visitor-center-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "carambola-tide-pools",
+      "name": "Carambola Tide Pools",
+      "photo": "carambola-tide-pools",
+      "image": "/images/places/st-croix/carambola-tide-pools-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/carambola-tide-pools-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "carigas-island-caf",
+      "name": "Carigas Island Café",
+      "photo": "carigas-island-caf",
+      "image": "/images/places/st-thomas/carigas-island-caf-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/carigas-island-caf-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "carolines-breakfast",
+      "name": "Caroline's Breakfast",
+      "photo": "carolines-breakfast",
+      "image": "/images/places/st-croix/carolines-breakfast-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/carolines-breakfast-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cast-iron-pot",
+      "name": "Cast Iron Pot",
+      "photo": "cast-iron-pot",
+      "image": "/images/places/st-croix/cast-iron-pot-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/cast-iron-pot-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cheeseburgers-in-americas-paradise",
+      "name": "Cheeseburgers in America's Paradise",
+      "photo": "cheeseburgers-in-americas-paradise",
+      "image": "/images/places/st-croix/cheeseburgers-in-americas-paradise-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/cheeseburgers-in-americas-paradise-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "christiansted-boardwalk",
+      "name": "Christiansted Boardwalk",
+      "photo": "christiansted-boardwalk",
+      "image": "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/christiansted-boardwalk-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "photo": "christiansted-national-historic-site",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "ci-bo-n",
+      "name": "Ci Bo Né",
+      "photo": "ci-bo-n",
+      "image": "/images/places/st-croix/ci-bo-n-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/ci-bo-n-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cinnamon-bay-archaeology-lab",
+      "name": "Cinnamon Bay Archaeology Museum",
+      "photo": "cinnamon-bay-archaeology-museum",
+      "image": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/cinnamon-bay-archaeology-museum-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "photo": "coki-point-beach",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/coki-point-beach-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "common-cents-pub",
+      "name": "Common Cents Pub",
+      "photo": "common-cents-pub",
+      "image": "/images/places/st-croix/common-cents-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/common-cents-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "company-street-shops",
+      "name": "Company Street Shops",
+      "photo": "company-street-shops",
+      "image": "/images/places/st-croix/company-street-shops-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/company-street-shops-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "coral-world-ocean-park",
+      "name": "Coral World Ocean Park",
+      "photo": "coral-world-ocean-park",
+      "image": "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/coral-world-ocean-park-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cravin-crabs",
+      "name": "Cravin' Crabs",
+      "photo": "cravin-crabs",
+      "image": "/images/places/st-thomas/cravin-crabs-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/cravin-crabs-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "crown-bay-center",
+      "name": "Crown Bay Center",
+      "photo": "crown-bay-center",
+      "image": "/images/places/st-thomas/crown-bay-center-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/crown-bay-center-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cruzan-rum-distillery",
+      "name": "Cruzan Rum Distillery",
+      "photo": "cruzan-rum-distillery",
+      "image": "/images/places/st-croix/cruzan-rum-distillery-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/cruzan-rum-distillery-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "cyril-e-king-airport",
+      "name": "Cyril E. King Airport",
+      "photo": "cyril-e-king-airport",
+      "image": "/images/places/st-thomas/cyril-e-king-airport-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/cyril-e-king-airport-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "dave-and-jerrys-steakhouse",
+      "name": "Dave & Jerry's Steakhouse",
+      "photo": "dave-and-jerrys-steakhouse",
+      "image": "/images/places/st-john/dave-and-jerrys-steakhouse-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/dave-and-jerrys-steakhouse-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "deep-end-bar",
+      "name": "Deep End Bar",
+      "photo": "deep-end-bar",
+      "image": "/images/places/st-croix/deep-end-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/deep-end-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "dinghys-beach-bar",
+      "name": "Dinghy's Beach Bar",
+      "photo": "dinghys-beach-bar",
+      "image": "/images/places/water-island/dinghys-beach-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/water-island/dinghys-beach-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "dog-house-pub",
+      "name": "Dog House Pub",
+      "photo": "dog-house-pub",
+      "image": "/images/places/st-thomas/dog-house-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/dog-house-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "drakes-seat",
+      "name": "Drake's Seat",
+      "photo": "drakes-seat",
+      "image": "/images/places/st-thomas/drakes-seat-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/drakes-seat-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-duffy-s-love-shack",
+      "name": "Duffy's Love Shack",
+      "photo": "duffys-love-shack",
+      "image": "/images/places/st-thomas/duffys-love-shack-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/duffys-love-shack-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "eden-south",
+      "name": "Eden South",
+      "photo": "eden-south",
+      "image": "/images/places/st-croix/eden-south-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/eden-south-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "el-gringos",
+      "name": "El Gringos",
+      "photo": "el-gringos",
+      "image": "/images/places/st-thomas/el-gringos-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/el-gringos-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "el-sol-bar-and-restaurant",
+      "name": "El Sol Bar and Restaurant",
+      "photo": "el-sol-bar-and-restaurant",
+      "image": "/images/places/st-croix/el-sol-bar-and-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/el-sol-bar-and-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "emancipation-garden",
+      "name": "Emancipation Garden",
+      "photo": "emancipation-garden",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/emancipation-garden-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "enkai-sushi-bar",
+      "name": "Enkai Sushi Bar",
+      "photo": "enkai-sushi-bar",
+      "image": "/images/places/st-thomas/enkai-sushi-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/enkai-sushi-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "photo": "estate-whim-plantation-museum",
+      "image": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "extra-virgin-bistro",
+      "name": "Extra Virgin Bistro",
+      "photo": "extra-virgin-bistro",
+      "image": "/images/places/st-john/extra-virgin-bistro-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/extra-virgin-bistro-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "flyers-bar-and-grill",
+      "name": "Flyers Bar & Grill",
+      "photo": "flyers-bar-and-grill",
+      "image": "/images/places/st-croix/flyers-bar-and-grill-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/flyers-bar-and-grill-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "fort-christian",
+      "name": "Fort Christian",
+      "photo": "fort-christian",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/fort-christian-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "fort-christiansvaern",
+      "name": "Fort Christiansvaern",
+      "photo": "fort-christiansvaern",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "fort-frederik",
+      "name": "Fort Frederik",
+      "photo": "fort-frederik",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/fort-frederik-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "frederiksted-pier",
+      "name": "Frederiksted Pier",
+      "photo": "frederiksted-pier",
+      "image": "/images/places/st-croix/frederiksted-pier-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/frederiksted-pier-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "frederiksted-waterfront",
+      "name": "Frederiksted Waterfront",
+      "photo": "frederiksted-waterfront",
+      "image": "/images/places/st-croix/frederiksted-waterfront-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/frederiksted-waterfront-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "photo": "french-quarter-bistro",
+      "image": "/images/places/st-thomas/french-quarter-bistro-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/french-quarter-bistro-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "gallows-bay",
+      "name": "Gallows Bay",
+      "photo": "gallows-bay",
+      "image": "/images/places/st-croix/gallows-bay-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/gallows-bay-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "gladys-caf",
+      "name": "Gladys Café",
+      "photo": "gladys-caf",
+      "image": "/images/places/st-thomas/gladys-caf-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/gladys-caf-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "goat-soup-and-whiskey",
+      "name": "Goat Soup and Whiskey",
+      "photo": "goat-soup-and-whiskey",
+      "image": "/images/places/st-croix/goat-soup-and-whiskey-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/goat-soup-and-whiskey-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "government-house-christiansted",
+      "name": "Government House Christiansted",
+      "photo": "government-house-christiansted",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/government-house-christiansted-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "photo": "greengos-caribbean-cantina",
+      "image": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "hamiltons",
+      "name": "Hamilton's",
+      "photo": "hamiltons",
+      "image": "/images/places/st-croix/hamiltons-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/hamiltons-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "harbour-prime-steak-and-seafood",
+      "name": "Harbour Prime Steak and Seafood",
+      "photo": "harbour-prime-steak-and-seafood",
+      "image": "/images/places/st-croix/harbour-prime-steak-and-seafood-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/harbour-prime-steak-and-seafood-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "harveys",
+      "name": "Harvey's",
+      "photo": "harveys",
+      "image": "/images/places/st-croix/harveys-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/harveys-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "havensight-mall",
+      "name": "Havensight Mall",
+      "photo": "havensight-mall",
+      "image": "/images/places/st-thomas/havensight-mall-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/havensight-mall-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "heidis-honeymoon-grill",
+      "name": "Heidi's Honeymoon Grill",
+      "photo": "heidis-honeymoon-grill",
+      "image": "/images/places/water-island/heidis-honeymoon-grill-1.jpg",
+      "score": 1,
+      "previous": "/images/places/water-island/heidis-honeymoon-grill-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "high-tide-bar-and-seafood-grill",
+      "name": "High Tide Bar & Seafood Grill",
+      "photo": "high-tide-bar-and-seafood-grill",
+      "image": "/images/places/st-john/high-tide-bar-and-seafood-grill-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/high-tide-bar-and-seafood-grill-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "hook-line-sinker",
+      "name": "Hook, Line & Sinker",
+      "photo": "hook-line-and-sinker",
+      "image": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/hook-line-and-sinker-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "island-time-pub",
+      "name": "Island Time Pub",
+      "photo": "island-time-pub",
+      "image": "/images/places/st-thomas/island-time-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/island-time-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "jack-and-isaac-bay-preserve",
+      "name": "Jack and Isaac Bay Preserve",
+      "photo": "jack-and-isaac-bay-preserve",
+      "image": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/jack-and-isaac-bay-preserve-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "johnny-lime",
+      "name": "Johnny Lime",
+      "photo": "johnny-lime",
+      "image": "/images/places/st-john/johnny-lime-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/johnny-lime-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "kendricks",
+      "name": "Kendricks",
+      "photo": "kendricks",
+      "image": "/images/places/st-croix/kendricks-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/kendricks-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "kims-restaurant",
+      "name": "Kim's Restaurant",
+      "photo": "kims-restaurant",
+      "image": "/images/places/st-croix/kims-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/kims-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "la-tapa",
+      "name": "La Tapa",
+      "photo": "la-tapa",
+      "image": "/images/places/st-john/la-tapa-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/la-tapa-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "lanai-at-limetree",
+      "name": "Lanai at Limetree",
+      "photo": "lanai-at-limetree",
+      "image": "/images/places/st-thomas/lanai-at-limetree-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/lanai-at-limetree-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "leatherback-brewing-company",
+      "name": "Leatherback Brewing Company",
+      "photo": "leatherback-brewing-company",
+      "image": "/images/places/st-croix/leatherback-brewing-company-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/leatherback-brewing-company-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "limestone-bay-beach",
+      "name": "Limestone Bay Beach",
+      "photo": "limestone-bay-beach",
+      "image": "/images/places/water-island/limestone-bay-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/water-island/limestone-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "lovango-rum-bar",
+      "name": "Lovango Rum Bar",
+      "photo": "lovango-rum-bar",
+      "image": "/images/places/st-john/lovango-rum-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/lovango-rum-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "photo": "margaritaville-restaurant",
+      "image": "/images/places/st-thomas/margaritaville-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/margaritaville-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "marias-cantina",
+      "name": "Maria's Cantina",
+      "photo": "marias-cantina",
+      "image": "/images/places/st-croix/marias-cantina-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/marias-cantina-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "melt-mexican-grill",
+      "name": "Melt Mexican Grill",
+      "photo": "melt-mexican-grill",
+      "image": "/images/places/st-thomas/melt-mexican-grill-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/melt-mexican-grill-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "miss-lucys",
+      "name": "Miss Lucy's",
+      "photo": "miss-lucys",
+      "image": "/images/places/st-john/miss-lucys-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/miss-lucys-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "mongoose-junction",
+      "name": "Mongoose Junction",
+      "photo": "mongoose-junction",
+      "image": "/images/places/st-john/mongoose-junction-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/mongoose-junction-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "mooies-bar",
+      "name": "Mooie's Bar",
+      "photo": "mooies-bar",
+      "image": "/images/places/st-john/mooies-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/mooies-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "morgans-mango",
+      "name": "Morgan's Mango",
+      "photo": "morgans-mango",
+      "image": "/images/places/st-john/morgans-mango-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/morgans-mango-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "mount-eagle",
+      "name": "Mount Eagle",
+      "photo": "mount-eagle",
+      "image": "/images/places/st-croix/mount-eagle-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/mount-eagle-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "mountaintop-st-thomas",
+      "name": "Mountain Top",
+      "photo": "mountain-top",
+      "image": "/images/places/st-thomas/mountain-top-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/mountain-top-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "nates-boathouse",
+      "name": "Nate's Boathouse",
+      "photo": "nates-boathouse",
+      "image": "/images/places/st-croix/nates-boathouse-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/nates-boathouse-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "nauti-bar-and-grille",
+      "name": "Nauti Bar and Grille",
+      "photo": "nauti-bar-and-grille",
+      "image": "/images/places/st-croix/nauti-bar-and-grille-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/nauti-bar-and-grille-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "no-bones-caf",
+      "name": "No Bones Café",
+      "photo": "no-bones-caf",
+      "image": "/images/places/st-croix/no-bones-caf-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/no-bones-caf-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "north-shore-deli",
+      "name": "North Shore Deli",
+      "photo": "north-shore-deli",
+      "image": "/images/places/st-john/north-shore-deli-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/north-shore-deli-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "oceana-restaurant",
+      "name": "Oceana Restaurant",
+      "photo": "oceana-restaurant",
+      "image": "/images/places/st-thomas/oceana-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/oceana-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "old-danish-custom-house",
+      "name": "Old Danish Custom House",
+      "photo": "old-danish-customs-house",
+      "image": "/images/places/st-croix/old-danish-customs-house-1.jpg",
+      "score": 0.675,
+      "previous": "/images/places/st-croix/old-danish-customs-house-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "photo": "old-stone-farmhouse",
+      "image": "/images/places/st-thomas/old-stone-farmhouse-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/old-stone-farmhouse-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "our-market-smoothies",
+      "name": "Our Market Smoothies",
+      "photo": "our-market-smoothies",
+      "image": "/images/places/st-john/our-market-smoothies-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/our-market-smoothies-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "pangea-terra-table",
+      "name": "Pangea Terra Table",
+      "photo": "pangea-terra-table",
+      "image": "/images/places/st-thomas/pangea-terra-table-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/pangea-terra-table-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "paradise-pizza",
+      "name": "Paradise Pizza",
+      "photo": "paradise-pizza",
+      "image": "/images/places/st-croix/paradise-pizza-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/paradise-pizza-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "petit-pump-room",
+      "name": "Petit Pump Room",
+      "photo": "petit-pump-room",
+      "image": "/images/places/st-thomas/petit-pump-room-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/petit-pump-room-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "petras-dushi-by-the-sea",
+      "name": "Petra's Dushi by the Sea",
+      "photo": "petras-dushi-by-the-sea",
+      "image": "/images/places/st-thomas/petras-dushi-by-the-sea-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/petras-dushi-by-the-sea-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "pie-whole-pizza",
+      "name": "Pie Whole Pizza",
+      "photo": "pie-whole-pizza",
+      "image": "/images/places/st-thomas/pie-whole-pizza-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/pie-whole-pizza-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "pizza-pi",
+      "name": "Pizza Pi",
+      "photo": "pizza-pi",
+      "image": "/images/places/st-john/pizza-pi-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/pizza-pi-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "point-udall",
+      "name": "Point Udall",
+      "photo": "point-udall",
+      "image": "/images/places/st-croix/point-udall-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/point-udall-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "protestant-cay",
+      "name": "Protestant Cay",
+      "photo": "protestant-cay",
+      "image": "/images/places/st-croix/protestant-cay-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/protestant-cay-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "ram-head-trail",
+      "name": "Ram Head Trail",
+      "photo": "ram-head-trail",
+      "image": "/images/places/st-john/ram-head-trail-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/ram-head-trail-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "petroglyphs-trail",
+      "name": "Reef Bay Petroglyphs",
+      "photo": "petroglyphs-trail",
+      "image": "/images/places/st-john/petroglyphs-trail-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/petroglyphs-trail-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "reef-bay-trail",
+      "name": "Reef Bay Trail",
+      "photo": "reef-bay-trail",
+      "image": "/images/places/st-john/reef-bay-trail-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/reef-bay-trail-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "rhumb-lines",
+      "name": "Rhumb Lines",
+      "photo": "rhumb-lines",
+      "image": "/images/places/st-john/rhumb-lines-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/rhumb-lines-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "rowdy-joes",
+      "name": "Rowdy Joe's",
+      "photo": "rowdy-joes",
+      "image": "/images/places/st-croix/rowdy-joes-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/rowdy-joes-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "rum-island-pub",
+      "name": "Rum Island Pub",
+      "photo": "rum-island-pub",
+      "image": "/images/places/st-thomas/rum-island-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/rum-island-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "salt-great-pond",
+      "name": "Salt Great Pond",
+      "photo": "salt-great-pond",
+      "image": "/images/places/st-croix/salt-great-pond-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/salt-great-pond-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "photo": "salt-pond-bay-beach",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/salt-pond-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "salt-river-bay-national-historical-park",
+      "name": "Salt River Bay National Historical Park",
+      "photo": "salt-river-bay-national-historical-park",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sam-and-jacks-deli",
+      "name": "Sam & Jack's Deli",
+      "photo": "sam-and-jacks-deli",
+      "image": "/images/places/st-john/sam-and-jacks-deli-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/sam-and-jacks-deli-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sandy-point-national-wildlife-refuge",
+      "name": "Sandy Point National Wildlife Refuge",
+      "photo": "sandy-point-national-wildlife-refuge",
+      "image": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/sandy-point-national-wildlife-refuge-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sangrias-beachside-bistro",
+      "name": "Sangria's Beachside Bistro",
+      "photo": "sangrias-beachside-bistro",
+      "image": "/images/places/st-thomas/sangrias-beachside-bistro-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/sangrias-beachside-bistro-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sapphire-marina",
+      "name": "Sapphire Marina",
+      "photo": "sapphire-marina",
+      "image": "/images/places/st-thomas/sapphire-marina-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/sapphire-marina-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "savant",
+      "name": "Savant",
+      "photo": "savant",
+      "image": "/images/places/st-croix/savant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/savant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sea-la-vie",
+      "name": "Sea La Vie",
+      "photo": "sea-la-vie",
+      "image": "/images/places/st-thomas/sea-la-vie-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/sea-la-vie-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "seaside-market-deli",
+      "name": "Seaside Market Deli",
+      "photo": "seaside-market-deli",
+      "image": "/images/places/st-croix/seaside-market-deli-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/seaside-market-deli-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "seven-arches-museum",
+      "name": "Seven Arches Museum",
+      "photo": "seven-arches-museum",
+      "image": "/images/places/st-thomas/seven-arches-museum-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/seven-arches-museum-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "shamas-specialties",
+      "name": "Shama's Specialties",
+      "photo": "shamas-specialties",
+      "image": "/images/places/st-thomas/shamas-specialties-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/shamas-specialties-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "shambles",
+      "name": "Shambles",
+      "photo": "shambles",
+      "image": "/images/places/st-john/shambles-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/shambles-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "side-street-pub",
+      "name": "Side Street Pub",
+      "photo": "side-street-pub",
+      "image": "/images/places/st-thomas/side-street-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/side-street-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "singhs-fast-food",
+      "name": "Singh's Fast Food",
+      "photo": "singhs-fast-food",
+      "image": "/images/places/st-croix/singhs-fast-food-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/singhs-fast-food-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "six-nine-restaurant-and-bar",
+      "name": "Six Nine Restaurant & Bar",
+      "photo": "six-nine-restaurant-and-bar",
+      "image": "/images/places/st-croix/six-nine-restaurant-and-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/six-nine-restaurant-and-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "skinny-legs",
+      "name": "Skinny Legs",
+      "photo": "skinny-legs",
+      "image": "/images/places/st-john/skinny-legs-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/skinny-legs-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "skyride-to-paradise-point",
+      "name": "Skyride to Paradise Point",
+      "photo": "paradise-point-skyride",
+      "image": "/images/places/st-thomas/paradise-point-skyride-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/paradise-point-skyride-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "smoke-up-fusion-bbq",
+      "name": "Smoke Up Fusion BBQ",
+      "photo": "smoke-up-fusion-bbq",
+      "image": "/images/places/st-thomas/smoke-up-fusion-bbq-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/smoke-up-fusion-bbq-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "st-george-village-botanical-garden",
+      "name": "St. George Village Botanical Garden",
+      "photo": "st-george-village-botanical-garden",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "steeple-building",
+      "name": "Steeple Building",
+      "photo": "steeple-building",
+      "image": "/images/places/st-croix/steeple-building-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/steeple-building-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stj-speakeasy",
+      "name": "STJ Speakeasy",
+      "photo": "stj-speakeasy",
+      "image": "/images/places/st-john/stj-speakeasy-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/stj-speakeasy-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-sudi-s-caribbean-bar-grille",
+      "name": "Sudi's Caribbean Bar Grille",
+      "photo": "sudis-caribbean-bar-and-grille",
+      "image": "/images/places/st-thomas/sudis-caribbean-bar-and-grille-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/sudis-caribbean-bar-and-grille-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sun-dog-caf",
+      "name": "Sun Dog Café",
+      "photo": "sun-dog-caf",
+      "image": "/images/places/st-john/sun-dog-caf-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/sun-dog-caf-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "sunny-isle-shopping-center",
+      "name": "Sunny Isle Shopping Center",
+      "photo": "sunny-isle-shopping-center",
+      "image": "/images/places/st-croix/sunny-isle-shopping-center-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/sunny-isle-shopping-center-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "surf-club-cantina",
+      "name": "Surf Club Cantina",
+      "photo": "surf-club-cantina",
+      "image": "/images/places/st-john/surf-club-cantina-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/surf-club-cantina-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "taco-shack",
+      "name": "Taco Shack",
+      "photo": "taco-shack",
+      "image": "/images/places/st-croix/taco-shack-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/taco-shack-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "tap-deck-bar-and-billiards",
+      "name": "Tap Deck Bar & Billiards",
+      "photo": "tap-deck-bar-and-billiards",
+      "image": "/images/places/st-croix/tap-deck-bar-and-billiards-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/tap-deck-bar-and-billiards-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "taphus-beer-house",
+      "name": "Taphus Beer House",
+      "photo": "taphus-beer-house",
+      "image": "/images/places/st-thomas/taphus-beer-house-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/taphus-beer-house-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-bombay-club",
+      "name": "The Bombay Club",
+      "photo": "the-bombay-club",
+      "image": "/images/places/st-croix/the-bombay-club-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/the-bombay-club-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-easterly",
+      "name": "The Easterly",
+      "photo": "the-easterly",
+      "image": "/images/places/st-thomas/the-easterly-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/the-easterly-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-lime-inn",
+      "name": "The Lime Inn",
+      "photo": "the-lime-inn",
+      "image": "/images/places/st-john/the-lime-inn-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/the-lime-inn-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-longboard",
+      "name": "The Longboard",
+      "photo": "the-longboard",
+      "image": "/images/places/st-john/the-longboard-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/the-longboard-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-smoking-rooster",
+      "name": "The Smoking Rooster",
+      "photo": "the-smoking-rooster",
+      "image": "/images/places/st-thomas/the-smoking-rooster-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/the-smoking-rooster-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-terrace-restaurant",
+      "name": "The Terrace Restaurant",
+      "photo": "the-terrace-restaurant",
+      "image": "/images/places/st-croix/the-terrace-restaurant-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/the-terrace-restaurant-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-twisted-cork",
+      "name": "The Twisted Cork",
+      "photo": "the-twisted-cork",
+      "image": "/images/places/st-thomas/the-twisted-cork-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/the-twisted-cork-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "three-palms",
+      "name": "Three Palms",
+      "photo": "three-palms",
+      "image": "/images/places/st-thomas/three-palms-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/three-palms-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "photo": "tickles-dockside-pub",
+      "image": "/images/places/st-thomas/tickles-dockside-pub-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/tickles-dockside-pub-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "tlc-kitchen",
+      "name": "TLC Kitchen",
+      "photo": "tlc-kitchen",
+      "image": "/images/places/st-croix/tlc-kitchen-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/tlc-kitchen-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "toast-diner",
+      "name": "Toast Diner",
+      "photo": "toast-diner",
+      "image": "/images/places/st-croix/toast-diner-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/toast-diner-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "too-chez",
+      "name": "Too Chez",
+      "photo": "too-chez",
+      "image": "/images/places/st-croix/too-chez-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/too-chez-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "turtles-deli",
+      "name": "Turtle's Deli",
+      "photo": "turtles-deli",
+      "image": "/images/places/st-croix/turtles-deli-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/turtles-deli-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "twin-city-coffee-house",
+      "name": "Twin City Coffee House",
+      "photo": "twin-city-coffee-house",
+      "image": "/images/places/st-croix/twin-city-coffee-house-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/twin-city-coffee-house-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "udder-delights",
+      "name": "Udder Delights",
+      "photo": "udder-delights",
+      "image": "/images/places/st-thomas/udder-delights-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/udder-delights-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "uncle-joes-bbq",
+      "name": "Uncle Joe's BBQ",
+      "photo": "uncle-joes-bbq",
+      "image": "/images/places/st-john/uncle-joes-bbq-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/uncle-joes-bbq-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "vendors-plaza",
+      "name": "Vendor's Plaza",
+      "photo": "vendors-plaza",
+      "image": "/images/places/st-thomas/vendors-plaza-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/vendors-plaza-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "vi-childrens-museum",
+      "name": "VI Children's Museum",
+      "photo": "vi-childrens-museum",
+      "image": "/images/places/st-thomas/vi-childrens-museum-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/vi-childrens-museum-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-virgilio-s-italian",
+      "name": "Virgilio's Italian",
+      "photo": "virgilios",
+      "image": "/images/places/st-thomas/virgilios-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/virgilios-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "virgin-islands-national-park-visitor-center",
+      "name": "Virgin Islands National Park Visitor Center",
+      "photo": "virgin-islands-national-park",
+      "image": "/images/places/st-john/virgin-islands-national-park-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/virgin-islands-national-park-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "water-island-beach-bar",
+      "name": "Water Island Beach Bar",
+      "photo": "water-island-beach-bar",
+      "image": "/images/places/water-island/water-island-beach-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/water-island/water-island-beach-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "wharfside-village",
+      "name": "Wharfside Village",
+      "photo": "wharfside-village",
+      "image": "/images/places/st-john/wharfside-village-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/wharfside-village-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "windmill-bar",
+      "name": "Windmill Bar",
+      "photo": "windmill-bar",
+      "image": "/images/places/st-john/windmill-bar-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/windmill-bar-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "woodys-seafood-saloon",
+      "name": "Woody's Seafood Saloon",
+      "photo": "woodys-seafood-saloon",
+      "image": "/images/places/st-john/woodys-seafood-saloon-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/woodys-seafood-saloon-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "yacht-haven-grande",
+      "name": "Yacht Haven Grande",
+      "photo": "yacht-haven-grande",
+      "image": "/images/places/st-thomas/yacht-haven-grande-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/yacht-haven-grande-1.jpg"
+    },
+    {
+      "dataset": "places.json",
+      "id": "ziggys-island-market",
+      "name": "Ziggy's Island Market",
+      "photo": "ziggys-island-market",
+      "image": "/images/places/st-croix/ziggys-island-market-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/ziggys-island-market-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "photo": "brewers-bay-beach",
+      "image": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/brewers-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "photo": "coki-point-beach",
+      "image": "/images/places/st-thomas/coki-point-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/coki-point-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "photo": "cowpet-bay-beach",
+      "image": "/images/places/st-thomas/cowpet-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/cowpet-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "photo": "denis-bay-beach",
+      "image": "/images/places/st-john/denis-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/denis-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "photo": "dorothea-beach",
+      "image": "/images/places/st-thomas/dorothea-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/dorothea-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "photo": "dorsch-beach",
+      "image": "/images/places/st-croix/dorsch-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/dorsch-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "francis-bay",
+      "name": "Francis Bay",
+      "photo": "francis-bay-beach",
+      "image": "/images/places/st-john/francis-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/francis-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "photo": "gibney-beach",
+      "image": "/images/places/st-john/gibney-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/gibney-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "photo": "grapetree-bay-beach",
+      "image": "/images/places/st-croix/grapetree-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/grapetree-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "photo": "hansen-bay-beach",
+      "image": "/images/places/st-john/hansen-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/hansen-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "haulover-bay",
+      "name": "Haulover Bay",
+      "photo": "haulover-bay-beach",
+      "image": "/images/places/st-john/haulover-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/haulover-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "photo": "honeymoon-beach-st-john",
+      "image": "/images/places/st-john/honeymoon-beach-st-john-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/honeymoon-beach-st-john-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Water Island",
+      "photo": "honeymoon-beach-water-island",
+      "image": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "photo": "jumbie-bay-beach",
+      "image": "/images/places/st-john/jumbie-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/jumbie-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "lindquist-beach",
+      "name": "Lindquist Beach",
+      "photo": "lindquist-beach",
+      "image": "/images/places/st-thomas/lindquist-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/lindquist-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "maho-bay",
+      "name": "Maho Bay",
+      "photo": "maho-bay-beach",
+      "image": "/images/places/st-john/maho-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/maho-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "mermaids-chair",
+      "name": "Mermaids Chair",
+      "photo": "mermaids-chair",
+      "image": "/images/places/st-thomas/mermaids-chair-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/mermaids-chair-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "photo": "morningstar-beach",
+      "image": "/images/places/st-thomas/morningstar-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/morningstar-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "photo": "pelican-cove-beach",
+      "image": "/images/places/st-croix/pelican-cove-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/pelican-cove-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "photo": "rainbow-beach",
+      "image": "/images/places/st-croix/rainbow-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/rainbow-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "photo": "salt-pond-bay-beach",
+      "image": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/salt-pond-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "sandy-point",
+      "name": "Sandy Point",
+      "photo": "sandy-point-beach",
+      "image": "/images/places/st-croix/sandy-point-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/sandy-point-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "photo": "santa-maria-bay-beach",
+      "image": "/images/places/st-thomas/santa-maria-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/santa-maria-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "photo": "shoys-beach",
+      "image": "/images/places/st-croix/shoys-beach-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/shoys-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "trunk-bay",
+      "name": "Trunk Bay",
+      "photo": "trunk-bay-beach",
+      "image": "/images/places/st-john/trunk-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-john/trunk-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "photo": "vessup-bay-beach",
+      "image": "/images/places/st-thomas/vessup-bay-beach-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/vessup-bay-beach-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "99-steps",
+      "name": "99 Steps",
+      "photo": "99-steps",
+      "image": "/images/places/st-thomas/99-steps-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/99-steps-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "annaberg-sugar-plantation",
+      "name": "Annaberg Sugar Plantation",
+      "photo": "annaberg-sugar-plantation",
+      "image": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "blackbeards-castle-skytsborg",
+      "name": "Blackbeard's Castle (Skytsborg)",
+      "photo": "blackbeards-castle",
+      "image": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "bluebeards-castle-tower",
+      "name": "Bluebeard's Castle Tower",
+      "photo": "bluebeards-castle",
+      "image": "/images/places/st-thomas/bluebeards-castle-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/bluebeards-castle-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "charlotte-amalie-historic-district",
+      "name": "Charlotte Amalie Historic District",
+      "photo": "charlotte-amalie-historic-district",
+      "image": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "charlotte-amalie-historic-district-boundary-increase",
+      "name": "Charlotte Amalie Historic District (Boundary Increase)",
+      "photo": "charlotte-amalie-historic-district",
+      "image": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/charlotte-amalie-historic-district-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-historic-district",
+      "name": "Christiansted Historic District",
+      "photo": "christiansted-historic-district",
+      "image": "/images/places/st-croix/christiansted-historic-district-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/christiansted-historic-district-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-national-historic-site",
+      "name": "Christiansted National Historic Site",
+      "photo": "christiansted-national-historic-site",
+      "image": "/images/places/st-croix/christiansted-national-historic-site-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/christiansted-national-historic-site-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-nhs-fort-christiansvaern",
+      "name": "Christiansted NHS Fort Christiansvaern",
+      "photo": "fort-christiansvaern",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-nhs-scale-house",
+      "name": "Christiansted NHS Scale House",
+      "photo": "scale-house",
+      "image": "/images/places/st-croix/scale-house-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/scale-house-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-nhs-steeple-building",
+      "name": "Christiansted NHS Steeple Building",
+      "photo": "steeple-building",
+      "image": "/images/places/st-croix/steeple-building-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/steeple-building-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "emancipation-garden",
+      "name": "Emancipation Garden",
+      "photo": "emancipation-garden",
+      "image": "/images/places/st-thomas/emancipation-garden-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/emancipation-garden-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-whim-museum",
+      "name": "Estate Whim Museum",
+      "photo": "estate-whim-plantation-museum",
+      "image": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-croix/estate-whim-plantation-museum-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "fort-christian",
+      "name": "Fort Christian",
+      "photo": "fort-christian",
+      "image": "/images/places/st-thomas/fort-christian-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/fort-christian-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "fort-christiansvaern",
+      "name": "Fort Christiansværn",
+      "photo": "fort-christiansvaern",
+      "image": "/images/places/st-croix/fort-christiansvaern-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/fort-christiansvaern-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "fort-frederik",
+      "name": "Fort Frederik",
+      "photo": "fort-frederik",
+      "image": "/images/places/st-croix/fort-frederik-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/fort-frederik-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "frederiksted-historic-district",
+      "name": "Frederiksted Historic District",
+      "photo": "frederiksted-historic-district",
+      "image": "/images/places/st-croix/frederiksted-historic-district-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/frederiksted-historic-district-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "gov-house-christiansted",
+      "name": "Government House, Christiansted",
+      "photo": "government-house-christiansted",
+      "image": "/images/places/st-croix/government-house-christiansted-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/government-house-christiansted-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "salt-river-bay-nhp",
+      "name": "Salt River Bay National Historical Park",
+      "photo": "salt-river-bay-national-historical-park",
+      "image": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "blackbeards-castle",
+      "name": "Skytsborg",
+      "photo": "blackbeards-castle",
+      "image": "/images/places/st-thomas/blackbeards-castle-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/blackbeards-castle-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "st-george-village-botanical-garden",
+      "name": "St. George Village Botanical Garden",
+      "photo": "st-george-village-botanical-garden",
+      "image": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-croix/st-george-village-botanical-garden-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "st-thomas-synagogue",
+      "name": "St. Thomas Synagogue",
+      "photo": "st-thomas-synagogue",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "score": 1,
+      "previous": "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim",
+      "name": "St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim",
+      "photo": "st-thomas-synagogue",
+      "image": "/images/places/st-thomas/st-thomas-synagogue-1.jpg",
+      "score": 0.9,
+      "previous": "/images/places/st-thomas/st-thomas-synagogue-1.jpg"
+    }
+  ],
+  "ambiguous": [
+    {
+      "dataset": "places.json",
+      "id": "stt-bernie-s-bar-grill",
+      "name": "Bernie's Bar Grill",
+      "candidate": "sun-and-sea-bar-and-grill",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares",
+      "candidate": "bluebeards-castle",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-bonita-s-cantina",
+      "name": "Bonita's Cantina",
+      "candidate": "greengos-caribbean-cantina",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "bordeaux-mountain",
+      "name": "Bordeaux Mountain",
+      "candidate": "bordeaux-mountain",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "waterfront-charlotte-amalie",
+      "name": "Charlotte Amalie Waterfront",
+      "candidate": "charlotte-amalie-ferry-terminal",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "charlotte-amalie-waterfront",
+      "name": "Charlotte Amalie Waterfront",
+      "candidate": "charlotte-amalie-ferry-terminal",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "chicken-shack",
+      "name": "Chicken Shack",
+      "candidate": "chicken-shack",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "cinnamon-bay-campground",
+      "name": "Cinnamon Bay Campground",
+      "candidate": "cinnamon-bay-archaeological-site",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "coral-bay",
+      "name": "Coral Bay",
+      "candidate": "coral-bay-lookout",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "coral-bay-harbor",
+      "name": "Coral Bay Harbor",
+      "candidate": "coral-bay-lookout",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "cruz-bay",
+      "name": "Cruz Bay",
+      "candidate": "cruz-bay-landing",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "cruz-bay-waterfront",
+      "name": "Cruz Bay Waterfront",
+      "candidate": "cruz-bay-landing",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-e-s-garden-teahouse",
+      "name": "E's Garden Teahouse",
+      "candidate": "emancipation-garden",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "eliza-james-mchen-beach-park",
+      "name": "Eliza James-McBean Clock Tower and Park",
+      "candidate": "buccaneer-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "frenchtown-market",
+      "name": "Frenchtown Market",
+      "candidate": "caribbean-fish-market",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "green-cay-marina",
+      "name": "Green Cay Marina",
+      "candidate": "protestant-cay",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "hillside-terrace",
+      "name": "Hillside Terrace",
+      "candidate": "hillside-terrace",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "hull-bay",
+      "name": "Hull Bay",
+      "candidate": "hull-bay-beach",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "candidate": "bolongo-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "candidate": "magens-bay-arboretum",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "main-street-charlotte-amalie",
+      "name": "Main Street Charlotte Amalie",
+      "candidate": "downtown-charlotte-amalie",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "market-square-st-thomas",
+      "name": "Market Square",
+      "candidate": "caribbean-fish-market",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "millennium-monument",
+      "name": "Millennium Monument",
+      "candidate": "buck-island-reef-national-monument",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "stt-mim-s-seafood-bistro",
+      "name": "Mim's Seafood Bistro",
+      "candidate": "mims-seaside-bistro",
+      "score": 0.6
+    },
+    {
+      "dataset": "places.json",
+      "id": "paradise-point",
+      "name": "Paradise Point",
+      "candidate": "paradise-point-skyride",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "peace-hill",
+      "name": "Peace Hill",
+      "candidate": "peace-hill-trail",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "red-hook",
+      "name": "Red Hook",
+      "candidate": "red-hook-ferry-terminal",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "secret-harbour",
+      "name": "Secret Harbour",
+      "candidate": "secret-harbour-beach",
+      "score": 0.9
+    },
+    {
+      "dataset": "places.json",
+      "id": "rainforest-st-croix",
+      "name": "St. Croix Rainforest",
+      "candidate": "st-croix-cellars",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "st-john-brewers-tap-room",
+      "name": "St. John Brewers Tap Room",
+      "candidate": "st-john-brewers-tap-room",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "leap-st-croix",
+      "name": "The Leap",
+      "candidate": "st-croix-cellars",
+      "score": 0.45
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-tap-room-st-john",
+      "name": "The Tap Room St. John",
+      "candidate": "the-tap-room-st-john",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "the-terrace",
+      "name": "The Terrace",
+      "candidate": "the-terrace",
+      "score": 1
+    },
+    {
+      "dataset": "places.json",
+      "id": "water-island-ferry-terminal",
+      "name": "Water Island Ferry Terminal",
+      "candidate": "charlotte-amalie-ferry-terminal",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "candidate": "bolongo-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "banana-bay",
+      "name": "Banana Bay",
+      "candidate": "banana-deck",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "candidate": "brown-bay-trail",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "candidate": "ama-at-cane-bay",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "candidate": "caneel-bay-overlook",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "candidate": "bolongo-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "candidate": "ama-at-cane-bay",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "candidate": "cinnamon-bay-archaeological-site",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "candidate": "the-landing-beach-bar",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "candidate": "brown-bay-trail",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "candidate": "jack-and-isaac-bay-beach",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "candidate": "jack-and-isaac-bay-beach",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "lameshur-bay",
+      "name": "Lameshur Bay",
+      "candidate": "brown-bay-trail",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "candidate": "magens-bay-arboretum",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "michelles-beach",
+      "name": "Michelles Beach",
+      "candidate": "annaly-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "candidate": "bolongo-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "candidate": "reef-bay-trail",
+      "score": 0.9
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "salomon-beach",
+      "name": "Salomon Beach",
+      "candidate": "caneel-beach-bar",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "candidate": "ama-at-cane-bay",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach Buck Island",
+      "candidate": "buccaneer-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "candidate": "bolongo-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "beaches.json",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "candidate": "brown-bay-trail",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "synagogue-beracha-veshalom",
+      "name": "Beracha Veshalom Synagogue",
+      "candidate": "st-thomas-synagogue",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "bethlehem-middle-works-historic-district",
+      "name": "Bethlehem Middle Works Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "brown-bay-plantation-historic-district",
+      "name": "Brown Bay Plantation Historic District",
+      "candidate": "brown-bay-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "catherineberg-jockumsdahl-herman-farm",
+      "name": "Catherineberg-Jockumsdahl-Herman Farm",
+      "candidate": "catherineberg-ruins",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "christiansted-nhs-custom-house",
+      "name": "Christiansted NHS Custom House",
+      "candidate": "government-house-christiansted",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "cinnamon-bay-archaeology",
+      "name": "Cinnamon Bay Archaeology Site",
+      "candidate": "cinnamon-bay-archaeology-museum",
+      "score": 0.9
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "cinnamon-bay-plantation",
+      "name": "Cinnamon Bay Plantation",
+      "candidate": "cinnamon-bay-archaeological-site",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "cinnamon-bay-sugar-works",
+      "name": "Cinnamon Bay Sugar Works",
+      "candidate": "cinnamon-bay-beach",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "coakley-bay-estate",
+      "name": "Coakley Bay Estate",
+      "candidate": "gallows-bay",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "cruz-bay-battery",
+      "name": "Cruz Bay Battery",
+      "candidate": "cruz-bay-landing",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "cruz-bay-town-historic-district",
+      "name": "Cruz Bay Town Historic District",
+      "candidate": "cruz-bay-landing",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "east-end-schoolhouse-st-john-us-virgin-islands",
+      "name": "East End Schoolhouse: St. John US Virgin Islands",
+      "candidate": "virgin-islands-national-park",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-brewers-bay",
+      "name": "Estate Brewers Bay",
+      "candidate": "brewers-bay-beach",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-butlers-bay",
+      "name": "Estate Butler's Bay",
+      "candidate": "gallows-bay",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-carolina-sugar-plantation",
+      "name": "Estate Carolina Sugar Plantation",
+      "candidate": "annaberg-sugar-plantation",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-hogansborg",
+      "name": "Estate Hogansborg",
+      "candidate": "estate-whim-plantation",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-la-reine",
+      "name": "Estate La Reine",
+      "candidate": "la-reine-chicken-shack",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-mount-victory",
+      "name": "Estate Mount Victory",
+      "candidate": "mount-eagle",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-neltjeberg",
+      "name": "Estate Neltjeberg",
+      "candidate": "neltjeberg-bay-beach",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-prosperity",
+      "name": "Estate Prosperity",
+      "candidate": "estate-whim-plantation",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-saint-george-historic-district",
+      "name": "Estate Saint George Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-st-john",
+      "name": "Estate St. John",
+      "candidate": "estate-whim-plantation",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "estate-whim-greathouse",
+      "name": "Estate Whim Greathouse",
+      "candidate": "estate-whim-plantation",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "ft-frederik-of-us-virgin-islands",
+      "name": "Ft. Frederik of US Virgin Islands",
+      "candidate": "fort-frederik",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "government-house-stt",
+      "name": "Government House, St. Thomas",
+      "candidate": "st-thomas-synagogue",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "hams-bluff-light",
+      "name": "Hams Bluff Light",
+      "candidate": "hams-bluff-lighthouse",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "hassel-island-fort-willoughby",
+      "name": "Hassel Island Fort Willoughby",
+      "candidate": "fort-christian",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "hassel-island-historic-district-boundary-increase",
+      "name": "Hassel Island Historic District (Boundary Increase)",
+      "candidate": "charlotte-amalie-historic-district",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "la-grange-historic-district",
+      "name": "La Grange Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "lameshur-plantation",
+      "name": "Lameshur Plantation",
+      "candidate": "annaberg-sugar-plantation",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "lind-point-fort",
+      "name": "Lind Point Fort",
+      "candidate": "lind-point-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "peace-hill-ruins",
+      "name": "Peace Hill Ruins",
+      "candidate": "peace-hill-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "reef-bay-great-house-historic-district",
+      "name": "Reef Bay Great House Historic District",
+      "candidate": "reef-bay-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "reef-bay-sugar-factory-historic-district",
+      "name": "Reef Bay Sugar Factory Historic District",
+      "candidate": "reef-bay-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "reef-bay-sugar-mill",
+      "name": "Reef Bay Sugar Mill",
+      "candidate": "reef-bay-trail",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "reformed-dutch-church-stt",
+      "name": "Reformed Dutch Church, St. Thomas",
+      "candidate": "st-thomas-synagogue",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "salt-river-bay-national-historic-site-and-ecological-preserve",
+      "name": "Salt River Bay National Historic Site and Ecological Preserve",
+      "candidate": "christiansted-national-historic-site",
+      "score": 0.675
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "sion-hill",
+      "name": "Sion Hill",
+      "candidate": "sion-farm-distillery",
+      "score": 0.45
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "slob-historic-district",
+      "name": "Slob Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "sprat-hall-historic-district",
+      "name": "Sprat Hall Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "strawberry-hill-historic-district",
+      "name": "Strawberry Hill Historic District",
+      "candidate": "christiansted-historic-district",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "trunk-bay-sugar-factory",
+      "name": "Trunk Bay Sugar Factory",
+      "candidate": "trunk-bay-beach",
+      "score": 0.6
+    },
+    {
+      "dataset": "historic-sites.json",
+      "id": "whim",
+      "name": "Whim",
+      "candidate": "estate-whim-plantation",
+      "score": 0.9
+    }
+  ],
+  "orphans": [
+    {
+      "slug": "american-yacht-harbor",
+      "title": "American Yacht Harbor",
+      "category": "transport",
+      "image": "/images/places/st-croix/american-yacht-harbor-1.jpg"
+    },
+    {
+      "slug": "henry-e-rohlsen-airport",
+      "title": "Henry E. Rohlsen Airport",
+      "category": "transport",
+      "image": "/images/places/st-john/henry-e-rohlsen-airport-1.jpg"
+    },
+    {
+      "slug": "water-island-ferry-terminal",
+      "title": "Water Island Ferry Terminal",
+      "category": "transport",
+      "image": "/images/places/st-croix/water-island-ferry-terminal-1.jpg"
+    },
+    {
+      "slug": "yacht-haven-grande-marina",
+      "title": "Yacht Haven Grande Marina",
+      "category": "transport",
+      "image": "/images/places/st-croix/yacht-haven-grande-marina-1.jpg"
+    }
+  ]
+}

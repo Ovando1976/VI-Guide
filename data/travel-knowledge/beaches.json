@@ -1,0 +1,1369 @@
+[
+  {
+    "id": "abi-beach",
+    "slug": "abi-beach",
+    "name": "Abi Beach",
+    "island": "stt",
+    "category": "beach",
+    "description": "Abi Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/abi-beach.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJSRqXWQcbBYwR52vySj1Mtw4",
+    "address": "837R+XX St. Thomas, Estate Bovoni, St Thomas 00802, USVI",
+    "lat": 18.314895699999997,
+    "lng": -64.9075833,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Abi%20Beach&query_place_id=ChIJSRqXWQcbBYwR52vySj1Mtw4",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "banana-bay",
+    "slug": "banana-bay",
+    "name": "Banana Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Banana Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/banana-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJbchfSlcaBYwR8x0-YjhfitU",
+    "address": "Banana Bay, St Thomas 00802, USVI",
+    "lat": 18.328644300000004,
+    "lng": -64.94303219999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Banana%20Bay&query_place_id=ChIJbchfSlcaBYwR8x0-YjhfitU",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "brewers-bay",
+    "slug": "brewers-bay",
+    "name": "Brewers Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Brewers Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/brewers-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ-bOjSHQbBYwRyh7-KEatTM0",
+    "address": "Brewers Bay, St Thomas 00802, USVI",
+    "lat": 18.3426327,
+    "lng": -64.98083369999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Brewers%20Bay&query_place_id=ChIJ-bOjSHQbBYwRyh7-KEatTM0",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "brown-bay",
+    "slug": "brown-bay",
+    "name": "Brown Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Brown Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/brown-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "Remote access is by trail or boat; no anchoring. Confirm current park alerts and conditions."
+  },
+  {
+    "id": "cane-bay",
+    "slug": "cane-bay",
+    "name": "Cane Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Cane Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/cane-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJOUze7onLGowR5r7YiZfVtXk",
+    "address": "Cane Bay, St Croix 00820, USVI",
+    "lat": 17.771639,
+    "lng": -64.81014499999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Cane%20Bay&query_place_id=ChIJOUze7onLGowR5r7YiZfVtXk",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "caneel-bay",
+    "slug": "caneel-bay",
+    "name": "Caneel Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Caneel Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/caneel-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJGSaR0hISBYwRAITsy3457h4",
+    "address": "Caneel Bay, Cruz Bay, St John 00830, USVI",
+    "lat": 18.341316199999998,
+    "lng": -64.7840366,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Caneel%20Bay&query_place_id=ChIJGSaR0hISBYwRAITsy3457h4",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "caret-bay",
+    "slug": "caret-bay",
+    "name": "Caret Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Caret Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/caret-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "Caret Bay shoreline and Estate Caret Bay geographic confirmation",
+    "sourceUrl": "https://www.usvirealestate.com/real-estate-guides/caret-bay-villas/",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed",
+    "hoursNote": "Caret Bay is both a public shoreline and the name of the surrounding estate. The shoreline is open to public use under USVI law; the practical landward route, parking, and entry conditions should still be confirmed before traveling."
+  },
+  {
+    "id": "chenay-bay",
+    "slug": "chenay-bay",
+    "name": "Chenay Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Chenay Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/beaches/st-croix/chenay-bay.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ071JLVG0GowRBLXHXPPbloU",
+    "address": "Chenay Bay, St Croix, USVI",
+    "lat": 17.761468,
+    "lng": -64.6603128,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Chenay%20Bay&query_place_id=ChIJ071JLVG0GowRBLXHXPPbloU",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "cinnamon-bay",
+    "slug": "cinnamon-bay",
+    "name": "Cinnamon Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Cinnamon Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/cinnamon-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "USVI Department of Tourism",
+    "sourceUrl": "https://www.visitusvi.com/experience/cinnamon-bay-beach/",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hours": [
+      "Park open year-round, 24 hours",
+      "Concessions generally 8:00 AM–4:00 PM"
+    ],
+    "hoursNote": "Concession hours, parking availability, and conditions can change.",
+    "amenities": [
+      "restrooms",
+      "showers",
+      "food concession",
+      "watersports rentals",
+      "limited parking"
+    ],
+    "accessibility": [
+      "accessible boardwalk to the beach"
+    ]
+  },
+  {
+    "id": "coki-point",
+    "slug": "coki-point",
+    "name": "Coki Point",
+    "island": "stt",
+    "category": "beach",
+    "description": "Coki Point is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/coki-point-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "USVI Department of Tourism",
+    "sourceUrl": "https://www.visitusvi.com/experience/coki-point-beach/",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed",
+    "hoursNote": "Vendor hours and sea conditions vary; confirm before departure."
+  },
+  {
+    "id": "columbus-landing",
+    "slug": "columbus-landing",
+    "name": "Columbus Landing",
+    "island": "stx",
+    "category": "beach",
+    "description": "Columbus Landing is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/columbus-landing.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJV7c9lVXKGowR4_8GQgRLOdQ",
+    "address": "Q6HR+H7P, Salt River, St Croix 00820, USVI",
+    "lat": 17.778950299999998,
+    "lng": -64.7592974,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Columbus%20Landing&query_place_id=ChIJV7c9lVXKGowR4_8GQgRLOdQ",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "cowpet-bay",
+    "slug": "cowpet-bay",
+    "name": "Cowpet Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Cowpet Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/cowpet-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJUYkzEQkRBYwRez6ljtLcQdA",
+    "address": "Cowpet Bay, St Thomas 00802, USVI",
+    "lat": 18.315096099999998,
+    "lng": -64.84295159999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Cowpet%20Bay&query_place_id=ChIJUYkzEQkRBYwRez6ljtLcQdA",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "denis-bay",
+    "slug": "denis-bay",
+    "name": "Denis Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Denis Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/denis-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJAwMQHHgSBYwRx8s9Yxu_4hA",
+    "address": "Denis Bay, St John 00830, USVI",
+    "lat": 18.3534193,
+    "lng": -64.7751442,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Denis%20Bay&query_place_id=ChIJAwMQHHgSBYwRx8s9Yxu_4hA",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "dorothea-beach",
+    "slug": "dorothea-beach",
+    "name": "Dorothea Beach",
+    "island": "stt",
+    "category": "beach",
+    "description": "Dorothea Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/dorothea-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJFyLSiSUbBYwRP4oJF6h-7nI",
+    "address": "00802, Dorothea, St Thomas 00802, USVI",
+    "lat": 18.3695105,
+    "lng": -64.9613495,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Dorothea%20Beach&query_place_id=ChIJFyLSiSUbBYwRP4oJF6h-7nI",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "dorsch-beach",
+    "slug": "dorsch-beach",
+    "name": "Dorsch Beach",
+    "island": "stx",
+    "category": "beach",
+    "description": "Dorsch Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/dorsch-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJvf6IgoLPGowRXl_uyqTVyuE",
+    "address": "144 Sugarhill Rd, Frederiksted, St Croix 00840, USVI",
+    "lat": 17.702608899999998,
+    "lng": -64.8850942,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Dorsch%20Beach&query_place_id=ChIJvf6IgoLPGowRXl_uyqTVyuE",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "francis-bay",
+    "slug": "francis-bay",
+    "name": "Francis Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Francis Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/francis-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://home.nps.gov/viis/planyourvisit/accessibility.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "Confirm current park alerts, parking availability, and sea conditions.",
+    "accessibility": [
+      "accessible boardwalk through the salt pond"
+    ]
+  },
+  {
+    "id": "gibney-beach",
+    "slug": "gibney-beach",
+    "name": "Gibney Beach",
+    "island": "stj",
+    "category": "beach",
+    "description": "Gibney Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/gibney-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJnd5HmncSBYwRRoGnsYNnXVY",
+    "address": "Gibney Beach, Dennis Bay/ Hawknest, St John 00830, USVI",
+    "lat": 18.3524536,
+    "lng": -64.7765268,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Gibney%20Beach&query_place_id=ChIJnd5HmncSBYwRRoGnsYNnXVY",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "grapetree-bay",
+    "slug": "grapetree-bay",
+    "name": "Grapetree Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Grapetree Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/grapetree-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJBTDErryzGowRypboM4JgBMU",
+    "address": "Grapetree Bay, St Croix, USVI",
+    "lat": 17.745908699999998,
+    "lng": -64.5921753,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Grapetree%20Bay&query_place_id=ChIJBTDErryzGowRypboM4JgBMU",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "hansen-bay",
+    "slug": "hansen-bay",
+    "name": "Hansen Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Hansen Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/hansen-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJwTNAhYFyBYwRmVHBv8Ogwo8",
+    "address": "Parcel 6ab Hansen Bay, East End, St John 00830, USVI",
+    "lat": 18.3422792,
+    "lng": -64.6741153,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Hansen%20Bay&query_place_id=ChIJwTNAhYFyBYwRmVHBv8Ogwo8",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "haulover-bay",
+    "slug": "haulover-bay",
+    "name": "Haulover Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Haulover Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/haulover-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "North and south access differ; parking is limited along the road. Confirm sea conditions."
+  },
+  {
+    "id": "hawksnest-bay",
+    "slug": "hawksnest-bay",
+    "name": "Hawksnest Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Hawksnest Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/beaches/st-john/hawksnest-bay-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://home.nps.gov/viis/planyourvisit/accessibility.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "Confirm current park alerts, parking availability, and sea conditions.",
+    "accessibility": [
+      "accessible parking",
+      "accessible picnic tables",
+      "accessible grills"
+    ]
+  },
+  {
+    "id": "honeymoon-beach",
+    "slug": "honeymoon-beach",
+    "name": "Honeymoon Beach",
+    "island": "stj",
+    "category": "beach",
+    "description": "Honeymoon Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/honeymoon-beach-st-john-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/places/honeymoon-beach.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "lat": 18.3400308,
+    "lng": -64.7914364,
+    "hoursNote": "Access is by trail or boat; confirm current park alerts and concession availability.",
+    "amenities": [
+      "beach access",
+      "seating",
+      "small boat launch",
+      "food and drink",
+      "picnic tables",
+      "trailhead",
+      "trash receptacles"
+    ]
+  },
+  {
+    "id": "honeymoon-water-island",
+    "slug": "honeymoon-water-island",
+    "name": "Honeymoon Water Island",
+    "island": "stt",
+    "category": "beach",
+    "description": "Honeymoon Water Island is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/honeymoon-beach-water-island-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJrxjow1obBYwRtxw6TpSmHWM",
+    "address": "828V+QF3, Main Rd, Water Island, St Thomas 00802, USVI",
+    "lat": 18.3168875,
+    "lng": -64.9563428,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Honeymoon%20Water%20Island&query_place_id=ChIJrxjow1obBYwRtxw6TpSmHWM",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "isaac-bay",
+    "slug": "isaac-bay",
+    "name": "Isaac Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Isaac Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJg0omnVSyGowRjznT_bPS6SQ",
+    "address": "Isaac Bay, St Croix, USVI",
+    "lat": 17.7499067,
+    "lng": -64.57144079999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Isaac%20Bay&query_place_id=ChIJg0omnVSyGowRjznT_bPS6SQ",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "jack-bay",
+    "slug": "jack-bay",
+    "name": "Jack Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Jack Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/jack-and-isaac-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJRQFCbK6zGowRTOpcITvuyFU",
+    "address": "Jack Bay, St Croix, USVI",
+    "lat": 17.7463321,
+    "lng": -64.5803268,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Jack%20Bay&query_place_id=ChIJRQFCbK6zGowRTOpcITvuyFU",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "jumbie-bay",
+    "slug": "jumbie-bay",
+    "name": "Jumbie Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Jumbie Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/jumbie-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJtwodSHgSBYwRaW_JaXBIqgE",
+    "address": "Jumbie Bay, Dennis Bay/ Hawknest, St John 00830, USVI",
+    "lat": 18.3521759,
+    "lng": -64.7740268,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Jumbie%20Bay&query_place_id=ChIJtwodSHgSBYwRaW_JaXBIqgE",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "lameshur-bay",
+    "slug": "lameshur-bay",
+    "name": "Lameshur Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Lameshur Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/beaches/st-john/lameshur-bay.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "The access road is rocky and four-wheel drive is recommended; confirm rental-car restrictions and park alerts."
+  },
+  {
+    "id": "lindquist-beach",
+    "slug": "lindquist-beach",
+    "name": "Lindquist Beach",
+    "island": "stt",
+    "category": "beach",
+    "description": "Lindquist Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/lindquist-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "aliases": [
+      "Smith Bay Park",
+      "Secret Sands Beach"
+    ],
+    "sourceLabel": "USVI Department of Tourism",
+    "sourceUrl": "https://www.visitusvi.com/experience/meet-st-thomas-pink-sand-beach-a-guide-to-smith-bay-park-lindquist-beach/",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hours": [
+      "Daily 8:00 AM–5:00 PM"
+    ],
+    "hoursNote": "Published park hours and fees may change; confirm before departure.",
+    "phone": "340-777-6300",
+    "amenities": [
+      "lifeguards",
+      "restrooms",
+      "chair rentals",
+      "rinse stations",
+      "parking"
+    ]
+  },
+  {
+    "id": "magens-bay",
+    "slug": "magens-bay",
+    "name": "Magens Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Magens Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/magens-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "USVI Department of Tourism",
+    "sourceUrl": "https://www.visitusvi.com/experience/magens-bay-beach/",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed",
+    "hoursNote": "Hours, admission, and water conditions can change; confirm with the park before departure."
+  },
+  {
+    "id": "maho-bay",
+    "slug": "maho-bay",
+    "name": "Maho Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Maho Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/maho-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/places/maho-beach.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "lat": 18.35726,
+    "lng": -64.74518,
+    "hoursNote": "Parking is limited; confirm current park alerts and conditions.",
+    "amenities": [
+      "parking",
+      "picnic tables",
+      "restrooms nearby"
+    ],
+    "accessibility": [
+      "accessible parking",
+      "accessible picnic tables"
+    ]
+  },
+  {
+    "id": "mermaids-chair",
+    "slug": "mermaids-chair",
+    "name": "Mermaids Chair",
+    "island": "stt",
+    "category": "beach",
+    "description": "Mermaids Chair is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/mermaids-chair-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJZwa0ZvkcBYwRRpAj4L8mTjw",
+    "address": "St Thomas, Charlotte Amalie West, St Thomas 00802, USVI",
+    "lat": 18.352659,
+    "lng": -65.04059699999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Mermaids%20Chair&query_place_id=ChIJZwa0ZvkcBYwRRpAj4L8mTjw",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "michelles-beach",
+    "slug": "michelles-beach",
+    "name": "Michelles Beach",
+    "island": "stx",
+    "category": "beach",
+    "description": "Michelles Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/michelles-beach.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ]
+  },
+  {
+    "id": "morningstar-beach",
+    "slug": "morningstar-beach",
+    "name": "Morningstar Beach",
+    "island": "stt",
+    "category": "beach",
+    "description": "Morningstar Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/morningstar-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJHdaUfGUaBYwRj5U_8UAEXF4",
+    "address": "Morningstar Beach, St Thomas 00801, USVI",
+    "lat": 18.319955099999998,
+    "lng": -64.9201441,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Morningstar%20Beach&query_place_id=ChIJHdaUfGUaBYwRj5U_8UAEXF4",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "nazareth-bay",
+    "slug": "nazareth-bay",
+    "name": "Nazareth Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Nazareth Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/nazareth-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ35QACQERBYwROERWzfIpZT8",
+    "address": "Nazareth Bay, St Thomas 00802, USVI",
+    "lat": 18.3181343,
+    "lng": -64.8548101,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Nazareth%20Bay&query_place_id=ChIJ35QACQERBYwROERWzfIpZT8",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "pelican-cove",
+    "slug": "pelican-cove",
+    "name": "Pelican Cove",
+    "island": "stx",
+    "category": "beach",
+    "description": "Pelican Cove is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/pelican-cove-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ8XzLoGjKGowR-y65IrIIFxs",
+    "address": "Pelican Cove Beach, La Grande Princesse, St Croix, USVI",
+    "lat": 17.765805399999998,
+    "lng": -64.7351429,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Pelican%20Cove&query_place_id=ChIJ8XzLoGjKGowR-y65IrIIFxs",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "rainbow-beach",
+    "slug": "rainbow-beach",
+    "name": "Rainbow Beach",
+    "island": "stx",
+    "category": "beach",
+    "description": "Rainbow Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/rainbow-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ-yWtZhbOGowRQVRKhoOIADU",
+    "address": "Rainbow Beach, William, St Croix 00840, USVI",
+    "lat": 17.7301441,
+    "lng": -64.8880629,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Rainbow%20Beach&query_place_id=ChIJ-yWtZhbOGowRQVRKhoOIADU",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "reef-bay",
+    "slug": "reef-bay",
+    "name": "Reef Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Reef Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/reef-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJ7634sL8SBYwRKUoYTH-m_A0",
+    "address": "Reef Bay, St John 00830, USVI",
+    "lat": 18.329806899999998,
+    "lng": -64.7369858,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Reef%20Bay&query_place_id=ChIJ7634sL8SBYwRKUoYTH-m_A0",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "salomon-beach",
+    "slug": "salomon-beach",
+    "name": "Salomon Beach",
+    "island": "stj",
+    "category": "beach",
+    "description": "Salomon Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/beaches/st-john/salomon-beach.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "Access is by trail or boat; confirm current park alerts and sea conditions."
+  },
+  {
+    "id": "salt-pond-bay",
+    "slug": "salt-pond-bay",
+    "name": "Salt Pond Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Salt Pond Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/places/salt-pond-bay.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "lat": 18.31222,
+    "lng": -64.70795,
+    "hoursNote": "Beach access requires a short downhill trail; confirm current park alerts and conditions.",
+    "amenities": [
+      "parking",
+      "picnic tables",
+      "toilets",
+      "hiking trail"
+    ]
+  },
+  {
+    "id": "sandy-point",
+    "slug": "sandy-point",
+    "name": "Sandy Point",
+    "island": "stx",
+    "category": "beach",
+    "description": "Sandy Point is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/sandy-point-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "U.S. Fish & Wildlife Service",
+    "sourceUrl": "https://www.fws.gov/refuge/sandy-point/visit-us",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "seasonal",
+    "hoursNote": "The beach is generally closed from roughly mid-April through August for sea-turtle nesting and otherwise has limited public access. Confirm before departure.",
+    "phone": "340-773-4554"
+  },
+  {
+    "id": "santa-maria-beach",
+    "slug": "santa-maria-beach",
+    "name": "Santa Maria Beach",
+    "island": "stt",
+    "category": "beach",
+    "description": "Santa Maria Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/santa-maria-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJk6ygO14bBYwRq2jTtUTP1ms",
+    "address": "Santa Maria Bay, St Thomas 00802, USVI",
+    "lat": 18.364205899999998,
+    "lng": -64.9971461,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Santa%20Maria%20Beach&query_place_id=ChIJk6ygO14bBYwRq2jTtUTP1ms",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "shoys-beach",
+    "slug": "shoys-beach",
+    "name": "Shoys Beach",
+    "island": "stx",
+    "category": "beach",
+    "description": "Shoys Beach is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-croix/shoys-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJnUoS0621GowRSkZ9HAMaj2M",
+    "address": "Shoys Beach, St Croix, USVI",
+    "lat": 17.759479499999998,
+    "lng": -64.6739237,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Shoys%20Beach&query_place_id=ChIJnUoS0621GowRSkZ9HAMaj2M",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "teague-bay",
+    "slug": "teague-bay",
+    "name": "Teague Bay",
+    "island": "stx",
+    "category": "beach",
+    "description": "Teague Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/sourced/beach/stx/teague-bay.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "image": "/images/sourced/beach/stx/teague-bay.jpg",
+    "googlePlaceId": "ChIJV8cMwZuzGowRMXAQ9oiwH1U",
+    "address": "Teagues Bay, Christiansted, St Croix 00820, USVI",
+    "lat": 17.7545371,
+    "lng": -64.60933310000001,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Teague%20Bay&query_place_id=ChIJV8cMwZuzGowRMXAQ9oiwH1U",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "trunk-bay",
+    "slug": "trunk-bay",
+    "name": "Trunk Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Trunk Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-john/trunk-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": true,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "An expanded amenity fee applies; confirm current fees, parking, park alerts, and sea conditions.",
+    "amenities": [
+      "snorkel trail",
+      "restrooms",
+      "showers",
+      "snack bar",
+      "souvenir shop",
+      "lifeguards"
+    ]
+  },
+  {
+    "id": "turtle-beach-buck-island",
+    "slug": "turtle-beach-buck-island",
+    "name": "Turtle Beach Buck Island",
+    "island": "stx",
+    "category": "beach",
+    "description": "Turtle Beach Buck Island is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/turtle-beach-buck-island.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://home.nps.gov/buis/planyourvisit/know-before-you-go.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hours": [
+      "Daily 7:00 AM–5:00 PM"
+    ],
+    "hoursNote": "Buck Island is boat-access only; vessel permits and anchoring restrictions apply.",
+    "amenities": [
+      "beach access",
+      "snorkeling",
+      "hiking trail"
+    ],
+    "phone": "340-773-1460"
+  },
+  {
+    "id": "vessup-bay",
+    "slug": "vessup-bay",
+    "name": "Vessup Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Vessup Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/places/st-thomas/vessup-bay-beach-1.jpg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJz-LsaqkRBYwRjNfK-1BBuB0",
+    "address": "Vessup Bay, Red Hook, St Thomas 00802, USVI",
+    "lat": 18.3247935,
+    "lng": -64.85073369999999,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Vessup%20Bay&query_place_id=ChIJz-LsaqkRBYwRjNfK-1BBuB0",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "water-bay",
+    "slug": "water-bay",
+    "name": "Water Bay",
+    "island": "stt",
+    "category": "beach",
+    "description": "Water Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/water-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "googlePlaceId": "ChIJgeCmcDYQBYwRiakaZ3Rjel0",
+    "address": "Water Bay, St Thomas 00802, USVI",
+    "lat": 18.3471342,
+    "lng": -64.8651867,
+    "sourceLabel": "Google Places shoreline identity — public access requires authoritative confirmation",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Water%20Bay&query_place_id=ChIJgeCmcDYQBYwRiakaZ3Rjel0",
+    "verificationLevel": "secondary",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "unconfirmed"
+  },
+  {
+    "id": "waterlemon-bay",
+    "slug": "waterlemon-bay",
+    "name": "Waterlemon Bay",
+    "island": "stj",
+    "category": "beach",
+    "description": "Waterlemon Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "heroImage": "/images/directory/beaches/waterlemon-bay.svg",
+    "tags": [
+      "beach",
+      "swimming",
+      "scenic"
+    ],
+    "featured": false,
+    "bestFor": [
+      "beach day",
+      "island views"
+    ],
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "verificationLevel": "government",
+    "verifiedAt": "2026-07-20",
+    "operatingStatus": "verified-operating",
+    "hoursNote": "Access is via the Leinster Bay Trail; currents can be strong around the cay."
+  }
+]

@@ -1,0 +1,3598 @@
+{
+  "id": "stx-taxi-tariff-2022-candidate",
+  "title": "STX researched taxi tariff transcription",
+  "version": "2022-10-24-candidate-1",
+  "island": "stx",
+  "status": "draft",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "sourceUrl": "https://www.vinow.com/stcroix/getting_around_stx/taxis-rates/",
+  "sources": [
+    {
+      "url": "https://www.vinow.com/stcroix/getting_around_stx/taxis-rates/",
+      "label": "Published 2022 taxi rate tables",
+      "publisher": "VInow",
+      "sourceType": "verified_transcription",
+      "retrievedAt": "2026-07-20T00:00:00-04:00"
+    }
+  ],
+  "issuingAuthority": "Virgin Islands Taxicab Commission",
+  "currency": "USD",
+  "verificationNotes": "Draft only. Obtain and hash the Commission-issued schedule before activation.",
+  "rules": [
+    {
+      "id": "stx-henry-e-rohlsen-airport-annaly",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Annaly"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-belvedere",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Belvedere"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-buccaneer",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Buccaneer"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-canaan",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Canaan"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-canaan-ridge",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Canaan Ridge"
+      ],
+      "onePassengerFare": 33,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 33
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-cane-bay-plantation",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Cane Bay Plantation"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-cane-garden",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Cane Garden"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-carambola",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Carambola"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-castle-nugent",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Castle Nugent"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-chenay-bay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Chenay Bay"
+      ],
+      "onePassengerFare": 32,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 32
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-christiansted",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Christiansted"
+      ],
+      "onePassengerFare": 24,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 24
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-coakley-bay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Coakley Bay"
+      ],
+      "onePassengerFare": 33,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 33
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-constitution-hill",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Constitution Hill"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-cotton-grove",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Cotton Grove"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-cotton-valley",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Cotton Valley"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-cramer-s-park",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Cramer's Park"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-divi-carina-bay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Divi Carina Bay"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-farsham",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Farsham"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-frederiksted",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Frederiksted"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-gentle-winds",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Gentle Winds"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-grapetree-bay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Grapetree Bay"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-great-pond",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Great Pond"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-green-cay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Green Cay"
+      ],
+      "onePassengerFare": 33,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 33
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-ham-s-bay-clover-crest",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Ham's Bay/Clover Crest"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-ham-s-bay-clover-guard",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Ham's Bay/Clover Guard"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-lime-tree-bay",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Lime Tree Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-humbug",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Humbug"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-king-frederik-hotel",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "King Frederik Hotel"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-la-grange",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "La Grange"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-la-grange-hill",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "La Grange Hill"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-longford",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Longford"
+      ],
+      "onePassengerFare": 24,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 24
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-lowry-hill",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Lowry Hill"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-mt-washington-east-end",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Mt. Washington (East End)"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-mt-washington-west",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Mt. Washington (West)"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-oxford",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Oxford"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-petronella",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Petronella"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-queen-s-quarter",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Queen's Quarter"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sally-s-fancy",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sally's Fancy"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sandy-point",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sandy Point"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sandy-point-nature-conservancy",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sandy Point (Nature Conservancy)"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-salt-river",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Salt River"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-seven-hills",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Seven Hills"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-shoy-s-estate",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Shoy's Estate"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sion-valley",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sion Valley"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-solitude",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Solitude"
+      ],
+      "onePassengerFare": 32,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 32
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sprat-hall",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sprat Hall"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-st-croix-by-the-sea",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "St. Croix by the Sea"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sugar-hill-estate",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sugar Hill Estate"
+      ],
+      "onePassengerFare": 24,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 24
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-sunny-isle",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Sunny Isle"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-tamarind-reef",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Tamarind Reef"
+      ],
+      "onePassengerFare": 32,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 32
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-tide-village",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Tide Village"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-henry-e-rohlsen-airport-work-and-rest",
+      "originNames": [
+        "Henry E. Rohlsen Airport"
+      ],
+      "destinationNames": [
+        "Work and Rest"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-annaly",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Annaly"
+      ],
+      "onePassengerFare": 39,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 39
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-anna-s-hope",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Anna's Hope"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-bethlehem-upper-lower",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Bethlehem (Upper/Lower)"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-buccaneer-hotel",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Buccaneer Hotel"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-boetzberg",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Boetzberg"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-cane-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Cane Bay"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-carambola",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Carambola"
+      ],
+      "onePassengerFare": 45,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 45
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-castle-coakley-sion-farm",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Castle Coakley/Sion Farm"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-castle-nugent",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Castle Nugent"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-catherine-s-rest",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Catherine's Rest"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-club-st-croix",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Club St. Croix"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-coakley-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Coakley Bay"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-constitution-hill",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Constitution Hill"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-cormorant",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Cormorant"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-cotton-grove",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Cotton Grove"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-cotton-valley",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Cotton Valley"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-cramer-s-park",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Cramer's Park"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-divi-carina-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Divi Carina Bay"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-farsham",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Farsham"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-frederiksted",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Frederiksted"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-gallows-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Gallows Bay"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 5
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-gentle-wind",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Gentle Wind"
+      ],
+      "onePassengerFare": 33,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 33
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-glynn",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Glynn"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-golden-rock-shopping-center",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Golden Rock Shopping Center"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-grange",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Grange"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-grapetree-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Grapetree Bay"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-great-pond",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Great Pond"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-green-cay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Green Cay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-grove-place",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Grove Place"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-lime-tree-bay",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Lime Tree Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-hibiscus-beach-hotel",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Hibiscus Beach Hotel"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-humbug",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Humbug"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-kingshill",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Kingshill"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-la-grande-princesse",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "La Grande Princesse"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-la-reine",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "La Reine"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-longford",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Longford"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-lowry-hill",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Lowry Hill"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-mon-bijou",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Mon Bijou"
+      ],
+      "onePassengerFare": 21,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 21
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-morning-star",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Morning Star"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-mount-washington-east",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Mount Washington (East)"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-pearl",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Pearl"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-peter-s-rest",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Peter's Rest"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-petronella",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Petronella"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-rust-up-twist",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Rust-Up-Twist"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-sally-s-fancy",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Sally's Fancy"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-salt-river",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Salt River"
+      ],
+      "onePassengerFare": 33,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 33
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-seven-hills",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Seven Hills"
+      ],
+      "onePassengerFare": 24,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 24
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-shoy-s-estate",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Shoy's Estate"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-solitude",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Solitude"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-southgate-tipperary",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Southgate/Tipperary"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-strawberry-barren-spot",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Strawberry/Barren Spot"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-sunny-isle-island-center",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Sunny Isle/Island Center"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-tamarind-reef",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Tamarind Reef"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-tide-village",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Tide Village"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-upper-and-lower-love",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Upper and Lower Love"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-william-s-delight",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "William's Delight"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-christiansted-welcome-estate",
+      "originNames": [
+        "Christiansted"
+      ],
+      "destinationNames": [
+        "Welcome Estate"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 5
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-annaly",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Annaly"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-butler-s-bay",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Butler's Bay"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-carambola",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Carambola"
+      ],
+      "onePassengerFare": 41,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 41
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-christiansted",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Christiansted"
+      ],
+      "onePassengerFare": 36,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 36
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-diamond-st-george-s",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Diamond/St. George's"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-davis-bay",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Davis Bay"
+      ],
+      "onePassengerFare": 41,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 41
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-divi-carina-bay",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Divi Carina Bay"
+      ],
+      "onePassengerFare": 54,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 54
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 27
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-grove-place-village",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Grove Place Village"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-grove-place-hills",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Grove Place Hills"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-hannah-s-rest",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Hannah's Rest"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-lime-tree-bay",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Lime Tree Bay"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-jolly-hill",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Jolly Hill"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-la-grange",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "La Grange"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-little-la-grange",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Little La Grange"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-manning-s-bay",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Manning's Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-mon-bijou",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Mon Bijou"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-mt-pleasant",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Mt. Pleasant"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-mt-washington-frederiksted",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Mt. Washington (Frederiksted)"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-seven-hills",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Seven Hills"
+      ],
+      "onePassengerFare": 44,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 44
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-sion-farm",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Sion Farm"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-sprat-hall",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Sprat Hall"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-st-croix-renaissance-park",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "St Croix Renaissance Park"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-sunny-isle",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Sunny Isle"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-sunset-beach",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Sunset Beach"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 5
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-frederiksted-whim-plantation-good-hope",
+      "originNames": [
+        "Frederiksted"
+      ],
+      "destinationNames": [
+        "Whim Plantation/Good Hope"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-buccaneer",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Buccaneer"
+      ],
+      "onePassengerFare": 48,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 48
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 24
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-chenay-bay",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Chenay Bay"
+      ],
+      "onePassengerFare": 48,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 48
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-coakley-bay",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Coakley Bay"
+      ],
+      "onePassengerFare": 48,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 48
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-divi-carina-bay",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Divi Carina Bay"
+      ],
+      "onePassengerFare": 54,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 54
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-grapetree-bay",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Grapetree Bay"
+      ],
+      "onePassengerFare": 54,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 54
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-sprat-hall",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Sprat Hall"
+      ],
+      "onePassengerFare": 41,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 41
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-reef-condominiums",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Reef Condominiums"
+      ],
+      "onePassengerFare": 51,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 51
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-frederiksted",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Frederiksted"
+      ],
+      "onePassengerFare": 41,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 41
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stx-carambola-tamarind-reef",
+      "originNames": [
+        "Carambola"
+      ],
+      "destinationNames": [
+        "Tamarind Reef"
+      ],
+      "onePassengerFare": 48,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 2,
+          "calculation": "flat_party",
+          "amount": 48
+        },
+        {
+          "minimumPassengers": 3,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    }
+  ]
+}

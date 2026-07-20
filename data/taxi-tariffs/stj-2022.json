@@ -1,0 +1,3498 @@
+{
+  "id": "stj-taxi-tariff-2022-candidate",
+  "title": "STJ researched taxi tariff transcription",
+  "version": "2022-10-24-candidate-1",
+  "island": "stj",
+  "status": "draft",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "sourceUrl": "https://www.vinow.com/stjohn/getting_around_stj/taxis-rates/",
+  "sources": [
+    {
+      "url": "https://www.vinow.com/stjohn/getting_around_stj/taxis-rates/",
+      "label": "Published 2022 taxi rate tables",
+      "publisher": "VInow",
+      "sourceType": "verified_transcription",
+      "retrievedAt": "2026-07-20T00:00:00-04:00"
+    }
+  ],
+  "issuingAuthority": "Virgin Islands Taxicab Commission",
+  "currency": "USD",
+  "verificationNotes": "Draft only. Obtain and hash the Commission-issued schedule before activation.",
+  "rules": [
+    {
+      "id": "stj-cruz-bay-annaberg",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-bethany",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Bethany"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 7
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-bordeaux-mountain",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Bordeaux Mountain"
+      ],
+      "onePassengerFare": 26,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 26
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-beth-cruz-upper-deck",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Beth Cruz/Upper Deck"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-calabash-boom",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Calabash Boom"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-caneel-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Caneel Bay"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-catherineberg",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Catherineberg"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-chateau-de-bordeaux",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Chateau de Bordeaux"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-chocolate-hole",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Chocolate Hole"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-cinnamon-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-concordia",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Concordia"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-contant",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Contant"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 7
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-coral-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Coral Bay"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-dennis-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Dennis Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-desoto-bock-house-east-end",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Desoto Bock House (East End)"
+      ],
+      "onePassengerFare": 38,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 38
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-estate-lindholm",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Estate Lindholm"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-fish-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Fish Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-francis-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Francis Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-frank-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Frank Bay"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-gallows-point",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Gallows Point"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-gift-hill",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Gift Hill"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-george-simmonds-terrace",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "George Simmonds Terrace"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-goat-path-maho-bay-beach",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Goat Path/Maho Bay Beach"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-great-cruz-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Great Cruz Bay"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-grunwald",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Grunwald"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-haulover",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Haulover"
+      ],
+      "onePassengerFare": 32,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 32
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 22
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-hawksnest",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Hawksnest"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-hurricane-hole",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Hurricane Hole"
+      ],
+      "onePassengerFare": 29,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 29
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-john-s-head",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "John's Head"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-jumbie-beach",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Jumbie Beach"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-lameshur",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Lameshur"
+      ],
+      "onePassengerFare": 38,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 38
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 25
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-leinster-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Leinster Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-little-maho-bay-campground",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Little Maho Bay Campground"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-mandahl",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Mandahl"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-ms-lucy-s",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Ms. Lucy's"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-oppenheimer",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Oppenheimer"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-pine-peace",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Pine Peace"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-privateer-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Privateer Bay"
+      ],
+      "onePassengerFare": 45,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 45
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 30
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-rendezvous-bay-klein-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Rendezvous Bay (Klein Bay)"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-reef-bay-trail",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Reef Bay Trail"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-salt-pond",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Salt Pond"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-sunset-ridge",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Sunset Ridge"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-susannaberg-clinic-laundry",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Susannaberg (Clinic/Laundry)"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-trunk-bay",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Trunk Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-vie-s-east-end",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Vie's (East End)"
+      ],
+      "onePassengerFare": 38,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 38
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 25
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-westin-resort",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Westin Resort"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 7
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-cruz-bay-zootenvaal",
+      "originNames": [
+        "Cruz Bay"
+      ],
+      "destinationNames": [
+        "Zootenvaal"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-annaberg",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-bloomingdale-freeman-ground",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Bloomingdale (Freeman Ground)"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-calabash-boom",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Calabash Boom"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-caneel-bay-via-northshore",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Caneel Bay (via Northshore)"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-cinnamon-bay",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 13,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 13
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-desoto-bock-house-east-end",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Desoto Bock House (East End)"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-george-simmonds-terrace",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "George Simmonds Terrace"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-hawksnest",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Hawksnest"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-hurricane-hole",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Hurricane Hole"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-john-s-folly-school",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "John's Folly School"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-lameshur",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Lameshur"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-maho-bay-beach",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Maho Bay Beach"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-mandahl",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Mandahl"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-oppenheimer",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Oppenheimer"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-salt-pond",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Salt Pond"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-public-works",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Public Works"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-susannaberg-clinic-laundry",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Susannaberg (Clinic/Laundry)"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-trunk-bay-via-centerline",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Trunk Bay (via Centerline)"
+      ],
+      "onePassengerFare": 29,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 29
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-trunk-bay-via-north-shore",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Trunk Bay (via North Shore)"
+      ],
+      "onePassengerFare": 14,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 14
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-vie-s-east-end",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Vie's (East End)"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-coral-bay-zootenvaal",
+      "originNames": [
+        "Coral Bay"
+      ],
+      "destinationNames": [
+        "Zootenvaal"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-annaberg",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-caneel-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Caneel Bay"
+      ],
+      "onePassengerFare": 10,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 10
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-cinnamon-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-cruz-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Cruz Bay"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-coral-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Coral Bay"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 16
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-maho-bay-beach-goat-path",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Maho Bay Beach/Goat Path"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-francis-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Francis Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-golf-course-pastory",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Golf Course/Pastory"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-hawksnest-beach",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Hawksnest Beach"
+      ],
+      "onePassengerFare": 10,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 10
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-jumbie-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Jumbie Bay"
+      ],
+      "onePassengerFare": 13,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 13
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-maho-bay-campground",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Maho Bay Campground"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-oppenheimer",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Oppenheimer"
+      ],
+      "onePassengerFare": 10,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 10
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-susannaberg-clinic-laundry",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Susannaberg (Clinic/Laundry)"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-trunk-bay",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Trunk Bay"
+      ],
+      "onePassengerFare": 13,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 13
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-gallows-point-westin",
+      "originNames": [
+        "Gallows Point"
+      ],
+      "destinationNames": [
+        "Westin"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-annaberg",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-bordeaux-mountain",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Bordeaux Mountain"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-chateau-de-bordeaux",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Chateau de Bordeaux"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-cinnamon-bay",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-coral-bay-via-centerline",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Coral Bay (Via Centerline)"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-coral-bay-via-northshore",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Coral Bay (Via Northshore)"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-francis-bay",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Francis Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-gallows-point",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Gallows Point"
+      ],
+      "onePassengerFare": 10,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 10
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-hawksnest-bay",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Hawksnest Bay"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-lameshur-via-northshore",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Lameshur (via Northshore)"
+      ],
+      "onePassengerFare": 35,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 35
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-maho-bay-beach-goat-path",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Maho Bay Beach/Goat Path"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-pastory-course",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Pastory/Course"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-maho-bay-campground",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Maho Bay Campground"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-salt-pond-via-northshore",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Salt Pond (via Northshore)"
+      ],
+      "onePassengerFare": 30,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 30
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 18
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-susannaberg-clinic-laundry",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Susannaberg (Clinic/Laundry)"
+      ],
+      "onePassengerFare": 16,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 16
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-trunk-bay",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Trunk Bay"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-caneel-bay-westin",
+      "originNames": [
+        "Caneel Bay"
+      ],
+      "destinationNames": [
+        "Westin"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-annaberg",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-asolare-estate-lindholm",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Asolare/Estate Lindholm"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-calabash-boom",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Calabash Boom"
+      ],
+      "onePassengerFare": 35,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 35
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 21
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-caneel-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Caneel Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-chateau-de-bordeaux",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Chateau de Bordeaux"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-catherineberg",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Catherineberg"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-chocolate-hole",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Chocolate Hole"
+      ],
+      "onePassengerFare": 8,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 8
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 6
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-cinnamon-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-coral-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Coral Bay"
+      ],
+      "onePassengerFare": 25,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 25
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-cruz-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Cruz Bay"
+      ],
+      "onePassengerFare": 9,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 9
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 7
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-dennis-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Dennis Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-east-end",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "East End"
+      ],
+      "onePassengerFare": 41,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 41
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 27
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-fish-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Fish Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-francis-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Francis Bay"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-gallows-point",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Gallows Point"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-gift-hill",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Gift Hill"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-maho-bay-beach-goat-path",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Maho Bay Beach/Goat Path"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-golf-course-pastory",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Golf Course/Pastory"
+      ],
+      "onePassengerFare": 11,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 11
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 8
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-hawksnest-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Hawksnest Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-maho-bay-campground",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Maho Bay Campground"
+      ],
+      "onePassengerFare": 23,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 23
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-ms-lucy-s",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Ms. Lucy's"
+      ],
+      "onePassengerFare": 38,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 38
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 23
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-oppenheimer",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Oppenheimer"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 10
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-salt-pond",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Salt Pond"
+      ],
+      "onePassengerFare": 40,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 40
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 26
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-susannaberg-clinic-laundry",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Susannaberg (Clinic/Laundry)"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-westin-resort-trunk-bay",
+      "originNames": [
+        "Westin Resort"
+      ],
+      "destinationNames": [
+        "Trunk Bay"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-annaberg",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Annaberg"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-caneel-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Caneel Bay"
+      ],
+      "onePassengerFare": 16,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 16
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-cinnamon-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Cinnamon Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 15
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-coral-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Coral Bay"
+      ],
+      "onePassengerFare": 18,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 18
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 11
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-cruz-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Cruz Bay"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-francis-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Francis Bay"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-gallows-point",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Gallows Point"
+      ],
+      "onePassengerFare": 12,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 12
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 9
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-goat-path-maho-bay-beach",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Goat Path/Maho Bay Beach"
+      ],
+      "onePassengerFare": 20,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 20
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 17
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-hawksnest-beach",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Hawksnest Beach"
+      ],
+      "onePassengerFare": 16,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 16
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-jumbie-beach",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Jumbie Beach"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-maho-bay-campground",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Maho Bay Campground"
+      ],
+      "onePassengerFare": 27,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 27
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 20
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-oppenheimer",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Oppenheimer"
+      ],
+      "onePassengerFare": 16,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 16
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 13
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-trunk-bay",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Trunk Bay"
+      ],
+      "onePassengerFare": 17,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 17
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 14
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    },
+    {
+      "id": "stj-neptune-landing-windmill-westin",
+      "originNames": [
+        "Neptune Landing/Windmill"
+      ],
+      "destinationNames": [
+        "Westin"
+      ],
+      "onePassengerFare": 15,
+      "luggageFarePerPiece": 3,
+      "passengerFareBands": [
+        {
+          "minimumPassengers": 1,
+          "maximumPassengers": 1,
+          "calculation": "flat_party",
+          "amount": 15
+        },
+        {
+          "minimumPassengers": 2,
+          "calculation": "per_person",
+          "amount": 12
+        }
+      ],
+      "notes": "Research transcription of the schedule reported effective October 24, 2022. Commission-issued source sheet still required before activation."
+    }
+  ]
+}

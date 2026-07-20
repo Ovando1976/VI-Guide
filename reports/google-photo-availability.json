@@ -1,0 +1,1865 @@
+{
+  "generatedAt": "2026-07-17T16:39:26.981Z",
+  "summary": {
+    "total": 206,
+    "has-photo": 188,
+    "no-photo": 11,
+    "no-place-id": 7
+  },
+  "rows": [
+    {
+      "collection": "beaches",
+      "id": "abi-beach",
+      "name": "Abi Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJSRqXWQcbBYwR52vySj1Mtw4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "banana-bay",
+      "name": "Banana Bay Beach",
+      "island": "WAT",
+      "googlePlaceId": "ChIJbchfSlcaBYwR8x0-YjhfitU",
+      "status": "has-photo",
+      "photoCount": 3
+    },
+    {
+      "collection": "beaches",
+      "id": "bolongo-bay",
+      "name": "Bolongo Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJ7Ue8OpoQBYwRlUkeTQ629v0",
+      "status": "has-photo",
+      "photoCount": 5
+    },
+    {
+      "collection": "beaches",
+      "id": "brewers-bay",
+      "name": "Brewers Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-bOjSHQbBYwRyh7-KEatTM0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "brown-bay",
+      "name": "Brown Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJFy4C5LByBYwRfHsbbErD0n8",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "buccaneer-beach",
+      "name": "Buccaneer Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJI0hmq7u1GowR1jnEHP0j40I",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "cane-bay",
+      "name": "Cane Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJOUze7onLGowR5r7YiZfVtXk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "caneel-bay",
+      "name": "Caneel Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJGSaR0hISBYwRAITsy3457h4",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "caret-bay",
+      "name": "Caret Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJSeIscj8bBYwR4LuIcYrKCL0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "chenay-bay",
+      "name": "Chenay Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJ071JLVG0GowRBLXHXPPbloU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "cinnamon-bay",
+      "name": "Cinnamon Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJB8eJZX4NBYwRPU6LXRQoba0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "coki-point",
+      "name": "Coki Point",
+      "island": "STT",
+      "googlePlaceId": "ChIJwyTD5jYQBYwRohwwS5P-fa0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "columbus-landing",
+      "name": "Columbus Landing",
+      "island": "STX",
+      "googlePlaceId": "ChIJV7c9lVXKGowR4_8GQgRLOdQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "cowpet-bay",
+      "name": "Cowpet Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJUYkzEQkRBYwRez6ljtLcQdA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "denis-bay",
+      "name": "Denis Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJAwMQHHgSBYwRx8s9Yxu_4hA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "dorothea-beach",
+      "name": "Dorothea Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJFyLSiSUbBYwRP4oJF6h-7nI",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "dorsch-beach",
+      "name": "Dorsch Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJvf6IgoLPGowRXl_uyqTVyuE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "francis-bay",
+      "name": "Francis Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJD2Afw24NBYwRjdLTp7YcVe4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "gibney-beach",
+      "name": "Gibney Beach",
+      "island": "STJ",
+      "googlePlaceId": "ChIJnd5HmncSBYwRRoGnsYNnXVY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "grapetree-bay",
+      "name": "Grapetree Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJBTDErryzGowRypboM4JgBMU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "hansen-bay",
+      "name": "Hansen Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJwTNAhYFyBYwRmVHBv8Ogwo8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "haulover-bay",
+      "name": "Haulover Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJcTi4tIVyBYwREsfGaXAGbAc",
+      "status": "has-photo",
+      "photoCount": 4
+    },
+    {
+      "collection": "beaches",
+      "id": "hawksnest-bay",
+      "name": "Hawksnest Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJpXzJWXESBYwRULr2_2jWKak",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-beach",
+      "name": "Honeymoon Beach",
+      "island": "STJ",
+      "googlePlaceId": "ChIJgWALCmUSBYwRUCWQhK86mlE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "honeymoon-water-island",
+      "name": "Honeymoon Beach",
+      "island": "WAT",
+      "googlePlaceId": "ChIJrxjow1obBYwRtxw6TpSmHWM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "hull-bay",
+      "name": "Hull Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-5J7vtcaBYwROGEK9mVeY_Q",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "isaac-bay",
+      "name": "Isaac Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJg0omnVSyGowRjznT_bPS6SQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "jack-bay",
+      "name": "Jack Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJRQFCbK6zGowRTOpcITvuyFU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "jumbie-bay",
+      "name": "Jumbie Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJtwodSHgSBYwRaW_JaXBIqgE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "lameshur-bay",
+      "name": "Lameshur Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJpW9zPs4SBYwRngsBB8dIypg",
+      "status": "has-photo",
+      "photoCount": 7
+    },
+    {
+      "collection": "beaches",
+      "id": "lindbergh-bay",
+      "name": "Lindbergh Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJf2eIewkbBYwRxAlzzZ17PAc",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "lindquist-beach",
+      "name": "Lindquist Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJ8y3NnbQRBYwR9RIwI-R8ImI",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "magens-bay",
+      "name": "Magens Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-4PsorAaBYwR87YtmyPj-dc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "maho-bay",
+      "name": "Maho Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJV4AKfGQNBYwRoL73t2v2tUc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "mermaids-chair",
+      "name": "Mermaid's Chair",
+      "island": "STT",
+      "googlePlaceId": "ChIJZwa0ZvkcBYwRRpAj4L8mTjw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "michelles-beach",
+      "name": "Michelle's Beach",
+      "island": "WAT",
+      "googlePlaceId": "ChIJTZoobNobBYwRFqt_wwXtIrI",
+      "status": "has-photo",
+      "photoCount": 4
+    },
+    {
+      "collection": "beaches",
+      "id": "morningstar-beach",
+      "name": "Morningstar Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJHdaUfGUaBYwRj5U_8UAEXF4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "nazareth-bay",
+      "name": "Nazareth Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJ35QACQERBYwROERWzfIpZT8",
+      "status": "has-photo",
+      "photoCount": 8
+    },
+    {
+      "collection": "beaches",
+      "id": "pelican-cove",
+      "name": "Pelican Cove",
+      "island": "STX",
+      "googlePlaceId": "ChIJ8XzLoGjKGowR-y65IrIIFxs",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "protestant-cay",
+      "name": "Protestant Cay",
+      "island": "STX",
+      "googlePlaceId": "ChIJOXq_Oe21GowRAic2qsS5a7E",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "rainbow-beach",
+      "name": "Rainbow Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJ-yWtZhbOGowRQVRKhoOIADU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "reef-bay",
+      "name": "Reef Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ7634sL8SBYwRKUoYTH-m_A0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "salomon-beach",
+      "name": "Salomon Beach",
+      "island": "STJ",
+      "googlePlaceId": "ChIJs94c9BYSBYwRv9t1e-CMFc4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "salt-pond-bay",
+      "name": "Salt Pond Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJF6egxS5tBYwRgBKyoj3eBHI",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "sandy-point",
+      "name": "Sandy Point",
+      "island": "STX",
+      "googlePlaceId": "ChIJ0W63Nr_PGowRobthXrsbR_U",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "santa-maria-beach",
+      "name": "Santa Maria Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJk6ygO14bBYwRq2jTtUTP1ms",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "sapphire-beach",
+      "name": "Sapphire Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJTbUJDbERBYwRbZKXReDDKE8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "secret-harbor",
+      "name": "Secret Harbor",
+      "island": "STT",
+      "googlePlaceId": "ChIJhVtb0wYRBYwRMZWqYqnZZGc",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "shoys-beach",
+      "name": "Shoys Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJnUoS0621GowRSkZ9HAMaj2M",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "tamarind-reef",
+      "name": "Tamarind Reef",
+      "island": "STX",
+      "googlePlaceId": "ChIJ_4KH6Ky1GowRD-vaHQ02eQA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "teague-bay",
+      "name": "Teague Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJV8cMwZuzGowRMXAQ9oiwH1U",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "beaches",
+      "id": "trunk-bay",
+      "name": "Trunk Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJF3yORH8SBYwRI-HMrv4xaVM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "turtle-beach-buck-island",
+      "name": "Turtle Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJIfbaqfG1GowRBVCZZnmJsfc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "vessup-bay",
+      "name": "Vessup Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJz-LsaqkRBYwRjNfK-1BBuB0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "beaches",
+      "id": "water-bay",
+      "name": "Water Bay",
+      "island": "STT",
+      "googlePlaceId": "ChIJgeCmcDYQBYwRiakaZ3Rjel0",
+      "status": "has-photo",
+      "photoCount": 3
+    },
+    {
+      "collection": "beaches",
+      "id": "waterlemon-bay",
+      "name": "Waterlemon Bay",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ9Sb1UEkNBYwReZb3vAdFJu4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "4m4fUywBvLCqIGO2lnJV",
+      "name": "Greengos Caribbean Cantina",
+      "island": "STT",
+      "googlePlaceId": "ChIJaZbfAfMaBYwRSy6MLv7cw20",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-amalia-cafe",
+      "name": "Amalia Cafe",
+      "island": "STT",
+      "googlePlaceId": "ChIJR-3ZrfMaBYwROL9hgLpgevk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-american-yacht-harbor-red-hook",
+      "name": "American Yacht Harbor (Red Hook)",
+      "island": "STT",
+      "googlePlaceId": "ChIJI5NmZ6kRBYwRmO50uRsTR_A",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-and-xo-bistro",
+      "name": "and XO Bistro",
+      "island": "STT",
+      "googlePlaceId": "ChIJl9DZWKkRBYwRj0H6CJAltzw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-arc-vodka-distillery",
+      "name": "ARC Vodka Distillery",
+      "island": "STT",
+      "googlePlaceId": "ChIJceBxRPIaBYwR4BAgDOkS-TA",
+      "status": "has-photo",
+      "photoCount": 3
+    },
+    {
+      "collection": "places",
+      "id": "STT-arian-s",
+      "name": "Arian’s",
+      "island": "STT",
+      "googlePlaceId": "ChIJNRJI2qsbBYwRwEn6jEiaMqM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-artistic-villas-by-donald-schnell",
+      "name": "Artistic Villas by Donald Schnell",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ6cBouz4SBYwRbX28ERK_P5c",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-at-home-in-the-tropics-b-b",
+      "name": "At Home in the Tropics B&B",
+      "island": "STT",
+      "googlePlaceId": "ChIJd9BfVI0aBYwRDuitvM_vOLc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-beach-bar-and-grill-at-lindbergh-beach",
+      "name": "Beach Bar and Grill at Lindbergh Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJg1Q6aqgbBYwRTPIntqMe7bg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-beach-bar-at-emerald-beach",
+      "name": "Beach Bar at Emerald Beach",
+      "island": "STT",
+      "googlePlaceId": "ChIJg1Q6aqgbBYwRTPIntqMe7bg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bellavista-bed-breakfast",
+      "name": "Bellavista Bed & Breakfast",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-beni-iguanas-sushi-bar",
+      "name": "Beni Iguanas Sushi Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJywju-YgaBYwRIW4eJyEv5as",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-benito-s-burritos",
+      "name": "Benito’s Burritos",
+      "island": "STT",
+      "googlePlaceId": "ChIJTbs3BrUbBYwR-GB-2aiQ0bc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bernie-s-bar-grill",
+      "name": "Bernie’s Bar & Grill",
+      "island": "STT",
+      "googlePlaceId": "ChIJN1K5WakRBYwRP8H_IdYShSg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-blue-11",
+      "name": "Blue 11",
+      "island": "STT",
+      "googlePlaceId": "ChIJf46CHwUbBYwRV5QWYwtWgX0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares",
+      "name": "Bluebeard’s Castle Hilltop Villas & Marriott’s Frenchman’s Cove (timeshares)",
+      "island": "STT",
+      "googlePlaceId": "ChIJk5N02o0aBYwRDHvCUKXdYkc",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-bluebeard-s-castle-resort",
+      "name": "Bluebeard’s Castle Resort",
+      "island": "STT",
+      "googlePlaceId": "ChIJ0WAyDAcRBYwRWgebMIiAgww",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bolongo-bay-beach-resort",
+      "name": "Bolongo Bay Beach Resort",
+      "island": "STT",
+      "googlePlaceId": "ChIJa0g3s5sQBYwRqq8VoOKQViE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bonita-s-cantina",
+      "name": "Bonita’s Cantina",
+      "island": "STT",
+      "googlePlaceId": "ChIJT5dnGwAbBYwRwueMoTaxl_o",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-brooks-bar",
+      "name": "Brooks Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJS_mKn6MaBYwRZrQmSusz4ak",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-buddha-sushi",
+      "name": "Buddha Sushi",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-SNdx_kQBYwRmm2Bs2rPzl8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bumpa-s",
+      "name": "Bumpa’s",
+      "island": "STT",
+      "googlePlaceId": "ChIJAQAAAAAbBYwRF2z9hX9sksI",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bungalows-on-the-bay-chenay",
+      "name": "Bungalows on the Bay (Chenay)",
+      "island": "STX",
+      "googlePlaceId": "ChIJ5e1HtHy1GowRaEmkLhENwYY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-bunker-hill-hotel",
+      "name": "Bunker Hill Hotel",
+      "island": "STT",
+      "googlePlaceId": "ChIJV439X-0aBYwRw7wCxML97Uw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-buoy-haus-beach-resort-at-frenchman-s-reef",
+      "name": "Buoy Haus Beach Resort at Frenchman’s Reef",
+      "island": "STT",
+      "googlePlaceId": "ChIJfaJVBiEbBYwRj0zQfGk2fP0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-burger-maxx",
+      "name": "Burger Maxx",
+      "island": "STT",
+      "googlePlaceId": "ChIJp9z_3fMaBYwREvb7z4C1rZ0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-cafe-amici",
+      "name": "Cafe Amici",
+      "island": "STT",
+      "googlePlaceId": "ChIJ6QAb5vIaBYwRsax3jVQ4XTM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-caneel-bay-resort-currently-closed",
+      "name": "Caneel Bay Resort (currently closed)",
+      "island": "STJ",
+      "googlePlaceId": "ChIJj8PZbG0SBYwRG144py8_oy4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-carambola-beach-resort",
+      "name": "Carambola Beach Resort",
+      "island": "STX",
+      "googlePlaceId": "ChIJpS60CuyBt4cRbextEyChguE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-caribbean-fish-market",
+      "name": "Caribbean Fish Market",
+      "island": "STT",
+      "googlePlaceId": "ChIJXS7kUAgRBYwRfST5ASDSpY8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-caribbean-saloon-steak",
+      "name": "Caribbean Saloon (steak)",
+      "island": "STT",
+      "googlePlaceId": "ChIJky20QqkRBYwR7O98-OFaI9I",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-carigas-island-cafe",
+      "name": "Carigas Island Cafe",
+      "island": "STT",
+      "googlePlaceId": "ChIJ5bzZ5fgQBYwRgj8x3D1H6Tc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-carina-bay-campground-cane-bay",
+      "name": "Carina Bay Campground (Cane Bay)",
+      "island": "STX",
+      "googlePlaceId": "ChIJH4B03InLGowRM-B1LLabzzU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-catered-to-vacation-homes",
+      "name": "Catered To Vacation Homes",
+      "island": "STJ",
+      "googlePlaceId": "ChIJN_4HZzkSBYwRW61vPNRocp4",
+      "status": "has-photo",
+      "photoCount": 6
+    },
+    {
+      "collection": "places",
+      "id": "STT-china-king",
+      "name": "China King",
+      "island": "STT",
+      "googlePlaceId": "ChIJRxLSJIgaBYwRxITqLtaoAQw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-club-st-croix-beach-tennis-resort",
+      "name": "Club St. Croix Beach & Tennis Resort",
+      "island": "STX",
+      "googlePlaceId": "ChIJ_eg1YHPKGowRv06CVVE719Y",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-coconuts-bar-grill",
+      "name": "Coconuts Bar & Grill",
+      "island": "STT",
+      "googlePlaceId": "ChIJwTYdXPIaBYwRh9VoMElLMsU",
+      "status": "has-photo",
+      "photoCount": 2
+    },
+    {
+      "collection": "places",
+      "id": "STT-colony-cove",
+      "name": "Colony Cove",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-company-house-hotel",
+      "name": "Company House Hotel",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-concordia-eco-resort",
+      "name": "Concordia Eco‑Resort",
+      "island": "STJ",
+      "googlePlaceId": "ChIJWbxUZT4SBYwRkfeM56-Cqg0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-cottages-by-the-sea",
+      "name": "Cottages by the Sea",
+      "island": "STX",
+      "googlePlaceId": "ChIJw6Ww_sjPGowR8sNd3RrsZg8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-cravin-crabs",
+      "name": "Cravin Crabs",
+      "island": "STT",
+      "googlePlaceId": "ChIJP3m5mIgaBYwR4faj3WhsUz4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-crown-bay-center",
+      "name": "Crown Bay Center",
+      "island": "STT",
+      "googlePlaceId": "ChIJgw-m6KobBYwRRkojUPF8tl4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-cruz-bay-boutique-hotel",
+      "name": "Cruz Bay Boutique Hotel",
+      "island": "STJ",
+      "googlePlaceId": "ChIJLR0mEzwSBYwRDtnshV4Yeh4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-delly-deck",
+      "name": "Delly Deck",
+      "island": "STT",
+      "googlePlaceId": "ChIJN89izYkaBYwRmNHg6MVXA1c",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-divi-carina-bay-all-inclusive-beach-resort-casino",
+      "name": "Divi Carina Bay All‑Inclusive Beach Resort & Casino",
+      "island": "STX",
+      "googlePlaceId": "ChIJrT5A25OzGowRYi0EQxeYSIY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-dog-house-pub",
+      "name": "Dog House Pub",
+      "island": "STT",
+      "googlePlaceId": "ChIJUffPPogaBYwRLxzv7B0pVSk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-duffy-s-love-shack",
+      "name": "Duffy’s Love Shack",
+      "island": "STT",
+      "googlePlaceId": "ChIJY7zztfgQBYwRl9-CwVo-d8Q",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-e-s-garden-teahouse",
+      "name": "E’s Garden Teahouse",
+      "island": "STT",
+      "googlePlaceId": "ChIJ1bQlYO0aBYwR45Xq8r7IqAo",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-eco-serendib-villa-and-spa",
+      "name": "Eco Serendib Villa and Spa",
+      "island": "STJ",
+      "googlePlaceId": "ChIJJd34b1kSBYwRR4GwQoxqA-o",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-elysian-beach-resort-club-wyndham",
+      "name": "Elysian Beach Resort (Club Wyndham)",
+      "island": "STT",
+      "googlePlaceId": "ChIJrY3hVgYRBYwRgMjdSEcPCBQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-emerald-beach-resort",
+      "name": "Emerald Beach Resort",
+      "island": "STT",
+      "googlePlaceId": "ChIJM0z_Wiwp54gRDh1PWFBQyNI",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-estate-lindholm",
+      "name": "Estate Lindholm",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ2yEvY7_LGowRu2eOBzgDfP8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-feather-leaf-inn",
+      "name": "Feather Leaf Inn",
+      "island": "STX",
+      "googlePlaceId": "ChIJd5_sRXbPGowReIncNwiNymg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-flamboyan-on-the-bay-resort-villas-at-magens-point",
+      "name": "Flamboyan on the Bay Resort & Villas at Magens Point",
+      "island": "STT",
+      "googlePlaceId": "ChIJm983YKQaBYwR2e6mpnEZ4q0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-french-quarter-bistro",
+      "name": "French Quarter Bistro",
+      "island": "STT",
+      "googlePlaceId": "ChIJHeYOx3gRBYwRhc4wZ80urh0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchman-s-cove",
+      "name": "Frenchman’s Cove",
+      "island": "STT",
+      "googlePlaceId": "ChIJvan_V2QaBYwRrbLPU7eDMYw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchtown-brewing-company-brewery",
+      "name": "Frenchtown Brewing Company (brewery)",
+      "island": "STT",
+      "googlePlaceId": "ChIJdcFTfPcaBYwRawgObYhvOtg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-frenchtown-deli",
+      "name": "Frenchtown Deli",
+      "island": "STT",
+      "googlePlaceId": "ChIJkx9gd_caBYwRcI9sRbQXxQY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-galleon-house",
+      "name": "Galleon House",
+      "island": "STT",
+      "googlePlaceId": "ChIJMfbMUJccBYwRafjweGKbxo0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-gallows-point-resort",
+      "name": "Gallows Point Resort",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ12V5WTsSBYwRe5bAyBaXayM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-gladys-cafe",
+      "name": "Gladys’ Cafe",
+      "island": "STT",
+      "googlePlaceId": "ChIJVVWVSPIaBYwRFMDo1Pgwxb0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-grande-bay-resort",
+      "name": "Grande Bay Resort",
+      "island": "STJ",
+      "googlePlaceId": "ChIJm8zYnDwSBYwRrJ2Omaao_3Q",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-great-wall",
+      "name": "Great Wall",
+      "island": "STT",
+      "googlePlaceId": "ChIJD8_V0okaBYwRbIcCDHoxhH0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-great-wall-chinese",
+      "name": "Great Wall (Chinese)",
+      "island": "STT",
+      "googlePlaceId": "ChIJD8_V0okaBYwRbIcCDHoxhH0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-greengos",
+      "name": "Greengos",
+      "island": "STT",
+      "googlePlaceId": "ChIJaZbfAfMaBYwRSy6MLv7cw20",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-greengos-caribbean-cantina",
+      "name": "Greengos Caribbean Cantina",
+      "island": "STT",
+      "googlePlaceId": "ChIJaZbfAfMaBYwRSy6MLv7cw20",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-havensight-shopping-mall",
+      "name": "Havensight Shopping Mall",
+      "island": "STT",
+      "googlePlaceId": "ChIJ4wUflr4bBYwRs2imk9N8990",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-hook-line-sinker",
+      "name": "Hook Line & Sinker",
+      "island": "STT",
+      "googlePlaceId": "ChIJp8cq7-oaBYwRTVidYw81PVc",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-ideal-roti",
+      "name": "Ideal Roti",
+      "island": "STT",
+      "googlePlaceId": "ChIJp_E6vfIaBYwRqZwHlthtnEs",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-iggies-oasis",
+      "name": "Iggies Oasis",
+      "island": "STT",
+      "googlePlaceId": "ChIJlx2ty5sQBYwRES4R45xi0cc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-flavor",
+      "name": "Island Flavor",
+      "island": "STT",
+      "googlePlaceId": "ChIJmUG68PUbBYwRchvrmhhl-g4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-time-pub-pizza",
+      "name": "Island Time Pub (pizza)",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-xgAZ6kRBYwRgHATDSvnvqo",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-island-view-guest-house",
+      "name": "Island View Guest House",
+      "island": "STT",
+      "googlePlaceId": "ChIJ2ZIOoQIbBYwRXsPq_tlzajg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-king-christian-hotel",
+      "name": "King Christian Hotel",
+      "island": "STX",
+      "googlePlaceId": "ChIJHdXW8u21GowRW_jhEKZLYR4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-lindbergh-bay-hotel-villas",
+      "name": "Lindbergh Bay Hotel & Villas",
+      "island": "STT",
+      "googlePlaceId": "ChIJCdXC6aYbBYwRK7eAEiNY_Ug",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-lockhart-gardens-tutu-park-mall-nisky-center-paradise-point-and-mountain-top",
+      "name": "Lockhart Gardens, Tutu Park Mall, Nisky Center, Paradise Point and Mountain Top",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-lovango-resort-beach-club",
+      "name": "Lovango Resort & Beach Club",
+      "island": "STJ",
+      "googlePlaceId": "ChIJLXmQKIMNBYwREJ6eVv3g3nY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-mafolie-hotel",
+      "name": "Mafolie Hotel",
+      "island": "STT",
+      "googlePlaceId": "ChIJwaF3AusaBYwRet6dMq5qLLQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-mafolie-restaurant",
+      "name": "Mafolie Restaurant",
+      "island": "STT",
+      "googlePlaceId": "ChIJYb29qhUbBYwRk-3wnz0jWKY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-magens-bay-cafe-pizzeria",
+      "name": "Magens Bay Cafe & Pizzeria",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-maho-bay-camps",
+      "name": "Maho Bay Camps",
+      "island": "STJ",
+      "googlePlaceId": "ChIJJ7zggGgNBYwR5nfKzIZkaAY",
+      "status": "has-photo",
+      "photoCount": 5
+    },
+    {
+      "collection": "places",
+      "id": "STT-margaritaville-restaurant",
+      "name": "Margaritaville Restaurant",
+      "island": "STT",
+      "googlePlaceId": "ChIJ79QyE3UQBYwR_sqBj9DeyHM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-margaritaville-vacation-club-by-wyndham",
+      "name": "Margaritaville Vacation Club by Wyndham",
+      "island": "STT",
+      "googlePlaceId": "ChIJVQIQijUQBYwRFabYfai1PQA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-mim-s-seafood-bistro",
+      "name": "Mim’s Seafood Bistro",
+      "island": "STT",
+      "googlePlaceId": "ChIJXZzNyZsQBYwRAcfQe2SbIEU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-oceana-multicuisine",
+      "name": "Oceana (multicuisine)",
+      "island": "STT",
+      "googlePlaceId": "ChIJg4Lqm_caBYwRSBeJpPL4e88",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-old-stone-farmhouse",
+      "name": "Old Stone Farmhouse",
+      "island": "STT",
+      "googlePlaceId": "ChIJtVrE-6YaBYwRuuJ9sBPkm6o",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-pangea-terra-table-farm-to-table",
+      "name": "Pangea Terra Table (farm‑to‑table)",
+      "island": "STT",
+      "googlePlaceId": "ChIJ9ahmFDIRBYwRj08jCTnUBUs",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-paradise-point-bar-restaurant",
+      "name": "Paradise Point Bar & Restaurant",
+      "island": "STT",
+      "googlePlaceId": "ChIJhwYJfPMbBYwRt4e5jkJjgL8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-pesce-italian",
+      "name": "Pesce (Italian)",
+      "island": "STT",
+      "googlePlaceId": "ChIJE5E_0KsRBYwRTHkKSI70jUk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-petit-pump-room",
+      "name": "Petit Pump Room",
+      "island": "STT",
+      "googlePlaceId": "ChIJn3xEK_caBYwR-p559oUCUlM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-pie-whole-pizza",
+      "name": "Pie Whole (pizza)",
+      "island": "STT",
+      "googlePlaceId": "ChIJVzWW1vkaBYwRSiOPz2unPUQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-pita-express",
+      "name": "Pita Express",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-pizza-amore",
+      "name": "Pizza Amore",
+      "island": "STT",
+      "googlePlaceId": "ChIJNWFzJYgaBYwR2Mkj8a4V2R4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-pizza-pi-floating-pizza-boat",
+      "name": "Pizza Pi (floating pizza boat)",
+      "island": "STT",
+      "googlePlaceId": "ChIJd3JtvmkRBYwR0XN00sOe9gw",
+      "status": "has-photo",
+      "photoCount": 5
+    },
+    {
+      "collection": "places",
+      "id": "STT-point-pleasant-resort",
+      "name": "Point Pleasant Resort",
+      "island": "STT",
+      "googlePlaceId": "ChIJZc76ITYQBYwRTSfEj0uFhmM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-prime-at-paradise-point",
+      "name": "PRIME at Paradise Point",
+      "island": "STT",
+      "googlePlaceId": "ChIJhwYJfPMbBYwRt4e5jkJjgL8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-prime-at-paradise-point-steak",
+      "name": "PRIME at Paradise Point (steak)",
+      "island": "STT",
+      "googlePlaceId": "ChIJhwYJfPMbBYwRt4e5jkJjgL8",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-rancho-latino",
+      "name": "Rancho Latino",
+      "island": "STT",
+      "googlePlaceId": "ChIJGwDF-YUaBYwRhi_H-1pLcbA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-raw-sushi-sake-bar",
+      "name": "RAW Sushi & Sake Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJg8Kq0KsRBYwRURThdyawJ2w",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-ritz-carlton-club-timeshare",
+      "name": "Ritz‑Carlton Club (timeshare)",
+      "island": "STT",
+      "googlePlaceId": "ChIJPS6RydkaBYwRvxnGYlN9PSI",
+      "status": "no-photo",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-rum-island-pub",
+      "name": "Rum Island Pub",
+      "island": "STT",
+      "googlePlaceId": "ChIJ5dUJ_vIaBYwR5DHRHqywR30",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-rum-shandy",
+      "name": "Rum Shandy",
+      "island": "STT",
+      "googlePlaceId": "ChIJKyjAm_caBYwRKaAM4W7F_u4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sabroso-restaurant",
+      "name": "Sabroso Restaurant",
+      "island": "STT",
+      "googlePlaceId": "ChIJgav5Z_EaBYwR0_hIV_INo0Q",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sand-castle-on-the-beach",
+      "name": "Sand Castle on the Beach",
+      "island": "STX",
+      "googlePlaceId": "ChIJy_lGAsnPGowRnQjWJTRDJwY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sand-castle-on-the-beach-again",
+      "name": "Sand Castle On the Beach (again)",
+      "island": "STX",
+      "googlePlaceId": "ChIJy_lGAsnPGowRnQjWJTRDJwY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sapphire-beach-bar",
+      "name": "Sapphire Beach Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJwculB0kQBYwR-R6V4ve1bQs",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-secret-harbour-beach-resort",
+      "name": "Secret Harbour Beach Resort",
+      "island": "STT",
+      "googlePlaceId": "ChIJa23swQYRBYwRkh69-bFf9go",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-senor-pizza",
+      "name": "Senor Pizza",
+      "island": "STT",
+      "googlePlaceId": "ChIJ86_CUKkRBYwRtLLmz-XLmBo",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sibs-mountain-bar-restaurant",
+      "name": "Sibs Mountain Bar & Restaurant",
+      "island": "STT",
+      "googlePlaceId": "ChIJixIGH7cbBYwRSCFcDyruG5Q",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-side-street-pub",
+      "name": "Side Street Pub",
+      "island": "STT",
+      "googlePlaceId": "ChIJY8yeevIaBYwRQKPhVHY6LoQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-smoking-rooster",
+      "name": "Smoking Rooster",
+      "island": "STT",
+      "googlePlaceId": "ChIJkzROUogaBYwR8hNAi44C12s",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-smoky-rooster",
+      "name": "Smoky Rooster",
+      "island": "STT",
+      "googlePlaceId": "ChIJkzROUogaBYwR8hNAi44C12s",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-speedy-redemption",
+      "name": "Speedy Redemption",
+      "island": "STT",
+      "googlePlaceId": "ChIJl5CAkocbBYwRdcXROrwg-II",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-st-croix-timeshares-e-g-chenay-bay-beach-resort",
+      "name": "St. Croix timeshares (e.g., Chenay Bay Beach Resort)",
+      "island": "STT",
+      "googlePlaceId": "",
+      "status": "no-place-id",
+      "photoCount": 0
+    },
+    {
+      "collection": "places",
+      "id": "STT-st-john-inn",
+      "name": "St John Inn",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ7fzorD4SBYwR6TYNq5KBznY",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-stir-it-up",
+      "name": "Stir It Up",
+      "island": "STT",
+      "googlePlaceId": "ChIJxRPd_MMbBYwRHWU-CIN9LTg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-stir-it-up-coffee",
+      "name": "Stir It Up (coffee)",
+      "island": "STT",
+      "googlePlaceId": "ChIJxRPd_MMbBYwRHWU-CIN9LTg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-stone-house-cafe",
+      "name": "Stone House Cafe",
+      "island": "STT",
+      "googlePlaceId": "ChIJtwLYT7QbBYwRH6NBrdWo928",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sudi-s-caribbean-bar-grille",
+      "name": "Sudi’s Caribbean Bar & Grille",
+      "island": "STT",
+      "googlePlaceId": "ChIJ9a0hL7ARBYwRb0y7nKwBHXE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-sugar-apple-bed-breakfast",
+      "name": "Sugar Apple Bed & Breakfast",
+      "island": "STT",
+      "googlePlaceId": "ChIJ34HtI5cbBYwRf7AJivJ6vXA",
+      "status": "has-photo",
+      "photoCount": 2
+    },
+    {
+      "collection": "places",
+      "id": "STT-sunset-grille-secret-harbour",
+      "name": "Sunset Grille – Secret Harbour",
+      "island": "STT",
+      "googlePlaceId": "ChIJS7Qd2QARBYwRn4DQRCdZ9oc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-tap-and-still",
+      "name": "Tap and Still",
+      "island": "STT",
+      "googlePlaceId": "ChIJv-0X9ogaBYwRy0XJ6SVkL1o",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-taphus-beer-house",
+      "name": "Taphus Beer House",
+      "island": "STT",
+      "googlePlaceId": "ChIJOQv8adkbBYwRE78jqUxQ5_s",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-taphus-beer-house-brewery",
+      "name": "Taphus Beer House (brewery)",
+      "island": "STT",
+      "googlePlaceId": "ChIJOQv8adkbBYwRE78jqUxQ5_s",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-texas-pit",
+      "name": "Texas Pit",
+      "island": "STT",
+      "googlePlaceId": "ChIJGaFbSPEaBYwRa1oQjdL0HlA",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-thali-indian-grill",
+      "name": "Thali Indian Grill",
+      "island": "STT",
+      "googlePlaceId": "ChIJh609wvTJGowRS3zN9a5CGxs",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-box-bar",
+      "name": "The Box Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJYyTRC-sbBYwRE88uJCwZMfQ",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-buccaneer",
+      "name": "The Buccaneer",
+      "island": "STT",
+      "googlePlaceId": "ChIJze0-YogaBYwRQmvZqqrH_1U",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-buccaneer-hotel",
+      "name": "The Buccaneer Hotel",
+      "island": "STX",
+      "googlePlaceId": "ChIJ_ZrUTLq1GowRjSgO-SzRX2c",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-dive-bar",
+      "name": "The Dive Bar",
+      "island": "STT",
+      "googlePlaceId": "ChIJ84KpafkQBYwRrGkJwmEVIxk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-easterly",
+      "name": "The Easterly",
+      "island": "STT",
+      "googlePlaceId": "ChIJJYjKpt8RBYwR4vr13Jmhew4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-fred",
+      "name": "The Fred",
+      "island": "STX",
+      "googlePlaceId": "ChIJpRQJTTXOGowRuwjtZxOVf1c",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-green-house",
+      "name": "The Green House",
+      "island": "STT",
+      "googlePlaceId": "ChIJHeS9uPIaBYwR7NqOurs0fu0",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-holger-danske-hotel",
+      "name": "The Holger Danske Hotel",
+      "island": "STX",
+      "googlePlaceId": "ChIJPXgOEpK1GowR26OZ9a2s3pU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-meat-up",
+      "name": "The Meat Up",
+      "island": "STT",
+      "googlePlaceId": "ChIJZ-0UzfcRBYwRCl34hiZILOM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-ritz-carlton-st-thomas",
+      "name": "The Ritz‑Carlton, St. Thomas",
+      "island": "STT",
+      "googlePlaceId": "ChIJLRP5LN9ht4kRqZaRgfRWDzU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-tuck-shop",
+      "name": "The Tuck Shop",
+      "island": "STT",
+      "googlePlaceId": "ChIJ-eGUf4sbBYwRGZ0D7FROhkg",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-twisted-cork-cafe",
+      "name": "The Twisted Cork Cafe",
+      "island": "STT",
+      "googlePlaceId": "ChIJI3Yt0fkaBYwRmjhbhXyZM8o",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-waves-at-cane-bay",
+      "name": "The Waves at Cane Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJDyT-X2nJGowRmW_KhIwY3qM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-waves-cane-bay",
+      "name": "The Waves Cane Bay",
+      "island": "STX",
+      "googlePlaceId": "ChIJDyT-X2nJGowRmW_KhIwY3qM",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-the-westin-st-john-resort-villas",
+      "name": "The Westin St. John Resort Villas",
+      "island": "STJ",
+      "googlePlaceId": "ChIJ7XmaCEgSBYwRHDz_w7mK7mw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-tickles-dockside-pub",
+      "name": "Tickles Dockside Pub",
+      "island": "STT",
+      "googlePlaceId": "ChIJIWmzXFUaBYwRNKbOv46Jky4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-tickles-dockside-pub-and-virgin-islands-coffee-roasters",
+      "name": "Tickles Dockside Pub and Virgin Islands Coffee Roasters",
+      "island": "STT",
+      "googlePlaceId": "ChIJIWmzXFUaBYwRNKbOv46Jky4",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-tillett-gardens",
+      "name": "Tillett Gardens",
+      "island": "STT",
+      "googlePlaceId": "ChIJf63gM5IRBYwRigyZ9oOBwWw",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-two-sandals-by-the-sea",
+      "name": "Two Sandals by the Sea",
+      "island": "STT",
+      "googlePlaceId": "ChIJO-gmwAARBYwRcUfZWsml7rE",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-virgilio-s-italian",
+      "name": "Virgilio’s (Italian)",
+      "island": "STT",
+      "googlePlaceId": "ChIJdzqYd5IaBYwRKFD3lzuTVFc",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-virgin-islands-coffee-roasters-coffee",
+      "name": "Virgin Islands Coffee Roasters (coffee)",
+      "island": "STT",
+      "googlePlaceId": "ChIJzyI-3wYbBYwRUKunHmSmmAk",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-windward-passage-hotel",
+      "name": "Windward Passage Hotel",
+      "island": "STT",
+      "googlePlaceId": "ChIJrS1Yf_EaBYwRI9pvQEJEUUU",
+      "status": "has-photo",
+      "photoCount": 10
+    },
+    {
+      "collection": "places",
+      "id": "STT-yacht-haven-grande-marina",
+      "name": "Yacht Haven Grande Marina",
+      "island": "STT",
+      "googlePlaceId": "ChIJ2_cVKokaBYwRFIjCCiJMPdk",
+      "status": "has-photo",
+      "photoCount": 10
+    }
+  ]
+}

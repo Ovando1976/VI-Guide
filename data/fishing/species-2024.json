@@ -1,0 +1,773 @@
+[
+  {
+    "id": "queen-conch",
+    "name": "Queen conch",
+    "scientificName": "Aliger gigas",
+    "family": "Shellfish",
+    "glyph": "🐚",
+    "handbookPages": [
+      14,
+      16,
+      31,
+      37
+    ],
+    "summary": "Seasonally closed and subject to shell-size, landing, trip-limit, and water-specific rules.",
+    "closures": [
+      {
+        "start": "06-01",
+        "end": "10-31",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "June 1–October 31 handbook closure"
+      }
+    ],
+    "sizeRules": [
+      "Minimum 9-inch shell length from spire to distal end, or 3/8-inch lip thickness."
+    ],
+    "notes": [
+      "Territorial commercial trip limit: 150 per registered vessel with a licensed commercial fisher present.",
+      "Federal harvest is addressed for St. Croix; the handbook says no queen conch harvest or possession in the St. Thomas/St. John EEZ.",
+      "Must be landed alive, whole, and in shell under the summarized territorial rules."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/queen-conch.png"
+  },
+  {
+    "id": "west-indian-topsnail",
+    "name": "West Indian topsnail (whelk)",
+    "scientificName": "Cittarium pica",
+    "family": "Shellfish",
+    "glyph": "🐚",
+    "handbookPages": [
+      14,
+      16,
+      31
+    ],
+    "summary": "Territorial harvest is seasonally closed and subject to a minimum shell diameter.",
+    "closures": [
+      {
+        "start": "04-01",
+        "end": "09-30",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "April 1–September 30 territorial closure"
+      }
+    ],
+    "sizeRules": [
+      "Minimum shell diameter greater than 2 7/16 inches at the widest point."
+    ],
+    "notes": [
+      "Must be landed live and whole in the shell."
+    ],
+    "verificationAgency": "DPNR",
+    "imageUrl": "/images/fishing/species/west-indian-topsnail.png"
+  },
+  {
+    "id": "caribbean-spiny-lobster",
+    "name": "Caribbean spiny lobster",
+    "scientificName": "Panulirus argus",
+    "family": "Crustaceans",
+    "glyph": "🦞",
+    "handbookPages": [
+      16,
+      32,
+      37,
+      38
+    ],
+    "summary": "Minimum carapace size applies; egg-bearing females and puncturing gear are prohibited.",
+    "closures": [],
+    "sizeRules": [
+      "Minimum 3.5-inch carapace length."
+    ],
+    "notes": [
+      "Must be landed whole; egg-bearing females may not be harvested.",
+      "Spears, hooks, similar puncturing devices, gillnets, and trammel nets may not be used to take lobster."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries"
+  },
+  {
+    "id": "red-grouper",
+    "name": "Red grouper",
+    "scientificName": "Epinephelus morio",
+    "family": "Groupers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "Included in the seasonal grouper closure.",
+    "closures": [
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "February 1–April 30 closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/red-grouper.png"
+  },
+  {
+    "id": "black-grouper",
+    "name": "Black grouper",
+    "scientificName": "Mycteroperca bonaci",
+    "family": "Groupers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "Included in the seasonal grouper closure.",
+    "closures": [
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "February 1–April 30 closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/black-grouper.png"
+  },
+  {
+    "id": "tiger-grouper",
+    "name": "Tiger grouper",
+    "scientificName": "Mycteroperca tigris",
+    "family": "Groupers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "Included in the seasonal grouper closure.",
+    "closures": [
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "February 1–April 30 closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/tiger-grouper.png"
+  },
+  {
+    "id": "yellowfin-grouper",
+    "name": "Yellowfin grouper",
+    "scientificName": "Mycteroperca venenosa",
+    "family": "Groupers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "Included in the seasonal grouper closure.",
+    "closures": [
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "February 1–April 30 closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/yellowfin-grouper.png"
+  },
+  {
+    "id": "yellowedge-grouper",
+    "name": "Yellowedge grouper",
+    "scientificName": "Hyporthodus flavolimbatus",
+    "family": "Groupers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "Included in the seasonal grouper closure, with a St. Croix federal-water exception noted in the handbook graphic.",
+    "closures": [
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "February 1–April 30 territorial closure"
+      },
+      {
+        "start": "02-01",
+        "end": "04-30",
+        "waters": [
+          "federal"
+        ],
+        "districts": [
+          "stt-stj"
+        ],
+        "label": "February 1–April 30 St. Thomas/St. John federal closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "The handbook marks the federal seasonal closure as not applicable in St. Croix federal waters."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/yellowedge-grouper.png"
+  },
+  {
+    "id": "goliath-grouper",
+    "name": "Goliath grouper",
+    "scientificName": "Epinephelus itajara",
+    "family": "Protected species",
+    "glyph": "🛡️",
+    "handbookPages": [
+      17,
+      32
+    ],
+    "summary": "No harvest or possession under the summarized territorial rule.",
+    "alwaysProhibited": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Year-round territorial prohibition."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "nassau-grouper",
+    "name": "Nassau grouper",
+    "scientificName": "Epinephelus striatus",
+    "family": "Protected species",
+    "glyph": "🛡️",
+    "handbookPages": [
+      17,
+      32,
+      39
+    ],
+    "summary": "No harvest or possession under the handbook summaries.",
+    "alwaysProhibited": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Year-round territorial prohibition; federal harvest prohibition is also summarized."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries"
+  },
+  {
+    "id": "mutton-snapper",
+    "name": "Mutton snapper",
+    "scientificName": "Lutjanus analis",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39,
+      43
+    ],
+    "summary": "Seasonal species and spawning-area closures may both apply.",
+    "closures": [
+      {
+        "start": "04-01",
+        "end": "06-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "April 1–June 30 species closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "A separate St. Croix federal spawning-area closure runs March 1–June 30."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/mutton-snapper.png"
+  },
+  {
+    "id": "lane-snapper",
+    "name": "Lane snapper",
+    "scientificName": "Lutjanus synagris",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32
+    ],
+    "summary": "Included in the April–June seasonal closure.",
+    "closures": [
+      {
+        "start": "04-01",
+        "end": "06-30",
+        "waters": [
+          "territorial",
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "April 1–June 30 closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/lane-snapper.png"
+  },
+  {
+    "id": "black-snapper",
+    "name": "Black snapper",
+    "scientificName": "Apsilus dentatus",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "October–December seasonal closure; territorial St. Croix exception is summarized.",
+    "closures": [
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj"
+        ],
+        "label": "October 1–December 31 St. Thomas/St. John territorial closure"
+      },
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "October 1–December 31 federal closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "The handbook says St. Croix territorial waters are exempt from this seasonal closure."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/black-snapper.png"
+  },
+  {
+    "id": "blackfin-snapper",
+    "name": "Blackfin snapper",
+    "scientificName": "Lutjanus buccanella",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "October–December seasonal closure; territorial St. Croix exception is summarized.",
+    "closures": [
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj"
+        ],
+        "label": "October 1–December 31 St. Thomas/St. John territorial closure"
+      },
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "October 1–December 31 federal closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "The handbook says St. Croix territorial waters are exempt from this seasonal closure."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/blackfin-snapper.png"
+  },
+  {
+    "id": "vermilion-snapper",
+    "name": "Vermilion snapper",
+    "scientificName": "Rhomboplites aurorubens",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "October–December seasonal closure; territorial St. Croix exception is summarized.",
+    "closures": [
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj"
+        ],
+        "label": "October 1–December 31 St. Thomas/St. John territorial closure"
+      },
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "October 1–December 31 federal closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "The handbook says St. Croix territorial waters are exempt from this seasonal closure."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/vermilion-snapper.png"
+  },
+  {
+    "id": "silk-snapper",
+    "name": "Silk snapper",
+    "scientificName": "Lutjanus vivanus",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      14,
+      32,
+      39
+    ],
+    "summary": "October–December seasonal closure; territorial St. Croix exception is summarized.",
+    "closures": [
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "territorial"
+        ],
+        "districts": [
+          "stt-stj"
+        ],
+        "label": "October 1–December 31 St. Thomas/St. John territorial closure"
+      },
+      {
+        "start": "10-01",
+        "end": "12-31",
+        "waters": [
+          "federal"
+        ],
+        "districts": [
+          "stt-stj",
+          "stx"
+        ],
+        "label": "October 1–December 31 federal closure"
+      }
+    ],
+    "sizeRules": [],
+    "notes": [
+      "The handbook says St. Croix territorial waters are exempt from this seasonal closure."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries",
+    "imageUrl": "/images/fishing/species/silk-snapper.png"
+  },
+  {
+    "id": "yellowtail-snapper",
+    "name": "Yellowtail snapper",
+    "scientificName": "Ocyurus chrysurus",
+    "family": "Snappers",
+    "glyph": "🐟",
+    "handbookPages": [
+      16,
+      39
+    ],
+    "summary": "Federal minimum total length is summarized in the handbook.",
+    "closures": [],
+    "sizeRules": [
+      "Federal waters: minimum 12-inch total length."
+    ],
+    "notes": [],
+    "verificationAgency": "NOAA Fisheries"
+  },
+  {
+    "id": "blue-parrotfish",
+    "name": "Blue parrotfish",
+    "scientificName": "Scarus coeruleus",
+    "family": "Parrotfishes",
+    "glyph": "🐠",
+    "handbookPages": [
+      17
+    ],
+    "summary": "The handbook graphic contains internally conflicting presentation, so the app will not infer harvest status.",
+    "requiresDirectVerification": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Confirm the current rule directly with DPNR before harvesting, possessing, selling, or consuming this species."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "rainbow-parrotfish",
+    "name": "Rainbow parrotfish",
+    "scientificName": "Scarus guacamaia",
+    "family": "Parrotfishes",
+    "glyph": "🐠",
+    "handbookPages": [
+      17
+    ],
+    "summary": "The handbook graphic contains internally conflicting presentation, so the app will not infer harvest status.",
+    "requiresDirectVerification": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Confirm the current rule directly with DPNR before harvesting, possessing, selling, or consuming this species."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "midnight-parrotfish",
+    "name": "Midnight parrotfish",
+    "scientificName": "Scarus coelestinus",
+    "family": "Parrotfishes",
+    "glyph": "🐠",
+    "handbookPages": [
+      17
+    ],
+    "summary": "The handbook graphic contains internally conflicting presentation, so the app will not infer harvest status.",
+    "requiresDirectVerification": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Confirm the current rule directly with DPNR before harvesting, possessing, selling, or consuming this species."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "allowable-parrotfishes",
+    "name": "Other listed parrotfishes",
+    "scientificName": "Scaridae species",
+    "family": "Parrotfishes",
+    "glyph": "🐠",
+    "handbookPages": [
+      16,
+      17,
+      40
+    ],
+    "summary": "Queen, princess, striped, redtail, stoplight, yellowtail, and redband parrotfish have water- and district-specific size summaries.",
+    "closures": [],
+    "sizeRules": [
+      "St. Croix federal waters: 9-inch fork length for listed allowable parrotfishes.",
+      "St. Croix federal waters: redband parrotfish minimum 8-inch fork length.",
+      "The handbook summarizes no federal minimum size for St. Thomas/St. John parrotfishes."
+    ],
+    "notes": [
+      "Species identification must be certain before applying a rule."
+    ],
+    "verificationAgency": "NOAA Fisheries / DPNR"
+  },
+  {
+    "id": "tarpon",
+    "name": "Tarpon",
+    "scientificName": "Megalops atlanticus",
+    "family": "Catch and release",
+    "glyph": "↩️",
+    "handbookPages": [
+      32
+    ],
+    "summary": "Catch-and-release using hook and line only under the summarized territorial rule.",
+    "alwaysProhibited": true,
+    "prohibitedWaters": [
+      "territorial"
+    ],
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "No harvest; hook-and-line catch and release only."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "bonefish",
+    "name": "Bonefish",
+    "scientificName": "Albula vulpes",
+    "family": "Catch and release",
+    "glyph": "↩️",
+    "handbookPages": [
+      32
+    ],
+    "summary": "Catch-and-release using hook and line only under the summarized territorial rule.",
+    "alwaysProhibited": true,
+    "prohibitedWaters": [
+      "territorial"
+    ],
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "No harvest; hook-and-line catch and release only."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "sea-turtles",
+    "name": "Sea turtles and eggs",
+    "scientificName": "Chelonioidea species",
+    "family": "Protected species",
+    "glyph": "🐢",
+    "handbookPages": [
+      17,
+      21,
+      33,
+      43
+    ],
+    "summary": "No harvest, possession, or harassment.",
+    "alwaysProhibited": true,
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Applies to all sea turtle species and their eggs."
+    ],
+    "verificationAgency": "DPNR / NOAA Fisheries"
+  },
+  {
+    "id": "corals-urchins-cucumbers",
+    "name": "Corals, sea urchins, and sea cucumbers",
+    "scientificName": "Multiple taxa",
+    "family": "Protected marine life",
+    "glyph": "🪸",
+    "handbookPages": [
+      41
+    ],
+    "summary": "Federal fishing or possession prohibition summarized for these groups.",
+    "alwaysProhibited": true,
+    "prohibitedWaters": [
+      "federal"
+    ],
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Incidental take must be returned immediately in the general area of fishing under the summarized federal rule."
+    ],
+    "verificationAgency": "NOAA Fisheries"
+  },
+  {
+    "id": "shrimp",
+    "name": "Southern pink shrimp",
+    "scientificName": "Farfantepenaeus notialis",
+    "family": "Crustaceans",
+    "glyph": "🦐",
+    "handbookPages": [
+      2,
+      32,
+      36
+    ],
+    "summary": "Special St. Croix lagoon rules and a recreational permit requirement apply.",
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "No commercial harvest or sale in Altona Lagoon or Great Pond.",
+      "Recreational harvest requires a permit; the handbook lists a $10 annual fee.",
+      "Sale is prohibited, and gear/location restrictions apply."
+    ],
+    "verificationAgency": "DPNR"
+  },
+  {
+    "id": "highly-migratory-species",
+    "name": "Tunas, billfish, swordfish, and sharks",
+    "scientificName": "Multiple HMS taxa",
+    "family": "Highly migratory species",
+    "glyph": "🌊",
+    "handbookPages": [
+      32,
+      42,
+      43,
+      44
+    ],
+    "summary": "Permit, retention, reporting, landing, and in-season federal rules vary by species and activity.",
+    "closures": [],
+    "sizeRules": [],
+    "notes": [
+      "Do not infer a current retention or size limit from this handbook; use current NOAA HMS guidance.",
+      "Some recreational landings and discards require reporting within 24 hours."
+    ],
+    "verificationAgency": "NOAA Fisheries HMS"
+  }
+]

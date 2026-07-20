@@ -1,0 +1,235 @@
+id,name,island,kind,positioned,status,image
+stay:sapphire-village-resort,Sapphire Village Resort,stt,stay,true,placeholder,/images/stays/stt/sapphire-village-resort.svg
+stay:flamboyan-on-the-bay-resort-villas,Flamboyan on the Bay Resort & Villas,stt,stay,true,placeholder,/images/stays/stt/flamboyan-on-the-bay-resort-villas.svg
+stay:windward-passage-hotel,Windward Passage Hotel,stt,stay,true,placeholder,/images/stays/stt/windward-passage-hotel.svg
+stay:pavilions-and-pools-resort,Pavilions and Pools Resort,stt,stay,false,placeholder,/images/stays/stt/pavilions-and-pools-resort.svg
+stay:inn-on-strand-street,Inn on Strand Street,stx,stay,false,placeholder,/images/stays/stx/inn-on-strand-street.svg
+historic:99-steps,99 Steps,stt,historic,false,placeholder,/images/places/fallbacks/historic-stt.svg
+place:american-yacht-harbor,American Yacht Harbor,stt,place,true,placeholder,/images/places/fallbacks/marina-stt.svg
+historic:annaberg-sugar-plantation,Annaberg Sugar Plantation,stj,historic,true,placeholder,/images/places/fallbacks/historic-stj.svg
+place:stt-arian-s,Arian S,stt,place,false,placeholder,/images/directory/places/stt-arian-s.svg
+place:stt-benito-s-burritos,Benito's Burritos,stt,place,true,placeholder,/images/directory/places/stt-benito-s-burritos.svg
+place:stt-bernie-s-bar-grill,Bernie's Bar Grill,stt,place,true,placeholder,/images/directory/places/stt-bernie-s-bar-grill.svg
+place:stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares,Bluebeard's Castle Hilltop Villas Marriott's Frenchman's Cove Timeshares,stt,place,false,placeholder,/images/directory/places/stt-bluebeard-s-castle-hilltop-villas-marriott-s-frenchman-s-cove-timeshares.svg
+place:stt-bonita-s-cantina,Bonita's Cantina,stt,place,true,placeholder,/images/directory/places/stt-bonita-s-cantina.svg
+place:brewers-bay,Brewers Bay,stt,place,false,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:buck-island-reef-national-monument,Buck Island Reef National Monument,stx,place,false,placeholder,/images/places/fallbacks/nature-stx.svg
+place:stt-bumpa-s,Bumpa S,stt,place,false,placeholder,/images/directory/places/stt-bumpa-s.svg
+place:cane-bay-wall,Cane Bay Wall,stx,place,false,placeholder,/images/places/fallbacks/nature-stx.svg
+place:caneel-bay-overlook,Caneel Bay Overlook,stj,place,false,placeholder,/images/places/fallbacks/viewpoint-stj.svg
+place:captain-morgan-visitor-center,Captain Morgan Visitor Center,stx,place,false,placeholder,/images/places/fallbacks/attraction-stx.svg
+place:waterfront-charlotte-amalie,Charlotte Amalie Waterfront,stt,place,false,placeholder,/images/places/fallbacks/attraction-stt.svg
+historic:christiansted-national-historic-site,Christiansted National Historic Site,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+place:cinnamon-bay-archaeology-lab,Cinnamon Bay Archaeology Museum,stj,place,false,placeholder,/images/places/fallbacks/museum-stj.svg
+place:cinnamon-bay-campground,Cinnamon Bay Campground,stj,place,true,placeholder,/images/places/fallbacks/campground-stj.svg
+place:coki-point,Coki Point,stt,place,false,placeholder,/images/places/fallbacks/attraction-stt.svg
+historic:columbus-landing-site,Columbus Landing Site,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+place:coral-bay,Coral Bay,stj,place,true,placeholder,/images/places/fallbacks/neighborhood-stj.svg
+place:coral-bay-harbor,Coral Bay Harbor,stj,place,false,placeholder,/images/places/fallbacks/marina-stj.svg
+place:coral-world-ocean-park,Coral World Ocean Park,stt,place,true,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:crown-bay-center,Crown Bay Center,stt,place,false,placeholder,/images/places/fallbacks/shopping-stt.svg
+place:cruz-bay-waterfront,Cruz Bay Waterfront,stj,place,false,placeholder,/images/places/fallbacks/attraction-stj.svg
+place:cruzan-rum-distillery,Cruzan Rum Distillery,stx,place,true,placeholder,/images/places/fallbacks/attraction-stx.svg
+place:drakes-seat,Drake's Seat,stt,place,true,placeholder,/images/places/fallbacks/viewpoint-stt.svg
+place:stt-duffy-s-love-shack,Duffy's Love Shack,stt,place,true,placeholder,/images/directory/places/stt-duffy-s-love-shack.svg
+place:stt-e-s-garden-teahouse,E's Garden Teahouse,stt,place,true,placeholder,/images/directory/places/stt-e-s-garden-teahouse.svg
+place:east-end-st-john,East End St. John,stj,place,false,placeholder,/images/places/fallbacks/neighborhood-stj.svg
+place:eliza-james-mchen-beach-park,Eliza James-McBean Clock Tower and Park,stx,place,false,placeholder,/images/places/fallbacks/park-stx.svg
+place:emancipation-garden,Emancipation Garden,stt,place,true,placeholder,/images/places/fallbacks/park-stt.svg
+place:estate-whim-museum,Estate Whim Museum,stx,place,false,placeholder,/images/places/fallbacks/museum-stx.svg
+historic:fort-christian,Fort Christian,stt,historic,true,placeholder,/images/places/fallbacks/historic-stt.svg
+historic:fort-christiansvaern,Fort Christiansvaern,stx,historic,false,placeholder,/images/places/fallbacks/historic-stx.svg
+historic:fort-frederik,Fort Frederik,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+historic:fortsberg,Fortsberg,stj,historic,true,placeholder,/images/places/fallbacks/historic-stj.svg
+place:frederiksted-pier,Frederiksted Pier,stx,place,true,placeholder,/images/places/fallbacks/attraction-stx.svg
+place:frederiksted-waterfront,Frederiksted Waterfront,stx,place,false,placeholder,/images/places/fallbacks/attraction-stx.svg
+place:frenchtown,Frenchtown,stt,place,true,placeholder,/images/places/fallbacks/neighborhood-stt.svg
+place:frenchtown-market,Frenchtown Market,stt,place,true,placeholder,/images/places/fallbacks/market-stt.svg
+place:gallows-bay,Gallows Bay,stx,place,true,placeholder,/images/places/fallbacks/neighborhood-stx.svg
+historic:government-house-christiansted,Government House Christiansted,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+place:green-cay-marina,Green Cay Marina,stx,place,true,placeholder,/images/places/fallbacks/marina-stx.svg
+place:stt-greengos-caribbean-cantina,Greengos Caribbean Cantina,stt,place,true,placeholder,/images/directory/places/stt-greengos-caribbean-cantina.svg
+place:havensight-mall,Havensight Mall,stt,place,true,placeholder,/images/places/fallbacks/shopping-stt.svg
+place:hull-bay,Hull Bay,stt,place,false,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:jack-and-isaac-bay-preserve,Jack and Isaac Bay Preserve,stx,place,true,placeholder,/images/places/fallbacks/nature-stx.svg
+place:johns-folly-learning-institute,John's Folly Learning Institute,stj,place,false,placeholder,/images/places/fallbacks/cultural-stj.svg
+place:lindbergh-bay,Lindbergh Bay,stt,place,true,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:magens-bay,Magens Bay,stt,place,true,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:main-street-charlotte-amalie,Main Street Charlotte Amalie,stt,place,false,placeholder,/images/places/fallbacks/shopping-stt.svg
+historic:market-square-st-thomas,Market Square,stt,historic,true,placeholder,/images/places/fallbacks/historic-stt.svg
+place:millennium-monument,Millennium Monument,stx,place,false,placeholder,/images/places/fallbacks/monument-stx.svg
+place:stt-mim-s-seafood-bistro,Mim's Seafood Bistro,stt,place,false,placeholder,/images/directory/places/stt-mim-s-seafood-bistro.svg
+place:mongoose-junction,Mongoose Junction,stj,place,true,placeholder,/images/places/fallbacks/shopping-stj.svg
+place:mount-eagle,Mount Eagle,stx,place,true,placeholder,/images/places/fallbacks/viewpoint-stx.svg
+place:mountaintop-st-thomas,Mountain Top,stt,place,true,placeholder,/images/places/fallbacks/attraction-stt.svg
+historic:old-danish-custom-house,Old Danish Custom House,stx,historic,false,placeholder,/images/places/fallbacks/historic-stx.svg
+place:paradise-point,Paradise Point,stt,place,true,placeholder,/images/places/fallbacks/viewpoint-stt.svg
+historic:peace-hill,Peace Hill,stj,historic,true,placeholder,/images/places/fallbacks/historic-stj.svg
+place:point-udall,Point Udall,stx,place,true,placeholder,/images/places/fallbacks/viewpoint-stx.svg
+place:protestant-cay,Protestant Cay,stx,place,true,placeholder,/images/places/fallbacks/attraction-stx.svg
+place:ram-head-trail,Ram Head Trail,stj,place,true,placeholder,/images/places/fallbacks/trail-stj.svg
+place:red-hook,Red Hook,stt,place,true,placeholder,/images/places/fallbacks/neighborhood-stt.svg
+historic:petroglyphs-trail,Reef Bay Petroglyphs,stj,historic,true,placeholder,/images/places/fallbacks/historic-stj.svg
+place:reef-bay-trail,Reef Bay Trail,stj,place,true,placeholder,/images/places/fallbacks/trail-stj.svg
+place:salt-pond-bay,Salt Pond Bay,stj,place,false,placeholder,/images/places/fallbacks/attraction-stj.svg
+historic:salt-river-bay-national-historical-park,Salt River Bay National Historical Park,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+place:sandy-point-national-wildlife-refuge,Sandy Point National Wildlife Refuge,stx,place,true,placeholder,/images/places/fallbacks/nature-stx.svg
+place:skyride-to-paradise-point,Skyride to Paradise Point,stt,place,true,placeholder,/images/places/fallbacks/attraction-stt.svg
+place:rainforest-st-croix,St. Croix Rainforest,stx,place,false,placeholder,/images/places/fallbacks/nature-stx.svg
+place:st-george-village-botanical-garden,St. George Village Botanical Garden,stx,place,false,placeholder,/images/places/fallbacks/garden-stx.svg
+historic:steeple-building,Steeple Building,stx,historic,true,placeholder,/images/places/fallbacks/historic-stx.svg
+place:stt-sudi-s-caribbean-bar-grille,Sudi's Caribbean Bar Grille,stt,place,true,placeholder,/images/directory/places/stt-sudi-s-caribbean-bar-grille.svg
+place:leap-st-croix,The Leap,stx,place,false,placeholder,/images/places/fallbacks/shopping-stx.svg
+place:stt-virgilio-s-italian,Virgilio's Italian,stt,place,false,placeholder,/images/directory/places/stt-virgilio-s-italian.svg
+place:virgin-islands-national-park-visitor-center,Virgin Islands National Park Visitor Center,stj,place,false,placeholder,/images/places/fallbacks/visitor-center-stj.svg
+place:water-island-ferry-terminal,Water Island Ferry Terminal,stt,place,false,placeholder,/images/places/fallbacks/transport-stt.svg
+place:yacht-haven-grande,Yacht Haven Grande,stt,place,false,placeholder,/images/places/fallbacks/marina-stt.svg
+beach:abi-beach,Abi Beach,stt,beach,true,placeholder,/images/directory/beaches/abi-beach.svg
+beach:banana-bay,Banana Bay,stj,beach,false,placeholder,/images/directory/beaches/banana-bay.svg
+beach:brewers-bay,Brewers Bay,stt,beach,false,placeholder,/images/directory/beaches/brewers-bay.svg
+beach:brown-bay,Brown Bay,stj,beach,true,placeholder,/images/directory/beaches/brown-bay.svg
+beach:cane-bay,Cane Bay,stx,beach,true,placeholder,/images/directory/beaches/cane-bay.svg
+beach:caneel-bay,Caneel Bay,stj,beach,true,placeholder,/images/directory/beaches/caneel-bay.svg
+beach:caret-bay,Caret Bay,stt,beach,false,placeholder,/images/directory/beaches/caret-bay.svg
+beach:chenay-bay,Chenay Bay,stx,beach,true,placeholder,/images/directory/beaches/chenay-bay.svg
+beach:cinnamon-bay,Cinnamon Bay,stj,beach,true,placeholder,/images/directory/beaches/cinnamon-bay.svg
+beach:coki-point,Coki Point,stt,beach,false,placeholder,/images/directory/beaches/coki-point.svg
+beach:columbus-landing,Columbus Landing,stx,beach,false,placeholder,/images/directory/beaches/columbus-landing.svg
+beach:cowpet-bay,Cowpet Bay,stt,beach,true,placeholder,/images/directory/beaches/cowpet-bay.svg
+beach:denis-bay,Denis Bay,stj,beach,true,placeholder,/images/directory/beaches/denis-bay.svg
+beach:dorothea-beach,Dorothea Beach,stt,beach,true,placeholder,/images/directory/beaches/dorothea-beach.svg
+beach:dorsch-beach,Dorsch Beach,stx,beach,true,placeholder,/images/directory/beaches/dorsch-beach.svg
+beach:francis-bay,Francis Bay,stj,beach,true,placeholder,/images/directory/beaches/francis-bay.svg
+beach:gibney-beach,Gibney Beach,stj,beach,true,placeholder,/images/directory/beaches/gibney-beach.svg
+beach:grapetree-bay,Grapetree Bay,stx,beach,true,placeholder,/images/directory/beaches/grapetree-bay.svg
+beach:hansen-bay,Hansen Bay,stj,beach,true,placeholder,/images/directory/beaches/hansen-bay.svg
+beach:haulover-bay,Haulover Bay,stj,beach,true,placeholder,/images/directory/beaches/haulover-bay.svg
+beach:hawksnest-bay,Hawksnest Bay,stj,beach,true,placeholder,/images/directory/beaches/hawksnest-bay.svg
+beach:honeymoon-beach,Honeymoon Beach,stj,beach,false,placeholder,/images/directory/beaches/honeymoon-beach.svg
+beach:honeymoon-water-island,Honeymoon Water Island,stt,beach,false,placeholder,/images/directory/beaches/honeymoon-water-island.svg
+beach:isaac-bay,Isaac Bay,stx,beach,false,placeholder,/images/directory/beaches/isaac-bay.svg
+beach:jack-bay,Jack Bay,stx,beach,true,placeholder,/images/directory/beaches/jack-bay.svg
+beach:jumbie-bay,Jumbie Bay,stj,beach,true,placeholder,/images/directory/beaches/jumbie-bay.svg
+beach:lameshur-bay,Lameshur Bay,stj,beach,false,placeholder,/images/directory/beaches/lameshur-bay.svg
+beach:lindquist-beach,Lindquist Beach,stt,beach,true,placeholder,/images/directory/beaches/lindquist-beach.svg
+beach:magens-bay,Magens Bay,stt,beach,true,placeholder,/images/directory/beaches/magens-bay.svg
+beach:maho-bay,Maho Bay,stj,beach,true,placeholder,/images/directory/beaches/maho-bay.svg
+beach:mermaids-chair,Mermaids Chair,stt,beach,false,placeholder,/images/directory/beaches/mermaids-chair.svg
+beach:michelles-beach,Michelles Beach,stx,beach,false,placeholder,/images/directory/beaches/michelles-beach.svg
+beach:morningstar-beach,Morningstar Beach,stt,beach,true,placeholder,/images/directory/beaches/morningstar-beach.svg
+beach:nazareth-bay,Nazareth Bay,stt,beach,false,placeholder,/images/directory/beaches/nazareth-bay.svg
+beach:pelican-cove,Pelican Cove,stx,beach,false,placeholder,/images/directory/beaches/pelican-cove.svg
+beach:rainbow-beach,Rainbow Beach,stx,beach,true,placeholder,/images/directory/beaches/rainbow-beach.svg
+beach:reef-bay,Reef Bay,stj,beach,true,placeholder,/images/directory/beaches/reef-bay.svg
+beach:salomon-beach,Salomon Beach,stj,beach,true,placeholder,/images/directory/beaches/salomon-beach.svg
+beach:salt-pond-bay,Salt Pond Bay,stj,beach,false,placeholder,/images/directory/beaches/salt-pond-bay.svg
+beach:sandy-point,Sandy Point,stx,beach,true,placeholder,/images/directory/beaches/sandy-point.svg
+beach:santa-maria-beach,Santa Maria Beach,stt,beach,false,placeholder,/images/directory/beaches/santa-maria-beach.svg
+beach:shoys-beach,Shoys Beach,stx,beach,true,placeholder,/images/directory/beaches/shoys-beach.svg
+beach:teague-bay,Teague Bay,stx,beach,false,placeholder,/images/directory/beaches/teague-bay.svg
+beach:trunk-bay,Trunk Bay,stj,beach,true,placeholder,/images/directory/beaches/trunk-bay.svg
+beach:turtle-beach-buck-island,Turtle Beach Buck Island,stx,beach,false,placeholder,/images/directory/beaches/turtle-beach-buck-island.svg
+beach:vessup-bay,Vessup Bay,stt,beach,true,placeholder,/images/directory/beaches/vessup-bay.svg
+beach:water-bay,Water Bay,stt,beach,true,placeholder,/images/directory/beaches/water-bay.svg
+beach:waterlemon-bay,Waterlemon Bay,stj,beach,true,placeholder,/images/directory/beaches/waterlemon-bay.svg
+historic:annaberg-historic-district,Annaberg Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:barracks-no-2,Barracks No. 2,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:benjamin-franklin-school,Benjamin Franklin School,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:synagogue-beracha-veshalom,Beracha Veshalom Synagogue,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:bethlehem-middle-works-historic-district,Bethlehem Middle Works Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:bethlehem-sugar-factory,Bethlehem Sugar Factory,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:blackbeards-castle-skytsborg,Blackbeard's Castle (Skytsborg),stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:bluebeards-castle-tower,Bluebeard's Castle Tower,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:bordeaux,Bordeaux,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:brown-bay-plantation-historic-district,Brown Bay Plantation Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:catherineberg-jockumsdahl-herman-farm,Catherineberg-Jockumsdahl-Herman Farm,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:charlotte-amalie-historic-district,Charlotte Amalie Historic District,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:charlotte-amalie-historic-district-boundary-increase,Charlotte Amalie Historic District (Boundary Increase),stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:christiansted-historic-district,Christiansted Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:christiansted-nhs-custom-house,Christiansted NHS Custom House,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:christiansted-nhs-fort-christiansvaern,Christiansted NHS Fort Christiansvaern,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:christiansted-nhs-scale-house,Christiansted NHS Scale House,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:christiansted-nhs-steeple-building,Christiansted NHS Steeple Building,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:cinnamon-bay-plantation,Cinnamon Bay Plantation,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:cinnamon-bay-sugar-works,Cinnamon Bay Sugar Works,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:coakley-bay-estate,Coakley Bay Estate,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:cruz-bay-battery,Cruz Bay Battery,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:cruz-bay-town-historic-district,Cruz Bay Town Historic District,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:danish-west-india-and-guinea-company-warehouse,Danish West India and Guinea Company Warehouse,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:dennis-bay-historic-district,Dennis Bay Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:diamond-school,Diamond School,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:east-end-schoolhouse-st-john-us-virgin-islands,East End Schoolhouse: St. John US Virgin Islands,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:emancipation-garden,Emancipation Garden,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:emmaus-moravian-church,Emmaus Moravian Church,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:emmaus-moravian-church-and-manse,Emmaus Moravian Church and Manse,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:enighed,Enighed,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-beverhoudt,Estate Beverhoudt,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-botany-bay,Estate Botany Bay,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-brewers-bay,Estate Brewers Bay,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-butlers-bay,Estate Butler's Bay,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-carolina-sugar-plantation,Estate Carolina Sugar Plantation,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-grove-place,Estate Grove Place,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-hafensight,Estate Hafensight,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-hogansborg,Estate Hogansborg,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-judiths-fancy,Estate Judith's Fancy,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-la-reine,Estate La Reine,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-little-princess,Estate Little Princess,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-mount-victory,Estate Mount Victory,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-neltjeberg,Estate Neltjeberg,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-niesky,Estate Niesky,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-perseverance,Estate Perseverance,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-prosperity,Estate Prosperity,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-saint-george-historic-district,Estate Saint George Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-st-john,Estate St. John,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:estate-whim-greathouse,Estate Whim Greathouse,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:evelyn-e-marcelli-elementary-school,Evelyn E. Marcelli Elementary School,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:fortsberg-corral-bay,Fortsberg Corral Bay,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:frederick-lutheran-church,Frederick Lutheran Church,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:frederiksted-historic-district,Frederiksted Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:friedensfeld-midlands-moravian-church-and-manse,Friedensfeld Midlands Moravian Church and Manse,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:friedensthal-mission,Friedensthal Mission,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:ft-frederik-of-us-virgin-islands,Ft. Frederik of US Virgin Islands,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:government-house-stt,"Government House, St. Thomas",stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:green-kay,Green Kay,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:hamburg-america-shipping-line-administrative-offices,Hamburg-America Shipping Line Administrative Offices,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:hams-bluff-light,Hams Bluff Light,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:hassel-island-additional-documentation,Hassel Island (Additional Documentation),stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:hassel-island-creque-marine-railway,Hassel Island Creque Marine Railway,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:hassel-island-fort-willoughby,Hassel Island Fort Willoughby,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:hassel-island-historic-district-boundary-increase,Hassel Island Historic District (Boundary Increase),stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:hermitage-plantation-historic-district,Hermitage Plantation Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:holy-cross-episcopal-church,Holy Cross Episcopal Church,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:jossie-gut-historic-district,Jossie Gut Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:kingshill-lutheran-church,Kingshill Lutheran Church,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:lesperance-historic-district,L'Esperance Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:la-grande-princesse-school,La Grande Princesse School,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:la-grange-historic-district,La Grange Historic District,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:lameshur-plantation,Lameshur Plantation,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:liever-marches-bay-historic-district,Liever Marches Bay Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:lind-point-fort,Lind Point Fort,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:little-la-grange,Little La Grange,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:mafolie-great-house,Mafolie Great House,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:market-square-pladsen,Market Square (Pladsen),stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:mary-point-estate,Mary Point Estate,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:more-hill-historic-district,More Hill Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:new-herrnhut-moravian-church,New Herrnhut Moravian Church,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:peace-hill-ruins,Peace Hill Ruins,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:reef-bay-great-house-historic-district,Reef Bay Great House Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:reef-bay-sugar-factory-historic-district,Reef Bay Sugar Factory Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:reef-bay-sugar-mill,Reef Bay Sugar Mill,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:reformed-dutch-church-stt,"Reformed Dutch Church, St. Thomas",stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:richmond-prison-detention-and-workhouse,Richmond Prison Detention and Workhouse,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:rustenberg-plantation-south-historic-district,Rustenberg Plantation South Historic District,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:salt-river-bay-national-historic-site-and-ecological-preserve,Salt River Bay National Historic Site and Ecological Preserve,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:sion-hill,Sion Hill,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:slob-historic-district,Slob Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:sprat-hall-historic-district,Sprat Hall Historic District,stx,historic,false,placeholder,/images/historic/placeholder.svg
+historic:st-johns-episcopal-church,St. John's Episcopal Church,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:st-thomas-synagogue,St. Thomas Synagogue,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:st-thomas-synagogue-beracha-veshalom-vegemiluth-hasadim,St. Thomas Synagogue-Beracha Veshalom Vegemiluth Hasadim,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:strawberry-hill-historic-district,Strawberry Hill Historic District,stx,historic,true,placeholder,/images/historic/placeholder.svg
+historic:susannaberg-estate,Susannaberg Estate,stj,historic,false,placeholder,/images/historic/placeholder.svg
+historic:trunk-bay-sugar-factory,Trunk Bay Sugar Factory,stj,historic,true,placeholder,/images/historic/placeholder.svg
+historic:tutu-plantation-house,Tutu Plantation House,stt,historic,true,placeholder,/images/historic/placeholder.svg
+historic:venus-hill,Venus Hill,stt,historic,false,placeholder,/images/historic/placeholder.svg
+historic:whim,Whim,stx,historic,true,placeholder,/images/historic/placeholder.svg
