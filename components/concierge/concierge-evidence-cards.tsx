@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { BedDouble, Landmark, MapPin, Palmtree, Waves } from "lucide-react";
 
-import type { ConciergeDirectoryEvidence } from "@/lib/concierge-directory-evidence";
+import type { ConciergeEvidenceItem } from "@/lib/concierge-client";
 
 export function ConciergeEvidenceCards({
   evidence,
   maxItems = 4,
 }: {
-  evidence: ConciergeDirectoryEvidence[];
+  evidence: ConciergeEvidenceItem[];
   maxItems?: number;
 }) {
   const visible = evidence.slice(0, Math.max(1, Math.min(maxItems, 6)));
@@ -66,14 +66,14 @@ export function ConciergeEvidenceCards({
   );
 }
 
-function iconForType(type: ConciergeDirectoryEvidence["type"]) {
+function iconForType(type: ConciergeEvidenceItem["type"]) {
   if (type === "beach") return Waves;
   if (type === "stay") return BedDouble;
   if (type === "historic") return Landmark;
   return Palmtree;
 }
 
-function labelForType(type: ConciergeDirectoryEvidence["type"]) {
+function labelForType(type: ConciergeEvidenceItem["type"]) {
   if (type === "historic") return "Heritage";
   return type.charAt(0).toUpperCase() + type.slice(1);
 }
