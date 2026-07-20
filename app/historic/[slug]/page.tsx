@@ -6,10 +6,10 @@ import {
   Camera,
   Landmark,
   MapPin,
-  Navigation,
   Sparkles,
 } from "lucide-react";
 
+import { PlaceActionBar } from "@/components/place/place-action-bar";
 import {
   getTravelKnowledge,
   getTravelKnowledgeItem,
@@ -30,9 +30,9 @@ export default function HistoricDetailPage({
   if (!site) notFound();
 
   const islandName = ISLAND_NAMES[site.island];
-  const mapHref = `/map?island=${site.island}&q=${encodeURIComponent(site.name)}`;
-  const rideHref = `/mobility?island=${site.island}&destination=${encodeURIComponent(site.name)}`;
-  const conciergeHref = `/?concierge=open&prompt=${encodeURIComponent(
+  const mapHref = `/map?island=${site.island.toUpperCase()}&q=${encodeURIComponent(site.name)}`;
+  const rideHref = `/mobility?island=${site.island.toUpperCase()}&destination=${encodeURIComponent(site.name)}`;
+  const conciergeHref = `/map?concierge=open&prompt=${encodeURIComponent(
     `Plan a heritage experience around ${site.name} with nearby places, food, transportation, and realistic timing.`,
   )}`;
   const gallery = Array.from(
@@ -82,30 +82,17 @@ export default function HistoricDetailPage({
                   ))}
                 </div>
               </div>
-
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                <Link
-                  href={mapHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-[10px] font-black uppercase tracking-[.18em]"
-                >
-                  <MapPin className="h-4 w-4" /> Map
-                </Link>
-                <Link
-                  href={rideHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-[10px] font-black uppercase tracking-[.18em]"
-                >
-                  <Navigation className="h-4 w-4" /> Ride
-                </Link>
-                <Link
-                  href={conciergeHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] text-[#043331]"
-                >
-                  <Sparkles className="h-4 w-4" /> Ask
-                </Link>
-              </div>
             </div>
           </div>
         </section>
+
+        <PlaceActionBar
+          className="relative z-10 mx-2 -mt-12 sm:mx-5"
+          name={site.name}
+          island={islandName}
+          mapHref={mapHref}
+          rideHref={rideHref}
+        />
 
         <section className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <div className="rounded-[30px] border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
