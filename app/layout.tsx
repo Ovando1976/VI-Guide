@@ -1,10 +1,37 @@
+import type { Metadata, Viewport } from "next";
+
 import "./globals.css";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 
-export const metadata = {
-  title: "VI Guide",
-  description: "Explore, plan, and move through the U.S. Virgin Islands.",
+export const metadata: Metadata = {
+  applicationName: "VI Guide",
+  title: {
+    default: "VI Guide — Explore the U.S. Virgin Islands",
+    template: "%s | VI Guide",
+  },
+  description:
+    "Explore beaches, places, stays, heritage, transportation, and grounded island plans across the U.S. Virgin Islands.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "VI Guide",
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
+  category: "travel",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#062b35",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
