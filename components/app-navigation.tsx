@@ -11,6 +11,7 @@ import {
   Landmark,
   Map,
   Navigation,
+  Sparkles,
   Waves,
 } from "lucide-react";
 import clsx from "clsx";
@@ -19,6 +20,7 @@ import { AccountMenu } from "@/components/account-menu";
 const ITEMS = [
   { href: "/", label: "Home", icon: House },
   { href: "/map", label: "Map", icon: Map },
+  { href: "/concierge", label: "Concierge", icon: Sparkles },
   { href: "/places", label: "Explore", icon: Compass },
   { href: "/beaches", label: "Beaches", icon: Waves },
   { href: "/heritage", label: "Heritage", icon: Landmark },
