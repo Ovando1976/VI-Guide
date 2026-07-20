@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { getHeritageEvidence } from "@/lib/heritage-evidence";
+import { rankHeritageEvidence } from "@/lib/heritage/evidence";
 import type {
   ConciergeChatRequest,
   ConciergeMessage,
@@ -82,16 +82,17 @@ function extractOutputText(payload: Record<string, unknown>) {
 function localAnswer(
   islandName: string,
   message: string,
-  evidence: ReturnType<typeof getHeritageEvidence>,
+  evidence: ReturnType<typeof rankHeritageEvidence>,
 ) {
   if (!evidence.length) {
     return `I do not have a reviewed heritage record on ${islandName} that directly supports that request yet. Try a fort, estate, church, district, ruin, or historic place name, and I will stay within the records currently available in VI Guide.`;
   }
 
   const names = evidence.slice(0, 3).map((item) => item.title);
-  const lead = names.length === 1
-    ? names[0]
-    : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+  const lead =
+    names.length === 1
+      ? names[0]
+      : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
 
   const planningIntent = /plan|route|day|visit|tour|itinerary|nearby/i.test(message);
 
@@ -112,21 +113,34 @@ export async function POST(request: NextRequest) {
       !validIdentifier(body.clientId) ||
       !validIdentifier(body.idempotencyKey)
     ) {
-      return NextResponse.json({ error: "The concierge session identifiers are invalid." }, { status: 400 });
+      return NextResponse.json(
+        { error: "The concierge session identifiers are invalid." },
+        { status: 400 },
+      );
     }
 
     const message = typeof body.message === "string" ? body.message.trim() : "";
     const context = body.context;
 
     if (!message || message.length > 3000 || !context) {
-      return NextResponse.json({ error: "The heritage request is invalid." }, { status: 400 });
+      return NextResponse.json(
+        { error: "The heritage request is invalid." },
+        { status: 400 },
+      );
     }
 
-    if (context.island !== "stt" && context.island !== "stj" && context.island !== "stx") {
-      return NextResponse.json({ error: "The selected island is invalid." }, { status: 400 });
+    if (
+      context.island !== "stt" &&
+      context.island !== "stj" &&
+      context.island !== "stx"
+    ) {
+      return NextResponse.json(
+        { error: "The selected island is invalid." },
+        { status: 400 },
+      );
     }
 
-    const evidence = getHeritageEvidence({
+    const evidence = rankHeritageEvidence({
       query: message,
       island: context.island,
       estateGeoid: context.selectedEstate?.geoid,
@@ -139,7 +153,10 @@ export async function POST(request: NextRequest) {
 
     if (process.env.OPENAI_API_KEY) {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), MAX_RUNTIME_MS - 1500);
+      const timeout = setTimeout(
+        () => controller.abort(),
+        MAX_RUNTIME_MS - 1500,
+      );
 
       try {
         const response = await fetch("https://api.openai.com/v1/responses", {
@@ -155,7 +172,9 @@ export async function POST(request: NextRequest) {
             instructions: SYSTEM_INSTRUCTIONS,
             input: JSON.stringify({
               liveAppContext: context,
-              recentConversation: normalizeHistory(body.recentMessages).map(({ role, text }) => ({ role, text })),
+              recentConversation: normalizeHistory(body.recentMessages).map(
+                ({ role, text }) => ({ role, text }),
+              ),
               heritageEvidence: evidence,
               userMessage: message,
             }),
@@ -164,7 +183,10 @@ export async function POST(request: NextRequest) {
           }),
         });
 
-        const payload = (await response.json().catch(() => null)) as Record<string, unknown> | null;
+        const payload = (await response.json().catch(() => null)) as Record<
+          string,
+          unknown
+        > | null;
 
         if (response.ok && payload) {
           const generated = extractOutputText(payload).trim();
@@ -172,11 +194,15 @@ export async function POST(request: NextRequest) {
             answer = generated.slice(0, 5000);
             provider = "openai";
             const usage = payload.usage as { output_tokens?: unknown } | undefined;
-            outputTokens = typeof usage?.output_tokens === "number" ? usage.output_tokens : 0;
+            outputTokens =
+              typeof usage?.output_tokens === "number" ? usage.output_tokens : 0;
           }
         }
       } catch (error) {
-        console.error("Heritage concierge model request failed. Using grounded local fallback.", error);
+        console.error(
+          "Heritage concierge model request failed. Using grounded local fallback.",
+          error,
+        );
       } finally {
         clearTimeout(timeout);
       }
@@ -191,7 +217,9 @@ export async function POST(request: NextRequest) {
         text: answer,
         createdAt: new Date().toISOString(),
       },
-      suggestions: evidence.slice(0, 3).map((item) => `Tell me more about ${item.title}`),
+      suggestions: evidence
+        .slice(0, 3)
+        .map((item) => `Tell me more about ${item.title}`),
       actions: [],
       provider,
       budget: {
@@ -210,6 +238,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Heritage concierge request failed.", error);
-    return NextResponse.json({ error: "The heritage concierge could not respond." }, { status: 500 });
+    return NextResponse.json(
+      { error: "The heritage concierge could not respond." },
+      { status: 500 },
+    );
   }
 }
