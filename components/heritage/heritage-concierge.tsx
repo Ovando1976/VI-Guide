@@ -16,6 +16,14 @@ const PROMPTS = [
   "Build a route that stays on this island",
 ] as const;
 
+const ISLANDS = {
+  stt: "St. Thomas",
+  stj: "St. John",
+  stx: "St. Croix",
+} as const;
+
+type IslandCode = keyof typeof ISLANDS;
+
 function createId(prefix: string) {
   const random = typeof crypto?.randomUUID === "function"
     ? crypto.randomUUID().replace(/-/g, "")
@@ -23,14 +31,9 @@ function createId(prefix: string) {
   return `${prefix}_${random}`;
 }
 
-export function HeritageConcierge({
-  island,
-  islandName,
-}: {
-  island: "stt" | "stj" | "stx";
-  islandName: string;
-}) {
+export function HeritageConcierge({ defaultIsland = "stt" }: { defaultIsland?: IslandCode }) {
   const [open, setOpen] = useState(false);
+  const [island, setIsland] = useState<IslandCode>(defaultIsland);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ConciergeMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -38,6 +41,14 @@ export function HeritageConcierge({
   const clientId = useMemo(() => createId("heritage_client"), []);
   const sessionId = useMemo(() => createId("heritage_session"), []);
   const requestRef = useRef<AbortController | null>(null);
+  const islandName = ISLANDS[island];
+
+  function changeIsland(nextIsland: IslandCode) {
+    requestRef.current?.abort();
+    setIsland(nextIsland);
+    setMessages([]);
+    setError(null);
+  }
 
   async function send(messageOverride?: string) {
     const text = (messageOverride ?? draft).trim();
@@ -127,9 +138,16 @@ export function HeritageConcierge({
 
   return (
     <section className="fixed inset-0 z-[9998] flex flex-col overflow-hidden bg-[#061c1b] text-white sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(700px,calc(100vh-48px))] sm:w-[430px] sm:rounded-[30px] sm:border sm:border-white/10 sm:shadow-[0_35px_100px_rgba(0,0,0,.55)]" role="dialog" aria-modal="true" aria-label="VI Guide Heritage Concierge">
-      <header className="flex items-start justify-between border-b border-white/10 bg-[#082b29] px-5 pb-4 pt-[max(18px,env(safe-area-inset-top))] sm:p-5">
-        <div className="flex gap-3"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#f5c451] text-[#043331]"><Sparkles size={20} /></span><div><h2 className="font-black">Heritage Concierge</h2><p className="mt-1 text-xs text-white/45">Reviewed {islandName} records · uncertainty labeled</p></div></div>
-        <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-xl text-white/45 hover:bg-white/10 hover:text-white" aria-label="Close Heritage Concierge"><X size={18} /></button>
+      <header className="border-b border-white/10 bg-[#082b29] px-5 pb-4 pt-[max(18px,env(safe-area-inset-top))] sm:p-5">
+        <div className="flex items-start justify-between">
+          <div className="flex gap-3"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#f5c451] text-[#043331]"><Sparkles size={20} /></span><div><h2 className="font-black">Heritage Concierge</h2><p className="mt-1 text-xs text-white/45">Reviewed {islandName} records · uncertainty labeled</p></div></div>
+          <button type="button" onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-xl text-white/45 hover:bg-white/10 hover:text-white" aria-label="Close Heritage Concierge"><X size={18} /></button>
+        </div>
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {(Object.keys(ISLANDS) as IslandCode[]).map((code) => (
+            <button key={code} type="button" disabled={loading} onClick={() => changeIsland(code)} className={`rounded-xl px-2 py-2 text-[10px] font-black transition ${island === code ? "bg-[#f5c451] text-[#043331]" : "border border-white/10 bg-white/[.04] text-white/50 hover:text-white"}`}>{ISLANDS[code]}</button>
+          ))}
+        </div>
       </header>
 
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-5" aria-live="polite">
@@ -141,7 +159,7 @@ export function HeritageConcierge({
         {error ? <div className="rounded-2xl border border-rose-300/20 bg-rose-300/[.07] p-3 text-xs text-rose-100">{error}</div> : null}
       </div>
 
-      <footer className="border-t border-white/10 bg-[#082522] px-4 pb-[max(14px,env(safe-area-inset-bottom))] pt-4 sm:p-4"><form onSubmit={submit} className="flex items-end gap-2"><textarea value={draft} onChange={(event) => setDraft(event.target.value)} rows={1} maxLength={3000} disabled={loading} placeholder="Ask about a historic place or route…" className="max-h-28 min-h-12 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[.06] px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-amber-200/35" /><button type="submit" disabled={!draft.trim() || loading} className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5c451] text-[#043331] disabled:opacity-35" aria-label="Send heritage question"><Send size={18} /></button></form><p className="mt-2 text-center text-[9px] text-white/25">Reviewed records guide the answer. Missing evidence is labeled, not invented.</p></footer>
+      <footer className="border-t border-white/10 bg-[#082522] px-4 pb-[max(14px,env(safe-area-inset-bottom))] pt-4 sm:p-4"><form onSubmit={submit} className="flex items-end gap-2"><textarea value={draft} onChange={(event) => setDraft(event.target.value)} rows={1} maxLength={3000} disabled={loading} placeholder={`Ask about ${islandName} heritage…`} className="max-h-28 min-h-12 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[.06] px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-amber-200/35" /><button type="submit" disabled={!draft.trim() || loading} className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f5c451] text-[#043331] disabled:opacity-35" aria-label="Send heritage question"><Send size={18} /></button></form><p className="mt-2 text-center text-[9px] text-white/25">Reviewed records guide the answer. Missing evidence is labeled, not invented.</p></footer>
     </section>
   );
 }
