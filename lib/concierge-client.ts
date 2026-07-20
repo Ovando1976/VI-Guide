@@ -11,28 +11,66 @@ export type UnifiedConciergeReply = ConciergeReply & {
   };
 };
 
+type EvidenceResponse = {
+  query: string;
+  island: string;
+  count: number;
+  evidence: ConciergeDirectoryEvidence[];
+};
+
 export async function requestUnifiedConcierge(
   body: ConciergeChatRequest,
   signal?: AbortSignal,
 ): Promise<UnifiedConciergeReply> {
-  const response = await fetch("/api/concierge/chat-unified", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-    signal,
+  const evidenceParams = new URLSearchParams({
+    q: body.message,
+    island: body.context.island,
+    limit: "12",
   });
 
-  const payload = (await response.json().catch(() => null)) as
-    | UnifiedConciergeReply
+  if (body.context.selectedEstate?.geoid) {
+    evidenceParams.set("estateGeoid", body.context.selectedEstate.geoid);
+  }
+
+  const [chatResponse, evidenceResponse] = await Promise.all([
+    fetch("/api/concierge/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      signal,
+    }),
+    fetch(`/api/concierge/evidence?${evidenceParams.toString()}`, {
+      method: "GET",
+      cache: "no-store",
+      signal,
+    }).catch(() => null),
+  ]);
+
+  const chatPayload = (await chatResponse.json().catch(() => null)) as
+    | ConciergeReply
     | { error?: string }
     | null;
 
-  if (!response.ok || !payload || !("message" in payload)) {
-    const message = payload && "error" in payload ? payload.error : null;
+  if (!chatResponse.ok || !chatPayload || !("message" in chatPayload)) {
+    const message = chatPayload && "error" in chatPayload ? chatPayload.error : null;
     throw new Error(message || "The concierge could not respond.");
   }
 
-  return payload;
+  let evidencePayload: EvidenceResponse | null = null;
+  if (evidenceResponse?.ok) {
+    evidencePayload = (await evidenceResponse.json().catch(() => null)) as EvidenceResponse | null;
+  }
+
+  const evidence = Array.isArray(evidencePayload?.evidence) ? evidencePayload.evidence : [];
+
+  return {
+    ...chatPayload,
+    evidence,
+    evidenceMeta: {
+      query: body.message,
+      island: body.context.island,
+      count: evidence.length,
+      kinds: Array.from(new Set(evidence.map((item) => item.type))),
+    },
+  };
 }
