@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BadgeCheck, BedDouble, ExternalLink, MapPin, Phone, ShieldCheck, Sparkles, Waves } from "lucide-react";
 import { TagPill } from "@/components/directory/tag-pill";
+import { PlaceActionBar } from "@/components/place/place-action-bar";
 import { StayActionCard } from "@/components/stay-action-card";
 import { getAccommodationBySlug } from "@/lib/accommodations";
 
@@ -16,6 +17,8 @@ export default async function AccommodationDetailPage({ params }: Props) {
 
   const islandName = ISLAND_NAMES[item.island];
   const highlights = Array.from(new Set([item.category, item.location, ...(item.bestFor ?? []), ...item.tags])).filter(Boolean).slice(0, 8) as string[];
+  const mapParams = new URLSearchParams({ island: item.island.toUpperCase(), focus: item.slug });
+  const rideParams = new URLSearchParams({ island: item.island.toUpperCase(), destination: item.name });
 
   return (
     <main className="stay-detail min-h-screen bg-[#f8f4ea] pb-36 text-[#043331]">
@@ -41,6 +44,15 @@ export default async function AccommodationDetailPage({ params }: Props) {
             </div>
           </div>
         </section>
+
+        <PlaceActionBar
+          className="relative z-10 mx-2 -mt-5 sm:mx-5"
+          name={item.name}
+          island={islandName}
+          mapHref={`/map?${mapParams.toString()}`}
+          rideHref={`/mobility?${rideParams.toString()}`}
+          website={item.website}
+        />
 
         <div className="mt-7 grid gap-7 lg:grid-cols-[minmax(0,1.15fr)_minmax(330px,.85fr)] lg:items-start">
           <div className="space-y-7">
