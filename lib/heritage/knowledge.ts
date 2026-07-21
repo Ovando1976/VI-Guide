@@ -1,5 +1,5 @@
 import { TERRITORY_TIMELINE_EVENTS } from "@/data/heritage/territory-timeline";
-import { USVI_GOVERNORS } from "@/data/heritage/usvi-governors";
+import { VIRGIN_ISLANDS_GOVERNORS } from "@/data/heritage/virgin-islands-governors";
 import { getTravelKnowledge } from "@/lib/travel-knowledge";
 import type { DirectoryIsland, DirectoryItem } from "@/types/directory";
 
@@ -61,9 +61,7 @@ function compact(values: Array<string | null | undefined>) {
   return Array.from(new Set(values.map((value) => value?.trim()).filter(Boolean))) as string[];
 }
 
-export function historicDirectoryItemToHeritageRecord(
-  item: DirectoryItem,
-): HeritageRecord {
+export function historicDirectoryItemToHeritageRecord(item: DirectoryItem): HeritageRecord {
   const images = compact([item.heroImage, ...(item.images ?? [])]);
   const map =
     typeof item.lat === "number" && typeof item.lng === "number"
@@ -132,15 +130,23 @@ function timelineEventToHeritageRecord(
 }
 
 function governorToHeritageRecord(
-  governor: (typeof USVI_GOVERNORS)[number],
+  governor: (typeof VIRGIN_ISLANDS_GOVERNORS)[number],
 ): HeritageRecord {
+  const island: DirectoryIsland | undefined =
+    governor.scope === "st_thomas"
+      ? "stt"
+      : governor.scope === "st_croix"
+        ? "stx"
+        : undefined;
+
   return {
     id: `governor:${governor.id}`,
     slug: governor.id,
     title: governor.name,
     type: "government",
-    summary: governor.summary,
-    category: governor.era,
+    summary: governor.note ?? `${governor.office}, serving ${governor.termStart} to ${governor.termEnd ?? "present"}.`,
+    island,
+    category: governor.authority,
     dateStart: governor.termStart,
     dateEnd: governor.termEnd ?? undefined,
     images: [],
@@ -148,11 +154,10 @@ function governorToHeritageRecord(
     relatedRecordIds: [],
     sources: [],
     searchTerms: compact([
-      governor.title,
-      governor.termLabel,
-      governor.party,
-      governor.appointedBy,
-      ...governor.milestones,
+      governor.office,
+      governor.scope,
+      governor.authority,
+      governor.acting ? "acting interim" : undefined,
     ]),
     href: `/heritage/governors#${governor.id}`,
     provenance: {
@@ -172,7 +177,7 @@ export function getHeritageTimelineRecords(): HeritageRecord[] {
 }
 
 export function getHeritageGovernorRecords(): HeritageRecord[] {
-  return USVI_GOVERNORS.map(governorToHeritageRecord);
+  return VIRGIN_ISLANDS_GOVERNORS.map(governorToHeritageRecord);
 }
 
 export function getAllHeritageRecords(): HeritageRecord[] {
