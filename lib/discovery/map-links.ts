@@ -76,7 +76,6 @@ export function buildDirectoryMapHref(
     lng: item.lng,
     location: item.address,
     description: item.description,
-    rating: item.rating,
     estateGeoid: item.estateGeoid,
   });
 }
