@@ -1,7 +1,5 @@
 "use client";
 
-import { ViBrandMark } from "@/components/brand/vi-brand-mark";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -11,15 +9,19 @@ import {
   Landmark,
   Map,
   Navigation,
+  Search,
   Sparkles,
   Waves,
 } from "lucide-react";
 import clsx from "clsx";
+
 import { AccountMenu } from "@/components/account-menu";
+import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 
 const ITEMS = [
   { href: "/", label: "Home", icon: House },
   { href: "/map", label: "Map", icon: Map },
+  { href: "/search", label: "Search", icon: Search },
   { href: "/concierge", label: "Concierge", icon: Sparkles },
   { href: "/places", label: "Explore", icon: Compass },
   { href: "/beaches", label: "Beaches", icon: Waves },
@@ -28,27 +30,41 @@ const ITEMS = [
   { href: "/mobility", label: "Ride", icon: Navigation },
 ] as const;
 
+function isActive(pathname: string, href: (typeof ITEMS)[number]["href"]) {
+  if (href === "/") return pathname === "/";
+
+  if (href === "/heritage") {
+    return (
+      pathname === "/heritage" ||
+      pathname.startsWith("/heritage/") ||
+      pathname === "/historic" ||
+      pathname.startsWith("/historic/") ||
+      pathname === "/history" ||
+      pathname.startsWith("/history/")
+    );
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function AppNavigation() {
   const pathname = usePathname();
   if (pathname === "/login" || pathname === "/unauthorized") return null;
 
   return (
     <nav aria-label="Primary navigation" className="app-nav">
-      <div
+      <Link
+        href="/"
         className="app-nav__brand"
-        aria-hidden="true"
+        aria-label="VI Guide home"
         style={{ background: "transparent", border: 0, boxShadow: "none" }}
       >
         <ViBrandMark className="h-9 w-9 shrink-0" />
-      </div>
+      </Link>
+
       {ITEMS.map(({ href, label, icon: Icon }) => {
-        const active =
-          href === "/"
-            ? pathname === "/"
-            : pathname === href ||
-              pathname.startsWith(`${href}/`) ||
-              (href === "/heritage" &&
-                (pathname === "/historic" || pathname.startsWith("/historic/")));
+        const active = isActive(pathname, href);
+
         return (
           <Link
             key={href}
@@ -61,6 +77,7 @@ export function AppNavigation() {
           </Link>
         );
       })}
+
       <AccountMenu embedded />
     </nav>
   );
