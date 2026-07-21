@@ -37,6 +37,8 @@ export function RoutePreviewMap({ island, fromEstate, toEstate }: Props) {
 
     if (!fromEstate || !toEstate) return;
 
+    const originPoint = fromEstate.internalPoint;
+    const destinationPoint = toEstate.internalPoint;
     const controller = new AbortController();
 
     async function loadRoute() {
@@ -46,8 +48,8 @@ export function RoutePreviewMap({ island, fromEstate, toEstate }: Props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            from: fromEstate.internalPoint,
-            to: toEstate.internalPoint,
+            from: originPoint,
+            to: destinationPoint,
           }),
           signal: controller.signal,
         });
