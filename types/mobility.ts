@@ -111,6 +111,12 @@ export type RideBooking = {
   notes?: string;
   createdAt?: string;
   updatedAt?: string;
+  matchedAt?: string | { seconds?: number; nanoseconds?: number };
+  driverEnRouteAt?: string | { seconds?: number; nanoseconds?: number };
+  arrivedAt?: string | { seconds?: number; nanoseconds?: number };
+  startedAt?: string | { seconds?: number; nanoseconds?: number };
+  completedAt?: string | { seconds?: number; nanoseconds?: number };
+  cancelledAt?: string | { seconds?: number; nanoseconds?: number };
   payout?: {
     grossFare: number;
     commissionRate: number;
