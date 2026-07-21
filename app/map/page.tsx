@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
 
@@ -13,7 +14,9 @@ const ExplorerMapScreen = dynamic(
 export default function MapPage() {
   return (
     <>
-      <MapIntelligenceBridge />
+      <Suspense fallback={null}>
+        <MapIntelligenceBridge />
+      </Suspense>
       <ExplorerMapScreen />
     </>
   );
