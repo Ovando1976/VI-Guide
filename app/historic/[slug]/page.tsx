@@ -41,7 +41,6 @@ export default function HistoricDetailPage({
     lng: site.lng,
     location: site.address,
     description: site.description,
-    rating: site.rating,
     estateGeoid: site.estateGeoid,
   });
   const rideParams = new URLSearchParams({ island: site.island, destination: site.name });
