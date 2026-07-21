@@ -24,10 +24,15 @@ import {
   askViIntelligence,
   feedIntelligenceContext,
 } from "@/lib/intelligence/client";
+import {
+  createJourneyPlan,
+  upsertJourneyPlan,
+} from "@/lib/journey-planner";
 import type { ConciergeContext, ConciergeMessage } from "@/types/concierge";
 import type {
   IntelligenceAction,
   IntelligenceLocation,
+  IntelligencePlanStop,
   IntelligenceResponse,
 } from "@/types/intelligence";
 
@@ -38,10 +43,10 @@ type Props = {
   onSetDestination: (geoid: string) => void;
   placement?: "left" | "right";
   initiallyOpen?: boolean;
+  initialPrompt?: string;
 };
 
 const STORAGE_KEY = "vi-guide-concierge-v2";
-const SAVED_PLAN_KEY = "vi-guide.intelligence.saved-plans";
 const STARTER_PROMPTS = [
   "Plan a relaxed half-day near me",
   "Plan my day after the cruise",
@@ -75,15 +80,6 @@ function estateLocation(
     : undefined;
 }
 
-function readSavedPlans() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(SAVED_PLAN_KEY) ?? "[]");
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
 export function ViConcierge({
   context,
   onSelectEstate,
@@ -91,6 +87,7 @@ export function ViConcierge({
   onSetDestination,
   placement = "right",
   initiallyOpen = false,
+  initialPrompt = "",
 }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(initiallyOpen);
@@ -104,6 +101,7 @@ export function ViConcierge({
   );
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const submittedInitialPrompt = useRef<string | null>(null);
 
   useEffect(() => {
     setOpen((current) => current || initiallyOpen);
@@ -228,24 +226,36 @@ export function ViConcierge({
     }
   }
 
+  useEffect(() => {
+    const prompt = initialPrompt.trim();
+    if (
+      !prompt ||
+      !messages.length ||
+      loading ||
+      submittedInitialPrompt.current === prompt
+    ) {
+      return;
+    }
+    submittedInitialPrompt.current = prompt;
+    setOpen(true);
+    void sendMessage(prompt);
+    // sendMessage intentionally uses the latest live concierge context.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialPrompt, loading, messages.length]);
+
   function executeAction(action: IntelligenceAction) {
     if (action.requiresConfirmation && action.type !== "save_plan") return;
 
-    if (action.type === "save_plan" && action.payload?.plan) {
-      const saved = readSavedPlans();
-      localStorage.setItem(
-        SAVED_PLAN_KEY,
-        JSON.stringify([
-          ...saved,
-          {
-            id: createId("plan"),
-            createdAt: new Date().toISOString(),
-            island: context.island,
-            plan: action.payload.plan,
-          },
-        ]),
-      );
-      window.dispatchEvent(new Event("vi-guide-intelligence-plan-saved"));
+    if (action.type === "save_plan" && Array.isArray(action.payload?.plan)) {
+      const generated = action.payload.plan as IntelligencePlanStop[];
+      const journey = createJourneyPlan(context.island, "Smart Concierge plan");
+      upsertJourneyPlan({
+        ...journey,
+        status: "ready",
+        plan: generated,
+        notes: "Created by VI Guide Smart Concierge from grounded app data.",
+      });
+      router.push("/planner");
     } else if (action.href) {
       router.push(action.href);
     }
@@ -258,6 +268,7 @@ export function ViConcierge({
     setResponse(null);
     setCompletedActions(new Set());
     setError(null);
+    submittedInitialPrompt.current = null;
   }
 
   function submit(event: FormEvent<HTMLFormElement>) {
