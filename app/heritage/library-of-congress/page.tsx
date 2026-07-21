@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
-  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
   Image as ImageIcon,
   Landmark,
   Loader2,
   Search,
+  X,
+  ZoomIn,
 } from "lucide-react";
 
 type Island = "all" | "stt" | "stx" | "stj" | "unknown";
@@ -65,6 +68,7 @@ export default function LibraryOfCongressGalleryPage() {
   const [loading, setLoading] = useState(true);
   const [loadedPages, setLoadedPages] = useState(0);
   const [error, setError] = useState("");
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -145,6 +149,41 @@ export default function LibraryOfCongressGalleryPage() {
     return counts;
   }, [items]);
 
+  const selectedIndex = selectedItem
+    ? visibleItems.findIndex((item) => item.id === selectedItem.id)
+    : -1;
+
+  function showPrevious() {
+    if (selectedIndex < 0 || !visibleItems.length) return;
+    const nextIndex = (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
+    setSelectedItem(visibleItems[nextIndex]);
+  }
+
+  function showNext() {
+    if (selectedIndex < 0 || !visibleItems.length) return;
+    const nextIndex = (selectedIndex + 1) % visibleItems.length;
+    setSelectedItem(visibleItems[nextIndex]);
+  }
+
+  useEffect(() => {
+    if (!selectedItem) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setSelectedItem(null);
+      if (event.key === "ArrowLeft") showPrevious();
+      if (event.key === "ArrowRight") showNext();
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedItem, selectedIndex, visibleItems]);
+
   return (
     <main className="min-h-screen bg-[#f5efe2] pb-36 text-[#092f2d]">
       <header className="overflow-hidden bg-[radial-gradient(circle_at_12%_10%,rgba(245,196,81,.25),transparent_30%),linear-gradient(145deg,#062d2c,#07524d)] text-white">
@@ -182,29 +221,18 @@ export default function LibraryOfCongressGalleryPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
         <div className="rounded-[28px] border border-[#0b4b46]/10 bg-white p-5 shadow-[0_18px_50px_rgba(4,51,49,.07)] sm:p-7">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center">
-            <label className="relative flex-1">
-              <Search
-                className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#075e58]/45"
-                size={20}
-              />
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search people, places, institutions, estates, work, streets…"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] pl-12 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
-              />
-            </label>
-
-            <a
-              href={metadata?.sourceUrl || "https://www.loc.gov/item/13655408/"}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#043331] px-5 text-xs font-black uppercase tracking-[.15em] text-white"
-            >
-              Original LOC lot record <ExternalLink size={15} />
-            </a>
-          </div>
+          <label className="relative block">
+            <Search
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#075e58]/45"
+              size={20}
+            />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search people, places, institutions, estates, work, streets…"
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] pl-12 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
+            />
+          </label>
 
           <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
             {(Object.keys(ISLAND_LABELS) as Island[]).map((key) => (
@@ -227,9 +255,8 @@ export default function LibraryOfCongressGalleryPage() {
         <div className="mt-6 rounded-[24px] border border-amber-900/10 bg-[#fff9e8] px-5 py-4 text-sm font-semibold leading-6 text-[#5f4b1e]">
           <strong>Collection scope:</strong> the Library of Congress lot record describes
           461 photographic prints and 452 indexed records. This page loads every
-          digitized item returned by the Library&apos;s public API. Some physical prints may
-          not have a separate online image record. Historical captions are preserved,
-          with VI Guide corrections shown where a caption is known to be inaccurate.
+          digitized item returned by the Library&apos;s public API. Tap any photograph to
+          open a large, immersive view and move through the collection.
         </div>
 
         {loading ? (
@@ -255,7 +282,7 @@ export default function LibraryOfCongressGalleryPage() {
             </h2>
           </div>
           <p className="hidden text-sm font-semibold text-slate-500 sm:block">
-            Source: Library of Congress · FSA/OWI
+            Tap a photograph to enlarge
           </p>
         </div>
 
@@ -267,15 +294,23 @@ export default function LibraryOfCongressGalleryPage() {
                 key={item.id}
                 className="mb-5 break-inside-avoid overflow-hidden rounded-[26px] border border-[#0b4b46]/10 bg-white shadow-[0_18px_50px_rgba(4,51,49,.08)]"
               >
-                <a href={item.sourceUrl} target="_blank" rel="noreferrer">
+                <button
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className="group relative block w-full cursor-zoom-in overflow-hidden text-left"
+                  aria-label={`Enlarge ${item.title}`}
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.imageUrl}
                     alt={item.title}
                     loading="lazy"
-                    className="h-auto w-full bg-[#d9d1c1] object-cover"
+                    className="h-auto w-full bg-[#d9d1c1] object-cover transition duration-500 group-hover:scale-[1.025]"
                   />
-                </a>
+                  <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-2 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur">
+                    <ZoomIn size={13} /> Enlarge
+                  </span>
+                </button>
                 <div className="p-5">
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-[9px] font-black uppercase tracking-[.17em] text-amber-700">
@@ -304,14 +339,13 @@ export default function LibraryOfCongressGalleryPage() {
                     </div>
                   ) : null}
 
-                  <a
-                    href={item.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => setSelectedItem(item)}
                     className="mt-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-[#075e58]"
                   >
-                    View source record <ExternalLink size={13} />
-                  </a>
+                    View enlarged image <ZoomIn size={13} />
+                  </button>
                 </div>
               </article>
             );
@@ -334,7 +368,7 @@ export default function LibraryOfCongressGalleryPage() {
           </p>
           <p className="mt-3 max-w-4xl text-sm font-semibold leading-7 text-white/72">
             {metadata?.rightsSummary ||
-              "The FSA/OWI black-and-white negatives are public domain. Each Library of Congress item record remains the controlling source for rights and attribution details."}
+              "The FSA/OWI black-and-white negatives are public domain. Library of Congress attribution is preserved with every image."}
           </p>
           <p className="mt-4 text-xs font-bold text-white/50">
             Credit: Library of Congress, Prints & Photographs Division, Farm Security
@@ -342,6 +376,97 @@ export default function LibraryOfCongressGalleryPage() {
           </p>
         </div>
       </section>
+
+      {selectedItem ? (
+        <div
+          className="fixed inset-0 z-[3000] flex items-center justify-center bg-[#031716]/95 p-3 backdrop-blur-md sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedItem.title}
+          onClick={() => setSelectedItem(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedItem(null)}
+            className="absolute right-4 top-4 z-20 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur hover:bg-black/65"
+            aria-label="Close enlarged image"
+          >
+            <X size={22} />
+          </button>
+
+          {visibleItems.length > 1 ? (
+            <>
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPrevious();
+                }}
+                className="absolute left-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur hover:bg-black/65 sm:left-6"
+                aria-label="Previous photograph"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNext();
+                }}
+                className="absolute right-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur hover:bg-black/65 sm:right-6"
+                aria-label="Next photograph"
+              >
+                <ChevronRight size={28} />
+              </button>
+            </>
+          ) : null}
+
+          <div
+            className="flex max-h-[94vh] w-full max-w-7xl flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#071f1e] shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex min-h-0 flex-1 items-center justify-center bg-black/35 p-2 sm:p-5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={selectedItem.imageUrl}
+                alt={selectedItem.title}
+                className="max-h-[72vh] max-w-full object-contain"
+              />
+            </div>
+            <div className="border-t border-white/10 bg-[#071f1e] px-5 py-4 text-white sm:px-7 sm:py-5">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="max-w-4xl">
+                  <p className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">
+                    {ISLAND_LABELS[inferIsland(selectedItem)]} · {selectedItem.date || "1941"}
+                  </p>
+                  <h2 className="mt-2 text-xl font-black tracking-[-.03em] sm:text-2xl">
+                    {selectedItem.title}
+                  </h2>
+                  {selectedItem.location.length ? (
+                    <p className="mt-2 text-xs font-semibold text-white/60">
+                      {selectedItem.location.slice(0, 4).join(" · ")}
+                    </p>
+                  ) : null}
+                </div>
+                <p className="text-xs font-bold text-white/45">
+                  {selectedIndex + 1} of {visibleItems.length}
+                </p>
+              </div>
+              <p className="mt-3 text-xs font-semibold leading-5 text-white/55">
+                {selectedItem.creator || "Jack Delano"}
+                {selectedItem.reproductionNumber
+                  ? ` · ${selectedItem.reproductionNumber}`
+                  : ""}
+              </p>
+              {selectedItem.editorialNote ? (
+                <div className="mt-4 rounded-2xl border border-amber-200/20 bg-amber-50/10 p-3 text-xs font-semibold leading-5 text-amber-100">
+                  <strong>VI Guide correction:</strong> {selectedItem.editorialNote}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
