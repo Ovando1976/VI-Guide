@@ -1,0 +1,271 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-21",
+  "statusValues": [
+    "missing",
+    "candidate_found",
+    "needs_verification",
+    "approved",
+    "in_use",
+    "rejected",
+    "replace_with_higher_quality"
+  ],
+  "rightsStatusValues": [
+    "public_domain",
+    "government_work",
+    "permission_required",
+    "licensed",
+    "needs_verification"
+  ],
+  "governors": [
+    {
+      "id": "melvin-h-evans",
+      "name": "Melvin H. Evans",
+      "sequence": 1,
+      "termLabel": "1970–1975",
+      "islandConnection": "St. Croix",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/governor/melvin-herbert-evans/",
+      "preferredImageType": "official_or_archival_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "First elected Governor of the U.S. Virgin Islands. Prioritize an official Government House portrait if available; use NGA only as a research lead until reuse terms are confirmed."
+    },
+    {
+      "id": "cyril-e-king",
+      "name": "Cyril E. King",
+      "sequence": 2,
+      "termLabel": "1975–1978",
+      "islandConnection": "St. Croix",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/governor/cyril-emmanuel-king/",
+      "preferredImageType": "official_or_archival_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Official portrait should be preferred over a biography-page thumbnail."
+    },
+    {
+      "id": "juan-f-luis",
+      "name": "Juan F. Luis",
+      "sequence": 3,
+      "termLabel": "1978–1987",
+      "islandConnection": "St. Croix",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/governor/juan-francisco-luis/",
+      "preferredImageType": "official_or_archival_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Confirm whether Government House or the Juan F. Luis Hospital archive has a reusable official portrait."
+    },
+    {
+      "id": "alexander-a-farrelly",
+      "name": "Alexander A. Farrelly",
+      "sequence": 4,
+      "termLabel": "1987–1995",
+      "islandConnection": "St. Thomas",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/former-governors/virgin-islands/",
+      "preferredImageType": "official_or_archival_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Locate the highest-resolution official portrait and a secondary image connected to public service."
+    },
+    {
+      "id": "roy-l-schneider",
+      "name": "Roy L. Schneider",
+      "sequence": 5,
+      "termLabel": "1995–1999",
+      "islandConnection": "St. Thomas",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.vi.gov/official-portraits-of-former-governors-unveiled/",
+      "preferredImageType": "official_painted_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Government House documented an official portrait painted by local artist Shansi Miller. Confirm permission for digital reproduction."
+    },
+    {
+      "id": "charles-w-turnbull",
+      "name": "Charles W. Turnbull",
+      "sequence": 6,
+      "termLabel": "1999–2007",
+      "islandConnection": "St. Thomas",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.vi.gov/official-portraits-of-former-governors-unveiled/",
+      "preferredImageType": "official_painted_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Government House documented an official portrait painted by local artist Shansi Miller. Confirm permission for digital reproduction."
+    },
+    {
+      "id": "john-p-de-jongh-jr",
+      "name": "John P. de Jongh Jr.",
+      "sequence": 7,
+      "termLabel": "2007–2015",
+      "islandConnection": "St. Thomas",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/former-governors/virgin-islands/",
+      "preferredImageType": "official_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Prioritize an official administration portrait with explicit reuse permission."
+    },
+    {
+      "id": "kenneth-e-mapp",
+      "name": "Kenneth E. Mapp",
+      "sequence": 8,
+      "termLabel": "2015–2019",
+      "islandConnection": "St. Croix",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nga.org/former-governors/virgin-islands/",
+      "preferredImageType": "official_portrait",
+      "rightsStatus": "needs_verification",
+      "notes": "Prioritize an official Government House portrait and a contextual administration-era image."
+    },
+    {
+      "id": "albert-bryan-jr",
+      "name": "Albert Bryan Jr.",
+      "sequence": 9,
+      "termLabel": "2019–present",
+      "islandConnection": "St. Croix",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.vi.gov/governor-bryan/",
+      "preferredImageType": "current_official_portrait",
+      "rightsStatus": "government_work",
+      "notes": "Use the official current portrait from Government House only after confirming the page asset and attribution requirements."
+    }
+  ],
+  "unsungHeroes": [
+    {
+      "id": "david-hamilton-jackson",
+      "name": "David Hamilton Jackson",
+      "island": "stx",
+      "community": "Christiansted",
+      "contributionAreas": ["labor", "civil_rights", "journalism", "public_service"],
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nps.gov/chri/learn/historyculture/people.htm",
+      "preferredImageTypes": ["archival_portrait", "speech_or_public_life", "memorial_or_bust"],
+      "rightsStatus": "needs_verification",
+      "notes": "NPS identifies a 1915 Copenhagen speech image credited to the Danish Workers Library and Archives. Preserve that credit and verify reuse terms before publication."
+    },
+    {
+      "id": "rothschild-francis",
+      "name": "Rothschild Francis",
+      "island": "stt",
+      "community": "Charlotte Amalie",
+      "contributionAreas": ["civil_rights", "journalism", "political_reform"],
+      "imageStatus": "missing",
+      "sourceCandidate": "",
+      "preferredImageTypes": ["archival_portrait", "newspaper_or_document", "public_life"],
+      "rightsStatus": "needs_verification",
+      "notes": "Research priority. Search UVI, WTJX, Government House, territorial archives, newspapers, and family collections."
+    },
+    {
+      "id": "myrah-keating-smith",
+      "name": "Myrah Keating Smith",
+      "island": "stj",
+      "community": "Cruz Bay",
+      "contributionAreas": ["healthcare", "community_service", "public_health"],
+      "imageStatus": "missing",
+      "sourceCandidate": "",
+      "preferredImageTypes": ["portrait", "clinic_context", "community_service"],
+      "rightsStatus": "needs_verification",
+      "notes": "Research priority. Contact the Myrah Keating Smith Community Health Center, Department of Health, St. John Historical Society, and family or community contributors."
+    },
+    {
+      "id": "athniel-addie-ottley",
+      "name": "Athniel “Addie” Ottley",
+      "island": "stt",
+      "community": "St. Thomas",
+      "contributionAreas": ["broadcasting", "public_service", "communications", "community_leadership"],
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://ltg.gov.vi/press-release/lieutenant-governor-roach-mourns-the-passing-of-virgin-islands-legend-athniel-addie-ottley/",
+      "preferredImageTypes": ["broadcast_portrait", "public_service", "studio_or_microphone"],
+      "rightsStatus": "needs_verification",
+      "notes": "Official government memorial page is a strong source lead. Also request images from WSTA, WTJX, Ottley Communications, UVI, and family representatives."
+    },
+    {
+      "id": "alton-augustus-adams-sr",
+      "name": "Alton Augustus Adams Sr.",
+      "island": "stt",
+      "community": "Charlotte Amalie",
+      "contributionAreas": ["music", "education", "public_service", "culture"],
+      "imageStatus": "missing",
+      "sourceCandidate": "",
+      "preferredImageTypes": ["formal_portrait", "bandmaster_context", "sheet_music_or_document"],
+      "rightsStatus": "needs_verification",
+      "notes": "Research UVI, military band archives, WTJX, Smithsonian-related collections, local museums, and family sources."
+    },
+    {
+      "id": "casper-holstein",
+      "name": "Casper Holstein",
+      "island": "stx",
+      "community": "St. Croix",
+      "contributionAreas": ["philanthropy", "business", "education", "diaspora"],
+      "imageStatus": "missing",
+      "sourceCandidate": "",
+      "preferredImageTypes": ["archival_portrait", "philanthropic_context", "document_or_newspaper"],
+      "rightsStatus": "needs_verification",
+      "notes": "Research UVI, Schomburg Center, New York Public Library, St. Croix historical collections, and family archives."
+    },
+    {
+      "id": "wilfred-bomba-allick-sr",
+      "name": "Wilfred “Bomba” Allick Sr.",
+      "island": "stx",
+      "community": "St. Croix",
+      "contributionAreas": ["maritime_history", "seafaring", "community_memory"],
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.uvi.edu/news/2026/issue_26_053.html",
+      "preferredImageTypes": ["primary_portrait", "maritime_context", "family_archive"],
+      "rightsStatus": "permission_required",
+      "notes": "UVI published a photograph with the 2026 book announcement. Because the image is likely family- or publisher-supplied, obtain explicit permission before app use."
+    },
+    {
+      "id": "julius-e-sprauve",
+      "name": "Julius E. Sprauve",
+      "island": "stj",
+      "community": "Cruz Bay",
+      "contributionAreas": ["education", "public_service", "community_leadership"],
+      "imageStatus": "missing",
+      "sourceCandidate": "",
+      "preferredImageTypes": ["portrait", "school_context", "public_service"],
+      "rightsStatus": "needs_verification",
+      "notes": "Research priority. Search the Department of Education, Julius E. Sprauve School, St. John Historical Society, WTJX, newspapers, and family collections."
+    }
+  ],
+  "supportImages": [
+    {
+      "id": "government-house-charlotte-amalie",
+      "title": "Government House, Charlotte Amalie",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.loc.gov/pictures/item/vi0043/",
+      "rightsStatus": "public_domain",
+      "notes": "HABS documentation indicates no known restrictions for U.S. Government images; verify the specific image record before download and attribution."
+    },
+    {
+      "id": "christiansted-d-hamilton-jackson-grounds",
+      "title": "Christiansted Grounds and D. Hamilton Jackson memorial",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.nps.gov/places/christiansted-grounds-d-hamilton-jackson.htm",
+      "rightsStatus": "government_work",
+      "notes": "Useful contextual image for the David Hamilton Jackson profile and map connection."
+    },
+    {
+      "id": "charlotte-amalie-1941-context",
+      "title": "Charlotte Amalie in 1941",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.loc.gov/item/2017797714/",
+      "rightsStatus": "public_domain",
+      "notes": "Jack Delano FSA/OWI image; verify the specific download record and attribution wording."
+    },
+    {
+      "id": "territory-1941-people-and-places",
+      "title": "Virgin Islands people and places, December 1941",
+      "imageStatus": "candidate_found",
+      "sourceCandidate": "https://www.loc.gov/item/13655408",
+      "rightsStatus": "public_domain",
+      "notes": "Broad candidate collection containing portraits of islanders, schools, clinics, public life, agriculture, and municipal activity. Use as one source among many, not as the dominant gallery."
+    }
+  ],
+  "editorialRules": [
+    "Do not publish an image until its rights status and credit line are recorded.",
+    "Prefer official, institutional, archival, family-authorized, or clearly public-domain sources.",
+    "Preserve distinctions between documented history and community recollection.",
+    "Store the source page URL, original creator or institution, date, and any reproduction identifier.",
+    "Use local family and community contributions only with explicit permission and contributor credit.",
+    "Do not treat a biography-page thumbnail as approved simply because it is publicly visible online.",
+    "Every person profile should have a primary portrait plus at least one contextual place, document, or activity image when possible."
+  ]
+}
