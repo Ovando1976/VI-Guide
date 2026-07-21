@@ -6,6 +6,7 @@ import {
   CalendarDays,
   Crown,
   Landmark,
+  Map as MapIcon,
   MapPin,
   Search,
   Sparkles,
@@ -14,8 +15,10 @@ import {
 
 import { TERRITORY_TIMELINE_EVENTS } from "@/data/heritage/territory-timeline";
 import { USVI_GOVERNORS } from "@/data/heritage/usvi-governors";
+import { buildDirectoryMapHref } from "@/lib/discovery/map-links";
 import { getTravelKnowledge, type TravelKnowledgeKind } from "@/lib/travel-knowledge";
 import type { DirectoryItem } from "@/types/directory";
+import type { TerritoryMapPlaceType } from "@/types/territory-map";
 
 type SearchKind = "all" | TravelKnowledgeKind | "timeline" | "governors";
 
@@ -51,11 +54,44 @@ const KINDS: Array<{ value: SearchKind; label: string }> = [
   { value: "governors", label: "Governors" },
 ];
 
-const KIND_CONFIG: Record<TravelKnowledgeKind, { label: string; href: (slug: string) => string; icon: typeof MapPin }> = {
-  places: { label: "Place", href: (slug) => `/places/${slug}`, icon: MapPin },
-  beaches: { label: "Beach", href: (slug) => `/beaches/${slug}`, icon: Waves },
-  stays: { label: "Stay", href: (slug) => `/accommodations/${slug}`, icon: BedDouble },
-  historic: { label: "Historic place", href: (slug) => `/historic/${slug}`, icon: Landmark },
+const KIND_CONFIG: Record<
+  TravelKnowledgeKind,
+  {
+    label: string;
+    href: (slug: string) => string;
+    icon: typeof MapPin;
+    mapType: TerritoryMapPlaceType;
+    lens: string;
+  }
+> = {
+  places: {
+    label: "Place",
+    href: (slug) => `/places/${slug}`,
+    icon: MapPin,
+    mapType: "place",
+    lens: "places",
+  },
+  beaches: {
+    label: "Beach",
+    href: (slug) => `/beaches/${slug}`,
+    icon: Waves,
+    mapType: "beach",
+    lens: "beaches",
+  },
+  stays: {
+    label: "Stay",
+    href: (slug) => `/accommodations/${slug}`,
+    icon: BedDouble,
+    mapType: "stay",
+    lens: "stays",
+  },
+  historic: {
+    label: "Historic place",
+    href: (slug) => `/historic/${slug}`,
+    icon: Landmark,
+    mapType: "historic",
+    lens: "historic",
+  },
 };
 
 type SearchParams = {
@@ -71,6 +107,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
   const selectedKind = isKind(requestedKind) ? requestedKind : "all";
   const island = normalizeIsland(searchParams.island);
   const results = searchEverything(query, selectedKind, island).slice(0, 80);
+  const mapHref = buildSearchMapHref(query, selectedKind, island);
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
@@ -115,7 +152,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
             <div className="text-[10px] font-black uppercase tracking-[.22em] text-amber-600">{query ? `Results for “${query}”` : "Explore the territory"}</div>
             <h2 className="mt-2 text-3xl font-black tracking-[-.04em] sm:text-4xl">{results.length} connected {results.length === 1 ? "result" : "results"}</h2>
           </div>
-          <Link href={`/map${query ? `?q=${encodeURIComponent(query)}` : ""}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] shadow-sm">See on map <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={mapHref} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] shadow-sm"><MapIcon className="h-4 w-4" /> See on map <ArrowRight className="h-4 w-4" /></Link>
         </div>
 
         {results.length ? (
@@ -142,19 +179,29 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
 function DirectoryResultCard({ item, kind }: { item: DirectoryItem; kind: TravelKnowledgeKind }) {
   const config = KIND_CONFIG[kind];
   const Icon = config.icon;
+  const detailHref = config.href(item.slug);
+  const mapHref = buildDirectoryMapHref(item, config.mapType);
+
   return (
-    <Link href={config.href(item.slug)} className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl">
-      <div className="relative h-52 bg-[#dce9e5] bg-cover bg-center" style={{ backgroundImage: `linear-gradient(180deg,transparent 45%,rgba(3,47,45,.68)),url('${item.heroImage}')` }}>
-        <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-2 text-[9px] font-black uppercase tracking-[.16em] text-[#043331] shadow-sm backdrop-blur"><Icon className="h-3.5 w-3.5" /> {config.label}</span>
-        <span className="absolute bottom-4 left-4 text-[10px] font-black uppercase tracking-[.18em] text-white">{formatIsland(item.island)}</span>
-      </div>
+    <article className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl">
+      <Link href={detailHref} className="block">
+        <div className="relative h-52 bg-[#dce9e5] bg-cover bg-center" style={{ backgroundImage: `linear-gradient(180deg,transparent 45%,rgba(3,47,45,.68)),url('${item.heroImage}')` }}>
+          <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-2 text-[9px] font-black uppercase tracking-[.16em] text-[#043331] shadow-sm backdrop-blur"><Icon className="h-3.5 w-3.5" /> {config.label}</span>
+          <span className="absolute bottom-4 left-4 text-[10px] font-black uppercase tracking-[.18em] text-white">{formatIsland(item.island)}</span>
+        </div>
+      </Link>
       <div className="p-6">
-        <h3 className="text-2xl font-black tracking-[-.035em]">{item.name}</h3>
-        <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-slate-600">{item.description}</p>
+        <Link href={detailHref} className="block">
+          <h3 className="text-2xl font-black tracking-[-.035em]">{item.name}</h3>
+          <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-slate-600">{item.description}</p>
+        </Link>
         <div className="mt-5 flex flex-wrap gap-2">{[item.category, ...item.tags].filter(Boolean).slice(0, 3).map((tag) => <span key={tag} className="rounded-full bg-[#edf6f2] px-3 py-2 text-[9px] font-black uppercase tracking-[.13em] text-[#075e58]">{tag}</span>)}</div>
-        <span className="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-teal-800">Open details <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+        <div className="mt-6 flex flex-wrap gap-2 border-t border-slate-100 pt-5">
+          <Link href={detailHref} className="inline-flex items-center gap-2 rounded-full bg-[#043331] px-4 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white">Open details <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={mapHref} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-[#fbfaf6] px-4 py-3 text-[10px] font-black uppercase tracking-[.16em] text-teal-800"><MapIcon className="h-4 w-4" /> View on map</Link>
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }
 
@@ -236,6 +283,19 @@ function searchEverything(query: string, selectedKind: SearchKind, island: strin
   }
 
   return results.sort((a, b) => b.score - a.score || getResultTitle(a).localeCompare(getResultTitle(b)));
+}
+
+function buildSearchMapHref(query: string, selectedKind: SearchKind, island: string | null) {
+  const params = new URLSearchParams();
+  if (island) params.set("island", island);
+  if (query) params.set("q", query);
+  if (selectedKind in KIND_CONFIG) {
+    params.set("lens", KIND_CONFIG[selectedKind as TravelKnowledgeKind].lens);
+  } else if (selectedKind === "timeline" || selectedKind === "governors") {
+    params.set("lens", "historic");
+  }
+  const suffix = params.toString();
+  return suffix ? `/map?${suffix}` : "/map";
 }
 
 function scoreText(values: Array<string | null | undefined>, terms: string[], featured = false) {
