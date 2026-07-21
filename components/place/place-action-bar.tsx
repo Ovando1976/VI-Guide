@@ -3,6 +3,7 @@ import { ExternalLink, Map, Navigation, Sparkles } from "lucide-react";
 
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import type { IntelligenceIsland } from "@/types/intelligence";
 
 type Props = {
   name: string;
@@ -26,6 +27,13 @@ export function PlaceActionBar({
   const conciergeHref = `/map?concierge=open&prompt=${encodeURIComponent(
     `Plan a complete island experience around ${name} on ${island}, including transportation, nearby places, timing, and a backup option.`,
   )}`;
+  const fallbackJourneyStop = buildFallbackJourneyStop({
+    name,
+    island,
+    mapHref,
+    rideHref,
+  });
+  const tripStop = journeyStop ?? fallbackJourneyStop;
 
   return (
     <section
@@ -35,12 +43,54 @@ export function PlaceActionBar({
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
         {rideHref ? <Action href={rideHref} icon={Navigation} label="Plan a ride" accent /> : null}
-        {journeyStop ? <AddToJourneyButton stop={journeyStop} /> : null}
+        <AddToJourneyButton stop={tripStop} />
         <Action href={conciergeHref} icon={Sparkles} label="Plan my day" />
         {website ? <Action href={website} icon={ExternalLink} label="Official website" external /> : null}
       </div>
     </section>
   );
+}
+
+function buildFallbackJourneyStop({
+  name,
+  island,
+  mapHref,
+  rideHref,
+}: {
+  name: string;
+  island: string;
+  mapHref?: string;
+  rideHref?: string;
+}): JourneyStopInput {
+  const islandCode = islandToCode(island);
+  const params = new URLSearchParams(mapHref?.split("?")[1] ?? "");
+  const id = params.get("place") || params.get("estate") || slugify(name);
+  const kind = params.get("placeType") || params.get("lens") || "place";
+
+  return {
+    id,
+    title: name,
+    island: islandCode,
+    kind,
+    summary: `Visit ${name} on ${island}. Review timing, transportation, and current conditions before the trip.`,
+    ...(mapHref ? { mapHref } : {}),
+    ...(rideHref ? { bookingHref: rideHref } : {}),
+  };
+}
+
+function islandToCode(value: string): IntelligenceIsland {
+  const normalized = value.trim().toLowerCase();
+  if (normalized === "stj" || normalized.includes("john")) return "stj";
+  if (normalized === "stx" || normalized.includes("croix")) return "stx";
+  return "stt";
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 120);
 }
 
 function Action({
