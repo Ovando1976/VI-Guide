@@ -2,6 +2,7 @@
 
 import { Cloud, CloudOff, Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import type { User } from "firebase/auth";
 
 import { useAuth } from "@/components/auth-provider";
 import {
@@ -13,6 +14,7 @@ import {
 } from "@/lib/journey-planner";
 
 type SyncState = "local" | "syncing" | "synced" | "error";
+type JourneyApiPayload = { plans?: unknown; error?: string };
 
 export function JourneyCloudSync() {
   const { user, loading: authLoading } = useAuth();
@@ -29,34 +31,35 @@ export function JourneyCloudSync() {
       return;
     }
 
+    const authenticatedUser = user;
     let cancelled = false;
 
     async function hydrate() {
       setState("syncing");
       setMessage("Syncing saved journeys…");
       try {
-        const token = await user.getIdToken();
+        const token = await authenticatedUser.getIdToken();
         const response = await fetch("/api/journeys", {
           headers: { Authorization: `Bearer ${token}` },
           cache: "no-store",
         });
-        const payload = (await response.json().catch(() => null)) as
-          | { plans?: unknown; error?: string }
-          | null;
+        const payload = (await response.json().catch(() => null)) as JourneyApiPayload | null;
         if (!response.ok) throw new Error(payload?.error || "Journey sync failed.");
-        const remote = Array.isArray(payload?.plans)
-          ? payload.plans.map(normalizeJourneyPlan).filter(isJourneyPlan)
+        const rawPlans = payload?.plans;
+        const remote = Array.isArray(rawPlans)
+          ? rawPlans.map(normalizeJourneyPlan).filter(isJourneyPlan)
           : [];
         const merged = mergePlans(readJourneyPlans(), remote);
         applyingRemote.current = true;
         writeJourneyPlans(merged);
         applyingRemote.current = false;
-        await push(user, merged);
+        await push(authenticatedUser, merged);
         if (!cancelled) {
           setState("synced");
           setMessage("Synced to your VI Guide account");
         }
       } catch (error) {
+        applyingRemote.current = false;
         if (!cancelled) {
           setState("error");
           setMessage(error instanceof Error ? error.message : "Journey sync failed.");
@@ -72,6 +75,7 @@ export function JourneyCloudSync() {
 
   useEffect(() => {
     if (!user) return;
+    const authenticatedUser = user;
 
     function schedulePush() {
       if (applyingRemote.current) return;
@@ -80,7 +84,7 @@ export function JourneyCloudSync() {
       setMessage("Saving journey…");
       timer.current = setTimeout(async () => {
         try {
-          await push(user, readJourneyPlans());
+          await push(authenticatedUser, readJourneyPlans());
           setState("synced");
           setMessage("Synced to your VI Guide account");
         } catch (error) {
@@ -97,7 +101,12 @@ export function JourneyCloudSync() {
     };
   }, [user]);
 
-  const Icon = state === "syncing" ? Loader2 : state === "error" || state === "local" ? CloudOff : Cloud;
+  const Icon =
+    state === "syncing"
+      ? Loader2
+      : state === "error" || state === "local"
+        ? CloudOff
+        : Cloud;
 
   return (
     <div
@@ -116,7 +125,7 @@ export function JourneyCloudSync() {
   );
 }
 
-async function push(user: NonNullable<ReturnType<typeof useAuth>["user"]>, plans: JourneyPlan[]) {
+async function push(user: User, plans: JourneyPlan[]) {
   const token = await user.getIdToken();
   const response = await fetch("/api/journeys", {
     method: "PUT",
