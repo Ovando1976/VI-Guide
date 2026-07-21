@@ -27,22 +27,29 @@ const PAGES = new Set<IntelligencePage>([
   "unknown",
 ]);
 
-function validIdentifier(value: unknown) {
+function validIdentifier(value: unknown): value is string {
   return typeof value === "string" && /^[a-zA-Z0-9_-]{8,120}$/.test(value);
 }
 
 function normalizeContext(value: unknown): IntelligenceContext | null {
   if (!value || typeof value !== "object") return null;
+
   const context = value as Partial<IntelligenceContext>;
-  if (!validIdentifier(context.sessionId)) return null;
-  if (!context.island || !ISLANDS.has(context.island)) return null;
-  if (!context.page || !PAGES.has(context.page)) return null;
+  const sessionId = context.sessionId;
+  const island = context.island;
+  const page = context.page;
+
+  if (!validIdentifier(sessionId)) return null;
+  if (!island || !ISLANDS.has(island)) return null;
+  if (!page || !PAGES.has(page)) return null;
 
   return {
-    sessionId: context.sessionId,
-    ...(typeof context.userId === "string" ? { userId: context.userId.slice(0, 160) } : {}),
-    page: context.page,
-    island: context.island,
+    sessionId,
+    ...(typeof context.userId === "string"
+      ? { userId: context.userId.slice(0, 160) }
+      : {}),
+    page,
+    island,
     now: typeof context.now === "string" ? context.now : new Date().toISOString(),
     timezone: "America/St_Thomas",
     ...(context.currentLocation ? { currentLocation: context.currentLocation } : {}),
