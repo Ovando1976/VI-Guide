@@ -100,10 +100,10 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em]">
-                  Local guide built in
+                  Curated local guidance
                 </span>
                 <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em]">
-                  Works without Firestore
+                  Ready with limited connectivity
                 </span>
               </div>
             </div>
@@ -173,7 +173,7 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
             <div>
               <div className="text-[10px] font-black uppercase tracking-[.23em] text-amber-600">Browse the guide</div>
               <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">Find the right {categoryLabel.toLowerCase()}</h2>
-              <p className="mt-2 text-sm font-semibold text-slate-500">Curated public travel knowledge loads instantly from the app.</p>
+              <p className="mt-2 text-sm font-semibold text-slate-500">Curated island knowledge is ready whenever you need it.</p>
             </div>
             <div className="flex max-w-full gap-2 overflow-x-auto pb-1" aria-label={`${categoryLabel} type`}>
               {["all", ...categories].map((value) => (
