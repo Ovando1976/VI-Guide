@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { runIntelligenceEngine } from "@/lib/intelligence/engine";
+import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -103,19 +104,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = runIntelligenceEngine({
+    const engineResult = runIntelligenceEngine({
       message,
       context,
       ...(Array.isArray(payload.capabilities)
         ? { capabilities: payload.capabilities.slice(0, 12) }
         : {}),
     });
+    const result = {
+      ...engineResult,
+      answer: buildGroundedAnswer(message, engineResult),
+    };
 
     return NextResponse.json(result, {
       headers: {
         "Cache-Control": "no-store",
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
+        "X-VI-Intelligence-Source": "vi-guide-knowledge-index",
       },
     });
   } catch (error) {
