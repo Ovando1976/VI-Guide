@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export const metadata: Metadata = {
   applicationName: "VI Guide",
@@ -43,6 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
+          <ScrollToTop />
           {children}
           <AppNavigation />
         </AuthProvider>
