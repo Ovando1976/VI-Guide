@@ -43,6 +43,9 @@ export function normalizeJourneyPlan(value: unknown): JourneyPlan | null {
   const island = normalizeIsland(candidate.island);
   if (!island) return null;
   const now = new Date().toISOString();
+  const stops = Array.isArray(candidate.plan)
+    ? candidate.plan.map(normalizeStop).filter(isJourneyStop)
+    : [];
 
   return {
     id: candidate.id.slice(0, 160),
@@ -61,21 +64,21 @@ export function normalizeJourneyPlan(value: unknown): JourneyPlan | null {
       typeof candidate.updatedAt === "string" ? candidate.updatedAt : now,
     status: candidate.status === "ready" ? "ready" : "draft",
     notes: typeof candidate.notes === "string" ? candidate.notes.slice(0, 2000) : "",
-    plan: Array.isArray(candidate.plan)
-      ? candidate.plan.map(normalizeStop).filter(Boolean) as IntelligencePlanStop[]
-      : [],
+    plan: stops,
   };
 }
 
 export function readJourneyPlans(): JourneyPlan[] {
   if (typeof window === "undefined") return [];
   try {
-    const parsed = JSON.parse(localStorage.getItem(JOURNEY_PLANS_STORAGE_KEY) ?? "[]");
+    const parsed: unknown = JSON.parse(
+      localStorage.getItem(JOURNEY_PLANS_STORAGE_KEY) ?? "[]",
+    );
     if (!Array.isArray(parsed)) return [];
     return parsed
       .map(normalizeJourneyPlan)
-      .filter(Boolean)
-      .sort((a, b) => b!.updatedAt.localeCompare(a!.updatedAt)) as JourneyPlan[];
+      .filter(isJourneyPlan)
+      .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   } catch {
     return [];
   }
@@ -110,8 +113,12 @@ export function buildJourneyMapHref(plan: JourneyPlan) {
     trip: plan.id,
     tripName: plan.title,
   });
-  const positioned = plan.plan.filter((stop) => stop.mapHref);
-  if (positioned[0]?.placeId) params.set("place", positioned[0].placeId);
+  const firstPositionedStop = plan.plan.find(
+    (stop) => Boolean(stop.mapHref) && Boolean(stop.placeId),
+  );
+  if (firstPositionedStop?.placeId) {
+    params.set("place", firstPositionedStop.placeId);
+  }
   return `/map?${params.toString()}`;
 }
 
@@ -134,13 +141,27 @@ function normalizeStop(value: unknown): IntelligencePlanStop | null {
     summary: typeof stop.summary === "string" ? stop.summary.slice(0, 1200) : "",
     ...(typeof stop.startTime === "string" ? { startTime: stop.startTime } : {}),
     ...(typeof stop.endTime === "string" ? { endTime: stop.endTime } : {}),
-    ...(typeof stop.durationMinutes === "number" ? { durationMinutes: stop.durationMinutes } : {}),
+    ...(typeof stop.durationMinutes === "number"
+      ? { durationMinutes: stop.durationMinutes }
+      : {}),
     ...(typeof stop.placeId === "string" ? { placeId: stop.placeId } : {}),
     ...(typeof stop.href === "string" ? { href: stop.href } : {}),
     ...(typeof stop.mapHref === "string" ? { mapHref: stop.mapHref } : {}),
-    ...(typeof stop.bookingHref === "string" ? { bookingHref: stop.bookingHref } : {}),
+    ...(typeof stop.bookingHref === "string"
+      ? { bookingHref: stop.bookingHref }
+      : {}),
     ...(stop.mobility ? { mobility: stop.mobility } : {}),
   };
+}
+
+function isJourneyPlan(value: JourneyPlan | null): value is JourneyPlan {
+  return value !== null;
+}
+
+function isJourneyStop(
+  value: IntelligencePlanStop | null,
+): value is IntelligencePlanStop {
+  return value !== null;
 }
 
 function createId(prefix: string) {
