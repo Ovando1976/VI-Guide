@@ -246,8 +246,9 @@ export function ViConcierge({
   function executeAction(action: IntelligenceAction) {
     if (action.requiresConfirmation && action.type !== "save_plan") return;
 
-    if (action.type === "save_plan" && Array.isArray(action.payload?.plan)) {
-      const generated = action.payload.plan as IntelligencePlanStop[];
+    const payload = action.payload;
+    if (action.type === "save_plan" && Array.isArray(payload?.plan)) {
+      const generated = payload.plan as IntelligencePlanStop[];
       const journey = createJourneyPlan(context.island, "Smart Concierge plan");
       upsertJourneyPlan({
         ...journey,
