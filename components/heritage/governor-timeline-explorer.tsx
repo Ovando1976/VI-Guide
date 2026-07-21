@@ -4,275 +4,234 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   ArrowLeft,
+  Building2,
   CalendarDays,
   Crown,
   Landmark,
   Search,
   Shield,
-  Vote,
+  Star,
 } from "lucide-react";
 
 import {
-  GOVERNOR_ERAS,
-  USVI_GOVERNORS,
-  type GovernorEra,
-} from "@/data/heritage/usvi-governors";
+  GOVERNOR_AUTHORITIES,
+  VIRGIN_ISLANDS_GOVERNORS,
+  type GovernorAuthority,
+} from "@/data/heritage/virgin-islands-governors";
 
-type Filter = GovernorEra | "all";
+type AuthorityFilter = GovernorAuthority | "all";
 
-const ERA_ICONS = {
-  naval: Shield,
-  appointed: Crown,
-  elected: Vote,
-} as const;
+const AUTHORITY_LABELS: Record<GovernorAuthority, string> = {
+  "danish-company": "Danish company administration",
+  "danish-crown": "Danish Crown administration",
+  "british-occupation": "British occupation",
+  "united-states-navy": "United States naval administration",
+  "united-states-appointed": "United States appointed civilian administration",
+  "usvi-elected": "Elected territorial government",
+};
+
+function formatTerm(value: string | null) {
+  return value || "Present";
+}
+
+function authorityIcon(authority: GovernorAuthority) {
+  if (authority === "danish-company" || authority === "danish-crown") return Crown;
+  if (authority === "british-occupation") return Shield;
+  if (authority === "united-states-navy") return Star;
+  if (authority === "united-states-appointed") return Building2;
+  return Landmark;
+}
 
 export function GovernorTimelineExplorer() {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [authority, setAuthority] = useState<AuthorityFilter>("all");
   const [query, setQuery] = useState("");
+  const [includeActing, setIncludeActing] = useState(true);
 
   const governors = useMemo(() => {
     const term = query.trim().toLowerCase();
 
-    return USVI_GOVERNORS.filter((governor) => {
-      const matchesEra = filter === "all" || governor.era === filter;
-      const haystack = [
+    return VIRGIN_ISLANDS_GOVERNORS.filter((governor) => {
+      if (authority !== "all" && governor.authority !== authority) return false;
+      if (!includeActing && governor.acting) return false;
+      if (!term) return true;
+
+      return [
         governor.name,
-        governor.title,
-        governor.termLabel,
-        governor.party,
-        governor.appointedBy,
-        governor.summary,
-        ...governor.milestones,
+        governor.office,
+        governor.termStart,
+        governor.termEnd ?? "present",
+        governor.note ?? "",
+        governor.scope,
+        AUTHORITY_LABELS[governor.authority],
       ]
-        .filter(Boolean)
         .join(" ")
-        .toLowerCase();
-
-      return matchesEra && (!term || haystack.includes(term));
+        .toLowerCase()
+        .includes(term);
     });
-  }, [filter, query]);
-
-  const current = USVI_GOVERNORS.at(-1);
-  const electedCount = USVI_GOVERNORS.filter(
-    (governor) => governor.era === "elected",
-  ).length;
+  }, [authority, includeActing, query]);
 
   return (
-    <main className="min-h-screen bg-[#f5f1e8] pb-40 text-[#082f2d]">
-      <section className="bg-[radial-gradient(circle_at_top_left,rgba(245,196,81,.22),transparent_28%),linear-gradient(145deg,#032d2c,#075e58)] text-white">
-        <div className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8 lg:px-10 lg:pb-16">
-          <Link
-            href="/heritage/timeline"
-            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-white/70 transition hover:text-white"
-          >
-            <ArrowLeft size={15} /> Back to territory timeline
+    <main className="min-h-screen bg-[#f7f2e7] pb-36 text-[#082f2d]">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_20%_10%,rgba(245,196,81,.24),transparent_28%),linear-gradient(145deg,#032d2c,#074b4a_58%,#08282f)] text-white">
+        <div className="mx-auto max-w-7xl px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-20 lg:pt-12">
+          <Link href="/heritage" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-white/70 transition hover:text-white">
+            <ArrowLeft size={15} /> Heritage
           </Link>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+          <div className="mt-8 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
             <div>
-              <p className="text-xs font-black uppercase tracking-[.26em] text-[#f5c451]">
-                Government and political history
+              <p className="text-[10px] font-black uppercase tracking-[.3em] text-[#f5c451]">
+                Virgin Islands governance timeline
               </p>
-              <h1 className="mt-3 max-w-4xl text-4xl font-black leading-[.96] tracking-[-.05em] sm:text-6xl">
-                Governors of the U.S. Virgin Islands
+              <h1 className="mt-3 max-w-4xl text-4xl font-black leading-[.95] tracking-[-.05em] sm:text-6xl">
+                Every recorded administration, from company rule to elected government.
               </h1>
-              <p className="mt-5 max-w-3xl text-base leading-7 text-white/72">
-                Follow every governor of the United States period—from naval
-                administration after Transfer Day, through appointed civilian
-                government, to the elected administrations of today.
+              <p className="mt-5 max-w-3xl text-sm font-semibold leading-7 text-white/72 sm:text-base">
+                This chronology preserves separate early island administrations, acting appointments,
+                British occupations, Danish Crown rule, United States naval government, appointed
+                civilian governors, and every elected governor of the U.S. Virgin Islands.
               </p>
             </div>
 
-            <div className="rounded-[28px] border border-white/12 bg-white/[.08] p-5 backdrop-blur-xl">
-              <div className="grid grid-cols-3 gap-3 text-center">
-                <Stat value={String(USVI_GOVERNORS.length)} label="Terms" />
-                <Stat value={String(electedCount)} label="Elected" />
-                <Stat value={current?.termLabel ?? "—"} label="Current era" />
-              </div>
+            <div className="grid min-w-64 grid-cols-2 gap-3 rounded-[26px] border border-white/12 bg-white/[.08] p-4 backdrop-blur">
+              <Stat value={VIRGIN_ISLANDS_GOVERNORS.length} label="Records" />
+              <Stat value="1665–now" label="Coverage" />
             </div>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
-        <div className="rounded-[28px] border border-[#0b4b46]/10 bg-white p-4 shadow-[0_18px_45px_rgba(4,51,49,.08)] sm:p-5">
+      <section className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
+        <div className="rounded-[28px] border border-[#0b4b46]/10 bg-white p-4 shadow-[0_18px_50px_rgba(4,51,49,.08)] sm:p-6">
           <label className="relative block">
-            <Search
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#075e58]/45"
-              size={19}
-            />
+            <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#075e58]/45" size={19} />
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search governor, year, party, president, or milestone…"
-              className="h-13 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] py-3 pl-11 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
+              placeholder="Search a governor, year, office, island, or administration…"
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] pl-12 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
             />
           </label>
 
-          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
-            {GOVERNOR_ERAS.map((era) => (
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+            {GOVERNOR_AUTHORITIES.map((item) => (
               <button
-                key={era.id}
+                key={item.id}
                 type="button"
-                onClick={() => setFilter(era.id)}
-                className={`whitespace-nowrap rounded-full px-4 py-3 text-xs font-black transition ${
-                  filter === era.id
+                onClick={() => setAuthority(item.id)}
+                className={`shrink-0 rounded-full px-4 py-3 text-[10px] font-black uppercase tracking-[.14em] transition ${
+                  authority === item.id
                     ? "bg-[#043331] text-white"
                     : "border border-slate-200 bg-[#fbfaf6] text-slate-600 hover:bg-slate-100"
                 }`}
               >
-                {era.label}
+                {item.label}
               </button>
             ))}
           </div>
+
+          <label className="mt-3 inline-flex cursor-pointer items-center gap-3 text-xs font-bold text-slate-600">
+            <input
+              type="checkbox"
+              checked={includeActing}
+              onChange={(event) => setIncludeActing(event.target.checked)}
+              className="h-4 w-4 rounded border-slate-300 accent-[#075e58]"
+            />
+            Include acting and interim governors
+          </label>
         </div>
 
-        <div className="mt-8 space-y-5">
+        <div className="mt-6 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[.22em] text-amber-700">Complete chronology</p>
+            <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">{governors.length} administration records</h2>
+          </div>
+          <Link href="/heritage/timeline" className="hidden rounded-full border border-[#075e58]/20 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[.14em] text-[#075e58] sm:inline-flex">
+            Main historical timeline
+          </Link>
+        </div>
+
+        <div className="mt-6 space-y-4">
           {governors.map((governor, index) => {
-            const Icon = ERA_ICONS[governor.era];
-            const isCurrent = governor.termEnd === null;
+            const Icon = authorityIcon(governor.authority);
+            const initials = governor.name
+              .split(/\s+/)
+              .map((part) => part[0])
+              .filter(Boolean)
+              .slice(0, 3)
+              .join("");
 
             return (
               <article
                 key={governor.id}
                 id={governor.id}
-                className={`relative overflow-hidden rounded-[30px] border bg-white shadow-[0_18px_55px_rgba(4,51,49,.08)] ${
-                  isCurrent
-                    ? "border-[#f5c451] ring-4 ring-[#f5c451]/20"
-                    : "border-[#0b4b46]/10"
-                }`}
+                className="scroll-mt-24 overflow-hidden rounded-[28px] border border-[#0b4b46]/10 bg-white shadow-[0_18px_50px_rgba(4,51,49,.07)]"
               >
-                <div className="grid gap-0 lg:grid-cols-[220px_1fr]">
-                  <div className="relative flex min-h-52 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_25%,rgba(245,196,81,.35),transparent_35%),linear-gradient(145deg,#043331,#087069)] text-white">
-                    <div className="absolute inset-0 opacity-[.12] [background-image:linear-gradient(rgba(255,255,255,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.16)_1px,transparent_1px)] [background-size:32px_32px]" />
+                <div className="grid md:grid-cols-[190px_1fr]">
+                  <div className="relative grid min-h-44 place-items-center overflow-hidden bg-[radial-gradient(circle_at_32%_25%,rgba(245,196,81,.45),transparent_28%),linear-gradient(145deg,#043331,#087068)] p-5 text-white">
+                    <div className="absolute inset-0 opacity-[.14] [background-image:linear-gradient(rgba(255,255,255,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.18)_1px,transparent_1px)] [background-size:28px_28px]" />
                     <div className="relative text-center">
-                      <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-white/20 bg-white/10 text-3xl font-black backdrop-blur">
-                        {initials(governor.name)}
+                      <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-white/20 bg-white/10 text-2xl font-black shadow-xl backdrop-blur">
+                        {initials}
                       </div>
-                      <p className="mt-4 text-[10px] font-black uppercase tracking-[.2em] text-white/60">
-                        {governor.era} administration
+                      <p className="mt-3 text-[9px] font-black uppercase tracking-[.2em] text-white/65">
+                        Portrait not yet verified
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-8">
+                  <div className="p-5 sm:p-7">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e7f2ef] px-3 py-1.5 text-[10px] font-black uppercase tracking-[.14em] text-[#075e58]">
-                            <Icon size={13} /> {governor.title}
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e4f2ee] px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] text-[#075e58]">
+                            <Icon size={12} /> {AUTHORITY_LABELS[governor.authority]}
                           </span>
                           {governor.acting ? (
-                            <Badge>Acting</Badge>
+                            <span className="rounded-full bg-amber-100 px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] text-amber-800">
+                              Acting / interim
+                            </span>
                           ) : null}
-                          {governor.diedInOffice ? (
-                            <Badge>Died in office</Badge>
-                          ) : null}
-                          {isCurrent ? <Badge>Current</Badge> : null}
                         </div>
-
-                        <h2 className="mt-3 text-3xl font-black tracking-[-.04em] text-[#082f2d]">
-                          {governor.name}
-                        </h2>
+                        <h3 className="mt-3 text-2xl font-black tracking-[-.035em] sm:text-3xl">{governor.name}</h3>
+                        <p className="mt-2 text-sm font-bold text-slate-600">{governor.office}</p>
                       </div>
 
-                      <div className="rounded-2xl bg-[#fbf6e8] px-4 py-3 text-right">
-                        <p className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.14em] text-amber-800">
+                      <div className="rounded-2xl bg-[#fbf4df] px-4 py-3 text-right">
+                        <p className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-amber-800">
                           <CalendarDays size={13} /> Term
                         </p>
                         <p className="mt-1 text-sm font-black text-[#082f2d]">
-                          {governor.termLabel}
+                          {formatTerm(governor.termStart)} – {formatTerm(governor.termEnd)}
                         </p>
                       </div>
                     </div>
 
-                    <p className="mt-5 max-w-4xl text-sm font-semibold leading-7 text-slate-600">
-                      {governor.summary}
-                    </p>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {governor.party ? <Meta label="Party" value={governor.party} /> : null}
-                      {governor.appointedBy ? (
-                        <Meta label="Appointed by" value={governor.appointedBy} />
-                      ) : null}
-                      {governor.sequence ? (
-                        <Meta label="Elected sequence" value={`#${governor.sequence}`} />
-                      ) : null}
+                    <div className="mt-5 flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[.14em] text-slate-500">
+                      <span>#{index + 1}</span><span>•</span><span>{governor.scope.replaceAll("_", " ")}</span>
                     </div>
 
-                    <div className="mt-5 border-t border-slate-100 pt-5">
-                      <p className="text-[10px] font-black uppercase tracking-[.17em] text-slate-400">
-                        Historical markers
+                    {governor.note ? (
+                      <p className="mt-4 rounded-2xl border border-amber-700/10 bg-amber-50 px-4 py-3 text-sm font-semibold leading-6 text-amber-950">
+                        {governor.note}
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {governor.milestones.map((milestone) => (
-                          <span
-                            key={milestone}
-                            className="rounded-full bg-slate-100 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.12em] text-slate-600"
-                          >
-                            {milestone}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                    ) : null}
                   </div>
                 </div>
-
-                <span className="absolute right-5 top-5 text-[10px] font-black text-[#075e58]/20">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
               </article>
             );
           })}
         </div>
-
-        {!governors.length ? (
-          <div className="mt-8 rounded-[28px] border border-dashed border-slate-300 bg-white p-12 text-center">
-            <Landmark className="mx-auto text-slate-300" size={38} />
-            <h2 className="mt-4 text-xl font-black">No governors match that search</h2>
-            <p className="mt-2 text-sm font-semibold text-slate-500">
-              Try a name, year, party, president, or historical milestone.
-            </p>
-          </div>
-        ) : null}
-      </div>
+      </section>
     </main>
   );
 }
 
-function initials(name: string) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label }: { value: string | number; label: string }) {
   return (
-    <div className="rounded-2xl bg-black/15 px-3 py-4">
-      <p className="text-xl font-black tracking-[-.03em] sm:text-2xl">{value}</p>
-      <p className="mt-1 text-[9px] font-black uppercase tracking-[.16em] text-white/45">
-        {label}
-      </p>
+    <div className="rounded-2xl bg-white/10 p-3 text-center">
+      <p className="text-2xl font-black">{value}</p>
+      <p className="mt-1 text-[9px] font-black uppercase tracking-[.16em] text-white/55">{label}</p>
     </div>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full bg-[#f6e7b5] px-3 py-1.5 text-[9px] font-black uppercase tracking-[.13em] text-[#72520b]">
-      {children}
-    </span>
-  );
-}
-
-function Meta({ label, value }: { label: string; value: string }) {
-  return (
-    <span className="rounded-2xl border border-slate-200 bg-[#fbfaf6] px-3 py-2 text-xs font-bold text-slate-600">
-      <span className="text-slate-400">{label}:</span> {value}
-    </span>
   );
 }
