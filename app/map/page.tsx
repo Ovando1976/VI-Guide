@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 
+import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
+
 const ExplorerMapScreen = dynamic(
   () =>
     import("@/components/explorer/explorer-map-screen").then(
@@ -9,5 +11,10 @@ const ExplorerMapScreen = dynamic(
 );
 
 export default function MapPage() {
-  return <ExplorerMapScreen />;
+  return (
+    <>
+      <MapIntelligenceBridge />
+      <ExplorerMapScreen />
+    </>
+  );
 }
