@@ -15,6 +15,17 @@ export type JourneyPlan = {
   plan: IntelligencePlanStop[];
 };
 
+export type JourneyStopInput = {
+  id: string;
+  title: string;
+  island: IntelligenceIsland;
+  kind: string;
+  summary: string;
+  href?: string;
+  mapHref?: string;
+  bookingHref?: string;
+};
+
 export function createJourneyPlan(
   island: IntelligenceIsland = "stt",
   title = "My Virgin Islands day",
@@ -101,6 +112,36 @@ export function upsertJourneyPlan(plan: JourneyPlan) {
     normalized,
     ...plans.filter((candidate) => candidate.id !== normalized.id),
   ]);
+}
+
+export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
+  const plans = readJourneyPlans();
+  const existing = plans.find((plan) => plan.island === input.island) ?? plans[0];
+  const target = existing ?? createJourneyPlan(input.island);
+  const duplicate = target.plan.some(
+    (stop) => stop.placeId === input.id || stop.id === `place_${input.id}`,
+  );
+  if (duplicate) return target;
+
+  const stop: IntelligencePlanStop = {
+    id: `place_${input.id}`.slice(0, 160),
+    placeId: input.id,
+    title: input.title.slice(0, 160),
+    island: input.island,
+    kind: input.kind.slice(0, 80),
+    summary: input.summary.slice(0, 1200),
+    ...(input.href ? { href: input.href } : {}),
+    ...(input.mapHref ? { mapHref: input.mapHref } : {}),
+    ...(input.bookingHref ? { bookingHref: input.bookingHref } : {}),
+  };
+  const updated: JourneyPlan = {
+    ...target,
+    island: input.island,
+    plan: [...target.plan, stop],
+    updatedAt: new Date().toISOString(),
+  };
+  upsertJourneyPlan(updated);
+  return updated;
 }
 
 export function deleteJourneyPlan(planId: string) {
