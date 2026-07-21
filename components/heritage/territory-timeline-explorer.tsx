@@ -19,7 +19,7 @@ import {
   type TimelineEra,
   type TimelineIsland,
 } from "@/data/heritage/territory-timeline";
-import { USVI_GOVERNORS } from "@/data/heritage/usvi-governors";
+import { VIRGIN_ISLANDS_GOVERNORS } from "@/data/heritage/virgin-islands-governors";
 
 type EraFilter = TimelineEra | "all";
 type IslandFilter = TimelineIsland | "all";
@@ -46,16 +46,35 @@ const ISLANDS: { id: IslandFilter; label: string }[] = [
   { id: "stx", label: "St. Croix" },
 ];
 
-const GOVERNOR_RECORDS: TimelineRecord[] = USVI_GOVERNORS.map((governor) => ({
+function governorEra(authority: (typeof VIRGIN_ISLANDS_GOVERNORS)[number]["authority"]): TimelineEra {
+  if (authority === "danish-company" || authority === "danish-crown" || authority === "british-occupation") {
+    return "colonial";
+  }
+  if (authority === "united-states-navy") return "transfer";
+  return "modern";
+}
+
+function governorIsland(scope: (typeof VIRGIN_ISLANDS_GOVERNORS)[number]["scope"]): TimelineIsland {
+  if (scope === "st_thomas") return "stt";
+  if (scope === "st_croix") return "stx";
+  return "territory";
+}
+
+const GOVERNOR_RECORDS: TimelineRecord[] = VIRGIN_ISLANDS_GOVERNORS.map((governor) => ({
   id: `governor-${governor.id}`,
   year: Number(governor.termStart.slice(0, 4)),
-  dateLabel: governor.termLabel,
+  dateLabel: `${governor.termStart} – ${governor.termEnd ?? "present"}`,
   title: `${governor.name} begins service`,
-  summary: governor.summary,
-  era: governor.era === "naval" ? "transfer" : "modern",
-  island: "territory",
+  summary: governor.note ?? `${governor.office}, serving ${governor.termStart} to ${governor.termEnd ?? "present"}.`,
+  era: governorEra(governor.authority),
+  island: governorIsland(governor.scope),
   kind: "governor",
-  tags: [governor.title, governor.party ?? "", ...governor.milestones].filter(Boolean),
+  tags: [
+    governor.office,
+    governor.authority,
+    governor.scope,
+    governor.acting ? "acting interim" : "",
+  ].filter(Boolean),
   detailHref: `/heritage/governors#${governor.id}`,
 }));
 
@@ -109,7 +128,7 @@ export function TerritoryTimelineExplorer() {
                 The Virgin Islands timeline
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-white/72">
-                Explore defining events and every U.S.-period governor in one connected chronology,
+                Explore defining events and the complete recorded governance chronology in one connected timeline,
                 then move directly into maps, historic places, and the Heritage Guide.
               </p>
             </div>
@@ -117,7 +136,7 @@ export function TerritoryTimelineExplorer() {
             <div className="rounded-[28px] border border-white/12 bg-white/[.08] p-5 backdrop-blur-xl">
               <div className="grid grid-cols-3 gap-3 text-center">
                 <Stat value={String(TERRITORY_TIMELINE_EVENTS.length)} label="Events" />
-                <Stat value={String(USVI_GOVERNORS.length)} label="Governor terms" />
+                <Stat value={String(VIRGIN_ISLANDS_GOVERNORS.length)} label="Administrations" />
                 <Stat value={String(RECORDS.length)} label="Records" />
               </div>
             </div>
@@ -132,7 +151,7 @@ export function TerritoryTimelineExplorer() {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search an event, person, year, island, or theme…"
+              placeholder="Search an event, governor, year, island, or theme…"
               className="h-14 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] pl-11 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
             />
           </label>
