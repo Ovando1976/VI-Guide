@@ -23,6 +23,7 @@ import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 const ITEMS = [
   { href: "/", label: "Home", icon: House },
   { href: "/map", label: "Map", icon: Map },
+  { href: "/intelligence", label: "Intelligence", icon: Compass },
   { href: "/search", label: "Search", icon: Search },
   { href: "/planner", label: "My Trip", icon: Route },
   { href: "/concierge", label: "Concierge", icon: Sparkles },
