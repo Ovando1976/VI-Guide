@@ -22,6 +22,17 @@ const NEXT_STATUSES: Record<RideBooking["status"], RideBooking["status"][]> = {
   cancelled: [],
 };
 
+const STATUS_TIMESTAMP_FIELD: Partial<
+  Record<RideBooking["status"], keyof RideBooking>
+> = {
+  matched: "matchedAt",
+  driver_en_route: "driverEnRouteAt",
+  arrived: "arrivedAt",
+  in_progress: "startedAt",
+  completed: "completedAt",
+  cancelled: "cancelledAt",
+};
+
 export async function createServerBooking(
   booking: Omit<RideBooking, "id">,
 ): Promise<string> {
@@ -120,6 +131,7 @@ export async function assignServerDriver(params: {
       associationId,
       vehicleId,
       status: "matched",
+      matchedAt: FieldValue.serverTimestamp(),
       assignmentComplianceSnapshot: {
         driverAuthorizationStatus: eligible.driver.authorizationStatus,
         associationStatus: eligible.association.status,
@@ -186,6 +198,10 @@ export async function updateServerTripStatus(params: {
       status: params.status,
       updatedAt: FieldValue.serverTimestamp(),
     };
+    const timestampField = STATUS_TIMESTAMP_FIELD[params.status];
+    if (timestampField) {
+      updatePayload[timestampField] = FieldValue.serverTimestamp();
+    }
 
     if (params.status === "completed") {
       const totalFare = booking.finalFare ?? booking.quotedFare?.total ?? 0;
@@ -194,6 +210,11 @@ export async function updateServerTripStatus(params: {
         status: "pending_review",
         grossFare: totalFare,
       };
+    }
+
+    if (params.status === "completed" || params.status === "cancelled") {
+      updatePayload.driverLocation = FieldValue.delete();
+      updatePayload.driverLocationUpdatedAt = FieldValue.delete();
     }
 
     transaction.update(bookingRef, updatePayload);
