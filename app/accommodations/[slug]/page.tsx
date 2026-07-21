@@ -5,6 +5,7 @@ import { TagPill } from "@/components/directory/tag-pill";
 import { PlaceActionBar } from "@/components/place/place-action-bar";
 import { StayActionCard } from "@/components/stay-action-card";
 import { getAccommodationBySlug } from "@/lib/accommodations";
+import { buildDiscoveryMapHref } from "@/lib/discovery/map-links";
 
 const ISLAND_NAMES = { stt: "St. Thomas", stj: "St. John", stx: "St. Croix" } as const;
 
@@ -17,8 +18,21 @@ export default async function AccommodationDetailPage({ params }: Props) {
 
   const islandName = ISLAND_NAMES[item.island];
   const highlights = Array.from(new Set([item.category, item.location, ...(item.bestFor ?? []), ...item.tags])).filter(Boolean).slice(0, 8) as string[];
-  const mapParams = new URLSearchParams({ island: item.island.toUpperCase(), focus: item.slug });
-  const rideParams = new URLSearchParams({ island: item.island.toUpperCase(), destination: item.name });
+  const mapHref = buildDiscoveryMapHref({
+    id: item.id,
+    name: item.name,
+    slug: item.slug,
+    island: item.island,
+    type: "stay",
+    lat: item.lat,
+    lng: item.lng,
+    location: item.address ?? item.location,
+    description: item.description,
+  });
+  const rideParams = new URLSearchParams({ island: item.island, destination: item.name });
+  if (item.estateGeoid) rideParams.set("toGeoid", item.estateGeoid);
+  if (typeof item.lat === "number") rideParams.set("toLat", String(item.lat));
+  if (typeof item.lng === "number") rideParams.set("toLng", String(item.lng));
 
   return (
     <main className="stay-detail min-h-screen bg-[#f8f4ea] pb-36 text-[#043331]">
@@ -49,7 +63,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
           className="relative z-10 mx-2 -mt-5 sm:mx-5"
           name={item.name}
           island={islandName}
-          mapHref={`/map?${mapParams.toString()}`}
+          mapHref={mapHref}
           rideHref={`/mobility?${rideParams.toString()}`}
           website={item.website}
         />
