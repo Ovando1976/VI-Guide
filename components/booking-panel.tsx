@@ -2,9 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
+  Anchor,
   ArrowLeftRight,
   BriefcaseBusiness,
   Bus,
@@ -13,7 +14,6 @@ import {
   ChevronDown,
   Clock3,
   Crown,
-  Ferry,
   Loader2,
   Luggage,
   MapPin,
@@ -105,7 +105,7 @@ const MORE_MODES: ModeOption[] = [
     label: "Ferry",
     blurb: "Port and ferry connection",
     accent: "Harbor transfer",
-    icon: Ferry,
+    icon: Anchor,
   },
   {
     value: "executive",
@@ -136,9 +136,7 @@ export function BookingPanel({
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [resultMessage, setResultMessage] = useState<string | null>(null);
-  const [resultTone, setResultTone] = useState<"success" | "error" | null>(
-    null,
-  );
+  const [resultTone, setResultTone] = useState<"success" | "error" | null>(null);
   const [fare, setFare] = useState<FareBreakdown | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
@@ -169,11 +167,11 @@ export function BookingPanel({
       }),
     })
       .then(async (response) => {
-        const json = await response.json();
+        const payload = await response.json();
         if (!response.ok) {
-          throw new Error(json.error || "Official taxi rate unavailable.");
+          throw new Error(payload.error || "Official taxi rate unavailable.");
         }
-        setFare(json.fare as FareBreakdown);
+        setFare(payload.fare as FareBreakdown);
       })
       .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
@@ -191,8 +189,8 @@ export function BookingPanel({
     return () => controller.abort();
   }, [fromEstate, toEstate, mode, passengers, luggage]);
 
-  const canRequest = Boolean(fromEstate && toEstate && fare && !submitting);
   const routeReady = Boolean(fromEstate && toEstate);
+  const canRequest = Boolean(routeReady && fare && !submitting);
   const recommendedMode = useMemo<RideMode>(() => {
     const routeText = `${fromEstate?.baseName ?? ""} ${toEstate?.baseName ?? ""}`.toLowerCase();
     if (routeText.includes("airport")) return "airport";
@@ -210,7 +208,6 @@ export function BookingPanel({
       setSubmitting(true);
       setResultMessage(null);
       setResultTone(null);
-
       const response = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -223,7 +220,6 @@ export function BookingPanel({
         }),
       });
       const payload = await response.json();
-
       if (!response.ok) {
         throw new Error(payload.error || "Booking request failed.");
       }
@@ -232,7 +228,6 @@ export function BookingPanel({
       setResultMessage("Ride secured. Opening secure payment and tracking…");
       router.push(`/checkout/${payload.bookingId}`);
     } catch (error) {
-      console.error(error);
       setResultTone("error");
       setResultMessage(
         error instanceof Error ? error.message : "Unexpected booking error.",
@@ -244,10 +239,10 @@ export function BookingPanel({
 
   return (
     <section
-      className="overflow-hidden rounded-[38px] border border-[#0b5d5b]/10 bg-[#f7f4ec] shadow-[0_30px_90px_rgba(4,51,49,.14)]"
       id="book"
+      className="overflow-hidden rounded-[38px] border border-[#0b5d5b]/10 bg-[#f7f4ec] shadow-[0_30px_90px_rgba(4,51,49,.14)]"
     >
-      <div className="relative overflow-hidden bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#18a99e_100%)] px-5 py-7 text-white sm:px-7 lg:px-9 lg:py-9">
+      <header className="relative overflow-hidden bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#18a99e_100%)] px-5 py-7 text-white sm:px-7 lg:px-9 lg:py-9">
         <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -262,13 +257,18 @@ export function BookingPanel({
             </p>
           </div>
           <div className="grid grid-cols-4 gap-2">
-            {["Route", "Ride", "Guests", "Fare"].map((label, index) => (
+            {[
+              ["01", "Route"],
+              ["02", "Ride"],
+              ["03", "Guests"],
+              ["04", "Fare"],
+            ].map(([step, label]) => (
               <div
-                key={label}
+                key={step}
                 className="rounded-2xl border border-white/10 bg-white/[.07] px-3 py-3 text-center"
               >
                 <div className="text-[8px] font-black uppercase tracking-[.16em] text-white/40">
-                  {String(index + 1).padStart(2, "0")}
+                  {step}
                 </div>
                 <div className="mt-1 text-[10px] font-black uppercase tracking-[.1em]">
                   {label}
@@ -277,7 +277,7 @@ export function BookingPanel({
             ))}
           </div>
         </div>
-      </div>
+      </header>
 
       <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(330px,.65fr)] lg:p-7">
         <div className="space-y-6">
@@ -287,50 +287,38 @@ export function BookingPanel({
               title="Where are you going?"
               subtitle="Select pickup and destination estates to build the route."
             />
-
             <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-end">
               <Field label="Pickup estate" icon={MapPin}>
-                <select
+                <EstateSelect
                   value={fromGeoid}
-                  onChange={(event) => onSelectFrom(event.target.value)}
-                  className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331] outline-none transition focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
-                >
-                  <option value="">Choose pickup estate</option>
-                  {estates.map((estate) => (
-                    <option key={estate.geoid} value={estate.geoid}>
-                      {estate.baseName}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="Choose pickup estate"
+                  estates={estates}
+                  onChange={onSelectFrom}
+                />
               </Field>
-
               <button
                 type="button"
                 onClick={onSwapRoute}
                 disabled={!fromGeoid && !toGeoid}
-                className="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white text-[#0f766e] shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 disabled:opacity-40 md:mb-0"
+                className="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white text-[#0f766e] shadow-sm transition hover:-translate-y-0.5 hover:border-teal-300 disabled:opacity-40"
                 aria-label="Swap pickup and destination"
               >
                 <ArrowLeftRight className="h-5 w-5" />
               </button>
-
               <Field label="Destination estate" icon={Route}>
-                <select
+                <EstateSelect
                   value={toGeoid}
-                  onChange={(event) => onSelectTo(event.target.value)}
-                  className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331] outline-none transition focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
-                >
-                  <option value="">Choose destination estate</option>
-                  {estates.map((estate) => (
-                    <option key={estate.geoid} value={estate.geoid}>
-                      {estate.baseName}
-                    </option>
-                  ))}
-                </select>
+                  placeholder="Choose destination estate"
+                  estates={estates}
+                  onChange={onSelectTo}
+                />
               </Field>
             </div>
-
-            <div className={`mt-5 overflow-hidden rounded-[28px] transition-all ${routeReady ? "max-h-[520px]" : "max-h-[330px]"}`}>
+            <div
+              className={`mt-5 overflow-hidden rounded-[28px] transition-all ${
+                routeReady ? "max-h-[520px]" : "max-h-[330px]"
+              }`}
+            >
               <RoutePreviewMap
                 island={island}
                 fromEstate={fromEstate}
@@ -343,9 +331,8 @@ export function BookingPanel({
             <SectionTitle
               step="02"
               title="How would you like to ride?"
-              subtitle="We recommend the best fit, while keeping the official regulated fare unchanged."
+              subtitle="We recommend the best fit while keeping the regulated fare unchanged."
             />
-
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {PRIMARY_MODES.map((item) => (
                 <ModeCard
@@ -357,7 +344,6 @@ export function BookingPanel({
                 />
               ))}
             </div>
-
             <button
               type="button"
               onClick={() => setShowMoreModes((value) => !value)}
@@ -368,7 +354,6 @@ export function BookingPanel({
                 className={`h-4 w-4 transition ${showMoreModes ? "rotate-180" : ""}`}
               />
             </button>
-
             {showMoreModes ? (
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {MORE_MODES.map((item) => (
@@ -426,60 +411,21 @@ export function BookingPanel({
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <ReviewChip label={mode.replace("-", " ")} />
-                <ReviewChip label={`${passengers} passenger${passengers === 1 ? "" : "s"}`} />
+                <ReviewChip
+                  label={`${passengers} passenger${passengers === 1 ? "" : "s"}`}
+                />
                 <ReviewChip label={`${luggage} bag${luggage === 1 ? "" : "s"}`} />
               </div>
             </div>
 
             <div className="p-5">
               {fare ? (
-                <>
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <div className="text-[9px] font-black uppercase tracking-[.18em] text-slate-400">
-                        Official taxi fare
-                      </div>
-                      <div className="mt-2 text-5xl font-black tracking-[-.06em] text-[#043331]">
-                        ${fare.total.toFixed(2)}
-                      </div>
-                    </div>
-                    <span className="rounded-full bg-emerald-100 px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-emerald-800">
-                      No surge
-                    </span>
-                  </div>
-
-                  <div className="mt-5 space-y-3 rounded-[22px] bg-[#f8f4ea] p-4 text-sm font-semibold text-slate-600">
-                    <FareRow label="Published route fare" value={fare.routeFare} />
-                    <FareRow label="Passenger charge" value={fare.passengerFare} />
-                    <FareRow label="Luggage charge" value={fare.luggageFare} />
-                  </div>
-
-                  <div className="mt-5 space-y-3">
-                    <Promise icon={ShieldCheck} text="Verified driver and vehicle assignment" />
-                    <Promise icon={Clock3} text="Live trip tracking after payment" />
-                    <Promise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={requestRide}
-                    disabled={!canRequest}
-                    className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.17em] text-[#5f3d00] shadow-lg transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {submitting ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Check className="h-4 w-4" />
-                    )}
-                    {submitting
-                      ? "Securing ride…"
-                      : "Continue to secure payment"}
-                  </button>
-
-                  <div className="mt-3 text-center text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">
-                    Payment unlocks dispatch and live tracking
-                  </div>
-                </>
+                <FareReview
+                  fare={fare}
+                  submitting={submitting}
+                  canRequest={canRequest}
+                  onRequest={requestRide}
+                />
               ) : quoteLoading ? (
                 <div className="py-8 text-center">
                   <Loader2 className="mx-auto h-7 w-7 animate-spin text-teal-700" />
@@ -504,7 +450,7 @@ export function BookingPanel({
                   <div className="text-sm font-black text-[#043331]">
                     Choose pickup and destination to see your route and official fare.
                   </div>
-                  <div className="mt-3 space-y-2 text-xs font-semibold text-slate-500">
+                  <div className="mt-3 space-y-2">
                     <Promise icon={ShieldCheck} text="Published tariff only" />
                     <Promise icon={Route} text="No distance estimate substitution" />
                     <Promise icon={Clock3} text="Dispatch review for missing routes" />
@@ -531,7 +477,7 @@ export function BookingPanel({
   );
 }
 
-function Panel({ children }: { children: React.ReactNode }) {
+function Panel({ children }: { children: ReactNode }) {
   return (
     <section className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
       {children}
@@ -572,7 +518,7 @@ function Field({
 }: {
   label: string;
   icon: LucideIcon;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <label className="block">
@@ -581,6 +527,33 @@ function Field({
       </div>
       {children}
     </label>
+  );
+}
+
+function EstateSelect({
+  value,
+  placeholder,
+  estates,
+  onChange,
+}: {
+  value: string;
+  placeholder: string;
+  estates: EstateRecord[];
+  onChange: (value: string) => void;
+}) {
+  return (
+    <select
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+      className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331] outline-none transition focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
+    >
+      <option value="">{placeholder}</option>
+      {estates.map((estate) => (
+        <option key={estate.geoid} value={estate.geoid}>
+          {estate.baseName}
+        </option>
+      ))}
+    </select>
   );
 }
 
@@ -621,9 +594,7 @@ function ModeCard({
       <div className="mt-4 text-sm font-black uppercase tracking-[.16em] text-[#043331]">
         {item.label}
       </div>
-      <div className="mt-2 text-sm font-semibold text-slate-600">
-        {item.blurb}
-      </div>
+      <div className="mt-2 text-sm font-semibold text-slate-600">{item.blurb}</div>
       <div className="mt-2 text-[9px] font-black uppercase tracking-[.14em] text-teal-700">
         {item.accent}
       </div>
@@ -657,9 +628,7 @@ function Stepper({
           </span>
           <div>
             <div className="text-sm font-black text-[#043331]">{label}</div>
-            <div className="mt-1 text-xs font-semibold text-slate-500">
-              {helper}
-            </div>
+            <div className="mt-1 text-xs font-semibold text-slate-500">{helper}</div>
           </div>
         </div>
         <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 shadow-sm">
@@ -687,6 +656,62 @@ function Stepper({
         </div>
       </div>
     </div>
+  );
+}
+
+function FareReview({
+  fare,
+  submitting,
+  canRequest,
+  onRequest,
+}: {
+  fare: FareBreakdown;
+  submitting: boolean;
+  canRequest: boolean;
+  onRequest: () => void;
+}) {
+  return (
+    <>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <div className="text-[9px] font-black uppercase tracking-[.18em] text-slate-400">
+            Official taxi fare
+          </div>
+          <div className="mt-2 text-5xl font-black tracking-[-.06em] text-[#043331]">
+            ${fare.total.toFixed(2)}
+          </div>
+        </div>
+        <span className="rounded-full bg-emerald-100 px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-emerald-800">
+          No surge
+        </span>
+      </div>
+      <div className="mt-5 space-y-3 rounded-[22px] bg-[#f8f4ea] p-4 text-sm font-semibold text-slate-600">
+        <FareRow label="Published route fare" value={fare.routeFare} />
+        <FareRow label="Passenger charge" value={fare.passengerFare} />
+        <FareRow label="Luggage charge" value={fare.luggageFare} />
+      </div>
+      <div className="mt-5 space-y-3">
+        <Promise icon={ShieldCheck} text="Verified driver and vehicle assignment" />
+        <Promise icon={Clock3} text="Live trip tracking after payment" />
+        <Promise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
+      </div>
+      <button
+        type="button"
+        onClick={onRequest}
+        disabled={!canRequest}
+        className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.17em] text-[#5f3d00] shadow-lg transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        {submitting ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <Check className="h-4 w-4" />
+        )}
+        {submitting ? "Securing ride…" : "Continue to secure payment"}
+      </button>
+      <div className="mt-3 text-center text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">
+        Payment unlocks dispatch and live tracking
+      </div>
+    </>
   );
 }
 
