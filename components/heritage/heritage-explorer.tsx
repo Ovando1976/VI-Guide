@@ -7,6 +7,7 @@ import {
   BookOpen,
   Clock3,
   Crown,
+  Images,
   Landmark,
   Map,
   MapPin,
@@ -39,6 +40,13 @@ const MODULES = [
     icon: Crown,
     state: "Live",
     href: "/heritage/governors",
+  },
+  {
+    title: "Library of Congress gallery",
+    text: "Explore the complete digitized 1941 U.S. Virgin Islands photographic collection.",
+    icon: Images,
+    state: "Live",
+    href: "/heritage/library-of-congress",
   },
   {
     title: "Territory timeline",
@@ -114,6 +122,12 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 <Map size={15} /> Heritage map
               </Link>
               <Link
+                href="/heritage/library-of-congress"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold transition hover:bg-white/15"
+              >
+                <Images size={15} /> 1941 photo collection
+              </Link>
+              <Link
                 href="/concierge?context=heritage"
                 className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-xs font-black text-[#043331] transition hover:brightness-105"
               >
@@ -131,9 +145,8 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 One connected guide to Virgin Islands place, people, and memory.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
-                Heritage connects historic places, governors, the territory timeline,
-                maps, search, transportation, and the VI Concierge instead of keeping
-                history in a separate archive.
+                Heritage connects historic places, governors, archival photographs, the
+                territory timeline, maps, search, transportation, and the VI Concierge.
               </p>
             </div>
 
@@ -143,12 +156,12 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
               </p>
               <div className="mt-4 grid grid-cols-3 gap-2 text-center">
                 <Stat value={String(items.length)} label="Sites" />
-                <Stat value="3" label="Islands" />
+                <Stat value="461" label="LOC prints" />
                 <Stat value="1" label="Guide" />
               </div>
               <p className="mt-4 text-sm leading-6 text-white/60">
-                Start anywhere, then move naturally between stories, maps, nearby
-                places, rides, and concierge guidance.
+                Start anywhere, then move naturally between stories, photographs, maps,
+                nearby places, rides, and concierge guidance.
               </p>
             </div>
           </div>
@@ -276,21 +289,21 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                Connected history engine
+                Complete photographic archive
               </p>
               <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-.04em] sm:text-4xl">
-                Explore an administration, then open the places and events around it.
+                Open the full 1941 Library of Congress Virgin Islands collection.
               </h2>
               <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-white/70">
-                The governors module is now part of Heritage. The territory timeline is the next
-                integration target, followed by direct map, search, and concierge handoffs.
+                Browse the complete digitized collection, search its captions and places,
+                and preserve the original source record alongside VI Guide corrections.
               </p>
             </div>
             <Link
-              href="/heritage/governors"
+              href="/heritage/library-of-congress"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] transition hover:brightness-105"
             >
-              Explore governors <ArrowRight size={15} />
+              Open complete gallery <ArrowRight size={15} />
             </Link>
           </div>
         </section>
