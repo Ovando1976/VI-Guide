@@ -39,6 +39,11 @@ function isPage(value: unknown): value is IntelligencePage {
   return typeof value === "string" && PAGES.includes(value as IntelligencePage);
 }
 
+function normalizeStringArray(value: unknown, limit: number): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.slice(0, limit).map(String);
+}
+
 function normalizeContext(value: unknown): IntelligenceContext | null {
   if (!value || typeof value !== "object") return null;
 
@@ -53,19 +58,6 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     return null;
   }
 
-  const accessibilityNeeds = Array.isArray(party?.accessibilityNeeds)
-    ? party.accessibilityNeeds.slice(0, 12).map(String)
-    : [];
-  const interests = Array.isArray(preferences?.interests)
-    ? preferences.interests.slice(0, 24).map(String)
-    : [];
-  const food = Array.isArray(preferences?.food)
-    ? preferences.food.slice(0, 20).map(String)
-    : [];
-  const avoid = Array.isArray(preferences?.avoid)
-    ? preferences.avoid.slice(0, 20).map(String)
-    : [];
-
   const normalized: IntelligenceContext = {
     sessionId,
     page,
@@ -75,14 +67,14 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     party: {
       adults: Math.max(1, Number(party?.adults) || 1),
       children: Math.max(0, Number(party?.children) || 0),
-      accessibilityNeeds,
+      accessibilityNeeds: normalizeStringArray(party?.accessibilityNeeds, 12),
     },
     preferences: {
-      interests,
+      interests: normalizeStringArray(preferences?.interests, 24),
       ...(preferences?.pace ? { pace: preferences.pace } : {}),
       ...(preferences?.budget ? { budget: preferences.budget } : {}),
-      food,
-      avoid,
+      food: normalizeStringArray(preferences?.food, 20),
+      avoid: normalizeStringArray(preferences?.avoid, 20),
     },
     memory: context.memory && typeof context.memory === "object" ? context.memory : {},
   };
