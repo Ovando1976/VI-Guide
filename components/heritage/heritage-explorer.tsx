@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  Archive,
   ArrowRight,
   BookOpen,
-  Camera,
   Clock3,
+  Crown,
   Landmark,
   Map,
   MapPin,
@@ -31,43 +30,43 @@ const MODULES = [
     title: "Historic places",
     text: "Forts, estates, churches, districts, ruins, and cultural landscapes.",
     icon: Landmark,
-    state: "Available",
+    state: "Live",
     href: "/historic",
   },
   {
+    title: "Governors",
+    text: "Follow naval, appointed, acting, and elected administrations from 1917 to today.",
+    icon: Crown,
+    state: "Live",
+    href: "/heritage/governors",
+  },
+  {
     title: "Territory timeline",
-    text: "Move through eras, events, people, and changing island life.",
+    text: "Move through eras, events, people, resistance, government, storms, and changing island life.",
     icon: Clock3,
-    state: "In integration",
-    href: "/heritage#roadmap",
+    state: "Next",
+    href: "/heritage/timeline",
   },
   {
-    title: "Archives & sources",
-    text: "Connect public narratives to records, scans, maps, and citations.",
-    icon: Archive,
-    state: "In integration",
-    href: "/heritage#roadmap",
-  },
-  {
-    title: "Historic maps",
-    text: "Explore old place names and heritage layers on the territory map.",
+    title: "Heritage map",
+    text: "Explore historic places and cultural context on the same territory map used throughout VI Guide.",
     icon: Map,
-    state: "Map ready",
+    state: "Live",
     href: "/map?filter=history",
   },
   {
-    title: "Geographic dictionary",
-    text: "Understand estates, bays, hills, settlements, and historic names.",
-    icon: BookOpen,
-    state: "In integration",
-    href: "/heritage#roadmap",
+    title: "Heritage search",
+    text: "Search places, events, governors, estates, people, and source-backed historical knowledge.",
+    icon: Search,
+    state: "Live",
+    href: "/search?type=heritage",
   },
   {
-    title: "Visual archive",
-    text: "Historic photographs, documents, enhanced images, and collections.",
-    icon: Camera,
-    state: "In integration",
-    href: "/heritage#roadmap",
+    title: "Ask the Heritage Guide",
+    text: "Ask what happened here, compare eras, or build a history-focused island experience.",
+    icon: BookOpen,
+    state: "Live",
+    href: "/concierge?context=heritage",
   },
 ] as const;
 
@@ -77,6 +76,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
 
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
+
     return items.filter((item) => {
       const matchesIsland = island === "all" || item.island === island;
       const haystack = [
@@ -89,6 +89,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
+
       return matchesIsland && (!term || haystack.includes(term));
     });
   }, [island, items, query]);
@@ -96,7 +97,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
   const featured = filtered.slice(0, 12);
 
   return (
-    <main className="min-h-screen bg-[#f7f2e7] pb-32 text-[#082f2d]">
+    <main className="min-h-screen bg-[#f7f2e7] pb-36 text-[#082f2d]">
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_18%_12%,rgba(245,196,81,.25),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(45,212,191,.16),transparent_30%),linear-gradient(145deg,#032d2c,#074b4a_54%,#08282f)] text-white">
         <div className="absolute inset-0 opacity-[.12] [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:46px_46px]" />
         <div className="relative mx-auto max-w-7xl px-5 pb-16 pt-10 sm:px-8 lg:px-10 lg:pb-24 lg:pt-16">
@@ -104,6 +105,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-50/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.22em] text-amber-100 backdrop-blur">
               <Landmark size={14} /> U.S. Virgin Islands Heritage
             </span>
+
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/map?filter=history"
@@ -112,10 +114,10 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 <Map size={15} /> Heritage map
               </Link>
               <Link
-                href="/?concierge=open&prompt=Plan%20a%20USVI%20heritage%20experience"
+                href="/concierge?context=heritage"
                 className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-xs font-black text-[#043331] transition hover:brightness-105"
               >
-                <Sparkles size={15} /> Ask concierge
+                <Sparkles size={15} /> Ask the guide
               </Link>
             </div>
           </div>
@@ -126,14 +128,15 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 The territory remembers
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[.94] tracking-[-.055em] sm:text-6xl lg:text-7xl">
-                Explore the Virgin Islands through place, people, and memory.
+                One connected guide to Virgin Islands place, people, and memory.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
-                Heritage is not a separate archive inside VI Guide. It connects
-                the places you visit with the stories, maps, records, and
-                communities that give them meaning.
+                Heritage connects historic places, governors, the territory timeline,
+                maps, search, transportation, and the VI Concierge instead of keeping
+                history in a separate archive.
               </p>
             </div>
+
             <div className="rounded-[28px] border border-white/12 bg-white/[.08] p-5 shadow-2xl backdrop-blur-xl">
               <p className="text-[10px] font-black uppercase tracking-[.2em] text-white/45">
                 Connected territory knowledge
@@ -144,8 +147,8 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 <Stat value="1" label="Guide" />
               </div>
               <p className="mt-4 text-sm leading-6 text-white/60">
-                Each site connects to maps, transportation, nearby discovery,
-                and the VI Concierge.
+                Start anywhere, then move naturally between stories, maps, nearby
+                places, rides, and concierge guidance.
               </p>
             </div>
           </div>
@@ -164,16 +167,16 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                 <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e4f2ee] text-[#075e58]">
                   <Icon size={21} />
                 </span>
-                <span className="rounded-full bg-[#f6e7b5] px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] text-[#72520b]">
+                <span className={`rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] ${
+                  state === "Live"
+                    ? "bg-emerald-100 text-emerald-800"
+                    : "bg-[#f6e7b5] text-[#72520b]"
+                }`}>
                   {state}
                 </span>
               </div>
-              <h2 className="mt-5 text-xl font-black tracking-[-.03em]">
-                {title}
-              </h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
-                {text}
-              </p>
+              <h2 className="mt-5 text-xl font-black tracking-[-.03em]">{title}</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">{text}</p>
               <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.15em] text-[#075e58]">
                 Open <ArrowRight size={14} />
               </span>
@@ -191,10 +194,12 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
               className="h-14 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] pl-12 pr-4 text-sm font-semibold outline-none focus:border-teal-600/40 focus:ring-4 focus:ring-teal-600/10"
             />
           </label>
+
           <div className="flex gap-2 overflow-x-auto pb-1">
             {(Object.keys(ISLANDS) as IslandFilter[]).map((key) => (
               <button
                 key={key}
+                type="button"
                 onClick={() => setIsland(key)}
                 className={`whitespace-nowrap rounded-full px-4 py-3 text-xs font-black transition ${
                   island === key
@@ -245,9 +250,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                   </p>
                   <MapPin size={16} className="text-[#075e58]" />
                 </div>
-                <h3 className="mt-2 text-2xl font-black tracking-[-.035em]">
-                  {item.name}
-                </h3>
+                <h3 className="mt-2 text-2xl font-black tracking-[-.035em]">{item.name}</h3>
                 <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-slate-600">
                   {item.description}
                 </p>
@@ -262,31 +265,34 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
         {!featured.length ? (
           <div className="mt-8 rounded-[28px] border border-dashed border-slate-300 bg-white p-12 text-center">
             <Landmark className="mx-auto text-slate-300" size={38} />
-            <h2 className="mt-4 text-xl font-black">
-              No heritage places match that search
-            </h2>
+            <h2 className="mt-4 text-xl font-black">No heritage places match that search</h2>
             <p className="mt-2 text-sm font-semibold text-slate-500">
               Try a site name, island, estate, or category.
             </p>
           </div>
         ) : null}
 
-        <section
-          id="roadmap"
-          className="mt-12 rounded-[30px] border border-amber-700/15 bg-[#fff8e5] p-6 sm:p-8"
-        >
-          <p className="text-[10px] font-black uppercase tracking-[.2em] text-amber-700">
-            Heritage integration roadmap
-          </p>
-          <h2 className="mt-3 text-3xl font-black tracking-[-.04em]">
-            Building the deeper record without breaking the live guide
-          </h2>
-          <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-slate-600">
-            Timeline, governance, archive, historic-map, dictionary, and gallery
-            records are being migrated into a source-aware knowledge model. Until
-            each collection is validated, VI Guide keeps canonical historic places
-            available and clearly labels the deeper modules as still in integration.
-          </p>
+        <section className="mt-12 overflow-hidden rounded-[30px] border border-[#0b4b46]/10 bg-[linear-gradient(135deg,#043331,#075e58)] p-6 text-white shadow-[0_24px_70px_rgba(4,51,49,.18)] sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
+                Connected history engine
+              </p>
+              <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-.04em] sm:text-4xl">
+                Explore an administration, then open the places and events around it.
+              </h2>
+              <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-white/70">
+                The governors module is now part of Heritage. The territory timeline is the next
+                integration target, followed by direct map, search, and concierge handoffs.
+              </p>
+            </div>
+            <Link
+              href="/heritage/governors"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] transition hover:brightness-105"
+            >
+              Explore governors <ArrowRight size={15} />
+            </Link>
+          </div>
         </section>
 
         <Link
