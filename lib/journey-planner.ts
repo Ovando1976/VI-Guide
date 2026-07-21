@@ -21,6 +21,8 @@ export type JourneyStopInput = {
   island: IntelligenceIsland;
   kind: string;
   summary: string;
+  lat?: number;
+  lng?: number;
   href?: string;
   mapHref?: string;
   bookingHref?: string;
@@ -123,6 +125,7 @@ export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
   );
   if (duplicate) return target;
 
+  const mapCoordinates = coordinatesFromMapHref(input.mapHref);
   const stop: IntelligencePlanStop = {
     id: `place_${input.id}`.slice(0, 160),
     placeId: input.id,
@@ -130,6 +133,12 @@ export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
     island: input.island,
     kind: input.kind.slice(0, 80),
     summary: input.summary.slice(0, 1200),
+    ...(finiteNumber(input.lat ?? mapCoordinates?.lat)
+      ? { lat: input.lat ?? mapCoordinates?.lat }
+      : {}),
+    ...(finiteNumber(input.lng ?? mapCoordinates?.lng)
+      ? { lng: input.lng ?? mapCoordinates?.lng }
+      : {}),
     ...(input.href ? { href: input.href } : {}),
     ...(input.mapHref ? { mapHref: input.mapHref } : {}),
     ...(input.bookingHref ? { bookingHref: input.bookingHref } : {}),
@@ -186,6 +195,8 @@ function normalizeStop(value: unknown): IntelligencePlanStop | null {
       ? { durationMinutes: stop.durationMinutes }
       : {}),
     ...(typeof stop.placeId === "string" ? { placeId: stop.placeId } : {}),
+    ...(finiteNumber(stop.lat) ? { lat: stop.lat } : {}),
+    ...(finiteNumber(stop.lng) ? { lng: stop.lng } : {}),
     ...(typeof stop.href === "string" ? { href: stop.href } : {}),
     ...(typeof stop.mapHref === "string" ? { mapHref: stop.mapHref } : {}),
     ...(typeof stop.bookingHref === "string"
@@ -193,6 +204,20 @@ function normalizeStop(value: unknown): IntelligencePlanStop | null {
       : {}),
     ...(stop.mobility ? { mobility: stop.mobility } : {}),
   };
+}
+
+function coordinatesFromMapHref(mapHref?: string) {
+  if (!mapHref) return null;
+  const query = mapHref.split("?")[1];
+  if (!query) return null;
+  const params = new URLSearchParams(query);
+  const lat = Number(params.get("placeLat"));
+  const lng = Number(params.get("placeLng"));
+  return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+}
+
+function finiteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
 }
 
 function isJourneyPlan(value: JourneyPlan | null): value is JourneyPlan {
