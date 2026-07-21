@@ -36,10 +36,17 @@ const MODULES = [
   },
   {
     title: "Territory timeline",
-    text: "Move through eras, events, people, and changing island life.",
+    text: "Move through Indigenous history, Danish rule, resistance, emancipation, Transfer Day, and modern island life.",
     icon: Clock3,
-    state: "In integration",
-    href: "/heritage#roadmap",
+    state: "39 events",
+    href: "/heritage/timeline",
+  },
+  {
+    title: "Governors & administrations",
+    text: "Follow every recorded governor from Danish company rule through elected territorial government.",
+    icon: Landmark,
+    state: "115 records",
+    href: "/heritage/governors",
   },
   {
     title: "Archives & sources",
@@ -50,17 +57,17 @@ const MODULES = [
   },
   {
     title: "Historic maps",
-    text: "Explore old place names and heritage layers on the territory map.",
+    text: "Explore 136 maps, town plans, architectural drawings, and archive records collected from Rigsarkivet.",
     icon: Map,
-    state: "Map ready",
-    href: "/map?filter=history",
+    state: "136 records",
+    href: "/heritage/maps",
   },
   {
     title: "Geographic dictionary",
-    text: "Understand estates, bays, hills, settlements, and historic names.",
+    text: "Search 2,523 historic place names, estates, bays, hills, settlements, and geographic descriptions.",
     icon: BookOpen,
-    state: "In integration",
-    href: "/heritage#roadmap",
+    state: "2,523 entries",
+    href: "/heritage/dictionary",
   },
   {
     title: "Visual archive",
@@ -271,22 +278,38 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
           </div>
         ) : null}
 
-        <section
-          id="roadmap"
-          className="mt-12 rounded-[30px] border border-amber-700/15 bg-[#fff8e5] p-6 sm:p-8"
-        >
-          <p className="text-[10px] font-black uppercase tracking-[.2em] text-amber-700">
-            Heritage integration roadmap
-          </p>
-          <h2 className="mt-3 text-3xl font-black tracking-[-.04em]">
-            Building the deeper record without breaking the live guide
-          </h2>
-          <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-slate-600">
-            Timeline, governance, archive, historic-map, dictionary, and gallery
-            records are being migrated into a source-aware knowledge model. Until
-            each collection is validated, VI Guide keeps canonical historic places
-            available and clearly labels the deeper modules as still in integration.
-          </p>
+        <section className="mt-12 overflow-hidden rounded-[30px] border border-[#0b4b46]/10 bg-[linear-gradient(135deg,#043331,#075e58)] p-6 text-white shadow-[0_24px_70px_rgba(4,51,49,.18)] sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
+                Territory timeline
+              </p>
+              <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-.04em] sm:text-4xl">
+                Travel through centuries of Virgin Islands history
+              </h2>
+              <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-white/70">
+                Explore Indigenous life, European contact, Danish settlement,
+                resistance, emancipation, Transfer Day, political change,
+                hurricanes, recovery, and modern territory history. A dedicated
+                governance track preserves every governor and acting administration.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <Link
+                href="/heritage/timeline"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] transition hover:brightness-105"
+              >
+                Open the timeline <ArrowRight size={15} />
+              </Link>
+              <Link
+                href="/heritage/governors"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-white transition hover:bg-white/15"
+              >
+                View all governors <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
         </section>
 
         <Link
