@@ -31,6 +31,7 @@ const DEFAULT_STATE: TerritoryState = {
 const TERRITORY_QUERY_KEYS = [
   "island",
   "lens",
+  "filter",
   "estate",
   "place",
   "placeName",
@@ -65,6 +66,17 @@ function validLens(value: string | null): TerritoryMapLens | null {
     value === "demand"
     ? value
     : null;
+}
+
+function legacyFilterLens(value: string | null): TerritoryMapLens | null {
+  const normalized = value?.trim().toLowerCase();
+  if (normalized === "history" || normalized === "heritage" || normalized === "historic") {
+    return "historic";
+  }
+  if (normalized === "beach" || normalized === "beaches") return "beaches";
+  if (normalized === "stay" || normalized === "stays" || normalized === "hotel") return "stays";
+  if (normalized === "place" || normalized === "places") return "places";
+  return null;
 }
 
 function validPlaceType(value: string | null): TerritoryMapPlaceType | null {
@@ -210,7 +222,8 @@ export function useTerritoryState({
     const rememberedIsland = validIsland(
       window.localStorage.getItem("vi-guide.active-island"),
     );
-    const requestedLens = validLens(params.get("lens"));
+    const requestedLens =
+      validLens(params.get("lens")) ?? legacyFilterLens(params.get("filter"));
     const selection = parseSelection(params);
     const pickupGeoid = params.get("pickup")?.trim() || null;
     const requestedDestination = params.get("destination")?.trim() || null;
