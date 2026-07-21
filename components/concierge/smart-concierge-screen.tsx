@@ -17,7 +17,7 @@ const ISLAND_NAMES: Record<IslandCode, string> = {
 export function SmartConciergeScreen() {
   const params = useSearchParams();
   const island = normalizeIsland(params.get("island"));
-  const prompt = params.get("prompt")?.trim() ?? "";
+  const prompt = params.get("prompt")?.trim().slice(0, 3000) ?? "";
   const activeLens = params.get("context")?.trim() || "all";
 
   const context = useMemo<ConciergeContext>(
@@ -41,6 +41,7 @@ export function SmartConciergeScreen() {
       <ConciergeDiscovery />
       <ViConcierge
         context={context}
+        initialPrompt={prompt}
         initiallyOpen={Boolean(prompt) || params.get("open") !== "false"}
         onSelectEstate={() => undefined}
         onSetPickup={() => undefined}
