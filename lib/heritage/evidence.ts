@@ -1,5 +1,5 @@
 import {
-  getHeritagePlaceRecords,
+  getAllHeritageRecords,
   type HeritageRecord,
 } from "@/lib/heritage/knowledge";
 import type { DirectoryIsland } from "@/types/directory";
@@ -73,24 +73,31 @@ export function rankHeritageEvidence(parameters: {
   limit?: number;
   records?: readonly HeritageRecord[];
 }): HeritageEvidence[] {
-  const records = parameters.records ?? getHeritagePlaceRecords();
+  const records = parameters.records ?? getAllHeritageRecords();
   const tokens = meaningfulTokens(parameters.query);
   const normalizedQuery = parameters.query.trim().toLowerCase();
   const limit = Math.max(1, Math.min(parameters.limit ?? 12, 30));
 
   return records
-    .filter((record) => !parameters.island || record.island === parameters.island)
+    .filter(
+      (record) =>
+        !parameters.island || !record.island || record.island === parameters.island,
+    )
     .map((record) => {
       const haystack = recordHaystack(record);
-      const exactTitleScore = normalizedQuery && record.title.toLowerCase() === normalizedQuery ? 18 : 0;
-      const titlePhraseScore = normalizedQuery && record.title.toLowerCase().includes(normalizedQuery) ? 10 : 0;
+      const exactTitleScore =
+        normalizedQuery && record.title.toLowerCase() === normalizedQuery ? 18 : 0;
+      const titlePhraseScore =
+        normalizedQuery && record.title.toLowerCase().includes(normalizedQuery) ? 10 : 0;
       const tokenScore = tokens.reduce((score, token) => {
         const titleMatch = record.title.toLowerCase().includes(token) ? 5 : 0;
         const bodyMatch = haystack.includes(token) ? 2 : 0;
         return score + titleMatch + bodyMatch;
       }, 0);
       const estateScore =
-        parameters.estateGeoid && record.map?.estateGeoid === parameters.estateGeoid ? 7 : 0;
+        parameters.estateGeoid && record.map?.estateGeoid === parameters.estateGeoid
+          ? 7
+          : 0;
       const canonicalScore = record.provenance.reviewStatus === "canonical" ? 2 : 0;
 
       return {
@@ -108,7 +115,11 @@ export function rankHeritageEvidence(parameters: {
       summary: record.summary.slice(0, 320),
       category: record.category ?? record.type,
       island: record.island ?? null,
-      href: record.type === "place" ? `/historic/${encodeURIComponent(record.slug)}` : `/heritage?record=${encodeURIComponent(record.slug)}`,
+      href:
+        record.href ??
+        (record.type === "place"
+          ? `/historic/${encodeURIComponent(record.slug)}`
+          : `/heritage?record=${encodeURIComponent(record.slug)}`),
       ...(record.heroImage ? { heroImage: record.heroImage } : {}),
       ...(record.map?.estateGeoid ? { estateGeoid: record.map.estateGeoid } : {}),
       reviewStatus: record.provenance.reviewStatus,
