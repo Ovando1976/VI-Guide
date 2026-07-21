@@ -18,6 +18,7 @@ export function SmartConciergeScreen() {
   const params = useSearchParams();
   const island = normalizeIsland(params.get("island"));
   const prompt = params.get("prompt")?.trim() ?? "";
+  const activeLens = params.get("context")?.trim() || "all";
 
   const context = useMemo<ConciergeContext>(
     () => ({
@@ -26,13 +27,13 @@ export function SmartConciergeScreen() {
       selectedEstate: null,
       pickup: null,
       destination: null,
-      rideMode: "private",
+      rideMode: "standard",
       passengers: 1,
       luggage: 0,
-      activeLens: params.get("context")?.trim() || "all",
+      activeLens,
       nearbyEstates: [],
     }),
-    [island, params],
+    [activeLens, island],
   );
 
   return (
