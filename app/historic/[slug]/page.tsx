@@ -4,8 +4,10 @@ import {
   ArrowLeft,
   ArrowRight,
   Camera,
+  Clock3,
   Landmark,
   MapPin,
+  Search,
   Sparkles,
 } from "lucide-react";
 
@@ -30,11 +32,13 @@ export default function HistoricDetailPage({
   if (!site) notFound();
 
   const islandName = ISLAND_NAMES[site.island];
-  const mapHref = `/map?island=${site.island.toUpperCase()}&q=${encodeURIComponent(site.name)}`;
-  const rideHref = `/mobility?island=${site.island.toUpperCase()}&destination=${encodeURIComponent(site.name)}`;
-  const conciergeHref = `/map?concierge=open&prompt=${encodeURIComponent(
+  const mapHref = `/map?island=${site.island}&lens=historic&q=${encodeURIComponent(site.name)}`;
+  const rideHref = `/mobility?island=${site.island}&destination=${encodeURIComponent(site.name)}`;
+  const conciergeHref = `/concierge?context=heritage&island=${site.island}&prompt=${encodeURIComponent(
     `Plan a heritage experience around ${site.name} with nearby places, food, transportation, and realistic timing.`,
   )}`;
+  const timelineHref = `/heritage/timeline?q=${encodeURIComponent(site.name)}`;
+  const searchHref = `/search?kind=historic&q=${encodeURIComponent(site.name)}`;
   const gallery = Array.from(
     new Set([site.heroImage, ...(site.images ?? [])].filter(Boolean)),
   ).slice(0, 6);
@@ -104,13 +108,29 @@ export default function HistoricDetailPage({
             </h2>
             <p className="mt-5 text-base font-semibold leading-8 text-slate-600">
               {site.description} VI Guide keeps the place, imagery, map context,
-              transportation, and nearby discovery connected in one experience.
+              transportation, nearby discovery, chronology, and historical guidance
+              connected in one experience.
             </p>
             {site.address ? (
               <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#edf6f2] px-4 py-2 text-xs font-bold text-[#075e58]">
                 <MapPin className="h-4 w-4" /> {site.address}
               </div>
             ) : null}
+
+            <div className="mt-7 flex flex-wrap gap-3 border-t border-slate-100 pt-6">
+              <Link
+                href={timelineHref}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-[#fbfaf6] px-4 py-3 text-[10px] font-black uppercase tracking-[.16em] text-[#075e58]"
+              >
+                <Clock3 className="h-4 w-4" /> Search timeline
+              </Link>
+              <Link
+                href={searchHref}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-[#fbfaf6] px-4 py-3 text-[10px] font-black uppercase tracking-[.16em] text-[#075e58]"
+              >
+                <Search className="h-4 w-4" /> Related records
+              </Link>
+            </div>
           </div>
 
           <aside className="rounded-[30px] bg-[#e8f5f2] p-7">
@@ -126,7 +146,7 @@ export default function HistoricDetailPage({
               href={conciergeHref}
               className="mt-6 inline-flex rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] text-white"
             >
-              Ask concierge
+              Ask Heritage Guide
             </Link>
           </aside>
         </section>
