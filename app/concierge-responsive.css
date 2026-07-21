@@ -1,0 +1,19 @@
+/* Tablet-safe sizing for the global VI Guide concierge. */
+@media (min-width: 640px) and (max-width: 1100px) {
+  button[aria-label="Open VI Guide Intelligence"] {
+    bottom: calc(6rem + env(safe-area-inset-bottom)) !important;
+  }
+
+  section[role="dialog"][aria-label="VI Guide Intelligence"] {
+    bottom: calc(6rem + env(safe-area-inset-bottom)) !important;
+    width: min(420px, calc(100vw - 32px)) !important;
+    height: min(680px, calc(100dvh - 8rem)) !important;
+    max-height: calc(100dvh - 8rem) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  section[role="dialog"][aria-label="VI Guide Intelligence"] {
+    height: 100dvh;
+  }
+}
