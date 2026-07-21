@@ -1,94 +1,146 @@
-import { headers } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { FieldValue } from "firebase-admin/firestore";
 import type Stripe from "stripe";
+
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
+import type { RideBookingPaymentStatus } from "@/types/mobility";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-export async function POST(req: Request) {
-  const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  if (!stripeWebhookSecret) {
-    return new NextResponse("Stripe webhook is not configured.", {
-      status: 503,
-    });
+function bookingPaymentUpdate(paymentIntent: Stripe.PaymentIntent) {
+  let paymentStatus: RideBookingPaymentStatus;
+  switch (paymentIntent.status) {
+    case "succeeded":
+      paymentStatus = "paid";
+      break;
+    case "processing":
+      paymentStatus = "processing";
+      break;
+    case "canceled":
+      paymentStatus = "canceled";
+      break;
+    case "requires_payment_method":
+      paymentStatus = paymentIntent.last_payment_error
+        ? "failed"
+        : "requires_payment_method";
+      break;
+    case "requires_action":
+    case "requires_confirmation":
+      paymentStatus = "requires_payment_method";
+      break;
+    default:
+      paymentStatus = "unpaid";
   }
 
-  const body = await req.text();
-  const signature = (await headers()).get("stripe-signature");
+  return {
+    paymentStatus,
+    paymentIntentId: paymentIntent.id,
+    amountAuthorized: paymentIntent.amount,
+    amountCaptured:
+      paymentIntent.status === "succeeded"
+        ? paymentIntent.amount_received
+        : null,
+    paymentFailureCode: paymentIntent.last_payment_error?.code ?? null,
+    paymentFailureMessage: paymentIntent.last_payment_error?.message ?? null,
+    paymentUpdatedAt: FieldValue.serverTimestamp(),
+    updatedAt: FieldValue.serverTimestamp(),
+  };
+}
 
-  if (!signature) {
-    return new NextResponse("Missing stripe-signature header.", {
-      status: 400,
-    });
+function isPaymentIntentEvent(
+  event: Stripe.Event,
+): event is Stripe.Event & { data: { object: Stripe.PaymentIntent } } {
+  return event.type.startsWith("payment_intent.");
+}
+
+export async function POST(request: NextRequest) {
+  const signature = request.headers.get("stripe-signature");
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  if (!signature || !webhookSecret) {
+    return NextResponse.json(
+      { error: "Stripe webhook is not configured." },
+      { status: 503 },
+    );
   }
 
   let event: Stripe.Event;
-
   try {
+    const payload = await request.text();
     event = getStripe().webhooks.constructEvent(
-      body,
+      payload,
       signature,
-      stripeWebhookSecret
+      webhookSecret,
     );
   } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : "Invalid Stripe webhook signature.";
-    return new NextResponse(`Webhook Error: ${message}`, { status: 400 });
+    console.error("stripe webhook signature error", error);
+    return NextResponse.json(
+      { error: "Invalid webhook signature." },
+      { status: 400 },
+    );
+  }
+
+  if (!isPaymentIntentEvent(event)) {
+    return NextResponse.json({ received: true, ignored: true });
+  }
+
+  const paymentIntent = event.data.object;
+  const bookingId = paymentIntent.metadata.bookingId?.trim();
+  if (!bookingId) {
+    return NextResponse.json({ received: true, ignored: true });
   }
 
   try {
-    const adminDb = getAdminDb();
-    switch (event.type) {
-      case "payment_intent.succeeded": {
-        const paymentIntent = event.data.object as Stripe.PaymentIntent;
+    const db = getAdminDb();
+    const bookingRef = db.collection("bookings").doc(bookingId);
+    const eventRef = db.collection("stripeWebhookEvents").doc(event.id);
 
-        await adminDb.collection("stripe_webhook_events").add({
+    await db.runTransaction(async (transaction) => {
+      const eventSnapshot = await transaction.get(eventRef);
+      if (eventSnapshot.exists) return;
+
+      const bookingSnapshot = await transaction.get(bookingRef);
+      if (!bookingSnapshot.exists) {
+        transaction.set(eventRef, {
           type: event.type,
+          bookingId,
           paymentIntentId: paymentIntent.id,
-          amount: paymentIntent.amount,
-          currency: paymentIntent.currency,
-          status: paymentIntent.status,
-          createdAt: new Date().toISOString(),
+          outcome: "booking_not_found",
+          processedAt: FieldValue.serverTimestamp(),
         });
-
-        break;
+        return;
       }
 
-      case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session;
-
-        await adminDb.collection("stripe_webhook_events").add({
+      const existingIntentId = bookingSnapshot.get("paymentIntentId");
+      if (existingIntentId && existingIntentId !== paymentIntent.id) {
+        transaction.set(eventRef, {
           type: event.type,
-          checkoutSessionId: session.id,
-          paymentIntentId:
-            typeof session.payment_intent === "string"
-              ? session.payment_intent
-              : null,
-          customerId:
-            typeof session.customer === "string" ? session.customer : null,
-          amountTotal: session.amount_total ?? null,
-          currency: session.currency ?? null,
-          createdAt: new Date().toISOString(),
+          bookingId,
+          paymentIntentId: paymentIntent.id,
+          outcome: "payment_intent_mismatch",
+          processedAt: FieldValue.serverTimestamp(),
         });
-
-        break;
+        return;
       }
 
-      default: {
-        await adminDb.collection("stripe_webhook_events").add({
-          type: event.type,
-          createdAt: new Date().toISOString(),
-        });
-      }
-    }
+      transaction.update(bookingRef, bookingPaymentUpdate(paymentIntent));
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        paymentIntentId: paymentIntent.id,
+        outcome: "booking_updated",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+    });
 
     return NextResponse.json({ received: true });
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Failed to process webhook.";
-    return new NextResponse(message, { status: 500 });
+    console.error("stripe webhook processing error", error);
+    return NextResponse.json(
+      { error: "Webhook processing failed." },
+      { status: 500 },
+    );
   }
 }
