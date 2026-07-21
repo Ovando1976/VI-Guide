@@ -86,6 +86,8 @@ export type IntelligencePlanStop = {
   kind: string;
   summary: string;
   placeId?: string;
+  lat?: number;
+  lng?: number;
   href?: string;
   mapHref?: string;
   bookingHref?: string;
