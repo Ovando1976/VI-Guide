@@ -31,7 +31,8 @@ export type ConciergeActionType =
   | "set_pickup"
   | "set_destination"
   | "open_estate"
-  | "open_mobility";
+  | "open_mobility"
+  | "open_heritage";
 
 export type ConciergeAction = {
   id: string;
