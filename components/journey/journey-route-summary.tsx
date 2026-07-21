@@ -31,9 +31,6 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
       ),
     [plan.plan],
   );
-  const signature = routableStops
-    .map((stop) => `${stop.id}:${stop.lat}:${stop.lng}`)
-    .join("|");
   const [legs, setLegs] = useState<RouteLeg[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -90,7 +87,7 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
 
     void load();
     return () => controller.abort();
-  }, [plan.island, signature]);
+  }, [plan.island, routableStops]);
 
   const totalMeters = legs.reduce((sum, leg) => sum + leg.distanceMeters, 0);
   const totalSeconds = legs.reduce((sum, leg) => sum + leg.durationSeconds, 0);
