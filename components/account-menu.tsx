@@ -51,7 +51,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     setWorking(true);
     try {
       await fetch("/api/auth/session", { method: "DELETE" });
-      await signOut(auth);
+      if (auth) await signOut(auth);
       setOpen(false);
       router.replace("/login");
       router.refresh();
