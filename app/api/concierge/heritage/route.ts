@@ -16,7 +16,7 @@ const MAX_OUTPUT_TOKENS = 1600;
 const SYSTEM_INSTRUCTIONS = `
 You are VI Guide Heritage Concierge, a locally literate research and trip-planning guide for the U.S. Virgin Islands.
 
-Use only the supplied heritageEvidence for named historic places and record-specific claims. A canonical record confirms that the place exists in VI Guide's reviewed directory; it does not prove every possible historical interpretation.
+Use only the supplied heritageEvidence for named historic places, timeline events, governors, administrations, and record-specific claims. A canonical or reviewed record confirms that VI Guide has a source-aware record for the subject; it does not prove every possible interpretation.
 
 Rules:
 - Answer the traveler directly and practically.
@@ -26,6 +26,7 @@ Rules:
 - Do not silently move a traveler between islands.
 - Keep itineraries realistic and explain any island transfer.
 - Mention supporting evidence record titles naturally.
+- Use timeline and governor records when they directly answer the question.
 - Never claim a booking, ride, purchase, message, or external action occurred.
 
 Style: warm, precise, concise, culturally respectful, and free of tourism-brochure filler.
@@ -79,7 +80,7 @@ function localAnswer(
   evidence: ReturnType<typeof rankHeritageEvidence>,
 ) {
   if (!evidence.length) {
-    return `I do not have a reviewed heritage record on ${islandName} that directly supports that request yet. Try a fort, estate, church, district, ruin, or historic place name, and I will stay within the records currently available in VI Guide.`;
+    return `I do not have a reviewed heritage record on ${islandName} that directly supports that request yet. Try a historic place, event, governor, administration, estate, church, district, or year, and I will stay within the records currently available in VI Guide.`;
   }
 
   const names = evidence.slice(0, 3).map((item) => item.title);
@@ -90,8 +91,8 @@ function localAnswer(
   const planningIntent = /plan|route|day|visit|tour|itinerary|nearby/i.test(message);
 
   return planningIntent
-    ? `A grounded ${islandName} heritage starting set is ${lead}. These are reviewed VI Guide place records, but current access, hours, admission, and on-site conditions still need local verification. Open the individual records for map and transportation handoffs, and keep the route on one island unless you intentionally plan a transfer.`
-    : `The strongest reviewed ${islandName} heritage matches are ${lead}. I can describe only what the current VI Guide records support; claims absent from those records remain unverified until source material is connected.`;
+    ? `A grounded ${islandName} heritage starting set is ${lead}. These VI Guide records may include historic places, timeline events, or administrations. Current access, hours, admission, and on-site conditions still need local verification. Open the records below for map and transportation handoffs, and keep the route on one island unless you intentionally plan a transfer.`
+    : `The strongest reviewed ${islandName} heritage matches are ${lead}. Open the records below to continue into the timeline, governors, historic-place pages, or map. Claims absent from those records remain unverified until source material is connected.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -205,7 +206,16 @@ export async function POST(request: NextRequest) {
       suggestions: evidence
         .slice(0, 3)
         .map((item) => `Tell me more about ${item.title}`),
-      actions: [],
+      actions: evidence.slice(0, 4).map((item) => ({
+        id: `heritage_${item.id.replace(/[^a-zA-Z0-9_-]/g, "_")}`.slice(0, 100),
+        type: "open_heritage",
+        label: `Open ${item.title}`.slice(0, 120),
+        geoid: item.estateGeoid ?? null,
+        href: item.href,
+        rationale: `Open the reviewed ${item.type} record used in this answer.`,
+        risk: "local",
+        requiresApproval: false,
+      })),
       provider,
       memoryStatus: "session-only",
       budget: {
