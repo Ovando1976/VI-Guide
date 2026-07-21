@@ -69,6 +69,16 @@ export type RideBookingDraft = {
   notes?: string;
 };
 
+export type DriverLocation = {
+  latitude: number;
+  longitude: number;
+  accuracy?: number | null;
+  heading?: number | null;
+  speed?: number | null;
+  driverId?: string;
+  recordedAt: string;
+};
+
 export type RideBooking = {
   id: string;
   riderId: string;
@@ -87,6 +97,8 @@ export type RideBooking = {
   passengers: number;
   luggage: number;
   quotedFare: FareBreakdown;
+  driverLocation?: DriverLocation;
+  driverLocationUpdatedAt?: string | { seconds?: number; nanoseconds?: number };
   assignmentComplianceSnapshot?: {
     driverAuthorizationStatus: string;
     associationStatus: string;
