@@ -68,8 +68,10 @@ function normalizeBooking(
   body: Partial<CommerceBookingRequest> | null,
 ): CommerceBookingRequest | null {
   if (!body) return null;
-  if (!BOOKING_KINDS.includes(body.kind as CommerceBookingKind)) return null;
-  if (!ISLANDS.includes(body.island as IntelligenceIsland)) return null;
+
+  const kind = body.kind;
+  const island = body.island;
+  if (!isBookingKind(kind) || !isIsland(island)) return null;
 
   const listingId = clean(body.listingId, 160);
   const listingName = clean(body.listingName, 180);
@@ -91,17 +93,17 @@ function normalizeBooking(
   }
 
   if (
-    body.kind === "accommodation" &&
+    kind === "accommodation" &&
     (!/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate <= startDate)
   ) {
     return null;
   }
 
   return {
-    kind: body.kind,
+    kind,
     listingId,
     listingName,
-    island: body.island,
+    island,
     startDate,
     adults,
     children,
@@ -117,6 +119,14 @@ function normalizeBooking(
       ? { listingHref: clean(body.listingHref, 500) }
       : {}),
   };
+}
+
+function isBookingKind(value: unknown): value is CommerceBookingKind {
+  return typeof value === "string" && BOOKING_KINDS.includes(value as CommerceBookingKind);
+}
+
+function isIsland(value: unknown): value is IntelligenceIsland {
+  return typeof value === "string" && ISLANDS.includes(value as IntelligenceIsland);
 }
 
 function clean(value: unknown, maxLength: number) {
