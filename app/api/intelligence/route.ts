@@ -11,8 +11,8 @@ import type {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ISLANDS = new Set<IntelligenceIsland>(["stt", "stj", "stx"]);
-const PAGES = new Set<IntelligencePage>([
+const ISLANDS: readonly IntelligenceIsland[] = ["stt", "stj", "stx"];
+const PAGES: readonly IntelligencePage[] = [
   "home",
   "explore",
   "map",
@@ -25,10 +25,18 @@ const PAGES = new Set<IntelligencePage>([
   "concierge",
   "search",
   "unknown",
-]);
+];
 
 function validIdentifier(value: unknown): value is string {
   return typeof value === "string" && /^[a-zA-Z0-9_-]{8,120}$/.test(value);
+}
+
+function isIsland(value: unknown): value is IntelligenceIsland {
+  return typeof value === "string" && ISLANDS.includes(value as IntelligenceIsland);
+}
+
+function isPage(value: unknown): value is IntelligencePage {
+  return typeof value === "string" && PAGES.includes(value as IntelligencePage);
 }
 
 function normalizeContext(value: unknown): IntelligenceContext | null {
@@ -39,23 +47,16 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
   const island = context.island;
   const page = context.page;
 
-  if (!validIdentifier(sessionId)) return null;
-  if (!island || !ISLANDS.has(island)) return null;
-  if (!page || !PAGES.has(page)) return null;
+  if (!validIdentifier(sessionId) || !isIsland(island) || !isPage(page)) {
+    return null;
+  }
 
-  return {
+  const normalized: IntelligenceContext = {
     sessionId,
-    ...(typeof context.userId === "string"
-      ? { userId: context.userId.slice(0, 160) }
-      : {}),
     page,
     island,
     now: typeof context.now === "string" ? context.now : new Date().toISOString(),
     timezone: "America/St_Thomas",
-    ...(context.currentLocation ? { currentLocation: context.currentLocation } : {}),
-    ...(context.selectedPlace ? { selectedPlace: context.selectedPlace } : {}),
-    ...(context.pickup ? { pickup: context.pickup } : {}),
-    ...(context.destination ? { destination: context.destination } : {}),
     party: {
       adults: Math.max(1, Number(context.party?.adults) || 1),
       children: Math.max(0, Number(context.party?.children) || 0),
@@ -78,6 +79,16 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     },
     memory: context.memory && typeof context.memory === "object" ? context.memory : {},
   };
+
+  if (typeof context.userId === "string") {
+    normalized.userId = context.userId.slice(0, 160);
+  }
+  if (context.currentLocation) normalized.currentLocation = context.currentLocation;
+  if (context.selectedPlace) normalized.selectedPlace = context.selectedPlace;
+  if (context.pickup) normalized.pickup = context.pickup;
+  if (context.destination) normalized.destination = context.destination;
+
+  return normalized;
 }
 
 export async function POST(request: NextRequest) {
@@ -96,9 +107,9 @@ export async function POST(request: NextRequest) {
     const result = runIntelligenceEngine({
       message,
       context,
-      capabilities: Array.isArray(payload.capabilities)
-        ? payload.capabilities.slice(0, 12)
-        : undefined,
+      ...(Array.isArray(payload.capabilities)
+        ? { capabilities: payload.capabilities.slice(0, 12) }
+        : {}),
     });
 
     return NextResponse.json(result, {
