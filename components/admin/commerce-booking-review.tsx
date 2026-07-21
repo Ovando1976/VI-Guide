@@ -49,7 +49,8 @@ export function CommerceBookingReview() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load booking requests.");
       }
-      setBookings(Array.isArray(payload?.bookings) ? payload.bookings : []);
+      const loadedBookings = payload?.bookings;
+      setBookings(Array.isArray(loadedBookings) ? loadedBookings : []);
     } catch (loadError) {
       setError(
         loadError instanceof Error
