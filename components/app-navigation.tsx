@@ -12,6 +12,7 @@ import {
   Route,
   Search,
   Sparkles,
+  TicketCheck,
   Waves,
 } from "lucide-react";
 import clsx from "clsx";
@@ -25,6 +26,7 @@ const ITEMS = [
   { href: "/search", label: "Search", icon: Search },
   { href: "/planner", label: "My Trip", icon: Route },
   { href: "/concierge", label: "Concierge", icon: Sparkles },
+  { href: "/experiences", label: "Book", icon: TicketCheck },
   { href: "/places", label: "Explore", icon: Compass },
   { href: "/beaches", label: "Beaches", icon: Waves },
   { href: "/heritage", label: "Heritage", icon: Landmark },
@@ -44,6 +46,10 @@ function isActive(pathname: string, href: (typeof ITEMS)[number]["href"]) {
       pathname === "/history" ||
       pathname.startsWith("/history/")
     );
+  }
+
+  if (href === "/experiences") {
+    return pathname === "/experiences" || pathname.startsWith("/book");
   }
 
   return pathname === href || pathname.startsWith(`${href}/`);
