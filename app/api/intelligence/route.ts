@@ -46,10 +46,25 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
   const sessionId = context.sessionId;
   const island = context.island;
   const page = context.page;
+  const party = context.party;
+  const preferences = context.preferences;
 
   if (!validIdentifier(sessionId) || !isIsland(island) || !isPage(page)) {
     return null;
   }
+
+  const accessibilityNeeds = Array.isArray(party?.accessibilityNeeds)
+    ? party.accessibilityNeeds.slice(0, 12).map(String)
+    : [];
+  const interests = Array.isArray(preferences?.interests)
+    ? preferences.interests.slice(0, 24).map(String)
+    : [];
+  const food = Array.isArray(preferences?.food)
+    ? preferences.food.slice(0, 20).map(String)
+    : [];
+  const avoid = Array.isArray(preferences?.avoid)
+    ? preferences.avoid.slice(0, 20).map(String)
+    : [];
 
   const normalized: IntelligenceContext = {
     sessionId,
@@ -58,24 +73,16 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     now: typeof context.now === "string" ? context.now : new Date().toISOString(),
     timezone: "America/St_Thomas",
     party: {
-      adults: Math.max(1, Number(context.party?.adults) || 1),
-      children: Math.max(0, Number(context.party?.children) || 0),
-      accessibilityNeeds: Array.isArray(context.party?.accessibilityNeeds)
-        ? context.party.accessibilityNeeds.slice(0, 12).map(String)
-        : [],
+      adults: Math.max(1, Number(party?.adults) || 1),
+      children: Math.max(0, Number(party?.children) || 0),
+      accessibilityNeeds,
     },
     preferences: {
-      interests: Array.isArray(context.preferences?.interests)
-        ? context.preferences.interests.slice(0, 24).map(String)
-        : [],
-      pace: context.preferences?.pace,
-      budget: context.preferences?.budget,
-      food: Array.isArray(context.preferences?.food)
-        ? context.preferences.food.slice(0, 20).map(String)
-        : [],
-      avoid: Array.isArray(context.preferences?.avoid)
-        ? context.preferences.avoid.slice(0, 20).map(String)
-        : [],
+      interests,
+      ...(preferences?.pace ? { pace: preferences.pace } : {}),
+      ...(preferences?.budget ? { budget: preferences.budget } : {}),
+      food,
+      avoid,
     },
     memory: context.memory && typeof context.memory === "object" ? context.memory : {},
   };
