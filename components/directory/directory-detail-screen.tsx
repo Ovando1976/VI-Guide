@@ -16,6 +16,7 @@ import {
 import { DirectoryCard } from "@/components/directory/directory-card";
 import { GooglePlacePhoto } from "@/components/directory/google-place-photo";
 import { PlaceActionBar } from "@/components/place/place-action-bar";
+import { buildDirectoryMapHref } from "@/lib/discovery/map-links";
 import { getNearbyDirectoryItems } from "@/lib/nearby";
 import { getTravelKnowledge, getTravelKnowledgeItem } from "@/lib/travel-knowledge";
 import type { DirectoryIsland, DirectoryItem } from "@/types/directory";
@@ -52,7 +53,7 @@ export function DirectoryDetailScreen({ slug, kind }: Props) {
   }
 
   const photo = getGooglePhoto(item.heroImage);
-  const mapHref = buildMapHref(item);
+  const mapHref = buildDirectoryMapHref(item, kind);
   const rideHref = buildRideHref(item);
   const directionsHref = buildDirectionsHref(item);
   const islandName = formatIsland(item.island);
@@ -204,15 +205,8 @@ function ShareButton({ name }: { name: string }) {
   return <button type="button" onClick={share} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-black uppercase tracking-[.17em] shadow-sm"><Share2 className="h-4 w-4" />{shared ? "Link copied" : "Share"}</button>;
 }
 
-function buildMapHref(item: DirectoryItem) {
-  const params = new URLSearchParams({ island: item.island.toUpperCase(), focus: item.slug });
-  if (typeof item.lat === "number") params.set("lat", String(item.lat));
-  if (typeof item.lng === "number") params.set("lng", String(item.lng));
-  return `/map?${params.toString()}`;
-}
-
 function buildRideHref(item: DirectoryItem) {
-  const params = new URLSearchParams({ island: item.island.toUpperCase(), destination: item.name });
+  const params = new URLSearchParams({ island: item.island, destination: item.name });
   if (item.estateGeoid) params.set("toGeoid", item.estateGeoid);
   if (typeof item.lat === "number") params.set("toLat", String(item.lat));
   if (typeof item.lng === "number") params.set("toLng", String(item.lng));
