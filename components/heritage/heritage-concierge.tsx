@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useRef, useState, type FormEvent } from "react";
-import { BookOpenCheck, Send, Sparkles, X } from "lucide-react";
+import { BookOpenCheck, ExternalLink, Send, Sparkles, X } from "lucide-react";
 
 import type {
+  ConciergeAction,
   ConciergeChatRequest,
   ConciergeContext,
   ConciergeMessage,
@@ -12,7 +14,8 @@ import type {
 
 const PROMPTS = [
   "Plan a grounded heritage half-day",
-  "Which historic places should I start with?",
+  "Tell me about Transfer Day",
+  "Who governed the islands in 1917?",
   "Build a route that stays on this island",
 ] as const;
 
@@ -41,6 +44,8 @@ export function HeritageConcierge({
   const [island, setIsland] = useState<IslandCode>(defaultIsland);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ConciergeMessage[]>([]);
+  const [actions, setActions] = useState<ConciergeAction[]>([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const clientId = useMemo(() => createId("heritage_client"), []);
@@ -52,6 +57,8 @@ export function HeritageConcierge({
     requestRef.current?.abort();
     setIsland(nextIsland);
     setMessages([]);
+    setActions([]);
+    setSuggestions([]);
     setError(null);
   }
 
@@ -91,6 +98,8 @@ export function HeritageConcierge({
     requestRef.current?.abort();
     requestRef.current = controller;
     setMessages(nextMessages);
+    setActions([]);
+    setSuggestions([]);
     setDraft("");
     setLoading(true);
     setError(null);
@@ -115,6 +124,8 @@ export function HeritageConcierge({
         );
       }
       setMessages((current) => [...current, payload.message]);
+      setActions(payload.actions ?? []);
+      setSuggestions(payload.suggestions ?? []);
     } catch (requestError) {
       if (controller.signal.aborted) return;
       setError(
@@ -170,7 +181,7 @@ export function HeritageConcierge({
             <div>
               <h2 className="font-black">Heritage Concierge</h2>
               <p className="mt-1 text-xs text-white/45">
-                Reviewed {islandName} records · uncertainty labeled
+                Places · timeline · governors · uncertainty labeled
               </p>
             </div>
           </div>
@@ -206,7 +217,7 @@ export function HeritageConcierge({
         {!messages.length ? (
           <div className="rounded-[24px] border border-white/10 bg-white/[.05] p-5">
             <p className="text-sm font-semibold leading-6 text-white/70">
-              Ask about reviewed historic places or build a realistic island heritage route. Missing evidence is identified rather than invented.
+              Ask about reviewed historic places, events, governors, or build a realistic island heritage route. Missing evidence is identified rather than invented.
             </p>
             <div className="mt-4 grid gap-2">
               {PROMPTS.map((prompt) => (
@@ -239,6 +250,42 @@ export function HeritageConcierge({
             </div>
           </article>
         ))}
+
+        {actions.length ? (
+          <div className="grid gap-2">
+            <p className="text-[9px] font-black uppercase tracking-[.18em] text-white/35">
+              Open supporting records
+            </p>
+            {actions.map((action) =>
+              action.href ? (
+                <Link
+                  key={action.id}
+                  href={action.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[.05] px-4 py-3 text-xs font-black text-white/75 hover:border-amber-200/25 hover:text-white"
+                >
+                  <span>{action.label}</span>
+                  <ExternalLink size={14} />
+                </Link>
+              ) : null,
+            )}
+          </div>
+        ) : null}
+
+        {suggestions.length ? (
+          <div className="flex flex-wrap gap-2">
+            {suggestions.map((suggestion) => (
+              <button
+                key={suggestion}
+                type="button"
+                onClick={() => void send(suggestion)}
+                className="rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-[10px] font-bold text-white/55 hover:text-white"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        ) : null}
 
         {loading ? (
           <p className="text-xs font-bold text-amber-100/55">
