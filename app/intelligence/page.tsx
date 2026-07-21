@@ -59,18 +59,21 @@ const MODULES = [
 const ISLANDS = [
   {
     code: "stt",
+    slug: "st-thomas",
     name: "St. Thomas",
     focus: "Urban harbor, cruise, airport, shopping, beaches, and east–west mobility corridors.",
     route: "Airport → Charlotte Amalie → Red Hook",
   },
   {
     code: "stj",
+    slug: "st-john",
     name: "St. John",
     focus: "Cruz Bay arrival, North Shore beaches, protected landscapes, villas, and ferry-dependent movement.",
     route: "Cruz Bay → North Shore → Coral Bay",
   },
   {
     code: "stx",
+    slug: "st-croix",
     name: "St. Croix",
     focus: "Twin towns, heritage districts, beaches, agriculture, fishing, and longer cross-island routes.",
     route: "Airport → Christiansted → Frederiksted",
@@ -159,17 +162,25 @@ export default function IntelligencePage() {
                   </div>
                   <div className="mt-4 grid gap-2">
                     <Link
-                      href={`/map?island=${island.code}`}
-                      className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
+                      href={`/intelligence/${island.slug}`}
+                      className="inline-flex min-h-12 items-center justify-between rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.14em] text-[#5f3d00] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                     >
-                      Open island map <ArrowRight className="h-4 w-4" />
+                      Open intelligence brief <ArrowRight className="h-4 w-4" />
                     </Link>
-                    <Link
-                      href={`/mobility?island=${island.code}`}
-                      className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
-                    >
-                      Plan island ride <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link
+                        href={`/map?island=${island.code}`}
+                        className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
+                      >
+                        Map <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <Link
+                        href={`/mobility?island=${island.code}`}
+                        className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
+                      >
+                        Ride <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </article>
