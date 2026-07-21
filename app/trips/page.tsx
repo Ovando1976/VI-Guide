@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { BedDouble, CalendarDays, Users } from "lucide-react";
 
 import { RiderLiveDriverMap } from "@/components/mobility/rider-live-driver-map";
+import { RiderTripTiming } from "@/components/mobility/rider-trip-timing";
 import { TripReturnNotice } from "@/components/mobility/trip-return-notice";
 import { RiderTripHistory } from "@/components/rider-trip-history";
 import { getSession } from "@/lib/auth-server";
@@ -64,6 +65,7 @@ export default async function TripsPage() {
             Book another ride
           </Link>
         </div>
+        <RiderTripTiming riderId={session.uid} />
         <RiderLiveDriverMap riderId={session.uid} />
         {stays.length ? <StayRequestHistory stays={stays} /> : null}
         <RiderTripHistory riderId={session.uid} />
