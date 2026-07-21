@@ -3,6 +3,14 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Clock3,
+  MapPinned,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 import { BookingPanel } from "@/components/booking-panel";
 import type { RideMode } from "@/types/mobility";
@@ -188,42 +196,76 @@ export function MobilityBookingScreen() {
   }
 
   return (
-    <main className="min-h-screen px-4 py-6 text-[#043331] md:px-6 lg:py-8">
-      <div className="mx-auto max-w-6xl space-y-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.24em] text-amber-600">
-              VI Guide Mobility
-            </div>
-            <h1 className="mt-1 text-3xl font-black tracking-[-.04em]">
-              Confirm your island ride
-            </h1>
-          </div>
-          <Link
-            href={`/map?island=${activeIsland}`}
-            className="rounded-full border border-slate-300 bg-white px-4 py-2.5 text-[11px] font-black uppercase tracking-[0.16em]"
-          >
-            Back to map
-          </Link>
-        </div>
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 py-5 text-[#043331] md:px-6 lg:py-8">
+      <div className="mx-auto max-w-7xl space-y-6">
+        <section className="relative overflow-hidden rounded-[36px] bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#16a69b_100%)] px-6 py-8 text-white shadow-[0_28px_90px_rgba(4,51,49,.24)] sm:px-8 lg:px-10 lg:py-10">
+          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-[#f5c451]/10 blur-3xl" />
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-1" aria-label="Choose island">
-          {(["stt", "stj", "stx"] as IslandCode[]).map((island) => (
-            <button
-              key={island}
-              type="button"
-              onClick={() => changeIsland(island)}
-              aria-pressed={activeIsland === island}
-              className={`shrink-0 rounded-full border px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] transition ${
-                activeIsland === island
-                  ? "border-[#043331] bg-[#043331] text-white"
-                  : "border-slate-300 bg-white text-[#043331] hover:border-[#0f766e]"
-              }`}
-            >
-              {island === "stt" ? "St. Thomas" : island === "stj" ? "St. John" : "St. Croix"}
-            </button>
-          ))}
-        </div>
+          <div className="relative grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
+                <Sparkles className="h-4 w-4" /> VI Guide private mobility
+              </div>
+              <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-[-.055em] sm:text-5xl lg:text-6xl">
+                Book the ride. Know the fare. Track every mile.
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-white/70 sm:text-base">
+                A premium island ride experience built around official USVI taxi pricing, licensed dispatch, secure payment, and live trip visibility.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="#book"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.16em] text-[#5f3d00] shadow-lg"
+                >
+                  Start your ride <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href={`/map?island=${activeIsland}`}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/18 bg-white/10 px-5 text-[10px] font-black uppercase tracking-[.16em] text-white backdrop-blur"
+                >
+                  <MapPinned className="h-4 w-4" /> Choose from map
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <TrustCard icon={BadgeCheck} title="Official pricing" copy="Published tariff only. No surge pricing." />
+              <TrustCard icon={ShieldCheck} title="Verified dispatch" copy="Licensed association, driver, and vehicle checks." />
+              <TrustCard icon={Clock3} title="Live trip control" copy="Payment handoff, driver tracking, and rider updates." />
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-wrap items-center justify-between gap-4 rounded-[28px] border border-[#0b5d5b]/10 bg-white/90 p-4 shadow-sm backdrop-blur sm:p-5">
+          <div>
+            <div className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
+              Choose your island
+            </div>
+            <div className="mt-1 text-lg font-black tracking-[-.03em]">
+              One mobility experience across the territory
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 overflow-x-auto" aria-label="Choose island">
+            {(["stt", "stj", "stx"] as IslandCode[]).map((island) => (
+              <button
+                key={island}
+                type="button"
+                onClick={() => changeIsland(island)}
+                aria-pressed={activeIsland === island}
+                className={`shrink-0 rounded-full border px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] transition ${
+                  activeIsland === island
+                    ? "border-[#043331] bg-[#043331] text-white shadow-lg"
+                    : "border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e]"
+                }`}
+              >
+                {island === "stt" ? "St. Thomas" : island === "stj" ? "St. John" : "St. Croix"}
+              </button>
+            ))}
+          </div>
+        </section>
 
         {loading ? (
           <div className="h-[680px] animate-pulse rounded-[36px] bg-white" />
@@ -266,5 +308,27 @@ export function MobilityBookingScreen() {
         )}
       </div>
     </main>
+  );
+}
+
+function TrustCard({
+  icon: Icon,
+  title,
+  copy,
+}: {
+  icon: typeof ShieldCheck;
+  title: string;
+  copy: string;
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-[22px] border border-white/12 bg-white/[.08] p-4 backdrop-blur">
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-[#f7d778]">
+        <Icon className="h-5 w-5" />
+      </span>
+      <div>
+        <div className="text-sm font-black">{title}</div>
+        <div className="mt-1 text-xs font-semibold leading-5 text-white/55">{copy}</div>
+      </div>
+    </div>
   );
 }
