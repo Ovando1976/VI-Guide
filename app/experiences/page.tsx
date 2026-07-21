@@ -6,6 +6,7 @@ import {
   Clock3,
   Compass,
   MapPin,
+  SearchCheck,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -43,6 +44,20 @@ export default function ExperiencesPage() {
               <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-white/68">
                 Request tours and local experiences across the territory, then connect them to your itinerary, map, concierge, and transportation.
               </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/bookings"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 text-[10px] font-black uppercase tracking-[.16em] text-[#043331] transition hover:-translate-y-0.5"
+                >
+                  <SearchCheck className="h-4 w-4" /> Track my booking
+                </Link>
+                <Link
+                  href="/accommodations"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:bg-white/15"
+                >
+                  Browse stays
+                </Link>
+              </div>
             </div>
             <div className="rounded-[28px] border border-white/10 bg-white/[.06] p-6">
               <div className="flex gap-3">
