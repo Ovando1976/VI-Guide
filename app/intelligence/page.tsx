@@ -6,6 +6,7 @@ import {
   Landmark,
   Map,
   Search,
+  Ship,
   Sparkles,
   Waves,
 } from "lucide-react";
@@ -55,14 +56,34 @@ const MODULES = [
   },
 ] as const;
 
+const ISLANDS = [
+  {
+    code: "stt",
+    name: "St. Thomas",
+    focus: "Urban harbor, cruise, airport, shopping, beaches, and east–west mobility corridors.",
+    route: "Airport → Charlotte Amalie → Red Hook",
+  },
+  {
+    code: "stj",
+    name: "St. John",
+    focus: "Cruz Bay arrival, North Shore beaches, protected landscapes, villas, and ferry-dependent movement.",
+    route: "Cruz Bay → North Shore → Coral Bay",
+  },
+  {
+    code: "stx",
+    name: "St. Croix",
+    focus: "Twin towns, heritage districts, beaches, agriculture, fishing, and longer cross-island routes.",
+    route: "Airport → Christiansted → Frederiksted",
+  },
+] as const;
+
 export default function IntelligencePage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.16),transparent_32%),linear-gradient(180deg,#f8f4ea_0%,#fff_52%,#f3f7f5_100%)] px-4 py-6 text-[#043331] sm:px-6 lg:py-10">
-      <div className="mx-auto max-w-7xl space-y-7">
+      <div className="mx-auto max-w-7xl space-y-8">
         <section className="relative overflow-hidden rounded-[38px] bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#18a99e_100%)] px-6 py-9 text-white shadow-[0_28px_90px_rgba(4,51,49,.22)] sm:px-8 lg:px-10 lg:py-12">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-[#f5c451]/10 blur-3xl" />
-
           <div className="relative grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
@@ -75,7 +96,6 @@ export default function IntelligencePage() {
                 VI Guide connects geography, heritage, beaches, fishing, mobility, search, and concierge guidance into one practical territorial intelligence system.
               </p>
             </div>
-
             <div className="rounded-[28px] border border-white/12 bg-white/[.08] p-5 backdrop-blur">
               <div className="text-[9px] font-black uppercase tracking-[.18em] text-[#f7d778]">
                 Connected intelligence
@@ -94,18 +114,77 @@ export default function IntelligencePage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <div className="text-[9px] font-black uppercase tracking-[.2em] text-teal-700">
-                Intelligence modules
+                Island briefs
               </div>
               <h2 className="mt-2 text-3xl font-black tracking-[-.045em] sm:text-4xl">
-                Explore the territory through connected systems
+                Start with the operating character of each island
               </h2>
             </div>
             <Link
               href="/concierge"
               className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.16em] text-white shadow-lg"
             >
-              Ask a territory question <ArrowRight className="h-4 w-4" />
+              Ask an island question <ArrowRight className="h-4 w-4" />
             </Link>
+          </div>
+
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {ISLANDS.map((island) => (
+              <article
+                key={island.code}
+                className="overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm"
+              >
+                <div className="bg-[#043331] p-5 text-white">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">
+                      Island intelligence
+                    </div>
+                    <Ship className="h-5 w-5 text-white/60" />
+                  </div>
+                  <h3 className="mt-3 text-3xl font-black tracking-[-.045em]">
+                    {island.name}
+                  </h3>
+                  <p className="mt-3 text-sm font-semibold leading-6 text-white/65">
+                    {island.focus}
+                  </p>
+                </div>
+                <div className="p-5">
+                  <div className="rounded-[22px] bg-[#f8f4ea] p-4">
+                    <div className="text-[8px] font-black uppercase tracking-[.16em] text-slate-400">
+                      Primary movement spine
+                    </div>
+                    <div className="mt-2 text-sm font-black text-[#043331]">
+                      {island.route}
+                    </div>
+                  </div>
+                  <div className="mt-4 grid gap-2">
+                    <Link
+                      href={`/map?island=${island.code}`}
+                      className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
+                    >
+                      Open island map <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href={`/mobility?island=${island.code}`}
+                      className="inline-flex min-h-11 items-center justify-between rounded-full border border-slate-200 px-4 text-[9px] font-black uppercase tracking-[.14em] text-teal-800 transition hover:border-teal-300 hover:bg-teal-50"
+                    >
+                      Plan island ride <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <div>
+            <div className="text-[9px] font-black uppercase tracking-[.2em] text-teal-700">
+              Intelligence modules
+            </div>
+            <h2 className="mt-2 text-3xl font-black tracking-[-.045em] sm:text-4xl">
+              Explore the territory through connected systems
+            </h2>
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
