@@ -34,20 +34,21 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
     [bookings],
   );
 
-  if (!booking) return null;
-
-  async function cancelRide() {
+  async function cancelRide(activeBooking: RideBooking) {
     setSubmitting(true);
     setMessage(null);
     try {
-      const response = await fetch(`/api/bookings/${booking.id}/status`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          status: "cancelled",
-          message: "Rider cancelled the trip from the trip center.",
-        }),
-      });
+      const response = await fetch(
+        `/api/bookings/${activeBooking.id}/status`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            status: "cancelled",
+            message: "Rider cancelled the trip from the trip center.",
+          }),
+        },
+      );
       const payload = (await response.json().catch(() => null)) as
         | { error?: string }
         | null;
@@ -64,6 +65,8 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
       setSubmitting(false);
     }
   }
+
+  if (!booking) return null;
 
   return (
     <section className="mb-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -93,7 +96,7 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
             <button
               type="button"
               disabled={submitting}
-              onClick={() => void cancelRide()}
+              onClick={() => void cancelRide(booking)}
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-rose-700 px-5 text-[9px] font-black uppercase tracking-[.15em] text-white disabled:opacity-60"
             >
               {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
