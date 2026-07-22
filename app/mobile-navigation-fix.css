@@ -1,0 +1,46 @@
+/* Production mobile navigation repair.
+   Keep all five primary destinations plus account access visible without
+   horizontal scrolling or clipped labels on narrow iPhone screens. */
+@media (max-width: 700px) {
+  .app-nav {
+    width: calc(100vw - 16px);
+    max-width: none;
+    gap: 2px;
+    overflow: visible;
+    padding: 6px;
+  }
+
+  .app-nav__item {
+    min-width: 0;
+    flex: 1 1 0;
+    padding-inline: 2px;
+    white-space: nowrap;
+  }
+
+  .app-nav > .relative {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  .app-nav > .relative > button {
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: var(--vi-muted);
+  }
+}
+
+@media (max-width: 390px) {
+  .app-nav__item {
+    gap: 1px;
+    font-size: 7px;
+    letter-spacing: 0.025em;
+  }
+
+  .app-nav__item svg {
+    width: 17px;
+    height: 17px;
+  }
+}
