@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
+import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
 
 const ExplorerMapScreen = dynamic(
   () =>
@@ -14,6 +15,7 @@ const ExplorerMapScreen = dynamic(
 export default function MapPage() {
   return (
     <div className="map-customer-page">
+      <TerrainDefaultController />
       <style>{`
         .map-customer-page main {
           padding-bottom: 10rem !important;
