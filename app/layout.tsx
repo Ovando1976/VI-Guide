@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 import "./concierge-responsive.css";
+import "./map-premium.css";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 import { ScrollToTop } from "@/components/scroll-to-top";
@@ -32,7 +33,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#062b35",
+  themeColor: "#f8fbfa",
   colorScheme: "light",
 };
 
