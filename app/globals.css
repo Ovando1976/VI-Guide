@@ -4,12 +4,16 @@
 
 :root {
   color-scheme: light;
-  --vi-ink: #043331;
+  --vi-ink: #12312f;
   --vi-teal: #0f766e;
-  --vi-aqua: #14b8a6;
-  --vi-gold: #f5b942;
-  --vi-canvas: #f7f4ed;
-  --vi-line: #dde5e3;
+  --vi-aqua: #25b7ad;
+  --vi-seafoam: #dff5f1;
+  --vi-gold: #e9ad32;
+  --vi-canvas: #fbfaf6;
+  --vi-surface: #ffffff;
+  --vi-sand: #f5eddf;
+  --vi-line: #dce8e5;
+  --vi-muted: #61716e;
 }
 
 * {
@@ -30,26 +34,18 @@ body {
     "Segoe UI",
     sans-serif;
   margin: 0;
-  padding-bottom: calc(128px + env(safe-area-inset-bottom));
+  padding-bottom: calc(110px + env(safe-area-inset-bottom));
   color: var(--vi-ink);
   background:
-    radial-gradient(
-      circle at 8% 0%,
-      rgba(20, 184, 166, 0.08),
-      transparent 26rem
-    ),
-    radial-gradient(
-      circle at 96% 12%,
-      rgba(245, 185, 66, 0.09),
-      transparent 24rem
-    ),
-    var(--vi-canvas);
+    radial-gradient(circle at 6% 0%, rgba(37, 183, 173, 0.09), transparent 28rem),
+    radial-gradient(circle at 98% 8%, rgba(233, 173, 50, 0.1), transparent 24rem),
+    linear-gradient(180deg, #fffefa 0%, #fbfaf6 52%, #f6f8f6 100%);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgba(245, 185, 66, 0.45);
+  background: rgba(233, 173, 50, 0.34);
   color: var(--vi-ink);
 }
 button,
@@ -68,7 +64,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(20, 184, 166, 0.28);
+  outline: 3px solid rgba(37, 183, 173, 0.3);
   outline-offset: 3px;
 }
 
@@ -78,17 +74,18 @@ textarea:focus-visible {
   left: 50%;
   bottom: max(12px, env(safe-area-inset-bottom));
   display: flex;
-  width: min(780px, calc(100vw - 24px));
+  width: min(650px, calc(100vw - 24px));
   transform: translateX(-50%);
   align-items: center;
+  justify-content: center;
   gap: 4px;
   overflow-x: auto;
   padding: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 118, 110, 0.14);
   border-radius: 24px;
-  background: rgba(4, 51, 49, 0.93);
-  box-shadow: 0 20px 48px rgba(4, 51, 49, 0.28);
-  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 46px rgba(18, 49, 47, 0.16);
+  backdrop-filter: blur(20px);
   scrollbar-width: none;
 }
 .app-nav::-webkit-scrollbar {
@@ -96,28 +93,24 @@ textarea:focus-visible {
 }
 .app-nav__brand {
   display: grid;
-  min-width: 42px;
-  height: 42px;
+  min-width: 40px;
+  height: 40px;
   place-items: center;
-  border-radius: 16px;
-  background: var(--vi-gold);
+  border-radius: 15px;
   color: var(--vi-ink);
-  font-size: 11px;
-  font-weight: 950;
-  letter-spacing: 0.08em;
 }
 .app-nav__item {
   display: flex;
-  min-width: 84px;
-  height: 42px;
+  min-width: 92px;
+  height: 44px;
   align-items: center;
   justify-content: center;
   gap: 7px;
   border-radius: 16px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #667773;
   font-size: 10px;
   font-weight: 850;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   transition:
     background 0.2s ease,
@@ -125,13 +118,13 @@ textarea:focus-visible {
     transform 0.2s ease;
 }
 .app-nav__item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
+  background: #eef8f5;
+  color: var(--vi-teal);
 }
 .app-nav__item.is-active {
-  background: white;
-  color: var(--vi-ink);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  background: var(--vi-teal);
+  color: white;
+  box-shadow: 0 9px 22px rgba(15, 118, 110, 0.24);
 }
 
 .directory-page,
@@ -142,27 +135,28 @@ textarea:focus-visible {
   max-width: 1380px;
 }
 .directory-page > div > section:first-of-type {
-  box-shadow: 0 22px 60px rgba(4, 51, 49, 0.09);
+  box-shadow: 0 22px 60px rgba(4, 51, 49, 0.07);
 }
 .directory-page input,
 .admin-page input,
 .admin-page select {
   min-height: 46px;
-  box-shadow: inset 0 1px 2px rgba(4, 51, 49, 0.035);
+  background: white;
+  box-shadow: inset 0 1px 2px rgba(4, 51, 49, 0.03);
 }
 
 .home-hero__photo {
   background-image: url("/images/usvi-harbor-hero.jpg");
   background-position: center;
   background-size: cover;
-  filter: saturate(0.9) contrast(1.05);
-  transform: scale(1.015);
+  filter: saturate(1.05) contrast(1.01) brightness(1.08);
+  transform: scale(1.01);
 }
 .home-kicker {
-  color: #a95816;
+  color: #a45d13;
   font-size: 10px;
   font-weight: 950;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 .home-journey {
@@ -170,29 +164,29 @@ textarea:focus-visible {
   min-height: 310px;
   flex-direction: column;
   padding: 1.75rem;
-  border: 1px solid #dce6e3;
+  border: 1px solid var(--vi-line);
   border-radius: 28px;
   color: var(--vi-ink);
-  box-shadow: 0 18px 55px rgba(4, 51, 49, 0.09);
+  box-shadow: 0 16px 44px rgba(18, 49, 47, 0.07);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
 .home-journey:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 28px 70px rgba(4, 51, 49, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(18, 49, 47, 0.12);
 }
 .home-journey--gold {
-  background: linear-gradient(145deg, #fff8e5, #fff0bd);
-  border-color: #ebc86d;
+  background: linear-gradient(145deg, #fffaf0, #fff2ce);
+  border-color: #ecd08c;
 }
 .home-journey--aqua {
-  background: linear-gradient(145deg, #eafaf6, #d7f3ed);
-  border-color: #9bded3;
+  background: linear-gradient(145deg, #f4fcfa, #e5f7f3);
+  border-color: #b7e4dc;
 }
 .home-journey--cream {
-  background: linear-gradient(145deg, #fff, #f8f5ed);
+  background: linear-gradient(145deg, #fff, #fbf8f1);
 }
 .home-journey__icon {
   display: grid;
@@ -201,8 +195,8 @@ textarea:focus-visible {
   place-items: center;
   border-radius: 17px;
   color: white;
-  background: var(--vi-ink);
-  box-shadow: 0 12px 24px rgba(4, 51, 49, 0.18);
+  background: var(--vi-teal);
+  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.18);
 }
 .home-concierge-card {
   animation: home-float 7s ease-in-out infinite;
@@ -225,17 +219,20 @@ textarea:focus-visible {
 
 @media (max-width: 700px) {
   body {
-    padding-bottom: calc(116px + env(safe-area-inset-bottom));
+    padding-bottom: calc(104px + env(safe-area-inset-bottom));
   }
   .app-nav {
-    justify-content: flex-start;
+    justify-content: space-around;
     border-radius: 20px;
+    padding: 6px;
   }
   .app-nav__brand {
     display: none;
   }
   .app-nav__item {
-    min-width: 66px;
+    min-width: 58px;
+    height: 48px;
+    flex: 1 0 0;
     flex-direction: column;
     gap: 2px;
     font-size: 8px;
@@ -270,25 +267,25 @@ textarea:focus-visible {
 /* Living Map aesthetic pass */
 .leaflet-container {
   font-family: inherit;
-  background: #031019;
+  background: #d8efec;
 }
 .leaflet-control-zoom a,
 .leaflet-control-layers {
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  background: rgba(4, 18, 28, 0.92) !important;
-  color: white !important;
+  border: 1px solid rgba(15, 118, 110, 0.14) !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--vi-ink) !important;
   backdrop-filter: blur(14px);
 }
 .leaflet-control-zoom a:hover {
-  background: rgba(12, 42, 57, 0.96) !important;
+  background: #eef8f5 !important;
 }
 .leaflet-control-attribution {
-  background: rgba(3, 12, 19, 0.68) !important;
-  color: rgba(255, 255, 255, 0.48) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: rgba(18, 49, 47, 0.58) !important;
   border-radius: 10px 0 0 0;
 }
 .leaflet-control-attribution a {
-  color: rgba(165, 243, 252, 0.72) !important;
+  color: var(--vi-teal) !important;
 }
 
 /* Living Map v2 — category markers and premium map chrome */
@@ -299,13 +296,13 @@ textarea:focus-visible {
 .vi-place-marker__pin {
   display: grid;
   place-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.96);
   border-radius: 9999px;
   background: var(--marker-color);
   color: white;
   box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.5),
-    0 0 0 4px rgba(4, 16, 24, 0.48);
+    0 7px 18px rgba(18, 49, 47, 0.24),
+    0 0 0 4px rgba(255, 255, 255, 0.66);
   font-size: 14px;
   font-weight: 900;
   line-height: 1;
@@ -317,23 +314,20 @@ textarea:focus-visible {
 .vi-place-marker__pin.is-selected {
   transform: scale(1.14);
   box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.55),
-    0 0 0 5px rgba(103, 232, 249, 0.28);
-}
-.leaflet-container {
-  font-family: inherit;
+    0 12px 28px rgba(18, 49, 47, 0.28),
+    0 0 0 5px rgba(37, 183, 173, 0.24);
 }
 .leaflet-control-zoom a {
-  background: rgba(5, 21, 32, 0.92) !important;
-  color: white !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--vi-ink) !important;
+  border-color: rgba(15, 118, 110, 0.14) !important;
   backdrop-filter: blur(14px);
 }
 .leaflet-control-attribution {
-  background: rgba(3, 12, 18, 0.62) !important;
-  color: rgba(255, 255, 255, 0.48) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: rgba(18, 49, 47, 0.56) !important;
   font-size: 9px !important;
 }
 .leaflet-control-attribution a {
-  color: rgba(165, 243, 252, 0.72) !important;
+  color: var(--vi-teal) !important;
 }
