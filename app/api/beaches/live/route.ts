@@ -4,28 +4,40 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const ISLANDS = {
-  stt: [
-    { label: "St Thomas", lat: 18.336, lng: -64.93, radius: 12500 },
-    { label: "East End St Thomas", lat: 18.3268, lng: -64.8495, radius: 6500 },
-    { label: "West End St Thomas", lat: 18.339, lng: -65.016, radius: 6500 },
-    { label: "Northside St Thomas", lat: 18.3655, lng: -64.945, radius: 6500 },
-  ],
-  stj: [
-    { label: "St John", lat: 18.34, lng: -64.75, radius: 10500 },
-    { label: "North Shore St John", lat: 18.357, lng: -64.767, radius: 6000 },
-    { label: "Coral Bay St John", lat: 18.345, lng: -64.714, radius: 6000 },
-  ],
-  stx: [
-    { label: "St Croix", lat: 17.746, lng: -64.747, radius: 22000 },
-    { label: "East End St Croix", lat: 17.756, lng: -64.61, radius: 9000 },
-    { label: "West End St Croix", lat: 17.7125, lng: -64.8838, radius: 9000 },
-    { label: "North Shore St Croix", lat: 17.77, lng: -64.78, radius: 9000 },
-  ],
+  stt: {
+    label: "St. Thomas",
+    bounds: { minLat: 18.285, maxLat: 18.39, minLng: -65.07, maxLng: -64.815 },
+    searches: [
+      { label: "St Thomas", lat: 18.336, lng: -64.93, radius: 12500 },
+      { label: "East End St Thomas", lat: 18.3268, lng: -64.8495, radius: 6500 },
+      { label: "West End St Thomas", lat: 18.339, lng: -65.016, radius: 6500 },
+      { label: "Northside St Thomas", lat: 18.3655, lng: -64.945, radius: 6500 },
+    ],
+  },
+  stj: {
+    label: "St. John",
+    bounds: { minLat: 18.295, maxLat: 18.39, minLng: -64.87, maxLng: -64.64 },
+    searches: [
+      { label: "St John", lat: 18.34, lng: -64.75, radius: 10500 },
+      { label: "North Shore St John", lat: 18.357, lng: -64.767, radius: 6000 },
+      { label: "Coral Bay St John", lat: 18.345, lng: -64.714, radius: 6000 },
+    ],
+  },
+  stx: {
+    label: "St. Croix",
+    bounds: { minLat: 17.67, maxLat: 17.82, minLng: -64.96, maxLng: -64.53 },
+    searches: [
+      { label: "St Croix", lat: 17.746, lng: -64.747, radius: 22000 },
+      { label: "East End St Croix", lat: 17.756, lng: -64.61, radius: 9000 },
+      { label: "West End St Croix", lat: 17.7125, lng: -64.8838, radius: 9000 },
+      { label: "North Shore St Croix", lat: 17.77, lng: -64.78, radius: 9000 },
+    ],
+  },
 } as const;
 
 type IslandCode = keyof typeof ISLANDS;
 
-type GooglePhoto = { name?: string; widthPx?: number; heightPx?: number };
+type GooglePhoto = { name?: string };
 type GooglePlace = {
   id?: string;
   displayName?: { text?: string };
@@ -44,16 +56,36 @@ type GooglePlace = {
   accessibilityOptions?: Record<string, boolean>;
 };
 
-const QUERIES = [
-  "beach",
-  "public beach",
-  "swimming beach",
-  "snorkeling beach",
-  "sandy beach",
-  "beach park",
-  "bay beach",
-  "shoreline access",
-];
+type BeachRecord = {
+  id: string;
+  slug: string;
+  name: string;
+  title: string;
+  island: IslandCode;
+  lat: number;
+  lng: number;
+  category: "beach";
+  type: "beach";
+  location?: string;
+  description: string;
+  rating?: number;
+  reviewCount?: number;
+  googlePlaceId: string;
+  googleMapsUri?: string;
+  website?: string;
+  image?: string;
+  heroImage?: string;
+  images: string[];
+  hours: string[];
+  accessibility: Record<string, boolean>;
+  amenities: string[];
+  tags: string[];
+  verificationStatus: "verified-beach";
+  verifiedAt: string;
+  source: "google-places-live";
+};
+
+const QUERIES = ["public beach", "beach park", "swimming beach", "snorkeling beach", "sandy beach"];
 
 const FIELD_MASK = [
   "places.id",
@@ -83,10 +115,13 @@ export async function GET(request: NextRequest) {
   }
 
   const island = requestedIsland as IslandCode;
-  const records = new Map<string, Record<string, unknown>>();
+  const config = ISLANDS[island];
+  const candidates: BeachRecord[] = [];
   const failures: string[] = [];
+  const rejected: Array<{ name: string; reason: string }> = [];
+  const verifiedAt = new Date().toISOString();
 
-  for (const point of ISLANDS[island]) {
+  for (const point of config.searches) {
     for (const query of QUERIES) {
       try {
         const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
@@ -124,15 +159,20 @@ export async function GET(request: NextRequest) {
           const lng = place.location?.longitude;
           if (!id || !name || typeof lat !== "number" || typeof lng !== "number") continue;
           if (place.businessStatus === "CLOSED_PERMANENTLY") continue;
-          if (!looksLikeBeach(place)) continue;
+
+          const reason = rejectionReason(place, config.bounds);
+          if (reason) {
+            rejected.push({ name, reason });
+            continue;
+          }
 
           const photos = (place.photos ?? [])
             .map((photo) => photo.name)
             .filter((value): value is string => Boolean(value))
             .slice(0, 8)
-            .map((name) => `/api/google-photo?name=${encodeURIComponent(name)}&maxWidth=1400&maxHeight=1000`);
+            .map((photoName) => `/api/google-photo?name=${encodeURIComponent(photoName)}&maxWidth=1600&maxHeight=1100`);
 
-          records.set(id, {
+          candidates.push({
             id: `live-beach:${id}`,
             slug: slugify(name),
             name,
@@ -143,7 +183,7 @@ export async function GET(request: NextRequest) {
             category: "beach",
             type: "beach",
             location: place.formattedAddress,
-            description: place.editorialSummary?.text ?? buildDescription(place),
+            description: place.editorialSummary?.text?.trim() || buildDescription(place, config.label),
             rating: place.rating,
             reviewCount: place.userRatingCount,
             googlePlaceId: id,
@@ -156,8 +196,8 @@ export async function GET(request: NextRequest) {
             accessibility: place.accessibilityOptions ?? {},
             amenities: inferAmenities(place),
             tags: inferTags(place),
-            verificationStatus: "google_places_live",
-            verifiedAt: new Date().toISOString(),
+            verificationStatus: "verified-beach",
+            verifiedAt,
             source: "google-places-live",
           });
         }
@@ -167,28 +207,100 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  const beaches = dedupeBeaches(candidates);
+
   return NextResponse.json(
     {
       island,
-      count: records.size,
-      places: [...records.values()],
+      count: beaches.length,
+      places: beaches,
       partial: failures.length > 0,
       failures: failures.slice(0, 12),
-      generatedAt: new Date().toISOString(),
+      rejectedCount: rejected.length,
+      methodology: "Explicit beach names or Google beach classification, hard island bounds, business exclusion, and spatial/name deduplication.",
+      generatedAt: verifiedAt,
     },
     { headers: { "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=86400" } },
   );
 }
 
-function looksLikeBeach(place: GooglePlace) {
-  const text = `${place.displayName?.text ?? ""} ${place.primaryType ?? ""} ${(place.types ?? []).join(" ")}`.toLowerCase();
-  if (/restaurant|hotel|resort|bar|shop|store|marina|charter|rental/.test(text) && !/beach$|beach park|public beach/.test(text)) return false;
-  return /beach|shore|strand|cove|bay|point/.test(text);
+function rejectionReason(
+  place: GooglePlace,
+  bounds: { minLat: number; maxLat: number; minLng: number; maxLng: number },
+): string | null {
+  const name = place.displayName?.text?.trim() ?? "";
+  const lowerName = name.toLowerCase();
+  const typeText = `${place.primaryType ?? ""} ${(place.types ?? []).join(" ")}`.toLowerCase();
+  const lat = place.location?.latitude;
+  const lng = place.location?.longitude;
+
+  if (typeof lat !== "number" || typeof lng !== "number") return "missing coordinates";
+  if (lat < bounds.minLat || lat > bounds.maxLat || lng < bounds.minLng || lng > bounds.maxLng) return "outside selected island bounds";
+
+  const explicitBeachName = /\bbeach\b|\bstrand\b/.test(lowerName);
+  const googleBeachType = /(^|_)beach($|_)/.test(typeText);
+  if (!explicitBeachName && !googleBeachType) return "not explicitly identified as a beach";
+
+  const businessWords = /restaurant|bar|grill|cafe|hotel|resort|villa|condo|shop|store|marina|charter|rental|club|spa|wedding|apartments?/;
+  if (businessWords.test(lowerName) || businessWords.test(typeText)) {
+    if (!/\bbeach\b/.test(lowerName) || businessWords.test(typeText)) return "business or lodging rather than a beach";
+  }
+
+  return null;
 }
 
-function buildDescription(place: GooglePlace) {
-  const reviews = typeof place.userRatingCount === "number" ? ` · ${place.userRatingCount} reviews` : "";
-  return `Beach and shoreline destination in the U.S. Virgin Islands${reviews}.`;
+function dedupeBeaches(candidates: BeachRecord[]): BeachRecord[] {
+  const sorted = [...candidates].sort((a, b) => scoreBeach(b) - scoreBeach(a));
+  const accepted: BeachRecord[] = [];
+
+  for (const candidate of sorted) {
+    const normalized = normalizeBeachName(candidate.name);
+    const duplicate = accepted.find((existing) => {
+      const sameName = normalizeBeachName(existing.name) === normalized;
+      const nearby = distanceMeters(existing.lat, existing.lng, candidate.lat, candidate.lng) <= 220;
+      return sameName || (nearby && namesOverlap(existing.name, candidate.name));
+    });
+    if (!duplicate) accepted.push(candidate);
+  }
+
+  return accepted.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function scoreBeach(beach: BeachRecord) {
+  return (beach.image ? 5 : 0) + (beach.rating ?? 0) + Math.min((beach.reviewCount ?? 0) / 100, 5);
+}
+
+function normalizeBeachName(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/\b(public|park|st\.?\s*thomas|st\.?\s*john|st\.?\s*croix|u\.?s\.?v\.?i\.?|usvi)\b/g, " ")
+    .replace(/\bbeach\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function namesOverlap(a: string, b: string) {
+  const left = new Set(normalizeBeachName(a).split(/\s+/).filter(Boolean));
+  const right = new Set(normalizeBeachName(b).split(/\s+/).filter(Boolean));
+  if (!left.size || !right.size) return false;
+  const shared = [...left].filter((token) => right.has(token)).length;
+  return shared / Math.min(left.size, right.size) >= 0.6;
+}
+
+function distanceMeters(lat1: number, lng1: number, lat2: number, lng2: number) {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const earthRadius = 6_371_000;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * earthRadius * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function buildDescription(place: GooglePlace, islandLabel: string) {
+  const reviews = typeof place.userRatingCount === "number" ? ` It has ${place.userRatingCount.toLocaleString()} Google reviews.` : "";
+  return `${place.displayName?.text ?? "This beach"} is a verified beach destination on ${islandLabel}.${reviews}`;
 }
 
 function inferAmenities(place: GooglePlace) {
