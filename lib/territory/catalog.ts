@@ -16,11 +16,13 @@ import {
   travelKnowledgeToTerritoryEntity,
 } from "./adapters";
 
+type PublishedIsland = "stt" | "stj" | "stx";
+
 type GeneratedRestaurant = {
   id: string;
   slug: string;
   name: string;
-  island: "stt" | "stj" | "stx" | "wi";
+  island: PublishedIsland | "wi";
   category: "restaurant";
   diningType?: string;
   cuisines?: string[];
@@ -43,6 +45,8 @@ type GeneratedRestaurant = {
   photoReferences?: string[];
 };
 
+type PublishedRestaurant = GeneratedRestaurant & { island: PublishedIsland };
+
 const places = getPlaceTravelKnowledgeRecords();
 const beaches = getBeachTravelKnowledgeRecords();
 const historicSites = getHistoricTravelKnowledgeRecords();
@@ -54,7 +58,7 @@ const staticEntities: TerritoryEntity[] = dedupe([
   ...places.map((record) => travelKnowledgeToTerritoryEntity(record)),
 
   ...restaurants
-    .filter((record) => record.island !== "wi")
+    .filter(isPublishedRestaurant)
     .map((record) =>
       travelKnowledgeToTerritoryEntity({
         ...record,
@@ -159,6 +163,12 @@ export function getTerritoryCatalogStats(): TerritoryCatalogStats {
     },
     { total: 0, positioned: 0 },
   );
+}
+
+function isPublishedRestaurant(
+  record: GeneratedRestaurant,
+): record is PublishedRestaurant {
+  return record.island === "stt" || record.island === "stj" || record.island === "stx";
 }
 
 function dedupe(entities: TerritoryEntity[]): TerritoryEntity[] {
