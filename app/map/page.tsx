@@ -13,11 +13,11 @@ const ExplorerMapScreen = dynamic(
 
 export default function MapPage() {
   return (
-    <>
+    <div className="map-customer-page">
       <Suspense fallback={null}>
         <MapIntelligenceBridge />
       </Suspense>
       <ExplorerMapScreen />
-    </>
+    </div>
   );
 }
