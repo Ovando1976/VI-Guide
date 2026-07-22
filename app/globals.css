@@ -126,7 +126,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .admin-page__content .space-y-8 { row-gap: 1.25rem; }
 .admin-page__content .gap-8 { gap: 1.25rem; }
 
-/* Customer map shell: keep the satellite map vivid while replacing the old dark dashboard frame. */
+/* Customer map shell */
 .map-customer-page { background: linear-gradient(180deg, #f8fbfa 0%, #f4f8f6 100%); }
 .map-customer-page > div {
   background: radial-gradient(circle at top right, rgba(37,183,173,.08), transparent 30%), linear-gradient(180deg,#fbfdfc 0%,#f3f8f6 100%) !important;
@@ -135,6 +135,91 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .map-customer-page main { max-width: 1680px; }
 .map-customer-page #territory-workspace { align-items: start; }
 .map-customer-page .leaflet-container { border-radius: 24px; }
+
+/* Light discovery frame around the satellite map. */
+.map-customer-page #territory-workspace > section:first-child {
+  border-color: rgba(15, 118, 110, .14) !important;
+  background: #ffffff !important;
+  box-shadow: 0 22px 58px rgba(18, 49, 47, .10) !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:first-child {
+  border-color: #dce8e5 !important;
+  background: linear-gradient(180deg, #ffffff, #f7fbfa) !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:first-child h2,
+.map-customer-page #territory-workspace > section:first-child > div:first-child [class*="text-white"] {
+  color: var(--vi-ink) !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:first-child button:not([aria-pressed="true"]) {
+  border-color: #d7e7e3 !important;
+  background: #f7fbfa !important;
+  color: #61716e !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:first-child button[aria-pressed="true"] {
+  background: #45d5e7 !important;
+  color: #073b39 !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:nth-child(2) {
+  background: #edf6f4 !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:last-child {
+  border-color: #dce8e5 !important;
+  background: #fbfdfc !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:last-child > button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  text-align: left;
+}
+.map-customer-page #territory-workspace > section:first-child > div:last-child [class*="text-white"] {
+  color: var(--vi-ink) !important;
+}
+.map-customer-page #territory-workspace > section:first-child > div:last-child input {
+  border-color: #dce8e5 !important;
+  background: #ffffff !important;
+  color: var(--vi-ink) !important;
+}
+
+/* Light intelligence rail with one deliberate dark route card. */
+.map-customer-page #territory-workspace > aside > section {
+  border-color: rgba(15, 118, 110, .14) !important;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: 0 20px 52px rgba(18, 49, 47, .09) !important;
+}
+.map-customer-page #territory-workspace > aside > section:first-child > div:first-child {
+  border-color: #dce8e5 !important;
+}
+.map-customer-page #territory-workspace > aside h2,
+.map-customer-page #territory-workspace > aside h3,
+.map-customer-page #territory-workspace > aside p,
+.map-customer-page #territory-workspace > aside dt,
+.map-customer-page #territory-workspace > aside dd,
+.map-customer-page #territory-workspace > aside [class*="text-white"] {
+  color: var(--vi-ink) !important;
+}
+.map-customer-page #territory-workspace > aside [class*="bg-white/"] {
+  background: #f5faf8 !important;
+  border-color: #dce8e5 !important;
+}
+.map-customer-page #territory-workspace > aside [class*="bg-cyan"] {
+  background: #e9f8f5 !important;
+  border-color: #bfe6df !important;
+}
+.map-customer-page #territory-workspace > aside [class*="bg-[#071a24]"] {
+  background: #073b39 !important;
+  border-color: #073b39 !important;
+}
+.map-customer-page #territory-workspace > aside [class*="bg-[#071a24]"] [class*="text-white"],
+.map-customer-page #territory-workspace > aside [class*="bg-[#071a24]"] span,
+.map-customer-page #territory-workspace > aside [class*="bg-[#071a24]"] div {
+  color: #ffffff !important;
+}
+.map-customer-page #territory-workspace > aside button:hover {
+  background: #eef8f5 !important;
+}
 
 @media (max-width: 700px) {
   body { padding-bottom: calc(104px + env(safe-area-inset-bottom)); }
