@@ -3,7 +3,11 @@
 import { useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import type { TerritoryEntity, TerritoryEntityKind } from "@/types/territory";
+import type {
+  TerritoryAction,
+  TerritoryEntity,
+  TerritoryEntityKind,
+} from "@/types/territory";
 import type { IslandCode } from "@/types/usvi";
 
 type LivePlace = {
@@ -137,6 +141,16 @@ function livePlaceToEntity(
     ...(place.images ?? []),
     ...(place.gallery ?? []),
   ]);
+  const actions: TerritoryAction[] = place.googleMapsUri
+    ? [
+        {
+          id: "directions",
+          label: "Directions",
+          href: place.googleMapsUri,
+          intent: "directions",
+        },
+      ]
+    : [];
 
   return {
     id,
@@ -165,11 +179,7 @@ function livePlaceToEntity(
       website: place.website,
       subtype: place.subtype,
     },
-    actions: [
-      place.googleMapsUri
-        ? { id: "directions", label: "Directions", href: place.googleMapsUri, intent: "directions" }
-        : null,
-    ].filter((action): action is NonNullable<typeof action> => Boolean(action)),
+    actions,
     source: {
       provider: "vi-guide-live-catalog",
       sourceId: place.googlePlaceId || id,
