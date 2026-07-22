@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">VI Guide restaurant placeholder</title>
+  <desc id="desc">A warm Caribbean dining illustration with sea, palms, and a table setting.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8edbd8"/>
+      <stop offset="1" stop-color="#eff9f5"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#31b8ad"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <path d="M0 570C260 520 420 620 650 565c260-62 420 42 650-18 120-31 208-28 300-5v458H0Z" fill="url(#sea)"/>
+  <circle cx="1300" cy="190" r="92" fill="#f6c453" opacity=".95"/>
+  <path d="M190 610c34-190 67-310 112-430 16 174 12 312-10 445Z" fill="#174d48"/>
+  <path d="M300 230c-88-26-165-10-230 47 98 1 177 22 236 64M304 246c72-54 160-64 265-28-95 24-176 64-243 118M295 246c-13-81 18-151 93-211-17 91-39 164-68 220" fill="none" stroke="#174d48" stroke-width="34" stroke-linecap="round"/>
+  <ellipse cx="800" cy="760" rx="390" ry="90" fill="#12312f" opacity=".18"/>
+  <rect x="525" y="600" width="550" height="250" rx="34" fill="#fffaf0"/>
+  <rect x="585" y="550" width="430" height="72" rx="36" fill="#f3e0b7"/>
+  <circle cx="710" cy="704" r="90" fill="#ffffff" stroke="#d9e7e2" stroke-width="12"/>
+  <circle cx="890" cy="704" r="90" fill="#ffffff" stroke="#d9e7e2" stroke-width="12"/>
+  <path d="M660 690c28-30 67-45 116-45-24 58-61 95-112 111M842 655c56 4 95 25 119 63-44 30-91 38-140 23" fill="none" stroke="#e85d2a" stroke-width="20" stroke-linecap="round"/>
+  <path d="M780 594v-112M820 594v-112" stroke="#12312f" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="780" cy="454" r="20" fill="#f6c453"/>
+  <circle cx="820" cy="454" r="20" fill="#f6c453"/>
+  <text x="800" y="925" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="#ffffff">DISCOVER ISLAND DINING</text>
+</svg>
