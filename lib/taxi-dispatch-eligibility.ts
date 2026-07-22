@@ -16,6 +16,7 @@ export function assertDispatchEligible(params: {
   driverSnapshot: DocumentSnapshot<DocumentData>;
   vehicleSnapshot: DocumentSnapshot<DocumentData>;
   associationSnapshot: DocumentSnapshot<DocumentData>;
+  allowedAvailability?: DriverProfile["availability"][];
 }) {
   if (!params.driverSnapshot.exists) throw new Error("Driver record not found.");
   if (!params.vehicleSnapshot.exists) throw new Error("Assigned fleet vehicle not found.");
@@ -24,11 +25,12 @@ export function assertDispatchEligible(params: {
   const driver = { id: params.driverSnapshot.id, ...params.driverSnapshot.data() } as DriverProfile;
   const vehicle = { id: params.vehicleSnapshot.id, ...params.vehicleSnapshot.data() } as VehicleRecord;
   const association = { id: params.associationSnapshot.id, ...params.associationSnapshot.data() } as TaxiAssociation;
+  const allowedAvailability = params.allowedAvailability ?? ["available"];
 
   if (!driver.verified || driver.authorizationStatus !== "active") throw new Error("Driver is not actively authorized for taxi dispatch.");
   if (!driver.taxiCommissionBadgeNumber || !hasCurrentExpiration(driver.taxiCommissionBadgeExpiresAt)) throw new Error("Driver Taxicab Commission credential is missing, invalid, or expired.");
   if (!driver.licenseClass || !hasCurrentExpiration(driver.licenseExpiresAt)) throw new Error("Driver license credential is missing, invalid, or expired.");
-  if (driver.availability !== "available") throw new Error("Driver is not available.");
+  if (!allowedAvailability.includes(driver.availability)) throw new Error("Driver availability is not valid for this trip action.");
   if (!driver.islands.includes(params.booking.island)) throw new Error("Driver is not authorized for the booking island.");
   if (!driver.associationId || driver.associationId !== association.id || association.status !== "active") throw new Error("Driver does not belong to an active taxi association.");
   if (params.booking.associationId && params.booking.associationId !== association.id) throw new Error("Driver belongs to a different taxi association than the assigned dispatch.");
