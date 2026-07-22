@@ -1,5 +1,5 @@
 .premium-territory-map .leaflet-tile-pane {
-  filter: saturate(1.13) contrast(1.10) brightness(0.99);
+  filter: saturate(1.1) contrast(1.06) brightness(1.01);
 }
 
 .premium-territory-map .leaflet-tile {
@@ -9,12 +9,18 @@
   image-rendering: auto;
 }
 
-/* Keep the map atmospheric without washing out geography. */
+/* OpenTopoMap was returning incomplete tile grids on iPad. Keep the
+   presentation build on the two reliable production layers until a dedicated
+   terrain provider is integrated. */
+.premium-territory-map div[class*="top-[94px]"] > div > button:nth-child(3) {
+  display: none;
+}
+
 .premium-territory-map > [class*="top-0"][class*="linear-gradient"] {
   background: linear-gradient(
     180deg,
-    rgba(7, 41, 45, 0.58) 0%,
-    rgba(7, 41, 45, 0.16) 70%,
+    rgba(7, 41, 45, 0.5) 0%,
+    rgba(7, 41, 45, 0.1) 70%,
     transparent 100%
   ) !important;
 }
@@ -22,11 +28,11 @@
 .premium-territory-map > [class*="bottom-0"][class*="linear-gradient"] {
   background: linear-gradient(
     0deg,
-    rgba(7, 41, 45, 0.34) 0%,
-    rgba(7, 41, 45, 0.08) 54%,
+    rgba(7, 41, 45, 0.28) 0%,
+    rgba(7, 41, 45, 0.05) 54%,
     transparent 100%
   ) !important;
-  padding-top: 2.5rem !important;
+  padding-top: 2.25rem !important;
 }
 
 .vi-semantic-marker,
@@ -41,7 +47,7 @@
   place-items: center;
   transform-origin: 50% 100%;
   transition: transform 160ms ease, filter 160ms ease;
-  filter: drop-shadow(0 7px 10px rgba(18, 49, 47, 0.28));
+  filter: drop-shadow(0 8px 11px rgba(18, 49, 47, 0.3));
 }
 
 .vi-semantic-marker__halo:hover,
@@ -140,8 +146,8 @@
   .premium-territory-map > [class*="top-0"][class*="linear-gradient"] {
     background: linear-gradient(
       180deg,
-      rgba(7, 41, 45, 0.54) 0%,
-      rgba(7, 41, 45, 0.12) 72%,
+      rgba(7, 41, 45, 0.46) 0%,
+      rgba(7, 41, 45, 0.08) 72%,
       transparent 100%
     ) !important;
   }
