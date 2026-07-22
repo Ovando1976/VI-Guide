@@ -16,23 +16,11 @@
   --vi-muted: #61716e;
 }
 
-* {
-  box-sizing: border-box;
-}
-html {
-  background: var(--vi-canvas);
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { background: var(--vi-canvas); scroll-behavior: smooth; }
 body {
   min-height: 100vh;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
   padding-bottom: calc(110px + env(safe-area-inset-bottom));
   color: var(--vi-ink);
@@ -43,27 +31,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
-::selection {
-  background: rgba(233, 173, 50, 0.34);
-  color: var(--vi-ink);
-}
-button,
-a,
-input,
-select,
-textarea {
-  -webkit-tap-highlight-color: transparent;
-}
-button,
-a {
-  touch-action: manipulation;
-}
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
+::selection { background: rgba(233, 173, 50, 0.34); color: var(--vi-ink); }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 3px solid rgba(37, 183, 173, 0.3);
   outline-offset: 3px;
 }
@@ -88,17 +59,8 @@ textarea:focus-visible {
   backdrop-filter: blur(20px);
   scrollbar-width: none;
 }
-.app-nav::-webkit-scrollbar {
-  display: none;
-}
-.app-nav__brand {
-  display: grid;
-  min-width: 40px;
-  height: 40px;
-  place-items: center;
-  border-radius: 15px;
-  color: var(--vi-ink);
-}
+.app-nav::-webkit-scrollbar { display: none; }
+.app-nav__brand { display: grid; min-width: 40px; height: 40px; place-items: center; border-radius: 15px; color: var(--vi-ink); }
 .app-nav__item {
   display: flex;
   min-width: 92px;
@@ -112,34 +74,15 @@ textarea:focus-visible {
   font-weight: 850;
   letter-spacing: 0.06em;
   text-decoration: none;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-.app-nav__item:hover {
-  background: #eef8f5;
-  color: var(--vi-teal);
-}
-.app-nav__item.is-active {
-  background: var(--vi-teal);
-  color: white;
-  box-shadow: 0 9px 22px rgba(15, 118, 110, 0.24);
-}
+.app-nav__item:hover { background: #eef8f5; color: var(--vi-teal); }
+.app-nav__item.is-active { background: var(--vi-teal); color: white; box-shadow: 0 9px 22px rgba(15, 118, 110, 0.24); }
 
-.directory-page,
-.admin-page {
-  background: transparent;
-}
-.directory-page > div {
-  max-width: 1380px;
-}
-.directory-page > div > section:first-of-type {
-  box-shadow: 0 22px 60px rgba(4, 51, 49, 0.07);
-}
-.directory-page input,
-.admin-page input,
-.admin-page select {
+.directory-page, .admin-page { background: transparent; }
+.directory-page > div { max-width: 1380px; }
+.directory-page > div > section:first-of-type { box-shadow: 0 22px 60px rgba(4, 51, 49, 0.07); }
+.directory-page input, .admin-page input, .admin-page select {
   min-height: 46px;
   background: white;
   box-shadow: inset 0 1px 2px rgba(4, 51, 49, 0.03);
@@ -152,13 +95,7 @@ textarea:focus-visible {
   filter: saturate(1.05) contrast(1.01) brightness(1.08);
   transform: scale(1.01);
 }
-.home-kicker {
-  color: #a45d13;
-  font-size: 10px;
-  font-weight: 950;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
+.home-kicker { color: #a45d13; font-size: 10px; font-weight: 950; letter-spacing: 0.22em; text-transform: uppercase; }
 .home-journey {
   display: flex;
   min-height: 310px;
@@ -168,26 +105,12 @@ textarea:focus-visible {
   border-radius: 28px;
   color: var(--vi-ink);
   box-shadow: 0 16px 44px rgba(18, 49, 47, 0.07);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.home-journey:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(18, 49, 47, 0.12);
-}
-.home-journey--gold {
-  background: linear-gradient(145deg, #fffaf0, #fff2ce);
-  border-color: #ecd08c;
-}
-.home-journey--aqua {
-  background: linear-gradient(145deg, #f4fcfa, #e5f7f3);
-  border-color: #b7e4dc;
-}
-.home-journey--cream {
-  background: linear-gradient(145deg, #fff, #fbf8f1);
-}
+.home-journey:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(18, 49, 47, 0.12); }
+.home-journey--gold { background: linear-gradient(145deg, #fffaf0, #fff2ce); border-color: #ecd08c; }
+.home-journey--aqua { background: linear-gradient(145deg, #f4fcfa, #e5f7f3); border-color: #b7e4dc; }
+.home-journey--cream { background: linear-gradient(145deg, #fff, #fbf8f1); }
 .home-journey__icon {
   display: grid;
   width: 50px;
@@ -198,101 +121,52 @@ textarea:focus-visible {
   background: var(--vi-teal);
   box-shadow: 0 12px 24px rgba(15, 118, 110, 0.18);
 }
-.home-concierge-card {
-  animation: home-float 7s ease-in-out infinite;
+.home-concierge-card { animation: home-float 7s ease-in-out infinite; }
+@keyframes home-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.admin-page__content .space-y-8 { row-gap: 1.25rem; }
+.admin-page__content .gap-8 { gap: 1.25rem; }
+
+/* Customer map shell: keep the satellite map vivid while replacing the old dark dashboard frame. */
+.map-customer-page { background: linear-gradient(180deg, #f8fbfa 0%, #f4f8f6 100%); }
+.map-customer-page > div {
+  background: radial-gradient(circle at top right, rgba(37,183,173,.08), transparent 30%), linear-gradient(180deg,#fbfdfc 0%,#f3f8f6 100%) !important;
+  color: var(--vi-ink) !important;
 }
-@keyframes home-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
-}
-.admin-page__content .space-y-8 {
-  row-gap: 1.25rem;
-}
-.admin-page__content .gap-8 {
-  gap: 1.25rem;
-}
+.map-customer-page main { max-width: 1680px; }
+.map-customer-page #territory-workspace { align-items: start; }
+.map-customer-page .leaflet-container { border-radius: 24px; }
 
 @media (max-width: 700px) {
-  body {
-    padding-bottom: calc(104px + env(safe-area-inset-bottom));
-  }
-  .app-nav {
-    justify-content: space-around;
-    border-radius: 20px;
-    padding: 6px;
-  }
-  .app-nav__brand {
-    display: none;
-  }
-  .app-nav__item {
-    min-width: 58px;
-    height: 48px;
-    flex: 1 0 0;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 8px;
-  }
-  .directory-page > div > section:first-of-type > div:first-child {
-    padding: 1.75rem 1.25rem;
-  }
-  .directory-page > div > section:first-of-type > div:last-child {
-    padding: 1rem 1.25rem;
-  }
-  .home-hero {
-    min-height: auto;
-  }
-  .home-hero__photo {
-    background-position: 62% center;
-  }
-  .home-concierge-card {
-    animation: none;
-  }
+  body { padding-bottom: calc(104px + env(safe-area-inset-bottom)); }
+  .app-nav { justify-content: space-around; border-radius: 20px; padding: 6px; }
+  .app-nav__brand { display: none; }
+  .app-nav__item { min-width: 58px; height: 48px; flex: 1 0 0; flex-direction: column; gap: 2px; font-size: 8px; }
+  .directory-page > div > section:first-of-type > div:first-child { padding: 1.75rem 1.25rem; }
+  .directory-page > div > section:first-of-type > div:last-child { padding: 1rem 1.25rem; }
+  .home-hero { min-height: auto; }
+  .home-hero__photo { background-position: 62% center; }
+  .home-concierge-card { animation: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-/* Living Map aesthetic pass */
-.leaflet-container {
-  font-family: inherit;
-  background: #d8efec;
-}
-.leaflet-control-zoom a,
-.leaflet-control-layers {
+.leaflet-container { font-family: inherit; background: #d8efec; }
+.leaflet-control-zoom a, .leaflet-control-layers {
   border: 1px solid rgba(15, 118, 110, 0.14) !important;
   background: rgba(255, 255, 255, 0.94) !important;
   color: var(--vi-ink) !important;
   backdrop-filter: blur(14px);
 }
-.leaflet-control-zoom a:hover {
-  background: #eef8f5 !important;
-}
+.leaflet-control-zoom a:hover { background: #eef8f5 !important; }
 .leaflet-control-attribution {
   background: rgba(255, 255, 255, 0.82) !important;
   color: rgba(18, 49, 47, 0.58) !important;
   border-radius: 10px 0 0 0;
 }
-.leaflet-control-attribution a {
-  color: var(--vi-teal) !important;
-}
-
-/* Living Map v2 — category markers and premium map chrome */
-.vi-place-marker {
-  background: transparent !important;
-  border: 0 !important;
-}
+.leaflet-control-attribution a { color: var(--vi-teal) !important; }
+.vi-place-marker { background: transparent !important; border: 0 !important; }
 .vi-place-marker__pin {
   display: grid;
   place-items: center;
@@ -300,22 +174,15 @@ textarea:focus-visible {
   border-radius: 9999px;
   background: var(--marker-color);
   color: white;
-  box-shadow:
-    0 7px 18px rgba(18, 49, 47, 0.24),
-    0 0 0 4px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 7px 18px rgba(18, 49, 47, 0.24), 0 0 0 4px rgba(255, 255, 255, 0.66);
   font-size: 14px;
   font-weight: 900;
   line-height: 1;
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
-.vi-place-marker__pin:hover,
-.vi-place-marker__pin.is-selected {
+.vi-place-marker__pin:hover, .vi-place-marker__pin.is-selected {
   transform: scale(1.14);
-  box-shadow:
-    0 12px 28px rgba(18, 49, 47, 0.28),
-    0 0 0 5px rgba(37, 183, 173, 0.24);
+  box-shadow: 0 12px 28px rgba(18, 49, 47, 0.28), 0 0 0 5px rgba(37, 183, 173, 0.24);
 }
 .leaflet-control-zoom a {
   background: rgba(255, 255, 255, 0.95) !important;
@@ -328,6 +195,4 @@ textarea:focus-visible {
   color: rgba(18, 49, 47, 0.56) !important;
   font-size: 9px !important;
 }
-.leaflet-control-attribution a {
-  color: var(--vi-teal) !important;
-}
+.leaflet-control-attribution a { color: var(--vi-teal) !important; }
