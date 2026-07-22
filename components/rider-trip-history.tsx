@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { subscribeToRiderBookings } from "@/lib/firestore-trips";
 import type { RideBooking } from "@/types/mobility";
@@ -84,7 +85,7 @@ export function RiderTripHistory({ riderId }: Props) {
           Your island trip center
         </h2>
         <p className="mt-3 max-w-3xl text-sm font-semibold text-slate-500">
-          Track active rides, review completed trips, and follow live trip movement across the territory.
+          Track active rides, complete secure payment, review completed trips, and follow live trip movement across the territory.
         </p>
       </div>
 
@@ -117,21 +118,27 @@ export function RiderTripHistory({ riderId }: Props) {
             </div>
 
             <div className="space-y-6 p-6">
+              <PaymentStatusPanel booking={primaryActive} />
+
               <div className="grid gap-4 md:grid-cols-3">
                 <MetricCard
                   label="Driver"
                   value={
-                    primaryActive.driverId
-                      ? "Verified driver assigned"
-                      : "Awaiting assignment"
+                    primaryActive.paymentStatus !== "paid"
+                      ? "Payment required first"
+                      : primaryActive.driverId
+                        ? "Verified driver assigned"
+                        : "Awaiting assignment"
                   }
                 />
                 <MetricCard
                   label="Vehicle"
                   value={
-                    primaryActive.vehicleId
-                      ? "Verified fleet vehicle"
-                      : "Pending match"
+                    primaryActive.paymentStatus !== "paid"
+                      ? "Dispatch not opened"
+                      : primaryActive.vehicleId
+                        ? "Verified fleet vehicle"
+                        : "Pending match"
                   }
                 />
                 <MetricCard
@@ -145,7 +152,7 @@ export function RiderTripHistory({ riderId }: Props) {
                   Rider guidance
                 </div>
                 <div className="mt-3 text-sm font-semibold leading-6 text-slate-700">
-                  {statusGuidance(primaryActive.status)}
+                  {paymentAwareGuidance(primaryActive)}
                 </div>
               </div>
 
@@ -165,7 +172,7 @@ export function RiderTripHistory({ riderId }: Props) {
                           {booking.origin.estateName} → {booking.destination.estateName}
                         </div>
                         <div className="mt-1 text-xs font-black uppercase tracking-[0.2em] text-slate-400">
-                          {prettyStatus(booking.status)}
+                          {prettyStatus(booking.status)} · {prettyPaymentStatus(booking.paymentStatus)}
                         </div>
                       </button>
                     ))}
@@ -189,7 +196,7 @@ export function RiderTripHistory({ riderId }: Props) {
             No active trips right now.
           </div>
           <div className="mt-2 text-sm font-semibold text-slate-500">
-            Once you request a ride, live trip activity will appear here.
+            Once you request a ride, payment and live trip activity will appear here.
           </div>
         </section>
       )}
@@ -230,7 +237,7 @@ export function RiderTripHistory({ riderId }: Props) {
                           {booking.origin.estateName} → {booking.destination.estateName}
                         </div>
                         <div className="mt-1 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
-                          {booking.mode} · {prettyStatus(booking.status)}
+                          {booking.mode} · {prettyStatus(booking.status)} · {prettyPaymentStatus(booking.paymentStatus)}
                         </div>
                       </div>
                       <div className="text-lg font-black text-[#043331]">
@@ -250,6 +257,57 @@ export function RiderTripHistory({ riderId }: Props) {
 
         <BookingTimelineCard bookingId={selectedBookingId} booking={selectedBooking} />
       </div>
+    </section>
+  );
+}
+
+function PaymentStatusPanel({ booking }: { booking: RideBooking }) {
+  const paid = booking.paymentStatus === "paid";
+  const processing = booking.paymentStatus === "processing";
+
+  return (
+    <section
+      className={`rounded-[26px] border p-5 ${
+        paid
+          ? "border-emerald-200 bg-emerald-50"
+          : processing
+            ? "border-amber-200 bg-amber-50"
+            : "border-rose-200 bg-rose-50"
+      }`}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            Payment and dispatch gate
+          </div>
+          <div className="mt-2 text-xl font-black text-[#043331]">
+            {paid
+              ? "Fare paid · dispatch enabled"
+              : processing
+                ? "Payment is processing"
+                : "Complete payment to open dispatch"}
+          </div>
+          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-600">
+            {paid
+              ? "VI Guide can now match this ride only with an eligible, verified driver and vehicle."
+              : processing
+                ? "Stripe is still confirming this payment. Dispatch remains closed until the booking is marked paid."
+                : "The regulated fare is saved, but no driver should be assigned until secure payment is complete."}
+          </p>
+        </div>
+        <span className="rounded-full border border-white bg-white px-4 py-2 text-[9px] font-black uppercase tracking-[0.15em] text-slate-600 shadow-sm">
+          {prettyPaymentStatus(booking.paymentStatus)}
+        </span>
+      </div>
+
+      {!paid && !processing ? (
+        <Link
+          href={`/checkout/${booking.id}`}
+          className="mt-4 inline-flex rounded-full bg-[#043331] px-5 py-3 text-[9px] font-black uppercase tracking-[0.16em] text-white"
+        >
+          Return to secure payment
+        </Link>
+      ) : null}
     </section>
   );
 }
@@ -282,7 +340,7 @@ function BookingTimelineCard({
             {booking.origin.estateName} → {booking.destination.estateName}
           </div>
           <div className="mt-3 text-sm font-semibold text-slate-500">
-            {booking.passengers} passenger{booking.passengers === 1 ? "" : "s"} · {booking.luggage} bag{booking.luggage === 1 ? "" : "s"} · {booking.mode}
+            {booking.passengers} passenger{booking.passengers === 1 ? "" : "s"} · {booking.luggage} bag{booking.luggage === 1 ? "" : "s"} · {booking.mode} · {prettyPaymentStatus(booking.paymentStatus)}
           </div>
         </section>
       ) : null}
@@ -323,10 +381,37 @@ function prettyStatus(status: RideBooking["status"]) {
   }
 }
 
+function prettyPaymentStatus(status: RideBooking["paymentStatus"]) {
+  switch (status) {
+    case "requires_payment_method":
+      return "Payment required";
+    case "paid":
+      return "Paid";
+    case "processing":
+      return "Processing";
+    case "failed":
+      return "Payment failed";
+    case "canceled":
+      return "Payment canceled";
+    default:
+      return "Unpaid";
+  }
+}
+
+function paymentAwareGuidance(booking: RideBooking) {
+  if (booking.paymentStatus !== "paid") {
+    if (booking.paymentStatus === "processing") {
+      return "Payment confirmation is still processing. Dispatch will open automatically after the booking is marked paid.";
+    }
+    return "Complete secure payment before VI Guide releases this request to verified dispatch.";
+  }
+  return statusGuidance(booking.status);
+}
+
 function statusGuidance(status: RideBooking["status"]) {
   switch (status) {
     case "requested":
-      return "Your ride request is in the island queue and waiting for a verified driver assignment.";
+      return "Your paid ride request is in the island queue and waiting for a verified driver assignment.";
     case "matched":
       return "A verified driver and fleet vehicle are assigned. Expect movement toward pickup shortly.";
     case "driver_en_route":
