@@ -1,5 +1,5 @@
-import { TripPlannerScreen } from "@/components/trip-planner/trip-planner-screen";
+import { redirect } from "next/navigation";
 
 export default function PlanPage() {
-  return <TripPlannerScreen />;
+  redirect("/planner");
 }
