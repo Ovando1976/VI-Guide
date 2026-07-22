@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
 import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
+import { LiveCatalogSync } from "@/components/territory/live-catalog-sync";
 
 const ExplorerMapScreen = dynamic(
   () =>
@@ -43,6 +44,7 @@ export default function MapPage() {
         }
       `}</style>
       <Suspense fallback={null}>
+        <LiveCatalogSync />
         <MapIntelligenceBridge />
       </Suspense>
       <ExplorerMapScreen />
