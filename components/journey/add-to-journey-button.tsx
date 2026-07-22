@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { Check, Plus, Route } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { addStopToJourney, type JourneyStopInput } from "@/lib/journey-planner";
+import {
+  JOURNEY_PLAN_UPDATED_EVENT,
+  addStopToJourney,
+  importLegacyTripPlans,
+  readJourneyPlans,
+  type JourneyStopInput,
+} from "@/lib/journey-planner";
 
 export function AddToJourneyButton({
   stop,
@@ -15,7 +21,29 @@ export function AddToJourneyButton({
 }) {
   const [added, setAdded] = useState(false);
 
+  useEffect(() => {
+    function refresh() {
+      setAdded(
+        readJourneyPlans().some((plan) =>
+          plan.plan.some(
+            (candidate) =>
+              candidate.placeId === stop.id || candidate.id === `place_${stop.id}`,
+          ),
+        ),
+      );
+    }
+
+    refresh();
+    window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refresh);
+    window.addEventListener("storage", refresh);
+    return () => {
+      window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, refresh);
+      window.removeEventListener("storage", refresh);
+    };
+  }, [stop.id]);
+
   function add() {
+    importLegacyTripPlans();
     addStopToJourney(stop);
     setAdded(true);
   }
@@ -26,7 +54,7 @@ export function AddToJourneyButton({
         href="/planner"
         className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-100 px-5 text-[10px] font-black uppercase tracking-[.16em] text-emerald-900 transition hover:bg-emerald-200 ${className}`}
       >
-        <Check className="h-4 w-4" /> Added · View trip
+        <Check className="h-4 w-4" /> Saved · View trip
       </Link>
     );
   }

@@ -1,23 +1,27 @@
 "use client";
 
-import {
-  useMemo,
-  useState } from "react";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import {
+  BedDouble,
   Compass,
+  Landmark,
   MapPin,
+  Route,
   Search,
   Sparkles,
   UtensilsCrossed,
   Waves,
-  BedDouble,
-  Landmark,
+  X,
 } from "lucide-react";
 
 import { DirectoryCard } from "@/components/directory/directory-card";
 import { EmptyState } from "@/components/directory/empty-state";
 import { IslandFilterTabs } from "@/components/directory/island-filter-tabs";
+import {
+  JOURNEY_PLAN_UPDATED_EVENT,
+  readJourneyPlans,
+} from "@/lib/journey-planner";
 import type { DirectoryIsland, DirectoryItem } from "@/types/directory";
 
 type Props = {
@@ -35,9 +39,21 @@ const DESTINATIONS: Array<{
   name: string;
   caption: string;
 }> = [
-  { island: "stt", name: "St. Thomas", caption: "Harbor life, beaches, dining, and island energy" },
-  { island: "stj", name: "St. John", caption: "National park coastlines and ferry-first adventures" },
-  { island: "stx", name: "St. Croix", caption: "Historic towns, broad beaches, and local culture" },
+  {
+    island: "stt",
+    name: "St. Thomas",
+    caption: "Harbor life, beaches, dining, and island energy",
+  },
+  {
+    island: "stj",
+    name: "St. John",
+    caption: "National park coastlines and ferry-first adventures",
+  },
+  {
+    island: "stx",
+    name: "St. Croix",
+    caption: "Historic towns, broad beaches, and local culture",
+  },
 ];
 
 export function DiscoveryDirectoryPage({
@@ -49,7 +65,7 @@ export function DiscoveryDirectoryPage({
   iconName,
   categoryLabel = "Experience",
 }: Props) {
-    const Icon =
+  const Icon =
     iconName === "waves"
       ? Waves
       : iconName === "bed-double"
@@ -57,13 +73,31 @@ export function DiscoveryDirectoryPage({
         : iconName === "landmark"
           ? Landmark
           : UtensilsCrossed;
-const [island, setIsland] = useState<DirectoryIsland | "all">("all");
+
+  const [island, setIsland] = useState<DirectoryIsland | "all">("all");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
+  const [savedStopCount, setSavedStopCount] = useState(0);
+
+  useEffect(() => {
+    function refreshTripCount() {
+      setSavedStopCount(
+        readJourneyPlans().reduce((total, plan) => total + plan.plan.length, 0),
+      );
+    }
+
+    refreshTripCount();
+    window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripCount);
+    window.addEventListener("storage", refreshTripCount);
+    return () => {
+      window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripCount);
+      window.removeEventListener("storage", refreshTripCount);
+    };
+  }, []);
 
   const categories = useMemo(
     () => Array.from(new Set(items.map((item) => item.category))).sort(),
-    [items]
+    [items],
   );
 
   const filtered = useMemo(() => {
@@ -80,8 +114,16 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
 
   const featured = useMemo(
     () => items.filter((item) => item.featured).slice(0, 6),
-    [items]
+    [items],
   );
+
+  const hasFilters = island !== "all" || category !== "all" || Boolean(query.trim());
+
+  function clearFilters() {
+    setIsland("all");
+    setCategory("all");
+    setQuery("");
+  }
 
   return (
     <main className="directory-page min-h-screen bg-[#f8f4ea] px-4 py-5 pb-32 text-[#043331] sm:px-6 lg:py-8">
@@ -105,11 +147,21 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
                 <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em]">
                   Ready with limited connectivity
                 </span>
+                <Link
+                  href="/planner"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] shadow-lg transition hover:bg-[#ffca55]"
+                >
+                  <Route className="h-4 w-4" /> My Trip · {savedStopCount} stop
+                  {savedStopCount === 1 ? "" : "s"}
+                </Link>
               </div>
             </div>
 
             <div className="self-end rounded-[28px] border border-white/15 bg-black/10 p-5 backdrop-blur">
-              <label className="text-[10px] font-black uppercase tracking-[.2em] text-white/65" htmlFor="directory-search">
+              <label
+                className="text-[10px] font-black uppercase tracking-[.2em] text-white/65"
+                htmlFor="directory-search"
+              >
                 What are you looking for?
               </label>
               <div className="relative mt-3">
@@ -119,8 +171,18 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={`Search ${eyebrow.toLowerCase()}...`}
-                  className="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-4 text-base font-semibold text-[#043331] outline-none ring-2 ring-transparent transition focus:ring-[#f5c451]"
+                  className="w-full rounded-2xl border-0 bg-white py-4 pl-12 pr-12 text-base font-semibold text-[#043331] outline-none ring-2 ring-transparent transition focus:ring-[#f5c451]"
                 />
+                {query ? (
+                  <button
+                    type="button"
+                    onClick={() => setQuery("")}
+                    aria-label="Clear search"
+                    className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-[#043331]"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                ) : null}
               </div>
             </div>
           </div>
@@ -129,8 +191,12 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
         <section>
           <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[.25em] text-amber-600">Choose an island</div>
-              <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">Start with a destination</h2>
+              <div className="text-[10px] font-black uppercase tracking-[.25em] text-amber-600">
+                Choose an island
+              </div>
+              <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">
+                Start with a destination
+              </h2>
             </div>
             <IslandFilterTabs value={island} onChange={setIsland} />
           </div>
@@ -141,29 +207,58 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
                 <button
                   type="button"
                   key={destination.island}
-                  onClick={() => setIsland(active ? "all" : destination.island)}
-                  className={`rounded-[26px] border p-5 text-left transition ${active ? "border-[#0f766e] bg-[#043331] text-white shadow-lg" : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-teal-700"}`}
+                  onClick={() =>
+                    setIsland(active ? "all" : destination.island)
+                  }
+                  className={`rounded-[26px] border p-5 text-left transition ${
+                    active
+                      ? "border-[#0f766e] bg-[#043331] text-white shadow-lg"
+                      : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-teal-700"
+                  }`}
                 >
-                  <MapPin className={`h-5 w-5 ${active ? "text-[#f5c451]" : "text-teal-700"}`} />
+                  <MapPin
+                    className={`h-5 w-5 ${
+                      active ? "text-[#f5c451]" : "text-teal-700"
+                    }`}
+                  />
                   <strong className="mt-4 block text-xl">{destination.name}</strong>
-                  <span className={`mt-2 block text-sm font-semibold leading-6 ${active ? "text-white/65" : "text-slate-500"}`}>{destination.caption}</span>
+                  <span
+                    className={`mt-2 block text-sm font-semibold leading-6 ${
+                      active ? "text-white/65" : "text-slate-500"
+                    }`}
+                  >
+                    {destination.caption}
+                  </span>
                 </button>
               );
             })}
           </div>
         </section>
 
-        {featured.length && island === "all" && !query ? (
+        {featured.length > 0 && island === "all" && !query ? (
           <section className="space-y-5">
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#043331] text-[#f5c451]"><Sparkles className="h-5 w-5" /></span>
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#043331] text-[#f5c451]">
+                <Sparkles className="h-5 w-5" />
+              </span>
               <div>
-                <div className="text-[10px] font-black uppercase tracking-[.23em] text-amber-600">Recommended</div>
-                <h2 className="text-3xl font-black tracking-[-.04em]">Island favorites to begin with</h2>
+                <div className="text-[10px] font-black uppercase tracking-[.23em] text-amber-600">
+                  Recommended
+                </div>
+                <h2 className="text-3xl font-black tracking-[-.04em]">
+                  Island favorites to begin with
+                </h2>
               </div>
             </div>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {featured.map((item) => <DirectoryCard key={item.id} item={item} href={`${basePath}/${item.slug}`} eyebrow="Recommended" />)}
+              {featured.map((item) => (
+                <DirectoryCard
+                  key={item.id}
+                  item={item}
+                  href={`${basePath}/${item.slug}`}
+                  eyebrow="Recommended"
+                />
+              ))}
             </div>
           </section>
         ) : null}
@@ -171,17 +266,42 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
         <section className="space-y-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <div className="text-[10px] font-black uppercase tracking-[.23em] text-amber-600">Browse the guide</div>
-              <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">Find the right {categoryLabel.toLowerCase()}</h2>
-              <p className="mt-2 text-sm font-semibold text-slate-500">Curated island knowledge is ready whenever you need it.</p>
+              <div className="text-[10px] font-black uppercase tracking-[.23em] text-amber-600">
+                Browse the guide
+              </div>
+              <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">
+                Find the right {categoryLabel.toLowerCase()}
+              </h2>
+              <div className="mt-2 flex flex-wrap items-center gap-3 text-sm font-semibold text-slate-500">
+                <span>
+                  {filtered.length} result{filtered.length === 1 ? "" : "s"} ready
+                  to explore
+                </span>
+                {hasFilters ? (
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="inline-flex items-center gap-1.5 font-black text-teal-800 hover:text-teal-950"
+                  >
+                    <X className="h-3.5 w-3.5" /> Clear filters
+                  </button>
+                ) : null}
+              </div>
             </div>
-            <div className="flex max-w-full gap-2 overflow-x-auto pb-1" aria-label={`${categoryLabel} type`}>
+            <div
+              className="flex max-w-full gap-2 overflow-x-auto pb-1"
+              aria-label={`${categoryLabel} type`}
+            >
               {["all", ...categories].map((value) => (
                 <button
                   key={value}
                   type="button"
                   onClick={() => setCategory(value)}
-                  className={`whitespace-nowrap rounded-full border px-4 py-2 text-[10px] font-black uppercase tracking-[.15em] transition ${category === value ? "border-[#043331] bg-[#043331] text-white" : "border-slate-200 bg-white text-slate-500 hover:border-teal-700"}`}
+                  className={`whitespace-nowrap rounded-full border px-4 py-2 text-[10px] font-black uppercase tracking-[.15em] transition ${
+                    category === value
+                      ? "border-[#043331] bg-[#043331] text-white"
+                      : "border-slate-200 bg-white text-slate-500 hover:border-teal-700"
+                  }`}
                 >
                   {value === "all" ? "All types" : value}
                 </button>
@@ -191,21 +311,42 @@ const [island, setIsland] = useState<DirectoryIsland | "all">("all");
 
           {filtered.length ? (
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {filtered.map((item) => <DirectoryCard key={item.id} item={item} href={`${basePath}/${item.slug}`} eyebrow={item.category} />)}
+              {filtered.map((item) => (
+                <DirectoryCard
+                  key={item.id}
+                  item={item}
+                  href={`${basePath}/${item.slug}`}
+                  eyebrow={item.category}
+                />
+              ))}
             </div>
           ) : (
-            <EmptyState title="Nothing matched that search" description="Try a broader term, another category, or another island." />
+            <EmptyState
+              title="Nothing matched that search"
+              description="Try a broader term, another category, or another island."
+            />
           )}
         </section>
 
         <section className="rounded-[30px] bg-[#043331] p-7 text-white sm:p-9">
           <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]"><Compass className="h-4 w-4" /> Need a complete day?</div>
-              <h2 className="mt-3 text-3xl font-black tracking-[-.04em]">Let the concierge connect the pieces.</h2>
-              <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">Combine beaches, dining, stays, history, and transportation into one practical island plan.</p>
+              <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
+                <Compass className="h-4 w-4" /> Need a complete day?
+              </div>
+              <h2 className="mt-3 text-3xl font-black tracking-[-.04em]">
+                Let the concierge connect the pieces.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">
+                Combine beaches, dining, stays, history, and transportation into one practical island plan.
+              </p>
             </div>
-            <Link href="/?concierge=open" className="inline-flex items-center justify-center rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331]">Plan with concierge</Link>
+            <Link
+              href="/map?concierge=open"
+              className="inline-flex items-center justify-center rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331]"
+            >
+              Plan with concierge
+            </Link>
           </div>
         </section>
       </div>

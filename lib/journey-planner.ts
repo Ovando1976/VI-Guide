@@ -1,7 +1,11 @@
-import type { IntelligenceIsland, IntelligencePlanStop } from "@/types/intelligence";
+import type {
+  IntelligenceIsland,
+  IntelligencePlanStop,
+} from "@/types/intelligence";
 
 export const JOURNEY_PLANS_STORAGE_KEY = "vi-guide.intelligence.saved-plans";
 export const JOURNEY_PLAN_UPDATED_EVENT = "vi-guide-intelligence-plan-saved";
+const LEGACY_TRIP_STORAGE_KEY = "vi-guide-trip-v1";
 
 export type JourneyPlan = {
   id: string;
@@ -26,6 +30,17 @@ export type JourneyStopInput = {
   href?: string;
   mapHref?: string;
   bookingHref?: string;
+};
+
+type LegacyTripItem = {
+  id?: unknown;
+  name?: unknown;
+  kind?: unknown;
+  island?: unknown;
+  description?: unknown;
+  href?: unknown;
+  day?: unknown;
+  timeOfDay?: unknown;
 };
 
 export function createJourneyPlan(
@@ -92,6 +107,74 @@ export function readJourneyPlans(): JourneyPlan[] {
       .map(normalizeJourneyPlan)
       .filter(isJourneyPlan)
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+  } catch {
+    return [];
+  }
+}
+
+export function importLegacyTripPlans(): JourneyPlan[] {
+  if (typeof window === "undefined") return [];
+  const existing = readJourneyPlans();
+  if (existing.length) return existing;
+
+  try {
+    const parsed: unknown = JSON.parse(
+      localStorage.getItem(LEGACY_TRIP_STORAGE_KEY) ?? "[]",
+    );
+    if (!Array.isArray(parsed) || !parsed.length) return [];
+
+    const normalized = parsed
+      .map(normalizeLegacyTripItem)
+      .filter(isLegacyTripItem)
+      .sort((a, b) => a.day - b.day);
+    if (!normalized.length) return [];
+
+    const groups = new Map<string, typeof normalized>();
+    for (const item of normalized) {
+      const key = `${item.day}:${item.island}`;
+      const group = groups.get(key) ?? [];
+      group.push(item);
+      groups.set(key, group);
+    }
+
+    const now = new Date();
+    const nowIso = now.toISOString();
+    const plans = Array.from(groups.entries())
+      .map(([key, stops]) => {
+        const [dayText, island] = key.split(":") as [string, IntelligenceIsland];
+        const day = Number(dayText);
+        const date = new Date(now);
+        date.setDate(now.getDate() + Math.max(0, day - 1));
+
+        return {
+          id: createId("plan"),
+          title: `Day ${day} · ${islandLabel(island)}`,
+          island,
+          date: date.toISOString().slice(0, 10),
+          createdAt: nowIso,
+          updatedAt: nowIso,
+          status: "draft" as const,
+          notes: "Imported automatically from the earlier VI Guide trip planner.",
+          plan: stops.map((item) => ({
+            id: `legacy_${item.id}`.slice(0, 160),
+            placeId: item.id,
+            title: item.name,
+            island: item.island,
+            kind: item.kind,
+            summary:
+              item.description ||
+              `Saved ${item.kind} on ${islandLabel(item.island)}.`,
+            ...(item.href ? { href: item.href } : {}),
+            ...(daypartTime(item.timeOfDay)
+              ? { startTime: daypartTime(item.timeOfDay) }
+              : {}),
+          })),
+        } satisfies JourneyPlan;
+      })
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    writeJourneyPlans(plans);
+    return plans;
   } catch {
     return [];
   }
@@ -206,6 +289,50 @@ function normalizeStop(value: unknown): IntelligencePlanStop | null {
   };
 }
 
+function normalizeLegacyTripItem(value: unknown) {
+  if (!value || typeof value !== "object") return null;
+  const item = value as LegacyTripItem;
+  const island = normalizeIsland(item.island);
+  if (
+    !island ||
+    typeof item.id !== "string" ||
+    !item.id.trim() ||
+    typeof item.name !== "string" ||
+    !item.name.trim()
+  ) {
+    return null;
+  }
+
+  const day = Number(item.day);
+  const timeOfDay =
+    item.timeOfDay === "morning" ||
+    item.timeOfDay === "afternoon" ||
+    item.timeOfDay === "evening" ||
+    item.timeOfDay === "flexible"
+      ? item.timeOfDay
+      : "flexible";
+
+  return {
+    id: item.id.trim().slice(0, 150),
+    name: item.name.trim().slice(0, 160),
+    island,
+    kind:
+      typeof item.kind === "string" && item.kind.trim()
+        ? item.kind.trim().slice(0, 80)
+        : "place",
+    description:
+      typeof item.description === "string"
+        ? item.description.trim().slice(0, 1200)
+        : "",
+    href:
+      typeof item.href === "string" && item.href.trim()
+        ? item.href.trim().slice(0, 500)
+        : "",
+    day: Number.isFinite(day) ? Math.max(1, Math.min(7, Math.round(day))) : 1,
+    timeOfDay,
+  };
+}
+
 function coordinatesFromMapHref(mapHref?: string) {
   if (!mapHref) return null;
   const query = mapHref.split("?")[1];
@@ -214,6 +341,19 @@ function coordinatesFromMapHref(mapHref?: string) {
   const lat = Number(params.get("placeLat"));
   const lng = Number(params.get("placeLng"));
   return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+}
+
+function daypartTime(value: string) {
+  if (value === "morning") return "09:00";
+  if (value === "afternoon") return "13:00";
+  if (value === "evening") return "18:00";
+  return "";
+}
+
+function islandLabel(island: IntelligenceIsland) {
+  if (island === "stj") return "St. John";
+  if (island === "stx") return "St. Croix";
+  return "St. Thomas";
 }
 
 function finiteNumber(value: unknown): value is number {
@@ -227,6 +367,12 @@ function isJourneyPlan(value: JourneyPlan | null): value is JourneyPlan {
 function isJourneyStop(
   value: IntelligencePlanStop | null,
 ): value is IntelligencePlanStop {
+  return value !== null;
+}
+
+function isLegacyTripItem(
+  value: ReturnType<typeof normalizeLegacyTripItem>,
+): value is NonNullable<ReturnType<typeof normalizeLegacyTripItem>> {
   return value !== null;
 }
 
