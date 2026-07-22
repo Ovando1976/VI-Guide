@@ -13,16 +13,19 @@ const ISLANDS = {
   stj: [
     { label: "Cruz Bay St John", lat: 18.331, lng: -64.794, radius: 5000 },
     { label: "Coral Bay St John", lat: 18.345, lng: -64.714, radius: 5000 },
+    { label: "North Shore St John", lat: 18.357, lng: -64.767, radius: 6000 },
   ],
   stx: [
     { label: "Christiansted St Croix", lat: 17.7466, lng: -64.7032, radius: 6000 },
     { label: "Frederiksted St Croix", lat: 17.7125, lng: -64.8838, radius: 6000 },
     { label: "Mid Island St Croix", lat: 17.733, lng: -64.79, radius: 6500 },
-    { label: "East End St Croix", lat: 17.756, lng: -64.61, radius: 6000 },
+    { label: "East End St Croix", lat: 17.756, lng: -64.61, radius: 7000 },
+    { label: "North Shore St Croix", lat: 17.77, lng: -64.78, radius: 7000 },
   ],
 } as const;
 
 type IslandCode = keyof typeof ISLANDS;
+type DiscoveryKind = "restaurant" | "beach";
 
 type GooglePlace = {
   id?: string;
@@ -38,7 +41,7 @@ type GooglePlace = {
   types?: string[];
 };
 
-const QUERIES = [
+const RESTAURANT_QUERIES = [
   "restaurant",
   "Caribbean restaurant",
   "seafood restaurant",
@@ -48,6 +51,16 @@ const QUERIES = [
   "breakfast restaurant",
   "pizza restaurant",
   "beach bar",
+];
+
+const BEACH_QUERIES = [
+  "beach",
+  "public beach",
+  "swimming beach",
+  "snorkeling beach",
+  "beach park",
+  "sandy beach",
+  "bay beach",
 ];
 
 const FIELD_MASK = [
@@ -66,9 +79,7 @@ const FIELD_MASK = [
 
 export async function GET(request: NextRequest) {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json({ error: "Google Places is not configured." }, { status: 503 });
-  }
+  if (!apiKey) return NextResponse.json({ error: "Google Places is not configured." }, { status: 503 });
 
   const requestedIsland = request.nextUrl.searchParams.get("island")?.toLowerCase();
   if (!requestedIsland || !(requestedIsland in ISLANDS)) {
@@ -78,66 +89,27 @@ export async function GET(request: NextRequest) {
   const island = requestedIsland as IslandCode;
   const records = new Map<string, Record<string, unknown>>();
   const failures: string[] = [];
+  let restaurantCount = 0;
+  let beachCount = 0;
 
   for (const point of ISLANDS[island]) {
-    for (const query of QUERIES) {
-      try {
-        const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Goog-Api-Key": apiKey,
-            "X-Goog-FieldMask": FIELD_MASK,
-          },
-          body: JSON.stringify({
-            textQuery: `${query} near ${point.label}, U.S. Virgin Islands`,
-            pageSize: 20,
-            locationBias: {
-              circle: {
-                center: { latitude: point.lat, longitude: point.lng },
-                radius: point.radius,
-              },
-            },
-            languageCode: "en",
-            regionCode: "VI",
-          }),
-          next: { revalidate: 21600 },
-        });
+    for (const query of RESTAURANT_QUERIES) {
+      const places = await searchPlaces(apiKey, point, query, failures);
+      for (const place of places) {
+        const record = toRestaurantRecord(place, island);
+        if (!record) continue;
+        if (!records.has(String(record.googlePlaceId))) restaurantCount += 1;
+        records.set(String(record.googlePlaceId), record);
+      }
+    }
 
-        if (!response.ok) {
-          failures.push(`${query} @ ${point.label}: ${response.status}`);
-          continue;
-        }
-
-        const payload = (await response.json()) as { places?: GooglePlace[] };
-        for (const place of payload.places ?? []) {
-          const id = place.id;
-          const name = place.displayName?.text?.trim();
-          const lat = place.location?.latitude;
-          const lng = place.location?.longitude;
-          if (!id || !name || typeof lat !== "number" || typeof lng !== "number") continue;
-          if (place.businessStatus === "CLOSED_PERMANENTLY") continue;
-
-          records.set(id, {
-            id: `live-restaurant:${id}`,
-            name,
-            title: name,
-            island,
-            lat,
-            lng,
-            category: "food",
-            type: "place",
-            location: place.formattedAddress,
-            description: buildDescription(place),
-            rating: place.rating,
-            phone: place.nationalPhoneNumber,
-            website: place.websiteUri,
-            googlePlaceId: id,
-            source: "google-places-live",
-          });
-        }
-      } catch (error) {
-        failures.push(`${query} @ ${point.label}: ${error instanceof Error ? error.message : String(error)}`);
+    for (const query of BEACH_QUERIES) {
+      const places = await searchPlaces(apiKey, point, query, failures);
+      for (const place of places) {
+        const record = toBeachRecord(place, island);
+        if (!record) continue;
+        if (!records.has(String(record.googlePlaceId))) beachCount += 1;
+        records.set(String(record.googlePlaceId), record);
       }
     }
   }
@@ -146,23 +118,125 @@ export async function GET(request: NextRequest) {
     {
       island,
       count: records.size,
+      restaurantCount,
+      beachCount,
       places: [...records.values()],
       partial: failures.length > 0,
       failures: failures.slice(0, 12),
       generatedAt: new Date().toISOString(),
     },
-    {
-      headers: {
-        "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=86400",
-      },
-    },
+    { headers: { "Cache-Control": "public, s-maxage=21600, stale-while-revalidate=86400" } },
   );
 }
 
-function buildDescription(place: GooglePlace) {
+async function searchPlaces(
+  apiKey: string,
+  point: (typeof ISLANDS)[IslandCode][number],
+  query: string,
+  failures: string[],
+): Promise<GooglePlace[]> {
+  try {
+    const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask": FIELD_MASK,
+      },
+      body: JSON.stringify({
+        textQuery: `${query} near ${point.label}, U.S. Virgin Islands`,
+        pageSize: 20,
+        locationBias: {
+          circle: {
+            center: { latitude: point.lat, longitude: point.lng },
+            radius: point.radius,
+          },
+        },
+        languageCode: "en",
+        regionCode: "VI",
+      }),
+      next: { revalidate: 21600 },
+    });
+
+    if (!response.ok) {
+      failures.push(`${query} @ ${point.label}: ${response.status}`);
+      return [];
+    }
+
+    const payload = (await response.json()) as { places?: GooglePlace[] };
+    return payload.places ?? [];
+  } catch (error) {
+    failures.push(`${query} @ ${point.label}: ${error instanceof Error ? error.message : String(error)}`);
+    return [];
+  }
+}
+
+function toRestaurantRecord(place: GooglePlace, island: IslandCode) {
+  const base = validBase(place);
+  if (!base || place.businessStatus === "CLOSED_PERMANENTLY") return null;
+  return {
+    id: `live-restaurant:${base.id}`,
+    name: base.name,
+    title: base.name,
+    island,
+    lat: base.lat,
+    lng: base.lng,
+    category: "food",
+    type: "place",
+    location: place.formattedAddress,
+    description: buildRestaurantDescription(place),
+    rating: place.rating,
+    phone: place.nationalPhoneNumber,
+    website: place.websiteUri,
+    googlePlaceId: base.id,
+    source: "google-places-live",
+  };
+}
+
+function toBeachRecord(place: GooglePlace, island: IslandCode) {
+  const base = validBase(place);
+  if (!base || place.businessStatus === "CLOSED_PERMANENTLY" || !looksLikeBeach(place)) return null;
+  return {
+    id: `live-beach:${base.id}`,
+    name: base.name,
+    title: base.name,
+    island,
+    lat: base.lat,
+    lng: base.lng,
+    category: "beach",
+    type: "beach",
+    location: place.formattedAddress,
+    description: buildBeachDescription(place),
+    rating: place.rating,
+    googlePlaceId: base.id,
+    source: "google-places-live",
+  };
+}
+
+function validBase(place: GooglePlace) {
+  const id = place.id;
+  const name = place.displayName?.text?.trim();
+  const lat = place.location?.latitude;
+  const lng = place.location?.longitude;
+  if (!id || !name || typeof lat !== "number" || typeof lng !== "number") return null;
+  return { id, name, lat, lng };
+}
+
+function looksLikeBeach(place: GooglePlace) {
+  const text = `${place.displayName?.text ?? ""} ${place.primaryType ?? ""} ${(place.types ?? []).join(" ")}`.toLowerCase();
+  if (/restaurant|hotel|resort|bar|shop|store|marina|charter|rental/.test(text) && !/beach$|beach park|public beach/.test(text)) return false;
+  return /beach|shore|strand|cove|bay|point/.test(text);
+}
+
+function buildRestaurantDescription(place: GooglePlace) {
   const type = String(place.primaryType ?? "restaurant").replace(/_/g, " ");
   const reviews = typeof place.userRatingCount === "number" ? ` · ${place.userRatingCount} reviews` : "";
   return `${capitalize(type)} in the U.S. Virgin Islands${reviews}.`;
+}
+
+function buildBeachDescription(place: GooglePlace) {
+  const reviews = typeof place.userRatingCount === "number" ? ` · ${place.userRatingCount} reviews` : "";
+  return `Beach and shoreline destination in the U.S. Virgin Islands${reviews}.`;
 }
 
 function capitalize(value: string) {
