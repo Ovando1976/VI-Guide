@@ -201,8 +201,10 @@ export function upsertJourneyPlan(plan: JourneyPlan) {
 
 export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
   const plans = readJourneyPlans();
-  const existing = plans.find((plan) => plan.island === input.island) ?? plans[0];
-  const target = existing ?? createJourneyPlan(input.island);
+  const existing = plans.find((plan) => plan.island === input.island);
+  const target =
+    existing ??
+    createJourneyPlan(input.island, `My ${islandLabel(input.island)} day`);
   const duplicate = target.plan.some(
     (stop) => stop.placeId === input.id || stop.id === `place_${input.id}`,
   );
@@ -228,7 +230,6 @@ export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
   };
   const updated: JourneyPlan = {
     ...target,
-    island: input.island,
     plan: [...target.plan, stop],
     updatedAt: new Date().toISOString(),
   };
@@ -249,8 +250,9 @@ export function buildJourneyMapHref(plan: JourneyPlan) {
   const firstPositionedStop = plan.plan.find(
     (stop) => Boolean(stop.mapHref) && Boolean(stop.placeId),
   );
-  if (firstPositionedStop?.placeId) {
-    params.set("place", firstPositionedStop.placeId);
+  const mapPlaceId = placeIdFromMapHref(firstPositionedStop?.mapHref);
+  if (mapPlaceId || firstPositionedStop?.placeId) {
+    params.set("place", mapPlaceId || firstPositionedStop?.placeId || "");
   }
   return `/map?${params.toString()}`;
 }
@@ -341,6 +343,13 @@ function coordinatesFromMapHref(mapHref?: string) {
   const lat = Number(params.get("placeLat"));
   const lng = Number(params.get("placeLng"));
   return Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : null;
+}
+
+function placeIdFromMapHref(mapHref?: string) {
+  if (!mapHref) return "";
+  const query = mapHref.split("?")[1];
+  if (!query) return "";
+  return new URLSearchParams(query).get("place")?.trim() || "";
 }
 
 function daypartTime(value: string) {

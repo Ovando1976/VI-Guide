@@ -19,6 +19,7 @@ export function SmartConciergeScreen() {
   const island = normalizeIsland(params.get("island"));
   const prompt = params.get("prompt")?.trim().slice(0, 3000) ?? "";
   const activeLens = params.get("context")?.trim() || "all";
+  const shouldOpen = Boolean(prompt) || params.get("open") === "true";
 
   const context = useMemo<ConciergeContext>(
     () => ({
@@ -38,11 +39,11 @@ export function SmartConciergeScreen() {
 
   return (
     <>
-      <ConciergeDiscovery />
+      <ConciergeDiscovery initialIsland={island} />
       <ViConcierge
         context={context}
         initialPrompt={prompt}
-        initiallyOpen={Boolean(prompt) || params.get("open") !== "false"}
+        initiallyOpen={shouldOpen}
         onSelectEstate={() => undefined}
         onSetPickup={() => undefined}
         onSetDestination={() => undefined}

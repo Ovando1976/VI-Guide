@@ -122,6 +122,8 @@ export type IntelligenceRecommendation = {
   summary: string;
   score: number;
   reasons: string[];
+  lat?: number;
+  lng?: number;
   href?: string;
   mapHref?: string;
 };
