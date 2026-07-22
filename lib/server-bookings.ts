@@ -33,6 +33,13 @@ const STATUS_TIMESTAMP_FIELD: Partial<
   cancelled: "cancelledAt",
 };
 
+const COMPLIANCE_GATED_STATUSES: RideBooking["status"][] = [
+  "driver_en_route",
+  "arrived",
+  "in_progress",
+  "completed",
+];
+
 export async function createServerBooking(
   booking: Omit<RideBooking, "id">,
 ): Promise<string> {
@@ -186,12 +193,45 @@ export async function updateServerTripStatus(params: {
       throw new Error("Payment must clear before this trip can advance.");
     }
     if (
-      ["driver_en_route", "arrived", "in_progress", "completed"].includes(
-        params.status,
-      ) &&
+      COMPLIANCE_GATED_STATUSES.includes(params.status) &&
       !booking.driverId
     ) {
       throw new Error("A verified driver must be assigned before the trip can advance.");
+    }
+
+    let lifecycleComplianceSnapshot: Record<string, unknown> | null = null;
+    if (COMPLIANCE_GATED_STATUSES.includes(params.status)) {
+      const driverId = booking.driverId!;
+      const vehicleId = booking.vehicleId ?? "";
+      const associationId = booking.associationId ?? "";
+      if (!vehicleId || !associationId) {
+        throw new Error("The assigned taxi fleet records are incomplete.");
+      }
+
+      const driverSnapshot = await transaction.get(
+        db.collection("drivers").doc(driverId),
+      );
+      const vehicleSnapshot = await transaction.get(
+        db.collection("vehicles").doc(vehicleId),
+      );
+      const associationSnapshot = await transaction.get(
+        db.collection("taxiAssociations").doc(associationId),
+      );
+      const eligible = assertDispatchEligible({
+        booking,
+        driverSnapshot,
+        vehicleSnapshot,
+        associationSnapshot,
+        allowedAvailability: ["busy"],
+      });
+      lifecycleComplianceSnapshot = {
+        status: params.status,
+        driverAuthorizationStatus: eligible.driver.authorizationStatus,
+        associationStatus: eligible.association.status,
+        vehicleInspectionStatus: eligible.vehicle.inspectionStatus,
+        vehicleInsuranceStatus: eligible.vehicle.insuranceStatus,
+        verifiedAt: new Date().toISOString(),
+      };
     }
 
     const updatePayload: UpdateData<DocumentData> = {
@@ -201,6 +241,9 @@ export async function updateServerTripStatus(params: {
     const timestampField = STATUS_TIMESTAMP_FIELD[params.status];
     if (timestampField) {
       updatePayload[timestampField] = FieldValue.serverTimestamp();
+    }
+    if (lifecycleComplianceSnapshot) {
+      updatePayload.lifecycleComplianceSnapshot = lifecycleComplianceSnapshot;
     }
 
     if (params.status === "completed") {
