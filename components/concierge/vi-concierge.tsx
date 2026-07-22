@@ -1,11 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Bot,
   Brain,
+  Check,
+  Map,
   MapPin,
+  Navigation,
   Route,
+  Save,
   Send,
   ShieldCheck,
   Sparkles,
@@ -17,6 +22,8 @@ import {
   useRef,
   useState,
   type FormEvent,
+  type KeyboardEvent,
+  type ReactNode,
 } from "react";
 
 import { StructuredPlanRenderer } from "@/components/intelligence/structured-plan-renderer";
@@ -46,6 +53,11 @@ type Props = {
   initialPrompt?: string;
 };
 
+type StoredSession = {
+  messages?: ConciergeMessage[];
+  response?: IntelligenceResponse | null;
+};
+
 const STORAGE_KEY = "vi-guide-concierge-v2";
 const STARTER_PROMPTS = [
   "Plan a relaxed half-day near me",
@@ -66,7 +78,7 @@ function createWelcomeMessage(): ConciergeMessage {
   return {
     id: createId("message"),
     role: "assistant",
-    text: "Tell me the island day you want. I use the same VI Guide intelligence as Map, Search, Heritage, Mobility, and saved plans, so the answer can include places, timing, routes, and reviewable actions in one result.",
+    text: "Tell me the island day you want. I can search VI Guide, build a practical itinerary, connect transportation, and save the reviewed result to My Trip.",
     createdAt: new Date().toISOString(),
   };
 }
@@ -89,16 +101,22 @@ export function ViConcierge({
   initiallyOpen = false,
   initialPrompt = "",
 }: Props) {
+  void onSelectEstate;
+  void onSetPickup;
+  void onSetDestination;
+
   const router = useRouter();
   const [open, setOpen] = useState(initiallyOpen);
   const [messages, setMessages] = useState<ConciergeMessage[]>([]);
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<IntelligenceResponse | null>(null);
   const [completedActions, setCompletedActions] = useState<Set<string>>(
     () => new Set(),
   );
+  const [pendingActionId, setPendingActionId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const submittedInitialPrompt = useRef<string | null>(null);
@@ -109,26 +127,34 @@ export function ViConcierge({
 
   useEffect(() => {
     try {
-      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null") as {
-        messages?: ConciergeMessage[];
-      } | null;
+      const stored = JSON.parse(
+        localStorage.getItem(STORAGE_KEY) ?? "null",
+      ) as StoredSession | null;
       setMessages(
         stored?.messages?.length
           ? stored.messages.slice(-40)
           : [createWelcomeMessage()],
       );
+      setResponse(stored?.response ?? null);
     } catch {
       setMessages([createWelcomeMessage()]);
+      setResponse(null);
+    } finally {
+      setHydrated(true);
     }
   }, []);
 
   useEffect(() => {
-    if (!messages.length) return;
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ messages: messages.slice(-40) }),
-    );
-  }, [messages]);
+    if (!hydrated || !messages.length) return;
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ messages: messages.slice(-40), response }),
+      );
+    } catch {
+      // Conversation remains available for the current session.
+    }
+  }, [hydrated, messages, response]);
 
   useEffect(() => {
     feedIntelligenceContext("concierge", {
@@ -183,6 +209,7 @@ export function ViConcierge({
     setError(null);
     setResponse(null);
     setCompletedActions(new Set());
+    setPendingActionId(null);
 
     try {
       const result = await askViIntelligence(
@@ -219,7 +246,7 @@ export function ViConcierge({
       setError(
         requestError instanceof Error
           ? requestError.message
-          : "VI Guide Intelligence could not respond.",
+          : "VI Guide Concierge could not respond.",
       );
     } finally {
       setLoading(false);
@@ -244,37 +271,62 @@ export function ViConcierge({
   }, [initialPrompt, loading, messages.length]);
 
   function executeAction(action: IntelligenceAction) {
-    if (action.requiresConfirmation && action.type !== "save_plan") return;
+    if (completedActions.has(action.id)) return;
+
+    if (action.requiresConfirmation && pendingActionId !== action.id) {
+      setPendingActionId(action.id);
+      return;
+    }
 
     const plan = action.payload?.plan;
     if (action.type === "save_plan" && Array.isArray(plan)) {
       const generated = plan as IntelligencePlanStop[];
-      const journey = createJourneyPlan(context.island, "Smart Concierge plan");
+      if (!generated.length) return;
+
+      const journey = createJourneyPlan(context.island, "VI Concierge plan");
       upsertJourneyPlan({
         ...journey,
         status: "ready",
         plan: generated,
-        notes: "Created by VI Guide Smart Concierge from grounded app data.",
+        notes: "Created by VI Concierge from grounded VI Guide data.",
       });
+      setCompletedActions((current) => new Set(current).add(action.id));
+      setPendingActionId(null);
       router.push("/planner");
-    } else if (action.href) {
-      router.push(action.href);
+      return;
     }
 
-    setCompletedActions((current) => new Set(current).add(action.id));
+    if (action.href) {
+      setCompletedActions((current) => new Set(current).add(action.id));
+      setPendingActionId(null);
+      router.push(action.href);
+    }
   }
 
   function startNewSession() {
     setMessages([createWelcomeMessage()]);
     setResponse(null);
     setCompletedActions(new Set());
+    setPendingActionId(null);
     setError(null);
+    setDraft("");
     submittedInitialPrompt.current = null;
   }
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     void sendMessage();
+  }
+
+  function handleComposerKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (
+      event.key === "Enter" &&
+      !event.shiftKey &&
+      !event.nativeEvent.isComposing
+    ) {
+      event.preventDefault();
+      void sendMessage();
+    }
   }
 
   const horizontalClass =
@@ -289,14 +341,14 @@ export function ViConcierge({
           type="button"
           onClick={() => setOpen(true)}
           className={`fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-[9999] flex items-center gap-3 rounded-2xl border border-cyan-200/20 bg-[#0a2530] px-3 py-3 text-left text-white shadow-[0_20px_60px_rgba(0,0,0,.5)] transition hover:-translate-y-0.5 sm:bottom-5 md:bottom-6 ${horizontalClass}`}
-          aria-label="Open VI Guide Intelligence"
+          aria-label="Open VI Concierge"
         >
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-teal-300 text-[#05242b]">
             <Sparkles size={19} />
           </span>
           <span className="hidden sm:block">
             <small className="block text-[9px] font-black uppercase tracking-[.18em] text-cyan-100/50">
-              VI Guide Intelligence
+              VI Concierge
             </small>
             <strong className="block text-sm">Plan with the whole app</strong>
           </span>
@@ -308,7 +360,8 @@ export function ViConcierge({
           className={`fixed inset-0 z-[9999] flex flex-col overflow-hidden bg-[#06131b] text-white shadow-[0_30px_100px_rgba(0,0,0,.7)] sm:inset-auto sm:bottom-5 sm:h-[min(780px,calc(100vh-40px))] sm:w-[440px] sm:rounded-[28px] sm:border sm:border-white/10 ${panelHorizontalClass}`}
           role="dialog"
           aria-modal="true"
-          aria-label="VI Guide Intelligence"
+          aria-label="VI Concierge"
+          aria-busy={loading}
         >
           <header className="border-b border-white/10 bg-[#081b24] p-4 pt-[max(16px,env(safe-area-inset-top))]">
             <div className="flex items-start justify-between gap-3">
@@ -317,13 +370,20 @@ export function ViConcierge({
                   <Bot size={21} />
                 </span>
                 <div className="min-w-0">
-                  <h2 className="truncate font-black">VI Guide Intelligence</h2>
+                  <h2 className="truncate font-black">VI Concierge</h2>
                   <p className="mt-0.5 truncate text-xs text-white/45">
-                    Shared live context · {contextLabel}
+                    Live app context · {contextLabel}
                   </p>
                 </div>
               </div>
               <div className="flex gap-1">
+                <Link
+                  href="/planner"
+                  className="grid h-9 w-9 place-items-center rounded-xl text-white/45 hover:bg-white/10 hover:text-white"
+                  aria-label="Open My Trip"
+                >
+                  <Route size={16} />
+                </Link>
                 <button
                   type="button"
                   onClick={startNewSession}
@@ -336,15 +396,15 @@ export function ViConcierge({
                   type="button"
                   onClick={() => setOpen(false)}
                   className="grid h-9 w-9 place-items-center rounded-xl text-white/45 hover:bg-white/10 hover:text-white"
-                  aria-label="Close intelligence"
+                  aria-label="Close Concierge"
                 >
                   <X size={18} />
                 </button>
               </div>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-1.5">
-              <Status icon={<Brain size={12} />} label="Shared memory" />
-              <Status icon={<MapPin size={12} />} label="Live map state" />
+              <Status icon={<Brain size={12} />} label="App context" />
+              <Status icon={<MapPin size={12} />} label="Map ready" />
               <Status icon={<ShieldCheck size={12} />} label="Review actions" />
             </div>
           </header>
@@ -380,19 +440,36 @@ export function ViConcierge({
                   <div className="grid gap-2">
                     {response.actions.map((action) => {
                       const completed = completedActions.has(action.id);
+                      const confirming = pendingActionId === action.id && !completed;
+                      const Icon = iconForAction(action.type);
+
                       return (
                         <button
                           key={action.id}
                           type="button"
                           disabled={completed}
                           onClick={() => executeAction(action)}
-                          className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[.045] p-3 text-left hover:border-cyan-300/25 disabled:opacity-50"
+                          className={`flex items-center gap-3 rounded-2xl border p-3 text-left transition disabled:opacity-50 ${
+                            confirming
+                              ? "border-amber-300/35 bg-amber-300/[.09]"
+                              : "border-white/10 bg-white/[.045] hover:border-cyan-300/25"
+                          }`}
                         >
-                          <span className="grid h-8 w-8 place-items-center rounded-xl bg-cyan-300/10 text-cyan-200">
-                            {action.type === "plan_ride" ? <Route size={15} /> : <MapPin size={15} />}
+                          <span
+                            className={`grid h-8 w-8 place-items-center rounded-xl ${
+                              confirming
+                                ? "bg-amber-300/15 text-amber-100"
+                                : "bg-cyan-300/10 text-cyan-200"
+                            }`}
+                          >
+                            {completed ? <Check size={15} /> : <Icon size={15} />}
                           </span>
                           <span className="min-w-0 flex-1 text-xs font-black text-white/80">
-                            {completed ? "Completed" : action.label}
+                            {completed
+                              ? "Completed"
+                              : confirming
+                                ? `Confirm: ${action.label}`
+                                : action.label}
                           </span>
                           <span className="text-white/25">→</span>
                         </button>
@@ -405,7 +482,7 @@ export function ViConcierge({
 
             {loading ? (
               <p className="pl-9 text-xs font-bold text-cyan-100/45">
-                Building a grounded plan from shared app context…
+                Building a grounded plan from VI Guide data…
               </p>
             ) : null}
             {error ? (
@@ -424,6 +501,7 @@ export function ViConcierge({
                 rows={1}
                 disabled={loading}
                 onChange={(event) => setDraft(event.target.value)}
+                onKeyDown={handleComposerKeyDown}
                 placeholder="Ask for a place, complete day, route, or booking…"
                 className="max-h-28 min-h-11 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[.055] px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 focus:border-cyan-300/40"
               />
@@ -436,6 +514,9 @@ export function ViConcierge({
                 <Send size={17} />
               </button>
             </form>
+            <p className="mt-2 px-1 text-[9px] font-semibold text-white/25">
+              Enter to send · Shift+Enter for a new line
+            </p>
           </footer>
         </section>
       ) : null}
@@ -465,10 +546,18 @@ function MessageBubble({ message }: { message: ConciergeMessage }) {
   );
 }
 
-function Status({ icon, label }: { icon: React.ReactNode; label: string }) {
+function Status({ icon, label }: { icon: ReactNode; label: string }) {
   return (
     <span className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[.035] px-2 py-2 text-[9px] font-black text-white/45">
       {icon} {label}
     </span>
   );
+}
+
+function iconForAction(type: IntelligenceAction["type"]) {
+  if (type === "save_plan") return Save;
+  if (type === "plan_ride" || type === "start_booking") return Navigation;
+  if (type === "open_map") return Map;
+  if (type === "open_place") return MapPin;
+  return Sparkles;
 }
