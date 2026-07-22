@@ -1,63 +1,96 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { loadStripe, type StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { ArrowLeft, RefreshCw, ShieldCheck } from "lucide-react";
+
 import { CheckoutForm } from "@/components/checkout-form";
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
 
+type CheckoutBooking = {
+  id: string;
+  paymentStatus?: string;
+  status?: string;
+  island?: string;
+  originEstateName?: string;
+  destinationEstateName?: string;
+  quotedFare?: { total?: number };
+};
+
 export default function CheckoutBookingPage() {
   const params = useParams<{ bookingId: string }>();
+  const router = useRouter();
   const bookingId = params.bookingId;
 
+  const [booking, setBooking] = useState<CheckoutBooking | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [reloadNonce, setReloadNonce] = useState(0);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function init() {
       try {
+        setLoading(true);
+        setErrorMessage(null);
+        setClientSecret(null);
+
         if (!publishableKey) {
           throw new Error("Online ride payment is not configured.");
         }
 
         const bookingRes = await fetch(`/api/bookings/${bookingId}`, {
           cache: "no-store",
+          signal: controller.signal,
         });
         const bookingJson = await bookingRes.json().catch(() => null);
 
-        if (!bookingRes.ok) {
+        if (!bookingRes.ok || !bookingJson?.booking) {
           throw new Error(bookingJson?.error || "Failed to load booking.");
         }
 
-        const intentRes = await fetch("/api/stripe/create-intent", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            bookingId,
-          }),
-        });
+        const loadedBooking = bookingJson.booking as CheckoutBooking;
+        setBooking(loadedBooking);
 
+        if (loadedBooking.paymentStatus === "paid") {
+          router.replace(`/trips?booking=${encodeURIComponent(bookingId)}&payment=paid`);
+          return;
+        }
+
+        const intentRes = await fetch(
+          `/api/bookings/${encodeURIComponent(bookingId)}/payment-intent`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            signal: controller.signal,
+          },
+        );
         const intentJson = await intentRes.json().catch(() => null);
 
         if (!intentRes.ok || typeof intentJson?.clientSecret !== "string") {
-          throw new Error(intentJson?.error || "Failed to create payment.");
+          throw new Error(intentJson?.error || "Failed to initialize secure payment.");
         }
 
         setClientSecret(intentJson.clientSecret);
       } catch (error) {
+        if (controller.signal.aborted) return;
         setErrorMessage(
           error instanceof Error ? error.message : "Checkout failed.",
         );
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
     }
 
     if (bookingId) void init();
-  }, [bookingId]);
+    return () => controller.abort();
+  }, [bookingId, reloadNonce, router]);
 
   const options = useMemo<StripeElementsOptions | undefined>(
     () =>
@@ -66,6 +99,11 @@ export default function CheckoutBookingPage() {
             clientSecret,
             appearance: {
               theme: "stripe",
+              variables: {
+                colorPrimary: "#075e58",
+                colorText: "#043331",
+                borderRadius: "14px",
+              },
             },
           }
         : undefined,
@@ -78,12 +116,28 @@ export default function CheckoutBookingPage() {
         <div className="mx-auto max-w-2xl rounded-[28px] border border-rose-200 bg-white p-7 shadow-sm">
           <h1 className="text-2xl font-black">Ride checkout unavailable</h1>
           <p className="mt-3 text-sm font-semibold text-rose-700">{errorMessage}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => setReloadNonce((value) => value + 1)}
+              className="inline-flex items-center gap-2 rounded-full bg-[#043331] px-5 py-3 text-xs font-black uppercase tracking-[.15em] text-white"
+            >
+              <RefreshCw size={15} /> Try again
+            </button>
+            <button
+              type="button"
+              onClick={() => router.push("/mobility")}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-xs font-black uppercase tracking-[.15em]"
+            >
+              <ArrowLeft size={15} /> Back to ride
+            </button>
+          </div>
         </div>
       </main>
     );
   }
 
-  if (!stripePromise || !clientSecret || !options) {
+  if (loading || !stripePromise || !clientSecret || !options) {
     return (
       <main className="min-h-screen bg-[#f8f4ea] px-4 py-10 text-[#043331]">
         <div className="mx-auto max-w-2xl rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm">
@@ -95,20 +149,39 @@ export default function CheckoutBookingPage() {
     );
   }
 
-  return (
-    <main className="min-h-screen bg-[#f8f4ea] px-4 py-8 text-[#043331] sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-2xl rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <div className="text-[10px] font-black uppercase tracking-[.22em] text-amber-600">
-          VI Guide Mobility
-        </div>
-        <h1 className="mt-3 text-3xl font-black italic tracking-tight text-[#043331]">
-          Complete payment
-        </h1>
-        <p className="mt-3 text-sm font-semibold leading-6 text-slate-500">
-          Secure the quoted island fare, then continue directly into live dispatch and trip tracking.
-        </p>
+  const total = Number(booking?.quotedFare?.total ?? 0);
 
-        <div className="mt-7">
+  return (
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.12),transparent_30%),linear-gradient(180deg,#f8f4ea,#ffffff)] px-4 py-8 text-[#043331] sm:px-6 sm:py-12">
+      <div className="mx-auto max-w-2xl overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(4,51,49,.12)]">
+        <div className="bg-[linear-gradient(135deg,#032d2b,#075e58)] p-6 text-white sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]">
+            <ShieldCheck size={15} /> Secure VI Guide payment
+          </div>
+          <h1 className="mt-4 text-3xl font-black tracking-[-.04em] sm:text-4xl">
+            Complete your ride payment
+          </h1>
+          <p className="mt-3 text-sm font-semibold leading-6 text-white/68">
+            Pay the quoted regulated fare, then continue directly into dispatch and trip tracking.
+          </p>
+          {booking ? (
+            <div className="mt-5 grid gap-3 rounded-[22px] border border-white/10 bg-white/[.07] p-4 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[.18em] text-white/45">
+                  Booking {bookingId.slice(0, 8)}
+                </div>
+                <div className="mt-1 text-sm font-black">
+                  {booking.originEstateName || "Pickup"} → {booking.destinationEstateName || "Destination"}
+                </div>
+              </div>
+              <div className="text-2xl font-black text-[#f7d778]">
+                {total > 0 ? `$${total.toFixed(2)}` : "Quoted fare"}
+              </div>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="p-6 sm:p-8">
           <Elements stripe={stripePromise} options={options}>
             <CheckoutForm bookingId={bookingId} />
           </Elements>
