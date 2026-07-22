@@ -101,3 +101,5 @@ jobs:
             reports/catalog/restaurant-discovery-report.json
             reports/catalog/restaurant-discovery-candidates.json
           retention-days: 30
+
+# Triggered after GOOGLE_PLACES_API_KEY was added to repository secrets.
