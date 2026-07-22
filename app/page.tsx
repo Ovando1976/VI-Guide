@@ -80,21 +80,21 @@ const EXPERIENCES = [
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-32 text-[#073b39]">
-      <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 text-white sm:px-8 lg:px-12 lg:pb-28">
+      <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 text-[#073b39] sm:px-8 lg:px-12 lg:pb-28">
         <div className="absolute inset-0 -z-30 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_42%]" />
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(3,39,38,.96)_0%,rgba(3,61,58,.78)_52%,rgba(4,51,49,.28)_100%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_82%_16%,rgba(39,213,194,.25),transparent_30%),linear-gradient(180deg,transparent_45%,rgba(3,42,40,.8))]" />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,.16)_0%,rgba(255,255,255,0)_58%,rgba(247,243,234,.82)_100%)]" />
 
-        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[24px] border border-white/12 bg-[#062f2e]/38 px-4 py-3 backdrop-blur-xl sm:px-5">
+        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/72 px-4 py-3 text-[#073b39] shadow-[0_14px_40px_rgba(4,51,49,.10)] backdrop-blur-xl sm:px-5">
           <Link href="/" className="flex items-center gap-3" aria-label="VI Guide home">
             <ViBrandMark className="h-11 w-11" priority />
             <div>
               <div className="font-serif text-xl font-bold tracking-[.02em]">VI Guide</div>
-              <div className="text-[8px] font-black uppercase tracking-[.25em] text-[#f5c968]">U.S. Virgin Islands</div>
+              <div className="text-[8px] font-black uppercase tracking-[.25em] text-[#b16a18]">U.S. Virgin Islands</div>
             </div>
           </Link>
           <div className="flex items-center gap-2">
-            <Link href="/search" className="hidden rounded-full border border-white/16 bg-white/10 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
+            <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] text-[#073b39] sm:inline-flex">Search</Link>
             <Link href="/map?concierge=open" className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#073b39] shadow-lg shadow-black/10">
               <Sparkles size={14} /> Ask VI Concierge
             </Link>
@@ -103,25 +103,25 @@ export default function Home() {
 
         <div className="mx-auto grid max-w-7xl gap-10 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:pt-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[9px] font-black uppercase tracking-[.23em] text-[#f7cf73] backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#b16a18]/20 bg-white/74 px-4 py-2 text-[9px] font-black uppercase tracking-[.23em] text-[#9a5a17] shadow-sm backdrop-blur">
               <SunMedium size={14} /> Experience paradise with confidence
             </div>
-            <h1 className="mt-6 max-w-4xl font-serif text-[clamp(3.7rem,8vw,7rem)] font-semibold leading-[.84] tracking-[-.055em]">
+            <h1 className="mt-6 max-w-4xl font-serif text-[clamp(3.7rem,8vw,7rem)] font-semibold leading-[.84] tracking-[-.055em] text-[#073b39] drop-shadow-[0_2px_12px_rgba(255,255,255,.55)]">
               Paradise is
               <br />
-              <span className="italic text-[#86e2d6]">calling you.</span>
+              <span className="italic text-[#159b91]">calling you.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-white/76 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-[#173f3c] sm:text-lg">
               Discover beaches, stays, culture, dining, and transportation across St. Thomas, St. John, and St. Croix — all in one trusted local guide.
             </p>
-            <Link href="/search" className="mt-8 flex max-w-xl items-center gap-3 rounded-[22px] border border-white/18 bg-white/94 p-2 pl-5 text-[#073b39] shadow-[0_24px_65px_rgba(0,0,0,.24)] transition hover:bg-white">
+            <Link href="/search" className="mt-8 flex max-w-xl items-center gap-3 rounded-[22px] border border-white/80 bg-white/92 p-2 pl-5 text-[#073b39] shadow-[0_20px_55px_rgba(4,51,49,.16)] transition hover:bg-white">
               <Search size={19} className="text-[#0f766e]" />
               <span className="flex-1 text-sm font-semibold text-slate-500">Search beaches, stays, tours, food, history…</span>
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#073b39] text-white"><ArrowRight size={18} /></span>
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0f766e] text-white"><ArrowRight size={18} /></span>
             </Link>
           </div>
 
-          <aside className="overflow-hidden rounded-[34px] border border-white/15 bg-[#fdfbf6]/95 text-[#073b39] shadow-[0_35px_95px_rgba(0,0,0,.32)] backdrop-blur-xl">
+          <aside className="overflow-hidden rounded-[34px] border border-white/80 bg-[#fffdf8]/94 text-[#073b39] shadow-[0_28px_70px_rgba(4,51,49,.16)] backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-[#dce8e4] p-6 sm:p-7">
               <div>
                 <div className="text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">Explore the islands</div>
@@ -131,13 +131,13 @@ export default function Home() {
             </div>
             <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
               {ISLANDS.map((island) => (
-                <Link key={island.code} href={island.href} className="group relative min-h-[190px] overflow-hidden rounded-[24px] border border-[#dbe7e3] bg-[#073b39]">
+                <Link key={island.code} href={island.href} className="group relative min-h-[190px] overflow-hidden rounded-[24px] border border-[#dbe7e3] bg-[#eaf6f3]">
                   <div className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${island.image})` }} />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.08),rgba(4,51,49,.88))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.02),rgba(4,51,49,.68))]" />
                   <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                     <span className="rounded-full bg-[#0f766e]/90 px-2.5 py-1 text-[8px] font-black uppercase tracking-[.14em]">{island.code}</span>
                     <div className="mt-3 text-xl font-black">{island.name}</div>
-                    <div className="mt-1 text-xs font-semibold text-white/70">{island.line}</div>
+                    <div className="mt-1 text-xs font-semibold text-white/80">{island.line}</div>
                   </div>
                 </Link>
               ))}
