@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
   addStopToJourney,
+  importLegacyTripPlans,
   readJourneyPlans,
   type JourneyStopInput,
 } from "@/lib/journey-planner";
@@ -42,6 +43,7 @@ export function AddToJourneyButton({
   }, [stop.id]);
 
   function add() {
+    importLegacyTripPlans();
     addStopToJourney(stop);
     setAdded(true);
   }
