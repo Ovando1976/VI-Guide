@@ -186,14 +186,23 @@ function dedupeBeaches(items: TerritoryMapPlace[]) {
   const accepted: TerritoryMapPlace[] = [];
 
   for (const item of ranked) {
-    if (typeof item.lat !== "number" || typeof item.lng !== "number") continue;
+    const itemLat = item.lat;
+    const itemLng = item.lng;
+    if (typeof itemLat !== "number" || !Number.isFinite(itemLat)) continue;
+    if (typeof itemLng !== "number" || !Number.isFinite(itemLng)) continue;
+
     const normalizedName = normalizeBeachName(String(item.name ?? item.title ?? ""));
     const duplicate = accepted.some((existing) => {
-      if (typeof existing.lat !== "number" || typeof existing.lng !== "number") return false;
+      const existingLat = existing.lat;
+      const existingLng = existing.lng;
+      if (typeof existingLat !== "number" || !Number.isFinite(existingLat)) return false;
+      if (typeof existingLng !== "number" || !Number.isFinite(existingLng)) return false;
+
       const sameName = normalizeBeachName(String(existing.name ?? existing.title ?? "")) === normalizedName;
-      const close = distanceMeters(existing.lat, existing.lng, item.lat, item.lng) <= 180;
+      const close = distanceMeters(existingLat, existingLng, itemLat, itemLng) <= 180;
       return sameName || (close && namesOverlap(existing, item));
     });
+
     if (!duplicate) accepted.push(item);
   }
 
