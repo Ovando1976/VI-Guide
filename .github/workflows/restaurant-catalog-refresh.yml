@@ -1,0 +1,103 @@
+name: Restaurant Catalog Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 9 * * 1"
+  push:
+    paths:
+      - ".github/workflows/restaurant-catalog-refresh.yml"
+      - "scripts/discover-usvi-restaurants.ts"
+      - "package.json"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Google Places secret
+        id: secret-check
+        shell: bash
+        run: |
+          if [ -z "$GOOGLE_PLACES_API_KEY" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "## Restaurant catalog refresh" >> "$GITHUB_STEP_SUMMARY"
+            echo "GOOGLE_PLACES_API_KEY is not configured in GitHub Actions secrets." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Discover and generate restaurant catalog
+        if: steps.secret-check.outputs.configured == 'true'
+        run: npm run restaurants:discover:apply
+
+      - name: Validate generated catalog
+        if: steps.secret-check.outputs.configured == 'true'
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const catalogPath = 'data/catalog/restaurants.generated.json';
+          const reportPath = 'reports/catalog/restaurant-discovery-report.json';
+          const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+          const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+          if (!Array.isArray(catalog) || catalog.length < 25) {
+            throw new Error(`Restaurant catalog is unexpectedly small: ${Array.isArray(catalog) ? catalog.length : 'not an array'}`);
+          }
+          const ids = new Set();
+          for (const restaurant of catalog) {
+            if (!restaurant.googlePlaceId || !restaurant.name || typeof restaurant.lat !== 'number' || typeof restaurant.lng !== 'number') {
+              throw new Error(`Invalid restaurant record: ${JSON.stringify(restaurant)}`);
+            }
+            if (ids.has(restaurant.googlePlaceId)) {
+              throw new Error(`Duplicate Google Place ID: ${restaurant.googlePlaceId}`);
+            }
+            ids.add(restaurant.googlePlaceId);
+          }
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Restaurant catalog refresh\n\n- Unique restaurants: ${catalog.length}\n- By island: ${JSON.stringify(report.byIsland)}\n- By status: ${JSON.stringify(report.byStatus)}\n- Needs review: ${report.needsReview}\n- Missing photos: ${report.missingPhotos}\n`);
+          NODE
+
+      - name: Commit refreshed catalog
+        if: steps.secret-check.outputs.configured == 'true'
+        shell: bash
+        run: |
+          if git diff --quiet -- data/catalog/restaurants.generated.json reports/catalog/restaurant-discovery-report.json reports/catalog/restaurant-discovery-candidates.json; then
+            echo "No restaurant catalog changes detected." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "vi-guide-catalog-bot"
+          git config user.email "vi-guide-catalog-bot@users.noreply.github.com"
+          git add data/catalog/restaurants.generated.json reports/catalog/restaurant-discovery-report.json reports/catalog/restaurant-discovery-candidates.json
+          git commit -m "data: refresh verified USVI restaurant catalog"
+          git push
+
+      - name: Upload restaurant catalog artifact
+        if: steps.secret-check.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: usvi-restaurant-catalog
+          path: |
+            data/catalog/restaurants.generated.json
+            reports/catalog/restaurant-discovery-report.json
+            reports/catalog/restaurant-discovery-candidates.json
+          retention-days: 30
