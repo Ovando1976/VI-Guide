@@ -25,6 +25,7 @@ const ISLANDS = {
 
 type IslandCode = keyof typeof ISLANDS;
 
+type GooglePhoto = { name?: string; widthPx?: number; heightPx?: number };
 type GooglePlace = {
   id?: string;
   displayName?: { text?: string };
@@ -35,6 +36,12 @@ type GooglePlace = {
   businessStatus?: string;
   primaryType?: string;
   types?: string[];
+  googleMapsUri?: string;
+  websiteUri?: string;
+  photos?: GooglePhoto[];
+  editorialSummary?: { text?: string };
+  regularOpeningHours?: { weekdayDescriptions?: string[] };
+  accessibilityOptions?: Record<string, boolean>;
 };
 
 const QUERIES = [
@@ -45,6 +52,7 @@ const QUERIES = [
   "sandy beach",
   "beach park",
   "bay beach",
+  "shoreline access",
 ];
 
 const FIELD_MASK = [
@@ -57,6 +65,12 @@ const FIELD_MASK = [
   "places.businessStatus",
   "places.primaryType",
   "places.types",
+  "places.googleMapsUri",
+  "places.websiteUri",
+  "places.photos",
+  "places.editorialSummary",
+  "places.regularOpeningHours",
+  "places.accessibilityOptions",
 ].join(",");
 
 export async function GET(request: NextRequest) {
@@ -112,8 +126,15 @@ export async function GET(request: NextRequest) {
           if (place.businessStatus === "CLOSED_PERMANENTLY") continue;
           if (!looksLikeBeach(place)) continue;
 
+          const photos = (place.photos ?? [])
+            .map((photo) => photo.name)
+            .filter((value): value is string => Boolean(value))
+            .slice(0, 8)
+            .map((name) => `/api/google-photo?name=${encodeURIComponent(name)}&maxWidth=1400&maxHeight=1000`);
+
           records.set(id, {
             id: `live-beach:${id}`,
+            slug: slugify(name),
             name,
             title: name,
             island,
@@ -122,9 +143,21 @@ export async function GET(request: NextRequest) {
             category: "beach",
             type: "beach",
             location: place.formattedAddress,
-            description: buildDescription(place),
+            description: place.editorialSummary?.text ?? buildDescription(place),
             rating: place.rating,
+            reviewCount: place.userRatingCount,
             googlePlaceId: id,
+            googleMapsUri: place.googleMapsUri,
+            website: place.websiteUri,
+            image: photos[0],
+            heroImage: photos[0],
+            images: photos,
+            hours: place.regularOpeningHours?.weekdayDescriptions ?? [],
+            accessibility: place.accessibilityOptions ?? {},
+            amenities: inferAmenities(place),
+            tags: inferTags(place),
+            verificationStatus: "google_places_live",
+            verifiedAt: new Date().toISOString(),
             source: "google-places-live",
           });
         }
@@ -156,4 +189,29 @@ function looksLikeBeach(place: GooglePlace) {
 function buildDescription(place: GooglePlace) {
   const reviews = typeof place.userRatingCount === "number" ? ` · ${place.userRatingCount} reviews` : "";
   return `Beach and shoreline destination in the U.S. Virgin Islands${reviews}.`;
+}
+
+function inferAmenities(place: GooglePlace) {
+  const text = `${place.displayName?.text ?? ""} ${(place.types ?? []).join(" ")}`.toLowerCase();
+  return [
+    /park/.test(text) ? "Beach park" : null,
+    /snorkel|reef/.test(text) ? "Snorkeling" : null,
+    /swim/.test(text) ? "Swimming" : null,
+    /public/.test(text) ? "Public access" : null,
+  ].filter((value): value is string => Boolean(value));
+}
+
+function inferTags(place: GooglePlace) {
+  const text = `${place.displayName?.text ?? ""} ${(place.types ?? []).join(" ")}`.toLowerCase();
+  return [
+    "beach",
+    /cove/.test(text) ? "cove" : null,
+    /bay/.test(text) ? "bay" : null,
+    /point/.test(text) ? "point" : null,
+    /park/.test(text) ? "park" : null,
+  ].filter((value): value is string => Boolean(value));
+}
+
+function slugify(value: string) {
+  return value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
