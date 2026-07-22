@@ -25,6 +25,8 @@
     "photos:audit": "tsx scripts/audit-google-photo-availability.ts",
     "photos:reviewed": "tsx scripts/apply-reviewed-google-place-ids.ts",
     "photos:reviewed:apply": "tsx scripts/apply-reviewed-google-place-ids.ts --apply",
+    "restaurants:discover": "tsx scripts/discover-usvi-restaurants.ts",
+    "restaurants:discover:apply": "tsx scripts/discover-usvi-restaurants.ts --apply",
     "historic:export": "tsx scripts/export-historic-sites.ts",
     "coordinates:audit": "tsx scripts/resolve-territory-coordinates.ts",
     "coordinates:resolve": "tsx scripts/resolve-territory-coordinates.ts --apply",
