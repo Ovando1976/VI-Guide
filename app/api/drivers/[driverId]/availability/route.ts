@@ -14,7 +14,7 @@ function hasCurrentExpiration(value?: string | null) {
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { driverId: string } }
+  { params }: { params: { driverId: string } },
 ) {
   try {
     const session = await requireSession(["driver", "admin"]);
@@ -45,13 +45,21 @@ export async function POST(
       }
 
       const driver = driverSnapshot.data();
+      const vehicleId =
+        typeof driver?.vehicleId === "string" ? driver.vehicleId.trim() : "";
+      const associationId =
+        typeof driver?.associationId === "string"
+          ? driver.associationId.trim()
+          : "";
       const failures: string[] = [];
 
       if (!driver?.verified) failures.push("driver verification");
       if (driver?.authorizationStatus !== "active") {
         failures.push("active Commission authorization");
       }
-      if (!driver?.taxiCommissionBadgeNumber) failures.push("Taxicab Commission badge");
+      if (!driver?.taxiCommissionBadgeNumber) {
+        failures.push("Taxicab Commission badge");
+      }
       if (!hasCurrentExpiration(driver?.taxiCommissionBadgeExpiresAt)) {
         failures.push("current Taxicab Commission badge expiration");
       }
@@ -59,13 +67,13 @@ export async function POST(
       if (!hasCurrentExpiration(driver?.licenseExpiresAt)) {
         failures.push("current driver license expiration");
       }
-      if (!driver?.associationId) failures.push("taxi association membership");
-      if (!driver?.vehicleId) failures.push("assigned fleet vehicle");
+      if (!associationId) failures.push("taxi association membership");
+      if (!vehicleId) failures.push("assigned fleet vehicle");
 
       if (!failures.length) {
         const [vehicleSnapshot, associationSnapshot] = await Promise.all([
-          db.collection("vehicles").doc(driver.vehicleId).get(),
-          db.collection("taxiAssociations").doc(driver.associationId).get(),
+          db.collection("vehicles").doc(vehicleId).get(),
+          db.collection("taxiAssociations").doc(associationId).get(),
         ]);
 
         if (!vehicleSnapshot.exists) {
@@ -73,15 +81,21 @@ export async function POST(
         } else {
           const vehicle = vehicleSnapshot.data();
           if (!vehicle?.active) failures.push("active fleet vehicle");
-          if (vehicle?.driverId !== driverId) failures.push("vehicle-to-driver assignment");
-          if (vehicle?.associationId !== driver.associationId) {
+          if (vehicle?.driverId !== driverId) {
+            failures.push("vehicle-to-driver assignment");
+          }
+          if (vehicle?.associationId !== associationId) {
             failures.push("vehicle association alignment");
           }
-          if (vehicle?.inspectionStatus !== "active") failures.push("active vehicle inspection");
+          if (vehicle?.inspectionStatus !== "active") {
+            failures.push("active vehicle inspection");
+          }
           if (!hasCurrentExpiration(vehicle?.inspectionExpiresAt)) {
             failures.push("current vehicle inspection expiration");
           }
-          if (vehicle?.insuranceStatus !== "active") failures.push("active vehicle insurance");
+          if (vehicle?.insuranceStatus !== "active") {
+            failures.push("active vehicle insurance");
+          }
           if (!hasCurrentExpiration(vehicle?.insuranceExpiresAt)) {
             failures.push("current vehicle insurance expiration");
           }
@@ -112,7 +126,11 @@ export async function POST(
       updatedAt: FieldValue.serverTimestamp(),
     });
 
-    return NextResponse.json({ ok: true, driverId, availability: body.availability });
+    return NextResponse.json({
+      ok: true,
+      driverId,
+      availability: body.availability,
+    });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
