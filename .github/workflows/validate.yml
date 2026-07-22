@@ -4,6 +4,8 @@ on:
   push:
   pull_request:
 
+# Independent of preview-deployment quotas: every branch and pull request must
+# pass the same TypeScript and production-build checks before release.
 concurrency:
   group: validate-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
