@@ -1,5 +1,9 @@
+import { buildDirectoryMapHref } from "@/lib/discovery/map-links";
 import { getAllHeritageRecords } from "@/lib/heritage/knowledge";
-import { getTravelKnowledge, type TravelKnowledgeKind } from "@/lib/travel-knowledge";
+import {
+  getTravelKnowledge,
+  type TravelKnowledgeKind,
+} from "@/lib/travel-knowledge";
 import type { DirectoryItem } from "@/types/directory";
 import type {
   IntelligenceAction,
@@ -65,7 +69,9 @@ function normalizeContext(context: IntelligenceContext): IntelligenceContext {
       adults: Math.max(1, context.party?.adults || context.memory.party?.adults || 1),
       children: Math.max(0, context.party?.children || context.memory.party?.children || 0),
       accessibilityNeeds:
-        context.party?.accessibilityNeeds ?? context.memory.party?.accessibilityNeeds ?? [],
+        context.party?.accessibilityNeeds ??
+        context.memory.party?.accessibilityNeeds ??
+        [],
     },
     preferences: {
       interests: Array.from(
@@ -74,8 +80,14 @@ function normalizeContext(context: IntelligenceContext): IntelligenceContext {
           ...(context.preferences?.interests ?? []),
         ]),
       ),
-      pace: context.preferences?.pace ?? context.memory.preferences?.pace ?? "balanced",
-      budget: context.preferences?.budget ?? context.memory.preferences?.budget ?? "moderate",
+      pace:
+        context.preferences?.pace ??
+        context.memory.preferences?.pace ??
+        "balanced",
+      budget:
+        context.preferences?.budget ??
+        context.memory.preferences?.budget ??
+        "moderate",
       food: context.preferences?.food ?? context.memory.preferences?.food ?? [],
       avoid: context.preferences?.avoid ?? context.memory.preferences?.avoid ?? [],
     },
@@ -96,7 +108,11 @@ function itemText(item: DirectoryItem) {
     .toLowerCase();
 }
 
-function scoreItem(item: DirectoryItem, queryTokens: string[], context: IntelligenceContext) {
+function scoreItem(
+  item: DirectoryItem,
+  queryTokens: string[],
+  context: IntelligenceContext,
+) {
   if (item.island !== context.island) return -100;
   const haystack = itemText(item);
   let score = item.featured ? 8 : 2;
@@ -122,11 +138,20 @@ function recommendationHref(kind: TravelKnowledgeKind, item: DirectoryItem) {
   return `/places/${item.slug}`;
 }
 
+function recommendationMapType(kind: TravelKnowledgeKind) {
+  if (kind === "beaches") return "beach" as const;
+  if (kind === "stays") return "stay" as const;
+  if (kind === "historic") return "historic" as const;
+  return "place" as const;
+}
+
 function buildRecommendations(
   request: IntelligenceRequest,
   context: IntelligenceContext,
 ): IntelligenceRecommendation[] {
-  const queryTokens = tokens(`${request.message} ${context.preferences.interests.join(" ")}`);
+  const queryTokens = tokens(
+    `${request.message} ${context.preferences.interests.join(" ")}`,
+  );
   const kinds: TravelKnowledgeKind[] = ["places", "beaches", "stays", "historic"];
   const ranked: IntelligenceRecommendation[] = [];
 
@@ -143,27 +168,43 @@ function buildRecommendations(
         summary: item.description,
         score,
         reasons: [
-          item.island === context.island ? `Matches ${context.island.toUpperCase()}` : "",
+          item.island === context.island
+            ? `Matches ${context.island.toUpperCase()}`
+            : "",
           item.featured ? "Featured in VI Guide" : "",
           queryTokens.some((token) => itemText(item).includes(token))
             ? "Matches the request"
             : "",
         ].filter(Boolean),
+        ...(typeof item.lat === "number" ? { lat: item.lat } : {}),
+        ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
         href,
-        mapHref: `/map?island=${item.island}&lens=${kind === "historic" ? "historic" : kind === "stays" ? "stays" : kind === "beaches" ? "beaches" : "places"}&q=${encodeURIComponent(item.name)}`,
+        mapHref: buildDirectoryMapHref(item, recommendationMapType(kind)),
       });
     }
   }
 
   const heritageQuery = request.message.toLowerCase();
-  if (/history|historic|heritage|governor|timeline|emancipation|transfer/.test(heritageQuery)) {
+  if (
+    /history|historic|heritage|governor|timeline|emancipation|transfer/.test(
+      heritageQuery,
+    )
+  ) {
     for (const record of getAllHeritageRecords().slice(0, 300)) {
-      const haystack = [record.title, record.summary, record.category, ...record.searchTerms]
+      const haystack = [
+        record.title,
+        record.summary,
+        record.category,
+        ...record.searchTerms,
+      ]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
       const score = queryTokens.reduce(
-        (total, token) => total + (record.title.toLowerCase().includes(token) ? 10 : 0) + (haystack.includes(token) ? 3 : 0),
+        (total, token) =>
+          total +
+          (record.title.toLowerCase().includes(token) ? 10 : 0) +
+          (haystack.includes(token) ? 3 : 0),
         0,
       );
       if (score <= 0) continue;
@@ -175,6 +216,7 @@ function buildRecommendations(
         summary: record.summary,
         score: score + 3,
         reasons: ["Matches VI Guide heritage knowledge"],
+        ...(record.map ? { lat: record.map.lat, lng: record.map.lng } : {}),
         href: record.href,
         mapHref: record.map
           ? `/map?island=${record.island ?? context.island}&lens=historic&place=${encodeURIComponent(record.id)}&placeName=${encodeURIComponent(record.title)}&placeType=historic&placeLat=${record.map.lat}&placeLng=${record.map.lng}`
@@ -185,7 +227,10 @@ function buildRecommendations(
 
   return ranked
     .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
-    .filter((item, index, list) => list.findIndex((candidate) => candidate.id === item.id) === index)
+    .filter(
+      (item, index, list) =>
+        list.findIndex((candidate) => candidate.id === item.id) === index,
+    )
     .slice(0, 8);
 }
 
@@ -200,9 +245,11 @@ function buildPlan(
   context: IntelligenceContext,
   recommendations: IntelligenceRecommendation[],
 ): IntelligencePlanStop[] {
-  if (intent !== "day_plan" && intent !== "mobility" && intent !== "booking") return [];
+  if (intent !== "day_plan" && intent !== "mobility" && intent !== "booking") {
+    return [];
+  }
 
-  const { arrival, allAboard } = inferCruiseWindow(context);
+  const { arrival } = inferCruiseWindow(context);
   const startHour = arrival?.slice(0, 5) || "09:00";
   const stops = recommendations.slice(0, 3);
 
@@ -217,13 +264,17 @@ function buildPlan(
       kind: item.kind,
       summary: item.summary,
       placeId: item.id,
+      ...(typeof item.lat === "number" ? { lat: item.lat } : {}),
+      ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
       href: item.href,
       mapHref: item.mapHref,
       bookingHref: item.kind === "stays" ? item.href : undefined,
       mobility: {
         from:
           index === 0
-            ? context.memory.cruise?.port?.name ?? context.pickup?.name ?? context.currentLocation?.name
+            ? context.memory.cruise?.port?.name ??
+              context.pickup?.name ??
+              context.currentLocation?.name
             : stops[index - 1]?.title,
         to: item.title,
         mode: context.memory.cruise?.port ? "taxi" : "transfer",
@@ -233,6 +284,7 @@ function buildPlan(
 }
 
 function buildActions(
+  intent: string,
   context: IntelligenceContext,
   plan: IntelligencePlanStop[],
   recommendations: IntelligenceRecommendation[],
@@ -259,18 +311,40 @@ function buildActions(
     });
   }
   if (plan.length) {
-    const destination = plan[0].title;
+    const destination = plan[0];
+    const rideParams = new URLSearchParams({
+      island: context.island,
+      destination: destination.title,
+    });
+    if (typeof destination.lat === "number") {
+      rideParams.set("toLat", String(destination.lat));
+    }
+    if (typeof destination.lng === "number") {
+      rideParams.set("toLng", String(destination.lng));
+    }
+
     actions.push({
       id: "plan_transport",
       type: "plan_ride",
-      label: `Plan transportation to ${destination}`,
-      href: `/mobility?island=${context.island}&destination=${encodeURIComponent(destination)}`,
+      label: `Plan transportation to ${destination.title}`,
+      href: `/mobility?${rideParams.toString()}`,
       requiresConfirmation: false,
     });
+
+    if (intent === "booking" && destination.bookingHref) {
+      actions.push({
+        id: "review_booking",
+        type: "start_booking",
+        label: `Review booking options for ${destination.title}`,
+        href: destination.bookingHref,
+        requiresConfirmation: false,
+      });
+    }
+
     actions.push({
       id: "save_intelligent_plan",
       type: "save_plan",
-      label: "Save this plan",
+      label: "Save this plan to My Trip",
       payload: { plan },
       requiresConfirmation: true,
     });
@@ -295,19 +369,25 @@ function buildMemoryPatch(
   };
 }
 
-export function runIntelligenceEngine(request: IntelligenceRequest): IntelligenceResponse {
+export function runIntelligenceEngine(
+  request: IntelligenceRequest,
+): IntelligenceResponse {
   const context = normalizeContext(request.context);
   const intent = inferIntent(request.message);
   const recommendations = buildRecommendations(request, context);
   const plan = buildPlan(intent, context, recommendations);
-  const actions = buildActions(context, plan, recommendations);
+  const actions = buildActions(intent, context, plan, recommendations);
   const warnings: string[] = [];
 
   if (context.memory.cruise?.allAboardTime && plan.length) {
-    warnings.push(`Return-to-ship planning must preserve the ${context.memory.cruise.allAboardTime} all-aboard time.`);
+    warnings.push(
+      `Return-to-ship planning must preserve the ${context.memory.cruise.allAboardTime} all-aboard time.`,
+    );
   }
   if (!recommendations.length) {
-    warnings.push("No strong reviewed match was found in the current VI Guide knowledge index.");
+    warnings.push(
+      "No strong reviewed match was found in the current VI Guide knowledge index.",
+    );
   }
 
   const answer = plan.length
@@ -320,7 +400,12 @@ export function runIntelligenceEngine(request: IntelligenceRequest): Intelligenc
     runId: crypto.randomUUID(),
     answer,
     intent,
-    confidence: recommendations.length >= 3 ? "high" : recommendations.length ? "medium" : "low",
+    confidence:
+      recommendations.length >= 3
+        ? "high"
+        : recommendations.length
+          ? "medium"
+          : "low",
     context,
     plan,
     recommendations,
