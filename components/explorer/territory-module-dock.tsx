@@ -38,38 +38,10 @@ type LensModule = {
 };
 
 const LENS_MODULES: LensModule[] = [
-  {
-    id: "places",
-    label: "Explore",
-    detail: "Local places",
-    icon: Compass,
-    lens: "places",
-    countKey: "places",
-  },
-  {
-    id: "beaches",
-    label: "Beaches",
-    detail: "Shores & bays",
-    icon: Waves,
-    lens: "beaches",
-    countKey: "beaches",
-  },
-  {
-    id: "stays",
-    label: "Stays",
-    detail: "Hotels & villas",
-    icon: BedDouble,
-    lens: "stays",
-    countKey: "stays",
-  },
-  {
-    id: "historic",
-    label: "History",
-    detail: "Sites & stories",
-    icon: History,
-    lens: "historic",
-    countKey: "historic",
-  },
+  { id: "places", label: "Explore", detail: "Local places", icon: Compass, lens: "places", countKey: "places" },
+  { id: "beaches", label: "Beaches", detail: "Shores & bays", icon: Waves, lens: "beaches", countKey: "beaches" },
+  { id: "stays", label: "Stays", detail: "Hotels & villas", icon: BedDouble, lens: "stays", countKey: "stays" },
+  { id: "historic", label: "History", detail: "Sites & stories", icon: History, lens: "historic", countKey: "historic" },
 ];
 
 export function TerritoryModuleDock({
@@ -82,30 +54,25 @@ export function TerritoryModuleDock({
 }: Props) {
   return (
     <section
-      aria-label="Connected VI Guide modules"
-      className="rounded-[26px] border border-white/10 bg-white/[0.04] p-3"
+      aria-label="Map discovery tools"
+      className="rounded-[28px] border border-[#d8e7e3] bg-white/95 p-4 text-[#12312f] shadow-[0_16px_42px_rgba(18,49,47,.07)]"
     >
-      <div className="mb-3 flex items-center justify-between gap-3 px-1">
+      <div className="mb-4 flex items-center justify-between gap-3 px-1">
         <div>
-          <div className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-cyan-100/45">
-            Connected workspace
+          <div className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-[#b16a18]">
+            Explore your island
           </div>
-          <h2 className="mt-1 text-sm font-extrabold text-white">
-            Explore, plan, and move without losing context
+          <h2 className="mt-1 text-base font-extrabold text-[#12312f]">
+            Choose what you want to discover
           </h2>
         </div>
-        <span className="hidden text-[10px] font-bold text-white/35 sm:block">
-          {counts.estates.mapped} estates · {island.toUpperCase()}
+        <span className="hidden text-[10px] font-bold text-[#61716e] sm:block">
+          {island.toUpperCase()} · {counts.estates.mapped} estates
         </span>
       </div>
 
       <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0 xl:grid-cols-8">
-        <ModuleLink
-          href="#territory-workspace"
-          icon={MapPinned}
-          label="Estates"
-          detail={`${counts.estates.mapped} mapped`}
-        />
+        <ModuleLink href="#territory-workspace" icon={MapPinned} label="Estates" detail={`${counts.estates.mapped} mapped`} />
 
         {LENS_MODULES.map((module) => (
           <ModuleButton
@@ -118,25 +85,9 @@ export function TerritoryModuleDock({
           />
         ))}
 
-        <ModuleLink
-          href="/plan"
-          icon={Route}
-          label="My trip"
-          detail={tripCount ? `${tripCount} saved` : "Build itinerary"}
-        />
-        <ModuleLink
-          href={`/mobility?island=${island}`}
-          icon={Navigation}
-          label="Ride"
-          detail="Plan & book"
-        />
-        <ModuleButton
-          icon={Sparkles}
-          label="Concierge"
-          detail="Ask with context"
-          onClick={onOpenConcierge}
-          accent
-        />
+        <ModuleLink href="/plan" icon={Route} label="My trip" detail={tripCount ? `${tripCount} saved` : "Build itinerary"} />
+        <ModuleLink href={`/mobility?island=${island}`} icon={Navigation} label="Ride" detail="Plan & book" />
+        <ModuleButton icon={Sparkles} label="Concierge" detail="Ask with context" onClick={onOpenConcierge} accent />
       </div>
     </section>
   );
@@ -168,53 +119,30 @@ function ModuleButton({
       type="button"
       aria-pressed={active || undefined}
       onClick={onClick}
-      className={`group min-w-[132px] rounded-2xl border p-3 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 sm:min-w-0 ${
+      className={`group min-w-[132px] rounded-2xl border p-3 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25b7ad] sm:min-w-0 ${
         active
-          ? "border-cyan-200/35 bg-cyan-200/[0.12]"
+          ? "border-[#0f766e] bg-[#e8f7f4] shadow-[0_8px_22px_rgba(15,118,110,.12)]"
           : accent
-            ? "border-amber-300/25 bg-amber-300/[0.09] hover:bg-amber-300/[0.14]"
-            : "border-white/10 bg-black/10 hover:border-white/20 hover:bg-white/[0.06]"
+            ? "border-[#ead29b] bg-[#fff8e8] hover:bg-[#fff3cf]"
+            : "border-[#dce8e5] bg-[#fbfdfc] hover:-translate-y-0.5 hover:border-[#9fd4cc] hover:bg-[#eff9f6]"
       }`}
     >
-      <Icon
-        className={
-          active ? "text-cyan-200" : accent ? "text-amber-300" : "text-white/55"
-        }
-        size={18}
-      />
-      <span className="mt-2 block truncate text-xs font-extrabold text-white">
-        {label}
-      </span>
-      <span className="mt-0.5 block truncate text-[9px] font-semibold text-white/40">
-        {detail}
-      </span>
+      <Icon className={active ? "text-[#0f766e]" : accent ? "text-[#c58a1c]" : "text-[#56827c]"} size={18} />
+      <span className="mt-2 block truncate text-xs font-extrabold text-[#12312f]">{label}</span>
+      <span className="mt-0.5 block truncate text-[9px] font-semibold text-[#61716e]">{detail}</span>
     </button>
   );
 }
 
-function ModuleLink({
-  href,
-  icon: Icon,
-  label,
-  detail,
-}: {
-  href: string;
-  icon: LucideIcon;
-  label: string;
-  detail: string;
-}) {
+function ModuleLink({ href, icon: Icon, label, detail }: { href: string; icon: LucideIcon; label: string; detail: string }) {
   return (
     <Link
       href={href}
-      className="group min-w-[132px] rounded-2xl border border-white/10 bg-black/10 p-3 text-left transition hover:border-white/20 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 sm:min-w-0"
+      className="group min-w-[132px] rounded-2xl border border-[#dce8e5] bg-[#fbfdfc] p-3 text-left transition hover:-translate-y-0.5 hover:border-[#9fd4cc] hover:bg-[#eff9f6] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25b7ad] sm:min-w-0"
     >
-      <Icon className="text-white/55" size={18} />
-      <span className="mt-2 block truncate text-xs font-extrabold text-white">
-        {label}
-      </span>
-      <span className="mt-0.5 block truncate text-[9px] font-semibold text-white/40">
-        {detail}
-      </span>
+      <Icon className="text-[#56827c]" size={18} />
+      <span className="mt-2 block truncate text-xs font-extrabold text-[#12312f]">{label}</span>
+      <span className="mt-0.5 block truncate text-[9px] font-semibold text-[#61716e]">{detail}</span>
     </Link>
   );
 }
