@@ -1,4 +1,4 @@
-/* Production mobile navigation repair.
+/* Production mobile navigation and booking repair.
    Keep all five primary destinations plus account access visible without
    horizontal scrolling or clipped labels on narrow iPhone screens. */
 @media (max-width: 700px) {
@@ -30,6 +30,67 @@
     background: transparent;
     color: var(--vi-muted);
   }
+
+  /* Mobility booking was wider than the viewport on iPhone. The overflow
+     originated in nested grids, headings, selects, and the map preview. */
+  #book,
+  #book > *,
+  #book section,
+  #book header,
+  #book div,
+  #book form {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #book {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 28px;
+  }
+
+  #book header {
+    padding: 1.35rem 1rem;
+  }
+
+  #book header h2 {
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  #book header .grid-cols-4 {
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  #book header .grid-cols-4 > div {
+    padding: 0.65rem 0.2rem;
+  }
+
+  #book select,
+  #book input,
+  #book button {
+    max-width: 100%;
+  }
+
+  #book select {
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+
+  #book .leaflet-container {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  #book h2,
+  #book h3,
+  #book p,
+  #book span {
+    overflow-wrap: break-word;
+  }
 }
 
 @media (max-width: 390px) {
@@ -42,5 +103,13 @@
   .app-nav__item svg {
     width: 17px;
     height: 17px;
+  }
+
+  #book header {
+    padding-inline: 0.85rem;
+  }
+
+  #book header .grid-cols-4 > div {
+    border-radius: 0.8rem;
   }
 }
