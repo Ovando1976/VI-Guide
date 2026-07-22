@@ -10,6 +10,7 @@ import { getAdminDb } from "@/lib/firebase-admin";
 import type { RideBooking } from "@/types/mobility";
 import type { TripEventType } from "@/types/trip-event";
 import { assertDispatchEligible } from "@/lib/taxi-dispatch-eligibility";
+import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
 
 const NEXT_STATUSES: Record<RideBooking["status"], RideBooking["status"][]> = {
   draft: ["requested", "cancelled"],
@@ -248,11 +249,22 @@ export async function updateServerTripStatus(params: {
 
     if (params.status === "completed") {
       const totalFare = booking.finalFare ?? booking.quotedFare?.total ?? 0;
-      updatePayload.finalFare = totalFare;
+      const payout = calculateTaxiSettlement(totalFare);
+      updatePayload.finalFare = payout.grossFare;
+      updatePayload.payout = {
+        grossFare: payout.grossFare,
+        commissionRate: payout.commissionRate,
+        platformRevenue: payout.platformRevenue,
+        driverPayout: payout.driverPayout,
+      };
       updatePayload.settlement = {
         status: "pending_review",
-        grossFare: totalFare,
+        grossFare: payout.grossFare,
+        serviceFee: payout.platformRevenue,
+        operatorSettlement: payout.driverPayout,
+        feeAgreementId: payout.feeAgreementId,
       };
+      updatePayload.settlementCalculatedAt = FieldValue.serverTimestamp();
     }
 
     if (params.status === "completed" || params.status === "cancelled") {
@@ -278,6 +290,13 @@ export async function updateServerTripStatus(params: {
       message: params.message,
       fromStatus: booking.status,
       toStatus: params.status,
+      settlement:
+        params.status === "completed"
+          ? {
+              status: "pending_review",
+              calculatedAt: new Date().toISOString(),
+            }
+          : null,
       createdAt: FieldValue.serverTimestamp(),
     });
   });
