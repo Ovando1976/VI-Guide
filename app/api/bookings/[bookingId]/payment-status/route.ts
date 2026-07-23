@@ -40,10 +40,34 @@ export async function POST(_request: NextRequest, context: Context) {
     }
 
     if (!booking.paymentIntentId) {
+      const reviewRequired = booking.paymentStatus === "paid";
+      const integrityIssue = reviewRequired
+        ? "This booking is marked paid without a Stripe payment reference."
+        : null;
+      if (reviewRequired) {
+        await bookingRef.update({
+          paymentIntegrityStatus: "review_required",
+          paymentIntegrityIssue: integrityIssue,
+          paymentStateSource: "reconciliation",
+          paymentReconciledAt: FieldValue.serverTimestamp(),
+          paymentUpdatedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+      }
       return NextResponse.json({
         ok: true,
         reconciled: false,
-        booking: paymentBookingPayload(booking),
+        reviewRequired,
+        integrityIssue,
+        booking: paymentBookingPayload({
+          ...booking,
+          ...(reviewRequired
+            ? {
+                paymentIntegrityStatus: "review_required" as const,
+                paymentIntegrityIssue: integrityIssue,
+              }
+            : {}),
+        }),
       });
     }
 
@@ -122,6 +146,8 @@ export async function POST(_request: NextRequest, context: Context) {
             paymentIntent.status === "succeeded"
               ? paymentIntent.amount_received
               : (current.amountCaptured ?? null),
+          paymentIntegrityStatus: "verified" as const,
+          paymentIntegrityIssue: null,
         },
       };
     });
@@ -154,6 +180,8 @@ function paymentBookingPayload(booking: RideBooking) {
     paymentIntentId: booking.paymentIntentId ?? null,
     amountAuthorized: booking.amountAuthorized ?? null,
     amountCaptured: booking.amountCaptured ?? null,
+    paymentIntegrityStatus: booking.paymentIntegrityStatus ?? null,
+    paymentIntegrityIssue: booking.paymentIntegrityIssue ?? null,
     origin: { estateName: booking.origin?.estateName },
     destination: { estateName: booking.destination?.estateName },
   };
