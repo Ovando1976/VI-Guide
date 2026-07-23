@@ -5,7 +5,6 @@ import {
   type DocumentData,
   type UpdateData,
 } from "firebase-admin/firestore";
-import type Stripe from "stripe";
 
 import {
   expectedBookingAmountCents,
@@ -136,7 +135,7 @@ export async function cancelBookingWithFinancialResolution(params: {
   }
 
   const eventRef = db.collection("tripEvents").doc();
-  await db.runTransaction(async (transaction) => {
+  const finalization = await db.runTransaction(async (transaction) => {
     const currentSnapshot = await transaction.get(bookingRef);
     if (!currentSnapshot.exists) throw new Error("Booking not found.");
     const current = {
@@ -144,27 +143,30 @@ export async function cancelBookingWithFinancialResolution(params: {
       ...currentSnapshot.data(),
     } as RideBooking;
 
-    if (current.status !== "cancelled") {
-      if (!CANCELLABLE_STATUSES.includes(current.status)) {
-        transaction.update(operationRef, {
-          status: "review_required",
-          failureReason:
-            "The trip advanced after cancellation was reserved and requires staff review.",
-          updatedAt: FieldValue.serverTimestamp(),
-        });
-        transaction.update(bookingRef, {
-          cancellationStatus: "review_required",
-          financialHoldStatus: "manual_review",
-          paymentIntegrityStatus: "review_required",
-          paymentIntegrityIssue:
-            "The trip advanced after cancellation was reserved.",
-          updatedAt: FieldValue.serverTimestamp(),
-        });
-        throw new Error(
-          "The trip advanced while cancellation was processing. Staff review is required.",
-        );
-      }
+    if (
+      current.status !== "cancelled" &&
+      !CANCELLABLE_STATUSES.includes(current.status)
+    ) {
+      const conflictIssue =
+        "The trip advanced after cancellation was reserved and requires staff review.";
+      transaction.update(operationRef, {
+        status: "review_required",
+        failureReason: conflictIssue,
+        reviewIssue: conflictIssue,
+        financialHoldStatus: "manual_review",
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+      transaction.update(bookingRef, {
+        cancellationStatus: "review_required",
+        financialHoldStatus: "manual_review",
+        paymentIntegrityStatus: "review_required",
+        paymentIntegrityIssue: conflictIssue,
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+      return { advancedConflict: true };
+    }
 
+    if (current.status !== "cancelled") {
       const update: UpdateData<DocumentData> = {
         status: "cancelled",
         paymentStatus: resolution.paymentStatus,
@@ -240,7 +242,15 @@ export async function cancelBookingWithFinancialResolution(params: {
       },
       { merge: true },
     );
+
+    return { advancedConflict: false };
   });
+
+  if (finalization.advancedConflict) {
+    throw new Error(
+      "The trip advanced while cancellation was processing. Staff review is required.",
+    );
+  }
 
   return {
     bookingId: params.bookingId,
@@ -438,7 +448,7 @@ function safeExpectedAmount(booking: RideBooking) {
   }
 }
 
-function normalizeRefundStatus(status: Stripe.Refund.Status | null): BookingRefundStatus {
+function normalizeRefundStatus(status: string | null): BookingRefundStatus {
   switch (status) {
     case "succeeded":
       return "succeeded";
