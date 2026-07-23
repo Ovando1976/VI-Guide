@@ -2,32 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import {
+  bookingPaymentUpdate,
+  expectedBookingAmountCents,
+  paymentIntentIntegrityIssue,
+  paymentStatusFromStripe,
+} from "@/lib/booking-payment-state";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
-import type { RideBooking, RideBookingPaymentStatus } from "@/types/mobility";
+import type { RideBooking } from "@/types/mobility";
 
 type Context = {
   params: { bookingId: string };
 };
-
-function paymentStatusFromStripe(
-  status: string,
-): RideBookingPaymentStatus {
-  switch (status) {
-    case "succeeded":
-      return "paid";
-    case "processing":
-      return "processing";
-    case "canceled":
-      return "canceled";
-    case "requires_payment_method":
-    case "requires_action":
-    case "requires_confirmation":
-      return "requires_payment_method";
-    default:
-      return "unpaid";
-  }
-}
 
 export async function POST(_request: NextRequest, context: Context) {
   try {
@@ -59,27 +46,95 @@ export async function POST(_request: NextRequest, context: Context) {
       );
     }
 
-    const amount = Math.round(Number(booking.quotedFare?.total ?? 0) * 100);
-    if (!Number.isSafeInteger(amount) || amount < 50) {
-      return NextResponse.json(
-        { error: "The booking does not have a valid payable fare." },
-        { status: 409 },
-      );
+    const amount = expectedBookingAmountCents(booking);
+    const stripe = getStripe();
+
+    if (booking.paymentStatus === "paid" && !booking.paymentIntentId) {
+      return NextResponse.json({
+        ok: true,
+        bookingId,
+        alreadyPaid: true,
+        reviewRequired: true,
+        paymentStatus: "paid",
+        message:
+          "This booking is already marked paid, but its Stripe reference requires staff review.",
+      });
     }
 
-    const stripe = getStripe();
     let paymentIntent = booking.paymentIntentId
       ? await stripe.paymentIntents.retrieve(booking.paymentIntentId)
       : null;
 
-    if (
-      paymentIntent &&
-      (paymentIntent.amount !== amount || paymentIntent.currency !== "usd")
-    ) {
-      if (!["succeeded", "canceled"].includes(paymentIntent.status)) {
-        await stripe.paymentIntents.cancel(paymentIntent.id);
+    if (paymentIntent) {
+      const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
+      if (integrityIssue) {
+        if (paymentIntent.status === "succeeded") {
+          await bookingRef.update({
+            paymentStatus: "paid",
+            paymentIntentId: paymentIntent.id,
+            amountAuthorized: paymentIntent.amount,
+            amountCaptured: paymentIntent.amount_received,
+            paymentIntegrityStatus: "review_required",
+            paymentIntegrityIssue: integrityIssue,
+            paymentStateSource: "payment_intent_api",
+            paymentReconciledAt: FieldValue.serverTimestamp(),
+            paymentUpdatedAt: FieldValue.serverTimestamp(),
+            updatedAt: FieldValue.serverTimestamp(),
+          });
+          return NextResponse.json({
+            ok: true,
+            bookingId,
+            alreadyPaid: true,
+            reviewRequired: true,
+            paymentStatus: "paid",
+            message:
+              "Payment was captured, but the booking amount or metadata changed and requires staff review. No second charge was created.",
+          });
+        }
+
+        if (paymentIntent.status !== "canceled") {
+          await stripe.paymentIntents.cancel(paymentIntent.id);
+        }
+        paymentIntent = null;
       }
-      paymentIntent = null;
+    }
+
+    if (paymentIntent?.status === "succeeded") {
+      await bookingRef.update(
+        bookingPaymentUpdate({
+          paymentIntent,
+          existingAmountCaptured: booking.amountCaptured,
+          source: "payment_intent_api",
+        }),
+      );
+      return NextResponse.json({
+        ok: true,
+        bookingId,
+        alreadyPaid: true,
+        paymentIntentId: paymentIntent.id,
+        paymentStatus: "paid",
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+      });
+    }
+
+    if (paymentIntent?.status === "processing") {
+      await bookingRef.update(
+        bookingPaymentUpdate({
+          paymentIntent,
+          existingAmountCaptured: booking.amountCaptured,
+          source: "payment_intent_api",
+        }),
+      );
+      return NextResponse.json({
+        ok: true,
+        bookingId,
+        paymentPending: true,
+        paymentIntentId: paymentIntent.id,
+        paymentStatus: "processing",
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+      });
     }
 
     if (!paymentIntent || paymentIntent.status === "canceled") {
@@ -94,6 +149,8 @@ export async function POST(_request: NextRequest, context: Context) {
             riderId: booking.riderId,
             island: booking.island,
             product: "taxi_booking",
+            tariffId: booking.quotedFare.tariffId,
+            tariffVersion: booking.quotedFare.tariffVersion,
           },
         },
         { idempotencyKey: `booking-payment-${bookingId}-${amount}` },
@@ -108,14 +165,15 @@ export async function POST(_request: NextRequest, context: Context) {
     }
 
     await bookingRef.update({
-      paymentIntentId: paymentIntent.id,
-      paymentStatus: paymentStatusFromStripe(paymentIntent.status),
-      amountAuthorized: paymentIntent.amount,
-      amountCaptured:
-        paymentIntent.status === "succeeded"
-          ? paymentIntent.amount_received
-          : booking.amountCaptured ?? null,
-      updatedAt: FieldValue.serverTimestamp(),
+      ...bookingPaymentUpdate({
+        paymentIntent,
+        existingAmountCaptured: booking.amountCaptured,
+        source: "payment_intent_api",
+      }),
+      paymentExpectedAmount: amount,
+      paymentQuoteTariffId: booking.quotedFare.tariffId,
+      paymentQuoteTariffVersion: booking.quotedFare.tariffVersion,
+      paymentInitializedAt: FieldValue.serverTimestamp(),
     });
 
     return NextResponse.json({
@@ -125,7 +183,7 @@ export async function POST(_request: NextRequest, context: Context) {
       clientSecret: paymentIntent.client_secret,
       amount,
       currency: "usd",
-      paymentStatus: paymentStatusFromStripe(paymentIntent.status),
+      paymentStatus: paymentStatusFromStripe(paymentIntent),
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
