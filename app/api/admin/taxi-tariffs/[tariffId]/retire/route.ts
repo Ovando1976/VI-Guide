@@ -40,12 +40,13 @@ export async function POST(
     const db = getAdminDb();
     const tariffRef = db.collection("taxiTariffs").doc(tariffId);
     const auditRef = db.collection("taxiTariffAudit").doc();
-    let tariff: OfficialTaxiTariff | null = null;
+    let island = "";
+    let version = "";
 
     await db.runTransaction(async (transaction) => {
       const snapshot = await transaction.get(tariffRef);
       if (!snapshot.exists) throw new Error("Tariff not found.");
-      tariff = {
+      const tariff = {
         id: snapshot.id,
         ...snapshot.data(),
       } as OfficialTaxiTariff;
@@ -53,6 +54,9 @@ export async function POST(
       if (tariff.status === "retired") {
         throw new Error("Tariff is already retired.");
       }
+
+      island = tariff.island;
+      version = tariff.version;
 
       transaction.update(tariffRef, {
         status: "retired",
@@ -77,8 +81,8 @@ export async function POST(
     return NextResponse.json({
       ok: true,
       tariffId,
-      island: tariff?.island,
-      version: tariff?.version,
+      island,
+      version,
       status: "retired",
     });
   } catch (error) {
