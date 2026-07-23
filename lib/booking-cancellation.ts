@@ -1,11 +1,17 @@
 import "server-only";
 
-import { FieldValue } from "firebase-admin/firestore";
+import {
+  FieldValue,
+  type DocumentReference,
+} from "firebase-admin/firestore";
 import type Stripe from "stripe";
 
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
-import type { RideBooking } from "@/types/mobility";
+import type {
+  RideBooking,
+  RideBookingRefundStatus,
+} from "@/types/mobility";
 
 const CANCELLABLE_STATUSES: RideBooking["status"][] = [
   "draft",
@@ -31,6 +37,11 @@ export type CancellationActorRole =
   | "admin"
   | "system";
 
+type CancellationTransactionResult = {
+  booking: RideBooking;
+  newlyCancelled: boolean;
+};
+
 export async function cancelBookingWithPaymentSafety(params: {
   bookingId: string;
   actorId: string;
@@ -42,95 +53,110 @@ export async function cancelBookingWithPaymentSafety(params: {
   const eventRef = db.collection("tripEvents").doc();
   const operationRef = db.collection("cancellationOperations").doc();
 
-  const cancelledBooking = await db.runTransaction(async (transaction) => {
-    const snapshot = await transaction.get(bookingRef);
-    if (!snapshot.exists) throw new Error("Booking not found.");
+  const transactionResult = await db.runTransaction<CancellationTransactionResult>(
+    async (transaction): Promise<CancellationTransactionResult> => {
+      const snapshot = await transaction.get(bookingRef);
+      if (!snapshot.exists) throw new Error("Booking not found.");
 
-    const booking = { id: snapshot.id, ...snapshot.data() } as RideBooking;
-    if (booking.status === "cancelled") return booking;
-    if (!CANCELLABLE_STATUSES.includes(booking.status)) {
-      throw new Error(
-        `Trip cannot move from ${booking.status} to cancelled.`,
-      );
-    }
+      const booking = { id: snapshot.id, ...snapshot.data() } as RideBooking;
+      if (booking.status === "cancelled") {
+        return { booking, newlyCancelled: false };
+      }
+      if (!CANCELLABLE_STATUSES.includes(booking.status)) {
+        throw new Error(
+          `Trip cannot move from ${booking.status} to cancelled.`,
+        );
+      }
+      if (params.actorRole === "rider" && booking.status === "in_progress") {
+        throw new Error(
+          "A rider cannot cancel through the app after the trip has started. Contact dispatch for assistance.",
+        );
+      }
 
-    const capturedAmount = Math.max(0, Number(booking.amountCaptured ?? 0));
-    const protectedPayment =
-      booking.paymentStatus === "paid" || capturedAmount > 0;
-    const refundStatus = protectedPayment ? "pending_review" : "not_required";
-    const requestedAmount = protectedPayment
-      ? capturedAmount || Math.max(0, Number(booking.amountAuthorized ?? 0))
-      : 0;
+      const capturedAmount = Math.max(0, Number(booking.amountCaptured ?? 0));
+      const protectedPayment =
+        booking.paymentStatus === "paid" ||
+        booking.paymentStatus === "refunded" ||
+        capturedAmount > 0;
+      const refundStatus: RideBookingRefundStatus = protectedPayment
+        ? "pending_review"
+        : "not_required";
+      const requestedAmount = protectedPayment
+        ? capturedAmount || Math.max(0, Number(booking.amountAuthorized ?? 0))
+        : 0;
 
-    transaction.update(bookingRef, {
-      status: "cancelled",
-      cancelledAt: FieldValue.serverTimestamp(),
-      cancellationReason: params.message,
-      cancelledBy: params.actorId,
-      cancelledByRole: params.actorRole,
-      cancellationOperationId: operationRef.id,
-      cancellationPaymentAction: protectedPayment
-        ? "refund_review_required"
-        : "none",
-      refundStatus,
-      refundRequestedAmount: requestedAmount || null,
-      refundReason: protectedPayment ? params.message : null,
-      refundRequestedAt: protectedPayment
-        ? FieldValue.serverTimestamp()
-        : FieldValue.delete(),
-      settlementBlockedAt: FieldValue.serverTimestamp(),
-      settlementBlockedReason: "Booking cancelled before settlement approval.",
-      driverLocation: FieldValue.delete(),
-      driverLocationUpdatedAt: FieldValue.delete(),
-      updatedAt: FieldValue.serverTimestamp(),
-    });
-
-    if (booking.driverId) {
-      transaction.update(db.collection("drivers").doc(booking.driverId), {
-        availability: "available",
+      transaction.update(bookingRef, {
+        status: "cancelled",
+        cancelledAt: FieldValue.serverTimestamp(),
+        cancellationReason: params.message,
+        cancelledBy: params.actorId,
+        cancelledByRole: params.actorRole,
+        cancellationOperationId: operationRef.id,
+        cancellationPaymentAction: protectedPayment
+          ? "refund_review_required"
+          : "none",
+        refundStatus,
+        refundRequestedAmount: requestedAmount || null,
+        refundReason: protectedPayment ? params.message : null,
+        refundRequestedAt: protectedPayment
+          ? FieldValue.serverTimestamp()
+          : FieldValue.delete(),
+        settlementBlockedAt: FieldValue.serverTimestamp(),
+        settlementBlockedReason: "Booking cancelled before settlement approval.",
+        driverLocation: FieldValue.delete(),
+        driverLocationUpdatedAt: FieldValue.delete(),
         updatedAt: FieldValue.serverTimestamp(),
       });
-    }
 
-    transaction.set(eventRef, {
-      bookingId: params.bookingId,
-      type: "trip_cancelled",
-      actorType:
-        params.actorRole === "dispatcher" ? "admin" : params.actorRole,
-      actorId: params.actorId,
-      message: params.message,
-      fromStatus: booking.status,
-      toStatus: "cancelled",
-      refundStatus,
-      refundRequestedAmount: requestedAmount || null,
-      createdAt: FieldValue.serverTimestamp(),
-    });
+      if (booking.driverId) {
+        transaction.update(db.collection("drivers").doc(booking.driverId), {
+          availability: "available",
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+      }
 
-    transaction.set(operationRef, {
-      bookingId: params.bookingId,
-      actorId: params.actorId,
-      actorRole: params.actorRole,
-      status: "trip_cancelled",
-      paymentIntentId: booking.paymentIntentId ?? null,
-      paymentStatusAtCancellation: booking.paymentStatus ?? "unpaid",
-      amountCapturedAtCancellation: capturedAmount,
-      refundStatus,
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
-    });
+      transaction.set(eventRef, {
+        bookingId: params.bookingId,
+        type: "trip_cancelled",
+        actorType:
+          params.actorRole === "dispatcher" ? "admin" : params.actorRole,
+        actorId: params.actorId,
+        message: params.message,
+        fromStatus: booking.status,
+        toStatus: "cancelled",
+        refundStatus,
+        refundRequestedAmount: requestedAmount || null,
+        createdAt: FieldValue.serverTimestamp(),
+      });
 
-    return {
-      ...booking,
-      status: "cancelled" as const,
-      refundStatus,
-      refundRequestedAmount: requestedAmount || null,
-      cancellationPaymentAction: protectedPayment
-        ? ("refund_review_required" as const)
-        : ("none" as const),
-    };
-  });
+      transaction.set(operationRef, {
+        bookingId: params.bookingId,
+        actorId: params.actorId,
+        actorRole: params.actorRole,
+        status: "trip_cancelled",
+        paymentIntentId: booking.paymentIntentId ?? null,
+        paymentStatusAtCancellation: booking.paymentStatus ?? "unpaid",
+        amountCapturedAtCancellation: capturedAmount,
+        refundStatus,
+        createdAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
+      });
 
-  if (!cancelledBooking.paymentIntentId) {
+      const cancelledBooking: RideBooking = {
+        ...booking,
+        status: "cancelled",
+        refundStatus,
+        refundRequestedAmount: requestedAmount || null,
+        cancellationPaymentAction: protectedPayment
+          ? "refund_review_required"
+          : "none",
+      };
+      return { booking: cancelledBooking, newlyCancelled: true };
+    },
+  );
+
+  const cancelledBooking = transactionResult.booking;
+  if (!transactionResult.newlyCancelled || !cancelledBooking.paymentIntentId) {
     return cancellationResult(cancelledBooking);
   }
 
@@ -151,20 +177,16 @@ export async function cancelBookingWithPaymentSafety(params: {
     }
 
     if (paymentIntent.status === "canceled") {
+      const capturedAmount = Number(cancelledBooking.amountCaptured ?? 0);
       await Promise.all([
         bookingRef.update({
-          paymentStatus:
-            Number(cancelledBooking.amountCaptured ?? 0) > 0
-              ? "paid"
-              : "canceled",
+          paymentStatus: capturedAmount > 0 ? "paid" : "canceled",
           cancellationPaymentAction:
-            Number(cancelledBooking.amountCaptured ?? 0) > 0
+            capturedAmount > 0
               ? "refund_review_required"
               : "payment_intent_canceled",
           refundStatus:
-            Number(cancelledBooking.amountCaptured ?? 0) > 0
-              ? "pending_review"
-              : "not_required",
+            capturedAmount > 0 ? "pending_review" : "not_required",
           paymentUpdatedAt: FieldValue.serverTimestamp(),
           refundUpdatedAt: FieldValue.serverTimestamp(),
           updatedAt: FieldValue.serverTimestamp(),
@@ -218,13 +240,13 @@ export async function cancelBookingWithPaymentSafety(params: {
 }
 
 async function markCancellationForRefundReview(params: {
-  bookingRef: FirebaseFirestore.DocumentReference;
-  operationRef: FirebaseFirestore.DocumentReference;
+  bookingRef: DocumentReference;
+  operationRef: DocumentReference;
   paymentIntent: Stripe.PaymentIntent;
   reason: string;
 }) {
-  const capturedAmount = Math.max(0, paymentIntent.amount_received);
-  const requestedAmount = capturedAmount || paymentIntent.amount;
+  const capturedAmount = Math.max(0, params.paymentIntent.amount_received);
+  const requestedAmount = capturedAmount || params.paymentIntent.amount;
   await Promise.all([
     params.bookingRef.update({
       paymentStatus:
