@@ -29,6 +29,14 @@ export type RideBookingPaymentStatus =
   | "failed"
   | "canceled";
 
+export type RideBookingRefundStatus =
+  | "not_required"
+  | "pending_review"
+  | "processing"
+  | "succeeded"
+  | "failed"
+  | "canceled";
+
 export type PickupContext = {
   lat: number;
   lng: number;
@@ -107,6 +115,21 @@ export type RideBooking = {
   paymentInitializedAt?: string | { seconds?: number; nanoseconds?: number };
   paymentReconciledAt?: string | { seconds?: number; nanoseconds?: number };
   paymentUpdatedAt?: string | { seconds?: number; nanoseconds?: number };
+  refundStatus?: RideBookingRefundStatus;
+  refundId?: string | null;
+  refundRequestedAmount?: number | null;
+  refundAmount?: number | null;
+  refundReason?: string | null;
+  refundFailureReason?: string | null;
+  refundRequestedAt?: string | { seconds?: number; nanoseconds?: number };
+  refundUpdatedAt?: string | { seconds?: number; nanoseconds?: number };
+  cancellationPaymentAction?:
+    | "none"
+    | "payment_intent_canceled"
+    | "refund_review_required";
+  cancellationReason?: string | null;
+  cancelledBy?: string | null;
+  cancelledByRole?: "rider" | "driver" | "dispatcher" | "admin" | "system";
   mode: RideMode;
   island: IslandCode;
   origin: PickupContext;
@@ -141,10 +164,11 @@ export type RideBooking = {
     driverPayout: number;
   };
   settlement?: {
-    status: "pending_review" | "approved" | "paid" | "failed";
+    status: "pending_review" | "approved" | "paid" | "failed" | "blocked";
     grossFare: number;
     serviceFee?: number;
     operatorSettlement?: number;
     feeAgreementId?: string;
+    blockedReason?: string;
   };
 };
