@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
+  assertMobilityPilotActive,
   buildMobilityPilotGateReport,
   getMobilityPilotControl,
   MOBILITY_PILOT_ISLANDS,
@@ -16,7 +17,28 @@ export async function GET() {
           getMobilityPilotControl(island),
           buildMobilityPilotGateReport(island),
         ]);
-        return { island, control, report };
+
+        let effectiveActive = false;
+        let activationIssue: string | undefined;
+        if (control.status === "active") {
+          try {
+            await assertMobilityPilotActive(island);
+            effectiveActive = true;
+          } catch (error) {
+            activationIssue =
+              error instanceof Error
+                ? error.message
+                : "The pilot activation could not be verified.";
+          }
+        }
+
+        return {
+          island,
+          control,
+          report,
+          effectiveActive,
+          activationIssue,
+        };
       }),
     );
 
