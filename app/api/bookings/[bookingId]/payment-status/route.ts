@@ -15,6 +15,12 @@ type Context = {
   params: { bookingId: string };
 };
 
+type ReconciliationResult = {
+  reviewRequired: boolean;
+  integrityIssue: string | null;
+  booking: RideBooking;
+};
+
 export async function POST(_request: NextRequest, context: Context) {
   try {
     const session = await requireSession();
@@ -56,21 +62,24 @@ export async function POST(_request: NextRequest, context: Context) {
           updatedAt: FieldValue.serverTimestamp(),
         });
       }
+
+      const currentBooking: RideBooking = {
+        ...booking,
+        ...(reviewRequired
+          ? {
+              paymentStatus: "paid" as const,
+              paymentIntegrityStatus: "review_required" as const,
+              paymentIntegrityIssue: integrityIssue,
+            }
+          : {}),
+      };
+
       return NextResponse.json({
         ok: true,
         reconciled: false,
         reviewRequired,
         integrityIssue,
-        booking: paymentBookingPayload({
-          ...booking,
-          ...(reviewRequired
-            ? {
-                paymentStatus: "paid" as const,
-                paymentIntegrityStatus: "review_required" as const,
-                paymentIntegrityIssue: integrityIssue,
-              }
-            : {}),
-        }),
+        booking: paymentBookingPayload(currentBooking),
       });
     }
 
@@ -78,102 +87,109 @@ export async function POST(_request: NextRequest, context: Context) {
       booking.paymentIntentId,
     );
 
-    const result = await db.runTransaction(async (transaction) => {
-      const currentSnapshot = await transaction.get(bookingRef);
-      if (!currentSnapshot.exists) throw new Error("Booking not found.");
+    const result = await db.runTransaction<ReconciliationResult>(
+      async (transaction): Promise<ReconciliationResult> => {
+        const currentSnapshot = await transaction.get(bookingRef);
+        if (!currentSnapshot.exists) throw new Error("Booking not found.");
 
-      const current = {
-        id: currentSnapshot.id,
-        ...currentSnapshot.data(),
-      } as RideBooking;
-      if (current.paymentIntentId !== paymentIntent.id) {
-        throw new Error(
-          "The booking payment reference changed during reconciliation.",
-        );
-      }
+        const current = {
+          id: currentSnapshot.id,
+          ...currentSnapshot.data(),
+        } as RideBooking;
+        if (current.paymentIntentId !== paymentIntent.id) {
+          throw new Error(
+            "The booking payment reference changed during reconciliation.",
+          );
+        }
 
-      const locallyProtected =
-        current.paymentStatus === "paid" || Number(current.amountCaptured ?? 0) > 0;
-      if (locallyProtected && paymentIntent.status !== "succeeded") {
-        const integrityIssue = `The booking is locally marked paid or captured, but Stripe currently reports ${paymentIntent.status}.`;
-        transaction.update(bookingRef, {
-          paymentStatus: "paid",
-          paymentIntegrityStatus: "review_required",
-          paymentIntegrityIssue: integrityIssue,
-          paymentStateSource: "reconciliation",
-          paymentReconciledAt: FieldValue.serverTimestamp(),
-          paymentUpdatedAt: FieldValue.serverTimestamp(),
-          updatedAt: FieldValue.serverTimestamp(),
-        });
-        return {
-          reviewRequired: true,
-          integrityIssue,
-          booking: {
-            ...current,
-            paymentStatus: "paid" as const,
-            paymentIntegrityStatus: "review_required" as const,
+        const locallyProtected =
+          current.paymentStatus === "paid" ||
+          Number(current.amountCaptured ?? 0) > 0;
+        if (locallyProtected && paymentIntent.status !== "succeeded") {
+          const integrityIssue = `The booking is locally marked paid or captured, but Stripe currently reports ${paymentIntent.status}.`;
+          transaction.update(bookingRef, {
+            paymentStatus: "paid",
+            paymentIntegrityStatus: "review_required",
             paymentIntegrityIssue: integrityIssue,
-          },
-        };
-      }
+            paymentStateSource: "reconciliation",
+            paymentReconciledAt: FieldValue.serverTimestamp(),
+            paymentUpdatedAt: FieldValue.serverTimestamp(),
+            updatedAt: FieldValue.serverTimestamp(),
+          });
 
-      let integrityIssue: string | null = null;
-      try {
-        integrityIssue = paymentIntentIntegrityIssue(paymentIntent, current);
-      } catch (error) {
-        integrityIssue =
-          error instanceof Error
-            ? error.message
-            : "The booking fare could not be validated.";
-      }
-      if (integrityIssue) {
-        const captured = paymentIntent.status === "succeeded";
-        transaction.update(bookingRef, {
-          ...(captured
-            ? bookingPaymentUpdate({
-                paymentIntent,
-                existingAmountCaptured: current.amountCaptured,
-                source: "reconciliation",
-              })
-            : {
-                paymentStateSource: "reconciliation",
-                paymentReconciledAt: FieldValue.serverTimestamp(),
-                paymentUpdatedAt: FieldValue.serverTimestamp(),
-                updatedAt: FieldValue.serverTimestamp(),
-              }),
-          paymentIntegrityStatus: "review_required",
-          paymentIntegrityIssue: integrityIssue,
-        });
-        return {
-          reviewRequired: true,
-          integrityIssue,
-          booking: {
+          const protectedBooking: RideBooking = {
             ...current,
-            paymentStatus: captured ? ("paid" as const) : current.paymentStatus,
+            paymentStatus: "paid",
+            paymentIntegrityStatus: "review_required",
+            paymentIntegrityIssue: integrityIssue,
+          };
+
+          return {
+            reviewRequired: true,
+            integrityIssue,
+            booking: protectedBooking,
+          };
+        }
+
+        let integrityIssue: string | null = null;
+        try {
+          integrityIssue = paymentIntentIntegrityIssue(paymentIntent, current);
+        } catch (error) {
+          integrityIssue =
+            error instanceof Error
+              ? error.message
+              : "The booking fare could not be validated.";
+        }
+
+        if (integrityIssue) {
+          const captured = paymentIntent.status === "succeeded";
+          transaction.update(bookingRef, {
+            ...(captured
+              ? bookingPaymentUpdate({
+                  paymentIntent,
+                  existingAmountCaptured: current.amountCaptured,
+                  source: "reconciliation",
+                })
+              : {
+                  paymentStateSource: "reconciliation",
+                  paymentReconciledAt: FieldValue.serverTimestamp(),
+                  paymentUpdatedAt: FieldValue.serverTimestamp(),
+                  updatedAt: FieldValue.serverTimestamp(),
+                }),
+            paymentIntegrityStatus: "review_required",
+            paymentIntegrityIssue: integrityIssue,
+          });
+
+          const reviewBooking: RideBooking = {
+            ...current,
+            paymentStatus: captured ? "paid" : current.paymentStatus,
             paymentIntentId: paymentIntent.id,
             amountAuthorized: paymentIntent.amount,
             amountCaptured: captured
               ? paymentIntent.amount_received
               : (current.amountCaptured ?? null),
-            paymentIntegrityStatus: "review_required" as const,
+            paymentIntegrityStatus: "review_required",
             paymentIntegrityIssue: integrityIssue,
-          },
-        };
-      }
+          };
 
-      const paymentStatus = paymentStatusFromStripe(paymentIntent);
-      transaction.update(
-        bookingRef,
-        bookingPaymentUpdate({
-          paymentIntent,
-          existingAmountCaptured: current.amountCaptured,
-          source: "reconciliation",
-        }),
-      );
-      return {
-        reviewRequired: false,
-        integrityIssue: null,
-        booking: {
+          return {
+            reviewRequired: true,
+            integrityIssue,
+            booking: reviewBooking,
+          };
+        }
+
+        const paymentStatus = paymentStatusFromStripe(paymentIntent);
+        transaction.update(
+          bookingRef,
+          bookingPaymentUpdate({
+            paymentIntent,
+            existingAmountCaptured: current.amountCaptured,
+            source: "reconciliation",
+          }),
+        );
+
+        const reconciledBooking: RideBooking = {
           ...current,
           paymentStatus,
           paymentIntentId: paymentIntent.id,
@@ -182,11 +198,17 @@ export async function POST(_request: NextRequest, context: Context) {
             paymentIntent.status === "succeeded"
               ? paymentIntent.amount_received
               : (current.amountCaptured ?? null),
-          paymentIntegrityStatus: "verified" as const,
+          paymentIntegrityStatus: "verified",
           paymentIntegrityIssue: null,
-        },
-      };
-    });
+        };
+
+        return {
+          reviewRequired: false,
+          integrityIssue: null,
+          booking: reconciledBooking,
+        };
+      },
+    );
 
     return NextResponse.json({
       ok: true,
