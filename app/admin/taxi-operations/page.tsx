@@ -5,12 +5,18 @@ import { TaxiOperationsBoard } from "@/components/taxi-operations-board";
 export default function TaxiOperationsPage() {
   return (
     <>
-      <div className="mx-auto flex max-w-7xl justify-end px-5 pt-6">
+      <div className="mx-auto flex max-w-7xl flex-wrap justify-end gap-3 px-5 pt-6">
         <Link
           href="/admin/tariffs"
           className="rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-white shadow-sm"
         >
           Official tariff governance
+        </Link>
+        <Link
+          href="/admin/pilot-readiness"
+          className="rounded-full bg-[#f5c451] px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#5f3d00] shadow-sm"
+        >
+          Pilot readiness
         </Link>
       </div>
       <TaxiOperationsBoard />
