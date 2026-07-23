@@ -160,7 +160,6 @@ export async function POST(request: NextRequest) {
           operatorDisclosureAccepted: true,
           termsAccepted: true,
           privacyAccepted: true,
-          userAgent: request.headers.get("user-agent")?.slice(0, 500) ?? null,
         },
       });
     } catch (consentError) {
