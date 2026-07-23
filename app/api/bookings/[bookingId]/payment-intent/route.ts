@@ -5,6 +5,7 @@ import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
   bookingPaymentUpdate,
   expectedBookingAmountCents,
+  paymentIntentIdempotencyKey,
   paymentIntentIntegrityIssue,
   paymentStatusFromStripe,
 } from "@/lib/booking-payment-state";
@@ -50,15 +51,26 @@ export async function POST(_request: NextRequest, context: Context) {
     const stripe = getStripe();
 
     if (booking.paymentStatus === "paid" && !booking.paymentIntentId) {
-      return NextResponse.json({
-        ok: true,
-        bookingId,
-        alreadyPaid: true,
-        reviewRequired: true,
-        paymentStatus: "paid",
-        message:
-          "This booking is already marked paid, but its Stripe reference requires staff review.",
+      const integrityIssue =
+        "This booking is marked paid without a Stripe payment reference.";
+      await bookingRef.update({
+        paymentIntegrityStatus: "review_required",
+        paymentIntegrityIssue: integrityIssue,
+        paymentStateSource: "payment_intent_api",
+        paymentUpdatedAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
       });
+      return NextResponse.json(
+        {
+          error:
+            "This payment requires staff review. No additional charge was created.",
+          code: "PAYMENT_REVIEW_REQUIRED",
+          alreadyPaid: true,
+          reviewRequired: true,
+          paymentStatus: "paid",
+        },
+        { status: 409 },
+      );
     }
 
     let paymentIntent = booking.paymentIntentId
@@ -151,9 +163,10 @@ export async function POST(_request: NextRequest, context: Context) {
             product: "taxi_booking",
             tariffId: booking.quotedFare.tariffId,
             tariffVersion: booking.quotedFare.tariffVersion,
+            rateRuleId: booking.quotedFare.rateRuleId,
           },
         },
-        { idempotencyKey: `booking-payment-${bookingId}-${amount}` },
+        { idempotencyKey: paymentIntentIdempotencyKey(booking) },
       );
     }
 
