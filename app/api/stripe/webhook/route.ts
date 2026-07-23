@@ -274,7 +274,7 @@ async function processRefundEvent(
   event: Stripe.Event & { data: { object: Stripe.Refund } },
 ) {
   const refund = event.data.object;
-  const refundMetadata = refund.metadata ?? {};
+  const refundMetadata: Record<string, string> = refund.metadata ?? {};
   const paymentIntentId = expandableId(
     (refund as Stripe.Refund & {
       payment_intent?: string | Stripe.PaymentIntent | null;
