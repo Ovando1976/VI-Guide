@@ -59,6 +59,14 @@ export async function POST(
           "Tariff must be imported through the reviewed draft workflow before activation.",
         );
       }
+      if (tariff.issuingAuthority !== "Virgin Islands Taxicab Commission") {
+        throw new Error(
+          "Tariff issuing authority must be the Virgin Islands Taxicab Commission.",
+        );
+      }
+      if (tariff.currency !== "USD") {
+        throw new Error("Tariff currency must be USD.");
+      }
       if (Date.parse(tariff.effectiveAt) > Date.now()) {
         throw new Error(
           "A future-effective tariff cannot replace the currently effective tariff.",
