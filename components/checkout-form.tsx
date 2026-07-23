@@ -26,20 +26,16 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
     returnUrl.searchParams.set("payment", "return");
 
     try {
-      const { error } = await stripe.confirmPayment({
+      const result = await stripe.confirmPayment({
         elements,
         confirmParams: {
           return_url: returnUrl.toString(),
         },
-        redirect: "if_required",
       });
 
-      if (error) {
-        setMessage(error.message ?? "Payment failed.");
-        return;
+      if (result.error) {
+        setMessage(result.error.message ?? "Payment failed.");
       }
-
-      window.location.assign(returnUrl.toString());
     } catch (error) {
       setMessage(
         error instanceof Error
@@ -62,7 +58,8 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
         {submitting ? "Processing…" : "Pay and track ride"}
       </button>
       <p className="text-center text-xs font-semibold leading-5 text-slate-500">
-        After payment, VI Guide verifies the Stripe record before opening dispatch and live trip tracking.
+        After payment, VI Guide verifies the Stripe record before opening dispatch
+        and live trip tracking.
       </p>
       {message ? (
         <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-700">
