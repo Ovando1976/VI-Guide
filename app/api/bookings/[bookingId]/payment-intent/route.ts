@@ -49,11 +49,14 @@ export async function POST(_request: NextRequest, context: Context) {
 
     const amount = expectedBookingAmountCents(booking);
     const stripe = getStripe();
+    const locallyProtected =
+      booking.paymentStatus === "paid" || Number(booking.amountCaptured ?? 0) > 0;
 
-    if (booking.paymentStatus === "paid" && !booking.paymentIntentId) {
+    if (locallyProtected && !booking.paymentIntentId) {
       const integrityIssue =
-        "This booking is marked paid without a Stripe payment reference.";
+        "This booking is marked paid or captured without a Stripe payment reference.";
       await bookingRef.update({
+        paymentStatus: "paid",
         paymentIntegrityStatus: "review_required",
         paymentIntegrityIssue: integrityIssue,
         paymentStateSource: "payment_intent_api",
@@ -76,6 +79,59 @@ export async function POST(_request: NextRequest, context: Context) {
     let paymentIntent = booking.paymentIntentId
       ? await stripe.paymentIntents.retrieve(booking.paymentIntentId)
       : null;
+
+    if (locallyProtected && paymentIntent) {
+      const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
+      if (paymentIntent.status === "succeeded") {
+        await bookingRef.update({
+          ...bookingPaymentUpdate({
+            paymentIntent,
+            existingAmountCaptured: booking.amountCaptured,
+            source: "payment_intent_api",
+          }),
+          ...(integrityIssue
+            ? {
+                paymentIntegrityStatus: "review_required",
+                paymentIntegrityIssue: integrityIssue,
+              }
+            : {}),
+        });
+        return NextResponse.json({
+          ok: true,
+          bookingId,
+          alreadyPaid: true,
+          reviewRequired: Boolean(integrityIssue),
+          paymentIntentId: paymentIntent.id,
+          paymentStatus: "paid",
+          amount: paymentIntent.amount,
+          currency: paymentIntent.currency,
+          ...(integrityIssue ? { message: integrityIssue } : {}),
+        });
+      }
+
+      const protectedStateIssue =
+        `The booking is locally marked paid or captured, but Stripe currently reports ${paymentIntent.status}.`;
+      await bookingRef.update({
+        paymentStatus: "paid",
+        paymentIntegrityStatus: "review_required",
+        paymentIntegrityIssue: protectedStateIssue,
+        paymentStateSource: "payment_intent_api",
+        paymentReconciledAt: FieldValue.serverTimestamp(),
+        paymentUpdatedAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+      return NextResponse.json(
+        {
+          error:
+            "This payment requires staff review. No additional charge was created.",
+          code: "PAYMENT_REVIEW_REQUIRED",
+          alreadyPaid: true,
+          reviewRequired: true,
+          paymentStatus: "paid",
+        },
+        { status: 409 },
+      );
+    }
 
     if (paymentIntent) {
       const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
