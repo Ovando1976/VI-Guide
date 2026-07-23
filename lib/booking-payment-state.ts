@@ -117,7 +117,6 @@ export function paymentIntentIntegrityIssue(
 export function hasIrreversiblePaymentProtection(booking: RideBooking) {
   return Boolean(
     booking.status === "cancelled" ||
-      booking.status === "completed" ||
       booking.paymentStatus === "refunded" ||
       booking.cancellationStatus === "processing" ||
       booking.cancellationStatus === "review_required" ||
