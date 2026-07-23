@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import { cancelBookingWithPaymentSafety } from "@/lib/booking-cancellation";
 import {
   getServerBooking,
   updateServerTripStatus,
@@ -109,14 +110,25 @@ export async function POST(
       : isAssignedDriver
         ? "driver"
         : "rider";
+    const message =
+      cleanMessage(body?.message) ?? defaultStatusMessage(requestedStatus);
+
+    if (requestedStatus === "cancelled") {
+      const cancellation = await cancelBookingWithPaymentSafety({
+        bookingId,
+        actorId: session.uid,
+        actorRole: session.role,
+        message,
+      });
+      return NextResponse.json({ ok: true, ...cancellation });
+    }
 
     await updateServerTripStatus({
       bookingId,
       status: requestedStatus,
       actorType,
       actorId: session.uid,
-      message:
-        cleanMessage(body?.message) ?? defaultStatusMessage(requestedStatus),
+      message,
       eventType,
     });
 
@@ -137,7 +149,8 @@ export async function POST(
     const conflict =
       message.startsWith("Trip cannot move") ||
       message.includes("Payment must clear") ||
-      message.includes("driver must be assigned");
+      message.includes("driver must be assigned") ||
+      message.includes("payment cancellation");
 
     return NextResponse.json(
       { error: message },
