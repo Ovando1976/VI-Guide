@@ -15,7 +15,11 @@ type CheckoutBooking = {
   id: string;
   paymentStatus?: string;
   paymentIntegrityStatus?: string;
+  financialHoldStatus?: string;
+  cancellationStatus?: string;
   amountCaptured?: number | null;
+  refund?: { status?: string } | null;
+  dispute?: { status?: string } | null;
   status?: string;
   island?: string;
   origin?: { estateName?: string };
@@ -62,8 +66,8 @@ export default function CheckoutBookingPage() {
 
         if (
           loadedBooking.paymentStatus === "paid" ||
-          loadedBooking.paymentIntegrityStatus === "review_required" ||
-          Number(loadedBooking.amountCaptured ?? 0) > 0
+          Number(loadedBooking.amountCaptured ?? 0) > 0 ||
+          isProtectedBooking(loadedBooking)
         ) {
           router.replace(
             `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
@@ -84,7 +88,9 @@ export default function CheckoutBookingPage() {
         if (
           intentJson?.alreadyPaid === true ||
           intentJson?.reviewRequired === true ||
-          intentJson?.paymentPending === true
+          intentJson?.paymentPending === true ||
+          intentJson?.code === "PAYMENT_LIFECYCLE_BLOCKED" ||
+          intentJson?.code === "PAYMENT_REVIEW_REQUIRED"
         ) {
           router.replace(
             `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
@@ -217,5 +223,19 @@ export default function CheckoutBookingPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+function isProtectedBooking(booking: CheckoutBooking) {
+  return Boolean(
+    booking.status === "cancelled" ||
+      booking.status === "completed" ||
+      booking.paymentStatus === "refunded" ||
+      booking.paymentIntegrityStatus === "review_required" ||
+      booking.cancellationStatus === "processing" ||
+      booking.cancellationStatus === "review_required" ||
+      (booking.refund && booking.refund.status !== "not_required") ||
+      booking.dispute ||
+      (booking.financialHoldStatus && booking.financialHoldStatus !== "none"),
   );
 }
