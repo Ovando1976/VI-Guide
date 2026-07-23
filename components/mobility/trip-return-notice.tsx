@@ -17,10 +17,25 @@ type BookingPayload = {
     paymentStatus?: string;
     paymentIntegrityStatus?: string | null;
     paymentIntegrityIssue?: string | null;
+    financialHoldStatus?: string | null;
+    cancellationStatus?: string | null;
+    refund?: {
+      id?: string | null;
+      status?: string;
+      amount?: number;
+      failureReason?: string | null;
+    } | null;
+    dispute?: {
+      id?: string;
+      status?: string;
+      amount?: number;
+      fundsReinstated?: boolean;
+    } | null;
     status?: string;
     origin?: { estateName?: string };
     destination?: { estateName?: string };
   };
+  protected?: boolean;
   reviewRequired?: boolean;
   integrityIssue?: string | null;
   error?: string;
@@ -30,6 +45,7 @@ type NoticeState =
   | "idle"
   | "checking"
   | "paid"
+  | "refunded"
   | "pending"
   | "review"
   | "error";
@@ -73,13 +89,28 @@ export function TripReturnNotice() {
         .filter(Boolean)
         .join(" → ");
       const paymentStatus = booking?.paymentStatus ?? "unpaid";
+      const refundStatus = booking?.refund?.status ?? "";
       const reviewRequired =
         payload?.reviewRequired === true ||
         booking?.paymentIntegrityStatus === "review_required";
 
-      if (reviewRequired) {
+      if (paymentStatus === "refunded" || refundStatus === "succeeded") {
         setMessage(
-          `${route || "Your ride"} has a protected payment record that requires staff review. Do not submit another payment. ${payload?.integrityIssue || booking?.paymentIntegrityIssue || "VI Guide is preserving the payment while the record is reviewed."}`,
+          `${route || "Your ride"} is cancelled or closed and the refund was issued to the original payment method. No additional payment is needed.`,
+        );
+        setState("refunded");
+        return true;
+      }
+
+      if (payload?.protected || reviewRequired) {
+        const refundText = refundStatus
+          ? ` Refund status: ${refundStatus.replaceAll("_", " ")}.`
+          : "";
+        const disputeText = booking?.dispute?.status
+          ? ` Dispute status: ${booking.dispute.status.replaceAll("_", " ")}.`
+          : "";
+        setMessage(
+          `${route || "Your ride"} has a protected financial record. Do not submit another payment.${refundText}${disputeText} ${payload?.integrityIssue || booking?.paymentIntegrityIssue || "VI Guide is preserving the record for staff review."}`,
         );
         setState("review");
         return true;
@@ -165,15 +196,17 @@ export function TripReturnNotice() {
 
   const isError = state === "error";
   const isPaid = state === "paid";
+  const isRefunded = state === "refunded";
   const isReview = state === "review";
   const isChecking = state === "checking";
+  const isSuccess = isPaid || isRefunded;
 
   return (
     <section
       className={`mb-6 rounded-[28px] border p-5 shadow-sm sm:p-6 ${
         isError || isReview
           ? "border-rose-200 bg-rose-50"
-          : isPaid
+          : isSuccess
             ? "border-emerald-200 bg-emerald-50"
             : "border-amber-200 bg-amber-50"
       }`}
@@ -184,7 +217,7 @@ export function TripReturnNotice() {
           className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${
             isError || isReview
               ? "bg-rose-100 text-rose-700"
-              : isPaid
+              : isSuccess
                 ? "bg-emerald-100 text-emerald-700"
                 : "bg-amber-100 text-amber-800"
           }`}
@@ -193,7 +226,7 @@ export function TripReturnNotice() {
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : isError || isReview ? (
             <AlertCircle className="h-5 w-5" />
-          ) : isPaid ? (
+          ) : isSuccess ? (
             <CheckCircle2 className="h-5 w-5" />
           ) : (
             <ShieldCheck className="h-5 w-5" />
@@ -202,18 +235,20 @@ export function TripReturnNotice() {
 
         <div className="min-w-0 flex-1">
           <div className="text-[10px] font-black uppercase tracking-[.18em] text-slate-500">
-            Mobility payment handoff
+            Mobility financial handoff
           </div>
           <h2 className="mt-1 text-xl font-black text-[#043331]">
             {isChecking
               ? "Reconciling payment with Stripe"
-              : isReview
-                ? "Payment preserved—staff review required"
-                : isError
-                  ? "Payment needs attention"
-                  : isPaid
-                    ? "Your ride is ready for dispatch"
-                    : "Payment confirmation is still processing"}
+              : isRefunded
+                ? "Your refund was issued"
+                : isReview
+                  ? "Payment protected—staff review required"
+                  : isError
+                    ? "Payment needs attention"
+                    : isPaid
+                      ? "Your ride is ready for dispatch"
+                      : "Payment confirmation is still processing"}
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
             {isChecking
@@ -236,7 +271,7 @@ export function TripReturnNotice() {
               >
                 Book another ride
               </Link>
-            ) : isReview ? (
+            ) : isRefunded || isReview ? (
               <Link
                 href="/trips"
                 className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
@@ -245,7 +280,7 @@ export function TripReturnNotice() {
               </Link>
             ) : null}
 
-            {!isPaid && !isError && !isReview ? (
+            {!isSuccess && !isError && !isReview ? (
               <button
                 type="button"
                 onClick={() => void retryNow()}
