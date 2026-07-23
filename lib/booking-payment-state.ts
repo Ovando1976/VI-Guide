@@ -16,6 +16,7 @@ const STATUS_PRECEDENCE: Record<RideBookingPaymentStatus, number> = {
   processing: 2,
   canceled: 3,
   paid: 4,
+  refunded: 5,
 };
 
 export function paymentStatusFromStripe(
@@ -113,6 +114,69 @@ export function paymentIntentIntegrityIssue(
   return null;
 }
 
+export function hasIrreversiblePaymentProtection(booking: RideBooking) {
+  return Boolean(
+    booking.status === "cancelled" ||
+      booking.paymentStatus === "refunded" ||
+      booking.cancellationStatus === "processing" ||
+      booking.cancellationStatus === "review_required" ||
+      (booking.refund && booking.refund.status !== "not_required") ||
+      (booking.dispute &&
+        !["prevented", "warning_closed"].includes(booking.dispute.status)) ||
+      booking.unexpectedCapturedPaymentIntentId,
+  );
+}
+
+export function canReconcilePaymentIntegrity(booking: RideBooking) {
+  return Boolean(
+    booking.paymentIntegrityStatus === "review_required" &&
+      !hasIrreversiblePaymentProtection(booking) &&
+      (!booking.financialHoldStatus ||
+        booking.financialHoldStatus === "none" ||
+        booking.financialHoldStatus === "manual_review"),
+  );
+}
+
+export function paymentWorkflowBlockReason(booking: RideBooking) {
+  if (booking.status === "cancelled") {
+    return "This ride is cancelled and cannot accept another payment.";
+  }
+  if (booking.status === "completed") {
+    return "This completed ride cannot accept another payment.";
+  }
+  if (booking.paymentStatus === "refunded") {
+    return "This ride has been refunded and cannot accept another payment.";
+  }
+  if (
+    booking.cancellationStatus === "processing" ||
+    booking.cancellationStatus === "review_required"
+  ) {
+    return "Cancellation is processing or under review. Do not submit another payment.";
+  }
+  if (booking.refund && booking.refund.status !== "not_required") {
+    return `A refund is ${booking.refund.status.replaceAll("_", " ")} for this ride. Do not submit another payment.`;
+  }
+  if (
+    booking.dispute &&
+    !["prevented", "warning_closed"].includes(booking.dispute.status)
+  ) {
+    return "This payment has a dispute record and cannot be charged again.";
+  }
+  if (booking.unexpectedCapturedPaymentIntentId) {
+    return "An unexpected captured payment requires staff review. Do not submit another payment.";
+  }
+  if (
+    booking.financialHoldStatus &&
+    booking.financialHoldStatus !== "none"
+  ) {
+    return `This payment is protected by a ${booking.financialHoldStatus.replaceAll("_", " ")} hold.`;
+  }
+  if (booking.paymentIntegrityStatus === "review_required") {
+    return "This payment requires staff review before any additional payment action.";
+  }
+  return null;
+}
+
 export function shouldApplyStripeEvent(params: {
   currentStatus?: RideBookingPaymentStatus;
   currentEventCreated?: number;
@@ -122,6 +186,7 @@ export function shouldApplyStripeEvent(params: {
   const currentStatus = params.currentStatus ?? "unpaid";
   const currentEventCreated = Number(params.currentEventCreated ?? 0);
 
+  if (currentStatus === "refunded") return false;
   if (currentStatus === "paid" && params.nextStatus !== "paid") return false;
   if (params.eventCreated < currentEventCreated) return false;
   if (params.eventCreated > currentEventCreated) return true;

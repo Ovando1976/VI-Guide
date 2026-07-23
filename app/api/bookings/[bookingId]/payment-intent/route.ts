@@ -8,6 +8,7 @@ import {
   paymentIntentIdempotencyKey,
   paymentIntentIntegrityIssue,
   paymentStatusFromStripe,
+  paymentWorkflowBlockReason,
 } from "@/lib/booking-payment-state";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
@@ -40,9 +41,21 @@ export async function POST(_request: NextRequest, context: Context) {
     if (!privileged && booking.riderId !== session.uid) {
       return NextResponse.json({ error: "Booking not found." }, { status: 404 });
     }
-    if (booking.status === "cancelled" || booking.status === "completed") {
+
+    const workflowBlockReason = paymentWorkflowBlockReason(booking);
+    if (workflowBlockReason) {
       return NextResponse.json(
-        { error: "This booking can no longer be paid." },
+        {
+          error: workflowBlockReason,
+          code: "PAYMENT_LIFECYCLE_BLOCKED",
+          paymentStatus: booking.paymentStatus ?? "unpaid",
+          reviewRequired:
+            booking.paymentIntegrityStatus === "review_required" ||
+            Boolean(
+              booking.financialHoldStatus &&
+                booking.financialHoldStatus !== "none",
+            ),
+        },
         { status: 409 },
       );
     }
@@ -59,6 +72,7 @@ export async function POST(_request: NextRequest, context: Context) {
         paymentStatus: "paid",
         paymentIntegrityStatus: "review_required",
         paymentIntegrityIssue: integrityIssue,
+        financialHoldStatus: "manual_review",
         paymentStateSource: "payment_intent_api",
         paymentUpdatedAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
@@ -93,6 +107,7 @@ export async function POST(_request: NextRequest, context: Context) {
             ? {
                 paymentIntegrityStatus: "review_required",
                 paymentIntegrityIssue: integrityIssue,
+                financialHoldStatus: "manual_review",
               }
             : {}),
         });
@@ -115,6 +130,7 @@ export async function POST(_request: NextRequest, context: Context) {
         paymentStatus: "paid",
         paymentIntegrityStatus: "review_required",
         paymentIntegrityIssue: protectedStateIssue,
+        financialHoldStatus: "manual_review",
         paymentStateSource: "payment_intent_api",
         paymentReconciledAt: FieldValue.serverTimestamp(),
         paymentUpdatedAt: FieldValue.serverTimestamp(),
@@ -144,6 +160,7 @@ export async function POST(_request: NextRequest, context: Context) {
             amountCaptured: paymentIntent.amount_received,
             paymentIntegrityStatus: "review_required",
             paymentIntegrityIssue: integrityIssue,
+            financialHoldStatus: "manual_review",
             paymentStateSource: "payment_intent_api",
             paymentReconciledAt: FieldValue.serverTimestamp(),
             paymentUpdatedAt: FieldValue.serverTimestamp(),

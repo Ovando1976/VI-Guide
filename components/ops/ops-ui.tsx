@@ -8,6 +8,7 @@ export type PaymentStatus =
   | "requires_payment_method"
   | "processing"
   | "paid"
+  | "refunded"
   | "failed"
   | "canceled";
 
@@ -143,7 +144,7 @@ export function OpsPill({
 
 export function PaymentPill({ status }: { status: PaymentStatus }) {
   const tone =
-    status === "paid"
+    status === "paid" || status === "refunded"
       ? "emerald"
       : status === "processing"
       ? "amber"
