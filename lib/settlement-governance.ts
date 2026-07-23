@@ -30,13 +30,14 @@ export async function approveOperatorSettlement(params: {
   const paymentIntent = await getStripe().paymentIntents.retrieve(
     initial.paymentIntentId,
   );
-  const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, initial);
-  if (integrityIssue) throw new Error(integrityIssue);
+  const initialIntegrityIssue = paymentIntentIntegrityIssue(paymentIntent, initial);
+  if (initialIntegrityIssue) throw new Error(initialIntegrityIssue);
   if (paymentIntent.status !== "succeeded") {
     throw new Error("Settlement cannot be approved until Stripe confirms payment.");
   }
 
   const auditRef = db.collection("settlementAudit").doc();
+  const approvedAtIso = new Date().toISOString();
   const result = await db.runTransaction(async (transaction) => {
     const snapshot = await transaction.get(bookingRef);
     if (!snapshot.exists) throw new Error("Booking not found.");
@@ -45,6 +46,11 @@ export async function approveOperatorSettlement(params: {
     if (booking.paymentIntentId !== paymentIntent.id) {
       throw new Error("The booking payment reference changed during settlement review.");
     }
+    const currentIntegrityIssue = paymentIntentIntegrityIssue(
+      paymentIntent,
+      booking,
+    );
+    if (currentIntegrityIssue) throw new Error(currentIntegrityIssue);
     if (booking.status !== "completed") {
       throw new Error("Only completed trips can enter operator settlement.");
     }
@@ -82,6 +88,19 @@ export async function approveOperatorSettlement(params: {
       throw new Error("Settlement is blocked because a payment dispute is unresolved.");
     }
 
+    const disputeReviewOnly =
+      booking.paymentIntegrityStatus !== "review_required" ||
+      Boolean(
+        booking.dispute &&
+          disputeClear &&
+          /dispute/i.test(booking.paymentIntegrityIssue ?? ""),
+      );
+    if (!disputeReviewOnly) {
+      throw new Error(
+        "Settlement cannot clear an unrelated payment-integrity review.",
+      );
+    }
+
     const allowedHold =
       !booking.financialHoldStatus ||
       booking.financialHoldStatus === "none" ||
@@ -92,7 +111,7 @@ export async function approveOperatorSettlement(params: {
       );
     }
 
-    const approvedSettlement = {
+    const approvedSettlementForWrite = {
       ...booking.settlement,
       status: "approved" as const,
       holdReason: null,
@@ -101,7 +120,7 @@ export async function approveOperatorSettlement(params: {
       approvedAt: FieldValue.serverTimestamp(),
     };
     transaction.update(bookingRef, {
-      settlement: approvedSettlement,
+      settlement: approvedSettlementForWrite,
       financialHoldStatus: "none",
       paymentIntegrityStatus: "verified",
       paymentIntegrityIssue: null,
@@ -127,7 +146,14 @@ export async function approveOperatorSettlement(params: {
       createdAt: FieldValue.serverTimestamp(),
     });
 
-    return approvedSettlement;
+    return {
+      ...booking.settlement,
+      status: "approved" as const,
+      holdReason: null,
+      reviewReference: params.reviewReference,
+      approvedBy: params.actorId,
+      approvedAt: approvedAtIso,
+    };
   });
 
   return { bookingId: params.bookingId, settlement: result };
