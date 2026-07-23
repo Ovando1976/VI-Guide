@@ -25,6 +25,34 @@ function hasVerifiedCapturedPayment(booking: RideBooking) {
   );
 }
 
+function assertNoFinancialHold(booking: RideBooking) {
+  if (
+    booking.cancellationStatus === "processing" ||
+    booking.cancellationStatus === "review_required"
+  ) {
+    throw new Error(
+      "Dispatch is blocked while cancellation is processing or under review.",
+    );
+  }
+  if (
+    booking.financialHoldStatus &&
+    booking.financialHoldStatus !== "none"
+  ) {
+    throw new Error(
+      `Dispatch is blocked by a financial hold: ${booking.financialHoldStatus.replaceAll("_", " ")}.`,
+    );
+  }
+  if (booking.refund && booking.refund.status !== "not_required") {
+    throw new Error("Dispatch is blocked because a refund exists for this ride.");
+  }
+  if (
+    booking.dispute &&
+    !["won", "prevented", "warning_closed"].includes(booking.dispute.status)
+  ) {
+    throw new Error("Dispatch is blocked because the payment is disputed.");
+  }
+}
+
 export function assertDispatchEligible(params: {
   booking: RideBooking;
   driverSnapshot: DocumentSnapshot<DocumentData>;
@@ -32,6 +60,7 @@ export function assertDispatchEligible(params: {
   associationSnapshot: DocumentSnapshot<DocumentData>;
   allowedAvailability?: DriverProfile["availability"][];
 }) {
+  assertNoFinancialHold(params.booking);
   if (!hasVerifiedCapturedPayment(params.booking)) {
     throw new Error(
       "Payment must clear with a verified Stripe record before dispatch can proceed.",
