@@ -43,11 +43,14 @@ const ISLANDS = [
 const QUICK = [
   { label: "Beaches", href: "/beaches", icon: Waves },
   { label: "Stays", href: "/accommodations", icon: BedDouble },
-  { label: "Concierge", href: "/map?concierge=open", icon: Sparkles },
+  { label: "Concierge", href: "/concierge", icon: Sparkles },
   { label: "Ride", href: "/mobility", icon: Navigation },
   { label: "Dining", href: "/places?category=restaurant", icon: UtensilsCrossed },
   { label: "Heritage", href: "/heritage", icon: History },
 ] as const;
+
+const CONCIERGE_START_HREF =
+  "/concierge?open=true&prompt=Plan%20a%20complete%20Virgin%20Islands%20day%20for%20me";
 
 export default function Home() {
   return (
@@ -67,7 +70,7 @@ export default function Home() {
           </Link>
           <div className="flex items-center gap-2">
             <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
-            <Link href="/map?concierge=open" className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
+            <Link href={CONCIERGE_START_HREF} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
               <Sparkles size={14} /> Ask VI Concierge
             </Link>
           </div>
@@ -156,7 +159,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.24em] text-[#f5c451]"><Sparkles size={14} /> VI Concierge</div>
             <h2 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[.98] tracking-[-.045em] sm:text-5xl">Tell us what kind of day you want.</h2>
             <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/66">VI Concierge connects places, timing, transportation, and local context so your plan feels effortless.</p>
-            <Link href="/map?concierge=open" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]">Start planning <ArrowRight size={16} /></Link>
+            <Link href={CONCIERGE_START_HREF} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]">Start planning <ArrowRight size={16} /></Link>
           </div>
           <div className="relative min-h-[360px] overflow-hidden bg-[url('/images/places/st-john/trunk-bay-beach-1.jpg')] bg-cover bg-center">
             <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(15,118,110,.35),rgba(6,59,57,.78))]" />
