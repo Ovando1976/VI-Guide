@@ -31,6 +31,7 @@ export type MobilityPilotGateReport = {
 export type MobilityPilotControl = {
   island: IslandCode;
   status: MobilityPilotStatus;
+  activationAuditId?: string;
   activatedAt?: string;
   activatedBy?: string;
   activationReviewReference?: string;
