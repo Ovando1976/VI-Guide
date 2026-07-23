@@ -54,6 +54,17 @@ export async function POST(
         ...tariffSnapshot.data(),
       } as OfficialTaxiTariff;
       normalizeTariffDraft(tariff);
+      if (!tariff.reviewReference || !tariff.reviewedBy) {
+        throw new Error(
+          "Tariff must be imported through the reviewed draft workflow before activation.",
+        );
+      }
+      if (Date.parse(tariff.effectiveAt) > Date.now()) {
+        throw new Error(
+          "A future-effective tariff cannot replace the currently effective tariff.",
+        );
+      }
+
       island = tariff.island;
       version = tariff.version;
 
@@ -97,7 +108,8 @@ export async function POST(
         tariffId,
         island: tariff.island,
         version: tariff.version,
-        reviewReference,
+        sourceReviewReference: tariff.reviewReference,
+        activationReviewReference: reviewReference,
         retiredTariffIds,
         createdAt: FieldValue.serverTimestamp(),
       });
