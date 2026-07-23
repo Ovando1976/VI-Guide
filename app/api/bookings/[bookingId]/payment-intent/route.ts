@@ -40,6 +40,20 @@ export async function POST(_request: NextRequest, context: Context) {
     if (!privileged && booking.riderId !== session.uid) {
       return NextResponse.json({ error: "Booking not found." }, { status: 404 });
     }
+    if (
+      booking.paymentStatus === "refunded" ||
+      booking.refundStatus === "succeeded"
+    ) {
+      return NextResponse.json(
+        {
+          error: "This booking was refunded and cannot be charged again.",
+          code: "PAYMENT_REFUNDED",
+          paymentStatus: "refunded",
+          refundStatus: "succeeded",
+        },
+        { status: 409 },
+      );
+    }
     if (booking.status === "cancelled" || booking.status === "completed") {
       return NextResponse.json(
         { error: "This booking can no longer be paid." },
