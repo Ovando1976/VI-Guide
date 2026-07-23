@@ -61,13 +61,6 @@ export async function POST(_request: NextRequest, context: Context) {
       }
 
       const operationData = operationSnapshot.data();
-      const operationStatus = operationSnapshot.exists
-        ? String(operationData?.status ?? "")
-        : "";
-      if (operationStatus === "creating") {
-        throw new Error("A refund operation is already in progress.");
-      }
-
       transaction.set(
         operationRef,
         {
@@ -77,6 +70,7 @@ export async function POST(_request: NextRequest, context: Context) {
           paymentIntentId: current.paymentIntentId,
           amount: capturedAmount,
           previousRefundId: current.refundId ?? null,
+          attemptCount: Number(operationData?.attemptCount ?? 0) + 1,
           createdAt:
             operationData?.createdAt ?? FieldValue.serverTimestamp(),
           updatedAt: FieldValue.serverTimestamp(),
@@ -196,16 +190,20 @@ export async function POST(_request: NextRequest, context: Context) {
       },
       { merge: true },
     );
-    batch.set(db.collection("refundAudit").doc(), {
-      action: "refund_issued",
-      bookingId,
-      actorId: session.uid,
-      paymentIntentId: booking.paymentIntentId,
-      refundId: refund.id,
-      amount: refund.amount,
-      refundStatus,
-      createdAt: FieldValue.serverTimestamp(),
-    });
+    batch.set(
+      db.collection("refundAudit").doc(refund.id),
+      {
+        action: "refund_issued",
+        bookingId,
+        actorId: session.uid,
+        paymentIntentId: booking.paymentIntentId,
+        refundId: refund.id,
+        amount: refund.amount,
+        refundStatus,
+        createdAt: FieldValue.serverTimestamp(),
+      },
+      { merge: true },
+    );
     await batch.commit();
 
     return NextResponse.json({
@@ -227,11 +225,9 @@ export async function POST(_request: NextRequest, context: Context) {
         status:
           message === "Booking not found."
             ? 404
-            : message.includes("already in progress")
-              ? 409
-              : message.startsWith("Stripe refund failed:")
-                ? 502
-                : 400,
+            : message.startsWith("Stripe refund failed:")
+              ? 502
+              : 400,
       },
     );
   }
