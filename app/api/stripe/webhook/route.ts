@@ -83,40 +83,6 @@ export async function POST(request: NextRequest) {
         id: bookingSnapshot.id,
         ...bookingSnapshot.data(),
       } as RideBooking;
-      const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
-      if (integrityIssue) {
-        const captured = paymentIntent.status === "succeeded";
-        transaction.update(bookingRef, {
-          ...(captured
-            ? bookingPaymentUpdate({
-                paymentIntent,
-                existingAmountCaptured: booking.amountCaptured,
-                event,
-                source: "webhook",
-              })
-            : {
-                paymentIntentId: paymentIntent.id,
-                amountAuthorized: paymentIntent.amount,
-                paymentUpdatedAt: FieldValue.serverTimestamp(),
-                updatedAt: FieldValue.serverTimestamp(),
-              }),
-          paymentIntegrityStatus: "review_required",
-          paymentIntegrityIssue: integrityIssue,
-        });
-        transaction.set(eventRef, {
-          type: event.type,
-          bookingId,
-          paymentIntentId: paymentIntent.id,
-          outcome: captured
-            ? "captured_payment_requires_review"
-            : "payment_integrity_mismatch",
-          integrityIssue,
-          paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
-          processedAt: FieldValue.serverTimestamp(),
-        });
-        return;
-      }
-
       const existingIntentId = booking.paymentIntentId;
       if (existingIntentId && existingIntentId !== paymentIntent.id) {
         const captured = paymentIntent.status === "succeeded";
@@ -132,6 +98,10 @@ export async function POST(request: NextRequest) {
             unexpectedCapturedPaymentIntentId: paymentIntent.id,
             unexpectedCapturedAmount: paymentIntent.amount_received,
             unexpectedCapturedAt: FieldValue.serverTimestamp(),
+            paymentStateSource: "webhook",
+            paymentEventId: event.id,
+            paymentEventType: event.type,
+            paymentEventCreated: event.created,
             paymentUpdatedAt: FieldValue.serverTimestamp(),
             updatedAt: FieldValue.serverTimestamp(),
           });
@@ -146,6 +116,52 @@ export async function POST(request: NextRequest) {
             ? "unexpected_captured_payment_intent"
             : "payment_intent_mismatch",
           integrityIssue: mismatchIssue,
+          paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
+          processedAt: FieldValue.serverTimestamp(),
+        });
+        return;
+      }
+
+      let integrityIssue: string | null = null;
+      try {
+        integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
+      } catch (error) {
+        integrityIssue =
+          error instanceof Error
+            ? error.message
+            : "The booking fare could not be validated.";
+      }
+      if (integrityIssue) {
+        const captured = paymentIntent.status === "succeeded";
+        transaction.update(bookingRef, {
+          ...(captured
+            ? bookingPaymentUpdate({
+                paymentIntent,
+                existingAmountCaptured: booking.amountCaptured,
+                event,
+                source: "webhook",
+              })
+            : {
+                paymentIntentId: paymentIntent.id,
+                amountAuthorized: paymentIntent.amount,
+                paymentStateSource: "webhook",
+                paymentEventId: event.id,
+                paymentEventType: event.type,
+                paymentEventCreated: event.created,
+                paymentUpdatedAt: FieldValue.serverTimestamp(),
+                updatedAt: FieldValue.serverTimestamp(),
+              }),
+          paymentIntegrityStatus: "review_required",
+          paymentIntegrityIssue: integrityIssue,
+        });
+        transaction.set(eventRef, {
+          type: event.type,
+          bookingId,
+          paymentIntentId: paymentIntent.id,
+          outcome: captured
+            ? "captured_payment_requires_review"
+            : "payment_integrity_mismatch",
+          integrityIssue,
           paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
           processedAt: FieldValue.serverTimestamp(),
         });
