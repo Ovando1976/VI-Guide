@@ -24,7 +24,6 @@ const ALLOWED_STATUS_UPDATES: RideBooking["status"][] = [
   "arrived",
   "in_progress",
   "completed",
-  "cancelled",
 ];
 
 const DRIVER_STATUS_UPDATES: RideBooking["status"][] = [
@@ -32,7 +31,6 @@ const DRIVER_STATUS_UPDATES: RideBooking["status"][] = [
   "arrived",
   "in_progress",
   "completed",
-  "cancelled",
 ];
 
 export async function POST(
@@ -50,6 +48,17 @@ export async function POST(
         }
       | null;
     const requestedStatus = body?.status;
+
+    if (requestedStatus === "cancelled") {
+      return NextResponse.json(
+        {
+          error:
+            "Use the cancellation endpoint so payment, refund, driver release, and settlement controls run together.",
+          code: "CANCELLATION_WORKFLOW_REQUIRED",
+        },
+        { status: 409 },
+      );
+    }
 
     if (
       !requestedStatus ||
@@ -82,12 +91,8 @@ export async function POST(
       session.role === "admin" || session.role === "dispatcher";
     const isAssignedDriver =
       session.role === "driver" && booking.driverId === driverId;
-    const isRiderCancelling =
-      session.role === "rider" &&
-      booking.riderId === session.uid &&
-      requestedStatus === "cancelled";
 
-    if (!privileged && !isAssignedDriver && !isRiderCancelling) {
+    if (!privileged && !isAssignedDriver) {
       return NextResponse.json(
         { error: "You cannot update this booking." },
         { status: 403 },
@@ -104,11 +109,7 @@ export async function POST(
       );
     }
 
-    const actorType = privileged
-      ? "admin"
-      : isAssignedDriver
-        ? "driver"
-        : "rider";
+    const actorType = privileged ? "admin" : "driver";
 
     await updateServerTripStatus({
       bookingId,
@@ -137,7 +138,9 @@ export async function POST(
     const conflict =
       message.startsWith("Trip cannot move") ||
       message.includes("Payment must clear") ||
-      message.includes("driver must be assigned");
+      message.includes("driver must be assigned") ||
+      message.includes("cancellation is processing") ||
+      message.includes("financial hold");
 
     return NextResponse.json(
       { error: message },
@@ -162,8 +165,6 @@ function defaultStatusMessage(status: RideBooking["status"]) {
       return "Trip started.";
     case "completed":
       return "Trip completed.";
-    case "cancelled":
-      return "Trip cancelled.";
     default:
       return `Booking status updated to ${status}.`;
   }
