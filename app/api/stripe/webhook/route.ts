@@ -119,12 +119,34 @@ export async function POST(request: NextRequest) {
 
       const existingIntentId = booking.paymentIntentId;
       if (existingIntentId && existingIntentId !== paymentIntent.id) {
+        const captured = paymentIntent.status === "succeeded";
+        const mismatchIssue = captured
+          ? "A second unexpected Stripe PaymentIntent captured funds for this booking."
+          : "A Stripe event referenced a different PaymentIntent than the booking record.";
+
+        if (captured) {
+          transaction.update(bookingRef, {
+            paymentStatus: "paid",
+            paymentIntegrityStatus: "review_required",
+            paymentIntegrityIssue: mismatchIssue,
+            unexpectedCapturedPaymentIntentId: paymentIntent.id,
+            unexpectedCapturedAmount: paymentIntent.amount_received,
+            unexpectedCapturedAt: FieldValue.serverTimestamp(),
+            paymentUpdatedAt: FieldValue.serverTimestamp(),
+            updatedAt: FieldValue.serverTimestamp(),
+          });
+        }
+
         transaction.set(eventRef, {
           type: event.type,
           bookingId,
           paymentIntentId: paymentIntent.id,
           existingPaymentIntentId: existingIntentId,
-          outcome: "payment_intent_mismatch",
+          outcome: captured
+            ? "unexpected_captured_payment_intent"
+            : "payment_intent_mismatch",
+          integrityIssue: mismatchIssue,
+          paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
           processedAt: FieldValue.serverTimestamp(),
         });
         return;
