@@ -58,5 +58,16 @@ export type OfficialTaxiTariff = {
   issuingAuthority: "Virgin Islands Taxicab Commission";
   currency: "USD";
   rules: OfficialTaxiRateRule[];
+  reviewReference?: string;
+  reviewedBy?: string;
+  activationStatus?: "unverified" | "verified";
+  activatedAt?: string | { seconds?: number; nanoseconds?: number };
+  activatedBy?: string;
+  activationReviewReference?: string;
+  retiredAt?: string | { seconds?: number; nanoseconds?: number };
+  retiredBy?: string;
+  retirementReason?: string;
+  supersededByTariffId?: string;
+  createdAt?: string | { seconds?: number; nanoseconds?: number };
+  updatedAt?: string | { seconds?: number; nanoseconds?: number };
 };
-
