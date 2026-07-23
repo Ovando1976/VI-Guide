@@ -74,16 +74,22 @@ export async function cancelBookingWithPaymentSafety(params: {
       }
 
       const capturedAmount = Math.max(0, Number(booking.amountCaptured ?? 0));
-      const protectedPayment =
-        booking.paymentStatus === "paid" ||
+      const alreadyRefunded =
         booking.paymentStatus === "refunded" ||
-        capturedAmount > 0;
-      const refundStatus: RideBookingRefundStatus = protectedPayment
-        ? "pending_review"
-        : "not_required";
-      const requestedAmount = protectedPayment
-        ? capturedAmount || Math.max(0, Number(booking.amountAuthorized ?? 0))
-        : 0;
+        booking.refundStatus === "succeeded";
+      const protectedPayment =
+        !alreadyRefunded &&
+        (booking.paymentStatus === "paid" || capturedAmount > 0);
+      const refundStatus: RideBookingRefundStatus = alreadyRefunded
+        ? "succeeded"
+        : protectedPayment
+          ? "pending_review"
+          : "not_required";
+      const requestedAmount = alreadyRefunded
+        ? Math.max(0, Number(booking.refundAmount ?? 0))
+        : protectedPayment
+          ? capturedAmount || Math.max(0, Number(booking.amountAuthorized ?? 0))
+          : 0;
 
       transaction.update(bookingRef, {
         status: "cancelled",
@@ -97,10 +103,10 @@ export async function cancelBookingWithPaymentSafety(params: {
           : "none",
         refundStatus,
         refundRequestedAmount: requestedAmount || null,
-        refundReason: protectedPayment ? params.message : null,
+        refundReason: protectedPayment ? params.message : booking.refundReason ?? null,
         refundRequestedAt: protectedPayment
           ? FieldValue.serverTimestamp()
-          : FieldValue.delete(),
+          : booking.refundRequestedAt ?? FieldValue.delete(),
         settlementBlockedAt: FieldValue.serverTimestamp(),
         settlementBlockedReason: "Booking cancelled before settlement approval.",
         driverLocation: FieldValue.delete(),
@@ -133,7 +139,7 @@ export async function cancelBookingWithPaymentSafety(params: {
         bookingId: params.bookingId,
         actorId: params.actorId,
         actorRole: params.actorRole,
-        status: "trip_cancelled",
+        status: alreadyRefunded ? "already_refunded" : "trip_cancelled",
         paymentIntentId: booking.paymentIntentId ?? null,
         paymentStatusAtCancellation: booking.paymentStatus ?? "unpaid",
         amountCapturedAtCancellation: capturedAmount,
@@ -156,7 +162,12 @@ export async function cancelBookingWithPaymentSafety(params: {
   );
 
   const cancelledBooking = transactionResult.booking;
-  if (!transactionResult.newlyCancelled || !cancelledBooking.paymentIntentId) {
+  if (
+    !transactionResult.newlyCancelled ||
+    !cancelledBooking.paymentIntentId ||
+    cancelledBooking.paymentStatus === "refunded" ||
+    cancelledBooking.refundStatus === "succeeded"
+  ) {
     return cancellationResult(cancelledBooking);
   }
 
