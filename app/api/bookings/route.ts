@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import { OfficialTaxiRateUnavailableError, quoteOfficialTaxiFare } from "@/lib/usvi-taxi-tariffs";
+import {
+  assertMobilityPilotActive,
+  MobilityPilotUnavailableError,
+} from "@/lib/mobility-pilot-readiness";
+import {
+  OfficialTaxiRateUnavailableError,
+  quoteOfficialTaxiFare,
+} from "@/lib/usvi-taxi-tariffs";
 import { normalizeEstateCollection } from "@/lib/usvi";
 import type { EstateCollection } from "@/types/usvi";
 import type { RideBookingDraft } from "@/types/mobility";
 import { createServerBooking } from "@/lib/server-bookings";
-import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import {
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
@@ -109,7 +119,14 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
+    if (origin.island !== destination.island) {
+      return NextResponse.json(
+        { error: "Taxi bookings cannot cross islands." },
+        { status: 400 },
+      );
+    }
 
+    await assertMobilityPilotActive(origin.island);
     const fare = await quoteOfficialTaxiFare({
       origin,
       destination,
@@ -180,6 +197,12 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
+    if (error instanceof MobilityPilotUnavailableError) {
+      return NextResponse.json(
+        { error: error.message, code: error.code, pilotActive: false },
+        { status: error.status },
+      );
+    }
     if (error instanceof OfficialTaxiRateUnavailableError) {
       return NextResponse.json(
         { error: error.message, code: error.code, manualReviewRequired: true },
