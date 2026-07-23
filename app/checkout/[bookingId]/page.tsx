@@ -14,10 +14,11 @@ const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
 type CheckoutBooking = {
   id: string;
   paymentStatus?: string;
+  paymentIntegrityStatus?: string;
   status?: string;
   island?: string;
-  originEstateName?: string;
-  destinationEstateName?: string;
+  origin?: { estateName?: string };
+  destination?: { estateName?: string };
   quotedFare?: { total?: number };
 };
 
@@ -58,9 +59,12 @@ export default function CheckoutBookingPage() {
         const loadedBooking = bookingJson.booking as CheckoutBooking;
         setBooking(loadedBooking);
 
-        if (loadedBooking.paymentStatus === "paid") {
+        if (
+          loadedBooking.paymentStatus === "paid" ||
+          loadedBooking.paymentIntegrityStatus === "review_required"
+        ) {
           router.replace(
-            `/trips?booking=${encodeURIComponent(bookingId)}&payment=paid`,
+            `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
           );
           return;
         }
@@ -75,24 +79,21 @@ export default function CheckoutBookingPage() {
         );
         const intentJson = await intentRes.json().catch(() => null);
 
-        if (!intentRes.ok) {
-          throw new Error(
-            intentJson?.error || "Failed to initialize secure payment.",
-          );
-        }
-
-        if (intentJson?.alreadyPaid === true) {
-          router.replace(
-            `/trips?booking=${encodeURIComponent(bookingId)}&payment=paid`,
-          );
-          return;
-        }
-
-        if (intentJson?.paymentPending === true) {
+        if (
+          intentJson?.alreadyPaid === true ||
+          intentJson?.reviewRequired === true ||
+          intentJson?.paymentPending === true
+        ) {
           router.replace(
             `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
           );
           return;
+        }
+
+        if (!intentRes.ok) {
+          throw new Error(
+            intentJson?.error || "Failed to initialize secure payment.",
+          );
         }
 
         if (typeof intentJson?.clientSecret !== "string") {
@@ -196,8 +197,8 @@ export default function CheckoutBookingPage() {
                   Booking {bookingId.slice(0, 8)}
                 </div>
                 <div className="mt-1 text-sm font-black">
-                  {booking.originEstateName || "Pickup"} →{" "}
-                  {booking.destinationEstateName || "Destination"}
+                  {booking.origin?.estateName || "Pickup"} →{" "}
+                  {booking.destination?.estateName || "Destination"}
                 </div>
               </div>
               <div className="text-2xl font-black text-[#f7d778]">
