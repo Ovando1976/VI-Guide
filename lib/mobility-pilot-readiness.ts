@@ -225,6 +225,10 @@ export async function getMobilityPilotControl(
   return {
     island,
     status: data.status === "active" ? "active" : "inactive",
+    activationAuditId:
+      typeof data.activationAuditId === "string"
+        ? data.activationAuditId
+        : undefined,
     activatedAt: serializeDate(data.activatedAt),
     activatedBy:
       typeof data.activatedBy === "string" ? data.activatedBy : undefined,
@@ -248,6 +252,42 @@ export async function getMobilityPilotControl(
   };
 }
 
+async function assertActivationAuditEvidence(
+  island: IslandCode,
+  control: MobilityPilotControl,
+) {
+  if (!control.activationAuditId) {
+    throw new MobilityPilotUnavailableError(
+      "The pilot activation is missing its audit evidence. An administrator must reactivate this island.",
+    );
+  }
+
+  const snapshot = await getAdminDb()
+    .collection("mobilityPilotAudit")
+    .doc(control.activationAuditId)
+    .get();
+  if (!snapshot.exists) {
+    throw new MobilityPilotUnavailableError(
+      "The pilot activation audit record could not be verified. An administrator must reactivate this island.",
+    );
+  }
+
+  const audit = snapshot.data() as DocumentData;
+  const approvedTariffId = control.gateSnapshot?.tariff.tariffId;
+  if (
+    audit.action !== "mobility_pilot_activated" ||
+    audit.auditId !== control.activationAuditId ||
+    audit.island !== island ||
+    audit.actorId !== control.activatedBy ||
+    audit.reviewReference !== control.activationReviewReference ||
+    audit.tariffId !== approvedTariffId
+  ) {
+    throw new MobilityPilotUnavailableError(
+      "The pilot activation evidence does not match the live control record. An administrator must review and reactivate this island.",
+    );
+  }
+}
+
 export async function assertMobilityPilotActive(island: IslandCode) {
   const [control, report] = await Promise.all([
     getMobilityPilotControl(island),
@@ -264,6 +304,9 @@ export async function assertMobilityPilotActive(island: IslandCode) {
       "Ride booking is not yet activated for this island. The controlled pilot must be approved by an administrator.",
     );
   }
+
+  await assertActivationAuditEvidence(island, control);
+
   if (!report.ready) {
     throw new MobilityPilotUnavailableError(
       `Ride booking has been paused because a live pilot requirement is no longer satisfied. ${summarizeIssues(report)}`,
