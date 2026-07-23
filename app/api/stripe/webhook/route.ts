@@ -85,18 +85,33 @@ export async function POST(request: NextRequest) {
       } as RideBooking;
       const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
       if (integrityIssue) {
+        const captured = paymentIntent.status === "succeeded";
         transaction.update(bookingRef, {
+          ...(captured
+            ? bookingPaymentUpdate({
+                paymentIntent,
+                existingAmountCaptured: booking.amountCaptured,
+                event,
+                source: "webhook",
+              })
+            : {
+                paymentIntentId: paymentIntent.id,
+                amountAuthorized: paymentIntent.amount,
+                paymentUpdatedAt: FieldValue.serverTimestamp(),
+                updatedAt: FieldValue.serverTimestamp(),
+              }),
           paymentIntegrityStatus: "review_required",
           paymentIntegrityIssue: integrityIssue,
-          paymentUpdatedAt: FieldValue.serverTimestamp(),
-          updatedAt: FieldValue.serverTimestamp(),
         });
         transaction.set(eventRef, {
           type: event.type,
           bookingId,
           paymentIntentId: paymentIntent.id,
-          outcome: "payment_integrity_mismatch",
+          outcome: captured
+            ? "captured_payment_requires_review"
+            : "payment_integrity_mismatch",
           integrityIssue,
+          paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
           processedAt: FieldValue.serverTimestamp(),
         });
         return;
@@ -118,7 +133,7 @@ export async function POST(request: NextRequest) {
       const nextStatus = paymentStatusFromStripe(paymentIntent);
       const shouldApply = shouldApplyStripeEvent({
         currentStatus: booking.paymentStatus,
-        currentEventCreated: booking.paymentEventCreated,
+        currentEventCreated: booking.paymentEventCreated ?? undefined,
         nextStatus,
         eventCreated: event.created,
       });
