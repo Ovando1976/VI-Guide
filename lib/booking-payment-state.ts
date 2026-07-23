@@ -114,6 +114,30 @@ export function paymentIntentIntegrityIssue(
   return null;
 }
 
+export function hasIrreversiblePaymentProtection(booking: RideBooking) {
+  return Boolean(
+    booking.status === "cancelled" ||
+      booking.status === "completed" ||
+      booking.paymentStatus === "refunded" ||
+      booking.cancellationStatus === "processing" ||
+      booking.cancellationStatus === "review_required" ||
+      (booking.refund && booking.refund.status !== "not_required") ||
+      (booking.dispute &&
+        !["prevented", "warning_closed"].includes(booking.dispute.status)) ||
+      booking.unexpectedCapturedPaymentIntentId,
+  );
+}
+
+export function canReconcilePaymentIntegrity(booking: RideBooking) {
+  return Boolean(
+    booking.paymentIntegrityStatus === "review_required" &&
+      !hasIrreversiblePaymentProtection(booking) &&
+      (!booking.financialHoldStatus ||
+        booking.financialHoldStatus === "none" ||
+        booking.financialHoldStatus === "manual_review"),
+  );
+}
+
 export function paymentWorkflowBlockReason(booking: RideBooking) {
   if (booking.status === "cancelled") {
     return "This ride is cancelled and cannot accept another payment.";
@@ -138,6 +162,9 @@ export function paymentWorkflowBlockReason(booking: RideBooking) {
     !["prevented", "warning_closed"].includes(booking.dispute.status)
   ) {
     return "This payment has a dispute record and cannot be charged again.";
+  }
+  if (booking.unexpectedCapturedPaymentIntentId) {
+    return "An unexpected captured payment requires staff review. Do not submit another payment.";
   }
   if (
     booking.financialHoldStatus &&
