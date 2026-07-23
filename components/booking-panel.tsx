@@ -251,7 +251,9 @@ export function BookingPanel({
       }
 
       setResultTone("success");
-      setResultMessage("Ride secured. Opening secure payment and tracking…");
+      setResultMessage(
+        "Ride request created. Opening secure payment and tracking…",
+      );
       router.push(`/checkout/${payload.bookingId}`);
     } catch (error) {
       setResultTone("error");
@@ -766,7 +768,7 @@ function FareReview({
           <Check className="h-4 w-4" />
         )}
         {submitting
-          ? "Securing ride…"
+          ? "Creating request…"
           : acceptedOperatorDisclosure && acceptedLegal
             ? "Continue to secure payment"
             : "Accept disclosures to continue"}
