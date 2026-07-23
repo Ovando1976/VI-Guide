@@ -11,6 +11,7 @@ import {
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
 import type {
+  BookingFinancialHoldStatus,
   BookingRefundStatus,
   RideBooking,
 } from "@/types/mobility";
@@ -126,10 +127,14 @@ async function processPaymentIntentEvent(
 
       if (captured) {
         transaction.update(bookingRef, {
-          paymentStatus: "paid",
+          paymentStatus:
+            booking.paymentStatus === "refunded" ? "refunded" : "paid",
           paymentIntegrityStatus: "review_required",
           paymentIntegrityIssue: mismatchIssue,
-          financialHoldStatus: "manual_review",
+          financialHoldStatus: strongestFinancialHold(
+            booking,
+            "manual_review",
+          ),
           unexpectedCapturedPaymentIntentId: paymentIntent.id,
           unexpectedCapturedAmount: paymentIntent.amount_received,
           unexpectedCapturedAt: FieldValue.serverTimestamp(),
@@ -138,7 +143,7 @@ async function processPaymentIntentEvent(
           paymentEventType: event.type,
           paymentEventCreated: event.created,
           paymentUpdatedAt: FieldValue.serverTimestamp(),
-          settlement: heldSettlement(booking, mismatchIssue),
+          settlement: settlementAfterFinancialEvent(booking, mismatchIssue),
           updatedAt: FieldValue.serverTimestamp(),
         });
       }
@@ -152,7 +157,11 @@ async function processPaymentIntentEvent(
           ? "unexpected_captured_payment_intent"
           : "payment_intent_mismatch",
         integrityIssue: mismatchIssue,
-        paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
+        paymentStatus: captured
+          ? booking.paymentStatus === "refunded"
+            ? "refunded"
+            : "paid"
+          : booking.paymentStatus ?? "unpaid",
         processedAt: FieldValue.serverTimestamp(),
       });
       return;
@@ -171,12 +180,16 @@ async function processPaymentIntentEvent(
       const captured = paymentIntent.status === "succeeded";
       transaction.update(bookingRef, {
         ...(captured
-          ? bookingPaymentUpdate({
-              paymentIntent,
-              existingAmountCaptured: booking.amountCaptured,
-              event,
-              source: "webhook",
-            })
+          ? {
+              ...bookingPaymentUpdate({
+                paymentIntent,
+                existingAmountCaptured: booking.amountCaptured,
+                event,
+                source: "webhook",
+              }),
+              paymentStatus:
+                booking.paymentStatus === "refunded" ? "refunded" : "paid",
+            }
           : {
               paymentIntentId: paymentIntent.id,
               amountAuthorized: paymentIntent.amount,
@@ -189,8 +202,11 @@ async function processPaymentIntentEvent(
             }),
         paymentIntegrityStatus: "review_required",
         paymentIntegrityIssue: integrityIssue,
-        financialHoldStatus: "manual_review",
-        settlement: heldSettlement(booking, integrityIssue),
+        financialHoldStatus: strongestFinancialHold(
+          booking,
+          "manual_review",
+        ),
+        settlement: settlementAfterFinancialEvent(booking, integrityIssue),
       });
       transaction.set(eventRef, {
         type: event.type,
@@ -200,7 +216,11 @@ async function processPaymentIntentEvent(
           ? "captured_payment_requires_review"
           : "payment_integrity_mismatch",
         integrityIssue,
-        paymentStatus: captured ? "paid" : booking.paymentStatus ?? "unpaid",
+        paymentStatus: captured
+          ? booking.paymentStatus === "refunded"
+            ? "refunded"
+            : "paid"
+          : booking.paymentStatus ?? "unpaid",
         processedAt: FieldValue.serverTimestamp(),
       });
       return;
@@ -323,15 +343,20 @@ async function processRefundEvent(
         : !succeeded && !pending
           ? refund.failure_reason || "The refund did not complete automatically."
           : null;
-    const holdStatus = succeeded && fullRefund
+    const refundHold: BookingFinancialHoldStatus = succeeded && fullRefund
       ? "none"
       : pending
         ? "refund_pending"
         : "refund_review";
+    const financialHoldStatus = strongestFinancialHold(booking, refundHold);
+    const settlementReason =
+      succeeded && fullRefund
+        ? "Refund issued; settlement cannot proceed without a new review."
+        : `Refund ${status.replaceAll("_", " ")}.`;
 
     transaction.update(bookingRef, {
       paymentStatus: succeeded && fullRefund ? "refunded" : booking.paymentStatus,
-      financialHoldStatus: holdStatus,
+      financialHoldStatus,
       refund: {
         id: refund.id,
         status,
@@ -350,15 +375,7 @@ async function processRefundEvent(
             paymentIntegrityIssue: reviewIssue,
           }
         : {}),
-      settlement:
-        booking.status === "cancelled" && succeeded && fullRefund
-          ? voidSettlement(booking, "Cancelled ride refunded in full.")
-          : heldSettlement(
-              booking,
-              succeeded && fullRefund
-                ? "Refund issued after booking activity; settlement review required."
-                : `Refund ${status.replaceAll("_", " ")}.`,
-            ),
+      settlement: settlementAfterFinancialEvent(booking, settlementReason),
       paymentUpdatedAt: FieldValue.serverTimestamp(),
       updatedAt: FieldValue.serverTimestamp(),
     });
@@ -370,6 +387,7 @@ async function processRefundEvent(
       refundStatus: status,
       refundAmount: refund.amount,
       fullRefund,
+      financialHoldStatus,
       outcome: reviewIssue ? "refund_requires_review" : "refund_updated",
       processedAt: FieldValue.serverTimestamp(),
     });
@@ -431,11 +449,12 @@ async function processDisputeEvent(
       booking.dispute?.fundsReinstated === true;
     const lost = dispute.status === "lost";
     const won = dispute.status === "won";
-    const holdStatus = lost
+    const disputeHold: BookingFinancialHoldStatus = lost
       ? "dispute_lost"
       : won && fundsReinstated
         ? "manual_review"
         : "dispute_open";
+    const financialHoldStatus = strongestFinancialHold(booking, disputeHold);
     const issue = lost
       ? "The card dispute was lost and operator settlement is blocked."
       : won && fundsReinstated
@@ -454,10 +473,10 @@ async function processDisputeEvent(
         createdAt: booking.dispute?.createdAt ?? FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
       },
-      financialHoldStatus: holdStatus,
+      financialHoldStatus,
       paymentIntegrityStatus: "review_required",
       paymentIntegrityIssue: issue,
-      settlement: heldSettlement(booking, issue),
+      settlement: settlementAfterFinancialEvent(booking, issue),
       paymentUpdatedAt: FieldValue.serverTimestamp(),
       updatedAt: FieldValue.serverTimestamp(),
     });
@@ -468,6 +487,7 @@ async function processDisputeEvent(
       disputeId: dispute.id,
       disputeStatus: dispute.status,
       fundsReinstated,
+      financialHoldStatus,
       outcome: "dispute_updated",
       processedAt: FieldValue.serverTimestamp(),
     });
@@ -489,11 +509,7 @@ async function findBookingRefByPaymentIntent(
 }
 
 function expandableId(
-  value:
-    | string
-    | { id?: string }
-    | null
-    | undefined,
+  value: string | { id?: string } | null | undefined,
 ) {
   if (typeof value === "string") return value;
   if (value && typeof value.id === "string") return value.id;
@@ -515,11 +531,67 @@ function normalizeRefundStatus(status: string | null): BookingRefundStatus {
   }
 }
 
+function activeDisputeHold(
+  booking: RideBooking,
+): BookingFinancialHoldStatus | null {
+  if (!booking.dispute) return null;
+  if (booking.dispute.status === "lost") return "dispute_lost";
+  if (
+    booking.dispute.status === "won" &&
+    booking.dispute.fundsReinstated === true
+  ) {
+    return "manual_review";
+  }
+  if (["prevented", "warning_closed"].includes(booking.dispute.status)) {
+    return null;
+  }
+  return "dispute_open";
+}
+
+function strongestFinancialHold(
+  booking: RideBooking,
+  incoming: BookingFinancialHoldStatus,
+): BookingFinancialHoldStatus {
+  const disputeHold = activeDisputeHold(booking);
+  if (disputeHold === "dispute_lost") return disputeHold;
+  if (incoming === "dispute_lost") return incoming;
+  if (disputeHold === "dispute_open") return disputeHold;
+  if (incoming === "dispute_open") return incoming;
+  if (booking.financialHoldStatus === "cancellation_processing") {
+    return "cancellation_processing";
+  }
+  if (booking.financialHoldStatus === "refund_review") return "refund_review";
+  if (incoming === "refund_review") return incoming;
+  if (booking.financialHoldStatus === "refund_pending") return "refund_pending";
+  if (incoming === "refund_pending") return incoming;
+  if (booking.financialHoldStatus === "manual_review") return "manual_review";
+  if (incoming === "manual_review") return incoming;
+  return incoming;
+}
+
+function settlementAfterFinancialEvent(booking: RideBooking, reason: string) {
+  if (booking.status === "cancelled" || booking.settlement?.status === "void") {
+    return voidSettlement(booking, reason);
+  }
+  if (booking.settlement?.status === "paid") {
+    return {
+      ...booking.settlement,
+      holdReason: `Post-payout financial review: ${reason}`,
+    };
+  }
+  return heldSettlement(booking, reason);
+}
+
 function heldSettlement(booking: RideBooking, reason: string) {
   return {
-    status: "held",
-    grossFare: booking.settlement?.grossFare ?? booking.finalFare ?? booking.quotedFare?.total ?? 0,
-    serviceFee: booking.settlement?.serviceFee ?? booking.payout?.platformRevenue ?? 0,
+    status: "held" as const,
+    grossFare:
+      booking.settlement?.grossFare ??
+      booking.finalFare ??
+      booking.quotedFare?.total ??
+      0,
+    serviceFee:
+      booking.settlement?.serviceFee ?? booking.payout?.platformRevenue ?? 0,
     operatorSettlement:
       booking.settlement?.operatorSettlement ?? booking.payout?.driverPayout ?? 0,
     feeAgreementId: booking.settlement?.feeAgreementId ?? null,
@@ -529,7 +601,7 @@ function heldSettlement(booking: RideBooking, reason: string) {
 
 function voidSettlement(booking: RideBooking, reason: string) {
   return {
-    status: "void",
+    status: "void" as const,
     grossFare: 0,
     serviceFee: 0,
     operatorSettlement: 0,
