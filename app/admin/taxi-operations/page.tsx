@@ -24,6 +24,12 @@ export default function TaxiOperationsPage() {
         >
           Payment operations
         </Link>
+        <Link
+          href="/admin/refund-operations"
+          className="rounded-full border border-rose-200 bg-rose-50 px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-rose-800 shadow-sm"
+        >
+          Refund operations
+        </Link>
       </div>
       <TaxiOperationsBoard />
     </>
