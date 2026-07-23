@@ -67,19 +67,34 @@ export async function POST(_request: NextRequest, context: Context) {
 
       const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, current);
       if (integrityIssue) {
+        const captured = paymentIntent.status === "succeeded";
         transaction.update(bookingRef, {
+          ...(captured
+            ? bookingPaymentUpdate({
+                paymentIntent,
+                existingAmountCaptured: current.amountCaptured,
+                source: "reconciliation",
+              })
+            : {
+                paymentStateSource: "reconciliation",
+                paymentReconciledAt: FieldValue.serverTimestamp(),
+                paymentUpdatedAt: FieldValue.serverTimestamp(),
+                updatedAt: FieldValue.serverTimestamp(),
+              }),
           paymentIntegrityStatus: "review_required",
           paymentIntegrityIssue: integrityIssue,
-          paymentStateSource: "reconciliation",
-          paymentReconciledAt: FieldValue.serverTimestamp(),
-          paymentUpdatedAt: FieldValue.serverTimestamp(),
-          updatedAt: FieldValue.serverTimestamp(),
         });
         return {
           reviewRequired: true,
           integrityIssue,
           booking: {
             ...current,
+            paymentStatus: captured ? ("paid" as const) : current.paymentStatus,
+            paymentIntentId: paymentIntent.id,
+            amountAuthorized: paymentIntent.amount,
+            amountCaptured: captured
+              ? paymentIntent.amount_received
+              : (current.amountCaptured ?? null),
             paymentIntegrityStatus: "review_required" as const,
             paymentIntegrityIssue: integrityIssue,
           },
