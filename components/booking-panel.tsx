@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
@@ -28,6 +29,8 @@ import {
 
 import type { FareBreakdown, RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
+
+const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
 
 const RoutePreviewMap = dynamic(
   () =>
@@ -140,12 +143,18 @@ export function BookingPanel({
   const [fare, setFare] = useState<FareBreakdown | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
+  const [acceptedOperatorDisclosure, setAcceptedOperatorDisclosure] =
+    useState(false);
+  const [acceptedLegal, setAcceptedLegal] = useState(false);
   const [showMoreModes, setShowMoreModes] = useState(
     MORE_MODES.some((item) => item.value === mode),
   );
 
   useEffect(() => {
     const controller = new AbortController();
+    setAcceptedOperatorDisclosure(false);
+    setAcceptedLegal(false);
+
     if (!fromEstate || !toEstate) {
       setFare(null);
       setQuoteError(null);
@@ -190,7 +199,13 @@ export function BookingPanel({
   }, [fromEstate, toEstate, mode, passengers, luggage]);
 
   const routeReady = Boolean(fromEstate && toEstate);
-  const canRequest = Boolean(routeReady && fare && !submitting);
+  const canRequest = Boolean(
+    routeReady &&
+      fare &&
+      acceptedOperatorDisclosure &&
+      acceptedLegal &&
+      !submitting,
+  );
   const recommendedMode = useMemo<RideMode>(() => {
     const routeText = `${fromEstate?.baseName ?? ""} ${toEstate?.baseName ?? ""}`.toLowerCase();
     if (routeText.includes("airport")) return "airport";
@@ -203,6 +218,13 @@ export function BookingPanel({
 
   async function requestRide() {
     if (!fromEstate || !toEstate) return;
+    if (!acceptedOperatorDisclosure || !acceptedLegal) {
+      setResultTone("error");
+      setResultMessage(
+        "Review and accept the passenger disclosures before continuing to payment.",
+      );
+      return;
+    }
 
     try {
       setSubmitting(true);
@@ -217,6 +239,10 @@ export function BookingPanel({
           mode,
           passengers,
           luggage,
+          acceptedOperatorDisclosure: true,
+          acceptedTerms: true,
+          acceptedPrivacy: true,
+          consentVersion: PASSENGER_CONSENT_VERSION,
         }),
       });
       const payload = await response.json();
@@ -225,7 +251,9 @@ export function BookingPanel({
       }
 
       setResultTone("success");
-      setResultMessage("Ride secured. Opening secure payment and tracking…");
+      setResultMessage(
+        "Ride request created. Opening secure payment and tracking…",
+      );
       router.push(`/checkout/${payload.bookingId}`);
     } catch (error) {
       setResultTone("error");
@@ -424,6 +452,10 @@ export function BookingPanel({
                   fare={fare}
                   submitting={submitting}
                   canRequest={canRequest}
+                  acceptedOperatorDisclosure={acceptedOperatorDisclosure}
+                  acceptedLegal={acceptedLegal}
+                  onOperatorDisclosureChange={setAcceptedOperatorDisclosure}
+                  onLegalChange={setAcceptedLegal}
                   onRequest={requestRide}
                 />
               ) : quoteLoading ? (
@@ -663,11 +695,19 @@ function FareReview({
   fare,
   submitting,
   canRequest,
+  acceptedOperatorDisclosure,
+  acceptedLegal,
+  onOperatorDisclosureChange,
+  onLegalChange,
   onRequest,
 }: {
   fare: FareBreakdown;
   submitting: boolean;
   canRequest: boolean;
+  acceptedOperatorDisclosure: boolean;
+  acceptedLegal: boolean;
+  onOperatorDisclosureChange: (accepted: boolean) => void;
+  onLegalChange: (accepted: boolean) => void;
   onRequest: () => void;
 }) {
   return (
@@ -695,6 +735,27 @@ function FareReview({
         <Promise icon={Clock3} text="Live trip tracking after payment" />
         <Promise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
       </div>
+
+      <section className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50 p-4 text-amber-950">
+        <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-700">
+          Passenger disclosures
+        </div>
+        <p className="mt-2 text-xs font-semibold leading-5">
+          VI Guide coordinates booking, payment status, and dispatch. Transportation is provided by an independently authorized taxi operator or participating taxi association.
+        </p>
+        <div className="mt-4 space-y-3">
+          <ConsentCheckbox
+            checked={acceptedOperatorDisclosure}
+            onChange={onOperatorDisclosureChange}
+          >
+            I understand that the displayed amount comes from the active published USVI taxi tariff for this route. Missing or additional charges require dispatch review and must be authorized by the tariff or separately disclosed before collection.
+          </ConsentCheckbox>
+          <ConsentCheckbox checked={acceptedLegal} onChange={onLegalChange}>
+            I agree to the <Link href="/terms" className="font-black underline underline-offset-2">Terms of service</Link> and <Link href="/privacy" className="font-black underline underline-offset-2">Privacy notice</Link>, including sharing trip endpoints, operational status, and payment status with dispatch, the assigned operator, and service providers needed to fulfill the ride.
+          </ConsentCheckbox>
+        </div>
+      </section>
+
       <button
         type="button"
         onClick={onRequest}
@@ -706,12 +767,38 @@ function FareReview({
         ) : (
           <Check className="h-4 w-4" />
         )}
-        {submitting ? "Securing ride…" : "Continue to secure payment"}
+        {submitting
+          ? "Creating request…"
+          : acceptedOperatorDisclosure && acceptedLegal
+            ? "Continue to secure payment"
+            : "Accept disclosures to continue"}
       </button>
       <div className="mt-3 text-center text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">
         Payment unlocks dispatch and live tracking
       </div>
     </>
+  );
+}
+
+function ConsentCheckbox({
+  checked,
+  onChange,
+  children,
+}: {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  children: ReactNode;
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-amber-200 bg-white/70 p-3 text-xs font-semibold leading-5">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(event) => onChange(event.target.checked)}
+        className="mt-0.5 h-4 w-4 shrink-0 accent-[#0f766e]"
+      />
+      <span>{children}</span>
+    </label>
   );
 }
 
