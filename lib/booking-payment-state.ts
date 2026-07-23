@@ -1,5 +1,6 @@
 import "server-only";
 
+import { createHash } from "node:crypto";
 import { FieldValue } from "firebase-admin/firestore";
 import type Stripe from "stripe";
 
@@ -47,6 +48,28 @@ export function expectedBookingAmountCents(booking: RideBooking) {
   return amount;
 }
 
+export function paymentIntentIdempotencyKey(booking: RideBooking) {
+  const amount = expectedBookingAmountCents(booking);
+  const quoteFingerprint = createHash("sha256")
+    .update(
+      [
+        booking.id,
+        booking.riderId,
+        booking.island,
+        amount,
+        booking.quotedFare?.tariffId ?? "",
+        booking.quotedFare?.tariffVersion ?? "",
+        booking.quotedFare?.rateRuleId ?? "",
+        booking.quotedFare?.matchedOrigin ?? "",
+        booking.quotedFare?.matchedDestination ?? "",
+      ].join("|"),
+    )
+    .digest("hex")
+    .slice(0, 24);
+
+  return `booking-payment-${booking.id}-${quoteFingerprint}`;
+}
+
 export function paymentIntentIntegrityIssue(
   paymentIntent: Stripe.PaymentIntent,
   booking: RideBooking,
@@ -54,6 +77,12 @@ export function paymentIntentIntegrityIssue(
   const expectedAmount = expectedBookingAmountCents(booking);
   if (paymentIntent.amount !== expectedAmount) {
     return "The Stripe amount does not match the booking fare.";
+  }
+  if (
+    paymentIntent.status === "succeeded" &&
+    paymentIntent.amount_received !== expectedAmount
+  ) {
+    return "The captured Stripe amount does not match the booking fare.";
   }
   if (paymentIntent.currency.toLowerCase() !== "usd") {
     return "The Stripe currency does not match the booking currency.";
@@ -69,6 +98,17 @@ export function paymentIntentIntegrityIssue(
   }
   if (paymentIntent.metadata.product !== "taxi_booking") {
     return "The Stripe product reference is invalid for this booking.";
+  }
+  if (paymentIntent.metadata.tariffId !== booking.quotedFare?.tariffId) {
+    return "The Stripe tariff reference does not match the booking quote.";
+  }
+  if (
+    paymentIntent.metadata.tariffVersion !== booking.quotedFare?.tariffVersion
+  ) {
+    return "The Stripe tariff version does not match the booking quote.";
+  }
+  if (paymentIntent.metadata.rateRuleId !== booking.quotedFare?.rateRuleId) {
+    return "The Stripe fare rule does not match the booking quote.";
   }
   return null;
 }
@@ -111,6 +151,7 @@ export function bookingPaymentUpdate(params: {
     paymentFailureMessage:
       params.paymentIntent.last_payment_error?.message ?? null,
     paymentIntegrityStatus: "verified",
+    paymentIntegrityIssue: null,
     paymentStateSource: params.source,
     ...(params.event
       ? {
