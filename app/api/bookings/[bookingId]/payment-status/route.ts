@@ -40,12 +40,14 @@ export async function POST(_request: NextRequest, context: Context) {
     }
 
     if (!booking.paymentIntentId) {
-      const reviewRequired = booking.paymentStatus === "paid";
+      const reviewRequired =
+        booking.paymentStatus === "paid" || Number(booking.amountCaptured ?? 0) > 0;
       const integrityIssue = reviewRequired
-        ? "This booking is marked paid without a Stripe payment reference."
+        ? "This booking is marked paid or captured without a Stripe payment reference."
         : null;
       if (reviewRequired) {
         await bookingRef.update({
+          paymentStatus: "paid",
           paymentIntegrityStatus: "review_required",
           paymentIntegrityIssue: integrityIssue,
           paymentStateSource: "reconciliation",
@@ -63,6 +65,7 @@ export async function POST(_request: NextRequest, context: Context) {
           ...booking,
           ...(reviewRequired
             ? {
+                paymentStatus: "paid" as const,
                 paymentIntegrityStatus: "review_required" as const,
                 paymentIntegrityIssue: integrityIssue,
               }
@@ -89,7 +92,40 @@ export async function POST(_request: NextRequest, context: Context) {
         );
       }
 
-      const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, current);
+      const locallyProtected =
+        current.paymentStatus === "paid" || Number(current.amountCaptured ?? 0) > 0;
+      if (locallyProtected && paymentIntent.status !== "succeeded") {
+        const integrityIssue = `The booking is locally marked paid or captured, but Stripe currently reports ${paymentIntent.status}.`;
+        transaction.update(bookingRef, {
+          paymentStatus: "paid",
+          paymentIntegrityStatus: "review_required",
+          paymentIntegrityIssue: integrityIssue,
+          paymentStateSource: "reconciliation",
+          paymentReconciledAt: FieldValue.serverTimestamp(),
+          paymentUpdatedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        return {
+          reviewRequired: true,
+          integrityIssue,
+          booking: {
+            ...current,
+            paymentStatus: "paid" as const,
+            paymentIntegrityStatus: "review_required" as const,
+            paymentIntegrityIssue: integrityIssue,
+          },
+        };
+      }
+
+      let integrityIssue: string | null = null;
+      try {
+        integrityIssue = paymentIntentIntegrityIssue(paymentIntent, current);
+      } catch (error) {
+        integrityIssue =
+          error instanceof Error
+            ? error.message
+            : "The booking fare could not be validated.";
+      }
       if (integrityIssue) {
         const captured = paymentIntent.status === "succeeded";
         transaction.update(bookingRef, {
