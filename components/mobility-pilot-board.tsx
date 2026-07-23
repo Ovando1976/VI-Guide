@@ -22,6 +22,8 @@ type PilotIslandRecord = {
   island: IslandCode;
   control: MobilityPilotControl;
   report: MobilityPilotGateReport;
+  effectiveActive: boolean;
+  activationIssue?: string;
 };
 
 type PendingAction = {
@@ -65,12 +67,14 @@ export function MobilityPilotBoard() {
   }, [loadReadiness]);
 
   const metrics = useMemo(() => {
-    const active = islands.filter(
-      (item) => item.control.status === "active" && item.report.ready,
+    const active = islands.filter((item) => item.effectiveActive).length;
+    const blocked = islands.filter(
+      (item) =>
+        !item.report.ready ||
+        (item.control.status === "active" && !item.effectiveActive),
     ).length;
-    const blocked = islands.filter((item) => !item.report.ready).length;
     const awaitingApproval = islands.filter(
-      (item) => item.report.ready && item.control.status !== "active",
+      (item) => item.report.ready && !item.effectiveActive,
     ).length;
     return { active, blocked, awaitingApproval };
   }, [islands]);
@@ -144,7 +148,7 @@ export function MobilityPilotBoard() {
                 A valid tariff does not turn booking on by itself. Each island
                 requires an explicit reviewed activation, and every quote and
                 booking re-checks the active tariff, association, driver, vehicle,
-                inspection, insurance, and credentials.
+                inspection, insurance, credentials, and activation evidence.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -164,19 +168,25 @@ export function MobilityPilotBoard() {
           </div>
         </section>
 
-        {message ? (
-          <Notice tone="success" text={message} />
-        ) : null}
+        {message ? <Notice tone="success" text={message} /> : null}
         {errorMessage ? <Notice tone="error" text={errorMessage} /> : null}
 
         <section className="grid gap-4 sm:grid-cols-3">
-          <Metric label="Live pilots" value={metrics.active} note="approved and ready" />
+          <Metric
+            label="Live pilots"
+            value={metrics.active}
+            note="server verified"
+          />
           <Metric
             label="Awaiting approval"
             value={metrics.awaitingApproval}
-            note="all gates pass"
+            note="ready or reactivation needed"
           />
-          <Metric label="Blocked" value={metrics.blocked} note="gate action required" />
+          <Metric
+            label="Blocked"
+            value={metrics.blocked}
+            note="gate or evidence action required"
+          />
         </section>
 
         {loading ? (
@@ -229,9 +239,12 @@ function IslandReadinessCard({
   item: PilotIslandRecord;
   onAction: (type: PendingAction["type"]) => void;
 }) {
-  const live = item.control.status === "active" && item.report.ready;
-  const activeButBlocked = item.control.status === "active" && !item.report.ready;
-  const issues = reportIssues(item.report);
+  const live = item.effectiveActive;
+  const activeButBlocked = item.control.status === "active" && !live;
+  const issues = [
+    ...reportIssues(item.report),
+    ...(item.activationIssue ? [item.activationIssue] : []),
+  ];
 
   return (
     <article className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm">
@@ -240,7 +253,9 @@ function IslandReadinessCard({
           <div className="text-[9px] font-black uppercase tracking-[.17em] text-slate-400">
             Island pilot
           </div>
-          <h2 className="mt-2 text-2xl font-black">{islandLabel(item.island)}</h2>
+          <h2 className="mt-2 text-2xl font-black">
+            {islandLabel(item.island)}
+          </h2>
         </div>
         <StatusBadge live={live} blocked={activeButBlocked} />
       </div>
@@ -273,11 +288,20 @@ function IslandReadinessCard({
               : item.report.fleet.issue
           }
         />
+        <GateRow
+          label="Activation evidence"
+          ready={live}
+          detail={
+            live
+              ? `Verified audit ${item.control.activationAuditId}`
+              : item.activationIssue || "Reviewed activation is required."
+          }
+        />
       </div>
 
       {issues.length ? (
         <div className="mt-5 rounded-[20px] border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-950">
-          {issues.join(" ")}
+          {Array.from(new Set(issues)).join(" ")}
         </div>
       ) : null}
 
@@ -286,22 +310,23 @@ function IslandReadinessCard({
       </div>
 
       <div className="mt-5 flex gap-2">
-        {item.control.status !== "active" ? (
-          <button
-            type="button"
-            onClick={() => onAction("activate")}
-            disabled={!item.report.ready}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#043331] px-4 py-3 text-[9px] font-black uppercase tracking-[.14em] text-white disabled:cursor-not-allowed disabled:opacity-35"
-          >
-            <ShieldCheck className="h-4 w-4" /> Activate
-          </button>
-        ) : (
+        {live ? (
           <button
             type="button"
             onClick={() => onAction("deactivate")}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-3 text-[9px] font-black uppercase tracking-[.14em] text-rose-800"
           >
             <Power className="h-4 w-4" /> Kill switch
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => onAction("activate")}
+            disabled={!item.report.ready}
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#043331] px-4 py-3 text-[9px] font-black uppercase tracking-[.14em] text-white disabled:cursor-not-allowed disabled:opacity-35"
+          >
+            <ShieldCheck className="h-4 w-4" />
+            {item.control.status === "active" ? "Review & reactivate" : "Activate"}
           </button>
         )}
       </div>
@@ -365,7 +390,7 @@ function ActionPanel({
       </h2>
       <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
         {activating
-          ? "This enables public quotes and new bookings only while the exact approved tariff and all live operator gates remain valid."
+          ? "This creates new audit evidence and enables public quotes and bookings only while the exact approved tariff and all live operator gates remain valid."
           : "This immediately closes public quotes and new bookings without deleting existing trip or audit records."}
       </p>
       <form onSubmit={onSubmit} className="mt-5 space-y-4">
@@ -385,8 +410,8 @@ function ActionPanel({
           />
           <span>
             I reviewed this island’s live tariff, association, driver, vehicle,
-            inspection, insurance, and credential status and understand the
-            customer-booking impact of this action.
+            inspection, insurance, credential, provenance, and activation status
+            and understand the customer-booking impact of this action.
           </span>
         </label>
         <div className="flex gap-3">
