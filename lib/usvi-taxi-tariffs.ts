@@ -1,9 +1,13 @@
 import "server-only";
 
 import { getAdminDb } from "@/lib/firebase-admin";
+import { assertVerifiedActiveTariff } from "@/lib/taxi-tariff-governance";
 import type { FareBreakdown } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
-import type { OfficialTaxiRateRule, OfficialTaxiTariff } from "@/types/taxi-operations";
+import type {
+  OfficialTaxiRateRule,
+  OfficialTaxiTariff,
+} from "@/types/taxi-operations";
 
 export class OfficialTaxiRateUnavailableError extends Error {
   status = 422;
@@ -16,7 +20,11 @@ export class OfficialTaxiRateUnavailableError extends Error {
 }
 
 function normalize(value: string) {
-  return value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, " ").trim();
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 function hasName(values: string[] | undefined, name: string) {
@@ -24,23 +32,46 @@ function hasName(values: string[] | undefined, name: string) {
   return (values ?? []).some((value) => normalize(value) === target);
 }
 
-function endpointMatches(ruleGeoids: string[] | undefined, ruleNames: string[], estate: EstateRecord) {
-  return Boolean(ruleGeoids?.includes(estate.geoid) || hasName(ruleNames, estate.baseName));
+function endpointMatches(
+  ruleGeoids: string[] | undefined,
+  ruleNames: string[],
+  estate: EstateRecord,
+) {
+  return Boolean(
+    ruleGeoids?.includes(estate.geoid) || hasName(ruleNames, estate.baseName),
+  );
 }
 
-function findRule(tariff: OfficialTaxiTariff, origin: EstateRecord, destination: EstateRecord) {
+function findRule(
+  tariff: OfficialTaxiTariff,
+  origin: EstateRecord,
+  destination: EstateRecord,
+) {
   for (const rule of tariff.rules) {
-    const direct = endpointMatches(rule.originEstateGeoids, rule.originNames, origin) &&
-      endpointMatches(rule.destinationEstateGeoids, rule.destinationNames, destination);
-    const reverse = endpointMatches(rule.originEstateGeoids, rule.originNames, destination) &&
-      endpointMatches(rule.destinationEstateGeoids, rule.destinationNames, origin);
+    const direct =
+      endpointMatches(rule.originEstateGeoids, rule.originNames, origin) &&
+      endpointMatches(
+        rule.destinationEstateGeoids,
+        rule.destinationNames,
+        destination,
+      );
+    const reverse =
+      endpointMatches(rule.originEstateGeoids, rule.originNames, destination) &&
+      endpointMatches(
+        rule.destinationEstateGeoids,
+        rule.destinationNames,
+        origin,
+      );
     if (direct || reverse) return rule;
   }
   return null;
 }
 
-async function loadActiveTariff(island: IslandCode): Promise<OfficialTaxiTariff> {
-  const snapshot = await getAdminDb().collection("taxiTariffs")
+async function loadActiveTariff(
+  island: IslandCode,
+): Promise<OfficialTaxiTariff> {
+  const snapshot = await getAdminDb()
+    .collection("taxiTariffs")
     .where("island", "==", island)
     .where("status", "==", "active")
     .limit(2)
@@ -56,11 +87,28 @@ async function loadActiveTariff(island: IslandCode): Promise<OfficialTaxiTariff>
       "More than one active taxi tariff is configured. An administrator must resolve the tariff versions before quoting.",
     );
   }
+
   const document = snapshot.docs[0];
-  return { id: document.id, ...document.data() } as OfficialTaxiTariff;
+  const tariff = {
+    id: document.id,
+    ...document.data(),
+  } as OfficialTaxiTariff;
+  try {
+    return assertVerifiedActiveTariff(tariff);
+  } catch (error) {
+    throw new OfficialTaxiRateUnavailableError(
+      error instanceof Error
+        ? error.message
+        : "The active tariff failed governance verification.",
+    );
+  }
 }
 
-function calculateRuleFare(rule: OfficialTaxiRateRule, passengers: number, luggage: number) {
+function calculateRuleFare(
+  rule: OfficialTaxiRateRule,
+  passengers: number,
+  luggage: number,
+) {
   const party = Math.max(1, Math.trunc(passengers));
   let routeFare = rule.onePassengerFare;
   let passengerFare = 0;
@@ -78,8 +126,14 @@ function calculateRuleFare(rule: OfficialTaxiRateRule, passengers: number, lugga
     }
   }
 
-  const chargeableLuggage = Math.max(0, Math.trunc(luggage) - (rule.luggageIncluded ?? 0));
-  if (chargeableLuggage > 0 && typeof rule.luggageFarePerPiece !== "number") {
+  const chargeableLuggage = Math.max(
+    0,
+    Math.trunc(luggage) - (rule.luggageIncluded ?? 0),
+  );
+  if (
+    chargeableLuggage > 0 &&
+    typeof rule.luggageFarePerPiece !== "number"
+  ) {
     throw new OfficialTaxiRateUnavailableError(
       "The selected route needs an official luggage charge that is not configured. Dispatch must verify the regulated fare.",
     );
@@ -95,7 +149,9 @@ export async function quoteOfficialTaxiFare(params: {
   luggage: number;
 }): Promise<FareBreakdown> {
   if (params.origin.island !== params.destination.island) {
-    throw new OfficialTaxiRateUnavailableError("Taxi quotes cannot cross islands. Choose endpoints on the same island.");
+    throw new OfficialTaxiRateUnavailableError(
+      "Taxi quotes cannot cross islands. Choose endpoints on the same island.",
+    );
   }
   const tariff = await loadActiveTariff(params.origin.island);
   const rule = findRule(tariff, params.origin, params.destination);
@@ -104,8 +160,14 @@ export async function quoteOfficialTaxiFare(params: {
       `No published official route rate matches ${params.origin.baseName} to ${params.destination.baseName}. Dispatch must verify the regulated fare.`,
     );
   }
-  const amounts = calculateRuleFare(rule, params.passengers, params.luggage);
-  const total = Number((amounts.routeFare + amounts.passengerFare + amounts.luggageFare).toFixed(2));
+  const amounts = calculateRuleFare(
+    rule,
+    params.passengers,
+    params.luggage,
+  );
+  const total = Number(
+    (amounts.routeFare + amounts.passengerFare + amounts.luggageFare).toFixed(2),
+  );
   return {
     pricingModel: "official_usvi_taxi_tariff",
     quoteStatus: "official",
@@ -126,4 +188,3 @@ export async function quoteOfficialTaxiFare(params: {
     ruleNotes: rule.notes,
   };
 }
-
