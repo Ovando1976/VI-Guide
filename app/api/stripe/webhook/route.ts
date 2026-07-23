@@ -107,13 +107,67 @@ async function handlePaymentIntentEvent(
       id: bookingSnapshot.id,
       ...bookingSnapshot.data(),
     } as RideBooking;
+    const existingIntentId = booking.paymentIntentId;
+    const refundCompleted =
+      booking.paymentStatus === "refunded" ||
+      booking.refundStatus === "succeeded";
+
+    if (refundCompleted) {
+      const sameIntent =
+        Boolean(existingIntentId) && existingIntentId === paymentIntent.id;
+      const unexpectedCapture =
+        !sameIntent && paymentIntent.status === "succeeded";
+
+      if (unexpectedCapture) {
+        const issue =
+          "A new Stripe PaymentIntent captured funds after this booking had already been refunded.";
+        transaction.update(bookingRef, {
+          paymentStatus: "refunded",
+          paymentIntegrityStatus: "review_required",
+          paymentIntegrityIssue: issue,
+          unexpectedCapturedPaymentIntentId: paymentIntent.id,
+          unexpectedCapturedAmount: paymentIntent.amount_received,
+          unexpectedCapturedAt: FieldValue.serverTimestamp(),
+          refundStatus: "pending_review",
+          refundReason:
+            "Unexpected payment captured after the original booking refund completed.",
+          refundRequestedAmount: paymentIntent.amount_received,
+          refundRequestedAt: FieldValue.serverTimestamp(),
+          refundUpdatedAt: FieldValue.serverTimestamp(),
+          settlementBlockedAt: FieldValue.serverTimestamp(),
+          settlementBlockedReason:
+            "Unexpected payment captured after completed refund.",
+          paymentEventId: event.id,
+          paymentEventType: event.type,
+          paymentEventCreated: event.created,
+          paymentUpdatedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+      }
+
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        paymentIntentId: paymentIntent.id,
+        existingPaymentIntentId: existingIntentId ?? null,
+        outcome: unexpectedCapture
+          ? "unexpected_capture_after_refund"
+          : sameIntent
+            ? "refunded_booking_payment_event_ignored"
+            : "refunded_booking_payment_intent_mismatch_ignored",
+        paymentStatus: "refunded",
+        refundStatus: unexpectedCapture ? "pending_review" : "succeeded",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
     const capturedAfterCancellation =
       booking.status === "cancelled" && paymentIntent.status === "succeeded";
     const refundHold = capturedAfterCancellation
       ? cancellationRefundHold(paymentIntent, booking)
       : {};
 
-    const existingIntentId = booking.paymentIntentId;
     if (existingIntentId && existingIntentId !== paymentIntent.id) {
       const captured = paymentIntent.status === "succeeded";
       const mismatchIssue = captured
