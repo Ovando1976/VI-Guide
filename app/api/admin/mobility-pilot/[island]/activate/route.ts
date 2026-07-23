@@ -61,6 +61,7 @@ export async function POST(
       {
         island,
         status: "active",
+        activationAuditId: auditRef.id,
         activatedAt: FieldValue.serverTimestamp(),
         activatedBy: session.uid,
         activationReviewReference: reviewReference,
@@ -75,6 +76,7 @@ export async function POST(
     );
     batch.set(auditRef, {
       action: "mobility_pilot_activated",
+      auditId: auditRef.id,
       actorId: session.uid,
       island,
       reviewReference,
@@ -91,6 +93,7 @@ export async function POST(
       ok: true,
       island,
       status: "active",
+      activationAuditId: auditRef.id,
       report,
     });
   } catch (error) {
