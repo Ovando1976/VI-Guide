@@ -15,6 +15,7 @@ type CheckoutBooking = {
   id: string;
   paymentStatus?: string;
   paymentIntegrityStatus?: string;
+  amountCaptured?: number | null;
   status?: string;
   island?: string;
   origin?: { estateName?: string };
@@ -61,7 +62,8 @@ export default function CheckoutBookingPage() {
 
         if (
           loadedBooking.paymentStatus === "paid" ||
-          loadedBooking.paymentIntegrityStatus === "review_required"
+          loadedBooking.paymentIntegrityStatus === "review_required" ||
+          Number(loadedBooking.amountCaptured ?? 0) > 0
         ) {
           router.replace(
             `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
