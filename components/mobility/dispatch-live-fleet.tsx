@@ -265,7 +265,10 @@ function timestampMs(value: TimestampLike | undefined) {
     const parsed = value.toDate().getTime();
     return Number.isFinite(parsed) ? parsed : null;
   }
-  return typeof value.seconds === "number" ? value.seconds * 1000 : null;
+  if ("seconds" in value && typeof value.seconds === "number") {
+    return value.seconds * 1000;
+  }
+  return null;
 }
 
 function locationAgeMs(recordedAt: string | undefined, now: number) {
