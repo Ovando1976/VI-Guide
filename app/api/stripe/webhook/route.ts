@@ -2,52 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { FieldValue } from "firebase-admin/firestore";
 import type Stripe from "stripe";
 
+import {
+  bookingPaymentUpdate,
+  paymentIntentIntegrityIssue,
+  paymentStatusFromStripe,
+  shouldApplyStripeEvent,
+} from "@/lib/booking-payment-state";
 import { getAdminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe";
-import type { RideBookingPaymentStatus } from "@/types/mobility";
+import type { RideBooking } from "@/types/mobility";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-function bookingPaymentUpdate(paymentIntent: Stripe.PaymentIntent) {
-  let paymentStatus: RideBookingPaymentStatus;
-  switch (paymentIntent.status) {
-    case "succeeded":
-      paymentStatus = "paid";
-      break;
-    case "processing":
-      paymentStatus = "processing";
-      break;
-    case "canceled":
-      paymentStatus = "canceled";
-      break;
-    case "requires_payment_method":
-      paymentStatus = paymentIntent.last_payment_error
-        ? "failed"
-        : "requires_payment_method";
-      break;
-    case "requires_action":
-    case "requires_confirmation":
-      paymentStatus = "requires_payment_method";
-      break;
-    default:
-      paymentStatus = "unpaid";
-  }
-
-  return {
-    paymentStatus,
-    paymentIntentId: paymentIntent.id,
-    amountAuthorized: paymentIntent.amount,
-    amountCaptured:
-      paymentIntent.status === "succeeded"
-        ? paymentIntent.amount_received
-        : null,
-    paymentFailureCode: paymentIntent.last_payment_error?.code ?? null,
-    paymentFailureMessage: paymentIntent.last_payment_error?.message ?? null,
-    paymentUpdatedAt: FieldValue.serverTimestamp(),
-    updatedAt: FieldValue.serverTimestamp(),
-  };
-}
 
 function isPaymentIntentEvent(
   event: Stripe.Event,
@@ -113,24 +79,81 @@ export async function POST(request: NextRequest) {
         return;
       }
 
-      const existingIntentId = bookingSnapshot.get("paymentIntentId");
+      const booking = {
+        id: bookingSnapshot.id,
+        ...bookingSnapshot.data(),
+      } as RideBooking;
+      const integrityIssue = paymentIntentIntegrityIssue(paymentIntent, booking);
+      if (integrityIssue) {
+        transaction.update(bookingRef, {
+          paymentIntegrityStatus: "review_required",
+          paymentIntegrityIssue: integrityIssue,
+          paymentUpdatedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        transaction.set(eventRef, {
+          type: event.type,
+          bookingId,
+          paymentIntentId: paymentIntent.id,
+          outcome: "payment_integrity_mismatch",
+          integrityIssue,
+          processedAt: FieldValue.serverTimestamp(),
+        });
+        return;
+      }
+
+      const existingIntentId = booking.paymentIntentId;
       if (existingIntentId && existingIntentId !== paymentIntent.id) {
         transaction.set(eventRef, {
           type: event.type,
           bookingId,
           paymentIntentId: paymentIntent.id,
+          existingPaymentIntentId: existingIntentId,
           outcome: "payment_intent_mismatch",
           processedAt: FieldValue.serverTimestamp(),
         });
         return;
       }
 
-      transaction.update(bookingRef, bookingPaymentUpdate(paymentIntent));
+      const nextStatus = paymentStatusFromStripe(paymentIntent);
+      const shouldApply = shouldApplyStripeEvent({
+        currentStatus: booking.paymentStatus,
+        currentEventCreated: booking.paymentEventCreated,
+        nextStatus,
+        eventCreated: event.created,
+      });
+
+      if (!shouldApply) {
+        transaction.set(eventRef, {
+          type: event.type,
+          bookingId,
+          paymentIntentId: paymentIntent.id,
+          outcome: "stale_event_ignored",
+          currentPaymentStatus: booking.paymentStatus ?? "unpaid",
+          incomingPaymentStatus: nextStatus,
+          currentEventCreated: booking.paymentEventCreated ?? null,
+          incomingEventCreated: event.created,
+          processedAt: FieldValue.serverTimestamp(),
+        });
+        return;
+      }
+
+      transaction.update(
+        bookingRef,
+        bookingPaymentUpdate({
+          paymentIntent,
+          existingAmountCaptured: booking.amountCaptured,
+          event,
+          source: "webhook",
+        }),
+      );
       transaction.set(eventRef, {
         type: event.type,
         bookingId,
         paymentIntentId: paymentIntent.id,
-        outcome: "booking_updated",
+        outcome: existingIntentId ? "booking_updated" : "booking_bound_and_updated",
+        paymentStatus: nextStatus,
+        eventCreated: event.created,
         processedAt: FieldValue.serverTimestamp(),
       });
     });
