@@ -29,7 +29,7 @@ export async function POST(_request: NextRequest, context: Context) {
     const bookingRef = db.collection("bookings").doc(bookingId);
     const operationRef = db.collection("refundOperations").doc(bookingId);
 
-    const booking = await db.runTransaction(async (transaction) => {
+    const booking = await db.runTransaction<RideBooking>(async (transaction) => {
       const [bookingSnapshot, operationSnapshot] = await Promise.all([
         transaction.get(bookingRef),
         transaction.get(operationRef),
@@ -60,8 +60,9 @@ export async function POST(_request: NextRequest, context: Context) {
         return current;
       }
 
+      const operationData = operationSnapshot.data();
       const operationStatus = operationSnapshot.exists
-        ? String(operationSnapshot.data()?.status ?? "")
+        ? String(operationData?.status ?? "")
         : "";
       if (operationStatus === "creating") {
         throw new Error("A refund operation is already in progress.");
@@ -76,9 +77,8 @@ export async function POST(_request: NextRequest, context: Context) {
           paymentIntentId: current.paymentIntentId,
           amount: capturedAmount,
           previousRefundId: current.refundId ?? null,
-          createdAt: operationSnapshot.exists
-            ? operationSnapshot.data()?.createdAt ?? FieldValue.serverTimestamp()
-            : FieldValue.serverTimestamp(),
+          createdAt:
+            operationData?.createdAt ?? FieldValue.serverTimestamp(),
           updatedAt: FieldValue.serverTimestamp(),
         },
         { merge: true },
@@ -88,14 +88,16 @@ export async function POST(_request: NextRequest, context: Context) {
         refundRequestedAmount: capturedAmount,
         refundReason:
           current.refundReason || "Cancelled ride refund approved by staff.",
+        refundFailureReason: null,
         refundUpdatedAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
       });
 
       return {
         ...current,
-        refundStatus: "processing" as const,
+        refundStatus: "processing",
         refundRequestedAmount: capturedAmount,
+        refundFailureReason: null,
       };
     });
 
@@ -110,26 +112,52 @@ export async function POST(_request: NextRequest, context: Context) {
       });
     }
 
-    const stripe = getStripe();
     let refund: Stripe.Refund;
-    if (booking.refundId) {
-      refund = await stripe.refunds.retrieve(booking.refundId);
-    } else {
-      const amount = Math.max(0, Number(booking.amountCaptured ?? 0));
-      refund = await stripe.refunds.create(
-        {
-          payment_intent: booking.paymentIntentId!,
-          amount,
-          reason: "requested_by_customer",
-          metadata: {
-            bookingId,
-            riderId: booking.riderId,
-            island: booking.island,
-            product: "taxi_booking_refund",
+    try {
+      const stripe = getStripe();
+      if (booking.refundId) {
+        refund = await stripe.refunds.retrieve(booking.refundId);
+      } else {
+        const amount = Math.max(0, Number(booking.amountCaptured ?? 0));
+        refund = await stripe.refunds.create(
+          {
+            payment_intent: booking.paymentIntentId!,
+            amount,
+            reason: "requested_by_customer",
+            metadata: {
+              bookingId,
+              riderId: booking.riderId,
+              island: booking.island,
+              product: "taxi_booking_refund",
+            },
           },
-        },
-        { idempotencyKey: `booking-refund-${bookingId}-${amount}` },
-      );
+          { idempotencyKey: `booking-refund-${bookingId}-${amount}` },
+        );
+      }
+    } catch (error) {
+      const reason =
+        error instanceof Error ? error.message : "Stripe refund request failed.";
+      await Promise.all([
+        bookingRef.update({
+          refundStatus: "failed",
+          refundFailureReason: reason,
+          refundUpdatedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        }),
+        operationRef.set(
+          {
+            bookingId,
+            status: "failed",
+            actorId: session.uid,
+            paymentIntentId: booking.paymentIntentId,
+            amount: booking.amountCaptured ?? null,
+            failureReason: reason,
+            updatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        ),
+      ]);
+      throw new Error(`Stripe refund failed: ${reason}`);
     }
 
     const refundStatus = mapRefundStatus(refund.status);
@@ -201,7 +229,9 @@ export async function POST(_request: NextRequest, context: Context) {
             ? 404
             : message.includes("already in progress")
               ? 409
-              : 400,
+              : message.startsWith("Stripe refund failed:")
+                ? 502
+                : 400,
       },
     );
   }
