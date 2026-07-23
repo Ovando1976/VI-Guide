@@ -43,9 +43,22 @@ function nonNegativeNumber(value: unknown, label: string) {
   return Number(number.toFixed(2));
 }
 
+function positiveNumber(value: unknown, label: string) {
+  const number = Number(value);
+  if (!Number.isFinite(number) || number <= 0) {
+    throw new Error(`${label} must be greater than zero.`);
+  }
+  return Number(number.toFixed(2));
+}
+
 function optionalNonNegativeNumber(value: unknown, label: string) {
   if (value == null || value === "") return undefined;
   return nonNegativeNumber(value, label);
+}
+
+function optionalPositiveNumber(value: unknown, label: string) {
+  if (value == null || value === "") return undefined;
+  return positiveNumber(value, label);
 }
 
 function optionalNonNegativeInteger(value: unknown, label: string) {
@@ -92,7 +105,7 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
     input.additionalPassengerFare,
     `Rule ${id} additional passenger fare`,
   );
-  const perPersonFare = optionalNonNegativeNumber(
+  const perPersonFare = optionalPositiveNumber(
     input.perPersonFare,
     `Rule ${id} per-person fare`,
   );
@@ -116,7 +129,7 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
     destinationNames,
     ...(originEstateGeoids?.length ? { originEstateGeoids } : {}),
     ...(destinationEstateGeoids?.length ? { destinationEstateGeoids } : {}),
-    onePassengerFare: nonNegativeNumber(
+    onePassengerFare: positiveNumber(
       input.onePassengerFare,
       `Rule ${id} one-passenger fare`,
     ),
@@ -210,7 +223,9 @@ export function assertVerifiedActiveTariff(
     throw new Error("The selected tariff is not active.");
   }
   if (tariff.issuingAuthority !== "Virgin Islands Taxicab Commission") {
-    throw new Error("The active tariff does not identify the required issuing authority.");
+    throw new Error(
+      "The active tariff does not identify the required issuing authority.",
+    );
   }
   if (tariff.currency !== "USD") {
     throw new Error("The active tariff currency is invalid.");
