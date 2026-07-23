@@ -125,6 +125,7 @@ export async function cancelBookingWithFinancialResolution(params: {
       booking: reserved.booking,
       operationId,
       actorType: params.actorType,
+      reasonCode: params.reasonCode,
     });
   } catch (error) {
     const issue =
@@ -149,18 +150,56 @@ export async function cancelBookingWithFinancialResolution(params: {
     ) {
       const conflictIssue =
         "The trip advanced after cancellation was reserved and requires staff review.";
-      transaction.update(operationRef, {
-        status: "review_required",
-        failureReason: conflictIssue,
-        reviewIssue: conflictIssue,
-        financialHoldStatus: "manual_review",
-        updatedAt: FieldValue.serverTimestamp(),
-      });
+      transaction.set(
+        operationRef,
+        {
+          status: "review_required",
+          failureReason: conflictIssue,
+          reviewIssue: resolution.reviewIssue
+            ? `${conflictIssue} ${resolution.reviewIssue}`
+            : conflictIssue,
+          paymentIntentAction: resolution.paymentIntentAction,
+          paymentStatus: resolution.paymentStatus,
+          refundId: resolution.refund.id ?? null,
+          refundStatus: resolution.refund.status,
+          refundAmount: resolution.refund.amount,
+          financialHoldStatus: "manual_review",
+          completedAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
       transaction.update(bookingRef, {
+        paymentStatus: resolution.paymentStatus,
+        refund: {
+          ...resolution.refund,
+          updatedAt: FieldValue.serverTimestamp(),
+        },
         cancellationStatus: "review_required",
+        cancellationResolvedAt: FieldValue.serverTimestamp(),
         financialHoldStatus: "manual_review",
         paymentIntegrityStatus: "review_required",
-        paymentIntegrityIssue: conflictIssue,
+        paymentIntegrityIssue: resolution.reviewIssue
+          ? `${conflictIssue} ${resolution.reviewIssue}`
+          : conflictIssue,
+        settlement: {
+          status: "held",
+          grossFare:
+            current.settlement?.grossFare ??
+            current.finalFare ??
+            current.quotedFare?.total ??
+            0,
+          serviceFee:
+            current.settlement?.serviceFee ??
+            current.payout?.platformRevenue ??
+            0,
+          operatorSettlement:
+            current.settlement?.operatorSettlement ??
+            current.payout?.driverPayout ??
+            0,
+          feeAgreementId: current.settlement?.feeAgreementId ?? null,
+          holdReason: conflictIssue,
+        },
         updatedAt: FieldValue.serverTimestamp(),
       });
       return { advancedConflict: true };
@@ -266,6 +305,7 @@ async function resolveCancellationPayment(params: {
   booking: RideBooking;
   operationId: string;
   actorType: CancellationActorType;
+  reasonCode: string;
 }): Promise<CancellationResolution> {
   const booking = params.booking;
   const expectedAmount = safeExpectedAmount(booking);
@@ -309,14 +349,19 @@ async function resolveCancellationPayment(params: {
       );
     }
 
+    const refundReason = stripeRefundReason(
+      params.actorType,
+      params.reasonCode,
+    );
     const refund = await stripe.refunds.create(
       {
         payment_intent: paymentIntent.id,
-        reason: "requested_by_customer",
+        ...(refundReason ? { reason: refundReason } : {}),
         metadata: {
           bookingId: booking.id,
           operationId: params.operationId,
           actorType: params.actorType,
+          reasonCode: params.reasonCode,
           product: "taxi_booking_cancellation",
         },
       },
@@ -446,6 +491,14 @@ function safeExpectedAmount(booking: RideBooking) {
   } catch {
     return Math.max(0, Number(booking.amountCaptured ?? 0));
   }
+}
+
+function stripeRefundReason(
+  actorType: CancellationActorType,
+  reasonCode: string,
+): "duplicate" | "requested_by_customer" | undefined {
+  if (reasonCode === "duplicate_booking") return "duplicate";
+  return actorType === "rider" ? "requested_by_customer" : undefined;
 }
 
 function normalizeRefundStatus(status: string | null): BookingRefundStatus {
