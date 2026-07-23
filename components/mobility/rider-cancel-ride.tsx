@@ -13,6 +13,14 @@ const CANCELLABLE: RideBooking["status"][] = [
   "arrived",
 ];
 
+type CancellationResponse = {
+  error?: string;
+  paymentStatus?: string;
+  refundStatus?: string;
+  refundRequestedAmount?: number | null;
+  cancellationPaymentAction?: string;
+};
+
 export function RiderCancelRide({ riderId }: { riderId: string }) {
   const [bookings, setBookings] = useState<RideBooking[]>([]);
   const [confirming, setConfirming] = useState(false);
@@ -50,13 +58,13 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
         },
       );
       const payload = (await response.json().catch(() => null)) as
-        | { error?: string }
+        | CancellationResponse
         | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to cancel this ride.");
       }
       setConfirming(false);
-      setMessage("Your ride was cancelled and dispatch has been updated.");
+      setMessage(cancellationMessage(payload));
     } catch (error) {
       setMessage(
         error instanceof Error ? error.message : "Unable to cancel this ride.",
@@ -79,7 +87,9 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
             {booking.origin.estateName} → {booking.destination.estateName}
           </div>
           <p className="mt-1 text-sm font-semibold text-slate-500">
-            Cancellation is available until the trip begins. Dispatch and the assigned driver are updated immediately.
+            Cancellation is available until the trip begins. Dispatch and the
+            assigned driver are updated immediately. Captured payments are sent
+            to staff refund review; no cancellation fee is calculated by the app.
           </p>
         </div>
 
@@ -121,4 +131,18 @@ export function RiderCancelRide({ riderId }: { riderId: string }) {
       ) : null}
     </section>
   );
+}
+
+function cancellationMessage(payload: CancellationResponse | null) {
+  if (payload?.refundStatus === "pending_review") {
+    const amount =
+      typeof payload.refundRequestedAmount === "number"
+        ? ` A full refund of $${(payload.refundRequestedAmount / 100).toFixed(2)} is awaiting staff review.`
+        : " Any captured payment is awaiting staff refund review.";
+    return `Your ride was cancelled and dispatch was updated.${amount}`;
+  }
+  if (payload?.cancellationPaymentAction === "payment_intent_canceled") {
+    return "Your ride was cancelled and the open payment request was cancelled before capture.";
+  }
+  return "Your ride was cancelled and dispatch was updated. No captured payment requires a refund.";
 }
