@@ -9,6 +9,9 @@ import {
 } from "@/lib/taxi-tariff-governance";
 import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
+const DUPLICATE_VERSION_ERROR =
+  "A tariff with this island and version already exists. Use a new version identifier for every revision.";
+
 export async function GET() {
   try {
     await requireSession(["admin"]);
@@ -22,7 +25,7 @@ export async function GET() {
       )
       .sort((a, b) => {
         if (a.island !== b.island) return a.island.localeCompare(b.island);
-        return Date.parse(b.effectiveAt) - Date.parse(a.effectiveAt);
+        return safeTimestamp(b.effectiveAt) - safeTimestamp(a.effectiveAt);
       });
 
     return NextResponse.json({ ok: true, tariffs });
@@ -66,28 +69,37 @@ export async function POST(request: NextRequest) {
     const db = getAdminDb();
     const tariffRef = db.collection("taxiTariffs").doc();
     const auditRef = db.collection("taxiTariffAudit").doc();
-    const batch = db.batch();
 
-    batch.set(tariffRef, {
-      ...tariff,
-      status: "draft",
-      activationStatus: "unverified",
-      reviewReference,
-      reviewedBy: session.uid,
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
+    await db.runTransaction(async (transaction) => {
+      const duplicateSnapshot = await transaction.get(
+        db
+          .collection("taxiTariffs")
+          .where("island", "==", tariff.island)
+          .where("version", "==", tariff.version)
+          .limit(1),
+      );
+      if (!duplicateSnapshot.empty) throw new Error(DUPLICATE_VERSION_ERROR);
+
+      transaction.set(tariffRef, {
+        ...tariff,
+        status: "draft",
+        activationStatus: "unverified",
+        reviewReference,
+        reviewedBy: session.uid,
+        createdAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+      transaction.set(auditRef, {
+        action: "tariff_draft_created",
+        actorId: session.uid,
+        tariffId: tariffRef.id,
+        island: tariff.island,
+        version: tariff.version,
+        reviewReference,
+        ruleCount: tariff.rules.length,
+        createdAt: FieldValue.serverTimestamp(),
+      });
     });
-    batch.set(auditRef, {
-      action: "tariff_draft_created",
-      actorId: session.uid,
-      tariffId: tariffRef.id,
-      island: tariff.island,
-      version: tariff.version,
-      reviewReference,
-      ruleCount: tariff.rules.length,
-      createdAt: FieldValue.serverTimestamp(),
-    });
-    await batch.commit();
 
     return NextResponse.json(
       {
@@ -101,14 +113,13 @@ export async function POST(request: NextRequest) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
     console.error("create taxi tariff draft error", error);
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unable to create taxi tariff draft.";
     return NextResponse.json(
-      {
-        error:
-          error instanceof Error
-            ? error.message
-            : "Unable to create taxi tariff draft.",
-      },
-      { status: 400 },
+      { error: message },
+      { status: message === DUPLICATE_VERSION_ERROR ? 409 : 400 },
     );
   }
 }
@@ -124,7 +135,11 @@ function serializeTariff(tariff: OfficialTaxiTariff): OfficialTaxiTariff {
 }
 
 function serializeDate(
-  value: string | Timestamp | { seconds?: number; nanoseconds?: number } | undefined,
+  value:
+    | string
+    | Timestamp
+    | { seconds?: number; nanoseconds?: number }
+    | undefined,
 ) {
   if (!value) return undefined;
   if (typeof value === "string") return value;
@@ -133,4 +148,9 @@ function serializeDate(
     return new Date(value.seconds * 1000).toISOString();
   }
   return undefined;
+}
+
+function safeTimestamp(value: string) {
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? timestamp : 0;
 }
