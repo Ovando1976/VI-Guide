@@ -1,6 +1,7 @@
 import "server-only";
 
 import { FieldValue } from "firebase-admin/firestore";
+import type Stripe from "stripe";
 
 import {
   expectedBookingAmountCents,
@@ -27,7 +28,8 @@ export async function approveOperatorSettlement(params: {
   if (!initial.paymentIntentId) {
     throw new Error("Settlement cannot be approved without a Stripe payment reference.");
   }
-  const paymentIntent = await getStripe().paymentIntents.retrieve(
+  const stripe = getStripe();
+  const paymentIntent = await stripe.paymentIntents.retrieve(
     initial.paymentIntentId,
   );
   const initialIntegrityIssue = paymentIntentIntegrityIssue(paymentIntent, initial);
@@ -35,6 +37,8 @@ export async function approveOperatorSettlement(params: {
   if (paymentIntent.status !== "succeeded") {
     throw new Error("Settlement cannot be approved until Stripe confirms payment.");
   }
+  const charge = await retrieveLatestCharge(stripe, paymentIntent);
+  assertChargeReadyForSettlement(charge, paymentIntent);
 
   const auditRef = db.collection("settlementAudit").doc();
   const approvedAtIso = new Date().toISOString();
@@ -67,7 +71,9 @@ export async function approveOperatorSettlement(params: {
       booking.amountAuthorized !== expectedAmount ||
       booking.amountCaptured !== expectedAmount ||
       paymentIntent.amount !== expectedAmount ||
-      paymentIntent.amount_received !== expectedAmount
+      paymentIntent.amount_received !== expectedAmount ||
+      charge.amount !== expectedAmount ||
+      charge.amount_captured !== expectedAmount
     ) {
       throw new Error("Captured payment does not equal the completed trip fare.");
     }
@@ -76,7 +82,7 @@ export async function approveOperatorSettlement(params: {
       !booking.refund ||
       (booking.refund.status === "not_required" && booking.refund.amount === 0) ||
       (booking.refund.status === "canceled" && booking.refund.amount === 0);
-    if (!refundClear) {
+    if (!refundClear || charge.refunded || charge.amount_refunded > 0) {
       throw new Error("Settlement is blocked because a refund exists or is processing.");
     }
 
@@ -84,7 +90,7 @@ export async function approveOperatorSettlement(params: {
       !booking.dispute ||
       (booking.dispute.status === "won" &&
         booking.dispute.fundsReinstated === true);
-    if (!disputeClear) {
+    if (!disputeClear || charge.disputed) {
       throw new Error("Settlement is blocked because a payment dispute is unresolved.");
     }
 
@@ -133,7 +139,10 @@ export async function approveOperatorSettlement(params: {
       actorId: params.actorId,
       reviewReference: params.reviewReference,
       paymentIntentId: paymentIntent.id,
+      chargeId: charge.id,
       capturedAmount: paymentIntent.amount_received,
+      refundedAmount: charge.amount_refunded,
+      chargeDisputed: charge.disputed,
       disputeId: booking.dispute?.id ?? null,
       disputeStatus: booking.dispute?.status ?? null,
       disputeFundsReinstated: booking.dispute?.fundsReinstated ?? null,
@@ -210,4 +219,42 @@ export async function holdOperatorSettlement(params: {
   });
 
   return { bookingId: params.bookingId, settlement };
+}
+
+async function retrieveLatestCharge(
+  stripe: Stripe,
+  paymentIntent: Stripe.PaymentIntent,
+) {
+  const latestChargeId = expandableId(paymentIntent.latest_charge);
+  if (!latestChargeId) {
+    throw new Error("Settlement cannot be approved without a Stripe Charge record.");
+  }
+  return stripe.charges.retrieve(latestChargeId);
+}
+
+function assertChargeReadyForSettlement(
+  charge: Stripe.Charge,
+  paymentIntent: Stripe.PaymentIntent,
+) {
+  if (!charge.paid || charge.status !== "succeeded") {
+    throw new Error("The Stripe Charge is not settled successfully.");
+  }
+  if (charge.currency.toLowerCase() !== "usd") {
+    throw new Error("The Stripe Charge currency is invalid for this settlement.");
+  }
+  if (expandableId(charge.payment_intent) !== paymentIntent.id) {
+    throw new Error("The Stripe Charge belongs to a different PaymentIntent.");
+  }
+  if (charge.refunded || charge.amount_refunded > 0) {
+    throw new Error("The Stripe Charge has been refunded or partially refunded.");
+  }
+  if (charge.disputed) {
+    throw new Error("The Stripe Charge is currently disputed.");
+  }
+}
+
+function expandableId(value: string | { id?: string } | null | undefined) {
+  if (typeof value === "string") return value;
+  if (value && typeof value.id === "string") return value.id;
+  return null;
 }
