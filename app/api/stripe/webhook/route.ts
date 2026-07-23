@@ -274,13 +274,14 @@ async function processRefundEvent(
   event: Stripe.Event & { data: { object: Stripe.Refund } },
 ) {
   const refund = event.data.object;
+  const refundMetadata = refund.metadata ?? {};
   const paymentIntentId = expandableId(
     (refund as Stripe.Refund & {
       payment_intent?: string | Stripe.PaymentIntent | null;
     }).payment_intent,
   );
   const db = getAdminDb();
-  const bookingId = refund.metadata.bookingId?.trim();
+  const bookingId = refundMetadata.bookingId?.trim();
   const bookingRef = bookingId
     ? db.collection("bookings").doc(bookingId)
     : await findBookingRefByPaymentIntent(db, paymentIntentId);
@@ -362,9 +363,9 @@ async function processRefundEvent(
         status,
         amount: refund.amount,
         currency: "usd",
-        reason: refund.metadata.reason ?? booking.refund?.reason ?? null,
+        reason: refundMetadata.reason ?? booking.refund?.reason ?? null,
         operationId:
-          refund.metadata.operationId ?? booking.refund?.operationId ?? null,
+          refundMetadata.operationId ?? booking.refund?.operationId ?? null,
         failureReason: refund.failure_reason ?? null,
         requestedAt: booking.refund?.requestedAt ?? FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
