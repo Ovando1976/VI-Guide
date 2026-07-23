@@ -16,6 +16,7 @@ const STATUS_PRECEDENCE: Record<RideBookingPaymentStatus, number> = {
   processing: 2,
   canceled: 3,
   paid: 4,
+  refunded: 5,
 };
 
 export function paymentStatusFromStripe(
@@ -122,6 +123,7 @@ export function shouldApplyStripeEvent(params: {
   const currentStatus = params.currentStatus ?? "unpaid";
   const currentEventCreated = Number(params.currentEventCreated ?? 0);
 
+  if (currentStatus === "refunded") return false;
   if (currentStatus === "paid" && params.nextStatus !== "paid") return false;
   if (params.eventCreated < currentEventCreated) return false;
   if (params.eventCreated > currentEventCreated) return true;
