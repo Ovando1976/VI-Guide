@@ -19,6 +19,8 @@ type BookingPayload = {
     origin?: { estateName?: string };
     destination?: { estateName?: string };
   };
+  reviewRequired?: boolean;
+  integrityIssue?: string | null;
   error?: string;
 };
 
@@ -40,22 +42,37 @@ export function TripReturnNotice() {
   const verifyBooking = useCallback(
     async (signal?: AbortSignal) => {
       const response = await fetch(
-        `/api/bookings/${encodeURIComponent(bookingId)}`,
+        `/api/bookings/${encodeURIComponent(bookingId)}/payment-status`,
         {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           cache: "no-store",
           signal,
         },
       );
-      const payload = (await response.json().catch(() => null)) as BookingPayload | null;
+      const payload = (await response.json().catch(() => null)) as
+        | BookingPayload
+        | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to verify this ride.");
       }
 
       const booking = payload?.booking;
-      const route = [booking?.origin?.estateName, booking?.destination?.estateName]
+      const route = [
+        booking?.origin?.estateName,
+        booking?.destination?.estateName,
+      ]
         .filter(Boolean)
         .join(" → ");
       const paymentStatus = booking?.paymentStatus ?? "unpaid";
+
+      if (payload?.reviewRequired) {
+        setMessage(
+          `${route || "Your ride"} has a payment record that requires staff review. No additional payment should be attempted. ${payload.integrityIssue || "VI Guide is preserving the captured payment while the record is reviewed."}`,
+        );
+        setState("error");
+        return true;
+      }
 
       if (paymentStatus === "paid") {
         setMessage(`${route || "Your ride"} is paid and ready for dispatch.`);
@@ -182,7 +199,7 @@ export function TripReturnNotice() {
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
             {isChecking
-              ? `VI Guide is checking the booking before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
+              ? `VI Guide is checking Stripe and the booking record before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
               : message}
           </p>
 
@@ -210,7 +227,9 @@ export function TripReturnNotice() {
                 disabled={isChecking}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-slate-700 disabled:opacity-60"
               >
-                <RefreshCw className={`h-3.5 w-3.5 ${isChecking ? "animate-spin" : ""}`} />
+                <RefreshCw
+                  className={`h-3.5 w-3.5 ${isChecking ? "animate-spin" : ""}`}
+                />
                 Check again
               </button>
             ) : null}
