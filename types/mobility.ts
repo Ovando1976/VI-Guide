@@ -26,6 +26,7 @@ export type RideBookingPaymentStatus =
   | "requires_payment_method"
   | "processing"
   | "paid"
+  | "refunded"
   | "failed"
   | "canceled";
 
