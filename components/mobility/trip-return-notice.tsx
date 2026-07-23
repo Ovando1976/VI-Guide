@@ -24,7 +24,13 @@ type BookingPayload = {
   error?: string;
 };
 
-type NoticeState = "idle" | "checking" | "paid" | "pending" | "error";
+type NoticeState =
+  | "idle"
+  | "checking"
+  | "paid"
+  | "pending"
+  | "review"
+  | "error";
 
 const MAX_CONFIRMATION_ATTEMPTS = 8;
 const CONFIRMATION_DELAY_MS = 1800;
@@ -68,9 +74,9 @@ export function TripReturnNotice() {
 
       if (payload?.reviewRequired) {
         setMessage(
-          `${route || "Your ride"} has a payment record that requires staff review. No additional payment should be attempted. ${payload.integrityIssue || "VI Guide is preserving the captured payment while the record is reviewed."}`,
+          `${route || "Your ride"} has a captured or protected payment record that requires staff review. Do not submit another payment. ${payload.integrityIssue || "VI Guide is preserving the payment while the record is reviewed."}`,
         );
-        setState("error");
+        setState("review");
         return true;
       }
 
@@ -150,6 +156,7 @@ export function TripReturnNotice() {
 
   const isError = state === "error";
   const isPaid = state === "paid";
+  const isReview = state === "review";
   const isChecking = state === "checking";
 
   return (
@@ -191,11 +198,13 @@ export function TripReturnNotice() {
           <h2 className="mt-1 text-xl font-black text-[#043331]">
             {isChecking
               ? "Confirming payment and dispatch readiness"
-              : isError
-                ? "Payment needs attention"
-                : isPaid
-                  ? "Your ride is ready for dispatch"
-                  : "Payment confirmation is still processing"}
+              : isReview
+                ? "Payment preserved—staff review required"
+                : isError
+                  ? "Payment needs attention"
+                  : isPaid
+                    ? "Your ride is ready for dispatch"
+                    : "Payment confirmation is still processing"}
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
             {isChecking
@@ -204,7 +213,7 @@ export function TripReturnNotice() {
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {!isPaid && bookingId ? (
+            {!isPaid && !isReview && bookingId ? (
               <Link
                 href={`/checkout/${encodeURIComponent(bookingId)}`}
                 className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
@@ -216,11 +225,11 @@ export function TripReturnNotice() {
                 href="/mobility"
                 className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
               >
-                Book another ride
+                {isReview ? "Return to rides" : "Book another ride"}
               </Link>
             )}
 
-            {!isPaid ? (
+            {!isPaid && !isReview ? (
               <button
                 type="button"
                 onClick={() => void retryNow()}
