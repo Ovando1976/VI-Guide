@@ -32,8 +32,7 @@ function optionalStringList(value: unknown, label: string) {
 }
 
 function requiredStringList(value: unknown, label: string) {
-  const entries = optionalStringList(value, label) ?? [];
-  return entries;
+  return optionalStringList(value, label) ?? [];
 }
 
 function nonNegativeNumber(value: unknown, label: string) {
@@ -209,6 +208,15 @@ export function assertVerifiedActiveTariff(
   normalizeTariffDraft(tariff);
   if (tariff.status !== "active") {
     throw new Error("The selected tariff is not active.");
+  }
+  if (tariff.issuingAuthority !== "Virgin Islands Taxicab Commission") {
+    throw new Error("The active tariff does not identify the required issuing authority.");
+  }
+  if (tariff.currency !== "USD") {
+    throw new Error("The active tariff currency is invalid.");
+  }
+  if (Date.parse(tariff.effectiveAt) > Date.now()) {
+    throw new Error("The active tariff is not effective yet.");
   }
   if (
     tariff.activationStatus !== "verified" ||
