@@ -95,6 +95,9 @@ export type RideBooking = {
   paymentQuoteTariffVersion?: string | null;
   paymentIntegrityStatus?: "verified" | "review_required";
   paymentIntegrityIssue?: string | null;
+  unexpectedCapturedPaymentIntentId?: string | null;
+  unexpectedCapturedAmount?: number | null;
+  unexpectedCapturedAt?: string | { seconds?: number; nanoseconds?: number };
   paymentStateSource?: "webhook" | "reconciliation" | "payment_intent_api";
   paymentEventId?: string | null;
   paymentEventType?: string | null;
