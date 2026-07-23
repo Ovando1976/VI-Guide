@@ -12,7 +12,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import { db } from "@/lib/firebase";
-import type { RideBooking } from "@/types/mobility";
+import type { RideBooking, TimestampLike } from "@/types/mobility";
 
 const ACTIVE: RideBooking["status"][] = [
   "matched",
@@ -255,12 +255,14 @@ function needsAttention(booking: RideBooking, now: number) {
   return false;
 }
 
-function timestampMs(
-  value: string | { seconds?: number; nanoseconds?: number } | undefined,
-) {
+function timestampMs(value: TimestampLike | undefined) {
   if (!value) return null;
   if (typeof value === "string") {
     const parsed = new Date(value).getTime();
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  if ("toDate" in value && typeof value.toDate === "function") {
+    const parsed = value.toDate().getTime();
     return Number.isFinite(parsed) ? parsed : null;
   }
   return typeof value.seconds === "number" ? value.seconds * 1000 : null;
