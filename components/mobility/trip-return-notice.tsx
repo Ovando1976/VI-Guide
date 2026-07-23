@@ -15,14 +15,24 @@ type BookingPayload = {
   booking?: {
     id?: string;
     paymentStatus?: string;
+    paymentIntegrityStatus?: string | null;
+    paymentIntegrityIssue?: string | null;
     status?: string;
     origin?: { estateName?: string };
     destination?: { estateName?: string };
   };
+  reviewRequired?: boolean;
+  integrityIssue?: string | null;
   error?: string;
 };
 
-type NoticeState = "idle" | "checking" | "paid" | "pending" | "error";
+type NoticeState =
+  | "idle"
+  | "checking"
+  | "paid"
+  | "pending"
+  | "review"
+  | "error";
 
 const MAX_CONFIRMATION_ATTEMPTS = 8;
 const CONFIRMATION_DELAY_MS = 1800;
@@ -40,22 +50,40 @@ export function TripReturnNotice() {
   const verifyBooking = useCallback(
     async (signal?: AbortSignal) => {
       const response = await fetch(
-        `/api/bookings/${encodeURIComponent(bookingId)}`,
+        `/api/bookings/${encodeURIComponent(bookingId)}/payment-status`,
         {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           cache: "no-store",
           signal,
         },
       );
-      const payload = (await response.json().catch(() => null)) as BookingPayload | null;
+      const payload = (await response.json().catch(() => null)) as
+        | BookingPayload
+        | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to verify this ride.");
       }
 
       const booking = payload?.booking;
-      const route = [booking?.origin?.estateName, booking?.destination?.estateName]
+      const route = [
+        booking?.origin?.estateName,
+        booking?.destination?.estateName,
+      ]
         .filter(Boolean)
         .join(" → ");
       const paymentStatus = booking?.paymentStatus ?? "unpaid";
+      const reviewRequired =
+        payload?.reviewRequired === true ||
+        booking?.paymentIntegrityStatus === "review_required";
+
+      if (reviewRequired) {
+        setMessage(
+          `${route || "Your ride"} has a protected payment record that requires staff review. Do not submit another payment. ${payload?.integrityIssue || booking?.paymentIntegrityIssue || "VI Guide is preserving the payment while the record is reviewed."}`,
+        );
+        setState("review");
+        return true;
+      }
 
       if (paymentStatus === "paid") {
         setMessage(`${route || "Your ride"} is paid and ready for dispatch.`);
@@ -63,16 +91,20 @@ export function TripReturnNotice() {
         return true;
       }
 
-      if (paymentStatus === "failed" || paymentStatus === "canceled") {
+      if (
+        paymentStatus === "failed" ||
+        paymentStatus === "canceled" ||
+        paymentStatus === "requires_payment_method"
+      ) {
         setMessage(
-          `${route || "Your ride"} is saved, but payment was not completed. You can safely try again.`,
+          `${route || "Your ride"} is saved, but payment was not completed. You can safely return to secure payment.`,
         );
         setState("error");
         return true;
       }
 
       setMessage(
-        `${route || "Your ride"} is recorded. We are waiting for secure payment confirmation.`,
+        `${route || "Your ride"} is recorded. Stripe is still processing the secure payment confirmation.`,
       );
       setState("pending");
       return false;
@@ -133,12 +165,13 @@ export function TripReturnNotice() {
 
   const isError = state === "error";
   const isPaid = state === "paid";
+  const isReview = state === "review";
   const isChecking = state === "checking";
 
   return (
     <section
       className={`mb-6 rounded-[28px] border p-5 shadow-sm sm:p-6 ${
-        isError
+        isError || isReview
           ? "border-rose-200 bg-rose-50"
           : isPaid
             ? "border-emerald-200 bg-emerald-50"
@@ -149,7 +182,7 @@ export function TripReturnNotice() {
       <div className="flex items-start gap-4">
         <span
           className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${
-            isError
+            isError || isReview
               ? "bg-rose-100 text-rose-700"
               : isPaid
                 ? "bg-emerald-100 text-emerald-700"
@@ -158,7 +191,7 @@ export function TripReturnNotice() {
         >
           {isChecking ? (
             <Loader2 className="h-5 w-5 animate-spin" />
-          ) : isError ? (
+          ) : isError || isReview ? (
             <AlertCircle className="h-5 w-5" />
           ) : isPaid ? (
             <CheckCircle2 className="h-5 w-5" />
@@ -173,44 +206,55 @@ export function TripReturnNotice() {
           </div>
           <h2 className="mt-1 text-xl font-black text-[#043331]">
             {isChecking
-              ? "Confirming payment and dispatch readiness"
-              : isError
-                ? "Payment needs attention"
-                : isPaid
-                  ? "Your ride is ready for dispatch"
-                  : "Payment confirmation is still processing"}
+              ? "Reconciling payment with Stripe"
+              : isReview
+                ? "Payment preserved—staff review required"
+                : isError
+                  ? "Payment needs attention"
+                  : isPaid
+                    ? "Your ride is ready for dispatch"
+                    : "Payment confirmation is still processing"}
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
             {isChecking
-              ? `VI Guide is checking the booking before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
+              ? `VI Guide is checking Stripe and the booking record before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
               : message}
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {!isPaid && bookingId ? (
+            {isError && bookingId ? (
               <Link
                 href={`/checkout/${encodeURIComponent(bookingId)}`}
                 className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
               >
                 Return to secure payment
               </Link>
-            ) : (
+            ) : isPaid ? (
               <Link
                 href="/mobility"
                 className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
               >
                 Book another ride
               </Link>
-            )}
+            ) : isReview ? (
+              <Link
+                href="/trips"
+                className="rounded-full bg-[#043331] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-white"
+              >
+                Return to trip center
+              </Link>
+            ) : null}
 
-            {!isPaid ? (
+            {!isPaid && !isError && !isReview ? (
               <button
                 type="button"
                 onClick={() => void retryNow()}
                 disabled={isChecking}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-[9px] font-black uppercase tracking-[.14em] text-slate-700 disabled:opacity-60"
               >
-                <RefreshCw className={`h-3.5 w-3.5 ${isChecking ? "animate-spin" : ""}`} />
+                <RefreshCw
+                  className={`h-3.5 w-3.5 ${isChecking ? "animate-spin" : ""}`}
+                />
                 Check again
               </button>
             ) : null}

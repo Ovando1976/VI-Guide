@@ -11,6 +11,20 @@ function hasCurrentExpiration(value?: string | null) {
   return Number.isFinite(expiresAt) && expiresAt > Date.now();
 }
 
+function hasVerifiedCapturedPayment(booking: RideBooking) {
+  const expectedAmount = Math.round(Number(booking.quotedFare?.total ?? 0) * 100);
+  return (
+    booking.paymentStatus === "paid" &&
+    booking.paymentIntegrityStatus === "verified" &&
+    typeof booking.paymentIntentId === "string" &&
+    booking.paymentIntentId.length > 0 &&
+    Number.isSafeInteger(expectedAmount) &&
+    expectedAmount >= 50 &&
+    booking.amountAuthorized === expectedAmount &&
+    booking.amountCaptured === expectedAmount
+  );
+}
+
 export function assertDispatchEligible(params: {
   booking: RideBooking;
   driverSnapshot: DocumentSnapshot<DocumentData>;
@@ -18,6 +32,11 @@ export function assertDispatchEligible(params: {
   associationSnapshot: DocumentSnapshot<DocumentData>;
   allowedAvailability?: DriverProfile["availability"][];
 }) {
+  if (!hasVerifiedCapturedPayment(params.booking)) {
+    throw new Error(
+      "Payment must clear with a verified Stripe record before dispatch can proceed.",
+    );
+  }
   if (!params.driverSnapshot.exists) throw new Error("Driver record not found.");
   if (!params.vehicleSnapshot.exists) throw new Error("Assigned fleet vehicle not found.");
   if (!params.associationSnapshot.exists) throw new Error("Taxi association record not found.");

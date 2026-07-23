@@ -14,10 +14,12 @@ const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
 type CheckoutBooking = {
   id: string;
   paymentStatus?: string;
+  paymentIntegrityStatus?: string;
+  amountCaptured?: number | null;
   status?: string;
   island?: string;
-  originEstateName?: string;
-  destinationEstateName?: string;
+  origin?: { estateName?: string };
+  destination?: { estateName?: string };
   quotedFare?: { total?: number };
 };
 
@@ -58,8 +60,14 @@ export default function CheckoutBookingPage() {
         const loadedBooking = bookingJson.booking as CheckoutBooking;
         setBooking(loadedBooking);
 
-        if (loadedBooking.paymentStatus === "paid") {
-          router.replace(`/trips?booking=${encodeURIComponent(bookingId)}&payment=paid`);
+        if (
+          loadedBooking.paymentStatus === "paid" ||
+          loadedBooking.paymentIntegrityStatus === "review_required" ||
+          Number(loadedBooking.amountCaptured ?? 0) > 0
+        ) {
+          router.replace(
+            `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
+          );
           return;
         }
 
@@ -73,8 +81,25 @@ export default function CheckoutBookingPage() {
         );
         const intentJson = await intentRes.json().catch(() => null);
 
-        if (!intentRes.ok || typeof intentJson?.clientSecret !== "string") {
-          throw new Error(intentJson?.error || "Failed to initialize secure payment.");
+        if (
+          intentJson?.alreadyPaid === true ||
+          intentJson?.reviewRequired === true ||
+          intentJson?.paymentPending === true
+        ) {
+          router.replace(
+            `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
+          );
+          return;
+        }
+
+        if (!intentRes.ok) {
+          throw new Error(
+            intentJson?.error || "Failed to initialize secure payment.",
+          );
+        }
+
+        if (typeof intentJson?.clientSecret !== "string") {
+          throw new Error("Failed to initialize secure payment.");
         }
 
         setClientSecret(intentJson.clientSecret);
@@ -115,7 +140,9 @@ export default function CheckoutBookingPage() {
       <main className="min-h-screen bg-[#f8f4ea] px-4 py-10 text-[#043331]">
         <div className="mx-auto max-w-2xl rounded-[28px] border border-rose-200 bg-white p-7 shadow-sm">
           <h1 className="text-2xl font-black">Ride checkout unavailable</h1>
-          <p className="mt-3 text-sm font-semibold text-rose-700">{errorMessage}</p>
+          <p className="mt-3 text-sm font-semibold text-rose-700">
+            {errorMessage}
+          </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button
               type="button"
@@ -162,7 +189,8 @@ export default function CheckoutBookingPage() {
             Complete your ride payment
           </h1>
           <p className="mt-3 text-sm font-semibold leading-6 text-white/68">
-            Pay the quoted regulated fare, then continue directly into dispatch and trip tracking.
+            Pay the quoted regulated fare, then continue directly into dispatch
+            and trip tracking.
           </p>
           {booking ? (
             <div className="mt-5 grid gap-3 rounded-[22px] border border-white/10 bg-white/[.07] p-4 sm:grid-cols-[1fr_auto] sm:items-center">
@@ -171,7 +199,8 @@ export default function CheckoutBookingPage() {
                   Booking {bookingId.slice(0, 8)}
                 </div>
                 <div className="mt-1 text-sm font-black">
-                  {booking.originEstateName || "Pickup"} → {booking.destinationEstateName || "Destination"}
+                  {booking.origin?.estateName || "Pickup"} →{" "}
+                  {booking.destination?.estateName || "Destination"}
                 </div>
               </div>
               <div className="text-2xl font-black text-[#f7d778]">
