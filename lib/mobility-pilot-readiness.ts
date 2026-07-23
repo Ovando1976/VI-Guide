@@ -27,7 +27,21 @@ export class MobilityPilotUnavailableError extends Error {
   }
 }
 
-type FleetVehicle = VehicleRecord & { islands?: IslandCode[] };
+type ReviewedAssociation = TaxiAssociation & {
+  reviewedBy?: string;
+  reviewReference?: string;
+};
+
+type ReviewedDriver = DriverProfile & {
+  reviewedBy?: string;
+  reviewReference?: string;
+};
+
+type FleetVehicle = VehicleRecord & {
+  islands?: IslandCode[];
+  reviewedBy?: string;
+  reviewReference?: string;
+};
 
 function hasCurrentExpiration(value?: string | null) {
   if (!value) return false;
@@ -37,6 +51,16 @@ function hasCurrentExpiration(value?: string | null) {
 
 function includesIsland(values: unknown, island: IslandCode) {
   return Array.isArray(values) && values.includes(island);
+}
+
+function isPositiveInteger(value: unknown) {
+  const number = Number(value);
+  return Number.isInteger(number) && number > 0;
+}
+
+function isNonNegativeInteger(value: unknown) {
+  const number = Number(value);
+  return Number.isInteger(number) && number >= 0;
 }
 
 function serializeDate(value: unknown): string | undefined {
@@ -121,12 +145,15 @@ export async function buildMobilityPilotGateReport(
   const associations = associationSnapshot.docs
     .map(
       (document) =>
-        ({ id: document.id, ...document.data() }) as TaxiAssociation,
+        ({ id: document.id, ...document.data() }) as ReviewedAssociation,
     )
     .filter(
       (association) =>
         association.status === "active" &&
-        includesIsland(association.islands, island),
+        includesIsland(association.islands, island) &&
+        Boolean(association.commissionRegistrationId) &&
+        Boolean(association.reviewedBy) &&
+        Boolean(association.reviewReference),
     );
   const associationIds = new Set(associations.map((item) => item.id));
   const association: MobilityPilotGateReport["association"] = associations.length
@@ -134,7 +161,8 @@ export async function buildMobilityPilotGateReport(
     : {
         ready: false,
         associationIds: [],
-        issue: "No active reviewed taxi association covers this island.",
+        issue:
+          "No active source-reviewed taxi association with a Commission registration covers this island.",
       };
 
   const vehicles = new Map<string, FleetVehicle>();
@@ -150,8 +178,9 @@ export async function buildMobilityPilotGateReport(
     const driver = {
       id: document.id,
       ...document.data(),
-    } as DriverProfile;
+    } as ReviewedDriver;
     if (!driver.verified || driver.authorizationStatus !== "active") continue;
+    if (!driver.reviewedBy || !driver.reviewReference) continue;
     if (!includesIsland(driver.islands, island)) continue;
     if (!driver.associationId || !associationIds.has(driver.associationId)) continue;
     if (!driver.vehicleId) continue;
@@ -166,6 +195,7 @@ export async function buildMobilityPilotGateReport(
 
     const vehicle = vehicles.get(driver.vehicleId);
     if (!vehicle || !vehicle.active) continue;
+    if (!vehicle.reviewedBy || !vehicle.reviewReference) continue;
     if (
       vehicle.driverId !== driver.id ||
       vehicle.associationId !== driver.associationId
@@ -180,8 +210,8 @@ export async function buildMobilityPilotGateReport(
       !hasCurrentExpiration(vehicle.insuranceExpiresAt) ||
       !vehicle.taxiPlate ||
       !vehicle.medallionNumber ||
-      vehicle.capacity < 1 ||
-      vehicle.luggageCapacity < 0
+      !isPositiveInteger(vehicle.capacity) ||
+      !isNonNegativeInteger(vehicle.luggageCapacity)
     ) {
       continue;
     }
@@ -199,7 +229,7 @@ export async function buildMobilityPilotGateReport(
         ready: false,
         eligiblePairs: [],
         issue:
-          "No driver and vehicle pair currently satisfies Commission, license, association, inspection, insurance, and island requirements.",
+          "No source-reviewed driver and vehicle pair currently satisfies Commission, license, association, inspection, insurance, capacity, and island requirements.",
       };
 
   return {
