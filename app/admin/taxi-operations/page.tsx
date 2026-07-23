@@ -18,6 +18,12 @@ export default function TaxiOperationsPage() {
         >
           Pilot readiness
         </Link>
+        <Link
+          href="/admin/payment-operations"
+          className="rounded-full border border-[#043331]/15 bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#043331] shadow-sm"
+        >
+          Payment operations
+        </Link>
       </div>
       <TaxiOperationsBoard />
     </>
