@@ -86,11 +86,15 @@ function currentStageTimestamp(booking: RideBooking) {
 }
 
 function timestampMs(
-  value: string | { seconds?: number; nanoseconds?: number } | undefined,
+  value: string | { seconds?: number; nanoseconds?: number } | { toDate?: () => Date } | undefined,
 ) {
   if (!value) return null;
   if (typeof value === "string") {
     const parsed = new Date(value).getTime();
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+  if ("toDate" in value && typeof value.toDate === "function") {
+    const parsed = value.toDate().getTime();
     return Number.isFinite(parsed) ? parsed : null;
   }
   return typeof value.seconds === "number" ? value.seconds * 1000 : null;
