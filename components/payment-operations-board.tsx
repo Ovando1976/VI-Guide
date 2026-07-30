@@ -93,8 +93,11 @@ export function PaymentOperationsBoard() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load payment operations.");
       }
-      setRecords(Array.isArray(payload?.bookings) ? payload.bookings : []);
-      setCounts(payload?.counts ?? EMPTY_COUNTS);
+      if (!payload) {
+        throw new Error("Unable to load payment operations.");
+      }
+      setRecords(Array.isArray(payload.bookings) ? payload.bookings : []);
+      setCounts(payload.counts ?? EMPTY_COUNTS);
     } catch (error) {
       setErrorMessage(
         error instanceof Error
