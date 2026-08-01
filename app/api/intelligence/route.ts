@@ -93,7 +93,13 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
 
 export async function POST(request: NextRequest) {
   try {
-    const payload = (await request.json()) as Partial<IntelligenceRequest>;
+    const payload = (await request.json().catch(() => null)) as Partial<IntelligenceRequest> | null;
+    if (!payload) {
+      return NextResponse.json(
+        { error: "The intelligence request body is invalid." },
+        { status: 400 },
+      );
+    }
     const message = typeof payload.message === "string" ? payload.message.trim() : "";
     const context = normalizeContext(payload.context);
 

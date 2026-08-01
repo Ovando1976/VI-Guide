@@ -7,7 +7,7 @@ type RouteRequestBody = {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as RouteRequestBody;
+    const body = (await request.json().catch(() => null)) as RouteRequestBody | null;
 
     if (
       !body?.from ||

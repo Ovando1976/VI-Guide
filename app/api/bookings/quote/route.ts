@@ -24,8 +24,8 @@ const ESTATES_URL =
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as RideBookingDraft;
-    if (!body.originEstateGeoid || !body.destinationEstateGeoid) {
+    const body = (await request.json().catch(() => null)) as Partial<RideBookingDraft> | null;
+    if (!body?.originEstateGeoid || !body.destinationEstateGeoid) {
       return NextResponse.json(
         { error: "Origin and destination are required." },
         { status: 400 },
