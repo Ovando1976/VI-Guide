@@ -4,7 +4,7 @@ import { Clock3, TimerReset } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { subscribeToRiderBookings } from "@/lib/firestore-trips";
-import type { RideBooking } from "@/types/mobility";
+import type { RideBooking, TimestampLike } from "@/types/mobility";
 
 const ACTIVE: RideBooking["status"][] = [
   "requested",
@@ -85,9 +85,7 @@ function currentStageTimestamp(booking: RideBooking) {
   }
 }
 
-function timestampMs(
-  value: string | { seconds?: number; nanoseconds?: number } | { toDate?: () => Date } | undefined,
-) {
+function timestampMs(value: TimestampLike | undefined) {
   if (!value) return null;
   if (typeof value === "string") {
     const parsed = new Date(value).getTime();
@@ -97,7 +95,10 @@ function timestampMs(
     const parsed = value.toDate().getTime();
     return Number.isFinite(parsed) ? parsed : null;
   }
-  return typeof value.seconds === "number" ? value.seconds * 1000 : null;
+  if ("seconds" in value && typeof value.seconds === "number") {
+    return value.seconds * 1000;
+  }
+  return null;
 }
 
 function stageLabel(status: RideBooking["status"]) {

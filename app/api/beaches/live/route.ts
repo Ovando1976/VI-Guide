@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import beachCatalog from "@/data/travel-knowledge/beaches.json";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -56,6 +58,22 @@ type GooglePlace = {
   accessibilityOptions?: Record<string, boolean>;
 };
 
+type CatalogBeach = {
+  id?: string;
+  slug?: string;
+  name: string;
+  island: IslandCode;
+  category?: string;
+  description?: string;
+  heroImage?: string;
+  image?: string;
+  tags?: string[];
+  amenities?: string[];
+  bestFor?: string[];
+  lat?: number;
+  lng?: number;
+};
+
 type BeachRecord = {
   id: string;
   slug: string;
@@ -82,8 +100,10 @@ type BeachRecord = {
   tags: string[];
   verificationStatus: "verified-beach";
   verifiedAt: string;
-  source: "google-places-live";
+  source: "google-places-live" | "vi-guide-curated-fallback";
 };
+
+const curatedBeaches = beachCatalog as CatalogBeach[];
 
 const QUERIES = ["public beach", "beach park", "swimming beach", "snorkeling beach", "sandy beach"];
 
@@ -107,7 +127,6 @@ const FIELD_MASK = [
 
 export async function GET(request: NextRequest) {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) return NextResponse.json({ error: "Google Places is not configured." }, { status: 503 });
 
   const requestedIsland = request.nextUrl.searchParams.get("island")?.toLowerCase();
   if (!requestedIsland || !(requestedIsland in ISLANDS)) {
@@ -115,6 +134,8 @@ export async function GET(request: NextRequest) {
   }
 
   const island = requestedIsland as IslandCode;
+  if (!apiKey) return curatedBeachResponse(island);
+
   const config = ISLANDS[island];
   const candidates: BeachRecord[] = [];
   const failures: string[] = [];
@@ -326,4 +347,69 @@ function inferTags(place: GooglePlace) {
 
 function slugify(value: string) {
   return value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+function curatedBeachResponse(island: IslandCode) {
+  const verifiedAt = new Date().toISOString();
+  const places = curatedBeaches
+    .filter((beach) => beach.island === island)
+    .map((beach) => {
+      const image = usableLocalImage(beach.heroImage ?? beach.image) ?? idealIslandImage(island);
+      return {
+        id: beach.id ?? beach.slug ?? slugify(beach.name),
+        slug: beach.slug ?? beach.id ?? slugify(beach.name),
+        name: beach.name,
+        title: beach.name,
+        island,
+        lat: beach.lat ?? islandFallbackPoint(island).lat,
+        lng: beach.lng ?? islandFallbackPoint(island).lng,
+        category: "beach" as const,
+        type: "beach" as const,
+        description:
+          beach.description ??
+          `${beach.name} is a curated beach destination in the U.S. Virgin Islands.`,
+        googlePlaceId: beach.id ?? beach.slug ?? slugify(beach.name),
+        image,
+        heroImage: image,
+        images: [image],
+        hours: [],
+        accessibility: {},
+        amenities: beach.amenities ?? beach.bestFor ?? [],
+        tags: beach.tags ?? ["beach"],
+        verificationStatus: "verified-beach" as const,
+        verifiedAt,
+        source: "vi-guide-curated-fallback" as const,
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  return NextResponse.json(
+    {
+      island,
+      count: places.length,
+      places,
+      partial: false,
+      liveData: false,
+      fallbackReason: "Google Places is not configured; serving curated VI Guide beach catalog.",
+      generatedAt: verifiedAt,
+    },
+    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },
+  );
+}
+
+function usableLocalImage(value?: string) {
+  if (!value || value.endsWith(".svg")) return undefined;
+  return value;
+}
+
+function idealIslandImage(island: IslandCode) {
+  if (island === "stj") return "/images/places/st-john/trunk-bay-beach-1.jpg";
+  if (island === "stt") return "/images/places/st-thomas/magens-bay-beach-1.jpg";
+  return "/images/places/st-croix/cane-bay-beach-1.jpg";
+}
+
+function islandFallbackPoint(island: IslandCode) {
+  if (island === "stj") return { lat: 18.34, lng: -64.75 };
+  if (island === "stx") return { lat: 17.746, lng: -64.747 };
+  return { lat: 18.336, lng: -64.93 };
 }

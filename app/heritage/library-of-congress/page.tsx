@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   ChevronLeft,
@@ -92,7 +92,7 @@ export default function LibraryOfCongressGalleryPage() {
           }
 
           if (!active) return;
-          if (!metadata) setMetadata(payload);
+          setMetadata((currentMetadata) => currentMetadata ?? payload);
 
           for (const item of payload.items) collected.set(item.id, item);
           setItems(Array.from(collected.values()));
@@ -153,17 +153,17 @@ export default function LibraryOfCongressGalleryPage() {
     ? visibleItems.findIndex((item) => item.id === selectedItem.id)
     : -1;
 
-  function showPrevious() {
+  const showPrevious = useCallback(() => {
     if (selectedIndex < 0 || !visibleItems.length) return;
     const nextIndex = (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
     setSelectedItem(visibleItems[nextIndex]);
-  }
+  }, [selectedIndex, visibleItems]);
 
-  function showNext() {
+  const showNext = useCallback(() => {
     if (selectedIndex < 0 || !visibleItems.length) return;
     const nextIndex = (selectedIndex + 1) % visibleItems.length;
     setSelectedItem(visibleItems[nextIndex]);
-  }
+  }, [selectedIndex, visibleItems]);
 
   useEffect(() => {
     if (!selectedItem) return;
@@ -182,7 +182,7 @@ export default function LibraryOfCongressGalleryPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedItem, selectedIndex, visibleItems]);
+  }, [selectedItem, showNext, showPrevious]);
 
   return (
     <main className="min-h-screen bg-[#f5efe2] pb-36 text-[#092f2d]">
