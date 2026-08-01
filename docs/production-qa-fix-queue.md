@@ -13,7 +13,6 @@ Current local evidence shows the production build is green and free of ESLint wa
 | Runtime smoke test | `PORT=3100 npm run start` + route curls | Pass | Built app served locally on port 3100. |
 | Tourism API fallback | Google-keyless `/api/beaches/live`, `/api/beaches/detail`, `/api/restaurants/live` curls | Pass | Curated catalog fallbacks return 200 when Google Places is not configured. |
 | Auth malformed input | `POST /api/auth/session` with no body | Pass | Returns controlled 400 instead of a runtime exception. |
-| Public POST malformed input | Empty-body POST curls for Concierge, Heritage Concierge, Route, Booking Quote, and Intelligence APIs | Pass | Core public feature APIs return controlled 400s instead of JSON parse exceptions. |
 
 ## Runtime smoke-test baseline
 
@@ -36,11 +35,6 @@ These routes were checked against the locally served production build on port 31
 | Beach detail fallback | `/api/beaches/detail?id=abi-beach&v=3` | 200 | Falls back to curated beach detail without Google Places credentials. |
 | Live restaurants fallback | `/api/restaurants/live?island=stt` | 200 | Falls back to curated restaurant catalog without Google Places credentials. |
 | Auth malformed request | `POST /api/auth/session` with empty body | 400 | Invalid input is handled without server exception. |
-| Concierge malformed request | `POST /api/concierge/chat` with empty body | 400 | Invalid input is handled without server exception. |
-| Heritage concierge malformed request | `POST /api/concierge/heritage` with empty body | 400 | Invalid input is handled without server exception. |
-| Route malformed request | `POST /api/route` with empty body | 400 | Invalid coordinates are handled without server exception. |
-| Booking quote malformed request | `POST /api/bookings/quote` with empty body | 400 | Missing route endpoints are handled without server exception. |
-| Intelligence malformed request | `POST /api/intelligence` with empty body | 400 | Invalid input is handled without server exception. |
 
 ## Priority fix queue
 
