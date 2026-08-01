@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import placesCatalog from "@/data/travel-knowledge/places.json";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -26,6 +28,21 @@ const ISLANDS = {
 
 type IslandCode = keyof typeof ISLANDS;
 type DiscoveryKind = "restaurant" | "beach";
+
+type CatalogPlace = {
+  id?: string;
+  slug?: string;
+  name: string;
+  island: IslandCode;
+  category?: string;
+  description?: string;
+  heroImage?: string;
+  tags?: string[];
+  lat?: number;
+  lng?: number;
+  phone?: string;
+  website?: string;
+};
 
 type GooglePlace = {
   id?: string;
@@ -63,6 +80,8 @@ const BEACH_QUERIES = [
   "bay beach",
 ];
 
+const curatedPlaces = placesCatalog as CatalogPlace[];
+
 const FIELD_MASK = [
   "places.id",
   "places.displayName",
@@ -79,7 +98,6 @@ const FIELD_MASK = [
 
 export async function GET(request: NextRequest) {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) return NextResponse.json({ error: "Google Places is not configured." }, { status: 503 });
 
   const requestedIsland = request.nextUrl.searchParams.get("island")?.toLowerCase();
   if (!requestedIsland || !(requestedIsland in ISLANDS)) {
@@ -87,6 +105,8 @@ export async function GET(request: NextRequest) {
   }
 
   const island = requestedIsland as IslandCode;
+  if (!apiKey) return curatedRestaurantResponse(island);
+
   const records = new Map<string, Record<string, unknown>>();
   const failures: string[] = [];
   let restaurantCount = 0;
@@ -241,4 +261,58 @@ function buildBeachDescription(place: GooglePlace) {
 
 function capitalize(value: string) {
   return value.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function curatedRestaurantResponse(island: IslandCode) {
+  const generatedAt = new Date().toISOString();
+  const places = curatedPlaces
+    .filter((place) => place.island === island && isFoodPlace(place))
+    .map((place) => ({
+      id: place.id ?? place.slug ?? slugify(place.name),
+      name: place.name,
+      title: place.name,
+      island,
+      lat: place.lat ?? islandFallbackPoint(island).lat,
+      lng: place.lng ?? islandFallbackPoint(island).lng,
+      category: "food",
+      type: "place",
+      description:
+        place.description ??
+        `${place.name} is a curated dining listing in the U.S. Virgin Islands.`,
+      phone: place.phone,
+      website: place.website,
+      googlePlaceId: place.id ?? place.slug ?? slugify(place.name),
+      source: "vi-guide-curated-fallback",
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  return NextResponse.json(
+    {
+      island,
+      count: places.length,
+      restaurantCount: places.length,
+      beachCount: 0,
+      places,
+      partial: false,
+      liveData: false,
+      fallbackReason: "Google Places is not configured; serving curated VI Guide restaurant catalog.",
+      generatedAt,
+    },
+    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },
+  );
+}
+
+function isFoodPlace(place: CatalogPlace) {
+  const text = `${place.category ?? ""} ${place.name} ${(place.tags ?? []).join(" ")}`.toLowerCase();
+  return /food|restaurant|cafe|bar|grill|bakery|pizza|seafood|dining/.test(text);
+}
+
+function slugify(value: string) {
+  return value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
+function islandFallbackPoint(island: IslandCode) {
+  if (island === "stj") return { lat: 18.34, lng: -64.75 };
+  if (island === "stx") return { lat: 17.746, lng: -64.747 };
+  return { lat: 18.336, lng: -64.93 };
 }

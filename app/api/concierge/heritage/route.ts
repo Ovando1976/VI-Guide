@@ -100,7 +100,14 @@ export async function POST(request: NextRequest) {
   const runId = crypto.randomUUID();
 
   try {
-    const body = (await request.json()) as Partial<ConciergeChatRequest>;
+    const body = (await request.json().catch(() => null)) as Partial<ConciergeChatRequest> | null;
+
+    if (!body) {
+      return NextResponse.json(
+        { error: "The heritage request body is invalid." },
+        { status: 400 },
+      );
+    }
 
     if (
       !validIdentifier(body.sessionId) ||

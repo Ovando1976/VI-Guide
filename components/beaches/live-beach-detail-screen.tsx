@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
@@ -101,7 +102,15 @@ export function LiveBeachDetailScreen({ placeId }: { placeId: string }) {
   return (
     <main className="min-h-screen bg-[#fbfaf6] pb-24">
       <section className="relative min-h-[58vh] overflow-hidden bg-[#0f766e]">
-        <img src={images[0]} alt={`${beach.name} in ${islandLabel(beach.island)}`} className="absolute inset-0 h-full w-full object-cover" />
+        <Image
+          src={images[0]}
+          alt={`${beach.name} in ${islandLabel(beach.island)}`}
+          fill
+          priority
+          unoptimized
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#062f2d]/90 via-[#062f2d]/25 to-transparent" />
         <div className="relative mx-auto flex min-h-[58vh] max-w-7xl flex-col justify-end px-6 pb-10 pt-24 md:px-10">
           <div className="text-xs font-black uppercase tracking-[.24em] text-[#f4c75f]">Verified USVI beach</div>
@@ -120,7 +129,22 @@ export function LiveBeachDetailScreen({ placeId }: { placeId: string }) {
             <p className="mt-4 text-lg leading-8 text-[#425a57]">{beach.description ?? "Beach and shoreline destination in the U.S. Virgin Islands."}</p>
           </article>
 
-          {images.length > 1 ? <div className="grid grid-cols-2 gap-3 md:grid-cols-3">{images.slice(1, 7).map((image, index) => <img key={`${image}-${index}`} src={image} alt={`${beach.name} view ${index + 2}`} className="aspect-[4/3] w-full rounded-2xl object-cover" />)}</div> : null}
+          {images.length > 1 ? (
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+              {images.slice(1, 7).map((image, index) => (
+                <div key={`${image}-${index}`} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                  <Image
+                    src={image}
+                    alt={`${beach.name} view ${index + 2}`}
+                    fill
+                    unoptimized
+                    sizes="(min-width: 768px) 33vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
 
           {beach.hours?.length ? <article className="rounded-[28px] border border-[#dce8e5] bg-white p-6"><h2 className="text-xl font-black text-[#12312f]">Access hours</h2><div className="mt-4 grid gap-2 text-sm text-[#526966]">{beach.hours.map((line) => <div key={line}>{line}</div>)}</div></article> : null}
         </div>

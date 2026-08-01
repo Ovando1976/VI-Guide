@@ -60,11 +60,10 @@ const catalog = beachCatalog as CatalogBeach[];
 
 export async function GET(request: NextRequest) {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json({ error: "Google Places is not configured." }, { status: 503 });
-  }
 
   const id = request.nextUrl.searchParams.get("id")?.trim();
+  if (!apiKey) return curatedBeachDetailResponse(id);
+
   if (!id || !/^[A-Za-z0-9_-]{10,}$/.test(id)) {
     return NextResponse.json({ error: "A valid Google Place ID is required." }, { status: 400 });
   }
@@ -219,4 +218,50 @@ function inferIsland(address: string | undefined, lat: number, lng: number): Isl
   if (lat < 18) return "stx";
   if (lng > -64.8) return "stj";
   return "stt";
+}
+
+function curatedBeachDetailResponse(id: string | undefined) {
+  if (!id || !/^[A-Za-z0-9_-]{2,}$/.test(id)) {
+    return NextResponse.json({ error: "A valid beach ID is required." }, { status: 400 });
+  }
+
+  const curated = catalog.find((beach) => beach.id === id || beach.slug === id);
+  if (!curated) {
+    return NextResponse.json({ error: "Beach details were not found in the curated catalog." }, { status: 404 });
+  }
+
+  const island = curated.island;
+  const image = usableLocalImage(curated.heroImage ?? curated.image) ?? idealIslandImage(island);
+
+  return NextResponse.json(
+    {
+      id: curated.id ?? curated.slug ?? id,
+      googlePlaceId: curated.id ?? curated.slug ?? id,
+      name: curated.name,
+      island,
+      lat: islandFallbackPoint(island).lat,
+      lng: islandFallbackPoint(island).lng,
+      category: "beach",
+      type: "beach",
+      description:
+        curated.description ??
+        `${curated.name} is a curated beach destination in the U.S. Virgin Islands.`,
+      image,
+      heroImage: image,
+      images: [image],
+      hours: [],
+      accessibility: {},
+      source: "vi-guide-curated-fallback",
+      liveData: false,
+      fallbackReason: "Google Places is not configured; serving curated VI Guide beach details.",
+      verifiedAt: new Date().toISOString(),
+    },
+    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },
+  );
+}
+
+function islandFallbackPoint(island: IslandCode) {
+  if (island === "stj") return { lat: 18.34, lng: -64.75 };
+  if (island === "stx") return { lat: 17.746, lng: -64.747 };
+  return { lat: 18.336, lng: -64.93 };
 }
