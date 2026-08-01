@@ -1,6 +1,6 @@
 # Operation: Green Build — Production QA Fix Queue
 
-_Last updated: 2026-07-30_
+_Last updated: 2026-08-01_
 
 ## Phase 1: Production stabilization baseline
 
@@ -11,6 +11,8 @@ Current local evidence shows the production build is green and free of ESLint wa
 | TypeScript + production build | `npm run release:check` | Pass | Runs `tsc --noEmit` followed by `next build`. |
 | Lint | `npm run lint` | Pass | `next lint` reports no ESLint warnings or errors. |
 | Runtime smoke test | `PORT=3100 npm run start` + route curls | Pass | Built app served locally on port 3100. |
+| Tourism API fallback | Google-keyless `/api/beaches/live`, `/api/beaches/detail`, `/api/restaurants/live` curls | Pass | Curated catalog fallbacks return 200 when Google Places is not configured. |
+| Auth malformed input | `POST /api/auth/session` with no body | Pass | Returns controlled 400 instead of a runtime exception. |
 
 ## Runtime smoke-test baseline
 
@@ -29,6 +31,10 @@ These routes were checked against the locally served production build on port 31
 | Authentication | `/login` | 200 | Login surface renders. |
 | Health API | `/api/health` | 200 | Health endpoint responds. |
 | Search API | `/api/search` | 200 | Public search endpoint responds. |
+| Live beaches fallback | `/api/beaches/live?island=stt&catalogVersion=3` | 200 | Falls back to curated beach catalog without Google Places credentials. |
+| Beach detail fallback | `/api/beaches/detail?id=abi-beach&v=3` | 200 | Falls back to curated beach detail without Google Places credentials. |
+| Live restaurants fallback | `/api/restaurants/live?island=stt` | 200 | Falls back to curated restaurant catalog without Google Places credentials. |
+| Auth malformed request | `POST /api/auth/session` with empty body | 400 | Invalid input is handled without server exception. |
 
 ## Priority fix queue
 
@@ -36,6 +42,7 @@ These routes were checked against the locally served production build on port 31
 
 - Monitor the next Vercel deployment and treat any Vercel-only TypeScript, build, environment, or route runtime issue as a release blocker.
 - Keep `npm run release:check` and `npm run lint` as required gates before merging production changes.
+- Keep curated fallbacks active for Google Places-backed tourism APIs so missing credentials do not break first-time browsing.
 - Add targeted smoke coverage for protected admin and trip flows once test credentials or a seeded auth fixture are available.
 
 ### P1 — Customer experience QA

@@ -2,10 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAdminAuth } from "@/lib/firebase-admin";
 import { SESSION_COOKIE } from "@/lib/auth-server";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const FIVE_DAYS = 60 * 60 * 24 * 5 * 1000;
 
 export async function POST(request: NextRequest) {
-  const { idToken } = (await request.json()) as { idToken?: string };
+  const body = (await request.json().catch(() => null)) as { idToken?: unknown } | null;
+  const idToken = typeof body?.idToken === "string" ? body.idToken.trim() : "";
   if (!idToken) return NextResponse.json({ error: "ID token required." }, { status: 400 });
   try {
     const decoded = await getAdminAuth().verifyIdToken(idToken);
