@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AlertTriangle, Car, Loader2, Map, Navigation, Route } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
-import type { JourneyPlan } from "@/lib/journey-planner";
+import { buildJourneyMapHref, type JourneyPlan } from "@/lib/journey-planner";
 
 type RouteLeg = {
   fromId: string;
@@ -163,7 +163,7 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
                     <Link href={leg.rideHref} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]">
                       <Navigation className="h-3.5 w-3.5" /> Plan this ride
                     </Link>
-                    <Link href={`/map?island=${plan.island}&trip=${plan.id}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[9px] font-black uppercase tracking-[.14em]">
+                    <Link href={buildJourneyMapHref(plan)} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[9px] font-black uppercase tracking-[.14em]">
                       <Route className="h-3.5 w-3.5" /> Open trip map
                     </Link>
                   </div>

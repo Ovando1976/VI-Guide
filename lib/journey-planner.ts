@@ -248,13 +248,34 @@ export function buildJourneyMapHref(plan: JourneyPlan) {
     tripName: plan.title,
   });
   const firstPositionedStop = plan.plan.find(
-    (stop) => Boolean(stop.mapHref) && Boolean(stop.placeId),
+    (stop) =>
+      typeof stop.lat === "number" && typeof stop.lng === "number",
   );
   const mapPlaceId = placeIdFromMapHref(firstPositionedStop?.mapHref);
-  if (mapPlaceId || firstPositionedStop?.placeId) {
-    params.set("place", mapPlaceId || firstPositionedStop?.placeId || "");
+  if (firstPositionedStop) {
+    params.set(
+      "place",
+      mapPlaceId || firstPositionedStop.placeId || firstPositionedStop.id,
+    );
+    params.set("placeName", firstPositionedStop.title);
+    params.set("placeType", mapPlaceType(firstPositionedStop.kind));
+    params.set("placeLat", String(firstPositionedStop.lat));
+    params.set("placeLng", String(firstPositionedStop.lng));
+    if (firstPositionedStop.summary) {
+      params.set("placeDescription", firstPositionedStop.summary.slice(0, 500));
+    }
   }
   return `/map?${params.toString()}`;
+}
+
+function mapPlaceType(kind: string) {
+  const normalized = kind.toLowerCase();
+  if (normalized.includes("beach")) return "beach";
+  if (normalized.includes("stay") || normalized.includes("hotel")) return "stay";
+  if (normalized.includes("historic") || normalized.includes("heritage")) {
+    return "historic";
+  }
+  return "place";
 }
 
 function normalizeIsland(value: unknown): IntelligenceIsland | null {
