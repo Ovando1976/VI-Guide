@@ -8,6 +8,7 @@ import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { TravelerMemorySync } from "@/components/intelligence/traveler-memory-sync";
+import { JourneyCloudSync } from "@/components/journey/journey-cloud-sync";
 
 export const metadata: Metadata = {
   applicationName: "VI Guide",
@@ -50,6 +51,7 @@ export default function RootLayout({
         <AuthProvider>
           <ScrollToTop />
           <TravelerMemorySync />
+          <JourneyCloudSync />
           {children}
           <AppNavigation />
         </AuthProvider>
