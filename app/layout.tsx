@@ -7,6 +7,7 @@ import "./mobile-navigation-fix.css";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { TravelerMemorySync } from "@/components/intelligence/traveler-memory-sync";
 
 export const metadata: Metadata = {
   applicationName: "VI Guide",
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           <ScrollToTop />
+          <TravelerMemorySync />
           {children}
           <AppNavigation />
         </AuthProvider>
