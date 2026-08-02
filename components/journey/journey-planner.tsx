@@ -12,9 +12,12 @@ import {
   MapPin,
   Plus,
   Save,
+  Share2,
   Sparkles,
   Trash2,
 } from "lucide-react";
+
+import { useAuth } from "@/components/auth-provider";
 
 import {
   buildJourneyMapHref,
@@ -37,12 +40,14 @@ const ISLANDS: Record<IntelligenceIsland, string> = {
 };
 
 export function JourneyPlanner() {
+  const { user } = useAuth();
   const [plans, setPlans] = useState<JourneyPlan[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [newStopTitle, setNewStopTitle] = useState("");
   const [newStopTime, setNewStopTime] = useState("");
   const [reviewMode, setReviewMode] = useState(false);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
+  const [sharing, setSharing] = useState(false);
 
   useEffect(() => {
     const stored = readJourneyPlans();
@@ -78,6 +83,41 @@ export function JourneyPlanner() {
     setPlans(readJourneyPlans());
     setSavedMessage("Journey saved");
     window.setTimeout(() => setSavedMessage(null), 1800);
+  }
+
+  async function shareActive() {
+    if (!active || sharing) return;
+    if (!user) {
+      setSavedMessage("Sign in to create a private share link");
+      return;
+    }
+    setSharing(true);
+    setSavedMessage("Creating read-only link…");
+    try {
+      upsertJourneyPlan(active);
+      const token = await user.getIdToken();
+      const response = await fetch("/api/shared-journeys", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: active }),
+      });
+      const payload = (await response.json().catch(() => null)) as { href?: string; error?: string } | null;
+      if (!response.ok || !payload?.href) throw new Error(payload?.error || "Could not share journey.");
+      const url = new URL(payload.href, window.location.origin).toString();
+      const canUseNativeShare = typeof navigator.share === "function";
+      if (canUseNativeShare) {
+        await navigator.share({ title: active.title, text: `Follow my ${ISLANDS[active.island]} itinerary in VI Guide.`, url }).catch((error: unknown) => {
+          if (!(error instanceof DOMException && error.name === "AbortError")) throw error;
+        });
+      } else {
+        await navigator.clipboard.writeText(url);
+      }
+      setSavedMessage(canUseNativeShare ? "Share link ready" : "Share link copied");
+    } catch (error) {
+      setSavedMessage(error instanceof Error ? error.message : "Could not share journey.");
+    } finally {
+      setSharing(false);
+    }
   }
 
   function createPlan() {
@@ -288,6 +328,14 @@ export function JourneyPlanner() {
               >
                 <Map className="mr-2 inline h-4 w-4" /> Open map
               </Link>
+              <button
+                type="button"
+                onClick={shareActive}
+                disabled={sharing}
+                className="rounded-full border border-slate-200 px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] disabled:opacity-50"
+              >
+                <Share2 className="mr-2 inline h-4 w-4" /> {sharing ? "Sharing…" : "Share"}
+              </button>
               <button
                 type="button"
                 onClick={removePlan}
