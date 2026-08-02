@@ -128,6 +128,18 @@ export type IntelligenceRecommendation = {
   mapHref?: string;
 };
 
+export type IntelligenceMapFocus = {
+  island: IntelligenceIsland;
+  center?: { lat: number; lng: number };
+  bounds?: {
+    north: number;
+    south: number;
+    east: number;
+    west: number;
+  };
+  placeIds: string[];
+};
+
 export type IntelligenceResponse = {
   runId: string;
   answer: string;
@@ -137,6 +149,8 @@ export type IntelligenceResponse = {
   plan: IntelligencePlanStop[];
   recommendations: IntelligenceRecommendation[];
   actions: IntelligenceAction[];
+  mapFocus?: IntelligenceMapFocus;
+  followUps?: string[];
   memoryPatch: IntelligenceMemory;
   warnings: string[];
   generatedAt: string;
