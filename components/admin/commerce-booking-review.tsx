@@ -20,6 +20,10 @@ import type {
   CommerceBookingStatus,
 } from "@/types/commerce-booking";
 
+type ReviewedBooking = CommerceBooking & {
+  reviewSource: "commerceBookings" | "stayBookingRequests";
+};
+
 const STATUS_OPTIONS: CommerceBookingStatus[] = [
   "requested",
   "reviewing",
@@ -29,7 +33,7 @@ const STATUS_OPTIONS: CommerceBookingStatus[] = [
 ];
 
 export function CommerceBookingReview() {
-  const [bookings, setBookings] = useState<CommerceBooking[]>([]);
+  const [bookings, setBookings] = useState<ReviewedBooking[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -44,7 +48,7 @@ export function CommerceBookingReview() {
         cache: "no-store",
       });
       const payload = (await response.json().catch(() => null)) as
-        | { bookings?: CommerceBooking[]; error?: string }
+        | { bookings?: ReviewedBooking[]; error?: string }
         | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load booking requests.");
@@ -88,6 +92,7 @@ export function CommerceBookingReview() {
     bookingId: string,
     status: CommerceBookingStatus,
     internalNote: string,
+    reviewSource: ReviewedBooking["reviewSource"],
   ) {
     setSavingId(bookingId);
     setError(null);
@@ -95,7 +100,7 @@ export function CommerceBookingReview() {
       const response = await fetch("/api/admin/commerce-bookings", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bookingId, status, internalNote }),
+        body: JSON.stringify({ bookingId, status, internalNote, reviewSource }),
       });
       const payload = (await response.json().catch(() => null)) as
         | { error?: string }
@@ -253,12 +258,13 @@ function BookingReviewCard({
   saving,
   onSave,
 }: {
-  booking: CommerceBooking;
+  booking: ReviewedBooking;
   saving: boolean;
   onSave: (
     bookingId: string,
     status: CommerceBookingStatus,
     internalNote: string,
+    reviewSource: ReviewedBooking["reviewSource"],
   ) => Promise<void>;
 }) {
   const [status, setStatus] = useState<CommerceBookingStatus>(booking.status);
@@ -330,7 +336,14 @@ function BookingReviewCard({
           <button
             type="button"
             disabled={saving}
-            onClick={() => void onSave(booking.id, status, internalNote)}
+            onClick={() =>
+              void onSave(
+                booking.id,
+                status,
+                internalNote,
+                booking.reviewSource,
+              )
+            }
             className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.16em] text-white disabled:opacity-50"
           >
             {saving ? (
