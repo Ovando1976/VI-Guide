@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 
 import { useAuth } from "@/components/auth-provider";
+import { SharedJourneyManager, SHARED_JOURNEYS_UPDATED_EVENT } from "@/components/journey/shared-journey-manager";
 
 import {
   buildJourneyMapHref,
@@ -113,6 +114,7 @@ export function JourneyPlanner() {
         await navigator.clipboard.writeText(url);
       }
       setSavedMessage(canUseNativeShare ? "Share link ready" : "Share link copied");
+      window.dispatchEvent(new Event(SHARED_JOURNEYS_UPDATED_EVENT));
     } catch (error) {
       setSavedMessage(error instanceof Error ? error.message : "Could not share journey.");
     } finally {
@@ -541,6 +543,7 @@ export function JourneyPlanner() {
               />
             </label>
           </section>
+          <SharedJourneyManager />
         </div>
       </section>
     </main>
