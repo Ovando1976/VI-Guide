@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { runIntelligenceEngine } from "@/lib/intelligence/engine";
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
+import { buildIntelligencePresentation } from "@/lib/intelligence/presentation";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -117,8 +118,15 @@ export async function POST(request: NextRequest) {
         ? { capabilities: payload.capabilities.slice(0, 12) }
         : {}),
     });
+    const presentation = buildIntelligencePresentation(
+      engineResult.intent,
+      engineResult.context,
+      engineResult.plan,
+      engineResult.recommendations,
+    );
     const result = {
       ...engineResult,
+      ...presentation,
       answer: buildGroundedAnswer(message, engineResult),
     };
 
