@@ -42,12 +42,48 @@ const ISLANDS = [
 ] as const;
 
 const QUICK = [
-  { label: "Beaches", href: "/beaches", icon: Waves },
-  { label: "Stays", href: "/accommodations", icon: BedDouble },
-  { label: "Concierge", href: "/concierge", icon: Sparkles },
-  { label: "Ride", href: "/mobility", icon: Navigation },
-  { label: "Dining", href: "/places?category=restaurant", icon: UtensilsCrossed },
-  { label: "Heritage", href: "/heritage", icon: History },
+  {
+    label: "Beaches",
+    href: "/beaches",
+    icon: Waves,
+    image: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    alt: "Magens Bay beach in St. Thomas",
+  },
+  {
+    label: "Stays",
+    href: "/accommodations",
+    icon: BedDouble,
+    image: "/images/accommodations/king-christian-hotel.jpg",
+    alt: "King Christian Hotel in Christiansted",
+  },
+  {
+    label: "Concierge",
+    href: "/concierge",
+    icon: Sparkles,
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay overlook in St. John",
+  },
+  {
+    label: "Ride",
+    href: "/mobility",
+    icon: Navigation,
+    image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
+    alt: "Red Hook ferry terminal in St. Thomas",
+  },
+  {
+    label: "Dining",
+    href: "/places?category=restaurant",
+    icon: UtensilsCrossed,
+    image: "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+    alt: "Waterfront dining in Frenchtown, St. Thomas",
+  },
+  {
+    label: "Heritage",
+    href: "/heritage",
+    icon: History,
+    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    alt: "Frederick Lutheran Church in Charlotte Amalie",
+  },
 ] as const;
 
 const CONCIERGE_START_HREF =
@@ -160,10 +196,18 @@ export default function Home() {
             <Star className="text-[#d7a22d]" size={20} />
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {QUICK.map(({ label, href, icon: Icon }) => (
-              <Link key={label} href={href} className="group flex min-h-[116px] flex-col items-center justify-center rounded-[22px] border border-[#dde9e6] bg-[#fbfdfc] p-4 text-center transition hover:-translate-y-0.5 hover:border-[#94cfc5] hover:bg-[#eff9f6] hover:shadow-lg">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e4f4f0] text-[#0f766e] transition group-hover:bg-[#073b39] group-hover:text-white"><Icon size={21} /></span>
-                <span className="mt-3 text-xs font-black">{label}</span>
+            {QUICK.map(({ label, href, icon: Icon, image, alt }) => (
+              <Link key={label} href={href} className="group relative flex min-h-[150px] flex-col items-center justify-end overflow-hidden rounded-[22px] border border-white/70 p-4 text-center text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+                <Image
+                  src={image}
+                  alt={alt}
+                  fill
+                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,47,45,.03)_15%,rgba(3,47,45,.78)_100%)]" />
+                <span className="relative grid h-10 w-10 place-items-center rounded-2xl border border-white/45 bg-white/88 text-[#0f766e] shadow-lg backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]"><Icon size={19} aria-hidden="true" /></span>
+                <span className="relative mt-2 text-xs font-black drop-shadow-sm">{label}</span>
               </Link>
             ))}
           </div>
