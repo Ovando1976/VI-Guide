@@ -309,6 +309,7 @@ export function JourneyPlanner() {
                 <input
                   value={newStopTitle}
                   onChange={(event) => setNewStopTitle(event.target.value)}
+                  aria-label="New stop name"
                   placeholder="Add a beach, restaurant, landmark, ferry, or activity"
                   className="h-12 rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-500"
                 />
@@ -316,6 +317,7 @@ export function JourneyPlanner() {
                   type="time"
                   value={newStopTime}
                   onChange={(event) => setNewStopTime(event.target.value)}
+                  aria-label="New stop start time"
                   className="h-12 rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-500"
                 />
                 <button
@@ -377,6 +379,7 @@ export function JourneyPlanner() {
                         <div className="grid gap-3 md:grid-cols-[1fr_130px_130px]">
                           <input
                             value={stop.title}
+                            aria-label={`Stop ${index + 1} name`}
                             onChange={(event) =>
                               updateStop(stop.id, { title: event.target.value })
                             }
@@ -385,6 +388,7 @@ export function JourneyPlanner() {
                           <input
                             type="time"
                             value={stop.startTime ?? ""}
+                            aria-label={`Stop ${index + 1} start time`}
                             onChange={(event) =>
                               updateStop(stop.id, {
                                 startTime: event.target.value || undefined,
@@ -397,6 +401,7 @@ export function JourneyPlanner() {
                             min="0"
                             step="15"
                             value={stop.durationMinutes ?? ""}
+                            aria-label={`Stop ${index + 1} duration in minutes`}
                             onChange={(event) =>
                               updateStop(stop.id, {
                                 durationMinutes: event.target.value
