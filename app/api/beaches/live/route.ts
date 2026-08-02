@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import beachCatalog from "@/data/travel-knowledge/beaches.json";
+import { catalogFallbackResponse } from "@/lib/api/catalog-fallback";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -383,17 +384,14 @@ function curatedBeachResponse(island: IslandCode) {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  return NextResponse.json(
+  return catalogFallbackResponse(
     {
       island,
       count: places.length,
       places,
-      partial: false,
-      liveData: false,
-      fallbackReason: "Google Places is not configured; serving curated VI Guide beach catalog.",
-      generatedAt: verifiedAt,
     },
-    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },
+    "Google Places is not configured; serving curated VI Guide beach catalog.",
+    verifiedAt,
   );
 }
 

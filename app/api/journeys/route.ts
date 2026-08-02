@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getAdminAuth, getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import { normalizeJourneyPlan, type JourneyPlan } from "@/lib/journey-planner";
+import { parseJsonBody } from "@/lib/api/request";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -34,12 +35,12 @@ export async function PUT(request: NextRequest) {
   if (!userId) return unauthorized();
   if (!hasFirebaseAdminConfiguration()) return unavailable();
 
-  const payload = (await request.json().catch(() => null)) as { plans?: unknown } | null;
-  if (!payload || !Array.isArray(payload.plans) || payload.plans.length > MAX_PLANS) {
+  const parsed = await parseJsonBody<{ plans?: unknown }>(request);
+  if (!parsed.ok || !Array.isArray(parsed.value.plans) || parsed.value.plans.length > MAX_PLANS) {
     return NextResponse.json({ error: "Invalid journey payload." }, { status: 400 });
   }
 
-  const plans = payload.plans.map(normalizeJourneyPlan).filter(isJourneyPlan);
+  const plans = parsed.value.plans.map(normalizeJourneyPlan).filter(isJourneyPlan);
   const db = getAdminDb();
   const collection = db.collection("users").doc(userId).collection("journeys");
   const existing = await collection.limit(MAX_PLANS * 2).get();
