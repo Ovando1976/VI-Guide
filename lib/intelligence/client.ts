@@ -10,7 +10,9 @@ import type {
 
 const SESSION_KEY = "vi-guide.intelligence.session";
 const MEMORY_KEY = "vi-guide.intelligence.memory";
+const MEMORY_UPDATED_AT_KEY = "vi-guide.intelligence.memory-updated-at";
 const CONTEXT_KEY = "vi-guide.intelligence.context";
+export const INTELLIGENCE_MEMORY_UPDATED_EVENT = "vi-guide-intelligence-memory";
 
 function createId() {
   const random =
@@ -48,6 +50,11 @@ export function getIntelligenceMemory(): IntelligenceMemory {
   return readJson<IntelligenceMemory>(MEMORY_KEY, {});
 }
 
+export function getIntelligenceMemoryUpdatedAt() {
+  if (typeof window === "undefined") return "";
+  return window.localStorage.getItem(MEMORY_UPDATED_AT_KEY) ?? "";
+}
+
 export function patchIntelligenceMemory(patch: IntelligenceMemory) {
   const current = getIntelligenceMemory();
   const next: IntelligenceMemory = {
@@ -60,7 +67,8 @@ export function patchIntelligenceMemory(patch: IntelligenceMemory) {
     savedPlaceIds: patch.savedPlaceIds ?? current.savedPlaceIds,
   };
   writeJson(MEMORY_KEY, next);
-  window.dispatchEvent(new CustomEvent("vi-guide-intelligence-memory", { detail: next }));
+  window.localStorage.setItem(MEMORY_UPDATED_AT_KEY, new Date().toISOString());
+  window.dispatchEvent(new CustomEvent(INTELLIGENCE_MEMORY_UPDATED_EVENT, { detail: next }));
   return next;
 }
 
