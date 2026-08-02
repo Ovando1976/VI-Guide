@@ -142,6 +142,12 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
           </div>
           <nav className="space-y-1 p-3">
             <MenuLink
+              href="/profile"
+              label="Traveler profile"
+              icon={UserRound}
+              onSelect={() => setOpen(false)}
+            />
+            <MenuLink
               href="/map"
               label="Territory map"
               icon={Map}
