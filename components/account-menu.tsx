@@ -9,6 +9,7 @@ import {
   Map,
   Route,
   ShieldCheck,
+  Sparkles,
   UserRound,
 } from "lucide-react";
 import { signOut } from "firebase/auth";
@@ -141,6 +142,12 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
             </div>
           </div>
           <nav className="space-y-1 p-3">
+            <MenuLink
+              href="/today"
+              label="My AI trip brief"
+              icon={Sparkles}
+              onSelect={() => setOpen(false)}
+            />
             <MenuLink
               href="/profile"
               label="Traveler profile"
