@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
-import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import { hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import {
+  buildMobilityPilotGateReport,
+  MOBILITY_PILOT_ISLANDS,
+} from "@/lib/mobility-pilot-readiness";
+import type { IslandCode } from "@/types/usvi";
 
 type Check = { id: string; label: string; ready: boolean; detail: string };
 
@@ -16,19 +21,21 @@ export async function GET() {
     ];
 
     if (hasFirebaseAdminConfiguration()) {
-      const db = getAdminDb();
-      const [tariffs, associations, drivers, vehicles] = await Promise.all([
-        db.collection("taxiTariffs").where("status", "==", "active").get(),
-        db.collection("taxiAssociations").where("status", "==", "active").get(),
-        db.collection("drivers").where("authorizationStatus", "==", "active").where("verified", "==", true).get(),
-        db.collection("vehicles").where("active", "==", true).get(),
-      ]);
-      checks.push(
-        { id: "tariffs", label: "Official tariffs", ready: tariffs.size > 0, detail: `${tariffs.size} active tariff document${tariffs.size === 1 ? "" : "s"}.` },
-        { id: "associations", label: "Taxi associations", ready: associations.size > 0, detail: `${associations.size} active association${associations.size === 1 ? "" : "s"}.` },
-        { id: "drivers", label: "Credentialed drivers", ready: drivers.size >= 3, detail: `${drivers.size} reviewed active driver${drivers.size === 1 ? "" : "s"}; pilot minimum is 3.` },
-        { id: "vehicles", label: "Active fleet", ready: vehicles.size >= 3, detail: `${vehicles.size} active vehicle${vehicles.size === 1 ? "" : "s"}; pilot minimum is 3.` },
+      const reports = await Promise.all(
+        MOBILITY_PILOT_ISLANDS.map(buildMobilityPilotGateReport),
       );
+      const readyIslands = reports.filter((report) => report.ready);
+      checks.push({
+        id: "mobility-pilot-gates",
+        label: "Mobility pilot gates",
+        ready: readyIslands.length > 0,
+        detail: reports
+          .map(
+            (report) =>
+              `${islandLabel(report.island)}: ${report.ready ? "ready" : "blocked"}`,
+          )
+          .join("; "),
+      });
     }
 
     return NextResponse.json({ ready: checks.every((check) => check.ready), checks, checkedAt: new Date().toISOString() });
@@ -39,3 +46,10 @@ export async function GET() {
   }
 }
 
+function islandLabel(island: IslandCode) {
+  return island === "stt"
+    ? "St. Thomas"
+    : island === "stj"
+      ? "St. John"
+      : "St. Croix";
+}
