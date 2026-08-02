@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CalendarDays, Clock3, Map, MapPin, Route, Sparkles } from "lucide-react";
 import { notFound } from "next/navigation";
 
+import { SaveSharedJourneyButton } from "@/components/journey/save-shared-journey-button";
 import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import { buildJourneyMapHref, normalizeJourneyPlan } from "@/lib/journey-planner";
 
@@ -28,6 +29,7 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
           </div>
           {plan.notes ? <p className="mt-5 max-w-3xl text-sm font-semibold leading-6 text-white/65">{plan.notes}</p> : null}
           <div className="mt-7 flex flex-wrap gap-3">
+            <SaveSharedJourneyButton plan={plan} />
             <Link href={buildJourneyMapHref(plan)} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.14em] text-[#4c3500]"><Map size={15} /> Open trip map</Link>
             <Link href="/today" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 px-5 text-[10px] font-black uppercase tracking-[.14em] text-white"><Sparkles size={15} /> Build my own day</Link>
           </div>
