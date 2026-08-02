@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  assertMobilityPilotActive,
-  MobilityPilotUnavailableError,
-} from "@/lib/mobility-pilot-readiness";
+import { assertMobilityPilotActive } from "@/lib/mobility-pilot-readiness";
 import { normalizeEstateCollection } from "@/lib/usvi";
 import {
   OfficialTaxiRateUnavailableError,
@@ -60,21 +57,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    await assertMobilityPilotActive(origin.island);
+    let pilotActive = true;
+    let pilotMessage: string | undefined;
+    try {
+      await assertMobilityPilotActive(origin.island);
+    } catch (error) {
+      pilotActive = false;
+      pilotMessage =
+        error instanceof Error
+          ? error.message
+          : "Ride booking is not active for this island yet.";
+    }
+
     const fare = await quoteOfficialTaxiFare({
       origin,
       destination,
       passengers: Math.max(1, Number(body.passengers || 1)),
       luggage: Math.max(0, Number(body.luggage || 0)),
     });
-    return NextResponse.json({ ok: true, fare });
+    return NextResponse.json({
+      ok: true,
+      fare,
+      pilotActive,
+      pilotMessage,
+    });
   } catch (error) {
-    if (error instanceof MobilityPilotUnavailableError) {
-      return NextResponse.json(
-        { error: error.message, code: error.code, pilotActive: false },
-        { status: error.status },
-      );
-    }
     if (error instanceof OfficialTaxiRateUnavailableError) {
       return NextResponse.json(
         { error: error.message, code: error.code, manualReviewRequired: true },
