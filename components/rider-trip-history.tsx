@@ -73,7 +73,13 @@ export function RiderTripHistory({ riderId }: Props) {
     }
   }, [bookings, activeBookings, historicalBookings, selectedBookingId]);
 
-  const primaryActive = activeBookings[0] ?? null;
+  const primaryActive =
+    selectedBooking && ACTIVE_STATUSES.includes(selectedBooking.status)
+      ? selectedBooking
+      : activeBookings[0] ?? null;
+  const otherActiveBookings = primaryActive
+    ? activeBookings.filter((booking) => booking.id !== primaryActive.id)
+    : [];
 
   return (
     <section className="space-y-6">
@@ -156,13 +162,13 @@ export function RiderTripHistory({ riderId }: Props) {
                 </div>
               </div>
 
-              {activeBookings.length > 1 ? (
+              {otherActiveBookings.length ? (
                 <div>
                   <div className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-slate-400">
                     Other active trips
                   </div>
                   <div className="space-y-3">
-                    {activeBookings.slice(1).map((booking) => (
+                    {otherActiveBookings.map((booking) => (
                       <button
                         key={booking.id}
                         onClick={() => setSelectedBookingId(booking.id)}
