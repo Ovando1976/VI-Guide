@@ -2,9 +2,15 @@
 
 import { Clock3, Navigation } from "lucide-react";
 
+import { dispatchIntelligenceMapFocus } from "@/lib/intelligence/map-focus-events";
 import type { IntelligencePlanStop } from "@/types/intelligence";
 
 export function ItineraryTimeline({ plan, onSelectStop }: { plan: IntelligencePlanStop[]; onSelectStop(stop: IntelligencePlanStop): void }) {
+  function selectStop(stop: IntelligencePlanStop) {
+    dispatchIntelligenceMapFocus(stop, "concierge-itinerary");
+    onSelectStop(stop);
+  }
+
   return (
     <ol className="rounded-[22px] border border-white/10 bg-white/[.04] px-4 py-3">
       {plan.map((stop, index) => (
@@ -15,7 +21,7 @@ export function ItineraryTimeline({ plan, onSelectStop }: { plan: IntelligencePl
               <span className="inline-flex items-center gap-1.5"><Navigation size={10} /> {travelLabel(stop)}</span>
             </div>
           ) : null}
-          <button type="button" onClick={() => onSelectStop(stop)} className="group relative w-full rounded-xl px-2 py-2.5 text-left transition hover:bg-white/[.055]">
+          <button type="button" onClick={() => selectStop(stop)} className="group relative w-full rounded-xl px-2 py-2.5 text-left transition hover:bg-white/[.055]">
             <span className="absolute -left-[25px] top-4 h-3 w-3 rounded-full border-[3px] border-[#09202a] bg-cyan-300 shadow-[0_0_0_2px_rgba(103,232,249,.2)]" />
             <span className="flex items-center justify-between gap-3">
               <strong className="text-sm text-white/90 group-hover:text-cyan-100">{stop.title}</strong>
