@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { FieldValue, Timestamp } from "firebase-admin/firestore";
+import { FieldValue } from "firebase-admin/firestore";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import { getAdminDb } from "@/lib/firebase-admin";
@@ -8,6 +8,7 @@ import {
   requiredText,
 } from "@/lib/taxi-tariff-governance";
 import type { OfficialTaxiTariff } from "@/types/taxi-operations";
+import { normalizeTimestamp } from "@/lib/timestamps";
 
 const DUPLICATE_VERSION_ERROR =
   "A tariff with this island and version already exists. Use a new version identifier for every revision.";
@@ -127,27 +128,11 @@ export async function POST(request: NextRequest) {
 function serializeTariff(tariff: OfficialTaxiTariff): OfficialTaxiTariff {
   return {
     ...tariff,
-    activatedAt: serializeDate(tariff.activatedAt),
-    retiredAt: serializeDate(tariff.retiredAt),
-    createdAt: serializeDate(tariff.createdAt),
-    updatedAt: serializeDate(tariff.updatedAt),
+    activatedAt: normalizeTimestamp(tariff.activatedAt),
+    retiredAt: normalizeTimestamp(tariff.retiredAt),
+    createdAt: normalizeTimestamp(tariff.createdAt),
+    updatedAt: normalizeTimestamp(tariff.updatedAt),
   };
-}
-
-function serializeDate(
-  value:
-    | string
-    | Timestamp
-    | { seconds?: number; nanoseconds?: number }
-    | undefined,
-) {
-  if (!value) return undefined;
-  if (typeof value === "string") return value;
-  if (value instanceof Timestamp) return value.toDate().toISOString();
-  if (typeof value.seconds === "number") {
-    return new Date(value.seconds * 1000).toISOString();
-  }
-  return undefined;
 }
 
 function safeTimestamp(value: string) {

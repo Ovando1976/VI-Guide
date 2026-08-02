@@ -4,6 +4,7 @@ import type { DocumentData } from "firebase-admin/firestore";
 
 import { getAdminDb } from "@/lib/firebase-admin";
 import { assertVerifiedActiveTariff } from "@/lib/taxi-tariff-governance";
+import { normalizeTimestamp } from "@/lib/timestamps";
 import type { DriverProfile, VehicleRecord } from "@/types/driver";
 import type {
   MobilityPilotControl,
@@ -61,24 +62,6 @@ function isPositiveInteger(value: unknown) {
 function isNonNegativeInteger(value: unknown) {
   const number = Number(value);
   return Number.isInteger(number) && number >= 0;
-}
-
-function serializeDate(value: unknown): string | undefined {
-  if (!value) return undefined;
-  if (typeof value === "string") return value;
-  if (typeof value === "object" && value && "toDate" in value) {
-    const candidate = value as { toDate?: () => Date };
-    if (typeof candidate.toDate === "function") {
-      return candidate.toDate().toISOString();
-    }
-  }
-  if (typeof value === "object" && value && "seconds" in value) {
-    const candidate = value as { seconds?: number };
-    if (typeof candidate.seconds === "number") {
-      return new Date(candidate.seconds * 1000).toISOString();
-    }
-  }
-  return undefined;
 }
 
 function summarizeIssues(report: MobilityPilotGateReport) {
@@ -259,14 +242,14 @@ export async function getMobilityPilotControl(
       typeof data.activationAuditId === "string"
         ? data.activationAuditId
         : undefined,
-    activatedAt: serializeDate(data.activatedAt),
+    activatedAt: normalizeTimestamp(data.activatedAt),
     activatedBy:
       typeof data.activatedBy === "string" ? data.activatedBy : undefined,
     activationReviewReference:
       typeof data.activationReviewReference === "string"
         ? data.activationReviewReference
         : undefined,
-    deactivatedAt: serializeDate(data.deactivatedAt),
+    deactivatedAt: normalizeTimestamp(data.deactivatedAt),
     deactivatedBy:
       typeof data.deactivatedBy === "string" ? data.deactivatedBy : undefined,
     deactivationReason:
@@ -278,7 +261,7 @@ export async function getMobilityPilotControl(
         ? data.deactivationReviewReference
         : undefined,
     gateSnapshot: data.gateSnapshot as MobilityPilotGateReport | undefined,
-    updatedAt: serializeDate(data.updatedAt),
+    updatedAt: normalizeTimestamp(data.updatedAt),
   };
 }
 

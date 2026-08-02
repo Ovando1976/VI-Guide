@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import placesCatalog from "@/data/travel-knowledge/places.json";
+import { catalogFallbackResponse } from "@/lib/api/catalog-fallback";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -286,19 +287,16 @@ function curatedRestaurantResponse(island: IslandCode) {
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  return NextResponse.json(
+  return catalogFallbackResponse(
     {
       island,
       count: places.length,
       restaurantCount: places.length,
       beachCount: 0,
       places,
-      partial: false,
-      liveData: false,
-      fallbackReason: "Google Places is not configured; serving curated VI Guide restaurant catalog.",
-      generatedAt,
     },
-    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },
+    "Google Places is not configured; serving curated VI Guide restaurant catalog.",
+    generatedAt,
   );
 }
 
