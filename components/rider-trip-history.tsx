@@ -80,6 +80,10 @@ export function RiderTripHistory({ riderId }: Props) {
   const otherActiveBookings = primaryActive
     ? activeBookings.filter((booking) => booking.id !== primaryActive.id)
     : [];
+  const selectedHistoricalBooking =
+    selectedBooking && !ACTIVE_STATUSES.includes(selectedBooking.status)
+      ? selectedBooking
+      : historicalBookings[0] ?? null;
 
   return (
     <section className="space-y-6">
@@ -189,8 +193,8 @@ export function RiderTripHistory({ riderId }: Props) {
           </div>
 
           <BookingTimelineCard
-            bookingId={selectedBookingId ?? primaryActive.id}
-            booking={selectedBooking ?? primaryActive}
+            bookingId={primaryActive.id}
+            booking={primaryActive}
           />
         </section>
       ) : (
@@ -226,7 +230,7 @@ export function RiderTripHistory({ riderId }: Props) {
           <div className="mt-5 space-y-4">
             {historicalBookings.length ? (
               historicalBookings.map((booking) => {
-                const active = booking.id === selectedBookingId;
+                const active = booking.id === selectedHistoricalBooking?.id;
                 return (
                   <button
                     key={booking.id}
@@ -261,7 +265,10 @@ export function RiderTripHistory({ riderId }: Props) {
           </div>
         </section>
 
-        <BookingTimelineCard bookingId={selectedBookingId} booking={selectedBooking} />
+        <BookingTimelineCard
+          bookingId={selectedHistoricalBooking?.id ?? null}
+          booking={selectedHistoricalBooking}
+        />
       </div>
     </section>
   );
