@@ -38,13 +38,35 @@ export type TerritoryAction = {
   intent?: "open" | "directions" | "ride" | "save" | "concierge" | "book";
 };
 
+export type TerritoryMapCategory =
+  | "Beach"
+  | "Hotel"
+  | "Landmark"
+  | "Transit"
+  | "Place"
+  | "food"
+  | "restaurant"
+  | "bar"
+  | "cafe"
+  | "bakery"
+  | "shopping"
+  | "shop"
+  | "grocery"
+  | "nature"
+  | "attraction"
+  | "services"
+  | "service"
+  | "transport"
+  | "nightlife"
+  | string;
+
 export type TerritoryMapPlace = {
   id: string;
   name: string;
   island: TerritoryEntity["island"];
   lat?: number;
   lng?: number;
-  category: "Beach" | "Hotel" | "Landmark" | "Transit" | "Place";
+  category: TerritoryMapCategory;
   type: TerritoryEntityKind;
   location?: string;
   description?: string;

@@ -1,8 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import type { DirectoryItem } from "@/types/directory";
-import { TagPill } from "@/components/directory/tag-pill";
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Eye,
+  Map,
+  MapPin,
+  Navigation,
+} from "lucide-react";
+
 import { GooglePlacePhoto } from "@/components/directory/google-place-photo";
-import { ArrowUpRight, BadgeCheck, MapPin } from "lucide-react";
+import { TagPill } from "@/components/directory/tag-pill";
+import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
+import { buildDirectoryMapHref } from "@/lib/discovery/map-links";
+import type { JourneyStopInput } from "@/lib/journey-planner";
+import type { DirectoryItem } from "@/types/directory";
+import type { TerritoryMapPlaceType } from "@/types/territory-map";
 
 type Props = {
   item: DirectoryItem;
@@ -12,22 +26,47 @@ type Props = {
 
 export function DirectoryCard({ item, href, eyebrow }: Props) {
   const googlePhoto = getGooglePhoto(item.heroImage);
+  const mapType = inferMapType(href);
+  const mapHref = buildDirectoryMapHref(item, mapType);
+  const rideHref = buildRideHref(item);
+  const journeyStop: JourneyStopInput = {
+    id: item.id,
+    title: item.name,
+    island: item.island,
+    kind: mapType,
+    summary: item.description,
+    ...(typeof item.lat === "number" ? { lat: item.lat } : {}),
+    ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
+    href,
+    mapHref,
+    bookingHref: rideHref,
+  };
+
   return (
-    <Link
-      href={href}
-      className="group block overflow-hidden rounded-[26px] border border-slate-200/80 bg-white shadow-[0_12px_35px_rgba(4,51,49,.07)] transition duration-300 hover:-translate-y-1 hover:border-teal-700/20 hover:shadow-[0_22px_50px_rgba(4,51,49,.13)]"
-    >
-      <GooglePlacePhoto
-        placeId={googlePhoto.placeId}
-        name={item.name}
-        island={item.island.toUpperCase()}
-        fallbackImage={googlePhoto.fallback || item.heroImage}
-      />
-      <div className="p-5">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-slate-200/80 bg-white shadow-[0_12px_35px_rgba(4,51,49,.07)] transition duration-300 hover:-translate-y-1 hover:border-teal-700/20 hover:shadow-[0_22px_50px_rgba(4,51,49,.13)]">
+      <Link href={href} aria-label={`View ${item.name}`} className="block">
+        <GooglePlacePhoto
+          placeId={googlePhoto.placeId}
+          name={item.name}
+          island={item.island.toUpperCase()}
+          fallbackImage={googlePhoto.fallback || item.heroImage}
+        />
+      </Link>
+
+      <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[.14em] text-emerald-800"><BadgeCheck size={12} /> Verified</span>
-          <ArrowUpRight size={17} className="text-slate-300 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0f766e]" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[.14em] text-emerald-800">
+            <BadgeCheck size={12} /> Verified
+          </span>
+          <Link
+            href={href}
+            aria-label={`Open ${item.name}`}
+            className="text-slate-300 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0f766e]"
+          >
+            <ArrowUpRight size={17} />
+          </Link>
         </div>
+
         <div className="flex items-center justify-between gap-3">
           <div className="text-[11px] font-black uppercase tracking-[0.22em] text-amber-500">
             {eyebrow ?? item.category}
@@ -37,11 +76,18 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
           </div>
         </div>
 
-        <h2 className="mt-3 text-2xl font-black tracking-[-.03em] text-[#043331]">
-          {item.name}
-        </h2>
+        <Link href={href} className="mt-3 block">
+          <h2 className="text-2xl font-black tracking-[-.03em] text-[#043331] transition group-hover:text-[#0f766e]">
+            {item.name}
+          </h2>
+        </Link>
 
-        {item.address || item.tags[1] ? <div className="mt-2 flex items-center gap-2 text-xs font-bold text-slate-500"><MapPin size={14} className="text-[#0f766e]" /><span className="line-clamp-1">{item.address || item.tags[1]}</span></div> : null}
+        {item.address || item.tags[1] ? (
+          <div className="mt-2 flex items-center gap-2 text-xs font-bold text-slate-500">
+            <MapPin size={14} className="text-[#0f766e]" />
+            <span className="line-clamp-1">{item.address || item.tags[1]}</span>
+          </div>
+        ) : null}
 
         <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-slate-600">
           {item.description}
@@ -52,13 +98,74 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
             <TagPill key={tag} label={tag} />
           ))}
         </div>
+
+        <div className="mt-auto grid grid-cols-2 gap-2 border-t border-slate-100 pt-5">
+          <CardAction href={href} icon={Eye} label="Details" />
+          <CardAction href={mapHref} icon={Map} label="Map" />
+          <CardAction href={rideHref} icon={Navigation} label="Ride" accent />
+          <AddToJourneyButton
+            stop={journeyStop}
+            className="w-full px-3 text-center"
+          />
+        </div>
       </div>
+    </article>
+  );
+}
+
+function CardAction({
+  href,
+  icon: Icon,
+  label,
+  accent = false,
+}: {
+  href: string;
+  icon: typeof Map;
+  label: string;
+  accent?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-3 text-[9px] font-black uppercase tracking-[.13em] transition hover:-translate-y-0.5 ${
+        accent
+          ? "bg-[#f5c451] text-[#043331] hover:bg-[#ffca55]"
+          : "border border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e] hover:bg-white"
+      }`}
+    >
+      <Icon className="h-4 w-4" />
+      {label}
     </Link>
   );
 }
 
+function inferMapType(href: string): TerritoryMapPlaceType {
+  if (href.startsWith("/beaches/")) return "beach";
+  if (href.startsWith("/accommodations/")) return "stay";
+  if (href.startsWith("/historic/") || href.startsWith("/heritage/")) {
+    return "historic";
+  }
+  return "place";
+}
+
+function buildRideHref(item: DirectoryItem) {
+  const params = new URLSearchParams({
+    island: item.island,
+    destination: item.name,
+  });
+  if (item.estateGeoid) params.set("to", item.estateGeoid);
+  if (typeof item.lat === "number") params.set("toLat", String(item.lat));
+  if (typeof item.lng === "number") params.set("toLng", String(item.lng));
+  return `/mobility?${params.toString()}`;
+}
+
 function getGooglePhoto(value?: string) {
-  if (!value?.startsWith("/api/google-places/photo?")) return { placeId: "", fallback: "" };
+  if (!value?.startsWith("/api/google-places/photo?")) {
+    return { placeId: "", fallback: "" };
+  }
   const params = new URLSearchParams(value.split("?")[1] || "");
-  return { placeId: params.get("placeId") || "", fallback: params.get("fallback") || "" };
+  return {
+    placeId: params.get("placeId") || "",
+    fallback: params.get("fallback") || "",
+  };
 }

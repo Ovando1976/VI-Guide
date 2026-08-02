@@ -1,0 +1,134 @@
+/* Production mobile navigation and booking repair.
+   Keep the five primary destinations visible, compact, and clear of Safari's
+   bottom chrome while preventing journey content from being obscured. */
+@media (max-width: 700px) {
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .app-nav {
+    width: calc(100vw - 20px);
+    max-width: 520px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    gap: 1px;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 34px rgba(18, 49, 47, 0.18);
+  }
+
+  .app-nav__item {
+    min-width: 0;
+    height: 50px;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 2px;
+    padding-inline: 1px;
+    border-radius: 15px;
+    font-size: 7.5px;
+    letter-spacing: 0.035em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .app-nav__item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* A sixth account control makes the dock too wide on iPhone. Account access
+     remains available through page-level account UI. */
+  .app-nav > .relative {
+    display: none;
+  }
+
+  /* Mobility booking was wider than the viewport on iPhone. The overflow
+     originated in nested grids, headings, selects, and the route preview. */
+  #book,
+  #book > *,
+  #book section,
+  #book header,
+  #book div,
+  #book form {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #book {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 28px;
+  }
+
+  #book header {
+    padding: 1.35rem 1rem;
+  }
+
+  #book header h2 {
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 2.75rem);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  #book header .grid-cols-4 {
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  #book header .grid-cols-4 > div {
+    padding: 0.65rem 0.2rem;
+  }
+
+  #book select,
+  #book input,
+  #book button {
+    max-width: 100%;
+  }
+
+  #book select {
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+
+  #book .leaflet-container {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  #book h2,
+  #book h3,
+  #book p,
+  #book span {
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 390px) {
+  .app-nav {
+    width: calc(100vw - 14px);
+    padding: 4px;
+  }
+
+  .app-nav__item {
+    height: 48px;
+    gap: 1px;
+    font-size: 7px;
+    letter-spacing: 0.02em;
+  }
+
+  .app-nav__item svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  #book header {
+    padding-inline: 0.85rem;
+  }
+
+  #book header .grid-cols-4 > div {
+    border-radius: 0.8rem;
+  }
+}

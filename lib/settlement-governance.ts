@@ -1,0 +1,260 @@
+import "server-only";
+
+import { FieldValue } from "firebase-admin/firestore";
+import type Stripe from "stripe";
+
+import {
+  expectedBookingAmountCents,
+  paymentIntentIntegrityIssue,
+} from "@/lib/booking-payment-state";
+import { getAdminDb } from "@/lib/firebase-admin";
+import { getStripe } from "@/lib/stripe";
+import type { RideBooking } from "@/types/mobility";
+
+export async function approveOperatorSettlement(params: {
+  bookingId: string;
+  actorId: string;
+  reviewReference: string;
+}) {
+  const db = getAdminDb();
+  const bookingRef = db.collection("bookings").doc(params.bookingId);
+  const initialSnapshot = await bookingRef.get();
+  if (!initialSnapshot.exists) throw new Error("Booking not found.");
+  const initial = {
+    id: initialSnapshot.id,
+    ...initialSnapshot.data(),
+  } as RideBooking;
+
+  if (!initial.paymentIntentId) {
+    throw new Error("Settlement cannot be approved without a Stripe payment reference.");
+  }
+  const stripe = getStripe();
+  const paymentIntent = await stripe.paymentIntents.retrieve(
+    initial.paymentIntentId,
+  );
+  const initialIntegrityIssue = paymentIntentIntegrityIssue(paymentIntent, initial);
+  if (initialIntegrityIssue) throw new Error(initialIntegrityIssue);
+  if (paymentIntent.status !== "succeeded") {
+    throw new Error("Settlement cannot be approved until Stripe confirms payment.");
+  }
+  const charge = await retrieveLatestCharge(stripe, paymentIntent);
+  assertChargeReadyForSettlement(charge, paymentIntent);
+
+  const auditRef = db.collection("settlementAudit").doc();
+  const approvedAtIso = new Date().toISOString();
+  const result = await db.runTransaction(async (transaction) => {
+    const snapshot = await transaction.get(bookingRef);
+    if (!snapshot.exists) throw new Error("Booking not found.");
+    const booking = { id: snapshot.id, ...snapshot.data() } as RideBooking;
+
+    if (booking.paymentIntentId !== paymentIntent.id) {
+      throw new Error("The booking payment reference changed during settlement review.");
+    }
+    const currentIntegrityIssue = paymentIntentIntegrityIssue(
+      paymentIntent,
+      booking,
+    );
+    if (currentIntegrityIssue) throw new Error(currentIntegrityIssue);
+    if (booking.status !== "completed") {
+      throw new Error("Only completed trips can enter operator settlement.");
+    }
+    if (!booking.settlement) {
+      throw new Error("This trip does not have a settlement calculation.");
+    }
+    if (!["pending_review", "held"].includes(booking.settlement.status)) {
+      throw new Error("This settlement is not awaiting approval.");
+    }
+
+    const expectedAmount = expectedBookingAmountCents(booking);
+    if (
+      booking.paymentStatus !== "paid" ||
+      booking.amountAuthorized !== expectedAmount ||
+      booking.amountCaptured !== expectedAmount ||
+      paymentIntent.amount !== expectedAmount ||
+      paymentIntent.amount_received !== expectedAmount ||
+      charge.amount !== expectedAmount ||
+      charge.amount_captured !== expectedAmount
+    ) {
+      throw new Error("Captured payment does not equal the completed trip fare.");
+    }
+
+    const refundClear =
+      !booking.refund ||
+      (booking.refund.status === "not_required" && booking.refund.amount === 0) ||
+      (booking.refund.status === "canceled" && booking.refund.amount === 0);
+    if (!refundClear || charge.refunded || charge.amount_refunded > 0) {
+      throw new Error("Settlement is blocked because a refund exists or is processing.");
+    }
+
+    const disputeClear =
+      !booking.dispute ||
+      (booking.dispute.status === "won" &&
+        booking.dispute.fundsReinstated === true);
+    if (!disputeClear || charge.disputed) {
+      throw new Error("Settlement is blocked because a payment dispute is unresolved.");
+    }
+
+    const disputeReviewOnly =
+      booking.paymentIntegrityStatus !== "review_required" ||
+      Boolean(
+        booking.dispute &&
+          disputeClear &&
+          /dispute/i.test(booking.paymentIntegrityIssue ?? ""),
+      );
+    if (!disputeReviewOnly) {
+      throw new Error(
+        "Settlement cannot clear an unrelated payment-integrity review.",
+      );
+    }
+
+    const allowedHold =
+      !booking.financialHoldStatus ||
+      booking.financialHoldStatus === "none" ||
+      (booking.financialHoldStatus === "manual_review" && disputeClear);
+    if (!allowedHold) {
+      throw new Error(
+        `Settlement is blocked by ${booking.financialHoldStatus?.replaceAll("_", " ")}.`,
+      );
+    }
+
+    const approvedSettlementForWrite = {
+      ...booking.settlement,
+      status: "approved" as const,
+      holdReason: null,
+      reviewReference: params.reviewReference,
+      approvedBy: params.actorId,
+      approvedAt: FieldValue.serverTimestamp(),
+    };
+    transaction.update(bookingRef, {
+      settlement: approvedSettlementForWrite,
+      financialHoldStatus: "none",
+      paymentIntegrityStatus: "verified",
+      paymentIntegrityIssue: null,
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+    transaction.set(auditRef, {
+      action: "operator_settlement_approved",
+      auditId: auditRef.id,
+      bookingId: booking.id,
+      actorId: params.actorId,
+      reviewReference: params.reviewReference,
+      paymentIntentId: paymentIntent.id,
+      chargeId: charge.id,
+      capturedAmount: paymentIntent.amount_received,
+      refundedAmount: charge.amount_refunded,
+      chargeDisputed: charge.disputed,
+      disputeId: booking.dispute?.id ?? null,
+      disputeStatus: booking.dispute?.status ?? null,
+      disputeFundsReinstated: booking.dispute?.fundsReinstated ?? null,
+      settlement: {
+        grossFare: booking.settlement.grossFare,
+        serviceFee: booking.settlement.serviceFee ?? 0,
+        operatorSettlement: booking.settlement.operatorSettlement ?? 0,
+        feeAgreementId: booking.settlement.feeAgreementId ?? null,
+      },
+      createdAt: FieldValue.serverTimestamp(),
+    });
+
+    return {
+      ...booking.settlement,
+      status: "approved" as const,
+      holdReason: null,
+      reviewReference: params.reviewReference,
+      approvedBy: params.actorId,
+      approvedAt: approvedAtIso,
+    };
+  });
+
+  return { bookingId: params.bookingId, settlement: result };
+}
+
+export async function holdOperatorSettlement(params: {
+  bookingId: string;
+  actorId: string;
+  reason: string;
+  reviewReference: string;
+}) {
+  const db = getAdminDb();
+  const bookingRef = db.collection("bookings").doc(params.bookingId);
+  const auditRef = db.collection("settlementAudit").doc();
+
+  const settlement = await db.runTransaction(async (transaction) => {
+    const snapshot = await transaction.get(bookingRef);
+    if (!snapshot.exists) throw new Error("Booking not found.");
+    const booking = { id: snapshot.id, ...snapshot.data() } as RideBooking;
+    if (booking.status !== "completed") {
+      throw new Error("Only completed trips can have operator settlement held.");
+    }
+    if (!booking.settlement) {
+      throw new Error("This trip does not have a settlement calculation.");
+    }
+    if (booking.settlement.status === "paid") {
+      throw new Error("A recorded paid settlement cannot be changed by this control.");
+    }
+
+    const held = {
+      ...booking.settlement,
+      status: "held" as const,
+      holdReason: params.reason,
+      reviewReference: params.reviewReference,
+      approvedBy: null,
+      approvedAt: null,
+    };
+    transaction.update(bookingRef, {
+      settlement: held,
+      financialHoldStatus: "manual_review",
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+    transaction.set(auditRef, {
+      action: "operator_settlement_held",
+      auditId: auditRef.id,
+      bookingId: booking.id,
+      actorId: params.actorId,
+      reason: params.reason,
+      reviewReference: params.reviewReference,
+      priorStatus: booking.settlement.status,
+      createdAt: FieldValue.serverTimestamp(),
+    });
+    return held;
+  });
+
+  return { bookingId: params.bookingId, settlement };
+}
+
+async function retrieveLatestCharge(
+  stripe: Stripe,
+  paymentIntent: Stripe.PaymentIntent,
+) {
+  const latestChargeId = expandableId(paymentIntent.latest_charge);
+  if (!latestChargeId) {
+    throw new Error("Settlement cannot be approved without a Stripe Charge record.");
+  }
+  return stripe.charges.retrieve(latestChargeId);
+}
+
+function assertChargeReadyForSettlement(
+  charge: Stripe.Charge,
+  paymentIntent: Stripe.PaymentIntent,
+) {
+  if (!charge.paid || charge.status !== "succeeded") {
+    throw new Error("The Stripe Charge is not settled successfully.");
+  }
+  if (charge.currency.toLowerCase() !== "usd") {
+    throw new Error("The Stripe Charge currency is invalid for this settlement.");
+  }
+  if (expandableId(charge.payment_intent) !== paymentIntent.id) {
+    throw new Error("The Stripe Charge belongs to a different PaymentIntent.");
+  }
+  if (charge.refunded || charge.amount_refunded > 0) {
+    throw new Error("The Stripe Charge has been refunded or partially refunded.");
+  }
+  if (charge.disputed) {
+    throw new Error("The Stripe Charge is currently disputed.");
+  }
+}
+
+function expandableId(value: string | { id?: string } | null | undefined) {
+  if (typeof value === "string") return value;
+  if (value && typeof value.id === "string") return value.id;
+  return null;
+}

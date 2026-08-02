@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { LogOut, Map, Route, ShieldCheck, UserRound } from "lucide-react";
+import {
+  CalendarDays,
+  LogOut,
+  Map,
+  Route,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useAuth } from "@/components/auth-provider";
@@ -51,7 +58,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     setWorking(true);
     try {
       await fetch("/api/auth/session", { method: "DELETE" });
-      await signOut(auth);
+      if (auth) await signOut(auth);
       setOpen(false);
       router.replace("/login");
       router.refresh();
@@ -141,9 +148,15 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               onSelect={() => setOpen(false)}
             />
             <MenuLink
-              href="/trips"
-              label="My trips"
+              href="/planner"
+              label="Saved itinerary"
               icon={Route}
+              onSelect={() => setOpen(false)}
+            />
+            <MenuLink
+              href="/trips"
+              label="Bookings & ride history"
+              icon={CalendarDays}
               onSelect={() => setOpen(false)}
             />
             {operationsHref ? (

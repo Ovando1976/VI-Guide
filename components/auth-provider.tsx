@@ -9,8 +9,19 @@ const AuthContext = createContext<AuthState>({ user: null, loading: true });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AuthState>({ user: null, loading: true });
-  useEffect(() => onIdTokenChanged(auth, (user) => setState({ user, loading: false })), []);
+
+  useEffect(() => {
+    if (!auth) {
+      setState({ user: null, loading: false });
+      return;
+    }
+
+    return onIdTokenChanged(auth, (user) => setState({ user, loading: false }));
+  }, []);
+
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;
 }
 
-export function useAuth() { return useContext(AuthContext); }
+export function useAuth() {
+  return useContext(AuthContext);
+}

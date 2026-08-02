@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { parseJsonBody } from "@/lib/api/request";
 
 type RouteRequestBody = {
   from: { lat: number; lng: number };
@@ -7,7 +8,8 @@ type RouteRequestBody = {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as RouteRequestBody;
+    const parsed = await parseJsonBody<RouteRequestBody>(request);
+    const body = parsed.ok ? parsed.value : null;
 
     if (
       !body?.from ||

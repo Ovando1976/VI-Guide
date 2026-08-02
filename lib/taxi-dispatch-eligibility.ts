@@ -5,8 +5,52 @@ import type { RideBooking } from "@/types/mobility";
 import type { DriverProfile, VehicleRecord } from "@/types/driver";
 import type { TaxiAssociation } from "@/types/taxi-operations";
 
-function futureOrUnspecified(value?: string | null) {
-  return !value || new Date(value).getTime() > Date.now();
+function hasCurrentExpiration(value?: string | null) {
+  if (!value) return false;
+  const expiresAt = Date.parse(value);
+  return Number.isFinite(expiresAt) && expiresAt > Date.now();
+}
+
+function hasVerifiedCapturedPayment(booking: RideBooking) {
+  const expectedAmount = Math.round(Number(booking.quotedFare?.total ?? 0) * 100);
+  return (
+    booking.paymentStatus === "paid" &&
+    booking.paymentIntegrityStatus === "verified" &&
+    typeof booking.paymentIntentId === "string" &&
+    booking.paymentIntentId.length > 0 &&
+    Number.isSafeInteger(expectedAmount) &&
+    expectedAmount >= 50 &&
+    booking.amountAuthorized === expectedAmount &&
+    booking.amountCaptured === expectedAmount
+  );
+}
+
+function assertNoFinancialHold(booking: RideBooking) {
+  if (
+    booking.cancellationStatus === "processing" ||
+    booking.cancellationStatus === "review_required"
+  ) {
+    throw new Error(
+      "Dispatch is blocked while cancellation is processing or under review.",
+    );
+  }
+  if (
+    booking.financialHoldStatus &&
+    booking.financialHoldStatus !== "none"
+  ) {
+    throw new Error(
+      `Dispatch is blocked by a financial hold: ${booking.financialHoldStatus.replaceAll("_", " ")}.`,
+    );
+  }
+  if (booking.refund && booking.refund.status !== "not_required") {
+    throw new Error("Dispatch is blocked because a refund exists for this ride.");
+  }
+  if (
+    booking.dispute &&
+    !["won", "prevented", "warning_closed"].includes(booking.dispute.status)
+  ) {
+    throw new Error("Dispatch is blocked because the payment is disputed.");
+  }
 }
 
 export function assertDispatchEligible(params: {
@@ -14,7 +58,14 @@ export function assertDispatchEligible(params: {
   driverSnapshot: DocumentSnapshot<DocumentData>;
   vehicleSnapshot: DocumentSnapshot<DocumentData>;
   associationSnapshot: DocumentSnapshot<DocumentData>;
+  allowedAvailability?: DriverProfile["availability"][];
 }) {
+  assertNoFinancialHold(params.booking);
+  if (!hasVerifiedCapturedPayment(params.booking)) {
+    throw new Error(
+      "Payment must clear with a verified Stripe record before dispatch can proceed.",
+    );
+  }
   if (!params.driverSnapshot.exists) throw new Error("Driver record not found.");
   if (!params.vehicleSnapshot.exists) throw new Error("Assigned fleet vehicle not found.");
   if (!params.associationSnapshot.exists) throw new Error("Taxi association record not found.");
@@ -22,21 +73,21 @@ export function assertDispatchEligible(params: {
   const driver = { id: params.driverSnapshot.id, ...params.driverSnapshot.data() } as DriverProfile;
   const vehicle = { id: params.vehicleSnapshot.id, ...params.vehicleSnapshot.data() } as VehicleRecord;
   const association = { id: params.associationSnapshot.id, ...params.associationSnapshot.data() } as TaxiAssociation;
+  const allowedAvailability = params.allowedAvailability ?? ["available"];
 
   if (!driver.verified || driver.authorizationStatus !== "active") throw new Error("Driver is not actively authorized for taxi dispatch.");
-  if (!driver.taxiCommissionBadgeNumber || !futureOrUnspecified(driver.taxiCommissionBadgeExpiresAt)) throw new Error("Driver Taxicab Commission credential is missing or expired.");
-  if (!driver.licenseClass || !futureOrUnspecified(driver.licenseExpiresAt)) throw new Error("Driver license credential is missing or expired.");
-  if (driver.availability !== "available") throw new Error("Driver is not available.");
+  if (!driver.taxiCommissionBadgeNumber || !hasCurrentExpiration(driver.taxiCommissionBadgeExpiresAt)) throw new Error("Driver Taxicab Commission credential is missing, invalid, or expired.");
+  if (!driver.licenseClass || !hasCurrentExpiration(driver.licenseExpiresAt)) throw new Error("Driver license credential is missing, invalid, or expired.");
+  if (!allowedAvailability.includes(driver.availability)) throw new Error("Driver availability is not valid for this trip action.");
   if (!driver.islands.includes(params.booking.island)) throw new Error("Driver is not authorized for the booking island.");
   if (!driver.associationId || driver.associationId !== association.id || association.status !== "active") throw new Error("Driver does not belong to an active taxi association.");
   if (params.booking.associationId && params.booking.associationId !== association.id) throw new Error("Driver belongs to a different taxi association than the assigned dispatch.");
   if (!vehicle.active || vehicle.driverId !== driver.id || vehicle.associationId !== association.id) throw new Error("Vehicle is not active in the driver's association fleet.");
-  if (vehicle.inspectionStatus !== "active" || !futureOrUnspecified(vehicle.inspectionExpiresAt)) throw new Error("Vehicle inspection is missing or expired.");
-  if (vehicle.insuranceStatus !== "active" || !futureOrUnspecified(vehicle.insuranceExpiresAt)) throw new Error("Vehicle insurance is missing or expired.");
+  if (vehicle.inspectionStatus !== "active" || !hasCurrentExpiration(vehicle.inspectionExpiresAt)) throw new Error("Vehicle inspection is missing, invalid, or expired.");
+  if (vehicle.insuranceStatus !== "active" || !hasCurrentExpiration(vehicle.insuranceExpiresAt)) throw new Error("Vehicle insurance is missing, invalid, or expired.");
   if (!vehicle.taxiPlate || !vehicle.medallionNumber) throw new Error("Vehicle taxi plate or medallion is missing.");
   if (vehicle.capacity < params.booking.passengers) throw new Error("Vehicle passenger capacity is too small for this trip.");
   if (vehicle.luggageCapacity < params.booking.luggage) throw new Error("Vehicle luggage capacity is too small for this trip.");
 
   return { driver, vehicle, association };
 }
-

@@ -20,34 +20,33 @@ export function TerritoryKpiBar(props: Props) {
   return (
     <section
       aria-label="Current territory status"
-      className="flex min-h-14 items-center gap-3 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="flex min-h-14 items-center gap-3 overflow-x-auto rounded-[22px] border border-[#d8e7e3] bg-white/95 px-4 py-3 text-[#12312f] shadow-[0_12px_32px_rgba(18,49,47,.07)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <div className="min-w-max pr-2">
-        <div className="text-[8px] font-extrabold uppercase tracking-[0.18em] text-cyan-100/40">
-          Active territory
+        <div className="text-[8px] font-extrabold uppercase tracking-[0.18em] text-[#0f766e]/55">
+          Active island
         </div>
-        <div className="mt-0.5 text-sm font-extrabold text-white">
+        <div className="mt-0.5 text-sm font-extrabold text-[#12312f]">
           {props.islandName}
         </div>
       </div>
       <StatusChip label="Estates" value={String(props.visibleEstates)} />
       {props.selectedEstate !== "None" ? (
-        <StatusChip label="Focus" value={props.selectedEstate} />
+        <StatusChip label="Selected" value={props.selectedEstate} />
       ) : null}
       {hasActiveTrip ? (
         <>
-          <StatusChip label="Pickup" value={props.pickup} />
-          <span className="text-white/25">→</span>
-          <StatusChip label="Destination" value={props.destination} />
+          <StatusChip label="From" value={props.pickup} />
+          <span className="text-[#0f766e]/35">→</span>
+          <StatusChip label="To" value={props.destination} />
         </>
       ) : (
-        <span className="min-w-max text-xs font-semibold text-white/40">
-          Select a place or estate to begin
+        <span className="min-w-max text-xs font-semibold text-[#61716e]">
+          Choose a place to explore, save, or plan a ride
         </span>
       )}
-      <div className="ml-auto min-w-max rounded-full border border-amber-200/15 bg-amber-200/[0.07] px-3 py-2 text-[9px] font-extrabold uppercase tracking-[0.1em] text-amber-100/75">
-        {props.mode.replace("-", " ")} · {props.passengers} pax ·{" "}
-        {props.luggage} bags
+      <div className="ml-auto min-w-max rounded-full border border-[#ead29b] bg-[#fff8e8] px-3 py-2 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#996313]">
+        {props.mode.replace("-", " ")} · {props.passengers} pax · {props.luggage} bags
       </div>
     </section>
   );
@@ -55,11 +54,11 @@ export function TerritoryKpiBar(props: Props) {
 
 function StatusChip({ label, value }: { label: string; value: string }) {
   return (
-    <div className="min-w-max rounded-full border border-white/10 bg-black/10 px-3 py-2">
-      <span className="text-[8px] font-extrabold uppercase tracking-[0.12em] text-white/30">
+    <div className="min-w-max rounded-full border border-[#dbe8e5] bg-[#f7fbfa] px-3 py-2">
+      <span className="text-[8px] font-extrabold uppercase tracking-[0.12em] text-[#0f766e]/45">
         {label}
       </span>{" "}
-      <span className="text-[10px] font-bold text-white/80">{value}</span>
+      <span className="text-[10px] font-bold text-[#34514e]">{value}</span>
     </div>
   );
 }

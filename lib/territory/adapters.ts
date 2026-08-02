@@ -41,7 +41,7 @@ export function estateToTerritoryEntity(estate: EstateRecord): TerritoryEntity {
     estateGeoid: estate.geoid,
     categories: ["estate"],
     tags: [estate.county, estate.estateCode].filter((value): value is string =>
-      Boolean(value)
+      Boolean(value),
     ),
     status: "active",
     attributes: {
@@ -66,15 +66,15 @@ export function estateToTerritoryEntity(estate: EstateRecord): TerritoryEntity {
 
 export function travelKnowledgeToTerritoryEntity(
   record: TravelKnowledgeRecord,
-  kindOverride?: TerritoryEntityKind
+  kindOverride?: TerritoryEntityKind,
 ): TerritoryEntity {
   const coordinate = resolveCoordinate(
     record.island,
     record.slug ?? record.id,
-    record
+    record,
   );
   const category = String(
-    record.category ?? kindOverride ?? "place"
+    record.category ?? kindOverride ?? "place",
   ).toLowerCase();
   const kind = kindOverride ?? categoryToKind(category);
   const excluded = new Set([
@@ -95,7 +95,7 @@ export function travelKnowledgeToTerritoryEntity(
     "location",
   ]);
   const attributes = Object.fromEntries(
-    Object.entries(record).filter(([key]) => !excluded.has(key))
+    Object.entries(record).filter(([key]) => !excluded.has(key)),
   );
 
   return {
@@ -130,12 +130,12 @@ export function travelKnowledgeToTerritoryEntity(
 }
 
 export function accommodationToTerritoryEntity(
-  record: AccommodationRecord
+  record: AccommodationRecord,
 ): TerritoryEntity {
   const coordinate = resolveCoordinate(
     record.island,
     record.slug ?? record.id,
-    record
+    record,
   );
   return {
     id: `stay:${record.id}`,
@@ -187,7 +187,7 @@ export function accommodationToTerritoryEntity(
 }
 
 export function territoryEntityToMapPlace(
-  entity: TerritoryEntity
+  entity: TerritoryEntity,
 ): TerritoryMapPlace {
   return {
     id: entity.id,
@@ -195,10 +195,7 @@ export function territoryEntityToMapPlace(
     island: entity.island,
     lat: entity.position?.lat,
     lng: entity.position?.lng,
-    // EstateMap and ExplorerMapScreen still consume the legacy display
-    // categories. Keep the unified entity kind as `type`, but translate the
-    // category so Beaches, Stays, and Historic lenses can match correctly.
-    category: mapDisplayCategory(entity.kind),
+    category: mapDisplayCategory(entity),
     type: entity.kind,
     location:
       typeof entity.attributes.location === "string"
@@ -211,13 +208,20 @@ export function territoryEntityToMapPlace(
 }
 
 function mapDisplayCategory(
-  kind: TerritoryEntityKind
+  entity: TerritoryEntity,
 ): TerritoryMapPlace["category"] {
-  if (kind === "beach") return "Beach";
-  if (kind === "stay") return "Hotel";
-  if (kind === "historic") return "Landmark";
-  if (kind === "transport") return "Transit";
-  return "Place";
+  if (entity.kind === "beach") return "Beach";
+  if (entity.kind === "stay") return "Hotel";
+  if (entity.kind === "historic") return "Landmark";
+  if (entity.kind === "transport") return "Transit";
+
+  const semantic = entity.categories.find(
+    (category) =>
+      category !== entity.kind &&
+      !["place", "active"].includes(category.toLowerCase()),
+  );
+
+  return semantic ?? "Place";
 }
 
 function categoryToKind(category: string): TerritoryEntityKind {

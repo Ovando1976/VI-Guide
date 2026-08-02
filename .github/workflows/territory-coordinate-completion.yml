@@ -1,0 +1,131 @@
+name: Territory Coordinate Completion
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 9 * * 2"
+  push:
+    paths:
+      - "data/travel-knowledge/places.json"
+      - "data/travel-knowledge/beaches.json"
+      - "data/travel-knowledge/historic-sites.json"
+      - "data/catalog/restaurants.generated.json"
+      - "scripts/resolve-territory-coordinates.ts"
+      - ".github/workflows/territory-coordinate-completion.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Require Google Places secret
+        shell: bash
+        run: |
+          if [ -z "$GOOGLE_PLACES_API_KEY" ]; then
+            echo "GOOGLE_PLACES_API_KEY is required in GitHub Actions secrets." >&2
+            exit 1
+          fi
+
+      - name: Resolve all unresolved territory coordinates
+        run: npm run coordinates:retry
+
+      - name: Build marker coverage report
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const places = JSON.parse(fs.readFileSync('data/travel-knowledge/places.json', 'utf8'));
+          const registry = JSON.parse(fs.readFileSync('data/territory-coordinates.json', 'utf8'));
+          const quarantine = JSON.parse(fs.readFileSync('data/territory-coordinate-quarantine.json', 'utf8'));
+
+          const normalize = (value) => String(value)
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '');
+
+          const key = (record) => `${record.island}:${normalize(record.slug || record.id)}`;
+          const missing = places.filter((record) => {
+            const inline = Number.isFinite(record.lat) && Number.isFinite(record.lng);
+            return !inline && !registry[key(record)];
+          });
+
+          const byIsland = places.reduce((counts, record) => {
+            counts[record.island] = (counts[record.island] || 0) + 1;
+            return counts;
+          }, {});
+
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            `## Territory marker completion\n\n` +
+            `- Place catalog: ${places.length}\n` +
+            `- Positioned: ${places.length - missing.length}\n` +
+            `- Unresolved: ${missing.length}\n` +
+            `- Quarantined: ${quarantine.length}\n` +
+            `- By island: ${JSON.stringify(byIsland)}\n`
+          );
+
+          fs.mkdirSync('reports/catalog', { recursive: true });
+          fs.writeFileSync(
+            'reports/catalog/unresolved-territory-markers.json',
+            JSON.stringify(missing, null, 2) + '\n'
+          );
+          NODE
+
+      - name: Commit all newly verified coordinates
+        shell: bash
+        run: |
+          if git diff --quiet -- data/territory-coordinates.json data/territory-coordinate-quarantine.json reports/catalog/unresolved-territory-markers.json; then
+            echo "No coordinate changes detected." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "vi-guide-coordinate-bot"
+          git config user.email "vi-guide-coordinate-bot@users.noreply.github.com"
+          git add data/territory-coordinates.json data/territory-coordinate-quarantine.json reports/catalog/unresolved-territory-markers.json
+          git commit -m "data: publish verified territory marker coordinates"
+          git push
+
+      - name: Report remaining unresolved markers
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const missing = JSON.parse(fs.readFileSync('reports/catalog/unresolved-territory-markers.json', 'utf8'));
+          if (missing.length > 0) {
+            console.log(`Coverage remains incomplete: ${missing.length} records still require review.`);
+            console.log('Verified coordinates from this run were still committed to production.');
+          } else {
+            console.log('Complete marker coverage achieved.');
+          }
+          NODE
+
+      - name: Upload unresolved marker review packet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: territory-marker-resolution
+          path: |
+            data/territory-coordinates.json
+            data/territory-coordinate-quarantine.json
+            reports/catalog/unresolved-territory-markers.json
+          retention-days: 30

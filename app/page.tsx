@@ -1,105 +1,177 @@
-import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 import Link from "next/link";
 import {
   ArrowRight,
   BedDouble,
-  Check,
-  ChevronRight,
   Compass,
-  Headphones,
   History,
-  Map,
   MapPin,
   Navigation,
-  Palmtree,
-  ShieldCheck,
+  Search,
   Sparkles,
   Star,
+  SunMedium,
+  UtensilsCrossed,
   Waves,
 } from "lucide-react";
 
-const JOURNEYS = [
-  { eyebrow: "Move", title: "Plan an island taxi", description: "Build an estate-to-estate trip using the official USVI taxi structure for airport arrivals, ferry transfers, beaches, resorts, and nights out.", href: "/mobility", action: "Plan a taxi", icon: Navigation, className: "home-journey--gold" },
-  { eyebrow: "Discover", title: "Explore the territory", description: "See estates, local places, beaches, history, stays, and movement context together on one intelligent map.", href: "/map?mode=discovery", action: "Open the map", icon: Map, className: "home-journey--aqua" },
-  { eyebrow: "Stay", title: "Find your island base", description: "Compare accommodations by island, area, and what you want within reach during your trip.", href: "/accommodations", action: "Browse stays", icon: BedDouble, className: "home-journey--cream" },
-] as const;
+import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 
 const ISLANDS = [
-  { code: "STT", name: "St. Thomas", detail: "Harbor energy, beaches, dining, and east-end escapes", href: "/map?island=STT" },
-  { code: "STJ", name: "St. John", detail: "Ferry-first adventures, national park, coves, and villas", href: "/map?island=STJ" },
-  { code: "STX", name: "St. Croix", detail: "Historic towns, long coastlines, food, and cross-island days", href: "/map?island=STX" },
+  {
+    code: "STT",
+    name: "St. Thomas",
+    line: "Vibrant & dynamic",
+    href: "/map?island=stt",
+    image: "/images/usvi-harbor-hero.jpg",
+  },
+  {
+    code: "STJ",
+    name: "St. John",
+    line: "Natural & serene",
+    href: "/map?island=stj",
+    image: "/images/places/st-john/trunk-bay-beach-1.jpg",
+  },
+  {
+    code: "STX",
+    name: "St. Croix",
+    line: "Rich & authentic",
+    href: "/map?island=stx",
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+  },
 ] as const;
 
-const DISCOVER = [
-  { title: "Beaches", detail: "53 shores across the territory", href: "/beaches", icon: Waves },
-  { title: "Places", detail: "150 local places to know", href: "/places", icon: Palmtree },
-  { title: "History", detail: "Stories rooted in place", href: "/historic", icon: History },
-  { title: "Saved trips", detail: "Return to your plans", href: "/trips", icon: Navigation },
+const QUICK = [
+  { label: "Beaches", href: "/beaches", icon: Waves },
+  { label: "Stays", href: "/accommodations", icon: BedDouble },
+  { label: "Concierge", href: "/concierge", icon: Sparkles },
+  { label: "Ride", href: "/mobility", icon: Navigation },
+  { label: "Dining", href: "/places?category=restaurant", icon: UtensilsCrossed },
+  { label: "Heritage", href: "/heritage", icon: History },
 ] as const;
+
+const CONCIERGE_START_HREF =
+  "/concierge?open=true&prompt=Plan%20a%20complete%20Virgin%20Islands%20day%20for%20me";
 
 export default function Home() {
   return (
-    <main className="home-page min-h-screen overflow-hidden pb-32 text-[#043331]">
-      <section className="home-hero relative isolate min-h-[760px] overflow-hidden px-5 pb-28 pt-8 text-white sm:px-8 lg:px-12 lg:pb-36 lg:pt-12">
-        <div className="home-hero__photo absolute inset-0 -z-30" />
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(2,34,33,.96)_0%,rgba(3,48,46,.86)_42%,rgba(3,44,43,.34)_76%,rgba(3,35,34,.62)_100%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_82%_20%,rgba(20,184,166,.35),transparent_30%),linear-gradient(180deg,transparent_65%,rgba(4,51,49,.78))]" />
+    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-32 text-[#073b39]">
+      <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 sm:px-8 lg:px-12 lg:pb-28">
+        <div className="absolute inset-0 -z-30 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_42%]" />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,.16)_0%,rgba(255,255,255,0)_58%,rgba(247,243,234,.82)_100%)]" />
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
-          <Link href="/" className="inline-flex items-center gap-3" aria-label="VI Guide home">
+        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/72 px-4 py-3 shadow-[0_14px_40px_rgba(4,51,49,.10)] backdrop-blur-xl sm:px-5">
+          <Link href="/" className="flex items-center gap-3" aria-label="VI Guide home">
             <ViBrandMark className="h-11 w-11" priority />
-            <span><strong className="block text-sm font-black tracking-[.02em]">VI Guide</strong><span className="block text-[9px] font-bold uppercase tracking-[.23em] text-white/55">The territory, connected</span></span>
+            <div>
+              <div className="font-serif text-xl font-bold tracking-[.02em]">VI Guide</div>
+              <div className="text-[8px] font-black uppercase tracking-[.25em] text-[#b16a18]">U.S. Virgin Islands</div>
+            </div>
           </Link>
-          <Link href="/map?concierge=open" className="hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur transition hover:bg-white/15 sm:inline-flex"><Sparkles size={15} /> Ask the concierge</Link>
-        </div>
+          <div className="flex items-center gap-2">
+            <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
+            <Link href={CONCIERGE_START_HREF} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
+              <Sparkles size={14} /> Ask VI Concierge
+            </Link>
+          </div>
+        </header>
 
-        <div className="mx-auto grid max-w-7xl items-end gap-12 pt-24 lg:grid-cols-[1.15fr_.85fr] lg:pt-32">
+        <div className="mx-auto grid max-w-7xl gap-10 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:pt-20">
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.23em] text-[#f8ca62] backdrop-blur"><MapPin size={14} /> U.S. Virgin Islands · local intelligence</div>
-            <h1 className="max-w-4xl text-[clamp(3.5rem,7vw,6.7rem)] font-black leading-[.88] tracking-[-.065em]">The islands,<br /><span className="font-serif font-medium italic text-[#8ce7db]">within reach.</span></h1>
-            <p className="mt-8 max-w-2xl text-lg font-medium leading-8 text-white/75 sm:text-xl">A smarter guide to St. Thomas, St. John, and St. Croix—built to help you discover well, decide confidently, and move naturally.</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/map" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#f5b942] px-7 text-[11px] font-black uppercase tracking-[.18em] text-[#043331] shadow-[0_20px_48px_rgba(0,0,0,.28)] transition hover:-translate-y-0.5 hover:bg-[#ffca55]">Explore the islands <ArrowRight size={17} /></Link>
-              <Link href="/mobility" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-white/25 bg-white/10 px-7 text-[11px] font-black uppercase tracking-[.18em] text-white backdrop-blur transition hover:bg-white/16"><Navigation size={17} /> Plan a ride</Link>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#b16a18]/20 bg-white/74 px-4 py-2 text-[9px] font-black uppercase tracking-[.23em] text-[#9a5a17] shadow-sm backdrop-blur">
+              <SunMedium size={14} /> Experience paradise with confidence
             </div>
-            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-[10px] font-bold uppercase tracking-[.16em] text-white/55">
-              <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#6ee7d6]" /> Three islands</span>
-              <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#6ee7d6]" /> 200+ local records</span>
-              <span className="inline-flex items-center gap-2"><Check size={14} className="text-[#6ee7d6]" /> Official taxi-rate logic</span>
-            </div>
+            <h1 className="mt-6 max-w-4xl font-serif text-[clamp(3.7rem,8vw,7rem)] font-semibold leading-[.84] tracking-[-.055em] drop-shadow-[0_2px_12px_rgba(255,255,255,.55)]">
+              Paradise is<br /><span className="italic text-[#159b91]">calling you.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-[#173f3c] sm:text-lg">
+              Discover beaches, stays, culture, dining, and transportation across St. Thomas, St. John, and St. Croix — all in one trusted local guide.
+            </p>
+            <Link href="/search" className="mt-8 flex max-w-xl items-center gap-3 rounded-[22px] border border-white/80 bg-white/92 p-2 pl-5 shadow-[0_20px_55px_rgba(4,51,49,.16)] transition hover:bg-white">
+              <Search size={19} className="text-[#0f766e]" />
+              <span className="flex-1 text-sm font-semibold text-slate-500">Search beaches, stays, tours, food, history…</span>
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0f766e] text-white"><ArrowRight size={18} /></span>
+            </Link>
           </div>
 
-          <aside className="home-concierge-card overflow-hidden rounded-[34px] border border-white/15 bg-[#062f2e]/80 shadow-[0_36px_90px_rgba(0,0,0,.38)] backdrop-blur-xl">
-            <div className="border-b border-white/10 p-6 sm:p-7">
-              <div className="flex items-center justify-between"><span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f8ca62]"><span className="h-2 w-2 rounded-full bg-[#66e5d5] shadow-[0_0_18px_#66e5d5]" /> VI Guide Concierge</span><Headphones size={18} className="text-white/45" /></div>
-              <h2 className="mt-4 text-3xl font-black tracking-[-.04em]">Start with what you want your day to feel like.</h2>
-              <p className="mt-3 text-sm font-medium leading-6 text-white/65">Tell me your island, pace, people, and priorities. I’ll turn them into a grounded plan you can explore and act on.</p>
+          <aside className="overflow-hidden rounded-[34px] border border-white/80 bg-[#fffdf8]/94 shadow-[0_28px_70px_rgba(4,51,49,.16)] backdrop-blur-xl">
+            <div className="flex items-center justify-between border-b border-[#dce8e4] p-6 sm:p-7">
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">Explore the islands</div>
+                <h2 className="mt-2 font-serif text-3xl font-bold tracking-[-.035em]">Find your island rhythm.</h2>
+              </div>
+              <Compass className="text-[#0f766e]" />
             </div>
-            <div className="space-y-2 p-4 sm:p-5">
-              {["A quiet St. John beach day without a car", "Dinner in Charlotte Amalie, then a ride home", "Three days on St. Croix with history and food"].map((prompt) => <Link key={prompt} href={`/map?concierge=open&prompt=${encodeURIComponent(prompt)}`} className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[.055] p-4 text-sm font-bold text-white/82 transition hover:border-[#67dfd1]/35 hover:bg-white/[.09]"><span>{prompt}</span><ChevronRight size={17} className="shrink-0 text-[#79dfd4] transition group-hover:translate-x-1" /></Link>)}
+            <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
+              {ISLANDS.map((island) => (
+                <Link key={island.code} href={island.href} className="group relative min-h-[190px] overflow-hidden rounded-[24px] border border-[#dbe7e3] bg-[#eaf6f3]">
+                  <div className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${island.image})` }} />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.02),rgba(4,51,49,.68))]" />
+                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <span className="rounded-full bg-[#0f766e]/90 px-2.5 py-1 text-[8px] font-black uppercase tracking-[.14em]">{island.code}</span>
+                    <div className="mt-3 text-xl font-black">{island.name}</div>
+                    <div className="mt-1 text-xs font-semibold text-white/80">{island.line}</div>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <Link href="/map?concierge=open" className="m-5 mt-0 flex items-center justify-between rounded-2xl bg-white px-5 py-4 text-sm font-black text-[#043331] transition hover:bg-[#fff7df]">Ask anything about the islands <ArrowRight size={18} /></Link>
           </aside>
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto -mt-16 max-w-7xl px-5 sm:px-8 lg:px-12" aria-labelledby="journey-heading">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><div><div className="home-kicker">Begin your journey</div><h2 id="journey-heading" className="mt-2 text-3xl font-black tracking-[-.04em] sm:text-4xl">What would make today better?</h2></div><p className="max-w-sm text-sm font-medium leading-6 text-slate-500">Every path stays connected—from first idea to final ride.</p></div>
-        <div className="grid gap-4 lg:grid-cols-3">{JOURNEYS.map(({ eyebrow, title, description, href, action, icon: Icon, className }) => <Link key={title} href={href} className={`home-journey group ${className}`}><span className="home-journey__icon"><Icon size={23} /></span><div className="mt-8 text-[10px] font-black uppercase tracking-[.22em] text-[#a85b16]">{eyebrow}</div><h3 className="mt-2 text-2xl font-black tracking-[-.03em]">{title}</h3><p className="mt-3 flex-1 text-[15px] font-medium leading-6 text-slate-600">{description}</p><span className="mt-7 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[.16em]">{action} <ArrowRight size={16} className="transition group-hover:translate-x-1" /></span></Link>)}</div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
-          <div className="lg:sticky lg:top-10"><div className="home-kicker">Choose your island</div><h2 className="mt-3 text-4xl font-black leading-[.98] tracking-[-.05em] sm:text-5xl">Three islands.<br /><span className="font-serif font-medium italic text-[#0f766e]">Three distinct rhythms.</span></h2><p className="mt-5 max-w-md font-medium leading-7 text-slate-600">VI Guide respects the differences that matter: ferry access, driving time, geography, atmosphere, and how a day actually unfolds.</p></div>
-          <div className="space-y-3">{ISLANDS.map((island, index) => <Link key={island.code} href={island.href} className="group grid gap-4 rounded-[26px] border border-[#dce6e3] bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-[#90cfc4] hover:shadow-xl sm:grid-cols-[70px_1fr_auto] sm:items-center"><span className="text-3xl font-black text-[#d6e5e1]">0{index + 1}</span><span><span className="block text-[10px] font-black uppercase tracking-[.22em] text-[#b05b13]">{island.code}</span><strong className="mt-1 block text-2xl font-black tracking-tight">{island.name}</strong><span className="mt-1 block text-sm font-medium leading-6 text-slate-500">{island.detail}</span></span><span className="grid h-11 w-11 place-items-center rounded-full bg-[#edf7f4] text-[#0f766e] transition group-hover:bg-[#043331] group-hover:text-white"><ArrowRight size={17} /></span></Link>)}</div>
+      <section className="relative z-10 mx-auto -mt-12 max-w-7xl px-4 sm:px-8 lg:px-12">
+        <div className="rounded-[30px] border border-[#d9e5e2] bg-white/96 p-4 shadow-[0_28px_80px_rgba(4,51,49,.14)] backdrop-blur sm:p-5">
+          <div className="mb-4 flex items-center justify-between px-1">
+            <div>
+              <div className="text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">Quick access</div>
+              <h2 className="mt-1 text-2xl font-black tracking-[-.035em]">Everything you need, one tap away.</h2>
+            </div>
+            <Star className="text-[#d7a22d]" size={20} />
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {QUICK.map(({ label, href, icon: Icon }) => (
+              <Link key={label} href={href} className="group flex min-h-[116px] flex-col items-center justify-center rounded-[22px] border border-[#dde9e6] bg-[#fbfdfc] p-4 text-center transition hover:-translate-y-0.5 hover:border-[#94cfc5] hover:bg-[#eff9f6] hover:shadow-lg">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e4f4f0] text-[#0f766e] transition group-hover:bg-[#073b39] group-hover:text-white"><Icon size={21} /></span>
+                <span className="mt-3 text-xs font-black">{label}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-[#dce6e3] bg-white/75 px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-7xl"><div className="flex flex-wrap items-end justify-between gap-4"><div><div className="home-kicker">Explore with context</div><h2 className="mt-2 text-3xl font-black tracking-[-.04em] sm:text-4xl">The useful parts of the islands, connected.</h2></div><Link href="/map" className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[.16em]">See everything on the map <ArrowRight size={16} /></Link></div><div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{DISCOVER.map(({ title, detail, href, icon: Icon }) => <Link key={title} href={href} className="group rounded-[24px] border border-[#dce6e3] bg-white p-5 transition hover:border-[#8fc8bf] hover:shadow-xl"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e8f5f2] text-[#0f766e]"><Icon size={21} /></span><strong className="mt-6 block text-lg font-black">{title}</strong><span className="mt-1 block text-sm font-medium text-slate-500">{detail}</span><ArrowRight size={16} className="mt-5 transition group-hover:translate-x-1" /></Link>)}</div></div>
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-8 lg:px-12">
+        <div className="grid gap-6 lg:grid-cols-3">
+          <article className="rounded-[30px] border border-[#92d2c7] bg-[linear-gradient(145deg,#e8f8f4,#d9f2ed)] p-7">
+            <Waves className="text-[#0f766e]" /><h2 className="mt-8 font-serif text-3xl font-bold">A beach day that flows</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Pair a verified shoreline with nearby food, timing, and a reliable ride home.</p>
+          </article>
+          <article className="rounded-[30px] border border-[#ead19c] bg-[linear-gradient(145deg,#fff8e8,#f8edcf)] p-7">
+            <History className="text-[#a85b16]" /><h2 className="mt-8 font-serif text-3xl font-bold">Walk into living history</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Explore forts, estates, churches, archives, and stories rooted in place.</p>
+          </article>
+          <article className="rounded-[30px] border border-[#dbe5e2] bg-white p-7">
+            <Sparkles className="text-[#0f766e]" /><h2 className="mt-8 font-serif text-3xl font-bold">Let Concierge plan the day</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Tell VI Concierge your mood, timing, and island. Get a practical plan you can actually follow.</p>
+          </article>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12"><div className="overflow-hidden rounded-[38px] bg-[#043331] p-8 text-white shadow-[0_30px_80px_rgba(4,51,49,.24)] sm:p-12 lg:flex lg:items-center lg:justify-between lg:gap-12"><div className="max-w-3xl"><div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f8ca62]"><Star size={14} /> Your trip, intelligently connected</div><h2 className="mt-4 text-4xl font-black tracking-[-.05em] sm:text-5xl">Come with a question.<br /><span className="font-serif font-medium italic text-[#7ce0d4]">Leave with a plan.</span></h2><p className="mt-5 max-w-2xl font-medium leading-7 text-white/65">The concierge understands the live map, your route, and the local directory—then gives you clear options without pretending to book or spend on your behalf.</p><div className="mt-6 flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-[.15em] text-white/55"><span className="inline-flex items-center gap-2"><ShieldCheck size={15} className="text-[#70dfd2]" /> Grounded recommendations</span><span className="inline-flex items-center gap-2"><Compass size={15} className="text-[#70dfd2]" /> Live territory context</span></div></div><Link href="/map?concierge=open" className="mt-8 inline-flex min-h-14 shrink-0 items-center justify-center gap-3 rounded-full bg-[#f5b942] px-7 text-[11px] font-black uppercase tracking-[.18em] text-[#043331] transition hover:bg-[#ffca55] lg:mt-0">Meet your concierge <ArrowRight size={17} /></Link></div></section>
+      <section className="px-4 pb-20 sm:px-8 lg:px-12">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[36px] bg-[#073b39] text-white shadow-[0_30px_90px_rgba(4,51,49,.2)] lg:grid-cols-[1.15fr_.85fr]">
+          <div className="p-8 sm:p-10 lg:p-12">
+            <div className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.24em] text-[#f5c451]"><Sparkles size={14} /> VI Concierge</div>
+            <h2 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[.98] tracking-[-.045em] sm:text-5xl">Tell us what kind of day you want.</h2>
+            <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/66">VI Concierge connects places, timing, transportation, and local context so your plan feels effortless.</p>
+            <Link href={CONCIERGE_START_HREF} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]">Start planning <ArrowRight size={16} /></Link>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden bg-[url('/images/places/st-john/trunk-bay-beach-1.jpg')] bg-cover bg-center">
+            <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(15,118,110,.35),rgba(6,59,57,.78))]" />
+            <div className="relative flex h-full items-end p-8">
+              <div className="rounded-[24px] bg-white p-5 text-[#073b39] shadow-xl">
+                <div className="text-[9px] font-black uppercase tracking-[.18em] text-[#b16a18]">One connected guide</div>
+                <div className="mt-3 flex items-center gap-3 text-sm font-bold"><MapPin size={16} className="text-[#0f766e]" /> Beaches, dining, heritage, stays, and rides in one synchronized experience.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
