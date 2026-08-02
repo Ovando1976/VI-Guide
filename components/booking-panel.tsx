@@ -483,9 +483,9 @@ export function BookingPanel({
                     Choose pickup and destination to see your route and official fare.
                   </div>
                   <div className="mt-3 space-y-2">
-                    <Promise icon={ShieldCheck} text="Published tariff only" />
-                    <Promise icon={Route} text="No distance estimate substitution" />
-                    <Promise icon={Clock3} text="Dispatch review for missing routes" />
+                    <ServicePromise icon={ShieldCheck} text="Published tariff only" />
+                    <ServicePromise icon={Route} text="No distance estimate substitution" />
+                    <ServicePromise icon={Clock3} text="Dispatch review for missing routes" />
                   </div>
                 </div>
               )}
@@ -731,9 +731,9 @@ function FareReview({
         <FareRow label="Luggage charge" value={fare.luggageFare} />
       </div>
       <div className="mt-5 space-y-3">
-        <Promise icon={ShieldCheck} text="Verified driver and vehicle assignment" />
-        <Promise icon={Clock3} text="Live trip tracking after payment" />
-        <Promise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
+        <ServicePromise icon={ShieldCheck} text="Verified driver and vehicle assignment" />
+        <ServicePromise icon={Clock3} text="Live trip tracking after payment" />
+        <ServicePromise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
       </div>
 
       <section className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50 p-4 text-amber-950">
@@ -819,7 +819,7 @@ function FareRow({ label, value }: { label: string; value: number }) {
   );
 }
 
-function Promise({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
+function ServicePromise({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
     <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
       <Icon className="h-4 w-4 shrink-0 text-teal-700" /> {text}
