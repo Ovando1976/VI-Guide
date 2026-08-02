@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Bookmark, Map, MapPin, Navigation, Star } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { dispatchIntelligenceMapFocus } from "@/lib/intelligence/map-focus-events";
 import type { IntelligenceRecommendation } from "@/types/intelligence";
 
 export interface PlaceCardProps {
@@ -23,6 +24,11 @@ export function PlaceCard({
   onRide,
   onSave,
 }: PlaceCardProps) {
+  function focusMap() {
+    dispatchIntelligenceMapFocus(recommendation, "concierge-recommendation");
+    onOpenMap();
+  }
+
   return (
     <article className="group overflow-hidden rounded-[22px] border border-white/10 bg-white/[.055] shadow-[0_16px_45px_rgba(0,0,0,.18)] transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/25">
       <div className="relative h-32 overflow-hidden bg-[#0b2933]">
@@ -55,7 +61,7 @@ export function PlaceCard({
           ))}
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <CardAction icon={<Map size={13} />} label="Open Map" onClick={onOpenMap} primary />
+          <CardAction icon={<Map size={13} />} label="Open Map" onClick={focusMap} primary />
           <CardAction icon={<MapPin size={13} />} label="View Details" onClick={onViewDetails} />
           <CardAction icon={<Navigation size={13} />} label="Plan Ride" onClick={onRide} />
           <CardAction icon={<Bookmark size={13} />} label="Save" onClick={onSave} />
