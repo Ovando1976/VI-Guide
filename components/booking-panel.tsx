@@ -141,6 +141,8 @@ export function BookingPanel({
   const [resultMessage, setResultMessage] = useState<string | null>(null);
   const [resultTone, setResultTone] = useState<"success" | "error" | null>(null);
   const [fare, setFare] = useState<FareBreakdown | null>(null);
+  const [pilotActive, setPilotActive] = useState(false);
+  const [pilotMessage, setPilotMessage] = useState<string | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
   const [acceptedOperatorDisclosure, setAcceptedOperatorDisclosure] =
@@ -157,6 +159,8 @@ export function BookingPanel({
 
     if (!fromEstate || !toEstate) {
       setFare(null);
+      setPilotActive(false);
+      setPilotMessage(null);
       setQuoteError(null);
       return () => controller.abort();
     }
@@ -181,10 +185,16 @@ export function BookingPanel({
           throw new Error(payload.error || "Official taxi rate unavailable.");
         }
         setFare(payload.fare as FareBreakdown);
+        setPilotActive(payload.pilotActive === true);
+        setPilotMessage(
+          typeof payload.pilotMessage === "string" ? payload.pilotMessage : null,
+        );
       })
       .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
         setFare(null);
+        setPilotActive(false);
+        setPilotMessage(null);
         setQuoteError(
           error instanceof Error
             ? error.message
@@ -202,6 +212,7 @@ export function BookingPanel({
   const canRequest = Boolean(
     routeReady &&
       fare &&
+      pilotActive &&
       acceptedOperatorDisclosure &&
       acceptedLegal &&
       !submitting,
@@ -454,6 +465,8 @@ export function BookingPanel({
                   canRequest={canRequest}
                   acceptedOperatorDisclosure={acceptedOperatorDisclosure}
                   acceptedLegal={acceptedLegal}
+                  pilotActive={pilotActive}
+                  pilotMessage={pilotMessage}
                   onOperatorDisclosureChange={setAcceptedOperatorDisclosure}
                   onLegalChange={setAcceptedLegal}
                   onRequest={requestRide}
@@ -697,6 +710,8 @@ function FareReview({
   canRequest,
   acceptedOperatorDisclosure,
   acceptedLegal,
+  pilotActive,
+  pilotMessage,
   onOperatorDisclosureChange,
   onLegalChange,
   onRequest,
@@ -706,6 +721,8 @@ function FareReview({
   canRequest: boolean;
   acceptedOperatorDisclosure: boolean;
   acceptedLegal: boolean;
+  pilotActive: boolean;
+  pilotMessage: string | null;
   onOperatorDisclosureChange: (accepted: boolean) => void;
   onLegalChange: (accepted: boolean) => void;
   onRequest: () => void;
@@ -735,6 +752,18 @@ function FareReview({
         <ServicePromise icon={Clock3} text="Live trip tracking after payment" />
         <ServicePromise icon={BriefcaseBusiness} text="Published USVI tariff pricing" />
       </div>
+
+      {!pilotActive ? (
+        <section className="mt-5 rounded-[22px] border border-sky-200 bg-sky-50 p-4 text-sky-950">
+          <div className="text-[9px] font-black uppercase tracking-[.18em] text-sky-700">
+            Official fare preview
+          </div>
+          <p className="mt-2 text-xs font-semibold leading-5">
+            {pilotMessage ||
+              "This published fare is available for planning. Online ride requests will open after verified local dispatch is activated."}
+          </p>
+        </section>
+      ) : null}
 
       <section className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50 p-4 text-amber-950">
         <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-700">
@@ -769,6 +798,8 @@ function FareReview({
         )}
         {submitting
           ? "Creating request…"
+          : !pilotActive
+            ? "Booking opens after pilot approval"
           : acceptedOperatorDisclosure && acceptedLegal
             ? "Continue to secure payment"
             : "Accept disclosures to continue"}
