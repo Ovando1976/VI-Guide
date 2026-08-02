@@ -1,6 +1,7 @@
 "use client";
 
 import { Cloud, CloudOff, Loader2 } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { User } from "firebase/auth";
 
@@ -18,6 +19,7 @@ type JourneyApiPayload = { plans?: unknown; error?: string };
 
 export function JourneyCloudSync() {
   const { user, loading: authLoading } = useAuth();
+  const pathname = usePathname();
   const [state, setState] = useState<SyncState>("local");
   const [message, setMessage] = useState("Saved on this device");
   const applyingRemote = useRef(false);
@@ -108,8 +110,13 @@ export function JourneyCloudSync() {
         ? CloudOff
         : Cloud;
 
+  if (pathname !== "/planner") return null;
+
   return (
     <div
+      className="fixed right-4 top-4 z-[9997] sm:right-6 sm:top-6"
+    >
+      <div
       className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] ${
         state === "error"
           ? "bg-rose-100 text-rose-800"
@@ -121,6 +128,7 @@ export function JourneyCloudSync() {
     >
       <Icon className={`h-3.5 w-3.5 ${state === "syncing" ? "animate-spin" : ""}`} />
       {message}
+      </div>
     </div>
   );
 }
