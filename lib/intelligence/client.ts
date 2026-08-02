@@ -55,6 +55,16 @@ export function getIntelligenceMemoryUpdatedAt() {
   return window.localStorage.getItem(MEMORY_UPDATED_AT_KEY) ?? "";
 }
 
+export function replaceIntelligenceMemory(memory: IntelligenceMemory) {
+  if (typeof window === "undefined") return memory;
+  writeJson(MEMORY_KEY, memory);
+  window.localStorage.setItem(MEMORY_UPDATED_AT_KEY, new Date().toISOString());
+  window.dispatchEvent(
+    new CustomEvent(INTELLIGENCE_MEMORY_UPDATED_EVENT, { detail: memory }),
+  );
+  return memory;
+}
+
 export function patchIntelligenceMemory(patch: IntelligenceMemory) {
   const current = getIntelligenceMemory();
   const next: IntelligenceMemory = {
@@ -66,10 +76,7 @@ export function patchIntelligenceMemory(patch: IntelligenceMemory) {
     recentPlaceIds: patch.recentPlaceIds ?? current.recentPlaceIds,
     savedPlaceIds: patch.savedPlaceIds ?? current.savedPlaceIds,
   };
-  writeJson(MEMORY_KEY, next);
-  window.localStorage.setItem(MEMORY_UPDATED_AT_KEY, new Date().toISOString());
-  window.dispatchEvent(new CustomEvent(INTELLIGENCE_MEMORY_UPDATED_EVENT, { detail: next }));
-  return next;
+  return replaceIntelligenceMemory(next);
 }
 
 export function feedIntelligenceContext(
