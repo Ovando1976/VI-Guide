@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { runIntelligenceEngine } from "@/lib/intelligence/engine";
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
+import { refineIntelligenceResponse } from "@/lib/intelligence/model-refinement";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -117,17 +118,29 @@ export async function POST(request: NextRequest) {
         ? { capabilities: payload.capabilities.slice(0, 12) }
         : {}),
     });
-    const result = {
+    const groundedResult = {
       ...engineResult,
       answer: buildGroundedAnswer(message, engineResult),
     };
+    const result = await refineIntelligenceResponse(
+      {
+        message,
+        context,
+        ...(Array.isArray(payload.capabilities)
+          ? { capabilities: payload.capabilities.slice(0, 12) }
+          : {}),
+      },
+      groundedResult,
+    );
 
     return NextResponse.json(result, {
       headers: {
         "Cache-Control": "no-store",
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
-        "X-VI-Intelligence-Source": "vi-guide-knowledge-index",
+        "X-VI-Intelligence-Source": process.env.OPENAI_API_KEY
+          ? "vi-guide-grounded-model"
+          : "vi-guide-knowledge-index",
       },
     });
   } catch (error) {
