@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BedDouble,
@@ -51,6 +52,36 @@ const QUICK = [
 
 const CONCIERGE_START_HREF =
   "/concierge?open=true&prompt=Plan%20a%20complete%20Virgin%20Islands%20day%20for%20me";
+
+const HOME_FEATURES = [
+  {
+    title: "A beach day that flows",
+    description:
+      "Pair a verified shoreline with nearby food, timing, and a reliable ride home.",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
+    alt: "Turquoise water and green hills at Magens Bay in St. Thomas",
+    icon: Waves,
+    iconClassName: "bg-[#dff4ef] text-[#0f766e]",
+  },
+  {
+    title: "Walk into living history",
+    description:
+      "Explore forts, estates, churches, archives, and stories rooted in place.",
+    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    alt: "Historic Frederick Lutheran Church in Charlotte Amalie",
+    icon: History,
+    iconClassName: "bg-[#fff1d4] text-[#a85b16]",
+  },
+  {
+    title: "Let Concierge plan the day",
+    description:
+      "Tell VI Concierge your mood, timing, and island. Get a practical plan you can actually follow.",
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Scenic overlook above Trunk Bay in St. John",
+    icon: Sparkles,
+    iconClassName: "bg-[#dff4ef] text-[#0f766e]",
+  },
+] as const;
 
 export default function Home() {
   return (
@@ -141,15 +172,38 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-3">
-          <article className="rounded-[30px] border border-[#92d2c7] bg-[linear-gradient(145deg,#e8f8f4,#d9f2ed)] p-7">
-            <Waves className="text-[#0f766e]" /><h2 className="mt-8 font-serif text-3xl font-bold">A beach day that flows</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Pair a verified shoreline with nearby food, timing, and a reliable ride home.</p>
-          </article>
-          <article className="rounded-[30px] border border-[#ead19c] bg-[linear-gradient(145deg,#fff8e8,#f8edcf)] p-7">
-            <History className="text-[#a85b16]" /><h2 className="mt-8 font-serif text-3xl font-bold">Walk into living history</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Explore forts, estates, churches, archives, and stories rooted in place.</p>
-          </article>
-          <article className="rounded-[30px] border border-[#dbe5e2] bg-white p-7">
-            <Sparkles className="text-[#0f766e]" /><h2 className="mt-8 font-serif text-3xl font-bold">Let Concierge plan the day</h2><p className="mt-4 text-sm font-semibold leading-6 text-slate-600">Tell VI Concierge your mood, timing, and island. Get a practical plan you can actually follow.</p>
-          </article>
+          {HOME_FEATURES.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <article
+                key={feature.title}
+                className="group overflow-hidden rounded-[30px] border border-[#dbe5e2] bg-white shadow-[0_18px_50px_rgba(4,51,49,.08)]"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#dce9e5]">
+                  <Image
+                    src={feature.image}
+                    alt={feature.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(4,51,49,.3))]" />
+                </div>
+                <div className="relative p-7 pt-8">
+                  <span
+                    className={`absolute -top-7 grid h-14 w-14 place-items-center rounded-2xl border-4 border-white shadow-lg ${feature.iconClassName}`}
+                  >
+                    <Icon size={23} aria-hidden="true" />
+                  </span>
+                  <h2 className="font-serif text-3xl font-bold">{feature.title}</h2>
+                  <p className="mt-4 text-sm font-semibold leading-6 text-slate-600">
+                    {feature.description}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
