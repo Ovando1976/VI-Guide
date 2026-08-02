@@ -210,7 +210,19 @@ export function MobilityBookingScreen() {
   }, [activeIsland, estates, fromGeoid, toGeoid]);
 
   useEffect(() => {
-    if (!estates.length || searchParams.get("from") || searchParams.get("to")) return;
+    const hasRouteHandoff = [
+      "from",
+      "to",
+      "pickup",
+      "pickupName",
+      "destination",
+      "destinationName",
+      "fromLat",
+      "fromLng",
+      "toLat",
+      "toLng",
+    ].some((key) => searchParams.has(key));
+    if (!estates.length || hasRouteHandoff) return;
     try {
       const raw = window.localStorage.getItem("vi-guide.trip-draft");
       if (!raw) return;
@@ -248,6 +260,11 @@ export function MobilityBookingScreen() {
     availableEstates.find((estate) => estate.geoid === fromGeoid) ?? null;
   const toEstate =
     availableEstates.find((estate) => estate.geoid === toGeoid) ?? null;
+  const requestedDestinationName =
+    (
+      searchParams.get("destinationName") ??
+      searchParams.get("destination")
+    )?.trim() || null;
 
   function selectFrom(geoid: string) {
     setFromGeoid(geoid);
@@ -366,27 +383,54 @@ export function MobilityBookingScreen() {
             </button>
           </section>
         ) : (
-          <BookingPanel
-            estates={availableEstates}
-            fromEstate={fromEstate}
-            toEstate={toEstate}
-            fromGeoid={fromGeoid}
-            toGeoid={toGeoid}
-            mode={mode}
-            passengers={passengers}
-            luggage={luggage}
-            island={activeIsland}
-            onSelectFrom={selectFrom}
-            onSelectTo={selectTo}
-            onChangeMode={setMode}
-            onChangePassengers={(value) =>
-              setPassengers(Math.max(1, Math.min(12, value || 1)))
-            }
-            onChangeLuggage={(value) =>
-              setLuggage(Math.max(0, Math.min(12, value || 0)))
-            }
-            onSwapRoute={swapRoute}
-          />
+          <div className="space-y-4">
+            {requestedDestinationName ? (
+              <section
+                className="rounded-[24px] border border-teal-200 bg-teal-50 p-4 text-teal-950 shadow-sm sm:p-5"
+                aria-live="polite"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-teal-700 text-white">
+                    <MapPinned className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
+                      Destination from VI Concierge
+                    </div>
+                    <h2 className="mt-1 text-lg font-black tracking-[-.03em]">
+                      {requestedDestinationName}
+                    </h2>
+                    <p className="mt-1 text-xs font-semibold leading-5 text-teal-800">
+                      {toEstate
+                        ? `Official tariff estate: ${toEstate.baseName}. Review the pickup and route below.`
+                        : "Choose the official destination estate below so VI Guide can apply the published tariff without guessing the location."}
+                    </p>
+                  </div>
+                </div>
+              </section>
+            ) : null}
+            <BookingPanel
+              estates={availableEstates}
+              fromEstate={fromEstate}
+              toEstate={toEstate}
+              fromGeoid={fromGeoid}
+              toGeoid={toGeoid}
+              mode={mode}
+              passengers={passengers}
+              luggage={luggage}
+              island={activeIsland}
+              onSelectFrom={selectFrom}
+              onSelectTo={selectTo}
+              onChangeMode={setMode}
+              onChangePassengers={(value) =>
+                setPassengers(Math.max(1, Math.min(12, value || 1)))
+              }
+              onChangeLuggage={(value) =>
+                setLuggage(Math.max(0, Math.min(12, value || 0)))
+              }
+              onSwapRoute={swapRoute}
+            />
+          </div>
         )}
       </div>
     </main>

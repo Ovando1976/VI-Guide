@@ -339,11 +339,13 @@ export function ViConcierge({
   }
 
   function planRide(item: IntelligenceRecommendation) {
-    const action = response?.actions.find(
-      (candidate) => candidate.type === "plan_ride" || candidate.type === "start_booking",
-    );
-    if (action) return executeAction(action);
-    router.push(`/mobility?destinationName=${encodeURIComponent(item.title)}&island=${item.island}`);
+    const params = new URLSearchParams({
+      island: item.island,
+      destinationName: item.title,
+    });
+    if (typeof item.lat === "number") params.set("toLat", String(item.lat));
+    if (typeof item.lng === "number") params.set("toLng", String(item.lng));
+    router.push(`/mobility?${params.toString()}`);
   }
 
   function saveRecommendation(item: IntelligenceRecommendation) {
