@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminAuth } from "@/lib/firebase-admin";
 import { SESSION_COOKIE } from "@/lib/auth-server";
+import { jsonBodyErrorMessage, parseJsonBody } from "@/lib/api/request";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,7 +9,14 @@ export const dynamic = "force-dynamic";
 const FIVE_DAYS = 60 * 60 * 24 * 5 * 1000;
 
 export async function POST(request: NextRequest) {
-  const body = (await request.json().catch(() => null)) as { idToken?: unknown } | null;
+  const parsed = await parseJsonBody<{ idToken?: unknown }>(request);
+  if (!parsed.ok) {
+    return NextResponse.json(
+      { error: jsonBodyErrorMessage(parsed) },
+      { status: parsed.reason === "invalid-content-type" ? 415 : 400 },
+    );
+  }
+  const body = parsed.value;
   const idToken = typeof body?.idToken === "string" ? body.idToken.trim() : "";
   if (!idToken) return NextResponse.json({ error: "ID token required." }, { status: 400 });
   try {

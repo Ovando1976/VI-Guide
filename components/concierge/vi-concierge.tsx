@@ -26,7 +26,8 @@ import {
   type ReactNode,
 } from "react";
 
-import { StructuredPlanRenderer } from "@/components/intelligence/structured-plan-renderer";
+import { ItineraryTimeline } from "@/components/intelligence/itinerary-timeline";
+import { PlaceCard } from "@/components/intelligence/place-card";
 import {
   askViIntelligence,
   feedIntelligenceContext,
@@ -40,6 +41,7 @@ import type {
   IntelligenceAction,
   IntelligenceLocation,
   IntelligencePlanStop,
+  IntelligenceRecommendation,
   IntelligenceResponse,
 } from "@/types/intelligence";
 
@@ -64,6 +66,14 @@ const STARTER_PROMPTS = [
   "Plan my day after the cruise",
   "Find a beach and arrange the taxi route",
   "Build a history, food, and shopping day",
+] as const;
+const FOLLOW_UPS = [
+  "Find Food Nearby",
+  "Show Beaches",
+  "Plan Ride",
+  "Family Friendly",
+  "Rain Alternative",
+  "Save Trip",
 ] as const;
 
 function createId(prefix: string) {
@@ -303,6 +313,63 @@ export function ViConcierge({
     }
   }
 
+  function openMap(item: IntelligenceRecommendation | IntelligencePlanStop) {
+    const metadata = item as typeof item & {
+      mapFocus?: { href?: string; lat?: number; lng?: number; placeId?: string };
+    };
+    const focus = metadata.mapFocus;
+    if (focus?.href) return router.push(focus.href);
+    if (item.mapHref) return router.push(item.mapHref);
+
+    const params = new URLSearchParams({
+      island: item.island,
+      place: "placeId" in item && item.placeId ? item.placeId : item.id,
+      placeName: item.title,
+      placeType: item.kind,
+    });
+    const lat = focus?.lat ?? item.lat;
+    const lng = focus?.lng ?? item.lng;
+    if (typeof lat === "number") params.set("placeLat", String(lat));
+    if (typeof lng === "number") params.set("placeLng", String(lng));
+    router.push(`/map?${params.toString()}`);
+  }
+
+  function openRecommendation(item: IntelligenceRecommendation) {
+    router.push(item.href ?? item.mapHref ?? `/search?q=${encodeURIComponent(item.title)}`);
+  }
+
+  function planRide(item: IntelligenceRecommendation) {
+    const action = response?.actions.find(
+      (candidate) => candidate.type === "plan_ride" || candidate.type === "start_booking",
+    );
+    if (action) return executeAction(action);
+    router.push(`/mobility?destinationName=${encodeURIComponent(item.title)}&island=${item.island}`);
+  }
+
+  function saveRecommendation(item: IntelligenceRecommendation) {
+    const saveAction = response?.actions.find((action) => action.type === "save_plan");
+    if (saveAction) return executeAction(saveAction);
+
+    const journey = createJourneyPlan(item.island, `${item.title} trip`);
+    upsertJourneyPlan({
+      ...journey,
+      status: "draft",
+      plan: [{
+        id: `saved_${item.id.replace(/[^a-zA-Z0-9_-]/g, "_")}`,
+        title: item.title,
+        island: item.island,
+        kind: item.kind,
+        summary: item.summary,
+        placeId: item.id,
+        lat: item.lat,
+        lng: item.lng,
+        href: item.href,
+        mapHref: item.mapHref,
+      }],
+      notes: "Saved from VI Concierge.",
+    });
+  }
+
   function startNewSession() {
     setMessages([createWelcomeMessage()]);
     setResponse(null);
@@ -414,8 +481,13 @@ export function ViConcierge({
             className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-5"
             aria-live="polite"
           >
-            {messages.map((message) => (
-              <MessageBubble key={message.id} message={message} />
+            {messages.map((message, index) => (
+              <MessageBubble
+                key={message.id}
+                message={message}
+                showFollowUps={message.role === "assistant" && index > 0}
+                onFollowUp={(prompt) => void sendMessage(prompt)}
+              />
             ))}
 
             {messages.length === 1 && !loading ? (
@@ -435,7 +507,36 @@ export function ViConcierge({
 
             {response ? (
               <div className="space-y-3 pl-9">
-                <StructuredPlanRenderer response={response} />
+                <div className="flex flex-wrap items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-white/35">
+                  <span className="rounded-full border border-white/10 px-2.5 py-1.5">{response.confidence} confidence</span>
+                  <span>{response.intent.replaceAll("_", " ")}</span>
+                </div>
+                {response.recommendations.length ? (
+                  <div className="space-y-3">
+                    <h3 className="text-[9px] font-black uppercase tracking-[.16em] text-cyan-100/45">Best matches</h3>
+                    {response.recommendations.slice(0, 6).map((recommendation) => (
+                      <PlaceCard
+                        key={recommendation.id}
+                        recommendation={recommendation}
+                        onOpenMap={() => openMap(recommendation)}
+                        onViewDetails={() => openRecommendation(recommendation)}
+                        onRide={() => planRide(recommendation)}
+                        onSave={() => saveRecommendation(recommendation)}
+                      />
+                    ))}
+                  </div>
+                ) : null}
+                {response.plan.length ? (
+                  <div className="space-y-2">
+                    <h3 className="text-[9px] font-black uppercase tracking-[.16em] text-cyan-100/45">Connected itinerary</h3>
+                    <ItineraryTimeline plan={response.plan} onSelectStop={openMap} />
+                  </div>
+                ) : null}
+                {response.warnings.length ? (
+                  <div className="rounded-2xl border border-amber-200/15 bg-amber-200/[.06] p-3 text-[11px] leading-5 text-amber-50/70">
+                    {response.warnings.map((warning) => <p key={warning}>{warning}</p>)}
+                  </div>
+                ) : null}
                 {response.actions.length ? (
                   <div className="grid gap-2">
                     {response.actions.map((action) => {
@@ -481,9 +582,7 @@ export function ViConcierge({
             ) : null}
 
             {loading ? (
-              <p className="pl-9 text-xs font-bold text-cyan-100/45">
-                Building a grounded plan from VI Guide data…
-              </p>
+              <ConciergeSkeleton />
             ) : null}
             {error ? (
               <div className="ml-9 rounded-2xl border border-rose-300/20 bg-rose-300/[.07] p-3 text-xs text-rose-100">
@@ -524,7 +623,7 @@ export function ViConcierge({
   );
 }
 
-function MessageBubble({ message }: { message: ConciergeMessage }) {
+function MessageBubble({ message, showFollowUps, onFollowUp }: { message: ConciergeMessage; showFollowUps: boolean; onFollowUp(prompt: string): void }) {
   const assistant = message.role === "assistant";
   return (
     <article className={`flex gap-2.5 ${assistant ? "items-start" : "justify-end"}`}>
@@ -533,8 +632,9 @@ function MessageBubble({ message }: { message: ConciergeMessage }) {
           <Sparkles size={13} />
         </span>
       ) : null}
+      <div className={assistant ? "min-w-0 max-w-[calc(100%-38px)]" : "max-w-[86%]"}>
       <div
-        className={`max-w-[86%] rounded-2xl px-3.5 py-3 text-[13px] leading-6 ${
+        className={`rounded-2xl px-3.5 py-3 text-[13px] leading-6 ${
           assistant
             ? "rounded-tl-md border border-white/10 bg-white/[.045] text-white/75"
             : "rounded-tr-md bg-cyan-300 font-semibold text-[#05242c]"
@@ -542,7 +642,31 @@ function MessageBubble({ message }: { message: ConciergeMessage }) {
       >
         <p className="whitespace-pre-wrap">{message.text}</p>
       </div>
+      {showFollowUps ? (
+        <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
+          {FOLLOW_UPS.map((prompt) => (
+            <button key={prompt} type="button" onClick={() => onFollowUp(prompt)} className="min-h-9 shrink-0 rounded-full border border-white/10 bg-white/[.035] px-3 text-[9px] font-black text-cyan-100/65 transition hover:border-cyan-300/30 hover:bg-cyan-300/10 hover:text-cyan-100">
+              {prompt}
+            </button>
+          ))}
+        </div>
+      ) : null}
+      </div>
     </article>
+  );
+}
+
+function ConciergeSkeleton() {
+  return (
+    <div className="space-y-3 pl-9" aria-label="Building your recommendations">
+      <div className="animate-pulse overflow-hidden rounded-[22px] border border-white/10 bg-white/[.04]">
+        <div className="h-28 bg-white/[.07]" />
+        <div className="space-y-2 p-4"><div className="h-4 w-2/3 rounded bg-white/10" /><div className="h-3 w-full rounded bg-white/[.07]" /><div className="h-3 w-4/5 rounded bg-white/[.07]" /><div className="grid grid-cols-2 gap-2 pt-2"><div className="h-10 rounded-xl bg-white/[.08]" /><div className="h-10 rounded-xl bg-white/[.08]" /></div></div>
+      </div>
+      <div className="animate-pulse space-y-3 rounded-[22px] border border-white/10 bg-white/[.04] p-4">
+        {["w-2/3", "w-4/5", "w-1/2"].map((width) => <div key={width} className="flex items-center gap-3"><span className="h-3 w-3 rounded-full bg-cyan-300/30" /><span className={`h-4 rounded bg-white/[.08] ${width}`} /></div>)}
+      </div>
+    </div>
   );
 }
 

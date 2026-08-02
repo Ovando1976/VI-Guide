@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import { getAdminDb } from "@/lib/firebase-admin";
 import type { RideBooking } from "@/types/mobility";
+import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export async function GET() {
   try {
@@ -153,30 +154,12 @@ function serializePaymentBooking(booking: RideBooking) {
     settlementReviewReference: booking.settlement?.reviewReference ?? null,
     origin: booking.origin?.estateName ?? "Pickup",
     destination: booking.destination?.estateName ?? "Destination",
-    createdAt: serializeDate(booking.createdAt),
-    updatedAt: serializeDate(
+    createdAt: normalizeTimestampOrEpoch(booking.createdAt),
+    updatedAt: normalizeTimestampOrEpoch(
       booking.refund?.updatedAt ??
         booking.dispute?.updatedAt ??
         booking.paymentUpdatedAt ??
         booking.updatedAt,
     ),
   };
-}
-
-function serializeDate(value: unknown) {
-  if (!value) return new Date(0).toISOString();
-  if (typeof value === "string") return value;
-  if (typeof value === "object" && value && "toDate" in value) {
-    const candidate = value as { toDate?: () => Date };
-    if (typeof candidate.toDate === "function") {
-      return candidate.toDate().toISOString();
-    }
-  }
-  if (typeof value === "object" && value && "seconds" in value) {
-    const candidate = value as { seconds?: number };
-    if (typeof candidate.seconds === "number") {
-      return new Date(candidate.seconds * 1000).toISOString();
-    }
-  }
-  return new Date(0).toISOString();
 }
