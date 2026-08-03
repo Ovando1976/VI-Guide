@@ -1,34 +1,21 @@
 import "@/lib/intelligence/agent-subscribers";
 
-import { publishIntelligenceEvent, type IntelligenceEventType } from "@/lib/intelligence/event-bus";
 import {
-  hydrateRequestFromMemory,
-  loadMemorySnapshot,
-  persistMemoryResult,
-} from "@/lib/intelligence/memory-core";
+  buildAgentContext,
+  publicAgentContext,
+} from "@/lib/intelligence/context-engine";
+import {
+  publishIntelligenceEvent,
+  type IntelligenceEventType,
+} from "@/lib/intelligence/event-bus";
+import { persistMemoryResult } from "@/lib/intelligence/memory-core";
 import { runIntelligenceOrchestrator } from "@/lib/intelligence/orchestrator";
-import {
-  availableToolCapabilities,
-  findToolsForRequest,
-  publicToolDescriptor,
-} from "@/lib/intelligence/tool-registry";
 import type {
-  IntelligenceCapability,
   IntelligenceRequest,
   IntelligenceResponse,
 } from "@/types/intelligence";
 
-const ALL_CAPABILITIES: IntelligenceCapability[] = [
-  "recommend",
-  "plan",
-  "map",
-  "mobility",
-  "booking",
-  "knowledge",
-];
-
 function eventTypesForResult(
-  request: IntelligenceRequest,
   result: IntelligenceResponse,
   resumed: boolean,
 ): IntelligenceEventType[] {
@@ -62,33 +49,17 @@ function eventTypesForResult(
 export async function runRegisteredIntelligenceOrchestrator(
   request: IntelligenceRequest,
 ): Promise<IntelligenceResponse> {
-  const memorySnapshot = await loadMemorySnapshot(request);
-  const hydratedRequest = hydrateRequestFromMemory(request, memorySnapshot);
-  const available = availableToolCapabilities(hydratedRequest);
-  const requested = hydratedRequest.capabilities?.length
-    ? hydratedRequest.capabilities
-    : ALL_CAPABILITIES;
-  const authorizedCapabilities = requested.filter((capability) =>
-    available.has(capability),
-  );
-  const selectedTools = findToolsForRequest(
-    hydratedRequest,
-    authorizedCapabilities,
-  );
-
+  const { context, memorySnapshot } = await buildAgentContext(request);
   const result = await runIntelligenceOrchestrator({
-    ...hydratedRequest,
-    capabilities: authorizedCapabilities,
+    ...context.request,
+    capabilities: context.authorizedCapabilities,
   });
 
-  const registryWarning =
-    authorizedCapabilities.length < requested.length
-      ? `The tool registry disabled unavailable capabilities: ${requested
-          .filter((capability) => !available.has(capability))
-          .join(", ")}.`
-      : null;
+  const registryWarning = context.unavailableCapabilities.length
+    ? `The tool registry disabled unavailable capabilities: ${context.unavailableCapabilities.join(", ")}.`
+    : null;
   const memoryWarning =
-    memorySnapshot.source === "request"
+    context.memorySource === "request"
       ? "Persistent memory was unavailable, so this run used the request context only."
       : null;
 
@@ -106,37 +77,39 @@ export async function runRegisteredIntelligenceOrchestrator(
     orchestration: result.orchestration
       ? {
           ...result.orchestration,
-          tools: selectedTools.map(publicToolDescriptor),
+          tools: context.tools,
+          context: publicAgentContext(context),
         }
       : result.orchestration,
   };
 
-  await persistMemoryResult(hydratedRequest, memorySnapshot, enriched);
+  await persistMemoryResult(context.request, memorySnapshot, enriched);
 
   const eventPayload = {
     workflowStatus: enriched.orchestration?.status ?? "ready",
     missingInformation: enriched.orchestration?.missingInformation ?? [],
-    selectedTools: selectedTools.map((tool) => tool.id),
-    requiresMobility: authorizedCapabilities.includes("mobility"),
-    requiresBooking: authorizedCapabilities.includes("booking"),
+    selectedTools: context.tools.map((tool) => tool.id),
+    requiresMobility: context.confirmations.mobilityRequired,
+    requiresBooking: context.confirmations.bookingRequired,
+    pendingConfirmations: context.confirmations.pending,
     recommendationCount: enriched.recommendations.length,
     planStopCount: enriched.plan.length,
+    contextVersion: context.version,
+    memorySource: context.memorySource,
+    map: context.map,
   };
   const eventTypes = eventTypesForResult(
-    hydratedRequest,
     enriched,
-    Boolean(memorySnapshot.activeWorkflow),
+    Boolean(context.workflow),
   );
 
   for (const type of eventTypes) {
     await publishIntelligenceEvent({
       type,
-      ownerKey: memorySnapshot.ownerKey,
-      ...(memorySnapshot.activeWorkflow?.id
-        ? { workflowId: memorySnapshot.activeWorkflow.id }
-        : {}),
+      ownerKey: context.ownerKey,
+      ...(context.workflow?.id ? { workflowId: context.workflow.id } : {}),
       runId: enriched.runId,
-      island: hydratedRequest.context.island,
+      island: context.request.context.island,
       intent: enriched.orchestration?.intent ?? enriched.intent,
       payload: eventPayload,
     });
