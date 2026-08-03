@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
 import { refineIntelligenceResponse } from "@/lib/intelligence/model-refinement";
-import { runIntelligenceOrchestrator } from "@/lib/intelligence/orchestrator";
+import { runRegisteredIntelligenceOrchestrator } from "@/lib/intelligence/registered-orchestrator";
 import {
   beginIntelligenceRun,
   completeIntelligenceRun,
@@ -86,9 +86,7 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     memory: context.memory && typeof context.memory === "object" ? context.memory : {},
   };
 
-  if (typeof context.userId === "string") {
-    normalized.userId = context.userId.slice(0, 160);
-  }
+  if (typeof context.userId === "string") normalized.userId = context.userId.slice(0, 160);
   if (context.currentLocation) normalized.currentLocation = context.currentLocation;
   if (context.selectedPlace) normalized.selectedPlace = context.selectedPlace;
   if (context.pickup) normalized.pickup = context.pickup;
@@ -103,19 +101,13 @@ export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json().catch(() => null)) as Partial<IntelligenceRequest> | null;
     if (!payload) {
-      return NextResponse.json(
-        { error: "The intelligence request body is invalid." },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "The intelligence request body is invalid." }, { status: 400 });
     }
+
     const message = typeof payload.message === "string" ? payload.message.trim() : "";
     const context = normalizeContext(payload.context);
-
     if (!message || message.length > 4_000 || !context) {
-      return NextResponse.json(
-        { error: "The intelligence request is invalid." },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: "The intelligence request is invalid." }, { status: 400 });
     }
 
     const normalizedRequest: IntelligenceRequest = {
@@ -127,17 +119,12 @@ export async function POST(request: NextRequest) {
     };
 
     run = await beginIntelligenceRun(normalizedRequest);
-
-    const engineResult = await runIntelligenceOrchestrator(normalizedRequest);
+    const engineResult = await runRegisteredIntelligenceOrchestrator(normalizedRequest);
     const groundedResult = {
       ...engineResult,
       answer: buildGroundedAnswer(message, engineResult),
     };
-    const result = await refineIntelligenceResponse(
-      normalizedRequest,
-      groundedResult,
-    );
-
+    const result = await refineIntelligenceResponse(normalizedRequest, groundedResult);
     await completeIntelligenceRun(run, result);
 
     return NextResponse.json(result, {
@@ -146,8 +133,7 @@ export async function POST(request: NextRequest) {
         "X-VI-Intelligence-Run": run.id,
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
-        "X-VI-Intelligence-Workflow":
-          result.orchestration?.status ?? "legacy",
+        "X-VI-Intelligence-Workflow": result.orchestration?.status ?? "legacy",
         "X-VI-Intelligence-Source": process.env.OPENAI_API_KEY
           ? "vi-guide-grounded-model"
           : "vi-guide-knowledge-index",
