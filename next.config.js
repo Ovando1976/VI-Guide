@@ -11,6 +11,7 @@ const nextConfig = {
       { protocol: "https", hostname: "via.placeholder.com" },
       { protocol: "https", hostname: "tile.openstreetmap.org" },
       { protocol: "https", hostname: "server.arcgisonline.com" },
+      { protocol: "https", hostname: "commons.wikimedia.org" },
     ],
   },
   webpack(config, { dev }) {

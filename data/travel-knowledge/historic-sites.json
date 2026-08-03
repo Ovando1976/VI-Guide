@@ -42,8 +42,10 @@
     "category": "district",
     "description": "Annaberg Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Annaberg Historic District is a federally recognized historic district in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "/images/places/st-john/annaberg-sugar-plantation-1.jpg",
+    "images": [
+      "/images/places/st-john/annaberg-sugar-plantation-1.jpg"
+    ],
     "tags": [
       "district",
       "STJ",
@@ -52,8 +54,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "annaberg_sugar_plantation__annaberg_sugar_plantation.jpeg"
+    ],
     "location": "NW of Coral Bay, Leinster Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "81000090",
@@ -70,10 +74,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518829",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/Category:Annaberg_Historic_District"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T12:58:00.000Z"
   },
   {
     "id": "annaberg-sugar-plantation",
@@ -222,8 +227,10 @@
     "category": "district",
     "description": "Bethlehem Middle Works Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Bethlehem Middle Works Historic District is a federally recognized historic district in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bethlehem%20Middle%20Works%20Historic%20District%2008.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bethlehem%20Middle%20Works%20Historic%20District%2008.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STX",
@@ -232,8 +239,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Bethlehem Middle Works Historic District 08.jpg"
+    ],
     "location": "King's Quarter, Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "87001932",
@@ -248,21 +257,24 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518856",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Bethlehem_Middle_Works_Historic_District_08.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T12:58:00.000Z"
   },
   {
     "id": "bethlehem-sugar-factory",
     "slug": "bethlehem-sugar-factory",
     "name": "Bethlehem Sugar Factory",
-    "island": "stt",
+    "island": "stx",
     "category": "ruin",
     "description": "Bethlehem Sugar Factory is a historic ruin and heritage site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Bethlehem Sugar Factory is a historic ruin and heritage site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sugar%20Factory%2C%20Estate%20%27Bethlehem%27%2C%20St.%20Croix.%20D.W.I.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sugar%20Factory%2C%20Estate%20%27Bethlehem%27%2C%20St.%20Croix.%20D.W.I.jpg?width=1600"
+    ],
     "tags": [
       "ruin",
       "STT",
@@ -270,12 +282,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "bethlehem_sugar_factory__bethlehem_sugar_factory.jpeg"
+      "wikimedia:Sugar Factory, Estate 'Bethlehem', St. Croix. D.W.I.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.169Z",
-    "updatedAt": "2026-07-17T21:00:56.169Z"
+    "updatedAt": "2026-08-03T12:58:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Sugar_Factory,_Estate_%27Bethlehem%27,_St._Croix._D.W.I.jpg"
+    ]
   },
   {
     "id": "blackbeards-castle-skytsborg",
