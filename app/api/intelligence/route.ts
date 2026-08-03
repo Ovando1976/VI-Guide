@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { runIntelligenceEngine } from "@/lib/intelligence/engine";
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
 import { refineIntelligenceResponse } from "@/lib/intelligence/model-refinement";
+import { runIntelligenceOrchestrator } from "@/lib/intelligence/orchestrator";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -111,25 +111,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const engineResult = runIntelligenceEngine({
+    const normalizedRequest: IntelligenceRequest = {
       message,
       context,
       ...(Array.isArray(payload.capabilities)
         ? { capabilities: payload.capabilities.slice(0, 12) }
         : {}),
-    });
+    };
+
+    const engineResult = await runIntelligenceOrchestrator(normalizedRequest);
     const groundedResult = {
       ...engineResult,
       answer: buildGroundedAnswer(message, engineResult),
     };
     const result = await refineIntelligenceResponse(
-      {
-        message,
-        context,
-        ...(Array.isArray(payload.capabilities)
-          ? { capabilities: payload.capabilities.slice(0, 12) }
-          : {}),
-      },
+      normalizedRequest,
       groundedResult,
     );
 
@@ -138,6 +134,8 @@ export async function POST(request: NextRequest) {
         "Cache-Control": "no-store",
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
+        "X-VI-Intelligence-Workflow":
+          result.orchestration?.status ?? "legacy",
         "X-VI-Intelligence-Source": process.env.OPENAI_API_KEY
           ? "vi-guide-grounded-model"
           : "vi-guide-knowledge-index",
