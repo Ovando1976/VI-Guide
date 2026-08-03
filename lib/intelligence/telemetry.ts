@@ -12,6 +12,7 @@ const MAX_MESSAGE_PREVIEW = 280;
 const MAX_ERROR_LENGTH = 1_000;
 
 export type IntelligenceRunStatus =
+  | "running"
   | "ready"
   | "waiting_for_user"
   | "failed";
