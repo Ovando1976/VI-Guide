@@ -16,6 +16,22 @@ import type { IslandCode } from "@/types/usvi";
 const STORAGE_KEY = "vi-guide.unified-workspace";
 const UPDATED_EVENT = "vi-guide-unified-workspace-updated";
 
+const VALID_LENSES = new Set<TerritoryMapLens>([
+  "places",
+  "beaches",
+  "stays",
+  "historic",
+  "drivers",
+  "demand",
+]);
+
+const VALID_PANELS = new Set<UnifiedWorkspaceState["activePanel"]>([
+  "map",
+  "timeline",
+  "actions",
+  "concierge",
+]);
+
 export type UnifiedWorkspaceState = {
   island: IslandCode;
   lens: TerritoryMapLens;
@@ -51,24 +67,63 @@ const DEFAULT_STATE: UnifiedWorkspaceState = {
 
 const UnifiedWorkspaceContext = createContext<UnifiedWorkspaceController | null>(null);
 
+function validIsland(value: unknown): IslandCode {
+  return value === "stj" || value === "stx" ? value : "stt";
+}
+
+function validLens(value: unknown): TerritoryMapLens {
+  return typeof value === "string" && VALID_LENSES.has(value as TerritoryMapLens)
+    ? (value as TerritoryMapLens)
+    : "places";
+}
+
+function validPanel(value: unknown): UnifiedWorkspaceState["activePanel"] {
+  return typeof value === "string" && VALID_PANELS.has(value as UnifiedWorkspaceState["activePanel"])
+    ? (value as UnifiedWorkspaceState["activePanel"])
+    : "map";
+}
+
+function normalizeState(value: Partial<UnifiedWorkspaceState> | null): UnifiedWorkspaceState {
+  if (!value) return DEFAULT_STATE;
+
+  return {
+    ...DEFAULT_STATE,
+    ...value,
+    island: validIsland(value.island),
+    lens: validLens(value.lens),
+    activePanel: validPanel(value.activePanel),
+    selection: value.selection ?? null,
+    pickupGeoid: typeof value.pickupGeoid === "string" ? value.pickupGeoid : null,
+    destinationGeoid:
+      typeof value.destinationGeoid === "string" ? value.destinationGeoid : null,
+    tripItemCount:
+      typeof value.tripItemCount === "number" && Number.isFinite(value.tripItemCount)
+        ? Math.max(0, Math.floor(value.tripItemCount))
+        : 0,
+    updatedAt: typeof value.updatedAt === "string" ? value.updatedAt : DEFAULT_STATE.updatedAt,
+  };
+}
+
 function readStoredState(): UnifiedWorkspaceState {
   if (typeof window === "undefined") return DEFAULT_STATE;
+
   try {
     const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "null") as
       | Partial<UnifiedWorkspaceState>
       | null;
-    return parsed
-      ? {
-          ...DEFAULT_STATE,
-          ...parsed,
-          island:
-            parsed.island === "stj" || parsed.island === "stx" ? parsed.island : "stt",
-          updatedAt: parsed.updatedAt ?? DEFAULT_STATE.updatedAt,
-        }
-      : DEFAULT_STATE;
+    return normalizeState(parsed);
   } catch {
     return DEFAULT_STATE;
   }
+}
+
+function statesMatch(
+  current: UnifiedWorkspaceState,
+  nextPatch: Partial<UnifiedWorkspaceState>,
+) {
+  return Object.entries(nextPatch).every(
+    ([key, value]) => current[key as keyof UnifiedWorkspaceState] === value,
+  );
 }
 
 export function UnifiedWorkspaceProvider({ children }: { children: ReactNode }) {
@@ -80,27 +135,41 @@ export function UnifiedWorkspaceProvider({ children }: { children: ReactNode }) 
 
   const patch = useCallback((nextPatch: Partial<UnifiedWorkspaceState>) => {
     setState((current) => {
-      const next = {
+      if (statesMatch(current, nextPatch)) return current;
+
+      const next = normalizeState({
         ...current,
         ...nextPatch,
         updatedAt: new Date().toISOString(),
-      };
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      });
+
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // The workspace remains functional when storage is unavailable or full.
+      }
+
       window.dispatchEvent(new CustomEvent(UPDATED_EVENT, { detail: next }));
       return next;
     });
   }, []);
 
   useEffect(() => {
-    const sync = (event: Event) => {
+    const syncCustomEvent = (event: Event) => {
       const detail = (event as CustomEvent<UnifiedWorkspaceState>).detail;
-      setState(detail ?? readStoredState());
+      setState(normalizeState(detail));
     };
-    window.addEventListener(UPDATED_EVENT, sync);
-    window.addEventListener("storage", sync);
+
+    const syncStorage = (event: StorageEvent) => {
+      if (event.key && event.key !== STORAGE_KEY) return;
+      setState(readStoredState());
+    };
+
+    window.addEventListener(UPDATED_EVENT, syncCustomEvent);
+    window.addEventListener("storage", syncStorage);
     return () => {
-      window.removeEventListener(UPDATED_EVENT, sync);
-      window.removeEventListener("storage", sync);
+      window.removeEventListener(UPDATED_EVENT, syncCustomEvent);
+      window.removeEventListener("storage", syncStorage);
     };
   }, []);
 
