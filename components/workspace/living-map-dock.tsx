@@ -11,7 +11,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { useUnifiedWorkspace } from "@/components/workspace/unified-workspace-controller";
 import {
@@ -243,7 +243,7 @@ function StatusCard({
   value,
   className = "",
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   value: string;
   className?: string;
