@@ -161,6 +161,36 @@ export type IntelligenceToolSummary = {
   version: string;
 };
 
+export type IntelligenceAgentContextSummary = {
+  version: number;
+  builtAt: string;
+  ownerKey: string;
+  memorySource: "firestore" | "request";
+  workflow: {
+    id: string;
+    status: "active" | "waiting_for_user" | "completed" | "failed";
+    intent: string;
+    currentStep: string;
+    missingInformation: string[];
+  } | null;
+  tools: IntelligenceToolSummary[];
+  requestedCapabilities: IntelligenceCapability[];
+  authorizedCapabilities: IntelligenceCapability[];
+  unavailableCapabilities: IntelligenceCapability[];
+  map: {
+    island: IntelligenceIsland;
+    currentLocation?: IntelligenceLocation;
+    selectedPlace?: IntelligenceLocation;
+    pickup?: IntelligenceLocation;
+    destination?: IntelligenceLocation;
+  };
+  confirmations: {
+    bookingRequired: boolean;
+    mobilityRequired: boolean;
+    pending: string[];
+  };
+};
+
 export type IntelligenceOrchestration = {
   status: "ready" | "waiting_for_user";
   intent: string;
@@ -168,6 +198,7 @@ export type IntelligenceOrchestration = {
   missingInformation: string[];
   trace: IntelligenceOrchestrationStep[];
   tools?: IntelligenceToolSummary[];
+  context?: IntelligenceAgentContextSummary;
 };
 
 export type IntelligenceResponse = {
