@@ -147,12 +147,27 @@ export type IntelligenceOrchestrationStep = {
   completedAt: string;
 };
 
+export type IntelligenceToolSummary = {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  capability: IntelligenceCapability;
+  permissions: string[];
+  risk: "low" | "medium" | "high";
+  requiresConfirmation: boolean;
+  enabled: boolean;
+  tags: string[];
+  version: string;
+};
+
 export type IntelligenceOrchestration = {
   status: "ready" | "waiting_for_user";
   intent: string;
   requiredCapabilities: IntelligenceCapability[];
   missingInformation: string[];
   trace: IntelligenceOrchestrationStep[];
+  tools?: IntelligenceToolSummary[];
 };
 
 export type IntelligenceResponse = {

@@ -1,3 +1,8 @@
+import {
+  hydrateRequestFromMemory,
+  loadMemorySnapshot,
+  persistMemoryResult,
+} from "@/lib/intelligence/memory-core";
 import { runIntelligenceOrchestrator } from "@/lib/intelligence/orchestrator";
 import {
   availableToolCapabilities,
@@ -22,17 +27,22 @@ const ALL_CAPABILITIES: IntelligenceCapability[] = [
 export async function runRegisteredIntelligenceOrchestrator(
   request: IntelligenceRequest,
 ): Promise<IntelligenceResponse> {
-  const available = availableToolCapabilities(request);
-  const requested = request.capabilities?.length
-    ? request.capabilities
+  const memorySnapshot = await loadMemorySnapshot(request);
+  const hydratedRequest = hydrateRequestFromMemory(request, memorySnapshot);
+  const available = availableToolCapabilities(hydratedRequest);
+  const requested = hydratedRequest.capabilities?.length
+    ? hydratedRequest.capabilities
     : ALL_CAPABILITIES;
   const authorizedCapabilities = requested.filter((capability) =>
     available.has(capability),
   );
-  const selectedTools = findToolsForRequest(request, authorizedCapabilities);
+  const selectedTools = findToolsForRequest(
+    hydratedRequest,
+    authorizedCapabilities,
+  );
 
   const result = await runIntelligenceOrchestrator({
-    ...request,
+    ...hydratedRequest,
     capabilities: authorizedCapabilities,
   });
 
@@ -42,17 +52,30 @@ export async function runRegisteredIntelligenceOrchestrator(
           .filter((capability) => !available.has(capability))
           .join(", ")}.`
       : null;
+  const memoryWarning =
+    memorySnapshot.source === "request"
+      ? "Persistent memory was unavailable, so this run used the request context only."
+      : null;
 
-  return {
+  const enriched: IntelligenceResponse = {
     ...result,
-    warnings: registryWarning
-      ? Array.from(new Set([...result.warnings, registryWarning]))
-      : result.warnings,
+    warnings: Array.from(
+      new Set(
+        [
+          ...result.warnings,
+          registryWarning,
+          memoryWarning,
+        ].filter((warning): warning is string => Boolean(warning)),
+      ),
+    ),
     orchestration: result.orchestration
       ? {
           ...result.orchestration,
           tools: selectedTools.map(publicToolDescriptor),
         }
       : result.orchestration,
-  } as IntelligenceResponse;
+  };
+
+  await persistMemoryResult(hydratedRequest, memorySnapshot, enriched);
+  return enriched;
 }
