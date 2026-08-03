@@ -783,8 +783,10 @@
     "category": "district",
     "description": "Cinnamon Bay Plantation is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Cinnamon Bay Plantation is a federally recognized historic district in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cinnamon%20Bay%20Plantation%3B%20Saint%20John%2C%20United%20States%20Virgin%20Islands.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cinnamon%20Bay%20Plantation%3B%20Saint%20John%2C%20United%20States%20Virgin%20Islands.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STJ",
@@ -793,8 +795,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Cinnamon Bay Plantation; Saint John, United States Virgin Islands.jpg"
+    ],
     "location": "NE of Cruz Bay on Cinnamon Bay, Cruz Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78000269",
@@ -812,10 +816,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518815",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Cinnamon_Bay_Plantation%3B_Saint_John,_United_States_Virgin_Islands.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z"
   },
   {
     "id": "cinnamon-bay-sugar-works",
@@ -825,8 +830,10 @@
     "category": "ruin",
     "description": "Cinnamon Bay Sugar Works is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
     "shortDescription": "Cinnamon Bay Sugar Works is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cinnamon%20Bay%20Plantation%20boiling%20room.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cinnamon%20Bay%20Plantation%20boiling%20room.jpg?width=1600"
+    ],
     "tags": [
       "ruin",
       "STJ",
@@ -834,12 +841,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "cinnamon_bay_sugar_works__cinnamon_bay_sugar_works.jpeg"
+      "wikimedia:Cinnamon Bay Plantation boiling room.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.169Z",
-    "updatedAt": "2026-07-17T21:00:56.169Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Cinnamon_Bay_Plantation_boiling_room.jpg"
+    ]
   },
   {
     "id": "coakley-bay-estate",
@@ -1041,8 +1051,10 @@
     "category": "district",
     "description": "Dennis Bay Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Dennis Bay Historic District is a federally recognized historic district in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Peace%20Hill%20Windmill.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Peace%20Hill%20Windmill.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STJ",
@@ -1051,8 +1063,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Peace Hill Windmill.jpg"
+    ],
     "location": "NE of Cruz Bay off North Shore Rd., Dennis Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "81000095",
@@ -1069,10 +1083,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518839",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z"
   },
   {
     "id": "diamond-school",
@@ -1180,12 +1195,14 @@
     "id": "emmaus-moravian-church",
     "slug": "emmaus-moravian-church",
     "name": "Emmaus Moravian Church",
-    "island": "stt",
+    "island": "stj",
     "category": "church",
     "description": "Emmaus Moravian Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Emmaus Moravian Church is a historic religious landmark in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/EMMAUS%20MORAVIAN%20CHURCH.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/EMMAUS%20MORAVIAN%20CHURCH.jpg?width=1600"
+    ],
     "tags": [
       "church",
       "STT",
@@ -1193,12 +1210,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "emmaus_moravian_church__emmaus_moravian_church.jpeg"
+      "wikimedia:EMMAUS MORAVIAN CHURCH.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:EMMAUS_MORAVIAN_CHURCH.jpg"
+    ]
   },
   {
     "id": "emmaus-moravian-church-and-manse",
@@ -1209,8 +1229,10 @@
     "category": "church",
     "description": "Emmaus Moravian Church and Manse is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Emmaus Moravian Church and Manse is a federally recognized historic church in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/EMMAUS%20MORAVIAN%20CHURCH.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/EMMAUS%20MORAVIAN%20CHURCH.jpg?width=1600"
+    ],
     "tags": [
       "church",
       "STJ",
@@ -1219,8 +1241,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:EMMAUS MORAVIAN CHURCH.jpg"
+    ],
     "location": "W of Palestina, Coral Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "77001531",
@@ -1232,10 +1256,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518923",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:EMMAUS_MORAVIAN_CHURCH.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z"
   },
   {
     "id": "enighed",
@@ -1445,8 +1470,10 @@
     "category": "estate",
     "description": "Estate Carolina Sugar Plantation is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Estate Carolina Sugar Plantation is a federally recognized historic estate in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20CAROLINA%20SUGAR%20PLANTATION.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20CAROLINA%20SUGAR%20PLANTATION.jpg?width=1600"
+    ],
     "tags": [
       "estate",
       "STJ",
@@ -1455,8 +1482,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:ESTATE CAROLINA SUGAR PLANTATION.jpg"
+    ],
     "location": "W of Coral Bay on King Hill Rd., Coral Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76002217",
@@ -1468,10 +1497,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518929",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:ESTATE_CAROLINA_SUGAR_PLANTATION.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z"
   },
   {
     "id": "estate-grove-place",
@@ -2192,8 +2222,10 @@
     "category": "fort",
     "description": "Fortsberg is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Fortsberg is a federally recognized historic fort in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/HABS%20Frederiks%20Fort%20St%20John%20USVI.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/HABS%20Frederiks%20Fort%20St%20John%20USVI.jpg?width=1600"
+    ],
     "tags": [
       "fort",
       "STJ",
@@ -2202,8 +2234,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:HABS Frederiks Fort St John USVI.jpg"
+    ],
     "location": "SE of Coral Bay, Coral Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76002218",
@@ -2217,10 +2251,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518931",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z"
   },
   {
     "id": "fortsberg-corral-bay",
@@ -2230,8 +2265,10 @@
     "category": "fort",
     "description": "Fortsberg Corral Bay is a historic fort site in St. John, U.S. Virgin Islands.",
     "shortDescription": "Fortsberg Corral Bay is a historic fort site in St. John, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/HABS%20Frederiks%20Fort%20St%20John%20USVI.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/HABS%20Frederiks%20Fort%20St%20John%20USVI.jpg?width=1600"
+    ],
     "tags": [
       "fort",
       "STJ",
@@ -2239,12 +2276,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "fortsberg_corral_bay__fortsberg_corral_bay.jpeg"
+      "wikimedia:HABS Frederiks Fort St John USVI.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:HABS_Frederiks_Fort_St_John_USVI.jpg"
+    ]
   },
   {
     "id": "frederick-lutheran-church",
@@ -2466,8 +2506,10 @@
     "category": "site",
     "description": "Government House, St. Thomas is a historic site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Government House, St. Thomas is a historic site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Governors%20Mansion%20in%20the%20Government%20house%20complex%20on%20St.%20Thomas..jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Governors%20Mansion%20in%20the%20Government%20house%20complex%20on%20St.%20Thomas..jpg?width=1600"
+    ],
     "tags": [
       "site",
       "STT",
@@ -2475,12 +2517,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "government_house_stt__government_house_stt.jpeg"
+      "wikimedia:Governors Mansion in the Government house complex on St. Thomas..jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Governors_Mansion_in_the_Government_house_complex_on_St._Thomas..jpg"
+    ]
   },
   {
     "id": "green-kay",
@@ -3268,8 +3313,10 @@
     "category": "site",
     "description": "Market Square (Pladsen) is a historic site in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Market Square (Pladsen) is a historic site in St. Thomas, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rothschild%20Francis%20Square%20(Market%20Square)%20(39724625551).jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rothschild%20Francis%20Square%20(Market%20Square)%20(39724625551).jpg?width=1600"
+    ],
     "tags": [
       "site",
       "STT",
@@ -3277,12 +3324,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "market_square_pladsen__market_square_pladsen.jpeg"
+      "wikimedia:Rothschild Francis Square (Market Square) (39724625551).jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Rothschild_Francis_Square_(Market_Square)_(39724625551).jpg"
+    ]
   },
   {
     "id": "mary-point-estate",
@@ -3421,8 +3471,10 @@
     "category": "ruin",
     "description": "Peace Hill Ruins is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
     "shortDescription": "Peace Hill Ruins is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Peace%20Hill%20Windmill.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Peace%20Hill%20Windmill.jpg?width=1600"
+    ],
     "tags": [
       "ruin",
       "STJ",
@@ -3430,12 +3482,15 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "peace_hill_ruins__peace_hill_ruins.jpeg"
+      "wikimedia:Peace Hill Windmill.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:08:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Peace_Hill_Windmill.jpg"
+    ]
   },
   {
     "id": "reef-bay-great-house-historic-district",
