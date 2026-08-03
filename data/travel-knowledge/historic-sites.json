@@ -1005,8 +1005,10 @@
     "category": "landmark",
     "description": "Danish West India and Guinea Company Warehouse is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Danish West India and Guinea Company Warehouse is a federally recognized historic landmark in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/DANISH%20WEST%20INDIA%20%26%20GUINEA%20COMPANY%20WAREHOUSE.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/DANISH%20WEST%20INDIA%20%26%20GUINEA%20COMPANY%20WAREHOUSE.jpg?width=1600"
+    ],
     "tags": [
       "landmark",
       "STX",
@@ -1015,8 +1017,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:DANISH WEST INDIA & GUINEA COMPANY WAREHOUSE.jpg"
+    ],
     "location": "Church and Company Sts., Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "74001940",
@@ -1032,10 +1036,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518864",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:DANISH_WEST_INDIA_%26_GUINEA_COMPANY_WAREHOUSE.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "dennis-bay-historic-district",
@@ -1631,8 +1636,10 @@
     "category": "estate",
     "description": "Estate Judith's Fancy is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Estate Judith's Fancy is a federally recognized historic estate in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20JUDITH'S%20FANCY.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20JUDITH'S%20FANCY.jpg?width=1600"
+    ],
     "tags": [
       "estate",
       "STX",
@@ -1641,8 +1648,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:ESTATE JUDITH'S FANCY.jpg"
+    ],
     "location": "4 mi. (3.2 km) NW of Christiansted, Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78002717",
@@ -1654,10 +1663,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518874",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:ESTATE_JUDITH%27S_FANCY.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "estate-la-reine",
@@ -1708,8 +1718,10 @@
     "category": "estate",
     "description": "Estate Little Princess is a historic estate site in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Estate Little Princess is a historic estate site in St. Croix, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Plantation%20ruins%20estate%20little%20princess.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Plantation%20ruins%20estate%20little%20princess.jpg?width=1600"
+    ],
     "tags": [
       "estate",
       "STX",
@@ -1718,12 +1730,13 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "estate_little_princess__estate_little_princess.jpeg"
+      "estate_little_princess__estate_little_princess.jpeg",
+      "wikimedia:Plantation ruins estate little princess.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z",
+    "updatedAt": "2026-08-03T13:00:00.000Z",
     "aliases": [
       "Estate Little Princessa"
     ],
@@ -1740,7 +1753,8 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518878",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Plantation_ruins_estate_little_princess.jpg"
     ]
   },
   {
@@ -3277,8 +3291,10 @@
     "category": "landmark",
     "description": "Mafolie Great House is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Mafolie Great House is a federally recognized historic landmark in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mafolie%20Great%20House%2C%20St%20Thomas.png?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mafolie%20Great%20House%2C%20St%20Thomas.png?width=1600"
+    ],
     "tags": [
       "landmark",
       "STT",
@@ -3287,8 +3303,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Mafolie Great House, St Thomas.png"
+    ],
     "location": "N of Charlotte Amalie, Charlotte Amalie",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78002732",
@@ -3300,10 +3318,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518960",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Mafolie_Great_House,_St_Thomas.png"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "market-square-pladsen",
@@ -3435,8 +3454,10 @@
     "category": "church",
     "description": "New Herrnhut Moravian Church is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "New Herrnhut Moravian Church is a federally recognized historic church in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/New%20Herrnhut%20Moravian%20Church%2C%20St.%20Thomas.png?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/New%20Herrnhut%20Moravian%20Church%2C%20St.%20Thomas.png?width=1600"
+    ],
     "tags": [
       "church",
       "STT",
@@ -3445,8 +3466,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:New Herrnhut Moravian Church, St. Thomas.png"
+    ],
     "location": "E of Charlotte Amalie, Charlotte Amalie",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76001866",
@@ -3458,10 +3481,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518963",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:New_Herrnhut_Moravian_Church,_St._Thomas.png"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "peace-hill-ruins",
@@ -3553,8 +3577,10 @@
     "category": "district",
     "description": "Reef Bay Sugar Factory Historic District is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Reef Bay Sugar Factory Historic District is a federally recognized historic district in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Reef%20Bay%20Sugar%20Factory%2C%20north%20view.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Reef%20Bay%20Sugar%20Factory%2C%20north%20view.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STJ",
@@ -3563,8 +3589,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Reef Bay Sugar Factory, north view.jpg"
+    ],
     "location": "E of Cruz Bay, Reef Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "81000084",
@@ -3581,10 +3609,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518823",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Reef_Bay_Sugar_Factory,_north_view.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "reef-bay-sugar-mill",
@@ -3594,8 +3623,10 @@
     "category": "ruin",
     "description": "Reef Bay Sugar Mill is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
     "shortDescription": "Reef Bay Sugar Mill is a historic ruin and heritage site in St. John, U.S. Virgin Islands.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Reef%20Bay%20Sugar%20Factory%2C%20north%20view.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Reef%20Bay%20Sugar%20Factory%2C%20north%20view.jpg?width=1600"
+    ],
     "tags": [
       "ruin",
       "STJ",
@@ -3603,12 +3634,16 @@
       "usvi"
     ],
     "featured": false,
-    "imageCount": 0,
+    "imageCount": 1,
     "sourceImageIds": [
-      "reef_bay_sugar_mill__reef_bay_sugar_mill.jpeg"
+      "reef_bay_sugar_mill__reef_bay_sugar_mill.jpeg",
+      "wikimedia:Reef Bay Sugar Factory, north view.jpg"
     ],
     "createdAt": "2026-07-17T21:00:56.170Z",
-    "updatedAt": "2026-07-17T21:00:56.170Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z",
+    "sourceUrls": [
+      "https://commons.wikimedia.org/wiki/File:Reef_Bay_Sugar_Factory,_north_view.jpg"
+    ]
   },
   {
     "id": "reformed-dutch-church-stt",
@@ -3793,8 +3828,10 @@
     "category": "landmark",
     "description": "Sion Hill is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Sion Hill is a federally recognized historic landmark in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sion%20Hill%20Estate%2C%20Great%20House%2C%20Centerline%20Road%20vicinity%2C%20Queen's%20Quarter%20(St.%20Croix%20County%2C%20Virgin%20Islands).jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sion%20Hill%20Estate%2C%20Great%20House%2C%20Centerline%20Road%20vicinity%2C%20Queen's%20Quarter%20(St.%20Croix%20County%2C%20Virgin%20Islands).jpg?width=1600"
+    ],
     "tags": [
       "landmark",
       "STX",
@@ -3803,8 +3840,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Sion Hill Estate, Great House, Centerline Road vicinity, Queen's Quarter (St. Croix County, Virgin Islands).jpg"
+    ],
     "location": "W of Christiansted, Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76001850",
@@ -3816,10 +3855,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518912",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Sion_Hill_Estate,_Great_House,_Centerline_Road_vicinity,_Queen%27s_Quarter_(St._Croix_County,_Virgin_Islands).jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "blackbeards-castle",
@@ -4000,8 +4040,10 @@
     "category": "church",
     "description": "St. John's Episcopal Church is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "St. John's Episcopal Church is a federally recognized historic church in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Christiansted%2C%20Saint%20Croix%2C%20Virgin%20Islands%201a33961v.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Christiansted%2C%20Saint%20Croix%2C%20Virgin%20Islands%201a33961v.jpg?width=1600"
+    ],
     "tags": [
       "church",
       "STX",
@@ -4010,8 +4052,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Christiansted, Saint Croix, Virgin Islands 1a33961v.jpg"
+    ],
     "location": "Plot #27 King St., Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "16000698",
@@ -4024,10 +4068,11 @@
     "coordinateGeometry": "point",
     "sourceUrls": [
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Christiansted,_Saint_Croix,_Virgin_Islands_1a33961v.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "st-thomas-synagogue",
@@ -4248,8 +4293,10 @@
     "category": "estate",
     "description": "Tutu Plantation House is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Tutu Plantation House is a federally recognized historic estate in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tutu%20Plantation%20House%2C%20St%20Thomas.png?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tutu%20Plantation%20House%2C%20St%20Thomas.png?width=1600"
+    ],
     "tags": [
       "estate",
       "STT",
@@ -4258,8 +4305,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Tutu Plantation House, St Thomas.png"
+    ],
     "location": "3 mi. NE of Charlotte Amalie, Charlotte Amalie",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76001867",
@@ -4271,10 +4320,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518969",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Tutu_Plantation_House,_St_Thomas.png"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:00:00.000Z"
   },
   {
     "id": "venus-hill",
