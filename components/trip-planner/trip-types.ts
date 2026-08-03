@@ -9,6 +9,9 @@ export type TripItem = {
   image?: string;
   description?: string;
   href: string;
+  mapHref?: string;
+  lat?: number;
+  lng?: number;
   day: number;
   timeOfDay: "morning" | "afternoon" | "evening" | "flexible";
   addedAt: string;
