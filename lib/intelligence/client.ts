@@ -1,5 +1,6 @@
 "use client";
 
+import { dispatchIntelligenceResponseMapFocus } from "@/lib/intelligence/map-focus-events";
 import type {
   IntelligenceContext,
   IntelligenceMemory,
@@ -202,5 +203,6 @@ export async function askViIntelligence(
 
   patchIntelligenceMemory(payload.memoryPatch);
   feedIntelligenceContext(context.page, payload.context);
+  dispatchIntelligenceResponseMapFocus(payload);
   return payload;
 }

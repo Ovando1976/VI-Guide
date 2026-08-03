@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
 import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
 import { LiveCatalogSync } from "@/components/territory/live-catalog-sync";
+import { LivingMapBridge } from "@/components/workspace/living-map-bridge";
+import { LivingMapDock } from "@/components/workspace/living-map-dock";
 import { UnifiedMapWorkspaceBar } from "@/components/workspace/unified-map-workspace-bar";
 import { UnifiedWorkspaceProvider } from "@/components/workspace/unified-workspace-controller";
 
@@ -48,6 +50,8 @@ export default function MapPage() {
         `}</style>
         <Suspense fallback={null}>
           <UnifiedMapWorkspaceBar />
+          <LivingMapBridge />
+          <LivingMapDock />
           <LiveCatalogSync />
           <MapIntelligenceBridge />
         </Suspense>
