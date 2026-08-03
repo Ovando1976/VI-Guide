@@ -136,7 +136,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
 
           return {
             item,
-            score: module.imageTerms.reduce(
+            score: Array.from(module.imageTerms).reduce(
               (total, term) => total + (subject.includes(term) ? 1 : 0),
               0,
             ),
