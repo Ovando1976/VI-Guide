@@ -92,8 +92,8 @@ function focusFromCatalog(item: LivingMapFocusItem) {
   const requestedTitle = normalizedText(item.title);
   const catalog = queryTerritoryMapPlaces({ island: item.island });
   const match = catalog.find((place) => {
-    const id = placeIdentity(place);
-    const title = normalizedText(place.name ?? place.title);
+    const id = normalizedText(place.id ?? place.name);
+    const title = normalizedText(place.name);
     return (
       id === requestedId ||
       id.endsWith(`-${requestedId}`) ||
@@ -109,7 +109,7 @@ function focusFromCatalog(item: LivingMapFocusItem) {
 
   return {
     id: match.id ?? item.id,
-    name: match.name ?? match.title ?? item.title,
+    name: match.name ?? item.title,
     type: placeTypeForMapFocusItem({ kind: match.type ?? item.kind }),
     lat,
     lng,
