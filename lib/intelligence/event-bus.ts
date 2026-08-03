@@ -12,7 +12,9 @@ export type IntelligenceEventType =
   | "trip.planned"
   | "mobility.requested"
   | "booking.reviewed"
-  | "memory.updated";
+  | "memory.updated"
+  | "action.completed"
+  | "action.failed";
 
 export type IntelligenceEvent = {
   id: string;
