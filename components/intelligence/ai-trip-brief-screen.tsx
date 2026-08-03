@@ -16,7 +16,6 @@ import {
   MapPin,
   Navigation,
   RefreshCcw,
-  Route,
   ShieldCheck,
   Sparkles,
   SunMedium,
@@ -140,7 +139,7 @@ export function AiTripBriefScreen() {
             sessionId: getIntelligenceSessionId(),
             island,
             runId: response?.runId,
-            workflowId: response?.orchestration?.context?.workflowId,
+            workflowId: response?.orchestration?.context?.workflow?.id,
           },
           payload: {
             ...action.payload,
