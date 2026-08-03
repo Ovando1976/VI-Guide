@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -116,6 +117,30 @@ export function DiscoveryDirectoryPage({
     () => items.filter((item) => item.featured).slice(0, 6),
     [items],
   );
+  const heroItem = featured[0] ?? items[0];
+  const destinationItems = useMemo(
+    () =>
+      Object.fromEntries(
+        DESTINATIONS.map((destination) => [
+          destination.island,
+          items.find(
+            (item) => item.island === destination.island && item.featured,
+          ) ?? items.find((item) => item.island === destination.island),
+        ]),
+      ) as Partial<Record<DirectoryIsland, DirectoryItem>>,
+    [items],
+  );
+  const islandCounts = useMemo(
+    () =>
+      items.reduce(
+        (counts, item) => ({
+          ...counts,
+          [item.island]: counts[item.island] + 1,
+        }),
+        { stt: 0, stj: 0, stx: 0 } as Record<DirectoryIsland, number>,
+      ),
+    [items],
+  );
 
   const hasFilters = island !== "all" || category !== "all" || Boolean(query.trim());
 
@@ -128,24 +153,36 @@ export function DiscoveryDirectoryPage({
   return (
     <main className="directory-page min-h-screen bg-[#f8f4ea] px-4 py-5 pb-32 text-[#043331] sm:px-6 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-10">
-        <section className="overflow-hidden rounded-[34px] bg-[linear-gradient(135deg,#043331_0%,#075b58_58%,#13a89e_100%)] text-white shadow-[0_28px_70px_rgba(4,51,49,.18)]">
-          <div className="grid gap-8 px-6 py-9 sm:px-9 lg:grid-cols-[1.15fr_.85fr] lg:px-12 lg:py-12">
+        <section className="relative min-h-[34rem] overflow-hidden rounded-[34px] bg-[#043331] text-white shadow-[0_28px_70px_rgba(4,51,49,.22)]">
+          {heroItem ? (
+            <Image
+              src={heroItem.heroImage}
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover"
+            />
+          ) : null}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,38,37,.97)_0%,rgba(3,51,49,.88)_43%,rgba(3,51,49,.44)_72%,rgba(3,51,49,.24)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,51,49,.7)_0%,transparent_52%)]" />
+          <div className="relative grid min-h-[34rem] gap-8 px-6 py-9 sm:px-9 lg:grid-cols-[1.15fr_.85fr] lg:items-center lg:px-12 lg:py-12">
             <div>
-              <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.3em] text-[#f5c451]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/15 px-3 py-2 text-[10px] font-black uppercase tracking-[.3em] text-[#f5c451] backdrop-blur">
                 <Icon className="h-4 w-4" /> {eyebrow}
               </div>
-              <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[.95] tracking-[-.055em] sm:text-6xl">
+              <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[.95] tracking-[-.055em] drop-shadow-sm sm:text-6xl">
                 {title}
               </h1>
-              <p className="mt-5 max-w-2xl text-base font-semibold leading-7 text-white/72">
+              <p className="mt-5 max-w-2xl text-base font-semibold leading-7 text-white/80">
                 {description}
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em]">
-                  Curated local guidance
+                <span className="rounded-full border border-white/20 bg-black/15 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur">
+                  {items.length} verified guide entries
                 </span>
-                <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em]">
-                  Ready with limited connectivity
+                <span className="rounded-full border border-white/20 bg-black/15 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur">
+                  Three islands · one connected trip
                 </span>
                 <Link
                   href="/planner"
@@ -157,9 +194,9 @@ export function DiscoveryDirectoryPage({
               </div>
             </div>
 
-            <div className="self-end rounded-[28px] border border-white/15 bg-black/10 p-5 backdrop-blur">
+            <div className="self-end rounded-[28px] border border-white/20 bg-[#032f2d]/72 p-5 shadow-2xl backdrop-blur-md lg:self-center">
               <label
-                className="text-[10px] font-black uppercase tracking-[.2em] text-white/65"
+                className="text-[10px] font-black uppercase tracking-[.2em] text-[#f5c451]"
                 htmlFor="directory-search"
               >
                 What are you looking for?
@@ -184,6 +221,26 @@ export function DiscoveryDirectoryPage({
                   </button>
                 ) : null}
               </div>
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                <div className="rounded-2xl bg-white/10 px-3 py-3 text-center">
+                  <strong className="block text-xl font-black">{filtered.length}</strong>
+                  <span className="mt-1 block text-[8px] font-black uppercase tracking-[.13em] text-white/55">Matching now</span>
+                </div>
+                <div className="rounded-2xl bg-white/10 px-3 py-3 text-center">
+                  <strong className="block text-xl font-black">{featured.length}</strong>
+                  <span className="mt-1 block text-[8px] font-black uppercase tracking-[.13em] text-white/55">Local favorites</span>
+                </div>
+                <div className="rounded-2xl bg-white/10 px-3 py-3 text-center">
+                  <strong className="block text-xl font-black">3</strong>
+                  <span className="mt-1 block text-[8px] font-black uppercase tracking-[.13em] text-white/55">Islands</span>
+                </div>
+              </div>
+              {heroItem ? (
+                <Link href={`${basePath}/${heroItem.slug}`} className="mt-4 flex items-center justify-between rounded-2xl border border-white/12 bg-black/15 px-4 py-3 text-sm font-bold transition hover:bg-black/25">
+                  <span className="line-clamp-1">Featured: {heroItem.name}</span>
+                  <Compass className="h-4 w-4 text-[#f5c451]" />
+                </Link>
+              ) : null}
             </div>
           </div>
         </section>
@@ -197,12 +254,16 @@ export function DiscoveryDirectoryPage({
               <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">
                 Start with a destination
               </h2>
+              <p className="mt-2 max-w-2xl text-sm font-semibold text-slate-500">
+                Compare the character and available choices on each island before narrowing the guide.
+              </p>
             </div>
             <IslandFilterTabs value={island} onChange={setIsland} />
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {DESTINATIONS.map((destination) => {
               const active = island === destination.island;
+              const imageItem = destinationItems[destination.island];
               return (
                 <button
                   type="button"
@@ -210,24 +271,34 @@ export function DiscoveryDirectoryPage({
                   onClick={() =>
                     setIsland(active ? "all" : destination.island)
                   }
-                  className={`rounded-[26px] border p-5 text-left transition ${
+                  className={`group relative min-h-[15rem] overflow-hidden rounded-[28px] border text-left text-white shadow-[0_14px_35px_rgba(4,51,49,.12)] transition hover:-translate-y-1 hover:shadow-[0_22px_48px_rgba(4,51,49,.2)] ${
                     active
-                      ? "border-[#0f766e] bg-[#043331] text-white shadow-lg"
-                      : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-teal-700"
+                      ? "border-[#f5c451] ring-4 ring-[#f5c451]/30"
+                      : "border-white/30"
                   }`}
                 >
-                  <MapPin
-                    className={`h-5 w-5 ${
-                      active ? "text-[#f5c451]" : "text-teal-700"
-                    }`}
-                  />
-                  <strong className="mt-4 block text-xl">{destination.name}</strong>
-                  <span
-                    className={`mt-2 block text-sm font-semibold leading-6 ${
-                      active ? "text-white/65" : "text-slate-500"
-                    }`}
-                  >
-                    {destination.caption}
+                  {imageItem ? (
+                    <Image
+                      src={imageItem.heroImage}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  ) : null}
+                  <span className="absolute inset-0 bg-[linear-gradient(0deg,rgba(2,38,37,.95)_0%,rgba(2,38,37,.2)_72%)]" />
+                  <span className="relative flex min-h-[15rem] flex-col justify-end p-5">
+                    <span className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/25 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.14em] backdrop-blur">
+                      {islandCounts[destination.island]} choices
+                    </span>
+                    <MapPin className={`h-5 w-5 ${active ? "text-[#f5c451]" : "text-white"}`} />
+                    <strong className="mt-3 block text-2xl">{destination.name}</strong>
+                    <span className="mt-2 block text-sm font-semibold leading-6 text-white/72">
+                      {destination.caption}
+                    </span>
+                    <span className="mt-4 text-[9px] font-black uppercase tracking-[.16em] text-[#f5c451]">
+                      {active ? "Showing this island" : "Explore this island"}
+                    </span>
                   </span>
                 </button>
               );
