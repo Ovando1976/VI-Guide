@@ -89,6 +89,7 @@ const MODULES = [
 export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
   const [query, setQuery] = useState("");
   const [island, setIsland] = useState<IslandFilter>("all");
+  const [failedImages, setFailedImages] = useState<Set<string>>(() => new Set());
 
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -111,10 +112,19 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
   }, [island, items, query]);
 
   const featured = filtered.slice(0, 12);
-  const moduleImages = useMemo(
-    () =>
-      MODULES.map((module, index) => {
-        const match = items.find((item) => {
+  const moduleImages = useMemo(() => {
+    const candidates = items.filter(
+      (item) =>
+        item.heroImage &&
+        item.imageStatus !== "pending" &&
+        !failedImages.has(item.heroImage),
+    );
+    const used = new Set<string>();
+
+    return MODULES.map((module, index) => {
+      const ranked = candidates
+        .filter((item) => !used.has(item.heroImage))
+        .map((item) => {
           const subject = [
             item.name,
             item.category,
@@ -123,12 +133,29 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
           ]
             .join(" ")
             .toLowerCase();
-          return module.imageTerms.some((term) => subject.includes(term));
-        });
-        return match?.heroImage ?? items[index % Math.max(items.length, 1)]?.heroImage ?? "";
-      }),
-    [items],
-  );
+
+          return {
+            item,
+            score: Array.from(module.imageTerms).reduce(
+              (total, term) => total + (subject.includes(term) ? 1 : 0),
+              0,
+            ),
+          };
+        })
+        .sort((left, right) => right.score - left.score);
+
+      const selected =
+        ranked.find(({ score }) => score > 0)?.item ??
+        ranked[0]?.item ??
+        candidates[index % Math.max(candidates.length, 1)];
+
+      if (selected?.heroImage) {
+        used.add(selected.heroImage);
+      }
+
+      return selected?.heroImage ?? "";
+    });
+  }, [failedImages, items]);
 
   return (
     <main className="min-h-screen bg-[#f7f2e7] pb-36 text-[#082f2d]">
@@ -210,6 +237,19 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-105"
+                    onError={() => {
+                      const failedImage = moduleImages[index];
+
+                      if (!failedImage) return;
+
+                      setFailedImages((current) => {
+                        if (current.has(failedImage)) return current;
+
+                        const next = new Set(current);
+                        next.add(failedImage);
+                        return next;
+                      });
+                    }}
                   />
                 ) : null}
                 <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,45,44,.08),rgba(3,45,44,.82))]" />
