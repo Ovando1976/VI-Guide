@@ -11,7 +11,6 @@ import {
 } from "@/lib/intelligence/map-focus-events";
 import { queryTerritoryMapPlaces } from "@/lib/territory";
 import type {
-  TerritoryMapPlace,
   TerritoryMapPlaceType,
   TerritoryMapSelection,
 } from "@/types/territory-map";
@@ -81,10 +80,6 @@ function focusFromMapHref(item: LivingMapFocusItem) {
   } catch {
     return null;
   }
-}
-
-function placeIdentity(place: TerritoryMapPlace) {
-  return normalizedText(place.id ?? place.name ?? place.title);
 }
 
 function focusFromCatalog(item: LivingMapFocusItem) {
