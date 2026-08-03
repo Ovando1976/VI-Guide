@@ -3,6 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
 import { refineIntelligenceResponse } from "@/lib/intelligence/model-refinement";
 import { runIntelligenceOrchestrator } from "@/lib/intelligence/orchestrator";
+import {
+  beginIntelligenceRun,
+  completeIntelligenceRun,
+  failIntelligenceRun,
+} from "@/lib/intelligence/telemetry";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -93,6 +98,8 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
 }
 
 export async function POST(request: NextRequest) {
+  let run: Awaited<ReturnType<typeof beginIntelligenceRun>> | null = null;
+
   try {
     const payload = (await request.json().catch(() => null)) as Partial<IntelligenceRequest> | null;
     if (!payload) {
@@ -119,6 +126,8 @@ export async function POST(request: NextRequest) {
         : {}),
     };
 
+    run = await beginIntelligenceRun(normalizedRequest);
+
     const engineResult = await runIntelligenceOrchestrator(normalizedRequest);
     const groundedResult = {
       ...engineResult,
@@ -129,9 +138,12 @@ export async function POST(request: NextRequest) {
       groundedResult,
     );
 
+    await completeIntelligenceRun(run, result);
+
     return NextResponse.json(result, {
       headers: {
         "Cache-Control": "no-store",
+        "X-VI-Intelligence-Run": run.id,
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
         "X-VI-Intelligence-Workflow":
@@ -142,6 +154,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
+    if (run) await failIntelligenceRun(run, error);
     console.error("VI Guide intelligence request failed.", error);
     return NextResponse.json(
       { error: "The VI Guide intelligence engine could not respond." },
