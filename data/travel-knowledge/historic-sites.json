@@ -860,8 +860,10 @@
     "category": "district",
     "description": "Coakley Bay Estate is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Coakley Bay Estate is a federally recognized historic district in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/EstateCoakleyBay.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/EstateCoakleyBay.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STX",
@@ -870,8 +872,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:EstateCoakleyBay.jpg"
+    ],
     "location": "E of Christiansted, Christiansted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "76001841",
@@ -883,10 +887,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518862",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:EstateCoakleyBay.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "columbus-landing-site",
@@ -1397,8 +1402,10 @@
     "category": "estate",
     "description": "Estate Brewers Bay is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Estate Brewers Bay is a federally recognized historic estate in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brewers%20Bay%20Sugar%20Factory%2C%20St%20Thomas.png?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Brewers%20Bay%20Sugar%20Factory%2C%20St%20Thomas.png?width=1600"
+    ],
     "tags": [
       "estate",
       "STT",
@@ -1407,8 +1414,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Brewers Bay Sugar Factory, St Thomas.png"
+    ],
     "location": "2 mi. (3.2 km) W of Charlotte Amalie at Brewers Bay, Charlotte Amalie",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78002727",
@@ -1420,10 +1429,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518942",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Brewers_Bay_Sugar_Factory,_St_Thomas.png"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "estate-butlers-bay",
@@ -1517,8 +1527,10 @@
     "category": "estate",
     "description": "Estate Grove Place is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Estate Grove Place is a federally recognized historic estate in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GroveRuins20230926%20101042.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/GroveRuins20230926%20101042.jpg?width=1600"
+    ],
     "tags": [
       "estate",
       "STX",
@@ -1527,8 +1539,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:GroveRuins20230926 101042.jpg"
+    ],
     "location": "4 mi. (6.4 km) E of Frederiksted off Centerline Rd., Frederiksted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78002721",
@@ -1540,10 +1554,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518870",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:GroveRuins20230926_101042.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "estate-hafensight",
@@ -1556,8 +1571,10 @@
     "category": "estate",
     "description": "Estate Hafensight is a public National Register of Historic Places listing in St. Thomas, U.S. Virgin Islands.",
     "shortDescription": "Estate Hafensight is a federally recognized historic estate in St. Thomas.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Estate%20Hafensight.png?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Estate%20Hafensight.png?width=1600"
+    ],
     "tags": [
       "estate",
       "STT",
@@ -1566,8 +1583,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Estate Hafensight.png"
+    ],
     "location": "S of Charlotte Amalie, Charlotte Amalie",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "78002728",
@@ -1581,10 +1600,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518944",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Estate_Hafensight.png"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "estate-hogansborg",
@@ -1957,8 +1977,10 @@
     "category": "district",
     "description": "Estate Saint George Historic District is a public National Register of Historic Places listing in St. Croix, U.S. Virgin Islands.",
     "shortDescription": "Estate Saint George Historic District is a federally recognized historic district in St. Croix.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20ST.%20GEORGE%20HISTORIC%20DISTRICT.jpg?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/ESTATE%20ST.%20GEORGE%20HISTORIC%20DISTRICT.jpg?width=1600"
+    ],
     "tags": [
       "district",
       "STX",
@@ -1967,8 +1989,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:ESTATE ST. GEORGE HISTORIC DISTRICT.jpg"
+    ],
     "location": "Prince Quarter, Frederiksted",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "86003351",
@@ -1980,10 +2004,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518884",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:ESTATE_ST._GEORGE_HISTORIC_DISTRICT.jpg"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "estate-st-john",
@@ -3212,8 +3237,10 @@
     "category": "fort",
     "description": "Lind Point Fort is a public National Register of Historic Places listing in St. John, U.S. Virgin Islands.",
     "shortDescription": "Lind Point Fort is a federally recognized historic fort in St. John.",
-    "heroImage": "/images/historic/placeholder.svg",
-    "images": [],
+    "heroImage": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fort%20Lind%202.JPG?width=1600",
+    "images": [
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fort%20Lind%202.JPG?width=1600"
+    ],
     "tags": [
       "fort",
       "STJ",
@@ -3222,8 +3249,10 @@
       "nrhp"
     ],
     "featured": false,
-    "imageCount": 0,
-    "sourceImageIds": [],
+    "imageCount": 1,
+    "sourceImageIds": [
+      "wikimedia:Fort Lind 2.JPG"
+    ],
     "location": "NW of Cruz Bay, Cruz Bay",
     "designation": "National Register of Historic Places",
     "nrhpReferenceNumber": "81000085",
@@ -3240,10 +3269,11 @@
     "sourceUrls": [
       "https://catalog.archives.gov/id/131518825",
       "https://www.nps.gov/subjects/nationalregister/database-research.htm",
-      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer"
+      "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer",
+      "https://commons.wikimedia.org/wiki/File:Fort_Lind_2.JPG"
     ],
     "createdAt": "2026-07-18T20:33:37.869Z",
-    "updatedAt": "2026-07-19T00:01:37.918Z"
+    "updatedAt": "2026-08-03T13:20:00.000Z"
   },
   {
     "id": "little-la-grange",
