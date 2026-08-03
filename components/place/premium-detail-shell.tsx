@@ -48,7 +48,7 @@ export function PremiumDetailShell({
           </div>
         ) : null}
 
-        <section className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm lg:rounded-[40px]">
+        <section className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm lg:rounded-[40px]">
           <div className="grid lg:grid-cols-[1.25fr_.75fr]">
             <div className="min-h-[340px] sm:min-h-[440px] lg:min-h-[540px]">{hero}</div>
             <div className="flex flex-col justify-between bg-[linear-gradient(145deg,#043331_0%,#0b5d5b_62%,#14b8a6_100%)] p-7 text-white sm:p-10">
