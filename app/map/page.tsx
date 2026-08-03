@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
 import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
 import { LiveCatalogSync } from "@/components/territory/live-catalog-sync";
+import { UnifiedMapWorkspaceBar } from "@/components/workspace/unified-map-workspace-bar";
 import { UnifiedWorkspaceProvider } from "@/components/workspace/unified-workspace-controller";
 
 const ExplorerMapScreen = dynamic(
@@ -17,7 +18,7 @@ const ExplorerMapScreen = dynamic(
 export default function MapPage() {
   return (
     <UnifiedWorkspaceProvider>
-      <div className="map-customer-page">
+      <div className="map-customer-page pt-24 sm:pt-20">
         <TerrainDefaultController />
         <style>{`
           .map-customer-page main {
@@ -46,6 +47,7 @@ export default function MapPage() {
           }
         `}</style>
         <Suspense fallback={null}>
+          <UnifiedMapWorkspaceBar />
           <LiveCatalogSync />
           <MapIntelligenceBridge />
         </Suspense>
