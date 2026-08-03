@@ -14,6 +14,14 @@ export type IntelligencePage =
   | "search"
   | "unknown";
 
+export type IntelligenceCapability =
+  | "recommend"
+  | "plan"
+  | "map"
+  | "mobility"
+  | "booking"
+  | "knowledge";
+
 export type IntelligenceLocation = {
   id?: string;
   name: string;
@@ -71,9 +79,7 @@ export type IntelligenceContext = {
 export type IntelligenceRequest = {
   message: string;
   context: IntelligenceContext;
-  capabilities?: Array<
-    "recommend" | "plan" | "map" | "mobility" | "booking" | "knowledge"
-  >;
+  capabilities?: IntelligenceCapability[];
 };
 
 export type IntelligencePlanStop = {
@@ -128,6 +134,27 @@ export type IntelligenceRecommendation = {
   mapHref?: string;
 };
 
+export type IntelligenceOrchestrationStep = {
+  node:
+    | "classify"
+    | "authorize"
+    | "ground"
+    | "plan"
+    | "validate"
+    | "finalize";
+  status: "completed" | "limited" | "waiting";
+  detail: string;
+  completedAt: string;
+};
+
+export type IntelligenceOrchestration = {
+  status: "ready" | "waiting_for_user";
+  intent: string;
+  requiredCapabilities: IntelligenceCapability[];
+  missingInformation: string[];
+  trace: IntelligenceOrchestrationStep[];
+};
+
 export type IntelligenceResponse = {
   runId: string;
   answer: string;
@@ -139,5 +166,6 @@ export type IntelligenceResponse = {
   actions: IntelligenceAction[];
   memoryPatch: IntelligenceMemory;
   warnings: string[];
+  orchestration?: IntelligenceOrchestration;
   generatedAt: string;
 };
