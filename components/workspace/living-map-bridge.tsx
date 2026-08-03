@@ -56,7 +56,9 @@ function validPlaceType(value: string | null): TerritoryMapPlaceType | null {
     : null;
 }
 
-function focusFromMapHref(item: LivingMapFocusItem) {
+function focusFromMapHref(
+  item: LivingMapFocusItem,
+): TerritoryMapSelection | null {
   if (!item.mapHref) return null;
   try {
     const url = new URL(item.mapHref, window.location.origin);
@@ -76,13 +78,15 @@ function focusFromMapHref(item: LivingMapFocusItem) {
       description:
         url.searchParams.get("placeDescription")?.trim() || item.summary,
       rating: finiteCoordinate(url.searchParams.get("placeRating"), 0, 5),
-    } satisfies TerritoryMapSelection;
+    };
   } catch {
     return null;
   }
 }
 
-function focusFromCatalog(item: LivingMapFocusItem) {
+function focusFromCatalog(
+  item: LivingMapFocusItem,
+): TerritoryMapSelection | null {
   const requestedId = normalizedText(item.id);
   const requestedTitle = normalizedText(item.title);
   const catalog = queryTerritoryMapPlaces({ island: item.island });
@@ -111,10 +115,12 @@ function focusFromCatalog(item: LivingMapFocusItem) {
     location: match.location,
     description: match.description ?? item.summary,
     rating: match.rating,
-  } satisfies TerritoryMapSelection;
+  };
 }
 
-function resolveFocusItem(item: LivingMapFocusItem) {
+function resolveFocusItem(
+  item: LivingMapFocusItem,
+): TerritoryMapSelection | null {
   const hrefFocus = focusFromMapHref(item);
   if (hrefFocus) return hrefFocus;
 
@@ -128,7 +134,7 @@ function resolveFocusItem(item: LivingMapFocusItem) {
       lat,
       lng,
       description: item.summary,
-    } satisfies TerritoryMapSelection;
+    };
   }
 
   return focusFromCatalog(item);
