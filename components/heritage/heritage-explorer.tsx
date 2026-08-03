@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
@@ -29,6 +30,7 @@ type IslandFilter = keyof typeof ISLANDS;
 const MODULES = [
   {
     title: "Historic places",
+    imageTerms: ["fort", "estate", "church", "historic"],
     text: "Forts, estates, churches, districts, ruins, and cultural landscapes.",
     icon: Landmark,
     state: "Live",
@@ -36,6 +38,7 @@ const MODULES = [
   },
   {
     title: "Governors",
+    imageTerms: ["government house", "governor", "legislature", "administration"],
     text: "Follow naval, appointed, acting, and elected administrations from 1917 to today.",
     icon: Crown,
     state: "Live",
@@ -43,6 +46,7 @@ const MODULES = [
   },
   {
     title: "Library of Congress gallery",
+    imageTerms: ["charlotte amalie", "frederiksted", "christiansted", "archive"],
     text: "Explore the complete digitized 1941 U.S. Virgin Islands photographic collection.",
     icon: Images,
     state: "Live",
@@ -50,6 +54,7 @@ const MODULES = [
   },
   {
     title: "Territory timeline",
+    imageTerms: ["fort christian", "ruins", "plantation", "century"],
     text: "Move through eras, events, people, resistance, government, storms, and changing island life.",
     icon: Clock3,
     state: "Next",
@@ -57,6 +62,7 @@ const MODULES = [
   },
   {
     title: "Heritage map",
+    imageTerms: ["estate", "district", "landscape", "quarter"],
     text: "Explore historic places and cultural context on the same territory map used throughout VI Guide.",
     icon: Map,
     state: "Live",
@@ -64,6 +70,7 @@ const MODULES = [
   },
   {
     title: "Heritage search",
+    imageTerms: ["synagogue", "church", "museum", "landmark"],
     text: "Search places, events, governors, estates, people, and source-backed historical knowledge.",
     icon: Search,
     state: "Live",
@@ -71,6 +78,7 @@ const MODULES = [
   },
   {
     title: "Ask the Heritage Guide",
+    imageTerms: ["museum", "historic", "culture", "heritage"],
     text: "Ask what happened here, compare eras, or build a history-focused island experience.",
     icon: BookOpen,
     state: "Live",
@@ -103,6 +111,24 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
   }, [island, items, query]);
 
   const featured = filtered.slice(0, 12);
+  const moduleImages = useMemo(
+    () =>
+      MODULES.map((module, index) => {
+        const match = items.find((item) => {
+          const subject = [
+            item.name,
+            item.category,
+            item.description,
+            ...item.tags,
+          ]
+            .join(" ")
+            .toLowerCase();
+          return module.imageTerms.some((term) => subject.includes(term));
+        });
+        return match?.heroImage ?? items[index % Math.max(items.length, 1)]?.heroImage ?? "";
+      }),
+    [items],
+  );
 
   return (
     <main className="min-h-screen bg-[#f7f2e7] pb-36 text-[#082f2d]">
@@ -170,29 +196,46 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
 
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {MODULES.map(({ title, text, icon: Icon, state, href }) => (
+          {MODULES.map(({ title, text, icon: Icon, state, href }, index) => (
             <Link
               key={title}
               href={href}
-              className="group rounded-[26px] border border-[#0b4b46]/10 bg-white p-5 shadow-[0_18px_50px_rgba(4,51,49,.07)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(4,51,49,.12)]"
+              className="group overflow-hidden rounded-[26px] border border-[#0b4b46]/10 bg-white shadow-[0_18px_50px_rgba(4,51,49,.09)] transition hover:-translate-y-1 hover:shadow-[0_26px_65px_rgba(4,51,49,.16)]"
             >
-              <div className="flex items-start justify-between gap-4">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e4f2ee] text-[#075e58]">
-                  <Icon size={21} />
+              <div className="relative h-44 overflow-hidden bg-[#0b4b46]">
+                {moduleImages[index] ? (
+                  <Image
+                    src={moduleImages[index]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                ) : null}
+                <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,45,44,.08),rgba(3,45,44,.82))]" />
+                <span className="absolute inset-x-0 top-0 flex items-start justify-between gap-4 p-4">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/30 bg-white/90 text-[#075e58] shadow-lg backdrop-blur">
+                    <Icon size={21} />
+                  </span>
+                  <span className={`rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] shadow-lg ${
+                    state === "Live"
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-[#f6e7b5] text-[#72520b]"
+                  }`}>
+                    {state}
+                  </span>
                 </span>
-                <span className={`rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[.14em] ${
-                  state === "Live"
-                    ? "bg-emerald-100 text-emerald-800"
-                    : "bg-[#f6e7b5] text-[#72520b]"
-                }`}>
-                  {state}
+                <span className="absolute bottom-4 left-5 text-[9px] font-black uppercase tracking-[.16em] text-[#f5c451]">
+                  U.S. Virgin Islands heritage
                 </span>
               </div>
-              <h2 className="mt-5 text-xl font-black tracking-[-.03em]">{title}</h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">{text}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.15em] text-[#075e58]">
-                Open <ArrowRight size={14} />
-              </span>
+              <div className="p-5">
+                <h2 className="text-xl font-black tracking-[-.03em]">{title}</h2>
+                <p className="mt-2 min-h-[4.5rem] text-sm font-semibold leading-6 text-slate-600">{text}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.15em] text-[#075e58]">
+                  Open <ArrowRight size={14} />
+                </span>
+              </div>
             </Link>
           ))}
         </div>
