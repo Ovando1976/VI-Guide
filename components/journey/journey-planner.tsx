@@ -8,6 +8,7 @@ import {
   CalendarDays,
   CheckCircle2,
   Clock3,
+  LoaderCircle,
   Map,
   MapPin,
   Plus,
@@ -19,6 +20,7 @@ import {
 
 import { useAuth } from "@/components/auth-provider";
 import { SharedJourneyManager, SHARED_JOURNEYS_UPDATED_EVENT } from "@/components/journey/shared-journey-manager";
+import { askViIntelligence } from "@/lib/intelligence/client";
 
 import {
   buildJourneyMapHref,
@@ -49,6 +51,7 @@ export function JourneyPlanner() {
   const [reviewMode, setReviewMode] = useState(false);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
   const [sharing, setSharing] = useState(false);
+  const [personalizing, setPersonalizing] = useState(false);
 
   useEffect(() => {
     const stored = readJourneyPlans();
@@ -84,6 +87,69 @@ export function JourneyPlanner() {
     setPlans(readJourneyPlans());
     setSavedMessage("Journey saved");
     window.setTimeout(() => setSavedMessage(null), 1800);
+  }
+
+  async function personalizeActive() {
+    if (!active || personalizing) return;
+    setPersonalizing(true);
+    setSavedMessage("Personalizing with your traveler profile…");
+
+    try {
+      const itinerary = active.plan
+        .slice(0, 20)
+        .map(
+          (stop, index) =>
+            `${index + 1}. ${stop.title}${stop.startTime ? ` at ${stop.startTime}` : ""}: ${stop.summary.slice(0, 140)}`,
+        )
+        .join("\n");
+      const message = [
+        "Create a personalized AI remix of this existing Virgin Islands journey.",
+        "Preserve strong choices, but improve the sequence, timing, transportation, variety, and fit with my saved traveler profile.",
+        "Return a complete practical itinerary. Do not merely describe suggested changes.",
+        `Journey date: ${active.date}`,
+        `Existing itinerary:\n${itinerary || "No stops yet—build the complete day."}`,
+        `Journey notes: ${active.notes || "None"}`,
+      ]
+        .join("\n\n")
+        .slice(0, 3900);
+
+      const result = await askViIntelligence(
+        message,
+        { page: "concierge", island: active.island },
+        ["recommend", "plan", "map", "mobility", "booking", "knowledge"],
+      );
+      if (!result.plan.length) {
+        throw new Error("VI Guide could not produce a complete itinerary.");
+      }
+
+      const remix = createJourneyPlan(
+        active.island,
+        `AI remix · ${active.title}`.slice(0, 120),
+      );
+      upsertJourneyPlan({
+        ...remix,
+        date: active.date,
+        status: "ready",
+        plan: result.plan,
+        notes: [
+          "Personalized by VI Guide Intelligence. The original journey remains saved separately.",
+          result.answer,
+        ]
+          .join("\n\n")
+          .slice(0, 2000),
+      });
+      const next = readJourneyPlans();
+      setPlans(next);
+      setActiveId(remix.id);
+      setReviewMode(true);
+      setSavedMessage("AI remix saved as a new journey");
+    } catch (error) {
+      setSavedMessage(
+        error instanceof Error ? error.message : "Could not personalize this journey.",
+      );
+    } finally {
+      setPersonalizing(false);
+    }
   }
 
   async function shareActive() {
@@ -315,6 +381,19 @@ export function JourneyPlanner() {
                 className="rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white"
               >
                 <Save className="mr-2 inline h-4 w-4" /> Save
+              </button>
+              <button
+                type="button"
+                onClick={personalizeActive}
+                disabled={personalizing}
+                className="rounded-full bg-[#f5c451] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-[#043331] disabled:opacity-60"
+              >
+                {personalizing ? (
+                  <LoaderCircle className="mr-2 inline h-4 w-4 animate-spin" />
+                ) : (
+                  <Sparkles className="mr-2 inline h-4 w-4" />
+                )}
+                {personalizing ? "Personalizing…" : "Personalize with AI"}
               </button>
               <button
                 type="button"
