@@ -90,11 +90,22 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
   const [query, setQuery] = useState("");
   const [island, setIsland] = useState<IslandFilter>("all");
   const [failedImages, setFailedImages] = useState<Set<string>>(() => new Set());
+  const photoReadyItems = useMemo(
+    () =>
+      items.filter(
+        (item) =>
+          Boolean(item.heroImage) &&
+          !item.heroImage.includes("/placeholder") &&
+          item.imageStatus !== "pending" &&
+          !failedImages.has(item.heroImage),
+      ),
+    [failedImages, items],
+  );
 
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
 
-    return items.filter((item) => {
+    return photoReadyItems.filter((item) => {
       const matchesIsland = island === "all" || item.island === island;
       const haystack = [
         item.name,
@@ -109,16 +120,11 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
 
       return matchesIsland && (!term || haystack.includes(term));
     });
-  }, [island, items, query]);
+  }, [island, photoReadyItems, query]);
 
   const featured = filtered.slice(0, 12);
   const moduleImages = useMemo(() => {
-    const candidates = items.filter(
-      (item) =>
-        item.heroImage &&
-        item.imageStatus !== "pending" &&
-        !failedImages.has(item.heroImage),
-    );
+    const candidates = photoReadyItems;
     const used = new Set<string>();
 
     return MODULES.map((module, index) => {
@@ -155,7 +161,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
 
       return selected?.heroImage ?? "";
     });
-  }, [failedImages, items]);
+  }, [photoReadyItems]);
 
   return (
     <main className="min-h-screen bg-[#f7f2e7] pb-36 text-[#082f2d]">
@@ -333,12 +339,25 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
               href={`/historic/${item.slug}`}
               className="group overflow-hidden rounded-[28px] border border-[#0b4b46]/10 bg-white shadow-[0_20px_60px_rgba(4,51,49,.09)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(4,51,49,.14)]"
             >
-              <div
-                className="h-48 bg-[#0b4b46] bg-cover bg-center transition duration-500 group-hover:scale-[1.015]"
-                style={{
-                  backgroundImage: `linear-gradient(180deg,rgba(4,51,49,.02),rgba(4,51,49,.48)),url('${item.heroImage}')`,
-                }}
-              />
+              <div className="relative h-48 overflow-hidden bg-[#0b4b46]">
+                <Image
+                  src={item.heroImage}
+                  alt={`${item.name} in ${ISLANDS[item.island]}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-cover transition duration-500 group-hover:scale-[1.025]"
+                  onError={() => {
+                    setFailedImages((current) => {
+                      if (current.has(item.heroImage)) return current;
+
+                      const next = new Set(current);
+                      next.add(item.heroImage);
+                      return next;
+                    });
+                  }}
+                />
+                <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.02),rgba(4,51,49,.48))]" />
+              </div>
               <div className="p-6">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-[10px] font-black uppercase tracking-[.18em] text-amber-700">
