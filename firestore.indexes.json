@@ -18,6 +18,14 @@
         { "fieldPath": "island", "order": "ASCENDING" },
         { "fieldPath": "status", "order": "ASCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "intelligence_workflows",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "ownerKey", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
