@@ -119,14 +119,16 @@ function normalizeStoredConfig(
   data: FirebaseFirestore.DocumentData | undefined,
   listingId: string,
 ): ProviderOperationsConfig {
+  const storedDays = Array.isArray(data?.days) ? data.days : [];
+
   return {
     listingId,
     listingName: String(data?.listingName ?? "Provider"),
     timezone: String(data?.timezone ?? "America/St_Thomas"),
     defaultCapacity: Number(data?.defaultCapacity ?? 10),
-    days: Array.isArray(data?.days)
-      ? data.days.map(normalizeDay).filter((day: ProviderAvailabilityDay | null): day is ProviderAvailabilityDay => Boolean(day))
-      : [],
+    days: storedDays
+      .map(normalizeDay)
+      .filter((day): day is ProviderAvailabilityDay => Boolean(day)),
     updatedAt: String(data?.updatedAt ?? ""),
   };
 }
