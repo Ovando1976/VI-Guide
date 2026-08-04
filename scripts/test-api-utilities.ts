@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 
 import { jsonBodyErrorMessage, parseJsonBody } from "../lib/api/request";
 import {
+  isMerchantCommerceTransition,
+  merchantCommerceTransitionError,
+  normalizeCommerceLifecycleStatus,
+} from "../lib/payments/commerce-booking-lifecycle";
+import {
   buildCommerceCheckoutIdempotencyKey,
   isValidCommerceDeposit,
   MAX_COMMERCE_DEPOSIT_CENTS,
@@ -168,10 +173,77 @@ function testCommerceCheckoutIntegrity() {
   );
 }
 
+function testCommerceLifecycleIntegrity() {
+  assert.equal(isMerchantCommerceTransition("payment_required"), true);
+  assert.equal(isMerchantCommerceTransition("confirmed"), true);
+  assert.equal(isMerchantCommerceTransition("paid"), false);
+  assert.equal(normalizeCommerceLifecycleStatus("paid"), "paid");
+  assert.equal(normalizeCommerceLifecycleStatus("unknown"), "requested");
+
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "requested",
+      nextStatus: "payment_required",
+      depositAmountCents: 5_000,
+    }),
+    null,
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "requested",
+      nextStatus: "payment_required",
+      depositAmountCents: 0,
+    }),
+    "Enter a valid deposit amount before requesting payment.",
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "payment_required",
+      nextStatus: "confirmed",
+      depositAmountCents: 0,
+    }),
+    "Only a Stripe-verified paid booking can be confirmed.",
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "paid",
+      nextStatus: "confirmed",
+      depositAmountCents: 0,
+    }),
+    null,
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "confirmed",
+      nextStatus: "completed",
+      depositAmountCents: 0,
+    }),
+    null,
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "paid",
+      nextStatus: "cancelled",
+      depositAmountCents: 0,
+    }),
+    "Paid bookings must use the refund workflow before cancellation.",
+  );
+  assert.equal(
+    merchantCommerceTransitionError({
+      currentStatus: "payment_required",
+      nextStatus: "cancelled",
+      depositAmountCents: 0,
+      hasActiveCheckout: true,
+    }),
+    "Expire the active Stripe Checkout Session before closing this booking.",
+  );
+}
+
 async function main() {
   await testRequestParsing();
   testTimestampNormalization();
   testCommerceCheckoutIntegrity();
+  testCommerceLifecycleIntegrity();
   console.log("API and payment contract tests passed.");
 }
 

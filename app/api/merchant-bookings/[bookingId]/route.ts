@@ -1,138 +1,185 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
+import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
-import type { CommerceBookingStatus } from "@/types/commerce-booking";
+import {
+  isMerchantCommerceTransition,
+  merchantCommerceTransitionError,
+  normalizeCommerceLifecycleStatus,
+  type MerchantCommerceTransition,
+} from "@/lib/payments/commerce-booking-lifecycle";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-type BookingLifecycleStatus =
-  | CommerceBookingStatus
-  | "payment_required"
-  | "paid"
-  | "completed";
-
-const ALLOWED_STATUSES: BookingLifecycleStatus[] = [
-  "reviewing",
-  "payment_required",
-  "paid",
-  "confirmed",
-  "completed",
-  "declined",
-  "cancelled",
-];
 
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { bookingId: string } },
 ) {
-  if (!hasFirebaseAdminConfiguration()) {
-    return NextResponse.json(
-      { error: "Merchant bookings are not configured on the server." },
-      { status: 503 },
-    );
-  }
+  try {
+    await requireSession(["admin", "dispatcher"]);
 
-  const bookingId = clean(params.bookingId, 160);
-  const body = (await request.json().catch(() => null)) as
-    | {
-        status?: unknown;
-        merchantNote?: unknown;
-        proposedTime?: unknown;
-        depositAmountCents?: unknown;
-        paymentHref?: unknown;
+    if (!hasFirebaseAdminConfiguration()) {
+      return NextResponse.json(
+        { error: "Merchant bookings are not configured on the server." },
+        { status: 503 },
+      );
+    }
+
+    const bookingId = clean(params.bookingId, 160);
+    const body = (await request.json().catch(() => null)) as
+      | {
+          status?: unknown;
+          merchantNote?: unknown;
+          proposedTime?: unknown;
+          depositAmountCents?: unknown;
+        }
+      | null;
+    const requestedStatus = clean(body?.status, 40);
+    const merchantNote = clean(body?.merchantNote, 1200);
+    const proposedTime = clean(body?.proposedTime, 40);
+    const depositAmountCents = clampMoney(body?.depositAmountCents);
+
+    if (!bookingId || !isMerchantCommerceTransition(requestedStatus)) {
+      return NextResponse.json(
+        {
+          error:
+            requestedStatus === "paid"
+              ? "Paid status can only be recorded by the verified Stripe webhook."
+              : "Choose a valid booking action.",
+        },
+        { status: 400 },
+      );
+    }
+
+    const status: MerchantCommerceTransition = requestedStatus;
+    const db = getAdminDb();
+    const bookingRef = db.collection("commerceBookings").doc(bookingId);
+
+    const result = await db.runTransaction(async (transaction) => {
+      const snapshot = await transaction.get(bookingRef);
+      if (!snapshot.exists) {
+        throw new BookingActionError("Booking not found.", 404);
       }
-    | null;
-  const status = clean(body?.status, 40) as BookingLifecycleStatus;
-  const merchantNote = clean(body?.merchantNote, 1200);
-  const proposedTime = clean(body?.proposedTime, 40);
-  const paymentHref = clean(body?.paymentHref, 500);
-  const depositAmountCents = clampMoney(body?.depositAmountCents);
 
-  if (!bookingId || !ALLOWED_STATUSES.includes(status)) {
-    return NextResponse.json(
-      { error: "Choose a valid booking action." },
-      { status: 400 },
-    );
-  }
+      const booking = snapshot.data() ?? {};
+      const currentStatus = normalizeCommerceLifecycleStatus(booking.status);
+      const transitionError = merchantCommerceTransitionError({
+        currentStatus,
+        nextStatus: status,
+        depositAmountCents,
+        hasActiveCheckout: Boolean(
+          String(booking.checkoutSessionId ?? "").trim(),
+        ),
+      });
+      if (transitionError) {
+        throw new BookingActionError(transitionError, 409);
+      }
 
-  if (status === "payment_required" && depositAmountCents <= 0) {
-    return NextResponse.json(
-      { error: "Enter a deposit amount before requesting payment." },
-      { status: 400 },
-    );
-  }
-
-  const db = getAdminDb();
-  const bookingRef = db.collection("commerceBookings").doc(bookingId);
-  const snapshot = await bookingRef.get();
-  if (!snapshot.exists) {
-    return NextResponse.json({ error: "Booking not found." }, { status: 404 });
-  }
-
-  const booking = snapshot.data() ?? {};
-  const reference = String(booking.reference ?? bookingId);
-  const listingName = String(booking.listingName ?? "VI Guide booking");
-  const updatedAt = new Date().toISOString();
-  const lifecycle = lifecycleCopy(status, listingName, depositAmountCents);
-
-  const batch = db.batch();
-  batch.update(bookingRef, {
-    status,
-    updatedAt,
-    merchantNote: merchantNote || null,
-    proposedTime: proposedTime || null,
-    depositAmountCents:
-      status === "payment_required"
-        ? depositAmountCents
-        : booking.depositAmountCents ?? null,
-    paymentHref: paymentHref || booking.paymentHref || null,
-    merchantRespondedAt: updatedAt,
-  });
-
-  for (const audience of ["traveler", "operations"] as const) {
-    const notificationRef = db.collection("notifications").doc();
-    batch.set(notificationRef, {
-      audience,
-      kind: "booking",
-      priority:
-        status === "declined" || status === "cancelled" ? "high" : "normal",
-      title: lifecycle.title,
-      message: lifecycle.message,
-      href: audience === "traveler" ? "/bookings" : "/admin/operations",
-      reference,
-      readAt: null,
-      createdAt: updatedAt,
-      updatedAt,
-      serverCreatedAt: FieldValue.serverTimestamp(),
-    });
-  }
-
-  await batch.commit();
-
-  return NextResponse.json({
-    ok: true,
-    booking: {
-      id: bookingId,
-      status,
-      merchantNote: merchantNote || null,
-      proposedTime: proposedTime || null,
-      depositAmountCents:
+      const reference = String(booking.reference ?? bookingId);
+      const listingName = String(booking.listingName ?? "VI Guide booking");
+      const updatedAt = new Date().toISOString();
+      const lifecycle = lifecycleCopy(status, listingName, depositAmountCents);
+      const paymentReset =
         status === "payment_required"
-          ? depositAmountCents
-          : booking.depositAmountCents ?? null,
-      paymentHref: paymentHref || booking.paymentHref || null,
-      updatedAt,
-    },
-  });
+          ? {
+              depositAmountCents,
+              paidAmountCents: null,
+              paymentStatus: "unpaid",
+              paymentHref: null,
+              checkoutSessionId: null,
+              checkoutCreatedAt: null,
+              paymentIntentId: null,
+              paidAt: null,
+            }
+          : status === "declined" || status === "cancelled"
+            ? {
+                paymentStatus: booking.paymentStatus ?? "unpaid",
+                paymentHref: null,
+                checkoutSessionId: null,
+              }
+            : {};
+
+      transaction.update(bookingRef, {
+        status,
+        updatedAt,
+        merchantNote: merchantNote || null,
+        proposedTime: proposedTime || null,
+        merchantRespondedAt: updatedAt,
+        ...paymentReset,
+      });
+
+      for (const audience of ["traveler", "operations"] as const) {
+        const notificationRef = db.collection("notifications").doc();
+        transaction.set(notificationRef, {
+          audience,
+          kind: "booking",
+          priority:
+            status === "declined" || status === "cancelled"
+              ? "high"
+              : "normal",
+          title: lifecycle.title,
+          message: lifecycle.message,
+          href: audience === "traveler" ? "/bookings" : "/admin/operations",
+          reference,
+          readAt: null,
+          createdAt: updatedAt,
+          updatedAt,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+        });
+      }
+
+      return {
+        id: bookingId,
+        status,
+        merchantNote: merchantNote || null,
+        proposedTime: proposedTime || null,
+        depositAmountCents:
+          status === "payment_required"
+            ? depositAmountCents
+            : Number(booking.depositAmountCents ?? 0) || null,
+        paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
+        paymentStatus:
+          status === "payment_required"
+            ? "unpaid"
+            : String(booking.paymentStatus ?? "unpaid"),
+        paymentHref: status === "payment_required" ? null : booking.paymentHref ?? null,
+        checkoutSessionId:
+          status === "payment_required" ? null : booking.checkoutSessionId ?? null,
+        updatedAt,
+      };
+    });
+
+    return NextResponse.json({ ok: true, booking: result });
+  } catch (error) {
+    const authResponse = authErrorResponse(error);
+    if (authResponse) return authResponse;
+    if (error instanceof BookingActionError) {
+      return NextResponse.json({ error: error.message }, { status: error.status });
+    }
+    console.error("merchant booking update error", error);
+    return NextResponse.json(
+      { error: "Unable to update this booking." },
+      { status: 500 },
+    );
+  }
+}
+
+class BookingActionError extends Error {
+  constructor(
+    message: string,
+    public status: 404 | 409,
+  ) {
+    super(message);
+  }
 }
 
 function lifecycleCopy(
-  status: BookingLifecycleStatus,
+  status: MerchantCommerceTransition,
   listingName: string,
   depositAmountCents: number,
 ) {
@@ -142,12 +189,6 @@ function lifecycleCopy(
       message: `${listingName} is ready to secure with a ${formatMoney(
         depositAmountCents,
       )} deposit.`,
-    };
-  }
-  if (status === "paid") {
-    return {
-      title: "Payment received",
-      message: `Payment was recorded for ${listingName}.`,
     };
   }
   if (status === "confirmed") {
