@@ -75,9 +75,50 @@ async function processCompletedSession(event: Stripe.Event) {
     }
 
     const booking = bookingSnapshot.data() ?? {};
+    const expectedSessionId = String(booking.checkoutSessionId ?? "").trim();
+    const expectedAmountCents = Number(booking.depositAmountCents ?? 0);
+    const paidAmountCents = Number(session.amount_total ?? 0);
+    const expectedEmail = normalizeEmail(booking.email);
+    const paidEmail = normalizeEmail(
+      session.customer_details?.email ?? session.customer_email,
+    );
+    const expectedReference = String(booking.reference ?? bookingId);
+    const sessionReference = String(
+      session.metadata?.bookingReference ?? "",
+    ).trim();
+
+    const rejectionReason = validateCompletedSession({
+      session,
+      expectedSessionId,
+      expectedAmountCents,
+      paidAmountCents,
+      expectedEmail,
+      paidEmail,
+      expectedReference,
+      sessionReference,
+    });
+
+    if (rejectionReason) {
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        checkoutSessionId: session.id,
+        paymentIntentId:
+          typeof session.payment_intent === "string"
+            ? session.payment_intent
+            : null,
+        expectedSessionId: expectedSessionId || null,
+        expectedAmountCents,
+        paidAmountCents,
+        currency: session.currency ?? null,
+        outcome: "commerce_checkout_rejected",
+        rejectionReason,
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
     const now = new Date().toISOString();
-    const paidAmountCents = Number(session.amount_total ?? booking.depositAmountCents ?? 0);
-    const reference = String(booking.reference ?? bookingId);
     const listingName = String(booking.listingName ?? "VI Guide booking");
 
     transaction.update(bookingRef, {
@@ -98,14 +139,14 @@ async function processCompletedSession(event: Stripe.Event) {
         kind: "booking",
         priority: "normal",
         title: "Payment received",
-        message: `${listingName} payment was received for booking ${reference}.`,
+        message: `${listingName} payment was received for booking ${expectedReference}.`,
         href:
           audience === "traveler"
             ? "/bookings"
             : audience === "merchant"
               ? "/merchant/lifecycle"
               : "/admin/operations",
-        reference,
+        reference: expectedReference,
         readAt: null,
         createdAt: now,
         updatedAt: now,
@@ -120,6 +161,7 @@ async function processCompletedSession(event: Stripe.Event) {
       paymentIntentId:
         typeof session.payment_intent === "string" ? session.payment_intent : null,
       paidAmountCents,
+      currency: session.currency,
       outcome: "commerce_booking_paid",
       processedAt: FieldValue.serverTimestamp(),
     });
@@ -140,7 +182,12 @@ async function processExpiredSession(event: Stripe.Event) {
     if (eventSnapshot.exists) return;
 
     const bookingSnapshot = await transaction.get(bookingRef);
-    if (bookingSnapshot.exists) {
+    const currentSessionId = bookingSnapshot.exists
+      ? String(bookingSnapshot.data()?.checkoutSessionId ?? "").trim()
+      : "";
+    const matchesCurrentSession = currentSessionId === session.id;
+
+    if (bookingSnapshot.exists && matchesCurrentSession) {
       transaction.update(bookingRef, {
         checkoutSessionId: null,
         paymentHref: null,
@@ -152,8 +199,50 @@ async function processExpiredSession(event: Stripe.Event) {
       type: event.type,
       bookingId,
       checkoutSessionId: session.id,
-      outcome: "commerce_checkout_expired",
+      currentSessionId: currentSessionId || null,
+      outcome: matchesCurrentSession
+        ? "commerce_checkout_expired"
+        : "commerce_stale_checkout_expired",
       processedAt: FieldValue.serverTimestamp(),
     });
   });
+}
+
+function validateCompletedSession(input: {
+  session: Stripe.Checkout.Session;
+  expectedSessionId: string;
+  expectedAmountCents: number;
+  paidAmountCents: number;
+  expectedEmail: string;
+  paidEmail: string;
+  expectedReference: string;
+  sessionReference: string;
+}) {
+  if (!input.expectedSessionId || input.session.id !== input.expectedSessionId) {
+    return "checkout_session_mismatch";
+  }
+  if (
+    !Number.isSafeInteger(input.expectedAmountCents) ||
+    input.expectedAmountCents <= 0 ||
+    input.paidAmountCents !== input.expectedAmountCents
+  ) {
+    return "amount_mismatch";
+  }
+  if (input.session.currency?.toLowerCase() !== "usd") {
+    return "currency_mismatch";
+  }
+  if (!input.expectedEmail || input.paidEmail !== input.expectedEmail) {
+    return "customer_email_mismatch";
+  }
+  if (
+    !input.sessionReference ||
+    input.sessionReference !== input.expectedReference
+  ) {
+    return "booking_reference_mismatch";
+  }
+  return null;
+}
+
+function normalizeEmail(value: unknown) {
+  return typeof value === "string" ? value.trim().toLowerCase() : "";
 }
