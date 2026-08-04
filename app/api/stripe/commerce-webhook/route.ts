@@ -10,6 +10,7 @@ import {
 } from "@/lib/payments/commerce-checkout-integrity";
 import {
   buildCommerceRefundOperationId,
+  commerceRefundEventDecision,
   commerceRefundStatusFromStripe,
   type CommerceRefundStatus,
 } from "@/lib/payments/commerce-refund-integrity";
@@ -140,17 +141,13 @@ async function processCompletedSession(event: Stripe.Event) {
     const currentStatus = String(booking.status ?? "requested");
     const currentPaymentStatus = String(booking.paymentStatus ?? "");
     const currentRefundStatus = String(booking.refundStatus ?? "");
-    const existingPaymentIntentId = String(
-      booking.paymentIntentId ?? "",
-    ).trim();
-    const existingPaidAmountCents = Number(booking.paidAmountCents ?? 0);
     const applicationDecision = commerceCheckoutApplicationDecision({
       bookingStatus: currentStatus,
       paymentStatus: currentPaymentStatus,
       refundStatus: currentRefundStatus,
-      existingPaymentIntentId,
+      existingPaymentIntentId: String(booking.paymentIntentId ?? "").trim(),
       incomingPaymentIntentId: paymentIntentId ?? "",
-      existingPaidAmountCents,
+      existingPaidAmountCents: Number(booking.paidAmountCents ?? 0),
       incomingPaidAmountCents: paidAmountCents,
     });
 
@@ -415,25 +412,88 @@ async function processRefundEvent(event: Stripe.Event) {
     );
     const fullRefund = paidAmountCents > 0 && refund.amount === paidAmountCents;
     const stripeStatus = commerceRefundStatusFromStripe(refund.status);
-    const refundStatus: CommerceRefundStatus =
+    const incomingStatus: CommerceRefundStatus =
       stripeStatus === "succeeded" && !fullRefund
         ? "review_required"
         : stripeStatus;
+    const eventDecision = commerceRefundEventDecision({
+      currentStatus: booking.refundStatus,
+      currentRefundId: booking.refundId,
+      incomingStatus,
+      incomingRefundId: refund.id,
+    });
+    const now = new Date().toISOString();
+
+    if (eventDecision === "ignore_stale") {
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId: bookingSnapshot.id,
+        refundId: refund.id,
+        paymentIntentId,
+        incomingStatus,
+        currentStatus: booking.refundStatus ?? "not_requested",
+        outcome: "commerce_stale_refund_event_ignored",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
+    if (eventDecision === "review_multiple_refunds") {
+      transaction.update(bookingRef, {
+        refundStatus: "review_required",
+        refundFailureReason:
+          "Stripe reported more than one refund object for this captured payment.",
+        refundUpdatedAt: now,
+        updatedAt: now,
+      });
+      transaction.set(
+        db.collection("commerceRefundOperations").doc(resolvedOperationId),
+        {
+          bookingId: bookingSnapshot.id,
+          bookingReference: String(booking.reference ?? bookingSnapshot.id),
+          paymentIntentId,
+          amountCents: paidAmountCents,
+          status: "review_required",
+          previousRefundId: booking.refundId ?? null,
+          additionalRefundId: refund.id,
+          updatedAt: now,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+      writeRefundNotifications(transaction, db, {
+        reference: String(booking.reference ?? bookingSnapshot.id),
+        listingName: String(booking.listingName ?? "VI Guide booking"),
+        amountCents: refund.amount,
+        status: "review_required",
+        now,
+      });
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId: bookingSnapshot.id,
+        refundId: refund.id,
+        previousRefundId: booking.refundId ?? null,
+        paymentIntentId,
+        outcome: "commerce_multiple_refunds_require_review",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
     const previousStatus = String(booking.refundStatus ?? "not_requested");
     const previousRefundId = String(booking.refundId ?? "");
     const stateChanged =
-      previousStatus !== refundStatus || previousRefundId !== refund.id;
-    const now = new Date().toISOString();
+      previousStatus !== incomingStatus || previousRefundId !== refund.id;
 
     transaction.update(bookingRef, {
-      ...(refundStatus === "succeeded" && fullRefund
+      ...(incomingStatus === "succeeded" && fullRefund
         ? { status: "cancelled", paymentStatus: "refunded" }
-        : refundStatus === "failed"
+        : incomingStatus === "failed"
           ? { paymentStatus: "refund_failed" }
-          : refundStatus === "review_required"
+          : incomingStatus === "review_required"
             ? { paymentStatus: "paid" }
             : { paymentStatus: "refund_pending" }),
-      refundStatus,
+      refundStatus: incomingStatus,
       refundId: refund.id,
       refundOperationId: resolvedOperationId,
       refundAmountCents: refund.amount,
@@ -454,7 +514,7 @@ async function processRefundEvent(event: Stripe.Event) {
         amountCents: paidAmountCents,
         currency: refund.currency ?? "usd",
         refundId: refund.id,
-        status: refundStatus,
+        status: incomingStatus,
         refundAmountCents: refund.amount,
         fullRefund,
         metadataOperationId: metadataOperationId ?? null,
@@ -469,7 +529,7 @@ async function processRefundEvent(event: Stripe.Event) {
     );
 
     if (stateChanged) {
-      if (refundStatus === "succeeded" && fullRefund) {
+      if (incomingStatus === "succeeded" && fullRefund) {
         writeRefundNotifications(transaction, db, {
           reference: String(booking.reference ?? bookingSnapshot.id),
           listingName: String(booking.listingName ?? "VI Guide booking"),
@@ -478,14 +538,14 @@ async function processRefundEvent(event: Stripe.Event) {
           now,
         });
       } else if (
-        refundStatus === "failed" ||
-        refundStatus === "review_required"
+        incomingStatus === "failed" ||
+        incomingStatus === "review_required"
       ) {
         writeRefundNotifications(transaction, db, {
           reference: String(booking.reference ?? bookingSnapshot.id),
           listingName: String(booking.listingName ?? "VI Guide booking"),
           amountCents: refund.amount,
-          status: refundStatus,
+          status: incomingStatus,
           now,
         });
       }
@@ -501,12 +561,12 @@ async function processRefundEvent(event: Stripe.Event) {
       metadataBookingId: metadataBookingId ?? null,
       metadataBookingMismatch,
       paymentIntentId,
-      refundStatus,
+      refundStatus: incomingStatus,
       refundAmountCents: refund.amount,
       paidAmountCents,
       fullRefund,
       outcome:
-        refundStatus === "review_required"
+        incomingStatus === "review_required"
           ? "commerce_refund_requires_review"
           : "commerce_refund_reconciled",
       processedAt: FieldValue.serverTimestamp(),
