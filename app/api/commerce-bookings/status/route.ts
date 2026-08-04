@@ -49,10 +49,6 @@ export async function POST(request: NextRequest) {
       paymentStatus: data.paymentStatus ? String(data.paymentStatus) : null,
       refundStatus: data.refundStatus ? String(data.refundStatus) : null,
       refundAmountCents: Number(data.refundAmountCents ?? 0),
-      refundReason: data.refundReason ? String(data.refundReason) : null,
-      refundFailureReason: data.refundFailureReason
-        ? String(data.refundFailureReason)
-        : null,
       refundRequestedAt: data.refundRequestedAt
         ? String(data.refundRequestedAt)
         : null,
