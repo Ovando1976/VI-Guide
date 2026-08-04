@@ -64,6 +64,10 @@ export function commerceRefundEligibilityError(input: {
     return "This booking has already been refunded.";
   }
 
+  if (input.refundStatus === "failed") {
+    return "This refund failed and requires manual financial review before another attempt.";
+  }
+
   if (input.refundStatus === "review_required") {
     return "This booking requires manual financial review before another refund attempt.";
   }
@@ -176,8 +180,7 @@ export function commerceRefundEventDecision(input: {
   if (
     currentRefundId &&
     currentRefundId !== input.incomingRefundId &&
-    currentStatus !== "not_requested" &&
-    currentStatus !== "failed"
+    currentStatus !== "not_requested"
   ) {
     return "review_multiple_refunds";
   }
