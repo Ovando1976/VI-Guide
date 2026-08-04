@@ -4,6 +4,7 @@ import {
   buildCommerceRefundIdempotencyKey,
   commerceRefundEligibilityError,
   commerceRefundEventDecision,
+  commerceRefundRequestFailureDisposition,
   commerceRefundStatusFromStripe,
   hasCommerceRefundActivity,
 } from "../lib/payments/commerce-refund-integrity";
@@ -133,6 +134,24 @@ function testRefundEventPrecedence() {
     }),
     "review_multiple_refunds",
   );
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "failed",
+      currentRefundId: "re_failed",
+      incomingStatus: "processing",
+      incomingRefundId: "re_retry",
+    }),
+    "ignore_stale",
+  );
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "failed",
+      currentRefundId: "re_failed",
+      incomingStatus: "succeeded",
+      incomingRefundId: "re_retry",
+    }),
+    "apply",
+  );
 }
 
 function testRefundAttemptIdempotency() {
@@ -170,12 +189,49 @@ function testRefundAttemptIdempotency() {
   );
 }
 
+function testRefundRequestFailureDisposition() {
+  assert.equal(
+    commerceRefundRequestFailureDisposition({
+      type: "StripeInvalidRequestError",
+      statusCode: 400,
+    }),
+    "definitive_failure",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({ statusCode: 404 }),
+    "definitive_failure",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({ statusCode: 409 }),
+    "uncertain_result",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({ statusCode: 429 }),
+    "uncertain_result",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({ statusCode: 500 }),
+    "uncertain_result",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({
+      type: "StripeConnectionError",
+    }),
+    "uncertain_result",
+  );
+  assert.equal(
+    commerceRefundRequestFailureDisposition({}),
+    "uncertain_result",
+  );
+}
+
 function main() {
   testRefundableLifecycleStates();
   testStripeRefundStatusMapping();
   testCheckoutSuppressionDuringRefunds();
   testRefundEventPrecedence();
   testRefundAttemptIdempotency();
+  testRefundRequestFailureDisposition();
   console.log("Commerce refund lifecycle edge-case tests passed.");
 }
 
