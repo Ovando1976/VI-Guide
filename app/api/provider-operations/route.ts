@@ -119,7 +119,8 @@ function normalizeStoredConfig(
   data: FirebaseFirestore.DocumentData | undefined,
   listingId: string,
 ): ProviderOperationsConfig {
-  const storedDays = Array.isArray(data?.days) ? data.days : [];
+  const rawDays = data?.days;
+  const storedDays = Array.isArray(rawDays) ? rawDays : [];
 
   return {
     listingId,
