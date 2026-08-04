@@ -1,4 +1,4 @@
-import { SyncedTravelerWorkspace } from "@/components/traveler/synced-traveler-workspace";
+import { ReservationEnabledWorkspace } from "@/components/traveler/reservation-enabled-workspace";
 
 export const metadata = {
   title: "Traveler Workspace | VI Guide",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function TravelerWorkspacePage() {
-  return <SyncedTravelerWorkspace />;
+  return <ReservationEnabledWorkspace />;
 }
