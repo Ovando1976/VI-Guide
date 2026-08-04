@@ -32,6 +32,13 @@ export async function GET() {
     const bookings = snapshot.docs
       .map((document) => {
         const data = document.data();
+        const refundStatus = normalizeCommerceRefundStatus(data.refundStatus);
+        const storedPaymentStatus = String(data.paymentStatus ?? "unpaid");
+        const paymentStatus =
+          storedPaymentStatus === "refund_failed" && refundStatus === "failed"
+            ? "paid"
+            : storedPaymentStatus;
+
         return {
           id: document.id,
           reference: String(data.reference ?? document.id),
@@ -39,13 +46,14 @@ export async function GET() {
           guestName: String(data.guestName ?? "Guest"),
           email: String(data.email ?? ""),
           status: String(data.status ?? "requested"),
-          paymentStatus: String(data.paymentStatus ?? "unpaid"),
+          paymentStatus,
+          storedPaymentStatus,
           paymentIntentId: data.paymentIntentId
             ? String(data.paymentIntentId)
             : null,
           paidAmountCents: Number(data.paidAmountCents ?? 0),
           paidAt: data.paidAt ? String(data.paidAt) : null,
-          refundStatus: normalizeCommerceRefundStatus(data.refundStatus),
+          refundStatus,
           refundId: data.refundId ? String(data.refundId) : null,
           refundOperationId: data.refundOperationId
             ? String(data.refundOperationId)
