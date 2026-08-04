@@ -8,6 +8,7 @@ import {
 } from "../lib/payments/commerce-booking-lifecycle";
 import {
   buildCommerceCheckoutIdempotencyKey,
+  commerceCheckoutApplicationDecision,
   isValidCommerceDeposit,
   MAX_COMMERCE_DEPOSIT_CENTS,
   normalizeCommerceEmail,
@@ -18,6 +19,7 @@ import {
   buildCommerceRefundOperationId,
   commerceRefundEligibilityError,
   commerceRefundStatusFromStripe,
+  hasCommerceRefundActivity,
   normalizeCommerceRefundStatus,
 } from "../lib/payments/commerce-refund-integrity";
 import { normalizeTimestamp, normalizeTimestampOrEpoch } from "../lib/timestamps";
@@ -88,6 +90,7 @@ function testCommerceCheckoutIntegrity() {
   const valid: CompletedCommerceCheckoutInput = {
     checkoutSessionId: "cs_live_expected",
     expectedSessionId: "cs_live_expected",
+    paymentIntentId: "pi_live_expected",
     expectedAmountCents: 12_500,
     paidAmountCents: 12_500,
     currency: "usd",
@@ -108,6 +111,10 @@ function testCommerceCheckoutIntegrity() {
       checkoutSessionId: "cs_live_unexpected",
     }),
     "checkout_session_mismatch",
+  );
+  assert.equal(
+    validateCompletedCommerceCheckout({ ...valid, paymentIntentId: "" }),
+    "payment_intent_missing",
   );
   assert.equal(
     validateCompletedCommerceCheckout({ ...valid, paidAmountCents: 12_499 }),
@@ -146,6 +153,53 @@ function testCommerceCheckoutIntegrity() {
   assert.equal(
     validateCompletedCommerceCheckout({ ...valid, sessionReference: "" }),
     "booking_reference_mismatch",
+  );
+
+  const application = {
+    bookingStatus: "payment_required",
+    paymentStatus: "unpaid",
+    refundStatus: "not_requested",
+    existingPaymentIntentId: "",
+    incomingPaymentIntentId: "pi_live_expected",
+    existingPaidAmountCents: 0,
+    incomingPaidAmountCents: 12_500,
+  };
+  assert.equal(commerceCheckoutApplicationDecision(application), "apply");
+  assert.equal(
+    commerceCheckoutApplicationDecision({
+      ...application,
+      bookingStatus: "confirmed",
+      paymentStatus: "paid",
+      existingPaymentIntentId: "pi_live_expected",
+      existingPaidAmountCents: 12_500,
+    }),
+    "already_applied",
+  );
+  assert.equal(
+    commerceCheckoutApplicationDecision({
+      ...application,
+      bookingStatus: "cancelled",
+    }),
+    "review_required",
+  );
+  assert.equal(
+    commerceCheckoutApplicationDecision({
+      ...application,
+      bookingStatus: "cancelled",
+      paymentStatus: "refunded",
+      refundStatus: "succeeded",
+    }),
+    "ignore_after_refund",
+  );
+  assert.equal(
+    commerceCheckoutApplicationDecision({
+      ...application,
+      bookingStatus: "confirmed",
+      paymentStatus: "paid",
+      existingPaymentIntentId: "pi_other",
+      existingPaidAmountCents: 12_500,
+    }),
+    "review_required",
   );
 
   assert.equal(normalizeCommerceEmail(" Traveler@Example.COM "), "traveler@example.com");
@@ -314,10 +368,25 @@ function testCommerceRefundIntegrity() {
 
   assert.equal(normalizeCommerceRefundStatus(undefined), "not_requested");
   assert.equal(normalizeCommerceRefundStatus("processing"), "processing");
+  assert.equal(
+    hasCommerceRefundActivity({
+      paymentStatus: "paid",
+      refundStatus: "not_requested",
+    }),
+    false,
+  );
+  assert.equal(
+    hasCommerceRefundActivity({
+      paymentStatus: "refund_failed",
+      refundStatus: "failed",
+    }),
+    true,
+  );
   assert.equal(commerceRefundStatusFromStripe("pending"), "processing");
   assert.equal(commerceRefundStatusFromStripe("succeeded"), "succeeded");
   assert.equal(commerceRefundStatusFromStripe("failed"), "failed");
   assert.equal(commerceRefundStatusFromStripe("canceled"), "failed");
+  assert.equal(commerceRefundStatusFromStripe("requires_action"), "review_required");
 }
 
 async function main() {
