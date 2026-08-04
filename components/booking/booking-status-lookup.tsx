@@ -7,6 +7,7 @@ import {
   CalendarDays,
   CheckCircle2,
   Clock3,
+  CreditCard,
   Loader2,
   Mail,
   Search,
@@ -22,9 +23,17 @@ import type {
 } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
+type BookingLifecycleStatus =
+  | CommerceBookingStatus
+  | "payment_required"
+  | "paid"
+  | "completed";
+
 type BookingStatusResult = {
+  id: string;
   reference: string;
-  status: CommerceBookingStatus;
+  status: BookingLifecycleStatus;
+  paymentStatus: string | null;
   kind: CommerceBookingKind;
   listingName: string;
   island: IntelligenceIsland;
@@ -36,6 +45,9 @@ type BookingStatusResult = {
   updatedAt: string;
   merchantNote?: string | null;
   proposedTime?: string | null;
+  depositAmountCents: number;
+  paidAmountCents: number;
+  paymentHref?: string | null;
 };
 
 const ISLAND_NAMES: Record<IntelligenceIsland, string> = {
@@ -44,11 +56,14 @@ const ISLAND_NAMES: Record<IntelligenceIsland, string> = {
   stx: "St. Croix",
 };
 
-const STATUS_COPY: Record<CommerceBookingStatus, { title: string; detail: string }> = {
+const STATUS_COPY: Record<BookingLifecycleStatus, { title: string; detail: string }> = {
   draft: { title: "Draft", detail: "This request has not been submitted yet." },
   requested: { title: "Request received", detail: "VI Guide has recorded the request and it is waiting for review." },
   reviewing: { title: "Under review", detail: "Availability and request details are currently being reviewed." },
-  confirmed: { title: "Confirmed", detail: "The booking request has been confirmed. Follow the provided payment or operator instructions." },
+  payment_required: { title: "Payment required", detail: "The provider is ready to secure this booking. Complete the deposit through Stripe Checkout." },
+  paid: { title: "Payment received", detail: "Your payment was received and the provider can finalize the booking." },
+  confirmed: { title: "Confirmed", detail: "The booking request has been confirmed and is ready for your trip." },
+  completed: { title: "Completed", detail: "This booking has been marked complete." },
   declined: { title: "Unavailable", detail: "The requested booking could not be confirmed. Concierge can help find an alternative." },
   cancelled: { title: "Cancelled", detail: "This booking request has been cancelled." },
 };
@@ -58,6 +73,7 @@ export function BookingStatusLookup() {
   const [email, setEmail] = useState("");
   const [booking, setBooking] = useState<BookingStatusResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const lookup = useCallback(async (silent = false) => {
@@ -103,7 +119,36 @@ export function BookingStatusLookup() {
     await lookup(false);
   }
 
+  async function startCheckout() {
+    if (!booking || checkoutLoading) return;
+    setCheckoutLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/payments/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bookingId: booking.id, email }),
+      });
+      const payload = (await response.json().catch(() => null)) as
+        | { checkoutUrl?: string | null; error?: string }
+        | null;
+      if (!response.ok || !payload?.checkoutUrl) {
+        throw new Error(payload?.error || "Unable to start secure checkout.");
+      }
+      window.location.assign(payload.checkoutUrl);
+    } catch (checkoutError) {
+      setError(
+        checkoutError instanceof Error
+          ? checkoutError.message
+          : "Unable to start secure checkout.",
+      );
+      setCheckoutLoading(false);
+    }
+  }
+
   const statusCopy = booking ? STATUS_COPY[booking.status] ?? STATUS_COPY.requested : null;
+  const paymentDue = booking?.status === "payment_required" && booking.depositAmountCents > 0;
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] px-4 py-6 pb-32 text-[#043331] sm:px-6 lg:py-10">
@@ -143,7 +188,7 @@ export function BookingStatusLookup() {
               {booking && statusCopy ? (
                 <section className="mt-7 rounded-[28px] border border-emerald-200 bg-emerald-50 p-6">
                   <div className="flex items-start gap-3">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-700">{booking.status === "confirmed" ? <CheckCircle2 className="h-5 w-5" /> : <Clock3 className="h-5 w-5" />}</span>
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-700">{["confirmed", "paid", "completed"].includes(booking.status) ? <CheckCircle2 className="h-5 w-5" /> : <Clock3 className="h-5 w-5" />}</span>
                     <div>
                       <p className="text-[9px] font-black uppercase tracking-[.15em] text-emerald-700">{booking.reference}</p>
                       <h2 className="mt-1 text-2xl font-black tracking-[-.04em]">{statusCopy.title}</h2>
@@ -157,6 +202,22 @@ export function BookingStatusLookup() {
                     <Detail label="Date" value={booking.endDate ? `${booking.startDate} → ${booking.endDate}` : booking.startDate} icon={CalendarDays} />
                     <Detail label="Party" value={`${booking.adults} adult${booking.adults === 1 ? "" : "s"}${booking.children ? ` · ${booking.children} child${booking.children === 1 ? "" : "ren"}` : ""}`} icon={Users} />
                   </div>
+
+                  {paymentDue ? (
+                    <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                      <p className="text-[9px] font-black uppercase tracking-[.15em] text-amber-700">Deposit due</p>
+                      <p className="mt-1 text-2xl font-black">{formatMoney(booking.depositAmountCents)}</p>
+                      <button
+                        type="button"
+                        onClick={() => void startCheckout()}
+                        disabled={checkoutLoading}
+                        className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.15em] text-white disabled:opacity-50"
+                      >
+                        {checkoutLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <CreditCard className="h-4 w-4" />}
+                        Pay securely with Stripe
+                      </button>
+                    </div>
+                  ) : null}
 
                   <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                     <Link href="/planner" className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.15em] text-white">Open my trip</Link>
@@ -181,4 +242,11 @@ function Detail({ label, value, icon: Icon }: { label: string; value: string; ic
       <div className="mt-2 text-sm font-black">{value}</div>
     </div>
   );
+}
+
+function formatMoney(cents: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(cents / 100);
 }
