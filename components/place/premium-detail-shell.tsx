@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { PlaceActionBar } from "@/components/place/place-action-bar";
 import {
+  inferPlaceCapabilities,
   PlaceCapabilityGrid,
   type PlaceCapability,
 } from "@/components/place/place-capability-grid";
@@ -43,13 +44,6 @@ const DEFAULT_HERO_CALLOUT: HeroCallout = {
     "Connect this destination with transportation, nearby recommendations, timing, and a backup plan.",
 };
 
-const DEFAULT_CAPABILITIES: PlaceCapability[] = [
-  "map",
-  "concierge",
-  "transportation",
-  "explore",
-];
-
 export function PremiumDetailShell({
   name,
   eyebrow,
@@ -58,7 +52,7 @@ export function PremiumDetailShell({
   meta,
   heroCallout = DEFAULT_HERO_CALLOUT,
   actions,
-  capabilities = DEFAULT_CAPABILITIES,
+  capabilities,
   capabilityTitle,
   capabilityDescription,
   primary,
@@ -68,6 +62,17 @@ export function PremiumDetailShell({
   share,
   className = "",
 }: Props) {
+  const resolvedCapabilities =
+    capabilities ??
+    inferPlaceCapabilities({
+      name,
+      eyebrow,
+      description,
+      kind: actions.journeyStop?.kind,
+      hasWebsite: Boolean(actions.website),
+      hasBooking: Boolean(actions.journeyStop?.bookingHref),
+    });
+
   return (
     <main
       className={`min-h-screen bg-[#f8f4ea] px-4 py-6 pb-32 text-[#043331] sm:px-6 lg:py-10 ${className}`}
@@ -121,7 +126,7 @@ export function PremiumDetailShell({
         />
 
         <PlaceCapabilityGrid
-          capabilities={capabilities}
+          capabilities={resolvedCapabilities}
           title={capabilityTitle}
           description={capabilityDescription}
         />
