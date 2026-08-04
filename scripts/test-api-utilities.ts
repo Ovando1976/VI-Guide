@@ -24,7 +24,7 @@ async function testRequestParsing() {
   const missingContentType = await parseJsonBody<{ enabled: boolean }>(
     new Request("http://localhost/test", {
       method: "POST",
-      body: JSON.stringify({ enabled: true }),
+      body: new TextEncoder().encode(JSON.stringify({ enabled: true })),
     }),
   );
   assert.deepEqual(missingContentType, { ok: true, value: { enabled: true } });
