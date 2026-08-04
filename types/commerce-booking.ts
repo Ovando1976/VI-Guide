@@ -6,9 +6,20 @@ export type CommerceBookingStatus =
   | "draft"
   | "requested"
   | "reviewing"
+  | "payment_required"
+  | "paid"
   | "confirmed"
+  | "completed"
   | "declined"
   | "cancelled";
+
+export type CommercePaymentStatus =
+  | "unpaid"
+  | "pending"
+  | "paid"
+  | "refund_pending"
+  | "refunded"
+  | "refund_failed";
 
 export type CommerceBookingRequest = {
   kind: CommerceBookingKind;
@@ -33,7 +44,11 @@ export type CommerceBooking = CommerceBookingRequest & {
   reference: string;
   depositAmountCents?: number;
   paidAmountCents?: number;
+  paymentStatus?: CommercePaymentStatus;
   paymentHref?: string;
+  checkoutSessionId?: string;
+  paymentIntentId?: string;
+  paidAt?: string;
   createdAt: string;
   updatedAt: string;
 };
