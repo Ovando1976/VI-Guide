@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
 
 import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import {
+  normalizeCommerceEmail,
+  validateCompletedCommerceCheckout,
+} from "@/lib/payments/commerce-checkout-integrity";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "nodejs";
@@ -78,8 +82,8 @@ async function processCompletedSession(event: Stripe.Event) {
     const expectedSessionId = String(booking.checkoutSessionId ?? "").trim();
     const expectedAmountCents = Number(booking.depositAmountCents ?? 0);
     const paidAmountCents = Number(session.amount_total ?? 0);
-    const expectedEmail = normalizeEmail(booking.email);
-    const paidEmail = normalizeEmail(
+    const expectedEmail = normalizeCommerceEmail(booking.email);
+    const paidEmail = normalizeCommerceEmail(
       session.customer_details?.email ?? session.customer_email,
     );
     const expectedReference = String(booking.reference ?? bookingId);
@@ -87,11 +91,12 @@ async function processCompletedSession(event: Stripe.Event) {
       session.metadata?.bookingReference ?? "",
     ).trim();
 
-    const rejectionReason = validateCompletedSession({
-      session,
+    const rejectionReason = validateCompletedCommerceCheckout({
+      checkoutSessionId: session.id,
       expectedSessionId,
       expectedAmountCents,
       paidAmountCents,
+      currency: session.currency,
       expectedEmail,
       paidEmail,
       expectedReference,
@@ -206,43 +211,4 @@ async function processExpiredSession(event: Stripe.Event) {
       processedAt: FieldValue.serverTimestamp(),
     });
   });
-}
-
-function validateCompletedSession(input: {
-  session: Stripe.Checkout.Session;
-  expectedSessionId: string;
-  expectedAmountCents: number;
-  paidAmountCents: number;
-  expectedEmail: string;
-  paidEmail: string;
-  expectedReference: string;
-  sessionReference: string;
-}) {
-  if (!input.expectedSessionId || input.session.id !== input.expectedSessionId) {
-    return "checkout_session_mismatch";
-  }
-  if (
-    !Number.isSafeInteger(input.expectedAmountCents) ||
-    input.expectedAmountCents <= 0 ||
-    input.paidAmountCents !== input.expectedAmountCents
-  ) {
-    return "amount_mismatch";
-  }
-  if (input.session.currency?.toLowerCase() !== "usd") {
-    return "currency_mismatch";
-  }
-  if (!input.expectedEmail || input.paidEmail !== input.expectedEmail) {
-    return "customer_email_mismatch";
-  }
-  if (
-    !input.sessionReference ||
-    input.sessionReference !== input.expectedReference
-  ) {
-    return "booking_reference_mismatch";
-  }
-  return null;
-}
-
-function normalizeEmail(value: unknown) {
-  return typeof value === "string" ? value.trim().toLowerCase() : "";
 }
