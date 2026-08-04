@@ -43,8 +43,10 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     booking: {
+      id: document.id,
       reference: String(data.reference ?? reference),
       status: String(data.status ?? "requested"),
+      paymentStatus: data.paymentStatus ? String(data.paymentStatus) : null,
       kind: String(data.kind ?? "experience"),
       listingName: String(data.listingName ?? "VI Guide booking"),
       island: String(data.island ?? "stt"),
