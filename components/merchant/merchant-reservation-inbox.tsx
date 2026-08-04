@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { BookingActivityFeed } from "@/components/booking/booking-activity-feed";
 import type { CommerceBookingStatus } from "@/types/commerce-booking";
 
 type MerchantBooking = {
@@ -45,8 +46,8 @@ export function MerchantReservationInbox() {
   const [filter, setFilter] = useState<Filter>("active");
   const [savingId, setSavingId] = useState<string | null>(null);
 
-  const loadBookings = useCallback(async () => {
-    setLoading(true);
+  const loadBookings = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
     try {
       const response = await fetch("/api/merchant-bookings", { cache: "no-store" });
@@ -56,14 +57,18 @@ export function MerchantReservationInbox() {
       if (!response.ok) throw new Error(payload?.error || "Unable to load reservations.");
       setBookings(payload?.bookings ?? []);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Unable to load reservations.");
+      if (!silent) {
+        setError(caught instanceof Error ? caught.message : "Unable to load reservations.");
+      }
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     void loadBookings();
+    const timer = window.setInterval(() => void loadBookings(true), 15_000);
+    return () => window.clearInterval(timer);
   }, [loadBookings]);
 
   const visible = useMemo(() => {
@@ -111,6 +116,14 @@ export function MerchantReservationInbox() {
     closed: bookings.filter((booking) => ["declined", "cancelled"].includes(booking.status)).length,
     all: bookings.length,
   };
+
+  const activity = useMemo(
+    () =>
+      [...bookings]
+        .sort((left, right) => Date.parse(right.updatedAt) - Date.parse(left.updatedAt))
+        .slice(0, 6),
+    [bookings],
+  );
 
   return (
     <main className="min-h-screen bg-[#f7f2e7] px-4 py-8 text-[#043331] sm:px-6 lg:py-12">
@@ -160,28 +173,32 @@ export function MerchantReservationInbox() {
           </div>
         ) : null}
 
-        <section className="mt-6 space-y-4">
-          {loading ? (
-            <div className="grid min-h-64 place-items-center rounded-[30px] border border-slate-200 bg-white">
-              <Loader2 className="h-7 w-7 animate-spin text-teal-700" />
-            </div>
-          ) : visible.length ? (
-            visible.map((booking) => (
-              <BookingCard
-                key={booking.id}
-                booking={booking}
-                saving={savingId === booking.id}
-                onUpdate={updateBooking}
-              />
-            ))
-          ) : (
-            <div className="rounded-[30px] border border-slate-200 bg-white p-10 text-center shadow-sm">
-              <Inbox className="mx-auto h-10 w-10 text-teal-700" />
-              <h2 className="mt-4 text-2xl font-black">No reservations in this view</h2>
-              <p className="mt-2 text-sm font-semibold text-slate-500">New traveler requests will appear here automatically.</p>
-            </div>
-          )}
-        </section>
+        <div className="mt-6 grid gap-6 xl:grid-cols-[1.25fr_.75fr]">
+          <section className="space-y-4">
+            {loading ? (
+              <div className="grid min-h-64 place-items-center rounded-[30px] border border-slate-200 bg-white">
+                <Loader2 className="h-7 w-7 animate-spin text-teal-700" />
+              </div>
+            ) : visible.length ? (
+              visible.map((booking) => (
+                <BookingCard
+                  key={booking.id}
+                  booking={booking}
+                  saving={savingId === booking.id}
+                  onUpdate={updateBooking}
+                />
+              ))
+            ) : (
+              <div className="rounded-[30px] border border-slate-200 bg-white p-10 text-center shadow-sm">
+                <Inbox className="mx-auto h-10 w-10 text-teal-700" />
+                <h2 className="mt-4 text-2xl font-black">No reservations in this view</h2>
+                <p className="mt-2 text-sm font-semibold text-slate-500">New traveler requests will appear here automatically.</p>
+              </div>
+            )}
+          </section>
+
+          <BookingActivityFeed activities={activity} />
+        </div>
       </div>
     </main>
   );

@@ -51,6 +51,8 @@ export async function POST(request: NextRequest) {
       startDate: String(data.startDate ?? ""),
       endDate: data.endDate ? String(data.endDate) : null,
       preferredTime: data.preferredTime ? String(data.preferredTime) : null,
+      proposedTime: data.proposedTime ? String(data.proposedTime) : null,
+      merchantNote: data.merchantNote ? String(data.merchantNote) : null,
       adults: Number(data.adults ?? 1),
       children: Number(data.children ?? 0),
       updatedAt: String(data.updatedAt ?? data.createdAt ?? ""),
