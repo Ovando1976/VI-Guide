@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 
 import {
   commerceRefundEligibilityError,
+  commerceRefundEventDecision,
   commerceRefundStatusFromStripe,
   hasCommerceRefundActivity,
 } from "../lib/payments/commerce-refund-integrity";
@@ -94,10 +95,50 @@ function testCheckoutSuppressionDuringRefunds() {
   );
 }
 
+function testRefundEventPrecedence() {
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "processing",
+      currentRefundId: "re_123",
+      incomingStatus: "succeeded",
+      incomingRefundId: "re_123",
+    }),
+    "apply",
+  );
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "succeeded",
+      currentRefundId: "re_123",
+      incomingStatus: "processing",
+      incomingRefundId: "re_123",
+    }),
+    "ignore_stale",
+  );
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "review_required",
+      currentRefundId: "re_123",
+      incomingStatus: "failed",
+      incomingRefundId: "re_123",
+    }),
+    "ignore_stale",
+  );
+  assert.equal(
+    commerceRefundEventDecision({
+      currentStatus: "processing",
+      currentRefundId: "re_123",
+      incomingStatus: "processing",
+      incomingRefundId: "re_456",
+    }),
+    "review_multiple_refunds",
+  );
+}
+
 function main() {
   testRefundableLifecycleStates();
   testStripeRefundStatusMapping();
   testCheckoutSuppressionDuringRefunds();
+  testRefundEventPrecedence();
   console.log("Commerce refund lifecycle edge-case tests passed.");
 }
 
