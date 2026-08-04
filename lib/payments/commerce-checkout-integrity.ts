@@ -4,6 +4,7 @@ export const MAX_COMMERCE_DEPOSIT_CENTS = 10_000_000;
 
 export type CommerceCheckoutRejectionReason =
   | "checkout_session_mismatch"
+  | "payment_intent_missing"
   | "amount_mismatch"
   | "currency_mismatch"
   | "customer_email_mismatch"
@@ -12,6 +13,7 @@ export type CommerceCheckoutRejectionReason =
 export type CompletedCommerceCheckoutInput = {
   checkoutSessionId: string;
   expectedSessionId: string;
+  paymentIntentId: string;
   expectedAmountCents: number;
   paidAmountCents: number;
   currency: string | null | undefined;
@@ -21,6 +23,12 @@ export type CompletedCommerceCheckoutInput = {
   sessionReference: string;
 };
 
+export type CommerceCheckoutApplicationDecision =
+  | "apply"
+  | "already_applied"
+  | "ignore_after_refund"
+  | "review_required";
+
 export function validateCompletedCommerceCheckout(
   input: CompletedCommerceCheckoutInput,
 ): CommerceCheckoutRejectionReason | null {
@@ -29,6 +37,10 @@ export function validateCompletedCommerceCheckout(
     input.checkoutSessionId !== input.expectedSessionId
   ) {
     return "checkout_session_mismatch";
+  }
+
+  if (!input.paymentIntentId) {
+    return "payment_intent_missing";
   }
 
   if (
@@ -55,6 +67,45 @@ export function validateCompletedCommerceCheckout(
   }
 
   return null;
+}
+
+export function commerceCheckoutApplicationDecision(input: {
+  bookingStatus: string;
+  paymentStatus: string;
+  refundStatus: string;
+  existingPaymentIntentId: string;
+  incomingPaymentIntentId: string;
+  existingPaidAmountCents: number;
+  incomingPaidAmountCents: number;
+}): CommerceCheckoutApplicationDecision {
+  if (
+    ["refund_pending", "refunded", "refund_failed"].includes(
+      input.paymentStatus,
+    ) ||
+    (input.refundStatus && input.refundStatus !== "not_requested")
+  ) {
+    return "ignore_after_refund";
+  }
+
+  if (
+    input.paymentStatus === "paid" &&
+    ["paid", "confirmed", "completed"].includes(input.bookingStatus) &&
+    input.existingPaymentIntentId === input.incomingPaymentIntentId &&
+    input.existingPaidAmountCents === input.incomingPaidAmountCents
+  ) {
+    return "already_applied";
+  }
+
+  if (
+    input.bookingStatus === "payment_required" &&
+    (input.paymentStatus === "" ||
+      input.paymentStatus === "unpaid" ||
+      input.paymentStatus === "pending")
+  ) {
+    return "apply";
+  }
+
+  return "review_required";
 }
 
 export function isValidCommerceDeposit(value: unknown) {
