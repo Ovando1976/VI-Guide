@@ -8,6 +8,7 @@ import {
 
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 
 export type PlaceCapability = "accessibility" | "booking" | "concierge" | "dining" | "events" | "explore" | "fishing" | "history" | "map" | "music" | "parking" | "shopping" | "stay" | "tickets" | "timing" | "transportation" | "verified" | "water";
 export type PlaceCapabilityContext = { name?: string; eyebrow?: string; description?: string; kind?: string; hasWebsite?: boolean; hasBooking?: boolean };
@@ -95,7 +96,7 @@ export function PlaceCapabilityGrid({ capabilities, name, island, mapHref, rideH
 }
 
 function resolveCapabilityHref({ capability, name, island, mapHref, rideHref, website, journeyStop }: { capability: PlaceCapability; name: string; island: string; mapHref?: string; rideHref?: string; website?: string | null; journeyStop?: JourneyStopInput }) {
-  const ask = (prompt: string) => `/map?concierge=open&prompt=${encodeURIComponent(prompt)}`;
+  const ask = (prompt: string) => buildContextualConciergeHref({ name, island, mapHref, prompt });
   switch (capability) {
     case "map": return mapHref ?? "/map";
     case "transportation":
