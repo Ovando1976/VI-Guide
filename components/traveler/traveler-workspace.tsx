@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { ItineraryTimeline } from "@/components/intelligence/itinerary-timeline";
 import { MissionExecutionControls } from "@/components/traveler/mission-execution-controls";
+import { ProactiveMissionGuide } from "@/components/traveler/proactive-mission-guide";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
   buildJourneyMapHref,
@@ -175,6 +176,8 @@ export function TravelerWorkspace() {
                   </Link>
                 </div>
               </section>
+
+              <ProactiveMissionGuide journey={active} currentStop={currentStop} />
 
               <MissionExecutionControls journey={active} currentStop={currentStop} />
 
