@@ -39,11 +39,11 @@ export function commerceRefundEligibilityError(input: {
     return "The captured payment amount is not valid for an automatic refund.";
   }
 
-  if (![
-    "paid",
-    "confirmed",
-    "completed",
-  ].includes(input.bookingStatus)) {
+  if (
+    !["paid", "confirmed", "completed", "cancelled"].includes(
+      input.bookingStatus,
+    )
+  ) {
     return "This booking is not in a refundable lifecycle state.";
   }
 
@@ -88,8 +88,22 @@ export function normalizeCommerceRefundStatus(value: unknown): CommerceRefundSta
     : "not_requested";
 }
 
+export function hasCommerceRefundActivity(input: {
+  paymentStatus: unknown;
+  refundStatus: unknown;
+}) {
+  const paymentStatus = String(input.paymentStatus ?? "");
+  return (
+    normalizeCommerceRefundStatus(input.refundStatus) !== "not_requested" ||
+    paymentStatus === "refund_pending" ||
+    paymentStatus === "refunded" ||
+    paymentStatus === "refund_failed"
+  );
+}
+
 export function commerceRefundStatusFromStripe(value: unknown): CommerceRefundStatus {
   if (value === "succeeded") return "succeeded";
   if (value === "failed" || value === "canceled") return "failed";
-  return "processing";
+  if (value === "pending") return "processing";
+  return "review_required";
 }
