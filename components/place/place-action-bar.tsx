@@ -3,7 +3,6 @@ import { ExternalLink, Map, Navigation, Sparkles } from "lucide-react";
 
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import type { JourneyStopInput } from "@/lib/journey-planner";
-import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
 type Props = {
@@ -25,12 +24,7 @@ export function PlaceActionBar({
   journeyStop,
   className = "",
 }: Props) {
-  const conciergeHref = buildContextualConciergeHref({
-    name,
-    island,
-    mapHref,
-    prompt: `Plan a complete island experience around ${name} on ${island}, including transportation, nearby places, timing, and a backup option.`,
-  });
+  const missionHref = buildMissionHref({ name, island, mapHref });
   const fallbackJourneyStop = buildFallbackJourneyStop({
     name,
     island,
@@ -48,11 +42,26 @@ export function PlaceActionBar({
         {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
         {rideHref ? <Action href={rideHref} icon={Navigation} label="Plan a ride" accent /> : null}
         <AddToJourneyButton stop={tripStop} />
-        <Action href={conciergeHref} icon={Sparkles} label="Plan my day" />
+        <Action href={missionHref} icon={Sparkles} label="Start a mission" />
         {website ? <Action href={website} icon={ExternalLink} label="Official website" external /> : null}
       </div>
     </section>
   );
+}
+
+function buildMissionHref({
+  name,
+  island,
+  mapHref,
+}: {
+  name: string;
+  island: string;
+  mapHref?: string;
+}) {
+  const query = new URLSearchParams(mapHref?.split("?")[1] ?? "");
+  if (!query.has("island")) query.set("island", islandToCode(island));
+  if (!query.has("placeName")) query.set("placeName", name);
+  return `/mission?${query.toString()}`;
 }
 
 function buildFallbackJourneyStop({
