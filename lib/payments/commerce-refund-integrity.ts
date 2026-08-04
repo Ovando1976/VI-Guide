@@ -7,6 +7,11 @@ export type CommerceRefundStatus =
   | "failed"
   | "review_required";
 
+export type CommerceRefundEventDecision =
+  | "apply"
+  | "ignore_stale"
+  | "review_multiple_refunds";
+
 export function commerceRefundEligibilityError(input: {
   bookingStatus: string;
   paymentStatus: string;
@@ -106,4 +111,34 @@ export function commerceRefundStatusFromStripe(value: unknown): CommerceRefundSt
   if (value === "failed" || value === "canceled") return "failed";
   if (value === "pending") return "processing";
   return "review_required";
+}
+
+export function commerceRefundEventDecision(input: {
+  currentStatus: unknown;
+  currentRefundId: unknown;
+  incomingStatus: CommerceRefundStatus;
+  incomingRefundId: string;
+}): CommerceRefundEventDecision {
+  const currentStatus = normalizeCommerceRefundStatus(input.currentStatus);
+  const currentRefundId = String(input.currentRefundId ?? "").trim();
+
+  if (
+    currentRefundId &&
+    currentRefundId !== input.incomingRefundId &&
+    currentStatus !== "not_requested"
+  ) {
+    return "review_multiple_refunds";
+  }
+
+  const rank: Record<CommerceRefundStatus, number> = {
+    not_requested: 0,
+    processing: 1,
+    failed: 2,
+    review_required: 3,
+    succeeded: 4,
+  };
+
+  return rank[input.incomingStatus] < rank[currentStatus]
+    ? "ignore_stale"
+    : "apply";
 }
