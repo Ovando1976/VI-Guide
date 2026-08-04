@@ -37,6 +37,10 @@ function testRefundableLifecycleStates() {
     commerceRefundEligibilityError({ ...valid, bookingStatus: "declined" }),
     "This booking is not in a refundable lifecycle state.",
   );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, refundStatus: "failed" }),
+    "This refund failed and requires manual financial review before another attempt.",
+  );
 }
 
 function testStripeRefundStatusMapping() {
@@ -141,7 +145,7 @@ function testRefundEventPrecedence() {
       incomingStatus: "processing",
       incomingRefundId: "re_retry",
     }),
-    "ignore_stale",
+    "review_multiple_refunds",
   );
   assert.equal(
     commerceRefundEventDecision({
@@ -150,7 +154,7 @@ function testRefundEventPrecedence() {
       incomingStatus: "succeeded",
       incomingRefundId: "re_retry",
     }),
-    "apply",
+    "review_multiple_refunds",
   );
 }
 
@@ -163,14 +167,9 @@ function testRefundAttemptIdempotency() {
     operationId: "operation-123",
     attemptNumber: 1,
   });
-  const retry = buildCommerceRefundIdempotencyKey({
-    operationId: "operation-123",
-    attemptNumber: 2,
-  });
 
   assert.match(first, /^vi-guide-refund-[a-f0-9]{64}$/);
   assert.equal(first, repeated);
-  assert.notEqual(first, retry);
   assert.throws(
     () =>
       buildCommerceRefundIdempotencyKey({
