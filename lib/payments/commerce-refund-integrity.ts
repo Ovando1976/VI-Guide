@@ -84,6 +84,29 @@ export function buildCommerceRefundOperationId(input: {
     .digest("hex");
 }
 
+export function buildCommerceRefundIdempotencyKey(input: {
+  operationId: string;
+  attemptNumber: number;
+}) {
+  if (
+    !input.operationId ||
+    !Number.isSafeInteger(input.attemptNumber) ||
+    input.attemptNumber <= 0
+  ) {
+    throw new Error("A valid refund operation and attempt are required.");
+  }
+
+  return `vi-guide-refund-${createHash("sha256")
+    .update(
+      [
+        "vi-guide-commerce-refund-attempt",
+        input.operationId,
+        String(input.attemptNumber),
+      ].join("|"),
+    )
+    .digest("hex")}`;
+}
+
 export function normalizeCommerceRefundStatus(value: unknown): CommerceRefundStatus {
   return value === "processing" ||
     value === "succeeded" ||
