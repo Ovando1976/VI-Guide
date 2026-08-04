@@ -2,6 +2,7 @@
 
 import type { TripItem } from "@/components/trip-planner/trip-types";
 import type {
+  IntelligenceLocation,
   IntelligencePlanStop,
   IntelligenceRecommendation,
   IntelligenceResponse,
@@ -114,6 +115,19 @@ function intelligenceItemToFocusItem(
   };
 }
 
+export function livingMapFocusItemToIntelligenceLocation(
+  item: LivingMapFocusItem,
+): IntelligenceLocation {
+  return {
+    id: item.id,
+    name: item.title,
+    island: item.island,
+    kind: item.kind,
+    ...(typeof item.lat === "number" ? { lat: item.lat } : {}),
+    ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
+  };
+}
+
 export function tripItemToMapFocusItem(item: TripItem): LivingMapFocusItem {
   return {
     id: item.id,
@@ -187,11 +201,21 @@ export function dispatchIntelligenceResponseMapFocus(
   if (detail) dispatchLivingMapFocus(detail);
 }
 
-export function consumePendingLivingMapFocus(): LivingMapFocusDetail | null {
+export function getPrimaryLivingMapFocus(
+  detail: LivingMapFocusDetail | null,
+): LivingMapFocusItem | null {
+  if (!detail) return null;
+  return (
+    detail.items.find((item) => item.id === detail.primaryId) ??
+    detail.items[0] ??
+    null
+  );
+}
+
+export function peekPendingLivingMapFocus(): LivingMapFocusDetail | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.sessionStorage.getItem(PENDING_FOCUS_KEY);
-    window.sessionStorage.removeItem(PENDING_FOCUS_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<LivingMapFocusDetail>;
     const source = parsed.source;
@@ -213,6 +237,18 @@ export function consumePendingLivingMapFocus(): LivingMapFocusDetail | null {
   } catch {
     return null;
   }
+}
+
+export function consumePendingLivingMapFocus(): LivingMapFocusDetail | null {
+  const detail = peekPendingLivingMapFocus();
+  if (typeof window !== "undefined") {
+    try {
+      window.sessionStorage.removeItem(PENDING_FOCUS_KEY);
+    } catch {
+      // Ignore storage cleanup failures.
+    }
+  }
+  return detail;
 }
 
 export function placeTypeForMapFocusItem(

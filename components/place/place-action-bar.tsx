@@ -24,9 +24,7 @@ export function PlaceActionBar({
   journeyStop,
   className = "",
 }: Props) {
-  const conciergeHref = `/map?concierge=open&prompt=${encodeURIComponent(
-    `Plan a complete island experience around ${name} on ${island}, including transportation, nearby places, timing, and a backup option.`,
-  )}`;
+  const missionHref = buildMissionHref({ name, island, mapHref });
   const fallbackJourneyStop = buildFallbackJourneyStop({
     name,
     island,
@@ -44,11 +42,26 @@ export function PlaceActionBar({
         {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
         {rideHref ? <Action href={rideHref} icon={Navigation} label="Plan a ride" accent /> : null}
         <AddToJourneyButton stop={tripStop} />
-        <Action href={conciergeHref} icon={Sparkles} label="Plan my day" />
+        <Action href={missionHref} icon={Sparkles} label="Start a mission" />
         {website ? <Action href={website} icon={ExternalLink} label="Official website" external /> : null}
       </div>
     </section>
   );
+}
+
+function buildMissionHref({
+  name,
+  island,
+  mapHref,
+}: {
+  name: string;
+  island: string;
+  mapHref?: string;
+}) {
+  const query = new URLSearchParams(mapHref?.split("?")[1] ?? "");
+  if (!query.has("island")) query.set("island", islandToCode(island));
+  if (!query.has("placeName")) query.set("placeName", name);
+  return `/mission?${query.toString()}`;
 }
 
 function buildFallbackJourneyStop({
