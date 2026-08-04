@@ -124,18 +124,15 @@ export async function POST(
             409,
           );
         }
-        if (existingStatus === "review_required") {
+        if (existingStatus === "failed") {
           throw new RefundActionError(
-            "This refund requires manual financial review.",
+            "This refund failed and requires manual financial review before another attempt.",
             409,
           );
         }
-        if (
-          existingStatus === "failed" &&
-          bookingRefundStatus !== "failed"
-        ) {
+        if (existingStatus === "review_required") {
           throw new RefundActionError(
-            "The booking and refund operation are out of sync and require review.",
+            "This refund requires manual financial review.",
             409,
           );
         }
@@ -154,10 +151,7 @@ export async function POST(
         }
       }
 
-      const attemptNumber = Math.max(
-        1,
-        Math.floor(Number(existingOperation.attemptCount ?? 0)) + 1,
-      );
+      const attemptNumber = 1;
       const now = new Date().toISOString();
       transaction.set(
         operationRef,
@@ -174,14 +168,14 @@ export async function POST(
           status: "processing",
           requestedBy: session.uid,
           requestedByEmail: session.email ?? null,
-          requestedAt: existingOperation.requestedAt ?? now,
+          requestedAt: now,
           updatedAt: now,
           serverUpdatedAt: FieldValue.serverTimestamp(),
           attemptCount: attemptNumber,
           activeAttemptNumber: attemptNumber,
           failureReason: null,
         },
-        { merge: true },
+        { merge: false },
       );
       transaction.update(bookingRef, {
         paymentStatus: "refund_pending",
@@ -189,7 +183,7 @@ export async function POST(
         refundOperationId: operationId,
         refundReason: reason,
         refundFailureReason: null,
-        refundRequestedAt: booking.refundRequestedAt ?? now,
+        refundRequestedAt: now,
         refundUpdatedAt: now,
         updatedAt: now,
       });
@@ -296,7 +290,7 @@ export async function POST(
           error: !recordedDisposition
             ? "Stripe returned an uncertain result. The refund remains in reconciliation and was not marked failed."
             : disposition === "definitive_failure"
-              ? "Stripe rejected this refund. The operation remains visible for a reviewed retry."
+              ? "Stripe rejected this refund. Operations must review the failure before any further attempt."
               : "Stripe did not confirm whether the refund was created. Operations must reconcile it before another attempt.",
         },
         { status: 502 },
@@ -370,13 +364,8 @@ export async function POST(
       const previousRefundStatus = normalizeCommerceRefundStatus(
         booking.refundStatus,
       );
-      const previousRefundId = String(booking.refundId ?? "").trim();
       transaction.update(operationRef, {
         refundId: refund.id,
-        previousRefundId:
-          previousRefundId && previousRefundId !== refund.id
-            ? previousRefundId
-            : null,
         status: incomingStatus,
         refundAmountCents: refund.amount,
         fullRefund,
