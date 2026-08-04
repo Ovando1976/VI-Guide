@@ -10,7 +10,13 @@ import type { CommerceBookingStatus } from "@/types/commerce-booking";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ALLOWED_STATUSES: CommerceBookingStatus[] = [
+type BookingLifecycleStatus =
+  | CommerceBookingStatus
+  | "payment_required"
+  | "paid"
+  | "completed";
+
+const ALLOWED_STATUSES: BookingLifecycleStatus[] = [
   "reviewing",
   "payment_required",
   "paid",
@@ -41,7 +47,7 @@ export async function PATCH(
         paymentHref?: unknown;
       }
     | null;
-  const status = clean(body?.status, 40) as CommerceBookingStatus;
+  const status = clean(body?.status, 40) as BookingLifecycleStatus;
   const merchantNote = clean(body?.merchantNote, 1200);
   const proposedTime = clean(body?.proposedTime, 40);
   const paymentHref = clean(body?.paymentHref, 500);
@@ -80,7 +86,10 @@ export async function PATCH(
     updatedAt,
     merchantNote: merchantNote || null,
     proposedTime: proposedTime || null,
-    depositAmountCents: status === "payment_required" ? depositAmountCents : booking.depositAmountCents ?? null,
+    depositAmountCents:
+      status === "payment_required"
+        ? depositAmountCents
+        : booking.depositAmountCents ?? null,
     paymentHref: paymentHref || booking.paymentHref || null,
     merchantRespondedAt: updatedAt,
   });
@@ -90,7 +99,8 @@ export async function PATCH(
     batch.set(notificationRef, {
       audience,
       kind: "booking",
-      priority: status === "declined" || status === "cancelled" ? "high" : "normal",
+      priority:
+        status === "declined" || status === "cancelled" ? "high" : "normal",
       title: lifecycle.title,
       message: lifecycle.message,
       href: audience === "traveler" ? "/bookings" : "/admin/operations",
@@ -111,36 +121,63 @@ export async function PATCH(
       status,
       merchantNote: merchantNote || null,
       proposedTime: proposedTime || null,
-      depositAmountCents: status === "payment_required" ? depositAmountCents : booking.depositAmountCents ?? null,
+      depositAmountCents:
+        status === "payment_required"
+          ? depositAmountCents
+          : booking.depositAmountCents ?? null,
       paymentHref: paymentHref || booking.paymentHref || null,
       updatedAt,
     },
   });
 }
 
-function lifecycleCopy(status: CommerceBookingStatus, listingName: string, depositAmountCents: number) {
+function lifecycleCopy(
+  status: BookingLifecycleStatus,
+  listingName: string,
+  depositAmountCents: number,
+) {
   if (status === "payment_required") {
     return {
       title: "Payment required",
-      message: `${listingName} is ready to secure with a ${formatMoney(depositAmountCents)} deposit.`,
+      message: `${listingName} is ready to secure with a ${formatMoney(
+        depositAmountCents,
+      )} deposit.`,
     };
   }
   if (status === "paid") {
-    return { title: "Payment received", message: `Payment was recorded for ${listingName}.` };
+    return {
+      title: "Payment received",
+      message: `Payment was recorded for ${listingName}.`,
+    };
   }
   if (status === "confirmed") {
-    return { title: "Booking confirmed", message: `${listingName} is confirmed and ready for your trip.` };
+    return {
+      title: "Booking confirmed",
+      message: `${listingName} is confirmed and ready for your trip.`,
+    };
   }
   if (status === "completed") {
-    return { title: "Booking completed", message: `${listingName} has been marked complete.` };
+    return {
+      title: "Booking completed",
+      message: `${listingName} has been marked complete.`,
+    };
   }
   if (status === "reviewing") {
-    return { title: "Booking under review", message: `${listingName} is being reviewed by the provider.` };
+    return {
+      title: "Booking under review",
+      message: `${listingName} is being reviewed by the provider.`,
+    };
   }
   if (status === "declined") {
-    return { title: "Booking unavailable", message: `${listingName} could not be confirmed. Concierge can help with an alternative.` };
+    return {
+      title: "Booking unavailable",
+      message: `${listingName} could not be confirmed. Concierge can help with an alternative.`,
+    };
   }
-  return { title: "Booking cancelled", message: `${listingName} has been cancelled.` };
+  return {
+    title: "Booking cancelled",
+    message: `${listingName} has been cancelled.`,
+  };
 }
 
 function clampMoney(value: unknown) {
@@ -150,7 +187,10 @@ function clampMoney(value: unknown) {
 }
 
 function formatMoney(cents: number) {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(cents / 100);
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(cents / 100);
 }
 
 function clean(value: unknown, maxLength: number) {
