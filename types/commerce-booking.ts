@@ -6,10 +6,7 @@ export type CommerceBookingStatus =
   | "draft"
   | "requested"
   | "reviewing"
-  | "payment_required"
-  | "paid"
   | "confirmed"
-  | "completed"
   | "declined"
   | "cancelled";
 
