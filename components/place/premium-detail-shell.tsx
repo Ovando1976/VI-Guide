@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
 import { PlaceActionBar } from "@/components/place/place-action-bar";
+import {
+  PlaceCapabilityGrid,
+  type PlaceCapability,
+} from "@/components/place/place-capability-grid";
 import type { JourneyStopInput } from "@/lib/journey-planner";
 
 type HeroCallout = {
@@ -22,6 +26,9 @@ type Props = {
     website?: string | null;
     journeyStop?: JourneyStopInput;
   };
+  capabilities?: PlaceCapability[];
+  capabilityTitle?: string;
+  capabilityDescription?: string;
   primary: ReactNode;
   aside?: ReactNode;
   below?: ReactNode;
@@ -36,6 +43,13 @@ const DEFAULT_HERO_CALLOUT: HeroCallout = {
     "Connect this destination with transportation, nearby recommendations, timing, and a backup plan.",
 };
 
+const DEFAULT_CAPABILITIES: PlaceCapability[] = [
+  "map",
+  "concierge",
+  "transportation",
+  "explore",
+];
+
 export function PremiumDetailShell({
   name,
   eyebrow,
@@ -44,6 +58,9 @@ export function PremiumDetailShell({
   meta,
   heroCallout = DEFAULT_HERO_CALLOUT,
   actions,
+  capabilities = DEFAULT_CAPABILITIES,
+  capabilityTitle,
+  capabilityDescription,
   primary,
   aside,
   below,
@@ -101,6 +118,12 @@ export function PremiumDetailShell({
           rideHref={actions.rideHref}
           website={actions.website}
           journeyStop={actions.journeyStop}
+        />
+
+        <PlaceCapabilityGrid
+          capabilities={capabilities}
+          title={capabilityTitle}
+          description={capabilityDescription}
         />
 
         <section
