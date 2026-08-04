@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    await requireSession(["admin", "dispatcher"]);
+    const session = await requireSession(["admin", "dispatcher"]);
     if (!hasFirebaseAdminConfiguration()) {
       return NextResponse.json(
         { error: "Commerce refund operations are not configured." },
@@ -69,6 +69,7 @@ export async function GET() {
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 
     return NextResponse.json({
+      canIssueRefunds: session.role === "admin",
       bookings,
       counts: {
         refundable: bookings.filter(
