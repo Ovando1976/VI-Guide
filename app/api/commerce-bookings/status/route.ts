@@ -55,6 +55,9 @@ export async function POST(request: NextRequest) {
       merchantNote: data.merchantNote ? String(data.merchantNote) : null,
       adults: Number(data.adults ?? 1),
       children: Number(data.children ?? 0),
+      depositAmountCents: Number(data.depositAmountCents ?? 0),
+      paidAmountCents: Number(data.paidAmountCents ?? 0),
+      paymentHref: data.paymentHref ? String(data.paymentHref) : null,
       updatedAt: String(data.updatedAt ?? data.createdAt ?? ""),
     },
   });
