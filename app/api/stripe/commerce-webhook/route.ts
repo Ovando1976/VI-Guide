@@ -9,6 +9,7 @@ import {
 } from "@/lib/payments/commerce-checkout-integrity";
 import {
   commerceRefundStatusFromStripe,
+  hasCommerceRefundActivity,
   type CommerceRefundStatus,
 } from "@/lib/payments/commerce-refund-integrity";
 import { getStripe } from "@/lib/stripe";
@@ -103,6 +104,7 @@ async function processCompletedSession(event: Stripe.Event) {
     const sessionReference = String(
       session.metadata?.bookingReference ?? "",
     ).trim();
+    const paymentIntentId = expandableId(session.payment_intent);
 
     const rejectionReason = validateCompletedCommerceCheckout({
       checkoutSessionId: session.id,
@@ -121,10 +123,7 @@ async function processCompletedSession(event: Stripe.Event) {
         type: event.type,
         bookingId,
         checkoutSessionId: session.id,
-        paymentIntentId:
-          typeof session.payment_intent === "string"
-            ? session.payment_intent
-            : null,
+        paymentIntentId,
         expectedSessionId: expectedSessionId || null,
         expectedAmountCents,
         paidAmountCents,
@@ -136,16 +135,84 @@ async function processCompletedSession(event: Stripe.Event) {
       return;
     }
 
+    const currentStatus = String(booking.status ?? "requested");
+    const currentPaymentStatus = String(booking.paymentStatus ?? "unpaid");
+    if (
+      hasCommerceRefundActivity({
+        paymentStatus: currentPaymentStatus,
+        refundStatus: booking.refundStatus,
+      })
+    ) {
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        currentStatus,
+        currentPaymentStatus,
+        refundStatus: booking.refundStatus ?? null,
+        outcome: "commerce_checkout_ignored_during_refund",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
+    if (
+      currentPaymentStatus === "paid" &&
+      ["paid", "confirmed", "completed"].includes(currentStatus)
+    ) {
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        currentStatus,
+        outcome: "commerce_checkout_already_recorded",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
     const now = new Date().toISOString();
     const listingName = String(booking.listingName ?? "VI Guide booking");
+    if (currentStatus === "cancelled" || currentStatus === "declined") {
+      transaction.update(bookingRef, {
+        paymentStatus: "paid",
+        paidAmountCents,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        paidAt: booking.paidAt ?? now,
+        refundStatus: "not_requested",
+        updatedAt: now,
+      });
+      writeOperationsNotification(transaction, db, {
+        title: "Payment captured after booking closure",
+        message: `${listingName} booking ${expectedReference} received ${formatMoney(
+          paidAmountCents,
+        )} after it was ${currentStatus}. Review and refund the payment if appropriate.`,
+        reference: expectedReference,
+        href: "/admin/commerce-refunds",
+        now,
+      });
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        currentStatus,
+        paidAmountCents,
+        outcome: "commerce_payment_captured_after_closure",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
 
     transaction.update(bookingRef, {
       status: "paid",
       paymentStatus: "paid",
       paidAmountCents,
       checkoutSessionId: session.id,
-      paymentIntentId:
-        typeof session.payment_intent === "string" ? session.payment_intent : null,
+      paymentIntentId,
       paidAt: now,
       refundStatus: "not_requested",
       updatedAt: now,
@@ -177,8 +244,7 @@ async function processCompletedSession(event: Stripe.Event) {
       type: event.type,
       bookingId,
       checkoutSessionId: session.id,
-      paymentIntentId:
-        typeof session.payment_intent === "string" ? session.payment_intent : null,
+      paymentIntentId,
       paidAmountCents,
       currency: session.currency,
       outcome: "commerce_booking_paid",
@@ -229,11 +295,7 @@ async function processExpiredSession(event: Stripe.Event) {
 
 async function processRefundEvent(event: Stripe.Event) {
   const refund = event.data.object as Stripe.Refund;
-  const paymentIntentId = expandableId(
-    (refund as Stripe.Refund & {
-      payment_intent?: string | Stripe.PaymentIntent | null;
-    }).payment_intent,
-  );
+  const paymentIntentId = expandableId(refund.payment_intent);
   const bookingId = refund.metadata?.bookingId?.trim();
   const operationId = refund.metadata?.operationId?.trim();
   const db = getAdminDb();
@@ -413,6 +475,32 @@ function writeRefundNotifications(
       serverCreatedAt: FieldValue.serverTimestamp(),
     });
   }
+}
+
+function writeOperationsNotification(
+  transaction: FirebaseFirestore.Transaction,
+  db: Firestore,
+  input: {
+    title: string;
+    message: string;
+    reference: string;
+    href: string;
+    now: string;
+  },
+) {
+  transaction.set(db.collection("notifications").doc(), {
+    audience: "operations",
+    kind: "booking",
+    priority: "high",
+    title: input.title,
+    message: input.message,
+    href: input.href,
+    reference: input.reference,
+    readAt: null,
+    createdAt: input.now,
+    updatedAt: input.now,
+    serverCreatedAt: FieldValue.serverTimestamp(),
+  });
 }
 
 async function findCommerceBookingByPaymentIntent(
