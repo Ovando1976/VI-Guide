@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 
 import {
+  buildCommerceRefundIdempotencyKey,
   commerceRefundEligibilityError,
   commerceRefundEventDecision,
   commerceRefundStatusFromStripe,
@@ -134,11 +135,47 @@ function testRefundEventPrecedence() {
   );
 }
 
+function testRefundAttemptIdempotency() {
+  const first = buildCommerceRefundIdempotencyKey({
+    operationId: "operation-123",
+    attemptNumber: 1,
+  });
+  const repeated = buildCommerceRefundIdempotencyKey({
+    operationId: "operation-123",
+    attemptNumber: 1,
+  });
+  const retry = buildCommerceRefundIdempotencyKey({
+    operationId: "operation-123",
+    attemptNumber: 2,
+  });
+
+  assert.match(first, /^vi-guide-refund-[a-f0-9]{64}$/);
+  assert.equal(first, repeated);
+  assert.notEqual(first, retry);
+  assert.throws(
+    () =>
+      buildCommerceRefundIdempotencyKey({
+        operationId: "operation-123",
+        attemptNumber: 0,
+      }),
+    /valid refund operation and attempt/i,
+  );
+  assert.throws(
+    () =>
+      buildCommerceRefundIdempotencyKey({
+        operationId: "",
+        attemptNumber: 1,
+      }),
+    /valid refund operation and attempt/i,
+  );
+}
+
 function main() {
   testRefundableLifecycleStates();
   testStripeRefundStatusMapping();
   testCheckoutSuppressionDuringRefunds();
   testRefundEventPrecedence();
+  testRefundAttemptIdempotency();
   console.log("Commerce refund lifecycle edge-case tests passed.");
 }
 
