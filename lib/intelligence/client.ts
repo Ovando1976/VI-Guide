@@ -1,8 +1,14 @@
 "use client";
 
-import { dispatchIntelligenceResponseMapFocus } from "@/lib/intelligence/map-focus-events";
+import {
+  dispatchIntelligenceResponseMapFocus,
+  getPrimaryLivingMapFocus,
+  livingMapFocusItemToIntelligenceLocation,
+  peekPendingLivingMapFocus,
+} from "@/lib/intelligence/map-focus-events";
 import type {
   IntelligenceContext,
+  IntelligenceLocation,
   IntelligenceMemory,
   IntelligencePage,
   IntelligenceRequest,
@@ -36,6 +42,15 @@ function readJson<T>(key: string, fallback: T): T {
 function writeJson(key: string, value: unknown) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getLivingMapSelectedPlace(
+  explicit?: IntelligenceLocation,
+): IntelligenceLocation | undefined {
+  const focus = getPrimaryLivingMapFocus(peekPendingLivingMapFocus());
+  if (!focus) return explicit;
+  if (explicit?.island && explicit.island !== focus.island) return explicit;
+  return livingMapFocusItemToIntelligenceLocation(focus);
 }
 
 export function getIntelligenceSessionId() {
@@ -86,9 +101,13 @@ export function feedIntelligenceContext(
 ) {
   const current = readJson<Partial<IntelligenceContext>>(CONTEXT_KEY, {});
   const memory = getIntelligenceMemory();
+  const selectedPlace = getLivingMapSelectedPlace(
+    patch.selectedPlace ?? current.selectedPlace,
+  );
   const next: Partial<IntelligenceContext> = {
     ...current,
     ...patch,
+    ...(selectedPlace ? { selectedPlace } : {}),
     page,
     sessionId: getIntelligenceSessionId(),
     now: new Date().toISOString(),
@@ -125,7 +144,9 @@ export function feedIntelligenceContext(
 }
 
 export function getIntelligenceContext(): Partial<IntelligenceContext> {
-  return readJson<Partial<IntelligenceContext>>(CONTEXT_KEY, {});
+  const stored = readJson<Partial<IntelligenceContext>>(CONTEXT_KEY, {});
+  const selectedPlace = getLivingMapSelectedPlace(stored.selectedPlace);
+  return selectedPlace ? { ...stored, selectedPlace } : stored;
 }
 
 export async function askViIntelligence(
@@ -135,14 +156,18 @@ export async function askViIntelligence(
 ): Promise<IntelligenceResponse> {
   const stored = getIntelligenceContext();
   const memory = getIntelligenceMemory();
+  const selectedPlace = getLivingMapSelectedPlace(
+    overrides.selectedPlace ?? stored.selectedPlace,
+  );
   const context = {
     ...stored,
     ...overrides,
+    ...(selectedPlace ? { selectedPlace } : {}),
     sessionId: getIntelligenceSessionId(),
     now: new Date().toISOString(),
     timezone: "America/St_Thomas" as const,
     memory,
-    island: overrides.island ?? stored.island ?? memory.preferredIsland ?? "stt",
+    island: overrides.island ?? selectedPlace?.island ?? stored.island ?? memory.preferredIsland ?? "stt",
     page: overrides.page ?? stored.page ?? "unknown",
     party: {
       adults: overrides.party?.adults ?? stored.party?.adults ?? memory.party?.adults ?? 1,
