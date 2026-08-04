@@ -47,6 +47,18 @@ export async function POST(request: NextRequest) {
       reference: String(data.reference ?? reference),
       status: String(data.status ?? "requested"),
       paymentStatus: data.paymentStatus ? String(data.paymentStatus) : null,
+      refundStatus: data.refundStatus ? String(data.refundStatus) : null,
+      refundAmountCents: Number(data.refundAmountCents ?? 0),
+      refundReason: data.refundReason ? String(data.refundReason) : null,
+      refundFailureReason: data.refundFailureReason
+        ? String(data.refundFailureReason)
+        : null,
+      refundRequestedAt: data.refundRequestedAt
+        ? String(data.refundRequestedAt)
+        : null,
+      refundUpdatedAt: data.refundUpdatedAt
+        ? String(data.refundUpdatedAt)
+        : null,
       kind: String(data.kind ?? "experience"),
       listingName: String(data.listingName ?? "VI Guide booking"),
       island: String(data.island ?? "stt"),
