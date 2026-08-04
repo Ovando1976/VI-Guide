@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { TravelerWorkspace } from "@/components/traveler/traveler-workspace";
+import { SyncedTravelerWorkspace } from "@/components/traveler/synced-traveler-workspace";
 import { WorkspaceReservations } from "@/components/traveler/workspace-reservations";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
@@ -32,7 +32,7 @@ export function ReservationEnabledWorkspace() {
 
   return (
     <>
-      <TravelerWorkspace />
+      <SyncedTravelerWorkspace />
       {active ? (
         <section className="relative z-10 -mt-20 bg-[#f7f2e7] px-4 pb-28 sm:px-6">
           <div className="mx-auto max-w-7xl">
