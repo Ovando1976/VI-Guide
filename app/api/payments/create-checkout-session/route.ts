@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -7,11 +5,14 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import {
+  buildCommerceCheckoutIdempotencyKey,
+  isValidCommerceDeposit,
+  normalizeCommerceEmail,
+} from "@/lib/payments/commerce-checkout-integrity";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const MAX_DEPOSIT_CENTS = 10_000_000;
 
 export async function POST(request: NextRequest) {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
     | { bookingId?: unknown; email?: unknown }
     | null;
   const bookingId = clean(body?.bookingId, 160);
-  const email = clean(body?.email, 220).toLowerCase();
+  const email = normalizeCommerceEmail(clean(body?.email, 220));
 
   if (!bookingId || !/^\S+@\S+\.\S+$/.test(email)) {
     return NextResponse.json(
@@ -49,16 +50,14 @@ export async function POST(request: NextRequest) {
   }
 
   const booking = snapshot.data() ?? {};
-  if (normalizeEmail(booking.email) !== email) {
+  if (normalizeCommerceEmail(booking.email) !== email) {
     return NextResponse.json({ error: "Booking not found." }, { status: 404 });
   }
 
   const amountCents = Number(booking.depositAmountCents ?? 0);
   if (
     String(booking.status ?? "") !== "payment_required" ||
-    !Number.isSafeInteger(amountCents) ||
-    amountCents <= 0 ||
-    amountCents > MAX_DEPOSIT_CENTS
+    !isValidCommerceDeposit(amountCents)
   ) {
     return NextResponse.json(
       { error: "This booking is not currently awaiting a valid payment." },
@@ -71,16 +70,11 @@ export async function POST(request: NextRequest) {
     booking.merchantRespondedAt ?? booking.updatedAt,
     120,
   );
-  const idempotencyKey = createHash("sha256")
-    .update(
-      [
-        "vi-guide-commerce-checkout",
-        bookingId,
-        String(amountCents),
-        requestVersion,
-      ].join("|"),
-    )
-    .digest("hex");
+  const idempotencyKey = buildCommerceCheckoutIdempotencyKey({
+    bookingId,
+    amountCents,
+    requestVersion,
+  });
 
   const origin = request.nextUrl.origin;
   const stripe = new Stripe(secretKey);
@@ -138,7 +132,7 @@ export async function POST(request: NextRequest) {
 
       if (
         !currentSnapshot.exists ||
-        normalizeEmail(current.email) !== email ||
+        normalizeCommerceEmail(current.email) !== email ||
         String(current.status ?? "") !== "payment_required" ||
         currentAmount !== amountCents
       ) {
@@ -179,10 +173,6 @@ async function expireCheckoutSession(stripe: Stripe, sessionId: string) {
   } catch (error) {
     console.error("unable to expire stale commerce checkout session", error);
   }
-}
-
-function normalizeEmail(value: unknown) {
-  return typeof value === "string" ? value.trim().toLowerCase() : "";
 }
 
 function clean(value: unknown, maxLength: number) {
