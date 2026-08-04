@@ -109,7 +109,7 @@ export function CommerceRefundBoard() {
                 Commerce refunds
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/70">
-                Issue full refunds against the exact Stripe PaymentIntent, then reconcile every result through the signed commerce webhook.
+                Issue one verified full-refund attempt against the exact Stripe PaymentIntent, then reconcile every result through the signed commerce webhook.
               </p>
             </div>
             <button
@@ -122,7 +122,7 @@ export function CommerceRefundBoard() {
           </div>
           <div className="mt-6 flex max-w-3xl items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4 text-xs font-semibold leading-5 text-white/75">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
-            Automatic actions are limited to the complete captured amount. Partial refunds, mismatched payments, and uncertain states are held for manual review.
+            Automatic actions are limited to the complete captured amount. Failed, uncertain, partial, mismatched, or duplicate refund outcomes remain visible but require manual financial review before any further attempt.
           </div>
           {!loading && !canIssueRefunds ? (
             <div className="mt-3 flex max-w-3xl items-start gap-3 rounded-2xl border border-sky-300/20 bg-sky-300/10 p-4 text-xs font-semibold leading-5 text-sky-50">
@@ -190,10 +190,7 @@ function RefundCard({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const eligiblePayment =
-    booking.paymentStatus === "paid" &&
-    !["processing", "succeeded", "review_required"].includes(
-      booking.refundStatus,
-    );
+    booking.paymentStatus === "paid" && booking.refundStatus === "not_requested";
   const refundable = canIssueRefunds && eligiblePayment;
   const confirmed = confirmation.trim() === booking.reference;
 
@@ -244,76 +241,58 @@ function RefundCard({
             {booking.guestName} · {booking.email}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <StatusBadge value={booking.paymentStatus} />
-          <StatusBadge value={booking.refundStatus} />
-        </div>
+        <span className={statusClass(booking.refundStatus)}>
+          {booking.refundStatus.replaceAll("_", " ")}
+        </span>
       </div>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Detail label="Captured" value={formatMoney(booking.paidAmountCents)} />
-        <Detail
-          label="Booking status"
-          value={booking.status.replaceAll("_", " ")}
-        />
-        <Detail
-          label="Stripe payment"
-          value={booking.paymentIntentId ?? "Missing PaymentIntent"}
-        />
+        <Detail label="Payment" value={booking.paymentStatus.replaceAll("_", " ")} />
+        <Detail label="Booking" value={booking.status.replaceAll("_", " ")} />
+        <Detail label="Updated" value={formatDate(booking.updatedAt)} />
       </div>
 
       {booking.refundFailureReason ? (
-        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-800">
+        <div className="mt-4 flex gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-xs font-semibold leading-5 text-rose-800">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-          {booking.refundFailureReason}
+          <span>
+            {booking.refundFailureReason} Automatic retry is disabled; reconcile this refund manually before taking further action.
+          </span>
+        </div>
+      ) : null}
+
+      {booking.refundId ? (
+        <div className="mt-4 rounded-2xl bg-slate-50 p-4 font-mono text-xs text-slate-600">
+          Stripe refund: {booking.refundId}
         </div>
       ) : null}
 
       {refundable ? (
-        <div className="mt-5 grid gap-3 lg:grid-cols-2">
+        <div className="mt-5 grid gap-3 lg:grid-cols-[1fr_260px_auto]">
           <label className="text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
             Refund reason
             <textarea
               value={reason}
               onChange={(event) => setReason(event.target.value)}
               className="mt-2 min-h-24 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold normal-case tracking-normal text-[#043331] outline-none focus:border-emerald-600"
-              placeholder="Customer requested cancellation because…"
+              placeholder="Document why the full deposit is being returned."
             />
           </label>
           <label className="text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
-            Type booking reference to confirm
+            Type booking reference
             <input
               value={confirmation}
               onChange={(event) => setConfirmation(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold normal-case tracking-normal text-[#043331] outline-none focus:border-emerald-600"
+              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 font-mono text-sm font-black normal-case tracking-normal text-[#043331] outline-none focus:border-emerald-600"
               placeholder={booking.reference}
             />
-            <span className="mt-2 block text-[11px] font-semibold normal-case tracking-normal text-slate-500">
-              This issues a full {formatMoney(booking.paidAmountCents)} refund through Stripe.
-            </span>
           </label>
-        </div>
-      ) : null}
-
-      {!canIssueRefunds && eligiblePayment ? (
-        <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm font-bold text-sky-900">
-          This payment is eligible for review. An administrator must authorize the refund.
-        </div>
-      ) : null}
-
-      {error ? (
-        <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700">
-          {error}
-        </div>
-      ) : null}
-
-      <div className="mt-5 flex flex-wrap items-center gap-3">
-        {refundable ? (
           <button
             type="button"
             disabled={submitting || reason.trim().length < 4 || !confirmed}
             onClick={() => void issueRefund()}
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-red-700 px-5 text-[9px] font-black uppercase tracking-[.14em] text-white disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex min-h-12 items-center justify-center gap-2 self-end rounded-xl bg-rose-700 px-5 text-[9px] font-black uppercase tracking-[.14em] text-white disabled:opacity-50"
           >
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -322,13 +301,14 @@ function RefundCard({
             )}
             Issue full refund
           </button>
-        ) : null}
-        {booking.refundId ? (
-          <span className="text-xs font-semibold text-slate-500">
-            Stripe refund {booking.refundId}
-          </span>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
+
+      {error ? (
+        <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-xs font-bold text-red-700">
+          {error}
+        </div>
+      ) : null}
     </article>
   );
 }
@@ -336,7 +316,7 @@ function RefundCard({
 function Metric({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <p className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+      <p className="text-[9px] font-black uppercase tracking-[.15em] text-slate-400">
         {label}
       </p>
       <p className="mt-2 text-3xl font-black">{value}</p>
@@ -350,24 +330,30 @@ function Detail({ label, value }: { label: string; value: string }) {
       <p className="text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
         {label}
       </p>
-      <p className="mt-2 break-all text-sm font-bold capitalize text-slate-700">
-        {value}
-      </p>
+      <p className="mt-2 text-sm font-black capitalize">{value}</p>
     </div>
   );
 }
 
-function StatusBadge({ value }: { value: string }) {
-  return (
-    <span className="rounded-full bg-slate-100 px-3 py-2 text-[9px] font-black uppercase tracking-[.13em] text-slate-700">
-      {value.replaceAll("_", " ")}
-    </span>
-  );
+function statusClass(status: string) {
+  const base =
+    "rounded-full px-3 py-2 text-[9px] font-black uppercase tracking-[.13em]";
+  if (status === "succeeded") return `${base} bg-emerald-100 text-emerald-800`;
+  if (status === "processing") return `${base} bg-sky-100 text-sky-800`;
+  if (status === "failed" || status === "review_required") {
+    return `${base} bg-rose-100 text-rose-800`;
+  }
+  return `${base} bg-amber-100 text-amber-800`;
 }
 
-function formatMoney(cents: number | null | undefined) {
+function formatMoney(cents: number) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-  }).format(Number(cents ?? 0) / 100);
+  }).format(cents / 100);
+}
+
+function formatDate(value: string) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "Unknown" : date.toLocaleString();
 }
