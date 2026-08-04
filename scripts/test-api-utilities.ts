@@ -14,6 +14,12 @@ import {
   validateCompletedCommerceCheckout,
   type CompletedCommerceCheckoutInput,
 } from "../lib/payments/commerce-checkout-integrity";
+import {
+  buildCommerceRefundOperationId,
+  commerceRefundEligibilityError,
+  commerceRefundStatusFromStripe,
+  normalizeCommerceRefundStatus,
+} from "../lib/payments/commerce-refund-integrity";
 import { normalizeTimestamp, normalizeTimestampOrEpoch } from "../lib/timestamps";
 
 async function testRequestParsing() {
@@ -239,15 +245,91 @@ function testCommerceLifecycleIntegrity() {
   );
 }
 
+function testCommerceRefundIntegrity() {
+  const valid = {
+    bookingStatus: "paid",
+    paymentStatus: "paid",
+    paymentIntentId: "pi_123",
+    paidAmountCents: 12_500,
+    refundStatus: "not_requested" as const,
+    expectedReference: "VI-STAY-ABC123",
+    confirmedReference: "VI-STAY-ABC123",
+  };
+
+  assert.equal(commerceRefundEligibilityError(valid), null);
+  assert.equal(
+    commerceRefundEligibilityError({
+      ...valid,
+      confirmedReference: "VI-STAY-WRONG",
+    }),
+    "Type the exact booking reference to authorize this refund.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, paymentStatus: "unpaid" }),
+    "Only a Stripe-verified paid booking can be refunded.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, paymentIntentId: "" }),
+    "This booking does not have a Stripe PaymentIntent to refund.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, paidAmountCents: 0 }),
+    "The captured payment amount is not valid for an automatic refund.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, bookingStatus: "requested" }),
+    "This booking is not in a refundable lifecycle state.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, refundStatus: "processing" }),
+    "A refund is already processing for this booking.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({ ...valid, refundStatus: "succeeded" }),
+    "This booking has already been refunded.",
+  );
+  assert.equal(
+    commerceRefundEligibilityError({
+      ...valid,
+      refundStatus: "review_required",
+    }),
+    "This booking requires manual financial review before another refund attempt.",
+  );
+
+  const operationInput = {
+    bookingId: "booking-123",
+    paymentIntentId: "pi_123",
+    paidAmountCents: 12_500,
+  };
+  const operationId = buildCommerceRefundOperationId(operationInput);
+  assert.match(operationId, /^[a-f0-9]{64}$/);
+  assert.equal(operationId, buildCommerceRefundOperationId(operationInput));
+  assert.notEqual(
+    operationId,
+    buildCommerceRefundOperationId({
+      ...operationInput,
+      paidAmountCents: 12_501,
+    }),
+  );
+
+  assert.equal(normalizeCommerceRefundStatus(undefined), "not_requested");
+  assert.equal(normalizeCommerceRefundStatus("processing"), "processing");
+  assert.equal(commerceRefundStatusFromStripe("pending"), "processing");
+  assert.equal(commerceRefundStatusFromStripe("succeeded"), "succeeded");
+  assert.equal(commerceRefundStatusFromStripe("failed"), "failed");
+  assert.equal(commerceRefundStatusFromStripe("canceled"), "failed");
+}
+
 async function main() {
   await testRequestParsing();
   testTimestampNormalization();
   testCommerceCheckoutIntegrity();
   testCommerceLifecycleIntegrity();
-  console.log("API and payment contract tests passed.");
+  testCommerceRefundIntegrity();
+  console.log("API, payment, and refund contract tests passed.");
 }
 
 main().catch((error: unknown) => {
-  console.error("API and payment contract tests failed.", error);
+  console.error("API, payment, and refund contract tests failed.", error);
   process.exitCode = 1;
 });
