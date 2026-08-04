@@ -12,6 +12,10 @@ export type CommerceRefundEventDecision =
   | "ignore_stale"
   | "review_multiple_refunds";
 
+export type CommerceRefundRequestFailureDisposition =
+  | "definitive_failure"
+  | "uncertain_result";
+
 export function commerceRefundEligibilityError(input: {
   bookingStatus: string;
   paymentStatus: string;
@@ -136,6 +140,30 @@ export function commerceRefundStatusFromStripe(value: unknown): CommerceRefundSt
   return "review_required";
 }
 
+export function commerceRefundRequestFailureDisposition(input: {
+  type?: unknown;
+  statusCode?: unknown;
+}): CommerceRefundRequestFailureDisposition {
+  const type = String(input.type ?? "");
+  const statusCode = Number(input.statusCode);
+
+  if (type === "StripeInvalidRequestError") {
+    return "definitive_failure";
+  }
+
+  if (
+    Number.isSafeInteger(statusCode) &&
+    statusCode >= 400 &&
+    statusCode < 500 &&
+    statusCode !== 409 &&
+    statusCode !== 429
+  ) {
+    return "definitive_failure";
+  }
+
+  return "uncertain_result";
+}
+
 export function commerceRefundEventDecision(input: {
   currentStatus: unknown;
   currentRefundId: unknown;
@@ -148,7 +176,8 @@ export function commerceRefundEventDecision(input: {
   if (
     currentRefundId &&
     currentRefundId !== input.incomingRefundId &&
-    currentStatus !== "not_requested"
+    currentStatus !== "not_requested" &&
+    currentStatus !== "failed"
   ) {
     return "review_multiple_refunds";
   }
