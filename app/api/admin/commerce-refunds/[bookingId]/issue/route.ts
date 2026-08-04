@@ -193,21 +193,28 @@ export async function POST(
     } catch (error) {
       const message = stripeErrorMessage(error);
       const now = new Date().toISOString();
-      await Promise.all([
-        operationRef.update({
-          status: "failed",
-          failureReason: message,
-          updatedAt: now,
-          serverUpdatedAt: FieldValue.serverTimestamp(),
-        }),
-        bookingRef.update({
-          paymentStatus: "refund_failed",
-          refundStatus: "failed",
-          refundFailureReason: message,
-          refundUpdatedAt: now,
-          updatedAt: now,
-        }),
-      ]);
+      const batch = db.batch();
+      batch.update(operationRef, {
+        status: "failed",
+        failureReason: message,
+        updatedAt: now,
+        serverUpdatedAt: FieldValue.serverTimestamp(),
+      });
+      batch.update(bookingRef, {
+        paymentStatus: "refund_failed",
+        refundStatus: "failed",
+        refundFailureReason: message,
+        refundUpdatedAt: now,
+        updatedAt: now,
+      });
+      writeOperationsReviewNotification(batch, db, {
+        reference: refundInput.reference,
+        listingName: refundInput.listingName,
+        amountCents: refundInput.paidAmountCents,
+        status: "failed",
+        now,
+      });
+      await batch.commit();
       return NextResponse.json(
         {
           error:
@@ -229,7 +236,9 @@ export async function POST(
       const bookingSnapshot = await transaction.get(bookingRef);
       if (!bookingSnapshot.exists) return;
       const booking = bookingSnapshot.data() ?? {};
-      const alreadySucceeded = booking.refundStatus === "succeeded";
+      const previousRefundStatus = String(
+        booking.refundStatus ?? "not_requested",
+      );
 
       transaction.update(operationRef, {
         refundId: refund.id,
@@ -256,11 +265,24 @@ export async function POST(
         updatedAt: now,
       });
 
-      if (finalStatus === "succeeded" && fullRefund && !alreadySucceeded) {
-        writeRefundNotifications(transaction, db, {
+      if (finalStatus === "succeeded" && fullRefund) {
+        if (previousRefundStatus !== "succeeded") {
+          writeRefundNotifications(transaction, db, {
+            reference: refundInput.reference,
+            listingName: refundInput.listingName,
+            amountCents: refund.amount,
+            now,
+          });
+        }
+      } else if (
+        (finalStatus === "failed" || finalStatus === "review_required") &&
+        previousRefundStatus !== finalStatus
+      ) {
+        writeOperationsReviewNotification(transaction, db, {
           reference: refundInput.reference,
           listingName: refundInput.listingName,
           amountCents: refund.amount,
+          status: finalStatus,
           now,
         });
       }
@@ -327,6 +349,34 @@ function writeRefundNotifications(
       serverCreatedAt: FieldValue.serverTimestamp(),
     });
   }
+}
+
+function writeOperationsReviewNotification(
+  writer: FirebaseFirestore.WriteBatch | FirebaseFirestore.Transaction,
+  db: FirebaseFirestore.Firestore,
+  input: {
+    reference: string;
+    listingName: string;
+    amountCents: number;
+    status: "failed" | "review_required";
+    now: string;
+  },
+) {
+  const notificationRef = db.collection("notifications").doc();
+  writer.set(notificationRef, {
+    audience: "operations",
+    kind: "booking",
+    priority: "high",
+    title:
+      input.status === "failed" ? "Refund failed" : "Refund requires action",
+    message: `${formatMoney(input.amountCents)} for ${input.listingName} booking ${input.reference} requires financial review.`,
+    href: "/admin/commerce-refunds",
+    reference: input.reference,
+    readAt: null,
+    createdAt: input.now,
+    updatedAt: input.now,
+    serverCreatedAt: FieldValue.serverTimestamp(),
+  });
 }
 
 function stripeErrorMessage(error: unknown) {
