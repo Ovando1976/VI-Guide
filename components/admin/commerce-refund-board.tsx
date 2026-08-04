@@ -3,6 +3,7 @@
 import {
   AlertTriangle,
   CheckCircle2,
+  Eye,
   Loader2,
   RefreshCcw,
   RotateCcw,
@@ -47,6 +48,7 @@ export function CommerceRefundBoard() {
     failed: 0,
     refunded: 0,
   });
+  const [canIssueRefunds, setCanIssueRefunds] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -58,6 +60,7 @@ export function CommerceRefundBoard() {
       });
       const payload = (await response.json().catch(() => null)) as
         | {
+            canIssueRefunds?: boolean;
             bookings?: RefundBooking[];
             counts?: RefundCounts;
             error?: string;
@@ -66,6 +69,7 @@ export function CommerceRefundBoard() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load refund operations.");
       }
+      setCanIssueRefunds(payload?.canIssueRefunds === true);
       setBookings(payload?.bookings ?? []);
       setCounts(
         payload?.counts ?? {
@@ -120,6 +124,12 @@ export function CommerceRefundBoard() {
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
             Automatic actions are limited to the complete captured amount. Partial refunds, mismatched payments, and uncertain states are held for manual review.
           </div>
+          {!loading && !canIssueRefunds ? (
+            <div className="mt-3 flex max-w-3xl items-start gap-3 rounded-2xl border border-sky-300/20 bg-sky-300/10 p-4 text-xs font-semibold leading-5 text-sky-50">
+              <Eye className="mt-0.5 h-4 w-4 shrink-0" />
+              Dispatcher access is read-only. Only an administrator can authorize a Stripe refund.
+            </div>
+          ) : null}
         </section>
 
         <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -142,12 +152,19 @@ export function CommerceRefundBoard() {
             </div>
           ) : bookings.length ? (
             bookings.map((booking) => (
-              <RefundCard key={booking.id} booking={booking} onUpdated={load} />
+              <RefundCard
+                key={booking.id}
+                booking={booking}
+                canIssueRefunds={canIssueRefunds}
+                onUpdated={load}
+              />
             ))
           ) : (
             <div className="rounded-[30px] border border-slate-200 bg-white p-10 text-center shadow-sm">
               <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-700" />
-              <h2 className="mt-4 text-2xl font-black">No paid bookings in the refund queue</h2>
+              <h2 className="mt-4 text-2xl font-black">
+                No paid bookings in the refund queue
+              </h2>
               <p className="mt-2 text-sm font-semibold text-slate-500">
                 Stripe-verified paid commerce bookings will appear here automatically.
               </p>
@@ -161,23 +178,27 @@ export function CommerceRefundBoard() {
 
 function RefundCard({
   booking,
+  canIssueRefunds,
   onUpdated,
 }: {
   booking: RefundBooking;
+  canIssueRefunds: boolean;
   onUpdated: () => Promise<void>;
 }) {
   const [reason, setReason] = useState(booking.refundReason ?? "");
   const [confirmation, setConfirmation] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const refundable =
+  const eligiblePayment =
     booking.paymentStatus === "paid" &&
     !["processing", "succeeded", "review_required"].includes(
       booking.refundStatus,
     );
+  const refundable = canIssueRefunds && eligiblePayment;
   const confirmed = confirmation.trim() === booking.reference;
 
   async function issueRefund() {
+    if (!canIssueRefunds) return;
     setSubmitting(true);
     setError(null);
     try {
@@ -231,7 +252,10 @@ function RefundCard({
 
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
         <Detail label="Captured" value={formatMoney(booking.paidAmountCents)} />
-        <Detail label="Booking status" value={booking.status.replaceAll("_", " ")} />
+        <Detail
+          label="Booking status"
+          value={booking.status.replaceAll("_", " ")}
+        />
         <Detail
           label="Stripe payment"
           value={booking.paymentIntentId ?? "Missing PaymentIntent"}
@@ -268,6 +292,12 @@ function RefundCard({
               This issues a full {formatMoney(booking.paidAmountCents)} refund through Stripe.
             </span>
           </label>
+        </div>
+      ) : null}
+
+      {!canIssueRefunds && eligiblePayment ? (
+        <div className="mt-5 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm font-bold text-sky-900">
+          This payment is eligible for review. An administrator must authorize the refund.
         </div>
       ) : null}
 
