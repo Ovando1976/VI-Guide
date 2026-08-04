@@ -145,12 +145,13 @@ export async function POST(request: NextRequest) {
         throw new CheckoutStateChangedError();
       }
 
+      const updatedAt = new Date().toISOString();
       transaction.update(bookingRef, {
         checkoutSessionId: session.id,
         paymentHref: session.url,
         paymentStatus: "pending",
-        checkoutCreatedAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        checkoutCreatedAt: updatedAt,
+        updatedAt,
       });
     });
   } catch (error) {
