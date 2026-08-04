@@ -1,4 +1,4 @@
-import { TravelerWorkspace } from "@/components/traveler/traveler-workspace";
+import { SyncedTravelerWorkspace } from "@/components/traveler/synced-traveler-workspace";
 
 export const metadata = {
   title: "Traveler Workspace | VI Guide",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function TravelerWorkspacePage() {
-  return <TravelerWorkspace />;
+  return <SyncedTravelerWorkspace />;
 }
