@@ -207,13 +207,16 @@ export async function POST(
         refundUpdatedAt: now,
         updatedAt: now,
       });
-      writeOperationsReviewNotification(batch, db, {
-        reference: refundInput.reference,
-        listingName: refundInput.listingName,
-        amountCents: refundInput.paidAmountCents,
-        status: "failed",
-        now,
-      });
+      batch.set(
+        db.collection("notifications").doc(),
+        operationsReviewNotificationData({
+          reference: refundInput.reference,
+          listingName: refundInput.listingName,
+          amountCents: refundInput.paidAmountCents,
+          status: "failed",
+          now,
+        }),
+      );
       await batch.commit();
       return NextResponse.json(
         {
@@ -278,13 +281,16 @@ export async function POST(
         (finalStatus === "failed" || finalStatus === "review_required") &&
         previousRefundStatus !== finalStatus
       ) {
-        writeOperationsReviewNotification(transaction, db, {
-          reference: refundInput.reference,
-          listingName: refundInput.listingName,
-          amountCents: refund.amount,
-          status: finalStatus,
-          now,
-        });
+        transaction.set(
+          db.collection("notifications").doc(),
+          operationsReviewNotificationData({
+            reference: refundInput.reference,
+            listingName: refundInput.listingName,
+            amountCents: refund.amount,
+            status: finalStatus,
+            now,
+          }),
+        );
       }
     });
 
@@ -351,19 +357,14 @@ function writeRefundNotifications(
   }
 }
 
-function writeOperationsReviewNotification(
-  writer: FirebaseFirestore.WriteBatch | FirebaseFirestore.Transaction,
-  db: FirebaseFirestore.Firestore,
-  input: {
-    reference: string;
-    listingName: string;
-    amountCents: number;
-    status: "failed" | "review_required";
-    now: string;
-  },
-) {
-  const notificationRef = db.collection("notifications").doc();
-  writer.set(notificationRef, {
+function operationsReviewNotificationData(input: {
+  reference: string;
+  listingName: string;
+  amountCents: number;
+  status: "failed" | "review_required";
+  now: string;
+}) {
+  return {
     audience: "operations",
     kind: "booking",
     priority: "high",
@@ -376,7 +377,7 @@ function writeOperationsReviewNotification(
     createdAt: input.now,
     updatedAt: input.now,
     serverCreatedAt: FieldValue.serverTimestamp(),
-  });
+  };
 }
 
 function stripeErrorMessage(error: unknown) {
