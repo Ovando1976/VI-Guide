@@ -13,6 +13,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import { ItineraryTimeline } from "@/components/intelligence/itinerary-timeline";
+import { LiveMissionStatus } from "@/components/traveler/live-mission-status";
 import { MissionExecutionControls } from "@/components/traveler/mission-execution-controls";
 import { ProactiveMissionGuide } from "@/components/traveler/proactive-mission-guide";
 import {
@@ -151,6 +152,8 @@ export function TravelerWorkspace() {
             </section>
           ) : (
             <>
+              <LiveMissionStatus journey={active} currentStop={currentStop} />
+
               <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
                 <div className="flex items-center justify-between gap-3">
                   <div>
