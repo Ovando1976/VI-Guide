@@ -9,6 +9,7 @@ import {
   buildCommerceRefundOperationId,
   commerceRefundEligibilityError,
   commerceRefundEventDecision,
+  commerceRefundRequestFailureDisposition,
   commerceRefundStatusFromStripe,
   normalizeCommerceRefundStatus,
   type CommerceRefundStatus,
@@ -226,9 +227,14 @@ export async function POST(
         },
       );
     } catch (error) {
+      const candidate =
+        error && typeof error === "object"
+          ? (error as { type?: unknown; statusCode?: unknown })
+          : {};
+      const disposition = commerceRefundRequestFailureDisposition(candidate);
       const message = stripeErrorMessage(error);
       const now = new Date().toISOString();
-      let markedFailed = false;
+      let recordedDisposition = false;
 
       await db.runTransaction(async (transaction) => {
         const [bookingSnapshot, operationSnapshot] = await Promise.all([
@@ -254,16 +260,20 @@ export async function POST(
           return;
         }
 
+        const nextStatus: CommerceRefundStatus =
+          disposition === "definitive_failure" ? "failed" : "review_required";
         transaction.update(operationRef, {
-          status: "failed",
+          status: nextStatus,
+          failureDisposition: disposition,
           failureReason: message,
           failedAttemptNumber: refundInput.attemptNumber,
           updatedAt: now,
           serverUpdatedAt: FieldValue.serverTimestamp(),
         });
         transaction.update(bookingRef, {
-          paymentStatus: "refund_failed",
-          refundStatus: "failed",
+          paymentStatus:
+            disposition === "definitive_failure" ? "refund_failed" : "paid",
+          refundStatus: nextStatus,
           refundFailureReason: message,
           refundUpdatedAt: now,
           updatedAt: now,
@@ -274,18 +284,20 @@ export async function POST(
             reference: refundInput.reference,
             listingName: refundInput.listingName,
             amountCents: refundInput.paidAmountCents,
-            status: "failed",
+            status: nextStatus,
             now,
           }),
         );
-        markedFailed = true;
+        recordedDisposition = true;
       });
 
       return NextResponse.json(
         {
-          error: markedFailed
-            ? "Stripe could not complete this refund. The operation remains visible for retry."
-            : "Stripe returned an uncertain result. The refund remains in reconciliation and was not marked failed.",
+          error: !recordedDisposition
+            ? "Stripe returned an uncertain result. The refund remains in reconciliation and was not marked failed."
+            : disposition === "definitive_failure"
+              ? "Stripe rejected this refund. The operation remains visible for a reviewed retry."
+              : "Stripe did not confirm whether the refund was created. Operations must reconcile it before another attempt.",
         },
         { status: 502 },
       );
@@ -358,8 +370,13 @@ export async function POST(
       const previousRefundStatus = normalizeCommerceRefundStatus(
         booking.refundStatus,
       );
+      const previousRefundId = String(booking.refundId ?? "").trim();
       transaction.update(operationRef, {
         refundId: refund.id,
+        previousRefundId:
+          previousRefundId && previousRefundId !== refund.id
+            ? previousRefundId
+            : null,
         status: incomingStatus,
         refundAmountCents: refund.amount,
         fullRefund,
