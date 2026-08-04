@@ -6,7 +6,10 @@ export type CommerceBookingStatus =
   | "draft"
   | "requested"
   | "reviewing"
+  | "payment_required"
+  | "paid"
   | "confirmed"
+  | "completed"
   | "declined"
   | "cancelled";
 
@@ -31,6 +34,9 @@ export type CommerceBooking = CommerceBookingRequest & {
   id: string;
   status: CommerceBookingStatus;
   reference: string;
+  depositAmountCents?: number;
+  paidAmountCents?: number;
+  paymentHref?: string;
   createdAt: string;
   updatedAt: string;
 };
