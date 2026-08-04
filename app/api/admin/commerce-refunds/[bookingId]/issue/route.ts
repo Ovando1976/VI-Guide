@@ -18,10 +18,6 @@ export async function POST(
   request: NextRequest,
   { params }: { params: { bookingId: string } },
 ) {
-  let bookingRef: FirebaseFirestore.DocumentReference | null = null;
-  let operationRef: FirebaseFirestore.DocumentReference | null = null;
-  let operationId = "";
-
   try {
     const session = await requireSession(["admin"]);
     if (!hasFirebaseAdminConfiguration() || !process.env.STRIPE_SECRET_KEY) {
@@ -46,7 +42,7 @@ export async function POST(
     }
 
     const db = getAdminDb();
-    bookingRef = db.collection("commerceBookings").doc(bookingId);
+    const bookingRef = db.collection("commerceBookings").doc(bookingId);
     const initialSnapshot = await bookingRef.get();
     if (!initialSnapshot.exists) {
       return NextResponse.json({ error: "Booking not found." }, { status: 404 });
@@ -55,17 +51,17 @@ export async function POST(
     const initial = initialSnapshot.data() ?? {};
     const paymentIntentId = String(initial.paymentIntentId ?? "").trim();
     const paidAmountCents = Number(initial.paidAmountCents ?? 0);
-    operationId = buildCommerceRefundOperationId({
+    const operationId = buildCommerceRefundOperationId({
       bookingId,
       paymentIntentId,
       paidAmountCents,
     });
-    operationRef = db.collection("commerceRefundOperations").doc(operationId);
+    const operationRef = db.collection("commerceRefundOperations").doc(operationId);
 
     const refundInput = await db.runTransaction(async (transaction) => {
       const [bookingSnapshot, operationSnapshot] = await Promise.all([
-        transaction.get(bookingRef!),
-        transaction.get(operationRef!),
+        transaction.get(bookingRef),
+        transaction.get(operationRef),
       ]);
       if (!bookingSnapshot.exists) {
         throw new RefundActionError("Booking not found.", 404);
@@ -74,6 +70,16 @@ export async function POST(
       const booking = bookingSnapshot.data() ?? {};
       const currentPaymentIntentId = String(booking.paymentIntentId ?? "").trim();
       const currentPaidAmountCents = Number(booking.paidAmountCents ?? 0);
+      if (
+        currentPaymentIntentId !== paymentIntentId ||
+        currentPaidAmountCents !== paidAmountCents
+      ) {
+        throw new RefundActionError(
+          "The captured payment changed before the refund was authorized. Refresh and review the booking again.",
+          409,
+        );
+      }
+
       const reference = String(booking.reference ?? bookingId);
       const existingOperation = operationSnapshot.data() ?? {};
       const existingStatus = normalizeCommerceRefundStatus(
@@ -127,7 +133,7 @@ export async function POST(
 
       const now = new Date().toISOString();
       transaction.set(
-        operationRef!,
+        operationRef,
         {
           bookingId,
           bookingReference: reference,
@@ -141,15 +147,14 @@ export async function POST(
           status: "processing",
           requestedBy: session.uid,
           requestedByEmail: session.email ?? null,
-          requestedAt:
-            existingOperation.requestedAt ?? now,
+          requestedAt: existingOperation.requestedAt ?? now,
           updatedAt: now,
           serverUpdatedAt: FieldValue.serverTimestamp(),
           attemptCount: Number(existingOperation.attemptCount ?? 0) + 1,
         },
         { merge: true },
       );
-      transaction.update(bookingRef!, {
+      transaction.update(bookingRef, {
         paymentStatus: "refund_pending",
         refundStatus: "processing",
         refundOperationId: operationId,
@@ -166,7 +171,6 @@ export async function POST(
         listingName: String(booking.listingName ?? "VI Guide booking"),
         paymentIntentId: currentPaymentIntentId,
         paidAmountCents: currentPaidAmountCents,
-        originalBookingStatus: String(booking.status ?? "paid"),
       };
     });
 
@@ -205,7 +209,10 @@ export async function POST(
         }),
       ]);
       return NextResponse.json(
-        { error: "Stripe could not complete this refund. The operation remains visible for review." },
+        {
+          error:
+            "Stripe could not complete this refund. The operation remains visible for review.",
+        },
         { status: 502 },
       );
     }
@@ -218,13 +225,13 @@ export async function POST(
         : stripeStatus;
     const now = new Date().toISOString();
 
-    await getAdminDb().runTransaction(async (transaction) => {
-      const bookingSnapshot = await transaction.get(bookingRef!);
+    await db.runTransaction(async (transaction) => {
+      const bookingSnapshot = await transaction.get(bookingRef);
       if (!bookingSnapshot.exists) return;
       const booking = bookingSnapshot.data() ?? {};
       const alreadySucceeded = booking.refundStatus === "succeeded";
 
-      transaction.update(operationRef!, {
+      transaction.update(operationRef, {
         refundId: refund.id,
         status: finalStatus,
         refundAmountCents: refund.amount,
@@ -233,12 +240,14 @@ export async function POST(
         updatedAt: now,
         serverUpdatedAt: FieldValue.serverTimestamp(),
       });
-      transaction.update(bookingRef!, {
+      transaction.update(bookingRef, {
         ...(finalStatus === "succeeded" && fullRefund
           ? { status: "cancelled", paymentStatus: "refunded" }
           : finalStatus === "failed"
             ? { paymentStatus: "refund_failed" }
-            : { paymentStatus: "refund_pending" }),
+            : finalStatus === "review_required"
+              ? { paymentStatus: "paid" }
+              : { paymentStatus: "refund_pending" }),
         refundStatus: finalStatus,
         refundId: refund.id,
         refundAmountCents: refund.amount,
@@ -248,11 +257,10 @@ export async function POST(
       });
 
       if (finalStatus === "succeeded" && fullRefund && !alreadySucceeded) {
-        writeRefundNotifications(transaction, getAdminDb(), {
+        writeRefundNotifications(transaction, db, {
           reference: refundInput.reference,
           listingName: refundInput.listingName,
           amountCents: refund.amount,
-          outcome: "succeeded",
           now,
         });
       }
@@ -295,7 +303,6 @@ function writeRefundNotifications(
     reference: string;
     listingName: string;
     amountCents: number;
-    outcome: "succeeded";
     now: string;
   },
 ) {
