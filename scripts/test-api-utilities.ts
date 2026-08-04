@@ -343,6 +343,10 @@ function testCommerceRefundIntegrity() {
     "This booking has already been refunded.",
   );
   assert.equal(
+    commerceRefundEligibilityError({ ...valid, refundStatus: "failed" }),
+    "This refund failed and requires manual financial review before another attempt.",
+  );
+  assert.equal(
     commerceRefundEligibilityError({
       ...valid,
       refundStatus: "review_required",
