@@ -3,6 +3,7 @@ import { ExternalLink, Map, Navigation, Sparkles } from "lucide-react";
 
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
 type Props = {
@@ -24,9 +25,12 @@ export function PlaceActionBar({
   journeyStop,
   className = "",
 }: Props) {
-  const conciergeHref = `/map?concierge=open&prompt=${encodeURIComponent(
-    `Plan a complete island experience around ${name} on ${island}, including transportation, nearby places, timing, and a backup option.`,
-  )}`;
+  const conciergeHref = buildContextualConciergeHref({
+    name,
+    island,
+    mapHref,
+    prompt: `Plan a complete island experience around ${name} on ${island}, including transportation, nearby places, timing, and a backup option.`,
+  });
   const fallbackJourneyStop = buildFallbackJourneyStop({
     name,
     island,
