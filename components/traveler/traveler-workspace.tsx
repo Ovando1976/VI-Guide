@@ -13,6 +13,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import { ItineraryTimeline } from "@/components/intelligence/itinerary-timeline";
+import { MissionExecutionControls } from "@/components/traveler/mission-execution-controls";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
   buildJourneyMapHref,
@@ -51,7 +52,7 @@ export function TravelerWorkspace() {
   const active = plans[0] ?? null;
   const currentStop = active?.plan[0] ?? null;
   const progress = useMemo(() => {
-    if (!active?.plan.length) return 0;
+    if (!active?.plan.length) return active?.status === "ready" ? 100 : 0;
     return active.status === "ready" ? Math.min(25, Math.round(100 / active.plan.length)) : 0;
   }, [active]);
 
@@ -96,6 +97,7 @@ export function TravelerWorkspace() {
     );
   }
 
+  const missionComplete = active.status === "ready" && active.plan.length === 0;
   const mapHref = buildJourneyMapHref(active);
   const conciergePrompt = encodeURIComponent(
     `Continue my active mission ${active.title} on ${ISLANDS[active.island]}. Review the itinerary, focus on ${currentStop?.title ?? "the next useful stop"}, transportation, timing, reservations, and a backup option.`,
@@ -126,7 +128,7 @@ export function TravelerWorkspace() {
             <div className="h-2 rounded-full bg-[#f5c451] transition-all" style={{ width: `${progress}%` }} />
           </div>
           <div className="mt-2 flex justify-between text-[9px] font-black uppercase tracking-[.15em] text-white/45">
-            <span>{active.status === "ready" ? "Mission ready" : "Draft journey"}</span>
+            <span>{missionComplete ? "Mission complete" : active.status === "ready" ? "Mission ready" : "Draft journey"}</span>
             <span>{progress}% underway</span>
           </div>
         </div>
@@ -134,35 +136,53 @@ export function TravelerWorkspace() {
 
       <section className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[1.15fr_.85fr]">
         <div className="space-y-6">
-          <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">Current stop</p>
-                <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">{currentStop?.title ?? "Choose the next stop"}</h2>
+          {missionComplete ? (
+            <section className="rounded-[32px] border border-emerald-200 bg-emerald-50 p-7 text-center shadow-sm">
+              <CheckCircle2 className="mx-auto h-11 w-11 text-emerald-700" />
+              <h2 className="mt-4 text-3xl font-black tracking-[-.04em]">Mission complete</h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm font-semibold leading-6 text-emerald-900/70">
+                Every active stop has been completed or skipped. The mission history remains saved in your journey notes.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Link href="/mission" className="rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white">Start another mission</Link>
+                <Link href="/planner" className="rounded-full border border-emerald-200 bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.16em]">Review journey</Link>
               </div>
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#e8f5f2] text-teal-700"><MapPin size={21} /></span>
-            </div>
-            <p className="mt-4 text-sm font-semibold leading-6 text-slate-600">
-              {currentStop?.summary || "Open the planner or Concierge to add the first destination to this mission."}
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Link href={currentStop?.mapHref ?? mapHref} className="rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white">
-                <Navigation className="mr-2 inline h-4 w-4" /> Navigate
-              </Link>
-              {currentStop?.href ? (
-                <Link href={currentStop.href} className="rounded-full border border-slate-200 px-5 py-3 text-[10px] font-black uppercase tracking-[.16em]">
-                  View place
-                </Link>
-              ) : null}
-              <Link href={`/map?concierge=open&prompt=${conciergePrompt}`} className="rounded-full border border-slate-200 px-5 py-3 text-[10px] font-black uppercase tracking-[.16em]">
-                Ask about this stop
-              </Link>
-            </div>
-          </section>
+            </section>
+          ) : (
+            <>
+              <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">Current stop</p>
+                    <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">{currentStop?.title ?? "Choose the next stop"}</h2>
+                  </div>
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#e8f5f2] text-teal-700"><MapPin size={21} /></span>
+                </div>
+                <p className="mt-4 text-sm font-semibold leading-6 text-slate-600">
+                  {currentStop?.summary || "Open the planner or Concierge to add the first destination to this mission."}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Link href={currentStop?.mapHref ?? mapHref} className="rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white">
+                    <Navigation className="mr-2 inline h-4 w-4" /> Navigate
+                  </Link>
+                  {currentStop?.href ? (
+                    <Link href={currentStop.href} className="rounded-full border border-slate-200 px-5 py-3 text-[10px] font-black uppercase tracking-[.16em]">
+                      View place
+                    </Link>
+                  ) : null}
+                  <Link href={`/map?concierge=open&prompt=${conciergePrompt}`} className="rounded-full border border-slate-200 px-5 py-3 text-[10px] font-black uppercase tracking-[.16em]">
+                    Ask about this stop
+                  </Link>
+                </div>
+              </section>
 
-          <section className="rounded-[32px] bg-[#06131b] p-4 shadow-xl sm:p-6">
-            <ItineraryTimeline plan={active.plan} onSelectStop={openStop} />
-          </section>
+              <MissionExecutionControls journey={active} currentStop={currentStop} />
+
+              <section className="rounded-[32px] bg-[#06131b] p-4 shadow-xl sm:p-6">
+                <ItineraryTimeline plan={active.plan} onSelectStop={openStop} />
+              </section>
+            </>
+          )}
         </div>
 
         <aside className="space-y-6">
@@ -199,7 +219,7 @@ export function TravelerWorkspace() {
 
           <section className="grid grid-cols-3 gap-3">
             <Metric icon={Clock3} label="Stops" value={String(active.plan.length)} />
-            <Metric icon={CheckCircle2} label="Status" value={active.status === "ready" ? "Ready" : "Draft"} />
+            <Metric icon={CheckCircle2} label="Status" value={missionComplete ? "Done" : active.status === "ready" ? "Ready" : "Draft"} />
             <Metric icon={MapPin} label="Island" value={active.island.toUpperCase()} />
           </section>
         </aside>
