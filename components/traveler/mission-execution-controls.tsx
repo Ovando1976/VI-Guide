@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2, FastForward, Navigation, RefreshCcw } from "lucide-react";
+import { CheckCircle2, FastForward, MapPinCheck, Navigation, RefreshCcw } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import {
@@ -10,6 +10,11 @@ import {
   upsertJourneyPlan,
   type JourneyPlan,
 } from "@/lib/journey-planner";
+import {
+  clearMissionStage,
+  writeMissionStage,
+  type MissionStage,
+} from "@/lib/mission-orchestration";
 import type { IntelligencePlanStop } from "@/types/intelligence";
 
 export function MissionExecutionControls({
@@ -26,6 +31,11 @@ export function MissionExecutionControls({
     return currentStop.mapHref ?? buildJourneyMapHref(journey);
   }, [currentStop, journey]);
 
+  function setStage(stage: MissionStage, confirmation: string) {
+    writeMissionStage(journey.id, stage);
+    setMessage(confirmation);
+  }
+
   function advance(action: "completed" | "skipped") {
     const latest = readJourneyPlans().find((plan) => plan.id === journey.id) ?? journey;
     if (!latest.plan.length) return;
@@ -40,6 +50,7 @@ export function MissionExecutionControls({
       updatedAt: new Date().toISOString(),
     };
 
+    clearMissionStage(journey.id);
     upsertJourneyPlan(next);
     setMessage(
       remaining.length
@@ -70,13 +81,22 @@ export function MissionExecutionControls({
         ) : null}
       </div>
 
-      <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
         <Link
           href={navigationHref}
+          onClick={() => setStage("en_route", `En route to ${currentStop?.title ?? "the next stop"}.`)}
           className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-[#043331] px-4 text-[10px] font-black uppercase tracking-[.15em] text-white"
         >
-          <Navigation size={15} /> Navigate
+          <Navigation size={15} /> Start navigation
         </Link>
+        <button
+          type="button"
+          disabled={!currentStop}
+          onClick={() => setStage("arrived", `Arrived at ${currentStop?.title}.`)}
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-sky-100 px-4 text-[10px] font-black uppercase tracking-[.15em] text-sky-900 disabled:opacity-40"
+        >
+          <MapPinCheck size={15} /> Mark arrived
+        </button>
         <button
           type="button"
           disabled={!currentStop}
