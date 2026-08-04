@@ -6,11 +6,16 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import {
+  isMerchantCommerceTransition,
+  merchantCommerceTransitionError,
+  normalizeCommerceLifecycleStatus,
+} from "@/lib/payments/commerce-booking-lifecycle";
+import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 import type {
   CommerceBooking,
   CommerceBookingStatus,
 } from "@/types/commerce-booking";
-import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -90,31 +95,68 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    const reference = getAdminDb().collection(reviewSource).doc(bookingId);
-    const snapshot = await reference.get();
-    if (!snapshot.exists) {
-      return NextResponse.json({ error: "Booking not found." }, { status: 404 });
-    }
+    const db = getAdminDb();
+    const reference = db.collection(reviewSource).doc(bookingId);
+    await db.runTransaction(async (transaction) => {
+      const snapshot = await transaction.get(reference);
+      if (!snapshot.exists) {
+        throw new ReviewTransitionError("Booking not found.", 404);
+      }
 
-    await reference.update({
-      status,
-      internalNote,
-      reviewedBy: session.uid,
-      reviewedByEmail: session.email ?? null,
-      reviewedAt: new Date().toISOString(),
-      serverReviewedAt: FieldValue.serverTimestamp(),
-      updatedAt: new Date().toISOString(),
+      const data = snapshot.data() ?? {};
+      if (reviewSource === "commerceBookings") {
+        if (!isMerchantCommerceTransition(status)) {
+          throw new ReviewTransitionError(
+            "Commerce bookings cannot be reset or marked paid from the review queue.",
+            409,
+          );
+        }
+        const transitionError = merchantCommerceTransitionError({
+          currentStatus: normalizeCommerceLifecycleStatus(data.status),
+          nextStatus: status,
+          depositAmountCents: Number(data.depositAmountCents ?? 0),
+          hasActiveCheckout: Boolean(
+            String(data.checkoutSessionId ?? "").trim(),
+          ),
+        });
+        if (transitionError) {
+          throw new ReviewTransitionError(transitionError, 409);
+        }
+      }
+
+      const now = new Date().toISOString();
+      transaction.update(reference, {
+        status,
+        internalNote,
+        reviewedBy: session.uid,
+        reviewedByEmail: session.email ?? null,
+        reviewedAt: now,
+        serverReviewedAt: FieldValue.serverTimestamp(),
+        updatedAt: now,
+      });
     });
 
     return NextResponse.json({ ok: true, bookingId, status });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
+    if (error instanceof ReviewTransitionError) {
+      return NextResponse.json({ error: error.message }, { status: error.status });
+    }
     console.error("commerce booking review update error", error);
     return NextResponse.json(
       { error: "Unable to update this booking request." },
       { status: 500 },
     );
+  }
+}
+
+class ReviewTransitionError extends Error {
+  constructor(
+    message: string,
+    public status: 404 | 409,
+  ) {
+    super(message);
   }
 }
 
