@@ -36,6 +36,7 @@ export function merchantCommerceTransitionError(input: {
   currentStatus: CommerceLifecycleStatus;
   nextStatus: MerchantCommerceTransition;
   depositAmountCents: number;
+  hasActiveCheckout?: boolean;
 }) {
   if (!MERCHANT_TRANSITIONS[input.currentStatus].includes(input.nextStatus)) {
     if (input.currentStatus === "paid" && input.nextStatus === "cancelled") {
@@ -55,6 +56,14 @@ export function merchantCommerceTransitionError(input: {
     (!Number.isSafeInteger(input.depositAmountCents) || input.depositAmountCents <= 0)
   ) {
     return "Enter a valid deposit amount before requesting payment.";
+  }
+
+  if (
+    input.currentStatus === "payment_required" &&
+    input.hasActiveCheckout &&
+    (input.nextStatus === "declined" || input.nextStatus === "cancelled")
+  ) {
+    return "Expire the active Stripe Checkout Session before closing this booking.";
   }
 
   return null;
