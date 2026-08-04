@@ -1,24 +1,42 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  Accessibility,
+  Anchor,
   BedDouble,
   CalendarCheck,
   Car,
+  Clock3,
   Compass,
+  Fish,
+  History,
   Map,
   MessageCircleMore,
+  Music2,
+  ParkingCircle,
   ShieldCheck,
+  ShoppingBag,
   Sparkles,
+  Ticket,
   UtensilsCrossed,
   Waves,
 } from "lucide-react";
 
 export type PlaceCapability =
+  | "accessibility"
   | "booking"
   | "concierge"
   | "dining"
+  | "events"
   | "explore"
+  | "fishing"
+  | "history"
   | "map"
+  | "music"
+  | "parking"
+  | "shopping"
   | "stay"
+  | "tickets"
+  | "timing"
   | "transportation"
   | "verified"
   | "water";
@@ -30,6 +48,11 @@ type CapabilityDefinition = {
 };
 
 const CAPABILITIES: Record<PlaceCapability, CapabilityDefinition> = {
+  accessibility: {
+    icon: Accessibility,
+    label: "Accessibility",
+    description: "Review mobility, access, and arrival considerations.",
+  },
   booking: {
     icon: CalendarCheck,
     label: "Booking",
@@ -45,20 +68,60 @@ const CAPABILITIES: Record<PlaceCapability, CapabilityDefinition> = {
     label: "Dining",
     description: "Discover food and drink options connected to this stop.",
   },
+  events: {
+    icon: CalendarCheck,
+    label: "Events",
+    description: "Connect this place with scheduled island experiences.",
+  },
   explore: {
     icon: Compass,
     label: "Nearby",
     description: "Find useful places and experiences around this location.",
+  },
+  fishing: {
+    icon: Fish,
+    label: "Fishing",
+    description: "Review access, target species, conditions, and regulations.",
+  },
+  history: {
+    icon: History,
+    label: "Local history",
+    description: "Explore the people, events, and stories tied to this place.",
   },
   map: {
     icon: Map,
     label: "Living Map",
     description: "Open this place inside the interactive map workspace.",
   },
+  music: {
+    icon: Music2,
+    label: "Live music",
+    description: "Look for performances and nightlife connected to this stop.",
+  },
+  parking: {
+    icon: ParkingCircle,
+    label: "Parking",
+    description: "Review parking and practical arrival options.",
+  },
+  shopping: {
+    icon: ShoppingBag,
+    label: "Shopping",
+    description: "Discover retail, markets, and local products nearby.",
+  },
   stay: {
     icon: BedDouble,
     label: "Stay",
     description: "Use this property as a base for an island itinerary.",
+  },
+  tickets: {
+    icon: Ticket,
+    label: "Tickets",
+    description: "Continue to admission, ticket, or reservation options.",
+  },
+  timing: {
+    icon: Clock3,
+    label: "Best timing",
+    description: "Plan the visit around hours, conditions, and travel time.",
   },
   transportation: {
     icon: Car,
