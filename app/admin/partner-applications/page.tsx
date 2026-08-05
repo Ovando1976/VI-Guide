@@ -1,0 +1,20 @@
+import { redirect } from "next/navigation";
+
+import { PartnerApplicationBoard } from "@/components/admin/partner-application-board";
+import { getSession } from "@/lib/auth-server";
+
+export const metadata = {
+  title: "Partner Applications | VI Guide",
+  description:
+    "Review and approve U.S. Virgin Islands businesses applying for VI Guide merchant tools.",
+};
+
+export default async function PartnerApplicationsPage() {
+  const session = await getSession();
+  if (!session) redirect("/login?next=/admin/partner-applications");
+  if (!["admin", "dispatcher"].includes(session.role)) {
+    redirect("/unauthorized");
+  }
+
+  return <PartnerApplicationBoard />;
+}
