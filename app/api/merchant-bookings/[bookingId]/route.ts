@@ -40,6 +40,8 @@ export async function PATCH(
         }
       | null;
     const requestedStatus = clean(body?.status, 40);
+    const hasMerchantNote = hasOwn(body, "merchantNote");
+    const hasProposedTime = hasOwn(body, "proposedTime");
     const merchantNote = clean(body?.merchantNote, 1200);
     const proposedTime = clean(body?.proposedTime, 40);
     const depositAmountCents = clampMoney(body?.depositAmountCents);
@@ -84,6 +86,12 @@ export async function PATCH(
       const listingName = String(booking.listingName ?? "VI Guide booking");
       const updatedAt = new Date().toISOString();
       const lifecycle = lifecycleCopy(status, listingName, depositAmountCents);
+      const resolvedMerchantNote = hasMerchantNote
+        ? merchantNote || null
+        : clean(booking.merchantNote, 1200) || null;
+      const resolvedProposedTime = hasProposedTime
+        ? proposedTime || null
+        : clean(booking.proposedTime, 40) || null;
       const paymentReset =
         status === "payment_required"
           ? {
@@ -107,8 +115,8 @@ export async function PATCH(
       transaction.update(bookingRef, {
         status,
         updatedAt,
-        merchantNote: merchantNote || null,
-        proposedTime: proposedTime || null,
+        merchantNote: resolvedMerchantNote,
+        proposedTime: resolvedProposedTime,
         merchantRespondedAt: updatedAt,
         ...paymentReset,
       });
@@ -136,8 +144,8 @@ export async function PATCH(
       return {
         id: bookingId,
         status,
-        merchantNote: merchantNote || null,
-        proposedTime: proposedTime || null,
+        merchantNote: resolvedMerchantNote,
+        proposedTime: resolvedProposedTime,
         depositAmountCents:
           status === "payment_required"
             ? depositAmountCents
@@ -147,7 +155,8 @@ export async function PATCH(
           status === "payment_required"
             ? "unpaid"
             : String(booking.paymentStatus ?? "unpaid"),
-        paymentHref: status === "payment_required" ? null : booking.paymentHref ?? null,
+        paymentHref:
+          status === "payment_required" ? null : booking.paymentHref ?? null,
         checkoutSessionId:
           status === "payment_required" ? null : booking.checkoutSessionId ?? null,
         updatedAt,
@@ -232,6 +241,14 @@ function formatMoney(cents: number) {
     style: "currency",
     currency: "USD",
   }).format(cents / 100);
+}
+
+function hasOwn(value: unknown, key: string) {
+  return Boolean(
+    value &&
+      typeof value === "object" &&
+      Object.prototype.hasOwnProperty.call(value, key),
+  );
 }
 
 function clean(value: unknown, maxLength: number) {
