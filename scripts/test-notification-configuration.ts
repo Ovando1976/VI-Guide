@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 
 import {
+  isValidSenderIdentity,
   normalizeConfigurationEmails,
   notificationConfigurationStatus,
 } from "../lib/notifications/notification-configuration";
@@ -12,6 +13,15 @@ assert.deepEqual(
   ["ops@example.com", "alerts@example.com"],
 );
 assert.deepEqual(normalizeConfigurationEmails(null), []);
+
+assert.equal(isValidSenderIdentity("bookings@example.com"), true);
+assert.equal(
+  isValidSenderIdentity("VI Guide <bookings@example.com>"),
+  true,
+);
+assert.equal(isValidSenderIdentity("VI Guide bookings@example.com"), false);
+assert.equal(isValidSenderIdentity("not-an-email"), false);
+assert.equal(isValidSenderIdentity("VI Guide <invalid>"), false);
 
 assert.deepEqual(
   notificationConfigurationStatus({
@@ -39,7 +49,7 @@ assert.deepEqual(
   notificationConfigurationStatus({
     firebaseAdminConfigured: false,
     resendApiKey: "",
-    emailFrom: null,
+    emailFrom: "not-an-email",
     operationsEmails: "invalid",
     cronSecret: "short",
     appUrl: "http://localhost:3000",
@@ -66,13 +76,24 @@ assert.deepEqual(
 assert.equal(
   notificationConfigurationStatus({
     firebaseAdminConfigured: true,
-    resendApiKey: "key",
+    resendApiKey: "re_test_key",
     emailFrom: "sender@example.com",
     operationsEmails: "ops@example.com",
     cronSecret: "1234567890abcdef",
     appUrl: "https://vi-guide.vercel.app/",
   }).appUrlConfigured,
   true,
+);
+assert.equal(
+  notificationConfigurationStatus({
+    firebaseAdminConfigured: true,
+    resendApiKey: "re_test_key",
+    emailFrom: "sender@example.com",
+    operationsEmails: "ops@example.com",
+    cronSecret: "1234567890abcdef",
+    appUrl: "https://vi-guide.vercel.app/path",
+  }).appUrlConfigured,
+  false,
 );
 
 console.log("Notification configuration tests passed.");
