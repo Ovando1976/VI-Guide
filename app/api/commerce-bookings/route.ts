@@ -5,6 +5,11 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import {
+  getUsviToday,
+  isBookableEndDate,
+  isBookableStartDate,
+} from "@/lib/booking/booking-dates";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
   CommerceBookingKind,
@@ -37,7 +42,7 @@ export async function POST(request: NextRequest) {
 
   if (!booking) {
     return NextResponse.json(
-      { error: "Please complete the required booking information." },
+      { error: "Please complete the required booking information with future travel dates." },
       { status: 400 },
     );
   }
@@ -86,21 +91,19 @@ function normalizeBooking(
     clean(body.listingHref, 500) || null,
     "https://vi-guide.local",
   );
+  const today = getUsviToday();
 
   if (
     !listingId ||
     !listingName ||
     !guestName ||
     !/^\S+@\S+\.\S+$/.test(email) ||
-    !/^\d{4}-\d{2}-\d{2}$/.test(startDate)
+    !isBookableStartDate(startDate, today)
   ) {
     return null;
   }
 
-  if (
-    kind === "accommodation" &&
-    (!/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate <= startDate)
-  ) {
+  if (kind === "accommodation" && !isBookableEndDate(startDate, endDate)) {
     return null;
   }
 
