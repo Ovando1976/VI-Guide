@@ -14,6 +14,7 @@ import {
   resolveMerchantOfferForBooking,
   type MerchantOfferBookingSnapshot,
 } from "@/lib/merchant-offer-booking";
+import { merchantOfferDemandPatch } from "@/lib/merchant-offer-demand";
 import { merchantOfferRequestDocumentId } from "@/lib/merchant-offer-request-id";
 import { normalizeMerchantOfferId } from "@/lib/merchant-offers";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
@@ -66,14 +67,17 @@ export async function POST(request: NextRequest) {
   try {
     const result = await db.runTransaction(async (transaction) => {
       let offerSnapshot: MerchantOfferBookingSnapshot | null = null;
+      let offerRef: FirebaseFirestore.DocumentReference | null = null;
+      let offerRecord: FirebaseFirestore.DocumentData | null = null;
       let bookingInput: Partial<CommerceBookingRequest> = body;
 
       if (offerId) {
-        const offerRef = db.collection("merchantOffers").doc(offerId);
+        offerRef = db.collection("merchantOffers").doc(offerId);
         const offerDocument = await transaction.get(offerRef);
+        offerRecord = offerDocument.exists ? offerDocument.data() ?? {} : null;
         const resolution = resolveMerchantOfferForBooking({
           offerId,
-          record: offerDocument.exists ? offerDocument.data() ?? {} : null,
+          record: offerRecord,
           now: requestNow,
         });
         if (!resolution.ok) {
@@ -162,6 +166,13 @@ export async function POST(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
         source: offerSnapshot ? "vi-guide-offer" : "vi-guide-web",
       });
+
+      if (offerSnapshot && offerRef && offerRecord) {
+        transaction.update(offerRef, {
+          ...merchantOfferDemandPatch(offerRecord, requestNow),
+          serverDemandUpdatedAt: FieldValue.serverTimestamp(),
+        });
+      }
 
       return {
         duplicate: false,
