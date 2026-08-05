@@ -50,7 +50,7 @@ assert.deepEqual(
     commercePlatformFeeBps: "bad",
     commerceFeePolicySource: "environment",
   }),
-  { feeBps: 0, source: "environment" },
+  { feeBps: 0, source: "unconfigured" },
 );
 
 assert.deepEqual(
