@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 
 import {
   merchantClaimsForUpdate,
+  merchantDirectoryRecordForUpdate,
   normalizeProvisioningEmail,
 } from "../lib/merchant-provisioning";
 
@@ -84,5 +85,55 @@ for (const role of ["admin", "dispatcher", "driver"] as const) {
   });
   assert.equal(protectedRole.ok, false);
 }
+
+assert.deepEqual(
+  merchantDirectoryRecordForUpdate({
+    uid: "merchant-uid",
+    email: " Merchant@Example.com ",
+    displayName: " Island Operator ",
+    enabled: true,
+    listingIds: [" hotel-one ", "hotel-one", "tour-two"],
+    updatedAt: "2026-08-05T16:08:00.000Z",
+  }),
+  {
+    uid: "merchant-uid",
+    email: "merchant@example.com",
+    displayName: "Island Operator",
+    enabled: true,
+    role: "merchant",
+    listingIds: ["hotel-one", "tour-two"],
+    updatedAt: "2026-08-05T16:08:00.000Z",
+  },
+);
+
+assert.deepEqual(
+  merchantDirectoryRecordForUpdate({
+    uid: "merchant-uid",
+    email: "merchant@example.com",
+    enabled: false,
+    listingIds: ["hotel-one"],
+    updatedAt: "2026-08-05T16:09:00.000Z",
+  }),
+  {
+    uid: "merchant-uid",
+    email: "merchant@example.com",
+    displayName: null,
+    enabled: false,
+    role: "rider",
+    listingIds: [],
+    updatedAt: "2026-08-05T16:09:00.000Z",
+  },
+);
+
+assert.equal(
+  merchantDirectoryRecordForUpdate({
+    uid: "merchant-uid",
+    email: "merchant@example.com",
+    enabled: true,
+    listingIds: [],
+    updatedAt: "2026-08-05T16:10:00.000Z",
+  }),
+  null,
+);
 
 console.log("Merchant provisioning tests passed.");
