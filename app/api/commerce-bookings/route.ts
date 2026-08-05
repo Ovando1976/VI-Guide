@@ -10,6 +10,7 @@ import {
   isBookableEndDate,
   isBookableStartDate,
 } from "@/lib/booking/booking-dates";
+import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import { normalizeBookingNotification } from "@/lib/notifications/booking-notification-outbox";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
   const db = getAdminDb();
   const document = db.collection("commerceBookings").doc();
   const batch = db.batch();
+  const notificationOutboxIds: string[] = [];
 
   batch.set(document, {
     ...booking,
@@ -112,6 +114,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    notificationOutboxIds.push(notification.id);
     batch.set(db.collection("notificationOutbox").doc(notification.id), {
       ...notification,
       serverCreatedAt: FieldValue.serverTimestamp(),
@@ -120,6 +123,12 @@ export async function POST(request: NextRequest) {
   }
 
   await batch.commit();
+
+  try {
+    await processBookingNotificationOutboxIds(db, notificationOutboxIds);
+  } catch (error) {
+    console.error("booking notification delivery attempt failed", error);
+  }
 
   return NextResponse.json(
     {
