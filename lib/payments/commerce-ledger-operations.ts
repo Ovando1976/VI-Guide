@@ -54,6 +54,7 @@ export function resolveStoredCommerceLedgerPolicy(
   return {
     feeBps: policy.feeBps,
     source:
+      policy.source === "environment" &&
       record.commerceFeePolicySource === "environment"
         ? "environment"
         : "unconfigured",
