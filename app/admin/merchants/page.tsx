@@ -37,8 +37,10 @@ export default async function MerchantAccessPage({
     <>
       {approvedPartner ? (
         <ApprovedPartnerOnboarding
+          applicationId={approvedPartner.applicationId}
           email={approvedPartner.email}
           listingId={approvedPartner.listingId}
+          convertedAt={approvedPartner.convertedAt}
         />
       ) : null}
       <MerchantAccessBoard />
@@ -63,8 +65,10 @@ async function findApprovedPartner(email: string, listingId: string) {
     if (listingId && approvedListingId !== listingId) continue;
 
     return {
+      applicationId: document.id,
       email,
       listingId: approvedListingId,
+      convertedAt: clean(data.merchantAccessGrantedAt, 50) || null,
     };
   }
 
