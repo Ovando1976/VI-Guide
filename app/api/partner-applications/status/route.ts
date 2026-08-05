@@ -5,10 +5,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
-import {
-  normalizePartnerApplicationStatus,
-  partnerApplicationDayKey,
-} from "@/lib/partners/partner-application";
+import { normalizePartnerApplicationStatus } from "@/lib/partners/partner-application";
 import {
   normalizePartnerApplicationReference,
   normalizePartnerStatusEmail,
@@ -18,6 +15,7 @@ import {
   partnerStatusLookupDayFingerprint,
   partnerStatusLookupQuotaAllows,
 } from "@/lib/partners/partner-application-status-intake";
+import { partnerTerritoryDayKey } from "@/lib/partners/partner-calendar";
 import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
@@ -46,7 +44,7 @@ export async function POST(request: NextRequest) {
   try {
     const db = getAdminDb();
     const now = new Date();
-    const dayKey = partnerApplicationDayKey(now);
+    const dayKey = partnerTerritoryDayKey(now);
     const lookupFingerprint = partnerStatusLookupDayFingerprint({
       email,
       dayKey,
