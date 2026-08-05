@@ -35,7 +35,6 @@ export function MerchantOperationsSummary() {
 
   const loadSummary = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
-    setError(null);
 
     try {
       const response = await fetch("/api/merchant-bookings", {
@@ -48,6 +47,7 @@ export function MerchantOperationsSummary() {
         throw new Error(payload?.error || "Unable to load business activity.");
       }
       setSummary(summarizeMerchantBookings(payload?.bookings));
+      setError(null);
     } catch (caught) {
       if (!silent) {
         setError(
@@ -63,8 +63,19 @@ export function MerchantOperationsSummary() {
 
   useEffect(() => {
     void loadSummary(false);
-    const timer = window.setInterval(() => void loadSummary(true), 30_000);
-    return () => window.clearInterval(timer);
+
+    function refreshWhenVisible() {
+      if (document.visibilityState === "visible") {
+        void loadSummary(true);
+      }
+    }
+
+    const timer = window.setInterval(refreshWhenVisible, 60_000);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+    };
   }, [loadSummary]);
 
   return (
