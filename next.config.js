@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Emit the minimal Node.js server used by the self-hosted container.
+  output: "standalone",
+
   // Keep development artifacts separate from production `.next` output.
   // Network-backed workspaces can otherwise return EIO when `next dev` tries
   // to reuse files emitted by `next build`.
