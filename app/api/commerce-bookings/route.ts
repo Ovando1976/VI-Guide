@@ -77,12 +77,14 @@ export async function POST(request: NextRequest) {
     },
     {
       audience: "merchant" as const,
+      recipientEmail: null,
       title: "New booking request",
       message: `${booking.guestName} requested ${booking.listingName} for ${booking.startDate}.`,
       href: "/merchant/reservations",
     },
     {
       audience: "operations" as const,
+      recipientEmail: null,
       title: "New booking request",
       message: `${booking.listingName} received booking request ${reference}.`,
       href: "/admin/operations",
@@ -97,7 +99,7 @@ export async function POST(request: NextRequest) {
       audience: input.audience,
       listingId: booking.listingId,
       listingName: booking.listingName,
-      recipientEmail: input.recipientEmail ?? null,
+      recipientEmail: input.recipientEmail,
       title: input.title,
       message: input.message,
       href: input.href,
