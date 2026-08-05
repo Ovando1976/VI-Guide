@@ -1,4 +1,10 @@
-import { FieldValue, type Firestore } from "firebase-admin/firestore";
+import { randomUUID } from "node:crypto";
+
+import {
+  FieldValue,
+  type DocumentReference,
+  type Firestore,
+} from "firebase-admin/firestore";
 
 import type { BookingNotificationAudience } from "@/lib/notifications/booking-notification-outbox";
 
@@ -21,6 +27,7 @@ type BookingNotificationDeliveryRecord = {
   status?: string;
   attempts?: number;
   nextAttemptAt?: string | null;
+  leaseId?: string | null;
   leaseUntil?: string | null;
 };
 
@@ -59,7 +66,10 @@ export function normalizeNotificationRecipients(value: unknown) {
 }
 
 export function notificationIsDue(
-  input: Pick<BookingNotificationDeliveryRecord, "status" | "nextAttemptAt" | "leaseUntil">,
+  input: Pick<
+    BookingNotificationDeliveryRecord,
+    "status" | "nextAttemptAt" | "leaseUntil"
+  >,
   now: Date = new Date(),
 ) {
   if (input.status === "delivered" || input.status === "failed") return false;
@@ -70,6 +80,13 @@ export function notificationIsDue(
 
   const nextAttemptAt = parseTime(input.nextAttemptAt);
   return !nextAttemptAt || nextAttemptAt <= nowMs;
+}
+
+export function notificationClaimIsCurrent(
+  input: Pick<BookingNotificationDeliveryRecord, "status" | "leaseId">,
+  leaseId: string,
+) {
+  return input.status === "processing" && input.leaseId === leaseId;
 }
 
 export async function processBookingNotificationOutboxIds(
@@ -92,30 +109,42 @@ export async function processDueBookingNotifications(
   limit = 20,
 ) {
   const safeLimit = Math.max(1, Math.min(50, Math.round(limit)));
-  const [pending, processing] = await Promise.all([
+  const now = new Date();
+  const nowIso = now.toISOString();
+
+  const [pending, expiredLeases] = await Promise.all([
     db
       .collection("notificationOutbox")
-      .where("status", "==", "pending")
-      .limit(safeLimit * 2)
+      .where("nextAttemptAt", "<=", nowIso)
+      .orderBy("nextAttemptAt", "asc")
+      .limit(safeLimit * 3)
       .get(),
     db
       .collection("notificationOutbox")
-      .where("status", "==", "processing")
-      .limit(safeLimit)
+      .where("leaseUntil", "<=", nowIso)
+      .orderBy("leaseUntil", "asc")
+      .limit(safeLimit * 2)
       .get(),
   ]);
 
-  const now = new Date();
-  const dueIds = [...pending.docs, ...processing.docs]
-    .filter((document) =>
-      notificationIsDue(
-        document.data() as BookingNotificationDeliveryRecord,
-        now,
-      ),
-    )
+  const dueDocuments = new Map<
+    string,
+    FirebaseFirestore.QueryDocumentSnapshot
+  >();
+
+  for (const document of [...pending.docs, ...expiredLeases.docs]) {
+    const data = document.data() as BookingNotificationDeliveryRecord;
+    if (notificationIsDue(data, now)) {
+      dueDocuments.set(document.id, document);
+    }
+  }
+
+  const dueIds = Array.from(dueDocuments.values())
     .sort((left, right) =>
-      String(left.data().nextAttemptAt ?? "").localeCompare(
-        String(right.data().nextAttemptAt ?? ""),
+      dueSortKey(
+        left.data() as BookingNotificationDeliveryRecord,
+      ).localeCompare(
+        dueSortKey(right.data() as BookingNotificationDeliveryRecord),
       ),
     )
     .slice(0, safeLimit)
@@ -129,6 +158,7 @@ async function attemptBookingNotificationDelivery(
   outboxId: string,
 ): Promise<DeliveryResult> {
   const outboxRef = db.collection("notificationOutbox").doc(outboxId);
+  const leaseId = randomUUID();
   const claimed = await db.runTransaction(async (transaction) => {
     const snapshot = await transaction.get(outboxRef);
     if (!snapshot.exists) return null;
@@ -138,18 +168,23 @@ async function attemptBookingNotificationDelivery(
     if (!notificationIsDue(data, now)) return null;
 
     const attempts = Math.max(0, Number(data.attempts ?? 0)) + 1;
+    const leaseUntil = new Date(
+      now.getTime() + DELIVERY_LEASE_MS,
+    ).toISOString();
     const claimedRecord: BookingNotificationDeliveryRecord = {
       ...data,
       id: outboxId,
       attempts,
       status: "processing",
-      leaseUntil: new Date(now.getTime() + DELIVERY_LEASE_MS).toISOString(),
+      leaseId,
+      leaseUntil,
     };
 
     transaction.update(outboxRef, {
       status: "processing",
       attempts,
-      leaseUntil: claimedRecord.leaseUntil,
+      leaseId,
+      leaseUntil,
       updatedAt: now.toISOString(),
       serverUpdatedAt: FieldValue.serverTimestamp(),
     });
@@ -164,23 +199,47 @@ async function attemptBookingNotificationDelivery(
   try {
     const recipients = await resolveRecipients(db, claimed);
     if (!recipients.length) {
-      await deferNotification(outboxRef, claimed, "recipient_unresolved", UNRESOLVED_RETRY_MS);
-      return {
-        outcome: "deferred",
-        id: outboxId,
-        reason: "recipient_unresolved",
-      };
+      const deferred = await deferNotification(
+        db,
+        outboxRef,
+        claimed,
+        "recipient_unresolved",
+        UNRESOLVED_RETRY_MS,
+      );
+      return deferred
+        ? {
+            outcome: "deferred",
+            id: outboxId,
+            reason: "recipient_unresolved",
+          }
+        : {
+            outcome: "skipped",
+            id: outboxId,
+            reason: "stale_delivery_claim",
+          };
     }
 
     const apiKey = process.env.RESEND_API_KEY?.trim();
     const from = process.env.VI_GUIDE_EMAIL_FROM?.trim();
     if (!apiKey || !from) {
-      await deferNotification(outboxRef, claimed, "email_provider_not_configured", UNRESOLVED_RETRY_MS);
-      return {
-        outcome: "deferred",
-        id: outboxId,
-        reason: "email_provider_not_configured",
-      };
+      const deferred = await deferNotification(
+        db,
+        outboxRef,
+        claimed,
+        "email_provider_not_configured",
+        UNRESOLVED_RETRY_MS,
+      );
+      return deferred
+        ? {
+            outcome: "deferred",
+            id: outboxId,
+            reason: "email_provider_not_configured",
+          }
+        : {
+            outcome: "skipped",
+            id: outboxId,
+            reason: "stale_delivery_claim",
+          };
     }
 
     const appUrl = safeAppUrl(process.env.VI_GUIDE_APP_URL);
@@ -223,24 +282,33 @@ async function attemptBookingNotificationDelivery(
     const deliveredAt = new Date().toISOString();
     const providerMessageId =
       typeof payload?.id === "string" ? payload.id.slice(0, 220) : null;
-    await outboxRef.update({
-      status: "delivered",
-      deliveredAt,
-      failedAt: null,
-      lastError: null,
-      nextAttemptAt: null,
-      leaseUntil: null,
-      provider: "resend",
-      providerMessageId,
-      updatedAt: deliveredAt,
-      serverUpdatedAt: FieldValue.serverTimestamp(),
-    });
+    const finalized = await finalizeClaimedNotification(
+      db,
+      outboxRef,
+      claimed,
+      {
+        status: "delivered",
+        deliveredAt,
+        failedAt: null,
+        lastError: null,
+        nextAttemptAt: null,
+        provider: "resend",
+        providerMessageId,
+        updatedAt: deliveredAt,
+      },
+    );
 
-    return {
-      outcome: "delivered",
-      id: outboxId,
-      providerMessageId,
-    };
+    return finalized
+      ? {
+          outcome: "delivered",
+          id: outboxId,
+          providerMessageId,
+        }
+      : {
+          outcome: "skipped",
+          id: outboxId,
+          reason: "stale_delivery_claim",
+        };
   } catch (error) {
     const reason = cleanError(
       error instanceof Error ? error.message : "notification_delivery_failed",
@@ -248,26 +316,34 @@ async function attemptBookingNotificationDelivery(
     const attempts = Math.max(1, Number(claimed.attempts ?? 1));
     const failed = attempts >= MAX_ATTEMPTS;
     const now = new Date();
+    const finalized = await finalizeClaimedNotification(
+      db,
+      outboxRef,
+      claimed,
+      {
+        status: failed ? "failed" : "pending",
+        failedAt: failed ? now.toISOString() : null,
+        lastError: reason,
+        nextAttemptAt: failed
+          ? null
+          : new Date(
+              now.getTime() + notificationRetryDelayMs(attempts),
+            ).toISOString(),
+        updatedAt: now.toISOString(),
+      },
+    );
 
-    await outboxRef.update({
-      status: failed ? "failed" : "pending",
-      failedAt: failed ? now.toISOString() : null,
-      lastError: reason,
-      nextAttemptAt: failed
-        ? null
-        : new Date(
-            now.getTime() + notificationRetryDelayMs(attempts),
-          ).toISOString(),
-      leaseUntil: null,
-      updatedAt: now.toISOString(),
-      serverUpdatedAt: FieldValue.serverTimestamp(),
-    });
-
-    return {
-      outcome: failed ? "failed" : "deferred",
-      id: outboxId,
-      reason,
-    };
+    return finalized
+      ? {
+          outcome: failed ? "failed" : "deferred",
+          id: outboxId,
+          reason,
+        }
+      : {
+          outcome: "skipped",
+          id: outboxId,
+          reason: "stale_delivery_claim",
+        };
   }
 }
 
@@ -287,37 +363,58 @@ async function resolveRecipients(
 
   const snapshot = await db
     .collection("merchantAccounts")
-    .where("enabled", "==", true)
-    .limit(100)
+    .where("listingIds", "array-contains", record.listingId)
+    .limit(50)
     .get();
 
   return normalizeNotificationRecipients(
     snapshot.docs
       .map((document) => document.data())
-      .filter((account) =>
-        Array.isArray(account.listingIds)
-          ? account.listingIds.includes(record.listingId)
-          : false,
-      )
+      .filter((account) => account.enabled === true)
       .map((account) => account.email),
   );
 }
 
 async function deferNotification(
-  ref: FirebaseFirestore.DocumentReference,
+  db: Firestore,
+  ref: DocumentReference,
   record: BookingNotificationDeliveryRecord,
   reason: string,
   delayMs: number,
 ) {
   const now = new Date();
-  await ref.update({
+  return finalizeClaimedNotification(db, ref, record, {
     status: "pending",
     lastError: reason,
     nextAttemptAt: new Date(now.getTime() + delayMs).toISOString(),
-    leaseUntil: null,
     updatedAt: now.toISOString(),
-    serverUpdatedAt: FieldValue.serverTimestamp(),
     attempts: Math.max(1, Number(record.attempts ?? 1)),
+  });
+}
+
+async function finalizeClaimedNotification(
+  db: Firestore,
+  ref: DocumentReference,
+  record: BookingNotificationDeliveryRecord,
+  patch: Record<string, unknown>,
+) {
+  const leaseId = record.leaseId;
+  if (!leaseId) return false;
+
+  return db.runTransaction(async (transaction) => {
+    const snapshot = await transaction.get(ref);
+    if (!snapshot.exists) return false;
+
+    const current = snapshot.data() as BookingNotificationDeliveryRecord;
+    if (!notificationClaimIsCurrent(current, leaseId)) return false;
+
+    transaction.update(ref, {
+      ...patch,
+      leaseId: null,
+      leaseUntil: null,
+      serverUpdatedAt: FieldValue.serverTimestamp(),
+    });
+    return true;
   });
 }
 
@@ -348,6 +445,13 @@ function safeAppUrl(value: unknown) {
     }
   }
   return "https://vi-guide.vercel.app";
+}
+
+function dueSortKey(record: BookingNotificationDeliveryRecord) {
+  return (
+    (record.status === "processing" ? record.leaseUntil : record.nextAttemptAt) ??
+    ""
+  );
 }
 
 function escapeHtml(value: unknown) {
