@@ -23,7 +23,7 @@ function PlannerLoading() {
         <div className="text-[10px] font-black uppercase tracking-[.22em] text-teal-700">
           VI Guide Planner
         </div>
-        <h1 className="mt-3 text-3xl font-black">Preparing your journey…</h1>
+        <h1 className="mt-3 text-3xl font-black">Loading your journey…</h1>
       </div>
     </main>
   );
