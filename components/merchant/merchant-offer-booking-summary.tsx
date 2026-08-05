@@ -9,10 +9,13 @@ import {
   ExternalLink,
   Loader2,
   RefreshCcw,
+  ShieldCheck,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { formatMerchantOfferMoney } from "@/lib/merchant-offers";
+
+type DepositSource = "offer" | "merchant_override" | "manual";
 
 type OfferBooking = {
   id: string;
@@ -25,6 +28,12 @@ type OfferBooking = {
   offerCompareAtCents: number | null;
   offerDepositCents: number | null;
   depositAmountCents: number | null;
+  depositSource: DepositSource | null;
+  offerDepositAmountCents: number | null;
+  offerDepositOverridden: boolean;
+  offerDepositOverrideCents: number | null;
+  offerDepositOverrideAt: string | null;
+  offerDepositOverrideByEmail: string | null;
   guestName: string;
   startDate: string;
   createdAt: string;
@@ -90,6 +99,9 @@ export function MerchantOfferBookingSummary() {
     (booking) =>
       booking.offerDepositCents !== null && booking.depositAmountCents === null,
   ).length;
+  const overriddenDepositCount = offerBookings.filter(
+    (booking) => booking.offerDepositOverridden,
+  ).length;
   const depositMismatchCount = offerBookings.filter(
     (booking) =>
       booking.offerDepositCents !== null &&
@@ -111,8 +123,8 @@ export function MerchantOfferBookingSummary() {
               Package requests carry verified commercial context
             </h2>
             <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-amber-950/65">
-              Review the snapshotted package price and expected deposit before
-              moving the reservation into payment.
+              Review the snapshotted package price, expected deposit, and durable
+              deposit decision before moving the reservation into payment.
             </p>
           </div>
           <button
@@ -137,7 +149,7 @@ export function MerchantOfferBookingSummary() {
         ) : null}
 
         {!error ? (
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             <Metric
               icon={BadgeDollarSign}
               label="Recent package requests"
@@ -148,6 +160,12 @@ export function MerchantOfferBookingSummary() {
               label="Deposit not requested"
               value={unresolvedDepositCount}
               attention={unresolvedDepositCount > 0}
+            />
+            <Metric
+              icon={ShieldCheck}
+              label="Merchant overrides"
+              value={overriddenDepositCount}
+              attention={overriddenDepositCount > 0}
             />
             <Metric
               icon={AlertTriangle}
@@ -204,7 +222,7 @@ export function MerchantOfferBookingSummary() {
                       }
                     />
                     <Value
-                      label="Requested deposit"
+                      label={depositSourceLabel(booking.depositSource)}
                       value={
                         booking.depositAmountCents !== null
                           ? formatMerchantOfferMoney(booking.depositAmountCents)
@@ -215,15 +233,26 @@ export function MerchantOfferBookingSummary() {
                   </div>
 
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                    {mismatch ? (
-                      <p className="flex items-center gap-2 text-xs font-bold text-rose-700">
-                        <AlertTriangle className="h-4 w-4" /> Confirm the changed
-                        deposit with the traveler.
+                    {booking.offerDepositOverridden ? (
+                      <p className="flex items-start gap-2 text-xs font-bold leading-5 text-rose-700">
+                        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                        <span>
+                          Merchant override recorded
+                          {booking.offerDepositOverrideByEmail
+                            ? ` by ${booking.offerDepositOverrideByEmail}`
+                            : ""}
+                          {booking.offerDepositOverrideAt
+                            ? ` on ${formatTime(booking.offerDepositOverrideAt)}`
+                            : ""}
+                          .
+                        </span>
                       </p>
                     ) : booking.depositAmountCents !== null ? (
                       <p className="flex items-center gap-2 text-xs font-bold text-emerald-700">
-                        <CheckCircle2 className="h-4 w-4" /> Deposit context is
-                        aligned.
+                        <CheckCircle2 className="h-4 w-4" />
+                        {booking.depositSource === "offer"
+                          ? "Published offer deposit applied."
+                          : "Deposit decision recorded."}
                       </p>
                     ) : (
                       <span />
@@ -299,4 +328,21 @@ function Value({
       </p>
     </div>
   );
+}
+
+function depositSourceLabel(value: DepositSource | null) {
+  if (value === "offer") return "Offer default";
+  if (value === "merchant_override") return "Merchant override";
+  if (value === "manual") return "Manual deposit";
+  return "Requested deposit";
+}
+
+function formatTime(value: string) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return "—";
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "America/St_Thomas",
+  }).format(date);
 }
