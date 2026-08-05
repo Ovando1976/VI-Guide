@@ -198,6 +198,7 @@ function serializeLead(
   const status = normalizePartnerApplicationStatus(data.status) ?? "new";
   const nextFollowUpDate = clean(data.nextFollowUpDate, 20) || null;
   const assignedToEmail = clean(data.assignedToEmail, 220) || null;
+  const merchantAccessGrantedAt = nullableTimestamp(data.merchantAccessGrantedAt);
 
   return {
     id,
@@ -215,8 +216,9 @@ function serializeLead(
     nextFollowUpDate,
     lastContactedAt: nullableTimestamp(data.lastContactedAt),
     lastContactedByEmail: clean(data.lastContactedByEmail, 220) || null,
+    merchantAccessGrantedAt,
     followUpState: partnerFollowUpState(
-      { status, assignedToEmail, nextFollowUpDate },
+      { status, assignedToEmail, nextFollowUpDate, merchantAccessGrantedAt },
       now,
     ),
     submittedAt: normalizeTimestampOrEpoch(
