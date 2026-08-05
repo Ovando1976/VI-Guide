@@ -21,6 +21,13 @@ export type CommercePaymentStatus =
   | "refunded"
   | "refund_failed";
 
+export type CommerceRefundStatus =
+  | "not_requested"
+  | "processing"
+  | "succeeded"
+  | "failed"
+  | "review_required";
+
 export type CommerceBookingRequest = {
   kind: CommerceBookingKind;
   listingId: string;
@@ -49,6 +56,14 @@ export type CommerceBooking = CommerceBookingRequest & {
   checkoutSessionId?: string;
   paymentIntentId?: string;
   paidAt?: string;
+  refundStatus?: CommerceRefundStatus;
+  refundId?: string;
+  refundOperationId?: string;
+  refundAmountCents?: number;
+  refundReason?: string;
+  refundFailureReason?: string;
+  refundRequestedAt?: string;
+  refundUpdatedAt?: string;
   createdAt: string;
   updatedAt: string;
 };

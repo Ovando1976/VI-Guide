@@ -4,6 +4,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { normalizeTimestamp } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -47,6 +48,10 @@ export async function POST(request: NextRequest) {
       reference: String(data.reference ?? reference),
       status: String(data.status ?? "requested"),
       paymentStatus: data.paymentStatus ? String(data.paymentStatus) : null,
+      refundStatus: data.refundStatus ? String(data.refundStatus) : null,
+      refundAmountCents: Number(data.refundAmountCents ?? 0),
+      refundRequestedAt: normalizeTimestamp(data.refundRequestedAt) ?? null,
+      refundUpdatedAt: normalizeTimestamp(data.refundUpdatedAt) ?? null,
       kind: String(data.kind ?? "experience"),
       listingName: String(data.listingName ?? "VI Guide booking"),
       island: String(data.island ?? "stt"),
@@ -60,7 +65,9 @@ export async function POST(request: NextRequest) {
       depositAmountCents: Number(data.depositAmountCents ?? 0),
       paidAmountCents: Number(data.paidAmountCents ?? 0),
       paymentHref: data.paymentHref ? String(data.paymentHref) : null,
-      updatedAt: String(data.updatedAt ?? data.createdAt ?? ""),
+      updatedAt:
+        normalizeTimestamp(data.updatedAt ?? data.createdAt) ??
+        new Date(0).toISOString(),
     },
   });
 }
