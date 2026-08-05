@@ -21,6 +21,7 @@ import {
 } from "react";
 
 import {
+  buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
 } from "@/lib/merchant-portal";
@@ -34,21 +35,6 @@ type ProviderOperationsBoardProps = {
   managedListingIds?: string[];
   restrictToManagedListings?: boolean;
 };
-
-function buildInitialDays(capacity: number): ProviderAvailabilityDay[] {
-  const today = new Date();
-  return Array.from({ length: 14 }, (_, index) => {
-    const date = new Date(today);
-    date.setDate(today.getDate() + index);
-    return {
-      date: date.toISOString().slice(0, 10),
-      isOpen: true,
-      capacity,
-      startTime: "09:00",
-      endTime: "17:00",
-    };
-  });
-}
 
 export function ProviderOperationsBoard({
   initialListingId,
@@ -79,14 +65,17 @@ export function ProviderOperationsBoard({
       restrictToManagedListings,
     ],
   );
-  const autoLoaded = useRef(false);
+  const lastAutoLoadedListingId = useRef("");
+  const activeLoadRequest = useRef(0);
   const [listingId, setListingId] = useState(resolvedInitialListingId);
   const [listingName, setListingName] = useState(
     resolvedInitialListingId ? humanizeListingId(resolvedInitialListingId) : "",
   );
   const [defaultCapacity, setDefaultCapacity] = useState(10);
   const [days, setDays] = useState<ProviderAvailabilityDay[]>(() =>
-    buildInitialDays(10),
+    resolvedInitialListingId || !restrictToManagedListings
+      ? buildProviderAvailabilityDays(10)
+      : [],
   );
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -109,6 +98,8 @@ export function ProviderOperationsBoard({
         return;
       }
 
+      const requestId = activeLoadRequest.current + 1;
+      activeLoadRequest.current = requestId;
       if (!silent) setLoading(true);
       setError(null);
       setMessage(null);
@@ -126,6 +117,7 @@ export function ProviderOperationsBoard({
             payload?.error || "Unable to load provider operations.",
           );
         }
+        if (activeLoadRequest.current !== requestId) return;
 
         setListingId(normalizedListingId);
         if (payload?.config) {
@@ -134,34 +126,41 @@ export function ProviderOperationsBoard({
           setDays(
             payload.config.days.length
               ? payload.config.days
-              : buildInitialDays(payload.config.defaultCapacity),
+              : buildProviderAvailabilityDays(payload.config.defaultCapacity),
           );
           setMessage("Provider operations loaded.");
         } else {
-          setListingName((current) =>
-            current.trim() ? current : humanizeListingId(normalizedListingId),
-          );
-          setDays(buildInitialDays(defaultCapacity));
+          setListingName(humanizeListingId(normalizedListingId));
+          setDefaultCapacity(10);
+          setDays(buildProviderAvailabilityDays(10));
           setMessage(
             "No saved operations found. Set availability and save this business.",
           );
         }
       } catch (caught) {
+        if (activeLoadRequest.current !== requestId) return;
         setError(
           caught instanceof Error
             ? caught.message
             : "Unable to load provider operations.",
         );
       } finally {
-        if (!silent) setLoading(false);
+        if (!silent && activeLoadRequest.current === requestId) {
+          setLoading(false);
+        }
       }
     },
-    [defaultCapacity, listingIsAllowed],
+    [listingIsAllowed],
   );
 
   useEffect(() => {
-    if (autoLoaded.current || !resolvedInitialListingId) return;
-    autoLoaded.current = true;
+    if (
+      !resolvedInitialListingId ||
+      lastAutoLoadedListingId.current === resolvedInitialListingId
+    ) {
+      return;
+    }
+    lastAutoLoadedListingId.current = resolvedInitialListingId;
     void loadProviderById(resolvedInitialListingId, true);
   }, [loadProviderById, resolvedInitialListingId]);
 
@@ -228,11 +227,20 @@ export function ProviderOperationsBoard({
   }
 
   function chooseListing(nextListingId: string) {
-    setListingId(nextListingId);
-    setListingName(humanizeListingId(nextListingId));
-    setDays(buildInitialDays(defaultCapacity));
+    const normalizedListingId = nextListingId.trim().slice(0, 160);
+    setListingId(normalizedListingId);
+    setListingName(
+      normalizedListingId ? humanizeListingId(normalizedListingId) : "",
+    );
+    setDefaultCapacity(10);
+    setDays(
+      normalizedListingId ? buildProviderAvailabilityDays(10) : [],
+    );
     setMessage(null);
     setError(null);
+    if (normalizedListingId) {
+      void loadProviderById(normalizedListingId, false);
+    }
   }
 
   function updateDay(index: number, patch: Partial<ProviderAvailabilityDay>) {
@@ -376,7 +384,7 @@ export function ProviderOperationsBoard({
             {loading ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
-              "Load business"
+              "Refresh business"
             )}
           </button>
         </form>
