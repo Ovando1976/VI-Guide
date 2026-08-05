@@ -6,6 +6,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { resolveMerchantOfferListingIdentity } from "@/lib/merchant-offer-identity";
 import {
   canTransitionMerchantOffer,
   merchantOfferListingAllowed,
@@ -93,6 +94,18 @@ export async function POST(request: NextRequest) {
         { status: 403 },
       );
     }
+    const identity = resolveMerchantOfferListingIdentity({
+      role: session.role,
+      listingId: validation.offer.listingId,
+      requestedName: validation.offer.listingName,
+    });
+    if (!identity) {
+      return NextResponse.json(
+        { error: "Unable to verify the offer listing identity." },
+        { status: 403 },
+      );
+    }
+    const offer = { ...validation.offer, ...identity };
 
     const db = getAdminDb();
     const offerRef = db.collection("merchantOffers").doc();
@@ -100,7 +113,7 @@ export async function POST(request: NextRequest) {
     const now = new Date().toISOString();
     const batch = db.batch();
     batch.set(offerRef, {
-      ...validation.offer,
+      ...offer,
       status: "draft",
       createdByUid: session.uid,
       createdByEmail: session.email ?? null,
@@ -112,7 +125,8 @@ export async function POST(request: NextRequest) {
     batch.set(auditRef, {
       action: "offer_created",
       offerId: offerRef.id,
-      listingId: validation.offer.listingId,
+      listingId: offer.listingId,
+      listingName: offer.listingName,
       status: "draft",
       actorUid: session.uid,
       actorEmail: session.email ?? null,
@@ -125,7 +139,7 @@ export async function POST(request: NextRequest) {
       {
         ok: true,
         offer: serializeOffer(offerRef.id, {
-          ...validation.offer,
+          ...offer,
           status: "draft",
           createdByUid: session.uid,
           createdByEmail: session.email ?? null,
@@ -244,7 +258,18 @@ export async function PATCH(request: NextRequest) {
             403,
           );
         }
-        patch = validation.offer;
+        const identity = resolveMerchantOfferListingIdentity({
+          role: session.role,
+          listingId: validation.offer.listingId,
+          requestedName: validation.offer.listingName,
+        });
+        if (!identity) {
+          throw new MerchantOfferActionError(
+            "Unable to verify the offer listing identity.",
+            403,
+          );
+        }
+        patch = { ...validation.offer, ...identity };
       }
 
       if (requestedStatus && requestedStatus !== currentStatus) {
@@ -272,8 +297,20 @@ export async function PATCH(request: NextRequest) {
         if (!publication.ok) {
           throw new MerchantOfferActionError(publication.error, 409);
         }
+        const identity = resolveMerchantOfferListingIdentity({
+          role: session.role,
+          listingId: publication.offer.listingId,
+          requestedName: publication.offer.listingName,
+        });
+        if (!identity) {
+          throw new MerchantOfferActionError(
+            "Unable to verify the offer listing identity.",
+            403,
+          );
+        }
         patch = {
           ...publication.offer,
+          ...identity,
           ...patch,
           status: "active",
         };
