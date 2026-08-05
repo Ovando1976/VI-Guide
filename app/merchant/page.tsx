@@ -10,6 +10,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+import { MerchantOperationsSummary } from "@/components/merchant/merchant-operations-summary";
 import { getSession } from "@/lib/auth-server";
 import { humanizeListingId } from "@/lib/merchant-portal";
 
@@ -83,6 +84,8 @@ export default async function MerchantHomePage() {
             </p>
           </section>
         ) : null}
+
+        <MerchantOperationsSummary />
 
         <section className="mt-6 grid gap-4 lg:grid-cols-3">
           <ActionCard
