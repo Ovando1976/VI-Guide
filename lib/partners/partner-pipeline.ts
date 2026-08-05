@@ -1,3 +1,5 @@
+import { partnerConversionState } from "@/lib/partners/partner-conversion";
+
 export type PartnerPipelineStatus =
   | "new"
   | "reviewing"
@@ -18,6 +20,7 @@ export type PartnerPipelineRecord = {
   assignedToEmail?: unknown;
   nextFollowUpDate?: unknown;
   lastContactedAt?: unknown;
+  merchantAccessGrantedAt?: unknown;
 };
 
 export function normalizePartnerPipelineAction(value: unknown) {
@@ -92,6 +95,17 @@ export function summarizePartnerPipeline(
       const state = partnerFollowUpState(record, now);
       if (state === "closed") {
         summary.closed += 1;
+        const status = String(record.status ?? "new");
+        if (status === "approved") {
+          summary.approved += 1;
+          if (partnerConversionState(record) === "converted") {
+            summary.converted += 1;
+          } else {
+            summary.awaitingOnboarding += 1;
+          }
+        } else if (status === "declined") {
+          summary.declined += 1;
+        }
         return summary;
       }
 
@@ -115,6 +129,10 @@ export function summarizePartnerPipeline(
       unscheduled: 0,
       contacted: 0,
       closed: 0,
+      approved: 0,
+      converted: 0,
+      awaitingOnboarding: 0,
+      declined: 0,
     },
   );
 }
