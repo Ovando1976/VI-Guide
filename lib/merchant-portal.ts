@@ -3,7 +3,10 @@ import {
   getUsviToday,
 } from "@/lib/booking/booking-dates";
 import { normalizeManagedListingIds } from "@/lib/merchant-access";
-import type { CommerceBookingStatus } from "@/types/commerce-booking";
+import type {
+  CommerceBookingStatus,
+  CommercePaymentStatus,
+} from "@/types/commerce-booking";
 import type { ProviderAvailabilityDay } from "@/types/provider-operations";
 
 export type MerchantListingSelectionInput = {
@@ -38,6 +41,14 @@ const COMMERCE_BOOKING_STATUSES = new Set<CommerceBookingStatus>([
   "completed",
   "declined",
   "cancelled",
+]);
+const COMMERCE_PAYMENT_STATUSES = new Set<CommercePaymentStatus>([
+  "unpaid",
+  "pending",
+  "paid",
+  "refund_pending",
+  "refunded",
+  "refund_failed",
 ]);
 
 export function resolveMerchantListingSelection({
@@ -97,13 +108,16 @@ export function summarizeMerchantBookings(
 
   for (const booking of bookings) {
     if (!booking || typeof booking !== "object") continue;
-    const status = normalizeBookingStatus(
-      (booking as MerchantSummaryBooking).status,
-    );
+    const record = booking as MerchantSummaryBooking;
+    const status = normalizeBookingStatus(record.status);
     if (!status || status === "draft") continue;
 
+    const paymentStatus = normalizePaymentStatus(record.paymentStatus);
     summary.total += 1;
-    if (status === "requested" || status === "reviewing") {
+
+    if (paymentStatus === "refunded") {
+      summary.closed += 1;
+    } else if (status === "requested" || status === "reviewing") {
       summary.needsAction += 1;
       summary.active += 1;
     } else if (status === "payment_required") {
@@ -129,6 +143,13 @@ function normalizeBookingStatus(value: unknown): CommerceBookingStatus | null {
   return typeof value === "string" &&
     COMMERCE_BOOKING_STATUSES.has(value as CommerceBookingStatus)
     ? (value as CommerceBookingStatus)
+    : null;
+}
+
+function normalizePaymentStatus(value: unknown): CommercePaymentStatus | null {
+  return typeof value === "string" &&
+    COMMERCE_PAYMENT_STATUSES.has(value as CommercePaymentStatus)
+    ? (value as CommercePaymentStatus)
     : null;
 }
 
