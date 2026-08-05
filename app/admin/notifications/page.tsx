@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { NotificationOutboxBoard } from "@/components/admin/notification-outbox-board";
+import { NotificationReconciliationControl } from "@/components/admin/notification-reconciliation-control";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
@@ -16,5 +17,10 @@ export default async function NotificationOperationsPage() {
     redirect("/unauthorized");
   }
 
-  return <NotificationOutboxBoard />;
+  return (
+    <>
+      {session.role === "admin" ? <NotificationReconciliationControl /> : null}
+      <NotificationOutboxBoard />
+    </>
+  );
 }
