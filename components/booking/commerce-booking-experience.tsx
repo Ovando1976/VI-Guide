@@ -25,6 +25,10 @@ import {
   isBookableStartDate,
 } from "@/lib/booking/booking-dates";
 import { buildBookingPlannerHref } from "@/lib/booking/booking-planner-handoff";
+import {
+  buildBookingStatusHref,
+  rememberTrackedBooking,
+} from "@/lib/booking/booking-tracker";
 import type { CommerceBookingKind } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
@@ -64,9 +68,10 @@ export function CommerceBookingExperience() {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [confirmation, setConfirmation] = useState<{ reference: string } | null>(
-    null,
-  );
+  const [confirmation, setConfirmation] = useState<{
+    bookingId: string;
+    reference: string;
+  } | null>(null);
 
   const minimumEndDate = addCalendarDays(startDate || today, 1);
   const title = useMemo(() => {
@@ -126,7 +131,24 @@ export function CommerceBookingExperience() {
         );
       }
 
-      setConfirmation({ reference: payload.reference });
+      rememberTrackedBooking({
+        bookingId: payload.bookingId,
+        reference: payload.reference,
+        email,
+        status: "requested",
+        kind,
+        island,
+        listingId,
+        listingName,
+        startDate,
+        ...(kind === "accommodation" ? { endDate } : {}),
+        ...(listingHref ? { listingHref } : {}),
+        updatedAt: new Date().toISOString(),
+      });
+      setConfirmation({
+        bookingId: payload.bookingId,
+        reference: payload.reference,
+      });
     } catch (submissionError) {
       setError(
         submissionError instanceof Error
@@ -149,6 +171,7 @@ export function CommerceBookingExperience() {
       ...(kind === "accommodation" ? { endDate } : {}),
       ...(listingHref ? { listingHref } : {}),
     });
+    const statusHref = buildBookingStatusHref(confirmation.reference);
 
     return (
       <main className="min-h-screen bg-[#f8f4ea] px-4 py-10 text-[#043331] sm:px-6">
@@ -180,22 +203,23 @@ export function CommerceBookingExperience() {
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
             <Link
               href={plannerHref}
-              className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
             >
               <MapPinned className="h-4 w-4" /> Plan around this request
             </Link>
             <Link
-              href="/bookings"
-              className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-[10px] font-black uppercase tracking-[.16em]"
+              href={statusHref}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-[10px] font-black uppercase tracking-[.16em]"
             >
               <ClipboardCheck className="h-4 w-4" /> Check request status
             </Link>
           </div>
 
           <p className="mx-auto mt-5 max-w-lg text-xs font-semibold leading-5 text-slate-500">
-            Planning around the request adds an unconfirmed stop to your local
-            VI Guide itinerary. Your name, email, and phone are not placed in
-            the planner link.
+            This device remembers the reference and lookup email so the status
+            page can reopen the request automatically. You can remove that saved
+            access from the status page at any time. Contact details are never
+            placed in the planner link.
           </p>
         </section>
       </main>
