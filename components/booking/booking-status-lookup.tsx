@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -14,47 +15,28 @@ import {
   RotateCcw,
   Search,
   ShieldCheck,
+  Trash2,
   Users,
 } from "lucide-react";
-import { useCallback, useEffect, useState, type FormEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 
 import { BookingActivityFeed } from "@/components/booking/booking-activity-feed";
-import type {
-  CommerceBookingKind,
-  CommerceBookingStatus,
-} from "@/types/commerce-booking";
+import {
+  bookingStatusToTrackedBooking,
+  findTrackedBooking,
+  forgetTrackedBooking,
+  rememberTrackedBooking,
+  syncBookingJourneyWithStatus,
+  type BookingStatusSnapshot,
+} from "@/lib/booking/booking-tracker";
+import type { CommerceBookingStatus } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
-
-type BookingLifecycleStatus =
-  | CommerceBookingStatus
-  | "payment_required"
-  | "paid"
-  | "completed";
-
-type BookingStatusResult = {
-  id: string;
-  reference: string;
-  status: BookingLifecycleStatus;
-  paymentStatus: string | null;
-  refundStatus: string | null;
-  refundAmountCents: number;
-  refundRequestedAt: string | null;
-  refundUpdatedAt: string | null;
-  kind: CommerceBookingKind;
-  listingName: string;
-  island: IntelligenceIsland;
-  startDate: string;
-  endDate: string | null;
-  preferredTime: string | null;
-  adults: number;
-  children: number;
-  updatedAt: string;
-  merchantNote?: string | null;
-  proposedTime?: string | null;
-  depositAmountCents: number;
-  paidAmountCents: number;
-  paymentHref?: string | null;
-};
 
 const ISLAND_NAMES: Record<IntelligenceIsland, string> = {
   stt: "St. Thomas",
@@ -62,7 +44,10 @@ const ISLAND_NAMES: Record<IntelligenceIsland, string> = {
   stx: "St. Croix",
 };
 
-const STATUS_COPY: Record<BookingLifecycleStatus, { title: string; detail: string }> = {
+const STATUS_COPY: Record<
+  CommerceBookingStatus,
+  { title: string; detail: string }
+> = {
   draft: { title: "Draft", detail: "This request has not been submitted yet." },
   requested: {
     title: "Request received",
@@ -101,38 +86,66 @@ const STATUS_COPY: Record<BookingLifecycleStatus, { title: string; detail: strin
 };
 
 export function BookingStatusLookup() {
-  const [reference, setReference] = useState("");
+  const searchParams = useSearchParams();
+  const requestedReference = (searchParams.get("reference") ?? "")
+    .trim()
+    .toUpperCase()
+    .slice(0, 80);
+  const restored = useRef(false);
+  const [reference, setReference] = useState(requestedReference);
   const [email, setEmail] = useState("");
-  const [booking, setBooking] = useState<BookingStatusResult | null>(null);
+  const [booking, setBooking] = useState<BookingStatusSnapshot | null>(null);
   const [loading, setLoading] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [journeySynced, setJourneySynced] = useState(false);
 
-  const lookup = useCallback(
-    async (silent = false) => {
-      if (!reference || !email) return;
+  const performLookup = useCallback(
+    async (lookupReference: string, lookupEmail: string, silent = false) => {
+      const normalizedReference = lookupReference.trim().toUpperCase().slice(0, 80);
+      const normalizedEmail = lookupEmail.trim().toLowerCase().slice(0, 220);
+      if (!normalizedReference || !normalizedEmail) return;
+
       if (!silent) {
         setLoading(true);
         setError(null);
         setBooking(null);
+        setJourneySynced(false);
       }
 
       try {
         const response = await fetch("/api/commerce-bookings/status", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ reference, email }),
+          body: JSON.stringify({
+            reference: normalizedReference,
+            email: normalizedEmail,
+          }),
           cache: "no-store",
         });
         const payload = (await response.json().catch(() => null)) as
-          | { booking?: BookingStatusResult; error?: string }
+          | { booking?: BookingStatusSnapshot; error?: string }
           | null;
         if (!response.ok || !payload?.booking) {
           throw new Error(
             payload?.error || "Unable to find this booking request.",
           );
         }
+
+        setReference(payload.booking.reference);
+        setEmail(normalizedEmail);
         setBooking(payload.booking);
+        const tracked = bookingStatusToTrackedBooking(
+          payload.booking,
+          normalizedEmail,
+        );
+        if (tracked) rememberTrackedBooking(tracked);
+
+        try {
+          setJourneySynced(Boolean(syncBookingJourneyWithStatus(payload.booking)));
+        } catch {
+          setJourneySynced(false);
+        }
       } catch (lookupError) {
         if (!silent) {
           setError(
@@ -145,19 +158,37 @@ export function BookingStatusLookup() {
         if (!silent) setLoading(false);
       }
     },
-    [email, reference],
+    [],
   );
 
   useEffect(() => {
-    if (!booking) return;
-    const timer = window.setInterval(() => void lookup(true), 15_000);
+    if (restored.current) return;
+    restored.current = true;
+
+    const tracked = findTrackedBooking(requestedReference || null);
+    if (!tracked) {
+      if (requestedReference) setReference(requestedReference);
+      return;
+    }
+
+    setReference(tracked.reference);
+    setEmail(tracked.email);
+    void performLookup(tracked.reference, tracked.email, false);
+  }, [performLookup, requestedReference]);
+
+  useEffect(() => {
+    if (!booking || !reference || !email) return;
+    const timer = window.setInterval(
+      () => void performLookup(reference, email, true),
+      15_000,
+    );
     return () => window.clearInterval(timer);
-  }, [booking, lookup]);
+  }, [booking, email, performLookup, reference]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (loading) return;
-    await lookup(false);
+    await performLookup(reference, email, false);
   }
 
   async function startCheckout() {
@@ -186,6 +217,18 @@ export function BookingStatusLookup() {
       );
       setCheckoutLoading(false);
     }
+  }
+
+  function forgetBooking() {
+    if (booking?.reference || reference) {
+      forgetTrackedBooking(booking?.reference ?? reference);
+    }
+    setBooking(null);
+    setReference("");
+    setEmail("");
+    setError(null);
+    setJourneySynced(false);
+    window.history.replaceState(window.history.state, "", "/bookings");
   }
 
   const statusCopy = booking
@@ -219,7 +262,7 @@ export function BookingStatusLookup() {
               <div className="mt-8 flex gap-3 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/65">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#7ce0d4]" />
                 <span>
-                  Only limited booking and payment-progress details are returned after the reference and email match.
+                  VI Guide can remember the reference and lookup email on this device. The email is never placed in the page URL or the trip planner.
                 </span>
               </div>
             </div>
@@ -359,7 +402,7 @@ export function BookingStatusLookup() {
                       href="/planner"
                       className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.15em] text-white"
                     >
-                      Open my trip
+                      {journeySynced ? "Open synchronized trip" : "Open my trip"}
                     </Link>
                     <Link
                       href={`/concierge?prompt=${encodeURIComponent(
@@ -369,6 +412,19 @@ export function BookingStatusLookup() {
                     >
                       Ask concierge
                     </Link>
+                  </div>
+
+                  <div className="mt-5 flex flex-col gap-3 border-t border-emerald-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs font-semibold leading-5 text-emerald-950/60">
+                      Saved on this device. Status refreshes every 15 seconds while this page is open.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={forgetBooking}
+                      className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full border border-emerald-300 bg-white px-4 text-[9px] font-black uppercase tracking-[.14em]"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" /> Forget on this device
+                    </button>
                   </div>
                 </section>
               ) : null}
@@ -386,7 +442,7 @@ export function BookingStatusLookup() {
   );
 }
 
-function RefundProgress({ booking }: { booking: BookingStatusResult }) {
+function RefundProgress({ booking }: { booking: BookingStatusSnapshot }) {
   if (!booking.refundStatus || booking.refundStatus === "not_requested") {
     return null;
   }

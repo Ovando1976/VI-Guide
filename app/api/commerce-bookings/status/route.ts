@@ -4,6 +4,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import { normalizeTimestamp } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
@@ -42,6 +43,11 @@ export async function POST(request: NextRequest) {
   const data = document.data();
   if (String(data.email ?? "").trim().toLowerCase() !== email) return notFound();
 
+  const listingHref = safeInternalDestinationOrNull(
+    data.listingHref ? String(data.listingHref) : null,
+    "https://vi-guide.local",
+  );
+
   return NextResponse.json({
     booking: {
       id: document.id,
@@ -53,7 +59,9 @@ export async function POST(request: NextRequest) {
       refundRequestedAt: normalizeTimestamp(data.refundRequestedAt) ?? null,
       refundUpdatedAt: normalizeTimestamp(data.refundUpdatedAt) ?? null,
       kind: String(data.kind ?? "experience"),
+      listingId: String(data.listingId ?? "custom-request"),
       listingName: String(data.listingName ?? "VI Guide booking"),
+      listingHref,
       island: String(data.island ?? "stt"),
       startDate: String(data.startDate ?? ""),
       endDate: data.endDate ? String(data.endDate) : null,
