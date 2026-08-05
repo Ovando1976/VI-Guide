@@ -10,6 +10,7 @@ import { normalizePartnerApplicationStatus } from "@/lib/partners/partner-applic
 import {
   normalizePartnerPipelineAction,
   partnerFollowUpState,
+  partnerLeadCanBeClaimed,
   partnerPipelinePatch,
   summarizePartnerPipeline,
 } from "@/lib/partners/partner-pipeline";
@@ -123,8 +124,7 @@ export async function PATCH(request: NextRequest) {
       const currentOwnerUid = clean(data.assignedToUid, 160);
       if (
         action === "assign_to_me" &&
-        currentOwnerUid &&
-        currentOwnerUid !== session.uid
+        !partnerLeadCanBeClaimed(currentOwnerUid, session.uid)
       ) {
         throw new PartnerPipelineActionError(
           "This lead is already assigned. Unassign it explicitly before changing ownership.",
