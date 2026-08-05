@@ -11,6 +11,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { canManageListing } from "@/lib/merchant-access";
+import { resolveMerchantOfferDeposit } from "@/lib/merchant-offer-deposit";
 import {
   isMerchantCommerceTransition,
   merchantCommerceTransitionError,
@@ -49,9 +50,9 @@ export async function PATCH(
     const requestedStatus = clean(body?.status, 40);
     const hasMerchantNote = hasOwn(body, "merchantNote");
     const hasProposedTime = hasOwn(body, "proposedTime");
+    const hasDepositAmount = hasOwn(body, "depositAmountCents");
     const merchantNote = clean(body?.merchantNote, 1200);
     const proposedTime = clean(body?.proposedTime, 40);
-    const depositAmountCents = clampMoney(body?.depositAmountCents);
 
     if (!bookingId || !isMerchantCommerceTransition(requestedStatus)) {
       return NextResponse.json(
@@ -84,6 +85,12 @@ export async function PATCH(
         );
       }
 
+      const deposit = resolveMerchantOfferDeposit({
+        hasRequestedValue: hasDepositAmount,
+        requestedValue: body?.depositAmountCents,
+        offerDepositCents: booking.offerDepositCents,
+      });
+      const depositAmountCents = deposit.amountCents;
       const currentStatus = normalizeCommerceLifecycleStatus(booking.status);
       const transitionError = merchantCommerceTransitionError({
         currentStatus,
@@ -111,6 +118,19 @@ export async function PATCH(
         status === "payment_required"
           ? {
               depositAmountCents,
+              depositSource: deposit.source,
+              offerDepositAmountCents: deposit.offerAmountCents,
+              offerDepositOverridden: deposit.overridden,
+              offerDepositOverrideCents: deposit.overridden
+                ? depositAmountCents
+                : null,
+              offerDepositOverrideAt: deposit.overridden ? updatedAt : null,
+              offerDepositOverrideByUid: deposit.overridden
+                ? session.uid
+                : null,
+              offerDepositOverrideByEmail: deposit.overridden
+                ? session.email ?? null
+                : null,
               paidAmountCents: null,
               paymentStatus: "unpaid",
               paymentHref: null,
@@ -167,6 +187,18 @@ export async function PATCH(
           status === "payment_required"
             ? depositAmountCents
             : Number(booking.depositAmountCents ?? 0) || null,
+        depositSource:
+          status === "payment_required"
+            ? deposit.source
+            : booking.depositSource ?? null,
+        offerDepositAmountCents:
+          status === "payment_required"
+            ? deposit.offerAmountCents
+            : Number(booking.offerDepositAmountCents ?? 0) || null,
+        offerDepositOverridden:
+          status === "payment_required"
+            ? deposit.overridden
+            : booking.offerDepositOverridden === true,
         paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
         paymentStatus:
           status === "payment_required"
@@ -245,12 +277,6 @@ function lifecycleCopy(
     title: "Booking cancelled",
     message: `${listingName} has been cancelled.`,
   };
-}
-
-function clampMoney(value: unknown) {
-  const amount = Number(value);
-  if (!Number.isFinite(amount)) return 0;
-  return Math.max(0, Math.min(10_000_000, Math.round(amount)));
 }
 
 function formatMoney(cents: number) {
