@@ -176,9 +176,9 @@ function normalizeEntry(
     platformFeeCents === null ||
     merchantSettlementCents === null ||
     unallocatedAmountCents === null ||
-    reportedRefundAmountCents === null &&
+    (reportedRefundAmountCents === null &&
       value.reportedRefundAmountCents !== null &&
-      value.reportedRefundAmountCents !== undefined
+      value.reportedRefundAmountCents !== undefined)
   ) {
     return null;
   }
@@ -222,9 +222,20 @@ function protectSpreadsheet(value: string) {
 }
 
 function normalizeIso(value: unknown) {
-  if (typeof value !== "string") return "";
-  const parsed = Date.parse(value);
-  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
+  if (typeof value === "string") {
+    const parsed = Date.parse(value);
+    return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
+  }
+  if (
+    value &&
+    typeof value === "object" &&
+    "toDate" in value &&
+    typeof (value as { toDate?: unknown }).toDate === "function"
+  ) {
+    const date = (value as { toDate(): Date }).toDate();
+    return Number.isFinite(date.getTime()) ? date.toISOString() : "";
+  }
+  return "";
 }
 
 function nonNegativeInteger(value: unknown) {
