@@ -54,14 +54,18 @@ export default async function MerchantLayout({
           </div>
 
           <nav className="grid gap-2 sm:grid-cols-4">
-            <MerchantNavLink href="/merchant" icon={LayoutDashboard} label="Overview" />
+            <MerchantNavLink
+              href="/merchant"
+              icon={LayoutDashboard}
+              label="Overview"
+            />
             <MerchantNavLink
               href="/merchant/reservations"
               icon={CalendarClock}
               label="Reservations"
             />
             <MerchantNavLink
-              href="/provider/operations"
+              href="/merchant/availability"
               icon={ShieldCheck}
               label="Availability"
             />
@@ -82,7 +86,7 @@ export default async function MerchantLayout({
               listingIds.map((listingId) => (
                 <Link
                   key={listingId}
-                  href={`/provider/operations?listingId=${encodeURIComponent(listingId)}`}
+                  href={`/merchant/availability?listingId=${encodeURIComponent(listingId)}`}
                   className="rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-[9px] font-black text-teal-800 transition hover:border-teal-300"
                 >
                   {humanizeListingId(listingId)}
