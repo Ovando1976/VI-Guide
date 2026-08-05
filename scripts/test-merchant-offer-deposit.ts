@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 
+import { merchantOfferDepositError } from "../lib/merchant-offer-deposit-policy";
 import { resolveMerchantOfferDeposit } from "../lib/merchant-offer-deposit";
 
 assert.deepEqual(
@@ -105,6 +106,35 @@ assert.deepEqual(
     offerAmountCents: 5000,
     overridden: true,
   },
+);
+
+assert.equal(
+  merchantOfferDepositError({
+    amountCents: 5000,
+    offerPriceCents: 12900,
+  }),
+  null,
+);
+assert.equal(
+  merchantOfferDepositError({
+    amountCents: 12900,
+    offerPriceCents: 12900,
+  }),
+  null,
+);
+assert.equal(
+  merchantOfferDepositError({
+    amountCents: 13000,
+    offerPriceCents: 12900,
+  }),
+  "The deposit cannot exceed the verified offer price.",
+);
+assert.equal(
+  merchantOfferDepositError({
+    amountCents: 3500,
+    offerPriceCents: null,
+  }),
+  null,
 );
 
 console.log("Merchant offer deposit tests passed.");
