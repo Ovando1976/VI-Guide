@@ -10,6 +10,8 @@ export type MerchantOfferRequestIdentityInput = {
   preferredTime?: string | null;
   adults: number;
   children: number;
+  offerPriceCents: number;
+  offerDepositCents?: number | null;
   now?: Date;
 };
 
@@ -27,6 +29,8 @@ export function merchantOfferRequestDocumentId(
         normalize(input.preferredTime ?? ""),
         normalizeCount(input.adults),
         normalizeCount(input.children),
+        normalizeMoney(input.offerPriceCents),
+        normalizeMoney(input.offerDepositCents ?? 0),
         dayKey,
       ].join("|"),
     )
@@ -40,5 +44,9 @@ function normalize(value: string) {
 }
 
 function normalizeCount(value: number) {
+  return Number.isFinite(value) ? String(Math.max(0, Math.floor(value))) : "0";
+}
+
+function normalizeMoney(value: number) {
   return Number.isFinite(value) ? String(Math.max(0, Math.floor(value))) : "0";
 }
