@@ -11,6 +11,8 @@ const base = {
   preferredTime: "2:30 PM",
   adults: 2,
   children: 1,
+  offerPriceCents: 12900,
+  offerDepositCents: 5000,
   now: beforeMidnightAtlantic,
 };
 
@@ -31,6 +33,14 @@ assert.notEqual(
 assert.notEqual(
   first,
   merchantOfferRequestDocumentId({ ...base, adults: 3 }),
+);
+assert.notEqual(
+  first,
+  merchantOfferRequestDocumentId({ ...base, offerPriceCents: 13900 }),
+);
+assert.notEqual(
+  first,
+  merchantOfferRequestDocumentId({ ...base, offerDepositCents: 6000 }),
 );
 assert.notEqual(
   first,
