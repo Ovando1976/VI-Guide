@@ -18,38 +18,30 @@ export async function GET() {
     firebaseAdminConfigured &&
     stripeConfigured &&
     stripeCommerceWebhookConfigured;
-  const notification = notificationConfigurationStatus({
+  const notificationReady = notificationConfigurationStatus({
     firebaseAdminConfigured,
     resendApiKey: process.env.RESEND_API_KEY,
     emailFrom: process.env.VI_GUIDE_EMAIL_FROM,
     operationsEmails: process.env.VI_GUIDE_OPERATIONS_EMAILS,
     cronSecret: process.env.CRON_SECRET,
     appUrl: process.env.VI_GUIDE_APP_URL,
-  });
+  }).ready;
 
   return NextResponse.json(
     {
       ok: true,
       service: "vi-guide",
       release: {
-        bookingReady: mobilityBookingReady && commerceBookingReady,
+        // Preserve the original public contract for mobility booking readiness.
+        bookingReady: mobilityBookingReady,
         mobilityBookingReady,
         commerceBookingReady,
-        notificationReady: notification.ready,
+        notificationReady,
+        commerceOperationsReady: commerceBookingReady && notificationReady,
         firebaseAdminConfigured,
         stripeConfigured,
         stripeWebhookConfigured,
         stripeCommerceWebhookConfigured,
-        notification: {
-          emailProviderConfigured: notification.emailProviderConfigured,
-          senderConfigured: notification.senderConfigured,
-          operationsRecipientsConfigured:
-            notification.operationsRecipientsConfigured,
-          operationsRecipientCount: notification.operationsRecipientCount,
-          cronSecretConfigured: notification.cronSecretConfigured,
-          appUrlConfigured: notification.appUrlConfigured,
-          missing: notification.missing,
-        },
       },
       timestamp: new Date().toISOString(),
     },
