@@ -36,8 +36,9 @@ export function CommercePaymentReturnNotice() {
 
   if (!paymentReturn) return null;
 
-  const paymentVerified = isPaymentVerified(booking);
+  const returnReference = paymentReturn.reference;
   const returnedFromCompletedCheckout = paymentReturn.outcome === "success";
+  const paymentVerified = isPaymentVerified(booking);
 
   async function verify(event?: FormEvent<HTMLFormElement>) {
     event?.preventDefault();
@@ -51,7 +52,7 @@ export function CommercePaymentReturnNotice() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          reference: paymentReturn.reference,
+          reference: returnReference,
           email,
         }),
         cache: "no-store",
@@ -117,7 +118,7 @@ export function CommercePaymentReturnNotice() {
           </p>
           <div className="mt-3 inline-flex max-w-full items-center gap-2 rounded-full border border-white/80 bg-white px-3 py-2 font-mono text-xs font-black text-[#043331]">
             <ShieldCheck className="h-4 w-4 shrink-0 text-teal-700" />
-            <span className="truncate">{paymentReturn.reference}</span>
+            <span className="truncate">{returnReference}</span>
           </div>
         </div>
       </div>
