@@ -48,6 +48,17 @@ export async function GET(request: NextRequest) {
         kind: String(data.kind ?? "experience"),
         listingId: String(data.listingId ?? ""),
         listingName: String(data.listingName ?? "VI Guide booking"),
+        offerId: data.offerId ? String(data.offerId) : null,
+        offerTitle: data.offerTitle ? String(data.offerTitle) : null,
+        offerPriceCents: nullableMoney(data.offerPriceCents),
+        offerCompareAtCents: nullableMoney(data.offerCompareAtCents),
+        offerDepositCents: nullableMoney(data.offerDepositCents),
+        offerValidFrom: data.offerValidFrom
+          ? String(data.offerValidFrom)
+          : null,
+        offerValidThrough: data.offerValidThrough
+          ? String(data.offerValidThrough)
+          : null,
         island: String(data.island ?? "stt"),
         startDate: String(data.startDate ?? ""),
         endDate: data.endDate ? String(data.endDate) : null,
@@ -60,8 +71,8 @@ export async function GET(request: NextRequest) {
         notes: data.notes ? String(data.notes) : null,
         merchantNote: data.merchantNote ? String(data.merchantNote) : null,
         proposedTime: data.proposedTime ? String(data.proposedTime) : null,
-        depositAmountCents: Number(data.depositAmountCents ?? 0) || null,
-        paidAmountCents: Number(data.paidAmountCents ?? 0) || null,
+        depositAmountCents: nullableMoney(data.depositAmountCents),
+        paidAmountCents: nullableMoney(data.paidAmountCents),
         paymentStatus: data.paymentStatus
           ? String(data.paymentStatus)
           : "unpaid",
@@ -115,8 +126,11 @@ async function loadBookingDocuments(
   if (!listingIds.length) return [];
 
   const snapshots = await Promise.all(
-    listingIds.map((listingId) =>
-      collection.where("listingId", "==", listingId).limit(100).get(),
+    listingIds.map((managedListingId) =>
+      collection
+        .where("listingId", "==", managedListingId)
+        .limit(100)
+        .get(),
     ),
   );
   const unique = new Map(
@@ -140,6 +154,12 @@ function sortDocuments<
       String(leftData.createdAt ?? ""),
     );
   });
+}
+
+function nullableMoney(value: unknown) {
+  if (value === null || value === undefined || value === "") return null;
+  const amount = Number(value);
+  return Number.isInteger(amount) && amount >= 0 ? amount : null;
 }
 
 function clean(value: unknown, maxLength: number) {
