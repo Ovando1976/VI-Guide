@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "release:check": "npm run typecheck && npm run build",
-    "test:api-contracts": "tsx scripts/test-api-utilities.ts && tsx scripts/test-commerce-refund-integrity.ts && tsx scripts/test-safe-internal-destination.ts && tsx scripts/test-governor-search-anchors.ts && tsx scripts/test-commerce-payment-return.ts && tsx scripts/test-booking-dates.ts && tsx scripts/test-booking-planner-handoff.ts && tsx scripts/test-booking-tracker.ts",
+    "test:api-contracts": "tsx scripts/test-api-utilities.ts && tsx scripts/test-commerce-refund-integrity.ts && tsx scripts/test-safe-internal-destination.ts && tsx scripts/test-governor-search-anchors.ts && tsx scripts/test-commerce-payment-return.ts && tsx scripts/test-booking-dates.ts && tsx scripts/test-booking-planner-handoff.ts && tsx scripts/test-booking-tracker.ts && tsx scripts/test-merchant-booking-lifecycle.ts",
     "migrate:historic-sites": "tsx scripts/migrate-historic-sites.ts",
     "auth:set-role": "tsx scripts/set-user-role.ts",
     "stays:seed": "tsx scripts/seed-stays.ts",
