@@ -49,6 +49,15 @@ export function normalizePartnerOwnerEmail(value: unknown) {
     : null;
 }
 
+export function partnerLeadCanBeClaimed(
+  currentOwnerUid: unknown,
+  sessionUid: unknown,
+) {
+  const owner = cleanText(currentOwnerUid, 160);
+  const actor = cleanText(sessionUid, 160);
+  return Boolean(actor) && (!owner || owner === actor);
+}
+
 export function partnerTodayDateKey(now: Date = new Date()) {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/St_Thomas",
@@ -168,4 +177,10 @@ function isRealDate(value: string) {
     date.getUTCMonth() === month - 1 &&
     date.getUTCDate() === day
   );
+}
+
+function cleanText(value: unknown, maxLength: number) {
+  return typeof value === "string"
+    ? value.replace(/\s+/g, " ").trim().slice(0, maxLength)
+    : "";
 }
