@@ -3,6 +3,7 @@ import {
   getUsviToday,
 } from "@/lib/booking/booking-dates";
 import { normalizeManagedListingIds } from "@/lib/merchant-access";
+import type { CommerceBookingStatus } from "@/types/commerce-booking";
 import type { ProviderAvailabilityDay } from "@/types/provider-operations";
 
 export type MerchantListingSelectionInput = {
@@ -10,6 +11,34 @@ export type MerchantListingSelectionInput = {
   managedListingIds?: unknown;
   restricted: boolean;
 };
+
+export type MerchantSummaryBooking = {
+  status?: unknown;
+  paymentStatus?: unknown;
+};
+
+export type MerchantOperationsSummary = {
+  total: number;
+  active: number;
+  needsAction: number;
+  awaitingPayment: number;
+  readyToConfirm: number;
+  confirmed: number;
+  completed: number;
+  closed: number;
+};
+
+const COMMERCE_BOOKING_STATUSES = new Set<CommerceBookingStatus>([
+  "draft",
+  "requested",
+  "reviewing",
+  "payment_required",
+  "paid",
+  "confirmed",
+  "completed",
+  "declined",
+  "cancelled",
+]);
 
 export function resolveMerchantListingSelection({
   requestedListingId,
@@ -49,6 +78,58 @@ export function buildProviderAvailabilityDays(
     startTime: "09:00",
     endTime: "17:00",
   }));
+}
+
+export function summarizeMerchantBookings(
+  value: unknown,
+): MerchantOperationsSummary {
+  const bookings = Array.isArray(value) ? value : [];
+  const summary: MerchantOperationsSummary = {
+    total: 0,
+    active: 0,
+    needsAction: 0,
+    awaitingPayment: 0,
+    readyToConfirm: 0,
+    confirmed: 0,
+    completed: 0,
+    closed: 0,
+  };
+
+  for (const booking of bookings) {
+    if (!booking || typeof booking !== "object") continue;
+    const status = normalizeBookingStatus(
+      (booking as MerchantSummaryBooking).status,
+    );
+    if (!status || status === "draft") continue;
+
+    summary.total += 1;
+    if (status === "requested" || status === "reviewing") {
+      summary.needsAction += 1;
+      summary.active += 1;
+    } else if (status === "payment_required") {
+      summary.awaitingPayment += 1;
+      summary.active += 1;
+    } else if (status === "paid") {
+      summary.readyToConfirm += 1;
+      summary.active += 1;
+    } else if (status === "confirmed") {
+      summary.confirmed += 1;
+      summary.active += 1;
+    } else if (status === "completed") {
+      summary.completed += 1;
+    } else if (status === "declined" || status === "cancelled") {
+      summary.closed += 1;
+    }
+  }
+
+  return summary;
+}
+
+function normalizeBookingStatus(value: unknown): CommerceBookingStatus | null {
+  return typeof value === "string" &&
+    COMMERCE_BOOKING_STATUSES.has(value as CommerceBookingStatus)
+    ? (value as CommerceBookingStatus)
+    : null;
 }
 
 function cleanListingId(value: unknown) {
