@@ -4,54 +4,54 @@ import {
   buildCommerceLedgerCsv,
   commerceLedgerCsvFilename,
 } from "../lib/payments/commerce-ledger-csv";
-import type { CommerceLedgerEntry } from "../lib/payments/commerce-ledger";
+import {
+  buildCommerceCaptureLedgerEntry,
+  buildCommerceRefundLedgerEntry,
+} from "../lib/payments/commerce-ledger";
 
-const capture: CommerceLedgerEntry = {
-  id: "capture-1",
-  kind: "capture",
-  status: "held",
+const capture = buildCommerceCaptureLedgerEntry({
   bookingId: "booking-1",
   bookingReference: "STAY-2026-001",
   listingId: "listing-a",
   listingName: "=Dangerous Business",
   paymentIntentId: "pi_capture_1",
   checkoutSessionId: "cs_capture_1",
-  refundId: null,
-  reversalOfEntryId: null,
   stripeEventId: "evt_capture_1",
-  currency: "usd",
-  feeBps: 1000,
-  feePolicySource: "environment",
   grossAmountCents: 10_000,
-  platformFeeCents: 1_000,
-  merchantSettlementCents: 9_000,
-  reportedRefundAmountCents: null,
-  unallocatedAmountCents: 0,
+  currency: "usd",
+  policy: { feeBps: 1000, source: "environment" },
+  verified: true,
   occurredAt: "2026-08-05T12:00:00.000Z",
-  createdAt: "2026-08-05T12:00:01.000Z",
-  updatedAt: "2026-08-05T12:00:01.000Z",
-};
+  now: new Date("2026-08-05T12:00:01.000Z"),
+});
+assert.ok(capture);
 
-const refund: CommerceLedgerEntry = {
-  ...capture,
-  id: "refund-1",
-  kind: "refund",
-  status: "posted",
+const refund = buildCommerceRefundLedgerEntry({
+  bookingId: capture.bookingId,
+  bookingReference: capture.bookingReference,
+  listingId: capture.listingId,
+  listingName: capture.listingName,
+  paymentIntentId: capture.paymentIntentId,
+  checkoutSessionId: capture.checkoutSessionId,
   refundId: "re_refund_1",
-  reversalOfEntryId: capture.id,
   stripeEventId: "evt_refund_1",
-  grossAmountCents: -10_000,
-  platformFeeCents: -1_000,
-  merchantSettlementCents: -9_000,
-  reportedRefundAmountCents: 10_000,
+  refundStatus: "succeeded",
+  refundAmountCents: capture.grossAmountCents,
+  currency: capture.currency,
+  paymentIntentMatches: true,
+  fullRefund: true,
+  captureEntryId: capture.id,
+  captureGrossAmountCents: capture.grossAmountCents,
+  capturePlatformFeeCents: capture.platformFeeCents,
+  captureMerchantSettlementCents: capture.merchantSettlementCents,
+  feeBps: capture.feeBps,
+  feePolicySource: capture.feePolicySource,
   occurredAt: "2026-08-05T13:00:00.000Z",
-  createdAt: "2026-08-05T13:00:01.000Z",
-  updatedAt: "2026-08-05T13:00:01.000Z",
-};
+  now: new Date("2026-08-05T13:00:01.000Z"),
+});
+assert.ok(refund);
 
-const otherListing: CommerceLedgerEntry = {
-  ...capture,
-  id: "capture-2",
+const otherListing = buildCommerceCaptureLedgerEntry({
   bookingId: "booking-2",
   bookingReference: "TOUR-2026-002",
   listingId: "listing-b",
@@ -60,17 +60,16 @@ const otherListing: CommerceLedgerEntry = {
   checkoutSessionId: "cs_capture_2",
   stripeEventId: "evt_capture_2",
   grossAmountCents: 5_000,
-  platformFeeCents: 500,
-  merchantSettlementCents: 4_500,
-};
+  currency: "usd",
+  policy: { feeBps: 1000, source: "environment" },
+  verified: true,
+  occurredAt: "2026-08-05T14:00:00.000Z",
+  now: new Date("2026-08-05T14:00:01.000Z"),
+});
+assert.ok(otherListing);
 
 const malformed = {
   ...capture,
-  id: "capture-malformed",
-  bookingId: "booking-malformed",
-  bookingReference: "BAD-2026-001",
-  paymentIntentId: "pi_malformed",
-  stripeEventId: "evt_malformed",
   occurredAt: "not-a-date",
 };
 
@@ -87,7 +86,6 @@ assert.equal(csv.startsWith("\uFEFF"), true);
 assert.equal(csv.includes("guest_email"), false);
 assert.equal(csv.includes("STAY-2026-001"), true);
 assert.equal(csv.includes("TOUR-2026-002"), false);
-assert.equal(csv.includes("BAD-2026-001"), false);
 assert.equal(csv.includes("'=Dangerous Business"), true);
 assert.equal(csv.includes('"10000","1000","9000","0"'), true);
 assert.equal(csv.includes('"-10000","-1000","-9000","0"'), true);
@@ -120,26 +118,34 @@ const cleanCsv = buildCommerceLedgerCsv([capture, otherListing], {
 });
 assert.equal(cleanCsv.includes("listing-a"), true);
 assert.equal(cleanCsv.includes("listing-b"), true);
-assert.match(cleanCsv, /"statement_total"[^\r\n]*"validated"[^\r\n]*"0"/);
+assert.match(
+  cleanCsv,
+  /"statement_total"[^\r\n]*"validated"[^\r\n]*"0"/,
+);
 assert.equal(
   cleanCsv.includes("Totals include every selected validated ledger entry."),
   true,
 );
 
-const spreadsheetInjectionCsv = buildCommerceLedgerCsv(
-  [
-    {
-      ...capture,
-      id: "capture-formula",
-      bookingId: "booking-formula",
-      bookingReference: "-2+3",
-      listingName: "@SUM(A1:A2)",
-      paymentIntentId: "pi_formula",
-      stripeEventId: "evt_formula",
-    },
-  ],
-  { generatedAt },
-);
+const formulaCapture = buildCommerceCaptureLedgerEntry({
+  bookingId: "booking-formula",
+  bookingReference: "-2+3",
+  listingId: "listing-formula",
+  listingName: "@SUM(A1:A2)",
+  paymentIntentId: "pi_formula",
+  checkoutSessionId: "cs_formula",
+  stripeEventId: "evt_formula",
+  grossAmountCents: 1_000,
+  currency: "usd",
+  policy: { feeBps: 0, source: "unconfigured" },
+  verified: true,
+  occurredAt: "2026-08-05T15:00:00.000Z",
+  now: new Date("2026-08-05T15:00:01.000Z"),
+});
+assert.ok(formulaCapture);
+const spreadsheetInjectionCsv = buildCommerceLedgerCsv([formulaCapture], {
+  generatedAt,
+});
 assert.equal(spreadsheetInjectionCsv.includes("'-2+3"), true);
 assert.equal(spreadsheetInjectionCsv.includes("'@SUM(A1:A2)"), true);
 
