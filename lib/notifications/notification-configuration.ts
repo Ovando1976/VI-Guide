@@ -27,8 +27,8 @@ export function notificationConfigurationStatus({
   cronSecret,
   appUrl,
 }: NotificationConfigurationInput): NotificationConfigurationStatus {
-  const emailProviderConfigured = Boolean(clean(resendApiKey, 500));
-  const senderConfigured = Boolean(clean(emailFrom, 320));
+  const emailProviderConfigured = clean(resendApiKey, 500).length >= 8;
+  const senderConfigured = isValidSenderIdentity(emailFrom);
   const operationsRecipientCount = normalizeConfigurationEmails(
     operationsEmails,
   ).length;
@@ -76,9 +76,19 @@ export function normalizeConfigurationEmails(value: unknown) {
             ? candidate.trim().toLowerCase().slice(0, 220)
             : "",
         )
-        .filter((candidate) => /^\S+@\S+\.\S+$/.test(candidate)),
+        .filter(isSimpleEmail),
     ),
   ).slice(0, 20);
+}
+
+export function isValidSenderIdentity(value: unknown) {
+  const candidate = clean(value, 320);
+  if (!candidate) return false;
+  if (isSimpleEmail(candidate.toLowerCase())) return true;
+
+  const match = candidate.match(/^([^<>]{1,120})\s*<([^<>]+)>$/);
+  if (!match) return false;
+  return Boolean(match[1]?.trim()) && isSimpleEmail(match[2]?.trim().toLowerCase() ?? "");
 }
 
 function isSafeHttpsOrigin(value: unknown) {
@@ -87,10 +97,21 @@ function isSafeHttpsOrigin(value: unknown) {
 
   try {
     const parsed = new URL(candidate);
-    return parsed.protocol === "https:" && parsed.origin === candidate.replace(/\/$/, "");
+    return (
+      parsed.protocol === "https:" &&
+      parsed.username === "" &&
+      parsed.password === "" &&
+      parsed.pathname === "/" &&
+      parsed.search === "" &&
+      parsed.hash === ""
+    );
   } catch {
     return false;
   }
+}
+
+function isSimpleEmail(value: string) {
+  return /^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(value);
 }
 
 function clean(value: unknown, maxLength: number) {
