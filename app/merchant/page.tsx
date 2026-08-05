@@ -30,8 +30,8 @@ export default async function MerchantHomePage() {
     session.role === "merchant" ? session.listingIds ?? [] : [];
   const firstListingId = merchantListingIds[0] ?? "";
   const availabilityHref = firstListingId
-    ? `/provider/operations?listingId=${encodeURIComponent(firstListingId)}`
-    : "/provider/operations";
+    ? `/merchant/availability?listingId=${encodeURIComponent(firstListingId)}`
+    : "/merchant/availability";
 
   return (
     <main className="px-4 py-8 pb-32 sm:px-6 lg:py-12">
@@ -134,7 +134,7 @@ export default async function MerchantHomePage() {
                 {merchantListingIds.map((listingId) => (
                   <Link
                     key={listingId}
-                    href={`/provider/operations?listingId=${encodeURIComponent(listingId)}`}
+                    href={`/merchant/availability?listingId=${encodeURIComponent(listingId)}`}
                     className="group rounded-[24px] border border-slate-200 bg-[#fbfaf6] p-5 transition hover:border-teal-300 hover:bg-teal-50"
                   >
                     <p className="text-[9px] font-black uppercase tracking-[.14em] text-teal-700">
