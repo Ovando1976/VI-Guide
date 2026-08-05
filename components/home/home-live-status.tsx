@@ -28,10 +28,10 @@ const STATUS_ITEMS = [
     href: "/beaches",
   },
   {
-    label: "Happening today",
-    value: "Build a day around local events",
+    label: "Tours & experiences",
+    value: "Book something memorable today",
     icon: CalendarDays,
-    href: "/events",
+    href: "/experiences",
   },
 ] as const;
 
