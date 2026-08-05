@@ -22,15 +22,23 @@ type MerchantAccount = {
 };
 
 export function ApprovedPartnerOnboarding({
+  applicationId,
   email,
   listingId,
+  convertedAt,
 }: {
+  applicationId: string;
   email: string;
   listingId: string;
+  convertedAt: string | null;
 }) {
+  const normalizedApplicationId = applicationId.trim();
   const normalizedEmail = email.trim().toLowerCase();
   const normalizedListingId = listingId.trim();
   const [account, setAccount] = useState<MerchantAccount | null>(null);
+  const [conversionRecorded, setConversionRecorded] = useState(
+    Boolean(convertedAt),
+  );
   const [loading, setLoading] = useState(Boolean(normalizedEmail));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -77,8 +85,8 @@ export function ApprovedPartnerOnboarding({
     };
   }, [normalizedEmail]);
 
-  async function grantAccess() {
-    if (!account || !normalizedListingId) return;
+  async function completeOnboarding() {
+    if (!account || !normalizedListingId || !normalizedApplicationId) return;
     setSaving(true);
     setError(null);
     setMessage(null);
@@ -93,24 +101,31 @@ export function ApprovedPartnerOnboarding({
           email: account.email,
           enabled: true,
           listingIds,
+          partnerApplicationId: normalizedApplicationId,
         }),
       });
       const payload = (await response.json().catch(() => null)) as
-        | { account?: MerchantAccount; message?: string; error?: string }
+        | {
+            account?: MerchantAccount;
+            partnerConversionRecorded?: boolean;
+            message?: string;
+            error?: string;
+          }
         | null;
       if (!response.ok || !payload?.account) {
-        throw new Error(payload?.error || "Unable to grant merchant access.");
+        throw new Error(payload?.error || "Unable to complete partner onboarding.");
       }
       setAccount(payload.account);
+      setConversionRecorded(payload.partnerConversionRecorded === true);
       setMessage(
         payload.message ||
-          `Merchant access was granted for ${normalizedListingId}.`,
+          `Merchant access and onboarding were recorded for ${normalizedListingId}.`,
       );
     } catch (caught) {
       setError(
         caught instanceof Error
           ? caught.message
-          : "Unable to grant merchant access.",
+          : "Unable to complete partner onboarding.",
       );
     } finally {
       setSaving(false);
@@ -123,6 +138,12 @@ export function ApprovedPartnerOnboarding({
     account?.role === "merchant" &&
       normalizedListingId &&
       account.listingIds.includes(normalizedListingId),
+  );
+  const needsOnboardingAction = Boolean(
+    account &&
+      normalizedListingId &&
+      normalizedApplicationId &&
+      (!alreadyAssigned || !conversionRecorded),
   );
 
   return (
@@ -151,11 +172,11 @@ export function ApprovedPartnerOnboarding({
             <span className="inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 text-[9px] font-black uppercase tracking-[.13em] text-amber-800">
               <Loader2 className="h-4 w-4 animate-spin" /> Loading account
             </span>
-          ) : account && normalizedListingId && !alreadyAssigned ? (
+          ) : needsOnboardingAction ? (
             <button
               type="button"
-              disabled={saving || account.disabled || !account.editable}
-              onClick={() => void grantAccess()}
+              disabled={saving || account?.disabled || !account?.editable}
+              onClick={() => void completeOnboarding()}
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.13em] text-white disabled:opacity-50"
             >
               {saving ? (
@@ -163,7 +184,7 @@ export function ApprovedPartnerOnboarding({
               ) : (
                 <ShieldCheck className="h-4 w-4" />
               )}
-              Grant listing access
+              {alreadyAssigned ? "Record onboarding" : "Grant listing access"}
             </button>
           ) : null}
         </div>
@@ -184,9 +205,13 @@ export function ApprovedPartnerOnboarding({
           </div>
         ) : null}
 
-        {alreadyAssigned ? (
+        {alreadyAssigned && conversionRecorded ? (
           <div className="mt-4 flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-800">
-            <CheckCircle2 className="h-4 w-4" /> This account already manages the reviewed listing.
+            <CheckCircle2 className="h-4 w-4" /> Merchant access is active and the partner conversion is recorded.
+          </div>
+        ) : alreadyAssigned ? (
+          <div className="mt-4 flex items-center gap-2 rounded-2xl border border-amber-200 bg-white px-4 py-3 text-sm font-bold text-amber-900">
+            <AlertTriangle className="h-4 w-4" /> This account already manages the listing, but the approved application still needs its onboarding completion recorded.
           </div>
         ) : null}
         {message ? (
