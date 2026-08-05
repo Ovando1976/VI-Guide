@@ -39,19 +39,23 @@ export function CommerceLedgerExportActions() {
             payload?.error || "Unable to verify the ledger before export.",
           );
         }
+        if (!payload?.ledgerValidation) {
+          throw new Error("The ledger validation result was incomplete.");
+        }
         if (!active) return;
         setValidation({
-          totalRecords: safeCount(payload?.ledgerValidation?.totalRecords),
+          totalRecords: safeCount(payload.ledgerValidation.totalRecords),
           validatedRecords: safeCount(
-            payload?.ledgerValidation?.validatedRecords,
+            payload.ledgerValidation.validatedRecords,
           ),
           rejectedRecordCount: safeCount(
-            payload?.ledgerValidation?.rejectedRecordCount,
+            payload.ledgerValidation.rejectedRecordCount,
           ),
         });
         setValidationError(null);
       } catch (caught) {
         if (!active) return;
+        setValidation(null);
         setValidationError(
           caught instanceof Error
             ? caught.message
@@ -66,7 +70,7 @@ export function CommerceLedgerExportActions() {
     };
   }, []);
 
-  const exportBlocked = Boolean(validationError);
+  const exportBlocked = !validation || Boolean(validationError);
 
   return (
     <section className="border-b border-emerald-100 bg-emerald-50/70 px-4 py-5 text-[#043331] sm:px-6">
