@@ -11,6 +11,7 @@ import {
   notificationCanBeManuallyRetried,
   summarizeNotificationOutbox,
 } from "@/lib/notifications/booking-notification-operations";
+import { reconcileRecentCommerceBookingNotifications } from "@/lib/notifications/commerce-booking-notification-recovery";
 import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
@@ -86,8 +87,38 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json().catch(() => null)) as
-      | { ids?: unknown }
+      | { action?: unknown; ids?: unknown }
       | null;
+    const db = getAdminDb();
+
+    if (body?.action === "reconcile") {
+      const reconciliation =
+        await reconcileRecentCommerceBookingNotifications(db, 25);
+      const delivery = await deliverInChunks(db, reconciliation.createdIds);
+      const now = new Date().toISOString();
+      await db.collection("notificationOutboxAudit").add({
+        action: "manual_reconciliation",
+        scannedBookings: reconciliation.scannedBookings,
+        candidates: reconciliation.candidates,
+        created: reconciliation.createdIds.length,
+        delivery,
+        actorUid: session.uid,
+        actorEmail: session.email ?? null,
+        createdAt: now,
+        serverCreatedAt: FieldValue.serverTimestamp(),
+      });
+
+      return NextResponse.json({
+        ok: true,
+        reconciliation: {
+          scannedBookings: reconciliation.scannedBookings,
+          candidates: reconciliation.candidates,
+          created: reconciliation.createdIds.length,
+        },
+        delivery,
+      });
+    }
+
     const ids = normalizeNotificationRetryIds(body?.ids);
     if (!ids.length) {
       return NextResponse.json(
@@ -96,7 +127,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const db = getAdminDb();
     const now = new Date();
     const retryPatch = manualNotificationRetryPatch({
       actorUid: session.uid,
@@ -161,7 +191,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const delivery = await processBookingNotificationOutboxIds(db, requeuedIds);
+    const delivery = await deliverInChunks(db, requeuedIds);
     return NextResponse.json({
       ok: true,
       requested: ids.length,
@@ -171,12 +201,30 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
-    console.error("notification outbox retry error", error);
+    console.error("notification outbox operation error", error);
     return NextResponse.json(
-      { error: "Unable to retry notification delivery." },
+      { error: "Unable to run notification delivery operations." },
       { status: 500 },
     );
   }
+}
+
+async function deliverInChunks(
+  db: FirebaseFirestore.Firestore,
+  ids: string[],
+) {
+  const summary = { delivered: 0, deferred: 0, skipped: 0, failed: 0 };
+  for (let index = 0; index < ids.length; index += 25) {
+    const result = await processBookingNotificationOutboxIds(
+      db,
+      ids.slice(index, index + 25),
+    );
+    summary.delivered += result.delivered;
+    summary.deferred += result.deferred;
+    summary.skipped += result.skipped;
+    summary.failed += result.failed;
+  }
+  return summary;
 }
 
 function nullableTimestamp(value: unknown) {
