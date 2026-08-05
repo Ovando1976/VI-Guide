@@ -27,9 +27,10 @@ export default async function MerchantAvailabilityPage({
 
   const managedListingIds =
     session.role === "merchant" ? session.listingIds ?? [] : [];
-  const requestedListingId = Array.isArray(searchParams?.listingId)
-    ? searchParams.listingId[0]
-    : searchParams?.listingId;
+  const rawListingId = searchParams?.listingId;
+  const requestedListingId = Array.isArray(rawListingId)
+    ? rawListingId[0]
+    : rawListingId;
   const initialListingId = resolveMerchantListingSelection({
     requestedListingId,
     managedListingIds,
