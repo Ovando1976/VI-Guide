@@ -36,16 +36,62 @@ export function resolveStoredCommerceCaptureEntry(input: {
       : input.data.status === "review_required"
         ? "review_required"
         : null;
+  const bookingId = clean(input.data.bookingId, 180);
+  const bookingReference = clean(input.data.bookingReference, 180);
+  const listingId = clean(input.data.listingId, 180);
+  const listingName = clean(input.data.listingName, 220);
   const paymentIntentId = clean(input.data.paymentIntentId, 220);
-  const grossAmountCents = signedMoney(input.data.grossAmountCents);
-  const platformFeeCents = signedMoney(input.data.platformFeeCents);
-  const merchantSettlementCents = signedMoney(
+  const checkoutSessionId = clean(input.data.checkoutSessionId, 220);
+  const stripeEventId = clean(input.data.stripeEventId, 220);
+  const currency = clean(input.data.currency, 3).toLowerCase();
+  const feeBps = boundedFeeBps(input.data.feeBps);
+  const feePolicySource =
+    input.data.feePolicySource === "environment"
+      ? "environment"
+      : input.data.feePolicySource === "unconfigured"
+        ? "unconfigured"
+        : null;
+  const grossAmountCents = integerMoney(input.data.grossAmountCents);
+  const platformFeeCents = integerMoney(input.data.platformFeeCents);
+  const merchantSettlementCents = integerMoney(
     input.data.merchantSettlementCents,
   );
-  const unallocatedAmountCents = signedMoney(
+  const unallocatedAmountCents = integerMoney(
     input.data.unallocatedAmountCents,
   );
-  const feeBps = nonNegativeMoney(input.data.feeBps);
+  const occurredAt = normalizedIso(input.data.occurredAt);
+  const createdAt = normalizedIso(
+    input.data.createdAt ?? input.data.serverCreatedAt,
+  );
+  const updatedAt = normalizedIso(
+    input.data.updatedAt ?? input.data.serverUpdatedAt ?? input.data.createdAt,
+  );
+
+  if (
+    !input.id ||
+    !status ||
+    !bookingId ||
+    !bookingReference ||
+    !listingId ||
+    !listingName ||
+    !paymentIntentId ||
+    !checkoutSessionId ||
+    !stripeEventId ||
+    !/^[a-z]{3}$/.test(currency) ||
+    feeBps === null ||
+    !feePolicySource ||
+    grossAmountCents === null ||
+    platformFeeCents === null ||
+    merchantSettlementCents === null ||
+    unallocatedAmountCents === null ||
+    !occurredAt ||
+    !createdAt ||
+    !updatedAt ||
+    paymentIntentId !== input.expectedPaymentIntentId
+  ) {
+    return null;
+  }
+
   const validHeld = Boolean(
     status === "held" &&
       grossAmountCents === input.expectedGrossAmountCents &&
@@ -62,48 +108,32 @@ export function resolveStoredCommerceCaptureEntry(input: {
       merchantSettlementCents === 0 &&
       unallocatedAmountCents === input.expectedGrossAmountCents,
   );
-
-  if (
-    !status ||
-    !paymentIntentId ||
-    paymentIntentId !== input.expectedPaymentIntentId ||
-    (!validHeld && !validReview) ||
-    feeBps > 10_000
-  ) {
-    return null;
-  }
+  if (!validHeld && !validReview) return null;
 
   return {
     id: input.id,
     kind: "capture",
     status,
-    bookingId: clean(input.data.bookingId, 180),
-    bookingReference: clean(input.data.bookingReference, 180),
-    listingId: clean(input.data.listingId, 180),
-    listingName: clean(input.data.listingName, 220),
+    bookingId,
+    bookingReference,
+    listingId,
+    listingName,
     paymentIntentId,
-    checkoutSessionId: clean(input.data.checkoutSessionId, 220) || null,
+    checkoutSessionId,
     refundId: null,
     reversalOfEntryId: null,
-    stripeEventId: clean(input.data.stripeEventId, 220),
-    currency: clean(input.data.currency, 3).toLowerCase() || "usd",
+    stripeEventId,
+    currency,
     feeBps,
-    feePolicySource:
-      input.data.feePolicySource === "environment"
-        ? "environment"
-        : "unconfigured",
+    feePolicySource,
     grossAmountCents,
     platformFeeCents,
     merchantSettlementCents,
     reportedRefundAmountCents: null,
     unallocatedAmountCents,
-    occurredAt: normalizedIso(input.data.occurredAt),
-    createdAt: normalizedIso(
-      input.data.createdAt ?? input.data.serverCreatedAt,
-    ),
-    updatedAt: normalizedIso(
-      input.data.updatedAt ?? input.data.serverUpdatedAt ?? input.data.createdAt,
-    ),
+    occurredAt,
+    createdAt,
+    updatedAt,
   };
 }
 
@@ -154,17 +184,19 @@ function normalizedIso(value: unknown) {
     const date = (value as { toDate(): Date }).toDate();
     if (Number.isFinite(date.getTime())) return date.toISOString();
   }
-  return new Date(0).toISOString();
+  return "";
 }
 
-function nonNegativeMoney(value: unknown) {
+function boundedFeeBps(value: unknown) {
   const amount = Number(value);
-  return Number.isSafeInteger(amount) && amount >= 0 ? amount : 0;
+  return Number.isInteger(amount) && amount >= 0 && amount <= 10_000
+    ? amount
+    : null;
 }
 
-function signedMoney(value: unknown) {
+function integerMoney(value: unknown) {
   const amount = Number(value);
-  return Number.isSafeInteger(amount) ? amount : 0;
+  return Number.isSafeInteger(amount) ? amount : null;
 }
 
 function clean(value: unknown, maxLength: number) {
