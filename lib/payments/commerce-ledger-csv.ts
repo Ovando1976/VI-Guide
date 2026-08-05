@@ -27,6 +27,8 @@ const CSV_COLUMNS = [
   "currency",
   "fee_bps",
   "fee_policy_source",
+  "statement_note",
+  "rejected_record_count",
 ] as const;
 
 export function buildCommerceLedgerCsv(
@@ -34,17 +36,48 @@ export function buildCommerceLedgerCsv(
   options: CommerceLedgerCsvOptions = {},
 ) {
   const listingId = clean(options.listingId, 180);
-  const selected = entries
-    .filter((entry) => !listingId || clean(entry.listingId, 180) === listingId)
-    .map(normalizeEntry)
+  const selectedRaw = entries.filter(
+    (entry) => !listingId || clean(entry.listingId, 180) === listingId,
+  );
+  const normalized = selectedRaw.map(normalizeEntry);
+  const selected = normalized
     .filter((entry): entry is CommerceLedgerEntry => Boolean(entry))
     .sort((left, right) => {
       const byTime = left.occurredAt.localeCompare(right.occurredAt);
       return byTime || left.id.localeCompare(right.id);
     });
+  const rejectedRecordCount = normalized.length - selected.length;
+  const generatedAt = (options.generatedAt ?? new Date()).toISOString();
+  const statementListingName =
+    listingId && selected.length ? selected[0].listingName : "";
 
   const rows: Array<Array<string | number | null>> = [
     [...CSV_COLUMNS],
+    [
+      "statement_note",
+      generatedAt,
+      "",
+      "",
+      "accounting_evidence_only",
+      "",
+      listingId,
+      statementListingName,
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "usd",
+      "",
+      "",
+      "Accounting evidence only; not proof that a merchant payout or settlement occurred.",
+      rejectedRecordCount,
+    ],
     ...selected.map((entry) => [
       "entry",
       entry.occurredAt,
@@ -67,6 +100,8 @@ export function buildCommerceLedgerCsv(
       entry.currency,
       entry.feeBps,
       entry.feePolicySource,
+      "",
+      "",
     ]),
   ];
 
@@ -80,17 +115,16 @@ export function buildCommerceLedgerCsv(
     },
     { gross: 0, platformFee: 0, merchantSettlement: 0, unallocated: 0 },
   );
-  const generatedAt = (options.generatedAt ?? new Date()).toISOString();
 
   rows.push([
     "statement_total",
     generatedAt,
     "",
     "",
-    "",
+    rejectedRecordCount ? "review_required" : "validated",
     "",
     listingId,
-    listingId && selected.length ? selected[0].listingName : "",
+    statementListingName,
     totals.gross,
     totals.platformFee,
     totals.merchantSettlement,
@@ -104,6 +138,10 @@ export function buildCommerceLedgerCsv(
     "usd",
     "",
     "",
+    rejectedRecordCount
+      ? "Totals exclude malformed records; review the rejected record count before relying on this statement."
+      : "Totals include every selected validated ledger entry.",
+    rejectedRecordCount,
   ]);
 
   return `\uFEFF${rows.map((row) => row.map(csvCell).join(",")).join("\r\n")}\r\n`;
@@ -146,7 +184,7 @@ function normalizeEntry(
   const occurredAt = normalizeIso(value.occurredAt);
   const createdAt = normalizeIso(value.createdAt);
   const updatedAt = normalizeIso(value.updatedAt);
-  const feeBps = nonNegativeInteger(value.feeBps);
+  const feeBps = boundedFeeBps(value.feeBps);
   const grossAmountCents = signedInteger(value.grossAmountCents);
   const platformFeeCents = signedInteger(value.platformFeeCents);
   const merchantSettlementCents = signedInteger(value.merchantSettlementCents);
@@ -199,7 +237,11 @@ function normalizeEntry(
     currency,
     feeBps,
     feePolicySource:
-      value.feePolicySource === "environment" ? "environment" : "unconfigured",
+      value.feePolicySource === "environment"
+        ? "environment"
+        : value.feePolicySource === "unconfigured"
+          ? "unconfigured"
+          : "unconfigured",
     grossAmountCents,
     platformFeeCents,
     merchantSettlementCents,
@@ -218,7 +260,7 @@ function csvCell(value: string | number | null) {
 }
 
 function protectSpreadsheet(value: string) {
-  return /^[=+@\t\r]/.test(value) || /^-\D/.test(value) ? `'${value}` : value;
+  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
 }
 
 function normalizeIso(value: unknown) {
@@ -236,6 +278,13 @@ function normalizeIso(value: unknown) {
     return Number.isFinite(date.getTime()) ? date.toISOString() : "";
   }
   return "";
+}
+
+function boundedFeeBps(value: unknown) {
+  const number = Number(value);
+  return Number.isInteger(number) && number >= 0 && number <= 10_000
+    ? number
+    : null;
 }
 
 function nonNegativeInteger(value: unknown) {
