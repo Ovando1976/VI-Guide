@@ -11,6 +11,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { canManageListing } from "@/lib/merchant-access";
+import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import {
   bookingEventForStatus,
   normalizeBookingNotification,
@@ -149,6 +150,7 @@ export async function PATCH(
         ...paymentReset,
       });
 
+      const notificationOutboxIds: string[] = [];
       for (const audience of ["traveler", "operations"] as const) {
         const notificationRef = db.collection("notifications").doc();
         transaction.set(notificationRef, {
@@ -189,6 +191,7 @@ export async function PATCH(
             409,
           );
         }
+        notificationOutboxIds.push(outbox.id);
         transaction.set(
           db.collection("notificationOutbox").doc(outbox.id),
           {
@@ -201,28 +204,42 @@ export async function PATCH(
       }
 
       return {
-        id: bookingId,
-        status,
-        merchantNote: resolvedMerchantNote,
-        proposedTime: resolvedProposedTime,
-        depositAmountCents:
-          status === "payment_required"
-            ? depositAmountCents
-            : Number(booking.depositAmountCents ?? 0) || null,
-        paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
-        paymentStatus:
-          status === "payment_required"
-            ? "unpaid"
-            : String(booking.paymentStatus ?? "unpaid"),
-        paymentHref:
-          status === "payment_required" ? null : booking.paymentHref ?? null,
-        checkoutSessionId:
-          status === "payment_required" ? null : booking.checkoutSessionId ?? null,
-        updatedAt,
+        booking: {
+          id: bookingId,
+          status,
+          merchantNote: resolvedMerchantNote,
+          proposedTime: resolvedProposedTime,
+          depositAmountCents:
+            status === "payment_required"
+              ? depositAmountCents
+              : Number(booking.depositAmountCents ?? 0) || null,
+          paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
+          paymentStatus:
+            status === "payment_required"
+              ? "unpaid"
+              : String(booking.paymentStatus ?? "unpaid"),
+          paymentHref:
+            status === "payment_required" ? null : booking.paymentHref ?? null,
+          checkoutSessionId:
+            status === "payment_required"
+              ? null
+              : booking.checkoutSessionId ?? null,
+          updatedAt,
+        },
+        notificationOutboxIds,
       };
     });
 
-    return NextResponse.json({ ok: true, booking: result });
+    try {
+      await processBookingNotificationOutboxIds(
+        db,
+        result.notificationOutboxIds,
+      );
+    } catch (error) {
+      console.error("merchant notification delivery attempt failed", error);
+    }
+
+    return NextResponse.json({ ok: true, booking: result.booking });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
