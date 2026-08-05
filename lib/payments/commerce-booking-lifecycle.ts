@@ -14,7 +14,10 @@ export type MerchantCommerceTransition = Exclude<
   "draft" | "requested" | "paid"
 >;
 
-const MERCHANT_TRANSITIONS: Record<CommerceLifecycleStatus, MerchantCommerceTransition[]> = {
+const MERCHANT_TRANSITIONS: Record<
+  CommerceLifecycleStatus,
+  MerchantCommerceTransition[]
+> = {
   draft: [],
   requested: ["reviewing", "payment_required", "declined", "cancelled"],
   reviewing: ["payment_required", "declined", "cancelled"],
@@ -26,10 +29,29 @@ const MERCHANT_TRANSITIONS: Record<CommerceLifecycleStatus, MerchantCommerceTran
   cancelled: [],
 };
 
-export function normalizeCommerceLifecycleStatus(value: unknown): CommerceLifecycleStatus {
+export function normalizeCommerceLifecycleStatus(
+  value: unknown,
+): CommerceLifecycleStatus {
   return typeof value === "string" && value in MERCHANT_TRANSITIONS
     ? (value as CommerceLifecycleStatus)
     : "requested";
+}
+
+export function merchantCommerceTransitionsForStatus(
+  value: unknown,
+): MerchantCommerceTransition[] {
+  const status = normalizeCommerceLifecycleStatus(value);
+  return [...MERCHANT_TRANSITIONS[status]];
+}
+
+export function canMerchantCommerceTransition(
+  currentStatus: unknown,
+  nextStatus: unknown,
+): nextStatus is MerchantCommerceTransition {
+  return (
+    isMerchantCommerceTransition(nextStatus) &&
+    merchantCommerceTransitionsForStatus(currentStatus).includes(nextStatus)
+  );
 }
 
 export function merchantCommerceTransitionError(input: {
@@ -38,7 +60,7 @@ export function merchantCommerceTransitionError(input: {
   depositAmountCents: number;
   hasActiveCheckout?: boolean;
 }) {
-  if (!MERCHANT_TRANSITIONS[input.currentStatus].includes(input.nextStatus)) {
+  if (!canMerchantCommerceTransition(input.currentStatus, input.nextStatus)) {
     if (input.currentStatus === "paid" && input.nextStatus === "cancelled") {
       return "Paid bookings must use the refund workflow before cancellation.";
     }
@@ -53,7 +75,8 @@ export function merchantCommerceTransitionError(input: {
 
   if (
     input.nextStatus === "payment_required" &&
-    (!Number.isSafeInteger(input.depositAmountCents) || input.depositAmountCents <= 0)
+    (!Number.isSafeInteger(input.depositAmountCents) ||
+      input.depositAmountCents <= 0)
   ) {
     return "Enter a valid deposit amount before requesting payment.";
   }
@@ -69,7 +92,9 @@ export function merchantCommerceTransitionError(input: {
   return null;
 }
 
-export function isMerchantCommerceTransition(value: unknown): value is MerchantCommerceTransition {
+export function isMerchantCommerceTransition(
+  value: unknown,
+): value is MerchantCommerceTransition {
   return (
     value === "reviewing" ||
     value === "payment_required" ||
