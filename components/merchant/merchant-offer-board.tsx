@@ -212,7 +212,10 @@ export function MerchantOfferBoard({
     try {
       const offer = {
         listingId: form.listingId,
-        listingName: form.listingName,
+        listingName:
+          role === "merchant"
+            ? humanizeListingId(form.listingId)
+            : form.listingName,
         kind: form.kind,
         island: form.island,
         title: form.title,
@@ -532,14 +535,33 @@ function OfferEditor({
               />
             )}
           </Field>
-          <Field label="Public listing name">
-            <input
-              value={form.listingName}
-              onChange={(event) => patch({ listingName: event.target.value })}
-              className={inputClass()}
-              maxLength={180}
-              placeholder="Island Tour One"
-            />
+          <Field
+            label={
+              role === "merchant"
+                ? "Verified listing name"
+                : "Public listing name"
+            }
+          >
+            <>
+              <input
+                value={
+                  role === "merchant"
+                    ? humanizeListingId(form.listingId)
+                    : form.listingName
+                }
+                disabled={role === "merchant"}
+                onChange={(event) => patch({ listingName: event.target.value })}
+                className={inputClass()}
+                maxLength={180}
+                placeholder="Island Tour One"
+              />
+              {role === "merchant" ? (
+                <p className="mt-2 text-[11px] font-semibold normal-case leading-5 tracking-normal text-slate-500">
+                  VI Guide derives this public name from the assigned listing ID.
+                  An administrator can apply a reviewed display name when needed.
+                </p>
+              ) : null}
+            </>
           </Field>
           <Field label="Offer type">
             <select
@@ -862,7 +884,9 @@ function StatusBadge({ status }: { status: MerchantOfferStatus }) {
     archived: "bg-slate-200 text-slate-700",
   };
   return (
-    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[status]}`}>
+    <span
+      className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[status]}`}
+    >
       {status}
     </span>
   );
@@ -876,7 +900,9 @@ function PublicBadge({ state }: { state: PublicState }) {
     unavailable: "bg-slate-100 text-slate-500",
   };
   return (
-    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[state]}`}>
+    <span
+      className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[state]}`}
+    >
       {humanize(state)}
     </span>
   );
