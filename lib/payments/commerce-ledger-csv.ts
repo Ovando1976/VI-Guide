@@ -1,4 +1,5 @@
 import type { CommerceLedgerEntry } from "@/lib/payments/commerce-ledger";
+import { normalizeStoredCommerceLedgerEntry } from "@/lib/payments/commerce-ledger-operations";
 
 export type CommerceLedgerCsvOptions = {
   listingId?: string | null;
@@ -39,7 +40,12 @@ export function buildCommerceLedgerCsv(
   const selectedRaw = entries.filter(
     (entry) => !listingId || clean(entry.listingId, 180) === listingId,
   );
-  const normalized = selectedRaw.map(normalizeEntry);
+  const normalized = selectedRaw.map((entry) =>
+    normalizeStoredCommerceLedgerEntry({
+      id: entry.id,
+      data: entry,
+    }),
+  );
   const selected = normalized
     .filter((entry): entry is CommerceLedgerEntry => Boolean(entry))
     .sort((left, right) => {
@@ -161,140 +167,15 @@ export function commerceLedgerCsvFilename(input: {
     : `vi-guide-commerce-ledger-${day}.csv`;
 }
 
-function normalizeEntry(
-  value: Partial<CommerceLedgerEntry>,
-): CommerceLedgerEntry | null {
-  const kind = value.kind === "capture" || value.kind === "refund" ? value.kind : null;
-  const status =
-    value.status === "held" ||
-    value.status === "posted" ||
-    value.status === "processing" ||
-    value.status === "review_required" ||
-    value.status === "failed"
-      ? value.status
-      : null;
-  const id = clean(value.id, 100);
-  const bookingId = clean(value.bookingId, 180);
-  const bookingReference = clean(value.bookingReference, 180);
-  const listingId = clean(value.listingId, 180);
-  const listingName = clean(value.listingName, 220);
-  const paymentIntentId = clean(value.paymentIntentId, 220);
-  const stripeEventId = clean(value.stripeEventId, 220);
-  const currency = clean(value.currency, 3).toLowerCase();
-  const occurredAt = normalizeIso(value.occurredAt);
-  const createdAt = normalizeIso(value.createdAt);
-  const updatedAt = normalizeIso(value.updatedAt);
-  const feeBps = boundedFeeBps(value.feeBps);
-  const grossAmountCents = signedInteger(value.grossAmountCents);
-  const platformFeeCents = signedInteger(value.platformFeeCents);
-  const merchantSettlementCents = signedInteger(value.merchantSettlementCents);
-  const unallocatedAmountCents = signedInteger(value.unallocatedAmountCents);
-  const reportedRefundAmountCents =
-    value.reportedRefundAmountCents === null ||
-    value.reportedRefundAmountCents === undefined
-      ? null
-      : nonNegativeInteger(value.reportedRefundAmountCents);
-
-  if (
-    !kind ||
-    !status ||
-    !id ||
-    !bookingId ||
-    !bookingReference ||
-    !listingId ||
-    !listingName ||
-    !paymentIntentId ||
-    !stripeEventId ||
-    !/^[a-z]{3}$/.test(currency) ||
-    !occurredAt ||
-    !createdAt ||
-    !updatedAt ||
-    feeBps === null ||
-    grossAmountCents === null ||
-    platformFeeCents === null ||
-    merchantSettlementCents === null ||
-    unallocatedAmountCents === null ||
-    (reportedRefundAmountCents === null &&
-      value.reportedRefundAmountCents !== null &&
-      value.reportedRefundAmountCents !== undefined)
-  ) {
-    return null;
-  }
-
-  return {
-    id,
-    kind,
-    status,
-    bookingId,
-    bookingReference,
-    listingId,
-    listingName,
-    paymentIntentId,
-    checkoutSessionId: clean(value.checkoutSessionId, 220) || null,
-    refundId: clean(value.refundId, 220) || null,
-    reversalOfEntryId: clean(value.reversalOfEntryId, 100) || null,
-    stripeEventId,
-    currency,
-    feeBps,
-    feePolicySource:
-      value.feePolicySource === "environment"
-        ? "environment"
-        : value.feePolicySource === "unconfigured"
-          ? "unconfigured"
-          : "unconfigured",
-    grossAmountCents,
-    platformFeeCents,
-    merchantSettlementCents,
-    reportedRefundAmountCents,
-    unallocatedAmountCents,
-    occurredAt,
-    createdAt,
-    updatedAt,
-  };
-}
-
 function csvCell(value: string | number | null) {
   if (value === null) return "";
-  const raw = typeof value === "number" ? String(value) : protectSpreadsheet(value);
+  const raw =
+    typeof value === "number" ? String(value) : protectSpreadsheet(value);
   return `"${raw.replaceAll('"', '""')}"`;
 }
 
 function protectSpreadsheet(value: string) {
   return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
-}
-
-function normalizeIso(value: unknown) {
-  if (typeof value === "string") {
-    const parsed = Date.parse(value);
-    return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
-  }
-  if (
-    value &&
-    typeof value === "object" &&
-    "toDate" in value &&
-    typeof (value as { toDate?: unknown }).toDate === "function"
-  ) {
-    const date = (value as { toDate(): Date }).toDate();
-    return Number.isFinite(date.getTime()) ? date.toISOString() : "";
-  }
-  return "";
-}
-
-function boundedFeeBps(value: unknown) {
-  const number = Number(value);
-  return Number.isInteger(number) && number >= 0 && number <= 10_000
-    ? number
-    : null;
-}
-
-function nonNegativeInteger(value: unknown) {
-  const number = Number(value);
-  return Number.isSafeInteger(number) && number >= 0 ? number : null;
-}
-
-function signedInteger(value: unknown) {
-  const number = Number(value);
-  return Number.isSafeInteger(number) ? number : null;
 }
 
 function clean(value: unknown, maxLength: number) {
