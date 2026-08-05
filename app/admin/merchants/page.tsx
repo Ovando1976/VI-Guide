@@ -49,7 +49,7 @@ export default async function MerchantAccessPage({
 }
 
 async function findApprovedPartner(email: string, listingId: string) {
-  if (!email || !hasFirebaseAdminConfiguration()) return null;
+  if (!email || !listingId || !hasFirebaseAdminConfiguration()) return null;
 
   const snapshot = await getAdminDb()
     .collection("partnerApplications")
@@ -62,7 +62,7 @@ async function findApprovedPartner(email: string, listingId: string) {
     if (normalizePartnerApplicationStatus(data.status) !== "approved") continue;
 
     const approvedListingId = clean(data.existingListingId, 160);
-    if (listingId && approvedListingId !== listingId) continue;
+    if (approvedListingId !== listingId) continue;
 
     return {
       applicationId: document.id,
