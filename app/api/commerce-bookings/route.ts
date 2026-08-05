@@ -15,7 +15,11 @@ import {
   type MerchantOfferBookingSnapshot,
 } from "@/lib/merchant-offer-booking";
 import { merchantOfferDemandPatch } from "@/lib/merchant-offer-demand";
-import { merchantOfferRequestDocumentId } from "@/lib/merchant-offer-request-id";
+import {
+  merchantOfferRequestDocumentId,
+  merchantOfferRequestQuotaAllows,
+  merchantOfferRequestQuotaDocumentId,
+} from "@/lib/merchant-offer-request-id";
 import { normalizeMerchantOfferId } from "@/lib/merchant-offers";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
@@ -69,6 +73,8 @@ export async function POST(request: NextRequest) {
       let offerSnapshot: MerchantOfferBookingSnapshot | null = null;
       let offerRef: FirebaseFirestore.DocumentReference | null = null;
       let offerRecord: FirebaseFirestore.DocumentData | null = null;
+      let requestQuotaRef: FirebaseFirestore.DocumentReference | null = null;
+      let requestQuotaCount = 0;
       let bookingInput: Partial<CommerceBookingRequest> = body;
 
       if (offerId) {
@@ -142,6 +148,23 @@ export async function POST(request: NextRequest) {
             offer: offerResponse(data, offerSnapshot),
           };
         }
+
+        requestQuotaRef = db
+          .collection("merchantOfferRequestIntake")
+          .doc(
+            merchantOfferRequestQuotaDocumentId({
+              email: booking.email,
+              now: requestNow,
+            }),
+          );
+        const quotaDocument = await transaction.get(requestQuotaRef);
+        requestQuotaCount = Number(quotaDocument.data()?.count ?? 0);
+        if (!merchantOfferRequestQuotaAllows(requestQuotaCount)) {
+          throw new CommerceBookingActionError(
+            "Unable to accept additional offer requests for this email today.",
+            429,
+          );
+        }
       }
 
       const reference = createReference(booking.kind);
@@ -166,6 +189,19 @@ export async function POST(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
         source: offerSnapshot ? "vi-guide-offer" : "vi-guide-web",
       });
+
+      if (requestQuotaRef) {
+        transaction.set(
+          requestQuotaRef,
+          {
+            dayKey: getUsviToday(requestNow),
+            count: requestQuotaCount + 1,
+            lastSubmittedAt: now,
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
+      }
 
       if (offerSnapshot && offerRef && offerRecord) {
         transaction.update(offerRef, {
@@ -198,7 +234,12 @@ export async function POST(request: NextRequest) {
     if (error instanceof CommerceBookingActionError) {
       return NextResponse.json(
         { error: error.message },
-        { status: error.status },
+        {
+          status: error.status,
+          ...(error.status === 429
+            ? { headers: { "Retry-After": "3600" } }
+            : {}),
+        },
       );
     }
     console.error("commerce booking create error", error);
@@ -323,7 +364,7 @@ function createReference(kind: CommerceBookingKind) {
 class CommerceBookingActionError extends Error {
   constructor(
     message: string,
-    readonly status: 400 | 404 | 409,
+    readonly status: 400 | 404 | 409 | 429,
   ) {
     super(message);
   }
