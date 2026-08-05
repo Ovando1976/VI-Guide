@@ -14,6 +14,7 @@ import {
   resolveMerchantOfferForBooking,
   type MerchantOfferBookingSnapshot,
 } from "@/lib/merchant-offer-booking";
+import { merchantOfferRequestDocumentId } from "@/lib/merchant-offer-request-id";
 import { normalizeMerchantOfferId } from "@/lib/merchant-offers";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest) {
   }
 
   const db = getAdminDb();
-  const bookingRef = db.collection("commerceBookings").doc();
+  const requestNow = new Date();
 
   try {
     const result = await db.runTransaction(async (transaction) => {
@@ -73,6 +74,7 @@ export async function POST(request: NextRequest) {
         const resolution = resolveMerchantOfferForBooking({
           offerId,
           record: offerDocument.exists ? offerDocument.data() ?? {} : null,
+          now: requestNow,
         });
         if (!resolution.ok) {
           throw new CommerceBookingActionError(
@@ -92,7 +94,7 @@ export async function POST(request: NextRequest) {
         };
       }
 
-      const booking = normalizeBooking(bookingInput);
+      const booking = normalizeBooking(bookingInput, requestNow);
       if (!booking) {
         throw new CommerceBookingActionError(
           "Please complete the required booking information with future travel dates.",
@@ -100,8 +102,46 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      let bookingRef = db.collection("commerceBookings").doc();
+      if (offerSnapshot) {
+        bookingRef = db
+          .collection("commerceBookings")
+          .doc(
+            merchantOfferRequestDocumentId({
+              offerId: offerSnapshot.offerId,
+              email: booking.email,
+              startDate: booking.startDate,
+              endDate: booking.endDate ?? null,
+              preferredTime: booking.preferredTime ?? null,
+              adults: booking.adults,
+              children: booking.children,
+              offerPriceCents: offerSnapshot.offerPriceCents,
+              offerDepositCents: offerSnapshot.offerDepositCents,
+              now: requestNow,
+            }),
+          );
+        const existing = await transaction.get(bookingRef);
+        if (existing.exists) {
+          const data = existing.data() ?? {};
+          const reference = clean(data.reference, 160);
+          if (!reference) {
+            throw new CommerceBookingActionError(
+              "The existing offer request could not be verified.",
+              409,
+            );
+          }
+          return {
+            duplicate: true,
+            bookingId: bookingRef.id,
+            reference,
+            status: clean(data.status, 40) || "requested",
+            offer: offerResponse(data, offerSnapshot),
+          };
+        }
+      }
+
       const reference = createReference(booking.kind);
-      const now = new Date().toISOString();
+      const now = requestNow.toISOString();
       transaction.set(bookingRef, {
         ...booking,
         ...(offerSnapshot
@@ -123,25 +163,25 @@ export async function POST(request: NextRequest) {
         source: offerSnapshot ? "vi-guide-offer" : "vi-guide-web",
       });
 
-      return { reference, offerSnapshot };
+      return {
+        duplicate: false,
+        bookingId: bookingRef.id,
+        reference,
+        status: "requested",
+        offer: offerSnapshot ? offerResponse({}, offerSnapshot) : null,
+      };
     });
 
     return NextResponse.json(
       {
         ok: true,
-        bookingId: bookingRef.id,
+        duplicate: result.duplicate,
+        bookingId: result.bookingId,
         reference: result.reference,
-        status: "requested",
-        ...(result.offerSnapshot
-          ? {
-              offerId: result.offerSnapshot.offerId,
-              offerTitle: result.offerSnapshot.offerTitle,
-              offerPriceCents: result.offerSnapshot.offerPriceCents,
-              offerDepositCents: result.offerSnapshot.offerDepositCents,
-            }
-          : {}),
+        status: result.status,
+        ...(result.offer ?? {}),
       },
-      { status: 201 },
+      { status: result.duplicate ? 200 : 201 },
     );
   } catch (error) {
     if (error instanceof CommerceBookingActionError) {
@@ -160,6 +200,7 @@ export async function POST(request: NextRequest) {
 
 function normalizeBooking(
   body: Partial<CommerceBookingRequest> | null,
+  now: Date = new Date(),
 ): CommerceBookingRequest | null {
   if (!body) return null;
 
@@ -180,7 +221,7 @@ function normalizeBooking(
     clean(body.listingHref, 500) || null,
     "https://vi-guide.local",
   );
-  const today = getUsviToday();
+  const today = getUsviToday(now);
 
   if (
     !listingId ||
@@ -217,6 +258,21 @@ function normalizeBooking(
   };
 }
 
+function offerResponse(
+  record: FirebaseFirestore.DocumentData,
+  fallback: MerchantOfferBookingSnapshot,
+) {
+  return {
+    offerId: normalizeMerchantOfferId(record.offerId) || fallback.offerId,
+    offerTitle: clean(record.offerTitle, 120) || fallback.offerTitle,
+    offerPriceCents: storedMoney(record.offerPriceCents, fallback.offerPriceCents),
+    offerDepositCents: nullableStoredMoney(
+      record.offerDepositCents,
+      fallback.offerDepositCents,
+    ),
+  };
+}
+
 function isBookingKind(value: unknown): value is CommerceBookingKind {
   return typeof value === "string" &&
     BOOKING_KINDS.includes(value as CommerceBookingKind);
@@ -225,6 +281,17 @@ function isBookingKind(value: unknown): value is CommerceBookingKind {
 function isIsland(value: unknown): value is IntelligenceIsland {
   return typeof value === "string" &&
     ISLANDS.includes(value as IntelligenceIsland);
+}
+
+function storedMoney(value: unknown, fallback: number) {
+  const amount = Number(value);
+  return Number.isInteger(amount) && amount >= 0 ? amount : fallback;
+}
+
+function nullableStoredMoney(value: unknown, fallback: number | null) {
+  if (value === null) return null;
+  if (value === undefined || value === "") return fallback;
+  return storedMoney(value, fallback ?? 0);
 }
 
 function clean(value: unknown, maxLength: number) {
