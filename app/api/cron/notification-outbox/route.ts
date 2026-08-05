@@ -4,7 +4,11 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
-import { processDueBookingNotifications } from "@/lib/notifications/booking-notification-delivery";
+import {
+  processBookingNotificationOutboxIds,
+  processDueBookingNotifications,
+} from "@/lib/notifications/booking-notification-delivery";
+import { reconcileRecentCommerceBookingNotifications } from "@/lib/notifications/commerce-booking-notification-recovery";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,8 +29,38 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await processDueBookingNotifications(getAdminDb(), 25);
-    return NextResponse.json({ ok: true, result });
+    const db = getAdminDb();
+    const reconciliation =
+      await reconcileRecentCommerceBookingNotifications(db, 25);
+    const recovered = {
+      delivered: 0,
+      deferred: 0,
+      skipped: 0,
+      failed: 0,
+    };
+
+    for (let index = 0; index < reconciliation.createdIds.length; index += 25) {
+      const result = await processBookingNotificationOutboxIds(
+        db,
+        reconciliation.createdIds.slice(index, index + 25),
+      );
+      recovered.delivered += result.delivered;
+      recovered.deferred += result.deferred;
+      recovered.skipped += result.skipped;
+      recovered.failed += result.failed;
+    }
+
+    const due = await processDueBookingNotifications(db, 25);
+    return NextResponse.json({
+      ok: true,
+      reconciliation: {
+        scannedBookings: reconciliation.scannedBookings,
+        candidates: reconciliation.candidates,
+        created: reconciliation.createdIds.length,
+      },
+      recovered,
+      due,
+    });
   } catch (error) {
     console.error("notification outbox cron error", error);
     return NextResponse.json(
