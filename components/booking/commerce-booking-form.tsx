@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { useMemo, useState, type FormEvent } from "react";
 
+import {
+  addCalendarDays,
+  getUsviToday,
+  isBookableEndDate,
+  isBookableStartDate,
+} from "@/lib/booking/booking-dates";
 import type { CommerceBookingKind } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
@@ -32,8 +38,15 @@ export function CommerceBookingForm() {
   const listingId = cleanParam(params.get("listingId")) || "custom-request";
   const listingName = cleanParam(params.get("listingName")) || "VI Guide experience";
   const listingHref = cleanParam(params.get("listingHref"));
-  const initialStart = cleanDate(params.get("startDate"));
-  const initialEnd = cleanDate(params.get("endDate"));
+  const today = getUsviToday();
+  const requestedStart = cleanDate(params.get("startDate"));
+  const initialStart = isBookableStartDate(requestedStart, today)
+    ? requestedStart
+    : "";
+  const requestedEnd = cleanDate(params.get("endDate"));
+  const initialEnd = isBookableEndDate(initialStart, requestedEnd)
+    ? requestedEnd
+    : "";
   const initialAdults = clamp(Number(params.get("adults")) || 2, 1, 20);
 
   const [startDate, setStartDate] = useState(initialStart);
@@ -52,6 +65,7 @@ export function CommerceBookingForm() {
     bookingId: string;
   } | null>(null);
 
+  const minimumEndDate = addCalendarDays(startDate || today, 1);
   const title = useMemo(() => {
     if (kind === "accommodation") return "Request this stay";
     if (kind === "tour") return "Request this tour";
@@ -61,6 +75,19 @@ export function CommerceBookingForm() {
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (loading) return;
+
+    if (!isBookableStartDate(startDate, today)) {
+      setError("Choose today or a future date for this request.");
+      return;
+    }
+
+    if (
+      kind === "accommodation" &&
+      !isBookableEndDate(startDate, endDate)
+    ) {
+      setError("Check-out must be at least one day after check-in.");
+      return;
+    }
 
     setLoading(true);
     setError(null);
@@ -195,8 +222,18 @@ export function CommerceBookingForm() {
                   <input
                     required
                     type="date"
+                    min={today}
                     value={startDate}
-                    onChange={(event) => setStartDate(event.target.value)}
+                    onChange={(event) => {
+                      const nextStartDate = event.target.value;
+                      setStartDate(nextStartDate);
+                      if (
+                        endDate &&
+                        !isBookableEndDate(nextStartDate, endDate)
+                      ) {
+                        setEndDate("");
+                      }
+                    }}
                     className="field-input"
                   />
                 </Field>
@@ -206,7 +243,7 @@ export function CommerceBookingForm() {
                     <input
                       required
                       type="date"
-                      min={startDate || undefined}
+                      min={minimumEndDate || undefined}
                       value={endDate}
                       onChange={(event) => setEndDate(event.target.value)}
                       className="field-input"
