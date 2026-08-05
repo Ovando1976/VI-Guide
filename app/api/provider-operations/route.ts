@@ -1,11 +1,16 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
-import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import {
+  AuthError,
+  authErrorResponse,
+  requireSession,
+} from "@/lib/auth-server";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { canManageListing } from "@/lib/merchant-access";
 import type {
   ProviderAvailabilityDay,
   ProviderOperationsConfig,
@@ -14,11 +19,11 @@ import type {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const OPERATIONS_ROLES = ["admin", "dispatcher"] as const;
+const OPERATIONS_ROLES = ["admin", "dispatcher", "merchant"] as const;
 
 export async function GET(request: NextRequest) {
   try {
-    await requireSession([...OPERATIONS_ROLES]);
+    const session = await requireSession([...OPERATIONS_ROLES]);
 
     if (!hasFirebaseAdminConfiguration()) {
       return NextResponse.json(
@@ -31,6 +36,7 @@ export async function GET(request: NextRequest) {
     if (!listingId) {
       return NextResponse.json({ error: "A listingId is required." }, { status: 400 });
     }
+    requireListingAccess(session, listingId);
 
     const document = await getAdminDb()
       .collection("providerOperations")
@@ -77,6 +83,7 @@ export async function PUT(request: NextRequest) {
         { status: 400 },
       );
     }
+    requireListingAccess(session, config.listingId);
 
     const updatedAt = new Date().toISOString();
     await getAdminDb()
@@ -101,6 +108,18 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json(
       { error: "Unable to save provider operations." },
       { status: 500 },
+    );
+  }
+}
+
+function requireListingAccess(
+  session: Awaited<ReturnType<typeof requireSession>>,
+  listingId: string,
+) {
+  if (!canManageListing(session, listingId)) {
+    throw new AuthError(
+      "You do not have permission to manage this listing.",
+      403,
     );
   }
 }
