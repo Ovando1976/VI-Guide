@@ -10,6 +10,18 @@ assert.equal(
   "merchant@example.com",
 );
 
+const unclaimedRider = merchantClaimsForUpdate({
+  currentClaims: {},
+  enabled: true,
+  listingIds: ["hotel-one"],
+});
+assert.equal(unclaimedRider.ok, true);
+if (unclaimedRider.ok) {
+  assert.equal(unclaimedRider.currentRole, "rider");
+  assert.equal(unclaimedRider.claims.role, "merchant");
+  assert.deepEqual(unclaimedRider.listingIds, ["hotel-one"]);
+}
+
 const granted = merchantClaimsForUpdate({
   currentClaims: { role: "rider", betaAccess: true },
   enabled: true,
