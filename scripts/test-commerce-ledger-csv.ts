@@ -64,29 +64,84 @@ const otherListing: CommerceLedgerEntry = {
   merchantSettlementCents: 4_500,
 };
 
+const malformed = {
+  ...capture,
+  id: "capture-malformed",
+  bookingId: "booking-malformed",
+  bookingReference: "BAD-2026-001",
+  paymentIntentId: "pi_malformed",
+  stripeEventId: "evt_malformed",
+  occurredAt: "not-a-date",
+};
+
 const generatedAt = new Date("2026-08-06T00:00:00.000Z");
-const csv = buildCommerceLedgerCsv([otherListing, refund, capture], {
-  listingId: "listing-a",
-  generatedAt,
-});
+const csv = buildCommerceLedgerCsv(
+  [otherListing, refund, malformed, capture],
+  {
+    listingId: "listing-a",
+    generatedAt,
+  },
+);
 
 assert.equal(csv.startsWith("\uFEFF"), true);
 assert.equal(csv.includes("guest_email"), false);
 assert.equal(csv.includes("STAY-2026-001"), true);
 assert.equal(csv.includes("TOUR-2026-002"), false);
+assert.equal(csv.includes("BAD-2026-001"), false);
 assert.equal(csv.includes("'=Dangerous Business"), true);
 assert.equal(csv.includes('"10000","1000","9000","0"'), true);
 assert.equal(csv.includes('"-10000","-1000","-9000","0"'), true);
-assert.equal(csv.includes('"statement_total"'), true);
+assert.equal(csv.includes('"statement_note"'), true);
+assert.equal(
+  csv.includes(
+    "Accounting evidence only; not proof that a merchant payout or settlement occurred.",
+  ),
+  true,
+);
+assert.equal(csv.includes('"rejected_record_count"'), true);
+assert.match(
+  csv,
+  /"statement_total"[^\r\n]*"review_required"[^\r\n]*"1"/,
+);
+assert.equal(
+  csv.includes(
+    "Totals exclude malformed records; review the rejected record count before relying on this statement.",
+  ),
+  true,
+);
 assert.equal(
   csv.includes('"0","0","0","0"'),
   true,
   "Full reversal should leave zero statement totals.",
 );
 
-const allCsv = buildCommerceLedgerCsv([capture, otherListing], { generatedAt });
-assert.equal(allCsv.includes("listing-a"), true);
-assert.equal(allCsv.includes("listing-b"), true);
+const cleanCsv = buildCommerceLedgerCsv([capture, otherListing], {
+  generatedAt,
+});
+assert.equal(cleanCsv.includes("listing-a"), true);
+assert.equal(cleanCsv.includes("listing-b"), true);
+assert.match(cleanCsv, /"statement_total"[^\r\n]*"validated"[^\r\n]*"0"/);
+assert.equal(
+  cleanCsv.includes("Totals include every selected validated ledger entry."),
+  true,
+);
+
+const spreadsheetInjectionCsv = buildCommerceLedgerCsv(
+  [
+    {
+      ...capture,
+      id: "capture-formula",
+      bookingId: "booking-formula",
+      bookingReference: "-2+3",
+      listingName: "@SUM(A1:A2)",
+      paymentIntentId: "pi_formula",
+      stripeEventId: "evt_formula",
+    },
+  ],
+  { generatedAt },
+);
+assert.equal(spreadsheetInjectionCsv.includes("'-2+3"), true);
+assert.equal(spreadsheetInjectionCsv.includes("'@SUM(A1:A2)"), true);
 
 assert.equal(
   commerceLedgerCsvFilename({ listingId: "Listing A / East", generatedAt }),
