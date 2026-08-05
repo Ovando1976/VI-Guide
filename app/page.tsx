@@ -5,7 +5,6 @@ import {
   BedDouble,
   Compass,
   History,
-  MapPin,
   Navigation,
   Search,
   Sparkles,
@@ -16,6 +15,8 @@ import {
 } from "lucide-react";
 
 import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+import { HomeConciergeHub } from "@/components/home/home-concierge-hub";
+import { HomeLiveStatus } from "@/components/home/home-live-status";
 
 const ISLANDS = [
   {
@@ -121,7 +122,7 @@ const HOME_FEATURES = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-32 text-[#073b39]">
+    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-[calc(12rem+env(safe-area-inset-bottom))] text-[#073b39] sm:pb-32">
       <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 sm:px-8 lg:px-12 lg:pb-28">
         <div className="absolute inset-0 -z-30 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_42%]" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
@@ -136,7 +137,7 @@ export default function Home() {
             </div>
           </Link>
           <div className="flex items-center gap-2">
-            <Link href="/today" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] md:inline-flex">My AI day</Link>
+            <Link href={CONCIERGE_START_HREF} className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] md:inline-flex">My AI day</Link>
             <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
             <Link href={CONCIERGE_START_HREF} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
               <Sparkles size={14} /> Ask VI Concierge
@@ -187,7 +188,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto -mt-12 max-w-7xl px-4 sm:px-8 lg:px-12">
+      <HomeLiveStatus />
+
+      <section className="relative z-10 mx-auto mt-8 max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="rounded-[30px] border border-[#d9e5e2] bg-white/96 p-4 shadow-[0_28px_80px_rgba(4,51,49,.14)] backdrop-blur sm:p-5">
           <div className="mb-4 flex items-center justify-between px-1">
             <div>
@@ -215,7 +218,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-8 lg:px-12">
+      <HomeConciergeHub />
+
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-8 lg:px-12">
         <div className="grid gap-6 lg:grid-cols-3">
           {HOME_FEATURES.map((feature) => {
             const Icon = feature.icon;
@@ -249,26 +254,6 @@ export default function Home() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="px-4 pb-20 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[36px] bg-[#073b39] text-white shadow-[0_30px_90px_rgba(4,51,49,.2)] lg:grid-cols-[1.15fr_.85fr]">
-          <div className="p-8 sm:p-10 lg:p-12">
-            <div className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.24em] text-[#f5c451]"><Sparkles size={14} /> VI Concierge</div>
-            <h2 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[.98] tracking-[-.045em] sm:text-5xl">Tell us what kind of day you want.</h2>
-            <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/66">VI Concierge connects places, timing, transportation, and local context so your plan feels effortless.</p>
-            <Link href={CONCIERGE_START_HREF} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]">Start planning <ArrowRight size={16} /></Link>
-          </div>
-          <div className="relative min-h-[360px] overflow-hidden bg-[url('/images/places/st-john/trunk-bay-beach-1.jpg')] bg-cover bg-center">
-            <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(15,118,110,.35),rgba(6,59,57,.78))]" />
-            <div className="relative flex h-full items-end p-8">
-              <div className="rounded-[24px] bg-white p-5 text-[#073b39] shadow-xl">
-                <div className="text-[9px] font-black uppercase tracking-[.18em] text-[#b16a18]">One connected guide</div>
-                <div className="mt-3 flex items-center gap-3 text-sm font-bold"><MapPin size={16} className="text-[#0f766e]" /> Beaches, dining, heritage, stays, and rides in one synchronized experience.</div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </main>
