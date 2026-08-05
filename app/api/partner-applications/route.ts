@@ -5,10 +5,8 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
-import {
-  normalizePartnerApplication,
-  partnerApplicationDayKey,
-} from "@/lib/partners/partner-application";
+import { normalizePartnerApplication } from "@/lib/partners/partner-application";
+import { partnerTerritoryDayKey } from "@/lib/partners/partner-calendar";
 import {
   partnerApplicationEmailDayFingerprint,
   partnerApplicationFingerprint,
@@ -44,7 +42,7 @@ export async function POST(request: NextRequest) {
   }
 
   const application = validation.application;
-  const dayKey = partnerApplicationDayKey(now);
+  const dayKey = partnerTerritoryDayKey(now);
   const fingerprint = partnerApplicationFingerprint({
     email: application.email,
     businessName: application.businessName,
