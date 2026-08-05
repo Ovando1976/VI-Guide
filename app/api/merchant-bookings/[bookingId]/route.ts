@@ -11,6 +11,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { canManageListing } from "@/lib/merchant-access";
+import { merchantOfferDepositError } from "@/lib/merchant-offer-deposit-policy";
 import { resolveMerchantOfferDeposit } from "@/lib/merchant-offer-deposit";
 import {
   isMerchantCommerceTransition,
@@ -91,6 +92,16 @@ export async function PATCH(
         offerDepositCents: booking.offerDepositCents,
       });
       const depositAmountCents = deposit.amountCents;
+      if (status === "payment_required") {
+        const depositError = merchantOfferDepositError({
+          amountCents: depositAmountCents,
+          offerPriceCents: booking.offerPriceCents,
+        });
+        if (depositError) {
+          throw new BookingActionError(depositError, 409);
+        }
+      }
+
       const currentStatus = normalizeCommerceLifecycleStatus(booking.status);
       const transitionError = merchantCommerceTransitionError({
         currentStatus,
