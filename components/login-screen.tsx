@@ -10,6 +10,18 @@ import {
 } from "firebase/auth";
 import { auth, hasFirebaseClientConfiguration } from "@/lib/firebase";
 
+function safeInternalDestination(value: string | null) {
+  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/";
+
+  try {
+    const destination = new URL(value, window.location.origin);
+    if (destination.origin !== window.location.origin) return "/";
+    return `${destination.pathname}${destination.search}${destination.hash}`;
+  } catch {
+    return "/";
+  }
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const params = useSearchParams();
@@ -31,8 +43,7 @@ export default function LoginPage() {
     if (!response.ok) {
       throw new Error((await response.json()).error ?? "Unable to start session.");
     }
-    const next = params.get("next");
-    router.replace(next?.startsWith("/") ? next : "/");
+    router.replace(safeInternalDestination(params.get("next")));
     router.refresh();
   }
 
