@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 
 import {
   normalizeNotificationRecipients,
+  notificationClaimIsCurrent,
   notificationIsDue,
   notificationRetryDelayMs,
 } from "../lib/notifications/booking-notification-delivery";
@@ -83,6 +84,28 @@ assert.equal(
   notificationIsDue(
     { status: "failed", nextAttemptAt: null, leaseUntil: null },
     now,
+  ),
+  false,
+);
+
+assert.equal(
+  notificationClaimIsCurrent(
+    { status: "processing", leaseId: "lease-current" },
+    "lease-current",
+  ),
+  true,
+);
+assert.equal(
+  notificationClaimIsCurrent(
+    { status: "processing", leaseId: "lease-newer" },
+    "lease-stale",
+  ),
+  false,
+);
+assert.equal(
+  notificationClaimIsCurrent(
+    { status: "pending", leaseId: "lease-current" },
+    "lease-current",
   ),
   false,
 );
