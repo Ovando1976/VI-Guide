@@ -130,6 +130,11 @@ assert.deepEqual(
         nextFollowUpDate: "2026-08-05",
       },
       { status: "approved", nextFollowUpDate: "2026-08-04" },
+      {
+        status: "approved",
+        merchantAccessGrantedAt: "2026-08-05T16:30:00.000Z",
+      },
+      { status: "declined" },
     ],
     now,
   ),
@@ -141,7 +146,11 @@ assert.deepEqual(
     scheduled: 0,
     unscheduled: 1,
     contacted: 1,
-    closed: 1,
+    closed: 3,
+    approved: 2,
+    converted: 1,
+    awaitingOnboarding: 1,
+    declined: 1,
   },
 );
 
