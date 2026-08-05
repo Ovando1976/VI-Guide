@@ -25,12 +25,11 @@ export function recoveryNotificationsForCommerceBooking({
   const listingId = clean(data.listingId, 160);
   const listingName = clean(data.listingName, 180) || "VI Guide booking";
   const travelerEmail = clean(data.email, 220);
-  const status = clean(data.status, 40);
   const paymentStatus = clean(data.paymentStatus, 40);
+  const paymentIntegrityStatus = clean(data.paymentIntegrityStatus, 40);
   const refundStatus = clean(data.refundStatus, 40);
-  const createdAt =
-    normalizeTimestamp(data.createdAt) ?? normalizeTimestamp(data.updatedAt);
-  const updatedAt = normalizeTimestamp(data.updatedAt) ?? createdAt;
+  const updatedAt =
+    normalizeTimestamp(data.updatedAt) ?? normalizeTimestamp(data.createdAt);
   const paidAt = normalizeTimestamp(data.paidAt);
   const refundUpdatedAt = normalizeTimestamp(data.refundUpdatedAt) ?? updatedAt;
   const notifications = new Map<string, NormalizedBookingNotification>();
@@ -41,11 +40,9 @@ export function recoveryNotificationsForCommerceBooking({
     title: string;
     message: string;
     createdAt?: string;
-    travelerHref?: string;
-    merchantHref?: string;
     operationsHref?: string;
   }) {
-    const eventTime = input.createdAt ?? updatedAt ?? createdAt;
+    const eventTime = input.createdAt ?? updatedAt;
     if (!eventTime) return;
 
     for (const audience of input.audiences) {
@@ -61,9 +58,9 @@ export function recoveryNotificationsForCommerceBooking({
         message: input.message,
         href:
           audience === "traveler"
-            ? input.travelerHref ?? "/bookings"
+            ? "/bookings"
             : audience === "merchant"
-              ? input.merchantHref ?? "/merchant/lifecycle"
+              ? "/merchant/lifecycle"
               : input.operationsHref ?? "/admin/operations",
         createdAt: eventTime,
       });
@@ -71,87 +68,21 @@ export function recoveryNotificationsForCommerceBooking({
     }
   }
 
-  if (createdAt) {
-    add({
-      event: "booking_requested",
-      audiences: ["traveler", "merchant", "operations"],
-      title: "Booking request received",
-      message: `${listingName} booking ${reference} was received by VI Guide.`,
-      createdAt,
-      merchantHref: "/merchant/reservations",
-    });
-  }
-
-  if (status === "reviewing") {
-    add({
-      event: "booking_reviewing",
-      audiences: ["traveler", "operations"],
-      title: "Booking review started",
-      message: `${listingName} booking ${reference} is being reviewed.`,
-    });
-  }
-
-  if (status === "payment_required") {
-    add({
-      event: "payment_required",
-      audiences: ["traveler", "operations"],
-      title: "Deposit required",
-      message: `${listingName} booking ${reference} is ready for its secure deposit.`,
-    });
-  }
-
-  if (
+  const verifiedPayment =
     paidAt &&
+    paymentIntegrityStatus !== "review_required" &&
+    refundStatus !== "review_required" &&
     ["paid", "refund_pending", "refund_failed", "refunded"].includes(
       paymentStatus,
-    )
-  ) {
+    );
+
+  if (verifiedPayment) {
     add({
       event: "booking_paid",
       audiences: ["traveler", "merchant", "operations"],
       title: "Payment received",
       message: `${listingName} payment was received for booking ${reference}.`,
       createdAt: paidAt,
-    });
-  }
-
-  if (status === "confirmed") {
-    add({
-      event: "booking_confirmed",
-      audiences: ["traveler", "operations"],
-      title: "Booking confirmed",
-      message: `${listingName} booking ${reference} is confirmed.`,
-    });
-  }
-
-  if (status === "completed") {
-    add({
-      event: "booking_completed",
-      audiences: ["traveler", "operations"],
-      title: "Booking completed",
-      message: `${listingName} booking ${reference} was marked complete.`,
-    });
-  }
-
-  if (status === "declined") {
-    add({
-      event: "booking_declined",
-      audiences: ["traveler", "operations"],
-      title: "Booking declined",
-      message: `${listingName} booking ${reference} could not be accepted.`,
-    });
-  }
-
-  if (
-    status === "cancelled" &&
-    refundStatus !== "succeeded" &&
-    paymentStatus !== "refunded"
-  ) {
-    add({
-      event: "booking_cancelled",
-      audiences: ["traveler", "operations"],
-      title: "Booking cancelled",
-      message: `${listingName} booking ${reference} was cancelled.`,
     });
   }
 
@@ -235,7 +166,7 @@ export async function reconcileRecentCommerceBookingNotifications(
       if (record.exists) continue;
       transaction.set(record.ref, {
         ...record.notification,
-        recoverySource: "commerce_booking_reconciliation",
+        recoverySource: "commerce_financial_reconciliation",
         serverCreatedAt: FieldValue.serverTimestamp(),
         serverUpdatedAt: FieldValue.serverTimestamp(),
       });
