@@ -81,6 +81,33 @@ assert.deepEqual(
     error: "The offer start date cannot be before today in the USVI.",
   },
 );
+assert.equal(
+  normalizeMerchantOffer(
+    {
+      ...valid.offer,
+      validFrom: "2026-08-01",
+      validThrough: "2026-08-31",
+    },
+    now,
+    { allowStarted: true },
+  ).ok,
+  true,
+);
+assert.deepEqual(
+  normalizeMerchantOffer(
+    {
+      ...valid.offer,
+      validFrom: "2026-07-01",
+      validThrough: "2026-08-04",
+    },
+    now,
+    { allowStarted: true },
+  ),
+  {
+    ok: false,
+    error: "Expired offers cannot be edited or reactivated.",
+  },
+);
 assert.deepEqual(
   normalizeMerchantOffer(
     {
