@@ -1,11 +1,16 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
-import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import {
+  AuthError,
+  authErrorResponse,
+  requireSession,
+} from "@/lib/auth-server";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { canManageListing } from "@/lib/merchant-access";
 import {
   isMerchantCommerceTransition,
   merchantCommerceTransitionError,
@@ -16,12 +21,14 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const MERCHANT_ROLES = ["admin", "dispatcher", "merchant"] as const;
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { bookingId: string } },
 ) {
   try {
-    await requireSession(["admin", "dispatcher"]);
+    const session = await requireSession([...MERCHANT_ROLES]);
 
     if (!hasFirebaseAdminConfiguration()) {
       return NextResponse.json(
@@ -69,6 +76,14 @@ export async function PATCH(
       }
 
       const booking = snapshot.data() ?? {};
+      const listingId = clean(booking.listingId, 160);
+      if (!canManageListing(session, listingId)) {
+        throw new AuthError(
+          "You do not have permission to update this booking.",
+          403,
+        );
+      }
+
       const currentStatus = normalizeCommerceLifecycleStatus(booking.status);
       const transitionError = merchantCommerceTransitionError({
         currentStatus,
@@ -118,6 +133,8 @@ export async function PATCH(
         merchantNote: resolvedMerchantNote,
         proposedTime: resolvedProposedTime,
         merchantRespondedAt: updatedAt,
+        merchantRespondedByUid: session.uid,
+        merchantRespondedByEmail: session.email ?? null,
         ...paymentReset,
       });
 
