@@ -221,10 +221,14 @@ export async function PATCH(request: NextRequest) {
             409,
           );
         }
-        const validation = normalizeMerchantOffer({
-          ...body.offer,
-          listingId: data.listingId,
-        });
+        const validation = normalizeMerchantOffer(
+          {
+            ...body.offer,
+            listingId: data.listingId,
+          },
+          now,
+          { allowStarted: true },
+        );
         if (!validation.ok) {
           throw new MerchantOfferActionError(validation.error, 400);
         }
@@ -253,6 +257,26 @@ export async function PATCH(request: NextRequest) {
         nextStatus = requestedStatus;
         patch = { ...patch, status: requestedStatus };
         action = `offer_${requestedStatus}`;
+      }
+
+      if (requestedStatus === "active") {
+        const publication = normalizeMerchantOffer(
+          {
+            ...data,
+            ...patch,
+            listingId: data.listingId,
+          },
+          now,
+          { allowStarted: true },
+        );
+        if (!publication.ok) {
+          throw new MerchantOfferActionError(publication.error, 409);
+        }
+        patch = {
+          ...publication.offer,
+          ...patch,
+          status: "active",
+        };
       }
 
       const nowIso = now.toISOString();
@@ -357,7 +381,10 @@ function summarizeOffers(
       live: 0,
       scheduled: 0,
       expired: 0,
-    } as Record<MerchantOfferStatus | "total" | "live" | "scheduled" | "expired", number>,
+    } as Record<
+      MerchantOfferStatus | "total" | "live" | "scheduled" | "expired",
+      number
+    >,
   );
 }
 
