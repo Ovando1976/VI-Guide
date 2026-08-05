@@ -63,7 +63,7 @@ export function PremiumDetailShell({
   meta,
   heroCallout = DEFAULT_HERO_CALLOUT,
   actions,
-  kind = "place",
+  kind,
   quickFacts = [],
   categoryFacts = [],
   categorySections = [],
@@ -78,6 +78,7 @@ export function PremiumDetailShell({
   share,
   className = "",
 }: Props) {
+  const resolvedKind = kind ?? inferUnifiedKind(actions.journeyStop?.kind);
   const resolvedCapabilities =
     capabilities ??
     inferPlaceCapabilities({
@@ -88,6 +89,14 @@ export function PremiumDetailShell({
       hasWebsite: Boolean(actions.website),
       hasBooking: Boolean(actions.journeyStop?.bookingHref),
     });
+  const resolvedQuickFacts = quickFacts.length
+    ? quickFacts
+    : buildCapabilityFacts(actions);
+  const resolvedCategoryFacts = categoryFacts.length
+    ? categoryFacts
+    : buildCategoryFacts(resolvedKind, actions);
+  const conciergeHref =
+    actions.conciergeHref ?? buildConciergeHref(name, actions.island, resolvedKind);
 
   return (
     <main
@@ -140,7 +149,7 @@ export function PremiumDetailShell({
           journeyStop={actions.journeyStop}
         />
 
-        <UnifiedPlaceQuickFacts facts={quickFacts} />
+        <UnifiedPlaceQuickFacts facts={resolvedQuickFacts} />
 
         <PlaceCapabilityGrid
           capabilities={resolvedCapabilities}
@@ -155,9 +164,9 @@ export function PremiumDetailShell({
         />
 
         <UnifiedPlaceCategoryExtension
-          kind={kind}
+          kind={resolvedKind}
           title={categoryTitle}
-          facts={categoryFacts}
+          facts={resolvedCategoryFacts}
           sections={categorySections}
         />
 
@@ -175,7 +184,7 @@ export function PremiumDetailShell({
         <UnifiedPlaceContinuity
           mapHref={actions.mapHref}
           rideHref={actions.rideHref}
-          conciergeHref={actions.conciergeHref}
+          conciergeHref={conciergeHref}
           bookingHref={actions.bookingHref ?? actions.journeyStop?.bookingHref}
         />
 
@@ -183,4 +192,92 @@ export function PremiumDetailShell({
       </div>
     </main>
   );
+}
+
+function inferUnifiedKind(kind?: string): UnifiedPlaceKind {
+  if (kind === "beach") return "beach";
+  if (kind === "stay" || kind === "hotel" || kind === "accommodation") return "stay";
+  if (kind === "restaurant" || kind === "dining") return "restaurant";
+  if (kind === "historic" || kind === "heritage") return "historic";
+  if (kind === "fishing" || kind === "fish") return "fishing";
+  if (kind === "attraction" || kind === "activity" || kind === "tour") return "attraction";
+  return "place";
+}
+
+function buildCapabilityFacts(actions: Props["actions"]): UnifiedPlaceFact[] {
+  return [
+    { label: "Island", value: actions.island },
+    actions.mapHref
+      ? { label: "Map", value: "Ready", note: "Open this destination in the Living Map." }
+      : { label: "Map", value: "Location pending", note: "Map coverage is still being completed." },
+    actions.rideHref
+      ? { label: "Transportation", value: "Plan a ride", note: "Carry this destination into Mobility." }
+      : { label: "Transportation", value: "Ask Concierge", note: "Get locally grounded movement guidance." },
+    actions.journeyStop
+      ? { label: "Trip planning", value: "Saveable", note: "Add this stop to an itinerary." }
+      : { label: "Trip planning", value: "Explore", note: "Continue through nearby recommendations." },
+  ];
+}
+
+function buildCategoryFacts(
+  kind: UnifiedPlaceKind,
+  actions: Props["actions"],
+): UnifiedPlaceFact[] {
+  const shared: UnifiedPlaceFact[] = [
+    {
+      label: "Local context",
+      value: "Concierge ready",
+      note: "Ask for timing, nearby options, and a practical plan.",
+    },
+    {
+      label: "Route continuity",
+      value: actions.mapHref ? "Connected" : "Planning",
+      note: actions.mapHref
+        ? "Move directly between this page and the Living Map."
+        : "Location coverage is still being completed.",
+    },
+  ];
+
+  if (kind === "beach") {
+    return [
+      ...shared,
+      {
+        label: "Beach planning",
+        value: "Access first",
+        note: "Confirm conditions, facilities, parking, and the safest arrival plan before leaving.",
+      },
+      {
+        label: "Ride home",
+        value: actions.rideHref ? "Available" : "Ask Concierge",
+        note: "Plan return transportation before low-light or peak-demand periods.",
+      },
+    ];
+  }
+
+  if (kind === "stay") {
+    return [
+      ...shared,
+      { label: "Stay planning", value: "Trip connected", note: "Keep check-in, nearby plans, and transport together." },
+      { label: "Booking", value: actions.bookingHref ? "Available" : "Check options", note: "Use verified booking or contact actions when supplied." },
+    ];
+  }
+
+  if (kind === "restaurant") {
+    return [
+      ...shared,
+      { label: "Dining plan", value: "Day aware", note: "Pair the meal with nearby activities and travel time." },
+      { label: "Return travel", value: actions.rideHref ? "Available" : "Plan ahead", note: "Keep a safe ride option attached to evening plans." },
+    ];
+  }
+
+  return shared;
+}
+
+function buildConciergeHref(
+  name: string,
+  island: string,
+  kind: UnifiedPlaceKind,
+) {
+  const prompt = `Help me plan a visit to ${name} on ${island}. Treat it as a ${kind} stop. Include the best timing, practical access, nearby food or activities, transportation, and a backup option.`;
+  return `/concierge?open=true&prompt=${encodeURIComponent(prompt)}`;
 }
