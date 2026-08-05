@@ -79,15 +79,17 @@ export function PremiumDetailShell({
   className = "",
 }: Props) {
   const resolvedKind = kind ?? inferUnifiedKind(actions.journeyStop?.kind);
+  const resolvedBookingHref =
+    actions.bookingHref ?? actions.journeyStop?.bookingHref;
   const resolvedCapabilities =
     capabilities ??
     inferPlaceCapabilities({
       name,
       eyebrow,
       description,
-      kind: actions.journeyStop?.kind,
+      kind: resolvedKind,
       hasWebsite: Boolean(actions.website),
-      hasBooking: Boolean(actions.journeyStop?.bookingHref),
+      hasBooking: Boolean(resolvedBookingHref),
     });
   const resolvedQuickFacts = quickFacts.length
     ? quickFacts
@@ -96,7 +98,8 @@ export function PremiumDetailShell({
     ? categoryFacts
     : buildCategoryFacts(resolvedKind, actions);
   const conciergeHref =
-    actions.conciergeHref ?? buildConciergeHref(name, actions.island, resolvedKind);
+    actions.conciergeHref ??
+    buildConciergeHref(name, actions.island, resolvedKind);
 
   return (
     <main
@@ -158,6 +161,7 @@ export function PremiumDetailShell({
           mapHref={actions.mapHref}
           rideHref={actions.rideHref}
           website={actions.website}
+          bookingHref={resolvedBookingHref}
           journeyStop={actions.journeyStop}
           title={capabilityTitle}
           description={capabilityDescription}
@@ -185,7 +189,7 @@ export function PremiumDetailShell({
           mapHref={actions.mapHref}
           rideHref={actions.rideHref}
           conciergeHref={conciergeHref}
-          bookingHref={actions.bookingHref ?? actions.journeyStop?.bookingHref}
+          bookingHref={resolvedBookingHref}
         />
 
         {below}
@@ -196,11 +200,15 @@ export function PremiumDetailShell({
 
 function inferUnifiedKind(kind?: string): UnifiedPlaceKind {
   if (kind === "beach") return "beach";
-  if (kind === "stay" || kind === "hotel" || kind === "accommodation") return "stay";
+  if (kind === "stay" || kind === "hotel" || kind === "accommodation") {
+    return "stay";
+  }
   if (kind === "restaurant" || kind === "dining") return "restaurant";
   if (kind === "historic" || kind === "heritage") return "historic";
   if (kind === "fishing" || kind === "fish") return "fishing";
-  if (kind === "attraction" || kind === "activity" || kind === "tour") return "attraction";
+  if (kind === "attraction" || kind === "activity" || kind === "tour") {
+    return "attraction";
+  }
   return "place";
 }
 
@@ -208,14 +216,38 @@ function buildCapabilityFacts(actions: Props["actions"]): UnifiedPlaceFact[] {
   return [
     { label: "Island", value: actions.island },
     actions.mapHref
-      ? { label: "Map", value: "Ready", note: "Open this destination in the Living Map." }
-      : { label: "Map", value: "Location pending", note: "Map coverage is still being completed." },
+      ? {
+          label: "Map",
+          value: "Ready",
+          note: "Open this destination in the Living Map.",
+        }
+      : {
+          label: "Map",
+          value: "Location pending",
+          note: "Map coverage is still being completed.",
+        },
     actions.rideHref
-      ? { label: "Transportation", value: "Plan a ride", note: "Carry this destination into Mobility." }
-      : { label: "Transportation", value: "Ask Concierge", note: "Get locally grounded movement guidance." },
+      ? {
+          label: "Transportation",
+          value: "Plan a ride",
+          note: "Carry this destination into Mobility.",
+        }
+      : {
+          label: "Transportation",
+          value: "Ask Concierge",
+          note: "Get locally grounded movement guidance.",
+        },
     actions.journeyStop
-      ? { label: "Trip planning", value: "Saveable", note: "Add this stop to an itinerary." }
-      : { label: "Trip planning", value: "Explore", note: "Continue through nearby recommendations." },
+      ? {
+          label: "Trip planning",
+          value: "Saveable",
+          note: "Add this stop to an itinerary.",
+        }
+      : {
+          label: "Trip planning",
+          value: "Explore",
+          note: "Continue through nearby recommendations.",
+        },
   ];
 }
 
@@ -223,6 +255,8 @@ function buildCategoryFacts(
   kind: UnifiedPlaceKind,
   actions: Props["actions"],
 ): UnifiedPlaceFact[] {
+  const resolvedBookingHref =
+    actions.bookingHref ?? actions.journeyStop?.bookingHref;
   const shared: UnifiedPlaceFact[] = [
     {
       label: "Local context",
@@ -257,16 +291,32 @@ function buildCategoryFacts(
   if (kind === "stay") {
     return [
       ...shared,
-      { label: "Stay planning", value: "Trip connected", note: "Keep check-in, nearby plans, and transport together." },
-      { label: "Booking", value: actions.bookingHref ? "Available" : "Check options", note: "Use verified booking or contact actions when supplied." },
+      {
+        label: "Stay planning",
+        value: "Trip connected",
+        note: "Keep check-in, nearby plans, and transport together.",
+      },
+      {
+        label: "Booking",
+        value: resolvedBookingHref ? "Available" : "Check options",
+        note: "Use verified booking or contact actions when supplied.",
+      },
     ];
   }
 
   if (kind === "restaurant") {
     return [
       ...shared,
-      { label: "Dining plan", value: "Day aware", note: "Pair the meal with nearby activities and travel time." },
-      { label: "Return travel", value: actions.rideHref ? "Available" : "Plan ahead", note: "Keep a safe ride option attached to evening plans." },
+      {
+        label: "Dining plan",
+        value: "Day aware",
+        note: "Pair the meal with nearby activities and travel time.",
+      },
+      {
+        label: "Return travel",
+        value: actions.rideHref ? "Available" : "Plan ahead",
+        note: "Keep a safe ride option attached to evening plans.",
+      },
     ];
   }
 
