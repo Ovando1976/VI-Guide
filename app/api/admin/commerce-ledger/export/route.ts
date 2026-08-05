@@ -29,7 +29,6 @@ export async function GET(request: NextRequest) {
     );
     const snapshot = await getAdminDb()
       .collection("commerceLedgerEntries")
-      .orderBy("occurredAt", "desc")
       .get();
     const generatedAt = new Date();
     const csv = buildCommerceLedgerCsv(
