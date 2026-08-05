@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { CommerceLedgerBoard } from "@/components/admin/commerce-ledger-board";
+import { CommerceLedgerExportActions } from "@/components/admin/commerce-ledger-export-actions";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
@@ -14,5 +15,10 @@ export default async function CommerceLedgerPage() {
   if (!session) redirect("/login?next=/admin/commerce-ledger");
   if (session.role !== "admin") redirect("/unauthorized");
 
-  return <CommerceLedgerBoard />;
+  return (
+    <>
+      <CommerceLedgerExportActions />
+      <CommerceLedgerBoard />
+    </>
+  );
 }
