@@ -84,19 +84,24 @@ The page shows:
 
 Dispatchers and merchants cannot access the ledger API or page.
 
-## Settlement statement exports
+## Accounting statement exports
 
 Administrators can download either the complete ledger or a listing-scoped merchant statement from `/admin/commerce-ledger`.
 
 CSV statements include:
 
+- every selected ledger record, with no fixed row cap;
 - booking, ledger, Stripe event, PaymentIntent, Checkout Session, and refund references;
 - capture and refund status;
 - gross, platform-fee, merchant-settlement, and unallocated amounts in integer cents;
 - fee basis points and policy source;
-- deterministic statement totals.
+- deterministic statement totals;
+- a statement note explaining that the file is accounting evidence, not proof of payout;
+- a rejected-record count.
 
-Exports never include traveler names, email addresses, phone numbers, notes, or other contact data. Text cells are protected against spreadsheet-formula injection, exports are delivered with `no-store`, and only administrators can access the endpoint.
+Exports never include traveler names, email addresses, phone numbers, notes, or other contact data. Text cells beginning with `=`, `+`, `-`, `@`, a tab, or a carriage return are neutralized against spreadsheet-formula injection. Exports are delivered with `no-store`, and only administrators can access the endpoint.
+
+Malformed ledger records are excluded from statement totals but are never hidden silently. When one or more records are rejected, the statement-total row is marked `review_required`, the rejected count is nonzero, and the statement warns administrators not to rely on the totals until the malformed records are reviewed.
 
 ## Reconciliation
 
@@ -121,6 +126,6 @@ A concurrent webhook may safely win the race to create an entry. In that case re
 4. Run repository TypeScript, lint, route-generation, and Next.js build validation.
 5. Open `/admin/commerce-ledger` and confirm the policy status.
 6. Reconcile historical bookings once.
-7. Export the complete CSV and one listing-scoped statement; compare totals to the control room.
+7. Export the complete CSV and one listing-scoped statement; confirm the rejected-record count is zero and compare totals to the control room.
 8. Review every unallocated or `review_required` entry before relying on settlement totals.
 9. Compare totals against Stripe before any future merchant payout workflow is enabled.
