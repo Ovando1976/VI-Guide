@@ -3,6 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
+      "fix/protect-provider-operations": true,
       "main": true
     }
   }
