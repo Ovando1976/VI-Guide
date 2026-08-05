@@ -13,8 +13,6 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const MAX_EXPORT_ENTRIES = 2_000;
-
 export async function GET(request: NextRequest) {
   try {
     await requireSession(["admin"]);
@@ -32,13 +30,12 @@ export async function GET(request: NextRequest) {
     const snapshot = await getAdminDb()
       .collection("commerceLedgerEntries")
       .orderBy("occurredAt", "desc")
-      .limit(MAX_EXPORT_ENTRIES)
       .get();
     const generatedAt = new Date();
     const csv = buildCommerceLedgerCsv(
       snapshot.docs.map((document) => ({
-        id: document.id,
         ...document.data(),
+        id: document.id,
       })),
       { listingId, generatedAt },
     );
