@@ -6,14 +6,13 @@ import {
   Building2,
   CalendarCheck2,
   CheckCircle2,
-  CreditCard,
   Loader2,
   MapPin,
   Send,
   Sparkles,
   UsersRound,
 } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 
 import {
   PARTNER_APPLICATION_CATEGORIES,
@@ -354,7 +353,7 @@ function Field({
 }: {
   label: string;
   required?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <label className="block text-[9px] font-black uppercase tracking-[.13em] text-slate-500">
