@@ -9,6 +9,8 @@ import {
 } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 
+import { normalizeManagedListingIds } from "../lib/merchant-access";
+
 type ServiceAccountInput = {
   project_id?: string;
   projectId?: string;
@@ -32,7 +34,7 @@ function loadCredential(): ServiceAccount | null {
       clientEmail: value.clientEmail ?? value.client_email,
       privateKey: (value.privateKey ?? value.private_key)?.replace(
         /\\n/g,
-        "\n"
+        "\n",
       ),
     };
   }
@@ -53,17 +55,38 @@ function loadCredential(): ServiceAccount | null {
 async function main() {
   const email = process.argv[2];
   const role = process.argv[3];
-  const driverId = process.argv[4];
-  const allowedRoles = ["rider", "driver", "dispatcher", "admin"];
+  const scope = process.argv[4];
+  const allowedRoles = [
+    "rider",
+    "driver",
+    "merchant",
+    "dispatcher",
+    "admin",
+  ];
 
   if (!email || !role || !allowedRoles.includes(role)) {
     throw new Error(
-      "Usage: npm run auth:set-role -- user@example.com rider|driver|dispatcher|admin [driverId]"
+      "Usage: npm run auth:set-role -- user@example.com rider|driver|merchant|dispatcher|admin [driverId|listing-id-1,listing-id-2]",
     );
   }
 
-  if (role === "driver" && !driverId) {
+  if (role === "driver" && !scope) {
     throw new Error("A driverId is required for the driver role.");
+  }
+
+  const listingIds =
+    role === "merchant"
+      ? normalizeManagedListingIds(
+          String(scope ?? "")
+            .split(",")
+            .map((value) => value.trim()),
+        )
+      : [];
+
+  if (role === "merchant" && !listingIds.length) {
+    throw new Error(
+      "At least one comma-separated listing ID is required for the merchant role.",
+    );
   }
 
   const serviceAccount = loadCredential();
@@ -83,17 +106,25 @@ async function main() {
 
   await adminAuth.setCustomUserClaims(user.uid, {
     role,
-    ...(role === "driver" ? { driverId } : {}),
+    ...(role === "driver" ? { driverId: scope } : {}),
+    ...(role === "merchant" ? { listingIds } : {}),
   });
 
+  const accessSummary =
+    role === "driver"
+      ? ` for driver ${scope}`
+      : role === "merchant"
+        ? ` for ${listingIds.length} listing${listingIds.length === 1 ? "" : "s"}`
+        : "";
+
   console.log(
-    `Updated ${email} to ${role}. The user must sign out and back in.`
+    `Updated ${email} to ${role}${accessSummary}. The user must sign out and back in.`,
   );
 }
 
 main().catch((error) => {
   console.error(
-    error instanceof Error ? error.message : "Failed to update user role."
+    error instanceof Error ? error.message : "Failed to update user role.",
   );
   process.exit(1);
 });
