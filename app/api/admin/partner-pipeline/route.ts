@@ -120,6 +120,18 @@ export async function PATCH(request: NextRequest) {
         );
       }
 
+      const currentOwnerUid = clean(data.assignedToUid, 160);
+      if (
+        action === "assign_to_me" &&
+        currentOwnerUid &&
+        currentOwnerUid !== session.uid
+      ) {
+        throw new PartnerPipelineActionError(
+          "This lead is already assigned. Unassign it explicitly before changing ownership.",
+          409,
+        );
+      }
+
       transaction.update(applicationRef, {
         ...patch,
         serverUpdatedAt: FieldValue.serverTimestamp(),
@@ -128,14 +140,14 @@ export async function PATCH(request: NextRequest) {
         action: `pipeline_${action}`,
         applicationId,
         reference: clean(data.reference, 160) || applicationId,
-        previousAssignedToUid: clean(data.assignedToUid, 160) || null,
+        previousAssignedToUid: currentOwnerUid || null,
         previousAssignedToEmail: clean(data.assignedToEmail, 220) || null,
         previousNextFollowUpDate:
           clean(data.nextFollowUpDate, 20) || null,
         nextAssignedToUid:
           "assignedToUid" in patch
             ? patch.assignedToUid
-            : clean(data.assignedToUid, 160) || null,
+            : currentOwnerUid || null,
         nextAssignedToEmail:
           "assignedToEmail" in patch
             ? patch.assignedToEmail
