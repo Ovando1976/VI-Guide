@@ -9,17 +9,19 @@ export function CommerceLedgerExportActions() {
             <FileSpreadsheet className="h-6 w-6 text-emerald-700" />
             <div>
               <p className="text-[9px] font-black uppercase tracking-[.15em] text-emerald-700">
-                Settlement statements
+                Accounting statements
               </p>
               <h2 className="mt-1 text-2xl font-black tracking-[-.04em]">
-                Export immutable accounting evidence
+                Export complete ledger evidence
               </h2>
             </div>
           </div>
           <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-slate-500">
-            CSV exports include booking and Stripe references, allocation amounts,
-            status, fee policy, and statement totals. Traveler contact information
-            is never included.
+            CSV exports include the full selected ledger, booking and Stripe
+            references, allocation amounts, fee policy, statement totals, and a
+            rejected-record count. Traveler contact information is never included.
+            These files are accounting evidence—not proof that a merchant payout
+            or settlement occurred.
           </p>
         </div>
 
