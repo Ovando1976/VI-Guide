@@ -9,6 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, hasFirebaseClientConfiguration } from "@/lib/firebase";
+import { safeInternalDestination } from "@/lib/safe-internal-destination";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,8 +32,9 @@ export default function LoginPage() {
     if (!response.ok) {
       throw new Error((await response.json()).error ?? "Unable to start session.");
     }
-    const next = params.get("next");
-    router.replace(next?.startsWith("/") ? next : "/");
+    router.replace(
+      safeInternalDestination(params.get("next"), window.location.origin),
+    );
     router.refresh();
   }
 
