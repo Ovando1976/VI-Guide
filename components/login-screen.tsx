@@ -9,18 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, hasFirebaseClientConfiguration } from "@/lib/firebase";
-
-function safeInternalDestination(value: string | null) {
-  if (!value || !value.startsWith("/") || value.startsWith("//")) return "/";
-
-  try {
-    const destination = new URL(value, window.location.origin);
-    if (destination.origin !== window.location.origin) return "/";
-    return `${destination.pathname}${destination.search}${destination.hash}`;
-  } catch {
-    return "/";
-  }
-}
+import { safeInternalDestination } from "@/lib/safe-internal-destination";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -43,7 +32,9 @@ export default function LoginPage() {
     if (!response.ok) {
       throw new Error((await response.json()).error ?? "Unable to start session.");
     }
-    router.replace(safeInternalDestination(params.get("next")));
+    router.replace(
+      safeInternalDestination(params.get("next"), window.location.origin),
+    );
     router.refresh();
   }
 
