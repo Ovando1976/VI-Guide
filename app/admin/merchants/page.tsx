@@ -3,6 +3,11 @@ import { redirect } from "next/navigation";
 import { ApprovedPartnerOnboarding } from "@/components/admin/approved-partner-onboarding";
 import { MerchantAccessBoard } from "@/components/admin/merchant-access-board";
 import { getSession } from "@/lib/auth-server";
+import {
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
+import { normalizePartnerApplicationStatus } from "@/lib/partners/partner-application";
 
 export const metadata = {
   title: "Merchant Access | VI Guide",
@@ -24,19 +29,59 @@ export default async function MerchantAccessPage({
   if (!session) redirect("/login?next=/admin/merchants");
   if (session.role !== "admin") redirect("/unauthorized");
 
-  const email = firstValue(searchParams?.email).slice(0, 220);
+  const email = normalizeEmail(firstValue(searchParams?.email));
   const listingId = firstValue(searchParams?.listingId).slice(0, 160);
+  const approvedPartner = await findApprovedPartner(email, listingId);
 
   return (
     <>
-      {email ? (
-        <ApprovedPartnerOnboarding email={email} listingId={listingId} />
+      {approvedPartner ? (
+        <ApprovedPartnerOnboarding
+          email={approvedPartner.email}
+          listingId={approvedPartner.listingId}
+        />
       ) : null}
       <MerchantAccessBoard />
     </>
   );
 }
 
+async function findApprovedPartner(email: string, listingId: string) {
+  if (!email || !hasFirebaseAdminConfiguration()) return null;
+
+  const snapshot = await getAdminDb()
+    .collection("partnerApplications")
+    .where("email", "==", email)
+    .limit(20)
+    .get();
+
+  for (const document of snapshot.docs) {
+    const data = document.data();
+    if (normalizePartnerApplicationStatus(data.status) !== "approved") continue;
+
+    const approvedListingId = clean(data.existingListingId, 160);
+    if (listingId && approvedListingId !== listingId) continue;
+
+    return {
+      email,
+      listingId: approvedListingId,
+    };
+  }
+
+  return null;
+}
+
+function normalizeEmail(value: string) {
+  const email = value.toLowerCase().slice(0, 220);
+  return /^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/.test(email) ? email : "";
+}
+
 function firstValue(value: string | string[] | undefined) {
   return (Array.isArray(value) ? value[0] : value ?? "").trim();
+}
+
+function clean(value: unknown, maxLength: number) {
+  return typeof value === "string"
+    ? value.replace(/\s+/g, " ").trim().slice(0, maxLength)
+    : "";
 }
