@@ -47,6 +47,10 @@ export type MerchantOfferValidation =
   | { ok: true; offer: NormalizedMerchantOffer }
   | { ok: false; error: string };
 
+export type MerchantOfferNormalizationOptions = {
+  allowStarted?: boolean;
+};
+
 const OFFER_KINDS: CommerceBookingKind[] = [
   "accommodation",
   "tour",
@@ -64,6 +68,7 @@ const OFFER_TRANSITIONS: Record<MerchantOfferStatus, MerchantOfferStatus[]> = {
 export function normalizeMerchantOffer(
   input: MerchantOfferInput,
   now: Date = new Date(),
+  options: MerchantOfferNormalizationOptions = {},
 ): MerchantOfferValidation {
   const listingId = clean(input.listingId, 160);
   const listingName = clean(input.listingName, 180);
@@ -106,8 +111,11 @@ export function normalizeMerchantOffer(
   if (!validFrom || !validThrough) {
     return invalid("Choose valid offer start and end dates.");
   }
-  if (validFrom < today) {
+  if (!options.allowStarted && validFrom < today) {
     return invalid("The offer start date cannot be before today in the USVI.");
+  }
+  if (options.allowStarted && validThrough < today) {
+    return invalid("Expired offers cannot be edited or reactivated.");
   }
   if (validThrough < validFrom) {
     return invalid("The offer end date cannot be before its start date.");
