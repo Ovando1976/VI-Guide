@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { PartnerApplicationBoard } from "@/components/admin/partner-application-board";
+import { PartnerPipelineBoard } from "@/components/admin/partner-pipeline-board";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
@@ -16,5 +17,10 @@ export default async function PartnerApplicationsPage() {
     redirect("/unauthorized");
   }
 
-  return <PartnerApplicationBoard />;
+  return (
+    <>
+      <PartnerPipelineBoard />
+      <PartnerApplicationBoard />
+    </>
+  );
 }
