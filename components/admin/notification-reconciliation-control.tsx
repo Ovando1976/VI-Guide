@@ -42,7 +42,7 @@ export function NotificationReconciliationControl() {
       }
 
       setMessage(
-        `${Number(payload?.reconciliation?.scannedBookings ?? 0)} bookings scanned · ${Number(payload?.reconciliation?.created ?? 0)} missing messages created · ${Number(payload?.delivery?.delivered ?? 0)} delivered · ${Number(payload?.delivery?.deferred ?? 0)} deferred. Refresh the queue to review the latest state.`,
+        `${Number(payload?.reconciliation?.scannedBookings ?? 0)} bookings scanned · ${Number(payload?.reconciliation?.created ?? 0)} missing financial messages created · ${Number(payload?.delivery?.delivered ?? 0)} delivered · ${Number(payload?.delivery?.deferred ?? 0)} deferred. Refresh the queue to review the latest state.`,
       );
     } catch (caught) {
       setError(
@@ -63,9 +63,10 @@ export function NotificationReconciliationControl() {
             Financial recovery
           </p>
           <p className="mt-1 max-w-3xl text-sm font-bold leading-5 text-amber-950/75">
-            Scan recent commerce bookings for Stripe-paid, refund, confirmation,
-            completion, cancellation, or decline events that do not yet have a
-            durable email record.
+            Scan recent commerce bookings only for verified Stripe payment and
+            refund events that do not yet have a durable email record. Ordinary
+            lifecycle messages are never backfilled, preventing stale customer
+            email bursts.
           </p>
           {message ? (
             <p className="mt-2 text-xs font-bold leading-5 text-emerald-700">
@@ -89,7 +90,7 @@ export function NotificationReconciliationControl() {
           ) : (
             <RefreshCw className="h-4 w-4" />
           )}
-          Reconcile bookings
+          Reconcile payments
         </button>
       </div>
     </section>
