@@ -34,6 +34,7 @@ export function OfferBookingForm({
   const [success, setSuccess] = useState<{
     reference: string;
     bookingId: string;
+    duplicate: boolean;
   } | null>(null);
 
   function patch(values: Partial<typeof form>) {
@@ -71,6 +72,7 @@ export function OfferBookingForm({
         | {
             bookingId?: string;
             reference?: string;
+            duplicate?: boolean;
             error?: string;
           }
         | null;
@@ -80,6 +82,7 @@ export function OfferBookingForm({
       setSuccess({
         bookingId: payload.bookingId,
         reference: payload.reference,
+        duplicate: payload.duplicate === true,
       });
     } catch (caught) {
       setError(
@@ -97,14 +100,25 @@ export function OfferBookingForm({
       <section className="rounded-[30px] border border-emerald-200 bg-emerald-50 p-6 text-[#043331] shadow-sm sm:p-8">
         <CheckCircle2 className="h-8 w-8 text-emerald-700" />
         <p className="mt-5 text-[9px] font-black uppercase tracking-[.15em] text-emerald-700">
-          Request received
+          {success.duplicate ? "Request already received" : "Request received"}
         </p>
         <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
-          VI Guide sent the package request to operations.
+          {success.duplicate
+            ? "VI Guide found your existing package request."
+            : "VI Guide sent the package request to operations."}
         </h2>
         <p className="mt-4 text-sm font-semibold leading-7 text-emerald-950/70">
-          Your reference is <strong>{success.reference}</strong>. The merchant will
-          review timing and capacity before a secure deposit is requested.
+          {success.duplicate ? (
+            <>
+              We did not create a second reservation. Your existing reference is{" "}
+              <strong>{success.reference}</strong>.
+            </>
+          ) : (
+            <>
+              Your reference is <strong>{success.reference}</strong>. The merchant
+              will review timing and capacity before a secure deposit is requested.
+            </>
+          )}
         </p>
         <a
           href={`/bookings?booking=${encodeURIComponent(success.bookingId)}`}
