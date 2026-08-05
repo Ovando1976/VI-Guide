@@ -20,19 +20,19 @@ const paidNotifications = recoveryNotificationsForCommerceBooking({
 assert.deepEqual(
   paidNotifications.map((notification) => notification.id).sort(),
   [
-    "booking-1__booking-confirmed__operations",
-    "booking-1__booking-confirmed__traveler",
-    "booking-1__booking-paid__merchant",
-    "booking-1__booking-paid__operations",
-    "booking-1__booking-paid__traveler",
-    "booking-1__booking-requested__merchant",
-    "booking-1__booking-requested__operations",
-    "booking-1__booking-requested__traveler",
+    "booking-1__booking_confirmed__operations",
+    "booking-1__booking_confirmed__traveler",
+    "booking-1__booking_paid__merchant",
+    "booking-1__booking_paid__operations",
+    "booking-1__booking_paid__traveler",
+    "booking-1__booking_requested__merchant",
+    "booking-1__booking_requested__operations",
+    "booking-1__booking_requested__traveler",
   ],
 );
 assert.equal(
   paidNotifications.find(
-    (notification) => notification.id === "booking-1__booking-paid__traveler",
+    (notification) => notification.id === "booking-1__booking_paid__traveler",
   )?.recipientEmail,
   "guest@example.com",
 );
