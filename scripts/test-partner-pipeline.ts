@@ -4,6 +4,7 @@ import {
   normalizePartnerFollowUpDate,
   normalizePartnerOwnerEmail,
   partnerFollowUpState,
+  partnerLeadCanBeClaimed,
   partnerPipelinePatch,
   partnerTodayDateKey,
   summarizePartnerPipeline,
@@ -16,6 +17,10 @@ assert.equal(normalizePartnerFollowUpDate("2026-02-30"), null);
 assert.equal(normalizePartnerFollowUpDate("08/06/2026"), null);
 assert.equal(normalizePartnerOwnerEmail(" Admin@Example.com "), "admin@example.com");
 assert.equal(normalizePartnerOwnerEmail("not-an-email"), null);
+assert.equal(partnerLeadCanBeClaimed(null, "user-1"), true);
+assert.equal(partnerLeadCanBeClaimed("user-1", "user-1"), true);
+assert.equal(partnerLeadCanBeClaimed("user-2", "user-1"), false);
+assert.equal(partnerLeadCanBeClaimed("user-2", ""), false);
 
 assert.equal(
   partnerFollowUpState(
