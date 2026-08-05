@@ -1,5 +1,6 @@
 import {
   commerceCaptureLedgerId,
+  commerceRefundLedgerId,
   resolveCommerceLedgerPolicy,
   type CommerceLedgerEntry,
   type CommerceLedgerPolicy,
@@ -61,18 +62,191 @@ export function resolveStoredCommerceLedgerPolicy(
   };
 }
 
+export function normalizeStoredCommerceLedgerEntry(input: {
+  id: unknown;
+  data: Partial<CommerceLedgerEntry> | FirebaseFirestore.DocumentData;
+}): CommerceLedgerEntry | null {
+  const data = input.data;
+  const id = clean(input.id, 100);
+  const kind = data.kind === "capture" || data.kind === "refund" ? data.kind : null;
+  const status = normalizeLedgerStatus(data.status);
+  const bookingId = clean(data.bookingId, 180);
+  const bookingReference = clean(data.bookingReference, 180);
+  const listingId = clean(data.listingId, 180);
+  const listingName = clean(data.listingName, 220);
+  const paymentIntentId = clean(data.paymentIntentId, 220);
+  const checkoutSessionId = clean(data.checkoutSessionId, 220);
+  const refundId = clean(data.refundId, 220);
+  const reversalOfEntryId = clean(data.reversalOfEntryId, 100);
+  const stripeEventId = clean(data.stripeEventId, 220);
+  const currency = clean(data.currency, 3).toLowerCase();
+  const feeBps = boundedFeeBps(data.feeBps);
+  const feePolicySource =
+    data.feePolicySource === "environment"
+      ? "environment"
+      : data.feePolicySource === "unconfigured"
+        ? "unconfigured"
+        : null;
+  const grossAmountCents = boundedSignedMoney(data.grossAmountCents);
+  const platformFeeCents = boundedSignedMoney(data.platformFeeCents);
+  const merchantSettlementCents = boundedSignedMoney(
+    data.merchantSettlementCents,
+  );
+  const unallocatedAmountCents = boundedSignedMoney(
+    data.unallocatedAmountCents,
+  );
+  const reportedRefundAmountCents =
+    data.reportedRefundAmountCents === null ||
+    data.reportedRefundAmountCents === undefined
+      ? null
+      : boundedNonNegativeMoney(data.reportedRefundAmountCents);
+  const occurredAt = normalizeIso(data.occurredAt);
+  const createdAt = normalizeIso(data.createdAt);
+  const updatedAt = normalizeIso(data.updatedAt);
+
+  if (
+    !id ||
+    !kind ||
+    !status ||
+    !bookingId ||
+    !bookingReference ||
+    !listingId ||
+    !listingName ||
+    !paymentIntentId ||
+    !stripeEventId ||
+    !/^[a-z]{3}$/.test(currency) ||
+    feeBps === null ||
+    !feePolicySource ||
+    grossAmountCents === null ||
+    platformFeeCents === null ||
+    merchantSettlementCents === null ||
+    unallocatedAmountCents === null ||
+    !occurredAt ||
+    !createdAt ||
+    !updatedAt
+  ) {
+    return null;
+  }
+
+  if (kind === "capture") {
+    const validId = commerceCaptureLedgerId(paymentIntentId) === id;
+    const validReferences = Boolean(
+      checkoutSessionId && !refundId && !reversalOfEntryId &&
+        reportedRefundAmountCents === null,
+    );
+    const validHeld = Boolean(
+      status === "held" &&
+        grossAmountCents > 0 &&
+        platformFeeCents >= 0 &&
+        merchantSettlementCents >= 0 &&
+        platformFeeCents + merchantSettlementCents === grossAmountCents &&
+        unallocatedAmountCents === 0,
+    );
+    const validReview = Boolean(
+      status === "review_required" &&
+        grossAmountCents === 0 &&
+        platformFeeCents === 0 &&
+        merchantSettlementCents === 0 &&
+        unallocatedAmountCents > 0,
+    );
+    if (!validId || !validReferences || (!validHeld && !validReview)) {
+      return null;
+    }
+  } else {
+    const validId = commerceRefundLedgerId(refundId) === id;
+    const validReferences = Boolean(refundId && reversalOfEntryId);
+    const hasReportedRefund =
+      reportedRefundAmountCents !== null && reportedRefundAmountCents > 0;
+    const validPosted = Boolean(
+      status === "posted" &&
+        hasReportedRefund &&
+        grossAmountCents < 0 &&
+        platformFeeCents <= 0 &&
+        merchantSettlementCents <= 0 &&
+        platformFeeCents + merchantSettlementCents === grossAmountCents &&
+        Math.abs(grossAmountCents) === reportedRefundAmountCents &&
+        unallocatedAmountCents === 0,
+    );
+    const validNoEffect = Boolean(
+      (status === "processing" || status === "failed") &&
+        hasReportedRefund &&
+        grossAmountCents === 0 &&
+        platformFeeCents === 0 &&
+        merchantSettlementCents === 0 &&
+        unallocatedAmountCents === 0,
+    );
+    const validReview = Boolean(
+      status === "review_required" &&
+        hasReportedRefund &&
+        grossAmountCents === 0 &&
+        platformFeeCents === 0 &&
+        merchantSettlementCents === 0 &&
+        unallocatedAmountCents <= 0 &&
+        Math.abs(unallocatedAmountCents) <= reportedRefundAmountCents,
+    );
+    if (
+      !validId ||
+      !validReferences ||
+      (!validPosted && !validNoEffect && !validReview)
+    ) {
+      return null;
+    }
+  }
+
+  return {
+    id,
+    kind,
+    status,
+    bookingId,
+    bookingReference,
+    listingId,
+    listingName,
+    paymentIntentId,
+    checkoutSessionId: checkoutSessionId || null,
+    refundId: refundId || null,
+    reversalOfEntryId: reversalOfEntryId || null,
+    stripeEventId,
+    currency,
+    feeBps,
+    feePolicySource,
+    grossAmountCents,
+    platformFeeCents,
+    merchantSettlementCents,
+    reportedRefundAmountCents,
+    unallocatedAmountCents,
+    occurredAt,
+    createdAt,
+    updatedAt,
+  };
+}
+
+export function validateStoredCommerceLedgerEntries(
+  records: Array<{
+    id: unknown;
+    data: Partial<CommerceLedgerEntry> | FirebaseFirestore.DocumentData;
+  }>,
+) {
+  const entries: CommerceLedgerEntry[] = [];
+  let rejectedRecordCount = 0;
+
+  for (const record of records) {
+    const entry = normalizeStoredCommerceLedgerEntry(record);
+    if (entry) entries.push(entry);
+    else rejectedRecordCount += 1;
+  }
+
+  return { entries, rejectedRecordCount };
+}
+
 export function summarizeCommerceLedgerListings(
-  entries: Array<Partial<CommerceLedgerEntry>>,
+  entries: CommerceLedgerEntry[],
 ): CommerceLedgerListingSummary[] {
   const listings = new Map<string, CommerceLedgerListingSummary>();
 
   for (const entry of entries) {
-    const listingId = clean(entry.listingId, 180) || "unassigned";
-    const listingName =
-      clean(entry.listingName, 220) || "VI Guide business";
-    const current = listings.get(listingId) ?? {
-      listingId,
-      listingName,
+    const current = listings.get(entry.listingId) ?? {
+      listingId: entry.listingId,
+      listingName: entry.listingName,
       captures: 0,
       refunds: 0,
       grossCents: 0,
@@ -85,19 +259,13 @@ export function summarizeCommerceLedgerListings(
 
     if (entry.kind === "capture") current.captures += 1;
     if (entry.kind === "refund") current.refunds += 1;
-    current.grossCents += signedMoney(entry.grossAmountCents);
-    current.platformFeeCents += signedMoney(entry.platformFeeCents);
-    current.merchantSettlementCents += signedMoney(
-      entry.merchantSettlementCents,
-    );
-    current.unallocatedCents += signedMoney(entry.unallocatedAmountCents);
+    current.grossCents += entry.grossAmountCents;
+    current.platformFeeCents += entry.platformFeeCents;
+    current.merchantSettlementCents += entry.merchantSettlementCents;
+    current.unallocatedCents += entry.unallocatedAmountCents;
     if (entry.status === "review_required") current.reviewCount += 1;
-
-    const occurredAt = normalizeIso(entry.occurredAt);
-    if (occurredAt && occurredAt > current.latestAt) {
-      current.latestAt = occurredAt;
-    }
-    listings.set(listingId, current);
+    if (entry.occurredAt > current.latestAt) current.latestAt = entry.occurredAt;
+    listings.set(entry.listingId, current);
   }
 
   return [...listings.values()].sort((left, right) => {
@@ -144,15 +312,52 @@ export function summarizeCommerceLedgerReconciliation(
   };
 }
 
-function normalizeIso(value: unknown) {
-  if (typeof value !== "string") return "";
-  const parsed = Date.parse(value);
-  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
+function normalizeLedgerStatus(value: unknown) {
+  return value === "held" ||
+    value === "posted" ||
+    value === "processing" ||
+    value === "review_required" ||
+    value === "failed"
+    ? value
+    : null;
 }
 
-function signedMoney(value: unknown) {
+function normalizeIso(value: unknown) {
+  if (typeof value === "string") {
+    const parsed = Date.parse(value);
+    return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
+  }
+  if (
+    value &&
+    typeof value === "object" &&
+    "toDate" in value &&
+    typeof (value as { toDate?: unknown }).toDate === "function"
+  ) {
+    const date = (value as { toDate(): Date }).toDate();
+    return Number.isFinite(date.getTime()) ? date.toISOString() : "";
+  }
+  return "";
+}
+
+function boundedFeeBps(value: unknown) {
   const amount = Number(value);
-  return Number.isSafeInteger(amount) ? amount : 0;
+  return Number.isInteger(amount) && amount >= 0 && amount <= 10_000
+    ? amount
+    : null;
+}
+
+function boundedNonNegativeMoney(value: unknown) {
+  const amount = Number(value);
+  return Number.isSafeInteger(amount) && amount >= 0 && amount <= 100_000_000
+    ? amount
+    : null;
+}
+
+function boundedSignedMoney(value: unknown) {
+  const amount = Number(value);
+  return Number.isSafeInteger(amount) && Math.abs(amount) <= 100_000_000
+    ? amount
+    : null;
 }
 
 function clean(value: unknown, maxLength: number) {
