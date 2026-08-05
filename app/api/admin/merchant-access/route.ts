@@ -94,6 +94,13 @@ export async function PUT(request: NextRequest) {
 
     const adminAuth = getAdminAuth();
     const user = await adminAuth.getUserByEmail(email);
+    if (enabled && user.disabled) {
+      return NextResponse.json(
+        { error: "Enable this Firebase account before granting merchant access." },
+        { status: 409 },
+      );
+    }
+
     const previousClaims = { ...(user.customClaims ?? {}) };
     const update = merchantClaimsForUpdate({
       currentClaims: previousClaims,
