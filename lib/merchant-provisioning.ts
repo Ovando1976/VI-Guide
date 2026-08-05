@@ -18,7 +18,10 @@ export function merchantClaimsForUpdate(input: {
   listingIds: unknown;
 }) {
   const currentClaims = { ...(input.currentClaims ?? {}) };
-  const currentRole = provisionableMerchantRole(currentClaims.role);
+  const currentRole =
+    currentClaims.role == null
+      ? "rider"
+      : provisionableMerchantRole(currentClaims.role);
 
   if (!currentRole) {
     return {
