@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
-import { CommerceBookingForm } from "@/components/booking/commerce-booking-form";
+import { CommerceBookingExperience } from "@/components/booking/commerce-booking-experience";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function BookingPage({
 
   return (
     <Suspense fallback={<BookingLoading />}>
-      <CommerceBookingForm />
+      <CommerceBookingExperience />
     </Suspense>
   );
 }
