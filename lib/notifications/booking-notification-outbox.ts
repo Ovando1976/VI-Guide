@@ -7,7 +7,9 @@ export type BookingNotificationEvent =
   | "booking_completed"
   | "booking_declined"
   | "booking_cancelled"
-  | "booking_refunded";
+  | "booking_refunded"
+  | "refund_failed"
+  | "refund_review_required";
 
 export type BookingNotificationAudience =
   | "traveler"
