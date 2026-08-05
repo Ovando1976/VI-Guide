@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "feat/merchant-operations-hub": true
+      "main": true
     }
   }
 }
