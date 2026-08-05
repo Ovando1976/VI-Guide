@@ -1,3 +1,4 @@
+import { GovernorAnchorBridge } from "@/components/heritage/governor-anchor-bridge";
 import { GovernorTimelineExplorer } from "@/components/heritage/governor-timeline-explorer";
 
 export const metadata = {
@@ -7,5 +8,10 @@ export const metadata = {
 };
 
 export default function GovernorsPage() {
-  return <GovernorTimelineExplorer />;
+  return (
+    <>
+      <GovernorAnchorBridge />
+      <GovernorTimelineExplorer />
+    </>
+  );
 }
