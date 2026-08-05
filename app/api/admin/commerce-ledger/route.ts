@@ -10,11 +10,17 @@ import {
   buildCommerceCaptureLedgerEntry,
   buildCommerceRefundLedgerEntry,
   commerceCaptureLedgerId,
+  commerceRefundLedgerId,
   resolveCommerceLedgerPolicy,
   summarizeCommerceLedger,
   type CommerceLedgerEntry,
-  type CommerceLedgerPolicy,
 } from "@/lib/payments/commerce-ledger";
+import {
+  hasCommerceFinancialActivity,
+  resolveStoredCommerceLedgerPolicy,
+  summarizeCommerceLedgerListings,
+  summarizeCommerceLedgerReconciliation,
+} from "@/lib/payments/commerce-ledger-operations";
 import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
@@ -50,23 +56,21 @@ export async function GET() {
     const entries = ledgerSnapshot.docs.map((document) =>
       serializeLedgerEntry(document.id, document.data()),
     );
-    const summary = summarizeCommerceLedger(entries);
-    const ledgerIds = new Set(entries.map((entry) => entry.id));
-    const reconciliation = summarizeReconciliationGaps(
-      bookingSnapshot.docs.map((document) => ({
-        id: document.id,
-        data: document.data(),
-      })),
-      ledgerIds,
-    );
+    const bookingRecords = bookingSnapshot.docs.map((document) => ({
+      id: document.id,
+      ...document.data(),
+    }));
 
     return NextResponse.json({
       policy: resolveCommerceLedgerPolicy(
         process.env.VI_GUIDE_COMMERCE_PLATFORM_FEE_BPS,
       ),
-      summary,
-      reconciliation,
-      listings: summarizeListings(entries),
+      summary: summarizeCommerceLedger(entries),
+      reconciliation: summarizeCommerceLedgerReconciliation(
+        bookingRecords,
+        entries.map((entry) => entry.id),
+      ),
+      listings: summarizeCommerceLedgerListings(entries),
       entries,
     });
   } catch (error) {
@@ -91,11 +95,24 @@ export async function POST() {
     }
 
     const db = getAdminDb();
-    const bookingSnapshot = await db
-      .collection("commerceBookings")
-      .orderBy("updatedAt", "desc")
-      .limit(MAX_RECONCILE_BOOKINGS)
-      .get();
+    const [bookingSnapshot, ledgerSnapshot] = await Promise.all([
+      db
+        .collection("commerceBookings")
+        .orderBy("updatedAt", "desc")
+        .limit(MAX_RECONCILE_BOOKINGS)
+        .get(),
+      db
+        .collection("commerceLedgerEntries")
+        .orderBy("occurredAt", "desc")
+        .limit(MAX_LEDGER_ENTRIES)
+        .get(),
+    ]);
+    const existingEntries = new Map(
+      ledgerSnapshot.docs.map((document) => [
+        document.id,
+        serializeLedgerEntry(document.id, document.data()),
+      ]),
+    );
 
     let batch = db.batch();
     let batchWrites = 0;
@@ -113,7 +130,8 @@ export async function POST() {
 
     for (const bookingDocument of bookingSnapshot.docs) {
       const booking = bookingDocument.data();
-      if (!hasFinancialActivity(booking)) continue;
+      const bookingRecord = { id: bookingDocument.id, ...booking };
+      if (!hasCommerceFinancialActivity(bookingRecord)) continue;
 
       const paymentIntentId = clean(booking.paymentIntentId, 220);
       const checkoutSessionId = clean(booking.checkoutSessionId, 220);
@@ -124,42 +142,50 @@ export async function POST() {
         continue;
       }
 
-      const policy = storedPolicy(booking);
-      const captureEntry = buildCommerceCaptureLedgerEntry({
-        bookingId: bookingDocument.id,
-        bookingReference: clean(booking.reference, 180) || bookingDocument.id,
-        listingId:
-          clean(booking.listingId, 180) || `unassigned-${bookingDocument.id}`,
-        listingName: clean(booking.listingName, 220) || "VI Guide booking",
-        paymentIntentId,
-        checkoutSessionId,
-        stripeEventId: `reconciliation-capture-${bookingDocument.id}`,
-        grossAmountCents: paidAmountCents,
-        currency: "usd",
-        policy,
-        verified: booking.paymentIntegrityStatus === "verified",
-        occurredAt: paidAt,
-      });
+      const captureId = commerceCaptureLedgerId(paymentIntentId);
+      let captureEntry = existingEntries.get(captureId) ?? null;
       if (!captureEntry) {
-        skippedBookings += 1;
-        continue;
+        captureEntry = buildCommerceCaptureLedgerEntry({
+          bookingId: bookingDocument.id,
+          bookingReference:
+            clean(booking.reference, 180) || bookingDocument.id,
+          listingId:
+            clean(booking.listingId, 180) ||
+            `unassigned-${bookingDocument.id}`,
+          listingName:
+            clean(booking.listingName, 220) || "VI Guide booking",
+          paymentIntentId,
+          checkoutSessionId,
+          stripeEventId: `reconciliation-capture-${bookingDocument.id}`,
+          grossAmountCents: paidAmountCents,
+          currency: "usd",
+          policy: resolveStoredCommerceLedgerPolicy(bookingRecord),
+          verified: booking.paymentIntegrityStatus === "verified",
+          occurredAt: paidAt,
+        });
+        if (!captureEntry) {
+          skippedBookings += 1;
+          continue;
+        }
+
+        batch.create(
+          db.collection("commerceLedgerEntries").doc(captureEntry.id),
+          {
+            ...captureEntry,
+            reconciliationSource: true,
+            reconciledByUid: session.uid,
+            reconciledByEmail: session.email ?? null,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+        );
+        existingEntries.set(captureEntry.id, captureEntry);
+        batchWrites += 1;
+        captureEntries += 1;
+        if (captureEntry.status === "review_required") reviewedEntries += 1;
       }
 
-      batch.set(
-        db.collection("commerceLedgerEntries").doc(captureEntry.id),
-        {
-          ...captureEntry,
-          reconciliationSource: true,
-          reconciledByUid: session.uid,
-          reconciledByEmail: session.email ?? null,
-          serverUpdatedAt: FieldValue.serverTimestamp(),
-        },
-        { merge: true },
-      );
-      batchWrites += 1;
-      captureEntries += 1;
-      if (captureEntry.status === "review_required") reviewedEntries += 1;
-
+      const now = new Date().toISOString();
       const bookingPatch: Record<string, unknown> = {
         commerceLedgerCaptureId: captureEntry.id,
         commerceLedgerCaptureStatus: captureEntry.status,
@@ -170,7 +196,7 @@ export async function POST() {
         commerceUnallocatedAmountCents: captureEntry.unallocatedAmountCents,
         commercePlatformFeeBps: captureEntry.feeBps,
         commerceFeePolicySource: captureEntry.feePolicySource,
-        commerceLedgerUpdatedAt: new Date().toISOString(),
+        commerceLedgerUpdatedAt: now,
       };
 
       const refundId = clean(booking.refundId, 220);
@@ -184,52 +210,66 @@ export async function POST() {
         refundId &&
         refundStatus !== "not_requested" &&
         refundAmountCents &&
-        refundUpdatedAt &&
-        captureEntry.status === "held"
+        refundUpdatedAt
       ) {
-        const refundEntry = buildCommerceRefundLedgerEntry({
-          bookingId: bookingDocument.id,
-          bookingReference:
-            clean(booking.reference, 180) || bookingDocument.id,
-          listingId:
-            clean(booking.listingId, 180) ||
-            `unassigned-${bookingDocument.id}`,
-          listingName: clean(booking.listingName, 220) || "VI Guide booking",
-          paymentIntentId,
-          checkoutSessionId,
-          refundId,
-          stripeEventId: `reconciliation-refund-${refundId}`,
-          refundStatus:
-            refundStatus === "processing" ? "pending" : refundStatus,
-          refundAmountCents,
-          currency: "usd",
-          paymentIntentMatches: true,
-          fullRefund: refundAmountCents === paidAmountCents,
-          captureEntryId: captureEntry.id,
-          captureGrossAmountCents: captureEntry.grossAmountCents,
-          capturePlatformFeeCents: captureEntry.platformFeeCents,
-          captureMerchantSettlementCents:
-            captureEntry.merchantSettlementCents,
-          feeBps: captureEntry.feeBps,
-          feePolicySource: captureEntry.feePolicySource,
-          occurredAt: refundUpdatedAt,
-        });
+        const refundEntryId = commerceRefundLedgerId(refundId);
+        let refundEntry = existingEntries.get(refundEntryId) ?? null;
+        if (!refundEntry) {
+          refundEntry = buildCommerceRefundLedgerEntry({
+            bookingId: bookingDocument.id,
+            bookingReference:
+              clean(booking.reference, 180) || bookingDocument.id,
+            listingId:
+              clean(booking.listingId, 180) ||
+              `unassigned-${bookingDocument.id}`,
+            listingName:
+              clean(booking.listingName, 220) || "VI Guide booking",
+            paymentIntentId,
+            checkoutSessionId,
+            refundId,
+            stripeEventId: `reconciliation-refund-${refundId}`,
+            refundStatus:
+              refundStatus === "processing" ? "pending" : refundStatus,
+            refundAmountCents,
+            currency: "usd",
+            paymentIntentMatches:
+              booking.paymentIntegrityStatus === "verified",
+            fullRefund: refundAmountCents === paidAmountCents,
+            captureEntryId: captureEntry.id,
+            captureGrossAmountCents:
+              captureEntry.status === "held"
+                ? captureEntry.grossAmountCents
+                : paidAmountCents,
+            capturePlatformFeeCents: captureEntry.platformFeeCents,
+            captureMerchantSettlementCents:
+              captureEntry.status === "held"
+                ? captureEntry.merchantSettlementCents
+                : paidAmountCents,
+            feeBps: captureEntry.feeBps,
+            feePolicySource: captureEntry.feePolicySource,
+            occurredAt: refundUpdatedAt,
+          });
+
+          if (refundEntry) {
+            batch.create(
+              db.collection("commerceLedgerEntries").doc(refundEntry.id),
+              {
+                ...refundEntry,
+                reconciliationSource: true,
+                reconciledByUid: session.uid,
+                reconciledByEmail: session.email ?? null,
+                serverCreatedAt: FieldValue.serverTimestamp(),
+                serverUpdatedAt: FieldValue.serverTimestamp(),
+              },
+            );
+            existingEntries.set(refundEntry.id, refundEntry);
+            batchWrites += 1;
+            refundEntries += 1;
+            if (refundEntry.status === "review_required") reviewedEntries += 1;
+          }
+        }
 
         if (refundEntry) {
-          batch.set(
-            db.collection("commerceLedgerEntries").doc(refundEntry.id),
-            {
-              ...refundEntry,
-              reconciliationSource: true,
-              reconciledByUid: session.uid,
-              reconciledByEmail: session.email ?? null,
-              serverUpdatedAt: FieldValue.serverTimestamp(),
-            },
-            { merge: true },
-          );
-          batchWrites += 1;
-          refundEntries += 1;
-          if (refundEntry.status === "review_required") reviewedEntries += 1;
           bookingPatch.commerceLedgerLatestRefundId = refundEntry.id;
           bookingPatch.commerceLedgerLatestRefundStatus = refundEntry.status;
         }
@@ -237,12 +277,10 @@ export async function POST() {
 
       batch.set(bookingDocument.ref, bookingPatch, { merge: true });
       batchWrites += 1;
-
       if (batchWrites >= MAX_BATCH_WRITES) await flushBatch();
     }
 
-    const auditRef = db.collection("commerceLedgerReconciliationAudit").doc();
-    batch.set(auditRef, {
+    batch.create(db.collection("commerceLedgerReconciliationAudit").doc(), {
       actorUid: session.uid,
       actorEmail: session.email ?? null,
       scannedBookings: bookingSnapshot.size,
@@ -315,109 +353,6 @@ function serializeLedgerEntry(
       data.updatedAt ?? data.serverUpdatedAt ?? data.createdAt,
     ),
   };
-}
-
-function summarizeListings(entries: CommerceLedgerEntry[]) {
-  const listings = new Map<
-    string,
-    {
-      listingId: string;
-      listingName: string;
-      captures: number;
-      refunds: number;
-      grossCents: number;
-      platformFeeCents: number;
-      merchantSettlementCents: number;
-      reviewCount: number;
-      latestAt: string;
-    }
-  >();
-
-  for (const entry of entries) {
-    const key = entry.listingId || "unassigned";
-    const current = listings.get(key) ?? {
-      listingId: key,
-      listingName: entry.listingName || "VI Guide business",
-      captures: 0,
-      refunds: 0,
-      grossCents: 0,
-      platformFeeCents: 0,
-      merchantSettlementCents: 0,
-      reviewCount: 0,
-      latestAt: "",
-    };
-    if (entry.kind === "capture") current.captures += 1;
-    if (entry.kind === "refund") current.refunds += 1;
-    current.grossCents += entry.grossAmountCents;
-    current.platformFeeCents += entry.platformFeeCents;
-    current.merchantSettlementCents += entry.merchantSettlementCents;
-    if (entry.status === "review_required") current.reviewCount += 1;
-    if (entry.occurredAt > current.latestAt) current.latestAt = entry.occurredAt;
-    listings.set(key, current);
-  }
-
-  return [...listings.values()].sort(
-    (left, right) =>
-      right.merchantSettlementCents - left.merchantSettlementCents,
-  );
-}
-
-function summarizeReconciliationGaps(
-  bookings: Array<{ id: string; data: FirebaseFirestore.DocumentData }>,
-  ledgerIds: Set<string>,
-) {
-  let financialBookings = 0;
-  let missingCaptureEntries = 0;
-  let reviewRequiredBookings = 0;
-
-  for (const booking of bookings) {
-    if (!hasFinancialActivity(booking.data)) continue;
-    financialBookings += 1;
-    const paymentIntentId = clean(booking.data.paymentIntentId, 220);
-    const captureId = commerceCaptureLedgerId(paymentIntentId);
-    if (captureId && !ledgerIds.has(captureId)) missingCaptureEntries += 1;
-    if (
-      booking.data.paymentIntegrityStatus === "review_required" ||
-      booking.data.refundStatus === "review_required"
-    ) {
-      reviewRequiredBookings += 1;
-    }
-  }
-
-  return {
-    scannedBookings: bookings.length,
-    financialBookings,
-    missingCaptureEntries,
-    reviewRequiredBookings,
-  };
-}
-
-function storedPolicy(
-  booking: FirebaseFirestore.DocumentData,
-): CommerceLedgerPolicy {
-  const hasStoredFee = Object.prototype.hasOwnProperty.call(
-    booking,
-    "commercePlatformFeeBps",
-  );
-  if (!hasStoredFee) return { feeBps: 0, source: "unconfigured" };
-
-  const policy = resolveCommerceLedgerPolicy(booking.commercePlatformFeeBps);
-  return {
-    feeBps: policy.feeBps,
-    source:
-      booking.commerceFeePolicySource === "environment"
-        ? "environment"
-        : "unconfigured",
-  };
-}
-
-function hasFinancialActivity(data: FirebaseFirestore.DocumentData) {
-  return (
-    Boolean(clean(data.paymentIntentId, 220)) &&
-    ["paid", "refund_pending", "refunded", "refund_failed"].includes(
-      clean(data.paymentStatus, 40),
-    )
-  );
 }
 
 function normalizeLedgerStatus(value: unknown) {
