@@ -16,7 +16,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useAuth } from "@/components/auth-provider";
 
-type Role = "rider" | "driver" | "dispatcher" | "admin";
+type Role = "rider" | "driver" | "merchant" | "dispatcher" | "admin";
 
 export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const { user, loading } = useAuth();
@@ -37,7 +37,10 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
       .then((result) => {
         const claim = result.claims.role;
         setRole(
-          claim === "admin" || claim === "dispatcher" || claim === "driver"
+          claim === "admin" ||
+            claim === "dispatcher" ||
+            claim === "driver" ||
+            claim === "merchant"
             ? claim
             : "rider",
         );
@@ -87,9 +90,11 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const operationsHref =
     role === "driver"
       ? "/driver"
-      : role === "admin" || role === "dispatcher"
-        ? "/admin/dispatch"
-        : null;
+      : role === "merchant"
+        ? "/merchant"
+        : role === "admin" || role === "dispatcher"
+          ? "/admin/dispatch"
+          : null;
   const initial = (user.displayName || user.email || "V")
     .trim()
     .charAt(0)
@@ -178,7 +183,9 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
                 label={
                   role === "driver"
                     ? "Driver workspace"
-                    : "Operations dashboard"
+                    : role === "merchant"
+                      ? "Business console"
+                      : "Operations dashboard"
                 }
                 icon={ShieldCheck}
                 onSelect={() => setOpen(false)}
