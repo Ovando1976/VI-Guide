@@ -74,6 +74,7 @@ assert.deepEqual(
     { status: "paid" },
     { status: "confirmed" },
     { status: "completed" },
+    { status: "completed", paymentStatus: "refunded" },
     { status: "declined" },
     { status: "cancelled" },
     { status: "draft" },
@@ -81,14 +82,14 @@ assert.deepEqual(
     null,
   ]),
   {
-    total: 8,
+    total: 9,
     active: 5,
     needsAction: 2,
     awaitingPayment: 1,
     readyToConfirm: 1,
     confirmed: 1,
     completed: 1,
-    closed: 2,
+    closed: 3,
   },
 );
 assert.deepEqual(summarizeMerchantBookings(null), {
