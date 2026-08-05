@@ -122,7 +122,7 @@ const HOME_FEATURES = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-32 text-[#073b39]">
+    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-[calc(12rem+env(safe-area-inset-bottom))] text-[#073b39] sm:pb-32">
       <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 sm:px-8 lg:px-12 lg:pb-28">
         <div className="absolute inset-0 -z-30 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_42%]" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
@@ -137,7 +137,7 @@ export default function Home() {
             </div>
           </Link>
           <div className="flex items-center gap-2">
-            <Link href="/today" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] md:inline-flex">My AI day</Link>
+            <Link href={CONCIERGE_START_HREF} className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] md:inline-flex">My AI day</Link>
             <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
             <Link href={CONCIERGE_START_HREF} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
               <Sparkles size={14} /> Ask VI Concierge
