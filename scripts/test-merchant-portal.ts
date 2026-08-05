@@ -4,6 +4,7 @@ import {
   buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
+  summarizeMerchantBookings,
 } from "../lib/merchant-portal";
 
 assert.equal(
@@ -60,6 +61,45 @@ assert.deepEqual(availabilityDays[0], {
 });
 assert.equal(availabilityDays[13]?.date, "2026-08-18");
 assert.equal(buildProviderAvailabilityDays(900, "2026-12-25")[0]?.capacity, 500);
-assert.equal(buildProviderAvailabilityDays(Number.NaN, "2026-12-31")[1]?.date, "2027-01-01");
+assert.equal(
+  buildProviderAvailabilityDays(Number.NaN, "2026-12-31")[1]?.date,
+  "2027-01-01",
+);
+
+assert.deepEqual(
+  summarizeMerchantBookings([
+    { status: "requested" },
+    { status: "reviewing" },
+    { status: "payment_required" },
+    { status: "paid" },
+    { status: "confirmed" },
+    { status: "completed" },
+    { status: "declined" },
+    { status: "cancelled" },
+    { status: "draft" },
+    { status: "unknown" },
+    null,
+  ]),
+  {
+    total: 8,
+    active: 5,
+    needsAction: 2,
+    awaitingPayment: 1,
+    readyToConfirm: 1,
+    confirmed: 1,
+    completed: 1,
+    closed: 2,
+  },
+);
+assert.deepEqual(summarizeMerchantBookings(null), {
+  total: 0,
+  active: 0,
+  needsAction: 0,
+  awaitingPayment: 0,
+  readyToConfirm: 0,
+  confirmed: 0,
+  completed: 0,
+  closed: 0,
+});
 
 console.log("Merchant portal tests passed.");
