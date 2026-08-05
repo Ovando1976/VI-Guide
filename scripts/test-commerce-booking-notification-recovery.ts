@@ -11,6 +11,7 @@ const paidNotifications = recoveryNotificationsForCommerceBooking({
     email: "guest@example.com",
     status: "confirmed",
     paymentStatus: "paid",
+    paymentIntegrityStatus: "verified",
     createdAt: "2026-08-05T12:00:00.000Z",
     updatedAt: "2026-08-05T14:00:00.000Z",
     paidAt: "2026-08-05T13:00:00.000Z",
@@ -20,14 +21,9 @@ const paidNotifications = recoveryNotificationsForCommerceBooking({
 assert.deepEqual(
   paidNotifications.map((notification) => notification.id).sort(),
   [
-    "booking-1__booking_confirmed__operations",
-    "booking-1__booking_confirmed__traveler",
     "booking-1__booking_paid__merchant",
     "booking-1__booking_paid__operations",
     "booking-1__booking_paid__traveler",
-    "booking-1__booking_requested__merchant",
-    "booking-1__booking_requested__operations",
-    "booking-1__booking_requested__traveler",
   ],
 );
 assert.equal(
@@ -46,6 +42,7 @@ const refundedNotifications = recoveryNotificationsForCommerceBooking({
     email: "guest2@example.com",
     status: "cancelled",
     paymentStatus: "refunded",
+    paymentIntegrityStatus: "verified",
     refundStatus: "succeeded",
     createdAt: "2026-08-05T12:00:00.000Z",
     updatedAt: "2026-08-05T15:00:00.000Z",
@@ -53,11 +50,12 @@ const refundedNotifications = recoveryNotificationsForCommerceBooking({
     refundUpdatedAt: "2026-08-05T15:00:00.000Z",
   },
 });
-assert.equal(
-  refundedNotifications.some(
-    (notification) => notification.event === "booking_cancelled",
-  ),
-  false,
+assert.deepEqual(
+  refundedNotifications
+    .filter((notification) => notification.event === "booking_paid")
+    .map((notification) => notification.audience)
+    .sort(),
+  ["merchant", "operations", "traveler"],
 );
 assert.deepEqual(
   refundedNotifications
@@ -76,6 +74,7 @@ const failedRefundNotifications = recoveryNotificationsForCommerceBooking({
     email: "guest3@example.com",
     status: "paid",
     paymentStatus: "refund_failed",
+    paymentIntegrityStatus: "verified",
     refundStatus: "failed",
     createdAt: "2026-08-05T12:00:00.000Z",
     updatedAt: "2026-08-05T16:00:00.000Z",
@@ -88,6 +87,37 @@ assert.deepEqual(
     .filter((notification) => notification.event === "refund_failed")
     .map((notification) => notification.audience),
   ["operations"],
+);
+
+const reviewRequiredNotifications = recoveryNotificationsForCommerceBooking({
+  id: "booking-4",
+  data: {
+    reference: "VI-TOUR-4",
+    listingId: "tour-four",
+    listingName: "Tour Four",
+    email: "guest4@example.com",
+    paymentStatus: "paid",
+    paymentIntegrityStatus: "review_required",
+    refundStatus: "review_required",
+    createdAt: "2026-08-05T12:00:00.000Z",
+    updatedAt: "2026-08-05T17:00:00.000Z",
+    paidAt: "2026-08-05T13:00:00.000Z",
+    refundUpdatedAt: "2026-08-05T17:00:00.000Z",
+  },
+});
+assert.equal(
+  reviewRequiredNotifications.some(
+    (notification) => notification.event === "booking_paid",
+  ),
+  false,
+);
+assert.deepEqual(
+  reviewRequiredNotifications.map((notification) => notification.audience),
+  ["operations"],
+);
+assert.equal(
+  reviewRequiredNotifications[0]?.event,
+  "refund_review_required",
 );
 
 assert.deepEqual(
