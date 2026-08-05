@@ -5,6 +5,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
   CommerceBookingKind,
   CommerceBookingRequest,
@@ -81,6 +82,10 @@ function normalizeBooking(
   const endDate = clean(body.endDate, 10);
   const adults = Math.max(1, Math.min(20, Number(body.adults) || 1));
   const children = Math.max(0, Math.min(20, Number(body.children) || 0));
+  const listingHref = safeInternalDestinationOrNull(
+    clean(body.listingHref, 500) || null,
+    "https://vi-guide.local",
+  );
 
   if (
     !listingId ||
@@ -115,9 +120,7 @@ function normalizeBooking(
       : {}),
     ...(clean(body.phone, 40) ? { phone: clean(body.phone, 40) } : {}),
     ...(clean(body.notes, 1600) ? { notes: clean(body.notes, 1600) } : {}),
-    ...(clean(body.listingHref, 500)
-      ? { listingHref: clean(body.listingHref, 500) }
-      : {}),
+    ...(listingHref ? { listingHref } : {}),
   };
 }
 
