@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { PartnerApplicationBoard } from "@/components/admin/partner-application-board";
+import { PartnerConversionSummary } from "@/components/admin/partner-conversion-summary";
 import { PartnerPipelineBoard } from "@/components/admin/partner-pipeline-board";
 import { getSession } from "@/lib/auth-server";
 
@@ -19,6 +20,7 @@ export default async function PartnerApplicationsPage() {
 
   return (
     <>
+      <PartnerConversionSummary />
       <PartnerPipelineBoard />
       <PartnerApplicationBoard />
     </>
