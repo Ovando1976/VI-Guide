@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 
 import { getUsviToday } from "@/lib/booking/booking-dates";
 
+export const MAX_MERCHANT_OFFER_REQUESTS_PER_EMAIL_DAY = 10;
+
 export type MerchantOfferRequestIdentityInput = {
   offerId: string;
   email: string;
@@ -19,24 +21,48 @@ export function merchantOfferRequestDocumentId(
   input: MerchantOfferRequestIdentityInput,
 ) {
   const dayKey = getUsviToday(input.now ?? new Date());
-  const fingerprint = createHash("sha256")
-    .update(
-      [
-        normalize(input.offerId),
-        normalize(input.email),
-        normalize(input.startDate),
-        normalize(input.endDate ?? ""),
-        normalize(input.preferredTime ?? ""),
-        normalizeCount(input.adults),
-        normalizeCount(input.children),
-        normalizeMoney(input.offerPriceCents),
-        normalizeMoney(input.offerDepositCents ?? 0),
-        dayKey,
-      ].join("|"),
-    )
-    .digest("hex");
+  const fingerprint = sha256(
+    [
+      normalize(input.offerId),
+      normalize(input.email),
+      normalize(input.startDate),
+      normalize(input.endDate ?? ""),
+      normalize(input.preferredTime ?? ""),
+      normalizeCount(input.adults),
+      normalizeCount(input.children),
+      normalizeMoney(input.offerPriceCents),
+      normalizeMoney(input.offerDepositCents ?? 0),
+      dayKey,
+    ].join("|"),
+  );
 
   return `offer_request_${fingerprint.slice(0, 40)}`;
+}
+
+export function merchantOfferRequestQuotaDocumentId(input: {
+  email: string;
+  now?: Date;
+}) {
+  const dayKey = getUsviToday(input.now ?? new Date());
+  const fingerprint = sha256(`${normalize(input.email)}|${dayKey}`);
+  return `offer_email_${fingerprint.slice(0, 40)}`;
+}
+
+export function merchantOfferRequestQuotaAllows(
+  currentCount: unknown,
+  maximum = MAX_MERCHANT_OFFER_REQUESTS_PER_EMAIL_DAY,
+) {
+  const count = Number.isFinite(Number(currentCount))
+    ? Math.max(0, Math.floor(Number(currentCount)))
+    : 0;
+  const limit = Number.isFinite(maximum)
+    ? Math.max(1, Math.floor(maximum))
+    : MAX_MERCHANT_OFFER_REQUESTS_PER_EMAIL_DAY;
+  return count < limit;
+}
+
+function sha256(value: string) {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 function normalize(value: string) {
