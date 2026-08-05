@@ -18,11 +18,12 @@ import {
 } from "@/lib/payments/commerce-ledger";
 import {
   hasCommerceFinancialActivity,
+  normalizeStoredCommerceLedgerEntry,
   resolveStoredCommerceLedgerPolicy,
   summarizeCommerceLedgerListings,
   summarizeCommerceLedgerReconciliation,
+  validateStoredCommerceLedgerEntries,
 } from "@/lib/payments/commerce-ledger-operations";
-import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,15 +43,21 @@ export async function GET() {
 
     const db = getAdminDb();
     const [ledgerSnapshot, bookingSnapshot] = await Promise.all([
-      db.collection("commerceLedgerEntries").orderBy("occurredAt", "desc").get(),
+      db.collection("commerceLedgerEntries").get(),
       db
         .collection("commerceBookings")
         .orderBy("updatedAt", "desc")
         .limit(MAX_RECONCILE_BOOKINGS)
         .get(),
     ]);
-    const entries = ledgerSnapshot.docs.map((document) =>
-      serializeLedgerEntry(document.id, document.data()),
+    const validation = validateStoredCommerceLedgerEntries(
+      ledgerSnapshot.docs.map((document) => ({
+        id: document.id,
+        data: document.data(),
+      })),
+    );
+    const entries = validation.entries.sort((left, right) =>
+      right.occurredAt.localeCompare(left.occurredAt),
     );
     const bookingRecords = bookingSnapshot.docs.map((document) => ({
       ...document.data(),
@@ -62,6 +69,11 @@ export async function GET() {
         process.env.VI_GUIDE_COMMERCE_PLATFORM_FEE_BPS,
       ),
       summary: summarizeCommerceLedger(entries),
+      ledgerValidation: {
+        totalRecords: ledgerSnapshot.size,
+        validatedRecords: entries.length,
+        rejectedRecordCount: validation.rejectedRecordCount,
+      },
       reconciliation: summarizeCommerceLedgerReconciliation(
         bookingRecords,
         entries.map((entry) => entry.id),
@@ -217,8 +229,17 @@ export async function POST() {
         const refundEntryId = commerceRefundLedgerId(refundId);
         const storedRefundData = existingLedgerData.get(refundEntryId) ?? null;
         let refundEntry = storedRefundData
-          ? serializeLedgerEntry(refundEntryId, storedRefundData)
+          ? normalizeStoredCommerceLedgerEntry({
+              id: refundEntryId,
+              data: storedRefundData,
+            })
           : null;
+
+        if (storedRefundData && (!refundEntry || refundEntry.kind !== "refund")) {
+          reviewedEntries += 1;
+          skippedBookings += 1;
+          continue;
+        }
 
         if (!refundEntry) {
           const heldCapture = captureEntry.status === "held";
@@ -352,61 +373,6 @@ async function loadExactLedgerDocuments(
   );
 }
 
-function serializeLedgerEntry(
-  id: string,
-  data: FirebaseFirestore.DocumentData,
-): CommerceLedgerEntry {
-  const kind = data.kind === "refund" ? "refund" : "capture";
-  const policy = resolveCommerceLedgerPolicy(data.feeBps);
-  return {
-    id,
-    kind,
-    status: normalizeLedgerStatus(data.status),
-    bookingId: clean(data.bookingId, 180),
-    bookingReference: clean(data.bookingReference, 180),
-    listingId: clean(data.listingId, 180),
-    listingName: clean(data.listingName, 220) || "VI Guide business",
-    paymentIntentId: clean(data.paymentIntentId, 220),
-    checkoutSessionId: clean(data.checkoutSessionId, 220) || null,
-    refundId: clean(data.refundId, 220) || null,
-    reversalOfEntryId: clean(data.reversalOfEntryId, 100) || null,
-    stripeEventId: clean(data.stripeEventId, 220),
-    currency: clean(data.currency, 3).toLowerCase() || "usd",
-    feeBps: policy.feeBps,
-    feePolicySource:
-      policy.source === "environment" &&
-      data.feePolicySource === "environment"
-        ? "environment"
-        : "unconfigured",
-    grossAmountCents: signedMoney(data.grossAmountCents),
-    platformFeeCents: signedMoney(data.platformFeeCents),
-    merchantSettlementCents: signedMoney(data.merchantSettlementCents),
-    reportedRefundAmountCents:
-      data.reportedRefundAmountCents === null ||
-      data.reportedRefundAmountCents === undefined
-        ? null
-        : nonNegativeMoney(data.reportedRefundAmountCents),
-    unallocatedAmountCents: signedMoney(data.unallocatedAmountCents),
-    occurredAt: normalizeTimestampOrEpoch(data.occurredAt),
-    createdAt: normalizeTimestampOrEpoch(
-      data.createdAt ?? data.serverCreatedAt,
-    ),
-    updatedAt: normalizeTimestampOrEpoch(
-      data.updatedAt ?? data.serverUpdatedAt ?? data.createdAt,
-    ),
-  };
-}
-
-function normalizeLedgerStatus(value: unknown) {
-  return value === "held" ||
-    value === "posted" ||
-    value === "processing" ||
-    value === "review_required" ||
-    value === "failed"
-    ? value
-    : "review_required";
-}
-
 function normalizeRefundStatus(value: unknown) {
   return value === "processing" ||
     value === "succeeded" ||
@@ -425,16 +391,6 @@ function validIso(value: unknown) {
 function positiveMoney(value: unknown) {
   const amount = Number(value);
   return Number.isSafeInteger(amount) && amount > 0 ? amount : 0;
-}
-
-function nonNegativeMoney(value: unknown) {
-  const amount = Number(value);
-  return Number.isSafeInteger(amount) && amount >= 0 ? amount : 0;
-}
-
-function signedMoney(value: unknown) {
-  const amount = Number(value);
-  return Number.isSafeInteger(amount) ? amount : 0;
 }
 
 function clean(value: unknown, maxLength: number) {
