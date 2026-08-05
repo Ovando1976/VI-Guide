@@ -6,6 +6,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { resolveStoredCommerceCaptureEntry } from "@/lib/payments/commerce-ledger-firestore";
 import {
   buildCommerceCaptureLedgerEntry,
   buildCommerceRefundLedgerEntry,
@@ -26,7 +27,6 @@ import { normalizeTimestampOrEpoch } from "@/lib/timestamps";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const MAX_LEDGER_ENTRIES = 500;
 const MAX_RECONCILE_BOOKINGS = 250;
 const MAX_BATCH_WRITES = 400;
 
@@ -42,11 +42,7 @@ export async function GET() {
 
     const db = getAdminDb();
     const [ledgerSnapshot, bookingSnapshot] = await Promise.all([
-      db
-        .collection("commerceLedgerEntries")
-        .orderBy("occurredAt", "desc")
-        .limit(MAX_LEDGER_ENTRIES)
-        .get(),
+      db.collection("commerceLedgerEntries").orderBy("occurredAt", "desc").get(),
       db
         .collection("commerceBookings")
         .orderBy("updatedAt", "desc")
@@ -57,8 +53,8 @@ export async function GET() {
       serializeLedgerEntry(document.id, document.data()),
     );
     const bookingRecords = bookingSnapshot.docs.map((document) => ({
-      id: document.id,
       ...document.data(),
+      id: document.id,
     }));
 
     return NextResponse.json({
@@ -95,23 +91,14 @@ export async function POST() {
     }
 
     const db = getAdminDb();
-    const [bookingSnapshot, ledgerSnapshot] = await Promise.all([
-      db
-        .collection("commerceBookings")
-        .orderBy("updatedAt", "desc")
-        .limit(MAX_RECONCILE_BOOKINGS)
-        .get(),
-      db
-        .collection("commerceLedgerEntries")
-        .orderBy("occurredAt", "desc")
-        .limit(MAX_LEDGER_ENTRIES)
-        .get(),
-    ]);
-    const existingEntries = new Map(
-      ledgerSnapshot.docs.map((document) => [
-        document.id,
-        serializeLedgerEntry(document.id, document.data()),
-      ]),
+    const bookingSnapshot = await db
+      .collection("commerceBookings")
+      .orderBy("updatedAt", "desc")
+      .limit(MAX_RECONCILE_BOOKINGS)
+      .get();
+    const existingLedgerData = await loadExactLedgerDocuments(
+      db,
+      bookingSnapshot.docs,
     );
 
     let batch = db.batch();
@@ -130,7 +117,7 @@ export async function POST() {
 
     for (const bookingDocument of bookingSnapshot.docs) {
       const booking = bookingDocument.data();
-      const bookingRecord = { id: bookingDocument.id, ...booking };
+      const bookingRecord = { ...booking, id: bookingDocument.id };
       if (!hasCommerceFinancialActivity(bookingRecord)) continue;
 
       const paymentIntentId = clean(booking.paymentIntentId, 220);
@@ -143,7 +130,22 @@ export async function POST() {
       }
 
       const captureId = commerceCaptureLedgerId(paymentIntentId);
-      let captureEntry = existingEntries.get(captureId) ?? null;
+      const storedCaptureData = existingLedgerData.get(captureId) ?? null;
+      let captureEntry = storedCaptureData
+        ? resolveStoredCommerceCaptureEntry({
+            id: captureId,
+            data: storedCaptureData,
+            expectedPaymentIntentId: paymentIntentId,
+            expectedGrossAmountCents: paidAmountCents,
+          })
+        : null;
+
+      if (storedCaptureData && !captureEntry) {
+        reviewedEntries += 1;
+        skippedBookings += 1;
+        continue;
+      }
+
       if (!captureEntry) {
         captureEntry = buildCommerceCaptureLedgerEntry({
           bookingId: bookingDocument.id,
@@ -179,7 +181,7 @@ export async function POST() {
             serverUpdatedAt: FieldValue.serverTimestamp(),
           },
         );
-        existingEntries.set(captureEntry.id, captureEntry);
+        existingLedgerData.set(captureEntry.id, captureEntry);
         batchWrites += 1;
         captureEntries += 1;
         if (captureEntry.status === "review_required") reviewedEntries += 1;
@@ -213,8 +215,13 @@ export async function POST() {
         refundUpdatedAt
       ) {
         const refundEntryId = commerceRefundLedgerId(refundId);
-        let refundEntry = existingEntries.get(refundEntryId) ?? null;
+        const storedRefundData = existingLedgerData.get(refundEntryId) ?? null;
+        let refundEntry = storedRefundData
+          ? serializeLedgerEntry(refundEntryId, storedRefundData)
+          : null;
+
         if (!refundEntry) {
+          const heldCapture = captureEntry.status === "held";
           refundEntry = buildCommerceRefundLedgerEntry({
             bookingId: bookingDocument.id,
             bookingReference:
@@ -233,18 +240,18 @@ export async function POST() {
             refundAmountCents,
             currency: "usd",
             paymentIntentMatches:
-              booking.paymentIntegrityStatus === "verified",
+              booking.paymentIntegrityStatus === "verified" && heldCapture,
             fullRefund: refundAmountCents === paidAmountCents,
             captureEntryId: captureEntry.id,
-            captureGrossAmountCents:
-              captureEntry.status === "held"
-                ? captureEntry.grossAmountCents
-                : paidAmountCents,
-            capturePlatformFeeCents: captureEntry.platformFeeCents,
-            captureMerchantSettlementCents:
-              captureEntry.status === "held"
-                ? captureEntry.merchantSettlementCents
-                : paidAmountCents,
+            captureGrossAmountCents: heldCapture
+              ? captureEntry.grossAmountCents
+              : paidAmountCents,
+            capturePlatformFeeCents: heldCapture
+              ? captureEntry.platformFeeCents
+              : 0,
+            captureMerchantSettlementCents: heldCapture
+              ? captureEntry.merchantSettlementCents
+              : paidAmountCents,
             feeBps: captureEntry.feeBps,
             feePolicySource: captureEntry.feePolicySource,
             occurredAt: refundUpdatedAt,
@@ -262,7 +269,7 @@ export async function POST() {
                 serverUpdatedAt: FieldValue.serverTimestamp(),
               },
             );
-            existingEntries.set(refundEntry.id, refundEntry);
+            existingLedgerData.set(refundEntry.id, refundEntry);
             batchWrites += 1;
             refundEntries += 1;
             if (refundEntry.status === "review_required") reviewedEntries += 1;
@@ -313,13 +320,47 @@ export async function POST() {
   }
 }
 
+async function loadExactLedgerDocuments(
+  db: ReturnType<typeof getAdminDb>,
+  bookings: Array<{
+    id: string;
+    data(): FirebaseFirestore.DocumentData;
+  }>,
+) {
+  const entryIds = new Set<string>();
+  for (const bookingDocument of bookings) {
+    const booking = bookingDocument.data();
+    const paymentIntentId = clean(booking.paymentIntentId, 220);
+    const refundId = clean(booking.refundId, 220);
+    const captureId = commerceCaptureLedgerId(paymentIntentId);
+    const refundEntryId = commerceRefundLedgerId(refundId);
+    if (captureId) entryIds.add(captureId);
+    if (refundEntryId) entryIds.add(refundEntryId);
+  }
+  if (!entryIds.size) {
+    return new Map<string, FirebaseFirestore.DocumentData>();
+  }
+
+  const references = [...entryIds].map((entryId) =>
+    db.collection("commerceLedgerEntries").doc(entryId),
+  );
+  const snapshots = await db.getAll(...references);
+  return new Map(
+    snapshots
+      .filter((snapshot) => snapshot.exists)
+      .map((snapshot) => [snapshot.id, snapshot.data() ?? {}] as const),
+  );
+}
+
 function serializeLedgerEntry(
   id: string,
   data: FirebaseFirestore.DocumentData,
 ): CommerceLedgerEntry {
+  const kind = data.kind === "refund" ? "refund" : "capture";
+  const policy = resolveCommerceLedgerPolicy(data.feeBps);
   return {
     id,
-    kind: data.kind === "refund" ? "refund" : "capture",
+    kind,
     status: normalizeLedgerStatus(data.status),
     bookingId: clean(data.bookingId, 180),
     bookingReference: clean(data.bookingReference, 180),
@@ -331,8 +372,9 @@ function serializeLedgerEntry(
     reversalOfEntryId: clean(data.reversalOfEntryId, 100) || null,
     stripeEventId: clean(data.stripeEventId, 220),
     currency: clean(data.currency, 3).toLowerCase() || "usd",
-    feeBps: nonNegativeMoney(data.feeBps),
+    feeBps: policy.feeBps,
     feePolicySource:
+      policy.source === "environment" &&
       data.feePolicySource === "environment"
         ? "environment"
         : "unconfigured",
@@ -356,12 +398,13 @@ function serializeLedgerEntry(
 }
 
 function normalizeLedgerStatus(value: unknown) {
-  return value === "posted" ||
+  return value === "held" ||
+    value === "posted" ||
     value === "processing" ||
     value === "review_required" ||
     value === "failed"
     ? value
-    : "held";
+    : "review_required";
 }
 
 function normalizeRefundStatus(value: unknown) {
