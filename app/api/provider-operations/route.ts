@@ -1,6 +1,7 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
+import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -13,65 +14,95 @@ import type {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const OPERATIONS_ROLES = ["admin", "dispatcher"] as const;
+
 export async function GET(request: NextRequest) {
-  if (!hasFirebaseAdminConfiguration()) {
+  try {
+    await requireSession([...OPERATIONS_ROLES]);
+
+    if (!hasFirebaseAdminConfiguration()) {
+      return NextResponse.json(
+        { error: "Provider operations are not configured on the server." },
+        { status: 503 },
+      );
+    }
+
+    const listingId = clean(request.nextUrl.searchParams.get("listingId"), 160);
+    if (!listingId) {
+      return NextResponse.json({ error: "A listingId is required." }, { status: 400 });
+    }
+
+    const document = await getAdminDb()
+      .collection("providerOperations")
+      .doc(listingId)
+      .get();
+
+    if (!document.exists) {
+      return NextResponse.json({ config: null });
+    }
+
+    return NextResponse.json({
+      config: normalizeStoredConfig(document.data(), listingId),
+    });
+  } catch (error) {
+    const authResponse = authErrorResponse(error);
+    if (authResponse) return authResponse;
+    console.error("provider operations load error", error);
     return NextResponse.json(
-      { error: "Provider operations are not configured on the server." },
-      { status: 503 },
+      { error: "Unable to load provider operations." },
+      { status: 500 },
     );
   }
-
-  const listingId = clean(request.nextUrl.searchParams.get("listingId"), 160);
-  if (!listingId) {
-    return NextResponse.json({ error: "A listingId is required." }, { status: 400 });
-  }
-
-  const document = await getAdminDb()
-    .collection("providerOperations")
-    .doc(listingId)
-    .get();
-
-  if (!document.exists) {
-    return NextResponse.json({ config: null });
-  }
-
-  return NextResponse.json({ config: normalizeStoredConfig(document.data(), listingId) });
 }
 
 export async function PUT(request: NextRequest) {
-  if (!hasFirebaseAdminConfiguration()) {
+  try {
+    const session = await requireSession([...OPERATIONS_ROLES]);
+
+    if (!hasFirebaseAdminConfiguration()) {
+      return NextResponse.json(
+        { error: "Provider operations are not configured on the server." },
+        { status: 503 },
+      );
+    }
+
+    const body = (await request.json().catch(() => null)) as
+      | Partial<ProviderOperationsConfig>
+      | null;
+    const config = normalizeInput(body);
+
+    if (!config) {
+      return NextResponse.json(
+        { error: "Complete the listing and availability details." },
+        { status: 400 },
+      );
+    }
+
+    const updatedAt = new Date().toISOString();
+    await getAdminDb()
+      .collection("providerOperations")
+      .doc(config.listingId)
+      .set(
+        {
+          ...config,
+          updatedAt,
+          updatedByUid: session.uid,
+          updatedByEmail: session.email ?? null,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+
+    return NextResponse.json({ config: { ...config, updatedAt } });
+  } catch (error) {
+    const authResponse = authErrorResponse(error);
+    if (authResponse) return authResponse;
+    console.error("provider operations save error", error);
     return NextResponse.json(
-      { error: "Provider operations are not configured on the server." },
-      { status: 503 },
+      { error: "Unable to save provider operations." },
+      { status: 500 },
     );
   }
-
-  const body = (await request.json().catch(() => null)) as
-    | Partial<ProviderOperationsConfig>
-    | null;
-  const config = normalizeInput(body);
-
-  if (!config) {
-    return NextResponse.json(
-      { error: "Complete the listing and availability details." },
-      { status: 400 },
-    );
-  }
-
-  const updatedAt = new Date().toISOString();
-  await getAdminDb()
-    .collection("providerOperations")
-    .doc(config.listingId)
-    .set(
-      {
-        ...config,
-        updatedAt,
-        serverUpdatedAt: FieldValue.serverTimestamp(),
-      },
-      { merge: true },
-    );
-
-  return NextResponse.json({ config: { ...config, updatedAt } });
 }
 
 function normalizeInput(
@@ -84,7 +115,9 @@ function normalizeInput(
   const timezone = clean(body.timezone, 80) || "America/St_Thomas";
   const defaultCapacity = clampNumber(body.defaultCapacity, 1, 500, 10);
   const days = Array.isArray(body.days)
-    ? body.days.map(normalizeDay).filter((day): day is ProviderAvailabilityDay => Boolean(day))
+    ? body.days
+        .map(normalizeDay)
+        .filter((day): day is ProviderAvailabilityDay => Boolean(day))
     : [];
 
   if (!listingId || !listingName) return null;
