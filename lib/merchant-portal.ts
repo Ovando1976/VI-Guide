@@ -1,4 +1,9 @@
+import {
+  addCalendarDays,
+  getUsviToday,
+} from "@/lib/booking/booking-dates";
 import { normalizeManagedListingIds } from "@/lib/merchant-access";
+import type { ProviderAvailabilityDay } from "@/types/provider-operations";
 
 export type MerchantListingSelectionInput = {
   requestedListingId?: unknown;
@@ -27,6 +32,23 @@ export function humanizeListingId(value: unknown) {
     .replace(/\s+/g, " ")
     .trim()
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+export function buildProviderAvailabilityDays(
+  capacity: number,
+  today: string = getUsviToday(),
+): ProviderAvailabilityDay[] {
+  const normalizedCapacity = Number.isFinite(capacity)
+    ? Math.max(0, Math.min(500, Math.round(capacity)))
+    : 10;
+
+  return Array.from({ length: 14 }, (_, index) => ({
+    date: addCalendarDays(today, index),
+    isOpen: true,
+    capacity: normalizedCapacity,
+    startTime: "09:00",
+    endTime: "17:00",
+  }));
 }
 
 function cleanListingId(value: unknown) {
