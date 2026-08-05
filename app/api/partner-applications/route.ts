@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -11,6 +9,11 @@ import {
   normalizePartnerApplication,
   partnerApplicationDayKey,
 } from "@/lib/partners/partner-application";
+import {
+  partnerApplicationEmailDayFingerprint,
+  partnerApplicationFingerprint,
+  partnerApplicationQuotaAllows,
+} from "@/lib/partners/partner-application-intake";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -36,26 +39,21 @@ export async function POST(request: NextRequest) {
   const now = new Date();
   const validation = normalizePartnerApplication(body, now);
   if (!validation.ok) {
-    if (validation.spam) {
-      return NextResponse.json(
-        {
-          ok: true,
-          reference: "VI-PARTNER-RECEIVED",
-          message: "Your application was received.",
-        },
-        { status: 202 },
-      );
-    }
+    if (validation.spam) return acceptedWithoutDisclosure();
     return NextResponse.json({ error: validation.error }, { status: 400 });
   }
 
   const application = validation.application;
   const dayKey = partnerApplicationDayKey(now);
-  const fingerprint = createHash("sha256")
-    .update(
-      `${application.email}|${application.businessName.toLowerCase()}|${dayKey}`,
-    )
-    .digest("hex");
+  const fingerprint = partnerApplicationFingerprint({
+    email: application.email,
+    businessName: application.businessName,
+    dayKey,
+  });
+  const emailDayFingerprint = partnerApplicationEmailDayFingerprint({
+    email: application.email,
+    dayKey,
+  });
   const applicationId = `partner_${fingerprint.slice(0, 32)}`;
   const reference = `VI-PARTNER-${dayKey.replaceAll("-", "")}-${fingerprint
     .slice(0, 6)
@@ -66,12 +64,26 @@ export async function POST(request: NextRequest) {
     const applicationRef = db
       .collection("partnerApplications")
       .doc(applicationId);
+    const intakeRef = db
+      .collection("partnerApplicationIntake")
+      .doc(`email_${emailDayFingerprint.slice(0, 40)}`);
     const result = await db.runTransaction(async (transaction) => {
       const existing = await transaction.get(applicationRef);
       if (existing.exists) {
         return {
           duplicate: true,
+          rateLimited: false,
           reference: String(existing.data()?.reference ?? reference),
+        };
+      }
+
+      const intakeSnapshot = await transaction.get(intakeRef);
+      const currentCount = Number(intakeSnapshot.data()?.count ?? 0);
+      if (!partnerApplicationQuotaAllows(currentCount)) {
+        return {
+          duplicate: false,
+          rateLimited: true,
+          reference: "VI-PARTNER-RECEIVED",
         };
       }
 
@@ -89,6 +101,17 @@ export async function POST(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
         serverUpdatedAt: FieldValue.serverTimestamp(),
       });
+
+      transaction.set(
+        intakeRef,
+        {
+          dayKey,
+          count: currentCount + 1,
+          lastSubmittedAt: application.submittedAt,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
 
       transaction.set(db.collection("partnerApplicationAudit").doc(), {
         action: "submitted",
@@ -115,8 +138,10 @@ export async function POST(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
       });
 
-      return { duplicate: false, reference };
+      return { duplicate: false, rateLimited: false, reference };
     });
+
+    if (result.rateLimited) return acceptedWithoutDisclosure();
 
     return NextResponse.json(
       {
@@ -136,4 +161,15 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   }
+}
+
+function acceptedWithoutDisclosure() {
+  return NextResponse.json(
+    {
+      ok: true,
+      reference: "VI-PARTNER-RECEIVED",
+      message: "Your application was received.",
+    },
+    { status: 202 },
+  );
 }
