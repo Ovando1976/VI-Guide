@@ -11,7 +11,10 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
-import { resolveMerchantOfferForBooking } from "@/lib/merchant-offer-booking";
+import {
+  resolveMerchantOfferForBooking,
+  type MerchantOfferBookingSnapshot,
+} from "@/lib/merchant-offer-booking";
 import { formatMerchantOfferMoney } from "@/lib/merchant-offers";
 
 export const dynamic = "force-dynamic";
@@ -141,19 +144,19 @@ async function loadLiveOffers() {
     .where("status", "==", "active")
     .limit(100)
     .get();
+  const offers: MerchantOfferBookingSnapshot[] = [];
 
-  return snapshot.docs
-    .map((document) =>
-      resolveMerchantOfferForBooking({
-        offerId: document.id,
-        record: document.data(),
-      }),
-    )
-    .filter((result) => result.ok)
-    .map((result) => result.snapshot)
-    .sort((left, right) =>
-      left.validThrough.localeCompare(right.validThrough),
-    );
+  for (const document of snapshot.docs) {
+    const result = resolveMerchantOfferForBooking({
+      offerId: document.id,
+      record: document.data(),
+    });
+    if (result.ok) offers.push(result.snapshot);
+  }
+
+  return offers.sort((left, right) =>
+    left.validThrough.localeCompare(right.validThrough),
+  );
 }
 
 function humanizeKind(value: string) {
