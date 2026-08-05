@@ -70,7 +70,9 @@ export function merchantCommerceTransitionError(input: {
     if (input.nextStatus === "completed" && input.currentStatus !== "confirmed") {
       return "Only a confirmed booking can be completed.";
     }
-    return `A ${input.currentStatus.replaceAll("_", " ")} booking cannot move to ${input.nextStatus.replaceAll("_", " ")}.`;
+    return `A ${statusLabel(input.currentStatus)} booking cannot move to ${statusLabel(
+      input.nextStatus,
+    )}.`;
   }
 
   if (
@@ -103,4 +105,8 @@ export function isMerchantCommerceTransition(
     value === "declined" ||
     value === "cancelled"
   );
+}
+
+function statusLabel(value: string) {
+  return value.replaceAll("_", " ");
 }
