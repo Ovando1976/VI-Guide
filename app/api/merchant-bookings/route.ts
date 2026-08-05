@@ -72,6 +72,16 @@ export async function GET(request: NextRequest) {
         merchantNote: data.merchantNote ? String(data.merchantNote) : null,
         proposedTime: data.proposedTime ? String(data.proposedTime) : null,
         depositAmountCents: nullableMoney(data.depositAmountCents),
+        depositSource: normalizeDepositSource(data.depositSource),
+        offerDepositAmountCents: nullableMoney(data.offerDepositAmountCents),
+        offerDepositOverridden: data.offerDepositOverridden === true,
+        offerDepositOverrideCents: nullableMoney(data.offerDepositOverrideCents),
+        offerDepositOverrideAt: data.offerDepositOverrideAt
+          ? String(data.offerDepositOverrideAt)
+          : null,
+        offerDepositOverrideByEmail: data.offerDepositOverrideByEmail
+          ? String(data.offerDepositOverrideByEmail)
+          : null,
         paidAmountCents: nullableMoney(data.paidAmountCents),
         paymentStatus: data.paymentStatus
           ? String(data.paymentStatus)
@@ -154,6 +164,14 @@ function sortDocuments<
       String(leftData.createdAt ?? ""),
     );
   });
+}
+
+function normalizeDepositSource(value: unknown) {
+  return value === "offer" ||
+    value === "merchant_override" ||
+    value === "manual"
+    ? value
+    : null;
 }
 
 function nullableMoney(value: unknown) {
