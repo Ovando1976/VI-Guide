@@ -4,7 +4,6 @@ import {
   AlertTriangle,
   Archive,
   BadgeDollarSign,
-  CalendarDays,
   CheckCircle2,
   CirclePause,
   CirclePlay,
@@ -18,18 +17,17 @@ import {
   Tag,
   X,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 
+import type { AppRole } from "@/lib/auth-server";
 import {
   formatMerchantOfferMoney,
   merchantOfferToday,
   type MerchantOfferStatus,
 } from "@/lib/merchant-offers";
-import type { AppRole } from "@/lib/auth-server";
 
-type OfferPublicState = "live" | "scheduled" | "expired" | "unavailable";
-
-type MerchantOffer = {
+type PublicState = "live" | "scheduled" | "expired" | "unavailable";
+type Offer = {
   id: string;
   listingId: string;
   listingName: string;
@@ -45,12 +43,11 @@ type MerchantOffer = {
   validFrom: string;
   validThrough: string;
   status: MerchantOfferStatus;
-  publicState: OfferPublicState;
+  publicState: PublicState;
   createdAt: string;
   updatedAt: string;
 };
-
-type OfferSummary = {
+type Summary = {
   total: number;
   draft: number;
   active: number;
@@ -60,14 +57,12 @@ type OfferSummary = {
   scheduled: number;
   expired: number;
 };
-
-type OfferFilter = "current" | MerchantOfferStatus | "all";
-
-type OfferForm = {
+type Filter = "current" | MerchantOfferStatus | "all";
+type FormState = {
   listingId: string;
   listingName: string;
-  kind: MerchantOffer["kind"];
-  island: MerchantOffer["island"];
+  kind: Offer["kind"];
+  island: Offer["island"];
   title: string;
   summary: string;
   inclusions: string;
@@ -79,7 +74,7 @@ type OfferForm = {
   validThrough: string;
 };
 
-const EMPTY_SUMMARY: OfferSummary = {
+const EMPTY_SUMMARY: Summary = {
   total: 0,
   draft: 0,
   active: 0,
@@ -98,14 +93,14 @@ export function MerchantOfferBoard({
   listingIds: string[];
 }) {
   const today = merchantOfferToday();
-  const [offers, setOffers] = useState<MerchantOffer[]>([]);
-  const [summary, setSummary] = useState<OfferSummary>(EMPTY_SUMMARY);
-  const [filter, setFilter] = useState<OfferFilter>("current");
-  const [form, setForm] = useState<OfferForm>(() =>
-    emptyForm(listingIds[0] ?? "", today),
+  const [offers, setOffers] = useState<Offer[]>([]);
+  const [summary, setSummary] = useState<Summary>(EMPTY_SUMMARY);
+  const [filter, setFilter] = useState<Filter>("current");
+  const [form, setForm] = useState<FormState>(() =>
+    createEmptyForm(listingIds[0] ?? "", today),
   );
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(false);
+  const [editorOpen, setEditorOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [workingId, setWorkingId] = useState<string | null>(null);
@@ -113,7 +108,7 @@ export function MerchantOfferBoard({
   const [message, setMessage] = useState<string | null>(null);
 
   const canManage = role === "merchant" || role === "admin";
-  const hasListingScope = role === "admin" || listingIds.length > 0;
+  const hasScope = role === "admin" || listingIds.length > 0;
 
   const load = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
@@ -123,11 +118,7 @@ export function MerchantOfferBoard({
         cache: "no-store",
       });
       const payload = (await response.json().catch(() => null)) as
-        | {
-            offers?: MerchantOffer[];
-            summary?: OfferSummary;
-            error?: string;
-          }
+        | { offers?: Offer[]; summary?: Summary; error?: string }
         | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load merchant offers.");
@@ -168,15 +159,15 @@ export function MerchantOfferBoard({
     return offers.filter((offer) => offer.status === filter);
   }, [filter, offers]);
 
-  function startCreate() {
+  function openCreate() {
     setEditingId(null);
-    setForm(emptyForm(listingIds[0] ?? "", today));
+    setForm(createEmptyForm(listingIds[0] ?? "", today));
     setError(null);
     setMessage(null);
-    setShowForm(true);
+    setEditorOpen(true);
   }
 
-  function startEdit(offer: MerchantOffer) {
+  function openEdit(offer: Offer) {
     setEditingId(offer.id);
     setForm({
       listingId: offer.listingId,
@@ -187,26 +178,26 @@ export function MerchantOfferBoard({
       summary: offer.summary,
       inclusions: offer.inclusions ?? "",
       terms: offer.terms ?? "",
-      price: centsToInput(offer.priceCents),
-      compareAt: centsToInput(offer.compareAtCents),
-      deposit: centsToInput(offer.depositCents),
+      price: centsForInput(offer.priceCents),
+      compareAt: centsForInput(offer.compareAtCents),
+      deposit: centsForInput(offer.depositCents),
       validFrom: offer.validFrom,
       validThrough: offer.validThrough,
     });
     setError(null);
     setMessage(null);
-    setShowForm(true);
+    setEditorOpen(true);
   }
 
-  function closeForm() {
+  function closeEditor() {
     if (saving) return;
-    setShowForm(false);
     setEditingId(null);
-    setForm(emptyForm(listingIds[0] ?? "", today));
+    setEditorOpen(false);
+    setForm(createEmptyForm(listingIds[0] ?? "", today));
   }
 
   async function saveOffer() {
-    if (!canManage || !hasListingScope) return;
+    if (!canManage || !hasScope) return;
     const priceCents = dollarsToCents(form.price);
     const compareAtCents = optionalDollarsToCents(form.compareAt);
     const depositCents = optionalDollarsToCents(form.deposit);
@@ -237,12 +228,10 @@ export function MerchantOfferBoard({
       const response = await fetch("/api/merchant-offers", {
         method: editingId ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          editingId ? { id: editingId, offer } : offer,
-        ),
+        body: JSON.stringify(editingId ? { id: editingId, offer } : offer),
       });
       const payload = (await response.json().catch(() => null)) as
-        | { offer?: MerchantOffer; error?: string }
+        | { offer?: Offer; error?: string }
         | null;
       if (!response.ok || !payload?.offer) {
         throw new Error(payload?.error || "Unable to save the merchant offer.");
@@ -252,7 +241,9 @@ export function MerchantOfferBoard({
           ? `${payload.offer.title} was updated.`
           : `${payload.offer.title} was saved as a draft.`,
       );
-      closeFormAfterSave(listingIds, today, setEditingId, setForm, setShowForm);
+      setEditingId(null);
+      setEditorOpen(false);
+      setForm(createEmptyForm(listingIds[0] ?? "", today));
       await load(true);
     } catch (caught) {
       setError(
@@ -265,10 +256,7 @@ export function MerchantOfferBoard({
     }
   }
 
-  async function changeStatus(
-    offer: MerchantOffer,
-    status: MerchantOfferStatus,
-  ) {
+  async function changeStatus(offer: Offer, status: MerchantOfferStatus) {
     if (!canManage) return;
     setWorkingId(offer.id);
     setError(null);
@@ -280,7 +268,7 @@ export function MerchantOfferBoard({
         body: JSON.stringify({ id: offer.id, status }),
       });
       const payload = (await response.json().catch(() => null)) as
-        | { offer?: MerchantOffer; error?: string }
+        | { offer?: Offer; error?: string }
         | null;
       if (!response.ok || !payload?.offer) {
         throw new Error(payload?.error || "Unable to update the offer status.");
@@ -332,12 +320,15 @@ export function MerchantOfferBoard({
         </section>
 
         {role === "merchant" && !listingIds.length ? (
-          <section className="mt-6 rounded-[28px] border border-rose-200 bg-rose-50 p-6 text-rose-900">
-            <h2 className="text-xl font-black">No listing scope is assigned</h2>
-            <p className="mt-2 text-sm font-semibold leading-6 text-rose-800/75">
-              An administrator must assign at least one business listing before
-              this account can create or publish offers.
-            </p>
+          <section className="mt-6 flex gap-4 rounded-[28px] border border-rose-200 bg-rose-50 p-6 text-rose-900">
+            <AlertTriangle className="mt-1 h-6 w-6 shrink-0" />
+            <div>
+              <h2 className="text-xl font-black">No listing scope is assigned</h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-rose-800/75">
+                An administrator must assign at least one business listing before
+                this account can create or publish offers.
+              </p>
+            </div>
           </section>
         ) : null}
 
@@ -390,10 +381,10 @@ export function MerchantOfferBoard({
                 )}
                 Refresh
               </button>
-              {canManage && hasListingScope ? (
+              {canManage && hasScope ? (
                 <button
                   type="button"
-                  onClick={startCreate}
+                  onClick={openCreate}
                   className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]"
                 >
                   <Plus className="h-4 w-4" /> New offer
@@ -435,7 +426,7 @@ export function MerchantOfferBoard({
                 offer={offer}
                 canManage={canManage}
                 working={workingId === offer.id}
-                onEdit={() => startEdit(offer)}
+                onEdit={() => openEdit(offer)}
                 onStatus={(status) => void changeStatus(offer, status)}
               />
             ))
@@ -443,7 +434,7 @@ export function MerchantOfferBoard({
         </section>
       </div>
 
-      {showForm ? (
+      {editorOpen ? (
         <OfferEditor
           role={role}
           listingIds={listingIds}
@@ -452,7 +443,7 @@ export function MerchantOfferBoard({
           saving={saving}
           today={today}
           onChange={setForm}
-          onClose={closeForm}
+          onClose={closeEditor}
           onSave={() => void saveOffer()}
         />
       ) : null}
@@ -473,17 +464,16 @@ function OfferEditor({
 }: {
   role: AppRole;
   listingIds: string[];
-  form: OfferForm;
+  form: FormState;
   editing: boolean;
   saving: boolean;
   today: string;
-  onChange: (form: OfferForm) => void;
+  onChange: (value: FormState) => void;
   onClose: () => void;
   onSave: () => void;
 }) {
-  function patch(values: Partial<OfferForm>) {
+  const patch = (values: Partial<FormState>) =>
     onChange({ ...form, ...values });
-  }
 
   return (
     <div className="fixed inset-0 z-[2000] overflow-y-auto bg-[#012321]/75 px-4 py-6 backdrop-blur-sm sm:px-6">
@@ -494,7 +484,9 @@ function OfferEditor({
               {editing ? "Edit package" : "New package"}
             </p>
             <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
-              {editing ? "Update the paused or draft offer" : "Create a sellable offer draft"}
+              {editing
+                ? "Update the paused or draft offer"
+                : "Create a sellable offer draft"}
             </h2>
           </div>
           <button
@@ -518,8 +510,7 @@ function OfferEditor({
                   const listingId = event.target.value;
                   patch({
                     listingId,
-                    listingName:
-                      form.listingName || humanizeListingId(listingId),
+                    listingName: listingId ? humanizeListingId(listingId) : "",
                   });
                 }}
                 className={inputClass()}
@@ -554,7 +545,7 @@ function OfferEditor({
             <select
               value={form.kind}
               onChange={(event) =>
-                patch({ kind: event.target.value as OfferForm["kind"] })
+                patch({ kind: event.target.value as FormState["kind"] })
               }
               className={inputClass()}
             >
@@ -567,7 +558,7 @@ function OfferEditor({
             <select
               value={form.island}
               onChange={(event) =>
-                patch({ island: event.target.value as OfferForm["island"] })
+                patch({ island: event.target.value as FormState["island"] })
               }
               className={inputClass()}
             >
@@ -699,7 +690,7 @@ function OfferCard({
   onEdit,
   onStatus,
 }: {
-  offer: MerchantOffer;
+  offer: Offer;
   canManage: boolean;
   working: boolean;
   onEdit: () => void;
@@ -713,7 +704,7 @@ function OfferCard({
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={offer.status} />
-            <PublicStateBadge state={offer.publicState} />
+            <PublicBadge state={offer.publicState} />
             <span className="rounded-full bg-slate-100 px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] text-slate-600">
               {offer.kind}
             </span>
@@ -748,12 +739,11 @@ function OfferCard({
       <p className="mt-5 text-sm font-semibold leading-7 text-slate-600">
         {offer.summary}
       </p>
-
       <div className="mt-5 grid gap-3 text-xs font-bold text-slate-500 sm:grid-cols-2 lg:grid-cols-4">
         <Detail label="Selling starts" value={formatDate(offer.validFrom)} />
         <Detail label="Selling ends" value={formatDate(offer.validThrough)} />
         <Detail label="Updated" value={formatTime(offer.updatedAt)} />
-        <Detail label="Visibility" value={humanizeValue(offer.publicState)} />
+        <Detail label="Visibility" value={humanize(offer.publicState)} />
       </div>
 
       {canManage && offer.status !== "archived" ? (
@@ -812,7 +802,7 @@ function OfferCard({
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="block text-[9px] font-black uppercase tracking-[.14em] text-slate-500">
       {label}
@@ -872,31 +862,27 @@ function StatusBadge({ status }: { status: MerchantOfferStatus }) {
     archived: "bg-slate-200 text-slate-700",
   };
   return (
-    <span
-      className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[status]}`}
-    >
+    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[status]}`}>
       {status}
     </span>
   );
 }
 
-function PublicStateBadge({ state }: { state: OfferPublicState }) {
-  const styles: Record<OfferPublicState, string> = {
+function PublicBadge({ state }: { state: PublicState }) {
+  const styles: Record<PublicState, string> = {
     live: "bg-emerald-100 text-emerald-800",
     scheduled: "bg-violet-100 text-violet-800",
     expired: "bg-rose-100 text-rose-800",
     unavailable: "bg-slate-100 text-slate-500",
   };
   return (
-    <span
-      className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[state]}`}
-    >
-      {humanizeValue(state)}
+    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[state]}`}>
+      {humanize(state)}
     </span>
   );
 }
 
-function emptyForm(listingId: string, today: string): OfferForm {
+function createEmptyForm(listingId: string, today: string): FormState {
   return {
     listingId,
     listingName: listingId ? humanizeListingId(listingId) : "",
@@ -914,24 +900,11 @@ function emptyForm(listingId: string, today: string): OfferForm {
   };
 }
 
-function closeFormAfterSave(
-  listingIds: string[],
-  today: string,
-  setEditingId: (value: string | null) => void,
-  setForm: (value: OfferForm) => void,
-  setShowForm: (value: boolean) => void,
-) {
-  setEditingId(null);
-  setForm(emptyForm(listingIds[0] ?? "", today));
-  setShowForm(false);
-}
-
 function dollarsToCents(value: string) {
   const match = value.trim().match(/^(\d{1,5})(?:\.(\d{1,2}))?$/);
   if (!match) return null;
-  const whole = Number(match[1]);
-  const fraction = Number((match[2] ?? "").padEnd(2, "0"));
-  const cents = whole * 100 + fraction;
+  const cents =
+    Number(match[1]) * 100 + Number((match[2] ?? "").padEnd(2, "0"));
   return Number.isSafeInteger(cents) ? cents : null;
 }
 
@@ -940,7 +913,7 @@ function optionalDollarsToCents(value: string): number | null | false {
   return dollarsToCents(value) ?? false;
 }
 
-function centsToInput(value: number | null) {
+function centsForInput(value: number | null) {
   if (value === null) return "";
   return (value / 100).toFixed(value % 100 === 0 ? 0 : 2);
 }
@@ -952,17 +925,21 @@ function addDays(dateKey: string, days: number) {
 }
 
 function humanizeListingId(value: string) {
+  return humanize(value);
+}
+
+function humanizeIsland(value: Offer["island"]) {
+  return value === "stt"
+    ? "St. Thomas"
+    : value === "stj"
+      ? "St. John"
+      : "St. Croix";
+}
+
+function humanize(value: string) {
   return value
     .replace(/[_-]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
-
-function humanizeIsland(value: MerchantOffer["island"]) {
-  return value === "stt" ? "St. Thomas" : value === "stj" ? "St. John" : "St. Croix";
-}
-
-function humanizeValue(value: string) {
-  return value.replace(/[_-]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function formatDate(value: string) {
