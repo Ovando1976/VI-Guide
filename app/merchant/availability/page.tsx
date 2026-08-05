@@ -5,31 +5,32 @@ import { getSession } from "@/lib/auth-server";
 import { resolveMerchantListingSelection } from "@/lib/merchant-portal";
 
 export const metadata = {
-  title: "Provider Operations | VI Guide",
+  title: "Merchant Availability | VI Guide",
   description:
-    "Manage business availability, operating hours, capacity, and blackout periods in VI Guide.",
+    "Manage operating days, hours, capacity, and blackout periods for assigned VI Guide businesses.",
 };
 
-type ProviderOperationsPageProps = {
+type MerchantAvailabilityPageProps = {
   searchParams?: {
     listingId?: string | string[];
   };
 };
 
-export default async function ProviderOperationsPage({
+export default async function MerchantAvailabilityPage({
   searchParams,
-}: ProviderOperationsPageProps) {
+}: MerchantAvailabilityPageProps) {
   const session = await getSession();
-  if (!session) redirect("/login?next=/provider/operations");
+  if (!session) redirect("/login?next=/merchant/availability");
   if (!["merchant", "dispatcher", "admin"].includes(session.role)) {
     redirect("/unauthorized");
   }
 
   const managedListingIds =
     session.role === "merchant" ? session.listingIds ?? [] : [];
-  const requestedListingId = Array.isArray(searchParams?.listingId)
-    ? searchParams?.listingId[0]
-    : searchParams?.listingId;
+  const rawListingId = searchParams?.listingId;
+  const requestedListingId = Array.isArray(rawListingId)
+    ? rawListingId[0]
+    : rawListingId;
   const initialListingId = resolveMerchantListingSelection({
     requestedListingId,
     managedListingIds,
