@@ -7,6 +7,12 @@ import {
   normalizePartnerApplication,
   partnerApplicationDayKey,
 } from "../lib/partners/partner-application";
+import {
+  MAX_PARTNER_APPLICATIONS_PER_EMAIL_DAY,
+  partnerApplicationEmailDayFingerprint,
+  partnerApplicationFingerprint,
+  partnerApplicationQuotaAllows,
+} from "../lib/partners/partner-application-intake";
 
 const now = new Date("2026-08-05T17:00:00.000Z");
 const valid = normalizePartnerApplication(
@@ -118,14 +124,65 @@ const noConsent = normalizePartnerApplication(
   now,
 );
 assert.equal(noConsent.ok, false);
-assert.equal(noConsent.ok ? "" : noConsent.error, "Consent is required before submitting the application.");
+assert.equal(
+  noConsent.ok ? "" : noConsent.error,
+  "Consent is required before submitting the application.",
+);
+
+const applicationFingerprint = partnerApplicationFingerprint({
+  email: "Partner@Example.com",
+  businessName: " Island Adventures ",
+  dayKey: "2026-08-05",
+});
+assert.equal(applicationFingerprint.length, 64);
+assert.equal(
+  applicationFingerprint,
+  partnerApplicationFingerprint({
+    email: "partner@example.com",
+    businessName: "island adventures",
+    dayKey: "2026-08-05",
+  }),
+);
+assert.notEqual(
+  applicationFingerprint,
+  partnerApplicationFingerprint({
+    email: "partner@example.com",
+    businessName: "Another Business",
+    dayKey: "2026-08-05",
+  }),
+);
+const emailDayFingerprint = partnerApplicationEmailDayFingerprint({
+  email: "Partner@Example.com",
+  dayKey: "2026-08-05",
+});
+assert.equal(emailDayFingerprint.length, 64);
+assert.equal(
+  emailDayFingerprint,
+  partnerApplicationEmailDayFingerprint({
+    email: "partner@example.com",
+    dayKey: "2026-08-05",
+  }),
+);
+assert.equal(partnerApplicationQuotaAllows(0), true);
+assert.equal(
+  partnerApplicationQuotaAllows(MAX_PARTNER_APPLICATIONS_PER_EMAIL_DAY - 1),
+  true,
+);
+assert.equal(
+  partnerApplicationQuotaAllows(MAX_PARTNER_APPLICATIONS_PER_EMAIL_DAY),
+  false,
+);
+assert.equal(partnerApplicationQuotaAllows("invalid"), true);
 
 assert.equal(canTransitionPartnerApplication("new", "reviewing"), true);
 assert.equal(canTransitionPartnerApplication("reviewing", "approved"), true);
 assert.equal(canTransitionPartnerApplication("approved", "reviewing"), false);
 assert.equal(canTransitionPartnerApplication("declined", "reviewing"), true);
 assert.equal(canTransitionPartnerApplication("new", "new"), false);
-assert.equal(normalizePartnerAdminNote("  Follow up next week.  "), "Follow up next week.");
+assert.equal(
+  normalizePartnerAdminNote("  Follow up next week.  "),
+  "Follow up next week.",
+);
 assert.equal(partnerApplicationDayKey(now), "2026-08-05");
 assert.equal(humanizePartnerValue("tour_activity"), "Tour Activity");
 
