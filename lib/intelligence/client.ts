@@ -1,5 +1,6 @@
 "use client";
 
+import { getIntelligenceAuthBinding } from "@/lib/intelligence/identity";
 import {
   dispatchIntelligenceResponseMapFocus,
   getPrimaryLivingMapFocus,
@@ -89,6 +90,7 @@ export function patchIntelligenceMemory(patch: IntelligenceMemory) {
     party: { ...current.party, ...patch.party },
     preferences: { ...current.preferences, ...patch.preferences },
     cruise: { ...current.cruise, ...patch.cruise },
+    activeTrip: patch.activeTrip ?? current.activeTrip,
     recentPlaceIds: patch.recentPlaceIds ?? current.recentPlaceIds,
     savedPlaceIds: patch.savedPlaceIds ?? current.savedPlaceIds,
   };
@@ -101,6 +103,7 @@ export function feedIntelligenceContext(
 ) {
   const current = readJson<Partial<IntelligenceContext>>(CONTEXT_KEY, {});
   const memory = getIntelligenceMemory();
+  const auth = getIntelligenceAuthBinding();
   const selectedPlace = getLivingMapSelectedPlace(
     patch.selectedPlace ?? current.selectedPlace,
   );
@@ -108,6 +111,7 @@ export function feedIntelligenceContext(
     ...current,
     ...patch,
     ...(selectedPlace ? { selectedPlace } : {}),
+    ...(auth ? { userId: auth.userId } : { userId: undefined }),
     page,
     sessionId: getIntelligenceSessionId(),
     now: new Date().toISOString(),
@@ -156,6 +160,7 @@ export async function askViIntelligence(
 ): Promise<IntelligenceResponse> {
   const stored = getIntelligenceContext();
   const memory = getIntelligenceMemory();
+  const auth = getIntelligenceAuthBinding();
   const selectedPlace = getLivingMapSelectedPlace(
     overrides.selectedPlace ?? stored.selectedPlace,
   );
@@ -163,6 +168,7 @@ export async function askViIntelligence(
     ...stored,
     ...overrides,
     ...(selectedPlace ? { selectedPlace } : {}),
+    ...(auth ? { userId: auth.userId } : {}),
     sessionId: getIntelligenceSessionId(),
     now: new Date().toISOString(),
     timezone: "America/St_Thomas" as const,
@@ -208,9 +214,13 @@ export async function askViIntelligence(
     },
   } satisfies IntelligenceContext;
 
+  const token = auth ? await auth.getToken().catch(() => null) : null;
   const response = await fetch("/api/intelligence", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
     body: JSON.stringify({ message, context, capabilities }),
   });
   const payload = (await response.json().catch(() => null)) as
