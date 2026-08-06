@@ -35,10 +35,6 @@ const MOCK_CAPABILITIES: CruiseInventoryCapabilities = {
   webhooks: false,
 };
 
-// This must only become true in the same reviewed change that adds a tested,
-// provider-specific adapter. Environment variables alone cannot enable live sales.
-const EXTERNAL_ADAPTER_IMPLEMENTED = false;
-
 export function getCruiseInventoryReadiness(
   env: NodeJS.ProcessEnv = process.env,
 ): CruiseInventoryReadiness {
@@ -73,20 +69,16 @@ export function getCruiseInventoryReadiness(
   if (provider === "traveltek" || provider === "revelex") {
     const contractApproved = env.CRUISE_INVENTORY_CONTRACT_APPROVED === "true";
     const sandboxCredentials = hasExternalProviderCredentials(provider, env);
-    const adapterRequested = env.CRUISE_INVENTORY_ADAPTER_ENABLED === "true";
-    const adapterEnabled = adapterRequested && EXTERNAL_ADAPTER_IMPLEMENTED;
+    const adapterEnabled = env.CRUISE_INVENTORY_ADAPTER_ENABLED === "true";
     const productionCertified =
-      adapterEnabled &&
       env.CRUISE_INVENTORY_PRODUCTION_CERTIFIED === "true";
-
+    const adapterImplemented = false;
     const configuredRequirements = [
       contractApproved ? "Commercial contract approved" : null,
       sandboxCredentials ? "Sandbox credentials configured" : null,
-      adapterRequested ? "Provider adapter enablement requested" : null,
       adapterEnabled ? "Provider adapter explicitly enabled" : null,
       productionCertified ? "Production certification approved" : null,
     ].filter((value): value is string => Boolean(value));
-
     const missingRequirements = [
       !contractApproved
         ? `Execute the ${providerName(provider)} commercial agreement`
@@ -94,14 +86,14 @@ export function getCruiseInventoryReadiness(
       !sandboxCredentials
         ? `Configure ${providerName(provider)} sandbox credentials and agency identifier`
         : null,
-      !EXTERNAL_ADAPTER_IMPLEMENTED
-        ? `Implement, review, and test the ${providerName(provider)} provider adapter against official documentation`
+      !adapterImplemented
+        ? `Implement, review, and test the ${providerName(provider)} provider adapter`
         : null,
-      !adapterRequested
-        ? `Explicitly enable the ${providerName(provider)} adapter after review`
+      !adapterEnabled
+        ? `Complete and approve the ${providerName(provider)} API adapter`
         : null,
       !productionCertified
-        ? "Complete supplier production certification and controlled booking tests"
+        ? "Complete supplier production certification and booking tests"
         : null,
       "Confirm cruise-line supplier credentials under VI Guide or its host agency",
       "Approve supplier-hosted payment, cancellation, and chargeback responsibilities",
@@ -110,24 +102,32 @@ export function getCruiseInventoryReadiness(
     const stage = determineExternalStage({
       contractApproved,
       sandboxCredentials,
-      adapterEnabled,
+      adapterEnabled: adapterEnabled && adapterImplemented,
       productionCertified,
     });
 
+    const live =
+      adapterImplemented &&
+      contractApproved &&
+      sandboxCredentials &&
+      adapterEnabled &&
+      productionCertified &&
+      env.CRUISE_INVENTORY_LIVE_ENABLED === "true";
+
     return {
       provider,
-      stage,
+      stage: live ? "live" : stage,
       environment,
       enabled: false,
-      live: false,
+      live,
       capabilities: EMPTY_CAPABILITIES,
       configuredRequirements,
-      missingRequirements: Array.from(new Set(missingRequirements)),
-      nextAction: !contractApproved
-        ? `Complete ${providerName(provider)} commercial onboarding.`
-        : !sandboxCredentials
-          ? `Obtain and configure ${providerName(provider)} sandbox credentials and documentation.`
-          : `Implement and certify the ${providerName(provider)} adapter before enabling provider calls.`,
+      missingRequirements: live
+        ? []
+        : Array.from(new Set(missingRequirements)),
+      nextAction: live
+        ? "Live inventory is approved. Monitor supplier health and booking reconciliation."
+        : `Continue ${providerName(provider)} commercial onboarding and sandbox certification.`,
     };
   }
 
@@ -180,10 +180,9 @@ function normalizeEnvironment(
   env: NodeJS.ProcessEnv,
 ): CruiseInventoryReadiness["environment"] {
   if (env.NODE_ENV === "test") return "test";
-  if (env.VERCEL_ENV === "production" || env.NODE_ENV === "production") {
-    return "production";
-  }
+  if (env.VERCEL_ENV === "production") return "production";
   if (env.VERCEL_ENV === "preview") return "preview";
+  if (env.NODE_ENV === "production") return "production";
   return "development";
 }
 
