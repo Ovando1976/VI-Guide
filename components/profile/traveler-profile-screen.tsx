@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 import {
   ArrowRight,
+  BellRing,
   Cloud,
   CloudOff,
   Compass,
@@ -23,6 +24,7 @@ import { readJourneyPlans } from "@/lib/journey-planner";
 import type {
   IntelligenceIsland,
   IntelligenceMemory,
+  IntelligenceNotificationPreferences,
   IntelligencePreferences,
 } from "@/types/intelligence";
 
@@ -30,6 +32,15 @@ const ISLANDS: Array<{ value: IntelligenceIsland; label: string }> = [
   { value: "stt", label: "St. Thomas" },
   { value: "stj", label: "St. John" },
   { value: "stx", label: "St. Croix" },
+];
+
+const ALERT_LEVELS: Array<{
+  value: NonNullable<IntelligenceNotificationPreferences["minimumSeverity"]>;
+  label: string;
+}> = [
+  { value: "medium", label: "Medium and above" },
+  { value: "high", label: "High and critical" },
+  { value: "critical", label: "Critical only" },
 ];
 
 type FormState = {
@@ -45,6 +56,13 @@ type FormState = {
   ship: string;
   arrivalTime: string;
   allAboardTime: string;
+  tripMonitoring: boolean;
+  inAppAlerts: boolean;
+  emailAlerts: boolean;
+  minimumSeverity: NonNullable<
+    IntelligenceNotificationPreferences["minimumSeverity"]
+  >;
+  notifyOnRecovery: boolean;
 };
 
 export function TravelerProfileScreen() {
@@ -67,13 +85,15 @@ export function TravelerProfileScreen() {
     }
     refresh();
     window.addEventListener(INTELLIGENCE_MEMORY_UPDATED_EVENT, refresh);
-    return () => window.removeEventListener(INTELLIGENCE_MEMORY_UPDATED_EVENT, refresh);
+    return () =>
+      window.removeEventListener(INTELLIGENCE_MEMORY_UPDATED_EVENT, refresh);
   }, []);
 
   const rememberedCount = [
     memory.preferredIsland,
     memory.party,
     memory.preferences,
+    memory.notifications,
     memory.cruise,
     memory.stay,
     memory.savedPlaceIds?.length,
@@ -118,7 +138,9 @@ export function TravelerProfileScreen() {
                 You decide what VI Guide remembers.
               </h1>
               <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/70 sm:text-base">
-                These preferences ground Concierge recommendations and itinerary planning. Update them whenever the trip changes.
+                These preferences ground Concierge recommendations, itinerary
+                planning, and proactive trip protection. Update them whenever the
+                trip changes.
               </p>
             </div>
             <div className="rounded-[24px] border border-white/15 bg-white/10 p-4 backdrop-blur">
@@ -146,65 +168,249 @@ export function TravelerProfileScreen() {
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[1fr_300px]">
         <div className="space-y-6">
-          <ProfileSection icon={Compass} eyebrow="Trip foundation" title="Where and how you travel">
+          <ProfileSection
+            icon={Compass}
+            eyebrow="Trip foundation"
+            title="Where and how you travel"
+          >
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <SelectField label="Preferred island" value={form.island} onChange={(value) => update("island", value as IntelligenceIsland)} options={ISLANDS} />
-              <NumberField label="Adults" value={form.adults} min={1} max={20} onChange={(value) => update("adults", value)} />
-              <NumberField label="Children" value={form.children} min={0} max={20} onChange={(value) => update("children", value)} />
-              <SelectField label="Travel pace" value={form.pace} onChange={(value) => update("pace", value as FormState["pace"])} options={[{ value: "relaxed", label: "Relaxed" }, { value: "balanced", label: "Balanced" }, { value: "active", label: "Active" }]} />
-              <SelectField label="Budget style" value={form.budget} onChange={(value) => update("budget", value as FormState["budget"])} options={[{ value: "value", label: "Value conscious" }, { value: "moderate", label: "Moderate" }, { value: "premium", label: "Premium" }]} />
-              <TextField label="Accessibility needs" value={form.accessibilityNeeds} placeholder="Step-free access, limited walking…" onChange={(value) => update("accessibilityNeeds", value)} />
+              <SelectField
+                label="Preferred island"
+                value={form.island}
+                onChange={(value) =>
+                  update("island", value as IntelligenceIsland)
+                }
+                options={ISLANDS}
+              />
+              <NumberField
+                label="Adults"
+                value={form.adults}
+                min={1}
+                max={20}
+                onChange={(value) => update("adults", value)}
+              />
+              <NumberField
+                label="Children"
+                value={form.children}
+                min={0}
+                max={20}
+                onChange={(value) => update("children", value)}
+              />
+              <SelectField
+                label="Travel pace"
+                value={form.pace}
+                onChange={(value) =>
+                  update("pace", value as FormState["pace"])
+                }
+                options={[
+                  { value: "relaxed", label: "Relaxed" },
+                  { value: "balanced", label: "Balanced" },
+                  { value: "active", label: "Active" },
+                ]}
+              />
+              <SelectField
+                label="Budget style"
+                value={form.budget}
+                onChange={(value) =>
+                  update("budget", value as FormState["budget"])
+                }
+                options={[
+                  { value: "value", label: "Value conscious" },
+                  { value: "moderate", label: "Moderate" },
+                  { value: "premium", label: "Premium" },
+                ]}
+              />
+              <TextField
+                label="Accessibility needs"
+                value={form.accessibilityNeeds}
+                placeholder="Step-free access, limited walking…"
+                onChange={(value) => update("accessibilityNeeds", value)}
+              />
             </div>
           </ProfileSection>
 
-          <ProfileSection icon={Sparkles} eyebrow="Personalization" title="What makes a trip feel right">
+          <ProfileSection
+            icon={Sparkles}
+            eyebrow="Personalization"
+            title="What makes a trip feel right"
+          >
             <div className="grid gap-4 sm:grid-cols-2">
-              <TextField label="Interests" value={form.interests} placeholder="Beaches, history, snorkeling, music…" onChange={(value) => update("interests", value)} />
-              <TextField label="Food preferences" value={form.food} placeholder="Local food, seafood, vegetarian…" onChange={(value) => update("food", value)} />
-              <TextField label="Avoid" value={form.avoid} placeholder="Crowds, steep trails, long transfers…" onChange={(value) => update("avoid", value)} />
+              <TextField
+                label="Interests"
+                value={form.interests}
+                placeholder="Beaches, history, snorkeling, music…"
+                onChange={(value) => update("interests", value)}
+              />
+              <TextField
+                label="Food preferences"
+                value={form.food}
+                placeholder="Local food, seafood, vegetarian…"
+                onChange={(value) => update("food", value)}
+              />
+              <TextField
+                label="Avoid"
+                value={form.avoid}
+                placeholder="Crowds, steep trails, long transfers…"
+                onChange={(value) => update("avoid", value)}
+              />
               <div className="rounded-2xl border border-slate-200 bg-[#f8f5ed] p-4">
-                <div className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">Remembered stay</div>
-                <div className="mt-2 text-sm font-black">{memory.stay?.name ?? "No stay selected yet"}</div>
-                <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">Selecting an accommodation in VI Guide will connect it to future plans.</p>
+                <div className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+                  Remembered stay
+                </div>
+                <div className="mt-2 text-sm font-black">
+                  {memory.stay?.name ?? "No stay selected yet"}
+                </div>
+                <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">
+                  Selecting an accommodation in VI Guide will connect it to
+                  future plans.
+                </p>
               </div>
             </div>
           </ProfileSection>
 
-          <ProfileSection icon={Users} eyebrow="Cruise context" title="Protect the return window">
+          <ProfileSection
+            icon={Users}
+            eyebrow="Cruise context"
+            title="Protect the return window"
+          >
             <div className="grid gap-4 sm:grid-cols-3">
-              <TextField label="Ship" value={form.ship} placeholder="Ship name" onChange={(value) => update("ship", value)} />
-              <TimeField label="Arrival time" value={form.arrivalTime} onChange={(value) => update("arrivalTime", value)} />
-              <TimeField label="All-aboard time" value={form.allAboardTime} onChange={(value) => update("allAboardTime", value)} />
+              <TextField
+                label="Ship"
+                value={form.ship}
+                placeholder="Ship name"
+                onChange={(value) => update("ship", value)}
+              />
+              <TimeField
+                label="Arrival time"
+                value={form.arrivalTime}
+                onChange={(value) => update("arrivalTime", value)}
+              />
+              <TimeField
+                label="All-aboard time"
+                value={form.allAboardTime}
+                onChange={(value) => update("allAboardTime", value)}
+              />
+            </div>
+          </ProfileSection>
+
+          <ProfileSection
+            icon={BellRing}
+            eyebrow="Proactive protection"
+            title="Choose when VI Guide should alert you"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <ToggleField
+                label="Monitor saved journeys"
+                description="Recheck upcoming trips for timing, transfer, booking, accessibility, weather, and return-to-ship changes."
+                checked={form.tripMonitoring}
+                onChange={(checked) => update("tripMonitoring", checked)}
+              />
+              <ToggleField
+                label="In-app alerts"
+                description="Place material changes in your private VI Guide notification center."
+                checked={form.inAppAlerts}
+                onChange={(checked) => update("inAppAlerts", checked)}
+              />
+              <ToggleField
+                label="Email alerts"
+                description={
+                  cloudBacked
+                    ? `Send opted-in alerts to ${user?.email ?? "your account email"}.`
+                    : "Sign in before email alerts can be delivered."
+                }
+                checked={form.emailAlerts}
+                disabled={!cloudBacked}
+                onChange={(checked) => update("emailAlerts", checked)}
+              />
+              <ToggleField
+                label="Tell me when risk clears"
+                description="Send one recovery update after a previously material trip risk is resolved."
+                checked={form.notifyOnRecovery}
+                onChange={(checked) => update("notifyOnRecovery", checked)}
+              />
+              <SelectField
+                label="Minimum alert severity"
+                value={form.minimumSeverity}
+                onChange={(value) =>
+                  update(
+                    "minimumSeverity",
+                    value as FormState["minimumSeverity"],
+                  )
+                }
+                options={ALERT_LEVELS}
+              />
+              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-950/70">
+                VI Guide only alerts when the material risk fingerprint changes.
+                Repeated checks of the same condition are deduplicated, and
+                non-escalating changes observe a cooldown.
+              </div>
             </div>
           </ProfileSection>
 
           <div className="flex flex-wrap items-center gap-3">
-            <button type="button" onClick={save} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white">
+            <button
+              type="button"
+              onClick={save}
+              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
+            >
               <Save size={16} /> {saved ? "Profile saved" : "Save traveler profile"}
             </button>
-            <button type="button" onClick={reset} className={`inline-flex min-h-12 items-center gap-2 rounded-full border px-6 text-[10px] font-black uppercase tracking-[.16em] ${resetArmed ? "border-rose-300 bg-rose-50 text-rose-700" : "border-slate-300 text-slate-600"}`}>
-              <RotateCcw size={16} /> {resetArmed ? "Confirm reset" : "Reset AI memory"}
+            <button
+              type="button"
+              onClick={reset}
+              className={`inline-flex min-h-12 items-center gap-2 rounded-full border px-6 text-[10px] font-black uppercase tracking-[.16em] ${
+                resetArmed
+                  ? "border-rose-300 bg-rose-50 text-rose-700"
+                  : "border-slate-300 text-slate-600"
+              }`}
+            >
+              <RotateCcw size={16} />
+              {resetArmed ? "Confirm reset" : "Reset AI memory"}
             </button>
-            {resetArmed ? <span className="text-xs font-bold text-rose-700">Journeys and bookings will not be deleted.</span> : null}
+            {resetArmed ? (
+              <span className="text-xs font-bold text-rose-700">
+                Journeys and bookings will not be deleted.
+              </span>
+            ) : null}
           </div>
         </div>
 
         <aside className="space-y-4">
           <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
-            <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">Profile summary</div>
+            <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">
+              Profile summary
+            </div>
             <div className="mt-5 grid grid-cols-2 gap-3">
               <Metric value={rememberedCount} label="Memory areas" />
               <Metric value={journeyCount} label="Saved journeys" />
             </div>
           </div>
-          <Link href="/concierge?open=true&prompt=Use%20my%20traveler%20profile%20to%20plan%20the%20best%20island%20day%20for%20me" className="group block rounded-[28px] bg-[#043331] p-6 text-white shadow-lg">
+          <Link
+            href="/concierge?open=true&prompt=Use%20my%20traveler%20profile%20to%20plan%20the%20best%20island%20day%20for%20me"
+            className="group block rounded-[28px] bg-[#043331] p-6 text-white shadow-lg"
+          >
             <Sparkles className="text-[#f5c451]" />
-            <h2 className="mt-5 text-2xl font-black tracking-[-.04em]">Plan from this profile</h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-white/65">Ask Concierge to turn these preferences into a grounded itinerary.</p>
-            <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.15em] text-[#f5c451]">Open Concierge <ArrowRight size={15} className="transition group-hover:translate-x-1" /></span>
+            <h2 className="mt-5 text-2xl font-black tracking-[-.04em]">
+              Plan from this profile
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-white/65">
+              Ask Concierge to turn these preferences into a grounded itinerary.
+            </p>
+            <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.15em] text-[#f5c451]">
+              Open Concierge
+              <ArrowRight
+                size={15}
+                className="transition group-hover:translate-x-1"
+              />
+            </span>
           </Link>
           {!cloudBacked && !loading ? (
-            <Link href="/login?next=%2Fprofile" className="block rounded-[24px] border border-amber-200 bg-amber-50 p-5 text-sm font-black text-amber-900">Sign in to synchronize this profile across devices →</Link>
+            <Link
+              href="/login?next=%2Fprofile"
+              className="block rounded-[24px] border border-amber-200 bg-amber-50 p-5 text-sm font-black text-amber-900"
+            >
+              Sign in to synchronize this profile across devices →
+            </Link>
           ) : null}
         </aside>
       </section>
@@ -212,28 +418,199 @@ export function TravelerProfileScreen() {
   );
 }
 
-function ProfileSection({ icon: Icon, eyebrow, title, children }: { icon: typeof Compass; eyebrow: string; title: string; children: ReactNode }) {
-  return <section className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7"><div className="mb-6 flex items-center gap-4"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e5f4ef] text-[#0f766e]"><Icon size={20} /></span><div><div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">{eyebrow}</div><h2 className="mt-1 text-2xl font-black tracking-[-.035em]">{title}</h2></div></div>{children}</section>;
+function ProfileSection({
+  icon: Icon,
+  eyebrow,
+  title,
+  children,
+}: {
+  icon: typeof Compass;
+  eyebrow: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+      <div className="mb-6 flex items-center gap-4">
+        <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#e5f4ef] text-[#0f766e]">
+          <Icon size={20} />
+        </span>
+        <div>
+          <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">
+            {eyebrow}
+          </div>
+          <h2 className="mt-1 text-2xl font-black tracking-[-.035em]">
+            {title}
+          </h2>
+        </div>
+      </div>
+      {children}
+    </section>
+  );
 }
 
-function TextField({ label, value, placeholder, onChange }: { label: string; value: string; placeholder: string; onChange: (value: string) => void }) {
-  return <label className="space-y-2"><span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">{label}</span><input value={value} placeholder={placeholder} onChange={(event) => onChange(event.target.value)} className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600" /></label>;
+function TextField({
+  label,
+  value,
+  placeholder,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  placeholder: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="space-y-2">
+      <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+        {label}
+      </span>
+      <input
+        value={value}
+        placeholder={placeholder}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600"
+      />
+    </label>
+  );
 }
 
-function TimeField({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) {
-  return <label className="space-y-2"><span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">{label}</span><input type="time" value={value} onChange={(event) => onChange(event.target.value)} className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600" /></label>;
+function TimeField({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="space-y-2">
+      <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+        {label}
+      </span>
+      <input
+        type="time"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600"
+      />
+    </label>
+  );
 }
 
-function NumberField({ label, value, min, max, onChange }: { label: string; value: number; min: number; max: number; onChange: (value: number) => void }) {
-  return <label className="space-y-2"><span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">{label}</span><input type="number" value={value} min={min} max={max} onChange={(event) => onChange(Math.max(min, Math.min(max, Number(event.target.value) || min)))} className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600" /></label>;
+function NumberField({
+  label,
+  value,
+  min,
+  max,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <label className="space-y-2">
+      <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+        {label}
+      </span>
+      <input
+        type="number"
+        value={value}
+        min={min}
+        max={max}
+        onChange={(event) =>
+          onChange(
+            Math.max(min, Math.min(max, Number(event.target.value) || min)),
+          )
+        }
+        className="h-12 w-full rounded-2xl border border-slate-200 px-4 text-sm font-semibold outline-none focus:border-teal-600"
+      />
+    </label>
+  );
 }
 
-function SelectField({ label, value, options, onChange }: { label: string; value: string; options: Array<{ value: string; label: string }>; onChange: (value: string) => void }) {
-  return <label className="space-y-2"><span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">{label}</span><select value={value} onChange={(event) => onChange(event.target.value)} className="h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold outline-none focus:border-teal-600">{options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>;
+function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="space-y-2">
+      <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold outline-none focus:border-teal-600"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function ToggleField({
+  label,
+  description,
+  checked,
+  disabled,
+  onChange,
+}: {
+  label: string;
+  description: string;
+  checked: boolean;
+  disabled?: boolean;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <label
+      className={`flex items-start gap-3 rounded-2xl border p-4 ${
+        disabled
+          ? "cursor-not-allowed border-slate-200 bg-slate-50 opacity-60"
+          : "cursor-pointer border-slate-200 bg-white"
+      }`}
+    >
+      <input
+        type="checkbox"
+        checked={checked && !disabled}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.checked)}
+        className="mt-1 h-4 w-4 accent-teal-700"
+      />
+      <span>
+        <span className="block text-sm font-black text-[#043331]">{label}</span>
+        <span className="mt-1 block text-xs font-semibold leading-5 text-slate-500">
+          {description}
+        </span>
+      </span>
+    </label>
+  );
 }
 
 function Metric({ value, label }: { value: number; label: string }) {
-  return <div className="rounded-2xl bg-[#f8f5ed] p-4 text-center"><div className="text-2xl font-black">{value}</div><div className="mt-1 text-[8px] font-black uppercase tracking-[.14em] text-slate-400">{label}</div></div>;
+  return (
+    <div className="rounded-2xl bg-[#f8f5ed] p-4 text-center">
+      <div className="text-2xl font-black">{value}</div>
+      <div className="mt-1 text-[8px] font-black uppercase tracking-[.14em] text-slate-400">
+        {label}
+      </div>
+    </div>
+  );
 }
 
 function formFromMemory(memory: IntelligenceMemory): FormState {
@@ -250,10 +627,18 @@ function formFromMemory(memory: IntelligenceMemory): FormState {
     ship: memory.cruise?.ship ?? "",
     arrivalTime: memory.cruise?.arrivalTime ?? "",
     allAboardTime: memory.cruise?.allAboardTime ?? "",
+    tripMonitoring: memory.notifications?.tripMonitoring !== false,
+    inAppAlerts: memory.notifications?.inApp !== false,
+    emailAlerts: memory.notifications?.email === true,
+    minimumSeverity: memory.notifications?.minimumSeverity ?? "high",
+    notifyOnRecovery: memory.notifications?.notifyOnRecovery !== false,
   };
 }
 
-function memoryFromForm(form: FormState, current: IntelligenceMemory): IntelligenceMemory {
+function memoryFromForm(
+  form: FormState,
+  current: IntelligenceMemory,
+): IntelligenceMemory {
   return {
     ...current,
     preferredIsland: form.island,
@@ -269,6 +654,13 @@ function memoryFromForm(form: FormState, current: IntelligenceMemory): Intellige
       food: list(form.food),
       avoid: list(form.avoid),
     },
+    notifications: {
+      tripMonitoring: form.tripMonitoring,
+      inApp: form.inAppAlerts,
+      email: form.emailAlerts,
+      minimumSeverity: form.minimumSeverity,
+      notifyOnRecovery: form.notifyOnRecovery,
+    },
     ...(form.ship || form.arrivalTime || form.allAboardTime
       ? {
           cruise: {
@@ -283,5 +675,12 @@ function memoryFromForm(form: FormState, current: IntelligenceMemory): Intellige
 }
 
 function list(value: string) {
-  return Array.from(new Set(value.split(",").map((item) => item.trim()).filter(Boolean)));
+  return Array.from(
+    new Set(
+      value
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean),
+    ),
+  );
 }
