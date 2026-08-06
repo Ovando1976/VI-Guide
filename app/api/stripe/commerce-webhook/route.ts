@@ -9,6 +9,21 @@ import {
   validateCompletedCommerceCheckout,
 } from "@/lib/payments/commerce-checkout-integrity";
 import {
+  createCommerceCaptureLedgerEntry,
+  readCommerceLedgerDocument,
+  resolveStoredCommerceCaptureEntry,
+  writeCommerceRefundLedgerEntry,
+} from "@/lib/payments/commerce-ledger-firestore";
+import {
+  buildCommerceCaptureLedgerEntry,
+  buildCommerceRefundLedgerEntry,
+  commerceCaptureLedgerId,
+  commerceRefundLedgerId,
+  resolveCommerceLedgerPolicy,
+  type CommerceLedgerEntry,
+  type CommerceLedgerPolicy,
+} from "@/lib/payments/commerce-ledger";
+import {
   buildCommerceRefundOperationId,
   commerceRefundEventDecision,
   commerceRefundStatusFromStripe,
@@ -166,7 +181,88 @@ async function processCompletedSession(event: Stripe.Event) {
       return;
     }
 
-    if (applicationDecision === "already_applied") {
+    const requestNow = new Date();
+    const now = requestNow.toISOString();
+    const listingId =
+      String(booking.listingId ?? "").trim() || `unassigned-${bookingId}`;
+    const listingName = String(booking.listingName ?? "VI Guide booking");
+    const candidateCapture = buildCommerceCaptureLedgerEntry({
+      bookingId,
+      bookingReference: expectedReference,
+      listingId,
+      listingName,
+      paymentIntentId,
+      checkoutSessionId: session.id,
+      stripeEventId: event.id,
+      grossAmountCents: paidAmountCents,
+      currency: session.currency,
+      policy: resolveCommerceLedgerPolicy(
+        process.env.VI_GUIDE_COMMERCE_PLATFORM_FEE_BPS,
+      ),
+      verified: applicationDecision !== "review_required",
+      occurredAt: stripeEventOccurredAt(event),
+      now: requestNow,
+    });
+
+    if (!candidateCapture) {
+      writeCaptureAccountingIssue(transaction, db, bookingRef, eventRef, {
+        bookingId,
+        bookingReference: expectedReference,
+        listingName,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        paidAmountCents,
+        now,
+        eventType: event.type,
+        outcome: "commerce_ledger_capture_invalid",
+        issue:
+          "Stripe payment was verified, but VI Guide could not construct its accounting allocation.",
+      });
+      return;
+    }
+
+    const captureDocument = await readCommerceLedgerDocument(
+      transaction,
+      db,
+      candidateCapture.id,
+    );
+    const captureEntry = captureDocument.exists
+      ? resolveStoredCommerceCaptureEntry({
+          id: candidateCapture.id,
+          data: captureDocument.data,
+          expectedPaymentIntentId: candidateCapture.paymentIntentId,
+          expectedGrossAmountCents: paidAmountCents,
+        })
+      : candidateCapture;
+
+    if (!captureEntry) {
+      writeCaptureAccountingIssue(transaction, db, bookingRef, eventRef, {
+        bookingId,
+        bookingReference: expectedReference,
+        listingName,
+        checkoutSessionId: session.id,
+        paymentIntentId,
+        paidAmountCents,
+        now,
+        eventType: event.type,
+        outcome: "commerce_ledger_capture_conflict",
+        issue:
+          "The existing commerce capture allocation does not match the verified Stripe payment.",
+      });
+      return;
+    }
+
+    createCommerceCaptureLedgerEntry(
+      transaction,
+      captureDocument,
+      captureEntry,
+    );
+
+    if (
+      applicationDecision === "already_applied" &&
+      captureEntry.status === "held"
+    ) {
+      transaction.update(bookingRef, bookingLedgerCapturePatch(captureEntry, now));
       transaction.set(eventRef, {
         type: event.type,
         bookingId,
@@ -174,20 +270,24 @@ async function processCompletedSession(event: Stripe.Event) {
         paymentIntentId,
         currentStatus,
         currentPaymentStatus,
+        ledgerEntryId: captureEntry.id,
         outcome: "commerce_checkout_already_applied",
         processedAt: FieldValue.serverTimestamp(),
       });
       return;
     }
 
-    const now = new Date().toISOString();
-    const listingName = String(booking.listingName ?? "VI Guide booking");
-
-    if (applicationDecision === "review_required") {
-      const issue = `Stripe captured payment while booking ${expectedReference} was in ${currentStatus.replaceAll(
-        "_",
-        " ",
-      )} state.`;
+    if (
+      applicationDecision === "review_required" ||
+      captureEntry.status !== "held"
+    ) {
+      const issue =
+        applicationDecision === "review_required"
+          ? `Stripe captured payment while booking ${expectedReference} was in ${currentStatus.replaceAll(
+              "_",
+              " ",
+            )} state.`
+          : "The Stripe capture exists, but its accounting allocation requires financial review.";
       transaction.update(bookingRef, {
         paymentStatus: "paid",
         paidAmountCents,
@@ -199,6 +299,7 @@ async function processCompletedSession(event: Stripe.Event) {
         refundStatus: "review_required",
         refundUpdatedAt: now,
         paymentEventCreated: event.created,
+        ...bookingLedgerCapturePatch(captureEntry, now),
         updatedAt: now,
       });
       transaction.set(db.collection("notifications").doc(), {
@@ -206,8 +307,8 @@ async function processCompletedSession(event: Stripe.Event) {
         kind: "booking",
         priority: "high",
         title: "Captured payment needs review",
-        message: `${listingName} booking ${expectedReference} received a Stripe payment outside the expected lifecycle state.`,
-        href: "/admin/commerce-refunds",
+        message: `${listingName} booking ${expectedReference} received a Stripe payment that requires financial review.`,
+        href: "/admin/commerce-ledger",
         reference: expectedReference,
         readAt: null,
         createdAt: now,
@@ -221,6 +322,7 @@ async function processCompletedSession(event: Stripe.Event) {
         paymentIntentId,
         currentStatus,
         currentPaymentStatus,
+        ledgerEntryId: captureEntry.id,
         outcome: "commerce_checkout_requires_review",
         integrityIssue: issue,
         processedAt: FieldValue.serverTimestamp(),
@@ -239,6 +341,7 @@ async function processCompletedSession(event: Stripe.Event) {
       paymentIntegrityIssue: null,
       paymentEventCreated: event.created,
       refundStatus: "not_requested",
+      ...bookingLedgerCapturePatch(captureEntry, now),
       updatedAt: now,
     });
 
@@ -271,6 +374,9 @@ async function processCompletedSession(event: Stripe.Event) {
       paidAmountCents,
       currency: session.currency,
       eventCreated: event.created,
+      ledgerEntryId: captureEntry.id,
+      platformFeeCents: captureEntry.platformFeeCents,
+      merchantSettlementCents: captureEntry.merchantSettlementCents,
       outcome: "commerce_booking_paid",
       processedAt: FieldValue.serverTimestamp(),
     });
@@ -422,7 +528,8 @@ async function processRefundEvent(event: Stripe.Event) {
       incomingStatus,
       incomingRefundId: refund.id,
     });
-    const now = new Date().toISOString();
+    const requestNow = new Date();
+    const now = requestNow.toISOString();
 
     if (eventDecision === "ignore_stale") {
       transaction.set(eventRef, {
@@ -438,11 +545,187 @@ async function processRefundEvent(event: Stripe.Event) {
       return;
     }
 
+    const captureEntryId =
+      String(booking.commerceLedgerCaptureId ?? "").trim() ||
+      commerceCaptureLedgerId(paymentIntentId);
+    const refundEntryId = commerceRefundLedgerId(refund.id);
+    const captureDocument = await readCommerceLedgerDocument(
+      transaction,
+      db,
+      captureEntryId,
+    );
+    const refundDocument = await readCommerceLedgerDocument(
+      transaction,
+      db,
+      refundEntryId,
+    );
+    const candidateCapture = buildCommerceCaptureLedgerEntry({
+      bookingId: bookingSnapshot.id,
+      bookingReference: String(booking.reference ?? bookingSnapshot.id),
+      listingId:
+        String(booking.listingId ?? "").trim() ||
+        `unassigned-${bookingSnapshot.id}`,
+      listingName: String(booking.listingName ?? "VI Guide booking"),
+      paymentIntentId,
+      checkoutSessionId: booking.checkoutSessionId,
+      stripeEventId: `reconciliation-before-refund-${event.id}`,
+      grossAmountCents: paidAmountCents,
+      currency: refund.currency ?? "usd",
+      policy: storedLedgerPolicy(booking),
+      verified: booking.paymentIntegrityStatus === "verified",
+      occurredAt:
+        validIso(booking.paidAt) || stripeEventOccurredAt(event),
+      now: requestNow,
+    });
+    const captureEntry = captureDocument.exists
+      ? resolveStoredCommerceCaptureEntry({
+          id: captureEntryId,
+          data: captureDocument.data,
+          expectedPaymentIntentId: paymentIntentId,
+          expectedGrossAmountCents: paidAmountCents,
+        })
+      : candidateCapture;
+
+    if (!captureEntry) {
+      const issue =
+        "Stripe reported a refund, but the original capture allocation could not be verified.";
+      transaction.update(bookingRef, {
+        paymentStatus: "paid",
+        refundStatus: "review_required",
+        refundFailureReason: issue,
+        refundUpdatedAt: now,
+        commerceLedgerUpdatedAt: now,
+        updatedAt: now,
+      });
+      transaction.set(db.collection("notifications").doc(), {
+        audience: "operations",
+        kind: "booking",
+        priority: "high",
+        title: "Refund accounting needs review",
+        message: `${String(
+          booking.listingName ?? "VI Guide booking",
+        )} booking ${String(
+          booking.reference ?? bookingSnapshot.id,
+        )} has a Stripe refund without a verifiable capture allocation.`,
+        href: "/admin/commerce-ledger",
+        reference: String(booking.reference ?? bookingSnapshot.id),
+        readAt: null,
+        createdAt: now,
+        updatedAt: now,
+        serverCreatedAt: FieldValue.serverTimestamp(),
+      });
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId: bookingSnapshot.id,
+        refundId: refund.id,
+        paymentIntentId,
+        outcome: "commerce_refund_capture_unverified",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
+    const captureGrossForRefund =
+      captureEntry.status === "held"
+        ? captureEntry.grossAmountCents
+        : paidAmountCents;
+    const capturePlatformFeeForRefund =
+      captureEntry.status === "held" ? captureEntry.platformFeeCents : 0;
+    const captureMerchantForRefund =
+      captureEntry.status === "held"
+        ? captureEntry.merchantSettlementCents
+        : paidAmountCents;
+    const refundEntry = buildCommerceRefundLedgerEntry({
+      bookingId: bookingSnapshot.id,
+      bookingReference: String(booking.reference ?? bookingSnapshot.id),
+      listingId:
+        String(booking.listingId ?? "").trim() ||
+        `unassigned-${bookingSnapshot.id}`,
+      listingName: String(booking.listingName ?? "VI Guide booking"),
+      paymentIntentId,
+      checkoutSessionId: booking.checkoutSessionId,
+      refundId: refund.id,
+      stripeEventId: event.id,
+      refundStatus:
+        eventDecision === "review_multiple_refunds"
+          ? "review_required"
+          : incomingStatus === "processing"
+            ? "pending"
+            : incomingStatus,
+      refundAmountCents: refund.amount,
+      currency: refund.currency ?? "usd",
+      paymentIntentMatches:
+        booking.paymentIntegrityStatus === "verified" &&
+        captureEntry.status === "held",
+      fullRefund,
+      captureEntryId: captureEntry.id,
+      captureGrossAmountCents: captureGrossForRefund,
+      capturePlatformFeeCents: capturePlatformFeeForRefund,
+      captureMerchantSettlementCents: captureMerchantForRefund,
+      feeBps: captureEntry.feeBps,
+      feePolicySource: captureEntry.feePolicySource,
+      occurredAt: stripeEventOccurredAt(event),
+      now: requestNow,
+    });
+
+    if (!refundEntry) {
+      const issue =
+        "Stripe reported a refund, but VI Guide could not construct the corresponding ledger entry.";
+      transaction.update(bookingRef, {
+        refundStatus: "review_required",
+        refundFailureReason: issue,
+        refundUpdatedAt: now,
+        commerceLedgerUpdatedAt: now,
+        updatedAt: now,
+      });
+      transaction.set(db.collection("notifications").doc(), {
+        audience: "operations",
+        kind: "booking",
+        priority: "high",
+        title: "Refund ledger needs review",
+        message: `${String(
+          booking.listingName ?? "VI Guide booking",
+        )} booking ${String(
+          booking.reference ?? bookingSnapshot.id,
+        )} has a Stripe refund that could not be allocated.`,
+        href: "/admin/commerce-ledger",
+        reference: String(booking.reference ?? bookingSnapshot.id),
+        readAt: null,
+        createdAt: now,
+        updatedAt: now,
+        serverCreatedAt: FieldValue.serverTimestamp(),
+      });
+      transaction.set(eventRef, {
+        type: event.type,
+        bookingId: bookingSnapshot.id,
+        refundId: refund.id,
+        paymentIntentId,
+        outcome: "commerce_refund_ledger_invalid",
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      return;
+    }
+
+    createCommerceCaptureLedgerEntry(
+      transaction,
+      captureDocument,
+      captureEntry,
+    );
+    writeCommerceRefundLedgerEntry(
+      transaction,
+      refundDocument,
+      refundEntry,
+    );
+
     if (eventDecision === "review_multiple_refunds") {
       transaction.update(bookingRef, {
+        ...bookingLedgerCapturePatch(captureEntry, now),
         refundStatus: "review_required",
         refundFailureReason:
           "Stripe reported more than one refund object for this captured payment.",
+        commerceLedgerLatestRefundId: refundEntry.id,
+        commerceLedgerLatestRefundStatus: refundEntry.status,
+        commerceLedgerUpdatedAt: now,
         refundUpdatedAt: now,
         updatedAt: now,
       });
@@ -456,6 +739,7 @@ async function processRefundEvent(event: Stripe.Event) {
           status: "review_required",
           previousRefundId: booking.refundId ?? null,
           additionalRefundId: refund.id,
+          ledgerEntryId: refundEntry.id,
           updatedAt: now,
           serverUpdatedAt: FieldValue.serverTimestamp(),
         },
@@ -474,6 +758,7 @@ async function processRefundEvent(event: Stripe.Event) {
         refundId: refund.id,
         previousRefundId: booking.refundId ?? null,
         paymentIntentId,
+        ledgerEntryId: refundEntry.id,
         outcome: "commerce_multiple_refunds_require_review",
         processedAt: FieldValue.serverTimestamp(),
       });
@@ -486,6 +771,7 @@ async function processRefundEvent(event: Stripe.Event) {
       previousStatus !== incomingStatus || previousRefundId !== refund.id;
 
     transaction.update(bookingRef, {
+      ...bookingLedgerCapturePatch(captureEntry, now),
       ...(incomingStatus === "succeeded" && fullRefund
         ? { status: "cancelled", paymentStatus: "refunded" }
         : incomingStatus === "failed"
@@ -499,6 +785,9 @@ async function processRefundEvent(event: Stripe.Event) {
       refundAmountCents: refund.amount,
       refundReason: refund.metadata?.reason ?? booking.refundReason ?? null,
       refundFailureReason: refund.failure_reason ?? null,
+      commerceLedgerLatestRefundId: refundEntry.id,
+      commerceLedgerLatestRefundStatus: refundEntry.status,
+      commerceLedgerUpdatedAt: now,
       refundUpdatedAt: now,
       updatedAt: now,
     });
@@ -522,6 +811,8 @@ async function processRefundEvent(event: Stripe.Event) {
         metadataBookingId: metadataBookingId ?? null,
         metadataBookingMismatch,
         failureReason: refund.failure_reason ?? null,
+        ledgerEntryId: refundEntry.id,
+        ledgerStatus: refundEntry.status,
         updatedAt: now,
         serverUpdatedAt: FieldValue.serverTimestamp(),
       },
@@ -537,6 +828,15 @@ async function processRefundEvent(event: Stripe.Event) {
           status: "succeeded",
           now,
         });
+        if (refundEntry.status === "review_required") {
+          writeRefundNotifications(transaction, db, {
+            reference: String(booking.reference ?? bookingSnapshot.id),
+            listingName: String(booking.listingName ?? "VI Guide booking"),
+            amountCents: refund.amount,
+            status: "review_required",
+            now,
+          });
+        }
       } else if (
         incomingStatus === "failed" ||
         incomingStatus === "review_required"
@@ -565,13 +865,86 @@ async function processRefundEvent(event: Stripe.Event) {
       refundAmountCents: refund.amount,
       paidAmountCents,
       fullRefund,
+      ledgerEntryId: refundEntry.id,
+      ledgerStatus: refundEntry.status,
       outcome:
-        incomingStatus === "review_required"
-          ? "commerce_refund_requires_review"
-          : "commerce_refund_reconciled",
+        refundEntry.status === "review_required"
+          ? "commerce_refund_accounting_requires_review"
+          : incomingStatus === "review_required"
+            ? "commerce_refund_requires_review"
+            : "commerce_refund_reconciled",
       processedAt: FieldValue.serverTimestamp(),
     });
   });
+}
+
+function writeCaptureAccountingIssue(
+  transaction: FirebaseFirestore.Transaction,
+  db: Firestore,
+  bookingRef: FirebaseFirestore.DocumentReference,
+  eventRef: FirebaseFirestore.DocumentReference,
+  input: {
+    bookingId: string;
+    bookingReference: string;
+    listingName: string;
+    checkoutSessionId: string;
+    paymentIntentId: string | null;
+    paidAmountCents: number;
+    now: string;
+    eventType: string;
+    outcome: string;
+    issue: string;
+  },
+) {
+  transaction.update(bookingRef, {
+    paymentStatus: "paid",
+    paidAmountCents: input.paidAmountCents,
+    checkoutSessionId: input.checkoutSessionId,
+    paymentIntentId: input.paymentIntentId,
+    paidAt: input.now,
+    paymentIntegrityStatus: "review_required",
+    paymentIntegrityIssue: input.issue,
+    refundStatus: "review_required",
+    refundUpdatedAt: input.now,
+    commerceLedgerUpdatedAt: input.now,
+    updatedAt: input.now,
+  });
+  transaction.set(db.collection("notifications").doc(), {
+    audience: "operations",
+    kind: "booking",
+    priority: "high",
+    title: "Payment accounting needs review",
+    message: `${input.listingName} booking ${input.bookingReference} was paid but its ledger allocation requires review.`,
+    href: "/admin/commerce-ledger",
+    reference: input.bookingReference,
+    readAt: null,
+    createdAt: input.now,
+    updatedAt: input.now,
+    serverCreatedAt: FieldValue.serverTimestamp(),
+  });
+  transaction.set(eventRef, {
+    type: input.eventType,
+    bookingId: input.bookingId,
+    checkoutSessionId: input.checkoutSessionId,
+    paymentIntentId: input.paymentIntentId,
+    outcome: input.outcome,
+    integrityIssue: input.issue,
+    processedAt: FieldValue.serverTimestamp(),
+  });
+}
+
+function bookingLedgerCapturePatch(entry: CommerceLedgerEntry, now: string) {
+  return {
+    commerceLedgerCaptureId: entry.id,
+    commerceLedgerCaptureStatus: entry.status,
+    commerceGrossAmountCents: entry.grossAmountCents,
+    commercePlatformFeeCents: entry.platformFeeCents,
+    commerceMerchantSettlementCents: entry.merchantSettlementCents,
+    commerceUnallocatedAmountCents: entry.unallocatedAmountCents,
+    commercePlatformFeeBps: entry.feeBps,
+    commerceFeePolicySource: entry.feePolicySource,
+    commerceLedgerUpdatedAt: now,
+  };
 }
 
 function writeRefundNotifications(
@@ -604,7 +977,9 @@ function writeRefundNotifications(
           ? "/bookings"
           : audience === "merchant"
             ? "/merchant/lifecycle"
-            : "/admin/commerce-refunds",
+            : input.status === "review_required"
+              ? "/admin/commerce-ledger"
+              : "/admin/commerce-refunds",
       reference: input.reference,
       readAt: null,
       createdAt: input.now,
@@ -625,6 +1000,30 @@ async function findCommerceBookingByPaymentIntent(
     .limit(2)
     .get();
   return snapshot.size === 1 ? snapshot.docs[0].ref : null;
+}
+
+function storedLedgerPolicy(
+  booking: FirebaseFirestore.DocumentData,
+): CommerceLedgerPolicy {
+  const policy = resolveCommerceLedgerPolicy(booking.commercePlatformFeeBps);
+  return {
+    feeBps: policy.feeBps,
+    source:
+      policy.source === "environment" &&
+      booking.commerceFeePolicySource === "environment"
+        ? "environment"
+        : "unconfigured",
+  };
+}
+
+function stripeEventOccurredAt(event: Stripe.Event) {
+  return new Date(event.created * 1000).toISOString();
+}
+
+function validIso(value: unknown) {
+  if (typeof value !== "string") return "";
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
 }
 
 function expandableId(
