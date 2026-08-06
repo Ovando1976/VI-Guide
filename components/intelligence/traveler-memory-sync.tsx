@@ -10,6 +10,7 @@ import {
   INTELLIGENCE_MEMORY_UPDATED_EVENT,
   patchIntelligenceMemory,
 } from "@/lib/intelligence/client";
+import { setIntelligenceAuthBinding } from "@/lib/intelligence/identity";
 import type { IntelligenceMemory } from "@/types/intelligence";
 
 type ProfilePayload = {
@@ -22,6 +23,20 @@ export function TravelerMemorySync() {
   const { user, loading } = useAuth();
   const applyingRemote = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) {
+      setIntelligenceAuthBinding(null);
+      return;
+    }
+    const authenticatedUser = user;
+    setIntelligenceAuthBinding({
+      userId: authenticatedUser.uid,
+      getToken: () => authenticatedUser.getIdToken(),
+    });
+    return () => setIntelligenceAuthBinding(null);
+  }, [loading, user]);
 
   useEffect(() => {
     if (loading || !user) return;
@@ -117,6 +132,7 @@ function mergeMemory(base: IntelligenceMemory, preferred: IntelligenceMemory): I
       avoid: union(base.preferences?.avoid, preferred.preferences?.avoid, 20),
     },
     cruise: { ...base.cruise, ...preferred.cruise },
+    activeTrip: preferred.activeTrip ?? base.activeTrip,
     recentPlaceIds: union(base.recentPlaceIds, preferred.recentPlaceIds, 40),
     savedPlaceIds: union(base.savedPlaceIds, preferred.savedPlaceIds, 100),
   };

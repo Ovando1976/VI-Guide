@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { buildGroundedAnswer } from "@/lib/intelligence/grounded-answer";
+import {
+  bearerTokenFromAuthorization,
+  bindVerifiedIntelligenceIdentity,
+} from "@/lib/intelligence/identity";
 import { refineIntelligenceResponse } from "@/lib/intelligence/model-refinement";
 import { runRegisteredIntelligenceOrchestrator } from "@/lib/intelligence/registered-orchestrator";
 import {
@@ -8,6 +12,10 @@ import {
   completeIntelligenceRun,
   failIntelligenceRun,
 } from "@/lib/intelligence/telemetry";
+import {
+  getAdminAuth,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
 import type {
   IntelligenceContext,
   IntelligenceRequest,
@@ -30,9 +38,15 @@ const PAGES: readonly IntelligencePage[] = [
   "fishing",
   "community",
   "concierge",
+  "cruises",
+  "planner",
+  "profile",
+  "today",
   "search",
   "unknown",
 ];
+
+class IntelligenceAuthenticationError extends Error {}
 
 function validIdentifier(value: unknown): value is string {
   return typeof value === "string" && /^[a-zA-Z0-9_-]{8,120}$/.test(value);
@@ -86,13 +100,29 @@ function normalizeContext(value: unknown): IntelligenceContext | null {
     memory: context.memory && typeof context.memory === "object" ? context.memory : {},
   };
 
-  if (typeof context.userId === "string") normalized.userId = context.userId.slice(0, 160);
   if (context.currentLocation) normalized.currentLocation = context.currentLocation;
   if (context.selectedPlace) normalized.selectedPlace = context.selectedPlace;
   if (context.pickup) normalized.pickup = context.pickup;
   if (context.destination) normalized.destination = context.destination;
 
   return normalized;
+}
+
+async function verifiedUserId(request: NextRequest) {
+  const authorization = request.headers.get("authorization");
+  if (!authorization) return undefined;
+  const token = bearerTokenFromAuthorization(authorization);
+  if (!token) throw new IntelligenceAuthenticationError("Invalid authorization header.");
+  if (!hasFirebaseAdminConfiguration()) {
+    throw new IntelligenceAuthenticationError(
+      "Authenticated intelligence is not configured.",
+    );
+  }
+  try {
+    return (await getAdminAuth().verifyIdToken(token)).uid;
+  } catch {
+    throw new IntelligenceAuthenticationError("Invalid traveler session.");
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -105,11 +135,13 @@ export async function POST(request: NextRequest) {
     }
 
     const message = typeof payload.message === "string" ? payload.message.trim() : "";
-    const context = normalizeContext(payload.context);
-    if (!message || message.length > 4_000 || !context) {
+    const unsafeContext = normalizeContext(payload.context);
+    if (!message || message.length > 4_000 || !unsafeContext) {
       return NextResponse.json({ error: "The intelligence request is invalid." }, { status: 400 });
     }
 
+    const userId = await verifiedUserId(request);
+    const context = bindVerifiedIntelligenceIdentity(unsafeContext, userId);
     const normalizedRequest: IntelligenceRequest = {
       message,
       context,
@@ -134,12 +166,16 @@ export async function POST(request: NextRequest) {
         "X-VI-Intelligence-Intent": result.intent,
         "X-VI-Intelligence-Confidence": result.confidence,
         "X-VI-Intelligence-Workflow": result.orchestration?.status ?? "legacy",
+        "X-VI-Intelligence-Identity": userId ? "authenticated" : "anonymous",
         "X-VI-Intelligence-Source": process.env.OPENAI_API_KEY
           ? "vi-guide-grounded-model"
           : "vi-guide-knowledge-index",
       },
     });
   } catch (error) {
+    if (error instanceof IntelligenceAuthenticationError) {
+      return NextResponse.json({ error: error.message }, { status: 401 });
+    }
     if (run) await failIntelligenceRun(run, error);
     console.error("VI Guide intelligence request failed.", error);
     return NextResponse.json(

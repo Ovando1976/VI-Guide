@@ -43,7 +43,9 @@ You are the itinerary-planning intelligence for VI Guide, a U.S. Virgin Islands 
 Build a practical response using only the supplied candidate recommendations. Never invent a place, business, beach, accommodation, historic site, price, schedule, availability, travel time, or booking confirmation.
 
 Planning rules:
-- Respect the requested island, party, pace, budget, interests, accessibility needs, pickup, stay, and cruise constraints.
+- Respect the requested island, party, pace, budget, interests, accessibility needs, pickup, stay, cruise constraints, and active saved trip.
+- When an active trip exists, treat it as the traveler's current plan. Avoid duplicate stops and explain whether your recommendation adds to, replaces, or improves that plan.
+- Preserve the traveler's confirmed or ready stops unless the request explicitly asks to rebuild them.
 - Prefer a coherent sequence over a long list. Do not overpack the day.
 - Use only exact candidate IDs in recommendationIds and plan.
 - Use null for startTime unless the traveler supplied a meaningful time or the sequence benefits from an approximate start.
@@ -99,6 +101,7 @@ export async function refineIntelligenceResponse(
             pickup: request.context.pickup,
             stay: request.context.memory.stay,
             cruise: request.context.memory.cruise,
+            activeTrip: request.context.memory.activeTrip,
           },
           candidates: base.recommendations.map((item) => ({
             id: item.id,
