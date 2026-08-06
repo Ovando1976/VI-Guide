@@ -20,8 +20,8 @@ const validInput: CommerceSandboxEnvironmentInput = {
 };
 
 const valid = validateCommerceSandboxEnvironment(validInput);
-assert.equal(valid.ok, true);
 if (!valid.ok) throw new Error(valid.errors.join("\n"));
+assert.equal(valid.ok, true);
 assert.deepEqual(valid.configuration, {
   stripeMode: "test",
   stripeKeyKind: "restricted",
@@ -38,8 +38,10 @@ const secretKeyVariant = validateCommerceSandboxEnvironment({
   stripeSecretKey: "sk_test_abcdefghijklmnopqrstuvwxyz123456",
   appUrl: "http://localhost:3000",
 });
+if (!secretKeyVariant.ok) {
+  throw new Error(secretKeyVariant.errors.join("\n"));
+}
 assert.equal(secretKeyVariant.ok, true);
-if (!secretKeyVariant.ok) throw new Error(secretKeyVariant.errors.join("\n"));
 assert.equal(secretKeyVariant.configuration.stripeKeyKind, "secret");
 assert.equal(secretKeyVariant.configuration.appOrigin, "http://localhost:3000");
 
@@ -124,8 +126,8 @@ function assertBlocked(
   expectedMessage: string,
 ) {
   const result = validateCommerceSandboxEnvironment(input);
-  assert.equal(result.ok, false);
   if (result.ok) throw new Error("Expected sandbox configuration to be blocked.");
+  assert.equal(result.ok, false);
   assert.ok(
     result.errors.some((error) => error.includes(expectedMessage)),
     `Expected an error containing ${JSON.stringify(expectedMessage)}. Received: ${result.errors.join(" | ")}`,
