@@ -15,13 +15,13 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 type DeliveryStatus = "pending" | "processing" | "delivered" | "failed";
+type Filter = "attention" | DeliveryStatus | "all";
+
 type Delivery = {
   id: string;
-  bookingId: string;
   reference: string;
   event: string;
   audience: string;
-  listingId: string;
   listingName: string;
   recipientEmail: string | null;
   title: string;
@@ -31,10 +31,6 @@ type Delivery = {
   providerMessageId: string | null;
   lastError: string | null;
   nextAttemptAt: string | null;
-  leaseUntil: string | null;
-  deliveredAt: string | null;
-  failedAt: string | null;
-  createdAt: string;
   updatedAt: string;
   retryable: boolean;
 };
@@ -48,7 +44,12 @@ type Summary = {
   retryable: number;
 };
 
-type Filter = "attention" | DeliveryStatus | "all";
+type OutboxPayload = {
+  canRetry?: boolean;
+  summary?: Summary;
+  deliveries?: Delivery[];
+  error?: string;
+};
 
 const EMPTY_SUMMARY: Summary = {
   total: 0,
@@ -58,6 +59,15 @@ const EMPTY_SUMMARY: Summary = {
   failed: 0,
   retryable: 0,
 };
+
+const FILTERS: Array<[Filter, string]> = [
+  ["attention", "Needs attention"],
+  ["pending", "Pending"],
+  ["processing", "Processing"],
+  ["failed", "Failed"],
+  ["delivered", "Delivered"],
+  ["all", "All"],
+];
 
 export function NotificationOutboxBoard() {
   const [deliveries, setDeliveries] = useState<Delivery[]>([]);
@@ -77,22 +87,17 @@ export function NotificationOutboxBoard() {
       const response = await fetch("/api/admin/notification-outbox", {
         cache: "no-store",
       });
-      const payload = (await response.json().catch(() => null)) as
-        | {
-            canRetry?: boolean;
-            summary?: Summary;
-            deliveries?: Delivery[];
-            error?: string;
-          }
-        | null;
+      const payload = (await response.json().catch(() => null)) as OutboxPayload | null;
       if (!response.ok) {
-        throw new Error(
-          payload?.error || "Unable to load notification operations.",
-        );
+        throw new Error(payload?.error || "Unable to load notification operations.");
       }
-      setCanRetry(payload?.canRetry === true);
-      setSummary(payload?.summary ?? EMPTY_SUMMARY);
-      setDeliveries(Array.isArray(payload?.deliveries) ? payload.deliveries : []);
+
+      const safePayload: OutboxPayload = payload ?? {};
+      setCanRetry(safePayload.canRetry === true);
+      setSummary(safePayload.summary ?? EMPTY_SUMMARY);
+      setDeliveries(
+        Array.isArray(safePayload.deliveries) ? safePayload.deliveries : [],
+      );
     } catch (caught) {
       if (!silent) {
         setError(
@@ -153,12 +158,7 @@ export function NotificationOutboxBoard() {
       const payload = (await response.json().catch(() => null)) as
         | {
             requeued?: number;
-            delivery?: {
-              delivered?: number;
-              deferred?: number;
-              skipped?: number;
-              failed?: number;
-            };
+            delivery?: { delivered?: number; deferred?: number };
             error?: string;
           }
         | null;
@@ -166,10 +166,11 @@ export function NotificationOutboxBoard() {
         throw new Error(payload?.error || "Unable to retry delivery.");
       }
 
+      const requeued = Number(payload?.requeued ?? ids.length);
       const delivered = Number(payload?.delivery?.delivered ?? 0);
       const deferred = Number(payload?.delivery?.deferred ?? 0);
       setMessage(
-        `${Number(payload?.requeued ?? ids.length)} notification${ids.length === 1 ? "" : "s"} requeued · ${delivered} delivered · ${deferred} deferred.`,
+        `${requeued} notification${requeued === 1 ? "" : "s"} requeued · ${delivered} delivered · ${deferred} deferred.`,
       );
       await load(true);
     } catch (caught) {
@@ -216,9 +217,8 @@ export function NotificationOutboxBoard() {
                 Booking notification control room
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
-                Inspect traveler, merchant, and operations email delivery. Failed
-                and unresolved messages remain durable until they are delivered
-                or explicitly retried by an administrator.
+                Inspect traveler, merchant, and operations delivery. Failed and
+                unresolved messages remain durable until delivered or retried.
               </p>
             </div>
             <div className="rounded-[26px] border border-white/10 bg-white/[.07] p-5">
@@ -241,30 +241,13 @@ export function NotificationOutboxBoard() {
           <Metric icon={RotateCcw} label="Retryable" value={summary.retryable} />
         </section>
 
-        {error ? (
-          <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-bold text-rose-700">
-            {error}
-          </div>
-        ) : null}
-        {message ? (
-          <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm font-bold text-emerald-800">
-            {message}
-          </div>
-        ) : null}
+        {error ? <Notice tone="error">{error}</Notice> : null}
+        {message ? <Notice tone="success">{message}</Notice> : null}
 
         <section className="mt-6 rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap gap-2">
-              {(
-                [
-                  ["attention", "Needs attention"],
-                  ["pending", "Pending"],
-                  ["processing", "Processing"],
-                  ["failed", "Failed"],
-                  ["delivered", "Delivered"],
-                  ["all", "All"],
-                ] as const
-              ).map(([value, label]) => (
+              {FILTERS.map(([value, label]) => (
                 <button
                   key={value}
                   type="button"
@@ -344,12 +327,8 @@ function DeliveryCard({
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={delivery.status} />
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] text-slate-600">
-              {delivery.audience || "unknown audience"}
-            </span>
-            <span className="rounded-full bg-teal-50 px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] text-teal-700">
-              {delivery.event.replaceAll("_", " ")}
-            </span>
+            <Badge>{delivery.audience || "unknown audience"}</Badge>
+            <Badge accent>{delivery.event.replaceAll("_", " ")}</Badge>
           </div>
           <h2 className="mt-4 text-xl font-black tracking-[-.03em]">
             {delivery.title || "Booking notification"}
@@ -400,63 +379,64 @@ function DeliveryCard({
   );
 }
 
-function Metric({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: typeof Send;
-  label: string;
-  value: number;
-}) {
+function Metric({ icon: Icon, label, value }: { icon: typeof Send; label: string; value: number }) {
   return (
     <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
       <Icon className="h-5 w-5 text-teal-700" />
       <p className="mt-4 text-3xl font-black tracking-[-.04em]">{value}</p>
-      <p className="mt-1 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
-        {label}
-      </p>
-    </div>
-  );
-}
-
-function Detail({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl bg-[#fbfaf6] px-4 py-3">
-      <p className="text-[8px] font-black uppercase tracking-[.13em] text-slate-400">
-        {label}
-      </p>
-      <p className="mt-1 break-all text-xs font-bold text-slate-600">{value}</p>
+      <p className="mt-1 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">{label}</p>
     </div>
   );
 }
 
 function StatusBadge({ status }: { status: DeliveryStatus }) {
-  const className =
-    status === "delivered"
-      ? "bg-emerald-100 text-emerald-800"
-      : status === "failed"
-        ? "bg-rose-100 text-rose-700"
-        : status === "processing"
-          ? "bg-sky-100 text-sky-700"
-          : "bg-amber-100 text-amber-800";
+  const styles: Record<DeliveryStatus, string> = {
+    pending: "bg-amber-100 text-amber-800",
+    processing: "bg-sky-100 text-sky-800",
+    delivered: "bg-emerald-100 text-emerald-800",
+    failed: "bg-rose-100 text-rose-800",
+  };
   return (
-    <span
-      className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${className}`}
-    >
+    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${styles[status]}`}>
       {status}
     </span>
   );
 }
 
+function Badge({ children, accent = false }: { children: React.ReactNode; accent?: boolean }) {
+  return (
+    <span className={`rounded-full px-3 py-1 text-[8px] font-black uppercase tracking-[.12em] ${accent ? "bg-teal-50 text-teal-700" : "bg-slate-100 text-slate-600"}`}>
+      {children}
+    </span>
+  );
+}
+
+function Detail({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-slate-50 px-4 py-3">
+      <p className="text-[8px] font-black uppercase tracking-[.13em] text-slate-400">{label}</p>
+      <p className="mt-1 break-all text-xs font-bold text-slate-700">{value}</p>
+    </div>
+  );
+}
+
+function Notice({ children, tone }: { children: React.ReactNode; tone: "error" | "success" }) {
+  return (
+    <div className={`mt-5 rounded-2xl border px-5 py-4 text-sm font-bold ${tone === "error" ? "border-rose-200 bg-rose-50 text-rose-700" : "border-emerald-200 bg-emerald-50 text-emerald-800"}`}>
+      {children}
+    </div>
+  );
+}
+
 function formatTime(value: string) {
-  const parsed = Date.parse(value);
-  if (!Number.isFinite(parsed)) return value || "—";
-  return new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/St_Thomas",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(new Date(parsed));
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? "—"
+    : new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/St_Thomas",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      }).format(date);
 }
