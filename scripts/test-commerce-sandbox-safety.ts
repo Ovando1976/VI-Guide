@@ -132,7 +132,7 @@ function stripeKeyFixture(kind: "rk" | "sk" | "pk", mode: "test") {
 }
 
 function webhookSecretFixture() {
-  return ["wh", "sec", "fixture1234567890"].join("_");
+  return ["wh", "sec_", "fixture1234567890"].join("");
 }
 
 function assertBlocked(
