@@ -31,6 +31,7 @@ const EXPLORE_ROUTES = [
   "/experiences",
   "/events",
   "/fishing",
+  "/offers",
   "/community",
   "/search",
 ] as const;

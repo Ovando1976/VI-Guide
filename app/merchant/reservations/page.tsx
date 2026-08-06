@@ -1,3 +1,4 @@
+import { MerchantOfferBookingSummary } from "@/components/merchant/merchant-offer-booking-summary";
 import { MerchantReservationInbox } from "@/components/merchant/merchant-reservation-inbox";
 
 export const metadata = {
@@ -6,5 +7,10 @@ export const metadata = {
 };
 
 export default function MerchantReservationsPage() {
-  return <MerchantReservationInbox />;
+  return (
+    <>
+      <MerchantOfferBookingSummary />
+      <MerchantReservationInbox />
+    </>
+  );
 }

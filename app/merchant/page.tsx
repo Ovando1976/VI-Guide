@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   ArrowRight,
+  BadgeDollarSign,
   Building2,
   CalendarCheck2,
   CircleDollarSign,
@@ -17,7 +18,7 @@ import { humanizeListingId } from "@/lib/merchant-portal";
 export const metadata = {
   title: "Merchant Operations | VI Guide",
   description:
-    "Manage VI Guide reservations, availability, payments, and assigned businesses.",
+    "Manage VI Guide offers, reservations, availability, payments, and assigned businesses.",
 };
 
 export default async function MerchantHomePage() {
@@ -47,8 +48,9 @@ export default async function MerchantHomePage() {
                 Run the booking day from one place.
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
-                Review traveler requests, secure deposits, confirm paid bookings,
-                and keep each assigned business available for sale.
+                Publish sellable packages, review traveler requests, secure
+                deposits, confirm paid bookings, and keep each assigned business
+                available for sale.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -80,14 +82,14 @@ export default async function MerchantHomePage() {
             <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-rose-800/75">
               Your merchant account is active, but it has no listing scope. An
               administrator must assign at least one VI Guide listing before you
-              can view reservations or edit availability.
+              can publish offers, view reservations, or edit availability.
             </p>
           </section>
         ) : null}
 
         <MerchantOperationsSummary />
 
-        <section className="mt-6 grid gap-4 lg:grid-cols-3">
+        <section className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <ActionCard
             href="/merchant/reservations"
             icon={CalendarCheck2}
@@ -103,6 +105,14 @@ export default async function MerchantHomePage() {
             title="Availability & capacity"
             detail="Set operating dates, hours, capacity, and blackout periods for the businesses you manage."
             action="Manage availability"
+          />
+          <ActionCard
+            href="/merchant/offers"
+            icon={BadgeDollarSign}
+            eyebrow="Sellable packages"
+            title="Offers & promotions"
+            detail="Create listing-scoped packages with verified prices, deposits, inclusions, and selling dates."
+            action="Build offers"
           />
           <ActionCard
             href="/merchant/lifecycle"
@@ -159,9 +169,9 @@ export default async function MerchantHomePage() {
             ) : (
               <div className="mt-6 rounded-[24px] border border-emerald-200 bg-emerald-50 p-5">
                 <p className="text-sm font-semibold leading-6 text-emerald-900/75">
-                  Your staff role can review bookings and provider operations
-                  across all VI Guide listings. Merchant account assignments stay
-                  restricted to administrators.
+                  Your staff role can review bookings, offers, and provider
+                  operations across all VI Guide listings. Merchant account
+                  assignments stay restricted to administrators.
                 </p>
               </div>
             )}
@@ -174,6 +184,7 @@ export default async function MerchantHomePage() {
             </p>
             <ol className="mt-5 space-y-4">
               {[
+                "Keep public packages and selling dates current.",
                 "Review new traveler requests.",
                 "Confirm capacity and proposed timing.",
                 "Request the correct Stripe deposit.",

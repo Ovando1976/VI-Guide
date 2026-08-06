@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
+  BadgeDollarSign,
   Building2,
   CalendarClock,
   CreditCard,
@@ -53,7 +54,7 @@ export default async function MerchantLayout({
             </div>
           </div>
 
-          <nav className="grid gap-2 sm:grid-cols-4">
+          <nav className="grid gap-2 sm:grid-cols-5">
             <MerchantNavLink
               href="/merchant"
               icon={LayoutDashboard}
@@ -68,6 +69,11 @@ export default async function MerchantLayout({
               href="/merchant/availability"
               icon={ShieldCheck}
               label="Availability"
+            />
+            <MerchantNavLink
+              href="/merchant/offers"
+              icon={BadgeDollarSign}
+              label="Offers"
             />
             <MerchantNavLink
               href="/merchant/lifecycle"
