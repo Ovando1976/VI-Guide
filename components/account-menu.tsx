@@ -10,6 +10,7 @@ import {
   Map,
   Route,
   ShieldCheck,
+  ShipWheel,
   Sparkles,
   UserRound,
 } from "lucide-react";
@@ -96,6 +97,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
         : role === "admin" || role === "dispatcher"
           ? "/admin/dispatch"
           : null;
+  const canManageCruiseRequests = role === "admin" || role === "dispatcher";
   const initial = (user.displayName || user.email || "V")
     .trim()
     .charAt(0)
@@ -173,6 +175,12 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               onSelect={() => setOpen(false)}
             />
             <MenuLink
+              href="/cruises"
+              label="Plan a cruise"
+              icon={ShipWheel}
+              onSelect={() => setOpen(false)}
+            />
+            <MenuLink
               href="/trips"
               label="Bookings & ride history"
               icon={CalendarDays}
@@ -184,6 +192,14 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               icon={Handshake}
               onSelect={() => setOpen(false)}
             />
+            {canManageCruiseRequests ? (
+              <MenuLink
+                href="/admin/cruise-requests"
+                label="Cruise advisor desk"
+                icon={ShipWheel}
+                onSelect={() => setOpen(false)}
+              />
+            ) : null}
             {operationsHref ? (
               <MenuLink
                 href={operationsHref}
