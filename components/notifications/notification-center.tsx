@@ -8,9 +8,11 @@ import {
   Clock3,
   Loader2,
   RefreshCcw,
+  ShieldCheck,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { useAuth } from "@/components/auth-provider";
 import type {
   NotificationAudience,
   ViNotification,
@@ -27,43 +29,59 @@ export function NotificationCenter({
 }: {
   audience?: NotificationAudience;
 }) {
+  const { user, loading: authLoading } = useAuth();
   const [notifications, setNotifications] = useState<ViNotification[]>([]);
   const [loading, setLoading] = useState(true);
   const [savingId, setSavingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const loadNotifications = useCallback(async (silent = false) => {
-    if (!silent) setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`/api/notifications?audience=${audience}`, {
-        cache: "no-store",
-      });
-      const payload = (await response.json().catch(() => null)) as
-        | { notifications?: ViNotification[]; error?: string }
-        | null;
-      if (!response.ok) {
-        throw new Error(payload?.error || "Unable to load notifications.");
+  const loadNotifications = useCallback(
+    async (silent = false) => {
+      if (authLoading) return;
+      if (!user) {
+        setNotifications([]);
+        setLoading(false);
+        return;
       }
-      setNotifications(payload?.notifications ?? []);
-    } catch (caught) {
-      setError(
-        caught instanceof Error
-          ? caught.message
-          : "Unable to load notifications.",
-      );
-    } finally {
-      if (!silent) setLoading(false);
-    }
-  }, [audience]);
+      if (!silent) setLoading(true);
+      setError(null);
+      try {
+        const token = await user.getIdToken();
+        const response = await fetch(
+          `/api/notifications?audience=${audience}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+            cache: "no-store",
+          },
+        );
+        const payload = (await response.json().catch(() => null)) as
+          | { notifications?: ViNotification[]; error?: string }
+          | null;
+        if (!response.ok) {
+          throw new Error(payload?.error || "Unable to load notifications.");
+        }
+        setNotifications(payload?.notifications ?? []);
+      } catch (caught) {
+        setError(
+          caught instanceof Error
+            ? caught.message
+            : "Unable to load notifications.",
+        );
+      } finally {
+        if (!silent) setLoading(false);
+      }
+    },
+    [audience, authLoading, user],
+  );
 
   useEffect(() => {
     void loadNotifications();
+    if (!user) return;
     const timer = window.setInterval(() => {
       void loadNotifications(true);
-    }, 15_000);
+    }, 30_000);
     return () => window.clearInterval(timer);
-  }, [loadNotifications]);
+  }, [loadNotifications, user]);
 
   const unreadCount = useMemo(
     () => notifications.filter((item) => !item.readAt).length,
@@ -71,16 +89,27 @@ export function NotificationCenter({
   );
 
   async function setRead(notification: ViNotification, read: boolean) {
+    if (!user) return;
     setSavingId(notification.id);
     setError(null);
     try {
+      const token = await user.getIdToken();
       const response = await fetch(`/api/notifications/${notification.id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ read }),
       });
       const payload = (await response.json().catch(() => null)) as
-        | { notification?: { readAt?: string | null; updatedAt?: string }; error?: string }
+        | {
+            notification?: {
+              readAt?: string | null;
+              updatedAt?: string;
+            };
+            error?: string;
+          }
         | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to update notification.");
@@ -114,6 +143,29 @@ export function NotificationCenter({
     }
   }
 
+  if (!authLoading && !user) {
+    return (
+      <main className="min-h-screen bg-[#f7f2e7] px-4 py-12 text-[#043331] sm:px-6">
+        <div className="mx-auto max-w-2xl rounded-[32px] border border-slate-200 bg-white p-8 text-center shadow-lg">
+          <ShieldCheck className="mx-auto h-10 w-10 text-teal-700" />
+          <h1 className="mt-5 text-3xl font-black tracking-[-.04em]">
+            Your notification center is private
+          </h1>
+          <p className="mt-3 text-sm font-semibold leading-6 text-slate-500">
+            Sign in to see booking updates and proactive alerts tied to your
+            verified traveler account.
+          </p>
+          <Link
+            href="/login?next=%2Fnotifications"
+            className="mt-6 inline-flex min-h-12 items-center rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.15em] text-white"
+          >
+            Sign in
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#f7f2e7] px-4 py-8 text-[#043331] sm:px-6 lg:py-12">
       <div className="mx-auto max-w-5xl">
@@ -127,7 +179,8 @@ export function NotificationCenter({
                 Notification Center
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">
-                Booking updates, mission guidance, provider changes, Concierge actions, and operational alerts in one live inbox.
+                Private booking updates, Concierge actions, and proactive trip
+                protection alerts in one live inbox.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -160,7 +213,7 @@ export function NotificationCenter({
         ) : null}
 
         <section className="mt-6 space-y-4">
-          {loading ? (
+          {loading || authLoading ? (
             <div className="grid min-h-64 place-items-center rounded-[30px] border border-slate-200 bg-white">
               <Loader2 className="h-7 w-7 animate-spin text-teal-700" />
             </div>
@@ -232,9 +285,12 @@ export function NotificationCenter({
           ) : (
             <div className="rounded-[30px] border border-slate-200 bg-white p-10 text-center shadow-sm">
               <Bell className="mx-auto h-10 w-10 text-teal-700" />
-              <h2 className="mt-4 text-2xl font-black">No notifications yet</h2>
+              <h2 className="mt-4 text-2xl font-black">
+                No private notifications yet
+              </h2>
               <p className="mt-2 text-sm font-semibold text-slate-500">
-                Booking, mission, provider, Concierge, and operations updates will appear here.
+                Booking and proactive trip-protection updates tied to your
+                account will appear here.
               </p>
             </div>
           )}
