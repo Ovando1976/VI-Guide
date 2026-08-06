@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "agent/proactive-trip-intelligence": true
+      "main": true
     }
   },
   "crons": [
