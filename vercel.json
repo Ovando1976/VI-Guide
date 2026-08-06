@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "agent/proactive-traveler-notifications": true
+      "main": true
     }
   },
   "crons": [
