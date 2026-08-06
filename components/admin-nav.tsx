@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/admin/dispatch", label: "Dispatch" },
+  { href: "/admin/cruise-requests", label: "Cruise Advisor" },
   { href: "/admin", label: "Fleet" },
   { href: "/admin/payouts", label: "Payouts" },
 ];
@@ -15,7 +16,9 @@ export function AdminNav() {
   return (
     <nav className="flex flex-wrap gap-3">
       {NAV_ITEMS.map((item) => {
-        const active = pathname === item.href;
+        const active =
+          pathname === item.href ||
+          (item.href !== "/admin" && pathname.startsWith(`${item.href}/`));
 
         return (
           <Link

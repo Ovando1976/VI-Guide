@@ -6,52 +6,64 @@ import {
   Fish,
   Footprints,
   MoonStar,
+  ShipWheel,
   Sparkles,
   UtensilsCrossed,
   Waves,
 } from "lucide-react";
 
+function conciergeHref(prompt: string) {
+  return `/concierge?open=true&prompt=${encodeURIComponent(prompt)}`;
+}
+
 const PROMPTS = [
   {
     label: "Beach day",
-    prompt: "Plan a relaxed beach day with food and transportation nearby",
+    href: conciergeHref(
+      "Plan a relaxed beach day with food and transportation nearby",
+    ),
     icon: Waves,
   },
   {
     label: "Find food",
-    prompt: "Help me find a great local meal near me today",
+    href: conciergeHref("Help me find a great local meal near me today"),
     icon: UtensilsCrossed,
   },
   {
     label: "Book a ride",
-    prompt: "Help me plan transportation for my next stop",
+    href: conciergeHref("Help me plan transportation for my next stop"),
     icon: Car,
   },
   {
+    label: "Plan a cruise",
+    href: "/cruises",
+    icon: ShipWheel,
+  },
+  {
     label: "Go fishing",
-    prompt: "Plan a responsible fishing experience in the U.S. Virgin Islands",
+    href: conciergeHref(
+      "Plan a responsible fishing experience in the U.S. Virgin Islands",
+    ),
     icon: Fish,
   },
   {
     label: "Take a hike",
-    prompt: "Plan a scenic hike with timing and transportation",
+    href: conciergeHref("Plan a scenic hike with timing and transportation"),
     icon: Footprints,
   },
   {
     label: "Tonight",
-    prompt: "Plan something memorable for tonight in the Virgin Islands",
+    href: conciergeHref(
+      "Plan something memorable for tonight in the Virgin Islands",
+    ),
     icon: MoonStar,
   },
   {
     label: "Find a stay",
-    prompt: "Help me choose a place to stay based on my trip",
+    href: conciergeHref("Help me choose a place to stay based on my trip"),
     icon: BedDouble,
   },
 ] as const;
-
-function conciergeHref(prompt: string) {
-  return `/concierge?open=true&prompt=${encodeURIComponent(prompt)}`;
-}
 
 export function HomeConciergeHub() {
   return (
@@ -63,10 +75,11 @@ export function HomeConciergeHub() {
               <Sparkles size={14} /> VI Concierge
             </div>
             <h2 className="mt-4 max-w-xl font-serif text-4xl font-bold leading-[.98] tracking-[-.045em] sm:text-5xl">
-              Tell us the kind of day you want.
+              Tell us the kind of trip you want.
             </h2>
             <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/68">
-              VI Concierge connects places, timing, transportation, and local context into one practical plan.
+              VI Concierge connects places, timing, transportation, local context,
+              and now cruise planning into one practical travel relationship.
             </p>
             <Link
               href={conciergeHref("Plan a complete Virgin Islands day for me")}
@@ -86,10 +99,10 @@ export function HomeConciergeHub() {
               </h3>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {PROMPTS.map(({ label, prompt, icon: Icon }) => (
+              {PROMPTS.map(({ label, href, icon: Icon }) => (
                 <Link
                   key={label}
-                  href={conciergeHref(prompt)}
+                  href={href}
                   className="group flex min-h-[116px] items-center gap-4 rounded-[24px] border border-white/12 bg-white/[.07] p-4 transition hover:-translate-y-0.5 hover:border-[#f5c451]/60 hover:bg-white/[.12]"
                 >
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[#0f766e] transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]">
