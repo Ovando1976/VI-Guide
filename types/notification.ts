@@ -5,6 +5,7 @@ export type NotificationKind =
   | "mission"
   | "provider"
   | "concierge"
+  | "trip"
   | "operations";
 
 export type NotificationPriority = "normal" | "high";
@@ -12,6 +13,7 @@ export type NotificationPriority = "normal" | "high";
 export type ViNotification = {
   id: string;
   audience: NotificationAudience;
+  recipientUid?: string;
   kind: NotificationKind;
   priority: NotificationPriority;
   title: string;
