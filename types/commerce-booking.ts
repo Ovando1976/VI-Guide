@@ -33,6 +33,7 @@ export type CommerceBookingRequest = {
   listingId: string;
   listingName: string;
   listingHref?: string;
+  offerId?: string;
   island: IntelligenceIsland;
   startDate: string;
   endDate?: string;
@@ -49,6 +50,10 @@ export type CommerceBooking = CommerceBookingRequest & {
   id: string;
   status: CommerceBookingStatus;
   reference: string;
+  offerTitle?: string;
+  offerPriceCents?: number;
+  offerCompareAtCents?: number | null;
+  offerDepositCents?: number | null;
   depositAmountCents?: number;
   paidAmountCents?: number;
   paymentStatus?: CommercePaymentStatus;
