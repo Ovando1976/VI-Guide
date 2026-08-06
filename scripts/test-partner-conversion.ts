@@ -22,7 +22,6 @@ const approved = resolveApprovedPartnerConversion({
   },
 });
 assert.equal(approved.ok, true);
-if (!approved.ok) throw new Error(approved.error);
 assert.deepEqual(approved.conversion, {
   applicationId,
   email: "owner@example.com",
@@ -88,7 +87,6 @@ const converted = resolveApprovedPartnerConversion({
   },
 });
 assert.equal(converted.ok, true);
-if (!converted.ok) throw new Error(converted.error);
 assert.equal(
   partnerConversionConflict({ conversion: converted.conversion, targetUid: "user-1" }),
   null,
