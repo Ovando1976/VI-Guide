@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 import { cruiseProviderErrorResponse } from "@/lib/cruise-inventory/http";
-import { CruiseProviderError } from "@/lib/cruise-inventory/provider";
 import { getCruiseInventoryProvider } from "@/lib/cruise-inventory/provider-registry";
 
 export const runtime = "nodejs";
@@ -31,12 +30,5 @@ export async function GET(
 function cleanId(value: unknown) {
   if (typeof value !== "string") return "";
   const id = value.trim().slice(0, 180);
-  if (!/^[A-Za-z0-9._:-]+$/.test(id)) {
-    throw new CruiseProviderError(
-      "invalid_request",
-      "The sailing identifier is invalid.",
-      400,
-    );
-  }
-  return id;
+  return /^[A-Za-z0-9._:-]+$/.test(id) ? id : "";
 }
