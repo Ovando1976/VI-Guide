@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { CalendarCheck2, Loader2, ShieldCheck } from "lucide-react";
 
+import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 import { JourneyPlanner } from "@/components/journey/journey-planner";
 import { JourneyRouteDashboard } from "@/components/journey/journey-route-dashboard";
 import {
@@ -63,6 +64,7 @@ export function BookingAwareJourneyPlanner() {
           {handoffError}
         </div>
       ) : null}
+      <ProactiveTripIntelligence />
       <JourneyPlanner />
       <JourneyRouteDashboard />
     </>

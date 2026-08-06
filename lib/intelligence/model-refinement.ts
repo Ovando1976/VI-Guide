@@ -1,3 +1,4 @@
+import { evaluateTripRisk } from "@/lib/intelligence/trip-risk";
 import type {
   IntelligenceAction,
   IntelligencePlanStop,
@@ -43,9 +44,10 @@ You are the itinerary-planning intelligence for VI Guide, a U.S. Virgin Islands 
 Build a practical response using only the supplied candidate recommendations. Never invent a place, business, beach, accommodation, historic site, price, schedule, availability, travel time, or booking confirmation.
 
 Planning rules:
-- Respect the requested island, party, pace, budget, interests, accessibility needs, pickup, stay, cruise constraints, and active saved trip.
+- Respect the requested island, party, pace, budget, interests, accessibility needs, pickup, stay, cruise constraints, active saved trip, and proactive trip-risk report.
+- Resolve critical and high trip risks before adding optional experiences. Protect return-to-ship windows and realistic transfer buffers.
 - When an active trip exists, treat it as the traveler's current plan. Avoid duplicate stops and explain whether your recommendation adds to, replaces, or improves that plan.
-- Preserve the traveler's confirmed or ready stops unless the request explicitly asks to rebuild them.
+- Preserve the traveler's confirmed or ready stops unless the request explicitly asks to rebuild them or a safety/logistics risk requires a change.
 - Prefer a coherent sequence over a long list. Do not overpack the day.
 - Use only exact candidate IDs in recommendationIds and plan.
 - Use null for startTime unless the traveler supplied a meaningful time or the sequence benefits from an approximate start.
@@ -72,7 +74,30 @@ export async function refineIntelligenceResponse(
   request: IntelligenceRequest,
   base: IntelligenceResponse,
 ): Promise<IntelligenceResponse> {
-  if (!process.env.OPENAI_API_KEY || !base.recommendations.length) return base;
+  const tripRisk = evaluateTripRisk(
+    request.context.memory.activeTrip,
+    request.context.memory,
+    { now: request.context.now },
+  );
+  const riskWarnings = tripRisk.issues
+    .filter(
+      (issue) =>
+        issue.severity === "critical" ||
+        issue.severity === "high" ||
+        issue.severity === "medium",
+    )
+    .slice(0, 4)
+    .map((issue) => `${issue.title}: ${issue.recommendation}`);
+  const groundedBase: IntelligenceResponse = riskWarnings.length
+    ? {
+        ...base,
+        warnings: Array.from(new Set([...base.warnings, ...riskWarnings])),
+      }
+    : base;
+
+  if (!process.env.OPENAI_API_KEY || !groundedBase.recommendations.length) {
+    return groundedBase;
+  }
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), MAX_RUNTIME_MS);
@@ -91,7 +116,7 @@ export async function refineIntelligenceResponse(
         instructions: INSTRUCTIONS,
         input: JSON.stringify({
           travelerRequest: request.message,
-          intent: base.intent,
+          intent: groundedBase.intent,
           context: {
             island: request.context.island,
             page: request.context.page,
@@ -102,8 +127,21 @@ export async function refineIntelligenceResponse(
             stay: request.context.memory.stay,
             cruise: request.context.memory.cruise,
             activeTrip: request.context.memory.activeTrip,
+            tripRisk: {
+              status: tripRisk.status,
+              score: tripRisk.score,
+              summary: tripRisk.summary,
+              returnWindow: tripRisk.returnWindow,
+              issues: tripRisk.issues.slice(0, 6).map((issue) => ({
+                severity: issue.severity,
+                category: issue.category,
+                title: issue.title,
+                detail: issue.detail,
+                recommendation: issue.recommendation,
+              })),
+            },
           },
-          candidates: base.recommendations.map((item) => ({
+          candidates: groundedBase.recommendations.map((item) => ({
             id: item.id,
             title: item.title,
             kind: item.kind,
@@ -125,33 +163,48 @@ export async function refineIntelligenceResponse(
       }),
     });
 
-    const payload = (await response.json().catch(() => null)) as Record<string, unknown> | null;
-    if (!response.ok || !payload) return base;
+    const payload = (await response.json().catch(() => null)) as Record<
+      string,
+      unknown
+    > | null;
+    if (!response.ok || !payload) return groundedBase;
 
     const output = JSON.parse(extractOutputText(payload)) as ModelPayload;
     const answer =
       typeof output.answer === "string" && output.answer.trim()
         ? output.answer.trim().slice(0, 5_000)
-        : base.answer;
-    const candidates = new Map(base.recommendations.map((item) => [item.id, item]));
+        : groundedBase.answer;
+    const candidates = new Map(
+      groundedBase.recommendations.map((item) => [item.id, item]),
+    );
     const orderedIds = validRecommendationIds(output.recommendationIds, candidates);
     const recommendations = [
       ...orderedIds.map((id) => candidates.get(id)!),
-      ...base.recommendations.filter((item) => !orderedIds.includes(item.id)),
+      ...groundedBase.recommendations.filter(
+        (item) => !orderedIds.includes(item.id),
+      ),
     ];
     const plan = buildValidatedPlan(output.plan, candidates);
-    const finalPlan = plan.length || base.intent !== "day_plan" ? plan : base.plan;
+    const finalPlan =
+      plan.length || groundedBase.intent !== "day_plan" ? plan : groundedBase.plan;
 
     return {
-      ...base,
+      ...groundedBase,
       answer,
       recommendations,
       plan: finalPlan,
-      actions: synchronizeActions(base.actions, finalPlan, request.context.island),
+      actions: synchronizeActions(
+        groundedBase.actions,
+        finalPlan,
+        request.context.island,
+      ),
     };
   } catch (error) {
-    console.warn("VI Guide model refinement fell back to the grounded engine.", error);
-    return base;
+    console.warn(
+      "VI Guide model refinement fell back to the grounded engine.",
+      error,
+    );
+    return groundedBase;
   } finally {
     clearTimeout(timeout);
   }
@@ -159,17 +212,28 @@ export async function refineIntelligenceResponse(
 
 function validRecommendationIds(
   value: unknown,
-  candidates: Map<string, IntelligenceResponse["recommendations"][number]>,
+  candidates: Map<
+    string,
+    IntelligenceResponse["recommendations"][number]
+  >,
 ) {
   if (!Array.isArray(value)) return [];
   return Array.from(
-    new Set(value.filter((id): id is string => typeof id === "string" && candidates.has(id))),
+    new Set(
+      value.filter(
+        (id): id is string =>
+          typeof id === "string" && candidates.has(id),
+      ),
+    ),
   ).slice(0, 8);
 }
 
 function buildValidatedPlan(
   value: unknown,
-  candidates: Map<string, IntelligenceResponse["recommendations"][number]>,
+  candidates: Map<
+    string,
+    IntelligenceResponse["recommendations"][number]
+  >,
 ): IntelligencePlanStop[] {
   if (!Array.isArray(value)) return [];
   const seen = new Set<string>();
@@ -178,13 +242,22 @@ function buildValidatedPlan(
   for (const raw of value.slice(0, 5)) {
     if (!raw || typeof raw !== "object") continue;
     const item = raw as ModelPlanItem;
-    if (typeof item.recommendationId !== "string" || seen.has(item.recommendationId)) continue;
+    if (
+      typeof item.recommendationId !== "string" ||
+      seen.has(item.recommendationId)
+    ) {
+      continue;
+    }
     const candidate = candidates.get(item.recommendationId);
     if (!candidate) continue;
     seen.add(item.recommendationId);
-    const duration = Math.max(30, Math.min(360, Number(item.durationMinutes) || 75));
+    const duration = Math.max(
+      30,
+      Math.min(360, Number(item.durationMinutes) || 75),
+    );
     const startTime =
-      typeof item.startTime === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(item.startTime)
+      typeof item.startTime === "string" &&
+      /^([01]\d|2[0-3]):[0-5]\d$/.test(item.startTime)
         ? item.startTime
         : undefined;
     const reason =
@@ -194,7 +267,10 @@ function buildValidatedPlan(
     const previous = plan[plan.length - 1];
 
     plan.push({
-      id: `ai_${plan.length + 1}_${candidate.id.replace(/[^a-zA-Z0-9_-]/g, "_")}`.slice(0, 160),
+      id: `ai_${plan.length + 1}_${candidate.id.replace(/[^a-zA-Z0-9_-]/g, "_")}`.slice(
+        0,
+        160,
+      ),
       title: candidate.title,
       island: candidate.island,
       kind: candidate.kind,
@@ -230,9 +306,16 @@ function synchronizeActions(
       return { ...action, payload: { ...action.payload, plan } };
     }
     if (action.type === "plan_ride" && plan[0]) {
-      const params = new URLSearchParams({ island, destination: plan[0].title });
-      if (typeof plan[0].lat === "number") params.set("toLat", String(plan[0].lat));
-      if (typeof plan[0].lng === "number") params.set("toLng", String(plan[0].lng));
+      const params = new URLSearchParams({
+        island,
+        destination: plan[0].title,
+      });
+      if (typeof plan[0].lat === "number") {
+        params.set("toLat", String(plan[0].lat));
+      }
+      if (typeof plan[0].lng === "number") {
+        params.set("toLng", String(plan[0].lng));
+      }
       return {
         ...action,
         label: `Plan transportation to ${plan[0].title}`,
@@ -244,7 +327,9 @@ function synchronizeActions(
 }
 
 function extractOutputText(payload: Record<string, unknown>) {
-  if (typeof payload.output_text === "string" && payload.output_text) return payload.output_text;
+  if (typeof payload.output_text === "string" && payload.output_text) {
+    return payload.output_text;
+  }
   const output = Array.isArray(payload.output) ? payload.output : [];
   const parts: string[] = [];
   for (const item of output) {
@@ -258,6 +343,8 @@ function extractOutputText(payload: Record<string, unknown>) {
       if (typeof text === "string") parts.push(text);
     }
   }
-  if (!parts.length) throw new Error("The model returned no readable output.");
+  if (!parts.length) {
+    throw new Error("The model returned no readable output.");
+  }
   return parts.join("\n");
 }
