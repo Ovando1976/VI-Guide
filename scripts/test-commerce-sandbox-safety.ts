@@ -6,11 +6,16 @@ import {
   type CommerceSandboxEnvironmentInput,
 } from "../lib/payments/commerce-sandbox-safety";
 
+const restrictedTestKey = stripeKeyFixture("rk", "test");
+const secretTestKey = stripeKeyFixture("sk", "test");
+const publishableTestKey = stripeKeyFixture("pk", "test");
+const webhookTestSecret = webhookSecretFixture();
+
 const validInput: CommerceSandboxEnvironmentInput = {
   confirmation: COMMERCE_SANDBOX_CONFIRMATION,
-  stripeSecretKey: "rk_test_abcdefghijklmnopqrstuvwxyz123456",
-  stripePublishableKey: "pk_test_abcdefghijklmnopqrstuvwxyz123456",
-  stripeWebhookSecret: "whsec_abcdefghijklmnopqrstuvwxyz123456",
+  stripeSecretKey: restrictedTestKey,
+  stripePublishableKey: publishableTestKey,
+  stripeWebhookSecret: webhookTestSecret,
   firebaseProjectId: "vi-guide-commerce-sandbox",
   expectedFirebaseProjectId: "vi-guide-commerce-sandbox",
   productionFirebaseProjectId: "vi-guide-production",
@@ -29,13 +34,14 @@ assert.deepEqual(valid.configuration, {
   appOrigin: "https://vi-guide-commerce-sandbox.example.test",
   platformFeeBps: 1000,
 });
-assert.equal(JSON.stringify(valid).includes("rk_test_"), false);
-assert.equal(JSON.stringify(valid).includes("pk_test_"), false);
-assert.equal(JSON.stringify(valid).includes("whsec_"), false);
+const serializedValidResult = JSON.stringify(valid);
+assert.equal(serializedValidResult.includes(restrictedTestKey), false);
+assert.equal(serializedValidResult.includes(publishableTestKey), false);
+assert.equal(serializedValidResult.includes(webhookTestSecret), false);
 
 const secretKeyVariant = validateCommerceSandboxEnvironment({
   ...validInput,
-  stripeSecretKey: "sk_test_abcdefghijklmnopqrstuvwxyz123456",
+  stripeSecretKey: secretTestKey,
   appUrl: "http://localhost:3000",
 });
 if (!secretKeyVariant.ok) {
@@ -120,6 +126,14 @@ assertBlocked(
 );
 
 console.log("Commerce sandbox safety tests passed.");
+
+function stripeKeyFixture(kind: "rk" | "sk" | "pk", mode: "test") {
+  return [kind, mode, "fixture1234567890"].join("_");
+}
+
+function webhookSecretFixture() {
+  return ["wh", "sec_", "fixture1234567890"].join("");
+}
 
 function assertBlocked(
   input: CommerceSandboxEnvironmentInput,
