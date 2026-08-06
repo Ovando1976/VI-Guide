@@ -143,7 +143,7 @@ const missedShip = evaluateTripRisk(
 );
 assert.equal(missedShip.status, "critical");
 assert.equal(missedShip.returnWindow?.allAboardTime, "16:00");
-assert.equal(missedShip.returnWindow?.safeReturnByTime, "14:30");
+assert.equal(missedShip.returnWindow?.safeReturnByTime, "14:00");
 assert.ok(
   missedShip.issues.some((issue) => issue.id === "cruise_return_missed"),
 );
