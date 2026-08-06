@@ -3,7 +3,6 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "feat/booking-notification-outbox": true,
       "main": true
     }
   },
