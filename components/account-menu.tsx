@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   CalendarDays,
+  Handshake,
   LogOut,
   Map,
   Route,
@@ -175,6 +176,12 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               href="/trips"
               label="Bookings & ride history"
               icon={CalendarDays}
+              onSelect={() => setOpen(false)}
+            />
+            <MenuLink
+              href="/partners/apply"
+              label="Partner with VI Guide"
+              icon={Handshake}
               onSelect={() => setOpen(false)}
             />
             {operationsHref ? (
