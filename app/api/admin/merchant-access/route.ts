@@ -10,6 +10,7 @@ import {
 import { normalizeManagedListingIds } from "@/lib/merchant-access";
 import {
   merchantClaimsForUpdate,
+  merchantDirectoryRecordForUpdate,
   normalizeProvisioningEmail,
   provisionableMerchantRole,
 } from "@/lib/merchant-provisioning";
@@ -112,11 +113,29 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: update.error }, { status: 409 });
     }
 
+    const updatedAt = new Date().toISOString();
+    const directoryRecord = merchantDirectoryRecordForUpdate({
+      uid: user.uid,
+      email: user.email ?? email,
+      displayName: user.displayName,
+      enabled: update.nextRole === "merchant",
+      listingIds: update.listingIds,
+      updatedAt,
+    });
+    if (!directoryRecord) {
+      return NextResponse.json(
+        { error: "Unable to prepare the merchant delivery directory." },
+        { status: 500 },
+      );
+    }
+
     await adminAuth.revokeRefreshTokens(user.uid);
     await adminAuth.setCustomUserClaims(user.uid, update.claims);
 
     try {
-      await getAdminDb().collection("merchantAccessAudit").add({
+      const db = getAdminDb();
+      const batch = db.batch();
+      batch.set(db.collection("merchantAccessAudit").doc(), {
         action:
           update.nextRole === "merchant"
             ? update.currentRole === "merchant"
@@ -131,15 +150,26 @@ export async function PUT(request: NextRequest) {
         previousListingIds: update.previousListingIds,
         nextRole: update.nextRole,
         listingIds: update.listingIds,
-        createdAt: FieldValue.serverTimestamp(),
+        createdAt: updatedAt,
+        serverCreatedAt: FieldValue.serverTimestamp(),
       });
+      batch.set(
+        db.collection("merchantAccounts").doc(user.uid),
+        {
+          ...directoryRecord,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+      await batch.commit();
     } catch (auditError) {
       await adminAuth.setCustomUserClaims(user.uid, previousClaims);
+      await adminAuth.revokeRefreshTokens(user.uid);
       console.error("merchant access audit rollback", auditError);
       return NextResponse.json(
         {
           error:
-            "The audit record could not be saved, so the access change was rolled back.",
+            "The audit and merchant directory records could not be saved, so the access change was rolled back.",
         },
         { status: 500 },
       );

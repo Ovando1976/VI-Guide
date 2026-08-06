@@ -10,6 +10,8 @@ import {
   isBookableEndDate,
   isBookableStartDate,
 } from "@/lib/booking/booking-dates";
+import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
+import { normalizeBookingNotification } from "@/lib/notifications/booking-notification-outbox";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
   CommerceBookingKind,
@@ -42,14 +44,22 @@ export async function POST(request: NextRequest) {
 
   if (!booking) {
     return NextResponse.json(
-      { error: "Please complete the required booking information with future travel dates." },
+      {
+        error:
+          "Please complete the required booking information with future travel dates.",
+      },
       { status: 400 },
     );
   }
 
   const reference = createReference(booking.kind);
   const now = new Date().toISOString();
-  const document = await getAdminDb().collection("commerceBookings").add({
+  const db = getAdminDb();
+  const document = db.collection("commerceBookings").doc();
+  const batch = db.batch();
+  const notificationOutboxIds: string[] = [];
+
+  batch.set(document, {
     ...booking,
     reference,
     status: "requested",
@@ -58,6 +68,67 @@ export async function POST(request: NextRequest) {
     serverCreatedAt: FieldValue.serverTimestamp(),
     source: "vi-guide-web",
   });
+
+  const notificationInputs = [
+    {
+      audience: "traveler" as const,
+      recipientEmail: booking.email,
+      title: "Booking request received",
+      message: `We received your request for ${booking.listingName}. VI Guide will keep this booking status updated.`,
+      href: "/bookings",
+    },
+    {
+      audience: "merchant" as const,
+      recipientEmail: null,
+      title: "New booking request",
+      message: `${booking.guestName} requested ${booking.listingName} for ${booking.startDate}.`,
+      href: "/merchant/reservations",
+    },
+    {
+      audience: "operations" as const,
+      recipientEmail: null,
+      title: "New booking request",
+      message: `${booking.listingName} received booking request ${reference}.`,
+      href: "/admin/operations",
+    },
+  ];
+
+  for (const input of notificationInputs) {
+    const notification = normalizeBookingNotification({
+      bookingId: document.id,
+      reference,
+      event: "booking_requested",
+      audience: input.audience,
+      listingId: booking.listingId,
+      listingName: booking.listingName,
+      recipientEmail: input.recipientEmail,
+      title: input.title,
+      message: input.message,
+      href: input.href,
+      createdAt: now,
+    });
+    if (!notification) {
+      return NextResponse.json(
+        { error: "Unable to prepare booking notifications." },
+        { status: 500 },
+      );
+    }
+
+    notificationOutboxIds.push(notification.id);
+    batch.set(db.collection("notificationOutbox").doc(notification.id), {
+      ...notification,
+      serverCreatedAt: FieldValue.serverTimestamp(),
+      serverUpdatedAt: FieldValue.serverTimestamp(),
+    });
+  }
+
+  await batch.commit();
+
+  try {
+    await processBookingNotificationOutboxIds(db, notificationOutboxIds);
+  } catch (error) {
+    console.error("booking notification delivery attempt failed", error);
+  }
 
   return NextResponse.json(
     {
@@ -128,11 +199,17 @@ function normalizeBooking(
 }
 
 function isBookingKind(value: unknown): value is CommerceBookingKind {
-  return typeof value === "string" && BOOKING_KINDS.includes(value as CommerceBookingKind);
+  return (
+    typeof value === "string" &&
+    BOOKING_KINDS.includes(value as CommerceBookingKind)
+  );
 }
 
 function isIsland(value: unknown): value is IntelligenceIsland {
-  return typeof value === "string" && ISLANDS.includes(value as IntelligenceIsland);
+  return (
+    typeof value === "string" &&
+    ISLANDS.includes(value as IntelligenceIsland)
+  );
 }
 
 function clean(value: unknown, maxLength: number) {
@@ -142,7 +219,8 @@ function clean(value: unknown, maxLength: number) {
 }
 
 function createReference(kind: CommerceBookingKind) {
-  const prefix = kind === "accommodation" ? "STAY" : kind === "tour" ? "TOUR" : "EXP";
+  const prefix =
+    kind === "accommodation" ? "STAY" : kind === "tour" ? "TOUR" : "EXP";
   return `VI-${prefix}-${Date.now().toString(36).toUpperCase()}-${Math.random()
     .toString(36)
     .slice(2, 6)

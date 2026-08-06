@@ -8,7 +8,9 @@ export function normalizeProvisioningEmail(value: unknown) {
     : "";
 }
 
-export function provisionableMerchantRole(value: unknown): ProvisionableMerchantRole | null {
+export function provisionableMerchantRole(
+  value: unknown,
+): ProvisionableMerchantRole | null {
   return value === "rider" || value === "merchant" ? value : null;
 }
 
@@ -56,4 +58,46 @@ export function merchantClaimsForUpdate(input: {
     listingIds: input.enabled ? listingIds : [],
     claims: nextClaims,
   };
+}
+
+export function merchantDirectoryRecordForUpdate(input: {
+  uid: unknown;
+  email: unknown;
+  displayName?: unknown;
+  enabled: boolean;
+  listingIds: unknown;
+  updatedAt: unknown;
+}) {
+  const uid = clean(input.uid, 160);
+  const email = normalizeProvisioningEmail(input.email);
+  const displayName = clean(input.displayName, 180);
+  const listingIds = input.enabled
+    ? normalizeManagedListingIds(input.listingIds)
+    : [];
+  const updatedAt = normalizeIso(input.updatedAt);
+
+  if (!uid || !/^\S+@\S+\.\S+$/.test(email) || !updatedAt) return null;
+  if (input.enabled && !listingIds.length) return null;
+
+  return {
+    uid,
+    email,
+    displayName: displayName || null,
+    enabled: input.enabled,
+    role: input.enabled ? ("merchant" as const) : ("rider" as const),
+    listingIds,
+    updatedAt,
+  };
+}
+
+function normalizeIso(value: unknown) {
+  const text = clean(value, 40);
+  const parsed = Date.parse(text);
+  return Number.isFinite(parsed) ? new Date(parsed).toISOString() : "";
+}
+
+function clean(value: unknown, maxLength: number) {
+  return typeof value === "string"
+    ? value.replace(/\s+/g, " ").trim().slice(0, maxLength)
+    : "";
 }

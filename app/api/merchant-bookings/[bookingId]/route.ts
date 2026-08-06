@@ -11,6 +11,11 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { canManageListing } from "@/lib/merchant-access";
+import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
+import {
+  bookingEventForStatus,
+  normalizeBookingNotification,
+} from "@/lib/notifications/booking-notification-outbox";
 import {
   isMerchantCommerceTransition,
   merchantCommerceTransitionError,
@@ -101,6 +106,13 @@ export async function PATCH(
       const listingName = String(booking.listingName ?? "VI Guide booking");
       const updatedAt = new Date().toISOString();
       const lifecycle = lifecycleCopy(status, listingName, depositAmountCents);
+      const notificationEvent = bookingEventForStatus(status);
+      if (!notificationEvent) {
+        throw new BookingActionError(
+          "This booking action cannot create a lifecycle notification.",
+          409,
+        );
+      }
       const resolvedMerchantNote = hasMerchantNote
         ? merchantNote || null
         : clean(booking.merchantNote, 1200) || null;
@@ -138,6 +150,7 @@ export async function PATCH(
         ...paymentReset,
       });
 
+      const notificationOutboxIds: string[] = [];
       for (const audience of ["traveler", "operations"] as const) {
         const notificationRef = db.collection("notifications").doc();
         transaction.set(notificationRef, {
@@ -156,31 +169,77 @@ export async function PATCH(
           updatedAt,
           serverCreatedAt: FieldValue.serverTimestamp(),
         });
+
+        const outbox = normalizeBookingNotification({
+          bookingId,
+          reference,
+          event: notificationEvent,
+          audience,
+          listingId,
+          listingName,
+          recipientEmail:
+            audience === "traveler" ? clean(booking.email, 220) : null,
+          title: lifecycle.title,
+          message: lifecycle.message,
+          href: audience === "traveler" ? "/bookings" : "/admin/operations",
+          actor: session,
+          createdAt: updatedAt,
+        });
+        if (!outbox) {
+          throw new BookingActionError(
+            "Unable to prepare the booking notification.",
+            409,
+          );
+        }
+        notificationOutboxIds.push(outbox.id);
+        transaction.set(
+          db.collection("notificationOutbox").doc(outbox.id),
+          {
+            ...outbox,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
       }
 
       return {
-        id: bookingId,
-        status,
-        merchantNote: resolvedMerchantNote,
-        proposedTime: resolvedProposedTime,
-        depositAmountCents:
-          status === "payment_required"
-            ? depositAmountCents
-            : Number(booking.depositAmountCents ?? 0) || null,
-        paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
-        paymentStatus:
-          status === "payment_required"
-            ? "unpaid"
-            : String(booking.paymentStatus ?? "unpaid"),
-        paymentHref:
-          status === "payment_required" ? null : booking.paymentHref ?? null,
-        checkoutSessionId:
-          status === "payment_required" ? null : booking.checkoutSessionId ?? null,
-        updatedAt,
+        booking: {
+          id: bookingId,
+          status,
+          merchantNote: resolvedMerchantNote,
+          proposedTime: resolvedProposedTime,
+          depositAmountCents:
+            status === "payment_required"
+              ? depositAmountCents
+              : Number(booking.depositAmountCents ?? 0) || null,
+          paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
+          paymentStatus:
+            status === "payment_required"
+              ? "unpaid"
+              : String(booking.paymentStatus ?? "unpaid"),
+          paymentHref:
+            status === "payment_required" ? null : booking.paymentHref ?? null,
+          checkoutSessionId:
+            status === "payment_required"
+              ? null
+              : booking.checkoutSessionId ?? null,
+          updatedAt,
+        },
+        notificationOutboxIds,
       };
     });
 
-    return NextResponse.json({ ok: true, booking: result });
+    try {
+      await processBookingNotificationOutboxIds(
+        db,
+        result.notificationOutboxIds,
+      );
+    } catch (error) {
+      console.error("merchant notification delivery attempt failed", error);
+    }
+
+    return NextResponse.json({ ok: true, booking: result.booking });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
