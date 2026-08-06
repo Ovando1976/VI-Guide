@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { parseJsonBody } from "@/lib/api/request";
 import { getAdminAuth, getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import { normalizeActiveTrip } from "@/lib/intelligence/active-trip";
 import type { IntelligenceMemory, IntelligenceLocation } from "@/types/intelligence";
 
 export const runtime = "nodejs";
@@ -74,6 +75,7 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
   const budget = input.preferences?.budget;
   const port = normalizeLocation(input.cruise?.port);
   const stay = normalizeLocation(input.stay);
+  const activeTrip = normalizeActiveTrip(input.activeTrip);
 
   return {
     ...(preferredIsland ? { preferredIsland } : {}),
@@ -106,6 +108,7 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
         }
       : {}),
     ...(stay ? { stay } : {}),
+    ...(activeTrip ? { activeTrip } : {}),
   };
 }
 
