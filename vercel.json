@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "feat/partner-applications": true
+      "main": true
     }
   },
   "crons": [
