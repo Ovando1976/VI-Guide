@@ -136,17 +136,19 @@ export function CommerceLedgerBoard() {
         cache: "no-store",
       });
       const payload = (await response.json().catch(() => null)) as
-        | Partial<LedgerPayload> & { error?: string }
+        | (Partial<LedgerPayload> & { error?: string })
         | null;
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load commerce accounting.");
       }
+      const nextListings = payload?.listings;
+      const nextEntries = payload?.entries;
       setData({
         policy: payload?.policy ?? { feeBps: 0, source: "unconfigured" },
         summary: payload?.summary ?? EMPTY_SUMMARY,
         reconciliation: payload?.reconciliation ?? EMPTY_RECONCILIATION,
-        listings: Array.isArray(payload?.listings) ? payload.listings : [],
-        entries: Array.isArray(payload?.entries) ? payload.entries : [],
+        listings: Array.isArray(nextListings) ? nextListings : [],
+        entries: Array.isArray(nextEntries) ? nextEntries : [],
       });
     } catch (caught) {
       if (!silent) {
