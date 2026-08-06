@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "agent/commerce-webhook-boundary": true
+      "main": true
     }
   },
   "crons": [
