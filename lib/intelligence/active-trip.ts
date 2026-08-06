@@ -20,9 +20,21 @@ export function summarizeJourneyPlan(
       id: stop.id.slice(0, 160),
       title: stop.title.slice(0, 160),
       kind: stop.kind.slice(0, 80),
+      ...(stop.summary ? { summary: stop.summary.slice(0, 280) } : {}),
       ...(stop.startTime ? { startTime: stop.startTime } : {}),
       ...(typeof stop.durationMinutes === "number"
         ? { durationMinutes: stop.durationMinutes }
+        : {}),
+      ...(stop.bookingHref ? { bookingHref: stop.bookingHref.slice(0, 500) } : {}),
+      ...(stop.mobility
+        ? {
+            mobility: {
+              mode: stop.mobility.mode,
+              ...(typeof stop.mobility.estimatedMinutes === "number"
+                ? { estimatedMinutes: stop.mobility.estimatedMinutes }
+                : {}),
+            },
+          }
         : {}),
     })),
   };
@@ -89,6 +101,7 @@ function normalizeActiveTripStop(
   ) {
     return null;
   }
+  const mobility = normalizeMobility(candidate.mobility);
   return {
     id: candidate.id.trim().slice(0, 160),
     title: candidate.title.trim().slice(0, 160),
@@ -96,6 +109,9 @@ function normalizeActiveTripStop(
       typeof candidate.kind === "string" && candidate.kind.trim()
         ? candidate.kind.trim().slice(0, 80)
         : "place",
+    ...(typeof candidate.summary === "string" && candidate.summary.trim()
+      ? { summary: candidate.summary.trim().slice(0, 280) }
+      : {}),
     ...(typeof candidate.startTime === "string" &&
     /^([01]\d|2[0-3]):[0-5]\d$/.test(candidate.startTime)
       ? { startTime: candidate.startTime }
@@ -106,6 +122,36 @@ function normalizeActiveTripStop(
           durationMinutes: Math.max(
             0,
             Math.min(720, Math.round(candidate.durationMinutes)),
+          ),
+        }
+      : {}),
+    ...(typeof candidate.bookingHref === "string" && candidate.bookingHref.trim()
+      ? { bookingHref: candidate.bookingHref.trim().slice(0, 500) }
+      : {}),
+    ...(mobility ? { mobility } : {}),
+  };
+}
+
+function normalizeMobility(value: unknown): IntelligenceActiveTripStop["mobility"] {
+  if (!value || typeof value !== "object") return undefined;
+  const candidate = value as Partial<NonNullable<IntelligenceActiveTripStop["mobility"]>>;
+  const mode =
+    candidate.mode === "walk" ||
+    candidate.mode === "taxi" ||
+    candidate.mode === "ferry" ||
+    candidate.mode === "drive" ||
+    candidate.mode === "transfer"
+      ? candidate.mode
+      : undefined;
+  if (!mode) return undefined;
+  return {
+    mode,
+    ...(typeof candidate.estimatedMinutes === "number" &&
+    Number.isFinite(candidate.estimatedMinutes)
+      ? {
+          estimatedMinutes: Math.max(
+            0,
+            Math.min(720, Math.round(candidate.estimatedMinutes)),
           ),
         }
       : {}),
