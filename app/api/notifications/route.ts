@@ -5,6 +5,10 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import {
+  authenticateNotificationRequest,
+  canAccessNotificationAudience,
+} from "@/lib/notifications/notification-auth";
 import type {
   NotificationAudience,
   NotificationKind,
@@ -21,56 +25,51 @@ const KINDS: NotificationKind[] = [
   "mission",
   "provider",
   "concierge",
+  "trip",
   "operations",
 ];
 const PRIORITIES: NotificationPriority[] = ["normal", "high"];
 
 export async function GET(request: NextRequest) {
-  if (!hasFirebaseAdminConfiguration()) {
-    return NextResponse.json(
-      { error: "Notifications are not configured on the server." },
-      { status: 503 },
-    );
-  }
+  if (!hasFirebaseAdminConfiguration()) return unavailable();
+  const identity = await authenticateNotificationRequest(request);
+  if (!identity) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
 
   const audience = clean(request.nextUrl.searchParams.get("audience"), 40);
   if (!isAudience(audience)) {
     return NextResponse.json({ error: "A valid audience is required." }, { status: 400 });
   }
+  if (!canAccessNotificationAudience(identity, audience)) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  }
 
-  const snapshot = await getAdminDb()
-    .collection("notifications")
-    .where("audience", "==", audience)
-    .orderBy("createdAt", "desc")
-    .limit(100)
-    .get();
+  const collection = getAdminDb().collection("notifications");
+  const snapshot = audience === "traveler"
+    ? await collection.where("recipientUid", "==", identity.uid).limit(200).get()
+    : await collection.where("audience", "==", audience).limit(200).get();
 
-  const notifications = snapshot.docs.map((document) => {
-    const data = document.data();
-    return normalizeStoredNotification(document.id, data, audience);
-  });
+  const notifications = snapshot.docs
+    .map((document) => normalizeStoredNotification(document.id, document.data(), audience))
+    .sort((left, right) => right.createdAt.localeCompare(left.createdAt))
+    .slice(0, 100);
 
-  return NextResponse.json({ notifications });
+  return NextResponse.json(
+    { notifications },
+    { headers: { "Cache-Control": "no-store" } },
+  );
 }
 
 export async function POST(request: NextRequest) {
-  if (!hasFirebaseAdminConfiguration()) {
-    return NextResponse.json(
-      { error: "Notifications are not configured on the server." },
-      { status: 503 },
-    );
+  if (!hasFirebaseAdminConfiguration()) return unavailable();
+  const identity = await authenticateNotificationRequest(request);
+  if (!identity || !["admin", "dispatcher"].includes(identity.role)) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
-  const body = (await request.json().catch(() => null)) as
-    | Partial<ViNotification>
-    | null;
+  const body = (await request.json().catch(() => null)) as Partial<ViNotification> | null;
   const notification = normalizeInput(body);
-
   if (!notification) {
-    return NextResponse.json(
-      { error: "Complete the notification details." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Complete the notification details." }, { status: 400 });
   }
 
   const now = new Date().toISOString();
@@ -79,54 +78,43 @@ export async function POST(request: NextRequest) {
     createdAt: now,
     updatedAt: now,
     readAt: null,
+    actorUid: identity.uid,
     serverCreatedAt: FieldValue.serverTimestamp(),
+    serverUpdatedAt: FieldValue.serverTimestamp(),
   });
 
   return NextResponse.json(
-    {
-      notification: {
-        id: document.id,
-        ...notification,
-        createdAt: now,
-        updatedAt: now,
-        readAt: null,
-      },
-    },
+    { notification: { id: document.id, ...notification, createdAt: now, updatedAt: now, readAt: null } },
     { status: 201 },
   );
 }
 
-function normalizeInput(
-  body: Partial<ViNotification> | null,
-): Omit<ViNotification, "id" | "createdAt" | "updatedAt" | "readAt"> | null {
+function normalizeInput(body: Partial<ViNotification> | null) {
   if (!body) return null;
-
   const audience = body.audience;
   const kind = body.kind;
   const priority = body.priority ?? "normal";
+  const recipientUid = clean(body.recipientUid, 160);
   const title = clean(body.title, 160);
   const message = clean(body.message, 800);
-
   if (
     !isAudience(audience) ||
     !isKind(kind) ||
     !isPriority(priority) ||
     !title ||
-    !message
-  ) {
-    return null;
-  }
+    !message ||
+    (audience === "traveler" && !recipientUid)
+  ) return null;
 
   return {
     audience,
+    ...(recipientUid ? { recipientUid } : {}),
     kind,
     priority,
     title,
     message,
     ...(clean(body.href, 500) ? { href: clean(body.href, 500) } : {}),
-    ...(clean(body.reference, 120)
-      ? { reference: clean(body.reference, 120) }
-      : {}),
+    ...(clean(body.reference, 120) ? { reference: clean(body.reference, 120) } : {}),
   };
 }
 
@@ -135,14 +123,12 @@ function normalizeStoredNotification(
   data: FirebaseFirestore.DocumentData,
   audience: NotificationAudience,
 ): ViNotification {
-  const kind = isKind(data.kind) ? data.kind : "operations";
-  const priority = isPriority(data.priority) ? data.priority : "normal";
-
   return {
     id,
     audience,
-    kind,
-    priority,
+    ...(typeof data.recipientUid === "string" ? { recipientUid: data.recipientUid } : {}),
+    kind: isKind(data.kind) ? data.kind : "operations",
+    priority: isPriority(data.priority) ? data.priority : "normal",
     title: String(data.title ?? "VI Guide update"),
     message: String(data.message ?? "A new update is available."),
     ...(data.href ? { href: String(data.href) } : {}),
@@ -153,20 +139,18 @@ function normalizeStoredNotification(
   };
 }
 
+function unavailable() {
+  return NextResponse.json({ error: "Notifications are not configured on the server." }, { status: 503 });
+}
 function isAudience(value: unknown): value is NotificationAudience {
   return typeof value === "string" && AUDIENCES.includes(value as NotificationAudience);
 }
-
 function isKind(value: unknown): value is NotificationKind {
   return typeof value === "string" && KINDS.includes(value as NotificationKind);
 }
-
 function isPriority(value: unknown): value is NotificationPriority {
   return typeof value === "string" && PRIORITIES.includes(value as NotificationPriority);
 }
-
 function clean(value: unknown, maxLength: number) {
-  return typeof value === "string"
-    ? value.replace(/\s+/g, " ").trim().slice(0, maxLength)
-    : "";
+  return typeof value === "string" ? value.replace(/\s+/g, " ").trim().slice(0, maxLength) : "";
 }

@@ -2,19 +2,27 @@ import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
 import { parseJsonBody } from "@/lib/api/request";
-import { getAdminAuth, getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
+import {
+  getAdminAuth,
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
 import { normalizeActiveTrip } from "@/lib/intelligence/active-trip";
-import type { IntelligenceMemory, IntelligenceLocation } from "@/types/intelligence";
+import type {
+  IntelligenceLocation,
+  IntelligenceMemory,
+  IntelligenceNotificationPreferences,
+} from "@/types/intelligence";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const userId = await authenticate(request);
-  if (!userId) return unauthorized();
+  const identity = await authenticate(request);
+  if (!identity) return unauthorized();
   if (!hasFirebaseAdminConfiguration()) return unavailable();
 
-  const snapshot = await profileDocument(userId).get();
+  const snapshot = await profileDocument(identity.uid).get();
   const data = snapshot.data();
   return NextResponse.json(
     {
@@ -27,20 +35,28 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const userId = await authenticate(request);
-  if (!userId) return unauthorized();
+  const identity = await authenticate(request);
+  if (!identity) return unauthorized();
   if (!hasFirebaseAdminConfiguration()) return unavailable();
 
   const parsed = await parseJsonBody<{ memory?: unknown }>(request);
-  if (!parsed.ok || !parsed.value.memory || typeof parsed.value.memory !== "object") {
-    return NextResponse.json({ error: "Invalid traveler profile payload." }, { status: 400 });
+  if (
+    !parsed.ok ||
+    !parsed.value.memory ||
+    typeof parsed.value.memory !== "object"
+  ) {
+    return NextResponse.json(
+      { error: "Invalid traveler profile payload." },
+      { status: 400 },
+    );
   }
 
   const memory = normalizeMemory(parsed.value.memory);
   const clientUpdatedAt = new Date().toISOString();
-  await profileDocument(userId).set(
+  await profileDocument(identity.uid).set(
     {
-      ownerId: userId,
+      ownerId: identity.uid,
+      ownerEmail: identity.email,
       memory,
       clientUpdatedAt,
       serverUpdatedAt: FieldValue.serverTimestamp(),
@@ -52,7 +68,11 @@ export async function PUT(request: NextRequest) {
 }
 
 function profileDocument(userId: string) {
-  return getAdminDb().collection("users").doc(userId).collection("profile").doc("travel");
+  return getAdminDb()
+    .collection("users")
+    .doc(userId)
+    .collection("profile")
+    .doc("travel");
 }
 
 async function authenticate(request: NextRequest) {
@@ -61,7 +81,14 @@ async function authenticate(request: NextRequest) {
   const token = authorization.slice(7).trim();
   if (!token) return null;
   try {
-    return (await getAdminAuth().verifyIdToken(token)).uid;
+    const decoded = await getAdminAuth().verifyIdToken(token);
+    return {
+      uid: decoded.uid,
+      email:
+        typeof decoded.email === "string"
+          ? decoded.email.trim().toLowerCase().slice(0, 220)
+          : null,
+    };
   } catch {
     return null;
   }
@@ -86,11 +113,18 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
     },
     preferences: {
       interests: strings(input.preferences?.interests, 24),
-      ...(pace === "relaxed" || pace === "balanced" || pace === "active" ? { pace } : {}),
-      ...(budget === "value" || budget === "moderate" || budget === "premium" ? { budget } : {}),
+      ...(pace === "relaxed" || pace === "balanced" || pace === "active"
+        ? { pace }
+        : {}),
+      ...(budget === "value" ||
+      budget === "moderate" ||
+      budget === "premium"
+        ? { budget }
+        : {}),
       food: strings(input.preferences?.food, 20),
       avoid: strings(input.preferences?.avoid, 20),
     },
+    notifications: normalizeNotificationPreferences(input.notifications),
     recentPlaceIds: strings(input.recentPlaceIds, 40),
     savedPlaceIds: strings(input.savedPlaceIds, 100),
     ...(input.cruise && typeof input.cruise === "object"
@@ -100,7 +134,9 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
               ? { ship: input.cruise.ship.trim().slice(0, 120) }
               : {}),
             ...(port ? { port } : {}),
-            ...(validTime(input.cruise.arrivalTime) ? { arrivalTime: input.cruise.arrivalTime } : {}),
+            ...(validTime(input.cruise.arrivalTime)
+              ? { arrivalTime: input.cruise.arrivalTime }
+              : {}),
             ...(validTime(input.cruise.allAboardTime)
               ? { allAboardTime: input.cruise.allAboardTime }
               : {}),
@@ -112,23 +148,57 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
   };
 }
 
+function normalizeNotificationPreferences(
+  value: unknown,
+): IntelligenceNotificationPreferences {
+  const input =
+    value && typeof value === "object"
+      ? (value as IntelligenceNotificationPreferences)
+      : {};
+  const minimumSeverity =
+    input.minimumSeverity === "medium" ||
+    input.minimumSeverity === "high" ||
+    input.minimumSeverity === "critical"
+      ? input.minimumSeverity
+      : "high";
+  return {
+    tripMonitoring: input.tripMonitoring !== false,
+    inApp: input.inApp !== false,
+    email: input.email === true,
+    minimumSeverity,
+    notifyOnRecovery: input.notifyOnRecovery !== false,
+  };
+}
+
 function normalizeLocation(value: unknown): IntelligenceLocation | undefined {
   if (!value || typeof value !== "object") return undefined;
   const location = value as Partial<IntelligenceLocation>;
   const island = normalizeIsland(location.island);
-  if (!island || typeof location.name !== "string" || !location.name.trim()) return undefined;
+  if (
+    !island ||
+    typeof location.name !== "string" ||
+    !location.name.trim()
+  ) {
+    return undefined;
+  }
   return {
-    ...(typeof location.id === "string" ? { id: location.id.slice(0, 160) } : {}),
+    ...(typeof location.id === "string"
+      ? { id: location.id.slice(0, 160) }
+      : {}),
     name: location.name.trim().slice(0, 160),
     island,
     ...(finite(location.lat) ? { lat: location.lat } : {}),
     ...(finite(location.lng) ? { lng: location.lng } : {}),
-    ...(typeof location.kind === "string" ? { kind: location.kind.slice(0, 80) } : {}),
+    ...(typeof location.kind === "string"
+      ? { kind: location.kind.slice(0, 80) }
+      : {}),
   };
 }
 
 function normalizeIsland(value: unknown) {
-  return value === "stt" || value === "stj" || value === "stx" ? value : undefined;
+  return value === "stt" || value === "stj" || value === "stx"
+    ? value
+    : undefined;
 }
 
 function strings(value: unknown, limit: number) {
@@ -145,7 +215,9 @@ function strings(value: unknown, limit: number) {
 
 function clamp(value: unknown, minimum: number, maximum: number) {
   const number = Number(value);
-  return Number.isFinite(number) ? Math.max(minimum, Math.min(maximum, number)) : minimum;
+  return Number.isFinite(number)
+    ? Math.max(minimum, Math.min(maximum, number))
+    : minimum;
 }
 
 function finite(value: unknown): value is number {
@@ -153,11 +225,16 @@ function finite(value: unknown): value is number {
 }
 
 function validTime(value: unknown): value is string {
-  return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
+  return (
+    typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value)
+  );
 }
 
 function unauthorized() {
-  return NextResponse.json({ error: "Authentication required." }, { status: 401 });
+  return NextResponse.json(
+    { error: "Authentication required." },
+    { status: 401 },
+  );
 }
 
 function unavailable() {

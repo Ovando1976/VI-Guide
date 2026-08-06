@@ -49,6 +49,14 @@ export type IntelligencePreferences = {
   avoid?: string[];
 };
 
+export type IntelligenceNotificationPreferences = {
+  tripMonitoring?: boolean;
+  inApp?: boolean;
+  email?: boolean;
+  minimumSeverity?: "medium" | "high" | "critical";
+  notifyOnRecovery?: boolean;
+};
+
 export type IntelligenceActiveTripStop = {
   id: string;
   title: string;
@@ -77,6 +85,7 @@ export type IntelligenceMemory = {
   preferredIsland?: IntelligenceIsland;
   party?: Partial<IntelligenceParty>;
   preferences?: Partial<IntelligencePreferences>;
+  notifications?: IntelligenceNotificationPreferences;
   recentPlaceIds?: string[];
   savedPlaceIds?: string[];
   cruise?: {

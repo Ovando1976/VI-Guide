@@ -5,6 +5,10 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import {
+  authenticateNotificationRequest,
+  canMutateStoredNotification,
+} from "@/lib/notifications/notification-auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,6 +21,14 @@ export async function PATCH(
     return NextResponse.json(
       { error: "Notifications are not configured on the server." },
       { status: 503 },
+    );
+  }
+
+  const identity = await authenticateNotificationRequest(request);
+  if (!identity) {
+    return NextResponse.json(
+      { error: "Authentication required." },
+      { status: 401 },
     );
   }
 
@@ -36,7 +48,13 @@ export async function PATCH(
   const reference = getAdminDb().collection("notifications").doc(id);
   const snapshot = await reference.get();
   if (!snapshot.exists) {
-    return NextResponse.json({ error: "Notification not found." }, { status: 404 });
+    return NextResponse.json(
+      { error: "Notification not found." },
+      { status: 404 },
+    );
+  }
+  if (!canMutateStoredNotification(identity, snapshot.data() ?? {})) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
   const updatedAt = new Date().toISOString();
