@@ -40,4 +40,5 @@ secrets/
 .maintenance-archive/
 .env
 .env.production
+.env.sandbox
 .env.local
