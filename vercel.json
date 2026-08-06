@@ -3,7 +3,8 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true
+      "main": true,
+      "integration/commerce-ledger-on-offers": true
     }
   },
   "crons": [
