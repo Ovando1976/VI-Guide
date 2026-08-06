@@ -1,5 +1,6 @@
 import { FieldValue, Timestamp } from "firebase-admin/firestore";
 
+import { normalizeActiveTrip } from "@/lib/intelligence/active-trip";
 import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import type {
   IntelligenceMemory,
@@ -9,7 +10,7 @@ import type {
 
 const PROFILE_COLLECTION = "intelligence_memory_profiles";
 const WORKFLOW_COLLECTION = "intelligence_workflows";
-const MEMORY_VERSION = 1;
+const MEMORY_VERSION = 2;
 
 export type PersistentToolState = {
   toolId: string;
@@ -55,10 +56,11 @@ function timestampToIso(value: unknown) {
   return new Date().toISOString();
 }
 
-function mergeMemory(
+export function mergeIntelligenceMemory(
   stored: IntelligenceMemory | undefined,
   incoming: IntelligenceMemory,
 ): IntelligenceMemory {
+  const activeTrip = normalizeActiveTrip(incoming.activeTrip ?? stored?.activeTrip);
   return {
     ...(stored ?? {}),
     ...incoming,
@@ -85,6 +87,8 @@ function mergeMemory(
         ]),
       ).slice(0, 30),
     },
+    cruise: { ...(stored?.cruise ?? {}), ...(incoming.cruise ?? {}) },
+    ...(activeTrip ? { activeTrip } : {}),
     recentPlaceIds: Array.from(
       new Set([
         ...(stored?.recentPlaceIds ?? []),
@@ -140,7 +144,14 @@ export async function loadMemorySnapshot(
 
   try {
     const db = getAdminDb();
-    const [profile, workflows] = await Promise.all([
+    const travelerProfileRef = request.context.userId
+      ? db
+          .collection("users")
+          .doc(request.context.userId)
+          .collection("profile")
+          .doc("travel")
+      : null;
+    const [profile, workflows, travelerProfile] = await Promise.all([
       db.collection(PROFILE_COLLECTION).doc(key).get(),
       db
         .collection(WORKFLOW_COLLECTION)
@@ -148,20 +159,28 @@ export async function loadMemorySnapshot(
         .where("status", "in", ["active", "waiting_for_user"])
         .limit(5)
         .get(),
+      travelerProfileRef ? travelerProfileRef.get() : Promise.resolve(null),
     ]);
 
     const storedMemory = profile.exists
       ? (profile.data()?.memory as IntelligenceMemory | undefined)
+      : undefined;
+    const canonicalMemory = travelerProfile?.exists
+      ? (travelerProfile.data()?.memory as IntelligenceMemory | undefined)
       : undefined;
     const activeDocument = workflows.docs.sort((a, b) => {
       const aTime = a.data().updatedAt as Timestamp | undefined;
       const bTime = b.data().updatedAt as Timestamp | undefined;
       return (bTime?.toMillis() ?? 0) - (aTime?.toMillis() ?? 0);
     })[0];
+    const hydratedMemory = mergeIntelligenceMemory(
+      mergeIntelligenceMemory(storedMemory, canonicalMemory ?? {}),
+      request.context.memory,
+    );
 
     return {
       ownerKey: key,
-      memory: mergeMemory(storedMemory, request.context.memory),
+      memory: hydratedMemory,
       ...(activeDocument
         ? { activeWorkflow: deserializeWorkflow(activeDocument.id, activeDocument.data()) }
         : {}),
@@ -230,7 +249,7 @@ export async function persistMemoryResult(
 ) {
   if (!hasFirebaseAdminConfiguration()) return;
 
-  const memory = mergeMemory(snapshot.memory, result.memoryPatch);
+  const memory = mergeIntelligenceMemory(snapshot.memory, result.memoryPatch);
   const status =
     result.orchestration?.status === "waiting_for_user"
       ? "waiting_for_user"
