@@ -204,5 +204,11 @@ export type RideBooking = {
     reviewReference?: string | null;
     approvedBy?: string | null;
     approvedAt?: TimestampLike;
+    paidAmountCents?: number | null;
+    externalPaymentReference?: string | null;
+    externalPaymentMethod?: "ach" | "bank_transfer" | "cash" | "check" | "other" | null;
+    paymentNote?: string | null;
+    paidBy?: string | null;
+    paidAt?: TimestampLike;
   };
 };
