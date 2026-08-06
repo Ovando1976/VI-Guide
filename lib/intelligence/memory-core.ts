@@ -104,6 +104,23 @@ export function mergeIntelligenceMemory(
   };
 }
 
+export function applyCanonicalActiveTripState(
+  memory: IntelligenceMemory,
+  canonicalProfileLoaded: boolean,
+  canonicalMemory: IntelligenceMemory | undefined,
+  requestMemory: IntelligenceMemory,
+): IntelligenceMemory {
+  if (
+    !canonicalProfileLoaded ||
+    canonicalMemory?.activeTrip ||
+    requestMemory.activeTrip
+  ) {
+    return memory;
+  }
+  const { activeTrip: _staleActiveTrip, ...remaining } = memory;
+  return remaining;
+}
+
 function deserializeWorkflow(
   id: string,
   data: Record<string, unknown>,
@@ -173,8 +190,14 @@ export async function loadMemorySnapshot(
       const bTime = b.data().updatedAt as Timestamp | undefined;
       return (bTime?.toMillis() ?? 0) - (aTime?.toMillis() ?? 0);
     })[0];
-    const hydratedMemory = mergeIntelligenceMemory(
+    const mergedMemory = mergeIntelligenceMemory(
       mergeIntelligenceMemory(storedMemory, canonicalMemory ?? {}),
+      request.context.memory,
+    );
+    const hydratedMemory = applyCanonicalActiveTripState(
+      mergedMemory,
+      travelerProfile?.exists === true,
+      canonicalMemory,
       request.context.memory,
     );
 
