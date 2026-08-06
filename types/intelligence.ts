@@ -53,8 +53,14 @@ export type IntelligenceActiveTripStop = {
   id: string;
   title: string;
   kind: string;
+  summary?: string;
   startTime?: string;
   durationMinutes?: number;
+  bookingHref?: string;
+  mobility?: {
+    mode: "walk" | "taxi" | "ferry" | "drive" | "transfer";
+    estimatedMinutes?: number;
+  };
 };
 
 export type IntelligenceActiveTrip = {
