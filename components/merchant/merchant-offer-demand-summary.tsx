@@ -57,8 +57,9 @@ export function MerchantOfferDemandSummary() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load package demand.");
       }
+      const nextTopOffers = payload?.topOffers;
       setSummary(payload?.summary ?? EMPTY_SUMMARY);
-      setTopOffers(Array.isArray(payload?.topOffers) ? payload.topOffers : []);
+      setTopOffers(Array.isArray(nextTopOffers) ? nextTopOffers : []);
       setLatestRequestedAt(payload?.latestRequestedAt ?? null);
     } catch (caught) {
       if (!silent) {
