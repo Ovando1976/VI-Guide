@@ -11,6 +11,10 @@ export type IntelligencePage =
   | "fishing"
   | "community"
   | "concierge"
+  | "cruises"
+  | "planner"
+  | "profile"
+  | "today"
   | "search"
   | "unknown";
 
@@ -45,6 +49,24 @@ export type IntelligencePreferences = {
   avoid?: string[];
 };
 
+export type IntelligenceActiveTripStop = {
+  id: string;
+  title: string;
+  kind: string;
+  startTime?: string;
+  durationMinutes?: number;
+};
+
+export type IntelligenceActiveTrip = {
+  id: string;
+  title: string;
+  island: IntelligenceIsland;
+  date: string;
+  status: "draft" | "ready";
+  updatedAt: string;
+  stops: IntelligenceActiveTripStop[];
+};
+
 export type IntelligenceMemory = {
   preferredIsland?: IntelligenceIsland;
   party?: Partial<IntelligenceParty>;
@@ -58,6 +80,7 @@ export type IntelligenceMemory = {
     allAboardTime?: string;
   };
   stay?: IntelligenceLocation;
+  activeTrip?: IntelligenceActiveTrip;
 };
 
 export type IntelligenceContext = {
