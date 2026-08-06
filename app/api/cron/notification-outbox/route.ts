@@ -4,11 +4,13 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { fetchOfficialViWeatherAlerts } from "@/lib/intelligence/weather-alerts";
 import {
   processBookingNotificationOutboxIds,
   processDueBookingNotifications,
 } from "@/lib/notifications/booking-notification-delivery";
 import { reconcileRecentCommerceBookingNotifications } from "@/lib/notifications/commerce-booking-notification-recovery";
+import { processProactiveTripNotifications } from "@/lib/notifications/proactive-trip-notifications";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -32,22 +34,38 @@ export async function GET(request: NextRequest) {
     const db = getAdminDb();
     const reconciliation =
       await reconcileRecentCommerceBookingNotifications(db, 25);
-    const recovered = {
-      delivered: 0,
-      deferred: 0,
-      skipped: 0,
-      failed: 0,
-    };
+    const recovered = emptyDeliverySummary();
 
     for (let index = 0; index < reconciliation.createdIds.length; index += 25) {
-      const result = await processBookingNotificationOutboxIds(
-        db,
-        reconciliation.createdIds.slice(index, index + 25),
+      mergeDeliverySummary(
+        recovered,
+        await processBookingNotificationOutboxIds(
+          db,
+          reconciliation.createdIds.slice(index, index + 25),
+        ),
       );
-      recovered.delivered += result.delivered;
-      recovered.deferred += result.deferred;
-      recovered.skipped += result.skipped;
-      recovered.failed += result.failed;
+    }
+
+    const weather = await fetchOfficialViWeatherAlerts({
+      timeoutMs: 5_000,
+      limit: 12,
+    });
+    const proactive = await processProactiveTripNotifications(db, {
+      weatherAlerts: weather.alerts,
+      weatherStatus: weather.status,
+      profileLimit: 250,
+      lookaheadDays: 14,
+    });
+    const proactiveDelivery = emptyDeliverySummary();
+
+    for (let index = 0; index < proactive.emailOutboxIds.length; index += 25) {
+      mergeDeliverySummary(
+        proactiveDelivery,
+        await processBookingNotificationOutboxIds(
+          db,
+          proactive.emailOutboxIds.slice(index, index + 25),
+        ),
+      );
     }
 
     const due = await processDueBookingNotifications(db, 25);
@@ -59,6 +77,11 @@ export async function GET(request: NextRequest) {
         created: reconciliation.createdIds.length,
       },
       recovered,
+      proactive: {
+        ...proactive,
+        emailOutboxIds: proactive.emailOutboxIds.length,
+        delivery: proactiveDelivery,
+      },
       due,
     });
   } catch (error) {
@@ -68,4 +91,18 @@ export async function GET(request: NextRequest) {
       { status: 500 },
     );
   }
+}
+
+function emptyDeliverySummary() {
+  return { delivered: 0, deferred: 0, skipped: 0, failed: 0 };
+}
+
+function mergeDeliverySummary(
+  target: ReturnType<typeof emptyDeliverySummary>,
+  result: ReturnType<typeof emptyDeliverySummary>,
+) {
+  target.delivered += result.delivered;
+  target.deferred += result.deferred;
+  target.skipped += result.skipped;
+  target.failed += result.failed;
 }
