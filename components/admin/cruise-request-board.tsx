@@ -74,7 +74,8 @@ export function CruiseRequestBoard() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load cruise requests.");
       }
-      setRequests(Array.isArray(payload?.requests) ? payload.requests : []);
+      const nextRequests = payload?.requests;
+      setRequests(Array.isArray(nextRequests) ? nextRequests : []);
     } catch (caught) {
       setError(
         caught instanceof Error
