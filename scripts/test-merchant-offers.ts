@@ -36,8 +36,8 @@ const valid = normalizeMerchantOffer(
   },
   now,
 );
-assert.equal(valid.ok, true);
 if (!valid.ok) throw new Error(valid.error);
+assert.equal(valid.ok, true);
 assert.equal(valid.offer.priceCents, 12900);
 assert.equal(valid.offer.compareAtCents, 15900);
 assert.equal(valid.offer.depositCents, 5000);
