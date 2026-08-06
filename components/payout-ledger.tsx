@@ -102,7 +102,10 @@ export function PayoutLedger() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load settlements.");
       }
-      setRecords(Array.isArray(payload?.settlements) ? payload.settlements : []);
+      if (!payload) {
+        throw new Error("Unable to load settlements.");
+      }
+      setRecords(Array.isArray(payload.settlements) ? payload.settlements : []);
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Unable to load settlements.",
