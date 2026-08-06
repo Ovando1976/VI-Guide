@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "agent/commerce-ledger-rehearsal": true
+      "main": true
     }
   },
   "crons": [
