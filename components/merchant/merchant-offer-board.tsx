@@ -123,7 +123,8 @@ export function MerchantOfferBoard({
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load merchant offers.");
       }
-      setOffers(Array.isArray(payload?.offers) ? payload.offers : []);
+      const nextOffers = payload?.offers;
+      setOffers(Array.isArray(nextOffers) ? nextOffers : []);
       setSummary(payload?.summary ?? EMPTY_SUMMARY);
     } catch (caught) {
       if (!silent) {
