@@ -57,7 +57,8 @@ export function MerchantOfferBookingSummary() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load package requests.");
       }
-      setBookings(Array.isArray(payload?.bookings) ? payload.bookings : []);
+      const nextBookings = payload?.bookings;
+      setBookings(Array.isArray(nextBookings) ? nextBookings : []);
     } catch (caught) {
       if (!silent) {
         setError(
