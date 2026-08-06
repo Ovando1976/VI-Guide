@@ -8,7 +8,10 @@ import {
   bearerTokenFromAuthorization,
   bindVerifiedIntelligenceIdentity,
 } from "../lib/intelligence/identity";
-import { mergeIntelligenceMemory } from "../lib/intelligence/memory-core";
+import {
+  applyCanonicalActiveTripState,
+  mergeIntelligenceMemory,
+} from "../lib/intelligence/memory-core";
 import type { JourneyPlan } from "../lib/journey-planner";
 import type { IntelligenceContext } from "../types/intelligence";
 
@@ -106,5 +109,22 @@ assert.deepEqual(merged.preferences?.interests, ["history", "beaches"]);
 assert.deepEqual(merged.preferences?.food, ["seafood", "local food"]);
 assert.deepEqual(merged.preferences?.avoid, ["crowds", "steep trails"]);
 assert.equal(merged.activeTrip?.id, plan.id);
+
+const cleared = applyCanonicalActiveTripState(merged, true, {}, {});
+assert.equal(cleared.activeTrip, undefined);
+const preservedByCanonical = applyCanonicalActiveTripState(
+  merged,
+  true,
+  { activeTrip },
+  {},
+);
+assert.equal(preservedByCanonical.activeTrip?.id, plan.id);
+const preservedForAnonymous = applyCanonicalActiveTripState(
+  merged,
+  false,
+  undefined,
+  {},
+);
+assert.equal(preservedForAnonymous.activeTrip?.id, plan.id);
 
 console.log("Intelligence identity and trip continuity tests passed.");
