@@ -3,8 +3,7 @@
   "git": {
     "deploymentEnabled": {
       "**": false,
-      "main": true,
-      "agent/commerce-sandbox-guard": true
+      "main": true
     }
   },
   "crons": [
