@@ -7,6 +7,8 @@ function source(path: string) {
 }
 
 const layout = source("app/layout.tsx");
+const homePage = source("app/page.tsx");
+const homeConcierge = source("components/home/home-concierge-hub.tsx");
 const mapPage = source("app/map/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const conciergePage = source("app/concierge/page.tsx");
@@ -22,6 +24,13 @@ const placeActionBar = source("components/place/place-action-bar.tsx");
 
 assert.match(layout, /experience-system\.css/);
 assert.match(layout, /themeColor: "#032f2d"/);
+
+assert.match(homePage, /QUICK\.map\(\(\{ label, detail, href, image, alt, icon: Icon \}\)/);
+assert.match(homePage, /src=\{image\}/);
+assert.match(homePage, /alt=\{alt\}/);
+assert.match(homeConcierge, /PROMPTS\.map\(\(\{ label, href, image, alt, icon: Icon \}\)/);
+assert.match(homeConcierge, /One-tap idea/);
+assert.match(homeConcierge, /king-christian-hotel\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
 assert.match(mapPage, /VI Guide Living Map/);

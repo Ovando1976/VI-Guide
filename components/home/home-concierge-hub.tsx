@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -24,21 +25,29 @@ const PROMPTS = [
       "Plan a relaxed beach day with food and transportation nearby",
     ),
     icon: Waves,
+    image: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    alt: "Magens Bay beach in St. Thomas",
   },
   {
     label: "Find food",
     href: conciergeHref("Help me find a great local meal near me today"),
     icon: UtensilsCrossed,
+    image: "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
+    alt: "Waterfront dining in Frenchtown, St. Thomas",
   },
   {
     label: "Book a ride",
     href: conciergeHref("Help me plan transportation for my next stop"),
     icon: Car,
+    image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
+    alt: "Red Hook ferry terminal in St. Thomas",
   },
   {
     label: "Plan a cruise",
     href: "/cruises",
     icon: ShipWheel,
+    image: "/images/usvi-harbor-hero.jpg",
+    alt: "Charlotte Amalie harbor in St. Thomas",
   },
   {
     label: "Go fishing",
@@ -46,11 +55,15 @@ const PROMPTS = [
       "Plan a responsible fishing experience in the U.S. Virgin Islands",
     ),
     icon: Fish,
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+    alt: "Cane Bay coast in St. Croix",
   },
   {
     label: "Take a hike",
     href: conciergeHref("Plan a scenic hike with timing and transportation"),
     icon: Footprints,
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay overlook in St. John",
   },
   {
     label: "Tonight",
@@ -58,11 +71,15 @@ const PROMPTS = [
       "Plan something memorable for tonight in the Virgin Islands",
     ),
     icon: MoonStar,
+    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    alt: "Historic Frederick Lutheran Church in Charlotte Amalie",
   },
   {
     label: "Find a stay",
     href: conciergeHref("Help me choose a place to stay based on my trip"),
     icon: BedDouble,
+    image: "/images/accommodations/king-christian-hotel.jpg",
+    alt: "King Christian Hotel in Christiansted",
   },
 ] as const;
 
@@ -111,16 +128,31 @@ export function HomeConciergeHub() {
               </h3>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {PROMPTS.map(({ label, href, icon: Icon }) => (
+              {PROMPTS.map(({ label, href, image, alt, icon: Icon }) => (
                 <Link
                   key={label}
                   href={href}
-                  className="group flex min-h-[116px] items-center gap-4 rounded-[24px] border border-white/12 bg-white/[.07] p-4 transition hover:-translate-y-0.5 hover:border-[#f5c451]/60 hover:bg-white/[.12]"
+                  className="group relative flex min-h-[148px] items-end overflow-hidden rounded-[24px] border border-white/12 bg-[#032f2d] p-4 transition hover:-translate-y-0.5 hover:border-[#f5c451]/60"
                 >
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-[#0f766e] transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]">
-                    <Icon size={20} aria-hidden="true" />
+                  <Image
+                    src={image}
+                    alt={alt}
+                    fill
+                    sizes="(min-width: 1280px) 18vw, (min-width: 640px) 40vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,31,29,.08),rgba(2,31,29,.28)_38%,rgba(2,31,29,.92)_100%)]" />
+                  <span className="relative flex w-full items-end gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/92 text-[#0f766e] shadow-lg backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]">
+                      <Icon size={19} aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0 pb-0.5">
+                      <span className="block text-[8px] font-black uppercase tracking-[.16em] text-[#73e3d9]">
+                        One-tap idea
+                      </span>
+                      <span className="mt-1 block text-sm font-black text-white">{label}</span>
+                    </span>
                   </span>
-                  <span className="text-sm font-black">{label}</span>
                 </Link>
               ))}
             </div>
