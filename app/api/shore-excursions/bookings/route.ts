@@ -417,7 +417,6 @@ export async function POST(request: NextRequest) {
         },
       ];
       const notificationOutboxIds: string[] = [];
-
       for (const input of notificationInputs) {
         const notification = normalizeBookingNotification({
           bookingId,
@@ -483,7 +482,8 @@ function providerAvailabilityDay(
   data: FirebaseFirestore.DocumentData | undefined,
   date: string,
 ): ProviderAvailabilityDay | null {
-  const days = Array.isArray(data?.days) ? data.days : [];
+  const rawDays = data?.days;
+  const days = Array.isArray(rawDays) ? rawDays : [];
   const candidate = days.find(
     (value: unknown) =>
       value && typeof value === "object" && (value as { date?: unknown }).date === date,
