@@ -20,6 +20,7 @@ import { summarizeJourneyPlan } from "@/lib/intelligence/active-trip";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
   readJourneyPlans,
+  type JourneyPlan,
 } from "@/lib/journey-planner";
 import {
   evaluateTravelerTripReadiness,
@@ -32,6 +33,14 @@ import type {
   TravelerCommerceBooking,
   TravelerStayRequest,
 } from "@/lib/traveler-trip-command";
+import {
+  buildTravelerTripScopes,
+  plansForTravelerTripScope,
+  resolveTravelerTripScope,
+  scopeTravelerTripRecords,
+  travelerTripScopeLabel,
+} from "@/lib/traveler-trip-scope";
+import { readSelectedTravelerTripPlanId } from "@/lib/traveler-trip-selection";
 import type { IntelligenceActiveTrip } from "@/types/intelligence";
 
 export function TravelerTripReadinessPanel({
@@ -43,14 +52,19 @@ export function TravelerTripReadinessPanel({
   stayRequests: TravelerStayRequest[];
   advisorTrips: TravelerAdvisorTrip[];
 }) {
-  const [activeTrip, setActiveTrip] = useState<IntelligenceActiveTrip | null>(null);
+  const [plans, setPlans] = useState<JourneyPlan[]>([]);
+  const [selectedPlanId, setSelectedPlanId] = useState("");
+  const [memoryActiveTrip, setMemoryActiveTrip] =
+    useState<IntelligenceActiveTrip | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     function refresh() {
-      const journey = readJourneyPlans()[0];
+      const nextPlans = readJourneyPlans();
       const memory = getIntelligenceMemory();
-      setActiveTrip(summarizeJourneyPlan(journey) ?? memory.activeTrip ?? null);
+      setPlans(nextPlans);
+      setSelectedPlanId(readSelectedTravelerTripPlanId());
+      setMemoryActiveTrip(memory.activeTrip ?? null);
       setHydrated(true);
     }
 
@@ -65,15 +79,38 @@ export function TravelerTripReadinessPanel({
     };
   }, []);
 
-  const readiness = useMemo(
+  const scopes = useMemo(() => buildTravelerTripScopes(plans), [plans]);
+  const selectedScope = useMemo(
+    () => resolveTravelerTripScope(scopes, selectedPlanId),
+    [scopes, selectedPlanId],
+  );
+  const selectedPlans = useMemo(
+    () => plansForTravelerTripScope(plans, selectedScope),
+    [plans, selectedScope],
+  );
+  const activeTrip = useMemo(
+    () => summarizeJourneyPlan(selectedPlans[0]) ?? memoryActiveTrip,
+    [memoryActiveTrip, selectedPlans],
+  );
+  const scoped = useMemo(
     () =>
-      evaluateTravelerTripReadiness({
-        activeTrip,
+      scopeTravelerTripRecords({
+        scope: selectedScope,
         bookings,
         stayRequests,
         advisorTrips,
       }),
-    [activeTrip, advisorTrips, bookings, stayRequests],
+    [advisorTrips, bookings, selectedScope, stayRequests],
+  );
+  const readiness = useMemo(
+    () =>
+      evaluateTravelerTripReadiness({
+        activeTrip,
+        bookings: scoped.bookings,
+        stayRequests: scoped.stayRequests,
+        advisorTrips: scoped.advisorTrips,
+      }),
+    [activeTrip, scoped],
   );
   const theme = readinessTheme(readiness.status);
 
@@ -122,6 +159,11 @@ export function TravelerTripReadinessPanel({
                   ? readiness.summary
                   : "VI Guide is connecting the itinerary and verified booking records on this device."}
               </p>
+              {hydrated && selectedScope ? (
+                <p className="mt-2 text-[10px] font-black uppercase tracking-[.12em] text-teal-700">
+                  Scoped to {travelerTripScopeLabel(selectedScope)}
+                </p>
+              ) : null}
             </div>
             <div className="flex flex-wrap gap-2">
               <Link
@@ -168,7 +210,7 @@ export function TravelerTripReadinessPanel({
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4 text-xs font-semibold text-slate-500">
             <span>
-              Readiness uses synchronized VI Guide itinerary, booking, payment, stay, and advisor records.
+              Readiness uses synchronized VI Guide itinerary, booking, payment, stay, and advisor records from the selected trip window.
             </span>
             <span className="font-bold text-slate-400">
               It is not a supplier confirmation or guarantee of availability.
