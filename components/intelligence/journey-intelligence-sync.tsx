@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+import { cruiseMemoryFromJourneyPlan } from "@/lib/cruise-trip";
 import {
   getIntelligenceMemory,
   replaceIntelligenceMemory,
@@ -19,16 +20,30 @@ export function JourneyIntelligenceSync() {
   useEffect(() => {
     function sync() {
       const memory = getIntelligenceMemory();
-      const activeTrip = summarizeJourneyPlan(readJourneyPlans()[0]);
-      if (sameActiveTrip(memory.activeTrip, activeTrip)) return;
+      const plan = readJourneyPlans()[0];
+      const activeTrip = summarizeJourneyPlan(plan);
+      const journeyCruise = cruiseMemoryFromJourneyPlan(plan);
+      const activeTripMatches = sameActiveTrip(memory.activeTrip, activeTrip);
+      const cruiseMatches =
+        JSON.stringify(memory.cruise ?? null) ===
+        JSON.stringify(journeyCruise ?? null);
 
-      if (activeTrip) {
-        replaceIntelligenceMemory({ ...memory, activeTrip });
+      if (activeTripMatches && (journeyCruise ? cruiseMatches : !memory.cruise?.tripId)) {
         return;
       }
 
-      const { activeTrip: _removed, ...remaining } = memory;
-      replaceIntelligenceMemory(remaining);
+      const next = { ...memory };
+      if (activeTrip) next.activeTrip = activeTrip;
+      else delete next.activeTrip;
+
+      if (journeyCruise) {
+        next.cruise = journeyCruise;
+        next.preferredIsland = plan?.island ?? next.preferredIsland;
+      } else if (memory.cruise?.tripId) {
+        delete next.cruise;
+      }
+
+      replaceIntelligenceMemory(next);
     }
 
     sync();
