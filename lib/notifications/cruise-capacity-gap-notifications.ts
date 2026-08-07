@@ -178,7 +178,7 @@ export async function processCruiseCapacityGapNotifications(
         recipientUid: null,
         title: `Cruise capacity needs attention: ${selection.date}`,
         message,
-        href: `/merchant/availability?listingId=${encodeURIComponent(profile.listingId)}`,
+        href: `/merchant/availability?listingId=${encodeURIComponent(profile.listingId)}&date=${encodeURIComponent(selection.date)}`,
         status: "pending",
         attempts: 0,
         nextAttemptAt: nowIso,
