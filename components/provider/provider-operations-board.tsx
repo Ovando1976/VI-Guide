@@ -24,6 +24,7 @@ import {
   buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
+  selectProviderAvailabilityDecisions,
 } from "@/lib/merchant-portal";
 import type {
   ProviderAvailabilityDay,
@@ -35,6 +36,12 @@ type ProviderOperationsBoardProps = {
   initialFocusDate?: string;
   managedListingIds?: string[];
   restrictToManagedListings?: boolean;
+};
+
+type ProviderOperationsPayload = {
+  config?: ProviderOperationsConfig | null;
+  persistedDates?: string[];
+  error?: string;
 };
 
 export function ProviderOperationsBoard({
@@ -87,6 +94,9 @@ export function ProviderOperationsBoard({
       ? buildProviderAvailabilityDays(10)
       : [],
   );
+  const [decisionDates, setDecisionDates] = useState<Set<string>>(
+    () => new Set(),
+  );
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -120,7 +130,7 @@ export function ProviderOperationsBoard({
           { cache: "no-store" },
         );
         const payload = (await response.json().catch(() => null)) as
-          | { config?: ProviderOperationsConfig | null; error?: string }
+          | ProviderOperationsPayload
           | null;
         if (!response.ok) {
           throw new Error(
@@ -138,11 +148,13 @@ export function ProviderOperationsBoard({
               ? payload.config.days
               : buildProviderAvailabilityDays(payload.config.defaultCapacity),
           );
+          setDecisionDates(toDateSet(payload.persistedDates));
           setMessage("Provider operations loaded.");
         } else {
           setListingName(humanizeListingId(normalizedListingId));
           setDefaultCapacity(10);
           setDays(buildProviderAvailabilityDays(10));
+          setDecisionDates(new Set());
           setMessage(
             "No saved operations found. Set availability and save this business.",
           );
@@ -196,13 +208,16 @@ export function ProviderOperationsBoard({
   }, [focusDateIsVisible, listingId, normalizedInitialFocusDate]);
 
   const summary = useMemo(() => {
-    const openDays = days.filter((day) => day.isOpen);
+    const decidedDays = selectProviderAvailabilityDecisions(days, decisionDates);
+    const openDays = decidedDays.filter((day) => day.isOpen);
+    const closedDays = decidedDays.filter((day) => !day.isOpen);
     return {
       openDays: openDays.length,
       totalCapacity: openDays.reduce((sum, day) => sum + day.capacity, 0),
-      blackoutDays: days.length - openDays.length,
+      closedDays: closedDays.length,
+      undecidedDays: Math.max(0, days.length - decidedDays.length),
     };
-  }, [days]);
+  }, [days, decisionDates]);
 
   async function loadProvider(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -221,6 +236,11 @@ export function ProviderOperationsBoard({
       return;
     }
 
+    const explicitDays = selectProviderAvailabilityDecisions(
+      days,
+      decisionDates,
+    );
+
     setSaving(true);
     setError(null);
     setMessage(null);
@@ -234,18 +254,22 @@ export function ProviderOperationsBoard({
           listingName: listingName.trim(),
           timezone: "America/St_Thomas",
           defaultCapacity,
-          days,
+          days: explicitDays,
         }),
       });
       const payload = (await response.json().catch(() => null)) as
-        | { config?: ProviderOperationsConfig; error?: string }
+        | ProviderOperationsPayload
         | null;
       if (!response.ok || !payload?.config) {
         throw new Error(
           payload?.error || "Unable to save provider operations.",
         );
       }
-      setMessage("Provider availability and capacity saved.");
+      const persistedDates = payload.persistedDates ?? explicitDays.map((day) => day.date);
+      setDecisionDates(toDateSet(persistedDates));
+      setMessage(
+        `${persistedDates.length} explicit availability ${persistedDates.length === 1 ? "decision" : "decisions"} saved. Untouched future dates remain undecided.`,
+      );
     } catch (caught) {
       setError(
         caught instanceof Error
@@ -267,6 +291,7 @@ export function ProviderOperationsBoard({
     setDays(
       normalizedListingId ? buildProviderAvailabilityDays(10) : [],
     );
+    setDecisionDates(new Set());
     setMessage(null);
     setError(null);
     if (normalizedListingId) {
@@ -275,6 +300,15 @@ export function ProviderOperationsBoard({
   }
 
   function updateDay(index: number, patch: Partial<ProviderAvailabilityDay>) {
+    const date = days[index]?.date;
+    if (date) {
+      setDecisionDates((current) => {
+        if (current.has(date)) return current;
+        const next = new Set(current);
+        next.add(date);
+        return next;
+      });
+    }
     setDays((current) =>
       current.map((day, currentIndex) =>
         currentIndex === index ? { ...day, ...patch } : day,
@@ -306,7 +340,8 @@ export function ProviderOperationsBoard({
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">
                 Set operating days, hours, capacity, and blackout periods for
-                each participating business.
+                each participating business. Untouched future dates stay undecided
+                until you explicitly open, close, or edit them.
               </p>
             </div>
             <button
@@ -432,25 +467,30 @@ export function ProviderOperationsBoard({
         ) : null}
         {focusDateIsVisible ? (
           <div className="mt-5 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm font-bold text-amber-950">
-            Cruise capacity action: review {normalizedInitialFocusDate}, set the operating decision for this date, then save operations.
+            Cruise capacity action: review {normalizedInitialFocusDate}, set the operating decision for this date, then save operations. Untouched future dates will remain undecided.
           </div>
         ) : null}
 
-        <section className="mt-6 grid gap-3 sm:grid-cols-3">
+        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Metric
             icon={CalendarDays}
-            label="Open days"
+            label="Open dates"
             value={String(summary.openDays)}
           />
           <Metric
             icon={Users}
-            label="Total capacity"
+            label="Open capacity"
             value={String(summary.totalCapacity)}
           />
           <Metric
             icon={ShieldCheck}
-            label="Blackout days"
-            value={String(summary.blackoutDays)}
+            label="Closed dates"
+            value={String(summary.closedDays)}
+          />
+          <Metric
+            icon={Clock3}
+            label="Undecided dates"
+            value={String(summary.undecidedDays)}
           />
         </section>
 
@@ -458,6 +498,7 @@ export function ProviderOperationsBoard({
           {days.map((day, index) => {
             const focused =
               focusDateIsVisible && day.date === normalizedInitialFocusDate;
+            const decided = decisionDates.has(day.date);
             return (
               <article
                 id={`provider-day-${day.date}`}
@@ -465,7 +506,9 @@ export function ProviderOperationsBoard({
                 className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[150px_110px_120px_120px_130px_1fr] md:items-end ${
                   focused
                     ? "border-amber-400 ring-4 ring-amber-200/60"
-                    : "border-slate-200"
+                    : decided
+                      ? "border-teal-200"
+                      : "border-slate-200"
                 }`}
               >
                 <div>
@@ -473,6 +516,15 @@ export function ProviderOperationsBoard({
                     {focused ? "Cruise date" : "Date"}
                   </p>
                   <p className="mt-2 text-sm font-black">{day.date}</p>
+                  <span
+                    className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[7px] font-black uppercase tracking-[.12em] ${
+                      decided
+                        ? "bg-teal-100 text-teal-800"
+                        : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
+                    {decided ? "Decision set" : "Undecided"}
+                  </span>
                 </div>
                 <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
                   Open
@@ -483,10 +535,12 @@ export function ProviderOperationsBoard({
                     className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
                       day.isOpen
                         ? "bg-emerald-100 text-emerald-800"
-                        : "bg-red-100 text-red-700"
+                        : decided
+                          ? "bg-red-100 text-red-700"
+                          : "bg-slate-100 text-slate-600"
                     }`}
                   >
-                    {day.isOpen ? "Open" : "Closed"}
+                    {day.isOpen ? "Open" : decided ? "Closed" : "Set decision"}
                   </button>
                 </label>
                 <Field
@@ -575,5 +629,13 @@ function Metric({
         {label}
       </div>
     </div>
+  );
+}
+
+function toDateSet(values: string[] | undefined) {
+  return new Set(
+    (Array.isArray(values) ? values : []).filter((value) =>
+      /^\d{4}-\d{2}-\d{2}$/.test(value),
+    ),
   );
 }
