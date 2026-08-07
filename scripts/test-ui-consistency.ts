@@ -8,13 +8,25 @@ function source(path: string) {
 
 const home = source("app/page.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
+const cruiseHub = source("app/cruises/page.tsx");
+const planner = source("app/planner/page.tsx");
+const directory = source("components/directory/discovery-directory-page.tsx");
+const mobility = source("components/mobility-booking-screen.tsx");
 const travelDesk = source("components/admin/travel-request-board.tsx");
 const cruiseDesk = source("components/admin/cruise-request-board.tsx");
 const adminNav = source("components/admin-nav.tsx");
 const globals = source("app/globals.css");
 
-assert.match(home, /ViPublicHeader/);
-assert.match(tripPlanning, /ViPublicHeader/);
+for (const [name, contents] of [
+  ["home", home],
+  ["trip planning", tripPlanning],
+  ["cruise hub", cruiseHub],
+  ["journey planner", planner],
+  ["directory surfaces", directory],
+  ["mobility", mobility],
+] as const) {
+  assert.match(contents, /ViPublicHeader/, `${name} must use ViPublicHeader`);
+}
 
 for (const [name, contents] of [
   ["travel advisor desk", travelDesk],
