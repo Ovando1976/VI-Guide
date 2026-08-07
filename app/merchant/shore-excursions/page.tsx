@@ -12,7 +12,9 @@ export const metadata = {
     "Configure cruise-port pickup, excursion duration, dated capacity, accessibility, and return-to-ship operating buffers for VI Guide offers.",
 };
 
-export default function MerchantShoreExcursionsPage() {
+export default async function MerchantShoreExcursionsPage() {
+  const readiness = await ShoreExcursionCapacityReadiness();
+
   return (
     <>
       <section className="bg-[#f8f4ea] px-4 pt-6 sm:px-6 lg:pt-8">
@@ -66,7 +68,7 @@ export default function MerchantShoreExcursionsPage() {
         </div>
       </section>
 
-      <ShoreExcursionCapacityReadiness />
+      {readiness}
       <ShoreExcursionBoard />
     </>
   );
