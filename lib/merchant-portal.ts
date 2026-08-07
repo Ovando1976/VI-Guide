@@ -91,6 +91,16 @@ export function buildProviderAvailabilityDays(
   }));
 }
 
+export function selectProviderAvailabilityDecisions(
+  days: ProviderAvailabilityDay[],
+  decisionDates: Iterable<string>,
+) {
+  const dates = new Set(
+    Array.from(decisionDates).filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date)),
+  );
+  return days.filter((day) => dates.has(day.date));
+}
+
 export function summarizeMerchantBookings(
   value: unknown,
 ): MerchantOperationsSummary {
