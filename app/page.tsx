@@ -14,7 +14,7 @@ import {
   Waves,
 } from "lucide-react";
 
-import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { HomeConciergeHub } from "@/components/home/home-concierge-hub";
 import { HomeLiveStatus } from "@/components/home/home-live-status";
 
@@ -128,22 +128,27 @@ export default function Home() {
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,.16)_0%,rgba(255,255,255,0)_58%,rgba(247,243,234,.82)_100%)]" />
 
-        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/72 px-4 py-3 shadow-[0_14px_40px_rgba(4,51,49,.10)] backdrop-blur-xl sm:px-5">
-          <Link href="/" className="flex items-center gap-3" aria-label="VI Guide home">
-            <ViBrandMark className="h-11 w-11" priority />
-            <div>
-              <div className="font-serif text-xl font-bold tracking-[.02em]">VI Guide</div>
-              <div className="text-[8px] font-black uppercase tracking-[.25em] text-[#b16a18]">U.S. Virgin Islands</div>
-            </div>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link href={CONCIERGE_START_HREF} className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] md:inline-flex">My AI day</Link>
-            <Link href="/search" className="hidden rounded-full border border-[#0f766e]/20 bg-white/80 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.16em] sm:inline-flex">Search</Link>
-            <Link href={CONCIERGE_START_HREF} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] shadow-lg shadow-black/10">
-              <Sparkles size={14} /> Ask VI Concierge
-            </Link>
-          </div>
-        </header>
+        <ViPublicHeader
+          actionHref={CONCIERGE_START_HREF}
+          actionLabel="Ask VI Concierge"
+          actionIcon={Sparkles}
+          secondaryActions={
+            <>
+              <Link
+                href={CONCIERGE_START_HREF}
+                className="hidden rounded-full border border-[#0f766e]/20 bg-white/86 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#073b39] transition hover:border-[#0f766e]/35 hover:bg-white md:inline-flex"
+              >
+                My AI day
+              </Link>
+              <Link
+                href="/search"
+                className="hidden rounded-full border border-[#0f766e]/20 bg-white/86 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#073b39] transition hover:border-[#0f766e]/35 hover:bg-white sm:inline-flex"
+              >
+                Search
+              </Link>
+            </>
+          }
+        />
 
         <div className="mx-auto grid max-w-7xl gap-10 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:pt-20">
           <div>
