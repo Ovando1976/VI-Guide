@@ -10,6 +10,7 @@ import {
   processDueBookingNotifications,
 } from "@/lib/notifications/booking-notification-delivery";
 import { reconcileRecentCommerceBookingNotifications } from "@/lib/notifications/commerce-booking-notification-recovery";
+import { processCruiseCapacityGapNotifications } from "@/lib/notifications/cruise-capacity-gap-notifications";
 import { processProactiveTripNotifications } from "@/lib/notifications/proactive-trip-notifications";
 
 export const runtime = "nodejs";
@@ -68,6 +69,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const cruiseCapacity = await processCruiseCapacityGapNotifications(db, {
+      profileLimit: 150,
+      lookaheadDays: 14,
+    });
+    const cruiseCapacityDelivery = emptyDeliverySummary();
+
+    for (
+      let index = 0;
+      index < cruiseCapacity.emailOutboxIds.length;
+      index += 25
+    ) {
+      mergeDeliverySummary(
+        cruiseCapacityDelivery,
+        await processBookingNotificationOutboxIds(
+          db,
+          cruiseCapacity.emailOutboxIds.slice(index, index + 25),
+        ),
+      );
+    }
+
     const due = await processDueBookingNotifications(db, 25);
     return NextResponse.json({
       ok: true,
@@ -81,6 +102,11 @@ export async function GET(request: NextRequest) {
         ...proactive,
         emailOutboxIds: proactive.emailOutboxIds.length,
         delivery: proactiveDelivery,
+      },
+      cruiseCapacity: {
+        ...cruiseCapacity,
+        emailOutboxIds: cruiseCapacity.emailOutboxIds.length,
+        delivery: cruiseCapacityDelivery,
       },
       due,
     });
