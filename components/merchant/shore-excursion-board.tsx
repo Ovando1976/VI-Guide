@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  AlertTriangle,
   Archive,
-  CheckCircle2,
   CirclePause,
   CirclePlay,
   Clock3,
@@ -173,6 +171,10 @@ export function ShoreExcursionBoard() {
 
   function closeEditor() {
     if (saving) return;
+    resetEditor();
+  }
+
+  function resetEditor() {
     setEditorOpen(false);
     setEditingId(null);
     setForm(emptyForm(""));
@@ -216,7 +218,7 @@ export function ShoreExcursionBoard() {
           ? `${data.profile.offerTitle} cruise operations were updated.`
           : `${data.profile.offerTitle} was saved as a shore excursion draft.`,
       );
-      closeEditor();
+      resetEditor();
       await load(true);
     } catch (caught) {
       setError(
@@ -362,7 +364,7 @@ export function ShoreExcursionBoard() {
           editing={Boolean(editingId)}
           saving={saving}
           selectedPorts={selectedPorts}
-          onChange={(next) => setForm(next)}
+          onChange={setForm}
           onClose={closeEditor}
           onSave={() => void save()}
         />
