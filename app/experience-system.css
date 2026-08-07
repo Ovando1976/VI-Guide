@@ -77,6 +77,66 @@
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
 }
 
+/* PR 168: preserve the deliberately dark map stage against older light-shell
+   selectors in globals.css. The estate index remains light beneath the map. */
+.map-customer-page #territory-workspace > .territory-map-stage {
+  border-color: rgba(15,118,110,.18) !important;
+  background: #032f2d !important;
+  box-shadow: 0 32px 90px rgba(3,47,45,.18) !important;
+}
+
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__header {
+  border-color: rgba(255,255,255,.10) !important;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(40,200,189,.17), transparent 25rem),
+    linear-gradient(145deg,#032f2d 0%,#064c49 100%) !important;
+}
+
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__header h2,
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__header p,
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__header [class*="text-white"] {
+  color: #fff !important;
+}
+
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__canvas {
+  background: #06131b !important;
+}
+
+.map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__directory {
+  border-color: #dce8e5 !important;
+  background: #fffdf8 !important;
+}
+
+/* The right rail is now a destination-story surface. Older map rail overrides
+   should not flatten the deliberate dark story header or movement card. */
+.map-customer-page #territory-workspace > .territory-story-rail > .territory-story-card {
+  border-color: #d8e7e3 !important;
+  background: #fff !important;
+  box-shadow: 0 24px 65px rgba(4,51,49,.09) !important;
+}
+
+.map-customer-page #territory-workspace > .territory-story-rail > .territory-story-card > div:first-child {
+  background: linear-gradient(145deg,#032f2d 0%,#075e58 72%,#0f766e 100%) !important;
+}
+
+.map-customer-page #territory-workspace > .territory-story-rail > .territory-story-card > div:first-child h2,
+.map-customer-page #territory-workspace > .territory-story-rail > .territory-story-card > div:first-child p,
+.map-customer-page #territory-workspace > .territory-story-rail > .territory-story-card > div:first-child [class*="text-white"] {
+  color: #fff !important;
+}
+
+/* Details read as destination stories: photography owns the hero while the
+   interaction layer sits over it instead of beside it like a data panel. */
+.place-story-hero > div:first-child,
+.place-story-hero > div:first-child > * {
+  width: 100%;
+  height: 100%;
+}
+
+.directory-story-card {
+  isolation: isolate;
+}
+
 /* Give the large itinerary / readiness modules a consistent premium lift
    without changing their state or booking semantics. */
 body:has(a[href="/planner"]) .trip-premium-surface {
@@ -97,5 +157,9 @@ body:has(a[href="/planner"]) .trip-premium-surface {
   .map-customer-page #territory-workspace > section:first-child,
   .map-customer-page #territory-workspace > aside > section {
     border-radius: 24px !important;
+  }
+
+  .map-customer-page #territory-workspace > .territory-map-stage > .territory-map-stage__header {
+    border-radius: 0 !important;
   }
 }
