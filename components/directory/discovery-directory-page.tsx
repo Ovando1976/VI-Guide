@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { DirectoryCard } from "@/components/directory/directory-card";
 import { EmptyState } from "@/components/directory/empty-state";
 import { IslandFilterTabs } from "@/components/directory/island-filter-tabs";
@@ -152,7 +153,15 @@ export function DiscoveryDirectoryPage({
 
   return (
     <main className="directory-page min-h-screen bg-[#f8f4ea] px-4 py-5 pb-32 text-[#043331] sm:px-6 lg:py-8">
-      <div className="mx-auto max-w-7xl space-y-10">
+      <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8 lg:space-y-10">
+        <ViPublicHeader
+          actionHref="/planner"
+          actionLabel={`My Trip · ${savedStopCount}`}
+          actionIcon={Route}
+          secondaryHref="/"
+          secondaryLabel="Home"
+        />
+
         <section className="relative min-h-[34rem] overflow-hidden rounded-[34px] bg-[#043331] text-white shadow-[0_28px_70px_rgba(4,51,49,.22)]">
           {heroItem ? (
             <Image
@@ -185,11 +194,10 @@ export function DiscoveryDirectoryPage({
                   Three islands · one connected trip
                 </span>
                 <Link
-                  href="/planner"
+                  href="/concierge"
                   className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] shadow-lg transition hover:bg-[#ffca55]"
                 >
-                  <Route className="h-4 w-4" /> My Trip · {savedStopCount} stop
-                  {savedStopCount === 1 ? "" : "s"}
+                  <Sparkles className="h-4 w-4" /> Ask VI Concierge
                 </Link>
               </div>
             </div>
