@@ -79,11 +79,47 @@ export function evaluateOfficialPortCallExcursionFit(input: {
   ) {
     return { ...base, status: "offer_outside_window" };
   }
+
+  const arrival = minutesFromTime(input.call.arrivesAt);
+  const allAboard = minutesFromTime(planningAllAboardTime);
+  if (arrival === null || allAboard === null) {
+    return { ...base, status: "time_conflict" };
+  }
+  const disembarkBuffer = clampWhole(
+    input.disembarkBufferMinutes,
+    0,
+    180,
+    DEFAULT_DISEMBARK_BUFFER_MINUTES,
+  );
+  const shipEarliestStart = arrival + disembarkBuffer;
+  const safeReturnDeadline = allAboard - input.profile.minReturnBufferMinutes;
+  const latestByShip = safeReturnDeadline - input.profile.durationMinutes;
+  const shipTimedBase = {
+    ...base,
+    earliestStartTime: timeFromMinutes(shipEarliestStart),
+    latestSafeStartTime:
+      latestByShip >= 0 ? timeFromMinutes(latestByShip) : null,
+    safeReturnDeadline:
+      safeReturnDeadline >= 0 ? timeFromMinutes(safeReturnDeadline) : null,
+  };
+  if (latestByShip < shipEarliestStart) {
+    return { ...shipTimedBase, status: "time_conflict" };
+  }
+
   if (!input.availabilityDay) {
-    return { ...base, status: "capacity_unconfigured" };
+    return {
+      ...shipTimedBase,
+      status: "capacity_unconfigured",
+      capacityVerified: false,
+    };
   }
   if (!input.availabilityDay.isOpen) {
-    return { ...base, status: "provider_closed", remainingCapacity: 0 };
+    return {
+      ...shipTimedBase,
+      status: "provider_closed",
+      remainingCapacity: 0,
+      capacityVerified: true,
+    };
   }
 
   const remainingCapacity = Math.max(
@@ -93,7 +129,11 @@ export function evaluateOfficialPortCallExcursionFit(input: {
       input.availabilityDay.capacity - reservedGuests,
     ),
   );
-  const capacityBase = { ...base, remainingCapacity, capacityVerified: true };
+  const capacityBase = {
+    ...shipTimedBase,
+    remainingCapacity,
+    capacityVerified: true,
+  };
   if (remainingCapacity <= 0) {
     return { ...capacityBase, status: "sold_out" };
   }
@@ -101,38 +141,20 @@ export function evaluateOfficialPortCallExcursionFit(input: {
     return { ...capacityBase, status: "insufficient_capacity" };
   }
 
-  const arrival = minutesFromTime(input.call.arrivesAt);
-  const allAboard = minutesFromTime(planningAllAboardTime);
   const providerStart = minutesFromTime(input.availabilityDay.startTime);
   const providerEnd = minutesFromTime(input.availabilityDay.endTime);
-  if (
-    arrival === null ||
-    allAboard === null ||
-    providerStart === null ||
-    providerEnd === null
-  ) {
+  if (providerStart === null || providerEnd === null) {
     return { ...capacityBase, status: "time_conflict" };
   }
 
-  const disembarkBuffer = clampWhole(
-    input.disembarkBufferMinutes,
-    0,
-    180,
-    DEFAULT_DISEMBARK_BUFFER_MINUTES,
-  );
-  const earliestStart = Math.max(arrival + disembarkBuffer, providerStart);
-  const safeReturnDeadline = allAboard - input.profile.minReturnBufferMinutes;
-  const latestByShip = safeReturnDeadline - input.profile.durationMinutes;
+  const earliestStart = Math.max(shipEarliestStart, providerStart);
   const latestByProvider = providerEnd - input.profile.durationMinutes;
   const latestSafeStart = Math.min(latestByShip, latestByProvider);
-
   const timed = {
     ...capacityBase,
     earliestStartTime: timeFromMinutes(earliestStart),
     latestSafeStartTime:
       latestSafeStart >= 0 ? timeFromMinutes(latestSafeStart) : null,
-    safeReturnDeadline:
-      safeReturnDeadline >= 0 ? timeFromMinutes(safeReturnDeadline) : null,
   };
 
   if (latestSafeStart < earliestStart) {
