@@ -37,6 +37,18 @@ import {
   type TravelerStayRequest,
   type TravelerTripActionTone,
 } from "@/lib/traveler-trip-command";
+import {
+  buildTravelerTripScopes,
+  plansForTravelerTripScope,
+  resolveTravelerTripScope,
+  scopeTravelerTripRecords,
+  travelerTripScopeLabel,
+} from "@/lib/traveler-trip-scope";
+import {
+  readSelectedTravelerTripPlanId,
+  TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+  writeSelectedTravelerTripPlanId,
+} from "@/lib/traveler-trip-selection";
 
 const ISLAND_LABELS = {
   stt: "St. Thomas",
@@ -58,57 +70,93 @@ export function TravelerTripCommandCenter({
   const router = useRouter();
   const [plans, setPlans] = useState<JourneyPlan[]>([]);
   const [trackedBookings, setTrackedBookings] = useState<TrackedBooking[]>([]);
+  const [selectedPlanId, setSelectedPlanId] = useState("");
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     function refreshLocalTrip() {
       setPlans(readJourneyPlans());
       setTrackedBookings(readTrackedBookings());
+      setSelectedPlanId(readSelectedTravelerTripPlanId());
     }
 
     function handleStorage(event: StorageEvent) {
       if (
         !event.key ||
         event.key === "vi-guide.intelligence.saved-plans" ||
-        event.key === "vi-guide.commerce-bookings.v1"
+        event.key === "vi-guide.commerce-bookings.v1" ||
+        event.key === "vi-guide.traveler-trip-selection.v1"
       ) {
         refreshLocalTrip();
       }
     }
 
+    const requestedPlanId = new URLSearchParams(window.location.search).get("trip");
+    if (requestedPlanId) writeSelectedTravelerTripPlanId(requestedPlanId);
     refreshLocalTrip();
     window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshLocalTrip);
     window.addEventListener(TRACKED_BOOKINGS_UPDATED_EVENT, refreshLocalTrip);
+    window.addEventListener(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, refreshLocalTrip);
     window.addEventListener("storage", handleStorage);
     return () => {
       window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshLocalTrip);
       window.removeEventListener(TRACKED_BOOKINGS_UPDATED_EVENT, refreshLocalTrip);
+      window.removeEventListener(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, refreshLocalTrip);
       window.removeEventListener("storage", handleStorage);
     };
   }, []);
 
+  const scopes = useMemo(() => buildTravelerTripScopes(plans), [plans]);
+  const selectedScope = useMemo(
+    () => resolveTravelerTripScope(scopes, selectedPlanId),
+    [scopes, selectedPlanId],
+  );
+  const scopedPlans = useMemo(
+    () => plansForTravelerTripScope(plans, selectedScope),
+    [plans, selectedScope],
+  );
+  const scoped = useMemo(
+    () =>
+      scopeTravelerTripRecords({
+        scope: selectedScope,
+        bookings,
+        advisorTrips,
+        stayRequests,
+        trackedBookings,
+      }),
+    [advisorTrips, bookings, selectedScope, stayRequests, trackedBookings],
+  );
   const journeyStopCount = useMemo(
-    () => plans.reduce((total, plan) => total + plan.plan.length, 0),
-    [plans],
+    () => scopedPlans.reduce((total, plan) => total + plan.plan.length, 0),
+    [scopedPlans],
   );
   const summary = useMemo(
     () =>
       summarizeTravelerTrip({
-        bookings,
-        advisorTrips,
-        stayRequests,
-        journeyPlanCount: plans.length,
+        bookings: scoped.bookings,
+        advisorTrips: scoped.advisorTrips,
+        stayRequests: scoped.stayRequests,
+        journeyPlanCount: scopedPlans.length,
         journeyStopCount,
       }),
-    [advisorTrips, bookings, journeyStopCount, plans.length, stayRequests],
+    [journeyStopCount, scoped, scopedPlans.length],
   );
   const accountReferences = useMemo(
     () => new Set(bookings.map((booking) => booking.reference)),
     [bookings],
   );
-  const deviceOnlyBookings = trackedBookings.filter(
+  const deviceOnlyBookings = scoped.trackedBookings.filter(
     (booking) => !accountReferences.has(booking.reference),
   );
+
+  function selectTrip(planId: string) {
+    const normalized = writeSelectedTravelerTripPlanId(planId);
+    setSelectedPlanId(normalized);
+    const url = new URL(window.location.href);
+    if (normalized) url.searchParams.set("trip", normalized);
+    else url.searchParams.delete("trip");
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
 
   function refreshServerData() {
     setRefreshing(true);
@@ -118,6 +166,40 @@ export function TravelerTripCommandCenter({
 
   return (
     <div className="space-y-6">
+      {scopes.length ? (
+        <section className="rounded-[26px] border border-teal-200 bg-white p-4 shadow-sm sm:p-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
+                Active trip scope
+              </p>
+              <h2 className="mt-1 text-xl font-black tracking-[-.035em] text-[#043331]">
+                {selectedScope?.title ?? "Select the trip you are working on"}
+              </h2>
+              <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                {selectedScope
+                  ? `${travelerTripScopeLabel(selectedScope)} · ${selectedScope.dayCount} ${selectedScope.dayCount === 1 ? "day" : "days"} · ${selectedScope.stopCount} saved ${selectedScope.stopCount === 1 ? "stop" : "stops"}. Booking, advisor, stay, readiness, My Day, and trip-protection context stay inside this window.`
+                  : "Choose a saved trip so old reservations cannot influence the current trip."}
+              </p>
+            </div>
+            <label className="min-w-0 sm:w-[360px]">
+              <span className="sr-only">Choose active trip</span>
+              <select
+                value={selectedScope?.primaryPlanId ?? ""}
+                onChange={(event) => selectTrip(event.target.value)}
+                className="min-h-12 w-full rounded-2xl border border-slate-200 bg-[#fbfaf6] px-4 text-sm font-black text-[#043331] outline-none transition focus:border-teal-500"
+              >
+                {scopes.map((scope) => (
+                  <option key={scope.id} value={scope.primaryPlanId}>
+                    {travelerTripScopeLabel(scope)}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </section>
+      ) : null}
+
       <section className="overflow-hidden rounded-[34px] border border-white/70 bg-[#043331] text-white shadow-[0_28px_80px_rgba(4,51,49,.2)]">
         <div className="grid lg:grid-cols-[1.2fr_.8fr]">
           <div className="bg-[radial-gradient(circle_at_top_left,rgba(245,196,81,.24),transparent_36%),linear-gradient(145deg,#043331,#075e58)] p-6 sm:p-8 lg:p-10">
@@ -182,8 +264,8 @@ export function TravelerTripCommandCenter({
       </section>
 
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <Metric label="Itinerary" value={String(plans.length)} detail={`${journeyStopCount} saved stops`} />
-        <Metric label="Active bookings" value={String(summary.activeBookings)} detail="requests in motion" />
+        <Metric label="Itinerary" value={String(scopedPlans.length)} detail={`${journeyStopCount} saved stops`} />
+        <Metric label="Active bookings" value={String(summary.activeBookings)} detail="requests in this trip" />
         <Metric
           label="Payment required"
           value={String(summary.paymentRequired)}
@@ -205,9 +287,9 @@ export function TravelerTripCommandCenter({
           actionHref="/planner"
           actionLabel="Open planner"
         >
-          {plans.length ? (
+          {scopedPlans.length ? (
             <div className="space-y-3">
-              {plans.slice(0, 4).map((plan) => (
+              {scopedPlans.slice(0, 7).map((plan) => (
                 <Link
                   key={plan.id}
                   href="/planner"
@@ -246,16 +328,16 @@ export function TravelerTripCommandCenter({
           actionHref="/bookings"
           actionLabel="Booking status"
         >
-          {bookings.length ? (
+          {scoped.bookings.length ? (
             <div className="space-y-3">
-              {bookings.slice(0, 6).map((booking) => (
+              {scoped.bookings.slice(0, 6).map((booking) => (
                 <BookingCard key={booking.id} booking={booking} />
               ))}
             </div>
           ) : deviceOnlyBookings.length ? (
             <div className="space-y-3">
               <p className="text-xs font-semibold leading-5 text-slate-500">
-                These bookings are remembered on this device. Open a booking to refresh its current server status.
+                These bookings are remembered on this device for the selected trip. Open a booking to refresh its current server status.
               </p>
               {deviceOnlyBookings.slice(0, 4).map((booking) => (
                 <Link
@@ -276,8 +358,8 @@ export function TravelerTripCommandCenter({
           ) : (
             <EmptyState
               icon={BadgeCheck}
-              title="No connected bookings yet"
-              detail="Bookable stays, tours, and experiences will appear here as soon as you submit a VI Guide request."
+              title="No connected bookings in this trip"
+              detail="Bookings from older or different trip windows stay out of this view so they cannot change the current next action."
               href="/experiences"
               cta="Browse bookable experiences"
             />
@@ -290,9 +372,9 @@ export function TravelerTripCommandCenter({
           actionHref="/trip-planning"
           actionLabel="Plan with an advisor"
         >
-          {advisorTrips.length ? (
+          {scoped.advisorTrips.length ? (
             <div className="space-y-3">
-              {advisorTrips.slice(0, 4).map((trip) => (
+              {scoped.advisorTrips.slice(0, 4).map((trip) => (
                 <article
                   key={trip.id}
                   className="rounded-[22px] border border-slate-200 bg-[#fbfaf6] p-4"
@@ -333,8 +415,8 @@ export function TravelerTripCommandCenter({
           ) : (
             <EmptyState
               icon={Sparkles}
-              title="Want a human-guided plan?"
-              detail="Send your dates, interests, pace, and budget into the Travel Advisor workflow without exposing personal information in the itinerary URL."
+              title="No advisor request matched to this trip"
+              detail="Advisor requests outside the selected dates stay separate. Start a request for this trip when you want human-guided planning."
               href="/trip-planning"
               cta="Start trip planning"
             />
@@ -347,9 +429,9 @@ export function TravelerTripCommandCenter({
           actionHref="/accommodations"
           actionLabel="Find a stay"
         >
-          {stayRequests.length ? (
+          {scoped.stayRequests.length ? (
             <div className="space-y-3">
-              {stayRequests.slice(0, 4).map((stay) => (
+              {scoped.stayRequests.slice(0, 4).map((stay) => (
                 <Link
                   key={stay.requestId}
                   href={`/accommodations/${encodeURIComponent(stay.staySlug)}`}
@@ -375,8 +457,8 @@ export function TravelerTripCommandCenter({
           ) : (
             <EmptyState
               icon={BedDouble}
-              title="No separate stay requests"
-              detail="Accommodation booking requests submitted through the unified booking flow appear in Reservations above."
+              title="No stay request matched to this trip"
+              detail="Stay requests outside the selected travel window stay separate from this trip readiness view."
               href="/accommodations"
               cta="Browse stays"
             />
