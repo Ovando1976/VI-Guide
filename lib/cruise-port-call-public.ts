@@ -173,8 +173,9 @@ function normalizeProviderOperations(
   data: FirebaseFirestore.DocumentData | undefined,
   listingId: string,
 ): ProviderOperationsConfig {
-  const days = Array.isArray(data?.days)
-    ? data.days.map(normalizeAvailabilityDay).filter(isAvailabilityDay)
+  const rawDays = data?.days;
+  const days = Array.isArray(rawDays)
+    ? rawDays.map(normalizeAvailabilityDay).filter(isAvailabilityDay)
     : [];
   return {
     listingId,
