@@ -2,6 +2,7 @@ import type {
   IntelligenceIsland,
   IntelligencePlanStop,
 } from "@/types/intelligence";
+import { prioritizeSelectedTravelerPlan } from "@/lib/traveler-trip-selection";
 
 export const JOURNEY_PLANS_STORAGE_KEY = "vi-guide.intelligence.saved-plans";
 export const JOURNEY_PLAN_UPDATED_EVENT = "vi-guide-intelligence-plan-saved";
@@ -103,10 +104,11 @@ export function readJourneyPlans(): JourneyPlan[] {
       localStorage.getItem(JOURNEY_PLANS_STORAGE_KEY) ?? "[]",
     );
     if (!Array.isArray(parsed)) return [];
-    return parsed
+    const plans = parsed
       .map(normalizeJourneyPlan)
       .filter(isJourneyPlan)
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    return prioritizeSelectedTravelerPlan(plans);
   } catch {
     return [];
   }
