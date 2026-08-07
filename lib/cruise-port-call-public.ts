@@ -132,7 +132,12 @@ function buildMatches(input: {
       return {
         excursion,
         fit,
-        bookingHref: excursionHref(input.call, excursion.offer.offerId),
+        bookingHref: excursionHref(
+          input.call,
+          excursion.offer.offerId,
+          fit.earliestStartTime,
+          input.partySize,
+        ),
       } satisfies PublicCruiseExcursionMatch;
     })
     .sort((left, right) => {
@@ -234,7 +239,12 @@ function normalizeAvailabilityDay(value: unknown): ProviderAvailabilityDay | nul
   };
 }
 
-function excursionHref(call: OfficialCruisePortCall, offerId: string) {
+function excursionHref(
+  call: OfficialCruisePortCall,
+  offerId: string,
+  preferredTime: string | null,
+  partySize?: number,
+) {
   const allAboard = derivePlanningAllAboard(call.departsAt);
   const params = new URLSearchParams({
     officialPortCall: call.id,
@@ -245,6 +255,10 @@ function excursionHref(call: OfficialCruisePortCall, offerId: string) {
     portId: call.portId,
     arrival: call.arrivesAt,
   });
+  if (preferredTime) params.set("preferredTime", preferredTime);
+  if (Number.isFinite(Number(partySize))) {
+    params.set("party", String(Math.max(1, Math.min(100, Math.trunc(Number(partySize))))));
+  }
   if (allAboard) {
     params.set("allAboard", allAboard);
     params.set("allAboardEstimated", "1");
