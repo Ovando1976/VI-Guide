@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import type { User } from "firebase/auth";
 
 import { useAuth } from "@/components/auth-provider";
+import { mergeJourneyCloudState } from "@/lib/journey-cloud-state";
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
   normalizeJourneyPlan,
@@ -13,9 +14,34 @@ import {
   writeJourneyPlans,
   type JourneyPlan,
 } from "@/lib/journey-planner";
+import {
+  normalizeJourneyTombstones,
+  readJourneyTombstones,
+  writeJourneyTombstones,
+  type JourneyTombstone,
+} from "@/lib/journey-sync-state";
+import {
+  normalizeTravelerTripSelection,
+  readSelectedTravelerTripSelection,
+  TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+  writeSelectedTravelerTripPlanId,
+  type TravelerTripSelection,
+} from "@/lib/traveler-trip-selection";
 
 type SyncState = "local" | "syncing" | "synced" | "error";
-type JourneyApiPayload = { plans?: unknown; error?: string };
+type JourneyApiPayload = {
+  plans?: unknown;
+  tombstones?: unknown;
+  activePlanId?: unknown;
+  activePlanUpdatedAt?: unknown;
+  error?: string;
+};
+
+type ParsedJourneyApiPayload = {
+  plans: JourneyPlan[];
+  tombstones: JourneyTombstone[];
+  selection: TravelerTripSelection;
+};
 
 export function JourneyCloudSync() {
   const { user, loading: authLoading } = useAuth();
@@ -38,7 +64,7 @@ export function JourneyCloudSync() {
 
     async function hydrate() {
       setState("syncing");
-      setMessage("Syncing saved journeys…");
+      setMessage("Syncing trips across devices…");
       try {
         const token = await authenticatedUser.getIdToken();
         const response = await fetch("/api/journeys", {
@@ -47,18 +73,37 @@ export function JourneyCloudSync() {
         });
         const payload = (await response.json().catch(() => null)) as JourneyApiPayload | null;
         if (!response.ok) throw new Error(payload?.error || "Journey sync failed.");
-        const rawPlans = payload?.plans;
-        const remote = Array.isArray(rawPlans)
-          ? rawPlans.map(normalizeJourneyPlan).filter(isJourneyPlan)
-          : [];
-        const merged = mergePlans(readJourneyPlans(), remote);
-        applyingRemote.current = true;
-        writeJourneyPlans(merged);
-        applyingRemote.current = false;
-        await push(authenticatedUser, merged);
+
+        const remote = parsePayload(payload);
+        const merged = mergeJourneyCloudState({
+          localPlans: readJourneyPlans(),
+          remotePlans: remote.plans,
+          localTombstones: readJourneyTombstones(),
+          remoteTombstones: remote.tombstones,
+          localSelection: readSelectedTravelerTripSelection(),
+          remoteSelection: remote.selection,
+        });
+        applyState(merged, applyingRemote);
+
+        const canonical = await push(
+          authenticatedUser,
+          merged.plans,
+          merged.tombstones,
+          merged.selection,
+        );
+        const afterPush = mergeJourneyCloudState({
+          localPlans: merged.plans,
+          remotePlans: canonical.plans,
+          localTombstones: merged.tombstones,
+          remoteTombstones: canonical.tombstones,
+          localSelection: merged.selection,
+          remoteSelection: canonical.selection,
+        });
+        applyState(afterPush, applyingRemote);
+
         if (!cancelled) {
           setState("synced");
-          setMessage("Synced to your VI Guide account");
+          setMessage("Trips synced to your VI Guide account");
         }
       } catch (error) {
         applyingRemote.current = false;
@@ -83,13 +128,31 @@ export function JourneyCloudSync() {
       if (applyingRemote.current) return;
       if (timer.current) clearTimeout(timer.current);
       setState("syncing");
-      setMessage("Saving journey…");
+      setMessage("Saving trip changes…");
       timer.current = setTimeout(async () => {
         try {
-          await push(authenticatedUser, readJourneyPlans());
+          const localPlans = readJourneyPlans();
+          const localTombstones = readJourneyTombstones();
+          const localSelection = readSelectedTravelerTripSelection();
+          const canonical = await push(
+            authenticatedUser,
+            localPlans,
+            localTombstones,
+            localSelection,
+          );
+          const merged = mergeJourneyCloudState({
+            localPlans,
+            remotePlans: canonical.plans,
+            localTombstones,
+            remoteTombstones: canonical.tombstones,
+            localSelection,
+            remoteSelection: canonical.selection,
+          });
+          applyState(merged, applyingRemote);
           setState("synced");
-          setMessage("Synced to your VI Guide account");
+          setMessage("Trips synced to your VI Guide account");
         } catch (error) {
+          applyingRemote.current = false;
           setState("error");
           setMessage(error instanceof Error ? error.message : "Journey sync failed.");
         }
@@ -97,8 +160,10 @@ export function JourneyCloudSync() {
     }
 
     window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, schedulePush);
+    window.addEventListener(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, schedulePush);
     return () => {
       window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, schedulePush);
+      window.removeEventListener(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, schedulePush);
       if (timer.current) clearTimeout(timer.current);
     };
   }, [user]);
@@ -109,31 +174,40 @@ export function JourneyCloudSync() {
       : state === "error" || state === "local"
         ? CloudOff
         : Cloud;
+  const visible = pathname === "/planner" || pathname === "/trips";
+  const onPlanner = pathname === "/planner";
 
-  if (pathname !== "/planner") return null;
+  if (!visible) return null;
 
   return (
     <div
-      className="fixed right-4 top-4 z-[9997] sm:right-6 sm:top-6"
+      className={`fixed right-4 z-[9997] sm:right-6 ${onPlanner ? "top-4 sm:top-6" : "top-20 sm:top-24"}`}
     >
       <div
-      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] ${
-        state === "error"
-          ? "bg-rose-100 text-rose-800"
-          : state === "synced"
-            ? "bg-emerald-100 text-emerald-800"
-            : "bg-white/10 text-white/70"
-      }`}
-      title={message}
-    >
-      <Icon className={`h-3.5 w-3.5 ${state === "syncing" ? "animate-spin" : ""}`} />
-      {message}
+        className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] shadow-sm ${
+          state === "error"
+            ? "border-rose-200 bg-rose-100 text-rose-800"
+            : state === "synced"
+              ? "border-emerald-200 bg-emerald-100 text-emerald-800"
+              : onPlanner
+                ? "border-white/10 bg-[#043331]/90 text-white/75"
+                : "border-slate-200 bg-white text-slate-600"
+        }`}
+        title={message}
+      >
+        <Icon className={`h-3.5 w-3.5 ${state === "syncing" ? "animate-spin" : ""}`} />
+        {message}
       </div>
     </div>
   );
 }
 
-async function push(user: User, plans: JourneyPlan[]) {
+async function push(
+  user: User,
+  plans: JourneyPlan[],
+  tombstones: JourneyTombstone[],
+  selection: TravelerTripSelection,
+) {
   const token = await user.getIdToken();
   const response = await fetch("/api/journeys", {
     method: "PUT",
@@ -141,19 +215,54 @@ async function push(user: User, plans: JourneyPlan[]) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ plans }),
+    body: JSON.stringify({
+      plans,
+      tombstones,
+      activePlanId: selection.planId,
+      activePlanUpdatedAt: selection.updatedAt,
+    }),
   });
-  const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+  const payload = (await response.json().catch(() => null)) as JourneyApiPayload | null;
   if (!response.ok) throw new Error(payload?.error || "Journey sync failed.");
+  return parsePayload(payload);
 }
 
-function mergePlans(local: JourneyPlan[], remote: JourneyPlan[]) {
-  const merged = new Map<string, JourneyPlan>();
-  for (const plan of [...local, ...remote]) {
-    const existing = merged.get(plan.id);
-    if (!existing || plan.updatedAt > existing.updatedAt) merged.set(plan.id, plan);
+function parsePayload(payload: JourneyApiPayload | null): ParsedJourneyApiPayload {
+  const rawPlans = payload?.plans;
+  const plans = Array.isArray(rawPlans)
+    ? rawPlans.map(normalizeJourneyPlan).filter(isJourneyPlan)
+    : [];
+  return {
+    plans,
+    tombstones: normalizeJourneyTombstones(payload?.tombstones),
+    selection: normalizeTravelerTripSelection({
+      planId: payload?.activePlanId,
+      updatedAt: payload?.activePlanUpdatedAt,
+    }),
+  };
+}
+
+function applyState(
+  state: ParsedJourneyApiPayload,
+  applyingRemote: { current: boolean },
+) {
+  applyingRemote.current = true;
+  try {
+    writeJourneyTombstones(state.tombstones);
+    writeJourneyPlans(state.plans);
+    const currentSelection = readSelectedTravelerTripSelection();
+    if (
+      currentSelection.planId !== state.selection.planId ||
+      currentSelection.updatedAt !== state.selection.updatedAt
+    ) {
+      writeSelectedTravelerTripPlanId(
+        state.selection.planId,
+        state.selection.updatedAt || new Date().toISOString(),
+      );
+    }
+  } finally {
+    applyingRemote.current = false;
   }
-  return [...merged.values()].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 }
 
 function isJourneyPlan(value: JourneyPlan | null): value is JourneyPlan {
