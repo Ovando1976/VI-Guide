@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarClock, ClipboardCheck, ShipWheel } from "lucide-react";
 
 import { ShoreExcursionBoard } from "@/components/merchant/shore-excursion-board";
+import { ShoreExcursionCapacityReadiness } from "@/components/merchant/shore-excursion-capacity-readiness";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,7 @@ export default function MerchantShoreExcursionsPage() {
         </div>
       </section>
 
+      <ShoreExcursionCapacityReadiness />
       <ShoreExcursionBoard />
     </>
   );
