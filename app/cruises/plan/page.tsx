@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function CruiseAdvisorPage() {
   return (
-    <main className="min-h-screen bg-[#f7f2e7] text-[#043331]">
+    <div className="min-h-screen bg-[#f7f2e7] text-[#043331]">
       <CruiseHubNav compact />
       <CruisePlanningForm />
-    </main>
+    </div>
   );
 }
