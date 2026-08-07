@@ -124,6 +124,9 @@ export async function POST(
       }
 
       const reference = clean(current.reference, 120) || requestId;
+      const proposalArrival = clean(current.arrival, 10) || null;
+      const proposalDeparture = clean(current.departure, 10) || null;
+      const proposalTravelers = Math.max(1, Math.min(20, safeInteger(current.travelers) || 1));
       const currentShareId = clean(current.proposalShareId, 40);
       const currentVersion = Math.max(0, safeInteger(current.proposalVersion));
       const duplicateProposal =
@@ -182,6 +185,9 @@ export async function POST(
           proposalReference: reference,
           proposalVersion: version,
           proposalDigest: proposal.digest,
+          proposalArrival,
+          proposalDeparture,
+          proposalTravelers,
           createdAt: FieldValue.serverTimestamp(),
           updatedAt: FieldValue.serverTimestamp(),
         });
@@ -191,6 +197,9 @@ export async function POST(
           {
             ownerId: session.uid,
             proposalVersion: version,
+            proposalArrival,
+            proposalDeparture,
+            proposalTravelers,
             updatedAt: FieldValue.serverTimestamp(),
           },
           { merge: true },
