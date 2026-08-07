@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   ShieldCheck,
   ShipWheel,
+  WalletCards,
 } from "lucide-react";
 
 import { getSession } from "@/lib/auth-server";
@@ -55,7 +56,7 @@ export default async function MerchantLayout({
             </div>
           </div>
 
-          <nav className="grid gap-2 sm:grid-cols-3 xl:grid-cols-6">
+          <nav className="grid gap-2 sm:grid-cols-3 xl:grid-cols-7">
             <MerchantNavLink
               href="/merchant"
               icon={LayoutDashboard}
@@ -86,6 +87,13 @@ export default async function MerchantLayout({
               icon={CreditCard}
               label="Payments"
             />
+            {session.role === "merchant" ? (
+              <MerchantNavLink
+                href="/merchant/payouts"
+                icon={WalletCards}
+                label="Payouts"
+              />
+            ) : null}
           </nav>
         </div>
 

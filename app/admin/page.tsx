@@ -6,6 +6,7 @@ import {
   ShipWheel,
   Store,
   UsersRound,
+  WalletCards,
 } from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
@@ -56,6 +57,13 @@ export default function DriversPage() {
             eyebrow="Financial operations"
             detail="Review Stripe-verified captures, refund reversals, fee reserves, and merchant settlement obligations."
             action="Open accounting"
+          />
+          <AdminAction
+            href="/admin/commerce-settlements"
+            icon={WalletCards}
+            eyebrow="Marketplace payouts"
+            detail="Release completed merchant settlements through Stripe Connect and reverse them safely before refunds."
+            action="Open settlements"
           />
         </div>
       </div>

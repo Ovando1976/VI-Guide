@@ -88,7 +88,7 @@ export function commerceCheckoutApplicationDecision(input: {
   }
 
   if (
-    input.paymentStatus === "paid" &&
+    (input.paymentStatus === "paid" || input.paymentStatus === "merchant_settled") &&
     ["paid", "confirmed", "completed"].includes(input.bookingStatus) &&
     input.existingPaymentIntentId === input.incomingPaymentIntentId &&
     input.existingPaidAmountCents === input.incomingPaidAmountCents
