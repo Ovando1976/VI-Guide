@@ -196,6 +196,7 @@ export async function PATCH(
       if (travelRequestRef && travelRequest) {
         const currentTravelStatus = normalizeTravelRequestStatus(travelRequest.status);
         const shouldMarkBooked =
+          Boolean(currentTravelStatus) &&
           status === "confirmed" &&
           currentTravelStatus !== "closed" &&
           currentTravelStatus !== "booked";
