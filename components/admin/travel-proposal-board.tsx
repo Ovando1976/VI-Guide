@@ -444,7 +444,7 @@ export function TravelProposalBoard() {
                         </button>
                       </div>
                       <p className="mt-3 text-[10px] font-semibold leading-5 text-slate-400">
-                        “Send” queues delivery through VI Guide's notification outbox. If email delivery is temporarily unavailable, the outbox keeps the message pending for retry.
+                        “Send” queues delivery through VI Guide&apos;s notification outbox. If email delivery is temporarily unavailable, the outbox keeps the message pending for retry.
                       </p>
                     </aside>
                   </div>
