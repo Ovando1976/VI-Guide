@@ -185,16 +185,10 @@ export function ProviderOperationsBoard({
             "No saved operations found. Set availability and save this business.",
           );
         }
-        setCruiseDemandDates(
-          Array.isArray(payload?.cruiseDemandDates)
-            ? payload.cruiseDemandDates
-            : [],
-        );
-        setCruiseScheduleCoverage(
-          validCoverage(payload?.cruiseScheduleCoverage)
-            ? payload!.cruiseScheduleCoverage!
-            : null,
-        );
+        const demandDates = payload?.cruiseDemandDates;
+        setCruiseDemandDates(Array.isArray(demandDates) ? demandDates : []);
+        const coverage = payload?.cruiseScheduleCoverage;
+        setCruiseScheduleCoverage(validCoverage(coverage) ? coverage : null);
         setLoadedListingId(normalizedListingId);
       } catch (caught) {
         if (activeLoadRequest.current !== requestId) return;
