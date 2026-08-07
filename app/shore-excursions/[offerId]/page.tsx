@@ -27,7 +27,7 @@ export default async function ShoreExcursionDetailPage({
 
   const ports = excursion.supportedPorts
     .map((portId) => shoreExcursionPort(portId))
-    .filter((port): port is NonNullable<typeof port> => Boolean(port));
+    .filter(isShoreExcursionPort);
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] px-4 py-8 pb-28 text-[#043331] sm:px-6 lg:py-12">
@@ -150,6 +150,12 @@ export default async function ShoreExcursionDetailPage({
       </div>
     </main>
   );
+}
+
+function isShoreExcursionPort(
+  value: ReturnType<typeof shoreExcursionPort>,
+): value is NonNullable<ReturnType<typeof shoreExcursionPort>> {
+  return value !== null;
 }
 
 function Detail({
