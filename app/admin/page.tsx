@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { CircleDollarSign, MailCheck, Store, UsersRound } from "lucide-react";
+import {
+  CircleDollarSign,
+  Compass,
+  MailCheck,
+  ShipWheel,
+  Store,
+  UsersRound,
+} from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
 
@@ -7,7 +14,21 @@ export default function DriversPage() {
   return (
     <>
       <div className="bg-[#f7f2e7] px-4 pt-5 sm:px-6">
-        <div className="mx-auto grid max-w-7xl gap-3 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <AdminAction
+            href="/admin/travel-requests"
+            icon={Compass}
+            eyebrow="Travel advisor"
+            detail="Review qualified USVI trip-planning leads and move them from intent to itinerary and booking."
+            action="Open travel desk"
+          />
+          <AdminAction
+            href="/admin/cruise-requests"
+            icon={ShipWheel}
+            eyebrow="Cruise advisor"
+            detail="Research cruise-planning requests, preserve advisor context, and move qualified leads toward booking."
+            action="Open cruise desk"
+          />
           <AdminAction
             href="/admin/partner-applications"
             icon={UsersRound}
