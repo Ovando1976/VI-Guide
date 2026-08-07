@@ -12,6 +12,7 @@ import {
   TicketCheck,
 } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gateway";
 
@@ -24,8 +25,16 @@ export const metadata: Metadata = {
 export default function CruisesPage() {
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-28 text-[#043331]">
-      <section className="px-4 pt-8 sm:px-6 lg:pt-12">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[42px] bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.42),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,164,.18),transparent_30%),linear-gradient(145deg,#022e3b,#075e59)] p-8 text-white shadow-[0_34px_100px_rgba(4,51,49,.24)] sm:p-12 lg:p-16">
+      <section className="px-4 pt-5 sm:px-6 lg:pt-8">
+        <ViPublicHeader
+          actionHref="/cruises/plan"
+          actionLabel="Plan a cruise"
+          actionIcon={ShipWheel}
+          secondaryHref="/"
+          secondaryLabel="Home"
+        />
+
+        <div className="mx-auto mt-6 max-w-7xl overflow-hidden rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.42),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,164,.18),transparent_30%),linear-gradient(145deg,#022e3b,#075e59)] p-7 text-white shadow-[0_30px_90px_rgba(4,51,49,.22)] sm:p-10 lg:p-14">
           <div className="grid gap-10 lg:grid-cols-[1.12fr_.88fr] lg:items-end">
             <div>
               <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[.23em] text-[#f5c451]">
