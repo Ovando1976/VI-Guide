@@ -13,6 +13,7 @@ import {
   Route,
   Save,
   Search,
+  Send,
   Sparkles,
   Users,
 } from "lucide-react";
@@ -44,15 +45,26 @@ type TravelRequest = {
   status: TravelRequestStatus;
   advisorNote: string | null;
   assignedAdvisorEmail: string | null;
+  followupCount: number;
+  followupQueuedAt: string | null;
+  followupSubject: string | null;
+  followupMessage: string | null;
   createdAt: string;
   updatedAt: string;
 };
 
-type Draft = { status: TravelRequestStatus; advisorNote: string };
+type Draft = {
+  status: TravelRequestStatus;
+  advisorNote: string;
+  followupSubject: string;
+  followupMessage: string;
+};
 
 type RequestPayload = {
   requests?: TravelRequest[];
   request?: TravelRequest;
+  followupQueued?: boolean;
+  followupDuplicate?: boolean;
   error?: string;
 };
 
@@ -62,7 +74,12 @@ export function TravelRequestBoard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [sendingFollowupId, setSendingFollowupId] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [followupResult, setFollowupResult] = useState<{
+    requestId: string;
+    duplicate: boolean;
+  } | null>(null);
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<"all" | TravelRequestStatus>("all");
 
@@ -80,13 +97,7 @@ export function TravelRequestBoard() {
       setRequests(payload.requests);
       setDrafts(
         Object.fromEntries(
-          payload.requests.map((request) => [
-            request.id,
-            {
-              status: request.status,
-              advisorNote: request.advisorNote ?? "",
-            },
-          ]),
+          payload.requests.map((request) => [request.id, draftForRequest(request)]),
         ),
       );
     } catch (caught) {
@@ -137,34 +148,43 @@ export function TravelRequestBoard() {
     });
   }, [query, requests, statusFilter]);
 
+  function applyUpdatedRequest(updated: TravelRequest) {
+    setRequests((current) =>
+      current.map((request) => (request.id === updated.id ? updated : request)),
+    );
+    setDrafts((current) => ({
+      ...current,
+      [updated.id]: {
+        ...(current[updated.id] ?? draftForRequest(updated)),
+        status: updated.status,
+        advisorNote: updated.advisorNote ?? "",
+      },
+    }));
+  }
+
   async function save(requestId: string) {
     const draft = drafts[requestId];
-    if (!draft || savingId) return;
+    if (!draft || savingId || sendingFollowupId) return;
     setSavingId(requestId);
     setSavedId(null);
+    setFollowupResult(null);
     setError(null);
 
     try {
       const response = await fetch("/api/travel-advisor/requests", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ requestId, ...draft }),
+        body: JSON.stringify({
+          requestId,
+          status: draft.status,
+          advisorNote: draft.advisorNote,
+        }),
       });
       const payload = (await response.json().catch(() => null)) as RequestPayload | null;
       if (!response.ok || !payload?.request) {
         throw new Error(payload?.error || "Unable to update this request.");
       }
-      const updated = payload.request;
-      setRequests((current) =>
-        current.map((request) => (request.id === requestId ? updated : request)),
-      );
-      setDrafts((current) => ({
-        ...current,
-        [requestId]: {
-          status: updated.status,
-          advisorNote: updated.advisorNote ?? "",
-        },
-      }));
+      applyUpdatedRequest(payload.request);
       setSavedId(requestId);
       window.setTimeout(() => setSavedId(null), 1800);
     } catch (caught) {
@@ -173,6 +193,50 @@ export function TravelRequestBoard() {
       );
     } finally {
       setSavingId(null);
+    }
+  }
+
+  async function sendFollowup(requestId: string) {
+    const draft = drafts[requestId];
+    if (!draft || savingId || sendingFollowupId) return;
+    if (!draft.followupSubject.trim() || !draft.followupMessage.trim()) {
+      setError("Add a subject and traveler message before sending the follow-up.");
+      return;
+    }
+
+    setSendingFollowupId(requestId);
+    setSavedId(null);
+    setFollowupResult(null);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/travel-advisor/requests", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          requestId,
+          status: draft.status,
+          advisorNote: draft.advisorNote,
+          sendFollowup: true,
+          followupSubject: draft.followupSubject,
+          followupMessage: draft.followupMessage,
+        }),
+      });
+      const payload = (await response.json().catch(() => null)) as RequestPayload | null;
+      if (!response.ok || !payload?.request) {
+        throw new Error(payload?.error || "Unable to queue this traveler follow-up.");
+      }
+      applyUpdatedRequest(payload.request);
+      setFollowupResult({
+        requestId,
+        duplicate: payload.followupDuplicate === true,
+      });
+    } catch (caught) {
+      setError(
+        caught instanceof Error ? caught.message : "Unable to queue this traveler follow-up.",
+      );
+    } finally {
+      setSendingFollowupId(null);
     }
   }
 
@@ -209,7 +273,7 @@ export function TravelRequestBoard() {
         <OpsSection
           eyebrow="Advisor queue"
           title="Traveler pipeline"
-          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status. New qualified requests receive an automatic acknowledgement while the advisor builds the human-reviewed plan."
+          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status. New qualified requests receive an acknowledgement, and human follow-ups can now be queued and audited directly from this desk."
           actions={<OpsPill label={`${filtered.length} shown`} tone="teal" />}
         >
           <div className="grid gap-3 md:grid-cols-[1fr_240px]">
@@ -265,17 +329,15 @@ export function TravelRequestBoard() {
         ) : (
           <section className="space-y-4">
             {filtered.map((request) => {
-              const draft = drafts[request.id] ?? {
-                status: request.status,
-                advisorNote: request.advisorNote ?? "",
-              };
+              const draft = drafts[request.id] ?? draftForRequest(request);
+              const followupDisabled = request.status === "booked" || request.status === "closed";
 
               return (
                 <article
                   key={request.id}
                   className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="grid gap-6 p-5 lg:grid-cols-[1fr_340px] lg:p-7">
+                  <div className="grid gap-6 p-5 lg:grid-cols-[1fr_370px] lg:p-7">
                     <div>
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
@@ -284,6 +346,12 @@ export function TravelRequestBoard() {
                               label={travelPreferenceLabel(request.status)}
                               tone={statusTone(request.status)}
                             />
+                            {request.followupCount > 0 ? (
+                              <OpsPill
+                                label={`${request.followupCount} follow-up${request.followupCount === 1 ? "" : "s"}`}
+                                tone="teal"
+                              />
+                            ) : null}
                             <span className="font-mono text-[10px] font-bold text-slate-400">
                               {request.reference}
                             </span>
@@ -293,6 +361,9 @@ export function TravelRequestBoard() {
                           </h2>
                           <p className="mt-1 text-xs font-semibold text-slate-400">
                             Received {formatDateTime(request.createdAt)}
+                            {request.followupQueuedAt
+                              ? ` · Last follow-up ${formatDateTime(request.followupQueuedAt)}`
+                              : ""}
                           </p>
                         </div>
                         {request.assignedAdvisorEmail ? (
@@ -354,19 +425,107 @@ export function TravelRequestBoard() {
                         Advisor controls
                       </p>
 
-                      <div className="mt-4 grid gap-2">
+                      <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                         <Link
                           href={buildAdvisorConciergeHref(request)}
-                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#0f766e] px-4 text-[10px] font-black uppercase tracking-[.13em] text-white transition hover:bg-[#0b5d5b]"
+                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#0f766e] px-4 text-center text-[10px] font-black uppercase tracking-[.13em] text-white transition hover:bg-[#0b5d5b]"
                         >
-                          <Route className="h-4 w-4" /> Build planning brief
+                          <Route className="h-4 w-4" /> Planning brief
                         </Link>
                         <a
                           href={buildAdvisorEmailHref(request)}
-                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-[10px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:border-teal-300"
+                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-center text-[10px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:border-teal-300"
                         >
-                          <Mail className="h-4 w-4 text-teal-700" /> Follow up by email
+                          <Mail className="h-4 w-4 text-teal-700" /> Email fallback
                         </a>
+                      </div>
+
+                      <div className="mt-5 rounded-[20px] border border-teal-200 bg-teal-50/70 p-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+                              Traveler follow-up
+                            </p>
+                            <p className="mt-1 text-[11px] font-semibold leading-5 text-slate-500">
+                              Queue through VI Guide so delivery retries and the advisor audit trail stay intact.
+                            </p>
+                          </div>
+                          <Send className="h-4 w-4 shrink-0 text-teal-700" />
+                        </div>
+
+                        <label className="mt-3 block text-[10px] font-black text-slate-600">
+                          Subject
+                          <input
+                            value={draft.followupSubject}
+                            maxLength={180}
+                            disabled={followupDisabled}
+                            onChange={(event) =>
+                              setDrafts((current) => ({
+                                ...current,
+                                [request.id]: {
+                                  ...draft,
+                                  followupSubject: event.target.value,
+                                },
+                              }))
+                            }
+                            className="mt-2 min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-600 disabled:bg-slate-100"
+                          />
+                        </label>
+
+                        <label className="mt-3 block text-[10px] font-black text-slate-600">
+                          Message
+                          <textarea
+                            value={draft.followupMessage}
+                            maxLength={1200}
+                            rows={6}
+                            disabled={followupDisabled}
+                            onChange={(event) =>
+                              setDrafts((current) => ({
+                                ...current,
+                                [request.id]: {
+                                  ...draft,
+                                  followupMessage: event.target.value,
+                                },
+                              }))
+                            }
+                            className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-semibold leading-6 text-[#043331] outline-none focus:border-teal-600 disabled:bg-slate-100"
+                          />
+                        </label>
+
+                        {followupResult?.requestId === request.id ? (
+                          <p className="mt-3 flex items-start gap-2 text-xs font-bold text-emerald-700">
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+                            {followupResult.duplicate
+                              ? "That exact follow-up is already queued for today."
+                              : "Follow-up queued. VI Guide will deliver it through the configured email pipeline and retry safely if needed."}
+                          </p>
+                        ) : null}
+
+                        {followupDisabled ? (
+                          <p className="mt-3 text-xs font-bold text-slate-500">
+                            This request is {request.status}; use the booking/customer workflow for further communication.
+                          </p>
+                        ) : null}
+
+                        <button
+                          type="button"
+                          onClick={() => void sendFollowup(request.id)}
+                          disabled={
+                            followupDisabled ||
+                            savingId !== null ||
+                            sendingFollowupId !== null ||
+                            !draft.followupSubject.trim() ||
+                            !draft.followupMessage.trim()
+                          }
+                          className="mt-3 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-4 text-[9px] font-black uppercase tracking-[.13em] text-white disabled:opacity-50"
+                        >
+                          {sendingFollowupId === request.id ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <Send className="h-4 w-4" />
+                          )}
+                          Send through VI Guide
+                        </button>
                       </div>
 
                       <label className="mt-4 block text-xs font-black text-slate-600">
@@ -397,7 +556,7 @@ export function TravelRequestBoard() {
                         <textarea
                           value={draft.advisorNote}
                           maxLength={2000}
-                          rows={8}
+                          rows={5}
                           onChange={(event) =>
                             setDrafts((current) => ({
                               ...current,
@@ -407,7 +566,7 @@ export function TravelRequestBoard() {
                               },
                             }))
                           }
-                          placeholder="Research, follow-up, supplier, booking, or traveler notes…"
+                          placeholder="Research, supplier, booking, or traveler context…"
                           className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#043331] outline-none focus:border-teal-600"
                         />
                       </label>
@@ -421,7 +580,7 @@ export function TravelRequestBoard() {
                       <button
                         type="button"
                         onClick={() => void save(request.id)}
-                        disabled={savingId !== null}
+                        disabled={savingId !== null || sendingFollowupId !== null}
                         className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.14em] text-white disabled:opacity-60"
                       >
                         {savingId === request.id ? (
@@ -500,6 +659,30 @@ function TagList({ values }: { values: string[] }) {
   );
 }
 
+function draftForRequest(request: TravelRequest): Draft {
+  return {
+    status: request.status,
+    advisorNote: request.advisorNote ?? "",
+    followupSubject:
+      request.followupSubject || `VI Guide trip planning · ${request.reference}`,
+    followupMessage: request.followupMessage || defaultFollowupMessage(request),
+  };
+}
+
+function defaultFollowupMessage(request: TravelRequest) {
+  return [
+    `Hello ${request.travelerName},`,
+    "",
+    `I am following up on your VI Guide trip-planning request ${request.reference}.`,
+    "",
+    `I am reviewing your ${travelIslandLabel(request.island)} trip details and can help turn them into a practical itinerary covering stays, transportation, activities, and bookable options where appropriate.`,
+    "",
+    "Before anything is booked or charged, VI Guide or the relevant provider will confirm availability, terms, and pricing with you.",
+    "",
+    "You can keep saving ideas and building your trip in VI Guide while I review the request.",
+  ].join("\n");
+}
+
 function buildAdvisorConciergeHref(request: TravelRequest) {
   const prompt = [
     `Act as the VI Guide travel-advisor planning workspace for request ${request.reference}.`,
@@ -520,17 +703,7 @@ function buildAdvisorConciergeHref(request: TravelRequest) {
 
 function buildAdvisorEmailHref(request: TravelRequest) {
   const subject = `VI Guide trip planning · ${request.reference}`;
-  const body = [
-    `Hello ${request.travelerName},`,
-    "",
-    `I am following up on your VI Guide trip-planning request ${request.reference}.`,
-    "",
-    "I am reviewing the trip details you submitted and can help turn them into a practical U.S. Virgin Islands itinerary, including stays, transportation, activities, and bookable options where appropriate.",
-    "",
-    "Before anything is booked or charged, we will confirm the relevant availability, terms, and pricing with you.",
-    "",
-    "VI Guide",
-  ].join("\n");
+  const body = defaultFollowupMessage(request);
   return `mailto:${encodeURIComponent(request.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
