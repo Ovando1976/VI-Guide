@@ -9,6 +9,7 @@ import {
   Clock3,
   Settings2,
   ShieldCheck,
+  ShipWheel,
 } from "lucide-react";
 
 import { MerchantOperationsSummary } from "@/components/merchant/merchant-operations-summary";
@@ -18,7 +19,7 @@ import { humanizeListingId } from "@/lib/merchant-portal";
 export const metadata = {
   title: "Merchant Operations | VI Guide",
   description:
-    "Manage VI Guide offers, reservations, availability, payments, and assigned businesses.",
+    "Manage VI Guide offers, reservations, availability, cruise demand, payments, and assigned businesses.",
 };
 
 export default async function MerchantHomePage() {
@@ -89,7 +90,7 @@ export default async function MerchantHomePage() {
 
         <MerchantOperationsSummary />
 
-        <section className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <section className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           <ActionCard
             href="/merchant/reservations"
             icon={CalendarCheck2}
@@ -97,6 +98,14 @@ export default async function MerchantHomePage() {
             title="Reservation inbox"
             detail="Review new requests, propose timing, request a deposit, confirm paid bookings, and complete delivered services."
             action="Open reservations"
+          />
+          <ActionCard
+            href={availabilityHref}
+            icon={ShipWheel}
+            eyebrow="Cruise opportunity"
+            title="Ship-call demand"
+            detail="Review official cruise-call dates, see matched ship demand, and stage only undecided cruise dates without overwriting reviewed availability."
+            action="Review cruise dates"
           />
           <ActionCard
             href={availabilityHref}
