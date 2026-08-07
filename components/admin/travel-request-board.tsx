@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   CalendarDays,
@@ -9,6 +10,7 @@ import {
   MapPin,
   Phone,
   RefreshCw,
+  Route,
   Save,
   Search,
   Sparkles,
@@ -207,7 +209,7 @@ export function TravelRequestBoard() {
         <OpsSection
           eyebrow="Advisor queue"
           title="Traveler pipeline"
-          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status."
+          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status. New qualified requests receive an automatic acknowledgement while the advisor builds the human-reviewed plan."
           actions={<OpsPill label={`${filtered.length} shown`} tone="teal" />}
         >
           <div className="grid gap-3 md:grid-cols-[1fr_240px]">
@@ -351,6 +353,22 @@ export function TravelRequestBoard() {
                       <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
                         Advisor controls
                       </p>
+
+                      <div className="mt-4 grid gap-2">
+                        <Link
+                          href={buildAdvisorConciergeHref(request)}
+                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#0f766e] px-4 text-[10px] font-black uppercase tracking-[.13em] text-white transition hover:bg-[#0b5d5b]"
+                        >
+                          <Route className="h-4 w-4" /> Build planning brief
+                        </Link>
+                        <a
+                          href={buildAdvisorEmailHref(request)}
+                          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-[10px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:border-teal-300"
+                        >
+                          <Mail className="h-4 w-4 text-teal-700" /> Follow up by email
+                        </a>
+                      </div>
+
                       <label className="mt-4 block text-xs font-black text-slate-600">
                         Workflow status
                         <select
@@ -480,6 +498,40 @@ function TagList({ values }: { values: string[] }) {
       ))}
     </div>
   );
+}
+
+function buildAdvisorConciergeHref(request: TravelRequest) {
+  const prompt = [
+    `Act as the VI Guide travel-advisor planning workspace for request ${request.reference}.`,
+    "Create a practical U.S. Virgin Islands itinerary draft for human advisor review before anything is sent to the traveler.",
+    `Island preference: ${travelIslandLabel(request.island)}.`,
+    `Travel window: ${dateRange(request.arrival, request.departure)}.`,
+    `Travelers: ${request.travelers}.`,
+    `Budget: ${travelPreferenceLabel(request.budget)}.`,
+    `Pace: ${travelPreferenceLabel(request.pace)}.`,
+    `Stay status: ${travelPreferenceLabel(request.stayStatus)}.`,
+    `Interests: ${request.interests.length ? request.interests.map(travelPreferenceLabel).join(", ") : "No specific interests selected"}.`,
+    "Do not infer or expose contact information. Treat availability, operating hours, transportation schedules, and prices as details that must be confirmed before commitment.",
+    "Return a day-by-day draft plus lodging considerations, transportation/ferry logistics, bookable categories, open questions for the advisor, and a concise follow-up checklist.",
+  ].join("\n");
+
+  return `/concierge?open=true&prompt=${encodeURIComponent(prompt.slice(0, 3900))}`;
+}
+
+function buildAdvisorEmailHref(request: TravelRequest) {
+  const subject = `VI Guide trip planning · ${request.reference}`;
+  const body = [
+    `Hello ${request.travelerName},`,
+    "",
+    `I am following up on your VI Guide trip-planning request ${request.reference}.`,
+    "",
+    "I am reviewing the trip details you submitted and can help turn them into a practical U.S. Virgin Islands itinerary, including stays, transportation, activities, and bookable options where appropriate.",
+    "",
+    "Before anything is booked or charged, we will confirm the relevant availability, terms, and pricing with you.",
+    "",
+    "VI Guide",
+  ].join("\n");
+  return `mailto:${encodeURIComponent(request.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function statusTone(status: TravelRequestStatus): "neutral" | "teal" | "amber" | "emerald" | "rose" {
