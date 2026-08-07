@@ -12,6 +12,7 @@ export type DiscoveryMapTarget = {
   id: string;
   name: string;
   slug?: string;
+  href?: string;
   island: "stt" | "stj" | "stx";
   type: TerritoryMapPlaceType;
   lat?: number | null;
@@ -27,6 +28,9 @@ export function buildDiscoveryMapHref(target: DiscoveryMapTarget) {
     island: target.island,
     lens: lensForType(target.type),
   });
+
+  setBounded(params, "placeSlug", target.slug, 220);
+  setBounded(params, "placeHref", target.href ?? detailHrefForTarget(target), 600);
 
   if (
     typeof target.lat === "number" &&
@@ -51,8 +55,12 @@ export function buildDiscoveryMapHref(target: DiscoveryMapTarget) {
     }
   } else if (target.estateGeoid) {
     params.set("estate", target.estateGeoid);
+    params.set("placeName", target.name);
+    params.set("placeType", target.type);
   } else {
     params.set("q", target.name);
+    params.set("placeName", target.name);
+    params.set("placeType", target.type);
   }
 
   return `/map?${params.toString()}`;
@@ -70,6 +78,7 @@ export function buildDirectoryMapHref(
     id: item.id,
     name: item.name,
     slug: item.slug,
+    href: detailHrefForDirectoryItem(item, type),
     island: item.island,
     type,
     lat: item.lat,
@@ -78,6 +87,21 @@ export function buildDirectoryMapHref(
     description: item.description,
     estateGeoid: item.estateGeoid,
   });
+}
+
+function detailHrefForDirectoryItem(
+  item: Pick<DirectoryItem, "slug">,
+  type: TerritoryMapPlaceType,
+) {
+  if (type === "beach") return `/beaches/${item.slug}`;
+  if (type === "stay") return `/accommodations/${item.slug}`;
+  if (type === "historic") return `/historic/${item.slug}`;
+  return `/places/${item.slug}`;
+}
+
+function detailHrefForTarget(target: DiscoveryMapTarget) {
+  if (!target.slug) return undefined;
+  return detailHrefForDirectoryItem({ slug: target.slug }, target.type);
 }
 
 function lensForType(type: TerritoryMapPlaceType) {
