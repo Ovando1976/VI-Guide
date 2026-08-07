@@ -153,6 +153,43 @@ assert.equal(bulkClose.days[0]?.isOpen, true);
 assert.equal(bulkClose.days[1]?.isOpen, false);
 assert.equal(bulkClose.days[2]?.isOpen, false);
 
+const targetedBulk = applyProviderAvailabilityWindowDecision(
+  availabilityDays,
+  ["2026-08-08"],
+  {
+    startDate: "2026-08-05",
+    windowDays: 7,
+    isOpen: true,
+    startTime: "07:30",
+    endTime: "15:30",
+    capacity: 30,
+    targetDates: ["2026-08-06", "2026-08-08", "2026-08-11", "2026-08-18"],
+  },
+);
+assert.equal(targetedBulk.appliedCount, 2);
+assert.deepEqual(targetedBulk.decisionDates, [
+  "2026-08-06",
+  "2026-08-08",
+  "2026-08-11",
+]);
+assert.equal(targetedBulk.days[0]?.capacity, 12);
+assert.deepEqual(targetedBulk.days[1], {
+  ...availabilityDays[1],
+  isOpen: true,
+  capacity: 30,
+  startTime: "07:30",
+  endTime: "15:30",
+});
+assert.deepEqual(targetedBulk.days[3], availabilityDays[3]);
+assert.deepEqual(targetedBulk.days[6], {
+  ...availabilityDays[6],
+  isOpen: true,
+  capacity: 30,
+  startTime: "07:30",
+  endTime: "15:30",
+});
+assert.deepEqual(targetedBulk.days[13], availabilityDays[13]);
+
 const invalidBulk = applyProviderAvailabilityWindowDecision(
   availabilityDays,
   [],
