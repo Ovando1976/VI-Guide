@@ -97,24 +97,30 @@ export async function PUT(request: NextRequest) {
     }
     requireListingAccess(session, config.listingId);
 
+    const db = getAdminDb();
+    const operationsRef = db.collection("providerOperations").doc(config.listingId);
+    const existing = await operationsRef.get();
+    const mergedDays = mergeStoredDays(
+      normalizeStoredDays(existing.data()),
+      config.days,
+    );
     const updatedAt = new Date().toISOString();
-    await getAdminDb()
-      .collection("providerOperations")
-      .doc(config.listingId)
-      .set(
-        {
-          ...config,
-          updatedAt,
-          updatedByUid: session.uid,
-          updatedByEmail: session.email ?? null,
-          serverUpdatedAt: FieldValue.serverTimestamp(),
-        },
-        { merge: true },
-      );
+
+    await operationsRef.set(
+      {
+        ...config,
+        days: mergedDays,
+        updatedAt,
+        updatedByUid: session.uid,
+        updatedByEmail: session.email ?? null,
+        serverUpdatedAt: FieldValue.serverTimestamp(),
+      },
+      { merge: true },
+    );
 
     return NextResponse.json({
-      config: { ...config, updatedAt },
-      persistedDates: config.days.map((day) => day.date),
+      config: { ...config, days: mergedDays, updatedAt },
+      persistedDates: mergedDays.map((day) => day.date),
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
@@ -190,6 +196,15 @@ function normalizeStoredDays(
   return storedDays
     .map(normalizeDay)
     .filter((day): day is ProviderAvailabilityDay => Boolean(day));
+}
+
+function mergeStoredDays(
+  existingDays: ProviderAvailabilityDay[],
+  incomingDays: ProviderAvailabilityDay[],
+) {
+  const byDate = new Map(existingDays.map((day) => [day.date, day]));
+  for (const day of incomingDays) byDate.set(day.date, day);
+  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
 }
 
 function normalizeStoredConfig(
