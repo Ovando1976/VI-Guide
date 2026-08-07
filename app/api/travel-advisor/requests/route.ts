@@ -5,16 +5,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
+import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
+import { normalizeBookingNotification } from "@/lib/notifications/booking-notification-outbox";
+import {
   canTransitionTravelRequest,
   normalizeTravelAdvisorNote,
   normalizeTravelPlanningRequest,
   normalizeTravelRequestStatus,
   travelTerritoryDayKey,
 } from "@/lib/travel-advisor";
-import {
-  getAdminDb,
-  hasFirebaseAdminConfiguration,
-} from "@/lib/firebase-admin";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -74,6 +76,7 @@ export async function POST(request: NextRequest) {
           duplicate: true,
           rateLimited: false,
           reference: String(existing.data()?.reference ?? reference),
+          notificationOutboxIds: [] as string[],
         };
       }
 
@@ -84,6 +87,7 @@ export async function POST(request: NextRequest) {
           duplicate: false,
           rateLimited: true,
           reference: "VI-TRIP-RECEIVED",
+          notificationOutboxIds: [] as string[],
         };
       }
 
@@ -102,6 +106,7 @@ export async function POST(request: NextRequest) {
         createdAt: travelRequest.submittedAt,
         updatedAt: travelRequest.submittedAt,
         source: "vi-guide-usvi-trip-planner",
+        acknowledgementQueuedAt: travelRequest.submittedAt,
         serverCreatedAt: FieldValue.serverTimestamp(),
         serverUpdatedAt: FieldValue.serverTimestamp(),
       });
@@ -142,10 +147,52 @@ export async function POST(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
       });
 
-      return { duplicate: false, rateLimited: false, reference };
+      const acknowledgement = normalizeBookingNotification({
+        bookingId: requestId,
+        reference,
+        event: "travel_advisor_requested",
+        audience: "traveler",
+        listingId: "travel-advisor",
+        listingName: "VI Guide USVI Travel Advisor",
+        recipientEmail: travelRequest.email,
+        title: "Your VI Guide trip-planning request is in",
+        message: `We received your USVI trip-planning request ${reference}. A VI Guide travel advisor can review the trip details you submitted while you continue building and saving ideas in My Trip. No reservation or price is confirmed until VI Guide or the relevant provider confirms it with you.`,
+        href: "/planner",
+        createdAt: travelRequest.submittedAt,
+      });
+      if (!acknowledgement) {
+        throw new Error("Unable to prepare the travel advisor acknowledgement.");
+      }
+
+      transaction.set(
+        db.collection("notificationOutbox").doc(acknowledgement.id),
+        {
+          ...acknowledgement,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        },
+      );
+
+      return {
+        duplicate: false,
+        rateLimited: false,
+        reference,
+        notificationOutboxIds: [acknowledgement.id],
+      };
     });
 
     if (result.rateLimited) return acceptedWithoutDisclosure();
+
+    if (result.notificationOutboxIds.length > 0) {
+      try {
+        await processBookingNotificationOutboxIds(
+          db,
+          result.notificationOutboxIds,
+        );
+      } catch (error) {
+        console.error("travel advisor acknowledgement delivery attempt failed", error);
+      }
+    }
 
     return NextResponse.json(
       {

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 
+import { normalizeBookingNotification } from "../lib/notifications/booking-notification-outbox";
 import {
   canTransitionTravelRequest,
   normalizeTravelPlanningRequest,
@@ -117,4 +118,24 @@ assert.equal(canTransitionTravelRequest("closed", "new"), false);
 assert.equal(travelIslandLabel("stx"), "St. Croix");
 assert.equal(travelTerritoryDayKey(now), "2026-08-07");
 
-console.log("USVI travel advisor intake tests passed.");
+const acknowledgement = normalizeBookingNotification({
+  bookingId: "travel_0123456789abcdef0123456789abcdef",
+  reference: "VI-TRIP-20260807-ABC123",
+  event: "travel_advisor_requested",
+  audience: "traveler",
+  listingId: "travel-advisor",
+  listingName: "VI Guide USVI Travel Advisor",
+  recipientEmail: "traveler@example.com",
+  title: "Your VI Guide trip-planning request is in",
+  message: "We received your request and will review the submitted trip details.",
+  href: "/planner",
+  createdAt: now.toISOString(),
+});
+assert.ok(acknowledgement);
+assert.equal(acknowledgement.event, "travel_advisor_requested");
+assert.equal(acknowledgement.audience, "traveler");
+assert.equal(acknowledgement.recipientEmail, "traveler@example.com");
+assert.equal(acknowledgement.status, "pending");
+assert.match(acknowledgement.id, /travel_advisor_requested/);
+
+console.log("USVI travel advisor intake and acknowledgement tests passed.");
