@@ -16,7 +16,7 @@ import { notFound } from "next/navigation";
 import { SaveSharedJourneyButton } from "@/components/journey/save-shared-journey-button";
 import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import { buildJourneyMapHref, normalizeJourneyPlan } from "@/lib/journey-planner";
-import type { IntelligencePlanStop } from "@/types/intelligence";
+import { buildTravelProposalBookingHref } from "@/lib/travel-advisor-booking";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +37,7 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
   const proposalDeparture = cleanDate(data.proposalDeparture);
   const proposalTravelers = Math.max(1, Math.min(20, safeInteger(data.proposalTravelers) || 2));
   const bookableStops = isAdvisorProposal
-    ? plan.plan.filter((stop) => Boolean(buildProposalBookingHref({
+    ? plan.plan.filter((stop) => Boolean(buildTravelProposalBookingHref({
         stop,
         shareId: params.shareId,
         planDate: plan.date,
@@ -97,7 +97,7 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
           <div className="mt-6 space-y-3">
             {plan.plan.map((stop, index) => {
               const proposalBookingHref = isAdvisorProposal
-                ? buildProposalBookingHref({
+                ? buildTravelProposalBookingHref({
                     stop,
                     shareId: params.shareId,
                     planDate: plan.date,
@@ -137,65 +137,6 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
       </div>
     </main>
   );
-}
-
-function buildProposalBookingHref({
-  stop,
-  shareId,
-  planDate,
-  arrival,
-  departure,
-  travelers,
-}: {
-  stop: IntelligencePlanStop;
-  shareId: string;
-  planDate: string;
-  arrival: string;
-  departure: string;
-  travelers: number;
-}) {
-  const kind = commerceKindForStop(stop.kind);
-  if (!kind) return "";
-
-  const listingId = (stop.placeId || stop.id).trim().slice(0, 160);
-  const listingName = stop.title.trim().slice(0, 180);
-  if (!listingId || !listingName) return "";
-
-  const params = new URLSearchParams({
-    kind,
-    listingId,
-    listingName,
-    island: stop.island,
-    adults: String(Math.max(1, Math.min(20, travelers))),
-    proposal: shareId,
-  });
-  if (stop.href?.startsWith("/") && !stop.href.startsWith("//")) {
-    params.set("listingHref", stop.href);
-  }
-
-  if (kind === "accommodation") {
-    const startDate = arrival || planDate;
-    if (startDate) params.set("startDate", startDate);
-    if (departure && departure > startDate) params.set("endDate", departure);
-  } else if (planDate) {
-    params.set("startDate", planDate);
-  }
-
-  return `/book?${params.toString()}`;
-}
-
-function commerceKindForStop(value: string): "accommodation" | "tour" | "experience" | null {
-  const normalized = value.trim().toLowerCase();
-  if (["stay", "hotel", "resort", "villa", "accommodation", "lodging"].includes(normalized)) {
-    return "accommodation";
-  }
-  if (["tour", "shore-excursion", "shore_excursion", "excursion"].includes(normalized)) {
-    return "tour";
-  }
-  if (["experience", "activity", "attraction", "adventure"].includes(normalized)) {
-    return "experience";
-  }
-  return null;
 }
 
 function cleanDate(value: unknown) {
