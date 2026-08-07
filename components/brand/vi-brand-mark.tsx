@@ -1,6 +1,6 @@
 export function ViBrandMark({
   className = "h-11 w-11",
-  priority: _priority = false,
+  priority = false,
 }: {
   className?: string;
   priority?: boolean;
@@ -9,6 +9,7 @@ export function ViBrandMark({
     <span
       className={`vi-brand-mark relative inline-grid shrink-0 place-items-center overflow-hidden rounded-[32%] ${className}`}
       aria-hidden="true"
+      data-priority={priority ? "true" : undefined}
     >
       <svg
         viewBox="0 0 72 72"
