@@ -26,6 +26,11 @@ export const dynamic = "force-dynamic";
 
 const MAX_SETTLEMENT_BOOKINGS = 150;
 
+type MerchantPaymentProfileRecord = {
+  id: string;
+  data: FirebaseFirestore.DocumentData;
+};
+
 export async function GET() {
   try {
     await requireSession(["admin"]);
@@ -60,7 +65,9 @@ export async function GET() {
       .filter(Boolean);
     const captureSnapshots = captureIds.length
       ? await db.getAll(
-          ...captureIds.map((id) => db.collection("commerceLedgerEntries").doc(id)),
+          ...captureIds.map((id) =>
+            db.collection("commerceLedgerEntries").doc(id),
+          ),
         )
       : [];
     const captures = new Map(
@@ -69,19 +76,23 @@ export async function GET() {
         .map((snapshot) => [snapshot.id, snapshot.data() ?? {}] as const),
     );
 
-    const profiles = profileSnapshot.docs.map((document) => ({
-      id: document.id,
-      ...document.data(),
-    }));
+    const profiles: MerchantPaymentProfileRecord[] = profileSnapshot.docs.map(
+      (document) => ({
+        id: document.id,
+        data: document.data(),
+      }),
+    );
 
     const rows = bookingDocuments.map((document) => {
       const booking = document.data();
       const listingId = clean(booking.listingId, 180);
       const matchingProfiles = profiles.filter((profile) =>
-        normalizeListingIds(profile.listingIds).includes(listingId),
+        normalizeListingIds(profile.data.listingIds).includes(listingId),
       );
-      const profile = matchingProfiles.length === 1 ? matchingProfiles[0] : null;
-      const transferStatus = clean(profile?.transferStatus, 40) || "unknown";
+      const profile =
+        matchingProfiles.length === 1 ? matchingProfiles[0] : null;
+      const transferStatus =
+        clean(profile?.data.transferStatus, 40) || "unknown";
       const captureId = captureIdForBooking(booking);
       const capture = captureId
         ? normalizeStoredCommerceLedgerEntry({
@@ -120,15 +131,20 @@ export async function GET() {
         bookingId: document.id,
         reference: clean(booking.reference, 180) || document.id,
         listingId,
-        listingName: clean(booking.listingName, 220) || "VI Guide booking",
+        listingName:
+          clean(booking.listingName, 220) || "VI Guide booking",
         status: clean(booking.status, 40),
         paymentStatus: clean(booking.paymentStatus, 40),
         paymentIntegrityStatus: clean(booking.paymentIntegrityStatus, 40),
-        refundStatus: clean(booking.refundStatus, 40) || "not_requested",
-        settlementStatus: clean(booking.settlementStatus, 40) || "held",
+        refundStatus:
+          clean(booking.refundStatus, 40) || "not_requested",
+        settlementStatus:
+          clean(booking.settlementStatus, 40) || "held",
         transferId: clean(booking.stripeTransferId, 220) || null,
-        transferReversalId: clean(booking.stripeTransferReversalId, 220) || null,
-        connectedAccountId: clean(profile?.stripeAccountId, 220) || null,
+        transferReversalId:
+          clean(booking.stripeTransferReversalId, 220) || null,
+        connectedAccountId:
+          clean(profile?.data.stripeAccountId, 220) || null,
         connectedTransferStatus: transferStatus,
         merchantProfileMatches: matchingProfiles.length,
         grossAmountCents: capture?.grossAmountCents ?? 0,
@@ -146,10 +162,18 @@ export async function GET() {
       summary: {
         total: rows.length,
         ready: rows.filter((row) => row.releaseEligible).length,
-        transferred: rows.filter((row) => row.settlementStatus === "transferred").length,
-        reversed: rows.filter((row) => row.settlementStatus === "reversed").length,
-        reviewRequired: rows.filter((row) => row.settlementStatus === "review_required").length,
-        platformFeeCents: rows.reduce((sum, row) => sum + row.platformFeeCents, 0),
+        transferred: rows.filter(
+          (row) => row.settlementStatus === "transferred",
+        ).length,
+        reversed: rows.filter((row) => row.settlementStatus === "reversed")
+          .length,
+        reviewRequired: rows.filter(
+          (row) => row.settlementStatus === "review_required",
+        ).length,
+        platformFeeCents: rows.reduce(
+          (sum, row) => sum + row.platformFeeCents,
+          0,
+        ),
         merchantSettlementCents: rows.reduce(
           (sum, row) => sum + row.merchantSettlementCents,
           0,
@@ -193,8 +217,12 @@ export async function POST(request: NextRequest) {
     const bookingRef = db.collection("commerceBookings").doc(bookingId);
     const initialBookingSnapshot = await bookingRef.get();
     if (!initialBookingSnapshot.exists) {
-      return NextResponse.json({ error: "Booking not found." }, { status: 404 });
+      return NextResponse.json(
+        { error: "Booking not found." },
+        { status: 404 },
+      );
     }
+
     const initialBooking = initialBookingSnapshot.data() ?? {};
     const reference = clean(initialBooking.reference, 180) || bookingId;
     if (confirmReference !== reference) {
@@ -253,6 +281,7 @@ export async function POST(request: NextRequest) {
         { status: 409 },
       );
     }
+
     const captureRef = db.collection("commerceLedgerEntries").doc(captureId);
     const captureSnapshot = await captureRef.get();
     const capture = captureSnapshot.exists
@@ -285,7 +314,10 @@ export async function POST(request: NextRequest) {
       connectedAccountTransferStatus: connectedTransferStatus,
     });
     if (eligibilityError) {
-      return NextResponse.json({ error: eligibilityError }, { status: 409 });
+      return NextResponse.json(
+        { error: eligibilityError },
+        { status: 409 },
+      );
     }
 
     const operationId = buildConnectSettlementOperationId({
@@ -301,7 +333,10 @@ export async function POST(request: NextRequest) {
         { status: 409 },
       );
     }
-    const operationRef = db.collection("commerceSettlementOperations").doc(operationId);
+
+    const operationRef = db
+      .collection("commerceSettlementOperations")
+      .doc(operationId);
     const profileRef = profileDocument.ref;
     const now = new Date().toISOString();
 
@@ -313,12 +348,18 @@ export async function POST(request: NextRequest) {
           transaction.get(profileRef),
           transaction.get(operationRef),
         ]);
-      if (!bookingSnapshot.exists || !captureCheck.exists || !profileCheck.exists) {
+
+      if (
+        !bookingSnapshot.exists ||
+        !captureCheck.exists ||
+        !profileCheck.exists
+      ) {
         throw new SettlementActionError(
           "Settlement records changed before authorization. Refresh and review again.",
           409,
         );
       }
+
       const booking = bookingSnapshot.data() ?? {};
       const checkedProfile = profileCheck.data() ?? {};
       const checkedCapture = normalizeStoredCommerceLedgerEntry({
@@ -326,10 +367,14 @@ export async function POST(request: NextRequest) {
         data: captureCheck.data() ?? {},
       });
       if (!checkedCapture || checkedCapture.kind !== "capture") {
-        throw new SettlementActionError("The capture ledger is no longer valid.", 409);
+        throw new SettlementActionError(
+          "The capture ledger is no longer valid.",
+          409,
+        );
       }
       if (
-        clean(checkedProfile.stripeAccountId, 220) !== destinationAccountId ||
+        clean(checkedProfile.stripeAccountId, 220) !==
+          destinationAccountId ||
         !normalizeListingIds(checkedProfile.listingIds).includes(listingId)
       ) {
         throw new SettlementActionError(
@@ -337,6 +382,7 @@ export async function POST(request: NextRequest) {
           409,
         );
       }
+
       const currentError = connectSettlementEligibilityError({
         bookingStatus: booking.status,
         paymentStatus: booking.paymentStatus,
@@ -353,11 +399,12 @@ export async function POST(request: NextRequest) {
         merchantSettlementCents: checkedCapture.merchantSettlementCents,
         connectedAccountTransferStatus: connectedTransferStatus,
       });
-      if (currentError) throw new SettlementActionError(currentError, 409);
+      if (currentError) {
+        throw new SettlementActionError(currentError, 409);
+      }
 
       if (operationSnapshot.exists) {
-        const operation = operationSnapshot.data() ?? {};
-        const state = clean(operation.status, 40);
+        const state = clean(operationSnapshot.data()?.status, 40);
         throw new SettlementActionError(
           state === "succeeded"
             ? "This settlement has already been released."
@@ -370,7 +417,8 @@ export async function POST(request: NextRequest) {
         bookingId,
         bookingReference: reference,
         listingId,
-        listingName: clean(booking.listingName, 220) || "VI Guide booking",
+        listingName:
+          clean(booking.listingName, 220) || "VI Guide booking",
         captureEntryId: checkedCapture.id,
         destinationAccountId,
         merchantProfileId: profileDocument.id,
@@ -399,6 +447,7 @@ export async function POST(request: NextRequest) {
 
     const paymentIntentId = clean(initialBooking.paymentIntentId, 220);
     let sourceChargeId = "";
+
     try {
       const paymentIntent = await getStripe().paymentIntents.retrieve(
         paymentIntentId,
@@ -412,7 +461,7 @@ export async function POST(request: NextRequest) {
       const transfer = await getStripe().transfers.create(
         {
           amount: capture.merchantSettlementCents,
-          currency: capture.currency,
+          currency: "usd",
           destination: destinationAccountId,
           source_transaction: sourceChargeId,
           transfer_group: transferGroup,
@@ -435,8 +484,9 @@ export async function POST(request: NextRequest) {
           transaction.get(operationRef),
         ]);
         if (!bookingSnapshot.exists || !operationSnapshot.exists) return;
-        const operation = operationSnapshot.data() ?? {};
-        if (clean(operation.status, 40) === "succeeded") return;
+        if (clean(operationSnapshot.data()?.status, 40) === "succeeded") {
+          return;
+        }
 
         transaction.update(operationRef, {
           status: "succeeded",
@@ -508,6 +558,7 @@ export async function POST(request: NextRequest) {
           { merge: true },
         ),
       ]);
+
       return NextResponse.json(
         {
           error:
@@ -520,7 +571,10 @@ export async function POST(request: NextRequest) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
     if (error instanceof SettlementActionError) {
-      return NextResponse.json({ error: error.message }, { status: error.status });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.status },
+      );
     }
     if (error instanceof StripeMarketplaceConnectError) {
       return NextResponse.json(
@@ -596,7 +650,9 @@ function formatMoney(cents: number) {
 }
 
 function normalizeStatus(value: number) {
-  return Number.isInteger(value) && value >= 400 && value <= 599 ? value : 502;
+  return Number.isInteger(value) && value >= 400 && value <= 599
+    ? value
+    : 502;
 }
 
 function clean(value: unknown, maxLength: number) {
