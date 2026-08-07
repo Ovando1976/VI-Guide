@@ -24,6 +24,7 @@ import {
   normalizeCommerceLifecycleStatus,
   type MerchantCommerceTransition,
 } from "@/lib/payments/commerce-booking-lifecycle";
+import { normalizeTravelRequestStatus } from "@/lib/travel-advisor";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -90,6 +91,17 @@ export async function PATCH(
           403,
         );
       }
+
+      const travelRequestId = normalizeTravelRequestId(booking.travelRequestId);
+      const travelRequestRef = travelRequestId
+        ? db.collection("travelPlanningRequests").doc(travelRequestId)
+        : null;
+      const travelRequestSnapshot = travelRequestRef
+        ? await transaction.get(travelRequestRef)
+        : null;
+      const travelRequest = travelRequestSnapshot?.exists
+        ? travelRequestSnapshot.data() ?? {}
+        : null;
 
       const deposit = resolveMerchantOfferDeposit({
         hasRequestedValue: hasDepositAmount,
@@ -181,6 +193,49 @@ export async function PATCH(
         ...paymentReset,
       });
 
+      if (travelRequestRef && travelRequest) {
+        const currentTravelStatus = normalizeTravelRequestStatus(travelRequest.status);
+        const shouldMarkBooked =
+          status === "confirmed" &&
+          currentTravelStatus !== "closed" &&
+          currentTravelStatus !== "booked";
+        transaction.set(
+          travelRequestRef,
+          {
+            latestCommerceBookingId: bookingId,
+            latestCommerceBookingReference: reference,
+            latestCommerceBookingStatus: status,
+            latestCommerceBookingUpdatedAt: updatedAt,
+            ...(shouldMarkBooked
+              ? {
+                  status: "booked",
+                  bookedAt: clean(travelRequest.bookedAt, 50) || updatedAt,
+                }
+              : {}),
+            updatedAt,
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
+
+        if (shouldMarkBooked) {
+          transaction.set(db.collection("travelAdvisorAudit").doc(), {
+            action: "booking_confirmed",
+            requestId: travelRequestId,
+            reference: clean(travelRequest.reference, 120) || null,
+            proposalShareId: clean(booking.travelProposalShareId, 40) || null,
+            bookingId,
+            bookingReference: reference,
+            listingId,
+            listingName,
+            actorUid: session.uid,
+            actorEmail: session.email ?? null,
+            createdAt: updatedAt,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
       const notificationOutboxIds: string[] = [];
       for (const audience of ["traveler", "operations"] as const) {
         const notificationRef = db.collection("notifications").doc();
@@ -267,6 +322,7 @@ export async function PATCH(
             status === "payment_required"
               ? null
               : booking.checkoutSessionId ?? null,
+          travelRequestLinked: Boolean(travelRequestRef && travelRequest),
           updatedAt,
         },
         notificationOutboxIds,
@@ -354,6 +410,11 @@ function formatMoney(cents: number) {
     style: "currency",
     currency: "USD",
   }).format(cents / 100);
+}
+
+function normalizeTravelRequestId(value: unknown) {
+  const requestId = clean(value, 80);
+  return /^travel_[a-f0-9]{32}$/.test(requestId) ? requestId : "";
 }
 
 function hasOwn(value: unknown, key: string) {
