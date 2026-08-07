@@ -38,6 +38,7 @@ export type ProviderAvailabilityWindowDecisionInput = {
   startTime?: string;
   endTime?: string;
   capacity?: number;
+  targetDates?: Iterable<string>;
 };
 
 export type ProviderAvailabilityWindowDecisionResult = {
@@ -125,6 +126,9 @@ export function applyProviderAvailabilityWindowDecision(
   const startDate = normalizeIsoDate(input.startDate);
   const windowDays = clampWhole(input.windowDays, 1, 90, 14);
   const endDate = startDate ? addCalendarDays(startDate, windowDays - 1) : "";
+  const targetDates = input.targetDates
+    ? normalizeDecisionDates(input.targetDates)
+    : null;
 
   if (!startDate || !endDate) {
     return {
@@ -146,7 +150,8 @@ export function applyProviderAvailabilityWindowDecision(
     if (
       decided.has(day.date) ||
       day.date < startDate ||
-      day.date > endDate
+      day.date > endDate ||
+      (targetDates && !targetDates.has(day.date))
     ) {
       return day;
     }
