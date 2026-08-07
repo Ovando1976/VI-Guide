@@ -48,6 +48,15 @@ export async function GET() {
             proposalTitle: clean(data.proposalTitle, 120) || null,
             proposalPublishedAt: clean(data.proposalPublishedAt, 50) || null,
             proposalSentAt: clean(data.proposalSentAt, 50) || null,
+            bookingRequestCount: safeInteger(data.bookingRequestCount),
+            latestCommerceBookingId: clean(data.latestCommerceBookingId, 160) || null,
+            latestCommerceBookingReference:
+              clean(data.latestCommerceBookingReference, 160) || null,
+            latestCommerceBookingStatus:
+              clean(data.latestCommerceBookingStatus, 40) || null,
+            latestBookingRequestedAt: clean(data.latestBookingRequestedAt, 50) || null,
+            latestCommerceBookingUpdatedAt:
+              clean(data.latestCommerceBookingUpdatedAt, 50) || null,
             createdAt: clean(data.createdAt, 50),
             updatedAt: clean(data.updatedAt, 50),
           };
