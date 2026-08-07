@@ -230,22 +230,30 @@ export function evaluateShoreExcursionTiming(input: {
   const excursionEnds = start + input.durationMinutes;
   const safeReturnDeadline = allAboard - input.minReturnBufferMinutes;
   const latestSafeStart = safeReturnDeadline - input.durationMinutes;
-  const shared = {
-    excursionEndsAt: formatMinutes(excursionEnds),
-    safeReturnDeadline: formatMinutes(safeReturnDeadline),
-    latestSafeStartTime: formatMinutes(latestSafeStart),
-    bufferMinutes: allAboard - excursionEnds,
-  };
+  const bufferMinutes = allAboard - excursionEnds;
 
   if (excursionEnds > safeReturnDeadline) {
     return {
       ok: false,
       reason: "insufficient_return_buffer",
-      ...shared,
+      excursionEndsAt: formatMinutes(excursionEnds),
+      ...(safeReturnDeadline >= 0
+        ? { safeReturnDeadline: formatMinutes(safeReturnDeadline) }
+        : {}),
+      ...(latestSafeStart >= 0
+        ? { latestSafeStartTime: formatMinutes(latestSafeStart) }
+        : {}),
+      bufferMinutes,
     };
   }
 
-  return { ok: true, ...shared };
+  return {
+    ok: true,
+    excursionEndsAt: formatMinutes(excursionEnds),
+    safeReturnDeadline: formatMinutes(safeReturnDeadline),
+    latestSafeStartTime: formatMinutes(latestSafeStart),
+    bufferMinutes,
+  };
 }
 
 export function shoreExcursionBookingDocumentId(input: {
