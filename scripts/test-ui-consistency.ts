@@ -30,6 +30,7 @@ const partnersLayout = source("app/partners/layout.tsx");
 const bookingPage = source("app/book/page.tsx");
 const bookingsPage = source("app/bookings/page.tsx");
 const travelDesk = source("components/admin/travel-request-board.tsx");
+const travelAdvisorRoute = source("app/api/travel-advisor/requests/route.ts");
 const cruiseDesk = source("components/admin/cruise-request-board.tsx");
 const adminNav = source("components/admin-nav.tsx");
 const mapLinks = source("lib/discovery/map-links.ts");
@@ -103,6 +104,12 @@ for (const [name, contents] of [
   assert.match(contents, /OpsSection/, `${name} must use shared OpsSection`);
   assert.match(contents, /OpsPill/, `${name} must use shared OpsPill`);
 }
+
+assert.match(travelDesk, /Send through VI Guide/);
+assert.match(travelDesk, /sendFollowup/);
+assert.match(travelAdvisorRoute, /travel_advisor_followup/);
+assert.match(travelAdvisorRoute, /traveler_followup_queued/);
+assert.match(travelAdvisorRoute, /processBookingNotificationOutboxIds/);
 
 assert.match(adminNav, /\/admin\/travel-requests/);
 assert.match(adminNav, /\/admin\/cruise-requests/);
