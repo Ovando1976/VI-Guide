@@ -1,46 +1,236 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, ShipWheel } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarSearch,
+  CheckCircle2,
+  Compass,
+  LifeBuoy,
+  Route,
+  ShipWheel,
+  TicketCheck,
+} from "lucide-react";
 
+import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gateway";
-import { CruisePlanningForm } from "@/components/cruise/cruise-planning-form";
 
 export const metadata: Metadata = {
-  title: "Cruise Planning",
+  title: "Cruise Hub | VI Guide",
   description:
-    "Search connected cruise inventory when available, book USVI shore excursions, or request personalized cruise research, cabin guidance, and Caribbean port planning from VI Guide.",
+    "Plan the cruise, book safe USVI port days, request advisor help, and keep the trip connected inside one VI Guide cruise hub.",
 };
 
 export default function CruisesPage() {
   return (
-    <>
-      <section className="bg-[#f8f4ea] px-4 pt-8 sm:px-6 lg:pt-12">
-        <div className="mx-auto max-w-7xl">
-          <Link
-            href="/shore-excursions"
-            className="group flex flex-col gap-5 overflow-hidden rounded-[34px] border border-teal-900/10 bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.34),transparent_38%),linear-gradient(145deg,#032f2d,#0b6b64)] p-7 text-white shadow-[0_24px_70px_rgba(4,51,49,.18)] transition hover:-translate-y-0.5 hover:shadow-xl sm:flex-row sm:items-center sm:justify-between sm:p-8"
-          >
-            <div className="max-w-3xl">
-              <p className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">
-                <ShipWheel className="h-4 w-4" /> New: local shore excursions
+    <main className="min-h-screen bg-[#f8f4ea] pb-28 text-[#043331]">
+      <section className="px-4 pt-8 sm:px-6 lg:pt-12">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[42px] bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.42),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(14,165,164,.18),transparent_30%),linear-gradient(145deg,#022e3b,#075e59)] p-8 text-white shadow-[0_34px_100px_rgba(4,51,49,.24)] sm:p-12 lg:p-16">
+          <div className="grid gap-10 lg:grid-cols-[1.12fr_.88fr] lg:items-end">
+            <div>
+              <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[.23em] text-[#f5c451]">
+                <ShipWheel className="h-4 w-4" /> VI Guide Cruise Hub
               </p>
-              <h2 className="mt-3 text-3xl font-black tracking-[-.045em] sm:text-4xl">
-                Turn a port day into a bookable VI experience with the ship clock built in.
-              </h2>
-              <p className="mt-3 text-sm font-semibold leading-6 text-white/65">
-                Browse local operator offers by cruise port and check the planned
-                excursion against your all-aboard time before submitting a request.
+              <h1 className="mt-5 max-w-5xl text-5xl font-black leading-[.9] tracking-[-.065em] sm:text-7xl">
+                One cruise plan, from sailing search to the last port day.
+              </h1>
+              <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-white/72">
+                Start with a sailing, build the Virgin Islands days around the ship
+                clock, bring in an advisor when you want help, and keep bookings and
+                trip details connected instead of scattering them across separate tools.
               </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="#sailings"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-6 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]"
+                >
+                  Find a sailing <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/shore-excursions"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[.08] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white"
+                >
+                  Plan my port day <Compass className="h-4 w-4 text-[#f5c451]" />
+                </Link>
+              </div>
             </div>
-            <span className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-6 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]">
-              Browse excursions
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </span>
-          </Link>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              <HeroSignal
+                icon={CalendarSearch}
+                title="Find the cruise"
+                text="Search connected inventory when available or hand the brief to an advisor."
+              />
+              <HeroSignal
+                icon={Compass}
+                title="Build the port days"
+                text="Match local excursions to the actual cruise port and all-aboard time."
+              />
+              <HeroSignal
+                icon={TicketCheck}
+                title="Keep it together"
+                text="Bookings and trip planning stay inside the same VI Guide journey."
+              />
+            </div>
+          </div>
         </div>
       </section>
-      <CruiseInventoryGateway />
-      <CruisePlanningForm />
-    </>
+
+      <div className="mt-6">
+        <CruiseHubNav />
+      </div>
+
+      <section className="px-4 py-8 sm:px-6 lg:py-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-4 md:grid-cols-3">
+            <PathCard
+              number="01"
+              icon={CalendarSearch}
+              title="Find a sailing"
+              text="Use connected inventory when it is available. If supplier access is still limited, move directly into the advisor workflow without losing the planning context."
+              href="#sailings"
+              cta="Search sailings"
+            />
+            <PathCard
+              number="02"
+              icon={Compass}
+              title="Plan the port day"
+              text="Browse local cruise-ready excursions with port pickup, duration, capacity, and return-to-ship rules built into the request flow."
+              href="/shore-excursions"
+              cta="Browse port days"
+            />
+            <PathCard
+              number="03"
+              icon={LifeBuoy}
+              title="Ask an advisor"
+              text="Send one structured brief for ship, cabin, budget, accessibility, celebration, and Caribbean itinerary research."
+              href="/cruises/plan"
+              cta="Start advisor brief"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="sailings" className="scroll-mt-6 pb-4">
+        <CruiseInventoryGateway />
+      </section>
+
+      <section className="px-4 py-8 sm:px-6 lg:py-12">
+        <div className="mx-auto max-w-7xl rounded-[36px] border border-teal-900/10 bg-white p-6 shadow-sm sm:p-9">
+          <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">
+                The connected journey
+              </p>
+              <h2 className="mt-3 text-4xl font-black tracking-[-.05em]">
+                The cruise is not a separate product from the Virgin Islands trip.
+              </h2>
+              <p className="mt-4 text-sm font-semibold leading-7 text-slate-600">
+                VI Guide should understand the voyage, the specific port call, the
+                traveler&apos;s local plans, and the bookings as one itinerary. That is
+                the organizing principle of this hub.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/planner"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.13em] text-white"
+                >
+                  <Route className="h-4 w-4 text-[#f5c451]" /> Open My Trip
+                </Link>
+                <Link
+                  href="/bookings"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-[9px] font-black uppercase tracking-[.13em]"
+                >
+                  <TicketCheck className="h-4 w-4 text-teal-700" /> My bookings
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <JourneyStep
+                title="Sailing context"
+                text="Ship, dates, departure port, destinations, cabin and traveler preferences."
+              />
+              <JourneyStep
+                title="Port-call context"
+                text="Island, cruise terminal, all-aboard time and conservative return window."
+              />
+              <JourneyStep
+                title="Local fulfillment"
+                text="Operator, pickup, excursion duration, mobility needs and guest count."
+              />
+              <JourneyStep
+                title="Trip continuity"
+                text="Bookings, alerts, itinerary handoffs and concierge recommendations stay connected."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function HeroSignal({
+  icon: Icon,
+  title,
+  text,
+}: {
+  icon: typeof ShipWheel;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-[26px] border border-white/10 bg-white/[.07] p-5">
+      <Icon className="h-5 w-5 text-[#f5c451]" />
+      <h2 className="mt-4 text-lg font-black tracking-[-.03em]">{title}</h2>
+      <p className="mt-2 text-xs font-semibold leading-5 text-white/60">{text}</p>
+    </div>
+  );
+}
+
+function PathCard({
+  number,
+  icon: Icon,
+  title,
+  text,
+  href,
+  cta,
+}: {
+  number: string;
+  icon: typeof ShipWheel;
+  title: string;
+  text: string;
+  href: string;
+  cta: string;
+}) {
+  return (
+    <article className="flex h-full flex-col rounded-[30px] border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="flex items-center justify-between gap-4">
+        <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">
+          {number}
+        </span>
+        <span className="grid h-10 w-10 place-items-center rounded-2xl bg-teal-50 text-teal-700">
+          <Icon className="h-5 w-5" />
+        </span>
+      </div>
+      <h2 className="mt-6 text-2xl font-black tracking-[-.04em]">{title}</h2>
+      <p className="mt-3 flex-1 text-sm font-semibold leading-7 text-slate-600">{text}</p>
+      <Link
+        href={href}
+        className="mt-6 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-teal-800"
+      >
+        {cta} <ArrowRight className="h-4 w-4" />
+      </Link>
+    </article>
+  );
+}
+
+function JourneyStep({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-[24px] bg-[#f8f4ea] p-5">
+      <CheckCircle2 className="h-5 w-5 text-teal-700" />
+      <h3 className="mt-4 text-sm font-black">{title}</h3>
+      <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">{text}</p>
+    </div>
   );
 }
