@@ -40,6 +40,18 @@ const BOOKING_KINDS: CommerceBookingKind[] = [
 ];
 const ISLANDS: IntelligenceIsland[] = ["stt", "stj", "stx"];
 
+type CommerceBookingSubmission = Partial<CommerceBookingRequest> & {
+  proposalShareId?: unknown;
+};
+
+type ProposalCandidate = {
+  shareId: string;
+  travelRequestId: string;
+  reference: string;
+  email: string;
+  requestRef: FirebaseFirestore.DocumentReference;
+};
+
 export async function POST(request: NextRequest) {
   if (!hasFirebaseAdminConfiguration()) {
     return NextResponse.json(
@@ -49,7 +61,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = (await request.json().catch(() => null)) as
-    | Partial<CommerceBookingRequest>
+    | CommerceBookingSubmission
     | null;
   if (!body) {
     return NextResponse.json(
@@ -69,12 +81,41 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   }
+  const proposalShareId = normalizeProposalShareId(body.proposalShareId);
 
   const db = getAdminDb();
   const requestNow = new Date();
 
   try {
     const result = await db.runTransaction(async (transaction) => {
+      let proposalCandidate: ProposalCandidate | null = null;
+      if (proposalShareId) {
+        const shareRef = db.collection("sharedJourneys").doc(proposalShareId);
+        const shareSnapshot = await transaction.get(shareRef);
+        const share = shareSnapshot.exists ? shareSnapshot.data() ?? {} : {};
+        const travelRequestId = normalizeTravelRequestId(share.travelRequestId);
+        if (
+          shareSnapshot.exists &&
+          share.source === "travel_advisor_proposal" &&
+          travelRequestId
+        ) {
+          const requestRef = db
+            .collection("travelPlanningRequests")
+            .doc(travelRequestId);
+          const travelRequestSnapshot = await transaction.get(requestRef);
+          if (travelRequestSnapshot.exists) {
+            const travelRequest = travelRequestSnapshot.data() ?? {};
+            proposalCandidate = {
+              shareId: proposalShareId,
+              travelRequestId,
+              reference: clean(travelRequest.reference, 120),
+              email: clean(travelRequest.email, 220).toLowerCase(),
+              requestRef,
+            };
+          }
+        }
+      }
+
       let offerSnapshot: MerchantOfferBookingSnapshot | null = null;
       let offerRef: FirebaseFirestore.DocumentReference | null = null;
       let offerRecord: FirebaseFirestore.DocumentData | null = null;
@@ -117,6 +158,11 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      const proposalAttribution =
+        proposalCandidate && proposalCandidate.email === booking.email
+          ? proposalCandidate
+          : null;
+
       let bookingRef = db.collection("commerceBookings").doc();
       if (offerSnapshot) {
         bookingRef = db
@@ -145,6 +191,40 @@ export async function POST(request: NextRequest) {
               409,
             );
           }
+
+          const existingTravelRequestId = normalizeTravelRequestId(
+            data.travelRequestId,
+          );
+          const canLinkDuplicate = Boolean(
+            proposalAttribution &&
+              (!existingTravelRequestId ||
+                existingTravelRequestId === proposalAttribution.travelRequestId),
+          );
+          if (canLinkDuplicate && proposalAttribution) {
+            transaction.set(
+              bookingRef,
+              {
+                travelProposalShareId: proposalAttribution.shareId,
+                travelRequestId: proposalAttribution.travelRequestId,
+                travelRequestReference: proposalAttribution.reference || null,
+                updatedAt: requestNow.toISOString(),
+              },
+              { merge: true },
+            );
+            transaction.set(
+              proposalAttribution.requestRef,
+              {
+                latestCommerceBookingId: bookingRef.id,
+                latestCommerceBookingReference: reference,
+                latestCommerceBookingStatus: clean(data.status, 40) || "requested",
+                latestBookingRequestedAt: clean(data.createdAt, 50) || requestNow.toISOString(),
+                updatedAt: requestNow.toISOString(),
+                serverUpdatedAt: FieldValue.serverTimestamp(),
+              },
+              { merge: true },
+            );
+          }
+
           return {
             duplicate: true,
             bookingId: bookingRef.id,
@@ -152,6 +232,7 @@ export async function POST(request: NextRequest) {
             status: clean(data.status, 40) || "requested",
             offer: offerResponse(data, offerSnapshot),
             notificationOutboxIds: [] as string[],
+            linkedToTravelRequest: canLinkDuplicate,
           };
         }
 
@@ -188,12 +269,23 @@ export async function POST(request: NextRequest) {
               offerValidThrough: offerSnapshot.validThrough,
             }
           : {}),
+        ...(proposalAttribution
+          ? {
+              travelProposalShareId: proposalAttribution.shareId,
+              travelRequestId: proposalAttribution.travelRequestId,
+              travelRequestReference: proposalAttribution.reference || null,
+            }
+          : {}),
         reference,
         status: "requested",
         createdAt: now,
         updatedAt: now,
         serverCreatedAt: FieldValue.serverTimestamp(),
-        source: offerSnapshot ? "vi-guide-offer" : "vi-guide-web",
+        source: offerSnapshot
+          ? "vi-guide-offer"
+          : proposalAttribution
+            ? "vi-guide-travel-proposal"
+            : "vi-guide-web",
       });
 
       if (requestQuotaRef) {
@@ -216,6 +308,35 @@ export async function POST(request: NextRequest) {
         });
       }
 
+      if (proposalAttribution) {
+        transaction.set(
+          proposalAttribution.requestRef,
+          {
+            bookingRequestCount: FieldValue.increment(1),
+            latestCommerceBookingId: bookingRef.id,
+            latestCommerceBookingReference: reference,
+            latestCommerceBookingStatus: "requested",
+            latestBookingRequestedAt: now,
+            updatedAt: now,
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
+        transaction.set(db.collection("travelAdvisorAudit").doc(), {
+          action: "booking_request_created",
+          requestId: proposalAttribution.travelRequestId,
+          reference: proposalAttribution.reference || null,
+          proposalShareId: proposalAttribution.shareId,
+          bookingId: bookingRef.id,
+          bookingReference: reference,
+          bookingKind: booking.kind,
+          listingId: booking.listingId,
+          listingName: booking.listingName,
+          createdAt: now,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+        });
+      }
+
       const notificationInputs = [
         {
           audience: "traveler" as const,
@@ -234,8 +355,12 @@ export async function POST(request: NextRequest) {
         {
           audience: "operations" as const,
           recipientEmail: null,
-          title: "New booking request",
-          message: `${booking.listingName} received booking request ${reference}.`,
+          title: proposalAttribution
+            ? "Travel proposal booking request"
+            : "New booking request",
+          message: proposalAttribution
+            ? `${booking.listingName} received booking request ${reference} from travel proposal ${proposalAttribution.reference || proposalAttribution.shareId}.`
+            : `${booking.listingName} received booking request ${reference}.`,
           href: "/admin/operations",
         },
       ];
@@ -274,6 +399,7 @@ export async function POST(request: NextRequest) {
         status: "requested",
         offer: offerSnapshot ? offerResponse({}, offerSnapshot) : null,
         notificationOutboxIds,
+        linkedToTravelRequest: Boolean(proposalAttribution),
       };
     });
 
@@ -295,6 +421,7 @@ export async function POST(request: NextRequest) {
         bookingId: result.bookingId,
         reference: result.reference,
         status: result.status,
+        linkedToTravelRequest: result.linkedToTravelRequest,
         ...(result.offer ?? {}),
       },
       { status: result.duplicate ? 200 : 201 },
@@ -377,6 +504,16 @@ function normalizeBooking(
     ...(clean(body.notes, 1600) ? { notes: clean(body.notes, 1600) } : {}),
     ...(listingHref ? { listingHref } : {}),
   };
+}
+
+function normalizeProposalShareId(value: unknown) {
+  const shareId = clean(value, 40).toLowerCase();
+  return /^[a-f0-9]{24}$/.test(shareId) ? shareId : "";
+}
+
+function normalizeTravelRequestId(value: unknown) {
+  const requestId = clean(value, 80);
+  return /^travel_[a-f0-9]{32}$/.test(requestId) ? requestId : "";
 }
 
 function offerResponse(
