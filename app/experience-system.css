@@ -1,0 +1,101 @@
+/* VI Guide traveler-facing visual propagation layer.
+   Keep high-impact surface styling here so core map, booking, and intelligence
+   behavior stays isolated from presentation changes. */
+
+.map-experience-hero,
+.concierge-product-page > section > div {
+  background-color: var(--vi-deep);
+}
+
+.map-experience-hero::after,
+.concierge-product-page > section > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+/* The Concierge now has its own branded introduction. Hide the older
+   developer-oriented workflow masthead and present the agent workspace as a
+   deliberate dark intelligence cockpit beneath the travel hero. */
+.concierge-product-page #concierge-workspace > main > section:first-child {
+  display: none;
+}
+
+.concierge-product-page #concierge-workspace > main {
+  min-height: 0 !important;
+  background: transparent !important;
+  padding-bottom: 0;
+}
+
+.concierge-product-page #concierge-workspace > main > div {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(40,200,189,.16), transparent 26rem),
+    radial-gradient(circle at 94% 12%, rgba(245,196,81,.08), transparent 22rem),
+    linear-gradient(160deg, #032f2d 0%, #041f26 62%, #03181f 100%);
+  box-shadow: 0 30px 90px rgba(2,31,29,.22), inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.concierge-product-page #concierge-workspace textarea,
+.concierge-product-page #concierge-workspace input {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+/* Treat the map workspace as a premium product surface rather than an admin
+   dashboard. The existing components keep their behavior while their major
+   containers inherit the new sea/sand product framing. */
+.map-customer-page {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(40,200,189,.10), transparent 30rem),
+    radial-gradient(circle at 94% 12%, rgba(245,196,81,.10), transparent 24rem),
+    linear-gradient(180deg, #f7f2e8 0%, #f2f7f4 52%, #eef4f1 100%) !important;
+}
+
+.map-customer-page #territory-workspace {
+  scroll-margin-top: 22px;
+}
+
+.map-customer-page #territory-workspace > section:first-child {
+  overflow: hidden;
+  border-radius: 30px !important;
+  box-shadow: 0 28px 74px rgba(2,47,45,.13) !important;
+}
+
+.map-customer-page #territory-workspace > aside > section {
+  border-radius: 26px !important;
+}
+
+.map-customer-page .leaflet-container {
+  border-radius: 22px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+}
+
+/* Give the large itinerary / readiness modules a consistent premium lift
+   without changing their state or booking semantics. */
+body:has(a[href="/planner"]) .trip-premium-surface {
+  box-shadow: 0 24px 70px rgba(4,51,49,.10);
+}
+
+@media (max-width: 700px) {
+  .map-experience-hero,
+  .concierge-product-page > section > div {
+    border-radius: 28px;
+  }
+
+  .concierge-product-page #concierge-workspace > main > div {
+    margin-top: 1rem;
+    border-radius: 28px;
+  }
+
+  .map-customer-page #territory-workspace > section:first-child,
+  .map-customer-page #territory-workspace > aside > section {
+    border-radius: 24px !important;
+  }
+}
