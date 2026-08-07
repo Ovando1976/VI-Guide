@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 
 import "./globals.css";
+import "./experience-system.css";
 import "./concierge-responsive.css";
 import "./map-premium.css";
 import "./mobile-navigation-fix.css";
@@ -40,7 +41,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#f8fbfa",
+  themeColor: "#032f2d",
   colorScheme: "light",
 };
 
