@@ -119,6 +119,6 @@ assert.equal(canTransitionTravelRequest("new", "booked"), false);
 assert.equal(canTransitionTravelRequest("contacted", "booked"), true);
 assert.equal(canTransitionTravelRequest("closed", "new"), false);
 assert.equal(travelIslandLabel("stx"), "St. Croix");
-assert.equal(travelTerritoryDayKey(now), "08/07/2026");
+assert.equal(travelTerritoryDayKey(now), "2026-08-07");
 
 console.log("USVI travel advisor intake tests passed.");
