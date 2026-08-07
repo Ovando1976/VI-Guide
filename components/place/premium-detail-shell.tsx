@@ -1,5 +1,7 @@
+import { Route, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { PlaceActionBar } from "@/components/place/place-action-bar";
 import {
   inferPlaceCapabilities,
@@ -103,15 +105,32 @@ export function PremiumDetailShell({
 
   return (
     <main
-      className={`min-h-screen bg-[#f8f4ea] px-4 py-6 pb-[calc(8rem+env(safe-area-inset-bottom))] text-[#043331] sm:px-6 lg:py-10 ${className}`}
+      className={`min-h-screen bg-[#f8f4ea] px-4 py-5 pb-[calc(8rem+env(safe-area-inset-bottom))] text-[#043331] sm:px-6 lg:py-8 ${className}`}
     >
       <div className="mx-auto max-w-7xl space-y-8">
+        <ViPublicHeader
+          actionHref={conciergeHref}
+          actionLabel="Ask VI Concierge"
+          actionIcon={Sparkles}
+          secondaryHref="/planner"
+          secondaryLabel="My Trip"
+        />
+
         {back || share ? (
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>{back}</div>
             <div>{share}</div>
           </div>
-        ) : null}
+        ) : (
+          <div className="flex justify-end">
+            <a
+              href="/planner"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[.16em] shadow-sm"
+            >
+              <Route className="h-4 w-4 text-teal-700" /> My Trip
+            </a>
+          </div>
+        )}
 
         <section className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm lg:rounded-[40px]">
           <div className="grid lg:grid-cols-[1.25fr_.75fr]">
@@ -149,6 +168,8 @@ export function PremiumDetailShell({
           mapHref={actions.mapHref}
           rideHref={actions.rideHref}
           website={actions.website}
+          conciergeHref={conciergeHref}
+          bookingHref={resolvedBookingHref}
           journeyStop={actions.journeyStop}
         />
 
