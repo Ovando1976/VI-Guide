@@ -71,18 +71,22 @@ export function buildTravelAdvisorProposalSnapshot({
 }
 
 function sanitizeStop(stop: IntelligencePlanStop): IntelligencePlanStop {
-  return {
+  const sanitized: IntelligencePlanStop = {
     ...stop,
     title: redactContact(stop.title).slice(0, 160),
     summary: redactContact(stop.summary).slice(0, 1200),
-    ...(safeInternalHref(stop.href) ? { href: safeInternalHref(stop.href) } : { href: undefined }),
-    ...(safeInternalHref(stop.mapHref)
-      ? { mapHref: safeInternalHref(stop.mapHref) }
-      : { mapHref: undefined }),
-    ...(safeInternalHref(stop.bookingHref)
-      ? { bookingHref: safeInternalHref(stop.bookingHref) }
-      : { bookingHref: undefined }),
   };
+  delete sanitized.href;
+  delete sanitized.mapHref;
+  delete sanitized.bookingHref;
+
+  const href = safeInternalHref(stop.href);
+  const mapHref = safeInternalHref(stop.mapHref);
+  const bookingHref = safeInternalHref(stop.bookingHref);
+  if (href) sanitized.href = href;
+  if (mapHref) sanitized.mapHref = mapHref;
+  if (bookingHref) sanitized.bookingHref = bookingHref;
+  return sanitized;
 }
 
 function redactContact(value: string) {
