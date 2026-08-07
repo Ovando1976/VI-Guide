@@ -284,7 +284,8 @@ function normalizeOfferWindow(
 }
 
 function savedProviderDates(data: FirebaseFirestore.DocumentData | undefined) {
-  const days = Array.isArray(data?.days) ? data.days : [];
+  const rawDays = data?.days;
+  const days = Array.isArray(rawDays) ? rawDays : [];
   return new Set(
     days.flatMap((value: unknown) => {
       if (!value || typeof value !== "object" || Array.isArray(value)) return [];
