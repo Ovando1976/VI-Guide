@@ -11,6 +11,7 @@ import {
   listOfficialCruisePortCalls,
 } from "../lib/cruise-port-calls";
 import type { MerchantOfferBookingSnapshot } from "../lib/merchant-offer-booking";
+import { buildProviderCruiseDemandDates } from "../lib/provider-cruise-demand";
 import type { ShoreExcursionProfile } from "../lib/shore-excursions";
 import type { ProviderAvailabilityDay } from "../types/provider-operations";
 
@@ -47,6 +48,89 @@ assert.equal(
   })?.id,
   "2026-08-12_crown_bay_icon-of-the-seas",
   "canonical sailing context should resolve to the official call",
+);
+
+const providerDemand = buildProviderCruiseDemandDates({
+  offers: [
+    {
+      offerId: "stx-active",
+      offerTitle: "Frederiksted Island Day",
+      active: true,
+      validFrom: "2026-08-01",
+      validThrough: "2026-08-31",
+      supportedPorts: ["frederiksted"],
+    },
+    {
+      offerId: "stt-crown-a",
+      offerTitle: "Crown Bay Highlights",
+      active: true,
+      validFrom: "2026-08-10",
+      validThrough: "2026-08-12",
+      supportedPorts: ["crown_bay"],
+    },
+    {
+      offerId: "stt-crown-b",
+      offerTitle: "Crown Bay Beach Run",
+      active: true,
+      validFrom: "2026-08-12",
+      validThrough: "2026-08-12",
+      supportedPorts: ["crown_bay"],
+    },
+    {
+      offerId: "stt-havensight",
+      offerTitle: "Havensight Cruise Day",
+      active: true,
+      validFrom: "2026-08-05",
+      validThrough: "2026-08-05",
+      supportedPorts: ["havensight"],
+    },
+    {
+      offerId: "inactive-offer",
+      offerTitle: "Inactive",
+      active: false,
+      validFrom: "2026-08-01",
+      validThrough: "2026-08-31",
+      supportedPorts: ["crown_bay"],
+    },
+  ],
+  calls: listOfficialCruisePortCalls({
+    from: "2026-08-05",
+    through: "2026-08-12",
+    includeCancelled: true,
+  }),
+  from: "2026-08-05",
+  through: "2026-08-12",
+});
+assert.deepEqual(
+  providerDemand.map((date) => date.date),
+  ["2026-08-05", "2026-08-06", "2026-08-10", "2026-08-12"],
+);
+assert.deepEqual(providerDemand[0]?.shipNames, [
+  "Carnival Celebration",
+  "Disney Treasure",
+]);
+assert.equal(providerDemand[0]?.callCount, 2);
+assert.equal(providerDemand[0]?.earliestArrivalAt, "06:30");
+assert.equal(providerDemand[0]?.latestDepartureAt, "18:00");
+assert.equal(providerDemand[3]?.callCount, 1);
+assert.equal(providerDemand[3]?.offerCount, 2);
+assert.deepEqual(providerDemand[3]?.offerTitles, [
+  "Crown Bay Beach Run",
+  "Crown Bay Highlights",
+]);
+assert.equal(
+  providerDemand.some((date) => date.shipNames.includes("Celebrity Beyond")),
+  false,
+  "cancelled calls must never create provider demand",
+);
+assert.deepEqual(
+  buildProviderCruiseDemandDates({
+    offers: [],
+    calls: listOfficialCruisePortCalls({ from: "2026-08-05", through: "2026-08-12" }),
+    from: "2026-08-05",
+    through: "2026-08-12",
+  }),
+  [],
 );
 
 const offer: MerchantOfferBookingSnapshot = {
