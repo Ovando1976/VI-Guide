@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { BookingPanel } from "@/components/booking-panel";
 import type { RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
@@ -297,6 +298,14 @@ export function MobilityBookingScreen() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 py-5 text-[#043331] md:px-6 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-6">
+        <ViPublicHeader
+          actionHref="/concierge?prompt=Help%20me%20plan%20transportation%20for%20my%20Virgin%20Islands%20trip"
+          actionLabel="Ask VI Concierge"
+          actionIcon={Sparkles}
+          secondaryHref="/"
+          secondaryLabel="Home"
+        />
+
         <section className="relative overflow-hidden rounded-[36px] bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#16a69b_100%)] px-6 py-8 text-white shadow-[0_28px_90px_rgba(4,51,49,.24)] sm:px-8 lg:px-10 lg:py-10">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-[#f5c451]/10 blur-3xl" />
