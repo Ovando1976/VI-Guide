@@ -23,26 +23,28 @@ assert.equal(rhapsody.departsAt, "18:00");
 assert.equal(rhapsody.status, "scheduled");
 assert.equal(derivePlanningAllAboard(rhapsody.departsAt), "17:30");
 
-const cancelledDefault = listOfficialCruisePortCalls({
-  from: "2026-08-05",
-  through: "2026-08-05",
-}).some((call) => call.shipName === "Celebrity Beyond");
-assert.equal(cancelledDefault, false, "cancelled calls must be excluded by default");
-
-const cancelledIncluded = listOfficialCruisePortCalls({
-  from: "2026-08-05",
-  through: "2026-08-05",
-  includeCancelled: true,
-}).find((call) => call.shipName === "Celebrity Beyond");
-assert.equal(cancelledIncluded?.status, "cancelled");
-
-const resolved = resolveOfficialPortCallContext({
-  date: "2026-08-12",
-  portId: "crown_bay",
-  shipName: "Icon of the Seas",
-});
 assert.equal(
-  resolved?.id,
+  listOfficialCruisePortCalls({ from: "2026-08-05", through: "2026-08-05" }).some(
+    (call) => call.shipName === "Celebrity Beyond",
+  ),
+  false,
+  "cancelled calls must be excluded by default",
+);
+assert.equal(
+  listOfficialCruisePortCalls({
+    from: "2026-08-05",
+    through: "2026-08-05",
+    includeCancelled: true,
+  }).find((call) => call.shipName === "Celebrity Beyond")?.status,
+  "cancelled",
+);
+
+assert.equal(
+  resolveOfficialPortCallContext({
+    date: "2026-08-12",
+    portId: "crown_bay",
+    shipName: "Icon of the Seas",
+  })?.id,
   "2026-08-12_crown_bay_icon-of-the-seas",
   "canonical sailing context should resolve to the official call",
 );
@@ -60,7 +62,6 @@ const offer: MerchantOfferBookingSnapshot = {
   validFrom: "2026-08-01",
   validThrough: "2026-09-30",
 };
-
 const profile: ShoreExcursionProfile = {
   offerId: offer.offerId,
   island: "stx",
@@ -73,7 +74,6 @@ const profile: ShoreExcursionProfile = {
   mobilityNotes: null,
   accessibilityNotes: null,
 };
-
 const availability: ProviderAvailabilityDay = {
   date: "2026-08-06",
   isOpen: true,
@@ -98,6 +98,19 @@ assert.equal(fit.latestSafeStartTime, "13:00");
 assert.equal(fit.remainingCapacity, 6);
 assert.equal(fit.capacityVerified, true);
 
+const incomplete = evaluateOfficialPortCallExcursionFit({
+  call: rhapsody,
+  offer,
+  profile,
+  availabilityDay: availability,
+  reservedGuests: 0,
+  partySize: 2,
+  capacityDataComplete: false,
+});
+assert.equal(incomplete.status, "capacity_unverified");
+assert.equal(incomplete.capacityVerified, false);
+assert.equal(incomplete.earliestStartTime, "08:45");
+
 const soldOut = evaluateOfficialPortCallExcursionFit({
   call: rhapsody,
   offer,
@@ -109,36 +122,38 @@ const soldOut = evaluateOfficialPortCallExcursionFit({
 assert.equal(soldOut.status, "sold_out");
 assert.equal(soldOut.remainingCapacity, 0);
 
-const closed = evaluateOfficialPortCallExcursionFit({
-  call: rhapsody,
-  offer,
-  profile,
-  availabilityDay: { ...availability, isOpen: false },
-  reservedGuests: 0,
-  partySize: 1,
-});
-assert.equal(closed.status, "provider_closed");
+assert.equal(
+  evaluateOfficialPortCallExcursionFit({
+    call: rhapsody,
+    offer,
+    profile,
+    availabilityDay: { ...availability, isOpen: false },
+    partySize: 1,
+  }).status,
+  "provider_closed",
+);
 
 const unconfigured = evaluateOfficialPortCallExcursionFit({
   call: rhapsody,
   offer,
   profile,
   availabilityDay: null,
-  reservedGuests: 0,
   partySize: 1,
 });
 assert.equal(unconfigured.status, "capacity_unconfigured");
 assert.equal(unconfigured.capacityVerified, false);
+assert.equal(unconfigured.earliestStartTime, "08:45");
 
-const wrongPort = evaluateOfficialPortCallExcursionFit({
-  call: { ...rhapsody, portId: "crown_bay", island: "stt" },
-  offer,
-  profile,
-  availabilityDay: availability,
-  reservedGuests: 0,
-  partySize: 1,
-});
-assert.equal(wrongPort.status, "wrong_port");
+assert.equal(
+  evaluateOfficialPortCallExcursionFit({
+    call: { ...rhapsody, portId: "crown_bay", island: "stt" },
+    offer,
+    profile,
+    availabilityDay: availability,
+    partySize: 1,
+  }).status,
+  "wrong_port",
+);
 
 const shortCall = getOfficialCruisePortCall(
   "2026-08-12_crown_bay_icon-of-the-seas",
@@ -158,20 +173,22 @@ const stThomasOffer: MerchantOfferBookingSnapshot = {
   listingId: "operator-stt",
   island: "stt",
 };
-const shortWindow = evaluateOfficialPortCallExcursionFit({
-  call: shortCall,
-  offer: stThomasOffer,
-  profile: longStThomasProfile,
-  availabilityDay: {
-    date: shortCall.date,
-    isOpen: true,
-    capacity: 20,
-    startTime: "07:00",
-    endTime: "18:00",
-  },
-  partySize: 2,
-});
-assert.equal(shortWindow.status, "time_conflict");
+assert.equal(
+  evaluateOfficialPortCallExcursionFit({
+    call: shortCall,
+    offer: stThomasOffer,
+    profile: longStThomasProfile,
+    availabilityDay: {
+      date: shortCall.date,
+      isOpen: true,
+      capacity: 20,
+      startTime: "07:00",
+      endTime: "18:00",
+    },
+    partySize: 2,
+  }).status,
+  "time_conflict",
+);
 
 assert.equal(
   reservedGuestCount(
