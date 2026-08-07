@@ -12,9 +12,16 @@ import {
   UsersRound,
   WalletCards,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 
 import { AdminShell } from "@/components/admin-shell";
+import { OpsMetric, OpsPill, OpsSection } from "@/components/ops/ops-ui";
 import {
   CRUISE_REQUEST_STATUSES,
   humanizeCruiseValue,
@@ -146,70 +153,82 @@ export function CruiseRequestBoard() {
         </button>
       }
     >
-      <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <Metric label="All requests" value={metrics.total} />
-        <Metric label="Needs attention" value={metrics.new} />
-        <Metric label="Active planning" value={metrics.active} />
-        <Metric label="Booked" value={metrics.booked} />
-      </section>
-
-      <section className="mt-5 rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
-        <div className="grid gap-3 md:grid-cols-[1fr_240px]">
-          <label className="flex min-h-12 items-center gap-3 rounded-2xl border border-slate-200 px-4">
-            <Search className="h-4 w-4 text-teal-700" />
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search traveler, email, reference, or destination"
-              className="w-full bg-transparent text-sm font-semibold outline-none placeholder:text-slate-300"
-            />
-          </label>
-          <select
-            value={status}
-            onChange={(event) =>
-              setStatus(event.target.value as "all" | CruiseRequestStatus)
-            }
-            className="min-h-12 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-black text-[#043331] outline-none"
-          >
-            <option value="all">All workflow statuses</option>
-            {CRUISE_REQUEST_STATUSES.map((value) => (
-              <option key={value} value={value}>
-                {humanizeCruiseValue(value)}
-              </option>
-            ))}
-          </select>
-        </div>
-      </section>
-
-      {error ? (
-        <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-bold text-rose-700">
-          {error}
-        </div>
-      ) : null}
-
-      {loading && requests.length === 0 ? (
-        <div className="mt-5 grid min-h-64 place-items-center rounded-[28px] border border-slate-200 bg-white">
-          <Loader2 className="h-8 w-8 animate-spin text-teal-700" />
-        </div>
-      ) : filtered.length === 0 ? (
-        <div className="mt-5 rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-sm">
-          <ShipWheel className="mx-auto h-9 w-9 text-slate-300" />
-          <h2 className="mt-4 text-xl font-black">No matching cruise requests</h2>
-          <p className="mt-2 text-sm font-semibold text-slate-500">
-            New customer submissions will appear here automatically.
-          </p>
-        </div>
-      ) : (
-        <section className="mt-5 space-y-4">
-          {filtered.map((request) => (
-            <CruiseRequestCard
-              key={request.id}
-              request={request}
-              onSaved={replaceRequest}
-            />
-          ))}
+      <div className="space-y-5">
+        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <OpsMetric label="All requests" value={String(metrics.total)} footnote="qualified cruise leads" />
+          <OpsMetric
+            label="Needs attention"
+            value={String(metrics.new)}
+            tone={metrics.new ? "warning" : "default"}
+            footnote="new requests"
+          />
+          <OpsMetric label="Active planning" value={String(metrics.active)} tone="success" footnote="in advisor workflow" />
+          <OpsMetric label="Booked" value={String(metrics.booked)} tone="success" footnote="converted cruises" />
         </section>
-      )}
+
+        <OpsSection
+          eyebrow="Advisor queue"
+          title="Cruise pipeline"
+          subtitle="Search and filter cruise leads with the same operations pattern used by the USVI travel advisor desk."
+          actions={<OpsPill label={`${filtered.length} shown`} tone="teal" />}
+        >
+          <div className="grid gap-3 md:grid-cols-[1fr_240px]">
+            <label className="flex min-h-12 items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4">
+              <Search className="h-4 w-4 text-teal-700" />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search traveler, email, reference, or destination"
+                className="w-full border-0 bg-transparent p-0 text-sm font-semibold outline-none placeholder:text-slate-300 focus:ring-0"
+              />
+            </label>
+            <select
+              value={status}
+              onChange={(event) =>
+                setStatus(event.target.value as "all" | CruiseRequestStatus)
+              }
+              className="min-h-12 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-black text-[#043331] outline-none"
+            >
+              <option value="all">All workflow statuses</option>
+              {CRUISE_REQUEST_STATUSES.map((value) => (
+                <option key={value} value={value}>
+                  {humanizeCruiseValue(value)}
+                </option>
+              ))}
+            </select>
+          </div>
+        </OpsSection>
+
+        {error ? (
+          <div className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-bold text-rose-700">
+            {error}
+          </div>
+        ) : null}
+
+        {loading && requests.length === 0 ? (
+          <div className="grid min-h-64 place-items-center rounded-[28px] border border-slate-200 bg-white">
+            <Loader2 className="h-8 w-8 animate-spin text-teal-700" />
+          </div>
+        ) : filtered.length === 0 ? (
+          <div className="rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-sm">
+            <ShipWheel className="mx-auto h-9 w-9 text-slate-300" />
+            <h2 className="mt-4 text-xl font-black">No matching cruise requests</h2>
+            <p className="mt-2 text-sm font-semibold text-slate-500">
+              New customer submissions will appear here automatically.
+            </p>
+          </div>
+        ) : (
+          <section className="space-y-4">
+            {filtered.map((request) => (
+              <CruiseRequestCard
+                key={request.id}
+                request={request}
+                onSaved={replaceRequest}
+              />
+            ))}
+          </section>
+        )}
+      </div>
     </AdminShell>
   );
 }
@@ -276,14 +295,15 @@ function CruiseRequestCard({
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-teal-50 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.14em] text-teal-700">
-                  {humanizeCruiseValue(request.status)}
-                </span>
+                <OpsPill
+                  label={humanizeCruiseValue(request.status)}
+                  tone={statusTone(request.status)}
+                />
                 <span className="font-mono text-[10px] font-bold text-slate-400">
                   {request.reference}
                 </span>
               </div>
-              <h2 className="mt-3 text-2xl font-black tracking-[-.04em]">
+              <h2 className="mt-3 text-2xl font-black tracking-[-.04em] text-[#043331]">
                 {request.travelerName}
               </h2>
               <p className="mt-1 text-xs font-semibold text-slate-400">
@@ -291,17 +311,29 @@ function CruiseRequestCard({
               </p>
             </div>
             {request.assignedAdvisorEmail ? (
-              <span className="rounded-full border border-slate-200 px-3 py-2 text-[9px] font-black text-slate-500">
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-2 text-[9px] font-black text-slate-500">
                 {request.assignedAdvisorEmail}
               </span>
             ) : null}
           </div>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            <Detail icon={CalendarRange} label="Travel window" value={`${formatDate(request.departureWindowStart)} – ${formatDate(request.departureWindowEnd)}`} />
+            <Detail
+              icon={CalendarRange}
+              label="Travel window"
+              value={`${formatDate(request.departureWindowStart)} – ${formatDate(request.departureWindowEnd)}`}
+            />
             <Detail icon={ShipWheel} label="Departure" value={departurePort} />
-            <Detail icon={UsersRound} label="Travelers" value={`${partySize} total · ${request.adults} adult${request.adults === 1 ? "" : "s"}`} />
-            <Detail icon={WalletCards} label="Budget" value={request.budgetCents === null ? "Not specified" : formatMoney(request.budgetCents)} />
+            <Detail
+              icon={UsersRound}
+              label="Travelers"
+              value={`${partySize} total · ${request.adults} adult${request.adults === 1 ? "" : "s"}`}
+            />
+            <Detail
+              icon={WalletCards}
+              label="Budget"
+              value={request.budgetCents === null ? "Not specified" : formatMoney(request.budgetCents)}
+            />
           </div>
 
           <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -321,11 +353,17 @@ function CruiseRequestCard({
               )}
             </InfoBlock>
             <InfoBlock title="Contact">
-              <a href={`mailto:${request.email}`} className="flex items-center gap-2 font-black text-teal-700">
+              <a
+                href={`mailto:${request.email}`}
+                className="flex items-center gap-2 font-black text-teal-700"
+              >
                 <Mail className="h-4 w-4" /> {request.email}
               </a>
               {request.phone ? (
-                <a href={`tel:${request.phone}`} className="mt-2 flex items-center gap-2 font-black text-teal-700">
+                <a
+                  href={`tel:${request.phone}`}
+                  className="mt-2 flex items-center gap-2 font-black text-teal-700"
+                >
                   <Phone className="h-4 w-4" /> {request.phone}
                 </a>
               ) : null}
@@ -400,19 +438,6 @@ function CruiseRequestCard({
   );
 }
 
-function Metric({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
-      <p className="text-[9px] font-black uppercase tracking-[.15em] text-slate-400">
-        {label}
-      </p>
-      <p className="mt-2 text-3xl font-black tracking-[-.05em] text-[#043331]">
-        {value}
-      </p>
-    </div>
-  );
-}
-
 function Detail({
   icon: Icon,
   label,
@@ -423,25 +448,18 @@ function Detail({
   value: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-      <Icon className="h-4 w-4 text-teal-700" />
-      <p className="mt-3 text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
-        {label}
-      </p>
-      <p className="mt-1 text-sm font-black leading-5 text-[#043331]">{value}</p>
+    <div className="rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+      <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+        <Icon className="h-4 w-4 text-teal-700" /> {label}
+      </div>
+      <p className="mt-2 text-sm font-black leading-5 text-[#043331]">{value}</p>
     </div>
   );
 }
 
-function InfoBlock({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function InfoBlock({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="rounded-2xl border border-slate-200 p-4 text-sm font-semibold leading-6 text-slate-600">
+    <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-5 text-sm font-semibold leading-6 text-slate-600">
       <p className="mb-2 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
         {title}
       </p>
@@ -456,13 +474,20 @@ function TagList({ values }: { values: string[] }) {
       {values.map((value) => (
         <span
           key={value}
-          className="rounded-full bg-teal-50 px-3 py-1.5 text-[10px] font-black text-teal-700"
+          className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.12em] text-teal-700"
         >
           {humanizeCruiseValue(value)}
         </span>
       ))}
     </div>
   );
+}
+
+function statusTone(status: CruiseRequestStatus): "neutral" | "teal" | "amber" | "emerald" | "rose" {
+  if (status === "new") return "amber";
+  if (status === "booked") return "emerald";
+  if (status === "closed") return "neutral";
+  return "teal";
 }
 
 function formatMoney(cents: number) {
