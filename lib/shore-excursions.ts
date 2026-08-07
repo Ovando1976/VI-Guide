@@ -281,6 +281,10 @@ export function shoreExcursionBookingDocumentId(input: {
   shipName: string;
   portId: ShoreExcursionPortId;
   allAboardTime: string;
+  adults: number;
+  children: number;
+  durationMinutes: number;
+  minReturnBufferMinutes: number;
   offerPriceCents: number;
 }) {
   const digest = createHash("sha256")
@@ -294,6 +298,10 @@ export function shoreExcursionBookingDocumentId(input: {
         clean(input.shipName, 160).toLowerCase(),
         input.portId,
         clean(input.allAboardTime, 5),
+        String(input.adults),
+        String(input.children),
+        String(input.durationMinutes),
+        String(input.minReturnBufferMinutes),
         String(input.offerPriceCents),
       ].join("|"),
     )
