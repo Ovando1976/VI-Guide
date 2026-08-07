@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   CalendarDays,
   CheckCircle2,
@@ -456,7 +456,7 @@ function Detail({
   );
 }
 
-function InfoBlock({ title, children }: { title: string; children: React.ReactNode }) {
+function InfoBlock({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-5 text-sm font-semibold leading-6 text-slate-600">
       <p className="text-[9px] font-black uppercase tracking-[.15em] text-slate-400">{title}</p>
