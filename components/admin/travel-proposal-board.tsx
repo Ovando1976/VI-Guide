@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  CalendarDays,
+  CalendarCheck,
   CheckCircle2,
+  CreditCard,
   ExternalLink,
   FileCheck2,
   Loader2,
@@ -12,8 +13,6 @@ import {
   Route,
   Send,
   ShieldCheck,
-  Sparkles,
-  Users,
 } from "lucide-react";
 
 import { AdminShell } from "@/components/admin-shell";
@@ -46,6 +45,13 @@ type ProposalRequest = {
   proposalTitle: string | null;
   proposalPublishedAt: string | null;
   proposalSentAt: string | null;
+  bookingRequestCount: number;
+  latestCommerceBookingId: string | null;
+  latestCommerceBookingReference: string | null;
+  latestCommerceBookingStatus: string | null;
+  latestCommercePaymentStatus: string | null;
+  latestBookingRequestedAt: string | null;
+  latestCommerceBookingUpdatedAt: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -127,11 +133,19 @@ export function TravelProposalBoard() {
   const metrics = useMemo(
     () => ({
       active: activeRequests.length,
-      journeys: plans.filter((plan) => plan.plan.length > 0).length,
       published: requests.filter((request) => Boolean(request.proposalHref)).length,
       sent: requests.filter((request) => Boolean(request.proposalSentAt)).length,
+      bookingRequests: requests.reduce(
+        (total, request) => total + Math.max(0, request.bookingRequestCount),
+        0,
+      ),
+      paid: requests.filter(
+        (request) =>
+          request.latestCommerceBookingStatus === "paid" ||
+          request.latestCommercePaymentStatus === "paid",
+      ).length,
     }),
-    [activeRequests.length, plans, requests],
+    [activeRequests.length, requests],
   );
 
   async function publish(request: ProposalRequest, sendToTraveler: boolean) {
@@ -215,7 +229,7 @@ export function TravelProposalBoard() {
     <AdminShell
       eyebrow="Travel Advisor OS"
       title="Traveler proposals"
-      description="Publish a privacy-safe read-only itinerary from My Trip, review the traveler message, and move the proposal into VI Guide's audited delivery workflow."
+      description="Publish a privacy-safe read-only itinerary from My Trip, review the traveler message, and follow the same traveler from proposal into booking, payment, and provider confirmation."
       actions={
         <div className="flex flex-wrap gap-2">
           <Link
@@ -236,17 +250,18 @@ export function TravelProposalBoard() {
       }
     >
       <div className="space-y-5">
-        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <OpsMetric label="Active leads" value={String(metrics.active)} footnote="eligible for proposals" />
-          <OpsMetric label="Saved journeys" value={String(metrics.journeys)} tone="success" footnote="with itinerary stops" />
           <OpsMetric label="Published" value={String(metrics.published)} tone="success" footnote="read-only proposals" />
-          <OpsMetric label="Sent" value={String(metrics.sent)} tone="success" footnote="traveler proposal deliveries" />
+          <OpsMetric label="Sent" value={String(metrics.sent)} tone="success" footnote="traveler deliveries" />
+          <OpsMetric label="Booking requests" value={String(metrics.bookingRequests)} tone="success" footnote="proposal-attributed" />
+          <OpsMetric label="Paid" value={String(metrics.paid)} tone="success" footnote="live commerce state" />
         </section>
 
         <OpsSection
           eyebrow="Proposal workflow"
-          title="My Trip → traveler proposal"
-          subtitle="Build or refine the itinerary in My Trip, select it here, publish a read-only proposal, then explicitly send it after reviewing the message."
+          title="My Trip → proposal → booking"
+          subtitle="Build the itinerary in My Trip, publish a read-only proposal, send it after review, then watch proposal-attributed booking requests move through live commerce status."
           actions={<OpsPill label="Human reviewed" tone="teal" />}
         >
           <div className="grid gap-3 lg:grid-cols-3">
@@ -262,8 +277,8 @@ export function TravelProposalBoard() {
             />
             <Guardrail
               icon={FileCheck2}
-              title="Nothing is auto-confirmed"
-              text="The proposal never represents availability, reservations, schedules, or pricing as confirmed until the relevant workflow confirms them."
+              title="Booking stays authoritative"
+              text="Proposal buttons start booking requests. Live booking/payment state comes from commerce; only provider confirmation closes the advisor conversion as booked."
             />
           </div>
         </OpsSection>
@@ -307,6 +322,12 @@ export function TravelProposalBoard() {
                             {request.proposalVersion > 0 ? (
                               <OpsPill label={`Proposal v${request.proposalVersion}`} tone="emerald" />
                             ) : null}
+                            {request.latestCommerceBookingStatus ? (
+                              <OpsPill
+                                label={`Booking ${humanizeCommerceStatus(request.latestCommerceBookingStatus)}`}
+                                tone={commerceStatusTone(request.latestCommerceBookingStatus, request.latestCommercePaymentStatus)}
+                              />
+                            ) : null}
                             <span className="font-mono text-[10px] font-bold text-slate-400">{request.reference}</span>
                           </div>
                           <h2 className="mt-3 text-2xl font-black tracking-[-.04em] text-[#043331]">{request.travelerName}</h2>
@@ -324,6 +345,39 @@ export function TravelProposalBoard() {
                           </Link>
                         ) : null}
                       </div>
+
+                      {request.latestCommerceBookingId ? (
+                        <div className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50/70 p-5">
+                          <div className="flex flex-wrap items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-amber-700 shadow-sm">
+                                <CalendarCheck className="h-5 w-5" />
+                              </span>
+                              <div>
+                                <p className="text-[9px] font-black uppercase tracking-[.15em] text-amber-700">Proposal conversion</p>
+                                <p className="mt-1 text-sm font-black text-[#043331]">
+                                  {request.latestCommerceBookingReference || "Booking request"}
+                                </p>
+                                <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
+                                  {request.bookingRequestCount} attributed request{request.bookingRequestCount === 1 ? "" : "s"} · booking {humanizeCommerceStatus(request.latestCommerceBookingStatus || "requested")}
+                                  {request.latestCommercePaymentStatus
+                                    ? ` · payment ${humanizeCommerceStatus(request.latestCommercePaymentStatus)}`
+                                    : ""}
+                                  {request.latestCommerceBookingUpdatedAt
+                                    ? ` · updated ${formatDateTime(request.latestCommerceBookingUpdatedAt)}`
+                                    : ""}
+                                </p>
+                              </div>
+                            </div>
+                            <Link
+                              href="/admin/operations"
+                              className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#043331] px-4 text-[9px] font-black uppercase tracking-[.13em] text-white"
+                            >
+                              <CreditCard className="h-3.5 w-3.5" /> Booking operations
+                            </Link>
+                          </div>
+                        </div>
+                      ) : null}
 
                       <div className="mt-5 rounded-[22px] border border-slate-200 bg-slate-50 p-5">
                         <div className="flex items-center justify-between gap-3">
@@ -467,11 +521,7 @@ function matchingPlans(request: ProposalRequest, plans: JourneyPlan[]) {
 }
 
 function preferredPlan(request: ProposalRequest, plans: JourneyPlan[]) {
-  return (
-    plans.find((plan) => plan.id === request.proposalPlanId) ??
-    plans[0] ??
-    null
-  );
+  return plans.find((plan) => plan.id === request.proposalPlanId) ?? plans[0] ?? null;
 }
 
 function defaultProposalDraft(request: ProposalRequest): ProposalDraft {
@@ -514,6 +564,21 @@ function MiniMetric({ label, value }: { label: string; value: string }) {
       <p className="mt-1 text-xs font-black text-[#043331]">{value}</p>
     </div>
   );
+}
+
+function humanizeCommerceStatus(value: string) {
+  return value.replaceAll("_", " ").replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
+function commerceStatusTone(
+  bookingStatus: string,
+  paymentStatus: string | null,
+): "neutral" | "teal" | "amber" | "emerald" | "rose" {
+  if (bookingStatus === "confirmed" || bookingStatus === "completed" || paymentStatus === "paid") return "emerald";
+  if (bookingStatus === "declined" || bookingStatus === "cancelled" || paymentStatus === "refund_failed") return "rose";
+  if (bookingStatus === "payment_required") return "amber";
+  if (bookingStatus === "reviewing" || bookingStatus === "paid") return "teal";
+  return "neutral";
 }
 
 function formatDate(value: string) {
