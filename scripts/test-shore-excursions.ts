@@ -39,7 +39,6 @@ const valid = normalizeShoreExcursionProfile({
   },
 });
 assert.equal(valid.ok, true);
-if (!valid.ok) throw new Error(valid.error);
 assert.deepEqual(valid.profile.supportedPorts, ["havensight", "crown_bay"]);
 assert.equal(valid.profile.minReturnBufferMinutes, 90);
 
@@ -101,7 +100,6 @@ const safeTiming = evaluateShoreExcursionTiming({
   minReturnBufferMinutes: 90,
 });
 assert.equal(safeTiming.ok, true);
-if (!safeTiming.ok) throw new Error("Expected safe timing");
 assert.equal(safeTiming.excursionEndsAt, "13:00");
 assert.equal(safeTiming.safeReturnDeadline, "15:00");
 assert.equal(safeTiming.latestSafeStartTime, "11:00");
@@ -114,7 +112,6 @@ const unsafeTiming = evaluateShoreExcursionTiming({
   minReturnBufferMinutes: 90,
 });
 assert.equal(unsafeTiming.ok, false);
-if (unsafeTiming.ok) throw new Error("Expected unsafe timing");
 assert.equal(unsafeTiming.reason, "insufficient_return_buffer");
 assert.equal(unsafeTiming.latestSafeStartTime, "11:00");
 
@@ -125,7 +122,6 @@ const impossibleTiming = evaluateShoreExcursionTiming({
   minReturnBufferMinutes: 120,
 });
 assert.equal(impossibleTiming.ok, false);
-if (impossibleTiming.ok) throw new Error("Expected impossible timing");
 assert.equal(impossibleTiming.reason, "insufficient_return_buffer");
 assert.equal(impossibleTiming.latestSafeStartTime, undefined);
 assert.equal(impossibleTiming.safeReturnDeadline, "08:00");
