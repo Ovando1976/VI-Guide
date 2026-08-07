@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { ClipboardCheck } from "lucide-react";
 
 import { CommerceBookingExperience } from "@/components/booking/commerce-booking-experience";
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 
 export const metadata: Metadata = {
@@ -34,9 +36,20 @@ export default function BookingPage({
   }
 
   return (
-    <Suspense fallback={<BookingLoading />}>
-      <CommerceBookingExperience />
-    </Suspense>
+    <>
+      <div className="bg-[#f8f4ea] px-4 pt-5 sm:px-6 lg:pt-8">
+        <ViPublicHeader
+          actionHref="/bookings"
+          actionLabel="My Bookings"
+          actionIcon={ClipboardCheck}
+          secondaryHref="/planner"
+          secondaryLabel="My Trip"
+        />
+      </div>
+      <Suspense fallback={<BookingLoading />}>
+        <CommerceBookingExperience />
+      </Suspense>
+    </>
   );
 }
 
@@ -66,7 +79,7 @@ function buildSanitizedBookingHref(
 
 function BookingLoading() {
   return (
-    <main className="grid min-h-screen place-items-center bg-[#f8f4ea] px-6 text-center text-[#043331]">
+    <main className="grid min-h-[70vh] place-items-center bg-[#f8f4ea] px-6 text-center text-[#043331]">
       <div>
         <div className="text-[10px] font-black uppercase tracking-[.22em] text-teal-700">
           VI Guide Booking

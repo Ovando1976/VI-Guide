@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
+import { MapEntityContextBar } from "@/components/map/map-entity-context-bar";
 import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
 import { LiveCatalogSync } from "@/components/territory/live-catalog-sync";
 import { LivingMapBridge } from "@/components/workspace/living-map-bridge";
@@ -54,6 +55,7 @@ export default function MapPage() {
           <LivingMapDock />
           <LiveCatalogSync />
           <MapIntelligenceBridge />
+          <MapEntityContextBar />
         </Suspense>
         <ExplorerMapScreen />
       </div>

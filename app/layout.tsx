@@ -1,15 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 
 import "./globals.css";
 import "./concierge-responsive.css";
 import "./map-premium.css";
 import "./mobile-navigation-fix.css";
+import { ActiveIslandRouteSync } from "@/components/active-island-route-sync";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { JourneyIntelligenceSync } from "@/components/intelligence/journey-intelligence-sync";
 import { TravelerMemorySync } from "@/components/intelligence/traveler-memory-sync";
 import { JourneyCloudSync } from "@/components/journey/journey-cloud-sync";
+import { JourneyMapStateBridge } from "@/components/journey/journey-map-state-bridge";
 
 export const metadata: Metadata = {
   applicationName: "VI Guide",
@@ -51,9 +54,13 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           <ScrollToTop />
+          <Suspense fallback={null}>
+            <ActiveIslandRouteSync />
+          </Suspense>
           <TravelerMemorySync />
           <JourneyCloudSync />
           <JourneyIntelligenceSync />
+          <JourneyMapStateBridge />
           {children}
           <AppNavigation />
         </AuthProvider>

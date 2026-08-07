@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  BadgeDollarSign,
-  Building2,
-  CalendarClock,
-  CreditCard,
-  LayoutDashboard,
-  ShieldCheck,
-  ShipWheel,
-  WalletCards,
-} from "lucide-react";
+import { Building2 } from "lucide-react";
 
+import { MerchantConsoleNav } from "@/components/merchant/merchant-console-nav";
 import { getSession } from "@/lib/auth-server";
 import { humanizeListingId } from "@/lib/merchant-portal";
 
@@ -26,6 +18,10 @@ export default async function MerchantLayout({
   if (!MERCHANT_ROLES.has(session.role)) redirect("/unauthorized");
 
   const listingIds = session.role === "merchant" ? session.listingIds ?? [] : [];
+  const firstListingId = listingIds[0] ?? "";
+  const availabilityHref = firstListingId
+    ? `/merchant/availability?listingId=${encodeURIComponent(firstListingId)}`
+    : "/merchant/availability";
   const roleLabel =
     session.role === "merchant"
       ? "Merchant account"
@@ -35,7 +31,7 @@ export default async function MerchantLayout({
 
   return (
     <div className="min-h-screen bg-[#f8f4ea] text-[#043331]">
-      <header className="border-b border-[#043331]/10 bg-white/95 px-4 py-4 backdrop-blur sm:px-6">
+      <header className="sticky top-0 z-[1200] border-b border-[#043331]/10 bg-white/95 px-4 py-4 shadow-[0_8px_30px_rgba(4,51,49,.06)] backdrop-blur-xl sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#043331] text-[#f5c451]">
@@ -56,45 +52,10 @@ export default async function MerchantLayout({
             </div>
           </div>
 
-          <nav className="grid gap-2 sm:grid-cols-3 xl:grid-cols-7">
-            <MerchantNavLink
-              href="/merchant"
-              icon={LayoutDashboard}
-              label="Overview"
-            />
-            <MerchantNavLink
-              href="/merchant/reservations"
-              icon={CalendarClock}
-              label="Reservations"
-            />
-            <MerchantNavLink
-              href="/merchant/availability"
-              icon={ShieldCheck}
-              label="Availability"
-            />
-            <MerchantNavLink
-              href="/merchant/offers"
-              icon={BadgeDollarSign}
-              label="Offers"
-            />
-            <MerchantNavLink
-              href="/merchant/shore-excursions"
-              icon={ShipWheel}
-              label="Cruise"
-            />
-            <MerchantNavLink
-              href="/merchant/lifecycle"
-              icon={CreditCard}
-              label="Payments"
-            />
-            {session.role === "merchant" ? (
-              <MerchantNavLink
-                href="/merchant/payouts"
-                icon={WalletCards}
-                label="Payouts"
-              />
-            ) : null}
-          </nav>
+          <MerchantConsoleNav
+            showPayouts={session.role === "merchant"}
+            availabilityHref={availabilityHref}
+          />
         </div>
 
         {session.role === "merchant" ? (
@@ -122,25 +83,5 @@ export default async function MerchantLayout({
       </header>
       {children}
     </div>
-  );
-}
-
-function MerchantNavLink({
-  href,
-  icon: Icon,
-  label,
-}: {
-  href: string;
-  icon: typeof Building2;
-  label: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[9px] font-black uppercase tracking-[.13em] transition hover:border-teal-300 hover:bg-teal-50"
-    >
-      <Icon className="h-4 w-4 text-teal-700" />
-      {label}
-    </Link>
   );
 }

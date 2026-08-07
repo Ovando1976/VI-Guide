@@ -7,14 +7,17 @@ import {
   Eye,
   Map,
   MapPin,
+  MessageCircleMore,
   Navigation,
 } from "lucide-react";
 
 import { GooglePlacePhoto } from "@/components/directory/google-place-photo";
 import { TagPill } from "@/components/directory/tag-pill";
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
+import { SavePlaceButton } from "@/components/place/save-place-button";
 import { buildDirectoryMapHref } from "@/lib/discovery/map-links";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 import type { DirectoryItem } from "@/types/directory";
 import type { TerritoryMapPlaceType } from "@/types/territory-map";
 
@@ -29,6 +32,13 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
   const mapType = inferMapType(href);
   const mapHref = buildDirectoryMapHref(item, mapType);
   const rideHref = buildRideHref(item);
+  const islandName = islandLabel(item.island);
+  const conciergeHref = buildContextualConciergeHref({
+    name: item.name,
+    island: item.island,
+    mapHref,
+    prompt: `Help me decide how ${item.name} fits into my ${islandName} trip. Include timing, nearby options, transportation, and anything I should confirm before going.`,
+  });
   const journeyStop: JourneyStopInput = {
     id: item.id,
     title: item.name,
@@ -39,7 +49,6 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
     ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
     href,
     mapHref,
-    bookingHref: rideHref,
   };
 
   return (
@@ -102,10 +111,32 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
         <div className="mt-auto grid grid-cols-2 gap-2 border-t border-slate-100 pt-5">
           <CardAction href={href} icon={Eye} label="Details" />
           <CardAction href={mapHref} icon={Map} label="Map" />
-          <CardAction href={rideHref} icon={Navigation} label="Ride" accent />
+          <SavePlaceButton
+            place={{
+              id: item.id,
+              title: item.name,
+              island: item.island,
+              kind: mapType,
+              summary: item.description,
+              href,
+              mapHref,
+              rideHref,
+              ...(typeof item.lat === "number" ? { lat: item.lat } : {}),
+              ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
+            }}
+            compact
+            className="w-full px-3 text-center text-[9px] tracking-[.13em]"
+          />
           <AddToJourneyButton
             stop={journeyStop}
-            className="w-full px-3 text-center"
+            className="w-full px-3 text-center text-[9px] tracking-[.13em]"
+          />
+          <CardAction href={rideHref} icon={Navigation} label="Ride" accent />
+          <CardAction
+            href={conciergeHref}
+            icon={MessageCircleMore}
+            label="Concierge"
+            teal
           />
         </div>
       </div>
@@ -118,11 +149,13 @@ function CardAction({
   icon: Icon,
   label,
   accent = false,
+  teal = false,
 }: {
   href: string;
   icon: typeof Map;
   label: string;
   accent?: boolean;
+  teal?: boolean;
 }) {
   return (
     <Link
@@ -130,7 +163,9 @@ function CardAction({
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-3 text-[9px] font-black uppercase tracking-[.13em] transition hover:-translate-y-0.5 ${
         accent
           ? "bg-[#f5c451] text-[#043331] hover:bg-[#ffca55]"
-          : "border border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e] hover:bg-white"
+          : teal
+            ? "bg-[#0f766e] text-white hover:bg-[#0b5d5b]"
+            : "border border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e] hover:bg-white"
       }`}
     >
       <Icon className="h-4 w-4" />
@@ -168,4 +203,10 @@ function getGooglePhoto(value?: string) {
     placeId: params.get("placeId") || "",
     fallback: params.get("fallback") || "",
   };
+}
+
+function islandLabel(island: DirectoryItem["island"]) {
+  if (island === "stj") return "St. John";
+  if (island === "stx") return "St. Croix";
+  return "St. Thomas";
 }

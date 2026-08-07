@@ -21,6 +21,11 @@ import { DirectoryCard } from "@/components/directory/directory-card";
 import { EmptyState } from "@/components/directory/empty-state";
 import { IslandFilterTabs } from "@/components/directory/island-filter-tabs";
 import {
+  normalizeActiveIsland,
+  readActiveIsland,
+  writeActiveIsland,
+} from "@/lib/active-island";
+import {
   JOURNEY_PLAN_UPDATED_EVENT,
   readJourneyPlans,
 } from "@/lib/journey-planner";
@@ -80,6 +85,17 @@ export function DiscoveryDirectoryPage({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [savedStopCount, setSavedStopCount] = useState(0);
+
+  useEffect(() => {
+    const requested = normalizeActiveIsland(
+      new URLSearchParams(window.location.search).get("island"),
+    );
+    setIsland(requested ?? readActiveIsland());
+  }, []);
+
+  useEffect(() => {
+    if (island !== "all") writeActiveIsland(island);
+  }, [island]);
 
   useEffect(() => {
     function refreshTripCount() {
@@ -194,7 +210,7 @@ export function DiscoveryDirectoryPage({
                   Three islands · one connected trip
                 </span>
                 <Link
-                  href="/concierge"
+                  href={island === "all" ? "/concierge" : `/concierge?island=${island}`}
                   className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] text-[#043331] shadow-lg transition hover:bg-[#ffca55]"
                 >
                   <Sparkles className="h-4 w-4" /> Ask VI Concierge
@@ -421,7 +437,7 @@ export function DiscoveryDirectoryPage({
               </p>
             </div>
             <Link
-              href="/map?concierge=open"
+              href={island === "all" ? "/map?concierge=open" : `/map?island=${island}&concierge=open`}
               className="inline-flex items-center justify-center rounded-full bg-[#f5c451] px-6 py-4 text-[10px] font-black uppercase tracking-[.18em] text-[#043331]"
             >
               Plan with concierge

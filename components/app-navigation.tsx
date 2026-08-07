@@ -9,16 +9,22 @@ import clsx from "clsx";
 import { AccountMenu } from "@/components/account-menu";
 import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 import {
+  ACTIVE_ISLAND_STORAGE_KEY,
+  ACTIVE_ISLAND_UPDATED_EVENT,
+  readActiveIsland,
+  type ActiveIsland,
+} from "@/lib/active-island";
+import {
   JOURNEY_PLAN_UPDATED_EVENT,
   readJourneyPlans,
 } from "@/lib/journey-planner";
 
 const ITEMS = [
-  { href: "/", label: "Home", icon: House },
-  { href: "/places", label: "Explore", icon: Compass },
-  { href: "/map", label: "Map", icon: Map },
-  { href: "/planner", label: "My Trip", icon: Route },
-  { href: "/concierge", label: "Concierge", icon: Sparkles },
+  { base: "/", label: "Home", icon: House },
+  { base: "/places", label: "Explore", icon: Compass },
+  { base: "/map", label: "Map", icon: Map },
+  { base: "/planner", label: "My Trip", icon: Route },
+  { base: "/concierge", label: "Concierge", icon: Sparkles },
 ] as const;
 
 const EXPLORE_ROUTES = [
@@ -47,17 +53,25 @@ function matchesRoute(pathname: string, routes: readonly string[]) {
   );
 }
 
-function isActive(pathname: string, href: (typeof ITEMS)[number]["href"]) {
-  if (href === "/") return pathname === "/";
-  if (href === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
-  if (href === "/planner") return matchesRoute(pathname, TRIP_ROUTES);
-  if (href === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
-  return pathname === href || pathname.startsWith(`${href}/`);
+function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
+  if (base === "/") return pathname === "/";
+  if (base === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
+  if (base === "/planner") return matchesRoute(pathname, TRIP_ROUTES);
+  if (base === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+function contextualHref(base: (typeof ITEMS)[number]["base"], island: ActiveIsland) {
+  if (base === "/places") return `/places?island=${island}`;
+  if (base === "/map") return `/map?island=${island}`;
+  if (base === "/concierge") return `/concierge?island=${island}`;
+  return base;
 }
 
 export function AppNavigation() {
   const pathname = usePathname();
   const [tripStopCount, setTripStopCount] = useState(0);
+  const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
 
   useEffect(() => {
     function refreshTripStopCount() {
@@ -69,15 +83,38 @@ export function AppNavigation() {
       );
     }
 
+    function refreshIsland() {
+      setActiveIsland(readActiveIsland());
+    }
+
+    function handleIslandEvent(event: Event) {
+      const detail = (event as CustomEvent<ActiveIsland>).detail;
+      if (detail === "stt" || detail === "stj" || detail === "stx") {
+        setActiveIsland(detail);
+      } else {
+        refreshIsland();
+      }
+    }
+
+    function handleStorage(event: StorageEvent) {
+      if (!event.key || event.key === ACTIVE_ISLAND_STORAGE_KEY) refreshIsland();
+      if (!event.key || event.key === "vi-guide.intelligence.saved-plans") {
+        refreshTripStopCount();
+      }
+    }
+
     refreshTripStopCount();
+    refreshIsland();
     window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripStopCount);
-    window.addEventListener("storage", refreshTripStopCount);
+    window.addEventListener(ACTIVE_ISLAND_UPDATED_EVENT, handleIslandEvent);
+    window.addEventListener("storage", handleStorage);
     return () => {
       window.removeEventListener(
         JOURNEY_PLAN_UPDATED_EVENT,
         refreshTripStopCount,
       );
-      window.removeEventListener("storage", refreshTripStopCount);
+      window.removeEventListener(ACTIVE_ISLAND_UPDATED_EVENT, handleIslandEvent);
+      window.removeEventListener("storage", handleStorage);
     };
   }, []);
 
@@ -94,9 +131,10 @@ export function AppNavigation() {
         <ViBrandMark className="h-8 w-8 shrink-0" />
       </Link>
 
-      {ITEMS.map(({ href, label, icon: Icon }) => {
-        const active = isActive(pathname, href);
-        const isTrip = href === "/planner";
+      {ITEMS.map(({ base, label, icon: Icon }) => {
+        const active = isActive(pathname, base);
+        const isTrip = base === "/planner";
+        const href = contextualHref(base, activeIsland);
         const accessibleLabel =
           isTrip && tripStopCount
             ? `${label}, ${tripStopCount} saved ${tripStopCount === 1 ? "stop" : "stops"}`
@@ -104,7 +142,7 @@ export function AppNavigation() {
 
         return (
           <Link
-            key={href}
+            key={base}
             href={href}
             aria-label={accessibleLabel}
             aria-current={active ? "page" : undefined}
