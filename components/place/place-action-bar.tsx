@@ -6,6 +6,7 @@ import {
   Map,
   MessageCircleMore,
   Navigation,
+  Sparkles,
 } from "lucide-react";
 
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
@@ -57,65 +58,69 @@ export function PlaceActionBar({
 
   return (
     <section
-      className={`rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm ${className}`}
+      className={`place-decision-bar overflow-hidden rounded-[30px] border border-[#d8e7e3] bg-[#fffdf8] shadow-[0_18px_55px_rgba(4,51,49,.08)] ${className}`}
       aria-label={`Actions for ${name}`}
     >
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
-        <div>
-          <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
-            Universal trip actions
-          </p>
-          <p className="mt-1 text-xs font-semibold text-slate-500">
-            Save it, map it, plan around it, move to it, and book when available.
-          </p>
+      <div className="grid lg:grid-cols-[.72fr_1.28fr]">
+        <div className="relative overflow-hidden bg-[linear-gradient(145deg,#043331,#075e58)] p-5 text-white sm:p-6">
+          <div className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-[#28c8bd]/20 blur-3xl" />
+          <div className="relative">
+            <div className="inline-flex items-center gap-2 text-[8px] font-black uppercase tracking-[.18em] text-[#f5c451]">
+              <Sparkles className="h-3.5 w-3.5" /> Make it part of your day
+            </div>
+            <h2 className="vi-display mt-2 text-2xl font-black leading-[1.02] tracking-[-.04em] sm:text-3xl">
+              Decide what happens next.
+            </h2>
+            <p className="mt-2 max-w-md text-xs font-semibold leading-5 text-white/62">
+              Save the place, add it to your trip, see where it sits, arrange the ride, or ask VI Guide to connect the details.
+            </p>
+            <Link
+              href="/saved"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-3 py-2 text-[8px] font-black uppercase tracking-[.12em] text-white/78 transition hover:bg-white/[.13]"
+            >
+              <Bookmark className="h-3.5 w-3.5 text-[#7ce0d4]" /> View saved
+            </Link>
+          </div>
         </div>
-        <Link
-          href="/saved"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-[#f8f4ea] px-3 py-2 text-[9px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:border-teal-600 hover:bg-white"
-        >
-          <Bookmark className="h-3.5 w-3.5 text-teal-700" /> View saved
-        </Link>
-      </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <SavePlaceButton
-          place={{
-            id: tripStop.id,
-            title: tripStop.title,
-            island: tripStop.island,
-            kind: tripStop.kind,
-            summary: tripStop.summary,
-            ...(tripStop.href ? { href: tripStop.href } : {}),
-            ...(mapHref ? { mapHref } : tripStop.mapHref ? { mapHref: tripStop.mapHref } : {}),
-            ...(rideHref ? { rideHref } : {}),
-            ...(resolvedBookingHref ? { bookingHref: resolvedBookingHref } : {}),
-            ...(typeof tripStop.lat === "number" ? { lat: tripStop.lat } : {}),
-            ...(typeof tripStop.lng === "number" ? { lng: tripStop.lng } : {}),
-          }}
-          className="w-full"
-        />
-        <AddToJourneyButton stop={tripStop} className="w-full" />
-        {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
-        {rideHref ? (
-          <Action href={rideHref} icon={Navigation} label="Get a ride" accent="gold" />
-        ) : null}
-        <Action
-          href={resolvedConciergeHref}
-          icon={MessageCircleMore}
-          label="Ask Concierge"
-          accent="teal"
-        />
-        {resolvedBookingHref ? (
-          <Action
-            href={resolvedBookingHref}
-            icon={CalendarCheck}
-            label="Book / request"
-            accent="ink"
-          />
-        ) : null}
-        {website ? (
-          <Action href={website} icon={ExternalLink} label="Official website" external />
-        ) : null}
+        <div className="p-4 sm:p-5">
+          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            <SavePlaceButton
+              place={{
+                id: tripStop.id,
+                title: tripStop.title,
+                island: tripStop.island,
+                kind: tripStop.kind,
+                summary: tripStop.summary,
+                ...(tripStop.href ? { href: tripStop.href } : {}),
+                ...(mapHref ? { mapHref } : tripStop.mapHref ? { mapHref: tripStop.mapHref } : {}),
+                ...(rideHref ? { rideHref } : {}),
+                ...(resolvedBookingHref ? { bookingHref: resolvedBookingHref } : {}),
+                ...(typeof tripStop.lat === "number" ? { lat: tripStop.lat } : {}),
+                ...(typeof tripStop.lng === "number" ? { lng: tripStop.lng } : {}),
+              }}
+              className="w-full"
+            />
+            <AddToJourneyButton stop={tripStop} className="w-full" />
+            {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
+            {rideHref ? <Action href={rideHref} icon={Navigation} label="Get a ride" accent="gold" /> : null}
+            <Action
+              href={resolvedConciergeHref}
+              icon={MessageCircleMore}
+              label="Ask Concierge"
+              accent="teal"
+            />
+            {resolvedBookingHref ? (
+              <Action
+                href={resolvedBookingHref}
+                icon={CalendarCheck}
+                label="Book / request"
+                accent="ink"
+              />
+            ) : null}
+            {website ? <Action href={website} icon={ExternalLink} label="Official website" external /> : null}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -178,14 +183,14 @@ function Action({
   accent?: "neutral" | "gold" | "teal" | "ink";
   external?: boolean;
 }) {
-  const classes = `inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-5 text-[10px] font-black uppercase tracking-[.16em] transition hover:-translate-y-0.5 ${
+  const classes = `inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] transition hover:-translate-y-0.5 ${
     accent === "gold"
       ? "bg-[#f5c451] text-[#043331] hover:bg-[#ffca55]"
       : accent === "teal"
-        ? "bg-[#0f766e] text-white hover:bg-[#0b5d5b]"
+        ? "bg-[#e8f7f4] text-[#0f766e] ring-1 ring-[#bee4dd] hover:bg-[#dcf3ee]"
         : accent === "ink"
           ? "bg-[#043331] text-white hover:bg-[#075e58]"
-          : "border border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e] hover:bg-white"
+          : "border border-[#dce7e4] bg-white text-[#35514e] hover:border-[#9fd4cc] hover:bg-[#f7fbfa]"
   }`;
 
   if (external) {

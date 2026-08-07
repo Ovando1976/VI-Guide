@@ -1,6 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import {
+  ArrowRight,
+  Compass,
+  MapPin,
+  Navigation,
+  Route,
+  Sparkles,
+} from "lucide-react";
 import type { EstateRecord } from "@/types/usvi";
 import type { TerritoryMapSelection } from "@/types/territory-map";
 
@@ -38,135 +46,105 @@ export function TerritoryIntelligenceRail({
   routeReady,
 }: Props) {
   const activeEstate = selectedEstate ?? selectedPlaceEstate;
-
   const title = routeReady
     ? `${fromEstate?.baseName} → ${toEstate?.baseName}`
     : selectedPlace?.name ?? selectedEstate?.baseName ?? islandTitle;
 
   const description = routeReady
-    ? "Your corridor is ready. Review the movement context, then continue to trip setup."
+    ? "Your island corridor is set. Keep the route with your trip, then continue into Mobility when you are ready to arrange the ride."
     : selectedPlace
-    ? selectedPlace.description ??
-      `This ${placeTypeLabel(
-        selectedPlace.type
-      ).toLowerCase()} is active. Review its local context or use the nearest estate as a trip endpoint.`
-    : selectedEstate
-    ? "This estate is active. Set it as a trip endpoint or explore nearby territory."
-    : "Select an estate or territory marker on the map to open its local context.";
+      ? selectedPlace.description ??
+        `This ${placeTypeLabel(selectedPlace.type).toLowerCase()} is active. Use the nearby estate to connect it to the rest of your island day.`
+      : selectedEstate
+        ? "This estate is active. Explore what surrounds it or make it part of your movement plan."
+        : "Tap a place or estate on the map and VI Guide will turn the selection into useful local context.";
 
   return (
-    <aside className="space-y-4 xl:sticky xl:top-[166px] xl:h-fit">
-      <section className="overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.045] shadow-[0_24px_60px_rgba(0,0,0,0.2)]">
-        <div className="border-b border-white/10 p-5">
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-[9px] font-extrabold uppercase tracking-[0.2em] text-amber-300/80">
-              Territory intelligence
-            </span>
-            <span
-              className={`h-2 w-2 rounded-full ${
-                routeReady ? "bg-emerald-300" : "bg-cyan-300"
-              }`}
-            />
-          </div>
-
-          {selectedPlace ? (
-            <div className="mt-3 inline-flex rounded-full border border-cyan-300/15 bg-cyan-300/[0.07] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.15em] text-cyan-100/80">
-              {placeTypeLabel(selectedPlace.type)}
+    <aside className="territory-story-rail space-y-4 xl:sticky xl:top-[166px] xl:h-fit">
+      <section className="territory-story-card overflow-hidden rounded-[30px] border border-[#d8e7e3] bg-white shadow-[0_24px_65px_rgba(4,51,49,.09)]">
+        <div className="relative overflow-hidden bg-[linear-gradient(145deg,#032f2d_0%,#075e58_72%,#0f766e_100%)] p-5 text-white sm:p-6">
+          <div className="pointer-events-none absolute -right-14 -top-16 h-44 w-44 rounded-full bg-[#28c8bd]/20 blur-3xl" />
+          <div className="relative">
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-2 text-[8px] font-black uppercase tracking-[.18em] text-[#f5c451]">
+                <Sparkles className="h-3.5 w-3.5" /> Local story
+              </span>
+              <span className={`h-2.5 w-2.5 rounded-full ${routeReady ? "bg-emerald-300" : "bg-[#7ce0d4]"}`} />
             </div>
-          ) : null}
 
-          <h2 className="mt-2 text-2xl font-extrabold tracking-[-0.025em] text-white">
-            {title}
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-white/55">{description}</p>
+            {selectedPlace ? (
+              <div className="mt-4 inline-flex rounded-full border border-white/14 bg-white/[.08] px-3 py-1.5 text-[8px] font-black uppercase tracking-[.14em] text-white/72">
+                {placeTypeLabel(selectedPlace.type)} selected
+              </div>
+            ) : null}
+
+            <h2 className="vi-display mt-3 text-3xl font-black leading-[.98] tracking-[-.045em] text-white">
+              {title}
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-white/64">
+              {description}
+            </p>
+          </div>
         </div>
 
-        <div className="p-5">
-          <div className="grid grid-cols-2 gap-2">
-            <DataPoint label="Island" value={islandTitle} />
-            <DataPoint
-              label="Status"
+        <div className="p-5 sm:p-6">
+          <div className="grid grid-cols-2 gap-2.5">
+            <StoryFact icon={MapPin} label="Island" value={islandTitle} />
+            <StoryFact
+              icon={Compass}
+              label="Context"
               value={
                 routeReady
                   ? "Route ready"
                   : selectedPlace
-                  ? "Place selected"
-                  : selectedEstate
-                  ? "Estate selected"
-                  : "Exploring"
+                    ? "Place selected"
+                    : selectedEstate
+                      ? "Estate selected"
+                      : "Exploring"
               }
             />
           </div>
 
           {selectedPlace ? (
-            <div className="mt-4 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.055] p-4">
-              <div className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-cyan-100/45">
-                Selected territory entry
+            <div className="mt-4 rounded-[22px] border border-[#cfe8e3] bg-[#f1faf8] p-4">
+              <div className="text-[8px] font-black uppercase tracking-[.16em] text-[#0f766e]">
+                Why this selection matters
               </div>
-              <div className="mt-3 grid gap-3">
-                <InfoRow
-                  label="Category"
-                  value={placeTypeLabel(selectedPlace.type)}
-                />
-                <InfoRow
-                  label="Local area"
-                  value={
-                    selectedPlace.location ??
-                    selectedPlaceEstate?.baseName ??
-                    islandTitle
-                  }
-                />
-                {typeof selectedPlace.rating === "number" ? (
-                  <InfoRow
-                    label="Rating"
-                    value={`★ ${selectedPlace.rating.toFixed(1)}`}
-                  />
-                ) : null}
-                <InfoRow
-                  label="Coordinates"
-                  value={`${selectedPlace.lat.toFixed(
-                    5
-                  )}, ${selectedPlace.lng.toFixed(5)}`}
-                />
-              </div>
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#35514e]">
+                {selectedPlace.location
+                  ? `${selectedPlace.location} gives this stop a clear local anchor.`
+                  : selectedPlaceEstate
+                    ? `${selectedPlaceEstate.baseName} is the nearest estate context for this stop.`
+                    : `${islandTitle} is the current island context.`}
+                {typeof selectedPlace.rating === "number"
+                  ? ` Traveler rating: ${selectedPlace.rating.toFixed(1)}.`
+                  : ""}
+              </p>
             </div>
           ) : null}
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-[#071a24] p-4">
-            <div className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-white/35">
-              Movement corridor
+          <div className="mt-4 rounded-[24px] bg-[#043331] p-4 text-white shadow-[0_16px_36px_rgba(4,51,49,.14)]">
+            <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-[#f5c451]">
+              <Route className="h-3.5 w-3.5" /> Your movement line
             </div>
-            <div className="mt-3 space-y-3">
-              <RoutePoint
-                tone="teal"
-                label="Pickup"
-                value={fromEstate?.baseName ?? "Choose an origin"}
-              />
-              <div className="ml-[5px] h-3 border-l border-dashed border-white/20" />
-              <RoutePoint
-                tone="amber"
-                label="Destination"
-                value={toEstate?.baseName ?? "Choose a destination"}
-              />
+            <div className="mt-4 space-y-3">
+              <RoutePoint tone="teal" label="Start" value={fromEstate?.baseName ?? "Choose a pickup"} />
+              <div className="ml-[6px] h-4 border-l border-dashed border-white/22" />
+              <RoutePoint tone="amber" label="Finish" value={toEstate?.baseName ?? "Choose a destination"} />
             </div>
           </div>
 
-          <dl className="mt-4 space-y-3 text-sm">
-            {selectedPlaceEstate ? (
-              <InfoRow
-                label="Nearest estate"
-                value={selectedPlaceEstate.baseName}
-              />
-            ) : null}
-            <InfoRow label="Island profile" value={islandFocus} />
-            <InfoRow label="Signature route" value={signatureRoute} />
-          </dl>
+          <div className="mt-4 space-y-3 rounded-[22px] border border-[#e1eae7] bg-[#fffdf8] p-4">
+            {selectedPlaceEstate ? <InfoRow label="Nearest estate" value={selectedPlaceEstate.baseName} /> : null}
+            <InfoRow label="Island character" value={islandFocus} />
+            <InfoRow label="Signature movement" value={signatureRoute} />
+          </div>
 
           <div className="mt-4 flex flex-wrap gap-1.5">
             {estateTags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.07] px-2.5 py-1.5 text-[9px] font-bold text-cyan-100/80"
+                className="rounded-full border border-[#cfe7e2] bg-[#eef8f5] px-2.5 py-1.5 text-[8px] font-black uppercase tracking-[.08em] text-[#0f766e]"
               >
                 {tag}
               </span>
@@ -174,45 +152,47 @@ export function TerritoryIntelligenceRail({
           </div>
 
           {activeEstate ? (
-            <div className="mt-5 grid grid-cols-2 gap-2">
+            <div className="mt-5 grid grid-cols-2 gap-2.5">
               <button
                 type="button"
                 onClick={() => onUseAsPickup(activeEstate.geoid)}
                 disabled={toEstate?.geoid === activeEstate.geoid}
-                className="rounded-xl bg-teal-400 px-3 py-2.5 text-[10px] font-extrabold text-[#062923] transition hover:bg-teal-300 disabled:cursor-not-allowed disabled:opacity-40"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#bfe4dd] bg-[#eaf8f5] px-3 text-[9px] font-black uppercase tracking-[.11em] text-[#0f766e] transition hover:bg-[#dcf3ee] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {selectedPlace ? "Pickup nearby" : "Set pickup"}
+                <Navigation className="h-3.5 w-3.5" />
+                {selectedPlace ? "Start nearby" : "Set pickup"}
               </button>
               <button
                 type="button"
                 onClick={() => onUseAsDestination(activeEstate.geoid)}
                 disabled={fromEstate?.geoid === activeEstate.geoid}
-                className="rounded-xl bg-amber-300 px-3 py-2.5 text-[10px] font-extrabold text-[#3d2a00] transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-40"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-3 text-[9px] font-black uppercase tracking-[.11em] text-[#043331] transition hover:bg-[#ffcf67] disabled:cursor-not-allowed disabled:opacity-40"
               >
+                <MapPin className="h-3.5 w-3.5" />
                 {selectedPlace ? "Route here" : "Set destination"}
               </button>
               <Link
                 href={`/estate/${activeEstate.geoid}`}
-                className="col-span-2 rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5 text-center text-[10px] font-extrabold text-white/80 transition hover:bg-white/10 hover:text-white"
+                className="col-span-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#043331] px-3 text-[9px] font-black uppercase tracking-[.11em] text-white transition hover:bg-[#075e58]"
               >
-                Open {selectedPlace ? "nearest estate" : "estate"} profile
+                Open {selectedPlace ? "local area" : "estate story"} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           ) : null}
         </div>
       </section>
 
-      <section className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4">
-        <div className="flex items-center justify-between">
+      <section className="rounded-[28px] border border-[#d8e7e3] bg-[#fffdf8] p-4 shadow-[0_16px_45px_rgba(4,51,49,.06)]">
+        <div className="flex items-center justify-between gap-3 px-1">
           <div>
-            <div className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-white/35">
-              Nearby context
+            <div className="text-[8px] font-black uppercase tracking-[.17em] text-[#b16a18]">
+              Keep exploring
             </div>
-            <h3 className="mt-1 text-base font-extrabold text-white">
-              Closest estates
+            <h3 className="mt-1 text-lg font-black tracking-[-.025em] text-[#043331]">
+              Nearby island areas
             </h3>
           </div>
-          <span className="text-xs text-white/35">
+          <span className="rounded-full bg-[#eef8f5] px-2.5 py-1 text-[8px] font-black text-[#0f766e]">
             {neighboringEstates.length}
           </span>
         </div>
@@ -224,18 +204,17 @@ export function TerritoryIntelligenceRail({
                 key={estate.geoid}
                 type="button"
                 onClick={() => onSelectNeighbor(estate.geoid)}
-                className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left transition hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="group flex w-full items-center justify-between rounded-2xl border border-transparent px-3 py-3 text-left transition hover:border-[#d8e7e3] hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#28c8bd]"
               >
-                <span className="truncate text-sm font-semibold text-white/75">
+                <span className="truncate text-sm font-bold text-[#35514e] group-hover:text-[#043331]">
                   {estate.baseName}
                 </span>
-                <span className="ml-3 text-white/25">→</span>
+                <ArrowRight className="ml-3 h-4 w-4 shrink-0 text-[#9bb5b0] transition group-hover:translate-x-0.5 group-hover:text-[#0f766e]" />
               </button>
             ))
           ) : (
-            <p className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-white/40">
-              Select an estate or mapped territory entry to calculate nearby
-              context.
+            <p className="rounded-2xl border border-dashed border-[#d8e7e3] bg-white p-4 text-sm font-semibold leading-6 text-slate-500">
+              Tap an estate or mapped place to reveal the closest areas.
             </p>
           )}
         </div>
@@ -251,15 +230,22 @@ function placeTypeLabel(type: TerritoryMapSelection["type"]) {
   return "Place";
 }
 
-function DataPoint({ label, value }: { label: string; value: string }) {
+function StoryFact({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof MapPin;
+  label: string;
+  value: string;
+}) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2.5">
-      <div className="text-[8px] font-extrabold uppercase tracking-[0.16em] text-white/30">
+    <div className="rounded-[18px] border border-[#e0e9e6] bg-[#fbfdfc] p-3">
+      <Icon className="h-4 w-4 text-[#0f766e]" />
+      <div className="mt-2 text-[8px] font-black uppercase tracking-[.14em] text-slate-400">
         {label}
       </div>
-      <div className="mt-1 truncate text-xs font-bold text-white/80">
-        {value}
-      </div>
+      <div className="mt-1 truncate text-xs font-black text-[#043331]">{value}</div>
     </div>
   );
 }
@@ -276,17 +262,15 @@ function RoutePoint({
   return (
     <div className="flex items-center gap-3">
       <span
-        className={`h-3 w-3 shrink-0 rounded-full border-2 border-[#071a24] ring-2 ${
-          tone === "teal"
-            ? "bg-teal-300 ring-teal-300/20"
-            : "bg-amber-300 ring-amber-300/20"
+        className={`h-3 w-3 shrink-0 rounded-full border-2 border-[#043331] ring-2 ${
+          tone === "teal" ? "bg-[#7ce0d4] ring-[#7ce0d4]/20" : "bg-[#f5c451] ring-[#f5c451]/20"
         }`}
       />
       <span className="min-w-0">
-        <span className="block text-[8px] font-extrabold uppercase tracking-[0.16em] text-white/30">
+        <span className="block text-[8px] font-black uppercase tracking-[.14em] text-white/38">
           {label}
         </span>
-        <span className="mt-0.5 block truncate text-sm font-bold text-white/85">
+        <span className="mt-0.5 block truncate text-sm font-black text-white/88">
           {value}
         </span>
       </span>
@@ -297,10 +281,8 @@ function RoutePoint({
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/30">
-        {label}
-      </dt>
-      <dd className="mt-1 leading-5 text-white/65">{value}</dd>
+      <dt className="text-[8px] font-black uppercase tracking-[.14em] text-slate-400">{label}</dt>
+      <dd className="mt-1 text-sm font-semibold leading-5 text-[#516966]">{value}</dd>
     </div>
   );
 }

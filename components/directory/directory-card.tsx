@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import {
-  ArrowUpRight,
+  ArrowRight,
   BadgeCheck,
-  Eye,
   Map,
   MapPin,
   MessageCircleMore,
   Navigation,
+  Sparkles,
 } from "lucide-react";
 
 import { GooglePlacePhoto } from "@/components/directory/google-place-photo";
@@ -52,53 +52,47 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
   };
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[26px] border border-slate-200/80 bg-white shadow-[0_12px_35px_rgba(4,51,49,.07)] transition duration-300 hover:-translate-y-1 hover:border-teal-700/20 hover:shadow-[0_22px_50px_rgba(4,51,49,.13)]">
-      <Link href={href} aria-label={`View ${item.name}`} className="block">
-        <GooglePlacePhoto
-          placeId={googlePhoto.placeId}
-          name={item.name}
-          island={item.island.toUpperCase()}
-          fallbackImage={googlePhoto.fallback || item.heroImage}
-        />
-      </Link>
-
-      <div className="flex flex-1 flex-col p-5">
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-black uppercase tracking-[.14em] text-emerald-800">
-            <BadgeCheck size={12} /> Verified
-          </span>
-          <Link
-            href={href}
-            aria-label={`Open ${item.name}`}
-            className="text-slate-300 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0f766e]"
-          >
-            <ArrowUpRight size={17} />
-          </Link>
-        </div>
-
-        <div className="flex items-center justify-between gap-3">
-          <div className="text-[11px] font-black uppercase tracking-[0.22em] text-amber-500">
-            {eyebrow ?? item.category}
-          </div>
-          <div className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
-            {item.island.toUpperCase()}
-          </div>
-        </div>
-
-        <Link href={href} className="mt-3 block">
-          <h2 className="text-2xl font-black tracking-[-.03em] text-[#043331] transition group-hover:text-[#0f766e]">
-            {item.name}
-          </h2>
+    <article className="directory-story-card group flex h-full flex-col overflow-hidden rounded-[30px] border border-[#d9e6e2] bg-[#fffdf8] shadow-[0_16px_45px_rgba(4,51,49,.08)] transition duration-300 hover:-translate-y-1.5 hover:border-[#aad7d0] hover:shadow-[0_28px_65px_rgba(4,51,49,.14)]">
+      <div className="relative overflow-hidden">
+        <Link href={href} aria-label={`View ${item.name}`} className="block">
+          <GooglePlacePhoto
+            placeId={googlePhoto.placeId}
+            name={item.name}
+            island={item.island.toUpperCase()}
+            fallbackImage={googlePhoto.fallback || item.heroImage}
+            className="h-64 sm:h-72"
+          />
+          <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(3,47,45,.04)_30%,rgba(3,47,45,.72)_100%)]" />
         </Link>
 
+        <div className="pointer-events-none absolute inset-x-4 top-4 flex items-start justify-between gap-3">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-[#043331]/78 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.13em] text-white shadow-lg backdrop-blur-md">
+            <BadgeCheck size={11} className="text-[#7ce0d4]" /> VI Guide verified
+          </span>
+          <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.14em] text-white backdrop-blur-md">
+            {islandName}
+          </span>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-5 bottom-4 text-white">
+          <div className="text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
+            {eyebrow ?? item.category}
+          </div>
+          <h2 className="vi-display mt-1 line-clamp-2 text-3xl font-black leading-[.95] tracking-[-.045em] drop-shadow-sm">
+            {item.name}
+          </h2>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         {item.address || item.tags[1] ? (
-          <div className="mt-2 flex items-center gap-2 text-xs font-bold text-slate-500">
-            <MapPin size={14} className="text-[#0f766e]" />
+          <div className="flex items-center gap-2 text-xs font-black text-[#0f766e]">
+            <MapPin size={14} />
             <span className="line-clamp-1">{item.address || item.tags[1]}</span>
           </div>
         ) : null}
 
-        <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-slate-600">
+        <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-[#5a6f6c]">
           {item.description}
         </p>
 
@@ -108,9 +102,13 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
           ))}
         </div>
 
-        <div className="mt-auto grid grid-cols-2 gap-2 border-t border-slate-100 pt-5">
-          <CardAction href={href} icon={Eye} label="Details" />
-          <CardAction href={mapHref} icon={Map} label="Map" />
+        <div className="mt-5 grid grid-cols-3 gap-2 border-t border-[#e4ece9] pt-5">
+          <MiniAction href={mapHref} icon={Map} label="Map" />
+          <MiniAction href={rideHref} icon={Navigation} label="Ride" gold />
+          <MiniAction href={conciergeHref} icon={Sparkles} label="Ask VI" teal />
+        </div>
+
+        <div className="mt-3 grid grid-cols-2 gap-2">
           <SavePlaceButton
             place={{
               id: item.id,
@@ -125,47 +123,47 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
               ...(typeof item.lng === "number" ? { lng: item.lng } : {}),
             }}
             compact
-            className="w-full px-3 text-center text-[9px] tracking-[.13em]"
+            className="w-full px-3 text-center text-[8px] tracking-[.12em]"
           />
           <AddToJourneyButton
             stop={journeyStop}
-            className="w-full px-3 text-center text-[9px] tracking-[.13em]"
-          />
-          <CardAction href={rideHref} icon={Navigation} label="Ride" accent />
-          <CardAction
-            href={conciergeHref}
-            icon={MessageCircleMore}
-            label="Concierge"
-            teal
+            className="w-full px-3 text-center text-[8px] tracking-[.12em]"
           />
         </div>
+
+        <Link
+          href={href}
+          className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-[#075e58]"
+        >
+          Open the story <ArrowRight className="h-4 w-4 text-[#f5c451]" />
+        </Link>
       </div>
     </article>
   );
 }
 
-function CardAction({
+function MiniAction({
   href,
   icon: Icon,
   label,
-  accent = false,
+  gold = false,
   teal = false,
 }: {
   href: string;
-  icon: typeof Map;
+  icon: typeof MessageCircleMore;
   label: string;
-  accent?: boolean;
+  gold?: boolean;
   teal?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-3 text-[9px] font-black uppercase tracking-[.13em] transition hover:-translate-y-0.5 ${
-        accent
-          ? "bg-[#f5c451] text-[#043331] hover:bg-[#ffca55]"
+      className={`inline-flex min-h-11 flex-col items-center justify-center gap-1 rounded-[18px] border px-2 text-[8px] font-black uppercase tracking-[.09em] transition hover:-translate-y-0.5 ${
+        gold
+          ? "border-[#edd28f] bg-[#fff7df] text-[#8a5d13] hover:bg-[#fff0bd]"
           : teal
-            ? "bg-[#0f766e] text-white hover:bg-[#0b5d5b]"
-            : "border border-slate-200 bg-[#f8f4ea] text-[#043331] hover:border-[#0f766e] hover:bg-white"
+            ? "border-[#b8e2dc] bg-[#eaf8f5] text-[#0f766e] hover:bg-[#ddf3ee]"
+            : "border-[#dce7e4] bg-white text-[#35514e] hover:border-[#b8dcd6]"
       }`}
     >
       <Icon className="h-4 w-4" />
