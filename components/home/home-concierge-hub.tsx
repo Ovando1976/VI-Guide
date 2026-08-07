@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  BadgeCheck,
   BedDouble,
   Car,
   Fish,
@@ -79,14 +80,25 @@ export function HomeConciergeHub() {
             </h2>
             <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/68">
               VI Concierge connects places, timing, transportation, local context,
-              and now cruise planning into one practical travel relationship.
+              and cruise planning into one practical travel relationship.
             </p>
-            <Link
-              href={conciergeHref("Plan a complete Virgin Islands day for me")}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]"
-            >
-              Start a custom plan <ArrowRight size={16} />
-            </Link>
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#f5c451]/25 bg-[#f5c451]/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.16em] text-[#f8d77c]">
+              <BadgeCheck size={14} /> Guided by a USVI Travel Specialist
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/trip-planning"
+                className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-[#073b39]"
+              >
+                Plan my USVI trip <ArrowRight size={16} />
+              </Link>
+              <Link
+                href={conciergeHref("Plan a complete Virgin Islands day for me")}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.07] px-6 py-3.5 text-xs font-black uppercase tracking-[.15em] text-white transition hover:bg-white/[.12]"
+              >
+                Ask Concierge
+              </Link>
+            </div>
           </div>
 
           <div className="p-6 sm:p-8 lg:p-10">
