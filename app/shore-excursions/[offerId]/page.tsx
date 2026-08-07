@@ -11,17 +11,24 @@ import {
 } from "lucide-react";
 
 import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
-import { ShoreExcursionBookingForm } from "@/components/shore-excursions/shore-excursion-booking-form";
+import {
+  ShoreExcursionBookingForm,
+  type ShoreExcursionCruiseDefaults,
+} from "@/components/shore-excursions/shore-excursion-booking-form";
 import { formatMerchantOfferMoney } from "@/lib/merchant-offers";
 import { loadPublicShoreExcursion } from "@/lib/shore-excursion-public";
 import { shoreExcursionPort } from "@/lib/shore-excursions";
 
 export const dynamic = "force-dynamic";
 
+type SearchParams = Record<string, string | string[] | undefined>;
+
 export default async function ShoreExcursionDetailPage({
   params,
+  searchParams = {},
 }: {
   params: { offerId: string };
+  searchParams?: SearchParams;
 }) {
   const excursion = await loadPublicShoreExcursion(params.offerId);
   if (!excursion) notFound();
@@ -29,6 +36,8 @@ export default async function ShoreExcursionDetailPage({
   const ports = excursion.supportedPorts
     .map((portId) => shoreExcursionPort(portId))
     .filter(isShoreExcursionPort);
+  const defaults = cruiseDefaults(searchParams);
+  const backHref = withQuery("/shore-excursions", preserveCruiseQuery(searchParams));
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-28 text-[#043331]">
@@ -36,7 +45,7 @@ export default async function ShoreExcursionDetailPage({
       <section className="px-4 py-8 sm:px-6 lg:py-12">
         <div className="mx-auto max-w-7xl">
           <Link
-            href="/shore-excursions"
+            href={backHref}
             className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-teal-800"
           >
             <ArrowLeft className="h-4 w-4" /> Port-day options
@@ -148,12 +157,77 @@ export default async function ShoreExcursionDetailPage({
               minReturnBufferMinutes={excursion.minReturnBufferMinutes}
               maxGuests={excursion.maxGuests}
               ports={ports.map((port) => ({ id: port.id, label: port.label }))}
+              defaults={defaults}
             />
           </div>
         </div>
       </section>
     </main>
   );
+}
+
+function cruiseDefaults(searchParams: SearchParams): ShoreExcursionCruiseDefaults | undefined {
+  const startDate = firstValue(searchParams.date);
+  const arrival = firstValue(searchParams.arrival);
+  const allAboard = firstValue(searchParams.allAboard);
+  const shipName = firstValue(searchParams.ship);
+  const cruiseLine = firstValue(searchParams.cruiseLine);
+  const portId = firstValue(searchParams.portId);
+  if (!startDate && !shipName && !allAboard && !cruiseLine) return undefined;
+  return {
+    ...(validDate(startDate) ? { startDate } : {}),
+    ...(validTime(arrival) ? { preferredTime: addMinutes(arrival, 60) } : {}),
+    ...(shipName ? { shipName: shipName.slice(0, 160) } : {}),
+    ...(cruiseLine ? { cruiseLine: cruiseLine.slice(0, 160) } : {}),
+    ...(portId ? { portId: portId.slice(0, 80) } : {}),
+    ...(validTime(allAboard) ? { allAboardTime: allAboard } : {}),
+    allAboardEstimated: firstValue(searchParams.allAboardEstimated) === "1",
+  };
+}
+
+function preserveCruiseQuery(searchParams: SearchParams) {
+  const allowed = [
+    "cruiseTrip",
+    "sailing",
+    "ship",
+    "cruiseLine",
+    "date",
+    "portName",
+    "island",
+    "portId",
+    "arrival",
+    "allAboard",
+    "allAboardEstimated",
+  ] as const;
+  const params = new URLSearchParams();
+  for (const key of allowed) {
+    const value = firstValue(searchParams[key]);
+    if (value) params.set(key, value.slice(0, 220));
+  }
+  return params;
+}
+
+function withQuery(path: string, params: URLSearchParams) {
+  const query = params.toString();
+  return query ? `${path}?${query}` : path;
+}
+
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
+}
+
+function validDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function validTime(value: string) {
+  return /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
+}
+
+function addMinutes(value: string, minutes: number) {
+  const [hour, minute] = value.split(":").map(Number);
+  const total = Math.min(23 * 60 + 59, hour * 60 + minute + minutes);
+  return `${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`;
 }
 
 function isShoreExcursionPort(
