@@ -109,8 +109,10 @@ export function ShoreExcursionBoard() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load shore excursion operations.");
       }
-      setOffers(Array.isArray(payload?.offers) ? payload.offers : []);
-      setProfiles(Array.isArray(payload?.profiles) ? payload.profiles : []);
+      const parsedOffers = payload?.offers;
+      const parsedProfiles = payload?.profiles;
+      setOffers(Array.isArray(parsedOffers) ? parsedOffers : []);
+      setProfiles(Array.isArray(parsedProfiles) ? parsedProfiles : []);
       setCanManage(payload?.canManage === true);
     } catch (caught) {
       if (!silent) {
@@ -274,8 +276,8 @@ export function ShoreExcursionBoard() {
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
                 Add supported cruise ports, meeting instructions, group capacity,
-                duration, and a conservative return-to-ship buffer. Travelers can
-                only submit timing that clears that buffer.
+                total port-to-port duration, and a conservative return-to-ship
+                buffer. Travelers can only submit timing that clears that buffer.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -481,7 +483,7 @@ function Editor({
             </Field>
           </div>
 
-          <Field label="Excursion duration (minutes)">
+          <Field label="Total port-to-port duration (minutes)">
             <input
               type="number"
               min={30}
@@ -547,9 +549,10 @@ function Editor({
         </div>
 
         <div className="mt-7 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm font-semibold leading-6 text-amber-950/75">
-          The return buffer is a minimum operating rule, not a guarantee that a ship
-          will wait. Operators should use conservative durations and update or pause
-          the excursion when traffic, weather, or port conditions materially change.
+          The total duration must include the return to the cruise port. The return
+          buffer is a minimum operating rule, not a guarantee that a ship will wait.
+          Operators should use conservative durations and update or pause the excursion
+          when traffic, weather, or port conditions materially change.
         </div>
 
         <div className="mt-7 flex flex-wrap justify-end gap-3 border-t border-slate-200 pt-5">
@@ -615,7 +618,7 @@ function ProfileCard({
       </div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Detail icon={Clock3} label="Duration" value={`${profile.durationMinutes} min`} />
+        <Detail icon={Clock3} label="Port-to-port duration" value={`${profile.durationMinutes} min`} />
         <Detail icon={Users} label="Max guests" value={String(profile.maxGuests)} />
         <Detail
           icon={ShipWheel}
