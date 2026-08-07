@@ -15,6 +15,7 @@ export type CruiseExcursionFitStatus =
   | "wrong_port"
   | "offer_outside_window"
   | "capacity_unconfigured"
+  | "capacity_unverified"
   | "provider_closed"
   | "sold_out"
   | "insufficient_capacity"
@@ -42,6 +43,7 @@ export function evaluateOfficialPortCallExcursionFit(input: {
   availabilityDay?: ProviderAvailabilityDay | null;
   reservedGuests?: number;
   partySize?: number;
+  capacityDataComplete?: boolean;
   disembarkBufferMinutes?: number;
 }): CruiseExcursionFit {
   const partySize = clampWhole(input.partySize, 1, 100, 1);
@@ -57,7 +59,7 @@ export function evaluateOfficialPortCallExcursionFit(input: {
     latestSafeStartTime: null,
     safeReturnDeadline: null,
     remainingCapacity: null,
-    capacityVerified: Boolean(input.availabilityDay),
+    capacityVerified: false,
     requestedPartySize: partySize,
   };
 
@@ -107,11 +109,7 @@ export function evaluateOfficialPortCallExcursionFit(input: {
   }
 
   if (!input.availabilityDay) {
-    return {
-      ...shipTimedBase,
-      status: "capacity_unconfigured",
-      capacityVerified: false,
-    };
+    return { ...shipTimedBase, status: "capacity_unconfigured" };
   }
   if (!input.availabilityDay.isOpen) {
     return {
@@ -120,6 +118,9 @@ export function evaluateOfficialPortCallExcursionFit(input: {
       remainingCapacity: 0,
       capacityVerified: true,
     };
+  }
+  if (input.capacityDataComplete === false) {
+    return { ...shipTimedBase, status: "capacity_unverified" };
   }
 
   const remainingCapacity = Math.max(
