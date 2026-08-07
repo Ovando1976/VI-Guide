@@ -22,7 +22,7 @@ import {
 const ITEMS = [
   { base: "/", label: "Home", icon: House },
   { base: "/places", label: "Explore", icon: Compass },
-  { base: "/map", label: "Map", icon: Map },
+  { base: "/map", label: "Live Map", icon: Map },
   { base: "/trips", label: "My Trip", icon: Route },
   { base: "/concierge", label: "Concierge", icon: Sparkles },
 ] as const;
@@ -133,14 +133,15 @@ export function AppNavigation() {
         href="/"
         className="app-nav__brand"
         aria-label="VI Guide home"
-        style={{ background: "transparent", border: 0, boxShadow: "none" }}
       >
-        <ViBrandMark className="h-8 w-8 shrink-0" />
+        <ViBrandMark className="h-9 w-9 shrink-0" />
       </Link>
 
       {ITEMS.map(({ base, label, icon: Icon }) => {
         const active = isActive(pathname, base);
         const isTrip = base === "/trips";
+        const isMap = base === "/map";
+        const isConcierge = base === "/concierge";
         const href = contextualHref(base, activeIsland);
         const accessibleLabel =
           isTrip && tripStopCount
@@ -153,22 +154,22 @@ export function AppNavigation() {
             href={href}
             aria-label={accessibleLabel}
             aria-current={active ? "page" : undefined}
+            data-nav={base === "/" ? "home" : base.slice(1)}
             className={clsx(
               "app-nav__item relative",
+              isMap && "app-nav__item--map",
+              isConcierge && "app-nav__item--concierge",
               active && "is-active",
             )}
           >
-            <Icon size={18} strokeWidth={2.2} />
+            <span className="app-nav__icon">
+              <Icon size={19} strokeWidth={2.2} />
+            </span>
             <span>{label}</span>
             {isTrip && tripStopCount ? (
               <span
                 aria-hidden="true"
-                className={clsx(
-                  "absolute right-1 top-1 grid min-h-4 min-w-4 place-items-center rounded-full px-1 text-[8px] font-black leading-none shadow-sm",
-                  active
-                    ? "bg-[#f5c451] text-[#043331]"
-                    : "bg-[#0f766e] text-white",
-                )}
+                className="app-nav__badge"
               >
                 {tripStopCount > 99 ? "99+" : tripStopCount}
               </span>
