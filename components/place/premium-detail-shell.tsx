@@ -81,8 +81,7 @@ export function PremiumDetailShell({
   className = "",
 }: Props) {
   const resolvedKind = kind ?? inferUnifiedKind(actions.journeyStop?.kind);
-  const resolvedBookingHref =
-    actions.bookingHref ?? actions.journeyStop?.bookingHref;
+  const resolvedBookingHref = actions.bookingHref;
   const resolvedCapabilities =
     capabilities ??
     inferPlaceCapabilities({
@@ -276,8 +275,7 @@ function buildCategoryFacts(
   kind: UnifiedPlaceKind,
   actions: Props["actions"],
 ): UnifiedPlaceFact[] {
-  const resolvedBookingHref =
-    actions.bookingHref ?? actions.journeyStop?.bookingHref;
+  const resolvedBookingHref = actions.bookingHref;
   const shared: UnifiedPlaceFact[] = [
     {
       label: "Local context",
