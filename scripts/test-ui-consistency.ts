@@ -29,10 +29,19 @@ const merchantNav = source("components/merchant/merchant-console-nav.tsx");
 const partnersLayout = source("app/partners/layout.tsx");
 const bookingPage = source("app/book/page.tsx");
 const bookingsPage = source("app/bookings/page.tsx");
+const commerceBookingExperience = source(
+  "components/booking/commerce-booking-experience.tsx",
+);
+const commerceBookingRoute = source("app/api/commerce-bookings/route.ts");
+const merchantBookingRoute = source(
+  "app/api/merchant-bookings/[bookingId]/route.ts",
+);
 const travelDesk = source("components/admin/travel-request-board.tsx");
 const travelProposalDesk = source("components/admin/travel-proposal-board.tsx");
 const travelAdvisorRoute = source("app/api/travel-advisor/requests/route.ts");
-const travelProposalRoute = source("app/api/travel-advisor/requests/[requestId]/proposal/route.ts");
+const travelProposalRoute = source(
+  "app/api/travel-advisor/requests/[requestId]/proposal/route.ts",
+);
 const travelProposalQueueRoute = source("app/api/travel-advisor/proposals/route.ts");
 const sharedTrip = source("app/shared-trip/[shareId]/page.tsx");
 const cruiseDesk = source("components/admin/cruise-request-board.tsx");
@@ -119,14 +128,30 @@ assert.match(travelAdvisorRoute, /processBookingNotificationOutboxIds/);
 assert.match(travelProposalDesk, /readJourneyPlans/);
 assert.match(travelProposalDesk, /Publish & send/);
 assert.match(travelProposalDesk, /privacy-safe read-only itinerary/);
+assert.match(travelProposalDesk, /Proposal conversion/);
+assert.match(travelProposalDesk, /Attribution is traveler-matched/);
+assert.match(travelProposalDesk, /latestCommercePaymentStatus/);
 assert.match(travelProposalRoute, /buildTravelAdvisorProposalSnapshot/);
 assert.match(travelProposalRoute, /travel_advisor_proposal/);
 assert.match(travelProposalRoute, /proposal_published/);
 assert.match(travelProposalRoute, /proposal_sent/);
 assert.match(travelProposalRoute, /processBookingNotificationOutboxIds/);
-assert.match(travelProposalQueueRoute, /proposalHref/);
+assert.match(travelProposalQueueRoute, /latestCommerceBookingStatus/);
+assert.match(travelProposalQueueRoute, /latestCommercePaymentStatus/);
+assert.match(travelProposalQueueRoute, /getAll/);
 assert.match(sharedTrip, /Prepared through the VI Guide Travel Advisor workflow/);
 assert.match(sharedTrip, /not a confirmation/);
+assert.match(sharedTrip, /buildTravelAdvisorBookingHref/);
+assert.match(sharedTrip, /Request booking/);
+assert.match(commerceBookingExperience, /sourceProposalShareId/);
+assert.match(commerceBookingExperience, /Travel Advisor proposal/);
+assert.match(commerceBookingRoute, /proposalBookingEmailMatches/);
+assert.match(commerceBookingRoute, /sourceTravelRequestId/);
+assert.match(commerceBookingRoute, /booking_request_started/);
+assert.match(merchantBookingRoute, /sourceTravelRequestId/);
+assert.match(merchantBookingRoute, /latestCommerceBookingStatus/);
+assert.match(merchantBookingRoute, /booking_confirmed/);
+assert.match(merchantBookingRoute, /Boolean\(currentTravelStatus\)/);
 
 assert.match(adminNav, /\/admin\/travel-requests/);
 assert.match(adminNav, /\/admin\/travel-proposals/);
