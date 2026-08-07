@@ -51,12 +51,15 @@ export async function GET(request: NextRequest) {
     if (!document.exists) {
       return NextResponse.json({
         config: buildDefaultConfig(listingId),
+        persistedDates: [],
         generated: true,
       });
     }
 
+    const storedDays = normalizeStoredDays(document.data());
     return NextResponse.json({
-      config: normalizeStoredConfig(document.data(), listingId),
+      config: normalizeStoredConfig(document.data(), listingId, storedDays),
+      persistedDates: storedDays.map((day) => day.date),
       generated: false,
     });
   } catch (error) {
@@ -109,7 +112,10 @@ export async function PUT(request: NextRequest) {
         { merge: true },
       );
 
-    return NextResponse.json({ config: { ...config, updatedAt } });
+    return NextResponse.json({
+      config: { ...config, updatedAt },
+      persistedDates: config.days.map((day) => day.date),
+    });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
@@ -176,15 +182,21 @@ function normalizeDay(value: unknown): ProviderAvailabilityDay | null {
   };
 }
 
+function normalizeStoredDays(
+  data: FirebaseFirestore.DocumentData | undefined,
+) {
+  const rawDays = data?.days;
+  const storedDays = Array.isArray(rawDays) ? rawDays : [];
+  return storedDays
+    .map(normalizeDay)
+    .filter((day): day is ProviderAvailabilityDay => Boolean(day));
+}
+
 function normalizeStoredConfig(
   data: FirebaseFirestore.DocumentData | undefined,
   listingId: string,
+  storedDays: ProviderAvailabilityDay[] = normalizeStoredDays(data),
 ): ProviderOperationsConfig {
-  const rawDays = data?.days;
-  const storedDays = Array.isArray(rawDays) ? rawDays : [];
-  const normalizedDays = storedDays
-    .map(normalizeDay)
-    .filter((day): day is ProviderAvailabilityDay => Boolean(day));
   const defaultCapacity = clampNumber(data?.defaultCapacity, 1, 500, 10);
 
   return {
@@ -192,7 +204,7 @@ function normalizeStoredConfig(
     listingName: clean(data?.listingName, 180) || humanizeListingId(listingId),
     timezone: clean(data?.timezone, 80) || "America/St_Thomas",
     defaultCapacity,
-    days: buildAvailabilityHorizon(defaultCapacity, normalizedDays),
+    days: buildAvailabilityHorizon(defaultCapacity, storedDays),
     updatedAt: String(data?.updatedAt ?? ""),
   };
 }
