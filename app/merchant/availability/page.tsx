@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { ProviderOperationsBoard } from "@/components/provider/provider-operations-board";
 import { getSession } from "@/lib/auth-server";
+import { isIsoCalendarDate } from "@/lib/booking/booking-dates";
 import { resolveMerchantListingSelection } from "@/lib/merchant-portal";
 
 export const metadata = {
@@ -13,6 +14,7 @@ export const metadata = {
 type MerchantAvailabilityPageProps = {
   searchParams?: {
     listingId?: string | string[];
+    date?: string | string[];
   };
 };
 
@@ -37,9 +39,17 @@ export default async function MerchantAvailabilityPage({
     restricted: session.role === "merchant",
   });
 
+  const rawDate = searchParams?.date;
+  const requestedDate = Array.isArray(rawDate) ? rawDate[0] : rawDate;
+  const initialFocusDate =
+    typeof requestedDate === "string" && isIsoCalendarDate(requestedDate)
+      ? requestedDate
+      : "";
+
   return (
     <ProviderOperationsBoard
       initialListingId={initialListingId}
+      initialFocusDate={initialFocusDate}
       managedListingIds={managedListingIds}
       restrictToManagedListings={session.role === "merchant"}
     />
