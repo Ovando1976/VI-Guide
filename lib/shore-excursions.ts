@@ -212,6 +212,23 @@ export function shoreExcursionPortsForIsland(island: IntelligenceIsland) {
   return SHORE_EXCURSION_PORTS.filter((port) => port.island === island);
 }
 
+export function shoreExcursionDateWithinOfferWindow(input: {
+  startDate: unknown;
+  validFrom: unknown;
+  validThrough: unknown;
+}) {
+  const startDate = isoDate(input.startDate);
+  const validFrom = isoDate(input.validFrom);
+  const validThrough = isoDate(input.validThrough);
+  return Boolean(
+    startDate &&
+      validFrom &&
+      validThrough &&
+      startDate >= validFrom &&
+      startDate <= validThrough,
+  );
+}
+
 export function evaluateShoreExcursionTiming(input: {
   startTime: unknown;
   allAboardTime: unknown;
@@ -322,6 +339,12 @@ function parseTime(value: unknown) {
   const [hour, minute] = value.split(":").map(Number);
   if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
   return hour * 60 + minute;
+}
+
+function isoDate(value: unknown) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? value
+    : "";
 }
 
 function formatMinutes(value: number) {
