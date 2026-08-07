@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  Bookmark,
   CalendarCheck,
   ExternalLink,
   Map,
@@ -44,7 +45,7 @@ export function PlaceActionBar({
     bookingHref,
   });
   const tripStop = journeyStop ?? fallbackJourneyStop;
-  const resolvedBookingHref = bookingHref ?? journeyStop?.bookingHref;
+  const resolvedBookingHref = bookingHref;
   const resolvedConciergeHref =
     conciergeHref ??
     buildContextualConciergeHref({
@@ -59,7 +60,7 @@ export function PlaceActionBar({
       className={`rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm ${className}`}
       aria-label={`Actions for ${name}`}
     >
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-1">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
         <div>
           <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
             Universal trip actions
@@ -68,6 +69,12 @@ export function PlaceActionBar({
             Save it, map it, plan around it, move to it, and book when available.
           </p>
         </div>
+        <Link
+          href="/saved"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-[#f8f4ea] px-3 py-2 text-[9px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:border-teal-600 hover:bg-white"
+        >
+          <Bookmark className="h-3.5 w-3.5 text-teal-700" /> View saved
+        </Link>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
