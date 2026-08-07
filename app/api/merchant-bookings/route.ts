@@ -93,6 +93,7 @@ export async function GET(request: NextRequest) {
           ? String(data.paymentIntentId)
           : null,
         paidAt: data.paidAt ? String(data.paidAt) : null,
+        shoreExcursion: serializeShoreExcursion(data.shoreExcursion),
         createdAt: String(data.createdAt ?? ""),
         updatedAt: String(data.updatedAt ?? data.createdAt ?? ""),
       };
@@ -152,6 +153,34 @@ async function loadBookingDocuments(
   return sortDocuments(Array.from(unique.values())).slice(0, 100);
 }
 
+function serializeShoreExcursion(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const data = value as Record<string, unknown>;
+  const shipName = clean(data.shipName, 160);
+  const portLabel = clean(data.portLabel, 180);
+  const allAboardTime = clean(data.allAboardTime, 5);
+  if (!shipName || !portLabel || !allAboardTime) return null;
+
+  return {
+    shipName,
+    cruiseLine: clean(data.cruiseLine, 160) || null,
+    portId: clean(data.portId, 80),
+    portLabel,
+    allAboardTime,
+    meetingPoint: clean(data.meetingPoint, 240),
+    pickupIncluded: data.pickupIncluded === true,
+    durationMinutes: nonNegativeInteger(data.durationMinutes),
+    minReturnBufferMinutes: nonNegativeInteger(data.minReturnBufferMinutes),
+    excursionEndsAt: clean(data.excursionEndsAt, 5) || null,
+    safeReturnDeadline: clean(data.safeReturnDeadline, 5) || null,
+    latestSafeStartTime: clean(data.latestSafeStartTime, 5) || null,
+    verifiedReturnBufferMinutes: nonNegativeInteger(
+      data.verifiedReturnBufferMinutes,
+    ),
+    timingStatus: clean(data.timingStatus, 80) || null,
+  };
+}
+
 function sortDocuments<
   T extends {
     data(): FirebaseFirestore.DocumentData;
@@ -172,6 +201,11 @@ function normalizeDepositSource(value: unknown) {
     value === "manual"
     ? value
     : null;
+}
+
+function nonNegativeInteger(value: unknown) {
+  const amount = Number(value);
+  return Number.isInteger(amount) && amount >= 0 ? amount : null;
 }
 
 function nullableMoney(value: unknown) {
