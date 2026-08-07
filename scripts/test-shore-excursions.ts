@@ -92,6 +92,18 @@ if (unsafeTiming.ok) throw new Error("Expected unsafe timing");
 assert.equal(unsafeTiming.reason, "insufficient_return_buffer");
 assert.equal(unsafeTiming.latestSafeStartTime, "11:00");
 
+const impossibleTiming = evaluateShoreExcursionTiming({
+  startTime: "08:00",
+  allAboardTime: "10:00",
+  durationMinutes: 540,
+  minReturnBufferMinutes: 120,
+});
+assert.equal(impossibleTiming.ok, false);
+if (impossibleTiming.ok) throw new Error("Expected impossible timing");
+assert.equal(impossibleTiming.reason, "insufficient_return_buffer");
+assert.equal(impossibleTiming.latestSafeStartTime, undefined);
+assert.equal(impossibleTiming.safeReturnDeadline, "08:00");
+
 const invertedTiming = evaluateShoreExcursionTiming({
   startTime: "16:30",
   allAboardTime: "16:00",
