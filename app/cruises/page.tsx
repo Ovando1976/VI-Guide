@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
+  Anchor,
   ArrowRight,
   CalendarSearch,
   CheckCircle2,
@@ -17,7 +18,7 @@ import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gat
 export const metadata: Metadata = {
   title: "Cruise Hub | VI Guide",
   description:
-    "Plan the cruise, book safe USVI port days, request advisor help, and keep the trip connected inside one VI Guide cruise hub.",
+    "Plan the cruise, verify USVI port calls, match capacity-aware shore excursions, request advisor help, and keep the trip connected inside one VI Guide cruise hub.",
 };
 
 export default function CruisesPage() {
@@ -34,9 +35,9 @@ export default function CruisesPage() {
                 One cruise plan, from sailing search to the last port day.
               </h1>
               <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-white/72">
-                Start with a sailing, build the Virgin Islands days around the ship
-                clock, bring in an advisor when you want help, and keep bookings and
-                trip details connected instead of scattering them across separate tools.
+                Start with a sailing, resolve the Virgin Islands port call against
+                official schedules, match local options to the ship clock and operator
+                capacity, and keep every booking inside one connected trip.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -44,6 +45,12 @@ export default function CruisesPage() {
                   className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-6 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]"
                 >
                   Find a sailing <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/cruises/port-calls"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[.08] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white"
+                >
+                  Official port calls <Anchor className="h-4 w-4 text-[#f5c451]" />
                 </Link>
                 <Link
                   href="/shore-excursions"
@@ -61,9 +68,14 @@ export default function CruisesPage() {
                 text="Search connected inventory when available or hand the brief to an advisor."
               />
               <HeroSignal
+                icon={Anchor}
+                title="Resolve the port call"
+                text="Use official VIPA and WICO schedule context before treating a local option as a ship-day fit."
+              />
+              <HeroSignal
                 icon={Compass}
                 title="Build the port days"
-                text="Match local excursions to the actual cruise port and all-aboard time."
+                text="Match local excursions to the terminal, operator capacity, and protected return window."
               />
               <HeroSignal
                 icon={TicketCheck}
@@ -81,7 +93,7 @@ export default function CruisesPage() {
 
       <section className="px-4 py-8 sm:px-6 lg:py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <PathCard
               number="01"
               icon={CalendarSearch}
@@ -92,14 +104,22 @@ export default function CruisesPage() {
             />
             <PathCard
               number="02"
+              icon={Anchor}
+              title="Check official calls"
+              text="See upcoming USVI calls from the loaded VIPA and WICO schedules, including terminal and published arrival/departure windows."
+              href="/cruises/port-calls"
+              cta="See port calls"
+            />
+            <PathCard
+              number="03"
               icon={Compass}
               title="Plan the port day"
-              text="Browse local cruise-ready excursions with port pickup, duration, capacity, and return-to-ship rules built into the request flow."
+              text="Use capacity-verified matches when available, with operator hours, active request demand, duration, and return-to-ship rules applied."
               href="/shore-excursions"
               cta="Browse port days"
             />
             <PathCard
-              number="03"
+              number="04"
               icon={LifeBuoy}
               title="Ask an advisor"
               text="Send one structured brief for ship, cabin, budget, accessibility, celebration, and Caribbean itinerary research."
@@ -125,9 +145,9 @@ export default function CruisesPage() {
                 The cruise is not a separate product from the Virgin Islands trip.
               </h2>
               <p className="mt-4 text-sm font-semibold leading-7 text-slate-600">
-                VI Guide should understand the voyage, the specific port call, the
-                traveler&apos;s local plans, and the bookings as one itinerary. That is
-                the organizing principle of this hub.
+                VI Guide understands the voyage, the official port-call context, the
+                traveler&apos;s local plans, operator capacity, and the bookings as one
+                itinerary. That is the organizing principle of this hub.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
@@ -151,12 +171,12 @@ export default function CruisesPage() {
                 text="Ship, dates, departure port, destinations, cabin and traveler preferences."
               />
               <JourneyStep
-                title="Port-call context"
-                text="Island, cruise terminal, all-aboard time and conservative return window."
+                title="Official port-call context"
+                text="Island, terminal, published arrival/departure, source revision, and conservative planning all-aboard."
               />
               <JourneyStep
                 title="Local fulfillment"
-                text="Operator, pickup, excursion duration, mobility needs and guest count."
+                text="Operator hours, current capacity, pickup, excursion duration, mobility needs and guest count."
               />
               <JourneyStep
                 title="Trip continuity"
