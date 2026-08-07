@@ -12,10 +12,7 @@ import {
   sourceForOfficialCruisePortCall,
   type OfficialCruisePortCall,
 } from "@/lib/cruise-port-calls";
-import {
-  getAdminDb,
-  hasFirebaseAdminConfiguration,
-} from "@/lib/firebase-admin";
+import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import {
   loadPublicShoreExcursions,
   type PublicShoreExcursion,
@@ -48,20 +45,15 @@ export async function loadOfficialPortCallMatches(input: {
   if (!call) return null;
   const excursions = await loadPublicShoreExcursions();
   const resources = await loadCapacityResources(excursions);
-  const matches = buildMatches({
-    call,
-    excursions,
-    partySize: input.partySize,
-    resources,
-  });
+  const matches = buildMatches({ call, excursions, partySize: input.partySize, resources });
   return {
     call,
     planningAllAboardTime: derivePlanningAllAboard(call.departsAt),
     source: sourceForOfficialCruisePortCall(call),
     availableMatches: matches.filter((match) => match.fit.status === "available"),
-    unverifiedMatches: matches.filter(
-      (match) => match.fit.status === "capacity_unconfigured",
-    ),
+    unverifiedMatches: matches.filter((match) =>
+      match.fit.status === "capacity_unconfigured" ||
+      match.fit.status === "capacity_unverified"),
     allMatches: matches,
   };
 }
@@ -79,22 +71,16 @@ export async function loadOfficialPortCallBoard(input: {
   });
   const excursions = await loadPublicShoreExcursions();
   const resources = await loadCapacityResources(excursions);
-
   return calls.map((call) => {
-    const matches = buildMatches({
-      call,
-      excursions,
-      partySize: input.partySize,
-      resources,
-    });
+    const matches = buildMatches({ call, excursions, partySize: input.partySize, resources });
     return {
       call,
       planningAllAboardTime: derivePlanningAllAboard(call.departsAt),
       source: sourceForOfficialCruisePortCall(call),
       availableMatches: matches.filter((match) => match.fit.status === "available"),
-      unverifiedMatches: matches.filter(
-        (match) => match.fit.status === "capacity_unconfigured",
-      ),
+      unverifiedMatches: matches.filter((match) =>
+        match.fit.status === "capacity_unconfigured" ||
+        match.fit.status === "capacity_unverified"),
     } satisfies PublicCruisePortCallBoardItem;
   });
 }
@@ -106,28 +92,24 @@ function buildMatches(input: {
   resources: CapacityResources;
 }) {
   return input.excursions
-    .filter(
-      (excursion) =>
-        excursion.island === input.call.island &&
-        excursion.supportedPorts.includes(input.call.portId),
-    )
+    .filter((excursion) =>
+      excursion.island === input.call.island &&
+      excursion.supportedPorts.includes(input.call.portId))
     .map((excursion) => {
-      const providerConfig = input.resources.providerOperations.get(
-        excursion.offer.listingId,
-      );
+      const listingId = excursion.offer.listingId;
+      const providerConfig = input.resources.providerOperations.get(listingId);
       const availabilityDay = providerConfig
         ? providerAvailabilityDay(providerConfig, input.call.date)
         : null;
-      const bookingRecords =
-        input.resources.bookingsByListing.get(excursion.offer.listingId) ?? [];
-      const reservedGuests = reservedGuestCount(bookingRecords, input.call.date);
+      const bookingRecords = input.resources.bookingsByListing.get(listingId) ?? [];
       const fit = evaluateOfficialPortCallExcursionFit({
         call: input.call,
         profile: excursion,
         offer: excursion.offer,
         availabilityDay,
-        reservedGuests,
+        reservedGuests: reservedGuestCount(bookingRecords, input.call.date),
         partySize: input.partySize,
+        capacityDataComplete: input.resources.completeBookingsByListing.get(listingId) !== false,
       });
       return {
         excursion,
@@ -141,63 +123,50 @@ function buildMatches(input: {
       } satisfies PublicCruiseExcursionMatch;
     })
     .sort((left, right) => {
-      const leftRank = fitRank(left.fit.status);
-      const rightRank = fitRank(right.fit.status);
-      if (leftRank !== rightRank) return leftRank - rightRank;
-      const leftCapacity = left.fit.remainingCapacity ?? -1;
-      const rightCapacity = right.fit.remainingCapacity ?? -1;
-      if (leftCapacity !== rightCapacity) return rightCapacity - leftCapacity;
-      return left.excursion.offer.offerTitle.localeCompare(
-        right.excursion.offer.offerTitle,
-      );
+      const rank = fitRank(left.fit.status) - fitRank(right.fit.status);
+      if (rank) return rank;
+      const capacity = (right.fit.remainingCapacity ?? -1) - (left.fit.remainingCapacity ?? -1);
+      return capacity || left.excursion.offer.offerTitle.localeCompare(right.excursion.offer.offerTitle);
     });
 }
 
 type CapacityResources = {
   providerOperations: Map<string, ProviderOperationsConfig>;
   bookingsByListing: Map<string, Array<Record<string, unknown>>>;
+  completeBookingsByListing: Map<string, boolean>;
 };
 
 async function loadCapacityResources(
   excursions: PublicShoreExcursion[],
 ): Promise<CapacityResources> {
-  const listingIds = Array.from(
-    new Set(excursions.map((excursion) => excursion.offer.listingId).filter(Boolean)),
-  );
+  const listingIds = Array.from(new Set(excursions.map((item) => item.offer.listingId).filter(Boolean)));
   const providerOperations = new Map<string, ProviderOperationsConfig>();
   const bookingsByListing = new Map<string, Array<Record<string, unknown>>>();
+  const completeBookingsByListing = new Map<string, boolean>();
   if (!listingIds.length || !hasFirebaseAdminConfiguration()) {
-    return { providerOperations, bookingsByListing };
+    return { providerOperations, bookingsByListing, completeBookingsByListing };
   }
-
   const db = getAdminDb();
-  const results = await Promise.all(
-    listingIds.map(async (listingId) => {
-      const [operationsDocument, bookingsSnapshot] = await Promise.all([
-        db.collection("providerOperations").doc(listingId).get(),
-        db
-          .collection("commerceBookings")
-          .where("listingId", "==", listingId)
-          .limit(500)
-          .get(),
-      ]);
-      return {
-        listingId,
-        operations: operationsDocument.exists
-          ? normalizeProviderOperations(operationsDocument.data(), listingId)
-          : null,
-        bookings: bookingsSnapshot.docs.map((document) => document.data()),
-      };
-    }),
-  );
-
+  const results = await Promise.all(listingIds.map(async (listingId) => {
+    const [operationsDocument, bookingsSnapshot] = await Promise.all([
+      db.collection("providerOperations").doc(listingId).get(),
+      db.collection("commerceBookings").where("listingId", "==", listingId).limit(501).get(),
+    ]);
+    return {
+      listingId,
+      operations: operationsDocument.exists
+        ? normalizeProviderOperations(operationsDocument.data(), listingId)
+        : null,
+      bookings: bookingsSnapshot.docs.slice(0, 500).map((document) => document.data()),
+      complete: bookingsSnapshot.size <= 500,
+    };
+  }));
   for (const result of results) {
-    if (result.operations) {
-      providerOperations.set(result.listingId, result.operations);
-    }
+    if (result.operations) providerOperations.set(result.listingId, result.operations);
     bookingsByListing.set(result.listingId, result.bookings);
+    completeBookingsByListing.set(result.listingId, result.complete);
   }
-  return { providerOperations, bookingsByListing };
+  return { providerOperations, bookingsByListing, completeBookingsByListing };
 }
 
 function normalizeProviderOperations(
@@ -224,18 +193,14 @@ function providerAvailabilityDay(config: ProviderOperationsConfig, date: string)
 function normalizeAvailabilityDay(value: unknown): ProviderAvailabilityDay | null {
   if (!value || typeof value !== "object") return null;
   const day = value as Partial<ProviderAvailabilityDay>;
-  if (typeof day.date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(day.date)) {
-    return null;
-  }
+  if (typeof day.date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(day.date)) return null;
   return {
     date: day.date,
     isOpen: day.isOpen === true,
     capacity: clampWhole(day.capacity, 0, 500, 0),
     startTime: validTime(day.startTime) ? day.startTime : "09:00",
     endTime: validTime(day.endTime) ? day.endTime : "17:00",
-    ...(typeof day.note === "string" && day.note.trim()
-      ? { note: day.note.trim().slice(0, 300) }
-      : {}),
+    ...(typeof day.note === "string" && day.note.trim() ? { note: day.note.trim().slice(0, 300) } : {}),
   };
 }
 
@@ -268,7 +233,7 @@ function excursionHref(
 
 function fitRank(status: CruiseExcursionFit["status"]) {
   if (status === "available") return 0;
-  if (status === "capacity_unconfigured") return 1;
+  if (status === "capacity_unconfigured" || status === "capacity_unverified") return 1;
   if (status === "insufficient_capacity") return 2;
   if (status === "sold_out") return 3;
   return 4;
@@ -278,19 +243,12 @@ function validTime(value: unknown): value is string {
   return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
 }
 
-function clampWhole(
-  value: unknown,
-  minimum: number,
-  maximum: number,
-  fallback: number,
-) {
+function clampWhole(value: unknown, minimum: number, maximum: number, fallback: number) {
   const number = Number(value);
   if (!Number.isFinite(number)) return fallback;
   return Math.max(minimum, Math.min(maximum, Math.trunc(number)));
 }
 
-function isAvailabilityDay(
-  value: ProviderAvailabilityDay | null,
-): value is ProviderAvailabilityDay {
+function isAvailabilityDay(value: ProviderAvailabilityDay | null): value is ProviderAvailabilityDay {
   return value !== null;
 }
