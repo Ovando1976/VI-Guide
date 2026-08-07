@@ -21,24 +21,25 @@ export function resolveOfficialPortCallContext(input: {
   const date = validDate(input.date) ? input.date! : "";
   const portId = officialPortId(input.portId);
   const shipName = normalizeShip(input.shipName);
-  if (!date || !portId || !shipName) return null;
+  if (!date || !shipName) return null;
 
   const candidates = listOfficialCruisePortCalls({
     from: date,
     through: date,
-    portId,
+    ...(portId ? { portId } : {}),
     includeCancelled: true,
   });
-  return (
-    candidates.find(
-      (call) => normalizeShip(call.shipName) === shipName,
-    ) ??
-    candidates.find((call) => {
-      const candidate = normalizeShip(call.shipName);
-      return candidate.includes(shipName) || shipName.includes(candidate);
-    }) ??
-    null
+  const exact = candidates.filter(
+    (call) => normalizeShip(call.shipName) === shipName,
   );
+  if (exact.length === 1) return exact[0];
+  if (exact.length > 1) return null;
+
+  const fuzzy = candidates.filter((call) => {
+    const candidate = normalizeShip(call.shipName);
+    return candidate.includes(shipName) || shipName.includes(candidate);
+  });
+  return fuzzy.length === 1 ? fuzzy[0] : null;
 }
 
 function officialPortId(value: unknown): OfficialCruisePortId | undefined {
