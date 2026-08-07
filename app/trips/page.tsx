@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import { Route } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
@@ -29,12 +29,9 @@ export const metadata = {
 
 export default async function TripsPage() {
   const session = await getSession();
-  if (!session) redirect("/login?next=/trips");
-
-  const { stays, bookings, advisorTrips } = await loadTravelerTripData({
-    uid: session.uid,
-    email: session.email,
-  });
+  const { stays, bookings, advisorTrips } = session
+    ? await loadTravelerTripData({ uid: session.uid, email: session.email })
+    : { stays: [], bookings: [], advisorTrips: [] };
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
@@ -51,31 +48,53 @@ export default async function TripsPage() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
         <TripReturnNotice />
         <TravelerTripCommandCenter
-          travelerName={session.name}
+          travelerName={session?.name}
           bookings={bookings}
           stayRequests={stays}
           advisorTrips={advisorTrips}
         />
 
-        <section className="mt-8 overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm">
-          <div className="bg-[linear-gradient(135deg,#043331,#0f766e)] px-6 py-6 text-white sm:px-8">
-            <div className="text-[10px] font-black uppercase tracking-[.24em] text-[#f5c558]">
-              Live transportation
+        {!session ? (
+          <section className="mt-6 flex flex-col gap-4 rounded-[28px] border border-teal-200 bg-teal-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
+                Connect your account
+              </p>
+              <h2 className="mt-1 text-xl font-black tracking-[-.035em]">
+                Your saved itinerary still works without signing in.
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
+                Sign in when you want My Trip to also connect account bookings, advisor proposals, stay requests, live rides, and ride history. Device-only itinerary and tracked booking continuity remain available either way.
+              </p>
             </div>
-            <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
-              Rides connected to your trip
-            </h2>
-            <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-white/65">
-              Active ride timing, driver location, cancellation controls, and ride history remain connected below the same My Trip workspace.
-            </p>
-          </div>
-          <div className="p-4 sm:p-6">
-            <RiderTripTiming riderId={session.uid} />
-            <RiderLiveDriverMap riderId={session.uid} />
-            <RiderCancelRide riderId={session.uid} />
-            <RiderTripHistory riderId={session.uid} />
-          </div>
-        </section>
+            <Link
+              href="/login?next=/trips"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.15em] text-white"
+            >
+              Sign in to connect
+            </Link>
+          </section>
+        ) : (
+          <section className="mt-8 overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm">
+            <div className="bg-[linear-gradient(135deg,#043331,#0f766e)] px-6 py-6 text-white sm:px-8">
+              <div className="text-[10px] font-black uppercase tracking-[.24em] text-[#f5c558]">
+                Live transportation
+              </div>
+              <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
+                Rides connected to your trip
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-white/65">
+                Active ride timing, driver location, cancellation controls, and ride history remain connected below the same My Trip workspace.
+              </p>
+            </div>
+            <div className="p-4 sm:p-6">
+              <RiderTripTiming riderId={session.uid} />
+              <RiderLiveDriverMap riderId={session.uid} />
+              <RiderCancelRide riderId={session.uid} />
+              <RiderTripHistory riderId={session.uid} />
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );
