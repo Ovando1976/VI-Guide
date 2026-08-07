@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   Building2,
   CalendarDays,
+  CalendarRange,
   Clock3,
   Loader2,
   Save,
@@ -21,6 +22,7 @@ import {
 } from "react";
 
 import {
+  applyProviderAvailabilityWindowDecision,
   buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
@@ -43,6 +45,8 @@ type ProviderOperationsPayload = {
   persistedDates?: string[];
   error?: string;
 };
+
+const BULK_WINDOW_OPTIONS = [7, 14, 30, 90] as const;
 
 export function ProviderOperationsBoard({
   initialListingId,
@@ -81,10 +85,12 @@ export function ProviderOperationsBoard({
         : "",
     [initialFocusDate],
   );
+
   const lastAutoLoadedListingId = useRef("");
   const lastFocusedDateKey = useRef("");
   const activeLoadRequest = useRef(0);
   const [listingId, setListingId] = useState(resolvedInitialListingId);
+  const [loadedListingId, setLoadedListingId] = useState("");
   const [listingName, setListingName] = useState(
     resolvedInitialListingId ? humanizeListingId(resolvedInitialListingId) : "",
   );
@@ -97,6 +103,9 @@ export function ProviderOperationsBoard({
   const [decisionDates, setDecisionDates] = useState<Set<string>>(
     () => new Set(),
   );
+  const [bulkWindowDays, setBulkWindowDays] = useState<number>(14);
+  const [bulkStartTime, setBulkStartTime] = useState("09:00");
+  const [bulkEndTime, setBulkEndTime] = useState("17:00");
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -120,6 +129,7 @@ export function ProviderOperationsBoard({
 
       const requestId = activeLoadRequest.current + 1;
       activeLoadRequest.current = requestId;
+      setLoadedListingId("");
       if (!silent) setLoading(true);
       setError(null);
       setMessage(null);
@@ -159,6 +169,7 @@ export function ProviderOperationsBoard({
             "No saved operations found. Set availability and save this business.",
           );
         }
+        setLoadedListingId(normalizedListingId);
       } catch (caught) {
         if (activeLoadRequest.current !== requestId) return;
         setError(
@@ -186,6 +197,13 @@ export function ProviderOperationsBoard({
     void loadProviderById(resolvedInitialListingId, true);
   }, [loadProviderById, resolvedInitialListingId]);
 
+  const operationsReady = Boolean(
+    listingId && loadedListingId && loadedListingId === listingId,
+  );
+  const editorDisabled =
+    restrictToManagedListings && !normalizedManagedListingIds.length
+      ? true
+      : !operationsReady;
   const focusDateIsVisible = Boolean(
     normalizedInitialFocusDate &&
       listingId === resolvedInitialListingId &&
@@ -193,7 +211,7 @@ export function ProviderOperationsBoard({
   );
 
   useEffect(() => {
-    if (!focusDateIsVisible) return;
+    if (!focusDateIsVisible || !operationsReady) return;
     const focusKey = `${listingId}:${normalizedInitialFocusDate}`;
     if (lastFocusedDateKey.current === focusKey) return;
     lastFocusedDateKey.current = focusKey;
@@ -205,7 +223,12 @@ export function ProviderOperationsBoard({
     }, 100);
 
     return () => window.clearTimeout(timer);
-  }, [focusDateIsVisible, listingId, normalizedInitialFocusDate]);
+  }, [
+    focusDateIsVisible,
+    listingId,
+    normalizedInitialFocusDate,
+    operationsReady,
+  ]);
 
   const summary = useMemo(() => {
     const decidedDays = selectProviderAvailabilityDecisions(days, decisionDates);
@@ -219,6 +242,33 @@ export function ProviderOperationsBoard({
     };
   }, [days, decisionDates]);
 
+  const bulkStartDate =
+    focusDateIsVisible && operationsReady
+      ? normalizedInitialFocusDate
+      : operationsReady
+        ? days[0]?.date ?? ""
+        : "";
+  const bulkPreview = useMemo(
+    () =>
+      applyProviderAvailabilityWindowDecision(days, decisionDates, {
+        startDate: bulkStartDate,
+        windowDays: bulkWindowDays,
+        isOpen: true,
+        startTime: bulkStartTime,
+        endTime: bulkEndTime,
+        capacity: defaultCapacity,
+      }),
+    [
+      bulkEndTime,
+      bulkStartDate,
+      bulkStartTime,
+      bulkWindowDays,
+      days,
+      decisionDates,
+      defaultCapacity,
+    ],
+  );
+
   async function loadProvider(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!listingId.trim()) return;
@@ -227,6 +277,10 @@ export function ProviderOperationsBoard({
 
   async function saveProvider() {
     const normalizedListingId = listingId.trim().slice(0, 160);
+    if (!operationsReady || normalizedListingId !== loadedListingId) {
+      setError("Refresh this business before saving availability changes.");
+      return;
+    }
     if (!normalizedListingId || !listingName.trim()) {
       setError("Choose a business and enter its provider name before saving.");
       return;
@@ -265,7 +319,8 @@ export function ProviderOperationsBoard({
           payload?.error || "Unable to save provider operations.",
         );
       }
-      const persistedDates = payload.persistedDates ?? explicitDays.map((day) => day.date);
+      const persistedDates =
+        payload.persistedDates ?? explicitDays.map((day) => day.date);
       setDecisionDates(toDateSet(persistedDates));
       setMessage(
         `${persistedDates.length} explicit availability ${persistedDates.length === 1 ? "decision" : "decisions"} saved. Untouched future dates remain undecided.`,
@@ -284,13 +339,12 @@ export function ProviderOperationsBoard({
   function chooseListing(nextListingId: string) {
     const normalizedListingId = nextListingId.trim().slice(0, 160);
     setListingId(normalizedListingId);
+    setLoadedListingId("");
     setListingName(
       normalizedListingId ? humanizeListingId(normalizedListingId) : "",
     );
     setDefaultCapacity(10);
-    setDays(
-      normalizedListingId ? buildProviderAvailabilityDays(10) : [],
-    );
+    setDays(normalizedListingId ? buildProviderAvailabilityDays(10) : []);
     setDecisionDates(new Set());
     setMessage(null);
     setError(null);
@@ -300,6 +354,7 @@ export function ProviderOperationsBoard({
   }
 
   function updateDay(index: number, patch: Partial<ProviderAvailabilityDay>) {
+    if (!operationsReady) return;
     const date = days[index]?.date;
     if (date) {
       setDecisionDates((current) => {
@@ -313,6 +368,46 @@ export function ProviderOperationsBoard({
       current.map((day, currentIndex) =>
         currentIndex === index ? { ...day, ...patch } : day,
       ),
+    );
+  }
+
+  function applyBulkDecision(isOpen: boolean) {
+    if (!operationsReady) {
+      setError("Refresh this business before staging bulk availability.");
+      return;
+    }
+    if (isOpen && bulkStartTime >= bulkEndTime) {
+      setError("Bulk operating end time must be later than the start time.");
+      return;
+    }
+
+    const result = applyProviderAvailabilityWindowDecision(
+      days,
+      decisionDates,
+      {
+        startDate: bulkStartDate,
+        windowDays: bulkWindowDays,
+        isOpen,
+        startTime: bulkStartTime,
+        endTime: bulkEndTime,
+        capacity: defaultCapacity,
+      },
+    );
+
+    setError(null);
+    if (!result.appliedCount) {
+      setMessage(
+        result.startDate && result.endDate
+          ? `No undecided dates remain from ${result.startDate} through ${result.endDate}. Existing decisions were left unchanged.`
+          : "No bulk availability window is available yet.",
+      );
+      return;
+    }
+
+    setDays(result.days);
+    setDecisionDates(toDateSet(result.decisionDates));
+    setMessage(
+      `${result.appliedCount} undecided ${result.appliedCount === 1 ? "date" : "dates"} staged ${isOpen ? "open" : "closed"} from ${result.startDate} through ${result.endDate}. Existing decisions were preserved. Save operations to publish the staged decisions.`,
     );
   }
 
@@ -340,14 +435,14 @@ export function ProviderOperationsBoard({
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">
                 Set operating days, hours, capacity, and blackout periods for
-                each participating business. Untouched future dates stay undecided
-                until you explicitly open, close, or edit them.
+                each participating business. Untouched future dates stay
+                undecided until you explicitly open, close, or edit them.
               </p>
             </div>
             <button
               type="button"
               onClick={() => void saveProvider()}
-              disabled={saving || merchantHasNoScope || !listingId}
+              disabled={saving || merchantHasNoScope || !operationsReady}
               className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-6 text-[10px] font-black uppercase tracking-[.16em] text-[#043331] disabled:opacity-50"
             >
               {saving ? (
@@ -411,7 +506,10 @@ export function ProviderOperationsBoard({
               <input
                 required
                 value={listingId}
-                onChange={(event) => setListingId(event.target.value)}
+                onChange={(event) => {
+                  setListingId(event.target.value);
+                  setLoadedListingId("");
+                }}
                 className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold normal-case tracking-normal outline-none focus:border-teal-600"
                 placeholder="provider-listing-id"
               />
@@ -421,7 +519,7 @@ export function ProviderOperationsBoard({
             Provider name
             <input
               required
-              disabled={merchantHasNoScope}
+              disabled={editorDisabled}
               value={listingName}
               onChange={(event) => setListingName(event.target.value)}
               className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold normal-case tracking-normal outline-none focus:border-teal-600 disabled:bg-slate-100"
@@ -434,7 +532,7 @@ export function ProviderOperationsBoard({
               type="number"
               min={1}
               max={500}
-              disabled={merchantHasNoScope}
+              disabled={editorDisabled}
               value={defaultCapacity}
               onChange={(event) =>
                 setDefaultCapacity(Number(event.target.value) || 1)
@@ -465,9 +563,11 @@ export function ProviderOperationsBoard({
             {message}
           </div>
         ) : null}
-        {focusDateIsVisible ? (
+        {focusDateIsVisible && operationsReady ? (
           <div className="mt-5 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm font-bold text-amber-950">
-            Cruise capacity action: review {normalizedInitialFocusDate}, set the operating decision for this date, then save operations. Untouched future dates will remain undecided.
+            Cruise capacity action: review {normalizedInitialFocusDate}, set the
+            operating decision for this date, then save operations. Bulk staging
+            below starts from this cruise date and leaves prior decisions intact.
           </div>
         ) : null}
 
@@ -492,6 +592,101 @@ export function ProviderOperationsBoard({
             label="Undecided dates"
             value={String(summary.undecidedDays)}
           />
+        </section>
+
+        <section className="mt-6 rounded-[30px] border border-teal-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+                <CalendarRange className="h-4 w-4" /> Quick-fill undecided dates
+              </p>
+              <h2 className="mt-2 text-2xl font-black tracking-[-.04em] text-[#043331]">
+                Stage a safe operating window without overwriting reviewed dates.
+              </h2>
+              <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
+                The window starts at the highlighted cruise date when present,
+                otherwise at the first date shown. Only undecided rows are
+                changed; existing open or closed decisions are preserved.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-bold text-slate-600">
+              {operationsReady && bulkPreview.startDate && bulkPreview.endDate ? (
+                <>
+                  {bulkPreview.appliedCount} undecided {bulkPreview.appliedCount === 1 ? "date" : "dates"}
+                  <br />
+                  {bulkPreview.startDate} → {bulkPreview.endDate}
+                </>
+              ) : (
+                "Refresh the business to load the operating horizon."
+              )}
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-3 md:grid-cols-4">
+            <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+              Window
+              <select
+                value={bulkWindowDays}
+                disabled={editorDisabled}
+                onChange={(event) => setBulkWindowDays(Number(event.target.value))}
+                className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold normal-case tracking-normal outline-none focus:border-teal-600 disabled:bg-slate-100"
+              >
+                {BULK_WINDOW_OPTIONS.map((value) => (
+                  <option key={value} value={value}>
+                    Next {value} days
+                  </option>
+                ))}
+              </select>
+            </label>
+            <Field
+              label="Bulk start"
+              value={bulkStartTime}
+              type="time"
+              disabled={editorDisabled}
+              onChange={setBulkStartTime}
+            />
+            <Field
+              label="Bulk end"
+              value={bulkEndTime}
+              type="time"
+              disabled={editorDisabled}
+              onChange={setBulkEndTime}
+            />
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+              <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+                Open capacity
+              </p>
+              <p className="mt-2 text-xl font-black text-[#043331]">
+                {defaultCapacity}
+              </p>
+              <p className="mt-1 text-[10px] font-semibold text-slate-500">
+                Uses the current default capacity above.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              disabled={editorDisabled || bulkPreview.appliedCount === 0}
+              onClick={() => applyBulkDecision(true)}
+              className="min-h-12 rounded-2xl bg-emerald-100 px-5 text-[9px] font-black uppercase tracking-[.13em] text-emerald-800 disabled:opacity-50"
+            >
+              Stage open undecided dates
+            </button>
+            <button
+              type="button"
+              disabled={editorDisabled || bulkPreview.appliedCount === 0}
+              onClick={() => applyBulkDecision(false)}
+              className="min-h-12 rounded-2xl bg-slate-100 px-5 text-[9px] font-black uppercase tracking-[.13em] text-slate-700 disabled:opacity-50"
+            >
+              Stage closed undecided dates
+            </button>
+          </div>
+          <p className="mt-3 text-[10px] font-semibold text-slate-500">
+            Bulk actions are staged locally first. Use Save operations to publish
+            them. Dates already reviewed are never changed by these buttons.
+          </p>
         </section>
 
         <section className="mt-6 space-y-3">
@@ -531,7 +726,7 @@ export function ProviderOperationsBoard({
                   {decided ? (
                     <button
                       type="button"
-                      disabled={merchantHasNoScope}
+                      disabled={editorDisabled}
                       onClick={() => updateDay(index, { isOpen: !day.isOpen })}
                       className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
                         day.isOpen
@@ -545,7 +740,7 @@ export function ProviderOperationsBoard({
                     <div className="mt-2 grid grid-cols-2 gap-1.5">
                       <button
                         type="button"
-                        disabled={merchantHasNoScope}
+                        disabled={editorDisabled}
                         onClick={() => updateDay(index, { isOpen: true })}
                         className="min-h-11 rounded-xl bg-emerald-100 px-2 text-[8px] font-black uppercase tracking-[.08em] text-emerald-800 disabled:opacity-50"
                       >
@@ -553,7 +748,7 @@ export function ProviderOperationsBoard({
                       </button>
                       <button
                         type="button"
-                        disabled={merchantHasNoScope}
+                        disabled={editorDisabled}
                         onClick={() => updateDay(index, { isOpen: false })}
                         className="min-h-11 rounded-xl bg-slate-100 px-2 text-[8px] font-black uppercase tracking-[.08em] text-slate-700 disabled:opacity-50"
                       >
@@ -566,21 +761,21 @@ export function ProviderOperationsBoard({
                   label="Start"
                   value={day.startTime}
                   type="time"
-                  disabled={merchantHasNoScope}
+                  disabled={editorDisabled}
                   onChange={(value) => updateDay(index, { startTime: value })}
                 />
                 <Field
                   label="End"
                   value={day.endTime}
                   type="time"
-                  disabled={merchantHasNoScope}
+                  disabled={editorDisabled}
                   onChange={(value) => updateDay(index, { endTime: value })}
                 />
                 <Field
                   label="Capacity"
                   value={String(day.capacity)}
                   type="number"
-                  disabled={merchantHasNoScope}
+                  disabled={editorDisabled}
                   onChange={(value) =>
                     updateDay(index, { capacity: Number(value) || 0 })
                   }
@@ -588,7 +783,7 @@ export function ProviderOperationsBoard({
                 <Field
                   label="Operations note"
                   value={day.note ?? ""}
-                  disabled={merchantHasNoScope}
+                  disabled={editorDisabled}
                   onChange={(value) => updateDay(index, { note: value })}
                   placeholder="Weather, staffing, pickup window..."
                 />
