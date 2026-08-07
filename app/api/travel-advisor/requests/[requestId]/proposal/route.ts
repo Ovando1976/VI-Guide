@@ -132,6 +132,47 @@ export async function POST(
         ? Math.max(1, currentVersion)
         : currentVersion + 1;
 
+      let nextStatus = currentStatus;
+      let proposalOutbox: ReturnType<typeof normalizeBookingNotification> = null;
+      let proposalSendDuplicate = false;
+      let proposalOutboxRef: FirebaseFirestore.DocumentReference | null = null;
+
+      if (sendToTraveler) {
+        if (!canTransitionTravelRequest(currentStatus, "contacted")) {
+          throw new ProposalActionError(
+            `The request cannot move from ${currentStatus} to contacted.`,
+            409,
+          );
+        }
+        nextStatus = "contacted";
+        proposalOutbox = normalizeBookingNotification({
+          bookingId: requestId,
+          reference,
+          event: "travel_advisor_proposal",
+          audience: "traveler",
+          listingId: "travel-advisor",
+          listingName: "VI Guide USVI Travel Advisor",
+          recipientEmail: clean(current.email, 220),
+          title: subject,
+          message,
+          href: proposalHref,
+          actor: session,
+          dedupeKey: proposal.shareId,
+          createdAt: now,
+        });
+        if (!proposalOutbox) {
+          throw new ProposalActionError(
+            "Unable to prepare the proposal delivery message.",
+            409,
+          );
+        }
+        proposalOutboxRef = db
+          .collection("notificationOutbox")
+          .doc(proposalOutbox.id);
+        const existingOutbox = await transaction.get(proposalOutboxRef);
+        proposalSendDuplicate = existingOutbox.exists;
+      }
+
       if (!shareSnapshot.exists) {
         transaction.set(shareRef, {
           ownerId: session.uid,
@@ -162,91 +203,58 @@ export async function POST(
         });
       }
 
-      let nextStatus = currentStatus;
-      let proposalSent = false;
-      let proposalSendDuplicate = false;
+      const proposalSent = Boolean(
+        sendToTraveler &&
+          proposalOutbox &&
+          proposalOutboxRef &&
+          !proposalSendDuplicate,
+      );
       const notificationOutboxIds: string[] = [];
-
-      if (sendToTraveler) {
-        if (!canTransitionTravelRequest(currentStatus, "contacted")) {
-          throw new ProposalActionError(
-            `The request cannot move from ${currentStatus} to contacted.`,
-            409,
-          );
-        }
-        nextStatus = "contacted";
-
-        const outbox = normalizeBookingNotification({
-          bookingId: requestId,
-          reference,
-          event: "travel_advisor_proposal",
+      if (proposalSent && proposalOutbox && proposalOutboxRef) {
+        notificationOutboxIds.push(proposalOutbox.id);
+        transaction.set(proposalOutboxRef, {
+          ...proposalOutbox,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        });
+        transaction.set(db.collection("notifications").doc(), {
           audience: "traveler",
-          listingId: "travel-advisor",
-          listingName: "VI Guide USVI Travel Advisor",
-          recipientEmail: clean(current.email, 220),
+          kind: "travel_advisor_proposal",
+          priority: "normal",
           title: subject,
           message,
           href: proposalHref,
-          actor: session,
-          dedupeKey: proposal.shareId,
+          reference,
+          readAt: null,
           createdAt: now,
+          updatedAt: now,
+          serverCreatedAt: FieldValue.serverTimestamp(),
         });
-        if (!outbox) {
-          throw new ProposalActionError(
-            "Unable to prepare the proposal delivery message.",
-            409,
-          );
-        }
-
-        const outboxRef = db.collection("notificationOutbox").doc(outbox.id);
-        const existingOutbox = await transaction.get(outboxRef);
-        proposalSendDuplicate = existingOutbox.exists;
-        if (!existingOutbox.exists) {
-          proposalSent = true;
-          notificationOutboxIds.push(outbox.id);
-          transaction.set(outboxRef, {
-            ...outbox,
-            serverCreatedAt: FieldValue.serverTimestamp(),
-            serverUpdatedAt: FieldValue.serverTimestamp(),
-          });
-          transaction.set(db.collection("notifications").doc(), {
-            audience: "traveler",
-            kind: "travel_advisor_proposal",
-            priority: "normal",
-            title: subject,
-            message,
-            href: proposalHref,
-            reference,
-            readAt: null,
-            createdAt: now,
-            updatedAt: now,
-            serverCreatedAt: FieldValue.serverTimestamp(),
-          });
-          transaction.set(db.collection("travelAdvisorAudit").doc(), {
-            action: "proposal_sent",
-            requestId,
-            reference,
-            proposalShareId: proposal.shareId,
-            proposalVersion: version,
-            subject,
-            messageLength: message.length,
-            actorUid: session.uid,
-            actorEmail: session.email ?? null,
-            createdAt: now,
-            serverCreatedAt: FieldValue.serverTimestamp(),
-          });
-        }
+        transaction.set(db.collection("travelAdvisorAudit").doc(), {
+          action: "proposal_sent",
+          requestId,
+          reference,
+          proposalShareId: proposal.shareId,
+          proposalVersion: version,
+          subject,
+          messageLength: message.length,
+          actorUid: session.uid,
+          actorEmail: session.email ?? null,
+          createdAt: now,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+        });
       }
 
+      const publishedAt = duplicateProposal
+        ? clean(current.proposalPublishedAt, 50) || now
+        : now;
       const requestPatch: Record<string, unknown> = {
         proposalShareId: proposal.shareId,
         proposalHref,
         proposalVersion: version,
         proposalPlanId: proposal.plan.id,
         proposalTitle: proposal.plan.title,
-        proposalPublishedAt: duplicateProposal
-          ? clean(current.proposalPublishedAt, 50) || now
-          : now,
+        proposalPublishedAt: publishedAt,
         assignedAdvisorUid: session.uid,
         assignedAdvisorEmail: session.email ?? null,
         status: nextStatus,
@@ -266,9 +274,7 @@ export async function POST(
           title: proposal.plan.title,
           version,
           stopCount: proposal.plan.plan.length,
-          publishedAt: duplicateProposal
-            ? clean(current.proposalPublishedAt, 50) || now
-            : now,
+          publishedAt,
           sentAt:
             sendToTraveler && proposalSent
               ? now
