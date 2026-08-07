@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 
+import { CruiseSailingTripAction } from "@/components/cruise/cruise-sailing-trip-action";
 import type {
   CruiseInventoryCapabilities,
   CruiseInventoryProviderId,
@@ -343,6 +344,7 @@ function SailingCard({ sailing }: { sailing: CruiseSailing }) {
           or booking
         </p>
       </div>
+      <CruiseSailingTripAction sailing={sailing} />
     </article>
   );
 }

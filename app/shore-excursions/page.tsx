@@ -21,8 +21,19 @@ export const metadata = {
     "Book U.S. Virgin Islands shore excursions designed around cruise ports, all-aboard times, and conservative return-to-ship buffers.",
 };
 
-export default async function ShoreExcursionsPage() {
+type SearchParams = Record<string, string | string[] | undefined>;
+
+export default async function ShoreExcursionsPage({
+  searchParams = {},
+}: {
+  searchParams?: SearchParams;
+}) {
   const excursions = await loadPublicShoreExcursions();
+  const cruiseQuery = preserveCruiseQuery(searchParams);
+  const ship = firstValue(searchParams.ship);
+  const date = firstValue(searchParams.date);
+  const allAboard = firstValue(searchParams.allAboard);
+  const portName = firstValue(searchParams.portName);
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-28 text-[#043331]">
@@ -53,12 +64,41 @@ export default async function ShoreExcursionsPage() {
             </div>
           </section>
 
+          {ship || date || portName ? (
+            <section className="mt-5 rounded-[28px] border border-teal-200 bg-teal-50 p-5 shadow-sm sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+                    Selected sailing context
+                  </p>
+                  <h2 className="mt-2 text-xl font-black tracking-[-.035em]">
+                    {[ship, portName, date].filter(Boolean).join(" · ")}
+                  </h2>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-teal-950/65">
+                    {allAboard
+                      ? `VI Guide is carrying a planning all-aboard time of ${allAboard} into the excursion check. Verify the ship's actual onboard announcement before travel day.`
+                      : "The sailing is connected to this port day. Confirm the ship's actual all-aboard time before booking time-sensitive activities."}
+                  </p>
+                </div>
+                <Link
+                  href="/planner"
+                  className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white"
+                >
+                  Open My Trip
+                </Link>
+              </div>
+            </section>
+          ) : null}
+
           {excursions.length ? (
             <section className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {excursions.map((excursion) => (
                 <Link
                   key={excursion.offer.offerId}
-                  href={`/shore-excursions/${encodeURIComponent(excursion.offer.offerId)}`}
+                  href={withQuery(
+                    `/shore-excursions/${encodeURIComponent(excursion.offer.offerId)}`,
+                    cruiseQuery,
+                  )}
                   className="group overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl"
                 >
                   <div className="bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.35),transparent_38%),linear-gradient(145deg,#063e3a,#0f8278)] p-6 text-white">
@@ -143,6 +183,37 @@ export default async function ShoreExcursionsPage() {
       </section>
     </main>
   );
+}
+
+function preserveCruiseQuery(searchParams: SearchParams) {
+  const allowed = [
+    "cruiseTrip",
+    "sailing",
+    "ship",
+    "cruiseLine",
+    "date",
+    "portName",
+    "island",
+    "portId",
+    "arrival",
+    "allAboard",
+    "allAboardEstimated",
+  ] as const;
+  const params = new URLSearchParams();
+  for (const key of allowed) {
+    const value = firstValue(searchParams[key]);
+    if (value) params.set(key, value.slice(0, 220));
+  }
+  return params;
+}
+
+function withQuery(path: string, params: URLSearchParams) {
+  const query = params.toString();
+  return query ? `${path}?${query}` : path;
+}
+
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
 }
 
 function humanizeIsland(value: string) {

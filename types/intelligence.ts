@@ -89,10 +89,15 @@ export type IntelligenceMemory = {
   recentPlaceIds?: string[];
   savedPlaceIds?: string[];
   cruise?: {
+    tripId?: string;
+    sailingId?: string;
+    cruiseLine?: string;
     ship?: string;
+    portCallDate?: string;
     port?: IntelligenceLocation;
     arrivalTime?: string;
     allAboardTime?: string;
+    allAboardSource?: "derived_from_scheduled_departure" | "confirmed" | "unavailable";
   };
   stay?: IntelligenceLocation;
   activeTrip?: IntelligenceActiveTrip;

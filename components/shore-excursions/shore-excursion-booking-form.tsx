@@ -18,6 +18,16 @@ type PortOption = {
   label: string;
 };
 
+export type ShoreExcursionCruiseDefaults = {
+  startDate?: string;
+  preferredTime?: string;
+  shipName?: string;
+  cruiseLine?: string;
+  portId?: string;
+  allAboardTime?: string;
+  allAboardEstimated?: boolean;
+};
+
 type Props = {
   offerId: string;
   offerTitle: string;
@@ -25,6 +35,7 @@ type Props = {
   minReturnBufferMinutes: number;
   maxGuests: number;
   ports: PortOption[];
+  defaults?: ShoreExcursionCruiseDefaults;
 };
 
 export function ShoreExcursionBookingForm({
@@ -34,22 +45,33 @@ export function ShoreExcursionBookingForm({
   minReturnBufferMinutes,
   maxGuests,
   ports,
+  defaults,
 }: Props) {
   const today = useMemo(() => getUsviToday(), []);
-  const [form, setForm] = useState({
-    startDate: today,
-    preferredTime: "09:00",
-    shipName: "",
-    cruiseLine: "",
-    portId: ports[0]?.id ?? "",
-    allAboardTime: "16:30",
+  const [form, setForm] = useState(() => ({
+    startDate:
+      defaults?.startDate && defaults.startDate >= today
+        ? defaults.startDate
+        : today,
+    preferredTime: validTime(defaults?.preferredTime)
+      ? defaults!.preferredTime!
+      : "09:00",
+    shipName: defaults?.shipName?.slice(0, 160) ?? "",
+    cruiseLine: defaults?.cruiseLine?.slice(0, 160) ?? "",
+    portId:
+      defaults?.portId && ports.some((port) => port.id === defaults.portId)
+        ? defaults.portId
+        : ports[0]?.id ?? "",
+    allAboardTime: validTime(defaults?.allAboardTime)
+      ? defaults!.allAboardTime!
+      : "16:30",
     adults: "2",
     children: "0",
     guestName: "",
     email: "",
     phone: "",
     notes: "",
-  });
+  }));
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<{
@@ -165,9 +187,24 @@ export function ShoreExcursionBookingForm({
         Check the return window before requesting {offerTitle}
       </h2>
       <p className="mt-3 text-sm font-semibold leading-6 text-slate-500">
-        VI Guide will reject a start time that cannot preserve the operator&apos;s
-        {" "}{minReturnBufferMinutes}-minute minimum return-to-ship buffer.
+        VI Guide will reject a start time that cannot preserve the operator&apos;s{" "}
+        {minReturnBufferMinutes}-minute minimum return-to-ship buffer.
       </p>
+
+      {defaults?.shipName || defaults?.startDate ? (
+        <div className="mt-5 rounded-2xl border border-teal-200 bg-teal-50 px-4 py-4 text-sm font-semibold leading-6 text-teal-950/75">
+          <strong className="text-teal-900">Selected sailing applied.</strong>{" "}
+          Ship, port date, cruise line, and available ship-clock values were carried
+          into this request automatically.
+          {defaults.allAboardEstimated ? (
+            <span className="mt-2 block text-amber-800">
+              The all-aboard value is a planning proxy set 30 minutes before the
+              supplier&apos;s scheduled departure. Verify the ship&apos;s actual all-aboard
+              announcement onboard and edit this field if it differs.
+            </span>
+          ) : null}
+        </div>
+      ) : null}
 
       <div
         className={`mt-5 rounded-2xl border px-4 py-4 ${
@@ -188,7 +225,7 @@ export function ShoreExcursionBookingForm({
             </p>
             <p className="mt-1 text-sm font-semibold leading-6 opacity-75">
               {timing.ok
-                ? `Planned finish ${timing.excursionEndsAt}; safe return deadline ${timing.safeReturnDeadline}.`
+                ? `Planned return to port ${timing.excursionEndsAt}; safe return deadline ${timing.safeReturnDeadline}.`
                 : timing.latestSafeStartTime
                   ? `Latest safe start is ${timing.latestSafeStartTime} for an all-aboard time of ${form.allAboardTime}.`
                   : "Enter a valid excursion start and same-day all-aboard time."}
@@ -399,6 +436,10 @@ function formatMinutes(value: number) {
   const hour = Math.floor(value / 60);
   const minute = value % 60;
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+function validTime(value: unknown): value is string {
+  return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
 }
 
 function getUsviToday() {
