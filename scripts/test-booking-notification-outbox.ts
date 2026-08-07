@@ -34,6 +34,26 @@ assert.equal(
   bookingNotificationOutboxId(input),
   bookingNotificationOutboxId({ ...input }),
 );
+assert.equal(
+  bookingNotificationOutboxId({
+    ...input,
+    event: "travel_advisor_followup",
+    dedupeKey: "2026-08-07-message-a",
+  }),
+  "booking-123__travel_advisor_followup__traveler__2026-08-07-message-a",
+);
+assert.notEqual(
+  bookingNotificationOutboxId({
+    ...input,
+    event: "travel_advisor_followup",
+    dedupeKey: "message-a",
+  }),
+  bookingNotificationOutboxId({
+    ...input,
+    event: "travel_advisor_followup",
+    dedupeKey: "message-b",
+  }),
+);
 
 const normalized = normalizeBookingNotification(input);
 assert.ok(normalized);

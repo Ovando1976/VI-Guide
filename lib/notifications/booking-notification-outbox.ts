@@ -10,7 +10,8 @@ export type BookingNotificationEvent =
   | "booking_refunded"
   | "refund_failed"
   | "refund_review_required"
-  | "travel_advisor_requested";
+  | "travel_advisor_requested"
+  | "travel_advisor_followup";
 
 export type BookingNotificationAudience =
   | "traveler"
@@ -36,15 +37,19 @@ export type BookingNotificationInput = {
   message: string;
   href: string;
   actor?: BookingNotificationActor | null;
+  dedupeKey?: string | null;
   createdAt: string;
 };
 
 export function bookingNotificationOutboxId(input: BookingNotificationInput) {
-  return [
+  const parts = [
     cleanKey(input.bookingId),
     cleanKey(input.event),
     cleanKey(input.audience),
-  ].join("__");
+  ];
+  const dedupeKey = clean(input.dedupeKey, 180);
+  if (dedupeKey) parts.push(cleanKey(dedupeKey));
+  return parts.join("__");
 }
 
 export function normalizeBookingNotification(

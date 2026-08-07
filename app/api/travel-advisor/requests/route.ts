@@ -16,6 +16,7 @@ import {
   normalizeTravelPlanningRequest,
   normalizeTravelRequestStatus,
   travelTerritoryDayKey,
+  type TravelRequestStatus,
 } from "@/lib/travel-advisor";
 
 export const runtime = "nodejs";
@@ -103,6 +104,10 @@ export async function POST(request: NextRequest) {
         contactedAt: null,
         bookedAt: null,
         closedAt: null,
+        followupCount: 0,
+        followupQueuedAt: null,
+        followupSubject: null,
+        followupMessage: null,
         createdAt: travelRequest.submittedAt,
         updatedAt: travelRequest.submittedAt,
         source: "vi-guide-usvi-trip-planner",
@@ -258,24 +263,41 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = (await request.json().catch(() => null)) as
-      | { requestId?: unknown; status?: unknown; advisorNote?: unknown }
+      | {
+          requestId?: unknown;
+          status?: unknown;
+          advisorNote?: unknown;
+          sendFollowup?: unknown;
+          followupSubject?: unknown;
+          followupMessage?: unknown;
+        }
       | null;
     const requestId = normalizeRequestId(body?.requestId);
-    const nextStatus = normalizeTravelRequestStatus(body?.status);
+    const requestedStatus = normalizeTravelRequestStatus(body?.status);
     const advisorNote = normalizeTravelAdvisorNote(body?.advisorNote);
+    const sendFollowup = body?.sendFollowup === true;
+    const followupSubject = clean(body?.followupSubject, 180);
+    const followupMessage = clean(body?.followupMessage, 1200);
 
-    if (!requestId || !nextStatus) {
+    if (!requestId || !requestedStatus) {
       return NextResponse.json(
         { error: "Choose a valid travel request and workflow status." },
+        { status: 400 },
+      );
+    }
+    if (sendFollowup && (!followupSubject || !followupMessage)) {
+      return NextResponse.json(
+        { error: "Add a subject and traveler message before sending the follow-up." },
         { status: 400 },
       );
     }
 
     const db = getAdminDb();
     const requestRef = db.collection("travelPlanningRequests").doc(requestId);
-    const now = new Date().toISOString();
+    const nowDate = new Date();
+    const now = nowDate.toISOString();
 
-    const updated = await db.runTransaction(async (transaction) => {
+    const result = await db.runTransaction(async (transaction) => {
       const snapshot = await transaction.get(requestRef);
       if (!snapshot.exists) {
         throw new TravelAdvisorActionError(
@@ -292,6 +314,16 @@ export async function PATCH(request: NextRequest) {
           409,
         );
       }
+      if (sendFollowup && (currentStatus === "booked" || currentStatus === "closed")) {
+        throw new TravelAdvisorActionError(
+          "Traveler follow-up from the lead desk is only available before the request is booked or closed.",
+          409,
+        );
+      }
+
+      const nextStatus: TravelRequestStatus = sendFollowup
+        ? "contacted"
+        : requestedStatus;
       if (!canTransitionTravelRequest(currentStatus, nextStatus)) {
         throw new TravelAdvisorActionError(
           `The request cannot move from ${currentStatus} to ${nextStatus}.`,
@@ -299,6 +331,8 @@ export async function PATCH(request: NextRequest) {
         );
       }
 
+      const reference = clean(current.reference, 120) || requestId;
+      const email = clean(current.email, 220).toLowerCase();
       const statusPatch =
         nextStatus === "planned"
           ? { plannedAt: now }
@@ -310,12 +344,97 @@ export async function PATCH(request: NextRequest) {
                 ? { closedAt: now }
                 : {};
 
+      let followupQueued = false;
+      let followupDuplicate = false;
+      const notificationOutboxIds: string[] = [];
+      let followupPatch: Record<string, unknown> = {};
+
+      if (sendFollowup) {
+        const dedupeKey = hash(
+          [
+            requestId,
+            followupSubject.toLowerCase(),
+            followupMessage.toLowerCase(),
+            travelTerritoryDayKey(nowDate),
+          ].join("|"),
+        ).slice(0, 32);
+        const followup = normalizeBookingNotification({
+          bookingId: requestId,
+          reference,
+          event: "travel_advisor_followup",
+          audience: "traveler",
+          listingId: "travel-advisor",
+          listingName: "VI Guide USVI Travel Advisor",
+          recipientEmail: email,
+          title: followupSubject,
+          message: followupMessage,
+          href: "/planner",
+          actor: session,
+          dedupeKey,
+          createdAt: now,
+        });
+        if (!followup) {
+          throw new TravelAdvisorActionError(
+            "Unable to prepare the traveler follow-up.",
+            409,
+          );
+        }
+
+        const followupRef = db.collection("notificationOutbox").doc(followup.id);
+        const existingFollowup = await transaction.get(followupRef);
+        followupDuplicate = existingFollowup.exists;
+
+        if (!existingFollowup.exists) {
+          followupQueued = true;
+          notificationOutboxIds.push(followup.id);
+          followupPatch = {
+            followupCount: safeInteger(current.followupCount) + 1,
+            followupQueuedAt: now,
+            followupSubject,
+            followupMessage,
+          };
+
+          transaction.set(followupRef, {
+            ...followup,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          });
+
+          transaction.set(db.collection("notifications").doc(), {
+            audience: "traveler",
+            kind: "travel_advisor_followup",
+            priority: "normal",
+            title: followupSubject,
+            message: followupMessage,
+            href: "/planner",
+            reference,
+            readAt: null,
+            createdAt: now,
+            updatedAt: now,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+          });
+
+          transaction.set(db.collection("travelAdvisorAudit").doc(), {
+            action: "traveler_followup_queued",
+            requestId,
+            reference,
+            subject: followupSubject,
+            messageLength: followupMessage.length,
+            actorUid: session.uid,
+            actorEmail: session.email ?? null,
+            createdAt: now,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
       transaction.update(requestRef, {
         status: nextStatus,
         advisorNote,
         assignedAdvisorUid: session.uid,
         assignedAdvisorEmail: session.email ?? null,
         ...statusPatch,
+        ...followupPatch,
         updatedAt: now,
         serverUpdatedAt: FieldValue.serverTimestamp(),
       });
@@ -324,7 +443,7 @@ export async function PATCH(request: NextRequest) {
         action:
           nextStatus === currentStatus ? "advisor_note_updated" : "status_changed",
         requestId,
-        reference: clean(current.reference, 120),
+        reference,
         previousStatus: currentStatus,
         nextStatus,
         advisorNote,
@@ -334,18 +453,40 @@ export async function PATCH(request: NextRequest) {
         serverCreatedAt: FieldValue.serverTimestamp(),
       });
 
-      return serializeRequest(requestId, {
-        ...current,
-        status: nextStatus,
-        advisorNote,
-        assignedAdvisorUid: session.uid,
-        assignedAdvisorEmail: session.email ?? null,
-        ...statusPatch,
-        updatedAt: now,
-      });
+      return {
+        request: serializeRequest(requestId, {
+          ...current,
+          status: nextStatus,
+          advisorNote,
+          assignedAdvisorUid: session.uid,
+          assignedAdvisorEmail: session.email ?? null,
+          ...statusPatch,
+          ...followupPatch,
+          updatedAt: now,
+        }),
+        followupQueued,
+        followupDuplicate,
+        notificationOutboxIds,
+      };
     });
 
-    return NextResponse.json({ ok: true, request: updated });
+    if (result.notificationOutboxIds.length > 0) {
+      try {
+        await processBookingNotificationOutboxIds(
+          db,
+          result.notificationOutboxIds,
+        );
+      } catch (error) {
+        console.error("travel advisor follow-up delivery attempt failed", error);
+      }
+    }
+
+    return NextResponse.json({
+      ok: true,
+      request: result.request,
+      followupQueued: result.followupQueued,
+      followupDuplicate: result.followupDuplicate,
+    });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
@@ -380,6 +521,10 @@ function serializeRequest(id: string, data: FirebaseFirestore.DocumentData) {
     advisorNote: clean(data.advisorNote, 2000) || null,
     assignedAdvisorUid: clean(data.assignedAdvisorUid, 160) || null,
     assignedAdvisorEmail: clean(data.assignedAdvisorEmail, 220) || null,
+    followupCount: safeInteger(data.followupCount),
+    followupQueuedAt: clean(data.followupQueuedAt, 50) || null,
+    followupSubject: clean(data.followupSubject, 180) || null,
+    followupMessage: clean(data.followupMessage, 1200) || null,
     createdAt: clean(data.createdAt, 50),
     updatedAt: clean(data.updatedAt, 50),
   };
