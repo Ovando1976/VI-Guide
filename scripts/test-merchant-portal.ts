@@ -4,6 +4,7 @@ import {
   buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
+  selectProviderAvailabilityDecisions,
   summarizeMerchantBookings,
 } from "../lib/merchant-portal";
 
@@ -64,6 +65,19 @@ assert.equal(buildProviderAvailabilityDays(900, "2026-12-25")[0]?.capacity, 500)
 assert.equal(
   buildProviderAvailabilityDays(Number.NaN, "2026-12-31")[1]?.date,
   "2027-01-01",
+);
+
+assert.deepEqual(
+  selectProviderAvailabilityDecisions(availabilityDays, [
+    "2026-08-06",
+    "2026-08-11",
+    "not-a-date",
+  ]),
+  [availabilityDays[1], availabilityDays[6]],
+);
+assert.deepEqual(
+  selectProviderAvailabilityDecisions(availabilityDays, new Set()),
+  [],
 );
 
 assert.deepEqual(
