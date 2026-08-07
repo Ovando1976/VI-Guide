@@ -10,6 +10,7 @@ import {
   Loader2,
   Save,
   ShieldCheck,
+  ShipWheel,
   Users,
 } from "lucide-react";
 import {
@@ -28,6 +29,7 @@ import {
   resolveMerchantListingSelection,
   selectProviderAvailabilityDecisions,
 } from "@/lib/merchant-portal";
+import type { ProviderCruiseDemandDate } from "@/lib/provider-cruise-demand";
 import type {
   ProviderAvailabilityDay,
   ProviderOperationsConfig,
@@ -40,9 +42,16 @@ type ProviderOperationsBoardProps = {
   restrictToManagedListings?: boolean;
 };
 
+type CruiseScheduleCoverage = {
+  from: string;
+  through: string;
+};
+
 type ProviderOperationsPayload = {
   config?: ProviderOperationsConfig | null;
   persistedDates?: string[];
+  cruiseDemandDates?: ProviderCruiseDemandDate[];
+  cruiseScheduleCoverage?: CruiseScheduleCoverage;
   error?: string;
 };
 
@@ -103,6 +112,11 @@ export function ProviderOperationsBoard({
   const [decisionDates, setDecisionDates] = useState<Set<string>>(
     () => new Set(),
   );
+  const [cruiseDemandDates, setCruiseDemandDates] = useState<
+    ProviderCruiseDemandDate[]
+  >([]);
+  const [cruiseScheduleCoverage, setCruiseScheduleCoverage] =
+    useState<CruiseScheduleCoverage | null>(null);
   const [bulkWindowDays, setBulkWindowDays] = useState<number>(14);
   const [bulkStartTime, setBulkStartTime] = useState("09:00");
   const [bulkEndTime, setBulkEndTime] = useState("17:00");
@@ -130,6 +144,8 @@ export function ProviderOperationsBoard({
       const requestId = activeLoadRequest.current + 1;
       activeLoadRequest.current = requestId;
       setLoadedListingId("");
+      setCruiseDemandDates([]);
+      setCruiseScheduleCoverage(null);
       if (!silent) setLoading(true);
       setError(null);
       setMessage(null);
@@ -169,6 +185,16 @@ export function ProviderOperationsBoard({
             "No saved operations found. Set availability and save this business.",
           );
         }
+        setCruiseDemandDates(
+          Array.isArray(payload?.cruiseDemandDates)
+            ? payload.cruiseDemandDates
+            : [],
+        );
+        setCruiseScheduleCoverage(
+          validCoverage(payload?.cruiseScheduleCoverage)
+            ? payload!.cruiseScheduleCoverage!
+            : null,
+        );
         setLoadedListingId(normalizedListingId);
       } catch (caught) {
         if (activeLoadRequest.current !== requestId) return;
@@ -200,15 +226,26 @@ export function ProviderOperationsBoard({
   const operationsReady = Boolean(
     listingId && loadedListingId && loadedListingId === listingId,
   );
-  const editorDisabled =
-    restrictToManagedListings && !normalizedManagedListingIds.length
-      ? true
-      : !operationsReady;
+  const merchantHasNoScope =
+    restrictToManagedListings && !normalizedManagedListingIds.length;
+  const editorDisabled = merchantHasNoScope || !operationsReady;
   const focusDateIsVisible = Boolean(
     normalizedInitialFocusDate &&
       listingId === resolvedInitialListingId &&
       days.some((day) => day.date === normalizedInitialFocusDate),
   );
+
+  const cruiseDemandByDate = useMemo(
+    () => new Map(cruiseDemandDates.map((demand) => [demand.date, demand])),
+    [cruiseDemandDates],
+  );
+  const cruiseDemandTargetDates = useMemo(
+    () => new Set(cruiseDemandDates.map((demand) => demand.date)),
+    [cruiseDemandDates],
+  );
+  const focusCruiseDemand = normalizedInitialFocusDate
+    ? cruiseDemandByDate.get(normalizedInitialFocusDate) ?? null
+    : null;
 
   useEffect(() => {
     if (!focusDateIsVisible || !operationsReady) return;
@@ -263,6 +300,28 @@ export function ProviderOperationsBoard({
       bulkStartDate,
       bulkStartTime,
       bulkWindowDays,
+      days,
+      decisionDates,
+      defaultCapacity,
+    ],
+  );
+  const bulkCruisePreview = useMemo(
+    () =>
+      applyProviderAvailabilityWindowDecision(days, decisionDates, {
+        startDate: bulkStartDate,
+        windowDays: bulkWindowDays,
+        isOpen: true,
+        startTime: bulkStartTime,
+        endTime: bulkEndTime,
+        capacity: defaultCapacity,
+        targetDates: cruiseDemandTargetDates,
+      }),
+    [
+      bulkEndTime,
+      bulkStartDate,
+      bulkStartTime,
+      bulkWindowDays,
+      cruiseDemandTargetDates,
       days,
       decisionDates,
       defaultCapacity,
@@ -346,6 +405,8 @@ export function ProviderOperationsBoard({
     setDefaultCapacity(10);
     setDays(normalizedListingId ? buildProviderAvailabilityDays(10) : []);
     setDecisionDates(new Set());
+    setCruiseDemandDates([]);
+    setCruiseScheduleCoverage(null);
     setMessage(null);
     setError(null);
     if (normalizedListingId) {
@@ -371,7 +432,10 @@ export function ProviderOperationsBoard({
     );
   }
 
-  function applyBulkDecision(isOpen: boolean) {
+  function applyBulkDecision(
+    isOpen: boolean,
+    scope: "all" | "cruise" = "all",
+  ) {
     if (!operationsReady) {
       setError("Refresh this business before staging bulk availability.");
       return;
@@ -391,14 +455,16 @@ export function ProviderOperationsBoard({
         startTime: bulkStartTime,
         endTime: bulkEndTime,
         capacity: defaultCapacity,
+        ...(scope === "cruise" ? { targetDates: cruiseDemandTargetDates } : {}),
       },
     );
 
     setError(null);
+    const scopeLabel = scope === "cruise" ? "cruise-demand " : "";
     if (!result.appliedCount) {
       setMessage(
         result.startDate && result.endDate
-          ? `No undecided dates remain from ${result.startDate} through ${result.endDate}. Existing decisions were left unchanged.`
+          ? `No undecided ${scopeLabel}dates remain from ${result.startDate} through ${result.endDate}. Existing decisions were left unchanged.`
           : "No bulk availability window is available yet.",
       );
       return;
@@ -407,12 +473,9 @@ export function ProviderOperationsBoard({
     setDays(result.days);
     setDecisionDates(toDateSet(result.decisionDates));
     setMessage(
-      `${result.appliedCount} undecided ${result.appliedCount === 1 ? "date" : "dates"} staged ${isOpen ? "open" : "closed"} from ${result.startDate} through ${result.endDate}. Existing decisions were preserved. Save operations to publish the staged decisions.`,
+      `${result.appliedCount} undecided ${scopeLabel}${result.appliedCount === 1 ? "date" : "dates"} staged ${isOpen ? "open" : "closed"} from ${result.startDate} through ${result.endDate}. Existing decisions were preserved. Save operations to publish the staged decisions.`,
     );
   }
-
-  const merchantHasNoScope =
-    restrictToManagedListings && !normalizedManagedListingIds.length;
 
   return (
     <main className="min-h-screen bg-[#f7f2e7] px-4 py-8 text-[#043331] sm:px-6 lg:py-12">
@@ -566,8 +629,13 @@ export function ProviderOperationsBoard({
         {focusDateIsVisible && operationsReady ? (
           <div className="mt-5 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm font-bold text-amber-950">
             Cruise capacity action: review {normalizedInitialFocusDate}, set the
-            operating decision for this date, then save operations. Bulk staging
-            below starts from this cruise date and leaves prior decisions intact.
+            operating decision for this date, then save operations.
+            {focusCruiseDemand ? (
+              <span className="mt-2 block text-xs font-semibold text-amber-900/80">
+                Official demand: {focusCruiseDemand.callCount} ship
+                {focusCruiseDemand.callCount === 1 ? "" : "s"} · {focusCruiseDemand.shipNames.slice(0, 3).join(", ")} · {focusCruiseDemand.earliestArrivalAt}–{focusCruiseDemand.latestDepartureAt}.
+              </span>
+            ) : null}
           </div>
         ) : null}
 
@@ -672,7 +740,7 @@ export function ProviderOperationsBoard({
               onClick={() => applyBulkDecision(true)}
               className="min-h-12 rounded-2xl bg-emerald-100 px-5 text-[9px] font-black uppercase tracking-[.13em] text-emerald-800 disabled:opacity-50"
             >
-              Stage open undecided dates
+              Stage all undecided open
             </button>
             <button
               type="button"
@@ -680,9 +748,56 @@ export function ProviderOperationsBoard({
               onClick={() => applyBulkDecision(false)}
               className="min-h-12 rounded-2xl bg-slate-100 px-5 text-[9px] font-black uppercase tracking-[.13em] text-slate-700 disabled:opacity-50"
             >
-              Stage closed undecided dates
+              Stage all undecided closed
             </button>
           </div>
+
+          <div className="mt-5 rounded-[24px] border border-cyan-200 bg-cyan-50 p-4 sm:p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-cyan-800">
+                  <ShipWheel className="h-4 w-4" /> Cruise dates only
+                </p>
+                <p className="mt-2 text-sm font-bold leading-6 text-cyan-950/75">
+                  {cruiseDemandDates.length
+                    ? `${cruiseDemandDates.length} matched ship-call ${cruiseDemandDates.length === 1 ? "date is" : "dates are"} loaded for this business. ${bulkCruisePreview.appliedCount} undecided ${bulkCruisePreview.appliedCount === 1 ? "date falls" : "dates fall"} inside the selected window.`
+                    : "No active cruise-ready offers currently match an official ship-call date for this business in the loaded schedule."}
+                </p>
+              </div>
+              {cruiseScheduleCoverage ? (
+                <div className="shrink-0 rounded-xl border border-cyan-200 bg-white/70 px-3 py-2 text-[9px] font-black uppercase tracking-[.1em] text-cyan-800">
+                  Official coverage
+                  <span className="mt-1 block normal-case tracking-normal text-cyan-950">
+                    {cruiseScheduleCoverage.from} → {cruiseScheduleCoverage.through}
+                  </span>
+                </div>
+              ) : null}
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                disabled={editorDisabled || bulkCruisePreview.appliedCount === 0}
+                onClick={() => applyBulkDecision(true, "cruise")}
+                className="min-h-12 rounded-2xl bg-cyan-800 px-5 text-[9px] font-black uppercase tracking-[.13em] text-white disabled:opacity-50"
+              >
+                Stage cruise dates open
+              </button>
+              <button
+                type="button"
+                disabled={editorDisabled || bulkCruisePreview.appliedCount === 0}
+                onClick={() => applyBulkDecision(false, "cruise")}
+                className="min-h-12 rounded-2xl border border-cyan-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.13em] text-cyan-900 disabled:opacity-50"
+              >
+                Stage cruise dates closed
+              </button>
+            </div>
+            <p className="mt-3 text-[10px] font-semibold text-cyan-950/65">
+              Cruise-only actions use official calls matched to active excursion
+              offers and their sellable windows. Dates beyond the coverage shown
+              above are not treated as demand-free.
+            </p>
+          </div>
+
           <p className="mt-3 text-[10px] font-semibold text-slate-500">
             Bulk actions are staged locally first. Use Save operations to publish
             them. Dates already reviewed are never changed by these buttons.
@@ -694,16 +809,19 @@ export function ProviderOperationsBoard({
             const focused =
               focusDateIsVisible && day.date === normalizedInitialFocusDate;
             const decided = decisionDates.has(day.date);
+            const cruiseDemand = cruiseDemandByDate.get(day.date) ?? null;
             return (
               <article
                 id={`provider-day-${day.date}`}
                 key={day.date}
-                className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[150px_150px_120px_120px_130px_1fr] md:items-end ${
+                className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[210px_150px_120px_120px_130px_1fr] md:items-end ${
                   focused
                     ? "border-amber-400 ring-4 ring-amber-200/60"
-                    : decided
-                      ? "border-teal-200"
-                      : "border-slate-200"
+                    : cruiseDemand && !decided
+                      ? "border-cyan-300"
+                      : decided
+                        ? "border-teal-200"
+                        : "border-slate-200"
                 }`}
               >
                 <div>
@@ -711,15 +829,36 @@ export function ProviderOperationsBoard({
                     {focused ? "Cruise date" : "Date"}
                   </p>
                   <p className="mt-2 text-sm font-black">{day.date}</p>
-                  <span
-                    className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-[7px] font-black uppercase tracking-[.12em] ${
-                      decided
-                        ? "bg-teal-100 text-teal-800"
-                        : "bg-slate-100 text-slate-500"
-                    }`}
-                  >
-                    {decided ? "Decision set" : "Undecided"}
-                  </span>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-1 text-[7px] font-black uppercase tracking-[.12em] ${
+                        decided
+                          ? "bg-teal-100 text-teal-800"
+                          : "bg-slate-100 text-slate-500"
+                      }`}
+                    >
+                      {decided ? "Decision set" : "Undecided"}
+                    </span>
+                    {cruiseDemand ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-cyan-100 px-2.5 py-1 text-[7px] font-black uppercase tracking-[.1em] text-cyan-800">
+                        <ShipWheel className="h-3 w-3" /> {cruiseDemand.callCount} ship
+                        {cruiseDemand.callCount === 1 ? "" : "s"}
+                      </span>
+                    ) : null}
+                  </div>
+                  {cruiseDemand ? (
+                    <div className="mt-2 rounded-xl border border-cyan-100 bg-cyan-50 px-3 py-2 text-[9px] font-semibold leading-4 text-cyan-950/75">
+                      <span className="font-black text-cyan-900">
+                        {cruiseDemand.shipNames.slice(0, 2).join(", ")}
+                        {cruiseDemand.shipNames.length > 2
+                          ? ` +${cruiseDemand.shipNames.length - 2}`
+                          : ""}
+                      </span>
+                      <br />
+                      {cruiseDemand.earliestArrivalAt}–{cruiseDemand.latestDepartureAt} · {cruiseDemand.offerCount} active excursion
+                      {cruiseDemand.offerCount === 1 ? "" : "s"}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
                   Decision
@@ -851,5 +990,16 @@ function toDateSet(values: string[] | undefined) {
     (Array.isArray(values) ? values : []).filter((value) =>
       /^\d{4}-\d{2}-\d{2}$/.test(value),
     ),
+  );
+}
+
+function validCoverage(
+  value: CruiseScheduleCoverage | undefined,
+): value is CruiseScheduleCoverage {
+  return Boolean(
+    value &&
+      /^\d{4}-\d{2}-\d{2}$/.test(value.from) &&
+      /^\d{4}-\d{2}-\d{2}$/.test(value.through) &&
+      value.through >= value.from,
   );
 }
