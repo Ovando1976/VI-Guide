@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 
 import "./globals.css";
 import "./concierge-responsive.css";
 import "./map-premium.css";
 import "./mobile-navigation-fix.css";
+import { ActiveIslandRouteSync } from "@/components/active-island-route-sync";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
 import { ScrollToTop } from "@/components/scroll-to-top";
@@ -52,6 +54,9 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           <ScrollToTop />
+          <Suspense fallback={null}>
+            <ActiveIslandRouteSync />
+          </Suspense>
           <TravelerMemorySync />
           <JourneyCloudSync />
           <JourneyIntelligenceSync />
