@@ -9,6 +9,9 @@ function source(path: string) {
 const home = source("app/page.tsx");
 const rootLayout = source("app/layout.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
+const tripsPage = source("app/trips/page.tsx");
+const travelerTripCommand = source("components/trips/traveler-trip-command-center.tsx");
+const travelerTripModel = source("lib/traveler-trip-command.ts");
 const cruiseHub = source("app/cruises/page.tsx");
 const planner = source("app/planner/page.tsx");
 const directory = source("components/directory/discovery-directory-page.tsx");
@@ -47,6 +50,7 @@ const globals = source("app/globals.css");
 for (const [name, contents] of [
   ["home", home],
   ["trip planning", tripPlanning],
+  ["traveler trip command", tripsPage],
   ["cruise hub", cruiseHub],
   ["journey planner", planner],
   ["directory surfaces", directory],
@@ -94,6 +98,23 @@ assert.match(appNavigation, /ACTIVE_ISLAND_UPDATED_EVENT/);
 assert.match(appNavigation, /\/places\?island=/);
 assert.match(appNavigation, /\/map\?island=/);
 assert.match(appNavigation, /\/concierge\?island=/);
+assert.match(appNavigation, /base: "\/trips", label: "My Trip"/);
+assert.match(appNavigation, /"\/bookings"/);
+
+assert.match(tripsPage, /TravelerTripCommandCenter/);
+assert.match(tripsPage, /commerceBookings/);
+assert.match(tripsPage, /travelPlanningRequests/);
+assert.match(tripsPage, /RiderLiveDriverMap/);
+assert.match(travelerTripCommand, /readJourneyPlans/);
+assert.match(travelerTripCommand, /readTrackedBookings/);
+assert.match(travelerTripCommand, /Next best action/);
+assert.match(travelerTripCommand, /Bookings & payments/);
+assert.match(travelerTripCommand, /Travel Advisor/);
+assert.match(travelerTripCommand, /Live transportation|Mobility/);
+assert.match(travelerTripModel, /summarizeTravelerTrip/);
+assert.match(travelerTripModel, /Payment ready/);
+assert.match(travelerTripModel, /Your advisor proposal is ready/);
+assert.match(travelerTripModel, /sourceProposal|proposalHref/);
 
 assert.match(savedPlacesBoard, /readSavedPlaces/);
 assert.match(savedPlacesBoard, /AddToJourneyButton/);
