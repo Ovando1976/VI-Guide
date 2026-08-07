@@ -6,6 +6,7 @@ import {
   evaluateShoreExcursionTiming,
   normalizeShoreExcursionProfile,
   shoreExcursionBookingDocumentId,
+  shoreExcursionDateWithinOfferWindow,
   shoreExcursionPort,
 } from "../lib/shore-excursions";
 
@@ -68,6 +69,31 @@ const tooSmallBuffer = normalizeShoreExcursionProfile({
 });
 assert.equal(tooSmallBuffer.ok, false);
 
+assert.equal(
+  shoreExcursionDateWithinOfferWindow({
+    startDate: "2026-12-10",
+    validFrom: offer.validFrom,
+    validThrough: offer.validThrough,
+  }),
+  true,
+);
+assert.equal(
+  shoreExcursionDateWithinOfferWindow({
+    startDate: "2027-08-07",
+    validFrom: offer.validFrom,
+    validThrough: offer.validThrough,
+  }),
+  false,
+);
+assert.equal(
+  shoreExcursionDateWithinOfferWindow({
+    startDate: "not-a-date",
+    validFrom: offer.validFrom,
+    validThrough: offer.validThrough,
+  }),
+  false,
+);
+
 const safeTiming = evaluateShoreExcursionTiming({
   startTime: "09:00",
   allAboardTime: "16:30",
@@ -123,6 +149,10 @@ const bookingInput = {
   shipName: "Icon of the Seas",
   portId: "havensight" as const,
   allAboardTime: "16:30",
+  adults: 2,
+  children: 0,
+  durationMinutes: 240,
+  minReturnBufferMinutes: 90,
   offerPriceCents: 12_900,
 };
 const bookingId = shoreExcursionBookingDocumentId(bookingInput);
@@ -140,6 +170,20 @@ assert.notEqual(
   shoreExcursionBookingDocumentId({
     ...bookingInput,
     shipName: "Wonder of the Seas",
+  }),
+);
+assert.notEqual(
+  bookingId,
+  shoreExcursionBookingDocumentId({
+    ...bookingInput,
+    adults: 4,
+  }),
+);
+assert.notEqual(
+  bookingId,
+  shoreExcursionBookingDocumentId({
+    ...bookingInput,
+    minReturnBufferMinutes: 120,
   }),
 );
 
