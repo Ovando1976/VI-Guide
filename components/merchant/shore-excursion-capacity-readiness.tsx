@@ -105,11 +105,17 @@ export async function ShoreExcursionCapacityReadiness() {
           state: readinessState(day),
         };
       });
+      const nextActionDate =
+        callRows.find((row) => row.state === "missing")?.call.date ??
+        callRows.find((row) => row.state === "closed")?.call.date ??
+        callRows[0]?.call.date ??
+        null;
       return {
         ...profile,
         offerValidFrom: offerWindow?.validFrom ?? null,
         offerValidThrough: offerWindow?.validThrough ?? null,
         calls: callRows,
+        nextActionDate,
         publishedCount: callRows.filter((row) => row.state === "published").length,
         missingCount: callRows.filter((row) => row.state === "missing").length,
         closedCount: callRows.filter((row) => row.state === "closed").length,
@@ -175,7 +181,7 @@ export async function ShoreExcursionCapacityReadiness() {
                   </p>
                 </div>
                 <Link
-                  href={`/merchant/availability?listingId=${encodeURIComponent(profile.listingId)}`}
+                  href={`/merchant/availability?listingId=${encodeURIComponent(profile.listingId)}${profile.nextActionDate ? `&date=${encodeURIComponent(profile.nextActionDate)}` : ""}`}
                   className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#043331] px-4 text-[8px] font-black uppercase tracking-[.13em] text-white"
                 >
                   <CalendarClock className="h-4 w-4 text-[#f5c451]" /> Fix availability
