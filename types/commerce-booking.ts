@@ -34,6 +34,7 @@ export type CommerceBookingRequest = {
   listingName: string;
   listingHref?: string;
   offerId?: string;
+  sourceProposalShareId?: string;
   island: IntelligenceIsland;
   startDate: string;
   endDate?: string;

@@ -10,6 +10,7 @@ import {
   isBookableEndDate,
   isBookableStartDate,
 } from "@/lib/booking/booking-dates";
+import { normalizeJourneyPlan } from "@/lib/journey-planner";
 import {
   resolveMerchantOfferForBooking,
   type MerchantOfferBookingSnapshot,
@@ -24,6 +25,7 @@ import { normalizeMerchantOfferId } from "@/lib/merchant-offers";
 import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import { normalizeBookingNotification } from "@/lib/notifications/booking-notification-outbox";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
+import { normalizeProposalShareId } from "@/lib/travel-advisor-booking-handoff";
 import type {
   CommerceBookingKind,
   CommerceBookingRequest,
@@ -70,6 +72,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const rawSourceProposalShareId = clean(body.sourceProposalShareId, 40);
+  const sourceProposalShareId = rawSourceProposalShareId
+    ? normalizeProposalShareId(rawSourceProposalShareId)
+    : "";
+  if (rawSourceProposalShareId && !sourceProposalShareId) {
+    return NextResponse.json(
+      { error: "The VI Guide travel proposal link is invalid." },
+      { status: 400 },
+    );
+  }
+
   const db = getAdminDb();
   const requestNow = new Date();
 
@@ -81,6 +94,78 @@ export async function POST(request: NextRequest) {
       let requestQuotaRef: FirebaseFirestore.DocumentReference | null = null;
       let requestQuotaCount = 0;
       let bookingInput: Partial<CommerceBookingRequest> = body;
+      let advisorProposal:
+        | {
+            shareId: string;
+            travelRequestId: string;
+            reference: string;
+          }
+        | null = null;
+      let advisorRequestRef: FirebaseFirestore.DocumentReference | null = null;
+      let advisorRequestRecord: FirebaseFirestore.DocumentData | null = null;
+
+      if (sourceProposalShareId) {
+        const proposalRef = db
+          .collection("sharedJourneys")
+          .doc(sourceProposalShareId);
+        const proposalDocument = await transaction.get(proposalRef);
+        const proposalRecord = proposalDocument.exists
+          ? proposalDocument.data() ?? {}
+          : null;
+        const proposalPlan = normalizeJourneyPlan(proposalRecord?.plan);
+        const travelRequestId = clean(proposalRecord?.travelRequestId, 80);
+        const requestedListingId = clean(body.listingId, 160);
+        const requestedListingName = clean(body.listingName, 180);
+
+        if (
+          !proposalRecord ||
+          proposalRecord.source !== "travel_advisor_proposal" ||
+          !proposalPlan ||
+          !/^travel_[a-f0-9]{32}$/.test(travelRequestId)
+        ) {
+          throw new CommerceBookingActionError(
+            "The VI Guide travel proposal could not be verified.",
+            409,
+          );
+        }
+
+        const stopMatchesProposal = proposalPlan.plan.some((stop) => {
+          const stopListingId = clean(stop.placeId || stop.id, 160);
+          return (
+            stopListingId === requestedListingId &&
+            clean(stop.title, 180) === requestedListingName
+          );
+        });
+        if (!stopMatchesProposal) {
+          throw new CommerceBookingActionError(
+            "This booking request does not match the selected travel proposal.",
+            409,
+          );
+        }
+
+        advisorRequestRef = db
+          .collection("travelPlanningRequests")
+          .doc(travelRequestId);
+        const advisorRequestDocument = await transaction.get(advisorRequestRef);
+        advisorRequestRecord = advisorRequestDocument.exists
+          ? advisorRequestDocument.data() ?? {}
+          : null;
+        if (!advisorRequestRecord) {
+          throw new CommerceBookingActionError(
+            "The related travel planning request could not be verified.",
+            409,
+          );
+        }
+
+        advisorProposal = {
+          shareId: sourceProposalShareId,
+          travelRequestId,
+          reference:
+            clean(proposalRecord.proposalReference, 120) ||
+            clean(advisorRequestRecord.reference, 120) ||
+            travelRequestId,
+        };
+      }
 
       if (offerId) {
         offerRef = db.collection("merchantOffers").doc(offerId);
@@ -188,12 +273,23 @@ export async function POST(request: NextRequest) {
               offerValidThrough: offerSnapshot.validThrough,
             }
           : {}),
+        ...(advisorProposal
+          ? {
+              sourceProposalShareId: advisorProposal.shareId,
+              sourceTravelRequestId: advisorProposal.travelRequestId,
+              sourceTravelAdvisorReference: advisorProposal.reference,
+            }
+          : {}),
         reference,
         status: "requested",
         createdAt: now,
         updatedAt: now,
         serverCreatedAt: FieldValue.serverTimestamp(),
-        source: offerSnapshot ? "vi-guide-offer" : "vi-guide-web",
+        source: offerSnapshot
+          ? "vi-guide-offer"
+          : advisorProposal
+            ? "vi-guide-travel-proposal"
+            : "vi-guide-web",
       });
 
       if (requestQuotaRef) {
@@ -213,6 +309,31 @@ export async function POST(request: NextRequest) {
         transaction.update(offerRef, {
           ...merchantOfferDemandPatch(offerRecord, requestNow),
           serverDemandUpdatedAt: FieldValue.serverTimestamp(),
+        });
+      }
+
+      if (advisorProposal && advisorRequestRef && advisorRequestRecord) {
+        transaction.update(advisorRequestRef, {
+          conversionStartedAt:
+            clean(advisorRequestRecord.conversionStartedAt, 50) || now,
+          lastCommerceBookingId: bookingRef.id,
+          lastCommerceBookingReference: reference,
+          lastCommerceBookingAt: now,
+          commerceBookingIds: FieldValue.arrayUnion(bookingRef.id),
+          updatedAt: now,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+        });
+        transaction.set(db.collection("travelAdvisorAudit").doc(), {
+          action: "booking_request_started",
+          requestId: advisorProposal.travelRequestId,
+          reference: advisorProposal.reference,
+          proposalShareId: advisorProposal.shareId,
+          commerceBookingId: bookingRef.id,
+          commerceBookingReference: reference,
+          listingId: booking.listingId,
+          listingName: booking.listingName,
+          createdAt: now,
+          serverCreatedAt: FieldValue.serverTimestamp(),
         });
       }
 
@@ -332,6 +453,9 @@ function normalizeBooking(
   const listingId = clean(body.listingId, 160);
   const listingName = clean(body.listingName, 180);
   const offerId = normalizeMerchantOfferId(body.offerId);
+  const sourceProposalShareId = normalizeProposalShareId(
+    body.sourceProposalShareId,
+  );
   const guestName = clean(body.guestName, 160);
   const email = clean(body.email, 220).toLowerCase();
   const startDate = clean(body.startDate, 10);
@@ -369,6 +493,7 @@ function normalizeBooking(
     guestName,
     email,
     ...(offerId ? { offerId } : {}),
+    ...(sourceProposalShareId ? { sourceProposalShareId } : {}),
     ...(endDate ? { endDate } : {}),
     ...(clean(body.preferredTime, 20)
       ? { preferredTime: clean(body.preferredTime, 20) }

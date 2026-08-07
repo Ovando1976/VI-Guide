@@ -8,6 +8,7 @@ import {
   CalendarDays,
   CheckCircle2,
   ClipboardCheck,
+  FileCheck2,
   Loader2,
   Mail,
   MapPinned,
@@ -29,6 +30,7 @@ import {
   buildBookingStatusHref,
   rememberTrackedBooking,
 } from "@/lib/booking/booking-tracker";
+import { normalizeProposalShareId } from "@/lib/travel-advisor-booking-handoff";
 import type { CommerceBookingKind } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
@@ -46,6 +48,12 @@ export function CommerceBookingExperience() {
   const listingName =
     cleanParam(params.get("listingName")) || "VI Guide experience";
   const listingHref = cleanParam(params.get("listingHref"));
+  const sourceProposalShareId = normalizeProposalShareId(
+    params.get("sourceProposal"),
+  );
+  const proposalHref = sourceProposalShareId
+    ? `/shared-trip/${sourceProposalShareId}`
+    : "";
   const today = getUsviToday();
   const requestedStart = cleanDate(params.get("startDate"));
   const initialStart = isBookableStartDate(requestedStart, today)
@@ -110,6 +118,7 @@ export function CommerceBookingExperience() {
           listingId,
           listingName,
           listingHref: listingHref || undefined,
+          sourceProposalShareId: sourceProposalShareId || undefined,
           startDate,
           endDate: kind === "accommodation" ? endDate : undefined,
           preferredTime: kind === "accommodation" ? undefined : preferredTime,
@@ -201,12 +210,21 @@ export function CommerceBookingExperience() {
           </div>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
-            <Link
-              href={plannerHref}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
-            >
-              <MapPinned className="h-4 w-4" /> Plan around this request
-            </Link>
+            {proposalHref ? (
+              <Link
+                href={proposalHref}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
+              >
+                <FileCheck2 className="h-4 w-4" /> Back to proposal
+              </Link>
+            ) : (
+              <Link
+                href={plannerHref}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[10px] font-black uppercase tracking-[.16em] text-white"
+              >
+                <MapPinned className="h-4 w-4" /> Plan around this request
+              </Link>
+            )}
             <Link
               href={statusHref}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-[10px] font-black uppercase tracking-[.16em]"
@@ -219,7 +237,7 @@ export function CommerceBookingExperience() {
             This device remembers the reference and lookup email so the status
             page can reopen the request automatically. You can remove that saved
             access from the status page at any time. Contact details are never
-            placed in the planner link.
+            placed in the planner or proposal link.
           </p>
         </section>
       </main>
@@ -230,11 +248,23 @@ export function CommerceBookingExperience() {
     <main className="min-h-screen bg-[#f8f4ea] px-4 py-6 pb-32 text-[#043331] sm:px-6 lg:py-10">
       <div className="mx-auto max-w-5xl">
         <Link
-          href={listingHref || "/"}
+          href={proposalHref || listingHref || "/"}
           className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[.16em]"
         >
-          <ArrowLeft className="h-4 w-4" /> Back
+          <ArrowLeft className="h-4 w-4" /> {proposalHref ? "Back to proposal" : "Back"}
         </Link>
+
+        {proposalHref ? (
+          <div className="mt-5 flex gap-3 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 text-sm font-semibold leading-6 text-teal-950">
+            <FileCheck2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
+            <span>
+              This request started from a VI Guide Travel Advisor proposal. The
+              booking will stay linked to that proposal for operations follow-up,
+              but your contact information is entered here and is not placed in
+              the shared proposal URL.
+            </span>
+          </div>
+        ) : null}
 
         <section className="mt-5 overflow-hidden rounded-[36px] bg-[#043331] text-white shadow-[0_30px_80px_rgba(4,51,49,.18)]">
           <div className="grid lg:grid-cols-[.8fr_1.2fr]">
