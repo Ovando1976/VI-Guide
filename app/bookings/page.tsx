@@ -1,5 +1,7 @@
 import { Suspense } from "react";
+import { Route } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { BookingStatusLookup } from "@/components/booking/booking-status-lookup";
 import { CommercePaymentReturnNotice } from "@/components/booking/commerce-payment-return-notice";
 
@@ -10,9 +12,20 @@ export const metadata = {
 
 export default function BookingsPage() {
   return (
-    <Suspense fallback={null}>
-      <CommercePaymentReturnNotice />
-      <BookingStatusLookup />
-    </Suspense>
+    <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
+      <div className="px-4 pt-5 sm:px-6 lg:pt-8">
+        <ViPublicHeader
+          actionHref="/planner"
+          actionLabel="Open My Trip"
+          actionIcon={Route}
+          secondaryHref="/places"
+          secondaryLabel="Explore"
+        />
+      </div>
+      <Suspense fallback={null}>
+        <CommercePaymentReturnNotice />
+        <BookingStatusLookup />
+      </Suspense>
+    </main>
   );
 }
