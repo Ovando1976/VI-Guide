@@ -8,6 +8,7 @@ import {
   CalendarDays,
   CheckCircle2,
   ClipboardCheck,
+  FileCheck2,
   Loader2,
   Mail,
   MapPinned,
@@ -46,6 +47,7 @@ export function CommerceBookingExperience() {
   const listingName =
     cleanParam(params.get("listingName")) || "VI Guide experience";
   const listingHref = cleanParam(params.get("listingHref"));
+  const proposalShareId = normalizeProposalShareId(params.get("proposal"));
   const today = getUsviToday();
   const requestedStart = cleanDate(params.get("startDate"));
   const initialStart = isBookableStartDate(requestedStart, today)
@@ -110,6 +112,7 @@ export function CommerceBookingExperience() {
           listingId,
           listingName,
           listingHref: listingHref || undefined,
+          proposalShareId: proposalShareId || undefined,
           startDate,
           endDate: kind === "accommodation" ? endDate : undefined,
           preferredTime: kind === "accommodation" ? undefined : preferredTime,
@@ -191,6 +194,15 @@ export function CommerceBookingExperience() {
             instructions will follow after review.
           </p>
 
+          {proposalShareId ? (
+            <div className="mx-auto mt-5 flex max-w-lg items-start gap-3 rounded-2xl border border-teal-200 bg-teal-50 p-4 text-left text-xs font-semibold leading-5 text-teal-900">
+              <FileCheck2 className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>
+                This booking request is linked back to the Travel Advisor proposal you opened, so the advisor workflow can follow the request without placing your contact details in the proposal link.
+              </span>
+            </div>
+          ) : null}
+
           <div className="mx-auto mt-6 max-w-sm rounded-2xl bg-[#edf6f2] p-5">
             <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">
               Booking reference
@@ -226,11 +238,13 @@ export function CommerceBookingExperience() {
     );
   }
 
+  const backHref = listingHref || (proposalShareId ? `/shared-trip/${proposalShareId}` : "/");
+
   return (
     <main className="min-h-screen bg-[#f8f4ea] px-4 py-6 pb-32 text-[#043331] sm:px-6 lg:py-10">
       <div className="mx-auto max-w-5xl">
         <Link
-          href={listingHref || "/"}
+          href={backHref}
           className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[.16em]"
         >
           <ArrowLeft className="h-4 w-4" /> Back
@@ -242,6 +256,11 @@ export function CommerceBookingExperience() {
               <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
                 <BadgeCheck className="h-4 w-4" /> VI Guide booking
               </div>
+              {proposalShareId ? (
+                <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.15em] text-[#7ce0d4]">
+                  <FileCheck2 className="h-3.5 w-3.5" /> From Travel Advisor proposal
+                </div>
+              ) : null}
               <h1 className="mt-5 text-4xl font-black leading-[.95] tracking-[-.05em] sm:text-5xl">
                 {title}
               </h1>
@@ -261,7 +280,7 @@ export function CommerceBookingExperience() {
                   <Mail className="mt-0.5 h-5 w-5 shrink-0 text-[#7ce0d4]" />
                   <span>
                     Your contact information is used only to follow up on this
-                    request and is not sent into the trip planner.
+                    request and is not sent into the trip planner or public proposal.
                   </span>
                 </div>
               </div>
@@ -472,6 +491,11 @@ function normalizeKind(value: string | null): CommerceBookingKind {
 
 function normalizeIsland(value: string | null): IntelligenceIsland {
   return value === "stj" || value === "stx" ? value : "stt";
+}
+
+function normalizeProposalShareId(value: string | null) {
+  const shareId = value?.trim() ?? "";
+  return /^[a-f0-9]{24}$/.test(shareId) ? shareId : "";
 }
 
 function cleanParam(value: string | null) {
