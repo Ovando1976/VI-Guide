@@ -31,6 +31,23 @@ export type MerchantOperationsSummary = {
   closed: number;
 };
 
+export type ProviderAvailabilityWindowDecisionInput = {
+  startDate: string;
+  windowDays: number;
+  isOpen: boolean;
+  startTime?: string;
+  endTime?: string;
+  capacity?: number;
+};
+
+export type ProviderAvailabilityWindowDecisionResult = {
+  days: ProviderAvailabilityDay[];
+  decisionDates: string[];
+  appliedCount: number;
+  startDate: string;
+  endDate: string;
+};
+
 const COMMERCE_BOOKING_STATUSES = new Set<CommerceBookingStatus>([
   "draft",
   "requested",
@@ -95,10 +112,68 @@ export function selectProviderAvailabilityDecisions(
   days: ProviderAvailabilityDay[],
   decisionDates: Iterable<string>,
 ) {
-  const dates = new Set(
-    Array.from(decisionDates).filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date)),
-  );
+  const dates = normalizeDecisionDates(decisionDates);
   return days.filter((day) => dates.has(day.date));
+}
+
+export function applyProviderAvailabilityWindowDecision(
+  days: ProviderAvailabilityDay[],
+  decisionDates: Iterable<string>,
+  input: ProviderAvailabilityWindowDecisionInput,
+): ProviderAvailabilityWindowDecisionResult {
+  const decided = normalizeDecisionDates(decisionDates);
+  const startDate = normalizeIsoDate(input.startDate);
+  const windowDays = clampWhole(input.windowDays, 1, 90, 14);
+  const endDate = startDate ? addCalendarDays(startDate, windowDays - 1) : "";
+
+  if (!startDate || !endDate) {
+    return {
+      days: [...days],
+      decisionDates: Array.from(decided).sort(),
+      appliedCount: 0,
+      startDate: "",
+      endDate: "",
+    };
+  }
+
+  const nextDecisionDates = new Set(decided);
+  const startTime = validTime(input.startTime) ? input.startTime : "09:00";
+  const endTime = validTime(input.endTime) ? input.endTime : "17:00";
+  const capacity = clampWhole(input.capacity, 1, 500, 10);
+  let appliedCount = 0;
+
+  const nextDays = days.map((day) => {
+    if (
+      decided.has(day.date) ||
+      day.date < startDate ||
+      day.date > endDate
+    ) {
+      return day;
+    }
+
+    nextDecisionDates.add(day.date);
+    appliedCount += 1;
+
+    if (!input.isOpen) {
+      return { ...day, isOpen: false };
+    }
+
+    return {
+      ...day,
+      isOpen: true,
+      capacity,
+      startTime,
+      endTime,
+    };
+  });
+
+  return {
+    days: nextDays,
+    decisionDates: Array.from(nextDecisionDates).sort(),
+    appliedCount,
+    startDate,
+    endDate,
+  };
 }
 
 export function summarizeMerchantBookings(
@@ -161,6 +236,33 @@ function normalizePaymentStatus(value: unknown): CommercePaymentStatus | null {
     COMMERCE_PAYMENT_STATUSES.has(value as CommercePaymentStatus)
     ? (value as CommercePaymentStatus)
     : null;
+}
+
+function normalizeDecisionDates(values: Iterable<string>) {
+  return new Set(
+    Array.from(values).filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date)),
+  );
+}
+
+function normalizeIsoDate(value: unknown) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? value
+    : "";
+}
+
+function validTime(value: unknown): value is string {
+  return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
+}
+
+function clampWhole(
+  value: unknown,
+  min: number,
+  max: number,
+  fallback: number,
+) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.max(min, Math.min(max, Math.round(number)));
 }
 
 function cleanListingId(value: unknown) {
