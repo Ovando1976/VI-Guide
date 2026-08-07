@@ -1,11 +1,15 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
+  BadgeCheck,
   BedDouble,
   Compass,
   History,
+  Map,
+  MapPinned,
   Navigation,
+  Route,
   Search,
   Sparkles,
   Star,
@@ -22,21 +26,21 @@ const ISLANDS = [
   {
     code: "STT",
     name: "St. Thomas",
-    line: "Vibrant & dynamic",
+    line: "Harbor energy, beaches, dining & nightlife",
     href: "/map?island=stt",
     image: "/images/usvi-harbor-hero.jpg",
   },
   {
     code: "STJ",
     name: "St. John",
-    line: "Natural & serene",
+    line: "National park, trails, coves & quiet water",
     href: "/map?island=stj",
     image: "/images/places/st-john/trunk-bay-beach-1.jpg",
   },
   {
     code: "STX",
     name: "St. Croix",
-    line: "Rich & authentic",
+    line: "History, food, diving & a deeper island pace",
     href: "/map?island=stx",
     image: "/images/places/st-croix/cane-bay-beach-1.jpg",
   },
@@ -44,7 +48,16 @@ const ISLANDS = [
 
 const QUICK = [
   {
+    label: "Live map",
+    detail: "See the islands",
+    href: "/map",
+    icon: Map,
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay overlook in St. John",
+  },
+  {
     label: "Beaches",
+    detail: "Find your water",
     href: "/beaches",
     icon: Waves,
     image: "/images/beaches/st-thomas/magens-bay-1.jpg",
@@ -52,20 +65,15 @@ const QUICK = [
   },
   {
     label: "Stays",
+    detail: "Sleep island-side",
     href: "/accommodations",
     icon: BedDouble,
     image: "/images/accommodations/king-christian-hotel.jpg",
     alt: "King Christian Hotel in Christiansted",
   },
   {
-    label: "Concierge",
-    href: "/concierge",
-    icon: Sparkles,
-    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
-    alt: "Trunk Bay overlook in St. John",
-  },
-  {
     label: "Ride",
+    detail: "Move with confidence",
     href: "/mobility",
     icon: Navigation,
     image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
@@ -73,17 +81,19 @@ const QUICK = [
   },
   {
     label: "Dining",
+    detail: "Eat local",
     href: "/places?category=restaurant",
     icon: UtensilsCrossed,
     image: "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
     alt: "Waterfront dining in Frenchtown, St. Thomas",
   },
   {
-    label: "Heritage",
-    href: "/heritage",
-    icon: History,
-    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
-    alt: "Frederick Lutheran Church in Charlotte Amalie",
+    label: "My Trip",
+    detail: "Run the whole trip",
+    href: "/trips",
+    icon: Route,
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+    alt: "Cane Bay coast in St. Croix",
   },
 ] as const;
 
@@ -92,57 +102,67 @@ const CONCIERGE_START_HREF =
 
 const HOME_FEATURES = [
   {
-    title: "A beach day that flows",
+    eyebrow: "Discover",
+    title: "See the islands as one connected place.",
     description:
-      "Pair a verified shoreline with nearby food, timing, and a reliable ride home.",
-    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
-    alt: "Turquoise water and green hills at Magens Bay in St. Thomas",
-    icon: Waves,
-    iconClassName: "bg-[#dff4ef] text-[#0f766e]",
-  },
-  {
-    title: "Walk into living history",
-    description:
-      "Explore forts, estates, churches, archives, and stories rooted in place.",
-    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
-    alt: "Historic Frederick Lutheran Church in Charlotte Amalie",
-    icon: History,
-    iconClassName: "bg-[#fff1d4] text-[#a85b16]",
-  },
-  {
-    title: "Let Concierge plan the day",
-    description:
-      "Tell VI Concierge your mood, timing, and island. Get a practical plan you can actually follow.",
+      "Move from beach to restaurant to ferry to historic site without losing the context of where you are or what comes next.",
+    href: "/map",
     image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     alt: "Scenic overlook above Trunk Bay in St. John",
+    icon: MapPinned,
+  },
+  {
+    eyebrow: "Plan",
+    title: "Turn inspiration into a trip you can actually run.",
+    description:
+      "Save places, build days, track bookings, watch timing, and keep the active trip synchronized across VI Guide.",
+    href: "/trips",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
+    alt: "Turquoise water and green hills at Magens Bay in St. Thomas",
+    icon: Route,
+  },
+  {
+    eyebrow: "Ask",
+    title: "A local-minded Concierge that knows your trip.",
+    description:
+      "Ask for a beach day, dinner, transfer, cruise plan, or complete itinerary and keep the answer connected to the rest of your journey.",
+    href: CONCIERGE_START_HREF,
+    image: "/images/sourced/historic/stt/frederick-lutheran-church.jpg",
+    alt: "Historic Frederick Lutheran Church in Charlotte Amalie",
     icon: Sparkles,
-    iconClassName: "bg-[#dff4ef] text-[#0f766e]",
   },
 ] as const;
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f7f3ea] pb-[calc(12rem+env(safe-area-inset-bottom))] text-[#073b39] sm:pb-32">
-      <section className="relative isolate overflow-hidden px-4 pb-24 pt-5 sm:px-8 lg:px-12 lg:pb-28">
-        <div className="absolute inset-0 -z-30 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_42%]" />
-        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.93)_0%,rgba(255,251,241,.72)_42%,rgba(255,255,255,.18)_76%,rgba(255,255,255,.06)_100%)]" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,.16)_0%,rgba(255,255,255,0)_58%,rgba(247,243,234,.82)_100%)]" />
+    <main className="min-h-screen overflow-hidden bg-[#f5f0e6] pb-[calc(12rem+env(safe-area-inset-bottom))] text-[#032f2d] sm:pb-32">
+      <section className="relative isolate overflow-hidden bg-[#032f2d] px-4 pb-10 pt-5 text-white sm:px-7 lg:min-h-[850px] lg:px-10 lg:pb-14">
+        <Image
+          src="/images/usvi-harbor-hero.jpg"
+          alt="Charlotte Amalie harbor and the hills of St. Thomas"
+          fill
+          priority
+          sizes="100vw"
+          className="-z-30 object-cover object-[66%_center] saturate-[1.08]"
+        />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(2,31,29,.97)_0%,rgba(3,47,45,.92)_39%,rgba(3,47,45,.46)_70%,rgba(3,47,45,.18)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_76%_18%,rgba(40,200,189,.22),transparent_28%),linear-gradient(180deg,rgba(2,31,29,.08),rgba(2,31,29,.42))]" />
 
         <ViPublicHeader
           actionHref={CONCIERGE_START_HREF}
-          actionLabel="Ask VI Concierge"
+          actionLabel="Ask Concierge"
           actionIcon={Sparkles}
           secondaryActions={
             <>
               <Link
-                href={CONCIERGE_START_HREF}
-                className="hidden rounded-full border border-[#0f766e]/20 bg-white/86 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#073b39] transition hover:border-[#0f766e]/35 hover:bg-white md:inline-flex"
+                href="/trips"
+                className="hidden rounded-full border border-white/12 bg-white/[.07] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.15em] text-white/82 transition hover:-translate-y-0.5 hover:bg-white/[.12] md:inline-flex"
               >
-                My AI day
+                My Trip
               </Link>
               <Link
                 href="/search"
-                className="hidden rounded-full border border-[#0f766e]/20 bg-white/86 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#073b39] transition hover:border-[#0f766e]/35 hover:bg-white sm:inline-flex"
+                className="hidden rounded-full border border-white/12 bg-white/[.07] px-4 py-2.5 text-[9px] font-black uppercase tracking-[.15em] text-white/82 transition hover:-translate-y-0.5 hover:bg-white/[.12] sm:inline-flex"
               >
                 Search
               </Link>
@@ -150,115 +170,211 @@ export default function Home() {
           }
         />
 
-        <div className="mx-auto grid max-w-7xl gap-10 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:pt-20">
+        <div className="mx-auto grid max-w-7xl gap-10 pb-7 pt-14 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-14 lg:pb-12 lg:pt-24">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#b16a18]/20 bg-white/74 px-4 py-2 text-[9px] font-black uppercase tracking-[.23em] text-[#9a5a17] shadow-sm backdrop-blur">
-              <SunMedium size={14} /> Experience paradise with confidence
+            <div className="vi-eyebrow inline-flex items-center gap-2 rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-4 py-2 text-[#f9d875] backdrop-blur-xl">
+              <SunMedium size={14} /> VI Guide 2.0 · island travel OS
             </div>
-            <h1 className="mt-6 max-w-4xl font-serif text-[clamp(3.7rem,8vw,7rem)] font-semibold leading-[.84] tracking-[-.055em] drop-shadow-[0_2px_12px_rgba(255,255,255,.55)]">
-              Paradise is<br /><span className="italic text-[#159b91]">calling you.</span>
+
+            <h1 className="vi-display mt-7 max-w-4xl text-[clamp(4.1rem,9vw,7.7rem)] font-bold leading-[.82] text-white">
+              Paradise,
+              <span className="block italic text-[#73e3d9]">connected.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base font-semibold leading-7 text-[#173f3c] sm:text-lg">
-              Discover beaches, stays, culture, dining, and transportation across St. Thomas, St. John, and St. Croix — all in one trusted local guide.
+
+            <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
+              One intelligent travel layer for the U.S. Virgin Islands — discover where to go,
+              understand what is around you, build the trip, move between stops, and get help
+              without jumping between five different apps.
             </p>
-            <Link href="/search" className="mt-8 flex max-w-xl items-center gap-3 rounded-[22px] border border-white/80 bg-white/92 p-2 pl-5 shadow-[0_20px_55px_rgba(4,51,49,.16)] transition hover:bg-white">
-              <Search size={19} className="text-[#0f766e]" />
-              <span className="flex-1 text-sm font-semibold text-slate-500">Search beaches, stays, tours, food, history…</span>
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0f766e] text-white"><ArrowRight size={18} /></span>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/map"
+                className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-[#032f2d] shadow-[0_16px_40px_rgba(245,196,81,.24)] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
+              >
+                <Map size={17} /> Explore the live map <ArrowRight size={15} />
+              </Link>
+              <Link
+                href={CONCIERGE_START_HREF}
+                className="vi-glass inline-flex min-h-13 items-center gap-2 rounded-full px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:-translate-y-0.5 hover:bg-white/[.16]"
+              >
+                <Sparkles size={17} className="text-[#73e3d9]" /> Build my day
+              </Link>
+            </div>
+
+            <Link
+              href="/search"
+              className="mt-8 flex max-w-2xl items-center gap-3 rounded-[24px] border border-white/16 bg-white/[.10] p-2.5 pl-5 shadow-[0_24px_65px_rgba(2,31,29,.28)] backdrop-blur-2xl transition hover:bg-white/[.14]"
+            >
+              <Search size={19} className="text-[#73e3d9]" />
+              <span className="flex-1 text-sm font-semibold text-white/58">
+                Search beaches, stays, food, history, tours…
+              </span>
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-[#032f2d]">
+                <ArrowRight size={18} />
+              </span>
             </Link>
+
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[9px] font-black uppercase tracking-[.16em] text-white/48">
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck size={13} className="text-[#73e3d9]" /> Local context</span>
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck size={13} className="text-[#73e3d9]" /> Trip continuity</span>
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck size={13} className="text-[#73e3d9]" /> Map + mobility</span>
+              <span className="inline-flex items-center gap-1.5"><BadgeCheck size={13} className="text-[#73e3d9]" /> Human + AI planning</span>
+            </div>
           </div>
 
-          <aside className="overflow-hidden rounded-[34px] border border-white/80 bg-[#fffdf8]/94 shadow-[0_28px_70px_rgba(4,51,49,.16)] backdrop-blur-xl">
-            <div className="flex items-center justify-between border-b border-[#dce8e4] p-6 sm:p-7">
+          <aside className="vi-glass overflow-hidden rounded-[34px] p-4 sm:p-5 lg:p-6">
+            <div className="flex items-start justify-between gap-4 px-2 pb-5">
               <div>
-                <div className="text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">Explore the islands</div>
-                <h2 className="mt-2 font-serif text-3xl font-bold tracking-[-.035em]">Find your island rhythm.</h2>
+                <div className="vi-eyebrow text-[#f5c451]">Choose your island</div>
+                <h2 className="vi-display mt-2 text-3xl font-bold text-white sm:text-4xl">
+                  Start where you are.
+                </h2>
+                <p className="mt-2 text-sm font-semibold leading-6 text-white/55">
+                  VI Guide keeps the island context with you across Explore, Map, Concierge, and My Trip.
+                </p>
               </div>
-              <Compass className="text-[#0f766e]" />
+              <Compass className="mt-1 shrink-0 text-[#73e3d9]" />
             </div>
-            <div className="grid gap-3 p-4 sm:grid-cols-3 sm:p-5">
-              {ISLANDS.map((island) => (
-                <Link key={island.code} href={island.href} className="group relative min-h-[190px] overflow-hidden rounded-[24px] border border-[#dbe7e3] bg-[#eaf6f3]">
-                  <div className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${island.image})` }} />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.02),rgba(4,51,49,.68))]" />
-                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                    <span className="rounded-full bg-[#0f766e]/90 px-2.5 py-1 text-[8px] font-black uppercase tracking-[.14em]">{island.code}</span>
-                    <div className="mt-3 text-xl font-black">{island.name}</div>
-                    <div className="mt-1 text-xs font-semibold text-white/80">{island.line}</div>
-                  </div>
+
+            <div className="space-y-3">
+              {ISLANDS.map((island, index) => (
+                <Link
+                  key={island.code}
+                  href={island.href}
+                  className="group relative flex min-h-[134px] items-end overflow-hidden rounded-[25px] border border-white/12 p-5 shadow-lg"
+                >
+                  <Image
+                    src={island.image}
+                    alt={`${island.name} in the U.S. Virgin Islands`}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,31,29,.86),rgba(2,31,29,.32)_72%,rgba(2,31,29,.1))]" />
+                  <span className="relative flex w-full items-end justify-between gap-4">
+                    <span>
+                      <span className="inline-flex rounded-full bg-[#f5c451] px-2.5 py-1 text-[8px] font-black uppercase tracking-[.14em] text-[#032f2d]">
+                        {index === 0 ? "Gateway · " : ""}{island.code}
+                      </span>
+                      <span className="mt-2 block text-xl font-black text-white">{island.name}</span>
+                      <span className="mt-1 block text-xs font-semibold text-white/68">{island.line}</span>
+                    </span>
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/16 bg-white/[.10] text-white backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#032f2d]">
+                      <ArrowRight size={17} />
+                    </span>
+                  </span>
                 </Link>
               ))}
             </div>
           </aside>
         </div>
-      </section>
 
-      <HomeLiveStatus />
-
-      <section className="relative z-10 mx-auto mt-8 max-w-7xl px-4 sm:px-8 lg:px-12">
-        <div className="rounded-[30px] border border-[#d9e5e2] bg-white/96 p-4 shadow-[0_28px_80px_rgba(4,51,49,.14)] backdrop-blur sm:p-5">
-          <div className="mb-4 flex items-center justify-between px-1">
-            <div>
-              <div className="text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">Quick access</div>
-              <h2 className="mt-1 text-2xl font-black tracking-[-.035em]">Everything you need, one tap away.</h2>
-            </div>
-            <Star className="text-[#d7a22d]" size={20} />
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {QUICK.map(({ label, href, icon: Icon, image, alt }) => (
-              <Link key={label} href={href} className="group relative flex min-h-[150px] flex-col items-center justify-end overflow-hidden rounded-[22px] border border-white/70 p-4 text-center text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-                <Image
-                  src={image}
-                  alt={alt}
-                  fill
-                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,47,45,.03)_15%,rgba(3,47,45,.78)_100%)]" />
-                <span className="relative grid h-10 w-10 place-items-center rounded-2xl border border-white/45 bg-white/88 text-[#0f766e] shadow-lg backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]"><Icon size={19} aria-hidden="true" /></span>
-                <span className="relative mt-2 text-xs font-black drop-shadow-sm">{label}</span>
+        <div className="mx-auto max-w-7xl">
+          <div className="vi-glass grid grid-cols-2 gap-2 rounded-[30px] p-2.5 sm:grid-cols-3 lg:grid-cols-6">
+            {QUICK.map(({ label, detail, href, icon: Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                className="group flex min-h-[82px] items-center gap-3 rounded-[21px] border border-transparent px-3 py-3 transition hover:border-white/12 hover:bg-white/[.09]"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/[.10] text-[#73e3d9] transition group-hover:bg-[#f5c451] group-hover:text-[#032f2d]">
+                  <Icon size={18} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block truncate text-xs font-black text-white">{label}</span>
+                  <span className="mt-1 block truncate text-[9px] font-bold text-white/45">{detail}</span>
+                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
+      <HomeLiveStatus />
+
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-7 lg:px-10 lg:py-24">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="vi-eyebrow text-[#9b5d12]">One connected experience</div>
+            <h2 className="vi-display mt-3 max-w-4xl text-4xl font-bold leading-[.95] sm:text-6xl">
+              Stop using the islands like a pile of disconnected searches.
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm font-semibold leading-7 text-slate-600 sm:text-base">
+            VI Guide is being built as a travel operating system: discovery, intelligence, mapping,
+            planning, mobility, bookings, and Concierge all sharing the same trip context.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {HOME_FEATURES.map(({ eyebrow, title, description, href, image, alt, icon: Icon }) => (
+            <Link
+              key={title}
+              href={href}
+              className="group relative min-h-[510px] overflow-hidden rounded-[34px] bg-[#032f2d] shadow-[0_24px_70px_rgba(2,31,29,.14)]"
+            >
+              <Image
+                src={image}
+                alt={alt}
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+              <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,31,29,.02)_18%,rgba(2,31,29,.28)_45%,rgba(2,31,29,.94)_100%)]" />
+              <span className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-7">
+                <span className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-[#f5c451] text-[#032f2d] shadow-lg transition group-hover:-rotate-3 group-hover:scale-105">
+                  <Icon size={21} />
+                </span>
+                <span className="vi-eyebrow text-[#73e3d9]">{eyebrow}</span>
+                <span className="vi-display mt-2 block text-3xl font-bold leading-[1.02]">{title}</span>
+                <span className="mt-4 block text-sm font-semibold leading-6 text-white/66">{description}</span>
+                <span className="mt-5 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em] text-[#f5c451]">
+                  Open in VI Guide <ArrowRight size={14} />
+                </span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <HomeConciergeHub />
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-8 lg:px-12">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {HOME_FEATURES.map((feature) => {
-            const Icon = feature.icon;
-
-            return (
-              <article
-                key={feature.title}
-                className="group overflow-hidden rounded-[30px] border border-[#dbe5e2] bg-white shadow-[0_18px_50px_rgba(4,51,49,.08)]"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#dce9e5]">
-                  <Image
-                    src={feature.image}
-                    alt={feature.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(4,51,49,.3))]" />
-                </div>
-                <div className="relative p-7 pt-8">
-                  <span
-                    className={`absolute -top-7 grid h-14 w-14 place-items-center rounded-2xl border-4 border-white shadow-lg ${feature.iconClassName}`}
-                  >
-                    <Icon size={23} aria-hidden="true" />
-                  </span>
-                  <h2 className="font-serif text-3xl font-bold">{feature.title}</h2>
-                  <p className="mt-4 text-sm font-semibold leading-6 text-slate-600">
-                    {feature.description}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-7 lg:px-10">
+        <div className="overflow-hidden rounded-[36px] border border-[#d5e4df] bg-[#fffdf8] shadow-[0_24px_70px_rgba(2,31,29,.09)]">
+          <div className="grid lg:grid-cols-[.9fr_1.1fr]">
+            <div className="p-7 sm:p-10 lg:p-12">
+              <div className="vi-eyebrow text-[#9b5d12]">Your island rhythm</div>
+              <h2 className="vi-display mt-3 text-4xl font-bold leading-[.96] sm:text-5xl">
+                Explore deeper. Plan smarter. Move easier.
+              </h2>
+              <p className="mt-5 max-w-xl text-sm font-semibold leading-7 text-slate-600">
+                The product should feel unmistakably Virgin Islands from the first screen — while still behaving like a serious modern travel platform underneath.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="/places" className="inline-flex items-center gap-2 rounded-full bg-[#032f2d] px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-white">
+                  Explore places <ArrowRight size={14} />
+                </Link>
+                <Link href="/heritage" className="inline-flex items-center gap-2 rounded-full border border-[#d5e4df] bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-[#032f2d]">
+                  <History size={14} /> Heritage
+                </Link>
+              </div>
+            </div>
+            <div className="relative min-h-[360px] lg:min-h-[420px]">
+              <Image
+                src="/images/places/st-croix/cane-bay-beach-1.jpg"
+                alt="Caribbean coastline at Cane Bay in St. Croix"
+                fill
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,248,.42),transparent_45%)] lg:bg-[linear-gradient(90deg,rgba(255,253,248,.28),transparent_35%)]" />
+              <div className="absolute bottom-5 right-5 rounded-[22px] border border-white/30 bg-[#032f2d]/88 px-5 py-4 text-white shadow-xl backdrop-blur-xl">
+                <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-[#73e3d9]"><Star size={12} /> Built for the VI</div>
+                <div className="mt-1 text-sm font-black">St. Thomas · St. John · St. Croix</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
