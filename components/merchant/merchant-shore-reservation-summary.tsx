@@ -62,7 +62,8 @@ export function MerchantShoreReservationSummary() {
       if (!response.ok) {
         throw new Error(payload?.error || "Unable to load cruise reservations.");
       }
-      setBookings(Array.isArray(payload?.bookings) ? payload.bookings : []);
+      const parsedBookings = payload?.bookings;
+      setBookings(Array.isArray(parsedBookings) ? parsedBookings : []);
     } catch (caught) {
       if (!silent) {
         setError(
@@ -109,8 +110,8 @@ export function MerchantShoreReservationSummary() {
               Ship clock and return window at a glance
             </h2>
             <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-500">
-              Cruise requests surface the port, all-aboard time, planned excursion
-              finish, and the return buffer captured when the traveler requested the
+              Cruise requests surface the port, all-aboard time, planned return to
+              port, and the return buffer captured when the traveler requested the
               booking.
             </p>
           </div>
