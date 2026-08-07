@@ -23,7 +23,7 @@ const ITEMS = [
   { base: "/", label: "Home", icon: House },
   { base: "/places", label: "Explore", icon: Compass },
   { base: "/map", label: "Map", icon: Map },
-  { base: "/planner", label: "My Trip", icon: Route },
+  { base: "/trips", label: "My Trip", icon: Route },
   { base: "/concierge", label: "Concierge", icon: Sparkles },
 ] as const;
 
@@ -44,7 +44,14 @@ const EXPLORE_ROUTES = [
   "/search",
 ] as const;
 
-const TRIP_ROUTES = ["/planner", "/plan", "/trips", "/mobility"] as const;
+const TRIP_ROUTES = [
+  "/trips",
+  "/planner",
+  "/plan",
+  "/mobility",
+  "/book",
+  "/bookings",
+] as const;
 const CONCIERGE_ROUTES = ["/concierge", "/intelligence"] as const;
 
 function matchesRoute(pathname: string, routes: readonly string[]) {
@@ -56,7 +63,7 @@ function matchesRoute(pathname: string, routes: readonly string[]) {
 function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
   if (base === "/") return pathname === "/";
   if (base === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
-  if (base === "/planner") return matchesRoute(pathname, TRIP_ROUTES);
+  if (base === "/trips") return matchesRoute(pathname, TRIP_ROUTES);
   if (base === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
   return pathname === base || pathname.startsWith(`${base}/`);
 }
@@ -133,7 +140,7 @@ export function AppNavigation() {
 
       {ITEMS.map(({ base, label, icon: Icon }) => {
         const active = isActive(pathname, base);
-        const isTrip = base === "/planner";
+        const isTrip = base === "/trips";
         const href = contextualHref(base, activeIsland);
         const accessibleLabel =
           isTrip && tripStopCount
