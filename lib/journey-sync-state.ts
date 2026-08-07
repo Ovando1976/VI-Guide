@@ -94,6 +94,6 @@ function cleanId(value: unknown) {
 
 function normalizeTimestamp(value: unknown) {
   if (typeof value !== "string" || !value.trim()) return "";
-  const timestamp = new Date(value).toISOString();
-  return Number.isFinite(Date.parse(timestamp)) ? timestamp : "";
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : "";
 }
