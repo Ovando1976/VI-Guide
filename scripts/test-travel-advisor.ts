@@ -31,7 +31,6 @@ const valid = normalizeTravelPlanningRequest(
 );
 
 assert.equal(valid.ok, true);
-if (!valid.ok) throw new Error(valid.error);
 assert.equal(valid.request.email, "traveler@example.com");
 assert.equal(valid.request.travelers, 2);
 assert.deepEqual(valid.request.interests, ["beaches", "food"]);
@@ -55,7 +54,6 @@ const badDates = normalizeTravelPlanningRequest(
   now,
 );
 assert.equal(badDates.ok, false);
-if (badDates.ok) throw new Error("Expected invalid date order");
 assert.match(badDates.error, /Departure must be after arrival/);
 
 const noConsent = normalizeTravelPlanningRequest(
@@ -90,7 +88,6 @@ const honeypot = normalizeTravelPlanningRequest(
   now,
 );
 assert.equal(honeypot.ok, false);
-if (honeypot.ok) throw new Error("Expected honeypot rejection");
 assert.equal(honeypot.spam, true);
 
 const tooFast = normalizeTravelPlanningRequest(
@@ -109,7 +106,6 @@ const tooFast = normalizeTravelPlanningRequest(
   now,
 );
 assert.equal(tooFast.ok, false);
-if (tooFast.ok) throw new Error("Expected timing rejection");
 assert.equal(tooFast.spam, true);
 
 assert.equal(normalizeTravelRequestStatus("reviewing"), "reviewing");
