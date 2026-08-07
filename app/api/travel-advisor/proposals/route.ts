@@ -20,19 +20,51 @@ export async function GET() {
       );
     }
 
-    const snapshot = await getAdminDb()
+    const db = getAdminDb();
+    const snapshot = await db
       .collection("travelPlanningRequests")
       .orderBy("createdAt", "desc")
       .limit(150)
       .get();
+    const records = snapshot.docs.map((document) => ({
+      id: document.id,
+      data: document.data(),
+    }));
+    const bookingIds = Array.from(
+      new Set(
+        records
+          .map(({ data }) => clean(data.latestCommerceBookingId, 160))
+          .filter(Boolean),
+      ),
+    );
+    const bookingSnapshots = bookingIds.length
+      ? await db.getAll(
+          ...bookingIds.map((bookingId) =>
+            db.collection("commerceBookings").doc(bookingId),
+          ),
+        )
+      : [];
+    const liveBookings = new Map(
+      bookingSnapshots
+        .filter((document) => document.exists)
+        .map((document) => [document.id, document.data() ?? {}] as const),
+    );
 
     return NextResponse.json(
       {
         ok: true,
-        requests: snapshot.docs.map((document) => {
-          const data = document.data();
+        requests: records.map(({ id, data }) => {
+          const latestCommerceBookingId =
+            clean(data.latestCommerceBookingId, 160) || null;
+          const liveBooking = latestCommerceBookingId
+            ? liveBookings.get(latestCommerceBookingId) ?? null
+            : null;
+          const liveStatus = clean(liveBooking?.status, 40);
+          const livePaymentStatus = clean(liveBooking?.paymentStatus, 40);
+          const liveUpdatedAt = clean(liveBooking?.updatedAt, 50);
+
           return {
-            id: document.id,
+            id,
             reference: clean(data.reference, 120),
             travelerName: clean(data.travelerName, 140),
             email: clean(data.email, 220),
@@ -49,14 +81,19 @@ export async function GET() {
             proposalPublishedAt: clean(data.proposalPublishedAt, 50) || null,
             proposalSentAt: clean(data.proposalSentAt, 50) || null,
             bookingRequestCount: safeInteger(data.bookingRequestCount),
-            latestCommerceBookingId: clean(data.latestCommerceBookingId, 160) || null,
+            latestCommerceBookingId,
             latestCommerceBookingReference:
-              clean(data.latestCommerceBookingReference, 160) || null,
+              clean(liveBooking?.reference, 160) ||
+              clean(data.latestCommerceBookingReference, 160) ||
+              null,
             latestCommerceBookingStatus:
-              clean(data.latestCommerceBookingStatus, 40) || null,
+              liveStatus || clean(data.latestCommerceBookingStatus, 40) || null,
+            latestCommercePaymentStatus: livePaymentStatus || null,
             latestBookingRequestedAt: clean(data.latestBookingRequestedAt, 50) || null,
             latestCommerceBookingUpdatedAt:
-              clean(data.latestCommerceBookingUpdatedAt, 50) || null,
+              liveUpdatedAt ||
+              clean(data.latestCommerceBookingUpdatedAt, 50) ||
+              null,
             createdAt: clean(data.createdAt, 50),
             updatedAt: clean(data.updatedAt, 50),
           };
