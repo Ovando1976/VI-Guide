@@ -10,8 +10,11 @@ const home = source("app/page.tsx");
 const rootLayout = source("app/layout.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
+const todayPage = source("app/today/page.tsx");
 const travelerTripCommand = source("components/trips/traveler-trip-command-center.tsx");
 const travelerTripModel = source("lib/traveler-trip-command.ts");
+const travelerTripReadiness = source("components/trips/traveler-trip-readiness-panel.tsx");
+const travelerTripReadinessModel = source("lib/traveler-trip-readiness.ts");
 const cruiseHub = source("app/cruises/page.tsx");
 const planner = source("app/planner/page.tsx");
 const directory = source("components/directory/discovery-directory-page.tsx");
@@ -51,6 +54,7 @@ for (const [name, contents] of [
   ["home", home],
   ["trip planning", tripPlanning],
   ["traveler trip command", tripsPage],
+  ["my day", todayPage],
   ["cruise hub", cruiseHub],
   ["journey planner", planner],
   ["directory surfaces", directory],
@@ -102,6 +106,8 @@ assert.match(appNavigation, /base: "\/trips", label: "My Trip"/);
 assert.match(appNavigation, /"\/bookings"/);
 
 assert.match(tripsPage, /TravelerTripCommandCenter/);
+assert.match(tripsPage, /TravelerTripReadinessPanel/);
+assert.match(tripsPage, /ProactiveTripIntelligence/);
 assert.match(tripsPage, /commerceBookings/);
 assert.match(tripsPage, /travelPlanningRequests/);
 assert.match(tripsPage, /RiderLiveDriverMap/);
@@ -115,6 +121,14 @@ assert.match(travelerTripModel, /summarizeTravelerTrip/);
 assert.match(travelerTripModel, /Payment ready/);
 assert.match(travelerTripModel, /Your advisor proposal is ready/);
 assert.match(travelerTripModel, /sourceProposal|proposalHref/);
+assert.match(travelerTripReadiness, /evaluateTravelerTripReadiness/);
+assert.match(travelerTripReadiness, /Readiness checklist/);
+assert.match(travelerTripReadiness, /supplier confirmation or guarantee/);
+assert.match(travelerTripReadinessModel, /payment_required/);
+assert.match(travelerTripReadinessModel, /Replace unavailable booking/);
+assert.match(travelerTripReadinessModel, /Advisor proposal available/);
+assert.match(todayPage, /ProactiveTripIntelligence/);
+assert.match(todayPage, /actionHref="\/trips"/);
 
 assert.match(savedPlacesBoard, /readSavedPlaces/);
 assert.match(savedPlacesBoard, /AddToJourneyButton/);
