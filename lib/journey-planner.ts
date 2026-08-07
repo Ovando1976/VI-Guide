@@ -2,7 +2,15 @@ import type {
   IntelligenceIsland,
   IntelligencePlanStop,
 } from "@/types/intelligence";
-import { prioritizeSelectedTravelerPlan } from "@/lib/traveler-trip-selection";
+import {
+  forgetJourneyDeletion,
+  rememberJourneyDeletion,
+} from "@/lib/journey-sync-state";
+import {
+  prioritizeSelectedTravelerPlan,
+  readSelectedTravelerTripPlanId,
+  writeSelectedTravelerTripPlanId,
+} from "@/lib/traveler-trip-selection";
 
 export const JOURNEY_PLANS_STORAGE_KEY = "vi-guide.intelligence.saved-plans";
 export const JOURNEY_PLAN_UPDATED_EVENT = "vi-guide-intelligence-plan-saved";
@@ -194,6 +202,7 @@ export function upsertJourneyPlan(plan: JourneyPlan) {
     updatedAt: new Date().toISOString(),
   });
   if (!normalized) return;
+  forgetJourneyDeletion(normalized.id);
   const plans = readJourneyPlans();
   writeJourneyPlans([
     normalized,
@@ -240,7 +249,10 @@ export function addStopToJourney(input: JourneyStopInput): JourneyPlan {
 }
 
 export function deleteJourneyPlan(planId: string) {
+  const deletingSelected = readSelectedTravelerTripPlanId() === planId;
+  rememberJourneyDeletion(planId);
   writeJourneyPlans(readJourneyPlans().filter((plan) => plan.id !== planId));
+  if (deletingSelected) writeSelectedTravelerTripPlanId("");
 }
 
 export function buildJourneyMapHref(plan: JourneyPlan) {
