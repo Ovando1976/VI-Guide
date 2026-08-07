@@ -11,10 +11,19 @@ import {
   getUsviToday,
 } from "@/lib/booking/booking-dates";
 import {
+  OFFICIAL_CRUISE_SCHEDULE_COVERAGE,
+  OFFICIAL_USVI_CRUISE_PORT_CALLS,
+  type OfficialCruisePortId,
+} from "@/lib/cruise-port-calls";
+import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { canManageListing } from "@/lib/merchant-access";
+import {
+  buildProviderCruiseDemandDates,
+  type ProviderCruiseOfferWindow,
+} from "@/lib/provider-cruise-demand";
 import type {
   ProviderAvailabilityDay,
   ProviderOperationsConfig,
@@ -25,6 +34,13 @@ export const dynamic = "force-dynamic";
 
 const OPERATIONS_ROLES = ["admin", "dispatcher", "merchant"] as const;
 const PROVIDER_AVAILABILITY_HORIZON_DAYS = 90;
+const MAX_CRUISE_PROFILES_PER_LISTING = 50;
+const OFFICIAL_CRUISE_PORT_IDS = new Set<OfficialCruisePortId>([
+  "havensight",
+  "crown_bay",
+  "cruz_bay",
+  "frederiksted",
+]);
 
 export async function GET(request: NextRequest) {
   try {
@@ -43,16 +59,25 @@ export async function GET(request: NextRequest) {
     }
     requireListingAccess(session, listingId);
 
-    const document = await getAdminDb()
-      .collection("providerOperations")
-      .doc(listingId)
-      .get();
+    const db = getAdminDb();
+    const cruiseDemandPromise = loadProviderCruiseDemandDates(db, listingId).catch(
+      (error) => {
+        console.error("provider cruise demand load error", error);
+        return [];
+      },
+    );
+    const [document, cruiseDemandDates] = await Promise.all([
+      db.collection("providerOperations").doc(listingId).get(),
+      cruiseDemandPromise,
+    ]);
 
     if (!document.exists) {
       return NextResponse.json({
         config: buildDefaultConfig(listingId),
         persistedDates: [],
         generated: true,
+        cruiseDemandDates,
+        cruiseScheduleCoverage: OFFICIAL_CRUISE_SCHEDULE_COVERAGE,
       });
     }
 
@@ -61,6 +86,8 @@ export async function GET(request: NextRequest) {
       config: normalizeStoredConfig(document.data(), listingId, storedDays),
       persistedDates: storedDays.map((day) => day.date),
       generated: false,
+      cruiseDemandDates,
+      cruiseScheduleCoverage: OFFICIAL_CRUISE_SCHEDULE_COVERAGE,
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
@@ -131,6 +158,87 @@ export async function PUT(request: NextRequest) {
       { status: 500 },
     );
   }
+}
+
+async function loadProviderCruiseDemandDates(
+  db: FirebaseFirestore.Firestore,
+  listingId: string,
+) {
+  const profileSnapshot = await db
+    .collection("shoreExcursions")
+    .where("listingId", "==", listingId)
+    .limit(MAX_CRUISE_PROFILES_PER_LISTING)
+    .get();
+
+  const profiles = profileSnapshot.docs
+    .map((document) => {
+      const data = document.data();
+      return {
+        offerId: document.id,
+        offerTitle: clean(data.offerTitle, 120),
+        active: clean(data.status, 30) === "active",
+        supportedPorts: normalizeCruisePorts(data.supportedPorts),
+      };
+    })
+    .filter(
+      (profile) =>
+        profile.offerId &&
+        profile.offerTitle &&
+        profile.active &&
+        profile.supportedPorts.length > 0,
+    );
+
+  if (!profiles.length) return [];
+
+  const offerDocuments = await Promise.all(
+    profiles.map((profile) =>
+      db.collection("merchantOffers").doc(profile.offerId).get(),
+    ),
+  );
+  const offers = offerDocuments.flatMap((document, index) => {
+    const profile = profiles[index];
+    const data = document.data();
+    if (!profile || !data) return [];
+
+    const validFrom = isoDate(data.validFrom);
+    const validThrough = isoDate(data.validThrough);
+    if (!validFrom || !validThrough || validThrough < validFrom) return [];
+
+    const offer: ProviderCruiseOfferWindow = {
+      offerId: profile.offerId,
+      offerTitle: profile.offerTitle,
+      active: clean(data.status, 30) === "active",
+      validFrom,
+      validThrough,
+      supportedPorts: profile.supportedPorts,
+    };
+    return offer.active ? [offer] : [];
+  });
+
+  if (!offers.length) return [];
+
+  const today = getUsviToday();
+  const horizonThrough = addCalendarDays(
+    today,
+    PROVIDER_AVAILABILITY_HORIZON_DAYS - 1,
+  );
+  const from =
+    today < OFFICIAL_CRUISE_SCHEDULE_COVERAGE.from
+      ? OFFICIAL_CRUISE_SCHEDULE_COVERAGE.from
+      : today;
+  const through =
+    horizonThrough < OFFICIAL_CRUISE_SCHEDULE_COVERAGE.through
+      ? horizonThrough
+      : OFFICIAL_CRUISE_SCHEDULE_COVERAGE.through;
+
+  if (!from || !through || through < from) return [];
+
+  return buildProviderCruiseDemandDates({
+    offers,
+    calls: OFFICIAL_USVI_CRUISE_PORT_CALLS,
+    from,
+    through,
+  });
 }
 
 function requireListingAccess(
@@ -256,6 +364,24 @@ function buildAvailabilityHorizon(
       endTime: "17:00",
     } satisfies ProviderAvailabilityDay;
   });
+}
+
+function normalizeCruisePorts(value: unknown): OfficialCruisePortId[] {
+  if (!Array.isArray(value)) return [];
+  return Array.from(
+    new Set(
+      value.filter(
+        (port): port is OfficialCruisePortId =>
+          typeof port === "string" &&
+          OFFICIAL_CRUISE_PORT_IDS.has(port as OfficialCruisePortId),
+      ),
+    ),
+  );
+}
+
+function isoDate(value: unknown) {
+  const date = clean(value, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : "";
 }
 
 function humanizeListingId(value: string) {
