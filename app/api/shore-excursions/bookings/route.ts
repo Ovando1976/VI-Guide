@@ -1,10 +1,7 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
-import {
-  getUsviToday,
-  isBookableStartDate,
-} from "@/lib/booking/booking-dates";
+import { getUsviToday, isBookableStartDate } from "@/lib/booking/booking-dates";
 import {
   evaluateOfficialPortCallExcursionFit,
   reservedGuestCount,
@@ -13,10 +10,7 @@ import {
   getOfficialCruisePortCall,
   sourceForOfficialCruisePortCall,
 } from "@/lib/cruise-port-calls";
-import {
-  getAdminDb,
-  hasFirebaseAdminConfiguration,
-} from "@/lib/firebase-admin";
+import { getAdminDb, hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import { resolveMerchantOfferForBooking } from "@/lib/merchant-offer-booking";
 import { merchantOfferDemandPatch } from "@/lib/merchant-offer-demand";
 import {
@@ -96,18 +90,12 @@ export async function POST(request: NextRequest) {
         throw new ShoreBookingError(offerResolution.error, offerResolution.status);
       }
       if (!profileDocument.exists) {
-        throw new ShoreBookingError(
-          "This shore excursion is not currently available.",
-          404,
-        );
+        throw new ShoreBookingError("This shore excursion is not currently available.", 404);
       }
 
       const profileData = profileDocument.data() ?? {};
       if (normalizeShoreExcursionStatus(profileData.status) !== "active") {
-        throw new ShoreBookingError(
-          "This shore excursion is not currently available.",
-          409,
-        );
+        throw new ShoreBookingError("This shore excursion is not currently available.", 409);
       }
       const profileResolution = normalizeShoreExcursionProfile({
         profile: profileData,
@@ -174,8 +162,7 @@ export async function POST(request: NextRequest) {
         if (
           officialCall.date !== startDate ||
           officialCall.portId !== port.id ||
-          normalizeComparableShip(officialCall.shipName) !==
-            normalizeComparableShip(shipName)
+          normalizeComparableShip(officialCall.shipName) !== normalizeComparableShip(shipName)
         ) {
           throw new ShoreBookingError(
             "The ship, port, or date no longer matches the official port-call reference. Reopen Port Days to refresh the match.",
@@ -254,59 +241,46 @@ export async function POST(request: NextRequest) {
         };
       }
 
-      let officialCapacity: {
-        verified: boolean;
-        remainingBeforeRequest: number | null;
-        sourceId: string | null;
-        scheduledArrival: string | null;
-        scheduledDeparture: string | null;
-        planningAllAboardTime: string | null;
-      } = {
+      let officialCapacity = {
         verified: false,
-        remainingBeforeRequest: null,
-        sourceId: null,
-        scheduledArrival: null,
-        scheduledDeparture: null,
-        planningAllAboardTime: null,
+        remainingBeforeRequest: null as number | null,
+        sourceId: null as string | null,
+        scheduledArrival: null as string | null,
+        scheduledDeparture: null as string | null,
+        planningAllAboardTime: null as string | null,
       };
 
       if (officialCall) {
-        const providerOperationsRef = db
-          .collection("providerOperations")
-          .doc(offerResolution.snapshot.listingId);
+        const listingId = offerResolution.snapshot.listingId;
+        const providerOperationsRef = db.collection("providerOperations").doc(listingId);
         const bookingCapacityQuery = db
           .collection("commerceBookings")
-          .where("listingId", "==", offerResolution.snapshot.listingId)
-          .limit(500);
-        const [providerOperationsDocument, bookingCapacitySnapshot] =
-          await Promise.all([
-            transaction.get(providerOperationsRef),
-            transaction.get(bookingCapacityQuery),
-          ]);
+          .where("listingId", "==", listingId)
+          .where("startDate", "==", startDate)
+          .limit(501);
+        const [providerOperationsDocument, bookingCapacitySnapshot] = await Promise.all([
+          transaction.get(providerOperationsRef),
+          transaction.get(bookingCapacityQuery),
+        ]);
         const availabilityDay = providerOperationsDocument.exists
-          ? providerAvailabilityDay(
-              providerOperationsDocument.data(),
-              startDate,
-            )
+          ? providerAvailabilityDay(providerOperationsDocument.data(), startDate)
           : null;
-        const bookingRecords = bookingCapacitySnapshot.docs.map(
-          (document) => document.data() as Record<string, unknown>,
-        );
-        const reservedGuests = reservedGuestCount(bookingRecords, startDate);
+        const capacityDataComplete = bookingCapacitySnapshot.size <= 500;
+        const bookingRecords = bookingCapacitySnapshot.docs
+          .slice(0, 500)
+          .map((document) => document.data() as Record<string, unknown>);
         const fit = evaluateOfficialPortCallExcursionFit({
           call: officialCall,
           profile,
           offer: offerResolution.snapshot,
           availabilityDay,
-          reservedGuests,
+          reservedGuests: reservedGuestCount(bookingRecords, startDate),
           partySize,
+          capacityDataComplete,
         });
 
         if (fit.status !== "available") {
-          throw new ShoreBookingError(
-            officialCapacityError(fit.status, partySize),
-            409,
-          );
+          throw new ShoreBookingError(officialCapacityError(fit.status, partySize), 409);
         }
         if (
           !fit.earliestStartTime ||
@@ -320,11 +294,10 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        const scheduleSource = sourceForOfficialCruisePortCall(officialCall);
         officialCapacity = {
           verified: true,
           remainingBeforeRequest: fit.remainingCapacity,
-          sourceId: scheduleSource?.id ?? null,
+          sourceId: sourceForOfficialCruisePortCall(officialCall)?.id ?? null,
           scheduledArrival: officialCall.arrivesAt,
           scheduledDeparture: officialCall.departsAt,
           planningAllAboardTime: fit.planningAllAboardTime,
@@ -390,8 +363,7 @@ export async function POST(request: NextRequest) {
                 officialScheduledDeparture: officialCapacity.scheduledDeparture,
                 planningAllAboardTime: officialCapacity.planningAllAboardTime,
                 capacityVerifiedAtRequest: officialCapacity.verified,
-                remainingCapacityBeforeRequest:
-                  officialCapacity.remainingBeforeRequest,
+                remainingCapacityBeforeRequest: officialCapacity.remainingBeforeRequest,
               }
             : {}),
         },
@@ -460,9 +432,7 @@ export async function POST(request: NextRequest) {
           href: input.href,
           createdAt: now,
         });
-        if (!notification) {
-          throw new Error("Unable to prepare shore excursion notifications.");
-        }
+        if (!notification) throw new Error("Unable to prepare shore excursion notifications.");
         notificationOutboxIds.push(notification.id);
         transaction.set(db.collection("notificationOutbox").doc(notification.id), {
           ...notification,
@@ -497,9 +467,7 @@ export async function POST(request: NextRequest) {
         { error: error.message },
         {
           status: error.status,
-          ...(error.status === 429
-            ? { headers: { "Retry-After": "3600" } }
-            : {}),
+          ...(error.status === 429 ? { headers: { "Retry-After": "3600" } } : {}),
         },
       );
     }
@@ -518,9 +486,7 @@ function providerAvailabilityDay(
   const days = Array.isArray(data?.days) ? data.days : [];
   const candidate = days.find(
     (value: unknown) =>
-      value &&
-      typeof value === "object" &&
-      (value as { date?: unknown }).date === date,
+      value && typeof value === "object" && (value as { date?: unknown }).date === date,
   );
   if (!candidate || typeof candidate !== "object") return null;
   const day = candidate as Partial<ProviderAvailabilityDay>;
@@ -540,24 +506,19 @@ function officialCapacityError(status: string, partySize: number) {
   if (status === "capacity_unconfigured") {
     return "The operator's capacity for this official port-call date is no longer published. Reopen Port Days before requesting it.";
   }
-  if (status === "provider_closed") {
-    return "The operator is now marked closed for this port-call date.";
+  if (status === "capacity_unverified") {
+    return "VI Guide cannot verify the full same-day demand snapshot for this operator right now. Capacity is therefore not being presented as available.";
   }
-  if (status === "sold_out") {
-    return "This operator has no remaining published capacity for the port-call date.";
-  }
+  if (status === "provider_closed") return "The operator is now marked closed for this port-call date.";
+  if (status === "sold_out") return "This operator has no remaining published capacity for the port-call date.";
   if (status === "insufficient_capacity") {
     return `There is no longer enough published capacity for ${partySize} guests on this port-call date.`;
   }
   if (status === "time_conflict") {
     return "The operator hours or ship window no longer leave enough time for this excursion.";
   }
-  if (status === "offer_outside_window") {
-    return "This offer is no longer valid on the selected port-call date.";
-  }
-  if (status === "cancelled_port_call") {
-    return "The official cruise port call is now marked cancelled.";
-  }
+  if (status === "offer_outside_window") return "This offer is no longer valid on the selected port-call date.";
+  if (status === "cancelled_port_call") return "The official cruise port call is now marked cancelled.";
   return "This excursion no longer matches the official ship call. Reopen Port Days to refresh the options.";
 }
 
@@ -574,12 +535,7 @@ function validTime(value: unknown): value is string {
   return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
 }
 
-function clampWhole(
-  value: unknown,
-  minimum: number,
-  maximum: number,
-  fallback: number,
-) {
+function clampWhole(value: unknown, minimum: number, maximum: number, fallback: number) {
   const number = Number(value);
   if (!Number.isFinite(number)) return fallback;
   return Math.max(minimum, Math.min(maximum, Math.trunc(number)));
