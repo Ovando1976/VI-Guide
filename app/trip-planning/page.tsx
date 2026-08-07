@@ -11,7 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { UsviTripPlanner } from "@/components/planner/usvi-trip-planner";
 
 export const metadata: Metadata = {
@@ -58,23 +58,13 @@ export default function TripPlanningPage() {
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,251,241,.97)_0%,rgba(255,251,241,.9)_48%,rgba(255,255,255,.26)_100%)]" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,.12)_0%,rgba(247,243,234,.88)_100%)]" />
 
-        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[24px] border border-white/70 bg-white/76 px-4 py-3 shadow-[0_14px_40px_rgba(4,51,49,.10)] backdrop-blur-xl sm:px-5">
-          <Link href="/" className="flex items-center gap-3" aria-label="VI Guide home">
-            <ViBrandMark className="h-11 w-11" priority />
-            <div>
-              <div className="font-serif text-xl font-bold tracking-[.02em]">VI Guide</div>
-              <div className="text-[8px] font-black uppercase tracking-[.25em] text-[#b16a18]">
-                U.S. Virgin Islands
-              </div>
-            </div>
-          </Link>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-[#0f766e]/20 bg-white/90 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em]"
-          >
-            <ArrowLeft size={14} /> Home
-          </Link>
-        </header>
+        <ViPublicHeader
+          actionHref="/"
+          actionLabel="Home"
+          actionIcon={ArrowLeft}
+          secondaryHref="/concierge"
+          secondaryLabel="VI Concierge"
+        />
 
         <div className="mx-auto grid max-w-7xl gap-10 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:pt-20">
           <div>
