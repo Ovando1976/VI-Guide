@@ -40,12 +40,51 @@ export function writeSelectedTravelerTripPlanId(planId: string) {
   return normalized;
 }
 
-export function prioritizeSelectedTravelerPlan<T extends { id: string }>(plans: T[]) {
+export function prioritizeSelectedTravelerPlan<
+  T extends { id: string; date?: string },
+>(plans: T[]) {
+  if (plans.length < 2) return plans;
   const selectedPlanId = readSelectedTravelerTripPlanId();
-  if (!selectedPlanId) return plans;
-  const index = plans.findIndex((plan) => plan.id === selectedPlanId);
-  if (index <= 0) return plans;
-  return [plans[index], ...plans.slice(0, index), ...plans.slice(index + 1)];
+  const selectedIndex = selectedPlanId
+    ? plans.findIndex((plan) => plan.id === selectedPlanId)
+    : -1;
+  if (selectedIndex >= 0) return moveToFront(plans, selectedIndex);
+
+  const today = territoryDate(new Date());
+  const dated = plans
+    .map((plan, index) => ({ index, date: normalizeDate(plan.date) }))
+    .filter((entry): entry is { index: number; date: string } => Boolean(entry.date));
+  const upcoming = dated
+    .filter((entry) => entry.date >= today)
+    .sort((left, right) => left.date.localeCompare(right.date))[0];
+  if (upcoming) return moveToFront(plans, upcoming.index);
+
+  const latestPast = dated.sort((left, right) =>
+    right.date.localeCompare(left.date),
+  )[0];
+  return latestPast ? moveToFront(plans, latestPast.index) : plans;
+}
+
+function moveToFront<T>(items: T[], index: number) {
+  if (index <= 0) return items;
+  return [items[index], ...items.slice(0, index), ...items.slice(index + 1)];
+}
+
+function normalizeDate(value: unknown) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? value
+    : "";
+}
+
+function territoryDate(value: Date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/St_Thomas",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(value);
+  const lookup = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${lookup.year}-${lookup.month}-${lookup.day}`;
 }
 
 function clean(value: unknown) {
