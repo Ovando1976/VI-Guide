@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
 
+import { TravelAdvisorRevenueOverview } from "@/components/admin/travel-advisor-revenue-overview";
 import { TravelRequestBoard } from "@/components/admin/travel-request-board";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
   title: "USVI Travel Advisor Desk | VI Guide",
   description:
-    "Review and manage traveler trip-planning requests inside VI Guide operations.",
+    "Review and manage traveler trip-planning requests, booking conversion, payment progress, and recorded revenue inside VI Guide operations.",
 };
 
 export default async function TravelRequestsPage() {
@@ -16,5 +17,12 @@ export default async function TravelRequestsPage() {
     redirect("/unauthorized");
   }
 
-  return <TravelRequestBoard />;
+  return (
+    <div className="bg-[#f7f2e7] pb-16">
+      <TravelRequestBoard />
+      <div className="mx-auto mt-6 max-w-7xl px-4 sm:px-6">
+        <TravelAdvisorRevenueOverview />
+      </div>
+    </div>
+  );
 }
