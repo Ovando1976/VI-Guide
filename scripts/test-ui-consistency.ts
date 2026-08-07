@@ -30,7 +30,11 @@ const partnersLayout = source("app/partners/layout.tsx");
 const bookingPage = source("app/book/page.tsx");
 const bookingsPage = source("app/bookings/page.tsx");
 const travelDesk = source("components/admin/travel-request-board.tsx");
+const travelProposalDesk = source("components/admin/travel-proposal-board.tsx");
 const travelAdvisorRoute = source("app/api/travel-advisor/requests/route.ts");
+const travelProposalRoute = source("app/api/travel-advisor/requests/[requestId]/proposal/route.ts");
+const travelProposalQueueRoute = source("app/api/travel-advisor/proposals/route.ts");
+const sharedTrip = source("app/shared-trip/[shareId]/page.tsx");
 const cruiseDesk = source("components/admin/cruise-request-board.tsx");
 const adminNav = source("components/admin-nav.tsx");
 const mapLinks = source("lib/discovery/map-links.ts");
@@ -97,6 +101,7 @@ assert.match(partnersLayout, /\/partners\/status/);
 
 for (const [name, contents] of [
   ["travel advisor desk", travelDesk],
+  ["travel proposal desk", travelProposalDesk],
   ["cruise advisor desk", cruiseDesk],
 ] as const) {
   assert.match(contents, /AdminShell/, `${name} must use AdminShell`);
@@ -111,7 +116,20 @@ assert.match(travelAdvisorRoute, /travel_advisor_followup/);
 assert.match(travelAdvisorRoute, /traveler_followup_queued/);
 assert.match(travelAdvisorRoute, /processBookingNotificationOutboxIds/);
 
+assert.match(travelProposalDesk, /readJourneyPlans/);
+assert.match(travelProposalDesk, /Publish & send/);
+assert.match(travelProposalDesk, /privacy-safe read-only itinerary/);
+assert.match(travelProposalRoute, /buildTravelAdvisorProposalSnapshot/);
+assert.match(travelProposalRoute, /travel_advisor_proposal/);
+assert.match(travelProposalRoute, /proposal_published/);
+assert.match(travelProposalRoute, /proposal_sent/);
+assert.match(travelProposalRoute, /processBookingNotificationOutboxIds/);
+assert.match(travelProposalQueueRoute, /proposalHref/);
+assert.match(sharedTrip, /Prepared through the VI Guide Travel Advisor workflow/);
+assert.match(sharedTrip, /not a confirmation/);
+
 assert.match(adminNav, /\/admin\/travel-requests/);
+assert.match(adminNav, /\/admin\/travel-proposals/);
 assert.match(adminNav, /\/admin\/cruise-requests/);
 
 for (const token of [

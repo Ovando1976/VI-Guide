@@ -11,7 +11,8 @@ export type BookingNotificationEvent =
   | "refund_failed"
   | "refund_review_required"
   | "travel_advisor_requested"
-  | "travel_advisor_followup";
+  | "travel_advisor_followup"
+  | "travel_advisor_proposal";
 
 export type BookingNotificationAudience =
   | "traveler"

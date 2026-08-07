@@ -1,5 +1,14 @@
 import Link from "next/link";
-import { CalendarDays, Clock3, Map, MapPin, Route, Sparkles } from "lucide-react";
+import {
+  CalendarDays,
+  Clock3,
+  FileCheck2,
+  Map,
+  MapPin,
+  Route,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { SaveSharedJourneyButton } from "@/components/journey/save-shared-journey-button";
@@ -13,14 +22,23 @@ const ISLANDS = { stt: "St. Thomas", stj: "St. John", stx: "St. Croix" } as cons
 export default async function SharedTripPage({ params }: { params: { shareId: string } }) {
   if (!hasFirebaseAdminConfiguration() || !/^[a-zA-Z0-9]{12,40}$/.test(params.shareId)) notFound();
   const snapshot = await getAdminDb().collection("sharedJourneys").doc(params.shareId).get();
-  const plan = snapshot.exists ? normalizeJourneyPlan(snapshot.data()?.plan) : null;
+  const data = snapshot.exists ? snapshot.data() ?? {} : {};
+  const plan = snapshot.exists ? normalizeJourneyPlan(data.plan) : null;
   if (!plan) notFound();
+
+  const isAdvisorProposal = data.source === "travel_advisor_proposal";
+  const proposalVersion = Number.isInteger(Number(data.proposalVersion))
+    ? Math.max(1, Number(data.proposalVersion))
+    : 1;
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#f8f4ea_0%,#fff_55%,#edf6f2_100%)] px-4 py-7 text-[#043331] sm:px-6 lg:py-12">
       <div className="mx-auto max-w-4xl space-y-6">
         <section className="overflow-hidden rounded-[36px] bg-[linear-gradient(135deg,#032d2b,#08736c)] p-6 text-white shadow-[0_28px_80px_rgba(4,51,49,.22)] sm:p-9">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.18em] text-[#f5d36f]"><Sparkles size={14} /> Shared VI Guide journey</div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.18em] text-[#f5d36f]">
+            {isAdvisorProposal ? <FileCheck2 size={14} /> : <Sparkles size={14} />}
+            {isAdvisorProposal ? `VI Guide travel proposal · v${proposalVersion}` : "Shared VI Guide journey"}
+          </div>
           <h1 className="mt-5 text-4xl font-black tracking-[-.05em] sm:text-5xl">{plan.title}</h1>
           <div className="mt-5 flex flex-wrap gap-2 text-[9px] font-black uppercase tracking-[.14em] text-white/65">
             <span className="rounded-full bg-white/10 px-3 py-2">{ISLANDS[plan.island]}</span>
@@ -28,6 +46,21 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
             <span className="rounded-full bg-white/10 px-3 py-2">{plan.plan.length} stops</span>
           </div>
           {plan.notes ? <p className="mt-5 max-w-3xl text-sm font-semibold leading-6 text-white/65">{plan.notes}</p> : null}
+
+          {isAdvisorProposal ? (
+            <div className="mt-6 rounded-[22px] border border-white/15 bg-white/10 p-4 sm:p-5">
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#f5c451]" />
+                <div>
+                  <p className="text-sm font-black">Prepared through the VI Guide Travel Advisor workflow</p>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-white/65">
+                    This is a planning proposal for review, not a confirmation. Availability, operating schedules, transportation, reservations, terms, and pricing must still be confirmed before commitment or payment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
           <div className="mt-7 flex flex-wrap gap-3">
             <SaveSharedJourneyButton plan={plan} />
             <Link href={buildJourneyMapHref(plan)} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.14em] text-[#4c3500]"><Map size={15} /> Open trip map</Link>
@@ -36,7 +69,9 @@ export default async function SharedTripPage({ params }: { params: { shareId: st
         </section>
 
         <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
-          <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">Read-only itinerary</div>
+          <div className="text-[9px] font-black uppercase tracking-[.18em] text-amber-600">
+            {isAdvisorProposal ? "Read-only proposal" : "Read-only itinerary"}
+          </div>
           <div className="mt-6 space-y-3">
             {plan.plan.map((stop, index) => (
               <article key={stop.id} className="rounded-[24px] border border-slate-200 bg-[#fbfaf6] p-4 sm:p-5">

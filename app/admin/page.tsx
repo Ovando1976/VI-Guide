@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   CircleDollarSign,
   Compass,
+  FileCheck2,
   MailCheck,
   ShipWheel,
   Store,
@@ -22,6 +23,13 @@ export default function DriversPage() {
             eyebrow="Travel advisor"
             detail="Review qualified USVI trip-planning leads and move them from intent to itinerary and booking."
             action="Open travel desk"
+          />
+          <AdminAction
+            href="/admin/travel-proposals"
+            icon={FileCheck2}
+            eyebrow="Traveler proposals"
+            detail="Publish a saved My Trip itinerary as a privacy-safe traveler proposal, then queue delivery through VI Guide."
+            action="Open proposals"
           />
           <AdminAction
             href="/admin/cruise-requests"
