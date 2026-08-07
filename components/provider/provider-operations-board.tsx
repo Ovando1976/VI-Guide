@@ -503,7 +503,7 @@ export function ProviderOperationsBoard({
               <article
                 id={`provider-day-${day.date}`}
                 key={day.date}
-                className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[150px_110px_120px_120px_130px_1fr] md:items-end ${
+                className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[150px_150px_120px_120px_130px_1fr] md:items-end ${
                   focused
                     ? "border-amber-400 ring-4 ring-amber-200/60"
                     : decided
@@ -526,23 +526,42 @@ export function ProviderOperationsBoard({
                     {decided ? "Decision set" : "Undecided"}
                   </span>
                 </div>
-                <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
-                  Open
-                  <button
-                    type="button"
-                    disabled={merchantHasNoScope}
-                    onClick={() => updateDay(index, { isOpen: !day.isOpen })}
-                    className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
-                      day.isOpen
-                        ? "bg-emerald-100 text-emerald-800"
-                        : decided
-                          ? "bg-red-100 text-red-700"
-                          : "bg-slate-100 text-slate-600"
-                    }`}
-                  >
-                    {day.isOpen ? "Open" : decided ? "Closed" : "Set decision"}
-                  </button>
-                </label>
+                <div className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+                  Decision
+                  {decided ? (
+                    <button
+                      type="button"
+                      disabled={merchantHasNoScope}
+                      onClick={() => updateDay(index, { isOpen: !day.isOpen })}
+                      className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
+                        day.isOpen
+                          ? "bg-emerald-100 text-emerald-800"
+                          : "bg-red-100 text-red-700"
+                      }`}
+                    >
+                      {day.isOpen ? "Open" : "Closed"}
+                    </button>
+                  ) : (
+                    <div className="mt-2 grid grid-cols-2 gap-1.5">
+                      <button
+                        type="button"
+                        disabled={merchantHasNoScope}
+                        onClick={() => updateDay(index, { isOpen: true })}
+                        className="min-h-11 rounded-xl bg-emerald-100 px-2 text-[8px] font-black uppercase tracking-[.08em] text-emerald-800 disabled:opacity-50"
+                      >
+                        Open
+                      </button>
+                      <button
+                        type="button"
+                        disabled={merchantHasNoScope}
+                        onClick={() => updateDay(index, { isOpen: false })}
+                        className="min-h-11 rounded-xl bg-slate-100 px-2 text-[8px] font-black uppercase tracking-[.08em] text-slate-700 disabled:opacity-50"
+                      >
+                        Keep closed
+                      </button>
+                    </div>
+                  )}
+                </div>
                 <Field
                   label="Start"
                   value={day.startTime}
