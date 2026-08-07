@@ -18,6 +18,11 @@ import {
   travelTerritoryDayKey,
   type TravelRequestStatus,
 } from "@/lib/travel-advisor";
+import {
+  serializeAdvisorCommerceBooking,
+  summarizeTravelAdvisorBookings,
+  type AdvisorCommerceBooking,
+} from "@/lib/travel-advisor-commerce";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -229,17 +234,20 @@ export async function GET() {
       );
     }
 
-    const snapshot = await getAdminDb()
+    const db = getAdminDb();
+    const snapshot = await db
       .collection("travelPlanningRequests")
       .orderBy("createdAt", "desc")
       .limit(150)
       .get();
+    const bookingsByRequest = await loadLinkedCommerceBookings(db, snapshot.docs);
 
     return NextResponse.json({
       ok: true,
-      requests: snapshot.docs.map((document) =>
-        serializeRequest(document.id, document.data()),
-      ),
+      requests: snapshot.docs.map((document) => {
+        const commerceBookings = bookingsByRequest.get(document.id) ?? [];
+        return serializeRequest(document.id, document.data(), commerceBookings);
+      }),
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
@@ -501,7 +509,61 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-function serializeRequest(id: string, data: FirebaseFirestore.DocumentData) {
+async function loadLinkedCommerceBookings(
+  db: FirebaseFirestore.Firestore,
+  requestDocuments: Array<{
+    id: string;
+    data(): FirebaseFirestore.DocumentData;
+  }>,
+) {
+  const bookingToRequest = new Map<string, string>();
+
+  for (const document of requestDocuments) {
+    const data = document.data();
+    const ids = new Set([
+      ...cleanArray(data.commerceBookingIds),
+      clean(data.lastCommerceBookingId, 180),
+    ]);
+    for (const id of ids) {
+      if (id) bookingToRequest.set(id, document.id);
+    }
+  }
+
+  const bookingIds = Array.from(bookingToRequest.keys());
+  const grouped = new Map<string, AdvisorCommerceBooking[]>();
+  if (!bookingIds.length) return grouped;
+
+  const refs = bookingIds.map((id) => db.collection("commerceBookings").doc(id));
+  const documents = await db.getAll(...refs);
+
+  for (const document of documents) {
+    if (!document.exists) continue;
+    const expectedRequestId = bookingToRequest.get(document.id);
+    if (!expectedRequestId) continue;
+    const data = document.data() ?? {};
+    if (clean(data.sourceTravelRequestId, 80) !== expectedRequestId) continue;
+
+    const booking = serializeAdvisorCommerceBooking(document.id, data);
+    const current = grouped.get(expectedRequestId) ?? [];
+    current.push(booking);
+    grouped.set(expectedRequestId, current);
+  }
+
+  for (const [requestId, bookings] of grouped.entries()) {
+    grouped.set(
+      requestId,
+      bookings.sort((left, right) => right.updatedAt.localeCompare(left.updatedAt)),
+    );
+  }
+
+  return grouped;
+}
+
+function serializeRequest(
+  id: string,
+  data: FirebaseFirestore.DocumentData,
+  commerceBookings: AdvisorCommerceBooking[] = [],
+) {
   return {
     id,
     reference: clean(data.reference, 120),
@@ -525,6 +587,14 @@ function serializeRequest(id: string, data: FirebaseFirestore.DocumentData) {
     followupQueuedAt: clean(data.followupQueuedAt, 50) || null,
     followupSubject: clean(data.followupSubject, 180) || null,
     followupMessage: clean(data.followupMessage, 1200) || null,
+    conversionStartedAt: clean(data.conversionStartedAt, 50) || null,
+    lastCommerceBookingId: clean(data.lastCommerceBookingId, 180) || null,
+    lastCommerceBookingReference:
+      clean(data.lastCommerceBookingReference, 160) || null,
+    lastCommerceBookingAt: clean(data.lastCommerceBookingAt, 50) || null,
+    commerceBookingIds: cleanArray(data.commerceBookingIds),
+    commerceBookings,
+    commerceSummary: summarizeTravelAdvisorBookings(commerceBookings),
     createdAt: clean(data.createdAt, 50),
     updatedAt: clean(data.updatedAt, 50),
   };
@@ -537,7 +607,7 @@ function normalizeRequestId(value: unknown) {
 
 function cleanArray(value: unknown) {
   return Array.isArray(value)
-    ? value.map((entry) => clean(entry, 120)).filter(Boolean).slice(0, 20)
+    ? value.map((entry) => clean(entry, 180)).filter(Boolean).slice(0, 100)
     : [];
 }
 
