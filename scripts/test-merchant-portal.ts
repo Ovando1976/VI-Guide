@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 
 import {
+  applyProviderAvailabilityWindowDecision,
   buildProviderAvailabilityDays,
   humanizeListingId,
   resolveMerchantListingSelection,
@@ -79,6 +80,91 @@ assert.deepEqual(
   selectProviderAvailabilityDecisions(availabilityDays, new Set()),
   [],
 );
+
+const bulkSource = availabilityDays.map((day, index) =>
+  index === 1
+    ? {
+        ...day,
+        isOpen: false,
+        capacity: 3,
+        startTime: "08:00",
+        endTime: "11:00",
+        note: "Already reviewed",
+      }
+    : day,
+);
+const bulkOpen = applyProviderAvailabilityWindowDecision(
+  bulkSource,
+  ["2026-08-06"],
+  {
+    startDate: "2026-08-05",
+    windowDays: 7,
+    isOpen: true,
+    startTime: "08:30",
+    endTime: "13:30",
+    capacity: 24,
+  },
+);
+assert.equal(bulkOpen.appliedCount, 6);
+assert.equal(bulkOpen.startDate, "2026-08-05");
+assert.equal(bulkOpen.endDate, "2026-08-11");
+assert.deepEqual(bulkOpen.days[1], bulkSource[1]);
+assert.deepEqual(bulkOpen.days[0], {
+  ...bulkSource[0],
+  isOpen: true,
+  capacity: 24,
+  startTime: "08:30",
+  endTime: "13:30",
+});
+assert.deepEqual(bulkOpen.days[7], bulkSource[7]);
+assert.deepEqual(bulkOpen.decisionDates, [
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-08",
+  "2026-08-09",
+  "2026-08-10",
+  "2026-08-11",
+]);
+
+const bulkRepeat = applyProviderAvailabilityWindowDecision(
+  bulkOpen.days,
+  bulkOpen.decisionDates,
+  {
+    startDate: "2026-08-05",
+    windowDays: 7,
+    isOpen: false,
+  },
+);
+assert.equal(bulkRepeat.appliedCount, 0);
+assert.deepEqual(bulkRepeat.days, bulkOpen.days);
+
+const bulkClose = applyProviderAvailabilityWindowDecision(
+  availabilityDays,
+  ["2026-08-05"],
+  {
+    startDate: "2026-08-05",
+    windowDays: 3,
+    isOpen: false,
+  },
+);
+assert.equal(bulkClose.appliedCount, 2);
+assert.equal(bulkClose.days[0]?.isOpen, true);
+assert.equal(bulkClose.days[1]?.isOpen, false);
+assert.equal(bulkClose.days[2]?.isOpen, false);
+
+const invalidBulk = applyProviderAvailabilityWindowDecision(
+  availabilityDays,
+  [],
+  {
+    startDate: "not-a-date",
+    windowDays: 14,
+    isOpen: true,
+  },
+);
+assert.equal(invalidBulk.appliedCount, 0);
+assert.equal(invalidBulk.startDate, "");
+assert.deepEqual(invalidBulk.days, availabilityDays);
 
 assert.deepEqual(
   summarizeMerchantBookings([
