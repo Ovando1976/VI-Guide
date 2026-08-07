@@ -25,8 +25,8 @@ import {
   normalizeShoreExcursionStatus,
   normalizeTime,
   shoreExcursionBookingDocumentId,
+  shoreExcursionDateWithinOfferWindow,
   shoreExcursionPort,
-  type ShoreExcursionPortId,
 } from "@/lib/shore-excursions";
 
 export const runtime = "nodejs";
@@ -142,6 +142,18 @@ export async function POST(request: NextRequest) {
         throw new ShoreBookingError(
           "Complete the cruise ship, port, all-aboard time, excursion time, and traveler details.",
           400,
+        );
+      }
+      if (
+        !shoreExcursionDateWithinOfferWindow({
+          startDate,
+          validFrom: offerResolution.snapshot.validFrom,
+          validThrough: offerResolution.snapshot.validThrough,
+        })
+      ) {
+        throw new ShoreBookingError(
+          `This shore-excursion offer is not valid for ${startDate}. Choose a port date between ${offerResolution.snapshot.validFrom} and ${offerResolution.snapshot.validThrough}.`,
+          409,
         );
       }
       if (partySize > profile.maxGuests) {
