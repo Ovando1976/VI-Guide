@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Route } from "lucide-react";
+import { MapPinned, Route, ShieldCheck, Sparkles } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
@@ -36,7 +37,7 @@ export default async function TripsPage() {
     : { stays: [], bookings: [], advisorTrips: [] };
 
   return (
-    <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
+    <main className="min-h-screen bg-[#f4f1e8] pb-32 text-[#043331]">
       <div className="px-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
           actionHref="/planner"
@@ -46,6 +47,68 @@ export default async function TripsPage() {
           secondaryLabel="Bookings"
         />
       </div>
+
+      <section className="mx-auto mt-5 max-w-7xl px-4 sm:px-6">
+        <div className="relative isolate overflow-hidden rounded-[36px] border border-white/50 bg-[#043331] text-white shadow-[0_30px_90px_rgba(4,51,49,.2)]">
+          <Image
+            src="/images/places/st-john/trunk-bay-overlook-1.jpg"
+            alt="Virgin Islands coastline viewed from above"
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="-z-30 object-cover object-center"
+          />
+          <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(2,36,35,.98)_0%,rgba(3,51,49,.9)_46%,rgba(3,51,49,.42)_78%,rgba(3,51,49,.2)_100%)]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_25%,rgba(124,224,212,.24),transparent_24rem)]" />
+
+          <div className="grid min-h-[390px] gap-8 px-6 py-8 sm:px-8 sm:py-10 lg:grid-cols-[1fr_auto] lg:items-end lg:px-10">
+            <div className="max-w-4xl self-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#f5c451]/25 bg-[#f5c451]/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.22em] text-[#f8d77c] backdrop-blur">
+                <Route className="h-4 w-4" /> Your connected island journey
+              </div>
+              <h1 className="vi-display mt-4 max-w-4xl text-4xl font-black leading-[.9] tracking-[-.06em] sm:text-6xl lg:text-7xl">
+                Your island story, <span className="text-[#7ce0d4]">in motion.</span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/72 sm:text-base sm:leading-7">
+                One place for the plan, the reservations, the ride, the advisor, and what needs your attention next.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[.08] px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-white/75 backdrop-blur">
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#7ce0d4]" /> Readiness protected
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[.08] px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-white/75 backdrop-blur">
+                  <MapPinned className="h-3.5 w-3.5 text-[#7ce0d4]" /> Map connected
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[.08] px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-white/75 backdrop-blur">
+                  <Sparkles className="h-3.5 w-3.5 text-[#f5c451]" /> Concierge aware
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 lg:max-w-[320px] lg:justify-end">
+              <Link
+                href="/planner"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
+              >
+                <Route className="h-4 w-4" /> Shape my trip
+              </Link>
+              <Link
+                href="/map"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur transition hover:bg-white/[.13]"
+              >
+                <MapPinned className="h-4 w-4 text-[#7ce0d4]" /> Open Living Map
+              </Link>
+              <Link
+                href="/concierge"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur transition hover:bg-white/[.13]"
+              >
+                <Sparkles className="h-4 w-4 text-[#f5c451]" /> Ask Concierge
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
         <TripReturnNotice />
