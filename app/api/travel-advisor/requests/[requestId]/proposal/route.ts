@@ -264,7 +264,12 @@ export async function POST(
         : duplicateProposal
           ? previousSentAt
           : null;
-      const requestPatch: Record<string, unknown> = {
+      const contactedAt =
+        sendToTraveler && (proposalSent || proposalSendDuplicate)
+          ? clean(current.contactedAt, 50) || now
+          : null;
+
+      transaction.update(requestRef, {
         proposalShareId: proposal.shareId,
         proposalHref,
         proposalVersion: version,
@@ -275,13 +280,10 @@ export async function POST(
         assignedAdvisorUid: session.uid,
         assignedAdvisorEmail: session.email ?? null,
         status: nextStatus,
+        ...(contactedAt ? { contactedAt } : {}),
         updatedAt: now,
         serverUpdatedAt: FieldValue.serverTimestamp(),
-      };
-      if (sendToTraveler && (proposalSent || proposalSendDuplicate)) {
-        requestPatch.contactedAt = clean(current.contactedAt, 50) || now;
-      }
-      transaction.update(requestRef, requestPatch);
+      });
 
       return {
         proposal: {
