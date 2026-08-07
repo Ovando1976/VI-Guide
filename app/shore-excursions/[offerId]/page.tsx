@@ -174,6 +174,8 @@ function cruiseDefaults(searchParams: SearchParams): ShoreExcursionCruiseDefault
   const shipName = firstValue(searchParams.ship);
   const cruiseLine = firstValue(searchParams.cruiseLine);
   const portId = firstValue(searchParams.portId);
+  const officialPortCall = firstValue(searchParams.officialPortCall);
+  const partySize = normalizePartySize(firstValue(searchParams.party));
   if (!startDate && !shipName && !allAboard && !cruiseLine) return undefined;
   return {
     ...(validDate(startDate) ? { startDate } : {}),
@@ -186,6 +188,8 @@ function cruiseDefaults(searchParams: SearchParams): ShoreExcursionCruiseDefault
     ...(cruiseLine ? { cruiseLine: cruiseLine.slice(0, 160) } : {}),
     ...(portId ? { portId: portId.slice(0, 80) } : {}),
     ...(validTime(allAboard) ? { allAboardTime: allAboard } : {}),
+    ...(officialPortCall ? { officialPortCall: officialPortCall.slice(0, 220) } : {}),
+    partySize,
     allAboardEstimated: firstValue(searchParams.allAboardEstimated) === "1",
   };
 }
@@ -222,6 +226,11 @@ function withQuery(path: string, params: URLSearchParams) {
 
 function firstValue(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
+}
+
+function normalizePartySize(value: string) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.max(1, Math.min(100, Math.trunc(number))) : 2;
 }
 
 function validDate(value: string) {
