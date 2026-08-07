@@ -190,6 +190,10 @@ export async function POST(request: NextRequest) {
         shipName,
         portId: port.id,
         allAboardTime,
+        adults,
+        children,
+        durationMinutes: profile.durationMinutes,
+        minReturnBufferMinutes: profile.minReturnBufferMinutes,
         offerPriceCents: offerResolution.snapshot.offerPriceCents,
       });
       const bookingRef = db.collection("commerceBookings").doc(bookingId);
