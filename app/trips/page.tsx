@@ -2,12 +2,14 @@ import Link from "next/link";
 import { Route } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 import { RiderCancelRide } from "@/components/mobility/rider-cancel-ride";
 import { RiderLiveDriverMap } from "@/components/mobility/rider-live-driver-map";
 import { RiderTripTiming } from "@/components/mobility/rider-trip-timing";
 import { TripReturnNotice } from "@/components/mobility/trip-return-notice";
 import { RiderTripHistory } from "@/components/rider-trip-history";
 import { TravelerTripCommandCenter } from "@/components/trips/traveler-trip-command-center";
+import { TravelerTripReadinessPanel } from "@/components/trips/traveler-trip-readiness-panel";
 import { getSession } from "@/lib/auth-server";
 import {
   getAdminDb,
@@ -24,7 +26,7 @@ import {
 export const metadata = {
   title: "My Trip | VI Guide",
   description:
-    "Your connected VI Guide trip workspace for itinerary, bookings, payments, stays, rides, advisor planning, and Concierge.",
+    "Your connected VI Guide trip workspace for itinerary, bookings, payments, stays, rides, advisor planning, readiness, and Concierge.",
 };
 
 export default async function TripsPage() {
@@ -53,6 +55,18 @@ export default async function TripsPage() {
           stayRequests={stays}
           advisorTrips={advisorTrips}
         />
+
+        <div className="mt-6">
+          <TravelerTripReadinessPanel
+            bookings={bookings}
+            stayRequests={stays}
+            advisorTrips={advisorTrips}
+          />
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm">
+          <ProactiveTripIntelligence />
+        </div>
 
         {!session ? (
           <section className="mt-6 flex flex-col gap-4 rounded-[28px] border border-teal-200 bg-teal-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
