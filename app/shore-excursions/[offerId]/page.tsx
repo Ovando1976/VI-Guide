@@ -169,18 +169,27 @@ export default async function ShoreExcursionDetailPage({
 function cruiseDefaults(searchParams: SearchParams): ShoreExcursionCruiseDefaults | undefined {
   const startDate = firstValue(searchParams.date);
   const arrival = firstValue(searchParams.arrival);
+  const preferredTime = firstValue(searchParams.preferredTime);
   const allAboard = firstValue(searchParams.allAboard);
   const shipName = firstValue(searchParams.ship);
   const cruiseLine = firstValue(searchParams.cruiseLine);
   const portId = firstValue(searchParams.portId);
+  const officialPortCall = firstValue(searchParams.officialPortCall);
+  const partySize = normalizePartySize(firstValue(searchParams.party));
   if (!startDate && !shipName && !allAboard && !cruiseLine) return undefined;
   return {
     ...(validDate(startDate) ? { startDate } : {}),
-    ...(validTime(arrival) ? { preferredTime: addMinutes(arrival, 60) } : {}),
+    ...(validTime(preferredTime)
+      ? { preferredTime }
+      : validTime(arrival)
+        ? { preferredTime: addMinutes(arrival, 60) }
+        : {}),
     ...(shipName ? { shipName: shipName.slice(0, 160) } : {}),
     ...(cruiseLine ? { cruiseLine: cruiseLine.slice(0, 160) } : {}),
     ...(portId ? { portId: portId.slice(0, 80) } : {}),
     ...(validTime(allAboard) ? { allAboardTime: allAboard } : {}),
+    ...(officialPortCall ? { officialPortCall: officialPortCall.slice(0, 220) } : {}),
+    partySize,
     allAboardEstimated: firstValue(searchParams.allAboardEstimated) === "1",
   };
 }
@@ -189,6 +198,7 @@ function preserveCruiseQuery(searchParams: SearchParams) {
   const allowed = [
     "cruiseTrip",
     "sailing",
+    "officialPortCall",
     "ship",
     "cruiseLine",
     "date",
@@ -196,8 +206,10 @@ function preserveCruiseQuery(searchParams: SearchParams) {
     "island",
     "portId",
     "arrival",
+    "preferredTime",
     "allAboard",
     "allAboardEstimated",
+    "party",
   ] as const;
   const params = new URLSearchParams();
   for (const key of allowed) {
@@ -214,6 +226,11 @@ function withQuery(path: string, params: URLSearchParams) {
 
 function firstValue(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
+}
+
+function normalizePartySize(value: string) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.max(1, Math.min(100, Math.trunc(number))) : 2;
 }
 
 function validDate(value: string) {

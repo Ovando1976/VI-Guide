@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Anchor,
   CalendarSearch,
   Compass,
   LifeBuoy,
@@ -17,6 +18,12 @@ const ITEMS = [
     label: "Find a sailing",
     icon: CalendarSearch,
     route: null,
+  },
+  {
+    href: "/cruises/port-calls",
+    label: "Port calls",
+    icon: Anchor,
+    route: "/cruises/port-calls",
   },
   {
     href: "/shore-excursions",

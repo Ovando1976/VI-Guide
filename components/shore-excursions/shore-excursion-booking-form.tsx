@@ -26,6 +26,8 @@ export type ShoreExcursionCruiseDefaults = {
   portId?: string;
   allAboardTime?: string;
   allAboardEstimated?: boolean;
+  officialPortCall?: string;
+  partySize?: number;
 };
 
 type Props = {
@@ -48,6 +50,7 @@ export function ShoreExcursionBookingForm({
   defaults,
 }: Props) {
   const today = useMemo(() => getUsviToday(), []);
+  const defaultPartySize = normalizePartySize(defaults?.partySize, 2);
   const [form, setForm] = useState(() => ({
     startDate:
       defaults?.startDate && defaults.startDate >= today
@@ -65,7 +68,7 @@ export function ShoreExcursionBookingForm({
     allAboardTime: validTime(defaults?.allAboardTime)
       ? defaults!.allAboardTime!
       : "16:30",
-    adults: "2",
+    adults: String(Math.min(maxGuests, defaultPartySize)),
     children: "0",
     guestName: "",
     email: "",
@@ -120,6 +123,9 @@ export function ShoreExcursionBookingForm({
           children: Number(form.children),
           guestName: form.guestName,
           email: form.email,
+          ...(defaults?.officialPortCall
+            ? { officialPortCall: defaults.officialPortCall }
+            : {}),
           ...(form.phone ? { phone: form.phone } : {}),
           ...(form.notes ? { notes: form.notes } : {}),
         }),
@@ -166,7 +172,8 @@ export function ShoreExcursionBookingForm({
         <p className="mt-4 text-sm font-semibold leading-7 text-emerald-950/70">
           Reference <strong>{success.reference}</strong>. The request captured your
           ship, port, all-aboard time, and the excursion&apos;s required return buffer.
-          The operator still confirms final availability and pickup details.
+          When provider capacity is published, VI Guide rechecks it at submission;
+          the operator still confirms final pickup and fulfillment details.
         </p>
         <a
           href={`/bookings?booking=${encodeURIComponent(success.bookingId)}`}
@@ -193,13 +200,17 @@ export function ShoreExcursionBookingForm({
 
       {defaults?.shipName || defaults?.startDate ? (
         <div className="mt-5 rounded-2xl border border-teal-200 bg-teal-50 px-4 py-4 text-sm font-semibold leading-6 text-teal-950/75">
-          <strong className="text-teal-900">Selected sailing applied.</strong>{" "}
+          <strong className="text-teal-900">
+            {defaults.officialPortCall
+              ? "Official port-call match applied."
+              : "Selected sailing applied."}
+          </strong>{" "}
           Ship, port date, cruise line, and available ship-clock values were carried
           into this request automatically.
           {defaults.allAboardEstimated ? (
             <span className="mt-2 block text-amber-800">
               The all-aboard value is a planning proxy set 30 minutes before the
-              supplier&apos;s scheduled departure. Verify the ship&apos;s actual all-aboard
+              published scheduled departure. Verify the ship&apos;s actual all-aboard
               announcement onboard and edit this field if it differs.
             </span>
           ) : null}
@@ -440,6 +451,12 @@ function formatMinutes(value: number) {
 
 function validTime(value: unknown): value is string {
   return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
+}
+
+function normalizePartySize(value: unknown, fallback: number) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.max(1, Math.min(100, Math.trunc(number)));
 }
 
 function getUsviToday() {
