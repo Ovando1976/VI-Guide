@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Crown } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -32,6 +33,12 @@ export function ViPublicHeader({
       </Link>
 
       <div className="flex shrink-0 items-center gap-2">
+        <Link
+          href="/plus"
+          className="hidden items-center gap-1.5 rounded-full border border-[#f5c451]/55 bg-[#fff8de] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.15em] text-[#7a4b08] transition hover:-translate-y-0.5 hover:bg-[#fff2bd] sm:inline-flex"
+        >
+          <Crown size={13} aria-hidden="true" /> Plus
+        </Link>
         {secondaryActions ??
           (secondaryHref && secondaryLabel ? (
             <Link
