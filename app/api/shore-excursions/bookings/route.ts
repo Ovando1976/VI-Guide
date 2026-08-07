@@ -6,6 +6,14 @@ import {
   isBookableStartDate,
 } from "@/lib/booking/booking-dates";
 import {
+  evaluateOfficialPortCallExcursionFit,
+  reservedGuestCount,
+} from "@/lib/cruise-port-call-match";
+import {
+  getOfficialCruisePortCall,
+  sourceForOfficialCruisePortCall,
+} from "@/lib/cruise-port-calls";
+import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
@@ -28,6 +36,7 @@ import {
   shoreExcursionDateWithinOfferWindow,
   shoreExcursionPort,
 } from "@/lib/shore-excursions";
+import type { ProviderAvailabilityDay } from "@/types/provider-operations";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -46,6 +55,7 @@ type BookingInput = {
   cruiseLine?: unknown;
   portId?: unknown;
   allAboardTime?: unknown;
+  officialPortCall?: unknown;
 };
 
 export async function POST(request: NextRequest) {
@@ -125,6 +135,10 @@ export async function POST(request: NextRequest) {
       const children = normalizeGuests(body.children, 0);
       const partySize = adults + children;
       const today = getUsviToday(requestNow);
+      const officialPortCallId = clean(body.officialPortCall, 220);
+      const officialCall = officialPortCallId
+        ? getOfficialCruisePortCall(officialPortCallId)
+        : null;
 
       if (
         !offerId ||
@@ -143,6 +157,31 @@ export async function POST(request: NextRequest) {
           "Complete the cruise ship, port, all-aboard time, excursion time, and traveler details.",
           400,
         );
+      }
+      if (officialPortCallId && !officialCall) {
+        throw new ShoreBookingError(
+          "This official port-call reference is no longer available. Reopen Port Days and recheck the ship schedule.",
+          409,
+        );
+      }
+      if (officialCall) {
+        if (officialCall.status !== "scheduled") {
+          throw new ShoreBookingError(
+            "This official cruise port call is marked cancelled. Recheck the cruise itinerary before requesting an excursion.",
+            409,
+          );
+        }
+        if (
+          officialCall.date !== startDate ||
+          officialCall.portId !== port.id ||
+          normalizeComparableShip(officialCall.shipName) !==
+            normalizeComparableShip(shipName)
+        ) {
+          throw new ShoreBookingError(
+            "The ship, port, or date no longer matches the official port-call reference. Reopen Port Days to refresh the match.",
+            409,
+          );
+        }
       }
       if (
         !shoreExcursionDateWithinOfferWindow({
@@ -215,6 +254,83 @@ export async function POST(request: NextRequest) {
         };
       }
 
+      let officialCapacity: {
+        verified: boolean;
+        remainingBeforeRequest: number | null;
+        sourceId: string | null;
+        scheduledArrival: string | null;
+        scheduledDeparture: string | null;
+        planningAllAboardTime: string | null;
+      } = {
+        verified: false,
+        remainingBeforeRequest: null,
+        sourceId: null,
+        scheduledArrival: null,
+        scheduledDeparture: null,
+        planningAllAboardTime: null,
+      };
+
+      if (officialCall) {
+        const providerOperationsRef = db
+          .collection("providerOperations")
+          .doc(offerResolution.snapshot.listingId);
+        const bookingCapacityQuery = db
+          .collection("commerceBookings")
+          .where("listingId", "==", offerResolution.snapshot.listingId)
+          .limit(500);
+        const [providerOperationsDocument, bookingCapacitySnapshot] =
+          await Promise.all([
+            transaction.get(providerOperationsRef),
+            transaction.get(bookingCapacityQuery),
+          ]);
+        const availabilityDay = providerOperationsDocument.exists
+          ? providerAvailabilityDay(
+              providerOperationsDocument.data(),
+              startDate,
+            )
+          : null;
+        const bookingRecords = bookingCapacitySnapshot.docs.map(
+          (document) => document.data() as Record<string, unknown>,
+        );
+        const reservedGuests = reservedGuestCount(bookingRecords, startDate);
+        const fit = evaluateOfficialPortCallExcursionFit({
+          call: officialCall,
+          profile,
+          offer: offerResolution.snapshot,
+          availabilityDay,
+          reservedGuests,
+          partySize,
+        });
+
+        if (fit.status !== "available") {
+          throw new ShoreBookingError(
+            officialCapacityError(fit.status, partySize),
+            409,
+          );
+        }
+        if (
+          !fit.earliestStartTime ||
+          !fit.latestSafeStartTime ||
+          preferredTime < fit.earliestStartTime ||
+          preferredTime > fit.latestSafeStartTime
+        ) {
+          throw new ShoreBookingError(
+            `The operator or ship window changed. Choose a start between ${fit.earliestStartTime ?? "the published opening"} and ${fit.latestSafeStartTime ?? "the latest safe start"}.`,
+            409,
+          );
+        }
+
+        const scheduleSource = sourceForOfficialCruisePortCall(officialCall);
+        officialCapacity = {
+          verified: true,
+          remainingBeforeRequest: fit.remainingCapacity,
+          sourceId: scheduleSource?.id ?? null,
+          scheduledArrival: officialCall.arrivesAt,
+          scheduledDeparture: officialCall.departsAt,
+          planningAllAboardTime: fit.planningAllAboardTime,
+        };
+      }
+
       const quotaRef = db
         .collection("merchantOfferRequestIntake")
         .doc(merchantOfferRequestQuotaDocumentId({ email, now: requestNow }));
@@ -266,6 +382,18 @@ export async function POST(request: NextRequest) {
           latestSafeStartTime: timing.latestSafeStartTime,
           verifiedReturnBufferMinutes: timing.bufferMinutes,
           timingStatus: "buffer_verified",
+          ...(officialCall
+            ? {
+                officialPortCallId: officialCall.id,
+                officialScheduleSourceId: officialCapacity.sourceId,
+                officialScheduledArrival: officialCapacity.scheduledArrival,
+                officialScheduledDeparture: officialCapacity.scheduledDeparture,
+                planningAllAboardTime: officialCapacity.planningAllAboardTime,
+                capacityVerifiedAtRequest: officialCapacity.verified,
+                remainingCapacityBeforeRequest:
+                  officialCapacity.remainingBeforeRequest,
+              }
+            : {}),
         },
         reference,
         status: "requested",
@@ -290,26 +418,29 @@ export async function POST(request: NextRequest) {
         serverDemandUpdatedAt: FieldValue.serverTimestamp(),
       });
 
+      const capacityMessage = officialCapacity.verified
+        ? ` Capacity was rechecked at submission with ${officialCapacity.remainingBeforeRequest} seat${officialCapacity.remainingBeforeRequest === 1 ? "" : "s"} remaining before this request.`
+        : "";
       const notificationInputs = [
         {
           audience: "traveler" as const,
           recipientEmail: email,
           title: "Shore excursion request received",
-          message: `We received your ${offer.offerTitle} request for ${shipName}. Your plan keeps the operator's return-to-ship buffer before ${allAboardTime}.`,
+          message: `We received your ${offer.offerTitle} request for ${shipName}. Your plan keeps the operator's return-to-ship buffer before ${allAboardTime}.${capacityMessage}`,
           href: `/bookings?booking=${encodeURIComponent(bookingId)}`,
         },
         {
           audience: "merchant" as const,
           recipientEmail: null,
           title: "New cruise shore excursion request",
-          message: `${guestName} requested ${offer.offerTitle} from ${port.shortLabel}. Ship: ${shipName}; all aboard ${allAboardTime}.`,
+          message: `${guestName} requested ${offer.offerTitle} from ${port.shortLabel}. Ship: ${shipName}; all aboard ${allAboardTime}.${capacityMessage}`,
           href: "/merchant/reservations",
         },
         {
           audience: "operations" as const,
           recipientEmail: null,
           title: "Cruise excursion request",
-          message: `${offer.listingName} received ${reference} for ${shipName}; return buffer verified at request time.`,
+          message: `${offer.listingName} received ${reference} for ${shipName}; return buffer verified at request time.${capacityMessage}`,
           href: "/admin/operations",
         },
       ];
@@ -378,6 +509,80 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   }
+}
+
+function providerAvailabilityDay(
+  data: FirebaseFirestore.DocumentData | undefined,
+  date: string,
+): ProviderAvailabilityDay | null {
+  const days = Array.isArray(data?.days) ? data.days : [];
+  const candidate = days.find(
+    (value: unknown) =>
+      value &&
+      typeof value === "object" &&
+      (value as { date?: unknown }).date === date,
+  );
+  if (!candidate || typeof candidate !== "object") return null;
+  const day = candidate as Partial<ProviderAvailabilityDay>;
+  return {
+    date,
+    isOpen: day.isOpen === true,
+    capacity: clampWhole(day.capacity, 0, 500, 0),
+    startTime: validTime(day.startTime) ? day.startTime : "09:00",
+    endTime: validTime(day.endTime) ? day.endTime : "17:00",
+    ...(typeof day.note === "string" && day.note.trim()
+      ? { note: day.note.trim().slice(0, 300) }
+      : {}),
+  };
+}
+
+function officialCapacityError(status: string, partySize: number) {
+  if (status === "capacity_unconfigured") {
+    return "The operator's capacity for this official port-call date is no longer published. Reopen Port Days before requesting it.";
+  }
+  if (status === "provider_closed") {
+    return "The operator is now marked closed for this port-call date.";
+  }
+  if (status === "sold_out") {
+    return "This operator has no remaining published capacity for the port-call date.";
+  }
+  if (status === "insufficient_capacity") {
+    return `There is no longer enough published capacity for ${partySize} guests on this port-call date.`;
+  }
+  if (status === "time_conflict") {
+    return "The operator hours or ship window no longer leave enough time for this excursion.";
+  }
+  if (status === "offer_outside_window") {
+    return "This offer is no longer valid on the selected port-call date.";
+  }
+  if (status === "cancelled_port_call") {
+    return "The official cruise port call is now marked cancelled.";
+  }
+  return "This excursion no longer matches the official ship call. Reopen Port Days to refresh the options.";
+}
+
+function normalizeComparableShip(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/\b(mv|ms)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function validTime(value: unknown): value is string {
+  return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
+}
+
+function clampWhole(
+  value: unknown,
+  minimum: number,
+  maximum: number,
+  fallback: number,
+) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.max(minimum, Math.min(maximum, Math.trunc(number)));
 }
 
 function normalizeGuests(value: unknown, fallback: number) {
