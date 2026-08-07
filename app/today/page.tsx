@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Route } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { AiTripBriefScreen } from "@/components/intelligence/ai-trip-brief-screen";
 import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 
@@ -11,9 +13,18 @@ export const metadata: Metadata = {
 
 export default function TodayPage() {
   return (
-    <>
+    <main className="min-h-screen bg-[#f7f2e7] pb-28 text-[#043331]">
+      <div className="px-4 pt-5 sm:px-6 lg:pt-8">
+        <ViPublicHeader
+          actionHref="/trips"
+          actionLabel="My Trip"
+          actionIcon={Route}
+          secondaryHref="/planner"
+          secondaryLabel="Planner"
+        />
+      </div>
       <ProactiveTripIntelligence mode="banner" />
       <AiTripBriefScreen />
-    </>
+    </main>
   );
 }
