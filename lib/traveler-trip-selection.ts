@@ -7,37 +7,83 @@ export const TRAVELER_TRIP_SELECTION_UPDATED_EVENT =
 // (which would create a circular dependency once journey-planner honors selection).
 const JOURNEY_PLAN_UPDATED_EVENT = "vi-guide-intelligence-plan-saved";
 
-export function readSelectedTravelerTripPlanId() {
-  if (typeof window === "undefined") return "";
+export type TravelerTripSelection = {
+  planId: string;
+  updatedAt: string;
+};
+
+export function normalizeTravelerTripSelection(value: unknown): TravelerTripSelection {
+  if (typeof value === "string") {
+    return { planId: clean(value), updatedAt: "" };
+  }
+  if (!value || typeof value !== "object") {
+    return { planId: "", updatedAt: "" };
+  }
+  const candidate = value as Partial<TravelerTripSelection>;
+  return {
+    planId: clean(candidate.planId),
+    updatedAt: normalizeTimestamp(candidate.updatedAt),
+  };
+}
+
+export function readSelectedTravelerTripSelection(): TravelerTripSelection {
+  if (typeof window === "undefined") return { planId: "", updatedAt: "" };
   try {
-    return clean(window.localStorage.getItem(TRAVELER_TRIP_SELECTION_STORAGE_KEY));
+    const raw = window.localStorage.getItem(TRAVELER_TRIP_SELECTION_STORAGE_KEY);
+    if (!raw) return { planId: "", updatedAt: "" };
+    try {
+      return normalizeTravelerTripSelection(JSON.parse(raw));
+    } catch {
+      return normalizeTravelerTripSelection(raw);
+    }
   } catch {
-    return "";
+    return { planId: "", updatedAt: "" };
   }
 }
 
-export function writeSelectedTravelerTripPlanId(planId: string) {
-  const normalized = clean(planId);
-  if (typeof window === "undefined") return normalized;
+export function readSelectedTravelerTripPlanId() {
+  return readSelectedTravelerTripSelection().planId;
+}
+
+export function writeSelectedTravelerTripPlanId(
+  planId: string,
+  updatedAt = new Date().toISOString(),
+) {
+  const selection = normalizeTravelerTripSelection({ planId, updatedAt });
+  if (typeof window === "undefined") return selection.planId;
   try {
-    if (normalized) {
+    if (selection.planId) {
       window.localStorage.setItem(
         TRAVELER_TRIP_SELECTION_STORAGE_KEY,
-        normalized,
+        JSON.stringify(selection),
       );
     } else {
       window.localStorage.removeItem(TRAVELER_TRIP_SELECTION_STORAGE_KEY);
     }
     window.dispatchEvent(
       new CustomEvent(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, {
-        detail: normalized,
+        detail: selection.planId,
       }),
     );
     window.dispatchEvent(new Event(JOURNEY_PLAN_UPDATED_EVENT));
   } catch {
     // Private browsing policies should never prevent a traveler from using My Trip.
   }
-  return normalized;
+  return selection.planId;
+}
+
+export function resolveTravelerTripSelection(input: {
+  local?: TravelerTripSelection | null;
+  remote?: TravelerTripSelection | null;
+  availablePlanIds: Iterable<string>;
+}): TravelerTripSelection {
+  const available = new Set(input.availablePlanIds);
+  const local = normalizeTravelerTripSelection(input.local);
+  const remote = normalizeTravelerTripSelection(input.remote);
+  const candidates = [local, remote]
+    .filter((selection) => selection.planId && available.has(selection.planId))
+    .sort((left, right) => right.updatedAt.localeCompare(left.updatedAt));
+  return candidates[0] ?? { planId: "", updatedAt: "" };
 }
 
 export function prioritizeSelectedTravelerPlan<
@@ -85,6 +131,12 @@ function territoryDate(value: Date) {
   }).formatToParts(value);
   const lookup = Object.fromEntries(parts.map((part) => [part.type, part.value]));
   return `${lookup.year}-${lookup.month}-${lookup.day}`;
+}
+
+function normalizeTimestamp(value: unknown) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : "";
 }
 
 function clean(value: unknown) {
