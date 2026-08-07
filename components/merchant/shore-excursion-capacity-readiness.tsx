@@ -58,11 +58,28 @@ export async function ShoreExcursionCapacityReadiness() {
   if (!profiles.length) return null;
 
   const listingIds = Array.from(new Set(profiles.map((profile) => profile.listingId)));
-  const operationsDocuments = await Promise.all(
-    listingIds.map((listingId) => db.collection("providerOperations").doc(listingId).get()),
-  );
+  const [operationsDocuments, offerDocuments] = await Promise.all([
+    Promise.all(
+      listingIds.map((listingId) => db.collection("providerOperations").doc(listingId).get()),
+    ),
+    Promise.all(
+      profiles.map((profile) => db.collection("merchantOffers").doc(profile.offerId).get()),
+    ),
+  ]);
   const operationsByListingId = new Map(
     operationsDocuments.map((document) => [document.id, document.data() ?? null] as const),
+  );
+  const offerWindowById = new Map(
+    offerDocuments.map((document) => {
+      const data = document.data() ?? {};
+      return [
+        document.id,
+        {
+          validFrom: isoDate(data.validFrom),
+          validThrough: isoDate(data.validThrough),
+        },
+      ] as const;
+    }),
   );
 
   const today = usviDateString();
@@ -72,7 +89,12 @@ export async function ShoreExcursionCapacityReadiness() {
 
   const readiness = profiles
     .map((profile) => {
-      const calls = upcomingCalls.filter((call) => profile.supportedPorts.includes(call.portId));
+      const offerWindow = offerWindowById.get(profile.offerId) ?? null;
+      const calls = upcomingCalls.filter(
+        (call) =>
+          profile.supportedPorts.includes(call.portId) &&
+          dateWithinOfferWindow(call.date, offerWindow?.validFrom, offerWindow?.validThrough),
+      );
       const days = providerDays(operationsByListingId.get(profile.listingId));
       const dayByDate = new Map(days.map((day) => [day.date, day]));
       const callRows = calls.map((call) => {
@@ -85,6 +107,8 @@ export async function ShoreExcursionCapacityReadiness() {
       });
       return {
         ...profile,
+        offerValidFrom: offerWindow?.validFrom ?? null,
+        offerValidThrough: offerWindow?.validThrough ?? null,
         calls: callRows,
         publishedCount: callRows.filter((row) => row.state === "published").length,
         missingCount: callRows.filter((row) => row.state === "missing").length,
@@ -109,10 +133,10 @@ export async function ShoreExcursionCapacityReadiness() {
               <CalendarCheck2 className="h-4 w-4" /> Upcoming cruise-call readiness
             </p>
             <h2 className="mt-2 text-2xl font-black tracking-[-.04em] text-[#043331]">
-              See exactly which ship dates still need capacity.
+              See exactly which sellable ship dates still need capacity.
             </h2>
             <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
-              This compares each cruise-ready offer with VI Guide&apos;s loaded official port-call window and your business availability calendar. A published date means the business is open and has positive capacity; final traveler availability still rechecks ship timing and live demand.
+              This compares each cruise-ready offer with official port calls that fall inside the offer&apos;s own sellable date window, then checks your business availability calendar. A published date means the business is open and has positive capacity; final traveler availability still rechecks ship timing and live demand.
             </p>
           </div>
           <div className="grid grid-cols-3 gap-2 text-center">
@@ -141,6 +165,11 @@ export async function ShoreExcursionCapacityReadiness() {
                   <h3 className="mt-2 text-lg font-black tracking-[-.03em] text-[#043331]">
                     {profile.offerTitle}
                   </h3>
+                  {profile.offerValidFrom && profile.offerValidThrough ? (
+                    <p className="mt-1 text-[10px] font-bold text-teal-700">
+                      Sellable {formatDate(profile.offerValidFrom)} through {formatDate(profile.offerValidThrough)}
+                    </p>
+                  ) : null}
                   <p className="mt-1 text-xs font-semibold text-slate-500">
                     {profile.publishedCount} published · {profile.missingCount} missing · {profile.closedCount} closed/zero capacity
                   </p>
@@ -192,7 +221,7 @@ export async function ShoreExcursionCapacityReadiness() {
 
               {profile.calls.length > MAX_CALLS_PER_PROFILE ? (
                 <p className="mt-3 text-[10px] font-bold text-slate-500">
-                  +{profile.calls.length - MAX_CALLS_PER_PROFILE} more official calls in the loaded schedule window.
+                  +{profile.calls.length - MAX_CALLS_PER_PROFILE} more sellable official calls in the loaded schedule window.
                 </p>
               ) : null}
             </article>
@@ -201,7 +230,7 @@ export async function ShoreExcursionCapacityReadiness() {
 
         <p className="mt-5 flex items-center gap-2 border-t border-slate-100 pt-4 text-[10px] font-semibold text-slate-500">
           <ShipWheel className="h-4 w-4 text-teal-700" />
-          Official schedule coverage currently loaded: {formatDate(OFFICIAL_CRUISE_SCHEDULE_COVERAGE.from)} through {formatDate(OFFICIAL_CRUISE_SCHEDULE_COVERAGE.through)}.
+          Official schedule coverage currently loaded: {formatDate(OFFICIAL_CRUISE_SCHEDULE_COVERAGE.from)} through {formatDate(OFFICIAL_CRUISE_SCHEDULE_COVERAGE.through)}. Calls outside an offer&apos;s sellable window are excluded from its readiness counts.
         </p>
       </div>
     </section>
@@ -248,6 +277,18 @@ function readinessState(day: ProviderAvailabilityDay | null) {
   if (!day) return "missing" as const;
   if (!day.isOpen || day.capacity <= 0) return "closed" as const;
   return "published" as const;
+}
+
+function dateWithinOfferWindow(
+  date: string,
+  validFrom: string | null | undefined,
+  validThrough: string | null | undefined,
+) {
+  return Boolean(validFrom && validThrough && date >= validFrom && date <= validThrough);
+}
+
+function isoDate(value: unknown) {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 
 function whole(value: unknown) {
