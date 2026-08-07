@@ -32,12 +32,14 @@ import type {
 
 type ProviderOperationsBoardProps = {
   initialListingId?: string;
+  initialFocusDate?: string;
   managedListingIds?: string[];
   restrictToManagedListings?: boolean;
 };
 
 export function ProviderOperationsBoard({
   initialListingId,
+  initialFocusDate = "",
   managedListingIds = [],
   restrictToManagedListings = false,
 }: ProviderOperationsBoardProps) {
@@ -65,7 +67,15 @@ export function ProviderOperationsBoard({
       restrictToManagedListings,
     ],
   );
+  const normalizedInitialFocusDate = useMemo(
+    () =>
+      /^\d{4}-\d{2}-\d{2}$/.test(initialFocusDate)
+        ? initialFocusDate
+        : "",
+    [initialFocusDate],
+  );
   const lastAutoLoadedListingId = useRef("");
+  const lastFocusedDateKey = useRef("");
   const activeLoadRequest = useRef(0);
   const [listingId, setListingId] = useState(resolvedInitialListingId);
   const [listingName, setListingName] = useState(
@@ -163,6 +173,27 @@ export function ProviderOperationsBoard({
     lastAutoLoadedListingId.current = resolvedInitialListingId;
     void loadProviderById(resolvedInitialListingId, true);
   }, [loadProviderById, resolvedInitialListingId]);
+
+  const focusDateIsVisible = Boolean(
+    normalizedInitialFocusDate &&
+      listingId === resolvedInitialListingId &&
+      days.some((day) => day.date === normalizedInitialFocusDate),
+  );
+
+  useEffect(() => {
+    if (!focusDateIsVisible) return;
+    const focusKey = `${listingId}:${normalizedInitialFocusDate}`;
+    if (lastFocusedDateKey.current === focusKey) return;
+    lastFocusedDateKey.current = focusKey;
+
+    const timer = window.setTimeout(() => {
+      document
+        .getElementById(`provider-day-${normalizedInitialFocusDate}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+
+    return () => window.clearTimeout(timer);
+  }, [focusDateIsVisible, listingId, normalizedInitialFocusDate]);
 
   const summary = useMemo(() => {
     const openDays = days.filter((day) => day.isOpen);
@@ -399,6 +430,11 @@ export function ProviderOperationsBoard({
             {message}
           </div>
         ) : null}
+        {focusDateIsVisible ? (
+          <div className="mt-5 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm font-bold text-amber-950">
+            Cruise capacity action: review {normalizedInitialFocusDate}, set the operating decision for this date, then save operations.
+          </div>
+        ) : null}
 
         <section className="mt-6 grid gap-3 sm:grid-cols-3">
           <Metric
@@ -419,64 +455,73 @@ export function ProviderOperationsBoard({
         </section>
 
         <section className="mt-6 space-y-3">
-          {days.map((day, index) => (
-            <article
-              key={day.date}
-              className="grid gap-3 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-[150px_110px_120px_120px_130px_1fr] md:items-end"
-            >
-              <div>
-                <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
-                  Date
-                </p>
-                <p className="mt-2 text-sm font-black">{day.date}</p>
-              </div>
-              <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
-                Open
-                <button
-                  type="button"
+          {days.map((day, index) => {
+            const focused =
+              focusDateIsVisible && day.date === normalizedInitialFocusDate;
+            return (
+              <article
+                id={`provider-day-${day.date}`}
+                key={day.date}
+                className={`scroll-mt-24 grid gap-3 rounded-[28px] border bg-white p-5 shadow-sm md:grid-cols-[150px_110px_120px_120px_130px_1fr] md:items-end ${
+                  focused
+                    ? "border-amber-400 ring-4 ring-amber-200/60"
+                    : "border-slate-200"
+                }`}
+              >
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+                    {focused ? "Cruise date" : "Date"}
+                  </p>
+                  <p className="mt-2 text-sm font-black">{day.date}</p>
+                </div>
+                <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
+                  Open
+                  <button
+                    type="button"
+                    disabled={merchantHasNoScope}
+                    onClick={() => updateDay(index, { isOpen: !day.isOpen })}
+                    className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
+                      day.isOpen
+                        ? "bg-emerald-100 text-emerald-800"
+                        : "bg-red-100 text-red-700"
+                    }`}
+                  >
+                    {day.isOpen ? "Open" : "Closed"}
+                  </button>
+                </label>
+                <Field
+                  label="Start"
+                  value={day.startTime}
+                  type="time"
                   disabled={merchantHasNoScope}
-                  onClick={() => updateDay(index, { isOpen: !day.isOpen })}
-                  className={`mt-2 min-h-11 w-full rounded-2xl text-[9px] font-black uppercase tracking-[.14em] disabled:opacity-50 ${
-                    day.isOpen
-                      ? "bg-emerald-100 text-emerald-800"
-                      : "bg-red-100 text-red-700"
-                  }`}
-                >
-                  {day.isOpen ? "Open" : "Closed"}
-                </button>
-              </label>
-              <Field
-                label="Start"
-                value={day.startTime}
-                type="time"
-                disabled={merchantHasNoScope}
-                onChange={(value) => updateDay(index, { startTime: value })}
-              />
-              <Field
-                label="End"
-                value={day.endTime}
-                type="time"
-                disabled={merchantHasNoScope}
-                onChange={(value) => updateDay(index, { endTime: value })}
-              />
-              <Field
-                label="Capacity"
-                value={String(day.capacity)}
-                type="number"
-                disabled={merchantHasNoScope}
-                onChange={(value) =>
-                  updateDay(index, { capacity: Number(value) || 0 })
-                }
-              />
-              <Field
-                label="Operations note"
-                value={day.note ?? ""}
-                disabled={merchantHasNoScope}
-                onChange={(value) => updateDay(index, { note: value })}
-                placeholder="Weather, staffing, pickup window..."
-              />
-            </article>
-          ))}
+                  onChange={(value) => updateDay(index, { startTime: value })}
+                />
+                <Field
+                  label="End"
+                  value={day.endTime}
+                  type="time"
+                  disabled={merchantHasNoScope}
+                  onChange={(value) => updateDay(index, { endTime: value })}
+                />
+                <Field
+                  label="Capacity"
+                  value={String(day.capacity)}
+                  type="number"
+                  disabled={merchantHasNoScope}
+                  onChange={(value) =>
+                    updateDay(index, { capacity: Number(value) || 0 })
+                  }
+                />
+                <Field
+                  label="Operations note"
+                  value={day.note ?? ""}
+                  disabled={merchantHasNoScope}
+                  onChange={(value) => updateDay(index, { note: value })}
+                  placeholder="Weather, staffing, pickup window..."
+                />
+              </article>
+            );
+          })}
         </section>
       </div>
     </main>
