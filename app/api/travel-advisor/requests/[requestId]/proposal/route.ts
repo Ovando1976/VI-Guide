@@ -185,6 +185,16 @@ export async function POST(
           createdAt: FieldValue.serverTimestamp(),
           updatedAt: FieldValue.serverTimestamp(),
         });
+      } else if (!duplicateProposal) {
+        transaction.set(
+          shareRef,
+          {
+            ownerId: session.uid,
+            proposalVersion: version,
+            updatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
       }
 
       if (!duplicateProposal) {
@@ -248,6 +258,12 @@ export async function POST(
       const publishedAt = duplicateProposal
         ? clean(current.proposalPublishedAt, 50) || now
         : now;
+      const previousSentAt = clean(current.proposalSentAt, 50) || null;
+      const sentAt = proposalSent
+        ? now
+        : duplicateProposal
+          ? previousSentAt
+          : null;
       const requestPatch: Record<string, unknown> = {
         proposalShareId: proposal.shareId,
         proposalHref,
@@ -255,15 +271,15 @@ export async function POST(
         proposalPlanId: proposal.plan.id,
         proposalTitle: proposal.plan.title,
         proposalPublishedAt: publishedAt,
+        proposalSentAt: sentAt,
         assignedAdvisorUid: session.uid,
         assignedAdvisorEmail: session.email ?? null,
         status: nextStatus,
         updatedAt: now,
         serverUpdatedAt: FieldValue.serverTimestamp(),
       };
-      if (sendToTraveler && proposalSent) {
-        requestPatch.proposalSentAt = now;
-        requestPatch.contactedAt = now;
+      if (sendToTraveler && (proposalSent || proposalSendDuplicate)) {
+        requestPatch.contactedAt = clean(current.contactedAt, 50) || now;
       }
       transaction.update(requestRef, requestPatch);
 
@@ -275,10 +291,7 @@ export async function POST(
           version,
           stopCount: proposal.plan.plan.length,
           publishedAt,
-          sentAt:
-            sendToTraveler && proposalSent
-              ? now
-              : clean(current.proposalSentAt, 50) || null,
+          sentAt,
           duplicate: duplicateProposal,
           sendQueued: proposalSent,
           sendDuplicate: proposalSendDuplicate,
