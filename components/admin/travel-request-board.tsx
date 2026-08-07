@@ -10,10 +10,13 @@ import {
   Phone,
   RefreshCw,
   Save,
+  Search,
   Sparkles,
   Users,
 } from "lucide-react";
 
+import { AdminShell } from "@/components/admin-shell";
+import { OpsMetric, OpsPill, OpsSection } from "@/components/ops/ops-ui";
 import {
   TRAVEL_REQUEST_STATUSES,
   travelIslandLabel,
@@ -45,6 +48,12 @@ type TravelRequest = {
 
 type Draft = { status: TravelRequestStatus; advisorNote: string };
 
+type RequestPayload = {
+  requests?: TravelRequest[];
+  request?: TravelRequest;
+  error?: string;
+};
+
 export function TravelRequestBoard() {
   const [requests, setRequests] = useState<TravelRequest[]>([]);
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
@@ -52,6 +61,8 @@ export function TravelRequestBoard() {
   const [error, setError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | TravelRequestStatus>("all");
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -60,9 +71,7 @@ export function TravelRequestBoard() {
       const response = await fetch("/api/travel-advisor/requests", {
         cache: "no-store",
       });
-      const payload = (await response.json().catch(() => null)) as
-        | { requests?: TravelRequest[]; error?: string }
-        | null;
+      const payload = (await response.json().catch(() => null)) as RequestPayload | null;
       if (!response.ok || !payload?.requests) {
         throw new Error(payload?.error || "Unable to load travel requests.");
       }
@@ -91,12 +100,40 @@ export function TravelRequestBoard() {
     void load();
   }, [load]);
 
-  const counts = useMemo(() => {
-    return requests.reduce<Record<string, number>>((current, request) => {
-      current[request.status] = (current[request.status] ?? 0) + 1;
-      return current;
-    }, {});
-  }, [requests]);
+  const metrics = useMemo(
+    () => ({
+      total: requests.length,
+      new: requests.filter((request) => request.status === "new").length,
+      active: requests.filter((request) =>
+        ["reviewing", "planned", "contacted"].includes(request.status),
+      ).length,
+      booked: requests.filter((request) => request.status === "booked").length,
+    }),
+    [requests],
+  );
+
+  const filtered = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return requests.filter((request) => {
+      if (statusFilter !== "all" && request.status !== statusFilter) return false;
+      if (!normalized) return true;
+
+      return [
+        request.reference,
+        request.travelerName,
+        request.email,
+        request.phone ?? "",
+        travelIslandLabel(request.island),
+        request.budget,
+        request.stayStatus,
+        request.pace,
+        ...request.interests,
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalized);
+    });
+  }, [query, requests, statusFilter]);
 
   async function save(requestId: string) {
     const draft = drafts[requestId];
@@ -111,22 +148,19 @@ export function TravelRequestBoard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ requestId, ...draft }),
       });
-      const payload = (await response.json().catch(() => null)) as
-        | { request?: TravelRequest; error?: string }
-        | null;
+      const payload = (await response.json().catch(() => null)) as RequestPayload | null;
       if (!response.ok || !payload?.request) {
         throw new Error(payload?.error || "Unable to update this request.");
       }
+      const updated = payload.request;
       setRequests((current) =>
-        current.map((request) =>
-          request.id === requestId ? payload.request! : request,
-        ),
+        current.map((request) => (request.id === requestId ? updated : request)),
       );
       setDrafts((current) => ({
         ...current,
         [requestId]: {
-          status: payload.request!.status,
-          advisorNote: payload.request!.advisorNote ?? "",
+          status: updated.status,
+          advisorNote: updated.advisorNote ?? "",
         },
       }));
       setSavedId(requestId);
@@ -141,121 +175,184 @@ export function TravelRequestBoard() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f4f0e7] pb-24 text-[#073b39]">
-      <section className="bg-[linear-gradient(145deg,#032f2d,#075e58_62%,#0f8d83)] px-4 py-9 text-white sm:px-6 lg:py-12">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                VI Guide Operations
-              </p>
-              <h1 className="mt-3 text-4xl font-black tracking-[-.05em] sm:text-6xl">
-                USVI Travel Advisor Desk
-              </h1>
-              <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/70 sm:text-base">
-                Turn traveler intent into an itinerary, a conversation, and a bookable trip.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => void load()}
-              disabled={loading}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 text-[10px] font-black uppercase tracking-[.14em] disabled:opacity-50"
+    <AdminShell
+      eyebrow="Travel Advisor OS"
+      title="USVI travel planning requests"
+      description="Turn qualified traveler intent into practical itineraries, human follow-up, local bookings, and completed trips without losing the Concierge planning context."
+      actions={
+        <button
+          type="button"
+          onClick={() => void load()}
+          disabled={loading}
+          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.14em] text-white disabled:opacity-60"
+        >
+          <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+          Refresh
+        </button>
+      }
+    >
+      <div className="space-y-5">
+        <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <OpsMetric label="All requests" value={String(metrics.total)} footnote="qualified trip leads" />
+          <OpsMetric
+            label="Needs attention"
+            value={String(metrics.new)}
+            tone={metrics.new ? "warning" : "default"}
+            footnote="new requests"
+          />
+          <OpsMetric label="Active planning" value={String(metrics.active)} tone="success" footnote="in advisor workflow" />
+          <OpsMetric label="Booked" value={String(metrics.booked)} tone="success" footnote="converted trips" />
+        </section>
+
+        <OpsSection
+          eyebrow="Advisor queue"
+          title="Traveler pipeline"
+          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status."
+          actions={<OpsPill label={`${filtered.length} shown`} tone="teal" />}
+        >
+          <div className="grid gap-3 md:grid-cols-[1fr_240px]">
+            <label className="flex min-h-12 items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4">
+              <Search className="h-4 w-4 text-teal-700" />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search traveler, email, reference, island, or interest"
+                className="w-full border-0 bg-transparent p-0 text-sm font-semibold outline-none placeholder:text-slate-300 focus:ring-0"
+              />
+            </label>
+            <select
+              value={statusFilter}
+              onChange={(event) =>
+                setStatusFilter(event.target.value as "all" | TravelRequestStatus)
+              }
+              className="min-h-12 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-black text-[#043331] outline-none"
             >
-              <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} /> Refresh
-            </button>
-          </div>
-
-          <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {TRAVEL_REQUEST_STATUSES.map((status) => (
-              <div key={status} className="rounded-2xl border border-white/10 bg-white/[.08] px-4 py-3">
-                <div className="text-[9px] font-black uppercase tracking-[.14em] text-white/50">
+              <option value="all">All workflow statuses</option>
+              {TRAVEL_REQUEST_STATUSES.map((status) => (
+                <option key={status} value={status}>
                   {travelPreferenceLabel(status)}
-                </div>
-                <div className="mt-1 text-2xl font-black">{counts[status] ?? 0}</div>
-              </div>
-            ))}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-      </section>
+        </OpsSection>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         {error ? (
-          <div className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-bold text-rose-700">
+          <div className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-bold text-rose-700">
             {error}
           </div>
         ) : null}
 
-        {loading ? (
-          <div className="grid min-h-60 place-items-center rounded-[30px] border border-slate-200 bg-white">
+        {loading && requests.length === 0 ? (
+          <div className="grid min-h-64 place-items-center rounded-[28px] border border-slate-200 bg-white">
             <div className="text-center">
-              <Loader2 className="mx-auto h-7 w-7 animate-spin text-teal-700" />
-              <p className="mt-3 text-xs font-black uppercase tracking-[.16em] text-slate-400">Loading requests</p>
+              <Loader2 className="mx-auto h-8 w-8 animate-spin text-teal-700" />
+              <p className="mt-3 text-[10px] font-black uppercase tracking-[.16em] text-slate-400">
+                Loading advisor queue
+              </p>
             </div>
           </div>
-        ) : requests.length === 0 ? (
-          <div className="rounded-[30px] border border-slate-200 bg-white p-10 text-center shadow-sm">
-            <Sparkles className="mx-auto h-8 w-8 text-teal-700" />
-            <h2 className="mt-4 text-2xl font-black">No trip-planning requests yet.</h2>
+        ) : filtered.length === 0 ? (
+          <div className="rounded-[28px] border border-slate-200 bg-white p-10 text-center shadow-sm">
+            <Sparkles className="mx-auto h-9 w-9 text-slate-300" />
+            <h2 className="mt-4 text-xl font-black">No matching travel requests</h2>
             <p className="mt-2 text-sm font-semibold text-slate-500">
-              New traveler submissions from /trip-planning will appear here.
+              New customer submissions from the USVI trip planner will appear here automatically.
             </p>
           </div>
         ) : (
-          <div className="space-y-5">
-            {requests.map((request) => {
+          <section className="space-y-4">
+            {filtered.map((request) => {
               const draft = drafts[request.id] ?? {
                 status: request.status,
                 advisorNote: request.advisorNote ?? "",
               };
+
               return (
-                <article key={request.id} className="overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm">
-                  <div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[1.15fr_.85fr]">
+                <article
+                  key={request.id}
+                  className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm"
+                >
+                  <div className="grid gap-6 p-5 lg:grid-cols-[1fr_340px] lg:p-7">
                     <div>
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <p className="font-mono text-[10px] font-black uppercase tracking-[.12em] text-teal-700">
-                            {request.reference}
-                          </p>
-                          <h2 className="mt-2 text-2xl font-black tracking-[-.035em]">{request.travelerName}</h2>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <OpsPill
+                              label={travelPreferenceLabel(request.status)}
+                              tone={statusTone(request.status)}
+                            />
+                            <span className="font-mono text-[10px] font-bold text-slate-400">
+                              {request.reference}
+                            </span>
+                          </div>
+                          <h2 className="mt-3 text-2xl font-black tracking-[-.04em] text-[#043331]">
+                            {request.travelerName}
+                          </h2>
                           <p className="mt-1 text-xs font-semibold text-slate-400">
                             Received {formatDateTime(request.createdAt)}
                           </p>
                         </div>
-                        <span className="rounded-full bg-[#e9f7f3] px-3 py-2 text-[9px] font-black uppercase tracking-[.12em] text-teal-800">
-                          {travelPreferenceLabel(request.status)}
-                        </span>
-                      </div>
-
-                      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                        <Info icon={Mail} label="Email" value={request.email} href={`mailto:${request.email}`} />
-                        <Info icon={Phone} label="Phone" value={request.phone ?? "Not provided"} href={request.phone ? `tel:${request.phone}` : undefined} />
-                        <Info icon={MapPin} label="Island" value={travelIslandLabel(request.island)} />
-                        <Info icon={Users} label="Party" value={`${request.travelers} traveler${request.travelers === 1 ? "" : "s"}`} />
-                        <Info icon={CalendarDays} label="Dates" value={dateRange(request.arrival, request.departure)} />
-                        <Info icon={Sparkles} label="Style" value={`${travelPreferenceLabel(request.budget)} · ${travelPreferenceLabel(request.pace)}`} />
-                      </div>
-
-                      <div className="mt-5 rounded-2xl bg-[#f7f4ec] p-4">
-                        <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">Trip preferences</p>
-                        <p className="mt-2 text-sm font-bold text-slate-700">
-                          Stay: {travelPreferenceLabel(request.stayStatus)}
-                        </p>
-                        <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
-                          {request.interests.length
-                            ? request.interests.map(travelPreferenceLabel).join(" · ")
-                            : "No interests selected"}
-                        </p>
-                        {request.notes ? (
-                          <p className="mt-3 whitespace-pre-wrap text-sm font-semibold leading-6 text-slate-600">{request.notes}</p>
+                        {request.assignedAdvisorEmail ? (
+                          <span className="rounded-full border border-slate-200 bg-white px-3 py-2 text-[9px] font-black text-slate-500">
+                            {request.assignedAdvisorEmail}
+                          </span>
                         ) : null}
                       </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                        <Detail icon={Mail} label="Email" value={request.email} href={`mailto:${request.email}`} />
+                        <Detail
+                          icon={Phone}
+                          label="Phone"
+                          value={request.phone ?? "Not provided"}
+                          href={request.phone ? `tel:${request.phone}` : undefined}
+                        />
+                        <Detail icon={MapPin} label="Island" value={travelIslandLabel(request.island)} />
+                        <Detail
+                          icon={Users}
+                          label="Travelers"
+                          value={`${request.travelers} traveler${request.travelers === 1 ? "" : "s"}`}
+                        />
+                        <Detail
+                          icon={CalendarDays}
+                          label="Travel window"
+                          value={dateRange(request.arrival, request.departure)}
+                        />
+                        <Detail
+                          icon={Sparkles}
+                          label="Trip style"
+                          value={`${travelPreferenceLabel(request.budget)} · ${travelPreferenceLabel(request.pace)}`}
+                        />
+                      </div>
+
+                      <div className="mt-5 grid gap-4 md:grid-cols-2">
+                        <InfoBlock title="Stay planning">
+                          <p>{travelPreferenceLabel(request.stayStatus)}</p>
+                        </InfoBlock>
+                        <InfoBlock title="Interests">
+                          <TagList values={request.interests} />
+                        </InfoBlock>
+                      </div>
+
+                      {request.notes ? (
+                        <div className="mt-4 rounded-[22px] border border-slate-200 bg-slate-50 p-5">
+                          <p className="text-[9px] font-black uppercase tracking-[.15em] text-slate-400">
+                            Traveler notes
+                          </p>
+                          <p className="mt-3 whitespace-pre-wrap text-sm font-semibold leading-6 text-slate-600">
+                            {request.notes}
+                          </p>
+                        </div>
+                      ) : null}
                     </div>
 
-                    <div className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
-                      <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">Advisor workflow</p>
-                      <label className="mt-4 block text-xs font-black uppercase tracking-[.12em] text-slate-500">
-                        Status
+                    <aside className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 sm:p-5">
+                      <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+                        Advisor controls
+                      </p>
+                      <label className="mt-4 block text-xs font-black text-slate-600">
+                        Workflow status
                         <select
                           value={draft.status}
                           onChange={(event) =>
@@ -267,19 +364,22 @@ export function TravelRequestBoard() {
                               },
                             }))
                           }
-                          className="mt-2 h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-bold outline-none focus:border-teal-500"
+                          className="mt-2 min-h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm font-black text-[#043331] outline-none"
                         >
                           {TRAVEL_REQUEST_STATUSES.map((status) => (
-                            <option key={status} value={status}>{travelPreferenceLabel(status)}</option>
+                            <option key={status} value={status}>
+                              {travelPreferenceLabel(status)}
+                            </option>
                           ))}
                         </select>
                       </label>
-                      <label className="mt-4 block text-xs font-black uppercase tracking-[.12em] text-slate-500">
-                        Advisor note
+
+                      <label className="mt-4 block text-xs font-black text-slate-600">
+                        Private advisor note
                         <textarea
                           value={draft.advisorNote}
                           maxLength={2000}
-                          rows={7}
+                          rows={8}
                           onChange={(event) =>
                             setDrafts((current) => ({
                               ...current,
@@ -290,14 +390,21 @@ export function TravelRequestBoard() {
                             }))
                           }
                           placeholder="Research, follow-up, supplier, booking, or traveler notes…"
-                          className="mt-2 w-full rounded-2xl border border-slate-200 bg-white p-4 text-sm font-semibold leading-6 outline-none focus:border-teal-500"
+                          className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#043331] outline-none focus:border-teal-600"
                         />
                       </label>
+
+                      {savedId === request.id ? (
+                        <p className="mt-3 flex items-center gap-2 text-sm font-bold text-emerald-700">
+                          <CheckCircle2 className="h-4 w-4" /> Advisor workflow updated.
+                        </p>
+                      ) : null}
+
                       <button
                         type="button"
                         onClick={() => void save(request.id)}
                         disabled={savingId !== null}
-                        className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.14em] text-white disabled:opacity-50"
+                        className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.14em] text-white disabled:opacity-60"
                       >
                         {savingId === request.id ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
@@ -306,26 +413,21 @@ export function TravelRequestBoard() {
                         ) : (
                           <Save className="h-4 w-4" />
                         )}
-                        {savedId === request.id ? "Saved" : "Save workflow"}
+                        {savedId === request.id ? "Saved" : "Save advisor update"}
                       </button>
-                      {request.assignedAdvisorEmail ? (
-                        <p className="mt-3 text-center text-[10px] font-semibold text-slate-400">
-                          Last handled by {request.assignedAdvisorEmail}
-                        </p>
-                      ) : null}
-                    </div>
+                    </aside>
                   </div>
                 </article>
               );
             })}
-          </div>
+          </section>
         )}
-      </section>
-    </main>
+      </div>
+    </AdminShell>
   );
 }
 
-function Info({
+function Detail({
   icon: Icon,
   label,
   value,
@@ -337,14 +439,55 @@ function Info({
   href?: string;
 }) {
   const content = (
-    <div className="rounded-2xl border border-slate-200 p-4">
-      <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
+    <div className="h-full rounded-[20px] border border-slate-200 bg-slate-50 p-4">
+      <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
         <Icon className="h-4 w-4 text-teal-700" /> {label}
       </div>
-      <div className="mt-2 break-words text-sm font-black text-[#073b39]">{value}</div>
+      <div className="mt-2 break-words text-sm font-black text-[#043331]">{value}</div>
     </div>
   );
-  return href ? <a href={href} className="block transition hover:-translate-y-0.5">{content}</a> : content;
+
+  return href ? (
+    <a href={href} className="block h-full transition hover:-translate-y-0.5">
+      {content}
+    </a>
+  ) : (
+    content
+  );
+}
+
+function InfoBlock({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-5 text-sm font-semibold leading-6 text-slate-600">
+      <p className="text-[9px] font-black uppercase tracking-[.15em] text-slate-400">{title}</p>
+      <div className="mt-3">{children}</div>
+    </div>
+  );
+}
+
+function TagList({ values }: { values: string[] }) {
+  if (!values.length) return <p>No interests selected.</p>;
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {values.map((value) => (
+        <span
+          key={value}
+          className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.12em] text-teal-700"
+        >
+          {travelPreferenceLabel(value)}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function statusTone(status: TravelRequestStatus): "neutral" | "teal" | "amber" | "emerald" | "rose" {
+  if (status === "new") return "amber";
+  if (status === "reviewing" || status === "planned" || status === "contacted") return "teal";
+  if (status === "booked") return "emerald";
+  if (status === "closed") return "neutral";
+  return "neutral";
 }
 
 function formatDateTime(value: string) {
@@ -360,9 +503,19 @@ function formatDateTime(value: string) {
   }).format(date);
 }
 
+function formatDate(value: string) {
+  const date = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+}
+
 function dateRange(arrival: string | null, departure: string | null) {
-  if (arrival && departure) return `${arrival} → ${departure}`;
-  if (arrival) return `From ${arrival}`;
-  if (departure) return `Until ${departure}`;
+  if (arrival && departure) return `${formatDate(arrival)} – ${formatDate(departure)}`;
+  if (arrival) return `From ${formatDate(arrival)}`;
+  if (departure) return `Until ${formatDate(departure)}`;
   return "Flexible / undecided";
 }
