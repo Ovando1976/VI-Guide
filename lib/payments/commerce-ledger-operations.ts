@@ -36,9 +36,13 @@ export function hasCommerceFinancialActivity(
   const paymentStatus = clean(record.paymentStatus, 40);
   return Boolean(
     paymentIntentId &&
-      ["paid", "refund_pending", "refunded", "refund_failed"].includes(
-        paymentStatus,
-      ),
+      [
+        "paid",
+        "merchant_settled",
+        "refund_pending",
+        "refunded",
+        "refund_failed",
+      ].includes(paymentStatus),
   );
 }
 
@@ -131,7 +135,9 @@ export function normalizeStoredCommerceLedgerEntry(input: {
   if (kind === "capture") {
     const validId = commerceCaptureLedgerId(paymentIntentId) === id;
     const validReferences = Boolean(
-      checkoutSessionId && !refundId && !reversalOfEntryId &&
+      checkoutSessionId &&
+        !refundId &&
+        !reversalOfEntryId &&
         reportedRefundAmountCents === null,
     );
     const validHeld = Boolean(
@@ -269,9 +275,7 @@ export function summarizeCommerceLedgerListings(
   }
 
   return [...listings.values()].sort((left, right) => {
-    if (
-      right.merchantSettlementCents !== left.merchantSettlementCents
-    ) {
+    if (right.merchantSettlementCents !== left.merchantSettlementCents) {
       return right.merchantSettlementCents - left.merchantSettlementCents;
     }
     return left.listingName.localeCompare(right.listingName);
