@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { JourneyIntelligenceSync } from "@/components/intelligence/journey-intelligence-sync";
 import { TravelerMemorySync } from "@/components/intelligence/traveler-memory-sync";
 import { JourneyCloudSync } from "@/components/journey/journey-cloud-sync";
+import { JourneyMapStateBridge } from "@/components/journey/journey-map-state-bridge";
 
 export const metadata: Metadata = {
   applicationName: "VI Guide",
@@ -54,6 +55,7 @@ export default function RootLayout({
           <TravelerMemorySync />
           <JourneyCloudSync />
           <JourneyIntelligenceSync />
+          <JourneyMapStateBridge />
           {children}
           <AppNavigation />
         </AuthProvider>
