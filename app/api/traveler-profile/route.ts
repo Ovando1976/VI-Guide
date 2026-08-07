@@ -130,8 +130,20 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
     ...(input.cruise && typeof input.cruise === "object"
       ? {
           cruise: {
+            ...(typeof input.cruise.tripId === "string" && input.cruise.tripId.trim()
+              ? { tripId: input.cruise.tripId.trim().slice(0, 160) }
+              : {}),
+            ...(typeof input.cruise.sailingId === "string" && input.cruise.sailingId.trim()
+              ? { sailingId: input.cruise.sailingId.trim().slice(0, 160) }
+              : {}),
+            ...(typeof input.cruise.cruiseLine === "string" && input.cruise.cruiseLine.trim()
+              ? { cruiseLine: input.cruise.cruiseLine.trim().slice(0, 160) }
+              : {}),
             ...(typeof input.cruise.ship === "string"
               ? { ship: input.cruise.ship.trim().slice(0, 120) }
+              : {}),
+            ...(validDate(input.cruise.portCallDate)
+              ? { portCallDate: input.cruise.portCallDate }
               : {}),
             ...(port ? { port } : {}),
             ...(validTime(input.cruise.arrivalTime)
@@ -139,6 +151,11 @@ function normalizeMemory(value: unknown): IntelligenceMemory {
               : {}),
             ...(validTime(input.cruise.allAboardTime)
               ? { allAboardTime: input.cruise.allAboardTime }
+              : {}),
+            ...(input.cruise.allAboardSource === "derived_from_scheduled_departure" ||
+            input.cruise.allAboardSource === "confirmed" ||
+            input.cruise.allAboardSource === "unavailable"
+              ? { allAboardSource: input.cruise.allAboardSource }
               : {}),
           },
         }
@@ -222,6 +239,10 @@ function clamp(value: unknown, minimum: number, maximum: number) {
 
 function finite(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
+}
+
+function validDate(value: unknown): value is string {
+  return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
 function validTime(value: unknown): value is string {
