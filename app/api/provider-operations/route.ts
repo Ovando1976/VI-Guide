@@ -223,7 +223,7 @@ function buildAvailabilityHorizon(
 
     return {
       date,
-      isOpen: true,
+      isOpen: false,
       capacity: defaultCapacity,
       startTime: "09:00",
       endTime: "17:00",
