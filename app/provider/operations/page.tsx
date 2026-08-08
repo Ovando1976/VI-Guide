@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 
-import { ProviderOperationsBoard } from "@/components/provider/provider-operations-board";
 import { getSession } from "@/lib/auth-server";
 import { resolveMerchantListingSelection } from "@/lib/merchant-portal";
 
@@ -30,17 +29,16 @@ export default async function ProviderOperationsPage({
   const requestedListingId = Array.isArray(searchParams?.listingId)
     ? searchParams?.listingId[0]
     : searchParams?.listingId;
-  const initialListingId = resolveMerchantListingSelection({
+  const canonicalListingId = resolveMerchantListingSelection({
     requestedListingId,
     managedListingIds,
     restricted: session.role === "merchant",
   });
 
-  return (
-    <ProviderOperationsBoard
-      initialListingId={initialListingId}
-      managedListingIds={managedListingIds}
-      restrictToManagedListings={session.role === "merchant"}
-    />
+  const params = new URLSearchParams();
+  if (canonicalListingId) params.set("listingId", canonicalListingId);
+
+  redirect(
+    `/merchant/availability${params.size ? `?${params.toString()}` : ""}`,
   );
 }
