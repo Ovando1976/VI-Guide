@@ -27,6 +27,7 @@ const partnerApplyPage = source("app/partners/apply/page.tsx");
 const partnerStatusPage = source("app/partners/status/page.tsx");
 const plusPage = source("app/plus/page.tsx");
 const profileScreen = source("components/profile/traveler-profile-screen.tsx");
+const notificationCenter = source("components/notifications/notification-center.tsx");
 const offerVisual = source("lib/offers/offer-visual.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
@@ -196,6 +197,20 @@ assert.match(profileScreen, /memoryFromForm/);
 assert.match(profileScreen, /tripMonitoring: form\.tripMonitoring/);
 assert.match(profileScreen, /email: form\.emailAlerts/);
 assert.match(profileScreen, /notifyOnRecovery: form\.notifyOnRecovery/);
+
+assert.match(notificationCenter, /ViPublicHeader/);
+assert.match(notificationCenter, /Private traveler alerts/);
+assert.match(notificationCenter, /red-hook-ferry-terminal-1\.jpg/);
+assert.match(notificationCenter, /Stay ahead of what changes the trip\./);
+assert.match(notificationCenter, /Profile-connected protection/);
+assert.match(notificationCenter, /Manage alerts/);
+assert.match(notificationCenter, /window\.setInterval/);
+assert.match(notificationCenter, /30_000/);
+assert.match(notificationCenter, /getIdToken/);
+assert.match(notificationCenter, /\/api\/notifications/);
+assert.match(notificationCenter, /method: "PATCH"/);
+assert.match(notificationCenter, /JSON\.stringify\(\{ read \}\)/);
+assert.match(notificationCenter, /markAllRead/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
