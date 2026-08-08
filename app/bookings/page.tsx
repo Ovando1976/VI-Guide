@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function BookingsPage() {
   return (
-    <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
+    <div className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
       <div className="px-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
           actionHref="/planner"
@@ -31,6 +31,6 @@ export default function BookingsPage() {
       <Suspense fallback={null}>
         <BookingStatusLookup />
       </Suspense>
-    </main>
+    </div>
   );
 }
