@@ -4,6 +4,7 @@ import {
   CalendarDays,
   Crown,
   Map as MapIcon,
+  MapPin,
   Search,
   Sparkles,
 } from "lucide-react";
@@ -12,15 +13,28 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { DirectoryCard } from "@/components/directory/directory-card";
 import { TERRITORY_TIMELINE_EVENTS } from "@/data/heritage/territory-timeline";
 import { USVI_GOVERNORS } from "@/data/heritage/usvi-governors";
+import {
+  EVENT_CATEGORY_LABELS,
+  EVENT_ISLAND_LABELS,
+  formatEventDate,
+  getUpcomingEvents,
+  type UsviEvent,
+} from "@/lib/events";
 import { getTravelKnowledge, type TravelKnowledgeKind } from "@/lib/travel-knowledge";
 import type { DirectoryItem } from "@/types/directory";
 
-type SearchKind = "all" | TravelKnowledgeKind | "timeline" | "governors";
+type SearchKind = "all" | TravelKnowledgeKind | "events" | "timeline" | "governors";
 
 type DirectoryResult = {
   type: "directory";
   item: DirectoryItem;
   kind: TravelKnowledgeKind;
+  score: number;
+};
+
+type EventResult = {
+  type: "event";
+  event: UsviEvent;
   score: number;
 };
 
@@ -37,13 +51,14 @@ type HeritageResult = {
   score: number;
 };
 
-type Result = DirectoryResult | HeritageResult;
+type Result = DirectoryResult | EventResult | HeritageResult;
 
 const KINDS: Array<{ value: SearchKind; label: string }> = [
   { value: "all", label: "Everything" },
   { value: "places", label: "Places" },
   { value: "beaches", label: "Beaches" },
   { value: "stays", label: "Stays" },
+  { value: "events", label: "Events" },
   { value: "historic", label: "Historic places" },
   { value: "timeline", label: "Timeline" },
   { value: "governors", label: "Governors" },
@@ -101,7 +116,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
           actionHref={`/concierge?prompt=${encodeURIComponent(
             query
               ? `Help me decide what to do with my VI Guide search for ${query}. Connect the best result to timing, transportation, and my trip.`
-              : "Help me discover the right places, beaches, stays, and experiences across the U.S. Virgin Islands.",
+              : "Help me discover the right places, beaches, stays, events, and experiences across the U.S. Virgin Islands.",
           )}`}
           actionLabel="Ask Concierge"
           actionIcon={Sparkles}
@@ -121,7 +136,9 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
                 Search once. Decide what happens next.
               </h1>
               <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/70">
-                Search beaches, stays, local places, historic sites, timeline events, and governors together. Place results now carry the same Map, Ride, Save, Add to Trip, and Concierge actions used throughout VI Guide.
+                Search beaches, stays, local places, upcoming events, historic sites,
+                timeline records, and governors together. Traveler results connect back
+                into the same Map, trip, and Concierge system used throughout VI Guide.
               </p>
             </div>
 
@@ -201,6 +218,8 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
                   href={KIND_CONFIG[result.kind].href(result.item.slug)}
                   eyebrow={`Search · ${KIND_CONFIG[result.kind].label}`}
                 />
+              ) : result.type === "event" ? (
+                <EventResultCard key={result.event.id} event={result.event} />
               ) : (
                 <HeritageResultCard key={`${result.kind}:${result.id}`} result={result} />
               ),
@@ -214,7 +233,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
               Try a broader term, switch back to Everything, or ask the Concierge to build a recommendation around what you are trying to do.
             </p>
             <Link
-              href={`/concierge?prompt=${encodeURIComponent(`Help me find ${query || "a place to visit"} in the U.S. Virgin Islands.`)}`}
+              href={`/concierge?prompt=${encodeURIComponent(`Help me find ${query || "a place or event to visit"} in the U.S. Virgin Islands.`)}`}
               className="mt-6 inline-flex rounded-full bg-[#043331] px-6 py-3 text-[10px] font-black uppercase tracking-[.17em] text-white"
             >
               Ask Concierge
@@ -223,6 +242,37 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
         )}
       </section>
     </main>
+  );
+}
+
+function EventResultCard({ event }: { event: UsviEvent }) {
+  return (
+    <Link
+      href={`/events/${event.slug}`}
+      className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl"
+    >
+      <div className="flex h-40 items-center justify-center bg-[radial-gradient(circle_at_25%_20%,rgba(245,196,81,.3),transparent_35%),linear-gradient(145deg,#043331,#087069)] text-white">
+        <div className="text-center">
+          <CalendarDays className="mx-auto h-8 w-8 text-[#f5c451]" />
+          <p className="mt-3 text-[10px] font-black uppercase tracking-[.18em] text-white/65">
+            {EVENT_CATEGORY_LABELS[event.category]}
+          </p>
+          <p className="mt-1 text-lg font-black">{formatEventDate(event)}</p>
+        </div>
+      </div>
+      <div className="p-6">
+        <p className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+          <MapPin className="h-3.5 w-3.5" /> {EVENT_ISLAND_LABELS[event.island]}
+        </p>
+        <h3 className="mt-2 text-2xl font-black tracking-[-.035em]">{event.name}</h3>
+        <p className="mt-3 line-clamp-4 text-sm font-semibold leading-6 text-slate-600">
+          {event.description}
+        </p>
+        <span className="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-teal-800">
+          Open event <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+        </span>
+      </div>
+    </Link>
   );
 }
 
@@ -290,6 +340,27 @@ function searchEverything(query: string, selectedKind: SearchKind, island: strin
         if (query && score <= 0) continue;
         results.push({ type: "directory", item, kind, score });
       }
+    }
+  }
+
+  if (selectedKind === "all" || selectedKind === "events") {
+    for (const event of getUpcomingEvents()) {
+      if (island && event.island !== island) continue;
+      const score = scoreText(
+        [
+          event.name,
+          EVENT_CATEGORY_LABELS[event.category],
+          EVENT_ISLAND_LABELS[event.island],
+          event.location,
+          event.description,
+          formatEventDate(event),
+          ...event.tags,
+        ],
+        terms,
+        Boolean(event.featured),
+      );
+      if (query && score <= 0) continue;
+      results.push({ type: "event", event, score });
     }
   }
 
@@ -382,7 +453,9 @@ function scoreText(
 }
 
 function getResultTitle(result: Result) {
-  return result.type === "directory" ? result.item.name : result.title;
+  if (result.type === "directory") return result.item.name;
+  if (result.type === "event") return result.event.name;
+  return result.title;
 }
 
 function isKind(value: string | undefined): value is SearchKind {
@@ -391,6 +464,7 @@ function isKind(value: string | undefined): value is SearchKind {
     value === "places" ||
     value === "beaches" ||
     value === "stays" ||
+    value === "events" ||
     value === "historic" ||
     value === "timeline" ||
     value === "governors"
