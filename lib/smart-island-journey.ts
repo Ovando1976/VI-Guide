@@ -9,6 +9,18 @@ export type JourneyPlace = {
   island: JourneyIsland;
   kind: "airport" | "town" | "terminal" | "beach" | "destination";
   terminalTransfers: Partial<Record<FerryPortId, number>>;
+  lat?: number;
+  lng?: number;
+  sourceHref?: string;
+};
+
+export type JourneyCoordinates = { lat: number; lng: number };
+
+export const FERRY_TERMINAL_COORDS: Record<FerryPortId, JourneyCoordinates> = {
+  "red-hook": { lat: 18.3268, lng: -64.8493 },
+  "charlotte-amalie": { lat: 18.3394, lng: -64.9349 },
+  "cruz-bay": { lat: 18.3311, lng: -64.7955 },
+  "gallows-bay": { lat: 17.7494, lng: -64.6998 },
 };
 
 export type SmartJourneyLeg = {
@@ -55,15 +67,23 @@ export function getJourneyPlace(id: string) {
   return JOURNEY_PLACES.find((place) => place.id === id) ?? null;
 }
 
+export function ferryPortsForIsland(island: JourneyIsland): FerryPortId[] {
+  if (island === "stj") return ["cruz-bay"];
+  if (island === "stx") return ["gallows-bay"];
+  return ["charlotte-amalie", "red-hook"];
+}
+
 export function planSmartIslandJourney(input: {
-  originId: string;
-  destinationId: string;
+  originId?: string;
+  destinationId?: string;
+  origin?: JourneyPlace;
+  destination?: JourneyPlace;
   travelDate: string;
   requestedTime: string;
   timeMode: JourneyTimeMode;
 }): SmartJourneyPlan | null {
-  const origin = getJourneyPlace(input.originId);
-  const destination = getJourneyPlace(input.destinationId);
+  const origin = input.origin ?? getJourneyPlace(input.originId ?? "");
+  const destination = input.destination ?? getJourneyPlace(input.destinationId ?? "");
   if (!origin || !destination || origin.island === destination.island) return null;
 
   const candidates = FERRY_ROUTES
@@ -120,7 +140,7 @@ function buildCandidate(
       minutes: originTransfer,
       startTime: fromMinutes(leaveOrigin),
       endTime: fromMinutes(leaveOrigin + originTransfer),
-      note: `Planning estimate. Arrive about ${route.checkInMinutes} minutes before the published sailing.`,
+      note: `VI Guide road-time estimate. Arrive about ${route.checkInMinutes} minutes before the published sailing.`,
       mobilityHref: mobilityHref(origin.label, route.fromLabel),
     });
   }
@@ -143,7 +163,7 @@ function buildCandidate(
       minutes: arrivalTransfer,
       startTime: fromMinutes(ferryArrival),
       endTime: fromMinutes(destinationArrival),
-      note: "Planning estimate for the arrival transfer; actual travel time varies with traffic and pickup conditions.",
+      note: "VI Guide road-time estimate for the arrival transfer; actual travel time varies with traffic and pickup conditions.",
       mobilityHref: mobilityHref(route.toLabel, destination.label),
     });
   }
