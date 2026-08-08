@@ -10,6 +10,7 @@ const model = source("lib/door-to-door-journey.ts");
 const planner = source("components/door-to-door-journey-planner.tsx");
 const journeyPage = source("app/journey/page.tsx");
 const ferryPage = source("app/ferry/page.tsx");
+const homeStatus = source("components/home/home-live-status.tsx");
 
 assert.match(model, /Cyril E\. King Airport → Cruz Bay/);
 assert.match(model, /Charlotte Amalie → Cruz Bay/);
@@ -32,5 +33,10 @@ assert.match(journeyPage, /secondaryHref="\/trips"/);
 assert.match(ferryPage, /Ferry \+ Island Journey Planner/);
 assert.match(ferryPage, /DoorToDoorJourneyPlanner/);
 assert.match(ferryPage, /FerryPlanner/);
+
+assert.match(homeStatus, /label: "Ferry \+ island journey"/);
+assert.match(homeStatus, /value: "Plan taxi \+ ferry as one trip"/);
+assert.match(homeStatus, /href: "\/journey"/);
+assert.doesNotMatch(homeStatus, /label: "Ferry planning"[\s\S]{0,180}href: "\/mobility"/);
 
 console.log("VI Guide connected Island Journey contracts passed.");
