@@ -14,6 +14,10 @@ const adminFleet = fs.readFileSync(
   path.join(root, "app/admin/fleet/page.tsx"),
   "utf8",
 );
+const driverPage = fs.readFileSync(
+  path.join(root, "app/driver/page.tsx"),
+  "utf8",
+);
 const accountMenu = fs.readFileSync(
   path.join(root, "components/account-menu.tsx"),
   "utf8",
@@ -74,6 +78,15 @@ expectSource(adminFleet, 'requireSession(["admin", "dispatcher"])', "Fleet conso
 
 expectSource(navigation, 'base: "/driver"', "Driver shell keeps Driver OS entry");
 expectSource(navigation, 'base: "/map"', "Driver shell keeps Live Map escape");
+expectSource(driverPage, 'requireSession(["driver", "admin"])', "Driver OS preserves the verified driver and admin boundary");
+expectSource(driverPage, "Run every trip from one operational cockpit.", "Driver OS opens with the synchronized operations hero");
+expectSource(driverPage, "bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.3),transparent_32%),linear-gradient(145deg,#032f2d,#0b6b64)]", "Driver OS uses the VI Guide operations visual foundation");
+expectSource(driverPage, 'href="/map"', "Driver OS keeps a direct Living Map handoff");
+expectSource(driverPage, "Shift readiness", "Driver OS keeps readiness ahead of live demand");
+expectSource(driverPage, "<DriverLifecycleBanner />", "Driver OS keeps lifecycle readiness");
+expectSource(driverPage, "<DriverComplianceReadiness driverId={driverId} />", "Driver OS keeps compliance readiness");
+expectSource(driverPage, "<DriverLocationPublisher driverId={driverId} />", "Driver OS keeps live location publishing");
+expectSource(driverPage, "<DriverConsole driverId={driverId} />", "Driver OS keeps the real-time operations console");
 expectSource(navigation, 'base: "/merchant"', "business shell keeps Business console entry");
 expectSource(navigation, 'base: "/provider/operations"', "business shell keeps availability operations entry");
 expectSource(navigation, 'base: "/", label: "Public Guide"', "every operations shell can return to the public VI Guide");
