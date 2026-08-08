@@ -24,7 +24,7 @@ export default async function DriverPage() {
   const driverId = session.driverId ?? session.uid;
 
   return (
-    <main className="min-h-screen bg-[#f7f2e7] px-3 py-4 pb-32 text-[#043331] sm:px-5 sm:py-6 lg:py-8">
+    <div className="min-h-screen bg-[#f7f2e7] px-3 py-4 pb-32 text-[#043331] sm:px-5 sm:py-6 lg:py-8">
       <div className="mx-auto max-w-7xl">
         <section className="overflow-hidden rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.3),transparent_32%),linear-gradient(145deg,#032f2d,#0b6b64)] p-6 text-white shadow-[0_30px_90px_rgba(4,51,49,.24)] sm:p-9 lg:p-11">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
@@ -35,7 +35,7 @@ export default async function DriverPage() {
               <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[.95] tracking-[-.055em] sm:text-6xl">
                 Run every trip from one operational cockpit.
               </h1>
-              <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/68 sm:text-base">
+              <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/[.68] sm:text-base">
                 Keep shift readiness, compliance, live location, paid ride demand,
                 trip progress, and earnings connected to the same VI Guide mobility
                 system.
@@ -50,7 +50,7 @@ export default async function DriverPage() {
                 </Link>
                 <Link
                   href="/"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/8 px-5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:bg-white/14"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 bg-white/[.08] px-5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:bg-white/[.14]"
                 >
                   Public guide <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -130,6 +130,6 @@ export default async function DriverPage() {
           <DriverConsole driverId={driverId} />
         </section>
       </div>
-    </main>
+    </div>
   );
 }
