@@ -143,6 +143,23 @@ export const USVI_EVENTS: readonly UsviEvent[] = [
     featured: true,
     tags: ["festival", "Frederiksted", "Christmas", "parade", "music", "food"],
   },
+  {
+    id: "stj-celebration-2027",
+    slug: "st-john-celebration-2027",
+    name: "St. John Celebration",
+    island: "stj",
+    category: "festival",
+    startDate: "2027-06-27",
+    endDate: "2027-07-04",
+    location: "Cruz Bay, St. John",
+    description:
+      "St. John Celebration returns in 2027 with the island's annual cultural celebration centered on Emancipation and Independence traditions. Visit USVI currently lists the festival from June 27 through July 4, 2027.",
+    sourceLabel: "Visit USVI · St. John Celebration",
+    sourceUrl: "https://www.visitusvi.com/events/st-john-celebration/",
+    verifiedAt: "2026-08-08",
+    featured: true,
+    tags: ["festival", "Cruz Bay", "Emancipation", "Independence Day", "culture", "St. John"],
+  },
 ];
 
 export const EVENT_CATEGORY_LABELS: Record<EventCategory, string> = {
@@ -163,7 +180,7 @@ export function getEventBySlug(slug: string) {
   return USVI_EVENTS.find((event) => event.slug === slug || event.id === slug);
 }
 
-export function getUpcomingEvents(today = "2026-08-08") {
+export function getUpcomingEvents(today = new Date().toISOString().slice(0, 10)) {
   return [...USVI_EVENTS]
     .filter((event) => (event.endDate ?? event.startDate) >= today)
     .sort((left, right) => left.startDate.localeCompare(right.startDate));
