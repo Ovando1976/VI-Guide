@@ -9,6 +9,7 @@ import {
   mergeAttribution,
   type AcquisitionAttribution,
 } from "@/lib/acquisition";
+import { trackAcquisitionEvent } from "@/lib/acquisition-client";
 
 function readStored(): AcquisitionAttribution | null {
   try {
@@ -40,6 +41,10 @@ export function AcquisitionTracker() {
     } catch {
       // Attribution must never block the traveler experience.
     }
+
+    trackAcquisitionEvent("landing_view", {
+      attributed: Boolean(next.source || next.partnerId),
+    });
   }, [pathname, searchParams]);
 
   return null;
