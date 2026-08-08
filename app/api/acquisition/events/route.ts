@@ -13,6 +13,9 @@ const allowedEvents = new Set<AcquisitionEventName>([
 const clean = (value: unknown, max = 160) =>
   typeof value === "string" && value.trim() ? value.trim().slice(0, max) : null;
 
+type AcquisitionPropertyValue = string | number | boolean | null;
+type AcquisitionPropertyEntry = [string, AcquisitionPropertyValue];
+
 function cleanAttribution(value: unknown): Partial<AcquisitionAttribution> | null {
   if (!value || typeof value !== "object") return null;
   const input = value as Record<string, unknown>;
@@ -29,19 +32,18 @@ function cleanAttribution(value: unknown): Partial<AcquisitionAttribution> | nul
   };
 }
 
-function cleanProperties(value: unknown) {
+function cleanProperties(value: unknown): Record<string, AcquisitionPropertyValue> {
   if (!value || typeof value !== "object") return {};
-  return Object.fromEntries(
-    Object.entries(value as Record<string, unknown>)
-      .slice(0, 30)
-      .flatMap(([key, item]) => {
-        if (!/^[a-zA-Z0-9_.-]{1,64}$/.test(key)) return [];
-        if (typeof item === "string") return [[key, item.slice(0, 300)]];
-        if (typeof item === "number" && Number.isFinite(item)) return [[key, item]];
-        if (typeof item === "boolean" || item === null) return [[key, item]];
-        return [];
-      }),
-  );
+
+  const entries: AcquisitionPropertyEntry[] = [];
+  for (const [key, item] of Object.entries(value as Record<string, unknown>).slice(0, 30)) {
+    if (!/^[a-zA-Z0-9_.-]{1,64}$/.test(key)) continue;
+    if (typeof item === "string") entries.push([key, item.slice(0, 300)]);
+    else if (typeof item === "number" && Number.isFinite(item)) entries.push([key, item]);
+    else if (typeof item === "boolean" || item === null) entries.push([key, item]);
+  }
+
+  return Object.fromEntries(entries);
 }
 
 export async function POST(request: NextRequest) {
