@@ -2,23 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  BookOpenText,
   CalendarDays,
   Clock3,
   ShipWheel,
   Sparkles,
-  SunMedium,
   Waves,
 } from "lucide-react";
 
 const STATUS_ITEMS = [
   {
-    label: "Island outlook",
-    value: "Warm, breezy, and ready to explore",
-    icon: SunMedium,
-    href: "/today",
+    label: "Local field notes",
+    value: "Know the place before you go",
+    icon: BookOpenText,
+    href: "/community",
     image: "/images/usvi-harbor-hero.jpg",
     alt: "Charlotte Amalie harbor and the hills of St. Thomas",
-    tag: "Today",
+    tag: "Context",
   },
   {
     label: "Ferry planning",

@@ -208,7 +208,7 @@ export default function Home() {
             >
               <Search size={19} className="text-[#73e3d9]" />
               <span className="flex-1 text-sm font-semibold text-white/58">
-                Search beaches, stays, food, history, tours…
+                Search beaches, stays, food, events, history, local stories…
               </span>
               <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-[#032f2d]">
                 <ArrowRight size={18} />
