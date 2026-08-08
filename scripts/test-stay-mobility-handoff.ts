@@ -1,0 +1,59 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const root = process.cwd();
+const stayPage = fs.readFileSync(
+  path.join(root, "app/accommodations/[slug]/page.tsx"),
+  "utf8",
+);
+const stayActionCard = fs.readFileSync(
+  path.join(root, "components/stay-action-card.tsx"),
+  "utf8",
+);
+const mobilityScreen = fs.readFileSync(
+  path.join(root, "components/mobility-booking-screen.tsx"),
+  "utf8",
+);
+
+function expectSource(source: string, value: string, label: string) {
+  if (!source.includes(value)) {
+    throw new Error(`Stay mobility handoff contract failed: ${label}`);
+  }
+}
+
+for (const [value, label] of [
+  ['new URLSearchParams({\n    island: item.island,\n    destination: item.name,', "stay detail carries island and property name"],
+  ['rideParams.set("to", item.estateGeoid)', "stay detail uses Mobility's canonical destination geoid key"],
+  ['rideParams.set("toLat", String(item.lat))', "stay detail keeps latitude fallback"],
+  ['rideParams.set("toLng", String(item.lng))', "stay detail keeps longitude fallback"],
+  ['rideHref={rideHref}', "stay action card receives the resolved property ride handoff"],
+  ['bookingHref: listingHref', "journey stop booking continuity remains intact"],
+  ['PremiumDetailShell', "stay detail remains in the shared premium detail shell"],
+] as const) {
+  expectSource(stayPage, value, label);
+}
+
+for (const [value, label] of [
+  ['rideHref: string', "stay action card requires an explicit ride destination"],
+  ['href={rideHref}', "airport or ferry ride CTA uses the property-specific handoff"],
+  ['kind: "accommodation"', "stay booking request type remains unchanged"],
+  ['return `/book?${params.toString()}`', "stay booking request continues through the shared booking flow"],
+  ['Plan with concierge', "Concierge planning continuity remains available"],
+] as const) {
+  expectSource(stayActionCard, value, label);
+}
+
+for (const [value, label] of [
+  ['searchParams.get("to")', "Mobility still consumes the canonical destination geoid key"],
+  ['searchParams.get("destinationName") ?? searchParams.get("destination")', "Mobility still accepts property-name fallback"],
+  ['queryCoordinate(searchParams, "toLat")', "Mobility still accepts latitude fallback"],
+  ['queryCoordinate(searchParams, "toLng")', "Mobility still accepts longitude fallback"],
+] as const) {
+  expectSource(mobilityScreen, value, label);
+}
+
+if (stayPage.includes('rideParams.set("toGeoid"')) {
+  throw new Error("Stay mobility handoff contract failed: obsolete toGeoid parameter returned");
+}
+
+console.log("VI Guide stay-to-Mobility handoff contracts passed.");
