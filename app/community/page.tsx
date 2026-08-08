@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import {
+  COMMUNITY_STORIES,
+  islandLabel,
+} from "@/lib/community-stories";
 
 const ISLAND_STORIES = [
   {
@@ -87,16 +91,16 @@ export default function CommunityPage() {
               <span className="block italic text-[#73e3d9]">beyond the itinerary.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
-              VI Guide Community is becoming the place where local stories, cultural context,
-              neighborhood knowledge, and traveler questions connect directly to the map and the trip.
+              VI Guide Community connects source-backed field notes, cultural context,
+              neighborhood knowledge, and traveler decisions directly to the map and the trip.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/map"
+                href="#field-notes"
                 className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-[#032f2d] shadow-[0_16px_40px_rgba(245,196,81,.24)] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
               >
-                <MapPinned size={17} /> Open Living Map <ArrowRight size={15} />
+                Read field notes <ArrowRight size={15} />
               </Link>
               <Link
                 href="/heritage"
@@ -110,23 +114,77 @@ export default function CommunityPage() {
           <aside className="vi-glass rounded-[32px] p-6 sm:p-7">
             <div className="vi-eyebrow text-[#f5c451]">Publishing status</div>
             <h2 className="vi-display mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Local publishing is opening deliberately.
+              Local publishing is live — and deliberately curated.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-6 text-white/62">
-              We are not filling this page with generic social posts just to make it look busy.
-              Community stories will be curated around verified place context, useful traveler guidance,
-              and respectful local representation.
+              Community starts with place-connected notes that help a traveler understand
+              geography, timing, history, and context before adding more noise to the feed.
             </p>
             <div className="mt-6 grid grid-cols-3 gap-2">
+              <StatusStat value={String(COMMUNITY_STORIES.length)} label="field notes" />
               <StatusStat value="3" label="islands" />
               <StatusStat value="1" label="shared map" />
-              <StatusStat value="∞" label="local stories" />
             </div>
           </aside>
         </div>
       </section>
 
-      <section className="px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
+      <section id="field-notes" className="scroll-mt-6 px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <div className="vi-eyebrow text-[#0f766e]">Published field notes</div>
+            <h2 className="vi-display mt-3 text-4xl font-bold leading-[.95] sm:text-5xl">
+              Start with context you can use today.
+            </h2>
+            <p className="mt-4 text-sm font-semibold leading-7 text-[#607370] sm:text-base">
+              Each note is tied to a real place, an explicit source, the Living Map,
+              Concierge, and My Trip so reading immediately improves the travel plan.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {COMMUNITY_STORIES.map((story) => (
+              <Link
+                key={story.id}
+                href={`/community/${story.slug}`}
+                className="group flex min-h-[30rem] flex-col overflow-hidden rounded-[32px] border border-[#d9e6e2] bg-[#fffdf8] shadow-[0_18px_50px_rgba(3,47,45,.1)] transition hover:-translate-y-1 hover:border-[#aad7d0] hover:shadow-[0_28px_70px_rgba(3,47,45,.16)]"
+              >
+                <div className="relative min-h-64 overflow-hidden bg-[#032f2d]">
+                  <Image
+                    src={story.image}
+                    alt={story.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,31,29,.08),rgba(2,31,29,.78))]" />
+                  <span className="absolute inset-x-5 bottom-5 text-white">
+                    <span className="text-[8px] font-black uppercase tracking-[.18em] text-[#f5c451]">
+                      {islandLabel(story.island)} · community field note
+                    </span>
+                    <strong className="vi-display mt-2 block text-3xl font-bold leading-[.95]">
+                      {story.placeName}
+                    </strong>
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="vi-display text-3xl font-bold leading-[.96] tracking-[-.04em]">
+                    {story.title}
+                  </h3>
+                  <p className="mt-4 flex-1 text-sm font-semibold leading-7 text-[#607370]">
+                    {story.summary}
+                  </p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.15em] text-[#0f766e]">
+                    Read the field note <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-10 sm:px-7 lg:px-10 lg:pb-14">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <div className="vi-eyebrow text-[#0f766e]">Start with place</div>
@@ -134,8 +192,9 @@ export default function CommunityPage() {
               Every community story belongs somewhere.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-7 text-[#607370] sm:text-base">
-              Choose an island to move directly into its Living Map. As community publishing expands,
-              these island views become the geographic spine for stories, businesses, heritage, and local recommendations.
+              Choose an island to move directly into its Living Map. Community notes use
+              these island views as the geographic spine for stories, businesses, heritage,
+              and local recommendations.
             </p>
           </div>
 
@@ -181,8 +240,8 @@ export default function CommunityPage() {
                 Not another feed. A local intelligence layer.
               </h2>
               <p className="mt-4 text-sm font-semibold leading-7 text-white/62">
-                The goal is useful local context that strengthens discovery, planning, mobility,
-                and cultural understanding across the rest of VI Guide.
+                The goal is useful local context that strengthens discovery, planning,
+                mobility, and cultural understanding across the rest of VI Guide.
               </p>
             </div>
 
