@@ -25,7 +25,7 @@ const PROMPTS = [
       "Plan a relaxed beach day with food and transportation nearby",
     ),
     icon: Waves,
-    image: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
     alt: "Magens Bay beach in St. Thomas",
   },
   {
