@@ -57,7 +57,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
     island: item.island,
     destination: item.name,
   });
-  if (item.estateGeoid) rideParams.set("toGeoid", item.estateGeoid);
+  if (item.estateGeoid) rideParams.set("to", item.estateGeoid);
   if (typeof item.lat === "number") rideParams.set("toLat", String(item.lat));
   if (typeof item.lng === "number") rideParams.set("toLng", String(item.lng));
   const rideHref = `/mobility?${rideParams.toString()}`;
@@ -227,6 +227,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
           islandCode={item.island}
           location={item.location}
           listingHref={listingHref}
+          rideHref={rideHref}
         />
       }
     />
