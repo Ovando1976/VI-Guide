@@ -113,7 +113,7 @@ export default async function ShoreExcursionsPage({
                   </p>
                 </div>
                 <Link
-                  href="/planner"
+                  href="/trips"
                   className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white"
                 >
                   Open My Trip
@@ -292,7 +292,7 @@ function OfficialPortCallContext({
         </div>
         <div className="flex flex-wrap gap-2">
           <Link
-            href="/planner"
+            href="/trips"
             className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white"
           >
             Open My Trip
