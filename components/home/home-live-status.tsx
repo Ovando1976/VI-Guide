@@ -34,7 +34,7 @@ const STATUS_ITEMS = [
     value: "Start early for the calmest water",
     icon: Waves,
     href: "/beaches",
-    image: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
     alt: "Magens Bay beach in St. Thomas",
     tag: "Water",
   },
