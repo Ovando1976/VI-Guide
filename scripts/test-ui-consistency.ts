@@ -23,6 +23,9 @@ const journeyCloudState = source("lib/journey-cloud-state.ts");
 const journeySyncState = source("lib/journey-sync-state.ts");
 const journeySyncRoute = source("app/api/journeys/route.ts");
 const cruiseHub = source("app/cruises/page.tsx");
+const cruiseAdvisor = source("app/cruises/plan/page.tsx");
+const cruisePortCalls = source("app/cruises/port-calls/page.tsx");
+const shoreExcursionsLayout = source("app/shore-excursions/layout.tsx");
 const planner = source("app/planner/page.tsx");
 const directory = source("components/directory/discovery-directory-page.tsx");
 const directoryCard = source("components/directory/directory-card.tsx");
@@ -63,6 +66,9 @@ for (const [name, contents] of [
   ["traveler trip command", tripsPage],
   ["my day", todayPage],
   ["cruise hub", cruiseHub],
+  ["cruise advisor", cruiseAdvisor],
+  ["official cruise port calls", cruisePortCalls],
+  ["shore excursion flow", shoreExcursionsLayout],
   ["journey planner", planner],
   ["directory surfaces", directory],
   ["mobility", mobility],
@@ -73,6 +79,13 @@ for (const [name, contents] of [
 ] as const) {
   assert.match(contents, /ViPublicHeader/, `${name} must use ViPublicHeader`);
 }
+
+assert.match(cruiseAdvisor, /CruiseHubNav/);
+assert.match(cruiseAdvisor, /secondaryHref="\/trips"/);
+assert.match(cruisePortCalls, /CruiseHubNav/);
+assert.match(cruisePortCalls, /actionHref="\/cruises\/plan"/);
+assert.match(shoreExcursionsLayout, /actionHref="\/cruises\/plan"/);
+assert.match(shoreExcursionsLayout, /secondaryHref="\/cruises"/);
 
 for (const [name, contents] of [
   ["catalog directory detail", directoryDetail],

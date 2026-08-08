@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { getUsviToday } from "@/lib/booking/booking-dates";
 import { loadOfficialPortCallBoard } from "@/lib/cruise-port-call-public";
@@ -41,7 +42,18 @@ export default async function CruisePortCallsPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-28 text-[#043331]">
-      <CruiseHubNav compact />
+      <section className="px-4 pt-5 sm:px-6 lg:pt-8">
+        <ViPublicHeader
+          actionHref="/cruises/plan"
+          actionLabel="Ask cruise advisor"
+          actionIcon={ShipWheel}
+          secondaryHref="/cruises"
+          secondaryLabel="Cruise Hub"
+        />
+      </section>
+      <div className="mt-5">
+        <CruiseHubNav compact />
+      </div>
 
       <section className="px-4 py-8 sm:px-6 lg:py-12">
         <div className="mx-auto max-w-7xl">
