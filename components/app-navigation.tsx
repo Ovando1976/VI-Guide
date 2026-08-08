@@ -42,15 +42,20 @@ const EXPLORE_ROUTES = [
   "/shore-excursions",
   "/community",
   "/search",
+  "/saved",
 ] as const;
 
 const TRIP_ROUTES = [
   "/trips",
   "/planner",
   "/plan",
+  "/today",
+  "/trip-planning",
   "/mobility",
   "/book",
   "/bookings",
+  "/checkout",
+  "/shared-trip",
 ] as const;
 const CONCIERGE_ROUTES = ["/concierge", "/intelligence", "/mission"] as const;
 
