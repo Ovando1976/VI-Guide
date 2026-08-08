@@ -51,6 +51,8 @@ assert.match(layout, /themeColor: "#032f2d"/);
 assert.match(homePage, /QUICK\.map\(\(\{ label, detail, href, image, alt, icon: Icon \}\)/);
 assert.match(homePage, /src=\{image\}/);
 assert.match(homePage, /alt=\{alt\}/);
+assert.match(homePage, /magens-bay-beach-1\.jpg/);
+assert.doesNotMatch(homePage, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
 assert.match(homeConcierge, /PROMPTS\.map\(\(\{ label, href, image, alt, icon: Icon \}\)/);
 assert.match(homeConcierge, /One-tap idea/);
 assert.match(homeConcierge, /king-christian-hotel\.jpg/);
@@ -58,7 +60,8 @@ assert.match(homeLiveStatus, /STATUS_ITEMS\.map\(\(\{ label, value, icon: Icon, 
 assert.match(homeLiveStatus, /Today in the Virgin Islands/);
 assert.match(homeLiveStatus, /Open in VI Guide/);
 assert.match(homeLiveStatus, /red-hook-ferry-terminal-1\.jpg/);
-assert.match(homeLiveStatus, /magens-bay-1\.jpg/);
+assert.match(homeLiveStatus, /magens-bay-beach-1\.jpg/);
+assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
 assert.match(mapPage, /VI Guide Living Map/);
