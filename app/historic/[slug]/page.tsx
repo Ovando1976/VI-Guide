@@ -47,7 +47,7 @@ export default function HistoricDetailPage({
     island: site.island,
     destination: site.name,
   });
-  if (site.estateGeoid) rideParams.set("toGeoid", site.estateGeoid);
+  if (site.estateGeoid) rideParams.set("to", site.estateGeoid);
   if (typeof site.lat === "number") rideParams.set("toLat", String(site.lat));
   if (typeof site.lng === "number") rideParams.set("toLng", String(site.lng));
   const rideHref = `/mobility?${rideParams.toString()}`;
