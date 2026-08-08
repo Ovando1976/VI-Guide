@@ -1,3 +1,6 @@
+import { Building2 } from "lucide-react";
+
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { PartnerApplicationStatusTracker } from "@/components/partners/partner-application-status";
 
 export const metadata = {
@@ -7,5 +10,18 @@ export const metadata = {
 };
 
 export default function PartnerApplicationStatusPage() {
-  return <PartnerApplicationStatusTracker />;
+  return (
+    <>
+      <div className="bg-[#032f2d] px-4 pt-5 sm:px-7 lg:px-10">
+        <ViPublicHeader
+          actionHref="/partners/apply"
+          actionLabel="Apply to partner"
+          actionIcon={Building2}
+          secondaryHref="/partners"
+          secondaryLabel="Partner network"
+        />
+      </div>
+      <PartnerApplicationStatusTracker />
+    </>
+  );
 }
