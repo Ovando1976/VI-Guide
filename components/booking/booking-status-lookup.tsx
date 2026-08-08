@@ -399,7 +399,7 @@ export function BookingStatusLookup() {
 
                   <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                     <Link
-                      href="/planner"
+                      href="/trips"
                       className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.15em] text-white"
                     >
                       {journeySynced ? "Open synchronized trip" : "Open my trip"}
