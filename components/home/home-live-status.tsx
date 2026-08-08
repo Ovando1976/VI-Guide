@@ -21,10 +21,10 @@ const STATUS_ITEMS = [
     tag: "Context",
   },
   {
-    label: "Ferry planning",
-    value: "Check routes before you go",
+    label: "Ferry + island journey",
+    value: "Plan taxi + ferry as one trip",
     icon: ShipWheel,
-    href: "/mobility",
+    href: "/journey",
     image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
     alt: "Red Hook ferry terminal in St. Thomas",
     tag: "Move",
