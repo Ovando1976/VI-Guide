@@ -36,7 +36,10 @@ export function MerchantConsoleNav({
   );
 
   return (
-    <nav className="flex max-w-full gap-2 overflow-x-auto pb-1 xl:flex-wrap xl:justify-end" aria-label="Merchant console">
+    <nav
+      className="flex max-w-full gap-1.5 overflow-x-auto rounded-[22px] border border-white/10 bg-black/10 p-1.5 shadow-inner backdrop-blur xl:flex-wrap xl:justify-end"
+      aria-label="Merchant operations sections"
+    >
       {items.map(({ href, label, icon: Icon }) => {
         const base = href.split("?")[0];
         const active =
@@ -47,13 +50,15 @@ export function MerchantConsoleNav({
             key={label}
             href={href}
             aria-current={active ? "page" : undefined}
-            className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] transition ${
+            className={`inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] transition ${
               active
-                ? "bg-[#043331] text-white shadow-sm"
-                : "border border-slate-200 bg-white text-[#043331] hover:border-teal-300 hover:bg-teal-50"
+                ? "bg-[#f5c451] text-[#032f2d] shadow-[0_8px_24px_rgba(245,196,81,.18)]"
+                : "text-white/70 hover:bg-white/10 hover:text-white"
             }`}
           >
-            <Icon className={`h-4 w-4 ${active ? "text-[#f5c451]" : "text-teal-700"}`} />
+            <Icon
+              className={`h-4 w-4 ${active ? "text-[#032f2d]" : "text-[#f5c451]"}`}
+            />
             {label}
           </Link>
         );
@@ -61,14 +66,22 @@ export function MerchantConsoleNav({
       {showPayouts ? (
         <Link
           href="/merchant/payouts"
-          aria-current={pathname.startsWith("/merchant/payouts") ? "page" : undefined}
-          className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] transition ${
+          aria-current={
+            pathname.startsWith("/merchant/payouts") ? "page" : undefined
+          }
+          className={`inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] transition ${
             pathname.startsWith("/merchant/payouts")
-              ? "bg-[#043331] text-white shadow-sm"
-              : "border border-slate-200 bg-white text-[#043331] hover:border-teal-300 hover:bg-teal-50"
+              ? "bg-[#f5c451] text-[#032f2d] shadow-[0_8px_24px_rgba(245,196,81,.18)]"
+              : "text-white/70 hover:bg-white/10 hover:text-white"
           }`}
         >
-          <WalletCards className={`h-4 w-4 ${pathname.startsWith("/merchant/payouts") ? "text-[#f5c451]" : "text-teal-700"}`} />
+          <WalletCards
+            className={`h-4 w-4 ${
+              pathname.startsWith("/merchant/payouts")
+                ? "text-[#032f2d]"
+                : "text-[#f5c451]"
+            }`}
+          />
           Payouts
         </Link>
       ) : null}

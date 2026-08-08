@@ -18,6 +18,14 @@ const driverPage = fs.readFileSync(
   path.join(root, "app/driver/page.tsx"),
   "utf8",
 );
+const merchantLayout = fs.readFileSync(
+  path.join(root, "app/merchant/layout.tsx"),
+  "utf8",
+);
+const merchantNav = fs.readFileSync(
+  path.join(root, "components/merchant/merchant-console-nav.tsx"),
+  "utf8",
+);
 const accountMenu = fs.readFileSync(
   path.join(root, "components/account-menu.tsx"),
   "utf8",
@@ -87,8 +95,19 @@ expectSource(driverPage, "<DriverLifecycleBanner />", "Driver OS keeps lifecycle
 expectSource(driverPage, "<DriverComplianceReadiness driverId={driverId} />", "Driver OS keeps compliance readiness");
 expectSource(driverPage, "<DriverLocationPublisher driverId={driverId} />", "Driver OS keeps live location publishing");
 expectSource(driverPage, "<DriverConsole driverId={driverId} />", "Driver OS keeps the real-time operations console");
+
 expectSource(navigation, 'base: "/merchant"', "business shell keeps Business console entry");
 expectSource(navigation, 'base: "/provider/operations"', "business shell keeps availability operations entry");
+expectSource(merchantLayout, 'new Set(["merchant", "dispatcher", "admin"])', "Merchant shell preserves its verified business roles");
+expectSource(merchantLayout, "VI Guide business operations", "Merchant shell carries an explicit operating identity");
+expectSource(merchantLayout, "bg-[linear-gradient(135deg,rgba(3,47,45,.985),rgba(7,80,76,.985))]", "Merchant shell uses the VI Guide operations foundation");
+expectSource(merchantLayout, "<MerchantConsoleNav", "Merchant shell keeps its route-aware business navigation");
+expectSource(merchantLayout, "Assigned businesses", "Merchant shell keeps listing-scoped business context visible");
+expectSource(merchantNav, 'aria-label="Merchant operations sections"', "Merchant navigation has an accessible operations identity");
+expectSource(merchantNav, 'aria-current={active ? "page" : undefined}', "Merchant navigation exposes active destinations semantically");
+expectSource(merchantNav, "overflow-x-auto", "Merchant navigation remains usable on narrow screens");
+expectSource(merchantNav, "bg-[#f5c451] text-[#032f2d]", "Merchant navigation uses the gold active state");
+expectSource(merchantNav, 'href="/merchant/payouts"', "Merchant navigation preserves merchant payout access");
 expectSource(navigation, 'base: "/", label: "Public Guide"', "every operations shell can return to the public VI Guide");
 
 expectSource(operationsStyles, ".app-nav--operations", "operations mode has scoped navigation styling");
