@@ -16,7 +16,6 @@ const conciergePage = source("app/concierge/page.tsx");
 const communityPage = source("app/community/page.tsx");
 const communityPostPage = source("app/community/[postId]/page.tsx");
 const experiencesPage = source("app/experiences/page.tsx");
-const bookableExperiences = source("lib/bookable-experiences.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
 const navigation = source("components/app-navigation.tsx");
@@ -94,14 +93,14 @@ assert.match(communityPostPage, /href="\/map"/);
 
 assert.match(experiencesPage, /Tours & experiences · connected booking/);
 assert.match(experiencesPage, /ViPublicHeader/);
-assert.match(experiencesPage, /src=\{item\.heroImage\}/);
-assert.match(experiencesPage, /alt=\{item\.heroAlt\}/);
+assert.match(experiencesPage, /EXPERIENCE_IMAGES/);
+assert.match(experiencesPage, /src=\{visual\.image\}/);
+assert.match(experiencesPage, /alt=\{visual\.alt\}/);
+assert.match(experiencesPage, /trunk-bay-overlook-1\.jpg/);
+assert.match(experiencesPage, /king-christian-hotel\.jpg/);
 assert.match(experiencesPage, /Map island/);
 assert.match(experiencesPage, /Plan around this/);
 assert.match(experiencesPage, /Request booking/);
-assert.match(bookableExperiences, /heroImage: string/);
-assert.match(bookableExperiences, /trunk-bay-overlook-1\.jpg/);
-assert.match(bookableExperiences, /king-christian-hotel\.jpg/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
