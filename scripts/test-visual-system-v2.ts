@@ -31,6 +31,9 @@ const notificationCenter = source("components/notifications/notification-center.
 const loginScreen = source("components/login-screen.tsx");
 const unauthorizedPage = source("app/unauthorized/page.tsx");
 const accountMenu = source("components/account-menu.tsx");
+const travelerWorkspace = source("components/traveler/traveler-workspace.tsx");
+const syncedTravelerWorkspace = source("components/traveler/synced-traveler-workspace.tsx");
+const reservationEnabledWorkspace = source("components/traveler/reservation-enabled-workspace.tsx");
 const offerVisual = source("lib/offers/offer-visual.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
@@ -251,6 +254,27 @@ assert.match(unauthorizedPage, /Access restricted · account protected/);
 assert.match(unauthorizedPage, /role or listing assignment/);
 assert.match(unauthorizedPage, /href="\/profile"/);
 assert.match(unauthorizedPage, /Return to VI Guide/);
+
+assert.match(travelerWorkspace, /ViPublicHeader/);
+assert.match(travelerWorkspace, /ISLAND_VISUALS/);
+assert.match(travelerWorkspace, /src=\{islandVisual\.image\}/);
+assert.match(travelerWorkspace, /Traveler workspace · active journey/);
+assert.match(travelerWorkspace, /Your trip, in motion\./);
+assert.match(travelerWorkspace, /Map connected/);
+assert.match(travelerWorkspace, /Concierge aware/);
+assert.match(travelerWorkspace, /Reservations connected/);
+assert.match(travelerWorkspace, /Continue on Living Map/);
+assert.match(travelerWorkspace, /readJourneyPlans/);
+assert.match(travelerWorkspace, /importLegacyTripPlans/);
+assert.match(travelerWorkspace, /JOURNEY_PLAN_UPDATED_EVENT/);
+assert.match(travelerWorkspace, /buildJourneyMapHref/);
+assert.match(travelerWorkspace, /window\.location\.assign/);
+assert.match(travelerWorkspace, /destinationName=/);
+assert.match(syncedTravelerWorkspace, /VI_MAP_FOCUS_EVENT/);
+assert.match(syncedTravelerWorkspace, /upsertJourneyPlan/);
+assert.match(syncedTravelerWorkspace, /selectedIndex <= 0/);
+assert.match(reservationEnabledWorkspace, /WorkspaceReservations journey=\{active\}/);
+assert.match(reservationEnabledWorkspace, /JOURNEY_PLAN_UPDATED_EVENT/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
