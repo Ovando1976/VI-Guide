@@ -11,8 +11,6 @@ const HOME_SURFACES = [
 
 const KNOWN_BAD_MAGENS_PATH = "/images/beaches/st-thomas/magens-bay-1.jpg";
 const VERIFIED_MAGENS_PATH = "/images/places/st-thomas/magens-bay-beach-1.jpg";
-const USVI_TAXI_VAN_IMAGE =
-  "https://usvitaxi.com/wp-content/uploads/2023/03/our_taxi2-1024x731.jpg";
 
 function source(path: string) {
   return readFileSync(resolve(root, path), "utf8");
@@ -95,15 +93,15 @@ assert.ok(
   source("components/home/home-concierge-hub.tsx").includes(VERIFIED_MAGENS_PATH),
   "Homepage Concierge Beach day must use the verified Magens Bay JPEG",
 );
-assert.ok(
-  home.includes(USVI_TAXI_VAN_IMAGE),
-  "Homepage Ride card must use the selected St. Thomas Ford taxi van image",
-);
-assert.match(home, /White Ford passenger taxi van on St\. Thomas in the U\.S\. Virgin Islands/);
 assert.doesNotMatch(
   home,
-  /label: "Ride"[\s\S]{0,260}red-hook-ferry-terminal-1\.jpg/,
-  "Homepage Ride card must not fall back to the ferry-terminal image",
+  /usvitaxi\.com|Annie's Taxi Service/,
+  "Homepage must not ship the unlicensed Annie's Taxi image or attribution",
+);
+assert.doesNotMatch(
+  home,
+  /image:\s*"https:\/\//,
+  "Homepage quick-card images must be locally controlled assets with documented reuse rights",
 );
 assert.ok(allImages.size > 0, "No local homepage images were discovered for integrity validation");
 
@@ -111,4 +109,4 @@ for (const imagePath of [...allImages].sort()) {
   assertImageSignature(imagePath);
 }
 
-console.log(`VI Guide homepage image integrity passed for ${allImages.size} unique local images plus the sourced USVI taxi van.`);
+console.log(`VI Guide homepage image integrity passed for ${allImages.size} unique local images.`);
