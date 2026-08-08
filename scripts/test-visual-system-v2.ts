@@ -142,6 +142,11 @@ assert.match(visualLayer, /place-story-hero/);
 assert.match(header, /Virgin Islands travel OS/);
 assert.match(navigation, /app-nav__item--map/);
 assert.match(navigation, /"\/mission"/);
+assert.match(navigation, /"\/saved"/);
+assert.match(navigation, /"\/today"/);
+assert.match(navigation, /"\/trip-planning"/);
+assert.match(navigation, /"\/checkout"/);
+assert.match(navigation, /"\/shared-trip"/);
 assert.match(brand, /vi-brand-mark/);
 
 console.log("VI Guide visible traveler visual-system contracts passed.");
