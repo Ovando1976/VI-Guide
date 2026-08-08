@@ -1,5 +1,6 @@
 import type { LineString, Position } from "geojson";
 
+import { FERRY_ROUTES } from "@/lib/ferry-planner";
 import { FERRY_TERMINAL_COORDS } from "@/lib/smart-island-journey";
 import type { SmartJourneyPlan } from "@/lib/smart-island-journey";
 import type { IntelligencePlanStop } from "@/types/intelligence";
@@ -82,22 +83,54 @@ export function buildIslandJourneyMapStops(
 }
 
 export function positionedJourneyStops(plan: JourneyPlan) {
-  return plan.plan.filter(
-    (stop) =>
-      typeof stop.lat === "number" &&
-      Number.isFinite(stop.lat) &&
-      typeof stop.lng === "number" &&
-      Number.isFinite(stop.lng),
-  );
+  const positioned: IntelligencePlanStop[] = [];
+
+  for (const stop of plan.plan) {
+    if (!hasPosition(stop)) continue;
+    positioned.push(stop);
+
+    // PR #241/#242 saved the ferry leg as one positioned stop at the
+    // departure terminal. Infer the arrival terminal from the governed
+    // ferry route so those already-saved trips become map-native too.
+    if (stop.kind === "ferry") {
+      const route = FERRY_ROUTES.find(
+        (candidate) =>
+          stop.title === `${candidate.fromLabel} → ${candidate.toLabel}`,
+      );
+      if (route) {
+        const arrival = FERRY_TERMINAL_COORDS[route.to];
+        positioned.push({
+          id: `${stop.id}_arrival`.slice(0, 160),
+          title: route.toLabel,
+          island: route.to === "cruz-bay" ? "stj" : route.to === "gallows-bay" ? "stx" : "stt",
+          kind: "ferry-terminal-arrival",
+          summary: `Arrival terminal for ${route.serviceLabel.toLowerCase()}.`,
+          lat: arrival.lat,
+          lng: arrival.lng,
+          href: route.sourceUrl,
+        });
+      }
+    }
+  }
+
+  return positioned;
 }
 
 export function isFerryWaterSegment(
   from: IntelligencePlanStop,
   to: IntelligencePlanStop,
 ) {
-  return (
+  if (
     from.kind === "ferry-terminal-departure" &&
     to.kind === "ferry-terminal-arrival"
+  ) {
+    return true;
+  }
+  if (from.kind !== "ferry" || to.kind !== "ferry-terminal-arrival") {
+    return false;
+  }
+  return FERRY_ROUTES.some(
+    (route) => from.title === `${route.fromLabel} → ${route.toLabel}`,
   );
 }
 
@@ -130,6 +163,15 @@ export function joinJourneySegments(segments: LineString[]): LineString | null {
     }
   }
   return coordinates.length >= 2 ? { type: "LineString", coordinates } : null;
+}
+
+function hasPosition(stop: IntelligencePlanStop) {
+  return (
+    typeof stop.lat === "number" &&
+    Number.isFinite(stop.lat) &&
+    typeof stop.lng === "number" &&
+    Number.isFinite(stop.lng)
+  );
 }
 
 function isPositioned(place: SmartJourneyPlan["origin"] | SmartJourneyPlan["destination"]) {
