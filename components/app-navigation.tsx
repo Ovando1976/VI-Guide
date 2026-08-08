@@ -91,7 +91,7 @@ const DRIVER_OPERATIONS_ITEMS: OperationsNavItem[] = [
 
 const BUSINESS_OPERATIONS_ITEMS: OperationsNavItem[] = [
   { base: "/merchant", label: "Business", icon: Store },
-  { base: "/provider/operations", label: "Availability", icon: CalendarDays },
+  { base: "/merchant/availability", label: "Availability", icon: CalendarDays },
   { base: "/", label: "Public Guide", icon: House },
 ];
 
@@ -126,6 +126,19 @@ function isOperationsActive(pathname: string, base: string) {
   if (base === "/") return false;
   if (base === "/admin") {
     return pathname === "/admin" || pathname === "/architecture";
+  }
+  if (base === "/merchant") {
+    return (
+      pathname === "/merchant" ||
+      (pathname.startsWith("/merchant/") &&
+        !matchesRoute(pathname, ["/merchant/availability"]))
+    );
+  }
+  if (base === "/merchant/availability") {
+    return matchesRoute(pathname, [
+      "/merchant/availability",
+      "/provider/operations",
+    ]);
   }
   return pathname === base || pathname.startsWith(`${base}/`);
 }
