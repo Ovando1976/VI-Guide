@@ -7,6 +7,7 @@ export type SavedPlace = {
   island: "stt" | "stj" | "stx";
   kind: string;
   summary: string;
+  image?: string;
   href?: string;
   mapHref?: string;
   rideHref?: string;
@@ -88,6 +89,8 @@ function normalizeSavedPlace(value: unknown): SavedPlace | null {
     return null;
   }
 
+  const image = boundedInternalImage(place.image);
+
   return {
     id: place.id.trim().slice(0, 180),
     title: place.title.trim().slice(0, 220),
@@ -98,6 +101,7 @@ function normalizeSavedPlace(value: unknown): SavedPlace | null {
         : "place",
     summary:
       typeof place.summary === "string" ? place.summary.trim().slice(0, 1200) : "",
+    ...(image ? { image } : {}),
     ...(boundedHref(place.href) ? { href: boundedHref(place.href) } : {}),
     ...(boundedHref(place.mapHref) ? { mapHref: boundedHref(place.mapHref) } : {}),
     ...(boundedHref(place.rideHref) ? { rideHref: boundedHref(place.rideHref) } : {}),
@@ -115,6 +119,13 @@ function normalizeSavedPlace(value: unknown): SavedPlace | null {
         ? place.savedAt
         : new Date().toISOString(),
   };
+}
+
+function boundedInternalImage(value: unknown) {
+  if (typeof value !== "string") return "";
+  const normalized = value.trim();
+  if (!normalized.startsWith("/") || normalized.startsWith("//")) return "";
+  return normalized.slice(0, 1200);
 }
 
 function boundedHref(value: unknown) {
