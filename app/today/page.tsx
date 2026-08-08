@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function TodayPage() {
   return (
-    <main className="min-h-screen bg-[#f7f2e7] pb-28 text-[#043331]">
-      <div className="px-4 pt-5 sm:px-6 lg:pt-8">
+    <div className="today-customer-page min-h-screen overflow-hidden bg-[#f7f2e7] text-[#043331]">
+      <div className="px-4 pb-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
           actionHref="/trips"
           actionLabel="My Trip"
@@ -23,8 +23,30 @@ export default function TodayPage() {
           secondaryLabel="Planner"
         />
       </div>
+
       <ProactiveTripIntelligence mode="banner" />
-      <AiTripBriefScreen />
-    </main>
+
+      <div className="today-brief-shell">
+        <AiTripBriefScreen />
+      </div>
+
+      <style>{`
+        .today-brief-shell > main {
+          min-height: auto;
+        }
+
+        .today-brief-shell > main > section:first-child {
+          padding-top: 1.5rem;
+        }
+
+        .today-brief-shell > main > section:first-child > div > div:first-child {
+          display: none;
+        }
+
+        .today-brief-shell > main > section:first-child > div > div:nth-child(2) {
+          margin-top: 0;
+        }
+      `}</style>
+    </div>
   );
 }
