@@ -97,7 +97,14 @@ expectSource(driverPage, "<DriverLocationPublisher driverId={driverId} />", "Dri
 expectSource(driverPage, "<DriverConsole driverId={driverId} />", "Driver OS keeps the real-time operations console");
 
 expectSource(navigation, 'base: "/merchant"', "business shell keeps Business console entry");
-expectSource(navigation, 'base: "/provider/operations"', "business shell keeps availability operations entry");
+expectSource(navigation, '{ base: "/merchant/availability", label: "Availability", icon: CalendarDays }', "business Availability stays inside the synchronized Merchant shell");
+if (navigation.includes('{ base: "/provider/operations", label: "Availability"')) {
+  throw new Error(
+    "Operations navigation contract failed: business Availability must not leave the synchronized Merchant shell",
+  );
+}
+expectSource(navigation, '!matchesRoute(pathname, ["/merchant/availability"])', "Business overview does not double-highlight on Availability");
+expectSource(navigation, '"/provider/operations",', "legacy Provider Operations still maps to the Availability active state");
 expectSource(merchantLayout, 'new Set(["merchant", "dispatcher", "admin"])', "Merchant shell preserves its verified business roles");
 expectSource(merchantLayout, "VI Guide business operations", "Merchant shell carries an explicit operating identity");
 expectSource(merchantLayout, "bg-[linear-gradient(135deg,rgba(3,47,45,.985),rgba(7,80,76,.985))]", "Merchant shell uses the VI Guide operations foundation");
