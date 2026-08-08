@@ -33,7 +33,7 @@ const QUICK = [
   { label: "Live map", detail: "See the islands", href: "/map", icon: Map, image: "/images/places/st-john/trunk-bay-overlook-1.jpg", alt: "Trunk Bay overlook in St. John" },
   { label: "Beaches", detail: "Find your water", href: "/beaches", icon: Waves, image: "/images/places/st-thomas/magens-bay-beach-1.jpg", alt: "Magens Bay beach in St. Thomas" },
   { label: "Stays", detail: "Sleep island-side", href: "/accommodations", icon: BedDouble, image: "/images/accommodations/king-christian-hotel.jpg", alt: "King Christian Hotel in Christiansted" },
-  { label: "Ride", detail: "Taxi · airport · ferry", href: "/mobility", icon: CarFront, image: "https://usvitaxi.com/wp-content/uploads/2023/03/cropped-our_taxi.jpg", alt: "White Ford passenger taxi van marked TAXI and ON DUTY on St. Thomas" },
+  { label: "Ride", detail: "Taxi · airport · ferry", href: "/mobility", icon: CarFront, image: "/images/mobility/usvi-taxi-van.png", alt: "White Ford passenger taxi van marked TAXI and ON DUTY on St. Thomas" },
   { label: "Dining", detail: "Eat local", href: "/places?category=restaurant", icon: UtensilsCrossed, image: "/images/places/st-thomas/hook-line-and-sinker-1.jpg", alt: "Waterfront dining in Frenchtown, St. Thomas" },
   { label: "My Trip", detail: "Run the whole trip", href: "/trips", icon: Route, image: "/images/places/st-croix/cane-bay-beach-1.jpg", alt: "Cane Bay coast in St. Croix" },
 ] as const;
@@ -104,7 +104,7 @@ export default function Home() {
           <div className="vi-glass grid grid-cols-2 gap-2 rounded-[30px] p-2.5 sm:grid-cols-3 lg:grid-cols-6">
             {QUICK.map(({ label, detail, href, image, alt, icon: Icon }) => (
               <Link key={label} href={href} className="group relative flex min-h-[112px] items-end overflow-hidden rounded-[21px] border border-white/10 bg-[#032f2d] p-3 shadow-[0_12px_32px_rgba(2,31,29,.16)] transition hover:-translate-y-0.5 hover:border-[#f5c451]/55">
-                {image.startsWith("https://") ? <img src={image} alt={alt} loading="lazy" title="USVI Ford passenger taxi van" className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-105" /> : <Image src={image} alt={alt} fill sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />}
+                <Image src={image} alt={alt} fill sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw" className="object-cover transition duration-700 group-hover:scale-105" />
                 <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,31,29,.08),rgba(2,31,29,.36)_48%,rgba(2,31,29,.93)_100%)]" />
                 <span className="relative flex w-full items-end gap-2.5"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/92 text-[#0f766e] shadow-lg backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#032f2d]"><Icon size={17} /></span><span className="min-w-0 pb-0.5"><span className="block truncate text-xs font-black text-white">{label}</span><span className="mt-0.5 block truncate text-[9px] font-bold text-white/62">{detail}</span></span></span>
               </Link>
