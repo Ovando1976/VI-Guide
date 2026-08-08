@@ -25,6 +25,7 @@ const savedPlaces = source("lib/saved-places.ts");
 const partnersPage = source("app/partners/page.tsx");
 const partnerApplyPage = source("app/partners/apply/page.tsx");
 const partnerStatusPage = source("app/partners/status/page.tsx");
+const plusPage = source("app/plus/page.tsx");
 const offerVisual = source("lib/offers/offer-visual.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
@@ -165,6 +166,19 @@ assert.match(partnerApplyPage, /secondaryHref="\/partners"/);
 assert.match(partnerStatusPage, /ViPublicHeader/);
 assert.match(partnerStatusPage, /actionHref="\/partners\/apply"/);
 assert.match(partnerStatusPage, /secondaryHref="\/partners"/);
+
+assert.match(plusPage, /VI Guide Traveler Plus/);
+assert.match(plusPage, /ViPublicHeader/);
+assert.match(plusPage, /trunk-bay-overlook-1\.jpg/);
+assert.match(plusPage, /Put VI Guide/);
+assert.match(plusPage, /on your trip team\./);
+assert.match(plusPage, /More continuity, not more clutter\./);
+assert.match(plusPage, /Join Traveler Plus — \$99\/year/);
+assert.match(plusPage, /\/api\/membership\/status/);
+assert.match(plusPage, /\/api\/membership\/checkout/);
+assert.match(plusPage, /\/api\/membership\/portal/);
+assert.match(plusPage, /ALREADY_SUBSCRIBED/);
+assert.match(plusPage, /Stripe handles subscription checkout/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
