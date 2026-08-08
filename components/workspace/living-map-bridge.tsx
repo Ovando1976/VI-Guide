@@ -11,9 +11,11 @@ import {
 } from "@/lib/intelligence/map-focus-events";
 import { queryTerritoryMapPlaces } from "@/lib/territory";
 import type {
+  TerritoryMapLens,
   TerritoryMapPlaceType,
   TerritoryMapSelection,
 } from "@/types/territory-map";
+import type { IslandCode } from "@/types/usvi";
 
 const SELECTION_KEYS = [
   "estate",
@@ -26,6 +28,14 @@ const SELECTION_KEYS = [
   "placeDescription",
   "placeRating",
 ] as const;
+
+type CatalogMapPlace = ReturnType<typeof queryTerritoryMapPlaces>[number];
+
+type SearchFocus = {
+  island: IslandCode;
+  lens: TerritoryMapLens;
+  selection: TerritoryMapSelection;
+};
 
 function normalizedText(value: string | undefined) {
   return (value ?? "")
@@ -45,6 +55,24 @@ function finiteCoordinate(
   return Number.isFinite(parsed) && parsed >= minimum && parsed <= maximum
     ? parsed
     : undefined;
+}
+
+function validIsland(value: string | null | undefined): IslandCode | null {
+  const normalized = value?.trim().toLowerCase();
+  return normalized === "stt" || normalized === "stj" || normalized === "stx"
+    ? normalized
+    : null;
+}
+
+function validLens(value: string | null): TerritoryMapLens | null {
+  return value === "beaches" ||
+    value === "places" ||
+    value === "stays" ||
+    value === "historic" ||
+    value === "drivers" ||
+    value === "demand"
+    ? value
+    : null;
 }
 
 function validPlaceType(value: string | null): TerritoryMapPlaceType | null {
@@ -140,6 +168,99 @@ function resolveFocusItem(
   return focusFromCatalog(item);
 }
 
+function placeMatchesLens(place: CatalogMapPlace, lens: TerritoryMapLens | null) {
+  if (!lens || lens === "drivers" || lens === "demand") return lens === null;
+  if (lens === "beaches") return place.type === "beach";
+  if (lens === "stays") return place.type === "stay";
+  if (lens === "historic") return place.type === "historic";
+  return place.type === "place";
+}
+
+function searchTerms(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+}
+
+function scoreSearchPlace(place: CatalogMapPlace, query: string) {
+  const terms = searchTerms(query);
+  if (!terms.length) return -1;
+
+  const title = [place.name, place.title].filter(Boolean).join(" ").toLowerCase();
+  const haystack = [
+    place.name,
+    place.title,
+    place.category,
+    place.location,
+    place.description,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (!terms.every((term) => haystack.includes(term))) return -1;
+
+  let score = normalizedText(place.name ?? place.title) === normalizedText(query) ? 100 : 0;
+  for (const term of terms) {
+    if (title.includes(term)) score += 14;
+    else score += 3;
+  }
+  return score;
+}
+
+function lensForPlaceType(type: TerritoryMapPlaceType): TerritoryMapLens {
+  if (type === "beach") return "beaches";
+  if (type === "stay") return "stays";
+  if (type === "historic") return "historic";
+  return "places";
+}
+
+function focusFromSearchQuery(params: URLSearchParams): SearchFocus | null {
+  if (SELECTION_KEYS.some((key) => params.get(key))) return null;
+
+  const query = params.get("q")?.trim().slice(0, 180) ?? "";
+  if (!query) return null;
+
+  const requestedIsland = validIsland(params.get("island"));
+  const requestedLens = validLens(params.get("lens") ?? params.get("filter"));
+  if (requestedLens === "drivers" || requestedLens === "demand") return null;
+
+  const candidates = queryTerritoryMapPlaces(
+    requestedIsland ? { island: requestedIsland } : {},
+  )
+    .filter((place) => placeMatchesLens(place, requestedLens))
+    .map((place) => ({ place, score: scoreSearchPlace(place, query) }))
+    .filter((entry) => entry.score >= 0)
+    .sort((left, right) => right.score - left.score);
+
+  const match = candidates[0]?.place;
+  if (!match) return null;
+
+  const island = validIsland(match.island) ?? requestedIsland;
+  const type = validPlaceType(match.type ?? null);
+  const lat = finiteCoordinate(match.lat, -90, 90);
+  const lng = finiteCoordinate(match.lng, -180, 180);
+  if (!island || !type || lat === undefined || lng === undefined) return null;
+
+  return {
+    island,
+    lens: requestedLens ?? lensForPlaceType(type),
+    selection: {
+      id: match.id ?? `${type}:${normalizedText(match.name ?? match.title)}`,
+      name: match.name ?? match.title ?? query,
+      type,
+      lat,
+      lng,
+      location: match.location,
+      description: match.description,
+      rating: match.rating,
+    },
+  };
+}
+
 function setOrDelete(
   params: URLSearchParams,
   key: string,
@@ -149,6 +270,18 @@ function setOrDelete(
   else params.set(key, String(value));
 }
 
+function writeSelection(params: URLSearchParams, selection: TerritoryMapSelection) {
+  SELECTION_KEYS.forEach((key) => params.delete(key));
+  params.set("place", selection.id);
+  params.set("placeName", selection.name);
+  params.set("placeType", selection.type);
+  params.set("placeLat", String(selection.lat));
+  params.set("placeLng", String(selection.lng));
+  setOrDelete(params, "placeLocation", selection.location);
+  setOrDelete(params, "placeDescription", selection.description);
+  setOrDelete(params, "placeRating", selection.rating);
+}
+
 export function LivingMapBridge() {
   const router = useRouter();
   const pathname = usePathname();
@@ -156,6 +289,7 @@ export function LivingMapBridge() {
   const serialized = searchParams.toString();
   const { state, patch } = useUnifiedWorkspace();
   const lastApplied = useRef<string | null>(null);
+  const lastSearchApplied = useRef<string | null>(null);
 
   const primary = useMemo(() => {
     const focus = state.liveFocus;
@@ -164,6 +298,11 @@ export function LivingMapBridge() {
       focus.items.find((item) => item.id === focus.primaryId) ?? focus.items[0] ?? null
     );
   }, [state.liveFocus]);
+
+  const searchFocus = useMemo(
+    () => focusFromSearchQuery(new URLSearchParams(serialized)),
+    [serialized],
+  );
 
   useEffect(() => {
     const focus = state.liveFocus;
@@ -177,16 +316,7 @@ export function LivingMapBridge() {
     params.set("lens", lens);
     params.delete("filter");
 
-    if (selection) {
-      params.set("place", selection.id);
-      params.set("placeName", selection.name);
-      params.set("placeType", selection.type);
-      params.set("placeLat", String(selection.lat));
-      params.set("placeLng", String(selection.lng));
-      setOrDelete(params, "placeLocation", selection.location);
-      setOrDelete(params, "placeDescription", selection.description);
-      setOrDelete(params, "placeRating", selection.rating);
-    }
+    if (selection) writeSelection(params, selection);
 
     lastApplied.current = focus.issuedAt;
     const query = params.toString();
@@ -206,6 +336,38 @@ export function LivingMapBridge() {
     });
     return () => window.cancelAnimationFrame(frame);
   }, [patch, pathname, primary, router, serialized, state.liveFocus]);
+
+  useEffect(() => {
+    if (!searchFocus || state.liveFocus) return;
+    const signature = `${serialized}:${searchFocus.selection.id}`;
+    if (lastSearchApplied.current === signature) return;
+
+    const params = new URLSearchParams(serialized);
+    params.set("island", searchFocus.island);
+    params.set("lens", searchFocus.lens);
+    params.delete("filter");
+    writeSelection(params, searchFocus.selection);
+
+    lastSearchApplied.current = signature;
+    const nextQuery = params.toString();
+    router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, {
+      scroll: false,
+    });
+    patch({
+      island: searchFocus.island,
+      lens: searchFocus.lens,
+      selection: searchFocus.selection,
+      activePanel: "map",
+      lastAction: "map.search.focused",
+    });
+
+    const frame = window.requestAnimationFrame(() => {
+      document
+        .getElementById("territory-workspace")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [patch, pathname, router, searchFocus, serialized, state.liveFocus]);
 
   return null;
 }
