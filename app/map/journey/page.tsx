@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowLeft, MapPinned } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
@@ -36,7 +37,13 @@ export default function IslandJourneyMapPage() {
           </div>
         </div>
 
-        <SavedIslandJourneyLivingMap />
+        <Suspense
+          fallback={
+            <div className="h-[720px] animate-pulse rounded-[30px] border border-slate-200 bg-white/70" />
+          }
+        >
+          <SavedIslandJourneyLivingMap />
+        </Suspense>
       </section>
     </main>
   );
