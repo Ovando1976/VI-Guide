@@ -13,6 +13,8 @@ const eventDetail = source("app/events/[slug]/page.tsx");
 const eventData = source("lib/events.ts");
 const communityData = source("lib/community-stories.ts");
 const travelKnowledge = source("lib/travel-knowledge.ts");
+const territoryCatalog = source("lib/territory/catalog.ts");
+const livingMapBridge = source("components/workspace/living-map-bridge.tsx");
 
 assert.match(searchPage, /ViPublicHeader/);
 assert.match(searchPage, /actionLabel="Ask Concierge"/);
@@ -56,6 +58,20 @@ for (const placeName of ["Charlotte Amalie", "Cruz Bay", "Christiansted"]) {
   assert.ok(communityData.includes(placeName), `Community dataset missing ${placeName}`);
 }
 
+assert.match(territoryCatalog, /getTravelKnowledge/);
+assert.match(territoryCatalog, /const places = getTravelKnowledge\("places"\)/);
+assert.doesNotMatch(territoryCatalog, /getPlaceTravelKnowledgeRecords/);
+assert.match(livingMapBridge, /focusFromSearchQuery/);
+assert.match(livingMapBridge, /params\.get\("q"\)/);
+assert.match(livingMapBridge, /scoreSearchPlace/);
+assert.match(livingMapBridge, /terms\.every/);
+assert.match(livingMapBridge, /queryTerritoryMapPlaces/);
+assert.match(livingMapBridge, /placeMatchesLens/);
+assert.match(livingMapBridge, /params\.set\("island", searchFocus\.island\)/);
+assert.match(livingMapBridge, /params\.set\("lens", searchFocus\.lens\)/);
+assert.match(livingMapBridge, /writeSelection\(params, searchFocus\.selection\)/);
+assert.match(livingMapBridge, /lastAction: "map\.search\.focused"/);
+
 assert.match(eventsPage, /Events · verified sources/);
 assert.match(eventsPage, /getUpcomingEvents\(\)/);
 assert.match(eventsPage, /Official Visit USVI calendar/);
@@ -96,4 +112,4 @@ assert.match(directoryCard, /label="Ride"/);
 assert.match(directoryCard, /label="Ask VI"/);
 assert.match(directoryCard, /Open the story/);
 
-console.log("VI Guide shared Search, Community, Concierge grounding, and Events discovery contracts passed.");
+console.log("VI Guide shared Search, Community, Concierge grounding, Living Map handoff, and Events discovery contracts passed.");
