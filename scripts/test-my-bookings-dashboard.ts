@@ -68,8 +68,17 @@ for (const [value, label] of [
   ["15_000", "live booking status polling remains active"],
   ['fetch("/api/payments/create-checkout-session"', "deposit checkout remains server initiated"],
   ["syncBookingJourneyWithStatus", "live status still synchronizes into My Trip"],
+  ['href="/trips"', "live booking status continues into the canonical My Trip workspace"],
+  ["Open synchronized trip", "synchronized booking status keeps the trip continuation label"],
+  ["Open my trip", "unsynchronized booking status keeps the trip continuation label"],
 ] as const) {
   expectSource(statusLookup, value, label);
+}
+
+if (/href="\/planner"[\s\S]{0,260}(Open synchronized trip|Open my trip)/.test(statusLookup)) {
+  throw new Error(
+    "My Bookings dashboard contract failed: live booking status must not label Journey Planner as My Trip",
+  );
 }
 
 for (const [value, label] of [
