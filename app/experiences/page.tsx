@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -6,11 +7,13 @@ import {
   Clock3,
   Compass,
   MapPin,
+  MapPinned,
   SearchCheck,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
 
+import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import {
   BOOKABLE_EXPERIENCES,
   ISLAND_NAMES,
@@ -30,47 +33,81 @@ export default function ExperiencesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-[#f8f4ea] px-4 py-6 pb-32 text-[#043331] sm:px-6 lg:py-10">
-      <div className="mx-auto max-w-7xl space-y-9">
-        <section className="overflow-hidden rounded-[38px] bg-[#043331] p-7 text-white shadow-[0_30px_80px_rgba(4,51,49,.2)] sm:p-10 lg:p-14">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
-            <div>
-              <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.23em] text-[#f5c451]">
-                <Sparkles className="h-4 w-4" /> VI Guide Booking Platform
-              </div>
-              <h1 className="mt-5 max-w-4xl text-[clamp(3rem,7vw,6.4rem)] font-black leading-[.9] tracking-[-.065em]">
-                Book the island, not just a room.
-              </h1>
-              <p className="mt-6 max-w-3xl text-base font-semibold leading-8 text-white/68">
-                Request tours and local experiences across the territory, then connect them to your itinerary, map, concierge, and transportation.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="/bookings"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-5 text-[10px] font-black uppercase tracking-[.16em] text-[#043331] transition hover:-translate-y-0.5"
-                >
-                  <SearchCheck className="h-4 w-4" /> Track my booking
-                </Link>
-                <Link
-                  href="/accommodations"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:bg-white/15"
-                >
-                  Browse stays
-                </Link>
-              </div>
+    <main className="min-h-screen overflow-hidden bg-[#f5f0e6] pb-32 text-[#032f2d]">
+      <section className="relative isolate overflow-hidden bg-[#032f2d] px-4 pb-12 pt-5 text-white sm:px-7 lg:px-10 lg:pb-16">
+        <Image
+          src="/images/places/st-john/trunk-bay-overlook-1.jpg"
+          alt="Trunk Bay and the North Shore of St. John"
+          fill
+          priority
+          sizes="100vw"
+          className="-z-30 object-cover object-center"
+        />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(2,31,29,.98)_0%,rgba(3,47,45,.94)_42%,rgba(3,47,45,.56)_76%,rgba(3,47,45,.26)_100%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_16%,rgba(115,227,217,.2),transparent_28%),linear-gradient(180deg,rgba(2,31,29,.06),rgba(2,31,29,.5))]" />
+
+        <ViPublicHeader
+          actionHref="/bookings"
+          actionLabel="Track booking"
+          actionIcon={SearchCheck}
+          secondaryHref="/"
+          secondaryLabel="Home"
+        />
+
+        <div className="mx-auto grid max-w-7xl gap-10 pb-4 pt-14 lg:grid-cols-[1.08fr_.92fr] lg:items-end lg:gap-14 lg:pt-24">
+          <div>
+            <div className="vi-eyebrow inline-flex items-center gap-2 rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-4 py-2 text-[#f9d875] backdrop-blur-xl">
+              <Sparkles size={14} /> Tours & experiences · connected booking
             </div>
-            <div className="rounded-[28px] border border-white/10 bg-white/[.06] p-6">
-              <div className="flex gap-3">
-                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#7ce0d4]" />
-                <p className="text-sm font-semibold leading-6 text-white/66">
-                  These are booking requests. Availability, final pricing, operator confirmation, and payment instructions follow after review.
+            <h1 className="vi-display mt-7 max-w-4xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
+              Book the island,
+              <span className="block italic text-[#73e3d9]">not just a room.</span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
+              Choose island days that already understand place, timing, transportation, and the rest of your VI Guide trip. Request the experience, then keep planning without starting over.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="#tours"
+                className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-[#032f2d] shadow-[0_16px_40px_rgba(245,196,81,.24)] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
+              >
+                Browse experiences <ArrowRight size={15} />
+              </Link>
+              <Link
+                href="/concierge?prompt=Help%20me%20choose%20and%20plan%20a%20tour%20or%20experience%20for%20my%20Virgin%20Islands%20trip"
+                className="vi-glass inline-flex min-h-13 items-center gap-2 rounded-full px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-white transition hover:-translate-y-0.5 hover:bg-white/[.16]"
+              >
+                <Sparkles size={17} className="text-[#73e3d9]" /> Ask Concierge
+              </Link>
+            </div>
+          </div>
+
+          <aside className="vi-glass rounded-[32px] p-6 sm:p-7">
+            <div className="flex gap-3">
+              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#73e3d9]" />
+              <div>
+                <div className="vi-eyebrow text-[#f5c451]">Booking confidence</div>
+                <h2 className="vi-display mt-3 text-3xl font-bold text-white">
+                  Request first. Confirm before you depend on it.
+                </h2>
+                <p className="mt-3 text-sm font-semibold leading-6 text-white/62">
+                  Availability, final pricing, operator confirmation, and payment instructions follow after review. VI Guide keeps the request connected to your trip while that happens.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
+            <div className="mt-6 grid grid-cols-3 gap-2">
+              <HeroStat value={String(BOOKABLE_EXPERIENCES.length)} label="experiences" />
+              <HeroStat value="3" label="islands" />
+              <HeroStat value="1" label="connected trip" />
+            </div>
+          </aside>
+        </div>
+      </section>
 
+      <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
         <CatalogSection
+          id="tours"
           eyebrow="Guided routes"
           title="Tours"
           description="Structured island days with transportation-aware timing and connected stops."
@@ -78,28 +115,37 @@ export default function ExperiencesPage() {
         />
 
         <CatalogSection
+          id="experiences"
           eyebrow="Local moments"
           title="Experiences"
           description="Focused activities and memorable moments that can fit into a larger VI Guide journey."
           items={experiences}
         />
 
-        <section className="grid gap-5 md:grid-cols-3">
-          <Feature
-            icon={CalendarDays}
-            title="Request"
-            text="Choose a date, preferred time, party size, and special requirements."
-          />
-          <Feature
-            icon={BadgeCheck}
-            title="Review"
-            text="VI Guide records a unique reference and sends the request into the booking workflow."
-          />
-          <Feature
-            icon={Compass}
-            title="Connect"
-            text="Continue into Concierge, Journey Planner, Map, and Mobility without rebuilding the trip."
-          />
+        <section className="rounded-[36px] bg-[#032f2d] p-6 text-white shadow-[0_24px_70px_rgba(3,47,45,.16)] sm:p-9 lg:p-11">
+          <div className="max-w-3xl">
+            <div className="vi-eyebrow text-[#f5c451]">How booking stays connected</div>
+            <h2 className="vi-display mt-3 text-4xl font-bold leading-[.95] sm:text-5xl">
+              One request should strengthen the whole trip.
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <Feature
+              icon={CalendarDays}
+              title="Request"
+              text="Choose a date, preferred time, party size, and special requirements."
+            />
+            <Feature
+              icon={BadgeCheck}
+              title="Review"
+              text="VI Guide records a unique reference and sends the request into the booking workflow."
+            />
+            <Feature
+              icon={Compass}
+              title="Connect"
+              text="Continue into Concierge, My Trip, Living Map, and Mobility without rebuilding the plan."
+            />
+          </div>
         </section>
       </div>
     </main>
@@ -107,28 +153,32 @@ export default function ExperiencesPage() {
 }
 
 function CatalogSection({
+  id,
   eyebrow,
   title,
   description,
   items,
 }: {
+  id: string;
   eyebrow: string;
   title: string;
   description: string;
   items: BookableExperience[];
 }) {
   return (
-    <section>
+    <section id={id} className="scroll-mt-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[.2em] text-amber-700">
-            {eyebrow}
+          <p className="vi-eyebrow text-[#0f766e]">{eyebrow}</p>
+          <h2 className="vi-display mt-2 text-4xl font-bold tracking-[-.04em] sm:text-5xl">
+            {title}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[#607370]">
+            {description}
           </p>
-          <h2 className="mt-2 text-4xl font-black tracking-[-.05em]">{title}</h2>
-          <p className="mt-2 text-sm font-semibold text-slate-600">{description}</p>
         </div>
       </div>
-      <div className="mt-6 grid gap-5 lg:grid-cols-3">
+      <div className="mt-7 grid gap-6 lg:grid-cols-3">
         {items.map((item) => (
           <BookingCard key={item.id} item={item} />
         ))}
@@ -149,44 +199,72 @@ function BookingCard({ item }: { item: BookableExperience }) {
   const conciergePrompt = `Help me plan ${item.name} on ${ISLAND_NAMES[item.island]}. Include transportation, realistic timing, nearby places, and a backup option.`;
 
   return (
-    <article className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-      <div className="flex items-start justify-between gap-3">
-        <span className="rounded-full bg-[#edf6f2] px-3 py-2 text-[9px] font-black uppercase tracking-[.15em] text-teal-800">
-          {item.kind}
-        </span>
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-black text-slate-400">
-          <Clock3 className="h-4 w-4" /> {item.duration}
-        </span>
-      </div>
-      <h3 className="mt-5 text-2xl font-black tracking-[-.04em]">{item.name}</h3>
-      <div className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-teal-800">
-        <MapPin className="h-4 w-4" /> {item.location}
-      </div>
-      <p className="mt-4 flex-1 text-sm font-semibold leading-6 text-slate-600">
-        {item.summary}
-      </p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {item.highlights.map((highlight) => (
-          <span
-            key={highlight}
-            className="rounded-full border border-slate-200 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.12em] text-slate-500"
-          >
-            {highlight}
+    <article className="group flex h-full flex-col overflow-hidden rounded-[30px] border border-[#d9e6e2] bg-[#fffdf8] shadow-[0_16px_45px_rgba(4,51,49,.08)] transition duration-300 hover:-translate-y-1.5 hover:border-[#aad7d0] hover:shadow-[0_28px_65px_rgba(4,51,49,.14)]">
+      <div className="relative h-64 overflow-hidden sm:h-72">
+        <Image
+          src={item.heroImage}
+          alt={item.heroAlt}
+          fill
+          sizes="(min-width: 1024px) 33vw, 100vw"
+          className="object-cover transition duration-700 group-hover:scale-105"
+        />
+        <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,47,45,.05)_28%,rgba(3,47,45,.78)_100%)]" />
+        <div className="absolute inset-x-4 top-4 flex items-start justify-between gap-3">
+          <span className="rounded-full border border-white/25 bg-[#043331]/78 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.14em] text-white backdrop-blur-md">
+            {ISLAND_NAMES[item.island]}
           </span>
-        ))}
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.13em] text-white backdrop-blur-md">
+            <Clock3 className="h-3 w-3" /> {item.duration}
+          </span>
+        </div>
+        <div className="absolute inset-x-5 bottom-5 text-white">
+          <div className="text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
+            {item.kind}
+          </div>
+          <h3 className="vi-display mt-1 text-3xl font-bold leading-[.95] tracking-[-.04em]">
+            {item.name}
+          </h3>
+        </div>
       </div>
-      <div className="mt-6 grid gap-2">
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="inline-flex items-center gap-2 text-xs font-black text-[#0f766e]">
+          <MapPin className="h-4 w-4" /> {item.location}
+        </div>
+        <p className="mt-3 flex-1 text-sm font-semibold leading-6 text-[#5a6f6c]">
+          {item.summary}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {item.highlights.map((highlight) => (
+            <span
+              key={highlight}
+              className="rounded-full border border-[#dce7e4] bg-white px-3 py-1.5 text-[8px] font-black uppercase tracking-[.11em] text-[#49615e]"
+            >
+              {highlight}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-2 border-t border-[#e4ece9] pt-5">
+          <Link
+            href={`/map?island=${item.island}`}
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#dce7e4] bg-white px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#35514e] transition hover:border-[#b8dcd6]"
+          >
+            <MapPinned className="h-4 w-4" /> Map island
+          </Link>
+          <Link
+            href={`/concierge?island=${item.island}&context=${item.kind}&prompt=${encodeURIComponent(conciergePrompt)}`}
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#b8e2dc] bg-[#eaf8f5] px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#0f766e] transition hover:bg-[#ddf3ee]"
+          >
+            <Sparkles className="h-4 w-4" /> Plan around this
+          </Link>
+        </div>
+
         <Link
           href={`/book?${params.toString()}`}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f5b942] px-5 text-[10px] font-black uppercase tracking-[.16em] text-[#043331] transition hover:bg-[#ffca55]"
+          className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#032f2d] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-[#075e58]"
         >
-          Request booking <ArrowRight className="h-4 w-4" />
-        </Link>
-        <Link
-          href={`/concierge?island=${item.island}&context=${item.kind}&prompt=${encodeURIComponent(conciergePrompt)}`}
-          className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-5 text-[10px] font-black uppercase tracking-[.16em] transition hover:border-teal-600"
-        >
-          Plan around this
+          Request booking <ArrowRight className="h-4 w-4 text-[#f5c451]" />
         </Link>
       </div>
     </article>
@@ -203,12 +281,21 @@ function Feature({
   text: string;
 }) {
   return (
-    <div className="rounded-[26px] border border-slate-200 bg-white p-6 shadow-sm">
-      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#edf6f2] text-teal-800">
+    <div className="rounded-[26px] border border-white/10 bg-white/[.07] p-5">
+      <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#73e3d9]/12 text-[#73e3d9]">
         <Icon className="h-5 w-5" />
       </span>
       <h3 className="mt-4 text-xl font-black">{title}</h3>
-      <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">{text}</p>
+      <p className="mt-2 text-sm font-semibold leading-6 text-white/58">{text}</p>
+    </div>
+  );
+}
+
+function HeroStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-2xl bg-white/[.08] px-3 py-4 text-center">
+      <strong className="vi-display block text-2xl font-bold text-white">{value}</strong>
+      <span className="mt-1 block text-[8px] font-black uppercase tracking-[.14em] text-white/48">{label}</span>
     </div>
   );
 }
