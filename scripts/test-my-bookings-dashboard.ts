@@ -30,9 +30,18 @@ for (const [value, label] of [
   ["RememberedBookingsPanel", "My Bookings surfaces remembered requests"],
   ["CommercePaymentReturnNotice", "Stripe return verification stays ahead of booking lookup"],
   ["BookingStatusLookup", "secure live status lookup remains present"],
-  ['actionHref="/planner"', "My Trip remains a primary continuation"],
+  ['actionHref="/trips"', "My Trip uses the canonical traveler workspace"],
+  ['actionLabel="My Trip"', "My Trip uses the shared traveler label"],
+  ['secondaryHref="/planner"', "Journey Planner remains directly available"],
+  ['secondaryLabel="Planner"', "Journey Planner keeps a distinct planning identity"],
 ] as const) {
   expectSource(bookingsPage, value, label);
+}
+
+if (bookingsPage.includes('actionHref="/planner"')) {
+  throw new Error(
+    "My Bookings dashboard contract failed: the primary My Trip action must not bypass /trips for /planner",
+  );
 }
 
 for (const [value, label] of [

@@ -17,11 +17,11 @@ export default function BookingsPage() {
     <div className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
       <div className="px-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
-          actionHref="/planner"
-          actionLabel="Open My Trip"
+          actionHref="/trips"
+          actionLabel="My Trip"
           actionIcon={Route}
-          secondaryHref="/places"
-          secondaryLabel="Explore"
+          secondaryHref="/planner"
+          secondaryLabel="Planner"
         />
       </div>
       <Suspense fallback={null}>
