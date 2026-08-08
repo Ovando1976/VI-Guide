@@ -29,7 +29,7 @@ export function JourneyRouteDashboard() {
   if (!plan) return null;
 
   return (
-    <div className="mx-auto -mt-24 max-w-7xl px-4 pb-32 sm:px-6 lg:pl-[310px]">
+    <div className="relative z-10 mx-auto -mt-24 max-w-7xl px-4 pb-32 sm:px-6 lg:pl-[330px]">
       <JourneyRouteSummary plan={plan} />
     </div>
   );
