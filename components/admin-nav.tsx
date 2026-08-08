@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { href: "/admin/travel-proposals", label: "Proposals" },
   { href: "/admin/cruise-requests", label: "Cruise Advisor" },
   { href: "/admin/cruise-inventory", label: "Cruise Inventory" },
-  { href: "/admin", label: "Fleet" },
+  { href: "/admin/fleet", label: "Fleet" },
   { href: "/admin/payouts", label: "Payouts" },
 ];
 
@@ -20,8 +20,7 @@ export function AdminNav() {
     <nav className="flex flex-wrap gap-3">
       {NAV_ITEMS.map((item) => {
         const active =
-          pathname === item.href ||
-          (item.href !== "/admin" && pathname.startsWith(`${item.href}/`));
+          pathname === item.href || pathname.startsWith(`${item.href}/`);
 
         return (
           <Link

@@ -6,6 +6,14 @@ const navigation = fs.readFileSync(
   path.join(root, "components/app-navigation.tsx"),
   "utf8",
 );
+const adminNav = fs.readFileSync(
+  path.join(root, "components/admin-nav.tsx"),
+  "utf8",
+);
+const adminFleet = fs.readFileSync(
+  path.join(root, "app/admin/fleet/page.tsx"),
+  "utf8",
+);
 const accountMenu = fs.readFileSync(
   path.join(root, "components/account-menu.tsx"),
   "utf8",
@@ -49,6 +57,14 @@ if (
     "Operations navigation contract failed: shared admin/dispatcher shell must not advertise administrator-only destinations",
   );
 }
+
+expectSource(adminNav, '{ href: "/admin/fleet", label: "Fleet" }', "internal Admin Fleet tab opens the actual fleet console");
+if (adminNav.includes('{ href: "/admin", label: "Fleet" }')) {
+  throw new Error(
+    "Operations navigation contract failed: Fleet tab must not route back to Ops Home",
+  );
+}
+expectSource(adminFleet, 'requireSession(["admin", "dispatcher"])', "Fleet console remains available to both operations roles");
 
 expectSource(navigation, 'base: "/driver"', "Driver shell keeps Driver OS entry");
 expectSource(navigation, 'base: "/map"', "Driver shell keeps Live Map escape");
