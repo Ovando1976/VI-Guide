@@ -9,6 +9,7 @@ import { RiderLiveDriverMap } from "@/components/mobility/rider-live-driver-map"
 import { RiderTripTiming } from "@/components/mobility/rider-trip-timing";
 import { TripReturnNotice } from "@/components/mobility/trip-return-notice";
 import { RiderTripHistory } from "@/components/rider-trip-history";
+import { TripAwareLivingMapLink } from "@/components/trips/trip-aware-living-map-link";
 import { TravelerTripCommandCenter } from "@/components/trips/traveler-trip-command-center";
 import { TravelerTripReadinessPanel } from "@/components/trips/traveler-trip-readiness-panel";
 import { getSession } from "@/lib/auth-server";
@@ -93,12 +94,7 @@ export default async function TripsPage() {
               >
                 <Route className="h-4 w-4" /> Shape my trip
               </Link>
-              <Link
-                href="/map"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur transition hover:bg-white/[.13]"
-              >
-                <MapPinned className="h-4 w-4 text-[#7ce0d4]" /> Open Living Map
-              </Link>
+              <TripAwareLivingMapLink className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur transition hover:bg-white/[.13]" />
               <Link
                 href="/concierge"
                 className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white backdrop-blur transition hover:bg-white/[.13]"
