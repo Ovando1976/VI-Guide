@@ -6,6 +6,7 @@ import "./experience-system.css";
 import "./concierge-responsive.css";
 import "./map-premium.css";
 import "./mobile-navigation-fix.css";
+import "./operations-navigation.css";
 import { ActiveIslandRouteSync } from "@/components/active-island-route-sync";
 import { AuthProvider } from "@/components/auth-provider";
 import { AppNavigation } from "@/components/app-navigation";
