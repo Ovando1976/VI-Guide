@@ -152,8 +152,6 @@ function OfferCard({ offer }: { offer: MerchantOfferBookingSnapshot }) {
       className="group flex h-full flex-col overflow-hidden rounded-[30px] border border-[#d9e6e2] bg-[#fffdf8] shadow-[0_16px_45px_rgba(4,51,49,.08)] transition duration-300 hover:-translate-y-1.5 hover:border-[#aad7d0] hover:shadow-[0_28px_65px_rgba(4,51,49,.14)]"
     >
       <div
-        role="img"
-        aria-label={visual.alt}
         className="relative min-h-[19rem] bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(180deg,rgba(3,47,45,.05)_24%,rgba(3,47,45,.78)_100%),url('${visual.image}')`,
