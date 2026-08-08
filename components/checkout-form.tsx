@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import {
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+
+import { trackAcquisitionEvent } from "@/lib/acquisition-client";
 
 export function CheckoutForm({ bookingId }: { bookingId: string }) {
   const stripe = useStripe();
@@ -13,9 +11,12 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    trackAcquisitionEvent("checkout_started", { bookingId });
+  }, [bookingId]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     if (!stripe || !elements || submitting) return;
 
     setSubmitting(true);
@@ -28,9 +29,7 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
     try {
       const { error } = await stripe.confirmPayment({
         elements,
-        confirmParams: {
-          return_url: returnUrl.toString(),
-        },
+        confirmParams: { return_url: returnUrl.toString() },
         redirect: "if_required",
       });
 
@@ -39,13 +38,12 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
         return;
       }
 
+      // This records a successful client confirmation. Financial truth remains
+      // the server-side Stripe verification/webhook lifecycle.
+      trackAcquisitionEvent("purchase_completed", { bookingId, product: "ride" });
       window.location.assign(returnUrl.toString());
     } catch (error) {
-      setMessage(
-        error instanceof Error
-          ? error.message
-          : "Secure payment could not be completed.",
-      );
+      setMessage(error instanceof Error ? error.message : "Secure payment could not be completed.");
     } finally {
       setSubmitting(false);
     }
