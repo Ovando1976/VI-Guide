@@ -1,8 +1,21 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
+import { DispatcherTaxiOperationsBoard } from "@/components/dispatcher-taxi-operations-board";
 import { TaxiOperationsBoard } from "@/components/taxi-operations-board";
+import { getSession } from "@/lib/auth-server";
 
-export default function TaxiOperationsPage() {
+export default async function TaxiOperationsPage() {
+  const session = await getSession();
+  if (!session) redirect("/login?next=/admin/taxi-operations");
+  if (session.role !== "admin" && session.role !== "dispatcher") {
+    redirect("/unauthorized");
+  }
+
+  if (session.role === "dispatcher") {
+    return <DispatcherTaxiOperationsBoard />;
+  }
+
   return (
     <>
       <div className="mx-auto flex max-w-7xl flex-wrap justify-end gap-3 px-5 pt-6">
