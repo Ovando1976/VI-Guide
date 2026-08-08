@@ -1,9 +1,7 @@
-import {
-  getBeachTravelKnowledgeRecords,
-  getPlaceTravelKnowledgeRecords,
-} from "@/lib/directory-data";
+import { getBeachTravelKnowledgeRecords } from "@/lib/directory-data";
 import { ACCOMMODATIONS } from "@/lib/accommodations";
 import { getHistoricTravelKnowledgeRecords } from "@/lib/historic-sites";
+import { getTravelKnowledge } from "@/lib/travel-knowledge";
 import generatedRestaurants from "@/data/catalog/restaurants.generated.json";
 import type {
   TerritoryEntity,
@@ -54,7 +52,9 @@ type LiveCatalogCache = {
 
 const LIVE_CATALOG_KEY = "vi-guide.live-territory-catalog.v1";
 
-const places = getPlaceTravelKnowledgeRecords();
+// Use the shared place corpus so Search, Concierge, and the Living Map all
+// consume the same enriched local context (including published Community notes).
+const places = getTravelKnowledge("places");
 const beaches = getBeachTravelKnowledgeRecords();
 const historicSites = getHistoricTravelKnowledgeRecords();
 const restaurants = generatedRestaurants as GeneratedRestaurant[];
