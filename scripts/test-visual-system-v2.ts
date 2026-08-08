@@ -29,6 +29,8 @@ const plusPage = source("app/plus/page.tsx");
 const profileScreen = source("components/profile/traveler-profile-screen.tsx");
 const notificationCenter = source("components/notifications/notification-center.tsx");
 const loginScreen = source("components/login-screen.tsx");
+const unauthorizedPage = source("app/unauthorized/page.tsx");
+const accountMenu = source("components/account-menu.tsx");
 const offerVisual = source("lib/offers/offer-visual.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
@@ -229,6 +231,26 @@ assert.match(loginScreen, /JSON\.stringify\(\{ idToken \}\)/);
 assert.match(loginScreen, /safeInternalDestination\(params\.get\("next"\), window\.location\.origin\)/);
 assert.match(loginScreen, /router\.replace/);
 assert.match(loginScreen, /hasFirebaseClientConfiguration/);
+
+assert.match(accountMenu, /ACCOUNT_ROUTES/);
+assert.match(accountMenu, /"\/profile", "\/notifications", "\/plus"/);
+assert.match(accountMenu, /label="My Trip"/);
+assert.match(accountMenu, /label="Notifications"/);
+assert.match(accountMenu, /label="Living Map"/);
+assert.match(accountMenu, /label="Traveler Plus"/);
+assert.match(accountMenu, /if \(role === "rider"\) return "Traveler"/);
+assert.match(accountMenu, /getIdTokenResult/);
+assert.match(accountMenu, /result\.claims\.role/);
+assert.match(accountMenu, /fetch\("\/api\/auth\/session", \{ method: "DELETE" \}\)/);
+assert.match(accountMenu, /signOut\(auth\)/);
+assert.match(accountMenu, /router\.replace\("\/login"\)/);
+
+assert.match(unauthorizedPage, /ViBrandMark/);
+assert.match(unauthorizedPage, /usvi-harbor-hero\.jpg/);
+assert.match(unauthorizedPage, /Access restricted · account protected/);
+assert.match(unauthorizedPage, /role or listing assignment/);
+assert.match(unauthorizedPage, /href="\/profile"/);
+assert.match(unauthorizedPage, /Return to VI Guide/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
