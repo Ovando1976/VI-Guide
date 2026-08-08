@@ -103,10 +103,26 @@ assert.doesNotMatch(
   /image:\s*"https:\/\//,
   "Homepage quick-card images must be locally controlled assets with documented reuse rights",
 );
+assert.match(
+  home,
+  /label: "Ride"[\s\S]{0,360}detail: "Taxi · airport · ferry"/,
+  "Homepage Ride card must explicitly promise taxi, airport, and ferry mobility",
+);
+assert.match(
+  home,
+  /label: "Ride"[\s\S]{0,420}badge: "USVI mobility"[\s\S]{0,120}treatment: "mobility"/,
+  "Homepage Ride card must use the branded mobility treatment while the approved Tourism taxi photo is pending",
+);
+assert.match(home, /label: "Ride"[\s\S]{0,420}icon: CarFront/);
+assert.doesNotMatch(
+  home,
+  /label: "Ride"[\s\S]{0,260}detail: "Move with confidence"/,
+  "Homepage Ride card must not use the retired generic mobility copy",
+);
 assert.ok(allImages.size > 0, "No local homepage images were discovered for integrity validation");
 
 for (const imagePath of [...allImages].sort()) {
   assertImageSignature(imagePath);
 }
 
-console.log(`VI Guide homepage image integrity passed for ${allImages.size} unique local images.`);
+console.log(`VI Guide homepage image integrity passed for ${allImages.size} unique local images and the branded Ride treatment.`);
