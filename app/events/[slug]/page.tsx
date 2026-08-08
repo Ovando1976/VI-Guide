@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import {
   EVENT_CATEGORY_LABELS,
   EVENT_ISLAND_LABELS,
@@ -50,11 +51,21 @@ export default async function EventDetailPage({ params }: Props) {
     q: event.location,
   });
   const mapHref = `/map?${mapParams.toString()}`;
+  const eventHref = `/events/${event.slug}`;
   const conciergePrompt = [
     `Help me plan around ${event.name} on ${formatEventDate(event)}.`,
     `It is listed for ${event.location} on ${islandName}.`,
     "Build a realistic plan with transportation, arrival timing, food nearby, what to do before or after, and a backup if details change.",
   ].join(" ");
+  const journeyStop = {
+    id: event.id,
+    title: event.name,
+    island: event.island,
+    kind: "event",
+    summary: `${formatEventDate(event)} · ${event.location}. ${event.description}`,
+    href: eventHref,
+    mapHref,
+  };
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
@@ -133,6 +144,7 @@ export default async function EventDetailPage({ params }: Props) {
               beaches, heritage, or another activity without risking the main event.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
+              <AddToJourneyButton stop={journeyStop} />
               <Link
                 href={`/concierge?island=${event.island}&prompt=${encodeURIComponent(conciergePrompt)}`}
                 className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white"
