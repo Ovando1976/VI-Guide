@@ -171,7 +171,7 @@ export function DiscoveryDirectoryPage({
     <main className="directory-page min-h-screen bg-[#f8f4ea] px-4 py-5 pb-32 text-[#043331] sm:px-6 lg:py-8">
       <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8 lg:space-y-10">
         <ViPublicHeader
-          actionHref="/planner"
+          actionHref="/trips"
           actionLabel={`My Trip · ${savedStopCount}`}
           actionIcon={Route}
           secondaryHref="/"

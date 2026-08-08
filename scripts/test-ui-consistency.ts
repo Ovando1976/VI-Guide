@@ -94,7 +94,14 @@ for (const [name, contents] of [
   assert.match(contents, /PremiumDetailShell/, `${name} must use PremiumDetailShell`);
 }
 
+assert.match(directory, /actionHref="\/trips"/);
+assert.match(directory, /actionLabel=\{`My Trip · \$\{savedStopCount\}`\}/);
+assert.doesNotMatch(directory, /actionHref="\/planner"/);
+
 assert.match(premiumDetailShell, /ViPublicHeader/);
+assert.match(premiumDetailShell, /secondaryHref="\/trips"/);
+assert.match(premiumDetailShell, /href="\/trips"/);
+assert.doesNotMatch(premiumDetailShell, /(?:secondaryHref|href)="\/planner"/);
 assert.match(premiumDetailShell, /PlaceActionBar/);
 assert.match(placeActionBar, /SavePlaceButton/);
 assert.match(placeActionBar, /AddToJourneyButton/);
