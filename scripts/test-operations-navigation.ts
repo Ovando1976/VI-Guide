@@ -64,6 +64,12 @@ if (adminNav.includes('{ href: "/admin", label: "Fleet" }')) {
     "Operations navigation contract failed: Fleet tab must not route back to Ops Home",
   );
 }
+expectSource(adminNav, 'aria-label="Admin operations sections"', "internal Admin navigation has an accessible operations identity");
+expectSource(adminNav, "Operations desk", "internal Admin navigation carries the operations mode label");
+expectSource(adminNav, "bg-[linear-gradient(135deg,#032f2d,#07504c)]", "internal Admin navigation uses the VI Guide operations foundation");
+expectSource(adminNav, 'aria-current={active ? "page" : undefined}', "internal Admin navigation exposes the active destination semantically");
+expectSource(adminNav, "overflow-x-auto", "internal Admin navigation remains usable on narrow screens");
+expectSource(adminNav, "bg-[#f5c451] text-[#032f2d]", "internal Admin navigation uses the gold active state");
 expectSource(adminFleet, 'requireSession(["admin", "dispatcher"])', "Fleet console remains available to both operations roles");
 
 expectSource(navigation, 'base: "/driver"', "Driver shell keeps Driver OS entry");
