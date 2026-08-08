@@ -120,11 +120,17 @@ assert.match(missionMode, /router\.push\(`\/map\?\$\{params\.toString\(\)\}`\)/)
 assert.match(communityPage, /Community · local context/);
 assert.match(communityPage, /Know the islands/);
 assert.match(communityPage, /Not another feed\. A local intelligence layer\./);
-assert.match(communityPage, /href="\/map"/);
+assert.match(communityPage, /COMMUNITY_STORIES\.map/);
+assert.match(communityPage, /Published field notes/);
+assert.match(communityPage, /Local publishing is live/);
 assert.match(communityPage, /ISLAND_STORIES\.map/);
-assert.match(communityPostPage, /This story is not published yet\./);
+assert.match(communityPostPage, /getCommunityStory/);
+assert.match(communityPostPage, /AddToJourneyButton/);
+assert.match(communityPostPage, /Open Living Map/);
+assert.match(communityPostPage, /Ask Concierge/);
+assert.match(communityPostPage, /My Trip/);
+assert.doesNotMatch(communityPostPage, /This story is not published yet\./);
 assert.match(communityPostPage, /ViPublicHeader/);
-assert.match(communityPostPage, /href="\/map"/);
 
 assert.match(experiencesPage, /Tours & experiences · connected booking/);
 assert.match(experiencesPage, /ViPublicHeader/);
