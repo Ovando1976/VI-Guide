@@ -179,18 +179,10 @@ export function AiTripBriefScreen() {
   }
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#eef8f4_0%,#f8f4ea_38%,#ffffff_100%)] pb-24 text-[#073b39]">
-      <section className="bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.28),transparent_28%),linear-gradient(135deg,#032d2b_0%,#075b57_62%,#139b91_100%)] px-4 pb-16 pt-6 text-white sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#eef8f4_0%,#f8f4ea_38%,#ffffff_100%)] pb-24 text-[#073b39]">
+      <section className="bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.28),transparent_28%),linear-gradient(135deg,#032d2b_0%,#075b57_62%,#139b91_100%)] px-4 pb-16 pt-10 text-white sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link href="/" className="text-sm font-black tracking-tight">VI Guide</Link>
-            <div className="flex gap-2">
-              <Link href="/map" className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.14em]">Map</Link>
-              <Link href="/concierge" className="rounded-full bg-[#f5c451] px-4 py-2 text-[10px] font-black uppercase tracking-[.14em] text-[#493300]">Ask Concierge</Link>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]">
                 <Sparkles size={14} /> Traveler Workspace
@@ -201,6 +193,20 @@ export function AiTripBriefScreen() {
               <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/72 sm:text-base">
                 One live workspace for your plan, map, transportation, reservations, itinerary, and approvals.
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href={`/map?island=${island}`}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] shadow-[0_12px_28px_rgba(245,196,81,.18)] transition hover:-translate-y-0.5"
+                >
+                  <Map size={15} /> Open Living Map
+                </Link>
+                <Link
+                  href="/concierge"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-white/[.13]"
+                >
+                  <Sparkles size={15} className="text-[#f5c451]" /> Ask Concierge
+                </Link>
+              </div>
             </div>
 
             <div className="grid grid-cols-3 gap-2 rounded-[28px] border border-white/12 bg-white/[.08] p-3 backdrop-blur">
@@ -319,7 +325,7 @@ export function AiTripBriefScreen() {
           </>
         ) : null}
       </div>
-    </main>
+    </div>
   );
 }
 
