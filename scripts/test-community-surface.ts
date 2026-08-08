@@ -8,6 +8,8 @@ function source(path: string) {
   return readFileSync(resolve(process.cwd(), path), "utf8");
 }
 
+const home = source("app/page.tsx");
+const homeLiveStatus = source("components/home/home-live-status.tsx");
 const hub = source("app/community/page.tsx");
 const detail = source("app/community/[postId]/page.tsx");
 
@@ -23,6 +25,14 @@ for (const story of COMMUNITY_STORIES) {
   assert.ok(story.mapHref.startsWith(`/map?island=${story.island}`), `${story.slug} should preserve island context in its map handoff`);
   assert.ok(story.paragraphs.length >= 3, `${story.slug} should contain substantive traveler context`);
 }
+
+assert.match(homeLiveStatus, /href: "\/community"/);
+assert.match(homeLiveStatus, /Local field notes/);
+assert.match(homeLiveStatus, /Know the place before you go/);
+assert.match(homeLiveStatus, /tag: "Context"/);
+assert.doesNotMatch(homeLiveStatus, /Warm, breezy/);
+assert.doesNotMatch(homeLiveStatus, /label: "Island outlook"/);
+assert.match(home, /Search beaches, stays, food, events, history, local stories…/);
 
 assert.match(hub, /COMMUNITY_STORIES\.map/);
 assert.match(hub, /Published field notes/);
