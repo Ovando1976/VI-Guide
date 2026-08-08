@@ -14,6 +14,8 @@ const planner = source("components/door-to-door-journey-planner.tsx");
 const smartBuilder = source("components/smart-island-journey-builder.tsx");
 const journeyMap = source("components/map/saved-island-journey-living-map.tsx");
 const tripMapLink = source("components/trips/trip-aware-living-map-link.tsx");
+const tripCommandMapLink = source("components/trips/trip-command-map-link.tsx");
+const tripCommandCenter = source("components/trips/traveler-trip-command-center.tsx");
 const journeyPage = source("app/journey/page.tsx");
 const journeyMapPage = source("app/map/journey/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
@@ -85,6 +87,14 @@ assert.match(tripMapLink, /mapHrefForJourneyPlan/);
 assert.match(tripMapLink, /Open journey map/);
 assert.match(tripMapLink, /Open Living Map/);
 assert.match(tripsPage, /TripAwareLivingMapLink/);
+
+assert.match(tripCommandMapLink, /mapHrefForJourneyPlan/);
+assert.match(tripCommandMapLink, /Open journey map/);
+assert.match(tripCommandMapLink, /Journey Map/);
+assert.match(tripCommandCenter, /const selectedPlan = useMemo/);
+assert.equal((tripCommandCenter.match(/<TripCommandMapLink/g) ?? []).length, 2);
+assert.doesNotMatch(tripCommandCenter, /<QuickLink href="\/map"/);
+assert.doesNotMatch(tripCommandCenter, /<ToolLink href="\/map"/);
 
 assert.match(planner, /One trip\. Ground \+ water \+ arrival\./);
 assert.match(planner, /Plan this ride/);
