@@ -66,7 +66,8 @@ assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.j
 assert.match(mapPage, /ViPublicHeader/);
 assert.match(mapPage, /VI Guide Living Map/);
 assert.match(mapPage, /connected day/);
-assert.match(mapPage, /Open trip/);
+assert.match(mapPage, /Plan itinerary/);
+assert.doesNotMatch(mapPage, /Open trip/);
 assert.match(mapPage, /Ask Concierge/);
 
 assert.match(mapWorkspace, /territory-map-stage/);
