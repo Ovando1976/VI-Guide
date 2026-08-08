@@ -62,12 +62,20 @@ export function HomeLiveStatus() {
               Start with the essentials, then shape the day around you.
             </h2>
           </div>
-          <Link
-            href="/today"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#073b39] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white shadow-[0_12px_28px_rgba(3,47,45,.18)] transition hover:-translate-y-0.5 hover:bg-[#0a504c]"
-          >
-            <Sparkles size={15} /> Build my AI day
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/events"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#c9dcd7] bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-[#073b39] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0f766e]"
+            >
+              <CalendarDays size={15} /> See events
+            </Link>
+            <Link
+              href="/today"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#073b39] px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white shadow-[0_12px_28px_rgba(3,47,45,.18)] transition hover:-translate-y-0.5 hover:bg-[#0a504c]"
+            >
+              <Sparkles size={15} /> Build my AI day
+            </Link>
+          </div>
         </div>
 
         <div className="grid gap-px bg-[#dce8e4] sm:grid-cols-2 xl:grid-cols-4">
