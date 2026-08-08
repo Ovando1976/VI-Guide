@@ -95,6 +95,7 @@ function buildCandidate(
   if (originTransfer == null || arrivalTransfer == null) return null;
 
   const sailings = route.departures
+    .filter((departure) => departureOperatesOnDate(route, departure, travelDate))
     .map(cleanDeparture)
     .map((label) => ({ label, minutes: toMinutes(label) }))
     .filter((sailing) => Number.isFinite(sailing.minutes));
@@ -178,6 +179,13 @@ function routeOperatesOnDate(route: FerryRoute, date: string) {
   if (!route.id.includes("gallows-bay")) return true;
   const weekday = new Date(`${date}T12:00:00-04:00`).getDay();
   return weekday === 0 || weekday === 1 || weekday === 4 || weekday === 5 || weekday === 6;
+}
+
+function departureOperatesOnDate(route: FerryRoute, departure: string, date: string) {
+  if (route.id !== "red-hook-cruz-bay" || !departure.includes("*")) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return true;
+  const weekday = new Date(`${date}T12:00:00-04:00`).getDay();
+  return weekday !== 0 && weekday !== 6;
 }
 
 function cleanDeparture(value: string) {
