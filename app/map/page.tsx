@@ -83,7 +83,7 @@ export default function MapPage() {
                   href="/planner"
                   className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-white/[.13]"
                 >
-                  <Route className="h-4 w-4 text-[#7ce0d4]" /> Open trip
+                  <Route className="h-4 w-4 text-[#7ce0d4]" /> Plan itinerary
                 </Link>
               </div>
             </div>
