@@ -13,7 +13,6 @@ import {
   Map,
   MapPin,
   Search,
-  Sparkles,
 } from "lucide-react";
 
 import type { DirectoryItem } from "@/types/directory";
@@ -168,32 +167,9 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_18%_12%,rgba(245,196,81,.25),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(45,212,191,.16),transparent_30%),linear-gradient(145deg,#032d2c,#074b4a_54%,#08282f)] text-white">
         <div className="absolute inset-0 opacity-[.12] [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:46px_46px]" />
         <div className="relative mx-auto max-w-7xl px-5 pb-16 pt-10 sm:px-8 lg:px-10 lg:pb-24 lg:pt-16">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-50/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.22em] text-amber-100 backdrop-blur">
-              <Landmark size={14} /> U.S. Virgin Islands Heritage
-            </span>
-
-            <div className="flex flex-wrap gap-2">
-              <Link
-                href="/map?filter=history"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold transition hover:bg-white/15"
-              >
-                <Map size={15} /> Heritage map
-              </Link>
-              <Link
-                href="/heritage/library-of-congress"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold transition hover:bg-white/15"
-              >
-                <Images size={15} /> 1941 photo collection
-              </Link>
-              <Link
-                href="/concierge?context=heritage"
-                className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-xs font-black text-[#043331] transition hover:brightness-105"
-              >
-                <Sparkles size={15} /> Ask the guide
-              </Link>
-            </div>
-          </div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-50/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.22em] text-amber-100 backdrop-blur">
+            <Landmark size={14} /> U.S. Virgin Islands Heritage
+          </span>
 
           <div className="mt-12 grid items-end gap-10 lg:grid-cols-[1.25fr_.75fr]">
             <div>
