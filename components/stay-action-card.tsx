@@ -18,6 +18,7 @@ type Props = {
   islandCode: "stt" | "stj" | "stx";
   location?: string;
   listingHref: string;
+  rideHref: string;
 };
 
 export function StayActionCard({
@@ -28,6 +29,7 @@ export function StayActionCard({
   islandCode,
   location,
   listingHref,
+  rideHref,
 }: Props) {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -136,7 +138,7 @@ export function StayActionCard({
           Plan with concierge <Sparkles size={16} />
         </Link>
         <Link
-          href="/mobility"
+          href={rideHref}
           className="inline-flex min-h-13 items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-[11px] font-black uppercase tracking-[.17em] text-[#043331] transition hover:border-[#0f766e]"
         >
           Arrange airport or ferry ride
