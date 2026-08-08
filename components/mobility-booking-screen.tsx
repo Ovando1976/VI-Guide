@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -28,6 +29,24 @@ const RIDE_MODES: RideMode[] = [
   "delivery",
   "executive",
 ];
+
+const ISLAND_VISUALS = {
+  stt: {
+    label: "St. Thomas",
+    image: "/images/usvi-harbor-hero.jpg",
+    alt: "St. Thomas harbor and island hills",
+  },
+  stj: {
+    label: "St. John",
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "St. John coastline and green island hills",
+  },
+  stx: {
+    label: "St. Croix",
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+    alt: "Cane Bay coastline on St. Croix",
+  },
+} as const satisfies Record<IslandCode, { label: string; image: string; alt: string }>;
 
 function isRideMode(value: string | null): value is RideMode {
   return Boolean(value && RIDE_MODES.includes(value as RideMode));
@@ -266,6 +285,7 @@ export function MobilityBookingScreen() {
       searchParams.get("destinationName") ??
       searchParams.get("destination")
     )?.trim() || null;
+  const islandVisual = ISLAND_VISUALS[activeIsland];
 
   function selectFrom(geoid: string) {
     setFromGeoid(geoid);
@@ -306,14 +326,27 @@ export function MobilityBookingScreen() {
           secondaryLabel="Home"
         />
 
-        <section className="relative overflow-hidden rounded-[36px] bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#16a69b_100%)] px-6 py-8 text-white shadow-[0_28px_90px_rgba(4,51,49,.24)] sm:px-8 lg:px-10 lg:py-10">
-          <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute -bottom-28 left-1/3 h-64 w-64 rounded-full bg-[#f5c451]/10 blur-3xl" />
+        <section className="relative min-h-[500px] overflow-hidden rounded-[36px] text-white shadow-[0_28px_90px_rgba(4,51,49,.24)]">
+          <Image
+            src={islandVisual.image}
+            alt={islandVisual.alt}
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,45,43,.96)_0%,rgba(3,45,43,.84)_50%,rgba(3,45,43,.28)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(180deg,transparent,rgba(2,29,28,.48))]" />
 
-          <div className="relative grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+          <div className="relative grid min-h-[500px] gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end lg:px-10 lg:py-10">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
-                <Sparkles className="h-4 w-4" /> VI Guide private mobility
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
+                  <Sparkles className="h-4 w-4" /> VI Guide private mobility
+                </span>
+                <span className="rounded-full border border-white/15 bg-black/20 px-3 py-2 text-[9px] font-black uppercase tracking-[.18em] text-white/75 backdrop-blur">
+                  {islandVisual.label} context
+                </span>
               </div>
               <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-[-.055em] sm:text-5xl lg:text-6xl">
                 Book the ride. Know the fare. Track every mile.
@@ -392,7 +425,7 @@ export function MobilityBookingScreen() {
             </button>
           </section>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4" id="book">
             {requestedDestinationName ? (
               <section
                 className="rounded-[24px] border border-teal-200 bg-teal-50 p-4 text-teal-950 shadow-sm sm:p-5"
