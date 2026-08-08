@@ -78,7 +78,7 @@ type DriverConsoleTab = "console" | "hotspots" | "wallet" | "history";
 const DRIVER_STATUSES: DriverAvailability[] = ["available", "busy", "offline"];
 
 const TAB_BUTTON_BASE =
-  "flex items-center gap-2 rounded-full px-5 py-3 text-[11px] font-black uppercase tracking-[0.18em] transition";
+  "inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full px-4 py-3 text-[10px] font-black uppercase tracking-[0.16em] transition sm:px-5";
 
 const ACTION_BUTTON_BASE =
   "rounded-full px-4 py-3 text-xs font-black uppercase tracking-[0.2em] transition disabled:opacity-60";
@@ -390,32 +390,37 @@ export function DriverConsole({ driverId }: { driverId: string }) {
 
   return (
     <div className="min-h-screen bg-transparent pb-24 md:pb-10">
-      <div className="sticky top-0 z-40 border-b border-slate-200 bg-white/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-          <div className="flex items-center gap-3">
+      <div className="sticky top-0 z-40 overflow-hidden rounded-[24px] border border-[#f5c451]/20 bg-[linear-gradient(135deg,rgba(3,47,45,.98),rgba(7,80,76,.96))] text-white shadow-[0_14px_38px_rgba(3,47,45,.16)] backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+          <div className="flex min-w-0 items-center gap-3">
             <div
-              className={`h-3 w-3 rounded-full ${
+              className={`h-3 w-3 shrink-0 rounded-full ${
                 isOnline
-                  ? "bg-emerald-500 shadow-[0_0_14px_rgba(16,185,129,0.55)]"
+                  ? "bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.65)]"
                   : driver?.availability === "busy"
-                    ? "bg-amber-500 shadow-[0_0_14px_rgba(245,158,11,0.4)]"
-                    : "bg-slate-300"
+                    ? "bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.52)]"
+                    : "bg-white/35"
               }`}
             />
-            <div className="text-[11px] font-black uppercase tracking-[0.24em] text-[#043331]">
-              {isOnline
-                ? "On Duty"
-                : driver?.availability === "busy"
-                  ? "Busy"
-                  : "Offline"}
+            <div>
+              <div className="text-[9px] font-black uppercase tracking-[0.18em] text-[#f5c451]">
+                Driver control
+              </div>
+              <div className="mt-0.5 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                {isOnline
+                  ? "On Duty"
+                  : driver?.availability === "busy"
+                    ? "Busy"
+                    : "Offline"}
+              </div>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 sm:block">
+            <div className="hidden rounded-full border border-white/10 bg-black/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-white/70 sm:block">
               {driver?.displayName || driver?.idHint || "Driver"}
             </div>
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#043331] text-xs font-black text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f5c451] text-xs font-black text-[#032f2d] shadow-[0_8px_20px_rgba(245,196,81,.16)]">
               {(driver?.displayName || driver?.idHint || "D").charAt(0)}
             </div>
           </div>
@@ -430,7 +435,10 @@ export function DriverConsole({ driverId }: { driverId: string }) {
           </div>
         ) : null}
 
-        <div className="mb-5 flex w-fit max-w-full flex-wrap gap-2 rounded-[20px] border border-slate-200 bg-white p-1.5 shadow-sm">
+        <div
+          aria-label="Driver operations views"
+          className="mb-5 flex max-w-full gap-1.5 overflow-x-auto rounded-[22px] border border-[#043331]/10 bg-[#043331] p-1.5 shadow-[0_12px_32px_rgba(4,51,49,.12)]"
+        >
           <TabButton
             active={activeTab === "console"}
             icon={Activity}
@@ -463,7 +471,7 @@ export function DriverConsole({ driverId }: { driverId: string }) {
               <OpsSection
                 eyebrow="Driver OS"
                 title="Driver operations"
-                subtitle="Premium trip-running across the U.S. Virgin Islands."
+                subtitle="Governed trip-running across the U.S. Virgin Islands."
                 actions={
                   <div className="flex flex-wrap gap-2">
                     {DRIVER_STATUSES.map((state) => {
@@ -678,9 +686,9 @@ export function DriverConsole({ driverId }: { driverId: string }) {
 
             <div className="space-y-8">
               <OpsSection
-                eyebrow="Live intelligence"
-                title="Demand and signal"
-                subtitle="High-level territory awareness for driver positioning."
+                eyebrow="Positioning intelligence"
+                title="Coverage signals"
+                subtitle="Reference sectors for driver positioning; this panel does not represent real-time demand."
               >
                 <div className="grid gap-4">
                   {STATIC_HOTSPOTS.map((item) => (
@@ -775,14 +783,16 @@ function TabButton({
 }) {
   return (
     <button
+      type="button"
+      aria-pressed={active}
       onClick={onClick}
       className={`${TAB_BUTTON_BASE} ${
         active
-          ? "bg-[#043331] text-white shadow-sm"
-          : "text-slate-500 hover:bg-slate-50 hover:text-[#043331]"
+          ? "bg-[#f5c451] text-[#032f2d] shadow-[0_8px_22px_rgba(245,196,81,.18)]"
+          : "text-white/70 hover:bg-white/10 hover:text-white"
       }`}
     >
-      <Icon size={14} />
+      <Icon size={14} className={active ? "text-[#032f2d]" : "text-[#f5c451]"} />
       {label}
     </button>
   );
@@ -943,8 +953,8 @@ function HotspotsView() {
   return (
     <OpsSection
       eyebrow="Hotspots"
-      title="Territory demand map"
-      subtitle="A live demand surface for airport, ferry, harbor, and town movement."
+      title="Territory positioning map"
+      subtitle="A static operating reference for airport, ferry, harbor, and town coverage—not a real-time demand feed."
     >
       <div className="relative h-[560px] overflow-hidden rounded-[32px] border border-slate-200 bg-slate-900">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -993,9 +1003,9 @@ function HotspotsView() {
             <div className="text-[11px] font-black uppercase tracking-[0.18em] text-amber-300">
               Airport sector
             </div>
-            <div className="mt-2 text-2xl font-black italic">Critical demand</div>
+            <div className="mt-2 text-2xl font-black italic">Tariff-governed priority</div>
             <div className="mt-2 text-sm font-semibold text-white/70">
-              High ride pressure with premium uplift active.
+              High-traffic pickup sector. Official taxi tariff remains in effect.
             </div>
           </div>
 
@@ -1003,9 +1013,9 @@ function HotspotsView() {
             <div className="text-[11px] font-black uppercase tracking-[0.18em] text-emerald-300">
               Red Hook ferry
             </div>
-            <div className="mt-2 text-2xl font-black italic">High demand</div>
+            <div className="mt-2 text-2xl font-black italic">Ferry-cycle coverage</div>
             <div className="mt-2 text-sm font-semibold text-white/70">
-              Ferry arrival cycles are pushing demand upward.
+              Position for scheduled arrival periods and association dispatch.
             </div>
           </div>
 
@@ -1013,9 +1023,9 @@ function HotspotsView() {
             <div className="text-[11px] font-black uppercase tracking-[0.18em] text-sky-300">
               Town corridor
             </div>
-            <div className="mt-2 text-2xl font-black italic">Steady flow</div>
+            <div className="mt-2 text-2xl font-black italic">Steady coverage</div>
             <div className="mt-2 text-sm font-semibold text-white/70">
-              Consistent movement between town, cruise, and hotel zones.
+              Maintain service across town, cruise, and hotel corridors.
             </div>
           </div>
         </div>
