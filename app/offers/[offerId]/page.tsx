@@ -57,8 +57,6 @@ export default async function OfferDetailPage({
   return (
     <main className="min-h-screen overflow-hidden bg-[#f5f0e6] pb-32 text-[#032f2d]">
       <section
-        role="img"
-        aria-label={visual.alt}
         className="relative isolate overflow-hidden bg-cover bg-center px-4 pb-14 pt-5 text-white sm:px-7 lg:px-10 lg:pb-16"
         style={{
           backgroundImage: `linear-gradient(90deg,rgba(2,31,29,.98)_0%,rgba(3,47,45,.94)_44%,rgba(3,47,45,.58)_78%,rgba(3,47,45,.32)_100%),linear-gradient(180deg,rgba(2,31,29,.06),rgba(2,31,29,.5)),url('${visual.image}')`,
