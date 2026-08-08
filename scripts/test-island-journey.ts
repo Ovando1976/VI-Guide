@@ -9,9 +9,12 @@ function source(path: string) {
 const model = source("lib/door-to-door-journey.ts");
 const smartModel = source("lib/smart-island-journey.ts");
 const catalog = source("lib/journey-place-catalog.ts");
+const mapModel = source("lib/island-journey-map.ts");
 const planner = source("components/door-to-door-journey-planner.tsx");
 const smartBuilder = source("components/smart-island-journey-builder.tsx");
+const journeyMap = source("components/map/saved-island-journey-living-map.tsx");
 const journeyPage = source("app/journey/page.tsx");
+const journeyMapPage = source("app/map/journey/page.tsx");
 const ferryPage = source("app/ferry/page.tsx");
 const homeStatus = source("components/home/home-live-status.tsx");
 
@@ -38,6 +41,14 @@ assert.match(catalog, /typeof item\.lng === "number"/);
 assert.match(catalog, /catalog:/);
 assert.match(catalog, /sourceHref/);
 
+assert.match(mapModel, /buildIslandJourneyMapStops/);
+assert.match(mapModel, /ferry-terminal-departure/);
+assert.match(mapModel, /ferry-terminal-arrival/);
+assert.match(mapModel, /positionedJourneyStops/);
+assert.match(mapModel, /PR #241\/#242 saved the ferry leg/);
+assert.match(mapModel, /isFerryWaterSegment/);
+assert.match(mapModel, /joinJourneySegments/);
+
 assert.match(smartBuilder, /Choose any mapped VI Guide place\./);
 assert.match(smartBuilder, /\/api\/route/);
 assert.match(smartBuilder, /resolveTerminalTransfers/);
@@ -45,10 +56,23 @@ assert.match(smartBuilder, /Calculating the road connections/);
 assert.match(smartBuilder, /Leave after/);
 assert.match(smartBuilder, /Arrive by/);
 assert.match(smartBuilder, /Save to My Trip/);
+assert.match(smartBuilder, /buildIslandJourneyMapStops/);
+assert.match(smartBuilder, /View on Living Map/);
+assert.match(smartBuilder, /\/map\/journey\?trip=/);
 assert.match(smartBuilder, /upsertJourneyPlan/);
 assert.match(smartBuilder, /writeSelectedTravelerTripPlanId/);
 assert.match(smartBuilder, /Verify ferry source/);
 assert.match(smartBuilder, /America\/St_Thomas/);
+
+assert.match(journeyMap, /EstateMap/);
+assert.match(journeyMap, /readJourneyPlans/);
+assert.match(journeyMap, /positionedJourneyStops/);
+assert.match(journeyMap, /isFerryWaterSegment/);
+assert.match(journeyMap, /directJourneySegment/);
+assert.match(journeyMap, /joinJourneySegments/);
+assert.match(journeyMap, /fetch\("\/api\/route"/);
+assert.match(journeyMap, /Complete taxi \+ ferry \+ taxi journey is mapped\./);
+assert.match(journeyMap, /Route partly estimated/);
 
 assert.match(planner, /One trip\. Ground \+ water \+ arrival\./);
 assert.match(planner, /Plan this ride/);
@@ -61,6 +85,9 @@ assert.match(journeyPage, /catalogPlaces=\{catalogPlaces\}/);
 assert.match(journeyPage, /Quick journey templates/);
 assert.match(journeyPage, /DoorToDoorJourneyPlanner/);
 assert.match(journeyPage, /secondaryHref="\/trips"/);
+assert.match(journeyMapPage, /SavedIslandJourneyLivingMap/);
+assert.match(journeyMapPage, /Living Map/);
+assert.match(journeyMapPage, /Taxi · Ferry · Taxi/);
 assert.match(ferryPage, /Ferry \+ Island Journey Planner/);
 assert.match(ferryPage, /DoorToDoorJourneyPlanner/);
 assert.match(ferryPage, /FerryPlanner/);
@@ -69,4 +96,6 @@ assert.match(homeStatus, /label: "Ferry \+ island journey"/);
 assert.match(homeStatus, /value: "Plan taxi \+ ferry as one trip"/);
 assert.match(homeStatus, /href: "\/journey"/);
 
-console.log("VI Guide connected, smart, catalog-routed Island Journey contracts passed.");
+console.log(
+  "VI Guide connected, smart, catalog-routed, Living Map Island Journey contracts passed.",
+);
