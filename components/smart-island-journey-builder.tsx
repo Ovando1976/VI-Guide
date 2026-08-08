@@ -51,11 +51,14 @@ export function SmartIslandJourneyBuilder({ catalogPlaces = [] }: { catalogPlace
       return () => { cancelled = true; };
     }
 
+    const selectedOrigin = origin;
+    const selectedDestination = destination;
+
     async function routeSelections() {
       setRouting(true);
       const [nextOrigin, nextDestination] = await Promise.all([
-        resolveTerminalTransfers(origin, "origin"),
-        resolveTerminalTransfers(destination, "destination"),
+        resolveTerminalTransfers(selectedOrigin, "origin"),
+        resolveTerminalTransfers(selectedDestination, "destination"),
       ]);
       if (cancelled) return;
       setRoutedOrigin(nextOrigin);
