@@ -26,7 +26,7 @@ const MISSIONS = [
     title: "Beach day",
     description: "Choose the best beach, timing, food, transportation, and a backup option.",
     icon: Umbrella,
-    image: "/images/beaches/st-thomas/magens-bay-1.jpg",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
     imageAlt: "Magens Bay beach in St. Thomas",
     tag: "Water",
     prompt:
