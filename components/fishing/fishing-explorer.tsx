@@ -1,16 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
   Anchor,
   Compass,
   Fish,
-  Map,
   Search,
   ShieldCheck,
-  Sparkles,
   Waves,
 } from "lucide-react";
 
@@ -58,18 +55,8 @@ export function FishingExplorer() {
       <section className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_18%_15%,rgba(34,211,238,.2),transparent_30%),radial-gradient(circle_at_82%_10%,rgba(251,191,36,.16),transparent_28%),linear-gradient(145deg,#043331_0%,#064b58_52%,#07222d_100%)]">
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:42px_42px]" />
         <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-10 sm:px-8 lg:px-10 lg:pb-20 lg:pt-16">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-100/20 bg-cyan-50/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.22em] text-cyan-100 backdrop-blur">
-              <Anchor size={14} /> U.S. Virgin Islands Fisher Guide
-            </div>
-            <div className="flex gap-2">
-              <Link href="/map" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold transition hover:bg-white/15">
-                <Map size={15} /> Open map
-              </Link>
-              <Link href="/map?concierge=open" className="inline-flex items-center gap-2 rounded-full bg-[#f5b942] px-4 py-2 text-xs font-black text-[#043331] transition hover:brightness-105">
-                <Sparkles size={15} /> Ask concierge
-              </Link>
-            </div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-100/20 bg-cyan-50/10 px-4 py-2 text-[10px] font-black uppercase tracking-[.22em] text-cyan-100 backdrop-blur">
+            <Anchor size={14} /> U.S. Virgin Islands Fisher Guide
           </div>
 
           <div className="mt-12 grid items-end gap-10 lg:grid-cols-[1.3fr_.7fr]">
