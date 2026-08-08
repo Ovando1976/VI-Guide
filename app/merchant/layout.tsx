@@ -60,7 +60,7 @@ export default async function MerchantLayout({
 
         {session.role === "merchant" ? (
           <div className="mx-auto mt-4 flex max-w-7xl flex-wrap items-center gap-2 border-t border-white/10 pt-4">
-            <span className="text-[8px] font-black uppercase tracking-[.14em] text-white/45">
+            <span className="text-[8px] font-black uppercase tracking-[.14em] text-white/[.45]">
               Assigned businesses
             </span>
             {listingIds.length ? (
@@ -68,7 +68,7 @@ export default async function MerchantLayout({
                 <Link
                   key={listingId}
                   href={`/merchant/availability?listingId=${encodeURIComponent(listingId)}`}
-                  className="rounded-full border border-[#f5c451]/20 bg-[#f5c451]/10 px-3 py-1.5 text-[9px] font-black text-[#ffe9a9] transition hover:border-[#f5c451]/45 hover:bg-[#f5c451]/15"
+                  className="rounded-full border border-[#f5c451]/20 bg-[#f5c451]/10 px-3 py-1.5 text-[9px] font-black text-[#ffe9a9] transition hover:border-[#f5c451]/[.45] hover:bg-[#f5c451]/[.15]"
                 >
                   {humanizeListingId(listingId)}
                 </Link>
