@@ -1,56 +1,112 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, CalendarDays, CarFront, Clock3, Route, Save, Ship, Sparkles, TriangleAlert } from "lucide-react";
+import { ArrowRight, CalendarDays, CarFront, Clock3, LoaderCircle, Route, Save, Ship, Sparkles, TriangleAlert } from "lucide-react";
 
 import { createJourneyPlan, upsertJourneyPlan } from "@/lib/journey-planner";
 import { writeSelectedTravelerTripPlanId } from "@/lib/traveler-trip-selection";
 import {
+  FERRY_TERMINAL_COORDS,
   JOURNEY_PLACES,
+  ferryPortsForIsland,
   planSmartIslandJourney,
+  type JourneyPlace,
   type JourneyTimeMode,
   type SmartJourneyPlan,
 } from "@/lib/smart-island-journey";
+import type { FerryPortId } from "@/lib/ferry-planner";
 import type { IntelligencePlanStop } from "@/types/intelligence";
 
 function todayInVi() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/St_Thomas", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
 
-export function SmartIslandJourneyBuilder() {
+export function SmartIslandJourneyBuilder({ catalogPlaces = [] }: { catalogPlaces?: JourneyPlace[] }) {
   const router = useRouter();
+  const places = useMemo(() => [...JOURNEY_PLACES, ...catalogPlaces], [catalogPlaces]);
   const [originId, setOriginId] = useState("stt-airport");
   const [destinationId, setDestinationId] = useState("cruz-bay");
   const [travelDate, setTravelDate] = useState(todayInVi);
   const [requestedTime, setRequestedTime] = useState("09:00");
   const [timeMode, setTimeMode] = useState<JourneyTimeMode>("departAfter");
+  const [routedOrigin, setRoutedOrigin] = useState<JourneyPlace | null>(null);
+  const [routedDestination, setRoutedDestination] = useState<JourneyPlace | null>(null);
+  const [routing, setRouting] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const plan = useMemo(
-    () => planSmartIslandJourney({ originId, destinationId, travelDate, requestedTime, timeMode }),
-    [originId, destinationId, travelDate, requestedTime, timeMode],
-  );
+  const origin = places.find((place) => place.id === originId) ?? null;
+  const destination = places.find((place) => place.id === destinationId) ?? null;
+  const sameIsland = Boolean(origin && destination && origin.island === destination.island);
+
+  useEffect(() => {
+    let cancelled = false;
+    setSaved(false);
+
+    if (!origin || !destination || sameIsland) {
+      setRoutedOrigin(origin);
+      setRoutedDestination(destination);
+      setRouting(false);
+      return () => { cancelled = true; };
+    }
+
+    async function routeSelections() {
+      setRouting(true);
+      const [nextOrigin, nextDestination] = await Promise.all([
+        resolveTerminalTransfers(origin, "origin"),
+        resolveTerminalTransfers(destination, "destination"),
+      ]);
+      if (cancelled) return;
+      setRoutedOrigin(nextOrigin);
+      setRoutedDestination(nextDestination);
+      setRouting(false);
+    }
+
+    void routeSelections();
+    return () => { cancelled = true; };
+  }, [origin, destination, sameIsland]);
+
+  const plan = useMemo(() => {
+    if (routing || !routedOrigin || !routedDestination) return null;
+    return planSmartIslandJourney({
+      origin: routedOrigin,
+      destination: routedDestination,
+      travelDate,
+      requestedTime,
+      timeMode,
+    });
+  }, [routing, routedOrigin, routedDestination, travelDate, requestedTime, timeMode]);
 
   function savePlan(planToSave: SmartJourneyPlan) {
     const journey = createJourneyPlan(planToSave.origin.island, `${planToSave.origin.label} → ${planToSave.destination.label}`);
-    const ferryIsland = planToSave.origin.island;
-    const stops: IntelligencePlanStop[] = planToSave.legs.map((leg, index) => ({
-      id: `island_journey_${journey.id}_${index}`.slice(0, 160),
-      title: leg.mode === "ferry" ? `${leg.from} → ${leg.to}` : leg.mode === "taxi" ? `Transfer · ${leg.to}` : leg.to,
-      island: leg.mode === "ferry" ? ferryIsland : index === planToSave.legs.length - 1 ? planToSave.destination.island : planToSave.origin.island,
-      kind: leg.mode === "ferry" ? "ferry" : "mobility",
-      summary: leg.note,
-      startTime: leg.startTime,
-      durationMinutes: leg.minutes,
-      ...(leg.mobilityHref ? { bookingHref: leg.mobilityHref } : {}),
-    }));
+    const stops: IntelligencePlanStop[] = planToSave.legs.map((leg, index) => {
+      const isFirst = index === 0;
+      const isLast = index === planToSave.legs.length - 1;
+      const terminal = leg.mode === "ferry" ? FERRY_TERMINAL_COORDS[planToSave.route.from] : null;
+      const lat = isFirst ? planToSave.origin.lat : isLast ? planToSave.destination.lat : terminal?.lat;
+      const lng = isFirst ? planToSave.origin.lng : isLast ? planToSave.destination.lng : terminal?.lng;
+      return {
+        id: `island_journey_${journey.id}_${index}`.slice(0, 160),
+        title: leg.mode === "ferry" ? `${leg.from} → ${leg.to}` : `Transfer · ${leg.to}`,
+        island: isLast ? planToSave.destination.island : planToSave.origin.island,
+        kind: leg.mode === "ferry" ? "ferry" : "mobility",
+        summary: leg.note,
+        startTime: leg.startTime,
+        durationMinutes: leg.minutes,
+        ...(typeof lat === "number" ? { lat } : {}),
+        ...(typeof lng === "number" ? { lng } : {}),
+        ...(leg.mobilityHref ? { bookingHref: leg.mobilityHref } : {}),
+        ...(isFirst && planToSave.origin.sourceHref ? { href: planToSave.origin.sourceHref } : {}),
+        ...(isLast && planToSave.destination.sourceHref ? { href: planToSave.destination.sourceHref } : {}),
+      };
+    });
+
     upsertJourneyPlan({
       ...journey,
       date: planToSave.travelDate,
       status: "ready",
-      notes: `VI Guide connected journey. Published ferry departure ${planToSave.ferryDepartureTime}; verify the operating schedule before travel.`,
+      notes: `VI Guide connected journey. Published ferry departure ${planToSave.ferryDepartureTime}; road timing uses VI Guide routing estimates and the ferry schedule must be verified before travel.`,
       plan: stops,
     });
     writeSelectedTravelerTripPlanId(journey.id);
@@ -58,28 +114,26 @@ export function SmartIslandJourneyBuilder() {
     router.push("/trips");
   }
 
-  const sameIsland = JOURNEY_PLACES.find((place) => place.id === originId)?.island === JOURNEY_PLACES.find((place) => place.id === destinationId)?.island;
-
   return (
     <section className="rounded-[32px] border border-[#0b5b57]/15 bg-white p-5 shadow-[0_22px_70px_rgba(4,51,49,.08)] md:p-8">
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs font-black uppercase tracking-[.22em] text-[#b7861f]">Smart Island Journey</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-[#043331]">Tell us where. VI Guide connects the trip.</h2>
-          <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">Choose an origin, destination and timing preference. VI Guide evaluates the supported ferry corridors, terminal transfer time and check-in buffer, then recommends the best published connection.</p>
+          <h2 className="mt-2 text-3xl font-black tracking-tight text-[#043331]">Choose any mapped VI Guide place.</h2>
+          <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">VI Guide now uses place coordinates and the existing road-routing API to estimate the terminal connection, then combines that with the governed ferry schedule and check-in buffer.</p>
         </div>
         <Route className="h-10 w-10 text-[#0b817b]" />
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         <Field label="From">
-          <select value={originId} onChange={(event) => { setOriginId(event.target.value); setSaved(false); }} className="w-full rounded-2xl border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-bold text-[#043331]">
-            {JOURNEY_PLACES.map((place) => <option key={place.id} value={place.id}>{place.label}</option>)}
+          <select value={originId} onChange={(event) => setOriginId(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-bold text-[#043331]">
+            {renderPlaceOptions(places)}
           </select>
         </Field>
         <Field label="To">
-          <select value={destinationId} onChange={(event) => { setDestinationId(event.target.value); setSaved(false); }} className="w-full rounded-2xl border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-bold text-[#043331]">
-            {JOURNEY_PLACES.map((place) => <option key={place.id} value={place.id}>{place.label}</option>)}
+          <select value={destinationId} onChange={(event) => setDestinationId(event.target.value)} className="w-full rounded-2xl border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-bold text-[#043331]">
+            {renderPlaceOptions(places)}
           </select>
         </Field>
         <Field label="Date">
@@ -93,7 +147,9 @@ export function SmartIslandJourneyBuilder() {
         </Field>
       </div>
 
-      {plan ? (
+      {routing ? (
+        <div className="mt-6 flex items-center gap-3 rounded-[24px] border border-teal-100 bg-teal-50 p-5 text-sm font-bold text-teal-900"><LoaderCircle className="h-5 w-5 animate-spin"/>Calculating the road connections to the best ferry terminals…</div>
+      ) : plan ? (
         <div className="mt-6 overflow-hidden rounded-[28px] border border-[#0b5b57]/12 bg-[#f8f4ea]">
           <div className="grid gap-4 border-b border-[#0b5b57]/10 p-5 md:grid-cols-4 md:p-6">
             <Stat label="Leave origin" value={plan.leaveOriginTime}/><Stat label="Ferry" value={plan.ferryDepartureTime}/><Stat label="Arrive" value={plan.destinationArrivalTime}/><Stat label="Journey time" value={`${plan.totalMinutes} min`}/>
@@ -113,13 +169,49 @@ export function SmartIslandJourneyBuilder() {
         </div>
       ) : (
         <div className="mt-6 rounded-[24px] border border-dashed border-[#0b5b57]/20 bg-[#f8f4ea] p-6">
-          <h3 className="font-black text-[#043331]">{sameIsland ? "No ferry needed for this pair." : "No supported direct ferry connection fits these selections."}</h3>
-          <p className="mt-2 text-sm font-semibold text-slate-600">{sameIsland ? "Use VI Guide Mobility for an on-island ride, or choose a destination on another island." : "Try a different time/date, or ask VI Concierge to coordinate a multi-ferry or alternate connection. Published schedules remain subject to operator changes."}</p>
+          <h3 className="font-black text-[#043331]">{sameIsland ? "No ferry needed for this pair." : "No supported ferry connection fits these selections."}</h3>
+          <p className="mt-2 text-sm font-semibold text-slate-600">{sameIsland ? "Use VI Guide Mobility for an on-island ride, or choose a destination on another island." : "Try another time/date or a different mapped place. If road routing is unavailable for a location, VI Concierge can coordinate the connection manually."}</p>
           <div className="mt-4 flex gap-3"><Link href="/mobility" className="rounded-full bg-[#043f3b] px-4 py-2.5 text-[10px] font-black uppercase tracking-[.12em] text-white">Open Mobility</Link><Link href="/concierge?prompt=Help%20me%20coordinate%20an%20inter-island%20connection" className="rounded-full border border-[#043f3b]/20 px-4 py-2.5 text-[10px] font-black uppercase tracking-[.12em] text-[#043f3b]">Ask Concierge</Link></div>
         </div>
       )}
     </section>
   );
+}
+
+async function resolveTerminalTransfers(place: JourneyPlace, direction: "origin" | "destination") {
+  if (Object.keys(place.terminalTransfers).length || place.lat == null || place.lng == null) return place;
+  const terminalTransfers: Partial<Record<FerryPortId, number>> = {};
+
+  await Promise.all(ferryPortsForIsland(place.island).map(async (port) => {
+    const terminal = FERRY_TERMINAL_COORDS[port];
+    const from = direction === "origin" ? { lat: place.lat!, lng: place.lng! } : terminal;
+    const to = direction === "origin" ? terminal : { lat: place.lat!, lng: place.lng! };
+    try {
+      const response = await fetch("/api/route", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ from, to }),
+      });
+      if (!response.ok) return;
+      const result = await response.json() as { durationSeconds?: number };
+      if (typeof result.durationSeconds === "number" && Number.isFinite(result.durationSeconds)) {
+        terminalTransfers[port] = Math.max(3, Math.ceil(result.durationSeconds / 60));
+      }
+    } catch {
+      // A missing road estimate should remove only this terminal candidate, not break the planner.
+    }
+  }));
+
+  return { ...place, terminalTransfers };
+}
+
+function renderPlaceOptions(places: JourneyPlace[]) {
+  const islands = [["stt", "St. Thomas"], ["stj", "St. John"], ["stx", "St. Croix"]] as const;
+  return islands.map(([island, label]) => (
+    <optgroup key={island} label={label}>
+      {places.filter((place) => place.island === island).map((place) => <option key={place.id} value={place.id}>{place.label}</option>)}
+    </optgroup>
+  ));
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) { return <label className="block"><span className="mb-2 block text-[10px] font-black uppercase tracking-[.14em] text-slate-500">{label}</span>{children}</label>; }
