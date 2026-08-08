@@ -9,6 +9,7 @@ function source(path: string) {
 const layout = source("app/layout.tsx");
 const homePage = source("app/page.tsx");
 const homeConcierge = source("components/home/home-concierge-hub.tsx");
+const homeLiveStatus = source("components/home/home-live-status.tsx");
 const mapPage = source("app/map/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const conciergePage = source("app/concierge/page.tsx");
@@ -31,6 +32,11 @@ assert.match(homePage, /alt=\{alt\}/);
 assert.match(homeConcierge, /PROMPTS\.map\(\(\{ label, href, image, alt, icon: Icon \}\)/);
 assert.match(homeConcierge, /One-tap idea/);
 assert.match(homeConcierge, /king-christian-hotel\.jpg/);
+assert.match(homeLiveStatus, /STATUS_ITEMS\.map\(\(\{ label, value, icon: Icon, href, image, alt, tag \}\)/);
+assert.match(homeLiveStatus, /Today in the Virgin Islands/);
+assert.match(homeLiveStatus, /Open in VI Guide/);
+assert.match(homeLiveStatus, /red-hook-ferry-terminal-1\.jpg/);
+assert.match(homeLiveStatus, /magens-bay-1\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
 assert.match(mapPage, /VI Guide Living Map/);
