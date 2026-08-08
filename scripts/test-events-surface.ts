@@ -10,6 +10,7 @@ const eventsData = source("lib/events.ts");
 const eventsPage = source("app/events/page.tsx");
 const eventDetail = source("app/events/[slug]/page.tsx");
 const searchPage = source("app/search/page.tsx");
+const homeLiveStatus = source("components/home/home-live-status.tsx");
 
 for (const [value, label] of [
   ["USVI_EVENTS", "Events has a typed source-backed catalog"],
@@ -49,6 +50,7 @@ assert.ok(
 for (const [value, label] of [
   ["generateStaticParams", "event detail pages are generated for the source catalog"],
   ["getEventBySlug", "event detail resolves catalog records"],
+  ["AddToJourneyButton", "event detail can become a real journey stop"],
   ["Open official listing", "event detail exposes the official source"],
   ["Open Living Map", "event detail keeps the Living Map handoff"],
   ["Build my event day", "event detail keeps Concierge planning"],
@@ -67,6 +69,13 @@ for (const [value, label] of [
   ["/events/${event.slug}", "Search event results route to event detail pages"],
 ] as const) {
   assert.ok(searchPage.includes(value), `Events Search contract failed: ${label}`);
+}
+
+for (const [value, label] of [
+  ['href="/events"', "homepage live-status panel links directly to Events"],
+  ["See events", "homepage labels the Events entry clearly"],
+]) {
+  assert.ok(homeLiveStatus.includes(value), `Events home-entry contract failed: ${label}`);
 }
 
 console.log("VI Guide Events traveler-surface contracts passed.");
