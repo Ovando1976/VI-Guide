@@ -76,8 +76,8 @@ const QUICK = [
     detail: "Move with confidence",
     href: "/mobility",
     icon: Navigation,
-    image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
-    alt: "Red Hook ferry terminal in St. Thomas",
+    image: "https://usvitaxi.com/wp-content/uploads/2023/03/our_taxi2-1024x731.jpg",
+    alt: "White Ford passenger taxi van on St. Thomas in the U.S. Virgin Islands",
   },
   {
     label: "Dining",
@@ -278,13 +278,23 @@ export default function Home() {
                 href={href}
                 className="group relative flex min-h-[112px] items-end overflow-hidden rounded-[21px] border border-white/10 bg-[#032f2d] p-3 shadow-[0_12px_32px_rgba(2,31,29,.16)] transition hover:-translate-y-0.5 hover:border-[#f5c451]/55"
               >
-                <Image
-                  src={image}
-                  alt={alt}
-                  fill
-                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
+                {image.startsWith("https://") ? (
+                  <img
+                    src={image}
+                    alt={alt}
+                    loading="lazy"
+                    title="Photo: Annie's Taxi Service, St. Thomas, USVI"
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <Image
+                    src={image}
+                    alt={alt}
+                    fill
+                    sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                )}
                 <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,31,29,.08),rgba(2,31,29,.36)_48%,rgba(2,31,29,.93)_100%)]" />
                 <span className="relative flex w-full items-end gap-2.5">
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/92 text-[#0f766e] shadow-lg backdrop-blur transition group-hover:bg-[#f5c451] group-hover:text-[#032f2d]">
