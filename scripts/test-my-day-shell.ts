@@ -9,10 +9,21 @@ const workspace = readFileSync(
   "utf8",
 );
 
+assert.match(todayPage, /<main\b/);
+assert.equal(
+  [...todayPage.matchAll(/<main\b/g)].length,
+  1,
+  "My Day route must own exactly one main landmark",
+);
 assert.match(todayPage, /<ViPublicHeader/);
 assert.match(todayPage, /actionHref="\/trips"/);
 assert.match(todayPage, /secondaryHref="\/planner"/);
 assert.match(todayPage, /<AiTripBriefScreen \/>/);
+assert.doesNotMatch(
+  todayPage,
+  /today-brief-shell|<style>/,
+  "My Day must not depend on shell-hiding CSS workarounds",
+);
 
 assert.doesNotMatch(
   workspace,
