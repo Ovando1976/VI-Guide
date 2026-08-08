@@ -5,6 +5,7 @@ import {
   Crown,
   Map as MapIcon,
   MapPin,
+  MessageCircleMore,
   Search,
   Sparkles,
 } from "lucide-react";
@@ -20,10 +21,15 @@ import {
   getUpcomingEvents,
   type UsviEvent,
 } from "@/lib/events";
+import {
+  COMMUNITY_STORIES,
+  islandLabel,
+  type CommunityStory,
+} from "@/lib/community-stories";
 import { getTravelKnowledge, type TravelKnowledgeKind } from "@/lib/travel-knowledge";
 import type { DirectoryItem } from "@/types/directory";
 
-type SearchKind = "all" | TravelKnowledgeKind | "events" | "timeline" | "governors";
+type SearchKind = "all" | TravelKnowledgeKind | "events" | "community" | "timeline" | "governors";
 
 type DirectoryResult = {
   type: "directory";
@@ -35,6 +41,12 @@ type DirectoryResult = {
 type EventResult = {
   type: "event";
   event: UsviEvent;
+  score: number;
+};
+
+type CommunityResult = {
+  type: "community";
+  story: CommunityStory;
   score: number;
 };
 
@@ -51,7 +63,7 @@ type HeritageResult = {
   score: number;
 };
 
-type Result = DirectoryResult | EventResult | HeritageResult;
+type Result = DirectoryResult | EventResult | CommunityResult | HeritageResult;
 
 const KINDS: Array<{ value: SearchKind; label: string }> = [
   { value: "all", label: "Everything" },
@@ -59,6 +71,7 @@ const KINDS: Array<{ value: SearchKind; label: string }> = [
   { value: "beaches", label: "Beaches" },
   { value: "stays", label: "Stays" },
   { value: "events", label: "Events" },
+  { value: "community", label: "Community" },
   { value: "historic", label: "Historic places" },
   { value: "timeline", label: "Timeline" },
   { value: "governors", label: "Governors" },
@@ -116,7 +129,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
           actionHref={`/concierge?prompt=${encodeURIComponent(
             query
               ? `Help me decide what to do with my VI Guide search for ${query}. Connect the best result to timing, transportation, and my trip.`
-              : "Help me discover the right places, beaches, stays, events, and experiences across the U.S. Virgin Islands.",
+              : "Help me discover the right places, beaches, stays, events, community field notes, and experiences across the U.S. Virgin Islands.",
           )}`}
           actionLabel="Ask Concierge"
           actionIcon={Sparkles}
@@ -136,8 +149,8 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
                 Search once. Decide what happens next.
               </h1>
               <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/70">
-                Search beaches, stays, local places, upcoming events, historic sites,
-                timeline records, and governors together. Traveler results connect back
+                Search beaches, stays, local places, upcoming events, community field notes,
+                historic sites, timeline records, and governors together. Traveler results connect back
                 into the same Map, trip, and Concierge system used throughout VI Guide.
               </p>
             </div>
@@ -151,7 +164,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
                   name="q"
                   defaultValue={query}
                   autoFocus
-                  placeholder="Beach, governor, hotel, event, landmark…"
+                  placeholder="Beach, hotel, event, community story, landmark…"
                   className="min-w-0 flex-1 bg-transparent text-base font-bold outline-none placeholder:text-slate-400"
                 />
                 {selectedKind !== "all" ? <input type="hidden" name="kind" value={selectedKind} /> : null}
@@ -220,6 +233,8 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
                 />
               ) : result.type === "event" ? (
                 <EventResultCard key={result.event.id} event={result.event} />
+              ) : result.type === "community" ? (
+                <CommunityResultCard key={result.story.id} story={result.story} />
               ) : (
                 <HeritageResultCard key={`${result.kind}:${result.id}`} result={result} />
               ),
@@ -233,7 +248,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
               Try a broader term, switch back to Everything, or ask the Concierge to build a recommendation around what you are trying to do.
             </p>
             <Link
-              href={`/concierge?prompt=${encodeURIComponent(`Help me find ${query || "a place or event to visit"} in the U.S. Virgin Islands.`)}`}
+              href={`/concierge?prompt=${encodeURIComponent(`Help me find ${query || "a place, event, or community field note"} in the U.S. Virgin Islands.`)}`}
               className="mt-6 inline-flex rounded-full bg-[#043331] px-6 py-3 text-[10px] font-black uppercase tracking-[.17em] text-white"
             >
               Ask Concierge
@@ -270,6 +285,37 @@ function EventResultCard({ event }: { event: UsviEvent }) {
         </p>
         <span className="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-teal-800">
           Open event <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+function CommunityResultCard({ story }: { story: CommunityStory }) {
+  return (
+    <Link
+      href={`/community/${story.slug}`}
+      className="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-teal-300 hover:shadow-xl"
+    >
+      <div className="flex h-40 items-center justify-center bg-[radial-gradient(circle_at_25%_20%,rgba(115,227,217,.22),transparent_35%),linear-gradient(145deg,#043331,#087069)] text-white">
+        <div className="text-center">
+          <MessageCircleMore className="mx-auto h-8 w-8 text-[#f5c451]" />
+          <p className="mt-3 text-[10px] font-black uppercase tracking-[.18em] text-white/65">
+            Community field note
+          </p>
+          <p className="mt-1 text-xl font-black">{story.placeName}</p>
+        </div>
+      </div>
+      <div className="p-6">
+        <p className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+          <MapPin className="h-3.5 w-3.5" /> {islandLabel(story.island)}
+        </p>
+        <h3 className="mt-2 text-2xl font-black tracking-[-.035em]">{story.title}</h3>
+        <p className="mt-3 line-clamp-4 text-sm font-semibold leading-6 text-slate-600">
+          {story.summary}
+        </p>
+        <span className="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.16em] text-teal-800">
+          Read field note <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
         </span>
       </div>
     </Link>
@@ -364,6 +410,25 @@ function searchEverything(query: string, selectedKind: SearchKind, island: strin
     }
   }
 
+  if (selectedKind === "all" || selectedKind === "community") {
+    for (const story of COMMUNITY_STORIES) {
+      if (island && story.island !== island) continue;
+      const score = scoreText(
+        [
+          story.title,
+          story.placeName,
+          story.eyebrow,
+          story.summary,
+          ...story.paragraphs,
+          ...story.tags,
+        ],
+        terms,
+      );
+      if (query && score <= 0) continue;
+      results.push({ type: "community", story, score: score + 2 });
+    }
+  }
+
   if (selectedKind === "all" || selectedKind === "timeline") {
     for (const event of TERRITORY_TIMELINE_EVENTS) {
       if (island && event.island !== island && event.island !== "territory") continue;
@@ -428,6 +493,8 @@ function buildSearchMapHref(query: string, selectedKind: SearchKind, island: str
   if (query) params.set("q", query);
   if (selectedKind in KIND_CONFIG) {
     params.set("lens", KIND_CONFIG[selectedKind as TravelKnowledgeKind].lens);
+  } else if (selectedKind === "community") {
+    params.set("lens", "places");
   } else if (selectedKind === "timeline" || selectedKind === "governors") {
     params.set("lens", "historic");
   }
@@ -455,6 +522,7 @@ function scoreText(
 function getResultTitle(result: Result) {
   if (result.type === "directory") return result.item.name;
   if (result.type === "event") return result.event.name;
+  if (result.type === "community") return result.story.title;
   return result.title;
 }
 
@@ -465,6 +533,7 @@ function isKind(value: string | undefined): value is SearchKind {
     value === "beaches" ||
     value === "stays" ||
     value === "events" ||
+    value === "community" ||
     value === "historic" ||
     value === "timeline" ||
     value === "governors"
