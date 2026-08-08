@@ -111,7 +111,7 @@ export function PremiumDetailShell({
           actionHref={conciergeHref}
           actionLabel="Ask VI Concierge"
           actionIcon={Sparkles}
-          secondaryHref="/planner"
+          secondaryHref="/trips"
           secondaryLabel="My Trip"
         />
 
@@ -123,7 +123,7 @@ export function PremiumDetailShell({
         ) : (
           <div className="flex justify-end">
             <Link
-              href="/planner"
+              href="/trips"
               className="inline-flex items-center gap-2 rounded-full border border-[#d8e7e3] bg-white px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] shadow-sm"
             >
               <Route className="h-4 w-4 text-teal-700" /> My Trip
