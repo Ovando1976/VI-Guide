@@ -3,7 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Compass, House, Map, Route, Sparkles } from "lucide-react";
+import {
+  Activity,
+  CalendarDays,
+  Compass,
+  House,
+  Map,
+  Route,
+  ShieldCheck,
+  Sparkles,
+  Store,
+  WalletCards,
+} from "lucide-react";
 import clsx from "clsx";
 
 import { AccountMenu } from "@/components/account-menu";
@@ -59,6 +70,31 @@ const TRIP_ROUTES = [
 ] as const;
 const CONCIERGE_ROUTES = ["/concierge", "/intelligence", "/mission"] as const;
 
+type OperationsNavItem = {
+  base: string;
+  label: string;
+  icon: typeof House;
+};
+
+const ADMIN_OPERATIONS_ITEMS: OperationsNavItem[] = [
+  { base: "/admin", label: "Ops Home", icon: ShieldCheck },
+  { base: "/admin/dispatch", label: "Dispatch", icon: Activity },
+  { base: "/admin/payouts", label: "Payouts", icon: WalletCards },
+  { base: "/", label: "Public Guide", icon: House },
+];
+
+const DRIVER_OPERATIONS_ITEMS: OperationsNavItem[] = [
+  { base: "/driver", label: "Driver OS", icon: Activity },
+  { base: "/map", label: "Live Map", icon: Map },
+  { base: "/", label: "Public Guide", icon: House },
+];
+
+const BUSINESS_OPERATIONS_ITEMS: OperationsNavItem[] = [
+  { base: "/merchant", label: "Business", icon: Store },
+  { base: "/provider/operations", label: "Availability", icon: CalendarDays },
+  { base: "/", label: "Public Guide", icon: House },
+];
+
 function matchesRoute(pathname: string, routes: readonly string[]) {
   return routes.some(
     (base) => pathname === base || pathname.startsWith(`${base}/`),
@@ -70,6 +106,27 @@ function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
   if (base === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
   if (base === "/trips") return matchesRoute(pathname, TRIP_ROUTES);
   if (base === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+function operationsItemsFor(pathname: string): OperationsNavItem[] | null {
+  if (matchesRoute(pathname, ["/admin", "/architecture"])) {
+    return ADMIN_OPERATIONS_ITEMS;
+  }
+  if (matchesRoute(pathname, ["/driver"])) {
+    return DRIVER_OPERATIONS_ITEMS;
+  }
+  if (matchesRoute(pathname, ["/merchant", "/provider"])) {
+    return BUSINESS_OPERATIONS_ITEMS;
+  }
+  return null;
+}
+
+function isOperationsActive(pathname: string, base: string) {
+  if (base === "/") return false;
+  if (base === "/admin") {
+    return pathname === "/admin" || pathname === "/architecture";
+  }
   return pathname === base || pathname.startsWith(`${base}/`);
 }
 
@@ -131,6 +188,48 @@ export function AppNavigation() {
   }, []);
 
   if (pathname === "/login" || pathname === "/unauthorized") return null;
+
+  const operationsItems = operationsItemsFor(pathname);
+  if (operationsItems) {
+    return (
+      <nav
+        aria-label="Operations navigation"
+        className="app-nav app-nav--operations"
+      >
+        <Link
+          href="/"
+          className="app-nav__brand"
+          aria-label="VI Guide public home"
+        >
+          <ViBrandMark className="h-9 w-9 shrink-0" />
+        </Link>
+
+        {operationsItems.map(({ base, label, icon: Icon }) => {
+          const active = isOperationsActive(pathname, base);
+          return (
+            <Link
+              key={base}
+              href={base}
+              aria-label={label}
+              aria-current={active ? "page" : undefined}
+              data-nav={`operations-${base === "/" ? "public" : base.replace(/^\//, "").replaceAll("/", "-")}`}
+              className={clsx(
+                "app-nav__item app-nav__item--operations",
+                active && "is-active",
+              )}
+            >
+              <span className="app-nav__icon">
+                <Icon size={19} strokeWidth={2.2} />
+              </span>
+              <span>{label}</span>
+            </Link>
+          );
+        })}
+
+        <AccountMenu embedded />
+      </nav>
+    );
+  }
 
   return (
     <nav aria-label="Primary navigation" className="app-nav">
