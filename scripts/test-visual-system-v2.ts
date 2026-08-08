@@ -13,6 +13,7 @@ const homeLiveStatus = source("components/home/home-live-status.tsx");
 const mapPage = source("app/map/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const conciergePage = source("app/concierge/page.tsx");
+const missionMode = source("components/concierge/mission-mode.tsx");
 const communityPage = source("app/community/page.tsx");
 const communityPostPage = source("app/community/[postId]/page.tsx");
 const experiencesPage = source("app/experiences/page.tsx");
@@ -85,6 +86,16 @@ assert.match(conciergePage, /Ask once/);
 assert.match(conciergePage, /Open Living Map/);
 assert.match(conciergePage, /concierge-workspace/);
 
+assert.match(missionMode, /VI Concierge · Mission Mode/);
+assert.match(missionMode, /ViPublicHeader/);
+assert.match(missionMode, /Nine fast ways into a complete island plan\./);
+assert.match(missionMode, /src=\{mission\.image\}/);
+assert.match(missionMode, /alt=\{mission\.imageAlt\}/);
+assert.match(missionMode, /magens-bay-1\.jpg/);
+assert.match(missionMode, /red-hook-ferry-terminal-1\.jpg/);
+assert.match(missionMode, /Build my mission/);
+assert.match(missionMode, /router\.push\(`\/map\?\$\{params\.toString\(\)\}`\)/);
+
 assert.match(communityPage, /Community · local context/);
 assert.match(communityPage, /Know the islands/);
 assert.match(communityPage, /Not another feed\. A local intelligence layer\./);
@@ -130,6 +141,7 @@ assert.match(visualLayer, /place-story-hero/);
 
 assert.match(header, /Virgin Islands travel OS/);
 assert.match(navigation, /app-nav__item--map/);
+assert.match(navigation, /"\/mission"/);
 assert.match(brand, /vi-brand-mark/);
 
 console.log("VI Guide visible traveler visual-system contracts passed.");

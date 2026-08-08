@@ -52,7 +52,7 @@ const TRIP_ROUTES = [
   "/book",
   "/bookings",
 ] as const;
-const CONCIERGE_ROUTES = ["/concierge", "/intelligence"] as const;
+const CONCIERGE_ROUTES = ["/concierge", "/intelligence", "/mission"] as const;
 
 function matchesRoute(pathname: string, routes: readonly string[]) {
   return routes.some(
