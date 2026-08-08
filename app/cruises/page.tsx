@@ -160,7 +160,7 @@ export default function CruisesPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href="/planner"
+                  href="/trips"
                   className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.13em] text-white"
                 >
                   <Route className="h-4 w-4 text-[#f5c451]" /> Open My Trip
