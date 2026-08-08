@@ -29,6 +29,7 @@ type Props = {
 
 export function DirectoryCard({ item, href, eyebrow }: Props) {
   const googlePhoto = getGooglePhoto(item.heroImage);
+  const savedImage = googlePhoto.fallback || item.heroImage;
   const mapType = inferMapType(href);
   const mapHref = buildDirectoryMapHref(item, mapType);
   const rideHref = buildRideHref(item);
@@ -116,6 +117,7 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
               island: item.island,
               kind: mapType,
               summary: item.description,
+              ...(savedImage ? { image: savedImage } : {}),
               href,
               mapHref,
               rideHref,
