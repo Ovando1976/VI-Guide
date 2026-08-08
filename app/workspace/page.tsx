@@ -1,11 +1,5 @@
-import { ReservationEnabledWorkspace } from "@/components/traveler/reservation-enabled-workspace";
-
-export const metadata = {
-  title: "Traveler Workspace | VI Guide",
-  description:
-    "Manage your active mission, itinerary, map, reservations, and VI Concierge from one connected workspace.",
-};
+import { redirect } from "next/navigation";
 
 export default function TravelerWorkspacePage() {
-  return <ReservationEnabledWorkspace />;
+  redirect("/trips");
 }
