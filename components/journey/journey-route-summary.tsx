@@ -93,86 +93,105 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
   const totalSeconds = legs.reduce((sum, leg) => sum + leg.durationSeconds, 0);
 
   return (
-    <section className="rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+    <section className="overflow-hidden rounded-[32px] border border-[#d6e3df] bg-[#fffdf8] shadow-[0_18px_52px_rgba(4,51,49,.08)]">
+      <div className="grid gap-5 border-b border-[#dce8e4] bg-[linear-gradient(135deg,#073b39,#0b5c57)] p-5 text-white sm:p-7 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
-          <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
-            Route sequence
-          </p>
-          <h2 className="mt-2 text-3xl font-black tracking-[-.04em]">
-            Transportation between every stop
+          <p className="vi-eyebrow text-[#f5c451]">Movement line</p>
+          <h2 className="vi-display mt-2 text-3xl font-bold tracking-[-.04em] sm:text-4xl">
+            Transportation between every stop.
           </h2>
-          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-500">
-            VI Guide calculates the driving sequence from the saved map coordinates and keeps each ride handoff attached to the itinerary.
+          <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/66">
+            VI Guide calculates the driving sequence from saved map coordinates and keeps each ride handoff attached to the itinerary.
           </p>
         </div>
         {legs.length ? (
-          <div className="rounded-2xl bg-[#edf6f2] px-4 py-3 text-right">
-            <div className="text-[9px] font-black uppercase tracking-[.14em] text-teal-700">
-              Route total
+          <div className="rounded-[22px] border border-white/12 bg-white/[.09] px-5 py-4 text-left backdrop-blur lg:min-w-[190px] lg:text-right">
+            <div className="vi-eyebrow text-[#8ef0e7]">Route total</div>
+            <div className="vi-display mt-2 text-2xl font-bold text-white">
+              {formatDistance(totalMeters)}
             </div>
-            <div className="mt-1 text-sm font-black">
-              {formatDistance(totalMeters)} · {formatDuration(totalSeconds)}
+            <div className="mt-1 text-xs font-black uppercase tracking-[.12em] text-white/52">
+              about {formatDuration(totalSeconds)}
             </div>
           </div>
         ) : null}
       </div>
 
-      {loading ? (
-        <div className="mt-6 flex items-center gap-3 rounded-2xl bg-slate-50 p-5 text-sm font-bold text-slate-500">
-          <Loader2 className="h-5 w-5 animate-spin" /> Calculating the complete route…
-        </div>
-      ) : null}
+      <div className="p-5 sm:p-7">
+        {loading ? (
+          <div className="flex items-center gap-3 rounded-[22px] border border-[#dce8e4] bg-white p-5 text-sm font-bold text-slate-500">
+            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#e9f7f3] text-[#0f766e]">
+              <Loader2 className="h-5 w-5 animate-spin" />
+            </span>
+            Calculating the complete route…
+          </div>
+        ) : null}
 
-      {error ? (
-        <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm font-semibold text-amber-900">
-          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
-          <span>{error} The itinerary remains saved and each stop can still be opened individually.</span>
-        </div>
-      ) : null}
+        {error ? (
+          <div className="flex items-start gap-3 rounded-[22px] border border-amber-200 bg-amber-50 p-5 text-sm font-semibold text-amber-900">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
+            <span>{error} The itinerary remains saved and each stop can still be opened individually.</span>
+          </div>
+        ) : null}
 
-      {!loading && !error && routableStops.length < 2 ? (
-        <div className="mt-6 rounded-2xl border border-dashed border-slate-300 p-6 text-center">
-          <Map className="mx-auto h-7 w-7 text-slate-300" />
-          <p className="mt-3 text-sm font-black">Add at least two mapped destinations</p>
-          <p className="mt-1 text-xs font-semibold text-slate-500">
-            Stops added from VI Guide detail pages include coordinates automatically.
-          </p>
-        </div>
-      ) : null}
+        {!loading && !error && routableStops.length < 2 ? (
+          <div className="rounded-[24px] border border-dashed border-[#c9dbd6] bg-white p-8 text-center">
+            <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#e9f7f3] text-[#0f766e]">
+              <Map className="h-6 w-6" />
+            </span>
+            <p className="vi-display mt-4 text-2xl font-bold">Add at least two mapped destinations</p>
+            <p className="mx-auto mt-2 max-w-lg text-sm font-semibold leading-6 text-slate-500">
+              Stops added from VI Guide detail pages include coordinates automatically, so the movement line can calculate itself as your journey grows.
+            </p>
+            <Link
+              href={buildJourneyMapHref(plan)}
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[#073b39] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white"
+            >
+              <Route className="h-4 w-4" /> Open Living Map
+            </Link>
+          </div>
+        ) : null}
 
-      {legs.length ? (
-        <div className="mt-6 space-y-3">
-          {legs.map((leg, index) => (
-            <article key={`${leg.fromId}-${leg.toId}`} className="rounded-[22px] border border-slate-200 bg-[#fbfaf6] p-4">
-              <div className="flex items-start gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#043331] text-white">
-                  <Car className="h-4 w-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
-                    Transfer {index + 1}
-                  </div>
-                  <div className="mt-1 text-sm font-black">
-                    {leg.fromTitle} <span className="text-slate-300">→</span> {leg.toTitle}
-                  </div>
-                  <div className="mt-2 text-xs font-bold text-slate-500">
-                    {formatDistance(leg.distanceMeters)} · about {formatDuration(leg.durationSeconds)}
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <Link href={leg.rideHref} className="inline-flex items-center gap-2 rounded-full bg-[#f5c451] px-4 py-2 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]">
-                      <Navigation className="h-3.5 w-3.5" /> Plan this ride
-                    </Link>
-                    <Link href={buildJourneyMapHref(plan)} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[9px] font-black uppercase tracking-[.14em]">
-                      <Route className="h-3.5 w-3.5" /> Open trip map
-                    </Link>
+        {legs.length ? (
+          <div className="space-y-3">
+            {legs.map((leg, index) => (
+              <article
+                key={`${leg.fromId}-${leg.toId}`}
+                className="rounded-[24px] border border-[#dce7e3] bg-white p-4 shadow-[0_8px_24px_rgba(4,51,49,.04)] sm:p-5"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#073b39] text-[#8ef0e7] shadow-[0_10px_24px_rgba(4,51,49,.12)]">
+                    <Car className="h-4 w-4" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="vi-eyebrow text-[#9b5d12]">Transfer {index + 1}</div>
+                    <div className="mt-2 text-base font-black leading-6 text-[#043331]">
+                      {leg.fromTitle} <span className="text-[#91aaa5]">→</span> {leg.toTitle}
+                    </div>
+                    <div className="mt-2 inline-flex rounded-full bg-[#edf6f2] px-3 py-1.5 text-[10px] font-black uppercase tracking-[.12em] text-[#0f766e]">
+                      {formatDistance(leg.distanceMeters)} · about {formatDuration(leg.durationSeconds)}
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <Link
+                        href={leg.rideHref}
+                        className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
+                      >
+                        <Navigation className="h-3.5 w-3.5" /> Plan this ride
+                      </Link>
+                      <Link
+                        href={buildJourneyMapHref(plan)}
+                        className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#d6e3df] bg-[#f8f4ea] px-4 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] transition hover:bg-[#edf6f2]"
+                      >
+                        <Route className="h-3.5 w-3.5" /> Open trip map
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : null}
+              </article>
+            ))}
+          </div>
+        ) : null}
+      </div>
     </section>
   );
 }
