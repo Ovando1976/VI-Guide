@@ -19,6 +19,9 @@ const communityPostPage = source("app/community/[postId]/page.tsx");
 const experiencesPage = source("app/experiences/page.tsx");
 const offersPage = source("app/offers/page.tsx");
 const offerDetailPage = source("app/offers/[offerId]/page.tsx");
+const savedPage = source("app/saved/page.tsx");
+const savedBoard = source("components/place/saved-places-board.tsx");
+const savedPlaces = source("lib/saved-places.ts");
 const offerVisual = source("lib/offers/offer-visual.ts");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
@@ -67,6 +70,8 @@ assert.match(directoryCard, /VI Guide verified/);
 assert.match(directoryCard, /Open the story/);
 assert.match(directoryCard, /SavePlaceButton/);
 assert.match(directoryCard, /AddToJourneyButton/);
+assert.match(directoryCard, /savedImage/);
+assert.match(directoryCard, /image: savedImage/);
 
 assert.match(detailShell, /place-story-page/);
 assert.match(detailShell, /place-story-hero/);
@@ -131,6 +136,18 @@ assert.match(offerVisual, /ALL_PUBLIC_TRAVEL_KNOWLEDGE/);
 assert.match(offerVisual, /source: "listing"/);
 assert.match(offerVisual, /source: "island"/);
 assert.match(offerVisual, /sourceLabel: "Listing photo"/);
+
+assert.match(savedPage, /Saved places · your shortlist/);
+assert.match(savedPage, /ViPublicHeader/);
+assert.match(savedPage, /New saves from Explore now carry their image/);
+assert.match(savedBoard, /ISLAND_BACKDROPS/);
+assert.match(savedBoard, /From Explore/);
+assert.match(savedBoard, /Island context/);
+assert.match(savedBoard, /place\.image/);
+assert.match(savedBoard, /Your shortlist starts with one save\./);
+assert.match(savedPlaces, /image\?: string/);
+assert.match(savedPlaces, /boundedInternalImage/);
+assert.match(savedPlaces, /normalized\.startsWith\("\/\/"\)/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
