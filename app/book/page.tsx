@@ -70,7 +70,7 @@ export default function BookingPage({
   );
 
   return (
-    <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
+    <div className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
       <div className="px-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
           actionHref="/bookings"
@@ -86,7 +86,7 @@ export default function BookingPage({
       <Suspense fallback={<BookingLoading />}>
         <CommerceBookingExperience />
       </Suspense>
-    </main>
+    </div>
   );
 }
 
@@ -230,7 +230,12 @@ function inferTravelKnowledgeKind(
 function getListingSlug(href: string | null) {
   if (!href) return "";
   const path = href.split("?")[0]?.replace(/\/$/, "") || "";
-  return decodeURIComponent(path.split("/").filter(Boolean).at(-1) || "");
+  const segment = path.split("/").filter(Boolean).at(-1) || "";
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return segment;
+  }
 }
 
 function getGooglePhotoContext(value?: string) {
