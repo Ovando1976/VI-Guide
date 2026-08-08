@@ -82,6 +82,22 @@ export function buildIslandJourneyMapStops(
   return stops;
 }
 
+export function isIslandJourneyPlan(plan: JourneyPlan | null | undefined) {
+  if (!plan) return false;
+  return plan.plan.some(
+    (stop) =>
+      stop.kind === "ferry" ||
+      stop.kind === "ferry-terminal-departure" ||
+      stop.kind === "ferry-terminal-arrival",
+  );
+}
+
+export function mapHrefForJourneyPlan(plan: JourneyPlan | null | undefined) {
+  return isIslandJourneyPlan(plan)
+    ? `/map/journey?trip=${encodeURIComponent(plan!.id)}`
+    : "/map";
+}
+
 export function positionedJourneyStops(plan: JourneyPlan) {
   const positioned: IntelligencePlanStop[] = [];
 
@@ -102,7 +118,12 @@ export function positionedJourneyStops(plan: JourneyPlan) {
         positioned.push({
           id: `${stop.id}_arrival`.slice(0, 160),
           title: route.toLabel,
-          island: route.to === "cruz-bay" ? "stj" : route.to === "gallows-bay" ? "stx" : "stt",
+          island:
+            route.to === "cruz-bay"
+              ? "stj"
+              : route.to === "gallows-bay"
+                ? "stx"
+                : "stt",
           kind: "ferry-terminal-arrival",
           summary: `Arrival terminal for ${route.serviceLabel.toLowerCase()}.`,
           lat: arrival.lat,
@@ -174,7 +195,9 @@ function hasPosition(stop: IntelligencePlanStop) {
   );
 }
 
-function isPositioned(place: SmartJourneyPlan["origin"] | SmartJourneyPlan["destination"]) {
+function isPositioned(
+  place: SmartJourneyPlan["origin"] | SmartJourneyPlan["destination"],
+) {
   return (
     typeof place.lat === "number" &&
     Number.isFinite(place.lat) &&
