@@ -33,6 +33,7 @@ const directoryDetail = source("components/directory/directory-detail-screen.tsx
 const liveBeachDetail = source("components/beaches/live-beach-detail-screen.tsx");
 const premiumDetailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
+const addToJourneyButton = source("components/journey/add-to-journey-button.tsx");
 const mobility = source("components/mobility-booking-screen.tsx");
 const mapPage = source("app/map/page.tsx");
 const mapEntityContextBar = source("components/map/map-entity-context-bar.tsx");
@@ -109,12 +110,19 @@ assert.match(placeActionBar, /Ask Concierge/);
 assert.match(placeActionBar, /Book \/ request/);
 assert.match(placeActionBar, /\/saved/);
 
+assert.match(addToJourneyButton, /href="\/planner"/);
+assert.match(addToJourneyButton, /Saved · Open planner/);
+assert.doesNotMatch(addToJourneyButton, /Saved · View trip/);
+
 assert.match(directoryCard, /SavePlaceButton/);
 assert.match(directoryCard, /AddToJourneyButton/);
 assert.match(directoryCard, /buildContextualConciergeHref/);
 assert.match(directoryCard, /Navigation/);
 
 assert.match(mapPage, /MapEntityContextBar/);
+assert.match(mapPage, /href="\/planner"/);
+assert.match(mapPage, /Plan itinerary/);
+assert.doesNotMatch(mapPage, /> Open trip/);
 assert.match(mapEntityContextBar, /SavePlaceButton/);
 assert.match(mapEntityContextBar, /AddToJourneyButton/);
 assert.match(mapEntityContextBar, /My Trip/);

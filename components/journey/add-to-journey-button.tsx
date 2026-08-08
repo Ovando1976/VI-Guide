@@ -54,7 +54,7 @@ export function AddToJourneyButton({
         href="/planner"
         className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-100 px-5 text-[10px] font-black uppercase tracking-[.16em] text-emerald-900 transition hover:bg-emerald-200 ${className}`}
       >
-        <Check className="h-4 w-4" /> Saved · View trip
+        <Check className="h-4 w-4" /> Saved · Open planner
       </Link>
     );
   }
