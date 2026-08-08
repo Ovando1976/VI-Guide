@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
+  BellRing,
   CalendarDays,
+  Crown,
   Handshake,
   LogOut,
   Map,
@@ -15,10 +17,13 @@ import {
   UserRound,
 } from "lucide-react";
 import { signOut } from "firebase/auth";
-import { auth } from "@/lib/firebase";
+
 import { useAuth } from "@/components/auth-provider";
+import { auth } from "@/lib/firebase";
 
 type Role = "rider" | "driver" | "merchant" | "dispatcher" | "admin";
+
+const ACCOUNT_ROUTES = ["/profile", "/notifications", "/plus"] as const;
 
 export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const { user, loading } = useAuth();
@@ -98,6 +103,9 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
           ? "/admin/dispatch"
           : null;
   const canManageCruiseRequests = role === "admin" || role === "dispatcher";
+  const accountActive = ACCOUNT_ROUTES.some(
+    (base) => pathname === base || pathname.startsWith(`${base}/`),
+  );
   const initial = (user.displayName || user.email || "V")
     .trim()
     .charAt(0)
@@ -114,10 +122,15 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
         type="button"
         aria-expanded={open}
         aria-label="Open account menu"
+        aria-current={accountActive ? "page" : undefined}
         onClick={() => setOpen((value) => !value)}
         className={
           embedded
-            ? "grid h-[42px] w-[42px] place-items-center rounded-2xl border border-white/15 bg-white/10 text-xs font-black text-white transition hover:bg-white/15"
+            ? `grid h-[42px] w-[42px] place-items-center rounded-2xl border text-xs font-black transition ${
+                accountActive
+                  ? "border-[#f5c451]/55 bg-[#f5c451]/16 text-[#f8d77c] shadow-[0_0_0_3px_rgba(245,196,81,.08)]"
+                  : "border-white/15 bg-white/10 text-white hover:bg-white/15"
+              }`
             : "grid h-12 w-12 place-items-center rounded-full border-2 border-white bg-[#043331] text-sm font-black text-white shadow-xl"
         }
       >
@@ -127,102 +140,134 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
         <section
           className={
             embedded
-              ? "absolute bottom-full right-0 z-[2100] mb-3 w-[min(21rem,calc(100vw-2rem))] overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-2xl"
-              : "absolute right-0 mt-3 w-[min(21rem,calc(100vw-2rem))] overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-2xl"
+              ? "absolute bottom-full right-0 z-[2100] mb-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[28px] border border-[#d5e2df] bg-[#fffdf8] shadow-[0_24px_70px_rgba(4,51,49,.2)]"
+              : "absolute right-0 mt-3 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-[28px] border border-[#d5e2df] bg-[#fffdf8] shadow-[0_24px_70px_rgba(4,51,49,.2)]"
           }
         >
-          <div className="bg-[#043331] p-5 text-white">
+          <div className="bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.2),transparent_40%),linear-gradient(145deg,#043331,#075e58)] p-5 text-white">
             <div className="flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-full bg-white/10">
+              <div className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/10">
                 <UserRound size={20} />
               </div>
               <div className="min-w-0">
                 <div className="truncate text-sm font-black">
                   {user.displayName || "VI Guide member"}
                 </div>
-                <div className="truncate text-xs text-teal-100">
+                <div className="truncate text-xs text-teal-100/75">
                   {user.email}
                 </div>
               </div>
             </div>
-            <div className="mt-4 inline-flex rounded-full bg-amber-400 px-3 py-1.5 text-[9px] font-black uppercase tracking-[.18em] text-[#043331]">
-              {role}
+            <div className="mt-4 inline-flex rounded-full bg-[#f5c451] px-3 py-1.5 text-[9px] font-black uppercase tracking-[.16em] text-[#043331]">
+              {roleLabel(role)}
             </div>
           </div>
-          <nav className="space-y-1 p-3">
-            <MenuLink
-              href="/today"
-              label="My AI trip brief"
-              icon={Sparkles}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/profile"
-              label="Traveler profile"
-              icon={UserRound}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/map"
-              label="Territory map"
-              icon={Map}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/planner"
-              label="Saved itinerary"
-              icon={Route}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/cruises"
-              label="Plan a cruise"
-              icon={ShipWheel}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/trips"
-              label="Bookings & ride history"
-              icon={CalendarDays}
-              onSelect={() => setOpen(false)}
-            />
-            <MenuLink
-              href="/partners/apply"
-              label="Partner with VI Guide"
-              icon={Handshake}
-              onSelect={() => setOpen(false)}
-            />
-            {canManageCruiseRequests ? (
+
+          <nav className="p-3">
+            <div className="px-3 pb-2 pt-1 text-[8px] font-black uppercase tracking-[.18em] text-[#8b9c98]">
+              Your VI Guide
+            </div>
+            <div className="space-y-1">
               <MenuLink
-                href="/admin/cruise-requests"
-                label="Cruise advisor desk"
+                href="/today"
+                label="My AI trip brief"
+                icon={Sparkles}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/trips"
+                label="My Trip"
+                icon={Route}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/profile"
+                label="Traveler profile"
+                icon={UserRound}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/notifications"
+                label="Notifications"
+                icon={BellRing}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/map"
+                label="Living Map"
+                icon={Map}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/planner"
+                label="Itinerary builder"
+                icon={CalendarDays}
+                onSelect={() => setOpen(false)}
+              />
+              <MenuLink
+                href="/cruises"
+                label="Plan a cruise"
                 icon={ShipWheel}
                 onSelect={() => setOpen(false)}
               />
-            ) : null}
-            {operationsHref ? (
               <MenuLink
-                href={operationsHref}
-                label={
-                  role === "driver"
-                    ? "Driver workspace"
-                    : role === "merchant"
-                      ? "Business console"
-                      : "Operations dashboard"
-                }
-                icon={ShieldCheck}
+                href="/plus"
+                label="Traveler Plus"
+                icon={Crown}
+                onSelect={() => setOpen(false)}
+                accent="gold"
+              />
+              <MenuLink
+                href="/partners/apply"
+                label="Partner with VI Guide"
+                icon={Handshake}
                 onSelect={() => setOpen(false)}
               />
+            </div>
+
+            {canManageCruiseRequests || operationsHref ? (
+              <div className="mt-3 border-t border-[#e1e9e7] pt-3">
+                <div className="px-3 pb-2 text-[8px] font-black uppercase tracking-[.18em] text-[#8b9c98]">
+                  Operations
+                </div>
+                <div className="space-y-1">
+                  {canManageCruiseRequests ? (
+                    <MenuLink
+                      href="/admin/cruise-requests"
+                      label="Cruise advisor desk"
+                      icon={ShipWheel}
+                      onSelect={() => setOpen(false)}
+                    />
+                  ) : null}
+                  {operationsHref ? (
+                    <MenuLink
+                      href={operationsHref}
+                      label={
+                        role === "driver"
+                          ? "Driver workspace"
+                          : role === "merchant"
+                            ? "Business console"
+                            : "Operations dashboard"
+                      }
+                      icon={ShieldCheck}
+                      onSelect={() => setOpen(false)}
+                    />
+                  ) : null}
+                </div>
+              </div>
             ) : null}
-            <button
-              type="button"
-              disabled={working}
-              onClick={logout}
-              className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-black text-rose-700 hover:bg-rose-50 disabled:opacity-60"
-            >
-              <LogOut size={18} />
-              {working ? "Signing out…" : "Sign out"}
-            </button>
+
+            <div className="mt-3 border-t border-[#e1e9e7] pt-3">
+              <button
+                type="button"
+                disabled={working}
+                onClick={logout}
+                className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-black text-rose-700 transition hover:bg-rose-50 disabled:opacity-60"
+              >
+                <LogOut size={18} />
+                {working ? "Signing out…" : "Sign out"}
+              </button>
+            </div>
           </nav>
         </section>
       ) : null}
@@ -235,20 +280,34 @@ function MenuLink({
   label,
   icon: Icon,
   onSelect,
+  accent = "default",
 }: {
   href: string;
   label: string;
   icon: typeof Map;
   onSelect: () => void;
+  accent?: "default" | "gold";
 }) {
   return (
     <Link
       href={href}
       onClick={onSelect}
-      className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-black text-[#043331] hover:bg-[#f8f4ea]"
+      className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-black transition ${
+        accent === "gold"
+          ? "bg-[#fff7df] text-[#7f5712] hover:bg-[#ffefb7]"
+          : "text-[#043331] hover:bg-[#f3f8f6]"
+      }`}
     >
-      <Icon size={18} />
+      <Icon size={18} className={accent === "gold" ? "text-[#b67814]" : "text-[#0f766e]"} />
       {label}
     </Link>
   );
+}
+
+function roleLabel(role: Role) {
+  if (role === "rider") return "Traveler";
+  if (role === "driver") return "Driver";
+  if (role === "merchant") return "Business partner";
+  if (role === "dispatcher") return "Dispatcher";
+  return "Administrator";
 }
