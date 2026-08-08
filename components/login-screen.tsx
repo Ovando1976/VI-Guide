@@ -7,7 +7,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   BellRing,
   Cloud,
-  GoogleAuthProvider,
   LockKeyhole,
   MapPinned,
   Route,
@@ -15,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -201,7 +201,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   placeholder="you@example.com"
-                  className="mt-2 h-13 w-full rounded-2xl border border-[#d8e4e1] bg-white px-4 text-sm font-semibold outline-none transition placeholder:text-[#a7b4b1] focus:border-[#0f766e] focus:ring-4 focus:ring-[#0f766e]/10"
+                  className="mt-2 min-h-13 w-full rounded-2xl border border-[#d8e4e1] bg-white px-4 py-3 text-sm font-semibold outline-none transition placeholder:text-[#a7b4b1] focus:border-[#0f766e] focus:ring-4 focus:ring-[#0f766e]/10"
                 />
               </label>
               <label className="block">
@@ -214,7 +214,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder={create ? "Create a password" : "Enter your password"}
-                  className="mt-2 h-13 w-full rounded-2xl border border-[#d8e4e1] bg-white px-4 text-sm font-semibold outline-none transition placeholder:text-[#a7b4b1] focus:border-[#0f766e] focus:ring-4 focus:ring-[#0f766e]/10"
+                  className="mt-2 min-h-13 w-full rounded-2xl border border-[#d8e4e1] bg-white px-4 py-3 text-sm font-semibold outline-none transition placeholder:text-[#a7b4b1] focus:border-[#0f766e] focus:ring-4 focus:ring-[#0f766e]/10"
                 />
               </label>
 
@@ -226,7 +226,7 @@ export default function LoginPage() {
 
               <button
                 disabled={working || !authReady}
-                className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-2xl bg-[#043331] px-5 text-[10px] font-black uppercase tracking-[.17em] text-white shadow-[0_12px_30px_rgba(4,51,49,.16)] transition hover:bg-[#075e58] disabled:cursor-not-allowed disabled:opacity-55"
+                className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-2xl bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.17em] text-white shadow-[0_12px_30px_rgba(4,51,49,.16)] transition hover:bg-[#075e58] disabled:cursor-not-allowed disabled:opacity-55"
               >
                 <ShieldCheck className="h-4 w-4 text-[#8ef0e7]" />
                 {working ? "Please wait…" : create ? "Create account" : "Sign in securely"}
@@ -241,7 +241,7 @@ export default function LoginPage() {
               type="button"
               disabled={working || !authReady}
               onClick={google}
-              className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-2xl border border-[#d6e2df] bg-white px-5 text-[10px] font-black uppercase tracking-[.15em] text-[#324f4a] transition hover:border-[#a5d0c8] hover:bg-[#fbfdfc] disabled:opacity-50"
+              className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-2xl border border-[#d6e2df] bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-[#324f4a] transition hover:border-[#a5d0c8] hover:bg-[#fbfdfc] disabled:opacity-50"
             >
               Continue with Google
             </button>
