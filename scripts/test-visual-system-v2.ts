@@ -13,6 +13,8 @@ const homeLiveStatus = source("components/home/home-live-status.tsx");
 const mapPage = source("app/map/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const conciergePage = source("app/concierge/page.tsx");
+const communityPage = source("app/community/page.tsx");
+const communityPostPage = source("app/community/[postId]/page.tsx");
 const visualLayer = source("app/experience-system.css");
 const header = source("components/brand/vi-public-header.tsx");
 const navigation = source("components/app-navigation.tsx");
@@ -78,6 +80,15 @@ assert.match(conciergePage, /VI Concierge intelligence/);
 assert.match(conciergePage, /Ask once/);
 assert.match(conciergePage, /Open Living Map/);
 assert.match(conciergePage, /concierge-workspace/);
+
+assert.match(communityPage, /Community · local context/);
+assert.match(communityPage, /Know the islands/);
+assert.match(communityPage, /Not another feed\. A local intelligence layer\./);
+assert.match(communityPage, /href="\/map"/);
+assert.match(communityPage, /ISLAND_STORIES\.map/);
+assert.match(communityPostPage, /This story is not published yet\./);
+assert.match(communityPostPage, /ViPublicHeader/);
+assert.match(communityPostPage, /href="\/map"/);
 
 assert.match(visualLayer, /developer-oriented workflow masthead/);
 assert.match(visualLayer, /map-customer-page/);
