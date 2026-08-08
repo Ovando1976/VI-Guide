@@ -11,6 +11,8 @@ const directoryCard = source("components/directory/directory-card.tsx");
 const eventsPage = source("app/events/page.tsx");
 const eventDetail = source("app/events/[slug]/page.tsx");
 const eventData = source("lib/events.ts");
+const communityData = source("lib/community-stories.ts");
+const travelKnowledge = source("lib/travel-knowledge.ts");
 
 assert.match(searchPage, /ViPublicHeader/);
 assert.match(searchPage, /actionLabel="Ask Concierge"/);
@@ -36,6 +38,23 @@ assert.match(searchPage, /getUpcomingEvents\(\)/);
 assert.match(searchPage, /type: "event"/);
 assert.match(searchPage, /EventResultCard/);
 assert.match(searchPage, /href=\{`\/events\/\$\{event\.slug\}`\}/);
+
+assert.match(searchPage, /value: "community"/);
+assert.match(searchPage, /COMMUNITY_STORIES/);
+assert.match(searchPage, /type: "community"/);
+assert.match(searchPage, /CommunityResultCard/);
+assert.match(searchPage, /href=\{`\/community\/\$\{story\.slug\}`\}/);
+assert.match(searchPage, /Community field note/);
+assert.match(searchPage, /selectedKind === "community"/);
+assert.match(searchPage, /params\.set\("lens", "places"\)/);
+
+assert.match(travelKnowledge, /COMMUNITY_STORIES/);
+assert.match(travelKnowledge, /COMMUNITY_BY_PLACE/);
+assert.match(travelKnowledge, /Community field note:/);
+assert.match(travelKnowledge, /community field note/);
+for (const placeName of ["Charlotte Amalie", "Cruz Bay", "Christiansted"]) {
+  assert.ok(communityData.includes(placeName), `Community dataset missing ${placeName}`);
+}
 
 assert.match(eventsPage, /Events · verified sources/);
 assert.match(eventsPage, /getUpcomingEvents\(\)/);
@@ -77,4 +96,4 @@ assert.match(directoryCard, /label="Ride"/);
 assert.match(directoryCard, /label="Ask VI"/);
 assert.match(directoryCard, /Open the story/);
 
-console.log("VI Guide shared search and Events discovery contracts passed.");
+console.log("VI Guide shared Search, Community, Concierge grounding, and Events discovery contracts passed.");
