@@ -189,10 +189,9 @@ function scoreSearchPlace(place: CatalogMapPlace, query: string) {
   const terms = searchTerms(query);
   if (!terms.length) return -1;
 
-  const title = [place.name, place.title].filter(Boolean).join(" ").toLowerCase();
+  const title = place.name.toLowerCase();
   const haystack = [
     place.name,
-    place.title,
     place.category,
     place.location,
     place.description,
@@ -203,7 +202,7 @@ function scoreSearchPlace(place: CatalogMapPlace, query: string) {
 
   if (!terms.every((term) => haystack.includes(term))) return -1;
 
-  let score = normalizedText(place.name ?? place.title) === normalizedText(query) ? 100 : 0;
+  let score = normalizedText(place.name) === normalizedText(query) ? 100 : 0;
   for (const term of terms) {
     if (title.includes(term)) score += 14;
     else score += 3;
@@ -249,8 +248,8 @@ function focusFromSearchQuery(params: URLSearchParams): SearchFocus | null {
     island,
     lens: requestedLens ?? lensForPlaceType(type),
     selection: {
-      id: match.id ?? `${type}:${normalizedText(match.name ?? match.title)}`,
-      name: match.name ?? match.title ?? query,
+      id: match.id ?? `${type}:${normalizedText(match.name)}`,
+      name: match.name,
       type,
       lat,
       lng,
