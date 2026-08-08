@@ -11,8 +11,7 @@ const HOME_SURFACES = [
 
 const KNOWN_BAD_MAGENS_PATH = "/images/beaches/st-thomas/magens-bay-1.jpg";
 const VERIFIED_MAGENS_PATH = "/images/places/st-thomas/magens-bay-beach-1.jpg";
-const SELECTED_USVI_TAXI_IMAGE =
-  "https://usvitaxi.com/wp-content/uploads/2023/03/cropped-our_taxi.jpg";
+const SELECTED_USVI_TAXI_IMAGE = "/images/mobility/usvi-taxi-van.png";
 
 function source(path: string) {
   return readFileSync(resolve(root, path), "utf8");
@@ -75,14 +74,17 @@ assert.match(intentLauncher, /id="traveler-intent"/);
 assert.match(intentLauncher, /Where are you in your Virgin Islands journey\?/);
 
 assert.ok(source("components/home/home-concierge-hub.tsx").includes(VERIFIED_MAGENS_PATH), "Homepage Concierge Beach day must use the verified Magens Bay JPEG");
-assert.ok(home.includes(SELECTED_USVI_TAXI_IMAGE), "Homepage Ride card must use the user-selected white Ford USVI taxi van image");
+assert.ok(home.includes(SELECTED_USVI_TAXI_IMAGE), "Homepage Ride card must use the local user-selected white Ford USVI taxi van image");
 assert.match(home, /label: "Ride"[\s\S]{0,360}detail: "Taxi · airport · ferry"/, "Homepage Ride card must explain its taxi, airport, and ferry scope");
 assert.match(home, /label: "Ride"[\s\S]{0,420}icon: CarFront/);
 assert.match(home, /White Ford passenger taxi van marked TAXI and ON DUTY on St\. Thomas/, "Homepage Ride image needs truthful accessible alt text");
 assert.doesNotMatch(home, /label: "Ride"[\s\S]{0,420}red-hook-ferry-terminal-1\.jpg/, "Homepage Ride card must not fall back to the ferry-terminal photo");
+assert.doesNotMatch(home, /https:\/\/usvitaxi\.com\/wp-content\/uploads\/2023\/03\/cropped-our_taxi\.jpg/, "Homepage must not hotlink the selected taxi van");
+assert.doesNotMatch(home, /<img\b/, "Homepage quick cards must use Next Image rather than raw img elements");
 const remoteQuickImages = [...home.matchAll(/image:\s*"(https:\/\/[^"\s]+)"/g)].map((match) => match[1]);
-assert.deepEqual(remoteQuickImages, [SELECTED_USVI_TAXI_IMAGE], "The selected Ride photo must be the only remote homepage quick-card image");
+assert.deepEqual(remoteQuickImages, [], "Homepage quick cards must not depend on remote images");
+assert.ok(allImages.has(SELECTED_USVI_TAXI_IMAGE), "Homepage image audit must include the local selected taxi van");
 assert.ok(allImages.size > 0, "No local homepage images were discovered for integrity validation");
 for (const imagePath of [...allImages].sort()) assertImageSignature(imagePath);
 
-console.log(`VI Guide homepage image integrity and hero intent handoff passed for ${allImages.size} unique local images plus the selected USVI taxi van.`);
+console.log(`VI Guide homepage image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);
