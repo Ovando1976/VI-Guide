@@ -27,6 +27,12 @@ service cloud.firestore {
       }
     }
 
+    // Rider PINs are server-only secrets. Clients receive a code only through
+    // the authenticated booking API after ownership is checked.
+    match /bookingRiderSecrets/{bookingId} {
+      allow read, write: if false;
+    }
+
     match /drivers/{id} {
       allow read: if role('driver') || staff();
       allow write: if false;
