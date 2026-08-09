@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerBooking } from "@/lib/server-bookings";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import { getAdminDb } from "@/lib/firebase-admin";
 
 type Context = {
   params: { bookingId: string };
@@ -21,9 +22,22 @@ export async function GET(_request: NextRequest, context: Context) {
       return NextResponse.json({ error: "Booking not found." }, { status: 404 });
     }
 
-    return NextResponse.json({
-      booking,
-    });
+    let riderVerificationCode: string | null = null;
+    if (booking.riderId === session.uid) {
+      const secret = await getAdminDb()
+        .collection("bookingRiderSecrets")
+        .doc(bookingId)
+        .get();
+      const code = secret.data()?.code;
+      riderVerificationCode =
+        booking.riderVerification?.status === "verified"
+          ? null
+          : typeof code === "string"
+            ? code
+            : null;
+    }
+
+    return NextResponse.json({ booking, riderVerificationCode });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
