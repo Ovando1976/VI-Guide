@@ -20,6 +20,7 @@ import {
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import { askViIntelligence } from "@/lib/intelligence/client";
+import { dispatchIntelligenceResponseMapFocus } from "@/lib/intelligence/map-focus-events";
 import {
   buildJourneyMapHref,
   createJourneyPlan,
@@ -109,6 +110,7 @@ export function OrchestratedConciergeScreen() {
         ["recommend", "plan", "map", "mobility", "booking", "knowledge"],
       );
       setResponse(result);
+      dispatchIntelligenceResponseMapFocus(result);
       setSavedPlan(null);
       setDraft("");
     } catch (requestError) {
