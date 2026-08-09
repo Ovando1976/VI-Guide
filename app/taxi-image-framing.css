@@ -1,0 +1,19 @@
+/* Vehicle photography needs different framing from scenic imagery.
+   Keep the complete licensed USVI taxi van visible in every homepage card. */
+img[alt="White Ford passenger taxi van marked TAXI and ON DUTY on St. Thomas"],
+img[alt="USVI passenger taxi van on St. Thomas"] {
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 8px 10px 26px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.14), transparent 52%),
+    linear-gradient(180deg, #0b4a46 0%, #032f2d 100%);
+  transform: none !important;
+}
+
+@media (min-width: 640px) {
+  img[alt="White Ford passenger taxi van marked TAXI and ON DUTY on St. Thomas"],
+  img[alt="USVI passenger taxi van on St. Thomas"] {
+    padding: 10px 12px 28px;
+  }
+}
