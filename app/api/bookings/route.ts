@@ -16,6 +16,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
 const MAX_SCHEDULE_WINDOW_MS = 366 * 24 * 60 * 60 * 1000;
@@ -175,6 +176,7 @@ export async function POST(request: NextRequest) {
       passengers,
       luggage,
     });
+    const estimatedSettlement = calculateTaxiSettlement(fare.total);
 
     const bookingId = await createServerBooking({
       riderId: session.uid,
@@ -212,6 +214,7 @@ export async function POST(request: NextRequest) {
         body.mode === "shared" || body.mode === "safari"
           ? "shared"
           : "direct_request",
+      estimatedSettlement,
       notes: body.notes ?? "",
       createdAt: new Date().toISOString(),
     });
