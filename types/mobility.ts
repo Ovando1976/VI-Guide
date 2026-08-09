@@ -186,6 +186,13 @@ export type RideBooking = {
   connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
   paymentMethod?: "online_card";
   serviceExpectation?: "shared" | "direct_request";
+  estimatedSettlement?: {
+    grossFare: number;
+    commissionRate: number;
+    platformRevenue: number;
+    driverPayout: number;
+    feeAgreementId: string;
+  };
   notes?: string;
   createdAt?: TimestampLike;
   updatedAt?: TimestampLike;
