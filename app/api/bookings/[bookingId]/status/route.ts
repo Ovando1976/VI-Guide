@@ -138,6 +138,7 @@ export async function POST(
     const conflict =
       message.startsWith("Trip cannot move") ||
       message.includes("Payment must clear") ||
+      message.includes("Verify the rider PIN") ||
       message.includes("driver must be assigned") ||
       message.includes("cancellation is processing") ||
       message.includes("financial hold");
