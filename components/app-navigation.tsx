@@ -46,6 +46,8 @@ const EXPLORE_ROUTES = [
   "/history",
   "/accommodations",
   "/experiences",
+  "/activities",
+  "/car-rentals",
   "/events",
   "/fishing",
   "/offers",
