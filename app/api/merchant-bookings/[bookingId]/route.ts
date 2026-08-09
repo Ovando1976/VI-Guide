@@ -13,6 +13,7 @@ import {
 import { canManageListing } from "@/lib/merchant-access";
 import { merchantOfferDepositError } from "@/lib/merchant-offer-deposit-policy";
 import { resolveMerchantOfferDeposit } from "@/lib/merchant-offer-deposit";
+import { resolveTrueTripPrice } from "@/lib/booking/true-trip-price";
 import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import {
   bookingEventForStatus,
@@ -51,12 +52,14 @@ export async function PATCH(
           merchantNote?: unknown;
           proposedTime?: unknown;
           depositAmountCents?: unknown;
+          priceBreakdown?: Record<string, unknown>;
         }
       | null;
     const requestedStatus = clean(body?.status, 40);
     const hasMerchantNote = hasOwn(body, "merchantNote");
     const hasProposedTime = hasOwn(body, "proposedTime");
     const hasDepositAmount = hasOwn(body, "depositAmountCents");
+    const hasPriceBreakdown = hasOwn(body, "priceBreakdown");
     const merchantNote = clean(body?.merchantNote, 1200);
     const proposedTime = clean(body?.proposedTime, 40);
 
@@ -97,7 +100,22 @@ export async function PATCH(
         offerDepositCents: booking.offerDepositCents,
       });
       const depositAmountCents = deposit.amountCents;
+      const priceBreakdown = hasPriceBreakdown
+        ? resolveTrueTripPrice(body?.priceBreakdown ?? {})
+        : null;
       if (status === "payment_required") {
+        if (!priceBreakdown) {
+          throw new BookingActionError(
+            "Enter the full itemized trip price before requesting payment.",
+            409,
+          );
+        }
+        if (depositAmountCents > priceBreakdown.totalCents) {
+          throw new BookingActionError(
+            "The deposit cannot exceed the verified trip total.",
+            409,
+          );
+        }
         const depositError = merchantOfferDepositError({
           amountCents: depositAmountCents,
           offerPriceCents: booking.offerPriceCents,
@@ -141,6 +159,7 @@ export async function PATCH(
         status === "payment_required"
           ? {
               depositAmountCents,
+              priceBreakdown,
               depositSource: deposit.source,
               offerDepositAmountCents: deposit.offerAmountCents,
               offerDepositOverridden: deposit.overridden,
@@ -257,6 +276,10 @@ export async function PATCH(
               ? deposit.overridden
               : booking.offerDepositOverridden === true,
           paidAmountCents: Number(booking.paidAmountCents ?? 0) || null,
+          priceBreakdown:
+            status === "payment_required"
+              ? priceBreakdown
+              : booking.priceBreakdown ?? null,
           paymentStatus:
             status === "payment_required"
               ? "unpaid"

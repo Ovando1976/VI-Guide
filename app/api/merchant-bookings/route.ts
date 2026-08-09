@@ -13,6 +13,7 @@ import {
   canManageListing,
   managedListingIdsForSession,
 } from "@/lib/merchant-access";
+import { normalizeTrueTripPrice } from "@/lib/booking/true-trip-price";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -83,6 +84,7 @@ export async function GET(request: NextRequest) {
           ? String(data.offerDepositOverrideByEmail)
           : null,
         paidAmountCents: nullableMoney(data.paidAmountCents),
+        priceBreakdown: normalizeTrueTripPrice(data.priceBreakdown),
         paymentStatus: data.paymentStatus
           ? String(data.paymentStatus)
           : "unpaid",

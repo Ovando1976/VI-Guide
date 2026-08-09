@@ -371,6 +371,8 @@ export function BookingStatusLookup() {
                     />
                   </div>
 
+                  <TrueTripPriceCard booking={booking} />
+
                   {paymentDue ? (
                     <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
                       <p className="text-[9px] font-black uppercase tracking-[.15em] text-amber-700">
@@ -499,6 +501,52 @@ function RefundProgress({ booking }: { booking: BookingStatusSnapshot }) {
               )} refund is being processed through Stripe.`}
         </p>
       </div>
+    </div>
+  );
+}
+
+function TrueTripPriceCard({ booking }: { booking: BookingStatusSnapshot }) {
+  const price = booking.priceBreakdown;
+  if (!price) {
+    return (
+      <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-amber-950">
+        <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+        <div>
+          <p className="text-[9px] font-black uppercase tracking-[.15em] text-amber-700">Total price not verified</p>
+          <p className="mt-1 text-sm font-bold leading-6">Do not treat a deposit or advertised rate as the final cost. VI Guide will show the itemized total before payment can be requested.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const lines = [
+    ["Base price", price.baseCents], ["Taxes", price.taxesCents],
+    ["Service fees", price.serviceFeesCents], ["Property / resort fees", price.propertyFeesCents],
+    ["Required transport", price.transportCents], ["Other mandatory fees", price.otherMandatoryFeesCents],
+  ] as const;
+  const remaining = Math.max(0, price.totalCents - booking.paidAmountCents);
+
+  return (
+    <div className="mt-6 rounded-[24px] border border-teal-200 bg-white p-5 text-[#043331]">
+      <div className="flex items-end justify-between gap-4 border-b border-teal-100 pb-4">
+        <div>
+          <p className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">True Trip Price · USD</p>
+          <p className="mt-1 text-xs font-bold text-slate-500">All mandatory costs supplied by the provider</p>
+        </div>
+        <p className="text-2xl font-black">{formatMoney(price.totalCents)}</p>
+      </div>
+      <div className="mt-4 space-y-2">
+        {lines.map(([label, cents]) => (
+          <div key={label} className="flex justify-between gap-4 text-sm font-bold text-slate-600">
+            <span>{label}</span><span>{formatMoney(cents)}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 grid gap-2 border-t border-teal-100 pt-4 text-sm font-black sm:grid-cols-2">
+        <div>Paid: {formatMoney(booking.paidAmountCents)}</div>
+        <div className="sm:text-right">Remaining after payment: {formatMoney(remaining)}</div>
+      </div>
+      <p className="mt-3 text-[10px] font-bold text-slate-400">Verified {new Date(price.verifiedAt).toLocaleString("en-US", { timeZone: "America/St_Thomas" })} AST</p>
     </div>
   );
 }
