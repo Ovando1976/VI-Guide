@@ -67,6 +67,15 @@ export function OrchestratedConciergeScreen() {
   const [savedPlan, setSavedPlan] = useState<JourneyPlan | null>(null);
 
   useEffect(() => {
+    const requestedIsland = searchParams.get("island");
+    if (
+      requestedIsland === "stt" ||
+      requestedIsland === "stj" ||
+      requestedIsland === "stx"
+    ) {
+      setIsland(requestedIsland);
+    }
+
     const prompt = searchParams.get("prompt")?.trim();
     if (prompt) setDraft(prompt);
   }, [searchParams]);
