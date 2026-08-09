@@ -28,6 +28,18 @@ export type CommerceRefundStatus =
   | "failed"
   | "review_required";
 
+export type CommercePriceBreakdown = {
+  currency: "USD";
+  baseCents: number;
+  taxesCents: number;
+  serviceFeesCents: number;
+  propertyFeesCents: number;
+  transportCents: number;
+  otherMandatoryFeesCents: number;
+  totalCents: number;
+  verifiedAt: string;
+};
+
 export type CommerceBookingRequest = {
   kind: CommerceBookingKind;
   listingId: string;
@@ -57,6 +69,7 @@ export type CommerceBooking = CommerceBookingRequest & {
   offerDepositCents?: number | null;
   depositAmountCents?: number;
   paidAmountCents?: number;
+  priceBreakdown?: CommercePriceBreakdown;
   paymentStatus?: CommercePaymentStatus;
   paymentHref?: string;
   checkoutSessionId?: string;

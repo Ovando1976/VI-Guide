@@ -6,6 +6,7 @@ import {
 } from "@/lib/firebase-admin";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import { normalizeTimestamp } from "@/lib/timestamps";
+import { normalizeTrueTripPrice } from "@/lib/booking/true-trip-price";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -72,6 +73,7 @@ export async function POST(request: NextRequest) {
       children: Number(data.children ?? 0),
       depositAmountCents: Number(data.depositAmountCents ?? 0),
       paidAmountCents: Number(data.paidAmountCents ?? 0),
+      priceBreakdown: normalizeTrueTripPrice(data.priceBreakdown),
       paymentHref: data.paymentHref ? String(data.paymentHref) : null,
       updatedAt:
         normalizeTimestamp(data.updatedAt ?? data.createdAt) ??
