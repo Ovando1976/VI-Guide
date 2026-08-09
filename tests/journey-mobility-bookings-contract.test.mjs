@@ -12,3 +12,16 @@ test("My Trip surfaces mobility booking checkout actions", () => {
   assert.match(component, /readJourneyPlans/);
   assert.match(wrapper, /<JourneyMobilityBookings \/>/);
 });
+
+test("My Trip synchronizes live ride lifecycle from the booking API", () => {
+  assert.match(component, /\/api\/bookings\//);
+  assert.match(component, /cache: "no-store"/);
+  assert.match(component, /15000/);
+  assert.match(component, /Payment needed/);
+  assert.match(component, /Driver assigned/);
+  assert.match(component, /Driver en route/);
+  assert.match(component, /Driver arrived/);
+  assert.match(component, /Trip underway/);
+  assert.match(component, /Completed/);
+  assert.match(component, /Cancelled/);
+});
