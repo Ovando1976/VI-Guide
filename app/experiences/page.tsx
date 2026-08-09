@@ -6,6 +6,7 @@ import {
   CalendarDays,
   Clock3,
   Compass,
+  ExternalLink,
   MapPin,
   MapPinned,
   SearchCheck,
@@ -264,6 +265,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
         <div className="inline-flex items-center gap-2 text-xs font-black text-[#0f766e]">
           <MapPin className="h-4 w-4" /> {item.location}
         </div>
+        <p className="mt-2 text-[10px] font-black uppercase tracking-[.13em] text-[#9b5d12]">{item.operator}</p>
         <p className="mt-3 flex-1 text-sm font-semibold leading-6 text-[#5a6f6c]">
           {item.summary}
         </p>
@@ -278,13 +280,17 @@ function BookingCard({ item }: { item: BookableExperience }) {
           ))}
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-2 border-t border-[#e4ece9] pt-5">
+        <p className="mt-4 text-[9px] font-semibold leading-4 text-slate-400">Verified {item.verifiedAt} · {item.sourceLabel} · {item.availabilityStatus.replaceAll("-", " ")}</p>
+        <div className="mt-6 grid grid-cols-3 gap-2 border-t border-[#e4ece9] pt-5">
           <Link
             href={`/map?island=${item.island}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#dce7e4] bg-white px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#35514e] transition hover:border-[#b8dcd6]"
           >
             <MapPinned className="h-4 w-4" /> Map island
           </Link>
+          <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#dce7e4] bg-white px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#35514e] transition hover:border-[#b8dcd6]">
+            <ExternalLink className="h-4 w-4" /> Operator
+          </a>
           <Link
             href={`/concierge?island=${item.island}&context=${item.kind}&prompt=${encodeURIComponent(conciergePrompt)}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#b8e2dc] bg-[#eaf8f5] px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#0f766e] transition hover:bg-[#ddf3ee]"
