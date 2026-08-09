@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 import { MobilityBookingScreen } from "@/components/mobility-booking-screen";
+import { TripAwareMobilityHandoff } from "@/components/mobility/trip-aware-mobility-handoff";
 
 type MobilitySearchParams = Record<string, string | string[] | undefined>;
 
@@ -43,6 +44,7 @@ export default function MobilityPage({
 
   return (
     <Suspense fallback={<MobilityLoadingState />}>
+      <TripAwareMobilityHandoff />
       <MobilityBookingScreen />
     </Suspense>
   );
