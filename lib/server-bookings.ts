@@ -72,6 +72,7 @@ export async function createServerBooking(
         ? "shared"
         : "direct_request"),
     estimatedSettlement: booking.estimatedSettlement ?? null,
+    riderVerification: booking.riderVerification ?? { status: "required" },
     notes: booking.notes ?? "",
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),
@@ -201,6 +202,12 @@ export async function updateServerTripStatus(params: {
     }
     if (params.status !== "cancelled" && booking.paymentStatus !== "paid") {
       throw new Error("Payment must clear before this trip can advance.");
+    }
+    if (
+      params.status === "in_progress" &&
+      booking.riderVerification?.status === "required"
+    ) {
+      throw new Error("Verify the rider PIN before starting this trip.");
     }
     if (
       COMPLIANCE_GATED_STATUSES.includes(params.status) &&
