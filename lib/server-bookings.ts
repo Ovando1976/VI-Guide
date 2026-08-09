@@ -71,6 +71,7 @@ export async function createServerBooking(
       (booking.mode === "shared" || booking.mode === "safari"
         ? "shared"
         : "direct_request"),
+    estimatedSettlement: booking.estimatedSettlement ?? null,
     notes: booking.notes ?? "",
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),
