@@ -18,6 +18,10 @@ import {
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
+const MAX_SCHEDULE_WINDOW_MS = 366 * 24 * 60 * 60 * 1000;
+const CONNECTION_KINDS = new Set(["flight", "ferry", "cruise", "appointment"]);
+
+class BookingValidationError extends Error {}
 
 type BookingRequestBody = RideBookingDraft & {
   acceptedOperatorDisclosure?: boolean;
@@ -25,6 +29,20 @@ type BookingRequestBody = RideBookingDraft & {
   acceptedPrivacy?: boolean;
   consentVersion?: string;
 };
+
+function optionalFutureDate(value: string | null | undefined, label: string) {
+  if (!value) return null;
+  const date = new Date(value);
+  const timestamp = date.getTime();
+  const now = Date.now();
+  if (!Number.isFinite(timestamp) || timestamp <= now) {
+    throw new BookingValidationError(`${label} must be a valid future date and time.`);
+  }
+  if (timestamp - now > MAX_SCHEDULE_WINDOW_MS) {
+    throw new BookingValidationError(`${label} cannot be more than one year away.`);
+  }
+  return date.toISOString();
+}
 
 const ESTATES_URL =
   "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer/0/query?" +
@@ -95,6 +113,30 @@ export async function POST(request: NextRequest) {
 
     const passengers = Math.max(1, Number(body.passengers || 1));
     const luggage = Math.max(0, Number(body.luggage || 0));
+    const scheduledAt = optionalFutureDate(body.scheduledAt, "Pickup time");
+    const connectionDeadline = optionalFutureDate(
+      body.connectionDeadline,
+      "Connection time",
+    );
+    if (
+      connectionDeadline &&
+      (!body.connectionKind || !CONNECTION_KINDS.has(body.connectionKind))
+    ) {
+      return NextResponse.json(
+        { error: "Choose a valid connection type." },
+        { status: 400 },
+      );
+    }
+    if (
+      scheduledAt &&
+      connectionDeadline &&
+      new Date(connectionDeadline).getTime() <= new Date(scheduledAt).getTime()
+    ) {
+      return NextResponse.json(
+        { error: "Connection time must be after the requested pickup time." },
+        { status: 400 },
+      );
+    }
 
     const estatesResponse = await fetch(ESTATES_URL, { cache: "no-store" });
 
@@ -162,7 +204,14 @@ export async function POST(request: NextRequest) {
       passengers,
       luggage,
       quotedFare: fare,
-      scheduledAt: body.scheduledAt ?? null,
+      scheduledAt,
+      connectionDeadline,
+      connectionKind: connectionDeadline ? body.connectionKind ?? null : null,
+      paymentMethod: "online_card",
+      serviceExpectation:
+        body.mode === "shared" || body.mode === "safari"
+          ? "shared"
+          : "direct_request",
       notes: body.notes ?? "",
       createdAt: new Date().toISOString(),
     });
@@ -197,6 +246,9 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
+    if (error instanceof BookingValidationError) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
     if (error instanceof MobilityPilotUnavailableError) {
       return NextResponse.json(
         { error: error.message, code: error.code, pilotActive: false },
