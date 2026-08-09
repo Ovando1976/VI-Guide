@@ -103,5 +103,13 @@ expectSource(
   "ConnectionCountdown",
   "active trip cockpit keeps a live connection countdown",
 );
+expectSource(
+  "RiderPinControl",
+  "arrived trips require rider PIN verification",
+);
+expectSource(
+  "`/api/bookings/${bookingId}/verify-rider`",
+  "rider verification uses the protected booking API",
+);
 
 console.log("VI Guide Driver console visual and tariff contracts passed.");
