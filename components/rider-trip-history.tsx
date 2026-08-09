@@ -2,12 +2,38 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import {
+  BadgeCheck,
+  CalendarClock,
+  CarFront,
+  Clock3,
+  MapPin,
+  Navigation,
+  Phone,
+  ShieldCheck,
+  UserCheck,
+} from "lucide-react";
 import { subscribeToRiderBookings } from "@/lib/firestore-trips";
 import type { RideBooking } from "@/types/mobility";
 import { BookingTimeline } from "@/components/booking-timeline";
 
 type Props = {
   riderId: string;
+};
+
+type RideIdentity = {
+  driverName: string | null;
+  vehicleDescription: string | null;
+  taxiPlate: string | null;
+  medallionNumber: string | null;
+  associationName: string | null;
+  dispatchPhone: string | null;
+};
+
+type SecureRideDetails = {
+  bookingId: string;
+  riderVerificationCode: string | null;
+  rideIdentity: RideIdentity | null;
 };
 
 const ACTIVE_STATUSES: RideBooking["status"][] = [
@@ -22,6 +48,7 @@ export function RiderTripHistory({ riderId }: Props) {
   const [bookings, setBookings] = useState<RideBooking[]>([]);
   const [selectedBookingId, setSelectedBookingId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [secureRide, setSecureRide] = useState<SecureRideDetails | null>(null);
 
   useEffect(() => {
     return subscribeToRiderBookings(
@@ -84,6 +111,43 @@ export function RiderTripHistory({ riderId }: Props) {
     selectedBooking && !ACTIVE_STATUSES.includes(selectedBooking.status)
       ? selectedBooking
       : historicalBookings[0] ?? null;
+  const activeBookingId = primaryActive?.id ?? null;
+  const riderVerificationStatus = primaryActive?.riderVerification?.status;
+
+  useEffect(() => {
+    if (!activeBookingId) {
+      setSecureRide(null);
+      return;
+    }
+    let cancelled = false;
+    async function loadSecureRide() {
+      try {
+        const response = await fetch(`/api/bookings/${encodeURIComponent(activeBookingId)}`, {
+          cache: "no-store",
+        });
+        if (!response.ok) return;
+        const payload = (await response.json()) as {
+          riderVerificationCode?: string | null;
+          rideIdentity?: RideIdentity | null;
+        };
+        if (!cancelled) {
+          setSecureRide({
+            bookingId: activeBookingId,
+            riderVerificationCode: payload.riderVerificationCode ?? null,
+            rideIdentity: payload.rideIdentity ?? null,
+          });
+        }
+      } catch {
+        // The live Firestore trip remains usable if the secure detail refresh fails.
+      }
+    }
+    void loadSecureRide();
+    const timer = window.setInterval(() => void loadSecureRide(), 15_000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [activeBookingId, riderVerificationStatus]);
 
   return (
     <section className="space-y-6">
@@ -129,6 +193,13 @@ export function RiderTripHistory({ riderId }: Props) {
 
             <div className="space-y-6 p-6">
               <PaymentStatusPanel booking={primaryActive} />
+
+              <MobileRideCommand
+                booking={primaryActive}
+                secureRide={
+                  secureRide?.bookingId === primaryActive.id ? secureRide : null
+                }
+              />
 
               <div className="grid gap-4 md:grid-cols-3">
                 <MetricCard
@@ -272,6 +343,140 @@ export function RiderTripHistory({ riderId }: Props) {
       </div>
     </section>
   );
+}
+
+function MobileRideCommand({
+  booking,
+  secureRide,
+}: {
+  booking: RideBooking;
+  secureRide: SecureRideDetails | null;
+}) {
+  const identity = secureRide?.rideIdentity;
+  const pickupHref = mapsHref(booking.origin.lat, booking.origin.lng);
+  const dropoffHref = mapsHref(booking.destination.lat, booking.destination.lng);
+  const scheduled = formatTripTime(booking.scheduledAt);
+  const connection = formatTripTime(booking.connectionDeadline);
+
+  return (
+    <section className="overflow-hidden rounded-[28px] border border-teal-200 bg-white shadow-[0_16px_40px_rgba(4,51,49,.08)]">
+      <div className="flex items-center justify-between gap-3 bg-[#043331] px-4 py-4 text-white sm:px-5">
+        <div>
+          <p className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">Live ride card</p>
+          <p className="mt-1 text-lg font-black">Everything you need at pickup</p>
+        </div>
+        <ShieldCheck className="h-6 w-6 text-[#7ce0d4]" />
+      </div>
+
+      <div className="grid gap-4 p-4 sm:p-5">
+        {identity ? (
+          <div className="grid gap-3 rounded-[22px] border border-slate-200 bg-slate-50 p-4 sm:grid-cols-[auto_1fr] sm:items-center">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-teal-100 text-teal-800">
+              <BadgeCheck className="h-6 w-6" />
+            </span>
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Verified pickup identity</p>
+              <p className="mt-1 text-base font-black text-[#043331]">{identity.driverName || "Verified VI Guide driver"}</p>
+              <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
+                {identity.vehicleDescription || "Verified fleet vehicle"}
+                {identity.taxiPlate ? ` · Taxi ${identity.taxiPlate}` : ""}
+                {identity.medallionNumber ? ` · Medallion ${identity.medallionNumber}` : ""}
+              </p>
+              {identity.associationName ? <p className="mt-1 text-[10px] font-black uppercase tracking-[.12em] text-slate-400">{identity.associationName}</p> : null}
+            </div>
+          </div>
+        ) : booking.driverId ? (
+          <p className="rounded-2xl bg-slate-50 p-4 text-sm font-semibold text-slate-600">Your verified driver and vehicle details are updating.</p>
+        ) : null}
+
+        {secureRide?.riderVerificationCode ? (
+          <div className="flex items-center justify-between gap-4 rounded-[22px] border border-emerald-200 bg-emerald-50 p-4 text-emerald-950">
+            <div className="flex items-center gap-3">
+              <UserCheck className="h-5 w-5 shrink-0" />
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-[.16em] text-emerald-700">Pickup PIN</p>
+                <p className="mt-1 text-xs font-semibold">Share only after matching the driver, vehicle, and taxi plate.</p>
+              </div>
+            </div>
+            <p className="shrink-0 text-2xl font-black tracking-[.22em]">{secureRide.riderVerificationCode}</p>
+          </div>
+        ) : booking.riderVerification?.status === "verified" ? (
+          <div className="inline-flex items-center gap-2 rounded-2xl bg-emerald-50 p-4 text-sm font-black text-emerald-800">
+            <UserCheck className="h-5 w-5" /> Rider verified · trip cleared to start
+          </div>
+        ) : null}
+
+        <div className="grid grid-cols-2 gap-3">
+          <RiderFact icon={CalendarClock} label="Pickup" value={scheduled || "As soon as matched"} />
+          <RiderFact icon={Clock3} label="Connection" value={connection || "None recorded"} />
+          <RiderFact icon={CarFront} label="Ride type" value={booking.serviceExpectation === "shared" ? "Shared · stops possible" : "Direct requested"} />
+          <RiderFact icon={MapPin} label="Pickup access" value={`${capitalizeWord(booking.origin.accessType)} pickup`} />
+        </div>
+
+        {booking.origin.notes ? (
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+            <p className="text-[9px] font-black uppercase tracking-[.16em] text-amber-800">Pickup instructions</p>
+            <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">{booking.origin.notes}</p>
+          </div>
+        ) : null}
+
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+          <RideAction href={pickupHref} icon={Navigation} label="Pickup map" primary />
+          <RideAction href={dropoffHref} icon={MapPin} label="Destination" />
+          {identity?.dispatchPhone ? (
+            <RideAction href={`tel:${identity.dispatchPhone}`} icon={Phone} label="Call dispatch" />
+          ) : null}
+        </div>
+
+        <div className="rounded-[22px] border border-slate-200 p-4">
+          <div className="flex items-end justify-between gap-3">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">Official fare</p>
+              <p className="mt-1 text-xs font-bold text-slate-600">{booking.quotedFare.tariffTitle} · {booking.quotedFare.tariffVersion}</p>
+            </div>
+            <p className="text-2xl font-black text-[#043331]">${booking.quotedFare.total.toFixed(2)}</p>
+          </div>
+          <div className="mt-3 grid grid-cols-3 gap-2 text-center text-xs font-black text-slate-600">
+            <span className="rounded-xl bg-slate-50 p-2">Route ${booking.quotedFare.routeFare.toFixed(2)}</span>
+            <span className="rounded-xl bg-slate-50 p-2">Riders ${booking.quotedFare.passengerFare.toFixed(2)}</span>
+            <span className="rounded-xl bg-slate-50 p-2">Bags ${booking.quotedFare.luggageFare.toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RiderFact({ icon: Icon, label, value }: { icon: typeof Clock3; label: string; value: string }) {
+  return (
+    <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-3">
+      <p className="flex items-center gap-1.5 text-[8px] font-black uppercase tracking-[.13em] text-slate-400"><Icon className="h-3.5 w-3.5" /> {label}</p>
+      <p className="mt-2 text-xs font-black leading-5 text-[#043331]">{value}</p>
+    </div>
+  );
+}
+
+function RideAction({ href, icon: Icon, label, primary = false }: { href: string; icon: typeof Navigation; label: string; primary?: boolean }) {
+  return (
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 text-[9px] font-black uppercase tracking-[.13em] ${primary ? "bg-[#043331] text-white" : "border border-slate-200 bg-white text-[#043331]"}`}>
+      <Icon className="h-4 w-4" /> {label}
+    </a>
+  );
+}
+
+function mapsHref(lat: number, lng: number) {
+  return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+}
+
+function formatTripTime(value?: RideBooking["scheduledAt"]) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(date);
+}
+
+function capitalizeWord(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 function PaymentStatusPanel({ booking }: { booking: RideBooking }) {
