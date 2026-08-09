@@ -9,6 +9,7 @@ import {
   ExternalLink,
   MapPin,
   MapPinned,
+  Search,
   SearchCheck,
   ShieldCheck,
   Sparkles,
@@ -19,6 +20,7 @@ import {
   ACTIVITY_CATEGORY_LABELS,
   BOOKABLE_EXPERIENCES,
   ISLAND_NAMES,
+  type ActivityCategory,
   type BookableExperience,
 } from "@/lib/bookable-experiences";
 
@@ -60,15 +62,45 @@ const DEFAULT_EXPERIENCE_IMAGE = {
   alt: "Scenic view in the U.S. Virgin Islands",
 };
 
-export default function ExperiencesPage() {
-  const scuba = BOOKABLE_EXPERIENCES.filter((item) => item.category === "scuba");
-  const sailingAndCharters = BOOKABLE_EXPERIENCES.filter(
+type ActivitySearchParams = {
+  q?: string;
+  island?: string;
+  category?: string;
+};
+
+export default function ExperiencesPage({
+  searchParams,
+}: {
+  searchParams?: ActivitySearchParams;
+}) {
+  const query = searchParams?.q?.trim().toLowerCase() ?? "";
+  const island = searchParams?.island ?? "all";
+  const category = searchParams?.category ?? "all";
+  const filteredActivities = BOOKABLE_EXPERIENCES.filter((item) => {
+    const matchesIsland = island === "all" || item.island === island;
+    const matchesCategory = category === "all" || item.category === category;
+    const searchable = [
+      item.name,
+      item.operator,
+      item.location,
+      item.summary,
+      ACTIVITY_CATEGORY_LABELS[item.category],
+      ...item.highlights,
+    ].join(" ").toLowerCase();
+    return matchesIsland && matchesCategory && (!query || searchable.includes(query));
+  });
+  const scuba = filteredActivities.filter((item) => item.category === "scuba");
+  const sailingAndCharters = filteredActivities.filter(
     (item) => item.category === "sailing" || item.category === "boat-charter",
   );
-  const otherActivities = BOOKABLE_EXPERIENCES.filter(
+  const otherActivities = filteredActivities.filter(
     (item) => !["scuba", "sailing", "boat-charter"].includes(item.category),
   );
   const operatorCount = new Set(BOOKABLE_EXPERIENCES.map((item) => item.operator)).size;
+  const categories = Object.entries(ACTIVITY_CATEGORY_LABELS) as [
+    ActivityCategory,
+    string,
+  ][];
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f5f0e6] pb-32 text-[#032f2d]">
@@ -107,7 +139,7 @@ export default function ExperiencesPage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="#tours"
+                href="#activity-search-title"
                 className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-[#032f2d] shadow-[0_16px_40px_rgba(245,196,81,.24)] transition hover:-translate-y-0.5 hover:bg-[#ffdc76]"
               >
                 Browse experiences <ArrowRight size={15} />
@@ -144,6 +176,61 @@ export default function ExperiencesPage() {
       </section>
 
       <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
+        <section aria-labelledby="activity-search-title" className="rounded-[32px] border border-[#d9e6e2] bg-[#fffdf8] p-5 shadow-[0_16px_45px_rgba(4,51,49,.08)] sm:p-7">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="vi-eyebrow text-[#0f766e]">Find your activity</p>
+              <h2 id="activity-search-title" className="vi-display mt-2 text-3xl font-bold sm:text-4xl">Search all {BOOKABLE_EXPERIENCES.length} verified experiences</h2>
+            </div>
+            <p aria-live="polite" className="rounded-full bg-[#eaf8f5] px-4 py-2 text-xs font-black text-[#0f766e]">
+              {filteredActivities.length} {filteredActivities.length === 1 ? "result" : "results"}
+            </p>
+          </div>
+          <form action="/activities" method="get" className="mt-6 grid gap-3 lg:grid-cols-[1.5fr_.7fr_.9fr_auto]">
+            <label className="relative">
+              <span className="sr-only">Search activities or operators</span>
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#0f766e]" />
+              <input name="q" defaultValue={searchParams?.q ?? ""} placeholder="Search scuba, fishing, operator..." className="min-h-13 w-full rounded-2xl border border-[#cfe0dc] bg-white pl-12 pr-4 text-sm font-semibold outline-none transition focus:border-[#0f766e] focus:ring-2 focus:ring-[#73e3d9]/40" />
+            </label>
+            <label>
+              <span className="sr-only">Filter by island</span>
+              <select name="island" defaultValue={island} className="min-h-13 w-full rounded-2xl border border-[#cfe0dc] bg-white px-4 text-sm font-bold outline-none focus:border-[#0f766e]">
+                <option value="all">All islands</option>
+                <option value="stt">St. Thomas</option>
+                <option value="stj">St. John</option>
+                <option value="stx">St. Croix</option>
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Filter by category</span>
+              <select name="category" defaultValue={category} className="min-h-13 w-full rounded-2xl border border-[#cfe0dc] bg-white px-4 text-sm font-bold outline-none focus:border-[#0f766e]">
+                <option value="all">All categories</option>
+                {categories.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+            <button type="submit" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl bg-[#032f2d] px-6 text-[10px] font-black uppercase tracking-[.14em] text-white transition hover:bg-[#075e58]">
+              <Search className="h-4 w-4" /> Search
+            </button>
+          </form>
+          {(query || island !== "all" || category !== "all") && (
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-bold text-[#607370]">
+              <span>Filters are reflected in this page URL, so you can share these results.</span>
+              <Link href="/activities" className="text-[#0f766e] underline decoration-[#73e3d9] decoration-2 underline-offset-4">Clear all filters</Link>
+            </div>
+          )}
+        </section>
+
+        {filteredActivities.length === 0 ? (
+          <section className="rounded-[32px] border border-dashed border-[#b8dcd6] bg-[#eaf8f5] p-8 text-center sm:p-12">
+            <h2 className="vi-display text-3xl font-bold">No exact matches yet.</h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm font-semibold leading-6 text-[#607370]">Clear a filter, try a broader search, or ask Concierge to find the closest available alternative.</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/activities" className="rounded-full bg-[#032f2d] px-5 py-3 text-[10px] font-black uppercase tracking-[.14em] text-white">View all activities</Link>
+              <Link href="/concierge?prompt=Help%20me%20find%20an%20activity%20in%20the%20USVI" className="rounded-full border border-[#0f766e] px-5 py-3 text-[10px] font-black uppercase tracking-[.14em] text-[#0f766e]">Ask Concierge</Link>
+            </div>
+          </section>
+        ) : (
+          <>
         <CatalogSection
           id="scuba"
           eyebrow="Dive operators across all three islands"
@@ -167,6 +254,9 @@ export default function ExperiencesPage() {
           description="Sportfishing, jet skiing, paddleboarding, horseback riding, food tours, snorkeling, kayaking, hiking, wildlife encounters, and more."
           items={otherActivities}
         />
+
+          </>
+        )}
 
         <section className="rounded-[36px] bg-[#032f2d] p-6 text-white shadow-[0_24px_70px_rgba(3,47,45,.16)] sm:p-9 lg:p-11">
           <div className="max-w-3xl">
@@ -211,6 +301,8 @@ function CatalogSection({
   description: string;
   items: BookableExperience[];
 }) {
+  if (!items.length) return null;
+
   return (
     <section id={id} className="scroll-mt-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
