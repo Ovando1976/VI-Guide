@@ -18,5 +18,11 @@ expectSource(panel, "entering a time alone is not a guarantee", "schedule semant
 expectSource(bookingRoute, "optionalFutureDate", "schedule fields are validated server-side");
 expectSource(bookingRoute, 'paymentMethod: "online_card"', "server controls the payment method record");
 expectSource(serverBookings, "serviceExpectation", "trip records preserve shared/direct expectations");
+expectSource(panel, "Pickup instructions (optional)", "travelers can provide exact pickup guidance");
+expectSource(panel, "Drop-off instructions (optional)", "travelers can provide destination guidance");
+expectSource(panel, "Official fare · no surge", "mobile booking keeps the fare action visible");
+expectSource(panel, 'id="trip-review"', "mobile review action has a stable scroll target");
+expectSource(bookingRoute, "cleanInstructions", "location instructions are normalized server-side");
+expectSource(bookingRoute, "pickupInstructions ? { notes: pickupInstructions }", "pickup instructions reach dispatch records");
 
 console.log("VI Guide taxi confidence contracts passed.");
