@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Bookmark,
   ChevronDown,
@@ -125,7 +126,7 @@ export function LivingMapDock() {
           }`}
         >
           <div className="min-h-0 overflow-hidden">
-            <div className="max-h-[290px] space-y-3 overflow-y-auto border-t border-white/10 px-3 py-3 sm:px-4">
+            <div className="max-h-[330px] space-y-3 overflow-y-auto border-t border-white/10 px-3 py-3 sm:px-4">
               {state.liveFocus && liveItems.length ? (
                 <section>
                   <div className="flex items-center justify-between gap-3">
@@ -193,6 +194,21 @@ export function LivingMapDock() {
                   value={`${state.savedStops.length} stops`}
                   className="col-span-2 sm:col-span-1"
                 />
+              </section>
+
+              <section className="grid grid-cols-2 gap-2 border-t border-white/10 pt-3">
+                <Link
+                  href="/trips"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[15px] bg-[#f5c451] px-3 text-[8px] font-black uppercase tracking-[.13em] text-[#043331] transition hover:bg-[#ffdc76]"
+                >
+                  <Route size={14} /> Open My Trip
+                </Link>
+                <Link
+                  href={`/concierge?island=${state.island}`}
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[15px] border border-white/12 bg-white/[.07] px-3 text-[8px] font-black uppercase tracking-[.13em] text-white transition hover:bg-white/[.12]"
+                >
+                  <Sparkles size={14} className="text-cyan-200" /> Ask Concierge
+                </Link>
               </section>
             </div>
           </div>
