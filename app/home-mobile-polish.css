@@ -1,0 +1,38 @@
+/* Mobile-first homepage polish: preserve the desktop visual system while making the entry flow feel native on phones. */
+@media (max-width: 639px) {
+  #traveler-intent-compact > div {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  #traveler-intent-compact h2 {
+    max-width: 11ch;
+    font-size: 2.45rem;
+    line-height: .96;
+  }
+
+  #traveler-intent-compact .group {
+    min-height: 142px;
+    grid-template-columns: 104px minmax(0, 1fr);
+    border-radius: 22px;
+  }
+
+  #traveler-intent-compact .group > span:last-child {
+    padding: 1rem;
+  }
+
+  #traveler-intent-compact .group > span:first-child > span:last-child {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  main {
+    overflow-x: clip;
+  }
+}
+
+@media (max-width: 380px) {
+  #traveler-intent-compact .group {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+}
