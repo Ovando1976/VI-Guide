@@ -193,6 +193,11 @@ export type RideBooking = {
     driverPayout: number;
     feeAgreementId: string;
   };
+  riderVerification?: {
+    status: "required" | "verified";
+    verifiedAt?: TimestampLike;
+    verifiedBy?: string | null;
+  };
   notes?: string;
   createdAt?: TimestampLike;
   updatedAt?: TimestampLike;
