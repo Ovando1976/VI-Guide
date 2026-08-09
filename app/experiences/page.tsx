@@ -16,6 +16,7 @@ import {
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import {
+  ACTIVITY_CATEGORY_LABELS,
   BOOKABLE_EXPERIENCES,
   ISLAND_NAMES,
   type BookableExperience,
@@ -60,10 +61,14 @@ const DEFAULT_EXPERIENCE_IMAGE = {
 };
 
 export default function ExperiencesPage() {
-  const tours = BOOKABLE_EXPERIENCES.filter((item) => item.kind === "tour");
-  const experiences = BOOKABLE_EXPERIENCES.filter(
-    (item) => item.kind === "experience",
+  const scuba = BOOKABLE_EXPERIENCES.filter((item) => item.category === "scuba");
+  const sailingAndCharters = BOOKABLE_EXPERIENCES.filter(
+    (item) => item.category === "sailing" || item.category === "boat-charter",
   );
+  const otherActivities = BOOKABLE_EXPERIENCES.filter(
+    (item) => !["scuba", "sailing", "boat-charter"].includes(item.category),
+  );
+  const operatorCount = new Set(BOOKABLE_EXPERIENCES.map((item) => item.operator)).size;
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f5f0e6] pb-32 text-[#032f2d]">
@@ -131,8 +136,8 @@ export default function ExperiencesPage() {
             </div>
             <div className="mt-6 grid grid-cols-3 gap-2">
               <HeroStat value={String(BOOKABLE_EXPERIENCES.length)} label="experiences" />
+              <HeroStat value={String(operatorCount)} label="operators" />
               <HeroStat value="3" label="islands" />
-              <HeroStat value="1" label="connected trip" />
             </div>
           </aside>
         </div>
@@ -140,19 +145,27 @@ export default function ExperiencesPage() {
 
       <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
         <CatalogSection
-          id="tours"
-          eyebrow="Guided routes"
-          title="Tours"
-          description="Structured island days with transportation-aware timing and connected stops."
-          items={tours}
+          id="scuba"
+          eyebrow="Dive operators across all three islands"
+          title="Scuba diving"
+          description="Certified dives, Discover Scuba, instruction, reef, wall, wreck, shore, and private dive-charter options."
+          items={scuba}
         />
 
         <CatalogSection
-          id="experiences"
-          eyebrow="Local moments"
-          title="Experiences"
-          description="Focused activities and memorable moments that can fit into a larger VI Guide journey."
-          items={experiences}
+          id="sailing-charters"
+          eyebrow="Day sails, private yachts, and multi-day cruising"
+          title="Sailing & charters"
+          description="Catamarans, sunset sails, bareboats, crewed yachts, powerboats, and custom island-hopping itineraries."
+          items={sailingAndCharters}
+        />
+
+        <CatalogSection
+          id="activities"
+          eyebrow="More ways to explore"
+          title="All other activities"
+          description="Snorkeling, kayaking, hiking, wildlife encounters, ziplining, parasailing, and other source-backed island experiences."
+          items={otherActivities}
         />
 
         <section className="rounded-[36px] bg-[#032f2d] p-6 text-white shadow-[0_24px_70px_rgba(3,47,45,.16)] sm:p-9 lg:p-11">
@@ -253,7 +266,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
         </div>
         <div className="absolute inset-x-5 bottom-5 text-white">
           <div className="text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
-            {item.kind}
+            {ACTIVITY_CATEGORY_LABELS[item.category]}
           </div>
           <h3 className="vi-display mt-1 text-3xl font-bold leading-[.95] tracking-[-.04em]">
             {item.name}

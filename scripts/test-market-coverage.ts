@@ -15,7 +15,17 @@ import {
 
 const islands = MARKET_COVERAGE_POLICY.requiredIslands;
 
-assert.ok(BOOKABLE_EXPERIENCES.length >= 18, "Activity catalog unexpectedly shrank");
+assert.ok(BOOKABLE_EXPERIENCES.length >= 31, "Activity catalog unexpectedly shrank");
+assert.ok(
+  BOOKABLE_EXPERIENCES.filter((item) => item.category === "scuba").length >= 11,
+  "Scuba coverage unexpectedly shrank",
+);
+assert.ok(
+  BOOKABLE_EXPERIENCES.filter(
+    (item) => item.category === "sailing" || item.category === "boat-charter",
+  ).length >= 9,
+  "Sailing and charter coverage unexpectedly shrank",
+);
 assert.ok(CAR_RENTAL_OPERATORS.length >= 10, "Rental catalog unexpectedly shrank");
 assert.ok(USVI_EVENTS.length >= 8, "Event catalog unexpectedly shrank");
 
