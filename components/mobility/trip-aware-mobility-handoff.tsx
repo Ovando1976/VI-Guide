@@ -5,6 +5,8 @@ import { useEffect } from "react";
 
 import { readJourneyPlans } from "@/lib/journey-planner";
 
+export const PENDING_MOBILITY_TRIP_KEY = "vi-guide.pending-mobility-trip";
+
 function hasCoordinatePair(lat: string | null, lng: string | null) {
   return Boolean(lat?.trim() && lng?.trim());
 }
@@ -15,7 +17,9 @@ function hasCoordinatePair(lat: string | null, lng: string | null) {
  * A trip-aware handoff may arrive with only `?trip=<journey-id>` or with
  * human-readable endpoint names. When the saved plan has coordinates, enrich
  * the URL once so the existing Mobility resolver can select the intended
- * pickup and destination much more precisely.
+ * pickup and destination much more precisely. The trip id is also remembered
+ * for the immediate checkout handoff so a created ride can be written back to
+ * this same JourneyPlan without introducing another trip store.
  */
 export function TripAwareMobilityHandoff() {
   const router = useRouter();
@@ -24,6 +28,8 @@ export function TripAwareMobilityHandoff() {
   useEffect(() => {
     const tripId = searchParams.get("trip")?.trim();
     if (!tripId) return;
+
+    window.sessionStorage.setItem(PENDING_MOBILITY_TRIP_KEY, tripId);
 
     const plan = readJourneyPlans().find((candidate) => candidate.id === tripId);
     if (!plan?.plan.length) return;
