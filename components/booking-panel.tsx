@@ -148,6 +148,8 @@ export function BookingPanel({
   const [quoteError, setQuoteError] = useState<string | null>(null);
   const [scheduledAt, setScheduledAt] = useState("");
   const [connectionDeadline, setConnectionDeadline] = useState("");
+  const [pickupInstructions, setPickupInstructions] = useState("");
+  const [destinationInstructions, setDestinationInstructions] = useState("");
   const [connectionKind, setConnectionKind] = useState<
     "flight" | "ferry" | "cruise" | "appointment"
   >("ferry");
@@ -262,6 +264,8 @@ export function BookingPanel({
             : null,
           connectionKind: connectionDeadline ? connectionKind : null,
           paymentMethod: "online_card",
+          pickupInstructions,
+          destinationInstructions,
           acceptedOperatorDisclosure: true,
           acceptedTerms: true,
           acceptedPrivacy: true,
@@ -376,6 +380,27 @@ export function BookingPanel({
                 toEstate={toEstate}
               />
             </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <Field label="Pickup instructions (optional)" icon={MapPin}>
+                <textarea
+                  value={pickupInstructions}
+                  onChange={(event) => setPickupInstructions(event.target.value.slice(0, 280))}
+                  rows={3}
+                  placeholder="Villa name, lobby, gate, landmark, or where to wait"
+                  className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold leading-5 text-[#043331] outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
+                />
+              </Field>
+              <Field label="Drop-off instructions (optional)" icon={Route}>
+                <textarea
+                  value={destinationInstructions}
+                  onChange={(event) => setDestinationInstructions(event.target.value.slice(0, 280))}
+                  rows={3}
+                  placeholder="Terminal, entrance, dock, hotel, or meeting point"
+                  className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold leading-5 text-[#043331] outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
+                />
+              </Field>
+            </div>
+            <p className="mt-2 text-right text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">Instructions are shared only with dispatch and your assigned driver.</p>
           </Panel>
 
           <Panel>
@@ -485,7 +510,7 @@ export function BookingPanel({
         </div>
 
         <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
-          <section className="overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm">
+          <section id="trip-review" className="scroll-mt-4 overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm">
             <div className="bg-[#043331] p-5 text-white">
               <div className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
                 Step 04 · Trip review
@@ -559,6 +584,27 @@ export function BookingPanel({
             </div>
           </section>
         </aside>
+      </div>
+
+      <div className="sticky bottom-3 z-30 mx-4 mb-4 rounded-[22px] border border-white/60 bg-[#043331]/95 p-3 text-white shadow-[0_18px_50px_rgba(4,51,49,.3)] backdrop-blur lg:hidden">
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[8px] font-black uppercase tracking-[.15em] text-[#f5c451]">{fare ? "Official fare · no surge" : "Complete your route"}</p>
+            <p className="mt-1 truncate text-sm font-black">{fare ? `$${fare.total.toFixed(2)} · ${fromEstate?.baseName} to ${toEstate?.baseName}` : "Choose pickup and destination"}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              if (canRequest) void requestRide();
+              else document.getElementById("trip-review")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            disabled={submitting}
+            className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#5f3d00] disabled:opacity-60"
+          >
+            {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
+            {canRequest ? "Continue" : "Review"}
+          </button>
+        </div>
       </div>
 
       {resultMessage ? (
