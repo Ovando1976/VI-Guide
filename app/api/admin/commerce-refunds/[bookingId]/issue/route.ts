@@ -86,6 +86,21 @@ export async function POST(
       }
 
       const reference = String(booking.reference ?? bookingId);
+      const cancellationRequestStatus = String(
+        booking.cancellationRequestStatus ?? "not_requested",
+      );
+      const cancellationRefundEstimateCents = Number(
+        booking.cancellationRefundEstimateCents ?? 0,
+      );
+      if (
+        cancellationRequestStatus === "review_required" &&
+        cancellationRefundEstimateCents !== currentPaidAmountCents
+      ) {
+        throw new RefundActionError(
+          "The disclosed policy does not support an automatic full refund. Resolve this cancellation through manual financial review.",
+          409,
+        );
+      }
       if (confirmedReference !== reference) {
         throw new RefundActionError(
           "Type the exact booking reference to authorize this refund.",
@@ -377,7 +392,12 @@ export async function POST(
       });
       transaction.update(bookingRef, {
         ...(incomingStatus === "succeeded" && fullRefund && paymentIntentMatches
-          ? { status: "cancelled", paymentStatus: "refunded" }
+          ? {
+              status: "cancelled",
+              paymentStatus: "refunded",
+              cancellationRequestStatus: "completed",
+              cancellationResolvedAt: now,
+            }
           : incomingStatus === "failed"
             ? { paymentStatus: "refund_failed" }
             : incomingStatus === "review_required"

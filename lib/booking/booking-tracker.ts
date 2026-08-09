@@ -15,6 +15,8 @@ import {
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
   CommerceBookingKind,
+  CommerceCancellationPolicy,
+  CommerceCancellationRequestStatus,
   CommercePriceBreakdown,
   CommerceBookingStatus,
 } from "@/types/commerce-booking";
@@ -64,6 +66,12 @@ export type BookingStatusSnapshot = {
   depositAmountCents: number;
   paidAmountCents: number;
   priceBreakdown?: CommercePriceBreakdown | null;
+  cancellationPolicy?: CommerceCancellationPolicy | null;
+  cancellationRequestStatus?: CommerceCancellationRequestStatus;
+  cancellationReasonCode?: string | null;
+  cancellationRequestedAt?: string | null;
+  cancellationResolvedAt?: string | null;
+  cancellationRefundEstimateCents?: number;
   paymentHref?: string | null;
 };
 

@@ -14,6 +14,7 @@ import { canManageListing } from "@/lib/merchant-access";
 import { merchantOfferDepositError } from "@/lib/merchant-offer-deposit-policy";
 import { resolveMerchantOfferDeposit } from "@/lib/merchant-offer-deposit";
 import { resolveTrueTripPrice } from "@/lib/booking/true-trip-price";
+import { resolveCancellationPolicy } from "@/lib/booking/cancellation-policy";
 import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import {
   bookingEventForStatus,
@@ -53,6 +54,7 @@ export async function PATCH(
           proposedTime?: unknown;
           depositAmountCents?: unknown;
           priceBreakdown?: Record<string, unknown>;
+          cancellationPolicyCode?: unknown;
         }
       | null;
     const requestedStatus = clean(body?.status, 40);
@@ -60,6 +62,7 @@ export async function PATCH(
     const hasProposedTime = hasOwn(body, "proposedTime");
     const hasDepositAmount = hasOwn(body, "depositAmountCents");
     const hasPriceBreakdown = hasOwn(body, "priceBreakdown");
+    const hasCancellationPolicy = hasOwn(body, "cancellationPolicyCode");
     const merchantNote = clean(body?.merchantNote, 1200);
     const proposedTime = clean(body?.proposedTime, 40);
 
@@ -103,10 +106,19 @@ export async function PATCH(
       const priceBreakdown = hasPriceBreakdown
         ? resolveTrueTripPrice(body?.priceBreakdown ?? {})
         : null;
+      const cancellationPolicy = hasCancellationPolicy
+        ? resolveCancellationPolicy(body?.cancellationPolicyCode)
+        : null;
       if (status === "payment_required") {
         if (!priceBreakdown) {
           throw new BookingActionError(
             "Enter the full itemized trip price before requesting payment.",
+            409,
+          );
+        }
+        if (!cancellationPolicy) {
+          throw new BookingActionError(
+            "Choose and disclose a cancellation policy before requesting payment.",
             409,
           );
         }
@@ -160,6 +172,7 @@ export async function PATCH(
           ? {
               depositAmountCents,
               priceBreakdown,
+              cancellationPolicy,
               depositSource: deposit.source,
               offerDepositAmountCents: deposit.offerAmountCents,
               offerDepositOverridden: deposit.overridden,
@@ -280,6 +293,10 @@ export async function PATCH(
             status === "payment_required"
               ? priceBreakdown
               : booking.priceBreakdown ?? null,
+          cancellationPolicy:
+            status === "payment_required"
+              ? cancellationPolicy
+              : booking.cancellationPolicy ?? null,
           paymentStatus:
             status === "payment_required"
               ? "unpaid"

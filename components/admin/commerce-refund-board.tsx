@@ -30,6 +30,11 @@ type RefundBooking = {
   refundFailureReason: string | null;
   refundRequestedAt: string | null;
   refundUpdatedAt: string | null;
+  cancellationRequestStatus: string;
+  cancellationReasonCode: string | null;
+  cancellationReason: string | null;
+  cancellationRefundEstimateCents: number;
+  cancellationRequestedAt: string | null;
   updatedAt: string;
 };
 
@@ -38,6 +43,7 @@ type RefundCounts = {
   processing: number;
   failed: number;
   refunded: number;
+  cancellationRequested: number;
 };
 
 export function CommerceRefundBoard() {
@@ -47,6 +53,7 @@ export function CommerceRefundBoard() {
     processing: 0,
     failed: 0,
     refunded: 0,
+    cancellationRequested: 0,
   });
   const [canIssueRefunds, setCanIssueRefunds] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -77,6 +84,7 @@ export function CommerceRefundBoard() {
           processing: 0,
           failed: 0,
           refunded: 0,
+          cancellationRequested: 0,
         },
       );
     } catch (caught) {
@@ -132,7 +140,8 @@ export function CommerceRefundBoard() {
           ) : null}
         </section>
 
-        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <Metric label="Traveler requests" value={counts.cancellationRequested} />
           <Metric label="Refundable" value={counts.refundable} />
           <Metric label="Processing" value={counts.processing} />
           <Metric label="Failed" value={counts.failed} />
@@ -185,13 +194,21 @@ function RefundCard({
   canIssueRefunds: boolean;
   onUpdated: () => Promise<void>;
 }) {
-  const [reason, setReason] = useState(booking.refundReason ?? "");
+  const [reason, setReason] = useState(
+    booking.refundReason ??
+      (booking.cancellationRequestStatus === "review_required"
+        ? `Traveler cancellation: ${booking.cancellationReasonCode?.replaceAll("_", " ") ?? "unspecified"}${booking.cancellationReason ? ` — ${booking.cancellationReason}` : ""}`
+        : ""),
+  );
   const [confirmation, setConfirmation] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const eligiblePayment =
     booking.paymentStatus === "paid" && booking.refundStatus === "not_requested";
-  const refundable = canIssueRefunds && eligiblePayment;
+  const policyAllowsFullRefund =
+    booking.cancellationRequestStatus !== "review_required" ||
+    booking.cancellationRefundEstimateCents === booking.paidAmountCents;
+  const refundable = canIssueRefunds && eligiblePayment && policyAllowsFullRefund;
   const confirmed = confirmation.trim() === booking.reference;
 
   async function issueRefund() {
@@ -252,6 +269,23 @@ function RefundCard({
         <Detail label="Booking" value={booking.status.replaceAll("_", " ")} />
         <Detail label="Updated" value={formatDate(booking.updatedAt)} />
       </div>
+
+      {booking.cancellationRequestStatus === "review_required" ? (
+        <div className="mt-4 flex gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-900">
+          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>
+            Traveler requested cancellation{booking.cancellationRequestedAt ? ` on ${formatDate(booking.cancellationRequestedAt)}` : ""}.
+            {booking.cancellationRefundEstimateCents > 0 ? ` Policy estimate: ${formatMoney(booking.cancellationRefundEstimateCents)}.` : " Policy or timing requires review."}
+            {booking.cancellationReason ? ` Reason: ${booking.cancellationReason}` : ""}
+          </span>
+        </div>
+      ) : null}
+      {eligiblePayment && !policyAllowsFullRefund ? (
+        <div className="mt-4 flex gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-xs font-semibold leading-5 text-rose-900">
+          <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>Automatic full refund is locked because the policy result is partial or requires judgment. Reconcile this request manually before changing the financial record.</span>
+        </div>
+      ) : null}
 
       {booking.refundFailureReason ? (
         <div className="mt-4 flex gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-xs font-semibold leading-5 text-rose-800">
