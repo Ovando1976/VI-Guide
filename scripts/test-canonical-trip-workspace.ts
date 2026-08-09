@@ -12,6 +12,8 @@ const tripMapLink = source("components/trips/trip-aware-living-map-link.tsx");
 const tripConciergeLink = source(
   "components/trips/trip-aware-concierge-link.tsx",
 );
+const riderTripHistory = source("components/rider-trip-history.tsx");
+const bookingReadRoute = source("app/api/bookings/[bookingId]/route.ts");
 
 assert.match(legacyWorkspace, /redirect\("\/trips"\)/);
 assert.doesNotMatch(legacyWorkspace, /ReservationEnabledWorkspace/);
@@ -32,5 +34,13 @@ assert.match(tripConciergeLink, /Current stops:/);
 assert.match(tripMapLink, /Open Living Map/);
 assert.match(tripMapLink, /Open journey map/);
 assert.match(tripMapLink, /mapHrefForJourneyPlan/);
+assert.match(riderTripHistory, /Live ride card/);
+assert.match(riderTripHistory, /Verified pickup identity/);
+assert.match(riderTripHistory, /Pickup PIN/);
+assert.match(riderTripHistory, /Call dispatch/);
+assert.match(riderTripHistory, /Official fare/);
+assert.match(riderTripHistory, /Pickup map/);
+assert.match(bookingReadRoute, /rideIdentity/);
+assert.match(bookingReadRoute, /booking\.riderId === session\.uid/);
 
 console.log("VI Guide canonical My Trip workspace contracts passed.");
