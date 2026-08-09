@@ -75,6 +75,19 @@ export function LivingMapDock() {
       : hasRoute
         ? "Route needs one endpoint"
         : "No route yet";
+  const primaryLiveItem =
+    liveItems.find((item) => item.id === state.liveFocus?.primaryId) ??
+    liveItems[0] ??
+    null;
+  const conciergeParams = new URLSearchParams({ island: state.island });
+  const conciergeFocus = state.selection?.name ?? primaryLiveItem?.title;
+  if (conciergeFocus) {
+    conciergeParams.set(
+      "prompt",
+      `Help me plan the best next steps around ${conciergeFocus}. Use my current Living Map context, saved stops, and route.`,
+    );
+  }
+  const conciergeHref = `/concierge?${conciergeParams.toString()}`;
 
   return (
     <aside
@@ -204,7 +217,7 @@ export function LivingMapDock() {
                   <Route size={14} /> Open My Trip
                 </Link>
                 <Link
-                  href={`/concierge?island=${state.island}`}
+                  href={conciergeHref}
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[15px] border border-white/12 bg-white/[.07] px-3 text-[8px] font-black uppercase tracking-[.13em] text-white transition hover:bg-white/[.12]"
                 >
                   <Sparkles size={14} className="text-cyan-200" /> Ask Concierge
