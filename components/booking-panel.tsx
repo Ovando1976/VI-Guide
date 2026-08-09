@@ -8,6 +8,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Anchor,
   ArrowLeftRight,
+  ArrowRight,
   BriefcaseBusiness,
   Bus,
   CarFront,
