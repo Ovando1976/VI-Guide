@@ -152,6 +152,7 @@ export function BookingPanel({
   const [showMoreModes, setShowMoreModes] = useState(
     MORE_MODES.some((item) => item.value === mode),
   );
+  const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -293,37 +294,64 @@ export function BookingPanel({
               <ShieldCheck className="h-4 w-4" /> Guided booking
             </div>
             <h2 className="mt-4 text-4xl font-black tracking-[-.05em] sm:text-5xl">
-              Four simple steps to your island ride.
+              Your ride, one clear step at a time.
             </h2>
             <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/68 sm:text-base">
-              Choose your route, select the right ride, tell us who is traveling, and review the official fare.
+              Complete one decision at a time. Your selections stay visible and editable before payment.
             </p>
           </div>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 gap-2" aria-label="Booking progress">
             {[
-              ["01", "Route"],
-              ["02", "Ride"],
-              ["03", "Guests"],
-              ["04", "Fare"],
-            ].map(([step, label]) => (
-              <div
-                key={step}
-                className="rounded-2xl border border-white/10 bg-white/[.07] px-3 py-3 text-center"
-              >
-                <div className="text-[8px] font-black uppercase tracking-[.16em] text-white/40">
-                  {step}
-                </div>
-                <div className="mt-1 text-[10px] font-black uppercase tracking-[.1em]">
-                  {label}
-                </div>
-              </div>
-            ))}
+              [1, "Route"],
+              [2, "Ride"],
+              [3, "Guests"],
+              [4, "Review"],
+            ].map(([step, label]) => {
+              const stepNumber = step as 1 | 2 | 3 | 4;
+              const isActive = activeStep === stepNumber;
+              const isComplete = activeStep > stepNumber;
+              return (
+                <button
+                  key={step}
+                  type="button"
+                  onClick={() => setActiveStep(stepNumber)}
+                  disabled={stepNumber > activeStep}
+                  aria-current={isActive ? "step" : undefined}
+                  className={`rounded-2xl border px-3 py-3 text-center transition ${
+                    isActive
+                      ? "border-[#f5c451] bg-[#f5c451] text-[#043331]"
+                      : isComplete
+                        ? "border-emerald-300/40 bg-emerald-300/15 text-white"
+                        : "border-white/10 bg-white/[.07] text-white/65 disabled:cursor-not-allowed disabled:opacity-60"
+                  }`}
+                >
+                  <div className="text-[8px] font-black uppercase tracking-[.16em]">
+                    {isComplete ? "✓" : `0${step}`}
+                  </div>
+                  <div className="mt-1 text-[10px] font-black uppercase tracking-[.1em]">
+                    {label}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </header>
 
-      <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(330px,.65fr)] lg:p-7">
-        <div className="space-y-6">
+      <div className="p-4 sm:p-6 lg:p-7">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 shadow-sm">
+          <div className="text-xs font-bold text-slate-500">
+            {fromEstate?.baseName || "Pickup"} <span className="mx-2 text-slate-300">→</span> {toEstate?.baseName || "Destination"}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <SummaryChip label={selectedMode.label} />
+            <SummaryChip label={`${passengers} passenger${passengers === 1 ? "" : "s"}`} />
+            <SummaryChip label={`${luggage} bag${luggage === 1 ? "" : "s"}`} />
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-4xl space-y-6">
+          {activeStep === 1 ? (
           <Panel>
             <SectionTitle
               step="01"
@@ -368,8 +396,15 @@ export function BookingPanel({
                 toEstate={toEstate}
               />
             </div>
+            <StepActions
+              continueLabel="Choose ride type"
+              continueDisabled={!routeReady}
+              onContinue={() => setActiveStep(2)}
+            />
           </Panel>
+          ) : null}
 
+          {activeStep === 2 ? (
           <Panel>
             <SectionTitle
               step="02"
@@ -410,22 +445,25 @@ export function BookingPanel({
                 ))}
               </div>
             ) : null}
-            <div className="mt-5 flex flex-col gap-3 rounded-[22px] border border-emerald-200 bg-emerald-50 p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
-              <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-700 text-white">
-                  <Check className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="text-[9px] font-black uppercase tracking-[.16em] text-emerald-700">Ride selected</div>
-                  <div className="mt-1 text-sm font-black text-emerald-950">{selectedMode.label} · {selectedMode.blurb}</div>
-                </div>
-              </div>
-              <span className="rounded-full border border-emerald-300 bg-white/70 px-4 py-2 text-[8px] font-black uppercase tracking-[.13em] text-emerald-800">
-                Next: adjust passengers below
+            <div className="mt-5 flex items-center gap-3 rounded-[22px] border border-emerald-200 bg-emerald-50 p-4" aria-live="polite">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-700 text-white">
+                <Check className="h-5 w-5" />
               </span>
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[.16em] text-emerald-700">Ride selected</div>
+                <div className="mt-1 text-sm font-black text-emerald-950">{selectedMode.label} · {selectedMode.blurb}</div>
+              </div>
             </div>
+            <StepActions
+              backLabel="Back to route"
+              continueLabel="Add passengers"
+              onBack={() => setActiveStep(1)}
+              onContinue={() => setActiveStep(3)}
+            />
           </Panel>
+          ) : null}
 
+          {activeStep === 3 ? (
           <div id="passenger-details" className="scroll-mt-24">
           <Panel>
             <SectionTitle
@@ -453,22 +491,24 @@ export function BookingPanel({
                 onChange={onChangeLuggage}
               />
             </div>
-            <div className="mt-5 flex flex-col gap-3 rounded-[22px] border border-teal-200 bg-teal-50 p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
-              <div>
-                <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Passenger details ready</div>
-                <div className="mt-1 text-sm font-black text-teal-950">
-                  {passengers} passenger{passengers === 1 ? "" : "s"} · {luggage} bag{luggage === 1 ? "" : "s"}
-                </div>
+            <div className="mt-5 rounded-[22px] border border-teal-200 bg-teal-50 p-4" aria-live="polite">
+              <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Passenger details ready</div>
+              <div className="mt-1 text-sm font-black text-teal-950">
+                {passengers} passenger{passengers === 1 ? "" : "s"} · {luggage} bag{luggage === 1 ? "" : "s"}
               </div>
-              <a href="#trip-review" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white shadow-sm">
-                Continue to trip review <ArrowRight className="h-4 w-4" />
-              </a>
             </div>
+            <StepActions
+              backLabel="Back to ride"
+              continueLabel="Review official fare"
+              onBack={() => setActiveStep(2)}
+              onContinue={() => setActiveStep(4)}
+            />
           </Panel>
           </div>
-        </div>
+          ) : null}
 
-        <aside id="trip-review" className="scroll-mt-24 space-y-5 lg:sticky lg:top-6 lg:self-start">
+        {activeStep === 4 ? (
+        <aside id="trip-review" className="scroll-mt-24 space-y-5">
           <section className="overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm">
             <div className="bg-[#043331] p-5 text-white">
               <div className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
@@ -535,7 +575,16 @@ export function BookingPanel({
               )}
             </div>
           </section>
+          <button
+            type="button"
+            onClick={() => setActiveStep(3)}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]"
+          >
+            <ArrowLeftRight className="h-4 w-4" /> Back to passengers
+          </button>
         </aside>
+        ) : null}
+        </div>
       </div>
 
       {resultMessage ? (
@@ -550,6 +599,33 @@ export function BookingPanel({
         </div>
       ) : null}
     </section>
+  );
+}
+
+function StepActions({
+  backLabel,
+  continueLabel,
+  continueDisabled = false,
+  onBack,
+  onContinue,
+}: {
+  backLabel?: string;
+  continueLabel: string;
+  continueDisabled?: boolean;
+  onBack?: () => void;
+  onContinue: () => void;
+}) {
+  return (
+    <div className="mt-6 flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+      {onBack ? (
+        <button type="button" onClick={onBack} className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331]">
+          {backLabel}
+        </button>
+      ) : <span />}
+      <button type="button" onClick={onContinue} disabled={continueDisabled} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white shadow-sm transition disabled:cursor-not-allowed disabled:opacity-40">
+        {continueLabel} <ArrowRight className="h-4 w-4" />
+      </button>
+    </div>
   );
 }
 
@@ -867,6 +943,14 @@ function ConsentCheckbox({
       />
       <span>{children}</span>
     </label>
+  );
+}
+
+function SummaryChip({ label }: { label: string }) {
+  return (
+    <span className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[8px] font-black uppercase tracking-[.13em] text-teal-800">
+      {label}
+    </span>
   );
 }
 
