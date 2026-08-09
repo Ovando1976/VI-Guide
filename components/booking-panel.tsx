@@ -14,6 +14,7 @@ import {
   Check,
   ChevronDown,
   Clock3,
+  CreditCard,
   Crown,
   Loader2,
   Luggage,
@@ -145,6 +146,11 @@ export function BookingPanel({
   const [pilotMessage, setPilotMessage] = useState<string | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
+  const [scheduledAt, setScheduledAt] = useState("");
+  const [connectionDeadline, setConnectionDeadline] = useState("");
+  const [connectionKind, setConnectionKind] = useState<
+    "flight" | "ferry" | "cruise" | "appointment"
+  >("ferry");
   const [acceptedOperatorDisclosure, setAcceptedOperatorDisclosure] =
     useState(false);
   const [acceptedLegal, setAcceptedLegal] = useState(false);
@@ -250,6 +256,12 @@ export function BookingPanel({
           mode,
           passengers,
           luggage,
+          scheduledAt: scheduledAt ? new Date(scheduledAt).toISOString() : null,
+          connectionDeadline: connectionDeadline
+            ? new Date(connectionDeadline).toISOString()
+            : null,
+          connectionKind: connectionDeadline ? connectionKind : null,
+          paymentMethod: "online_card",
           acceptedOperatorDisclosure: true,
           acceptedTerms: true,
           acceptedPrivacy: true,
@@ -434,6 +446,41 @@ export function BookingPanel({
                 onChange={onChangeLuggage}
               />
             </div>
+            <div className="mt-5 grid gap-4 rounded-[24px] border border-teal-100 bg-teal-50/70 p-4 sm:grid-cols-2">
+              <Field label="Requested pickup time" icon={Clock3}>
+                <input
+                  type="datetime-local"
+                  value={scheduledAt}
+                  onChange={(event) => setScheduledAt(event.target.value)}
+                  className="w-full rounded-[18px] border border-teal-100 bg-white px-4 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                />
+              </Field>
+              <Field label="Connection to protect (optional)" icon={Anchor}>
+                <div className="grid grid-cols-[auto_1fr] gap-2">
+                  <select
+                    value={connectionKind}
+                    onChange={(event) =>
+                      setConnectionKind(event.target.value as typeof connectionKind)
+                    }
+                    className="rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                  >
+                    <option value="ferry">Ferry</option>
+                    <option value="flight">Flight</option>
+                    <option value="cruise">Cruise</option>
+                    <option value="appointment">Other</option>
+                  </select>
+                  <input
+                    type="datetime-local"
+                    value={connectionDeadline}
+                    onChange={(event) => setConnectionDeadline(event.target.value)}
+                    className="min-w-0 rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                  />
+                </div>
+              </Field>
+            </div>
+            <p className="mt-3 text-xs font-semibold leading-5 text-slate-500">
+              Pickup requests and connection details are saved for dispatch. A driver match confirms availability; entering a time alone is not a guarantee.
+            </p>
           </Panel>
         </div>
 
@@ -450,6 +497,13 @@ export function BookingPanel({
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <ReviewChip label={mode.replace("-", " ")} />
+                <ReviewChip
+                  label={
+                    mode === "shared" || mode === "safari"
+                      ? "shared · possible wait + stops"
+                      : "direct ride requested"
+                  }
+                />
                 <ReviewChip
                   label={`${passengers} passenger${passengers === 1 ? "" : "s"}`}
                 />
@@ -746,6 +800,16 @@ function FareReview({
         <FareRow label="Published route fare" value={fare.routeFare} />
         <FareRow label="Passenger charge" value={fare.passengerFare} />
         <FareRow label="Luggage charge" value={fare.luggageFare} />
+      </div>
+      <div className="mt-4 grid gap-3 rounded-[22px] border border-teal-100 bg-teal-50 p-4 text-xs font-semibold leading-5 text-teal-950">
+        <div className="flex items-start gap-2">
+          <Bus className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+          <span>Shared and safari requests may wait for other riders and make additional stops. Other modes request a direct ride, subject to dispatch confirmation.</span>
+        </div>
+        <div className="flex items-start gap-2">
+          <CreditCard className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+          <span>Payment method: secure online card. The digital booking record includes the official quote, payment status, assigned operator, and trip status.</span>
+        </div>
       </div>
       <div className="mt-5 space-y-3">
         <ServicePromise icon={ShieldCheck} text="Verified driver and vehicle assignment" />
