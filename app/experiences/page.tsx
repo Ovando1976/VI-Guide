@@ -30,36 +30,31 @@ export const metadata = {
     "Browse and request tours and experiences across St. Thomas, St. John, and St. Croix.",
 };
 
-const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
-  "stt-island-highlights": {
+const ISLAND_ACTIVITY_IMAGES: Record<
+  BookableExperience["island"],
+  { image: string; alt: string }
+> = {
+  stt: {
     image: "/images/usvi-harbor-hero.jpg",
     alt: "Charlotte Amalie harbor and the hills of St. Thomas",
   },
-  "stt-harbor-sunset": {
-    image: "/images/usvi-harbor-hero.jpg",
-    alt: "Charlotte Amalie harbor in St. Thomas",
-  },
-  "stj-north-shore-day": {
+  stj: {
     image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     alt: "Trunk Bay and the green North Shore of St. John",
   },
-  "stj-heritage-nature": {
-    image: "/images/places/st-john/trunk-bay-beach-1.jpg",
-    alt: "Green hills and clear water on St. John",
-  },
-  "stx-christiansted-culture": {
-    image: "/images/accommodations/king-christian-hotel.jpg",
-    alt: "Historic waterfront architecture in Christiansted, St. Croix",
-  },
-  "stx-west-end-sunset": {
+  stx: {
     image: "/images/places/st-croix/cane-bay-beach-1.jpg",
-    alt: "St. Croix coastline at Cane Bay",
+    alt: "Cane Bay coastline on St. Croix",
   },
 };
 
-const DEFAULT_EXPERIENCE_IMAGE = {
-  image: "/images/usvi-harbor-hero.jpg",
-  alt: "Scenic view in the U.S. Virgin Islands",
+const AVAILABILITY_LABELS: Record<
+  BookableExperience["availabilityStatus"],
+  string
+> = {
+  "operator-listed": "Listed by operator",
+  seasonal: "Seasonal availability",
+  "request-only": "Contact operator",
 };
 
 type ActivitySearchParams = {
@@ -335,7 +330,11 @@ function BookingCard({ item }: { item: BookableExperience }) {
     adults: "2",
   });
   const conciergePrompt = `Help me plan ${item.name} on ${ISLAND_NAMES[item.island]}. Include transportation, realistic timing, nearby places, and a backup option.`;
-  const visual = EXPERIENCE_IMAGES[item.id] ?? DEFAULT_EXPERIENCE_IMAGE;
+  const visual = ISLAND_ACTIVITY_IMAGES[item.island];
+  const officialAction =
+    item.availabilityStatus === "request-only"
+      ? "Contact operator"
+      : "Check official availability";
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[30px] border border-[#d9e6e2] bg-[#fffdf8] shadow-[0_16px_45px_rgba(4,51,49,.08)] transition duration-300 hover:-translate-y-1.5 hover:border-[#aad7d0] hover:shadow-[0_28px_65px_rgba(4,51,49,.14)]">
@@ -385,31 +384,44 @@ function BookingCard({ item }: { item: BookableExperience }) {
           ))}
         </div>
 
-        <p className="mt-4 text-[9px] font-semibold leading-4 text-slate-400">Verified {item.verifiedAt} · {item.sourceLabel} · {item.availabilityStatus.replaceAll("-", " ")}</p>
-        <div className="mt-6 grid grid-cols-3 gap-2 border-t border-[#e4ece9] pt-5">
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf8f5] px-3 py-1.5 text-[8px] font-black uppercase tracking-[.11em] text-[#0f766e]">
+            <BadgeCheck className="h-3.5 w-3.5" /> {AVAILABILITY_LABELS[item.availabilityStatus]}
+          </span>
+          <span className="text-[9px] font-semibold text-slate-400">Verified {item.verifiedAt}</span>
+        </div>
+        <p className="mt-2 text-[9px] font-semibold leading-4 text-slate-400">Source: {item.sourceLabel}. Final schedule and pricing are confirmed by the operator.</p>
+        <div className="mt-6 grid grid-cols-2 gap-2 border-t border-[#e4ece9] pt-5">
           <Link
             href={`/map?island=${item.island}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#dce7e4] bg-white px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#35514e] transition hover:border-[#b8dcd6]"
           >
             <MapPinned className="h-4 w-4" /> Map island
           </Link>
-          <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#dce7e4] bg-white px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#35514e] transition hover:border-[#b8dcd6]">
-            <ExternalLink className="h-4 w-4" /> Operator
-          </a>
           <Link
             href={`/concierge?island=${item.island}&context=${item.kind}&prompt=${encodeURIComponent(conciergePrompt)}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#b8e2dc] bg-[#eaf8f5] px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#0f766e] transition hover:bg-[#ddf3ee]"
           >
-            <Sparkles className="h-4 w-4" /> Plan around this
+            <Sparkles className="h-4 w-4" /> Plan trip
           </Link>
         </div>
 
-        <Link
-          href={`/book?${params.toString()}`}
-          className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#032f2d] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-[#075e58]"
-        >
-          Request booking <ArrowRight className="h-4 w-4 text-[#f5c451]" />
-        </Link>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+          <a
+            href={item.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#032f2d] bg-white px-4 text-center text-[8px] font-black uppercase tracking-[.12em] text-[#032f2d] transition hover:bg-[#f2f8f6]"
+          >
+            <ExternalLink className="h-4 w-4" /> {officialAction}
+          </a>
+          <Link
+            href={`/book?${params.toString()}`}
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#032f2d] px-4 text-center text-[8px] font-black uppercase tracking-[.12em] text-white transition hover:bg-[#075e58]"
+          >
+            Request with VI Guide <ArrowRight className="h-4 w-4 text-[#f5c451]" />
+          </Link>
+        </div>
       </div>
     </article>
   );
