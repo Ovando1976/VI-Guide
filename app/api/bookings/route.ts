@@ -32,6 +32,11 @@ type BookingRequestBody = RideBookingDraft & {
   consentVersion?: string;
 };
 
+function cleanInstructions(value: unknown) {
+  if (typeof value !== "string") return "";
+  return value.replace(/\s+/g, " ").trim().slice(0, 280);
+}
+
 function optionalFutureDate(value: string | null | undefined, label: string) {
   if (!value) return null;
   const date = new Date(value);
@@ -179,6 +184,10 @@ export async function POST(request: NextRequest) {
     });
     const estimatedSettlement = calculateTaxiSettlement(fare.total);
     const riderVerificationCode = String(randomInt(0, 10_000)).padStart(4, "0");
+    const pickupInstructions = cleanInstructions(body.pickupInstructions);
+    const destinationInstructions = cleanInstructions(
+      body.destinationInstructions,
+    );
 
     const bookingId = await createServerBooking({
       riderId: session.uid,
@@ -196,6 +205,7 @@ export async function POST(request: NextRequest) {
         estateName: origin.baseName,
         pickupConfidence: 0.92,
         accessType: "roadside",
+        ...(pickupInstructions ? { notes: pickupInstructions } : {}),
       },
       destination: {
         lat: destination.internalPoint.lat,
@@ -204,6 +214,7 @@ export async function POST(request: NextRequest) {
         estateName: destination.baseName,
         pickupConfidence: 0.92,
         accessType: "roadside",
+        ...(destinationInstructions ? { notes: destinationInstructions } : {}),
       },
       passengers,
       luggage,
