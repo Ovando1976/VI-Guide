@@ -18,6 +18,7 @@ import {
   Navigation,
   ShieldCheck,
   Truck,
+  UserCheck,
   Wallet,
   Zap,
 } from "lucide-react";
@@ -76,6 +77,9 @@ type DriverBooking = {
   completedAt?: FirestoreDateLike;
   createdAt?: FirestoreDateLike;
   updatedAt?: FirestoreDateLike;
+  riderVerification?: {
+    status: "required" | "verified";
+  };
 };
 
 type DriverProfile = {
@@ -652,7 +656,13 @@ export function DriverConsole({ driverId }: { driverId: string }) {
                               </button>
                             ) : null}
 
-                            {booking.status === "arrived" ? (
+                            {booking.status === "arrived" &&
+                            booking.riderVerification?.status === "required" ? (
+                              <RiderPinControl bookingId={booking.id} />
+                            ) : null}
+
+                            {booking.status === "arrived" &&
+                            booking.riderVerification?.status !== "required" ? (
                               <button
                                 onClick={() =>
                                   advanceStatus(
@@ -818,6 +828,68 @@ function TabButton({
       <Icon size={14} className={active ? "text-[#032f2d]" : "text-[#f5c451]"} />
       {label}
     </button>
+  );
+}
+
+function RiderPinControl({ bookingId }: { bookingId: string }) {
+  const [code, setCode] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function verifyRider(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!/^\d{4}$/.test(code)) {
+      setError("Enter the rider's 4-digit PIN.");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      setError(null);
+      const response = await fetch(`/api/bookings/${bookingId}/verify-rider`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const payload = (await response.json().catch(() => null)) as
+        | { error?: string }
+        | null;
+      if (!response.ok) throw new Error(payload?.error || "Rider verification failed.");
+      setCode("");
+    } catch (verificationError) {
+      setError(
+        verificationError instanceof Error
+          ? verificationError.message
+          : "Rider verification failed.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form onSubmit={verifyRider} className="flex flex-wrap items-center gap-2">
+      <label className="sr-only" htmlFor={`rider-pin-${bookingId}`}>
+        Rider pickup PIN
+      </label>
+      <input
+        id={`rider-pin-${bookingId}`}
+        value={code}
+        onChange={(event) => setCode(event.target.value.replace(/\D/g, "").slice(0, 4))}
+        inputMode="numeric"
+        autoComplete="one-time-code"
+        pattern="[0-9]{4}"
+        placeholder="4-digit PIN"
+        className="min-h-11 w-36 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-black tracking-[0.2em] text-[#043331] outline-none focus:border-teal-500"
+      />
+      <button type="submit" disabled={submitting || code.length !== 4} className={PRIMARY_BUTTON}>
+        <span className="inline-flex items-center gap-2">
+          <UserCheck className="h-4 w-4" />
+          {submitting ? "Checking" : "Verify rider"}
+        </span>
+      </button>
+      {error ? <p className="w-full text-xs font-bold text-rose-700">{error}</p> : null}
+    </form>
   );
 }
 
