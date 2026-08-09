@@ -7,6 +7,7 @@ import { CalendarCheck2, Loader2, ShieldCheck } from "lucide-react";
 
 import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 import { JourneyPlanner } from "@/components/journey/journey-planner";
+import { JourneyMobilityBookings } from "@/components/journey/journey-mobility-bookings";
 import { JourneyRouteDashboard } from "@/components/journey/journey-route-dashboard";
 import {
   createBookingJourneyPlan,
@@ -64,6 +65,7 @@ export function BookingAwareJourneyPlanner() {
           {handoffError}
         </div>
       ) : null}
+      <JourneyMobilityBookings />
       <ProactiveTripIntelligence />
       <JourneyPlanner />
       <JourneyRouteDashboard />
