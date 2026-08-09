@@ -9,6 +9,9 @@ function source(path: string) {
 const legacyWorkspace = source("app/workspace/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const tripMapLink = source("components/trips/trip-aware-living-map-link.tsx");
+const tripConciergeLink = source(
+  "components/trips/trip-aware-concierge-link.tsx",
+);
 
 assert.match(legacyWorkspace, /redirect\("\/trips"\)/);
 assert.doesNotMatch(legacyWorkspace, /ReservationEnabledWorkspace/);
@@ -20,7 +23,12 @@ assert.match(tripsPage, /TravelerTripReadinessPanel/);
 assert.match(tripsPage, /RiderLiveDriverMap/);
 assert.match(tripsPage, /Open Planner/);
 assert.match(tripsPage, /TripAwareLivingMapLink/);
-assert.match(tripsPage, /Ask Concierge/);
+assert.match(tripsPage, /TripAwareConciergeLink/);
+assert.match(tripConciergeLink, /Ask Concierge/);
+assert.match(tripConciergeLink, /readSelectedTravelerTripPlanId/);
+assert.match(tripConciergeLink, /params\.set\("island", plan\.island\)/);
+assert.match(tripConciergeLink, /params\.set\("trip", plan\.id\)/);
+assert.match(tripConciergeLink, /Current stops:/);
 assert.match(tripMapLink, /Open Living Map/);
 assert.match(tripMapLink, /Open journey map/);
 assert.match(tripMapLink, /mapHrefForJourneyPlan/);
