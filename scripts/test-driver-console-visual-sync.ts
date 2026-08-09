@@ -83,5 +83,25 @@ expectSource(
   'actorType: "driver"',
   "trip progression keeps driver actor attribution",
 );
+expectSource(
+  "Expected driver settlement",
+  "ride offers show driver payout before acceptance",
+);
+expectSource(
+  "Paid online · dispatch cleared",
+  "ride offers make payment clearance explicit",
+);
+expectSource(
+  "Shared · stops possible",
+  "shared ride operational expectations are visible",
+);
+expectSource(
+  "Protected connection",
+  "active trips protect ferry, flight, cruise, and appointment deadlines",
+);
+expectSource(
+  "ConnectionCountdown",
+  "active trip cockpit keeps a live connection countdown",
+);
 
 console.log("VI Guide Driver console visual and tariff contracts passed.");
