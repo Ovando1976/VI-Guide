@@ -18,6 +18,10 @@
     box-shadow: 0 14px 34px rgba(18, 49, 47, 0.18);
   }
 
+  .app-nav__brand {
+    display: none;
+  }
+
   .app-nav__item {
     min-width: 0;
     height: 50px;
@@ -35,6 +39,23 @@
   .app-nav__item svg {
     width: 18px;
     height: 18px;
+  }
+
+  .app-nav__item--map,
+  .app-nav__item--concierge {
+    background: rgba(3, 47, 45, 0.045);
+  }
+
+  .app-nav__item--map.is-active,
+  .app-nav__item--concierge.is-active {
+    background: #032f2d;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(3, 47, 45, 0.18);
+  }
+
+  .app-nav__item--map.is-active svg,
+  .app-nav__item--concierge.is-active svg {
+    color: #73e3d9;
   }
 
   /* A sixth account control makes the dock too wide on iPhone. Account access
