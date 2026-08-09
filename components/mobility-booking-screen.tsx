@@ -326,7 +326,7 @@ export function MobilityBookingScreen() {
           secondaryLabel="Home"
         />
 
-        <section className="relative min-h-[500px] overflow-hidden rounded-[36px] text-white shadow-[0_28px_90px_rgba(4,51,49,.24)]">
+        <section className="relative min-h-[360px] overflow-hidden rounded-[36px] text-white shadow-[0_28px_90px_rgba(4,51,49,.24)]">
           <Image
             src={islandVisual.image}
             alt={islandVisual.alt}
@@ -338,7 +338,7 @@ export function MobilityBookingScreen() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,45,43,.96)_0%,rgba(3,45,43,.84)_50%,rgba(3,45,43,.28)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(180deg,transparent,rgba(2,29,28,.48))]" />
 
-          <div className="relative grid min-h-[500px] gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end lg:px-10 lg:py-10">
+          <div className="relative grid min-h-[360px] gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end lg:px-10 lg:py-8">
             <div>
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
@@ -348,11 +348,11 @@ export function MobilityBookingScreen() {
                   {islandVisual.label} context
                 </span>
               </div>
-              <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-[-.055em] sm:text-5xl lg:text-6xl">
-                Book the ride. Know the fare. Track every mile.
+              <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-[-.055em] sm:text-5xl">
+                Where are you going today?
               </h1>
               <p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-white/70 sm:text-base">
-                A premium island ride experience built around official USVI taxi pricing, licensed dispatch, secure payment, and live trip visibility.
+                Build your route, review the published fare, and request a verified island ride in four focused steps.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -360,7 +360,7 @@ export function MobilityBookingScreen() {
                   href="#book"
                   className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase tracking-[.16em] text-[#5f3d00] shadow-lg"
                 >
-                  Start your ride <ArrowRight className="h-4 w-4" />
+                  Build my ride <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href={`/map?island=${activeIsland}`}
