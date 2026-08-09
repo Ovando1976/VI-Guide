@@ -6,7 +6,10 @@ import type { LucideIcon } from "lucide-react";
 import {
   Activity,
   AlertCircle,
+  Anchor,
+  CalendarClock,
   Clock3,
+  CreditCard,
   DollarSign,
   Flame,
   History,
@@ -40,9 +43,28 @@ type DriverBooking = {
   passengers?: number;
   luggage?: number;
   notes?: string;
+  scheduledAt?: FirestoreDateLike;
+  connectionDeadline?: FirestoreDateLike;
+  connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
+  paymentMethod?: "online_card";
+  serviceExpectation?: "shared" | "direct_request";
   origin?: { estateName?: string };
   destination?: { estateName?: string };
-  quotedFare?: { total?: number };
+  quotedFare?: {
+    total?: number;
+    routeFare?: number;
+    passengerFare?: number;
+    luggageFare?: number;
+    tariffTitle?: string;
+    tariffVersion?: string;
+  };
+  estimatedSettlement?: {
+    grossFare: number;
+    commissionRate: number;
+    platformRevenue: number;
+    driverPayout: number;
+    feeAgreementId: string;
+  };
   finalFare?: number;
   payout?: {
     grossFare: number;
@@ -70,6 +92,7 @@ type DriverProfile = {
 type FirestoreDateLike =
   | { seconds?: number; nanoseconds?: number }
   | string
+  | null
   | undefined;
 
 type DriverAvailability = "available" | "busy" | "offline";
@@ -813,6 +836,12 @@ function DriverTripCard({
     booking.status === "completed"
       ? booking.payout?.driverPayout ?? booking.finalFare ?? 0
       : booking.quotedFare?.total ?? 0;
+  const scheduledTime = formatDateTime(booking.scheduledAt);
+  const connectionTime = formatDateTime(booking.connectionDeadline);
+  const sharedRide =
+    booking.serviceExpectation === "shared" ||
+    booking.mode === "shared" ||
+    booking.mode === "safari";
 
   return (
     <OpsCard>
@@ -841,7 +870,49 @@ function DriverTripCard({
             <OpsPill label={normalizeIslandLabel(booking.island || "unknown")} />
             <OpsPill label={`${booking.passengers ?? 0} pax`} />
             <OpsPill label={`${booking.luggage ?? 0} bags`} />
+            <OpsPill label={sharedRide ? "Shared · stops possible" : "Direct requested"} />
           </div>
+
+          {!compact ? (
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <TripFact
+                icon={CalendarClock}
+                label="Pickup"
+                value={scheduledTime || "As soon as matched"}
+              />
+              <TripFact
+                icon={booking.connectionKind === "ferry" ? Anchor : Clock3}
+                label={
+                  booking.connectionKind
+                    ? `${capitalize(booking.connectionKind)} connection`
+                    : "Connection"
+                }
+                value={connectionTime || "None recorded"}
+              />
+              <TripFact
+                icon={CreditCard}
+                label="Payment"
+                value={
+                  booking.paymentStatus === "paid"
+                    ? "Paid online · dispatch cleared"
+                    : "Payment not cleared"
+                }
+              />
+              <TripFact
+                icon={DollarSign}
+                label="Expected driver settlement"
+                value={
+                  booking.estimatedSettlement
+                    ? `$${booking.estimatedSettlement.driverPayout.toFixed(2)} after $${booking.estimatedSettlement.platformRevenue.toFixed(2)} service fee`
+                    : "Calculated at completion"
+                }
+              />
+            </div>
+          ) : null}
+
+          {hero && booking.connectionDeadline ? (
+            <ConnectionCountdown deadline={booking.connectionDeadline} />
+          ) : null}
 
           {!compact && booking.notes ? (
             <div className="mt-3 text-sm font-semibold text-slate-500">
@@ -862,6 +933,67 @@ function DriverTripCard({
 
       {footer ? <div className="mt-4">{footer}</div> : null}
     </OpsCard>
+  );
+}
+
+function TripFact({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-[18px] border border-slate-100 bg-slate-50 p-3">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-teal-700 shadow-sm">
+        <Icon size={16} />
+      </span>
+      <span className="min-w-0">
+        <span className="block text-[8px] font-black uppercase tracking-[.16em] text-slate-400">
+          {label}
+        </span>
+        <span className="mt-1 block text-xs font-black leading-5 text-[#043331]">
+          {value}
+        </span>
+      </span>
+    </div>
+  );
+}
+
+function ConnectionCountdown({ deadline }: { deadline: FirestoreDateLike }) {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    setNow(Date.now());
+    const timer = window.setInterval(() => setNow(Date.now()), 30_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const deadlineMs = getTimeValue(deadline);
+  if (!deadlineMs || now === null) return null;
+  const minutes = Math.ceil((deadlineMs - now) / 60_000);
+  const missed = minutes < 0;
+
+  return (
+    <div
+      className={`mt-4 flex items-center justify-between gap-3 rounded-[18px] border p-4 ${
+        missed || minutes <= 30
+          ? "border-rose-200 bg-rose-50 text-rose-900"
+          : minutes <= 60
+            ? "border-amber-200 bg-amber-50 text-amber-950"
+            : "border-teal-200 bg-teal-50 text-teal-950"
+      }`}
+      aria-live="polite"
+    >
+      <span className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em]">
+        <Clock3 size={16} /> Protected connection
+      </span>
+      <span className="text-sm font-black">
+        {missed ? `${Math.abs(minutes)} min past deadline` : `${minutes} min remaining`}
+      </span>
+    </div>
   );
 }
 
@@ -1238,4 +1370,19 @@ function getTimeValue(value: FirestoreDateLike): number {
   }
 
   return 0;
+}
+
+function formatDateTime(value: FirestoreDateLike) {
+  const timestamp = getTimeValue(value);
+  if (!timestamp) return null;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(timestamp));
+}
+
+function capitalize(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
