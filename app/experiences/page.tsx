@@ -429,7 +429,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
             href={`/concierge?island=${item.island}&context=${item.kind}&prompt=${encodeURIComponent(conciergePrompt)}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#b8e2dc] bg-[#eaf8f5] px-3 text-[8px] font-black uppercase tracking-[.1em] text-[#0f766e] transition hover:bg-[#ddf3ee]"
           >
-            <Sparkles className="h-4 w-4" /> Plan trip
+            <Sparkles className="h-4 w-4" /> Plan around this
           </Link>
         </div>
 
@@ -446,7 +446,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
             href={`/book?${params.toString()}`}
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#032f2d] px-4 text-center text-[8px] font-black uppercase tracking-[.12em] text-white transition hover:bg-[#075e58]"
           >
-            Request with VI Guide <ArrowRight className="h-4 w-4 text-[#f5c451]" />
+            Request booking with VI Guide <ArrowRight className="h-4 w-4 text-[#f5c451]" />
           </Link>
         </div>
       </div>
