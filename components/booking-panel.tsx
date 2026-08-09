@@ -315,13 +315,14 @@ export function BookingPanel({
                   key={step}
                   type="button"
                   onClick={() => setActiveStep(stepNumber)}
+                  disabled={stepNumber > activeStep}
                   aria-current={isActive ? "step" : undefined}
                   className={`rounded-2xl border px-3 py-3 text-center transition ${
                     isActive
                       ? "border-[#f5c451] bg-[#f5c451] text-[#043331]"
                       : isComplete
                         ? "border-emerald-300/40 bg-emerald-300/15 text-white"
-                        : "border-white/10 bg-white/[.07] text-white/65"
+                        : "border-white/10 bg-white/[.07] text-white/65 disabled:cursor-not-allowed disabled:opacity-60"
                   }`}
                 >
                   <div className="text-[8px] font-black uppercase tracking-[.16em]">
@@ -343,9 +344,9 @@ export function BookingPanel({
             {fromEstate?.baseName || "Pickup"} <span className="mx-2 text-slate-300">→</span> {toEstate?.baseName || "Destination"}
           </div>
           <div className="flex flex-wrap gap-2">
-            <ReviewChip label={selectedMode.label} />
-            <ReviewChip label={`${passengers} passenger${passengers === 1 ? "" : "s"}`} />
-            <ReviewChip label={`${luggage} bag${luggage === 1 ? "" : "s"}`} />
+            <SummaryChip label={selectedMode.label} />
+            <SummaryChip label={`${passengers} passenger${passengers === 1 ? "" : "s"}`} />
+            <SummaryChip label={`${luggage} bag${luggage === 1 ? "" : "s"}`} />
           </div>
         </div>
 
@@ -942,6 +943,14 @@ function ConsentCheckbox({
       />
       <span>{children}</span>
     </label>
+  );
+}
+
+function SummaryChip({ label }: { label: string }) {
+  return (
+    <span className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[8px] font-black uppercase tracking-[.13em] text-teal-800">
+      {label}
+    </span>
   );
 }
 
