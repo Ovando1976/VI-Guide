@@ -8,6 +8,7 @@ import "./map-premium.css";
 import "./mobile-navigation-fix.css";
 import "./operations-navigation.css";
 import "./taxi-image-framing.css";
+import "./home-mobile-polish.css";
 import { AcquisitionTracker } from "@/components/acquisition-tracker";
 import { ActiveIslandRouteSync } from "@/components/active-island-route-sync";
 import { AuthProvider } from "@/components/auth-provider";
