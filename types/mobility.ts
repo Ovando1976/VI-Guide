@@ -87,6 +87,8 @@ export type RideBookingDraft = {
   connectionDeadline?: string | null;
   connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
   paymentMethod?: "online_card";
+  pickupInstructions?: string;
+  destinationInstructions?: string;
   notes?: string;
 };
 
