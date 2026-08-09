@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next-dev && NEXT_DIST_DIR=.next-dev next dev",
-    "prebuild": "npm run test:api-contracts && npm run test:ui-consistency",
+    "prebuild": "tsx scripts/test-taxi-confidence.ts && npm run test:api-contracts && npm run test:ui-consistency",
     "build": "next build",
     "start": "next start",
     "release:check": "npm run typecheck && npm run build",
