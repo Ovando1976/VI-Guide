@@ -420,9 +420,9 @@ export function BookingPanel({
                   <div className="mt-1 text-sm font-black text-emerald-950">{selectedMode.label} · {selectedMode.blurb}</div>
                 </div>
               </div>
-              <a href="#passenger-details" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white">
-                Continue to passengers <ArrowRight className="h-4 w-4" />
-              </a>
+              <span className="rounded-full border border-emerald-300 bg-white/70 px-4 py-2 text-[8px] font-black uppercase tracking-[.13em] text-emerald-800">
+                Next: adjust passengers below
+              </span>
             </div>
           </Panel>
 
@@ -453,11 +453,22 @@ export function BookingPanel({
                 onChange={onChangeLuggage}
               />
             </div>
+            <div className="mt-5 flex flex-col gap-3 rounded-[22px] border border-teal-200 bg-teal-50 p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Passenger details ready</div>
+                <div className="mt-1 text-sm font-black text-teal-950">
+                  {passengers} passenger{passengers === 1 ? "" : "s"} · {luggage} bag{luggage === 1 ? "" : "s"}
+                </div>
+              </div>
+              <a href="#trip-review" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white shadow-sm">
+                Continue to trip review <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
           </Panel>
           </div>
         </div>
 
-        <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
+        <aside id="trip-review" className="scroll-mt-24 space-y-5 lg:sticky lg:top-6 lg:self-start">
           <section className="overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm">
             <div className="bg-[#043331] p-5 text-white">
               <div className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
