@@ -12,6 +12,7 @@ import {
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { DirectoryCard } from "@/components/directory/directory-card";
+import { SearchInsightCapture } from "@/components/insights/search-insight-capture";
 import { TERRITORY_TIMELINE_EVENTS } from "@/data/heritage/territory-timeline";
 import { USVI_GOVERNORS } from "@/data/heritage/usvi-governors";
 import {
@@ -124,6 +125,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
 
   return (
     <main className="min-h-screen bg-[#f8f4ea] pb-32 text-[#043331]">
+      <SearchInsightCapture query={query} count={results.length} kind={selectedKind} island={island} />
       <div className="px-4 pt-5 sm:px-6 lg:pt-8">
         <ViPublicHeader
           actionHref={`/concierge?prompt=${encodeURIComponent(

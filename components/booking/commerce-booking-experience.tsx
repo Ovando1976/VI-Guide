@@ -33,6 +33,7 @@ import {
 import { normalizeProposalShareId } from "@/lib/travel-advisor-booking-handoff";
 import type { CommerceBookingKind } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
+import { recordCustomerInsight } from "@/lib/customer-insights-client";
 
 const ISLAND_NAMES: Record<IntelligenceIsland, string> = {
   stt: "St. Thomas",
@@ -107,6 +108,12 @@ export function CommerceBookingExperience() {
 
     setLoading(true);
     setError(null);
+    void recordCustomerInsight("booking_started", {
+      listing_id: listingId,
+      kind,
+      adults,
+      children,
+    }, { island });
 
     try {
       const response = await fetch("/api/commerce-bookings", {
@@ -158,6 +165,11 @@ export function CommerceBookingExperience() {
         bookingId: payload.bookingId,
         reference: payload.reference,
       });
+      void recordCustomerInsight("booking_completed", {
+        listing_id: listingId,
+        kind,
+        stage: "request_submitted",
+      }, { island });
     } catch (submissionError) {
       setError(
         submissionError instanceof Error
