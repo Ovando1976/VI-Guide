@@ -30,7 +30,7 @@ export const metadata = {
     "Browse and request tours and experiences across St. Thomas, St. John, and St. Croix.",
 };
 
-const ISLAND_ACTIVITY_IMAGES: Record<
+const EXPERIENCE_IMAGES: Record<
   BookableExperience["island"],
   { image: string; alt: string }
 > = {
@@ -330,7 +330,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
     adults: "2",
   });
   const conciergePrompt = `Help me plan ${item.name} on ${ISLAND_NAMES[item.island]}. Include transportation, realistic timing, nearby places, and a backup option.`;
-  const visual = ISLAND_ACTIVITY_IMAGES[item.island];
+  const visual = EXPERIENCE_IMAGES[item.island];
   const officialAction =
     item.availabilityStatus === "request-only"
       ? "Contact operator"
