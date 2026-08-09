@@ -111,5 +111,37 @@ expectSource(
   "`/api/bookings/${bookingId}/verify-rider`",
   "rider verification uses the protected booking API",
 );
+expectSource(
+  "coordinateHref(booking.origin)",
+  "drivers can navigate to exact pickup coordinates",
+);
+expectSource(
+  "No additional location instructions.",
+  "pickup and drop-off instructions have an explicit empty state",
+);
+expectSource(
+  "Official fare record",
+  "trip cards preserve the official tariff breakdown",
+);
+expectSource(
+  "Current stage since",
+  "drivers can see when the current lifecycle stage began",
+);
+expectSource(
+  "View tariff",
+  "drivers can inspect the source tariff",
+);
+expectSource(
+  'doc(db, "vehicles", driver.vehicleId)',
+  "console loads the assigned fleet vehicle",
+);
+expectSource(
+  'doc(db, "taxiAssociations", driver.associationId)',
+  "console loads the driver's dispatch association",
+);
+expectSource(
+  "Association dispatch",
+  "association name and dispatch phone remain visible",
+);
 
 console.log("VI Guide Driver console visual and tariff contracts passed.");
