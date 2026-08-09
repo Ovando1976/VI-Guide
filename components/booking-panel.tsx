@@ -217,6 +217,9 @@ export function BookingPanel({
       acceptedLegal &&
       !submitting,
   );
+  const selectedMode =
+    [...PRIMARY_MODES, ...MORE_MODES].find((item) => item.value === mode) ??
+    PRIMARY_MODES[0];
   const recommendedMode = useMemo<RideMode>(() => {
     const routeText = `${fromEstate?.baseName ?? ""} ${toEstate?.baseName ?? ""}`.toLowerCase();
     if (routeText.includes("airport")) return "airport";
@@ -406,8 +409,23 @@ export function BookingPanel({
                 ))}
               </div>
             ) : null}
+            <div className="mt-5 flex flex-col gap-3 rounded-[22px] border border-emerald-200 bg-emerald-50 p-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-700 text-white">
+                  <Check className="h-5 w-5" />
+                </span>
+                <div>
+                  <div className="text-[9px] font-black uppercase tracking-[.16em] text-emerald-700">Ride selected</div>
+                  <div className="mt-1 text-sm font-black text-emerald-950">{selectedMode.label} · {selectedMode.blurb}</div>
+                </div>
+              </div>
+              <a href="#passenger-details" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white">
+                Continue to passengers <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
           </Panel>
 
+          <div id="passenger-details" className="scroll-mt-24">
           <Panel>
             <SectionTitle
               step="03"
@@ -435,6 +453,7 @@ export function BookingPanel({
               />
             </div>
           </Panel>
+          </div>
         </div>
 
         <aside className="space-y-5 lg:sticky lg:top-6 lg:self-start">
@@ -618,13 +637,19 @@ function ModeCard({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
+      aria-label={`${item.label}${active ? ", selected" : ""}`}
       className={`relative rounded-[24px] border p-4 text-left transition ${
         active
           ? "border-[#f5b942] bg-[#fff4d6] shadow-sm"
           : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-teal-300"
       }`}
     >
-      {recommended ? (
+      {active ? (
+        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-emerald-700 px-2 py-1 text-[7px] font-black uppercase tracking-[.12em] text-white">
+          <Check className="h-3 w-3" /> Selected
+        </span>
+      ) : recommended ? (
         <span className="absolute right-3 top-3 rounded-full bg-[#043331] px-2 py-1 text-[7px] font-black uppercase tracking-[.12em] text-white">
           Recommended
         </span>

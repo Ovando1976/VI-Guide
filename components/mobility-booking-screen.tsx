@@ -316,7 +316,7 @@ export function MobilityBookingScreen() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 py-5 text-[#043331] md:px-6 lg:py-8">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 pb-36 pt-5 text-[#043331] md:px-6 lg:pb-40 lg:pt-8">
       <div className="mx-auto max-w-7xl space-y-6">
         <ViPublicHeader
           actionHref="/concierge?prompt=Help%20me%20plan%20transportation%20for%20my%20Virgin%20Islands%20trip"
