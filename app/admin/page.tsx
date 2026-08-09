@@ -9,6 +9,7 @@ import {
   Store,
   UsersRound,
   WalletCards,
+  BarChart3,
 } from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
@@ -66,6 +67,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
 ];
 
 const ADMIN_ONLY_ACTIONS: AdminActionDefinition[] = [
+  {
+    href: "/admin/customer-insights",
+    icon: BarChart3,
+    eyebrow: "Traveler intelligence",
+    detail:
+      "See unmet searches, real-world trip outcomes, support friction, and consent-aware product signals.",
+    action: "Open insights",
+  },
   {
     href: "/admin/merchants",
     icon: Store,

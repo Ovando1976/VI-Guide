@@ -13,6 +13,7 @@ import { TripAwareConciergeLink } from "@/components/trips/trip-aware-concierge-
 import { TripAwareLivingMapLink } from "@/components/trips/trip-aware-living-map-link";
 import { TravelerTripCommandCenter } from "@/components/trips/traveler-trip-command-center";
 import { TravelerTripReadinessPanel } from "@/components/trips/traveler-trip-readiness-panel";
+import { TravelerPreferencesCard } from "@/components/insights/traveler-preferences-card";
 import { getSession } from "@/lib/auth-server";
 import {
   getAdminDb,
@@ -104,6 +105,7 @@ export default async function TripsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
         <TripReturnNotice />
+        <TravelerPreferencesCard />
         <TravelerTripCommandCenter
           travelerName={session?.name}
           bookings={bookings}

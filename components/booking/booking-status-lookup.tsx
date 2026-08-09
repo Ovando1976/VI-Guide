@@ -27,6 +27,7 @@ import {
 } from "react";
 
 import { BookingActivityFeed } from "@/components/booking/booking-activity-feed";
+import { BookingOutcomeFeedback } from "@/components/insights/booking-outcome-feedback";
 import {
   bookingStatusToTrackedBooking,
   findTrackedBooking,
@@ -398,6 +399,13 @@ export function BookingStatusLookup() {
                   ) : null}
 
                   <RefundProgress booking={booking} />
+
+                  <BookingOutcomeFeedback
+                    reference={booking.reference}
+                    listingId={booking.listingId}
+                    status={booking.status}
+                    island={booking.island}
+                  />
 
                   <div className="mt-6 flex flex-col gap-2 sm:flex-row">
                     <Link
