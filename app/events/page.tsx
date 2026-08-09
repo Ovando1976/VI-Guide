@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { BUSINESS_COVERAGE_SUBMISSION_HREF } from "@/lib/market-coverage";
 import {
   EVENT_CATEGORY_LABELS,
   EVENT_ISLAND_LABELS,
@@ -141,6 +142,8 @@ export default function EventsPage({
               {events.length} source-backed {events.length === 1 ? "event" : "events"}
             </h2>
           </div>
+          <div className="flex flex-wrap gap-2">
+          <Link href={BUSINESS_COVERAGE_SUBMISSION_HREF} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-5 text-[9px] font-black uppercase tracking-[.14em] text-teal-800">Submit a missing event</Link>
           <a
             href="https://www.visitusvi.com/carnivals-festivals/"
             target="_blank"
@@ -149,6 +152,7 @@ export default function EventsPage({
           >
             Official Visit USVI calendar <ArrowRight className="h-4 w-4" />
           </a>
+          </div>
         </div>
 
         {events.length ? (
