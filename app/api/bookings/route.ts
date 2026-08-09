@@ -17,6 +17,7 @@ import {
 } from "@/lib/firebase-admin";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
+import { randomInt } from "node:crypto";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
 const MAX_SCHEDULE_WINDOW_MS = 366 * 24 * 60 * 60 * 1000;
@@ -177,6 +178,7 @@ export async function POST(request: NextRequest) {
       luggage,
     });
     const estimatedSettlement = calculateTaxiSettlement(fare.total);
+    const riderVerificationCode = String(randomInt(0, 10_000)).padStart(4, "0");
 
     const bookingId = await createServerBooking({
       riderId: session.uid,
@@ -215,12 +217,18 @@ export async function POST(request: NextRequest) {
           ? "shared"
           : "direct_request",
       estimatedSettlement,
+      riderVerification: { status: "required" },
       notes: body.notes ?? "",
       createdAt: new Date().toISOString(),
     });
 
     const bookingRef = getAdminDb().collection("bookings").doc(bookingId);
     try {
+      await getAdminDb().collection("bookingRiderSecrets").doc(bookingId).set({
+        riderId: session.uid,
+        code: riderVerificationCode,
+        createdAt: new Date().toISOString(),
+      });
       await bookingRef.update({
         passengerConsent: {
           version: PASSENGER_CONSENT_VERSION,
@@ -232,6 +240,11 @@ export async function POST(request: NextRequest) {
         },
       });
     } catch (consentError) {
+      await getAdminDb()
+        .collection("bookingRiderSecrets")
+        .doc(bookingId)
+        .delete()
+        .catch(() => undefined);
       await bookingRef.delete().catch((cleanupError) => {
         console.error("booking consent cleanup error", cleanupError);
       });
@@ -245,6 +258,7 @@ export async function POST(request: NextRequest) {
       island: origin.island,
       paymentStatus: "unpaid",
       consentVersion: PASSENGER_CONSENT_VERSION,
+      riderVerificationCode,
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
