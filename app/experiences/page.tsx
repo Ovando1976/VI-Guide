@@ -164,7 +164,7 @@ export default function ExperiencesPage() {
           id="activities"
           eyebrow="More ways to explore"
           title="All other activities"
-          description="Snorkeling, kayaking, hiking, wildlife encounters, ziplining, parasailing, and other source-backed island experiences."
+          description="Sportfishing, jet skiing, paddleboarding, horseback riding, food tours, snorkeling, kayaking, hiking, wildlife encounters, and more."
           items={otherActivities}
         />
 
