@@ -185,7 +185,7 @@ export function OrchestratedConciergeScreen() {
       router.push(`/mobility?${params.toString()}`);
       return;
     }
-    router.push("/planner");
+    router.push("/trips");
   }
 
   return (
@@ -204,7 +204,7 @@ export function OrchestratedConciergeScreen() {
                 The Concierge now exposes its workflow state, pauses for missing information, and requires confirmation before booking actions.
               </p>
             </div>
-            <Link href="/planner" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[.06] px-4 py-3 text-sm font-black text-white/80 hover:bg-white/10">
+            <Link href="/trips" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[.06] px-4 py-3 text-sm font-black text-white/80 hover:bg-white/10">
               Open My Trip <ArrowRight size={16} />
             </Link>
           </div>
