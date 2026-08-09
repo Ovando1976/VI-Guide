@@ -7,10 +7,12 @@ import {
   ArrowLeft,
   BadgeCheck,
   CalendarDays,
+  CalendarX2,
   CheckCircle2,
   Clock3,
   CreditCard,
   Loader2,
+  LifeBuoy,
   Mail,
   RotateCcw,
   Search,
@@ -400,6 +402,12 @@ export function BookingStatusLookup() {
 
                   <RefundProgress booking={booking} />
 
+                  <CancellationAssurance
+                    booking={booking}
+                    email={email}
+                    onSubmitted={() => performLookup(reference, email, true)}
+                  />
+
                   <BookingOutcomeFeedback
                     reference={booking.reference}
                     listingId={booking.listingId}
@@ -449,6 +457,170 @@ export function BookingStatusLookup() {
         ) : null}
       </div>
     </main>
+  );
+}
+
+function CancellationAssurance({
+  booking,
+  email,
+  onSubmitted,
+}: {
+  booking: BookingStatusSnapshot;
+  email: string;
+  onSubmitted: () => Promise<void>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [reasonCode, setReasonCode] = useState("plans_changed");
+  const [reason, setReason] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [requestError, setRequestError] = useState<string | null>(null);
+  const policy = booking.cancellationPolicy;
+  const requestStatus = booking.cancellationRequestStatus ?? "not_requested";
+  const canRequest = [
+    "requested",
+    "reviewing",
+    "payment_required",
+    "paid",
+    "confirmed",
+  ].includes(booking.status) && requestStatus === "not_requested";
+
+  async function submitCancellation() {
+    if (saving) return;
+    setSaving(true);
+    setRequestError(null);
+    setMessage(null);
+    try {
+      const response = await fetch("/api/commerce-bookings/cancellation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reference: booking.reference,
+          email,
+          reasonCode,
+          reason,
+        }),
+      });
+      const payload = (await response.json().catch(() => null)) as
+        | { cancellation?: { message?: string }; error?: string }
+        | null;
+      if (!response.ok || !payload?.cancellation) {
+        throw new Error(payload?.error || "Unable to submit the cancellation request.");
+      }
+      setMessage(payload.cancellation.message ?? "Cancellation request received.");
+      setOpen(false);
+      await onSubmitted();
+    } catch (error) {
+      setRequestError(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit the cancellation request.",
+      );
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="mt-6 rounded-[24px] border border-indigo-200 bg-indigo-50/70 p-5 text-indigo-950">
+      <div className="flex items-start gap-3">
+        <CalendarX2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-700" />
+        <div className="min-w-0 flex-1">
+          <p className="text-[9px] font-black uppercase tracking-[.15em] text-indigo-700">
+            Booking assurance
+          </p>
+          <h3 className="mt-1 text-lg font-black">
+            {policy?.title ?? "Cancellation terms pending verification"}
+          </h3>
+          {policy ? (
+            <div className="mt-3 space-y-2 text-sm font-semibold leading-6 text-indigo-950/70">
+              <p>{policy.travelerTerms}</p>
+              <p><strong>Provider cancellation:</strong> {policy.providerTerms}</p>
+              <p><strong>Changes:</strong> {policy.changeTerms}</p>
+            </div>
+          ) : (
+            <p className="mt-2 text-sm font-semibold leading-6 text-indigo-950/70">
+              Do not assume a refund amount for this legacy request. VI Guide will review the provider terms and payment evidence before confirming any refund.
+            </p>
+          )}
+
+          {requestStatus === "review_required" ? (
+            <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm font-bold text-amber-950">
+              Cancellation and refund review requested. Operations must verify the payment and disclosed policy before issuing funds.
+              {Number(booking.cancellationRefundEstimateCents ?? 0) > 0 ? (
+                <span className="mt-1 block">Policy estimate: {formatMoney(Number(booking.cancellationRefundEstimateCents ?? 0))}. This is not a completed refund.</span>
+              ) : null}
+            </div>
+          ) : null}
+          {requestStatus === "completed" || booking.status === "cancelled" ? (
+            <div className="mt-4 rounded-2xl border border-emerald-200 bg-white p-4 text-sm font-bold text-emerald-950">
+              This booking is cancelled. {booking.paidAmountCents > 0 ? "Track any verified refund above." : "No captured payment requires a refund."}
+            </div>
+          ) : null}
+          {message ? <p className="mt-3 text-sm font-bold text-emerald-800">{message}</p> : null}
+          {requestError ? <p className="mt-3 text-sm font-bold text-rose-700">{requestError}</p> : null}
+
+          {canRequest && !open ? (
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-indigo-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.14em]"
+            >
+              Change or cancel booking
+            </button>
+          ) : null}
+          {canRequest && open ? (
+            <div className="mt-4 space-y-3 rounded-2xl border border-indigo-200 bg-white p-4">
+              <label className="block text-[9px] font-black uppercase tracking-[.14em] text-indigo-700">
+                Reason
+                <select
+                  value={reasonCode}
+                  onChange={(event) => setReasonCode(event.target.value)}
+                  className="mt-2 w-full rounded-xl border border-indigo-200 px-3 py-3 text-sm font-bold normal-case tracking-normal"
+                >
+                  <option value="plans_changed">My plans changed</option>
+                  <option value="weather_concern">Weather concern</option>
+                  <option value="transportation_issue">Transportation issue</option>
+                  <option value="provider_issue">Provider issue</option>
+                  <option value="duplicate_booking">Duplicate booking</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label className="block text-[9px] font-black uppercase tracking-[.14em] text-indigo-700">
+                Additional details {reasonCode === "other" ? "(required)" : "(optional)"}
+                <textarea
+                  value={reason}
+                  onChange={(event) => setReason(event.target.value.slice(0, 400))}
+                  className="mt-2 min-h-24 w-full rounded-xl border border-indigo-200 px-3 py-3 text-sm font-semibold normal-case tracking-normal"
+                />
+              </label>
+              <p className="text-xs font-semibold leading-5 text-slate-500">
+                Submitting a paid-booking request does not automatically issue or promise a refund. Operations verifies the policy and Stripe record first.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={saving || (reasonCode === "other" && reason.trim().length < 4)}
+                  onClick={() => void submitCancellation()}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white disabled:opacity-50"
+                >
+                  {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <CalendarX2 className="h-4 w-4" />}
+                  Submit request
+                </button>
+                <button type="button" onClick={() => setOpen(false)} className="min-h-11 rounded-full border border-slate-200 px-5 text-[9px] font-black uppercase tracking-[.14em]">Keep booking</button>
+              </div>
+            </div>
+          ) : null}
+
+          {(booking.status === "cancelled" || booking.status === "declined") ? (
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+              <Link href={`/search?island=${booking.island}`} className="inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-indigo-700 px-5 text-[9px] font-black uppercase tracking-[.14em] text-white">Find an alternative</Link>
+              <Link href={`/concierge?prompt=${encodeURIComponent(`Replace cancelled booking ${booking.reference} for ${booking.listingName} on ${booking.island}.`)}`} className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full border border-indigo-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.14em]"><LifeBuoy className="h-4 w-4" /> Recovery help</Link>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
   );
 }
 

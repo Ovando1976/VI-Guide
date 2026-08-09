@@ -28,6 +28,7 @@ type LifecycleBooking = {
     otherMandatoryFeesCents: number;
     totalCents: number;
   } | null;
+  cancellationPolicy?: { code: "flexible" | "standard" | "strict" } | null;
   paymentStatus?: string | null;
   paymentHref?: string | null;
   checkoutSessionId?: string | null;
@@ -82,6 +83,7 @@ export function BookingLifecycleBoard() {
     status: MerchantTransition,
     depositAmountCents?: number,
     priceBreakdown?: Record<string, number>,
+    cancellationPolicyCode?: "flexible" | "standard" | "strict",
   ) {
     setSavingId(booking.id);
     setError(null);
@@ -89,7 +91,7 @@ export function BookingLifecycleBoard() {
       const response = await fetch(`/api/merchant-bookings/${booking.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status, depositAmountCents, priceBreakdown }),
+        body: JSON.stringify({ status, depositAmountCents, priceBreakdown, cancellationPolicyCode }),
       });
       const payload = (await response.json().catch(() => null)) as
         | { booking?: Partial<LifecycleBooking>; error?: string }
@@ -184,6 +186,7 @@ function LifecycleCard({
     status: MerchantTransition,
     depositAmountCents?: number,
     priceBreakdown?: Record<string, number>,
+    cancellationPolicyCode?: "flexible" | "standard" | "strict",
   ) => Promise<void>;
 }) {
   const [deposit, setDeposit] = useState(
@@ -207,6 +210,9 @@ function LifecycleCard({
     otherMandatoryFeesCents: dollarsToCents(price.otherMandatoryFees),
   };
   const totalCents = Object.values(priceBreakdown).reduce((sum, value) => sum + value, 0);
+  const [cancellationPolicyCode, setCancellationPolicyCode] = useState<
+    "flexible" | "standard" | "strict"
+  >(booking.cancellationPolicy?.code ?? "flexible");
   const canRequestPayment = ["requested", "reviewing"].includes(booking.status);
   const awaitingPayment = booking.status === "payment_required";
   const canConfirm = booking.status === "paid" && booking.paymentStatus === "paid";
@@ -272,6 +278,21 @@ function LifecycleCard({
               The deposit is part of the total—not an added fee. The traveler sees this full breakdown before secure Stripe Checkout.
             </div>
           </div>
+          <label className="block rounded-[24px] border border-indigo-200 bg-indigo-50/60 p-4 text-[9px] font-black uppercase tracking-[.13em] text-indigo-700">
+            Cancellation policy shown before payment
+            <select
+              value={cancellationPolicyCode}
+              onChange={(event) => setCancellationPolicyCode(event.target.value as typeof cancellationPolicyCode)}
+              className="mt-2 w-full rounded-2xl border border-indigo-200 bg-white px-4 py-3 text-sm font-bold normal-case tracking-normal text-[#043331] outline-none"
+            >
+              <option value="flexible">Flexible — full refund 24+ hours before start</option>
+              <option value="standard">Standard — full 48+ hours; 50% at 24–48 hours</option>
+              <option value="strict">Strict — full 7+ days; 50% at 48 hours–7 days</option>
+            </select>
+            <span className="mt-2 block text-xs font-semibold normal-case tracking-normal text-indigo-950/65">
+              Provider cancellations remain eligible for a full refund of amounts paid.
+            </span>
+          </label>
         </div>
       ) : null}
 
@@ -292,7 +313,7 @@ function LifecycleCard({
           <button
             type="button"
             disabled={saving || depositCents <= 0 || totalCents <= 0 || depositCents > totalCents}
-            onClick={() => void onTransition(booking, "payment_required", depositCents, priceBreakdown)}
+            onClick={() => void onTransition(booking, "payment_required", depositCents, priceBreakdown, cancellationPolicyCode)}
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-amber-400 px-4 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] disabled:opacity-50"
           >
             <CircleDollarSign className="h-4 w-4" /> Request deposit

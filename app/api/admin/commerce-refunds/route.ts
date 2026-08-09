@@ -61,6 +61,21 @@ export async function GET() {
           refundUpdatedAt: data.refundUpdatedAt
             ? normalizeTimestampOrEpoch(data.refundUpdatedAt)
             : null,
+          cancellationRequestStatus: data.cancellationRequestStatus
+            ? String(data.cancellationRequestStatus)
+            : "not_requested",
+          cancellationReasonCode: data.cancellationReasonCode
+            ? String(data.cancellationReasonCode)
+            : null,
+          cancellationReason: data.cancellationReason
+            ? String(data.cancellationReason)
+            : null,
+          cancellationRefundEstimateCents: Number(
+            data.cancellationRefundEstimateCents ?? 0,
+          ),
+          cancellationRequestedAt: data.cancellationRequestedAt
+            ? normalizeTimestampOrEpoch(data.cancellationRequestedAt)
+            : null,
           updatedAt: normalizeTimestampOrEpoch(
             data.refundUpdatedAt ?? data.updatedAt ?? data.createdAt,
           ),
@@ -84,6 +99,9 @@ export async function GET() {
           .length,
         refunded: bookings.filter(
           (booking) => booking.refundStatus === "succeeded",
+        ).length,
+        cancellationRequested: bookings.filter(
+          (booking) => booking.cancellationRequestStatus === "review_required",
         ).length,
       },
     });
