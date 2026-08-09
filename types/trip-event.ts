@@ -3,6 +3,7 @@ export type TripEventType =
   | "driver_matched"
   | "driver_en_route"
   | "driver_arrived"
+  | "rider_verified"
   | "trip_started"
   | "trip_completed"
   | "trip_cancelled";
