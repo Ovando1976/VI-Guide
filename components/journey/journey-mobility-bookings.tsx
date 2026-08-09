@@ -16,15 +16,6 @@ type RideStatusView = {
   tone: "amber" | "teal" | "emerald" | "slate" | "rose";
 };
 
-const ACTIVE_RIDE_STATUSES = new Set<BookingStatus>([
-  "draft",
-  "requested",
-  "matched",
-  "driver_en_route",
-  "arrived",
-  "in_progress",
-]);
-
 export function JourneyMobilityBookings() {
   const [plans, setPlans] = useState<JourneyPlan[]>([]);
   const [liveRides, setLiveRides] = useState<Record<string, LiveRideState>>({});
@@ -56,13 +47,13 @@ export function JourneyMobilityBookings() {
     [plans],
   );
 
-  const bookingIds = useMemo(
-    () => [...new Set(rides.map((ride) => ride.bookingId))],
+  const bookingKey = useMemo(
+    () => [...new Set(rides.map((ride) => ride.bookingId))].join("|"),
     [rides],
   );
-  const bookingKey = bookingIds.join("|");
 
   useEffect(() => {
+    const bookingIds = bookingKey.split("|").filter(Boolean);
     if (!bookingIds.length) return;
     let cancelled = false;
 
@@ -103,19 +94,13 @@ export function JourneyMobilityBookings() {
     }
 
     void refreshLiveRides();
-    const interval = window.setInterval(() => {
-      const hasActiveRide = bookingIds.some((bookingId) => {
-        const ride = liveRides[bookingId];
-        return !ride || ACTIVE_RIDE_STATUSES.has(ride.status);
-      });
-      if (hasActiveRide) void refreshLiveRides();
-    }, 15000);
+    const interval = window.setInterval(() => void refreshLiveRides(), 15000);
 
     return () => {
       cancelled = true;
       window.clearInterval(interval);
     };
-  }, [bookingKey, bookingIds, liveRides]);
+  }, [bookingKey]);
 
   if (!rides.length) return null;
 
