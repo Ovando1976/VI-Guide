@@ -180,7 +180,7 @@ export default function ExperiencesPage({
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="vi-eyebrow text-[#0f766e]">Find your activity</p>
-              <h2 id="activity-search-title" className="vi-display mt-2 text-3xl font-bold sm:text-4xl">Search all 42 verified experiences</h2>
+              <h2 id="activity-search-title" className="vi-display mt-2 text-3xl font-bold sm:text-4xl">Search all {BOOKABLE_EXPERIENCES.length} verified experiences</h2>
             </div>
             <p aria-live="polite" className="rounded-full bg-[#eaf8f5] px-4 py-2 text-xs font-black text-[#0f766e]">
               {filteredActivities.length} {filteredActivities.length === 1 ? "result" : "results"}
@@ -301,6 +301,8 @@ function CatalogSection({
   description: string;
   items: BookableExperience[];
 }) {
+  if (!items.length) return null;
+
   return (
     <section id={id} className="scroll-mt-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
