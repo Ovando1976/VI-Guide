@@ -30,7 +30,7 @@ export const metadata = {
     "Browse and request tours and experiences across St. Thomas, St. John, and St. Croix.",
 };
 
-const EXPERIENCE_IMAGES: Record<
+const ISLAND_ACTIVITY_IMAGES: Record<
   BookableExperience["island"],
   { image: string; alt: string }
 > = {
@@ -45,6 +45,33 @@ const EXPERIENCE_IMAGES: Record<
   stx: {
     image: "/images/places/st-croix/cane-bay-beach-1.jpg",
     alt: "Cane Bay coastline on St. Croix",
+  },
+};
+
+const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
+  "stt-island-highlights": {
+    image: "/images/usvi-harbor-hero.jpg",
+    alt: "Charlotte Amalie harbor and the hills of St. Thomas",
+  },
+  "stt-harbor-sunset": {
+    image: "/images/usvi-harbor-hero.jpg",
+    alt: "Charlotte Amalie harbor in St. Thomas",
+  },
+  "stj-north-shore-day": {
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay and the green North Shore of St. John",
+  },
+  "stj-heritage-nature": {
+    image: "/images/places/st-john/trunk-bay-beach-1.jpg",
+    alt: "Green hills and clear water on St. John",
+  },
+  "stx-christiansted-culture": {
+    image: "/images/accommodations/king-christian-hotel.jpg",
+    alt: "Historic waterfront architecture in Christiansted, St. Croix",
+  },
+  "stx-west-end-sunset": {
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+    alt: "St. Croix coastline at Cane Bay",
   },
 };
 
@@ -330,7 +357,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
     adults: "2",
   });
   const conciergePrompt = `Help me plan ${item.name} on ${ISLAND_NAMES[item.island]}. Include transportation, realistic timing, nearby places, and a backup option.`;
-  const visual = EXPERIENCE_IMAGES[item.island];
+  const visual = EXPERIENCE_IMAGES[item.id] ?? ISLAND_ACTIVITY_IMAGES[item.island];
   const officialAction =
     item.availabilityStatus === "request-only"
       ? "Contact operator"
