@@ -63,6 +63,14 @@ export async function createServerBooking(
     luggage: booking.luggage,
     quotedFare: booking.quotedFare,
     scheduledAt: booking.scheduledAt ?? null,
+    connectionDeadline: booking.connectionDeadline ?? null,
+    connectionKind: booking.connectionKind ?? null,
+    paymentMethod: booking.paymentMethod ?? "online_card",
+    serviceExpectation:
+      booking.serviceExpectation ??
+      (booking.mode === "shared" || booking.mode === "safari"
+        ? "shared"
+        : "direct_request"),
     notes: booking.notes ?? "",
     createdAt: FieldValue.serverTimestamp(),
     updatedAt: FieldValue.serverTimestamp(),
