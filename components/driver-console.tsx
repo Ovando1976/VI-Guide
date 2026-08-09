@@ -25,6 +25,7 @@ import {
 
 import { db } from "@/lib/firebase";
 import type { PaymentStatus } from "@/components/ops/ops-ui";
+import type { FleetVehicle, TaxiAssociation } from "@/types/taxi-operations";
 import {
   OpsCard,
   OpsMetric,
@@ -49,8 +50,20 @@ type DriverBooking = {
   connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
   paymentMethod?: "online_card";
   serviceExpectation?: "shared" | "direct_request";
-  origin?: { estateName?: string };
-  destination?: { estateName?: string };
+  origin?: {
+    estateName?: string;
+    lat?: number;
+    lng?: number;
+    notes?: string;
+    accessType?: "roadside" | "villa" | "beach" | "airport" | "ferry" | "resort";
+  };
+  destination?: {
+    estateName?: string;
+    lat?: number;
+    lng?: number;
+    notes?: string;
+    accessType?: "roadside" | "villa" | "beach" | "airport" | "ferry" | "resort";
+  };
   quotedFare?: {
     total?: number;
     routeFare?: number;
@@ -58,6 +71,8 @@ type DriverBooking = {
     luggageFare?: number;
     tariffTitle?: string;
     tariffVersion?: string;
+    tariffSourceUrl?: string;
+    ruleNotes?: string;
   };
   estimatedSettlement?: {
     grossFare: number;
@@ -74,6 +89,10 @@ type DriverBooking = {
     driverPayout: number;
   };
   acceptedAt?: FirestoreDateLike;
+  matchedAt?: FirestoreDateLike;
+  driverEnRouteAt?: FirestoreDateLike;
+  arrivedAt?: FirestoreDateLike;
+  startedAt?: FirestoreDateLike;
   completedAt?: FirestoreDateLike;
   createdAt?: FirestoreDateLike;
   updatedAt?: FirestoreDateLike;
@@ -91,6 +110,8 @@ type DriverProfile = {
   reliabilityScore?: number;
   rating?: number;
   totalTrips?: number;
+  vehicleId?: string;
+  associationId?: string;
 };
 
 type FirestoreDateLike =
@@ -155,6 +176,8 @@ const STATIC_HOTSPOTS: Hotspot[] = [
 export function DriverConsole({ driverId }: { driverId: string }) {
   const [activeTab, setActiveTab] = useState<DriverConsoleTab>("console");
   const [driver, setDriver] = useState<DriverProfile | null>(null);
+  const [vehicle, setVehicle] = useState<FleetVehicle | null>(null);
+  const [association, setAssociation] = useState<TaxiAssociation | null>(null);
   const [bookings, setBookings] = useState<DriverBooking[]>([]);
   const [workingId, setWorkingId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -226,6 +249,42 @@ export function DriverConsole({ driverId }: { driverId: string }) {
       unsubDriver();
     };
   }, [driverId]);
+
+  useEffect(() => {
+    setVehicle(null);
+    if (!driver?.vehicleId) return;
+    return onSnapshot(
+      doc(db, "vehicles", driver.vehicleId),
+      (snapshot) =>
+        setVehicle(
+          snapshot.exists()
+            ? ({ id: snapshot.id, ...snapshot.data() } as FleetVehicle)
+            : null,
+        ),
+      (error) => {
+        console.error("driver vehicle listener error", error);
+        setErrorMessage(error.message);
+      },
+    );
+  }, [driver?.vehicleId]);
+
+  useEffect(() => {
+    setAssociation(null);
+    if (!driver?.associationId) return;
+    return onSnapshot(
+      doc(db, "taxiAssociations", driver.associationId),
+      (snapshot) =>
+        setAssociation(
+          snapshot.exists()
+            ? ({ id: snapshot.id, ...snapshot.data() } as TaxiAssociation)
+            : null,
+        ),
+      (error) => {
+        console.error("driver association listener error", error);
+        setErrorMessage(error.message);
+      },
+    );
+  }, [driver?.associationId]);
 
   useEffect(() => {
     if (!toastMessage) return;
@@ -574,6 +633,13 @@ export function DriverConsole({ driverId }: { driverId: string }) {
                     <OpsPill key={key} label={`${key}:${count}`} />
                   ))}
                 </div>
+
+                <div className="mt-4 grid gap-3 rounded-[22px] border border-slate-200 bg-slate-50 p-4 sm:grid-cols-2 lg:grid-cols-4">
+                  <FleetFact label="Assigned vehicle" value={vehicleLabel(vehicle)} />
+                  <FleetFact label="Taxi identity" value={vehicle?.taxiPlate ? `${vehicle.taxiPlate}${vehicle.medallionNumber ? ` · Medallion ${vehicle.medallionNumber}` : ""}` : "Not available"} />
+                  <FleetFact label="Capacity" value={vehicle ? `${vehicle.passengerCapacity} passengers · ${vehicle.luggageCapacity} bags` : "Not available"} />
+                  <FleetFact label="Association dispatch" value={association ? `${association.name}${association.dispatchPhone ? ` · ${association.dispatchPhone}` : ""}` : "Not available"} />
+                </div>
               </OpsSection>
 
               <OpsSection
@@ -831,6 +897,15 @@ function TabButton({
   );
 }
 
+function FleetFact({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="text-[8px] font-black uppercase tracking-[.15em] text-slate-400">{label}</p>
+      <p className="mt-1 text-xs font-black leading-5 text-[#043331]">{value}</p>
+    </div>
+  );
+}
+
 function RiderPinControl({ bookingId }: { bookingId: string }) {
   const [code, setCode] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -914,6 +989,9 @@ function DriverTripCard({
     booking.serviceExpectation === "shared" ||
     booking.mode === "shared" ||
     booking.mode === "safari";
+  const pickupNavigation = coordinateHref(booking.origin);
+  const destinationNavigation = coordinateHref(booking.destination);
+  const stageTime = formatDateTime(stageTimestamp(booking));
 
   return (
     <OpsCard>
@@ -943,6 +1021,7 @@ function DriverTripCard({
             <OpsPill label={`${booking.passengers ?? 0} pax`} />
             <OpsPill label={`${booking.luggage ?? 0} bags`} />
             <OpsPill label={sharedRide ? "Shared · stops possible" : "Direct requested"} />
+            <OpsPill label={`Trip ${booking.id.slice(-8).toUpperCase()}`} />
           </div>
 
           {!compact ? (
@@ -979,6 +1058,59 @@ function DriverTripCard({
                     : "Calculated at completion"
                 }
               />
+              <TripFact
+                icon={MapPin}
+                label="Pickup access"
+                value={pickupAccessLabel(booking.origin?.accessType)}
+              />
+              <TripFact
+                icon={Activity}
+                label="Current stage since"
+                value={stageTime || "Just updated"}
+              />
+            </div>
+          ) : null}
+
+          {!compact ? (
+            <div className="mt-4 grid gap-3 lg:grid-cols-2">
+              <RouteStop
+                label="Pickup"
+                name={booking.origin?.estateName || "Unknown origin"}
+                notes={booking.origin?.notes}
+                href={pickupNavigation}
+              />
+              <RouteStop
+                label="Drop-off"
+                name={booking.destination?.estateName || "Unknown destination"}
+                notes={booking.destination?.notes}
+                href={destinationNavigation}
+              />
+            </div>
+          ) : null}
+
+          {!compact && booking.quotedFare ? (
+            <div className="mt-4 rounded-[18px] border border-slate-100 bg-slate-50 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">Official fare record</p>
+                  <p className="mt-1 text-xs font-black text-[#043331]">
+                    {booking.quotedFare.tariffTitle || "USVI taxi tariff"}
+                    {booking.quotedFare.tariffVersion ? ` · ${booking.quotedFare.tariffVersion}` : ""}
+                  </p>
+                </div>
+                {booking.quotedFare.tariffSourceUrl ? (
+                  <a href={booking.quotedFare.tariffSourceUrl} target="_blank" rel="noreferrer" className="text-[9px] font-black uppercase tracking-[.14em] text-teal-700 underline underline-offset-4">
+                    View tariff
+                  </a>
+                ) : null}
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+                <FarePart label="Route" value={booking.quotedFare.routeFare} />
+                <FarePart label="Passengers" value={booking.quotedFare.passengerFare} />
+                <FarePart label="Luggage" value={booking.quotedFare.luggageFare} />
+                <FarePart label="Total" value={booking.quotedFare.total} strong />
+              </div>
+              {booking.quotedFare.ruleNotes ? <p className="mt-3 text-xs font-semibold leading-5 text-slate-600">{booking.quotedFare.ruleNotes}</p> : null}
             </div>
           ) : null}
 
@@ -1005,6 +1137,30 @@ function DriverTripCard({
 
       {footer ? <div className="mt-4">{footer}</div> : null}
     </OpsCard>
+  );
+}
+
+function RouteStop({ label, name, notes, href }: { label: string; name: string; notes?: string; href: string | null }) {
+  return (
+    <div className="rounded-[18px] border border-teal-100 bg-teal-50/60 p-4">
+      <p className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">{label}</p>
+      <p className="mt-1 text-sm font-black text-[#043331]">{name}</p>
+      <p className="mt-1 min-h-5 text-xs font-semibold leading-5 text-slate-600">{notes || "No additional location instructions."}</p>
+      {href ? (
+        <a href={href} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#043331] px-3 py-2 text-[9px] font-black uppercase tracking-[.14em] text-white">
+          <Navigation className="h-3.5 w-3.5" /> Navigate
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
+function FarePart({ label, value, strong = false }: { label: string; value?: number; strong?: boolean }) {
+  return (
+    <div className={`rounded-xl bg-white p-3 ${strong ? "text-[#043331] ring-1 ring-teal-200" : "text-slate-600"}`}>
+      <p className="text-[8px] font-black uppercase tracking-[.14em] text-slate-400">{label}</p>
+      <p className="mt-1 font-black">${(value ?? 0).toFixed(2)}</p>
+    </div>
   );
 }
 
@@ -1457,4 +1613,28 @@ function formatDateTime(value: FirestoreDateLike) {
 
 function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function coordinateHref(location?: { lat?: number; lng?: number }) {
+  if (!Number.isFinite(location?.lat) || !Number.isFinite(location?.lng)) return null;
+  return `https://www.google.com/maps/dir/?api=1&destination=${location!.lat},${location!.lng}`;
+}
+
+function pickupAccessLabel(value?: DriverBooking["origin"] extends infer T ? T extends { accessType?: infer A } ? A : never : never) {
+  if (!value) return "Roadside pickup";
+  return `${capitalize(value)} pickup`;
+}
+
+function stageTimestamp(booking: DriverBooking) {
+  if (booking.status === "in_progress") return booking.startedAt;
+  if (booking.status === "arrived") return booking.arrivedAt;
+  if (booking.status === "driver_en_route") return booking.driverEnRouteAt;
+  if (booking.status === "matched") return booking.matchedAt ?? booking.acceptedAt;
+  return booking.createdAt;
+}
+
+function vehicleLabel(vehicle: FleetVehicle | null) {
+  if (!vehicle) return "Not available";
+  const description = [vehicle.color, vehicle.make, vehicle.model].filter(Boolean).join(" ");
+  return description || vehicle.id;
 }
