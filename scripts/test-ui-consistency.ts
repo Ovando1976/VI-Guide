@@ -256,6 +256,11 @@ for (const token of [
   assert.ok(globals.includes(token), `Missing shared UI token ${token}`);
 }
 
+assert.match(appNavigation, /pathname === "\/" && "app-nav--home"/);
+assert.match(globals, /@media \(min-width: 1024px\)/);
+assert.match(globals, /\.app-nav--home \{[\s\S]*?display: none;/);
+assert.match(globals, /body:has\(\.app-nav--home\) \{[\s\S]*?padding-bottom: 0;/);
+
 assert.match(mobilityBooking, /furthestStep/);
 assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
 assert.match(mobilityBooking, /if \(routeReady\) return/);
