@@ -153,6 +153,7 @@ export function BookingPanel({
     MORE_MODES.some((item) => item.value === mode),
   );
   const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
+  const [furthestStep, setFurthestStep] = useState<1 | 2 | 3 | 4>(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -211,6 +212,13 @@ export function BookingPanel({
   }, [fromEstate, toEstate, mode, passengers, luggage]);
 
   const routeReady = Boolean(fromEstate && toEstate);
+
+  useEffect(() => {
+    if (routeReady || activeStep === 1) return;
+    setActiveStep(1);
+    setFurthestStep(1);
+  }, [activeStep, routeReady]);
+
   const canRequest = Boolean(
     routeReady &&
       fare &&
@@ -231,6 +239,11 @@ export function BookingPanel({
     if (passengers >= 5) return "shared";
     return "standard";
   }, [fromEstate, passengers, toEstate]);
+
+  function advanceToStep(step: 2 | 3 | 4) {
+    setActiveStep(step);
+    setFurthestStep((current) => Math.max(current, step) as 1 | 2 | 3 | 4);
+  }
 
   async function requestRide() {
     if (!fromEstate || !toEstate) return;
@@ -309,13 +322,13 @@ export function BookingPanel({
             ].map(([step, label]) => {
               const stepNumber = step as 1 | 2 | 3 | 4;
               const isActive = activeStep === stepNumber;
-              const isComplete = activeStep > stepNumber;
+              const isComplete = furthestStep > stepNumber;
               return (
                 <button
                   key={step}
                   type="button"
                   onClick={() => setActiveStep(stepNumber)}
-                  disabled={stepNumber > activeStep}
+                  disabled={stepNumber > furthestStep}
                   aria-current={isActive ? "step" : undefined}
                   className={`rounded-2xl border px-3 py-3 text-center transition ${
                     isActive
@@ -399,7 +412,7 @@ export function BookingPanel({
             <StepActions
               continueLabel="Choose ride type"
               continueDisabled={!routeReady}
-              onContinue={() => setActiveStep(2)}
+              onContinue={() => advanceToStep(2)}
             />
           </Panel>
           ) : null}
@@ -458,7 +471,7 @@ export function BookingPanel({
               backLabel="Back to route"
               continueLabel="Add passengers"
               onBack={() => setActiveStep(1)}
-              onContinue={() => setActiveStep(3)}
+              onContinue={() => advanceToStep(3)}
             />
           </Panel>
           ) : null}
@@ -501,7 +514,7 @@ export function BookingPanel({
               backLabel="Back to ride"
               continueLabel="Review official fare"
               onBack={() => setActiveStep(2)}
-              onContinue={() => setActiveStep(4)}
+              onContinue={() => advanceToStep(4)}
             />
           </Panel>
           </div>
