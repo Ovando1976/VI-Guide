@@ -258,8 +258,10 @@ for (const token of [
 
 assert.match(mobilityBooking, /furthestStep/);
 assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
-assert.match(mobilityBooking, /if \(routeReady \|\| activeStep === 1\) return/);
+assert.match(mobilityBooking, /if \(routeReady\) return/);
+assert.doesNotMatch(mobilityBooking, /routeReady \|\| activeStep === 1/);
 assert.match(mobilityBooking, /setFurthestStep\(1\)/);
+assert.match(mobilityBooking, /\}, \[routeReady\]\);/);
 assert.match(mobilityBooking, /advanceToStep\(4\)/);
 assert.match(mobilityBooking, /new Intl\.Collator/);
 assert.match(mobilityBooking, /numeric: true/);
