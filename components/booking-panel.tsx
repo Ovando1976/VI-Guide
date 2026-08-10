@@ -32,6 +32,10 @@ import type { FareBreakdown, RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
+const ESTATE_NAME_COLLATOR = new Intl.Collator("en", {
+  numeric: true,
+  sensitivity: "base",
+});
 
 const RoutePreviewMap = dynamic(
   () =>
@@ -706,6 +710,18 @@ function EstateSelect({
   estates: EstateRecord[];
   onChange: (value: string) => void;
 }) {
+  const sortedEstates = useMemo(
+    () =>
+      [...estates].sort((a, b) => {
+        const nameComparison = ESTATE_NAME_COLLATOR.compare(
+          a.baseName,
+          b.baseName,
+        );
+        return nameComparison || a.geoid.localeCompare(b.geoid);
+      }),
+    [estates],
+  );
+
   return (
     <select
       value={value}
@@ -713,7 +729,7 @@ function EstateSelect({
       className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331] outline-none transition focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
     >
       <option value="">{placeholder}</option>
-      {estates.map((estate) => (
+      {sortedEstates.map((estate) => (
         <option key={estate.geoid} value={estate.geoid}>
           {estate.baseName}
         </option>
