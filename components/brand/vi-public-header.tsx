@@ -21,7 +21,7 @@ export function ViPublicHeader({
   secondaryActions?: ReactNode;
 }) {
   return (
-    <header className="vi-public-header mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[26px] border border-white/12 bg-[#043331]/95 px-3 py-3 text-white shadow-[0_22px_70px_rgba(2,31,29,.24)] backdrop-blur-2xl sm:px-4">
+    <header className="vi-public-header vi-public-header--cinematic mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[26px] border border-white/12 bg-[#043331]/95 px-3 py-3 text-white shadow-[0_22px_70px_rgba(2,31,29,.24)] backdrop-blur-2xl sm:px-4">
       <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="USVI Compass home">
         <ViBrandMark className="h-12 w-12 shrink-0 transition duration-300 group-hover:-rotate-3 group-hover:scale-105" priority />
         <div className="min-w-0">
@@ -33,6 +33,13 @@ export function ViPublicHeader({
           </div>
         </div>
       </Link>
+
+      <nav aria-label="Discover the Virgin Islands" className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/10 p-1.5 lg:flex">
+        <Link href="/places" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Explore</Link>
+        <Link href="/map" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Live map</Link>
+        <Link href="/accommodations" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Stays</Link>
+        <Link href="/mobility" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Ride</Link>
+      </nav>
 
       <div className="flex shrink-0 items-center gap-2">
         <Link
