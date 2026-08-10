@@ -58,7 +58,7 @@ assert.match(homeConcierge, /One-tap idea/);
 assert.match(homeConcierge, /king-christian-hotel\.jpg/);
 assert.match(homeLiveStatus, /STATUS_ITEMS\.map\(\(\{ label, value, icon: Icon, href, image, alt, tag \}\)/);
 assert.match(homeLiveStatus, /Today in the Virgin Islands/);
-assert.match(homeLiveStatus, /Open in VI Guide/);
+assert.match(homeLiveStatus, /Open in USVI Compass/);
 assert.match(homeLiveStatus, /red-hook-ferry-terminal-1\.jpg/);
 assert.match(homeLiveStatus, /magens-bay-beach-1\.jpg/);
 assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
@@ -304,4 +304,4 @@ assert.match(navigation, /"\/checkout"/);
 assert.match(navigation, /"\/shared-trip"/);
 assert.match(brand, /vi-brand-mark/);
 
-console.log("VI Guide visible traveler visual-system contracts passed.");
+console.log("USVI Compass visible traveler visual-system contracts passed.");
