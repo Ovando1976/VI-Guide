@@ -141,6 +141,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 .app-nav__item--map.is-active .app-nav__icon { color: #032f2d; }
 .app-nav__item--concierge .app-nav__icon { color: #77e4da; }
+/* The homepage already has a complete desktop discovery header. Keep the
+   persistent dock for touch layouts without duplicating navigation on wide
+   screens or leaving reserved dock space below the page. */
+@media (min-width: 1024px) {
+  .app-nav--home {
+    display: none;
+  }
+
+  body:has(.app-nav--home) {
+    padding-bottom: 0;
+  }
+}
+
 .app-nav__badge {
   position: absolute;
   right: 4px;
