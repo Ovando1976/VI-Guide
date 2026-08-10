@@ -261,5 +261,9 @@ assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
 assert.match(mobilityBooking, /if \(routeReady \|\| activeStep === 1\) return/);
 assert.match(mobilityBooking, /setFurthestStep\(1\)/);
 assert.match(mobilityBooking, /advanceToStep\(4\)/);
+assert.match(mobilityBooking, /new Intl\.Collator/);
+assert.match(mobilityBooking, /numeric: true/);
+assert.match(mobilityBooking, /sortedEstates\.map/);
+assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
 
 console.log("VI Guide UI and customer-journey consistency contracts passed.");
