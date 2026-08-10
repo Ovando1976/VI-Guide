@@ -218,10 +218,10 @@ export function BookingPanel({
   const routeReady = Boolean(fromEstate && toEstate);
 
   useEffect(() => {
-    if (routeReady || activeStep === 1) return;
+    if (routeReady) return;
     setActiveStep(1);
     setFurthestStep(1);
-  }, [activeStep, routeReady]);
+  }, [routeReady]);
 
   const canRequest = Boolean(
     routeReady &&
