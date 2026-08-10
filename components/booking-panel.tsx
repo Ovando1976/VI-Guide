@@ -32,6 +32,10 @@ import type { FareBreakdown, RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
+const ESTATE_NAME_COLLATOR = new Intl.Collator("en", {
+  numeric: true,
+  sensitivity: "base",
+});
 
 const RoutePreviewMap = dynamic(
   () =>
@@ -153,6 +157,7 @@ export function BookingPanel({
     MORE_MODES.some((item) => item.value === mode),
   );
   const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
+  const [furthestStep, setFurthestStep] = useState<1 | 2 | 3 | 4>(1);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -211,6 +216,13 @@ export function BookingPanel({
   }, [fromEstate, toEstate, mode, passengers, luggage]);
 
   const routeReady = Boolean(fromEstate && toEstate);
+
+  useEffect(() => {
+    if (routeReady) return;
+    setActiveStep(1);
+    setFurthestStep(1);
+  }, [routeReady]);
+
   const canRequest = Boolean(
     routeReady &&
       fare &&
@@ -231,6 +243,11 @@ export function BookingPanel({
     if (passengers >= 5) return "shared";
     return "standard";
   }, [fromEstate, passengers, toEstate]);
+
+  function advanceToStep(step: 2 | 3 | 4) {
+    setActiveStep(step);
+    setFurthestStep((current) => Math.max(current, step) as 1 | 2 | 3 | 4);
+  }
 
   async function requestRide() {
     if (!fromEstate || !toEstate) return;
@@ -309,13 +326,13 @@ export function BookingPanel({
             ].map(([step, label]) => {
               const stepNumber = step as 1 | 2 | 3 | 4;
               const isActive = activeStep === stepNumber;
-              const isComplete = activeStep > stepNumber;
+              const isComplete = furthestStep > stepNumber;
               return (
                 <button
                   key={step}
                   type="button"
                   onClick={() => setActiveStep(stepNumber)}
-                  disabled={stepNumber > activeStep}
+                  disabled={stepNumber > furthestStep}
                   aria-current={isActive ? "step" : undefined}
                   className={`rounded-2xl border px-3 py-3 text-center transition ${
                     isActive
@@ -399,7 +416,7 @@ export function BookingPanel({
             <StepActions
               continueLabel="Choose ride type"
               continueDisabled={!routeReady}
-              onContinue={() => setActiveStep(2)}
+              onContinue={() => advanceToStep(2)}
             />
           </Panel>
           ) : null}
@@ -458,7 +475,7 @@ export function BookingPanel({
               backLabel="Back to route"
               continueLabel="Add passengers"
               onBack={() => setActiveStep(1)}
-              onContinue={() => setActiveStep(3)}
+              onContinue={() => advanceToStep(3)}
             />
           </Panel>
           ) : null}
@@ -501,7 +518,7 @@ export function BookingPanel({
               backLabel="Back to ride"
               continueLabel="Review official fare"
               onBack={() => setActiveStep(2)}
-              onContinue={() => setActiveStep(4)}
+              onContinue={() => advanceToStep(4)}
             />
           </Panel>
           </div>
@@ -693,6 +710,18 @@ function EstateSelect({
   estates: EstateRecord[];
   onChange: (value: string) => void;
 }) {
+  const sortedEstates = useMemo(
+    () =>
+      [...estates].sort((a, b) => {
+        const nameComparison = ESTATE_NAME_COLLATOR.compare(
+          a.baseName,
+          b.baseName,
+        );
+        return nameComparison || a.geoid.localeCompare(b.geoid);
+      }),
+    [estates],
+  );
+
   return (
     <select
       value={value}
@@ -700,7 +729,7 @@ function EstateSelect({
       className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331] outline-none transition focus:border-[#0f766e] focus:ring-4 focus:ring-teal-100"
     >
       <option value="">{placeholder}</option>
-      {estates.map((estate) => (
+      {sortedEstates.map((estate) => (
         <option key={estate.geoid} value={estate.geoid}>
           {estate.baseName}
         </option>
