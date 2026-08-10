@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "VI Guide — U.S. Virgin Islands",
-    short_name: "VI Guide",
+    name: "USVI Compass — U.S. Virgin Islands",
+    short_name: "USVI Compass",
     description:
       "Explore beaches, places, stays, heritage, transportation, and island plans across the U.S. Virgin Islands.",
     start_url: "/",
@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Ask Concierge",
         short_name: "Concierge",
-        description: "Search the live VI Guide catalog and plan an island day.",
+        description: "Search the live USVI Compass catalog and plan an island day.",
         url: "/concierge",
       },
       {

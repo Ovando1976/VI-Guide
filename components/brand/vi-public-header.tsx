@@ -22,11 +22,11 @@ export function ViPublicHeader({
 }) {
   return (
     <header className="vi-public-header mx-auto flex max-w-7xl items-center justify-between gap-3 rounded-[26px] border border-white/12 bg-[#043331]/95 px-3 py-3 text-white shadow-[0_22px_70px_rgba(2,31,29,.24)] backdrop-blur-2xl sm:px-4">
-      <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="VI Guide home">
+      <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="USVI Compass home">
         <ViBrandMark className="h-12 w-12 shrink-0 transition duration-300 group-hover:-rotate-3 group-hover:scale-105" priority />
         <div className="min-w-0">
           <div className="truncate text-[19px] font-black tracking-[-.035em] text-white sm:text-xl">
-            VI Guide
+            USVI Compass
           </div>
           <div className="mt-0.5 flex items-center gap-1.5 truncate text-[8px] font-black uppercase tracking-[.22em] text-[#9fe7df]">
             <MapPinned size={10} aria-hidden="true" /> Virgin Islands travel OS
