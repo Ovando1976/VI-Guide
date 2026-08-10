@@ -35,6 +35,7 @@ const premiumDetailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
 const addToJourneyButton = source("components/journey/add-to-journey-button.tsx");
 const mobility = source("components/mobility-booking-screen.tsx");
+const mobilityBooking = source("components/booking-panel.tsx");
 const mapPage = source("app/map/page.tsx");
 const mapEntityContextBar = source("components/map/map-entity-context-bar.tsx");
 const appNavigation = source("components/app-navigation.tsx");
@@ -254,5 +255,11 @@ for (const token of [
 ]) {
   assert.ok(globals.includes(token), `Missing shared UI token ${token}`);
 }
+
+assert.match(mobilityBooking, /furthestStep/);
+assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
+assert.match(mobilityBooking, /if \(routeReady \|\| activeStep === 1\) return/);
+assert.match(mobilityBooking, /setFurthestStep\(1\)/);
+assert.match(mobilityBooking, /advanceToStep\(4\)/);
 
 console.log("VI Guide UI and customer-journey consistency contracts passed.");
