@@ -161,6 +161,14 @@ assert.match(publicFooter, /href="\/partners\/apply"/);
 assert.match(publicFooter, /\["Ride", "\/mobility"\]/);
 assert.match(publicFooter, /href="\/concierge\?open=true"/);
 
+for (const [name, contents] of [
+  ["directory surfaces", directory],
+  ["premium detail shell", premiumDetailShell],
+  ["mobility", mobility],
+] as const) {
+  assert.match(contents, /ViPublicFooter/, `${name} must use ViPublicFooter`);
+}
+
 assert.match(tripsPage, /TravelerTripCommandCenter/);
 assert.match(tripsPage, /TravelerTripReadinessPanel/);
 assert.match(tripsPage, /ProactiveTripIntelligence/);

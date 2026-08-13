@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { ViPublicFooter } from "@/components/brand/vi-public-footer";
 import { DirectoryCard } from "@/components/directory/directory-card";
 import { EmptyState } from "@/components/directory/empty-state";
 import { IslandFilterTabs } from "@/components/directory/island-filter-tabs";
@@ -168,7 +169,7 @@ export function DiscoveryDirectoryPage({
   }
 
   return (
-    <main className="directory-page min-h-screen bg-[#f8f4ea] px-4 py-5 pb-32 text-[#043331] sm:px-6 lg:py-8">
+    <main className="directory-page min-h-screen overflow-hidden bg-[#f8f4ea] px-4 pt-5 text-[#043331] sm:px-6 lg:pt-8">
       <div className="mx-auto max-w-7xl space-y-6 sm:space-y-8 lg:space-y-10">
         <ViPublicHeader
           actionHref="/trips"
@@ -444,6 +445,9 @@ export function DiscoveryDirectoryPage({
             </Link>
           </div>
         </section>
+      </div>
+      <div className="-mx-4 mt-12 sm:-mx-6 lg:mt-16">
+        <ViPublicFooter />
       </div>
     </main>
   );

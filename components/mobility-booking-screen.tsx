@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { ViPublicFooter } from "@/components/brand/vi-public-footer";
 import { BookingPanel } from "@/components/booking-panel";
 import type { RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
@@ -316,7 +317,7 @@ export function MobilityBookingScreen() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 pb-36 pt-5 text-[#043331] md:px-6 lg:pb-40 lg:pt-8">
+    <main className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.14),transparent_30%),linear-gradient(180deg,#f8f4ea_0%,#fff_48%,#f4f7f5_100%)] px-4 pt-5 text-[#043331] md:px-6 lg:pt-8">
       <div className="mx-auto max-w-7xl space-y-6">
         <ViPublicHeader
           actionHref="/concierge?prompt=Help%20me%20plan%20transportation%20for%20my%20Virgin%20Islands%20trip"
@@ -474,6 +475,9 @@ export function MobilityBookingScreen() {
             />
           </div>
         )}
+      </div>
+      <div className="-mx-4 mt-12 md:-mx-6 lg:mt-16">
+        <ViPublicFooter />
       </div>
     </main>
   );
