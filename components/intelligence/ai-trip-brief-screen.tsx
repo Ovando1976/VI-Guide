@@ -33,6 +33,7 @@ import type {
   IntelligenceMemory,
   IntelligenceResponse,
 } from "@/types/intelligence";
+import type { ActiveIsland } from "@/lib/active-island";
 
 const ISLAND_LABELS: Record<IntelligenceIsland, string> = {
   stt: "St. Thomas",
@@ -52,7 +53,11 @@ type ActionState = {
   message?: string;
 };
 
-export function AiTripBriefScreen() {
+export function AiTripBriefScreen({
+  initialIsland,
+}: {
+  initialIsland: ActiveIsland;
+}) {
   const [memory, setMemory] = useState<IntelligenceMemory>({});
   const [response, setResponse] = useState<IntelligenceResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -60,7 +65,7 @@ export function AiTripBriefScreen() {
   const [actionState, setActionState] = useState<Record<string, ActionState>>({});
   const [journeyCount, setJourneyCount] = useState(0);
 
-  const island = response?.context.island ?? memory.preferredIsland ?? "stt";
+  const island = response?.context.island ?? initialIsland;
   const workflow = response?.orchestration;
   const pendingActions = response?.actions ?? [];
   const plan = response?.plan ?? [];
@@ -70,10 +75,10 @@ export function AiTripBriefScreen() {
     const currentMemory = getIntelligenceMemory();
     setMemory(currentMemory);
     setJourneyCount(readJourneyPlans().length);
-    void loadWorkspace(currentMemory.preferredIsland ?? "stt");
-    // The initial request is intentionally made once. It hydrates the entire workspace.
+    void loadWorkspace(initialIsland);
+    // Reload only when the server-resolved island context changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initialIsland]);
 
   const progress = useMemo(() => {
     if (!workflow?.trace.length) return plan.length ? 70 : 15;
@@ -201,7 +206,7 @@ export function AiTripBriefScreen() {
                   <Map size={15} /> Open Living Map
                 </Link>
                 <Link
-                  href="/concierge"
+                  href={`/concierge?island=${island}`}
                   className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-white/[.13]"
                 >
                   <Sparkles size={15} className="text-[#f5c451]" /> Ask Concierge
@@ -316,10 +321,10 @@ export function AiTripBriefScreen() {
               </article>
 
               <div className="grid gap-5 sm:grid-cols-2">
-                <WorkspaceLink icon={Navigation} title="Transportation" copy={plan.some((stop) => stop.mobility) ? "Movement is included in today’s plan." : "Review fares and prepare your next ride."} href="/mobility" label="Open mobility" />
-                <WorkspaceLink icon={BedDouble} title="Reservations" copy={pendingActions.some((action) => action.type === "start_booking") ? "A booking is waiting for review." : "Browse stays and saved booking options."} href="/accommodations" label="Review stays" />
+                <WorkspaceLink icon={Navigation} title="Transportation" copy={plan.some((stop) => stop.mobility) ? "Movement is included in today’s plan." : "Review fares and prepare your next ride."} href={`/mobility?island=${island}`} label="Open mobility" />
+                <WorkspaceLink icon={BedDouble} title="Reservations" copy={pendingActions.some((action) => action.type === "start_booking") ? "A booking is waiting for review." : "Browse stays and saved booking options."} href={`/accommodations?island=${island}`} label="Review stays" />
                 <WorkspaceLink icon={FileText} title="Live itinerary" copy={`${plan.length} current stops and ${journeyCount} saved journeys.`} href="/planner" label="Open itinerary" />
-                <WorkspaceLink icon={Sparkles} title="Concierge" copy="Change the plan, ask a follow-up, or add another island experience." href="/concierge" label="Continue planning" />
+                <WorkspaceLink icon={Sparkles} title="Concierge" copy="Change the plan, ask a follow-up, or add another island experience." href={`/concierge?island=${island}`} label="Continue planning" />
               </div>
             </section>
           </>
