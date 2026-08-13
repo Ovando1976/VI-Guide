@@ -12,6 +12,7 @@ import {
   applyCanonicalActiveTripState,
   mergeIntelligenceMemory,
 } from "../lib/intelligence/memory-core";
+import { runIntelligenceEngine } from "../lib/intelligence/engine";
 import type { JourneyPlan } from "../lib/journey-planner";
 import type { IntelligenceContext } from "../types/intelligence";
 
@@ -126,5 +127,50 @@ const preservedForAnonymous = applyCanonicalActiveTripState(
   {},
 );
 assert.equal(preservedForAnonymous.activeTrip?.id, plan.id);
+
+const stJohnDay = runIntelligenceEngine({
+  message:
+    "Resume my active trip and give me a practical briefing for today. Include my timeline, the best next places, transportation needs, and any actions waiting for my approval.",
+  context: {
+    ...context,
+    island: "stj",
+    preferences: { interests: [], food: [], avoid: [] },
+  },
+});
+assert.equal(stJohnDay.intent, "day_plan");
+assert.ok(stJohnDay.recommendations.length > 0);
+assert.ok(
+  stJohnDay.recommendations.every((recommendation) => recommendation.island === "stj"),
+  "St. John day recommendations must not leak records from another island",
+);
+assert.ok(
+  stJohnDay.recommendations.every((recommendation) => !recommendation.id.startsWith("timeline:")),
+  "A practical day request must not be converted into a heritage timeline",
+);
+assert.ok(stJohnDay.plan.every((stop) => stop.island === "stj"));
+
+const directRide = runIntelligenceEngine({
+  message: "Plan a taxi from Cruz Bay to Trunk Bay.",
+  context: {
+    ...context,
+    island: "stj",
+    preferences: { interests: [], food: [], avoid: [] },
+  },
+});
+assert.equal(directRide.intent, "mobility");
+
+const stJohnHistory = runIntelligenceEngine({
+  message: "Show me historic and heritage places on St. John.",
+  context: {
+    ...context,
+    island: "stj",
+    preferences: { interests: ["history"], food: [], avoid: [] },
+  },
+});
+assert.equal(stJohnHistory.intent, "knowledge");
+assert.ok(
+  stJohnHistory.recommendations.every((recommendation) => recommendation.island === "stj"),
+  "Island-specific heritage results must exclude other islands",
+);
 
 console.log("Intelligence identity and trip continuity tests passed.");
