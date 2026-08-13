@@ -26,7 +26,8 @@ import {
   getIntelligenceMemory,
   getIntelligenceSessionId,
 } from "@/lib/intelligence/client";
-import { readJourneyPlans } from "@/lib/journey-planner";
+import { readJourneyPlans, type JourneyPlan } from "@/lib/journey-planner";
+import { readSelectedTravelerTripPlanId } from "@/lib/traveler-trip-selection";
 import type {
   IntelligenceAction,
   IntelligenceIsland,
@@ -63,7 +64,8 @@ export function AiTripBriefScreen({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionState, setActionState] = useState<Record<string, ActionState>>({});
-  const [journeyCount, setJourneyCount] = useState(0);
+  const [islandJourneyCount, setIslandJourneyCount] = useState(0);
+  const [activeJourney, setActiveJourney] = useState<JourneyPlan | null>(null);
 
   const island = response?.context.island ?? initialIsland;
   const workflow = response?.orchestration;
@@ -74,17 +76,45 @@ export function AiTripBriefScreen({
   useEffect(() => {
     const currentMemory = getIntelligenceMemory();
     setMemory(currentMemory);
-    setJourneyCount(readJourneyPlans().length);
+    syncJourneyState(initialIsland);
     void loadWorkspace(initialIsland);
     // Reload only when the server-resolved island context changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialIsland]);
 
-  const progress = useMemo(() => {
+  const briefProgress = useMemo(() => {
     if (!workflow?.trace.length) return plan.length ? 70 : 15;
     const completed = workflow.trace.filter((step) => step.status === "completed").length;
     return Math.max(10, Math.round((completed / workflow.trace.length) * 100));
   }, [plan.length, workflow]);
+
+  const hasActiveIslandJourney = activeJourney?.island === island;
+  const tripStatusTitle =
+    workflow?.status === "waiting_for_user"
+      ? "Waiting on you"
+      : hasActiveIslandJourney
+        ? "Active trip connected"
+        : activeJourney
+          ? `No active ${ISLAND_LABELS[island]} trip`
+          : "Planning draft only";
+  const tripStatusCopy = hasActiveIslandJourney
+    ? `${activeJourney.title} is the saved trip informing this workspace.`
+    : activeJourney
+      ? `Your active saved trip is for ${ISLAND_LABELS[activeJourney.island]}. Today’s ${ISLAND_LABELS[island]} suggestions are not saved or confirmed.`
+      : "Today’s suggestions are generated, but they are not a saved or confirmed itinerary.";
+
+  function syncJourneyState(selectedIsland: IntelligenceIsland) {
+    const journeys = readJourneyPlans();
+    const selectedPlanId = readSelectedTravelerTripPlanId();
+    setActiveJourney(
+      journeys.find((journey) => journey.id === selectedPlanId) ??
+        journeys[0] ??
+        null,
+    );
+    setIslandJourneyCount(
+      journeys.filter((journey) => journey.island === selectedIsland).length,
+    );
+  }
 
   async function loadWorkspace(selectedIsland: IntelligenceIsland) {
     setLoading(true);
@@ -97,7 +127,7 @@ export function AiTripBriefScreen({
       );
       setResponse(result);
       setMemory(getIntelligenceMemory());
-      setJourneyCount(readJourneyPlans().length);
+      syncJourneyState(result.context.island);
     } catch (cause) {
       setError(
         cause instanceof Error
@@ -216,8 +246,8 @@ export function AiTripBriefScreen({
 
             <div className="grid grid-cols-3 gap-2 rounded-[28px] border border-white/12 bg-white/[.08] p-3 backdrop-blur">
               <Metric value={ISLAND_LABELS[island]} label="Current island" />
-              <Metric value={`${progress}%`} label="Trip progress" />
-              <Metric value={pendingActions.length} label="Needs attention" />
+              <Metric value={`${briefProgress}%`} label="Brief generated" />
+              <Metric value={pendingActions.length} label="Suggested actions" />
             </div>
           </div>
         </div>
@@ -240,7 +270,7 @@ export function AiTripBriefScreen({
                 <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#e2ebe8] p-5 sm:p-6">
                   <div>
                     <p className="text-[9px] font-black uppercase tracking-[.18em] text-[#a65d13]">Today’s briefing</p>
-                    <h2 className="mt-2 text-2xl font-black tracking-[-.035em]">Good to go on {ISLAND_LABELS[island]}</h2>
+                    <h2 className="mt-2 text-2xl font-black tracking-[-.035em]">Today on {ISLAND_LABELS[island]}</h2>
                   </div>
                   <button type="button" onClick={() => void loadWorkspace(island)} className="inline-flex items-center gap-2 rounded-full border border-[#cfe0dc] px-4 py-2 text-[9px] font-black uppercase tracking-[.13em] text-[#0f766e]"><RefreshCcw size={13} /> Refresh</button>
                 </div>
@@ -256,12 +286,14 @@ export function AiTripBriefScreen({
 
               <article className="rounded-[30px] bg-[#073b39] p-5 text-white shadow-[0_18px_60px_rgba(4,51,49,.16)] sm:p-6">
                 <div className="flex items-center justify-between gap-3">
-                  <div><p className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">Trip status</p><h2 className="mt-2 text-2xl font-black">{workflow?.status === "waiting_for_user" ? "Waiting on you" : "Ready for today"}</h2></div>
+                  <div><p className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">Saved-trip status</p><h2 className="mt-2 text-2xl font-black">{tripStatusTitle}</h2></div>
                   <SunMedium className="text-[#f5c451]" />
                 </div>
-                <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-[#f5c451] transition-all" style={{ width: `${progress}%` }} /></div>
+                <p className="mt-3 text-xs font-semibold leading-5 text-white/65">{tripStatusCopy}</p>
+                <div className="mt-5 flex items-center justify-between text-[8px] font-black uppercase tracking-[.13em] text-white/45"><span>Brief generation</span><span>{briefProgress}%</span></div>
+                <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-[#f5c451] transition-all" style={{ width: `${briefProgress}%` }} /></div>
                 <div className="mt-4 grid grid-cols-2 gap-2 text-center">
-                  <MiniMetric value={journeyCount} label="Saved journeys" />
+                  <MiniMetric value={islandJourneyCount} label="Saved on this island" />
                   <MiniMetric value={workflow?.missingInformation.length ?? 0} label="Missing details" />
                 </div>
               </article>
@@ -323,7 +355,7 @@ export function AiTripBriefScreen({
               <div className="grid gap-5 sm:grid-cols-2">
                 <WorkspaceLink icon={Navigation} title="Transportation" copy={plan.some((stop) => stop.mobility) ? "Movement is included in today’s plan." : "Review fares and prepare your next ride."} href={`/mobility?island=${island}`} label="Open mobility" />
                 <WorkspaceLink icon={BedDouble} title="Reservations" copy={pendingActions.some((action) => action.type === "start_booking") ? "A booking is waiting for review." : "Browse stays and saved booking options."} href={`/accommodations?island=${island}`} label="Review stays" />
-                <WorkspaceLink icon={FileText} title="Live itinerary" copy={`${plan.length} current stops and ${journeyCount} saved journeys.`} href="/planner" label="Open itinerary" />
+                <WorkspaceLink icon={FileText} title="Live itinerary" copy={`${plan.length} current suggestions and ${islandJourneyCount} saved ${ISLAND_LABELS[island]} ${islandJourneyCount === 1 ? "journey" : "journeys"}.`} href="/planner" label="Open itinerary" />
                 <WorkspaceLink icon={Sparkles} title="Concierge" copy="Change the plan, ask a follow-up, or add another island experience." href={`/concierge?island=${island}`} label="Continue planning" />
               </div>
             </section>

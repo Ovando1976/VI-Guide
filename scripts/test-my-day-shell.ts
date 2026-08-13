@@ -55,4 +55,16 @@ assert.match(workspace, /pendingActions\.map/);
 assert.match(workspace, /recommendations\.slice\(0, 6\)\.map/);
 assert.match(workspace, /plan\.slice\(0, 8\)\.map/);
 
+assert.match(workspace, /readSelectedTravelerTripPlanId/);
+assert.match(workspace, /activeJourney\?\.island === island/);
+assert.match(workspace, /Brief generated/);
+assert.match(workspace, /Suggested actions/);
+assert.match(workspace, /Saved-trip status/);
+assert.match(workspace, /Planning draft only/);
+assert.match(workspace, /Active trip connected/);
+assert.match(workspace, /not a saved or confirmed itinerary/);
+assert.doesNotMatch(workspace, /label="Trip progress"/);
+assert.doesNotMatch(workspace, /Good to go on/);
+assert.doesNotMatch(workspace, /Ready for today/);
+
 console.log("VI Guide My Day shared-shell contracts passed.");
