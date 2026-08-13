@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { ViPublicFooter } from "@/components/brand/vi-public-footer";
 import { HomeConciergeHub } from "@/components/home/home-concierge-hub";
 import { HomeLiveStatus } from "@/components/home/home-live-status";
 import { HomePrimaryActions } from "@/components/home/home-primary-actions";
@@ -53,7 +54,7 @@ const HOME_FEATURES = [
 
 export default function Home() {
   return (
-    <main className="usvi-home min-h-screen overflow-hidden bg-[#f5f0e6] pb-[calc(12rem+env(safe-area-inset-bottom))] text-[#032f2d] sm:pb-32">
+    <main className="usvi-home min-h-screen overflow-hidden bg-[#f5f0e6] text-[#032f2d]">
       <section className="usvi-hero relative isolate overflow-hidden bg-[#032f2d] px-4 pb-10 pt-5 text-white sm:px-7 lg:min-h-[940px] lg:px-10 lg:pb-14">
         <Image src="/images/usvi-harbor-hero.jpg" alt="Charlotte Amalie harbor and the hills of St. Thomas" fill priority sizes="100vw" className="-z-30 object-cover object-[66%_center] saturate-[1.08]" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(2,20,21,.98)_0%,rgba(2,31,29,.92)_40%,rgba(3,47,45,.50)_72%,rgba(2,22,28,.30)_100%)]" />
@@ -100,6 +101,8 @@ export default function Home() {
       <HomeConciergeHub />
 
       <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-7 lg:px-10"><div className="overflow-hidden rounded-[36px] border border-[#d5e4df] bg-[#fffdf8] shadow-[0_24px_70px_rgba(2,31,29,.09)]"><div className="grid lg:grid-cols-[.9fr_1.1fr]"><div className="p-7 sm:p-10 lg:p-12"><div className="vi-eyebrow text-[#9b5d12]">Your island rhythm</div><h2 className="vi-display mt-3 text-4xl font-bold leading-[.96] sm:text-5xl">Explore deeper. Plan smarter. Move easier.</h2><p className="mt-5 max-w-xl text-sm font-semibold leading-7 text-slate-600">The product should feel unmistakably Virgin Islands from the first screen — while still behaving like a serious modern travel platform underneath.</p><div className="mt-7 flex flex-wrap gap-3"><Link href="/places" className="inline-flex items-center gap-2 rounded-full bg-[#032f2d] px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-white">Explore places <ArrowRight size={14} /></Link><Link href="/heritage" className="inline-flex items-center gap-2 rounded-full border border-[#d5e4df] bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-[#032f2d]"><History size={14} /> Heritage</Link></div></div><div className="relative min-h-[360px] lg:min-h-[420px]"><Image src="/images/places/st-croix/cane-bay-beach-1.jpg" alt="Caribbean coastline at Cane Bay in St. Croix" fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,253,248,.42),transparent_45%)] lg:bg-[linear-gradient(90deg,rgba(255,253,248,.28),transparent_35%)]" /><div className="absolute bottom-5 right-5 rounded-[22px] border border-white/30 bg-[#032f2d]/88 px-5 py-4 text-white shadow-xl backdrop-blur-xl"><div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-[#73e3d9]"><Star size={12} /> Built for the VI</div><div className="mt-1 text-sm font-black">St. Thomas · St. John · St. Croix</div></div></div></div></div></section>
+
+      <ViPublicFooter />
     </main>
   );
 }
