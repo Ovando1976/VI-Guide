@@ -54,8 +54,9 @@ function tokens(value: string) {
 function inferIntent(message: string) {
   const text = message.toLowerCase();
   if (/book|reserve|ticket|room/.test(text)) return "booking";
+  if (/\bday\b|today|itinerary|schedule|cruise/.test(text)) return "day_plan";
   if (/ride|taxi|pickup|drop.?off|ferry|transport/.test(text)) return "mobility";
-  if (/day|itinerary|schedule|cruise|plan/.test(text)) return "day_plan";
+  if (/\bplan\b/.test(text)) return "day_plan";
   if (/history|historic|governor|timeline|heritage/.test(text)) return "knowledge";
   if (/where|nearby|recommend|best|find/.test(text)) return "recommendation";
   return "discovery";
@@ -148,6 +149,7 @@ function recommendationMapType(kind: TravelKnowledgeKind) {
 function buildRecommendations(
   request: IntelligenceRequest,
   context: IntelligenceContext,
+  intent: ReturnType<typeof inferIntent>,
 ): IntelligenceRecommendation[] {
   const queryTokens = tokens(
     `${request.message} ${context.preferences.interests.join(" ")}`,
@@ -186,11 +188,13 @@ function buildRecommendations(
 
   const heritageQuery = request.message.toLowerCase();
   if (
+    intent === "knowledge" &&
     /history|historic|heritage|governor|timeline|emancipation|transfer/.test(
       heritageQuery,
     )
   ) {
     for (const record of getAllHeritageRecords().slice(0, 300)) {
+      if (record.island && record.island !== context.island) continue;
       const haystack = [
         record.title,
         record.summary,
@@ -374,7 +378,7 @@ export function runIntelligenceEngine(
 ): IntelligenceResponse {
   const context = normalizeContext(request.context);
   const intent = inferIntent(request.message);
-  const recommendations = buildRecommendations(request, context);
+  const recommendations = buildRecommendations(request, context, intent);
   const plan = buildPlan(intent, context, recommendations);
   const actions = buildActions(intent, context, plan, recommendations);
   const warnings: string[] = [];
