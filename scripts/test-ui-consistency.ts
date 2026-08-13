@@ -7,6 +7,7 @@ function source(path: string) {
 }
 
 const home = source("app/page.tsx");
+const publicFooter = source("components/brand/vi-public-footer.tsx");
 const rootLayout = source("app/layout.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
@@ -153,6 +154,12 @@ assert.match(appNavigation, /\/map\?island=/);
 assert.match(appNavigation, /\/concierge\?island=/);
 assert.match(appNavigation, /base: "\/trips", label: "My Trip"/);
 assert.match(appNavigation, /"\/bookings"/);
+
+assert.match(home, /ViPublicFooter/);
+assert.doesNotMatch(home, /pb-\[calc\(12rem\+env\(safe-area-inset-bottom\)\)\]/);
+assert.match(publicFooter, /href="\/partners\/apply"/);
+assert.match(publicFooter, /\["Ride", "\/mobility"\]/);
+assert.match(publicFooter, /href="\/concierge\?open=true"/);
 
 assert.match(tripsPage, /TravelerTripCommandCenter/);
 assert.match(tripsPage, /TravelerTripReadinessPanel/);
