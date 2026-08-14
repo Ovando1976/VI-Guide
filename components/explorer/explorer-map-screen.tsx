@@ -882,15 +882,6 @@ export function ExplorerMapScreen() {
               luggage={luggage}
             />
 
-            <TerritoryModuleDock
-              island={island}
-              activeLens={activeLens}
-              counts={moduleCounts}
-              tripCount={savedTripIds.size}
-              onChangeLens={handleChangeLens}
-              onOpenConcierge={handleOpenConcierge}
-            />
-
             <section
               id="territory-workspace"
               className="scroll-mt-40 grid gap-4 xl:grid-cols-[minmax(0,1.75fr)_390px]"
@@ -972,6 +963,15 @@ export function ExplorerMapScreen() {
                 routeReady={routeReady}
               />
             </section>
+
+            <TerritoryModuleDock
+              island={island}
+              activeLens={activeLens}
+              counts={moduleCounts}
+              tripCount={savedTripIds.size}
+              onChangeLens={handleChangeLens}
+              onOpenConcierge={handleOpenConcierge}
+            />
 
             <TerritoryDirectory
               activeLens={activeLens}

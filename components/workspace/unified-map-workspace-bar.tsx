@@ -159,7 +159,7 @@ export function UnifiedMapWorkspaceBar() {
 
   return (
     <aside
-      className={`fixed inset-x-3 top-[max(.75rem,env(safe-area-inset-top))] z-[1400] mx-auto max-w-5xl overflow-hidden rounded-[22px] border border-white/50 bg-[#073b39]/96 text-white shadow-[0_16px_55px_rgba(4,51,49,.28)] backdrop-blur-xl transition-[max-height,padding] duration-300 sm:inset-x-5 ${
+      className={`relative z-30 mx-3 mt-3 max-w-5xl overflow-hidden rounded-[22px] border border-white/50 bg-[#073b39]/96 text-white shadow-[0_14px_40px_rgba(4,51,49,.2)] backdrop-blur-xl transition-[max-height,padding] duration-300 sm:mx-5 lg:mx-auto ${
         expanded ? "max-h-[450px] p-3" : "max-h-[92px] p-2.5"
       }`}
     >
