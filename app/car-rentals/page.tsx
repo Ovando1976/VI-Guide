@@ -53,7 +53,20 @@ export default function CarRentalsPage() {
 
 function IslandSection({ island, operators }: { island: CarRentalIsland; operators: CarRentalOperator[] }) {
   const visual = ISLAND_VISUALS[island];
-  return <section><div className="relative min-h-[190px] overflow-hidden rounded-[30px] p-6 text-white sm:p-8"><Image src={visual.image} alt={visual.alt} fill sizes="100vw" className="-z-20 object-cover" /><div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,47,45,.94),rgba(3,47,45,.42))]" /><div className="vi-eyebrow text-[#f5c451]">{operators.length} verified options</div><h3 className="vi-display mt-2 text-4xl font-bold">{CAR_RENTAL_ISLAND_NAMES[island]}</h3><p className="mt-3 max-w-xl text-sm font-semibold text-white/68">Compare pickup location, fleet emphasis, and operator policies before reserving.</p></div><div className="mt-5 grid gap-5 lg:grid-cols-2">{operators.map((operator) => <OperatorCard key={operator.id} operator={operator} />)}</div></section>;
+  return (
+    <section>
+      <div className="relative isolate min-h-[190px] overflow-hidden rounded-[30px] bg-[#032f2d] p-6 text-white sm:p-8">
+        <Image src={visual.image} alt={visual.alt} fill sizes="100vw" className="z-0 object-cover" />
+        <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(3,47,45,.94),rgba(3,47,45,.42))]" />
+        <div className="relative z-20">
+          <div className="vi-eyebrow text-[#f5c451]">{operators.length} verified options</div>
+          <h3 className="vi-display mt-2 text-4xl font-bold">{CAR_RENTAL_ISLAND_NAMES[island]}</h3>
+          <p className="mt-3 max-w-xl text-sm font-semibold text-white/80">Compare pickup location, fleet emphasis, and operator policies before reserving.</p>
+        </div>
+      </div>
+      <div className="mt-5 grid gap-5 lg:grid-cols-2">{operators.map((operator) => <OperatorCard key={operator.id} operator={operator} />)}</div>
+    </section>
+  );
 }
 
 function OperatorCard({ operator }: { operator: CarRentalOperator }) {
