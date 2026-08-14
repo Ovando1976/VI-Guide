@@ -24,7 +24,7 @@ export function DoorToDoorJourneyPlanner() {
         <div>
           <p className="text-xs font-black uppercase tracking-[.22em] text-[#b7861f]">Door-to-door island journey</p>
           <h2 className="mt-2 text-3xl font-black tracking-tight text-[#043331]">One trip. Ground + water + arrival.</h2>
-          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-600">VI Guide turns the ferry into one connected traveler journey instead of making you plan each transfer separately.</p>
+          <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-600">USVI Compass turns the ferry into one connected traveler journey instead of making you plan each transfer separately.</p>
         </div>
         <Route className="h-10 w-10 text-[#0b817b]" />
       </div>

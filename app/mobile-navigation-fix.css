@@ -1,6 +1,32 @@
 /* Production mobile navigation and booking repair.
    Keep the five primary destinations visible, compact, and clear of Safari's
    bottom chrome while preventing journey content from being obscured. */
+@media (min-width: 701px) and (max-width: 1023px) {
+  .app-nav {
+    width: calc(100dvw - 24px);
+    max-width: 680px;
+    gap: 3px;
+    padding: 7px;
+  }
+
+  .app-nav__brand {
+    display: none;
+  }
+
+  .app-nav__item {
+    min-width: 0;
+    flex: 1 1 0;
+    padding-inline: 6px;
+  }
+
+  /* The account item previously expanded into a page-wide sign-in slab in
+     iPad webviews and covered ferry controls. Account access remains in the
+     page header while the five core destinations stay usable in the dock. */
+  .app-nav__account {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
   body {
     padding-bottom: calc(92px + env(safe-area-inset-bottom));
@@ -63,7 +89,7 @@
 
   /* A sixth account control makes the dock too wide on iPhone. Account access
      remains available through page-level account UI. */
-  .app-nav > .relative {
+  .app-nav__account {
     display: none;
   }
 

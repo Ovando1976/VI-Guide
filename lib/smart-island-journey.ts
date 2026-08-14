@@ -1,4 +1,9 @@
-import { FERRY_ROUTES, type FerryPortId, type FerryRoute } from "@/lib/ferry-planner";
+import {
+  FERRY_PORT_COORDINATES,
+  FERRY_ROUTES,
+  type FerryPortId,
+  type FerryRoute,
+} from "@/lib/ferry-planner";
 
 export type JourneyIsland = "stt" | "stj" | "stx";
 export type JourneyTimeMode = "departAfter" | "arriveBy";
@@ -16,21 +21,8 @@ export type JourneyPlace = {
 
 export type JourneyCoordinates = { lat: number; lng: number };
 
-export const FERRY_TERMINAL_COORDS: Record<FerryPortId, JourneyCoordinates> = {
-  "red-hook": { lat: 18.3268, lng: -64.8493 },
-  "charlotte-amalie": { lat: 18.3394, lng: -64.9349 },
-  "cruz-bay": { lat: 18.3311, lng: -64.7955 },
-  "gallows-bay": { lat: 17.7494, lng: -64.6998 },
-  "crown-bay": { lat: 18.3365, lng: -64.9517 },
-  "phillips-landing": { lat: 18.3182, lng: -64.9537 },
-  "road-town": { lat: 18.4228, lng: -64.6176 },
-  "west-end": { lat: 18.3868, lng: -64.7047 },
-  "spanish-town": { lat: 18.4463, lng: -64.4347 },
-  "trellis-bay": { lat: 18.4454, lng: -64.5308 },
-  "great-harbour": { lat: 18.4471, lng: -64.7516 },
-  "setting-point": { lat: 18.724, lng: -64.3866 },
-  "enighed-pond": { lat: 18.3299, lng: -64.7908 },
-};
+export const FERRY_TERMINAL_COORDS: Record<FerryPortId, JourneyCoordinates> =
+  FERRY_PORT_COORDINATES;
 
 export type SmartJourneyLeg = {
   mode: "taxi" | "ferry";
