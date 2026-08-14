@@ -11,10 +11,17 @@
   }
 }
 
-@media (min-width: 701px) and (max-width: 1023px) {
+/* iPad/tablet webviews still use the floating dock. Reserve real document
+   space for it so the final card/CTA cannot scroll underneath the nav. */
+@media (min-width: 701px) and (max-width: 1180px) {
+  body {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom));
+  }
+
   .app-nav {
-    width: calc(100dvw - 24px);
-    max-width: 680px;
+    width: calc(100dvw - 32px);
+    max-width: 760px;
+    bottom: max(14px, env(safe-area-inset-bottom));
     gap: 3px;
     padding: 7px;
   }
