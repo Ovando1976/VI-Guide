@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   BedDouble,
   Compass,
@@ -40,6 +40,7 @@ type Props = {
   basePath: string;
   iconName: "waves" | "utensils-crossed" | "bed-double" | "landmark";
   categoryLabel?: string;
+  featuredContent?: ReactNode;
 };
 
 const DESTINATIONS: Array<{
@@ -72,6 +73,7 @@ export function DiscoveryDirectoryPage({
   basePath,
   iconName,
   categoryLabel = "Experience",
+  featuredContent,
 }: Props) {
   const Icon =
     iconName === "waves"
@@ -269,6 +271,8 @@ export function DiscoveryDirectoryPage({
             </div>
           </div>
         </section>
+
+        {featuredContent}
 
         <section>
           <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
