@@ -79,11 +79,11 @@ export function TerritoryMapWorkspace({
 
   return (
     <section className="territory-map-stage overflow-hidden rounded-[34px] border border-[#0f766e]/15 bg-[#032f2d] shadow-[0_32px_90px_rgba(3,47,45,.18)]">
-      <div className="territory-map-stage__header relative overflow-hidden border-b border-white/10 px-4 py-4 text-white md:px-5 md:py-5">
+      <div className="territory-map-stage__header relative overflow-hidden border-b border-white/10 px-4 py-3.5 text-white md:px-5 md:py-4">
         <div className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-[#28c8bd]/15 blur-3xl" />
         <div className="pointer-events-none absolute -left-12 bottom-[-120px] h-52 w-52 rounded-full bg-[#f5c451]/10 blur-3xl" />
 
-        <div className="relative flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+        <div className="relative flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-[#f5c451]/25 bg-[#f5c451]/10 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.18em] text-[#f8d77c]">
@@ -91,16 +91,16 @@ export function TerritoryMapWorkspace({
               </span>
               <RouteStatus status={routeStatus} message={routeMessage} />
             </div>
-            <h2 className="vi-display mt-3 text-3xl font-black leading-none tracking-[-.045em] text-white md:text-4xl">
-              Explore the island, not a dashboard.
+            <h2 className="vi-display mt-2 text-2xl font-black leading-none tracking-[-.04em] text-white md:text-3xl">
+              Tap the island. Build the day.
             </h2>
-            <p className="mt-2 max-w-xl text-sm font-semibold leading-6 text-white/58">
+            <p className="mt-2 hidden max-w-xl text-xs font-semibold leading-5 text-white/58 sm:block">
               Tap a marker to reveal local context. Change the lens to move between places, beaches, stays, and history without leaving the map.
             </p>
           </div>
 
-          <div className="min-w-0 xl:max-w-[620px]">
-            <div className="mb-2 flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-white/40">
+          <div className="min-w-0 lg:max-w-[620px]">
+            <div className="mb-1.5 flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-white/40">
               <Layers3 className="h-3.5 w-3.5 text-[#7ce0d4]" /> Choose a map lens
             </div>
             <div
@@ -131,7 +131,7 @@ export function TerritoryMapWorkspace({
         </div>
       </div>
 
-      <div className="territory-map-stage__canvas relative min-h-[510px] bg-[#06131b] p-2 md:min-h-[610px] md:p-3">
+      <div className="territory-map-stage__canvas relative min-h-[58svh] bg-[#06131b] p-2 md:min-h-[610px] md:p-3">
         <div className="pointer-events-none absolute left-5 top-5 z-[450] hidden max-w-[280px] rounded-2xl border border-white/16 bg-[#032f2d]/88 px-4 py-3 text-white shadow-[0_14px_40px_rgba(2,31,29,.25)] backdrop-blur-xl sm:block">
           <div className="text-[8px] font-black uppercase tracking-[.17em] text-[#f5c451]">
             {activeLensLabel} lens active

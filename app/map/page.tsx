@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Compass, MapPinned, Navigation, Route, Sparkles } from "lucide-react";
+import { MapPinned, Navigation, Route, Sparkles } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
@@ -29,7 +29,7 @@ export default function MapPage() {
       <div className="map-customer-page min-h-screen bg-[#f4f1e8] pb-28 text-[#043331]">
         <TerrainDefaultController />
 
-        <div className="px-4 pt-5 sm:px-6 lg:pt-8">
+        <div className="hidden px-4 pt-5 sm:px-6 md:block lg:pt-8">
           <ViPublicHeader
             actionHref="/concierge?open=true&prompt=Help%20me%20explore%20the%20Virgin%20Islands%20from%20the%20Living%20Map"
             actionLabel="Ask Concierge"
@@ -39,22 +39,22 @@ export default function MapPage() {
           />
         </div>
 
-        <section className="mx-auto mt-5 max-w-[1680px] px-4 sm:px-6">
-          <div className="map-experience-hero relative isolate overflow-hidden rounded-[34px] border border-white/10 bg-[#043331] px-6 py-7 text-white shadow-[0_28px_80px_rgba(4,51,49,.2)] sm:px-8 sm:py-9 lg:px-10">
+        <section className="mx-auto max-w-[1680px] px-3 pt-3 sm:px-6 md:mt-4 md:pt-0">
+          <div className="map-experience-hero relative isolate overflow-hidden rounded-[26px] border border-white/10 bg-[#043331] px-4 py-4 text-white shadow-[0_20px_60px_rgba(4,51,49,.18)] sm:px-6 md:rounded-[30px] md:px-7 md:py-5">
             <div className="absolute inset-0 -z-20 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_52%] opacity-35" />
             <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(2,36,35,.98)_0%,rgba(3,51,49,.9)_44%,rgba(3,51,49,.54)_72%,rgba(3,51,49,.34)_100%)]" />
-            <div className="grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
               <div className="max-w-4xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#f5c451]/25 bg-[#f5c451]/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.22em] text-[#f8d77c]">
-                  <MapPinned className="h-4 w-4" /> VI Guide Living Map
+                <div className="inline-flex items-center gap-2 text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
+                  <MapPinned className="h-3.5 w-3.5" /> USVI Compass · Living Map
                 </div>
-                <h1 className="vi-display mt-4 max-w-4xl text-4xl font-black leading-[.92] tracking-[-.055em] sm:text-5xl lg:text-6xl">
-                  See the islands as a <span className="text-[#7ce0d4]">connected day.</span>
+                <h1 className="vi-display mt-2 max-w-4xl text-3xl font-black leading-[.95] tracking-[-.05em] sm:text-4xl lg:text-5xl">
+                  Your island, <span className="text-[#7ce0d4]">ready to explore.</span>
                 </h1>
-                <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-white/68 sm:text-base sm:leading-7">
-                  Discover a place, understand what is around it, save it to your trip, plan the route, and ask Concierge without leaving the map context.
+                <p className="mt-2 max-w-3xl text-xs font-semibold leading-5 text-white/68 sm:text-sm sm:leading-6">
+                  Tap the map first. Then save a stop, build the route, or ask Concierge with the place already in context.
                 </p>
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-3 hidden flex-wrap gap-1.5 lg:flex">
                   {MAP_MODES.map((mode) => (
                     <span
                       key={mode}
@@ -66,22 +66,22 @@ export default function MapPage() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 lg:max-w-[360px] lg:justify-end">
+              <div className="flex flex-wrap gap-2 md:max-w-[360px] md:justify-end">
                 <Link
                   href="#territory-workspace"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#f5c451] px-5 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] shadow-[0_12px_30px_rgba(245,196,81,.2)] transition hover:-translate-y-0.5"
+                  className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.12em] text-[#043331] shadow-[0_12px_30px_rgba(245,196,81,.2)] transition hover:-translate-y-0.5"
                 >
-                  <Compass className="h-4 w-4" /> Explore now
+                  <MapPinned className="h-4 w-4" /> Open map
                 </Link>
                 <Link
                   href="/mobility"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-white/[.13]"
+                  className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-4 text-[9px] font-black uppercase tracking-[.12em] text-white transition hover:bg-white/[.13]"
                 >
                   <Navigation className="h-4 w-4 text-[#7ce0d4]" /> Plan a ride
                 </Link>
                 <Link
                   href="/planner"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-5 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:bg-white/[.13]"
+                  className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-4 text-[9px] font-black uppercase tracking-[.12em] text-white transition hover:bg-white/[.13]"
                 >
                   <Route className="h-4 w-4 text-[#7ce0d4]" /> Plan itinerary
                 </Link>
