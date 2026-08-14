@@ -18,6 +18,20 @@ export function directoryRecordToDirectoryItem(
     tags: [...record.tags],
     featured: record.featured,
     bestFor: [...record.bestFor],
+    address: record.address,
+    phone: record.phone,
+    website: record.website,
+    hours: [...record.hours],
+    amenities: [...record.amenities],
+    accessNotes: [...record.accessNotes],
+    safetyNotes: [...record.safetyNotes],
+    fees: record.fees,
+    parking: record.parking,
+    accessibility: record.accessibility,
+    sourceLabel: record.sourceLabel,
+    sourceUrl: record.sourceUrl,
+    sourceUrls: [...record.sourceUrls],
+    verifiedAt: record.verifiedAt,
   };
 }
 

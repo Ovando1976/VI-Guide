@@ -112,6 +112,11 @@ function loadDataset(dataset: DirectoryDataset): readonly DirectoryRecord[] {
           ...record,
           tags: Object.freeze([...record.tags]),
           bestFor: Object.freeze([...record.bestFor]),
+          hours: Object.freeze([...record.hours]),
+          amenities: Object.freeze([...record.amenities]),
+          accessNotes: Object.freeze([...record.accessNotes]),
+          safetyNotes: Object.freeze([...record.safetyNotes]),
+          sourceUrls: Object.freeze([...record.sourceUrls]),
         })
       )
   );
@@ -148,6 +153,20 @@ function parseDirectoryRecord(
     tags: stringArray(record.tags),
     featured: optionalBoolean(record.featured) ?? false,
     bestFor: stringArray(record.bestFor),
+    address: optionalString(record.address),
+    phone: optionalString(record.phone),
+    website: optionalString(record.website),
+    hours: stringArray(record.hours),
+    amenities: stringArray(record.amenities),
+    accessNotes: stringArray(record.accessNotes),
+    safetyNotes: stringArray(record.safetyNotes),
+    fees: optionalString(record.fees),
+    parking: optionalString(record.parking),
+    accessibility: optionalString(record.accessibility),
+    sourceLabel: optionalString(record.sourceLabel),
+    sourceUrl: optionalString(record.sourceUrl),
+    sourceUrls: stringArray(record.sourceUrls),
+    verifiedAt: optionalString(record.verifiedAt),
   };
 }
 

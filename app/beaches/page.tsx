@@ -5,8 +5,8 @@ export default function BeachesPage() {
   return (
     <DiscoveryDirectoryPage
       eyebrow="Beaches"
-      title="Find the shoreline that fits your day"
-      description="From iconic bays to quieter island coves, explore beach options instantly and connect each stop to maps, rides, and the concierge."
+      title="Choose the right beach—not just a beautiful one"
+      description="Compare shoreline character, facilities, access, parking, safety notes, and best-use cases, then connect the stop to maps, rides, and your complete island plan."
       items={getTravelKnowledge("beaches")}
       basePath="/beaches"
       iconName="waves"

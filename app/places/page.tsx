@@ -5,8 +5,8 @@ export default function PlacesPage() {
   return (
     <DiscoveryDirectoryPage
       eyebrow="Explore"
-      title="Discover the Virgin Islands beyond the obvious"
-      description="Browse local dining, waterfront districts, island towns, and essential places without waiting on a database connection."
+      title="Eat local. Explore deeper. Move with confidence."
+      description="Compare restaurants, waterfront districts, island towns, attractions, and practical stops—then connect every discovery to the map, concierge, ride flow, and My Trip."
       items={getTravelKnowledge("places")}
       basePath="/places"
       iconName="utensils-crossed"

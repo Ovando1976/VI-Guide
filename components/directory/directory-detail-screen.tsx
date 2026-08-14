@@ -3,9 +3,14 @@
 import Link from "next/link";
 import { useMemo, useState, type ReactNode } from "react";
 import {
+  Accessibility,
+  AlertTriangle,
   ArrowLeft,
+  Car,
+  CircleDollarSign,
   Clock3,
   ExternalLink,
+  Footprints,
   MapPin,
   Navigation,
   Phone,
@@ -126,6 +131,21 @@ export function DirectoryDetailScreen({ slug, kind }: Props) {
               ) : null}
             </div>
           ) : null}
+
+          {item.accessNotes?.length || item.safetyNotes?.length ? (
+            <div className="grid gap-7 md:grid-cols-2">
+              {item.accessNotes?.length ? (
+                <Panel eyebrow="Arrival plan" title="Getting there">
+                  <NoteList values={item.accessNotes} icon={Footprints} />
+                </Panel>
+              ) : null}
+              {item.safetyNotes?.length ? (
+                <Panel eyebrow="Conditions matter" title="Safety notes">
+                  <NoteList values={item.safetyNotes} icon={AlertTriangle} tone="amber" />
+                </Panel>
+              ) : null}
+            </div>
+          ) : null}
         </>
       }
       aside={
@@ -141,6 +161,9 @@ export function DirectoryDetailScreen({ slug, kind }: Props) {
             {item.hours?.length ? (
               <Fact icon={Clock3} label="Hours" value={item.hours.join(" · ")} />
             ) : null}
+            {item.fees ? <Fact icon={CircleDollarSign} label="Fees" value={item.fees} /> : null}
+            {item.parking ? <Fact icon={Car} label="Parking" value={item.parking} /> : null}
+            {item.accessibility ? <Fact icon={Accessibility} label="Accessibility" value={item.accessibility} /> : null}
             {item.website ? (
               <Fact icon={ExternalLink} label="Website" value="Visit website" href={item.website} external />
             ) : null}
@@ -223,6 +246,19 @@ function PillList({ values }: { values: string[] }) {
         </span>
       ))}
     </div>
+  );
+}
+
+function NoteList({ values, icon: Icon, tone = "teal" }: { values: string[]; icon: typeof Footprints; tone?: "teal" | "amber" }) {
+  return (
+    <ul className="grid gap-3">
+      {values.map((value) => (
+        <li key={value} className={`flex gap-3 rounded-2xl border p-4 text-sm font-semibold leading-6 ${tone === "amber" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-[#cce5e0] bg-[#eef9f6] text-[#244b47]"}`}>
+          <Icon className={`mt-1 h-4 w-4 shrink-0 ${tone === "amber" ? "text-amber-600" : "text-[#0f766e]"}`} />
+          <span>{value}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 

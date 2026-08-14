@@ -27,4 +27,9 @@ export type DirectoryItem = {
   sourceUrl?: string;
   sourceUrls?: string[];
   verifiedAt?: string;
+  accessNotes?: string[];
+  safetyNotes?: string[];
+  fees?: string;
+  parking?: string;
+  accessibility?: string;
 };
