@@ -1,3 +1,4 @@
+import { BeachIntelligencePanel } from "@/components/beaches/beach-intelligence-panel";
 import { DiscoveryDirectoryPage } from "@/components/directory/discovery-directory-page";
 import { getTravelKnowledge } from "@/lib/travel-knowledge";
 
@@ -11,6 +12,7 @@ export default function BeachesPage() {
       basePath="/beaches"
       iconName="waves"
       categoryLabel="Beach"
+      featuredContent={<BeachIntelligencePanel />}
     />
   );
 }
