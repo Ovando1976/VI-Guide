@@ -40,6 +40,7 @@ const header = source("components/brand/vi-public-header.tsx");
 const navigation = source("components/app-navigation.tsx");
 const brand = source("components/brand/vi-brand-mark.tsx");
 const mapWorkspace = source("components/explorer/territory-map-workspace.tsx");
+const unifiedMapBar = source("components/workspace/unified-map-workspace-bar.tsx");
 const mapStoryRail = source("components/explorer/territory-intelligence-rail.tsx");
 const directoryCard = source("components/directory/directory-card.tsx");
 const detailShell = source("components/place/premium-detail-shell.tsx");
@@ -64,17 +65,18 @@ assert.match(homeLiveStatus, /magens-bay-beach-1\.jpg/);
 assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
-assert.match(mapPage, /VI Guide Living Map/);
-assert.match(mapPage, /connected day/);
+assert.match(mapPage, /USVI Compass · Living Map/);
+assert.match(mapPage, /Your island/);
 assert.match(mapPage, /Plan itinerary/);
 assert.doesNotMatch(mapPage, /Open trip/);
 assert.match(mapPage, /Ask Concierge/);
 
 assert.match(mapWorkspace, /territory-map-stage/);
-assert.match(mapWorkspace, /Explore the island, not a dashboard/);
+assert.match(mapWorkspace, /Tap the island\. Build the day\./);
 assert.match(mapWorkspace, /Choose a map lens/);
 assert.match(mapWorkspace, /Select a marker to turn the map into a trip decision/);
 assert.match(mapWorkspace, /Browse the island by estate/);
+assert.doesNotMatch(unifiedMapBar, /fixed inset-x-3/);
 
 assert.match(mapStoryRail, /territory-story-rail/);
 assert.match(mapStoryRail, /Local story/);
