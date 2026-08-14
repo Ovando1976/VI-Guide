@@ -41,10 +41,12 @@ type WeatherPayload = {
 
 type ProactiveTripIntelligenceProps = {
   mode?: "full" | "banner";
+  islandOverride?: IntelligenceIsland;
 };
 
 export function ProactiveTripIntelligence({
   mode = "full",
+  islandOverride,
 }: ProactiveTripIntelligenceProps) {
   const [memory, setMemory] = useState<IntelligenceMemory>({});
   const [journey, setJourney] = useState<JourneyPlan | null>(null);
@@ -74,12 +76,14 @@ export function ProactiveTripIntelligence({
     };
   }, []);
 
-  const activeTrip = useMemo(
+  const savedTrip = useMemo(
     () => summarizeJourneyPlan(journey) ?? memory.activeTrip,
     [journey, memory.activeTrip],
   );
+  const activeTrip =
+    islandOverride && savedTrip?.island !== islandOverride ? undefined : savedTrip;
   const island =
-    activeTrip?.island ?? memory.preferredIsland ?? ("stt" as IntelligenceIsland);
+    islandOverride ?? activeTrip?.island ?? memory.preferredIsland ?? ("stt" as IntelligenceIsland);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -111,7 +115,7 @@ export function ProactiveTripIntelligence({
     [activeTrip, alerts, memory],
   );
   const theme = statusTheme(report.status);
-  const promptHref = `/concierge?open=true&prompt=${encodeURIComponent(
+  const promptHref = `/concierge?island=${island}&open=true&prompt=${encodeURIComponent(
     buildTripRiskPrompt(report, activeTrip),
   )}`;
   const visibleIssues = report.issues.slice(0, mode === "banner" ? 2 : 5);

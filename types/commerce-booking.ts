@@ -28,6 +28,40 @@ export type CommerceRefundStatus =
   | "failed"
   | "review_required";
 
+export type CommerceCancellationPolicyCode =
+  | "flexible"
+  | "standard"
+  | "strict";
+
+export type CommerceCancellationPolicy = {
+  code: CommerceCancellationPolicyCode;
+  title: string;
+  travelerTerms: string;
+  providerTerms: string;
+  changeTerms: string;
+  fullRefundCutoffHours: number;
+  partialRefundCutoffHours: number | null;
+  partialRefundPercent: number | null;
+  verifiedAt: string;
+};
+
+export type CommerceCancellationRequestStatus =
+  | "not_requested"
+  | "review_required"
+  | "completed";
+
+export type CommercePriceBreakdown = {
+  currency: "USD";
+  baseCents: number;
+  taxesCents: number;
+  serviceFeesCents: number;
+  propertyFeesCents: number;
+  transportCents: number;
+  otherMandatoryFeesCents: number;
+  totalCents: number;
+  verifiedAt: string;
+};
+
 export type CommerceBookingRequest = {
   kind: CommerceBookingKind;
   listingId: string;
@@ -57,6 +91,14 @@ export type CommerceBooking = CommerceBookingRequest & {
   offerDepositCents?: number | null;
   depositAmountCents?: number;
   paidAmountCents?: number;
+  priceBreakdown?: CommercePriceBreakdown;
+  cancellationPolicy?: CommerceCancellationPolicy;
+  cancellationRequestStatus?: CommerceCancellationRequestStatus;
+  cancellationReasonCode?: string;
+  cancellationReason?: string;
+  cancellationRequestedAt?: string;
+  cancellationResolvedAt?: string;
+  cancellationRefundEstimateCents?: number;
   paymentStatus?: CommercePaymentStatus;
   paymentHref?: string;
   checkoutSessionId?: string;

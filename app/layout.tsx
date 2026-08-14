@@ -20,11 +20,11 @@ import { JourneyCloudSync } from "@/components/journey/journey-cloud-sync";
 import { JourneyMapStateBridge } from "@/components/journey/journey-map-state-bridge";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://usviguide.com"),
-  applicationName: "VI Guide",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://usvi-compass.vercel.app"),
+  applicationName: "USVI Compass",
   title: {
-    default: "VI Guide — Explore the U.S. Virgin Islands",
-    template: "%s | VI Guide",
+    default: "USVI Compass — Explore the U.S. Virgin Islands",
+    template: "%s | USVI Compass",
   },
   description:
     "Explore beaches, places, stays, heritage, transportation, and grounded island plans across the U.S. Virgin Islands.",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: "VI Guide",
-    title: "VI Guide — Explore the U.S. Virgin Islands",
+    siteName: "USVI Compass",
+    title: "USVI Compass — Explore the U.S. Virgin Islands",
     description: "Plan rides, beaches, stays, experiences, cruise days, and connected island trips across the U.S. Virgin Islands.",
     url: "/",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "VI Guide",
+    title: "USVI Compass",
   },
   formatDetection: {
     telephone: false,

@@ -6,6 +6,8 @@ import {
 } from "@/lib/firebase-admin";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import { normalizeTimestamp } from "@/lib/timestamps";
+import { normalizeTrueTripPrice } from "@/lib/booking/true-trip-price";
+import { normalizeCancellationPolicy } from "@/lib/booking/cancellation-policy";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -58,6 +60,20 @@ export async function POST(request: NextRequest) {
       refundAmountCents: Number(data.refundAmountCents ?? 0),
       refundRequestedAt: normalizeTimestamp(data.refundRequestedAt) ?? null,
       refundUpdatedAt: normalizeTimestamp(data.refundUpdatedAt) ?? null,
+      cancellationPolicy: normalizeCancellationPolicy(data.cancellationPolicy),
+      cancellationRequestStatus: data.cancellationRequestStatus
+        ? String(data.cancellationRequestStatus)
+        : "not_requested",
+      cancellationReasonCode: data.cancellationReasonCode
+        ? String(data.cancellationReasonCode)
+        : null,
+      cancellationRequestedAt:
+        normalizeTimestamp(data.cancellationRequestedAt) ?? null,
+      cancellationResolvedAt:
+        normalizeTimestamp(data.cancellationResolvedAt) ?? null,
+      cancellationRefundEstimateCents: Number(
+        data.cancellationRefundEstimateCents ?? 0,
+      ),
       kind: String(data.kind ?? "experience"),
       listingId: String(data.listingId ?? "custom-request"),
       listingName: String(data.listingName ?? "VI Guide booking"),
@@ -72,6 +88,7 @@ export async function POST(request: NextRequest) {
       children: Number(data.children ?? 0),
       depositAmountCents: Number(data.depositAmountCents ?? 0),
       paidAmountCents: Number(data.paidAmountCents ?? 0),
+      priceBreakdown: normalizeTrueTripPrice(data.priceBreakdown),
       paymentHref: data.paymentHref ? String(data.paymentHref) : null,
       updatedAt:
         normalizeTimestamp(data.updatedAt ?? data.createdAt) ??

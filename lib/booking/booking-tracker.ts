@@ -15,6 +15,9 @@ import {
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
 import type {
   CommerceBookingKind,
+  CommerceCancellationPolicy,
+  CommerceCancellationRequestStatus,
+  CommercePriceBreakdown,
   CommerceBookingStatus,
 } from "@/types/commerce-booking";
 import type { IntelligenceIsland } from "@/types/intelligence";
@@ -62,6 +65,13 @@ export type BookingStatusSnapshot = {
   proposedTime?: string | null;
   depositAmountCents: number;
   paidAmountCents: number;
+  priceBreakdown?: CommercePriceBreakdown | null;
+  cancellationPolicy?: CommerceCancellationPolicy | null;
+  cancellationRequestStatus?: CommerceCancellationRequestStatus;
+  cancellationReasonCode?: string | null;
+  cancellationRequestedAt?: string | null;
+  cancellationResolvedAt?: string | null;
+  cancellationRefundEstimateCents?: number;
   paymentHref?: string | null;
 };
 

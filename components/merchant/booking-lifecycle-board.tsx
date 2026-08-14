@@ -19,6 +19,16 @@ type LifecycleBooking = {
   email: string;
   depositAmountCents?: number | null;
   paidAmountCents?: number | null;
+  priceBreakdown?: {
+    baseCents: number;
+    taxesCents: number;
+    serviceFeesCents: number;
+    propertyFeesCents: number;
+    transportCents: number;
+    otherMandatoryFeesCents: number;
+    totalCents: number;
+  } | null;
+  cancellationPolicy?: { code: "flexible" | "standard" | "strict" } | null;
   paymentStatus?: string | null;
   paymentHref?: string | null;
   checkoutSessionId?: string | null;
@@ -72,6 +82,8 @@ export function BookingLifecycleBoard() {
     booking: LifecycleBooking,
     status: MerchantTransition,
     depositAmountCents?: number,
+    priceBreakdown?: Record<string, number>,
+    cancellationPolicyCode?: "flexible" | "standard" | "strict",
   ) {
     setSavingId(booking.id);
     setError(null);
@@ -79,7 +91,7 @@ export function BookingLifecycleBoard() {
       const response = await fetch(`/api/merchant-bookings/${booking.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status, depositAmountCents }),
+        body: JSON.stringify({ status, depositAmountCents, priceBreakdown, cancellationPolicyCode }),
       });
       const payload = (await response.json().catch(() => null)) as
         | { booking?: Partial<LifecycleBooking>; error?: string }
@@ -173,12 +185,34 @@ function LifecycleCard({
     booking: LifecycleBooking,
     status: MerchantTransition,
     depositAmountCents?: number,
+    priceBreakdown?: Record<string, number>,
+    cancellationPolicyCode?: "flexible" | "standard" | "strict",
   ) => Promise<void>;
 }) {
   const [deposit, setDeposit] = useState(
     booking.depositAmountCents ? String(booking.depositAmountCents / 100) : "",
   );
   const depositCents = Math.round(Number(deposit || 0) * 100);
+  const [price, setPrice] = useState(() => ({
+    base: centsToDollars(booking.priceBreakdown?.baseCents),
+    taxes: centsToDollars(booking.priceBreakdown?.taxesCents),
+    serviceFees: centsToDollars(booking.priceBreakdown?.serviceFeesCents),
+    propertyFees: centsToDollars(booking.priceBreakdown?.propertyFeesCents),
+    transport: centsToDollars(booking.priceBreakdown?.transportCents),
+    otherMandatoryFees: centsToDollars(booking.priceBreakdown?.otherMandatoryFeesCents),
+  }));
+  const priceBreakdown = {
+    baseCents: dollarsToCents(price.base),
+    taxesCents: dollarsToCents(price.taxes),
+    serviceFeesCents: dollarsToCents(price.serviceFees),
+    propertyFeesCents: dollarsToCents(price.propertyFees),
+    transportCents: dollarsToCents(price.transport),
+    otherMandatoryFeesCents: dollarsToCents(price.otherMandatoryFees),
+  };
+  const totalCents = Object.values(priceBreakdown).reduce((sum, value) => sum + value, 0);
+  const [cancellationPolicyCode, setCancellationPolicyCode] = useState<
+    "flexible" | "standard" | "strict"
+  >(booking.cancellationPolicy?.code ?? "flexible");
   const canRequestPayment = ["requested", "reviewing"].includes(booking.status);
   const awaitingPayment = booking.status === "payment_required";
   const canConfirm = booking.status === "paid" && booking.paymentStatus === "paid";
@@ -209,22 +243,56 @@ function LifecycleCard({
       </div>
 
       {canRequestPayment ? (
-        <div className="mt-5 grid gap-3 sm:grid-cols-[220px_1fr]">
-          <label className="text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
-            Deposit amount (USD)
-            <input
-              type="number"
-              min="1"
-              step="0.01"
-              value={deposit}
-              onChange={(event) => setDeposit(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold normal-case tracking-normal text-[#043331] outline-none focus:border-teal-600"
-              placeholder="50.00"
-            />
-          </label>
-          <div className="rounded-2xl bg-[#f8f4ea] p-4 text-xs font-semibold leading-5 text-slate-600">
-            The traveler receives a secure VI Guide Checkout link. Payment is accepted only when Stripe confirms the exact session, amount, currency, email, and booking reference.
+        <div className="mt-5 space-y-4">
+          <div className="rounded-[24px] border border-teal-200 bg-teal-50/60 p-4">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">True Trip Price</p>
+                <p className="mt-1 text-sm font-bold text-slate-600">Enter every mandatory cost before requesting payment.</p>
+              </div>
+              <p className="text-2xl font-black text-[#043331]">{formatMoney(totalCents)}</p>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                ["base", "Base price"], ["taxes", "Taxes"],
+                ["serviceFees", "Service fees"], ["propertyFees", "Property / resort fees"],
+                ["transport", "Required transport"], ["otherMandatoryFees", "Other mandatory fees"],
+              ].map(([key, label]) => (
+                <label key={key} className="text-[9px] font-black uppercase tracking-[.13em] text-slate-500">
+                  {label} (USD)
+                  <input type="number" min="0" step="0.01" required value={price[key as keyof typeof price]}
+                    onChange={(event) => setPrice((current) => ({ ...current, [key]: event.target.value }))}
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold normal-case tracking-normal text-[#043331] outline-none focus:border-teal-600" />
+                </label>
+              ))}
+            </div>
           </div>
+          <div className="grid gap-3 sm:grid-cols-[220px_1fr]">
+            <label className="text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
+              Deposit amount (USD)
+              <input type="number" min="1" step="0.01" value={deposit}
+                onChange={(event) => setDeposit(event.target.value)}
+                className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold normal-case tracking-normal text-[#043331] outline-none focus:border-teal-600" placeholder="50.00" />
+            </label>
+            <div className="rounded-2xl bg-[#f8f4ea] p-4 text-xs font-semibold leading-5 text-slate-600">
+              The deposit is part of the total—not an added fee. The traveler sees this full breakdown before secure Stripe Checkout.
+            </div>
+          </div>
+          <label className="block rounded-[24px] border border-indigo-200 bg-indigo-50/60 p-4 text-[9px] font-black uppercase tracking-[.13em] text-indigo-700">
+            Cancellation policy shown before payment
+            <select
+              value={cancellationPolicyCode}
+              onChange={(event) => setCancellationPolicyCode(event.target.value as typeof cancellationPolicyCode)}
+              className="mt-2 w-full rounded-2xl border border-indigo-200 bg-white px-4 py-3 text-sm font-bold normal-case tracking-normal text-[#043331] outline-none"
+            >
+              <option value="flexible">Flexible — full refund 24+ hours before start</option>
+              <option value="standard">Standard — full 48+ hours; 50% at 24–48 hours</option>
+              <option value="strict">Strict — full 7+ days; 50% at 48 hours–7 days</option>
+            </select>
+            <span className="mt-2 block text-xs font-semibold normal-case tracking-normal text-indigo-950/65">
+              Provider cancellations remain eligible for a full refund of amounts paid.
+            </span>
+          </label>
         </div>
       ) : null}
 
@@ -244,8 +312,8 @@ function LifecycleCard({
         {canRequestPayment ? (
           <button
             type="button"
-            disabled={saving || depositCents <= 0}
-            onClick={() => void onTransition(booking, "payment_required", depositCents)}
+            disabled={saving || depositCents <= 0 || totalCents <= 0 || depositCents > totalCents}
+            onClick={() => void onTransition(booking, "payment_required", depositCents, priceBreakdown, cancellationPolicyCode)}
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-amber-400 px-4 text-[9px] font-black uppercase tracking-[.14em] text-[#043331] disabled:opacity-50"
           >
             <CircleDollarSign className="h-4 w-4" /> Request deposit
@@ -282,4 +350,13 @@ function formatMoney(cents?: number | null) {
     style: "currency",
     currency: "USD",
   }).format(Number(cents ?? 0) / 100);
+}
+
+function dollarsToCents(value: string) {
+  const amount = Number(value);
+  return Number.isFinite(amount) && amount >= 0 ? Math.round(amount * 100) : 0;
+}
+
+function centsToDollars(value?: number | null) {
+  return value ? (value / 100).toFixed(2) : "0.00";
 }

@@ -163,3 +163,155 @@ body:has(a[href="/planner"]) .trip-premium-surface {
     border-radius: 0 !important;
   }
 }
+
+/* USVI Compass cinematic public shell. These styles are intentionally
+   progressive: core links and content remain fully usable without motion. */
+.usvi-home {
+  background:
+    radial-gradient(circle at 4% 24%, rgba(40,200,189,.08), transparent 28rem),
+    radial-gradient(circle at 96% 58%, rgba(245,196,81,.10), transparent 28rem),
+    linear-gradient(180deg, #f7f1e7 0%, #f3f7f3 42%, #f5f0e6 100%);
+}
+
+.usvi-hero {
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.08);
+}
+
+.usvi-hero__aurora {
+  background:
+    radial-gradient(circle at 76% 16%, rgba(62,231,214,.30), transparent 24%),
+    radial-gradient(circle at 88% 56%, rgba(245,196,81,.17), transparent 22%),
+    linear-gradient(180deg, rgba(2,31,29,.05), rgba(2,31,29,.58));
+  animation: vi-aurora-drift 14s ease-in-out infinite alternate;
+}
+
+.usvi-hero__grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.vi-public-header--cinematic {
+  position: relative;
+  z-index: 30;
+  background: linear-gradient(110deg, rgba(3,51,49,.82), rgba(2,31,29,.66));
+  box-shadow: 0 28px 80px rgba(1,18,20,.28), inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.usvi-hero__copy {
+  animation: vi-rise-in .8s cubic-bezier(.2,.75,.25,1) both;
+}
+
+.usvi-command-card {
+  position: relative;
+  transform: perspective(1200px) rotateY(-1.5deg) rotateX(.6deg);
+  box-shadow: 0 45px 110px rgba(0,18,20,.42), inset 0 1px 0 rgba(255,255,255,.12);
+  animation: vi-card-arrive .9s .12s cubic-bezier(.2,.75,.25,1) both;
+}
+
+.usvi-command-card::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(72,223,210,.19), transparent 62%);
+  filter: blur(26px);
+  pointer-events: none;
+}
+
+.usvi-island-tile {
+  box-shadow: 0 22px 56px rgba(0,18,20,.25), inset 0 1px 0 rgba(255,255,255,.12);
+  transition: transform .4s cubic-bezier(.2,.75,.25,1), border-color .3s ease, box-shadow .3s ease;
+}
+
+.usvi-island-tile:hover {
+  transform: translateY(-6px);
+  border-color: rgba(245,196,81,.50);
+  box-shadow: 0 32px 78px rgba(0,18,20,.34), inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.usvi-search {
+  position: relative;
+  overflow: hidden;
+}
+
+.usvi-search::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  bottom: -100%;
+  left: -30%;
+  width: 18%;
+  transform: rotate(16deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+  animation: vi-search-sheen 7s 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.usvi-home > section:not(.usvi-hero) {
+  position: relative;
+}
+
+.usvi-home > section:not(.usvi-hero) > div {
+  isolation: isolate;
+}
+
+.usvi-home a:focus-visible {
+  outline: 3px solid rgba(245,196,81,.92);
+  outline-offset: 4px;
+}
+
+@keyframes vi-rise-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vi-card-arrive {
+  from { opacity: 0; transform: perspective(1200px) translateY(28px) rotateY(2deg); }
+  to { opacity: 1; transform: perspective(1200px) rotateY(-1.5deg) rotateX(.6deg); }
+}
+
+@keyframes vi-aurora-drift {
+  from { transform: scale(1) translate3d(0,0,0); }
+  to { transform: scale(1.08) translate3d(-1.5%,1%,0); }
+}
+
+@keyframes vi-search-sheen {
+  0%, 70% { left: -30%; opacity: 0; }
+  77% { opacity: 1; }
+  92%, 100% { left: 125%; opacity: 0; }
+}
+
+@media (max-width: 1023px) {
+  .usvi-command-card {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .usvi-hero {
+    padding-bottom: 2rem;
+  }
+
+  .usvi-command-card > div {
+    min-height: 500px;
+  }
+
+  .usvi-island-tile {
+    min-height: 142px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usvi-hero__aurora,
+  .usvi-hero__copy,
+  .usvi-command-card,
+  .usvi-search::after {
+    animation: none;
+  }
+
+  .usvi-command-card {
+    transform: none;
+  }
+}

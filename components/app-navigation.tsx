@@ -46,6 +46,8 @@ const EXPLORE_ROUTES = [
   "/history",
   "/accommodations",
   "/experiences",
+  "/activities",
+  "/car-rentals",
   "/events",
   "/fishing",
   "/offers",
@@ -212,7 +214,7 @@ export function AppNavigation() {
         <Link
           href="/"
           className="app-nav__brand"
-          aria-label="VI Guide public home"
+          aria-label="USVI Compass public home"
         >
           <ViBrandMark className="h-9 w-9 shrink-0" />
         </Link>
@@ -245,11 +247,14 @@ export function AppNavigation() {
   }
 
   return (
-    <nav aria-label="Primary navigation" className="app-nav">
+    <nav
+      aria-label="Primary navigation"
+      className={clsx("app-nav", pathname === "/" && "app-nav--home")}
+    >
       <Link
         href="/"
         className="app-nav__brand"
-        aria-label="VI Guide home"
+        aria-label="USVI Compass home"
       >
         <ViBrandMark className="h-9 w-9 shrink-0" />
       </Link>

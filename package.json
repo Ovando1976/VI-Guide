@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next-dev && NEXT_DIST_DIR=.next-dev next dev",
-    "prebuild": "tsx scripts/test-taxi-confidence.ts && tsx scripts/test-rider-pin-verification.ts && npm run test:api-contracts && npm run test:ui-consistency",
+    "prebuild": "tsx scripts/test-taxi-confidence.ts && tsx scripts/test-rider-pin-verification.ts && npm run test:true-trip-price && npm run test:customer-insights && npm run test:api-contracts && npm run test:ui-consistency",
     "build": "next build",
+    "test:true-trip-price": "node --import tsx scripts/test-true-trip-price.ts",
+    "test:customer-insights": "node --import tsx scripts/test-customer-insights.ts && tsx scripts/test-market-coverage.ts",
     "start": "next start",
     "release:check": "npm run typecheck && npm run build",
     "commerce:ledger:rehearse": "tsx scripts/rehearse-commerce-ledger.ts",

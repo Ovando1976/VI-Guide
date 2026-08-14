@@ -18,7 +18,8 @@ assert.equal(
 assert.match(todayPage, /<ViPublicHeader/);
 assert.match(todayPage, /actionHref="\/trips"/);
 assert.match(todayPage, /secondaryHref="\/planner"/);
-assert.match(todayPage, /<AiTripBriefScreen \/>/);
+assert.match(todayPage, /<AiTripBriefScreen initialIsland=\{island\} \/>/);
+assert.match(todayPage, /<ProactiveTripIntelligence mode="banner" islandOverride=\{island\} \/>/);
 assert.doesNotMatch(
   todayPage,
   /today-brief-shell|<style>/,
@@ -39,7 +40,9 @@ assert.match(workspace, /Your island day, in one place\./);
 assert.match(workspace, /Open Living Map/);
 assert.match(workspace, /href=\{`\/map\?island=\$\{island\}`\}/);
 assert.match(workspace, /Ask Concierge/);
-assert.match(workspace, /href="\/concierge"/);
+assert.match(workspace, /href=\{`\/concierge\?island=\$\{island\}`\}/);
+assert.match(workspace, /href=\{`\/mobility\?island=\$\{island\}`\}/);
+assert.match(workspace, /href=\{`\/accommodations\?island=\$\{island\}`\}/);
 
 assert.match(workspace, /askViIntelligence/);
 assert.match(workspace, /getIntelligenceMemory/);
@@ -51,5 +54,17 @@ assert.match(workspace, /workflowId: response\?\.orchestration\?\.context\?\.wor
 assert.match(workspace, /pendingActions\.map/);
 assert.match(workspace, /recommendations\.slice\(0, 6\)\.map/);
 assert.match(workspace, /plan\.slice\(0, 8\)\.map/);
+
+assert.match(workspace, /readSelectedTravelerTripPlanId/);
+assert.match(workspace, /activeJourney\?\.island === island/);
+assert.match(workspace, /Brief generated/);
+assert.match(workspace, /Suggested actions/);
+assert.match(workspace, /Saved-trip status/);
+assert.match(workspace, /Planning draft only/);
+assert.match(workspace, /Active trip connected/);
+assert.match(workspace, /not a saved or confirmed itinerary/);
+assert.doesNotMatch(workspace, /label="Trip progress"/);
+assert.doesNotMatch(workspace, /Good to go on/);
+assert.doesNotMatch(workspace, /Ready for today/);
 
 console.log("VI Guide My Day shared-shell contracts passed.");

@@ -21,7 +21,7 @@ export function HomeIntentLauncher() {
       <div className="rounded-[36px] border border-[#d5e4df] bg-[#fffdf8] p-5 shadow-[0_24px_70px_rgba(2,31,29,.09)] sm:p-8 lg:p-10">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div><div className="vi-eyebrow text-[#9b5d12]">Start with what you need</div><h2 id="traveler-intent-title" className="vi-display mt-3 max-w-3xl text-4xl font-bold leading-[.95] text-[#032f2d] sm:text-5xl">Where are you in your Virgin Islands journey?</h2></div>
-          <p className="max-w-lg text-sm font-semibold leading-6 text-slate-600">Pick the situation that fits. VI Guide will take you into the right workflow instead of making you figure out which feature to open first.</p>
+          <p className="max-w-lg text-sm font-semibold leading-6 text-slate-600">Pick the situation that fits. USVI Compass will take you into the right workflow instead of making you figure out which feature to open first.</p>
         </div>
         <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           {INTENTS.map(({ id, eyebrow, title, detail, href, cta, icon: Icon, image, alt }) => (

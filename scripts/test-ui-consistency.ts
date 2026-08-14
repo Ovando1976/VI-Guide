@@ -7,10 +7,14 @@ function source(path: string) {
 }
 
 const home = source("app/page.tsx");
+const homeIslandDayPreview = source("components/home/home-island-day-preview.tsx");
+const publicFooter = source("components/brand/vi-public-footer.tsx");
 const rootLayout = source("app/layout.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const todayPage = source("app/today/page.tsx");
+const aiTripBriefScreen = source("components/intelligence/ai-trip-brief-screen.tsx");
+const proactiveTripIntelligence = source("components/intelligence/proactive-trip-intelligence.tsx");
 const travelerTripCommand = source("components/trips/traveler-trip-command-center.tsx");
 const travelerTripModel = source("lib/traveler-trip-command.ts");
 const travelerTripReadiness = source("components/trips/traveler-trip-readiness-panel.tsx");
@@ -35,6 +39,7 @@ const premiumDetailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
 const addToJourneyButton = source("components/journey/add-to-journey-button.tsx");
 const mobility = source("components/mobility-booking-screen.tsx");
+const mobilityBooking = source("components/booking-panel.tsx");
 const mapPage = source("app/map/page.tsx");
 const mapEntityContextBar = source("components/map/map-entity-context-bar.tsx");
 const appNavigation = source("components/app-navigation.tsx");
@@ -153,6 +158,26 @@ assert.match(appNavigation, /\/concierge\?island=/);
 assert.match(appNavigation, /base: "\/trips", label: "My Trip"/);
 assert.match(appNavigation, /"\/bookings"/);
 
+assert.match(home, /ViPublicFooter/);
+assert.match(home, /HomeIslandDayPreview/);
+assert.doesNotMatch(home, /Live island intelligence/);
+assert.doesNotMatch(home, />Calm</);
+assert.match(homeIslandDayPreview, /writeActiveIsland/);
+assert.match(homeIslandDayPreview, /href=\{`\/today\?island=\$\{island\}`\}/);
+assert.match(homeIslandDayPreview, /Planning preview—not live weather/);
+assert.doesNotMatch(home, /pb-\[calc\(12rem\+env\(safe-area-inset-bottom\)\)\]/);
+assert.match(publicFooter, /href="\/partners\/apply"/);
+assert.match(publicFooter, /\["Ride", "\/mobility"\]/);
+assert.match(publicFooter, /href="\/concierge\?open=true"/);
+
+for (const [name, contents] of [
+  ["directory surfaces", directory],
+  ["premium detail shell", premiumDetailShell],
+  ["mobility", mobility],
+] as const) {
+  assert.match(contents, /ViPublicFooter/, `${name} must use ViPublicFooter`);
+}
+
 assert.match(tripsPage, /TravelerTripCommandCenter/);
 assert.match(tripsPage, /TravelerTripReadinessPanel/);
 assert.match(tripsPage, /ProactiveTripIntelligence/);
@@ -190,6 +215,15 @@ assert.match(journeyPlannerModel, /rememberJourneyDeletion/);
 assert.match(journeyPlannerModel, /forgetJourneyDeletion/);
 assert.match(todayPage, /ProactiveTripIntelligence/);
 assert.match(todayPage, /actionHref="\/trips"/);
+assert.match(todayPage, /normalizeActiveIsland/);
+assert.match(todayPage, /islandOverride=\{island\}/);
+assert.match(todayPage, /initialIsland=\{island\}/);
+assert.match(aiTripBriefScreen, /void loadWorkspace\(initialIsland\)/);
+assert.match(aiTripBriefScreen, /\/mobility\?island=\$\{island\}/);
+assert.match(aiTripBriefScreen, /\/accommodations\?island=\$\{island\}/);
+assert.match(proactiveTripIntelligence, /islandOverride/);
+assert.match(proactiveTripIntelligence, /savedTrip\?\.island !== islandOverride/);
+assert.match(proactiveTripIntelligence, /\/concierge\?island=\$\{island\}/);
 
 assert.match(savedPlacesBoard, /readSavedPlaces/);
 assert.match(savedPlacesBoard, /AddToJourneyButton/);
@@ -254,5 +288,22 @@ for (const token of [
 ]) {
   assert.ok(globals.includes(token), `Missing shared UI token ${token}`);
 }
+
+assert.match(appNavigation, /pathname === "\/" && "app-nav--home"/);
+assert.match(globals, /@media \(min-width: 1024px\)/);
+assert.match(globals, /\.app-nav--home \{[\s\S]*?display: none;/);
+assert.match(globals, /body:has\(\.app-nav--home\) \{[\s\S]*?padding-bottom: 0;/);
+
+assert.match(mobilityBooking, /furthestStep/);
+assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
+assert.match(mobilityBooking, /if \(routeReady\) return/);
+assert.doesNotMatch(mobilityBooking, /routeReady \|\| activeStep === 1/);
+assert.match(mobilityBooking, /setFurthestStep\(1\)/);
+assert.match(mobilityBooking, /\}, \[routeReady\]\);/);
+assert.match(mobilityBooking, /advanceToStep\(4\)/);
+assert.match(mobilityBooking, /new Intl\.Collator/);
+assert.match(mobilityBooking, /numeric: true/);
+assert.match(mobilityBooking, /sortedEstates\.map/);
+assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
 
 console.log("VI Guide UI and customer-journey consistency contracts passed.");
