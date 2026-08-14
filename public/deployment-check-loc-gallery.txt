@@ -1,4 +1,4 @@
-VI Guide Library of Congress gallery deployment marker
+USVI Explorer Library of Congress gallery deployment marker
 Corrected gallery source: app/heritage/library-of-congress/page.tsx
 Expected production branch: main
 Created: 2026-07-21

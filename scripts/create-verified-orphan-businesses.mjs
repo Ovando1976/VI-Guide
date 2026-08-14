@@ -60,7 +60,7 @@ for (const orphan of report.orphans ?? []) {
     name: title,
     island,
     category: mappedCategory,
-    description: `${title} is a local ${mappedCategory === "food" ? "dining and gathering place" : "shopping destination"} included in the VI Guide island catalog.`,
+    description: `${title} is a local ${mappedCategory === "food" ? "dining and gathering place" : "shopping destination"} included in the USVI Explorer island catalog.`,
     heroImage: image,
     tags: [mappedCategory, island, "local business"],
     featured: false,

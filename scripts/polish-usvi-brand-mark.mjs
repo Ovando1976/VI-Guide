@@ -6,7 +6,7 @@ const root = process.cwd();
 const navFile = path.join(root, "components/app-navigation.tsx");
 
 if (!fs.existsSync(navFile)) {
-  throw new Error("Run this script from the VI Guide project root.");
+  throw new Error("Run this script from the USVI Explorer project root.");
 }
 
 const before = fs.readFileSync(navFile, "utf8");
