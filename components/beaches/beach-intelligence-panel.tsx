@@ -23,11 +23,11 @@ type IslandCode = "stt" | "stj" | "stx";
 type LiveConditions = {
   temperatureF: number;
   windMph: number;
-  waveFeet: number;
-  wavePeriodSeconds: number;
-  aqi: number;
+  windDirection: string;
   precipitationChance: number;
-  updatedAt: string;
+  shortForecast: string;
+  updatedAt: string | null;
+  sourceUrl: string;
 };
 
 type IslandProfile = {
@@ -96,19 +96,13 @@ const ISLANDS: IslandProfile[] = [
 
 
 function regionalLabel(conditions: LiveConditions) {
-  if (conditions.waveFeet <= 2.5 && conditions.windMph <= 15) {
-    return { label: "Favorable regional signal", tone: "text-emerald-700 bg-emerald-50 border-emerald-200" };
+  if (conditions.windMph <= 15 && conditions.precipitationChance <= 30) {
+    return { label: "Favorable planning signal", tone: "text-emerald-700 bg-emerald-50 border-emerald-200" };
   }
-  if (conditions.waveFeet <= 4 && conditions.windMph <= 22) {
+  if (conditions.windMph <= 22 && conditions.precipitationChance <= 50) {
     return { label: "Compare sheltered shores", tone: "text-amber-800 bg-amber-50 border-amber-200" };
   }
-  return { label: "Use extra caution", tone: "text-rose-800 bg-rose-50 border-rose-200" };
-}
-
-function airLabel(aqi: number) {
-  if (aqi <= 50) return "Good";
-  if (aqi <= 100) return "Moderate";
-  return "Sensitive groups: check details";
+  return { label: "Check advisories closely", tone: "text-rose-800 bg-rose-50 border-rose-200" };
 }
 
 export function BeachIntelligencePanel() {
@@ -126,47 +120,28 @@ export function BeachIntelligencePanel() {
     setStatus("loading");
 
     async function loadConditions() {
-      const timezone = "America/Puerto_Rico";
-      const point = `latitude=${island.latitude}&longitude=${island.longitude}`;
-      const weatherUrl =
-        `https://api.open-meteo.com/v1/forecast?${point}&current=temperature_2m,wind_speed_10m&hourly=precipitation_probability&temperature_unit=fahrenheit&wind_speed_unit=mph&forecast_days=1&timezone=${timezone}`;
-      const marineUrl =
-        `https://marine-api.open-meteo.com/v1/marine?${point}&current=wave_height,wave_period&length_unit=imperial&forecast_days=1&timezone=${timezone}`;
-      const airUrl =
-        `https://air-quality-api.open-meteo.com/v1/air-quality?${point}&current=us_aqi,pm2_5&forecast_days=1&timezone=${timezone}`;
-
       try {
-        const responses = await Promise.all(
-          [weatherUrl, marineUrl, airUrl].map((url) =>
-            fetch(url, { signal: controller.signal, cache: "no-store" }),
-          ),
+        const response = await fetch(
+          `/api/beach-intelligence?island=${island.code}`,
+          { signal: controller.signal, cache: "no-store" },
         );
-        if (responses.some((response) => !response.ok)) {
-          throw new Error("A live conditions provider did not respond.");
-        }
-
-        const [weather, marine, air] = await Promise.all(
-          responses.map((response) => response.json()),
-        );
-        const currentHour = Math.max(
-          0,
-          weather.hourly.time.findIndex((time: string) => time >= weather.current.time),
-        );
-
+        if (!response.ok) throw new Error("Official forecast is unavailable.");
+        const payload = await response.json();
         setConditions({
-          temperatureF: Number(weather.current.temperature_2m ?? 0),
-          windMph: Number(weather.current.wind_speed_10m ?? 0),
-          waveFeet: Number(marine.current.wave_height ?? 0),
-          wavePeriodSeconds: Number(marine.current.wave_period ?? 0),
-          aqi: Number(air.current.us_aqi ?? 0),
-          precipitationChance: Number(
-            weather.hourly.precipitation_probability[currentHour] ?? 0,
-          ),
-          updatedAt: weather.current.time,
+          temperatureF: Number(payload.temperatureF ?? 0),
+          windMph: Number(payload.windMph ?? 0),
+          windDirection: String(payload.windDirection ?? ""),
+          precipitationChance: Number(payload.precipitationChance ?? 0),
+          shortForecast: String(payload.shortForecast ?? "Forecast available"),
+          updatedAt: payload.updatedAt ? String(payload.updatedAt) : null,
+          sourceUrl: String(payload.sourceUrl ?? "https://www.weather.gov/sju/"),
         });
         setStatus("ready");
       } catch (error) {
-        if ((error as Error).name !== "AbortError") setStatus("error");
+        if ((error as Error).name !== "AbortError") {
+          setConditions(null);
+          setStatus("error");
+        }
       }
     }
 
@@ -176,7 +151,8 @@ export function BeachIntelligencePanel() {
 
   const signal = conditions ? regionalLabel(conditions) : null;
   const recommendation =
-    conditions && (conditions.waveFeet > 2.5 || conditions.windMph > 15)
+    conditions &&
+    (conditions.windMph > 18 || conditions.precipitationChance > 40)
       ? island.shelteredChoice
       : island.calmChoice;
   const destination = encodeURIComponent(recommendation.name);
@@ -194,7 +170,7 @@ export function BeachIntelligencePanel() {
               Don’t just find a beach. Choose the right beach now.
             </h2>
             <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-white/68 sm:text-base">
-              Live regional marine, wind, rain, and air signals—connected to official advisories, maps, trip planning, and your ride.
+              Live NOAA/NWS weather signals—connected to official marine and water-quality advisories, port schedules, maps, trip planning, and your ride.
             </p>
           </div>
           <div className="flex rounded-full border border-white/15 bg-black/15 p-1.5 backdrop-blur" aria-label="Beach intelligence island">
@@ -241,10 +217,10 @@ export function BeachIntelligencePanel() {
 
           {conditions ? (
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <SignalCard icon={Waves} label="Regional waves" value={`${conditions.waveFeet.toFixed(1)} ft`} detail={`${conditions.wavePeriodSeconds.toFixed(0)} sec period`} />
-              <SignalCard icon={Wind} label="Wind" value={`${Math.round(conditions.windMph)} mph`} detail="Regional point" />
-              <SignalCard icon={CloudSun} label="Rain chance" value={`${Math.round(conditions.precipitationChance)}%`} detail={`${Math.round(conditions.temperatureF)}°F now`} />
-              <SignalCard icon={LifeBuoy} label="Air quality" value={String(Math.round(conditions.aqi))} detail={airLabel(conditions.aqi)} />
+              <SignalCard icon={CloudSun} label="Temperature" value={`${Math.round(conditions.temperatureF)}°F`} detail={conditions.shortForecast} />
+              <SignalCard icon={Wind} label="Wind" value={`${Math.round(conditions.windMph)} mph`} detail={conditions.windDirection || "Regional forecast"} />
+              <SignalCard icon={CloudSun} label="Rain chance" value={`${Math.round(conditions.precipitationChance)}%`} detail="Current forecast period" />
+              <SignalCard icon={Waves} label="Marine outlook" value="Official" detail="Open NWS marine forecast below" />
             </div>
           ) : (
             <div className="mt-5 rounded-[24px] border border-dashed border-[#bfd4cf] bg-[#f5faf8] p-6 text-sm font-semibold leading-6 text-slate-600">
@@ -294,9 +270,9 @@ export function BeachIntelligencePanel() {
             />
             <SourceLink
               icon={Waves}
-              title="NOAA sargassum risk"
-              description="Daily regional coastal-inundation risk from satellite and current models."
-              href="https://www.aoml.noaa.gov/phod/sargassum_inundation_report/"
+              title="NOAA/NWS marine conditions"
+              description="Official coastal-waters forecasts, hazards, wind, seas, and rip-current context."
+              href="https://www.weather.gov/sju/marine"
             />
             <SourceLink
               icon={Ship}
@@ -322,8 +298,8 @@ export function BeachIntelligencePanel() {
           </Link>
 
           <p className="mt-4 text-[10px] font-semibold leading-5 text-slate-500">
-            Regional conditions from Open-Meteo weather, marine, and air-quality services. Advisory links remain the controlling safety sources.
-            {conditions ? ` Updated ${new Date(conditions.updatedAt).toLocaleString("en-US", { timeZone: "America/St_Thomas", hour: "numeric", minute: "2-digit" })} AST.` : ""}
+            Forecast from NOAA/National Weather Service San Juan. Advisory links remain the controlling safety sources.
+            {conditions?.updatedAt ? ` Updated ${new Date(conditions.updatedAt).toLocaleString("en-US", { timeZone: "America/St_Thomas", hour: "numeric", minute: "2-digit" })} AST.` : ""}
           </p>
         </div>
       </div>
