@@ -19,6 +19,8 @@ export type FerryRoute = {
   serviceLabel: string;
   durationMinutes: number;
   departures: string[];
+  weekdayDepartures?: string[];
+  weekendDepartures?: string[];
   operatingDays: string;
   serviceDays?: number[];
   fareNote: string;
@@ -26,6 +28,10 @@ export type FerryRoute = {
   checkInMinutes: number;
   sourceLabel: string;
   sourceUrl: string;
+  operatorName?: string;
+  operatorPhones?: string[];
+  terminalName?: string;
+  terminalNote?: string;
   seasonal?: boolean;
 };
 
@@ -46,6 +52,10 @@ export const FERRY_PORTS = [
 const VIPA = "https://www.viport.com/schedules-ferrycargoschedules";
 const DAILY = [0, 1, 2, 3, 4, 5, 6];
 const THURSDAY_TO_MONDAY = [0, 1, 4, 5, 6];
+const RED_HOOK_WEEKDAYS = ["5:30 AM", "6:30 AM", "7:30 AM", "8:30 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM", "11:30 PM"];
+const RED_HOOK_WEEKENDS = RED_HOOK_WEEKDAYS.slice(1);
+const CRUZ_BAY_WEEKDAYS = ["6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
+const CRUZ_BAY_WEEKENDS = ["6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
 
 const RED_HOOK_FARE: FerryFare = {
   currency: "USD",
@@ -66,14 +76,20 @@ export const FERRY_ROUTES: FerryRoute[] = [
     toLabel: "Cruz Bay, St. John",
     serviceLabel: "Passenger ferry",
     durationMinutes: 20,
-    departures: ["5:30 AM*", "6:30 AM", "7:30 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM"],
-    operatingDays: "Daily; 5:30 AM departure except weekends",
+    departures: RED_HOOK_WEEKDAYS,
+    weekdayDepartures: RED_HOOK_WEEKDAYS,
+    weekendDepartures: RED_HOOK_WEEKENDS,
+    operatingDays: "Daily; weekday and weekend schedules differ",
     serviceDays: DAILY,
     fareNote: "VIPA lists $8.15 non-resident adult, $6 resident, $1 child and $4 per bag each way.",
     fare: RED_HOOK_FARE,
     checkInMinutes: 15,
     sourceLabel: "Virgin Islands Port Authority / Department of Public Works",
     sourceUrl: VIPA,
+    operatorName: "Transportation Services & Varlack Ventures",
+    operatorPhones: ["(340) 776-6282", "(340) 776-6412"],
+    terminalName: "Urman V. Fredericks Marine Terminal",
+    terminalNote: "Open 6 AM–midnight. The first 15 minutes of parking are free.",
   },
   {
     id: "cruz-bay-red-hook",
@@ -83,14 +99,20 @@ export const FERRY_ROUTES: FerryRoute[] = [
     toLabel: "Red Hook, St. Thomas",
     serviceLabel: "Passenger ferry",
     durationMinutes: 20,
-    departures: ["6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM"],
-    operatingDays: "Daily",
+    departures: CRUZ_BAY_WEEKDAYS,
+    weekdayDepartures: CRUZ_BAY_WEEKDAYS,
+    weekendDepartures: CRUZ_BAY_WEEKENDS,
+    operatingDays: "Daily; weekday and weekend schedules differ",
     serviceDays: DAILY,
     fareNote: "VIPA lists $8.15 non-resident adult, $6 resident, $1 child and $4 per bag each way.",
     fare: RED_HOOK_FARE,
     checkInMinutes: 15,
     sourceLabel: "Virgin Islands Port Authority / Department of Public Works",
     sourceUrl: VIPA,
+    operatorName: "Transportation Services & Varlack Ventures",
+    operatorPhones: ["(340) 776-6282", "(340) 776-6412"],
+    terminalName: "Loredon L. Boynes Sr. Dock",
+    terminalNote: "Main St. John passenger dock with ticket booth, restroom and open-air waiting area.",
   },
   {
     id: "charlotte-amalie-cruz-bay",
@@ -107,6 +129,8 @@ export const FERRY_ROUTES: FerryRoute[] = [
     checkInMinutes: 15,
     sourceLabel: "Virgin Islands Port Authority",
     sourceUrl: VIPA,
+    terminalName: "Edward W. Blyden IV Marine Terminal",
+    terminalNote: "Arrive at least 15 minutes early. Seasonal service must be confirmed.",
     seasonal: true,
   },
   {
@@ -124,6 +148,8 @@ export const FERRY_ROUTES: FerryRoute[] = [
     checkInMinutes: 15,
     sourceLabel: "Virgin Islands Port Authority",
     sourceUrl: VIPA,
+    terminalName: "Loredon L. Boynes Sr. Dock",
+    terminalNote: "Main St. John passenger dock with ticket booth, restroom and open-air waiting area.",
     seasonal: true,
   },
   {
@@ -142,6 +168,8 @@ export const FERRY_ROUTES: FerryRoute[] = [
     checkInMinutes: 30,
     sourceLabel: "Virgin Islands Port Authority",
     sourceUrl: VIPA,
+    operatorName: "QE IV Ferry",
+    terminalName: "Edward W. Blyden IV Marine Terminal",
   },
   {
     id: "gallows-bay-charlotte-amalie",
@@ -159,6 +187,8 @@ export const FERRY_ROUTES: FerryRoute[] = [
     checkInMinutes: 30,
     sourceLabel: "Virgin Islands Port Authority",
     sourceUrl: VIPA,
+    operatorName: "QE IV Ferry",
+    terminalName: "Gallows Bay Marine Facility",
   },
 ];
 
@@ -184,6 +214,11 @@ function departureMinutes(label: string) {
   return hour * 60 + Number(match[2]);
 }
 
+export function getDeparturesForWeekday(route: FerryRoute, weekday: number) {
+  if (weekday === 0 || weekday === 6) return route.weekendDepartures ?? route.departures;
+  return route.weekdayDepartures ?? route.departures;
+}
+
 export function getNextFerryDeparture(route: FerryRoute, now = new Date()): NextFerryDeparture | null {
   const clock = islandClock(now);
   const dayFormatter = new Intl.DateTimeFormat("en-US", { timeZone: "America/St_Thomas", weekday: "short" });
@@ -192,7 +227,7 @@ export function getNextFerryDeparture(route: FerryRoute, now = new Date()): Next
     const weekday = (clock.weekday + dayOffset) % 7;
     if (route.serviceDays && !route.serviceDays.includes(weekday)) continue;
 
-    for (const departure of route.departures) {
+    for (const departure of getDeparturesForWeekday(route, weekday)) {
       if (departure.endsWith("*") && (weekday === 0 || weekday === 6)) continue;
       const minutes = departureMinutes(departure);
       if (minutes === null) continue;
