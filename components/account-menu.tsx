@@ -84,7 +84,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
         href={`/login?next=${encodeURIComponent(pathname)}`}
         className={
           embedded
-            ? "app-nav__item shrink-0"
+            ? "app-nav__account app-nav__item shrink-0"
             : "fixed right-4 top-4 z-[1900] rounded-full border border-white/20 bg-[#043331] px-4 py-3 text-[10px] font-black uppercase tracking-[.18em] text-white shadow-xl"
         }
       >
@@ -115,7 +115,9 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     <div
       ref={root}
       className={
-        embedded ? "relative shrink-0" : "fixed right-4 top-4 z-[1900]"
+        embedded
+          ? "app-nav__account relative shrink-0"
+          : "fixed right-4 top-4 z-[1900]"
       }
     >
       <button

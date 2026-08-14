@@ -20,6 +20,8 @@ const journeyPage = source("app/journey/page.tsx");
 const journeyMapPage = source("app/map/journey/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
 const ferryPage = source("app/ferry/page.tsx");
+const ferryPlanner = source("components/ferry-planner.tsx");
+const ferryNetworkMap = source("components/ferry-network-map.tsx");
 const homeStatus = source("components/home/home-live-status.tsx");
 
 assert.match(model, /Cyril E\. King Airport → Cruz Bay/);
@@ -117,6 +119,12 @@ assert.match(ferryPage, /id="door-to-door"/);
 assert.match(ferryPage, /Ask VI Concierge/);
 assert.match(ferryPage, /DoorToDoorJourneyPlanner/);
 assert.match(ferryPage, /FerryPlanner/);
+assert.match(ferryPlanner, /FerryNetworkMap/);
+assert.match(ferryPlanner, /USVI Compass shows the published planning schedule/);
+assert.match(ferryNetworkMap, /MapContainer/);
+assert.match(ferryNetworkMap, /FERRY_PORT_COORDINATES/);
+assert.match(ferryNetworkMap, /Tap a route line/);
+assert.match(ferryNetworkMap, /Orange = passport route/);
 
 assert.match(homeStatus, /label: "Ferry \+ island journey"/);
 assert.match(homeStatus, /value: "Plan taxi \+ ferry as one trip"/);

@@ -1,10 +1,24 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, BadgeDollarSign, CalendarClock, Clock3, ExternalLink, Info, Luggage, MapPinned, Minus, Phone, Plus, Route, ShieldCheck, Ship, Sparkles, TicketCheck, Users } from "lucide-react";
 
 import { CAR_BARGE_ROUTES, FERRY_PORTS, FERRY_ROUTES, findFerryRoute, ferryRoutesFrom, getNextFerryDeparture, type FerryMode, type FerryPortId, type FerryRoute, type NextFerryDeparture } from "@/lib/ferry-planner";
+
+const FerryNetworkMap = dynamic(
+  () =>
+    import("@/components/ferry-network-map").then(
+      (module) => module.FerryNetworkMap,
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[280px] animate-pulse bg-[#dcefeb] sm:h-[340px]" />
+    ),
+  },
+);
 
 function Stepper({ label, value, onChange, minimum = 0 }: { label: string; value: number; onChange: (value: number) => void; minimum?: number }) {
   return (
@@ -31,29 +45,21 @@ function NetworkOverview({ mode, selectedRoute, onSelect }: { mode: FerryMode; s
   const routes = mode === "car-barge" ? CAR_BARGE_ROUTES : FERRY_ROUTES;
   return (
     <div className="mt-6 overflow-hidden rounded-[26px] border border-[#0b5b57]/15 bg-[#082f3b] text-white">
-      <div className="relative h-44 overflow-hidden sm:h-52">
-        <svg viewBox="0 0 800 240" role="img" aria-label="USVI and BVI ferry network overview" className="h-full w-full">
-          <rect width="800" height="240" fill="#082f3b" />
-          <path d="M65 170 Q130 138 205 166 T340 164" fill="none" stroke="#f4e7c5" strokeWidth="20" strokeLinecap="round" />
-          <path d="M390 123 Q470 82 535 105 T675 74" fill="none" stroke="#f4e7c5" strokeWidth="18" strokeLinecap="round" />
-          <path d="M520 182 Q585 160 645 178" fill="none" stroke="#f4e7c5" strokeWidth="14" strokeLinecap="round" />
-          {mode === "passenger" ? <>
-            <path d="M205 166 L340 164 M155 164 L340 164 M155 164 L450 105 M205 166 L390 123 M450 105 L535 105 M535 105 L645 178" fill="none" stroke="#2dd4bf" strokeWidth="3" strokeDasharray="8 7" />
-            <path d="M155 164 L450 105 M205 166 L390 123" fill="none" stroke="#fb923c" strokeWidth="3" strokeDasharray="8 7" />
-          </> : <path d="M205 177 L340 176" fill="none" stroke="#f3c44e" strokeWidth="5" strokeDasharray="10 7" />}
-          <g fill="#fff" stroke="#0b817b" strokeWidth="3">
-            <circle cx="155" cy="164" r="7"/><circle cx="205" cy="166" r="7"/><circle cx="340" cy="164" r="7"/><circle cx="390" cy="123" r="7"/><circle cx="450" cy="105" r="7"/><circle cx="535" cy="105" r="7"/><circle cx="645" cy="178" r="7"/>
-          </g>
-          <g fill="#d9e6e8" fontSize="13" fontWeight="700">
-            <text x="105" y="145">Crown Bay</text><text x="178" y="198">Red Hook</text><text x="310" y="198">Cruz Bay</text><text x="355" y="106">West End</text><text x="420" y="84">Road Town</text><text x="500" y="84">Virgin Gorda</text><text x="610" y="210">Jost Van Dyke</text>
-          </g>
-        </svg>
-        <div className="absolute left-3 top-3 rounded-full bg-black/25 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.14em] backdrop-blur">{mode === "passenger" ? "USVI + BVI network" : "St. Thomas ↔ St. John vehicle route"}</div>
-      </div>
+      <FerryNetworkMap
+        mode={mode}
+        selectedRouteId={selectedRoute?.id ?? null}
+        onSelect={onSelect}
+      />
       <div className="border-t border-white/10 p-4">
-        <p className="text-[10px] font-black uppercase tracking-[.16em] text-[#f3c44e]">Tap a route</p>
-        <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
-          {routes.slice(0, mode === "passenger" ? 12 : 2).map((item) => <button key={item.id} type="button" onClick={() => onSelect(item)} className={`shrink-0 rounded-full px-3 py-2 text-[11px] font-black ${selectedRoute?.id === item.id ? "bg-[#f3c44e] text-[#043331]" : "bg-white/10 text-white"}`}>{item.fromLabel.split(",")[0]} → {item.toLabel.split(",")[0]}</button>)}
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[.16em] text-[#f3c44e]">Popular connections</p>
+            <p className="mt-1 text-[11px] font-semibold text-white/60">Select a route here or directly on the map.</p>
+          </div>
+          <MapPinned className="h-5 w-5 shrink-0 text-[#65d8cf]" />
+        </div>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {routes.slice(0, mode === "passenger" ? 8 : 2).map((item) => <button key={item.id} type="button" onClick={() => onSelect(item)} aria-pressed={selectedRoute?.id === item.id} className={`min-w-0 rounded-2xl px-3 py-2.5 text-left text-[11px] font-black leading-4 transition ${selectedRoute?.id === item.id ? "bg-[#f3c44e] text-[#043331] shadow" : "bg-white/10 text-white hover:bg-white/15"}`}><span className="block truncate">{item.fromLabel.split(",")[0]}</span><span className="block truncate text-[9px] opacity-70">→ {item.toLabel.split(",")[0]}</span></button>)}
         </div>
       </div>
     </div>
@@ -251,7 +257,7 @@ export function FerryPlanner() {
           </div>
         </div>
       ) : null}
-      <p className="mt-4 text-xs font-semibold leading-5 text-slate-500">Schedules can change seasonally or operationally. VI Guide shows the published planning schedule and links to the government, tourism-board or operator source for final verification. {route?.requiresPassport ? "USVI–BVI travel requires a valid passport and customs/immigration processing." : "U.S. citizens do not need a passport for travel solely within the U.S. Virgin Islands."}</p>
+      <p className="mt-4 text-xs font-semibold leading-5 text-slate-500">Schedules can change seasonally or operationally. USVI Compass shows the published planning schedule and links to the government, tourism-board or operator source for final verification. {route?.requiresPassport ? "USVI–BVI travel requires a valid passport and customs/immigration processing." : "U.S. citizens do not need a passport for travel solely within the U.S. Virgin Islands."}</p>
     </section>
   );
 }
