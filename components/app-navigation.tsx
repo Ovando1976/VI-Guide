@@ -249,7 +249,11 @@ export function AppNavigation() {
   return (
     <nav
       aria-label="Primary navigation"
-      className={clsx("app-nav", pathname === "/" && "app-nav--home")}
+      className={clsx(
+        "app-nav",
+        pathname === "/" && "app-nav--home",
+        pathname === "/ferry" && "app-nav--ferry",
+      )}
     >
       <Link
         href="/"
