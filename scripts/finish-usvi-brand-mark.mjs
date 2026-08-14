@@ -5,7 +5,7 @@ const apply = process.argv.includes("--apply");
 const file = path.join(process.cwd(), "components/app-navigation.tsx");
 
 if (!fs.existsSync(file)) {
-  throw new Error("Run this script from the VI Guide project root.");
+  throw new Error("Run this script from the USVI Explorer project root.");
 }
 
 const source = fs.readFileSync(file, "utf8");

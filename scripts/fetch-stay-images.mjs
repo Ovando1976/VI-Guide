@@ -33,7 +33,7 @@ for (const entry of entries) {
   try {
     const page = overrides[entry.slug] ? null : await fetch(entry.website, {
       redirect: "follow",
-      headers: { "user-agent": "VI Guide catalog verifier/1.0" },
+      headers: { "user-agent": "USVI Explorer catalog verifier/1.0" },
       signal: AbortSignal.timeout(25000),
     });
     if (page && !page.ok) throw new Error(`property site returned ${page.status}`);
@@ -45,7 +45,7 @@ for (const entry of entries) {
     const sourceUrl = new URL(candidate.replace(/&amp;/g, "&"), finalUrl).href;
     const image = await fetch(sourceUrl, {
       redirect: "follow",
-      headers: { "user-agent": "VI Guide catalog verifier/1.0", referer: finalUrl },
+      headers: { "user-agent": "USVI Explorer catalog verifier/1.0", referer: finalUrl },
       signal: AbortSignal.timeout(25000),
     });
     if (!image.ok) throw new Error(`image returned ${image.status}`);

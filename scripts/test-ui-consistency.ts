@@ -1,9 +1,18 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 
 function source(path: string) {
   return readFileSync(resolve(process.cwd(), path), "utf8");
+}
+
+function sourcesUnder(path: string): string[] {
+  return readdirSync(resolve(process.cwd(), path), { withFileTypes: true }).flatMap(
+    (entry) => {
+      const childPath = `${path}/${entry.name}`;
+      return entry.isDirectory() ? sourcesUnder(childPath) : [source(childPath)];
+    },
+  );
 }
 
 const home = source("app/page.tsx");
@@ -305,5 +314,11 @@ assert.match(mobilityBooking, /new Intl\.Collator/);
 assert.match(mobilityBooking, /numeric: true/);
 assert.match(mobilityBooking, /sortedEstates\.map/);
 assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
+
+const customerFacingCatalog = [
+  ...sourcesUnder("data/travel-knowledge"),
+  ...sourcesUnder("public/images"),
+].join("\n");
+assert.doesNotMatch(customerFacingCatalog, /\bVI Guide\b|\bUSVI Compass\b/);
 
 console.log("USVI Explorer UI and customer-journey consistency contracts passed.");

@@ -70,7 +70,7 @@ for (const [slug, name, island, category] of newEntries) {
   if (existing.has(slug)) continue;
   const image = imageFor(slug);
   if (!image) continue;
-  const record = { id: slug, slug, name, island, category, description: `${name} is a visitor destination included in the VI Guide island catalog.`, heroImage: image, tags: [category, island, "local catalog"], featured: false };
+  const record = { id: slug, slug, name, island, category, description: `${name} is a visitor destination included in the USVI Explorer island catalog.`, heroImage: image, tags: [category, island, "local catalog"], featured: false };
   places.push(record);
   created.push(record);
 }
