@@ -23,6 +23,11 @@ export function historicSiteToDirectoryItem(
     images: [...site.images],
     tags: [...site.tags],
     featured: site.featured,
+    address: site.location,
+    sourceLabel: site.designation ?? "Public historic record",
+    sourceUrl: site.sourceUrls[0],
+    sourceUrls: [...site.sourceUrls],
+    verifiedAt: site.updatedAt ?? site.createdAt,
   };
 }
 

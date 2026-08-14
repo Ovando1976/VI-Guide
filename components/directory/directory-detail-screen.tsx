@@ -10,6 +10,7 @@ import {
   Navigation,
   Phone,
   Share2,
+  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 
@@ -128,7 +129,8 @@ export function DirectoryDetailScreen({ slug, kind }: Props) {
         </>
       }
       aside={
-        <Panel eyebrow="Location" title="Territory details">
+        <>
+          <Panel eyebrow="Location" title="Territory details">
           <div className="grid gap-3">
             <Fact icon={MapPin} label="Island" value={islandName} />
             {item.address ? <Fact icon={MapPin} label="Address" value={item.address} /> : null}
@@ -151,7 +153,25 @@ export function DirectoryDetailScreen({ slug, kind }: Props) {
           >
             <Navigation className="h-4 w-4" /> Directions
           </a>
-        </Panel>
+          </Panel>
+          <Panel eyebrow="Guide confidence" title="Know before you go">
+            <div className="grid gap-3">
+              <Fact
+                icon={ShieldCheck}
+                label={item.sourceUrl || item.sourceUrls?.length ? "Evidence" : "Catalog status"}
+                value={item.sourceLabel ?? (item.sourceUrl || item.sourceUrls?.length ? "Public source linked" : "Curated USVI Explorer entry")}
+              />
+              {item.verifiedAt ? <Fact icon={Clock3} label="Reviewed" value={formatReviewDate(item.verifiedAt)} /> : null}
+            </div>
+            {item.sourceUrl ? (
+              <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#b8dcd6] bg-[#eaf8f5] px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-[#0f766e] transition hover:border-[#0f766e]">
+                Inspect source <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : (
+              <p className="mt-4 rounded-2xl bg-[#fff7df] p-4 text-xs font-semibold leading-5 text-[#765820]">Hours, access, prices, and conditions can change. Confirm time-sensitive details before depending on this stop.</p>
+            )}
+          </Panel>
+        </>
       }
       below={
         <section className="space-y-4">
@@ -298,4 +318,15 @@ function formatIsland(island: DirectoryIsland) {
 
 function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function formatReviewDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
 }

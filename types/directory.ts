@@ -23,4 +23,8 @@ export type DirectoryItem = {
   amenities?: string[];
   bestFor?: string[];
   googlePlaceId?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  sourceUrls?: string[];
+  verifiedAt?: string;
 };

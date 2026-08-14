@@ -18,6 +18,7 @@ function sourcesUnder(path: string): string[] {
 const home = source("app/page.tsx");
 const homeIslandDayPreview = source("components/home/home-island-day-preview.tsx");
 const publicFooter = source("components/brand/vi-public-footer.tsx");
+const explorePage = source("app/explore/page.tsx");
 const rootLayout = source("app/layout.tsx");
 const tripPlanning = source("app/trip-planning/page.tsx");
 const tripsPage = source("app/trips/page.tsx");
@@ -314,6 +315,9 @@ assert.match(mobilityBooking, /new Intl\.Collator/);
 assert.match(mobilityBooking, /numeric: true/);
 assert.match(mobilityBooking, /sortedEstates\.map/);
 assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
+assert.match(explorePage, /Useful beats encyclopedic/);
+assert.match(explorePage, /Date verified/);
+assert.match(publicFooter, /Complete guide/);
 
 const customerFacingCatalog = [
   ...sourcesUnder("data/travel-knowledge"),

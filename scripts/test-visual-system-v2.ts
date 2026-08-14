@@ -43,6 +43,7 @@ const mapWorkspace = source("components/explorer/territory-map-workspace.tsx");
 const unifiedMapBar = source("components/workspace/unified-map-workspace-bar.tsx");
 const mapStoryRail = source("components/explorer/territory-intelligence-rail.tsx");
 const directoryCard = source("components/directory/directory-card.tsx");
+const explorePage = source("app/explore/page.tsx");
 const detailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
 
@@ -84,7 +85,8 @@ assert.match(mapStoryRail, /Your movement line/);
 assert.match(mapStoryRail, /Nearby island areas/);
 
 assert.match(directoryCard, /directory-story-card/);
-assert.match(directoryCard, /USVI Explorer verified/);
+assert.match(directoryCard, /Source checked/);
+assert.match(directoryCard, /Curated guide entry/);
 assert.match(directoryCard, /Open the story/);
 assert.match(directoryCard, /SavePlaceButton/);
 assert.match(directoryCard, /AddToJourneyButton/);
@@ -98,6 +100,12 @@ assert.match(placeActionBar, /place-decision-bar/);
 assert.match(placeActionBar, /Decide what happens next/);
 assert.match(placeActionBar, /Ask Concierge/);
 assert.match(placeActionBar, /Book \/ request/);
+
+assert.match(explorePage, /The complete island guide/);
+assert.match(explorePage, /Explore every module/);
+assert.match(explorePage, /Official and operator sources are shown when available/);
+assert.match(explorePage, /FERRY_ROUTES\.length \+ CAR_BARGE_ROUTES\.length/);
+assert.match(header, /href="\/explore"/);
 
 assert.match(tripsPage, /Your island story/);
 assert.match(tripsPage, /Readiness protected/);
