@@ -1,6 +1,16 @@
 /* Production mobile navigation and booking repair.
    Keep the five primary destinations visible, compact, and clear of Safari's
    bottom chrome while preventing journey content from being obscured. */
+@media (min-width: 1024px) {
+  .app-nav--ferry {
+    display: none;
+  }
+
+  body:has(.app-nav--ferry) {
+    padding-bottom: 0;
+  }
+}
+
 @media (min-width: 701px) and (max-width: 1023px) {
   .app-nav {
     width: calc(100dvw - 24px);
