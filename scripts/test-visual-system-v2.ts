@@ -44,6 +44,7 @@ const unifiedMapBar = source("components/workspace/unified-map-workspace-bar.tsx
 const mapStoryRail = source("components/explorer/territory-intelligence-rail.tsx");
 const directoryCard = source("components/directory/directory-card.tsx");
 const explorePage = source("app/explore/page.tsx");
+const historicDetail = source("app/historic/[slug]/page.tsx");
 const detailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
 
@@ -106,6 +107,9 @@ assert.match(explorePage, /Explore every module/);
 assert.match(explorePage, /Official and operator sources are shown when available/);
 assert.match(explorePage, /FERRY_ROUTES\.length \+ CAR_BARGE_ROUTES\.length/);
 assert.match(header, /href="\/explore"/);
+assert.match(historicDetail, /Historic evidence/);
+assert.match(historicDetail, /Open public source/);
+assert.match(historicDetail, /<Image src=\{site\.heroImage\}/);
 
 assert.match(tripsPage, /Your island story/);
 assert.match(tripsPage, /Readiness protected/);
