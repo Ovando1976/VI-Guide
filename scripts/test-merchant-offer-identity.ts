@@ -6,7 +6,7 @@ import {
 } from "../lib/merchant-offer-identity";
 
 assert.equal(humanizeOfferListingId("island-tour-one"), "Island Tour One");
-assert.equal(humanizeOfferListingId(""), "VI Guide business");
+assert.equal(humanizeOfferListingId(""), "USVI Explorer business");
 
 assert.deepEqual(
   resolveMerchantOfferListingIdentity({

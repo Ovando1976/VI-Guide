@@ -32,7 +32,7 @@ export async function fetchOfficialViWeatherAlerts(
     const response = await fetch(NWS_ALERTS_URL, {
       headers: {
         Accept: "application/geo+json",
-        "User-Agent": "VI-Guide/1.0 (https://vi-guide.vercel.app)",
+        "User-Agent": "USVI-Explorer/1.0 (https://usvi-explorer.com)",
       },
       signal: controller.signal,
       next: { revalidate: 300 },
@@ -55,7 +55,7 @@ export async function fetchOfficialViWeatherAlerts(
       alerts,
     };
   } catch (error) {
-    console.warn("VI Guide official weather alert signal is unavailable.", error);
+    console.warn("USVI Explorer official weather alert signal is unavailable.", error);
     return {
       status: "unavailable",
       checkedAt: new Date().toISOString(),

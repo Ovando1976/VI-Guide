@@ -212,7 +212,7 @@ export function TravelerTripCommandCenter({
         <div className="grid lg:grid-cols-[1.2fr_.8fr]">
           <div className="bg-[radial-gradient(circle_at_top_left,rgba(245,196,81,.24),transparent_36%),linear-gradient(145deg,#043331,#075e58)] p-6 sm:p-8 lg:p-10">
             <div className="text-[10px] font-black uppercase tracking-[.24em] text-[#f5c451]">
-              My VI Guide Trip
+              My USVI Explorer Trip
             </div>
             <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-[-.055em] sm:text-5xl">
               {travelerName ? `${firstName(travelerName)}, your trip is connected.` : "Your trip is connected."}
@@ -370,7 +370,7 @@ export function TravelerTripCommandCenter({
       </div>
 
       <section className="rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">Trip tools</p><h2 className="mt-1 text-2xl font-black tracking-[-.04em] text-[#043331]">Move through VI Guide without losing context.</h2></div></div>
+        <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">Trip tools</p><h2 className="mt-1 text-2xl font-black tracking-[-.04em] text-[#043331]">Move through USVI Explorer without losing context.</h2></div></div>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <ToolLink href="/places" icon={Compass} label="Explore" detail="Discover the next stop" />
           <TripCommandMapLink plan={selectedPlan} icon={Map} label="Living Map" detail="See trip context spatially" variant="tool" />

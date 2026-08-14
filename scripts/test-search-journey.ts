@@ -112,4 +112,4 @@ assert.match(directoryCard, /label="Ride"/);
 assert.match(directoryCard, /label="Ask VI"/);
 assert.match(directoryCard, /Open the story/);
 
-console.log("VI Guide shared Search, Community, Concierge grounding, Living Map handoff, and Events discovery contracts passed.");
+console.log("USVI Explorer shared Search, Community, Concierge grounding, Living Map handoff, and Events discovery contracts passed.");

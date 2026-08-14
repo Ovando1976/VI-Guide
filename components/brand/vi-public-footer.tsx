@@ -30,7 +30,7 @@ const FOOTER_GROUPS = [
     ],
   },
   {
-    label: "USVI Compass",
+    label: "USVI Explorer",
     links: [
       ["Our mission", "/mission"],
       ["Partner network", "/partners"],
@@ -49,9 +49,9 @@ export function ViPublicFooter() {
             <div className="flex items-center gap-3">
               <ViBrandMark className="h-14 w-14" />
               <div>
-                <div className="text-xl font-black tracking-[-.035em]">USVI Compass</div>
+                <div className="vi-wordmark text-xl font-black tracking-[-.035em]">USVI Explorer</div>
                 <div className="mt-1 flex items-center gap-1.5 text-[8px] font-black uppercase tracking-[.2em] text-[#9fe7df]">
-                  <MapPinned size={11} aria-hidden="true" /> Virgin Islands travel OS
+                  <MapPinned size={11} aria-hidden="true" /> Discover · plan · move
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export function ViPublicFooter() {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[8px] font-black uppercase tracking-[.16em] text-white/35 sm:flex-row sm:items-center sm:justify-between">
           <span className="inline-flex items-center gap-2"><Compass size={13} aria-hidden="true" /> Built for the U.S. Virgin Islands</span>
-          <span>Travel context · planning · mobility · local opportunity</span>
+          <span>usvi-explorer.com · Local insight for every island day</span>
         </div>
       </div>
     </footer>

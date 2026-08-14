@@ -174,7 +174,7 @@ export function ProactiveTripIntelligence({
                   {report.summary}
                 </h2>
                 <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
-                  VI Guide is checking schedule pressure, transfer buffers,
+                  USVI Explorer is checking schedule pressure, transfer buffers,
                   accessibility, booking uncertainty, official weather alerts,
                   and cruise return timing.
                 </p>

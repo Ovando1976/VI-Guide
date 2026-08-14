@@ -20,27 +20,27 @@ import { JourneyCloudSync } from "@/components/journey/journey-cloud-sync";
 import { JourneyMapStateBridge } from "@/components/journey/journey-map-state-bridge";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://usvi-compass.vercel.app"),
-  applicationName: "USVI Compass",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://usvi-explorer.com"),
+  applicationName: "USVI Explorer",
   title: {
-    default: "USVI Compass — Explore the U.S. Virgin Islands",
-    template: "%s | USVI Compass",
+    default: "USVI Explorer — Discover, Plan & Move Through the USVI",
+    template: "%s | USVI Explorer",
   },
   description:
-    "Explore beaches, places, stays, heritage, transportation, and grounded island plans across the U.S. Virgin Islands.",
+    "Discover beaches, stays, culture, dining and transportation, then turn local insight into one connected U.S. Virgin Islands trip.",
   manifest: "/manifest.webmanifest",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: "USVI Compass",
-    title: "USVI Compass — Explore the U.S. Virgin Islands",
-    description: "Plan rides, beaches, stays, experiences, cruise days, and connected island trips across the U.S. Virgin Islands.",
+    siteName: "USVI Explorer",
+    title: "USVI Explorer — Your Smart Virgin Islands Travel Companion",
+    description: "Discover, plan and move through St. Thomas, St. John and St. Croix with one connected local travel companion.",
     url: "/",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "USVI Compass",
+    title: "USVI Explorer",
   },
   formatDetection: {
     telephone: false,
@@ -54,7 +54,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#032f2d",
+  themeColor: "#062b3a",
   colorScheme: "light",
 };
 

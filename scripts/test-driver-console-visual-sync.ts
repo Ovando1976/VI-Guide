@@ -15,7 +15,7 @@ function expectSource(value: string, label: string) {
 
 expectSource(
   "bg-[linear-gradient(135deg,rgba(3,47,45,.98),rgba(7,80,76,.96))]",
-  "duty strip uses the VI Guide operations foundation",
+  "duty strip uses the USVI Explorer operations foundation",
 );
 expectSource("Driver control", "duty state has an explicit operating identity");
 expectSource(
@@ -144,4 +144,4 @@ expectSource(
   "association name and dispatch phone remain visible",
 );
 
-console.log("VI Guide Driver console visual and tariff contracts passed.");
+console.log("USVI Explorer Driver console visual and tariff contracts passed.");

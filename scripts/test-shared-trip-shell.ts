@@ -14,7 +14,7 @@ function expectSource(value: string, label: string) {
 }
 
 for (const [value, label] of [
-  ["ViPublicHeader", "shared trips stay inside the VI Guide public shell"],
+  ["ViPublicHeader", "shared trips stay inside the USVI Explorer public shell"],
   ['actionHref="/planner"', "shared trips keep My Trip continuation"],
   ['secondaryHref="/concierge"', "shared trips keep Concierge continuation"],
   ["ISLAND_CONTEXT_IMAGES", "shared trip hero remains island-context aware"],
@@ -35,10 +35,10 @@ for (const [value, label] of [
   ["A request does not", "proposal booking copy remains non-confirming"],
   ["guarantee availability and does not", "proposal booking copy remains non-guaranteeing"],
   ["create a charge", "proposal booking copy remains non-charging"],
-  ["Prepared through the VI Guide Travel Advisor workflow", "advisor disclosure remains visible"],
+  ["Prepared through the USVI Explorer Travel Advisor workflow", "advisor disclosure remains visible"],
   ["This is a planning proposal for review, not a confirmation.", "proposal remains explicitly read-only planning"],
 ] as const) {
   expectSource(value, label);
 }
 
-console.log("VI Guide shared trip traveler shell contracts passed.");
+console.log("USVI Explorer shared trip traveler shell contracts passed.");

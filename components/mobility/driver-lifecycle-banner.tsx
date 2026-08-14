@@ -26,7 +26,7 @@ export function DriverLifecycleBanner() {
             Run each ride one step at a time
           </h1>
           <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-white/68">
-            VI Guide only exposes the correct next trip action. Payment, assignment,
+            USVI Explorer only exposes the correct next trip action. Payment, assignment,
             driver identity, and lifecycle order are verified before every update.
           </p>
         </div>

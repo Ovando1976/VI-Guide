@@ -25,7 +25,7 @@ assert.deepEqual(publicPartnerApplicationStatus("new"), {
   status: "new",
   label: "Application received",
   message:
-    "VI Guide received the application and it is waiting for an initial business review.",
+    "USVI Explorer received the application and it is waiting for an initial business review.",
   action: "No action is required right now.",
 });
 assert.equal(
@@ -34,7 +34,7 @@ assert.equal(
 );
 assert.equal(
   publicPartnerApplicationStatus("needs_information").action,
-  "Check the contact email and respond to the VI Guide team.",
+  "Check the contact email and respond to the USVI Explorer team.",
 );
 assert.equal(publicPartnerApplicationStatus("approved").label, "Approved");
 assert.equal(

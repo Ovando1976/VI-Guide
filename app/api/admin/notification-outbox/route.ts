@@ -42,7 +42,7 @@ export async function GET() {
         event: clean(data.event, 80),
         audience: clean(data.audience, 40),
         listingId: clean(data.listingId, 160),
-        listingName: clean(data.listingName, 180) || "VI Guide booking",
+        listingName: clean(data.listingName, 180) || "USVI Explorer booking",
         recipientEmail: clean(data.recipientEmail, 220) || null,
         title: clean(data.title, 180),
         status: normalizeNotificationOutboxStatus(data.status) ?? "pending",

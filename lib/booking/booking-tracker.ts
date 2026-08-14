@@ -283,7 +283,7 @@ export function createSynchronizedBookingJourneyPlan(
     `Booking ${booking.reference} status: ${statusDetail.label}.`,
     statusDetail.nextStep,
     booking.status === "confirmed" || booking.status === "completed"
-      ? "This reservation is confirmed in VI Guide. Continue organizing transportation, meals, and nearby activities around it."
+      ? "This reservation is confirmed in USVI Explorer. Continue organizing transportation, meals, and nearby activities around it."
       : "Do not treat availability as confirmed until the status reaches Confirmed.",
   ].join("\n\n");
 
@@ -325,7 +325,7 @@ function bookingStatusDetail(status: CommerceBookingStatus) {
       return {
         label: "Under review",
         summary: "under review",
-        nextStep: "VI Guide is checking availability and request details.",
+        nextStep: "USVI Explorer is checking availability and request details.",
       };
     case "payment_required":
       return {
@@ -374,7 +374,7 @@ function bookingStatusDetail(status: CommerceBookingStatus) {
       return {
         label: "Request received",
         summary: "received and awaiting review",
-        nextStep: "VI Guide will update this itinerary as the request progresses.",
+        nextStep: "USVI Explorer will update this itinerary as the request progresses.",
       };
   }
 }
@@ -382,13 +382,13 @@ function bookingStatusDetail(status: CommerceBookingStatus) {
 function extractUserNotes(notes: string, reference: string) {
   const systemStarts = [
     `Booking ${reference} status:`,
-    `Created from VI Guide booking request ${reference}.`,
+    `Created from USVI Explorer booking request ${reference}.`,
   ];
   const genericSystemParagraphs = new Set([
     "The request is still under review and is not a confirmed reservation.",
     "Use this journey to organize the rest of the day without treating availability or payment as confirmed.",
     "Do not treat availability as confirmed until the status reaches Confirmed.",
-    "This reservation is confirmed in VI Guide. Continue organizing transportation, meals, and nearby activities around it.",
+    "This reservation is confirmed in USVI Explorer. Continue organizing transportation, meals, and nearby activities around it.",
   ]);
 
   return notes
@@ -399,7 +399,7 @@ function extractUserNotes(notes: string, reference: string) {
       (paragraph) =>
         !systemStarts.some((prefix) => paragraph.startsWith(prefix)) &&
         !genericSystemParagraphs.has(paragraph) &&
-        !paragraph.startsWith("VI Guide is checking availability") &&
+        !paragraph.startsWith("USVI Explorer is checking availability") &&
         !paragraph.startsWith("Open the booking status page") &&
         !paragraph.startsWith("The provider still needs") &&
         !paragraph.startsWith("The reservation is ready") &&
@@ -407,7 +407,7 @@ function extractUserNotes(notes: string, reference: string) {
         !paragraph.startsWith("Ask Concierge to replace") &&
         !paragraph.startsWith("Remove or replace this stop") &&
         !paragraph.startsWith("Submit the booking request") &&
-        !paragraph.startsWith("VI Guide will update this itinerary"),
+        !paragraph.startsWith("USVI Explorer will update this itinerary"),
     )
     .join("\n\n");
 }

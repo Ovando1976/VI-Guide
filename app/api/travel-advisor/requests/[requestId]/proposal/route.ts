@@ -54,7 +54,7 @@ export async function POST(
       return NextResponse.json(
         {
           error:
-            "Choose a saved VI Guide journey with at least one stop before publishing a proposal.",
+            "Choose a saved USVI Explorer journey with at least one stop before publishing a proposal.",
         },
         { status: 400 },
       );
@@ -151,7 +151,7 @@ export async function POST(
           event: "travel_advisor_proposal",
           audience: "traveler",
           listingId: "travel-advisor",
-          listingName: "VI Guide USVI Travel Advisor",
+          listingName: "USVI Explorer USVI Travel Advisor",
           recipientEmail: clean(current.email, 220),
           title: subject,
           message,

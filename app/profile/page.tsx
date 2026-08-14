@@ -2,7 +2,7 @@ import { TravelerProfileScreen } from "@/components/profile/traveler-profile-scr
 
 export const metadata = {
   title: "Traveler Profile",
-  description: "Review and control the preferences VI Guide uses to personalize Concierge recommendations and itineraries.",
+  description: "Review and control the preferences USVI Explorer uses to personalize Concierge recommendations and itineraries.",
 };
 
 export default function TravelerProfilePage() {

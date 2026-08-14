@@ -290,7 +290,7 @@ export function PlaceCapabilityGrid({
   journeyStop,
   title = "What you can do here",
   description =
-    "VI Guide adapts the experience to the services and actions available at this place.",
+    "USVI Explorer adapts the experience to the services and actions available at this place.",
 }: Props) {
   const uniqueCapabilities = Array.from(new Set(capabilities));
   if (!uniqueCapabilities.length) return null;

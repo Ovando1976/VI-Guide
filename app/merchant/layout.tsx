@@ -39,7 +39,7 @@ export default async function MerchantLayout({
             </span>
             <div>
               <p className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
-                VI Guide business operations
+                USVI Explorer business operations
               </p>
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <p className="text-lg font-black tracking-[-.03em] text-white">

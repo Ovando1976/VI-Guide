@@ -6,7 +6,7 @@ import { getSession } from "@/lib/auth-server";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Booking Review | VI Guide",
+  title: "Booking Review | USVI Explorer",
   description: "Authorized booking request review and status management.",
 };
 

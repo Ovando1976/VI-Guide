@@ -3,8 +3,8 @@ import { MerchantReservationInbox } from "@/components/merchant/merchant-reserva
 import { MerchantShoreReservationSummary } from "@/components/merchant/merchant-shore-reservation-summary";
 
 export const metadata = {
-  title: "Merchant Reservations | VI Guide",
-  description: "Review and manage traveler booking requests in VI Guide.",
+  title: "Merchant Reservations | USVI Explorer",
+  description: "Review and manage traveler booking requests in USVI Explorer.",
 };
 
 export default function MerchantReservationsPage() {

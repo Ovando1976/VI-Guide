@@ -130,7 +130,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
         <ViPublicHeader
           actionHref={`/concierge?prompt=${encodeURIComponent(
             query
-              ? `Help me decide what to do with my VI Guide search for ${query}. Connect the best result to timing, transportation, and my trip.`
+              ? `Help me decide what to do with my USVI Explorer search for ${query}. Connect the best result to timing, transportation, and my trip.`
               : "Help me discover the right places, beaches, stays, events, community field notes, and experiences across the U.S. Virgin Islands.",
           )}`}
           actionLabel="Ask Concierge"
@@ -153,7 +153,7 @@ export default function SearchPage({ searchParams = {} }: { searchParams?: Searc
               <p className="mt-5 max-w-xl text-base font-semibold leading-7 text-white/70">
                 Search beaches, stays, local places, upcoming events, community field notes,
                 historic sites, timeline records, and governors together. Traveler results connect back
-                into the same Map, trip, and Concierge system used throughout VI Guide.
+                into the same Map, trip, and Concierge system used throughout USVI Explorer.
               </p>
             </div>
 

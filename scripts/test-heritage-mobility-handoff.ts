@@ -43,4 +43,4 @@ if (heritageDetail.includes('rideParams.set("toGeoid"')) {
   throw new Error("Heritage mobility handoff contract failed: obsolete toGeoid parameter returned");
 }
 
-console.log("VI Guide heritage-to-Mobility handoff contracts passed.");
+console.log("USVI Explorer heritage-to-Mobility handoff contracts passed.");

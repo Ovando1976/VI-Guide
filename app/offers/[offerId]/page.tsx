@@ -27,9 +27,9 @@ import { getOfferVisual } from "@/lib/offers/offer-visual";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Island Package | VI Guide",
+  title: "Island Package | USVI Explorer",
   description:
-    "Review a live VI Guide business package and request verified availability.",
+    "Review a live USVI Explorer business package and request verified availability.",
 };
 
 export default async function OfferDetailPage({
@@ -100,7 +100,7 @@ export default async function OfferDetailPage({
               </span>
               <span className="inline-flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-[#73e3d9]" />
-                VI Guide verified package
+                USVI Explorer verified package
               </span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -135,7 +135,7 @@ export default async function OfferDetailPage({
                 : "Availability confirmed before payment"}
             </p>
             <p className="mt-5 text-sm font-semibold leading-6 text-white/60">
-              Offered by {offer.listingName}. The merchant confirms capacity and timing before VI Guide sends a payment link.
+              Offered by {offer.listingName}. The merchant confirms capacity and timing before USVI Explorer sends a payment link.
             </p>
             {visual.source === "island" ? (
               <p className="mt-5 rounded-2xl border border-white/10 bg-black/15 p-4 text-xs font-semibold leading-5 text-white/52">

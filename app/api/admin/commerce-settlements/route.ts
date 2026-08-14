@@ -132,7 +132,7 @@ export async function GET() {
         reference: clean(booking.reference, 180) || document.id,
         listingId,
         listingName:
-          clean(booking.listingName, 220) || "VI Guide booking",
+          clean(booking.listingName, 220) || "USVI Explorer booking",
         status: clean(booking.status, 40),
         paymentStatus: clean(booking.paymentStatus, 40),
         paymentIntegrityStatus: clean(booking.paymentIntegrityStatus, 40),
@@ -418,7 +418,7 @@ export async function POST(request: NextRequest) {
         bookingReference: reference,
         listingId,
         listingName:
-          clean(booking.listingName, 220) || "VI Guide booking",
+          clean(booking.listingName, 220) || "USVI Explorer booking",
         captureEntryId: checkedCapture.id,
         destinationAccountId,
         merchantProfileId: profileDocument.id,
@@ -465,7 +465,7 @@ export async function POST(request: NextRequest) {
           destination: destinationAccountId,
           source_transaction: sourceChargeId,
           transfer_group: transferGroup,
-          description: `VI Guide settlement ${reference}`,
+          description: `USVI Explorer settlement ${reference}`,
           metadata: {
             bookingId,
             bookingReference: reference,

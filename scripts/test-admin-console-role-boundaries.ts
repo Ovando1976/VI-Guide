@@ -64,4 +64,4 @@ expectSource(
   "shared Admin parent remains available to operational dispatchers",
 );
 
-console.log("VI Guide administrator-only console boundary contracts passed.");
+console.log("USVI Explorer administrator-only console boundary contracts passed.");

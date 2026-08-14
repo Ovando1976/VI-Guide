@@ -49,7 +49,7 @@ const COMMUNITY_LAYERS = [
   {
     icon: Landmark,
     title: "Heritage in context",
-    copy: "Connect community memory to the historic sites, archival material, estates, and cultural landscapes already inside VI Guide.",
+    copy: "Connect community memory to the historic sites, archival material, estates, and cultural landscapes already inside USVI Explorer.",
   },
   {
     icon: Compass,
@@ -91,7 +91,7 @@ export default function CommunityPage() {
               <span className="block italic text-[#73e3d9]">beyond the itinerary.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
-              VI Guide Community connects source-backed field notes, cultural context,
+              USVI Explorer Community connects source-backed field notes, cultural context,
               neighborhood knowledge, and traveler decisions directly to the map and the trip.
             </p>
 
@@ -241,7 +241,7 @@ export default function CommunityPage() {
               </h2>
               <p className="mt-4 text-sm font-semibold leading-7 text-white/62">
                 The goal is useful local context that strengthens discovery, planning,
-                mobility, and cultural understanding across the rest of VI Guide.
+                mobility, and cultural understanding across the rest of USVI Explorer.
               </p>
             </div>
 

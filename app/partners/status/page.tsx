@@ -4,9 +4,9 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { PartnerApplicationStatusTracker } from "@/components/partners/partner-application-status";
 
 export const metadata = {
-  title: "Partner Application Status | VI Guide",
+  title: "Partner Application Status | USVI Explorer",
   description:
-    "Privately check the review status of a VI Guide partner application using its reference and contact email.",
+    "Privately check the review status of a USVI Explorer partner application using its reference and contact email.",
 };
 
 export default function PartnerApplicationStatusPage() {

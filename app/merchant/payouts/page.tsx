@@ -4,9 +4,9 @@ import { MerchantPayoutSetup } from "@/components/merchant/merchant-payout-setup
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Merchant Payouts | VI Guide",
+  title: "Merchant Payouts | USVI Explorer",
   description:
-    "Connect and verify the Stripe account that receives VI Guide marketplace settlement.",
+    "Connect and verify the Stripe account that receives USVI Explorer marketplace settlement.",
 };
 
 export default async function MerchantPayoutsPage() {

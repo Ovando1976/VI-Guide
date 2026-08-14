@@ -25,7 +25,7 @@ import {
 } from "@/lib/bookable-experiences";
 
 export const metadata = {
-  title: "Tours & Experiences | VI Guide",
+  title: "Tours & Experiences | USVI Explorer",
   description:
     "Browse and request tours and experiences across St. Thomas, St. John, and St. Croix.",
 };
@@ -156,7 +156,7 @@ export default function ExperiencesPage({
               <span className="block italic text-[#73e3d9]">not just a room.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
-              Choose island days that already understand place, timing, transportation, and the rest of your VI Guide trip. Request the experience, then keep planning without starting over.
+              Choose island days that already understand place, timing, transportation, and the rest of your USVI Explorer trip. Request the experience, then keep planning without starting over.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -184,7 +184,7 @@ export default function ExperiencesPage({
                   Request first. Confirm before you depend on it.
                 </h2>
                 <p className="mt-3 text-sm font-semibold leading-6 text-white/62">
-                  Availability, final pricing, operator confirmation, and payment instructions follow after review. VI Guide keeps the request connected to your trip while that happens.
+                  Availability, final pricing, operator confirmation, and payment instructions follow after review. USVI Explorer keeps the request connected to your trip while that happens.
                 </p>
               </div>
             </div>
@@ -296,7 +296,7 @@ export default function ExperiencesPage({
             <Feature
               icon={BadgeCheck}
               title="Review"
-              text="VI Guide records a unique reference and sends the request into the booking workflow."
+              text="USVI Explorer records a unique reference and sends the request into the booking workflow."
             />
             <Feature
               icon={Compass}
@@ -446,7 +446,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
             href={`/book?${params.toString()}`}
             className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#032f2d] px-4 text-center text-[8px] font-black uppercase tracking-[.12em] text-white transition hover:bg-[#075e58]"
           >
-            Request booking with VI Guide <ArrowRight className="h-4 w-4 text-[#f5c451]" />
+            Request booking with USVI Explorer <ArrowRight className="h-4 w-4 text-[#f5c451]" />
           </Link>
         </div>
       </div>

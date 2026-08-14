@@ -35,7 +35,12 @@ export type CommerceSandboxSafetyResult =
 
 const SANDBOX_PROJECT_MARKER = /(?:^|[-_.])(sandbox|test|testing|demo|emulator)(?:$|[-_.])/i;
 const LOOPBACK_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
-const KNOWN_PRODUCTION_HOSTS = new Set(["vi-guide.vercel.app"]);
+const KNOWN_PRODUCTION_HOSTS = new Set([
+  "usvi-explorer.com",
+  "www.usvi-explorer.com",
+  "usvi-compass.vercel.app",
+  "vi-guide.vercel.app",
+]);
 
 export function validateCommerceSandboxEnvironment(
   input: CommerceSandboxEnvironmentInput,
@@ -168,7 +173,7 @@ function validateSandboxAppUrl(input: {
     );
   }
   if (KNOWN_PRODUCTION_HOSTS.has(hostname)) {
-    input.errors.push("The production VI Guide hostname is never accepted for sandbox execution.");
+    input.errors.push("The production USVI Explorer hostname is never accepted for sandbox execution.");
   }
   if (!loopback && !markedSandboxHost) {
     input.errors.push(

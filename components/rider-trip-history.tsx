@@ -376,7 +376,7 @@ function MobileRideCommand({
             </span>
             <div>
               <p className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Verified pickup identity</p>
-              <p className="mt-1 text-base font-black text-[#043331]">{identity.driverName || "Verified VI Guide driver"}</p>
+              <p className="mt-1 text-base font-black text-[#043331]">{identity.driverName || "Verified USVI Explorer driver"}</p>
               <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
                 {identity.vehicleDescription || "Verified fleet vehicle"}
                 {identity.taxiPlate ? ` · Taxi ${identity.taxiPlate}` : ""}
@@ -507,7 +507,7 @@ function PaymentStatusPanel({ booking }: { booking: RideBooking }) {
           </div>
           <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-600">
             {paid
-              ? "VI Guide can now match this ride only with an eligible, verified driver and vehicle."
+              ? "USVI Explorer can now match this ride only with an eligible, verified driver and vehicle."
               : processing
                 ? "Stripe is still confirming this payment. Dispatch remains closed until the booking is marked paid."
                 : "The regulated fare is saved, but no driver should be assigned until secure payment is complete."}
@@ -621,7 +621,7 @@ function paymentAwareGuidance(booking: RideBooking) {
     if (booking.paymentStatus === "processing") {
       return "Payment confirmation is still processing. Dispatch will open automatically after the booking is marked paid.";
     }
-    return "Complete secure payment before VI Guide releases this request to verified dispatch.";
+    return "Complete secure payment before USVI Explorer releases this request to verified dispatch.";
   }
   return statusGuidance(booking.status);
 }

@@ -108,7 +108,7 @@ export function PartnerApplicationForm() {
           <p className="mx-auto mt-4 max-w-2xl text-sm font-semibold leading-7 text-slate-600">
             {result.duplicate
               ? "We found the application already submitted today and kept the original record."
-              : "The VI Guide team will review the business, service details, and requested tools before merchant access is granted."}
+              : "The USVI Explorer team will review the business, service details, and requested tools before merchant access is granted."}
           </p>
           <div className="mx-auto mt-7 max-w-md rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4">
             <p className="text-[9px] font-black uppercase tracking-[.14em] text-slate-400">
@@ -123,7 +123,7 @@ export function PartnerApplicationForm() {
               href="/"
               className="inline-flex min-h-12 items-center rounded-full bg-[#043331] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white"
             >
-              Return to VI Guide
+              Return to USVI Explorer
             </Link>
             <button
               type="button"
@@ -145,13 +145,13 @@ export function PartnerApplicationForm() {
           <div className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                VI Guide partners
+                USVI Explorer partners
               </p>
               <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[.92] tracking-[-.06em] sm:text-7xl">
                 Turn local discovery into real customers.
               </h1>
               <p className="mt-6 max-w-2xl text-base font-semibold leading-8 text-white/65">
-                Apply to operate your VI Guide listing, receive qualified booking
+                Apply to operate your USVI Explorer listing, receive qualified booking
                 requests, appear in concierge recommendations, and build a direct
                 digital relationship with visitors and residents.
               </p>
@@ -160,7 +160,7 @@ export function PartnerApplicationForm() {
               <HeroBenefit
                 icon={MapPin}
                 title="Territory visibility"
-                text="Place the business inside VI Guide’s island discovery experience."
+                text="Place the business inside USVI Explorer’s island discovery experience."
               />
               <HeroBenefit
                 icon={CalendarCheck2}
@@ -187,7 +187,7 @@ export function PartnerApplicationForm() {
               </h2>
               <ol className="mt-5 space-y-4">
                 <ReviewStep number="01" text="We verify the business and service information." />
-                <ReviewStep number="02" text="The team matches or creates the correct VI Guide listing." />
+                <ReviewStep number="02" text="The team matches or creates the correct USVI Explorer listing." />
                 <ReviewStep number="03" text="An approved Firebase account receives listing-scoped merchant access." />
                 <ReviewStep number="04" text="The business configures availability and starts handling requests." />
               </ol>
@@ -197,7 +197,7 @@ export function PartnerApplicationForm() {
               <h3 className="mt-4 text-lg font-black">Access is reviewed</h3>
               <p className="mt-2 text-sm font-semibold leading-6 text-amber-950/65">
                 Submission does not automatically create merchant privileges.
-                VI Guide verifies ownership and assigns access only to approved
+                USVI Explorer verifies ownership and assigns access only to approved
                 listings.
               </p>
             </div>
@@ -263,7 +263,7 @@ export function PartnerApplicationForm() {
                 <Field label="Website or social profile">
                   <input name="website" type="url" maxLength={500} placeholder="https://" className={inputClass} />
                 </Field>
-                <Field label="Existing VI Guide listing ID">
+                <Field label="Existing USVI Explorer listing ID">
                   <input name="existingListingId" maxLength={160} placeholder="Optional" className={inputClass} />
                 </Field>
               </div>
@@ -277,7 +277,7 @@ export function PartnerApplicationForm() {
                 <Field label="Describe the services, products, or experiences offered" required>
                   <textarea name="services" required minLength={20} maxLength={1400} rows={6} className={inputClass} />
                 </Field>
-                <Field label="What would make VI Guide valuable to the business?">
+                <Field label="What would make USVI Explorer valuable to the business?">
                   <textarea name="goals" maxLength={1200} rows={4} className={inputClass} />
                 </Field>
               </div>
@@ -301,7 +301,7 @@ export function PartnerApplicationForm() {
             </fieldset>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <Field label="How did you hear about VI Guide?">
+              <Field label="How did you hear about USVI Explorer?">
                 <input name="referralSource" maxLength={120} className={inputClass} />
               </Field>
             </div>
@@ -316,7 +316,7 @@ export function PartnerApplicationForm() {
             <label className="mt-8 flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-semibold leading-6 text-slate-600">
               <input name="consent" type="checkbox" required className="mt-1 h-4 w-4 shrink-0 accent-teal-700" />
               <span>
-                I am authorized to submit this information and agree that VI Guide
+                I am authorized to submit this information and agree that USVI Explorer
                 may contact the business about verification, listing access, and
                 partnership services. See the{" "}
                 <Link href="/privacy" className="font-black text-teal-700 underline">privacy policy</Link>{" "}
@@ -334,7 +334,7 @@ export function PartnerApplicationForm() {
               Submit partner application
             </button>
             <p className="mt-4 text-center text-xs font-semibold leading-5 text-slate-400">
-              VI Guide does not charge a fee to review an application.
+              USVI Explorer does not charge a fee to review an application.
             </p>
           </form>
         </div>

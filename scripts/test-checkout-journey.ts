@@ -15,7 +15,7 @@ assert.match(checkoutLayout, /ViPublicHeader/);
 assert.match(checkoutLayout, /actionHref="\/bookings"/);
 assert.match(checkoutLayout, /secondaryHref="\/trips"/);
 
-assert.match(checkoutLanding, /VI Guide secure payment hub/);
+assert.match(checkoutLanding, /USVI Explorer secure payment hub/);
 assert.match(checkoutLanding, /Pay from the booking that created the charge\./);
 assert.match(checkoutLanding, /Ride payment/);
 assert.match(checkoutLanding, /Stays, tours & experiences/);
@@ -39,4 +39,4 @@ assert.match(checkoutForm, /returnUrl\.searchParams\.set\("booking", bookingId\)
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("payment", "return"\)/);
 assert.match(checkoutForm, /Pay and track ride/);
 
-console.log("VI Guide checkout journey boundary contracts passed.");
+console.log("USVI Explorer checkout journey boundary contracts passed.");

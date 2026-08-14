@@ -214,7 +214,7 @@ export function resolveTravelerTripNextAction(input: {
       label: pending.status === "reviewing" ? "Provider review in progress" : "Request received",
       detail: `${pending.listingName} is ${
         pending.status === "reviewing" ? "being reviewed" : "waiting for review"
-      }. VI Guide will keep the status connected to your trip.`,
+      }. USVI Explorer will keep the status connected to your trip.`,
       href: bookingHref(pending.reference),
       cta: "Check booking",
       tone: "teal",
@@ -228,8 +228,8 @@ export function resolveTravelerTripNextAction(input: {
     return {
       label: "Your advisor proposal is ready",
       detail: proposal.proposalTitle
-        ? `Review ${proposal.proposalTitle} and request the parts you want VI Guide to book.`
-        : "Review your advisor itinerary and request the parts you want VI Guide to book.",
+        ? `Review ${proposal.proposalTitle} and request the parts you want USVI Explorer to book.`
+        : "Review your advisor itinerary and request the parts you want USVI Explorer to book.",
       href: proposal.proposalHref,
       cta: "Review proposal",
       tone: "emerald",
@@ -253,7 +253,7 @@ export function resolveTravelerTripNextAction(input: {
   if (stay) {
     return {
       label: "Stay request in progress",
-      detail: `${stay.stayName} is still being reviewed. Keep planning while VI Guide follows the request.`,
+      detail: `${stay.stayName} is still being reviewed. Keep planning while USVI Explorer follows the request.`,
       href: `/accommodations/${encodeURIComponent(stay.staySlug)}`,
       cta: "View stay",
       tone: "teal",

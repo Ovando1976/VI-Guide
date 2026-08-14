@@ -5,7 +5,7 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { FishingExplorer } from "@/components/fishing/fishing-explorer";
 
 export const metadata: Metadata = {
-  title: "USVI Fishing Guide | VI Guide",
+  title: "USVI Fishing Guide | USVI Explorer",
   description:
     "Explore common Virgin Islands fishing species, habitats, conservation guidance, and direct map and concierge tools.",
 };

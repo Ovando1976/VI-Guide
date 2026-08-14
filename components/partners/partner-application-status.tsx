@@ -78,7 +78,7 @@ export function PartnerApplicationStatusTracker() {
             Application tracker
           </p>
           <h1 className="mt-4 text-4xl font-black leading-[.95] tracking-[-.055em] sm:text-6xl">
-            Check your VI Guide partner review.
+            Check your USVI Explorer partner review.
           </h1>
           <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
             Use the application reference and the same contact email submitted with

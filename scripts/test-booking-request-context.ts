@@ -44,4 +44,4 @@ for (const [value, label] of [
   expectSource(bookingExperience, value, label);
 }
 
-console.log("VI Guide booking request context contracts passed.");
+console.log("USVI Explorer booking request context contracts passed.");

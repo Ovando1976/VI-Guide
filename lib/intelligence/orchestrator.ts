@@ -186,7 +186,7 @@ const groundNode: GraphNode = (state) => {
     "ground",
     result.recommendations.length ? "completed" : "limited",
     result.recommendations.length
-      ? `Grounded the response in ${result.recommendations.length} reviewed VI Guide records.`
+      ? `Grounded the response in ${result.recommendations.length} reviewed USVI Explorer records.`
       : "No sufficiently strong reviewed record matched the request.",
   );
 };

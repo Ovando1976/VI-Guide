@@ -15,7 +15,7 @@ export default function IslandJourneyPage() {
         <section className="overflow-hidden rounded-[36px] bg-[#043f3b] px-6 py-10 text-white shadow-[0_28px_90px_rgba(4,51,49,.2)] md:px-10">
           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[.22em] text-[#f3c44e]"><Route className="h-4 w-4"/>Connected travel</div>
           <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-tight md:text-6xl">Island Journey</h1>
-          <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-white/75 md:text-lg">Choose a mapped VI Guide place and VI Guide calculates the road connection to the ferry, terminal buffer, published sailing, and arrival transfer.</p>
+          <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-white/75 md:text-lg">Choose a mapped USVI Explorer place and USVI Explorer calculates the road connection to the ferry, terminal buffer, published sailing, and arrival transfer.</p>
         </section>
         <SmartIslandJourneyBuilder catalogPlaces={catalogPlaces} />
         <div className="pt-2">

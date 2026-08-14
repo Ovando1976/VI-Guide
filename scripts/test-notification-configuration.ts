@@ -16,21 +16,21 @@ assert.deepEqual(normalizeConfigurationEmails(null), []);
 
 assert.equal(isValidSenderIdentity("bookings@example.com"), true);
 assert.equal(
-  isValidSenderIdentity("VI Guide <bookings@example.com>"),
+  isValidSenderIdentity("USVI Explorer <bookings@example.com>"),
   true,
 );
-assert.equal(isValidSenderIdentity("VI Guide bookings@example.com"), false);
+assert.equal(isValidSenderIdentity("USVI Explorer bookings@example.com"), false);
 assert.equal(isValidSenderIdentity("not-an-email"), false);
-assert.equal(isValidSenderIdentity("VI Guide <invalid>"), false);
+assert.equal(isValidSenderIdentity("USVI Explorer <invalid>"), false);
 
 assert.deepEqual(
   notificationConfigurationStatus({
     firebaseAdminConfigured: true,
     resendApiKey: "re_test_key",
-    emailFrom: "VI Guide <bookings@example.com>",
+    emailFrom: "USVI Explorer <bookings@example.com>",
     operationsEmails: "ops@example.com,alerts@example.com",
     cronSecret: "a-secure-cron-secret-value",
-    appUrl: "https://vi-guide.vercel.app",
+    appUrl: "https://usvi-explorer.com",
   }),
   {
     ready: true,
@@ -80,7 +80,7 @@ assert.equal(
     emailFrom: "sender@example.com",
     operationsEmails: "ops@example.com",
     cronSecret: "1234567890abcdef",
-    appUrl: "https://vi-guide.vercel.app/",
+    appUrl: "https://usvi-explorer.com/",
   }).appUrlConfigured,
   true,
 );
@@ -91,7 +91,7 @@ assert.equal(
     emailFrom: "sender@example.com",
     operationsEmails: "ops@example.com",
     cronSecret: "1234567890abcdef",
-    appUrl: "https://vi-guide.vercel.app/path",
+    appUrl: "https://usvi-explorer.com/path",
   }).appUrlConfigured,
   false,
 );

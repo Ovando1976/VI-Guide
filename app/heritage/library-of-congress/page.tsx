@@ -335,7 +335,7 @@ export default function LibraryOfCongressGalleryPage() {
 
                   {item.editorialNote ? (
                     <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs font-semibold leading-5 text-amber-900">
-                      <strong>VI Guide correction:</strong> {item.editorialNote}
+                      <strong>USVI Explorer correction:</strong> {item.editorialNote}
                     </div>
                   ) : null}
 
@@ -460,7 +460,7 @@ export default function LibraryOfCongressGalleryPage() {
               </p>
               {selectedItem.editorialNote ? (
                 <div className="mt-4 rounded-2xl border border-amber-200/20 bg-amber-50/10 p-3 text-xs font-semibold leading-5 text-amber-100">
-                  <strong>VI Guide correction:</strong> {selectedItem.editorialNote}
+                  <strong>USVI Explorer correction:</strong> {selectedItem.editorialNote}
                 </div>
               ) : null}
             </div>

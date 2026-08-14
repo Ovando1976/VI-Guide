@@ -6,9 +6,9 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { SavedIslandJourneyLivingMap } from "@/components/map/saved-island-journey-living-map";
 
 export const metadata = {
-  title: "Island Journey Map | VI Guide",
+  title: "Island Journey Map | USVI Explorer",
   description:
-    "See a saved VI Guide Island Journey as one connected taxi, ferry, and arrival route on the Living Map.",
+    "See a saved USVI Explorer Island Journey as one connected taxi, ferry, and arrival route on the Living Map.",
 };
 
 export default function IslandJourneyMapPage() {

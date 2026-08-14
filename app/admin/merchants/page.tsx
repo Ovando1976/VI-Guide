@@ -10,9 +10,9 @@ import {
 import { normalizePartnerApplicationStatus } from "@/lib/partners/partner-application";
 
 export const metadata = {
-  title: "Merchant Access | VI Guide",
+  title: "Merchant Access | USVI Explorer",
   description:
-    "Assign merchant accounts to the exact VI Guide listings they are authorized to operate.",
+    "Assign merchant accounts to the exact USVI Explorer listings they are authorized to operate.",
 };
 
 type MerchantAccessPageProps = {

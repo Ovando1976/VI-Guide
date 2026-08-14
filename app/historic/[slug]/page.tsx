@@ -123,7 +123,7 @@ export default function HistoricDetailPage({
             Visit with context, not just directions.
           </h2>
           <p className="mt-5 text-base font-semibold leading-8 text-slate-600">
-            {site.description} VI Guide keeps the place, imagery, map context,
+            {site.description} USVI Explorer keeps the place, imagery, map context,
             transportation, and nearby discovery connected in one experience.
           </p>
           {site.address ? (
@@ -141,7 +141,7 @@ export default function HistoricDetailPage({
           </h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
             Combine this stop with nearby landmarks, food, transportation, and
-            realistic timing without leaving VI Guide.
+            realistic timing without leaving USVI Explorer.
           </p>
           <Link
             href={conciergeHref}

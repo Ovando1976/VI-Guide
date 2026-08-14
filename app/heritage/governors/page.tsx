@@ -2,7 +2,7 @@ import { GovernorAnchorBridge } from "@/components/heritage/governor-anchor-brid
 import { GovernorTimelineExplorer } from "@/components/heritage/governor-timeline-explorer";
 
 export const metadata = {
-  title: "Governors of the Virgin Islands | VI Guide",
+  title: "Governors of the Virgin Islands | USVI Explorer",
   description:
     "Explore recorded Virgin Islands governors and administrations from early Danish company rule through British occupations, Danish Crown government, U.S. naval and appointed government, and the elected era.",
 };

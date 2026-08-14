@@ -273,7 +273,7 @@ export function TravelRequestBoard() {
         <OpsSection
           eyebrow="Advisor queue"
           title="Traveler pipeline"
-          subtitle="Search the same way across VI Guide operations and filter the desk by workflow status. New qualified requests receive an acknowledgement, and human follow-ups can now be queued and audited directly from this desk."
+          subtitle="Search the same way across USVI Explorer operations and filter the desk by workflow status. New qualified requests receive an acknowledgement, and human follow-ups can now be queued and audited directly from this desk."
           actions={<OpsPill label={`${filtered.length} shown`} tone="teal" />}
         >
           <div className="grid gap-3 md:grid-cols-[1fr_240px]">
@@ -447,7 +447,7 @@ export function TravelRequestBoard() {
                               Traveler follow-up
                             </p>
                             <p className="mt-1 text-[11px] font-semibold leading-5 text-slate-500">
-                              Queue through VI Guide so delivery retries and the advisor audit trail stay intact.
+                              Queue through USVI Explorer so delivery retries and the advisor audit trail stay intact.
                             </p>
                           </div>
                           <Send className="h-4 w-4 shrink-0 text-teal-700" />
@@ -497,7 +497,7 @@ export function TravelRequestBoard() {
                             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
                             {followupResult.duplicate
                               ? "That exact follow-up is already queued for today."
-                              : "Follow-up queued. VI Guide will deliver it through the configured email pipeline and retry safely if needed."}
+                              : "Follow-up queued. USVI Explorer will deliver it through the configured email pipeline and retry safely if needed."}
                           </p>
                         ) : null}
 
@@ -524,7 +524,7 @@ export function TravelRequestBoard() {
                           ) : (
                             <Send className="h-4 w-4" />
                           )}
-                          Send through VI Guide
+                          Send through USVI Explorer
                         </button>
                       </div>
 
@@ -664,7 +664,7 @@ function draftForRequest(request: TravelRequest): Draft {
     status: request.status,
     advisorNote: request.advisorNote ?? "",
     followupSubject:
-      request.followupSubject || `VI Guide trip planning · ${request.reference}`,
+      request.followupSubject || `USVI Explorer trip planning · ${request.reference}`,
     followupMessage: request.followupMessage || defaultFollowupMessage(request),
   };
 }
@@ -673,19 +673,19 @@ function defaultFollowupMessage(request: TravelRequest) {
   return [
     `Hello ${request.travelerName},`,
     "",
-    `I am following up on your VI Guide trip-planning request ${request.reference}.`,
+    `I am following up on your USVI Explorer trip-planning request ${request.reference}.`,
     "",
     `I am reviewing your ${travelIslandLabel(request.island)} trip details and can help turn them into a practical itinerary covering stays, transportation, activities, and bookable options where appropriate.`,
     "",
-    "Before anything is booked or charged, VI Guide or the relevant provider will confirm availability, terms, and pricing with you.",
+    "Before anything is booked or charged, USVI Explorer or the relevant provider will confirm availability, terms, and pricing with you.",
     "",
-    "You can keep saving ideas and building your trip in VI Guide while I review the request.",
+    "You can keep saving ideas and building your trip in USVI Explorer while I review the request.",
   ].join("\n");
 }
 
 function buildAdvisorConciergeHref(request: TravelRequest) {
   const prompt = [
-    `Act as the VI Guide travel-advisor planning workspace for request ${request.reference}.`,
+    `Act as the USVI Explorer travel-advisor planning workspace for request ${request.reference}.`,
     "Create a practical U.S. Virgin Islands itinerary draft for human advisor review before anything is sent to the traveler.",
     `Island preference: ${travelIslandLabel(request.island)}.`,
     `Travel window: ${dateRange(request.arrival, request.departure)}.`,
@@ -702,7 +702,7 @@ function buildAdvisorConciergeHref(request: TravelRequest) {
 }
 
 function buildAdvisorEmailHref(request: TravelRequest) {
-  const subject = `VI Guide trip planning · ${request.reference}`;
+  const subject = `USVI Explorer trip planning · ${request.reference}`;
   const body = defaultFollowupMessage(request);
   return `mailto:${encodeURIComponent(request.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }

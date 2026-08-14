@@ -164,7 +164,7 @@ export function importLegacyTripPlans(): JourneyPlan[] {
           createdAt: nowIso,
           updatedAt: nowIso,
           status: "draft" as const,
-          notes: "Imported automatically from the earlier VI Guide trip planner.",
+          notes: "Imported automatically from the earlier USVI Explorer trip planner.",
           plan: stops.map((item) => ({
             id: `legacy_${item.id}`.slice(0, 160),
             placeId: item.id,

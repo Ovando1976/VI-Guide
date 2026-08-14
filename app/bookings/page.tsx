@@ -7,9 +7,9 @@ import { CommercePaymentReturnNotice } from "@/components/booking/commerce-payme
 import { RememberedBookingsPanel } from "@/components/booking/remembered-bookings-panel";
 
 export const metadata = {
-  title: "My Bookings | VI Guide",
+  title: "My Bookings | USVI Explorer",
   description:
-    "Review remembered booking requests and securely check the live status of a VI Guide accommodation, tour, or experience request.",
+    "Review remembered booking requests and securely check the live status of a USVI Explorer accommodation, tour, or experience request.",
 };
 
 export default function BookingsPage() {

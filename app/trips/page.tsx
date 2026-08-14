@@ -28,9 +28,9 @@ import {
 } from "@/lib/traveler-trip-command";
 
 export const metadata = {
-  title: "My Trip | VI Guide",
+  title: "My Trip | USVI Explorer",
   description:
-    "Your connected VI Guide trip workspace for itinerary, bookings, payments, stays, rides, advisor planning, readiness, and Concierge.",
+    "Your connected USVI Explorer trip workspace for itinerary, bookings, payments, stays, rides, advisor planning, readiness, and Concierge.",
 };
 
 export default async function TripsPage() {
@@ -211,7 +211,7 @@ async function loadTravelerTripData(input: {
             const data = document.data();
             return {
               requestId: document.id,
-              stayName: clean(data.stayName, 180) || "VI Guide stay",
+              stayName: clean(data.stayName, 180) || "USVI Explorer stay",
               staySlug: clean(data.staySlug, 180),
               checkIn: clean(data.checkIn, 10),
               checkOut: clean(data.checkOut, 10),

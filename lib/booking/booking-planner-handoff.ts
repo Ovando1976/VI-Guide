@@ -151,7 +151,7 @@ function bookingStopSummary(handoff: BookingPlannerHandoff) {
 
 function bookingPlanNotes(handoff: BookingPlannerHandoff) {
   return [
-    `Created from VI Guide booking request ${handoff.reference}.`,
+    `Created from USVI Explorer booking request ${handoff.reference}.`,
     "The request is still under review and is not a confirmed reservation.",
     "Use this journey to organize the rest of the day without treating availability or payment as confirmed.",
   ].join("\n\n");

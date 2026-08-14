@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
         transferId,
         {
           amount: transferAmountCents,
-          description: `VI Guide settlement reversal ${reference}`,
+          description: `USVI Explorer settlement reversal ${reference}`,
           metadata: {
             bookingId,
             bookingReference: reference,

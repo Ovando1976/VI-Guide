@@ -140,7 +140,7 @@ export function CruiseRequestBoard() {
     <AdminShell
       eyebrow="Cruise Advisor OS"
       title="Cruise planning requests"
-      description="Research qualified cruise leads, preserve advisor notes, and move each request through a controlled planning workflow. Cruise-line fares remain outside VI Guide until approved supplier credentials are connected."
+      description="Research qualified cruise leads, preserve advisor notes, and move each request through a controlled planning workflow. Cruise-line fares remain outside USVI Explorer until approved supplier credentials are connected."
       actions={
         <button
           type="button"

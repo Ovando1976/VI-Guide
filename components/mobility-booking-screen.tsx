@@ -343,7 +343,7 @@ export function MobilityBookingScreen() {
             <div>
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
-                  <Sparkles className="h-4 w-4" /> VI Guide private mobility
+                  <Sparkles className="h-4 w-4" /> USVI Explorer private mobility
                 </span>
                 <span className="rounded-full border border-white/15 bg-black/20 px-3 py-2 text-[9px] font-black uppercase tracking-[.18em] text-white/75 backdrop-blur">
                   {islandVisual.label} context
@@ -446,7 +446,7 @@ export function MobilityBookingScreen() {
                     <p className="mt-1 text-xs font-semibold leading-5 text-teal-800">
                       {toEstate
                         ? `Official tariff estate: ${toEstate.baseName}. Review the pickup and route below.`
-                        : "Choose the official destination estate below so VI Guide can apply the published tariff without guessing the location."}
+                        : "Choose the official destination estate below so USVI Explorer can apply the published tariff without guessing the location."}
                     </p>
                   </div>
                 </div>

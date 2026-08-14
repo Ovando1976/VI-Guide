@@ -6,7 +6,7 @@ export default function AccommodationsPage() {
     <DiscoveryDirectoryPage
       eyebrow="Stays"
       title="Choose an island base that fits your trip"
-      description="Compare verified hotels, resorts, villas, and guesthouses from the built-in VI Guide catalog, then connect your stay to transportation and island plans."
+      description="Compare verified hotels, resorts, villas, and guesthouses from the built-in USVI Explorer catalog, then connect your stay to transportation and island plans."
       items={getTravelKnowledge("stays")}
       basePath="/accommodations"
       iconName="bed-double"

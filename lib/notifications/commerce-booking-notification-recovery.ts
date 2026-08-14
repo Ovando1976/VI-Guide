@@ -23,7 +23,7 @@ export function recoveryNotificationsForCommerceBooking({
   const bookingId = clean(id, 160);
   const reference = clean(data.reference, 160) || bookingId;
   const listingId = clean(data.listingId, 160);
-  const listingName = clean(data.listingName, 180) || "VI Guide booking";
+  const listingName = clean(data.listingName, 180) || "USVI Explorer booking";
   const travelerEmail = clean(data.email, 220);
   const paymentStatus = clean(data.paymentStatus, 40);
   const paymentIntegrityStatus = clean(data.paymentIntegrityStatus, 40);

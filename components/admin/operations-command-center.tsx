@@ -82,7 +82,7 @@ export function OperationsCommandCenter() {
         <section className="rounded-[36px] bg-[linear-gradient(145deg,#031f26,#074c4a_58%,#0b756d)] p-7 text-white shadow-xl sm:p-10">
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">VI Guide Operations</p>
+              <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">USVI Explorer Operations</p>
               <h1 className="mt-3 text-4xl font-black tracking-[-.05em] sm:text-6xl">Command Center</h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/65">
                 Monitor booking demand, merchant responses, traveler volume, and operational exceptions from one live view.

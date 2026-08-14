@@ -33,4 +33,4 @@ expectSource(riderWorkspace, "Share only with your assigned driver after arrival
 expectSource(firestoreRules, "match /bookingRiderSecrets/{bookingId}", "Firestore explicitly protects PIN secrets");
 expectSource(firestoreRules, "allow read, write: if false;", "PIN secrets reject direct client access");
 
-console.log("VI Guide rider PIN verification contracts passed.");
+console.log("USVI Explorer rider PIN verification contracts passed.");

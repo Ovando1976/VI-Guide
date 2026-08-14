@@ -215,7 +215,7 @@ export function TravelProposalBoard() {
     <AdminShell
       eyebrow="Travel Advisor OS"
       title="Traveler proposals"
-      description="Publish a privacy-safe read-only itinerary from My Trip, review the traveler message, and move the proposal into VI Guide's audited delivery workflow."
+      description="Publish a privacy-safe read-only itinerary from My Trip, review the traveler message, and move the proposal into USVI Explorer's audited delivery workflow."
       actions={
         <div className="flex flex-wrap gap-2">
           <Link
@@ -444,7 +444,7 @@ export function TravelProposalBoard() {
                         </button>
                       </div>
                       <p className="mt-3 text-[10px] font-semibold leading-5 text-slate-400">
-                        “Send” queues delivery through VI Guide&apos;s notification outbox. If email delivery is temporarily unavailable, the outbox keeps the message pending for retry.
+                        “Send” queues delivery through USVI Explorer&apos;s notification outbox. If email delivery is temporarily unavailable, the outbox keeps the message pending for retry.
                       </p>
                     </aside>
                   </div>
@@ -476,15 +476,15 @@ function preferredPlan(request: ProposalRequest, plans: JourneyPlan[]) {
 
 function defaultProposalDraft(request: ProposalRequest): ProposalDraft {
   return {
-    subject: `Your VI Guide itinerary proposal · ${request.reference}`,
+    subject: `Your USVI Explorer itinerary proposal · ${request.reference}`,
     message: [
       `Hello ${request.travelerName},`,
       "",
-      `Your VI Guide itinerary proposal for request ${request.reference} is ready to review.`,
+      `Your USVI Explorer itinerary proposal for request ${request.reference} is ready to review.`,
       "",
       "The proposal is a planning draft. Availability, operating schedules, reservations, terms, and pricing remain subject to confirmation before you commit or pay.",
       "",
-      "Open the proposal in VI Guide to review the itinerary, map the trip, and save a copy into My Trip.",
+      "Open the proposal in USVI Explorer to review the itinerary, map the trip, and save a copy into My Trip.",
     ].join("\n"),
   };
 }

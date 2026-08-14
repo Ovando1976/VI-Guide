@@ -36,7 +36,7 @@ export function CommerceBookingForm() {
   const kind = normalizeKind(params.get("kind"));
   const island = normalizeIsland(params.get("island"));
   const listingId = cleanParam(params.get("listingId")) || "custom-request";
-  const listingName = cleanParam(params.get("listingName")) || "VI Guide experience";
+  const listingName = cleanParam(params.get("listingName")) || "USVI Explorer experience";
   const listingHref = cleanParam(params.get("listingHref"));
   const today = getUsviToday();
   const requestedStart = cleanDate(params.get("startDate"));
@@ -118,7 +118,7 @@ export function CommerceBookingForm() {
         | null;
 
       if (!response.ok || !payload?.bookingId || !payload.reference) {
-        throw new Error(payload?.error || "VI Guide could not submit this request.");
+        throw new Error(payload?.error || "USVI Explorer could not submit this request.");
       }
 
       setConfirmation({
@@ -129,7 +129,7 @@ export function CommerceBookingForm() {
       setError(
         submissionError instanceof Error
           ? submissionError.message
-          : "VI Guide could not submit this request.",
+          : "USVI Explorer could not submit this request.",
       );
     } finally {
       setLoading(false);
@@ -150,7 +150,7 @@ export function CommerceBookingForm() {
             Your request is in review.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">
-            VI Guide recorded your request for {listingName}. This is a request,
+            USVI Explorer recorded your request for {listingName}. This is a request,
             not a confirmed reservation. Confirmation, availability, and any
             payment instructions will follow after review.
           </p>
@@ -195,7 +195,7 @@ export function CommerceBookingForm() {
           <div className="grid lg:grid-cols-[.8fr_1.2fr]">
             <div className="bg-[radial-gradient(circle_at_top_left,rgba(245,196,81,.25),transparent_36%),linear-gradient(145deg,#043331,#075e58)] p-7 sm:p-10">
               <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                <BadgeCheck className="h-4 w-4" /> VI Guide booking
+                <BadgeCheck className="h-4 w-4" /> USVI Explorer booking
               </div>
               <h1 className="mt-5 text-4xl font-black leading-[.95] tracking-[-.05em] sm:text-5xl">
                 {title}

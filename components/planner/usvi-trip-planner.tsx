@@ -194,7 +194,7 @@ export function UsviTripPlanner() {
               Tell us what your trip needs to feel like.
             </h2>
             <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-slate-600">
-              Your request enters the VI Guide advisor desk, then the same trip brief continues into VI Concierge.
+              Your request enters the USVI Explorer advisor desk, then the same trip brief continues into VI Concierge.
             </p>
           </div>
           <div className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#159b91]/20 bg-[#eaf7f4] px-3 py-2 text-[10px] font-black uppercase tracking-[.14em] text-[#0f766e]">
@@ -366,7 +366,7 @@ export function UsviTripPlanner() {
             className="mt-1 h-4 w-4 rounded border-slate-300 accent-[#0f766e]"
           />
           <span>
-            I agree that VI Guide may use these details to respond to my trip-planning request and coordinate relevant travel services.
+            I agree that USVI Explorer may use these details to respond to my trip-planning request and coordinate relevant travel services.
           </span>
         </label>
       </div>

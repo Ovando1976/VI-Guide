@@ -14,9 +14,9 @@ import {
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 
 export const metadata = {
-  title: "VI Guide Partners",
+  title: "USVI Explorer Partners",
   description:
-    "Apply to partner with VI Guide or privately check an existing business application.",
+    "Apply to partner with USVI Explorer or privately check an existing business application.",
 };
 
 const NETWORK_BENEFITS = [
@@ -33,7 +33,7 @@ const NETWORK_BENEFITS = [
   {
     icon: CalendarCheck2,
     title: "Booking operations",
-    text: "Use VI Guide workflows for availability, booking requests, deposits, confirmations, and practical service operations.",
+    text: "Use USVI Explorer workflows for availability, booking requests, deposits, confirmations, and practical service operations.",
   },
 ] as const;
 
@@ -63,14 +63,14 @@ export default function PartnersPage() {
         <div className="mx-auto grid max-w-7xl gap-10 pb-4 pt-14 lg:grid-cols-[1.08fr_.92fr] lg:items-end lg:gap-14 lg:pt-24">
           <div>
             <div className="vi-eyebrow inline-flex items-center gap-2 rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-4 py-2 text-[#f8d77c] backdrop-blur-xl">
-              <Building2 size={14} /> VI Guide business network
+              <Building2 size={14} /> USVI Explorer business network
             </div>
             <h1 className="vi-display mt-7 max-w-5xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
               Put local businesses
               <span className="block italic text-[#73e3d9]">inside the traveler journey.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
-              VI Guide connects Virgin Islands businesses to discovery, Concierge recommendations, trip planning, booking requests, secure payments, and practical operations without turning local commerce into a generic marketplace.
+              USVI Explorer connects Virgin Islands businesses to discovery, Concierge recommendations, trip planning, booking requests, secure payments, and practical operations without turning local commerce into a generic marketplace.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export default function PartnersPage() {
               A form submission never creates merchant access by itself.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-6 text-white/62">
-              VI Guide verifies the business, resolves the correct listing, and grants listing-scoped access only after review. That protects travelers, merchants, and the integrity of the directory.
+              USVI Explorer verifies the business, resolves the correct listing, and grants listing-scoped access only after review. That protects travelers, merchants, and the integrity of the directory.
             </p>
             <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/56">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#73e3d9]" />
@@ -96,7 +96,7 @@ export default function PartnersPage() {
             icon={Building2}
             eyebrow="New business"
             title="Apply to join the network"
-            text="Tell VI Guide what the business offers, where it operates, and which discovery, booking, or operating tools would create the most value."
+            text="Tell USVI Explorer what the business offers, where it operates, and which discovery, booking, or operating tools would create the most value."
             href="/partners/apply"
             label="Start application"
             image="/images/places/st-john/trunk-bay-overlook-1.jpg"
@@ -119,7 +119,7 @@ export default function PartnersPage() {
               Be useful at the moment a traveler is making a decision.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-7 text-white/60 sm:text-base">
-              The goal is not simply another directory profile. VI Guide should connect the right local operator or business to the right traveler context, then carry that decision into the rest of the trip.
+              The goal is not simply another directory profile. USVI Explorer should connect the right local operator or business to the right traveler context, then carry that decision into the rest of the trip.
             </p>
           </div>
 

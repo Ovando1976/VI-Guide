@@ -30,14 +30,14 @@ export function StructuredPlanRenderer({
         </span>
         <span>{response.intent.replaceAll("_", " ")}</span>
         <span className="inline-flex items-center gap-1.5">
-          <Sparkles size={11} /> VI Guide data
+          <Sparkles size={11} /> USVI Explorer data
         </span>
       </div>
 
       {response.recommendations.length ? (
         <div className="space-y-2">
           <div className="text-[9px] font-black uppercase tracking-[.16em] text-cyan-100/45">
-            Best matches from VI Guide
+            Best matches from USVI Explorer
           </div>
           {response.recommendations
             .slice(0, compact ? 3 : 6)

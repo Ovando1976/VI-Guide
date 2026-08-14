@@ -88,7 +88,7 @@ function createWelcomeMessage(): ConciergeMessage {
   return {
     id: createId("message"),
     role: "assistant",
-    text: "Tell me the island day you want. I can search VI Guide, build a practical itinerary, connect transportation, and save the reviewed result to My Trip.",
+    text: "Tell me the island day you want. I can search USVI Explorer, build a practical itinerary, connect transportation, and save the reviewed result to My Trip.",
     createdAt: new Date().toISOString(),
   };
 }
@@ -256,7 +256,7 @@ export function ViConcierge({
       setError(
         requestError instanceof Error
           ? requestError.message
-          : "VI Guide Concierge could not respond.",
+          : "USVI Explorer Concierge could not respond.",
       );
     } finally {
       setLoading(false);
@@ -298,7 +298,7 @@ export function ViConcierge({
         ...journey,
         status: "ready",
         plan: generated,
-        notes: "Created by VI Concierge from grounded VI Guide data.",
+        notes: "Created by VI Concierge from grounded USVI Explorer data.",
       });
       setCompletedActions((current) => new Set(current).add(action.id));
       setPendingActionId(null);

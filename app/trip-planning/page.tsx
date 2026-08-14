@@ -15,9 +15,9 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { UsviTripPlanner } from "@/components/planner/usvi-trip-planner";
 
 export const metadata: Metadata = {
-  title: "Plan Your USVI Trip | VI Guide",
+  title: "Plan Your USVI Trip | USVI Explorer",
   description:
-    "Plan a personalized U.S. Virgin Islands trip with VI Guide, VI Concierge, and guidance from a trained USVI Travel Specialist.",
+    "Plan a personalized U.S. Virgin Islands trip with USVI Explorer, VI Concierge, and guidance from a trained USVI Travel Specialist.",
 };
 
 const SUPPORT = [
@@ -76,7 +76,7 @@ export default function TripPlanningPage() {
               <span className="italic text-[#159b91]">Keep the island magic.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base font-semibold leading-7 text-[#274c49] sm:text-lg">
-              Start with the way you want to travel. VI Guide turns your dates, budget, interests, stays, and transportation needs into a practical U.S. Virgin Islands itinerary you can keep refining with VI Concierge.
+              Start with the way you want to travel. USVI Explorer turns your dates, budget, interests, stays, and transportation needs into a practical U.S. Virgin Islands itinerary you can keep refining with VI Concierge.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ export default function TripPlanningPage() {
               </div>
             </div>
             <p className="mt-5 text-sm font-semibold leading-6 text-white/72">
-              VI Guide founder Ovando Rawlins has completed the United States Virgin Islands advisor training course and is designated a USVI Travel Specialist. That training supports the human travel-advisory layer behind VI Concierge.
+              USVI Explorer founder Ovando Rawlins has completed the United States Virgin Islands advisor training course and is designated a USVI Travel Specialist. That training supports the human travel-advisory layer behind VI Concierge.
             </p>
             <div className="mt-6 rounded-2xl border border-white/10 bg-white/[.07] p-4 text-xs font-semibold leading-5 text-white/65">
-              VI Guide describes the credential in plain language and does not use tourism-program logos or certificate artwork here unless branding permission is confirmed.
+              USVI Explorer describes the credential in plain language and does not use tourism-program logos or certificate artwork here unless branding permission is confirmed.
             </div>
           </aside>
         </div>

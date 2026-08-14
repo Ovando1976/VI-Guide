@@ -58,7 +58,7 @@ assert.match(mapModel, /PR #241\/#242 saved the ferry leg/);
 assert.match(mapModel, /isFerryWaterSegment/);
 assert.match(mapModel, /joinJourneySegments/);
 
-assert.match(smartBuilder, /Choose any mapped VI Guide place\./);
+assert.match(smartBuilder, /Choose any mapped USVI Explorer place\./);
 assert.match(smartBuilder, /\/api\/route/);
 assert.match(smartBuilder, /resolveTerminalTransfers/);
 assert.match(smartBuilder, /Calculating the road connections/);
@@ -120,7 +120,7 @@ assert.match(ferryPage, /Ask VI Concierge/);
 assert.match(ferryPage, /DoorToDoorJourneyPlanner/);
 assert.match(ferryPage, /FerryPlanner/);
 assert.match(ferryPlanner, /FerryNetworkMap/);
-assert.match(ferryPlanner, /USVI Compass shows the published planning schedule/);
+assert.match(ferryPlanner, /USVI Explorer shows the published planning schedule/);
 assert.match(ferryNetworkMap, /MapContainer/);
 assert.match(ferryNetworkMap, /FERRY_PORT_COORDINATES/);
 assert.match(ferryNetworkMap, /Tap a route line/);
@@ -131,5 +131,5 @@ assert.match(homeStatus, /value: "Plan taxi \+ ferry as one trip"/);
 assert.match(homeStatus, /href: "\/journey"/);
 
 console.log(
-  "VI Guide connected, smart, catalog-routed, Living Map Island Journey contracts passed.",
+  "USVI Explorer connected, smart, catalog-routed, Living Map Island Journey contracts passed.",
 );

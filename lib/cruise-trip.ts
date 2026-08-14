@@ -298,8 +298,8 @@ function encodeCruiseJourneyNotes(context: CruiseJourneyContext, summary: string
   const machine = `${CRUISE_CONTEXT_MARKER}${JSON.stringify(context)}`;
   const warning =
     context.allAboardSource === "derived_from_scheduled_departure"
-      ? "VI Guide planning note: the all-aboard time is a conservative planning proxy set 30 minutes before the supplier's scheduled departure. Verify the ship's actual all-aboard announcement onboard."
-      : "VI Guide planning note: verify the ship's actual all-aboard time before committing to port-day activities.";
+      ? "USVI Explorer planning note: the all-aboard time is a conservative planning proxy set 30 minutes before the supplier's scheduled departure. Verify the ship's actual all-aboard announcement onboard."
+      : "USVI Explorer planning note: verify the ship's actual all-aboard time before committing to port-day activities.";
   return `${machine}\n\n${summary}\n\n${warning}`.slice(0, 2000);
 }
 
@@ -312,7 +312,7 @@ function cruisePortCallSummary(context: CruiseJourneyContext) {
       ? `scheduled departure ${context.departureTime}`
       : "departure time not supplied",
     context.allAboardTime
-      ? `VI Guide planning all-aboard ${context.allAboardTime}`
+      ? `USVI Explorer planning all-aboard ${context.allAboardTime}`
       : "all-aboard time still needs confirmation",
   ];
   return pieces.join(" · ");

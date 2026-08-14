@@ -10,8 +10,8 @@ const cruiseHub = source("app/cruises/page.tsx");
 const shoreExcursions = source("app/shore-excursions/page.tsx");
 
 for (const [value, label] of [
-  ["ViPublicHeader", "Cruise Hub keeps shared VI Guide chrome"],
-  ["VI Guide Cruise Hub", "Cruise Hub keeps its traveler-facing identity"],
+  ["ViPublicHeader", "Cruise Hub keeps shared USVI Explorer chrome"],
+  ["USVI Explorer Cruise Hub", "Cruise Hub keeps its traveler-facing identity"],
   ["<CruiseHubNav />", "Cruise Hub keeps cruise section navigation"],
   ["<CruiseInventoryGateway />", "Cruise Hub keeps sailing inventory"],
   ['href="/cruises/port-calls"', "Cruise Hub keeps official port-call access"],
@@ -60,4 +60,4 @@ assert.doesNotMatch(
   "Shore Excursion navigation contract failed: My Trip must not route directly to Journey Planner",
 );
 
-console.log("VI Guide Cruise Hub and Shore Excursion navigation contracts passed.");
+console.log("USVI Explorer Cruise Hub and Shore Excursion navigation contracts passed.");

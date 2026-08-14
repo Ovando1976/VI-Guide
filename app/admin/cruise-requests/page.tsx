@@ -4,9 +4,9 @@ import { CruiseRequestBoard } from "@/components/admin/cruise-request-board";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Cruise Advisor Desk | VI Guide",
+  title: "Cruise Advisor Desk | USVI Explorer",
   description:
-    "Review and manage customer cruise-planning requests inside VI Guide operations.",
+    "Review and manage customer cruise-planning requests inside USVI Explorer operations.",
 };
 
 export default async function CruiseRequestsPage() {

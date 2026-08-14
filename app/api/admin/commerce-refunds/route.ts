@@ -35,7 +35,7 @@ export async function GET() {
         return {
           id: document.id,
           reference: String(data.reference ?? document.id),
-          listingName: String(data.listingName ?? "VI Guide booking"),
+          listingName: String(data.listingName ?? "USVI Explorer booking"),
           guestName: String(data.guestName ?? "Guest"),
           email: String(data.email ?? ""),
           status: String(data.status ?? "requested"),

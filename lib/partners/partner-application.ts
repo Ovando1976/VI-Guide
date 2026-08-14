@@ -147,7 +147,7 @@ export function normalizePartnerApplication(
     return invalid("Describe the services or experiences offered in at least 20 characters.");
   }
   if (!interests.length) {
-    return invalid("Choose at least one way VI Guide can support the business.");
+    return invalid("Choose at least one way USVI Explorer can support the business.");
   }
   if (input.consent !== true) {
     return invalid("Consent is required before submitting the application.");

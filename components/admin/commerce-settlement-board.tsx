@@ -201,7 +201,7 @@ export function CommerceSettlementBoard() {
                 Release merchant money only when the booking is clean.
               </h1>
               <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/65">
-                VI Guide keeps the platform commission, releases the merchant net
+                USVI Explorer keeps the platform commission, releases the merchant net
                 through Stripe Connect, and locks refunds until any released
                 merchant settlement is recovered.
               </p>
@@ -229,7 +229,7 @@ export function CommerceSettlementBoard() {
               icon={WalletCards}
             />
             <SummaryCard
-              label="VI Guide fee"
+              label="USVI Explorer fee"
               value={formatMoney(payload?.summary.platformFeeCents ?? 0)}
               icon={CircleDollarSign}
             />
@@ -314,7 +314,7 @@ export function CommerceSettlementBoard() {
 
                         <div className="mt-5 grid gap-3 sm:grid-cols-3">
                           <MoneyCell label="Traveler paid" cents={row.grossAmountCents} />
-                          <MoneyCell label="VI Guide fee" cents={row.platformFeeCents} />
+                          <MoneyCell label="USVI Explorer fee" cents={row.platformFeeCents} />
                           <MoneyCell
                             label="Merchant net"
                             cents={row.merchantSettlementCents}

@@ -32,10 +32,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const event = getEventBySlug(slug);
-  if (!event) return { title: "Event | VI Guide" };
+  if (!event) return { title: "Event | USVI Explorer" };
 
   return {
-    title: `${event.name} | VI Guide Events`,
+    title: `${event.name} | USVI Explorer Events`,
     description: event.description,
   };
 }
@@ -136,7 +136,7 @@ export default async function EventDetailPage({ params }: Props) {
               Plan the whole event day
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-[-.045em]">
-              The event is one stop. VI Guide connects everything around it.
+              The event is one stop. USVI Explorer connects everything around it.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-7 text-slate-600">
               Use Concierge to work backward from the event time, choose a realistic
@@ -174,7 +174,7 @@ export default async function EventDetailPage({ params }: Props) {
                   Verify before you go
                 </p>
                 <h2 className="mt-2 text-2xl font-black tracking-[-.04em]">
-                  Official event details can change after VI Guide verifies a listing.
+                  Official event details can change after USVI Explorer verifies a listing.
                 </h2>
                 <p className="mt-3 text-sm font-semibold leading-7 text-teal-950/65">
                   Confirm the official source before purchasing tickets, making an

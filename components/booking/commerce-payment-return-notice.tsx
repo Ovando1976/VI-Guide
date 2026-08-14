@@ -63,7 +63,7 @@ export function CommercePaymentReturnNotice() {
 
       if (!response.ok || !payload?.booking) {
         throw new Error(
-          payload?.error || "VI Guide could not verify this booking yet.",
+          payload?.error || "USVI Explorer could not verify this booking yet.",
         );
       }
 
@@ -72,7 +72,7 @@ export function CommercePaymentReturnNotice() {
       setError(
         verificationError instanceof Error
           ? verificationError.message
-          : "VI Guide could not verify this booking yet.",
+          : "USVI Explorer could not verify this booking yet.",
       );
     } finally {
       setLoading(false);
@@ -113,7 +113,7 @@ export function CommercePaymentReturnNotice() {
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
             {returnedFromCompletedCheckout
-              ? "Stripe returned you to VI Guide, but the return URL alone is not proof of payment. Enter the email used for this booking to check the server-recorded status."
+              ? "Stripe returned you to USVI Explorer, but the return URL alone is not proof of payment. Enter the email used for this booking to check the server-recorded status."
               : "No payment confirmation was received during this checkout return. Your booking may still be awaiting its deposit."}
           </p>
           <div className="mt-3 inline-flex max-w-full items-center gap-2 rounded-full border border-white/80 bg-white px-3 py-2 font-mono text-xs font-black text-[#043331]">
@@ -183,7 +183,7 @@ export function CommercePaymentReturnNotice() {
                 ? `${booking.listingName} shows ${formatMoney(
                     booking.paidAmountCents,
                   )} received. Current booking status: ${booking.status}.`
-                : `VI Guide currently shows payment status ${
+                : `USVI Explorer currently shows payment status ${
                     booking.paymentStatus || "pending"
                   } for ${booking.listingName}. Refresh shortly if you completed Stripe Checkout.`}
             </p>

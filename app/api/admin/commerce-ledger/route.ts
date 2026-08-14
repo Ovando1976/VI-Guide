@@ -167,7 +167,7 @@ export async function POST() {
             clean(booking.listingId, 180) ||
             `unassigned-${bookingDocument.id}`,
           listingName:
-            clean(booking.listingName, 220) || "VI Guide booking",
+            clean(booking.listingName, 220) || "USVI Explorer booking",
           paymentIntentId,
           checkoutSessionId,
           stripeEventId: `reconciliation-capture-${bookingDocument.id}`,
@@ -251,7 +251,7 @@ export async function POST() {
               clean(booking.listingId, 180) ||
               `unassigned-${bookingDocument.id}`,
             listingName:
-              clean(booking.listingName, 220) || "VI Guide booking",
+              clean(booking.listingName, 220) || "USVI Explorer booking",
             paymentIntentId,
             checkoutSessionId,
             refundId,

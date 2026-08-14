@@ -71,7 +71,7 @@ export function RememberedBookingsPanel() {
                 Your requests, in one place.
               </h1>
               <p className="mt-4 text-sm font-semibold leading-6 text-white/68">
-                VI Guide remembers validated booking references on this device so you can reopen a request without hunting through messages.
+                USVI Explorer remembers validated booking references on this device so you can reopen a request without hunting through messages.
               </p>
               <div className="mt-6 flex gap-3 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/68">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#73e3d9]" />
@@ -111,7 +111,7 @@ export function RememberedBookingsPanel() {
             ) : (
               <div className="mt-5 rounded-[24px] border border-dashed border-teal-200 bg-[#f8f4ea] p-5">
                 <p className="text-sm font-bold leading-6 text-slate-700">
-                  Submit a stay, tour, or experience request and VI Guide will keep the validated reference here on this device for quick return access.
+                  Submit a stay, tour, or experience request and USVI Explorer will keep the validated reference here on this device for quick return access.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link

@@ -153,7 +153,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               </div>
               <div className="min-w-0">
                 <div className="truncate text-sm font-black">
-                  {user.displayName || "USVI Compass member"}
+                  {user.displayName || "USVI Explorer member"}
                 </div>
                 <div className="truncate text-xs text-teal-100/75">
                   {user.email}
@@ -167,7 +167,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
 
           <nav className="p-3">
             <div className="px-3 pb-2 pt-1 text-[8px] font-black uppercase tracking-[.18em] text-[#8b9c98]">
-              Your USVI Compass
+              Your USVI Explorer
             </div>
             <div className="space-y-1">
               <MenuLink
@@ -221,7 +221,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
               />
               <MenuLink
                 href="/partners/apply"
-                label="Partner with USVI Compass"
+                label="Partner with USVI Explorer"
                 icon={Handshake}
                 onSelect={() => setOpen(false)}
               />

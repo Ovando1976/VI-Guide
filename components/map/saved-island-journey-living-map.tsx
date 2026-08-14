@@ -308,7 +308,7 @@ function EmptyJourney() {
       <MapPinned className="h-8 w-8 text-[#0b817b]" />
       <h2 className="mt-4 text-3xl font-black tracking-[-.04em]">No saved Island Journey yet.</h2>
       <p className="mt-3 max-w-xl text-sm font-semibold leading-6 text-slate-600">
-        Build an inter-island journey first. VI Guide will save the origin, both ferry terminals, and destination so the complete route can be drawn here.
+        Build an inter-island journey first. USVI Explorer will save the origin, both ferry terminals, and destination so the complete route can be drawn here.
       </p>
       <Link
         href="/journey"

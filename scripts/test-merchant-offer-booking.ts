@@ -51,7 +51,7 @@ assert.deepEqual(
     record,
     now,
   }),
-  { ok: false, error: "Choose a valid VI Guide offer.", status: 400 },
+  { ok: false, error: "Choose a valid USVI Explorer offer.", status: 400 },
 );
 assert.deepEqual(
   resolveMerchantOfferForBooking({
@@ -59,7 +59,7 @@ assert.deepEqual(
     record: null,
     now,
   }),
-  { ok: false, error: "This VI Guide offer was not found.", status: 404 },
+  { ok: false, error: "This USVI Explorer offer was not found.", status: 404 },
 );
 assert.deepEqual(
   resolveMerchantOfferForBooking({
@@ -69,7 +69,7 @@ assert.deepEqual(
   }),
   {
     ok: false,
-    error: "This VI Guide offer is not currently bookable.",
+    error: "This USVI Explorer offer is not currently bookable.",
     status: 409,
   },
 );
@@ -81,7 +81,7 @@ assert.deepEqual(
   }),
   {
     ok: false,
-    error: "This VI Guide offer is not currently bookable.",
+    error: "This USVI Explorer offer is not currently bookable.",
     status: 409,
   },
 );
@@ -97,7 +97,7 @@ assert.deepEqual(
   }),
   {
     ok: false,
-    error: "This VI Guide offer is not currently bookable.",
+    error: "This USVI Explorer offer is not currently bookable.",
     status: 409,
   },
 );
@@ -109,7 +109,7 @@ assert.deepEqual(
   }),
   {
     ok: false,
-    error: "This VI Guide offer is not currently bookable.",
+    error: "This USVI Explorer offer is not currently bookable.",
     status: 409,
   },
 );

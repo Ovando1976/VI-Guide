@@ -170,7 +170,7 @@ export function HeritageConcierge({
       className="fixed inset-0 z-[9998] flex flex-col overflow-hidden bg-[#061c1b] text-white sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(700px,calc(100vh-48px))] sm:w-[430px] sm:rounded-[30px] sm:border sm:border-white/10 sm:shadow-[0_35px_100px_rgba(0,0,0,.55)]"
       role="dialog"
       aria-modal="true"
-      aria-label="VI Guide Heritage Concierge"
+      aria-label="USVI Explorer Heritage Concierge"
     >
       <header className="border-b border-white/10 bg-[#082b29] px-5 pb-4 pt-[max(18px,env(safe-area-inset-top))] sm:p-5">
         <div className="flex items-start justify-between gap-3">

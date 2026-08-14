@@ -103,7 +103,7 @@ function createCover(row: AuditRow, destination: string) {
   const island = ISLAND_LABEL[row.island] ?? row.island;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title description">
   <title id="title">${escapeXml(row.name)}</title>
-  <desc id="description">VI Guide location cover for ${escapeXml(row.name)} on ${escapeXml(island)}</desc>
+  <desc id="description">USVI Explorer location cover for ${escapeXml(row.name)} on ${escapeXml(island)}</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${dark}"/><stop offset="0.62" stop-color="${aqua}"/><stop offset="1" stop-color="#67e8f9"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#99f6e4" stop-opacity=".9"/><stop offset="1" stop-color="${dark}"/></linearGradient>

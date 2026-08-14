@@ -232,7 +232,7 @@ export async function askViIntelligence(
     throw new Error(
       payload && "error" in payload
         ? payload.error
-        : "VI Guide Intelligence could not respond.",
+        : "USVI Explorer Intelligence could not respond.",
     );
   }
 

@@ -17,9 +17,9 @@ import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gateway";
 
 export const metadata: Metadata = {
-  title: "Cruise Hub | VI Guide",
+  title: "Cruise Hub | USVI Explorer",
   description:
-    "Plan the cruise, verify USVI port calls, match capacity-aware shore excursions, request advisor help, and keep the trip connected inside one VI Guide cruise hub.",
+    "Plan the cruise, verify USVI port calls, match capacity-aware shore excursions, request advisor help, and keep the trip connected inside one USVI Explorer cruise hub.",
 };
 
 export default function CruisesPage() {
@@ -38,7 +38,7 @@ export default function CruisesPage() {
           <div className="grid gap-10 lg:grid-cols-[1.12fr_.88fr] lg:items-end">
             <div>
               <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[.23em] text-[#f5c451]">
-                <ShipWheel className="h-4 w-4" /> VI Guide Cruise Hub
+                <ShipWheel className="h-4 w-4" /> USVI Explorer Cruise Hub
               </p>
               <h1 className="mt-5 max-w-5xl text-5xl font-black leading-[.9] tracking-[-.065em] sm:text-7xl">
                 One cruise plan, from sailing search to the last port day.
@@ -89,7 +89,7 @@ export default function CruisesPage() {
               <HeroSignal
                 icon={TicketCheck}
                 title="Keep it together"
-                text="Bookings and trip planning stay inside the same VI Guide journey."
+                text="Bookings and trip planning stay inside the same USVI Explorer journey."
               />
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function CruisesPage() {
                 The cruise is not a separate product from the Virgin Islands trip.
               </h2>
               <p className="mt-4 text-sm font-semibold leading-7 text-slate-600">
-                VI Guide understands the voyage, the official port-call context, the
+                USVI Explorer understands the voyage, the official port-call context, the
                 traveler&apos;s local plans, operator capacity, and the bookings as one
                 itinerary. That is the organizing principle of this hub.
               </p>

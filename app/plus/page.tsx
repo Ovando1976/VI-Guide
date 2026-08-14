@@ -150,20 +150,20 @@ export default function TravelerPlusPage() {
           actionLabel="Ask Concierge"
           actionIcon={Sparkles}
           secondaryHref="/"
-          secondaryLabel="Explore VI Guide"
+          secondaryLabel="Explore USVI Explorer"
         />
 
         <div className="mx-auto grid max-w-7xl gap-10 pb-3 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:gap-14 lg:pt-24">
           <div>
             <div className="vi-eyebrow inline-flex items-center gap-2 rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-4 py-2 text-[#f8d77c] backdrop-blur-xl">
-              <Crown size={14} /> VI Guide Traveler Plus
+              <Crown size={14} /> USVI Explorer Traveler Plus
             </div>
             <h1 className="vi-display mt-7 max-w-5xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
-              Put VI Guide
+              Put USVI Explorer
               <span className="block italic text-[#73e3d9]">on your trip team.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
-              Traveler Plus is the annual premium tier for people who want VI Guide to do more than recommend places—preserve trip context, watch important plans, and help turn island decisions into an organized journey.
+              Traveler Plus is the annual premium tier for people who want USVI Explorer to do more than recommend places—preserve trip context, watch important plans, and help turn island decisions into an organized journey.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-[9px] font-black uppercase tracking-[.15em] text-white/78">
               <BenefitPill label="Premium Concierge" />
@@ -186,7 +186,7 @@ export default function TravelerPlusPage() {
               </span>
             </div>
             <p className="mt-4 text-sm font-semibold leading-6 text-[#607370]">
-              One membership for your VI Guide traveler account. Billing is handled securely by Stripe and can be managed from the Stripe customer portal.
+              One membership for your USVI Explorer traveler account. Billing is handled securely by Stripe and can be managed from the Stripe customer portal.
             </p>
 
             {checkoutResult === "success" ? (
@@ -254,7 +254,7 @@ export default function TravelerPlusPage() {
             <div className="mt-6 border-t border-[#e4ece9] pt-5">
               <div className="flex items-start gap-3 text-xs font-semibold leading-5 text-[#607370]">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#0f766e]" />
-                Stripe handles subscription checkout. VI Guide verifies membership status before presenting the account as active and does not store raw card details.
+                Stripe handles subscription checkout. USVI Explorer verifies membership status before presenting the account as active and does not store raw card details.
               </div>
             </div>
           </div>
@@ -285,7 +285,7 @@ export default function TravelerPlusPage() {
               The premium value should show up when the plan gets complicated.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-7 text-white/60">
-              Use the same saved places, itinerary, bookings, island context, and traveler profile you already built. Plus should make VI Guide more useful around those decisions—not force you into a separate premium product.
+              Use the same saved places, itinerary, bookings, island context, and traveler profile you already built. Plus should make USVI Explorer more useful around those decisions—not force you into a separate premium product.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -305,7 +305,7 @@ export default function TravelerPlusPage() {
               </div>
               <h2 className="vi-display mt-3 text-3xl font-bold tracking-[-.04em]">Stripe handles the subscription checkout.</h2>
               <p className="mt-3 text-sm font-semibold leading-7 text-[#4f6e69]">
-                VI Guide does not collect or store your raw card details. Membership status is verified against Stripe before the app presents the account as active.
+                USVI Explorer does not collect or store your raw card details. Membership status is verified against Stripe before the app presents the account as active.
               </p>
             </div>
             <Link href="/profile" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[#b8ddd6] bg-white px-5 text-[10px] font-black uppercase tracking-[.14em] text-[#0f5e58]">

@@ -33,8 +33,8 @@ assert.doesNotMatch(
 );
 assert.doesNotMatch(
   workspace,
-  /href="\/" className="text-sm font-black tracking-tight">VI Guide/,
-  "My Day must not render a second internal VI Guide header",
+  /href="\/" className="text-sm font-black tracking-tight">USVI Explorer/,
+  "My Day must not render a second internal USVI Explorer header",
 );
 assert.match(workspace, /Your island day, in one place\./);
 assert.match(workspace, /Open Living Map/);
@@ -67,4 +67,4 @@ assert.doesNotMatch(workspace, /label="Trip progress"/);
 assert.doesNotMatch(workspace, /Good to go on/);
 assert.doesNotMatch(workspace, /Ready for today/);
 
-console.log("VI Guide My Day shared-shell contracts passed.");
+console.log("USVI Explorer My Day shared-shell contracts passed.");

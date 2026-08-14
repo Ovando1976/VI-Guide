@@ -30,7 +30,7 @@ for (const [value, label] of [
 }
 
 for (const [value, label] of [
-  ["ViPublicHeader", "Events uses shared VI Guide public chrome"],
+  ["ViPublicHeader", "Events uses shared USVI Explorer public chrome"],
   ['secondaryHref="/trips"', "Events keeps the canonical My Trip handoff"],
   ["Plan with Concierge", "Events exposes Concierge planning"],
   ["EVENT_CATEGORY_LABELS", "Events supports event-type filtering"],
@@ -78,4 +78,4 @@ for (const [value, label] of [
   assert.ok(homeLiveStatus.includes(value), `Events home-entry contract failed: ${label}`);
 }
 
-console.log("VI Guide Events traveler-surface contracts passed.");
+console.log("USVI Explorer Events traveler-surface contracts passed.");

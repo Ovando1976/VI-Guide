@@ -24,13 +24,13 @@ export default function CheckoutLandingPage() {
           <div className="relative grid min-h-[430px] gap-8 p-7 text-white sm:p-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:p-14">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778] backdrop-blur">
-                <ShieldCheck className="h-4 w-4" /> VI Guide secure payment hub
+                <ShieldCheck className="h-4 w-4" /> USVI Explorer secure payment hub
               </div>
               <h1 className="mt-5 max-w-3xl text-4xl font-black leading-[.94] tracking-[-.055em] sm:text-6xl">
                 Pay from the booking that created the charge.
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/72 sm:text-base">
-                VI Guide keeps ride payments and travel-request payments attached to the protected booking record that produced them. That prevents a checkout page from guessing the traveler, supplier, route, or amount.
+                USVI Explorer keeps ride payments and travel-request payments attached to the protected booking record that produced them. That prevents a checkout page from guessing the traveler, supplier, route, or amount.
               </p>
               <p className="mt-4 text-[10px] font-black uppercase tracking-[.16em] text-white/50">
                 Virgin Islands photography shown as territory context.
@@ -61,7 +61,7 @@ export default function CheckoutLandingPage() {
           <JourneyCard
             icon={Route}
             eyebrow="Ride payment"
-            title="Pay an existing VI Guide ride"
+            title="Pay an existing USVI Explorer ride"
             copy="If a ride has an unpaid regulated fare, open My Trip and continue from that booking. The secure ride checkout verifies the booking amount before Stripe payment starts."
             primaryHref="/trips"
             primaryLabel="Open My Trip"
@@ -89,7 +89,7 @@ export default function CheckoutLandingPage() {
               Keep the payment attached to the trip context.
             </h2>
             <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
-              Use My Bookings for travel requests or My Trip for rides. VI Guide will surface the next valid action from the protected record rather than asking you to enter an amount manually.
+              Use My Bookings for travel requests or My Trip for rides. USVI Explorer will surface the next valid action from the protected record rather than asking you to enter an amount manually.
             </p>
           </div>
           <Link

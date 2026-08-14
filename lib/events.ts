@@ -35,7 +35,7 @@ export const USVI_EVENTS: readonly UsviEvent[] = [
     endDate: "2026-08-31",
     location: "St. Thomas",
     description:
-      "St. Thomas Restaurant Week is listed on the official Visit USVI events calendar for August 16 through August 31, 2026. Use VI Guide to connect the culinary event window with dining discovery, transportation, and the rest of your island plan.",
+      "St. Thomas Restaurant Week is listed on the official Visit USVI events calendar for August 16 through August 31, 2026. Use USVI Explorer to connect the culinary event window with dining discovery, transportation, and the rest of your island plan.",
     sourceLabel: "Visit USVI · Events & Festivals",
     sourceUrl: "https://www.visitusvi.com/carnivals-festivals/",
     verifiedAt: "2026-08-08",

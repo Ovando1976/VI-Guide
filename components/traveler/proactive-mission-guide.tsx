@@ -152,7 +152,7 @@ function buildGuidance(
         eyebrow: `${daysUntilMission} day${daysUntilMission === 1 ? "" : "s"} until mission`,
         title: `Prepare for ${currentStop.title}`,
         summary:
-          "Review transportation and reservation needs now. VI Guide can optimize timing and add a backup before the mission begins.",
+          "Review transportation and reservation needs now. USVI Explorer can optimize timing and add a backup before the mission begins.",
         actionLabel: "Prepare this stop",
         actionHref: conciergeHref,
         secondaryLabel: "View destination",

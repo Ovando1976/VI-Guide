@@ -181,7 +181,7 @@ export function PayoutLedger() {
       }
 
       setMessage(
-        `Settlement ${record.id.slice(0, 12)} was recorded as paid. VI Guide recorded evidence only and did not move money.`,
+        `Settlement ${record.id.slice(0, 12)} was recorded as paid. USVI Explorer recorded evidence only and did not move money.`,
       );
       setDrafts((current) => {
         const next = { ...current };
@@ -204,7 +204,7 @@ export function PayoutLedger() {
     <AdminShell
       eyebrow="Settlement Ledger"
       title="Operator obligations and payment evidence"
-      description="Review calculated operator obligations, monitor holds, and record external payout evidence only after funds have already been delivered outside VI Guide."
+      description="Review calculated operator obligations, monitor holds, and record external payout evidence only after funds have already been delivered outside USVI Explorer."
       actions={
         <div className="flex flex-wrap items-center gap-3">
           <DateRangeFilter value={range} onChange={setRange} />
@@ -387,7 +387,7 @@ function SettlementRow({
                 {money(Number(record.paidAmountCents ?? 0) / 100)} · {methodLabel(record.externalPaymentMethod)} · {record.externalPaymentReference || "reference unavailable"}
               </div>
               <div className="mt-1 text-emerald-800/75">
-                Recorded {formatDate(record.paidAt)} by {record.paidBy || "admin"}. VI Guide did not move these funds.
+                Recorded {formatDate(record.paidAt)} by {record.paidBy || "admin"}. USVI Explorer did not move these funds.
               </div>
             </div>
           ) : null}

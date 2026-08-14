@@ -105,11 +105,11 @@ export default function LoginPage() {
           <Link
             href="/"
             className="flex w-fit items-center gap-3 rounded-full border border-white/15 bg-[#032f2d]/55 px-3 py-2 pr-5 backdrop-blur-md transition hover:bg-[#032f2d]/72"
-            aria-label="USVI Compass home"
+            aria-label="USVI Explorer home"
           >
             <ViBrandMark className="h-11 w-11" priority />
             <span>
-              <span className="block text-lg font-black tracking-[-.035em]">USVI Compass</span>
+              <span className="block text-lg font-black tracking-[-.035em]">USVI Explorer</span>
               <span className="mt-0.5 block text-[8px] font-black uppercase tracking-[.19em] text-[#9fe7df]">
                 Virgin Islands travel OS
               </span>
@@ -125,7 +125,7 @@ export default function LoginPage() {
             </h1>
             <p className="mt-5 max-w-xl text-base font-semibold leading-8 text-white/72">
               Sign in to keep trips, bookings, traveler preferences, proactive alerts,
-              and Concierge context connected across the USVI Compass experience.
+              and Concierge context connected across the USVI Explorer experience.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -155,15 +155,15 @@ export default function LoginPage() {
 
         <section className="flex min-h-[680px] flex-col bg-[#fffdf8] p-5 sm:p-8 lg:min-h-[720px] lg:p-10 xl:p-12">
           <div className="flex items-center justify-between gap-4 lg:justify-end">
-            <Link href="/" className="flex items-center gap-2 lg:hidden" aria-label="USVI Compass home">
+            <Link href="/" className="flex items-center gap-2 lg:hidden" aria-label="USVI Explorer home">
               <ViBrandMark className="h-10 w-10" priority />
-              <span className="text-lg font-black tracking-[-.035em]">USVI Compass</span>
+              <span className="text-lg font-black tracking-[-.035em]">USVI Explorer</span>
             </Link>
             <Link
               href="/"
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#d6e3df] bg-white px-4 text-[8px] font-black uppercase tracking-[.14em] text-[#4e6863] transition hover:border-[#a5d0c8]"
             >
-              <MapPinned className="h-4 w-4 text-[#0f766e]" /> Back to USVI Compass
+              <MapPinned className="h-4 w-4 text-[#0f766e]" /> Back to USVI Explorer
             </Link>
           </div>
 
@@ -172,7 +172,7 @@ export default function LoginPage() {
               <LockKeyhole className="h-4 w-4" /> Secure account entry
             </div>
             <h2 className="vi-display mt-5 text-4xl font-black leading-[.96] tracking-[-.05em] sm:text-5xl">
-              {create ? "Create your USVI Compass account." : "Welcome back to USVI Compass."}
+              {create ? "Create your USVI Explorer account." : "Welcome back to USVI Explorer."}
             </h2>
             <p className="mt-4 text-sm font-semibold leading-7 text-[#677c78]">
               {create
@@ -260,7 +260,7 @@ export default function LoginPage() {
             <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#dbe7e4] bg-[#f7fbfa] p-4">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#0f766e]" />
               <p className="text-xs font-semibold leading-5 text-[#687c78]">
-                After authentication, USVI Compass creates a secure server session and returns you only to a validated internal destination.
+                After authentication, USVI Explorer creates a secure server session and returns you only to a validated internal destination.
               </p>
             </div>
           </div>

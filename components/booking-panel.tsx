@@ -1022,7 +1022,7 @@ function FareReview({
           Passenger disclosures
         </div>
         <p className="mt-2 text-xs font-semibold leading-5">
-          VI Guide coordinates booking, payment status, and dispatch. Transportation is provided by an independently authorized taxi operator or participating taxi association.
+          USVI Explorer coordinates booking, payment status, and dispatch. Transportation is provided by an independently authorized taxi operator or participating taxi association.
         </p>
         <div className="mt-4 space-y-3">
           <ConsentCheckbox

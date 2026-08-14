@@ -28,10 +28,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { postId } = await params;
   const story = getCommunityStory(postId);
-  if (!story) return { title: "Community | VI Guide" };
+  if (!story) return { title: "Community | USVI Explorer" };
 
   return {
-    title: `${story.title} | VI Guide Community`,
+    title: `${story.title} | USVI Explorer Community`,
     description: story.summary,
   };
 }
@@ -44,7 +44,7 @@ export default async function CommunityPostPage({ params }: Props) {
   const island = islandLabel(story.island);
   const storyHref = `/community/${story.slug}`;
   const conciergePrompt = [
-    `Help me use this VI Guide community field note about ${story.placeName} on ${island}.`,
+    `Help me use this USVI Explorer community field note about ${story.placeName} on ${island}.`,
     story.summary,
     "Connect it to realistic timing, transportation, nearby places, cultural context, and the rest of my trip.",
   ].join(" ");
@@ -170,7 +170,7 @@ export default async function CommunityPostPage({ params }: Props) {
                       {story.sourceLabel}
                     </h2>
                     <p className="mt-3 text-xs font-semibold leading-6 text-teal-950/65">
-                      VI Guide verified this source on {story.verifiedAt}. The field note turns
+                      USVI Explorer verified this source on {story.verifiedAt}. The field note turns
                       source-backed place context into practical traveler guidance rather than
                       presenting it as a social post or live condition report.
                     </p>

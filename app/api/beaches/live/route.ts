@@ -390,7 +390,7 @@ function curatedBeachResponse(island: IslandCode) {
       count: places.length,
       places,
     },
-    "Google Places is not configured; serving curated VI Guide beach catalog.",
+    "Google Places is not configured; serving curated USVI Explorer beach catalog.",
     verifiedAt,
   );
 }

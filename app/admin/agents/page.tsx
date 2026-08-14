@@ -23,8 +23,8 @@ import {
 } from "@/lib/intelligence/telemetry";
 
 export const metadata: Metadata = {
-  title: "Agent Control Center | VI Guide Admin",
-  description: "Monitor VI Guide intelligence workflows, traces, failures, and execution health.",
+  title: "Agent Control Center | USVI Explorer Admin",
+  description: "Monitor USVI Explorer intelligence workflows, traces, failures, and execution health.",
 };
 
 export const dynamic = "force-dynamic";
@@ -53,7 +53,7 @@ export default async function AgentControlCenterPage() {
                 </span>
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[.22em] text-cyan-200/55">
-                    VI Guide Intelligence
+                    USVI Explorer Intelligence
                   </p>
                   <h1 className="text-3xl font-black tracking-tight sm:text-4xl">
                     Agent Control Center
@@ -61,7 +61,7 @@ export default async function AgentControlCenterPage() {
                 </div>
               </div>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-white/55">
-                Durable orchestration telemetry from the Concierge and every surface using the VI Guide intelligence API. Inspect workflow state, execution traces, missing information, and failures without exposing full traveler conversations.
+                Durable orchestration telemetry from the Concierge and every surface using the USVI Explorer intelligence API. Inspect workflow state, execution traces, missing information, and failures without exposing full traveler conversations.
               </p>
             </div>
 

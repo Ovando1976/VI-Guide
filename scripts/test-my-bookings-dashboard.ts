@@ -50,7 +50,7 @@ for (const [value, label] of [
   ["buildBookingStatusHref", "remembered cards reopen the canonical status route"],
   ["Opening one still performs the secure email + reference lookup", "local cards do not claim to be live server status"],
   ["Open live status", "cards clearly distinguish local memory from live status"],
-  ["/images/usvi-harbor-hero.jpg", "dashboard stays in the VI Guide visual system"],
+  ["/images/usvi-harbor-hero.jpg", "dashboard stays in the USVI Explorer visual system"],
 ] as const) {
   expectSource(rememberedPanel, value, label);
 }
@@ -89,4 +89,4 @@ for (const [value, label] of [
   expectSource(tracker, value, label);
 }
 
-console.log("VI Guide My Bookings dashboard contracts passed.");
+console.log("USVI Explorer My Bookings dashboard contracts passed.");

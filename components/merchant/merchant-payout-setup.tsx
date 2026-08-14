@@ -37,7 +37,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
         eyebrow: "Setup required",
         title: "Connect a payout account",
         detail:
-          "Stripe verifies your business and payout details before VI Guide can release merchant settlement.",
+          "Stripe verifies your business and payout details before USVI Explorer can release merchant settlement.",
       };
     }
     if (payout.state === "ready") {
@@ -45,7 +45,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
         eyebrow: "Transfers active",
         title: "Your payout account is ready",
         detail:
-          "Completed, verified bookings can be released to this Stripe account after VI Guide settlement checks pass.",
+          "Completed, verified bookings can be released to this Stripe account after USVI Explorer settlement checks pass.",
       };
     }
     return {
@@ -81,7 +81,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
     const result = new URLSearchParams(window.location.search).get("connect");
     if (result === "returned") {
       setReturnMessage(
-        "Stripe returned you to VI Guide. We are checking whether transfers are active.",
+        "Stripe returned you to USVI Explorer. We are checking whether transfers are active.",
       );
       window.history.replaceState({}, "", "/merchant/payouts");
     } else if (result === "ready") {
@@ -159,10 +159,10 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
                 Marketplace payouts
               </p>
               <h1 className="mt-4 max-w-3xl text-4xl font-black leading-[.95] tracking-[-.055em] sm:text-6xl">
-                Get paid through VI Guide.
+                Get paid through USVI Explorer.
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
-                Travelers pay VI Guide securely. After a booking is delivered and
+                Travelers pay USVI Explorer securely. After a booking is delivered and
                 passes settlement checks, the merchant share is released to your
                 verified Stripe payout account.
               </p>
@@ -174,7 +174,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
               </p>
               <p className="mt-2 text-3xl font-black">90% merchant share</p>
               <p className="mt-2 text-sm font-semibold leading-6 text-white/60">
-                VI Guide retains a 10% platform commission on marketplace booking
+                USVI Explorer retains a 10% platform commission on marketplace booking
                 payments under the current commerce policy.
               </p>
             </div>
@@ -297,7 +297,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
               {[
                 ["1", "Traveler payment is verified by Stripe."],
                 ["2", "Provider confirms and completes the booked service."],
-                ["3", "VI Guide checks refunds, disputes, and financial holds."],
+                ["3", "USVI Explorer checks refunds, disputes, and financial holds."],
                 ["4", "The merchant net is released to the connected Stripe account."],
               ].map(([number, copy]) => (
                 <div key={number} className="flex gap-3">
@@ -317,7 +317,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
           <InfoCard
             icon={Building2}
             title="One verified merchant"
-            detail="Your connected payout profile follows your assigned VI Guide listings."
+            detail="Your connected payout profile follows your assigned USVI Explorer listings."
           />
           <InfoCard
             icon={ShieldCheck}
@@ -326,7 +326,7 @@ export function MerchantPayoutSetup({ listingCount }: { listingCount: number }) 
           />
           <InfoCard
             icon={WalletCards}
-            title="No card data in VI Guide"
+            title="No card data in USVI Explorer"
             detail="Traveler checkout and merchant payout credentials stay inside Stripe's secure flows."
           />
         </section>

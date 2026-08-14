@@ -184,7 +184,7 @@ function addCompletenessRisks(
         "medium",
         "timing",
         "Most stop durations are not defined",
-        "VI Guide is using conservative 75-minute estimates.",
+        "USVI Explorer is using conservative 75-minute estimates.",
         "Add realistic durations before relying on the timeline.",
         10,
         missingDurations.map((stop) => stop.id),

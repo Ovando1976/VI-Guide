@@ -54,7 +54,7 @@ const STATUS_COPY: Record<
   draft: { title: "Draft", detail: "This request has not been submitted yet." },
   requested: {
     title: "Request received",
-    detail: "VI Guide has recorded the request and it is waiting for review.",
+    detail: "USVI Explorer has recorded the request and it is waiting for review.",
   },
   reviewing: {
     title: "Under review",
@@ -257,7 +257,7 @@ export function BookingStatusLookup() {
                 <BadgeCheck className="h-4 w-4" /> Booking status
               </div>
               <h1 className="mt-5 text-4xl font-black leading-[.95] tracking-[-.05em] sm:text-5xl">
-                Track your VI Guide request.
+                Track your USVI Explorer request.
               </h1>
               <p className="mt-5 text-sm font-semibold leading-7 text-white/65">
                 Enter the reference from your confirmation screen and the email used when submitting the request.
@@ -265,7 +265,7 @@ export function BookingStatusLookup() {
               <div className="mt-8 flex gap-3 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/65">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#7ce0d4]" />
                 <span>
-                  VI Guide can remember the reference and lookup email on this device. The email is never placed in the page URL or the trip planner.
+                  USVI Explorer can remember the reference and lookup email on this device. The email is never placed in the page URL or the trip planner.
                 </span>
               </div>
             </div>
@@ -540,7 +540,7 @@ function CancellationAssurance({
             </div>
           ) : (
             <p className="mt-2 text-sm font-semibold leading-6 text-indigo-950/70">
-              Do not assume a refund amount for this legacy request. VI Guide will review the provider terms and payment evidence before confirming any refund.
+              Do not assume a refund amount for this legacy request. USVI Explorer will review the provider terms and payment evidence before confirming any refund.
             </p>
           )}
 
@@ -654,7 +654,7 @@ function RefundProgress({ booking }: { booking: BookingStatusSnapshot }) {
             Refund needs attention
           </p>
           <p className="mt-1 text-sm font-bold leading-6">
-            The refund could not be completed automatically. VI Guide operations has the payment record and will review it.
+            The refund could not be completed automatically. USVI Explorer operations has the payment record and will review it.
           </p>
         </div>
       </div>
@@ -693,7 +693,7 @@ function TrueTripPriceCard({ booking }: { booking: BookingStatusSnapshot }) {
         <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
         <div>
           <p className="text-[9px] font-black uppercase tracking-[.15em] text-amber-700">Total price not verified</p>
-          <p className="mt-1 text-sm font-bold leading-6">Do not treat a deposit or advertised rate as the final cost. VI Guide will show the itemized total before payment can be requested.</p>
+          <p className="mt-1 text-sm font-bold leading-6">Do not treat a deposit or advertised rate as the final cost. USVI Explorer will show the itemized total before payment can be requested.</p>
         </div>
       </div>
     );

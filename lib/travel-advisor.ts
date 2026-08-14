@@ -104,7 +104,7 @@ export function normalizeTravelPlanningRequest(
   if (body.consent !== true) {
     return {
       ok: false,
-      error: "Confirm that VI Guide may use these details to respond to your planning request.",
+      error: "Confirm that USVI Explorer may use these details to respond to your planning request.",
     };
   }
 

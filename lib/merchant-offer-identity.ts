@@ -32,7 +32,7 @@ export function humanizeOfferListingId(value: unknown) {
         .replace(/\s+/g, " ")
         .trim()
         .replace(/\b\w/g, (letter) => letter.toUpperCase())
-    : "VI Guide business";
+    : "USVI Explorer business";
 }
 
 function humanizeListingId(value: string) {

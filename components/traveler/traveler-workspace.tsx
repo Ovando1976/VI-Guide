@@ -138,7 +138,7 @@ export function TravelerWorkspace() {
                 Your trip becomes a live workspace here.
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/72 sm:text-base">
-                Build an itinerary or start a Concierge mission, then VI Guide can keep the next stop, Living Map, transportation, reservations, and trip decisions in one connected place.
+                Build an itinerary or start a Concierge mission, then USVI Explorer can keep the next stop, Living Map, transportation, reservations, and trip decisions in one connected place.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link

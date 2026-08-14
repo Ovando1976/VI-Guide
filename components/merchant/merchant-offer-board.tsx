@@ -558,7 +558,7 @@ function OfferEditor({
               />
               {role === "merchant" ? (
                 <p className="mt-2 text-[11px] font-semibold normal-case leading-5 tracking-normal text-slate-500">
-                  VI Guide derives this public name from the assigned listing ID.
+                  USVI Explorer derives this public name from the assigned listing ID.
                   An administrator can apply a reviewed display name when needed.
                 </p>
               ) : null}

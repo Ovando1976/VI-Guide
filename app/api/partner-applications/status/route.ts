@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
         application: {
           reference,
           businessName:
-            clean(data.businessName, 160) || "VI Guide partner application",
+            clean(data.businessName, 160) || "USVI Explorer partner application",
           ...publicStatus,
           submittedAt: normalizeTimestampOrEpoch(
             data.submittedAt ?? data.createdAt ?? data.serverCreatedAt,
@@ -133,7 +133,7 @@ function throttled() {
   return NextResponse.json(
     {
       error:
-        "Unable to verify this application right now. Try again later or contact the VI Guide team.",
+        "Unable to verify this application right now. Try again later or contact the USVI Explorer team.",
     },
     {
       status: 429,

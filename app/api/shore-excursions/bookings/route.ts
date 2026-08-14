@@ -507,7 +507,7 @@ function officialCapacityError(status: string, partySize: number) {
     return "The operator's capacity for this official port-call date is no longer published. Reopen Port Days before requesting it.";
   }
   if (status === "capacity_unverified") {
-    return "VI Guide cannot verify the full same-day demand snapshot for this operator right now. Capacity is therefore not being presented as available.";
+    return "USVI Explorer cannot verify the full same-day demand snapshot for this operator right now. Capacity is therefore not being presented as available.";
   }
   if (status === "provider_closed") return "The operator is now marked closed for this port-call date.";
   if (status === "sold_out") return "This operator has no remaining published capacity for the port-call date.";

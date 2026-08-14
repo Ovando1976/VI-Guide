@@ -29,10 +29,10 @@ export function resolveMerchantOfferForBooking(input: {
 }): MerchantOfferBookingResolution {
   const offerId = normalizeMerchantOfferId(input.offerId);
   if (!offerId) {
-    return { ok: false, error: "Choose a valid VI Guide offer.", status: 400 };
+    return { ok: false, error: "Choose a valid USVI Explorer offer.", status: 400 };
   }
   if (!input.record) {
-    return { ok: false, error: "This VI Guide offer was not found.", status: 404 };
+    return { ok: false, error: "This USVI Explorer offer was not found.", status: 404 };
   }
 
   const now = input.now ?? new Date();
@@ -42,7 +42,7 @@ export function resolveMerchantOfferForBooking(input: {
   if (!validation.ok) {
     return {
       ok: false,
-      error: "This VI Guide offer is not currently bookable.",
+      error: "This USVI Explorer offer is not currently bookable.",
       status: 409,
     };
   }
@@ -58,7 +58,7 @@ export function resolveMerchantOfferForBooking(input: {
   ) {
     return {
       ok: false,
-      error: "This VI Guide offer is not currently bookable.",
+      error: "This USVI Explorer offer is not currently bookable.",
       status: 409,
     };
   }

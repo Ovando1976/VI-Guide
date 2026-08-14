@@ -135,8 +135,8 @@ export async function POST(request: NextRequest) {
             ? "Cancellation review requested"
             : "Booking cancelled",
           message: hasCapturedPayment
-            ? `${String(booking.listingName ?? "VI Guide booking")} requires cancellation and refund review.`
-            : `${String(booking.listingName ?? "VI Guide booking")} was cancelled before payment.`,
+            ? `${String(booking.listingName ?? "USVI Explorer booking")} requires cancellation and refund review.`
+            : `${String(booking.listingName ?? "USVI Explorer booking")} was cancelled before payment.`,
           href: audience === "traveler" ? "/bookings" : "/admin/commerce-refunds",
           reference,
           readAt: null,

@@ -36,7 +36,7 @@ export async function GET() {
         return {
           id: document.id,
           listingId: clean(data.listingId, 160),
-          listingName: clean(data.listingName, 180) || "VI Guide business",
+          listingName: clean(data.listingName, 180) || "USVI Explorer business",
           title: clean(data.title, 120) || "Untitled offer",
           status: clean(data.status, 40) || "draft",
           requestCount: normalizeMerchantOfferRequestCount(data.requestCount),

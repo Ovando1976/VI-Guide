@@ -6,9 +6,9 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { SavedPlacesBoard } from "@/components/place/saved-places-board";
 
 export const metadata: Metadata = {
-  title: "Saved Places | VI Guide",
+  title: "Saved Places | USVI Explorer",
   description:
-    "Keep a shortlist of U.S. Virgin Islands places before adding them to a VI Guide journey.",
+    "Keep a shortlist of U.S. Virgin Islands places before adding them to a USVI Explorer journey.",
 };
 
 export default function SavedPlacesPage() {
@@ -44,7 +44,7 @@ export default function SavedPlacesPage() {
               <span className="block italic text-[#73e3d9]">separate from the itinerary.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
-              Save interesting places while you explore. When one becomes part of the plan, add it to My Trip and VI Guide carries it into the map, Concierge, and transportation context.
+              Save interesting places while you explore. When one becomes part of the plan, add it to My Trip and USVI Explorer carries it into the map, Concierge, and transportation context.
             </p>
           </div>
 

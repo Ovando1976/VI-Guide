@@ -57,7 +57,7 @@ export function connectSettlementEligibilityError(
     feeBps <= 0 ||
     feeBps > 10_000
   ) {
-    return "The VI Guide platform fee policy is not configured for this capture.";
+    return "The USVI Explorer platform fee policy is not configured for this capture.";
   }
 
   const gross = nonNegativeMoney(input.grossAmountCents);

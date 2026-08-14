@@ -37,7 +37,7 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
     icon: FileCheck2,
     eyebrow: "Traveler proposals",
     detail:
-      "Publish a saved My Trip itinerary as a privacy-safe traveler proposal, then queue delivery through VI Guide.",
+      "Publish a saved My Trip itinerary as a privacy-safe traveler proposal, then queue delivery through USVI Explorer.",
     action: "Open proposals",
   },
   {
@@ -80,7 +80,7 @@ const ADMIN_ONLY_ACTIONS: AdminActionDefinition[] = [
     icon: Store,
     eyebrow: "Business access",
     detail:
-      "Assign approved merchant accounts to their authorized VI Guide listings.",
+      "Assign approved merchant accounts to their authorized USVI Explorer listings.",
     action: "Manage merchants",
   },
   {

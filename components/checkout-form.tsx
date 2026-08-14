@@ -60,7 +60,7 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
         {submitting ? "Processing…" : "Pay and track ride"}
       </button>
       <p className="text-center text-xs font-semibold leading-5 text-slate-500">
-        After payment, VI Guide verifies the Stripe record before opening dispatch and live trip tracking.
+        After payment, USVI Explorer verifies the Stripe record before opening dispatch and live trip tracking.
       </p>
       {message ? (
         <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-700">

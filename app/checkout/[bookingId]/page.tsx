@@ -189,7 +189,7 @@ export default function CheckoutBookingPage() {
       <div className="mx-auto max-w-2xl overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(4,51,49,.12)]">
         <div className="bg-[linear-gradient(135deg,#032d2b,#075e58)] p-6 text-white sm:p-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]">
-            <ShieldCheck size={15} /> Secure VI Guide payment
+            <ShieldCheck size={15} /> Secure USVI Explorer payment
           </div>
           <h1 className="mt-4 text-3xl font-black tracking-[-.04em] sm:text-4xl">
             Complete your ride payment

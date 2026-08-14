@@ -103,7 +103,7 @@ export function JourneyCloudSync() {
 
         if (!cancelled) {
           setState("synced");
-          setMessage("Trips synced to your VI Guide account");
+          setMessage("Trips synced to your USVI Explorer account");
         }
       } catch (error) {
         applyingRemote.current = false;
@@ -150,7 +150,7 @@ export function JourneyCloudSync() {
           });
           applyState(merged, applyingRemote);
           setState("synced");
-          setMessage("Trips synced to your VI Guide account");
+          setMessage("Trips synced to your USVI Explorer account");
         } catch (error) {
           applyingRemote.current = false;
           setState("error");

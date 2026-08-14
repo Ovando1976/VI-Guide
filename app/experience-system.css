@@ -1,4 +1,4 @@
-/* VI Guide traveler-facing visual propagation layer.
+/* USVI Explorer traveler-facing visual propagation layer.
    Keep high-impact surface styling here so core map, booking, and intelligence
    behavior stays isolated from presentation changes. */
 
@@ -164,7 +164,7 @@ body:has(a[href="/planner"]) .trip-premium-surface {
   }
 }
 
-/* USVI Compass cinematic public shell. These styles are intentionally
+/* USVI Explorer cinematic public shell. These styles are intentionally
    progressive: core links and content remain fully usable without motion. */
 .usvi-home {
   background:

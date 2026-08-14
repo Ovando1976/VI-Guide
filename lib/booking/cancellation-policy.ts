@@ -10,7 +10,7 @@ const POLICIES: Record<CommerceCancellationPolicyCode, PolicyDefinition> = {
     code: "flexible",
     title: "Flexible cancellation",
     travelerTerms:
-      "Cancel at least 24 hours before the scheduled start for a full refund of amounts paid. Later requests require provider and VI Guide review.",
+      "Cancel at least 24 hours before the scheduled start for a full refund of amounts paid. Later requests require provider and USVI Explorer review.",
     providerTerms:
       "If the provider cancels, amounts paid for the cancelled service are eligible for a full refund.",
     changeTerms:

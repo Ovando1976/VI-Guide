@@ -4,9 +4,9 @@ import { getSession } from "@/lib/auth-server";
 import { resolveMerchantListingSelection } from "@/lib/merchant-portal";
 
 export const metadata = {
-  title: "Provider Operations | VI Guide",
+  title: "Provider Operations | USVI Explorer",
   description:
-    "Manage business availability, operating hours, capacity, and blackout periods in VI Guide.",
+    "Manage business availability, operating hours, capacity, and blackout periods in USVI Explorer.",
 };
 
 type ProviderOperationsPageProps = {

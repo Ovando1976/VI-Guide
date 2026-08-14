@@ -23,9 +23,9 @@ import {
 } from "@/lib/car-rentals";
 
 export const metadata: Metadata = {
-  title: "Car Rentals | VI Guide",
+  title: "Car Rentals | USVI Explorer",
   description:
-    "Compare verified car and Jeep rental operators across St. Thomas, St. John, and St. Croix, then connect the rental to your VI Guide trip.",
+    "Compare verified car and Jeep rental operators across St. Thomas, St. John, and St. Croix, then connect the rental to your USVI Explorer trip.",
 };
 
 const ISLAND_VISUALS: Record<CarRentalIsland, { image: string; alt: string }> = {
@@ -76,7 +76,7 @@ export default function CarRentalsPage() {
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
               Compare verified operators, choose the right pickup point and vehicle type,
               and connect your rental to arrival, lodging, ferries, beaches, and the rest
-              of your VI Guide trip.
+              of your USVI Explorer trip.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="#operators" className="inline-flex min-h-13 items-center gap-2 rounded-full bg-[#f5c451] px-6 py-3.5 text-[10px] font-black uppercase tracking-[.16em] text-[#032f2d]">
@@ -118,7 +118,7 @@ export default function CarRentalsPage() {
           <div className="vi-eyebrow text-[#9b5d12]">Verified directory</div>
           <h2 className="vi-display mt-3 text-4xl font-bold sm:text-6xl">Choose your pickup island.</h2>
           <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-slate-600">
-            VI Guide verifies that these operator and location pages exist. Vehicle
+            USVI Explorer verifies that these operator and location pages exist. Vehicle
             availability, live pricing, policies, and reservation confirmation remain
             the operator&apos;s responsibility.
           </p>

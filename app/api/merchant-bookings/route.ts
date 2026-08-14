@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         status: String(data.status ?? "requested"),
         kind: String(data.kind ?? "experience"),
         listingId: String(data.listingId ?? ""),
-        listingName: String(data.listingName ?? "VI Guide booking"),
+        listingName: String(data.listingName ?? "USVI Explorer booking"),
         offerId: data.offerId ? String(data.offerId) : null,
         offerTitle: data.offerTitle ? String(data.offerTitle) : null,
         offerPriceCents: nullableMoney(data.offerPriceCents),

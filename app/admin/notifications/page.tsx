@@ -8,7 +8,7 @@ import { hasFirebaseAdminConfiguration } from "@/lib/firebase-admin";
 import { notificationConfigurationStatus } from "@/lib/notifications/notification-configuration";
 
 export const metadata = {
-  title: "Notification Operations | VI Guide",
+  title: "Notification Operations | USVI Explorer",
   description:
     "Inspect and recover traveler, merchant, and operations booking notifications.",
 };
