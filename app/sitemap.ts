@@ -5,10 +5,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usvi-explorer.com";
 const publicRoutes = [
   "",
   "/explore",
+  "/places",
   "/map",
   "/beaches",
   "/accommodations",
-  "/eat",
+  "/activities",
   "/events",
   "/experiences",
   "/offers",
@@ -17,8 +18,13 @@ const publicRoutes = [
   "/cruises",
   "/cruises/port-calls",
   "/shore-excursions",
+  "/ferry",
+  "/car-rentals",
+  "/fishing",
+  "/historic",
+  "/heritage",
+  "/community",
   "/history",
-  "/dictionary",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

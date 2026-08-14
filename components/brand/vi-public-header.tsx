@@ -35,7 +35,7 @@ export function ViPublicHeader({
       </Link>
 
       <nav aria-label="Discover the Virgin Islands" className="hidden items-center gap-1 rounded-full border border-white/10 bg-black/10 p-1.5 lg:flex">
-        <Link href="/places" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Explore</Link>
+        <Link href="/explore" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Explore</Link>
         <Link href="/map" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Live map</Link>
         <Link href="/accommodations" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Stays</Link>
         <Link href="/mobility" className="rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/62 transition hover:bg-white/10 hover:text-white">Ride</Link>

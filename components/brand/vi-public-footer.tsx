@@ -14,10 +14,11 @@ const FOOTER_GROUPS = [
   {
     label: "Explore",
     links: [
+      ["Complete guide", "/explore"],
       ["Live map", "/map"],
       ["Beaches", "/beaches"],
       ["Activities", "/activities"],
-      ["Stays", "/accommodations"],
+      ["History", "/historic"],
     ],
   },
   {

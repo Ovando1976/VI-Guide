@@ -72,7 +72,8 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
 
         <div className="pointer-events-none absolute inset-x-4 top-4 flex items-start justify-between gap-3">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-[#043331]/78 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.13em] text-white shadow-lg backdrop-blur-md">
-            <BadgeCheck size={11} className="text-[#7ce0d4]" /> USVI Explorer verified
+            <BadgeCheck size={11} className="text-[#7ce0d4]" />
+            {item.sourceUrl || item.sourceUrls?.length ? "Source checked" : "Curated guide entry"}
           </span>
           <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[8px] font-black uppercase tracking-[.14em] text-white backdrop-blur-md">
             {islandName}

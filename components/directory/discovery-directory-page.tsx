@@ -10,6 +10,7 @@ import {
   MapPin,
   Route,
   Search,
+  ShieldCheck,
   Sparkles,
   UtensilsCrossed,
   Waves,
@@ -161,6 +162,10 @@ export function DiscoveryDirectoryPage({
   );
 
   const hasFilters = island !== "all" || category !== "all" || Boolean(query.trim());
+  const sourceLinkedCount = useMemo(
+    () => items.filter((item) => item.sourceUrl || item.sourceUrls?.length).length,
+    [items],
+  );
 
   function clearFilters() {
     setIsland("all");
@@ -205,7 +210,7 @@ export function DiscoveryDirectoryPage({
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <span className="rounded-full border border-white/20 bg-black/15 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur">
-                  {items.length} verified guide entries
+                  {items.length} curated guide entries
                 </span>
                 <span className="rounded-full border border-white/20 bg-black/15 px-4 py-2 text-[10px] font-black uppercase tracking-[.18em] backdrop-blur">
                   Three islands · one connected trip
@@ -268,6 +273,27 @@ export function DiscoveryDirectoryPage({
               ) : null}
             </div>
           </div>
+        </section>
+
+        <section aria-label={`${eyebrow} guide quality`} className="grid gap-3 md:grid-cols-3">
+          <GuideStandard
+            icon={ShieldCheck}
+            label="Evidence standard"
+            value={sourceLinkedCount ? `${sourceLinkedCount} source-linked entries` : "Curated catalog"}
+            detail={sourceLinkedCount ? "Open a detail page to inspect available public or operator sources." : "Changing hours, access, and conditions are clearly left for confirmation."}
+          />
+          <GuideStandard
+            icon={Compass}
+            label="Territory coverage"
+            value={`${items.length} entries · 3 islands`}
+            detail="Compare St. Thomas, St. John, and St. Croix without leaving the guide."
+          />
+          <GuideStandard
+            icon={Route}
+            label="Trip ready"
+            value="Map · Ride · Save · My Trip"
+            detail="Every useful discovery can move directly into the rest of your island plan."
+          />
         </section>
 
         <section>
@@ -450,5 +476,27 @@ export function DiscoveryDirectoryPage({
         <ViPublicFooter />
       </div>
     </main>
+  );
+}
+
+function GuideStandard({
+  icon: Icon,
+  label,
+  value,
+  detail,
+}: {
+  icon: typeof Compass;
+  label: string;
+  value: string;
+  detail: string;
+}) {
+  return (
+    <article className="rounded-[24px] border border-[#d9e6e2] bg-[#fffdf8] p-5 shadow-[0_12px_32px_rgba(4,51,49,.06)]">
+      <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.18em] text-[#0f766e]">
+        <Icon className="h-4 w-4" /> {label}
+      </div>
+      <div className="mt-3 text-lg font-black tracking-[-.02em] text-[#043331]">{value}</div>
+      <p className="mt-2 text-xs font-semibold leading-5 text-[#607370]">{detail}</p>
+    </article>
   );
 }
