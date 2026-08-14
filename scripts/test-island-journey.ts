@@ -110,7 +110,11 @@ assert.match(journeyPage, /secondaryHref="\/trips"/);
 assert.match(journeyMapPage, /SavedIslandJourneyLivingMap/);
 assert.match(journeyMapPage, /Living Map/);
 assert.match(journeyMapPage, /Taxi · Ferry · Taxi/);
-assert.match(ferryPage, /Ferry \+ Island Journey Planner/);
+assert.match(ferryPage, /Next boat\. True fare\. Full island journey\./);
+assert.match(ferryPage, /Ferry command center/);
+assert.match(ferryPage, /id="ferry-intelligence"/);
+assert.match(ferryPage, /id="door-to-door"/);
+assert.match(ferryPage, /Ask VI Concierge/);
 assert.match(ferryPage, /DoorToDoorJourneyPlanner/);
 assert.match(ferryPage, /FerryPlanner/);
 
