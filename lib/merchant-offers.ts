@@ -93,7 +93,7 @@ export function normalizeMerchantOffer(
   const validThrough = normalizeDateKey(input.validThrough);
   const today = merchantOfferToday(now);
 
-  if (!listingId) return invalid("Choose the VI Guide listing for this offer.");
+  if (!listingId) return invalid("Choose the USVI Explorer listing for this offer.");
   if (!listingName) return invalid("Enter the public listing name.");
   if (!kind) return invalid("Choose an offer type.");
   if (!island) return invalid("Choose the offer island.");

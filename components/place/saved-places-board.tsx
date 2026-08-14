@@ -67,7 +67,7 @@ export function SavedPlacesBoard() {
             href="/places"
             className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#f5c451] px-6 text-[9px] font-black uppercase tracking-[.14em] text-[#032f2d]"
           >
-            Explore VI Guide <ArrowRight className="h-4 w-4" />
+            Explore USVI Explorer <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/concierge?prompt=Help%20me%20find%20a%20few%20great%20places%20to%20save%20for%20my%20Virgin%20Islands%20trip"
@@ -125,7 +125,7 @@ export function SavedPlacesBoard() {
 
             <div className="flex flex-1 flex-col p-5 sm:p-6">
               <p className="flex-1 text-sm font-semibold leading-6 text-[#607370]">
-                {place.summary || "Saved for later in VI Guide."}
+                {place.summary || "Saved for later in USVI Explorer."}
               </p>
 
               <div className="mt-5 grid grid-cols-2 gap-2 border-t border-[#e4ece9] pt-5">

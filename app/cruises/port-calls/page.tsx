@@ -19,7 +19,7 @@ import { OFFICIAL_CRUISE_SCHEDULE_COVERAGE } from "@/lib/cruise-port-calls";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Official Port Calls | VI Guide Cruise Hub",
+  title: "Official Port Calls | USVI Explorer Cruise Hub",
   description:
     "See upcoming official U.S. Virgin Islands cruise port calls and the local excursions that fit the ship window with published operator capacity.",
 };
@@ -67,7 +67,7 @@ export default async function CruisePortCallsPage() {
                   Start with the ship schedule. Then show only the island days that fit.
                 </h1>
                 <p className="mt-6 max-w-3xl text-sm font-semibold leading-7 text-white/70 sm:text-base">
-                  VI Guide is matching published VIPA and WICO port calls to active
+                  USVI Explorer is matching published VIPA and WICO port calls to active
                   shore excursions, operator hours, daily capacity, current booking
                   demand, and a conservative return-to-ship window.
                 </p>
@@ -93,7 +93,7 @@ export default async function CruisePortCallsPage() {
                 </p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-amber-950/70">
                   Official schedules publish arrival and departure times, not the
-                  ship&apos;s authoritative all-aboard announcement. VI Guide therefore
+                  ship&apos;s authoritative all-aboard announcement. USVI Explorer therefore
                   uses departure minus 30 minutes as a conservative planning proxy and
                   still tells the traveler to verify the onboard announcement.
                 </p>
@@ -193,7 +193,7 @@ export default async function CruisePortCallsPage() {
                 <ShipWheel className="mx-auto h-8 w-8 text-teal-700" />
                 <h2 className="mt-4 text-2xl font-black">No scheduled calls are in the loaded official window.</h2>
                 <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-6 text-slate-500">
-                  The schedule layer is intentionally source-bounded. VI Guide does not
+                  The schedule layer is intentionally source-bounded. USVI Explorer does not
                   invent future ship calls beyond the official data currently loaded.
                 </p>
               </div>

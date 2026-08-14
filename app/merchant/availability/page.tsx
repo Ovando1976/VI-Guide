@@ -6,9 +6,9 @@ import { isIsoCalendarDate } from "@/lib/booking/booking-dates";
 import { resolveMerchantListingSelection } from "@/lib/merchant-portal";
 
 export const metadata = {
-  title: "Merchant Availability | VI Guide",
+  title: "Merchant Availability | USVI Explorer",
   description:
-    "Manage operating days, hours, capacity, and blackout periods for assigned VI Guide businesses.",
+    "Manage operating days, hours, capacity, and blackout periods for assigned USVI Explorer businesses.",
 };
 
 type MerchantAvailabilityPageProps = {

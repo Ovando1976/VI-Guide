@@ -14,9 +14,9 @@ import { DriverLocationPublisher } from "@/components/mobility/driver-location-p
 import { requireSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Driver OS | VI Guide",
+  title: "Driver OS | USVI Explorer",
   description:
-    "Run VI Guide mobility trips, shift readiness, location, and driver operations from one connected workspace.",
+    "Run USVI Explorer mobility trips, shift readiness, location, and driver operations from one connected workspace.",
 };
 
 export default async function DriverPage() {
@@ -37,7 +37,7 @@ export default async function DriverPage() {
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/[.68] sm:text-base">
                 Keep shift readiness, compliance, live location, paid ride demand,
-                trip progress, and earnings connected to the same VI Guide mobility
+                trip progress, and earnings connected to the same USVI Explorer mobility
                 system.
               </p>
 

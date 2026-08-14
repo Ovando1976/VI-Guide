@@ -50,4 +50,4 @@ assert.match(detail, /My Trip/);
 assert.match(detail, /Open source/);
 assert.doesNotMatch(detail, /This story is not published yet/);
 
-console.log("VI Guide Community published field-note contracts passed.");
+console.log("USVI Explorer Community published field-note contracts passed.");

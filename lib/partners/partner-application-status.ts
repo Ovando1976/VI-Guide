@@ -27,7 +27,7 @@ export function publicPartnerApplicationStatus(
       status: value,
       label: "Application received",
       message:
-        "VI Guide received the application and it is waiting for an initial business review.",
+        "USVI Explorer received the application and it is waiting for an initial business review.",
       action: "No action is required right now.",
     };
   }
@@ -36,7 +36,7 @@ export function publicPartnerApplicationStatus(
       status: value,
       label: "Under review",
       message:
-        "The VI Guide team is verifying the business information and matching the correct island listing.",
+        "The USVI Explorer team is verifying the business information and matching the correct island listing.",
       action: "Keep an eye on the contact email for any verification questions.",
     };
   }
@@ -46,7 +46,7 @@ export function publicPartnerApplicationStatus(
       label: "More information needed",
       message:
         "The review needs additional business or listing information before it can continue.",
-      action: "Check the contact email and respond to the VI Guide team.",
+      action: "Check the contact email and respond to the USVI Explorer team.",
     };
   }
   if (value === "approved") {
@@ -54,17 +54,17 @@ export function publicPartnerApplicationStatus(
       status: value,
       label: "Approved",
       message:
-        "The business application was approved. Merchant access still requires a verified VI Guide account and listing assignment.",
-      action: "Follow the onboarding instructions sent by the VI Guide team.",
+        "The business application was approved. Merchant access still requires a verified USVI Explorer account and listing assignment.",
+      action: "Follow the onboarding instructions sent by the USVI Explorer team.",
     };
   }
   return {
     status: "declined",
     label: "Not approved",
     message:
-      "The current application was not approved for VI Guide merchant access.",
+      "The current application was not approved for USVI Explorer merchant access.",
     action:
-      "Contact the VI Guide team before submitting new information or another application.",
+      "Contact the USVI Explorer team before submitting new information or another application.",
   };
 }
 

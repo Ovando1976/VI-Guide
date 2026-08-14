@@ -23,7 +23,7 @@ import {
 } from "@/lib/events";
 
 export const metadata: Metadata = {
-  title: "Events | VI Guide",
+  title: "Events | USVI Explorer",
   description:
     "Discover source-backed upcoming events across St. Thomas, St. John, and St. Croix, then connect them to maps, transportation, Concierge, and My Trip.",
 };
@@ -86,7 +86,7 @@ export default function EventsPage({
                 Know what&apos;s happening, then build the island day around it.
               </h1>
               <p className="mt-6 max-w-2xl text-base font-semibold leading-7 text-white/70">
-                VI Guide now connects upcoming cultural, culinary, sports, heritage,
+                USVI Explorer now connects upcoming cultural, culinary, sports, heritage,
                 and festival listings with the Living Map, transportation planning,
                 Concierge, and your trip workspace.
               </p>
@@ -185,7 +185,7 @@ export default function EventsPage({
                 Source discipline
               </p>
               <h2 className="mt-2 text-2xl font-black tracking-[-.04em]">
-                Event dates can change. VI Guide shows when each record was verified.
+                Event dates can change. USVI Explorer shows when each record was verified.
               </h2>
               <p className="mt-3 max-w-3xl text-sm font-semibold leading-7 text-teal-950/65">
                 Each listing links back to its official tourism source. Check the official

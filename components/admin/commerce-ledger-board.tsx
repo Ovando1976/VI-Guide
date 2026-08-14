@@ -224,7 +224,7 @@ export function CommerceLedgerBoard() {
                 Financial operations
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[.94] tracking-[-.055em] sm:text-6xl">
-                Know what VI Guide collected, reserved, and owes.
+                Know what USVI Explorer collected, reserved, and owes.
               </h1>
               <p className="mt-5 max-w-3xl text-sm font-semibold leading-7 text-white/65">
                 Stripe-verified captures and refunds create deterministic ledger
@@ -259,7 +259,7 @@ export function CommerceLedgerBoard() {
               <p className="mt-2 text-sm font-semibold leading-6 text-amber-900/70">
                 New verified captures are recorded with a zero platform-fee reserve
                 until <code>VI_GUIDE_COMMERCE_PLATFORM_FEE_BPS</code> contains a
-                valid whole-number basis-point value. VI Guide never invents or
+                valid whole-number basis-point value. USVI Explorer never invents or
                 retroactively deducts a fee.
               </p>
             </div>

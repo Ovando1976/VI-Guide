@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
         kind: "partner_application",
         priority: "normal",
         title: "New partner application",
-        message: `${application.businessName} submitted a VI Guide partner application.`,
+        message: `${application.businessName} submitted a USVI Explorer partner application.`,
         href: "/admin/partner-applications",
         reference,
         readAt: null,

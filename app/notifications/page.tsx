@@ -1,7 +1,7 @@
 import { NotificationCenter } from "@/components/notifications/notification-center";
 
 export const metadata = {
-  title: "Notifications | VI Guide",
+  title: "Notifications | USVI Explorer",
   description:
     "Review booking, mission, provider, Concierge, and operations notifications in one live inbox.",
 };

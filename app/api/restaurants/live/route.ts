@@ -295,7 +295,7 @@ function curatedRestaurantResponse(island: IslandCode) {
       beachCount: 0,
       places,
     },
-    "Google Places is not configured; serving curated VI Guide restaurant catalog.",
+    "Google Places is not configured; serving curated USVI Explorer restaurant catalog.",
     generatedAt,
   );
 }

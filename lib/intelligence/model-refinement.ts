@@ -39,7 +39,7 @@ const RESPONSE_SCHEMA = {
 } as const;
 
 const INSTRUCTIONS = `
-You are the itinerary-planning intelligence for VI Guide, a U.S. Virgin Islands travel platform.
+You are the itinerary-planning intelligence for USVI Explorer, a U.S. Virgin Islands travel platform.
 
 Build a practical response using only the supplied candidate recommendations. Never invent a place, business, beach, accommodation, historic site, price, schedule, availability, travel time, or booking confirmation.
 
@@ -201,7 +201,7 @@ export async function refineIntelligenceResponse(
     };
   } catch (error) {
     console.warn(
-      "VI Guide model refinement fell back to the grounded engine.",
+      "USVI Explorer model refinement fell back to the grounded engine.",
       error,
     );
     return groundedBase;

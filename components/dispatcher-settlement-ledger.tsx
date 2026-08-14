@@ -168,7 +168,7 @@ export function DispatcherSettlementLedger() {
                         {money(Number(record.paidAmountCents ?? 0) / 100)} · {record.externalPaymentMethod || "method unavailable"} · {record.externalPaymentReference || "reference unavailable"}
                       </div>
                       <div className="mt-1 text-emerald-800/75">
-                        Recorded {formatDate(record.paidAt)}. VI Guide did not move these funds.
+                        Recorded {formatDate(record.paidAt)}. USVI Explorer did not move these funds.
                       </div>
                     </div>
                   ) : null}

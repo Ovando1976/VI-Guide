@@ -5,9 +5,9 @@ import { MerchantOfferDemandSummary } from "@/components/merchant/merchant-offer
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Offers | VI Guide Merchant",
+  title: "Offers | USVI Explorer Merchant",
   description:
-    "Create, publish, pause, archive, and measure listing-scoped VI Guide packages.",
+    "Create, publish, pause, archive, and measure listing-scoped USVI Explorer packages.",
 };
 
 export default async function MerchantOffersPage() {

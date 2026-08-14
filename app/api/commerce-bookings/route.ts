@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
   const offerId = rawOfferId ? normalizeMerchantOfferId(rawOfferId) : "";
   if (rawOfferId && !offerId) {
     return NextResponse.json(
-      { error: "Choose a valid VI Guide offer." },
+      { error: "Choose a valid USVI Explorer offer." },
       { status: 400 },
     );
   }
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
     : "";
   if (rawSourceProposalShareId && !sourceProposalShareId) {
     return NextResponse.json(
-      { error: "The VI Guide travel proposal link is invalid." },
+      { error: "The USVI Explorer travel proposal link is invalid." },
       { status: 400 },
     );
   }
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
           !/^travel_[a-f0-9]{32}$/.test(travelRequestId)
         ) {
           throw new CommerceBookingActionError(
-            "The VI Guide travel proposal could not be verified.",
+            "The USVI Explorer travel proposal could not be verified.",
             409,
           );
         }
@@ -342,7 +342,7 @@ export async function POST(request: NextRequest) {
           audience: "traveler" as const,
           recipientEmail: booking.email,
           title: "Booking request received",
-          message: `We received your request for ${booking.listingName}. VI Guide will keep this booking status updated.`,
+          message: `We received your request for ${booking.listingName}. USVI Explorer will keep this booking status updated.`,
           href: "/bookings",
         },
         {

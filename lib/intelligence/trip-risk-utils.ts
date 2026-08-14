@@ -68,7 +68,7 @@ export function buildTripRiskReport(
         : status === "watch"
           ? "The trip is workable, but safeguards will make it more resilient."
           : status === "not_ready"
-            ? "Save a usable itinerary before VI Guide can protect the trip."
+            ? "Save a usable itinerary before USVI Explorer can protect the trip."
             : status === "past"
               ? "This journey date has passed. Risk monitoring is paused."
               : "No material itinerary risks were detected from the information currently available.";

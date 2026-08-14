@@ -60,7 +60,7 @@ export function normalizeBookingNotification(
   const recipientEmail = cleanEmail(input.recipientEmail);
   const recipientUid = clean(input.recipientUid, 160);
   const listingId = clean(input.listingId, 160);
-  const listingName = clean(input.listingName, 180) || "VI Guide booking";
+  const listingName = clean(input.listingName, 180) || "USVI Explorer booking";
   const reference = clean(input.reference, 160) || bookingId;
   const title = clean(input.title, 180);
   const message = clean(input.message, 1200);

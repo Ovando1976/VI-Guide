@@ -36,4 +36,4 @@ for (const [value, label] of [
   expectSource(page, value, label);
 }
 
-console.log("VI Guide Architecture Inspector access contracts passed.");
+console.log("USVI Explorer Architecture Inspector access contracts passed.");

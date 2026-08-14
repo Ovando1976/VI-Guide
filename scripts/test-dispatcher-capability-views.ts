@@ -78,4 +78,4 @@ expectSource(readinessLayout, 'session.role !== "admin"', "Launch Readiness page
 expectSource(readinessLayout, "/login?next=/admin/readiness", "Launch Readiness keeps exact login return routing");
 expectSource(readinessApi, 'requireSession(["admin"])', "Launch Readiness API remains administrator-only");
 
-console.log("VI Guide dispatcher capability view contracts passed.");
+console.log("USVI Explorer dispatcher capability view contracts passed.");

@@ -47,7 +47,7 @@ const detailShell = source("components/place/premium-detail-shell.tsx");
 const placeActionBar = source("components/place/place-action-bar.tsx");
 
 assert.match(layout, /experience-system\.css/);
-assert.match(layout, /themeColor: "#032f2d"/);
+assert.match(layout, /themeColor: "#062b3a"/);
 
 assert.match(homePage, /QUICK\.map\(\(\{ label, detail, href, image, alt, icon: Icon \}\)/);
 assert.match(homePage, /src=\{image\}/);
@@ -59,13 +59,13 @@ assert.match(homeConcierge, /One-tap idea/);
 assert.match(homeConcierge, /king-christian-hotel\.jpg/);
 assert.match(homeLiveStatus, /STATUS_ITEMS\.map\(\(\{ label, value, icon: Icon, href, image, alt, tag \}\)/);
 assert.match(homeLiveStatus, /Today in the Virgin Islands/);
-assert.match(homeLiveStatus, /Open in USVI Compass/);
+assert.match(homeLiveStatus, /Open in USVI Explorer/);
 assert.match(homeLiveStatus, /red-hook-ferry-terminal-1\.jpg/);
 assert.match(homeLiveStatus, /magens-bay-beach-1\.jpg/);
 assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
-assert.match(mapPage, /USVI Compass · Living Map/);
+assert.match(mapPage, /USVI Explorer · Living Map/);
 assert.match(mapPage, /Your island/);
 assert.match(mapPage, /Plan itinerary/);
 assert.doesNotMatch(mapPage, /Open trip/);
@@ -84,7 +84,7 @@ assert.match(mapStoryRail, /Your movement line/);
 assert.match(mapStoryRail, /Nearby island areas/);
 
 assert.match(directoryCard, /directory-story-card/);
-assert.match(directoryCard, /VI Guide verified/);
+assert.match(directoryCard, /USVI Explorer verified/);
 assert.match(directoryCard, /Open the story/);
 assert.match(directoryCard, /SavePlaceButton/);
 assert.match(directoryCard, /AddToJourneyButton/);
@@ -174,7 +174,7 @@ assert.match(savedPlaces, /image\?: string/);
 assert.match(savedPlaces, /boundedInternalImage/);
 assert.match(savedPlaces, /normalized\.startsWith\("\/\/"\)/);
 
-assert.match(partnersPage, /VI Guide business network/);
+assert.match(partnersPage, /USVI Explorer business network/);
 assert.match(partnersPage, /ViPublicHeader/);
 assert.match(partnersPage, /Put local businesses/);
 assert.match(partnersPage, /inside the traveler journey\./);
@@ -188,10 +188,10 @@ assert.match(partnerStatusPage, /ViPublicHeader/);
 assert.match(partnerStatusPage, /actionHref="\/partners\/apply"/);
 assert.match(partnerStatusPage, /secondaryHref="\/partners"/);
 
-assert.match(plusPage, /VI Guide Traveler Plus/);
+assert.match(plusPage, /USVI Explorer Traveler Plus/);
 assert.match(plusPage, /ViPublicHeader/);
 assert.match(plusPage, /trunk-bay-overlook-1\.jpg/);
-assert.match(plusPage, /Put VI Guide/);
+assert.match(plusPage, /Put USVI Explorer/);
 assert.match(plusPage, /on your trip team\./);
 assert.match(plusPage, /More continuity, not more clutter\./);
 assert.match(plusPage, /Join Traveler Plus — \$99\/year/);
@@ -204,7 +204,7 @@ assert.match(plusPage, /Stripe handles subscription checkout/);
 assert.match(profileScreen, /Traveler intelligence profile/);
 assert.match(profileScreen, /ViPublicHeader/);
 assert.match(profileScreen, /usvi-harbor-hero\.jpg/);
-assert.match(profileScreen, /You decide what VI Guide remembers\./);
+assert.match(profileScreen, /You decide what USVI Explorer remembers\./);
 assert.match(profileScreen, /Memory continuity/);
 assert.match(profileScreen, /Concierge aware/);
 assert.match(profileScreen, /Trip connected/);
@@ -266,7 +266,7 @@ assert.match(unauthorizedPage, /usvi-harbor-hero\.jpg/);
 assert.match(unauthorizedPage, /Access restricted · account protected/);
 assert.match(unauthorizedPage, /role or listing assignment/);
 assert.match(unauthorizedPage, /href="\/profile"/);
-assert.match(unauthorizedPage, /Return to VI Guide/);
+assert.match(unauthorizedPage, /Return to USVI Explorer/);
 
 assert.match(travelerWorkspace, /ViPublicHeader/);
 assert.match(travelerWorkspace, /ISLAND_VISUALS/);
@@ -296,7 +296,7 @@ assert.match(visualLayer, /territory-map-stage/);
 assert.match(visualLayer, /territory-story-rail/);
 assert.match(visualLayer, /place-story-hero/);
 
-assert.match(header, /Virgin Islands travel OS/);
+assert.match(header, /Discover · plan · move/);
 assert.match(navigation, /app-nav__item--map/);
 assert.match(navigation, /"\/mission"/);
 assert.match(navigation, /"\/saved"/);
@@ -306,4 +306,4 @@ assert.match(navigation, /"\/checkout"/);
 assert.match(navigation, /"\/shared-trip"/);
 assert.match(brand, /vi-brand-mark/);
 
-console.log("USVI Compass visible traveler visual-system contracts passed.");
+console.log("USVI Explorer visible traveler visual-system contracts passed.");

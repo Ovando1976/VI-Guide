@@ -157,7 +157,7 @@ export function TravelerTripReadinessPanel({
               <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
                 {hydrated
                   ? readiness.summary
-                  : "VI Guide is connecting the itinerary and verified booking records on this device."}
+                  : "USVI Explorer is connecting the itinerary and verified booking records on this device."}
               </p>
               {hydrated && selectedScope ? (
                 <p className="mt-2 text-[10px] font-black uppercase tracking-[.12em] text-teal-700">
@@ -210,7 +210,7 @@ export function TravelerTripReadinessPanel({
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-4 text-xs font-semibold text-slate-500">
             <span>
-              Readiness uses synchronized VI Guide itinerary, booking, payment, stay, and advisor records from the selected trip window.
+              Readiness uses synchronized USVI Explorer itinerary, booking, payment, stay, and advisor records from the selected trip window.
             </span>
             <span className="font-bold text-slate-400">
               It is not a supplier confirmation or guarantee of availability.

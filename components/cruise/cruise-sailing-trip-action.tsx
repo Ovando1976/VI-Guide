@@ -32,7 +32,7 @@ export function CruiseSailingTripAction({ sailing }: { sailing: CruiseSailing })
                 : "This sailing is saved, but no U.S. Virgin Islands port call was detected in its itinerary."}
             </p>
             <p className="mt-2 text-xs font-semibold leading-5 text-emerald-900/70">
-              Ship, cruise line, port date, arrival, and a conservative planning all-aboard time now feed VI Guide trip continuity.
+              Ship, cruise line, port date, arrival, and a conservative planning all-aboard time now feed USVI Explorer trip continuity.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link

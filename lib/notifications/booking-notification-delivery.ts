@@ -260,7 +260,7 @@ async function attemptBookingNotificationDelivery(
           from,
           to: recipients,
           subject: claimed.title,
-          text: `${claimed.message}\n\nOpen VI Guide: ${destination}`,
+          text: `${claimed.message}\n\nOpen USVI Explorer: ${destination}`,
           html: buildEmailHtml(claimed, destination),
         }),
         signal: controller.signal,
@@ -422,7 +422,7 @@ function buildEmailHtml(
   record: BookingNotificationDeliveryRecord,
   destination: string,
 ) {
-  return `<!doctype html><html><body style="margin:0;background:#f8f4ea;color:#043331;font-family:Arial,sans-serif"><div style="max-width:620px;margin:0 auto;padding:32px 20px"><div style="background:#043331;color:#fff;border-radius:24px;padding:28px"><div style="color:#f5c451;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">VI Guide</div><h1 style="margin:16px 0 8px;font-size:28px;line-height:1.1">${escapeHtml(record.title)}</h1><p style="margin:0;color:rgba(255,255,255,.75);font-size:15px;line-height:1.6">${escapeHtml(record.message)}</p></div><div style="padding:24px 4px"><p style="font-size:13px;color:#64748b">Booking ${escapeHtml(record.reference)}</p><a href="${escapeHtml(destination)}" style="display:inline-block;margin-top:8px;background:#f5c451;color:#043331;text-decoration:none;font-size:13px;font-weight:800;padding:14px 20px;border-radius:999px">Open VI Guide</a></div></div></body></html>`;
+  return `<!doctype html><html><body style="margin:0;background:#f8f4ea;color:#043331;font-family:Arial,sans-serif"><div style="max-width:620px;margin:0 auto;padding:32px 20px"><div style="background:#043331;color:#fff;border-radius:24px;padding:28px"><div style="color:#f5c451;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">USVI Explorer</div><h1 style="margin:16px 0 8px;font-size:28px;line-height:1.1">${escapeHtml(record.title)}</h1><p style="margin:0;color:rgba(255,255,255,.75);font-size:15px;line-height:1.6">${escapeHtml(record.message)}</p></div><div style="padding:24px 4px"><p style="font-size:13px;color:#64748b">Booking ${escapeHtml(record.reference)}</p><a href="${escapeHtml(destination)}" style="display:inline-block;margin-top:8px;background:#f5c451;color:#043331;text-decoration:none;font-size:13px;font-weight:800;padding:14px 20px;border-radius:999px">Open USVI Explorer</a></div></div></body></html>`;
 }
 
 function summarizeDeliveryResults(results: DeliveryResult[]) {
@@ -444,7 +444,7 @@ function safeAppUrl(value: unknown) {
       // Fall back to the canonical production origin.
     }
   }
-  return "https://vi-guide.vercel.app";
+  return "https://usvi-explorer.com";
 }
 
 function dueSortKey(record: BookingNotificationDeliveryRecord) {

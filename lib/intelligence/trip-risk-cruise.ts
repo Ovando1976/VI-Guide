@@ -127,7 +127,7 @@ export function evaluateCruiseReturnWindow(
         "medium",
         "return_window",
         "Return-to-ship buffer needs attention",
-        `The plan leaves ${buffer} minutes; VI Guide recommends ${requiredBuffer}.`,
+        `The plan leaves ${buffer} minutes; USVI Explorer recommends ${requiredBuffer}.`,
         `Protect a return by ${timeFromMinutes(safeReturn)} and prearrange the final transfer.`,
         12,
       ),

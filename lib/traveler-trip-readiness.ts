@@ -70,7 +70,7 @@ export function evaluateTravelerTripReadiness(input: {
       tripDate,
       daysUntilTrip,
       summary:
-        "This trip date has passed. Keep the history for reference or start a new VI Guide trip.",
+        "This trip date has passed. Keep the history for reference or start a new USVI Explorer trip.",
       items: [
         {
           id: "past-trip",
@@ -98,7 +98,7 @@ export function evaluateTravelerTripReadiness(input: {
       label: "Build the itinerary",
       detail: urgent
         ? "Travel is close, but My Trip does not yet have a synchronized itinerary. Add the important stops now."
-        : "Add the places, timing, and transportation you want VI Guide to protect as one trip.",
+        : "Add the places, timing, and transportation you want USVI Explorer to protect as one trip.",
       status: urgent ? "attention" : "pending",
       href: "/planner",
     });
@@ -125,7 +125,7 @@ export function evaluateTravelerTripReadiness(input: {
     items.push({
       id: "itinerary",
       label: "Itinerary connected",
-      detail: `${activeTrip.stops.length} ${activeTrip.stops.length === 1 ? "stop is" : "stops are"} synchronized with VI Guide trip intelligence.`,
+      detail: `${activeTrip.stops.length} ${activeTrip.stops.length === 1 ? "stop is" : "stops are"} synchronized with USVI Explorer trip intelligence.`,
       status: "done",
       href: "/planner",
     });
@@ -192,7 +192,7 @@ export function evaluateTravelerTripReadiness(input: {
       items.push({
         id: "payment",
         label: "Booking payment state clear",
-        detail: `${confirmed.length} ${confirmed.length === 1 ? "booking is" : "bookings are"} confirmed or completed in VI Guide records.`,
+        detail: `${confirmed.length} ${confirmed.length === 1 ? "booking is" : "bookings are"} confirmed or completed in USVI Explorer records.`,
         status: "done",
         href: "/bookings",
       });
@@ -265,7 +265,7 @@ export function evaluateTravelerTripReadiness(input: {
     items.push({
       id: "stay-request",
       label: "Stay confirmed",
-      detail: "The connected stay request is marked confirmed in VI Guide records.",
+      detail: "The connected stay request is marked confirmed in USVI Explorer records.",
       status: "done",
       href: "/accommodations",
     });
@@ -383,11 +383,11 @@ function readinessSummary(input: {
   }
   if (input.status === "ready") {
     return input.daysUntilTrip === 0
-      ? "The core VI Guide trip records are in good shape for today. Keep checking live conditions and provider instructions."
-      : `The core VI Guide trip records are in good shape with ${input.daysUntilTrip} ${input.daysUntilTrip === 1 ? "day" : "days"} to go.`;
+      ? "The core USVI Explorer trip records are in good shape for today. Keep checking live conditions and provider instructions."
+      : `The core USVI Explorer trip records are in good shape with ${input.daysUntilTrip} ${input.daysUntilTrip === 1 ? "day" : "days"} to go.`;
   }
   return input.daysUntilTrip === null
-    ? "Add travel dates and an itinerary so VI Guide can turn this into a readiness check."
+    ? "Add travel dates and an itinerary so USVI Explorer can turn this into a readiness check."
     : "The trip is still taking shape. Finish the open planning items before treating it as ready.";
 }
 

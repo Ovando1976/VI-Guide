@@ -141,7 +141,7 @@ export function JourneyPlanner() {
         ["recommend", "plan", "map", "mobility", "booking", "knowledge"],
       );
       if (!result.plan.length) {
-        throw new Error("VI Guide could not produce a complete itinerary.");
+        throw new Error("USVI Explorer could not produce a complete itinerary.");
       }
 
       const remix = createJourneyPlan(
@@ -154,7 +154,7 @@ export function JourneyPlanner() {
         status: "ready",
         plan: result.plan,
         notes: [
-          "Personalized by VI Guide Intelligence. The original journey remains saved separately.",
+          "Personalized by USVI Explorer Intelligence. The original journey remains saved separately.",
           result.answer,
         ]
           .join("\n\n")
@@ -195,7 +195,7 @@ export function JourneyPlanner() {
       const url = new URL(payload.href, window.location.origin).toString();
       const canUseNativeShare = typeof navigator.share === "function";
       if (canUseNativeShare) {
-        await navigator.share({ title: active.title, text: `Follow my ${ISLANDS[active.island]} itinerary in VI Guide.`, url }).catch((error: unknown) => {
+        await navigator.share({ title: active.title, text: `Follow my ${ISLANDS[active.island]} itinerary in USVI Explorer.`, url }).catch((error: unknown) => {
           if (!(error instanceof DOMException && error.name === "AbortError")) throw error;
         });
       } else {
@@ -239,7 +239,7 @@ export function JourneyPlanner() {
       title: newStopTitle.trim().slice(0, 160),
       island: active.island,
       kind: "custom",
-      summary: "Added manually to this VI Guide journey.",
+      summary: "Added manually to this USVI Explorer journey.",
       ...(newStopTime ? { startTime: newStopTime } : {}),
     };
     updateActive({ plan: [...active.plan, stop] });
@@ -298,7 +298,7 @@ export function JourneyPlanner() {
         <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[1.08fr_.92fr] lg:items-end lg:gap-14">
           <div>
             <p className="vi-eyebrow inline-flex items-center gap-2 rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-4 py-2 text-[#f8d77c] backdrop-blur-xl">
-              <CalendarDays size={14} /> VI Guide · Journey Planner
+              <CalendarDays size={14} /> USVI Explorer · Journey Planner
             </p>
             <h1 className="vi-display mt-6 max-w-4xl text-[clamp(3.5rem,7vw,6.7rem)] font-bold leading-[.86] tracking-[-.045em] text-white">
               Build the day.
@@ -692,7 +692,7 @@ export function JourneyPlanner() {
                   <CalendarDays className="mx-auto h-8 w-8 text-[#8fb4ae]" />
                   <h3 className="vi-display mt-4 text-2xl font-bold">Your day is ready to build</h3>
                   <p className="mt-2 text-sm font-semibold text-slate-500">
-                    Add a stop manually or ask VI Guide Intelligence to create the first complete version.
+                    Add a stop manually or ask USVI Explorer Intelligence to create the first complete version.
                   </p>
                 </div>
               ) : null}

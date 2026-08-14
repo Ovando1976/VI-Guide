@@ -15,9 +15,9 @@ import {
 import type { DirectoryItem } from "@/types/directory";
 
 export const metadata: Metadata = {
-  title: "Book with VI Guide",
+  title: "Book with USVI Explorer",
   description:
-    "Request accommodations, tours, and island experiences through one clear VI Guide booking flow.",
+    "Request accommodations, tours, and island experiences through one clear USVI Explorer booking flow.",
 };
 
 type BookingSearchParams = Record<
@@ -149,8 +149,8 @@ function BookingContextHero({ context }: { context: BookingVisualContext }) {
           </h1>
           <p className="mt-4 max-w-xl text-sm font-semibold leading-6 text-white/72">
             {resolvedListing
-              ? "You are continuing from a VI Guide catalog listing. The image and listing identity are resolved from the same canonical travel record used across Explore and details."
-              : `This request is not tied to a canonical VI Guide photo record, so the image is labeled as ${context.islandName} context rather than presented as the specific property or experience.`}
+              ? "You are continuing from a USVI Explorer catalog listing. The image and listing identity are resolved from the same canonical travel record used across Explore and details."
+              : `This request is not tied to a canonical USVI Explorer photo record, so the image is labeled as ${context.islandName} context rather than presented as the specific property or experience.`}
           </p>
 
           {context.detailHref ? (
@@ -205,7 +205,7 @@ function resolveBookingVisualContext(
     island,
     islandName: ISLAND_NAMES[island],
     listingName:
-      resolvedListing?.name || requestedName || "VI Guide booking request",
+      resolvedListing?.name || requestedName || "USVI Explorer booking request",
     detailHref: resolvedListing ? safeListingHref : null,
     resolvedListing,
     photoPlaceId: googlePhoto.placeId,
@@ -286,7 +286,7 @@ function BookingLoading() {
     <div className="grid min-h-[60vh] place-items-center px-6 text-center text-[#043331]">
       <div>
         <div className="text-[10px] font-black uppercase tracking-[.22em] text-teal-700">
-          VI Guide Booking
+          USVI Explorer Booking
         </div>
         <h2 className="mt-3 text-3xl font-black">Preparing your request…</h2>
       </div>

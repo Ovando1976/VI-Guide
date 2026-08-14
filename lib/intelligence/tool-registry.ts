@@ -93,7 +93,7 @@ function hasIsland({ request }: IntelligenceToolContext) {
 
 registerIntelligenceTool({
   id: "directory.search",
-  name: "Search VI Guide Directory",
+  name: "Search USVI Explorer Directory",
   description: "Search reviewed places, stays, beaches, restaurants, and local directory records.",
   category: "discovery",
   capability: "recommend",
@@ -109,7 +109,7 @@ registerIntelligenceTool({
 registerIntelligenceTool({
   id: "trip.plan",
   name: "Build Connected Itinerary",
-  description: "Create a coherent island itinerary from grounded VI Guide recommendations.",
+  description: "Create a coherent island itinerary from grounded USVI Explorer recommendations.",
   category: "planning",
   capability: "plan",
   permissions: ["read"],
@@ -169,7 +169,7 @@ registerIntelligenceTool({
 registerIntelligenceTool({
   id: "heritage.search",
   name: "Search Heritage Knowledge",
-  description: "Search VI Guide heritage, historic places, governors, timelines, and source-backed records.",
+  description: "Search USVI Explorer heritage, historic places, governors, timelines, and source-backed records.",
   category: "knowledge",
   capability: "knowledge",
   permissions: ["read"],

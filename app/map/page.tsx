@@ -46,7 +46,7 @@ export default function MapPage() {
             <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
               <div className="max-w-4xl">
                 <div className="inline-flex items-center gap-2 text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
-                  <MapPinned className="h-3.5 w-3.5" /> USVI Compass · Living Map
+                  <MapPinned className="h-3.5 w-3.5" /> USVI Explorer · Living Map
                 </div>
                 <h1 className="vi-display mt-2 max-w-4xl text-3xl font-black leading-[.95] tracking-[-.05em] sm:text-4xl lg:text-5xl">
                   Your island, <span className="text-[#7ce0d4]">ready to explore.</span>

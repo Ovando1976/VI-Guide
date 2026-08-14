@@ -63,7 +63,7 @@ export function ApprovedPartnerOnboarding({
         if (!response.ok || !payload?.account) {
           throw new Error(
             payload?.error ||
-              "This applicant does not yet have a VI Guide Firebase account.",
+              "This applicant does not yet have a USVI Explorer Firebase account.",
           );
         }
         if (!cancelled) setAccount(payload.account);

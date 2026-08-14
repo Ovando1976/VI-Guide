@@ -26,7 +26,7 @@ export function SaveSharedJourneyButton({ plan }: { plan: JourneyPlan }) {
       ...copy,
       date: plan.date,
       status: "draft",
-      notes: ["Saved from a shared VI Guide journey.", plan.notes]
+      notes: ["Saved from a shared USVI Explorer journey.", plan.notes]
         .filter(Boolean)
         .join("\n\n")
         .slice(0, 2000),

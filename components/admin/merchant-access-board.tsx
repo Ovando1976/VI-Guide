@@ -123,7 +123,7 @@ export function MerchantAccessBoard() {
                 Merchant Access
               </h1>
               <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-white/65">
-                Assign existing Firebase accounts to the exact VI Guide listings
+                Assign existing Firebase accounts to the exact USVI Explorer listings
                 they are authorized to operate. Every change invalidates old
                 sessions and writes an audit record.
               </p>

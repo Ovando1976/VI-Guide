@@ -91,4 +91,4 @@ assert.ok(MARKET_COVERAGE_SOURCES.some((source) => source.inventory === "car-ren
 assert.ok(BUSINESS_COVERAGE_SUBMISSION_HREF.startsWith("/merchant"));
 assert.equal(getActivityCoverage().length, 3);
 
-console.log("VI Guide market coverage contracts passed.");
+console.log("USVI Explorer market coverage contracts passed.");

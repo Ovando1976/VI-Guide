@@ -104,8 +104,8 @@ export function OfferBookingForm({
         </p>
         <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
           {success.duplicate
-            ? "VI Guide found your existing package request."
-            : "VI Guide sent the package request to operations."}
+            ? "USVI Explorer found your existing package request."
+            : "USVI Explorer sent the package request to operations."}
         </h2>
         <p className="mt-4 text-sm font-semibold leading-7 text-emerald-950/70">
           {success.duplicate ? (
@@ -139,7 +139,7 @@ export function OfferBookingForm({
         Check availability with the merchant
       </h2>
       <p className="mt-3 text-sm font-semibold leading-6 text-slate-500">
-        This is a request, not an instant charge. VI Guide verifies availability
+        This is a request, not an instant charge. USVI Explorer verifies availability
         before sending a secure payment link.
       </p>
 

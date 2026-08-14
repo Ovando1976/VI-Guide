@@ -54,7 +54,7 @@ export function serializeAdvisorCommerceBooking(
   return {
     id: clean(id, 180),
     reference: clean(data.reference, 160),
-    listingName: clean(data.listingName, 180) || "VI Guide booking",
+    listingName: clean(data.listingName, 180) || "USVI Explorer booking",
     kind: clean(data.kind, 60) || "experience",
     status: normalizeAdvisorCommerceStatus(data.status),
     paymentStatus: clean(data.paymentStatus, 60) || "unpaid",

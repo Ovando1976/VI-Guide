@@ -74,4 +74,4 @@ for (const [source, label] of [
   expectSource(source, '["admin", "dispatcher"]', label);
 }
 
-console.log("VI Guide admin dashboard role boundary contracts passed.");
+console.log("USVI Explorer admin dashboard role boundary contracts passed.");

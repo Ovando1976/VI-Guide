@@ -47,7 +47,7 @@ export function CommerceBookingExperience() {
   const island = normalizeIsland(params.get("island"));
   const listingId = cleanParam(params.get("listingId")) || "custom-request";
   const listingName =
-    cleanParam(params.get("listingName")) || "VI Guide experience";
+    cleanParam(params.get("listingName")) || "USVI Explorer experience";
   const listingHref = cleanParam(params.get("listingHref"));
   const sourceProposalShareId = normalizeProposalShareId(
     params.get("sourceProposal"),
@@ -143,7 +143,7 @@ export function CommerceBookingExperience() {
 
       if (!response.ok || !payload?.bookingId || !payload.reference) {
         throw new Error(
-          payload?.error || "VI Guide could not submit this request.",
+          payload?.error || "USVI Explorer could not submit this request.",
         );
       }
 
@@ -174,7 +174,7 @@ export function CommerceBookingExperience() {
       setError(
         submissionError instanceof Error
           ? submissionError.message
-          : "VI Guide could not submit this request.",
+          : "USVI Explorer could not submit this request.",
       );
     } finally {
       setLoading(false);
@@ -207,7 +207,7 @@ export function CommerceBookingExperience() {
             Your request is in review.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">
-            VI Guide recorded your request for {listingName}. This is not yet a
+            USVI Explorer recorded your request for {listingName}. This is not yet a
             confirmed reservation. Availability, confirmation, and any payment
             instructions will follow after review.
           </p>
@@ -270,7 +270,7 @@ export function CommerceBookingExperience() {
           <div className="mt-5 flex gap-3 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 text-sm font-semibold leading-6 text-teal-950">
             <FileCheck2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" />
             <span>
-              This request started from a VI Guide Travel Advisor proposal. The
+              This request started from a USVI Explorer Travel Advisor proposal. The
               booking will stay linked to that proposal for operations follow-up,
               but your contact information is entered here and is not placed in
               the shared proposal URL.
@@ -282,7 +282,7 @@ export function CommerceBookingExperience() {
           <div className="grid lg:grid-cols-[.8fr_1.2fr]">
             <div className="bg-[radial-gradient(circle_at_top_left,rgba(245,196,81,.25),transparent_36%),linear-gradient(145deg,#043331,#075e58)] p-7 sm:p-10">
               <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                <BadgeCheck className="h-4 w-4" /> VI Guide booking
+                <BadgeCheck className="h-4 w-4" /> USVI Explorer booking
               </div>
               <h1 className="mt-5 text-4xl font-black leading-[.95] tracking-[-.05em] sm:text-5xl">
                 {title}
@@ -295,7 +295,7 @@ export function CommerceBookingExperience() {
                 <div className="flex gap-3">
                   <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#7ce0d4]" />
                   <span>
-                    VI Guide records a real request without presenting
+                    USVI Explorer records a real request without presenting
                     unverified availability, confirmation, or pricing.
                   </span>
                 </div>

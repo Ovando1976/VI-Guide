@@ -257,7 +257,7 @@ export function FerryPlanner() {
           </div>
         </div>
       ) : null}
-      <p className="mt-4 text-xs font-semibold leading-5 text-slate-500">Schedules can change seasonally or operationally. USVI Compass shows the published planning schedule and links to the government, tourism-board or operator source for final verification. {route?.requiresPassport ? "USVI–BVI travel requires a valid passport and customs/immigration processing." : "U.S. citizens do not need a passport for travel solely within the U.S. Virgin Islands."}</p>
+      <p className="mt-4 text-xs font-semibold leading-5 text-slate-500">Schedules can change seasonally or operationally. USVI Explorer shows the published planning schedule and links to the government, tourism-board or operator source for final verification. {route?.requiresPassport ? "USVI–BVI travel requires a valid passport and customs/immigration processing." : "U.S. citizens do not need a passport for travel solely within the U.S. Virgin Islands."}</p>
     </section>
   );
 }

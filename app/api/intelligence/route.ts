@@ -177,9 +177,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 401 });
     }
     if (run) await failIntelligenceRun(run, error);
-    console.error("VI Guide intelligence request failed.", error);
+    console.error("USVI Explorer intelligence request failed.", error);
     return NextResponse.json(
-      { error: "The VI Guide intelligence engine could not respond." },
+      { error: "The USVI Explorer intelligence engine could not respond." },
       { status: 500 },
     );
   }

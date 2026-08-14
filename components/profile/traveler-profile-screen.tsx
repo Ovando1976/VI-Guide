@@ -159,7 +159,7 @@ export function TravelerProfileScreen() {
                   <ShieldCheck size={14} /> Traveler intelligence profile
                 </div>
                 <h1 className="vi-display mt-5 max-w-4xl text-5xl font-black leading-[.92] tracking-[-.06em] sm:text-6xl lg:text-7xl">
-                  You decide what VI Guide remembers.
+                  You decide what USVI Explorer remembers.
                 </h1>
                 <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/72 sm:text-base sm:leading-8">
                   Your profile is the memory and preference layer behind Concierge,
@@ -334,7 +334,7 @@ export function TravelerProfileScreen() {
                   {memory.stay?.name ?? "No stay selected yet"}
                 </div>
                 <p className="mt-2 text-xs font-semibold leading-5 text-[#667b77]">
-                  Selecting an accommodation in VI Guide will connect it to
+                  Selecting an accommodation in USVI Explorer will connect it to
                   future plans.
                 </p>
               </div>
@@ -369,7 +369,7 @@ export function TravelerProfileScreen() {
           <ProfileSection
             icon={BellRing}
             eyebrow="Proactive protection"
-            title="Choose when VI Guide should alert you"
+            title="Choose when USVI Explorer should alert you"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <ToggleField
@@ -380,7 +380,7 @@ export function TravelerProfileScreen() {
               />
               <ToggleField
                 label="In-app alerts"
-                description="Place material changes in your private VI Guide notification center."
+                description="Place material changes in your private USVI Explorer notification center."
                 checked={form.inAppAlerts}
                 onChange={(checked) => update("inAppAlerts", checked)}
               />
@@ -413,7 +413,7 @@ export function TravelerProfileScreen() {
                 options={ALERT_LEVELS}
               />
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-950/70">
-                VI Guide only alerts when the material risk fingerprint changes.
+                USVI Explorer only alerts when the material risk fingerprint changes.
                 Repeated checks of the same condition are deduplicated, and
                 non-escalating changes observe a cooldown.
               </div>
@@ -446,7 +446,7 @@ export function TravelerProfileScreen() {
               </span>
             ) : (
               <span aria-live="polite" className="text-xs font-semibold text-[#718480]">
-                {saved ? "Your updated profile is now available to VI Guide." : "Save after changing your travel preferences or alert settings."}
+                {saved ? "Your updated profile is now available to USVI Explorer." : "Save after changing your travel preferences or alert settings."}
               </span>
             )}
           </div>

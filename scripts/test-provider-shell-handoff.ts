@@ -53,4 +53,4 @@ expectSource(
   "Merchant Availability preserves merchant listing restrictions",
 );
 
-console.log("VI Guide Provider-to-Merchant shell handoff contracts passed.");
+console.log("USVI Explorer Provider-to-Merchant shell handoff contracts passed.");

@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
             currency: "usd",
             unit_amount: amountCents,
             product_data: {
-              name: `${String(booking.listingName ?? "VI Guide booking")} deposit`,
+              name: `${String(booking.listingName ?? "USVI Explorer booking")} deposit`,
               description: `Booking ${bookingReference}`,
             },
           },

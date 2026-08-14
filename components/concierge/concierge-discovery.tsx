@@ -123,7 +123,7 @@ export function ConciergeDiscovery({ initialIsland = "stt" }: Props) {
         throw new Error(
           payload && "error" in payload && payload.error
             ? payload.error
-            : "VI Guide could not search the live catalog.",
+            : "USVI Explorer could not search the live catalog.",
         );
       }
 
@@ -133,7 +133,7 @@ export function ConciergeDiscovery({ initialIsland = "stt" }: Props) {
       setError(
         searchError instanceof Error
           ? searchError.message
-          : "VI Guide could not search the live catalog.",
+          : "USVI Explorer could not search the live catalog.",
       );
     } finally {
       setLoading(false);
@@ -156,7 +156,7 @@ export function ConciergeDiscovery({ initialIsland = "stt" }: Props) {
           <div className="grid gap-8 lg:grid-cols-[1fr_310px] lg:items-end">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-cyan-200/20 bg-white/5 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-100/75">
-                <Sparkles size={13} /> VI Guide Concierge
+                <Sparkles size={13} /> USVI Explorer Concierge
               </div>
               <h1 className="mt-5 text-4xl font-black tracking-[-0.05em] sm:text-6xl">
                 Describe the island day you want.
@@ -306,7 +306,7 @@ export function ConciergeDiscovery({ initialIsland = "stt" }: Props) {
             <div className="text-center">
               <Loader2 className="mx-auto animate-spin text-teal-700" />
               <p className="mt-3 text-sm font-bold text-slate-500">
-                Ranking the VI Guide catalog…
+                Ranking the USVI Explorer catalog…
               </p>
             </div>
           </div>

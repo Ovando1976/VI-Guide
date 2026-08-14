@@ -110,7 +110,7 @@ export function TripReturnNotice() {
           ? ` Dispute status: ${booking.dispute.status.replaceAll("_", " ")}.`
           : "";
         setMessage(
-          `${route || "Your ride"} has a protected financial record. Do not submit another payment.${refundText}${disputeText} ${payload?.integrityIssue || booking?.paymentIntegrityIssue || "VI Guide is preserving the record for staff review."}`,
+          `${route || "Your ride"} has a protected financial record. Do not submit another payment.${refundText}${disputeText} ${payload?.integrityIssue || booking?.paymentIntegrityIssue || "USVI Explorer is preserving the record for staff review."}`,
         );
         setState("review");
         return true;
@@ -252,7 +252,7 @@ export function TripReturnNotice() {
           </h2>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
             {isChecking
-              ? `VI Guide is checking Stripe and the booking record before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
+              ? `USVI Explorer is checking Stripe and the booking record before dispatch begins${attempt > 1 ? ` · attempt ${attempt}` : ""}.`
               : message}
           </p>
 

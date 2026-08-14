@@ -141,7 +141,7 @@ function buildCandidate(
       minutes: originTransfer,
       startTime: fromMinutes(leaveOrigin),
       endTime: fromMinutes(leaveOrigin + originTransfer),
-      note: `VI Guide road-time estimate. Arrive about ${route.checkInMinutes} minutes before the published sailing.`,
+      note: `USVI Explorer road-time estimate. Arrive about ${route.checkInMinutes} minutes before the published sailing.`,
       mobilityHref: mobilityHref(origin.label, route.fromLabel),
     });
   }
@@ -164,7 +164,7 @@ function buildCandidate(
       minutes: arrivalTransfer,
       startTime: fromMinutes(ferryArrival),
       endTime: fromMinutes(destinationArrival),
-      note: "VI Guide road-time estimate for the arrival transfer; actual travel time varies with traffic and pickup conditions.",
+      note: "USVI Explorer road-time estimate for the arrival transfer; actual travel time varies with traffic and pickup conditions.",
       mobilityHref: mobilityHref(route.toLabel, destination.label),
     });
   }

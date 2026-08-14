@@ -148,7 +148,7 @@ export function StayActionCard({
       <div className="mt-5 flex gap-3 rounded-2xl bg-emerald-50 p-4 text-xs font-semibold leading-5 text-emerald-900">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
         <span>
-          VI Guide records the request and reference. Availability, price,
+          USVI Explorer records the request and reference. Availability, price,
           confirmation, and payment are finalized after review.
         </span>
       </div>

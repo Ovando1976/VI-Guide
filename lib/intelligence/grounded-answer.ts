@@ -8,20 +8,20 @@ export function buildGroundedAnswer(
   const island = islandName(response.context.island);
 
   if (!matches.length) {
-    return `I could not find a strong reviewed match for “${clean(message)}” in the current VI Guide knowledge index for ${island}. Try naming a beach, estate, historic site, restaurant, accommodation, or activity.`;
+    return `I could not find a strong reviewed match for “${clean(message)}” in the current USVI Explorer knowledge index for ${island}. Try naming a beach, estate, historic site, restaurant, accommodation, or activity.`;
   }
 
   const names = matches.map((item) => item.title);
   const lead =
     response.intent === "knowledge"
-      ? `From VI Guide’s own heritage and place records, the strongest match is ${names[0]}.`
+      ? `From USVI Explorer’s own heritage and place records, the strongest match is ${names[0]}.`
       : response.intent === "mobility"
         ? `For this transportation request on ${island}, start with ${names[0]}.`
         : response.intent === "booking"
-          ? `For this booking request, VI Guide found ${names[0]} as the strongest reviewed match.`
+          ? `For this booking request, USVI Explorer found ${names[0]} as the strongest reviewed match.`
           : response.intent === "day_plan"
             ? `I built a connected ${island} plan around ${joinNames(names.slice(0, 3))}.`
-            : `The strongest VI Guide matches are ${joinNames(names)}.`;
+            : `The strongest USVI Explorer matches are ${joinNames(names)}.`;
 
   const detail = matches[0]?.summary?.trim();
   const navigation = response.plan.length

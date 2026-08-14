@@ -61,7 +61,7 @@ export function getCruiseInventoryReadiness(
             "Set CRUISE_INVENTORY_ENABLE_MOCK=true in a non-production environment",
           ],
       nextAction: enabled
-        ? "Use the mock provider to validate VI Guide search, quote, hold, and booking contracts."
+        ? "Use the mock provider to validate USVI Explorer search, quote, hold, and booking contracts."
         : "Enable the mock provider only in development or preview for integration testing.",
     };
   }
@@ -95,7 +95,7 @@ export function getCruiseInventoryReadiness(
       !productionCertified
         ? "Complete supplier production certification and booking tests"
         : null,
-      "Confirm cruise-line supplier credentials under VI Guide or its host agency",
+      "Confirm cruise-line supplier credentials under USVI Explorer or its host agency",
       "Approve supplier-hosted payment, cancellation, and chargeback responsibilities",
     ].filter((value): value is string => Boolean(value));
 
@@ -166,7 +166,7 @@ export function publicCruiseInventoryStatus(
 export function providerName(provider: CruiseInventoryProviderId) {
   if (provider === "traveltek") return "Traveltek";
   if (provider === "revelex") return "Revelex";
-  if (provider === "mock") return "VI Guide Mock Inventory";
+  if (provider === "mock") return "USVI Explorer Mock Inventory";
   return "No provider";
 }
 

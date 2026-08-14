@@ -25,9 +25,9 @@ import { getOfferVisual } from "@/lib/offers/offer-visual";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Island Offers | VI Guide",
+  title: "Island Offers | USVI Explorer",
   description:
-    "Book live U.S. Virgin Islands stays, tours, and experiences offered by verified VI Guide businesses.",
+    "Book live U.S. Virgin Islands stays, tours, and experiences offered by verified USVI Explorer businesses.",
 };
 
 export default async function OffersPage() {
@@ -65,7 +65,7 @@ export default async function OffersPage() {
               <span className="block italic text-[#73e3d9]">not just a listing.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/76 sm:text-xl sm:leading-8">
-              Book live packages published by VI Guide businesses with current prices and selling dates. Availability is confirmed before a secure deposit is collected.
+              Book live packages published by USVI Explorer businesses with current prices and selling dates. Availability is confirmed before a secure deposit is collected.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -93,10 +93,10 @@ export default async function OffersPage() {
               </span>
             </div>
             <p className="mt-4 text-sm font-semibold leading-6 text-white/62">
-              Only offers that are active, in their selling window, and valid under the VI Guide booking rules appear here.
+              Only offers that are active, in their selling window, and valid under the USVI Explorer booking rules appear here.
             </p>
             <div className="mt-5 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/55">
-              Photos are tied to the linked VI Guide listing when one can be resolved. Otherwise the card is explicitly labeled as island context.
+              Photos are tied to the linked USVI Explorer listing when one can be resolved. Otherwise the card is explicitly labeled as island context.
             </div>
           </aside>
         </div>
@@ -118,7 +118,7 @@ export default async function OffersPage() {
                   New island packages are being prepared.
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/62">
-                  Only packages with a current published price and active selling window appear here. Keep exploring VI Guide while merchants prepare the next offers.
+                  Only packages with a current published price and active selling window appear here. Keep exploring USVI Explorer while merchants prepare the next offers.
                 </p>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link

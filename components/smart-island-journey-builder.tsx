@@ -129,7 +129,7 @@ export function SmartIslandJourneyBuilder({
       ...journey,
       date: planToSave.travelDate,
       status: "ready",
-      notes: `VI Guide connected journey. Published ferry departure ${planToSave.ferryDepartureTime}; road timing uses VI Guide routing estimates and the ferry schedule must be verified before travel.`,
+      notes: `USVI Explorer connected journey. Published ferry departure ${planToSave.ferryDepartureTime}; road timing uses USVI Explorer routing estimates and the ferry schedule must be verified before travel.`,
       plan: stops,
     });
     writeSelectedTravelerTripPlanId(journey.id);
@@ -155,10 +155,10 @@ export function SmartIslandJourneyBuilder({
             Smart Island Journey
           </p>
           <h2 className="mt-2 text-3xl font-black tracking-tight text-[#043331]">
-            Choose any mapped VI Guide place.
+            Choose any mapped USVI Explorer place.
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
-            VI Guide uses place coordinates and the existing road-routing API to
+            USVI Explorer uses place coordinates and the existing road-routing API to
             estimate the terminal connection, then combines that with the governed
             ferry schedule and check-in buffer.
           </p>
@@ -295,7 +295,7 @@ export function SmartIslandJourneyBuilder({
             </button>
             <Link
               href={`/concierge?prompt=${encodeURIComponent(
-                `Coordinate my complete VI Guide journey from ${plan.origin.label} to ${plan.destination.label} on ${plan.travelDate}. Recommended ferry departure: ${plan.ferryDepartureTime}. Verify the published sailing and help with each ground transfer.`,
+                `Coordinate my complete USVI Explorer journey from ${plan.origin.label} to ${plan.destination.label} on ${plan.travelDate}. Recommended ferry departure: ${plan.ferryDepartureTime}. Verify the published sailing and help with each ground transfer.`,
               )}`}
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-xs font-black uppercase tracking-[.13em] text-white"
             >
@@ -321,7 +321,7 @@ export function SmartIslandJourneyBuilder({
           </h3>
           <p className="mt-2 text-sm font-semibold text-slate-600">
             {sameIsland
-              ? "Use VI Guide Mobility for an on-island ride, or choose a destination on another island."
+              ? "Use USVI Explorer Mobility for an on-island ride, or choose a destination on another island."
               : "Try another time/date or a different mapped place. If road routing is unavailable for a location, VI Concierge can coordinate the connection manually."}
           </p>
           <div className="mt-4 flex gap-3">

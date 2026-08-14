@@ -60,7 +60,7 @@ export async function createMarketplaceRecipientAccount(input: {
 }) {
   const merchantUid = clean(input.merchantUid, 180);
   const email = normalizeEmail(input.email);
-  const displayName = clean(input.displayName, 120) || "VI Guide merchant";
+  const displayName = clean(input.displayName, 120) || "USVI Explorer merchant";
   if (!merchantUid || !email) {
     throw new StripeMarketplaceConnectError(
       "A merchant account and email are required for Stripe payout setup.",
@@ -280,19 +280,19 @@ function marketplaceConnectErrorMessage(
     code === "account_creation_liability_unacknowledged" ||
     code === "account_creation_requirement_collection_and_liability_unacknowledged"
   ) {
-    return "VI Guide must acknowledge its Stripe Connect marketplace liability in Stripe before merchant payout accounts can be created.";
+    return "USVI Explorer must acknowledge its Stripe Connect marketplace liability in Stripe before merchant payout accounts can be created.";
   }
   if (code === "connect_profile_not_submitted") {
-    return "VI Guide must finish its Stripe Connect platform profile before merchant payout accounts can be created.";
+    return "USVI Explorer must finish its Stripe Connect platform profile before merchant payout accounts can be created.";
   }
   if (
     code === "accounts_v2_access_blocked" ||
     code === "non_connect_platform_accounts_v2_access_blocked"
   ) {
-    return "Stripe Accounts v2 is not enabled for this VI Guide account yet.";
+    return "Stripe Accounts v2 is not enabled for this USVI Explorer account yet.";
   }
   if (code === "connect_identity_not_verified") {
-    return "VI Guide must complete Stripe platform identity verification before merchant payout accounts can be created.";
+    return "USVI Explorer must complete Stripe platform identity verification before merchant payout accounts can be created.";
   }
   return stripeMessage || "Stripe could not complete the marketplace account request.";
 }

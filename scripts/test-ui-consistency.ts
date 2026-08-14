@@ -244,7 +244,7 @@ for (const [name, contents] of [
   assert.match(contents, /OpsPill/, `${name} must use shared OpsPill`);
 }
 
-assert.match(travelDesk, /Send through VI Guide/);
+assert.match(travelDesk, /Send through USVI Explorer/);
 assert.match(travelDesk, /sendFollowup/);
 assert.match(travelAdvisorRoute, /travel_advisor_followup/);
 assert.match(travelAdvisorRoute, /traveler_followup_queued/);
@@ -271,7 +271,7 @@ assert.match(travelProposalRoute, /proposal_published/);
 assert.match(travelProposalRoute, /proposal_sent/);
 assert.match(travelProposalRoute, /processBookingNotificationOutboxIds/);
 assert.match(travelProposalQueueRoute, /proposalHref/);
-assert.match(sharedTrip, /Prepared through the VI Guide Travel Advisor workflow/);
+assert.match(sharedTrip, /Prepared through the USVI Explorer Travel Advisor workflow/);
 assert.match(sharedTrip, /not a confirmation/);
 
 assert.match(adminNav, /\/admin\/travel-requests/);
@@ -306,4 +306,4 @@ assert.match(mobilityBooking, /numeric: true/);
 assert.match(mobilityBooking, /sortedEstates\.map/);
 assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
 
-console.log("VI Guide UI and customer-journey consistency contracts passed.");
+console.log("USVI Explorer UI and customer-journey consistency contracts passed.");

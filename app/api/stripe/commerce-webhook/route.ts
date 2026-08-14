@@ -185,7 +185,7 @@ async function processCompletedSession(event: Stripe.Event) {
     const now = requestNow.toISOString();
     const listingId =
       String(booking.listingId ?? "").trim() || `unassigned-${bookingId}`;
-    const listingName = String(booking.listingName ?? "VI Guide booking");
+    const listingName = String(booking.listingName ?? "USVI Explorer booking");
     const candidateCapture = buildCommerceCaptureLedgerEntry({
       bookingId,
       bookingReference: expectedReference,
@@ -216,7 +216,7 @@ async function processCompletedSession(event: Stripe.Event) {
         eventType: event.type,
         outcome: "commerce_ledger_capture_invalid",
         issue:
-          "Stripe payment was verified, but VI Guide could not construct its accounting allocation.",
+          "Stripe payment was verified, but USVI Explorer could not construct its accounting allocation.",
       });
       return;
     }
@@ -565,7 +565,7 @@ async function processRefundEvent(event: Stripe.Event) {
       listingId:
         String(booking.listingId ?? "").trim() ||
         `unassigned-${bookingSnapshot.id}`,
-      listingName: String(booking.listingName ?? "VI Guide booking"),
+      listingName: String(booking.listingName ?? "USVI Explorer booking"),
       paymentIntentId,
       checkoutSessionId: booking.checkoutSessionId,
       stripeEventId: `reconciliation-before-refund-${event.id}`,
@@ -603,7 +603,7 @@ async function processRefundEvent(event: Stripe.Event) {
         priority: "high",
         title: "Refund accounting needs review",
         message: `${String(
-          booking.listingName ?? "VI Guide booking",
+          booking.listingName ?? "USVI Explorer booking",
         )} booking ${String(
           booking.reference ?? bookingSnapshot.id,
         )} has a Stripe refund without a verifiable capture allocation.`,
@@ -641,7 +641,7 @@ async function processRefundEvent(event: Stripe.Event) {
       listingId:
         String(booking.listingId ?? "").trim() ||
         `unassigned-${bookingSnapshot.id}`,
-      listingName: String(booking.listingName ?? "VI Guide booking"),
+      listingName: String(booking.listingName ?? "USVI Explorer booking"),
       paymentIntentId,
       checkoutSessionId: booking.checkoutSessionId,
       refundId: refund.id,
@@ -670,7 +670,7 @@ async function processRefundEvent(event: Stripe.Event) {
 
     if (!refundEntry) {
       const issue =
-        "Stripe reported a refund, but VI Guide could not construct the corresponding ledger entry.";
+        "Stripe reported a refund, but USVI Explorer could not construct the corresponding ledger entry.";
       transaction.update(bookingRef, {
         refundStatus: "review_required",
         refundFailureReason: issue,
@@ -684,7 +684,7 @@ async function processRefundEvent(event: Stripe.Event) {
         priority: "high",
         title: "Refund ledger needs review",
         message: `${String(
-          booking.listingName ?? "VI Guide booking",
+          booking.listingName ?? "USVI Explorer booking",
         )} booking ${String(
           booking.reference ?? bookingSnapshot.id,
         )} has a Stripe refund that could not be allocated.`,
@@ -747,7 +747,7 @@ async function processRefundEvent(event: Stripe.Event) {
       );
       writeRefundNotifications(transaction, db, {
         reference: String(booking.reference ?? bookingSnapshot.id),
-        listingName: String(booking.listingName ?? "VI Guide booking"),
+        listingName: String(booking.listingName ?? "USVI Explorer booking"),
         amountCents: refund.amount,
         status: "review_required",
         now,
@@ -797,7 +797,7 @@ async function processRefundEvent(event: Stripe.Event) {
       {
         bookingId: bookingSnapshot.id,
         bookingReference: String(booking.reference ?? bookingSnapshot.id),
-        listingName: String(booking.listingName ?? "VI Guide booking"),
+        listingName: String(booking.listingName ?? "USVI Explorer booking"),
         guestEmail: String(booking.email ?? ""),
         paymentIntentId,
         amountCents: paidAmountCents,
@@ -823,7 +823,7 @@ async function processRefundEvent(event: Stripe.Event) {
       if (incomingStatus === "succeeded" && fullRefund) {
         writeRefundNotifications(transaction, db, {
           reference: String(booking.reference ?? bookingSnapshot.id),
-          listingName: String(booking.listingName ?? "VI Guide booking"),
+          listingName: String(booking.listingName ?? "USVI Explorer booking"),
           amountCents: refund.amount,
           status: "succeeded",
           now,
@@ -831,7 +831,7 @@ async function processRefundEvent(event: Stripe.Event) {
         if (refundEntry.status === "review_required") {
           writeRefundNotifications(transaction, db, {
             reference: String(booking.reference ?? bookingSnapshot.id),
-            listingName: String(booking.listingName ?? "VI Guide booking"),
+            listingName: String(booking.listingName ?? "USVI Explorer booking"),
             amountCents: refund.amount,
             status: "review_required",
             now,
@@ -843,7 +843,7 @@ async function processRefundEvent(event: Stripe.Event) {
       ) {
         writeRefundNotifications(transaction, db, {
           reference: String(booking.reference ?? bookingSnapshot.id),
-          listingName: String(booking.listingName ?? "VI Guide booking"),
+          listingName: String(booking.listingName ?? "USVI Explorer booking"),
           amountCents: refund.amount,
           status: incomingStatus,
           now,

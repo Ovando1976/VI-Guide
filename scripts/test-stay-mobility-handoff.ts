@@ -56,4 +56,4 @@ if (stayPage.includes('rideParams.set("toGeoid"')) {
   throw new Error("Stay mobility handoff contract failed: obsolete toGeoid parameter returned");
 }
 
-console.log("VI Guide stay-to-Mobility handoff contracts passed.");
+console.log("USVI Explorer stay-to-Mobility handoff contracts passed.");

@@ -5,9 +5,9 @@ import { TravelRequestBoard } from "@/components/admin/travel-request-board";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "USVI Travel Advisor Desk | VI Guide",
+  title: "USVI Travel Advisor Desk | USVI Explorer",
   description:
-    "Review and manage traveler trip-planning requests, booking conversion, payment progress, and recorded revenue inside VI Guide operations.",
+    "Review and manage traveler trip-planning requests, booking conversion, payment progress, and recorded revenue inside USVI Explorer operations.",
 };
 
 export default async function TravelRequestsPage() {

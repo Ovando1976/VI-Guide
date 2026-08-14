@@ -62,7 +62,7 @@ const MODULES = [
   {
     title: "Heritage map",
     imageTerms: ["estate", "district", "landscape", "quarter"],
-    text: "Explore historic places and cultural context on the same territory map used throughout VI Guide.",
+    text: "Explore historic places and cultural context on the same territory map used throughout USVI Explorer.",
     icon: Map,
     state: "Live",
     href: "/map?filter=history",
@@ -374,7 +374,7 @@ export function HeritageExplorer({ items }: { items: DirectoryItem[] }) {
               </h2>
               <p className="mt-4 max-w-3xl text-sm font-semibold leading-7 text-white/70">
                 Browse the complete digitized collection, search its captions and places,
-                and preserve the original source record alongside VI Guide corrections.
+                and preserve the original source record alongside USVI Explorer corrections.
               </p>
             </div>
             <Link

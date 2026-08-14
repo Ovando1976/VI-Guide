@@ -10,7 +10,7 @@ import { getStripe } from "@/lib/stripe";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const PORTAL_CONFIG_NAME = "VI Guide Traveler Plus";
+const PORTAL_CONFIG_NAME = "USVI Explorer Traveler Plus";
 const PORTAL_CONFIG_METADATA_KEY = "viGuidePortal";
 const PORTAL_CONFIG_METADATA_VALUE = "traveler-plus-v1";
 
@@ -74,7 +74,7 @@ async function ensureTravelerPlusPortalConfiguration(
     {
       name: PORTAL_CONFIG_NAME,
       business_profile: {
-        headline: "Manage your VI Guide Traveler Plus membership",
+        headline: "Manage your USVI Explorer Traveler Plus membership",
       },
       features: {
         customer_update: {

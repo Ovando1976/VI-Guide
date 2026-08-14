@@ -184,7 +184,7 @@ function rideStatusView(status: BookingStatus, paymentStatus?: RideBookingPaymen
   if (status === "cancelled") return { label: "Cancelled", detail: "This ride request was cancelled.", actionLabel: "View ride", tone: "rose" };
   if (status === "completed") return { label: "Completed", detail: "This ride is complete and remains attached to your trip history.", actionLabel: "View ride", tone: "slate" };
   if (paymentStatus !== "paid") {
-    if (paymentStatus === "processing") return { label: "Payment processing", detail: "Payment is processing. VI Guide will update this ride automatically.", actionLabel: "View payment", tone: "amber" };
+    if (paymentStatus === "processing") return { label: "Payment processing", detail: "Payment is processing. USVI Explorer will update this ride automatically.", actionLabel: "View payment", tone: "amber" };
     if (paymentStatus === "failed") return { label: "Payment failed", detail: "Payment needs attention before the ride can advance.", actionLabel: "Continue payment", tone: "rose" };
     return { label: "Payment needed", detail: "Secure payment to move this ride into dispatch.", actionLabel: "Continue payment", tone: "amber" };
   }
@@ -201,7 +201,7 @@ function rideStatusView(status: BookingStatus, paymentStatus?: RideBookingPaymen
     case "requested":
       return { label: "Awaiting driver", detail: "Payment is secured and dispatch is finding an eligible driver.", actionLabel: "View ride", tone: "teal" };
     default:
-      return { label: "Ride requested", detail: "This transportation request is active in VI Guide.", actionLabel: "View ride", tone: "teal" };
+      return { label: "Ride requested", detail: "This transportation request is active in USVI Explorer.", actionLabel: "View ride", tone: "teal" };
   }
 }
 

@@ -23,11 +23,11 @@ export default function UnauthorizedPage() {
           <Link
             href="/"
             className="flex w-fit items-center gap-3 rounded-full border border-white/15 bg-[#032f2d]/58 px-3 py-2 pr-5 backdrop-blur-md"
-            aria-label="VI Guide home"
+            aria-label="USVI Explorer home"
           >
             <ViBrandMark className="h-11 w-11" priority />
             <span>
-              <span className="block text-lg font-black tracking-[-.035em]">VI Guide</span>
+              <span className="block text-lg font-black tracking-[-.035em]">USVI Explorer</span>
               <span className="mt-0.5 block text-[8px] font-black uppercase tracking-[.19em] text-[#9fe7df]">
                 Virgin Islands travel OS
               </span>
@@ -53,7 +53,7 @@ export default function UnauthorizedPage() {
                 href="/"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-6 text-[9px] font-black uppercase tracking-[.15em] text-[#043331] transition hover:bg-[#ffdc76]"
               >
-                <Home className="h-4 w-4" /> Return to VI Guide
+                <Home className="h-4 w-4" /> Return to USVI Explorer
               </Link>
               <Link
                 href="/profile"
@@ -68,7 +68,7 @@ export default function UnauthorizedPage() {
                 <ShieldAlert className="h-4 w-4" />
               </span>
               <p className="text-xs font-semibold leading-5 text-white/58">
-                If you expected business, driver, dispatcher, or administrator access, ask the VI Guide administrator responsible for that workspace to verify your assigned role or listing access.
+                If you expected business, driver, dispatcher, or administrator access, ask the USVI Explorer administrator responsible for that workspace to verify your assigned role or listing access.
               </p>
             </div>
 

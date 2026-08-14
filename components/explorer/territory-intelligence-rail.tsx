@@ -57,7 +57,7 @@ export function TerritoryIntelligenceRail({
         `This ${placeTypeLabel(selectedPlace.type).toLowerCase()} is active. Use the nearby estate to connect it to the rest of your island day.`
       : selectedEstate
         ? "This estate is active. Explore what surrounds it or make it part of your movement plan."
-        : "Tap a place or estate on the map and VI Guide will turn the selection into useful local context.";
+        : "Tap a place or estate on the map and USVI Explorer will turn the selection into useful local context.";
 
   return (
     <aside className="territory-story-rail space-y-4 xl:sticky xl:top-[166px] xl:h-fit">

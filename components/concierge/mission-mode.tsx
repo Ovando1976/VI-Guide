@@ -30,7 +30,7 @@ const MISSIONS = [
     imageAlt: "Magens Bay beach in St. Thomas",
     tag: "Water",
     prompt:
-      "Build me a complete beach day using current VI Guide context. Include the best-fit beach, arrival timing, transportation, food nearby, facilities, water considerations, estimated costs, and a weather-safe backup.",
+      "Build me a complete beach day using current USVI Explorer context. Include the best-fit beach, arrival timing, transportation, food nearby, facilities, water considerations, estimated costs, and a weather-safe backup.",
   },
   {
     id: "cruise-stop",
@@ -63,7 +63,7 @@ const MISSIONS = [
     imageAlt: "Cane Bay coastline in St. Croix",
     tag: "Water",
     prompt:
-      "Plan a USVI fishing mission using VI Guide knowledge. Include suitable access or charter options, likely species, timing, regulations, transportation, equipment considerations, and a bad-weather alternative.",
+      "Plan a USVI fishing mission using USVI Explorer knowledge. Include suitable access or charter options, likely species, timing, regulations, transportation, equipment considerations, and a bad-weather alternative.",
   },
   {
     id: "history-walk",
@@ -144,7 +144,7 @@ export function MissionMode() {
     const value = brief.trim();
     if (!value) return;
     launch(
-      `Treat this as a complete travel mission: ${value}. Build a realistic, actionable plan using current VI Guide map context, transportation, timing, costs, booking opportunities, and at least one backup option.`,
+      `Treat this as a complete travel mission: ${value}. Build a realistic, actionable plan using current USVI Explorer map context, transportation, timing, costs, booking opportunities, and at least one backup option.`,
     );
   }
 
@@ -176,11 +176,11 @@ export function MissionMode() {
               <Sparkles size={14} /> VI Concierge · Mission Mode
             </div>
             <h1 className="vi-display mt-7 max-w-5xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
-              Tell VI Guide
+              Tell USVI Explorer
               <span className="block italic text-[#73e3d9]">what the day needs to do.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
-              Pick a mission and VI Guide opens the Living Map with a practical brief already attached—timing, transportation, cost, booking opportunities, and a backup included.
+              Pick a mission and USVI Explorer opens the Living Map with a practical brief already attached—timing, transportation, cost, booking opportunities, and a backup included.
             </p>
           </div>
 

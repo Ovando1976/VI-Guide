@@ -87,4 +87,4 @@ assert.ok(allImages.has(SELECTED_USVI_TAXI_IMAGE), "Homepage image audit must in
 assert.ok(allImages.size > 0, "No local homepage images were discovered for integrity validation");
 for (const imagePath of [...allImages].sort()) assertImageSignature(imagePath);
 
-console.log(`VI Guide homepage image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);
+console.log(`USVI Explorer homepage image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);

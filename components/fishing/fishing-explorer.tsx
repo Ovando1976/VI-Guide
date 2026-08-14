@@ -63,7 +63,7 @@ export function FishingExplorer() {
             <div>
               <p className="text-xs font-black uppercase tracking-[.28em] text-[#f5c85a]">Fish smarter. Respect the water.</p>
               <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[.94] tracking-[-.05em] sm:text-6xl lg:text-7xl">
-                The Virgin Islands fishing experience, built into VI Guide.
+                The Virgin Islands fishing experience, built into USVI Explorer.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
                 Identify common species, understand habitat, review conservation guidance, and move directly into the territory map or concierge for practical trip planning.

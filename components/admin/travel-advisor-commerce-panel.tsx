@@ -41,7 +41,7 @@ export function TravelAdvisorCommercePanel({
           <p className="mt-1 text-xs font-semibold text-slate-500">
             {conversionStartedAt
               ? `Conversion started ${formatDateTime(conversionStartedAt)}.`
-              : "A proposal stop has entered VI Guide commerce."}
+              : "A proposal stop has entered USVI Explorer commerce."}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

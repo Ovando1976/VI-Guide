@@ -22,7 +22,7 @@ function expectSource(source: string, value: string, label: string) {
 }
 
 for (const [value, label] of [
-  ["ViPublicHeader", "Heritage family uses shared VI Guide public chrome"],
+  ["ViPublicHeader", "Heritage family uses shared USVI Explorer public chrome"],
   ['actionHref="/map?filter=history"', "shared header keeps Heritage Map handoff"],
   ['secondaryHref="/concierge?context=heritage"', "shared header keeps Heritage Guide handoff"],
   ['secondaryLabel="Ask Heritage Guide"', "shared header exposes Heritage Guide clearly"],
@@ -60,4 +60,4 @@ for (const [value, label] of [
   }
 }
 
-console.log("VI Guide Heritage shared-shell contracts passed.");
+console.log("USVI Explorer Heritage shared-shell contracts passed.");

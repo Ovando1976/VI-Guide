@@ -132,7 +132,7 @@ export function AiTripBriefScreen({
       setError(
         cause instanceof Error
           ? cause.message
-          : "VI Guide could not load your traveler workspace.",
+          : "USVI Explorer could not load your traveler workspace.",
       );
     } finally {
       setLoading(false);

@@ -72,7 +72,7 @@ export function PlaceActionBar({
               Decide what happens next.
             </h2>
             <p className="mt-2 max-w-md text-xs font-semibold leading-5 text-white/62">
-              Save the place, add it to your trip, see where it sits, arrange the ride, or ask VI Guide to connect the details.
+              Save the place, add it to your trip, see where it sits, arrange the ride, or ask USVI Explorer to connect the details.
             </p>
             <Link
               href="/saved"

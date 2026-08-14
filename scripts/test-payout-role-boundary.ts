@@ -46,4 +46,4 @@ expectSource(adminView, "/paid", "Administrator view keeps the payment evidence 
 expectSource(settlementReadApi, 'requireSession(["admin", "dispatcher"])', "Settlement ledger remains readable by admin and dispatcher");
 expectSource(settlementPaidApi, 'requireSession(["admin"])', "Recording settlement payment evidence remains admin-only at the API boundary");
 
-console.log("VI Guide payout role boundary contracts passed.");
+console.log("USVI Explorer payout role boundary contracts passed.");

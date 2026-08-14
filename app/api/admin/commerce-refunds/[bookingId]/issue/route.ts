@@ -173,7 +173,7 @@ export async function POST(
         {
           bookingId,
           bookingReference: reference,
-          listingName: String(booking.listingName ?? "VI Guide booking"),
+          listingName: String(booking.listingName ?? "USVI Explorer booking"),
           guestEmail: String(booking.email ?? ""),
           paymentIntentId: currentPaymentIntentId,
           amountCents: currentPaidAmountCents,
@@ -206,7 +206,7 @@ export async function POST(
       return {
         bookingId,
         reference,
-        listingName: String(booking.listingName ?? "VI Guide booking"),
+        listingName: String(booking.listingName ?? "USVI Explorer booking"),
         paymentIntentId: currentPaymentIntentId,
         paidAmountCents: currentPaidAmountCents,
         attemptNumber,

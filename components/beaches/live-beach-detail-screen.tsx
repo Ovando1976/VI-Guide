@@ -225,7 +225,7 @@ export function LiveBeachDetailScreen({ placeId }: { placeId: string }) {
         {
           label: "Transportation",
           value: "Ride ready",
-          note: "Carry this beach directly into VI Guide Mobility.",
+          note: "Carry this beach directly into USVI Explorer Mobility.",
         },
         {
           label: "Access",

@@ -31,7 +31,7 @@ export const COMMUNITY_STORIES: readonly CommunityStory[] = [
     paragraphs: [
       "Start near the harbor and let the town reveal itself in layers. Main Street and the surrounding side streets carry much of the walkable downtown energy, while the historic steps make the change in elevation impossible to ignore.",
       "For a traveler, that means the best plan is usually a compact walking cluster rather than a long checklist. Pair the waterfront and downtown core first, then decide whether the climb toward the hillside viewpoints fits your heat, footwear, timing, and mobility needs.",
-      "VI Guide should help you understand that geography before it gives you more stops. Open the Living Map, keep the harbor as your orientation point, and use Concierge or Mobility when the hill becomes part of the plan rather than an afterthought.",
+      "USVI Explorer should help you understand that geography before it gives you more stops. Open the Living Map, keep the harbor as your orientation point, and use Concierge or Mobility when the hill becomes part of the plan rather than an afterthought.",
     ],
     image: "/images/usvi-harbor-hero.jpg",
     imageAlt: "Charlotte Amalie harbor and the hills of St. Thomas",
@@ -54,7 +54,7 @@ export const COMMUNITY_STORIES: readonly CommunityStory[] = [
     paragraphs: [
       "A St. John day often begins with a clock already running. The public ferry brings you into Cruz Bay, and the Virgin Islands National Park visitor center sits only a short walk from the ferry dock. That makes the town the natural place to get oriented before moving deeper into the island.",
       "Instead of treating Cruz Bay as something to rush through, use it as the control point for the day. Confirm your return-ferry margin, decide how you are moving toward the beaches or trails, and keep enough flexibility to return without turning the final hour into a race.",
-      "This is exactly where VI Guide can reduce friction: the map keeps the island context, My Trip holds the stops, and Concierge can work backward from the ferry you cannot afford to miss.",
+      "This is exactly where USVI Explorer can reduce friction: the map keeps the island context, My Trip holds the stops, and Concierge can work backward from the ferry you cannot afford to miss.",
     ],
     image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     imageAlt: "Green hills and turquoise water on St. John",

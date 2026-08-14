@@ -173,7 +173,7 @@ function buildRecommendations(
           item.island === context.island
             ? `Matches ${context.island.toUpperCase()}`
             : "",
-          item.featured ? "Featured in VI Guide" : "",
+          item.featured ? "Featured in USVI Explorer" : "",
           queryTokens.some((token) => itemText(item).includes(token))
             ? "Matches the request"
             : "",
@@ -219,7 +219,7 @@ function buildRecommendations(
         island: record.island ?? context.island,
         summary: record.summary,
         score: score + 3,
-        reasons: ["Matches VI Guide heritage knowledge"],
+        reasons: ["Matches USVI Explorer heritage knowledge"],
         ...(record.map ? { lat: record.map.lat, lng: record.map.lng } : {}),
         href: record.href,
         mapHref: record.map
@@ -390,14 +390,14 @@ export function runIntelligenceEngine(
   }
   if (!recommendations.length) {
     warnings.push(
-      "No strong reviewed match was found in the current VI Guide knowledge index.",
+      "No strong reviewed match was found in the current USVI Explorer knowledge index.",
     );
   }
 
   const answer = plan.length
     ? `I built a ${context.preferences.pace} ${context.island.toUpperCase()} plan with ${plan.length} connected stops, map handoffs, and transportation actions.`
     : recommendations.length
-      ? `I found ${recommendations.length} VI Guide recommendations that match the request and current context.`
+      ? `I found ${recommendations.length} USVI Explorer recommendations that match the request and current context.`
       : "I could not produce a reliable recommendation from the current knowledge index.";
 
   return {

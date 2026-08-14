@@ -4,9 +4,9 @@ import { CommerceSettlementBoard } from "@/components/admin/commerce-settlement-
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Marketplace Settlements | VI Guide",
+  title: "Marketplace Settlements | USVI Explorer",
   description:
-    "Release and reverse Stripe Connect merchant settlements with VI Guide financial controls.",
+    "Release and reverse Stripe Connect merchant settlements with USVI Explorer financial controls.",
 };
 
 export default async function CommerceSettlementsPage() {

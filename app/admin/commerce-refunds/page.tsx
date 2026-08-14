@@ -1,9 +1,9 @@
 import { CommerceRefundBoard } from "@/components/admin/commerce-refund-board";
 
 export const metadata = {
-  title: "Commerce Refunds | VI Guide",
+  title: "Commerce Refunds | USVI Explorer",
   description:
-    "Issue and reconcile full Stripe refunds for VI Guide commerce bookings.",
+    "Issue and reconcile full Stripe refunds for USVI Explorer commerce bookings.",
 };
 
 export default function CommerceRefundsPage() {

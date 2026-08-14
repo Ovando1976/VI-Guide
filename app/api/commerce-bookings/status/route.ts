@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       ),
       kind: String(data.kind ?? "experience"),
       listingId: String(data.listingId ?? "custom-request"),
-      listingName: String(data.listingName ?? "VI Guide booking"),
+      listingName: String(data.listingName ?? "USVI Explorer booking"),
       listingHref,
       island: String(data.island ?? "stt"),
       startDate: String(data.startDate ?? ""),

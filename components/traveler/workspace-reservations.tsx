@@ -60,7 +60,7 @@ export function WorkspaceReservations({ journey }: { journey: JourneyPlan }) {
           <div className="mt-5 rounded-2xl bg-[#f8f4ea] p-4">
             <p className="text-sm font-black">No reservation-required stops yet</p>
             <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">
-              Add a stay, tour, charter, restaurant, rental, or ticketed experience and VI Guide will surface its booking action here.
+              Add a stay, tour, charter, restaurant, rental, or ticketed experience and USVI Explorer will surface its booking action here.
             </p>
             <Link
               href={`/map?concierge=open&prompt=${encodeURIComponent(`Add one or two bookable experiences to my ${journey.title} itinerary on ${journey.island}. Keep the existing route and timing practical.`)}`}
@@ -112,7 +112,7 @@ function ReservationStop({
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-black">{stop.title}</p>
           <p className="mt-1 text-[9px] font-black uppercase tracking-[.13em] text-slate-400">
-            {bookingHref ? "Direct booking available" : "Request through VI Guide"}
+            {bookingHref ? "Direct booking available" : "Request through USVI Explorer"}
           </p>
         </div>
       </div>

@@ -20,7 +20,7 @@ export function HomeTravelerIntent() {
           <div>
             <div className="vi-eyebrow text-[#9b5d12]">Start with your situation</div>
             <h2 className="vi-display mt-3 text-4xl font-bold leading-[.94] sm:text-5xl">What kind of trip are you in right now?</h2>
-            <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">Skip the app menu. Tell USVI Compass where you are in the journey and we’ll hand that context directly to Concierge.</p>
+            <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">Skip the app menu. Tell USVI Explorer where you are in the journey and we’ll hand that context directly to Concierge.</p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {INTENTS.map(({ id, label, detail, href, icon: Icon, image, alt }) => (

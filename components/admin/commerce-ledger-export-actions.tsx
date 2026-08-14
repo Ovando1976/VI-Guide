@@ -81,7 +81,7 @@ export function CommerceLedgerExportActions() {
             <div>
               <p className="text-sm font-black">Ledger validation is unavailable</p>
               <p className="mt-1 text-xs font-semibold leading-5 text-amber-900/70">
-                {validationError} Export controls are disabled until VI Guide can
+                {validationError} Export controls are disabled until USVI Explorer can
                 verify the accounting records.
               </p>
             </div>

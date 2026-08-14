@@ -99,7 +99,7 @@ async function persistExecution(
 registerAction({
   id: "map.open",
   name: "Open Map",
-  description: "Open the VI Guide map focused on a selected island or place.",
+  description: "Open the USVI Explorer map focused on a selected island or place.",
   risk: "low",
   requiresConfirmation: false,
   async execute(input) {
@@ -121,7 +121,7 @@ registerAction({
   risk: "medium",
   requiresConfirmation: false,
   async execute(input) {
-    const title = stringPayload(input.payload, "title") ?? "My VI Guide Trip";
+    const title = stringPayload(input.payload, "title") ?? "My USVI Explorer Trip";
     if (!hasFirebaseAdminConfiguration()) {
       return {
         status: "failed",

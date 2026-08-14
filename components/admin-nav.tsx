@@ -32,7 +32,7 @@ export function AdminNav() {
           </span>
         </div>
         <span className="hidden text-[8px] font-black uppercase tracking-[0.18em] text-white/45 sm:inline">
-          VI Guide operator network
+          USVI Explorer operator network
         </span>
       </div>
 

@@ -1,9 +1,9 @@
 import { BookingLifecycleBoard } from "@/components/merchant/booking-lifecycle-board";
 
 export const metadata = {
-  title: "Booking Lifecycle | VI Guide",
+  title: "Booking Lifecycle | USVI Explorer",
   description:
-    "Manage deposits, payments, confirmations, and completed services for VI Guide bookings.",
+    "Manage deposits, payments, confirmations, and completed services for USVI Explorer bookings.",
 };
 
 export default function BookingLifecyclePage() {

@@ -37,7 +37,7 @@ export function BookingAwareJourneyPlanner() {
       }
     } catch {
       setHandoffError(
-        "VI Guide could not add this booking request automatically. Your planner is still available below.",
+        "USVI Explorer could not add this booking request automatically. Your planner is still available below.",
       );
     } finally {
       setReady(true);

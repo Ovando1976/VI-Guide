@@ -17,9 +17,9 @@ import { getSession } from "@/lib/auth-server";
 import { humanizeListingId } from "@/lib/merchant-portal";
 
 export const metadata = {
-  title: "Merchant Operations | VI Guide",
+  title: "Merchant Operations | USVI Explorer",
   description:
-    "Manage VI Guide offers, reservations, availability, cruise demand, payments, and assigned businesses.",
+    "Manage USVI Explorer offers, reservations, availability, cruise demand, payments, and assigned businesses.",
 };
 
 export default async function MerchantHomePage() {
@@ -82,7 +82,7 @@ export default async function MerchantHomePage() {
             <h2 className="text-xl font-black">No businesses are assigned yet</h2>
             <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-rose-800/75">
               Your merchant account is active, but it has no listing scope. An
-              administrator must assign at least one VI Guide listing before you
+              administrator must assign at least one USVI Explorer listing before you
               can publish offers, view reservations, or edit availability.
             </p>
           </section>
@@ -179,7 +179,7 @@ export default async function MerchantHomePage() {
               <div className="mt-6 rounded-[24px] border border-emerald-200 bg-emerald-50 p-5">
                 <p className="text-sm font-semibold leading-6 text-emerald-900/75">
                   Your staff role can review bookings, offers, and provider
-                  operations across all VI Guide listings. Merchant account
+                  operations across all USVI Explorer listings. Merchant account
                   assignments stay restricted to administrators.
                 </p>
               </div>

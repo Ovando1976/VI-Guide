@@ -151,7 +151,7 @@ export async function PATCH(
       }
 
       const reference = String(booking.reference ?? bookingId);
-      const listingName = String(booking.listingName ?? "VI Guide booking");
+      const listingName = String(booking.listingName ?? "USVI Explorer booking");
       const updatedAt = new Date().toISOString();
       const lifecycle = lifecycleCopy(status, listingName, depositAmountCents);
       const notificationEvent = bookingEventForStatus(status);

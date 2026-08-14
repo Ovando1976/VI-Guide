@@ -42,7 +42,7 @@ const MODULES = [
   },
   {
     title: "Territory search",
-    copy: "Search across the connected VI Guide place, travel, heritage, and geographic knowledge system.",
+    copy: "Search across the connected USVI Explorer place, travel, heritage, and geographic knowledge system.",
     href: "/search",
     icon: Search,
     label: "Search the territory",
@@ -52,7 +52,7 @@ const MODULES = [
     copy: "Turn island knowledge into practical recommendations, connected plans, bookings, and transportation.",
     href: "/concierge",
     icon: Sparkles,
-    label: "Ask VI Guide",
+    label: "Ask USVI Explorer",
   },
 ] as const;
 
@@ -96,7 +96,7 @@ export default function IntelligencePage() {
                 Understand the islands. Then act on what you know.
               </h1>
               <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-white/70 sm:text-base">
-                VI Guide connects geography, heritage, beaches, fishing, mobility, search, and concierge guidance into one practical territorial intelligence system.
+                USVI Explorer connects geography, heritage, beaches, fishing, mobility, search, and concierge guidance into one practical territorial intelligence system.
               </p>
             </div>
             <div className="rounded-[28px] border border-white/12 bg-white/[.08] p-5 backdrop-blur">

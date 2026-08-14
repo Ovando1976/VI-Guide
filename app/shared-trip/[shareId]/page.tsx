@@ -103,8 +103,8 @@ export default async function SharedTripPage({
                   <Sparkles size={14} />
                 )}
                 {isAdvisorProposal
-                  ? `VI Guide travel proposal · v${proposalVersion}`
-                  : "Shared VI Guide journey"}
+                  ? `USVI Explorer travel proposal · v${proposalVersion}`
+                  : "Shared USVI Explorer journey"}
               </div>
               <span className="rounded-full border border-white/15 bg-black/15 px-3 py-2 text-[9px] font-black uppercase tracking-[.14em] text-white/80 backdrop-blur">
                 Island context · {ISLANDS[plan.island]}
@@ -143,7 +143,7 @@ export default async function SharedTripPage({
                   <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#f5c451]" />
                   <div>
                     <p className="text-sm font-black">
-                      Prepared through the VI Guide Travel Advisor workflow
+                      Prepared through the USVI Explorer Travel Advisor workflow
                     </p>
                     <p className="mt-2 text-xs font-semibold leading-5 text-white/68">
                       This is a planning proposal for review, not a confirmation.
@@ -188,7 +188,7 @@ export default async function SharedTripPage({
                   Request the bookable parts when you are ready.
                 </h2>
                 <p className="mt-2 text-sm font-semibold leading-6 text-teal-950/70">
-                  Bookable stops below now connect directly into VI Guide&apos;s
+                  Bookable stops below now connect directly into USVI Explorer&apos;s
                   booking workflow. You review the dates and enter your contact
                   details before any request is created. A request does not
                   guarantee availability and does not create a charge.

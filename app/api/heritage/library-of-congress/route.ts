@@ -197,7 +197,7 @@ function isVirginIslandsCollectionItem(item: LocGalleryItem) {
 function editorialCorrection(title: string) {
   const normalized = title.toLowerCase();
   if (normalized.includes("old fort built by the french")) {
-    return "The original agency caption incorrectly described Fort Frederik as French. The fort was built under Danish colonial rule. VI Guide preserves the source title while displaying this correction.";
+    return "The original agency caption incorrectly described Fort Frederik as French. The fort was built under Danish colonial rule. USVI Explorer preserves the source title while displaying this correction.";
   }
   return undefined;
 }

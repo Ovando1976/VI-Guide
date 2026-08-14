@@ -214,7 +214,7 @@ export function AppNavigation() {
         <Link
           href="/"
           className="app-nav__brand"
-          aria-label="USVI Compass public home"
+          aria-label="USVI Explorer public home"
         >
           <ViBrandMark className="h-9 w-9 shrink-0" />
         </Link>
@@ -258,7 +258,7 @@ export function AppNavigation() {
       <Link
         href="/"
         className="app-nav__brand"
-        aria-label="USVI Compass home"
+        aria-label="USVI Explorer home"
       >
         <ViBrandMark className="h-9 w-9 shrink-0" />
       </Link>

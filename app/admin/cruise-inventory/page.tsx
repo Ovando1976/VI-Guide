@@ -20,7 +20,7 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Cruise Inventory Readiness | VI Guide",
+  title: "Cruise Inventory Readiness | USVI Explorer",
   description:
     "Track commercial credentials, provider integration, certification, and production readiness for live cruise inventory.",
 };
@@ -52,14 +52,14 @@ export default async function CruiseInventoryReadinessPage() {
     {
       title: "Agency and supplier credentials",
       description:
-        "Connect the host-agency or VI Guide supplier identifiers required by participating cruise lines.",
+        "Connect the host-agency or USVI Explorer supplier identifiers required by participating cruise lines.",
       complete: configured.has("Sandbox credentials configured"),
       icon: KeyRound,
     },
     {
       title: "Adapter and sandbox validation",
       description:
-        "Map supplier search, cabins, fares, quotes, holds, bookings, amendments, and cancellations into VI Guide contracts.",
+        "Map supplier search, cabins, fares, quotes, holds, bookings, amendments, and cancellations into USVI Explorer contracts.",
       complete: configured.has("Provider adapter explicitly enabled"),
       icon: DatabaseZap,
     },
@@ -76,7 +76,7 @@ export default async function CruiseInventoryReadinessPage() {
     <AdminShell
       eyebrow="Cruise Commerce"
       title="Live inventory readiness"
-      description="This control plane keeps VI Guide from presenting cached, synthetic, or unapproved cruise data as live supplier inventory."
+      description="This control plane keeps USVI Explorer from presenting cached, synthetic, or unapproved cruise data as live supplier inventory."
     >
       <section className="grid gap-4 lg:grid-cols-3">
         <StatusCard

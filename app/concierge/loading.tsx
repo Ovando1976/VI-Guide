@@ -11,7 +11,7 @@ export default function ConciergeLoading() {
           Opening Concierge Discovery
         </h1>
         <p className="mt-3 text-sm leading-6 text-slate-500">
-          Preparing the live VI Guide catalog and your saved trip picks.
+          Preparing the live USVI Explorer catalog and your saved trip picks.
         </p>
         <Loader2 className="mx-auto mt-6 animate-spin text-teal-700" aria-hidden="true" />
         <span className="sr-only">Loading Concierge Discovery</span>

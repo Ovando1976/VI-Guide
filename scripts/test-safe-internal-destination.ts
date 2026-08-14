@@ -5,7 +5,7 @@ import {
   safeInternalDestinationOrNull,
 } from "../lib/safe-internal-destination";
 
-const origin = "https://vi-guide.vercel.app";
+const origin = "https://usvi-explorer.com";
 
 assert.equal(safeInternalDestination(null, origin), "/");
 assert.equal(safeInternalDestination("", origin), "/");

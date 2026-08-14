@@ -92,7 +92,7 @@ export function buildDoorToDoorJourney(id: DoorToDoorPresetId): DoorToDoorJourne
       title: "Finish the journey",
       from: ferry.toLabel,
       to: preset.destination,
-      note: "Continue from the arrival terminal to your final destination with VI Guide Mobility.",
+      note: "Continue from the arrival terminal to your final destination with USVI Explorer Mobility.",
       actionHref: `/mobility?mode=ferry-transfer&pickupName=${encodeURIComponent(ferry.toLabel)}&destinationName=${encodeURIComponent(preset.destination)}`,
     });
   }

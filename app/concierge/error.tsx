@@ -22,7 +22,7 @@ export default function ConciergeError({
           Your trip picks are still safe.
         </h1>
         <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-slate-600">
-          VI Guide could not open the discovery workspace. Retry the page, or continue to the map while the service recovers.
+          USVI Explorer could not open the discovery workspace. Retry the page, or continue to the map while the service recovers.
         </p>
         <div className="mt-7 grid gap-3 sm:grid-cols-2">
           <button

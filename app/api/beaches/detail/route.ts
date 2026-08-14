@@ -253,7 +253,7 @@ function curatedBeachDetailResponse(id: string | undefined) {
       accessibility: {},
       source: "vi-guide-curated-fallback",
       liveData: false,
-      fallbackReason: "Google Places is not configured; serving curated VI Guide beach details.",
+      fallbackReason: "Google Places is not configured; serving curated USVI Explorer beach details.",
       verifiedAt: new Date().toISOString(),
     },
     { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } },

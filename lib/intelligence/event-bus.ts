@@ -85,7 +85,7 @@ async function persistEvent(
       { merge: true },
     );
   } catch (error) {
-    console.warn("VI Guide event persistence did not block execution.", error);
+    console.warn("USVI Explorer event persistence did not block execution.", error);
   }
 }
 

@@ -7,9 +7,9 @@ import { ShoreExcursionCapacityReadiness } from "@/components/merchant/shore-exc
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Shore Excursions | VI Guide Business Console",
+  title: "Shore Excursions | USVI Explorer Business Console",
   description:
-    "Configure cruise-port pickup, excursion duration, dated capacity, accessibility, and return-to-ship operating buffers for VI Guide offers.",
+    "Configure cruise-port pickup, excursion duration, dated capacity, accessibility, and return-to-ship operating buffers for USVI Explorer offers.",
 };
 
 export default async function MerchantShoreExcursionsPage() {
@@ -28,7 +28,7 @@ export default async function MerchantShoreExcursionsPage() {
                 Publishing the excursion is only step one.
               </h1>
               <p className="mt-2 text-sm font-semibold leading-6 text-slate-600">
-                VI Guide only shows <strong className="text-[#043331]">Capacity verified</strong> to cruise travelers when the linked business also publishes that port-call date, operating hours, and guest capacity. Keep the excursion profile and dated availability in sync so live ship matches can be sold with confidence.
+                USVI Explorer only shows <strong className="text-[#043331]">Capacity verified</strong> to cruise travelers when the linked business also publishes that port-call date, operating hours, and guest capacity. Keep the excursion profile and dated availability in sync so live ship matches can be sold with confidence.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 lg:justify-end">

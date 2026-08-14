@@ -6,9 +6,9 @@ import { PartnerPipelineBoard } from "@/components/admin/partner-pipeline-board"
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Partner Applications | VI Guide",
+  title: "Partner Applications | USVI Explorer",
   description:
-    "Review and approve U.S. Virgin Islands businesses applying for VI Guide merchant tools.",
+    "Review and approve U.S. Virgin Islands businesses applying for USVI Explorer merchant tools.",
 };
 
 export default async function PartnerApplicationsPage() {

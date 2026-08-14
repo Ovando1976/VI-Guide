@@ -29,10 +29,10 @@ async function testRequestParsing() {
     new Request("http://localhost/test", {
       method: "POST",
       headers: { "content-type": "application/json; charset=utf-8" },
-      body: JSON.stringify({ name: "VI Guide" }),
+      body: JSON.stringify({ name: "USVI Explorer" }),
     }),
   );
-  assert.deepEqual(valid, { ok: true, value: { name: "VI Guide" } });
+  assert.deepEqual(valid, { ok: true, value: { name: "USVI Explorer" } });
 
   const missingContentType = await parseJsonBody<{ enabled: boolean }>(
     new Request("http://localhost/test", {

@@ -101,7 +101,7 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
             Transportation between every stop.
           </h2>
           <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/66">
-            VI Guide calculates the driving sequence from saved map coordinates and keeps each ride handoff attached to the itinerary.
+            USVI Explorer calculates the driving sequence from saved map coordinates and keeps each ride handoff attached to the itinerary.
           </p>
         </div>
         {legs.length ? (
@@ -141,7 +141,7 @@ export function JourneyRouteSummary({ plan }: { plan: JourneyPlan }) {
             </span>
             <p className="vi-display mt-4 text-2xl font-bold">Add at least two mapped destinations</p>
             <p className="mx-auto mt-2 max-w-lg text-sm font-semibold leading-6 text-slate-500">
-              Stops added from VI Guide detail pages include coordinates automatically, so the movement line can calculate itself as your journey grows.
+              Stops added from USVI Explorer detail pages include coordinates automatically, so the movement line can calculate itself as your journey grows.
             </p>
             <Link
               href={buildJourneyMapHref(plan)}

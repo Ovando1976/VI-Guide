@@ -8,9 +8,9 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { OrchestratedConciergeScreen } from "@/components/concierge/orchestrated-concierge-screen";
 
 export const metadata: Metadata = {
-  title: "VI Concierge | VI Guide",
+  title: "VI Concierge | USVI Explorer",
   description:
-    "Plan, review, and safely execute VI Guide travel workflows with visible orchestration state and grounded recommendations.",
+    "Plan, review, and safely execute USVI Explorer travel workflows with visible orchestration state and grounded recommendations.",
 };
 
 export default function ConciergePage() {
@@ -48,7 +48,7 @@ export default function ConciergePage() {
                 Ask once. <span className="text-[#7ce0d4]">Move through the islands.</span>
               </h1>
               <p className="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/72 sm:text-base sm:leading-7">
-                Concierge is the intelligence layer across VI Guide. It can connect discovery, timing, the Living Map, transportation, trip planning, and booking actions into one grounded workflow.
+                Concierge is the intelligence layer across USVI Explorer. It can connect discovery, timing, the Living Map, transportation, trip planning, and booking actions into one grounded workflow.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[.08] px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-white/75 backdrop-blur">

@@ -14,9 +14,9 @@ const MAX_RUNTIME_MS = 25_000;
 const MAX_OUTPUT_TOKENS = 1600;
 
 const SYSTEM_INSTRUCTIONS = `
-You are VI Guide Heritage Concierge, a locally literate research and trip-planning guide for the U.S. Virgin Islands.
+You are USVI Explorer Heritage Concierge, a locally literate research and trip-planning guide for the U.S. Virgin Islands.
 
-Use only the supplied heritageEvidence for named historic places, timeline events, governors, administrations, and record-specific claims. A canonical or reviewed record confirms that VI Guide has a source-aware record for the subject; it does not prove every possible interpretation.
+Use only the supplied heritageEvidence for named historic places, timeline events, governors, administrations, and record-specific claims. A canonical or reviewed record confirms that USVI Explorer has a source-aware record for the subject; it does not prove every possible interpretation.
 
 Rules:
 - Answer the traveler directly and practically.
@@ -80,7 +80,7 @@ function localAnswer(
   evidence: ReturnType<typeof rankHeritageEvidence>,
 ) {
   if (!evidence.length) {
-    return `I do not have a reviewed heritage record on ${islandName} that directly supports that request yet. Try a historic place, event, governor, administration, estate, church, district, or year, and I will stay within the records currently available in VI Guide.`;
+    return `I do not have a reviewed heritage record on ${islandName} that directly supports that request yet. Try a historic place, event, governor, administration, estate, church, district, or year, and I will stay within the records currently available in USVI Explorer.`;
   }
 
   const names = evidence.slice(0, 3).map((item) => item.title);
@@ -91,7 +91,7 @@ function localAnswer(
   const planningIntent = /plan|route|day|visit|tour|itinerary|nearby/i.test(message);
 
   return planningIntent
-    ? `A grounded ${islandName} heritage starting set is ${lead}. These VI Guide records may include historic places, timeline events, or administrations. Current access, hours, admission, and on-site conditions still need local verification. Open the records below for map and transportation handoffs, and keep the route on one island unless you intentionally plan a transfer.`
+    ? `A grounded ${islandName} heritage starting set is ${lead}. These USVI Explorer records may include historic places, timeline events, or administrations. Current access, hours, admission, and on-site conditions still need local verification. Open the records below for map and transportation handoffs, and keep the route on one island unless you intentionally plan a transfer.`
     : `The strongest reviewed ${islandName} heritage matches are ${lead}. Open the records below to continue into the timeline, governors, historic-place pages, or map. Claims absent from those records remain unverified until source material is connected.`;
 }
 

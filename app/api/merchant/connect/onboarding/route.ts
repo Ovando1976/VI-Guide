@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
     if (!session.listingIds?.length) {
       return NextResponse.json(
-        { error: "A VI Guide listing must be assigned before payout setup." },
+        { error: "A USVI Explorer listing must be assigned before payout setup." },
         { status: 409 },
       );
     }

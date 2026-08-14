@@ -117,7 +117,7 @@ export function OrchestratedConciergeScreen() {
       setError(
         requestError instanceof Error
           ? requestError.message
-          : "VI Guide Concierge could not complete this request.",
+          : "USVI Explorer Concierge could not complete this request.",
       );
     } finally {
       setLoading(false);
@@ -195,7 +195,7 @@ export function OrchestratedConciergeScreen() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[.22em] text-cyan-200/65">
-                <Sparkles size={14} /> VI Guide Agent Workflow
+                <Sparkles size={14} /> USVI Explorer Agent Workflow
               </div>
               <h1 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
                 Plan, review, and execute from one conversation.
@@ -216,7 +216,7 @@ export function OrchestratedConciergeScreen() {
           <div className="rounded-[28px] border border-white/10 bg-white/[.035] p-4 shadow-2xl shadow-black/20 sm:p-6">
             <div className="flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-300 text-[#05242c]"><Bot size={21} /></span>
-              <div><h2 className="font-black">Smart Concierge</h2><p className="text-xs text-white/45">Grounded in VI Guide data</p></div>
+              <div><h2 className="font-black">Smart Concierge</h2><p className="text-xs text-white/45">Grounded in USVI Explorer data</p></div>
             </div>
 
             <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
@@ -306,7 +306,7 @@ export function OrchestratedConciergeScreen() {
             {error ? <div className="mt-4 rounded-2xl border border-rose-300/20 bg-rose-300/[.06] p-4 text-sm text-rose-100">{error}</div> : null}
 
             <form onSubmit={submit} className="mt-6 flex items-end gap-2 border-t border-white/10 pt-5">
-              <textarea value={draft} onChange={(event) => setDraft(event.target.value)} rows={2} maxLength={3000} placeholder="Ask VI Guide to plan, search, arrange a ride, or prepare a booking…" className="min-h-14 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[.045] px-4 py-3 text-sm text-white outline-none placeholder:text-white/28 focus:border-cyan-300/35" />
+              <textarea value={draft} onChange={(event) => setDraft(event.target.value)} rows={2} maxLength={3000} placeholder="Ask USVI Explorer to plan, search, arrange a ride, or prepare a booking…" className="min-h-14 flex-1 resize-none rounded-2xl border border-white/10 bg-white/[.045] px-4 py-3 text-sm text-white outline-none placeholder:text-white/28 focus:border-cyan-300/35" />
               <button type="submit" disabled={!draft.trim() || loading} className="grid h-14 w-14 place-items-center rounded-2xl bg-cyan-300 text-[#05242c] disabled:opacity-35" aria-label="Send request">{loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}</button>
             </form>
           </div>

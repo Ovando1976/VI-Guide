@@ -166,13 +166,13 @@ export function ShoreExcursionBookingForm({
         </p>
         <h2 className="mt-2 text-3xl font-black tracking-[-.045em]">
           {success.duplicate
-            ? "VI Guide found your existing shore excursion request."
+            ? "USVI Explorer found your existing shore excursion request."
             : "Your shore excursion request is in the operator queue."}
         </h2>
         <p className="mt-4 text-sm font-semibold leading-7 text-emerald-950/70">
           Reference <strong>{success.reference}</strong>. The request captured your
           ship, port, all-aboard time, and the excursion&apos;s required return buffer.
-          When provider capacity is published, VI Guide rechecks it at submission;
+          When provider capacity is published, USVI Explorer rechecks it at submission;
           the operator still confirms final pickup and fulfillment details.
         </p>
         <a
@@ -194,7 +194,7 @@ export function ShoreExcursionBookingForm({
         Check the return window before requesting {offerTitle}
       </h2>
       <p className="mt-3 text-sm font-semibold leading-6 text-slate-500">
-        VI Guide will reject a start time that cannot preserve the operator&apos;s{" "}
+        USVI Explorer will reject a start time that cannot preserve the operator&apos;s{" "}
         {minReturnBufferMinutes}-minute minimum return-to-ship buffer.
       </p>
 

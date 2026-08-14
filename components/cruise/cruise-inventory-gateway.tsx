@@ -146,7 +146,7 @@ export function CruiseInventoryGateway() {
               Search, cabin pricing, and booking are being connected as one governed system.
             </h2>
             <p className="mt-3 text-sm font-semibold leading-7 text-slate-600">
-              VI Guide now has a provider-neutral inventory contract. Real cruise
+              USVI Explorer now has a provider-neutral inventory contract. Real cruise
               results will only be labeled live after the selected supplier,
               agency credentials, payment responsibilities, and production
               certification are approved.
@@ -293,7 +293,7 @@ export function CruiseInventoryGateway() {
             </p>
             <p className="mt-2 text-sm font-semibold leading-6 text-slate-500">
               {status?.nextAction ||
-                "The supplier connection is being prepared. Cruise prices shown elsewhere in VI Guide must not be treated as live inventory."}
+                "The supplier connection is being prepared. Cruise prices shown elsewhere in USVI Explorer must not be treated as live inventory."}
             </p>
           </div>
         )}

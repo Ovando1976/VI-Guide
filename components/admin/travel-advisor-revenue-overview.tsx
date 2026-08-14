@@ -212,7 +212,7 @@ export function TravelAdvisorRevenueOverview() {
                 </p>
                 <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">
                   Leads, sent proposals, booking requests, payments, confirmations,
-                  and recorded revenue are all measured from server-verified VI Guide
+                  and recorded revenue are all measured from server-verified USVI Explorer
                   records.
                 </p>
               </div>

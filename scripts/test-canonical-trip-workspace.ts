@@ -19,7 +19,7 @@ assert.match(legacyWorkspace, /redirect\("\/trips"\)/);
 assert.doesNotMatch(legacyWorkspace, /ReservationEnabledWorkspace/);
 assert.doesNotMatch(legacyWorkspace, /Traveler Workspace/);
 
-assert.match(tripsPage, /title: "My Trip \| VI Guide"/);
+assert.match(tripsPage, /title: "My Trip \| USVI Explorer"/);
 assert.match(tripsPage, /TravelerTripCommandCenter/);
 assert.match(tripsPage, /TravelerTripReadinessPanel/);
 assert.match(tripsPage, /RiderLiveDriverMap/);
@@ -43,4 +43,4 @@ assert.match(riderTripHistory, /Pickup map/);
 assert.match(bookingReadRoute, /rideIdentity/);
 assert.match(bookingReadRoute, /booking\.riderId === session\.uid/);
 
-console.log("VI Guide canonical My Trip workspace contracts passed.");
+console.log("USVI Explorer canonical My Trip workspace contracts passed.");

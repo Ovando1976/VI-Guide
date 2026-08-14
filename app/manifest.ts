@@ -2,21 +2,21 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "USVI Compass — U.S. Virgin Islands",
-    short_name: "USVI Compass",
+    name: "USVI Explorer — Your Virgin Islands Travel Companion",
+    short_name: "USVI Explorer",
     description:
-      "Explore beaches, places, stays, heritage, transportation, and island plans across the U.S. Virgin Islands.",
+      "Discover, plan and move through St. Thomas, St. John and St. Croix with local context connected to every step.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f3f7f5",
-    theme_color: "#062b35",
+    background_color: "#f7f1e6",
+    theme_color: "#062b3a",
     orientation: "portrait-primary",
     categories: ["travel", "navigation", "lifestyle"],
     shortcuts: [
       {
         name: "Ask Concierge",
         short_name: "Concierge",
-        description: "Search the live USVI Compass catalog and plan an island day.",
+        description: "Search the live USVI Explorer catalog and plan an island day.",
         url: "/concierge",
       },
       {

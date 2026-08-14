@@ -4,9 +4,9 @@ import { TravelProposalBoard } from "@/components/admin/travel-proposal-board";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Travel Advisor Proposals | VI Guide",
+  title: "Travel Advisor Proposals | USVI Explorer",
   description:
-    "Publish and send privacy-safe VI Guide itinerary proposals from the travel advisor workflow.",
+    "Publish and send privacy-safe USVI Explorer itinerary proposals from the travel advisor workflow.",
 };
 
 export default async function TravelProposalsPage() {

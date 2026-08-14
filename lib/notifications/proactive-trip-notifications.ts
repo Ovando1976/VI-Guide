@@ -305,7 +305,7 @@ async function evaluateAndPersistTripNotification(
           event: shouldNotifyRecovery ? "trip_risk_recovered" : "trip_risk_changed",
           audience: "traveler",
           listingId: "trip-intelligence",
-          listingName: "VI Guide Trip Protection",
+          listingName: "USVI Explorer Trip Protection",
           recipientEmail: input.ownerEmail,
           recipientUid: input.ownerId,
           title: content.title,
@@ -388,7 +388,7 @@ function buildRiskContent(
 function buildRecoveryContent(tripTitle: string) {
   return {
     title: "Trip protection check improved",
-    message: `${tripTitle} no longer has the high-priority risks from the previous VI Guide check. Review the current plan before departure.`,
+    message: `${tripTitle} no longer has the high-priority risks from the previous USVI Explorer check. Review the current plan before departure.`,
   };
 }
 

@@ -60,7 +60,7 @@ export function TravelerMemorySync() {
         await writeProfile(authenticatedUser, merged);
       } catch (error) {
         applyingRemote.current = false;
-        console.warn("VI Guide traveler memory sync is unavailable.", error);
+        console.warn("USVI Explorer traveler memory sync is unavailable.", error);
       }
     }
 
@@ -79,7 +79,7 @@ export function TravelerMemorySync() {
       if (timer.current) clearTimeout(timer.current);
       timer.current = setTimeout(() => {
         void writeProfile(authenticatedUser, getIntelligenceMemory()).catch((error) => {
-          console.warn("VI Guide could not save traveler memory.", error);
+          console.warn("USVI Explorer could not save traveler memory.", error);
         });
       }, 800);
     }

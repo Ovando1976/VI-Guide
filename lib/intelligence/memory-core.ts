@@ -211,7 +211,7 @@ export async function loadMemorySnapshot(
       version: MEMORY_VERSION,
     };
   } catch (error) {
-    console.warn("VI Guide memory hydration fell back to request context.", error);
+    console.warn("USVI Explorer memory hydration fell back to request context.", error);
     return fallback;
   }
 }
@@ -325,6 +325,6 @@ export async function persistMemoryResult(
 
     await batch.commit();
   } catch (error) {
-    console.warn("VI Guide memory persistence did not block the response.", error);
+    console.warn("USVI Explorer memory persistence did not block the response.", error);
   }
 }

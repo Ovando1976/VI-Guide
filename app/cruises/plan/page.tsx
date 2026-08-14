@@ -6,9 +6,9 @@ import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruisePlanningForm } from "@/components/cruise/cruise-planning-form";
 
 export const metadata: Metadata = {
-  title: "Cruise Advisor | VI Guide",
+  title: "Cruise Advisor | USVI Explorer",
   description:
-    "Send VI Guide one structured cruise planning brief for sailing research, cabin guidance, budget planning, and Caribbean port-day recommendations.",
+    "Send USVI Explorer one structured cruise planning brief for sailing research, cabin guidance, budget planning, and Caribbean port-day recommendations.",
 };
 
 export default function CruiseAdvisorPage() {

@@ -18,41 +18,47 @@ export function ViBrandMark({
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="vi-guide-mark-sea" x1="9" y1="6" x2="62" y2="68" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#16B8AE" />
-            <stop offset="0.58" stopColor="#08746E" />
-            <stop offset="1" stopColor="#043331" />
+          <linearGradient id="usvi-explorer-mark-sea" x1="8" y1="5" x2="64" y2="68" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1597A7" />
+            <stop offset="0.52" stopColor="#0E7490" />
+            <stop offset="1" stopColor="#062B3A" />
           </linearGradient>
-          <linearGradient id="vi-guide-mark-sun" x1="45" y1="9" x2="56" y2="28" gradientUnits="userSpaceOnUse">
+          <linearGradient id="usvi-explorer-mark-sun" x1="45" y1="8" x2="59" y2="27" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FFE99D" />
             <stop offset="1" stopColor="#F5C451" />
           </linearGradient>
-          <filter id="vi-guide-mark-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <filter id="usvi-explorer-mark-shadow" x="-20%" y="-20%" width="140%" height="140%">
             <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#021F1D" floodOpacity="0.22" />
           </filter>
         </defs>
-        <rect width="72" height="72" rx="22" fill="url(#vi-guide-mark-sea)" />
-        <circle cx="52.5" cy="18.5" r="8.5" fill="url(#vi-guide-mark-sun)" />
+        <rect width="72" height="72" rx="22" fill="url(#usvi-explorer-mark-sea)" />
+        <circle cx="53" cy="18" r="8.5" fill="url(#usvi-explorer-mark-sun)" />
+        <circle cx="34" cy="34" r="19" fill="none" stroke="#C5FBF5" strokeWidth="1.5" opacity="0.34" />
         <path
-          d="M9 51.5c8.6-6.2 17.4-6.2 26 0s17.4 6.2 28 0"
-          stroke="#A8F0E8"
-          strokeWidth="4.4"
+          d="M9 54c8.6-5.2 17.4-5.2 26 0s17.4 5.2 28 0"
+          stroke="#99F6E4"
+          strokeWidth="3.8"
           strokeLinecap="round"
           fill="none"
-          opacity="0.96"
+          opacity="0.92"
         />
         <path
-          d="M11 59c8-4.7 16-4.7 24 0s16 4.7 26 0"
+          d="M11 61c8-4 16-4 24 0s16 4 26 0"
           stroke="#FFFFFF"
-          strokeWidth="2.8"
+          strokeWidth="2.4"
           strokeLinecap="round"
           fill="none"
-          opacity="0.88"
+          opacity="0.78"
         />
-        <g filter="url(#vi-guide-mark-shadow)">
-          <path d="M15 21h7.6l6.7 18.4L36 21h7.4L32.7 47h-7.1L15 21Z" fill="#FFFFFF" />
-          <path d="M43.3 31.2h6.9V47h-6.9V31.2Z" fill="#FFFFFF" />
-          <circle cx="46.75" cy="25" r="3.55" fill="#FFFFFF" />
+        <g filter="url(#usvi-explorer-mark-shadow)">
+          <path d="M34 12.8 42.2 34 34 49.8 25.8 34 34 12.8Z" fill="#FFFFFF" />
+          <path d="M34 12.8 42.2 34 34 31.6Z" fill="#F5C451" />
+          <circle cx="34" cy="34" r="3.2" fill="#062B3A" />
+        </g>
+        <g fill="#F5C451">
+          <circle cx="21" cy="47.2" r="1.8" />
+          <circle cx="27.5" cy="45.6" r="1.35" />
+          <circle cx="47" cy="47.5" r="1.6" />
         </g>
       </svg>
     </span>

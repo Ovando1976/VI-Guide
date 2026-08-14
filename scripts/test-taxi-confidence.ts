@@ -25,4 +25,4 @@ expectSource(panel, 'id="trip-review"', "mobile review action has a stable scrol
 expectSource(bookingRoute, "cleanInstructions", "location instructions are normalized server-side");
 expectSource(bookingRoute, "pickupInstructions ? { notes: pickupInstructions }", "pickup instructions reach dispatch records");
 
-console.log("VI Guide taxi confidence contracts passed.");
+console.log("USVI Explorer taxi confidence contracts passed.");

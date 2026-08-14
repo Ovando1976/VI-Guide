@@ -26,7 +26,7 @@ import { shoreExcursionPort } from "@/lib/shore-excursions";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Shore Excursions | VI Guide Cruise Hub",
+  title: "Shore Excursions | USVI Explorer Cruise Hub",
   description:
     "Book U.S. Virgin Islands shore excursions designed around official cruise port calls, operator capacity, all-aboard times, and conservative return-to-ship buffers.",
 };
@@ -72,7 +72,7 @@ export default async function ShoreExcursionsPage({
                 Explore the Virgin Islands without gambling with the ship clock.
               </h1>
               <p className="mt-6 max-w-3xl text-sm font-semibold leading-7 text-white/70 sm:text-base">
-                When VI Guide can resolve your ship to an official VIPA or WICO port
+                When USVI Explorer can resolve your ship to an official VIPA or WICO port
                 call, it filters the local-experience layer by terminal, operating
                 hours, published daily capacity, current booking demand, and a
                 conservative return-to-ship window.
@@ -108,7 +108,7 @@ export default async function ShoreExcursionsPage({
                   </h2>
                   <p className="mt-2 text-sm font-semibold leading-6 text-teal-950/65">
                     {allAboard
-                      ? `VI Guide is carrying a planning all-aboard time of ${allAboard} into the excursion check. This sailing did not resolve to the currently loaded official port-call window, so verify the ship's actual port schedule and onboard announcement.`
+                      ? `USVI Explorer is carrying a planning all-aboard time of ${allAboard} into the excursion check. This sailing did not resolve to the currently loaded official port-call window, so verify the ship's actual port schedule and onboard announcement.`
                       : "The sailing is connected to this port day, but it did not resolve to the currently loaded official port-call window. Confirm the terminal and actual all-aboard time before booking time-sensitive activities."}
                   </p>
                 </div>
@@ -129,7 +129,7 @@ export default async function ShoreExcursionsPage({
                 This official port call is marked cancelled.
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-rose-950/70">
-                VI Guide will not label any excursion available against a cancelled
+                USVI Explorer will not label any excursion available against a cancelled
                 call. Recheck your cruise line&apos;s itinerary or ask the advisor to
                 rebuild the affected day.
               </p>
@@ -155,7 +155,7 @@ export default async function ShoreExcursionsPage({
                     No capacity-verified excursion fits this ship window yet.
                   </h2>
                   <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-slate-600">
-                    VI Guide will only use the green availability label when the
+                    USVI Explorer will only use the green availability label when the
                     operator has published this date, is open during the feasible
                     window, and enough capacity remains after active requests.
                   </p>
@@ -286,7 +286,7 @@ function OfficialPortCallContext({
           </div>
           <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-slate-600">
             Scheduled departure is not the ship&apos;s authoritative all-aboard time.
-            VI Guide uses a 30-minute-earlier planning proxy and then applies each
+            USVI Explorer uses a 30-minute-earlier planning proxy and then applies each
             operator&apos;s additional return buffer.
           </p>
         </div>

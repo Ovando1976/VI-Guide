@@ -185,7 +185,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
                   Source transparency
                 </div>
                 <p className="mt-5 text-sm font-semibold leading-6 text-slate-600">
-                  Verified using {item.sourceLabel}. VI Guide distinguishes catalog
+                  Verified using {item.sourceLabel}. USVI Explorer distinguishes catalog
                   verification from live room availability, rates, and reservation
                   confirmation.
                 </p>

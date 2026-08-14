@@ -129,7 +129,7 @@ function normalizeStoredNotification(
     ...(typeof data.recipientUid === "string" ? { recipientUid: data.recipientUid } : {}),
     kind: isKind(data.kind) ? data.kind : "operations",
     priority: isPriority(data.priority) ? data.priority : "normal",
-    title: String(data.title ?? "VI Guide update"),
+    title: String(data.title ?? "USVI Explorer update"),
     message: String(data.message ?? "A new update is available."),
     ...(data.href ? { href: String(data.href) } : {}),
     ...(data.reference ? { reference: String(data.reference) } : {}),

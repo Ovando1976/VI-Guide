@@ -108,7 +108,7 @@ export function CruisePlanningForm() {
             Cruise request received
           </p>
           <h1 className="mt-3 text-4xl font-black tracking-[-.05em] sm:text-5xl">
-            Your VI Guide advisor can take it from here.
+            Your USVI Explorer advisor can take it from here.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-semibold leading-7 text-slate-600">
             {result.duplicate
@@ -128,7 +128,7 @@ export function CruisePlanningForm() {
               href="/"
               className="inline-flex min-h-12 items-center rounded-full bg-[#043331] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white"
             >
-              Return to VI Guide
+              Return to USVI Explorer
             </Link>
             <button
               type="button"
@@ -150,13 +150,13 @@ export function CruisePlanningForm() {
           <div className="grid gap-10 lg:grid-cols-[1.14fr_.86fr] lg:items-end">
             <div>
               <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-                VI Guide Cruises
+                USVI Explorer Cruises
               </p>
               <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[.92] tracking-[-.06em] sm:text-7xl">
                 Start with your dream. We build the sailing.
               </h1>
               <p className="mt-6 max-w-2xl text-base font-semibold leading-8 text-white/70">
-                Share your dates, budget, cabin style, and interests. A VI Guide
+                Share your dates, budget, cabin style, and interests. A USVI Explorer
                 advisor can turn them into researched cruise options and connect
                 the voyage with practical Caribbean port plans.
               </p>
@@ -175,7 +175,7 @@ export function CruisePlanningForm() {
               <HeroBenefit
                 icon={Sparkles}
                 title="Local port intelligence"
-                text="Connect the cruise with VI Guide transportation and shore experiences when available."
+                text="Connect the cruise with USVI Explorer transportation and shore experiences when available."
               />
             </div>
           </div>
@@ -203,7 +203,7 @@ export function CruisePlanningForm() {
               <p className="mt-2 text-sm font-semibold leading-6 text-amber-950/65">
                 This first release captures qualified planning requests. It does
                 not claim live cruise inventory or collect cruise-line fares
-                inside VI Guide.
+                inside USVI Explorer.
               </p>
             </div>
           </aside>
@@ -340,7 +340,7 @@ export function CruisePlanningForm() {
             <label className="mt-8 flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-semibold leading-6 text-slate-600">
               <input name="consent" type="checkbox" required className="mt-1 h-4 w-4 shrink-0 accent-teal-700" />
               <span>
-                I agree that VI Guide may contact me about cruise planning and
+                I agree that USVI Explorer may contact me about cruise planning and
                 related travel services. This request is not a cruise reservation
                 and does not guarantee price or availability. See the{" "}
                 <Link href="/privacy" className="font-black text-teal-700 underline">privacy policy</Link>{" "}

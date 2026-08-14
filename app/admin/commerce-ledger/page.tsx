@@ -5,7 +5,7 @@ import { CommerceLedgerExportActions } from "@/components/admin/commerce-ledger-
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Commerce Accounting | VI Guide",
+  title: "Commerce Accounting | USVI Explorer",
   description:
     "Review Stripe-verified captures, refund reversals, platform fee reserves, and merchant settlement obligations.",
 };

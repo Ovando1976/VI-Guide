@@ -20,7 +20,7 @@ const validInput: CommerceSandboxEnvironmentInput = {
   expectedFirebaseProjectId: "vi-guide-commerce-sandbox",
   productionFirebaseProjectId: "vi-guide-production",
   appUrl: "https://vi-guide-commerce-sandbox.example.test",
-  productionAppUrl: "https://vi-guide.vercel.app",
+  productionAppUrl: "https://usvi-explorer.com",
   platformFeeBps: "1000",
 };
 
@@ -97,8 +97,8 @@ assertBlocked(
   "must not match",
 );
 assertBlocked(
-  { ...validInput, appUrl: "https://vi-guide.vercel.app" },
-  "production VI Guide hostname",
+  { ...validInput, appUrl: "https://usvi-explorer.com" },
+  "production USVI Explorer hostname",
 );
 assertBlocked(
   { ...validInput, appUrl: "https://preview.example.com" },

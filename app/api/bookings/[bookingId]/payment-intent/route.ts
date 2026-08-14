@@ -228,7 +228,7 @@ export async function POST(_request: NextRequest, context: Context) {
           amount,
           currency: "usd",
           automatic_payment_methods: { enabled: true },
-          description: `VI Guide taxi booking ${bookingId}`,
+          description: `USVI Explorer taxi booking ${bookingId}`,
           metadata: {
             bookingId,
             riderId: booking.riderId,

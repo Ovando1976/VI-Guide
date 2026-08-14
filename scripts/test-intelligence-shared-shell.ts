@@ -24,7 +24,7 @@ function expectSource(source: string, value: string, label: string) {
 }
 
 for (const [value, label] of [
-  ["ViPublicHeader", "Intelligence family uses shared VI Guide public chrome"],
+  ["ViPublicHeader", "Intelligence family uses shared USVI Explorer public chrome"],
   ['actionHref="/map"', "shared header keeps Living Map handoff"],
   ['actionLabel="Open Living Map"', "shared header labels the Living Map action"],
   ['secondaryHref="/concierge?prompt=', "shared header keeps VI Concierge handoff"],
@@ -48,4 +48,4 @@ for (const [source, value, label] of [
   expectSource(source, value, label);
 }
 
-console.log("VI Guide Intelligence shared-shell contracts passed.");
+console.log("USVI Explorer Intelligence shared-shell contracts passed.");
