@@ -1,11 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
   ArrowRight,
   Camera,
+  Clock3,
+  ExternalLink,
   Landmark,
   MapPin,
+  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 
@@ -76,14 +80,10 @@ export default function HistoricDetailPage({
         </Link>
       }
       hero={
-        <div
-          className="h-full min-h-[340px] bg-[#043331] bg-cover bg-center transition duration-500 group-hover:scale-[1.025] sm:min-h-[440px] lg:min-h-[540px]"
-          style={{
-            backgroundImage: `linear-gradient(180deg,rgba(4,51,49,.05),rgba(4,51,49,.42)),url('${site.heroImage}')`,
-          }}
-          role="img"
-          aria-label={site.name}
-        />
+        <div className="relative h-full min-h-[340px] overflow-hidden bg-[#043331] sm:min-h-[440px] lg:min-h-[540px]">
+          <Image src={site.heroImage} alt={site.name} fill priority sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover transition duration-500 group-hover:scale-[1.025]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,51,49,.05),rgba(4,51,49,.42))]" />
+        </div>
       }
       meta={
         <div className="flex flex-wrap gap-2">
@@ -134,22 +134,21 @@ export default function HistoricDetailPage({
         </section>
       }
       aside={
-        <section className="rounded-[30px] bg-[#e8f5f2] p-7">
-          <Sparkles className="h-6 w-6 text-teal-700" />
-          <h2 className="mt-4 text-2xl font-black tracking-[-.03em]">
-            Build a heritage route
-          </h2>
-          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
-            Combine this stop with nearby landmarks, food, transportation, and
-            realistic timing without leaving USVI Explorer.
-          </p>
-          <Link
-            href={conciergeHref}
-            className="mt-6 inline-flex rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] text-white"
-          >
-            Ask concierge
-          </Link>
-        </section>
+        <>
+          <section className="rounded-[30px] bg-[#e8f5f2] p-7">
+            <Sparkles className="h-6 w-6 text-teal-700" />
+            <h2 className="mt-4 text-2xl font-black tracking-[-.03em]">Build a heritage route</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">Combine this stop with nearby landmarks, food, transportation, and realistic timing without leaving USVI Explorer.</p>
+            <Link href={conciergeHref} className="mt-6 inline-flex rounded-full bg-[#043331] px-5 py-3 text-[10px] font-black uppercase tracking-[.18em] text-white">Ask concierge</Link>
+          </section>
+          <section className="rounded-[30px] border border-[#d7e4e0] bg-white p-7 shadow-sm">
+            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.18em] text-[#0f766e]"><ShieldCheck className="h-4 w-4" /> Historic evidence</div>
+            <h2 className="mt-3 text-2xl font-black tracking-[-.03em]">Inspect the record behind the story.</h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">{site.sourceLabel ?? "USVI Explorer links public historic records when they are available and separates representative coordinates from verified points."}</p>
+            {site.verifiedAt ? <div className="mt-4 flex items-center gap-2 text-xs font-bold text-slate-500"><Clock3 className="h-4 w-4 text-[#0f766e]" /> Reviewed {formatReviewDate(site.verifiedAt)}</div> : null}
+            {site.sourceUrl ? <a href={site.sourceUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#b8dcd6] bg-[#eaf8f5] px-5 py-3 text-[10px] font-black uppercase tracking-[.15em] text-[#0f766e] transition hover:border-[#0f766e]">Open public source <ExternalLink className="h-4 w-4" /></a> : null}
+          </section>
+        </>
       }
       below={
         <>
@@ -168,13 +167,9 @@ export default function HistoricDetailPage({
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {gallery.map((image) => (
-                  <div
-                    key={image}
-                    className="aspect-[4/3] rounded-[22px] bg-slate-100 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${image}')` }}
-                    role="img"
-                    aria-label={`${site.name} gallery view`}
-                  />
+                  <div key={image} className="relative aspect-[4/3] overflow-hidden rounded-[22px] bg-slate-100">
+                    <Image src={image} alt={`${site.name} gallery view`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
+                  </div>
                 ))}
               </div>
             </section>
@@ -205,12 +200,9 @@ export default function HistoricDetailPage({
                     href={`/historic/${item.slug}`}
                     className="group overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div
-                      className="h-40 bg-[#043331] bg-cover bg-center transition duration-500 group-hover:scale-[1.025]"
-                      style={{ backgroundImage: `url('${item.heroImage}')` }}
-                      role="img"
-                      aria-label={item.name}
-                    />
+                    <div className="relative h-40 overflow-hidden bg-[#043331]">
+                      <Image src={item.heroImage} alt={item.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-500 group-hover:scale-[1.025]" />
+                    </div>
                     <div className="relative bg-white p-5">
                       <p className="text-[9px] font-black uppercase tracking-[.17em] text-amber-700">
                         {item.category}
@@ -240,4 +232,15 @@ function HeroPill({ label, icon = false }: { label: string; icon?: boolean }) {
       {label}
     </span>
   );
+}
+
+function formatReviewDate(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
 }
