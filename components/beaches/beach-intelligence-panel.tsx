@@ -94,9 +94,6 @@ const ISLANDS: IslandProfile[] = [
   },
 ];
 
-function feet(meters: number) {
-  return meters * 3.28084;
-}
 
 function regionalLabel(conditions: LiveConditions) {
   if (conditions.waveFeet <= 2.5 && conditions.windMph <= 15) {
@@ -183,7 +180,6 @@ export function BeachIntelligencePanel() {
       ? island.shelteredChoice
       : island.calmChoice;
   const destination = encodeURIComponent(recommendation.name);
-  const islandName = encodeURIComponent(island.name);
 
   return (
     <section className="overflow-hidden rounded-[34px] border border-[#cfe0dc] bg-[#fffdf8] shadow-[0_24px_70px_rgba(4,51,49,.12)]">
