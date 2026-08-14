@@ -12,6 +12,20 @@ export type DirectoryRecord = {
   tags: readonly string[];
   featured: boolean;
   bestFor: readonly string[];
+  address?: string;
+  phone?: string;
+  website?: string;
+  hours: readonly string[];
+  amenities: readonly string[];
+  accessNotes: readonly string[];
+  safetyNotes: readonly string[];
+  fees?: string;
+  parking?: string;
+  accessibility?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  sourceUrls: readonly string[];
+  verifiedAt?: string;
 };
 
 export type DirectoryRecordFilters = {

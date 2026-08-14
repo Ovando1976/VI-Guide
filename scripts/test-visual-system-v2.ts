@@ -89,6 +89,7 @@ assert.match(directoryCard, /directory-story-card/);
 assert.match(directoryCard, /Source checked/);
 assert.match(directoryCard, /Curated guide entry/);
 assert.match(directoryCard, /Open the story/);
+assert.match(directoryCard, /Best for/);
 assert.match(directoryCard, /SavePlaceButton/);
 assert.match(directoryCard, /AddToJourneyButton/);
 assert.match(directoryCard, /savedImage/);

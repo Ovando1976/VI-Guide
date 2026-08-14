@@ -108,6 +108,17 @@ export function DirectoryCard({ item, href, eyebrow }: Props) {
           ))}
         </div>
 
+        {item.bestFor?.length ? (
+          <div className="mt-4 rounded-2xl border border-[#dce9e6] bg-[#f1f8f6] px-4 py-3">
+            <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[.16em] text-[#0f766e]">
+              <Sparkles className="h-3.5 w-3.5" /> Best for
+            </div>
+            <p className="mt-1.5 line-clamp-2 text-xs font-bold leading-5 text-[#35514e]">
+              {item.bestFor.slice(0, 3).join(" · ")}
+            </p>
+          </div>
+        ) : null}
+
         <div className="mt-5 grid grid-cols-3 gap-2 border-t border-[#e4ece9] pt-5">
           <MiniAction href={mapHref} icon={Map} label="Map" />
           <MiniAction href={rideHref} icon={Navigation} label="Ride" gold />

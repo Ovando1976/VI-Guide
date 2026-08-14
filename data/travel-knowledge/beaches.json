@@ -157,18 +157,28 @@
     "name": "Cinnamon Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Cinnamon Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "The longest beach in Virgin Islands National Park, with room to spread out, a campground next door, watersports access, and snorkeling around Cinnamon Cay.",
     "heroImage": "/images/places/st-john/cinnamon-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "snorkeling",
+      "campground"
     ],
     "featured": false,
     "bestFor": [
-      "beach day",
-      "island views"
-    ]
+      "long beach days",
+      "snorkeling",
+      "families and groups"
+    ],
+    "amenities": ["restrooms", "food nearby", "watersports rentals", "campground"],
+    "accessNotes": ["North Shore Road reaches the beach and campground area.", "Arrive early because parking at popular north-shore beaches is limited."],
+    "safetyNotes": ["There is no lifeguard on duty; check water and weather conditions before entering."],
+    "parking": "Limited national-park parking; popular lots can fill by 10 a.m.",
+    "accessibility": "Accessible paths are available through the campground area.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/placestogo.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/hours.htm", "https://www.nps.gov/viis/planyourvisit/snorkeling.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "coki-point",
@@ -290,18 +300,23 @@
     "name": "Francis Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Francis Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "A long St. John beach known for calmer swimming, beginner-friendly snorkeling, turtle sightings, and the bird-rich Francis Bay trail and pond.",
     "heroImage": "/images/places/st-john/francis-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "beginner snorkel",
+      "wildlife"
     ],
     "featured": false,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["beginner snorkeling", "long swims", "birding and turtles"],
+    "amenities": ["parking", "picnic tables", "toilets", "pond trail"],
+    "accessNotes": ["Vehicle access and parking are available near the beach.", "Pair the beach with the quarter-mile pond trail for wildlife viewing."],
+    "safetyNotes": ["There is no lifeguard on duty; north swells can reduce visibility."],
+    "parking": "On-site parking is available but limited during busy periods.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/placestogo.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/snorkeling.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "gibney-beach",
@@ -385,18 +400,23 @@
     "name": "Hawksnest Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Hawksnest Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "The closest national-park beach to Cruz Bay along North Shore Road, offering a convenient scenic stop with picnic facilities and changing areas.",
     "heroImage": "/images/beaches/st-john/hawksnest-bay-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "close to Cruz Bay",
+      "picnic"
     ],
     "featured": false,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["quick north-shore stops", "picnics", "swimming"],
+    "amenities": ["changing stalls", "restrooms", "picnic area"],
+    "accessNotes": ["Reach the beach directly from North Shore Road, the closest park beach by road from Cruz Bay.", "Parking is limited; safari taxis are often easier on busy days."],
+    "safetyNotes": ["There is no lifeguard on duty; confirm current water conditions."],
+    "parking": "Small national-park lot; arrive early in peak periods.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/gettingaround.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/placestogo.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "honeymoon-beach",
@@ -537,18 +557,28 @@
     "name": "Magens Bay",
     "island": "stt",
     "category": "beach",
-    "description": "Magens Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "St. Thomas’s signature mile-long beach park, combining typically calm swimming with full facilities, food, rentals, trails, and easy taxi access.",
     "heroImage": "/images/places/st-thomas/magens-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "iconic",
+      "family swimming",
+      "full facilities"
     ],
     "featured": true,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["first-time visitors", "families", "full beach days"],
+    "hours": ["Daily 7:00 a.m.–5:30 p.m."],
+    "amenities": ["restrooms", "showers", "restaurant and bar", "chair and gear rentals", "watersports", "lifeguards"],
+    "accessNotes": ["Pay admission at the entrance or purchase a pass through the Magens Bay Authority.", "Taxi service and on-site parking make this one of St. Thomas’s easiest beach days."],
+    "safetyNotes": ["Use the designated swim area and follow posted lifeguard guidance."],
+    "fees": "Non-residents $7; residents $2 with local ID; children under 12 free; parking $2.",
+    "parking": "Large paid beach-park lot; $2 per vehicle.",
+    "accessibility": "Beach wheelchairs and accessible park facilities are available; confirm availability before arrival.",
+    "phone": "340-777-6300",
+    "website": "https://magensbayauthority.org/",
+    "sourceLabel": "Magens Bay Authority",
+    "sourceUrl": "https://magensbayauthority.org/",
+    "sourceUrls": ["https://magensbayauthority.org/passes/", "https://magensbayauthority.org/faqs/"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "maho-bay",
@@ -556,18 +586,23 @@
     "name": "Maho Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Maho Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "A shallow north-shore favorite with a long sandy edge and seagrass habitat where green sea turtles are often seen, especially early or late in the day.",
     "heroImage": "/images/places/st-john/maho-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "sea turtles",
+      "shallow water"
     ],
     "featured": true,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["turtle watching", "newer snorkelers", "families"],
+    "amenities": ["restrooms", "pavilions", "large east-end parking area"],
+    "accessNotes": ["Use the large parking area at the eastern end and never park on vegetation.", "The western end has restrooms; the shoreline extends about 0.3 miles."],
+    "safetyNotes": ["Give turtles and other wildlife plenty of space; never touch, chase, or feed them.", "There is no lifeguard on duty; north swells can reduce visibility."],
+    "parking": "Large lot at the eastern end; roadside and vegetation parking are not permitted.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/placestogo.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/snorkeling.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "mermaids-chair",
@@ -727,18 +762,23 @@
     "name": "Salt Pond Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Salt Pond Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "A quieter south-shore beach reached by a downhill hike, with snorkeling, a salt pond, and access to the exposed Ram Head trail.",
     "heroImage": "/images/places/st-john/salt-pond-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "hike-in beach",
+      "Ram Head"
     ],
     "featured": false,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["active travelers", "snorkeling", "Ram Head hikes"],
+    "amenities": ["toilet near the beach", "trail access"],
+    "accessNotes": ["Expect roughly a half-mile downhill walk from the parking area, followed by an uphill return.", "Carry drinking water and sturdy shoes if continuing to Ram Head."],
+    "safetyNotes": ["There is no lifeguard; remain alert for boat traffic, wildlife, heat, and changing water conditions."],
+    "parking": "Limited roadside parking above the access trail.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/snorkeling.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/gettingaround.htm", "https://www.nps.gov/viis/planyourvisit/rangerguidedtours.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "sandy-point",
@@ -823,18 +863,26 @@
     "name": "Trunk Bay",
     "island": "stj",
     "category": "beach",
-    "description": "Trunk Bay is an island shoreline destination suited to swimming, sightseeing, and a relaxed day by the water. Check current sea and weather conditions before visiting.",
+    "description": "Virgin Islands National Park’s showcase beach, pairing white sand and clear water with an underwater snorkel trail and the park’s most complete visitor facilities.",
     "heroImage": "/images/places/st-john/trunk-bay-beach-1.jpg",
     "tags": [
-      "beach",
-      "swimming",
-      "scenic"
+      "national park",
+      "underwater trail",
+      "full facilities"
     ],
     "featured": true,
-    "bestFor": [
-      "beach day",
-      "island views"
-    ]
+    "bestFor": ["first-time visitors", "snorkeling", "facility-supported beach days"],
+    "hours": ["Facilities 8:00 a.m.–4:00 p.m.", "Snack shack and bar 10:00 a.m.–4:00 p.m."],
+    "amenities": ["restrooms", "showers", "foot rinse", "snorkel trail", "food and bar", "snorkel and chair rentals"],
+    "accessNotes": ["North Shore Road provides direct access; parking is limited and can fill by 10 a.m.", "Safari taxis from Cruz Bay are a practical alternative on busy days."],
+    "safetyNotes": ["NPS currently lists no lifeguard on duty; check posted conditions and stay within your ability."],
+    "fees": "Amenity fee required; confirm the current amount with the National Park Service.",
+    "parking": "Limited paved lot; arrive early or use a safari taxi.",
+    "accessibility": "Paved access connects the parking and facility area; contact the park for current accessibility details.",
+    "sourceLabel": "National Park Service",
+    "sourceUrl": "https://www.nps.gov/viis/planyourvisit/hours.htm",
+    "sourceUrls": ["https://www.nps.gov/viis/planyourvisit/gettingaround.htm", "https://www.nps.gov/viis/planyourvisit/snorkeling.htm"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "turtle-beach-buck-island",

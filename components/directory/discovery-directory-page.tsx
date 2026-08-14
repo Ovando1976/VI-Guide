@@ -166,6 +166,10 @@ export function DiscoveryDirectoryPage({
     () => items.filter((item) => item.sourceUrl || item.sourceUrls?.length).length,
     [items],
   );
+  const tripDetailedCount = useMemo(
+    () => items.filter((item) => item.accessNotes?.length || item.amenities?.length || item.hours?.length || item.fees || item.parking).length,
+    [items],
+  );
 
   function clearFilters() {
     setIsland("all");
@@ -279,8 +283,8 @@ export function DiscoveryDirectoryPage({
           <GuideStandard
             icon={ShieldCheck}
             label="Evidence standard"
-            value={sourceLinkedCount ? `${sourceLinkedCount} source-linked entries` : "Curated catalog"}
-            detail={sourceLinkedCount ? "Open a detail page to inspect available public or operator sources." : "Changing hours, access, and conditions are clearly left for confirmation."}
+            value={sourceLinkedCount ? `${sourceLinkedCount} source checked · ${tripDetailedCount} trip detailed` : "Curated catalog"}
+            detail={sourceLinkedCount ? "Source-backed entries expose practical arrival, facility, and freshness details." : "Changing hours, access, and conditions are clearly left for confirmation."}
           />
           <GuideStandard
             icon={Compass}

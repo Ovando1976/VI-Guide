@@ -940,14 +940,24 @@
     "name": "Duffy's Love Shack",
     "island": "stt",
     "category": "restaurant",
-    "description": "Duffy's Love Shack is a local St. Thomas dining and gathering spot included in the USVI Explorer travel catalog.",
+    "description": "A lively Red Hook restaurant and bar known for handcrafted tropical drinks, island energy, and food served continuously from lunch through dinner.",
     "heroImage": "/images/places/st-thomas/duffys-love-shack-1.jpg",
     "tags": [
-      "local favorite",
-      "food",
-      "st. thomas"
+      "Red Hook",
+      "lunch and dinner",
+      "tropical cocktails"
     ],
-    "featured": true
+    "featured": true,
+    "address": "6500 Red Hook Plaza, St. Thomas, VI",
+    "phone": "340-779-2080",
+    "website": "https://www.duffysloveshack.com/",
+    "hours": ["Opens daily at 11:30 a.m.", "Food served continuously until 10:00 p.m.; closing time varies"],
+    "bestFor": ["casual lunch", "nightlife energy", "Red Hook evenings"],
+    "accessNotes": ["Located in Red Hook Plaza near the ferry and marina district.", "Confirm late-night closing time directly with the restaurant."],
+    "sourceLabel": "Duffy's Love Shack",
+    "sourceUrl": "https://www.duffysloveshack.com/",
+    "sourceUrls": ["https://www.visitusvi.com/listing/st-thomas/90/duffys-love-shack/"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "stt-e-s-garden-teahouse",
@@ -1331,14 +1341,24 @@
     "name": "Greengos Caribbean Cantina",
     "island": "stt",
     "category": "restaurant",
-    "description": "Greengos Caribbean Cantina is a local St. Thomas dining and gathering spot included in the USVI Explorer travel catalog.",
+    "description": "Sonoran-style Mexican dining in a historic Charlotte Amalie building, with original stone arches, waterfront access, and an extensive agave-tequila selection.",
     "heroImage": "/images/places/st-thomas/greengos-caribbean-cantina-1.jpg",
     "tags": [
-      "local favorite",
-      "food",
-      "st. thomas"
+      "Charlotte Amalie",
+      "Mexican",
+      "historic setting"
     ],
-    "featured": true
+    "featured": true,
+    "address": "34-35 Dronningens Gade, Hibiscus Alley, Charlotte Amalie, St. Thomas, VI 00801",
+    "phone": "340-714-8282",
+    "website": "https://greengosvi.com/st-thomas-vi/",
+    "hours": ["Saturday–Thursday 11:00 a.m.–5:00 p.m.", "Friday 11:00 a.m.–8:00 p.m.; live music may run later"],
+    "bestFor": ["historic-town lunch", "Mexican food", "Friday live music"],
+    "accessNotes": ["Find the restaurant in Hibiscus Alley on the Charlotte Amalie waterfront.", "Hours can follow the downtown and cruise-day rhythm; confirm before a late visit."],
+    "sourceLabel": "Greengos Caribbean Cantina",
+    "sourceUrl": "https://greengosvi.com/st-thomas-vi/",
+    "sourceUrls": ["https://www.visitusvi.com/listing/st-thomas/81786/greengos-caribbean-cantina/"],
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "hamiltons",
@@ -1451,14 +1471,22 @@
     "name": "Hook, Line & Sinker",
     "island": "stt",
     "category": "restaurant",
-    "description": "A waterfront seafood restaurant in Frenchtown known for a casual harbor setting and island dining.",
+    "description": "A longstanding Frenchtown waterfront restaurant serving seafood, steaks, and island favorites in a relaxed harbor-side setting.",
     "heroImage": "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
     "tags": [
       "waterfront",
       "seafood",
       "frenchtown"
     ],
-    "featured": true
+    "featured": true,
+    "address": "62 Honduras, Frenchtown, St. Thomas, VI",
+    "phone": "340-776-9708",
+    "website": "https://hlsvi.com/",
+    "bestFor": ["waterfront dining", "seafood", "Frenchtown evenings"],
+    "accessNotes": ["Located on the Frenchtown waterfront west of downtown Charlotte Amalie.", "Call ahead for current service hours, reservations, or takeout."],
+    "sourceLabel": "Hook, Line & Sinker",
+    "sourceUrl": "https://hlsvi.com/",
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "hull-bay",
