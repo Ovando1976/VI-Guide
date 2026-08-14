@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export { default } from "../experiences/page";
+import ExperiencesPage from "../experiences/page";
+import { ActivityQuickLaunch } from "@/components/activities/activity-quick-launch";
 
 export const metadata: Metadata = {
   title: "Activities, Tours & Experiences | USVI Explorer",
@@ -8,3 +9,22 @@ export const metadata: Metadata = {
     "Find and request memorable activities, tours, and local experiences across St. Thomas, St. John, and St. Croix.",
   alternates: { canonical: "/activities" },
 };
+
+type ActivitySearchParams = {
+  q?: string;
+  island?: string;
+  category?: string;
+};
+
+export default function ActivitiesPage({
+  searchParams,
+}: {
+  searchParams?: ActivitySearchParams;
+}) {
+  return (
+    <>
+      <ActivityQuickLaunch />
+      <ExperiencesPage searchParams={searchParams} />
+    </>
+  );
+}
