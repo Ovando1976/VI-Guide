@@ -84,6 +84,11 @@ export type RideBookingDraft = {
   passengers: number;
   luggage: number;
   scheduledAt?: string | null;
+  connectionDeadline?: string | null;
+  connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
+  paymentMethod?: "online_card";
+  pickupInstructions?: string;
+  destinationInstructions?: string;
   notes?: string;
 };
 
@@ -179,6 +184,22 @@ export type RideBooking = {
   };
   finalFare?: number;
   scheduledAt?: string | null;
+  connectionDeadline?: string | null;
+  connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
+  paymentMethod?: "online_card";
+  serviceExpectation?: "shared" | "direct_request";
+  estimatedSettlement?: {
+    grossFare: number;
+    commissionRate: number;
+    platformRevenue: number;
+    driverPayout: number;
+    feeAgreementId: string;
+  };
+  riderVerification?: {
+    status: "required" | "verified";
+    verifiedAt?: TimestampLike;
+    verifiedBy?: string | null;
+  };
   notes?: string;
   createdAt?: TimestampLike;
   updatedAt?: TimestampLike;

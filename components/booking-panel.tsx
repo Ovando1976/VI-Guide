@@ -15,6 +15,7 @@ import {
   Check,
   ChevronDown,
   Clock3,
+  CreditCard,
   Crown,
   Loader2,
   Luggage,
@@ -150,6 +151,13 @@ export function BookingPanel({
   const [pilotMessage, setPilotMessage] = useState<string | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
+  const [scheduledAt, setScheduledAt] = useState("");
+  const [connectionDeadline, setConnectionDeadline] = useState("");
+  const [pickupInstructions, setPickupInstructions] = useState("");
+  const [destinationInstructions, setDestinationInstructions] = useState("");
+  const [connectionKind, setConnectionKind] = useState<
+    "flight" | "ferry" | "cruise" | "appointment"
+  >("ferry");
   const [acceptedOperatorDisclosure, setAcceptedOperatorDisclosure] =
     useState(false);
   const [acceptedLegal, setAcceptedLegal] = useState(false);
@@ -272,6 +280,14 @@ export function BookingPanel({
           mode,
           passengers,
           luggage,
+          scheduledAt: scheduledAt ? new Date(scheduledAt).toISOString() : null,
+          connectionDeadline: connectionDeadline
+            ? new Date(connectionDeadline).toISOString()
+            : null,
+          connectionKind: connectionDeadline ? connectionKind : null,
+          paymentMethod: "online_card",
+          pickupInstructions,
+          destinationInstructions,
           acceptedOperatorDisclosure: true,
           acceptedTerms: true,
           acceptedPrivacy: true,
@@ -413,6 +429,27 @@ export function BookingPanel({
                 toEstate={toEstate}
               />
             </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <Field label="Pickup instructions (optional)" icon={MapPin}>
+                <textarea
+                  value={pickupInstructions}
+                  onChange={(event) => setPickupInstructions(event.target.value.slice(0, 280))}
+                  rows={3}
+                  placeholder="Villa name, lobby, gate, landmark, or where to wait"
+                  className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold leading-5 text-[#043331] outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
+                />
+              </Field>
+              <Field label="Drop-off instructions (optional)" icon={Route}>
+                <textarea
+                  value={destinationInstructions}
+                  onChange={(event) => setDestinationInstructions(event.target.value.slice(0, 280))}
+                  rows={3}
+                  placeholder="Terminal, entrance, dock, hotel, or meeting point"
+                  className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold leading-5 text-[#043331] outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-100"
+                />
+              </Field>
+            </div>
+            <p className="mt-2 text-right text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">Instructions are shared only with dispatch and your assigned driver.</p>
             <StepActions
               continueLabel="Choose ride type"
               continueDisabled={!routeReady}
@@ -508,6 +545,41 @@ export function BookingPanel({
                 onChange={onChangeLuggage}
               />
             </div>
+            <div className="mt-5 grid gap-4 rounded-[24px] border border-teal-100 bg-teal-50/70 p-4 sm:grid-cols-2">
+              <Field label="Requested pickup time" icon={Clock3}>
+                <input
+                  type="datetime-local"
+                  value={scheduledAt}
+                  onChange={(event) => setScheduledAt(event.target.value)}
+                  className="w-full rounded-[18px] border border-teal-100 bg-white px-4 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                />
+              </Field>
+              <Field label="Connection to protect (optional)" icon={Anchor}>
+                <div className="grid grid-cols-[auto_1fr] gap-2">
+                  <select
+                    value={connectionKind}
+                    onChange={(event) =>
+                      setConnectionKind(event.target.value as typeof connectionKind)
+                    }
+                    className="rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                  >
+                    <option value="ferry">Ferry</option>
+                    <option value="flight">Flight</option>
+                    <option value="cruise">Cruise</option>
+                    <option value="appointment">Other</option>
+                  </select>
+                  <input
+                    type="datetime-local"
+                    value={connectionDeadline}
+                    onChange={(event) => setConnectionDeadline(event.target.value)}
+                    className="min-w-0 rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold text-[#043331] outline-none focus:border-teal-500"
+                  />
+                </div>
+              </Field>
+            </div>
+            <p className="mt-3 text-xs font-semibold leading-5 text-slate-500">
+              Pickup requests and connection details are saved for dispatch. A driver match confirms availability; entering a time alone is not a guarantee.
+            </p>
             <div className="mt-5 rounded-[22px] border border-teal-200 bg-teal-50 p-4" aria-live="polite">
               <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Passenger details ready</div>
               <div className="mt-1 text-sm font-black text-teal-950">
@@ -538,6 +610,13 @@ export function BookingPanel({
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <ReviewChip label={mode.replace("-", " ")} />
+                <ReviewChip
+                  label={
+                    mode === "shared" || mode === "safari"
+                      ? "shared · possible wait + stops"
+                      : "direct ride requested"
+                  }
+                />
                 <ReviewChip
                   label={`${passengers} passenger${passengers === 1 ? "" : "s"}`}
                 />
@@ -601,6 +680,27 @@ export function BookingPanel({
           </button>
         </aside>
         ) : null}
+        </div>
+      </div>
+
+      <div className="sticky bottom-3 z-30 mx-4 mb-4 rounded-[22px] border border-white/60 bg-[#043331]/95 p-3 text-white shadow-[0_18px_50px_rgba(4,51,49,.3)] backdrop-blur lg:hidden">
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[8px] font-black uppercase tracking-[.15em] text-[#f5c451]">{fare ? "Official fare · no surge" : "Complete your route"}</p>
+            <p className="mt-1 truncate text-sm font-black">{fare ? `$${fare.total.toFixed(2)} · ${fromEstate?.baseName} to ${toEstate?.baseName}` : "Choose pickup and destination"}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              if (canRequest) void requestRide();
+              else document.getElementById("trip-review")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            disabled={submitting}
+            className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#5f3d00] disabled:opacity-60"
+          >
+            {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
+            {canRequest ? "Continue" : "Review"}
+          </button>
         </div>
       </div>
 
@@ -888,6 +988,16 @@ function FareReview({
         <FareRow label="Published route fare" value={fare.routeFare} />
         <FareRow label="Passenger charge" value={fare.passengerFare} />
         <FareRow label="Luggage charge" value={fare.luggageFare} />
+      </div>
+      <div className="mt-4 grid gap-3 rounded-[22px] border border-teal-100 bg-teal-50 p-4 text-xs font-semibold leading-5 text-teal-950">
+        <div className="flex items-start gap-2">
+          <Bus className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+          <span>Shared and safari requests may wait for other riders and make additional stops. Other modes request a direct ride, subject to dispatch confirmation.</span>
+        </div>
+        <div className="flex items-start gap-2">
+          <CreditCard className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+          <span>Payment method: secure online card. The digital booking record includes the official quote, payment status, assigned operator, and trip status.</span>
+        </div>
       </div>
       <div className="mt-5 space-y-3">
         <ServicePromise icon={ShieldCheck} text="Verified driver and vehicle assignment" />

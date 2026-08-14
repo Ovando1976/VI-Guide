@@ -7,7 +7,9 @@ import { useEffect, useMemo, useState } from "react";
 import { readJourneyPlans, type JourneyPlan } from "@/lib/journey-planner";
 import type { BookingStatus, RideBooking, RideBookingPaymentStatus } from "@/types/mobility";
 
-type LiveRideState = Pick<RideBooking, "id" | "status" | "paymentStatus" | "driverId">;
+type LiveRideState = Pick<RideBooking, "id" | "status" | "paymentStatus" | "driverId"> & {
+  riderVerificationCode?: string | null;
+};
 
 type RideStatusView = {
   label: string;
@@ -66,13 +68,16 @@ export function JourneyMobilityBookings() {
               cache: "no-store",
             });
             if (!response.ok) return null;
-            const payload = (await response.json().catch(() => null)) as { booking?: RideBooking } | null;
+            const payload = (await response.json().catch(() => null)) as
+              | { booking?: RideBooking; riderVerificationCode?: string | null }
+              | null;
             if (!payload?.booking) return null;
             return {
               id: payload.booking.id,
               status: payload.booking.status,
               paymentStatus: payload.booking.paymentStatus,
               driverId: payload.booking.driverId,
+              riderVerificationCode: payload.riderVerificationCode,
             } satisfies LiveRideState;
           } catch {
             return null;
@@ -141,6 +146,16 @@ export function JourneyMobilityBookings() {
                   <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
                     {view?.detail ?? stop.summary}
                   </p>
+                  {liveRide?.riderVerificationCode ? (
+                    <div className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-950">
+                      <UserCheck className="h-4 w-4 shrink-0" />
+                      <div>
+                        <p className="text-[9px] font-black uppercase tracking-[.14em] text-emerald-700">Pickup PIN</p>
+                        <p className="text-lg font-black tracking-[.24em]">{liveRide.riderVerificationCode}</p>
+                        <p className="text-[10px] font-semibold tracking-normal text-emerald-800">Share only with your assigned driver after arrival.</p>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
                 <Link href={stop.bookingHref!} className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-[#043331] px-4 text-[9px] font-black uppercase tracking-[.14em] text-white transition hover:-translate-y-0.5">
                   {view?.actionLabel === "Continue payment" ? <CreditCard className="h-4 w-4" /> : <Navigation className="h-4 w-4" />}
