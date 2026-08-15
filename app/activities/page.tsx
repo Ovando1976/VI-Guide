@@ -5,6 +5,7 @@ import { ActivityBookingIntelligence } from "@/components/activities/activity-bo
 import { ActivityFitGuide } from "@/components/activities/activity-fit-guide";
 import { ActivityQuickLaunch } from "@/components/activities/activity-quick-launch";
 import { ActivityTripIntelligence } from "@/components/activities/activity-trip-intelligence";
+import { ActivityVisualStandard } from "@/components/activities/activity-visual-standard";
 
 export const metadata: Metadata = {
   title: "Activities, Tours & Experiences | USVI Explorer",
@@ -30,6 +31,7 @@ export default function ActivitiesPage({
       <ActivityTripIntelligence />
       <ActivityFitGuide />
       <ActivityBookingIntelligence />
+      <ActivityVisualStandard />
       <ExperiencesPage searchParams={searchParams} />
     </>
   );
