@@ -78,12 +78,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .app-nav__item--map.is-active { background: #f5c451; color: #032f2d; box-shadow: 0 10px 26px rgba(245,196,81,.24); }
 .app-nav__item--map.is-active .app-nav__icon { color: #032f2d; }
 .app-nav__item--concierge .app-nav__icon { color: #77e4da; }
-.app-nav__badge { position: absolute; right: 4px; top: 3px; display: grid; min-width: 17px; min-height: 17px; place-items: center; border-radius: 999px; padding: 0 4px; background: #f5c451; color: #032f2d; font-size: 7px; font-weight: 950; line-height: 1; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.app-nav__badge { position: absolute; right: 4px; top: 3px; display: grid; min-width: 17px; min-height: 17px; place-items:center; border-radius:999px; padding:0 4px; background:#f5c451; color:#032f2d; font-size:7px; font-weight:950; line-height:1; box-shadow:0 4px 12px rgba(0,0,0,.18); }
 
-/* Tablet pages already expose the full public header. Do not let a second
-   fixed navigation bar cover planner controls, operator cards, or CTAs. */
+/* The full public header is the primary navigation on tablet and desktop.
+   Keep the operations dock available where explicitly requested while
+   preventing the consumer dock from covering page controls. */
 @media (min-width: 701px) {
-  .app-nav { display: none; }
+  .app-nav:not(.app-nav--operations) { display: none; }
   body { padding-bottom: 0; }
 }
 
