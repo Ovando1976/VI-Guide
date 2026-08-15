@@ -8,6 +8,7 @@ import { RiderCancelRide } from "@/components/mobility/rider-cancel-ride";
 import { RiderLiveDriverMap } from "@/components/mobility/rider-live-driver-map";
 import { RiderTripTiming } from "@/components/mobility/rider-trip-timing";
 import { TripReturnNotice } from "@/components/mobility/trip-return-notice";
+import { TripRideStatusFromUrl } from "@/components/mobility/trip-ride-status-from-url";
 import { RiderTripHistory } from "@/components/rider-trip-history";
 import { TripAwareConciergeLink } from "@/components/trips/trip-aware-concierge-link";
 import { TripAwareLivingMapLink } from "@/components/trips/trip-aware-living-map-link";
@@ -105,6 +106,7 @@ export default async function TripsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
         <TripReturnNotice />
+        <TripRideStatusFromUrl />
         <TravelerPreferencesCard />
         <TravelerTripCommandCenter
           travelerName={session?.name}
