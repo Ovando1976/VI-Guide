@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import ExperiencesPage from "../experiences/page";
 import { ActivityBookingIntelligence } from "@/components/activities/activity-booking-intelligence";
+import { ActivityDiscoveryDeck } from "@/components/activities/activity-discovery-deck";
 import { ActivityFitGuide } from "@/components/activities/activity-fit-guide";
 import { ActivityQuickLaunch } from "@/components/activities/activity-quick-launch";
 import { ActivityTripIntelligence } from "@/components/activities/activity-trip-intelligence";
@@ -28,6 +29,7 @@ export default function ActivitiesPage({
   return (
     <>
       <ActivityQuickLaunch />
+      <ActivityDiscoveryDeck />
       <ActivityTripIntelligence />
       <ActivityFitGuide />
       <ActivityBookingIntelligence />
