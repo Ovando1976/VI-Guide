@@ -26,7 +26,7 @@ const MAP_MODES = ["Places", "Beaches", "Stays", "History", "Rides"] as const;
 export default function MapPage() {
   return (
     <UnifiedWorkspaceProvider>
-      <div className="map-customer-page min-h-screen bg-[#f4f1e8] pb-28 text-[#043331]">
+      <div className="map-customer-page min-h-screen bg-[#f4f1e8] pb-20 text-[#043331] md:pb-10">
         <TerrainDefaultController />
 
         <div className="hidden px-4 pt-5 sm:px-6 md:block lg:pt-8">
@@ -40,19 +40,19 @@ export default function MapPage() {
         </div>
 
         <section className="mx-auto max-w-[1680px] px-3 pt-3 sm:px-6 md:mt-4 md:pt-0">
-          <div className="map-experience-hero relative isolate overflow-hidden rounded-[26px] border border-white/10 bg-[#043331] px-4 py-4 text-white shadow-[0_20px_60px_rgba(4,51,49,.18)] sm:px-6 md:rounded-[30px] md:px-7 md:py-5">
+          <div className="map-experience-hero relative isolate overflow-hidden rounded-[24px] border border-white/10 bg-[#043331] px-4 py-3.5 text-white shadow-[0_16px_45px_rgba(4,51,49,.16)] sm:px-6 md:rounded-[30px] md:px-7 md:py-5">
             <div className="absolute inset-0 -z-20 bg-[url('/images/usvi-harbor-hero.jpg')] bg-cover bg-[center_52%] opacity-35" />
             <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(2,36,35,.98)_0%,rgba(3,51,49,.9)_44%,rgba(3,51,49,.54)_72%,rgba(3,51,49,.34)_100%)]" />
-            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+            <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center md:gap-4">
               <div className="max-w-4xl">
                 <div className="inline-flex items-center gap-2 text-[8px] font-black uppercase tracking-[.2em] text-[#f8d77c]">
                   <MapPinned className="h-3.5 w-3.5" /> USVI Explorer · Living Map
                 </div>
-                <h1 className="vi-display mt-2 max-w-4xl text-3xl font-black leading-[.95] tracking-[-.05em] sm:text-4xl lg:text-5xl">
+                <h1 className="vi-display mt-1.5 max-w-4xl text-[1.7rem] font-black leading-[.95] tracking-[-.05em] sm:text-4xl lg:text-5xl">
                   Your island, <span className="text-[#7ce0d4]">ready to explore.</span>
                 </h1>
-                <p className="mt-2 max-w-3xl text-xs font-semibold leading-5 text-white/68 sm:text-sm sm:leading-6">
-                  Tap the map first. Then save a stop, build the route, or ask Concierge with the place already in context.
+                <p className="mt-1.5 max-w-3xl text-[11px] font-semibold leading-4 text-white/68 sm:mt-2 sm:text-sm sm:leading-6">
+                  Tap the map. Then save the stop, plan the route, ride there, or ask Concierge with the place already in context.
                 </p>
                 <div className="mt-3 hidden flex-wrap gap-1.5 lg:flex">
                   {MAP_MODES.map((mode) => (
@@ -66,24 +66,24 @@ export default function MapPage() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 md:max-w-[360px] md:justify-end">
+              <div className="grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:gap-2 md:max-w-[360px] md:justify-end">
                 <Link
                   href="#territory-workspace"
-                  className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.12em] text-[#043331] shadow-[0_12px_30px_rgba(245,196,81,.2)] transition hover:-translate-y-0.5"
+                  className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full bg-[#f5c451] px-2.5 text-[8px] font-black uppercase tracking-[.08em] text-[#043331] shadow-[0_12px_30px_rgba(245,196,81,.2)] transition hover:-translate-y-0.5 sm:px-4 sm:text-[9px] sm:tracking-[.12em]"
                 >
-                  <MapPinned className="h-4 w-4" /> Open map
+                  <MapPinned className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Map
                 </Link>
                 <Link
                   href="/mobility"
-                  className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-4 text-[9px] font-black uppercase tracking-[.12em] text-white transition hover:bg-white/[.13]"
+                  className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-white/14 bg-white/[.08] px-2.5 text-[8px] font-black uppercase tracking-[.08em] text-white transition hover:bg-white/[.13] sm:px-4 sm:text-[9px] sm:tracking-[.12em]"
                 >
-                  <Navigation className="h-4 w-4 text-[#7ce0d4]" /> Plan a ride
+                  <Navigation className="h-3.5 w-3.5 text-[#7ce0d4] sm:h-4 sm:w-4" /> Ride
                 </Link>
                 <Link
                   href="/planner"
-                  className="inline-flex min-h-10 items-center gap-2 rounded-full border border-white/14 bg-white/[.08] px-4 text-[9px] font-black uppercase tracking-[.12em] text-white transition hover:bg-white/[.13]"
+                  className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border border-white/14 bg-white/[.08] px-2.5 text-[8px] font-black uppercase tracking-[.08em] text-white transition hover:bg-white/[.13] sm:px-4 sm:text-[9px] sm:tracking-[.12em]"
                 >
-                  <Route className="h-4 w-4 text-[#7ce0d4]" /> Plan itinerary
+                  <Route className="h-3.5 w-3.5 text-[#7ce0d4] sm:h-4 sm:w-4" /> Planner
                 </Link>
               </div>
             </div>
@@ -92,27 +92,25 @@ export default function MapPage() {
 
         <style>{`
           .map-customer-page main {
-            padding-bottom: 10rem !important;
+            padding-bottom: 4rem !important;
           }
 
           @media (min-width: 701px) and (max-width: 1180px) {
-            .map-customer-page div:has(> .leaflet-container) {
-              height: 620px !important;
-            }
-
+            .map-customer-page div:has(> .leaflet-container),
             .map-customer-page .leaflet-container {
-              height: 620px !important;
-            }
-
-            body:has(.map-customer-page) .app-nav {
-              width: min(610px, calc(100vw - 40px));
-              bottom: max(18px, env(safe-area-inset-bottom));
+              height: min(720px, calc(100dvh - 150px)) !important;
+              min-height: 600px;
             }
           }
 
           @media (max-width: 700px) {
             .map-customer-page main {
-              padding-bottom: 9rem !important;
+              padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)) !important;
+            }
+
+            .map-customer-page div:has(> .leaflet-container),
+            .map-customer-page .leaflet-container {
+              height: max(520px, calc(100dvh - 210px)) !important;
             }
           }
         `}</style>
