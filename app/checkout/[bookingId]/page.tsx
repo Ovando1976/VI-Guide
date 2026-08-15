@@ -7,6 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { ArrowLeft, RefreshCw, ShieldCheck } from "lucide-react";
 
 import { CheckoutForm } from "@/components/checkout-form";
+import { RideConfirmationLifecycle } from "@/components/mobility/ride-confirmation-lifecycle";
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
@@ -186,17 +187,16 @@ export default function CheckoutBookingPage() {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,.12),transparent_30%),linear-gradient(180deg,#f8f4ea,#ffffff)] px-4 py-8 text-[#043331] sm:px-6 sm:py-12">
-      <div className="mx-auto max-w-2xl overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(4,51,49,.12)]">
+      <div className="mx-auto max-w-3xl overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(4,51,49,.12)]">
         <div className="bg-[linear-gradient(135deg,#032d2b,#075e58)] p-6 text-white sm:p-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]">
             <ShieldCheck size={15} /> Secure USVI Explorer payment
           </div>
           <h1 className="mt-4 text-3xl font-black tracking-[-.04em] sm:text-4xl">
-            Complete your ride payment
+            Pay your ride request securely
           </h1>
           <p className="mt-3 text-sm font-semibold leading-6 text-white/68">
-            Pay the quoted regulated fare, then continue directly into dispatch
-            and trip tracking.
+            Payment submits this request into dispatch. Your ride is confirmed only after an authorized operator is assigned.
           </p>
           {booking ? (
             <div className="mt-5 grid gap-3 rounded-[22px] border border-white/10 bg-white/[.07] p-4 sm:grid-cols-[1fr_auto] sm:items-center">
@@ -217,9 +217,15 @@ export default function CheckoutBookingPage() {
         </div>
 
         <div className="p-6 sm:p-8">
-          <Elements stripe={stripePromise} options={options}>
-            <CheckoutForm bookingId={bookingId} />
-          </Elements>
+          <RideConfirmationLifecycle />
+          <div className="mt-6 rounded-[24px] border border-slate-200 bg-[#fbfaf6] p-4 text-sm font-semibold leading-6 text-slate-600">
+            After successful payment, USVI Explorer returns you to <strong className="text-[#043331]">My Trip</strong>, where the live timeline shows whether dispatch is still matching your ride, a driver has been assigned, the driver is en route, or the trip has started.
+          </div>
+          <div className="mt-6">
+            <Elements stripe={stripePromise} options={options}>
+              <CheckoutForm bookingId={bookingId} />
+            </Elements>
+          </div>
         </div>
       </div>
     </main>
