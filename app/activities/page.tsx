@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import ExperiencesPage from "../experiences/page";
 import { ActivityQuickLaunch } from "@/components/activities/activity-quick-launch";
+import { ActivityTripIntelligence } from "@/components/activities/activity-trip-intelligence";
 
 export const metadata: Metadata = {
   title: "Activities, Tours & Experiences | USVI Explorer",
@@ -24,6 +25,7 @@ export default function ActivitiesPage({
   return (
     <>
       <ActivityQuickLaunch />
+      <ActivityTripIntelligence />
       <ExperiencesPage searchParams={searchParams} />
     </>
   );
