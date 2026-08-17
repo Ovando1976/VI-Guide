@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 import { MobilityBookingScreen } from "@/components/mobility-booking-screen";
+import { FareStatusBanner } from "@/components/mobility/fare-status-banner";
 import { RideConfirmationPortal } from "@/components/mobility/ride-confirmation-portal";
 import { TripAwareMobilityHandoff } from "@/components/mobility/trip-aware-mobility-handoff";
 
@@ -113,6 +114,13 @@ export default function MobilityPage({
             padding: 8px 4px;
           }
 
+          /* #trip-review only exists during the confirmation step. Keep the
+             sticky control out of steps 1-3 so the visible in-panel Next action
+             is always the only mobile primary action and Review is never a dead tap. */
+          section#book:not(:has(#trip-review)) > div:last-of-type.sticky {
+            display: none;
+          }
+
           section#book > div:last-of-type.sticky {
             bottom: calc(10px + env(safe-area-inset-bottom));
             margin-left: 10px;
@@ -128,6 +136,7 @@ export default function MobilityPage({
       `}</style>
       <Suspense fallback={<MobilityLoadingState />}>
         <TripAwareMobilityHandoff />
+        <FareStatusBanner />
         <MobilityBookingScreen />
         <RideConfirmationPortal />
       </Suspense>
