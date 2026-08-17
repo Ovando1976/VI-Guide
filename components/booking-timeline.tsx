@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+import { PostRideExperience } from "@/components/post-ride-experience";
 import { subscribeToBookingEvents } from "@/lib/firestore-trips";
+import type { RideBooking } from "@/types/mobility";
 import type { TripEvent } from "@/types/trip-event";
 
 type Props = {
@@ -11,6 +14,11 @@ type Props = {
 export function BookingTimeline({ bookingId }: Props) {
   const [events, setEvents] = useState<TripEvent[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [completedBooking, setCompletedBooking] = useState<RideBooking | null>(null);
+  const hasCompletedEvent = useMemo(
+    () => events.some((event) => event.type === "trip_completed"),
+    [events],
+  );
 
   useEffect(() => {
     return subscribeToBookingEvents(
@@ -22,9 +30,37 @@ export function BookingTimeline({ bookingId }: Props) {
       (error) => {
         console.error(error);
         setErrorMessage(error.message);
-      }
+      },
     );
   }, [bookingId]);
+
+  useEffect(() => {
+    if (!hasCompletedEvent) {
+      setCompletedBooking(null);
+      return;
+    }
+
+    let cancelled = false;
+    async function loadCompletedBooking() {
+      try {
+        const response = await fetch(`/api/bookings/${encodeURIComponent(bookingId)}`, {
+          cache: "no-store",
+        });
+        if (!response.ok) return;
+        const payload = (await response.json()) as { booking?: RideBooking };
+        if (!cancelled && payload.booking?.status === "completed") {
+          setCompletedBooking(payload.booking);
+        }
+      } catch {
+        // The timeline remains useful even when the post-ride summary cannot refresh.
+      }
+    }
+
+    void loadCompletedBooking();
+    return () => {
+      cancelled = true;
+    };
+  }, [bookingId, hasCompletedEvent]);
 
   return (
     <section className="rounded-[34px] border border-slate-200 bg-white p-6 shadow-sm">
@@ -78,9 +114,7 @@ export function BookingTimeline({ bookingId }: Props) {
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   <EventMetaChip label={formatActorType(event.actorType)} />
-                  {event.actorId ? (
-                    <EventMetaChip label={event.actorId} />
-                  ) : null}
+                  {event.actorId ? <EventMetaChip label={event.actorId} /> : null}
                 </div>
               </div>
             </div>
@@ -94,12 +128,13 @@ export function BookingTimeline({ bookingId }: Props) {
               No timeline events yet.
             </div>
             <div className="mt-2 text-sm font-semibold text-slate-500">
-              Once the booking starts moving through the territory, status
-              events will appear here in order.
+              Once the booking starts moving through the territory, status events will appear here in order.
             </div>
           </div>
         )}
       </div>
+
+      {completedBooking ? <PostRideExperience booking={completedBooking} /> : null}
     </section>
   );
 }
