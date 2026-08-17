@@ -14,6 +14,14 @@ const mobilityScreen = fs.readFileSync(
   path.join(root, "components/mobility-booking-screen.tsx"),
   "utf8",
 );
+const accommodationSearch = fs.readFileSync(
+  path.join(root, "lib/accommodations/search.ts"),
+  "utf8",
+);
+const verifiedEstateMappings = fs.readFileSync(
+  path.join(root, "lib/accommodations/verified-estate-geoids.ts"),
+  "utf8",
+);
 
 function expectSource(source: string, value: string, label: string) {
   if (!source.includes(value)) {
@@ -59,6 +67,23 @@ for (const [value, label] of [
 ] as const) {
   if (mobilityScreen.includes(value)) {
     throw new Error(`Stay mobility handoff contract failed: ${label}`);
+  }
+}
+
+expectSource(accommodationSearch, "verifiedAccommodationEstateGeoid", "accommodation search applies verified estate mappings");
+for (const [value, label] of [
+  ['"Secret Harbour Beach Resort"', "Secret Harbour mapping is explicit"],
+  ['"Elysian Beach Resort"', "Elysian mapping is explicit"],
+  ['"Margaritaville Vacation Club - St. Thomas"', "Margaritaville mapping is explicit"],
+  ['"Sapphire Beach Resort and Marina"', "Sapphire mapping is explicit"],
+  ['estateGeoid: "7803058400"', "Nazareth canonical GEOID is pinned"],
+  ['estateGeoid: "7803072500"', "Smith Bay canonical GEOID is pinned"],
+] as const) {
+  expectSource(verifiedEstateMappings, value, label);
+}
+for (const unresolved of ["Charlotte Amalie", "Lindbergh Bay", "Magens Bay", "East End", "Estate Bakkeroe", "Estate Contant", "Estate Shoys"]) {
+  if (verifiedEstateMappings.includes(`\"${unresolved}\"`)) {
+    throw new Error(`Stay mobility handoff contract failed: unresolved mapping was auto-approved: ${unresolved}`);
   }
 }
 
