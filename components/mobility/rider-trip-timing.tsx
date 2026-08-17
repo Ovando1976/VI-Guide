@@ -1,6 +1,15 @@
 "use client";
 
-import { Check, Clock3, CreditCard, ShieldCheck, TimerReset } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Check,
+  Clock3,
+  CreditCard,
+  MapPin,
+  ShieldCheck,
+  TimerReset,
+  Users,
+} from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { subscribeToRiderBookings } from "@/lib/firestore-trips";
@@ -47,6 +56,7 @@ export function RiderTripTiming({ riderId }: { riderId: string }) {
   const stageIndex = STAGES.findIndex((item) => item.status === booking.status);
   const payment = paymentPresentation(booking);
   const lifecycle = lifecyclePresentation(booking.status);
+  const prep = pickupPreparation(booking);
 
   return (
     <section className="mb-6 overflow-hidden rounded-[28px] border border-teal-900/10 bg-white shadow-sm">
@@ -128,9 +138,153 @@ export function RiderTripTiming({ riderId }: { riderId: string }) {
             </p>
           </div>
         </div>
+
+        {booking.status !== "in_progress" ? (
+          <div className="mt-5 rounded-[24px] border border-slate-200 bg-[#f8f4ea] p-4 sm:p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[.16em] text-teal-700">Pickup readiness</div>
+                <div className="mt-1 text-lg font-black tracking-[-.025em] text-[#043331]">{prep.title}</div>
+                <p className="mt-1 max-w-2xl text-xs font-semibold leading-5 text-slate-600">{prep.detail}</p>
+              </div>
+              {booking.scheduledAt ? (
+                <div className="rounded-2xl bg-white px-3 py-2 text-right shadow-sm">
+                  <div className="text-[8px] font-black uppercase tracking-[.12em] text-slate-400">Scheduled</div>
+                  <div className="mt-1 text-xs font-black text-[#043331]">{formatDateTime(booking.scheduledAt)}</div>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              <ReadinessItem
+                icon={<MapPin className="h-4 w-4" />}
+                label="Pickup point"
+                value={booking.origin.estateName}
+                detail={booking.origin.notes || prep.pickupDetail}
+              />
+              <ReadinessItem
+                icon={<Users className="h-4 w-4" />}
+                label="Travelers"
+                value={`${booking.passengers} ${booking.passengers === 1 ? "rider" : "riders"}`}
+                detail="Make sure everyone in the party is ready before the driver arrives."
+              />
+              <ReadinessItem
+                icon={<BriefcaseBusiness className="h-4 w-4" />}
+                label="Luggage"
+                value={`${booking.luggage} ${booking.luggage === 1 ? "bag" : "bags"}`}
+                detail={booking.luggage > 0 ? "Keep bags together and ready for loading." : "No luggage was recorded on this booking."}
+              />
+            </div>
+
+            {prep.connectionDetail ? (
+              <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-semibold leading-5 text-amber-950">
+                <span className="font-black">Connection watch:</span> {prep.connectionDetail}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </section>
   );
+}
+
+function ReadinessItem({
+  icon,
+  label,
+  value,
+  detail,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  detail: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[.13em] text-slate-400">
+        <span className="text-teal-700">{icon}</span> {label}
+      </div>
+      <div className="mt-2 text-sm font-black text-[#043331]">{value}</div>
+      <p className="mt-1 text-xs font-semibold leading-5 text-slate-500">{detail}</p>
+    </div>
+  );
+}
+
+function pickupPreparation(booking: RideBooking) {
+  const accessDetail: Record<RideBooking["origin"]["accessType"], string> = {
+    airport: "Meet at the saved airport pickup point and keep flight details handy.",
+    ferry: "Wait at the saved ferry pickup point, clear of boarding traffic and taxi lanes.",
+    beach: "Move to the safest accessible roadside pickup point before the driver arrives.",
+    resort: "Use the resort’s designated taxi or guest pickup area when available.",
+    villa: "Be ready at the accessible road entrance if the property driveway is difficult to enter.",
+    roadside: "Wait in a safe visible location where the driver can stop without blocking traffic.",
+  };
+
+  const connection = booking.connectionKind && booking.connectionDeadline
+    ? `${connectionLabel(booking.connectionKind)} deadline ${formatDateTime(booking.connectionDeadline)}. Leave margin for traffic, loading, check-in, security, or boarding.`
+    : null;
+
+  switch (booking.status) {
+    case "requested":
+      return {
+        title: "Get ready while dispatch finds your driver",
+        detail: "Confirm your pickup point, party size, and bags now so you can move quickly once a driver is assigned.",
+        pickupDetail: accessDetail[booking.origin.accessType],
+        connectionDetail: connection,
+      };
+    case "matched":
+      return {
+        title: "Your driver is assigned — prepare to move",
+        detail: "Keep the party together, watch the verified driver/taxi details below, and be ready before the driver starts the final approach.",
+        pickupDetail: accessDetail[booking.origin.accessType],
+        connectionDetail: connection,
+      };
+    case "driver_en_route":
+      return {
+        title: "Be at the pickup point now",
+        detail: "Your driver is moving toward you. Head to the saved pickup point with your full party and luggage ready.",
+        pickupDetail: accessDetail[booking.origin.accessType],
+        connectionDetail: connection,
+      };
+    case "arrived":
+      return {
+        title: "Driver waiting — verify before boarding",
+        detail: "Match the arriving taxi and driver to the verified booking details below before entering the vehicle.",
+        pickupDetail: accessDetail[booking.origin.accessType],
+        connectionDetail: connection,
+      };
+    default:
+      return {
+        title: "Pickup readiness",
+        detail: "Keep your party and bags together and follow the saved pickup instructions.",
+        pickupDetail: accessDetail[booking.origin.accessType],
+        connectionDetail: connection,
+      };
+  }
+}
+
+function connectionLabel(kind: NonNullable<RideBooking["connectionKind"]>) {
+  switch (kind) {
+    case "flight":
+      return "Flight";
+    case "ferry":
+      return "Ferry";
+    case "cruise":
+      return "Cruise";
+    case "appointment":
+      return "Appointment";
+  }
+}
+
+function formatDateTime(value: string) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
 }
 
 function lifecyclePresentation(status: RideBooking["status"]) {
