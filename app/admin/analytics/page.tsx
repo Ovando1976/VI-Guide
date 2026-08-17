@@ -39,6 +39,7 @@ export default async function Phase1AnalyticsPage() {
     summary.financial.clientOriginated === 0 &&
     summary.financial.unattributed === 0 &&
     summary.cruise.returnBufferMissing === 0 &&
+    summary.cruise.returnBufferFailed === 0 &&
     summary.funnel.every((step) => step.count > 0);
 
   return (
@@ -49,7 +50,7 @@ export default async function Phase1AnalyticsPage() {
         text={
           gatePassed
             ? "Observed data satisfies the Phase 1 production invariants in this 1,000-event proof window."
-            : "Phase 1 is not production-ready. One or more required funnel steps or invariants are still missing."
+            : "Phase 1 is not production-ready. One or more required funnel steps or invariants are still missing or failing."
         }
       />
 
@@ -90,13 +91,14 @@ export default async function Phase1AnalyticsPage() {
 
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-700">Cruise return buffer</p>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-4 gap-3">
             <Metric label="Reported" value={summary.cruise.returnBufferReported} compact />
             <Metric label="Met" value={summary.cruise.returnBufferMet} compact />
+            <Metric label="Failed" value={summary.cruise.returnBufferFailed} compact danger={summary.cruise.returnBufferFailed > 0} />
             <Metric label="Missing" value={summary.cruise.returnBufferMissing} compact danger={summary.cruise.returnBufferMissing > 0} />
           </div>
           <p className="mt-5 text-sm leading-6 text-slate-600">
-            Cruise plan, activity, and checkout events must explicitly include a boolean <code className="rounded bg-slate-100 px-1.5 py-0.5">return_buffer_met</code> result.
+            Cruise plan, activity, and checkout events must explicitly include <code className="rounded bg-slate-100 px-1.5 py-0.5">return_buffer_met: true</code>. A false or missing result blocks release.
           </p>
         </div>
       </section>
