@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+import { cruiseReturnBufferEvidence } from "@/lib/analytics/cruise-return-buffer";
 import { recordServerJourneyEvent } from "@/lib/analytics/server-journey-event";
+import type { VIIsland } from "@/lib/analytics/vi-event";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -11,7 +13,6 @@ import {
   isValidCommerceDeposit,
   normalizeCommerceEmail,
 } from "@/lib/payments/commerce-checkout-integrity";
-import type { VIIsland } from "@/lib/analytics/vi-event";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -63,6 +64,17 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       { error: "This booking is not currently awaiting a valid payment." },
+      { status: 409 },
+    );
+  }
+
+  const initialCruiseBuffer = cruiseReturnBufferEvidence(booking);
+  if (initialCruiseBuffer && !initialCruiseBuffer.returnBufferMet) {
+    return NextResponse.json(
+      {
+        error:
+          "Cruise-day checkout is blocked until the verified return-to-ship buffer is restored.",
+      },
       { status: 409 },
     );
   }
@@ -131,12 +143,15 @@ export async function POST(request: NextRequest) {
       const currentSnapshot = await transaction.get(bookingRef);
       const current = currentSnapshot.data() ?? {};
       const currentAmount = Number(current.depositAmountCents ?? 0);
+      const currentCruiseBuffer = cruiseReturnBufferEvidence(current);
 
       if (
         !currentSnapshot.exists ||
         normalizeCommerceEmail(current.email) !== email ||
         String(current.status ?? "") !== "payment_required" ||
-        currentAmount !== amountCents
+        currentAmount !== amountCents ||
+        Boolean(currentCruiseBuffer) !== Boolean(initialCruiseBuffer) ||
+        (currentCruiseBuffer && !currentCruiseBuffer.returnBufferMet)
       ) {
         throw new CheckoutStateChangedError();
       }
@@ -150,12 +165,15 @@ export async function POST(request: NextRequest) {
         updatedAt,
       });
 
-      recordCruiseCheckoutEvidence(transaction, db, {
-        bookingId,
-        checkoutSessionId: session.id,
-        occurredAt: updatedAt,
-        booking: current,
-      });
+      if (currentCruiseBuffer) {
+        recordCruiseCheckoutEvidence(transaction, db, {
+          bookingId,
+          checkoutSessionId: session.id,
+          occurredAt: updatedAt,
+          booking: current,
+          buffer: currentCruiseBuffer,
+        });
+      }
     });
   } catch (error) {
     if (error instanceof CheckoutStateChangedError) {
@@ -182,35 +200,19 @@ function recordCruiseCheckoutEvidence(
     checkoutSessionId: string;
     occurredAt: string;
     booking: FirebaseFirestore.DocumentData;
+    buffer: NonNullable<ReturnType<typeof cruiseReturnBufferEvidence>>;
   },
 ) {
-  const shore =
-    input.booking.shoreExcursion && typeof input.booking.shoreExcursion === "object"
-      ? (input.booking.shoreExcursion as Record<string, unknown>)
-      : null;
-  if (!shore || String(shore.timingStatus ?? "") !== "buffer_verified") return;
-
-  const verifiedReturnBufferMinutes = Number(
-    shore.verifiedReturnBufferMinutes ?? 0,
-  );
-  const requiredReturnBufferMinutes = Number(
-    shore.minReturnBufferMinutes ?? 0,
-  );
-  const returnBufferMet =
-    Number.isFinite(verifiedReturnBufferMinutes) &&
-    Number.isFinite(requiredReturnBufferMinutes) &&
-    verifiedReturnBufferMinutes >= requiredReturnBufferMinutes &&
-    requiredReturnBufferMinutes > 0;
   const listingId = clean(input.booking.listingId, 180);
   const itineraryId = `cruise-booking:${input.bookingId}`;
   const sessionId = `checkout_${input.checkoutSessionId}`;
   const island = analyticsIsland(input.booking.island);
   const commonPayload = {
-    return_buffer_met: returnBufferMet,
-    returnBufferMinutes: verifiedReturnBufferMinutes,
-    requiredReturnBufferMinutes,
-    allAboardTime: clean(shore.allAboardTime, 40),
-    safeReturnDeadline: clean(shore.safeReturnDeadline, 40),
+    return_buffer_met: input.buffer.returnBufferMet,
+    returnBufferMinutes: input.buffer.verifiedReturnBufferMinutes,
+    requiredReturnBufferMinutes: input.buffer.requiredReturnBufferMinutes,
+    allAboardTime: input.buffer.allAboardTime,
+    safeReturnDeadline: input.buffer.safeReturnDeadline,
     timingStatus: "buffer_verified",
   };
 
@@ -227,8 +229,8 @@ function recordCruiseCheckoutEvidence(
     bookingId: input.bookingId,
     payload: {
       ...commonPayload,
-      shipName: clean(shore.shipName, 160),
-      portId: clean(shore.portId, 80),
+      shipName: input.buffer.shipName,
+      portId: input.buffer.portId,
     },
   });
   recordServerJourneyEvent(transaction, db, {
