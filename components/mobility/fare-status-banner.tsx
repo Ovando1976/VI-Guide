@@ -65,18 +65,18 @@ export function FareStatusBanner() {
         }
         return response;
       } catch (error) {
-        if (
-          isQuote &&
-          requestId === latestQuoteRequest &&
-          !isAbortError(error)
-        ) {
-          emitStatus({
-            kind: "review",
-            message:
-              error instanceof Error
-                ? error.message
-                : "The official fare could not be verified. Dispatch confirmation is required.",
-          });
+        if (isQuote && requestId === latestQuoteRequest) {
+          if (isAbortError(error)) {
+            emitStatus({ kind: "idle" });
+          } else {
+            emitStatus({
+              kind: "review",
+              message:
+                error instanceof Error
+                  ? error.message
+                  : "The official fare could not be verified. Dispatch confirmation is required.",
+            });
+          }
         }
         throw error;
       }
