@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 import { MobilityBookingScreen } from "@/components/mobility-booking-screen";
+import { FareStatusBanner } from "@/components/mobility/fare-status-banner";
 import { RideConfirmationPortal } from "@/components/mobility/ride-confirmation-portal";
 import { TripAwareMobilityHandoff } from "@/components/mobility/trip-aware-mobility-handoff";
 
@@ -128,6 +129,7 @@ export default function MobilityPage({
       `}</style>
       <Suspense fallback={<MobilityLoadingState />}>
         <TripAwareMobilityHandoff />
+        <FareStatusBanner />
         <MobilityBookingScreen />
         <RideConfirmationPortal />
       </Suspense>
