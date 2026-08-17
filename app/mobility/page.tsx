@@ -44,11 +44,94 @@ export default function MobilityPage({
   if (normalizedHref) redirect(normalizedHref);
 
   return (
-    <Suspense fallback={<MobilityLoadingState />}>
-      <TripAwareMobilityHandoff />
-      <MobilityBookingScreen />
-      <RideConfirmationPortal />
-    </Suspense>
+    <>
+      <style>{`
+        @media (max-width: 639px) {
+          main:has(section#book) {
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 12px;
+          }
+
+          main:has(section#book) > div {
+            gap: 14px;
+          }
+
+          main:has(section#book) > div > section:first-of-type {
+            min-height: 228px;
+            border-radius: 26px;
+          }
+
+          main:has(section#book) > div > section:first-of-type > div:last-child {
+            min-height: 228px;
+            gap: 12px;
+            padding: 18px;
+          }
+
+          main:has(section#book) > div > section:first-of-type h1 {
+            margin-top: 12px;
+            font-size: 2rem;
+            line-height: .96;
+          }
+
+          main:has(section#book) > div > section:first-of-type h1 + p {
+            margin-top: 8px;
+            font-size: .75rem;
+            line-height: 1.25rem;
+          }
+
+          main:has(section#book) > div > section:first-of-type div.grid.gap-3 {
+            display: none;
+          }
+
+          section#book {
+            border-radius: 28px;
+            overflow: visible;
+          }
+
+          section#book > header {
+            border-radius: 28px 28px 0 0;
+            padding: 16px;
+          }
+
+          section#book > header h2 {
+            margin-top: 10px;
+            font-size: 1.65rem;
+            line-height: 1;
+          }
+
+          section#book > header h2 + p {
+            display: none;
+          }
+
+          section#book > header .grid-cols-4 {
+            gap: 6px;
+          }
+
+          section#book > header .grid-cols-4 button {
+            border-radius: 12px;
+            padding: 8px 4px;
+          }
+
+          section#book > div:last-of-type.sticky {
+            bottom: calc(10px + env(safe-area-inset-bottom));
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+          }
+
+          section#book #trip-review .text-5xl {
+            font-size: 3.5rem;
+            line-height: 1;
+          }
+        }
+      `}</style>
+      <Suspense fallback={<MobilityLoadingState />}>
+        <TripAwareMobilityHandoff />
+        <MobilityBookingScreen />
+        <RideConfirmationPortal />
+      </Suspense>
+    </>
   );
 }
 
