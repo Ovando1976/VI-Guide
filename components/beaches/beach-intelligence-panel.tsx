@@ -5,13 +5,17 @@ import { useEffect, useState } from "react";
 import { CloudSun, ExternalLink, LoaderCircle, MapPinned, Navigation, Sparkles, Waves, Wind } from "lucide-react";
 
 type IslandCode = "stt" | "stj" | "stx";
-type Conditions = { temperatureF: number; windMph: number; windDirection: string; precipitationChance: number; shortForecast: string; updatedAt: string | null; sourceUrl: string };
+type Conditions = { temperatureF: number | null; windMph: number | null; windDirection: string | null; precipitationChance: number | null; shortForecast: string | null; updatedAt: string | null; sourceUrl: string };
 
 const ISLANDS: Record<IslandCode, { name: string; beach: string; slug: string }> = {
   stt: { name: "St. Thomas", beach: "Magens Bay", slug: "magens-bay" },
   stj: { name: "St. John", beach: "Maho Bay", slug: "maho-bay" },
   stx: { name: "St. Croix", beach: "Rainbow Beach", slug: "rainbow-beach" },
 };
+
+function nullableNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
 
 export function BeachIntelligencePanel() {
   const [island, setIsland] = useState<IslandCode>("stt");
@@ -22,17 +26,18 @@ export function BeachIntelligencePanel() {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
+    setConditions(null);
     fetch(`/api/beach-intelligence?island=${island}`, { signal: controller.signal, cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("forecast unavailable");
         return response.json();
       })
       .then((data) => setConditions({
-        temperatureF: Number(data.temperatureF ?? 0),
-        windMph: Number(data.windMph ?? 0),
-        windDirection: String(data.windDirection ?? ""),
-        precipitationChance: Number(data.precipitationChance ?? 0),
-        shortForecast: String(data.shortForecast ?? "Forecast available"),
+        temperatureF: nullableNumber(data.temperatureF),
+        windMph: nullableNumber(data.windMph),
+        windDirection: typeof data.windDirection === "string" && data.windDirection.trim() ? data.windDirection : null,
+        precipitationChance: nullableNumber(data.precipitationChance),
+        shortForecast: typeof data.shortForecast === "string" && data.shortForecast.trim() ? data.shortForecast : null,
         updatedAt: data.updatedAt ? String(data.updatedAt) : null,
         sourceUrl: String(data.sourceUrl ?? "https://www.weather.gov/sju/"),
       }))
@@ -66,12 +71,12 @@ export function BeachIntelligencePanel() {
           <div className="flex items-center justify-between gap-3"><h3 className="text-2xl font-black">{profile.name}</h3>{loading ? <LoaderCircle className="h-5 w-5 animate-spin" /> : null}</div>
           {conditions ? (
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              <Signal icon={CloudSun} label="Temperature" value={`${Math.round(conditions.temperatureF)}°F`} />
-              <Signal icon={Wind} label="Wind" value={`${Math.round(conditions.windMph)} mph ${conditions.windDirection}`} />
-              <Signal icon={CloudSun} label="Rain chance" value={`${Math.round(conditions.precipitationChance)}%`} />
+              <Signal icon={CloudSun} label="Temperature" value={conditions.temperatureF === null ? "Unavailable" : `${Math.round(conditions.temperatureF)}°F`} />
+              <Signal icon={Wind} label="Wind" value={conditions.windMph === null ? "Unavailable" : `${Math.round(conditions.windMph)} mph${conditions.windDirection ? ` ${conditions.windDirection}` : ""}`} />
+              <Signal icon={CloudSun} label="Rain chance" value={conditions.precipitationChance === null ? "Unavailable" : `${Math.round(conditions.precipitationChance)}%`} />
             </div>
           ) : !loading ? <div className="mt-4 rounded-2xl border border-dashed p-5 text-sm font-semibold text-slate-600">Live regional conditions are temporarily unavailable. Use the official checks before departure.</div> : null}
-          {conditions ? <p className="mt-3 text-xs font-semibold text-slate-500">{conditions.shortForecast}</p> : null}
+          {conditions?.shortForecast ? <p className="mt-3 text-xs font-semibold text-slate-500">{conditions.shortForecast}</p> : null}
           <div className="mt-5 grid gap-2 sm:grid-cols-3">
             <Link href={`/beaches/${profile.slug}`} className="flex min-h-11 items-center justify-center rounded-2xl bg-[#043331] px-4 text-[9px] font-black uppercase tracking-[.14em] text-white">Explore {profile.beach}</Link>
             <Link href={mapHref} className="flex min-h-11 items-center justify-center gap-2 rounded-2xl border bg-white px-4 text-[9px] font-black uppercase"><MapPinned className="h-4 w-4" /> Map</Link>
