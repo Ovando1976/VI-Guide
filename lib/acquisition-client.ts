@@ -5,6 +5,8 @@ import {
   type AcquisitionAttribution,
   type AcquisitionEventName,
 } from "@/lib/acquisition";
+import { trackEvent } from "@/lib/analytics/tracking-client";
+import type { ClientVIEventName, VIEventPayload } from "@/lib/analytics/vi-event";
 
 function readAttribution(): AcquisitionAttribution | undefined {
   try {
@@ -15,35 +17,29 @@ function readAttribution(): AcquisitionAttribution | undefined {
   }
 }
 
+function canonicalEventName(name: AcquisitionEventName): ClientVIEventName {
+  // The browser may observe a successful payment return page, but it is never
+  // authoritative for money. Stripe remains the only source of financial truth.
+  return name === "purchase_completed" ? "purchase_return_viewed" : name;
+}
+
 export function trackAcquisitionEvent(
   name: AcquisitionEventName,
   properties?: Record<string, string | number | boolean | null>,
 ) {
   if (typeof window === "undefined") return;
 
-  const payload = JSON.stringify({
-    name,
-    path: `${window.location.pathname}${window.location.search}`,
-    attribution: readAttribution(),
-    properties,
-  });
+  const attribution = readAttribution();
+  const payload: VIEventPayload = {
+    ...properties,
+    acquisitionSource: attribution?.source ?? null,
+    acquisitionMedium: attribution?.medium ?? null,
+    acquisitionCampaign: attribution?.campaign ?? null,
+    acquisitionPartnerId: attribution?.partnerId ?? null,
+    acquisitionPlacementId: attribution?.placementId ?? null,
+    acquisitionLandingPath: attribution?.landingPath ?? null,
+    acquisitionReferrer: attribution?.referrer ?? null,
+  };
 
-  try {
-    if (navigator.sendBeacon) {
-      const sent = navigator.sendBeacon(
-        "/api/acquisition/events",
-        new Blob([payload], { type: "application/json" }),
-      );
-      if (sent) return;
-    }
-  } catch {
-    // Fall through to fetch.
-  }
-
-  void fetch("/api/acquisition/events", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: payload,
-    keepalive: true,
-  }).catch(() => undefined);
+  trackEvent(canonicalEventName(name), payload, { source: "acquisition" });
 }
