@@ -193,7 +193,7 @@ export default function CheckoutBookingPage() {
             <ShieldCheck size={15} /> Secure USVI Explorer payment
           </div>
           <h1 className="mt-4 text-3xl font-black tracking-[-.04em] sm:text-4xl">
-            Pay your ride request securely
+            Complete your ride payment
           </h1>
           <p className="mt-3 text-sm font-semibold leading-6 text-white/68">
             Payment submits this request into dispatch. Your ride is confirmed only after an authorized operator is assigned.
