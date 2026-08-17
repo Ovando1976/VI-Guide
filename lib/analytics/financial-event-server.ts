@@ -69,7 +69,9 @@ export function buildFinancialEventRecord(input: RecordFinancialEventInput) {
   const bookingId = clean(input.attribution.bookingId);
   const providerId = clean(input.attribution.providerId);
   const stripeEventId = clean(input.stripeEventId);
-  const idempotencyKey = clean(input.idempotencyKey) || stripeEventId;
+  const payloadLedgerEntryId = clean(input.payload?.ledgerEntryId);
+  const idempotencyKey =
+    clean(input.idempotencyKey) || payloadLedgerEntryId || stripeEventId;
   const eventId = financialEventDocumentId({
     eventName: input.eventName,
     stripeEventId,
