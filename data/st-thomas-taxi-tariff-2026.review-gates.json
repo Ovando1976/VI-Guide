@@ -7,31 +7,19 @@
       "canonicalSourceName": "Town",
       "candidateAlias": "Charlotte Amalie",
       "scope": "either_endpoint",
-      "reason": "Operational endpoint mapping requires human confirmation before automatic quoting."
+      "reason": "Operational endpoint mapping requires authoritative confirmation before automatic quoting."
     },
     {
       "canonicalSourceName": "Airport Terminal",
       "candidateAlias": "Lindbergh Bay",
       "scope": "either_endpoint",
-      "reason": "The published airport-terminal tariff must not automatically broaden to generic Lindbergh Bay without confirmation."
-    },
-    {
-      "canonicalSourceName": "Dorotdea Estate",
-      "candidateAlias": "Dorothea Estate",
-      "scope": "either_endpoint",
-      "reason": "Probable source spelling correction; keep review-only until human confirmation."
+      "reason": "Intentionally keep this mapping narrow: an Airport Terminal tariff must not automatically broaden to generic Lindbergh Bay."
     },
     {
       "canonicalSourceName": "Dorothea",
       "candidateAlias": "Dorothea Estate",
       "scope": "either_endpoint",
-      "reason": "Do not broaden a published Dorothea endpoint to the estate endpoint without human confirmation."
-    },
-    {
-      "canonicalSourceName": "Estate tdomas New Qtr",
-      "candidateAlias": "Estate Thomas New Quarter",
-      "scope": "either_endpoint",
-      "reason": "Probable source spelling correction; keep review-only until human confirmation."
+      "reason": "Intentionally keep this mapping narrow: do not broaden a published Dorothea endpoint to Dorothea Estate without authoritative confirmation."
     }
   ],
   "fareConfirmations": [
@@ -52,6 +40,14 @@
     {
       "source": "$18,00",
       "normalized": "$18.00"
+    },
+    {
+      "source": "Dorotdea Estate",
+      "normalized": "Dorothea Estate"
+    },
+    {
+      "source": "Estate tdomas New Qtr",
+      "normalized": "Estate Thomas New Quarter"
     }
   ]
 }
