@@ -34,7 +34,7 @@ export function MapEntityContextBar() {
   const lat = finiteCoordinate(searchParams.get("placeLat"), -90, 90);
   const lng = finiteCoordinate(searchParams.get("placeLng"), -180, 180);
   const summary = bounded(searchParams.get("placeDescription"), 1000) || `${name} on ${islandLabel(island)}.`;
-  const rideHref = buildRideHref({ name, island, lat, lng });
+  const rideHref = buildRideHref({ name, island, type, lat, lng });
   const conciergeHref = buildContextualConciergeHref({
     name,
     island,
@@ -76,7 +76,7 @@ export function MapEntityContextBar() {
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
             <AddToJourneyButton stop={stop} className="min-h-12 px-3" />
             <Link href={rideHref} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-3 text-[9px] font-black uppercase tracking-[.1em] text-[#043331]">
-              <Navigation className="h-4 w-4" /> Ride here
+              <Navigation className="h-4 w-4" /> Get official ride price
             </Link>
             <Link href={conciergeHref} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0f766e] px-3 text-[9px] font-black uppercase tracking-[.1em] text-white">
               <MessageCircleMore className="h-4 w-4" /> Ask AI
@@ -128,8 +128,13 @@ function resolveDetailHref({ type, slug, href }: { type: TerritoryMapPlaceType; 
   return `/places/${encodeURIComponent(slug)}`;
 }
 
-function buildRideHref({ name, island, lat, lng }: { name: string; island: "stt" | "stj" | "stx"; lat?: number; lng?: number }) {
-  const params = new URLSearchParams({ island, destination: name });
+function buildRideHref({ name, island, type, lat, lng }: { name: string; island: "stt" | "stj" | "stx"; type: TerritoryMapPlaceType; lat?: number; lng?: number }) {
+  const params = new URLSearchParams({
+    island,
+    destinationName: name,
+    source: "living-map",
+    destinationType: type,
+  });
   if (typeof lat === "number") params.set("toLat", String(lat));
   if (typeof lng === "number") params.set("toLng", String(lng));
   return `/mobility?${params.toString()}`;
