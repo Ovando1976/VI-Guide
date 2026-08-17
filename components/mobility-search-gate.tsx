@@ -14,13 +14,20 @@ function isIslandCode(value: string | null): value is IslandCode {
 export function MobilitySearchGate() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const resolvedFrom = searchParams.get("from")?.trim() ?? "";
+  const resolvedTo = searchParams.get("to")?.trim() ?? "";
+  const hasResolvedRoute = Boolean(resolvedFrom && resolvedTo && resolvedFrom !== resolvedTo);
   const [estates, setEstates] = useState<EstateRecord[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [fromGeoid, setFromGeoid] = useState(searchParams.get("from") ?? "");
-  const [toGeoid, setToGeoid] = useState(searchParams.get("to") ?? "");
+  const [loading, setLoading] = useState(!hasResolvedRoute);
+  const [fromGeoid, setFromGeoid] = useState(resolvedFrom);
+  const [toGeoid, setToGeoid] = useState(resolvedTo);
   const island: IslandCode = isIslandCode(searchParams.get("island")) ? searchParams.get("island") as IslandCode : "stt";
 
   useEffect(() => {
+    if (hasResolvedRoute) {
+      setLoading(false);
+      return;
+    }
     const controller = new AbortController();
     fetch("/api/estates", { cache: "no-store", signal: controller.signal })
       .then(async (response) => {
@@ -31,7 +38,7 @@ export function MobilitySearchGate() {
       .catch(() => setEstates([]))
       .finally(() => setLoading(false));
     return () => controller.abort();
-  }, []);
+  }, [hasResolvedRoute]);
 
   const availableEstates = useMemo(
     () => estates.filter((estate) => estate.island === island),
@@ -65,6 +72,17 @@ export function MobilitySearchGate() {
     router.push(`/mobility?${params.toString()}#book`);
   }
 
+  if (hasResolvedRoute) {
+    return (
+      <style>{`
+        section#book:has(header button[aria-current="step"]:first-child)
+          .mx-auto.max-w-4xl.space-y-6 > * > :nth-child(2) {
+          display: none;
+        }
+      `}</style>
+    );
+  }
+
   if (loading) {
     return <div className="mx-auto mt-3 h-28 max-w-7xl animate-pulse rounded-[24px] bg-white/80" aria-hidden="true" />;
   }
@@ -75,10 +93,10 @@ export function MobilitySearchGate() {
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
-              <MapPinned className="h-4 w-4" /> Start with a place you know
+              <MapPinned className="h-4 w-4" /> Step 1 · Find your route
             </div>
-            <h2 className="mt-1 text-xl font-black tracking-[-.035em] text-[#043331] sm:text-2xl">Pickup and destination</h2>
-            <p className="mt-1 max-w-2xl text-xs font-semibold leading-5 text-slate-500">Search an airport, hotel, beach, ferry terminal, town, or harbor. We only continue after both places resolve to official taxi fare areas.</p>
+            <h2 className="mt-1 text-xl font-black tracking-[-.035em] text-[#043331] sm:text-2xl">Where should we pick you up?</h2>
+            <p className="mt-1 max-w-2xl text-xs font-semibold leading-5 text-slate-500">Search an airport, hotel, beach, ferry terminal, town, or harbor. We resolve each place to an official taxi fare area before any quote is requested.</p>
           </div>
           {routeReady ? (
             <button
@@ -86,7 +104,7 @@ export function MobilitySearchGate() {
               onClick={continueToBooking}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 text-[9px] font-black uppercase tracking-[.12em] text-[#043331] shadow-sm"
             >
-              Use these places <ArrowRight className="h-4 w-4" />
+              Get official fare <ArrowRight className="h-4 w-4" />
             </button>
           ) : null}
         </div>
@@ -103,7 +121,7 @@ export function MobilitySearchGate() {
 
         {routeReady ? (
           <div className="mt-3 rounded-2xl bg-teal-50 px-4 py-3 text-xs font-bold text-teal-900">
-            Official fare areas resolved: {fromEstate?.baseName} → {toEstate?.baseName}. Continue to the existing published-fare booking flow.
+            Fare areas confirmed: {fromEstate?.baseName} → {toEstate?.baseName}. Next, review the route and published fare before confirming your ride.
           </div>
         ) : null}
       </div>
