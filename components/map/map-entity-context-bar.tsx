@@ -134,10 +134,11 @@ function buildRideHref({ name, island, type, lat, lng }: { name: string; island:
     destinationName: name,
     source: "living-map",
     destinationType: type,
+    returnTo: "/map",
   });
   if (typeof lat === "number") params.set("toLat", String(lat));
   if (typeof lng === "number") params.set("toLng", String(lng));
-  return `/mobility?${params.toString()}`;
+  return `/mobility?${params.toString()}#book`;
 }
 
 function bounded(value: string | null, max: number) { return (value?.trim() || "").slice(0, max); }
