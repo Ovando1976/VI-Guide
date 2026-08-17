@@ -14,6 +14,7 @@ import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import { SavePlaceButton } from "@/components/place/save-place-button";
 import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import { buildMobilityRideHref } from "@/lib/mobility/ride-links";
 import type { TerritoryMapPlaceType } from "@/types/territory-map";
 
 export function MapEntityContextBar() {
@@ -34,7 +35,7 @@ export function MapEntityContextBar() {
   const lat = finiteCoordinate(searchParams.get("placeLat"), -90, 90);
   const lng = finiteCoordinate(searchParams.get("placeLng"), -180, 180);
   const summary = bounded(searchParams.get("placeDescription"), 1000) || `${name} on ${islandLabel(island)}.`;
-  const rideHref = buildRideHref({ name, island, type, lat, lng });
+  const rideHref = buildMobilityRideHref({ name, island, type, lat, lng, source: "living-map", returnTo: "/map" });
   const conciergeHref = buildContextualConciergeHref({
     name,
     island,
@@ -126,19 +127,6 @@ function resolveDetailHref({ type, slug, href }: { type: TerritoryMapPlaceType; 
   if (type === "stay") return `/accommodations/${encodeURIComponent(slug)}`;
   if (type === "historic") return `/historic/${encodeURIComponent(slug)}`;
   return `/places/${encodeURIComponent(slug)}`;
-}
-
-function buildRideHref({ name, island, type, lat, lng }: { name: string; island: "stt" | "stj" | "stx"; type: TerritoryMapPlaceType; lat?: number; lng?: number }) {
-  const params = new URLSearchParams({
-    island,
-    destinationName: name,
-    source: "living-map",
-    destinationType: type,
-    returnTo: "/map",
-  });
-  if (typeof lat === "number") params.set("toLat", String(lat));
-  if (typeof lng === "number") params.set("toLng", String(lng));
-  return `/mobility?${params.toString()}#book`;
 }
 
 function bounded(value: string | null, max: number) { return (value?.trim() || "").slice(0, max); }
