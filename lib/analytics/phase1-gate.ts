@@ -1,5 +1,6 @@
 import {
   FINANCIAL_VI_EVENT_NAMES,
+  type FinancialVIEventName,
   type VIEvent,
   type VIEventName,
 } from "@/lib/analytics/vi-event";
@@ -40,7 +41,7 @@ export function evaluatePhase1Gate(events: VIEvent[]): Phase1GateResult {
 
   for (const event of events) {
     const financial = FINANCIAL_VI_EVENT_NAMES.has(
-      event.eventName as Parameters<typeof FINANCIAL_VI_EVENT_NAMES.has>[0],
+      event.eventName as FinancialVIEventName,
     );
 
     if (financial) {
@@ -59,12 +60,15 @@ export function evaluatePhase1Gate(events: VIEvent[]): Phase1GateResult {
         });
       }
 
-      const stripeEventId = String(event.payload.stripeEventId ?? "").trim();
+      // The ledger entry is the financial side effect. Prefer it over the Stripe
+      // envelope ID so refund.created + refund.updated cannot count twice.
       const ledgerEntryId = String(event.payload.ledgerEntryId ?? "").trim();
+      const idempotencyKey = String(event.payload.idempotencyKey ?? "").trim();
+      const stripeEventId = String(event.payload.stripeEventId ?? "").trim();
       const financialKey = [
         event.eventName,
         event.bookingId ?? "",
-        stripeEventId || ledgerEntryId || event.eventId,
+        ledgerEntryId || idempotencyKey || stripeEventId || event.eventId,
       ].join("|");
       if (financialKeys.has(financialKey)) {
         violations.push({
