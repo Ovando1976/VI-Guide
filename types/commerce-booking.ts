@@ -69,6 +69,9 @@ export type CommerceBookingRequest = {
   listingHref?: string;
   offerId?: string;
   sourceProposalShareId?: string;
+  analyticsSessionId?: string;
+  analyticsSource?: string;
+  itineraryId?: string;
   island: IntelligenceIsland;
   startDate: string;
   endDate?: string;
