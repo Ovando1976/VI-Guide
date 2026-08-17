@@ -176,10 +176,12 @@ export function applyKnownTariffReviewGates(
     ...input,
     originNames,
     destinationNames,
-    ...(originCandidateAliases.length ? { originCandidateAliases } : {}),
-    ...(destinationCandidateAliases.length
-      ? { destinationCandidateAliases }
-      : {}),
+    originCandidateAliases: originCandidateAliases.length
+      ? originCandidateAliases
+      : undefined,
+    destinationCandidateAliases: destinationCandidateAliases.length
+      ? destinationCandidateAliases
+      : undefined,
     ...(fareGate
       ? {
           fareConfirmationRequired: fareGate.scope,
