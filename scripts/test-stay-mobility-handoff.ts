@@ -24,8 +24,8 @@ function expectSource(source: string, value: string, label: string) {
 for (const [value, label] of [
   ['new URLSearchParams({\n    island: item.island,\n    destination: item.name,', "stay detail carries island and property name"],
   ['rideParams.set("to", item.estateGeoid)', "stay detail uses Mobility's canonical destination geoid key"],
-  ['rideParams.set("toLat", String(item.lat))', "stay detail keeps latitude fallback"],
-  ['rideParams.set("toLng", String(item.lng))', "stay detail keeps longitude fallback"],
+  ['rideParams.set("toLat", String(item.lat))', "stay detail preserves latitude as traveler context"],
+  ['rideParams.set("toLng", String(item.lng))', "stay detail preserves longitude as traveler context"],
   ['rideHref={rideHref}', "stay action card receives the resolved property ride handoff"],
   ['bookingHref: listingHref', "journey stop booking continuity remains intact"],
   ['PremiumDetailShell', "stay detail remains in the shared premium detail shell"],
@@ -45,11 +45,21 @@ for (const [value, label] of [
 
 for (const [value, label] of [
   ['searchParams.get("to")', "Mobility still consumes the canonical destination geoid key"],
-  ['searchParams.get("destinationName") ?? searchParams.get("destination")', "Mobility still accepts property-name fallback"],
-  ['queryCoordinate(searchParams, "toLat")', "Mobility still accepts latitude fallback"],
-  ['queryCoordinate(searchParams, "toLng")', "Mobility still accepts longitude fallback"],
+  ['searchParams.get("destinationName") ?? searchParams.get("destination")', "Mobility still accepts an exact official estate-name handoff"],
+  ['namedMatches.length === 1', "Mobility requires an unambiguous exact official estate-name match"],
 ] as const) {
   expectSource(mobilityScreen, value, label);
+}
+
+for (const [value, label] of [
+  ['queryCoordinate(', "Mobility must not resolve tariff estates from coordinates"],
+  ['nearestEstate(', "Mobility must not select the nearest tariff estate"],
+  ['estateName.includes(requestedName)', "Mobility must not accept partial estate-name matches"],
+  ['requestedName.includes(estateName)', "Mobility must not accept reverse partial estate-name matches"],
+] as const) {
+  if (mobilityScreen.includes(value)) {
+    throw new Error(`Stay mobility handoff contract failed: ${label}`);
+  }
 }
 
 if (stayPage.includes('rideParams.set("toGeoid"')) {
