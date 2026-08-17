@@ -20,6 +20,7 @@ export type Phase1GateViolation = {
     | "duplicate_financial_event"
     | "unattributed_revenue"
     | "missing_return_buffer"
+    | "return_buffer_not_met"
     | "vertical_slice_incomplete";
   message: string;
   eventId?: string;
@@ -80,18 +81,25 @@ export function evaluatePhase1Gate(events: VIEvent[]): Phase1GateResult {
       financialKeys.add(financialKey);
     }
 
-    if (
+    const cruiseBufferEvent =
       event.travelerType === "cruise" &&
       (event.eventName === "plan_created" ||
         event.eventName === "plan_item_added" ||
-        event.eventName === "checkout_started") &&
-      typeof event.payload.return_buffer_met !== "boolean"
-    ) {
-      violations.push({
-        code: "missing_return_buffer",
-        eventId: event.eventId,
-        message: `${event.eventName} must explicitly report return_buffer_met for cruise journeys.`,
-      });
+        event.eventName === "checkout_started");
+    if (cruiseBufferEvent) {
+      if (typeof event.payload.return_buffer_met !== "boolean") {
+        violations.push({
+          code: "missing_return_buffer",
+          eventId: event.eventId,
+          message: `${event.eventName} must explicitly report return_buffer_met for cruise journeys.`,
+        });
+      } else if (event.payload.return_buffer_met !== true) {
+        violations.push({
+          code: "return_buffer_not_met",
+          eventId: event.eventId,
+          message: `${event.eventName} cannot pass the Phase 1 gate unless the cruise return buffer is met.`,
+        });
+      }
     }
   }
 
