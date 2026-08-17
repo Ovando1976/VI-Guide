@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+import { recordServerJourneyEvent } from "@/lib/analytics/server-journey-event";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -10,6 +11,7 @@ import {
   isValidCommerceDeposit,
   normalizeCommerceEmail,
 } from "@/lib/payments/commerce-checkout-integrity";
+import type { VIIsland } from "@/lib/analytics/vi-event";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -147,6 +149,13 @@ export async function POST(request: NextRequest) {
         checkoutCreatedAt: updatedAt,
         updatedAt,
       });
+
+      recordCruiseCheckoutEvidence(transaction, db, {
+        bookingId,
+        checkoutSessionId: session.id,
+        occurredAt: updatedAt,
+        booking: current,
+      });
     });
   } catch (error) {
     if (error instanceof CheckoutStateChangedError) {
@@ -163,6 +172,112 @@ export async function POST(request: NextRequest) {
     checkoutUrl: session.url,
     checkoutSessionId: session.id,
   });
+}
+
+function recordCruiseCheckoutEvidence(
+  transaction: FirebaseFirestore.Transaction,
+  db: FirebaseFirestore.Firestore,
+  input: {
+    bookingId: string;
+    checkoutSessionId: string;
+    occurredAt: string;
+    booking: FirebaseFirestore.DocumentData;
+  },
+) {
+  const shore =
+    input.booking.shoreExcursion && typeof input.booking.shoreExcursion === "object"
+      ? (input.booking.shoreExcursion as Record<string, unknown>)
+      : null;
+  if (!shore || String(shore.timingStatus ?? "") !== "buffer_verified") return;
+
+  const verifiedReturnBufferMinutes = Number(
+    shore.verifiedReturnBufferMinutes ?? 0,
+  );
+  const requiredReturnBufferMinutes = Number(
+    shore.minReturnBufferMinutes ?? 0,
+  );
+  const returnBufferMet =
+    Number.isFinite(verifiedReturnBufferMinutes) &&
+    Number.isFinite(requiredReturnBufferMinutes) &&
+    verifiedReturnBufferMinutes >= requiredReturnBufferMinutes &&
+    requiredReturnBufferMinutes > 0;
+  const listingId = clean(input.booking.listingId, 180);
+  const itineraryId = `cruise-booking:${input.bookingId}`;
+  const sessionId = `checkout_${input.checkoutSessionId}`;
+  const island = analyticsIsland(input.booking.island);
+  const commonPayload = {
+    return_buffer_met: returnBufferMet,
+    returnBufferMinutes: verifiedReturnBufferMinutes,
+    requiredReturnBufferMinutes,
+    allAboardTime: clean(shore.allAboardTime, 40),
+    safeReturnDeadline: clean(shore.safeReturnDeadline, 40),
+    timingStatus: "buffer_verified",
+  };
+
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "plan_created",
+    eventKey: `${input.bookingId}:cruise-plan`,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      shipName: clean(shore.shipName, 160),
+      portId: clean(shore.portId, 80),
+    },
+  });
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "plan_item_added",
+    eventKey: `${input.bookingId}:shore-excursion`,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      activity: "shore_excursion",
+      offerId: clean(input.booking.offerId, 180),
+    },
+  });
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "checkout_started",
+    eventKey: input.checkoutSessionId,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      checkoutSessionId: input.checkoutSessionId,
+      amountCents: Number(input.booking.depositAmountCents ?? 0),
+    },
+  });
+}
+
+function analyticsIsland(value: unknown): VIIsland | undefined {
+  switch (String(value ?? "").trim()) {
+    case "stt":
+      return "st_thomas";
+    case "stj":
+      return "st_john";
+    case "stx":
+      return "st_croix";
+    default:
+      return undefined;
+  }
 }
 
 class CheckoutStateChangedError extends Error {}
