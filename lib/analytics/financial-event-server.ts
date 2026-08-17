@@ -25,6 +25,7 @@ export type FinancialEventAttribution = {
 export type RecordFinancialEventInput = {
   eventName: FinancialVIEventName;
   stripeEventId: string;
+  idempotencyKey?: string;
   occurredAt: string;
   attribution: FinancialEventAttribution;
   payload?: VIEventPayload;
@@ -54,24 +55,29 @@ export function financialEventDocumentId(input: {
   eventName: FinancialVIEventName;
   stripeEventId: string;
   bookingId: string;
+  idempotencyKey?: string;
 }) {
-  const stripeEventId = safeKey(clean(input.stripeEventId));
+  const eventKey = safeKey(
+    clean(input.idempotencyKey) || clean(input.stripeEventId),
+  );
   const bookingId = safeKey(clean(input.bookingId));
-  if (!stripeEventId || !bookingId) return "";
-  return `financial_${input.eventName}_${stripeEventId}_${bookingId}`;
+  if (!eventKey || !bookingId) return "";
+  return `financial_${input.eventName}_${eventKey}_${bookingId}`;
 }
 
 export function buildFinancialEventRecord(input: RecordFinancialEventInput) {
   const bookingId = clean(input.attribution.bookingId);
   const providerId = clean(input.attribution.providerId);
   const stripeEventId = clean(input.stripeEventId);
+  const idempotencyKey = clean(input.idempotencyKey) || stripeEventId;
   const eventId = financialEventDocumentId({
     eventName: input.eventName,
     stripeEventId,
+    idempotencyKey,
     bookingId,
   });
 
-  if (!eventId || !providerId) return null;
+  if (!eventId || !providerId || !stripeEventId) return null;
 
   return {
     eventId,
@@ -90,9 +96,11 @@ export function buildFinancialEventRecord(input: RecordFinancialEventInput) {
     providerId,
     bookingId,
     stripeEventId,
+    idempotencyKey,
     payload: {
       ...(input.payload ?? {}),
       stripeEventId,
+      idempotencyKey,
     },
   };
 }
@@ -105,8 +113,9 @@ export function recordFinancialEvent(
   const record = buildFinancialEventRecord(input);
   if (!record) return null;
 
-  // Deterministic document ids plus the webhook's stripeWebhookEvents transaction
-  // make retries idempotent. The browser never receives a write path for these names.
+  // One deterministic document per ledger effect prevents multiple Stripe
+  // webhook envelopes (for example refund.created + refund.updated) from
+  // double-counting the same financial consequence.
   transaction.set(db.collection("viEvents").doc(record.eventId), record);
   return record;
 }
