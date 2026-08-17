@@ -286,6 +286,11 @@ export function MobilityBookingScreen() {
       searchParams.get("destinationName") ??
       searchParams.get("destination")
     )?.trim() || null;
+  const handoffSource = searchParams.get("source")?.trim() || null;
+  const destinationSourceLabel =
+    handoffSource === "living-map"
+      ? "Destination from Living Map"
+      : "Destination from VI Concierge";
   const islandVisual = ISLAND_VISUALS[activeIsland];
 
   function selectFrom(geoid: string) {
@@ -438,16 +443,24 @@ export function MobilityBookingScreen() {
                   </span>
                   <div>
                     <div className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
-                      Destination from VI Concierge
+                      {destinationSourceLabel}
                     </div>
                     <h2 className="mt-1 text-lg font-black tracking-[-.03em]">
                       {requestedDestinationName}
                     </h2>
                     <p className="mt-1 text-xs font-semibold leading-5 text-teal-800">
                       {toEstate
-                        ? `Official tariff estate: ${toEstate.baseName}. Review the pickup and route below.`
+                        ? `Official tariff estate: ${toEstate.baseName}. Now choose your pickup to get the published ride price.`
                         : "Choose the official destination estate below so USVI Explorer can apply the published tariff without guessing the location."}
                     </p>
+                    {handoffSource === "living-map" ? (
+                      <Link
+                        href={`/map?island=${activeIsland}`}
+                        className="mt-3 inline-flex min-h-9 items-center gap-2 rounded-full border border-teal-200 bg-white px-3 text-[8px] font-black uppercase tracking-[.12em] text-teal-800"
+                      >
+                        <MapPinned className="h-3.5 w-3.5" /> Back to Living Map
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </section>
