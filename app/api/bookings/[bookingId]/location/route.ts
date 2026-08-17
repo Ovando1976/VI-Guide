@@ -11,6 +11,8 @@ const TRACKABLE_STATUSES: RideBooking["status"][] = [
   "arrived",
   "in_progress",
 ];
+const MAX_OBSERVATION_AGE_MS = 2 * 60_000;
+const MAX_OBSERVATION_FUTURE_SKEW_MS = 30_000;
 
 export async function POST(
   request: NextRequest,
@@ -33,12 +35,21 @@ export async function POST(
           accuracy?: unknown;
           heading?: unknown;
           speed?: unknown;
+          observedAt?: unknown;
         }
       | null;
     const location = normalizeLocation(body);
     if (!location) {
       return NextResponse.json(
         { error: "A valid driver location is required." },
+        { status: 400 },
+      );
+    }
+
+    const observedAt = normalizeObservedAt(body?.observedAt);
+    if (body?.observedAt !== undefined && !observedAt) {
+      return NextResponse.json(
+        { error: "The driver location timestamp is invalid or too old." },
         { status: 400 },
       );
     }
@@ -74,7 +85,7 @@ export async function POST(
       driverLocation: {
         ...location,
         driverId: booking.driverId ?? driverId,
-        recordedAt: new Date().toISOString(),
+        recordedAt: observedAt ?? new Date().toISOString(),
       },
       driverLocationUpdatedAt: FieldValue.serverTimestamp(),
       updatedAt: FieldValue.serverTimestamp(),
@@ -85,6 +96,7 @@ export async function POST(
       bookingId,
       status: booking.status,
       location,
+      recordedAt: observedAt ?? null,
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
@@ -135,6 +147,21 @@ function normalizeLocation(
     heading: finiteOrNull(body.heading),
     speed: finiteOrNull(body.speed),
   };
+}
+
+function normalizeObservedAt(value: unknown) {
+  if (typeof value !== "string" || !value.trim()) return null;
+  const timestamp = Date.parse(value);
+  if (!Number.isFinite(timestamp)) return null;
+
+  const now = Date.now();
+  if (
+    timestamp < now - MAX_OBSERVATION_AGE_MS ||
+    timestamp > now + MAX_OBSERVATION_FUTURE_SKEW_MS
+  ) {
+    return null;
+  }
+  return new Date(timestamp).toISOString();
 }
 
 function finiteOrNull(value: unknown) {
