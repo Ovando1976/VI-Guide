@@ -7,19 +7,19 @@ const summary = summarizePhase1Funnel([
   { eventName: "concierge_started", origin: "client" },
   {
     eventName: "plan_created",
-    origin: "client",
+    origin: "server",
     travelerType: "cruise",
     payload: { return_buffer_met: true },
   },
   {
     eventName: "plan_item_added",
-    origin: "client",
+    origin: "server",
     travelerType: "cruise",
     payload: { return_buffer_met: true },
   },
   {
     eventName: "checkout_started",
-    origin: "client",
+    origin: "server",
     travelerType: "cruise",
     payload: { return_buffer_met: true },
   },
@@ -45,13 +45,20 @@ assert.equal(summary.financial.clientOriginated, 0);
 assert.equal(summary.cruise.relevantEvents, 3);
 assert.equal(summary.cruise.returnBufferReported, 3);
 assert.equal(summary.cruise.returnBufferMet, 3);
+assert.equal(summary.cruise.returnBufferFailed, 0);
 assert.equal(summary.cruise.returnBufferMissing, 0);
 assert.equal(summary.funnel.every((step) => step.count > 0), true);
 
 const failed = summarizePhase1Funnel([
   {
+    eventName: "plan_created",
+    origin: "server",
+    travelerType: "cruise",
+    payload: { return_buffer_met: false },
+  },
+  {
     eventName: "checkout_started",
-    origin: "client",
+    origin: "server",
     travelerType: "cruise",
     payload: {},
   },
@@ -63,6 +70,7 @@ const failed = summarizePhase1Funnel([
   },
 ]);
 assert.equal(failed.cruise.returnBufferMissing, 1);
+assert.equal(failed.cruise.returnBufferFailed, 1);
 assert.equal(failed.financial.clientOriginated, 1);
 assert.equal(failed.financial.unattributed, 1);
 
