@@ -2,10 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-import { trackEvent } from "@/lib/analytics/tracking-client";
+import {
+  trackEvent,
+  type TrackEventContext,
+} from "@/lib/analytics/tracking-client";
 import type {
   ClientVIEventName,
-  VIEventContext,
   VIEventPayload,
 } from "@/lib/analytics/vi-event";
 
@@ -16,7 +18,7 @@ export function PageEvent({
 }: {
   eventName: ClientVIEventName;
   payload?: VIEventPayload;
-  context?: VIEventContext;
+  context?: TrackEventContext;
 }) {
   const sent = useRef(false);
 
