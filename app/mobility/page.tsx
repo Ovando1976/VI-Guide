@@ -114,9 +114,9 @@ export default function MobilityPage({
             padding: 8px 4px;
           }
 
-          /* The sticky action targets #trip-review, which is only mounted at step 4.
-             Hide it during steps 1-3 so mobile never presents a dead Review button;
-             the in-panel step actions remain the single primary action until review. */
+          /* #trip-review only exists during the confirmation step. Keep the
+             sticky control out of steps 1-3 so the visible in-panel Next action
+             is always the only mobile primary action and Review is never a dead tap. */
           section#book:not(:has(#trip-review)) > div:last-of-type.sticky {
             display: none;
           }
