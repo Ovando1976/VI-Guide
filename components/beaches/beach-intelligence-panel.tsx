@@ -42,6 +42,8 @@ export function BeachIntelligencePanel() {
   }, [island]);
 
   const destination = encodeURIComponent(profile.beach);
+  const rideHref = `/mobility?island=${island}&destinationName=${destination}&source=beach-intelligence&destinationType=beach`;
+  const mapHref = `/map?island=${island}&q=${destination}&destinationName=${destination}&source=beach-intelligence&destinationType=beach&rideHref=${encodeURIComponent(rideHref)}`;
 
   return (
     <section className="overflow-hidden rounded-[34px] border border-[#cfe0dc] bg-[#fffdf8] shadow-[0_24px_70px_rgba(4,51,49,.12)]">
@@ -72,8 +74,8 @@ export function BeachIntelligencePanel() {
           {conditions ? <p className="mt-3 text-xs font-semibold text-slate-500">{conditions.shortForecast}</p> : null}
           <div className="mt-5 grid gap-2 sm:grid-cols-3">
             <Link href={`/beaches/${profile.slug}`} className="flex min-h-11 items-center justify-center rounded-2xl bg-[#043331] px-4 text-[9px] font-black uppercase tracking-[.14em] text-white">Explore {profile.beach}</Link>
-            <Link href={`/map?island=${island}&q=${destination}`} className="flex min-h-11 items-center justify-center gap-2 rounded-2xl border bg-white px-4 text-[9px] font-black uppercase"><MapPinned className="h-4 w-4" /> Map</Link>
-            <Link href={`/mobility?destinationName=${destination}`} className="flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-[#f5c451] px-4 text-[9px] font-black uppercase"><Navigation className="h-4 w-4" /> Plan ride</Link>
+            <Link href={mapHref} className="flex min-h-11 items-center justify-center gap-2 rounded-2xl border bg-white px-4 text-[9px] font-black uppercase"><MapPinned className="h-4 w-4" /> Map</Link>
+            <Link href={rideHref} className="flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-[#f5c451] px-4 text-[9px] font-black uppercase"><Navigation className="h-4 w-4" /> Plan ride</Link>
           </div>
         </div>
         <div className="rounded-[26px] bg-[#f4faf8] p-5">
