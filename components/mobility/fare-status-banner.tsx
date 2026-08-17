@@ -12,64 +12,71 @@ type FareStatus =
 const QUOTE_PATH = "/api/bookings/quote";
 const STATUS_EVENT = "vi-guide:fare-status";
 
+function isAbortError(error: unknown) {
+  return error instanceof DOMException && error.name === "AbortError";
+}
+
 export function FareStatusBanner() {
   const [status, setStatus] = useState<FareStatus>({ kind: "idle" });
 
   useEffect(() => {
     const originalFetch = window.fetch.bind(window);
+    let latestQuoteRequest = 0;
+
+    const emitStatus = (detail: FareStatus) => {
+      window.dispatchEvent(new CustomEvent<FareStatus>(STATUS_EVENT, { detail }));
+    };
 
     const instrumentedFetch: typeof window.fetch = async (input, init) => {
-      const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+      const url =
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.toString()
+            : input.url;
       const isQuote = url === QUOTE_PATH || url.endsWith(QUOTE_PATH);
+      const requestId = isQuote ? ++latestQuoteRequest : 0;
 
-      if (isQuote) {
-        window.dispatchEvent(
-          new CustomEvent<FareStatus>(STATUS_EVENT, { detail: { kind: "loading" } }),
-        );
-      }
+      if (isQuote) emitStatus({ kind: "loading" });
 
       try {
         const response = await originalFetch(input, init);
-        if (isQuote) {
+        if (isQuote && requestId === latestQuoteRequest) {
           const clone = response.clone();
           const payload = await clone.json().catch(() => null);
+
           if (response.ok && payload?.fare) {
-            window.dispatchEvent(
-              new CustomEvent<FareStatus>(STATUS_EVENT, {
-                detail: {
-                  kind: "confirmed",
-                  total: typeof payload.fare.total === "number" ? payload.fare.total : undefined,
-                },
-              }),
-            );
+            emitStatus({
+              kind: "confirmed",
+              total:
+                typeof payload.fare.total === "number"
+                  ? payload.fare.total
+                  : undefined,
+            });
           } else {
-            window.dispatchEvent(
-              new CustomEvent<FareStatus>(STATUS_EVENT, {
-                detail: {
-                  kind: "review",
-                  message:
-                    typeof payload?.error === "string"
-                      ? payload.error
-                      : "This route needs dispatch confirmation before a fare can be shown.",
-                },
-              }),
-            );
+            emitStatus({
+              kind: "review",
+              message:
+                typeof payload?.error === "string"
+                  ? payload.error
+                  : "This route needs dispatch confirmation before a fare can be shown.",
+            });
           }
         }
         return response;
       } catch (error) {
-        if (isQuote) {
-          window.dispatchEvent(
-            new CustomEvent<FareStatus>(STATUS_EVENT, {
-              detail: {
-                kind: "review",
-                message:
-                  error instanceof Error
-                    ? error.message
-                    : "The official fare could not be verified. Dispatch confirmation is required.",
-              },
-            }),
-          );
+        if (
+          isQuote &&
+          requestId === latestQuoteRequest &&
+          !isAbortError(error)
+        ) {
+          emitStatus({
+            kind: "review",
+            message:
+              error instanceof Error
+                ? error.message
+                : "The official fare could not be verified. Dispatch confirmation is required.",
+          });
         }
         throw error;
       }
@@ -94,8 +101,11 @@ export function FareStatusBanner() {
   const Icon = loading ? Loader2 : confirmed ? BadgeCheck : AlertTriangle;
 
   return (
-    <div className="mx-auto mt-4 max-w-7xl px-4 md:px-6" aria-live="polite">
+    <div className="mx-auto mt-4 max-w-7xl px-4 md:px-6">
       <section
+        role={confirmed || loading ? "status" : "alert"}
+        aria-live={confirmed || loading ? "polite" : "assertive"}
+        aria-atomic="true"
         className={`flex items-start gap-3 rounded-[22px] border p-4 shadow-sm ${
           confirmed
             ? "border-emerald-200 bg-emerald-50 text-emerald-950"
