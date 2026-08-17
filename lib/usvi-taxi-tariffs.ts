@@ -104,12 +104,31 @@ async function loadActiveTariff(
   }
 }
 
+function assertFareConfirmationNotRequired(
+  rule: OfficialTaxiRateRule,
+  passengers: number,
+) {
+  const party = Math.max(1, Math.trunc(passengers));
+  const blocked =
+    rule.fareConfirmationRequired === "all" ||
+    (rule.fareConfirmationRequired === "two_or_more" && party > 1);
+  if (!blocked) return;
+
+  throw new OfficialTaxiRateUnavailableError(
+    rule.fareConfirmationReason
+      ? `Official fare confirmation required: ${rule.fareConfirmationReason}`
+      : "Official fare confirmation is required for this route and passenger count. Dispatch must verify the regulated fare.",
+  );
+}
+
 function calculateRuleFare(
   rule: OfficialTaxiRateRule,
   passengers: number,
   luggage: number,
 ) {
   const party = Math.max(1, Math.trunc(passengers));
+  assertFareConfirmationNotRequired(rule, party);
+
   let routeFare = rule.onePassengerFare;
   let passengerFare = 0;
 

@@ -1,12 +1,18 @@
 import "server-only";
 
+import { applyKnownTariffReviewGates } from "@/lib/taxi-tariff-review-gates";
 import type {
   OfficialTaxiRateRule,
   OfficialTaxiTariff,
+  TaxiFareConfirmationScope,
 } from "@/types/taxi-operations";
 import type { IslandCode } from "@/types/usvi";
 
 const ISLANDS: IslandCode[] = ["stt", "stj", "stx"];
+const FARE_CONFIRMATION_SCOPES: TaxiFareConfirmationScope[] = [
+  "all",
+  "two_or_more",
+];
 
 export type TaxiTariffDraftInput = {
   title?: unknown;
@@ -33,6 +39,31 @@ function optionalStringList(value: unknown, label: string) {
 
 function requiredStringList(value: unknown, label: string) {
   return optionalStringList(value, label) ?? [];
+}
+
+function normalizeComparable(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function assertCandidateAliasesAreReviewOnly(
+  canonicalNames: string[],
+  candidateAliases: string[] | undefined,
+  label: string,
+) {
+  if (!candidateAliases?.length) return;
+  const canonical = new Set(canonicalNames.map(normalizeComparable));
+  const overlap = candidateAliases.find((alias) =>
+    canonical.has(normalizeComparable(alias)),
+  );
+  if (overlap) {
+    throw new Error(
+      `${label} candidate alias “${overlap}” is also listed as a canonical name. Remove it from the canonical names until human confirmation is complete.`,
+    );
+  }
 }
 
 function nonNegativeNumber(value: unknown, label: string) {
@@ -70,6 +101,20 @@ function optionalNonNegativeInteger(value: unknown, label: string) {
   return number;
 }
 
+function optionalFareConfirmationScope(
+  value: unknown,
+  label: string,
+): TaxiFareConfirmationScope | undefined {
+  if (value == null || value === "") return undefined;
+  if (
+    typeof value !== "string" ||
+    !FARE_CONFIRMATION_SCOPES.includes(value as TaxiFareConfirmationScope)
+  ) {
+    throw new Error(`${label} must be “all” or “two_or_more”.`);
+  }
+  return value as TaxiFareConfirmationScope;
+}
+
 function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     throw new Error(`Rule ${index + 1} must be an object.`);
@@ -84,6 +129,14 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
   const destinationNames = requiredStringList(
     input.destinationNames,
     `Rule ${id} destination names`,
+  );
+  const originCandidateAliases = optionalStringList(
+    input.originCandidateAliases,
+    `Rule ${id} origin candidate aliases`,
+  );
+  const destinationCandidateAliases = optionalStringList(
+    input.destinationCandidateAliases,
+    `Rule ${id} destination candidate aliases`,
   );
   const originEstateGeoids = optionalStringList(
     input.originEstateGeoids,
@@ -100,6 +153,17 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
   if (!destinationNames.length && !destinationEstateGeoids?.length) {
     throw new Error(`Rule ${id} needs at least one destination name or GEOID.`);
   }
+
+  assertCandidateAliasesAreReviewOnly(
+    originNames,
+    originCandidateAliases,
+    `Rule ${id} origin`,
+  );
+  assertCandidateAliasesAreReviewOnly(
+    destinationNames,
+    destinationCandidateAliases,
+    `Rule ${id} destination`,
+  );
 
   const additionalPassengerFare = optionalNonNegativeNumber(
     input.additionalPassengerFare,
@@ -118,6 +182,26 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
     );
   }
 
+  const fareConfirmationRequired = optionalFareConfirmationScope(
+    input.fareConfirmationRequired,
+    `Rule ${id} fare confirmation scope`,
+  );
+  const fareConfirmationReason =
+    typeof input.fareConfirmationReason === "string" &&
+    input.fareConfirmationReason.trim()
+      ? input.fareConfirmationReason.trim()
+      : undefined;
+  if (fareConfirmationRequired && !fareConfirmationReason) {
+    throw new Error(
+      `Rule ${id} needs a fare confirmation reason when automatic quoting is restricted.`,
+    );
+  }
+  if (!fareConfirmationRequired && fareConfirmationReason) {
+    throw new Error(
+      `Rule ${id} cannot define a fare confirmation reason without a confirmation scope.`,
+    );
+  }
+
   const notes =
     typeof input.notes === "string" && input.notes.trim()
       ? input.notes.trim()
@@ -127,6 +211,10 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
     id,
     originNames,
     destinationNames,
+    ...(originCandidateAliases?.length ? { originCandidateAliases } : {}),
+    ...(destinationCandidateAliases?.length
+      ? { destinationCandidateAliases }
+      : {}),
     ...(originEstateGeoids?.length ? { originEstateGeoids } : {}),
     ...(destinationEstateGeoids?.length ? { destinationEstateGeoids } : {}),
     onePassengerFare: positiveNumber(
@@ -153,6 +241,9 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
           ),
         }
       : {}),
+    ...(fareConfirmationRequired
+      ? { fareConfirmationRequired, fareConfirmationReason }
+      : {}),
     ...(notes ? { notes } : {}),
   };
 }
@@ -173,6 +264,7 @@ export function normalizeTariffDraft(
     throw new Error("Island must be St. Thomas, St. John, or St. Croix.");
   }
 
+  const version = requiredText(input.version, "Tariff version");
   const effectiveAt = requiredText(input.effectiveAt, "Effective date");
   if (!Number.isFinite(Date.parse(effectiveAt))) {
     throw new Error("Effective date is invalid.");
@@ -196,7 +288,9 @@ export function normalizeTariffDraft(
     throw new Error("A tariff cannot contain more than 2,000 route rules.");
   }
 
-  const rules = input.rules.map(normalizeRule);
+  const rules = input.rules.map((rule, index) =>
+    normalizeRule(applyKnownTariffReviewGates(version, rule), index),
+  );
   const ids = new Set<string>();
   for (const rule of rules) {
     if (ids.has(rule.id)) throw new Error(`Duplicate rule ID: ${rule.id}.`);
@@ -205,7 +299,7 @@ export function normalizeTariffDraft(
 
   return {
     title: requiredText(input.title, "Tariff title"),
-    version: requiredText(input.version, "Tariff version"),
+    version,
     island,
     effectiveAt,
     sourceUrl: parsedSource.toString(),

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "tariffVersion": "vicc-2022-10-24-stta-2026-web-v1",
+  "status": "review_required",
+  "candidateAliasMoves": [
+    {
+      "canonicalSourceName": "Town",
+      "candidateAlias": "Charlotte Amalie",
+      "scope": "either_endpoint",
+      "reason": "Operational endpoint mapping requires human confirmation before automatic quoting."
+    },
+    {
+      "canonicalSourceName": "Airport Terminal",
+      "candidateAlias": "Lindbergh Bay",
+      "scope": "either_endpoint",
+      "reason": "The published airport-terminal tariff must not automatically broaden to generic Lindbergh Bay without confirmation."
+    },
+    {
+      "canonicalSourceName": "Dorotdea Estate",
+      "candidateAlias": "Dorothea Estate",
+      "scope": "either_endpoint",
+      "reason": "Probable source spelling correction; keep review-only until human confirmation."
+    },
+    {
+      "canonicalSourceName": "Dorothea",
+      "candidateAlias": "Dorothea Estate",
+      "scope": "either_endpoint",
+      "reason": "Do not broaden a published Dorothea endpoint to the estate endpoint without human confirmation."
+    },
+    {
+      "canonicalSourceName": "Estate tdomas New Qtr",
+      "candidateAlias": "Estate Thomas New Quarter",
+      "scope": "either_endpoint",
+      "reason": "Probable source spelling correction; keep review-only until human confirmation."
+    }
+  ],
+  "fareConfirmations": [
+    {
+      "ruleId": "misc-red-hook-to-dorothea",
+      "scope": "two_or_more",
+      "associationPublishedFare": 15,
+      "conflictingPublishedFare": 16,
+      "conflictingSource": "VInow",
+      "reason": "St. Thomas Taxi Association publishes $15 per person for 2+ while VInow publishes $16. Commission confirmation is required before activation or automatic 2+ quoting."
+    }
+  ],
+  "safeNormalizations": [
+    {
+      "source": "Redhook",
+      "normalized": "Red Hook"
+    },
+    {
+      "source": "$18,00",
+      "normalized": "$18.00"
+    }
+  ]
+}

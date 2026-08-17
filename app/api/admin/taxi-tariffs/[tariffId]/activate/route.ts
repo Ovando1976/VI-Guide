@@ -53,7 +53,7 @@ export async function POST(
         id: tariffSnapshot.id,
         ...tariffSnapshot.data(),
       } as OfficialTaxiTariff;
-      normalizeTariffDraft(tariff);
+      const normalizedTariff = normalizeTariffDraft(tariff);
       if (!tariff.reviewReference || !tariff.reviewedBy) {
         throw new Error(
           "Tariff must be imported through the reviewed draft workflow before activation.",
@@ -70,6 +70,26 @@ export async function POST(
       if (Date.parse(tariff.effectiveAt) > Date.now()) {
         throw new Error(
           "A future-effective tariff cannot replace the currently effective tariff.",
+        );
+      }
+
+      const unresolvedAliases = normalizedTariff.rules.filter(
+        (rule) =>
+          rule.originCandidateAliases?.length ||
+          rule.destinationCandidateAliases?.length,
+      );
+      if (unresolvedAliases.length) {
+        throw new Error(
+          `Tariff has ${unresolvedAliases.length} route rule(s) with candidate aliases awaiting human confirmation. Confirm or remove those aliases before activation.`,
+        );
+      }
+
+      const unresolvedFareConfirmations = normalizedTariff.rules.filter(
+        (rule) => rule.fareConfirmationRequired,
+      );
+      if (unresolvedFareConfirmations.length) {
+        throw new Error(
+          `Tariff has ${unresolvedFareConfirmations.length} route rule(s) with disputed fares awaiting human confirmation. Resolve those fare disputes before activation.`,
         );
       }
 

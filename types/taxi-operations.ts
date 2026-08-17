@@ -33,17 +33,23 @@ export type FleetVehicle = {
   color?: string;
 };
 
+export type TaxiFareConfirmationScope = "all" | "two_or_more";
+
 export type OfficialTaxiRateRule = {
   id: string;
   originEstateGeoids?: string[];
   destinationEstateGeoids?: string[];
   originNames: string[];
   destinationNames: string[];
+  originCandidateAliases?: string[];
+  destinationCandidateAliases?: string[];
   onePassengerFare: number;
   additionalPassengerFare?: number;
   perPersonFare?: number;
   luggageFarePerPiece?: number;
   luggageIncluded?: number;
+  fareConfirmationRequired?: TaxiFareConfirmationScope;
+  fareConfirmationReason?: string;
   notes?: string;
 };
 
