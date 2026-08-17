@@ -39,12 +39,10 @@ function safeKey(value: string) {
 }
 
 export function resolveFinancialProviderId(record: Record<string, unknown>) {
-  return (
-    clean(record.providerId) ||
-    clean(record.merchantUid) ||
-    clean(record.offerId) ||
-    clean(record.listingId)
-  );
+  // Financial attribution must resolve to an explicit server-owned provider
+  // identity. A listing or offer is not a provider and must never be silently
+  // substituted, because one provider may own multiple listings/offers.
+  return clean(record.providerId) || clean(record.merchantUid);
 }
 
 export function financialEventDocumentId(input: {
