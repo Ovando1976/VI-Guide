@@ -1,0 +1,22 @@
+Integration target for components/booking-panel.tsx:
+
+1. Import MobilityRouteFields from @/components/mobility-route-fields.
+2. In Step 01 replace the current grid containing Pickup estate EstateSelect, swap button, and Destination estate EstateSelect with:
+
+<MobilityRouteFields
+  estates={estates}
+  island={island}
+  fromGeoid={fromGeoid}
+  toGeoid={toGeoid}
+  onSelectFrom={onSelectFrom}
+  onSelectTo={onSelectTo}
+  onSwapRoute={onSwapRoute}
+/>
+
+3. Update SectionTitle subtitle from:
+Select pickup and destination estates to build the route.
+
+to:
+Search the place you know. We resolve it to the official taxi fare area before quoting.
+
+Safety invariant: quote and booking APIs continue receiving only estate GEOIDs.
