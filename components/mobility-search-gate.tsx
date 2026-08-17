@@ -16,18 +16,13 @@ export function MobilitySearchGate() {
   const searchParams = useSearchParams();
   const resolvedFrom = searchParams.get("from")?.trim() ?? "";
   const resolvedTo = searchParams.get("to")?.trim() ?? "";
-  const hasResolvedRoute = Boolean(resolvedFrom && resolvedTo && resolvedFrom !== resolvedTo);
   const [estates, setEstates] = useState<EstateRecord[]>([]);
-  const [loading, setLoading] = useState(!hasResolvedRoute);
+  const [loading, setLoading] = useState(true);
   const [fromGeoid, setFromGeoid] = useState(resolvedFrom);
   const [toGeoid, setToGeoid] = useState(resolvedTo);
   const island: IslandCode = isIslandCode(searchParams.get("island")) ? searchParams.get("island") as IslandCode : "stt";
 
   useEffect(() => {
-    if (hasResolvedRoute) {
-      setLoading(false);
-      return;
-    }
     const controller = new AbortController();
     fetch("/api/estates", { cache: "no-store", signal: controller.signal })
       .then(async (response) => {
@@ -38,7 +33,7 @@ export function MobilitySearchGate() {
       .catch(() => setEstates([]))
       .finally(() => setLoading(false));
     return () => controller.abort();
-  }, [hasResolvedRoute]);
+  }, []);
 
   const availableEstates = useMemo(
     () => estates.filter((estate) => estate.island === island),
@@ -47,6 +42,13 @@ export function MobilitySearchGate() {
   const fromEstate = availableEstates.find((estate) => estate.geoid === fromGeoid) ?? null;
   const toEstate = availableEstates.find((estate) => estate.geoid === toGeoid) ?? null;
   const routeReady = Boolean(fromEstate && toEstate && fromGeoid !== toGeoid);
+  const hasValidatedResolvedRoute = Boolean(
+    resolvedFrom &&
+      resolvedTo &&
+      resolvedFrom !== resolvedTo &&
+      fromEstate &&
+      toEstate,
+  );
 
   function selectFrom(geoid: string) {
     setFromGeoid(geoid);
@@ -72,7 +74,11 @@ export function MobilitySearchGate() {
     router.push(`/mobility?${params.toString()}#book`);
   }
 
-  if (hasResolvedRoute) {
+  if (loading) {
+    return <div className="mx-auto mt-3 h-28 max-w-7xl animate-pulse rounded-[24px] bg-white/80" aria-hidden="true" />;
+  }
+
+  if (hasValidatedResolvedRoute) {
     return (
       <style>{`
         section#book:has(header button[aria-current="step"]:first-child)
@@ -81,10 +87,6 @@ export function MobilitySearchGate() {
         }
       `}</style>
     );
-  }
-
-  if (loading) {
-    return <div className="mx-auto mt-3 h-28 max-w-7xl animate-pulse rounded-[24px] bg-white/80" aria-hidden="true" />;
   }
 
   return (
@@ -108,6 +110,12 @@ export function MobilitySearchGate() {
             </button>
           ) : null}
         </div>
+
+        {(resolvedFrom || resolvedTo) && !hasValidatedResolvedRoute ? (
+          <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-bold leading-5 text-amber-900">
+            This ride handoff did not contain two valid official fare areas. Confirm the pickup and destination below before we request a published fare.
+          </div>
+        ) : null}
 
         <MobilityRouteFields
           estates={availableEstates}
