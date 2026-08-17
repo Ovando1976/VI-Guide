@@ -9,9 +9,9 @@ const ISLANDS = {
 type IslandCode = keyof typeof ISLANDS;
 type NwsPeriod = { startTime?: string; temperature?: number; temperatureUnit?: string; windSpeed?: string; windDirection?: string; shortForecast?: string; probabilityOfPrecipitation?: { value?: number | null } };
 
-function maxWindMph(value: string | undefined) {
-  const speeds = (value ?? "").match(/\d+/g)?.map(Number) ?? [];
-  return speeds.length ? Math.max(...speeds) : 0;
+function maxWindMph(value: string | undefined): number | null {
+  const speeds = value?.match(/\d+/g)?.map(Number) ?? [];
+  return speeds.length ? Math.max(...speeds) : null;
 }
 
 export async function GET(request: NextRequest) {
@@ -31,7 +31,21 @@ export async function GET(request: NextRequest) {
     const forecast = (await forecastResponse.json()) as { properties?: { updateTime?: string; periods?: NwsPeriod[] } };
     const period = forecast.properties?.periods?.[0];
     if (!period) throw new Error("NWS did not return a current forecast period.");
-    return NextResponse.json({ ok: true, island: islandCode, islandName: island.name, temperatureF: Number(period.temperature ?? 0), windMph: maxWindMph(period.windSpeed), windDirection: period.windDirection ?? "", precipitationChance: Number(period.probabilityOfPrecipitation?.value ?? 0), shortForecast: period.shortForecast ?? "Forecast available", updatedAt: forecast.properties?.updateTime ?? period.startTime ?? null, sourceUrl: forecastUrl, forecastZoneUrl: point.properties?.forecastZone ?? null, marineSourceUrl: "https://www.weather.gov/sju/marine" });
+
+    return NextResponse.json({
+      ok: true,
+      island: islandCode,
+      islandName: island.name,
+      temperatureF: typeof period.temperature === "number" ? period.temperature : null,
+      windMph: maxWindMph(period.windSpeed),
+      windDirection: period.windDirection ?? null,
+      precipitationChance: typeof period.probabilityOfPrecipitation?.value === "number" ? period.probabilityOfPrecipitation.value : null,
+      shortForecast: period.shortForecast ?? null,
+      updatedAt: forecast.properties?.updateTime ?? period.startTime ?? null,
+      sourceUrl: forecastUrl,
+      forecastZoneUrl: point.properties?.forecastZone ?? null,
+      marineSourceUrl: "https://www.weather.gov/sju/marine",
+    });
   } catch (error) {
     console.error("beach intelligence forecast error", error);
     return NextResponse.json({ ok: false, error: "Live NOAA/NWS forecast is temporarily unavailable.", officialSources: { beachAdvisory: "https://dpnr.vi.gov/beach-advisory/", marine: "https://www.weather.gov/sju/marine", cruise: "https://www.viport.com/schedule-cruise-ports" } }, { status: 502 });
