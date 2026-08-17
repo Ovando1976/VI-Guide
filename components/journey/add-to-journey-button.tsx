@@ -11,6 +11,7 @@ import {
   readJourneyPlans,
   type JourneyStopInput,
 } from "@/lib/journey-planner";
+import { buildMobilityRideHref } from "@/lib/mobility/ride-links";
 
 export function AddToJourneyButton({
   stop,
@@ -44,7 +45,21 @@ export function AddToJourneyButton({
 
   function add() {
     importLegacyTripPlans();
-    addStopToJourney(stop);
+    const journeyStop: JourneyStopInput = stop.bookingHref
+      ? stop
+      : {
+          ...stop,
+          bookingHref: buildMobilityRideHref({
+            name: stop.title,
+            island: stop.island,
+            type: stop.kind,
+            lat: stop.lat,
+            lng: stop.lng,
+            source: "planner",
+            returnTo: "/planner",
+          }),
+        };
+    addStopToJourney(journeyStop);
     setAdded(true);
   }
 
