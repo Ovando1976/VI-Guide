@@ -152,6 +152,14 @@ assert.doesNotMatch(mapPage, /> Open trip/);
 assert.match(mapEntityContextBar, /SavePlaceButton/);
 assert.match(mapEntityContextBar, /AddToJourneyButton/);
 assert.match(mapEntityContextBar, /My Trip/);
+assert.match(mapEntityContextBar, /Get official ride price/);
+assert.match(mapEntityContextBar, /source: "living-map"/);
+assert.match(mapEntityContextBar, /returnTo: "\/map"/);
+assert.match(mapEntityContextBar, /#book/);
+assert.match(mobility, /Destination from Living Map/);
+assert.match(mobility, /Official tariff estate:/);
+assert.match(mobility, /Now choose your pickup to get the published ride price/);
+assert.match(mobility, /Back to Living Map/);
 assert.match(mapLinks, /placeHref/);
 assert.match(mapLinks, /placeSlug/);
 
