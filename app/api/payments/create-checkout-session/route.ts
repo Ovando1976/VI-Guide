@@ -1,3 +1,4 @@
+import type { DocumentData, Firestore, Transaction } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -193,13 +194,13 @@ export async function POST(request: NextRequest) {
 }
 
 function recordCruiseCheckoutEvidence(
-  transaction: FirebaseFirestore.Transaction,
-  db: FirebaseFirestore.Firestore,
+  transaction: Transaction,
+  db: Firestore,
   input: {
     bookingId: string;
     checkoutSessionId: string;
     occurredAt: string;
-    booking: FirebaseFirestore.DocumentData;
+    booking: DocumentData;
     buffer: NonNullable<ReturnType<typeof cruiseReturnBufferEvidence>>;
   },
 ) {
