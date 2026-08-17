@@ -174,6 +174,27 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
         />
       </div>
 
+      {booking.status !== "in_progress" ? (
+        <div className="border-t border-slate-100 bg-[#fff9e8] px-5 py-5 sm:px-6">
+          <div className="flex items-start gap-3">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#f5c451] text-[#043331]">
+              <ShieldCheck className="h-5 w-5" />
+            </span>
+            <div>
+              <div className="text-[9px] font-black uppercase tracking-[.16em] text-[#8a6512]">
+                Before you board
+              </div>
+              <p className="mt-1 text-sm font-black leading-5 text-[#043331]">
+                Match the driver, Commission badge, vehicle, taxi plate, and medallion to this booking.
+              </p>
+              <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
+                If the arriving taxi does not match the verified details shown here, do not board it. Keep My Trip open and use Get help.
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="border-t border-slate-100 bg-[#f8f4ea] px-5 py-5 sm:px-6">
         <div className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
@@ -181,7 +202,7 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
               <LocateFixed className="h-4 w-4" /> Pickup check
             </div>
             <p className="mt-1 max-w-3xl text-xs font-semibold leading-5 text-slate-600">
-              {pickupInstruction(booking.status, booking.origin.estateName)} Before boarding, match the driver name and Commission badge plus the taxi color, make/model, plate, and medallion shown above.
+              {pickupInstruction(booking.status, booking.origin.estateName)}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-2 sm:flex">
@@ -220,7 +241,11 @@ function TrustItem({
   return (
     <div className="rounded-[22px] border border-slate-200 bg-white p-4">
       <div className="flex items-start gap-3">
-        <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl ${ready ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>
+        <span
+          className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl ${
+            ready ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
+          }`}
+        >
           <Icon className="h-5 w-5" />
         </span>
         <div className="min-w-0">
@@ -239,11 +264,11 @@ function TrustItem({
 function pickupInstruction(status: RideBooking["status"], pickup: string) {
   switch (status) {
     case "matched":
-      return `Your taxi is assigned for ${pickup}. Keep My Trip open for the driver's live approach.`;
+      return `Your taxi is assigned for ${pickup}. Keep My Trip open so the verified driver details and live approach stay together.`;
     case "driver_en_route":
       return `Head toward the agreed pickup point at ${pickup} and watch the live driver position below.`;
     case "arrived":
-      return `Your driver is in the ${pickup} pickup area. Confirm the verified taxi before you board.`;
+      return `Your driver is in the ${pickup} pickup area. Use the verification checklist above before entering the vehicle.`;
     case "in_progress":
       return "You are on the trip. My Trip will keep the verified ride record and live status together until completion.";
     default:
@@ -269,7 +294,7 @@ function arrivalCopy(status: RideBooking["status"]) {
       return {
         badge: "Driver arrived",
         title: "Your driver is at the pickup area.",
-        detail: "Before boarding, match the arriving driver and taxi against the verified booking details below.",
+        detail: "Before boarding, match the arriving driver and taxi against every verified booking detail shown below.",
       };
     case "in_progress":
       return {
