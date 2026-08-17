@@ -107,6 +107,24 @@ export type TimestampLike =
   | { seconds?: number; nanoseconds?: number }
   | { toDate?: () => Date };
 
+export type RiderAssignmentSnapshot = {
+  driver: {
+    displayName: string;
+    commissionBadgeNumber: string;
+  };
+  vehicle: {
+    make: string;
+    model: string;
+    color?: string | null;
+    taxiPlate: string;
+    medallionNumber: string;
+  };
+  association: {
+    name: string;
+  };
+  verifiedAt: string;
+};
+
 export type RideBooking = {
   id: string;
   riderId: string;
@@ -175,6 +193,7 @@ export type RideBooking = {
   quotedFare: FareBreakdown;
   driverLocation?: DriverLocation;
   driverLocationUpdatedAt?: TimestampLike;
+  riderAssignmentSnapshot?: RiderAssignmentSnapshot;
   assignmentComplianceSnapshot?: {
     driverAuthorizationStatus: string;
     associationStatus: string;

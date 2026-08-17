@@ -57,9 +57,13 @@ export function RiderLiveDriverMap({ riderId }: { riderId: string }) {
 
 function DriverArrivalCard({ booking }: { booking: RideBooking }) {
   const compliance = booking.assignmentComplianceSnapshot;
-  const driverAssigned = Boolean(booking.driverId);
-  const vehicleAssigned = Boolean(booking.vehicleId);
+  const identity = booking.riderAssignmentSnapshot;
   const arrival = arrivalCopy(booking.status);
+  const vehicleName = identity
+    ? [identity.vehicle.color, identity.vehicle.make, identity.vehicle.model]
+        .filter(Boolean)
+        .join(" ")
+    : "Verified vehicle details pending";
 
   return (
     <section className="overflow-hidden rounded-[30px] border border-teal-900/10 bg-white shadow-sm">
@@ -86,23 +90,41 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
         <TrustItem
           icon={UserRound}
           label="Driver"
-          value={driverAssigned ? "Assigned" : "Assignment pending"}
-          helper={driverAssigned ? "Linked to this ride" : "Dispatch is still matching a driver"}
-          ready={driverAssigned}
+          value={identity?.driver.displayName ?? "Verified driver details pending"}
+          helper={
+            identity
+              ? `Commission badge ${identity.driver.commissionBadgeNumber}`
+              : "Identity appears only from the verified assignment record"
+          }
+          ready={Boolean(identity)}
         />
         <TrustItem
           icon={CarFront}
           label="Vehicle"
-          value={vehicleAssigned ? "Assigned" : "Vehicle pending"}
-          helper={vehicleAssigned ? "Vehicle record attached" : "Vehicle details will appear after assignment"}
-          ready={vehicleAssigned}
+          value={vehicleName}
+          helper={
+            identity
+              ? `Taxi plate ${identity.vehicle.taxiPlate} · Medallion ${identity.vehicle.medallionNumber}`
+              : "Vehicle identity appears after verified assignment"
+          }
+          ready={Boolean(identity)}
         />
         <TrustItem
           icon={ShieldCheck}
           label="Authorization"
-          value={compliance?.driverAuthorizationStatus || "Verification recorded at assignment"}
-          helper={compliance ? "Dispatch compliance snapshot" : "Shown when the verified assignment is available"}
-          ready={Boolean(compliance)}
+          value={
+            identity?.association.name ??
+            compliance?.driverAuthorizationStatus ??
+            "Verification recorded at assignment"
+          }
+          helper={
+            identity
+              ? "Active association assignment verified by dispatch"
+              : compliance
+                ? "Dispatch compliance snapshot"
+                : "Shown when the verified assignment is available"
+          }
+          ready={Boolean(compliance && identity)}
         />
         <TrustItem
           icon={MapPin}
@@ -115,7 +137,7 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
 
       <div className="border-t border-slate-100 bg-[#f8f4ea] px-5 py-4 sm:px-6">
         <p className="text-xs font-semibold leading-5 text-slate-600">
-          For privacy and safety, My Trip only displays driver and vehicle details that are attached to the verified booking record. Live position below comes from the assigned driver during active trip stages.
+          Before boarding, match the driver name and Commission badge plus the taxi color, make/model, plate, and medallion shown here. These details are copied from the reviewed fleet records at assignment time; internal account IDs are never shown.
         </p>
       </div>
     </section>
@@ -160,31 +182,31 @@ function arrivalCopy(status: RideBooking["status"]) {
       return {
         badge: "Ride confirmed",
         title: "Your driver is assigned.",
-        detail: "Your ride has moved out of dispatch. Driver and vehicle assignment details are now tied to this booking.",
+        detail: "Your ride has moved out of dispatch. Use the verified identity below to recognize the taxi that was assigned to this booking.",
       };
     case "driver_en_route":
       return {
         badge: "Driver en route",
         title: "Your driver is heading to pickup.",
-        detail: "Stay near the pickup point and use the live position below to follow the assigned driver’s approach.",
+        detail: "Stay near the pickup point, follow the live position below, and use the verified driver and taxi details to recognize your ride.",
       };
     case "arrived":
       return {
         badge: "Driver arrived",
         title: "Your driver is at the pickup area.",
-        detail: "Confirm the vehicle matches the booking record before boarding and meet the driver at the agreed pickup point.",
+        detail: "Before boarding, match the arriving driver and taxi against the verified booking details below.",
       };
     case "in_progress":
       return {
         badge: "On trip",
         title: "Your ride is in progress.",
-        detail: "The assigned driver, vehicle, route, and live trip status remain connected to this booking until completion.",
+        detail: "The verified driver, taxi, route, and live trip status remain connected to this booking until completion.",
       };
     default:
       return {
         badge: "Active ride",
         title: "Your ride is active.",
-        detail: "My Trip will keep the verified driver and vehicle context connected as the ride progresses.",
+        detail: "My Trip keeps verified driver and vehicle context connected as the ride progresses.",
       };
   }
 }

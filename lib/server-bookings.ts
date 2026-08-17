@@ -136,6 +136,7 @@ export async function assignServerDriver(params: {
       vehicleSnapshot,
       associationSnapshot,
     });
+    const verifiedAt = new Date().toISOString();
 
     if (booking.driverId && booking.driverId !== params.driverId) {
       transaction.update(db.collection("drivers").doc(booking.driverId), {
@@ -150,12 +151,29 @@ export async function assignServerDriver(params: {
       vehicleId,
       status: "matched",
       matchedAt: FieldValue.serverTimestamp(),
+      riderAssignmentSnapshot: {
+        driver: {
+          displayName: eligible.driver.fullName,
+          commissionBadgeNumber: eligible.driver.taxiCommissionBadgeNumber,
+        },
+        vehicle: {
+          make: eligible.vehicle.make,
+          model: eligible.vehicle.model,
+          color: eligible.vehicle.color ?? null,
+          taxiPlate: eligible.vehicle.taxiPlate,
+          medallionNumber: eligible.vehicle.medallionNumber,
+        },
+        association: {
+          name: eligible.association.name,
+        },
+        verifiedAt,
+      },
       assignmentComplianceSnapshot: {
         driverAuthorizationStatus: eligible.driver.authorizationStatus,
         associationStatus: eligible.association.status,
         vehicleInspectionStatus: eligible.vehicle.inspectionStatus,
         vehicleInsuranceStatus: eligible.vehicle.insuranceStatus,
-        verifiedAt: new Date().toISOString(),
+        verifiedAt,
       },
       updatedAt: FieldValue.serverTimestamp(),
     });
