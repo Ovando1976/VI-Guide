@@ -1,6 +1,7 @@
 "use client";
 
-import { Crosshair, MapPin, Navigation, Radio, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { AlertTriangle, Crosshair, MapPin, Navigation, Radio, ShieldCheck } from "lucide-react";
 
 import type { RideBooking } from "@/types/mobility";
 
@@ -42,11 +43,9 @@ export function RiderDriverLocation({ booking }: { booking: RideBooking }) {
 
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${location.latitude},${location.longitude}`)}`;
   const recordedAt = new Date(location.recordedAt);
-  const ageSeconds = Math.max(
-    0,
-    Math.round((Date.now() - recordedAt.getTime()) / 1000),
-  );
-  const fresh = ageSeconds <= 30;
+  const ageSeconds = Math.max(0, Math.round((Date.now() - recordedAt.getTime()) / 1000));
+  const freshness = locationFreshness(ageSeconds);
+  const staleHelpHref = `/concierge?prompt=${encodeURIComponent(`I am on an active ride from ${booking.origin.estateName} to ${booking.destination.estateName}. The driver's live location has not updated for ${formatAge(ageSeconds).toLowerCase()}. Help me understand what to do next without changing my booking.`)}`;
 
   return (
     <section className="overflow-hidden rounded-[30px] border border-teal-900/10 bg-white shadow-sm">
@@ -66,14 +65,8 @@ export function RiderDriverLocation({ booking }: { booking: RideBooking }) {
               Driver’s latest verified position
             </h3>
           </div>
-          <span
-            className={`rounded-full px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] ${
-              fresh
-                ? "bg-emerald-400/15 text-emerald-200"
-                : "bg-amber-300/15 text-amber-100"
-            }`}
-          >
-            {fresh ? "Live" : "Updating"}
+          <span className={`rounded-full px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] ${freshness.badgeClass}`}>
+            {freshness.label}
           </span>
         </div>
 
@@ -99,21 +92,62 @@ export function RiderDriverLocation({ booking }: { booking: RideBooking }) {
               Assigned driver only
             </span>
           </div>
-          <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">
-            Positions are published by the assigned driver and refreshed during active trip stages.
-          </p>
+          <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">{freshness.detail}</p>
+          {freshness.stale ? (
+            <div className="mt-3 flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs font-semibold leading-5 text-amber-900">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>The last verified position may no longer reflect the driver’s current location. Keep the booking open and use Get help if you need assistance.</span>
+            </div>
+          ) : null}
         </div>
-        <a
-          href={mapsHref}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.16em] text-white"
-        >
-          <MapPin className="h-4 w-4" /> Open live position
-        </a>
+        <div className="grid gap-2 sm:min-w-[190px]">
+          <a
+            href={mapsHref}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.16em] text-white"
+          >
+            <MapPin className="h-4 w-4" /> Open live position
+          </a>
+          {freshness.stale ? (
+            <Link
+              href={staleHelpHref}
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-amber-200 bg-amber-50 px-5 text-[9px] font-black uppercase tracking-[.14em] text-amber-900"
+            >
+              Get help
+            </Link>
+          ) : null}
+        </div>
       </div>
     </section>
   );
+}
+
+function locationFreshness(seconds: number) {
+  if (seconds <= 30) {
+    return {
+      label: "Live",
+      stale: false,
+      badgeClass: "bg-emerald-400/15 text-emerald-200",
+      detail: "This verified driver position is fresh and was published during the active ride.",
+    };
+  }
+
+  if (seconds <= 120) {
+    return {
+      label: "Delayed",
+      stale: false,
+      badgeClass: "bg-amber-300/15 text-amber-100",
+      detail: "The latest verified position is delayed. It may update as the driver regains connectivity or publishes the next location.",
+    };
+  }
+
+  return {
+    label: "Stale",
+    stale: true,
+    badgeClass: "bg-rose-300/15 text-rose-100",
+    detail: "This is the last verified driver position, but it is old enough that it should not be treated as the driver’s current location.",
+  };
 }
 
 function formatAge(seconds: number) {
