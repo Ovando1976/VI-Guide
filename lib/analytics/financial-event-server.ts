@@ -39,10 +39,15 @@ function safeKey(value: string) {
 }
 
 export function resolveFinancialProviderId(record: Record<string, unknown>) {
-  // Financial attribution must resolve to an explicit server-owned provider
-  // identity. A listing or offer is not a provider and must never be silently
-  // substituted, because one provider may own multiple listings/offers.
-  return clean(record.providerId) || clean(record.merchantUid);
+  const providerId = clean(record.providerId) || clean(record.merchantUid);
+  if (providerId) return providerId;
+
+  // VI Guide's provider operations and merchant listing scope are keyed by the
+  // canonical listing id. When a merchant UID is not present on older bookings,
+  // retain deterministic provider attribution to that server-owned provider scope
+  // rather than emitting unattributed revenue.
+  const listingId = clean(record.listingId);
+  return listingId ? `listing:${listingId}` : "";
 }
 
 export function financialEventDocumentId(input: {
@@ -85,7 +90,10 @@ export function buildFinancialEventRecord(input: RecordFinancialEventInput) {
     providerId,
     bookingId,
     stripeEventId,
-    payload: input.payload ?? {},
+    payload: {
+      ...(input.payload ?? {}),
+      stripeEventId,
+    },
   };
 }
 
