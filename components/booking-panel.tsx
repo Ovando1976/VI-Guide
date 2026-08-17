@@ -338,7 +338,7 @@ export function BookingPanel({
               [1, "Route"],
               [2, "Ride"],
               [3, "Guests"],
-              [4, "Review"],
+              [4, "Confirm"],
             ].map(([step, label]) => {
               const stepNumber = step as 1 | 2 | 3 | 4;
               const isActive = activeStep === stepNumber;
@@ -601,7 +601,7 @@ export function BookingPanel({
           <section className="overflow-hidden rounded-[30px] border border-[#0b5d5b]/10 bg-white shadow-sm">
             <div className="bg-[#043331] p-5 text-white">
               <div className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
-                Step 04 · Trip review
+                Step 04 · Official fare & confirmation
               </div>
               <div className="mt-3 text-2xl font-black tracking-[-.04em]">
                 {fromEstate?.baseName || "Choose pickup"}
@@ -699,7 +699,7 @@ export function BookingPanel({
             className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#5f3d00] disabled:opacity-60"
           >
             {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-            {canRequest ? "Continue" : "Review"}
+            {canRequest ? "Confirm ride" : "Review"}
           </button>
         </div>
       </div>
@@ -1053,7 +1053,7 @@ function FareReview({
           : !pilotActive
             ? "Booking opens after pilot approval"
           : acceptedOperatorDisclosure && acceptedLegal
-            ? "Continue to secure payment"
+            ? "Confirm ride & continue to payment"
             : "Accept disclosures to continue"}
       </button>
       <div className="mt-3 text-center text-[9px] font-bold uppercase tracking-[.12em] text-slate-400">
