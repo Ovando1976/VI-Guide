@@ -12,6 +12,7 @@ import {
 import { AddToJourneyButton } from "@/components/journey/add-to-journey-button";
 import { SavePlaceButton } from "@/components/place/save-place-button";
 import type { JourneyStopInput } from "@/lib/journey-planner";
+import { buildMobilityRideHref } from "@/lib/mobility/ride-links";
 import { buildContextualConciergeHref } from "@/lib/place/concierge-links";
 import type { IntelligenceIsland } from "@/types/intelligence";
 
@@ -46,6 +47,17 @@ export function PlaceActionBar({
     bookingHref,
   });
   const tripStop = journeyStop ?? fallbackJourneyStop;
+  const resolvedRideHref = rideHref?.startsWith("/mobility")
+    ? buildMobilityRideHref({
+        name: tripStop.title,
+        island: tripStop.island,
+        type: tripStop.kind,
+        lat: tripStop.lat,
+        lng: tripStop.lng,
+        source: tripStop.kind === "beach" ? "beach" : "place",
+        returnTo: tripStop.href,
+      })
+    : rideHref;
   const resolvedBookingHref = bookingHref;
   const resolvedConciergeHref =
     conciergeHref ??
@@ -94,7 +106,7 @@ export function PlaceActionBar({
                 summary: tripStop.summary,
                 ...(tripStop.href ? { href: tripStop.href } : {}),
                 ...(mapHref ? { mapHref } : tripStop.mapHref ? { mapHref: tripStop.mapHref } : {}),
-                ...(rideHref ? { rideHref } : {}),
+                ...(resolvedRideHref ? { rideHref: resolvedRideHref } : {}),
                 ...(resolvedBookingHref ? { bookingHref: resolvedBookingHref } : {}),
                 ...(typeof tripStop.lat === "number" ? { lat: tripStop.lat } : {}),
                 ...(typeof tripStop.lng === "number" ? { lng: tripStop.lng } : {}),
@@ -103,7 +115,7 @@ export function PlaceActionBar({
             />
             <AddToJourneyButton stop={tripStop} className="w-full" />
             {mapHref ? <Action href={mapHref} icon={Map} label="View on map" /> : null}
-            {rideHref ? <Action href={rideHref} icon={Navigation} label="Get a ride" accent="gold" /> : null}
+            {resolvedRideHref ? <Action href={resolvedRideHref} icon={Navigation} label="Get a ride" accent="gold" /> : null}
             <Action
               href={resolvedConciergeHref}
               icon={MessageCircleMore}
