@@ -76,6 +76,7 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
   const compliance = booking.assignmentComplianceSnapshot;
   const identity = booking.riderAssignmentSnapshot;
   const arrival = arrivalCopy(booking.status);
+  const helpHref = activeRideHelpHref(booking);
   const vehicleName = identity
     ? [identity.vehicle.color, identity.vehicle.make, identity.vehicle.model]
         .filter(Boolean)
@@ -213,7 +214,7 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
               <Navigation className="h-4 w-4" /> Open map
             </Link>
             <Link
-              href="/concierge"
+              href={helpHref}
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[8px] font-black uppercase tracking-[.12em] text-[#043331] transition hover:border-teal-300"
             >
               <Headphones className="h-4 w-4" /> Get help
@@ -259,6 +260,16 @@ function TrustItem({
       </div>
     </div>
   );
+}
+
+function activeRideHelpHref(booking: RideBooking) {
+  const identity = booking.riderAssignmentSnapshot;
+  const stage = booking.status.replaceAll("_", " ");
+  const verifiedRide = identity
+    ? `The verified assignment shows driver ${identity.driver.displayName}, Commission badge ${identity.driver.commissionBadgeNumber}, and a ${[identity.vehicle.color, identity.vehicle.make, identity.vehicle.model].filter(Boolean).join(" ")} with taxi plate ${identity.vehicle.taxiPlate} and medallion ${identity.vehicle.medallionNumber}.`
+    : "The verified driver and taxi identity is still pending on My Trip.";
+  const prompt = `I need help with my active USVI taxi ride. The current ride stage is ${stage}. Pickup is ${booking.origin.estateName} and destination is ${booking.destination.estateName}. ${verifiedRide} Help me understand what I should do next and prioritize rider safety and the verified booking record.`;
+  return `/concierge?prompt=${encodeURIComponent(prompt)}`;
 }
 
 function pickupInstruction(status: RideBooking["status"], pickup: string) {
