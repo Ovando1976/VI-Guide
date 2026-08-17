@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2, MessageCircle, RotateCcw, Star } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeftRight, CheckCircle2, MessageCircle, RotateCcw, Star } from "lucide-react";
+import { useMemo, useState } from "react";
 
 import type { RideBooking } from "@/types/mobility";
 
@@ -13,6 +13,26 @@ export function PostRideExperience({ booking }: { booking: RideBooking }) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fare = booking.finalFare ?? booking.quotedFare.total;
+
+  const repeatRideHref = useMemo(() => {
+    const params = new URLSearchParams({
+      from: booking.origin.estateName,
+      to: booking.destination.estateName,
+      pickupName: booking.origin.estateName,
+      destinationName: booking.destination.estateName,
+    });
+    return `/mobility?${params.toString()}`;
+  }, [booking.destination.estateName, booking.origin.estateName]);
+
+  const returnRideHref = useMemo(() => {
+    const params = new URLSearchParams({
+      from: booking.destination.estateName,
+      to: booking.origin.estateName,
+      pickupName: booking.destination.estateName,
+      destinationName: booking.origin.estateName,
+    });
+    return `/mobility?${params.toString()}`;
+  }, [booking.destination.estateName, booking.origin.estateName]);
 
   async function submitFeedback() {
     if (!rating || saving) return;
@@ -45,7 +65,7 @@ export function PostRideExperience({ booking }: { booking: RideBooking }) {
           </span>
           <div>
             <p className="text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">Ride complete</p>
-            <h4 className="mt-1 text-2xl font-black tracking-[-.04em]">Your ride record is complete.</h4>
+            <h4 className="mt-1 text-2xl font-black tracking-[-.04em]">You made it. What’s next?</h4>
             <p className="mt-2 text-sm font-semibold leading-6 text-white/70">
               {booking.origin.estateName} → {booking.destination.estateName} · Final ride amount ${fare.toFixed(2)}.
             </p>
@@ -97,18 +117,24 @@ export function PostRideExperience({ booking }: { booking: RideBooking }) {
           )}
         </div>
 
-        <div className="grid min-w-[220px] gap-2">
+        <div className="grid min-w-[230px] gap-2">
           <Link
-            href="/mobility"
+            href={returnRideHref}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#f5c451] px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#043331]"
           >
-            <RotateCcw className="h-4 w-4" /> Book another ride
+            <ArrowLeftRight className="h-4 w-4" /> Book return ride
           </Link>
           <Link
-            href={`/concierge?prompt=${encodeURIComponent(`Help me plan the next leg after my ride from ${booking.origin.estateName} to ${booking.destination.estateName}.`)}`}
+            href={repeatRideHref}
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#043331]"
+          >
+            <RotateCcw className="h-4 w-4" /> Repeat this route
+          </Link>
+          <Link
+            href={`/concierge?prompt=${encodeURIComponent(`I just arrived at ${booking.destination.estateName} after a ride from ${booking.origin.estateName}. Help me decide what to do next nearby, considering timing, transportation, food, activities, and anything I should know before I go.`)}`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[9px] font-black uppercase tracking-[.13em] text-[#043331]"
           >
-            <MessageCircle className="h-4 w-4" /> Plan what’s next
+            <MessageCircle className="h-4 w-4" /> Ask concierge nearby
           </Link>
         </div>
       </div>
