@@ -25,6 +25,7 @@ export type Phase1FunnelSummary = {
     relevantEvents: number;
     returnBufferReported: number;
     returnBufferMet: number;
+    returnBufferFailed: number;
     returnBufferMissing: number;
   };
 };
@@ -82,6 +83,7 @@ export function summarizePhase1Funnel(
       relevantEvents: cruiseRelevant,
       returnBufferReported,
       returnBufferMet,
+      returnBufferFailed: returnBufferReported - returnBufferMet,
       returnBufferMissing: cruiseRelevant - returnBufferReported,
     },
   };
