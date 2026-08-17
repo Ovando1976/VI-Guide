@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reference ordering for the Phase 1 reproducible vertical-slice proof.",
+  "requiredSequence": [
+    "landing_view",
+    "concierge_started",
+    "plan_created",
+    "plan_item_added",
+    "checkout_started",
+    "payment_completed"
+  ],
+  "requiredInvariants": [
+    "server_only_financial_events",
+    "stripe_idempotency",
+    "provider_and_booking_attribution",
+    "cruise_return_buffer_reported"
+  ]
+}
