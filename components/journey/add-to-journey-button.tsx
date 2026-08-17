@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Check, Plus, Route } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
   JOURNEY_PLAN_UPDATED_EVENT,
@@ -11,6 +11,7 @@ import {
   readJourneyPlans,
   type JourneyStopInput,
 } from "@/lib/journey-planner";
+import { buildMobilityRideHref } from "@/lib/mobility/ride-links";
 
 export function AddToJourneyButton({
   stop,
@@ -20,6 +21,21 @@ export function AddToJourneyButton({
   className?: string;
 }) {
   const [added, setAdded] = useState(false);
+  const journeyStop = useMemo<JourneyStopInput>(() => {
+    if (stop.bookingHref) return stop;
+    return {
+      ...stop,
+      bookingHref: buildMobilityRideHref({
+        name: stop.title,
+        island: stop.island,
+        type: stop.kind,
+        lat: stop.lat,
+        lng: stop.lng,
+        source: "planner",
+        returnTo: "/planner",
+      }),
+    };
+  }, [stop]);
 
   useEffect(() => {
     function refresh() {
@@ -44,7 +60,7 @@ export function AddToJourneyButton({
 
   function add() {
     importLegacyTripPlans();
-    addStopToJourney(stop);
+    addStopToJourney(journeyStop);
     setAdded(true);
   }
 
