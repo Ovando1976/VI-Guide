@@ -1,6 +1,16 @@
 "use client";
 
-import { CarFront, CheckCircle2, MapPin, ShieldCheck, UserRound } from "lucide-react";
+import Link from "next/link";
+import {
+  CarFront,
+  CheckCircle2,
+  Headphones,
+  LocateFixed,
+  MapPin,
+  Navigation,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { RiderDriverLocation } from "@/components/mobility/rider-driver-location";
@@ -12,6 +22,13 @@ const TRACKABLE_STATUSES: RideBooking["status"][] = [
   "driver_en_route",
   "arrived",
   "in_progress",
+];
+
+const RIDE_STEPS: Array<{ status: RideBooking["status"]; label: string }> = [
+  { status: "matched", label: "Assigned" },
+  { status: "driver_en_route", label: "En route" },
+  { status: "arrived", label: "Arrived" },
+  { status: "in_progress", label: "On trip" },
 ];
 
 export function RiderLiveDriverMap({ riderId }: { riderId: string }) {
@@ -64,25 +81,47 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
         .filter(Boolean)
         .join(" ")
     : "Verified vehicle details pending";
+  const activeStep = Math.max(
+    0,
+    RIDE_STEPS.findIndex((step) => step.status === booking.status),
+  );
 
   return (
     <section className="overflow-hidden rounded-[30px] border border-teal-900/10 bg-white shadow-sm">
-      <div className="bg-[linear-gradient(135deg,#043331,#0f766e)] px-5 py-5 text-white sm:px-6">
+      <div className="bg-[linear-gradient(135deg,#043331,#0f766e)] px-5 py-5 text-white sm:px-6 sm:py-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
+          <div className="max-w-2xl">
             <div className="text-[9px] font-black uppercase tracking-[.2em] text-[#f5c451]">
-              Your assigned ride
+              Active ride · {booking.origin.estateName} → {booking.destination.estateName}
             </div>
-            <h3 className="mt-2 text-2xl font-black tracking-[-.04em]">
+            <h3 className="mt-2 text-2xl font-black tracking-[-.04em] sm:text-3xl">
               {arrival.title}
             </h3>
-            <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-white/70">
+            <p className="mt-2 text-sm font-semibold leading-6 text-white/70">
               {arrival.detail}
             </p>
           </div>
           <span className="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[8px] font-black uppercase tracking-[.14em] text-white/85">
             {arrival.badge}
           </span>
+        </div>
+
+        <div className="mt-5 grid grid-cols-4 gap-1.5" aria-label="Ride progress">
+          {RIDE_STEPS.map((step, index) => {
+            const complete = index <= activeStep;
+            return (
+              <div key={step.status} className="min-w-0">
+                <div
+                  className={`h-1.5 rounded-full ${complete ? "bg-[#7ce0d4]" : "bg-white/15"}`}
+                />
+                <div
+                  className={`mt-2 truncate text-[7px] font-black uppercase tracking-[.1em] ${complete ? "text-white" : "text-white/40"}`}
+                >
+                  {step.label}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -135,10 +174,31 @@ function DriverArrivalCard({ booking }: { booking: RideBooking }) {
         />
       </div>
 
-      <div className="border-t border-slate-100 bg-[#f8f4ea] px-5 py-4 sm:px-6">
-        <p className="text-xs font-semibold leading-5 text-slate-600">
-          Before boarding, match the driver name and Commission badge plus the taxi color, make/model, plate, and medallion shown here. These details are copied from the reviewed fleet records at assignment time; internal account IDs are never shown.
-        </p>
+      <div className="border-t border-slate-100 bg-[#f8f4ea] px-5 py-5 sm:px-6">
+        <div className="grid gap-3 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em] text-[#0f766e]">
+              <LocateFixed className="h-4 w-4" /> Pickup check
+            </div>
+            <p className="mt-1 max-w-3xl text-xs font-semibold leading-5 text-slate-600">
+              {pickupInstruction(booking.status, booking.origin.estateName)} Before boarding, match the driver name and Commission badge plus the taxi color, make/model, plate, and medallion shown above.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-2 sm:flex">
+            <Link
+              href="/map"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#043331] px-4 text-[8px] font-black uppercase tracking-[.12em] text-white transition hover:bg-[#0f766e]"
+            >
+              <Navigation className="h-4 w-4" /> Open map
+            </Link>
+            <Link
+              href="/concierge"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-[8px] font-black uppercase tracking-[.12em] text-[#043331] transition hover:border-teal-300"
+            >
+              <Headphones className="h-4 w-4" /> Get help
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -174,6 +234,21 @@ function TrustItem({
       </div>
     </div>
   );
+}
+
+function pickupInstruction(status: RideBooking["status"], pickup: string) {
+  switch (status) {
+    case "matched":
+      return `Your taxi is assigned for ${pickup}. Keep My Trip open for the driver's live approach.`;
+    case "driver_en_route":
+      return `Head toward the agreed pickup point at ${pickup} and watch the live driver position below.`;
+    case "arrived":
+      return `Your driver is in the ${pickup} pickup area. Confirm the verified taxi before you board.`;
+    case "in_progress":
+      return "You are on the trip. My Trip will keep the verified ride record and live status together until completion.";
+    default:
+      return `Keep the agreed ${pickup} pickup point in view while your ride progresses.`;
+  }
 }
 
 function arrivalCopy(status: RideBooking["status"]) {
