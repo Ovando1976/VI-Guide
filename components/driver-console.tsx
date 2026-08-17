@@ -114,6 +114,14 @@ type DriverProfile = {
   associationId?: string;
 };
 
+type MarketplaceEligibilityResponse = {
+  eligibleBookingIds?: string[];
+  candidateCount?: number;
+  filteredCount?: number;
+  readinessIssue?: string | null;
+  error?: string;
+};
+
 type FirestoreDateLike =
   | { seconds?: number; nanoseconds?: number }
   | string
@@ -179,6 +187,11 @@ export function DriverConsole({ driverId }: { driverId: string }) {
   const [vehicle, setVehicle] = useState<FleetVehicle | null>(null);
   const [association, setAssociation] = useState<TaxiAssociation | null>(null);
   const [bookings, setBookings] = useState<DriverBooking[]>([]);
+  const [openBookingIds, setOpenBookingIds] = useState<Set<string>>(new Set());
+  const [eligibleMarketplaceIds, setEligibleMarketplaceIds] = useState<Set<string>>(new Set());
+  const [marketplaceCandidateCount, setMarketplaceCandidateCount] = useState(0);
+  const [marketplaceEligibilityLoading, setMarketplaceEligibilityLoading] = useState(true);
+  const [marketplaceReadinessIssue, setMarketplaceReadinessIssue] = useState<string | null>(null);
   const [workingId, setWorkingId] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -205,6 +218,7 @@ export function DriverConsole({ driverId }: { driverId: string }) {
           ...docSnap.data(),
         })) as DriverBooking[];
 
+        setOpenBookingIds(new Set(rows.map((booking) => booking.id)));
         setBookings((prev) => mergeBookings(prev, rows));
         setErrorMessage(null);
       },
@@ -293,16 +307,81 @@ export function DriverConsole({ driverId }: { driverId: string }) {
   }, [toastMessage]);
 
   const isOnline = driver?.availability === "available";
+  const openCandidateKey = useMemo(
+    () => Array.from(openBookingIds).sort().join("|"),
+    [openBookingIds],
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refreshMarketplaceEligibility() {
+      if (!driver?.id) {
+        setEligibleMarketplaceIds(new Set());
+        setMarketplaceCandidateCount(0);
+        setMarketplaceReadinessIssue(null);
+        setMarketplaceEligibilityLoading(false);
+        return;
+      }
+
+      try {
+        setMarketplaceEligibilityLoading(true);
+        const response = await fetch("/api/drivers/marketplace", {
+          cache: "no-store",
+        });
+        const payload = (await response.json().catch(() => null)) as
+          | MarketplaceEligibilityResponse
+          | null;
+
+        if (!response.ok) {
+          throw new Error(payload?.error || "Unable to load compatible ride requests.");
+        }
+        if (cancelled) return;
+
+        setEligibleMarketplaceIds(new Set(payload?.eligibleBookingIds ?? []));
+        setMarketplaceCandidateCount(payload?.candidateCount ?? 0);
+        setMarketplaceReadinessIssue(payload?.readinessIssue ?? null);
+      } catch (error) {
+        if (cancelled) return;
+        console.error("marketplace eligibility error", error);
+        setEligibleMarketplaceIds(new Set());
+        setMarketplaceReadinessIssue(
+          error instanceof Error
+            ? error.message
+            : "Unable to load compatible ride requests.",
+        );
+      } finally {
+        if (!cancelled) setMarketplaceEligibilityLoading(false);
+      }
+    }
+
+    void refreshMarketplaceEligibility();
+    const timer = window.setInterval(refreshMarketplaceEligibility, 60_000);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, [
+    driver?.id,
+    driver?.availability,
+    driver?.vehicleId,
+    driver?.associationId,
+    openCandidateKey,
+  ]);
 
   const marketplace = useMemo(
     () =>
       sortBookings(
         bookings.filter(
           (booking) =>
-            booking.status === "requested" && booking.paymentStatus === "paid"
+            openBookingIds.has(booking.id) &&
+            eligibleMarketplaceIds.has(booking.id) &&
+            booking.status === "requested" &&
+            booking.paymentStatus === "paid"
         )
       ),
-    [bookings]
+    [bookings, eligibleMarketplaceIds, openBookingIds]
   );
 
   const activeTrips = useMemo(
@@ -644,11 +723,29 @@ export function DriverConsole({ driverId }: { driverId: string }) {
 
               <OpsSection
                 eyebrow="Marketplace"
-                title="Open paid requests"
-                subtitle="Only fully paid rides appear here."
+                title="Compatible paid requests"
+                subtitle="Only paid rides your current driver, island, vehicle, association, and compliance profile can serve appear here."
               >
                 <div className="space-y-4">
-                  {marketplace.length ? (
+                  {marketplaceEligibilityLoading ? (
+                    <EmptyState
+                      icon={ShieldCheck}
+                      title="Checking compatible rides"
+                      description="Verifying your current dispatch eligibility against paid requests."
+                    />
+                  ) : marketplaceReadinessIssue ? (
+                    <EmptyState
+                      icon={AlertCircle}
+                      title="Marketplace unavailable"
+                      description={marketplaceReadinessIssue}
+                    />
+                  ) : !isOnline ? (
+                    <EmptyState
+                      icon={Zap}
+                      title="Go online to receive rides"
+                      description="Set availability to Available after your readiness checks are clear."
+                    />
+                  ) : marketplace.length ? (
                     marketplace.map((booking) => (
                       <DriverTripCard
                         key={booking.id}
@@ -666,11 +763,17 @@ export function DriverConsole({ driverId }: { driverId: string }) {
                         }
                       />
                     ))
+                  ) : marketplaceCandidateCount > 0 ? (
+                    <EmptyState
+                      icon={ShieldCheck}
+                      title="No compatible paid rides"
+                      description="Paid demand exists, but none currently matches your island, fleet, capacity, association, or compliance profile."
+                    />
                   ) : (
                     <EmptyState
                       icon={Zap}
                       title="No open paid ride requests"
-                      description="When paid demand comes in, it will appear here."
+                      description="When compatible paid demand comes in, it will appear here."
                     />
                   )}
                 </div>
