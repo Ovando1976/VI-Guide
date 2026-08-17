@@ -8,18 +8,20 @@
       "candidateAlias": "Charlotte Amalie",
       "scope": "either_endpoint",
       "reason": "Operational endpoint mapping requires authoritative confirmation before automatic quoting."
-    },
+    }
+  ],
+  "suppressedBroadAliases": [
     {
       "canonicalSourceName": "Airport Terminal",
-      "candidateAlias": "Lindbergh Bay",
+      "suppressedAlias": "Lindbergh Bay",
       "scope": "either_endpoint",
-      "reason": "Intentionally keep this mapping narrow: an Airport Terminal tariff must not automatically broaden to generic Lindbergh Bay."
+      "reason": "Keep the published Airport Terminal endpoint narrow; do not apply its fare to generic Lindbergh Bay."
     },
     {
       "canonicalSourceName": "Dorothea",
-      "candidateAlias": "Dorothea Estate",
+      "suppressedAlias": "Dorothea Estate",
       "scope": "either_endpoint",
-      "reason": "Intentionally keep this mapping narrow: do not broaden a published Dorothea endpoint to Dorothea Estate without authoritative confirmation."
+      "reason": "Keep the published Dorothea endpoint narrow; do not broaden it to Dorothea Estate."
     }
   ],
   "fareConfirmations": [
