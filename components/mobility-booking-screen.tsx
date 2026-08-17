@@ -63,44 +63,14 @@ function numberInRange(value: string | null, minimum: number, maximum: number) {
   return Math.max(minimum, Math.min(maximum, Math.round(parsed)));
 }
 
-function queryCoordinate(
-  searchParams: ReturnType<typeof useSearchParams>,
-  key: "fromLat" | "fromLng" | "toLat" | "toLng",
-) {
-  const raw = searchParams.get(key);
-  if (raw === null) return null;
-  const value = Number(raw);
-  return Number.isFinite(value) ? value : null;
-}
-
 function normalizedPlaceName(value: string | null) {
   return value?.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() ?? "";
-}
-
-function nearestEstate(
-  estates: EstateRecord[],
-  lat: number | null,
-  lng: number | null,
-) {
-  if (lat === null || lng === null || !estates.length) return null;
-  return estates.reduce<EstateRecord | null>((closest, estate) => {
-    if (!closest) return estate;
-    const candidateDistance =
-      Math.pow(estate.internalPoint.lat - lat, 2) +
-      Math.pow(estate.internalPoint.lng - lng, 2);
-    const closestDistance =
-      Math.pow(closest.internalPoint.lat - lat, 2) +
-      Math.pow(closest.internalPoint.lng - lng, 2);
-    return candidateDistance < closestDistance ? estate : closest;
-  }, null);
 }
 
 function estateFromHandoff(
   estates: EstateRecord[],
   geoid: string | null,
   name: string | null,
-  lat: number | null,
-  lng: number | null,
 ) {
   const exact = geoid
     ? estates.find((estate) => estate.geoid === geoid)
@@ -108,17 +78,12 @@ function estateFromHandoff(
   if (exact) return exact;
 
   const requestedName = normalizedPlaceName(name);
-  if (requestedName) {
-    const named = estates.find((estate) => {
-      const estateName = normalizedPlaceName(estate.baseName);
-      return estateName === requestedName ||
-        estateName.includes(requestedName) ||
-        requestedName.includes(estateName);
-    });
-    if (named) return named;
-  }
+  if (!requestedName) return null;
 
-  return nearestEstate(estates, lat, lng);
+  const namedMatches = estates.filter(
+    (estate) => normalizedPlaceName(estate.baseName) === requestedName,
+  );
+  return namedMatches.length === 1 ? namedMatches[0] : null;
 }
 
 export function MobilityBookingScreen() {
@@ -203,21 +168,19 @@ export function MobilityBookingScreen() {
       availableEstates,
       searchParams.get("from"),
       searchParams.get("pickupName") ?? searchParams.get("pickup"),
-      queryCoordinate(searchParams, "fromLat"),
-      queryCoordinate(searchParams, "fromLng"),
     );
     const requestedTo = estateFromHandoff(
       availableEstates,
       searchParams.get("to"),
       searchParams.get("destinationName") ?? searchParams.get("destination"),
-      queryCoordinate(searchParams, "toLat"),
-      queryCoordinate(searchParams, "toLng"),
     );
 
-    if (requestedFrom) setFromGeoid(requestedFrom.geoid);
-    if (requestedTo && requestedTo.geoid !== requestedFrom?.geoid) {
-      setToGeoid(requestedTo.geoid);
-    }
+    setFromGeoid(requestedFrom?.geoid ?? "");
+    setToGeoid(
+      requestedTo && requestedTo.geoid !== requestedFrom?.geoid
+        ? requestedTo.geoid
+        : "",
+    );
   }, [availableEstates, searchParams]);
 
   useEffect(() => {
