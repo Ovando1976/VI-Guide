@@ -32,6 +32,30 @@ function hasName(values: string[] | undefined, name: string) {
   return (values ?? []).some((value) => normalize(value) === target);
 }
 
+const STT_ENDPOINT_REVIEW_GATES = new Map<string, string>([
+  [
+    "town",
+    "Town cannot be treated as Charlotte Amalie until the tariff endpoint identity is confirmed.",
+  ],
+  [
+    "lindbergh bay",
+    "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
+  ],
+  [
+    "dorothea estate",
+    "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
+  ],
+]);
+
+function assertEndpointIdentityConfirmed(estate: EstateRecord) {
+  if (estate.island !== "stt") return;
+  const reason = STT_ENDPOINT_REVIEW_GATES.get(normalize(estate.baseName));
+  if (!reason) return;
+  throw new OfficialTaxiRateUnavailableError(
+    `Official fare confirmation required: ${reason} Dispatch must verify the regulated endpoint before quoting.`,
+  );
+}
+
 function endpointMatches(
   ruleGeoids: string[] | undefined,
   ruleNames: string[],
@@ -172,6 +196,8 @@ export async function quoteOfficialTaxiFare(params: {
       "Taxi quotes cannot cross islands. Choose endpoints on the same island.",
     );
   }
+  assertEndpointIdentityConfirmed(params.origin);
+  assertEndpointIdentityConfirmed(params.destination);
   const tariff = await loadActiveTariff(params.origin.island);
   const rule = findRule(tariff, params.origin, params.destination);
   if (!rule) {
