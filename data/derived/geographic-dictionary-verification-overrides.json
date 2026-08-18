@@ -37,13 +37,84 @@
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   },
   {
-    "normalizedName": "bourlc",
-    "canonicalName": "Bourlc",
+    "normalizedName": "bourlc plantage",
+    "canonicalName": "Bourlc Plantage",
     "island": "STX",
     "relationship": "variant_of",
     "relatedName": "Castle Burke",
     "confidence": "medium",
     "evidence": "Dictionary text states 'Burke Estate; same as Castle Burke, St. Croix'; the OCR spelling 'Bourlc' remains suspicious and is retained as source text until page-image verification.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "coftoc",
+    "canonicalName": "Coftoc",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary text explicitly places the French Plantage near Granard, St. Croix, but the canonical OCR spelling 'Coftoc' is suspicious and must remain review-only until the source page is visually verified.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "corteri",
+    "canonicalName": "Corteri",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly says the seventeenth-century French Plantage was near the south coast of St. Croix, not St. John.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "diamond",
+    "canonicalName": "Diamond",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly identifies Estate 28, Queen Quarter, St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "frenchbay",
+    "canonicalName": "Frenchbay",
+    "island": "STT",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places the estate/stock farm near French Bay on the south coast of St. Thomas.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "bfoncccur",
+    "canonicalName": "Bfoncccur",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary OCR explicitly places the plantation near Pearl Estate, St. Croix, but 'Bfoncccur' is visibly corrupted OCR and must remain review-only until page-image verification establishes the historical name.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "cfaudri",
+    "canonicalName": "Cfaudri",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary OCR explicitly places the Plantage south of Altona, St. Croix, but 'Cfaudri' is suspicious OCR and must remain review-only until page-image verification.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "cui",
+    "canonicalName": "Cui%",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary OCR identifies the record with Cane Plantation in Westend Quarter, St. Croix, but the canonical token 'Cui%' is malformed and must remain review-only until page-image verification.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "hekms plantagein1299backmans",
+    "canonicalName": "Hekm's Plantage: in 1299, Backman's",
+    "relationship": "ocr_fragment",
+    "confidence": "low",
+    "evidence": "The parsed name is a merged sentence fragment rather than a defensible canonical geographic name. Preserve it only for source-page reconciliation; do not publish it as a verified place.",
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   }
 ]
