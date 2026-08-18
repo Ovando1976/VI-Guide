@@ -1,0 +1,49 @@
+[
+  {
+    "normalizedName": "beverhoutberg",
+    "canonicalName": "Beverhoutberg",
+    "island": "STJ",
+    "relationship": "historical_feature",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places the hill/old estate south of Susannaberg, St. John.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "claremont",
+    "canonicalName": "Claremont",
+    "island": "STX",
+    "relationship": "variant_of",
+    "relatedName": "Clairmont",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly says Claremont is a variant of Clairmont Estate in Northside B Quarter, St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "concordia",
+    "canonicalName": "Concordia",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly identifies Estate 8, Queen (Dronning) Quarter, St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "cooturker",
+    "canonicalName": "Cooturker",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly identifies an old French Plantage near Bellevue, St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "bourlc",
+    "canonicalName": "Bourlc",
+    "island": "STX",
+    "relationship": "variant_of",
+    "relatedName": "Castle Burke",
+    "confidence": "medium",
+    "evidence": "Dictionary text states 'Burke Estate; same as Castle Burke, St. Croix'; the OCR spelling 'Bourlc' remains suspicious and is retained as source text until page-image verification.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  }
+]
