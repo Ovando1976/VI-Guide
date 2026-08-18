@@ -31,13 +31,13 @@ export async function GET() {
     await requireSession(["admin"]);
 
     const snapshot = await getAdminDb().collection("taxiTariffs").get();
-    const tariffs: TariffAuditDocument[] = snapshot.docs
-      .map((document) => {
-        const data = document.data() as Record<string, unknown>;
-        const island = typeof data.island === "string" ? data.island : "";
-        if (!AUDITED_ISLANDS.has(island)) return null;
+    const tariffs = snapshot.docs.flatMap<TariffAuditDocument>((document) => {
+      const data = document.data() as Record<string, unknown>;
+      const island = typeof data.island === "string" ? data.island : "";
+      if (!AUDITED_ISLANDS.has(island)) return [];
 
-        return {
+      return [
+        {
           id: document.id,
           island,
           title: asString(data.title),
@@ -53,9 +53,9 @@ export async function GET() {
           rules: Array.isArray(data.rules)
             ? (data.rules as TariffAuditDocument["rules"])
             : [],
-        } satisfies TariffAuditDocument;
-      })
-      .filter((tariff): tariff is TariffAuditDocument => tariff !== null);
+        } satisfies TariffAuditDocument,
+      ];
+    });
 
     const report = auditTaxiTariffRoutes(tariffs);
     const blocking = report.findings.filter(
