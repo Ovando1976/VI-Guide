@@ -14,5 +14,9 @@
   {
     "dictionaryId": "gd-stx-pless",
     "modernGeoid": "7801064660"
+  },
+  {
+    "dictionaryId": "gd-stx-beckmans",
+    "modernGeoid": "7801068530"
   }
 ]
