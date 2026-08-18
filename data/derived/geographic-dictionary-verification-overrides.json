@@ -43,16 +43,7 @@
     "relationship": "variant_of",
     "relatedName": "Castle Burke",
     "confidence": "medium",
-    "evidence": "Dictionary text states 'Burke Estate; same as Castle Burke, St. Croix'; the OCR spelling 'Bourlc' remains suspicious and is retained as source text until page-image verification.",
-    "source": "Geographic Dictionary of the Virgin Islands (1925)"
-  },
-  {
-    "normalizedName": "coftoc",
-    "canonicalName": "Coftoc",
-    "island": "STX",
-    "relationship": "historical_estate",
-    "confidence": "low",
-    "evidence": "Dictionary text explicitly places the French Plantage near Granard, St. Croix, but the canonical OCR spelling 'Coftoc' is suspicious and must remain review-only until the source page is visually verified.",
+    "evidence": "Dictionary text states Burke Estate is the same as Castle Burke, St. Croix; the OCR spelling 'Bourlc' remains suspicious and is retained as source text until page-image verification.",
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   },
   {
@@ -92,6 +83,151 @@
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   },
   {
+    "normalizedName": "jansen",
+    "canonicalName": "Jansen",
+    "island": "STT",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly describes Jansen as an old estate on St. Thomas.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "little plantation",
+    "canonicalName": "Little Plantation",
+    "island": "STJ",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly says Little Plantation is an estate in St. John; the prior St. Croix assignment was incorrect.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "littlefountain",
+    "canonicalName": "Littlefountain",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "medium",
+    "evidence": "Dictionary OCR identifies Little Fountain in Northside B Quarter and renders St. Croix as '8t.Croix'; island is clear, spelling/details remain OCR-derived.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "magen",
+    "canonicalName": "Magen",
+    "island": "STT",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text places Magen/Magens Plantage near Neltjeberg, St. Thomas; the prior St. John assignment was incorrect.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "omnge",
+    "canonicalName": "Omnge",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary OCR explicitly places this old French Plantage near Glynn, St. Croix, but the canonical spelling 'Omnge' is suspicious and remains review-only.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "parhien",
+    "canonicalName": "Parhien",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "medium",
+    "evidence": "Dictionary OCR places the French Plantage at the present site of Petronella Estate and renders St. Croix as 'S tCmix'; island is clear though OCR is degraded.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "pawup",
+    "canonicalName": "Pawup",
+    "island": "STT",
+    "relationship": "historical_estate",
+    "confidence": "medium",
+    "evidence": "Dictionary OCR places the estate near Vessup Bay and renders St. Thomas as 'Bt.Thomas'; island is clear, canonical spelling remains OCR-derived.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "pobtevin",
+    "canonicalName": "Pobtevin",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "medium",
+    "evidence": "Dictionary text explicitly places the seventeenth-century French Plantage near Mount Welcome Estate, St. Croix; spelling remains OCR-derived.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "qirard",
+    "canonicalName": "Qirard",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary text places the French Plantage near Southgate Pond, St. Croix, but 'Qirard' is likely OCR corruption and remains review-only.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "quinet",
+    "canonicalName": "Quinet",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places Quinet near Limetree Bay/Moir Point on the south coast of St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "roziere",
+    "canonicalName": "Roziere",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places Roziere west or northwest of Judith's Fancy, St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "ryan",
+    "canonicalName": "Ryan",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "medium",
+    "evidence": "Dictionary OCR identifies the estate in East End A Quarter and renders St. Croix as 'St.Cmix'; island is clear though OCR is degraded.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "sieben",
+    "canonicalName": "Sieben",
+    "island": "STJ",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places the old estate in Reef Bay Quarter, St. John.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "teparara",
+    "canonicalName": "Teparara",
+    "island": "STX",
+    "relationship": "variant_of",
+    "relatedName": "Tipperary",
+    "confidence": "medium",
+    "evidence": "Dictionary text explicitly identifies Teparara as Tipperary, an old estate on St. Croix; historical spelling may be OCR-affected.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "uobb",
+    "canonicalName": "Uobb",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary text places the seventeenth-century French Plantage between Longford and another bay on St. Croix, but 'Uobb' is visibly suspicious OCR and remains review-only.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "wildhagen",
+    "canonicalName": "Wildhagen",
+    "island": "STT",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places Wildhagen/Wildhagens Plantage at the southwest head of Vessup Bay, St. Thomas.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
     "normalizedName": "bfoncccur",
     "canonicalName": "Bfoncccur",
     "island": "STX",
@@ -107,6 +243,15 @@
     "relationship": "historical_estate",
     "confidence": "low",
     "evidence": "Dictionary OCR explicitly places the Plantage south of Altona, St. Croix, but 'Cfaudri' is suspicious OCR and must remain review-only until page-image verification.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
+    "normalizedName": "coftoc",
+    "canonicalName": "Coftoc",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "low",
+    "evidence": "Dictionary text explicitly places the French Plantage near Granard, St. Croix, but the canonical OCR spelling 'Coftoc' is suspicious and must remain review-only until the source page is visually verified.",
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   },
   {
