@@ -1,0 +1,38 @@
+[
+  {
+    "modernGeoid": "7801057880",
+    "modernBaseName": "Mount Victory",
+    "dictionaryId": "gd-stx-mount-xisery",
+    "dictionaryName": "Mount Xisery",
+    "decision": "accepted_manual_link",
+    "reason": "The Geographic Dictionary summary states that Mount Xisery is now part of Mount Victory Estate. A manual link already exists in geographic-dictionary-manual-links.json.",
+    "evidence": [
+      "data/derived/geographic-dictionary-manual-links.json",
+      "data/derived/estates.dictionary-review-candidates.json@before-resolution"
+    ]
+  },
+  {
+    "modernGeoid": "7801054930",
+    "modernBaseName": "Little La Grange",
+    "dictionaryId": "gd-stx-little-plantation",
+    "dictionaryName": "Little Plantation",
+    "decision": "rejected_false_positive",
+    "reason": "The dictionary text places Little Plantation on St. John, while Little La Grange is a modern St. Croix estate. Cross-island identity conflict makes the proposed match invalid.",
+    "evidence": [
+      "data/derived/geographic-dictionary-estates.normalized.json",
+      "current St. John parcel/listing records identify Estate Little Plantation in Coral Bay, St. John"
+    ]
+  },
+  {
+    "modernGeoid": "7801027600",
+    "modernBaseName": "Cotton Valley",
+    "dictionaryId": "gd-stx-valley",
+    "dictionaryName": "Valley",
+    "decision": "rejected_false_positive",
+    "reason": "The dictionary entry identifies Valley as estates 3 and 4a in East End B. Independent historical mapping identifies Cotton Valley as estate 11 in East End B, so the records are not the same estate.",
+    "evidence": [
+      "data/derived/geographic-dictionary-estates.normalized.json",
+      "historical East End B estate mapping"
+    ]
+  }
+]

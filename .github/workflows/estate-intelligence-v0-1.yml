@@ -1,0 +1,105 @@
+name: Estate Intelligence v0.1 Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, labeled]
+    paths:
+      - '.github/workflows/estate-intelligence-v0-1.yml'
+      - 'scripts/clean-geographic-dictionary.ts'
+      - 'scripts/test-geographic-dictionary-cleaner.ts'
+      - 'scripts/test-estate-alias-provenance.ts'
+      - 'data/derived/geographic-dictionary-verification-overrides.json'
+      - 'data/derived/estates.dictionary-review-candidates.json'
+      - 'data/derived/estates.enriched-with-dictionary.json'
+      - 'data/generated/geographic-dictionary-normalized.json'
+      - 'data-products/usvi-geographic-intelligence/scripts/build.ts'
+      - 'package.json'
+      - 'package-lock.json'
+  push:
+    branches:
+      - agent/estate-intelligence-v0-1
+    paths:
+      - '.github/workflows/estate-intelligence-v0-1.yml'
+      - 'scripts/clean-geographic-dictionary.ts'
+      - 'scripts/test-geographic-dictionary-cleaner.ts'
+      - 'scripts/test-estate-alias-provenance.ts'
+      - 'data/derived/geographic-dictionary-verification-overrides.json'
+      - 'data/derived/estates.dictionary-review-candidates.json'
+      - 'data/derived/estates.enriched-with-dictionary.json'
+      - 'data/generated/geographic-dictionary-normalized.json'
+      - 'data-products/usvi-geographic-intelligence/scripts/build.ts'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: estate-intelligence-v0-1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-and-regenerate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/estate-intelligence-v0-1
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run dictionary regression tests
+        run: |
+          npx tsx scripts/test-geographic-dictionary-cleaner.ts
+          npx tsx scripts/test-estate-alias-provenance.ts
+
+      - name: Regenerate cleaned dictionary and integrity report
+        run: npx tsx scripts/clean-geographic-dictionary.ts
+
+      - name: Run Estate Intelligence builder
+        id: estate_build
+        shell: bash
+        run: |
+          set +e
+          npx tsx data-products/usvi-geographic-intelligence/scripts/build.ts
+          status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit regenerated audit artifacts
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/generated/geographic-dictionary-cleaned.json \
+            data/generated/geographic-dictionary-review.json \
+            data-products/usvi-geographic-intelligence/reports \
+            data-products/usvi-geographic-intelligence/exports || true
+          if git diff --cached --quiet; then
+            echo "No regenerated artifacts changed."
+          else
+            git commit -m "data: regenerate estate intelligence audit artifacts"
+            git push origin HEAD:agent/estate-intelligence-v0-1
+          fi
+
+      - name: Enforce Estate Intelligence release gate
+        if: steps.estate_build.outputs.status != '0'
+        shell: bash
+        run: |
+          echo "Estate Intelligence builder reported blocking audit findings (exit ${{ steps.estate_build.outputs.status }})."
+          exit "${{ steps.estate_build.outputs.status }}"

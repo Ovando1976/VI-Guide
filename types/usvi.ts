@@ -80,6 +80,10 @@ export type EstateRecord = {
   centroid: LngLat;
   internalPoint: LngLat;
   geometry: GeoJSON.Polygon | GeoJSON.MultiPolygon;
+  aliases?: string[];
+  historicalAliases?: string[];
+  historicalNotes?: string[];
+  sources?: string[];
   roadContext?: EstateRoadContext;
   description: EstateDescription;
 };

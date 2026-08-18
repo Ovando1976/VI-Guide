@@ -234,8 +234,13 @@ function parseGeometryFromDoc(
   return null;
 }
 
+function uniqueSorted(values: unknown[]): string[] {
+  return [...new Set(values.map((value) => String(value ?? "").trim()).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b));
+}
+
 function buildEstateAliases(doc: Partial<FirestoreEstateDoc>): string[] {
-  const raw = [
+  return uniqueSorted([
     doc.baseName,
     doc.basename,
     doc.fullName,
@@ -247,11 +252,7 @@ function buildEstateAliases(doc: Partial<FirestoreEstateDoc>): string[] {
     ...(Array.isArray(doc.historicalAliases) ? doc.historicalAliases : []),
     ...(Array.isArray(doc.searchTerms) ? doc.searchTerms : []),
     ...(Array.isArray(doc.searchTokens) ? doc.searchTokens : []),
-  ]
-    .map((value) => String(value ?? "").trim())
-    .filter(Boolean);
-
-  return [...new Set(raw)].sort((a, b) => a.localeCompare(b));
+  ]);
 }
 
 function emptyDescription(): EstateDescription {
@@ -313,6 +314,10 @@ export function normalizeEstate(feature: EstateFeature): EstateRecord {
       lng: Number(p.INTPTLON ?? 0),
     },
     geometry: feature.geometry,
+    aliases: uniqueSorted([baseName, fullName, p.ESTATE]),
+    historicalAliases: [],
+    historicalNotes: [],
+    sources: ["census_estate_geometry"],
     description: emptyDescription(),
   };
 }
@@ -373,6 +378,10 @@ export function normalizeFirestoreEstate(
     centroid,
     internalPoint,
     geometry,
+    aliases: buildEstateAliases(doc),
+    historicalAliases: uniqueSorted(doc.historicalAliases ?? []),
+    historicalNotes: uniqueSorted(doc.historicalNotes ?? []),
+    sources: uniqueSorted(doc.sources ?? []),
     description: normalizeDescriptionFromDoc(doc),
   };
 }
@@ -403,6 +412,8 @@ export function searchEstates(
         estate.fullName,
         estate.geoid,
         estate.estateCode,
+        ...(estate.aliases ?? []),
+        ...(estate.historicalAliases ?? []),
         estate.description.short ?? "",
         estate.description.long ?? "",
       ]
@@ -414,7 +425,6 @@ export function searchEstates(
     })
     .sort((a, b) => a.baseName.localeCompare(b.baseName));
 }
-
 
 export function debugFirestoreEstateDoc(doc: Partial<FirestoreEstateDoc>) {
   return {
