@@ -1,6 +1,22 @@
 name: Estate Intelligence v0.1 Validation
 
 on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.github/workflows/estate-intelligence-v0-1.yml'
+      - 'scripts/clean-geographic-dictionary.ts'
+      - 'scripts/test-geographic-dictionary-cleaner.ts'
+      - 'scripts/test-estate-alias-provenance.ts'
+      - 'data/derived/geographic-dictionary-verification-overrides.json'
+      - 'data/derived/estates.dictionary-review-candidates.json'
+      - 'data/derived/estates.enriched-with-dictionary.json'
+      - 'data/generated/geographic-dictionary-normalized.json'
+      - 'data-products/usvi-geographic-intelligence/scripts/build.ts'
+      - 'package.json'
+      - 'package-lock.json'
   push:
     branches:
       - agent/estate-intelligence-v0-1
@@ -27,6 +43,7 @@ concurrency:
 
 jobs:
   validate-and-regenerate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout feature branch
