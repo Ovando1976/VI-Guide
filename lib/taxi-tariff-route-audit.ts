@@ -110,6 +110,25 @@ function classify(
   rule: TariffAuditRule,
   tariff: TariffAuditDocument,
 ): { status: TariffRouteAuditStatus; reason?: string } {
+  const hasOrigin = Boolean(
+    rule.originEstateGeoids?.length || rule.originNames?.length,
+  );
+  const hasDestination = Boolean(
+    rule.destinationEstateGeoids?.length || rule.destinationNames?.length,
+  );
+  if (!hasOrigin || !hasDestination) {
+    return { status: "rejected", reason: "missing_route_endpoint" };
+  }
+  if (typeof rule.onePassengerFare !== "number") {
+    return { status: "rejected", reason: "missing_one_passenger_fare" };
+  }
+  if (
+    typeof rule.perPersonFare !== "number" &&
+    typeof rule.additionalPassengerFare !== "number"
+  ) {
+    return { status: "rejected", reason: "missing_multi_passenger_fare" };
+  }
+
   if (!tariff.sourceUrl || !tariff.effectiveAt) {
     return {
       status: "manual_confirmation_required",
@@ -150,19 +169,6 @@ function classify(
         ? "fare_confirmation_required"
         : "fare_confirmation_required_without_reason",
     };
-  }
-
-  const hasOrigin = Boolean(
-    rule.originEstateGeoids?.length || rule.originNames?.length,
-  );
-  const hasDestination = Boolean(
-    rule.destinationEstateGeoids?.length || rule.destinationNames?.length,
-  );
-  if (!hasOrigin || !hasDestination) {
-    return { status: "rejected", reason: "missing_route_endpoint" };
-  }
-  if (typeof rule.onePassengerFare !== "number") {
-    return { status: "rejected", reason: "missing_one_passenger_fare" };
   }
 
   const canonical = Boolean(
