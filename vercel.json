@@ -1,10 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "git": {
-    "deploymentEnabled": {
-      "main": false,
-      "agent/estate-intelligence-v0-1": true
-    }
+    "deploymentEnabled": false
   },
   "crons": [
     {
