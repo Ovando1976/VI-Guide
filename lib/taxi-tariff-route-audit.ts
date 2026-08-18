@@ -11,6 +11,8 @@ export type TariffAuditRule = {
   destinationNames?: string[];
   originEstateGeoids?: string[];
   destinationEstateGeoids?: string[];
+  originCandidateAliases?: string[];
+  destinationCandidateAliases?: string[];
   onePassengerFare?: number;
   perPersonFare?: number;
   additionalPassengerFare?: number;
@@ -27,6 +29,10 @@ export type TariffAuditDocument = {
   effectiveAt?: string;
   status?: string;
   activationStatus?: string;
+  issuingAuthority?: string;
+  currency?: string;
+  reviewReference?: string;
+  reviewedBy?: string;
   rules: TariffAuditRule[];
 };
 
@@ -67,6 +73,8 @@ const STATUSES: TariffRouteAuditStatus[] = [
   "rejected",
 ];
 
+const COMMISSION = "Virgin Islands Taxicab Commission";
+
 const normalize = (value: string) =>
   value
     .toLowerCase()
@@ -101,12 +109,47 @@ function fareSignature(rule: TariffAuditRule) {
 function classify(
   rule: TariffAuditRule,
   tariff: TariffAuditDocument,
-): TariffRouteAuditStatus {
+): { status: TariffRouteAuditStatus; reason?: string } {
   if (!tariff.sourceUrl || !tariff.effectiveAt) {
-    return "manual_confirmation_required";
+    return {
+      status: "manual_confirmation_required",
+      reason: "missing_source_or_effective_date",
+    };
+  }
+  if (tariff.issuingAuthority !== COMMISSION) {
+    return {
+      status: "manual_confirmation_required",
+      reason: "issuing_authority_not_verified",
+    };
+  }
+  if (tariff.currency !== "USD") {
+    return {
+      status: "manual_confirmation_required",
+      reason: "currency_not_verified",
+    };
+  }
+  if (!tariff.reviewReference || !tariff.reviewedBy) {
+    return {
+      status: "manual_confirmation_required",
+      reason: "missing_governance_review",
+    };
+  }
+  if (
+    rule.originCandidateAliases?.length ||
+    rule.destinationCandidateAliases?.length
+  ) {
+    return {
+      status: "manual_confirmation_required",
+      reason: "candidate_alias_requires_confirmation",
+    };
   }
   if (rule.fareConfirmationRequired) {
-    return "manual_confirmation_required";
+    return {
+      status: "manual_confirmation_required",
+      reason: rule.fareConfirmationReason
+        ? "fare_confirmation_required"
+        : "fare_confirmation_required_without_reason",
+    };
   }
 
   const hasOrigin = Boolean(
@@ -115,18 +158,19 @@ function classify(
   const hasDestination = Boolean(
     rule.destinationEstateGeoids?.length || rule.destinationNames?.length,
   );
-  if (
-    !hasOrigin ||
-    !hasDestination ||
-    typeof rule.onePassengerFare !== "number"
-  ) {
-    return "rejected";
+  if (!hasOrigin || !hasDestination) {
+    return { status: "rejected", reason: "missing_route_endpoint" };
+  }
+  if (typeof rule.onePassengerFare !== "number") {
+    return { status: "rejected", reason: "missing_one_passenger_fare" };
   }
 
   const canonical = Boolean(
     rule.originEstateGeoids?.length && rule.destinationEstateGeoids?.length,
   );
-  return canonical ? "official_verified" : "alias_verified";
+  return canonical
+    ? { status: "official_verified" }
+    : { status: "alias_verified", reason: "reviewed_name_based_endpoint" };
 }
 
 function emptyIslandSummary() {
@@ -156,8 +200,9 @@ export function auditTaxiTariffRoutes(
       islandSummary.ruleCount += 1;
       const key = routeKey(rule);
       const prior = seen.get(key);
-      let status = classify(rule, tariff);
-      let reason: string | undefined;
+      const classification = classify(rule, tariff);
+      let status = classification.status;
+      let reason = classification.reason;
       let conflictsWith: string | undefined;
 
       if (prior && fareSignature(prior) !== fareSignature(rule)) {
