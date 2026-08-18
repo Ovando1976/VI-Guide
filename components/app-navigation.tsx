@@ -81,6 +81,7 @@ type OperationsNavItem = {
 const ADMIN_OPERATIONS_ITEMS: OperationsNavItem[] = [
   { base: "/admin", label: "Ops Home", icon: ShieldCheck },
   { base: "/admin/dispatch", label: "Dispatch", icon: Activity },
+  { base: "/admin/tariffs", label: "Tariffs", icon: ShieldCheck },
   { base: "/admin/payouts", label: "Payouts", icon: WalletCards },
   { base: "/", label: "Public Guide", icon: House },
 ];
