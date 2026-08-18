@@ -59,6 +59,19 @@ type AuditRow = {
   review_reason: string;
 };
 
+type BlockingAuditRow = Pick<
+  AuditRow,
+  | "canonical_id"
+  | "canonical_name"
+  | "island"
+  | "match_type"
+  | "coordinate_status"
+  | "geometry_status"
+  | "provenance_status"
+  | "confidence"
+  | "review_reason"
+>;
+
 const ROOT = path.resolve("data-products/usvi-geographic-intelligence");
 const SOURCE_PATH = path.resolve("data/derived/estates.enriched-with-dictionary.json");
 const REVIEW_PATH = path.resolve("data/derived/estates.dictionary-review-candidates.json");
@@ -144,6 +157,17 @@ function classify(
   }
 
   return { status: "ALIAS", reason: "Single non-exact historical/dictionary name is attached to the modern estate.", confidence: "medium" };
+}
+
+function isBlocking(row: AuditRow): boolean {
+  return (
+    row.match_type === "DUPLICATE" ||
+    row.match_type === "CONFLICT" ||
+    row.match_type === "NEEDS_REVIEW" ||
+    row.coordinate_status !== "OK" ||
+    row.geometry_status !== "OK" ||
+    row.provenance_status !== "OK"
+  );
 }
 
 async function main() {
@@ -242,6 +266,41 @@ async function main() {
     return counts;
   }, {});
 
+  const blockingFindingCount =
+    (summary.DUPLICATE ?? 0) +
+    (summary.CONFLICT ?? 0) +
+    (summary.NEEDS_REVIEW ?? 0) +
+    (summary.coordinate_issues ?? 0) +
+    (summary.geometry_issues ?? 0) +
+    (summary.provenance_issues ?? 0);
+
+  const blockers: BlockingAuditRow[] = audit
+    .filter(isBlocking)
+    .map((row) => ({
+      canonical_id: row.canonical_id,
+      canonical_name: row.canonical_name,
+      island: row.island,
+      match_type: row.match_type,
+      coordinate_status: row.coordinate_status,
+      geometry_status: row.geometry_status,
+      provenance_status: row.provenance_status,
+      confidence: row.confidence,
+      review_reason: row.review_reason,
+    }));
+
+  const manifest = {
+    schema_version: 1,
+    source_files: [
+      path.relative(process.cwd(), SOURCE_PATH),
+      path.relative(process.cwd(), REVIEW_PATH),
+    ],
+    release_ready: blockingFindingCount === 0,
+    blocking_estate_count: blockers.length,
+    blocking_finding_count: blockingFindingCount,
+    counts: summary,
+    blockers,
+  };
+
   await Promise.all([
     mkdir(CSV_DIR, { recursive: true }),
     mkdir(GEOJSON_DIR, { recursive: true }),
@@ -257,20 +316,15 @@ async function main() {
       "utf8",
     ),
     writeFile(path.join(REPORT_DIR, "estate-audit-summary.json"), JSON.stringify(summary, null, 2) + "\n", "utf8"),
+    writeFile(path.join(REPORT_DIR, "estate-audit-manifest.json"), JSON.stringify(manifest, null, 2) + "\n", "utf8"),
   ]);
 
   console.log("USVI Estate Intelligence v0.1 build complete");
   console.log(summary);
+  console.log(`Audit manifest: ${blockers.length} blocking estates / ${blockingFindingCount} blocking findings.`);
 
-  const blocking =
-    (summary.DUPLICATE ?? 0) +
-    (summary.CONFLICT ?? 0) +
-    (summary.NEEDS_REVIEW ?? 0) +
-    (summary.coordinate_issues ?? 0) +
-    (summary.geometry_issues ?? 0) +
-    (summary.provenance_issues ?? 0);
-  if (blocking > 0) {
-    console.warn(`Release gate remains closed: ${blocking} blocking audit findings.`);
+  if (blockingFindingCount > 0) {
+    console.warn(`Release gate remains closed: ${blockingFindingCount} blocking audit findings.`);
     process.exitCode = 2;
   }
 }
