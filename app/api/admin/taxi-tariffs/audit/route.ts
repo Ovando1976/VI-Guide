@@ -22,6 +22,10 @@ function asIsoString(value: unknown): string | undefined {
   return undefined;
 }
 
+function asString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value : undefined;
+}
+
 export async function GET() {
   try {
     await requireSession(["admin"]);
@@ -36,16 +40,16 @@ export async function GET() {
         return {
           id: document.id,
           island,
-          title: typeof data.title === "string" ? data.title : undefined,
-          version: typeof data.version === "string" ? data.version : undefined,
-          sourceUrl:
-            typeof data.sourceUrl === "string" ? data.sourceUrl : undefined,
+          title: asString(data.title),
+          version: asString(data.version),
+          sourceUrl: asString(data.sourceUrl),
           effectiveAt: asIsoString(data.effectiveAt),
-          status: typeof data.status === "string" ? data.status : undefined,
-          activationStatus:
-            typeof data.activationStatus === "string"
-              ? data.activationStatus
-              : undefined,
+          status: asString(data.status),
+          activationStatus: asString(data.activationStatus),
+          issuingAuthority: asString(data.issuingAuthority),
+          currency: asString(data.currency),
+          reviewReference: asString(data.reviewReference),
+          reviewedBy: asString(data.reviewedBy),
           rules: Array.isArray(data.rules)
             ? (data.rules as TariffAuditDocument["rules"])
             : [],
