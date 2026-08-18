@@ -173,7 +173,7 @@ async function main() {
   }
 
   const audit: AuditRow[] = estates
-    .map((estate) => {
+    .map((estate): AuditRow => {
       const classification = classify(estate, duplicateKeys, reviewByGeoid);
       return {
         canonical_id: estate.geoid,
