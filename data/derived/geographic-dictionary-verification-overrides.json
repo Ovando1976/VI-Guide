@@ -83,6 +83,15 @@
     "source": "Geographic Dictionary of the Virgin Islands (1925)"
   },
   {
+    "normalizedName": "harung",
+    "canonicalName": "Harung",
+    "island": "STX",
+    "relationship": "historical_estate",
+    "confidence": "high",
+    "evidence": "Dictionary text explicitly places the seventeenth-century French Plantage near Merle Run/Cottage on St. Croix.",
+    "source": "Geographic Dictionary of the Virgin Islands (1925)"
+  },
+  {
     "normalizedName": "bfoncccur",
     "canonicalName": "Bfoncccur",
     "island": "STX",
