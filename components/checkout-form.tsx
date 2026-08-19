@@ -57,10 +57,10 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
         disabled={!stripe || !elements || submitting}
         className="w-full rounded-full bg-[#043331] px-5 py-4 text-xs font-black uppercase tracking-[0.2em] text-white disabled:opacity-60"
       >
-        {submitting ? "Processing…" : "Pay and track ride"}
+        {submitting ? "Securing payment…" : "Pay & start driver matching"}
       </button>
       <p className="text-center text-xs font-semibold leading-5 text-slate-500">
-        After payment, USVI Explorer verifies the Stripe record before opening dispatch and live trip tracking.
+        After payment, USVI Explorer verifies the Stripe record and opens My Trip. Dispatch then matches an authorized driver; the ride is confirmed only after assignment.
       </p>
       {message ? (
         <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-semibold text-rose-700">
