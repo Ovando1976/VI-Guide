@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertTriangle, CheckCircle2, Clock3, ShipWheel } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 
 import {
   cruisePortDaySafetyLabel,
@@ -9,31 +9,41 @@ import {
 } from "@/lib/cruise-port-day-safety";
 
 export function CruisePortDaySafetyPlanner() {
-  const [allAboardTime, setAllAboardTime] = useState("17:30");
+  const [allAboardTime, setAllAboardTime] = useState("");
   const [plannedReturnDepartureTime, setPlannedReturnDepartureTime] =
-    useState("15:30");
+    useState("");
   const [estimatedReturnTravelMinutes, setEstimatedReturnTravelMinutes] =
-    useState(30);
+    useState("");
   const [desiredSafetyBufferMinutes, setDesiredSafetyBufferMinutes] =
-    useState(60);
+    useState("");
+
+  const complete = Boolean(
+    allAboardTime &&
+      plannedReturnDepartureTime &&
+      estimatedReturnTravelMinutes &&
+      desiredSafetyBufferMinutes,
+  );
 
   const evaluation = useMemo(
     () =>
-      evaluateCruisePortDaySafety({
-        allAboardTime,
-        plannedReturnDepartureTime,
-        estimatedReturnTravelMinutes,
-        desiredSafetyBufferMinutes,
-      }),
+      complete
+        ? evaluateCruisePortDaySafety({
+            allAboardTime,
+            plannedReturnDepartureTime,
+            estimatedReturnTravelMinutes: Number(estimatedReturnTravelMinutes),
+            desiredSafetyBufferMinutes: Number(desiredSafetyBufferMinutes),
+          })
+        : null,
     [
       allAboardTime,
+      complete,
       plannedReturnDepartureTime,
       estimatedReturnTravelMinutes,
       desiredSafetyBufferMinutes,
     ],
   );
 
-  const result = evaluation.ok ? evaluation.result : null;
+  const result = evaluation?.ok ? evaluation.result : null;
   const protectedPlan = result?.status === "safe_buffer";
 
   return (
@@ -92,8 +102,9 @@ export function CruisePortDaySafetyPlanner() {
                   max={360}
                   value={estimatedReturnTravelMinutes}
                   onChange={(event) =>
-                    setEstimatedReturnTravelMinutes(Number(event.target.value))
+                    setEstimatedReturnTravelMinutes(event.target.value)
                   }
+                  placeholder="Use your route estimate"
                   className={inputClass}
                 />
               </PlannerField>
@@ -104,14 +115,20 @@ export function CruisePortDaySafetyPlanner() {
                   max={240}
                   value={desiredSafetyBufferMinutes}
                   onChange={(event) =>
-                    setDesiredSafetyBufferMinutes(Number(event.target.value))
+                    setDesiredSafetyBufferMinutes(event.target.value)
                   }
+                  placeholder="Choose your buffer"
                   className={inputClass}
                 />
               </PlannerField>
             </div>
 
-            {!evaluation.ok ? (
+            {!complete ? (
+              <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold leading-6 text-slate-600">
+                Add all four timing inputs to check the port-day plan. USVI Explorer
+                does not assume an all-aboard time, transfer duration, or safety buffer for you.
+              </div>
+            ) : evaluation && !evaluation.ok ? (
               <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-bold text-rose-700">
                 {evaluation.error}
               </div>
@@ -169,13 +186,7 @@ export function CruisePortDaySafetyPlanner() {
   );
 }
 
-function PlannerField({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function PlannerField({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="block">
       <span className="mb-2 flex items-center gap-2 text-xs font-black text-slate-700">
