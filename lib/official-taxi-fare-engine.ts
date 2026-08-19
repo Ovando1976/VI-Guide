@@ -3,6 +3,7 @@ import type { OfficialTaxiRateRule } from "@/types/taxi-operations";
 export type OfficialTaxiFareEndpoint = {
   geoid: string;
   baseName: string;
+  tariffEndpointName?: string;
 };
 
 export class OfficialTaxiRateUnavailableError extends Error {
@@ -29,6 +30,10 @@ const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
   "cyril e king airport": "airport terminal",
   "cyril king airport": "airport terminal",
   "st thomas airport": "airport terminal",
+  "urman victor fredericks marine terminal": "red hook",
+  "urman v fredericks marine terminal": "red hook",
+  "red hook ferry terminal": "red hook",
+  "red hook passenger ferry terminal": "red hook",
   stt: "airport terminal",
   tist: "airport terminal",
   airport: "airport terminal",
@@ -51,8 +56,9 @@ function endpointMatches(
   ruleNames: string[],
   endpoint: OfficialTaxiFareEndpoint,
 ) {
+  const fareName = endpoint.tariffEndpointName ?? endpoint.baseName;
   return Boolean(
-    ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, endpoint.baseName),
+    ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, fareName),
   );
 }
 
