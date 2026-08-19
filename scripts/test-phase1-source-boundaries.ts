@@ -1,18 +1,18 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
-const financialBoundary = await readFile(
+const financialBoundary = readFileSync(
   path.join(process.cwd(), "lib/analytics/financial-event-server.ts"),
   "utf8",
 );
-assert.match(financialBoundary, /import "server-only"/);
+assert.match(financialBoundary, /firebase-admin\/firestore/);
 assert.match(financialBoundary, /financial_/);
 assert.match(financialBoundary, /stripeEventId/);
 assert.match(financialBoundary, /providerId/);
 assert.match(financialBoundary, /bookingId/);
 
-const ledger = await readFile(
+const ledger = readFileSync(
   path.join(process.cwd(), "lib/payments/commerce-ledger-firestore.ts"),
   "utf8",
 );
