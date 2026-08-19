@@ -1,0 +1,20 @@
+[
+  {
+    "placeId": "stt-airport-terminal",
+    "island": "stt",
+    "placeName": "Cyril E. King Airport",
+    "tariffEndpointName": "Airport Terminal",
+    "method": "reviewed_alias",
+    "reviewReference": "2022-10-24 tariff review",
+    "notes": "Canonical traveler-facing airport name maps to the governed Airport Terminal tariff endpoint."
+  },
+  {
+    "placeId": "stj-cruz-bay-town",
+    "island": "stj",
+    "placeName": "Cruz Bay Town",
+    "tariffEndpointName": "Cruz Bay",
+    "method": "reviewed_alias",
+    "reviewReference": "2022-10-24 tariff review",
+    "notes": "Town wording is a traveler-facing alias; keep tariff identity canonical."
+  }
+]
