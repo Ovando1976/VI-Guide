@@ -203,3 +203,10 @@ expectSource(
   'db.collection("taxiTariffRouteReviews").get()',
   "the production route audit loads imported route review decisions",
 );
+expectSource(
+  routeAuditApi,
+  "auditTaxiTariffRoutes(tariffs, routeReviews)",
+  "the production audit passes route reviews into the shared audit engine",
+);
+
+console.log("USVI Explorer taxi tariff fail-closed contracts passed.");
