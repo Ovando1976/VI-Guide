@@ -3,6 +3,13 @@
 import { useRef, useState } from "react";
 import { FileUp, Loader2, ShieldAlert } from "lucide-react";
 
+type FareRepairResult = {
+  repaired?: number;
+  alreadyRepaired?: number;
+  tariffCount?: number;
+  dryRun?: boolean;
+};
+
 export function TaxiTariffFareRepairPanel() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -22,7 +29,7 @@ export function TaxiTariffFareRepairPanel() {
     if (!response.ok) {
       throw new Error(payload?.error ?? "Unable to validate tariff fare repair.");
     }
-    return payload as { repaired?: number; tariffCount?: number; dryRun?: boolean };
+    return payload as FareRepairResult;
   }
 
   async function handleFile(file: File) {
@@ -32,18 +39,21 @@ export function TaxiTariffFareRepairPanel() {
     try {
       const preview = await submit(file, false);
       const repaired = preview.repaired ?? 0;
+      const alreadyRepaired = preview.alreadyRepaired ?? 0;
       const tariffCount = preview.tariffCount ?? 0;
       setMessage(
-        `Dry run passed: ${repaired} missing group fares across ${tariffCount} tariff records are safe to fill.`,
+        `Dry run passed: ${repaired} missing group fares are safe to fill; ${alreadyRepaired} matching fares are already repaired and will be skipped.`,
       );
+      if (repaired === 0) return;
+
       const approved = window.confirm(
-        `Dry run passed for ${repaired} rules across ${tariffCount} tariff records. Apply the repair now? Existing fares, route endpoints, governance state, and activation state will not be overwritten.`,
+        `Dry run passed for ${repaired} missing rules across ${tariffCount} tariff records. ${alreadyRepaired} matching existing fares will be skipped. Apply the repair now? Different existing group pricing still blocks the entire repair.`,
       );
       if (!approved) return;
 
       const applied = await submit(file, true);
       setMessage(
-        `Repair applied: ${applied.repaired ?? 0} previously-missing group fares filled. Run the production audit again now.`,
+        `Repair applied: ${applied.repaired ?? 0} missing group fares filled; ${applied.alreadyRepaired ?? 0} matching existing fares skipped. Run the production audit again now.`,
       );
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Unable to repair tariff group fares.");
@@ -63,7 +73,7 @@ export function TaxiTariffFareRepairPanel() {
           </div>
           <h2 className="mt-2 text-xl font-black tracking-[-.03em]">Restore published group fares</h2>
           <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-700">
-            Upload the reconciled CSV. The server first performs a dry run, requires every base fare to still match production, and refuses to overwrite any existing group fare. A second confirmation is required before Firestore is changed.
+            Upload the reconciled CSV. The server first performs a dry run, requires every base fare to still match production, safely skips identical group fares already present, and blocks any conflicting group pricing. A second confirmation is required before Firestore is changed.
           </p>
         </div>
         <button
