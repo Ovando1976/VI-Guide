@@ -15,7 +15,8 @@ export const dynamic = "force-dynamic";
  * Temporary, read-only Phase 1 diagnostic.
  *
  * Uses the exact production quote path with the exported canonical mobility
- * endpoints. It returns no credentials and no tariff table.
+ * endpoints. It returns no credentials and no tariff table. This revision
+ * intentionally refreshes the preview after Firebase Admin config was enabled.
  */
 export async function GET() {
   const origin = CYRIL_E_KING_AIRPORT;
