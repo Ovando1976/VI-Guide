@@ -4,11 +4,12 @@ import { ShipWheel } from "lucide-react";
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruisePlanningForm } from "@/components/cruise/cruise-planning-form";
+import { CruisePortDaySafetyPlanner } from "@/components/cruise/cruise-port-day-safety-planner";
 
 export const metadata: Metadata = {
   title: "Cruise Advisor | USVI Explorer",
   description:
-    "Send USVI Explorer one structured cruise planning brief for sailing research, cabin guidance, budget planning, and Caribbean port-day recommendations.",
+    "Plan a cruise and check a USVI port-day return-to-ship buffer before you commit to an itinerary.",
 };
 
 export default function CruiseAdvisorPage() {
@@ -26,6 +27,7 @@ export default function CruiseAdvisorPage() {
       <div className="mt-5">
         <CruiseHubNav compact />
       </div>
+      <CruisePortDaySafetyPlanner />
       <CruisePlanningForm />
     </div>
   );

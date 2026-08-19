@@ -37,6 +37,9 @@ jobs:
       - name: Phase 1 reproducible proof
         run: npm run test:phase1-gate
 
+      - name: Cruise port-day safety proof
+        run: node --import tsx scripts/test-cruise-port-day-safety.ts
+
       - name: Existing API contract regression suite
         run: npm run test:api-contracts
 
