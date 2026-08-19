@@ -26,6 +26,10 @@ const DPNR_CABLE_LANDING_SOURCE =
   "https://dpnr.vi.gov/wp-content/uploads/2024/10/STT-CABLE-LANDING-CZM-FINAL-PACKAGE.pdf";
 const LTG_PARCEL_LAYER_SOURCE =
   "https://services3.arcgis.com/UfiM23HwAqZRk1vw/ArcGIS/rest/services/USVI_PARCELS_GIP/FeatureServer/0";
+const VIHA_2026_SOURCE =
+  "https://legvi.org/committeemeetings/Budget%2C%20Appropriations%20and%20Finance/FY%202026%20Budget%20Hearings/07-21-2025%20VIHA%20VIHFA%20EDA%20WMA/VI%20Housing%20Authority/Post%20Audit%20Analysis/VIHA%20FY%202026.pdf";
+const ST_JOSEPH_ROSENDAHL_SOURCE =
+  "https://legvi.org/committeemeetings/Zoning/STT-CCZP0003-25%204I%20Rem%20and%204J%20Rem%20St%20Joseph%20n%20Rosendahl/5.%20Development%20Authorization/Order%20-%20Adjudication%20Signed.pdf";
 
 export const ST_THOMAS_QUARTER_EVIDENCE: readonly StThomasQuarterEvidence[] = [
   ...[
@@ -201,6 +205,42 @@ export const ST_THOMAS_QUARTER_EVIDENCE: readonly StThomasQuarterEvidence[] = [
       sourceRecord: "A B & C LITTLE ST JAMES ISLAND 6B RED HOOK QTR",
       parcelId: "A, B & C",
       notes: "Quarter is present in the authorized Lieutenant Governor Cadastre/Tax Assessor parcel record.",
+    },
+  },
+  {
+    estateName: "Bovoni",
+    parcelId: "Bldg A, Apt 25 & 26",
+    assignment: {
+      quarterName: "Frenchman Bay Quarter",
+      status: "verified",
+      source: VIHA_2026_SOURCE,
+      sourceRecord: "Estate Bovoni Centers, Bldg No. A, Apt 25 & 26, Nos. 1 & 2 Frenchman Bay Quarter, St. Thomas",
+      parcelId: "Bldg A, Apt 25 & 26",
+      notes: "Virgin Islands Housing Authority FY2026 post-audit property schedule.",
+    },
+  },
+  {
+    estateName: "Annas Retreat",
+    parcelId: "173-339",
+    assignment: {
+      quarterName: "New Quarter",
+      status: "verified",
+      source: VIHA_2026_SOURCE,
+      sourceRecord: "173-339 Anna's Retreat, No. 1 New Quarter St Thomas",
+      parcelId: "173-339",
+      notes: "Virgin Islands Housing Authority FY2026 property schedule.",
+    },
+  },
+  {
+    estateName: "St Joseph & Rosendahl",
+    parcelId: "4J",
+    assignment: {
+      quarterName: "Great Northside Quarter",
+      status: "verified",
+      source: ST_JOSEPH_ROSENDAHL_SOURCE,
+      sourceRecord: "Parcel 4J Estate St Joseph & Rosendahl No 4 Great Northside Quarter St Thomas",
+      parcelId: "4J",
+      notes: "Superior Court adjudication records the legal property description and underlying recorded partition deed.",
     },
   },
 ] as const;
