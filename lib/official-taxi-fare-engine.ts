@@ -26,6 +26,12 @@ function normalize(value: string) {
 const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
   "cruz bay town": "cruz bay",
   "town of cruz bay": "cruz bay",
+  "cyril e king airport": "airport terminal",
+  "cyril king airport": "airport terminal",
+  "st thomas airport": "airport terminal",
+  stt: "airport terminal",
+  tist: "airport terminal",
+  airport: "airport terminal",
 };
 
 function canonicalEndpointName(value: string) {
