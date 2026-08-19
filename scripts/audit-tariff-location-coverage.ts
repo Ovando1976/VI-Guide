@@ -46,7 +46,10 @@ function islandCode(record: UnknownRecord): TariffResolvablePlace["island"] | un
   if (["stt", "stthomas", "saintthomas"].includes(raw)) return "stt";
   if (["stj", "stjohn", "saintjohn"].includes(raw)) return "stj";
   if (["stx", "stcroix", "saintcroix"].includes(raw)) return "stx";
-  if (["wi", "waterisland"].includes(raw)) return "water_island";
+  // Water Island does not currently have an IslandCode/taxi tariff graph in the
+  // fare engine. Do not coerce it to STT or invent taxi coverage; inter-island
+  // ferry/mobility handling remains a separate transport concern.
+  return undefined;
 }
 
 function toPlace(record: UnknownRecord, source: string, index: number): TariffResolvablePlace | undefined {
@@ -79,7 +82,7 @@ const mappings: TariffLocationMapping[] = fs.existsSync(path.join(ROOT, MAPPINGS
 
 const audit = auditTariffLocationCoverage([...places.values()], mappings);
 const byIsland = Object.fromEntries(
-  ["stt", "stj", "stx", "water_island"].map((island) => {
+  ["stt", "stj", "stx"].map((island) => {
     const subset = audit.resolutions.filter((r) => r.island === island);
     const unresolved = subset.filter((r) => r.method === "unresolved").length;
     return [island, { total: subset.length, resolved: subset.length - unresolved, unresolved }];
@@ -88,7 +91,7 @@ const byIsland = Object.fromEntries(
 
 const report = {
   generatedAt: new Date().toISOString(),
-  policy: "Every usable place must resolve through an explicit or reviewed tariff mapping. Never infer a fare endpoint from geographic proximity.",
+  policy: "Every usable STT/STJ/STX taxi place must resolve through an explicit or reviewed tariff mapping. Never infer a fare endpoint from geographic proximity. Water Island remains outside the taxi tariff graph and must use its dedicated ferry/mobility flow.",
   inputs: DEFAULT_INPUTS,
   mappings: MAPPINGS_PATH,
   total: audit.total,
