@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import { cruiseReturnBufferEvidence } from "../lib/analytics/cruise-return-buffer";
@@ -58,7 +58,7 @@ assert.equal(
   true,
 );
 
-const checkoutRoute = await readFile(
+const checkoutRoute = readFileSync(
   path.join(process.cwd(), "app/api/payments/create-checkout-session/route.ts"),
   "utf8",
 );
@@ -68,13 +68,13 @@ assert.match(checkoutRoute, /eventName: "plan_item_added"/);
 assert.match(checkoutRoute, /eventName: "checkout_started"/);
 assert.match(checkoutRoute, /return_buffer_met: input\.buffer\.returnBufferMet/);
 
-const exploreLayout = await readFile(
+const exploreLayout = readFileSync(
   path.join(process.cwd(), "app/explore/layout.tsx"),
   "utf8",
 );
 assert.match(exploreLayout, /eventName="landing_view"/);
 
-const conciergeLayout = await readFile(
+const conciergeLayout = readFileSync(
   path.join(process.cwd(), "app/concierge/layout.tsx"),
   "utf8",
 );
