@@ -1,0 +1,1 @@
+Canonical STT airport mobility endpoint, governed airport tariff alias resolution, quote API support, and fail-closed contracts.
