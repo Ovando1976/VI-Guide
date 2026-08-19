@@ -71,6 +71,20 @@ export type EstateRoadContext = {
 
 export type MobilityRecordKind = "estate" | "mobility_place" | "mobility_hub";
 export type TariffResolution = "direct" | "parent_estate" | "unresolved";
+export type GeographyVerificationStatus = "verified" | "review_required";
+
+/**
+ * Quarter metadata is evidence-backed and may be parcel/place specific.
+ * Do not assume that an entire named estate belongs to one quarter.
+ */
+export type QuarterAssignment = {
+  quarterName: string;
+  status: GeographyVerificationStatus;
+  source: string;
+  sourceRecord?: string;
+  parcelId?: string;
+  notes?: string;
+};
 
 export type EstateRecord = {
   id: string;
@@ -90,6 +104,12 @@ export type EstateRecord = {
   roadContext?: EstateRoadContext;
   description: EstateDescription;
 
+  /**
+   * Verified legal/historical quarter relationships. More than one assignment
+   * is allowed because quarter identity can depend on the parcel or place.
+   */
+  quarterAssignments?: QuarterAssignment[];
+
   /** Passenger-facing mobility records may live inside a Census estate. */
   recordKind?: MobilityRecordKind;
   parentEstateGeoid?: string;
@@ -101,9 +121,10 @@ export type EstateRecord = {
 
   /** Human-readable provenance for coordinates and estate assignment. */
   spatialVerification?: {
-    status: "verified" | "review_required";
+    status: GeographyVerificationStatus;
     coordinateSource: string;
     estateSource?: string;
+    quarterSource?: string;
     notes?: string;
   };
 };
