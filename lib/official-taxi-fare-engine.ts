@@ -23,9 +23,21 @@ function normalize(value: string) {
     .trim();
 }
 
+const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
+  "cruz bay town": "cruz bay",
+  "town of cruz bay": "cruz bay",
+};
+
+function canonicalEndpointName(value: string) {
+  const normalized = normalize(value);
+  return REVIEWED_ENDPOINT_ALIASES[normalized] ?? normalized;
+}
+
 function hasName(values: string[] | undefined, name: string) {
-  const target = normalize(name);
-  return (values ?? []).some((value) => normalize(value) === target);
+  const target = canonicalEndpointName(name);
+  return (values ?? []).some(
+    (value) => canonicalEndpointName(value) === target,
+  );
 }
 
 function endpointMatches(

@@ -102,6 +102,27 @@ for (const test of matrix) {
   expectEqual(total(test.rule, 3), test.expected[2], `${test.label} 3 passengers`);
 }
 
+for (const cruzBayUiName of ["Cruz Bay Town", "Town of Cruz Bay"]) {
+  expectEqual(
+    findOfficialTaxiRateRule(
+      [stjCruzBayAnnaberg],
+      endpoint("Annaberg"),
+      endpoint(cruzBayUiName),
+    )?.id,
+    stjCruzBayAnnaberg.id,
+    `STJ Annaberg → ${cruzBayUiName} resolves to published Cruz Bay endpoint`,
+  );
+  expectEqual(
+    findOfficialTaxiRateRule(
+      [stjCruzBayAnnaberg],
+      endpoint(cruzBayUiName),
+      endpoint("Annaberg"),
+    )?.id,
+    stjCruzBayAnnaberg.id,
+    `STJ ${cruzBayUiName} → Annaberg resolves in reverse direction`,
+  );
+}
+
 expectEqual(
   findOfficialTaxiRateRule(
     [stjCruzBayAnnaberg],
@@ -134,5 +155,5 @@ expectThrows(
 );
 
 console.log(
-  "Official taxi fare engine contracts passed: STT/STJ/STX 1/2/3 passenger matrix, reverse matching, unknown-route, luggage, and confirmation gates.",
+  "Official taxi fare engine contracts passed: STT/STJ/STX 1/2/3 passenger matrix, Cruz Bay Town aliases, reverse matching, unknown-route, luggage, and confirmation gates.",
 );
