@@ -69,6 +69,9 @@ export type EstateRoadContext = {
   };
 };
 
+export type MobilityRecordKind = "estate" | "mobility_place" | "mobility_hub";
+export type TariffResolution = "direct" | "parent_estate" | "unresolved";
+
 export type EstateRecord = {
   id: string;
   geoid: string;
@@ -86,6 +89,23 @@ export type EstateRecord = {
   sources?: string[];
   roadContext?: EstateRoadContext;
   description: EstateDescription;
+
+  /** Passenger-facing mobility records may live inside a Census estate. */
+  recordKind?: MobilityRecordKind;
+  parentEstateGeoid?: string;
+  parentEstateName?: string;
+
+  /** Fare identity is deliberately separate from physical geography. */
+  tariffEndpointName?: string;
+  tariffResolution?: TariffResolution;
+
+  /** Human-readable provenance for coordinates and estate assignment. */
+  spatialVerification?: {
+    status: "verified" | "review_required";
+    coordinateSource: string;
+    estateSource?: string;
+    notes?: string;
+  };
 };
 
 export type RouteQuote = {
