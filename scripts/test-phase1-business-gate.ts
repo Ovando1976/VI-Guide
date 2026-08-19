@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import {
@@ -173,14 +173,14 @@ assert.equal(
   null,
 );
 
-const acquisitionRoute = await readFile(
+const acquisitionRoute = readFileSync(
   path.join(process.cwd(), "app/api/acquisition/events/route.ts"),
   "utf8",
 );
 assert.match(acquisitionRoute, /isClientVIEventName\(eventName\)/);
 assert.match(acquisitionRoute, /cannot be used by a browser to manufacture GMV\/revenue/);
 
-const ledgerFirestore = await readFile(
+const ledgerFirestore = readFileSync(
   path.join(process.cwd(), "lib/payments/commerce-ledger-firestore.ts"),
   "utf8",
 );
@@ -190,7 +190,7 @@ assert.match(ledgerFirestore, /eventName: "commission_generated"/);
 assert.match(ledgerFirestore, /entry\.status !== "posted"/);
 assert.match(ledgerFirestore, /eventName: "refund_completed"/);
 
-const shoreBookingRoute = await readFile(
+const shoreBookingRoute = readFileSync(
   path.join(process.cwd(), "app/api/shore-excursions/bookings/route.ts"),
   "utf8",
 );
