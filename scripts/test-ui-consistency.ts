@@ -77,271 +77,36 @@ const adminNav = source("components/admin-nav.tsx");
 const mapLinks = source("lib/discovery/map-links.ts");
 const globals = source("app/globals.css");
 
-for (const [name, contents] of [
-  ["home", home],
-  ["trip planning", tripPlanning],
-  ["traveler trip command", tripsPage],
-  ["my day", todayPage],
-  ["cruise hub", cruiseHub],
-  ["cruise advisor", cruiseAdvisor],
-  ["official cruise port calls", cruisePortCalls],
-  ["shore excursion flow", shoreExcursionsLayout],
-  ["journey planner", planner],
-  ["directory surfaces", directory],
-  ["mobility", mobility],
-  ["saved places", savedPage],
-  ["partner surfaces", partnersLayout],
-  ["booking request", bookingPage],
-  ["booking status", bookingsPage],
-] as const) {
-  assert.match(contents, /ViPublicHeader/, `${name} must use ViPublicHeader`);
-}
+for (const [name, contents] of [["home",home],["trip planning",tripPlanning],["traveler trip command",tripsPage],["my day",todayPage],["cruise hub",cruiseHub],["cruise advisor",cruiseAdvisor],["official cruise port calls",cruisePortCalls],["shore excursion flow",shoreExcursionsLayout],["journey planner",planner],["directory surfaces",directory],["mobility",mobility],["saved places",savedPage],["partner surfaces",partnersLayout],["booking request",bookingPage],["booking status",bookingsPage]] as const) assert.match(contents,/ViPublicHeader/,`${name} must use ViPublicHeader`);
+assert.match(cruiseAdvisor,/CruiseHubNav/);assert.match(cruiseAdvisor,/secondaryHref="\/trips"/);assert.match(cruisePortCalls,/CruiseHubNav/);assert.match(cruisePortCalls,/actionHref="\/cruises\/plan"/);assert.match(shoreExcursionsLayout,/actionHref="\/cruises\/plan"/);assert.match(shoreExcursionsLayout,/secondaryHref="\/cruises"/);
+for(const [name,contents] of [["catalog directory detail",directoryDetail],["live beach detail",liveBeachDetail]] as const)assert.match(contents,/PremiumDetailShell/,`${name} must use PremiumDetailShell`);
+assert.match(directory,/actionHref="\/trips"/);assert.match(directory,/actionLabel=\{`My Trip · \$\{savedStopCount\}`\}/);assert.doesNotMatch(directory,/actionHref="\/planner"/);
+assert.match(premiumDetailShell,/ViPublicHeader/);assert.match(premiumDetailShell,/secondaryHref="\/trips"/);assert.match(premiumDetailShell,/href="\/trips"/);assert.doesNotMatch(premiumDetailShell,/(?:secondaryHref|href)="\/planner"/);assert.match(premiumDetailShell,/PlaceActionBar/);assert.match(placeActionBar,/SavePlaceButton/);assert.match(placeActionBar,/AddToJourneyButton/);assert.match(placeActionBar,/Ask Concierge/);assert.match(placeActionBar,/Book \/ request/);assert.match(placeActionBar,/\/saved/);
+assert.match(addToJourneyButton,/href="\/planner"/);assert.match(addToJourneyButton,/Saved · Open planner/);assert.doesNotMatch(addToJourneyButton,/Saved · View trip/);
+assert.match(directoryCard,/SavePlaceButton/);assert.match(directoryCard,/AddToJourneyButton/);assert.match(directoryCard,/buildContextualConciergeHref/);assert.match(directoryCard,/Navigation/);assert.match(directoryCard,/Best for/);assert.match(directory,/tripDetailedCount/);assert.match(directoryDetail,/Arrival plan/);assert.match(directoryDetail,/Safety notes/);assert.match(directoryDetail,/item\.fees/);assert.match(directoryDetail,/item\.parking/);assert.match(beachKnowledge,/"sourceLabel": "National Park Service"/);assert.match(beachKnowledge,/"sourceLabel": "Magens Bay Authority"/);assert.match(beachKnowledge,/"accessNotes"/);assert.match(beachKnowledge,/"safetyNotes"/);
+assert.match(mapPage,/MapEntityContextBar/);assert.match(mapPage,/href="\/planner"/);assert.match(mapPage,/Plan itinerary/);assert.doesNotMatch(mapPage,/> Open trip/);assert.match(mapEntityContextBar,/SavePlaceButton/);assert.match(mapEntityContextBar,/AddToJourneyButton/);assert.match(mapEntityContextBar,/My Trip/);assert.match(mapEntityContextBar,/Get official ride price/);assert.match(mapEntityContextBar,/source: "living-map"/);assert.match(mapEntityContextBar,/returnTo: "\/map"/);assert.match(mapEntityContextBar,/#book/);assert.match(mobility,/Destination from Living Map/);assert.match(mobility,/Official tariff estate:/);assert.match(mobility,/Now choose your pickup to get the published ride price/);assert.match(mobility,/Back to Living Map/);assert.match(mapLinks,/placeHref/);assert.match(mapLinks,/placeSlug/);
+assert.match(rootLayout,/JourneyCloudSync/);assert.match(rootLayout,/JourneyMapStateBridge/);assert.match(rootLayout,/ActiveIslandRouteSync/);assert.match(journeyMapStateBridge,/TRIP_STORAGE_KEY/);assert.match(journeyMapStateBridge,/JOURNEY_PLAN_UPDATED_EVENT/);assert.match(journeyCloudSync,/mergeJourneyCloudState/);assert.match(journeyCloudSync,/readJourneyTombstones/);assert.match(journeyCloudSync,/TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);assert.match(journeyCloudSync,/pathname === "\/trips"/);assert.match(journeyCloudState,/journeyTombstoneIds/);assert.match(journeyCloudState,/resolveTravelerTripSelection/);assert.match(journeySyncState,/JOURNEY_TOMBSTONES_STORAGE_KEY/);assert.match(journeySyncState,/rememberJourneyDeletion/);assert.match(journeySyncRoute,/journeySync/);assert.match(journeySyncRoute,/mergeJourneyTombstones/);assert.match(journeySyncRoute,/activePlanId/);assert.match(journeySyncRoute,/activePlanUpdatedAt/);assert.match(appNavigation,/ACTIVE_ISLAND_UPDATED_EVENT/);assert.match(appNavigation,/\/places\?island=/);assert.match(appNavigation,/\/map\?island=/);assert.match(appNavigation,/\/concierge\?island=/);assert.match(appNavigation,/base: "\/trips", label: "My Trip"/);assert.match(appNavigation,/"\/bookings"/);
+assert.match(home,/ViPublicFooter/);assert.match(home,/HomeIslandDayPreview/);assert.doesNotMatch(home,/Live island intelligence/);assert.doesNotMatch(home,/>Calm</);assert.match(homeIslandDayPreview,/writeActiveIsland/);assert.match(homeIslandDayPreview,/href=\{`\/today\?island=\$\{island\}`\}/);assert.match(homeIslandDayPreview,/Planning preview—not live weather/);assert.doesNotMatch(home,/pb-\[calc\(12rem\+env\(safe-area-inset-bottom\)\)\]/);assert.match(publicFooter,/href="\/partners\/apply"/);assert.match(publicFooter,/\["Ride", "\/mobility"\]/);assert.match(publicFooter,/href="\/concierge\?open=true"/);
+for(const [name,contents] of [["directory surfaces",directory],["premium detail shell",premiumDetailShell],["mobility",mobility]] as const)assert.match(contents,/ViPublicFooter/,`${name} must use ViPublicFooter`);
+assert.match(tripsPage,/TravelerTripCommandCenter/);assert.match(tripsPage,/TravelerTripReadinessPanel/);assert.match(tripsPage,/ProactiveTripIntelligence/);assert.match(tripsPage,/commerceBookings/);assert.match(tripsPage,/travelPlanningRequests/);assert.match(tripsPage,/RiderLiveDriverMap/);assert.match(travelerTripCommand,/readJourneyPlans/);assert.match(travelerTripCommand,/readTrackedBookings/);assert.match(travelerTripCommand,/Active trip scope/);assert.match(travelerTripCommand,/buildTravelerTripScopes/);assert.match(travelerTripCommand,/scopeTravelerTripRecords/);assert.match(travelerTripCommand,/writeSelectedTravelerTripPlanId/);assert.match(travelerTripCommand,/Bookings & payments/);assert.match(travelerTripCommand,/Travel Advisor/);assert.match(travelerTripCommand,/Live transportation|Mobility/);assert.match(travelerTripModel,/summarizeTravelerTrip/);assert.match(travelerTripModel,/Payment ready/);assert.match(travelerTripModel,/Your advisor proposal is ready/);assert.match(travelerTripModel,/sourceProposal|proposalHref/);assert.match(travelerTripReadiness,/evaluateTravelerTripReadiness/);assert.match(travelerTripReadiness,/scopeTravelerTripRecords/);assert.match(travelerTripReadiness,/Scoped to/);assert.match(travelerTripReadiness,/supplier confirmation or guarantee/);assert.match(travelerTripReadinessModel,/payment_required/);assert.match(travelerTripReadinessModel,/Replace unavailable booking/);assert.match(travelerTripReadinessModel,/Advisor proposal available/);assert.match(travelerTripScope,/buildTravelerTripScopes/);assert.match(travelerTripScope,/resolveTravelerTripScope/);assert.match(travelerTripScope,/recordMatchesScope/);assert.match(travelerTripSelection,/TRAVELER_TRIP_SELECTION_STORAGE_KEY/);assert.match(travelerTripSelection,/activePlan|updatedAt|TravelerTripSelection/);assert.match(travelerTripSelection,/prioritizeSelectedTravelerPlan/);assert.match(journeyPlannerModel,/prioritizeSelectedTravelerPlan/);assert.match(journeyPlannerModel,/rememberJourneyDeletion/);assert.match(journeyPlannerModel,/forgetJourneyDeletion/);assert.match(todayPage,/ProactiveTripIntelligence/);assert.match(todayPage,/actionHref="\/trips"/);assert.match(todayPage,/normalizeActiveIsland/);assert.match(todayPage,/islandOverride=\{island\}/);assert.match(todayPage,/initialIsland=\{island\}/);assert.match(aiTripBriefScreen,/void loadWorkspace\(initialIsland\)/);assert.match(aiTripBriefScreen,/\/mobility\?island=\$\{island\}/);assert.match(aiTripBriefScreen,/\/accommodations\?island=\$\{island\}/);assert.match(proactiveTripIntelligence,/islandOverride/);assert.match(proactiveTripIntelligence,/savedTrip\?\.island !== islandOverride/);assert.match(proactiveTripIntelligence,/\/concierge\?island=\$\{island\}/);
+assert.match(savedPlacesBoard,/readSavedPlaces/);assert.match(savedPlacesBoard,/AddToJourneyButton/);assert.match(merchantLayout,/MerchantConsoleNav/);assert.match(merchantNav,/aria-current/);assert.match(partnersLayout,/\/partners\/apply/);assert.match(partnersLayout,/\/partners\/status/);
+for(const [name,contents] of [["travel advisor desk",travelDesk],["travel proposal desk",travelProposalDesk],["cruise advisor desk",cruiseDesk]] as const){assert.match(contents,/AdminShell/,`${name} must use AdminShell`);assert.match(contents,/OpsMetric/,`${name} must use shared OpsMetric`);assert.match(contents,/OpsSection/,`${name} must use shared OpsSection`);assert.match(contents,/OpsPill/,`${name} must use shared OpsPill`);}
+assert.match(travelDesk,/Send through USVI Explorer/);assert.match(travelDesk,/sendFollowup/);assert.match(travelAdvisorRoute,/travel_advisor_followup/);assert.match(travelAdvisorRoute,/traveler_followup_queued/);assert.match(travelAdvisorRoute,/processBookingNotificationOutboxIds/);assert.match(travelAdvisorRoute,/loadLinkedCommerceBookings/);assert.match(travelAdvisorRoute,/summarizeTravelAdvisorBookings/);assert.match(travelDeskPage,/TravelAdvisorRevenueOverview/);assert.match(travelRevenueOverview,/Travel Advisor funnel, actions & recorded revenue/);assert.match(travelRevenueOverview,/Next-action queue/);assert.match(travelRevenueOverview,/\/api\/travel-advisor\/conversion/);assert.match(travelRevenueOverview,/TravelAdvisorCommercePanel/);assert.match(travelRevenuePanel,/Booking & revenue loop/);assert.match(travelRevenuePanel,/Manage reservation/);assert.match(travelConversionRoute,/summarizeTravelAdvisorFunnel/);assert.match(travelConversionRoute,/travelAdvisorConversionStage/);assert.match(travelConversionRoute,/sourceTravelRequestId/);
+assert.match(travelProposalDesk,/readJourneyPlans/);assert.match(travelProposalDesk,/Publish & send/);assert.match(travelProposalDesk,/privacy-safe read-only itinerary/);assert.match(travelProposalRoute,/buildTravelAdvisorProposalSnapshot/);assert.match(travelProposalRoute,/travel_advisor_proposal/);assert.match(travelProposalRoute,/proposal_published/);assert.match(travelProposalRoute,/proposal_sent/);assert.match(travelProposalRoute,/processBookingNotificationOutboxIds/);assert.match(travelProposalQueueRoute,/proposalHref/);assert.match(sharedTrip,/Prepared through the USVI Explorer Travel Advisor workflow/);assert.match(sharedTrip,/not a confirmation/);assert.match(adminNav,/\/admin\/travel-requests/);assert.match(adminNav,/\/admin\/travel-proposals/);assert.match(adminNav,/\/admin\/cruise-requests/);
+for(const token of ["--vi-ink","--vi-teal","--vi-gold","--vi-canvas","--vi-surface","--vi-line"])assert.ok(globals.includes(token),`Missing shared UI token ${token}`);
+assert.match(appNavigation,/pathname === "\/" && "app-nav--home"/);assert.match(globals,/@media \(min-width: 1024px\)/);assert.match(globals,/\.app-nav--home \{[\s\S]*?display: none;/);assert.match(globals,/body:has\(\.app-nav--home\) \{[\s\S]*?padding-bottom: 0;/);
 
-assert.match(cruiseAdvisor, /CruiseHubNav/);
-assert.match(cruiseAdvisor, /secondaryHref="\/trips"/);
-assert.match(cruisePortCalls, /CruiseHubNav/);
-assert.match(cruisePortCalls, /actionHref="\/cruises\/plan"/);
-assert.match(shoreExcursionsLayout, /actionHref="\/cruises\/plan"/);
-assert.match(shoreExcursionsLayout, /secondaryHref="\/cruises"/);
-
-for (const [name, contents] of [
-  ["catalog directory detail", directoryDetail],
-  ["live beach detail", liveBeachDetail],
-] as const) {
-  assert.match(contents, /PremiumDetailShell/, `${name} must use PremiumDetailShell`);
-}
-
-assert.match(directory, /actionHref="\/trips"/);
-assert.match(directory, /actionLabel=\{`My Trip · \$\{savedStopCount\}`\}/);
-assert.doesNotMatch(directory, /actionHref="\/planner"/);
-
-assert.match(premiumDetailShell, /ViPublicHeader/);
-assert.match(premiumDetailShell, /secondaryHref="\/trips"/);
-assert.match(premiumDetailShell, /href="\/trips"/);
-assert.doesNotMatch(premiumDetailShell, /(?:secondaryHref|href)="\/planner"/);
-assert.match(premiumDetailShell, /PlaceActionBar/);
-assert.match(placeActionBar, /SavePlaceButton/);
-assert.match(placeActionBar, /AddToJourneyButton/);
-assert.match(placeActionBar, /Ask Concierge/);
-assert.match(placeActionBar, /Book \/ request/);
-assert.match(placeActionBar, /\/saved/);
-
-assert.match(addToJourneyButton, /href="\/planner"/);
-assert.match(addToJourneyButton, /Saved · Open planner/);
-assert.doesNotMatch(addToJourneyButton, /Saved · View trip/);
-
-assert.match(directoryCard, /SavePlaceButton/);
-assert.match(directoryCard, /AddToJourneyButton/);
-assert.match(directoryCard, /buildContextualConciergeHref/);
-assert.match(directoryCard, /Navigation/);
-assert.match(directoryCard, /Best for/);
-assert.match(directory, /tripDetailedCount/);
-assert.match(directoryDetail, /Arrival plan/);
-assert.match(directoryDetail, /Safety notes/);
-assert.match(directoryDetail, /item\.fees/);
-assert.match(directoryDetail, /item\.parking/);
-assert.match(beachKnowledge, /"sourceLabel": "National Park Service"/);
-assert.match(beachKnowledge, /"sourceLabel": "Magens Bay Authority"/);
-assert.match(beachKnowledge, /"accessNotes"/);
-assert.match(beachKnowledge, /"safetyNotes"/);
-
-assert.match(mapPage, /MapEntityContextBar/);
-assert.match(mapPage, /href="\/planner"/);
-assert.match(mapPage, /Plan itinerary/);
-assert.doesNotMatch(mapPage, /> Open trip/);
-assert.match(mapEntityContextBar, /SavePlaceButton/);
-assert.match(mapEntityContextBar, /AddToJourneyButton/);
-assert.match(mapEntityContextBar, /My Trip/);
-assert.match(mapEntityContextBar, /Get official ride price/);
-assert.match(mapEntityContextBar, /source: "living-map"/);
-assert.match(mapEntityContextBar, /returnTo: "\/map"/);
-assert.match(mapEntityContextBar, /#book/);
-assert.match(mobility, /Destination from Living Map/);
-assert.match(mobility, /Official tariff estate:/);
-assert.match(mobility, /Now choose your pickup to get the published ride price/);
-assert.match(mobility, /Back to Living Map/);
-assert.match(mapLinks, /placeHref/);
-assert.match(mapLinks, /placeSlug/);
-
-assert.match(rootLayout, /JourneyCloudSync/);
-assert.match(rootLayout, /JourneyMapStateBridge/);
-assert.match(rootLayout, /ActiveIslandRouteSync/);
-assert.match(journeyMapStateBridge, /TRIP_STORAGE_KEY/);
-assert.match(journeyMapStateBridge, /JOURNEY_PLAN_UPDATED_EVENT/);
-assert.match(journeyCloudSync, /mergeJourneyCloudState/);
-assert.match(journeyCloudSync, /readJourneyTombstones/);
-assert.match(journeyCloudSync, /TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);
-assert.match(journeyCloudSync, /pathname === "\/trips"/);
-assert.match(journeyCloudState, /journeyTombstoneIds/);
-assert.match(journeyCloudState, /resolveTravelerTripSelection/);
-assert.match(journeySyncState, /JOURNEY_TOMBSTONES_STORAGE_KEY/);
-assert.match(journeySyncState, /rememberJourneyDeletion/);
-assert.match(journeySyncRoute, /journeySync/);
-assert.match(journeySyncRoute, /mergeJourneyTombstones/);
-assert.match(journeySyncRoute, /activePlanId/);
-assert.match(journeySyncRoute, /activePlanUpdatedAt/);
-assert.match(appNavigation, /ACTIVE_ISLAND_UPDATED_EVENT/);
-assert.match(appNavigation, /\/places\?island=/);
-assert.match(appNavigation, /\/map\?island=/);
-assert.match(appNavigation, /\/concierge\?island=/);
-assert.match(appNavigation, /base: "\/trips", label: "My Trip"/);
-assert.match(appNavigation, /"\/bookings"/);
-
-assert.match(home, /ViPublicFooter/);
-assert.match(home, /HomeIslandDayPreview/);
-assert.doesNotMatch(home, /Live island intelligence/);
-assert.doesNotMatch(home, />Calm</);
-assert.match(homeIslandDayPreview, /writeActiveIsland/);
-assert.match(homeIslandDayPreview, /href=\{`\/today\?island=\$\{island\}`\}/);
-assert.match(homeIslandDayPreview, /Planning preview—not live weather/);
-assert.doesNotMatch(home, /pb-\[calc\(12rem\+env\(safe-area-inset-bottom\)\)\]/);
-assert.match(publicFooter, /href="\/partners\/apply"/);
-assert.match(publicFooter, /\["Ride", "\/mobility"\]/);
-assert.match(publicFooter, /href="\/concierge\?open=true"/);
-
-for (const [name, contents] of [
-  ["directory surfaces", directory],
-  ["premium detail shell", premiumDetailShell],
-  ["mobility", mobility],
-] as const) {
-  assert.match(contents, /ViPublicFooter/, `${name} must use ViPublicFooter`);
-}
-
-assert.match(tripsPage, /TravelerTripCommandCenter/);
-assert.match(tripsPage, /TravelerTripReadinessPanel/);
-assert.match(tripsPage, /ProactiveTripIntelligence/);
-assert.match(tripsPage, /commerceBookings/);
-assert.match(tripsPage, /travelPlanningRequests/);
-assert.match(tripsPage, /RiderLiveDriverMap/);
-assert.match(travelerTripCommand, /readJourneyPlans/);
-assert.match(travelerTripCommand, /readTrackedBookings/);
-assert.match(travelerTripCommand, /Active trip scope/);
-assert.match(travelerTripCommand, /buildTravelerTripScopes/);
-assert.match(travelerTripCommand, /scopeTravelerTripRecords/);
-assert.match(travelerTripCommand, /writeSelectedTravelerTripPlanId/);
-assert.match(travelerTripCommand, /Bookings & payments/);
-assert.match(travelerTripCommand, /Travel Advisor/);
-assert.match(travelerTripCommand, /Live transportation|Mobility/);
-assert.match(travelerTripModel, /summarizeTravelerTrip/);
-assert.match(travelerTripModel, /Payment ready/);
-assert.match(travelerTripModel, /Your advisor proposal is ready/);
-assert.match(travelerTripModel, /sourceProposal|proposalHref/);
-assert.match(travelerTripReadiness, /evaluateTravelerTripReadiness/);
-assert.match(travelerTripReadiness, /scopeTravelerTripRecords/);
-assert.match(travelerTripReadiness, /Scoped to/);
-assert.match(travelerTripReadiness, /supplier confirmation or guarantee/);
-assert.match(travelerTripReadinessModel, /payment_required/);
-assert.match(travelerTripReadinessModel, /Replace unavailable booking/);
-assert.match(travelerTripReadinessModel, /Advisor proposal available/);
-assert.match(travelerTripScope, /buildTravelerTripScopes/);
-assert.match(travelerTripScope, /resolveTravelerTripScope/);
-assert.match(travelerTripScope, /recordMatchesScope/);
-assert.match(travelerTripSelection, /TRAVELER_TRIP_SELECTION_STORAGE_KEY/);
-assert.match(travelerTripSelection, /activePlan|updatedAt|TravelerTripSelection/);
-assert.match(travelerTripSelection, /prioritizeSelectedTravelerPlan/);
-assert.match(journeyPlannerModel, /prioritizeSelectedTravelerPlan/);
-assert.match(journeyPlannerModel, /rememberJourneyDeletion/);
-assert.match(journeyPlannerModel, /forgetJourneyDeletion/);
-assert.match(todayPage, /ProactiveTripIntelligence/);
-assert.match(todayPage, /actionHref="\/trips"/);
-assert.match(todayPage, /normalizeActiveIsland/);
-assert.match(todayPage, /islandOverride=\{island\}/);
-assert.match(todayPage, /initialIsland=\{island\}/);
-assert.match(aiTripBriefScreen, /void loadWorkspace\(initialIsland\)/);
-assert.match(aiTripBriefScreen, /\/mobility\?island=\$\{island\}/);
-assert.match(aiTripBriefScreen, /\/accommodations\?island=\$\{island\}/);
-assert.match(proactiveTripIntelligence, /islandOverride/);
-assert.match(proactiveTripIntelligence, /savedTrip\?\.island !== islandOverride/);
-assert.match(proactiveTripIntelligence, /\/concierge\?island=\$\{island\}/);
-
-assert.match(savedPlacesBoard, /readSavedPlaces/);
-assert.match(savedPlacesBoard, /AddToJourneyButton/);
-
-assert.match(merchantLayout, /MerchantConsoleNav/);
-assert.match(merchantNav, /aria-current/);
-assert.match(partnersLayout, /\/partners\/apply/);
-assert.match(partnersLayout, /\/partners\/status/);
-
-for (const [name, contents] of [
-  ["travel advisor desk", travelDesk],
-  ["travel proposal desk", travelProposalDesk],
-  ["cruise advisor desk", cruiseDesk],
-] as const) {
-  assert.match(contents, /AdminShell/, `${name} must use AdminShell`);
-  assert.match(contents, /OpsMetric/, `${name} must use shared OpsMetric`);
-  assert.match(contents, /OpsSection/, `${name} must use shared OpsSection`);
-  assert.match(contents, /OpsPill/, `${name} must use shared OpsPill`);
-}
-
-assert.match(travelDesk, /Send through USVI Explorer/);
-assert.match(travelDesk, /sendFollowup/);
-assert.match(travelAdvisorRoute, /travel_advisor_followup/);
-assert.match(travelAdvisorRoute, /traveler_followup_queued/);
-assert.match(travelAdvisorRoute, /processBookingNotificationOutboxIds/);
-assert.match(travelAdvisorRoute, /loadLinkedCommerceBookings/);
-assert.match(travelAdvisorRoute, /summarizeTravelAdvisorBookings/);
-assert.match(travelDeskPage, /TravelAdvisorRevenueOverview/);
-assert.match(travelRevenueOverview, /Travel Advisor funnel, actions & recorded revenue/);
-assert.match(travelRevenueOverview, /Next-action queue/);
-assert.match(travelRevenueOverview, /\/api\/travel-advisor\/conversion/);
-assert.match(travelRevenueOverview, /TravelAdvisorCommercePanel/);
-assert.match(travelRevenuePanel, /Booking & revenue loop/);
-assert.match(travelRevenuePanel, /Manage reservation/);
-assert.match(travelConversionRoute, /summarizeTravelAdvisorFunnel/);
-assert.match(travelConversionRoute, /travelAdvisorConversionStage/);
-assert.match(travelConversionRoute, /sourceTravelRequestId/);
-
-assert.match(travelProposalDesk, /readJourneyPlans/);
-assert.match(travelProposalDesk, /Publish & send/);
-assert.match(travelProposalDesk, /privacy-safe read-only itinerary/);
-assert.match(travelProposalRoute, /buildTravelAdvisorProposalSnapshot/);
-assert.match(travelProposalRoute, /travel_advisor_proposal/);
-assert.match(travelProposalRoute, /proposal_published/);
-assert.match(travelProposalRoute, /proposal_sent/);
-assert.match(travelProposalRoute, /processBookingNotificationOutboxIds/);
-assert.match(travelProposalQueueRoute, /proposalHref/);
-assert.match(sharedTrip, /Prepared through the USVI Explorer Travel Advisor workflow/);
-assert.match(sharedTrip, /not a confirmation/);
-
-assert.match(adminNav, /\/admin\/travel-requests/);
-assert.match(adminNav, /\/admin\/travel-proposals/);
-assert.match(adminNav, /\/admin\/cruise-requests/);
-
-for (const token of [
-  "--vi-ink",
-  "--vi-teal",
-  "--vi-gold",
-  "--vi-canvas",
-  "--vi-surface",
-  "--vi-line",
-]) {
-  assert.ok(globals.includes(token), `Missing shared UI token ${token}`);
-}
-
-assert.match(appNavigation, /pathname === "\/" && "app-nav--home"/);
-assert.match(globals, /@media \(min-width: 1024px\)/);
-assert.match(globals, /\.app-nav--home \{[\s\S]*?display: none;/);
-assert.match(globals, /body:has\(\.app-nav--home\) \{[\s\S]*?padding-bottom: 0;/);
-
-assert.match(mobilityBooking, /furthestStep/);
-assert.match(mobilityBooking, /disabled=\{stepNumber > furthestStep\}/);
-assert.match(mobilityBooking, /if \(routeReady\) return/);
-assert.doesNotMatch(mobilityBooking, /routeReady \|\| activeStep === 1/);
-assert.match(mobilityBooking, /setFurthestStep\(1\)/);
-assert.match(mobilityBooking, /\}, \[routeReady\]\);/);
-assert.match(mobilityBooking, /advanceToStep\(4\)/);
-assert.match(mobilityBooking, /new Intl\.Collator/);
-assert.match(mobilityBooking, /numeric: true/);
-assert.match(mobilityBooking, /sortedEstates\.map/);
-assert.match(mobilityBooking, /a\.geoid\.localeCompare\(b\.geoid\)/);
-assert.match(explorePage, /Useful beats encyclopedic/);
-assert.match(explorePage, /Date verified/);
-assert.match(publicFooter, /Complete guide/);
-
-const customerFacingCatalog = [
-  ...sourcesUnder("data/travel-knowledge"),
-  ...sourcesUnder("public/images"),
-].join("\n");
-assert.doesNotMatch(customerFacingCatalog, /\bVI Guide\b|\bUSVI Compass\b/);
-
+// Mobility v2 contract: test traveler-visible behavior and safety invariants rather than obsolete local variable formatting.
+assert.match(mobilityBooking,/furthestStep/);
+assert.match(mobilityBooking,/disabled=\{n>furthestStep\}/);
+assert.match(mobilityBooking,/if\(!routeReady\)\{setActiveStep\(1\);setFurthestStep\(1\);\}/);
+assert.match(mobilityBooking,/advanceToStep\(4\)/);
+assert.match(mobilityBooking,/function advanceToStep\(step:2\|3\|4\)/);
+assert.match(mobilityBooking,/new Intl\.Collator/);
+assert.match(mobilityBooking,/numeric:true/);
+assert.match(mobilityBooking,/\.sort\(\(a,b\)=>ESTATE_NAME_COLLATOR\.compare\(a\.baseName,b\.baseName\)\|\|a\.geoid\.localeCompare\(b\.geoid\)\)/);
+assert.match(mobilityBooking,/We will not guess or substitute a fare/);
+assert.match(mobilityBooking,/Confirm ride & pay/);
+assert.match(explorePage,/Useful beats encyclopedic/);assert.match(explorePage,/Date verified/);assert.match(publicFooter,/Complete guide/);
+const customerFacingCatalog=[...sourcesUnder("data/travel-knowledge"),...sourcesUnder("public/images")].join("\n");assert.doesNotMatch(customerFacingCatalog,/\bVI Guide\b|\bUSVI Compass\b/);
 console.log("USVI Explorer UI and customer-journey consistency contracts passed.");
