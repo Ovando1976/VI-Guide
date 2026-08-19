@@ -1,23 +1,17 @@
 import "server-only";
 
 import { getAdminDb } from "@/lib/firebase-admin";
+import {
+  calculateOfficialTaxiRuleFare,
+  findOfficialTaxiRateRule,
+  OfficialTaxiRateUnavailableError,
+} from "@/lib/official-taxi-fare-engine";
 import { assertVerifiedActiveTariff } from "@/lib/taxi-tariff-governance";
 import type { FareBreakdown } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
-import type {
-  OfficialTaxiRateRule,
-  OfficialTaxiTariff,
-} from "@/types/taxi-operations";
+import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
-export class OfficialTaxiRateUnavailableError extends Error {
-  status = 422;
-  code = "OFFICIAL_TAXI_RATE_UNAVAILABLE";
-
-  constructor(message: string) {
-    super(message);
-    this.name = "OfficialTaxiRateUnavailableError";
-  }
-}
+export { OfficialTaxiRateUnavailableError } from "@/lib/official-taxi-fare-engine";
 
 function normalize(value: string) {
   return value
@@ -25,11 +19,6 @@ function normalize(value: string) {
     .normalize("NFKD")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
-}
-
-function hasName(values: string[] | undefined, name: string) {
-  const target = normalize(name);
-  return (values ?? []).some((value) => normalize(value) === target);
 }
 
 const STT_ENDPOINT_REVIEW_GATES = new Map<string, string>([
@@ -54,41 +43,6 @@ function assertEndpointIdentityConfirmed(estate: EstateRecord) {
   throw new OfficialTaxiRateUnavailableError(
     `Official fare confirmation required: ${reason} Dispatch must verify the regulated endpoint before quoting.`,
   );
-}
-
-function endpointMatches(
-  ruleGeoids: string[] | undefined,
-  ruleNames: string[],
-  estate: EstateRecord,
-) {
-  return Boolean(
-    ruleGeoids?.includes(estate.geoid) || hasName(ruleNames, estate.baseName),
-  );
-}
-
-function findRule(
-  tariff: OfficialTaxiTariff,
-  origin: EstateRecord,
-  destination: EstateRecord,
-) {
-  for (const rule of tariff.rules) {
-    const direct =
-      endpointMatches(rule.originEstateGeoids, rule.originNames, origin) &&
-      endpointMatches(
-        rule.destinationEstateGeoids,
-        rule.destinationNames,
-        destination,
-      );
-    const reverse =
-      endpointMatches(rule.originEstateGeoids, rule.originNames, destination) &&
-      endpointMatches(
-        rule.destinationEstateGeoids,
-        rule.destinationNames,
-        origin,
-      );
-    if (direct || reverse) return rule;
-  }
-  return null;
 }
 
 async function loadActiveTariff(
@@ -128,63 +82,6 @@ async function loadActiveTariff(
   }
 }
 
-function assertFareConfirmationNotRequired(
-  rule: OfficialTaxiRateRule,
-  passengers: number,
-) {
-  const party = Math.max(1, Math.trunc(passengers));
-  const blocked =
-    rule.fareConfirmationRequired === "all" ||
-    (rule.fareConfirmationRequired === "two_or_more" && party > 1);
-  if (!blocked) return;
-
-  throw new OfficialTaxiRateUnavailableError(
-    rule.fareConfirmationReason
-      ? `Official fare confirmation required: ${rule.fareConfirmationReason}`
-      : "Official fare confirmation is required for this route and passenger count. Dispatch must verify the regulated fare.",
-  );
-}
-
-function calculateRuleFare(
-  rule: OfficialTaxiRateRule,
-  passengers: number,
-  luggage: number,
-) {
-  const party = Math.max(1, Math.trunc(passengers));
-  assertFareConfirmationNotRequired(rule, party);
-
-  let routeFare = rule.onePassengerFare;
-  let passengerFare = 0;
-
-  if (party > 1) {
-    if (typeof rule.perPersonFare === "number") {
-      routeFare = 0;
-      passengerFare = rule.perPersonFare * party;
-    } else if (typeof rule.additionalPassengerFare === "number") {
-      passengerFare = rule.additionalPassengerFare * (party - 1);
-    } else {
-      throw new OfficialTaxiRateUnavailableError(
-        "The official route rule does not define a fare for this passenger count.",
-      );
-    }
-  }
-
-  const chargeableLuggage = Math.max(
-    0,
-    Math.trunc(luggage) - (rule.luggageIncluded ?? 0),
-  );
-  if (
-    chargeableLuggage > 0 &&
-    typeof rule.luggageFarePerPiece !== "number"
-  ) {
-    throw new OfficialTaxiRateUnavailableError(
-      "The selected route needs an official luggage charge that is not configured. Dispatch must verify the regulated fare.",
-    );
-  }
-  const luggageFare = chargeableLuggage * (rule.luggageFarePerPiece ?? 0);
-  return { routeFare, passengerFare, luggageFare };
-}
-
 export async function quoteOfficialTaxiFare(params: {
   origin: EstateRecord;
   destination: EstateRecord;
@@ -199,13 +96,17 @@ export async function quoteOfficialTaxiFare(params: {
   assertEndpointIdentityConfirmed(params.origin);
   assertEndpointIdentityConfirmed(params.destination);
   const tariff = await loadActiveTariff(params.origin.island);
-  const rule = findRule(tariff, params.origin, params.destination);
+  const rule = findOfficialTaxiRateRule(
+    tariff.rules,
+    params.origin,
+    params.destination,
+  );
   if (!rule) {
     throw new OfficialTaxiRateUnavailableError(
       `No published official route rate matches ${params.origin.baseName} to ${params.destination.baseName}. Dispatch must verify the regulated fare.`,
     );
   }
-  const amounts = calculateRuleFare(
+  const amounts = calculateOfficialTaxiRuleFare(
     rule,
     params.passengers,
     params.luggage,

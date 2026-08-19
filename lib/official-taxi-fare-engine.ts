@@ -1,0 +1,117 @@
+import type { OfficialTaxiRateRule } from "@/types/taxi-operations";
+
+export type OfficialTaxiFareEndpoint = {
+  geoid: string;
+  baseName: string;
+};
+
+export class OfficialTaxiRateUnavailableError extends Error {
+  status = 422;
+  code = "OFFICIAL_TAXI_RATE_UNAVAILABLE";
+
+  constructor(message: string) {
+    super(message);
+    this.name = "OfficialTaxiRateUnavailableError";
+  }
+}
+
+function normalize(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function hasName(values: string[] | undefined, name: string) {
+  const target = normalize(name);
+  return (values ?? []).some((value) => normalize(value) === target);
+}
+
+function endpointMatches(
+  ruleGeoids: string[] | undefined,
+  ruleNames: string[],
+  endpoint: OfficialTaxiFareEndpoint,
+) {
+  return Boolean(
+    ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, endpoint.baseName),
+  );
+}
+
+export function findOfficialTaxiRateRule(
+  rules: OfficialTaxiRateRule[],
+  origin: OfficialTaxiFareEndpoint,
+  destination: OfficialTaxiFareEndpoint,
+) {
+  for (const rule of rules) {
+    const direct =
+      endpointMatches(rule.originEstateGeoids, rule.originNames, origin) &&
+      endpointMatches(
+        rule.destinationEstateGeoids,
+        rule.destinationNames,
+        destination,
+      );
+    const reverse =
+      endpointMatches(rule.originEstateGeoids, rule.originNames, destination) &&
+      endpointMatches(rule.destinationEstateGeoids, rule.destinationNames, origin);
+    if (direct || reverse) return rule;
+  }
+  return null;
+}
+
+function assertFareConfirmationNotRequired(
+  rule: OfficialTaxiRateRule,
+  passengers: number,
+) {
+  const party = Math.max(1, Math.trunc(passengers));
+  const blocked =
+    rule.fareConfirmationRequired === "all" ||
+    (rule.fareConfirmationRequired === "two_or_more" && party > 1);
+  if (!blocked) return;
+
+  throw new OfficialTaxiRateUnavailableError(
+    rule.fareConfirmationReason
+      ? `Official fare confirmation required: ${rule.fareConfirmationReason}`
+      : "Official fare confirmation is required for this route and passenger count. Dispatch must verify the regulated fare.",
+  );
+}
+
+export function calculateOfficialTaxiRuleFare(
+  rule: OfficialTaxiRateRule,
+  passengers: number,
+  luggage: number,
+) {
+  const party = Math.max(1, Math.trunc(passengers));
+  assertFareConfirmationNotRequired(rule, party);
+
+  let routeFare = rule.onePassengerFare;
+  let passengerFare = 0;
+
+  if (party > 1) {
+    if (typeof rule.perPersonFare === "number") {
+      routeFare = 0;
+      passengerFare = rule.perPersonFare * party;
+    } else if (typeof rule.additionalPassengerFare === "number") {
+      passengerFare = rule.additionalPassengerFare * (party - 1);
+    } else {
+      throw new OfficialTaxiRateUnavailableError(
+        "The official route rule does not define a fare for this passenger count.",
+      );
+    }
+  }
+
+  const chargeableLuggage = Math.max(
+    0,
+    Math.trunc(luggage) - (rule.luggageIncluded ?? 0),
+  );
+  if (
+    chargeableLuggage > 0 &&
+    typeof rule.luggageFarePerPiece !== "number"
+  ) {
+    throw new OfficialTaxiRateUnavailableError(
+      "The selected route needs an official luggage charge that is not configured. Dispatch must verify the regulated fare.",
+    );
+  }
+  const luggageFare = chargeableLuggage * (rule.luggageFarePerPiece ?? 0);
+  return { routeFare, passengerFare, luggageFare };
+}
