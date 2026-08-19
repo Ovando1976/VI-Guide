@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
-const page = await readFile(
+const page = readFileSync(
   path.join(process.cwd(), "app/admin/analytics/page.tsx"),
   "utf8",
 );
