@@ -87,6 +87,16 @@ const byIsland = Object.fromEntries(
   }),
 );
 
+const unresolvedSample = Object.fromEntries(
+  ["stt", "stj", "stx"].map((island) => [
+    island,
+    audit.unresolvedPlaces
+      .filter((item) => item.island === island)
+      .slice(0, 40)
+      .map((item) => ({ placeId: item.placeId, placeName: item.placeName })),
+  ]),
+);
+
 const report = {
   generatedAt: new Date().toISOString(),
   policy: "Every usable STT/STJ/STX taxi place must resolve through an explicit or reviewed tariff mapping. Never infer a fare endpoint from geographic proximity. Water Island remains outside the taxi tariff graph and must use its dedicated ferry/mobility flow.",
@@ -102,5 +112,5 @@ const report = {
 
 fs.mkdirSync(path.dirname(path.join(ROOT, OUTPUT_PATH)), { recursive: true });
 fs.writeFileSync(path.join(ROOT, OUTPUT_PATH), `${JSON.stringify(report, null, 2)}\n`);
-console.log(JSON.stringify({ output: OUTPUT_PATH, ...report, unresolvedPlaces: undefined }, null, 2));
+console.log(JSON.stringify({ output: OUTPUT_PATH, ...report, unresolvedPlaces: undefined, unresolvedSample }, null, 2));
 if (!REPORT_ONLY && audit.unresolved > 0) process.exitCode = 2;
