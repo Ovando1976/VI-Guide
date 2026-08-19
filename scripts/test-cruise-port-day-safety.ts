@@ -1,9 +1,18 @@
 import assert from "node:assert/strict";
 
 import {
+  derivePlanningAllAboard,
+  getOfficialCruisePortCall,
+} from "../lib/cruise-port-calls";
+import {
   cruisePortDaySafetyLabel,
   evaluateCruisePortDaySafety,
 } from "../lib/cruise-port-day-safety";
+import {
+  cruiseSafetyStopId,
+  provenanceLabel,
+  upsertCruiseSafetyJourneyPlan,
+} from "../lib/cruise-port-day-trip";
 
 const protectedPlan = evaluateCruisePortDaySafety({
   allAboardTime: "17:30",
@@ -90,4 +99,60 @@ assert.equal(cruisePortDaySafetyLabel("safe_buffer"), "Buffer protected");
 assert.equal(cruisePortDaySafetyLabel("buffer_short"), "Buffer too tight");
 assert.equal(cruisePortDaySafetyLabel("misses_all_aboard"), "Misses all aboard");
 
-console.log("Cruise port-day safety tests passed.");
+const officialCall = getOfficialCruisePortCall(
+  "2026-08-19_havensight_disney-treasure",
+);
+assert.ok(officialCall);
+assert.equal(officialCall.departsAt, "16:00");
+const planningProxy = derivePlanningAllAboard(officialCall.departsAt);
+assert.equal(planningProxy, "15:30");
+assert.match(
+  provenanceLabel("official_departure_proxy"),
+  /planning proxy/,
+);
+assert.match(
+  provenanceLabel("traveler_confirmed_all_aboard"),
+  /traveler-confirmed/,
+);
+
+const officialSafety = evaluateCruisePortDaySafety({
+  allAboardTime: planningProxy!,
+  plannedReturnDepartureTime: "13:45",
+  estimatedReturnTravelMinutes: 30,
+  desiredSafetyBufferMinutes: 60,
+});
+assert.equal(officialSafety.ok, true);
+if (officialSafety.ok) {
+  const saved = upsertCruiseSafetyJourneyPlan({
+    plans: [],
+    call: officialCall,
+    result: officialSafety.result,
+    allAboardTime: planningProxy!,
+    plannedReturnDepartureTime: "13:45",
+    estimatedReturnTravelMinutes: 30,
+    desiredSafetyBufferMinutes: 60,
+    provenance: "official_departure_proxy",
+  });
+  assert.equal(saved.date, officialCall.date);
+  assert.equal(saved.island, officialCall.island);
+  assert.equal(saved.plan.length, 1);
+  assert.equal(saved.plan[0]?.id, cruiseSafetyStopId(officialCall.id));
+  assert.equal(saved.plan[0]?.kind, "cruise_safety");
+  assert.match(saved.plan[0]?.summary ?? "", /planning evidence only/);
+  assert.doesNotMatch(saved.plan[0]?.summary ?? "", /buffer_verified: true/);
+
+  const updated = upsertCruiseSafetyJourneyPlan({
+    plans: [saved],
+    call: officialCall,
+    result: officialSafety.result,
+    allAboardTime: "15:15",
+    plannedReturnDepartureTime: "13:45",
+    estimatedReturnTravelMinutes: 30,
+    desiredSafetyBufferMinutes: 60,
+    provenance: "traveler_confirmed_all_aboard",
+  });
+  assert.equal(updated.plan.length, 1, "same port call replaces its safety stop");
+  assert.match(updated.plan[0]?.summary ?? "", /traveler-confirmed/);
+}
+
+console.log("Cruise port-day safety and My Trip handoff tests passed.");
