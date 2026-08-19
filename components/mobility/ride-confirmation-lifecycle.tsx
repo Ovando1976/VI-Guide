@@ -1,29 +1,77 @@
-import { Check, CreditCard, Radio, ShieldCheck } from "lucide-react";
+import { CarFront, Check, CreditCard, MapPin, Navigation, Radio, ShieldCheck } from "lucide-react";
 
 const STAGES = [
-  { label: "Request ride", detail: "Save route, guests, timing, and official fare.", icon: Check },
-  { label: "Pay securely", detail: "Complete card payment for the booking request.", icon: CreditCard },
-  { label: "Dispatch", detail: "A participating dispatcher matches an available authorized operator.", icon: Radio },
-  { label: "Ride confirmed", detail: "Your booking record shows the assigned operator and trip status.", icon: ShieldCheck },
+  {
+    label: "Request saved",
+    detail: "Your route, guests, timing, notes, and governed fare are saved.",
+    icon: Check,
+  },
+  {
+    label: "Pay securely",
+    detail: "Complete card payment for this ride request.",
+    icon: CreditCard,
+  },
+  {
+    label: "Driver matching",
+    detail: "Dispatch looks for an available authorized operator for your trip.",
+    icon: Radio,
+  },
+  {
+    label: "Driver assigned",
+    detail: "Your ride becomes confirmed when an authorized operator accepts the trip.",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Driver en route",
+    detail: "My Trip shows the active ride status as your driver heads to pickup.",
+    icon: Navigation,
+  },
+  {
+    label: "Pickup",
+    detail: "Meet your assigned driver at the pickup point shown in your trip.",
+    icon: MapPin,
+  },
+  {
+    label: "Trip underway",
+    detail: "Follow the live trip record through arrival and completion.",
+    icon: CarFront,
+  },
 ] as const;
 
 export function RideConfirmationLifecycle() {
   return (
-    <section className="mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8]" aria-labelledby="ride-confirmation-lifecycle-title">
+    <section
+      className="mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8]"
+      aria-labelledby="ride-confirmation-lifecycle-title"
+    >
       <div className="border-b border-[#cfe7e3] px-4 py-4 sm:px-5">
-        <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">What happens after this screen</p>
-        <h4 id="ride-confirmation-lifecycle-title" className="mt-1 text-lg font-black tracking-[-.025em] text-[#043331]">A paid request is not a confirmed driver yet.</h4>
-        <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">Your ride becomes confirmed when dispatch assigns an authorized operator. You will be able to see that status in the booking record.</p>
+        <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
+          Your ride journey
+        </p>
+        <h4
+          id="ride-confirmation-lifecycle-title"
+          className="mt-1 text-lg font-black tracking-[-.025em] text-[#043331]"
+        >
+          Payment starts dispatch. Driver assignment confirms the ride.
+        </h4>
+        <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
+          Paying does not mean a driver has already accepted your trip. After payment, My Trip becomes the single place to follow matching, assignment, pickup, and ride progress.
+        </p>
       </div>
+
       <ol className="grid gap-px bg-[#cfe7e3] sm:grid-cols-2 lg:grid-cols-4">
         {STAGES.map((stage, index) => {
           const Icon = stage.icon;
           return (
             <li key={stage.label} className="bg-white p-4">
               <div className="flex items-center gap-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#043331] text-white"><Icon className="h-4 w-4" /></span>
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#043331] text-white">
+                  <Icon className="h-4 w-4" />
+                </span>
                 <div>
-                  <div className="text-[8px] font-black uppercase tracking-[.16em] text-teal-700">0{index + 1}</div>
+                  <div className="text-[8px] font-black uppercase tracking-[.16em] text-teal-700">
+                    0{index + 1}
+                  </div>
                   <div className="text-sm font-black text-[#043331]">{stage.label}</div>
                 </div>
               </div>
