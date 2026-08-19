@@ -41,6 +41,7 @@ export async function POST(request: NextRequest) {
       version: string;
       rules: OfficialTaxiRateRule[];
       repaired: number;
+      alreadyRepaired: number;
     }> = [];
 
     for (const [tariffId, repairRows] of grouped) {
@@ -56,6 +57,7 @@ export async function POST(request: NextRequest) {
       const rules = Array.isArray(data.rules) ? data.rules.map((rule) => ({ ...rule })) : [];
       const byId = new Map(rules.map((rule, index) => [rule.id, index]));
       let repaired = 0;
+      let alreadyRepaired = 0;
 
       for (const row of repairRows) {
         const index = byId.get(row.ruleId);
@@ -72,12 +74,26 @@ export async function POST(request: NextRequest) {
             { status: 409 },
           );
         }
-        if (typeof rule.perPersonFare === "number" || typeof rule.additionalPassengerFare === "number") {
+
+        const hasPerPersonFare = typeof rule.perPersonFare === "number";
+        const hasAdditionalPassengerFare = typeof rule.additionalPassengerFare === "number";
+        if (hasPerPersonFare || hasAdditionalPassengerFare) {
+          if (
+            hasPerPersonFare &&
+            rule.perPersonFare === row.perPersonFare &&
+            !hasAdditionalPassengerFare
+          ) {
+            alreadyRepaired += 1;
+            continue;
+          }
           return NextResponse.json(
-            { error: `Group pricing already exists for ${row.ruleId}; this repair never overwrites existing fares.` },
+            {
+              error: `Group pricing conflict for ${row.ruleId}; CSV expects perPersonFare ${row.perPersonFare}, but production already contains different group pricing. Re-export and review before repairing.`,
+            },
             { status: 409 },
           );
         }
+
         rules[index] = { ...rule, perPersonFare: row.perPersonFare };
         repaired += 1;
       }
@@ -88,22 +104,26 @@ export async function POST(request: NextRequest) {
         version: data.version ?? "unknown",
         rules,
         repaired,
+        alreadyRepaired,
       });
     }
 
     const repaired = updates.reduce((sum, update) => sum + update.repaired, 0);
+    const alreadyRepaired = updates.reduce((sum, update) => sum + update.alreadyRepaired, 0);
     if (!apply) {
       return NextResponse.json({
         ok: true,
         dryRun: true,
         tariffCount: updates.length,
         repaired,
-        note: "Validation passed. No data was changed. Re-submit with apply=true to fill only missing perPersonFare values.",
+        alreadyRepaired,
+        note: "Validation passed. Matching existing group fares were safely skipped and no data was changed. Re-submit with apply=true to fill only missing perPersonFare values.",
       });
     }
 
     const batch = db.batch();
     for (const update of updates) {
+      if (update.repaired === 0) continue;
       batch.update(db.collection("taxiTariffs").doc(update.tariffId), {
         rules: update.rules,
         updatedAt: FieldValue.serverTimestamp(),
@@ -113,13 +133,15 @@ export async function POST(request: NextRequest) {
     batch.set(auditRef, {
       action: "tariff_group_fares_repaired",
       actorId: session.uid,
-      tariffCount: updates.length,
+      tariffCount: updates.filter((update) => update.repaired > 0).length,
       repairedRuleCount: repaired,
-      tariffs: updates.map(({ tariffId, island, version, repaired }) => ({
+      alreadyRepairedRuleCount: alreadyRepaired,
+      tariffs: updates.map(({ tariffId, island, version, repaired, alreadyRepaired }) => ({
         tariffId,
         island,
         version,
         repaired,
+        alreadyRepaired,
       })),
       createdAt: FieldValue.serverTimestamp(),
     });
@@ -128,9 +150,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       dryRun: false,
-      tariffCount: updates.length,
+      tariffCount: updates.filter((update) => update.repaired > 0).length,
       repaired,
-      note: "Only previously-missing perPersonFare values were filled. Base fares, route endpoints, governance state, activation state, and quote activation were not changed.",
+      alreadyRepaired,
+      note: "Only previously-missing perPersonFare values were filled. Matching existing fares were skipped. Base fares, route endpoints, governance state, activation state, and quote activation were not changed.",
     });
   } catch (error) {
     const authResponse = authErrorResponse(error);
