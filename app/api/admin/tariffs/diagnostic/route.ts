@@ -12,40 +12,6 @@ import type { EstateRecord } from "@/types/usvi";
 
 export const dynamic = "force-dynamic";
 
-type FirebaseRuntimeIdentity = {
-  projectId: string | null;
-  clientEmail: string | null;
-  source: "service_account_json" | "individual_env" | "unavailable";
-};
-
-function getFirebaseRuntimeIdentity(): FirebaseRuntimeIdentity {
-  const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
-  if (serviceAccountJson) {
-    try {
-      const parsed = JSON.parse(serviceAccountJson) as { project_id?: unknown; client_email?: unknown };
-      return {
-        projectId: typeof parsed.project_id === "string" ? parsed.project_id : null,
-        clientEmail: typeof parsed.client_email === "string" ? parsed.client_email : null,
-        source: "service_account_json",
-      };
-    } catch {
-      return {
-        projectId: process.env.FIREBASE_PROJECT_ID ?? null,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL ?? null,
-        source: "individual_env",
-      };
-    }
-  }
-  if (process.env.FIREBASE_PROJECT_ID || process.env.FIREBASE_CLIENT_EMAIL) {
-    return {
-      projectId: process.env.FIREBASE_PROJECT_ID ?? null,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL ?? null,
-      source: "individual_env",
-    };
-  }
-  return { projectId: null, clientEmail: null, source: "unavailable" };
-}
-
 function diagnosticEndpoint(name: string): EstateRecord {
   return {
     ...CYRIL_E_KING_AIRPORT,
@@ -90,9 +56,8 @@ async function checkRoute(origin: EstateRecord, destination: EstateRecord) {
   }
 }
 
-/** Temporary read-only Phase 1 release-gate diagnostic. No secrets or tariff table are returned. */
+/** Temporary read-only Phase 1 release-gate diagnostic. No credentials or runtime IAM metadata are returned. */
 export async function GET() {
-  const firebase = getFirebaseRuntimeIdentity();
   const routes = [];
 
   for (const destination of RELEASE_DESTINATIONS) {
@@ -107,7 +72,6 @@ export async function GET() {
   return NextResponse.json({
     ok: requiredRoutesPass && unknownFailsClosed,
     island: "stt",
-    firebase,
     releaseGate: {
       requiredRoutesPass,
       unknownFailsClosed,
