@@ -5,9 +5,16 @@ import { getAdminDb } from "@/lib/firebase-admin";
 import {
   auditTaxiTariffRoutes,
   type TariffAuditDocument,
+  type TariffRouteReview,
+  type TariffRouteReviewDecision,
 } from "@/lib/taxi-tariff-route-audit";
 
 const AUDITED_ISLANDS = new Set(["stt", "stj", "stx"]);
+const REVIEW_DECISIONS = new Set<TariffRouteReviewDecision>([
+  "verified",
+  "needs_changes",
+  "rejected",
+]);
 
 function asIsoString(value: unknown): string | undefined {
   if (typeof value === "string") return value;
@@ -26,12 +33,24 @@ function asString(value: unknown): string | undefined {
   return typeof value === "string" && value.trim() ? value : undefined;
 }
 
+function asReviewDecision(value: unknown): TariffRouteReviewDecision | undefined {
+  return typeof value === "string" &&
+    REVIEW_DECISIONS.has(value as TariffRouteReviewDecision)
+    ? (value as TariffRouteReviewDecision)
+    : undefined;
+}
+
 export async function GET() {
   try {
     await requireSession(["admin"]);
 
-    const snapshot = await getAdminDb().collection("taxiTariffs").get();
-    const tariffs = snapshot.docs.flatMap<TariffAuditDocument>((document) => {
+    const db = getAdminDb();
+    const [tariffSnapshot, reviewSnapshot] = await Promise.all([
+      db.collection("taxiTariffs").get(),
+      db.collection("taxiTariffRouteReviews").get(),
+    ]);
+
+    const tariffs = tariffSnapshot.docs.flatMap<TariffAuditDocument>((document) => {
       const data = document.data() as Record<string, unknown>;
       const island = typeof data.island === "string" ? data.island : "";
       if (!AUDITED_ISLANDS.has(island)) return [];
@@ -57,7 +76,16 @@ export async function GET() {
       ];
     });
 
-    const report = auditTaxiTariffRoutes(tariffs);
+    const routeReviews = reviewSnapshot.docs.flatMap<TariffRouteReview>((document) => {
+      const data = document.data() as Record<string, unknown>;
+      const tariffId = asString(data.tariffId);
+      const ruleId = asString(data.ruleId);
+      const decision = asReviewDecision(data.decision);
+      if (!tariffId || !ruleId || !decision) return [];
+      return [{ tariffId, ruleId, decision }];
+    });
+
+    const report = auditTaxiTariffRoutes(tariffs, routeReviews);
     const blocking = report.findings.filter(
       (finding) =>
         finding.status === "manual_confirmation_required" ||

@@ -22,6 +22,14 @@ const activation = fs.readFileSync(
   path.join(root, "app/api/admin/taxi-tariffs/[tariffId]/activate/route.ts"),
   "utf8",
 );
+const routeAudit = fs.readFileSync(
+  path.join(root, "lib/taxi-tariff-route-audit.ts"),
+  "utf8",
+);
+const routeAuditApi = fs.readFileSync(
+  path.join(root, "app/api/admin/taxi-tariffs/audit/route.ts"),
+  "utf8",
+);
 
 function expectSource(source: string, value: string, label: string) {
   if (!source.includes(value)) {
@@ -93,6 +101,41 @@ expectSource(
   activation,
   "disputed fares awaiting human confirmation",
   "unresolved fare disputes block tariff activation",
+);
+expectSource(
+  routeAudit,
+  'routeReview?.decision === "rejected"',
+  "a rejected route review remains fail-closed",
+);
+expectSource(
+  routeAudit,
+  'routeReview?.decision === "needs_changes"',
+  "a needs-changes route review remains fail-closed",
+);
+expectSource(
+  routeAudit,
+  'routeReview?.decision === "verified"',
+  "an exact verified route review can satisfy the governance gate",
+);
+expectSource(
+  routeAudit,
+  "candidate_alias_requires_confirmation",
+  "route review verification does not bypass candidate-alias confirmation",
+);
+expectSource(
+  routeAudit,
+  "fare_confirmation_required",
+  "route review verification does not bypass disputed-fare confirmation",
+);
+expectSource(
+  routeAuditApi,
+  'db.collection("taxiTariffRouteReviews").get()',
+  "the production route audit loads imported route review decisions",
+);
+expectSource(
+  routeAuditApi,
+  "auditTaxiTariffRoutes(tariffs, routeReviews)",
+  "the production audit passes route reviews into the shared audit engine",
 );
 
 console.log("USVI Explorer taxi tariff fail-closed contracts passed.");

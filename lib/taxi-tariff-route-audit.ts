@@ -36,6 +36,14 @@ export type TariffAuditDocument = {
   rules: TariffAuditRule[];
 };
 
+export type TariffRouteReviewDecision = "verified" | "needs_changes" | "rejected";
+
+export type TariffRouteReview = {
+  tariffId: string;
+  ruleId: string;
+  decision: TariffRouteReviewDecision;
+};
+
 export type TariffRouteAuditFinding = {
   tariffId: string | null;
   island: string;
@@ -109,6 +117,7 @@ function fareSignature(rule: TariffAuditRule) {
 function classify(
   rule: TariffAuditRule,
   tariff: TariffAuditDocument,
+  routeReview?: TariffRouteReview,
 ): { status: TariffRouteAuditStatus; reason?: string } {
   const hasOrigin = Boolean(
     rule.originEstateGeoids?.length || rule.originNames?.length,
@@ -147,12 +156,26 @@ function classify(
       reason: "currency_not_verified",
     };
   }
-  if (!tariff.reviewReference || !tariff.reviewedBy) {
+
+  if (routeReview?.decision === "rejected") {
+    return { status: "rejected", reason: "route_review_rejected" };
+  }
+  if (routeReview?.decision === "needs_changes") {
+    return {
+      status: "manual_confirmation_required",
+      reason: "route_review_needs_changes",
+    };
+  }
+
+  const hasDocumentGovernance = Boolean(tariff.reviewReference && tariff.reviewedBy);
+  const hasVerifiedRouteReview = routeReview?.decision === "verified";
+  if (!hasDocumentGovernance && !hasVerifiedRouteReview) {
     return {
       status: "manual_confirmation_required",
       reason: "missing_governance_review",
     };
   }
+
   if (
     rule.originCandidateAliases?.length ||
     rule.destinationCandidateAliases?.length
@@ -192,10 +215,17 @@ function emptyIslandSummary() {
 
 export function auditTaxiTariffRoutes(
   tariffs: TariffAuditDocument[],
+  routeReviews: TariffRouteReview[] = [],
 ): TariffRouteAuditReport {
   const findings: TariffRouteAuditFinding[] = [];
   const byIsland: TariffRouteAuditReport["byIsland"] = {};
   let blockingFindings = 0;
+  const reviewMap = new Map(
+    routeReviews.map((review) => [
+      `${review.tariffId}\u0000${review.ruleId}`,
+      review,
+    ]),
+  );
 
   for (const tariff of tariffs) {
     const islandSummary = (byIsland[tariff.island] ??= emptyIslandSummary());
@@ -206,7 +236,8 @@ export function auditTaxiTariffRoutes(
       islandSummary.ruleCount += 1;
       const key = routeKey(rule);
       const prior = seen.get(key);
-      const classification = classify(rule, tariff);
+      const routeReview = reviewMap.get(`${tariff.id ?? ""}\u0000${rule.id}`);
+      const classification = classify(rule, tariff, routeReview);
       let status = classification.status;
       let reason = classification.reason;
       let conflictsWith: string | undefined;
