@@ -4,34 +4,22 @@ import {
   OfficialTaxiRateUnavailableError,
   quoteOfficialTaxiFare,
 } from "@/lib/usvi-taxi-tariffs";
-import { getMobilityHub } from "@/lib/mobility-hubs";
+import {
+  CYRIL_E_KING_AIRPORT,
+  RED_HOOK,
+} from "@/lib/mobility-hubs";
 
 export const dynamic = "force-dynamic";
 
 /**
  * Temporary, read-only Phase 1 diagnostic.
  *
- * Uses the exact production quote path instead of reaching into private tariff
- * loader internals. It returns no credentials and no tariff table.
+ * Uses the exact production quote path with the exported canonical mobility
+ * endpoints. It returns no credentials and no tariff table.
  */
 export async function GET() {
-  const origin = getMobilityHub("stt-airport");
-  const destination = getMobilityHub("stt-red-hook");
-
-  if (!origin || !destination) {
-    return NextResponse.json(
-      {
-        ok: false,
-        smokeRoute: {
-          from: "Cyril E. King Airport",
-          to: "Red Hook",
-          matched: false,
-        },
-        error: "mobility_hub_missing",
-      },
-      { status: 500 },
-    );
-  }
+  const origin = CYRIL_E_KING_AIRPORT;
+  const destination = RED_HOOK;
 
   try {
     const fare = await quoteOfficialTaxiFare({
