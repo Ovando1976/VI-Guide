@@ -16,6 +16,7 @@ const DEFAULT_INPUTS = [
 ];
 const MAPPINGS_PATH = "data/tariff-location-mappings.reviewed.json";
 const OUTPUT_PATH = "data/generated/tariff-location-coverage-audit.json";
+const REPORT_ONLY = process.env.TARIFF_COVERAGE_REPORT_ONLY === "1";
 
 function readJson(file: string): unknown {
   return JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
@@ -46,9 +47,6 @@ function islandCode(record: UnknownRecord): TariffResolvablePlace["island"] | un
   if (["stt", "stthomas", "saintthomas"].includes(raw)) return "stt";
   if (["stj", "stjohn", "saintjohn"].includes(raw)) return "stj";
   if (["stx", "stcroix", "saintcroix"].includes(raw)) return "stx";
-  // Water Island does not currently have an IslandCode/taxi tariff graph in the
-  // fare engine. Do not coerce it to STT or invent taxi coverage; inter-island
-  // ferry/mobility handling remains a separate transport concern.
   return undefined;
 }
 
@@ -105,4 +103,4 @@ const report = {
 fs.mkdirSync(path.dirname(path.join(ROOT, OUTPUT_PATH)), { recursive: true });
 fs.writeFileSync(path.join(ROOT, OUTPUT_PATH), `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({ output: OUTPUT_PATH, ...report, unresolvedPlaces: undefined }, null, 2));
-if (audit.unresolved > 0) process.exitCode = 2;
+if (!REPORT_ONLY && audit.unresolved > 0) process.exitCode = 2;
