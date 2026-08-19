@@ -1,0 +1,138 @@
+import {
+  calculateOfficialTaxiRuleFare,
+  findOfficialTaxiRateRule,
+  OfficialTaxiRateUnavailableError,
+  type OfficialTaxiFareEndpoint,
+} from "../lib/official-taxi-fare-engine";
+import type { OfficialTaxiRateRule } from "../types/taxi-operations";
+
+function endpoint(baseName: string): OfficialTaxiFareEndpoint {
+  return { geoid: `test:${baseName.toLowerCase().replace(/\W+/g, "-")}`, baseName };
+}
+
+function expectEqual(actual: unknown, expected: unknown, label: string) {
+  if (actual !== expected) {
+    throw new Error(`${label}: expected ${String(expected)}, got ${String(actual)}`);
+  }
+}
+
+function expectThrows(fn: () => unknown, includes: string, label: string) {
+  try {
+    fn();
+  } catch (error) {
+    if (
+      error instanceof OfficialTaxiRateUnavailableError &&
+      error.message.includes(includes)
+    ) {
+      return;
+    }
+    throw error;
+  }
+  throw new Error(`${label}: expected OfficialTaxiRateUnavailableError`);
+}
+
+function total(rule: OfficialTaxiRateRule, passengers: number, luggage = 0) {
+  const fare = calculateOfficialTaxiRuleFare(rule, passengers, luggage);
+  return fare.routeFare + fare.passengerFare + fare.luggageFare;
+}
+
+// Representative rows from the reviewed 2026-08-19 production tariff audit export.
+const sttCharlotteAmalieAnchorage: OfficialTaxiRateRule = {
+  id: "stt-charlotte-amalie-anchorage",
+  originNames: ["Charlotte Amalie"],
+  destinationNames: ["Anchorage"],
+  onePassengerFare: 23,
+  perPersonFare: 15,
+};
+
+const stjCruzBayAnnaberg: OfficialTaxiRateRule = {
+  id: "stj-cruz-bay-annaberg",
+  originNames: ["Cruz Bay"],
+  destinationNames: ["Annaberg"],
+  onePassengerFare: 20,
+  perPersonFare: 14,
+};
+
+const stxAirportAnnaly: OfficialTaxiRateRule = {
+  id: "stx-henry-e-rohlsen-airport-annaly",
+  originNames: ["Henry E. Rohlsen Airport"],
+  destinationNames: ["Annaly"],
+  onePassengerFare: 30,
+  perPersonFare: 15,
+};
+
+const matrix = [
+  {
+    label: "STT Charlotte Amalie → Anchorage",
+    rule: sttCharlotteAmalieAnchorage,
+    origin: endpoint("Charlotte Amalie"),
+    destination: endpoint("Anchorage"),
+    expected: [23, 30, 45],
+  },
+  {
+    label: "STJ Cruz Bay → Annaberg",
+    rule: stjCruzBayAnnaberg,
+    origin: endpoint("Cruz Bay"),
+    destination: endpoint("Annaberg"),
+    expected: [20, 28, 42],
+  },
+  {
+    label: "STX Henry E. Rohlsen Airport → Annaly",
+    rule: stxAirportAnnaly,
+    origin: endpoint("Henry E. Rohlsen Airport"),
+    destination: endpoint("Annaly"),
+    expected: [30, 30, 45],
+  },
+] as const;
+
+for (const test of matrix) {
+  const rules = [test.rule];
+  expectEqual(
+    findOfficialTaxiRateRule(rules, test.origin, test.destination)?.id,
+    test.rule.id,
+    `${test.label} direct route selection`,
+  );
+  expectEqual(
+    findOfficialTaxiRateRule(rules, test.destination, test.origin)?.id,
+    test.rule.id,
+    `${test.label} reverse route selection`,
+  );
+  expectEqual(total(test.rule, 1), test.expected[0], `${test.label} 1 passenger`);
+  expectEqual(total(test.rule, 2), test.expected[1], `${test.label} 2 passengers`);
+  expectEqual(total(test.rule, 3), test.expected[2], `${test.label} 3 passengers`);
+}
+
+expectEqual(
+  findOfficialTaxiRateRule(
+    [stjCruzBayAnnaberg],
+    endpoint("Cruz Bay"),
+    endpoint("Unknown Destination"),
+  ),
+  null,
+  "unknown endpoint fails route selection closed",
+);
+
+expectThrows(
+  () => calculateOfficialTaxiRuleFare(stjCruzBayAnnaberg, 2, 1),
+  "official luggage charge",
+  "unconfigured luggage charge fails closed",
+);
+
+expectThrows(
+  () =>
+    calculateOfficialTaxiRuleFare(
+      {
+        ...stjCruzBayAnnaberg,
+        fareConfirmationRequired: "two_or_more",
+        fareConfirmationReason: "Human confirmation required.",
+      },
+      2,
+      0,
+    ),
+  "Human confirmation required",
+  "fare-confirmation gate remains fail-closed",
+);
+
+console.log(
+  "Official taxi fare engine contracts passed: STT/STJ/STX 1/2/3 passenger matrix, reverse matching, unknown-route, luggage, and confirmation gates.",
+);
