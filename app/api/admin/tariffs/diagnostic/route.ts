@@ -1,72 +1,88 @@
 import { NextResponse } from "next/server";
 
-import { getActiveTaxiTariff } from "@/lib/usvi-taxi-tariffs";
-import { selectOfficialTaxiFareRule } from "@/lib/official-taxi-fare-engine";
+import {
+  OfficialTaxiRateUnavailableError,
+  quoteOfficialTaxiFare,
+} from "@/lib/usvi-taxi-tariffs";
+import { getMobilityHub } from "@/lib/mobility-hubs";
 
 export const dynamic = "force-dynamic";
 
 /**
  * Temporary, read-only Phase 1 diagnostic.
  *
- * Deliberately returns no credentials and no tariff table. It only reports
- * whether the active governed STT tariff can resolve the known airport smoke
- * route used by PR #384.
+ * Uses the exact production quote path instead of reaching into private tariff
+ * loader internals. It returns no credentials and no tariff table.
  */
 export async function GET() {
-  try {
-    const tariff = await getActiveTaxiTariff("st_thomas");
+  const origin = getMobilityHub("stt-airport");
+  const destination = getMobilityHub("stt-red-hook");
 
-    if (!tariff) {
-      return NextResponse.json({
-        ok: false,
-        island: "st_thomas",
-        activeTariffFound: false,
-        smokeRoute: {
-          from: "Airport Terminal",
-          to: "Red Hook",
-          matched: false,
-        },
-      });
-    }
-
-    const rule = selectOfficialTaxiFareRule(tariff, {
-      fromName: "Airport Terminal",
-      toName: "Red Hook",
-    });
-
-    return NextResponse.json({
-      ok: Boolean(rule),
-      island: "st_thomas",
-      activeTariffFound: true,
-      tariff: {
-        id: tariff.id ?? null,
-        version: tariff.version ?? null,
-        status: tariff.status ?? null,
-      },
-      smokeRoute: {
-        from: "Airport Terminal",
-        to: "Red Hook",
-        matched: Boolean(rule),
-        ruleId: rule?.id ?? null,
-        pricingModel: rule?.pricingModel ?? null,
-        requiresConfirmation: rule?.requiresConfirmation ?? null,
-      },
-    });
-  } catch (error) {
-    console.error("[tariff-diagnostic] failed", error);
+  if (!origin || !destination) {
     return NextResponse.json(
       {
         ok: false,
-        island: "st_thomas",
-        activeTariffFound: null,
         smokeRoute: {
-          from: "Airport Terminal",
+          from: "Cyril E. King Airport",
           to: "Red Hook",
           matched: false,
         },
-        error: "tariff_diagnostic_failed",
+        error: "mobility_hub_missing",
       },
       { status: 500 },
+    );
+  }
+
+  try {
+    const fare = await quoteOfficialTaxiFare({
+      origin,
+      destination,
+      passengers: 1,
+      luggage: 0,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      island: "stt",
+      smokeRoute: {
+        from: origin.baseName,
+        tariffFrom: origin.tariffEndpointName ?? origin.baseName,
+        to: destination.baseName,
+        tariffTo: destination.tariffEndpointName ?? destination.baseName,
+        matched: true,
+      },
+      tariff: {
+        id: fare.tariffId,
+        title: fare.tariffTitle,
+        version: fare.tariffVersion,
+        effectiveAt: fare.tariffEffectiveAt,
+        ruleId: fare.rateRuleId,
+      },
+      fare: {
+        currency: fare.currency,
+        total: fare.total,
+        routeFare: fare.routeFare,
+        passengerFare: fare.passengerFare,
+        luggageFare: fare.luggageFare,
+      },
+    });
+  } catch (error) {
+    const expected = error instanceof OfficialTaxiRateUnavailableError;
+    return NextResponse.json(
+      {
+        ok: false,
+        island: "stt",
+        smokeRoute: {
+          from: origin.baseName,
+          tariffFrom: origin.tariffEndpointName ?? origin.baseName,
+          to: destination.baseName,
+          tariffTo: destination.tariffEndpointName ?? destination.baseName,
+          matched: false,
+        },
+        error: expected ? error.code : "tariff_diagnostic_failed",
+        reason: error instanceof Error ? error.message : "Unknown tariff diagnostic failure.",
+      },
+      { status: expected ? error.status : 500 },
     );
   }
 }
