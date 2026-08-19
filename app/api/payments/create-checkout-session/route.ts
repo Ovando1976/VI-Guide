@@ -1,6 +1,10 @@
+import type { DocumentData, Firestore, Transaction } from "firebase-admin/firestore";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+import { cruiseReturnBufferEvidence } from "@/lib/analytics/cruise-return-buffer";
+import { recordServerJourneyEvent } from "@/lib/analytics/server-journey-event";
+import type { VIIsland } from "@/lib/analytics/vi-event";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -61,6 +65,17 @@ export async function POST(request: NextRequest) {
   ) {
     return NextResponse.json(
       { error: "This booking is not currently awaiting a valid payment." },
+      { status: 409 },
+    );
+  }
+
+  const initialCruiseBuffer = cruiseReturnBufferEvidence(booking);
+  if (initialCruiseBuffer && !initialCruiseBuffer.returnBufferMet) {
+    return NextResponse.json(
+      {
+        error:
+          "Cruise-day checkout is blocked until the verified return-to-ship buffer is restored.",
+      },
       { status: 409 },
     );
   }
@@ -129,12 +144,15 @@ export async function POST(request: NextRequest) {
       const currentSnapshot = await transaction.get(bookingRef);
       const current = currentSnapshot.data() ?? {};
       const currentAmount = Number(current.depositAmountCents ?? 0);
+      const currentCruiseBuffer = cruiseReturnBufferEvidence(current);
 
       if (
         !currentSnapshot.exists ||
         normalizeCommerceEmail(current.email) !== email ||
         String(current.status ?? "") !== "payment_required" ||
-        currentAmount !== amountCents
+        currentAmount !== amountCents ||
+        Boolean(currentCruiseBuffer) !== Boolean(initialCruiseBuffer) ||
+        (currentCruiseBuffer && !currentCruiseBuffer.returnBufferMet)
       ) {
         throw new CheckoutStateChangedError();
       }
@@ -147,6 +165,16 @@ export async function POST(request: NextRequest) {
         checkoutCreatedAt: updatedAt,
         updatedAt,
       });
+
+      if (currentCruiseBuffer) {
+        recordCruiseCheckoutEvidence(transaction, db, {
+          bookingId,
+          checkoutSessionId: session.id,
+          occurredAt: updatedAt,
+          booking: current,
+          buffer: currentCruiseBuffer,
+        });
+      }
     });
   } catch (error) {
     if (error instanceof CheckoutStateChangedError) {
@@ -163,6 +191,96 @@ export async function POST(request: NextRequest) {
     checkoutUrl: session.url,
     checkoutSessionId: session.id,
   });
+}
+
+function recordCruiseCheckoutEvidence(
+  transaction: Transaction,
+  db: Firestore,
+  input: {
+    bookingId: string;
+    checkoutSessionId: string;
+    occurredAt: string;
+    booking: DocumentData;
+    buffer: NonNullable<ReturnType<typeof cruiseReturnBufferEvidence>>;
+  },
+) {
+  const listingId = clean(input.booking.listingId, 180);
+  const itineraryId = `cruise-booking:${input.bookingId}`;
+  const sessionId = `checkout_${input.checkoutSessionId}`;
+  const island = analyticsIsland(input.booking.island);
+  const commonPayload = {
+    return_buffer_met: input.buffer.returnBufferMet,
+    returnBufferMinutes: input.buffer.verifiedReturnBufferMinutes,
+    requiredReturnBufferMinutes: input.buffer.requiredReturnBufferMinutes,
+    allAboardTime: input.buffer.allAboardTime,
+    safeReturnDeadline: input.buffer.safeReturnDeadline,
+    timingStatus: "buffer_verified",
+  };
+
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "plan_created",
+    eventKey: `${input.bookingId}:cruise-plan`,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      shipName: input.buffer.shipName,
+      portId: input.buffer.portId,
+    },
+  });
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "plan_item_added",
+    eventKey: `${input.bookingId}:shore-excursion`,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      activity: "shore_excursion",
+      offerId: clean(input.booking.offerId, 180),
+    },
+  });
+  recordServerJourneyEvent(transaction, db, {
+    eventName: "checkout_started",
+    eventKey: input.checkoutSessionId,
+    occurredAt: input.occurredAt,
+    sessionId,
+    travelerType: "cruise",
+    island,
+    source: "commerce_checkout",
+    itineraryId,
+    listingId,
+    bookingId: input.bookingId,
+    payload: {
+      ...commonPayload,
+      checkoutSessionId: input.checkoutSessionId,
+      amountCents: Number(input.booking.depositAmountCents ?? 0),
+    },
+  });
+}
+
+function analyticsIsland(value: unknown): VIIsland | undefined {
+  switch (String(value ?? "").trim()) {
+    case "stt":
+      return "st_thomas";
+    case "stj":
+      return "st_john";
+    case "stx":
+      return "st_croix";
+    default:
+      return undefined;
+  }
 }
 
 class CheckoutStateChangedError extends Error {}

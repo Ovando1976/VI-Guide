@@ -1,5 +1,9 @@
 import { FieldValue, type Firestore } from "firebase-admin/firestore";
 
+import {
+  recordFinancialEvent,
+  resolveFinancialProviderId,
+} from "@/lib/analytics/financial-event-server";
 import type { CommerceLedgerEntry } from "@/lib/payments/commerce-ledger";
 
 export type CommerceLedgerDocumentRead = {
@@ -148,6 +152,49 @@ export function createCommerceCaptureLedgerEntry(
     serverCreatedAt: FieldValue.serverTimestamp(),
     serverUpdatedAt: FieldValue.serverTimestamp(),
   });
+
+  if (entry.kind !== "capture" || entry.status !== "held") return;
+  const providerId = resolveFinancialProviderId({ listingId: entry.listingId });
+  if (!providerId) return;
+
+  recordFinancialEvent(transaction, document.ref.firestore, {
+    eventName: "payment_completed",
+    stripeEventId: entry.stripeEventId,
+    occurredAt: entry.occurredAt,
+    attribution: {
+      bookingId: entry.bookingId,
+      providerId,
+      listingId: entry.listingId,
+      source: "stripe_webhook",
+    },
+    payload: {
+      amountCents: entry.grossAmountCents,
+      currency: entry.currency,
+      platformFeeCents: entry.platformFeeCents,
+      merchantSettlementCents: entry.merchantSettlementCents,
+      ledgerEntryId: entry.id,
+    },
+  });
+
+  if (entry.platformFeeCents > 0) {
+    recordFinancialEvent(transaction, document.ref.firestore, {
+      eventName: "commission_generated",
+      stripeEventId: entry.stripeEventId,
+      occurredAt: entry.occurredAt,
+      attribution: {
+        bookingId: entry.bookingId,
+        providerId,
+        listingId: entry.listingId,
+        source: "stripe_webhook",
+      },
+      payload: {
+        amountCents: entry.platformFeeCents,
+        currency: entry.currency,
+        grossAmountCents: entry.grossAmountCents,
+        ledgerEntryId: entry.id,
+      },
+    });
+  }
 }
 
 export function writeCommerceRefundLedgerEntry(
@@ -168,6 +215,30 @@ export function writeCommerceRefundLedgerEntry(
     },
     { merge: true },
   );
+
+  if (entry.status !== "posted") return;
+  const providerId = resolveFinancialProviderId({ listingId: entry.listingId });
+  if (!providerId) return;
+
+  recordFinancialEvent(transaction, document.ref.firestore, {
+    eventName: "refund_completed",
+    stripeEventId: entry.stripeEventId,
+    occurredAt: entry.occurredAt,
+    attribution: {
+      bookingId: entry.bookingId,
+      providerId,
+      listingId: entry.listingId,
+      source: "stripe_webhook",
+    },
+    payload: {
+      amountCents: Math.abs(entry.grossAmountCents),
+      currency: entry.currency,
+      platformFeeCents: Math.abs(entry.platformFeeCents),
+      merchantSettlementCents: Math.abs(entry.merchantSettlementCents),
+      ledgerEntryId: entry.id,
+      reversalOfEntryId: entry.reversalOfEntryId,
+    },
+  });
 }
 
 function normalizedIso(value: unknown) {
