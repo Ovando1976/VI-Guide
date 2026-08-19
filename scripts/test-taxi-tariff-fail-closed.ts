@@ -18,6 +18,10 @@ const quoting = fs.readFileSync(
   path.join(root, "lib/usvi-taxi-tariffs.ts"),
   "utf8",
 );
+const fareEngine = fs.readFileSync(
+  path.join(root, "lib/official-taxi-fare-engine.ts"),
+  "utf8",
+);
 const activation = fs.readFileSync(
   path.join(root, "app/api/admin/taxi-tariffs/[tariffId]/activate/route.ts"),
   "utf8",
@@ -83,14 +87,19 @@ expectSource(
   "Red Hook to Dorothea dispute is explicitly gated",
 );
 expectSource(
-  quoting,
+  fareEngine,
   'rule.fareConfirmationRequired === "two_or_more" && party > 1',
   "2+ disputed fares fail closed before calculation",
 );
 expectSource(
-  quoting,
+  fareEngine,
   "Official fare confirmation required:",
   "blocked fares surface an explicit confirmation-required error",
+);
+expectSource(
+  quoting,
+  "calculateOfficialTaxiRuleFare",
+  "production quoting uses the shared fail-closed fare engine",
 );
 expectSource(
   activation,
