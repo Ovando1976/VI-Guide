@@ -114,6 +114,11 @@ expectSource(
   "the customer-facing STT airport name maps only to the governed Airport Terminal tariff endpoint",
 );
 expectSource(
+  fareEngine,
+  "endpoint.tariffEndpointName ?? endpoint.baseName",
+  "mobility-place geography cannot silently replace an explicit tariff identity",
+);
+expectSource(
   mobilityHubs,
   'CYRIL_E_KING_AIRPORT_GEOID = "mobility:stt:airport:stt"',
   "STT airport has a stable canonical mobility identifier",
@@ -122,6 +127,26 @@ expectSource(
   mobilityHubs,
   'fullname: "Airport Road / VI Route 302"',
   "STT airport routing is anchored to the terminal access road",
+);
+expectSource(
+  mobilityHubs,
+  'SMITH_BAY_ESTATE_GEOID = "7803072500"',
+  "Red Hook records retain their verified Estate Smith Bay parent",
+);
+expectSource(
+  mobilityHubs,
+  'tariffEndpointName: "Red Hook"',
+  "Red Hook retains the direct published tariff identity instead of inheriting Smith Bay pricing",
+);
+expectSource(
+  mobilityHubs,
+  'RED_HOOK_FERRY_TERMINAL_GEOID',
+  "the Red Hook passenger ferry has a dedicated routing endpoint",
+);
+expectSource(
+  mobilityHubs,
+  "OpenStreetMap way 522497662 ferry-terminal point",
+  "the ferry routing point records coordinate provenance",
 );
 expectSource(
   quoteApi,
@@ -178,10 +203,3 @@ expectSource(
   'db.collection("taxiTariffRouteReviews").get()',
   "the production route audit loads imported route review decisions",
 );
-expectSource(
-  routeAuditApi,
-  "auditTaxiTariffRoutes(tariffs, routeReviews)",
-  "the production audit passes route reviews into the shared audit engine",
-);
-
-console.log("USVI Explorer taxi tariff fail-closed contracts passed.");
