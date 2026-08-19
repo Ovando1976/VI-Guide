@@ -1,21 +1,63 @@
 "use client";
 
-import { AlertTriangle, CheckCircle2, Clock3, ShipWheel } from "lucide-react";
-import { useMemo, useState, type ReactNode } from "react";
+import Link from "next/link";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Clock3,
+  ExternalLink,
+  Save,
+  ShipWheel,
+} from "lucide-react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
+import {
+  derivePlanningAllAboard,
+  getOfficialCruisePortCall,
+  listOfficialCruisePortCalls,
+  sourceForOfficialCruisePortCall,
+  type OfficialCruisePortCall,
+} from "@/lib/cruise-port-calls";
 import {
   cruisePortDaySafetyLabel,
   evaluateCruisePortDaySafety,
 } from "@/lib/cruise-port-day-safety";
+import {
+  provenanceLabel,
+  upsertCruiseSafetyJourneyPlan,
+  type CruiseSafetyTimingProvenance,
+} from "@/lib/cruise-port-day-trip";
+import { readJourneyPlans, upsertJourneyPlan } from "@/lib/journey-planner";
+import { writeSelectedTravelerTripPlanId } from "@/lib/traveler-trip-selection";
 
 export function CruisePortDaySafetyPlanner() {
+  const [selectedCallId, setSelectedCallId] = useState("");
   const [allAboardTime, setAllAboardTime] = useState("");
-  const [plannedReturnDepartureTime, setPlannedReturnDepartureTime] =
-    useState("");
-  const [estimatedReturnTravelMinutes, setEstimatedReturnTravelMinutes] =
-    useState("");
-  const [desiredSafetyBufferMinutes, setDesiredSafetyBufferMinutes] =
-    useState("");
+  const [plannedReturnDepartureTime, setPlannedReturnDepartureTime] = useState("");
+  const [estimatedReturnTravelMinutes, setEstimatedReturnTravelMinutes] = useState("");
+  const [desiredSafetyBufferMinutes, setDesiredSafetyBufferMinutes] = useState("");
+  const [provenance, setProvenance] = useState<CruiseSafetyTimingProvenance>(
+    "traveler_confirmed_all_aboard",
+  );
+  const [savedPlanId, setSavedPlanId] = useState("");
+
+  const officialCalls = useMemo(
+    () => listOfficialCruisePortCalls().sort((left, right) => left.date.localeCompare(right.date)),
+    [],
+  );
+  const selectedCall = useMemo(
+    () => (selectedCallId ? getOfficialCruisePortCall(selectedCallId) : null),
+    [selectedCallId],
+  );
+  const source = selectedCall ? sourceForOfficialCruisePortCall(selectedCall) : null;
+
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("officialPortCall");
+    if (!requested) return;
+    const call = getOfficialCruisePortCall(requested);
+    if (call?.status === "scheduled") applyOfficialCall(call);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const complete = Boolean(
     allAboardTime &&
@@ -23,7 +65,6 @@ export function CruisePortDaySafetyPlanner() {
       estimatedReturnTravelMinutes &&
       desiredSafetyBufferMinutes,
   );
-
   const evaluation = useMemo(
     () =>
       complete
@@ -37,14 +78,56 @@ export function CruisePortDaySafetyPlanner() {
     [
       allAboardTime,
       complete,
-      plannedReturnDepartureTime,
-      estimatedReturnTravelMinutes,
       desiredSafetyBufferMinutes,
+      estimatedReturnTravelMinutes,
+      plannedReturnDepartureTime,
     ],
   );
-
   const result = evaluation?.ok ? evaluation.result : null;
   const protectedPlan = result?.status === "safe_buffer";
+
+  function applyOfficialCall(call: OfficialCruisePortCall) {
+    const proxy = derivePlanningAllAboard(call.departsAt);
+    setSelectedCallId(call.id);
+    setSavedPlanId("");
+    if (proxy) {
+      setAllAboardTime(proxy);
+      setProvenance("official_departure_proxy");
+    }
+  }
+
+  function selectOfficialCall(value: string) {
+    if (!value) {
+      setSelectedCallId("");
+      setSavedPlanId("");
+      return;
+    }
+    const call = getOfficialCruisePortCall(value);
+    if (call?.status === "scheduled") applyOfficialCall(call);
+  }
+
+  function editAllAboard(value: string) {
+    setAllAboardTime(value);
+    setSavedPlanId("");
+    if (selectedCall) setProvenance("traveler_confirmed_all_aboard");
+  }
+
+  function saveToMyTrip() {
+    if (!selectedCall || !result) return;
+    const plan = upsertCruiseSafetyJourneyPlan({
+      plans: readJourneyPlans(),
+      call: selectedCall,
+      result,
+      allAboardTime,
+      plannedReturnDepartureTime,
+      estimatedReturnTravelMinutes: Number(estimatedReturnTravelMinutes),
+      desiredSafetyBufferMinutes: Number(desiredSafetyBufferMinutes),
+      provenance,
+    });
+    upsertJourneyPlan(plan);
+    writeSelectedTravelerTripPlanId(plan.id);
+    setSavedPlanId(plan.id);
+  }
 
   return (
     <section className="px-4 pb-6 sm:px-6 lg:pb-8">
@@ -65,23 +148,69 @@ export function CruisePortDaySafetyPlanner() {
               </div>
             </div>
             <p className="mt-5 text-sm font-semibold leading-7 text-white/70">
-              Enter the ship&apos;s published all-aboard time, when you plan to leave
-              your last stop, and your estimated trip back. We&apos;ll show whether
-              your plan preserves the safety buffer you choose.
+              Start from a published VIPA/WICO port call when we have one, then add
+              your return route estimate. Save the result into the matching day in My Trip.
             </p>
             <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs font-semibold leading-6 text-white/65">
-              This is a planning estimate, not a verified transfer time. Cruise-day
-              checkout still uses the stricter server-side verified return-buffer gate.
+              Official schedules publish ship departure, not the onboard all-aboard
+              announcement. A schedule-derived time is therefore a planning proxy only.
+              Cruise-day checkout still requires stricter server-side verified return-buffer evidence.
             </div>
           </div>
 
           <div className="p-6 sm:p-8">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <PlannerField label="Official USVI port call">
+              <select
+                value={selectedCallId}
+                onChange={(event) => selectOfficialCall(event.target.value)}
+                className={inputClass}
+              >
+                <option value="">Choose a published ship call (optional)</option>
+                {officialCalls.map((call) => (
+                  <option key={call.id} value={call.id}>
+                    {call.date} · {call.shipName} · {call.terminalLabel} · departs {call.departsAt}
+                  </option>
+                ))}
+              </select>
+            </PlannerField>
+
+            {selectedCall ? (
+              <div className="mt-4 rounded-2xl border border-teal-200 bg-teal-50 p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[.15em] text-teal-700">
+                      Published schedule context
+                    </p>
+                    <p className="mt-1 text-sm font-black text-[#043331]">
+                      {selectedCall.shipName} · {selectedCall.date} · {selectedCall.terminalLabel}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold text-slate-600">
+                      Arrival {selectedCall.arrivesAt} · Departure {selectedCall.departsAt}
+                    </p>
+                  </div>
+                  {source ? (
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[.12em] text-teal-700"
+                    >
+                      Official source <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  ) : null}
+                </div>
+                <p className="mt-3 text-xs font-semibold leading-5 text-teal-950/65">
+                  All-aboard provenance: {provenanceLabel(provenance)}.
+                </p>
+              </div>
+            ) : null}
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <PlannerField label="Ship all-aboard time">
                 <input
                   type="time"
                   value={allAboardTime}
-                  onChange={(event) => setAllAboardTime(event.target.value)}
+                  onChange={(event) => editAllAboard(event.target.value)}
                   className={inputClass}
                 />
               </PlannerField>
@@ -89,9 +218,10 @@ export function CruisePortDaySafetyPlanner() {
                 <input
                   type="time"
                   value={plannedReturnDepartureTime}
-                  onChange={(event) =>
-                    setPlannedReturnDepartureTime(event.target.value)
-                  }
+                  onChange={(event) => {
+                    setPlannedReturnDepartureTime(event.target.value);
+                    setSavedPlanId("");
+                  }}
                   className={inputClass}
                 />
               </PlannerField>
@@ -100,11 +230,12 @@ export function CruisePortDaySafetyPlanner() {
                   type="number"
                   min={1}
                   max={360}
-                  value={estimatedReturnTravelMinutes}
-                  onChange={(event) =>
-                    setEstimatedReturnTravelMinutes(event.target.value)
-                  }
                   placeholder="Use your route estimate"
+                  value={estimatedReturnTravelMinutes}
+                  onChange={(event) => {
+                    setEstimatedReturnTravelMinutes(event.target.value);
+                    setSavedPlanId("");
+                  }}
                   className={inputClass}
                 />
               </PlannerField>
@@ -113,11 +244,12 @@ export function CruisePortDaySafetyPlanner() {
                   type="number"
                   min={1}
                   max={240}
-                  value={desiredSafetyBufferMinutes}
-                  onChange={(event) =>
-                    setDesiredSafetyBufferMinutes(event.target.value)
-                  }
                   placeholder="Choose your buffer"
+                  value={desiredSafetyBufferMinutes}
+                  onChange={(event) => {
+                    setDesiredSafetyBufferMinutes(event.target.value);
+                    setSavedPlanId("");
+                  }}
                   className={inputClass}
                 />
               </PlannerField>
@@ -126,7 +258,7 @@ export function CruisePortDaySafetyPlanner() {
             {!complete ? (
               <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold leading-6 text-slate-600">
                 Add all four timing inputs to check the port-day plan. USVI Explorer
-                does not assume an all-aboard time, transfer duration, or safety buffer for you.
+                will not invent a route duration or safety buffer.
               </div>
             ) : evaluation && !evaluation.ok ? (
               <div className="mt-5 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm font-bold text-rose-700">
@@ -157,24 +289,43 @@ export function CruisePortDaySafetyPlanner() {
                 </div>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <ResultMetric
-                    label="Safe return deadline"
-                    value={formatTime(result.safeReturnDeadline)}
-                  />
-                  <ResultMetric
-                    label="Expected return"
-                    value={formatTime(result.expectedPortReturnTime)}
-                  />
-                  <ResultMetric
-                    label="Expected buffer"
-                    value={`${result.expectedBufferMinutes} min`}
-                  />
+                  <ResultMetric label="Safe return deadline" value={formatTime(result.safeReturnDeadline)} />
+                  <ResultMetric label="Expected return" value={formatTime(result.expectedPortReturnTime)} />
+                  <ResultMetric label="Expected buffer" value={`${result.expectedBufferMinutes} min`} />
                 </div>
 
                 {!protectedPlan ? (
                   <p className="mt-4 text-sm font-bold leading-6 text-amber-900/75">
                     Leave earlier, shorten the final stop, or use a faster verified
                     transfer before treating this itinerary as cruise-safe.
+                  </p>
+                ) : null}
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={saveToMyTrip}
+                    disabled={!selectedCall}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase tracking-[.13em] text-white disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <Save className="h-4 w-4 text-[#f5c451]" /> Save to My Trip
+                  </button>
+                  {savedPlanId ? (
+                    <Link
+                      href={`/trips?trip=${encodeURIComponent(savedPlanId)}`}
+                      className="inline-flex min-h-11 items-center rounded-full border border-teal-300 bg-white px-5 text-[9px] font-black uppercase tracking-[.13em] text-teal-800"
+                    >
+                      Open saved trip
+                    </Link>
+                  ) : null}
+                </div>
+                {!selectedCall ? (
+                  <p className="mt-3 text-xs font-semibold leading-5 text-slate-500">
+                    Choose a published port call before saving so My Trip has a trusted island and date anchor.
+                  </p>
+                ) : savedPlanId ? (
+                  <p className="mt-3 text-xs font-bold text-emerald-800">
+                    Saved into the matching cruise day in My Trip.
                   </p>
                 ) : null}
               </div>
@@ -201,9 +352,7 @@ function PlannerField({ label, children }: { label: string; children: ReactNode 
 function ResultMetric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-white/70 bg-white/70 p-4">
-      <p className="text-[9px] font-black uppercase tracking-[.12em] text-slate-400">
-        {label}
-      </p>
+      <p className="text-[9px] font-black uppercase tracking-[.12em] text-slate-400">{label}</p>
       <p className="mt-1 text-lg font-black text-[#043331]">{value}</p>
     </div>
   );
