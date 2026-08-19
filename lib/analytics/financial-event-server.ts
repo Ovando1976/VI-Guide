@@ -1,5 +1,3 @@
-import "server-only";
-
 import { FieldValue, type Firestore, type Transaction } from "firebase-admin/firestore";
 
 import {
@@ -43,10 +41,6 @@ export function resolveFinancialProviderId(record: Record<string, unknown>) {
   const providerId = clean(record.providerId) || clean(record.merchantUid);
   if (providerId) return providerId;
 
-  // VI Guide's provider operations and merchant listing scope are keyed by the
-  // canonical listing id. When a merchant UID is not present on older bookings,
-  // retain deterministic provider attribution to that server-owned provider scope
-  // rather than emitting unattributed revenue.
   const listingId = clean(record.listingId);
   return listingId ? `listing:${listingId}` : "";
 }
@@ -115,9 +109,6 @@ export function recordFinancialEvent(
   const record = buildFinancialEventRecord(input);
   if (!record) return null;
 
-  // One deterministic document per ledger effect prevents multiple Stripe
-  // webhook envelopes (for example refund.created + refund.updated) from
-  // double-counting the same financial consequence.
   transaction.set(db.collection("viEvents").doc(record.eventId), record);
   return record;
 }
