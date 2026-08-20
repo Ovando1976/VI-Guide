@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "island": "stx",
+  "tariffEffectiveDate": "2022-10-24",
+  "status": "review_policy",
+  "principle": "Published tariff labels are financial identities. Exact labels are accepted; aliases require explicit review. Similar spelling, proximity, shared estate names, hotel names, or inferred geography never establish fare identity.",
+  "acceptedSourceNormalizations": [
+    {"source":"CAROMBOLA","canonical":"Carambola","scope":"published table heading only","reason":"Explicit source-heading normalization; does not authorize fuzzy matching."}
+  ],
+  "identityClasses": {
+    "exactPublishedLabel": "eligible_after_row_reconciliation",
+    "explicitReviewedAlias": "eligible_only_for_named_mapping",
+    "routeQualifiedLabel": "must_remain_distinct",
+    "slashQualifiedLabel": "must_remain_distinct_unless_reviewed",
+    "parentheticalQualifiedLabel": "must_remain_distinct_unless_reviewed",
+    "spellingVariant": "fail_closed",
+    "nearbyPlace": "fail_closed",
+    "estateToBusinessOrHotel": "fail_closed",
+    "historicalLabel": "fail_closed_unless_explicitly_reviewed"
+  },
+  "protectedExamples": [
+    ["Canaan","Canaan Ridge"],
+    ["La Grange","La Grange Hill"],
+    ["Mt. Washington (East End)","Mt. Washington (West)"],
+    ["Sandy Point","Sandy Point (Nature Conserve)"],
+    ["Grove Place Village","Grove Place Hills"],
+    ["La Grange","Little La Grange"],
+    ["Christiansted","Welcome Estate"],
+    ["Sunny Isle","Sunny Isle/Island Center"],
+    ["Cane Bay","Cane Bay Plantation"],
+    ["Carambola","Carambolla"]
+  ],
+  "reviewFlags": [
+    "Source labels that appear typographically unusual (for example Farsham, Sally's Fancy, Ham's Bay/Clover Crest, Ham's Bay/Clover Guard) remain literal published identities until separately reviewed.",
+    "Hotel/business labels do not automatically collapse into an estate or neighborhood with a similar name.",
+    "Slash and parenthetical qualifiers are financially significant unless a reviewed mapping explicitly proves equivalence."
+  ],
+  "certificationRule": "canonicalEndpointAuditComplete may become true only when every activated STX row resolves through exact published identity or an explicit reviewed alias and all protected distinctions are covered by negative tests."
+}
