@@ -1,3 +1,4 @@
+import "./test-stt-governed-fare-engine";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -56,7 +57,6 @@ assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Lamishur")
 assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Hawknest")).tariffEndpointName, undefined);
 assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Jumbie Bay")).tariffEndpointName, undefined);
 
-// Reviewed traveler alias is deliberately converted to the exact published hub before matching.
 const reviewedWindmillAlias = endpoint("Neptune Landing/Windmill");
 const resolvedWindmill = resolveOfficialTaxiFareEndpoint(spellingRules, reviewedWindmillAlias);
 assert.equal(resolvedWindmill.tariffEndpointName, "Neptune Landing/Windmill");
@@ -85,7 +85,4 @@ const westin = resolveOfficialTaxiFareEndpoint(governedRules, endpoint("Westin R
 assert.equal(findOfficialTaxiRateRule(governedRules,caneel,westin)?.id, governedCaneelWestin.id);
 assert.equal(findOfficialTaxiRateRule(governedRules,westin,caneel)?.id, governedCaneelWestin.id);
 
-// Published special-charge provisions that are not represented by the current quote schema
-// remain deliberately uncomputed: late-hour, oversized-item cap, waiting, round-trip,
-// radio/phone, and negotiated exclusive-service pricing.
 console.log("STJ governed fare identity, reconciliation, and deterministic luggage matrix passed.");
