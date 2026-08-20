@@ -12,18 +12,19 @@ function expectSource(source: string, value: string, label: string) {
   if (!source.includes(value)) throw new Error(`Taxi confidence contract failed: ${label}`);
 }
 
-expectSource(panel, "shared · possible wait + stops", "shared rides disclose waiting and stops");
-expectSource(panel, "direct ride requested", "non-shared rides state the service request");
-expectSource(panel, "secure online card", "payment expectations are explicit before checkout");
-expectSource(panel, "Connection to protect", "travelers can record a critical connection");
-expectSource(panel, "entering a time alone is not a guarantee", "schedule semantics remain honest");
+expectSource(panel, "Share the ride with other passengers", "shared rides are clearly described");
+expectSource(panel, "No surge or distance-based substitute", "non-governed fare substitution is prohibited in the review UI");
+expectSource(panel, 'paymentMethod:"online_card"', "payment expectations remain explicit before checkout");
+expectSource(panel, "Need to catch something? (optional)", "travelers can record a critical connection");
+expectSource(panel, "Your driver assignment confirms availability", "schedule semantics remain honest");
 expectSource(bookingRoute, "optionalFutureDate", "schedule fields are validated server-side");
 expectSource(bookingRoute, 'paymentMethod: "online_card"', "server controls the payment method record");
 expectSource(serverBookings, "serviceExpectation", "trip records preserve shared/direct expectations");
-expectSource(panel, "Pickup instructions (optional)", "travelers can provide exact pickup guidance");
-expectSource(panel, "Drop-off instructions (optional)", "travelers can provide destination guidance");
-expectSource(panel, "Official fare · no surge", "mobile booking keeps the fare action visible");
-expectSource(panel, 'id="trip-review"', "mobile review action has a stable scroll target");
+expectSource(panel, "Pickup note (optional)", "travelers can provide exact pickup guidance");
+expectSource(panel, "Drop-off note (optional)", "travelers can provide destination guidance");
+expectSource(panel, "Verified fare for this trip", "fare review remains prominent");
+expectSource(panel, 'id="trip-review"', "review action has a stable target");
+expectSource(panel, "We will not guess or substitute a fare", "missing governed fares fail closed in traveler language");
 expectSource(bookingRoute, "cleanInstructions", "location instructions are normalized server-side");
 expectSource(bookingRoute, "pickupInstructions ? { notes: pickupInstructions }", "pickup instructions reach dispatch records");
 

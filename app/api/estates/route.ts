@@ -6,6 +6,7 @@ import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
+import { withMobilityHubs } from "@/lib/mobility-hubs";
 import {
   debugFirestoreEstateDoc,
   normalizeEstateCollection,
@@ -97,21 +98,26 @@ async function loadLocalEstates(): Promise<EstateRecord[]> {
   return parsed;
 }
 
+function estatePayload(estates: EstateRecord[], source: string, extraMeta = {}) {
+  const mobilityEstates = withMobilityHubs(estates);
+  return {
+    estates: mobilityEstates,
+    count: mobilityEstates.length,
+    meta: {
+      source,
+      normalizedCount: estates.length,
+      mobilityHubCount: mobilityEstates.length - estates.length,
+      ...extraMeta,
+    },
+  };
+}
+
 export async function GET() {
   let localError: string | null = null;
 
-  // Estate boundaries are static geography. Prefer the bundled, validated
-  // snapshot so the customer map never waits on credentials or a remote SDK.
   try {
     const estates = await loadLocalEstates();
-    return NextResponse.json({
-      estates,
-      count: estates.length,
-      meta: {
-        source: "local-snapshot",
-        normalizedCount: estates.length,
-      },
-    });
+    return NextResponse.json(estatePayload(estates, "local-snapshot"));
   } catch (error) {
     localError =
       error instanceof Error ? error.message : "Local snapshot unavailable.";
@@ -125,21 +131,17 @@ export async function GET() {
         "Firestore estate load",
       );
       if (estates.length) {
-        return NextResponse.json({
-          estates,
-          count: estates.length,
-          meta: {
-            source: "firestore",
+        return NextResponse.json(
+          estatePayload(estates, "firestore", {
             rawCount: rawDocs.length,
-            normalizedCount: estates.length,
             ...(process.env.NODE_ENV === "development"
               ? {
                   localError,
                   sampleRaw: rawDocs.slice(0, 3).map(debugFirestoreEstateDoc),
                 }
               : {}),
-          },
-        });
+          }),
+        );
       }
 
       console.warn("The usvi_estates collection is empty.");
@@ -153,14 +155,7 @@ export async function GET() {
 
   try {
     const estates = await loadCensusEstates();
-    return NextResponse.json({
-      estates,
-      count: estates.length,
-      meta: {
-        source: "census-fallback",
-        normalizedCount: estates.length,
-      },
-    });
+    return NextResponse.json(estatePayload(estates, "census-fallback"));
   } catch (error) {
     console.error("All estate data sources failed.", error);
     return NextResponse.json(

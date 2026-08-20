@@ -35,6 +35,19 @@ export type FleetVehicle = {
 
 export type TaxiFareConfirmationScope = "all" | "two_or_more";
 
+/**
+ * A published passenger tier. `fare` is either the fare for the whole party
+ * (`party`) or the per-passenger fare (`per_person`) for a party whose size is
+ * within the inclusive min/max bounds. This lets us faithfully model both
+ * STT/STJ 1 vs 2+ schedules and STX 1-or-2 vs 3+ schedules without inference.
+ */
+export type OfficialTaxiPassengerFareTier = {
+  minPassengers: number;
+  maxPassengers?: number;
+  fare: number;
+  basis: "party" | "per_person";
+};
+
 export type OfficialTaxiRateRule = {
   id: string;
   originEstateGeoids?: string[];
@@ -43,6 +56,9 @@ export type OfficialTaxiRateRule = {
   destinationNames: string[];
   originCandidateAliases?: string[];
   destinationCandidateAliases?: string[];
+  /** Preferred representation for newly reviewed tariff data. */
+  passengerFareTiers?: OfficialTaxiPassengerFareTier[];
+  /** Legacy fields retained while existing reviewed tariff documents migrate. */
   onePassengerFare: number;
   additionalPassengerFare?: number;
   perPersonFare?: number;

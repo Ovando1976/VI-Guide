@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { assertMobilityPilotActive } from "@/lib/mobility-pilot-readiness";
+import { resolveMobilityEndpoint } from "@/lib/mobility-hubs";
 import { normalizeEstateCollection } from "@/lib/usvi";
 import {
   OfficialTaxiRateUnavailableError,
   quoteOfficialTaxiFare,
 } from "@/lib/usvi-taxi-tariffs";
-import type { EstateCollection, EstateRecord } from "@/types/usvi";
+import type { EstateCollection } from "@/types/usvi";
 import type { RideBookingDraft } from "@/types/mobility";
 
 const ESTATES_URL =
@@ -38,15 +39,11 @@ export async function POST(request: NextRequest) {
     const estates = normalizeEstateCollection(
       (await response.json()) as EstateCollection,
     );
-    const origin = estates.find(
-      (estate: EstateRecord) => estate.geoid === body.originEstateGeoid,
-    );
-    const destination = estates.find(
-      (estate: EstateRecord) => estate.geoid === body.destinationEstateGeoid,
-    );
+    const origin = resolveMobilityEndpoint(body.originEstateGeoid, estates);
+    const destination = resolveMobilityEndpoint(body.destinationEstateGeoid, estates);
     if (!origin || !destination) {
       return NextResponse.json(
-        { error: "Invalid estate selection." },
+        { error: "Invalid mobility endpoint selection." },
         { status: 400 },
       );
     }

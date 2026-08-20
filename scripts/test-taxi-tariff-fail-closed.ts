@@ -22,6 +22,18 @@ const fareEngine = fs.readFileSync(
   path.join(root, "lib/official-taxi-fare-engine.ts"),
   "utf8",
 );
+const mobilityHubs = fs.readFileSync(
+  path.join(root, "lib/mobility-hubs.ts"),
+  "utf8",
+);
+const quoteApi = fs.readFileSync(
+  path.join(root, "app/api/bookings/quote/route.ts"),
+  "utf8",
+);
+const estatesApi = fs.readFileSync(
+  path.join(root, "app/api/estates/route.ts"),
+  "utf8",
+);
 const activation = fs.readFileSync(
   path.join(root, "app/api/admin/taxi-tariffs/[tariffId]/activate/route.ts"),
   "utf8",
@@ -95,6 +107,56 @@ expectSource(
   fareEngine,
   "Official fare confirmation required:",
   "blocked fares surface an explicit confirmation-required error",
+);
+expectSource(
+  fareEngine,
+  '"cyril e king airport": "airport terminal"',
+  "the customer-facing STT airport name maps only to the governed Airport Terminal tariff endpoint",
+);
+expectSource(
+  fareEngine,
+  "endpoint.tariffEndpointName ?? endpoint.baseName",
+  "mobility-place geography cannot silently replace an explicit tariff identity",
+);
+expectSource(
+  mobilityHubs,
+  'CYRIL_E_KING_AIRPORT_GEOID = "mobility:stt:airport:stt"',
+  "STT airport has a stable canonical mobility identifier",
+);
+expectSource(
+  mobilityHubs,
+  'fullname: "Airport Road / VI Route 302"',
+  "STT airport routing is anchored to the terminal access road",
+);
+expectSource(
+  mobilityHubs,
+  'SMITH_BAY_ESTATE_GEOID = "7803072500"',
+  "Red Hook records retain their verified Estate Smith Bay parent",
+);
+expectSource(
+  mobilityHubs,
+  'tariffEndpointName: "Red Hook"',
+  "Red Hook retains the direct published tariff identity instead of inheriting Smith Bay pricing",
+);
+expectSource(
+  mobilityHubs,
+  'RED_HOOK_FERRY_TERMINAL_GEOID',
+  "the Red Hook passenger ferry has a dedicated routing endpoint",
+);
+expectSource(
+  mobilityHubs,
+  "OpenStreetMap way 522497662 ferry-terminal point",
+  "the ferry routing point records coordinate provenance",
+);
+expectSource(
+  quoteApi,
+  "resolveMobilityEndpoint(body.originEstateGeoid, estates)",
+  "official quote API accepts canonical mobility hubs without replacing tariff pricing",
+);
+expectSource(
+  estatesApi,
+  "withMobilityHubs(estates)",
+  "customer mobility choices include canonical hubs alongside estates",
 );
 expectSource(
   quoting,

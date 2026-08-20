@@ -3,6 +3,7 @@ import type { OfficialTaxiRateRule } from "@/types/taxi-operations";
 export type OfficialTaxiFareEndpoint = {
   geoid: string;
   baseName: string;
+  tariffEndpointName?: string;
 };
 
 export class OfficialTaxiRateUnavailableError extends Error {
@@ -26,6 +27,16 @@ function normalize(value: string) {
 const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
   "cruz bay town": "cruz bay",
   "town of cruz bay": "cruz bay",
+  "cyril e king airport": "airport terminal",
+  "cyril king airport": "airport terminal",
+  "st thomas airport": "airport terminal",
+  "urman victor fredericks marine terminal": "red hook",
+  "urman v fredericks marine terminal": "red hook",
+  "red hook ferry terminal": "red hook",
+  "red hook passenger ferry terminal": "red hook",
+  stt: "airport terminal",
+  tist: "airport terminal",
+  airport: "airport terminal",
 };
 
 function canonicalEndpointName(value: string) {
@@ -45,8 +56,9 @@ function endpointMatches(
   ruleNames: string[],
   endpoint: OfficialTaxiFareEndpoint,
 ) {
+  const fareName = endpoint.tariffEndpointName ?? endpoint.baseName;
   return Boolean(
-    ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, endpoint.baseName),
+    ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, fareName),
   );
 }
 
@@ -58,11 +70,7 @@ export function findOfficialTaxiRateRule(
   for (const rule of rules) {
     const direct =
       endpointMatches(rule.originEstateGeoids, rule.originNames, origin) &&
-      endpointMatches(
-        rule.destinationEstateGeoids,
-        rule.destinationNames,
-        destination,
-      );
+      endpointMatches(rule.destinationEstateGeoids, rule.destinationNames, destination);
     const reverse =
       endpointMatches(rule.originEstateGeoids, rule.originNames, destination) &&
       endpointMatches(rule.destinationEstateGeoids, rule.destinationNames, origin);
@@ -88,6 +96,29 @@ function assertFareConfirmationNotRequired(
   );
 }
 
+function calculateTierFare(rule: OfficialTaxiRateRule, party: number) {
+  const tiers = rule.passengerFareTiers;
+  if (!tiers?.length) return null;
+
+  const tier = tiers.find(
+    ({ minPassengers, maxPassengers }) =>
+      party >= minPassengers &&
+      (typeof maxPassengers !== "number" || party <= maxPassengers),
+  );
+
+  if (!tier) {
+    throw new OfficialTaxiRateUnavailableError(
+      "The official route rule does not define a published fare tier for this passenger count.",
+    );
+  }
+
+  if (tier.basis === "party") {
+    return { routeFare: tier.fare, passengerFare: 0 };
+  }
+
+  return { routeFare: 0, passengerFare: tier.fare * party };
+}
+
 export function calculateOfficialTaxiRuleFare(
   rule: OfficialTaxiRateRule,
   passengers: number,
@@ -96,10 +127,13 @@ export function calculateOfficialTaxiRuleFare(
   const party = Math.max(1, Math.trunc(passengers));
   assertFareConfirmationNotRequired(rule, party);
 
-  let routeFare = rule.onePassengerFare;
-  let passengerFare = 0;
+  const tierFare = calculateTierFare(rule, party);
+  let routeFare = tierFare?.routeFare ?? rule.onePassengerFare;
+  let passengerFare = tierFare?.passengerFare ?? 0;
 
-  if (party > 1) {
+  // Backward-compatible calculation for active tariff documents that have not
+  // yet migrated to passengerFareTiers. New reviewed data should use tiers.
+  if (!tierFare && party > 1) {
     if (typeof rule.perPersonFare === "number") {
       routeFare = 0;
       passengerFare = rule.perPersonFare * party;
