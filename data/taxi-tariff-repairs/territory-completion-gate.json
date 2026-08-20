@@ -8,33 +8,46 @@
   "islands": {
     "stt": {
       "complete": false,
-      "inventoryComplete": false,
+      "inventoryComplete": true,
       "canonicalEndpointAuditComplete": false,
       "directionMatrixComplete": false,
       "passengerTierMatrixComplete": false,
       "luggageAndGroupRulesComplete": false,
       "negativeFailClosedTestsComplete": false,
-      "blockers": ["Full published STT schedule has not yet been reconciled against governed data."]
+      "blockers": [
+        "Authoritative confirmation is still required for unresolved STT endpoint aliases, including broad Town/Lindbergh Bay/Dorothea identities where the reviewed mapping does not prove equivalence.",
+        "Red Hook to/from Dorothea 2+ passenger fare conflict remains unresolved and must not quote through an inferred value.",
+        "Full governed direct/reverse and passenger-tier reconciliation must reach zero mismatches."
+      ]
     },
     "stj": {
       "complete": false,
-      "inventoryComplete": false,
+      "inventoryComplete": true,
       "canonicalEndpointAuditComplete": false,
       "directionMatrixComplete": false,
       "passengerTierMatrixComplete": false,
       "luggageAndGroupRulesComplete": false,
       "negativeFailClosedTestsComplete": false,
-      "blockers": ["Full published STJ schedule has not yet been inventoried and reconciled against governed data."]
+      "blockers": [
+        "Caneel Bay to/from Westin Resort 2+ passenger values conflict in the published table and remain fail-closed pending authoritative clarification.",
+        "Route-qualified identities such as Centerline versus North Shore must remain distinct through canonical reconciliation.",
+        "Unreviewed spelling/name aliases must not resolve automatically."
+      ]
     },
     "stx": {
       "complete": false,
-      "inventoryComplete": false,
+      "inventoryComplete": true,
       "canonicalEndpointAuditComplete": false,
       "directionMatrixComplete": false,
-      "passengerTierMatrixComplete": false,
-      "luggageAndGroupRulesComplete": false,
+      "passengerTierMatrixComplete": true,
+      "luggageAndGroupRulesComplete": true,
       "negativeFailClosedTestsComplete": false,
-      "blockers": ["Full published STX schedule has not yet been inventoried and reconciled against governed data."]
+      "blockers": [
+        "Canonical endpoint review is still required across the full row inventory; CAROMBOLA may normalize only to the specifically reviewed Carambola identity, not through general fuzzy matching.",
+        "Direct/reverse comparison across all published relationships must complete with explicit conflict classification.",
+        "The published unlisted-destination provision remains disabled until governed road-order geography and deterministic tests exist.",
+        "Negative tests must prove historical tariff pages and unpublished/inferred relationships cannot enter governed matching."
+      ]
     }
   },
   "hardFailureConditions": [
