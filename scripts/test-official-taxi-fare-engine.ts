@@ -103,6 +103,25 @@ for (const test of matrix) {
   expectEqual(total(test.rule, 3), test.expected[2], `${test.label} 3 passengers`);
 }
 
+const censusAnnaly = resolveOfficialTaxiFareEndpoint(
+  [stxAirportAnnaly],
+  endpoint("Estate Annaly"),
+);
+expectEqual(
+  censusAnnaly.tariffEndpointName,
+  "Annaly",
+  "Census Estate prefix normalizes to the exact published tariff location",
+);
+expectEqual(
+  findOfficialTaxiRateRule(
+    [stxAirportAnnaly],
+    endpoint("Henry E. Rohlsen Airport"),
+    censusAnnaly,
+  )?.id,
+  stxAirportAnnaly.id,
+  "normalized Census estate uses the governed published route",
+);
+
 for (const cruzBayUiName of ["Cruz Bay Town", "Town of Cruz Bay"]) {
   expectEqual(
     findOfficialTaxiRateRule(
@@ -231,5 +250,5 @@ expectThrows(
 );
 
 console.log(
-  "Official taxi fare engine contracts passed: STT/STJ/STX matrix, reviewed aliases, governed parent-place resolution, explicit special-destination precedence, ambiguous-parent fail-closed, reverse matching, unknown-route, luggage, and confirmation gates.",
+  "Official taxi fare engine contracts passed: STT/STJ/STX matrix, Census estate-name normalization, reviewed aliases, governed parent-place resolution, explicit special-destination precedence, ambiguous-parent fail-closed, reverse matching, unknown-route, luggage, and confirmation gates.",
 );
