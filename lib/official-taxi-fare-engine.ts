@@ -43,7 +43,17 @@ const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
 
 function canonicalEndpointName(value: string) {
   const normalized = normalize(value);
-  return REVIEWED_ENDPOINT_ALIASES[normalized] ?? normalized;
+  const reviewed = REVIEWED_ENDPOINT_ALIASES[normalized];
+  if (reviewed) return reviewed;
+
+  // Census estate geography is presented as “Estate X”, while the governed
+  // tariff tables generally publish the same official area as “X”. Removing
+  // only this fixed legal-geography prefix is deterministic name normalization,
+  // not fuzzy matching. Known disputed identities are still blocked in the
+  // quote governance layer after resolution.
+  return normalized.startsWith("estate ")
+    ? normalized.slice("estate ".length)
+    : normalized;
 }
 
 function hasName(values: string[] | undefined, name: string) {
