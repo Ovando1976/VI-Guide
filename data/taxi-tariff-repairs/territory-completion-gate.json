@@ -10,15 +10,24 @@
       "complete": false,
       "inventoryComplete": true,
       "canonicalEndpointAuditComplete": false,
-      "directionMatrixComplete": false,
-      "passengerTierMatrixComplete": false,
-      "luggageAndGroupRulesComplete": false,
-      "negativeFailClosedTestsComplete": false,
+      "directionMatrixComplete": true,
+      "passengerTierMatrixComplete": true,
+      "luggageAndGroupRulesComplete": true,
+      "negativeFailClosedTestsComplete": true,
+      "verificationEvidence": {
+        "vercelDeploymentId": "dpl_FfPZ9uXJ4Zfs93VJLXcr3Din9Mxq",
+        "commit": "adf51eaee17c14942aa4db4f36607053d3e05bb2",
+        "state": "READY",
+        "prebuildGates": [
+          "scripts/test-stt-tariff-inventory.ts",
+          "scripts/test-stt-full-governed-matrix.ts"
+        ],
+        "scope": "141 published STT source rows / 231 governed relationships, direct/reverse matching, 1-passenger and 2+ tiers, standard luggage, protected Dorothea/Havensight identities, and fail-closed unsupported conditional charges"
+      },
       "blockers": [
-        "Authoritative confirmation is still required for unresolved STT endpoint aliases, including broad Town/Lindbergh Bay/Dorothea identities where the reviewed mapping does not prove equivalence.",
-        "Red Hook to/from Dorothea 2+ passenger fare conflict remains unresolved and must not quote through an inferred value.",
-        "Full governed direct/reverse and passenger-tier reconciliation must reach zero mismatches."
-      ]
+        "Canonical endpoint alias audit remains incomplete. Broad traveler labels such as Town, Lindbergh Bay, generic Dorothea variants, and other non-source labels must be either explicitly reviewed to one tariff identity or remain fail-closed; no fuzzy equivalence may be used to satisfy this gate."
+      ],
+      "nonCoverageProvisions": "Waiting-time, after-hours, oversized luggage, kennel, round-trip, radio/phone, and other conditional special-charge provisions remain non-computed unless the quote schema has the required deterministic inputs. Standard published route fares and the standard $3 luggage charge are governed; unsupported conditional provisions cannot manufacture a fare."
     },
     "stj": {
       "complete": true,
