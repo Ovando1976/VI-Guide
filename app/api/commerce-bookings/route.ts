@@ -25,7 +25,10 @@ import { normalizeMerchantOfferId } from "@/lib/merchant-offers";
 import { processBookingNotificationOutboxIds } from "@/lib/notifications/booking-notification-delivery";
 import { normalizeBookingNotification } from "@/lib/notifications/booking-notification-outbox";
 import { safeInternalDestinationOrNull } from "@/lib/safe-internal-destination";
-import { normalizeProposalShareId } from "@/lib/travel-advisor-booking-handoff";
+import {
+  normalizeProposalShareId,
+  proposalBookingEmailMatches,
+} from "@/lib/travel-advisor-booking-handoff";
 import type {
   CommerceBookingKind,
   CommerceBookingRequest,
@@ -41,6 +44,12 @@ const BOOKING_KINDS: CommerceBookingKind[] = [
   "experience",
 ];
 const ISLANDS: IntelligenceIsland[] = ["stt", "stj", "stx"];
+
+type AdvisorProposalAttribution = {
+  shareId: string;
+  travelRequestId: string;
+  reference: string;
+};
 
 export async function POST(request: NextRequest) {
   if (!hasFirebaseAdminConfiguration()) {
@@ -94,13 +103,7 @@ export async function POST(request: NextRequest) {
       let requestQuotaRef: FirebaseFirestore.DocumentReference | null = null;
       let requestQuotaCount = 0;
       let bookingInput: Partial<CommerceBookingRequest> = body;
-      let advisorProposal:
-        | {
-            shareId: string;
-            travelRequestId: string;
-            reference: string;
-          }
-        | null = null;
+      let advisorProposal: AdvisorProposalAttribution | null = null;
       let advisorRequestRef: FirebaseFirestore.DocumentReference | null = null;
       let advisorRequestRecord: FirebaseFirestore.DocumentData | null = null;
 
@@ -202,6 +205,13 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      const attributedAdvisorProposal =
+        advisorProposal &&
+        advisorRequestRecord &&
+        proposalBookingEmailMatches(advisorRequestRecord.email, booking.email)
+          ? advisorProposal
+          : null;
+
       let bookingRef = db.collection("commerceBookings").doc();
       if (offerSnapshot) {
         bookingRef = db
@@ -230,6 +240,60 @@ export async function POST(request: NextRequest) {
               409,
             );
           }
+
+          const existingTravelRequestId = clean(data.sourceTravelRequestId, 80);
+          const canLinkExisting = Boolean(
+            attributedAdvisorProposal &&
+              advisorRequestRef &&
+              advisorRequestRecord &&
+              (!existingTravelRequestId ||
+                existingTravelRequestId ===
+                  attributedAdvisorProposal.travelRequestId),
+          );
+          if (
+            canLinkExisting &&
+            attributedAdvisorProposal &&
+            advisorRequestRef &&
+            advisorRequestRecord
+          ) {
+            const now = requestNow.toISOString();
+            transaction.set(
+              bookingRef,
+              {
+                sourceProposalShareId: attributedAdvisorProposal.shareId,
+                sourceTravelRequestId:
+                  attributedAdvisorProposal.travelRequestId,
+                sourceTravelAdvisorReference:
+                  attributedAdvisorProposal.reference,
+                updatedAt: now,
+              },
+              { merge: true },
+            );
+            transaction.update(advisorRequestRef, {
+              conversionStartedAt:
+                clean(advisorRequestRecord.conversionStartedAt, 50) || now,
+              lastCommerceBookingId: bookingRef.id,
+              lastCommerceBookingReference: reference,
+              lastCommerceBookingAt:
+                clean(data.createdAt, 50) || now,
+              commerceBookingIds: FieldValue.arrayUnion(bookingRef.id),
+              updatedAt: now,
+              serverUpdatedAt: FieldValue.serverTimestamp(),
+            });
+            transaction.set(db.collection("travelAdvisorAudit").doc(), {
+              action: "booking_request_linked_existing",
+              requestId: attributedAdvisorProposal.travelRequestId,
+              reference: attributedAdvisorProposal.reference,
+              proposalShareId: attributedAdvisorProposal.shareId,
+              commerceBookingId: bookingRef.id,
+              commerceBookingReference: reference,
+              listingId: booking.listingId,
+              listingName: booking.listingName,
+              createdAt: now,
+              serverCreatedAt: FieldValue.serverTimestamp(),
+            });
+          }
+
           return {
             duplicate: true,
             bookingId: bookingRef.id,
@@ -237,6 +301,7 @@ export async function POST(request: NextRequest) {
             status: clean(data.status, 40) || "requested",
             offer: offerResponse(data, offerSnapshot),
             notificationOutboxIds: [] as string[],
+            linkedToTravelRequest: canLinkExisting,
           };
         }
 
@@ -274,10 +339,14 @@ export async function POST(request: NextRequest) {
             }
           : {}),
         ...(advisorProposal
+          ? { sourceProposalShareId: advisorProposal.shareId }
+          : {}),
+        ...(attributedAdvisorProposal
           ? {
-              sourceProposalShareId: advisorProposal.shareId,
-              sourceTravelRequestId: advisorProposal.travelRequestId,
-              sourceTravelAdvisorReference: advisorProposal.reference,
+              sourceTravelRequestId:
+                attributedAdvisorProposal.travelRequestId,
+              sourceTravelAdvisorReference:
+                attributedAdvisorProposal.reference,
             }
           : {}),
         reference,
@@ -312,7 +381,11 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      if (advisorProposal && advisorRequestRef && advisorRequestRecord) {
+      if (
+        attributedAdvisorProposal &&
+        advisorRequestRef &&
+        advisorRequestRecord
+      ) {
         transaction.update(advisorRequestRef, {
           conversionStartedAt:
             clean(advisorRequestRecord.conversionStartedAt, 50) || now,
@@ -325,9 +398,9 @@ export async function POST(request: NextRequest) {
         });
         transaction.set(db.collection("travelAdvisorAudit").doc(), {
           action: "booking_request_started",
-          requestId: advisorProposal.travelRequestId,
-          reference: advisorProposal.reference,
-          proposalShareId: advisorProposal.shareId,
+          requestId: attributedAdvisorProposal.travelRequestId,
+          reference: attributedAdvisorProposal.reference,
+          proposalShareId: attributedAdvisorProposal.shareId,
           commerceBookingId: bookingRef.id,
           commerceBookingReference: reference,
           listingId: booking.listingId,
@@ -355,8 +428,12 @@ export async function POST(request: NextRequest) {
         {
           audience: "operations" as const,
           recipientEmail: null,
-          title: "New booking request",
-          message: `${booking.listingName} received booking request ${reference}.`,
+          title: advisorProposal
+            ? "Travel proposal booking request"
+            : "New booking request",
+          message: advisorProposal
+            ? `${booking.listingName} received booking request ${reference} from a USVI Explorer travel proposal.`
+            : `${booking.listingName} received booking request ${reference}.`,
           href: "/admin/operations",
         },
       ];
@@ -395,6 +472,7 @@ export async function POST(request: NextRequest) {
         status: "requested",
         offer: offerSnapshot ? offerResponse({}, offerSnapshot) : null,
         notificationOutboxIds,
+        linkedToTravelRequest: Boolean(attributedAdvisorProposal),
       };
     });
 
@@ -416,6 +494,7 @@ export async function POST(request: NextRequest) {
         bookingId: result.bookingId,
         reference: result.reference,
         status: result.status,
+        linkedToTravelRequest: result.linkedToTravelRequest,
         ...(result.offer ?? {}),
       },
       { status: result.duplicate ? 200 : 201 },
@@ -562,7 +641,7 @@ function createReference(kind: CommerceBookingKind) {
 class CommerceBookingActionError extends Error {
   constructor(
     message: string,
-    readonly status: 400 | 404 | 409 | 429,
+    public status: 400 | 409 | 429,
   ) {
     super(message);
   }
