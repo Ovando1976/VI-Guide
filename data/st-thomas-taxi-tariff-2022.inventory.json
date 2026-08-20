@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "island": "stt",
+  "tariffEffectiveDate": "2022-10-24",
+  "status": "in_progress",
+  "complete": false,
+  "sourceScope": "Published St. Thomas taxi tariff tables effective October 24, 2022",
+  "certificationRule": "STT inventory may become complete only after every published fare row has been transcribed, source-counted, canonicalized, and covered by executable direct/reverse and passenger-tier checks. Missing rows are hard failures and no inferred fare may satisfy coverage.",
+  "currentlyVerifiedRelationships": [
+    {
+      "origin": "Red Hook",
+      "destination": "Dorothea",
+      "onePassengerFare": 23,
+      "twoPlusPerPersonFare": 16,
+      "luggageFarePerPiece": 3,
+      "verifiedBy": "scripts/test-stt-governed-fare-engine.ts"
+    }
+  ],
+  "protectedDistinctIdentities": [
+    "Dorothea",
+    "Dorothea Estate",
+    "Dorothea Lower",
+    "Dorothea Upper"
+  ],
+  "requiredChecks": {
+    "allPublishedRowsTranscribed": false,
+    "publishedRowCountLocked": false,
+    "canonicalEndpointAuditComplete": false,
+    "directReverseMatrixComplete": false,
+    "passengerTierMatrixComplete": false,
+    "additionalChargeRulesComplete": false,
+    "negativeFailClosedTestsComplete": false
+  },
+  "hardFailureConditions": [
+    "missing_published_row",
+    "duplicate_or_conflicting_row",
+    "unreviewed_alias",
+    "ambiguous_endpoint",
+    "direction_mismatch",
+    "passenger_tier_mismatch",
+    "additional_charge_mismatch",
+    "unexpected_quote_for_unpublished_route",
+    "tariff_version_or_effective_date_mismatch"
+  ],
+  "nextRequiredEvidence": "Complete source-faithful STT row transcription and lock the published row count before island-wide certification."
+}
