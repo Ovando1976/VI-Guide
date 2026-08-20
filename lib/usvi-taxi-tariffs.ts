@@ -32,16 +32,33 @@ const STT_ENDPOINT_REVIEW_GATES = new Map<string, string>([
     "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
   ],
   [
+    "estate lindbergh bay",
+    "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
+  ],
+  [
     "dorothea estate",
+    "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
+  ],
+  [
+    "estate dorothea",
     "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
   ],
 ]);
 
 function assertEndpointIdentityConfirmed(estate: EstateRecord) {
   if (estate.island !== "stt") return;
-  const endpointName = estate.tariffEndpointName ?? estate.baseName;
-  const reason = STT_ENDPOINT_REVIEW_GATES.get(normalize(endpointName));
+
+  // Check both traveler/geographic identity and the resolved tariff identity.
+  // A deterministic “Estate X” -> “X” normalization must never erase a known
+  // governance hold such as Estate Lindbergh Bay or Estate Dorothea.
+  const identities = [estate.baseName, estate.tariffEndpointName].filter(
+    (value): value is string => Boolean(value),
+  );
+  const reason = identities
+    .map((value) => STT_ENDPOINT_REVIEW_GATES.get(normalize(value)))
+    .find((value): value is string => Boolean(value));
   if (!reason) return;
+
   throw new OfficialTaxiRateUnavailableError(
     `Official fare confirmation required: ${reason} Dispatch must verify the regulated endpoint before quoting.`,
   );
