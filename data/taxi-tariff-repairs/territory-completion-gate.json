@@ -24,14 +24,20 @@
       "complete": false,
       "inventoryComplete": true,
       "canonicalEndpointAuditComplete": false,
-      "directionMatrixComplete": false,
-      "passengerTierMatrixComplete": false,
+      "directionMatrixComplete": true,
+      "passengerTierMatrixComplete": true,
       "luggageAndGroupRulesComplete": false,
-      "negativeFailClosedTestsComplete": false,
+      "negativeFailClosedTestsComplete": true,
+      "verificationEvidence": {
+        "vercelDeploymentId": "dpl_5uk1PLRieGPwDZtc6CoLGabNLYhH",
+        "commit": "644d0480586ebbf6ed5cf8de3de3533a026f384c",
+        "state": "READY",
+        "prebuildGate": "scripts/test-stj-governed-fare-engine.ts",
+        "scope": "139-row STJ inventory, route-qualified identities, fail-closed aliases, and governed Caneel Bay/Westin passenger tiers"
+      },
       "blockers": [
-        "Caneel Bay to/from Westin Resort 2+ passenger values conflict in the published table and remain fail-closed pending authoritative clarification.",
-        "Route-qualified identities such as Centerline versus North Shore must remain distinct through canonical reconciliation.",
-        "Unreviewed spelling/name aliases must not resolve automatically."
+        "Neptune Landing/Windmill traveler-facing identity still requires an explicit reviewed canonical alias before canonical endpoint coverage can be complete.",
+        "Published STJ additional-charge provisions (including luggage/group-related rules) remain captured but not fully activated and tested in the governed quote schema."
       ]
     },
     "stx": {
