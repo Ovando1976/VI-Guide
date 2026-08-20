@@ -3,6 +3,7 @@ import {
   assertMobilityPilotActive,
   MobilityPilotUnavailableError,
 } from "@/lib/mobility-pilot-readiness";
+import { resolveMobilityEndpoint } from "@/lib/mobility-hubs";
 import {
   OfficialTaxiRateUnavailableError,
   quoteOfficialTaxiFare,
@@ -157,14 +158,15 @@ export async function POST(request: NextRequest) {
     const geojson = (await estatesResponse.json()) as EstateCollection;
     const estates = normalizeEstateCollection(geojson);
 
-    const origin = estates.find((e) => e.geoid === body.originEstateGeoid);
-    const destination = estates.find(
-      (e) => e.geoid === body.destinationEstateGeoid,
+    const origin = resolveMobilityEndpoint(body.originEstateGeoid, estates);
+    const destination = resolveMobilityEndpoint(
+      body.destinationEstateGeoid,
+      estates,
     );
 
     if (!origin || !destination) {
       return NextResponse.json(
-        { error: "Invalid estate selection." },
+        { error: "Invalid mobility endpoint selection." },
         { status: 400 },
       );
     }
