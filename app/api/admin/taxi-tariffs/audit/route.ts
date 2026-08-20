@@ -9,6 +9,8 @@ import {
   type TariffRouteReviewDecision,
 } from "@/lib/taxi-tariff-route-audit";
 
+export const dynamic = "force-dynamic";
+
 const AUDITED_ISLANDS = new Set(["stt", "stj", "stx"]);
 const REVIEW_DECISIONS = new Set<TariffRouteReviewDecision>([
   "verified",
