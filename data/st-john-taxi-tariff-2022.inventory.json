@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "status": "inventory_review",
+  "activationStatus": "unverified",
+  "island": "stj",
+  "title": "St. John taxi tariff inventory — October 24, 2022 schedule",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "currency": "USD",
+  "sourceUrl": "https://www.vinow.com/stjohn/getting_around_stj/taxis-rates/",
+  "sourcePublisher": "VInow tariff reproduction",
+  "sourceRetrievedAt": "2026-08-20",
+  "sourceNotes": "VInow states that new St. John taxi rates went into effect October 24, 2022. This file is an inventory baseline only; it must not be activated until endpoint identity, route variants, passenger tiers, and provisions pass the territory completion gate.",
+  "pricingModel": {
+    "onePassenger": "published total fare for one passenger",
+    "twoOrMore": "published per-person fare for passengers in the same group"
+  },
+  "hubs": [
+    {
+      "name": "Cruz Bay",
+      "routes": [
+        ["Annaberg",20,14],["Bethany",8,7],["Bordeaux Mountain",26,17],["Beth Cruz/Upper Deck",9,8],["Calabash Boom",30,21],["Caneel Bay",9,8],["Catherineberg",14,11],["Chateau de Bordeaux",14,11],["Chocolate Hole",11,9],["Cinnamon Bay",14,11],["Concordia",30,21],["Contant",9,7],["Coral Bay",25,15],["Dennis Bay",12,9],["Desoto Bock House (East End)",38,23],["Estate Lindholm",8,6],["Fish Bay",20,12],["Francis Bay",20,14],["Frank Bay",8,6],["Gallows Point",8,6],["Gift Hill",12,9],["George Simmonds Terrace",12,9],["Goat Path/Maho Bay Beach",17,12],["Great Cruz Bay",9,8],["Grunwald",9,8],["Haulover",32,22],["Hawksnest",9,8],["Hurricane Hole",29,20],["John's Head",14,11],["Jumbie Beach",12,9],["Lameshur",38,25],["Leinster Bay",20,14],["Little Maho Bay Campground",20,14],["Mandahl",30,21],["Ms. Lucy's",30,21],["Oppenheimer",9,8],["Pine Peace",8,6],["Privateer Bay",45,30],["Rendezous Bay (Klein Bay)",15,10],["Reef Bay Trail",14,11],["Salt Pond",30,21],["Sunset Ridge",12,9],["Susannaberg (Clinic/Laundry)",12,9],["Trunk Bay",12,9],["Vie's (East End)",38,25],["Westin Resort",9,7],["Zootenvaal",27,18]
+      ]
+    },
+    {
+      "name": "Coral Bay",
+      "routes": [
+        ["Annaberg",12,9],["Blomingdale (Freeman Ground)",9,8],["Calabash Boom",9,8],["Caneel Bay (via Northshore)",20,14],["Cinnamon Bay",13,10],["Desoto Bock House (East End)",18,9],["George Simmonds Terrace",14,11],["Hawksnest",20,14],["Hurricane Hole",11,8],["John's Folly School",9,8],["Lamishur",15,10],["Maho Bay Beach",12,9],["Mandahl",11,9],["Oppenheimer",20,14],["Salt Pond",11,9],["Public Works",15,11],["Susannaberg (Clinic/Laundry)",15,11],["Trunk Bay (via Centerline)",29,20],["Trunk Bay (via North Shore)",14,11],["Vie's (East End)",12,11],["Zootenvaal",9,8]
+      ]
+    },
+    {
+      "name": "Gallows Point",
+      "routes": [
+        ["Annaberg",20,14],["Caneel Bay",10,8],["Cinnamon Bay",15,12],["Cruz Bay",8,6],["Coral Bay",25,16],["Maho Bay Beach/Goat Path",17,13],["Francis Bay",20,15],["Golf Course/Pastory",11,8],["Hawksnest Beach",10,8],["Jumbie Bay",13,10],["Maho Bay Campground",20,14],["Oppenheimer",10,8],["Susannaberg (Clinic/Laundry)",12,9],["Trunk Bay",13,10],["Westin",11,8]
+      ]
+    },
+    {
+      "name": "Caneel Bay",
+      "routes": [
+        ["Annaberg",18,12],["Bordeaux Mountain",27,15],["Chateau de Bordeaux",20,14],["Cinnamon Bay",12,9],["Coral Bay (Via Centerline)",27,15],["Coral Bay (Via Northshore)",20,14],["Francis Bay",18,12],["Gallows Point",10,8],["Hawksnest Bay",8,6],["Lamishur (via Northshore)",35,20],["Maho Bay Beach/Goat Path",15,11],["Pastory/Course",12,9],["Maho Bay Campground",18,13],["Salt Pond (via Northshore)",30,18],["Susannaberg (Clinic/Laundry)",16,13],["Trunk Bay",11,8],["Westin",12,9]
+      ]
+    },
+    {
+      "name": "Westin Resort",
+      "routes": [
+        ["Annaberg",23,17],["Asolare/Estate Lindholm",11,8],["Calabash Boom",35,21],["Caneel Bay",12,10],["Chateau de Bordeaux",18,15],["Catherineberg",17,14],["Chocolate Hole",8,6],["Cinnamon Bay",17,14],["Coral Bay",25,17],["Cruz Bay",9,7],["Dennis Bay",15,12],["East End",41,27],["Fish Bay",15,10],["Francis Bay",23,17],["Gallows Point",11,8],["Gift Hill",11,8],["Maho Bay Beach/Goat Path",18,15],["Golf Course/Pastory",11,8],["Hawknest Bay",12,10],["Maho Bay Campground",23,17],["Ms. Lucy's",38,23],["Oppenheimer",12,10],["Salt Pond",40,26],["Susannaberg (Clinic/Laundry)",15,12],["Trunk Bay",15,12]
+      ]
+    },
+    {
+      "name": "Neptune Landing/Windmill",
+      "routes": [
+        ["Annaberg",20,17],["Caneel Bay",16,13],["Cinnamon Bay",18,15],["Coral Bay",18,11],["Cruz Bay",12,9],["Francis Bay",20,17],["Gallows Point",12,9],["Goat Path/Maho Bay Beach",20,17],["Hawksnest Beach",16,13],["Jumbie Beach",17,14],["Maho Bay Campground",27,20],["Oppenheimer",16,13],["Trunk Bay",17,14],["Westin",15,12]
+      ]
+    }
+  ],
+  "reviewFlags": [
+    "Preserve route qualifiers such as via Centerline and via North Shore as distinct tariff identities.",
+    "Do not normalize source spellings such as Lameshur/Lamishur, Rendezous, Blomingdale, Hawknest, or Jumbie Bay into broader aliases without reviewed endpoint evidence.",
+    "The source renders Coral Bay to Trunk Bay (via North Shore) one-passenger value as 14:00; inventory records 14.00 as an apparent formatting normalization that requires review before activation.",
+    "This inventory does not yet certify additional taxi charges, luggage, sightseeing, private taxi, waiting, night, or dispatch provisions."
+  ]
+}
