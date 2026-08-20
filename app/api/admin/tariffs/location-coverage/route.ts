@@ -42,15 +42,20 @@ function records(value: unknown): UnknownRecord[] {
     if (Array.isArray(object[key])) return records(object[key]);
   }
 
-  // Some authoritative place inputs (notably territory-coordinates.json) are
-  // keyed object maps instead of arrays. Preserve the key as identity/island
-  // evidence so those places participate in coverage rather than disappearing.
   return Object.entries(object)
     .filter(
       (entry): entry is [string, UnknownRecord] =>
         Boolean(entry[1]) && typeof entry[1] === "object" && !Array.isArray(entry[1]),
     )
     .map(([key, record]) => ({ ...record, __sourceKey: key }));
+}
+
+function flattenedRecord(record: UnknownRecord): UnknownRecord {
+  const properties = record.properties;
+  if (!properties || typeof properties !== "object" || Array.isArray(properties)) {
+    return record;
+  }
+  return { ...(properties as UnknownRecord), ...record };
 }
 
 function text(record: UnknownRecord, keys: string[]): string | undefined {
@@ -74,18 +79,22 @@ function islandCode(record: UnknownRecord): Island | undefined {
 }
 
 function toPlace(
-  record: UnknownRecord,
+  rawRecord: UnknownRecord,
   source: string,
   index: number,
 ): TariffResolvablePlace | undefined {
+  const record = flattenedRecord(rawRecord);
   const island = islandCode(record);
   const name = text(record, [
     "name",
+    "NAME",
     "displayName",
     "title",
     "label",
     "fullName",
+    "BASENAME",
     "estate",
+    "ESTATE",
     "matchedName",
   ]);
   if (!island || !name) return undefined;
