@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "island": "stx",
+  "tariffEffectiveDate": "2022-10-24",
+  "status": "required_before_certification",
+  "purpose": "Prevent territory coverage from becoming green by accepting fuzzy identities, historical fares, inferred reverse fares, or geographic interpolation that is not explicitly governed.",
+  "cases": [
+    {
+      "id": "unlisted-destination-no-interpolation",
+      "input": {"origin":"Airport","destination":"UNLISTED_STX_DESTINATION","passengers":2},
+      "expected": "OFFICIAL_TAXI_RATE_UNAVAILABLE",
+      "reason": "The published unlisted-destination provision is not implemented until deterministic governed road-order geography exists."
+    },
+    {
+      "id": "unknown-origin-no-nearest-hub",
+      "input": {"origin":"UNKNOWN_STX_ORIGIN","destination":"Christiansted","passengers":2},
+      "expected": "OFFICIAL_TAXI_RATE_UNAVAILABLE",
+      "reason": "Do not substitute a nearby published hub."
+    },
+    {
+      "id": "fuzzy-carambola-alias-rejected",
+      "input": {"origin":"Carambolla","destination":"Frederiksted","passengers":2},
+      "expected": "OFFICIAL_TAXI_RATE_UNAVAILABLE",
+      "reason": "Only the explicit source-heading normalization CAROMBOLA -> Carambola is reviewed; general spelling fuzziness is not."
+    },
+    {
+      "id": "historical-fare-not-governing",
+      "input": {"origin":"Frederiksted","destination":"Christiansted","passengers":2,"candidateFare":20},
+      "expected": "REJECT_NON_GOVERNING_FARE",
+      "governingFare":36,
+      "reason": "Historical web reproductions must not override the 2022-10-24 schedule."
+    },
+    {
+      "id": "stx-two-passenger-is-group-total",
+      "input": {"origin":"Airport","destination":"Christiansted","passengers":2},
+      "expectedFare":24,
+      "reason": "STX 1-or-2 pricing is one group total, not the per-person STT/STJ model."
+    },
+    {
+      "id": "stx-three-passenger-is-per-person",
+      "input": {"origin":"Airport","destination":"Christiansted","passengers":3},
+      "expectedFare":42,
+      "calculation": "14 * 3",
+      "reason": "STX 3+ column is per person."
+    },
+    {
+      "id": "unsupported-reverse-no-inference",
+      "input": {"origin":"Annaly","destination":"Airport","passengers":2},
+      "expected": "OFFICIAL_TAXI_RATE_UNAVAILABLE_UNLESS_TO_FROM_SEMANTICS_ARE_EXPLICITLY_APPLIED_BY_GOVERNED_MATCHER",
+      "reason": "A destination row must not create a reverse quote merely through generic rule reversal."
+    }
+  ],
+  "passRule": "All cases must pass against the governed matcher before negativeFailClosedTestsComplete may become true."
+}
