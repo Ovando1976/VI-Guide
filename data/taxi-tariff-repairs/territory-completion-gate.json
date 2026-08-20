@@ -41,12 +41,17 @@
       "directionMatrixComplete": false,
       "passengerTierMatrixComplete": true,
       "luggageAndGroupRulesComplete": true,
-      "negativeFailClosedTestsComplete": false,
+      "negativeFailClosedTestsComplete": true,
+      "verificationEvidence": {
+        "vercelDeploymentId": "dpl_83Wjb5WKpazbm5qEB2bGyK2bk9Aa",
+        "commit": "64b3adba41378e6593af3a36b2fa45ca78627dbb",
+        "state": "READY",
+        "prebuildGate": "scripts/test-stx-governed-fare-engine.ts"
+      },
       "blockers": [
         "Canonical endpoint review is still required across the full row inventory; CAROMBOLA may normalize only to the specifically reviewed Carambola identity, not through general fuzzy matching.",
         "Direct/reverse comparison across all published relationships must complete with explicit conflict classification.",
-        "The published unlisted-destination provision remains disabled until governed road-order geography and deterministic tests exist.",
-        "Negative tests must prove historical tariff pages and unpublished/inferred relationships cannot enter governed matching."
+        "The published unlisted-destination provision remains disabled until governed road-order geography and deterministic tests exist."
       ]
     }
   },
