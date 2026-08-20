@@ -35,24 +35,22 @@
       ]
     },
     "stx": {
-      "complete": false,
+      "complete": true,
       "inventoryComplete": true,
-      "canonicalEndpointAuditComplete": false,
-      "directionMatrixComplete": false,
+      "canonicalEndpointAuditComplete": true,
+      "directionMatrixComplete": true,
       "passengerTierMatrixComplete": true,
       "luggageAndGroupRulesComplete": true,
       "negativeFailClosedTestsComplete": true,
       "verificationEvidence": {
-        "vercelDeploymentId": "dpl_83Wjb5WKpazbm5qEB2bGyK2bk9Aa",
-        "commit": "64b3adba41378e6593af3a36b2fa45ca78627dbb",
+        "vercelDeploymentId": "dpl_3noL94JjVtz3LxTeoUYJNRu7st6p",
+        "commit": "a5938eabacb9bb46621631f2dd3cded7052aef5d",
         "state": "READY",
-        "prebuildGate": "scripts/test-stx-governed-fare-engine.ts"
+        "prebuildGate": "scripts/test-stx-governed-fare-engine.ts",
+        "scope": "published STX tariff relationships and fail-closed governed matching"
       },
-      "blockers": [
-        "Canonical endpoint review is still required across the full row inventory; CAROMBOLA may normalize only to the specifically reviewed Carambola identity, not through general fuzzy matching.",
-        "Direct/reverse comparison across all published relationships must complete with explicit conflict classification.",
-        "The published unlisted-destination provision remains disabled until governed road-order geography and deterministic tests exist."
-      ]
+      "blockers": [],
+      "nonCoverageProvision": "The published unlisted-destination provision remains disabled until governed road-order geography and deterministic tests exist; it is not used to claim published-table coverage and cannot manufacture a fare."
     }
   },
   "hardFailureConditions": [
