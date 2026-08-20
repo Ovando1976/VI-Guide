@@ -16,5 +16,14 @@
     "method": "reviewed_alias",
     "reviewReference": "2022-10-24 tariff review",
     "notes": "Town wording is a traveler-facing alias; keep tariff identity canonical."
+  },
+  {
+    "placeId": "stj-neptune-landing-windmill-bar",
+    "island": "stj",
+    "placeName": "Neptune Landing / Windmill Bar",
+    "tariffEndpointName": "Neptune Landing/Windmill",
+    "method": "reviewed_alias",
+    "reviewReference": "2022-10-24 St. John published tariff review",
+    "notes": "Traveler-facing Windmill Bar / Neptune Landing wording maps only to the published Neptune Landing/Windmill tariff hub; no fuzzy expansion to other Windmill or Neptune names is permitted."
   }
 ]
