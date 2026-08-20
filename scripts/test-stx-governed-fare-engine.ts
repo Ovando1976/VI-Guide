@@ -16,7 +16,7 @@ const airportToChristiansted: OfficialTaxiRateRule = {
   onePassengerFare: 24,
   passengerFareTiers: [
     { minPassengers: 1, maxPassengers: 2, basis: "party", fare: 24 },
-    { minPassengers: 3, basis: "person", fare: 14 },
+    { minPassengers: 3, basis: "per_person", fare: 14 },
   ],
   luggageFarePerPiece: 3,
 };
@@ -28,7 +28,7 @@ const frederikstedToCarambola: OfficialTaxiRateRule = {
   onePassengerFare: 41,
   passengerFareTiers: [
     { minPassengers: 1, maxPassengers: 2, basis: "party", fare: 41 },
-    { minPassengers: 3, basis: "person", fare: 17 },
+    { minPassengers: 3, basis: "per_person", fare: 17 },
   ],
   luggageFarePerPiece: 3,
 };
