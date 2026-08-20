@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "island": "stx",
+  "effectiveDate": "2022-10-24",
+  "status": "reconciliation_input",
+  "activationStatus": "unverified",
+  "sourceUrl": "https://www.vinow.com/stcroix/getting_around_stx/taxis-rates/",
+  "pricingModel": {"oneOrTwo":"group_total","threePlusEach":"per_person"},
+  "tables": {
+    "Airport": [
+      ["Annaly",30,15],["Belvedere",30,15],["Buccaneer",30,15],["Canaan",27,14],["Canaan Ridge",33,17],["Cane Bay Plantation",30,15],["Cane Garden",23,12],["Carambola",30,15],["Castle Nugent",27,14],["Chenay Bay",32,17],["Christiansted",24,14],["Coakley Bay",33,17],["Constitution Hill",23,12],["Cotton Grove",36,17],["Cotton Valley",36,17],["Cramer's Park",36,17],["Divi Carina Bay",36,18],["Farsham",30,15],["Frederiksted",18,9],["Gentle Winds",26,14],["Grapetree Bay",36,17],["Great Pond",30,15],["Green Cay",33,17],["Ham's Bay/Clover Crest",30,15],["Ham's Bay/Clover Guard",30,15],["Lime Tree Bay",18,9],["Humbug",23,12],["King Frederik Hotel",18,9],["La Grange",23,12],["La Grange Hill",27,14],["Longford",24,12],["Lowry Hill",27,14],["Mt. Washington (East End)",27,14],["Mt. Washington (West)",30,15],["Oxford",30,15],["Petronella",27,14],["Queen's Quarter",23,12],["Sally's Fancy",27,14],["Sandy Point",23,12],["Sandy Point (Nature Conserve)",27,14],["Salt River",26,14],["Seven Hills",30,17],["Shoy's Estate",30,15],["Sion Valley",23,12],["Solitude",32,17],["Sprat Hall",26,14],["St. Croix by The Sea",23,12],["Sugar Hill Estate",24,12],["Sunny Isle",18,9],["Tamarind Reef",32,17],["Tide Village",26,14],["Work and Rest",23,12]
+    ],
+    "Christiansted": [
+      ["Annaly",39,20],["Anna's Hope",12,6],["Bethlehem (Upper/Lower)",23,12],["Buccaneer Hotel",14,8],["Boetzberg",15,8],["Cane Bay",36,17],["Carambola",45,18],["Castle Coakley/Sion Farm",18,9],["Castle Nugent",23,12],["Catherine's Rest",18,9],["Club St. Croix",12,6],["Coakley Bay",23,12],["Constitution Hill",15,8],["Cormorant",15,8],["Cotton Grove",26,14],["Cotton Valley",26,14],["Cramer's Park",27,14],["Divi Carina Bay",27,14],["Farsham",23,12],["Frederiksted",36,17],["Gallows' Bay",9,5],["Gentle Wind",33,17],["Glynn",18,9],["Golden Rock Shopping Center",12,6],["Grange",12,6],["Grapetree Bay",27,14],["Great Pond",23,12],["Green Cay",18,9],["Grove Place",30,15],["Lime Tree Bay",18,9],["Hibiscus Beach Hotel",15,8],["Humbug",18,9],["Kingshill",21,11],["La Grande Princesse",15,8],["La Reine",21,11],["Longford",23,12],["Lowry Hill",17,9],["Mon Bijou",21,11],["Morning Star",18,9],["Mount Washington (East)",23,12],["Pearl",18,9],["Peter's Rest",17,9],["Petronella",23,12],["Rust-Up-Twist",36,18],["Sally's Fancy",23,12],["Salt River",33,17],["Seven Hills",24,12],["Shoy's Estate",15,8],["Solitude",23,12],["Southgate/Tipperary",18,9],["Strawberry/Barren Spot",18,9],["Sunny Isle/Island Center",18,9],["Tamarind Reef",18,9],["Tide Village",12,6],["Upper and Lower Love",27,14],["William's Delight",30,15],["Welcome Estate",9,5]
+    ],
+    "Frederiksted": [
+      ["Annaly",26,14],["Butler's Bay",17,9],["Carambola",41,17],["Christiansted",36,17],["Diamond/St. George's",15,8],["Davis Bay",41,17],["Divi Carina Bay",54,27],["Grove Place Village",23,12],["Grove Place Hills",30,14],["Hannah's Rest",12,6],["Lime Tree Bay",30,15],["Jolly Hill",17,9],["La Grange",12,6],["Little La Grange",15,8],["Manning's Bay",18,9],["Mon Bijou",30,15],["Mt. Pleasant",23,12],["Mt. Washington (Frederiksted)",23,12],["Seven Hills",44,18],["Sion Farm",30,15],["Sprat Hall",15,8],["St Croix Renaissance Park",26,14],["Sunny Isle",30,15],["Sunset Beach",9,5],["Whim Plantation/Good Hope",14,8]
+    ],
+    "Carambola": [
+      ["Buccaneer",48,24],["Chenay Bay",48,23],["Coakley Bay",48,23],["Divi Carina Bay",54,23],["Grapetree Bay",54,23],["Sprat Hall",41,18],["Reef Condominiums",51,23],["Frederiksted",41,17],["Tamarind Reef",48,23]
+    ]
+  },
+  "sourceHeadingNormalization": {"CAROMBOLA":"Carambola"},
+  "failClosed": [
+    "Do not infer reverse fares unless the published to/from table or a matching published counterpart supports the same passenger tiers.",
+    "Do not implement the unlisted-destination provision as distance interpolation.",
+    "Do not broaden spelling normalization beyond explicitly reviewed source-heading corrections."
+  ]
+}
