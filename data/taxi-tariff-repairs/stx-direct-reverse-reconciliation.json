@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "island": "stx",
+  "effectiveDate": "2022-10-24",
+  "status": "partial_pass",
+  "source": "data/st-croix-taxi-tariff-2022.rows.json",
+  "method": "Compare every relationship for which both endpoint names are published hub tables. Treat each published TO/FROM table as bidirectional for that hub relationship, but require matching tiers where a second hub table independently republishes the counterpart.",
+  "verifiedHubPairs": [
+    {"a":"Airport","b":"Christiansted","oneOrTwo":24,"threePlusEach":14,"counterpart":"Christiansted table does not republish Airport; Airport TO/FROM controls this pair."},
+    {"a":"Airport","b":"Frederiksted","oneOrTwo":18,"threePlusEach":9,"counterpart":"Frederiksted table does not republish Airport; Airport TO/FROM controls this pair."},
+    {"a":"Airport","b":"Carambola","oneOrTwo":30,"threePlusEach":15,"counterpart":"Carambola table does not republish Airport; Airport TO/FROM controls this pair."},
+    {"a":"Christiansted","b":"Frederiksted","oneOrTwo":36,"threePlusEach":17,"counterpart":"Exact match in Christiansted and Frederiksted TO/FROM tables."},
+    {"a":"Christiansted","b":"Carambola","oneOrTwo":45,"threePlusEach":18,"counterpart":"Carambola table does not republish Christiansted; Christiansted TO/FROM controls this pair."},
+    {"a":"Frederiksted","b":"Carambola","oneOrTwo":41,"threePlusEach":17,"counterpart":"Exact match in Frederiksted and Carambola TO/FROM tables."}
+  ],
+  "hubPairConflicts": [],
+  "verifiedDuplicateCounterparts": [
+    {"pair":"Christiansted <-> Frederiksted","result":"exact_match"},
+    {"pair":"Frederiksted <-> Carambola","result":"exact_match"}
+  ],
+  "remainingBlockers": [
+    "Canonical endpoint review is still required for the non-hub destination rows before those rows may activate.",
+    "Negative fail-closed tests are still required for ambiguous/unreviewed aliases and unpublished relationships.",
+    "The published unlisted-destination provision remains non-automated until governed road-order geography and deterministic tests exist."
+  ],
+  "certificationImpact": {
+    "hubDirectionMatrix": "pass",
+    "fullIslandDirectionMatrix": "blocked",
+    "islandComplete": false
+  }
+}
