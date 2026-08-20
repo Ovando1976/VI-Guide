@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "tariffEffectiveDate": "2022-10-24",
+  "status": "blocked",
+  "complete": false,
+  "principle": "Financial coverage is complete only when every published relationship in scope is evidence-backed, canonicalized, verified in both supported directions, verified for every published passenger tier, and unpublished or ambiguous requests fail closed.",
+  "requiredIslands": ["stt", "stj", "stx"],
+  "islands": {
+    "stt": {
+      "complete": false,
+      "inventoryComplete": false,
+      "canonicalEndpointAuditComplete": false,
+      "directionMatrixComplete": false,
+      "passengerTierMatrixComplete": false,
+      "luggageAndGroupRulesComplete": false,
+      "negativeFailClosedTestsComplete": false,
+      "blockers": ["Full published STT schedule has not yet been reconciled against governed data."]
+    },
+    "stj": {
+      "complete": false,
+      "inventoryComplete": false,
+      "canonicalEndpointAuditComplete": false,
+      "directionMatrixComplete": false,
+      "passengerTierMatrixComplete": false,
+      "luggageAndGroupRulesComplete": false,
+      "negativeFailClosedTestsComplete": false,
+      "blockers": ["Full published STJ schedule has not yet been inventoried and reconciled against governed data."]
+    },
+    "stx": {
+      "complete": false,
+      "inventoryComplete": false,
+      "canonicalEndpointAuditComplete": false,
+      "directionMatrixComplete": false,
+      "passengerTierMatrixComplete": false,
+      "luggageAndGroupRulesComplete": false,
+      "negativeFailClosedTestsComplete": false,
+      "blockers": ["Full published STX schedule has not yet been inventoried and reconciled against governed data."]
+    }
+  },
+  "hardFailureConditions": [
+    "missing_published_relationship",
+    "unreviewed_alias",
+    "ambiguous_endpoint",
+    "direction_mismatch",
+    "passenger_tier_mismatch",
+    "luggage_or_group_rule_mismatch",
+    "unexpected_quote_for_unpublished_route",
+    "tariff_version_or_effective_date_mismatch"
+  ],
+  "completionRule": "complete may become true only when all required islands are complete and every hard failure count is zero. No inferred fare may be used to satisfy coverage."
+}
