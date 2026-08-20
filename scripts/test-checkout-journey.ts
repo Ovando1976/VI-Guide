@@ -37,6 +37,6 @@ assert.match(checkoutForm, /stripe\.confirmPayment/);
 assert.match(checkoutForm, /returnUrl = new URL\("\/trips"/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("booking", bookingId\)/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("payment", "return"\)/);
-assert.match(checkoutForm, /Pay and track ride/);
+assert.match(checkoutForm, /Pay & start driver matching/);
 
 console.log("USVI Explorer checkout journey boundary contracts passed.");
