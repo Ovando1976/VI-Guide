@@ -1,0 +1,3568 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "activationStatus": "unverified",
+  "title": "St. Thomas Taxi Association — current published rates (2022 tariff, displayed for 2026)",
+  "version": "vicc-2022-10-24-stta-2026-web-v1",
+  "island": "stt",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "sourceUrl": "https://www.saintthomastaxi.com/rates.html",
+  "sourcePublisher": "St. Thomas Taxi Association",
+  "sourceRetrievedAt": "2026-08-14",
+  "currency": "USD",
+  "reviewReference": "STTA-2026-RATES-WEB-REVIEW-PENDING",
+  "governanceNotes": [
+    "Draft only. Do not mark verified or active until an administrator completes source-review attestation.",
+    "The St. Thomas Taxi Association labels its page “2026 Taxi Rates.” VIslandGuide and VInow identify the underlying Commission tariff as effective October 24, 2022 and still active in 2026.",
+    "The association page and VInow agree on the sampled primary routes but conflict on Red Hook to Dorothea for 2+ passengers ($15 on the association page versus $16 on VInow). That rule remains at the association source value and is flagged for Commission confirmation.",
+    "The current fare-rule schema can enforce the published $3 standard luggage charge. Night, waiting, round-trip, radio/phone dispatch, oversized luggage, hourly, sightseeing, kennel, and exclusive-taxi provisions require separate quoted-fare fields before they can be computed safely."
+  ],
+  "normalizationReview": [
+    {
+      "source": "$18,00 for Coki Point to Town",
+      "normalized": "18.00",
+      "reason": "Comma appears to be a decimal typo on the source page."
+    },
+    {
+      "source": "Dorotdea Estate / Upper / Lower",
+      "normalized": "Added Dorothea aliases",
+      "reason": "Probable source spelling error; requires human confirmation."
+    },
+    {
+      "source": "Estate tdomas New Qtr",
+      "normalized": "Added Estate Thomas New Quarter alias",
+      "reason": "Probable source spelling error; requires human confirmation."
+    },
+    {
+      "source": "Redhook",
+      "normalized": "Added Red Hook alias",
+      "reason": "Spacing normalization."
+    },
+    {
+      "source": "Airport Terminal",
+      "normalized": "Added Lindbergh Bay alias",
+      "reason": "Application endpoint mapping for Cyril E. King Airport area; requires operational confirmation."
+    },
+    {
+      "source": "Town",
+      "normalized": "Added Charlotte Amalie alias",
+      "reason": "Application endpoint mapping; requires operational confirmation."
+    }
+  ],
+  "coverage": {
+    "locationRows": 63,
+    "miscellaneousRows": 50,
+    "hotelRows": 28,
+    "generatedRules": 231
+  },
+  "rules": [
+    {
+      "id": "to-town-agnes-fancy",
+      "originNames": [
+        "Agnes Fancy"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Agnes Fancy to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-agnes-fancy",
+      "originNames": [
+        "Agnes Fancy"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Agnes Fancy to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-airport-terminal",
+      "originNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Airport Terminal to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-black-point",
+      "originNames": [
+        "Black Point"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Black Point to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-black-point",
+      "originNames": [
+        "Black Point"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Black Point to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-bonne-esperance",
+      "originNames": [
+        "Bonne Esperance"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Bonne Esperance to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-bonne-esperance",
+      "originNames": [
+        "Bonne Esperance"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Bonne Esperance to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-bolongo",
+      "originNames": [
+        "Bolongo"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Bolongo to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-bolongo",
+      "originNames": [
+        "Bolongo"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Bolongo to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-bordeaux",
+      "originNames": [
+        "Bordeaux"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Bordeaux to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-bordeaux",
+      "originNames": [
+        "Bordeaux"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Bordeaux to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-botany-bay",
+      "originNames": [
+        "Botany Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 25,
+      "perPersonFare": 16,
+      "notes": "St. Thomas Taxi Association 2026 table: Botany Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-botany-bay",
+      "originNames": [
+        "Botany Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 19,
+      "perPersonFare": 16,
+      "notes": "St. Thomas Taxi Association 2026 table: Botany Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-bournefield",
+      "originNames": [
+        "Bournefield"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Bournefield to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-bournefield",
+      "originNames": [
+        "Bournefield"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: Bournefield to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-bovoni",
+      "originNames": [
+        "Bovoni"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Bovoni to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-bovoni",
+      "originNames": [
+        "Bovoni"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Bovoni to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-brookman-estate",
+      "originNames": [
+        "Brookman Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Brookman Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-brookman-estate",
+      "originNames": [
+        "Brookman Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Brookman Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-canaan-estate",
+      "originNames": [
+        "Canaan Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Canaan Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-canaan-estate",
+      "originNames": [
+        "Canaan Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Canaan Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-caret-bay-estate",
+      "originNames": [
+        "Caret Bay Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-caret-bay-estate",
+      "originNames": [
+        "Caret Bay Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-caret-bay-upper",
+      "originNames": [
+        "Caret Bay Upper"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Upper to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-caret-bay-upper",
+      "originNames": [
+        "Caret Bay Upper"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Upper to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-caret-bay-lower",
+      "originNames": [
+        "Caret Bay Lower"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Lower to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-caret-bay-lower",
+      "originNames": [
+        "Caret Bay Lower"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Caret Bay Lower to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-cassi-hill",
+      "originNames": [
+        "Cassi Hill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Cassi Hill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-cassi-hill",
+      "originNames": [
+        "Cassi Hill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Cassi Hill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-coki-point",
+      "originNames": [
+        "Coki Point"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Coki Point to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-coki-point",
+      "originNames": [
+        "Coki Point"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Coki Point to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-contant-soto-town",
+      "originNames": [
+        "Contant Soto Town"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Contant Soto Town to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-contant-soto-town",
+      "originNames": [
+        "Contant Soto Town"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Contant Soto Town to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-contant-development",
+      "originNames": [
+        "Contant Development"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Contant Development to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-contant-development",
+      "originNames": [
+        "Contant Development"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Contant Development to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-crown-mountain",
+      "originNames": [
+        "Crown Mountain"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Crown Mountain to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-crown-mountain",
+      "originNames": [
+        "Crown Mountain"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Crown Mountain to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-crown-bay",
+      "originNames": [
+        "Crown Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: Crown Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-crown-bay",
+      "originNames": [
+        "Crown Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: Crown Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-dorotdea-estate",
+      "originNames": [
+        "Dorotdea Estate",
+        "Dorothea Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-dorotdea-estate",
+      "originNames": [
+        "Dorotdea Estate",
+        "Dorothea Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-dorotdea-upper",
+      "originNames": [
+        "Dorotdea Upper",
+        "Dorothea Upper"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Upper to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-dorotdea-upper",
+      "originNames": [
+        "Dorotdea Upper",
+        "Dorothea Upper"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Upper to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-dorotdea-lower",
+      "originNames": [
+        "Dorotdea Lower",
+        "Dorothea Lower"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 25,
+      "perPersonFare": 20,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Lower to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-dorotdea-lower",
+      "originNames": [
+        "Dorotdea Lower",
+        "Dorothea Lower"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 25,
+      "perPersonFare": 20,
+      "notes": "St. Thomas Taxi Association 2026 table: Dorotdea Lower to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-drake-s-seat",
+      "originNames": [
+        "Drake's Seat"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Drake's Seat to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-drake-s-seat",
+      "originNames": [
+        "Drake's Seat"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Drake's Seat to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-estate-tdomas-new-qtr",
+      "originNames": [
+        "Estate tdomas New Qtr",
+        "Estate Thomas New Quarter"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Estate tdomas New Qtr to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-estate-tdomas-new-qtr",
+      "originNames": [
+        "Estate tdomas New Qtr",
+        "Estate Thomas New Quarter"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Estate tdomas New Qtr to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-elizabeth-estate",
+      "originNames": [
+        "Elizabeth Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Elizabeth Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-elizabeth-estate",
+      "originNames": [
+        "Elizabeth Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Elizabeth Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-flag-hill",
+      "originNames": [
+        "Flag Hill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Flag Hill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-flag-hill",
+      "originNames": [
+        "Flag Hill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Flag Hill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-fort-mylner",
+      "originNames": [
+        "Fort Mylner"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Fort Mylner to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-fort-mylner",
+      "originNames": [
+        "Fort Mylner"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Fort Mylner to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-fortuna-mill",
+      "originNames": [
+        "Fortuna Mill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Fortuna Mill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-fortuna-mill",
+      "originNames": [
+        "Fortuna Mill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Fortuna Mill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-fortuna-point",
+      "originNames": [
+        "Fortuna Point"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Fortuna Point to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-fortuna-point",
+      "originNames": [
+        "Fortuna Point"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Fortuna Point to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-french-town",
+      "originNames": [
+        "French Town"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: French Town to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-french-town",
+      "originNames": [
+        "French Town"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: French Town to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-frydenhoj",
+      "originNames": [
+        "Frydenhoj"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Frydenhoj to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-frydenhoj",
+      "originNames": [
+        "Frydenhoj"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Frydenhoj to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-frenchman-bay",
+      "originNames": [
+        "Frenchman Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Frenchman Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-frenchman-bay",
+      "originNames": [
+        "Frenchman Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Frenchman Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-havensight-crossroad",
+      "originNames": [
+        "Havensight (Crossroad)",
+        "Havensight Crossroad",
+        "Havensight"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Havensight (Crossroad) to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-havensight-crossroad",
+      "originNames": [
+        "Havensight (Crossroad)",
+        "Havensight Crossroad",
+        "Havensight"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Havensight (Crossroad) to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-hawk-hill",
+      "originNames": [
+        "Hawk Hill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Hawk Hill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-hawk-hill",
+      "originNames": [
+        "Hawk Hill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Hawk Hill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-hull-bay",
+      "originNames": [
+        "Hull Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Hull Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-hull-bay",
+      "originNames": [
+        "Hull Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Hull Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-louisenhoj-castle",
+      "originNames": [
+        "Louisenhoj Castle"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Louisenhoj Castle to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-louisenhoj-castle",
+      "originNames": [
+        "Louisenhoj Castle"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Louisenhoj Castle to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-lovenlund",
+      "originNames": [
+        "Lovenlund"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Lovenlund to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-lovenlund",
+      "originNames": [
+        "Lovenlund"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Lovenlund to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-lower-john-dunkoe",
+      "originNames": [
+        "Lower John Dunkoe"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Lower John Dunkoe to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-lower-john-dunkoe",
+      "originNames": [
+        "Lower John Dunkoe"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Lower John Dunkoe to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-magens-bay",
+      "originNames": [
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Magens Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-magens-bay",
+      "originNames": [
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Magens Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-mahogany-run",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Mahogany Run to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-mahogany-run",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Mahogany Run to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-mandahl-bay",
+      "originNames": [
+        "Mandahl Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Mandahl Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-mandahl-bay",
+      "originNames": [
+        "Mandahl Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Mandahl Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-market-square-east",
+      "originNames": [
+        "Market Square East"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Market Square East to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-market-square-east",
+      "originNames": [
+        "Market Square East"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Market Square East to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-mountain-top",
+      "originNames": [
+        "Mountain Top"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Mountain Top to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-mountain-top",
+      "originNames": [
+        "Mountain Top"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Mountain Top to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-nadir-hill",
+      "originNames": [
+        "Nadir Hill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Nadir Hill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-nadir-hill",
+      "originNames": [
+        "Nadir Hill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Nadir Hill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-nisky",
+      "originNames": [
+        "Nisky"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: Nisky to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-nisky",
+      "originNames": [
+        "Nisky"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: Nisky to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-paradise-point",
+      "originNames": [
+        "Paradise Point"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Paradise Point to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-paradise-point",
+      "originNames": [
+        "Paradise Point"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Paradise Point to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-peterborg",
+      "originNames": [
+        "Peterborg"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Peterborg to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-peterborg",
+      "originNames": [
+        "Peterborg"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 table: Peterborg to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-pearl-estate",
+      "originNames": [
+        "Pearl Estate"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Pearl Estate to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-pearl-estate",
+      "originNames": [
+        "Pearl Estate"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Pearl Estate to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-raphune-hill",
+      "originNames": [
+        "Raphune Hill"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 9,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Raphune Hill to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-raphune-hill",
+      "originNames": [
+        "Raphune Hill"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Raphune Hill to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-redhook",
+      "originNames": [
+        "Redhook",
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Redhook to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-redhook",
+      "originNames": [
+        "Redhook",
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 table: Redhook to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-rosendahl",
+      "originNames": [
+        "Rosendahl"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Rosendahl to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-rosendahl",
+      "originNames": [
+        "Rosendahl"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Rosendahl to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-scott-free",
+      "originNames": [
+        "Scott Free"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Scott Free to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-scott-free",
+      "originNames": [
+        "Scott Free"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Scott Free to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-smith-bay",
+      "originNames": [
+        "Smith Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Smith Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-smith-bay",
+      "originNames": [
+        "Smith Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Smith Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-solberg-lookout",
+      "originNames": [
+        "Solberg Lookout"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: Solberg Lookout to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-solberg-lookout",
+      "originNames": [
+        "Solberg Lookout"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Solberg Lookout to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-solberg-upper",
+      "originNames": [
+        "Solberg Upper"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Solberg Upper to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-solberg-upper",
+      "originNames": [
+        "Solberg Upper"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Solberg Upper to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-sorgenfri",
+      "originNames": [
+        "Sorgenfri"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Sorgenfri to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-sorgenfri",
+      "originNames": [
+        "Sorgenfri"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Sorgenfri to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-st-peter-mountain",
+      "originNames": [
+        "St Peter Mountain"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: St Peter Mountain to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-st-peter-mountain",
+      "originNames": [
+        "St Peter Mountain"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: St Peter Mountain to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-tabor-harmony",
+      "originNames": [
+        "Tabor/Harmony"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Tabor/Harmony to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-tabor-harmony",
+      "originNames": [
+        "Tabor/Harmony"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 table: Tabor/Harmony to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-tutu",
+      "originNames": [
+        "Tutu",
+        "Tu Tu"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Tutu to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-tutu",
+      "originNames": [
+        "Tutu",
+        "Tu Tu"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Tutu to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-uvi",
+      "originNames": [
+        "UVI"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: UVI to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-uvi",
+      "originNames": [
+        "UVI"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 table: UVI to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-west-indian-dock",
+      "originNames": [
+        "West Indian Dock"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 table: West Indian Dock to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-west-indian-dock",
+      "originNames": [
+        "West Indian Dock"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: West Indian Dock to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-town-wintberg",
+      "originNames": [
+        "Wintberg"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 table: Wintberg to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-wintberg",
+      "originNames": [
+        "Wintberg"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 table: Wintberg to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-within-town-limits-to-within-town-limits",
+      "originNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Within Town Limits to Within Town Limits. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-bolongo-to-coki",
+      "originNames": [
+        "Bolongo"
+      ],
+      "destinationNames": [
+        "Coki",
+        "Coki Point"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Bolongo to Coki. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-bolongo-to-market-square-east",
+      "originNames": [
+        "Bolongo"
+      ],
+      "destinationNames": [
+        "Market Square East"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Bolongo to Market Square East. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-frenchman-s-reef-to-mahogany-run",
+      "originNames": [
+        "Frenchman's Reef"
+      ],
+      "destinationNames": [
+        "Mahogany Run"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Frenchman's Reef to Mahogany Run. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-frenchman-s-reef-to-mountain-top",
+      "originNames": [
+        "Frenchman's Reef"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Frenchman's Reef to Mountain Top. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-frenchman-s-reef-to-limetree",
+      "originNames": [
+        "Frenchman's Reef"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Frenchman's Reef to Limetree. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-frenchman-s-reef-to-magens-bay",
+      "originNames": [
+        "Frenchman's Reef"
+      ],
+      "destinationNames": [
+        "Magens Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Frenchman's Reef to Magens Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-frenchman-s-reef-to-market-square-east",
+      "originNames": [
+        "Frenchman's Reef"
+      ],
+      "destinationNames": [
+        "Market Square East"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Frenchman's Reef to Market Square East. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-bolongo",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Bolongo. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-coki",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Coki",
+        "Coki Point"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Coki. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-crown-bay",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Crown Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Crown Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-havensight-wico",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Havensight (WICO)",
+        "Havensight",
+        "West Indian Company Dock"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Havensight (WICO). “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-limetree",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Limetree. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-mountain-top",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Mountain Top. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-sapphire-beach",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Sapphire Beach"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Sapphire Beach. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-magens-to-ritz-carlton",
+      "originNames": [
+        "Magens",
+        "Magens Bay"
+      ],
+      "destinationNames": [
+        "Ritz Carlton"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Magens to Ritz Carlton. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-mahogany-run-to-bolongo",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Mahogany Run to Bolongo. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-mahogany-run-to-cowpet",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Cowpet",
+        "Cowpet Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Mahogany Run to Cowpet. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-mahogany-run-to-limetree",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Mahogany Run to Limetree. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-mahogany-run-to-mountain-top",
+      "originNames": [
+        "Mahogany Run"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Mahogany Run to Mountain Top. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-bolongo",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Bolongo. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-bordeaux",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Bordeaux"
+      ],
+      "onePassengerFare": 30,
+      "perPersonFare": 21,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Bordeaux. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-bovoni",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Bovoni"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Bovoni. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-caret-bay",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Caret bay",
+        "Caret Bay"
+      ],
+      "onePassengerFare": 24,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Caret bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-crown-mountain",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Crown Mountain"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Crown Mountain. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-dorothea",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Dorothea",
+        "Dorothea Estate"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Dorothea. “Two or More” is modeled as the published per-person fare. SOURCE CONFLICT: VInow publishes $16 per person for 2+; Commission confirmation required before activation.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-frenchman-s-reef",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Frenchman's Reef"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Frenchman's Reef. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-hull-bay",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Hull Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Hull Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-limetree",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Limetree. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-mafolie",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Mafolie"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Mafolie. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-magens-bay",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Magens Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Magens Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-mandahl",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Mandahl",
+        "Mandahl Bay"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Mandahl. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-market-square-east",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Market Square East"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Market Square East. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-mountain-top",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Mountain Top. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-paradise-point",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Paradise Point"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Paradise Point. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-peterborg",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Peterborg"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Peterborg. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-tu-tu",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Tu Tu. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-red-hook-to-wintberg",
+      "originNames": [
+        "Red Hook"
+      ],
+      "destinationNames": [
+        "Wintberg"
+      ],
+      "onePassengerFare": 17,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Red Hook to Wintberg. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-bolongo",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Bolongo"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Bolongo. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-bordeaux",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Bordeaux"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Bordeaux. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-bovoni",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Bovoni"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Bovoni. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-caret-bay",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Caret bay",
+        "Caret Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Caret bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-cowpet",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Cowpet",
+        "Cowpet Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Cowpet. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-crown-mountain",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Crown Mountain"
+      ],
+      "onePassengerFare": 20,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Crown Mountain. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-frenchman-s-bay",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Frenchman's Bay",
+        "Frenchman Bay"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Frenchman's Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-coki",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Coki",
+        "Coki Point"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Coki. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-limetree",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Limetree"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Limetree. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-mafolie",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Mafolie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Mafolie. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-magens-bay",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Magens Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Magens Bay. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "misc-tu-tu-to-mountain-top",
+      "originNames": [
+        "Tu Tu",
+        "Tutu"
+      ],
+      "destinationNames": [
+        "Mountain Top"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 miscellaneous table: Tu Tu to Mountain Top. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-anchorage",
+      "originNames": [
+        "Anchorage"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Anchorage to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-anchorage",
+      "originNames": [
+        "Anchorage"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Anchorage to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-blackbeard-s-castle",
+      "originNames": [
+        "Blackbeard's Castle"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Blackbeard's Castle to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-blackbeard-s-castle",
+      "originNames": [
+        "Blackbeard's Castle"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Blackbeard's Castle to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-bluebeard-s-castle",
+      "originNames": [
+        "Bluebeard’s Castle"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Bluebeard’s Castle to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-bluebeard-s-castle",
+      "originNames": [
+        "Bluebeard’s Castle"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Bluebeard’s Castle to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-bolongo-bay",
+      "originNames": [
+        "Bolongo Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Bolongo Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-bolongo-bay",
+      "originNames": [
+        "Bolongo Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Bolongo Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-carib-beach",
+      "originNames": [
+        "Carib Beach"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Carib Beach to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-carib-beach",
+      "originNames": [
+        "Carib Beach"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Carib Beach to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-compass-point",
+      "originNames": [
+        "Compass Point"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Compass Point to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-compass-point",
+      "originNames": [
+        "Compass Point"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Compass Point to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-cowpet-bay",
+      "originNames": [
+        "Cowpet Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Cowpet Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-cowpet-bay",
+      "originNames": [
+        "Cowpet Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Cowpet Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-danish-chalet",
+      "originNames": [
+        "Danish Chalet"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Danish Chalet to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-danish-chalet",
+      "originNames": [
+        "Danish Chalet"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Danish Chalet to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-elysian",
+      "originNames": [
+        "Elysian"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Elysian to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-elysian",
+      "originNames": [
+        "Elysian"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Elysian to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-emerald-beach",
+      "originNames": [
+        "Emerald Beach"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Emerald Beach to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-emerald-beach",
+      "originNames": [
+        "Emerald Beach"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Emerald Beach to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-flamboyan",
+      "originNames": [
+        "Flamboyan"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Flamboyan to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-flamboyan",
+      "originNames": [
+        "Flamboyan"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Flamboyan to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-frenchman-s-reef-cove",
+      "originNames": [
+        "Frenchman's Reef & Cove"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Frenchman's Reef & Cove to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-frenchman-s-reef-cove",
+      "originNames": [
+        "Frenchman's Reef & Cove"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Frenchman's Reef & Cove to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-holiday-inn",
+      "originNames": [
+        "Holiday Inn"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Holiday Inn to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-holiday-inn",
+      "originNames": [
+        "Holiday Inn"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Holiday Inn to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-hotel-1829",
+      "originNames": [
+        "Hotel 1829"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Hotel 1829 to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-hotel-1829",
+      "originNames": [
+        "Hotel 1829"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Hotel 1829 to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-island-beachcomber",
+      "originNames": [
+        "Island Beachcomber"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Island Beachcomber to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-island-beachcomber",
+      "originNames": [
+        "Island Beachcomber"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Island Beachcomber to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-island-view",
+      "originNames": [
+        "Island View"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 14,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Island View to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-island-view",
+      "originNames": [
+        "Island View"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Island View to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-limetree",
+      "originNames": [
+        "Limetree"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Limetree to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-limetree",
+      "originNames": [
+        "Limetree"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 18,
+      "perPersonFare": 14,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Limetree to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-mafolie",
+      "originNames": [
+        "Mafolie"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Mafolie to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-mafolie",
+      "originNames": [
+        "Mafolie"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 15,
+      "perPersonFare": 12,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Mafolie to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-margaritaville",
+      "originNames": [
+        "Margaritaville"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Margaritaville to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-margaritaville",
+      "originNames": [
+        "Margaritaville"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Margaritaville to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-palms-court-harbor-view",
+      "originNames": [
+        "Palms Court Harbor View"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 8,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Palms Court Harbor View to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-palms-court-harbor-view",
+      "originNames": [
+        "Palms Court Harbor View"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Palms Court Harbor View to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-pavilions-and-pools",
+      "originNames": [
+        "Pavilions and Pools"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Pavilions and Pools to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-pavilions-and-pools",
+      "originNames": [
+        "Pavilions and Pools"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Pavilions and Pools to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-point-pleasant",
+      "originNames": [
+        "Point Pleasant"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Point Pleasant to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-point-pleasant",
+      "originNames": [
+        "Point Pleasant"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Point Pleasant to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-ritz-carlton",
+      "originNames": [
+        "Ritz Carlton"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Ritz Carlton to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-ritz-carlton",
+      "originNames": [
+        "Ritz Carlton"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Ritz Carlton to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-sapphire-beach",
+      "originNames": [
+        "Sapphire Beach"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Sapphire Beach to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-sapphire-beach",
+      "originNames": [
+        "Sapphire Beach"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Sapphire Beach to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-secret-harbor",
+      "originNames": [
+        "Secret Harbor"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Secret Harbor to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-secret-harbor",
+      "originNames": [
+        "Secret Harbor"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 27,
+      "perPersonFare": 18,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Secret Harbor to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-thatch-farm",
+      "originNames": [
+        "Thatch Farm"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Thatch Farm to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-thatch-farm",
+      "originNames": [
+        "Thatch Farm"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 8,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Thatch Farm to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-wyndham-sugar-bay",
+      "originNames": [
+        "Wyndham Sugar Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 21,
+      "perPersonFare": 15,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Wyndham Sugar Bay to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-wyndham-sugar-bay",
+      "originNames": [
+        "Wyndham Sugar Bay"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 23,
+      "perPersonFare": 17,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Wyndham Sugar Bay to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-town-yacht-haven",
+      "originNames": [
+        "Yacht Haven"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 6,
+      "perPersonFare": 6,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Yacht Haven to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "hotel-to-airport-yacht-haven",
+      "originNames": [
+        "Yacht Haven"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 hotel table: Yacht Haven to Airport. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    }
+  ],
+  "issuingAuthority": "Virgin Islands Taxicab Commission",
+  "corroboratingSources": [
+    {
+      "url": "https://www.vislandguide.com/taxi",
+      "role": "Independent fare calculator reproducing the current Commission schedule",
+      "checkedAt": "2026-08-14"
+    },
+    {
+      "url": "https://www.vinow.com/stthomas/getting_around_stt/taxi_stt/",
+      "role": "Published St. Thomas tariff tables and additional-charge provisions effective October 24, 2022",
+      "checkedAt": "2026-08-14"
+    }
+  ],
+  "additionalCharges": {
+    "luggageFarePerPiece": 3,
+    "oversizedLuggageMaximumPerItem": 6,
+    "oversizedThresholdInches": "30x20",
+    "nightFarePerPassenger": 3,
+    "nightWindow": "00:00-06:00",
+    "waitingFarePerMinute": 2,
+    "waitingIncludedMinutes": 5,
+    "roundTrip": "Double one-way fare plus waiting charges",
+    "radioPhoneDispatch": {
+      "onePassenger": "Base fare plus one third of the base fare",
+      "twoOrMorePassengers": "Add $2 per passenger"
+    },
+    "hourlyRates": {
+      "sedanOrMinivan": 60,
+      "vanOrSafari14Passenger": 83,
+      "largeSafari": 120
+    }
+  },
+  "sourceConflicts": [
+    {
+      "route": "Red Hook to Dorothea",
+      "passengerBasis": "Two or more, per person",
+      "associationPublishedFare": 15,
+      "vinowPublishedFare": 16,
+      "resolution": "Commission confirmation required before activation"
+    }
+  ]
+}
