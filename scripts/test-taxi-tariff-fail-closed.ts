@@ -14,6 +14,10 @@ const reviewGates = fs.readFileSync(
   path.join(root, "lib/taxi-tariff-review-gates.ts"),
   "utf8",
 );
+const endpointGovernance = fs.readFileSync(
+  path.join(root, "lib/taxi-endpoint-governance.ts"),
+  "utf8",
+);
 const quoting = fs.readFileSync(
   path.join(root, "lib/usvi-taxi-tariffs.ts"),
   "utf8",
@@ -124,19 +128,24 @@ expectSource(
   "mobility-place geography cannot silently replace an explicit tariff identity",
 );
 expectSource(
-  quoting,
+  endpointGovernance,
   '"estate lindbergh bay"',
   "Estate Lindbergh Bay remains explicitly blocked after Estate-prefix normalization",
 );
 expectSource(
-  quoting,
+  endpointGovernance,
   '"estate dorothea"',
   "Estate Dorothea remains explicitly blocked after Estate-prefix normalization",
 );
 expectSource(
-  quoting,
-  "[estate.baseName, estate.tariffEndpointName]",
+  endpointGovernance,
+  "[params.placeName, params.tariffEndpointName]",
   "endpoint governance checks both geographic and resolved tariff identities",
+);
+expectSource(
+  quoting,
+  "taxiEndpointGovernanceHold",
+  "production quoting uses the shared endpoint governance holds",
 );
 expectSource(
   mobilityHubs,
