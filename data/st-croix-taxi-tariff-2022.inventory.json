@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "inventory_review",
+  "activationStatus": "unverified",
+  "island": "stx",
+  "title": "St. Croix taxi tariff inventory — October 24, 2022 schedule",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "currency": "USD",
+  "sourceUrl": "https://www.vinow.com/stcroix/getting_around_stx/taxis-rates/",
+  "sourcePublisher": "VInow tariff reproduction",
+  "sourceRetrievedAt": "2026-08-20",
+  "sourceNotes": "VInow states the St. Croix rates went into effect October 24, 2022. Inventory is non-active until canonical endpoint, direction, passenger-tier, and additional-charge reconciliation passes the territory completion gate.",
+  "pricingModel": {
+    "oneOrTwoPeople": "published total fare for one or two people",
+    "threePlusEach": "published per-person fare for groups of three or more"
+  },
+  "hubCoverage": {
+    "airport": 52,
+    "christiansted": 57,
+    "frederiksted": 26,
+    "carambola": 9
+  },
+  "reviewedAnchorRelationships": [
+    {"from":"Airport","to":"Christiansted","oneOrTwo":24,"threePlusEach":14},
+    {"from":"Airport","to":"Frederiksted","oneOrTwo":18,"threePlusEach":9},
+    {"from":"Airport","to":"Carambola","oneOrTwo":30,"threePlusEach":15},
+    {"from":"Christiansted","to":"Frederiksted","oneOrTwo":36,"threePlusEach":17},
+    {"from":"Christiansted","to":"Carambola","oneOrTwo":45,"threePlusEach":18},
+    {"from":"Frederiksted","to":"Carambola","oneOrTwo":41,"threePlusEach":17}
+  ],
+  "additionalCharges": {
+    "unlistedDestination": "Use nearest tariffed place crossed and next tariffed place ahead, based on the one nearest the passenger destination; do not implement as automatic inferred fare until separately modeled and tested.",
+    "largeKennel": 45,
+    "smallKennel": 30,
+    "roundTrip": "double one-way fare plus waiting charges",
+    "waitingPerMinute": 2,
+    "waitingFreeMinutes": 5,
+    "radioPhone": "fare plus one third of basic fare; for more than one person add $2 to each passenger",
+    "lateHours": "midnight to 6:00am: add $3 per person",
+    "exclusiveTaxi": "rate for four passengers",
+    "luggagePerBag": 3,
+    "oversizeLuggageMaxPerItem": 6,
+    "sightseeingOneToFour": 150,
+    "sightseeingFivePlusPerPerson": 30,
+    "sightseeingHours": 3
+  },
+  "reviewFlags": [
+    "Preserve STX passenger tiers exactly: 1 OR 2 PEOPLE is a group total; 3+ / EACH is per passenger.",
+    "Do not reuse STT/STJ one-person and two-or-more semantics for STX.",
+    "Source heading spells Carambola as CAROMBOLA; retain Carambola as the traveler/canonical spelling but require reviewed source-name normalization before activation.",
+    "Unlisted-destination interpolation is a published provision but must remain fail-closed until the nearest-before/nearest-ahead algorithm has governed geographic evidence and deterministic tests.",
+    "Full row-level transcription and direct/reverse comparison remain required before STX can be certified complete."
+  ]
+}
