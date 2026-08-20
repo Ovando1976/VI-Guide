@@ -1,5 +1,3 @@
-import "server-only";
-
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -66,14 +64,8 @@ function loadManifest(filePath: string) {
   if (!["stt", "stj", "stx"].includes(island)) {
     throw new Error("Manifest island must be stt, stj, or stx.");
   }
-  const tariffVersion = requiredText(
-    parsed.tariffVersion,
-    "Manifest tariffVersion",
-  );
-  const reviewReference = requiredText(
-    parsed.reviewReference,
-    "Manifest reviewReference",
-  );
+  const tariffVersion = requiredText(parsed.tariffVersion, "Manifest tariffVersion");
+  const reviewReference = requiredText(parsed.reviewReference, "Manifest reviewReference");
   const sourceUrl = requiredText(parsed.sourceUrl, "Manifest sourceUrl");
   if (!Array.isArray(parsed.rules) || parsed.rules.length === 0) {
     throw new Error("Repair manifest must contain at least one rule.");
@@ -83,22 +75,16 @@ function loadManifest(filePath: string) {
   const ids = new Set<string>();
   for (const rule of rules) {
     requiredText(rule.id, "Repair rule ID");
-    if (ids.has(rule.id)) {
-      throw new Error(`Duplicate repair rule ID: ${rule.id}.`);
-    }
+    if (ids.has(rule.id)) throw new Error(`Duplicate repair rule ID: ${rule.id}.`);
     ids.add(rule.id);
     if (!rule.originNames?.length || !rule.destinationNames?.length) {
       throw new Error(`Repair rule ${rule.id} needs both route endpoints.`);
     }
     if (rule.originCandidateAliases?.length || rule.destinationCandidateAliases?.length) {
-      throw new Error(
-        `Repair rule ${rule.id} contains candidate aliases and cannot be applied automatically.`,
-      );
+      throw new Error(`Repair rule ${rule.id} contains candidate aliases and cannot be applied automatically.`);
     }
     if (rule.fareConfirmationRequired) {
-      throw new Error(
-        `Repair rule ${rule.id} still requires fare confirmation and cannot be applied automatically.`,
-      );
+      throw new Error(`Repair rule ${rule.id} still requires fare confirmation and cannot be applied automatically.`);
     }
   }
 
@@ -121,21 +107,14 @@ function manifestChecksum(raw: string) {
   return crypto.createHash("sha256").update(raw).digest("hex");
 }
 
-function planRepair(
-  activeTariff: OfficialTaxiTariff,
-  manifest: RepairManifest,
-): RepairPlan {
+function planRepair(activeTariff: OfficialTaxiTariff, manifest: RepairManifest): RepairPlan {
   assertVerifiedActiveTariff(activeTariff);
 
   if (activeTariff.island !== manifest.island) {
-    throw new Error(
-      `Active tariff island ${activeTariff.island} does not match repair manifest ${manifest.island}.`,
-    );
+    throw new Error(`Active tariff island ${activeTariff.island} does not match repair manifest ${manifest.island}.`);
   }
   if (activeTariff.version !== manifest.tariffVersion) {
-    throw new Error(
-      `Active tariff version ${activeTariff.version} does not match reviewed repair version ${manifest.tariffVersion}.`,
-    );
+    throw new Error(`Active tariff version ${activeTariff.version} does not match reviewed repair version ${manifest.tariffVersion}.`);
   }
 
   const repairsById = new Map(manifest.rules.map((rule) => [rule.id, rule]));
@@ -172,17 +151,13 @@ function planRepair(
   const repairIds = new Set(manifest.rules.map((rule) => rule.id));
   const blocking = audit.findings.filter(
     (finding) =>
-      (finding.status === "manual_confirmation_required" ||
-        finding.status === "rejected") &&
+      (finding.status === "manual_confirmation_required" || finding.status === "rejected") &&
       (repairIds.has(finding.ruleId) ||
         (finding.conflictsWith ? repairIds.has(finding.conflictsWith) : false)),
   );
   if (blocking.length) {
     const summary = blocking
-      .map(
-        (finding) =>
-          `${finding.ruleId}:${finding.reason ?? finding.status}`,
-      )
+      .map((finding) => `${finding.ruleId}:${finding.reason ?? finding.status}`)
       .join(", ");
     throw new Error(`Reviewed repair failed route audit: ${summary}.`);
   }
@@ -201,12 +176,7 @@ function parseArgs() {
     .find((arg) => arg.startsWith("--actor="))
     ?.slice("--actor=".length)
     .trim();
-  return {
-    apply,
-    manifestPath: manifestArg ?? DEFAULT_MANIFEST,
-    confirmReview,
-    actor,
-  };
+  return { apply, manifestPath: manifestArg ?? DEFAULT_MANIFEST, confirmReview, actor };
 }
 
 async function getSingleActiveTariff(island: IslandCode) {
@@ -217,13 +187,9 @@ async function getSingleActiveTariff(island: IslandCode) {
     .limit(2)
     .get();
 
-  if (snapshot.empty) {
-    throw new Error(`No active ${island} taxi tariff exists.`);
-  }
+  if (snapshot.empty) throw new Error(`No active ${island} taxi tariff exists.`);
   if (snapshot.size !== 1) {
-    throw new Error(
-      `Expected exactly one active ${island} taxi tariff; found ${snapshot.size}.`,
-    );
+    throw new Error(`Expected exactly one active ${island} taxi tariff; found ${snapshot.size}.`);
   }
   const doc = snapshot.docs[0];
   return { ref: doc.ref, tariff: { id: doc.id, ...doc.data() } as OfficialTaxiTariff };
@@ -256,13 +222,9 @@ async function main() {
   }
 
   if (args.confirmReview !== manifest.reviewReference) {
-    throw new Error(
-      `Apply requires --confirm-review=${manifest.reviewReference}.`,
-    );
+    throw new Error(`Apply requires --confirm-review=${manifest.reviewReference}.`);
   }
-  if (!args.actor) {
-    throw new Error("Apply requires --actor=<authenticated operator identifier>.");
-  }
+  if (!args.actor) throw new Error("Apply requires --actor=<authenticated operator identifier>.");
   if (!initialPlan.changedRuleIds.length) {
     console.log(JSON.stringify({ ...summary, applied: false, noOp: true }, null, 2));
     return;
@@ -278,21 +240,14 @@ async function main() {
   await db.runTransaction(async (transaction) => {
     const snapshot = await transaction.get(query);
     if (snapshot.size !== 1) {
-      throw new Error(
-        `Apply aborted: expected exactly one active ${manifest.island} tariff; found ${snapshot.size}.`,
-      );
+      throw new Error(`Apply aborted: expected exactly one active ${manifest.island} tariff; found ${snapshot.size}.`);
     }
     const document = snapshot.docs[0];
-    const fresh = {
-      id: document.id,
-      ...document.data(),
-    } as OfficialTaxiTariff;
+    const fresh = { id: document.id, ...document.data() } as OfficialTaxiTariff;
     const freshPlan = planRepair(fresh, manifest);
 
     if (!sameValue(freshPlan.changedRuleIds, initialPlan.changedRuleIds)) {
-      throw new Error(
-        "Apply aborted because the active tariff changed after the dry-run plan was created.",
-      );
+      throw new Error("Apply aborted because the active tariff changed after the dry-run plan was created.");
     }
     if (!freshPlan.changedRuleIds.length) return;
 
@@ -313,9 +268,7 @@ async function main() {
   const verified = await getSingleActiveTariff(manifest.island);
   const verificationPlan = planRepair(verified.tariff, manifest);
   if (verificationPlan.changedRuleIds.length) {
-    throw new Error(
-      `Post-apply verification failed; remaining drift: ${verificationPlan.changedRuleIds.join(", ")}.`,
-    );
+    throw new Error(`Post-apply verification failed; remaining drift: ${verificationPlan.changedRuleIds.join(", ")}.`);
   }
 
   console.log(JSON.stringify({ ...summary, applied: true, verifiedNoDrift: true }, null, 2));
