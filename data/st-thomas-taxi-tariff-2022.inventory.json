@@ -2,45 +2,19 @@
   "schemaVersion": 1,
   "island": "stt",
   "tariffEffectiveDate": "2022-10-24",
-  "status": "in_progress",
+  "status": "inventory_transcribed",
   "complete": false,
-  "sourceScope": "Published St. Thomas taxi tariff tables effective October 24, 2022",
-  "certificationRule": "STT inventory may become complete only after every published fare row has been transcribed, source-counted, canonicalized, and covered by executable direct/reverse and passenger-tier checks. Missing rows are hard failures and no inferred fare may satisfy coverage.",
-  "currentlyVerifiedRelationships": [
-    {
-      "origin": "Red Hook",
-      "destination": "Dorothea",
-      "onePassengerFare": 23,
-      "twoPlusPerPersonFare": 16,
-      "luggageFarePerPiece": 3,
-      "verifiedBy": "scripts/test-stt-governed-fare-engine.ts"
-    }
-  ],
-  "protectedDistinctIdentities": [
-    "Dorothea",
-    "Dorothea Estate",
-    "Dorothea Lower",
-    "Dorothea Upper"
-  ],
-  "requiredChecks": {
-    "allPublishedRowsTranscribed": false,
-    "publishedRowCountLocked": false,
-    "canonicalEndpointAuditComplete": false,
-    "directReverseMatrixComplete": false,
-    "passengerTierMatrixComplete": false,
-    "additionalChargeRulesComplete": false,
-    "negativeFailClosedTestsComplete": false
+  "sourceUrl": "https://www.vinow.com/stthomas/getting_around_stt/taxi_stt/",
+  "sourceStatement": "Published St. Thomas taxi rates effective October 24, 2022.",
+  "sourceRowCount": 141,
+  "relationshipCount": 231,
+  "tables": {
+    "hotelsToFromCharlotteAmalieAndAirport": [["Anchorage",23,15,27,18],["Blackbeard’s Castle",8,6,12,11],["Bluebeard’s Castle",8,6,12,11],["Bolongo Bay",15,12,18,14],["Carib Beach Resort",11,9,6,6],["Compass Point",18,14,21,15],["Cowpet Bay",23,15,27,18],["Danish Chalet Inn",11,8,12,9],["Elysian Resort",23,15,27,18],["Emerald Beach Resort",11,9,6,6],["Frenchman’s Reef & Cove",12,9,15,12],["Hotel 1829",6,6,11,9],["Islander Beachcomber",11,9,6,6],["Island View Inn",14,11,12,9],["Limetree",15,12,18,14],["Mafolie Hotel",12,9,15,12],["Flamboyan",15,11,18,14],["Palms Court Harborview",11,8,12,9],["Pavillions and Pools",21,15,23,17],["Point Pleasant",21,15,23,17],["Margaritaville/Pineapple Beach",21,15,23,17],["Ritz Carlton Resort & Club",23,15,27,18],["Sapphire Beach Resort",21,15,23,17],["Secret Harbor Resort",23,15,27,18],["Thatch Farm",11,9,8,6],["Windward Passage Hotel",6,6,11,9],["Wyndham Sugar Bay",21,15,23,17],["Yacht Haven – Havensight",6,6,11,9]],
+    "miscToFromCharlotteAmalieAndAirport": [["Agnes Fancy",9,8,12,11],["Airport Terminal",11,9,null,null],["BlackPoint",15,12,12,9],["Bonne Esperance",17,14,15,12],["Bolongo",15,12,18,14],["Bordeaux",23,14,17,14],["Botany Bay",25,16,19,16],["Bournefield",11,9,8,6],["Bovoni",15,12,17,14],["Brookman Estate",15,12,17,14],["Canaan Estate",14,11,15,12],["Caret Bay",18,14,17,14],["Caret Bay Lower",18,12,21,14],["Caret Bay Upper",20,15,21,14],["Cassi Hill",15,12,18,14],["Coki Point",18,14,21,15],["Contant Development",12,9,11,9],["Contant Soto Town",9,8,9,8],["Crown Mountain",15,12,14,11],["Crown Bay",8,6,8,6],["Dorothea Estate",18,14,18,14],["Dorothea Lower",25,20,25,20],["Dorothea Upper",20,15,20,15],["Drake’s Seat",11,8,14,11],["Elizabeth Estate",12,9,15,12],["Est. Thomas New Quarter",9,8,11,9],["Flag Hill",14,11,15,12],["Fort Mylner",12,9,14,11],["Fortuna Mill",18,15,15,12],["Fortuna Point",21,14,18,12],["Frenchtown",6,6,11,9],["Fredenhoj",18,14,21,15],["Frenchman’s Bay",15,12,18,14],["Havensight (crossroad)",9,8,12,11],["Hawk Hill",17,12,18,14],["Hull Bay",18,12,23,15],["Louisenhoj Castle",11,8,14,11],["Lovenlund",15,11,18,14],["Lower John Dunkoe",11,8,11,9],["Magens Bay",15,12,18,15],["Mahogany Run",15,12,20,15],["Mandahl Bay",18,14,21,15],["Market Square East",12,9,15,12],["Mountain Top",17,12,18,14],["Nadir Hill",17,14,18,15],["Nisky",8,6,8,6],["Paradise Point",14,11,17,14],["Peterborg",18,14,23,17],["Estate Pearl",17,12,14,11],["Raphune Hill",9,8,12,9],["Red Hook",20,15,23,17],["Rosendahl",14,11,18,12],["Scott Free",14,11,12,9],["Smith Bay",18,12,20,15],["Solberg Lookout",11,8,12,9],["Solberg Upper",14,11,15,12],["Sorgenfri",17,12,18,14],["St. Peter Mountain",15,12,18,14],["Tabor/Harmony",17,12,20,15],["Tutu",14,11,17,12],["University of the Virgin Islands",11,9,8,8],["West Indian Dock",6,6,11,9],["Wintberg",15,12,18,14]],
+    "explicitToFrom": [["Within Town Limits","",6,6],["Bolongo","Coki",14,11],["Bolongo","Market Square East",14,11],["Frenchman’s Reef","Mahogany Run",18,14],["Frenchman’s Reef","Mountain Top",18,14],["Frenchman’s Reef","Limetree",11,8],["Frenchman’s Reef","Market Square East",15,12],["Frenchman’s Reef","Magens Bay",18,14],["Magens Bay","Coki",18,14],["Magens Bay","Bolongo",18,14],["Magens Bay","Crown Bay",18,15],["Magens Bay","Havensight (WICO)",15,12],["Magens Bay","Mountain Top",15,12],["Magens Bay","Limetree",18,14],["Magens Bay","Sapphire Beach",18,14],["Magens Bay","Ritz Carlton",23,15],["Mahogany Run","Bolongo",18,14],["Mahogany Run","Cowpet",18,15],["Mahogany Run","Limetree",18,14],["Mahogany Run","Mountain Top",15,12],["Red Hook","Bovoni",11,9],["Red Hook","Bolongo",12,11],["Red Hook","Bordeaux",30,21],["Red Hook","Caret Bay",24,18],["Red Hook","Crown Mountain",23,17],["Red Hook","Market Square East",14,11],["Red Hook","Dorothea",23,16],["Red Hook","Frenchman’s Reef",18,15],["Red Hook","Hull Bay",23,15],["Red Hook","Limetree",15,12],["Red Hook","Mafolie",20,15],["Red Hook","Mandahl",17,12],["Red Hook","Mountain Top",23,15],["Red Hook","Paradise Point",23,17],["Red Hook","Tutu",12,9],["Red Hook","Wintberg",17,12],["Red Hook","Magens Bay",18,14],["Red Hook","Peterborg",23,17],["Tutu","Bolongo",12,9],["Tutu","Bovoni",12,9],["Tutu","Bordeaux",27,18],["Tutu","Caret Bay",23,15],["Tutu","Cowpet",14,11],["Tutu","Crown Mountain",20,15],["Tutu","Frenchman’s Bay",14,11],["Tutu","Coki",11,9],["Tutu","Limetree",14,11],["Tutu","Mafolie",14,11],["Tutu","Magens Bay",15,11],["Tutu","Mountain Top",18,14]]
   },
-  "hardFailureConditions": [
-    "missing_published_row",
-    "duplicate_or_conflicting_row",
-    "unreviewed_alias",
-    "ambiguous_endpoint",
-    "direction_mismatch",
-    "passenger_tier_mismatch",
-    "additional_charge_mismatch",
-    "unexpected_quote_for_unpublished_route",
-    "tariff_version_or_effective_date_mismatch"
-  ],
-  "nextRequiredEvidence": "Complete source-faithful STT row transcription and lock the published row count before island-wide certification."
+  "additionalCharges": {"luggageStandardPerBag":3,"oversizedLuggageMaximumPerItem":6,"waitingPerMinute":2,"waitingFreeMinutes":5,"afterHoursMidnightTo6amPerPerson":3,"largeKennel":45,"smallKennel":30,"roundTrip":"double one-way fare plus waiting charges","radioPhoneOnePassenger":"fare plus one third of basic fare","radioPhoneMultiplePassengers":"add 2 per passenger"},
+  "protectedDistinctIdentities": ["Dorothea","Dorothea Estate","Dorothea Lower","Dorothea Upper","Havensight (crossroad)","Havensight (WICO)"],
+  "requiredChecks": {"allPublishedRowsTranscribed":true,"publishedRowCountLocked":true,"canonicalEndpointAuditComplete":false,"directReverseMatrixComplete":false,"passengerTierMatrixComplete":false,"additionalChargeRulesComplete":false,"negativeFailClosedTestsComplete":false},
+  "certificationRule": "STT may become complete only after the 141 source rows / 231 tariff relationships are canonicalized and covered by executable direct/reverse, passenger-tier, charge, and negative fail-closed checks."
 }
