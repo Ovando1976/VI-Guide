@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "island": "stj",
+  "tariffEffectiveDate": "2022-10-24",
+  "inventoryCommit": "d487642290b0b95bec6ab0f748d1cae0d4e19854",
+  "status": "reconciled_with_blockers",
+  "complete": false,
+  "sourceUrl": "https://www.vinow.com/stjohn/getting_around_stj/taxis-rates/",
+  "sourceStatement": "Published St. John taxi rates effective October 24, 2022.",
+  "pricingModel": {
+    "onePassenger": "published one-passenger fare",
+    "twoOrMore": "published per-person fare for 2+ passengers in the same group"
+  },
+  "canonicalDecisions": [
+    {
+      "travelerName": "Cruz Bay Town",
+      "tariffEndpoint": "Cruz Bay",
+      "status": "reviewed_alias",
+      "evidence": "data/tariff-location-mappings.reviewed.json"
+    },
+    {
+      "travelerName": "Neptune Landing / Windmill Bar",
+      "tariffEndpoint": "Neptune Landing/Windmill",
+      "status": "identity_review_required",
+      "quotePolicy": "fail_closed_until_reviewed"
+    }
+  ],
+  "routeIdentityDecisions": [
+    {
+      "relationship": "Coral Bay <-> Trunk Bay",
+      "status": "route_qualified",
+      "variants": ["via Centerline", "via North Shore"],
+      "policy": "Never collapse these variants into one fare identity."
+    },
+    {
+      "relationship": "Caneel Bay <-> Coral Bay",
+      "status": "route_qualified",
+      "variants": ["via Centerline", "via Northshore"],
+      "policy": "Never collapse these variants into one fare identity."
+    }
+  ],
+  "confirmedSymmetricOverlaps": [
+    {"endpoints":["Cruz Bay","Gallows Point"],"onePassenger":8,"twoOrMorePerPerson":6},
+    {"endpoints":["Cruz Bay","Westin Resort"],"onePassenger":9,"twoOrMorePerPerson":7},
+    {"endpoints":["Gallows Point","Caneel Bay"],"onePassenger":10,"twoOrMorePerPerson":8},
+    {"endpoints":["Gallows Point","Westin Resort"],"onePassenger":11,"twoOrMorePerPerson":8},
+    {"endpoints":["Coral Bay","Caneel Bay"],"route":"via Northshore","onePassenger":20,"twoOrMorePerPerson":14}
+  ],
+  "hardBlockers": [
+    {
+      "code": "PASSENGER_TIER_DIRECTION_CONFLICT",
+      "endpoints": ["Caneel Bay","Westin Resort"],
+      "details": "Caneel Bay hub publishes Westin as 12/9 while Westin Resort hub publishes Caneel Bay as 12/10. Because both headings are TO/FROM, automatic quoting for this relationship remains blocked pending authoritative confirmation of the 2+ fare.",
+      "safePolicy": "OFFICIAL_TAXI_RATE_UNAVAILABLE for this relationship until resolved"
+    },
+    {
+      "code": "ENDPOINT_IDENTITY_REVIEW_REQUIRED",
+      "endpoint": "Neptune Landing/Windmill",
+      "details": "Traveler-facing Windmill Bar / Neptune Landing naming must be explicitly reviewed before broad alias activation.",
+      "safePolicy": "Canonical source spelling only until reviewed"
+    }
+  ],
+  "normalizationsAcceptedForInventoryOnly": [
+    {
+      "source": "14:00",
+      "normalized": "14.00",
+      "relationship": "Coral Bay <-> Trunk Bay via North Shore",
+      "reason": "Currency-format typo; activation still depends on governed reconciliation."
+    }
+  ],
+  "normalizationsStillBlocked": [
+    "Lameshur/Lamishur",
+    "Rendezous/Rendezvous",
+    "Blomingdale/Bloomingdale",
+    "Hawknest/Hawksnest",
+    "Jumbie Bay/Jumbie Beach"
+  ],
+  "additionalChargeProvisions": {
+    "nightMidnightTo6amPerPerson": 3,
+    "luggageStandardPerBag": 3,
+    "oversizedLuggageMaximumPerItem": 6,
+    "waitingPerMinute": 1,
+    "waitingFreeMinutes": 5,
+    "roundTrip": "double one-way fare plus waiting charges",
+    "radioPhoneOnePassenger": "fare plus one third of basic fare",
+    "radioPhoneMultiplePassengers": "add 2 per passenger",
+    "exclusiveService": "negotiated",
+    "status": "captured_not_activated",
+    "policy": "Do not compute special charges until each provision is represented safely in the quote schema and tests."
+  },
+  "negativeTestsRequired": [
+    "Unreviewed spelling aliases must not resolve automatically.",
+    "Route-qualified fares must not cross-match the alternate route variant.",
+    "Caneel Bay <-> Westin Resort must fail closed until the 2+ conflict is resolved.",
+    "Unpublished endpoint pairs must return OFFICIAL_TAXI_RATE_UNAVAILABLE rather than an inferred fare."
+  ],
+  "gateResult": {
+    "inventoryComplete": true,
+    "canonicalEndpointAuditComplete": false,
+    "directionMatrixComplete": false,
+    "passengerTierMatrixComplete": false,
+    "luggageAndGroupRulesComplete": false,
+    "negativeFailClosedTestsComplete": false,
+    "islandComplete": false
+  }
+}
