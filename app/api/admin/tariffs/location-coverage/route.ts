@@ -3,11 +3,20 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import {
   auditTariffLocationCoverage,
+  buildTariffLocationResolver,
   type TariffLocationMapping,
   type TariffResolvablePlace,
 } from "@/lib/tariff-location-resolver";
+import {
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
+import { resolveOfficialTaxiFareEndpoint } from "@/lib/official-taxi-fare-engine";
+import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 type UnknownRecord = Record<string, unknown>;
+
+type Island = TariffResolvablePlace["island"];
 
 const INPUTS = [
   "data/generated/geographic-dictionary-cleaned.json",
@@ -15,6 +24,7 @@ const INPUTS = [
   "data/territory-coordinates.json",
 ];
 const MAPPINGS_PATH = "data/tariff-location-mappings.reviewed.json";
+const ISLANDS: Island[] = ["stt", "stj", "stx"];
 
 function readJson(file: string): unknown {
   return JSON.parse(fs.readFileSync(path.join(process.cwd(), file), "utf8"));
@@ -39,7 +49,7 @@ function text(record: UnknownRecord, keys: string[]): string | undefined {
   }
 }
 
-function islandCode(record: UnknownRecord): TariffResolvablePlace["island"] | undefined {
+function islandCode(record: UnknownRecord): Island | undefined {
   const raw = text(record, ["islandCode", "island", "island_id", "islandId"])
     ?.toLowerCase()
     .replace(/[^a-z0-9]/g, "");
@@ -54,14 +64,46 @@ function toPlace(record: UnknownRecord, source: string, index: number): TariffRe
   const island = islandCode(record);
   const name = text(record, ["name", "displayName", "title", "label", "fullName", "estate"]);
   if (!island || !name) return undefined;
-  const id = text(record, ["id", "placeId", "slug", "geoid", "key"]) ?? `${source}:${index}:${name}`;
+  const geoid = text(record, ["geoid", "GEOID", "estateGeoid", "estate_geoid"]);
+  const id = text(record, ["id", "placeId", "slug", "key"]) ?? geoid ?? `${source}:${index}:${name}`;
   return {
     id,
+    geoid,
     island,
     name,
     tariffEndpointName: text(record, ["tariffEndpointName", "tariff_endpoint", "tariffEndpoint"]),
     parentPlaceId: text(record, ["parentPlaceId", "parent_id", "parentId"]),
+    parentEstateGeoid: text(record, ["parentEstateGeoid", "parent_estate_geoid", "estateGeoid", "estate_geoid"]),
+    parentEstateName: text(record, ["parentEstateName", "parent_estate_name", "estateName", "estate_name"]),
   };
+}
+
+async function loadActiveTariffs() {
+  if (!hasFirebaseAdminConfiguration()) {
+    return {
+      status: "unavailable" as const,
+      tariffs: [] as OfficialTaxiTariff[],
+      reason: "Firebase Admin configuration is not available.",
+    };
+  }
+  try {
+    const snapshot = await getAdminDb()
+      .collection("taxiTariffs")
+      .where("status", "==", "active")
+      .get();
+    return {
+      status: "loaded" as const,
+      tariffs: snapshot.docs.map(
+        (doc) => ({ id: doc.id, ...doc.data() }) as OfficialTaxiTariff,
+      ),
+    };
+  } catch (error) {
+    return {
+      status: "error" as const,
+      tariffs: [] as OfficialTaxiTariff[],
+      reason: error instanceof Error ? error.message : "Unable to load active tariffs.",
+    };
+  }
 }
 
 export const dynamic = "force-dynamic";
@@ -80,26 +122,78 @@ export async function GET() {
   const mappings: TariffLocationMapping[] = fs.existsSync(path.join(process.cwd(), MAPPINGS_PATH))
     ? (readJson(MAPPINGS_PATH) as TariffLocationMapping[])
     : [];
-  const audit = auditTariffLocationCoverage([...places.values()], mappings);
+  const resolveReviewed = buildTariffLocationResolver(mappings);
+  const active = await loadActiveTariffs();
+
+  const tariffsByIsland = new Map<Island, OfficialTaxiTariff[]>();
+  for (const island of ISLANDS) {
+    tariffsByIsland.set(
+      island,
+      active.tariffs.filter((tariff) => tariff.island === island),
+    );
+  }
+
+  const enrichedPlaces = [...places.values()].map((place) => {
+    const reviewed = resolveReviewed(place);
+    if (reviewed.tariffEndpointName) {
+      return { ...place, tariffEndpointName: reviewed.tariffEndpointName };
+    }
+
+    const islandTariffs = tariffsByIsland.get(place.island) ?? [];
+    if (islandTariffs.length !== 1) return place;
+
+    const resolved = resolveOfficialTaxiFareEndpoint(islandTariffs[0].rules ?? [], {
+      geoid: place.geoid ?? place.id,
+      baseName: place.name,
+      tariffEndpointName: place.tariffEndpointName,
+      parentEstateGeoid: place.parentEstateGeoid,
+      parentEstateName: place.parentEstateName,
+    });
+
+    return resolved.tariffEndpointName
+      ? { ...place, tariffEndpointName: resolved.tariffEndpointName }
+      : place;
+  });
+
+  const audit = auditTariffLocationCoverage(enrichedPlaces, mappings);
   const byIsland = Object.fromEntries(
-    (["stt", "stj", "stx"] as const).map((island) => {
+    ISLANDS.map((island) => {
       const subset = audit.resolutions.filter((item) => item.island === island);
       const unresolved = subset.filter((item) => item.method === "unresolved").length;
-      return [island, { total: subset.length, resolved: subset.length - unresolved, unresolved }];
+      const tariffCount = tariffsByIsland.get(island)?.length ?? 0;
+      return [
+        island,
+        {
+          total: subset.length,
+          resolved: subset.length - unresolved,
+          unresolved,
+          activeTariffCount: tariffCount,
+          tariffCatalogReady: tariffCount === 1,
+        },
+      ];
     }),
   );
 
+  const catalogReady =
+    active.status === "loaded" &&
+    ISLANDS.every((island) => (tariffsByIsland.get(island)?.length ?? 0) === 1);
+
   return NextResponse.json({
-    ok: audit.unresolved === 0,
-    policy: "No tariff endpoint may be inferred from proximity. Unresolved places remain verification-required.",
+    ok: catalogReady && audit.unresolved === 0,
+    policy:
+      "Every selectable place must resolve through an explicit reviewed endpoint, an exact unique published endpoint, or an exact unique verified parent-estate endpoint. No proximity, fuzzy, distance, or road-based tariff inference is allowed.",
     inputs: INPUTS,
     mappingCount: mappings.length,
+    tariffCatalogStatus: active.status,
+    tariffCatalogReason: "reason" in active ? active.reason : undefined,
+    activeTariffCount: active.tariffs.length,
+    catalogReady,
     total: audit.total,
     resolved: audit.resolved,
     unresolved: audit.unresolved,
     coverage: audit.coverage,
     byIsland,
-    unresolvedPlaces: audit.unresolvedPlaces.slice(0, 250),
-    unresolvedTruncated: audit.unresolvedPlaces.length > 250,
+    unresolvedPlaces: audit.unresolvedPlaces.slice(0, 500),
+    unresolvedTruncated: audit.unresolvedPlaces.length > 500,
   });
 }
