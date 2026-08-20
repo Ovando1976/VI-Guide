@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "island": "stx",
+  "effectiveAt": "2022-10-24T00:00:00-04:00",
+  "status": "reconciliation_in_progress",
+  "activationStatus": "blocked",
+  "pricingModel": {
+    "oneOrTwoPeople": "group total",
+    "threePlusEach": "per passenger"
+  },
+  "verifiedAnchorRelationships": [
+    {"a":"Airport","b":"Christiansted","oneOrTwo":24,"threePlusEach":14,"status":"verified_from_2022_schedule"},
+    {"a":"Airport","b":"Frederiksted","oneOrTwo":18,"threePlusEach":9,"status":"verified_from_2022_schedule"},
+    {"a":"Airport","b":"Carambola","oneOrTwo":30,"threePlusEach":15,"status":"verified_from_2022_schedule"},
+    {"a":"Christiansted","b":"Frederiksted","oneOrTwo":36,"threePlusEach":17,"status":"verified_from_2022_schedule"},
+    {"a":"Christiansted","b":"Carambola","oneOrTwo":45,"threePlusEach":18,"status":"verified_from_2022_schedule"},
+    {"a":"Frederiksted","b":"Carambola","oneOrTwo":41,"threePlusEach":17,"status":"verified_from_2022_schedule"}
+  ],
+  "sourceIdentityNormalizations": [
+    {
+      "source":"CAROMBOLA",
+      "canonical":"Carambola",
+      "status":"review_required_before_activation",
+      "reason":"Source table heading contains a spelling variant; fare identity is retained without enabling a broad fuzzy alias."
+    }
+  ],
+  "blockedFeatures": [
+    {
+      "feature":"unlisted_destination_interpolation",
+      "status":"fail_closed",
+      "reason":"Published provision requires nearest tariffed place crossed / next tariffed place ahead. No automatic quote until governed road-order geography and deterministic tests exist."
+    }
+  ],
+  "remainingBlockers": [
+    "Transcribe all published Airport, Christiansted, Frederiksted and Carambola rows into machine-verifiable records.",
+    "Compare every relationship that appears in more than one hub table and isolate passenger-tier conflicts.",
+    "Review endpoint spelling and compound-location identities without fuzzy expansion.",
+    "Add negative tests proving unpublished/ambiguous requests return OFFICIAL_TAXI_RATE_UNAVAILABLE.",
+    "Reconcile additional-charge provisions separately from base route coverage."
+  ],
+  "certificationRule":"STX remains incomplete until remainingBlockers is empty and all hard-failure counts are zero."
+}
