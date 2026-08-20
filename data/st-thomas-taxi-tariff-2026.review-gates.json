@@ -45,11 +45,15 @@
     },
     {
       "source": "Dorotdea Estate",
-      "normalized": "Dorothea Estate"
+      "normalized": "Dorothea Estate",
+      "resolution": "confirmed_typo_normalization",
+      "evidence": "Independent tariff reproduction preserves the source typo while VInow's corresponding 2022 tariff table uses Dorothea Estate with the same fare structure."
     },
     {
       "source": "Estate tdomas New Qtr",
-      "normalized": "Estate Thomas New Quarter"
+      "normalized": "Estate Thomas New Quarter",
+      "resolution": "confirmed_typo_normalization",
+      "evidence": "Independent tariff reproduction preserves the source typo while VInow's corresponding 2022 tariff table lists Est. Thomas New Quarter with the same fare structure."
     }
   ]
 }
