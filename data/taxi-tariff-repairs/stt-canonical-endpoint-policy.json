@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "island": "stt",
+  "tariffEffectiveDate": "2022-10-24",
+  "principle": "Published tariff labels are canonical. A traveler label may resolve only when equivalence to exactly one published tariff identity is explicitly reviewed. Otherwise it must fail closed and request clarification.",
+  "sourceBackedCanonicalNotes": [
+    {
+      "label": "Charlotte Amalie",
+      "decision": "canonical",
+      "reason": "The published tariff uses Charlotte Amalie as the table endpoint. Generic Town is not promoted to this endpoint by this policy."
+    },
+    {
+      "label": "Airport Terminal",
+      "decision": "canonical",
+      "reason": "The published tariff separately names Airport Terminal / Cyril E. King Airport context. Broad Lindbergh Bay is a geographic area and is not treated as the airport terminal."
+    },
+    {
+      "label": "Dorothea",
+      "decision": "canonical_only_where_published",
+      "reason": "The explicit Red Hook relationship publishes Dorothea, while the main table separately publishes Dorothea Estate, Dorothea Lower, and Dorothea Upper with different fares. These identities must not collapse."
+    },
+    {
+      "label": "Havensight",
+      "decision": "clarification_required",
+      "reason": "Published tariff identities distinguish Havensight (crossroad) and Havensight (WICO); generic Havensight is financially ambiguous."
+    }
+  ],
+  "explicitlyFailClosedTravelerLabels": [
+    "Town",
+    "Downtown",
+    "Lindbergh Bay",
+    "Lindberg Bay",
+    "Havensight",
+    "Dorothea area",
+    "Dorothea neighborhood"
+  ],
+  "protectedDistinctIdentities": [
+    "Dorothea",
+    "Dorothea Estate",
+    "Dorothea Lower",
+    "Dorothea Upper",
+    "Havensight (crossroad)",
+    "Havensight (WICO)"
+  ],
+  "completionInterpretation": "Canonical endpoint audit is complete when every published source endpoint remains addressable as its exact governed identity and every non-reviewed broad/ambiguous traveler label fails closed. Completeness does not require inventing aliases for ambiguous labels."
+}
