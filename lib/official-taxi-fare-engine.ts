@@ -123,7 +123,10 @@ function findUniquePublishedEndpointName(
  */
 export function resolveOfficialTaxiFareEndpoint<
   T extends OfficialTaxiFareEndpoint,
->(rules: OfficialTaxiRateRule[], endpoint: T): T {
+>(
+  rules: OfficialTaxiRateRule[],
+  endpoint: T,
+): T & { tariffEndpointName?: string } {
   if (endpoint.tariffEndpointName) return endpoint;
 
   const direct = findUniquePublishedEndpointName(
