@@ -115,8 +115,28 @@ expectSource(
 );
 expectSource(
   fareEngine,
+  'normalized.startsWith("estate ")',
+  "Census Estate prefixes are removed only by deterministic name normalization",
+);
+expectSource(
+  fareEngine,
   "endpoint.tariffEndpointName ?? endpoint.baseName",
   "mobility-place geography cannot silently replace an explicit tariff identity",
+);
+expectSource(
+  quoting,
+  '"estate lindbergh bay"',
+  "Estate Lindbergh Bay remains explicitly blocked after Estate-prefix normalization",
+);
+expectSource(
+  quoting,
+  '"estate dorothea"',
+  "Estate Dorothea remains explicitly blocked after Estate-prefix normalization",
+);
+expectSource(
+  quoting,
+  "[estate.baseName, estate.tariffEndpointName]",
+  "endpoint governance checks both geographic and resolved tariff identities",
 );
 expectSource(
   mobilityHubs,
