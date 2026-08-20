@@ -44,15 +44,20 @@
     {"endpoints":["Cruz Bay","Westin Resort"],"onePassenger":9,"twoOrMorePerPerson":7},
     {"endpoints":["Gallows Point","Caneel Bay"],"onePassenger":10,"twoOrMorePerPerson":8},
     {"endpoints":["Gallows Point","Westin Resort"],"onePassenger":11,"twoOrMorePerPerson":8},
-    {"endpoints":["Coral Bay","Caneel Bay"],"route":"via Northshore","onePassenger":20,"twoOrMorePerPerson":14}
+    {"endpoints":["Coral Bay","Caneel Bay"],"route":"via Northshore","onePassenger":20,"twoOrMorePerPerson":14},
+    {"endpoints":["Caneel Bay","Westin Resort"],"onePassenger":12,"twoOrMorePerPerson":10,"resolution":"governed_manual_selection","evidence":"Westin Resort TO/FROM table publishes Caneel Bay at 12/10; conflicting Caneel Bay TO/FROM row at 12/9 is retained in source inventory for provenance."}
   ],
-  "hardBlockers": [
+  "resolvedConflicts": [
     {
       "code": "PASSENGER_TIER_DIRECTION_CONFLICT",
       "endpoints": ["Caneel Bay","Westin Resort"],
-      "details": "Caneel Bay hub publishes Westin as 12/9 while Westin Resort hub publishes Caneel Bay as 12/10. Because both headings are TO/FROM, automatic quoting for this relationship remains blocked pending authoritative confirmation of the 2+ fare.",
-      "safePolicy": "OFFICIAL_TAXI_RATE_UNAVAILABLE for this relationship until resolved"
-    },
+      "sourceValues": {"caneelBayTable":{"onePassenger":12,"twoOrMorePerPerson":9},"westinResortTable":{"onePassenger":12,"twoOrMorePerPerson":10}},
+      "governedFare": {"onePassenger":12,"twoOrMorePerPerson":10},
+      "decision": "Use the Westin Resort TO/FROM manual entry as the governed relationship value; retain the $9 reciprocal conflict in provenance rather than deleting or silently normalizing it.",
+      "regressionTest": "scripts/test-stj-governed-fare-engine.ts"
+    }
+  ],
+  "hardBlockers": [
     {
       "code": "ENDPOINT_IDENTITY_REVIEW_REQUIRED",
       "endpoint": "Neptune Landing/Windmill",
@@ -91,7 +96,7 @@
   "negativeTestsRequired": [
     "Unreviewed spelling aliases must not resolve automatically.",
     "Route-qualified fares must not cross-match the alternate route variant.",
-    "Caneel Bay <-> Westin Resort must fail closed until the 2+ conflict is resolved.",
+    "Caneel Bay <-> Westin Resort must resolve at the explicitly governed 12/10 relationship value while preserving the conflicting 12/9 source row in provenance.",
     "Unpublished endpoint pairs must return OFFICIAL_TAXI_RATE_UNAVAILABLE rather than an inferred fare."
   ],
   "gateResult": {
