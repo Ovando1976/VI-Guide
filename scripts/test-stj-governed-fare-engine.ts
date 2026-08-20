@@ -3,7 +3,6 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import {
-  OfficialTaxiRateUnavailableError,
   calculateOfficialTaxiRuleFare,
   findOfficialTaxiRateRule,
   resolveOfficialTaxiFareEndpoint,
@@ -35,10 +34,7 @@ assert.deepEqual(
     ["Neptune Landing/Windmill", 14],
   ],
 );
-assert.equal(
-  inventory.hubs.reduce((total, hub) => total + hub.routes.length, 0),
-  139,
-);
+assert.equal(inventory.hubs.reduce((total, hub) => total + hub.routes.length, 0), 139);
 
 for (const hub of inventory.hubs) {
   const labels = hub.routes.map(([label]) => label);
@@ -61,20 +57,17 @@ const route = (hubName: string, destination: string) => {
   return found;
 };
 
-// Route-qualified identities are financially distinct and must never collapse.
 assert.deepEqual(route("Coral Bay", "Trunk Bay (via Centerline)"), ["Trunk Bay (via Centerline)", 29, 20]);
 assert.deepEqual(route("Coral Bay", "Trunk Bay (via North Shore)"), ["Trunk Bay (via North Shore)", 14, 11]);
 assert.deepEqual(route("Caneel Bay", "Coral Bay (Via Centerline)"), ["Coral Bay (Via Centerline)", 27, 15]);
 assert.deepEqual(route("Caneel Bay", "Coral Bay (Via Northshore)"), ["Coral Bay (Via Northshore)", 20, 14]);
 
-// The only known reciprocal passenger-tier conflict remains explicit.
+// Preserve both source rows for provenance. The governed resolution below explicitly
+// selects the Westin Resort table's $10 2+ rate while retaining the $9 conflict here.
 assert.deepEqual(route("Caneel Bay", "Westin"), ["Westin", 12, 9]);
 assert.deepEqual(route("Westin Resort", "Caneel Bay"), ["Caneel Bay", 12, 10]);
 
-const endpoint = (baseName: string): OfficialTaxiFareEndpoint => ({
-  geoid: `test:${baseName}`,
-  baseName,
-});
+const endpoint = (baseName: string): OfficialTaxiFareEndpoint => ({ geoid: `test:${baseName}`, baseName });
 const exactRule = (
   id: string,
   origin: string,
@@ -98,29 +91,13 @@ const spellingRules = [
   exactRule("stj-jumbie-beach", "Cruz Bay", "Jumbie Beach", 12, 9),
   exactRule("stj-neptune", "Neptune Landing/Windmill", "Cruz Bay", 12, 9),
 ];
-
 assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Lamishur")).tariffEndpointName, undefined);
 assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Hawknest")).tariffEndpointName, undefined);
 assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Jumbie Bay")).tariffEndpointName, undefined);
-assert.equal(
-  resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Neptune Landing / Windmill Bar")).tariffEndpointName,
-  undefined,
-);
+assert.equal(resolveOfficialTaxiFareEndpoint(spellingRules, endpoint("Neptune Landing / Windmill Bar")).tariffEndpointName, undefined);
 
-const centerlineRule = exactRule(
-  "stj-coral-trunk-centerline",
-  "Coral Bay",
-  "Trunk Bay (via Centerline)",
-  29,
-  20,
-);
-const northShoreRule = exactRule(
-  "stj-coral-trunk-north-shore",
-  "Coral Bay",
-  "Trunk Bay (via North Shore)",
-  14,
-  11,
-);
+const centerlineRule = exactRule("stj-coral-trunk-centerline", "Coral Bay", "Trunk Bay (via Centerline)", 29, 20);
+const northShoreRule = exactRule("stj-coral-trunk-north-shore", "Coral Bay", "Trunk Bay (via North Shore)", 14, 11);
 const routeRules = [centerlineRule, northShoreRule];
 const coral = resolveOfficialTaxiFareEndpoint(routeRules, endpoint("Coral Bay"));
 const centerline = resolveOfficialTaxiFareEndpoint(routeRules, endpoint("Trunk Bay (via Centerline)"));
@@ -129,21 +106,35 @@ assert.equal(findOfficialTaxiRateRule(routeRules, coral, centerline)?.id, center
 assert.equal(findOfficialTaxiRateRule(routeRules, coral, northShore)?.id, northShoreRule.id);
 assert.notEqual(centerline.tariffEndpointName, northShore.tariffEndpointName);
 
-const disputedWestin: OfficialTaxiRateRule = {
-  ...exactRule("stj-caneel-westin-disputed", "Caneel Bay", "Westin Resort", 12, 9),
-  fareConfirmationRequired: "two_or_more",
-  fareConfirmationReason: "Published reciprocal STJ tables disagree: Caneel Bay -> Westin is 12/9 while Westin Resort -> Caneel Bay is 12/10.",
-};
-assert.deepEqual(calculateOfficialTaxiRuleFare(disputedWestin, 1, 0), {
+// Governed reconciliation decision: use the Westin Resort table entry (12 / 10)
+// for Caneel Bay <-> Westin Resort. The conflicting Caneel Bay table's $9 value
+// remains in source inventory/provenance and must not silently overwrite this rule.
+const governedCaneelWestin = exactRule(
+  "stj-caneel-westin-governed",
+  "Caneel Bay",
+  "Westin Resort",
+  12,
+  10,
+);
+assert.deepEqual(calculateOfficialTaxiRuleFare(governedCaneelWestin, 1, 0), {
   routeFare: 12,
   passengerFare: 0,
   luggageFare: 0,
 });
-assert.throws(
-  () => calculateOfficialTaxiRuleFare(disputedWestin, 2, 0),
-  (error: unknown) =>
-    error instanceof OfficialTaxiRateUnavailableError &&
-    error.code === "OFFICIAL_TAXI_RATE_UNAVAILABLE",
-);
+assert.deepEqual(calculateOfficialTaxiRuleFare(governedCaneelWestin, 2, 0), {
+  routeFare: 0,
+  passengerFare: 20,
+  luggageFare: 0,
+});
+assert.deepEqual(calculateOfficialTaxiRuleFare(governedCaneelWestin, 3, 0), {
+  routeFare: 0,
+  passengerFare: 30,
+  luggageFare: 0,
+});
+const governedRules = [governedCaneelWestin];
+const caneel = resolveOfficialTaxiFareEndpoint(governedRules, endpoint("Caneel Bay"));
+const westin = resolveOfficialTaxiFareEndpoint(governedRules, endpoint("Westin Resort"));
+assert.equal(findOfficialTaxiRateRule(governedRules, caneel, westin)?.id, governedCaneelWestin.id);
+assert.equal(findOfficialTaxiRateRule(governedRules, westin, caneel)?.id, governedCaneelWestin.id);
 
-console.log("STJ governed fare identity and fail-closed matrix passed.");
+console.log("STJ governed fare identity and reconciliation matrix passed.");
