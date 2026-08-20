@@ -2,6 +2,7 @@ import {
   calculateOfficialTaxiRuleFare,
   findOfficialTaxiRateRule,
   OfficialTaxiRateUnavailableError,
+  resolveOfficialTaxiFareEndpoint,
   type OfficialTaxiFareEndpoint,
 } from "../lib/official-taxi-fare-engine";
 import type { OfficialTaxiRateRule } from "../types/taxi-operations";
@@ -123,6 +124,81 @@ for (const cruzBayUiName of ["Cruz Bay Town", "Town of Cruz Bay"]) {
   );
 }
 
+const charlotteAmaliePoi = resolveOfficialTaxiFareEndpoint(
+  [sttCharlotteAmalieAnchorage],
+  {
+    geoid: "poi:stt:hotel",
+    baseName: "Example Hotel",
+    parentEstateName: "Charlotte Amalie",
+  },
+);
+expectEqual(
+  charlotteAmaliePoi.tariffEndpointName,
+  "Charlotte Amalie",
+  "a place inherits a unique published parent-estate tariff endpoint",
+);
+expectEqual(
+  findOfficialTaxiRateRule(
+    [sttCharlotteAmalieAnchorage],
+    charlotteAmaliePoi,
+    endpoint("Anchorage"),
+  )?.id,
+  sttCharlotteAmalieAnchorage.id,
+  "a uniquely resolved parent place can use the governed published route",
+);
+
+const explicitSpecialDestination = resolveOfficialTaxiFareEndpoint(
+  [
+    {
+      id: "stt-smith-bay-town",
+      originNames: ["Smith Bay"],
+      destinationNames: ["Charlotte Amalie"],
+      onePassengerFare: 20,
+    },
+  ],
+  {
+    geoid: "mobility:stt:red-hook",
+    baseName: "Red Hook Ferry Terminal",
+    tariffEndpointName: "Red Hook",
+    parentEstateName: "Smith Bay",
+  },
+);
+expectEqual(
+  explicitSpecialDestination.tariffEndpointName,
+  "Red Hook",
+  "an explicit reviewed special-destination endpoint overrides its parent estate",
+);
+
+const ambiguousParentRules: OfficialTaxiRateRule[] = [
+  {
+    id: "stt-smith-bay-a",
+    originNames: ["Smith Bay"],
+    originEstateGeoids: ["7803072500"],
+    destinationNames: ["Charlotte Amalie"],
+    onePassengerFare: 20,
+  },
+  {
+    id: "stt-red-hook-a",
+    originNames: ["Red Hook"],
+    originEstateGeoids: ["7803072500"],
+    destinationNames: ["Charlotte Amalie"],
+    onePassengerFare: 18,
+  },
+];
+const ambiguousParentPlace = resolveOfficialTaxiFareEndpoint(
+  ambiguousParentRules,
+  {
+    geoid: "poi:stt:smith-bay-example",
+    baseName: "Example Smith Bay POI",
+    parentEstateGeoid: "7803072500",
+  },
+);
+expectEqual(
+  ambiguousParentPlace.tariffEndpointName,
+  undefined,
+  "ambiguous parent-estate tariff identities remain unresolved and fail closed",
+);
+
 expectEqual(
   findOfficialTaxiRateRule(
     [stjCruzBayAnnaberg],
@@ -155,5 +231,5 @@ expectThrows(
 );
 
 console.log(
-  "Official taxi fare engine contracts passed: STT/STJ/STX 1/2/3 passenger matrix, Cruz Bay Town aliases, reverse matching, unknown-route, luggage, and confirmation gates.",
+  "Official taxi fare engine contracts passed: STT/STJ/STX matrix, reviewed aliases, governed parent-place resolution, explicit special-destination precedence, ambiguous-parent fail-closed, reverse matching, unknown-route, luggage, and confirmation gates.",
 );
