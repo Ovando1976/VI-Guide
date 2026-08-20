@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "island": "stt",
   "tariffEffectiveDate": "2022-10-24",
-  "principle": "Published tariff labels are canonical. A traveler label may resolve only when equivalence to exactly one published tariff identity is explicitly reviewed. Otherwise it must fail closed and request clarification.",
+  "principle": "Published tariff labels remain fare identities even when geography has a parent/child hierarchy. A traveler label may resolve to a fare identity only when the requested subarea is known well enough to select the applicable published row; otherwise the quote must fail closed and request clarification.",
   "sourceBackedCanonicalNotes": [
     {
       "label": "Charlotte Amalie",
@@ -15,9 +15,9 @@
       "reason": "The published tariff separately names Airport Terminal / Cyril E. King Airport context. Broad Lindbergh Bay is a geographic area and is not treated as the airport terminal."
     },
     {
-      "label": "Dorothea",
-      "decision": "canonical_only_where_published",
-      "reason": "The explicit Red Hook relationship publishes Dorothea, while the main table separately publishes Dorothea Estate, Dorothea Lower, and Dorothea Upper with different fares. These identities must not collapse."
+      "label": "Dorothea / Dorothea Estate",
+      "decision": "same_geographic_estate_with_tariff_subzones",
+      "reason": "Reviewed local geography: Dorothea and Dorothea Estate refer to the same estate, which is comprised of Lower Dorothea and Upper Dorothea. The tariff nevertheless publishes Dorothea, Dorothea Estate, Dorothea Lower, and Dorothea Upper rows with different fares in different table contexts, so geographic equivalence must not erase the published fare-zone distinctions. When Lower or Upper is known, use that exact tariff subzone. When only broad Dorothea/Dorothea Estate is known and competing published rows could apply, require clarification rather than choosing a cheaper or more expensive row by inference."
     },
     {
       "label": "Havensight",
@@ -25,6 +25,13 @@
       "reason": "Published tariff identities distinguish Havensight (crossroad) and Havensight (WICO); generic Havensight is financially ambiguous."
     }
   ],
+  "geographicHierarchy": {
+    "Dorothea Estate": {
+      "aliases": ["Dorothea"],
+      "subareas": ["Dorothea Lower", "Dorothea Upper"],
+      "fareSelectionRule": "Geographic parent/alias knowledge may aid clarification and search, but may not select among distinct published tariff rows. Exact Lower/Upper input selects that subzone; otherwise retain the exact source row when the route itself publishes broad Dorothea, or require clarification when multiple applicable rows remain possible."
+    }
+  },
   "explicitlyFailClosedTravelerLabels": [
     "Town",
     "Downtown",
@@ -34,7 +41,7 @@
     "Dorothea area",
     "Dorothea neighborhood"
   ],
-  "protectedDistinctIdentities": [
+  "protectedTariffIdentities": [
     "Dorothea",
     "Dorothea Estate",
     "Dorothea Lower",
@@ -42,5 +49,5 @@
     "Havensight (crossroad)",
     "Havensight (WICO)"
   ],
-  "completionInterpretation": "Canonical endpoint audit is complete when every published source endpoint remains addressable as its exact governed identity and every non-reviewed broad/ambiguous traveler label fails closed. Completeness does not require inventing aliases for ambiguous labels."
+  "completionInterpretation": "Canonical endpoint audit is complete when geographic hierarchy is represented without collapsing financially distinct published rows, every published source endpoint remains addressable, reviewed aliases cannot manufacture a fare across tariff subzones, and every unresolved broad/ambiguous traveler label fails closed."
 }
