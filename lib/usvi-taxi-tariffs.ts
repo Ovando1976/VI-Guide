@@ -7,6 +7,7 @@ import {
   OfficialTaxiRateUnavailableError,
   resolveOfficialTaxiFareEndpoint,
 } from "@/lib/official-taxi-fare-engine";
+import { taxiEndpointGovernanceHold } from "@/lib/taxi-endpoint-governance";
 import { assertVerifiedActiveTariff } from "@/lib/taxi-tariff-governance";
 import type { FareBreakdown } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
@@ -14,49 +15,12 @@ import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 export { OfficialTaxiRateUnavailableError } from "@/lib/official-taxi-fare-engine";
 
-function normalize(value: string) {
-  return value
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-const STT_ENDPOINT_REVIEW_GATES = new Map<string, string>([
-  [
-    "town",
-    "Town cannot be treated as Charlotte Amalie until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "lindbergh bay",
-    "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "estate lindbergh bay",
-    "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "dorothea estate",
-    "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "estate dorothea",
-    "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
-  ],
-]);
-
 function assertEndpointIdentityConfirmed(estate: EstateRecord) {
-  if (estate.island !== "stt") return;
-
-  // Check both traveler/geographic identity and the resolved tariff identity.
-  // A deterministic “Estate X” -> “X” normalization must never erase a known
-  // governance hold such as Estate Lindbergh Bay or Estate Dorothea.
-  const identities = [estate.baseName, estate.tariffEndpointName].filter(
-    (value): value is string => Boolean(value),
-  );
-  const reason = identities
-    .map((value) => STT_ENDPOINT_REVIEW_GATES.get(normalize(value)))
-    .find((value): value is string => Boolean(value));
+  const reason = taxiEndpointGovernanceHold({
+    island: estate.island,
+    placeName: estate.baseName,
+    tariffEndpointName: estate.tariffEndpointName,
+  });
   if (!reason) return;
 
   throw new OfficialTaxiRateUnavailableError(
@@ -123,11 +87,7 @@ export async function quoteOfficialTaxiFare(params: {
   assertEndpointIdentityConfirmed(origin);
   assertEndpointIdentityConfirmed(destination);
 
-  const rule = findOfficialTaxiRateRule(
-    tariff.rules,
-    origin,
-    destination,
-  );
+  const rule = findOfficialTaxiRateRule(tariff.rules, origin, destination);
   if (!rule) {
     throw new OfficialTaxiRateUnavailableError(
       `No published official route rate matches ${params.origin.baseName} to ${params.destination.baseName}. Dispatch must verify the regulated fare.`,
