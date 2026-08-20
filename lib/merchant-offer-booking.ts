@@ -20,7 +20,7 @@ export type MerchantOfferBookingSnapshot = {
 
 export type MerchantOfferBookingResolution =
   | { ok: true; snapshot: MerchantOfferBookingSnapshot }
-  | { ok: false; error: string; status: 400 | 409 };
+  | { ok: false; error: string; status: 400 | 404 | 409 };
 
 export function resolveMerchantOfferForBooking(input: {
   offerId: unknown;
@@ -32,7 +32,7 @@ export function resolveMerchantOfferForBooking(input: {
     return { ok: false, error: "Choose a valid USVI Explorer offer.", status: 400 };
   }
   if (!input.record) {
-    return { ok: false, error: "This USVI Explorer offer was not found.", status: 409 };
+    return { ok: false, error: "This USVI Explorer offer was not found.", status: 404 };
   }
 
   const now = input.now ?? new Date();
