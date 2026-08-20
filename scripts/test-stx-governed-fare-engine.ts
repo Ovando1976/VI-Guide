@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 
 import {
   OfficialTaxiRateUnavailableError,
@@ -8,6 +10,148 @@ import {
   type OfficialTaxiFareEndpoint,
 } from "../lib/official-taxi-fare-engine";
 import type { OfficialTaxiRateRule } from "../types/taxi-operations";
+
+type StxRow = [destination: string, oneOrTwo: number, threePlusEach: number];
+type StxInventory = {
+  island: string;
+  effectiveDate: string;
+  pricingModel: { oneOrTwo: string; threePlusEach: string };
+  tables: Record<string, StxRow[]>;
+  sourceHeadingNormalization: Record<string, string>;
+};
+type StxDirectionReconciliation = {
+  method: string;
+  verifiedDuplicateCounterparts: Array<{ pair: string; result: string }>;
+  hubPairConflicts: unknown[];
+};
+
+const root = process.cwd();
+const inventory = JSON.parse(
+  fs.readFileSync(path.join(root, "data/st-croix-taxi-tariff-2022.rows.json"), "utf8"),
+) as StxInventory;
+const directionReconciliation = JSON.parse(
+  fs.readFileSync(
+    path.join(root, "data/taxi-tariff-repairs/stx-direct-reverse-reconciliation.json"),
+    "utf8",
+  ),
+) as StxDirectionReconciliation;
+
+function normalizedFinancialIdentity(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+assert.equal(inventory.island, "stx");
+assert.equal(inventory.effectiveDate, "2022-10-24");
+assert.deepEqual(inventory.pricingModel, {
+  oneOrTwo: "group_total",
+  threePlusEach: "per_person",
+});
+assert.deepEqual(inventory.sourceHeadingNormalization, { CAROMBOLA: "Carambola" });
+
+const expectedTableCounts: Record<string, number> = {
+  Airport: 52,
+  Christiansted: 57,
+  Frederiksted: 25,
+  Carambola: 9,
+};
+assert.deepEqual(
+  Object.fromEntries(Object.entries(inventory.tables).map(([hub, rows]) => [hub, rows.length])),
+  expectedTableCounts,
+);
+assert.equal(
+  Object.values(inventory.tables).reduce((sum, rows) => sum + rows.length, 0),
+  143,
+  "STX certification inventory must contain exactly 143 published rows",
+);
+
+for (const [hub, rows] of Object.entries(inventory.tables)) {
+  const exactLabels = rows.map(([destination]) => destination);
+  assert.equal(
+    new Set(exactLabels).size,
+    exactLabels.length,
+    `${hub} contains duplicate published destination labels`,
+  );
+  for (const [destination, oneOrTwo, threePlusEach] of rows) {
+    assert.ok(destination.trim().length > 0, `${hub} contains an empty financial identity`);
+    assert.ok(oneOrTwo > 0, `${hub} -> ${destination} has invalid 1-2 passenger fare`);
+    assert.ok(threePlusEach > 0, `${hub} -> ${destination} has invalid 3+ fare`);
+  }
+}
+
+const canonicalLabels = new Map<string, Set<string>>();
+for (const rows of Object.values(inventory.tables)) {
+  for (const [destination] of rows) {
+    const canonical = normalizedFinancialIdentity(destination);
+    const labels = canonicalLabels.get(canonical) ?? new Set<string>();
+    labels.add(destination);
+    canonicalLabels.set(canonical, labels);
+  }
+}
+for (const [canonical, labels] of canonicalLabels) {
+  assert.equal(
+    labels.size,
+    1,
+    `Distinct STX financial identities collapse under deterministic normalization: ${canonical} => ${[
+      ...labels,
+    ].join(" | ")}`,
+  );
+}
+
+const protectedDistinctions: Array<[string, string]> = [
+  ["Canaan", "Canaan Ridge"],
+  ["La Grange", "La Grange Hill"],
+  ["La Grange", "Little La Grange"],
+  ["Mt. Washington (East End)", "Mt. Washington (West)"],
+  ["Sandy Point", "Sandy Point (Nature Conserve)"],
+  ["Grove Place Village", "Grove Place Hills"],
+  ["Sunny Isle", "Sunny Isle/Island Center"],
+  ["Cane Bay", "Cane Bay Plantation"],
+  ["Carambola", "Carambolla"],
+];
+for (const [a, b] of protectedDistinctions) {
+  assert.notEqual(
+    normalizedFinancialIdentity(a),
+    normalizedFinancialIdentity(b),
+    `${a} and ${b} must remain distinct financial identities`,
+  );
+}
+
+assert.match(
+  directionReconciliation.method,
+  /published TO\/FROM table as bidirectional/i,
+  "STX direction certification must remain anchored to published TO/FROM semantics",
+);
+assert.equal(directionReconciliation.hubPairConflicts.length, 0);
+
+const hubNames = new Set(Object.keys(inventory.tables));
+let independentlyRepublishedCounterparts = 0;
+for (const [originHub, rows] of Object.entries(inventory.tables)) {
+  for (const [destination, oneOrTwo, threePlusEach] of rows) {
+    if (!hubNames.has(destination) || originHub >= destination) continue;
+    const reverse = inventory.tables[destination]?.find(([name]) => name === originHub);
+    if (!reverse) continue;
+    independentlyRepublishedCounterparts += 1;
+    assert.deepEqual(
+      [oneOrTwo, threePlusEach],
+      [reverse[1], reverse[2]],
+      `Published STX counterpart conflict: ${originHub} <-> ${destination}`,
+    );
+  }
+}
+assert.equal(
+  independentlyRepublishedCounterparts,
+  2,
+  "Expected exactly two independently republished STX hub counterparts",
+);
+assert.equal(
+  directionReconciliation.verifiedDuplicateCounterparts.filter(({ result }) => result === "exact_match")
+    .length,
+  2,
+);
 
 const airportToChristiansted: OfficialTaxiRateRule = {
   id: "stx-airport-christiansted",
@@ -81,4 +225,6 @@ assert.throws(
     error.code === "OFFICIAL_TAXI_RATE_UNAVAILABLE",
 );
 
-console.log("STX governed fare engine fail-closed cases passed.");
+console.log(
+  "STX governed fare engine, 143-row identity audit, and direction matrix passed.",
+);
