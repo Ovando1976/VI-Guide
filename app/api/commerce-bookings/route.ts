@@ -477,14 +477,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (result.notificationOutboxIds.length > 0) {
-      try {
-        await processBookingNotificationOutboxIds(
-          db,
-          result.notificationOutboxIds,
-        );
-      } catch (error) {
-        console.error("booking notification delivery attempt failed", error);
-      }
+      processBookingNotificationOutboxIds(result.notificationOutboxIds).catch(
+        (error) => {
+          console.error("booking notification delivery error", error);
+        },
+      );
     }
 
     return NextResponse.json(
@@ -494,8 +491,8 @@ export async function POST(request: NextRequest) {
         bookingId: result.bookingId,
         reference: result.reference,
         status: result.status,
+        ...(result.offer ? { offer: result.offer } : {}),
         linkedToTravelRequest: result.linkedToTravelRequest,
-        ...(result.offer ?? {}),
       },
       { status: result.duplicate ? 200 : 201 },
     );
@@ -641,7 +638,7 @@ function createReference(kind: CommerceBookingKind) {
 class CommerceBookingActionError extends Error {
   constructor(
     message: string,
-    public status: 400 | 409 | 429,
+    public status: 400 | 404 | 409 | 429,
   ) {
     super(message);
   }
