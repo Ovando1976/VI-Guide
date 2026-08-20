@@ -15,7 +15,6 @@ import { resolveOfficialTaxiFareEndpoint } from "@/lib/official-taxi-fare-engine
 import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 type UnknownRecord = Record<string, unknown>;
-
 type Island = TariffResolvablePlace["island"];
 
 const INPUTS = [
@@ -32,14 +31,26 @@ function readJson(file: string): unknown {
 
 function records(value: unknown): UnknownRecord[] {
   if (Array.isArray(value)) {
-    return value.filter((item): item is UnknownRecord => Boolean(item) && typeof item === "object");
+    return value.filter(
+      (item): item is UnknownRecord => Boolean(item) && typeof item === "object",
+    );
   }
   if (!value || typeof value !== "object") return [];
+
   const object = value as UnknownRecord;
   for (const key of ["records", "places", "features", "items", "entries", "data"]) {
     if (Array.isArray(object[key])) return records(object[key]);
   }
-  return [];
+
+  // Some authoritative place inputs (notably territory-coordinates.json) are
+  // keyed object maps instead of arrays. Preserve the key as identity/island
+  // evidence so those places participate in coverage rather than disappearing.
+  return Object.entries(object)
+    .filter(
+      (entry): entry is [string, UnknownRecord] =>
+        Boolean(entry[1]) && typeof entry[1] === "object" && !Array.isArray(entry[1]),
+    )
+    .map(([key, record]) => ({ ...record, __sourceKey: key }));
 }
 
 function text(record: UnknownRecord, keys: string[]): string | undefined {
@@ -50,7 +61,9 @@ function text(record: UnknownRecord, keys: string[]): string | undefined {
 }
 
 function islandCode(record: UnknownRecord): Island | undefined {
-  const raw = text(record, ["islandCode", "island", "island_id", "islandId"])
+  const explicit = text(record, ["islandCode", "island", "island_id", "islandId"]);
+  const sourceKey = text(record, ["__sourceKey"]);
+  const raw = (explicit ?? sourceKey?.split(":", 1)[0])
     ?.toLowerCase()
     .replace(/[^a-z0-9]/g, "");
   if (!raw) return undefined;
@@ -60,21 +73,55 @@ function islandCode(record: UnknownRecord): Island | undefined {
   return undefined;
 }
 
-function toPlace(record: UnknownRecord, source: string, index: number): TariffResolvablePlace | undefined {
+function toPlace(
+  record: UnknownRecord,
+  source: string,
+  index: number,
+): TariffResolvablePlace | undefined {
   const island = islandCode(record);
-  const name = text(record, ["name", "displayName", "title", "label", "fullName", "estate"]);
+  const name = text(record, [
+    "name",
+    "displayName",
+    "title",
+    "label",
+    "fullName",
+    "estate",
+    "matchedName",
+  ]);
   if (!island || !name) return undefined;
+
   const geoid = text(record, ["geoid", "GEOID", "estateGeoid", "estate_geoid"]);
-  const id = text(record, ["id", "placeId", "slug", "key"]) ?? geoid ?? `${source}:${index}:${name}`;
+  const sourceKey = text(record, ["__sourceKey"]);
+  const id =
+    text(record, ["id", "slug", "key"]) ??
+    sourceKey ??
+    geoid ??
+    text(record, ["placeId"]) ??
+    `${source}:${index}:${name}`;
+
   return {
     id,
     geoid,
     island,
     name,
-    tariffEndpointName: text(record, ["tariffEndpointName", "tariff_endpoint", "tariffEndpoint"]),
+    tariffEndpointName: text(record, [
+      "tariffEndpointName",
+      "tariff_endpoint",
+      "tariffEndpoint",
+    ]),
     parentPlaceId: text(record, ["parentPlaceId", "parent_id", "parentId"]),
-    parentEstateGeoid: text(record, ["parentEstateGeoid", "parent_estate_geoid", "estateGeoid", "estate_geoid"]),
-    parentEstateName: text(record, ["parentEstateName", "parent_estate_name", "estateName", "estate_name"]),
+    parentEstateGeoid: text(record, [
+      "parentEstateGeoid",
+      "parent_estate_geoid",
+      "estateGeoid",
+      "estate_geoid",
+    ]),
+    parentEstateName: text(record, [
+      "parentEstateName",
+      "parent_estate_name",
+      "estateName",
+      "estate_name",
+    ]),
   };
 }
 
@@ -119,7 +166,9 @@ export async function GET() {
     });
   }
 
-  const mappings: TariffLocationMapping[] = fs.existsSync(path.join(process.cwd(), MAPPINGS_PATH))
+  const mappings: TariffLocationMapping[] = fs.existsSync(
+    path.join(process.cwd(), MAPPINGS_PATH),
+  )
     ? (readJson(MAPPINGS_PATH) as TariffLocationMapping[])
     : [];
   const resolveReviewed = buildTariffLocationResolver(mappings);
