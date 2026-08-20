@@ -4,6 +4,8 @@ export type OfficialTaxiFareEndpoint = {
   geoid: string;
   baseName: string;
   tariffEndpointName?: string;
+  parentEstateGeoid?: string;
+  parentEstateName?: string;
 };
 
 export class OfficialTaxiRateUnavailableError extends Error {
@@ -41,7 +43,17 @@ const REVIEWED_ENDPOINT_ALIASES: Record<string, string> = {
 
 function canonicalEndpointName(value: string) {
   const normalized = normalize(value);
-  return REVIEWED_ENDPOINT_ALIASES[normalized] ?? normalized;
+  const reviewed = REVIEWED_ENDPOINT_ALIASES[normalized];
+  if (reviewed) return reviewed;
+
+  // Census estate geography is presented as “Estate X”, while the governed
+  // tariff tables generally publish the same official area as “X”. Removing
+  // only this fixed legal-geography prefix is deterministic name normalization,
+  // not fuzzy matching. Known disputed identities are still blocked in the
+  // quote governance layer after resolution.
+  return normalized.startsWith("estate ")
+    ? normalized.slice("estate ".length)
+    : normalized;
 }
 
 function hasName(values: string[] | undefined, name: string) {
@@ -60,6 +72,88 @@ function endpointMatches(
   return Boolean(
     ruleGeoids?.includes(endpoint.geoid) || hasName(ruleNames, fareName),
   );
+}
+
+function addPublishedCandidates(
+  candidates: Map<string, string>,
+  ruleGeoids: string[] | undefined,
+  ruleNames: string[] | undefined,
+  geoid?: string,
+  name?: string,
+) {
+  const geoidMatch = Boolean(geoid && ruleGeoids?.includes(geoid));
+  const nameMatch = Boolean(name && hasName(ruleNames, name));
+  if (!geoidMatch && !nameMatch) return;
+
+  for (const publishedName of ruleNames ?? []) {
+    const canonical = canonicalEndpointName(publishedName);
+    if (!canonical) continue;
+    if (!candidates.has(canonical)) candidates.set(canonical, publishedName);
+  }
+}
+
+function findUniquePublishedEndpointName(
+  rules: OfficialTaxiRateRule[],
+  geoid?: string,
+  name?: string,
+) {
+  const candidates = new Map<string, string>();
+
+  for (const rule of rules) {
+    addPublishedCandidates(
+      candidates,
+      rule.originEstateGeoids,
+      rule.originNames,
+      geoid,
+      name,
+    );
+    addPublishedCandidates(
+      candidates,
+      rule.destinationEstateGeoids,
+      rule.destinationNames,
+      geoid,
+      name,
+    );
+  }
+
+  return candidates.size === 1 ? [...candidates.values()][0] : undefined;
+}
+
+/**
+ * Attach a governed fare identity to a selectable place without inventing one.
+ *
+ * Precedence:
+ * 1. Explicit reviewed tariffEndpointName (special destinations win).
+ * 2. Unique exact published GEOID/name match.
+ * 3. Unique published match for the verified parent estate.
+ * 4. Leave unresolved so quoting fails closed.
+ *
+ * Parent resolution is intentionally exact and unique. It never uses map
+ * distance, nearest-road logic, fuzzy names, or geographic proximity.
+ */
+export function resolveOfficialTaxiFareEndpoint<
+  T extends OfficialTaxiFareEndpoint,
+>(
+  rules: OfficialTaxiRateRule[],
+  endpoint: T,
+): T & { tariffEndpointName?: string } {
+  if (endpoint.tariffEndpointName) return endpoint;
+
+  const direct = findUniquePublishedEndpointName(
+    rules,
+    endpoint.geoid,
+    endpoint.baseName,
+  );
+  if (direct) return { ...endpoint, tariffEndpointName: direct };
+
+  const parent = findUniquePublishedEndpointName(
+    rules,
+    endpoint.parentEstateGeoid,
+    endpoint.parentEstateName,
+  );
+  if (parent) return { ...endpoint, tariffEndpointName: parent };
+
+  return endpoint;
 }
 
 export function findOfficialTaxiRateRule(

@@ -5,7 +5,9 @@ import {
   calculateOfficialTaxiRuleFare,
   findOfficialTaxiRateRule,
   OfficialTaxiRateUnavailableError,
+  resolveOfficialTaxiFareEndpoint,
 } from "@/lib/official-taxi-fare-engine";
+import { taxiEndpointGovernanceHold } from "@/lib/taxi-endpoint-governance";
 import { assertVerifiedActiveTariff } from "@/lib/taxi-tariff-governance";
 import type { FareBreakdown } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
@@ -13,33 +15,14 @@ import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 export { OfficialTaxiRateUnavailableError } from "@/lib/official-taxi-fare-engine";
 
-function normalize(value: string) {
-  return value
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-}
-
-const STT_ENDPOINT_REVIEW_GATES = new Map<string, string>([
-  [
-    "town",
-    "Town cannot be treated as Charlotte Amalie until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "lindbergh bay",
-    "Lindbergh Bay cannot inherit Airport Terminal pricing until the tariff endpoint identity is confirmed.",
-  ],
-  [
-    "dorothea estate",
-    "Dorothea Estate cannot inherit Dorothea pricing until the tariff endpoint identity is confirmed.",
-  ],
-]);
-
 function assertEndpointIdentityConfirmed(estate: EstateRecord) {
-  if (estate.island !== "stt") return;
-  const reason = STT_ENDPOINT_REVIEW_GATES.get(normalize(estate.baseName));
+  const reason = taxiEndpointGovernanceHold({
+    island: estate.island,
+    placeName: estate.baseName,
+    tariffEndpointName: estate.tariffEndpointName,
+  });
   if (!reason) return;
+
   throw new OfficialTaxiRateUnavailableError(
     `Official fare confirmation required: ${reason} Dispatch must verify the regulated endpoint before quoting.`,
   );
@@ -93,14 +76,18 @@ export async function quoteOfficialTaxiFare(params: {
       "Taxi quotes cannot cross islands. Choose endpoints on the same island.",
     );
   }
-  assertEndpointIdentityConfirmed(params.origin);
-  assertEndpointIdentityConfirmed(params.destination);
+
   const tariff = await loadActiveTariff(params.origin.island);
-  const rule = findOfficialTaxiRateRule(
+  const origin = resolveOfficialTaxiFareEndpoint(tariff.rules, params.origin);
+  const destination = resolveOfficialTaxiFareEndpoint(
     tariff.rules,
-    params.origin,
     params.destination,
   );
+
+  assertEndpointIdentityConfirmed(origin);
+  assertEndpointIdentityConfirmed(destination);
+
+  const rule = findOfficialTaxiRateRule(tariff.rules, origin, destination);
   if (!rule) {
     throw new OfficialTaxiRateUnavailableError(
       `No published official route rate matches ${params.origin.baseName} to ${params.destination.baseName}. Dispatch must verify the regulated fare.`,
@@ -124,8 +111,9 @@ export async function quoteOfficialTaxiFare(params: {
     tariffSourceUrl: tariff.sourceUrl,
     tariffEffectiveAt: tariff.effectiveAt,
     rateRuleId: rule.id,
-    matchedOrigin: params.origin.baseName,
-    matchedDestination: params.destination.baseName,
+    matchedOrigin: origin.tariffEndpointName ?? params.origin.baseName,
+    matchedDestination:
+      destination.tariffEndpointName ?? params.destination.baseName,
     routeFare: amounts.routeFare,
     passengerFare: amounts.passengerFare,
     luggageFare: amounts.luggageFare,

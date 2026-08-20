@@ -18,10 +18,13 @@ export type TariffLocationMapping = {
 
 export type TariffResolvablePlace = {
   id: string;
+  geoid?: string;
   island: IslandCode;
   name: string;
   tariffEndpointName?: string;
   parentPlaceId?: string;
+  parentEstateGeoid?: string;
+  parentEstateName?: string;
 };
 
 function normalize(value: string) {
