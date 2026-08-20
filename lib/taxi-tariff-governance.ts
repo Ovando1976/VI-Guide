@@ -1,5 +1,3 @@
-import "server-only";
-
 import { applyKnownTariffReviewGates } from "@/lib/taxi-tariff-review-gates";
 import type {
   OfficialTaxiRateRule,
@@ -122,175 +120,69 @@ function normalizeRule(value: unknown, index: number): OfficialTaxiRateRule {
 
   const input = value as Record<string, unknown>;
   const id = requiredText(input.id, `Rule ${index + 1} ID`);
-  const originNames = requiredStringList(
-    input.originNames,
-    `Rule ${id} origin names`,
-  );
-  const destinationNames = requiredStringList(
-    input.destinationNames,
-    `Rule ${id} destination names`,
-  );
-  const originCandidateAliases = optionalStringList(
-    input.originCandidateAliases,
-    `Rule ${id} origin candidate aliases`,
-  );
-  const destinationCandidateAliases = optionalStringList(
-    input.destinationCandidateAliases,
-    `Rule ${id} destination candidate aliases`,
-  );
-  const originEstateGeoids = optionalStringList(
-    input.originEstateGeoids,
-    `Rule ${id} origin estate GEOIDs`,
-  );
-  const destinationEstateGeoids = optionalStringList(
-    input.destinationEstateGeoids,
-    `Rule ${id} destination estate GEOIDs`,
-  );
+  const originNames = requiredStringList(input.originNames, `Rule ${id} origin names`);
+  const destinationNames = requiredStringList(input.destinationNames, `Rule ${id} destination names`);
+  const originCandidateAliases = optionalStringList(input.originCandidateAliases, `Rule ${id} origin candidate aliases`);
+  const destinationCandidateAliases = optionalStringList(input.destinationCandidateAliases, `Rule ${id} destination candidate aliases`);
+  const originEstateGeoids = optionalStringList(input.originEstateGeoids, `Rule ${id} origin estate GEOIDs`);
+  const destinationEstateGeoids = optionalStringList(input.destinationEstateGeoids, `Rule ${id} destination estate GEOIDs`);
 
-  if (!originNames.length && !originEstateGeoids?.length) {
-    throw new Error(`Rule ${id} needs at least one origin name or GEOID.`);
-  }
-  if (!destinationNames.length && !destinationEstateGeoids?.length) {
-    throw new Error(`Rule ${id} needs at least one destination name or GEOID.`);
+  if (!originNames.length && !originEstateGeoids?.length) throw new Error(`Rule ${id} needs at least one origin name or GEOID.`);
+  if (!destinationNames.length && !destinationEstateGeoids?.length) throw new Error(`Rule ${id} needs at least one destination name or GEOID.`);
+
+  assertCandidateAliasesAreReviewOnly(originNames, originCandidateAliases, `Rule ${id} origin`);
+  assertCandidateAliasesAreReviewOnly(destinationNames, destinationCandidateAliases, `Rule ${id} destination`);
+
+  const additionalPassengerFare = optionalNonNegativeNumber(input.additionalPassengerFare, `Rule ${id} additional passenger fare`);
+  const perPersonFare = optionalPositiveNumber(input.perPersonFare, `Rule ${id} per-person fare`);
+  if (typeof additionalPassengerFare === "number" && typeof perPersonFare === "number") {
+    throw new Error(`Rule ${id} cannot define both an additional-passenger fare and a per-person fare.`);
   }
 
-  assertCandidateAliasesAreReviewOnly(
-    originNames,
-    originCandidateAliases,
-    `Rule ${id} origin`,
-  );
-  assertCandidateAliasesAreReviewOnly(
-    destinationNames,
-    destinationCandidateAliases,
-    `Rule ${id} destination`,
-  );
+  const fareConfirmationRequired = optionalFareConfirmationScope(input.fareConfirmationRequired, `Rule ${id} fare confirmation scope`);
+  const fareConfirmationReason = typeof input.fareConfirmationReason === "string" && input.fareConfirmationReason.trim() ? input.fareConfirmationReason.trim() : undefined;
+  if (fareConfirmationRequired && !fareConfirmationReason) throw new Error(`Rule ${id} needs a fare confirmation reason when automatic quoting is restricted.`);
+  if (!fareConfirmationRequired && fareConfirmationReason) throw new Error(`Rule ${id} cannot define a fare confirmation reason without a confirmation scope.`);
 
-  const additionalPassengerFare = optionalNonNegativeNumber(
-    input.additionalPassengerFare,
-    `Rule ${id} additional passenger fare`,
-  );
-  const perPersonFare = optionalPositiveNumber(
-    input.perPersonFare,
-    `Rule ${id} per-person fare`,
-  );
-  if (
-    typeof additionalPassengerFare === "number" &&
-    typeof perPersonFare === "number"
-  ) {
-    throw new Error(
-      `Rule ${id} cannot define both an additional-passenger fare and a per-person fare.`,
-    );
-  }
-
-  const fareConfirmationRequired = optionalFareConfirmationScope(
-    input.fareConfirmationRequired,
-    `Rule ${id} fare confirmation scope`,
-  );
-  const fareConfirmationReason =
-    typeof input.fareConfirmationReason === "string" &&
-    input.fareConfirmationReason.trim()
-      ? input.fareConfirmationReason.trim()
-      : undefined;
-  if (fareConfirmationRequired && !fareConfirmationReason) {
-    throw new Error(
-      `Rule ${id} needs a fare confirmation reason when automatic quoting is restricted.`,
-    );
-  }
-  if (!fareConfirmationRequired && fareConfirmationReason) {
-    throw new Error(
-      `Rule ${id} cannot define a fare confirmation reason without a confirmation scope.`,
-    );
-  }
-
-  const notes =
-    typeof input.notes === "string" && input.notes.trim()
-      ? input.notes.trim()
-      : undefined;
+  const notes = typeof input.notes === "string" && input.notes.trim() ? input.notes.trim() : undefined;
 
   return {
     id,
     originNames,
     destinationNames,
     ...(originCandidateAliases?.length ? { originCandidateAliases } : {}),
-    ...(destinationCandidateAliases?.length
-      ? { destinationCandidateAliases }
-      : {}),
+    ...(destinationCandidateAliases?.length ? { destinationCandidateAliases } : {}),
     ...(originEstateGeoids?.length ? { originEstateGeoids } : {}),
     ...(destinationEstateGeoids?.length ? { destinationEstateGeoids } : {}),
-    onePassengerFare: positiveNumber(
-      input.onePassengerFare,
-      `Rule ${id} one-passenger fare`,
-    ),
-    ...(typeof additionalPassengerFare === "number"
-      ? { additionalPassengerFare }
-      : {}),
+    onePassengerFare: positiveNumber(input.onePassengerFare, `Rule ${id} one-passenger fare`),
+    ...(typeof additionalPassengerFare === "number" ? { additionalPassengerFare } : {}),
     ...(typeof perPersonFare === "number" ? { perPersonFare } : {}),
-    ...(typeof input.luggageFarePerPiece !== "undefined"
-      ? {
-          luggageFarePerPiece: nonNegativeNumber(
-            input.luggageFarePerPiece,
-            `Rule ${id} luggage fare`,
-          ),
-        }
-      : {}),
-    ...(typeof input.luggageIncluded !== "undefined"
-      ? {
-          luggageIncluded: optionalNonNegativeInteger(
-            input.luggageIncluded,
-            `Rule ${id} included luggage`,
-          ),
-        }
-      : {}),
-    ...(fareConfirmationRequired
-      ? { fareConfirmationRequired, fareConfirmationReason }
-      : {}),
+    ...(typeof input.luggageFarePerPiece !== "undefined" ? { luggageFarePerPiece: nonNegativeNumber(input.luggageFarePerPiece, `Rule ${id} luggage fare`) } : {}),
+    ...(typeof input.luggageIncluded !== "undefined" ? { luggageIncluded: optionalNonNegativeInteger(input.luggageIncluded, `Rule ${id} included luggage`) } : {}),
+    ...(fareConfirmationRequired ? { fareConfirmationRequired, fareConfirmationReason } : {}),
     ...(notes ? { notes } : {}),
   };
 }
 
 export function normalizeTariffDraft(
   input: TaxiTariffDraftInput,
-): Omit<
-  OfficialTaxiTariff,
-  | "id"
-  | "status"
-  | "activationStatus"
-  | "activatedAt"
-  | "activatedBy"
-  | "activationReviewReference"
-> {
+): Omit<OfficialTaxiTariff, "id" | "status" | "activationStatus" | "activatedAt" | "activatedBy" | "activationReviewReference"> {
   const island = requiredText(input.island, "Island") as IslandCode;
-  if (!ISLANDS.includes(island)) {
-    throw new Error("Island must be St. Thomas, St. John, or St. Croix.");
-  }
+  if (!ISLANDS.includes(island)) throw new Error("Island must be St. Thomas, St. John, or St. Croix.");
 
   const version = requiredText(input.version, "Tariff version");
   const effectiveAt = requiredText(input.effectiveAt, "Effective date");
-  if (!Number.isFinite(Date.parse(effectiveAt))) {
-    throw new Error("Effective date is invalid.");
-  }
+  if (!Number.isFinite(Date.parse(effectiveAt))) throw new Error("Effective date is invalid.");
 
   const sourceUrl = requiredText(input.sourceUrl, "Official source URL");
   let parsedSource: URL;
-  try {
-    parsedSource = new URL(sourceUrl);
-  } catch {
-    throw new Error("Official source URL is invalid.");
-  }
-  if (!["http:", "https:"].includes(parsedSource.protocol)) {
-    throw new Error("Official source URL must use HTTP or HTTPS.");
-  }
+  try { parsedSource = new URL(sourceUrl); } catch { throw new Error("Official source URL is invalid."); }
+  if (!["http:", "https:"].includes(parsedSource.protocol)) throw new Error("Official source URL must use HTTP or HTTPS.");
 
-  if (!Array.isArray(input.rules) || !input.rules.length) {
-    throw new Error("At least one official route rule is required.");
-  }
-  if (input.rules.length > 2000) {
-    throw new Error("A tariff cannot contain more than 2,000 route rules.");
-  }
+  if (!Array.isArray(input.rules) || !input.rules.length) throw new Error("At least one official route rule is required.");
+  if (input.rules.length > 2000) throw new Error("A tariff cannot contain more than 2,000 route rules.");
 
-  const rules = input.rules.map((rule, index) =>
-    normalizeRule(applyKnownTariffReviewGates(version, rule), index),
-  );
+  const rules = input.rules.map((rule, index) => normalizeRule(applyKnownTariffReviewGates(version, rule), index));
   const ids = new Set<string>();
   for (const rule of rules) {
     if (ids.has(rule.id)) throw new Error(`Duplicate rule ID: ${rule.id}.`);
@@ -309,33 +201,14 @@ export function normalizeTariffDraft(
   };
 }
 
-export function assertVerifiedActiveTariff(
-  tariff: OfficialTaxiTariff,
-): OfficialTaxiTariff {
+export function assertVerifiedActiveTariff(tariff: OfficialTaxiTariff): OfficialTaxiTariff {
   normalizeTariffDraft(tariff);
-  if (tariff.status !== "active") {
-    throw new Error("The selected tariff is not active.");
-  }
-  if (tariff.issuingAuthority !== "Virgin Islands Taxicab Commission") {
-    throw new Error(
-      "The active tariff does not identify the required issuing authority.",
-    );
-  }
-  if (tariff.currency !== "USD") {
-    throw new Error("The active tariff currency is invalid.");
-  }
-  if (Date.parse(tariff.effectiveAt) > Date.now()) {
-    throw new Error("The active tariff is not effective yet.");
-  }
-  if (
-    tariff.activationStatus !== "verified" ||
-    !tariff.activatedBy ||
-    !tariff.activatedAt ||
-    !tariff.activationReviewReference
-  ) {
-    throw new Error(
-      "The active tariff was not activated through the reviewed governance workflow.",
-    );
+  if (tariff.status !== "active") throw new Error("The selected tariff is not active.");
+  if (tariff.issuingAuthority !== "Virgin Islands Taxicab Commission") throw new Error("The active tariff does not identify the required issuing authority.");
+  if (tariff.currency !== "USD") throw new Error("The active tariff currency is invalid.");
+  if (Date.parse(tariff.effectiveAt) > Date.now()) throw new Error("The active tariff is not effective yet.");
+  if (tariff.activationStatus !== "verified" || !tariff.activatedBy || !tariff.activatedAt || !tariff.activationReviewReference) {
+    throw new Error("The active tariff was not activated through the reviewed governance workflow.");
   }
   return tariff;
 }

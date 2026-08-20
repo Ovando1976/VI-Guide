@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "island": "stt",
+  "tariffVersion": "vicc-2022-10-24-stta-2026-web-v1",
+  "reviewReference": "issue-385-stt-airport-release-gate-2026-08-20",
+  "sourceUrl": "https://www.saintthomastaxi.com/rates.html",
+  "scope": "Only the two STT airport release-gate rules already present in the reviewed repository source. This manifest does not approve the rest of the draft tariff. Generic Havensight is intentionally excluded because it is ambiguous between Havensight (Crossroad) and Havensight (WICO).",
+  "rules": [
+    {
+      "id": "to-town-airport-terminal",
+      "originNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "destinationNames": [
+        "Town",
+        "Charlotte Amalie"
+      ],
+      "onePassengerFare": 11,
+      "perPersonFare": 9,
+      "notes": "St. Thomas Taxi Association 2026 table: Airport Terminal to Town. “Two or More” is modeled as the published per-person fare.",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    },
+    {
+      "id": "to-airport-havensight-crossroad",
+      "originNames": [
+        "Havensight (Crossroad)",
+        "Havensight Crossroad"
+      ],
+      "destinationNames": [
+        "Airport Terminal",
+        "Lindbergh Bay"
+      ],
+      "onePassengerFare": 12,
+      "perPersonFare": 11,
+      "notes": "St. Thomas Taxi Association 2026 table: Havensight (Crossroad) to Airport. “Two or More” is modeled as the published per-person fare. The generic Havensight alias is intentionally excluded because it is ambiguous with Havensight (WICO).",
+      "luggageFarePerPiece": 3,
+      "luggageIncluded": 0
+    }
+  ]
+}
