@@ -16,6 +16,8 @@ type Relationship = {
   twoPlusEach: number;
   kind: "route" | "within-town";
 };
+type FiveColumnFareRow = [string, number, number, number | null, number | null];
+type ExplicitFareRow = [string, string, number, number];
 
 const endpoint = (baseName: string): OfficialTaxiFareEndpoint => ({ geoid: `stt-test:${baseName}`, baseName });
 const slug = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[’']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -28,16 +30,21 @@ const makeRelationship = (origin: string, destination: string, onePassenger: num
   kind,
 });
 
+const hotels = inventory.tables.hotelsToFromCharlotteAmalieAndAirport as FiveColumnFareRow[];
+const misc = inventory.tables.miscToFromCharlotteAmalieAndAirport as FiveColumnFareRow[];
+const explicit = inventory.tables.explicitToFrom as ExplicitFareRow[];
 const relationships: Relationship[] = [];
-for (const [name, townOne, townTwo, airportOne, airportTwo] of inventory.tables.hotelsToFromCharlotteAmalieAndAirport) {
-  relationships.push(makeRelationship(name, "Charlotte Amalie", townOne as number, townTwo as number));
+for (const [name, townOne, townTwo, airportOne, airportTwo] of hotels) {
+  relationships.push(makeRelationship(name, "Charlotte Amalie", townOne, townTwo));
+  assert.notEqual(airportOne, null);
+  assert.notEqual(airportTwo, null);
   relationships.push(makeRelationship(name, "Airport Terminal", airportOne as number, airportTwo as number));
 }
-for (const [name, townOne, townTwo, airportOne, airportTwo] of inventory.tables.miscToFromCharlotteAmalieAndAirport) {
-  relationships.push(makeRelationship(name, "Charlotte Amalie", townOne as number, townTwo as number));
-  if (airportOne !== null && airportTwo !== null) relationships.push(makeRelationship(name, "Airport Terminal", airportOne as number, airportTwo as number));
+for (const [name, townOne, townTwo, airportOne, airportTwo] of misc) {
+  relationships.push(makeRelationship(name, "Charlotte Amalie", townOne, townTwo));
+  if (airportOne !== null && airportTwo !== null) relationships.push(makeRelationship(name, "Airport Terminal", airportOne, airportTwo));
 }
-for (const [origin, destination, onePassenger, twoPlusEach] of inventory.tables.explicitToFrom) {
+for (const [origin, destination, onePassenger, twoPlusEach] of explicit) {
   relationships.push(makeRelationship(origin, destination || origin, onePassenger, twoPlusEach, destination ? "route" : "within-town"));
 }
 
@@ -103,29 +110,20 @@ for (const relationship of relationships) {
 assert.equal(routeCount, 230);
 assert.equal(withinTownCount, 1);
 
-// Protected financially distinct identities must never collapse through the governed matcher.
-const protectedNames = [
-  "Dorothea",
-  "Dorothea Estate",
-  "Dorothea Lower",
-  "Dorothea Upper",
-  "Havensight (crossroad)",
-  "Havensight (WICO)",
-];
+const protectedNames = ["Dorothea", "Dorothea Estate", "Dorothea Lower", "Dorothea Upper", "Havensight (crossroad)", "Havensight (WICO)"];
 for (const protectedName of protectedNames) assert.ok(inventory.protectedDistinctIdentities.includes(protectedName));
 
 const redHookDorothea = relationships.find((entry) => entry.origin === "Red Hook" && entry.destination === "Dorothea");
 assert.ok(redHookDorothea);
 assert.deepEqual([redHookDorothea.onePassenger, redHookDorothea.twoPlusEach], [23, 16]);
 
-const dorotheaVariants = inventory.tables.miscToFromCharlotteAmalieAndAirport.filter(([name]) => String(name).startsWith("Dorothea "));
-assert.deepEqual(dorotheaVariants.map(([name, townOne, townTwo, airportOne, airportTwo]) => [name, townOne, townTwo, airportOne, airportTwo]), [
+const dorotheaVariants = misc.filter(([name]) => name.startsWith("Dorothea "));
+assert.deepEqual(dorotheaVariants, [
   ["Dorothea Estate", 18, 14, 18, 14],
   ["Dorothea Lower", 25, 20, 25, 20],
   ["Dorothea Upper", 20, 15, 20, 15],
 ]);
 
-// Conditional provisions not represented by the current quote engine remain fail-closed/non-computed.
 assert.equal(inventory.additionalCharges.waitingPerMinute, 2);
 assert.equal(inventory.additionalCharges.waitingFreeMinutes, 5);
 assert.equal(inventory.additionalCharges.afterHoursMidnightTo6amPerPerson, 3);
