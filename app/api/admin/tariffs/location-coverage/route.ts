@@ -16,12 +16,23 @@ import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 type UnknownRecord = Record<string, unknown>;
 type Island = TariffResolvablePlace["island"];
+type CoveragePlace = TariffResolvablePlace & {
+  lat?: number;
+  lng?: number;
+};
+type EstateBoundary = {
+  geoid: string;
+  island: Island;
+  name: string;
+  geometry: GeoJSON.Polygon | GeoJSON.MultiPolygon;
+};
 
 const INPUTS = [
   "data/generated/geographic-dictionary-cleaned.json",
   "data/generated/modern-estates.normalized.json",
   "data/territory-coordinates.json",
 ];
+const ESTATES_PATH = "data/generated/modern-estates.normalized.json";
 const MAPPINGS_PATH = "data/tariff-location-mappings.reviewed.json";
 const ISLANDS: Island[] = ["stt", "stj", "stx"];
 
@@ -65,6 +76,14 @@ function text(record: UnknownRecord, keys: string[]): string | undefined {
   }
 }
 
+function numberValue(record: UnknownRecord, keys: string[]): number | undefined {
+  for (const key of keys) {
+    const value = record[key];
+    const parsed = typeof value === "number" ? value : typeof value === "string" ? Number(value) : NaN;
+    if (Number.isFinite(parsed)) return parsed;
+  }
+}
+
 function islandCode(record: UnknownRecord): Island | undefined {
   const explicit = text(record, ["islandCode", "island", "island_id", "islandId"]);
   const sourceKey = text(record, ["__sourceKey"]);
@@ -82,7 +101,7 @@ function toPlace(
   rawRecord: UnknownRecord,
   source: string,
   index: number,
-): TariffResolvablePlace | undefined {
+): CoveragePlace | undefined {
   const record = flattenedRecord(rawRecord);
   const island = islandCode(record);
   const name = text(record, [
@@ -113,6 +132,8 @@ function toPlace(
     geoid,
     island,
     name,
+    lat: numberValue(record, ["lat", "latitude", "CENTLAT", "centLat"]),
+    lng: numberValue(record, ["lng", "lon", "longitude", "CENTLON", "centLon"]),
     tariffEndpointName: text(record, [
       "tariffEndpointName",
       "tariff_endpoint",
@@ -131,6 +152,111 @@ function toPlace(
       "estateName",
       "estate_name",
     ]),
+  };
+}
+
+function estateGeometry(record: UnknownRecord): GeoJSON.Polygon | GeoJSON.MultiPolygon | undefined {
+  const geometry = record.geometry;
+  if (!geometry || typeof geometry !== "object" || Array.isArray(geometry)) return undefined;
+  const candidate = geometry as { type?: unknown; coordinates?: unknown };
+  if (
+    (candidate.type === "Polygon" || candidate.type === "MultiPolygon") &&
+    Array.isArray(candidate.coordinates)
+  ) {
+    return candidate as GeoJSON.Polygon | GeoJSON.MultiPolygon;
+  }
+}
+
+function toEstateBoundary(rawRecord: UnknownRecord): EstateBoundary | undefined {
+  const record = flattenedRecord(rawRecord);
+  const island = islandCode(record);
+  const geoid = text(record, ["geoid", "GEOID", "id"]);
+  const name = text(record, ["baseName", "BASENAME", "name", "NAME", "fullName", "ESTATE"]);
+  const geometry = estateGeometry(rawRecord);
+  if (!island || !geoid || !name || !geometry) return undefined;
+  return { geoid, island, name, geometry };
+}
+
+function pointOnSegment(
+  lng: number,
+  lat: number,
+  a: number[],
+  b: number[],
+) {
+  const [ax, ay] = a;
+  const [bx, by] = b;
+  const cross = (lng - ax) * (by - ay) - (lat - ay) * (bx - ax);
+  if (Math.abs(cross) > 1e-10) return false;
+  return (
+    lng >= Math.min(ax, bx) - 1e-10 &&
+    lng <= Math.max(ax, bx) + 1e-10 &&
+    lat >= Math.min(ay, by) - 1e-10 &&
+    lat <= Math.max(ay, by) + 1e-10
+  );
+}
+
+function pointInRing(lng: number, lat: number, ring: number[][]) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[j];
+    const b = ring[i];
+    if (pointOnSegment(lng, lat, a, b)) return true;
+    const [xi, yi] = b;
+    const [xj, yj] = a;
+    const intersects =
+      yi > lat !== yj > lat &&
+      lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function pointInPolygon(lng: number, lat: number, polygon: number[][][]) {
+  if (!polygon.length || !pointInRing(lng, lat, polygon[0])) return false;
+  return !polygon.slice(1).some((hole) => pointInRing(lng, lat, hole));
+}
+
+function containsPoint(
+  geometry: GeoJSON.Polygon | GeoJSON.MultiPolygon,
+  lng: number,
+  lat: number,
+) {
+  if (geometry.type === "Polygon") {
+    return pointInPolygon(lng, lat, geometry.coordinates);
+  }
+  return geometry.coordinates.some((polygon) => pointInPolygon(lng, lat, polygon));
+}
+
+function attachContainingEstate(
+  place: CoveragePlace,
+  boundaries: EstateBoundary[],
+): CoveragePlace {
+  if (
+    place.parentEstateGeoid ||
+    place.parentEstateName ||
+    typeof place.lat !== "number" ||
+    typeof place.lng !== "number"
+  ) {
+    return place;
+  }
+
+  const matches = new Map<string, EstateBoundary>();
+  for (const boundary of boundaries) {
+    if (boundary.island !== place.island) continue;
+    if (containsPoint(boundary.geometry, place.lng, place.lat)) {
+      matches.set(boundary.geoid, boundary);
+    }
+  }
+
+  // Exact containment is useful only when official geography is unambiguous.
+  // Boundary overlaps, offshore points, and missing polygons stay fail-closed.
+  if (matches.size !== 1) return place;
+  const parent = [...matches.values()][0];
+  return {
+    ...place,
+    parentPlaceId: place.parentPlaceId ?? parent.geoid,
+    parentEstateGeoid: parent.geoid,
+    parentEstateName: parent.name,
   };
 }
 
@@ -165,7 +291,7 @@ async function loadActiveTariffs() {
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const places = new Map<string, TariffResolvablePlace>();
+  const places = new Map<string, CoveragePlace>();
   for (const input of INPUTS) {
     const full = path.join(process.cwd(), input);
     if (!fs.existsSync(full)) continue;
@@ -174,6 +300,12 @@ export async function GET() {
       if (place) places.set(`${place.island}:${place.id}`, place);
     });
   }
+
+  const estateBoundaries = fs.existsSync(path.join(process.cwd(), ESTATES_PATH))
+    ? records(readJson(ESTATES_PATH))
+        .map(toEstateBoundary)
+        .filter((item): item is EstateBoundary => Boolean(item))
+    : [];
 
   const mappings: TariffLocationMapping[] = fs.existsSync(
     path.join(process.cwd(), MAPPINGS_PATH),
@@ -191,16 +323,24 @@ export async function GET() {
     );
   }
 
-  const enrichedPlaces = [...places.values()].map((place) => {
-    const reviewed = resolveReviewed(place);
+  const enrichedPlaces = [...places.values()].map((rawPlace) => {
+    const reviewed = resolveReviewed(rawPlace);
     if (reviewed.tariffEndpointName) {
-      return { ...place, tariffEndpointName: reviewed.tariffEndpointName };
+      return { ...rawPlace, tariffEndpointName: reviewed.tariffEndpointName };
     }
 
-    const islandTariffs = tariffsByIsland.get(place.island) ?? [];
-    if (islandTariffs.length !== 1) return place;
+    const islandTariffs = tariffsByIsland.get(rawPlace.island) ?? [];
+    if (islandTariffs.length !== 1) return rawPlace;
+    const rules = islandTariffs[0].rules ?? [];
 
-    const resolved = resolveOfficialTaxiFareEndpoint(islandTariffs[0].rules ?? [], {
+    // Direct published identity always wins over inherited geography.
+    const direct = resolveOfficialTaxiFareEndpoint(rules, rawPlace);
+    if (direct.tariffEndpointName) {
+      return { ...rawPlace, tariffEndpointName: direct.tariffEndpointName };
+    }
+
+    const place = attachContainingEstate(rawPlace, estateBoundaries);
+    const resolved = resolveOfficialTaxiFareEndpoint(rules, {
       geoid: place.geoid ?? place.id,
       baseName: place.name,
       tariffEndpointName: place.tariffEndpointName,
@@ -209,7 +349,10 @@ export async function GET() {
     });
 
     return resolved.tariffEndpointName
-      ? { ...place, tariffEndpointName: resolved.tariffEndpointName }
+      ? {
+          ...place,
+          tariffEndpointName: resolved.tariffEndpointName,
+        }
       : place;
   });
 
@@ -236,12 +379,23 @@ export async function GET() {
     active.status === "loaded" &&
     ISLANDS.every((island) => (tariffsByIsland.get(island)?.length ?? 0) === 1);
 
+  const coordinatePlaces = [...places.values()].filter(
+    (place) => typeof place.lat === "number" && typeof place.lng === "number",
+  );
+  const coordinatePlacesWithUniqueEstate = coordinatePlaces.filter((place) => {
+    const attached = attachContainingEstate(place, estateBoundaries);
+    return Boolean(attached.parentEstateGeoid);
+  }).length;
+
   return NextResponse.json({
     ok: catalogReady && audit.unresolved === 0,
     policy:
-      "Every selectable place must resolve through an explicit reviewed endpoint, an exact unique published endpoint, or an exact unique verified parent-estate endpoint. No proximity, fuzzy, distance, or road-based tariff inference is allowed.",
+      "Every selectable place must resolve through an explicit reviewed endpoint, an exact unique published endpoint, or an exact unique verified containing-estate endpoint. Exact point-in-polygon containment is permitted geography; proximity, nearest-place, fuzzy, distance, and road-based tariff inference are prohibited.",
     inputs: INPUTS,
     mappingCount: mappings.length,
+    estateBoundaryCount: estateBoundaries.length,
+    coordinatePlaceCount: coordinatePlaces.length,
+    coordinatePlacesWithUniqueEstate,
     tariffCatalogStatus: active.status,
     tariffCatalogReason: "reason" in active ? active.reason : undefined,
     activeTariffCount: active.tariffs.length,
