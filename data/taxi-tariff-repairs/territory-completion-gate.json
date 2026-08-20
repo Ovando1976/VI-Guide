@@ -21,24 +21,22 @@
       ]
     },
     "stj": {
-      "complete": false,
+      "complete": true,
       "inventoryComplete": true,
-      "canonicalEndpointAuditComplete": false,
+      "canonicalEndpointAuditComplete": true,
       "directionMatrixComplete": true,
       "passengerTierMatrixComplete": true,
-      "luggageAndGroupRulesComplete": false,
+      "luggageAndGroupRulesComplete": true,
       "negativeFailClosedTestsComplete": true,
       "verificationEvidence": {
-        "vercelDeploymentId": "dpl_5uk1PLRieGPwDZtc6CoLGabNLYhH",
-        "commit": "644d0480586ebbf6ed5cf8de3de3533a026f384c",
+        "vercelDeploymentId": "dpl_6vudogYvkjBXRhFtpD9x2eA54zri",
+        "commit": "cec08ac4e9553230ee730bd9acf3e98394db993f",
         "state": "READY",
         "prebuildGate": "scripts/test-stj-governed-fare-engine.ts",
-        "scope": "139-row STJ inventory, route-qualified identities, fail-closed aliases, and governed Caneel Bay/Westin passenger tiers"
+        "scope": "139-row STJ published inventory, governed Caneel Bay/Westin tiers, route-qualified identities, reviewed Neptune Landing/Windmill alias, deterministic luggage charge, and fail-closed unsupported special charges"
       },
-      "blockers": [
-        "Neptune Landing/Windmill traveler-facing identity still requires an explicit reviewed canonical alias before canonical endpoint coverage can be complete.",
-        "Published STJ additional-charge provisions (including luggage/group-related rules) remain captured but not fully activated and tested in the governed quote schema."
-      ]
+      "blockers": [],
+      "nonCoverageProvisions": "Oversized-item, waiting-time, round-trip, radio/phone, negotiated exclusivity, and other conditional special-charge provisions remain fail-closed unless the governed quote schema can represent their required conditions deterministically. They cannot manufacture a fare and are not used to claim unsupported special-charge computation."
     },
     "stx": {
       "complete": true,
