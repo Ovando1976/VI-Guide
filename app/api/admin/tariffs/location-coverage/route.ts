@@ -12,6 +12,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { resolveOfficialTaxiFareEndpoint } from "@/lib/official-taxi-fare-engine";
+import { taxiEndpointGovernanceHold } from "@/lib/taxi-endpoint-governance";
 import type { OfficialTaxiTariff } from "@/types/taxi-operations";
 
 type UnknownRecord = Record<string, unknown>;
@@ -369,19 +370,43 @@ export async function GET() {
   });
 
   const audit = auditTariffLocationCoverage(enrichedPlaces, mappings);
+  const governanceBlocked = enrichedPlaces.flatMap((place) => {
+    if (!place.tariffEndpointName) return [];
+    const reason = taxiEndpointGovernanceHold({
+      island: place.island,
+      placeName: place.name,
+      tariffEndpointName: place.tariffEndpointName,
+    });
+    return reason
+      ? [{
+          island: place.island,
+          placeId: place.id,
+          placeName: place.name,
+          tariffEndpointName: place.tariffEndpointName,
+          reason,
+        }]
+      : [];
+  });
+  const governanceBlockedKeys = new Set(
+    governanceBlocked.map((place) => `${place.island}:${place.placeId}`),
+  );
+
   const byIsland = Object.fromEntries(
     ISLANDS.map((island) => {
       const subset = audit.resolutions.filter((item) => item.island === island);
       const unresolved = subset.filter(
         (item) => item.method === "unresolved",
       ).length;
+      const blocked = governanceBlocked.filter((item) => item.island === island).length;
+      const quoteEligible = subset.length - unresolved - blocked;
       const tariffCount = tariffsByIsland.get(island)?.length ?? 0;
       return [
         island,
         {
           total: subset.length,
-          resolved: subset.length - unresolved,
+          quoteEligible,
           unresolved,
+          governanceBlocked: blocked,
           activeTariffCount: tariffCount,
           tariffCatalogReady: tariffCount === 1,
         },
@@ -394,6 +419,11 @@ export async function GET() {
     ISLANDS.every(
       (island) => (tariffsByIsland.get(island)?.length ?? 0) === 1,
     );
+  const quoteEligible = audit.resolutions.filter(
+    (item) =>
+      item.method !== "unresolved" &&
+      !governanceBlockedKeys.has(`${item.island}:${item.placeId}`),
+  ).length;
 
   const coordinatePlaces = [...places.values()].filter(
     (place) => typeof place.lat === "number" && typeof place.lng === "number",
@@ -404,9 +434,12 @@ export async function GET() {
   }).length;
 
   return NextResponse.json({
-    ok: catalogReady && audit.unresolved === 0,
+    ok:
+      catalogReady &&
+      audit.unresolved === 0 &&
+      governanceBlocked.length === 0,
     policy:
-      "Every selectable place must resolve through an explicit reviewed endpoint, an exact unique published endpoint, or an exact unique verified containing-estate endpoint. Exact point-in-polygon containment is permitted geography; proximity, nearest-place, fuzzy, distance, and road-based tariff inference are prohibited.",
+      "Every selectable place must resolve through an explicit reviewed endpoint, an exact unique published endpoint, or an exact unique verified containing-estate endpoint, and it must pass the same endpoint governance holds as runtime quoting. Exact point-in-polygon containment is permitted geography; proximity, nearest-place, fuzzy, distance, and road-based tariff inference are prohibited.",
     inputs: INPUTS,
     mappingCount: mappings.length,
     estateBoundaryCount: estateBoundaries.length,
@@ -417,10 +450,12 @@ export async function GET() {
     activeTariffCount: active.tariffs.length,
     catalogReady,
     total: audit.total,
-    resolved: audit.resolved,
+    quoteEligible,
     unresolved: audit.unresolved,
-    coverage: audit.coverage,
+    governanceBlockedCount: governanceBlocked.length,
+    coverage: audit.total === 0 ? 1 : quoteEligible / audit.total,
     byIsland,
+    governanceBlocked,
     unresolvedPlaces: audit.unresolvedPlaces.slice(0, 500),
     unresolvedTruncated: audit.unresolvedPlaces.length > 500,
   });
