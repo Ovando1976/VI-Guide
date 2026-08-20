@@ -2,46 +2,66 @@
   "schemaVersion": 1,
   "island": "stt",
   "tariffEffectiveDate": "2022-10-24",
-  "principle": "Published tariff labels remain fare identities even when geography has a parent/child hierarchy. A traveler label may resolve to a fare identity only when the requested subarea is known well enough to select the applicable published row; otherwise the quote must fail closed and request clarification.",
+  "principle": "Geographic aliases and hierarchies are modeled separately from tariff fare identities. Reviewed local geography may normalize search/display names, but it may select a fare only when the normalized place maps unambiguously to the applicable published tariff endpoint; otherwise quoting fails closed.",
   "sourceBackedCanonicalNotes": [
     {
       "label": "Charlotte Amalie",
-      "decision": "canonical",
-      "reason": "The published tariff uses Charlotte Amalie as the table endpoint. Generic Town is not promoted to this endpoint by this policy."
+      "decision": "city_with_three_quarters",
+      "reason": "Reviewed local geography: Town/Downtown refers collectively to the three quarters of Charlotte Amalie. These are geographic aliases for the city context, not a license to collapse separately published tariff endpoints located within town."
+    },
+    {
+      "label": "Lindbergh Bay Estate",
+      "decision": "estate_with_beach_and_airport_context",
+      "reason": "Reviewed local geography: Lindbergh refers to the estate; Lindberg Bay refers to the beach; the official surrounding area is Lindbergh Bay Estate. These geographic relationships do not make the estate or beach synonymous with Airport Terminal for fare selection."
     },
     {
       "label": "Airport Terminal",
-      "decision": "canonical",
-      "reason": "The published tariff separately names Airport Terminal / Cyril E. King Airport context. Broad Lindbergh Bay is a geographic area and is not treated as the airport terminal."
+      "decision": "canonical_tariff_endpoint",
+      "reason": "Airport Terminal remains the exact published fare endpoint. A location merely within Lindbergh Bay Estate does not resolve to Airport Terminal unless the traveler specifically selects the airport/terminal."
     },
     {
       "label": "Dorothea / Dorothea Estate",
       "decision": "same_geographic_estate_with_tariff_subzones",
-      "reason": "Reviewed local geography: Dorothea and Dorothea Estate refer to the same estate, which is comprised of Lower Dorothea and Upper Dorothea. The tariff nevertheless publishes Dorothea, Dorothea Estate, Dorothea Lower, and Dorothea Upper rows with different fares in different table contexts, so geographic equivalence must not erase the published fare-zone distinctions. When Lower or Upper is known, use that exact tariff subzone. When only broad Dorothea/Dorothea Estate is known and competing published rows could apply, require clarification rather than choosing a cheaper or more expensive row by inference."
+      "reason": "Reviewed local geography: Dorothea and Dorothea Estate refer to the same estate, comprised of Lower Dorothea and Upper Dorothea. Published tariff rows remain distinct where their fares differ; geographic equivalence cannot erase those fare-zone distinctions."
     },
     {
       "label": "Havensight",
       "decision": "clarification_required",
-      "reason": "Published tariff identities distinguish Havensight (crossroad) and Havensight (WICO); generic Havensight is financially ambiguous."
+      "reason": "Published tariff identities distinguish Havensight (crossroad) and Havensight (WICO); generic Havensight remains financially ambiguous."
     }
   ],
   "geographicHierarchy": {
+    "Charlotte Amalie": {
+      "aliases": ["Town", "Downtown"],
+      "structure": "three quarters",
+      "fareSelectionRule": "Town/Downtown may normalize to Charlotte Amalie when the tariff endpoint sought is the city itself. Do not use the alias to override a more specific published endpoint within Charlotte Amalie."
+    },
+    "Lindbergh Bay Estate": {
+      "aliases": ["Lindbergh"],
+      "containedPlaces": ["Lindberg Bay", "Airport Terminal"],
+      "placeTypes": {"Lindberg Bay": "beach", "Airport Terminal": "airport_terminal"},
+      "fareSelectionRule": "Lindbergh or Lindbergh Bay Estate identifies the estate/area, Lindberg Bay identifies the beach, and Airport Terminal identifies the airport fare endpoint. Never convert estate/beach input to Airport Terminal merely by containment."
+    },
     "Dorothea Estate": {
       "aliases": ["Dorothea"],
       "subareas": ["Dorothea Lower", "Dorothea Upper"],
-      "fareSelectionRule": "Geographic parent/alias knowledge may aid clarification and search, but may not select among distinct published tariff rows. Exact Lower/Upper input selects that subzone; otherwise retain the exact source row when the route itself publishes broad Dorothea, or require clarification when multiple applicable rows remain possible."
+      "fareSelectionRule": "Exact Lower/Upper input selects that subzone. Otherwise retain an exact broad Dorothea source row when that route publishes it, or require clarification when multiple published rows could apply."
     }
   },
+  "reviewedTravelerAliases": {
+    "Town": "Charlotte Amalie",
+    "Downtown": "Charlotte Amalie",
+    "Lindbergh": "Lindbergh Bay Estate",
+    "Dorothea": "Dorothea Estate"
+  },
   "explicitlyFailClosedTravelerLabels": [
-    "Town",
-    "Downtown",
-    "Lindbergh Bay",
-    "Lindberg Bay",
     "Havensight",
     "Dorothea area",
     "Dorothea neighborhood"
   ],
   "protectedTariffIdentities": [
+    "Airport Terminal",
+    "Lindberg Bay",
     "Dorothea",
     "Dorothea Estate",
     "Dorothea Lower",
@@ -49,5 +69,5 @@
     "Havensight (crossroad)",
     "Havensight (WICO)"
   ],
-  "completionInterpretation": "Canonical endpoint audit is complete when geographic hierarchy is represented without collapsing financially distinct published rows, every published source endpoint remains addressable, reviewed aliases cannot manufacture a fare across tariff subzones, and every unresolved broad/ambiguous traveler label fails closed."
+  "completionInterpretation": "Canonical endpoint audit is complete when reviewed geographic aliases/hierarchies are represented accurately, all published tariff endpoints remain addressable, containment cannot manufacture an airport or subzone fare, and genuinely ambiguous labels still fail closed."
 }
