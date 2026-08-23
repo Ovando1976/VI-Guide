@@ -9,7 +9,7 @@ import {
   type FerryPortId,
   type FerryRoute as BaseFerryRoute,
   type NextFerryDeparture,
-} from "@/lib/ferry-planner";
+} from "@/lib/ferry-planner-base";
 
 export { FERRY_PORT_COORDINATES, FERRY_PORTS };
 export type { FerryMode, FerryPortId, NextFerryDeparture };
@@ -87,6 +87,13 @@ function withCurrentPassengerGovernance(route: BaseFerryRoute): FerryRoute {
       return {
         ...governed,
         durationMinutes: 15,
+        departures: [],
+        weekdayDepartures: [],
+        weekendDepartures: [],
+        saturdayDepartures: undefined,
+        sundayDepartures: undefined,
+        operatingDays:
+          "Temporary VIPA off-season schedule active July 26–October 31, 2026 — verify official schedule",
         scheduleStatus: "temporary-override",
         sourceLabel: "Virgin Islands Port Authority",
         sourceUrl: VIPA,
@@ -98,8 +105,10 @@ function withCurrentPassengerGovernance(route: BaseFerryRoute): FerryRoute {
         },
         scheduleNotice:
           "VIPA states that a temporary off-season Red Hook–Cruz Bay schedule is in effect July 26 through October 31, 2026. The temporary departure times are published by VIPA as an official schedule image, so USVI Explorer intentionally suppresses the regular timetable and next-departure calculation during that override rather than guessing.",
+        terminalNote: `${route.terminalNote ?? ""} Temporary off-season schedule is active through October 31, 2026; verify VIPA before leaving.`.trim(),
         goodToKnow: uniqueStrings([
           "Temporary off-season schedule is active July 26–October 31, 2026; verify the official VIPA schedule before leaving.",
+          "USVI Explorer suppresses the regular timetable while the temporary override is active rather than presenting a stale next-ferry time.",
           ...(route.goodToKnow ?? []),
         ]),
       };
@@ -113,6 +122,10 @@ function withCurrentPassengerGovernance(route: BaseFerryRoute): FerryRoute {
         sourceAuthority: "Virgin Islands Port Authority",
         scheduleNotice:
           "VIPA currently lists this downtown St. Thomas–Cruz Bay service and explicitly marks it subject to seasonal change. Confirm the same-day schedule before travel.",
+        goodToKnow: uniqueStrings([
+          "VIPA marks this route subject to seasonal change; verify the same-day departure before leaving.",
+          ...(route.goodToKnow ?? []),
+        ]),
       };
 
     case "charlotte-amalie-gallows-bay":
@@ -124,6 +137,11 @@ function withCurrentPassengerGovernance(route: BaseFerryRoute): FerryRoute {
         sourceAuthority: "Virgin Islands Port Authority",
         scheduleNotice:
           "VIPA currently lists QE IV service Thursday through Monday: St. Croix departs 8:00 AM and St. Thomas departs 3:00 PM. Arrive 30 minutes early; check-in closes 15 minutes before departure.",
+        goodToKnow: uniqueStrings([
+          "Arrive 30 minutes before departure; VIPA says check-in ends 15 minutes before departure.",
+          "Current VIPA fare is $60 one way; one small bag plus one personal item is included.",
+          ...(route.goodToKnow ?? []),
+        ]),
       };
 
     case "crown-bay-cruz-bay":
@@ -218,7 +236,11 @@ function withCurrentPassengerGovernance(route: BaseFerryRoute): FerryRoute {
       });
 
     default:
-      if (route.sourceUrl === BVI_TOURISM || route.requiresPassport || route.serviceLabel.includes("BVI domestic")) {
+      if (
+        route.sourceUrl === BVI_TOURISM ||
+        route.requiresPassport ||
+        route.serviceLabel.includes("BVI domestic")
+      ) {
         return governBviRoute(route);
       }
       return governed;
@@ -241,7 +263,9 @@ function governBviRoute(route: BaseFerryRoute): FerryRoute {
             "A valid passport is required for USVI–BVI travel.",
             "Allow extra time for immigration and customs; taxes and port fees may be collected separately.",
           ]
-        : ["This is domestic BVI travel; confirm the operating provider and current sailing before departure."]),
+        : [
+            "This is domestic BVI travel; confirm the operating provider and current sailing before departure.",
+          ]),
       ...(route.goodToKnow ?? []),
     ]),
   };
@@ -250,6 +274,11 @@ function governBviRoute(route: BaseFerryRoute): FerryRoute {
 function withCurrentCarBargeGovernance(route: BaseFerryRoute): FerryRoute {
   return {
     ...route,
+    departures: [],
+    weekdayDepartures: undefined,
+    weekendDepartures: undefined,
+    saturdayDepartures: undefined,
+    sundayDepartures: undefined,
     scheduleStatus: "operator-dependent",
     verifiedAt: VERIFIED_AT,
     sourceLabel: "Virgin Islands Port Authority",
@@ -257,9 +286,11 @@ function withCurrentCarBargeGovernance(route: BaseFerryRoute): FerryRoute {
     sourceAuthority: "Virgin Islands Port Authority",
     bookingUrl: undefined,
     operatorName: "Big Red Barge / Global Marine / Love City Car Ferries",
-    operatingDays: "Daily; three private operators publish separate sailing schedules",
+    operatingDays:
+      "Daily; three private operators publish separate sailing schedules — verify VIPA/operator",
     scheduleNotice:
       "VIPA lists three private St. Thomas–St. John car-ferry companies. Tickets are not interchangeable, and loading is first-come/first-loaded regardless of an online reservation. USVI Explorer therefore does not calculate a single next barge from the combined operator timetable.",
+    terminalNote: `${route.terminalNote ?? ""} Verify the selected operator's sailing before entering the loading queue.`.trim(),
     goodToKnow: [
       "Tickets from one car-ferry company cannot be used on another operator.",
       "Online purchase does not guarantee a spot on a specific barge; vehicles are loaded first-come/first-loaded.",
@@ -290,7 +321,10 @@ function dateRangeContains(
 
 export function isScheduleSuppressed(route: FerryRoute, now = new Date()) {
   if (route.scheduleStatus === "operator-dependent") return true;
-  if (route.scheduleStatus !== "temporary-override" || !route.temporarySchedule) {
+  if (
+    route.scheduleStatus !== "temporary-override" ||
+    !route.temporarySchedule
+  ) {
     return false;
   }
   return dateRangeContains(
