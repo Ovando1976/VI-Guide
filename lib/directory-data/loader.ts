@@ -9,6 +9,7 @@ import {
   stringArray,
 } from "@/lib/data-utils/parsing";
 
+import { RESTORED_BEACH_RECORDS } from "./beach-restoration";
 import type {
   DirectoryDataset,
   DirectoryIsland,
@@ -78,7 +79,13 @@ function loadDataset(dataset: DirectoryDataset): readonly DirectoryRecord[] {
   const cached = cache.get(dataset);
   if (cached) return cached;
 
-  const source = dataset === "places" ? placesData : beachesData;
+  const source: readonly unknown[] =
+    dataset === "places"
+      ? (placesData as readonly unknown[])
+      : [
+          ...(beachesData as readonly unknown[]),
+          ...RESTORED_BEACH_RECORDS,
+        ];
 
   if (!Array.isArray(source)) {
     throw new TypeError(`${dataset} must contain a top-level JSON array.`);
