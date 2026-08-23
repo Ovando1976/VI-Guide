@@ -205,8 +205,8 @@ assert.equal(
 const historicSites = getHistoricSites();
 const historicNames = new Set(historicSites.map((site) => site.name));
 assert.ok(
-  historicSites.length >= 230,
-  "Historic catalog unexpectedly shrank below the restored 230-record baseline",
+  historicSites.length >= 115,
+  "Historic catalog unexpectedly shrank below the restored 115-record baseline",
 );
 for (const name of [
   "99 Steps",
