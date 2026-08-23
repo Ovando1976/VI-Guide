@@ -17,6 +17,8 @@ import {
 } from "../lib/directory-data/beach-restoration";
 import { getBeaches } from "../lib/directory-data/loader";
 import { USVI_EVENTS } from "../lib/events";
+import { HISTORIC_SITE_CORRECTION_IDS } from "../lib/historic-sites/corrections";
+import { getHistoricSites } from "../lib/historic-sites";
 import {
   BUSINESS_COVERAGE_SUBMISSION_HREF,
   MARKET_COVERAGE_POLICY,
@@ -200,6 +202,68 @@ assert.equal(
   "Accommodation slugs must be unique",
 );
 
+const historicSites = getHistoricSites();
+const historicNames = new Set(historicSites.map((site) => site.name));
+assert.ok(
+  historicSites.length >= 115,
+  "Historic catalog unexpectedly shrank below the restored 115-record baseline",
+);
+for (const name of [
+  "99 Steps",
+  "Annaberg Sugar Plantation",
+  "Fort Christian",
+  "Fort Frederik",
+  "Fort Christiansværn",
+]) {
+  assert.ok(historicNames.has(name), `Core historic landmark missing: ${name}`);
+}
+for (const correctionId of HISTORIC_SITE_CORRECTION_IDS) {
+  assert.ok(
+    historicSites.some((site) => site.id === correctionId),
+    `Governed historic correction target missing: ${correctionId}`,
+  );
+}
+for (const site of historicSites) {
+  const publicText = [
+    site.name,
+    site.description,
+    site.shortDescription,
+    site.location ?? "",
+    ...site.aliases,
+    ...site.nrhpOtherNames,
+    ...site.tags,
+  ].join(" ");
+  assert.doesNotMatch(
+    publicText,
+    /\uFFFD/,
+    `${site.id} contains a damaged replacement character`,
+  );
+}
+const bethlehemSugarFactory = historicSites.find(
+  (site) => site.id === "bethlehem-sugar-factory",
+);
+assert.ok(bethlehemSugarFactory, "Bethlehem Sugar Factory must remain in catalog");
+assert.equal(bethlehemSugarFactory.island, "stx");
+assert.match(bethlehemSugarFactory.description, /St\. Croix/);
+assert.ok(bethlehemSugarFactory.tags.includes("STX"));
+assert.ok(!bethlehemSugarFactory.tags.includes("STT"));
+const barracksNo2 = historicSites.find((site) => site.id === "barracks-no-2");
+assert.ok(barracksNo2?.aliases.includes("Enlisted Men's Barracks No. 2"));
+const marcelliSchool = historicSites.find(
+  (site) => site.id === "evelyn-e-marcelli-elementary-school",
+);
+assert.ok(marcelliSchool?.aliases.includes("Marine and Strangers' Hospital"));
+assert.equal(
+  new Set(historicSites.map((site) => site.id)).size,
+  historicSites.length,
+  "Historic IDs must be unique",
+);
+assert.equal(
+  new Set(historicSites.map((site) => site.slug)).size,
+  historicSites.length,
+  "Historic slugs must be unique",
+);
+
 for (const island of islands) {
   const activityOperators = new Set(
     BOOKABLE_EXPERIENCES.filter((item) => item.island === island).map(
@@ -297,5 +361,5 @@ assert.ok(BUSINESS_COVERAGE_SUBMISSION_HREF.startsWith("/merchant"));
 assert.equal(getActivityCoverage().length, 3);
 
 console.log(
-  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches and ${ACCOMMODATIONS.length} stays.`,
+  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches, ${ACCOMMODATIONS.length} stays, and ${historicSites.length} historic records.`,
 );

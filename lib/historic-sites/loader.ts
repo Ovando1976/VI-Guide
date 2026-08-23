@@ -1,5 +1,6 @@
 import historicSitesData from "@/data/travel-knowledge/historic-sites.json";
 
+import { applyHistoricSiteCorrection } from "./corrections";
 import type {
   CoordinateGeometry,
   CoordinateStatus,
@@ -102,7 +103,7 @@ function loadHistoricSites(): readonly HistoricSite[] {
   const ids = new Set<string>();
   const slugs = new Set<string>();
   const sites = historicSitesData.map((value, index) =>
-    parseHistoricSite(value, index)
+    applyHistoricSiteCorrection(parseHistoricSite(value, index))
   );
 
   for (const site of sites) {
