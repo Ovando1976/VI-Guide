@@ -1,554 +1,161 @@
-export type CarRentalIsland = "stt" | "stj" | "stx";
-export type CarRentalArrival = "airport" | "ferry" | "local";
-export type CarRentalVehicleNeed = "car" | "suv" | "jeep" | "van";
+import {
+  CAR_RENTAL_ISLAND_NAMES,
+  CAR_RENTAL_OPERATORS as CORE_CAR_RENTAL_OPERATORS,
+  type CarRentalArrival,
+  type CarRentalIsland,
+  type CarRentalMatchInput,
+  type CarRentalOperator,
+  type CarRentalOperatorMatch,
+  type CarRentalVehicleNeed,
+} from "./car-rentals-core";
 
-export type CarRentalOperator = {
-  id: string;
-  name: string;
-  island: CarRentalIsland;
-  location: string;
-  pickupType: CarRentalArrival;
-  website: string;
-  phone?: string;
-  vehicleTypes: string[];
-  features: string[];
-  sourceLabel: string;
-  verifiedAt: string;
+export type {
+  CarRentalArrival,
+  CarRentalIsland,
+  CarRentalMatchInput,
+  CarRentalOperator,
+  CarRentalOperatorMatch,
+  CarRentalVehicleNeed,
 };
+export { CAR_RENTAL_ISLAND_NAMES };
 
-export type CarRentalMatchInput = {
-  island: CarRentalIsland;
-  arrival?: CarRentalArrival;
-  vehicle?: CarRentalVehicleNeed;
-  travelers?: number;
-  luggage?: number;
-};
-
-export type CarRentalOperatorMatch = {
-  operator: CarRentalOperator;
-  score: number;
-  reasons: string[];
-};
-
-export const CAR_RENTAL_ISLAND_NAMES: Record<CarRentalIsland, string> = {
-  stt: "St. Thomas",
-  stj: "St. John",
-  stx: "St. Croix",
-};
-
-export const CAR_RENTAL_OPERATORS: CarRentalOperator[] = [
-  // St. Thomas
+/**
+ * Current-source additions layered over the original audited rental catalog.
+ *
+ * Keep this layer additive so the original source snapshot remains easy to
+ * inspect. Live price, inventory, insurance, deposit, age, and cancellation
+ * rules are deliberately not modeled here; travelers must confirm those with
+ * the operator before relying on a reservation.
+ */
+export const RESTORED_CAR_RENTAL_OPERATORS: CarRentalOperator[] = [
   {
-    id: "enterprise-stt-airport",
-    name: "Enterprise Rent-A-Car",
+    id: "ks-rental-stt",
+    name: "K's Rental",
     island: "stt",
-    location: "Cyril E. King Airport area",
-    pickupType: "airport",
-    website:
-      "https://www.enterprise.com/en/car-rental-locations/vi/cyril-e-king-intl-airport-l002.html",
-    phone: "+1 340-725-2507",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport-area shuttle", "National brand", "Advance reservation"],
-    sourceLabel: "Enterprise official location page",
-    verifiedAt: "2026-08-09",
-  },
-  {
-    id: "national-stt-airport",
-    name: "National Car Rental",
-    island: "stt",
-    location: "Cyril E. King Airport area",
-    pickupType: "airport",
-    website:
-      "https://www.nationalcar.com/en/car-rental-locations/vi/cyril-e-king-intl-airport-l003.html",
-    phone: "+1 340-725-2507",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport-area pickup", "National brand", "Online reservations"],
-    sourceLabel: "National official STT location page",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "hertz-stt-airport",
-    name: "Hertz",
-    island: "stt",
-    location: "Cyril E. King Airport",
-    pickupType: "airport",
-    website: "https://www.hertz.com/us/en/location/usvirginislands/stthomas/sttt02",
-    phone: "+1 340-774-1879",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport location", "National brand", "Online reservations"],
-    sourceLabel: "Hertz official STT location page",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "budget-stt-airport",
-    name: "Budget Car Rental",
-    island: "stt",
-    location: "Cyril E. King Airport",
-    pickupType: "airport",
-    website: "https://www.budget.com/en/locations/cv/st-thomas/stt",
-    phone: "+1 340-776-5774",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport pickup", "National brand", "Online reservations"],
-    sourceLabel: "Budget official location page",
-    verifiedAt: "2026-08-09",
-  },
-  {
-    id: "avis-stt-airport",
-    name: "Avis Car Rental",
-    island: "stt",
-    location: "Cyril E. King Airport",
-    pickupType: "airport",
-    website: "https://www.avis.com/",
-    phone: "+1 340-774-1468",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport location", "National brand", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + Avis official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "dollar-thrifty-stt",
-    name: "Dollar and Thrifty Car Rental",
-    island: "stt",
-    location: "Charlotte Amalie West / airport area",
-    pickupType: "airport",
-    website: "https://www.dollar.com/",
-    phone: "+1 340-774-0111",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport-area service", "National brands", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + Dollar official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "amalie-stt",
-    name: "Amalie Car Rental",
-    island: "stt",
-    location: "Cyril E. King Airport arrival handoff",
-    pickupType: "airport",
-    website: "https://www.amaliecar.com/",
-    phone: "+1 340-690-0688",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Airport meet-and-greet", "New-model fleet", "St. John ferry use allowed"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "discount-stt",
-    name: "Discount Car Rental",
-    island: "stt",
-    location: "Estate Contant / Charlotte Amalie West",
-    pickupType: "airport",
-    website: "https://www.discountcar.vi/",
-    phone: "+1 340-776-4858",
+    location: "Kronprindsens Gade / Charlotte Amalie ferry-dock area",
+    pickupType: "local",
+    website: "https://www.ksrental.net/",
+    phone: "+1 340-244-2897",
     vehicleTypes: ["Car", "Jeep", "SUV", "Van"],
-    features: ["Local operator", "Airport-area service", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + operator official website",
+    features: [
+      "Local operator",
+      "Charlotte Amalie ferry-dock area",
+      "Car / Jeep / SUV / van mix",
+    ],
+    sourceLabel: "Operator official website",
     verifiedAt: "2026-08-23",
   },
   {
-    id: "first-rent-a-car-stt",
-    name: "First Rent A Car",
+    id: "tropical-adventure-stt",
+    name: "Tropical Adventure Car Rental",
     island: "stt",
-    location: "Bournefield / airport area",
-    pickupType: "airport",
-    website: "https://firstrentacarstthomas.com/",
-    phone: "+1 340-776-3730",
-    vehicleTypes: ["Compact", "Car", "Jeep", "SUV", "Van"],
-    features: ["Complimentary airport pickup", "Local operator", "Unlimited mileage"],
-    sourceLabel: "Operator official website + Visit USVI current listing",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "my-car-rental-vi-stt",
-    name: "My Car Rental VI",
-    island: "stt",
-    location: "Charlotte Amalie",
+    location: "Kongens Gade / Charlotte Amalie",
     pickupType: "local",
-    website: "https://www.mycarrentalvi.com/",
-    phone: "+1 340-776-9229",
-    vehicleTypes: ["Car", "SUV"],
-    features: ["Local operator", "Charlotte Amalie location", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "paradise-rental-car-stt",
-    name: "Paradise Rental Car",
-    island: "stt",
-    location: "Estate Contant / Charlotte Amalie West",
-    pickupType: "local",
-    website: "https://www.pdiseinc.com/",
-    phone: "+1 340-643-2692",
-    vehicleTypes: ["Car", "SUV", "Jeep"],
-    features: ["Local operator", "Charlotte Amalie West", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "country-auto-rental-stt",
-    name: "Country Auto Rental & Sales",
-    island: "stt",
-    location: "St. Thomas",
-    pickupType: "local",
-    website: "https://joelsautorepairusvi.com/",
-    phone: "+1 340-513-9857",
-    vehicleTypes: ["Car", "SUV"],
-    features: ["Local operator", "Daily / weekly / long-term rentals", "Auto service on site"],
-    sourceLabel: "Visit USVI current Preferred Partner listing",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "dexter-rental-car-stt",
-    name: "Dexter Rental Car",
-    island: "stt",
-    location: "Estate Frydenhoj",
-    pickupType: "local",
-    website: "https://dexterrentalcar.com/",
-    phone: "+1 340-643-3534",
-    vehicleTypes: ["Car", "SUV"],
-    features: ["Local operator", "East-side location", "Extended service hours"],
-    sourceLabel: "Visit USVI current listing + operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "premium-rental-car-stt",
-    name: "Premium Car Rental",
-    island: "stt",
-    location: "Estate Nisky / Charlotte Amalie West",
-    pickupType: "local",
-    website: "https://www.economyrentacar.com/",
-    phone: "+1 340-774-1977",
+    website:
+      "https://tropicaladventurevi.com/adventures/basic-economy-vehicle/",
+    phone: "+1 340-474-9727",
     vehicleTypes: ["Economy", "Car", "SUV"],
-    features: ["Charlotte Amalie West", "Economy Rent a Car network", "Online reservations"],
-    sourceLabel: "Visit USVI current listing + linked official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "360-car-rental-stt",
-    name: "360 Car Rental",
-    island: "stt",
-    location: "St. Thomas",
-    pickupType: "local",
-    website: "https://360carrental.com/",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Local operator", "Island-wide service", "Online inquiry"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-09",
-  },
-
-  // St. John
-  {
-    id: "courtesy-stj",
-    name: "Courtesy Car & Jeep Rental",
-    island: "stj",
-    location: "Cruz Bay",
-    pickupType: "ferry",
-    website: "https://courtesycarrental.com/",
-    phone: "+1 340-776-6650",
-    vehicleTypes: ["4x4", "Jeep", "SUV"],
-    features: ["Cruz Bay shuttle", "In-town parking", "Roadside assistance"],
+    features: [
+      "Local operator",
+      "Charlotte Amalie location",
+      "Direct online reservation",
+    ],
     sourceLabel: "Operator official website",
     verifiedAt: "2026-08-23",
   },
   {
-    id: "enterprise-stj-cruz-bay",
-    name: "Enterprise Rent-A-Car",
+    id: "aqua-blu-stj",
+    name: "Aqua Blu Car Rental",
     island: "stj",
-    location: "Cruz Bay / Estate Chocolate Hole",
+    location: "Cruz Bay / St. John",
     pickupType: "ferry",
-    website:
-      "https://www.enterprise.com/en/car-rental-locations/vi/cruz-bay-st-john-ferry-l005.html",
-    vehicleTypes: ["Car", "SUV", "Van"],
-    features: ["Cruz Bay ferry location", "National brand", "Online reservations"],
-    sourceLabel: "Enterprise official Cruz Bay location page",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "national-stj-cruz-bay",
-    name: "National Car Rental",
-    island: "stj",
-    location: "Cruz Bay / Estate Chocolate Hole",
-    pickupType: "ferry",
-    website:
-      "https://www.nationalcar.com/en/car-rental-locations/vi/cruz-bay-st-john-ferry-l006.html",
-    phone: "+1 340-727-2536",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Cruz Bay location", "National brand", "Online reservations"],
-    sourceLabel: "National official Cruz Bay location page",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "st-john-car-rental",
-    name: "St. John Car Rental",
-    island: "stj",
-    location: "Cruz Bay",
-    pickupType: "ferry",
-    website: "https://www.stjohncarrental.com/",
-    phone: "+1 340-776-6103",
-    vehicleTypes: ["Automatic 4x4", "Jeep", "SUV"],
-    features: ["Local operator", "4x4-focused fleet", "Cruz Bay location"],
-    sourceLabel: "Visit USVI listing + operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "cruz-bay-car-rental-stj",
-    name: "Cruz Bay Car Rental",
-    island: "stj",
-    location: "Gallows Point / Cruz Bay",
-    pickupType: "ferry",
-    website: "https://cruzbaycarrental.com/",
-    phone: "+1 340-693-7730",
-    vehicleTypes: ["4x4", "Jeep", "SUV"],
-    features: ["Local operator", "AWD / 4x4 fleet", "Unlimited mileage"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "conrad-sutton-stj",
-    name: "Conrad Sutton Jeep & Car Rental",
-    island: "stj",
-    location: "Cruz Bay",
-    pickupType: "ferry",
-    website: "https://www.conradcars.com/",
-    phone: "+1 340-776-6479",
-    vehicleTypes: ["4x4", "Jeep", "SUV"],
-    features: ["Local operator", "4-wheel-drive fleet", "Cruz Bay location"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "varlack-stj",
-    name: "Varlack Ventures",
-    island: "stj",
-    location: "Cruz Bay",
-    pickupType: "ferry",
-    website: "https://www.varlack-ventures.com/",
-    phone: "+1 340-776-6412",
-    vehicleTypes: ["Jeep", "SUV"],
-    features: ["Local operator", "Cruz Bay location", "Jeep rentals"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "pauls-car-jeep-stj",
-    name: "Paul's Car & Jeep Rental",
-    island: "stj",
-    location: "Cruz Bay to Coral Bay",
-    pickupType: "local",
-    website: "https://paulsjeeprental.com/",
-    phone: "+1 340-201-2501",
-    vehicleTypes: ["4x4", "Jeep", "SUV"],
-    features: ["Local operator", "4WD fleet", "Free pickup service"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "destiny-car-rental-stj",
-    name: "Destiny Car Rental",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.destinycarrentalvi.com/",
-    phone: "+1 340-777-5337",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Local St. John operator", "Island rental fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "hospitality-rent-a-car-stj",
-    name: "Hospitality Rent A Car",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.hospitalityrentacar.com/",
-    phone: "+1 340-693-9160",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Local St. John operator", "Island rental fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "island-hopping-rentals-stj",
-    name: "Island Hopping Rentals",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.islandhoppingrentals.com/",
-    phone: "+1 340-228-2229",
-    vehicleTypes: ["Jeep", "SUV"],
-    features: ["Local St. John operator", "Jeep / SUV rentals", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "just-sun-jeeps-stj",
-    name: "Just Sun Jeeps",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.justsunjeeps.com/",
-    phone: "+1 340-227-2235",
-    vehicleTypes: ["Jeep", "4x4"],
-    features: ["Local St. John operator", "Jeep-focused fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "ll-jeep-rental-stj",
-    name: "L & L Jeep Rental",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.bookajeep.com/",
-    phone: "+1 340-776-1120",
-    vehicleTypes: ["Jeep", "4x4"],
-    features: ["Local St. John operator", "Jeep-focused fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "lionel-jeep-rental-stj",
-    name: "Lionel Jeep Rental",
-    island: "stj",
-    location: "Cruz Bay",
-    pickupType: "ferry",
-    website: "https://www.lioneljeeprentals.com/",
-    phone: "+1 340-693-8764",
+    website: "https://aquablucarrental.com/",
+    phone: "+1 340-776-2782",
     vehicleTypes: ["Jeep", "SUV", "4x4"],
-    features: ["Local operator", "Cruz Bay service", "Jeep / SUV fleet"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
+    features: [
+      "Complimentary Cruz Bay ferry pickup",
+      "4x4-focused fleet",
+      "Unlimited mileage",
+    ],
+    sourceLabel: "Visit USVI current listing + operator official website",
     verifiedAt: "2026-08-23",
   },
   {
-    id: "mr-pipers-jeeps-stj",
-    name: "Mr. Piper's Jeeps",
+    id: "bougainvillea-leasing-stj",
+    name: "Bougainvillea Leasing Ltd.",
     island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.mrpipersjeeps.com/",
-    phone: "+1 340-693-7580",
-    vehicleTypes: ["Jeep", "4x4"],
-    features: ["Local St. John operator", "Jeep-focused fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
+    location: "Cruz Bay ferry-dock area",
+    pickupType: "ferry",
+    website: "https://stjohnjeeps.com/",
+    phone: "+1 800-253-7107",
+    vehicleTypes: ["Jeep", "SUV", "4x4"],
+    features: [
+      "Short walk from Cruz Bay ferry dock",
+      "Jeep / SUV fleet",
+      "Local St. John operator",
+    ],
+    sourceLabel: "Operator official website + current St. John rental directory",
     verifiedAt: "2026-08-23",
   },
   {
-    id: "oconnor-car-rental-stj",
-    name: "O'Connor Car Rental",
+    id: "cool-breeze-stj",
+    name: "Cool Breeze Jeep/Car Rental",
     island: "stj",
-    location: "St. John",
+    location: "Cruz Bay ferry-dock area",
+    pickupType: "ferry",
+    website: "https://www.coolbreezecarrental.com/",
+    phone: "+1 340-776-6588",
+    vehicleTypes: ["Car", "Jeep", "SUV", "4x4"],
+    features: [
+      "Two-minute walk from ferry dock",
+      "Jeep and multi-passenger SUV options",
+      "Online reservation",
+    ],
+    sourceLabel: "Operator official website + current St. John rental directory",
+    verifiedAt: "2026-08-23",
+  },
+  {
+    id: "ace-stx",
+    name: "ACE Rent A Car",
+    island: "stx",
+    location: "1103 Richmond / Christiansted",
     pickupType: "local",
-    website: "https://www.oconnorcarrental.com/",
-    phone: "+1 340-776-6343",
-    vehicleTypes: ["Car", "Jeep", "SUV"],
-    features: ["Local St. John operator", "Island rental fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
+    website: "https://www.acerentacar.com/",
+    phone: "+1 866-551-8267",
+    vehicleTypes: ["Car"],
+    features: [
+      "Christiansted location",
+      "Current Visit USVI transportation listing",
+      "Direct operator booking",
+    ],
+    sourceLabel: "Visit USVI current listing + ACE official website",
     verifiedAt: "2026-08-23",
   },
   {
-    id: "slim-mans-jeep-rental-stj",
-    name: "Slim Man's Jeep Rental",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.slimmansjeeprental.com/",
-    phone: "+1 508-932-2737",
-    vehicleTypes: ["Jeep", "4x4"],
-    features: ["Local St. John operator", "Jeep-focused fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "sunshines-jeep-rental-stj",
-    name: "Sunshine's Jeep Rental",
-    island: "stj",
-    location: "St. John",
-    pickupType: "local",
-    website: "https://www.sunshinesjeeprental.com/",
-    phone: "+1 340-690-1786",
-    vehicleTypes: ["Jeep", "4x4"],
-    features: ["Local St. John operator", "Jeep-focused fleet", "Online reservations"],
-    sourceLabel: "RentStJohn 2026 directory + operator website",
-    verifiedAt: "2026-08-23",
-  },
-
-  // St. Croix
-  {
-    id: "centerline-stx",
-    name: "Centerline Car Rentals",
-    island: "stx",
-    location: "STX Airport, Christiansted, and Mid-Island",
-    pickupType: "airport",
-    website: "https://stxrentalcar.com/",
-    phone: "+1 340-692-2525",
-    vehicleTypes: ["Economy", "Sedan", "Jeep", "SUV", "Van"],
-    features: ["Local operator", "Multiple St. Croix locations", "Airport terminal service"],
-    sourceLabel: "Operator official website + Visit USVI current listing",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "hertz-stx-airport",
-    name: "Hertz",
-    island: "stx",
-    location: "Henry E. Rohlsen Airport",
-    pickupType: "airport",
-    website: "https://www.hertz.com/us/en/location/usvirginislands/stcroix/stxt50",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport location", "National brand", "Online reservations"],
-    sourceLabel: "Hertz official location page",
-    verifiedAt: "2026-08-09",
-  },
-  {
-    id: "avis-stx-airport",
-    name: "Avis",
-    island: "stx",
-    location: "Henry E. Rohlsen Airport",
-    pickupType: "airport",
-    website: "https://www.avis.com/en/locations/lat/cx/christiansted/stx",
-    vehicleTypes: ["Economy", "Sedan", "SUV", "Van"],
-    features: ["Airport location", "National brand", "Online reservations"],
-    sourceLabel: "Avis official location page",
-    verifiedAt: "2026-08-09",
-  },
-  {
-    id: "budget-stx",
-    name: "Budget Rent A Car St. Croix",
-    island: "stx",
-    location: "STX Airport, Christiansted, and Frederiksted",
-    pickupType: "airport",
-    website: "https://www.budgetstcroix.com/",
-    phone: "+1 888-264-8894",
-    vehicleTypes: ["Car", "Jeep", "SUV", "Van", "Truck"],
-    features: ["Airport terminal counter", "Multiple island locations", "Hotel pickup available"],
-    sourceLabel: "Operator official website",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "olympic-stx",
-    name: "Olympic Rent-A-Car",
-    island: "stx",
-    location: "Christiansted / island delivery",
-    pickupType: "local",
-    website: "https://www.olympicstcroix.com/",
-    phone: "+1 340-718-3000",
-    vehicleTypes: ["Economy", "Car", "Jeep", "SUV", "Van"],
-    features: ["Local operator", "Airport / hotel delivery", "Jeep and minivan options"],
-    sourceLabel: "Operator official website + Visit USVI current listing",
-    verifiedAt: "2026-08-23",
-  },
-  {
-    id: "judi-of-croix-stx",
-    name: "Judi of Croix Car Rentals",
+    id: "island-auto-club-stx",
+    name: "Island Auto Club",
     island: "stx",
     location: "St. Croix",
     pickupType: "local",
-    website: "https://www.judiofcroix.com/",
-    phone: "+1 340-773-2123",
-    vehicleTypes: ["Car", "SUV", "Van"],
-    features: ["Local operator", "Late-model fleet", "Unlimited mileage"],
+    website: "https://islandautoclub.com/",
+    phone: "+1 939-332-1651",
+    vehicleTypes: ["Car"],
+    features: [
+      "Local operator",
+      "Airport pickup / drop-off",
+      "Delivery to lodging or local address",
+    ],
     sourceLabel: "Operator official website",
     verifiedAt: "2026-08-23",
   },
+];
+
+export const CURRENT_DESTINATION_CAR_RENTAL_OPERATORS =
+  RESTORED_CAR_RENTAL_OPERATORS.map((operator) => operator.name) as readonly string[];
+
+export const CAR_RENTAL_OPERATORS: CarRentalOperator[] = [
+  ...CORE_CAR_RENTAL_OPERATORS,
+  ...RESTORED_CAR_RENTAL_OPERATORS,
 ];
 
 export function getCarRentalOperators(island?: CarRentalIsland) {
@@ -568,26 +175,30 @@ export function rankCarRentalOperators(
       const reasons: string[] = [
         `Serves ${CAR_RENTAL_ISLAND_NAMES[input.island]}`,
       ];
+
       if (input.arrival && operator.pickupType === input.arrival) {
         score += 35;
         reasons.push(`${capitalize(input.arrival)} pickup fit`);
       } else if (
         input.arrival === "ferry" &&
         operator.features.some((feature) =>
-          /shuttle|cruz bay|island-wide/i.test(feature),
+          /shuttle|cruz bay|ferry|island-wide/i.test(feature),
         )
       ) {
         score += 18;
         reasons.push("Useful ferry-arrival handoff");
       }
+
       if (input.vehicle && supportsVehicle(operator, input.vehicle)) {
         score += 30;
         reasons.push(`${vehicleLabel(input.vehicle)} listed in fleet`);
       }
+
       if ((input.travelers ?? 0) >= 6 && supportsVehicle(operator, "van")) {
         score += 20;
         reasons.push("Van option for larger party");
       }
+
       if (
         (input.luggage ?? 0) >= 5 &&
         (supportsVehicle(operator, "suv") || supportsVehicle(operator, "van"))
@@ -595,6 +206,7 @@ export function rankCarRentalOperators(
         score += 12;
         reasons.push("Roomier fleet for luggage");
       }
+
       if (
         input.island === "stj" &&
         (supportsVehicle(operator, "jeep") ||
@@ -603,12 +215,14 @@ export function rankCarRentalOperators(
         score += 15;
         reasons.push("Strong St. John 4x4 fit");
       }
+
       if (
         operator.features.some((feature) => /local operator/i.test(feature))
       ) {
         score += 4;
         reasons.push("Local operator");
       }
+
       return { operator, score, reasons: reasons.slice(0, 4) };
     })
     .sort(
