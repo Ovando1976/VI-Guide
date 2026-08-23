@@ -274,8 +274,25 @@ const RESTORED_BOOKABLE_EXPERIENCES: BookableExperience[] = [
     verifiedAt: "2026-08-23",
     availabilityStatus: "request-only",
   },
+  {
+    id: "stj-friends-vinp-francis-bay-bird-walk",
+    name: "Francis Bay Bird Walk",
+    operator: "Friends of Virgin Islands National Park",
+    category: "wildlife",
+    kind: "tour",
+    island: "stj",
+    location: "Francis Bay, St. John",
+    duration: "Morning walk",
+    summary:
+      "A seasonal guided bird walk at Francis Bay focused on local and migratory birds in Virgin Islands National Park, highlighted in the current Visit USVI St. John tours guide.",
+    highlights: ["Birding", "Virgin Islands National Park", "Francis Bay", "Seasonal"],
+    sourceUrl: "https://www.visitusvi.com/experience/st-john-tours/",
+    sourceLabel: "Visit USVI current St. John Tours & Excursions guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "seasonal",
+  },
 
-  // St. Thomas — current Visit USVI snorkeling and must-do guide gaps.
+  // St. Thomas — current Visit USVI snorkeling, boating, and must-do guide gaps.
   {
     id: "stt-funtime-jet-ski",
     name: "Lindbergh Bay Jet Ski Tour",
@@ -361,6 +378,57 @@ const RESTORED_BOOKABLE_EXPERIENCES: BookableExperience[] = [
     verifiedAt: "2026-08-23",
     availabilityStatus: "operator-listed",
   },
+  {
+    id: "stt-morningstar-private-charter",
+    name: "Private St. Thomas Boat Excursion",
+    operator: "Morningstar Charters",
+    category: "boat-charter",
+    kind: "tour",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Custom",
+    summary:
+      "A private St. Thomas boat excursion customized around the day's conditions, with sailing, snorkeling, cays, bays, beaches, and sunset options highlighted by Visit USVI.",
+    highlights: ["Private charter", "Snorkeling", "Cays & beaches", "Custom route"],
+    sourceUrl: "https://www.visitusvi.com/experience/fun-boating-excursions/",
+    sourceLabel: "Visit USVI current Fun Boating Excursions guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stt-vi-snuba-excursion",
+    name: "St. Thomas SNUBA Excursion",
+    operator: "VI Snuba Excursions",
+    category: "scuba",
+    kind: "experience",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Varies",
+    summary:
+      "A guided SNUBA experience using surface-supplied air for underwater exploration without prior scuba certification, as featured in the current Visit USVI boating guide.",
+    highlights: ["SNUBA", "Guided", "No scuba certification required", "Underwater"],
+    sourceUrl: "https://www.visitusvi.com/experience/fun-boating-excursions/",
+    sourceLabel: "Visit USVI current Fun Boating Excursions guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stt-left-lane-fishing-charter",
+    name: "Private St. Thomas Fishing Charter",
+    operator: "Left Lane Charters",
+    category: "fishing",
+    kind: "tour",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Varies",
+    summary:
+      "A private St. Thomas sportfishing charter highlighted in the current Visit USVI boating guide, with final trip format and timing confirmed directly with the operator.",
+    highlights: ["Sportfishing", "Private charter", "Captain-led", "St. Thomas"],
+    sourceUrl: "https://www.visitusvi.com/experience/fun-boating-excursions/",
+    sourceLabel: "Visit USVI current Fun Boating Excursions guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
 ];
 
 export const BOOKABLE_EXPERIENCES: BookableExperience[] = [
@@ -394,6 +462,12 @@ export const ACTIVITY_COVERAGE_SOURCES = [
     url: "https://www.visitusvi.com/experience/best-snorkeling-on-st-thomas/",
     scope: "Current named St. Thomas guided snorkeling operators",
   },
+  {
+    id: "visit-usvi-fun-boating-excursions",
+    label: "Visit USVI Fun Boating Excursions",
+    url: "https://www.visitusvi.com/experience/fun-boating-excursions/",
+    scope: "Current named St. Thomas charter, SNUBA, and sportfishing operators",
+  },
 ] as const;
 
 export const ISLAND_NAMES = BASE_ISLAND_NAMES;
@@ -413,10 +487,14 @@ export const CURRENT_DESTINATION_ACTIVITY_OPERATORS = [
   "Ocean Surfari",
   "Star Fish Tours & Taxi",
   "Haunt Historic Ghost Tours",
+  "Friends of Virgin Islands National Park",
   "Funtime Jet Ski Rentals & Boat Charters",
   "St. Thomas Snorkeling",
   "St. Thomas Scuba & Snorkel Adventures",
   "Sonic Charters",
+  "Morningstar Charters",
+  "VI Snuba Excursions",
+  "Left Lane Charters",
 ] as const;
 
 export function getActivityCoverage() {
