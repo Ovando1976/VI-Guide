@@ -5,6 +5,7 @@ import { extname, resolve } from "node:path";
 const root = process.cwd();
 const HOME_SURFACES = [
   "app/page.tsx",
+  "app/experiences/page.tsx",
   "components/home/home-live-status.tsx",
   "components/home/home-concierge-hub.tsx",
 ] as const;
@@ -26,31 +27,31 @@ function localImagePaths(text: string) {
 
 function assertImageSignature(publicPath: string) {
   const filePath = resolve(root, "public", publicPath.replace(/^\//, ""));
-  assert.ok(existsSync(filePath), `Homepage image does not exist: ${publicPath}`);
+  assert.ok(existsSync(filePath), `Homepage/activity image does not exist: ${publicPath}`);
   const size = statSync(filePath).size;
-  assert.ok(size > 512, `Homepage image is suspiciously small: ${publicPath} (${size} bytes)`);
+  assert.ok(size > 512, `Homepage/activity image is suspiciously small: ${publicPath} (${size} bytes)`);
   const bytes = readFileSync(filePath);
   const extension = extname(filePath).toLowerCase();
 
   if (extension === ".jpg" || extension === ".jpeg") {
-    assert.ok(bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff, `Homepage image extension/content mismatch: ${publicPath} is not JPEG data`);
+    assert.ok(bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff, `Homepage/activity image extension/content mismatch: ${publicPath} is not JPEG data`);
     return;
   }
   if (extension === ".png") {
     const pngSignature = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
-    assert.ok(pngSignature.every((value, index) => bytes[index] === value), `Homepage image extension/content mismatch: ${publicPath} is not PNG data`);
+    assert.ok(pngSignature.every((value, index) => bytes[index] === value), `Homepage/activity image extension/content mismatch: ${publicPath} is not PNG data`);
     return;
   }
   if (extension === ".webp") {
-    assert.ok(bytes.length >= 12 && bytes.subarray(0, 4).toString("ascii") === "RIFF" && bytes.subarray(8, 12).toString("ascii") === "WEBP", `Homepage image extension/content mismatch: ${publicPath} is not WebP data`);
+    assert.ok(bytes.length >= 12 && bytes.subarray(0, 4).toString("ascii") === "RIFF" && bytes.subarray(8, 12).toString("ascii") === "WEBP", `Homepage/activity image extension/content mismatch: ${publicPath} is not WebP data`);
     return;
   }
   if (extension === ".svg") {
     const text = bytes.toString("utf8", 0, Math.min(bytes.length, 4096));
-    assert.match(text, /<svg\b/i, `Homepage image extension/content mismatch: ${publicPath} is not SVG data`);
+    assert.match(text, /<svg\b/i, `Homepage/activity image extension/content mismatch: ${publicPath} is not SVG data`);
     return;
   }
-  throw new Error(`Homepage image integrity contract does not recognize ${extension}: ${publicPath}`);
+  throw new Error(`Homepage/activity image integrity contract does not recognize ${extension}: ${publicPath}`);
 }
 
 const sources = HOME_SURFACES.map((path) => ({ path, text: source(path) }));
@@ -83,8 +84,8 @@ assert.doesNotMatch(home, /https:\/\/usvitaxi\.com\/wp-content\/uploads\/2023\/0
 assert.doesNotMatch(home, /<img\b/, "Homepage quick cards must use Next Image rather than raw img elements");
 const remoteQuickImages = [...home.matchAll(/image:\s*"(https:\/\/[^"\s]+)"/g)].map((match) => match[1]);
 assert.deepEqual(remoteQuickImages, [], "Homepage quick cards must not depend on remote images");
-assert.ok(allImages.has(SELECTED_USVI_TAXI_IMAGE), "Homepage image audit must include the local selected taxi van");
-assert.ok(allImages.size > 0, "No local homepage images were discovered for integrity validation");
+assert.ok(allImages.has(SELECTED_USVI_TAXI_IMAGE), "Homepage/activity image audit must include the local selected taxi van");
+assert.ok(allImages.size > 0, "No local homepage/activity images were discovered for integrity validation");
 for (const imagePath of [...allImages].sort()) assertImageSignature(imagePath);
 
-console.log(`USVI Explorer homepage image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);
+console.log(`USVI Explorer homepage/activity image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);
