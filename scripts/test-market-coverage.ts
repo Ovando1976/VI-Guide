@@ -15,7 +15,11 @@ import {
   RESTORED_BEACH_NAMES,
   RESTORED_BEACH_RECORDS,
 } from "../lib/directory-data/beach-restoration";
-import { getBeaches } from "../lib/directory-data/loader";
+import {
+  EXCLUDED_PLACE_IDS,
+  PLACE_CORRECTION_IDS,
+} from "../lib/directory-data/place-corrections";
+import { getBeaches, getPlaces } from "../lib/directory-data/loader";
 import { USVI_EVENTS } from "../lib/events";
 import { HISTORIC_SITE_CORRECTION_IDS } from "../lib/historic-sites/corrections";
 import { getHistoricSites } from "../lib/historic-sites";
@@ -129,6 +133,64 @@ assert.equal(
   new Set(beaches.map((beach) => beach.slug)).size,
   beaches.length,
   "Beach slugs must be unique",
+);
+
+const places = getPlaces();
+const placeNames = new Set(places.map((place) => place.name));
+assert.ok(
+  places.length >= 200,
+  "Public place catalog unexpectedly shrank below the restored baseline",
+);
+for (const name of [
+  "Arian's",
+  "Bernie's Bar & Grill",
+  "Coral World Ocean Park",
+  "Drake's Seat",
+  "Mountain Top",
+  "99 Steps",
+  "Annaberg Sugar Plantation",
+]) {
+  assert.ok(placeNames.has(name), `Core public place missing: ${name}`);
+}
+assert.ok(!placeNames.has("Arian S"), "Damaged Arian's display name must not publish");
+assert.ok(
+  !placeNames.has("Bernie's Bar Grill"),
+  "Damaged Bernie's display name must not publish",
+);
+for (const correctionId of PLACE_CORRECTION_IDS) {
+  const place = places.find((candidate) => candidate.id === correctionId);
+  assert.ok(place, `Governed place correction target missing: ${correctionId}`);
+  assert.ok(place.sourceLabel?.trim(), `${correctionId} needs correction provenance`);
+  assert.match(place.sourceUrl ?? "", /^https?:\/\//, `${correctionId} needs a source URL`);
+  assert.match(
+    place.verifiedAt ?? "",
+    /^\d{4}-\d{2}-\d{2}$/,
+    `${correctionId} needs verifiedAt`,
+  );
+}
+for (const excludedId of EXCLUDED_PLACE_IDS) {
+  assert.ok(
+    !places.some((place) => place.id === excludedId),
+    `Synthetic ingestion collision must not publish: ${excludedId}`,
+  );
+}
+for (const place of places) {
+  const publicText = [place.name, place.description, ...place.tags].join(" ");
+  assert.doesNotMatch(
+    publicText,
+    /\uFFFD/,
+    `${place.id} contains a damaged replacement character`,
+  );
+}
+assert.equal(
+  new Set(places.map((place) => place.id)).size,
+  places.length,
+  "Place IDs must be unique",
+);
+assert.equal(
+  new Set(places.map((place) => place.slug)).size,
+  places.length,
+  "Place slugs must be unique",
 );
 
 const accommodationNames = new Set(ACCOMMODATIONS.map((item) => item.name));
@@ -361,5 +423,5 @@ assert.ok(BUSINESS_COVERAGE_SUBMISSION_HREF.startsWith("/merchant"));
 assert.equal(getActivityCoverage().length, 3);
 
 console.log(
-  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches, ${ACCOMMODATIONS.length} stays, and ${historicSites.length} historic records.`,
+  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches, ${places.length} public places, ${ACCOMMODATIONS.length} stays, and ${historicSites.length} historic records.`,
 );
