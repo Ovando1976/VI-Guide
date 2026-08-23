@@ -208,7 +208,7 @@ for (const barge of CAR_BARGE_ROUTES) {
   assert.equal(isScheduleSuppressed(barge, activeOffSeason), true);
   assert.equal(getNextFerryDeparture(barge, activeOffSeason), null);
   assert.equal(barge.sourceAuthority, "Virgin Islands Port Authority");
-  assert.ok((barge.goodToKnow ?? []).some((note) => /not interchangeable/i.test(note)));
+  assert.ok((barge.goodToKnow ?? []).some((note) => /(not interchangeable|cannot be used on another operator)/i.test(note)));
 }
 
 for (const route of [...FERRY_ROUTES, ...CAR_BARGE_ROUTES]) {
