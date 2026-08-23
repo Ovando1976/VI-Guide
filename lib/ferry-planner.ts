@@ -19,3 +19,5 @@ export type {
   FerryScheduleStatus,
   NextFerryDeparture,
 } from "@/lib/ferry-planner-current";
+
+export type { FerryFare } from "@/lib/ferry-planner-base";
