@@ -26,6 +26,7 @@ import {
   normalizeCommerceLifecycleStatus,
   type MerchantCommerceTransition,
 } from "@/lib/payments/commerce-booking-lifecycle";
+import { normalizeTravelRequestStatus } from "@/lib/travel-advisor";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -96,6 +97,19 @@ export async function PATCH(
           403,
         );
       }
+
+      const travelRequestId = normalizeTravelRequestId(
+        booking.sourceTravelRequestId,
+      );
+      const travelRequestRef = travelRequestId
+        ? db.collection("travelPlanningRequests").doc(travelRequestId)
+        : null;
+      const travelRequestSnapshot = travelRequestRef
+        ? await transaction.get(travelRequestRef)
+        : null;
+      const travelRequest = travelRequestSnapshot?.exists
+        ? travelRequestSnapshot.data() ?? {}
+        : null;
 
       const deposit = resolveMerchantOfferDeposit({
         hasRequestedValue: hasDepositAmount,
@@ -213,6 +227,61 @@ export async function PATCH(
         ...paymentReset,
       });
 
+      let travelRequestLinked = false;
+      if (travelRequestRef && travelRequest) {
+        travelRequestLinked = true;
+        const currentTravelStatus = normalizeTravelRequestStatus(
+          travelRequest.status,
+        );
+        const shouldMarkBooked =
+          Boolean(currentTravelStatus) &&
+          status === "confirmed" &&
+          currentTravelStatus !== "closed" &&
+          currentTravelStatus !== "booked";
+
+        transaction.set(
+          travelRequestRef,
+          {
+            lastCommerceBookingId: bookingId,
+            lastCommerceBookingReference: reference,
+            lastCommerceBookingAt:
+              clean(travelRequest.lastCommerceBookingAt, 50) || updatedAt,
+            latestCommerceBookingStatus: status,
+            latestCommerceBookingUpdatedAt: updatedAt,
+            ...(shouldMarkBooked
+              ? {
+                  status: "booked",
+                  bookedAt: clean(travelRequest.bookedAt, 50) || updatedAt,
+                }
+              : {}),
+            updatedAt,
+            serverUpdatedAt: FieldValue.serverTimestamp(),
+          },
+          { merge: true },
+        );
+
+        if (shouldMarkBooked) {
+          transaction.set(db.collection("travelAdvisorAudit").doc(), {
+            action: "booking_confirmed",
+            requestId: travelRequestId,
+            reference:
+              clean(travelRequest.reference, 120) ||
+              clean(booking.sourceTravelAdvisorReference, 120) ||
+              null,
+            proposalShareId:
+              clean(booking.sourceProposalShareId, 40) || null,
+            commerceBookingId: bookingId,
+            commerceBookingReference: reference,
+            listingId,
+            listingName,
+            actorUid: session.uid,
+            actorEmail: session.email ?? null,
+            createdAt: updatedAt,
+            serverCreatedAt: FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
       const notificationOutboxIds: string[] = [];
       for (const audience of ["traveler", "operations"] as const) {
         const notificationRef = db.collection("notifications").doc();
@@ -307,6 +376,7 @@ export async function PATCH(
             status === "payment_required"
               ? null
               : booking.checkoutSessionId ?? null,
+          travelRequestLinked,
           updatedAt,
         },
         notificationOutboxIds,
@@ -394,6 +464,11 @@ function formatMoney(cents: number) {
     style: "currency",
     currency: "USD",
   }).format(cents / 100);
+}
+
+function normalizeTravelRequestId(value: unknown) {
+  const requestId = clean(value, 80);
+  return /^travel_[a-f0-9]{32}$/.test(requestId) ? requestId : "";
 }
 
 function hasOwn(value: unknown, key: string) {

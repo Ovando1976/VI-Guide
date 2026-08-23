@@ -76,6 +76,21 @@ export function normalizeProposalShareId(value: unknown) {
   return /^[a-zA-Z0-9]{12,40}$/.test(id) ? id : "";
 }
 
+export function proposalBookingEmailMatches(
+  proposalEmail: unknown,
+  bookingEmail: unknown,
+) {
+  const expected = clean(proposalEmail, 220).toLowerCase();
+  const submitted = clean(bookingEmail, 220).toLowerCase();
+  return Boolean(
+    expected &&
+      submitted &&
+      /^\S+@\S+\.\S+$/.test(expected) &&
+      /^\S+@\S+\.\S+$/.test(submitted) &&
+      expected === submitted,
+  );
+}
+
 function safeInternalHref(value: unknown) {
   const href = clean(value, 500);
   return href.startsWith("/") && !href.startsWith("//") ? href : "";
