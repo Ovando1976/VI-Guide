@@ -7,6 +7,11 @@ import {
   getActivityCoverage,
 } from "../lib/bookable-experiences-restored";
 import { CAR_RENTAL_OPERATORS } from "../lib/car-rentals";
+import {
+  RESTORED_BEACH_NAMES,
+  RESTORED_BEACH_RECORDS,
+} from "../lib/directory-data/beach-restoration";
+import { getBeaches } from "../lib/directory-data/loader";
 import { USVI_EVENTS } from "../lib/events";
 import {
   BUSINESS_COVERAGE_SUBMISSION_HREF,
@@ -72,7 +77,53 @@ assert.ok(
   CAR_RENTAL_OPERATORS.filter((item) => item.island === "stx").length >= 6,
   "St. Croix rental coverage unexpectedly shrank",
 );
-assert.ok(USVI_EVENTS.length >= 8, "Event catalog unexpectedly shrank");
+assert.ok(USVI_EVENTS.length >= 18, "Event catalog unexpectedly shrank");
+
+const beaches = getBeaches();
+const beachNames = new Set(beaches.map((beach) => beach.name));
+assert.ok(
+  beaches.length >= 75,
+  "Beach directory unexpectedly shrank below restored territory coverage",
+);
+assert.ok(
+  beaches.filter((beach) => beach.island === "stt").length >= 26,
+  "St. Thomas beach coverage unexpectedly shrank",
+);
+assert.ok(
+  beaches.filter((beach) => beach.island === "stj").length >= 23,
+  "St. John beach coverage unexpectedly shrank",
+);
+assert.ok(
+  beaches.filter((beach) => beach.island === "stx").length >= 26,
+  "St. Croix beach coverage unexpectedly shrank",
+);
+for (const name of RESTORED_BEACH_NAMES) {
+  assert.ok(beachNames.has(name), `Restored beach missing from directory: ${name}`);
+}
+for (const beach of RESTORED_BEACH_RECORDS) {
+  assert.match(beach.sourceUrl, /^https?:\/\//, `${beach.id} needs a source URL`);
+  assert.ok(beach.sourceLabel.trim(), `${beach.id} needs a source label`);
+  assert.match(
+    beach.verifiedAt,
+    /^\d{4}-\d{2}-\d{2}$/,
+    `${beach.id} needs verifiedAt`,
+  );
+  assert.ok(beach.sourceUrls.length > 0, `${beach.id} needs source provenance`);
+  assert.ok(
+    beach.heroImage.startsWith("/images/places/fallbacks/"),
+    `${beach.id} must use a truthful generic visual until an exact-location image is reviewed`,
+  );
+}
+assert.equal(
+  new Set(beaches.map((beach) => beach.id)).size,
+  beaches.length,
+  "Beach IDs must be unique",
+);
+assert.equal(
+  new Set(beaches.map((beach) => beach.slug)).size,
+  beaches.length,
+  "Beach slugs must be unique",
+);
 
 for (const island of islands) {
   const activityOperators = new Set(
@@ -170,4 +221,6 @@ assert.ok(
 assert.ok(BUSINESS_COVERAGE_SUBMISSION_HREF.startsWith("/merchant"));
 assert.equal(getActivityCoverage().length, 3);
 
-console.log("USVI Explorer market coverage contracts passed.");
+console.log(
+  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches.`,
+);
