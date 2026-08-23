@@ -57,6 +57,18 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
     image: "/images/usvi-harbor-hero.jpg",
     alt: "Charlotte Amalie harbor in St. Thomas",
   },
+  "stt-coral-world-sea-trek": {
+    image: "/images/places/st-thomas/coral-world-ocean-park-1.webp",
+    alt: "Coral World Ocean Park at Coki Point, St. Thomas",
+  },
+  "stt-coral-world-snuba": {
+    image: "/images/places/st-thomas/coral-world-ocean-park-1.webp",
+    alt: "Coral World Ocean Park at Coki Point, St. Thomas",
+  },
+  "stt-dive-center-two-tank": {
+    image: "/images/places/st-thomas/bolongo-bay-beach-1.png",
+    alt: "Bolongo Bay on St. Thomas",
+  },
   "stj-north-shore-day": {
     image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     alt: "Trunk Bay and the green North Shore of St. John",
@@ -65,6 +77,42 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
     image: "/images/places/st-john/trunk-bay-beach-1.jpg",
     alt: "Green hills and clear water on St. John",
   },
+  "stj-friends-vinp-francis-bay-bird-walk": {
+    image: "/images/places/st-john/francis-bay-beach-1.jpg",
+    alt: "Francis Bay on St. John",
+  },
+  "stj-low-key-two-tank": {
+    image: "/images/places/st-john/cruz-bay-ferry-dock-1.jpg",
+    alt: "Cruz Bay waterfront on St. John",
+  },
+  "stj-cruz-bay-lime-out": {
+    image: "/images/places/st-john/great-cruz-bay-beach-1.jpg",
+    alt: "Great Cruz Bay on St. John",
+  },
+  "stj-cruz-bay-sunset": {
+    image: "/images/places/st-john/cruz-bay-ferry-dock-1.jpg",
+    alt: "Cruz Bay waterfront on St. John",
+  },
+  "stj-cruz-bay-jet-ski": {
+    image: "/images/places/st-john/great-cruz-bay-beach-1.jpg",
+    alt: "Great Cruz Bay and Pillsbury Sound on St. John",
+  },
+  "stj-haunt-historic-ghost-tour": {
+    image: "/images/places/st-john/cruz-bay-ferry-dock-1.jpg",
+    alt: "Cruz Bay waterfront on St. John",
+  },
+  "stj-vieco-north-shore": {
+    image: "/images/places/st-john/trunk-bay-beach-1.jpg",
+    alt: "St. John North Shore at Trunk Bay",
+  },
+  "stj-explore-stj-jeep": {
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay within Virgin Islands National Park on St. John",
+  },
+  "stj-ocean-surfari-jeep": {
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay within Virgin Islands National Park on St. John",
+  },
   "stx-christiansted-culture": {
     image: "/images/accommodations/king-christian-hotel.jpg",
     alt: "Historic waterfront architecture in Christiansted, St. Croix",
@@ -72,6 +120,66 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
   "stx-west-end-sunset": {
     image: "/images/places/st-croix/cane-bay-beach-1.jpg",
     alt: "St. Croix coastline at Cane Bay",
+  },
+  "stx-sea-thru-bio-bay": {
+    image: "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+    alt: "Salt River Bay on St. Croix",
+  },
+  "stx-bushtribe-bio-bay": {
+    image: "/images/places/st-croix/salt-river-bay-national-historical-park-1.jpg",
+    alt: "Salt River Bay on St. Croix",
+  },
+  "stx-bushtribe-annaly": {
+    image: "/images/places/st-croix/annaly-bay-tide-pools-trail-1.jpg",
+    alt: "Annaly Bay tide-pools trail on St. Croix",
+  },
+  "stx-big-beards-buck-island": {
+    image: "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+    alt: "Buck Island Reef National Monument off St. Croix",
+  },
+  "stx-caribbean-sea-buck-island": {
+    image: "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+    alt: "Buck Island Reef National Monument off St. Croix",
+  },
+  "stx-jolly-roger-buck-island": {
+    image: "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+    alt: "Buck Island Reef National Monument off St. Croix",
+  },
+  "stx-llewellyn-buck-island": {
+    image: "/images/places/st-croix/buck-island-reef-national-monument-1.jpg",
+    alt: "Buck Island Reef National Monument off St. Croix",
+  },
+  "stx-cane-bay-dive": {
+    image: "/images/places/st-croix/cane-bay-wall-1.jpg",
+    alt: "Cane Bay Wall on the north shore of St. Croix",
+  },
+  "stx-sweet-bottom-dive": {
+    image: "/images/places/st-croix/cane-bay-beach-1.jpg",
+    alt: "Cane Bay on the north shore of St. Croix",
+  },
+  "stx-crucian-adventure-divers": {
+    image: "/images/places/st-croix/frederiksted-pier-1.jpg",
+    alt: "Frederiksted Pier on St. Croix",
+  },
+  "stx-chant-frederiksted-walk": {
+    image: "/images/places/st-croix/fort-frederik-1.jpg",
+    alt: "Fort Frederik in Frederiksted, St. Croix",
+  },
+  "stx-parasail-virgin-islands": {
+    image: "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+    alt: "Christiansted Boardwalk on St. Croix",
+  },
+  "stx-blue-salt-dive": {
+    image: "/images/places/st-croix/christiansted-boardwalk-1.jpg",
+    alt: "Christiansted Boardwalk on St. Croix",
+  },
+  "stx-vi-food-tours": {
+    image: "/images/places/st-croix/christiansted-historic-district-1.jpg",
+    alt: "Christiansted Historic District on St. Croix",
+  },
+  "stx-lyric-sunset-sail": {
+    image: "/images/places/st-croix/frederiksted-pier-1.jpg",
+    alt: "Frederiksted Pier and waterfront on St. Croix",
   },
 };
 
