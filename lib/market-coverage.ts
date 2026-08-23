@@ -153,7 +153,7 @@ export const MARKET_COVERAGE_POLICY = {
     "land-tour",
   ] as const,
   minimumActivityOperatorsPerIsland: 8,
-  minimumRentalOperatorsPerIsland: 6,
+  minimumRentalOperatorsPerIsland: 8,
 } as const;
 
 export const BUSINESS_COVERAGE_SUBMISSION_HREF =
