@@ -10,6 +10,7 @@ import {
 } from "@/lib/data-utils/parsing";
 
 import { RESTORED_BEACH_RECORDS } from "./beach-restoration";
+import { RESTORED_DINING_RECORDS } from "./dining-restoration";
 import {
   applyPlaceCorrection,
   shouldPublishPlace,
@@ -85,7 +86,10 @@ function loadDataset(dataset: DirectoryDataset): readonly DirectoryRecord[] {
 
   const source: readonly unknown[] =
     dataset === "places"
-      ? (placesData as readonly unknown[])
+      ? [
+          ...(placesData as readonly unknown[]),
+          ...RESTORED_DINING_RECORDS,
+        ]
       : [
           ...(beachesData as readonly unknown[]),
           ...RESTORED_BEACH_RECORDS,
