@@ -58,19 +58,15 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
     alt: "Charlotte Amalie harbor in St. Thomas",
   },
   "stt-coral-world-sea-trek": {
-    image: "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+    image: "/images/places/st-thomas/coral-world-ocean-park-1.webp",
     alt: "Coral World Ocean Park at Coki Point, St. Thomas",
   },
   "stt-coral-world-snuba": {
-    image: "/images/places/st-thomas/coral-world-ocean-park-1.jpg",
+    image: "/images/places/st-thomas/coral-world-ocean-park-1.webp",
     alt: "Coral World Ocean Park at Coki Point, St. Thomas",
   },
-  "stt-funtime-jet-ski": {
-    image: "/images/places/st-thomas/lindbergh-bay-beach-1.jpg",
-    alt: "Lindbergh Bay on St. Thomas",
-  },
   "stt-dive-center-two-tank": {
-    image: "/images/places/st-thomas/bolongo-bay-beach-1.jpg",
+    image: "/images/places/st-thomas/bolongo-bay-beach-1.png",
     alt: "Bolongo Bay on St. Thomas",
   },
   "stj-north-shore-day": {
