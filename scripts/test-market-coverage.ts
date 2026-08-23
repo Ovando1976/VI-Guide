@@ -3,8 +3,9 @@ import assert from "node:assert/strict";
 import {
   ACTIVITY_COVERAGE_SOURCES,
   BOOKABLE_EXPERIENCES,
+  CURRENT_DESTINATION_ACTIVITY_OPERATORS,
   getActivityCoverage,
-} from "../lib/bookable-experiences";
+} from "../lib/bookable-experiences-restored";
 import { CAR_RENTAL_OPERATORS } from "../lib/car-rentals";
 import { USVI_EVENTS } from "../lib/events";
 import {
@@ -16,17 +17,17 @@ import {
 const islands = MARKET_COVERAGE_POLICY.requiredIslands;
 
 assert.ok(
-  BOOKABLE_EXPERIENCES.length >= 42,
+  BOOKABLE_EXPERIENCES.length >= 62,
   "Activity catalog unexpectedly shrank",
 );
 assert.ok(
-  BOOKABLE_EXPERIENCES.filter((item) => item.category === "scuba").length >= 11,
+  BOOKABLE_EXPERIENCES.filter((item) => item.category === "scuba").length >= 12,
   "Scuba coverage unexpectedly shrank",
 );
 assert.ok(
   BOOKABLE_EXPERIENCES.filter(
     (item) => item.category === "sailing" || item.category === "boat-charter",
-  ).length >= 9,
+  ).length >= 12,
   "Sailing and charter coverage unexpectedly shrank",
 );
 for (const category of [
@@ -35,10 +36,23 @@ for (const category of [
   "paddleboard",
   "horseback",
   "food-tour",
+  "cultural",
+  "atv",
+  "land-tour",
 ] as const) {
   assert.ok(
     BOOKABLE_EXPERIENCES.some((item) => item.category === category),
     `Expanded activity coverage missing: ${category}`,
+  );
+}
+
+const activityOperatorNames = new Set(
+  BOOKABLE_EXPERIENCES.map((item) => item.operator),
+);
+for (const operator of CURRENT_DESTINATION_ACTIVITY_OPERATORS) {
+  assert.ok(
+    activityOperatorNames.has(operator),
+    `Current destination-guide operator missing: ${operator}`,
   );
 }
 
@@ -94,6 +108,8 @@ for (const category of MARKET_COVERAGE_POLICY.requiredActivityCategories) {
 
 for (const item of BOOKABLE_EXPERIENCES) {
   assert.ok(item.operator.trim(), `${item.id} needs an operator`);
+  assert.ok(item.location.trim(), `${item.id} needs a location`);
+  assert.ok(item.sourceLabel.trim(), `${item.id} needs a source label`);
   assert.match(
     item.sourceUrl,
     /^https?:\/\//,
@@ -130,12 +146,16 @@ assert.equal(
   "Rental IDs must be unique",
 );
 
-assert.ok(ACTIVITY_COVERAGE_SOURCES.length >= 4);
+assert.ok(ACTIVITY_COVERAGE_SOURCES.length >= 7);
 assert.ok(
   MARKET_COVERAGE_SOURCES.some((source) => source.inventory === "events"),
 );
 assert.ok(
-  MARKET_COVERAGE_SOURCES.some((source) => source.inventory === "activities"),
+  MARKET_COVERAGE_SOURCES.filter(
+    (source) =>
+      source.inventory === "activities" && source.authority === "destination",
+  ).length >= 5,
+  "Activity coverage needs current destination sources for all three islands",
 );
 assert.ok(
   MARKET_COVERAGE_SOURCES.some((source) => source.inventory === "car-rentals"),
