@@ -1,4 +1,4 @@
-export { ACCOMMODATIONS } from "./loader";
+export { ACCOMMODATIONS, RESTORED_ACCOMMODATIONS } from "./catalog";
 
 export {
   getAccommodationBySlug,
