@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 
 import {
+  ACCOMMODATIONS,
+  RESTORED_ACCOMMODATIONS,
+} from "../lib/accommodations";
+import {
   ACTIVITY_COVERAGE_SOURCES,
   BOOKABLE_EXPERIENCES,
   CURRENT_DESTINATION_ACTIVITY_OPERATORS,
@@ -125,6 +129,77 @@ assert.equal(
   "Beach slugs must be unique",
 );
 
+const accommodationNames = new Set(ACCOMMODATIONS.map((item) => item.name));
+assert.ok(
+  ACCOMMODATIONS.length >= 60,
+  "Accommodation catalog unexpectedly shrank below restored territory coverage",
+);
+assert.ok(
+  ACCOMMODATIONS.filter((item) => item.island === "stt").length >= 30,
+  "St. Thomas stay coverage unexpectedly shrank",
+);
+assert.ok(
+  ACCOMMODATIONS.filter((item) => item.island === "stj").length >= 11,
+  "St. John stay coverage unexpectedly shrank",
+);
+assert.ok(
+  ACCOMMODATIONS.filter((item) => item.island === "stx").length >= 18,
+  "St. Croix stay coverage unexpectedly shrank",
+);
+for (const name of [
+  "The Saint Resort",
+  "The Westin St. John Resort Villas",
+  "Estate Lindholm",
+  "St. John Inn",
+  "Sea Shore Allure",
+  "Cruz Bay Boutique Hotel",
+  "Concordia Eco Resort",
+  "Cinnamon Bay Beach & Campground",
+  "Grapetree Bay Hotel & Villas",
+  "The Waves Cane Bay",
+]) {
+  assert.ok(
+    accommodationNames.has(name),
+    `Restored accommodation missing from catalog: ${name}`,
+  );
+}
+for (const stay of RESTORED_ACCOMMODATIONS) {
+  assert.ok(stay.sourceLabel?.trim(), `${stay.id} needs a source label`);
+  assert.match(stay.sourceUrl ?? "", /^https?:\/\//, `${stay.id} needs a source URL`);
+  assert.match(
+    stay.verifiedAt ?? "",
+    /^\d{4}-\d{2}-\d{2}$/,
+    `${stay.id} needs verifiedAt`,
+  );
+  assert.ok(
+    (stay.sourceUrls?.length ?? 0) > 0,
+    `${stay.id} needs source provenance`,
+  );
+  assert.equal(
+    stay.imageStatus,
+    "pending",
+    `${stay.id} exact-location image must stay pending until reviewed`,
+  );
+  assert.ok(
+    stay.heroImage?.startsWith("/images/places/fallbacks/"),
+    `${stay.id} must use a truthful generic visual until an exact-location image is reviewed`,
+  );
+}
+assert.ok(
+  ACCOMMODATIONS.some((item) => item.category === "campground"),
+  "Accommodation coverage must include the Cinnamon Bay campground category",
+);
+assert.equal(
+  new Set(ACCOMMODATIONS.map((item) => item.id)).size,
+  ACCOMMODATIONS.length,
+  "Accommodation IDs must be unique",
+);
+assert.equal(
+  new Set(ACCOMMODATIONS.map((item) => item.slug)).size,
+  ACCOMMODATIONS.length,
+  "Accommodation slugs must be unique",
+);
+
 for (const island of islands) {
   const activityOperators = new Set(
     BOOKABLE_EXPERIENCES.filter((item) => item.island === island).map(
@@ -222,5 +297,5 @@ assert.ok(BUSINESS_COVERAGE_SUBMISSION_HREF.startsWith("/merchant"));
 assert.equal(getActivityCoverage().length, 3);
 
 console.log(
-  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches.`,
+  `USVI Explorer market coverage contracts passed, including ${beaches.length} beaches and ${ACCOMMODATIONS.length} stays.`,
 );
