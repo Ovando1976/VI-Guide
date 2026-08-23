@@ -9,7 +9,11 @@ import type {
   BookableExperience as BaseBookableExperience,
 } from "./bookable-experiences";
 
-export type ActivityCategory = BaseActivityCategory | "atv" | "land-tour";
+export type ActivityCategory =
+  | BaseActivityCategory
+  | "atv"
+  | "land-tour"
+  | "air-tour";
 
 export type BookableExperience = Omit<BaseBookableExperience, "category"> & {
   category: ActivityCategory;
@@ -133,6 +137,23 @@ const RESTORED_BOOKABLE_EXPERIENCES: BookableExperience[] = [
     highlights: ["Heritage", "Walking tour", "Emancipation history", "Frederiksted"],
     sourceUrl: "https://chantvi.org/",
     sourceLabel: "CHANT official website and Visit USVI current guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stx-hanging-with-locals-cultural",
+    name: "Hanging With The Locals Cultural Experience",
+    operator: "Hanging With The Locals",
+    category: "cultural",
+    kind: "tour",
+    island: "stx",
+    location: "Frederiksted and St. Croix",
+    duration: "Varies",
+    summary:
+      "A locally operated St. Croix cultural experience centered on Crucian customs, dialect, food, history, and direct interaction with island residents.",
+    highlights: ["Crucian culture", "Local guide", "Food & traditions", "Frederiksted"],
+    sourceUrl: "https://www.hangingwiththelocals.com/",
+    sourceLabel: "Hanging With The Locals official website and Visit USVI current Top Tours guide",
     verifiedAt: "2026-08-23",
     availabilityStatus: "request-only",
   },
@@ -291,6 +312,23 @@ const RESTORED_BOOKABLE_EXPERIENCES: BookableExperience[] = [
     verifiedAt: "2026-08-23",
     availabilityStatus: "seasonal",
   },
+  {
+    id: "stj-sweet-pea-private-catamaran",
+    name: "Private St. John Catamaran Sail",
+    operator: "Sweet Pea Charters",
+    category: "sailing",
+    kind: "tour",
+    island: "stj",
+    location: "Cruz Bay, St. John / Red Hook, St. Thomas",
+    duration: "Day or sunset sail",
+    summary:
+      "A private catamaran sailing experience departing from St. John or St. Thomas with snorkeling, swimming, and custom island-day routing.",
+    highlights: ["Private catamaran", "Sailing", "Snorkeling", "Sunset option"],
+    sourceUrl: "https://daysailsweetpea.com/",
+    sourceLabel: "Sweet Pea Charters official website and Visit USVI current Luxury Island Experiences guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "operator-listed",
+  },
 
   // St. Thomas — current Visit USVI snorkeling, boating, and must-do guide gaps.
   {
@@ -429,6 +467,57 @@ const RESTORED_BOOKABLE_EXPERIENCES: BookableExperience[] = [
     verifiedAt: "2026-08-23",
     availabilityStatus: "request-only",
   },
+  {
+    id: "stt-caribbean-buzz-sightseeing",
+    name: "Virgin Islands Helicopter Sightseeing Tour",
+    operator: "Caribbean Buzz Helicopters",
+    category: "air-tour",
+    kind: "tour",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Varies",
+    summary:
+      "A private helicopter sightseeing experience over St. Thomas, St. John, surrounding cays, and other Virgin Islands routes offered by the St. Thomas-based operator.",
+    highlights: ["Helicopter", "Aerial views", "Private tour", "Island sightseeing"],
+    sourceUrl: "https://www.caribbean-buzz.com/",
+    sourceLabel: "Caribbean Buzz Helicopters official website and Visit USVI current Top Tours guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stt-tropical-treasure-hunt",
+    name: "St. Thomas Tropical Treasure Hunt",
+    operator: "The Tropical Treasure Hunt Co.",
+    category: "cultural",
+    kind: "experience",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Varies",
+    summary:
+      "A private pirate-themed island treasure-hunt experience combining puzzles, St. Thomas history, and destination stops, highlighted in the current Visit USVI Top Tours guide.",
+    highlights: ["Treasure hunt", "Puzzles", "Pirate history", "Private groups"],
+    sourceUrl: "https://www.visitusvi.com/experience/top-island-tours/",
+    sourceLabel: "Visit USVI current Top Tours guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stt-island-yacht-charters",
+    name: "Virgin Islands Yacht Charter",
+    operator: "Island Yacht Charters",
+    category: "sailing",
+    kind: "tour",
+    island: "stt",
+    location: "Red Hook, St. Thomas",
+    duration: "Multi-day",
+    summary:
+      "Bareboat and crewed sailing vacations from St. Thomas for exploring the U.S. and Spanish Virgin Islands, with final itinerary and vessel availability confirmed by the operator.",
+    highlights: ["Sailing", "Bareboat", "Crewed charter", "Multi-day"],
+    sourceUrl: "https://www.iyc.vi/",
+    sourceLabel: "Island Yacht Charters official website and Visit USVI current Luxury Island Experiences guide",
+    verifiedAt: "2026-08-23",
+    availabilityStatus: "request-only",
+  },
 ];
 
 export const BOOKABLE_EXPERIENCES: BookableExperience[] = [
@@ -440,6 +529,7 @@ export const ACTIVITY_CATEGORY_LABELS: Record<ActivityCategory, string> = {
   ...BASE_ACTIVITY_CATEGORY_LABELS,
   atv: "ATV & off-road",
   "land-tour": "Island & land tours",
+  "air-tour": "Helicopter & air tours",
 };
 
 export const ACTIVITY_COVERAGE_SOURCES = [
@@ -468,6 +558,18 @@ export const ACTIVITY_COVERAGE_SOURCES = [
     url: "https://www.visitusvi.com/experience/fun-boating-excursions/",
     scope: "Current named St. Thomas charter, SNUBA, and sportfishing operators",
   },
+  {
+    id: "visit-usvi-top-island-tours",
+    label: "Visit USVI Top Island Tours",
+    url: "https://www.visitusvi.com/experience/top-island-tours/",
+    scope: "Current named culture, helicopter, eco, jeep, and specialty tour operators",
+  },
+  {
+    id: "visit-usvi-luxury-island-experiences",
+    label: "Visit USVI Luxury Island Experiences",
+    url: "https://www.visitusvi.com/experience/luxury-island-experiences/",
+    scope: "Current named premium sailing, yacht-charter, and helicopter experiences",
+  },
 ] as const;
 
 export const ISLAND_NAMES = BASE_ISLAND_NAMES;
@@ -480,6 +582,7 @@ export const CURRENT_DESTINATION_ACTIVITY_OPERATORS = [
   "Gecko's Island Adventures",
   "Carambola Zip Line",
   "Crucian Heritage & Nature Tourism (CHANT)",
+  "Hanging With The Locals",
   "Seas the Day Charters & Tours",
   "Island Roots Charters",
   "On the Sea Charters",
@@ -488,6 +591,7 @@ export const CURRENT_DESTINATION_ACTIVITY_OPERATORS = [
   "Star Fish Tours & Taxi",
   "Haunt Historic Ghost Tours",
   "Friends of Virgin Islands National Park",
+  "Sweet Pea Charters",
   "Funtime Jet Ski Rentals & Boat Charters",
   "St. Thomas Snorkeling",
   "St. Thomas Scuba & Snorkel Adventures",
@@ -495,6 +599,9 @@ export const CURRENT_DESTINATION_ACTIVITY_OPERATORS = [
   "Morningstar Charters",
   "VI Snuba Excursions",
   "Left Lane Charters",
+  "Caribbean Buzz Helicopters",
+  "The Tropical Treasure Hunt Co.",
+  "Island Yacht Charters",
 ] as const;
 
 export function getActivityCoverage() {
