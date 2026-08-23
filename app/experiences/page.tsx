@@ -22,7 +22,7 @@ import {
   ISLAND_NAMES,
   type ActivityCategory,
   type BookableExperience,
-} from "@/lib/bookable-experiences";
+} from "@/lib/bookable-experiences-restored";
 
 export const metadata = {
   title: "Tours & Experiences | USVI Explorer",
