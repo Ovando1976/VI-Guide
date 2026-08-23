@@ -110,12 +110,12 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
     alt: "St. John North Shore at Trunk Bay",
   },
   "stj-explore-stj-jeep": {
-    image: "/images/places/st-john/virgin-islands-national-park-1.jpg",
-    alt: "Virgin Islands National Park on St. John",
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay within Virgin Islands National Park on St. John",
   },
   "stj-ocean-surfari-jeep": {
-    image: "/images/places/st-john/virgin-islands-national-park-1.jpg",
-    alt: "Virgin Islands National Park on St. John",
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
+    alt: "Trunk Bay within Virgin Islands National Park on St. John",
   },
   "stx-christiansted-culture": {
     image: "/images/accommodations/king-christian-hotel.jpg",
