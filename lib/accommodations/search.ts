@@ -1,4 +1,4 @@
-import { ACCOMMODATIONS } from "./loader";
+import { ACCOMMODATIONS } from "./catalog";
 import type { AccommodationRecord } from "./types";
 import { verifiedAccommodationEstateGeoid } from "./verified-estate-geoids";
 

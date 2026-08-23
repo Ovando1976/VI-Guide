@@ -6,7 +6,8 @@ export type AccommodationCategory =
   | "resort"
   | "villa"
   | "guesthouse"
-  | "apartment";
+  | "apartment"
+  | "campground";
 
 export type AccommodationRecord = DirectoryItem & {
   id: string;
