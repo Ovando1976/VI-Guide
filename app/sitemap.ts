@@ -11,7 +11,6 @@ const publicRoutes = [
   "/accommodations",
   "/activities",
   "/events",
-  "/experiences",
   "/offers",
   "/mobility",
   "/concierge",
