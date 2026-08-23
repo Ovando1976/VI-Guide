@@ -10,6 +10,10 @@ import {
 } from "@/lib/data-utils/parsing";
 
 import { RESTORED_BEACH_RECORDS } from "./beach-restoration";
+import {
+  applyPlaceCorrection,
+  shouldPublishPlace,
+} from "./place-corrections";
 import type {
   DirectoryDataset,
   DirectoryIsland,
@@ -94,9 +98,13 @@ function loadDataset(dataset: DirectoryDataset): readonly DirectoryRecord[] {
   const ids = new Set<string>();
   const slugs = new Set<string>();
 
-  const records = source.map((value, index) =>
+  const parsedRecords = source.map((value, index) =>
     parseDirectoryRecord(value, dataset, index)
   );
+  const records =
+    dataset === "places"
+      ? parsedRecords.filter(shouldPublishPlace).map(applyPlaceCorrection)
+      : parsedRecords;
 
   for (const record of records) {
     if (ids.has(record.id)) {
