@@ -24,6 +24,9 @@
       }
     ],
     "paths": {
+      "@/lib/bookable-experiences": [
+        "./lib/bookable-experiences-restored.ts"
+      ],
       "@/*": [
         "./*"
       ]
