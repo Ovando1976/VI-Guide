@@ -64,6 +64,15 @@ export const MARKET_COVERAGE_SOURCES: readonly CoverageSource[] = [
     reviewCadenceDays: 7,
   },
   {
+    id: "visit-usvi-transportation",
+    label: "Visit USVI Travel & Transportation",
+    url: "https://www.visitusvi.com/travel-information/transportation/",
+    inventory: "car-rentals",
+    scope: "Territory transportation guidance and current tourism listings",
+    authority: "destination",
+    reviewCadenceDays: 30,
+  },
+  {
     id: "gotostcroix-rentals",
     label: "GoToStCroix Car Rentals",
     url: "https://www.gotostcroix.com/getting-around/car-rentals/",
@@ -82,11 +91,11 @@ export const MARKET_COVERAGE_SOURCES: readonly CoverageSource[] = [
     reviewCadenceDays: 30,
   },
   {
-    id: "stjohn-rentals",
-    label: "St. John rental company directory",
-    url: "https://islandeguide.com/article/st-john-car-rental-companies-usvi.html",
+    id: "rentstjohn-rentals",
+    label: "RentStJohn Car Rental Directory",
+    url: "https://rentstjohn.com/en/taxis",
     inventory: "car-rentals",
-    scope: "St. John local rental operators",
+    scope: "Current St. John local car and Jeep rental operators",
     authority: "directory",
     reviewCadenceDays: 30,
   },
@@ -114,7 +123,7 @@ export const MARKET_COVERAGE_POLICY = {
     "food-tour",
   ] as const,
   minimumActivityOperatorsPerIsland: 3,
-  minimumRentalOperatorsPerIsland: 3,
+  minimumRentalOperatorsPerIsland: 6,
 } as const;
 
 export const BUSINESS_COVERAGE_SUBMISSION_HREF =
