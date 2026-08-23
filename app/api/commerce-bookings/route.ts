@@ -477,7 +477,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (result.notificationOutboxIds.length > 0) {
-      processBookingNotificationOutboxIds(result.notificationOutboxIds).catch(
+      processBookingNotificationOutboxIds(db, result.notificationOutboxIds).catch(
         (error) => {
           console.error("booking notification delivery error", error);
         },
