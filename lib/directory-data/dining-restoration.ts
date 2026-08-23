@@ -16,7 +16,8 @@ const STX_SOURCE =
  * directory loader.
  *
  * Exact-location imagery is intentionally not claimed here. Each restored
- * record uses the island fallback until a venue-specific image is reviewed.
+ * record uses a purpose-built island Dining fallback until a venue-specific
+ * image is reviewed.
  */
 export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze([
   {
@@ -27,7 +28,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "The Shack at The Hideaway is a St. Thomas dining stop at The Hideaway at Hull Bay, highlighted in the current Visit USVI St. Thomas restaurant guide.",
-    heroImage: "/images/places/fallbacks/place-stt.svg",
+    heroImage: "/images/places/fallbacks/dining-stt.svg",
     tags: ["food", "stt", "Hull Bay", "Visit USVI"],
     featured: true,
     bestFor: ["island dining", "Hull Bay"],
@@ -48,7 +49,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "Island View Steakhouse is a St. Thomas restaurant included in the current Visit USVI destination dining guide.",
-    heroImage: "/images/places/fallbacks/place-stt.svg",
+    heroImage: "/images/places/fallbacks/dining-stt.svg",
     tags: ["food", "stt", "steakhouse", "Visit USVI"],
     featured: false,
     bestFor: ["dinner", "steakhouse"],
@@ -69,7 +70,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "Lime Out is a floating taco restaurant in Coral Bay Harbor on St. John, highlighted by Visit USVI and reached by boat rather than by road.",
-    heroImage: "/images/places/fallbacks/place-stj.svg",
+    heroImage: "/images/places/fallbacks/dining-stj.svg",
     tags: ["food", "stj", "Coral Bay", "boat access", "Visit USVI"],
     featured: true,
     bestFor: ["boat day", "lunch", "Coral Bay"],
@@ -92,7 +93,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "ZoZo's at Caneel Bay is a St. John dining destination at Caneel Bay included in the current Visit USVI restaurant guide.",
-    heroImage: "/images/places/fallbacks/place-stj.svg",
+    heroImage: "/images/places/fallbacks/dining-stj.svg",
     tags: ["food", "stj", "Caneel Bay", "Visit USVI"],
     featured: false,
     bestFor: ["dinner", "Caneel Bay"],
@@ -113,7 +114,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "AMA at Cane Bay is an oceanfront St. Croix restaurant at Cane Bay highlighted by Visit USVI for seafood-focused dining.",
-    heroImage: "/images/places/fallbacks/place-stx.svg",
+    heroImage: "/images/places/fallbacks/dining-stx.svg",
     tags: ["food", "stx", "Cane Bay", "seafood", "Visit USVI"],
     featured: true,
     bestFor: ["oceanfront dining", "seafood", "Cane Bay"],
@@ -134,7 +135,7 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
     category: "food",
     description:
       "The Landing Beach Bar is a casual open-air restaurant at Cane Bay Beach on St. Croix included in the current Visit USVI dining guide.",
-    heroImage: "/images/places/fallbacks/place-stx.svg",
+    heroImage: "/images/places/fallbacks/dining-stx.svg",
     tags: ["food", "stx", "Cane Bay", "beachfront", "Visit USVI"],
     featured: false,
     bestFor: ["beach day", "casual dining", "Cane Bay"],
@@ -152,3 +153,28 @@ export const RESTORED_DINING_RECORDS: readonly DirectoryRecord[] = Object.freeze
 export const RESTORED_DINING_NAMES = Object.freeze(
   RESTORED_DINING_RECORDS.map((record) => record.name),
 );
+
+const ids = new Set<string>();
+const slugs = new Set<string>();
+for (const record of RESTORED_DINING_RECORDS) {
+  if (ids.has(record.id)) {
+    throw new TypeError(`Duplicate restored dining id: ${record.id}`);
+  }
+  if (slugs.has(record.slug)) {
+    throw new TypeError(`Duplicate restored dining slug: ${record.slug}`);
+  }
+  if (record.category !== "food") {
+    throw new TypeError(`${record.id} must use the canonical restored dining category: food`);
+  }
+  if (!record.sourceUrl?.startsWith("https://www.visitusvi.com/")) {
+    throw new TypeError(`${record.id} must retain Visit USVI provenance`);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(record.verifiedAt ?? "")) {
+    throw new TypeError(`${record.id} must include a valid verifiedAt date`);
+  }
+  if (record.heroImage !== `/images/places/fallbacks/dining-${record.island}.svg`) {
+    throw new TypeError(`${record.id} must use the truthful island Dining fallback`);
+  }
+  ids.add(record.id);
+  slugs.add(record.slug);
+}
