@@ -1,366 +1,112 @@
-export type EventIsland = "stt" | "stj" | "stx";
-export type EventCategory =
-  | "culinary"
-  | "sports"
-  | "culture"
-  | "heritage"
-  | "festival";
+import {
+  EVENT_CATEGORY_LABELS,
+  EVENT_ISLAND_LABELS,
+  USVI_EVENTS as CORE_USVI_EVENTS,
+  type EventCategory as CoreEventCategory,
+  type EventIsland as CoreEventIsland,
+  type UsviEvent as CoreUsviEvent,
+} from "./events-core";
 
-export type UsviEvent = {
-  id: string;
-  slug: string;
-  name: string;
-  island: EventIsland;
-  category: EventCategory;
-  startDate: string;
-  endDate?: string;
-  timeLabel?: string;
-  location: string;
-  description: string;
-  sourceLabel: string;
-  sourceUrl: string;
-  verifiedAt: string;
-  featured?: boolean;
-  tags: string[];
+export type EventIsland = CoreEventIsland;
+export type EventCategory = CoreEventCategory;
+export type UsviEvent = CoreUsviEvent & {
+  /** Exact occurrence dates for non-continuous recurring event series. */
+  occurrenceDates?: readonly string[];
 };
 
-export const USVI_EVENTS: readonly UsviEvent[] = [
-  {
-    id: "stt-restaurant-week-2026",
-    slug: "st-thomas-restaurant-week-2026",
-    name: "St. Thomas Restaurant Week",
-    island: "stt",
-    category: "culinary",
-    startDate: "2026-08-16",
-    endDate: "2026-08-31",
-    location: "St. Thomas",
-    description:
-      "St. Thomas Restaurant Week runs Aug. 16–31, 2026, with participating restaurants offering special prix-fixe brunch, lunch, and dinner menus. Connect the dining window with reservations, transportation, and the rest of your island plan.",
-    sourceLabel: "Visit USVI · St. Thomas Restaurant Week",
-    sourceUrl: "https://www.visitusvi.com/events/st-thomas-restaurant-week/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["food", "restaurants", "culinary", "dining", "St. Thomas"],
-  },
-  {
-    id: "stx-sunday-funday-fort-2026",
-    slug: "sunday-funday-at-the-fort-2026",
-    name: "Sunday Funday at the Fort",
-    island: "stx",
-    category: "heritage",
-    startDate: "2026-08-09",
-    endDate: "2026-10-25",
-    timeLabel: "Selected Sundays · 3:00 PM – 5:00 PM",
-    location: "Christiansted National Historic Site, St. Croix",
-    description:
-      "A recurring family program at Christiansted National Historic Site with arts and crafts, stories, music, and hands-on activities on selected second and fourth Sundays through Oct. 25, 2026.",
-    sourceLabel: "Visit USVI · Sunday Funday at the Fort",
-    sourceUrl: "https://www.visitusvi.com/events/sunday-funday-at-the-fort/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["family", "Christiansted", "fort", "history", "arts", "National Park Service"],
-  },
-  {
-    id: "stx-sunset-sounds-loops-2026",
-    slug: "sunset-sounds-at-loops-beach-2026",
-    name: "Sunset Sounds at Loops Beach",
-    island: "stx",
-    category: "culture",
-    startDate: "2026-08-09",
-    endDate: "2026-10-11",
-    timeLabel: "Selected Sundays · 5:00 PM – 7:00 PM",
-    location: "Loops Beach / Loops Village, St. Croix",
-    description:
-      "A free sunset music series featuring local artists and Caribbean, reggae, jazz, and other island rhythms at the Loops Village arts and cultural pavilion.",
-    sourceLabel: "Visit USVI · Sunset Sounds at Loops Beach",
-    sourceUrl: "https://www.visitusvi.com/events/sunset-sounds-at-loops-beach/",
-    verifiedAt: "2026-08-23",
-    tags: ["music", "sunset", "local artists", "St. Croix", "free"],
-  },
-  {
-    id: "stt-victory-run-walk-2026",
-    slug: "victory-run-walk-2026",
-    name: "Victory Run/Walk",
-    island: "stt",
-    category: "sports",
-    startDate: "2026-09-05",
-    timeLabel: "5:30 AM – 12:00 PM",
-    location: "Havensight Mall and Charlotte Amalie waterfront",
-    description:
-      "An all-ages St. Thomas half-marathon, 10K, and 5K celebrating resilience. Races begin at Havensight Mall and continue along the Charlotte Amalie waterfront.",
-    sourceLabel: "Visit USVI · Victory Run/Walk",
-    sourceUrl: "https://www.visitusvi.com/events/victory-run-walk/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["running", "walking", "5K", "10K", "half-marathon", "Havensight"],
-  },
-  {
-    id: "stt-labor-day-races-2026",
-    slug: "labor-day-races-2026",
-    name: "Labor Day Races",
-    island: "stt",
-    category: "sports",
-    startDate: "2026-09-06",
-    timeLabel: "11:00 AM – 6:00 PM",
-    location: "Clinton E. Phipps Sr. Racetrack, Estate Bovoni, St. Thomas",
-    description:
-      "A family-friendly race day at Clinton E. Phipps Sr. Racetrack featuring horse racing, music, entertainment, and island race-day culture. Visit USVI lists gates opening at 11 a.m. and the first race at 1 p.m.",
-    sourceLabel: "Visit USVI · Labor Day Races",
-    sourceUrl: "https://www.visitusvi.com/events/labor-day-races-2/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["horse racing", "Bovoni", "sports", "family", "music", "St. Thomas"],
-  },
-  {
-    id: "stx-wall2wall-2026",
-    slug: "wall2wall-sprint-triathlon-2026",
-    name: "Wall2Wall Sprint Triathlon & Try-A-Tri",
-    island: "stx",
-    category: "sports",
-    startDate: "2026-09-20",
-    timeLabel: "6:00 AM – 12:00 PM",
-    location: "Cane Bay, St. Croix",
-    description:
-      "A North Shore race day at Cane Bay with sprint-triathlon and Try-A-Tri options, including swim, bike, and run courses that start and finish on St. Croix's North Shore.",
-    sourceLabel: "Visit USVI · Wall2Wall Sprint Triathlon",
-    sourceUrl: "https://www.visitusvi.com/events/wall-2-wall-sprint-triathlon-try-a-tri/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["triathlon", "Cane Bay", "North Shore", "swimming", "cycling", "running"],
-  },
-  {
-    id: "stx-national-public-lands-day-2026",
-    slug: "national-public-lands-day-2026",
-    name: "National Public Lands Day",
-    island: "stx",
-    category: "heritage",
-    startDate: "2026-09-26",
-    timeLabel: "8:00 AM – 5:00 PM",
-    location: "Christiansted National Historic Site",
-    description:
-      "National Public Lands Day brings free admission to participating U.S. national parks and sites. On St. Croix, Visit USVI highlights Christiansted National Historic Site and Fort Christiansvaern.",
-    sourceLabel: "Visit USVI · National Public Lands Day",
-    sourceUrl: "https://www.visitusvi.com/events/national-public-lands-day/",
-    verifiedAt: "2026-08-23",
-    tags: ["history", "public lands", "Christiansted", "Fort Christiansvaern", "National Park Service"],
-  },
-  {
-    id: "stx-americas-paradise-challenge-2026",
-    slug: "americas-paradise-challenge-2026",
-    name: "America's Paradise Challenge",
-    island: "stx",
-    category: "sports",
-    startDate: "2026-10-11",
-    location: "St. Croix",
-    description:
-      "Visit USVI's current 2026 event calendar lists America's Paradise Challenge on Oct. 11, 2026. The cycling event is a St. Croix race-day tradition; confirm the current course, start point, and registration details before race day.",
-    sourceLabel: "Visit USVI · Current Events & Festivals calendar",
-    sourceUrl: "https://www.visitusvi.com/carnivals-festivals/",
-    verifiedAt: "2026-08-23",
-    tags: ["cycling", "race", "St. Croix", "sports"],
-  },
-  {
-    id: "stx-vi-pr-friendship-day-2026",
-    slug: "virgin-islands-puerto-rico-friendship-day-2026",
-    name: "Virgin Islands–Puerto Rico Friendship Day",
-    island: "stx",
-    category: "culture",
-    startDate: "2026-10-12",
-    location: "St. Croix",
-    description:
-      "A public holiday honoring the historical and cultural connections between the U.S. Virgin Islands and Puerto Rico. Local celebrations can include food, music, and cultural presentations on St. Croix.",
-    sourceLabel: "Visit USVI · VI–Puerto Rico Friendship Day",
-    sourceUrl: "https://www.visitusvi.com/events/vi-pr-friendship-day/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["culture", "Puerto Rico", "heritage", "public holiday", "St. Croix"],
-  },
-  {
-    id: "stx-isca-world-championship-2026",
-    slug: "isca-world-championship-2026",
-    name: "ISCA World Championship",
-    island: "stx",
-    category: "sports",
-    startDate: "2026-11-04",
-    endDate: "2026-11-14",
-    location: "St. Croix Yacht Club, St. Croix",
-    description:
-      "The International Sunfish Class Association brings its world championship to St. Croix, with youth, masters, women's, and open championship racing based at the St. Croix Yacht Club. Participation is invitation-only, but spectators can watch the racing.",
-    sourceLabel: "Visit USVI · ISCA World Championship",
-    sourceUrl: "https://www.visitusvi.com/events/isca-world-championship/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["sailing", "Sunfish", "world championship", "St. Croix Yacht Club", "regatta"],
-  },
-  {
-    id: "stt-vibes-on-the-rock-2026",
-    slug: "vibes-on-the-rock-2026",
-    name: "VIBES on the Rock",
-    island: "stt",
-    category: "festival",
-    startDate: "2026-11-06",
-    endDate: "2026-11-08",
-    location: "Charlotte Amalie and St. Thomas",
-    description:
-      "A three-day culture, food, music, comedy, and sea-experience festival in St. Thomas, with a comedy night, Bacchanal en Blanc, and a day-sail finale.",
-    sourceLabel: "Visit USVI · VIBES on the Rock",
-    sourceUrl: "https://www.visitusvi.com/events/vibes-on-the-rock/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["festival", "food", "music", "Charlotte Amalie", "culture", "St. Thomas"],
-  },
-  {
-    id: "stt-usvi-charter-yacht-show-2026",
-    slug: "usvi-charter-yacht-show-2026",
-    name: "USVI Charter Yacht Show",
-    island: "stt",
-    category: "festival",
-    startDate: "2026-11-14",
-    endDate: "2026-11-17",
-    timeLabel: "7:00 AM – 9:00 PM",
-    location: "Yacht Haven Grande, St. Thomas",
-    description:
-      "The USVI Charter Yacht Show brings charter brokers, crews, luxury vessels, culinary competitions, seminars, tastings, and sailing experiences to the docks at Yacht Haven Grande.",
-    sourceLabel: "Visit USVI · USVI Charter Yacht Show",
-    sourceUrl: "https://www.visitusvi.com/events/usvi-charter-yacht-show/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["yachts", "sailing", "marina", "Yacht Haven Grande", "culinary", "St. Thomas"],
-  },
-  {
-    id: "stt-paradise-jam-2026",
-    slug: "paradise-jam-2026",
-    name: "Paradise Jam",
-    island: "stt",
-    category: "sports",
-    startDate: "2026-11-20",
-    endDate: "2026-11-28",
-    location: "University of the Virgin Islands · Elridge Blake Sports and Fitness Center",
-    description:
-      "The annual Paradise Jam brings men's and women's college basketball tournament play to St. Thomas at the University of the Virgin Islands from Nov. 20 through Nov. 28, 2026.",
-    sourceLabel: "Visit USVI · Paradise Jam",
-    sourceUrl: "https://www.visitusvi.com/events/paradise-jam/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["basketball", "college sports", "UVI", "St. Thomas", "tournament"],
-  },
-  {
-    id: "stx-crucian-coconut-festival-2026",
-    slug: "crucian-coconut-festival-2026",
-    name: "Crucian Coconut Festival",
-    island: "stx",
-    category: "festival",
-    startDate: "2026-12-05",
-    endDate: "2026-12-06",
-    location: "Bethlehem Sugar Factory Site, St. Croix",
-    description:
-      "The Crucian Coconut Festival celebrates the coconut through food, crafts, live entertainment, demonstrations, the Taste of Coconut competition, and the popular jelly-scoop competition.",
-    sourceLabel: "Visit USVI · Crucian Coconut Festival",
-    sourceUrl: "https://www.visitusvi.com/events/crucian-coconut-festival/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["festival", "coconut", "food", "crafts", "Bethlehem", "St. Croix"],
-  },
-  {
-    id: "stx-crucian-christmas-festival-2026",
-    slug: "crucian-christmas-festival-2026",
-    name: "Crucian Christmas Festival",
-    island: "stx",
-    category: "festival",
-    startDate: "2026-12-05",
-    endDate: "2027-01-02",
-    timeLabel: "Festival schedule varies by day",
-    location: "Frederiksted and St. Croix",
-    description:
-      "A treasured St. Croix holiday carnival tradition running from early December into early January, with Festival Village, parades, pageantry, local food, and live music. The current Visit USVI calendar lists Dec. 5, 2026 through Jan. 2, 2027.",
-    sourceLabel: "Visit USVI · Crucian Christmas Festival",
-    sourceUrl: "https://www.visitusvi.com/events/crucian-christmas-festival/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["festival", "Frederiksted", "Christmas", "parade", "music", "food"],
-  },
-  {
-    id: "stx-christmas-boat-parade-2026",
-    slug: "st-croix-christmas-boat-parade-2026",
-    name: "St. Croix Christmas Boat Parade",
-    island: "stx",
-    category: "festival",
-    startDate: "2026-12-12",
-    timeLabel: "4:00 PM – 10:00 PM",
-    location: "Christiansted Harbor, St. Croix",
-    description:
-      "Lighted boats, holiday decorations, music, and festive crews parade through Christiansted Harbor before an evening fireworks finale over the waterfront.",
-    sourceLabel: "Visit USVI · St. Croix Christmas Boat Parade",
-    sourceUrl: "https://www.visitusvi.com/events/st-croix-christmas-boat-parade/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["boat parade", "Christmas", "Christiansted", "fireworks", "harbor", "St. Croix"],
-  },
-  {
-    id: "stt-carnival-2027",
-    slug: "st-thomas-carnival-2027",
-    name: "St. Thomas Carnival",
-    island: "stt",
-    category: "festival",
-    startDate: "2027-04-24",
-    endDate: "2027-05-01",
-    location: "Charlotte Amalie, St. Thomas",
-    description:
-      "St. Thomas Carnival returns with J'ouvert, children's and adult parades, pageants, the Food Fair, Carnival Village, local cuisine, and live calypso, soca, and reggae celebrations.",
-    sourceLabel: "Visit USVI · St. Thomas Carnival",
-    sourceUrl: "https://www.visitusvi.com/events/st-thomas-carnival/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["carnival", "Charlotte Amalie", "J'ouvert", "parade", "food fair", "St. Thomas"],
-  },
-  {
-    id: "stj-celebration-2027",
-    slug: "st-john-celebration-2027",
-    name: "St. John Celebration",
-    island: "stj",
-    category: "festival",
-    startDate: "2027-06-27",
-    endDate: "2027-07-04",
-    timeLabel: "Festival schedule varies by day",
-    location: "Cruz Bay, St. John",
-    description:
-      "St. John Celebration returns in 2027 with the island's annual cultural celebration centered on Emancipation and Independence traditions, including local food, parade festivities, and Fourth of July fireworks.",
-    sourceLabel: "Visit USVI · St. John Celebration",
-    sourceUrl: "https://www.visitusvi.com/events/st-john-celebration/",
-    verifiedAt: "2026-08-23",
-    featured: true,
-    tags: ["festival", "Cruz Bay", "Emancipation", "Independence Day", "culture", "St. John"],
-  },
-];
+export { EVENT_CATEGORY_LABELS, EVENT_ISLAND_LABELS };
 
-export const EVENT_CATEGORY_LABELS: Record<EventCategory, string> = {
-  culinary: "Food & dining",
-  sports: "Sports",
-  culture: "Culture",
-  heritage: "Heritage",
-  festival: "Festival",
-};
+const RECURRING_EVENT_DATES = {
+  "stx-sunday-funday-fort-2026": [
+    "2026-08-09",
+    "2026-08-23",
+    "2026-09-13",
+    "2026-09-27",
+    "2026-10-11",
+    "2026-10-25",
+  ],
+  "stx-sunset-sounds-loops-2026": [
+    "2026-08-09",
+    "2026-09-13",
+    "2026-10-11",
+  ],
+} as const satisfies Partial<Record<string, readonly string[]>>;
 
-export const EVENT_ISLAND_LABELS: Record<EventIsland, string> = {
-  stt: "St. Thomas",
-  stj: "St. John",
-  stx: "St. Croix",
-};
+/**
+ * Canonical event catalog.
+ *
+ * The source snapshot keeps Visit USVI's published series start/end bounds.
+ * This layer adds the exact published occurrence dates so the traveler UI does
+ * not imply that recurring programs run continuously between those bounds.
+ */
+export const USVI_EVENTS: readonly UsviEvent[] = CORE_USVI_EVENTS.map((event) => {
+  const occurrenceDates = RECURRING_EVENT_DATES[event.id as keyof typeof RECURRING_EVENT_DATES];
+  return occurrenceDates ? { ...event, occurrenceDates } : event;
+});
 
 export function getEventBySlug(slug: string) {
   return USVI_EVENTS.find((event) => event.slug === slug || event.id === slug);
 }
 
-export function getUpcomingEvents(today = new Date().toISOString().slice(0, 10)) {
-  return [...USVI_EVENTS]
-    .filter((event) => (event.endDate ?? event.startDate) >= today)
-    .sort((left, right) => left.startDate.localeCompare(right.startDate));
+export function getEventNextDate(
+  event: UsviEvent,
+  today = new Date().toISOString().slice(0, 10),
+): string | null {
+  if (event.occurrenceDates?.length) {
+    return event.occurrenceDates.find((date) => date >= today) ?? null;
+  }
+
+  const endDate = event.endDate ?? event.startDate;
+  if (endDate < today) return null;
+
+  // Active multi-day events should rank with today's events instead of using
+  // an already-past start date. Future one-off/range events keep their start.
+  return event.startDate < today ? today : event.startDate;
 }
 
-export function formatEventDate(event: Pick<UsviEvent, "startDate" | "endDate">) {
+export function getUpcomingEvents(today = new Date().toISOString().slice(0, 10)) {
+  return USVI_EVENTS.map((event) => ({
+    event,
+    nextDate: getEventNextDate(event, today),
+  }))
+    .filter(
+      (entry): entry is { event: UsviEvent; nextDate: string } =>
+        entry.nextDate !== null,
+    )
+    .sort(
+      (left, right) =>
+        left.nextDate.localeCompare(right.nextDate) ||
+        left.event.startDate.localeCompare(right.event.startDate) ||
+        left.event.name.localeCompare(right.event.name),
+    )
+    .map(({ event }) => event);
+}
+
+export function formatEventDate(
+  event: Pick<UsviEvent, "startDate" | "endDate" | "occurrenceDates">,
+) {
+  if (event.occurrenceDates?.length) {
+    return formatOccurrenceDates(event.occurrenceDates);
+  }
+
   const start = formatIsoDate(event.startDate);
   if (!event.endDate || event.endDate === event.startDate) return start;
   return `${start} – ${formatIsoDate(event.endDate)}`;
+}
+
+function formatOccurrenceDates(values: readonly string[]) {
+  const years = new Set(values.map((value) => value.slice(0, 4)));
+  if (years.size !== 1) return values.map(formatIsoDate).join(" · ");
+
+  const year = values[0]?.slice(0, 4) ?? "";
+  const labels = values.map((value) =>
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    }).format(new Date(`${value}T12:00:00Z`)),
+  );
+  return `${labels.join(" · ")}, ${year}`;
 }
 
 function formatIsoDate(value: string) {

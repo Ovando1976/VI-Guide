@@ -2,13 +2,17 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { USVI_EVENTS } from "../lib/events";
+import {
+  formatEventDate,
+  getUpcomingEvents,
+  USVI_EVENTS,
+} from "../lib/events";
 
 function source(path: string) {
   return readFileSync(resolve(process.cwd(), path), "utf8");
 }
 
-const eventsData = source("lib/events.ts");
+const eventsData = `${source("lib/events-core.ts")}\n${source("lib/events.ts")}`;
 const eventsPage = source("app/events/page.tsx");
 const eventDetail = source("app/events/[slug]/page.tsx");
 const searchPage = source("app/search/page.tsx");
@@ -18,6 +22,7 @@ for (const [value, label] of [
   ["USVI_EVENTS", "Events has a typed source-backed catalog"],
   ["verifiedAt", "event records keep verification dates"],
   ["sourceUrl", "event records keep official source URLs"],
+  ["occurrenceDates", "recurring series can preserve exact published dates"],
   ["st-thomas-restaurant-week-2026", "St. Thomas Restaurant Week is seeded"],
   ["victory-run-walk-2026", "Victory Run/Walk is seeded"],
   ["labor-day-races-2026", "Labor Day Races is seeded"],
@@ -58,7 +63,67 @@ for (const event of USVI_EVENTS) {
   assert.ok(event.sourceLabel.trim(), `${event.id} needs a source label`);
   assert.match(event.sourceUrl, /^https?:\/\//, `${event.id} needs an official source URL`);
   assert.match(event.verifiedAt, /^\d{4}-\d{2}-\d{2}$/, `${event.id} needs verifiedAt`);
+  for (const date of event.occurrenceDates ?? []) {
+    assert.match(date, /^\d{4}-\d{2}-\d{2}$/, `${event.id} has an invalid occurrence date`);
+  }
 }
+
+const sundayFunday = USVI_EVENTS.find(
+  (event) => event.id === "stx-sunday-funday-fort-2026",
+);
+assert.ok(sundayFunday, "Events contract failed: Sunday Funday must remain in catalog");
+assert.deepEqual(sundayFunday.occurrenceDates, [
+  "2026-08-09",
+  "2026-08-23",
+  "2026-09-13",
+  "2026-09-27",
+  "2026-10-11",
+  "2026-10-25",
+]);
+assert.equal(
+  formatEventDate(sundayFunday),
+  "Aug 9 · Aug 23 · Sep 13 · Sep 27 · Oct 11 · Oct 25, 2026",
+  "Events contract failed: recurring Sunday Funday dates must render as exact occurrences",
+);
+
+const sunsetSounds = USVI_EVENTS.find(
+  (event) => event.id === "stx-sunset-sounds-loops-2026",
+);
+assert.ok(sunsetSounds, "Events contract failed: Sunset Sounds must remain in catalog");
+assert.deepEqual(sunsetSounds.occurrenceDates, [
+  "2026-08-09",
+  "2026-09-13",
+  "2026-10-11",
+]);
+assert.equal(
+  formatEventDate(sunsetSounds),
+  "Aug 9 · Sep 13 · Oct 11, 2026",
+  "Events contract failed: recurring Sunset Sounds dates must render as exact occurrences",
+);
+
+const september14Upcoming = getUpcomingEvents("2026-09-14").map((event) => event.id);
+assert.ok(
+  september14Upcoming.indexOf("stx-wall2wall-2026") <
+    september14Upcoming.indexOf("stx-sunday-funday-fort-2026"),
+  "Events contract failed: recurring series must sort by their next real occurrence, not their old series start",
+);
+assert.ok(
+  september14Upcoming.indexOf("stx-national-public-lands-day-2026") <
+    september14Upcoming.indexOf("stx-sunday-funday-fort-2026"),
+  "Events contract failed: Sep. 26 one-off event must precede the Sep. 27 Sunday Funday occurrence",
+);
+assert.ok(
+  !getUpcomingEvents("2026-10-12").some(
+    (event) => event.id === "stx-sunset-sounds-loops-2026",
+  ),
+  "Events contract failed: recurring series must stop publishing after its last exact occurrence",
+);
+assert.ok(
+  !getUpcomingEvents("2026-10-26").some(
+    (event) => event.id === "stx-sunday-funday-fort-2026",
+  ),
+  "Events contract failed: Sunday Funday must stop publishing after Oct. 25",
+);
 
 const crucianChristmas = USVI_EVENTS.find(
   (event) => event.id === "stx-crucian-christmas-festival-2026",
