@@ -12,6 +12,7 @@ import {
 
 type DriverApplication = {
   id: string;
+  uid: string;
   status: string;
   displayName: string;
   email: string;
@@ -43,6 +44,7 @@ type FleetVehicle = {
   id: string;
   associationId: string;
   driverId: string;
+  islands: string[];
   taxiPlate: string;
   medallionNumber: string;
   make: string;
@@ -96,12 +98,7 @@ export function DriverApplicationReviewBoard() {
   }, [load]);
 
   const activeCount = useMemo(
-    () =>
-      data.applications.filter(
-        (application) =>
-          application.status === "pending" ||
-          application.status === "changes_requested",
-      ).length,
+    () => data.applications.filter((application) => application.status === "pending").length,
     [data.applications],
   );
 
@@ -117,7 +114,7 @@ export function DriverApplicationReviewBoard() {
               Compliance queue
             </h2>
             <p className="mt-2 max-w-3xl text-sm font-semibold leading-6 text-[#58706b]">
-              Applications are free and unprivileged. Approval grants Driver OS only after the submitted credentials are current and you link an active taxi association plus a dispatch-ready insured and inspected fleet vehicle.
+              Applications are free and unprivileged. Approval stays fail-closed: the applicant UID, island, active association, submitted taxi plate, current inspection and insurance, and fleet assignment must all match the reviewed records.
             </p>
           </div>
           <button
@@ -132,7 +129,7 @@ export function DriverApplicationReviewBoard() {
         </div>
 
         <div className="grid gap-3 border-b border-[#0f766e]/10 bg-white/55 p-5 sm:grid-cols-3">
-          <Metric label="Needs attention" value={activeCount} />
+          <Metric label="Pending review" value={activeCount} />
           <Metric label="Active associations" value={data.associations.length} />
           <Metric label="Dispatch-ready vehicles" value={data.vehicles.length} />
         </div>
@@ -180,28 +177,45 @@ function ApplicationCard({
   vehicles: FleetVehicle[];
   onUpdated: () => Promise<void>;
 }) {
+  const matchingAssociation = associations.find(
+    (association) =>
+      normalizeKey(association.name) === normalizeKey(application.associationName) &&
+      (!association.islands.length || association.islands.includes(application.island)),
+  );
   const [associationId, setAssociationId] = useState(
-    application.associationId || "",
+    application.associationId || matchingAssociation?.id || "",
   );
   const [vehicleId, setVehicleId] = useState(application.vehicleId || "");
   const [reviewNote, setReviewNote] = useState(application.reviewNote || "");
   const [working, setWorking] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
+  const eligibleAssociations = associations.filter(
+    (association) =>
+      !association.islands.length || association.islands.includes(application.island),
+  );
   const eligibleVehicles = vehicles.filter(
     (vehicle) =>
-      (!associationId || vehicle.associationId === associationId) &&
+      vehicle.associationId === associationId &&
+      normalizeKey(vehicle.taxiPlate) === normalizeKey(application.taxiPlate) &&
+      (!vehicle.islands.length || vehicle.islands.includes(application.island)) &&
       (!vehicle.driverId || vehicle.driverId === application.id),
   );
   const locked = application.status === "approved";
+  const reviewable = application.status === "pending";
 
   async function review(action: "approve" | "request_changes" | "reject") {
     setWorking(action);
     setMessage(null);
     try {
+      if (action === "approve" && !reviewable) {
+        throw new Error(
+          "Only a pending application can be approved. Wait for the driver to resubmit requested changes.",
+        );
+      }
       if (action === "approve" && (!associationId || !vehicleId)) {
         throw new Error(
-          "Select the verified taxi association and dispatch-ready vehicle before approval.",
+          `Approval needs an active association and a dispatch-ready fleet vehicle matching taxi plate ${application.taxiPlate}.`,
         );
       }
       const response = await fetch(
@@ -212,7 +226,6 @@ function ApplicationCard({
           body: JSON.stringify({
             action,
             reviewNote,
-            driverId: application.id,
             associationId,
             vehicleId,
           }),
@@ -227,7 +240,7 @@ function ApplicationCard({
       }
       setMessage(
         action === "approve"
-          ? "Driver approved. The driver must sign out and back in before Driver OS access appears."
+          ? "Driver approved. Existing sessions were invalidated; the driver must sign out and back in before Driver OS access appears."
           : action === "request_changes"
             ? "Changes requested from the applicant."
             : "Application rejected.",
@@ -255,6 +268,9 @@ function ApplicationCard({
           <p className="mt-1 text-xs font-semibold text-slate-500">
             {application.email || application.id} · {application.phone || "No phone"}
           </p>
+          <p className="mt-1 break-all font-mono text-[9px] font-bold text-slate-400">
+            UID {application.id}
+          </p>
         </div>
         <Status value={application.status} />
       </div>
@@ -277,9 +293,9 @@ function ApplicationCard({
       {locked ? (
         <div className="mt-4 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-xs font-semibold leading-5 text-emerald-900">
           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
-          Approved and provisioned as driver {application.driverId || application.id}.
+          Approved and provisioned as driver {application.driverId || application.id}. The driver must sign in again before Driver OS unlocks.
         </div>
-      ) : (
+      ) : reviewable ? (
         <>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <label className="block">
@@ -294,8 +310,8 @@ function ApplicationCard({
                 }}
                 className={FIELD}
               >
-                <option value="">Select association</option>
-                {associations.map((association) => (
+                <option value="">Select active association</option>
+                {eligibleAssociations.map((association) => (
                   <option key={association.id} value={association.id}>
                     {association.name}
                   </option>
@@ -304,14 +320,15 @@ function ApplicationCard({
             </label>
             <label className="block">
               <span className="text-[9px] font-black uppercase tracking-[.14em] text-slate-500">
-                Dispatch-ready fleet vehicle
+                Matching dispatch-ready fleet vehicle
               </span>
               <select
                 value={vehicleId}
                 onChange={(event) => setVehicleId(event.target.value)}
                 className={FIELD}
+                disabled={!associationId}
               >
-                <option value="">Select vehicle</option>
+                <option value="">Select matching taxi</option>
                 {eligibleVehicles.map((vehicle) => (
                   <option key={vehicle.id} value={vehicle.id}>
                     {vehicle.taxiPlate} · {vehicle.make} {vehicle.model} · medallion {vehicle.medallionNumber}
@@ -321,10 +338,10 @@ function ApplicationCard({
             </label>
           </div>
 
-          {!associations.length || !eligibleVehicles.length ? (
+          {!eligibleAssociations.length || (associationId && !eligibleVehicles.length) ? (
             <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-950">
               <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
-              Import or review the association and fleet record in the Reviewed onboarding section below before approving this application.
+              No reviewed association/fleet combination currently matches this applicant&apos;s island and taxi plate. Verify or onboard the regulated fleet record below, or request a correction from the driver.
             </div>
           ) : null}
 
@@ -336,6 +353,7 @@ function ApplicationCard({
               value={reviewNote}
               onChange={(event) => setReviewNote(event.target.value)}
               rows={3}
+              maxLength={500}
               placeholder="Record the source checked or the correction needed."
               className={`${FIELD} resize-y`}
             />
@@ -351,7 +369,7 @@ function ApplicationCard({
             <button
               type="button"
               onClick={() => void review("approve")}
-              disabled={Boolean(working)}
+              disabled={Boolean(working) || !associationId || !vehicleId}
               className="rounded-full bg-[#043331] px-4 py-3 text-[9px] font-black uppercase tracking-[.15em] text-white disabled:opacity-50"
             >
               {working === "approve" ? "Approving…" : "Approve driver"}
@@ -374,9 +392,20 @@ function ApplicationCard({
             </button>
           </div>
         </>
+      ) : (
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs font-semibold leading-5 text-amber-950">
+          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" />
+          {application.status === "changes_requested"
+            ? "Waiting for the driver to correct and resubmit this application before approval can continue."
+            : "This application is not pending review. The driver may resubmit if another review is appropriate."}
+        </div>
       )}
     </article>
   );
+}
+
+function normalizeKey(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 function Metric({ label, value }: { label: string; value: number }) {
@@ -418,4 +447,4 @@ function Status({ value }: { value: string }) {
 }
 
 const FIELD =
-  "mt-2 min-h-11 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-[#043331] outline-none focus:border-[#0f766e]";
+  "mt-2 min-h-11 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-[#043331] outline-none focus:border-[#0f766e] disabled:bg-slate-50";

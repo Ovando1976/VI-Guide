@@ -80,6 +80,16 @@ export function DriverApplicationForm({ email }: { email: string }) {
               <p className="text-[9px] font-black uppercase tracking-[.16em] text-[#0f766e]">Application status</p>
               <p className="mt-1 text-lg font-black capitalize">{status.replace("_", " ")}</p>
               {application?.reviewNote ? <p className="mt-2 text-sm font-semibold text-slate-600">{application.reviewNote}</p> : null}
+              {status === "approved" ? (
+                <div className="mt-3 rounded-xl bg-emerald-50 p-3 text-sm font-bold leading-6 text-emerald-800">
+                  Approved. Sign out and sign back in once to refresh your driver access, then open Driver OS. Your first shift still remains subject to live compliance and payout-readiness checks.
+                </div>
+              ) : null}
+              {status === "changes_requested" ? (
+                <p className="mt-3 text-sm font-semibold leading-6 text-amber-800">
+                  Update the requested information below and resubmit. Driver access remains locked until the new application is approved.
+                </p>
+              ) : null}
             </div>
           ) : null}
 
