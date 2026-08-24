@@ -64,7 +64,6 @@ const TRIP_ROUTES = [
   "/plan",
   "/today",
   "/trip-planning",
-  "/mobility",
   "/book",
   "/bookings",
   "/checkout",
