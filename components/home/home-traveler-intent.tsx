@@ -14,7 +14,7 @@ const INTENTS = [
 
 export function HomeTravelerIntent() {
   return (
-    <section id="traveler-intent-compact" className="scroll-mt-6 border-y border-[#d5e4df] bg-[#fffdf8]">
+    <section id="traveler-intent" className="scroll-mt-6 border-y border-[#d5e4df] bg-[#fffdf8]">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-7 lg:px-10 lg:py-16">
         <div className="grid gap-7 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
           <div>
