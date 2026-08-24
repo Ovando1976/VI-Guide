@@ -92,16 +92,46 @@ expectSource(intake, 'session.role !== "rider"', "only rider accounts can self-a
 expectSource(intake, 'status: "pending"', "self-service applications start pending");
 if (intake.includes("setCustomUserClaims")) throw new Error("Driver intake must never grant privileged claims.");
 
+const driverApplyPage = read("app/driver/apply/page.tsx");
+expectSource(driverApplyPage, 'session.role !== "rider"', "non-rider privileged roles cannot use self-service driver intake");
+
+const driverApplicationList = read("app/api/admin/driver-applications/route.ts");
+expectSource(driverApplicationList, 'requireSession(["admin"])', "driver application queue remains administrator-only");
+expectSource(driverApplicationList, 'collection("driverApplications")', "driver review queue reads the application collection");
+expectSource(driverApplicationList, 'collection("taxiAssociations")', "driver review queue includes reviewed associations");
+expectSource(driverApplicationList, 'collection("vehicles")', "driver review queue includes reviewed fleet vehicles");
+
+const driverApplicationPage = read("app/admin/driver-applications/page.tsx");
+expectSource(driverApplicationPage, 'session.role !== "admin"', "driver application review page is administrator-only");
+expectSource(driverApplicationPage, "DriverApplicationBoard", "driver application review page renders the review queue");
+
 const driverApproval = read("app/api/admin/driver-applications/[applicationId]/route.ts");
 expectSource(driverApproval, 'requireSession(["admin"])', "driver approval remains administrator-only");
-expectSource(driverApproval, "setCustomUserClaims", "driver role is granted only inside trusted admin approval");
-expectSource(driverApproval, 'role: "driver"', "approved account receives driver role");
+expectSource(driverApproval, "const driverId = applicationId;", "driver identity stays pinned to the applicant Firebase UID");
+if (driverApproval.includes("body.driverId")) throw new Error("Driver approval must not accept an arbitrary driverId override.");
+expectSource(driverApproval, 'currentRole !== "rider"', "driver approval refuses to overwrite another privileged role");
+expectSource(driverApproval, 'association.status !== "active"', "driver approval requires an active taxi association");
+expectSource(driverApproval, "fleetPlate !== applicantPlate", "driver approval requires the reviewed fleet plate to match the application");
 expectSource(driverApproval, 'vehicle.inspectionStatus !== "active"', "approval requires active vehicle inspection");
 expectSource(driverApproval, 'vehicle.insuranceStatus !== "active"', "approval requires active vehicle insurance");
+expectSource(driverApproval, "revokeRefreshTokens", "driver approval invalidates stale sessions before role activation");
+expectSource(driverApproval, "setCustomUserClaims", "driver role is granted only inside trusted admin approval");
+expectSource(driverApproval, 'role: "driver"', "approved account receives driver role");
+expectSource(driverApproval, 'collection("driverApplicationAudit")', "driver review decisions remain auditable");
+expectSource(driverApproval, "driver claim rollback failed", "driver claims roll back if the audited Firestore write fails");
 
 const driverApplicationForm = read("components/driver-application-form.tsx");
 expectSource(driverApplicationForm, "Apply free. Keep 85% of each eligible ride.", "free signup and driver share are explicit");
 expectSource(driverApplicationForm, "fixed 15% platform commission", "fixed commission is explicit");
 expectSource(driverApplicationForm, "Applying does not authorize taxi operation.", "application never implies operating authorization");
+expectSource(driverApplicationForm, "Sign out and sign back in once", "approved drivers are told how to refresh their role claim");
+
+const driverReviewBoard = read("components/admin/driver-application-board.tsx");
+expectSource(driverReviewBoard, "/api/admin/driver-applications", "admin review board loads the trusted driver queue");
+expectSource(driverReviewBoard, "same taxi plate", "review UI keeps fleet matching fail-closed");
+expectSource(driverReviewBoard, "Approve & activate driver", "review UI exposes the trusted approval action");
+
+const taxiOperationsPage = read("app/admin/taxi-operations/page.tsx");
+expectSource(taxiOperationsPage, 'href="/admin/driver-applications"', "Taxi Operations links directly to driver application review");
 
 console.log("USVI Explorer administrator-only console boundary contracts passed.");
