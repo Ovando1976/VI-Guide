@@ -41,14 +41,22 @@ export async function PATCH(
     }
     const application = snapshot.data() as Record<string, unknown>;
 
+    if (application.status === "approved" && action !== "approve") {
+      return NextResponse.json(
+        { error: "Approved driver access must be revoked through the trusted role process." },
+        { status: 409 },
+      );
+    }
+
     if (action === "request_changes" || action === "reject") {
+      const now = new Date().toISOString();
       await applicationRef.set(
         {
           status: action === "request_changes" ? "changes_requested" : "rejected",
           reviewNote: reviewNote || null,
-          reviewedAt: new Date().toISOString(),
+          reviewedAt: now,
           reviewedBy: admin.uid,
-          updatedAt: new Date().toISOString(),
+          updatedAt: now,
         },
         { merge: true },
       );
