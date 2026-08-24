@@ -106,7 +106,7 @@ assert.match(mobilityBooking,/new Intl\.Collator/);
 assert.match(mobilityBooking,/numeric:true/);
 assert.match(mobilityBooking,/\.sort\(\(a,b\)=>ESTATE_NAME_COLLATOR\.compare\(a\.baseName,b\.baseName\)\|\|a\.geoid\.localeCompare\(b\.geoid\)\)/);
 assert.match(mobilityBooking,/We will not guess or substitute a fare/);
-assert.match(mobilityBooking,/Request ride & continue/);assert.match(mobilityBooking,/Ride request created/);assert.match(mobilityBooking,/Driver assignment confirms availability/);assert.doesNotMatch(mobilityBooking,/Ride confirmed|Confirm ride & pay/);
+assert.match(mobilityBooking,/Request ride & go to payment/);assert.match(mobilityBooking,/Ride request created/);assert.match(mobilityBooking,/Driver assignment confirms availability/);assert.doesNotMatch(mobilityBooking,/Ride confirmed|Confirm ride & pay/);
 assert.match(explorePage,/Useful beats encyclopedic/);assert.match(explorePage,/Date verified/);assert.match(publicFooter,/Complete guide/);
 const customerFacingCatalog=[...sourcesUnder("data/travel-knowledge"),...sourcesUnder("public/images")].join("\n");assert.doesNotMatch(customerFacingCatalog,/\bVI Guide\b|\bUSVI Compass\b/);
 console.log("USVI Explorer UI and customer-journey consistency contracts passed.");
