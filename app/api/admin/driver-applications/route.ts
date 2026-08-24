@@ -34,6 +34,7 @@ export async function GET() {
         const value = doc.data() as Record<string, unknown>;
         return {
           id: doc.id,
+          uid: text(value.uid, 128),
           status: text(value.status, 32) || "pending",
           displayName: text(value.displayName, 100),
           email: text(value.email, 160),
@@ -90,13 +91,16 @@ export async function GET() {
           future(value.inspectionExpiresAt) &&
           text(value.insuranceStatus, 32) === "active" &&
           future(value.insuranceExpiresAt) &&
-          Boolean(text(value.taxiPlate, 40)) &&
+          Boolean(text(value.taxiPlate ?? value.plate, 40)) &&
           Boolean(text(value.medallionNumber, 80));
         return {
           id: doc.id,
           associationId: text(value.associationId, 128),
           driverId: text(value.driverId, 128),
-          taxiPlate: text(value.taxiPlate, 40),
+          islands: Array.isArray(value.islands)
+            ? value.islands.filter((item): item is string => typeof item === "string")
+            : [],
+          taxiPlate: text(value.taxiPlate ?? value.plate, 40),
           medallionNumber: text(value.medallionNumber, 80),
           make: text(value.make, 80),
           model: text(value.model, 80),

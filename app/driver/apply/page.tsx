@@ -13,6 +13,7 @@ export default async function DriverApplyPage() {
   const session = await getSession();
   if (!session) redirect("/login?next=/driver/apply");
   if (session.role === "driver") redirect("/driver");
+  if (session.role !== "rider") redirect("/unauthorized");
 
   return <DriverApplicationForm email={session.email ?? ""} />;
 }
