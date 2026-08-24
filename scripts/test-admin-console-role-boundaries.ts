@@ -96,8 +96,25 @@ const driverApproval = read("app/api/admin/driver-applications/[applicationId]/r
 expectSource(driverApproval, 'requireSession(["admin"])', "driver approval remains administrator-only");
 expectSource(driverApproval, "setCustomUserClaims", "driver role is granted only inside trusted admin approval");
 expectSource(driverApproval, 'role: "driver"', "approved account receives driver role");
+expectSource(driverApproval, 'association.status === "active"', "driver approval requires an explicitly active association");
 expectSource(driverApproval, 'vehicle.inspectionStatus !== "active"', "approval requires active vehicle inspection");
 expectSource(driverApproval, 'vehicle.insuranceStatus !== "active"', "approval requires active vehicle insurance");
+
+const driverApplicationQueue = read("app/api/admin/driver-applications/route.ts");
+expectSource(driverApplicationQueue, 'requireSession(["admin"])', "driver application queue remains administrator-only");
+expectSource(driverApplicationQueue, 'db.collection("driverApplications").get()', "review queue loads applications through server-side admin access");
+expectSource(driverApplicationQueue, 'association.status === "active"', "review queue only offers active taxi associations");
+expectSource(driverApplicationQueue, "dispatchReady", "review queue labels eligible fleet vehicles server-side");
+
+const taxiOperationsPage = read("app/admin/taxi-operations/page.tsx");
+expectSource(taxiOperationsPage, "DriverApplicationReviewBoard", "Taxi Operations exposes the driver application review queue");
+
+const driverReviewBoard = read("components/driver-application-review-board.tsx");
+expectSource(driverReviewBoard, 'fetch("/api/admin/driver-applications"', "review UI loads the protected admin queue");
+expectSource(driverReviewBoard, 'review("approve")', "review UI exposes trusted approval");
+expectSource(driverReviewBoard, 'review("request_changes")', "review UI can request applicant changes");
+expectSource(driverReviewBoard, 'review("reject")', "review UI can reject an application");
+expectSource(driverReviewBoard, "The driver must sign out and back in", "approval UI communicates custom-claim refresh requirement");
 
 const driverApplicationForm = read("components/driver-application-form.tsx");
 expectSource(driverApplicationForm, "Apply free. Keep 85% of each eligible ride.", "free signup and driver share are explicit");

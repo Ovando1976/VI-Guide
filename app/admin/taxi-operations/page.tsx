@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { DriverApplicationReviewBoard } from "@/components/driver-application-review-board";
 import { DispatcherTaxiOperationsBoard } from "@/components/dispatcher-taxi-operations-board";
 import { TaxiOperationsBoard } from "@/components/taxi-operations-board";
 import { getSession } from "@/lib/auth-server";
@@ -38,6 +39,7 @@ export default async function TaxiOperationsPage() {
           Payment operations
         </Link>
       </div>
+      <DriverApplicationReviewBoard />
       <TaxiOperationsBoard />
     </>
   );
