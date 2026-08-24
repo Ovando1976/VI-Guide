@@ -9,6 +9,7 @@ import {
 
 import { DriverConsole } from "@/components/driver-console";
 import { DriverComplianceReadiness } from "@/components/mobility/driver-compliance-readiness";
+import { DriverEconomicsPolicy } from "@/components/mobility/driver-economics-policy";
 import { DriverLifecycleBanner } from "@/components/mobility/driver-lifecycle-banner";
 import { DriverLocationPublisher } from "@/components/mobility/driver-location-publisher";
 import { requireSession } from "@/lib/auth-server";
@@ -88,6 +89,10 @@ export default async function DriverPage() {
             </div>
           </div>
         </section>
+
+        <div className="mt-6">
+          <DriverEconomicsPolicy />
+        </div>
 
         <section className="mt-6 rounded-[30px] border border-[#043331]/10 bg-white/70 p-4 shadow-[0_18px_48px_rgba(4,51,49,.08)] backdrop-blur sm:p-6">
           <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
