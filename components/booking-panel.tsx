@@ -5,41 +5,1097 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
-import { Anchor, ArrowLeftRight, ArrowRight, BriefcaseBusiness, Bus, CarFront, Check, ChevronDown, Clock3, CreditCard, Crown, Loader2, Luggage, MapPin, Minus, Plane, Plus, Route, ShieldCheck, Sparkles, Users } from "lucide-react";
+import {
+  Anchor,
+  ArrowLeftRight,
+  ArrowRight,
+  BriefcaseBusiness,
+  Bus,
+  CarFront,
+  Check,
+  ChevronDown,
+  Clock3,
+  CreditCard,
+  Crown,
+  Loader2,
+  Luggage,
+  MapPin,
+  Minus,
+  Plane,
+  Plus,
+  Route,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "lucide-react";
 import type { FareBreakdown, RideMode } from "@/types/mobility";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
 
-const PASSENGER_CONSENT_VERSION="pilot-2026-07-23";
-const ESTATE_NAME_COLLATOR=new Intl.Collator("en",{numeric:true,sensitivity:"base"});
-const RoutePreviewMap=dynamic(()=>import("@/components/route-preview-map").then(m=>m.RoutePreviewMap),{ssr:false,loading:()=> <div className="h-[300px] animate-pulse rounded-[28px] bg-slate-100"/>});
-type Props={estates:EstateRecord[];fromEstate:EstateRecord|null;toEstate:EstateRecord|null;fromGeoid:string;toGeoid:string;mode:RideMode;passengers:number;luggage:number;island:IslandCode;onSelectFrom:(geoid:string)=>void;onSelectTo:(geoid:string)=>void;onChangeMode:(mode:RideMode)=>void;onChangePassengers:(value:number)=>void;onChangeLuggage:(value:number)=>void;onSwapRoute:()=>void};
-type ModeOption={value:RideMode;label:string;blurb:string;accent:string;icon:LucideIcon};
-const PRIMARY_MODES:ModeOption[]=[{value:"standard",label:"Standard",blurb:"Everyday island travel",accent:"Best for local rides",icon:CarFront},{value:"shared",label:"Shared",blurb:"Share the ride with other passengers",accent:"Official tariff applies",icon:Bus},{value:"premium",label:"Premium",blurb:"Request extra comfort",accent:"Priority preference",icon:Sparkles}];
-const MORE_MODES:ModeOption[]=[{value:"airport",label:"Airport",blurb:"Pickup or drop-off at the airport",accent:"Arrival-ready dispatch",icon:Plane},{value:"ferry-transfer",label:"Ferry",blurb:"Connect with a ferry or port",accent:"Harbor transfer",icon:Anchor},{value:"executive",label:"Executive",blurb:"Request an executive vehicle",accent:"Premium fleet preference",icon:Crown}];
-export function BookingPanel({estates,fromEstate,toEstate,fromGeoid,toGeoid,mode,passengers,luggage,island,onSelectFrom,onSelectTo,onChangeMode,onChangePassengers,onChangeLuggage,onSwapRoute}:Props){
- const router=useRouter();const[submitting,setSubmitting]=useState(false);const[resultMessage,setResultMessage]=useState<string|null>(null);const[resultTone,setResultTone]=useState<"success"|"error"|null>(null);const[fare,setFare]=useState<FareBreakdown|null>(null);const[pilotActive,setPilotActive]=useState(false);const[pilotMessage,setPilotMessage]=useState<string|null>(null);const[quoteLoading,setQuoteLoading]=useState(false);const[quoteError,setQuoteError]=useState<string|null>(null);const[scheduledAt,setScheduledAt]=useState("");const[connectionDeadline,setConnectionDeadline]=useState("");const[pickupInstructions,setPickupInstructions]=useState("");const[destinationInstructions,setDestinationInstructions]=useState("");const[connectionKind,setConnectionKind]=useState<"flight"|"ferry"|"cruise"|"appointment">("ferry");const[acceptedOperatorDisclosure,setAcceptedOperatorDisclosure]=useState(false);const[acceptedLegal,setAcceptedLegal]=useState(false);const[showMoreModes,setShowMoreModes]=useState(MORE_MODES.some(i=>i.value===mode));const[activeStep,setActiveStep]=useState<1|2|3|4>(1);const[furthestStep,setFurthestStep]=useState<1|2|3|4>(1);
- useEffect(()=>{const controller=new AbortController();setAcceptedOperatorDisclosure(false);setAcceptedLegal(false);if(!fromEstate||!toEstate){setFare(null);setPilotActive(false);setPilotMessage(null);setQuoteError(null);return()=>controller.abort();}setQuoteLoading(true);setQuoteError(null);fetch("/api/bookings/quote",{method:"POST",headers:{"Content-Type":"application/json"},signal:controller.signal,body:JSON.stringify({originEstateGeoid:fromEstate.geoid,destinationEstateGeoid:toEstate.geoid,mode,passengers,luggage})}).then(async r=>{const p=await r.json();if(!r.ok)throw new Error(p.error||"We need dispatch to verify the fare for this trip.");setFare(p.fare as FareBreakdown);setPilotActive(p.pilotActive===true);setPilotMessage(typeof p.pilotMessage==="string"?p.pilotMessage:null);}).catch(e=>{if(e instanceof DOMException&&e.name==="AbortError")return;setFare(null);setPilotActive(false);setPilotMessage(null);setQuoteError(e instanceof Error?e.message:"We need dispatch to verify the fare for this trip.");}).finally(()=>{if(!controller.signal.aborted)setQuoteLoading(false);});return()=>controller.abort();},[fromEstate,toEstate,mode,passengers,luggage]);
- const routeReady=Boolean(fromEstate&&toEstate);useEffect(()=>{if(!routeReady){setActiveStep(1);setFurthestStep(1);}},[routeReady]);const canRequest=Boolean(routeReady&&fare&&pilotActive&&acceptedOperatorDisclosure&&acceptedLegal&&!submitting);const selectedMode=[...PRIMARY_MODES,...MORE_MODES].find(i=>i.value===mode)??PRIMARY_MODES[0];const recommendedMode=useMemo<RideMode>(()=>{const t=`${fromEstate?.baseName??""} ${toEstate?.baseName??""}`.toLowerCase();if(t.includes("airport"))return"airport";if(t.includes("ferry")||t.includes("red hook"))return"ferry-transfer";if(passengers>=5)return"shared";return"standard";},[fromEstate,passengers,toEstate]);
- function advanceToStep(step:2|3|4){setActiveStep(step);setFurthestStep(c=>Math.max(c,step) as 1|2|3|4)}
- async function requestRide(){if(!fromEstate||!toEstate)return;if(!acceptedOperatorDisclosure||!acceptedLegal){setResultTone("error");setResultMessage("Please accept the passenger disclosures before continuing to payment.");return;}try{setSubmitting(true);setResultMessage(null);setResultTone(null);const response=await fetch("/api/bookings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({originEstateGeoid:fromEstate.geoid,destinationEstateGeoid:toEstate.geoid,mode,passengers,luggage,scheduledAt:scheduledAt?new Date(scheduledAt).toISOString():null,connectionDeadline:connectionDeadline?new Date(connectionDeadline).toISOString():null,connectionKind:connectionDeadline?connectionKind:null,paymentMethod:"online_card",pickupInstructions,destinationInstructions,acceptedOperatorDisclosure:true,acceptedTerms:true,acceptedPrivacy:true,consentVersion:PASSENGER_CONSENT_VERSION})});const payload=await response.json();if(!response.ok)throw new Error(payload.error||"Booking request failed.");setResultTone("success");setResultMessage("Ride request created. Opening secure payment…");router.push(`/checkout/${payload.bookingId}`);}catch(e){setResultTone("error");setResultMessage(e instanceof Error?e.message:"Unexpected booking error.");}finally{setSubmitting(false)}}
- return <section id="book" className="overflow-hidden rounded-[38px] border border-[#0b5d5b]/10 bg-[#f7f4ec] shadow-[0_30px_90px_rgba(4,51,49,.14)]">
- <header className="relative overflow-hidden bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#18a99e_100%)] px-5 py-7 text-white sm:px-7 lg:px-9 lg:py-9"><div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"><div><div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]"><ShieldCheck className="h-4 w-4"/> Simple, protected ride request</div><h2 className="mt-4 text-4xl font-black tracking-[-.05em] sm:text-5xl">Book your island ride.</h2><p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/70 sm:text-base">Tell us where you are, where you are going, and who is traveling. We handle the fare rules and dispatch checks behind the scenes.</p></div><div className="grid grid-cols-4 gap-2" aria-label="Booking progress">{[[1,"Route"],[2,"Ride"],[3,"Details"],[4,"Review"]].map(([s,l])=>{const n=s as 1|2|3|4;return <button key={s} type="button" onClick={()=>setActiveStep(n)} disabled={n>furthestStep} aria-current={activeStep===n?"step":undefined} className={`rounded-2xl border px-3 py-3 text-center ${activeStep===n?"border-[#f5c451] bg-[#f5c451] text-[#043331]":furthestStep>n?"border-emerald-300/40 bg-emerald-300/15 text-white":"border-white/10 bg-white/[.07] text-white/65 disabled:opacity-60"}`}><div className="text-[8px] font-black uppercase">{furthestStep>n?"✓":`0${s}`}</div><div className="mt-1 text-[10px] font-black uppercase">{l}</div></button>})}</div></div></header>
- <div className="p-4 sm:p-6 lg:p-7"><div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3"><div className="text-xs font-bold text-slate-500">{fromEstate?.baseName||"Your pickup"} <span className="mx-2">→</span> {toEstate?.baseName||"Your destination"}</div><div className="flex flex-wrap gap-2"><SummaryChip label={selectedMode.label}/><SummaryChip label={`${passengers} passenger${passengers===1?"":"s"}`}/><SummaryChip label={`${luggage} bag${luggage===1?"":"s"}`}/></div></div>
- <div className="mx-auto max-w-4xl space-y-6">{activeStep===1?<Panel><SectionTitle step="01" title="Where should we pick you up?" subtitle="Choose your pickup and destination. We will match them to the correct regulated fare area."/><div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-end"><Field label="Pick me up at" icon={MapPin}><EstateSelect value={fromGeoid} placeholder="Choose pickup location" estates={estates} onChange={onSelectFrom}/></Field><button type="button" onClick={onSwapRoute} disabled={!fromGeoid&&!toGeoid} className="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white text-[#0f766e] disabled:opacity-40" aria-label="Swap pickup and destination"><ArrowLeftRight className="h-5 w-5"/></button><Field label="Take me to" icon={Route}><EstateSelect value={toGeoid} placeholder="Choose destination" estates={estates} onChange={onSelectTo}/></Field></div><div className={`mt-5 overflow-hidden rounded-[28px] ${routeReady?"max-h-[520px]":"max-h-[330px]"}`}><RoutePreviewMap island={island} fromEstate={fromEstate} toEstate={toEstate}/></div><StepActions continueLabel="Choose my ride" continueDisabled={!routeReady} onContinue={()=>advanceToStep(2)}/></Panel>:null}
- {activeStep===2?<Panel><SectionTitle step="02" title="Choose your ride" subtitle="Pick the experience you prefer. Regulated route pricing stays protected."/><div className="mt-5 grid gap-3 sm:grid-cols-3">{PRIMARY_MODES.map(i=><ModeCard key={i.value} item={i} active={mode===i.value} recommended={recommendedMode===i.value} onClick={()=>onChangeMode(i.value)}/>)}</div><button type="button" onClick={()=>setShowMoreModes(v=>!v)} className="mt-4 inline-flex items-center gap-2 text-[10px] font-black uppercase text-teal-800">More options <ChevronDown className={`h-4 w-4 ${showMoreModes?"rotate-180":""}`}/></button>{showMoreModes?<div className="mt-4 grid gap-3 sm:grid-cols-3">{MORE_MODES.map(i=><ModeCard key={i.value} item={i} active={mode===i.value} recommended={recommendedMode===i.value} onClick={()=>onChangeMode(i.value)}/>)}</div>:null}<StepActions backLabel="Back" continueLabel="Add trip details" onBack={()=>setActiveStep(1)} onContinue={()=>advanceToStep(3)}/></Panel>:null}
- {activeStep===3?<Panel><SectionTitle step="03" title="Trip details" subtitle="Tell us who is traveling, when you need the ride, and any pickup or drop-off details."/><div className="mt-5 grid gap-4 sm:grid-cols-2"><Stepper icon={Users} label="Passengers" helper="Children count as passengers." value={passengers} minimum={1} maximum={12} onChange={onChangePassengers}/><Stepper icon={Luggage} label="Luggage" helper="Include checked bags and large carry-ons." value={luggage} minimum={0} maximum={12} onChange={onChangeLuggage}/></div><div className="mt-5 grid gap-4 rounded-[24px] border border-teal-100 bg-teal-50/70 p-4 sm:grid-cols-2"><Field label="Pickup time" icon={Clock3}><input type="datetime-local" value={scheduledAt} onChange={e=>setScheduledAt(e.target.value)} className="w-full rounded-[18px] border border-teal-100 bg-white px-4 py-3 text-sm font-bold"/></Field><Field label="Need to catch something? (optional)" icon={Anchor}><div className="grid grid-cols-[auto_1fr] gap-2"><select value={connectionKind} onChange={e=>setConnectionKind(e.target.value as typeof connectionKind)} className="rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold"><option value="ferry">Ferry</option><option value="flight">Flight</option><option value="cruise">Cruise</option><option value="appointment">Other</option></select><input type="datetime-local" value={connectionDeadline} onChange={e=>setConnectionDeadline(e.target.value)} className="min-w-0 rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold"/></div></Field></div><div className="mt-5 grid gap-3 sm:grid-cols-2"><Field label="Pickup note (optional)" icon={MapPin}><textarea value={pickupInstructions} onChange={e=>setPickupInstructions(e.target.value.slice(0,280))} rows={3} placeholder="Villa, lobby, gate, landmark, or where to wait" className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold"/></Field><Field label="Drop-off note (optional)" icon={Route}><textarea value={destinationInstructions} onChange={e=>setDestinationInstructions(e.target.value.slice(0,280))} rows={3} placeholder="Terminal, entrance, dock, hotel, or meeting point" className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold"/></Field></div><p className="mt-3 text-xs font-semibold text-slate-500">We use timing details to help dispatch plan your ride. Your driver assignment confirms availability.</p><StepActions backLabel="Back" continueLabel="Review fare & request" onBack={()=>setActiveStep(2)} onContinue={()=>advanceToStep(4)}/></Panel>:null}
- {activeStep===4?<aside id="trip-review" className="space-y-5"><section className="overflow-hidden rounded-[30px] border bg-white"><div className="bg-[#043331] p-5 text-white"><div className="text-[9px] font-black uppercase text-[#f5c451]">Final step · Review fare & request</div><div className="mt-3 text-2xl font-black">{fromEstate?.baseName} <span className="mx-2 text-white/35">→</span> {toEstate?.baseName}</div></div><div className="p-5">{fare?<FareReview fare={fare} submitting={submitting} canRequest={canRequest} acceptedOperatorDisclosure={acceptedOperatorDisclosure} acceptedLegal={acceptedLegal} pilotActive={pilotActive} pilotMessage={pilotMessage} onOperatorDisclosureChange={setAcceptedOperatorDisclosure} onLegalChange={setAcceptedLegal} onRequest={requestRide}/>:quoteLoading?<div className="py-8 text-center"><Loader2 className="mx-auto h-7 w-7 animate-spin text-teal-700"/><div className="mt-3 text-sm font-black">Checking your official fare…</div></div>:quoteError?<div className="rounded-[22px] border border-amber-200 bg-amber-50 p-4"><div className="text-[9px] font-black uppercase text-amber-700">Fare verification needed</div><p className="mt-2 text-sm font-semibold text-amber-950">{quoteError}</p><p className="mt-2 text-xs font-semibold text-amber-800">We will not guess or substitute a fare.</p></div>:null}</div></section><button type="button" onClick={()=>setActiveStep(3)} className="rounded-full border bg-white px-5 py-3 text-[9px] font-black uppercase">Back to details</button></aside>:null}</div></div>
- {resultMessage?<div className={`border-t px-6 py-4 text-sm font-semibold ${resultTone==="success"?"bg-emerald-50 text-emerald-800":"bg-rose-50 text-rose-800"}`}>{resultMessage}</div>:null}</section>;
+const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
+const ESTATE_NAME_COLLATOR = new Intl.Collator("en", {
+  numeric: true,
+  sensitivity: "base",
+});
+const RoutePreviewMap = dynamic(
+  () => import("@/components/route-preview-map").then((m) => m.RoutePreviewMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[300px] animate-pulse rounded-[28px] bg-slate-100" />
+    ),
+  },
+);
+
+type Props = {
+  estates: EstateRecord[];
+  fromEstate: EstateRecord | null;
+  toEstate: EstateRecord | null;
+  fromGeoid: string;
+  toGeoid: string;
+  mode: RideMode;
+  passengers: number;
+  luggage: number;
+  island: IslandCode;
+  onSelectFrom: (geoid: string) => void;
+  onSelectTo: (geoid: string) => void;
+  onChangeMode: (mode: RideMode) => void;
+  onChangePassengers: (value: number) => void;
+  onChangeLuggage: (value: number) => void;
+  onSwapRoute: () => void;
+};
+
+type ModeOption = {
+  value: RideMode;
+  label: string;
+  blurb: string;
+  accent: string;
+  icon: LucideIcon;
+};
+
+const PRIMARY_MODES: ModeOption[] = [
+  {
+    value: "standard",
+    label: "Standard",
+    blurb: "Everyday island travel",
+    accent: "Best for local rides",
+    icon: CarFront,
+  },
+  {
+    value: "shared",
+    label: "Shared",
+    blurb: "Share the ride with other passengers",
+    accent: "Official tariff applies",
+    icon: Bus,
+  },
+  {
+    value: "premium",
+    label: "Premium",
+    blurb: "Request extra comfort",
+    accent: "Priority preference",
+    icon: Sparkles,
+  },
+];
+
+const MORE_MODES: ModeOption[] = [
+  {
+    value: "airport",
+    label: "Airport",
+    blurb: "Pickup or drop-off at the airport",
+    accent: "Arrival-ready dispatch",
+    icon: Plane,
+  },
+  {
+    value: "ferry-transfer",
+    label: "Ferry",
+    blurb: "Connect with a ferry or port",
+    accent: "Harbor transfer",
+    icon: Anchor,
+  },
+  {
+    value: "executive",
+    label: "Executive",
+    blurb: "Request an executive vehicle",
+    accent: "Premium fleet preference",
+    icon: Crown,
+  },
+];
+
+export function BookingPanel({
+  estates,
+  fromEstate,
+  toEstate,
+  fromGeoid,
+  toGeoid,
+  mode,
+  passengers,
+  luggage,
+  island,
+  onSelectFrom,
+  onSelectTo,
+  onChangeMode,
+  onChangePassengers,
+  onChangeLuggage,
+  onSwapRoute,
+}: Props) {
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [resultMessage, setResultMessage] = useState<string | null>(null);
+  const [resultTone, setResultTone] = useState<"success" | "error" | null>(null);
+  const [fare, setFare] = useState<FareBreakdown | null>(null);
+  const [pilotActive, setPilotActive] = useState(false);
+  const [pilotMessage, setPilotMessage] = useState<string | null>(null);
+  const [quoteLoading, setQuoteLoading] = useState(false);
+  const [quoteError, setQuoteError] = useState<string | null>(null);
+  const [scheduledAt, setScheduledAt] = useState("");
+  const [connectionDeadline, setConnectionDeadline] = useState("");
+  const [pickupInstructions, setPickupInstructions] = useState("");
+  const [destinationInstructions, setDestinationInstructions] = useState("");
+  const [connectionKind, setConnectionKind] = useState<
+    "flight" | "ferry" | "cruise" | "appointment"
+  >("ferry");
+  const [acceptedOperatorDisclosure, setAcceptedOperatorDisclosure] =
+    useState(false);
+  const [acceptedLegal, setAcceptedLegal] = useState(false);
+  const [showMoreModes, setShowMoreModes] = useState(
+    MORE_MODES.some((i) => i.value === mode),
+  );
+  const [activeStep, setActiveStep] = useState<1 | 2 | 3 | 4>(1);
+  const [furthestStep, setFurthestStep] = useState<1 | 2 | 3 | 4>(1);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setAcceptedOperatorDisclosure(false);
+    setAcceptedLegal(false);
+
+    if (!fromEstate || !toEstate) {
+      setFare(null);
+      setPilotActive(false);
+      setPilotMessage(null);
+      setQuoteError(null);
+      return () => controller.abort();
+    }
+
+    setQuoteLoading(true);
+    setQuoteError(null);
+
+    fetch("/api/bookings/quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        originEstateGeoid: fromEstate.geoid,
+        destinationEstateGeoid: toEstate.geoid,
+        mode,
+        passengers,
+        luggage,
+      }),
+    })
+      .then(async (r) => {
+        const p = await r.json();
+        if (!r.ok) {
+          throw new Error(
+            p.error || "We need dispatch to verify the fare for this trip.",
+          );
+        }
+        setFare(p.fare as FareBreakdown);
+        setPilotActive(p.pilotActive === true);
+        setPilotMessage(typeof p.pilotMessage === "string" ? p.pilotMessage : null);
+      })
+      .catch((e) => {
+        if (e instanceof DOMException && e.name === "AbortError") return;
+        setFare(null);
+        setPilotActive(false);
+        setPilotMessage(null);
+        setQuoteError(
+          e instanceof Error
+            ? e.message
+            : "We need dispatch to verify the fare for this trip.",
+        );
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setQuoteLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [fromEstate, toEstate, mode, passengers, luggage]);
+
+  const routeReady = Boolean(fromEstate && toEstate);
+
+  useEffect(() => {
+    if (!routeReady) {
+      setActiveStep(1);
+      setFurthestStep(1);
+    }
+  }, [routeReady]);
+
+  const canRequest = Boolean(
+    routeReady &&
+      fare &&
+      pilotActive &&
+      acceptedOperatorDisclosure &&
+      acceptedLegal &&
+      !submitting,
+  );
+
+  const selectedMode =
+    [...PRIMARY_MODES, ...MORE_MODES].find((i) => i.value === mode) ??
+    PRIMARY_MODES[0];
+
+  const recommendedMode = useMemo<RideMode>(() => {
+    const t = `${fromEstate?.baseName ?? ""} ${toEstate?.baseName ?? ""}`.toLowerCase();
+    if (t.includes("airport")) return "airport";
+    if (t.includes("ferry") || t.includes("red hook")) return "ferry-transfer";
+    if (passengers >= 5) return "shared";
+    return "standard";
+  }, [fromEstate, passengers, toEstate]);
+
+  const recommendedOption =
+    [...PRIMARY_MODES, ...MORE_MODES].find(
+      (item) => item.value === recommendedMode,
+    ) ?? PRIMARY_MODES[0];
+  const RecommendedIcon = recommendedOption.icon;
+
+  useEffect(() => {
+    if (
+      activeStep === 2 &&
+      MORE_MODES.some((item) => item.value === recommendedMode)
+    ) {
+      setShowMoreModes(true);
+    }
+  }, [activeStep, recommendedMode]);
+
+  function advanceToStep(step: 2 | 3 | 4) {
+    setActiveStep(step);
+    setFurthestStep((c) => Math.max(c, step) as 1 | 2 | 3 | 4);
+  }
+
+  async function requestRide() {
+    if (!fromEstate || !toEstate) return;
+    if (!acceptedOperatorDisclosure || !acceptedLegal) {
+      setResultTone("error");
+      setResultMessage(
+        "Please accept the passenger disclosures before continuing to payment.",
+      );
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      setResultMessage(null);
+      setResultTone(null);
+
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          originEstateGeoid: fromEstate.geoid,
+          destinationEstateGeoid: toEstate.geoid,
+          mode,
+          passengers,
+          luggage,
+          scheduledAt: scheduledAt ? new Date(scheduledAt).toISOString() : null,
+          connectionDeadline: connectionDeadline
+            ? new Date(connectionDeadline).toISOString()
+            : null,
+          connectionKind: connectionDeadline ? connectionKind : null,
+          paymentMethod: "online_card",
+          pickupInstructions,
+          destinationInstructions,
+          acceptedOperatorDisclosure: true,
+          acceptedTerms: true,
+          acceptedPrivacy: true,
+          consentVersion: PASSENGER_CONSENT_VERSION,
+        }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || "Booking request failed.");
+      }
+
+      setResultTone("success");
+      setResultMessage("Ride request created. Opening secure payment…");
+      router.push(`/checkout/${payload.bookingId}`);
+    } catch (e) {
+      setResultTone("error");
+      setResultMessage(e instanceof Error ? e.message : "Unexpected booking error.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <section
+      id="book"
+      className="overflow-hidden rounded-[38px] border border-[#0b5d5b]/10 bg-[#f7f4ec] shadow-[0_30px_90px_rgba(4,51,49,.14)]"
+    >
+      <header className="relative overflow-hidden bg-[linear-gradient(135deg,#032d2b_0%,#075b57_50%,#18a99e_100%)] px-5 py-7 text-white sm:px-7 lg:px-9 lg:py-9">
+        <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.2em] text-[#f7d778]">
+              <ShieldCheck className="h-4 w-4" /> Simple, protected ride request
+            </div>
+            <h2 className="mt-4 text-4xl font-black tracking-[-.05em] sm:text-5xl">
+              Book your island ride.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-white/70 sm:text-base">
+              Tell us where you are, where you are going, and who is traveling.
+              We handle the fare rules and dispatch checks behind the scenes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2" aria-label="Booking progress">
+            {[
+              [1, "Route"],
+              [2, "Ride"],
+              [3, "Details"],
+              [4, "Review"],
+            ].map(([s, l]) => {
+              const n = s as 1 | 2 | 3 | 4;
+              return (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => setActiveStep(n)}
+                  disabled={n > furthestStep}
+                  aria-current={activeStep === n ? "step" : undefined}
+                  className={`rounded-2xl border px-3 py-3 text-center ${
+                    activeStep === n
+                      ? "border-[#f5c451] bg-[#f5c451] text-[#043331]"
+                      : furthestStep > n
+                        ? "border-emerald-300/40 bg-emerald-300/15 text-white"
+                        : "border-white/10 bg-white/[.07] text-white/65 disabled:opacity-60"
+                  }`}
+                >
+                  <div className="text-[8px] font-black uppercase">
+                    {furthestStep > n ? "✓" : `0${s}`}
+                  </div>
+                  <div className="mt-1 text-[10px] font-black uppercase">{l}</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </header>
+
+      <div className="p-4 sm:p-6 lg:p-7">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3">
+          <div className="text-xs font-bold text-slate-500">
+            {fromEstate?.baseName || "Your pickup"} <span className="mx-2">→</span>{" "}
+            {toEstate?.baseName || "Your destination"}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <SummaryChip label={selectedMode.label} />
+            <SummaryChip
+              label={`${passengers} passenger${passengers === 1 ? "" : "s"}`}
+            />
+            <SummaryChip label={`${luggage} bag${luggage === 1 ? "" : "s"}`} />
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-4xl space-y-6">
+          {activeStep === 1 ? (
+            <Panel>
+              <SectionTitle
+                step="01"
+                title="Where should we pick you up?"
+                subtitle="Choose your pickup and destination. We will match them to the correct regulated fare area."
+              />
+              <div className="mt-5 grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-end">
+                <Field label="Pick me up at" icon={MapPin}>
+                  <EstateSelect
+                    value={fromGeoid}
+                    placeholder="Choose pickup location"
+                    estates={estates}
+                    onChange={onSelectFrom}
+                  />
+                </Field>
+                <button
+                  type="button"
+                  onClick={onSwapRoute}
+                  disabled={!fromGeoid && !toGeoid}
+                  className="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-slate-200 bg-white text-[#0f766e] disabled:opacity-40"
+                  aria-label="Swap pickup and destination"
+                >
+                  <ArrowLeftRight className="h-5 w-5" />
+                </button>
+                <Field label="Take me to" icon={Route}>
+                  <EstateSelect
+                    value={toGeoid}
+                    placeholder="Choose destination"
+                    estates={estates}
+                    onChange={onSelectTo}
+                  />
+                </Field>
+              </div>
+              <div
+                className={`mt-5 overflow-hidden rounded-[28px] ${
+                  routeReady ? "max-h-[520px]" : "max-h-[330px]"
+                }`}
+              >
+                <RoutePreviewMap
+                  island={island}
+                  fromEstate={fromEstate}
+                  toEstate={toEstate}
+                />
+              </div>
+              <StepActions
+                continueLabel="Choose my ride"
+                continueDisabled={!routeReady}
+                onContinue={() => advanceToStep(2)}
+              />
+            </Panel>
+          ) : null}
+
+          {activeStep === 2 ? (
+            <Panel>
+              <SectionTitle
+                step="02"
+                title="Choose your ride"
+                subtitle="Pick the experience you prefer. Regulated route pricing stays protected."
+              />
+
+              <div className="mt-5 flex flex-col gap-3 rounded-[24px] border border-teal-200 bg-teal-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-start gap-3">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#043331] text-white">
+                    <RecommendedIcon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-[9px] font-black uppercase tracking-[.14em] text-teal-700">
+                      Best fit for this route
+                    </div>
+                    <div className="mt-1 text-base font-black text-[#043331]">
+                      {recommendedOption.label}
+                    </div>
+                    <div className="mt-1 text-xs font-semibold text-slate-600">
+                      {recommendedOption.blurb}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => onChangeMode(recommendedMode)}
+                  disabled={mode === recommendedMode}
+                  className="min-h-11 rounded-full bg-[#043331] px-5 text-[9px] font-black uppercase text-white disabled:bg-emerald-100 disabled:text-emerald-800"
+                >
+                  {mode === recommendedMode
+                    ? "Selected"
+                    : `Use ${recommendedOption.label}`}
+                </button>
+              </div>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {PRIMARY_MODES.map((i) => (
+                  <ModeCard
+                    key={i.value}
+                    item={i}
+                    active={mode === i.value}
+                    recommended={recommendedMode === i.value}
+                    onClick={() => onChangeMode(i.value)}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowMoreModes((v) => !v)}
+                className="mt-4 inline-flex items-center gap-2 text-[10px] font-black uppercase text-teal-800"
+              >
+                More options
+                <ChevronDown
+                  className={`h-4 w-4 ${showMoreModes ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {showMoreModes ? (
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {MORE_MODES.map((i) => (
+                    <ModeCard
+                      key={i.value}
+                      item={i}
+                      active={mode === i.value}
+                      recommended={recommendedMode === i.value}
+                      onClick={() => onChangeMode(i.value)}
+                    />
+                  ))}
+                </div>
+              ) : null}
+
+              <StepActions
+                backLabel="Back"
+                continueLabel="Add trip details"
+                onBack={() => setActiveStep(1)}
+                onContinue={() => advanceToStep(3)}
+              />
+            </Panel>
+          ) : null}
+
+          {activeStep === 3 ? (
+            <Panel>
+              <SectionTitle
+                step="03"
+                title="Trip details"
+                subtitle="Tell us who is traveling, when you need the ride, and any pickup or drop-off details."
+              />
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                <Stepper
+                  icon={Users}
+                  label="Passengers"
+                  helper="Children count as passengers."
+                  value={passengers}
+                  minimum={1}
+                  maximum={12}
+                  onChange={onChangePassengers}
+                />
+                <Stepper
+                  icon={Luggage}
+                  label="Luggage"
+                  helper="Include checked bags and large carry-ons."
+                  value={luggage}
+                  minimum={0}
+                  maximum={12}
+                  onChange={onChangeLuggage}
+                />
+              </div>
+
+              <div className="mt-5 grid gap-4 rounded-[24px] border border-teal-100 bg-teal-50/70 p-4 sm:grid-cols-2">
+                <Field label="Pickup time" icon={Clock3}>
+                  <input
+                    type="datetime-local"
+                    value={scheduledAt}
+                    onChange={(e) => setScheduledAt(e.target.value)}
+                    className="w-full rounded-[18px] border border-teal-100 bg-white px-4 py-3 text-sm font-bold"
+                  />
+                </Field>
+                <Field label="Need to catch something? (optional)" icon={Anchor}>
+                  <div className="grid grid-cols-[auto_1fr] gap-2">
+                    <select
+                      value={connectionKind}
+                      onChange={(e) =>
+                        setConnectionKind(e.target.value as typeof connectionKind)
+                      }
+                      className="rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold"
+                    >
+                      <option value="ferry">Ferry</option>
+                      <option value="flight">Flight</option>
+                      <option value="cruise">Cruise</option>
+                      <option value="appointment">Other</option>
+                    </select>
+                    <input
+                      type="datetime-local"
+                      value={connectionDeadline}
+                      onChange={(e) => setConnectionDeadline(e.target.value)}
+                      className="min-w-0 rounded-[18px] border border-teal-100 bg-white px-3 py-3 text-sm font-bold"
+                    />
+                  </div>
+                </Field>
+              </div>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <Field label="Pickup note (optional)" icon={MapPin}>
+                  <textarea
+                    value={pickupInstructions}
+                    onChange={(e) =>
+                      setPickupInstructions(e.target.value.slice(0, 280))
+                    }
+                    rows={3}
+                    placeholder="Villa, lobby, gate, landmark, or where to wait"
+                    className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold"
+                  />
+                </Field>
+                <Field label="Drop-off note (optional)" icon={Route}>
+                  <textarea
+                    value={destinationInstructions}
+                    onChange={(e) =>
+                      setDestinationInstructions(e.target.value.slice(0, 280))
+                    }
+                    rows={3}
+                    placeholder="Terminal, entrance, dock, hotel, or meeting point"
+                    className="w-full resize-none rounded-[18px] border border-slate-200 bg-[#f8f4ea] px-4 py-3 text-sm font-semibold"
+                  />
+                </Field>
+              </div>
+
+              <p className="mt-3 text-xs font-semibold text-slate-500">
+                We use timing details to help dispatch plan your ride. Your driver
+                assignment confirms availability.
+              </p>
+
+              <StepActions
+                backLabel="Back"
+                continueLabel="Review fare & request"
+                onBack={() => setActiveStep(2)}
+                onContinue={() => advanceToStep(4)}
+              />
+            </Panel>
+          ) : null}
+
+          {activeStep === 4 ? (
+            <aside id="trip-review" className="space-y-5">
+              <section className="overflow-hidden rounded-[30px] border bg-white">
+                <div className="bg-[#043331] p-5 text-white">
+                  <div className="text-[9px] font-black uppercase text-[#f5c451]">
+                    Final step · Review fare & request
+                  </div>
+                  <div className="mt-3 text-2xl font-black">
+                    {fromEstate?.baseName}{" "}
+                    <span className="mx-2 text-white/35">→</span>{" "}
+                    {toEstate?.baseName}
+                  </div>
+                </div>
+                <div className="p-5">
+                  {fare ? (
+                    <FareReview
+                      fare={fare}
+                      submitting={submitting}
+                      canRequest={canRequest}
+                      acceptedOperatorDisclosure={acceptedOperatorDisclosure}
+                      acceptedLegal={acceptedLegal}
+                      pilotActive={pilotActive}
+                      pilotMessage={pilotMessage}
+                      onOperatorDisclosureChange={setAcceptedOperatorDisclosure}
+                      onLegalChange={setAcceptedLegal}
+                      onRequest={requestRide}
+                    />
+                  ) : quoteLoading ? (
+                    <div className="py-8 text-center">
+                      <Loader2 className="mx-auto h-7 w-7 animate-spin text-teal-700" />
+                      <div className="mt-3 text-sm font-black">
+                        Checking your official fare…
+                      </div>
+                    </div>
+                  ) : quoteError ? (
+                    <div className="rounded-[22px] border border-amber-200 bg-amber-50 p-4">
+                      <div className="text-[9px] font-black uppercase text-amber-700">
+                        Fare verification needed
+                      </div>
+                      <p className="mt-2 text-sm font-semibold text-amber-950">
+                        {quoteError}
+                      </p>
+                      <p className="mt-2 text-xs font-semibold text-amber-800">
+                        We will not guess or substitute a fare.
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </section>
+              <button
+                type="button"
+                onClick={() => setActiveStep(3)}
+                className="rounded-full border bg-white px-5 py-3 text-[9px] font-black uppercase"
+              >
+                Back to details
+              </button>
+            </aside>
+          ) : null}
+        </div>
+      </div>
+
+      {resultMessage ? (
+        <div
+          className={`border-t px-6 py-4 text-sm font-semibold ${
+            resultTone === "success"
+              ? "bg-emerald-50 text-emerald-800"
+              : "bg-rose-50 text-rose-800"
+          }`}
+        >
+          {resultMessage}
+        </div>
+      ) : null}
+    </section>
+  );
 }
-function StepActions({backLabel,continueLabel,continueDisabled=false,onBack,onContinue}:{backLabel?:string;continueLabel:string;continueDisabled?:boolean;onBack?:()=>void;onContinue:()=>void}){return <div className="mt-6 flex flex-col-reverse gap-3 border-t pt-5 sm:flex-row sm:justify-between">{onBack?<button type="button" onClick={onBack} className="min-h-12 rounded-full border bg-white px-5 text-[9px] font-black uppercase">{backLabel}</button>:<span/>}<button type="button" onClick={onContinue} disabled={continueDisabled} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[9px] font-black uppercase text-white disabled:opacity-40">{continueLabel}<ArrowRight className="h-4 w-4"/></button></div>}
-function Panel({children}:{children:ReactNode}){return <section className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">{children}</section>}
-function SectionTitle({step,title,subtitle}:{step:string;title:string;subtitle:string}){return <div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#043331] text-[10px] font-black text-white">{step}</span><div><h3 className="text-xl font-black text-[#043331]">{title}</h3><p className="mt-1 text-sm font-semibold text-slate-500">{subtitle}</p></div></div>}
-function Field({label,icon:Icon,children}:{label:string;icon:LucideIcon;children:ReactNode}){return <label className="block"><div className="mb-2 flex items-center gap-2 text-[9px] font-black uppercase text-slate-400"><Icon className="h-4 w-4 text-teal-700"/>{label}</div>{children}</label>}
-function EstateSelect({value,placeholder,estates,onChange}:{value:string;placeholder:string;estates:EstateRecord[];onChange:(v:string)=>void}){const sorted=useMemo(()=>[...estates].sort((a,b)=>ESTATE_NAME_COLLATOR.compare(a.baseName,b.baseName)||a.geoid.localeCompare(b.geoid)),[estates]);return <select value={value} onChange={e=>onChange(e.target.value)} className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331]"><option value="">{placeholder}</option>{sorted.map(e=><option key={e.geoid} value={e.geoid}>{e.baseName}</option>)}</select>}
-function ModeCard({item,active,recommended,onClick}:{item:ModeOption;active:boolean;recommended:boolean;onClick:()=>void}){const Icon=item.icon;return <button type="button" onClick={onClick} aria-pressed={active} className={`relative rounded-[24px] border p-4 text-left ${active?"border-[#f5b942] bg-[#fff4d6]":"border-slate-200 bg-white"}`}>{active?<span className="absolute right-3 top-3 rounded-full bg-emerald-700 px-2 py-1 text-[7px] font-black uppercase text-white">Selected</span>:recommended?<span className="absolute right-3 top-3 rounded-full bg-[#043331] px-2 py-1 text-[7px] font-black uppercase text-white">Best fit</span>:null}<span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#edf6f2] text-teal-800"><Icon className="h-5 w-5"/></span><div className="mt-4 text-sm font-black uppercase">{item.label}</div><div className="mt-2 text-sm font-semibold text-slate-600">{item.blurb}</div></button>}
-function Stepper({icon:Icon,label,helper,value,minimum,maximum,onChange}:{icon:LucideIcon;label:string;helper:string;value:number;minimum:number;maximum:number;onChange:(v:number)=>void}){return <div className="rounded-[24px] border bg-[#f8f4ea] p-4"><div className="flex items-start justify-between gap-4"><div className="flex gap-3"><Icon className="h-5 w-5 text-teal-800"/><div><div className="text-sm font-black">{label}</div><div className="text-xs text-slate-500">{helper}</div></div></div><div className="flex items-center gap-2 rounded-full bg-white p-1"><button type="button" onClick={()=>onChange(Math.max(minimum,value-1))} disabled={value<=minimum}><Minus/></button><span className="min-w-8 text-center font-black">{value}</span><button type="button" onClick={()=>onChange(Math.min(maximum,value+1))} disabled={value>=maximum}><Plus/></button></div></div></div>}
-function FareReview({fare,submitting,canRequest,acceptedOperatorDisclosure,acceptedLegal,pilotActive,pilotMessage,onOperatorDisclosureChange,onLegalChange,onRequest}:{fare:FareBreakdown;submitting:boolean;canRequest:boolean;acceptedOperatorDisclosure:boolean;acceptedLegal:boolean;pilotActive:boolean;pilotMessage:string|null;onOperatorDisclosureChange:(v:boolean)=>void;onLegalChange:(v:boolean)=>void;onRequest:()=>void}){return <><div className="flex items-end justify-between"><div><div className="text-[9px] font-black uppercase text-slate-400">Verified fare for this trip</div><div className="mt-2 text-5xl font-black text-[#043331]">${fare.total.toFixed(2)}</div></div><span className="rounded-full bg-emerald-100 px-3 py-2 text-[8px] font-black uppercase text-emerald-800">No surge</span></div><div className="mt-5 space-y-3 rounded-[22px] bg-[#f8f4ea] p-4"><FareRow label="Route fare" value={fare.routeFare}/><FareRow label="Passengers" value={fare.passengerFare}/><FareRow label="Luggage" value={fare.luggageFare}/></div><div className="mt-5 space-y-3"><ServicePromise icon={ShieldCheck} text="Fare checked against the governed tariff"/><ServicePromise icon={Clock3} text="Driver assignment confirms availability; tracking follows assignment"/><ServicePromise icon={BriefcaseBusiness} text="No surge or distance-based substitute"/></div>{!pilotActive?<section className="mt-5 rounded-[22px] border border-sky-200 bg-sky-50 p-4"><div className="text-[9px] font-black uppercase text-sky-700">Fare preview</div><p className="mt-2 text-xs font-semibold">{pilotMessage||"Ride requests open when verified local dispatch is active."}</p></section>:null}<section className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50 p-4"><div className="text-[9px] font-black uppercase text-amber-700">Before you request</div><div className="mt-4 space-y-3"><ConsentCheckbox checked={acceptedOperatorDisclosure} onChange={onOperatorDisclosureChange}>I understand my ride is provided by an independently authorized taxi operator or participating taxi association and the displayed fare comes from the active governed tariff.</ConsentCheckbox><ConsentCheckbox checked={acceptedLegal} onChange={onLegalChange}>I agree to the <Link href="/terms" className="font-black underline">Terms</Link> and <Link href="/privacy" className="font-black underline">Privacy notice</Link>.</ConsentCheckbox></div></section><button type="button" onClick={onRequest} disabled={!canRequest} className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase text-[#5f3d00] disabled:opacity-50">{submitting?<Loader2 className="h-4 w-4 animate-spin"/>:<Check className="h-4 w-4"/>}{submitting?"Creating request…":!pilotActive?"Ride requests opening soon":acceptedOperatorDisclosure&&acceptedLegal?"Request ride & continue":"Review and accept to request"}</button></>}
-function ConsentCheckbox({checked,onChange,children}:{checked:boolean;onChange:(v:boolean)=>void;children:ReactNode}){return <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-amber-200 bg-white/70 p-3 text-xs font-semibold"><input type="checkbox" checked={checked} onChange={e=>onChange(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#0f766e]"/><span>{children}</span></label>}
-function SummaryChip({label}:{label:string}){return <span className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[8px] font-black uppercase text-teal-800">{label}</span>}
-function FareRow({label,value}:{label:string;value:number}){return <div className="flex justify-between gap-4"><span>{label}</span><span className="font-black">${value.toFixed(2)}</span></div>}
-function ServicePromise({icon:Icon,text}:{icon:LucideIcon;text:string}){return <div className="flex items-center gap-2 text-xs font-semibold text-slate-600"><Icon className="h-4 w-4 text-teal-700"/>{text}</div>}
+
+function StepActions({
+  backLabel,
+  continueLabel,
+  continueDisabled = false,
+  onBack,
+  onContinue,
+}: {
+  backLabel?: string;
+  continueLabel: string;
+  continueDisabled?: boolean;
+  onBack?: () => void;
+  onContinue: () => void;
+}) {
+  return (
+    <div className="mt-6 flex flex-col-reverse gap-3 border-t pt-5 sm:flex-row sm:justify-between">
+      {onBack ? (
+        <button
+          type="button"
+          onClick={onBack}
+          className="min-h-12 rounded-full border bg-white px-5 text-[9px] font-black uppercase"
+        >
+          {backLabel}
+        </button>
+      ) : (
+        <span />
+      )}
+      <button
+        type="button"
+        onClick={onContinue}
+        disabled={continueDisabled}
+        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#043331] px-6 text-[9px] font-black uppercase text-white disabled:opacity-40"
+      >
+        {continueLabel}
+        <ArrowRight className="h-4 w-4" />
+      </button>
+    </div>
+  );
+}
+
+function Panel({ children }: { children: ReactNode }) {
+  return (
+    <section className="rounded-[30px] border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+      {children}
+    </section>
+  );
+}
+
+function SectionTitle({
+  step,
+  title,
+  subtitle,
+}: {
+  step: string;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#043331] text-[10px] font-black text-white">
+        {step}
+      </span>
+      <div>
+        <h3 className="text-xl font-black text-[#043331]">{title}</h3>
+        <p className="mt-1 text-sm font-semibold text-slate-500">{subtitle}</p>
+      </div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  icon: Icon,
+  children,
+}: {
+  label: string;
+  icon: LucideIcon;
+  children: ReactNode;
+}) {
+  return (
+    <label className="block">
+      <div className="mb-2 flex items-center gap-2 text-[9px] font-black uppercase text-slate-400">
+        <Icon className="h-4 w-4 text-teal-700" />
+        {label}
+      </div>
+      {children}
+    </label>
+  );
+}
+
+function EstateSelect({
+  value,
+  placeholder,
+  estates,
+  onChange,
+}: {
+  value: string;
+  placeholder: string;
+  estates: EstateRecord[];
+  onChange: (v: string) => void;
+}) {
+  const sorted = useMemo(
+    () =>
+      [...estates].sort(
+        (a, b) =>
+          ESTATE_NAME_COLLATOR.compare(a.baseName, b.baseName) ||
+          a.geoid.localeCompare(b.geoid),
+      ),
+    [estates],
+  );
+
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full rounded-[20px] border border-slate-200 bg-[#f8f4ea] px-4 py-4 text-base font-black text-[#043331]"
+    >
+      <option value="">{placeholder}</option>
+      {sorted.map((e) => (
+        <option key={e.geoid} value={e.geoid}>
+          {e.baseName}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+function ModeCard({
+  item,
+  active,
+  recommended,
+  onClick,
+}: {
+  item: ModeOption;
+  active: boolean;
+  recommended: boolean;
+  onClick: () => void;
+}) {
+  const Icon = item.icon;
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`relative rounded-[24px] border p-4 text-left ${
+        active
+          ? "border-[#f5b942] bg-[#fff4d6]"
+          : "border-slate-200 bg-white"
+      }`}
+    >
+      {active ? (
+        <span className="absolute right-3 top-3 rounded-full bg-emerald-700 px-2 py-1 text-[7px] font-black uppercase text-white">
+          Selected
+        </span>
+      ) : recommended ? (
+        <span className="absolute right-3 top-3 rounded-full bg-[#043331] px-2 py-1 text-[7px] font-black uppercase text-white">
+          Best fit
+        </span>
+      ) : null}
+      <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#edf6f2] text-teal-800">
+        <Icon className="h-5 w-5" />
+      </span>
+      <div className="mt-4 text-sm font-black uppercase">{item.label}</div>
+      <div className="mt-2 text-sm font-semibold text-slate-600">
+        {item.blurb}
+      </div>
+    </button>
+  );
+}
+
+function Stepper({
+  icon: Icon,
+  label,
+  helper,
+  value,
+  minimum,
+  maximum,
+  onChange,
+}: {
+  icon: LucideIcon;
+  label: string;
+  helper: string;
+  value: number;
+  minimum: number;
+  maximum: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <div className="rounded-[24px] border bg-[#f8f4ea] p-4">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex gap-3">
+          <Icon className="h-5 w-5 text-teal-800" />
+          <div>
+            <div className="text-sm font-black">{label}</div>
+            <div className="text-xs text-slate-500">{helper}</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-white p-1">
+          <button
+            type="button"
+            onClick={() => onChange(Math.max(minimum, value - 1))}
+            disabled={value <= minimum}
+          >
+            <Minus />
+          </button>
+          <span className="min-w-8 text-center font-black">{value}</span>
+          <button
+            type="button"
+            onClick={() => onChange(Math.min(maximum, value + 1))}
+            disabled={value >= maximum}
+          >
+            <Plus />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FareReview({
+  fare,
+  submitting,
+  canRequest,
+  acceptedOperatorDisclosure,
+  acceptedLegal,
+  pilotActive,
+  pilotMessage,
+  onOperatorDisclosureChange,
+  onLegalChange,
+  onRequest,
+}: {
+  fare: FareBreakdown;
+  submitting: boolean;
+  canRequest: boolean;
+  acceptedOperatorDisclosure: boolean;
+  acceptedLegal: boolean;
+  pilotActive: boolean;
+  pilotMessage: string | null;
+  onOperatorDisclosureChange: (v: boolean) => void;
+  onLegalChange: (v: boolean) => void;
+  onRequest: () => void;
+}) {
+  return (
+    <>
+      <div className="flex items-end justify-between">
+        <div>
+          <div className="text-[9px] font-black uppercase text-slate-400">
+            Verified fare for this trip
+          </div>
+          <div className="mt-2 text-5xl font-black text-[#043331]">
+            ${fare.total.toFixed(2)}
+          </div>
+        </div>
+        <span className="rounded-full bg-emerald-100 px-3 py-2 text-[8px] font-black uppercase text-emerald-800">
+          No surge
+        </span>
+      </div>
+
+      <div className="mt-5 space-y-3 rounded-[22px] bg-[#f8f4ea] p-4">
+        <FareRow label="Route fare" value={fare.routeFare} />
+        <FareRow label="Passengers" value={fare.passengerFare} />
+        <FareRow label="Luggage" value={fare.luggageFare} />
+      </div>
+
+      <div className="mt-5 space-y-3">
+        <ServicePromise
+          icon={ShieldCheck}
+          text="Fare checked against the governed tariff"
+        />
+        <ServicePromise
+          icon={Clock3}
+          text="Driver assignment confirms availability; tracking follows assignment"
+        />
+        <ServicePromise
+          icon={BriefcaseBusiness}
+          text="No surge or distance-based substitute"
+        />
+      </div>
+
+      {!pilotActive ? (
+        <section className="mt-5 rounded-[22px] border border-sky-200 bg-sky-50 p-4">
+          <div className="text-[9px] font-black uppercase text-sky-700">
+            Fare preview
+          </div>
+          <p className="mt-2 text-xs font-semibold">
+            {pilotMessage ||
+              "Ride requests open when verified local dispatch is active."}
+          </p>
+        </section>
+      ) : null}
+
+      <section className="mt-5 rounded-[22px] border border-amber-200 bg-amber-50 p-4">
+        <div className="text-[9px] font-black uppercase text-amber-700">
+          Before you request
+        </div>
+        <div className="mt-4 space-y-3">
+          <ConsentCheckbox
+            checked={acceptedOperatorDisclosure}
+            onChange={onOperatorDisclosureChange}
+          >
+            I understand my ride is provided by an independently authorized taxi
+            operator or participating taxi association and the displayed fare comes
+            from the active governed tariff.
+          </ConsentCheckbox>
+          <ConsentCheckbox checked={acceptedLegal} onChange={onLegalChange}>
+            I agree to the{" "}
+            <Link href="/terms" className="font-black underline">
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy" className="font-black underline">
+              Privacy notice
+            </Link>
+            .
+          </ConsentCheckbox>
+        </div>
+      </section>
+
+      <button
+        type="button"
+        onClick={onRequest}
+        disabled={!canRequest}
+        className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#f5c451] px-5 text-[10px] font-black uppercase text-[#5f3d00] disabled:opacity-50"
+      >
+        {submitting ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <Check className="h-4 w-4" />
+        )}
+        {submitting
+          ? "Creating request…"
+          : !pilotActive
+            ? "Ride requests opening soon"
+            : acceptedOperatorDisclosure && acceptedLegal
+              ? "Request ride & continue"
+              : "Review and accept to request"}
+      </button>
+    </>
+  );
+}
+
+function ConsentCheckbox({
+  checked,
+  onChange,
+  children,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  children: ReactNode;
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-amber-200 bg-white/70 p-3 text-xs font-semibold">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="mt-0.5 h-4 w-4 accent-[#0f766e]"
+      />
+      <span>{children}</span>
+    </label>
+  );
+}
+
+function SummaryChip({ label }: { label: string }) {
+  return (
+    <span className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[8px] font-black uppercase text-teal-800">
+      {label}
+    </span>
+  );
+}
+
+function FareRow({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="flex justify-between gap-4">
+      <span>{label}</span>
+      <span className="font-black">${value.toFixed(2)}</span>
+    </div>
+  );
+}
+
+function ServicePromise({
+  icon: Icon,
+  text,
+}: {
+  icon: LucideIcon;
+  text: string;
+}) {
+  return (
+    <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
+      <Icon className="h-4 w-4 text-teal-700" />
+      {text}
+    </div>
+  );
+}
