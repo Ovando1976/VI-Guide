@@ -97,7 +97,9 @@ export async function PATCH(
 
     const vehicle = vehicleSnapshot.data() as Record<string, unknown>;
     const association = associationSnapshot.data() as Record<string, unknown>;
-    if (association.active === false) {
+    const associationIsActive =
+      association.status === "active" || association.active === true;
+    if (!associationIsActive) {
       return NextResponse.json({ error: "Taxi association is inactive." }, { status: 409 });
     }
     if (
