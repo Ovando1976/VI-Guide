@@ -89,6 +89,42 @@ export default async function DriverPage() {
           </div>
         </section>
 
+        <section className="mt-6 rounded-[30px] border border-[#043331]/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(4,51,49,.08)] sm:p-6">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-[9px] font-black uppercase tracking-[.2em] text-amber-600">
+                Driver economics
+              </p>
+              <h2 className="mt-1 text-2xl font-black tracking-[-.04em]">
+                Free to join. Keep 85% of each eligible ride.
+              </h2>
+            </div>
+            <span className="rounded-full bg-[#043331] px-4 py-2 text-[9px] font-black uppercase tracking-[.16em] text-white">
+              Simple 15% commission
+            </span>
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[22px] bg-[#f7f2e7] p-4">
+              <p className="text-[8px] font-black uppercase tracking-[.16em] text-slate-400">Signup fee</p>
+              <p className="mt-2 text-2xl font-black">$0</p>
+              <p className="mt-1 text-xs font-semibold text-slate-600">No driver signup or activation fee.</p>
+            </div>
+            <div className="rounded-[22px] bg-[#f7f2e7] p-4">
+              <p className="text-[8px] font-black uppercase tracking-[.16em] text-slate-400">Platform commission</p>
+              <p className="mt-2 text-2xl font-black">15%</p>
+              <p className="mt-1 text-xs font-semibold text-slate-600">Applied to each eligible completed ride.</p>
+            </div>
+            <div className="rounded-[22px] bg-[#f7f2e7] p-4">
+              <p className="text-[8px] font-black uppercase tracking-[.16em] text-slate-400">Driver ride share</p>
+              <p className="mt-2 text-2xl font-black">85%</p>
+              <p className="mt-1 text-xs font-semibold text-slate-600">Before separately disclosed processing fees or adjustments.</p>
+            </div>
+          </div>
+          <p className="mt-4 text-xs font-semibold leading-5 text-slate-600">
+            Wallet totals below represent completed ride-share amounts, not an immediately withdrawable balance. Settlement review, payment verification, refunds, disputes, and payout-account readiness can affect when funds are released.
+          </p>
+        </section>
+
         <section className="mt-6 rounded-[30px] border border-[#043331]/10 bg-white/70 p-4 shadow-[0_18px_48px_rgba(4,51,49,.08)] backdrop-blur sm:p-6">
           <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
             <div>

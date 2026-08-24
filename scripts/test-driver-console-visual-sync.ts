@@ -6,10 +6,20 @@ const driverConsole = fs.readFileSync(
   path.join(root, "components/driver-console.tsx"),
   "utf8",
 );
+const driverPage = fs.readFileSync(
+  path.join(root, "app/driver/page.tsx"),
+  "utf8",
+);
 
 function expectSource(value: string, label: string) {
   if (!driverConsole.includes(value)) {
     throw new Error(`Driver console visual contract failed: ${label}`);
+  }
+}
+
+function expectDriverPageSource(value: string, label: string) {
+  if (!driverPage.includes(value)) {
+    throw new Error(`Driver economics contract failed: ${label}`);
   }
 }
 
@@ -142,6 +152,31 @@ expectSource(
 expectSource(
   "Association dispatch",
   "association name and dispatch phone remain visible",
+);
+
+expectDriverPageSource(
+  "Free to join. Keep 85% of each eligible ride.",
+  "driver signup is explicitly free and the 85% ride share is visible",
+);
+expectDriverPageSource(
+  "Simple 15% commission",
+  "the fixed platform commission is visible",
+);
+expectDriverPageSource(
+  "No driver signup or activation fee.",
+  "no signup fee is promised explicitly",
+);
+expectDriverPageSource(
+  "Before separately disclosed processing fees or adjustments.",
+  "driver share does not hide processing fees or adjustments",
+);
+expectDriverPageSource(
+  "not an immediately withdrawable balance",
+  "wallet totals do not over-promise payout availability",
+);
+expectDriverPageSource(
+  "Settlement review, payment verification, refunds, disputes, and payout-account readiness",
+  "driver economics copy preserves settlement safety gates",
 );
 
 console.log("USVI Explorer Driver console visual and tariff contracts passed.");
