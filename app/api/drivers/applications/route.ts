@@ -1,3 +1,4 @@
+import { FieldValue } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
@@ -59,37 +60,93 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: result.error }, { status: 400 });
     }
 
-    const ref = getAdminDb().collection(APPLICATIONS).doc(session.uid);
-    const existing = await ref.get();
-    if (existing.data()?.status === "approved") {
-      return NextResponse.json(
-        { error: "This driver application has already been approved." },
-        { status: 409 },
-      );
-    }
-
+    const db = getAdminDb();
+    const applicationRef = db.collection(APPLICATIONS).doc(session.uid);
     const now = new Date().toISOString();
-    const record = {
-      uid: session.uid,
-      email: session.email ?? null,
-      ...result.application,
-      status: "pending",
-      signupFeeCents: TAXI_DRIVER_SIGNUP_FEE_CENTS,
-      platformCommissionBps: TAXI_PLATFORM_COMMISSION_BPS,
-      driverShareBps: TAXI_DRIVER_SHARE_BPS,
-      economicsDisclosure:
-        "Free signup. VI Guide keeps 15% of each eligible ride; the driver share is 85% before separately disclosed processing fees or adjustments.",
-      submittedAt: existing.data()?.submittedAt ?? now,
-      resubmittedAt: existing.exists ? now : null,
-      updatedAt: now,
-      approvedAt: null,
-      reviewedAt: null,
-      reviewNote: null,
-    };
 
-    await ref.set(record, { merge: true });
+    const record = await db.runTransaction(async (transaction) => {
+      const existing = await transaction.get(applicationRef);
+      const existingData = existing.data() ?? {};
+      if (existingData.status === "approved") {
+        throw new DriverApplicationIntakeError(
+          "This driver application has already been approved.",
+          409,
+        );
+      }
+
+      const responseRecord = {
+        uid: session.uid,
+        email: session.email ?? null,
+        ...result.application,
+        status: "pending",
+        signupFeeCents: TAXI_DRIVER_SIGNUP_FEE_CENTS,
+        platformCommissionBps: TAXI_PLATFORM_COMMISSION_BPS,
+        driverShareBps: TAXI_DRIVER_SHARE_BPS,
+        economicsDisclosure:
+          "Free signup. VI Guide keeps 15% of each eligible ride; the driver share is 85% before separately disclosed processing fees or adjustments.",
+        submittedAt: existingData.submittedAt ?? now,
+        resubmittedAt: existing.exists ? now : null,
+        updatedAt: now,
+        approvedAt: null,
+        reviewedAt: null,
+        reviewedBy: null,
+        reviewedByEmail: null,
+        reviewNote: null,
+      };
+
+      transaction.set(
+        applicationRef,
+        {
+          ...responseRecord,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
+          ...(existing.exists
+            ? {}
+            : { serverCreatedAt: FieldValue.serverTimestamp() }),
+        },
+        { merge: true },
+      );
+
+      transaction.set(db.collection("driverApplicationAudit").doc(), {
+        action: existing.exists ? "resubmitted" : "submitted",
+        applicationId: session.uid,
+        applicantUid: session.uid,
+        applicantEmail: session.email ?? null,
+        previousStatus: existingData.status ?? null,
+        nextStatus: "pending",
+        createdAt: now,
+        serverCreatedAt: FieldValue.serverTimestamp(),
+      });
+
+      if (
+        !existing.exists ||
+        ["changes_requested", "rejected"].includes(
+          String(existingData.status ?? ""),
+        )
+      ) {
+        transaction.set(db.collection("notifications").doc(), {
+          audience: "operations",
+          kind: "driver_application",
+          priority: "normal",
+          title: existing.exists
+            ? "Driver application resubmitted"
+            : "New driver application",
+          message: `${result.application.displayName} submitted a driver application for compliance review.`,
+          href: "/admin/taxi-operations",
+          readAt: null,
+          createdAt: now,
+          updatedAt: now,
+          serverCreatedAt: FieldValue.serverTimestamp(),
+        });
+      }
+
+      return responseRecord;
+    });
+
     return NextResponse.json({ ok: true, application: record });
   } catch (error) {
+    if (error instanceof DriverApplicationIntakeError) {
+      return NextResponse.json({ error: error.message }, { status: error.status });
+    }
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
     console.error("driver application submission error", error);
@@ -97,5 +154,14 @@ export async function POST(request: Request) {
       { error: "Unable to submit driver application." },
       { status: 500 },
     );
+  }
+}
+
+class DriverApplicationIntakeError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message);
   }
 }

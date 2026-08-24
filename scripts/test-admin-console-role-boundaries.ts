@@ -90,6 +90,9 @@ const intake = read("app/api/drivers/applications/route.ts");
 expectSource(intake, "requireSession()", "driver applications require authentication");
 expectSource(intake, 'session.role !== "rider"', "only rider accounts can self-apply");
 expectSource(intake, 'status: "pending"', "self-service applications start pending");
+expectSource(intake, 'collection("driverApplicationAudit")', "driver intake creates an auditable submission event");
+expectSource(intake, 'kind: "driver_application"', "driver intake notifies operations of new or corrected applications");
+expectSource(intake, 'href: "/admin/taxi-operations"', "driver intake notification links to the protected review queue");
 if (intake.includes("setCustomUserClaims")) throw new Error("Driver intake must never grant privileged claims.");
 
 const driverApplyPage = read("app/driver/apply/page.tsx");
