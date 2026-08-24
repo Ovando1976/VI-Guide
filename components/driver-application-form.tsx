@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, ShieldCheck, SteeringWheel } from "lucide-react";
+import { CarFront, CheckCircle2, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type ExistingApplication = {
@@ -49,7 +49,7 @@ export function DriverApplicationForm({ email }: { email: string }) {
       <div className="mx-auto max-w-3xl">
         <section className="rounded-[34px] bg-[linear-gradient(145deg,#032f2d,#0b6b64)] p-7 text-white shadow-[0_28px_80px_rgba(4,51,49,.22)] sm:p-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">
-            <SteeringWheel className="h-4 w-4" /> Drive with USVI Explorer
+            <CarFront className="h-4 w-4" /> Drive with USVI Explorer
           </div>
           <h1 className="mt-5 text-4xl font-black tracking-[-.05em] sm:text-5xl">
             Apply free. Keep 85% of each eligible ride.
