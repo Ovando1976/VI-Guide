@@ -102,7 +102,7 @@ const EXPERIENCE_IMAGES: Record<string, { image: string; alt: string }> = {
     alt: "Cruz Bay waterfront on St. John",
   },
   "stj-vieco-north-shore": {
-    image: "/images/places/st-john/trunk-bay-beach-1.jpg",
+    image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     alt: "St. John North Shore at Trunk Bay",
   },
   "stj-explore-stj-jeep": {
@@ -461,7 +461,7 @@ function BookingCard({ item }: { item: BookableExperience }) {
     island: item.island,
     listingId: item.id,
     listingName: item.name,
-    listingHref: "/experiences",
+    listingHref: "/activities",
     adults: "2",
   });
   const conciergePrompt = `Help me plan ${item.name} on ${ISLAND_NAMES[item.island]}. Include transportation, realistic timing, nearby places, and a backup option.`;
