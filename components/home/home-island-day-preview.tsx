@@ -84,8 +84,8 @@ export function HomeIslandDayPreview() {
   }
 
   return (
-    <aside className="usvi-command-card vi-glass overflow-hidden rounded-[38px] p-3 sm:p-4">
-      <div className="relative min-h-[540px] overflow-hidden rounded-[30px] bg-[#062f31]">
+    <aside className="usvi-command-card vi-glass overflow-hidden rounded-[30px] p-2.5 sm:rounded-[38px] sm:p-4">
+      <div className="relative min-h-[430px] overflow-hidden rounded-[24px] bg-[#062f31] sm:min-h-[540px] sm:rounded-[30px]">
         <Image
           key={preview.image}
           src={preview.image}
@@ -96,12 +96,13 @@ export function HomeIslandDayPreview() {
         />
         <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,31,29,.10)_0%,rgba(3,31,29,.28)_38%,rgba(2,25,25,.97)_100%)]" />
 
-        <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-5 sm:p-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-[#032f2d]/60 px-3 py-2 text-[8px] font-black uppercase tracking-[.17em] text-white backdrop-blur-xl">
-            <Compass size={13} className="text-[#73e3d9]" aria-hidden="true" />
-            Island day preview
+        <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-4 sm:gap-3 sm:p-6">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/18 bg-[#032f2d]/60 px-2.5 py-2 text-[7px] font-black uppercase tracking-[.14em] text-white backdrop-blur-xl sm:gap-2 sm:px-3 sm:text-[8px] sm:tracking-[.17em]">
+            <Compass size={12} className="text-[#73e3d9] sm:h-[13px] sm:w-[13px]" aria-hidden="true" />
+            Island day
+            <span className="hidden sm:inline">preview</span>
           </span>
-          <div className="flex gap-1.5 rounded-full border border-white/18 bg-[#032f2d]/60 p-1.5 backdrop-blur-xl" aria-label="Preview an island">
+          <div className="flex gap-1 rounded-full border border-white/18 bg-[#032f2d]/60 p-1 backdrop-blur-xl sm:gap-1.5 sm:p-1.5" aria-label="Preview an island">
             {(Object.keys(ISLAND_PREVIEWS) as ActiveIsland[]).map((code) => (
               <button
                 key={code}
@@ -121,18 +122,18 @@ export function HomeIslandDayPreview() {
           </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-          <div className="mb-5 flex items-end justify-between gap-4">
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-7">
+          <div className="mb-4 flex items-end justify-between gap-4 sm:mb-5">
             <div>
               <div className="vi-eyebrow text-[#f5c451]">Selected · {preview.name}</div>
-              <h2 className="vi-display mt-2 text-4xl font-bold leading-[.92] text-white sm:text-5xl">
+              <h2 className="vi-display mt-2 text-[2rem] font-bold leading-[.92] text-white sm:text-5xl">
                 {preview.title}
               </h2>
             </div>
             <MapPinned className="hidden shrink-0 text-[#73e3d9] sm:block" size={30} aria-hidden="true" />
           </div>
 
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
             <PreviewFact icon={SunMedium} value={preview.start} label="Start window" />
             <PreviewFact icon={Compass} value={preview.pace} label="Day shape" />
             <PreviewFact icon={Route} value="4 parts" label="Suggested flow" accent />
@@ -140,12 +141,12 @@ export function HomeIslandDayPreview() {
 
           <Link
             href={`/today?island=${island}`}
-            className="mt-3 flex min-h-12 items-center justify-between rounded-[20px] bg-[#f5c451] px-5 py-4 text-[9px] font-black uppercase tracking-[.15em] text-[#032f2d] transition hover:bg-[#ffdc76]"
+            className="mt-2.5 flex min-h-12 items-center justify-between rounded-[18px] bg-[#f5c451] px-4 py-3.5 text-[9px] font-black uppercase tracking-[.14em] text-[#032f2d] transition hover:bg-[#ffdc76] sm:mt-3 sm:rounded-[20px] sm:px-5 sm:py-4 sm:tracking-[.15em]"
           >
             <span>Build my {preview.name} day</span>
             <ArrowRight size={16} aria-hidden="true" />
           </Link>
-          <p className="mt-3 text-[9px] font-semibold leading-4 text-white/45">
+          <p className="mt-2.5 text-[8px] font-semibold leading-3.5 text-white/45 sm:mt-3 sm:text-[9px] sm:leading-4">
             Planning preview—not live weather, water, or operating-status data. Confirm conditions before departure.
           </p>
         </div>
@@ -166,10 +167,10 @@ function PreviewFact({
   accent?: boolean;
 }) {
   return (
-    <div className="rounded-[20px] border border-white/12 bg-white/[.09] p-3 backdrop-blur-xl">
-      <Icon size={15} className={accent ? "text-[#f5c451]" : "text-[#73e3d9]"} aria-hidden="true" />
-      <span className="mt-3 block text-sm font-black leading-tight text-white sm:text-base">{value}</span>
-      <span className="mt-1 block text-[7px] font-bold uppercase tracking-[.1em] text-white/45 sm:text-[8px]">{label}</span>
+    <div className="rounded-[16px] border border-white/12 bg-white/[.09] p-2.5 backdrop-blur-xl sm:rounded-[20px] sm:p-3">
+      <Icon size={14} className={accent ? "text-[#f5c451]" : "text-[#73e3d9]"} aria-hidden="true" />
+      <span className="mt-2 block text-xs font-black leading-tight text-white sm:mt-3 sm:text-base">{value}</span>
+      <span className="mt-1 block text-[6px] font-bold uppercase tracking-[.08em] text-white/45 sm:text-[8px] sm:tracking-[.1em]">{label}</span>
     </div>
   );
 }
