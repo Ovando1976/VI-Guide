@@ -6,11 +6,19 @@ import {
   ISLAND_NAMES,
 } from "./bookable-experiences-restored-core";
 import type {
-  ActivityCategory,
-  BookableExperience,
+  ActivityCategory as CoreActivityCategory,
+  BookableExperience as CoreBookableExperience,
 } from "./bookable-experiences-restored-core";
 
-export type { ActivityCategory, BookableExperience };
+export type ActivityCategory =
+  | CoreActivityCategory
+  | "kiteboarding"
+  | "distillery";
+
+export type BookableExperience = Omit<CoreBookableExperience, "category"> & {
+  category: ActivityCategory;
+};
+
 export { ISLAND_NAMES };
 
 /**
@@ -141,6 +149,74 @@ export const CURRENT_ACTIVITY_ADDITIONS: BookableExperience[] = [
     verifiedAt: "2026-08-23",
     availabilityStatus: "request-only",
   },
+  {
+    id: "stt-kiteboarding-vi-lesson",
+    name: "St. Thomas Kiteboarding Lesson",
+    operator: "Kiteboarding VI",
+    category: "kiteboarding",
+    kind: "experience",
+    island: "stt",
+    location: "St. Thomas",
+    duration: "Varies",
+    summary:
+      "Kiteboarding and kitesurfing instruction from a St. Thomas operator that also supports wing-foiling lessons and private Caribbean kite trips.",
+    highlights: ["Kiteboarding", "Kitesurfing", "Wing foiling", "Instruction"],
+    sourceUrl: "https://www.kite.vi/",
+    sourceLabel: "Kiteboarding VI official website and current Visit USVI listing",
+    verifiedAt: "2026-08-24",
+    availabilityStatus: "request-only",
+  },
+  {
+    id: "stx-leading-edge-kiteboarding-lesson",
+    name: "St. Croix Private Kiteboarding Lesson",
+    operator: "The Leading Edge Kite School",
+    category: "kiteboarding",
+    kind: "experience",
+    island: "stx",
+    location: "St. Croix",
+    duration: "2.5–4 hours",
+    summary:
+      "Personalized one-on-one kiteboarding instruction on St. Croix, progressing from wind and safety fundamentals to supported riding as conditions and skill level allow.",
+    highlights: ["Kiteboarding", "Private instruction", "Safety skills", "St. Croix"],
+    sourceUrl: "https://www.leadingedgekiteschool.com/",
+    sourceLabel: "Leading Edge Kite School official website and current Visit USVI thrill-seeker guide",
+    verifiedAt: "2026-08-24",
+    availabilityStatus: "operator-listed",
+  },
+  {
+    id: "stx-cruzan-rum-distillery-tour",
+    name: "Cruzan Rum Distillery Tour",
+    operator: "Cruzan Rum Distillery",
+    category: "distillery",
+    kind: "tour",
+    island: "stx",
+    location: "Estate Diamond, Frederiksted, St. Croix",
+    duration: "About 30 minutes",
+    summary:
+      "A guided look at Cruzan's St. Croix rum-making and aging process, connecting the historic Estate Diamond operation with the island's long rum tradition.",
+    highlights: ["Rum making", "Distillery history", "Aging process", "Estate Diamond"],
+    sourceUrl: "https://www.visitusvi.com/listing/st-croix/4165/cruzan-rum-distillery/",
+    sourceLabel: "Visit USVI current Cruzan Rum listing and distillery guide",
+    verifiedAt: "2026-08-24",
+    availabilityStatus: "operator-listed",
+  },
+  {
+    id: "stx-sion-farm-distillery-tour",
+    name: "Mutiny Island Vodka Distillery Tour",
+    operator: "Sion Farm Distillery",
+    category: "distillery",
+    kind: "tour",
+    island: "stx",
+    location: "Sion Farm, St. Croix",
+    duration: "Varies",
+    summary:
+      "A behind-the-scenes look at the zero-waste Sion Farm Distillery and its breadfruit-based Mutiny Island Vodka, followed by the operator's tasting-room experience.",
+    highlights: ["Breadfruit vodka", "Distilling process", "Zero-waste facility", "Sion Farm"],
+    sourceUrl: "https://www.visitusvi.com/listing/st-croix/326398/sion-farm-distillery-mutiny-island-vodka/",
+    sourceLabel: "Visit USVI current Sion Farm Distillery listing and distillery guide",
+    verifiedAt: "2026-08-24",
+    availabilityStatus: "operator-listed",
+  },
 ];
 
 export const BOOKABLE_EXPERIENCES: BookableExperience[] = [
@@ -148,8 +224,11 @@ export const BOOKABLE_EXPERIENCES: BookableExperience[] = [
   ...CURRENT_ACTIVITY_ADDITIONS,
 ];
 
-export const ACTIVITY_CATEGORY_LABELS: Record<ActivityCategory, string> =
-  CORE_ACTIVITY_CATEGORY_LABELS;
+export const ACTIVITY_CATEGORY_LABELS: Record<ActivityCategory, string> = {
+  ...CORE_ACTIVITY_CATEGORY_LABELS,
+  kiteboarding: "Kiteboarding & kitesurfing",
+  distillery: "Distillery tours",
+};
 
 export const ACTIVITY_COVERAGE_SOURCES = [
   ...CORE_ACTIVITY_COVERAGE_SOURCES,
@@ -181,7 +260,25 @@ export const ACTIVITY_COVERAGE_SOURCES = [
     id: "visit-usvi-thrill-seekers",
     label: "Visit USVI Thrill-Seeker Excursions",
     url: "https://www.visitusvi.com/experience/adventures-for-thrill-seekers/",
-    scope: "Current named high-adventure operators including St. Croix scuba excursions",
+    scope: "Current named high-adventure operators including St. Croix scuba and kiteboarding experiences",
+  },
+  {
+    id: "kite-vi",
+    label: "Kiteboarding VI",
+    url: "https://www.kite.vi/",
+    scope: "Current St. Thomas kiteboarding, kitesurfing, wing-foiling, and private kite-trip coverage",
+  },
+  {
+    id: "leading-edge-kite-school",
+    label: "The Leading Edge Kite School",
+    url: "https://www.leadingedgekiteschool.com/",
+    scope: "Current St. Croix private kiteboarding instruction and supported riding",
+  },
+  {
+    id: "visit-usvi-distilleries",
+    label: "Visit USVI Distilleries & Breweries",
+    url: "https://www.visitusvi.com/experience/drink-local-usvi-distilleries-breweries/",
+    scope: "Current Cruzan Rum and Sion Farm Distillery visitor-tour coverage",
   },
 ] as const;
 
@@ -194,6 +291,10 @@ export const CURRENT_DESTINATION_ACTIVITY_OPERATORS = [
   "SeaHorse Water Taxi",
   "West End Water Sports",
   "Adventures in Diving STX",
+  "Kiteboarding VI",
+  "The Leading Edge Kite School",
+  "Cruzan Rum Distillery",
+  "Sion Farm Distillery",
 ] as const;
 
 export function getActivityCoverage() {
