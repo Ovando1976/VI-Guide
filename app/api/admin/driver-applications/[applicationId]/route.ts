@@ -1,3 +1,4 @@
+import { FieldValue } from "firebase-admin/firestore";
 import { NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
@@ -50,17 +51,34 @@ export async function PATCH(
 
     if (action === "request_changes" || action === "reject") {
       const now = new Date().toISOString();
-      await applicationRef.set(
+      const nextStatus =
+        action === "request_changes" ? "changes_requested" : "rejected";
+      const batch = db.batch();
+      batch.set(
+        applicationRef,
         {
-          status: action === "request_changes" ? "changes_requested" : "rejected",
+          status: nextStatus,
           reviewNote: reviewNote || null,
           reviewedAt: now,
           reviewedBy: admin.uid,
           updatedAt: now,
+          serverUpdatedAt: FieldValue.serverTimestamp(),
         },
         { merge: true },
       );
-      return NextResponse.json({ ok: true, status: action });
+      batch.set(db.collection("driverApplicationAudit").doc(), {
+        action,
+        applicationId,
+        previousStatus: application.status ?? "pending",
+        nextStatus,
+        reviewNote: reviewNote || null,
+        actorUid: admin.uid,
+        actorEmail: admin.email ?? null,
+        createdAt: now,
+        serverCreatedAt: FieldValue.serverTimestamp(),
+      });
+      await batch.commit();
+      return NextResponse.json({ ok: true, status: nextStatus });
     }
 
     const driverId = clean(body.driverId, 128) || applicationId;
@@ -97,10 +115,8 @@ export async function PATCH(
 
     const vehicle = vehicleSnapshot.data() as Record<string, unknown>;
     const association = associationSnapshot.data() as Record<string, unknown>;
-    const associationIsActive =
-      association.status === "active" || association.active === true;
-    if (!associationIsActive) {
-      return NextResponse.json({ error: "Taxi association is inactive." }, { status: 409 });
+    if (association.status !== "active") {
+      return NextResponse.json({ error: "Taxi association is not active." }, { status: 409 });
     }
     if (
       vehicle.active !== true ||
@@ -156,7 +172,9 @@ export async function PATCH(
       driverId,
     });
 
-    await applicationRef.set(
+    const batch = db.batch();
+    batch.set(
+      applicationRef,
       {
         status: "approved",
         driverId,
@@ -167,9 +185,25 @@ export async function PATCH(
         reviewedBy: admin.uid,
         reviewNote: reviewNote || null,
         updatedAt: now,
+        serverUpdatedAt: FieldValue.serverTimestamp(),
       },
       { merge: true },
     );
+    batch.set(db.collection("driverApplicationAudit").doc(), {
+      action: "approved",
+      applicationId,
+      previousStatus: application.status ?? "pending",
+      nextStatus: "approved",
+      driverId,
+      vehicleId,
+      associationId,
+      reviewNote: reviewNote || null,
+      actorUid: admin.uid,
+      actorEmail: admin.email ?? null,
+      createdAt: now,
+      serverCreatedAt: FieldValue.serverTimestamp(),
+    });
+    await batch.commit();
 
     return NextResponse.json({
       ok: true,

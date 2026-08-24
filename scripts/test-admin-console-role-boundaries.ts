@@ -90,31 +90,30 @@ const intake = read("app/api/drivers/applications/route.ts");
 expectSource(intake, "requireSession()", "driver applications require authentication");
 expectSource(intake, 'session.role !== "rider"', "only rider accounts can self-apply");
 expectSource(intake, 'status: "pending"', "self-service applications start pending");
+expectSource(intake, 'collection("driverApplicationAudit")', "driver applications create an auditable intake event");
+expectSource(intake, 'href: "/admin/driver-applications"', "new driver applications alert operations to the review queue");
 if (intake.includes("setCustomUserClaims")) throw new Error("Driver intake must never grant privileged claims.");
 
 const driverApproval = read("app/api/admin/driver-applications/[applicationId]/route.ts");
 expectSource(driverApproval, 'requireSession(["admin"])', "driver approval remains administrator-only");
 expectSource(driverApproval, "setCustomUserClaims", "driver role is granted only inside trusted admin approval");
 expectSource(driverApproval, 'role: "driver"', "approved account receives driver role");
-expectSource(driverApproval, 'association.status === "active"', "driver approval requires an explicitly active association");
+expectSource(driverApproval, 'association.status !== "active"', "approval requires an active taxi association");
 expectSource(driverApproval, 'vehicle.inspectionStatus !== "active"', "approval requires active vehicle inspection");
 expectSource(driverApproval, 'vehicle.insuranceStatus !== "active"', "approval requires active vehicle insurance");
+expectSource(driverApproval, 'collection("driverApplicationAudit")', "driver review decisions are audited");
 
-const driverApplicationQueue = read("app/api/admin/driver-applications/route.ts");
-expectSource(driverApplicationQueue, 'requireSession(["admin"])', "driver application queue remains administrator-only");
-expectSource(driverApplicationQueue, 'db.collection("driverApplications").get()', "review queue loads applications through server-side admin access");
-expectSource(driverApplicationQueue, 'association.status === "active"', "review queue only offers active taxi associations");
-expectSource(driverApplicationQueue, "dispatchReady", "review queue labels eligible fleet vehicles server-side");
+const driverReviewPage = read("app/admin/driver-applications/page.tsx");
+expectSource(driverReviewPage, 'session.role !== "admin"', "driver application review page remains administrator-only");
+expectSource(driverReviewPage, 'redirect("/unauthorized")', "driver application review rejects non-admin roles");
 
-const taxiOperationsPage = read("app/admin/taxi-operations/page.tsx");
-expectSource(taxiOperationsPage, "DriverApplicationReviewBoard", "Taxi Operations exposes the driver application review queue");
+const driverReviewList = read("app/api/admin/driver-applications/route.ts");
+expectSource(driverReviewList, 'requireSession(["admin"])', "driver application review list remains administrator-only");
+expectSource(driverReviewList, 'association.status === "active"', "review queue exposes only active association choices");
+expectSource(driverReviewList, "dispatchReady", "review queue identifies dispatch-ready fleet choices");
 
-const driverReviewBoard = read("components/driver-application-review-board.tsx");
-expectSource(driverReviewBoard, 'fetch("/api/admin/driver-applications"', "review UI loads the protected admin queue");
-expectSource(driverReviewBoard, 'review("approve")', "review UI exposes trusted approval");
-expectSource(driverReviewBoard, 'review("request_changes")', "review UI can request applicant changes");
-expectSource(driverReviewBoard, 'review("reject")', "review UI can reject an application");
-expectSource(driverReviewBoard, "The driver must sign out and back in", "approval UI communicates custom-claim refresh requirement");
+const adminHome = read("app/admin/page.tsx");
+expectSource(adminHome, 'href: "/admin/driver-applications"', "administrator dashboard links to driver application review");
 
 const driverApplicationForm = read("components/driver-application-form.tsx");
 expectSource(driverApplicationForm, "Apply free. Keep 85% of each eligible ride.", "free signup and driver share are explicit");

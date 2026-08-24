@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
+  BarChart3,
+  CarFront,
   CircleDollarSign,
   Compass,
   FileCheck2,
@@ -9,7 +11,6 @@ import {
   Store,
   UsersRound,
   WalletCards,
-  BarChart3,
 } from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
@@ -68,6 +69,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
 
 const ADMIN_ONLY_ACTIONS: AdminActionDefinition[] = [
   {
+    href: "/admin/driver-applications",
+    icon: CarFront,
+    eyebrow: "Driver onboarding",
+    detail:
+      "Review free driver applications and link only verified operators to compliant association and fleet records.",
+    action: "Review drivers",
+  },
+  {
     href: "/admin/customer-insights",
     icon: BarChart3,
     eyebrow: "Traveler intelligence",
@@ -121,8 +130,8 @@ export default async function DriversPage() {
             <div className="mb-4 rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 text-sm font-semibold leading-6 text-sky-950">
               <strong>Dispatcher workspace.</strong> Operational review, travel
               desks, partner intake, notifications, fleet, and read-only payout
-              review remain available here. Merchant account assignment and
-              financial settlement controls stay administrator-only.
+              review remain available here. Driver approval, merchant account
+              assignment, and financial settlement controls stay administrator-only.
             </div>
           ) : null}
 

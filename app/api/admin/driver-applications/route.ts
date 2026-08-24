@@ -6,16 +6,28 @@ import { getAdminDb } from "@/lib/firebase-admin";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function text(value: unknown, max = 160) {
+const APPLICATION_STATUSES = new Set([
+  "pending",
+  "changes_requested",
+  "approved",
+  "rejected",
+]);
+
+function clean(value: unknown, max = 160) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
-function future(value: unknown) {
+function isFutureDate(value: unknown) {
   return (
     typeof value === "string" &&
     Number.isFinite(Date.parse(value)) &&
     Date.parse(value) > Date.now()
   );
+}
+
+function applicationStatus(value: unknown) {
+  const status = clean(value, 40);
+  return APPLICATION_STATUSES.has(status) ? status : "pending";
 }
 
 export async function GET() {
@@ -24,98 +36,109 @@ export async function GET() {
     const db = getAdminDb();
     const [applicationSnapshot, associationSnapshot, vehicleSnapshot] =
       await Promise.all([
-        db.collection("driverApplications").get(),
-        db.collection("taxiAssociations").get(),
-        db.collection("vehicles").get(),
+        db
+          .collection("driverApplications")
+          .orderBy("updatedAt", "desc")
+          .limit(200)
+          .get(),
+        db.collection("taxiAssociations").limit(200).get(),
+        db.collection("vehicles").limit(500).get(),
       ]);
 
-    const applications = applicationSnapshot.docs
-      .map((doc) => {
-        const value = doc.data() as Record<string, unknown>;
-        return {
-          id: doc.id,
-          status: text(value.status, 32) || "pending",
-          displayName: text(value.displayName, 100),
-          email: text(value.email, 160),
-          phone: text(value.phone, 40),
-          island: text(value.island, 20),
-          taxiCommissionBadgeNumber: text(
-            value.taxiCommissionBadgeNumber,
-            80,
-          ),
-          taxiCommissionBadgeExpiresAt: text(
-            value.taxiCommissionBadgeExpiresAt,
-            32,
-          ),
-          licenseClass: text(value.licenseClass, 40),
-          licenseExpiresAt: text(value.licenseExpiresAt, 32),
-          taxiPlate: text(value.taxiPlate, 40),
-          vehicleDescription: text(value.vehicleDescription, 160),
-          associationName: text(value.associationName, 120),
-          reviewNote: text(value.reviewNote, 500),
-          submittedAt: text(value.submittedAt, 40),
-          updatedAt: text(value.updatedAt, 40),
-          driverId: text(value.driverId, 128),
-          vehicleId: text(value.vehicleId, 128),
-          associationId: text(value.associationId, 128),
-        };
-      })
-      .sort((a, b) => {
-        const rank = (status: string) =>
-          status === "pending" ? 0 : status === "changes_requested" ? 1 : 2;
-        return rank(a.status) - rank(b.status) || b.updatedAt.localeCompare(a.updatedAt);
-      });
+    const applications = applicationSnapshot.docs.map((document) => {
+      const data = document.data();
+      return {
+        id: document.id,
+        displayName: clean(data.displayName, 100) || "Unnamed applicant",
+        email: clean(data.email, 220),
+        phone: clean(data.phone, 40),
+        island: clean(data.island, 20),
+        taxiCommissionBadgeNumber: clean(data.taxiCommissionBadgeNumber, 80),
+        taxiCommissionBadgeExpiresAt: clean(
+          data.taxiCommissionBadgeExpiresAt,
+          32,
+        ),
+        licenseClass: clean(data.licenseClass, 40),
+        licenseExpiresAt: clean(data.licenseExpiresAt, 32),
+        taxiPlate: clean(data.taxiPlate, 40),
+        vehicleDescription: clean(data.vehicleDescription, 160),
+        associationName: clean(data.associationName, 120),
+        status: applicationStatus(data.status),
+        reviewNote: clean(data.reviewNote, 500) || null,
+        submittedAt: clean(data.submittedAt, 40),
+        updatedAt: clean(data.updatedAt, 40),
+        driverId: clean(data.driverId, 128) || null,
+        vehicleId: clean(data.vehicleId, 128) || null,
+        associationId: clean(data.associationId, 128) || null,
+      };
+    });
 
     const associations = associationSnapshot.docs
-      .map((doc) => {
-        const value = doc.data() as Record<string, unknown>;
+      .map((document) => {
+        const data = document.data();
         return {
-          id: doc.id,
-          name: text(value.name, 120) || doc.id,
-          status: text(value.status, 32),
-          islands: Array.isArray(value.islands)
-            ? value.islands.filter((item): item is string => typeof item === "string")
+          id: document.id,
+          name: clean(data.name, 160) || document.id,
+          status: clean(data.status, 40),
+          islands: Array.isArray(data.islands)
+            ? data.islands
+                .map((value: unknown) => clean(value, 20))
+                .filter(Boolean)
             : [],
         };
       })
-      .filter((association) => association.status === "active")
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .filter((association) => association.status === "active");
 
-    const vehicles = vehicleSnapshot.docs
-      .map((doc) => {
-        const value = doc.data() as Record<string, unknown>;
-        const dispatchReady =
-          value.active === true &&
-          text(value.inspectionStatus, 32) === "active" &&
-          future(value.inspectionExpiresAt) &&
-          text(value.insuranceStatus, 32) === "active" &&
-          future(value.insuranceExpiresAt) &&
-          Boolean(text(value.taxiPlate, 40)) &&
-          Boolean(text(value.medallionNumber, 80));
-        return {
-          id: doc.id,
-          associationId: text(value.associationId, 128),
-          driverId: text(value.driverId, 128),
-          taxiPlate: text(value.taxiPlate, 40),
-          medallionNumber: text(value.medallionNumber, 80),
-          make: text(value.make, 80),
-          model: text(value.model, 80),
-          color: text(value.color, 80),
-          inspectionExpiresAt: text(value.inspectionExpiresAt, 32),
-          insuranceExpiresAt: text(value.insuranceExpiresAt, 32),
-          dispatchReady,
-        };
-      })
-      .filter((vehicle) => vehicle.dispatchReady)
-      .sort((a, b) => a.taxiPlate.localeCompare(b.taxiPlate));
+    const vehicles = vehicleSnapshot.docs.map((document) => {
+      const data = document.data();
+      const active = data.active === true;
+      const inspectionCurrent =
+        data.inspectionStatus === "active" &&
+        isFutureDate(data.inspectionExpiresAt);
+      const insuranceCurrent =
+        data.insuranceStatus === "active" &&
+        isFutureDate(data.insuranceExpiresAt);
+      const taxiPlate = clean(data.taxiPlate, 40);
+      const medallionNumber = clean(data.medallionNumber, 80);
+      return {
+        id: document.id,
+        associationId: clean(data.associationId, 128),
+        driverId: clean(data.driverId, 128) || null,
+        taxiPlate,
+        medallionNumber,
+        description:
+          [clean(data.year, 20), clean(data.make, 60), clean(data.model, 60), clean(data.color, 40)]
+            .filter(Boolean)
+            .join(" ") || taxiPlate || document.id,
+        dispatchReady:
+          active &&
+          inspectionCurrent &&
+          insuranceCurrent &&
+          Boolean(taxiPlate) &&
+          Boolean(medallionNumber),
+      };
+    });
 
-    return NextResponse.json({ applications, associations, vehicles });
+    return NextResponse.json({
+      ok: true,
+      applications,
+      associations,
+      vehicles,
+      counts: {
+        pending: applications.filter((item) => item.status === "pending").length,
+        changesRequested: applications.filter(
+          (item) => item.status === "changes_requested",
+        ).length,
+        approved: applications.filter((item) => item.status === "approved").length,
+        rejected: applications.filter((item) => item.status === "rejected").length,
+      },
+    });
   } catch (error) {
     const authResponse = authErrorResponse(error);
     if (authResponse) return authResponse;
-    console.error("driver application admin queue error", error);
+    console.error("driver application admin list error", error);
     return NextResponse.json(
-      { error: "Unable to load the driver application queue." },
+      { error: "Unable to load driver applications." },
       { status: 500 },
     );
   }
