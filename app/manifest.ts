@@ -12,6 +12,20 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#062b3a",
     orientation: "portrait-primary",
     categories: ["travel", "navigation", "lifestyle"],
+    icons: [
+      {
+        src: "/icon",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icon",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
+      },
+    ],
     shortcuts: [
       {
         name: "Ask Concierge",
