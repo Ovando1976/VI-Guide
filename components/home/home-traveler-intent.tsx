@@ -18,9 +18,9 @@ export function HomeTravelerIntent() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-7 lg:px-10 lg:py-16">
         <div className="grid gap-7 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
           <div>
-            <div className="vi-eyebrow text-[#9b5d12]">Start with your situation</div>
-            <h2 className="vi-display mt-3 text-4xl font-bold leading-[.94] sm:text-5xl">What kind of trip are you in right now?</h2>
-            <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">Skip the app menu. Tell USVI Explorer where you are in the journey and we’ll hand that context directly to Concierge.</p>
+            <div className="vi-eyebrow text-[#9b5d12]">Start here</div>
+            <h2 className="vi-display mt-3 text-4xl font-bold leading-[.94] sm:text-5xl">Tell us where you are in the journey.</h2>
+            <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-slate-600">Choose one situation and we’ll pass that context straight into Concierge, so you start with a useful plan instead of another menu.</p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {INTENTS.map(({ id, label, detail, href, icon: Icon, image, alt }) => (

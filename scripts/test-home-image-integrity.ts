@@ -8,6 +8,7 @@ const HOME_SURFACES = [
   "app/experiences/page.tsx",
   "components/home/home-live-status.tsx",
   "components/home/home-concierge-hub.tsx",
+  "components/home/home-traveler-intent.tsx",
 ] as const;
 
 const KNOWN_BAD_MAGENS_PATH = "/images/beaches/st-thomas/magens-bay-1.jpg";
@@ -63,18 +64,34 @@ for (const { path, text } of sources) {
 
 const home = source("app/page.tsx");
 const primaryActions = source("components/home/home-primary-actions.tsx");
-const intentLauncher = source("components/home/home-intent-launcher.tsx");
+const travelerIntent = source("components/home/home-traveler-intent.tsx");
+const conversionHub = source("components/home/home-concierge-hub.tsx");
 
 assert.match(home, /HomePrimaryActions/);
 assert.match(home, /<HomePrimaryActions conciergeHref=\{CONCIERGE_START_HREF\} \/>/);
 assert.match(primaryActions, /href="#traveler-intent"/);
 assert.match(primaryActions, /Start my visit/);
+assert.match(primaryActions, /bg-\[#f5c451\]/);
+assert.match(primaryActions, /Ask Concierge/);
+assert.match(primaryActions, /Explore map/);
 assert.match(primaryActions, /trackAcquisitionEvent\("intent_selected"/);
 assert.match(primaryActions, /trackAcquisitionEvent\("concierge_started"/);
-assert.match(intentLauncher, /id="traveler-intent"/);
-assert.match(intentLauncher, /Where are you in your Virgin Islands journey\?/);
+assert.match(travelerIntent, /id="traveler-intent"/);
+assert.match(travelerIntent, /Start here/);
+assert.match(travelerIntent, /Tell us where you are in the journey\./);
+assert.match(travelerIntent, /Here now/);
+assert.match(travelerIntent, /Arriving soon/);
+assert.match(travelerIntent, /Cruise passenger/);
+assert.match(travelerIntent, /Planning a trip/);
+assert.ok(travelerIntent.includes(VERIFIED_MAGENS_PATH), "Homepage traveler intent must use the verified Magens Bay JPEG");
+assert.doesNotMatch(conversionHub, /One-tap planning|What would you like to do\?/);
+assert.match(conversionHub, /Book & move/);
+assert.match(conversionHub, /High-intent actions/);
+assert.match(conversionHub, /Find experiences/);
+assert.match(conversionHub, /Find a stay/);
+assert.match(conversionHub, /Plan transportation/);
+assert.match(conversionHub, /Compare cars/);
 
-assert.ok(source("components/home/home-concierge-hub.tsx").includes(VERIFIED_MAGENS_PATH), "Homepage Concierge Beach day must use the verified Magens Bay JPEG");
 assert.ok(home.includes(SELECTED_USVI_TAXI_IMAGE), "Homepage Ride card must use the local user-selected white Ford USVI taxi van image");
 assert.match(home, /label: "Ride"[\s\S]{0,360}detail: "Taxi · airport · ferry"/, "Homepage Ride card must explain its taxi, airport, and ferry scope");
 assert.match(home, /label: "Ride"[\s\S]{0,420}icon: CarFront/);
@@ -88,4 +105,4 @@ assert.ok(allImages.has(SELECTED_USVI_TAXI_IMAGE), "Homepage/activity image audi
 assert.ok(allImages.size > 0, "No local homepage/activity images were discovered for integrity validation");
 for (const imagePath of [...allImages].sort()) assertImageSignature(imagePath);
 
-console.log(`USVI Explorer homepage/activity image integrity, local taxi asset, and hero intent handoff passed for ${allImages.size} local images.`);
+console.log(`USVI Explorer homepage conversion hierarchy, image integrity, local taxi asset, and traveler intent handoff passed for ${allImages.size} local images.`);
