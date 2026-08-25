@@ -2,6 +2,14 @@ import assert from "node:assert/strict";
 
 import { jsonBodyErrorMessage, parseJsonBody } from "../lib/api/request";
 import {
+  NDBC_FRESHNESS_MINUTES,
+  maxWindMph,
+  normalizeIslandConditionCode,
+  observationFreshnessMinutes,
+  parseNdbcRealtime,
+  unavailableNdbcObservation,
+} from "../lib/island-conditions";
+import {
   isMerchantCommerceTransition,
   merchantCommerceTransitionError,
   normalizeCommerceLifecycleStatus,
@@ -65,6 +73,45 @@ async function testRequestParsing() {
   if (!invalidJson.ok) {
     assert.equal(jsonBodyErrorMessage(invalidJson), "Request body must contain valid JSON.");
   }
+}
+
+function testIslandConditionFreshness() {
+  assert.equal(normalizeIslandConditionCode("stj"), "stj");
+  assert.equal(normalizeIslandConditionCode("stx"), "stx");
+  assert.equal(normalizeIslandConditionCode("unknown"), "stt");
+  assert.equal(maxWindMph("10 to 18 mph"), 18);
+  assert.equal(maxWindMph(undefined), null);
+  assert.equal(NDBC_FRESHNESS_MINUTES, 120);
+
+  const row = "2026 08 25 16 00 090 5.0 6.0 1.2 8.0 6.0 100 1013.0 30.0 29.0";
+  const fresh = parseNdbcRealtime("stj", row, new Date("2026-08-25T16:30:00.000Z"));
+  assert.equal(fresh.status, "fresh");
+  assert.equal(fresh.station, "41052");
+  assert.equal(fresh.freshnessMinutes, 30);
+  assert.equal(fresh.waveHeightFt, 3.9);
+  assert.equal(fresh.dominantPeriodSeconds, 8);
+  assert.equal(fresh.waterTemperatureF, 84.2);
+
+  const stale = parseNdbcRealtime("stj", row, new Date("2026-08-25T19:00:00.000Z"));
+  assert.equal(stale.status, "stale");
+  assert.equal(stale.freshnessMinutes, 180);
+  assert.equal(stale.waveHeightFt, null, "stale wave values must be withheld as current conditions");
+  assert.equal(stale.dominantPeriodSeconds, null);
+  assert.equal(stale.waterTemperatureF, null);
+
+  const missing = parseNdbcRealtime("stj", "# no observation rows", new Date("2026-08-25T16:30:00.000Z"));
+  assert.equal(missing.status, "unavailable");
+  assert.equal(missing.waveHeightFt, null);
+
+  const unmapped = unavailableNdbcObservation("stt");
+  assert.equal(unmapped.status, "unavailable");
+  assert.equal(unmapped.station, "");
+  assert.equal(unmapped.waveHeightFt, null);
+
+  assert.equal(
+    observationFreshnessMinutes("2026-08-25 16:00", new Date("2026-08-25T16:30:00.000Z")),
+    30,
+  );
 }
 
 function testTimestampNormalization() {
@@ -395,14 +442,15 @@ function testCommerceRefundIntegrity() {
 
 async function main() {
   await testRequestParsing();
+  testIslandConditionFreshness();
   testTimestampNormalization();
   testCommerceCheckoutIntegrity();
   testCommerceLifecycleIntegrity();
   testCommerceRefundIntegrity();
-  console.log("API, payment, and refund contract tests passed.");
+  console.log("API, island conditions, payment, and refund contract tests passed.");
 }
 
 main().catch((error: unknown) => {
-  console.error("API, payment, and refund contract tests failed.", error);
+  console.error("API, island conditions, payment, and refund contract tests failed.", error);
   process.exitCode = 1;
 });
