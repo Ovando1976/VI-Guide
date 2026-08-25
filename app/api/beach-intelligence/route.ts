@@ -194,7 +194,7 @@ async function buildNdbcMarineObservation(island: IslandConditionCode) {
     const text = await fetchText(station.realtimeUrl);
     return parseNdbcRealtime(island, text);
   } catch (error) {
-    console.error("NDBC marine observation lookup failed", error);
+    console.warn("NDBC marine observation unavailable", error);
     return unavailableNdbcObservation(
       island,
       "NDBC does not currently provide a usable recent observation for this station.",
