@@ -7,17 +7,22 @@ function source(path: string) {
 }
 
 const cruiseHub = source("app/cruises/page.tsx");
+const cruiseNav = source("components/cruise/cruise-hub-nav.tsx");
+const activeCruise = source("components/cruise/cruise-active-trip-card.tsx");
+const sailingTripAction = source("components/cruise/cruise-sailing-trip-action.tsx");
 const shoreExcursions = source("app/shore-excursions/page.tsx");
 
 for (const [value, label] of [
   ["ViPublicHeader", "Cruise Hub keeps shared USVI Explorer chrome"],
   ["USVI Explorer Cruise Hub", "Cruise Hub keeps its traveler-facing identity"],
   ["<CruiseHubNav />", "Cruise Hub keeps cruise section navigation"],
+  ["<CruiseActiveTripCard />", "Cruise Hub keeps the selected sailing visible"],
   ["<CruiseInventoryGateway />", "Cruise Hub keeps sailing inventory"],
   ['href="/cruises/port-calls"', "Cruise Hub keeps official port-call access"],
   ['href="/shore-excursions"', "Cruise Hub keeps shore-excursion access"],
   ['href="/cruises/plan"', "Cruise Hub keeps advisor planning access"],
   ['href="/bookings"', "Cruise Hub keeps My Bookings access"],
+  ["Ask Concierge", "Cruise Hub keeps the AI Concierge handoff"],
   ["The connected journey", "Cruise Hub keeps the connected-journey handoff"],
   ['href="/trips"', "Open My Trip uses the canonical traveler workspace"],
   ["Open My Trip", "Cruise Hub keeps the My Trip continuation"],
@@ -32,6 +37,47 @@ assert.doesNotMatch(
   cruiseHub,
   /href="\/planner"[\s\S]{0,240}Open My Trip/,
   "Cruise Hub navigation contract failed: Open My Trip must not route directly to Journey Planner",
+);
+
+for (const [value, label] of [
+  ['href: "/trips"', "Cruise nav exposes canonical My Trip"],
+  ['label: "My Trip"', "Cruise nav labels the canonical traveler workspace"],
+  ['href: "/bookings"', "Cruise nav keeps My Bookings"],
+] as const) {
+  assert.ok(cruiseNav.includes(value), `Cruise nav contract failed: ${label}`);
+}
+
+for (const [value, label] of [
+  ["Selected cruise", "Selected cruise card keeps the traveler in context"],
+  ["readSelectedCruiseTrip", "Selected cruise card reads canonical sailing state"],
+  ["CRUISE_TRIP_UPDATED_EVENT", "Selected cruise card reacts immediately to sailing selection"],
+  ["buildShoreExcursionHref", "Selected cruise card preserves cruise context into the first port day"],
+  ['href="/trips"', "Selected cruise card routes My Trip canonically"],
+  ["Ask Concierge", "Selected cruise card keeps AI planning available"],
+  ["Ship-clock protection", "Selected cruise card keeps the onboard all-aboard warning visible"],
+] as const) {
+  assert.ok(activeCruise.includes(value), `Selected cruise contract failed: ${label}`);
+}
+assert.doesNotMatch(
+  activeCruise,
+  /href="\/planner"/,
+  "Selected cruise card must never route My Trip to the legacy planner path",
+);
+
+assert.match(
+  sailingTripAction,
+  /href="\/trips"/,
+  "Selecting a sailing must hand off to canonical My Trip",
+);
+assert.match(
+  sailingTripAction,
+  /My Trip/,
+  "Selecting a sailing must keep the My Trip continuation visible",
+);
+assert.doesNotMatch(
+  sailingTripAction,
+  /href="\/planner"/,
+  "Selecting a sailing must not route My Trip to the legacy planner path",
 );
 
 for (const [value, label] of [

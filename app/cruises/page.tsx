@@ -9,10 +9,12 @@ import {
   LifeBuoy,
   Route,
   ShipWheel,
+  Sparkles,
   TicketCheck,
 } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { CruiseActiveTripCard } from "@/components/cruise/cruise-active-trip-card";
 import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gateway";
 
@@ -21,6 +23,9 @@ export const metadata: Metadata = {
   description:
     "Plan the cruise, verify USVI port calls, match capacity-aware shore excursions, request advisor help, and keep the trip connected inside one USVI Explorer cruise hub.",
 };
+
+const CRUISE_CONCIERGE_HREF =
+  "/concierge?open=true&prompt=Help%20me%20plan%20my%20cruise%20and%20USVI%20port%20days%20around%20my%20ship%20schedule";
 
 export default function CruisesPage() {
   return (
@@ -67,6 +72,12 @@ export default function CruisesPage() {
                 >
                   Plan my port day <Compass className="h-4 w-4 text-[#f5c451]" />
                 </Link>
+                <Link
+                  href={CRUISE_CONCIERGE_HREF}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[.08] px-6 text-[9px] font-black uppercase tracking-[.14em] text-white"
+                >
+                  Ask Concierge <Sparkles className="h-4 w-4 text-[#f5c451]" />
+                </Link>
               </div>
             </div>
 
@@ -98,6 +109,10 @@ export default function CruisesPage() {
 
       <div className="mt-6">
         <CruiseHubNav />
+      </div>
+
+      <div className="mt-6">
+        <CruiseActiveTripCard />
       </div>
 
       <section className="px-4 py-8 sm:px-6 lg:py-10">

@@ -7,6 +7,7 @@ import {
   CalendarSearch,
   Compass,
   LifeBuoy,
+  Route,
   ShipWheel,
   TicketCheck,
 } from "lucide-react";
@@ -37,6 +38,7 @@ const ITEMS = [
     icon: LifeBuoy,
     route: "/cruises/plan",
   },
+  { href: "/trips", label: "My Trip", icon: Route, route: "/trips" },
   { href: "/bookings", label: "My bookings", icon: TicketCheck, route: "/bookings" },
 ] as const;
 
