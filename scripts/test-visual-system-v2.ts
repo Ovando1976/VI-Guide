@@ -60,10 +60,12 @@ assert.match(homeConcierge, /PROMPTS\.map\(\(\{ label, href, image, alt, icon: I
 assert.match(homeConcierge, /One-tap idea/);
 assert.match(homeConcierge, /king-christian-hotel\.jpg/);
 assert.match(homeLiveStatus, /STATUS_ITEMS\.map\(\(\{ label, value, icon: Icon, href, image, alt, tag \}\)/);
-assert.match(homeLiveStatus, /Today in the Virgin Islands/);
+assert.match(homeLiveStatus, /Current island intelligence/);
+assert.match(homeLiveStatus, /HomeFerryIntelligence/);
+assert.match(homeLiveStatus, /Official-source ferry schedules come first/);
 assert.match(homeLiveStatus, /Open in USVI Explorer/);
-assert.match(homeLiveStatus, /red-hook-ferry-terminal-1\.jpg/);
-assert.match(homeLiveStatus, /magens-bay-beach-1\.jpg/);
+assert.match(homeLiveStatus, /usvi-harbor-hero\.jpg/);
+assert.match(homeLiveStatus, /trunk-bay-overlook-1\.jpg/);
 assert.doesNotMatch(homeLiveStatus, /images\/beaches\/st-thomas\/magens-bay-1\.jpg/);
 
 assert.match(mapPage, /ViPublicHeader/);
