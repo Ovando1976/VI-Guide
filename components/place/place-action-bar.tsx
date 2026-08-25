@@ -47,6 +47,9 @@ export function PlaceActionBar({
     bookingHref,
   });
   const tripStop = journeyStop ?? fallbackJourneyStop;
+  const mobilityRideParams = rideHref?.startsWith("/mobility")
+    ? new URLSearchParams((rideHref.split("?")[1] ?? "").split("#")[0])
+    : null;
   const resolvedRideHref = rideHref?.startsWith("/mobility")
     ? buildMobilityRideHref({
         name: tripStop.title,
@@ -54,6 +57,7 @@ export function PlaceActionBar({
         type: tripStop.kind,
         lat: tripStop.lat,
         lng: tripStop.lng,
+        estateGeoid: mobilityRideParams?.get("to"),
         source: tripStop.kind === "beach" ? "beach" : "place",
         returnTo: tripStop.href,
       })

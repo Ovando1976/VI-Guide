@@ -10,6 +10,18 @@ const stayActionCard = fs.readFileSync(
   path.join(root, "components/stay-action-card.tsx"),
   "utf8",
 );
+const directoryDetail = fs.readFileSync(
+  path.join(root, "components/directory/directory-detail-screen.tsx"),
+  "utf8",
+);
+const placeActionBar = fs.readFileSync(
+  path.join(root, "components/place/place-action-bar.tsx"),
+  "utf8",
+);
+const rideLinks = fs.readFileSync(
+  path.join(root, "lib/mobility/ride-links.ts"),
+  "utf8",
+);
 const mobilityScreen = fs.readFileSync(
   path.join(root, "components/mobility-booking-screen.tsx"),
   "utf8",
@@ -52,6 +64,19 @@ for (const [value, label] of [
 }
 
 for (const [value, label] of [
+  ['if (item.estateGeoid) params.set("to", item.estateGeoid)', "place and beach details start with the exact canonical destination GEOID"],
+  ['const mobilityRideParams = rideHref?.startsWith("/mobility")', "place action bar reads the exact incoming Mobility destination context"],
+  ['estateGeoid: mobilityRideParams?.get("to")', "place action bar preserves the canonical destination GEOID when rebuilding the ride link"],
+] as const) {
+  expectSource(value.startsWith("if (item.estateGeoid)") ? directoryDetail : placeActionBar, value, label);
+}
+expectSource(
+  rideLinks,
+  'if (target.estateGeoid?.trim()) params.set("to", target.estateGeoid.trim().slice(0, 180))',
+  "shared ride-link builder forwards canonical estate GEOIDs to Mobility",
+);
+
+for (const [value, label] of [
   ['searchParams.get("to")', "Mobility still consumes the canonical destination geoid key"],
   ['searchParams.get("destinationName") ?? searchParams.get("destination")', "Mobility still accepts an exact official estate-name handoff"],
   ['namedMatches.length === 1', "Mobility requires an unambiguous exact official estate-name match"],
@@ -91,4 +116,4 @@ if (stayPage.includes('rideParams.set("toGeoid"')) {
   throw new Error("Stay mobility handoff contract failed: obsolete toGeoid parameter returned");
 }
 
-console.log("USVI Explorer stay-to-Mobility handoff contracts passed.");
+console.log("USVI Explorer stay/place-to-Mobility handoff contracts passed.");
