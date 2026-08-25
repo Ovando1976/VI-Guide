@@ -10,6 +10,9 @@ const checkoutLayout = source("app/checkout/layout.tsx");
 const checkoutLanding = source("app/checkout/page.tsx");
 const rideCheckout = source("app/checkout/[bookingId]/page.tsx");
 const checkoutForm = source("components/checkout-form.tsx");
+const checkoutTripWriteback = source(
+  "components/checkout/checkout-trip-writeback.tsx",
+);
 const tripAwareMobilityHandoff = source(
   "components/mobility/trip-aware-mobility-handoff.tsx",
 );
@@ -48,6 +51,15 @@ assert.match(checkoutForm, /readPendingMobilityTripPlanId/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("trip", journeyPlanId\)/);
 assert.match(checkoutForm, /clearPendingMobilityTripPlanId/);
 assert.match(checkoutForm, /Pay & start driver matching/);
+
+assert.match(checkoutTripWriteback, /readPendingMobilityTripPlanId/);
+assert.match(checkoutTripWriteback, /mobility_booking_\$\{bookingId\}/);
+assert.match(checkoutTripWriteback, /upsertJourneyPlan\(updated\)/);
+assert.doesNotMatch(
+  checkoutTripWriteback,
+  /window\.sessionStorage\.removeItem/,
+  "checkout writeback must not clear trip context before Stripe builds its return URL",
+);
 
 assert.match(mobilityTripContinuity, /PENDING_MOBILITY_TRIP_KEY/);
 assert.match(mobilityTripContinuity, /JOURNEY_PLAN_ID_PATTERN/);

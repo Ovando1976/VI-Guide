@@ -9,6 +9,8 @@ import {
   rememberPendingMobilityTripPlanId,
 } from "@/lib/mobility-trip-continuity";
 
+export { PENDING_MOBILITY_TRIP_KEY } from "@/lib/mobility-trip-continuity";
+
 function hasCoordinatePair(lat: string | null, lng: string | null) {
   return Boolean(lat?.trim() && lng?.trim());
 }

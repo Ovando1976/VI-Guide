@@ -7,7 +7,10 @@ import {
   upsertJourneyPlan,
   type JourneyPlan,
 } from "@/lib/journey-planner";
-import { PENDING_MOBILITY_TRIP_KEY } from "@/components/mobility/trip-aware-mobility-handoff";
+import {
+  clearPendingMobilityTripPlanId,
+  readPendingMobilityTripPlanId,
+} from "@/lib/mobility-trip-continuity";
 
 type CheckoutTripBooking = {
   island?: string;
@@ -25,18 +28,19 @@ export function CheckoutTripWriteback({ bookingId, booking }: Props) {
   useEffect(() => {
     if (!bookingId || !booking) return;
 
-    const tripId = window.sessionStorage.getItem(PENDING_MOBILITY_TRIP_KEY)?.trim();
+    const tripId = readPendingMobilityTripPlanId();
     if (!tripId) return;
 
     const plan = readJourneyPlans().find((candidate) => candidate.id === tripId);
     if (!plan) {
-      window.sessionStorage.removeItem(PENDING_MOBILITY_TRIP_KEY);
+      clearPendingMobilityTripPlanId();
       return;
     }
 
     const stopId = `mobility_booking_${bookingId}`.slice(0, 160);
     if (plan.plan.some((stop) => stop.id === stopId)) {
-      window.sessionStorage.removeItem(PENDING_MOBILITY_TRIP_KEY);
+      // Keep the trip context until checkout finishes so Stripe can return to
+      // this exact JourneyPlan even when the ride stop was already written.
       return;
     }
 
@@ -66,7 +70,8 @@ export function CheckoutTripWriteback({ bookingId, booking }: Props) {
     };
 
     upsertJourneyPlan(updated);
-    window.sessionStorage.removeItem(PENDING_MOBILITY_TRIP_KEY);
+    // CheckoutForm clears the pending trip only after successful payment.
+    // Until then it is needed to build Stripe's exact My Trip return URL.
   }, [booking, bookingId]);
 
   return null;
