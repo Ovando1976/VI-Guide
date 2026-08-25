@@ -33,3 +33,15 @@ export function buildPublicPageMetadata({
     },
   };
 }
+
+export function buildPublicPageLayoutMetadata(
+  input: PublicPageMetadataInput,
+): Metadata {
+  return {
+    ...buildPublicPageMetadata(input),
+    title: {
+      default: input.title,
+      template: "%s",
+    },
+  };
+}

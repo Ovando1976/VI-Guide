@@ -2,6 +2,14 @@ import type { ReactNode } from "react";
 import { ShipWheel } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { buildPublicPageLayoutMetadata } from "@/lib/public-page-metadata";
+
+export const metadata = buildPublicPageLayoutMetadata({
+  title: "Shore Excursions",
+  description:
+    "Book U.S. Virgin Islands shore excursions designed around official cruise port calls, operator capacity, all-aboard times, and conservative return-to-ship buffers.",
+  path: "/shore-excursions",
+});
 
 export default function ShoreExcursionsLayout({
   children,

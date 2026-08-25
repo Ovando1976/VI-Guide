@@ -29,13 +29,11 @@ export const metadata: Metadata = {
   description:
     "Discover beaches, stays, culture, dining and transportation, then turn local insight into one connected U.S. Virgin Islands trip.",
   manifest: "/manifest.webmanifest",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "USVI Explorer",
     title: "USVI Explorer — Your Smart Virgin Islands Travel Companion",
     description: "Discover, plan and move through St. Thomas, St. John and St. Croix with one connected local travel companion.",
-    url: "/",
   },
   appleWebApp: {
     capable: true,
