@@ -8,6 +8,10 @@ const workspace = readFileSync(
   resolve(root, "components/intelligence/ai-trip-brief-screen.tsx"),
   "utf8",
 );
+const conditionsBrief = readFileSync(
+  resolve(root, "components/intelligence/island-conditions-brief.tsx"),
+  "utf8",
+);
 
 assert.match(todayPage, /<main\b/);
 assert.equal(
@@ -18,6 +22,7 @@ assert.equal(
 assert.match(todayPage, /<ViPublicHeader/);
 assert.match(todayPage, /actionHref="\/trips"/);
 assert.match(todayPage, /secondaryHref="\/planner"/);
+assert.match(todayPage, /<IslandConditionsBrief island=\{island\} \/>/);
 assert.match(todayPage, /<AiTripBriefScreen initialIsland=\{island\} \/>/);
 assert.match(todayPage, /<ProactiveTripIntelligence mode="banner" islandOverride=\{island\} \/>/);
 assert.doesNotMatch(
@@ -25,6 +30,16 @@ assert.doesNotMatch(
   /today-brief-shell|<style>/,
   "My Day must not depend on shell-hiding CSS workarounds",
 );
+
+assert.match(conditionsBrief, /\/api\/beach-intelligence\?island=\$\{island\}/);
+assert.match(conditionsBrief, /Official conditions now/);
+assert.match(conditionsBrief, /NWS forecast/);
+assert.match(conditionsBrief, /NWS alerts/);
+assert.match(conditionsBrief, /NOAA \/ NDBC coast/);
+assert.match(conditionsBrief, /No fresh governed wave reading/);
+assert.match(conditionsBrief, /does not turn missing or stale marine data into a beach-safety rating/);
+assert.match(conditionsBrief, /Forecast ≠ observation · Observation ≠ safety rating/);
+assert.doesNotMatch(conditionsBrief, /safe to swim|safe beach|calm water|ferry is on time/i);
 
 assert.doesNotMatch(
   workspace,

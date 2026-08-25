@@ -3,6 +3,7 @@ import { Route } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { AiTripBriefScreen } from "@/components/intelligence/ai-trip-brief-screen";
+import { IslandConditionsBrief } from "@/components/intelligence/island-conditions-brief";
 import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 import { normalizeActiveIsland } from "@/lib/active-island";
 
@@ -35,6 +36,7 @@ export default function TodayPage({
       </div>
 
       <ProactiveTripIntelligence mode="banner" islandOverride={island} />
+      <IslandConditionsBrief island={island} />
       <AiTripBriefScreen initialIsland={island} />
     </main>
   );
