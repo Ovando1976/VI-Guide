@@ -80,6 +80,23 @@ for (const [value, label] of [
   ['searchParams.get("to")', "Mobility still consumes the canonical destination geoid key"],
   ['searchParams.get("destinationName") ?? searchParams.get("destination")', "Mobility still accepts an exact official estate-name handoff"],
   ['namedMatches.length === 1', "Mobility requires an unambiguous exact official estate-name match"],
+  ['case "living-map":', "Mobility identifies Living Map handoffs"],
+  ['return "Destination from Living Map"', "Mobility labels Living Map destinations accurately"],
+  ['case "beach":', "Mobility identifies beach handoffs"],
+  ['return "Destination from Beaches"', "Mobility labels beach destinations accurately"],
+  ['case "place":', "Mobility identifies Explore/place handoffs"],
+  ['return "Destination from Explore"', "Mobility labels Explore destinations accurately"],
+  ['case "stay":', "Mobility identifies stay handoffs"],
+  ['return "Destination from Stays"', "Mobility labels stay destinations accurately"],
+  ['case "historic":', "Mobility identifies heritage handoffs"],
+  ['return "Destination from Heritage"', "Mobility labels heritage destinations accurately"],
+  ['case "planner":', "Mobility identifies planner handoffs"],
+  ['return "Destination from My Trip"', "Mobility labels planner destinations as My Trip"],
+  ['case "concierge":', "Mobility recognizes explicit Concierge handoffs"],
+  ['return "Destination from VI Concierge"', "Mobility only claims Concierge when the source says Concierge"],
+  ['return hasTrip ? "Destination from My Trip" : "Destination selected for your ride"', "Mobility uses a truthful neutral fallback and honors trip continuity"],
+  ['secondaryHref="/trips"', "Mobility keeps My Trip in the persistent header"],
+  ['secondaryLabel="My Trip"', "Mobility labels the persistent trip action correctly"],
 ] as const) {
   expectSource(mobilityScreen, value, label);
 }

@@ -86,6 +86,28 @@ function estateFromHandoff(
   return namedMatches.length === 1 ? namedMatches[0] : null;
 }
 
+function destinationHandoffLabel(source: string | null, hasTrip: boolean) {
+  switch (source) {
+    case "living-map":
+      return "Destination from Living Map";
+    case "beach":
+      return "Destination from Beaches";
+    case "place":
+      return "Destination from Explore";
+    case "stay":
+      return "Destination from Stays";
+    case "historic":
+      return "Destination from Heritage";
+    case "planner":
+      return "Destination from My Trip";
+    case "concierge":
+      return "Destination from VI Concierge";
+    default:
+      if (source) return "Destination from USVI Explorer";
+      return hasTrip ? "Destination from My Trip" : "Destination selected for your ride";
+  }
+}
+
 export function MobilityBookingScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -250,10 +272,10 @@ export function MobilityBookingScreen() {
       searchParams.get("destination")
     )?.trim() || null;
   const handoffSource = searchParams.get("source")?.trim() || null;
-  const destinationSourceLabel =
-    handoffSource === "living-map"
-      ? "Destination from Living Map"
-      : "Destination from VI Concierge";
+  const destinationSourceLabel = destinationHandoffLabel(
+    handoffSource,
+    searchParams.has("trip"),
+  );
   const islandVisual = ISLAND_VISUALS[activeIsland];
 
   function selectFrom(geoid: string) {
@@ -291,8 +313,8 @@ export function MobilityBookingScreen() {
           actionHref="/concierge?prompt=Help%20me%20plan%20transportation%20for%20my%20Virgin%20Islands%20trip"
           actionLabel="Ask VI Concierge"
           actionIcon={Sparkles}
-          secondaryHref="/"
-          secondaryLabel="Home"
+          secondaryHref="/trips"
+          secondaryLabel="My Trip"
         />
 
         <section className="relative min-h-[360px] overflow-hidden rounded-[36px] text-white shadow-[0_28px_90px_rgba(4,51,49,.24)]">
