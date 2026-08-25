@@ -4,8 +4,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 import { readJourneyPlans } from "@/lib/journey-planner";
-
-export const PENDING_MOBILITY_TRIP_KEY = "vi-guide.pending-mobility-trip";
+import {
+  clearPendingMobilityTripPlanId,
+  rememberPendingMobilityTripPlanId,
+} from "@/lib/mobility-trip-continuity";
 
 function hasCoordinatePair(lat: string | null, lng: string | null) {
   return Boolean(lat?.trim() && lng?.trim());
@@ -18,8 +20,8 @@ function hasCoordinatePair(lat: string | null, lng: string | null) {
  * human-readable endpoint names. When the saved plan has coordinates, enrich
  * the URL once so the existing Mobility resolver can select the intended
  * pickup and destination much more precisely. The trip id is also remembered
- * for the immediate checkout handoff so a created ride can be written back to
- * this same JourneyPlan without introducing another trip store.
+ * for the immediate checkout return so My Trip can re-select this exact
+ * JourneyPlan after payment without introducing another trip store.
  */
 export function TripAwareMobilityHandoff() {
   const router = useRouter();
@@ -27,11 +29,17 @@ export function TripAwareMobilityHandoff() {
 
   useEffect(() => {
     const tripId = searchParams.get("trip")?.trim();
-    if (!tripId) return;
+    if (!tripId) {
+      clearPendingMobilityTripPlanId();
+      return;
+    }
 
-    window.sessionStorage.setItem(PENDING_MOBILITY_TRIP_KEY, tripId);
+    const rememberedTripId = rememberPendingMobilityTripPlanId(tripId);
+    if (!rememberedTripId) return;
 
-    const plan = readJourneyPlans().find((candidate) => candidate.id === tripId);
+    const plan = readJourneyPlans().find(
+      (candidate) => candidate.id === rememberedTripId,
+    );
     if (!plan?.plan.length) return;
 
     const first = plan.plan[0];

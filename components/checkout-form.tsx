@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 import { trackAcquisitionEvent } from "@/lib/acquisition-client";
+import {
+  clearPendingMobilityTripPlanId,
+  readPendingMobilityTripPlanId,
+} from "@/lib/mobility-trip-continuity";
 
 export function CheckoutForm({ bookingId }: { bookingId: string }) {
   const stripe = useStripe();
@@ -25,6 +29,8 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
     const returnUrl = new URL("/trips", window.location.origin);
     returnUrl.searchParams.set("booking", bookingId);
     returnUrl.searchParams.set("payment", "return");
+    const journeyPlanId = readPendingMobilityTripPlanId();
+    if (journeyPlanId) returnUrl.searchParams.set("trip", journeyPlanId);
 
     try {
       const { error } = await stripe.confirmPayment({
@@ -41,6 +47,7 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
       // This records a successful client confirmation. Financial truth remains
       // the server-side Stripe verification/webhook lifecycle.
       trackAcquisitionEvent("purchase_completed", { bookingId, product: "ride" });
+      clearPendingMobilityTripPlanId();
       window.location.assign(returnUrl.toString());
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Secure payment could not be completed.");

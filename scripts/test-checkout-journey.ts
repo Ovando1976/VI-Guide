@@ -10,6 +10,13 @@ const checkoutLayout = source("app/checkout/layout.tsx");
 const checkoutLanding = source("app/checkout/page.tsx");
 const rideCheckout = source("app/checkout/[bookingId]/page.tsx");
 const checkoutForm = source("components/checkout-form.tsx");
+const tripAwareMobilityHandoff = source(
+  "components/mobility/trip-aware-mobility-handoff.tsx",
+);
+const mobilityTripContinuity = source("lib/mobility-trip-continuity.ts");
+const travelerTripCommandCenter = source(
+  "components/trips/traveler-trip-command-center.tsx",
+);
 
 assert.match(checkoutLayout, /ViPublicHeader/);
 assert.match(checkoutLayout, /actionHref="\/bookings"/);
@@ -37,6 +44,18 @@ assert.match(checkoutForm, /stripe\.confirmPayment/);
 assert.match(checkoutForm, /returnUrl = new URL\("\/trips"/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("booking", bookingId\)/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("payment", "return"\)/);
+assert.match(checkoutForm, /readPendingMobilityTripPlanId/);
+assert.match(checkoutForm, /returnUrl\.searchParams\.set\("trip", journeyPlanId\)/);
+assert.match(checkoutForm, /clearPendingMobilityTripPlanId/);
 assert.match(checkoutForm, /Pay & start driver matching/);
+
+assert.match(mobilityTripContinuity, /PENDING_MOBILITY_TRIP_KEY/);
+assert.match(mobilityTripContinuity, /JOURNEY_PLAN_ID_PATTERN/);
+assert.match(tripAwareMobilityHandoff, /rememberPendingMobilityTripPlanId\(tripId\)/);
+assert.match(tripAwareMobilityHandoff, /clearPendingMobilityTripPlanId\(\)/);
+assert.match(
+  travelerTripCommandCenter,
+  /new URLSearchParams\(window\.location\.search\)\.get\("trip"\)/,
+);
 
 console.log("USVI Explorer checkout journey boundary contracts passed.");
