@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpenText, CalendarDays, Clock3, Sparkles } from "lucide-react";
 
 import { HomeFerryIntelligence } from "@/components/home/home-ferry-intelligence";
+import { HomeIslandConditions } from "@/components/home/home-island-conditions";
 
 const STATUS_ITEMS = [
   {
@@ -38,7 +39,7 @@ export function HomeLiveStatus() {
               Know what is published before you move.
             </h2>
             <p className="mt-2 max-w-3xl text-xs font-semibold leading-5 text-slate-500 sm:text-sm sm:leading-6">
-              Official-source ferry schedules come first. Weather, marine conditions, and operating-status badges will appear only when an authoritative current feed supports them.
+              Official-source ferry schedules, NWS forecasts and alerts, and freshness-gated NOAA/NDBC observations. Operating-status or safety badges appear only when an authoritative current source actually supports them.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -62,6 +63,8 @@ export function HomeLiveStatus() {
             </Link>
           </div>
         </div>
+
+        <HomeIslandConditions />
 
         <div className="grid gap-px bg-[#dce8e4] xl:grid-cols-[1.35fr_.65fr]">
           <HomeFerryIntelligence />
