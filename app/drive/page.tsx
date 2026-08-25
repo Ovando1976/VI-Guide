@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, CarFront, ShieldCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Drive with USVI Explorer",
+  title: "Drive with Us",
   description:
     "Apply free to drive with USVI Explorer. Verified taxi credentials and compliance approval are required before ride access is activated.",
 };
