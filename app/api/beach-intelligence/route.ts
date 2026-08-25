@@ -56,9 +56,10 @@ async function buildNwsWeather(island: IslandConditionCode) {
 
   const forecastJson = await fetchJson(forecastUrl);
   const forecastProperties = asRecord(forecastJson.properties);
-  const periods = Array.isArray(forecastProperties?.periods)
-    ? forecastProperties.periods
-    : [];
+  const periods =
+    forecastProperties && Array.isArray(forecastProperties.periods)
+      ? forecastProperties.periods
+      : [];
   const period = periods[0] as NwsPeriod | undefined;
   if (!period) throw new Error("NWS did not return a current forecast period.");
 
