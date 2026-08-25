@@ -124,7 +124,6 @@ export function OrchestratedConciergeScreen() {
     if (!prompt) return;
     setDraft(prompt);
 
-    if (searchParams.get("open") !== "true") return;
     const autoStartKey = `${resolvedIsland}:${prompt}`;
     if (autoStartedPromptRef.current === autoStartKey) return;
     autoStartedPromptRef.current = autoStartKey;
@@ -136,6 +135,14 @@ export function OrchestratedConciergeScreen() {
       });
     });
     void run(prompt, resolvedIsland);
+
+    const cleanedParams = new URLSearchParams(searchParams.toString());
+    cleanedParams.delete("prompt");
+    cleanedParams.delete("open");
+    cleanedParams.set("concierge", "open");
+    const query = cleanedParams.toString();
+    router.replace(query ? `/concierge?${query}` : "/concierge", { scroll: false });
+
     // `autoStartedPromptRef` makes each deep link idempotent while allowing a new URL prompt to run.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
