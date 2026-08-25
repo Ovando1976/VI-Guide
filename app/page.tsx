@@ -22,7 +22,6 @@ import {
   Search,
   Ship,
   Sparkles,
-  Star,
   SunMedium,
   UtensilsCrossed,
   Waves,
@@ -84,7 +83,7 @@ const NAV_ITEMS = [
 const QUICK = [
   {
     label: "Beaches",
-    detail: "Calm water · near you",
+    detail: "Calm water · St. Thomas",
     href: "/beaches",
     icon: Waves,
     image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
@@ -150,13 +149,13 @@ const QUICK = [
 
 const RECOMMENDED = [
   {
-    eyebrow: "Beach near you",
+    eyebrow: "St. Thomas beach",
     title: "Magens Bay",
     meta: "Calm water · family favorite",
     href: "/beaches",
     image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
     alt: "Magens Bay beach in St. Thomas",
-    rating: "4.8",
+    tag: "Beach",
   },
   {
     eyebrow: "Island view",
@@ -165,16 +164,16 @@ const RECOMMENDED = [
     href: "/map?island=stj",
     image: "/images/places/st-john/trunk-bay-overlook-1.jpg",
     alt: "Trunk Bay overlook in St. John",
-    rating: "4.9",
+    tag: "National park",
   },
   {
-    eyebrow: "Food pick",
+    eyebrow: "Dining area",
     title: "Frenchtown waterfront",
     meta: "Local dining · St. Thomas",
     href: "/places?category=restaurant",
     image: "/images/places/st-thomas/hook-line-and-sinker-1.jpg",
     alt: "Waterfront dining in Frenchtown, St. Thomas",
-    rating: "4.7",
+    tag: "Food & drink",
   },
   {
     eyebrow: "Explore deeper",
@@ -183,7 +182,7 @@ const RECOMMENDED = [
     href: "/map?island=stx",
     image: "/images/places/st-croix/cane-bay-beach-1.jpg",
     alt: "Cane Bay coastline on St. Croix",
-    rating: "4.8",
+    tag: "Dive coast",
   },
 ] as const;
 
@@ -197,7 +196,7 @@ const DAY_STOPS = [
 const GETTING_AROUND = [
   { label: "Taxi rates", detail: "Official-rate quote flow", href: "/mobility", icon: CarFront },
   { label: "Ferry schedules", detail: "Connect the islands", href: "/mobility", icon: Ship },
-  { label: "Book a ride", detail: "Taxi or private ride", href: "/mobility", icon: Navigation },
+  { label: "Plan a ride", detail: "Taxi or private ride", href: "/mobility", icon: Navigation },
   { label: "Car rentals", detail: "Compare local vehicles", href: "/car-rentals", icon: CarFront },
 ] as const;
 
@@ -261,7 +260,7 @@ export default function Home() {
             <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-black uppercase tracking-[.15em] text-[#0f8792]">Your island command center</p>
-                <h1 className="mt-1 text-2xl font-black tracking-[-0.035em] text-[#062b3a] sm:text-3xl">Good morning. What kind of island day do you want?</h1>
+                <h1 className="mt-1 text-2xl font-black tracking-[-0.035em] text-[#062b3a] sm:text-3xl">What kind of island day do you want?</h1>
                 <p className="mt-1 text-sm font-semibold text-slate-500">St. Thomas · switch islands anytime</p>
               </div>
               <Link href="/search" className="hidden h-11 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 text-sm font-bold text-slate-600 shadow-sm sm:flex">
@@ -301,7 +300,7 @@ export default function Home() {
                       <Link key={item.title} href={item.href} className="group overflow-hidden rounded-[22px] border border-slate-200/80 bg-[#f8fbfb] transition hover:-translate-y-1 hover:shadow-xl">
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <Image src={item.image} alt={item.alt} fill sizes="(min-width: 1536px) 20vw, (min-width: 640px) 40vw, 100vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                          <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-black text-[#062b3a] shadow-sm"><Star size={11} className="fill-[#f5c451] text-[#f5c451]" /> {item.rating}</span>
+                          <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[9px] font-black uppercase tracking-[.08em] text-[#062b3a] shadow-sm"><BadgeCheck size={11} className="text-[#0b8793]" /> {item.tag}</span>
                         </div>
                         <div className="p-3.5"><div className="text-[9px] font-black uppercase tracking-[.13em] text-[#0b8793]">{item.eyebrow}</div><div className="mt-1 text-base font-black tracking-[-.02em]">{item.title}</div><div className="mt-1 text-xs font-semibold text-slate-500">{item.meta}</div><div className="mt-3 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-[.1em] text-[#0b8793]">View details <ArrowRight size={12} /></div></div>
                       </Link>
