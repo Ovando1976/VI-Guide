@@ -14,7 +14,7 @@ import { DriverLocationPublisher } from "@/components/mobility/driver-location-p
 import { requireSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Driver OS | USVI Explorer",
+  title: "Driver OS",
   description:
     "Run USVI Explorer mobility trips, shift readiness, location, and driver operations from one connected workspace.",
 };
