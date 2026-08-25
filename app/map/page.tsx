@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { MapPinned, Navigation, Route, Sparkles } from "lucide-react";
@@ -12,6 +13,27 @@ import { LivingMapBridge } from "@/components/workspace/living-map-bridge";
 import { LivingMapDock } from "@/components/workspace/living-map-dock";
 import { UnifiedMapWorkspaceBar } from "@/components/workspace/unified-map-workspace-bar";
 import { UnifiedWorkspaceProvider } from "@/components/workspace/unified-workspace-controller";
+
+const mapDescription =
+  "Explore St. Thomas, St. John, and St. Croix on the USVI Explorer Living Map, then save places, plan routes, connect rides, and keep your trip in context.";
+
+export const metadata: Metadata = {
+  title: "Living Map",
+  description: mapDescription,
+  alternates: { canonical: "/map" },
+  openGraph: {
+    type: "website",
+    siteName: "USVI Explorer",
+    title: "Living Map | USVI Explorer",
+    description: mapDescription,
+    url: "/map",
+  },
+  twitter: {
+    card: "summary",
+    title: "Living Map | USVI Explorer",
+    description: mapDescription,
+  },
+};
 
 const ExplorerMapScreen = dynamic(
   () =>
