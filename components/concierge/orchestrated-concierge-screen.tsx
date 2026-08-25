@@ -17,7 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import { askViIntelligence } from "@/lib/intelligence/client";
 import { dispatchIntelligenceResponseMapFocus } from "@/lib/intelligence/map-focus-events";
@@ -55,6 +55,10 @@ function islandLabel(island: IntelligenceIsland) {
   return ISLANDS.find((option) => option.value === island)?.label ?? "Virgin Islands";
 }
 
+function isIntelligenceIsland(value: string | null): value is IntelligenceIsland {
+  return value === "stt" || value === "stj" || value === "stx";
+}
+
 export function OrchestratedConciergeScreen() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -66,20 +70,7 @@ export function OrchestratedConciergeScreen() {
   const [details, setDetails] = useState<Record<string, string>>({});
   const [confirming, setConfirming] = useState<string | null>(null);
   const [savedPlan, setSavedPlan] = useState<JourneyPlan | null>(null);
-
-  useEffect(() => {
-    const requestedIsland = searchParams.get("island");
-    if (
-      requestedIsland === "stt" ||
-      requestedIsland === "stj" ||
-      requestedIsland === "stx"
-    ) {
-      setIsland(requestedIsland);
-    }
-
-    const prompt = searchParams.get("prompt")?.trim();
-    if (prompt) setDraft(prompt);
-  }, [searchParams]);
+  const autoStartedPromptRef = useRef<string | null>(null);
 
   const workflow = response?.orchestration;
   const missing = workflow?.missingInformation ?? [];
@@ -91,7 +82,7 @@ export function OrchestratedConciergeScreen() {
     return Math.round((completed / workflow.trace.length) * 100);
   }, [workflow]);
 
-  async function run(prompt: string) {
+  async function run(prompt: string, islandOverride?: IntelligenceIsland) {
     const message = prompt.trim();
     if (!message || loading) return;
     setLoading(true);
@@ -103,7 +94,7 @@ export function OrchestratedConciergeScreen() {
         message,
         {
           page: "concierge",
-          island,
+          island: islandOverride ?? island,
           party: { adults: 1, children: 0, accessibilityNeeds: [] },
           preferences: { interests: [], pace: "balanced", budget: "moderate" },
         },
@@ -123,6 +114,31 @@ export function OrchestratedConciergeScreen() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    const requestedIsland = searchParams.get("island");
+    const resolvedIsland = isIntelligenceIsland(requestedIsland) ? requestedIsland : island;
+    if (isIntelligenceIsland(requestedIsland)) setIsland(requestedIsland);
+
+    const prompt = searchParams.get("prompt")?.trim();
+    if (!prompt) return;
+    setDraft(prompt);
+
+    if (searchParams.get("open") !== "true") return;
+    const autoStartKey = `${resolvedIsland}:${prompt}`;
+    if (autoStartedPromptRef.current === autoStartKey) return;
+    autoStartedPromptRef.current = autoStartKey;
+
+    window.requestAnimationFrame(() => {
+      document.getElementById("concierge-workspace")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+    void run(prompt, resolvedIsland);
+    // `autoStartedPromptRef` makes each deep link idempotent while allowing a new URL prompt to run.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
