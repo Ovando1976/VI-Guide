@@ -25,7 +25,7 @@ import { getOfferVisual } from "@/lib/offers/offer-visual";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Island Offers | USVI Explorer",
+  title: "Island Offers",
   description:
     "Book live U.S. Virgin Islands stays, tours, and experiences offered by verified USVI Explorer businesses.",
 };
