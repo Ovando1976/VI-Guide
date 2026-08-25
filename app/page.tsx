@@ -14,7 +14,6 @@ import {
   History,
   Home as HomeIcon,
   Map,
-  MapPin,
   MapPinned,
   Navigation,
   Plus,
@@ -278,7 +277,7 @@ export default function Home() {
                     <h2 className="mt-5 max-w-2xl text-[clamp(2.4rem,6vw,4.7rem)] font-black leading-[.92] tracking-[-.055em]">Where do you want to go or what do you want to do?</h2>
                     <Link href="/search" className="mt-6 flex max-w-2xl items-center gap-3 rounded-[22px] bg-white p-2 pl-4 text-[#062b3a] shadow-[0_20px_55px_rgba(1,21,28,.24)] transition hover:-translate-y-0.5">
                       <Search size={19} className="text-[#0b8793]" />
-                      <span className="flex-1 text-sm font-semibold text-slate-500">Search beaches, activities, restaurants, stays, places…</span>
+                      <span className="flex-1 text-sm font-semibold text-slate-500">Search beaches, stays, food, events, history, local stories…</span>
                       <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#0b8793] text-white"><ArrowRight size={18} /></span>
                     </Link>
                     <div className="mt-4 flex flex-wrap gap-2">
