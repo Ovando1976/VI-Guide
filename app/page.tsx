@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BadgeCheck,
@@ -25,6 +26,31 @@ import { HomeIslandDayPreview } from "@/components/home/home-island-day-preview"
 import { HomeLiveStatus } from "@/components/home/home-live-status";
 import { HomePrimaryActions } from "@/components/home/home-primary-actions";
 import { HomeTravelerIntent } from "@/components/home/home-traveler-intent";
+
+const homeTitle = "USVI Explorer — Discover, Plan & Move Through the USVI";
+const homeDescription =
+  "Discover beaches, stays, culture, dining and transportation, then turn local insight into one connected U.S. Virgin Islands trip.";
+const homeSocialTitle = "USVI Explorer — Your Smart Virgin Islands Travel Companion";
+const homeSocialDescription =
+  "Discover, plan and move through St. Thomas, St. John and St. Croix with one connected local travel companion.";
+
+export const metadata: Metadata = {
+  title: { absolute: homeTitle },
+  description: homeDescription,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "USVI Explorer",
+    title: homeSocialTitle,
+    description: homeSocialDescription,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeSocialTitle,
+    description: homeSocialDescription,
+  },
+};
 
 const ISLANDS = [
   { code: "STT", name: "St. Thomas", line: "Harbor energy, beaches, dining & nightlife", href: "/map?island=stt", image: "/images/usvi-harbor-hero.jpg" },

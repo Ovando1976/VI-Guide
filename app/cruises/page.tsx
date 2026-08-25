@@ -17,7 +17,7 @@ import { CruiseHubNav } from "@/components/cruise/cruise-hub-nav";
 import { CruiseInventoryGateway } from "@/components/cruise/cruise-inventory-gateway";
 
 export const metadata: Metadata = {
-  title: "Cruise Hub | USVI Explorer",
+  title: "Cruise Hub",
   description:
     "Plan the cruise, verify USVI port calls, match capacity-aware shore excursions, request advisor help, and keep the trip connected inside one USVI Explorer cruise hub.",
 };

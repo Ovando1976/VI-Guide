@@ -29,7 +29,7 @@ import { FISHING_SPECIES } from "@/lib/fishing-handbook";
 import { getTravelKnowledge } from "@/lib/travel-knowledge";
 
 export const metadata: Metadata = {
-  title: "Explore St. Thomas, St. John & St. Croix | USVI Explorer",
+  title: "Explore St. Thomas, St. John & St. Croix",
   description:
     "Explore verified stays, activities, events, transportation, beaches, history, dining, and practical island guidance across the U.S. Virgin Islands.",
   alternates: { canonical: "/explore" },

@@ -26,7 +26,7 @@ import { shoreExcursionPort } from "@/lib/shore-excursions";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Shore Excursions | USVI Explorer Cruise Hub",
+  title: "Shore Excursions",
   description:
     "Book U.S. Virgin Islands shore excursions designed around official cruise port calls, operator capacity, all-aboard times, and conservative return-to-ship buffers.",
 };

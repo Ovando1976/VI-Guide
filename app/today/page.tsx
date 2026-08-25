@@ -7,7 +7,7 @@ import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-t
 import { normalizeActiveIsland } from "@/lib/active-island";
 
 export const metadata: Metadata = {
-  title: "My Day | USVI Explorer",
+  title: "My Day",
   description:
     "Build and protect a personalized, grounded U.S. Virgin Islands day plan from your traveler profile.",
 };

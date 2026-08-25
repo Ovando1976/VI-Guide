@@ -28,8 +28,12 @@ import {
   type TravelerStayRequest,
 } from "@/lib/traveler-trip-command";
 
-export const metadata = {
+const tripMetadataContract = {
   title: "My Trip | USVI Explorer",
+} as const;
+
+export const metadata = {
+  title: { absolute: tripMetadataContract.title },
   description:
     "Your connected USVI Explorer trip workspace for itinerary, bookings, payments, stays, rides, advisor planning, readiness, and Concierge.",
 };
