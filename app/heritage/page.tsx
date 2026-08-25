@@ -7,7 +7,7 @@ import { HeritageExplorer } from "@/components/heritage/heritage-explorer";
 import { getTravelKnowledge } from "@/lib/travel-knowledge";
 
 export const metadata: Metadata = {
-  title: "USVI Heritage | USVI Explorer",
+  title: "USVI Heritage",
   description:
     "Explore historic places, cultural landscapes, maps, archives, and stories across the U.S. Virgin Islands.",
 };

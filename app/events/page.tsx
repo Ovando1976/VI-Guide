@@ -23,7 +23,7 @@ import {
 } from "@/lib/events";
 
 export const metadata: Metadata = {
-  title: "Events | USVI Explorer",
+  title: "Events",
   description:
     "Discover source-backed upcoming events across St. Thomas, St. John, and St. Croix, then connect them to maps, transportation, Concierge, and My Trip.",
 };
