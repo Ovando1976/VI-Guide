@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import ExperiencesPage from "../experiences/page";
 import { ActivityBookingIntelligence } from "@/components/activities/activity-booking-intelligence";
 import { ActivityDiscoveryDeck } from "@/components/activities/activity-discovery-deck";
@@ -8,13 +6,14 @@ import { ActivityJourneyPicker } from "@/components/activities/activity-journey-
 import { ActivityQuickLaunch } from "@/components/activities/activity-quick-launch";
 import { ActivityTripIntelligence } from "@/components/activities/activity-trip-intelligence";
 import { ActivityVisualStandard } from "@/components/activities/activity-visual-standard";
+import { buildPublicPageMetadata } from "@/lib/public-page-metadata";
 
-export const metadata: Metadata = {
-  title: "Activities, Tours & Experiences | USVI Explorer",
+export const metadata = buildPublicPageMetadata({
+  title: "Activities, Tours & Experiences",
   description:
     "Find and request memorable activities, tours, and local experiences across St. Thomas, St. John, and St. Croix.",
-  alternates: { canonical: "/activities" },
-};
+  path: "/activities",
+});
 
 type ActivitySearchParams = {
   q?: string;
