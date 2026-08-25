@@ -6,6 +6,7 @@ const publicRoutes = [
   "",
   "/explore",
   "/places",
+  "/dining",
   "/map",
   "/beaches",
   "/accommodations",

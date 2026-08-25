@@ -2,6 +2,14 @@ import type { ReactNode } from "react";
 import { Map } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { buildPublicPageLayoutMetadata } from "@/lib/public-page-metadata";
+
+export const metadata = buildPublicPageLayoutMetadata({
+  title: "USVI Heritage",
+  description:
+    "Explore historic places, cultural landscapes, maps, archives, and stories across the U.S. Virgin Islands.",
+  path: "/heritage",
+});
 
 export default function HeritageLayout({ children }: { children: ReactNode }) {
   return (
