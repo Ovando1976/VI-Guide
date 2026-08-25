@@ -36,7 +36,7 @@ export function CruiseSailingTripAction({ sailing }: { sailing: CruiseSailing })
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link
-                href="/planner"
+                href="/trips"
                 className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[#043331] px-4 text-[9px] font-black uppercase tracking-[.13em] text-white"
               >
                 <MapPinned className="h-4 w-4 text-[#f5c451]" /> My Trip
