@@ -1,5 +1,15 @@
 import { DiscoveryDirectoryPage } from "@/components/directory/discovery-directory-page";
+import { buildPublicPageMetadata } from "@/lib/public-page-metadata";
 import { getTravelKnowledge } from "@/lib/travel-knowledge";
+
+const description =
+  "Compare verified hotels, resorts, villas, and guesthouses across St. Thomas, St. John, and St. Croix, then connect your stay to transportation and island plans.";
+
+export const metadata = buildPublicPageMetadata({
+  title: "Stays & Accommodations",
+  description,
+  path: "/accommodations",
+});
 
 export default function AccommodationsPage() {
   return (
