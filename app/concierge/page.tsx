@@ -8,9 +8,10 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { OrchestratedConciergeScreen } from "@/components/concierge/orchestrated-concierge-screen";
 
 export const metadata: Metadata = {
-  title: "VI Concierge | USVI Explorer",
+  title: "VI Concierge",
   description:
     "Plan, review, and safely execute USVI Explorer travel workflows with visible orchestration state and grounded recommendations.",
+  alternates: { canonical: "/concierge" },
 };
 
 export default function ConciergePage() {
