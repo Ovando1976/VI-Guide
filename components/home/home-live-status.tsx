@@ -43,8 +43,14 @@ export function HomeLiveStatus() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Link
+              href="/events"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#c9dcd7] bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[.14em] text-[#073b39] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0f766e]"
+            >
+              <CalendarDays size={15} /> See events
+            </Link>
+            <Link
               href="/ferry"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#c9dcd7] bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[.16em] text-[#073b39] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0f766e]"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-[#c9dcd7] bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[.14em] text-[#073b39] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0f766e]"
             >
               Full ferry board
             </Link>
