@@ -1,6 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpenText, CalendarDays, Clock3, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenText,
+  CalendarDays,
+  Clock3,
+  ShipWheel,
+  Sparkles,
+  Waves,
+} from "lucide-react";
 
 import { HomeFerryIntelligence } from "@/components/home/home-ferry-intelligence";
 
@@ -13,6 +21,24 @@ const STATUS_ITEMS = [
     image: "/images/usvi-harbor-hero.jpg",
     alt: "Charlotte Amalie harbor and the hills of St. Thomas",
     tag: "Context",
+  },
+  {
+    label: "Ferry terminal context",
+    value: "Know the transfer point before departure",
+    icon: ShipWheel,
+    href: "/journey",
+    image: "/images/places/st-thomas/red-hook-ferry-terminal-1.jpg",
+    alt: "Red Hook ferry terminal in St. Thomas",
+    tag: "Move",
+  },
+  {
+    label: "Beach planning",
+    value: "Check access and conditions before you go",
+    icon: Waves,
+    href: "/beaches",
+    image: "/images/places/st-thomas/magens-bay-beach-1.jpg",
+    alt: "Magens Bay beach in St. Thomas",
+    tag: "Water",
   },
   {
     label: "Tours & experiences",
@@ -32,13 +58,13 @@ export function HomeLiveStatus() {
         <div className="flex flex-col gap-4 border-b border-[#dce8e4] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div>
             <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.22em] text-[#b16a18]">
-              <Clock3 size={14} /> Current island intelligence
+              <Clock3 size={14} /> Today in the Virgin Islands
             </div>
             <h2 className="vi-display mt-2 max-w-3xl text-2xl font-bold leading-tight tracking-[-.035em] sm:text-3xl">
               Know what is published before you move.
             </h2>
             <p className="mt-2 max-w-3xl text-xs font-semibold leading-5 text-slate-500 sm:text-sm sm:leading-6">
-              Official-source ferry schedules come first. Weather, marine conditions, and operating-status badges will appear only when an authoritative current feed supports them.
+              Official-source ferry schedules come first. Weather, marine conditions, and operating-status badges appear only when a current authoritative source supports them.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -64,7 +90,7 @@ export function HomeLiveStatus() {
               <Link
                 key={label}
                 href={href}
-                className="group relative isolate min-h-[220px] overflow-hidden bg-[#073b39] p-5 text-white sm:min-h-[250px] sm:p-6"
+                className="group relative isolate min-h-[205px] overflow-hidden bg-[#073b39] p-5 text-white sm:min-h-[225px] sm:p-6"
               >
                 <Image
                   src={image}
@@ -75,7 +101,7 @@ export function HomeLiveStatus() {
                 />
                 <span className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(3,47,45,.12)_0%,rgba(3,47,45,.46)_50%,rgba(2,31,29,.96)_100%)]" />
                 <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_10%,rgba(115,227,217,.18),transparent_35%)]" />
-                <span className="flex h-full min-h-[180px] flex-col justify-between sm:min-h-[202px]">
+                <span className="flex h-full min-h-[165px] flex-col justify-between sm:min-h-[177px]">
                   <span className="flex items-start justify-between gap-3">
                     <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/20 bg-white/12 text-[#8ef0e7] shadow-lg backdrop-blur-md transition group-hover:bg-[#f5c451] group-hover:text-[#073b39]">
                       <Icon size={20} aria-hidden="true" />
@@ -86,7 +112,7 @@ export function HomeLiveStatus() {
                   </span>
                   <span>
                     <span className="block text-[9px] font-black uppercase tracking-[.18em] text-[#f5c451]">{label}</span>
-                    <span className="vi-display mt-2 block text-2xl font-bold leading-[1.02] text-white">{value}</span>
+                    <span className="vi-display mt-2 block text-xl font-bold leading-[1.02] text-white">{value}</span>
                     <span className="mt-4 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em] text-white/70 transition group-hover:text-[#8ef0e7]">
                       Open in USVI Explorer <ArrowRight size={13} />
                     </span>
