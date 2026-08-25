@@ -34,6 +34,7 @@ const ferryNetworkMap = source("components/ferry-network-map.tsx");
 const ferryCanonical = source("lib/ferry-planner.ts");
 const ferryGoverned = source("lib/ferry-planner-current.ts");
 const homeStatus = source("components/home/home-live-status.tsx");
+const homeFerryIntelligence = source("components/home/home-ferry-intelligence.tsx");
 
 assert.match(model, /Cyril E\. King Airport → Cruz Bay/);
 assert.match(model, /Charlotte Amalie → Cruz Bay/);
@@ -219,9 +220,25 @@ for (const route of [...FERRY_ROUTES, ...CAR_BARGE_ROUTES]) {
 assert.equal(new Set(FERRY_ROUTES.map((route) => route.id)).size, FERRY_ROUTES.length, "Passenger ferry route IDs must be unique");
 assert.equal(new Set(CAR_BARGE_ROUTES.map((route) => route.id)).size, CAR_BARGE_ROUTES.length, "Car-barge route IDs must be unique");
 
-assert.match(homeStatus, /label: "Ferry \+ island journey"/);
-assert.match(homeStatus, /value: "Plan taxi \+ ferry as one trip"/);
-assert.match(homeStatus, /href: "\/journey"/);
+assert.match(homeStatus, /Current island intelligence/);
+assert.match(homeStatus, /Official-source ferry schedules come first/);
+assert.match(homeStatus, /<HomeFerryIntelligence \/>/);
+assert.match(homeStatus, /href="\/ferry"/);
+assert.match(homeFerryIntelligence, /findFerryRoute/);
+assert.match(homeFerryIntelligence, /getNextFerryDeparture/);
+assert.match(homeFerryIntelligence, /isScheduleSuppressed/);
+assert.match(homeFerryIntelligence, /Red Hook → Cruz Bay/);
+assert.match(homeFerryIntelligence, /Crown Bay → Water Island/);
+assert.match(homeFerryIntelligence, /Charlotte Amalie → St\. Croix/);
+assert.match(homeFerryIntelligence, /Checked \{formatVerifiedAt\(route\.verifiedAt\)\}/);
+assert.match(homeFerryIntelligence, /route\.sourceAuthority/);
+assert.match(homeFerryIntelligence, /Temporary schedule/);
+assert.match(homeFerryIntelligence, /Verify official source/);
+assert.match(homeFerryIntelligence, /Operating status is not live/);
+assert.match(homeFerryIntelligence, /does not infer delay, cancellation, or on-time status/);
+assert.match(homeFerryIntelligence, /href="\/journey"/);
+assert.doesNotMatch(homeFerryIntelligence, /✓\s*ON TIME/i);
+assert.doesNotMatch(homeFerryIntelligence, /estimatedTaxiFare|\$54|\$68/);
 
 console.log(
   `USVI Explorer connected, current-source-governed Ferry + Living Map Island Journey contracts passed for ${FERRY_ROUTES.length} passenger routes and ${CAR_BARGE_ROUTES.length} car-barge directions.`,
