@@ -28,6 +28,14 @@ type Props = {
   className?: string;
 };
 
+type MobilityRideSource =
+  | "living-map"
+  | "beach"
+  | "planner"
+  | "place"
+  | "stay"
+  | "historic";
+
 export function PlaceActionBar({
   name,
   island,
@@ -50,6 +58,10 @@ export function PlaceActionBar({
   const mobilityRideParams = rideHref?.startsWith("/mobility")
     ? new URLSearchParams((rideHref.split("?")[1] ?? "").split("#")[0])
     : null;
+  const mobilityRideSource = resolveMobilityRideSource(
+    tripStop.kind,
+    mobilityRideParams?.get("source"),
+  );
   const resolvedRideHref = rideHref?.startsWith("/mobility")
     ? buildMobilityRideHref({
         name: tripStop.title,
@@ -58,7 +70,7 @@ export function PlaceActionBar({
         lat: tripStop.lat,
         lng: tripStop.lng,
         estateGeoid: mobilityRideParams?.get("to"),
-        source: tripStop.kind === "beach" ? "beach" : "place",
+        source: mobilityRideSource,
         returnTo: tripStop.href,
       })
     : rideHref;
@@ -169,6 +181,28 @@ function buildFallbackJourneyStop({
     ...(mapHref ? { mapHref } : {}),
     ...(bookingHref || rideHref ? { bookingHref: bookingHref || rideHref } : {}),
   };
+}
+
+function resolveMobilityRideSource(
+  kind: string,
+  incoming: string | null | undefined,
+): MobilityRideSource {
+  if (
+    incoming === "living-map" ||
+    incoming === "beach" ||
+    incoming === "planner" ||
+    incoming === "place" ||
+    incoming === "stay" ||
+    incoming === "historic"
+  ) {
+    return incoming;
+  }
+
+  const normalized = kind.trim().toLowerCase();
+  if (normalized === "beach") return "beach";
+  if (normalized === "stay" || normalized === "accommodation") return "stay";
+  if (normalized === "historic" || normalized === "heritage") return "historic";
+  return "place";
 }
 
 function islandToCode(value: string): IntelligenceIsland {

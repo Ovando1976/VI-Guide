@@ -43,6 +43,7 @@ function expectSource(source: string, value: string, label: string) {
 
 for (const [value, label] of [
   ['new URLSearchParams({\n    island: item.island,\n    destination: item.name,', "stay detail carries island and property name"],
+  ['source: "stay"', "stay detail explicitly identifies the Stays handoff source"],
   ['rideParams.set("to", item.estateGeoid)', "stay detail uses Mobility's canonical destination geoid key"],
   ['rideParams.set("toLat", String(item.lat))', "stay detail preserves latitude as traveler context"],
   ['rideParams.set("toLng", String(item.lng))', "stay detail preserves longitude as traveler context"],
@@ -69,6 +70,16 @@ for (const [value, label] of [
   ['estateGeoid: mobilityRideParams?.get("to")', "place action bar preserves the canonical destination GEOID when rebuilding the ride link"],
 ] as const) {
   expectSource(value.startsWith("if (item.estateGeoid)") ? directoryDetail : placeActionBar, value, label);
+}
+for (const [value, label] of [
+  ['resolveMobilityRideSource(', "shared detail actions resolve a truthful Mobility source"],
+  ['incoming === "stay"', "shared detail actions preserve explicit stay attribution"],
+  ['incoming === "historic"', "shared detail actions preserve explicit heritage attribution"],
+  ['normalized === "stay" || normalized === "accommodation"', "stay and accommodation detail kinds map to Stays"],
+  ['normalized === "historic" || normalized === "heritage"', "historic and heritage detail kinds map to Heritage"],
+  ['source: mobilityRideSource', "rebuilt detail ride links carry the resolved source"],
+] as const) {
+  expectSource(placeActionBar, value, label);
 }
 expectSource(
   rideLinks,

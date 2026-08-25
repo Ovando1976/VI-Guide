@@ -56,6 +56,7 @@ export default async function AccommodationDetailPage({ params }: Props) {
   const rideParams = new URLSearchParams({
     island: item.island,
     destination: item.name,
+    source: "stay",
   });
   if (item.estateGeoid) rideParams.set("to", item.estateGeoid);
   if (typeof item.lat === "number") rideParams.set("toLat", String(item.lat));
