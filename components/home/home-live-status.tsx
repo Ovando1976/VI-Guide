@@ -39,7 +39,7 @@ export function HomeLiveStatus() {
               Know what is published before you move.
             </h2>
             <p className="mt-2 max-w-3xl text-xs font-semibold leading-5 text-slate-500 sm:text-sm sm:leading-6">
-              Official-source ferry schedules, NWS forecasts and alerts, and freshness-gated NOAA/NDBC observations. Operating-status or safety badges appear only when an authoritative current source actually supports them.
+              Official-source ferry schedules come first. NWS forecasts and alerts, plus freshness-gated NOAA/NDBC observations, add current context. Operating-status or safety badges appear only when an authoritative current source actually supports them.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
