@@ -7,11 +7,25 @@ import { ArrowRight, MapPinned, Route, ShieldCheck, Sparkles } from "lucide-reac
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { OrchestratedConciergeScreen } from "@/components/concierge/orchestrated-concierge-screen";
 
+const conciergeDescription =
+  "Plan, review, and safely execute USVI Explorer travel workflows with visible orchestration state and grounded recommendations.";
+
 export const metadata: Metadata = {
   title: "VI Concierge",
-  description:
-    "Plan, review, and safely execute USVI Explorer travel workflows with visible orchestration state and grounded recommendations.",
+  description: conciergeDescription,
   alternates: { canonical: "/concierge" },
+  openGraph: {
+    type: "website",
+    siteName: "USVI Explorer",
+    title: "VI Concierge | USVI Explorer",
+    description: conciergeDescription,
+    url: "/concierge",
+  },
+  twitter: {
+    card: "summary",
+    title: "VI Concierge | USVI Explorer",
+    description: conciergeDescription,
+  },
 };
 
 export default function ConciergePage() {
