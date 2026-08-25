@@ -4,7 +4,7 @@ import { DriverApplicationForm } from "@/components/driver-application-form";
 import { getSession } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Drive with USVI Explorer",
+  title: "Driver Application",
   description:
     "Apply free to join USVI Explorer mobility. Verified USVI taxi credentials are required before driver access is activated.",
 };
