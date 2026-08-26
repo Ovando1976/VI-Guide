@@ -14,9 +14,9 @@ import {
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
 
 export const metadata = {
-  title: "USVI Explorer Partners",
+  title: "USVI Explorer Business Network",
   description:
-    "Apply to partner with USVI Explorer or privately check an existing business application.",
+    "Claim an existing USVI Explorer business listing, apply for merchant tools, or privately check an existing request.",
 };
 
 const NETWORK_BENEFITS = [
@@ -28,12 +28,12 @@ const NETWORK_BENEFITS = [
   {
     icon: Sparkles,
     title: "Concierge consideration",
-    text: "Approved listings can become eligible for grounded recommendations when the business fits the traveler’s request.",
+    text: "Verified listings can become eligible for grounded recommendations when the business fits the traveler’s request.",
   },
   {
     icon: CalendarCheck2,
     title: "Booking operations",
-    text: "Use USVI Explorer workflows for availability, booking requests, deposits, confirmations, and practical service operations.",
+    text: "Businesses can add availability, booking requests, deposits, confirmations, and practical service operations when ready.",
   },
 ] as const;
 
@@ -53,9 +53,9 @@ export default function PartnersPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_16%,rgba(245,196,81,.18),transparent_28%),linear-gradient(180deg,rgba(2,31,29,.04),rgba(2,31,29,.55))]" />
 
         <ViPublicHeader
-          actionHref="/partners/apply"
-          actionLabel="Apply to partner"
-          actionIcon={Building2}
+          actionHref="/partners/claim"
+          actionLabel="Claim your business"
+          actionIcon={BadgeCheck}
           secondaryHref="/partners/status"
           secondaryLabel="Check status"
         />
@@ -66,46 +66,55 @@ export default function PartnersPage() {
               <Building2 size={14} /> USVI Explorer business network
             </div>
             <h1 className="vi-display mt-7 max-w-5xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
-              Put local businesses
+              Your business belongs
               <span className="block italic text-[#73e3d9]">inside the traveler journey.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
-              USVI Explorer connects Virgin Islands businesses to discovery, Concierge recommendations, trip planning, booking requests, secure payments, and practical operations without turning local commerce into a generic marketplace.
+              If USVI Explorer already has your business profile, claim and verify it instead of rebuilding it. Once verified, add booking, offers, payments, and other merchant tools only when they create value.
             </p>
           </div>
 
           <aside className="vi-glass rounded-[32px] p-6 sm:p-7">
-            <div className="vi-eyebrow text-[#f5c451]">Partner access is reviewed</div>
+            <div className="vi-eyebrow text-[#f5c451]">Coverage first. Access second.</div>
             <h2 className="vi-display mt-3 text-3xl font-bold text-white sm:text-4xl">
-              A form submission never creates merchant access by itself.
+              A public listing never means a business is verified or partnered.
             </h2>
             <p className="mt-4 text-sm font-semibold leading-6 text-white/62">
-              USVI Explorer verifies the business, resolves the correct listing, and grants listing-scoped access only after review. That protects travelers, merchants, and the integrity of the directory.
+              USVI Explorer keeps listed, verified, and partner states separate. Claim requests are reviewed before any account receives listing-scoped control.
             </p>
             <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[.06] p-4 text-xs font-semibold leading-5 text-white/56">
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#73e3d9]" />
-              Application status can be checked privately with the reference and contact email. Internal review notes remain private.
+              Claiming and verifying a legitimate listing has no upfront review fee and never creates merchant privileges automatically.
             </div>
           </aside>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-3">
+          <PartnerAction
+            icon={BadgeCheck}
+            eyebrow="Already listed"
+            title="Claim your business"
+            text="Confirm who you are, identify the business, and let USVI Explorer verify your authority before listing access changes."
+            href="/partners/claim"
+            label="Start claim"
+            image="/images/usvi-harbor-hero.jpg"
+          />
           <PartnerAction
             icon={Building2}
-            eyebrow="New business"
-            title="Apply to join the network"
-            text="Tell USVI Explorer what the business offers, where it operates, and which discovery, booking, or operating tools would create the most value."
+            eyebrow="Need merchant tools"
+            title="Apply to the network"
+            text="For businesses that want booking, payments, concierge referrals, promotions, or a listing that still needs to be matched or created."
             href="/partners/apply"
             label="Start application"
             image="/images/places/st-john/trunk-bay-overlook-1.jpg"
           />
           <PartnerAction
             icon={Search}
-            eyebrow="Application already submitted"
-            title="Check the public review stage"
-            text="Use the application reference and the same contact email to privately see the current review status without exposing internal notes."
+            eyebrow="Request submitted"
+            title="Check review status"
+            text="Use the request reference and the same contact email to privately see the current review stage."
             href="/partners/status"
             label="Check status"
             image="/images/accommodations/king-christian-hotel.jpg"
@@ -114,7 +123,7 @@ export default function PartnersPage() {
 
         <section className="mt-10 rounded-[36px] bg-[#032f2d] p-6 text-white shadow-[0_24px_70px_rgba(3,47,45,.16)] sm:p-9 lg:p-11">
           <div className="max-w-3xl">
-            <div className="vi-eyebrow text-[#f5c451]">What partnership means</div>
+            <div className="vi-eyebrow text-[#f5c451]">What the network does</div>
             <h2 className="vi-display mt-3 text-4xl font-bold leading-[.95] sm:text-5xl">
               Be useful at the moment a traveler is making a decision.
             </h2>
@@ -139,8 +148,8 @@ export default function PartnersPage() {
         <section className="mt-8 grid gap-3 rounded-[30px] border border-[#eadcae] bg-[#fff7df] p-5 sm:grid-cols-3 sm:p-6">
           <TrustItem
             icon={BadgeCheck}
-            title="Reviewed access"
-            text="An application never creates merchant privileges automatically."
+            title="Claim-first onboarding"
+            text="Existing businesses verify a prepared profile instead of starting from an empty form."
           />
           <TrustItem
             icon={Sparkles}
@@ -184,7 +193,7 @@ function PartnerAction({
         src={image}
         alt=""
         fill
-        sizes="(min-width: 1024px) 50vw, 100vw"
+        sizes="(min-width: 1024px) 33vw, 100vw"
         className="object-cover transition duration-700 group-hover:scale-105"
       />
       <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,47,45,.05)_18%,rgba(3,47,45,.42)_52%,rgba(2,31,29,.97)_100%)]" />
@@ -193,15 +202,9 @@ function PartnerAction({
           <Icon className="h-6 w-6" />
         </span>
         <span>
-          <span className="text-[9px] font-black uppercase tracking-[.18em] text-[#f8d77c]">
-            {eyebrow}
-          </span>
-          <span className="vi-display mt-3 block text-4xl font-bold leading-[.96] sm:text-5xl">
-            {title}
-          </span>
-          <span className="mt-4 block max-w-xl text-sm font-semibold leading-7 text-white/66">
-            {text}
-          </span>
+          <span className="text-[9px] font-black uppercase tracking-[.18em] text-[#f8d77c]">{eyebrow}</span>
+          <span className="vi-display mt-3 block text-4xl font-bold leading-[.96] sm:text-5xl">{title}</span>
+          <span className="mt-4 block max-w-xl text-sm font-semibold leading-7 text-white/66">{text}</span>
           <span className="mt-6 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em] text-[#73e3d9]">
             {label} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </span>
@@ -211,15 +214,7 @@ function PartnerAction({
   );
 }
 
-function TrustItem({
-  icon: Icon,
-  title,
-  text,
-}: {
-  icon: typeof Building2;
-  title: string;
-  text: string;
-}) {
+function TrustItem({ icon: Icon, title, text }: { icon: typeof Building2; title: string; text: string }) {
   return (
     <div className="rounded-[22px] bg-white/78 p-4">
       <Icon className="h-5 w-5 text-[#9a6a1f]" />
