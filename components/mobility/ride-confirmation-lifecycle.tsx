@@ -31,7 +31,7 @@ const STAGES = [
 export function RideConfirmationLifecycle() {
   return (
     <section
-      className="mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8]"
+      className="mb-[calc(7rem+env(safe-area-inset-bottom))] mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8] xl:mb-6"
       aria-labelledby="ride-confirmation-lifecycle-title"
     >
       <div className="border-b border-[#cfe7e3] px-4 py-4 sm:px-5">
