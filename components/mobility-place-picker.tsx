@@ -10,6 +10,7 @@ type SearchResult = {
   canonicalName: string;
   featureType: string;
   island: string;
+  geoid?: string;
   shortDescription?: string;
   relatedEstateGeoids?: string[];
 };
@@ -32,8 +33,21 @@ function islandCode(island: IslandCode) {
   return value;
 }
 
+function mappedEstateForResult(result: SearchResult, estates: EstateRecord[]) {
+  const candidates = [
+    ...(result.relatedEstateGeoids || []),
+    ...(result.geoid ? [result.geoid] : []),
+  ];
+  for (const geoid of candidates) {
+    const estate = estates.find((candidate) => candidate.geoid === geoid);
+    if (estate) return estate;
+  }
+  return null;
+}
+
 export function MobilityPlacePicker({ value, placeholder, estates, island, onChange }: Props) {
   const [query, setQuery] = useState("");
+  const [labelGeoid, setLabelGeoid] = useState(value || "");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -43,6 +57,14 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
     [estates],
   );
   const selectedEstate = estates.find((estate) => estate.geoid === value) ?? null;
+
+  // External route changes (island reset, deep link, or Swap) must never leave a
+  // familiar-place label attached to the wrong governed estate.
+  useEffect(() => {
+    if (value === labelGeoid) return;
+    setLabelGeoid(value || "");
+    setQuery(selectedEstate?.baseName ?? "");
+  }, [labelGeoid, selectedEstate, value]);
 
   useEffect(() => {
     if (query.trim().length < 2) {
@@ -57,7 +79,8 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
         const params = new URLSearchParams({
           q: query.trim(),
           island: islandCode(island),
-          type: "estate,district,settlement,harbor,landmark,bay,road,point",
+          type: "estate,district,settlement,harbor,landmark,bay,beach,road,point",
+          match: "name",
           limit: "10",
         });
         const response = await fetch(`/api/geography/search?${params}`, { signal: controller.signal });
@@ -77,21 +100,37 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
   }, [query, island]);
 
   function chooseResult(result: SearchResult) {
-    const mappedGeoid = result.relatedEstateGeoids?.find((geoid) => estates.some((estate) => estate.geoid === geoid));
-    if (!mappedGeoid) return;
-    onChange(mappedGeoid);
+    const mappedEstate = mappedEstateForResult(result, estates);
+    if (!mappedEstate) return;
+    setLabelGeoid(mappedEstate.geoid);
     setQuery(result.canonicalName);
+    onChange(mappedEstate.geoid);
     setOpen(false);
   }
+
+  function chooseEstate(estate: EstateRecord) {
+    setLabelGeoid(estate.geoid);
+    setQuery(estate.baseName);
+    onChange(estate.geoid);
+    setOpen(false);
+  }
+
+  const displayValue = open ? query : query || selectedEstate?.baseName || "";
 
   return (
     <div className="relative">
       <div className="relative">
         <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-teal-700" />
         <input
-          value={open ? query : selectedEstate?.baseName ?? query}
-          onFocus={() => { setOpen(true); if (selectedEstate && !query) setQuery(""); }}
-          onChange={(event) => { setQuery(event.target.value); setOpen(true); }}
+          value={displayValue}
+          onFocus={() => {
+            setOpen(true);
+            if (selectedEstate && !query) setQuery("");
+          }}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setOpen(true);
+          }}
           placeholder={placeholder}
           aria-label={placeholder}
           autoComplete="off"
@@ -103,12 +142,12 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
       {open ? (
         <div className="absolute z-40 mt-2 max-h-80 w-full overflow-auto rounded-[20px] border border-slate-200 bg-white p-2 shadow-xl">
           {results.map((result) => {
-            const mapped = result.relatedEstateGeoids?.some((geoid) => estates.some((estate) => estate.geoid === geoid));
+            const mappedEstate = mappedEstateForResult(result, estates);
             return (
               <button
-                key={result.id}
+                key={`${result.id}-${result.featureType}`}
                 type="button"
-                disabled={!mapped}
+                disabled={!mappedEstate}
                 onClick={() => chooseResult(result)}
                 className="flex w-full items-start gap-3 rounded-2xl px-3 py-3 text-left transition hover:bg-teal-50 disabled:cursor-not-allowed disabled:opacity-45"
               >
@@ -116,7 +155,9 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
                 <span className="min-w-0">
                   <span className="block text-sm font-black text-[#043331]">{result.canonicalName}</span>
                   <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[.1em] text-slate-400">
-                    {result.featureType}{mapped ? " · official fare area matched" : " · fare area needs review"}
+                    {mappedEstate
+                      ? `${result.featureType} · fare area: ${mappedEstate.baseName}`
+                      : `${result.featureType} · fare area needs review`}
                   </span>
                 </span>
               </button>
@@ -124,24 +165,34 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
           })}
 
           {query.trim().length >= 2 && !loading && results.length === 0 ? (
-            <div className="px-3 py-4 text-sm font-semibold text-slate-500">No mapped places found. Choose the official fare area below.</div>
+            <div className="px-3 py-4 text-sm font-semibold text-slate-500">
+              No matching place names found. Choose the official fare area below.
+            </div>
           ) : null}
 
           <div className="my-2 border-t border-slate-100" />
           <div className="px-3 pb-1 text-[9px] font-black uppercase tracking-[.14em] text-slate-400">Official fare areas</div>
-          {sortedEstates.slice(0, query.trim() ? 40 : 12).filter((estate) => !query.trim() || estate.baseName.toLowerCase().includes(query.trim().toLowerCase())).map((estate) => (
-            <button
-              key={estate.geoid}
-              type="button"
-              onClick={() => { onChange(estate.geoid); setQuery(estate.baseName); setOpen(false); }}
-              className="w-full rounded-xl px-3 py-2 text-left text-sm font-bold text-slate-700 hover:bg-slate-50"
-            >
-              {estate.baseName}
-            </button>
-          ))}
+          {sortedEstates
+            .slice(0, query.trim() ? 40 : 12)
+            .filter((estate) => !query.trim() || estate.baseName.toLowerCase().includes(query.trim().toLowerCase()))
+            .map((estate) => (
+              <button
+                key={estate.geoid}
+                type="button"
+                onClick={() => chooseEstate(estate)}
+                className="w-full rounded-xl px-3 py-2 text-left text-sm font-bold text-slate-700 hover:bg-slate-50"
+              >
+                {estate.baseName}
+              </button>
+            ))}
         </div>
       ) : null}
-      <p className="mt-2 text-[10px] font-semibold leading-4 text-slate-500">Search a familiar place. We map it to the official taxi fare area before quoting.</p>
+
+      <p className="mt-2 text-[10px] font-semibold leading-4 text-slate-500">
+        {selectedEstate
+          ? `Official fare area: ${selectedEstate.baseName}. We quote only from this governed match.`
+          : "Search a familiar place. We map it to the official taxi fare area before quoting."}
+      </p>
     </div>
   );
 }
