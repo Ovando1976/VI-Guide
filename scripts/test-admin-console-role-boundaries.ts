@@ -58,6 +58,20 @@ for (const [source, label] of [
   expectSource(source, 'requireSession(["admin"])', `${label} remains administrator-only`);
 }
 
+const launchReadiness = read("components/launch-readiness.tsx");
+expectSource(launchReadiness, '/api/admin/mobility-pilot', "public beta console loads the protected live mobility gate");
+expectSource(launchReadiness, '"activate" | "deactivate"', "public beta console exposes only audited activation and pause actions");
+expectSource(launchReadiness, 'attested: true', "public beta mutations require explicit administrator attestation");
+expectSource(launchReadiness, 'reviewReference', "public beta mutations carry a review reference");
+expectSource(launchReadiness, 'reason', "public beta pause requires an operating reason");
+expectSource(launchReadiness, 'item.report.ready', "public beta activation remains blocked by the live readiness report");
+expectSource(launchReadiness, 'item.effectiveActive', "public beta console shows the verified effective activation state");
+expectSource(launchReadiness, 'Activation never bypasses the regulated fare engine.', "launch UI explicitly preserves regulated pricing authority");
+
+const adminPage = read("app/admin/page.tsx");
+expectSource(adminPage, 'href: "/admin/readiness"', "administrator dashboard links to the public beta launch gate");
+expectSource(adminPage, 'eyebrow: "Public beta launch"', "administrator dashboard names the launch control clearly");
+
 const agentEventsApi = read("app/api/admin/agents/events/route.ts");
 expectSource(agentEventsApi, 'requireSession(["admin"])', "Agent event stream remains administrator-only");
 
