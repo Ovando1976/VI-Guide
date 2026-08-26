@@ -282,7 +282,28 @@ export async function updateServerTripStatus(params: {
     }
 
     if (params.status === "completed") {
-      const totalFare = booking.finalFare ?? booking.quotedFare?.total ?? 0;
+      const officialFare = booking.quotedFare;
+      if (
+        !officialFare ||
+        officialFare.pricingModel !== "official_usvi_taxi_tariff" ||
+        officialFare.quoteStatus !== "official" ||
+        !officialFare.tariffId ||
+        !officialFare.tariffVersion ||
+        !officialFare.tariffSourceUrl ||
+        !officialFare.rateRuleId ||
+        !Number.isFinite(officialFare.total) ||
+        officialFare.total <= 0
+      ) {
+        throw new Error(
+          "Trip cannot move to completed without a governed official taxi fare quote.",
+        );
+      }
+      const totalFare = booking.finalFare ?? officialFare.total;
+      if (!Number.isFinite(totalFare) || totalFare <= 0) {
+        throw new Error(
+          "Trip cannot move to completed with an invalid final fare.",
+        );
+      }
       const payout = calculateTaxiSettlement(totalFare);
       updatePayload.finalFare = payout.grossFare;
       updatePayload.payout = {

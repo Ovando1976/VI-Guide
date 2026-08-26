@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { DriverConsole } from "@/components/driver-console";
+import { DriverCommandDeck } from "@/components/mobility/driver-command-deck";
 import { DriverComplianceReadiness } from "@/components/mobility/driver-compliance-readiness";
 import { DriverLifecycleBanner } from "@/components/mobility/driver-lifecycle-banner";
 import { DriverLocationPublisher } from "@/components/mobility/driver-location-publisher";
@@ -88,6 +89,8 @@ export default async function DriverPage() {
             </div>
           </div>
         </section>
+
+        <DriverCommandDeck driverId={driverId} />
 
         <section className="mt-6 rounded-[30px] border border-[#043331]/10 bg-white/80 p-5 shadow-[0_18px_48px_rgba(4,51,49,.08)] sm:p-6">
           <div className="flex flex-wrap items-end justify-between gap-3">
