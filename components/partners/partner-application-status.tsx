@@ -26,8 +26,12 @@ type PublicApplication = {
   updatedAt: string;
 };
 
-export function PartnerApplicationStatusTracker() {
-  const [reference, setReference] = useState("");
+export function PartnerApplicationStatusTracker({
+  initialReference = "",
+}: {
+  initialReference?: string;
+}) {
+  const [reference, setReference] = useState(initialReference.toUpperCase());
   const [email, setEmail] = useState("");
   const [application, setApplication] = useState<PublicApplication | null>(null);
   const [loading, setLoading] = useState(false);
@@ -48,7 +52,7 @@ export function PartnerApplicationStatusTracker() {
         | { application?: PublicApplication; error?: string }
         | null;
       if (!response.ok || !payload?.application) {
-        throw new Error(payload?.error || "Unable to load the application status.");
+        throw new Error(payload?.error || "Unable to load the request status.");
       }
       setApplication(payload.application);
       setReference(payload.application.reference);
@@ -56,7 +60,7 @@ export function PartnerApplicationStatusTracker() {
       setError(
         caught instanceof Error
           ? caught.message
-          : "Unable to load the application status.",
+          : "Unable to load the request status.",
       );
     } finally {
       setLoading(false);
@@ -67,22 +71,21 @@ export function PartnerApplicationStatusTracker() {
     <main className="min-h-screen bg-[#f7f2e7] px-4 py-8 text-[#043331] sm:px-6 lg:py-12">
       <div className="mx-auto max-w-4xl">
         <Link
-          href="/partners/apply"
+          href="/partners"
           className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-[9px] font-black uppercase tracking-[.14em]"
         >
-          <ArrowLeft className="h-4 w-4" /> Partner application
+          <ArrowLeft className="h-4 w-4" /> Business network
         </Link>
 
         <section className="mt-5 overflow-hidden rounded-[38px] bg-[radial-gradient(circle_at_top_right,rgba(245,196,81,.32),transparent_35%),linear-gradient(145deg,#032f2d,#0b6b64)] p-7 text-white shadow-xl sm:p-10">
           <p className="text-[10px] font-black uppercase tracking-[.22em] text-[#f5c451]">
-            Application tracker
+            Business request tracker
           </p>
           <h1 className="mt-4 text-4xl font-black leading-[.95] tracking-[-.055em] sm:text-6xl">
-            Check your USVI Explorer partner review.
+            Check your USVI Explorer review.
           </h1>
           <p className="mt-5 max-w-2xl text-sm font-semibold leading-7 text-white/65">
-            Use the application reference and the same contact email submitted with
-            the business application. Internal review notes remain private.
+            Use the reference and the same contact email submitted with the business claim or partner application. Internal review notes remain private.
           </p>
         </section>
 
@@ -91,14 +94,14 @@ export function PartnerApplicationStatusTracker() {
           className="mt-6 grid gap-4 rounded-[30px] border border-slate-200 bg-white p-5 shadow-sm sm:p-7 lg:grid-cols-[1fr_1fr_auto] lg:items-end"
         >
           <label className="text-[9px] font-black uppercase tracking-[.14em] text-slate-500">
-            Application reference
+            Request reference
             <div className="relative mt-2">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <input
                 required
                 value={reference}
                 onChange={(event) => setReference(event.target.value.toUpperCase())}
-                placeholder="VI-PARTNER-20260805-ABC123"
+                placeholder="VI-CLAIM-20260826-ABC123"
                 maxLength={40}
                 autoComplete="off"
                 className="min-h-12 w-full rounded-2xl border border-slate-200 pl-11 pr-4 font-mono text-sm font-bold normal-case tracking-normal outline-none focus:border-teal-600"

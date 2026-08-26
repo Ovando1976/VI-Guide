@@ -3,12 +3,25 @@ import assert from "node:assert/strict";
 import {
   normalizePartnerApplicationReference,
   normalizePartnerStatusEmail,
+  partnerStatusCollectionForReference,
   publicPartnerApplicationStatus,
 } from "../lib/partners/partner-application-status";
 
 assert.equal(
   normalizePartnerApplicationReference(" vi-partner-20260805-abc123 "),
   "VI-PARTNER-20260805-ABC123",
+);
+assert.equal(
+  normalizePartnerApplicationReference(" vi-claim-20260805-abc123 "),
+  "VI-CLAIM-20260805-ABC123",
+);
+assert.equal(
+  partnerStatusCollectionForReference("VI-PARTNER-20260805-ABC123"),
+  "partnerApplications",
+);
+assert.equal(
+  partnerStatusCollectionForReference("VI-CLAIM-20260805-ABC123"),
+  "businessClaims",
 );
 assert.equal(
   normalizePartnerApplicationReference("VI-PARTNER-20260805-ABCDE"),
@@ -25,7 +38,7 @@ assert.deepEqual(publicPartnerApplicationStatus("new"), {
   status: "new",
   label: "Application received",
   message:
-    "USVI Explorer received the application and it is waiting for an initial business review.",
+    "USVI Explorer received the request and it is waiting for an initial business review.",
   action: "No action is required right now.",
 });
 assert.equal(
