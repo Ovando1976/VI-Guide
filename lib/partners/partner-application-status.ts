@@ -9,9 +9,15 @@ export type PublicPartnerApplicationStatus = {
 
 export function normalizePartnerApplicationReference(value: unknown) {
   const reference = clean(value, 40).toUpperCase();
-  return /^VI-PARTNER-\d{8}-[A-F0-9]{6}$/.test(reference)
+  return /^VI-(?:PARTNER|CLAIM)-\d{8}-[A-F0-9]{6}$/.test(reference)
     ? reference
     : "";
+}
+
+export function partnerStatusCollectionForReference(reference: string) {
+  return reference.startsWith("VI-CLAIM-")
+    ? "businessClaims"
+    : "partnerApplications";
 }
 
 export function normalizePartnerStatusEmail(value: unknown) {
@@ -27,7 +33,7 @@ export function publicPartnerApplicationStatus(
       status: value,
       label: "Application received",
       message:
-        "USVI Explorer received the application and it is waiting for an initial business review.",
+        "USVI Explorer received the request and it is waiting for an initial business review.",
       action: "No action is required right now.",
     };
   }
@@ -54,7 +60,7 @@ export function publicPartnerApplicationStatus(
       status: value,
       label: "Approved",
       message:
-        "The business application was approved. Merchant access still requires a verified USVI Explorer account and listing assignment.",
+        "The business request was approved. Merchant access still requires a verified USVI Explorer account and listing assignment.",
       action: "Follow the onboarding instructions sent by the USVI Explorer team.",
     };
   }
@@ -62,9 +68,9 @@ export function publicPartnerApplicationStatus(
     status: "declined",
     label: "Not approved",
     message:
-      "The current application was not approved for USVI Explorer merchant access.",
+      "The current request was not approved for USVI Explorer merchant access.",
     action:
-      "Contact the USVI Explorer team before submitting new information or another application.",
+      "Contact the USVI Explorer team before submitting new information or another request.",
   };
 }
 
