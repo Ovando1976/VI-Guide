@@ -1,14 +1,14 @@
-import { CarFront, Check, CreditCard, MapPin, Navigation, Radio, ShieldCheck } from "lucide-react";
+import { Check, CreditCard, MapPin, Radio, ShieldCheck } from "lucide-react";
 
 const STAGES = [
   {
     label: "Request saved",
-    detail: "Your route, guests, timing, notes, and governed fare are saved.",
+    detail: "Your route, travelers, timing, notes, and governed fare are saved.",
     icon: Check,
   },
   {
-    label: "Pay securely",
-    detail: "Complete card payment for this ride request.",
+    label: "Secure payment",
+    detail: "Complete card payment to start dispatch for this request.",
     icon: CreditCard,
   },
   {
@@ -18,35 +18,25 @@ const STAGES = [
   },
   {
     label: "Driver assigned",
-    detail: "Your ride becomes confirmed when an authorized operator accepts the trip.",
+    detail: "This is the point when the ride becomes confirmed.",
     icon: ShieldCheck,
   },
   {
-    label: "Driver en route",
-    detail: "My Trip shows the active ride status as your driver heads to pickup.",
-    icon: Navigation,
-  },
-  {
-    label: "Pickup",
-    detail: "Meet your assigned driver at the pickup point shown in your trip.",
+    label: "Track in My Trip",
+    detail: "Follow driver status, pickup, and trip progress from one place.",
     icon: MapPin,
-  },
-  {
-    label: "Trip underway",
-    detail: "Follow the live trip record through arrival and completion.",
-    icon: CarFront,
   },
 ] as const;
 
 export function RideConfirmationLifecycle() {
   return (
     <section
-      className="mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8]"
+      className="mb-[calc(7rem+env(safe-area-inset-bottom))] mt-5 overflow-hidden rounded-[24px] border border-[#b9ddd8] bg-[#f1fbf8] xl:mb-6"
       aria-labelledby="ride-confirmation-lifecycle-title"
     >
       <div className="border-b border-[#cfe7e3] px-4 py-4 sm:px-5">
         <p className="text-[9px] font-black uppercase tracking-[.18em] text-teal-700">
-          Your ride journey
+          After you confirm
         </p>
         <h4
           id="ride-confirmation-lifecycle-title"
@@ -55,11 +45,11 @@ export function RideConfirmationLifecycle() {
           Payment starts dispatch. Driver assignment confirms the ride.
         </h4>
         <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
-          Paying does not mean a driver has already accepted your trip. After payment, My Trip becomes the single place to follow matching, assignment, pickup, and ride progress.
+          Confirming here creates the protected ride request; it does not claim that a driver is already assigned. Once an authorized driver accepts, My Trip becomes your live status view.
         </p>
       </div>
 
-      <ol className="grid gap-px bg-[#cfe7e3] sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="grid gap-px bg-[#cfe7e3] sm:grid-cols-2 lg:grid-cols-5">
         {STAGES.map((stage, index) => {
           const Icon = stage.icon;
           return (
