@@ -1,24 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
+import { randomInt } from "node:crypto";
 import { booleanPointInPolygon, point } from "@turf/turf";
+import { NextRequest, NextResponse } from "next/server";
+
+import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import {
+  getAdminDb,
+  hasFirebaseAdminConfiguration,
+} from "@/lib/firebase-admin";
+import { resolveMobilityEndpoint } from "@/lib/mobility-hubs";
 import {
   assertMobilityPilotActive,
   MobilityPilotUnavailableError,
 } from "@/lib/mobility-pilot-readiness";
+import { createServerBooking } from "@/lib/server-bookings";
+import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
 import {
   OfficialTaxiRateUnavailableError,
   quoteOfficialTaxiFare,
 } from "@/lib/usvi-taxi-tariffs";
 import { normalizeEstateCollection } from "@/lib/usvi";
-import type { EstateCollection } from "@/types/usvi";
 import type { PickupContext, RideBookingDraft } from "@/types/mobility";
-import { createServerBooking } from "@/lib/server-bookings";
-import {
-  getAdminDb,
-  hasFirebaseAdminConfiguration,
-} from "@/lib/firebase-admin";
-import { authErrorResponse, requireSession } from "@/lib/auth-server";
-import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
-import { randomInt } from "node:crypto";
+import type { EstateCollection } from "@/types/usvi";
 
 const PASSENGER_CONSENT_VERSION = "pilot-2026-07-23";
 const MAX_SCHEDULE_WINDOW_MS = 366 * 24 * 60 * 60 * 1000;
@@ -66,7 +68,9 @@ function optionalFutureDate(value: string | null | undefined, label: string) {
   const timestamp = date.getTime();
   const now = Date.now();
   if (!Number.isFinite(timestamp) || timestamp <= now) {
-    throw new BookingValidationError(`${label} must be a valid future date and time.`);
+    throw new BookingValidationError(
+      `${label} must be a valid future date and time.`,
+    );
   }
   if (timestamp - now > MAX_SCHEDULE_WINDOW_MS) {
     throw new BookingValidationError(`${label} cannot be more than one year away.`);
@@ -83,19 +87,41 @@ function readPickupContext(request: NextRequest): StoredPickupContext | null {
     if (!Number.isFinite(parsed.updatedAt)) return null;
     const age = Date.now() - parsed.updatedAt;
     if (age < -5 * 60 * 1000 || age > PICKUP_CONTEXT_MAX_AGE_MS) return null;
-    if (parsed.meetingPoint && !PICKUP_MEETING_POINTS.has(parsed.meetingPoint)) {
+    if (
+      parsed.meetingPoint &&
+      !PICKUP_MEETING_POINTS.has(parsed.meetingPoint)
+    ) {
       return null;
     }
-    const hasLat = typeof parsed.lat === "number" && Number.isFinite(parsed.lat);
-    const hasLng = typeof parsed.lng === "number" && Number.isFinite(parsed.lng);
+    const hasLat =
+      typeof parsed.lat === "number" && Number.isFinite(parsed.lat);
+    const hasLng =
+      typeof parsed.lng === "number" && Number.isFinite(parsed.lng);
     if (hasLat !== hasLng) {
-      throw new BookingValidationError("Precise pickup coordinates are incomplete. Reset the pickup pin and try again.");
+      throw new BookingValidationError(
+        "Precise pickup coordinates are incomplete. Reset the pickup pin and try again.",
+      );
     }
-    if (hasLat && (parsed.lat! < -90 || parsed.lat! > 90 || parsed.lng! < -180 || parsed.lng! > 180)) {
-      throw new BookingValidationError("Precise pickup coordinates are invalid. Reset the pickup pin and try again.");
+    if (
+      hasLat &&
+      (parsed.lat! < -90 ||
+        parsed.lat! > 90 ||
+        parsed.lng! < -180 ||
+        parsed.lng! > 180)
+    ) {
+      throw new BookingValidationError(
+        "Precise pickup coordinates are invalid. Reset the pickup pin and try again.",
+      );
     }
-    if (parsed.accuracy !== undefined && (!Number.isFinite(parsed.accuracy) || parsed.accuracy < 0 || parsed.accuracy > 10000)) {
-      throw new BookingValidationError("Pickup location accuracy is invalid. Reset the pickup pin and try again.");
+    if (
+      parsed.accuracy !== undefined &&
+      (!Number.isFinite(parsed.accuracy) ||
+        parsed.accuracy < 0 ||
+        parsed.accuracy > 10000)
+    ) {
+      throw new BookingValidationError(
+        "Pickup location accuracy is invalid. Reset the pickup pin and try again.",
+      );
     }
     return parsed;
   } catch (error) {
@@ -104,17 +130,30 @@ function readPickupContext(request: NextRequest): StoredPickupContext | null {
   }
 }
 
-function pickupAccessType(meetingPoint?: string): PickupContext["accessType"] {
+function pickupAccessType(
+  meetingPoint?: string,
+): PickupContext["accessType"] {
   if (meetingPoint === "Airport arrivals") return "airport";
   if (meetingPoint === "Ferry dock") return "ferry";
-  if (meetingPoint === "Hotel lobby" || meetingPoint === "Resort entrance") return "resort";
+  if (
+    meetingPoint === "Hotel lobby" ||
+    meetingPoint === "Resort entrance"
+  ) {
+    return "resort";
+  }
   if (meetingPoint === "Villa / gate") return "villa";
   if (meetingPoint === "Beach entrance") return "beach";
   return "roadside";
 }
 
 function pickupConfidence(context: StoredPickupContext | null) {
-  if (!context || typeof context.lat !== "number" || typeof context.lng !== "number") return 0.92;
+  if (
+    !context ||
+    typeof context.lat !== "number" ||
+    typeof context.lng !== "number"
+  ) {
+    return 0.92;
+  }
   if (context.source === "pin") return 0.98;
   const accuracy = context.accuracy ?? 9999;
   if (accuracy <= 50) return 0.99;
@@ -228,14 +267,18 @@ export async function POST(request: NextRequest) {
     const geojson = (await estatesResponse.json()) as EstateCollection;
     const estates = normalizeEstateCollection(geojson);
 
-    const origin = estates.find((e) => e.geoid === body.originEstateGeoid);
-    const destination = estates.find(
-      (e) => e.geoid === body.destinationEstateGeoid,
+    // Quote and booking creation must resolve the exact same governed endpoint.
+    // This preserves reviewed terminal identities such as STT Airport and Red
+    // Hook Ferry instead of allowing a quote to succeed and booking to fail.
+    const origin = resolveMobilityEndpoint(body.originEstateGeoid, estates);
+    const destination = resolveMobilityEndpoint(
+      body.destinationEstateGeoid,
+      estates,
     );
 
     if (!origin || !destination) {
       return NextResponse.json(
-        { error: "Invalid estate selection." },
+        { error: "Invalid mobility endpoint selection." },
         { status: 400 },
       );
     }
@@ -281,7 +324,10 @@ export async function POST(request: NextRequest) {
       luggage,
     });
     const estimatedSettlement = calculateTaxiSettlement(fare.total);
-    const riderVerificationCode = String(randomInt(0, 10_000)).padStart(4, "0");
+    const riderVerificationCode = String(randomInt(0, 10_000)).padStart(
+      4,
+      "0",
+    );
     const manualPickupInstructions = cleanInstructions(body.pickupInstructions);
     const pickupInstructions = cleanInstructions(
       [pickupContext?.meetingPoint, manualPickupInstructions]
@@ -291,8 +337,12 @@ export async function POST(request: NextRequest) {
     const destinationInstructions = cleanInstructions(
       body.destinationInstructions,
     );
-    const pickupLat = hasPrecisePickup ? pickupContext!.lat! : origin.internalPoint.lat;
-    const pickupLng = hasPrecisePickup ? pickupContext!.lng! : origin.internalPoint.lng;
+    const pickupLat = hasPrecisePickup
+      ? pickupContext!.lat!
+      : origin.internalPoint.lat;
+    const pickupLng = hasPrecisePickup
+      ? pickupContext!.lng!
+      : origin.internalPoint.lng;
 
     const bookingId = await createServerBooking({
       riderId: session.uid,
@@ -352,11 +402,14 @@ export async function POST(request: NextRequest) {
 
     const bookingRef = getAdminDb().collection("bookings").doc(bookingId);
     try {
-      await getAdminDb().collection("bookingRiderSecrets").doc(bookingId).set({
-        riderId: session.uid,
-        code: riderVerificationCode,
-        createdAt: new Date().toISOString(),
-      });
+      await getAdminDb()
+        .collection("bookingRiderSecrets")
+        .doc(bookingId)
+        .set({
+          riderId: session.uid,
+          code: riderVerificationCode,
+          createdAt: new Date().toISOString(),
+        });
       await bookingRef.update({
         passengerConsent: {
           version: PASSENGER_CONSENT_VERSION,
@@ -409,7 +462,11 @@ export async function POST(request: NextRequest) {
     }
     if (error instanceof OfficialTaxiRateUnavailableError) {
       return NextResponse.json(
-        { error: error.message, code: error.code, manualReviewRequired: true },
+        {
+          error: error.message,
+          code: error.code,
+          manualReviewRequired: true,
+        },
         { status: error.status },
       );
     }
