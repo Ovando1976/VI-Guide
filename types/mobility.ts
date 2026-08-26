@@ -55,6 +55,9 @@ export type PickupContext = {
   notes?: string;
   pickupConfidence: number;
   accessType: "roadside" | "villa" | "beach" | "airport" | "ferry" | "resort";
+  locationSource?: "estate_internal_point" | "device" | "pin";
+  locationAccuracyMeters?: number | null;
+  locationUpdatedAt?: string | null;
 };
 
 export type FareBreakdown = {
