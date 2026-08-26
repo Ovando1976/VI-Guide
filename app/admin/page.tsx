@@ -51,6 +51,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
     action: "Open cruise desk",
   },
   {
+    href: "/admin/merchant-registry",
+    icon: Store,
+    eyebrow: "Merchant acquisition CRM",
+    detail:
+      "Track the USVI business universe from profile creation and outreach through verification, connected booking, and revenue activity.",
+    action: "Open merchant CRM",
+  },
+  {
     href: "/admin/business-claims",
     icon: BadgeCheck,
     eyebrow: "Listing verification",
@@ -138,9 +146,9 @@ export default async function DriversPage() {
           {!isAdmin ? (
             <div className="mb-4 rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 text-sm font-semibold leading-6 text-sky-950">
               <strong>Dispatcher workspace.</strong> Operational review, travel
-              desks, business claims, partner intake, notifications, fleet, and
-              read-only payout review remain available here. Merchant account
-              assignment and financial settlement controls stay administrator-only.
+              desks, merchant CRM, business claims, partner intake, notifications,
+              fleet, and read-only payout review remain available here. Merchant
+              account assignment and financial settlement controls stay administrator-only.
             </div>
           ) : null}
 
