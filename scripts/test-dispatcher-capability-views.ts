@@ -78,4 +78,15 @@ expectSource(readinessLayout, 'session.role !== "admin"', "Launch Readiness page
 expectSource(readinessLayout, "/login?next=/admin/readiness", "Launch Readiness keeps exact login return routing");
 expectSource(readinessApi, 'requireSession(["admin"])', "Launch Readiness API remains administrator-only");
 
+const dispatchPage = read("app/admin/dispatch/page.tsx");
+const dispatchHubRadar = read("components/dispatch-hub-radar.tsx");
+const sttDispatchHubs = read("lib/stt-dispatch-hubs.ts");
+expectSource(dispatchPage, "<DispatchHubRadar />", "Dispatch control center surfaces the STT stand radar");
+expectSource(dispatchHubRadar, "booking.origin?.estateGeoid === hub.id", "Stand demand is keyed by exact canonical mobility hub ID");
+expectSource(dispatchHubRadar, "association or stand operator", "Dispatch UI keeps physical queue confirmation explicit");
+expectSource(dispatchHubRadar, "Stand intelligence is not a fare input", "Stand demand cannot imply fare authority");
+expectSource(sttDispatchHubs, 'queueStatusSource: "operator_confirmation_required"', "Queue order is never invented by the app");
+expectSource(sttDispatchHubs, 'pricingEffect: "none"', "Stand metadata has zero pricing authority");
+expectSource(sttDispatchHubs, 'pricingAuthority: "official_usvi_taxi_tariff"', "Official tariff remains the pricing authority");
+
 console.log("USVI Explorer dispatcher capability view contracts passed.");

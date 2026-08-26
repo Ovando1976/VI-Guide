@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Radio, ShieldCheck } from "lucide-react";
 
 import { DispatchBoard } from "@/components/dispatch-board";
+import { DispatchHubRadar } from "@/components/dispatch-hub-radar";
 import { requireSession } from "@/lib/auth-server";
 
 export default async function DispatchPage() {
@@ -24,7 +25,7 @@ export default async function DispatchPage() {
                   Dispatch control center
                 </h1>
                 <p className="mt-1 max-w-2xl text-sm font-semibold leading-6 text-slate-500">
-                  Assign verified drivers, monitor ride progression, and move into live fleet intelligence without leaving operations.
+                  Assign verified drivers, monitor ride progression, preserve association stand procedure, and move into live fleet intelligence without leaving operations.
                 </p>
               </div>
             </div>
@@ -36,6 +37,7 @@ export default async function DispatchPage() {
             </Link>
           </div>
         </section>
+        <DispatchHubRadar />
         <DispatchBoard />
       </div>
     </main>
