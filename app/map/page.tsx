@@ -187,20 +187,36 @@ export default function MapPage() {
               left: 0.5rem !important;
               right: 0.5rem !important;
               top: 4.8rem !important;
+              width: auto !important;
+              max-width: calc(100% - 1rem) !important;
+              overflow: hidden !important;
               flex-direction: row !important;
               align-items: center !important;
-              justify-content: flex-end !important;
+              justify-content: flex-start !important;
               gap: 0.35rem !important;
             }
 
             .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div {
-              max-width: calc(100% - 82px);
+              flex: 1 1 auto;
+              min-width: 0;
+              max-width: none;
               overflow-x: auto;
+              overscroll-behavior-inline: contain;
+              -webkit-overflow-scrolling: touch;
               scrollbar-width: none;
+              padding-right: 0.35rem;
             }
 
             .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div::-webkit-scrollbar {
               display: none;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] > button {
+              flex: 0 0 42px;
+              width: 42px;
+              min-width: 42px;
+              max-width: 42px;
+              margin-right: 0 !important;
             }
 
             .map-customer-page .premium-territory-map > [class*="top-[94px]"] button {
@@ -245,9 +261,21 @@ export default function MapPage() {
             }
 
             .map-customer-page .premium-territory-map .leaflet-bottom.leaflet-right {
-              bottom: auto !important;
-              right: 0.35rem !important;
-              top: 12.5rem !important;
+              bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+              right: 0.45rem !important;
+              top: auto !important;
+            }
+
+            .map-customer-page .premium-territory-map .leaflet-control-attribution {
+              max-width: min(78vw, 330px);
+              margin: 0 !important;
+              padding: 2px 5px !important;
+              border-radius: 7px 0 0 0;
+              background: rgba(255, 255, 255, 0.84) !important;
+              font-size: 7px !important;
+              line-height: 1.25 !important;
+              white-space: normal !important;
+              text-align: right;
             }
 
             .map-customer-page .premium-territory-map .leaflet-control-zoom a {
