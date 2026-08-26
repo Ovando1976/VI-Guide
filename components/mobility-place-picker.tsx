@@ -79,7 +79,7 @@ export function MobilityPlacePicker({ value, placeholder, estates, island, onCha
         const params = new URLSearchParams({
           q: query.trim(),
           island: islandCode(island),
-          type: "estate,district,settlement,harbor,landmark,bay,beach,road,point",
+          type: "accommodation,estate,district,settlement,harbor,landmark,bay,beach,road,point",
           match: "name",
           limit: "10",
         });

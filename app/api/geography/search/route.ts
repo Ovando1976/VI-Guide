@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { getAccommodations } from "@/lib/accommodations";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -83,12 +84,43 @@ function normalizeText(value: string) {
     .toLowerCase();
 }
 
+function verifiedAccommodationEntries(): GeographicDictionaryEntry[] {
+  return getAccommodations().flatMap((item) => {
+    // Accommodation search stays fail-closed. getAccommodations() only attaches
+    // estateGeoid when the property has a property-specific reviewed mapping.
+    if (!item.estateGeoid) return [];
+
+    return [
+      {
+        id: `accommodation-${item.id}`,
+        slug: item.slug,
+        canonicalName: item.name,
+        featureType: "accommodation",
+        island: item.island.toUpperCase(),
+        relatedEstateGeoids: [item.estateGeoid],
+        shortDescription: item.location
+          ? `${item.category} in ${item.location}`
+          : `${item.category} accommodation`,
+        aliases: [],
+        variantSpellings: [],
+        obsoleteNames: [],
+        linguisticEquivalents: [],
+        searchTokens: [item.name, item.location || "", ...(item.tags || [])],
+        featured: item.featured,
+        parseConfidence: 1,
+        needsReview: false,
+      },
+    ];
+  });
+}
+
 async function loadEntries() {
   // Curated entries carry reviewed traveler aliases and governed fare-area links.
   // Keep them available even when Firebase is configured; Firebase augments rather
   // than replaces the checked-in search safety layer.
   const entries: GeographicDictionaryEntry[] = [
     ...(GEOGRAPHIC_DICTIONARY_SEED as GeographicDictionaryEntry[]),
+    ...verifiedAccommodationEntries(),
   ];
 
   if (hasFirebaseAdminConfiguration()) {
