@@ -10,6 +10,10 @@ const lifecycle = fs.readFileSync(
   "utf8",
 );
 const bookingRoute = fs.readFileSync(path.join(root, "app/api/bookings/route.ts"), "utf8");
+const quoteRoute = fs.readFileSync(
+  path.join(root, "app/api/bookings/quote/route.ts"),
+  "utf8",
+);
 const serverBookings = fs.readFileSync(path.join(root, "lib/server-bookings.ts"), "utf8");
 const serviceModel = fs.readFileSync(
   path.join(root, "lib/usvi-taxi-service-model.ts"),
@@ -66,6 +70,16 @@ expectPattern(
   bookingRoute,
   /paymentMethod\s*:\s*["']online_card["']/,
   "server controls the payment method record",
+);
+expectSource(
+  quoteRoute,
+  "resolveMobilityEndpoint(body.originEstateGeoid, estates)",
+  "quote creation resolves canonical mobility hubs through the governed endpoint resolver",
+);
+expectSource(
+  bookingRoute,
+  "resolveMobilityEndpoint(body.originEstateGeoid, estates)",
+  "booking creation uses the same canonical mobility hub resolver as quoting",
 );
 expectSource(
   serverBookings,
