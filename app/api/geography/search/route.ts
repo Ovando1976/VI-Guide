@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
 import path from "node:path";
 
+import { getAccommodations } from "@/lib/accommodations";
 import {
   getAdminDb,
   hasFirebaseAdminConfiguration,
@@ -17,6 +18,8 @@ type GeographicDictionaryEntry = {
   canonicalName: string;
   featureType: string;
   island: string;
+  geoid?: string;
+  relatedEstateGeoids?: string[];
   shortDescription?: string;
   description?: string;
   aliases?: string[];
@@ -25,6 +28,8 @@ type GeographicDictionaryEntry = {
   linguisticEquivalents?: string[];
   searchTokens?: string[];
   featured?: boolean;
+  parseConfidence?: number;
+  needsReview?: boolean;
 };
 
 function looksLikeGarbageName(value: string) {
@@ -61,9 +66,7 @@ function looksLikeGarbageName(value: string) {
   return false;
 }
 
-function isUsableEntry(
-  entry: GeographicDictionaryEntry & { parseConfidence?: number; needsReview?: boolean },
-) {
+function isUsableEntry(entry: GeographicDictionaryEntry) {
   if (!entry.canonicalName) return false;
   if (looksLikeGarbageName(entry.canonicalName)) return false;
   if ((entry.parseConfidence ?? 1) < 0.7) return false;
@@ -81,7 +84,45 @@ function normalizeText(value: string) {
     .toLowerCase();
 }
 
+function verifiedAccommodationEntries(): GeographicDictionaryEntry[] {
+  return getAccommodations().flatMap((item) => {
+    // Accommodation search stays fail-closed. getAccommodations() only attaches
+    // estateGeoid when the property has a property-specific reviewed mapping.
+    if (!item.estateGeoid) return [];
+
+    return [
+      {
+        id: `accommodation-${item.id}`,
+        slug: item.slug,
+        canonicalName: item.name,
+        featureType: "accommodation",
+        island: item.island.toUpperCase(),
+        relatedEstateGeoids: [item.estateGeoid],
+        shortDescription: item.location
+          ? `${item.category} in ${item.location}`
+          : `${item.category} accommodation`,
+        aliases: [],
+        variantSpellings: [],
+        obsoleteNames: [],
+        linguisticEquivalents: [],
+        searchTokens: [item.name, item.location || "", ...(item.tags || [])],
+        featured: item.featured,
+        parseConfidence: 1,
+        needsReview: false,
+      },
+    ];
+  });
+}
+
 async function loadEntries() {
+  // Curated entries carry reviewed traveler aliases and governed fare-area links.
+  // Keep them available even when Firebase is configured; Firebase augments rather
+  // than replaces the checked-in search safety layer.
+  const entries: GeographicDictionaryEntry[] = [
+    ...(GEOGRAPHIC_DICTIONARY_SEED as GeographicDictionaryEntry[]),
+    ...verifiedAccommodationEntries(),
+  ];
+
   if (hasFirebaseAdminConfiguration()) {
     try {
       const snapshot = await getAdminDb()
@@ -89,25 +130,32 @@ async function loadEntries() {
         .limit(5000)
         .get();
       if (!snapshot.empty) {
-        return snapshot.docs.map(
-          (document) =>
-            ({ id: document.id, ...document.data() }) as GeographicDictionaryEntry,
+        entries.push(
+          ...snapshot.docs.map(
+            (document) =>
+              ({ id: document.id, ...document.data() }) as GeographicDictionaryEntry,
+          ),
         );
       }
     } catch {
-      // Local development and previews can search the checked-in snapshot.
+      // Previews can still use the curated and checked-in generated sources.
     }
   }
 
-  const filePath = path.join(
-    process.cwd(),
-    "data",
-    "generated",
-    "geographic-dictionary-normalized.json",
-  );
-  const raw = await fs.readFile(filePath, "utf8");
-  const generated = JSON.parse(raw) as GeographicDictionaryEntry[];
-  return [...GEOGRAPHIC_DICTIONARY_SEED, ...generated];
+  try {
+    const filePath = path.join(
+      process.cwd(),
+      "data",
+      "generated",
+      "geographic-dictionary-normalized.json",
+    );
+    const raw = await fs.readFile(filePath, "utf8");
+    entries.push(...(JSON.parse(raw) as GeographicDictionaryEntry[]));
+  } catch {
+    // Curated/Firebase entries remain searchable if the generated snapshot is absent.
+  }
+
+  return entries;
 }
 
 export async function GET(request: NextRequest) {
@@ -116,6 +164,8 @@ export async function GET(request: NextRequest) {
     const q = (searchParams.get("q") || "").trim();
     const island = (searchParams.get("island") || "all").trim().toUpperCase();
     const type = (searchParams.get("type") || "all").trim().toLowerCase();
+    const match = (searchParams.get("match") || "all").trim().toLowerCase();
+    const nameOnly = match === "name";
     const limit = Math.min(Math.max(Number(searchParams.get("limit") || 20), 1), 50);
 
     if (!q) {
@@ -138,46 +188,67 @@ export async function GET(request: NextRequest) {
     }
 
     const nq = normalizeText(q);
-    const results = entries
-      .map((entry) => {
+    const ranked = entries
+      .map((entry, sourceIndex) => {
         const aliases = [
           ...(entry.aliases || []),
           ...(entry.variantSpellings || []),
           ...(entry.obsoleteNames || []),
           ...(entry.linguisticEquivalents || []),
         ];
-
+        const normalizedAliases = aliases.map(normalizeText).filter(Boolean);
         const canonical = normalizeText(entry.canonicalName);
         const shortDescription = normalizeText(entry.shortDescription || "");
         const description = normalizeText(entry.description || "");
+        const normalizedTokens = (entry.searchTokens || []).map(normalizeText);
         const exactCanonical = canonical === nq;
         const startsCanonical = canonical.startsWith(nq);
-        const aliasMatch = aliases.some((alias) => normalizeText(alias) === nq);
-        const tokenMatch = (entry.searchTokens || []).includes(nq);
+        const exactAlias = normalizedAliases.some((alias) => alias === nq);
+        const startsAlias = normalizedAliases.some((alias) => alias.startsWith(nq));
         const phraseMatch =
-          canonical.includes(nq) || aliases.some((alias) => normalizeText(alias).includes(nq));
+          canonical.includes(nq) || normalizedAliases.some((alias) => alias.includes(nq));
+        const tokenMatch = !nameOnly && normalizedTokens.includes(nq);
         const descriptionMatch =
-          nq.length >= 5 && (shortDescription.includes(nq) || description.includes(nq));
+          !nameOnly &&
+          nq.length >= 5 &&
+          (shortDescription.includes(nq) || description.includes(nq));
 
         if (
-          !exactCanonical && !startsCanonical && !aliasMatch && !tokenMatch &&
-          !phraseMatch && !descriptionMatch
+          !exactCanonical && !startsCanonical && !exactAlias && !startsAlias &&
+          !phraseMatch && !tokenMatch && !descriptionMatch
         ) return null;
 
         const score =
-          (exactCanonical ? 120 : 0) +
-          (startsCanonical ? 90 : 0) +
-          (aliasMatch ? 80 : 0) +
-          (tokenMatch ? 60 : 0) +
-          (phraseMatch ? 30 : 0) +
-          (descriptionMatch ? 10 : 0) +
+          (exactCanonical ? 140 : 0) +
+          (exactAlias ? 130 : 0) +
+          (startsCanonical ? 100 : 0) +
+          (startsAlias ? 90 : 0) +
+          (phraseMatch ? 45 : 0) +
+          (tokenMatch ? 20 : 0) +
+          (descriptionMatch ? 5 : 0) +
           (entry.featured ? 5 : 0);
 
-        return { ...entry, aliases, score };
+        return { ...entry, aliases, score, sourceIndex };
       })
-      .filter(Boolean)
-      .sort((a, b) => b!.score - a!.score)
-      .slice(0, limit);
+      .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+      .sort((a, b) => b.score - a.score || a.sourceIndex - b.sourceIndex);
+
+    // Firebase/generated snapshots can contain the same named feature as the
+    // curated layer. Deduplicate after ranking so the curated, governed record
+    // wins an equal-score tie and users never see repeated place rows.
+    const seen = new Set<string>();
+    const results = [] as typeof ranked;
+    for (const entry of ranked) {
+      const key = [
+        entry.island.toUpperCase(),
+        normalizeText(entry.featureType || ""),
+        normalizeText(entry.canonicalName),
+      ].join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      results.push(entry);
+      if (results.length >= limit) break;
+    }
 
     return NextResponse.json({ ok: true, count: results.length, results });
   } catch (error) {
