@@ -3,6 +3,7 @@
 import { ArrowDownUp, Circle, MapPin, Navigation, ShieldCheck } from "lucide-react";
 
 import { MobilityPlacePicker } from "@/components/mobility-place-picker";
+import { PickupPositionControl } from "@/components/pickup-position-control";
 import type { EstateRecord, IslandCode } from "@/types/usvi";
 
 type Props = {
@@ -95,6 +96,13 @@ export function MobilityRouteFields({
           <ArrowDownUp className="h-5 w-5" />
         </button>
       </div>
+
+      <PickupPositionControl
+        estates={estates}
+        island={island}
+        selectedGeoid={fromGeoid}
+        onSelectEstate={onSelectFrom}
+      />
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 px-1">
         <p className="max-w-2xl text-[10px] font-semibold leading-5 text-slate-500">
