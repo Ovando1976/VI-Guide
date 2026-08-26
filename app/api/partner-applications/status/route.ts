@@ -9,6 +9,7 @@ import { normalizePartnerApplicationStatus } from "@/lib/partners/partner-applic
 import {
   normalizePartnerApplicationReference,
   normalizePartnerStatusEmail,
+  partnerStatusCollectionForReference,
   publicPartnerApplicationStatus,
 } from "@/lib/partners/partner-application-status";
 import {
@@ -24,7 +25,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: NextRequest) {
   if (!hasFirebaseAdminConfiguration()) {
     return NextResponse.json(
-      { error: "Partner application status is not configured." },
+      { error: "Business request status is not configured." },
       { status: 503 },
     );
   }
@@ -36,7 +37,7 @@ export async function POST(request: NextRequest) {
   const email = normalizePartnerStatusEmail(body?.email);
   if (!reference || !email) {
     return NextResponse.json(
-      { error: "Enter the application reference and contact email." },
+      { error: "Enter the request reference and contact email." },
       { status: 400 },
     );
   }
@@ -72,7 +73,7 @@ export async function POST(request: NextRequest) {
     if (!allowed) return throttled();
 
     const snapshot = await db
-      .collection("partnerApplications")
+      .collection(partnerStatusCollectionForReference(reference))
       .where("reference", "==", reference)
       .limit(2)
       .get();
@@ -91,7 +92,7 @@ export async function POST(request: NextRequest) {
         application: {
           reference,
           businessName:
-            clean(data.businessName, 160) || "USVI Explorer partner application",
+            clean(data.businessName, 160) || "USVI Explorer business request",
           ...publicStatus,
           submittedAt: normalizeTimestampOrEpoch(
             data.submittedAt ?? data.createdAt ?? data.serverCreatedAt,
@@ -108,9 +109,9 @@ export async function POST(request: NextRequest) {
       },
     );
   } catch (error) {
-    console.error("partner application status error", error);
+    console.error("business request status error", error);
     return NextResponse.json(
-      { error: "Unable to load the application status right now." },
+      { error: "Unable to load the request status right now." },
       { status: 500 },
     );
   }
@@ -120,7 +121,7 @@ function notFound() {
   return NextResponse.json(
     {
       error:
-        "No application matched that reference and contact email combination.",
+        "No request matched that reference and contact email combination.",
     },
     {
       status: 404,
@@ -133,7 +134,7 @@ function throttled() {
   return NextResponse.json(
     {
       error:
-        "Unable to verify this application right now. Try again later or contact the USVI Explorer team.",
+        "Unable to verify this request right now. Try again later or contact the USVI Explorer team.",
     },
     {
       status: 429,
