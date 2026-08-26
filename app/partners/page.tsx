@@ -66,7 +66,7 @@ export default function PartnersPage() {
               <Building2 size={14} /> USVI Explorer business network
             </div>
             <h1 className="vi-display mt-7 max-w-5xl text-[clamp(3.8rem,8vw,7rem)] font-bold leading-[.84] text-white">
-              Your business belongs
+              Put local businesses
               <span className="block italic text-[#73e3d9]">inside the traveler journey.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base font-semibold leading-7 text-white/74 sm:text-xl sm:leading-8">
