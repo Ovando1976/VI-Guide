@@ -104,7 +104,7 @@ export default function PartnersPage() {
           <PartnerAction
             icon={Building2}
             eyebrow="Need merchant tools"
-            title="Apply to the network"
+            title="Apply to join the network"
             text="For businesses that want booking, payments, concierge referrals, promotions, or a listing that still needs to be matched or created."
             href="/partners/apply"
             label="Start application"
@@ -113,7 +113,7 @@ export default function PartnersPage() {
           <PartnerAction
             icon={Search}
             eyebrow="Request submitted"
-            title="Check review status"
+            title="Check the public review stage"
             text="Use the request reference and the same contact email to privately see the current review stage."
             href="/partners/status"
             label="Check status"
