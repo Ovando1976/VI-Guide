@@ -10,6 +10,7 @@ import {
   UsersRound,
   WalletCards,
   BarChart3,
+  Rocket,
 } from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
@@ -67,6 +68,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
 ];
 
 const ADMIN_ONLY_ACTIONS: AdminActionDefinition[] = [
+  {
+    href: "/admin/readiness",
+    icon: Rocket,
+    eyebrow: "Public beta launch",
+    detail:
+      "Re-run regulated Mobility gates and activate or pause the public beta per island with an audited administrator attestation.",
+    action: "Open launch gate",
+  },
   {
     href: "/admin/customer-insights",
     icon: BarChart3,
