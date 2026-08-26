@@ -3,6 +3,7 @@ import { Radio, ShieldCheck } from "lucide-react";
 
 import { DispatchBoard } from "@/components/dispatch-board";
 import { DispatchHubRadar } from "@/components/dispatch-hub-radar";
+import { SharedDispatchAdvisor } from "@/components/shared-dispatch-advisor";
 import { requireSession } from "@/lib/auth-server";
 
 export default async function DispatchPage() {
@@ -38,6 +39,7 @@ export default async function DispatchPage() {
           </div>
         </section>
         <DispatchHubRadar />
+        <SharedDispatchAdvisor />
         <DispatchBoard />
       </div>
     </main>

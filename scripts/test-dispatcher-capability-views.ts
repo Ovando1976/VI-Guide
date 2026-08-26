@@ -89,4 +89,30 @@ expectSource(sttDispatchHubs, 'queueStatusSource: "operator_confirmation_require
 expectSource(sttDispatchHubs, 'pricingEffect: "none"', "Stand metadata has zero pricing authority");
 expectSource(sttDispatchHubs, 'pricingAuthority: "official_usvi_taxi_tariff"', "Official tariff remains the pricing authority");
 
+const sharedDispatchAdvisor = read("components/shared-dispatch-advisor.tsx");
+const sharedDispatchGrouping = read("lib/shared-dispatch-grouping.ts");
+expectSource(dispatchPage, "<SharedDispatchAdvisor />", "Dispatch control center surfaces shared Safari/van advice");
+expectSource(sharedDispatchGrouping, 'booking.paymentIntegrityStatus !== "verified"', "Shared grouping requires verified captured payment state");
+expectSource(sharedDispatchGrouping, 'sharedExpectation(booking) !== "shared"', "Only shared-capable service enters the grouping advisor");
+expectSource(sharedDispatchGrouping, 'const key = `${originGeoid}::${destinationGeoid}`', "Grouping requires exact pickup hub and governed destination identity");
+expectSource(sharedDispatchGrouping, "bookings.length >= 2", "A shared candidate requires at least two separate paid parties");
+expectSource(sharedDispatchGrouping, 'vehicle.type !== "van" && vehicle.type !== "safari"', "Shared advice only considers van or Safari fleet vehicles");
+expectSource(sharedDispatchGrouping, "capacity < params.passengers", "Passenger capacity must fit the combined load");
+expectSource(sharedDispatchGrouping, "luggageCapacity < params.luggage", "Luggage capacity must fit the combined load");
+expectSource(sharedDispatchGrouping, "driver.airportCertified !== true", "Airport grouping requires airport-certified drivers");
+expectSource(sharedDispatchGrouping, "driver.ferryCertified !== true", "Ferry grouping requires ferry-certified drivers");
+expectSource(sharedDispatchGrouping, 'pricingEffect: "none"', "Shared grouping has zero pricing authority");
+expectSource(sharedDispatchAdvisor, "association/stand operator", "Physical queue and sequence remain operator-confirmed");
+expectSource(sharedDispatchAdvisor, "assignment server reruns payment", "Final dispatch eligibility remains server-owned");
+expectSource(sharedDispatchAdvisor, "does not recompute or combine fares", "Individual governed fares remain separate");
+if (
+  sharedDispatchAdvisor.includes("updateDoc") ||
+  sharedDispatchAdvisor.includes("setDoc") ||
+  sharedDispatchAdvisor.includes("deleteDoc")
+) {
+  throw new Error(
+    "Dispatcher capability view contract failed: shared dispatch advisor must remain read-only",
+  );
+}
+
 console.log("USVI Explorer dispatcher capability view contracts passed.");
