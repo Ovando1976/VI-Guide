@@ -107,7 +107,7 @@ export async function PATCH(request: NextRequest) {
       }
 
       const current = snapshot.data() ?? {};
-      const patch: Record<string, unknown> = {
+      const patch: FirebaseFirestore.UpdateData<FirebaseFirestore.DocumentData> = {
         updatedAt: nowIso,
         serverUpdatedAt: FieldValue.serverTimestamp(),
       };
