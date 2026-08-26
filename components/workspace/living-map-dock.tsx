@@ -91,7 +91,7 @@ export function LivingMapDock() {
 
   return (
     <aside
-      className="pointer-events-none fixed inset-x-3 top-[6.65rem] z-[1320] mx-auto max-w-5xl sm:inset-x-5"
+      className="pointer-events-none relative z-[1320] mx-3 mt-3 sm:mx-5 md:fixed md:inset-x-5 md:top-[6.65rem] md:mx-auto md:mt-0 md:max-w-5xl"
       aria-live="polite"
     >
       <div className="pointer-events-auto ml-auto overflow-hidden rounded-[22px] border border-white/45 bg-[#082c31]/95 text-white shadow-[0_18px_60px_rgba(3,31,34,.3)] backdrop-blur-xl sm:max-w-[720px]">

@@ -127,12 +127,161 @@ export default function MapPage() {
 
           @media (max-width: 700px) {
             .map-customer-page main {
-              padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)) !important;
+              padding-bottom: calc(5.75rem + env(safe-area-inset-bottom)) !important;
+            }
+
+            .map-customer-page .map-experience-hero {
+              border-radius: 20px;
+              padding: 0.8rem 0.9rem;
+            }
+
+            .map-customer-page .territory-map-stage {
+              border-radius: 22px !important;
+            }
+
+            .map-customer-page .territory-map-stage__header {
+              padding: 0.75rem !important;
+            }
+
+            .map-customer-page .territory-map-stage__header h2 {
+              font-size: 1.2rem !important;
+            }
+
+            .map-customer-page .territory-map-stage__canvas {
+              min-height: 0 !important;
+              padding: 0 !important;
+            }
+
+            .map-customer-page .premium-territory-map {
+              border-radius: 18px !important;
             }
 
             .map-customer-page div:has(> .leaflet-container),
             .map-customer-page .leaflet-container {
-              height: max(520px, calc(100dvh - 210px)) !important;
+              height: clamp(600px, calc(100dvh - 105px), 760px) !important;
+              min-height: 600px;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] {
+              gap: 0.4rem !important;
+              padding: 0.7rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:first-child > div:last-child {
+              display: none;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child {
+              max-width: 58%;
+              gap: 0.25rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child > span,
+            .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child > button {
+              min-height: 36px;
+              padding: 0.4rem 0.5rem !important;
+              font-size: 7px !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] {
+              left: 0.5rem !important;
+              right: 0.5rem !important;
+              top: 4.8rem !important;
+              width: auto !important;
+              max-width: calc(100% - 1rem) !important;
+              overflow: hidden !important;
+              flex-direction: row !important;
+              align-items: center !important;
+              justify-content: flex-start !important;
+              gap: 0.35rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div {
+              flex: 1 1 auto;
+              min-width: 0;
+              max-width: none;
+              overflow-x: auto;
+              overscroll-behavior-inline: contain;
+              -webkit-overflow-scrolling: touch;
+              scrollbar-width: none;
+              padding-right: 0.35rem;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div::-webkit-scrollbar {
+              display: none;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] > button {
+              flex: 0 0 42px;
+              width: 42px;
+              min-width: 42px;
+              max-width: 42px;
+              margin-right: 0 !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[94px]"] button {
+              min-height: 40px;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[142px]"] {
+              left: 0.5rem !important;
+              right: 0.5rem !important;
+              top: 7.65rem !important;
+              padding: 0.35rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="top-[142px]"] button {
+              min-height: 40px;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="bottom-0"] {
+              padding-bottom: 0.5rem !important;
+              padding-left: 0.5rem !important;
+              padding-right: 0.5rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="bottom-0"] > div {
+              max-width: 100%;
+              border-radius: 16px !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="bottom-0"] button {
+              min-height: 42px;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="bottom-24"] {
+              bottom: 4.75rem !important;
+              left: 0.5rem !important;
+              right: 0.5rem !important;
+            }
+
+            .map-customer-page .premium-territory-map > [class*="bottom-24"] a,
+            .map-customer-page .premium-territory-map > [class*="bottom-24"] button {
+              min-height: 44px;
+            }
+
+            .map-customer-page .premium-territory-map .leaflet-bottom.leaflet-right {
+              bottom: calc(5rem + env(safe-area-inset-bottom)) !important;
+              right: 0.45rem !important;
+              top: auto !important;
+            }
+
+            .map-customer-page .premium-territory-map .leaflet-control-attribution {
+              max-width: min(78vw, 330px);
+              margin: 0 !important;
+              padding: 2px 5px !important;
+              border-radius: 7px 0 0 0;
+              background: rgba(255, 255, 255, 0.84) !important;
+              font-size: 7px !important;
+              line-height: 1.25 !important;
+              white-space: normal !important;
+              text-align: right;
+            }
+
+            .map-customer-page .premium-territory-map .leaflet-control-zoom a {
+              width: 42px;
+              height: 42px;
+              line-height: 42px;
             }
           }
         `}</style>
