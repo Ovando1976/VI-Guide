@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { href: "/admin/travel-proposals", label: "Proposals" },
   { href: "/admin/cruise-requests", label: "Cruise Advisor" },
   { href: "/admin/cruise-inventory", label: "Cruise Inventory" },
+  { href: "/admin/merchant-registry", label: "Merchant CRM" },
   { href: "/admin/fleet", label: "Fleet" },
   { href: "/admin/payouts", label: "Payouts" },
 ];
