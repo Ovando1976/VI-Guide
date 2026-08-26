@@ -30,6 +30,14 @@ export type RideBookingPaymentStatus =
   | "failed"
   | "canceled";
 
+export type TaxiDispatchPolicySnapshot = {
+  version: "usvi-regulated-hybrid-v1";
+  serviceExpectation: "shared" | "direct_request";
+  queueTreatment: "queue_compatible" | "direct_request";
+  exclusivity: "not_included" | "dispatch_confirmation_required";
+  pricingAuthority: "official_usvi_taxi_tariff";
+};
+
 export type BookingRefundStatus =
   | "not_required"
   | "pending"
@@ -210,6 +218,7 @@ export type RideBooking = {
   connectionKind?: "flight" | "ferry" | "cruise" | "appointment" | null;
   paymentMethod?: "online_card";
   serviceExpectation?: "shared" | "direct_request";
+  dispatchPolicy?: TaxiDispatchPolicySnapshot;
   estimatedSettlement?: {
     grossFare: number;
     commissionRate: number;

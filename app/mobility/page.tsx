@@ -5,6 +5,7 @@ import { MobilityBookingScreen } from "@/components/mobility-booking-screen";
 import { FareStatusBanner } from "@/components/mobility/fare-status-banner";
 import { RideConfirmationPortal } from "@/components/mobility/ride-confirmation-portal";
 import { TripAwareMobilityHandoff } from "@/components/mobility/trip-aware-mobility-handoff";
+import { UsviTaxiServiceNotice } from "@/components/mobility/usvi-taxi-service-notice";
 
 type MobilitySearchParams = Record<string, string | string[] | undefined>;
 
@@ -137,6 +138,7 @@ export default function MobilityPage({
       <Suspense fallback={<MobilityLoadingState />}>
         <TripAwareMobilityHandoff />
         <FareStatusBanner />
+        <UsviTaxiServiceNotice />
         <MobilityBookingScreen />
         <RideConfirmationPortal />
       </Suspense>

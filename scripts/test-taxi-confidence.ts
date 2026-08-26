@@ -11,6 +11,14 @@ const lifecycle = fs.readFileSync(
 );
 const bookingRoute = fs.readFileSync(path.join(root, "app/api/bookings/route.ts"), "utf8");
 const serverBookings = fs.readFileSync(path.join(root, "lib/server-bookings.ts"), "utf8");
+const serviceModel = fs.readFileSync(
+  path.join(root, "lib/usvi-taxi-service-model.ts"),
+  "utf8",
+);
+const serviceNotice = fs.readFileSync(
+  path.join(root, "components/mobility/usvi-taxi-service-notice.tsx"),
+  "utf8",
+);
 
 function expectSource(source: string, value: string, label: string) {
   if (!source.includes(value)) {
@@ -63,6 +71,43 @@ expectSource(
   serverBookings,
   "serviceExpectation",
   "trip records preserve shared/direct expectations",
+);
+expectSource(
+  serverBookings,
+  "getUsviTaxiServicePolicy(booking.mode)",
+  "service expectation is derived at the trusted server boundary",
+);
+for (const mode of ["standard", "shared", "safari", "airport", "ferry-transfer"]) {
+  expectSource(
+    serviceModel,
+    `"${mode}"`,
+    `${mode} remains shared-dispatch capable`,
+  );
+}
+expectSource(
+  serviceModel,
+  'exclusivity: "not_included"',
+  "standard shared dispatch never silently promises exclusivity",
+);
+expectSource(
+  serviceModel,
+  'exclusivity: "dispatch_confirmation_required"',
+  "direct requests require explicit dispatch confirmation for exclusivity",
+);
+expectSource(
+  serviceModel,
+  'pricingAuthority: "official_usvi_taxi_tariff"',
+  "service preference cannot replace the official pricing authority",
+);
+expectSource(
+  serviceNotice,
+  "Shared dispatch is the normal service expectation.",
+  "traveler UI explains the USVI shared-service model",
+);
+expectSource(
+  serviceNotice,
+  "A private or exclusive vehicle is not included in the standard quote.",
+  "traveler UI separates exclusive service from standard tariff pricing",
 );
 expectSource(
   panel,
