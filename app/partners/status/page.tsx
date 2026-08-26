@@ -18,8 +18,8 @@ export default function PartnerApplicationStatusPage({
     <>
       <div className="bg-[#032f2d] px-4 pt-5 sm:px-7 lg:px-10">
         <ViPublicHeader
-          actionHref="/partners/claim"
-          actionLabel="Claim your business"
+          actionHref="/partners/apply"
+          actionLabel="Apply to network"
           actionIcon={BadgeCheck}
           secondaryHref="/partners"
           secondaryLabel="Business network"
