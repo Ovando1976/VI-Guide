@@ -97,7 +97,7 @@ export async function POST() {
           reconciledClaims += 1;
         }
 
-        const payload: Record<string, unknown> = {
+        const payload: FirebaseFirestore.DocumentData = {
           canonicalKey: candidate.canonicalKey,
           businessName: candidate.businessName,
           island: candidate.island,
