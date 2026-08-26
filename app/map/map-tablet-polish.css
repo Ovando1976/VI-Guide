@@ -1,0 +1,68 @@
+@media (min-width: 701px) and (max-width: 1024px) {
+  .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] {
+    gap: 0.45rem !important;
+    padding: 0.75rem 0.85rem !important;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child {
+    max-width: 60%;
+    gap: 0.3rem !important;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child > span,
+  .map-customer-page .premium-territory-map > [class*="inset-x-0"][class*="top-0"] > div:last-child > button {
+    min-height: 36px;
+    padding: 0.42rem 0.55rem !important;
+    font-size: 7.5px !important;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[94px]"] {
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    width: auto !important;
+    max-width: calc(100% - 1.5rem) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch !important;
+    gap: 0.4rem !important;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div {
+    min-width: 0;
+    max-width: none;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[94px]"] > div button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[94px]"] > button {
+    min-height: 40px;
+    min-width: 76px;
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+    white-space: nowrap;
+  }
+
+  .map-customer-page .premium-territory-map > [class*="top-[142px]"] {
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    max-width: none !important;
+  }
+
+  .map-customer-page .premium-territory-map .vi-place-cluster > div {
+    transform: scale(0.78);
+    transform-origin: center;
+  }
+}
