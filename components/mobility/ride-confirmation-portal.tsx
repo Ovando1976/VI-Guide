@@ -9,17 +9,15 @@ export function RideConfirmationPortal() {
   const [target, setTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    let frame = 0;
-    const locateTarget = () => {
-      const review = document.getElementById("trip-review");
-      if (review) {
-        setTarget(review);
-        return;
-      }
-      frame = window.requestAnimationFrame(locateTarget);
+    const syncTarget = () => {
+      setTarget(document.getElementById("trip-review"));
     };
-    locateTarget();
-    return () => window.cancelAnimationFrame(frame);
+
+    syncTarget();
+    const observer = new MutationObserver(syncTarget);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
 
   if (!target) return null;
