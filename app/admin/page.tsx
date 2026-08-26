@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
+  BadgeCheck,
+  BarChart3,
   CircleDollarSign,
   Compass,
   FileCheck2,
   MailCheck,
+  Rocket,
   ShipWheel,
   Store,
   UsersRound,
   WalletCards,
-  BarChart3,
-  Rocket,
 } from "lucide-react";
 
 import { DriverRosterBoard } from "@/components/drivers-board";
@@ -48,6 +49,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
     detail:
       "Research cruise-planning requests, preserve advisor context, and move qualified leads toward booking.",
     action: "Open cruise desk",
+  },
+  {
+    href: "/admin/business-claims",
+    icon: BadgeCheck,
+    eyebrow: "Listing verification",
+    detail:
+      "Review business ownership claims before any account receives listing-scoped merchant access.",
+    action: "Review claims",
   },
   {
     href: "/admin/partner-applications",
@@ -129,9 +138,9 @@ export default async function DriversPage() {
           {!isAdmin ? (
             <div className="mb-4 rounded-2xl border border-sky-200 bg-sky-50 px-5 py-4 text-sm font-semibold leading-6 text-sky-950">
               <strong>Dispatcher workspace.</strong> Operational review, travel
-              desks, partner intake, notifications, fleet, and read-only payout
-              review remain available here. Merchant account assignment and
-              financial settlement controls stay administrator-only.
+              desks, business claims, partner intake, notifications, fleet, and
+              read-only payout review remain available here. Merchant account
+              assignment and financial settlement controls stay administrator-only.
             </div>
           ) : null}
 
