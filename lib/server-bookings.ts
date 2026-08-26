@@ -11,6 +11,7 @@ import type { RideBooking } from "@/types/mobility";
 import type { TripEventType } from "@/types/trip-event";
 import { assertDispatchEligible } from "@/lib/taxi-dispatch-eligibility";
 import { calculateTaxiSettlement } from "@/lib/taxi-settlement";
+import { getUsviTaxiServicePolicy } from "@/lib/usvi-taxi-service-model";
 
 const NEXT_STATUSES: Record<RideBooking["status"], RideBooking["status"][]> = {
   draft: ["requested", "cancelled"],
@@ -45,6 +46,10 @@ export async function createServerBooking(
   booking: Omit<RideBooking, "id">,
 ): Promise<string> {
   const db = getAdminDb();
+  // Service semantics are server-owned. The rider can choose a trip mode, but
+  // cannot self-declare an exclusive/private ride or bypass stand-compatible
+  // shared dispatch. Pricing remains the governed tariff snapshot below.
+  const dispatchPolicy = getUsviTaxiServicePolicy(booking.mode);
   const reference = await db.collection("bookings").add({
     riderId: booking.riderId,
     driverId: booking.driverId ?? null,
@@ -66,11 +71,8 @@ export async function createServerBooking(
     connectionDeadline: booking.connectionDeadline ?? null,
     connectionKind: booking.connectionKind ?? null,
     paymentMethod: booking.paymentMethod ?? "online_card",
-    serviceExpectation:
-      booking.serviceExpectation ??
-      (booking.mode === "shared" || booking.mode === "safari"
-        ? "shared"
-        : "direct_request"),
+    serviceExpectation: dispatchPolicy.serviceExpectation,
+    dispatchPolicy,
     estimatedSettlement: booking.estimatedSettlement ?? null,
     riderVerification: booking.riderVerification ?? { status: "required" },
     notes: booking.notes ?? "",
