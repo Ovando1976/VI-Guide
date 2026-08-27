@@ -32,6 +32,7 @@ import {
   readSelectedTravelerTripPlanId,
   writeSelectedTravelerTripPlanId,
 } from "@/lib/traveler-trip-selection";
+import { buildJourneyMobilityHref } from "@/lib/mobility/ride-links";
 import type {
   IntelligenceAction,
   IntelligenceIsland,
@@ -200,12 +201,7 @@ export function OrchestratedConciergeScreen() {
       return;
     }
     if (destination === "mobility") {
-      const params = new URLSearchParams({ island: plan.island, trip: plan.id });
-      const first = plan.plan[0];
-      const last = plan.plan[plan.plan.length - 1];
-      if (first?.title) params.set("from", first.title);
-      if (last?.title && last.id !== first?.id) params.set("to", last.title);
-      router.push(`/mobility?${params.toString()}`);
+      router.push(buildJourneyMobilityHref(plan));
       return;
     }
     router.push("/trips");

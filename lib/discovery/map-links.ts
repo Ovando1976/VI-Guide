@@ -31,6 +31,9 @@ export function buildDiscoveryMapHref(target: DiscoveryMapTarget) {
 
   setBounded(params, "placeSlug", target.slug, 220);
   setBounded(params, "placeHref", target.href ?? detailHrefForTarget(target), 600);
+  // Coordinates drive the map camera; the reviewed estate GEOID drives
+  // governed taxi pricing. Preserve both when both are available.
+  setBounded(params, "estate", target.estateGeoid, 180);
 
   if (
     typeof target.lat === "number" &&
@@ -54,7 +57,6 @@ export function buildDiscoveryMapHref(target: DiscoveryMapTarget) {
       params.set("placeRating", String(target.rating));
     }
   } else if (target.estateGeoid) {
-    params.set("estate", target.estateGeoid);
     params.set("placeName", target.name);
     params.set("placeType", target.type);
   } else {
