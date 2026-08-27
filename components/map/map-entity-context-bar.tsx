@@ -34,9 +34,19 @@ export function MapEntityContextBar() {
   });
   const lat = finiteCoordinate(searchParams.get("placeLat"), -90, 90);
   const lng = finiteCoordinate(searchParams.get("placeLng"), -180, 180);
+  const estateGeoid = bounded(searchParams.get("estate"), 180);
   const summary = bounded(searchParams.get("placeDescription"), 1000) || `${name} on ${islandLabel(island)}.`;
   // buildMobilityRideHref owns the canonical Mobility URL, including the #book anchor.
-  const rideHref = buildMobilityRideHref({ name, island, type, lat, lng, source: "living-map", returnTo: "/map" });
+  const rideHref = buildMobilityRideHref({
+    name,
+    island,
+    type,
+    lat,
+    lng,
+    estateGeoid,
+    source: "living-map",
+    returnTo: mapHref,
+  });
   const conciergeHref = buildContextualConciergeHref({
     name,
     island,
