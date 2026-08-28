@@ -14,6 +14,10 @@ import {
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { buildPayout } from "@/lib/payouts";
+import {
+  scopeRiderBookingSubscription,
+  subscribeToRiderBookingScopeUpdates,
+} from "@/lib/rider-booking-subscription-scope";
 import type { RideBooking } from "@/types/mobility";
 import type { TripEvent, TripEventType } from "@/types/trip-event";
 
@@ -136,11 +140,16 @@ export function subscribeToRiderBookings(
   onError?: (error: Error) => void
 ): Unsubscribe {
   const q = query(collection(db, "bookings"), where("riderId", "==", riderId));
+  let latestBookings: RideBooking[] = [];
 
-  return onSnapshot(
+  const emitScopedBookings = () => {
+    onData(scopeRiderBookingSubscription(latestBookings));
+  };
+  const unsubscribeScope = subscribeToRiderBookingScopeUpdates(emitScopedBookings);
+  const unsubscribeSnapshot = onSnapshot(
     q,
     (snapshot) => {
-      const bookings = snapshot.docs
+      latestBookings = snapshot.docs
         .map((docSnap) => {
           const data = docSnap.data();
 
@@ -154,13 +163,18 @@ export function subscribeToRiderBookings(
         })
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt)) as RideBooking[];
 
-      onData(bookings);
+      emitScopedBookings();
     },
     (error) => {
       console.error("subscribeToRiderBookings error", error);
       onError?.(error);
     }
   );
+
+  return () => {
+    unsubscribeScope();
+    unsubscribeSnapshot();
+  };
 }
 
 export function subscribeToOpenBookings(
