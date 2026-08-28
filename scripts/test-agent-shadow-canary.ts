@@ -7,6 +7,7 @@ import {
   publicAgentShadowCanaryDecision,
 } from "../lib/intelligence/agent-shadow-canary";
 import type { IntelligenceRequest } from "../types/intelligence";
+import "./test-operator-preview-canary";
 
 const SESSION_ID = "preview-canary-session-must-not-reach-telemetry";
 
@@ -138,5 +139,3 @@ assert.equal(AGENT_SHADOW_CANARY_MAX_WORKER_TASKS, 1);
 console.log(
   "Agent shadow canary tests passed: production hard deny, explicit preview gate, deterministic cohorts, zero-rate default, privacy-safe telemetry, and one-task cost ceiling.",
 );
-
-await import("./test-operator-preview-canary");
