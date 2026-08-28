@@ -5,6 +5,7 @@ import "./test-agent-worker";
 import "./test-agent-tool-broker";
 import "./test-agent-shadow-canary";
 import "./test-agent-control-telemetry";
+import "./test-island-workspace";
 import {
   normalizeActiveTrip,
   summarizeJourneyPlan,
