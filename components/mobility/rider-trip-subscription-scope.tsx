@@ -17,6 +17,7 @@ import {
   readSelectedTravelerTripPlanId,
   TRAVELER_TRIP_SELECTION_STORAGE_KEY,
   TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+  writeSelectedTravelerTripPlanId,
 } from "@/lib/traveler-trip-selection";
 
 /**
@@ -43,6 +44,28 @@ export function RiderTripSubscriptionScope() {
       setRiderBookingSubscriptionScope(scope?.planIds ?? null);
     }
 
+    function handlePopState() {
+      const plans = readJourneyPlans();
+      const queryPlanId = normalizeMobilityJourneyPlanId(
+        new URLSearchParams(window.location.search).get("trip"),
+      );
+      const queryPlanExists = Boolean(
+        queryPlanId && plans.some((plan) => plan.id === queryPlanId),
+      );
+
+      if (
+        queryPlanExists &&
+        queryPlanId !== readSelectedTravelerTripPlanId()
+      ) {
+        // Browser back/forward changes the URL without firing our custom
+        // traveler-selection event. Persist the URL's valid JourneyPlan first
+        // so the visible My Trip selector and all ride widgets switch together.
+        writeSelectedTravelerTripPlanId(queryPlanId);
+      }
+
+      refreshScope();
+    }
+
     function handleStorage(event: StorageEvent) {
       if (
         !event.key ||
@@ -56,7 +79,7 @@ export function RiderTripSubscriptionScope() {
     refreshScope();
     window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshScope);
     window.addEventListener(TRAVELER_TRIP_SELECTION_UPDATED_EVENT, refreshScope);
-    window.addEventListener("popstate", refreshScope);
+    window.addEventListener("popstate", handlePopState);
     window.addEventListener("storage", handleStorage);
 
     return () => {
@@ -66,7 +89,7 @@ export function RiderTripSubscriptionScope() {
         TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
         refreshScope,
       );
-      window.removeEventListener("popstate", refreshScope);
+      window.removeEventListener("popstate", handlePopState);
       window.removeEventListener("storage", handleStorage);
     };
   }, []);
