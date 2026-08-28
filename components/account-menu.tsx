@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   BellRing,
@@ -19,20 +19,36 @@ import {
 import { signOut } from "firebase/auth";
 
 import { useAuth } from "@/components/auth-provider";
+import { normalizeActiveIsland, type ActiveIsland } from "@/lib/active-island";
 import { auth } from "@/lib/firebase";
+import {
+  JOURNEY_PLAN_UPDATED_EVENT,
+  readJourneyPlans,
+} from "@/lib/journey-planner";
+import {
+  readSelectedTravelerTripPlanId,
+  TRAVELER_TRIP_SELECTION_STORAGE_KEY,
+  TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+} from "@/lib/traveler-trip-selection";
 
 type Role = "rider" | "driver" | "merchant" | "dispatcher" | "admin";
+type AccountTripContext = {
+  planId: string;
+  island: ActiveIsland;
+};
 
 const ACCOUNT_ROUTES = ["/profile", "/notifications", "/plus"] as const;
 
 export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const { user, loading } = useAuth();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const root = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState<Role>("rider");
   const [working, setWorking] = useState(false);
+  const [tripContext, setTripContext] = useState<AccountTripContext | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -54,6 +70,48 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
       })
       .catch(() => setRole("rider"));
   }, [user]);
+
+  useEffect(() => {
+    function refreshTripContext() {
+      const plans = readJourneyPlans();
+      const selectedPlanId = readSelectedTravelerTripPlanId();
+      const selectedPlan = selectedPlanId
+        ? plans.find((plan) => plan.id === selectedPlanId) ?? null
+        : null;
+      const selectedIsland = normalizeActiveIsland(selectedPlan?.island);
+      setTripContext(
+        selectedPlan && selectedIsland
+          ? { planId: selectedPlan.id, island: selectedIsland }
+          : null,
+      );
+    }
+
+    function handleStorage(event: StorageEvent) {
+      if (
+        !event.key ||
+        event.key === "vi-guide.intelligence.saved-plans" ||
+        event.key === TRAVELER_TRIP_SELECTION_STORAGE_KEY
+      ) {
+        refreshTripContext();
+      }
+    }
+
+    refreshTripContext();
+    window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripContext);
+    window.addEventListener(
+      TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+      refreshTripContext,
+    );
+    window.addEventListener("storage", handleStorage);
+    return () => {
+      window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripContext);
+      window.removeEventListener(
+        TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+        refreshTripContext,
+      );
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, []);
 
   useEffect(() => {
     function close(event: PointerEvent) {
@@ -78,10 +136,15 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     }
   }
 
+  const serializedSearchParams = searchParams.toString();
+  const currentDestination = serializedSearchParams
+    ? `${pathname}?${serializedSearchParams}`
+    : pathname;
+
   if (!user) {
     return (
       <Link
-        href={`/login?next=${encodeURIComponent(pathname)}`}
+        href={`/login?next=${encodeURIComponent(currentDestination)}`}
         className={
           embedded
             ? "app-nav__account app-nav__item shrink-0"
@@ -110,6 +173,12 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     .trim()
     .charAt(0)
     .toUpperCase();
+  const tripHref = tripContext
+    ? `/trips?trip=${encodeURIComponent(tripContext.planId)}`
+    : "/trips";
+  const mapHref = tripContext
+    ? `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+    : "/map";
 
   return (
     <div
@@ -177,7 +246,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
                 onSelect={() => setOpen(false)}
               />
               <MenuLink
-                href="/trips"
+                href={tripHref}
                 label="My Trip"
                 icon={Route}
                 onSelect={() => setOpen(false)}
@@ -195,7 +264,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
                 onSelect={() => setOpen(false)}
               />
               <MenuLink
-                href="/map"
+                href={mapHref}
                 label="Living Map"
                 icon={Map}
                 onSelect={() => setOpen(false)}
@@ -300,7 +369,10 @@ function MenuLink({
           : "text-[#043331] hover:bg-[#f3f8f6]"
       }`}
     >
-      <Icon size={18} className={accent === "gold" ? "text-[#b67814]" : "text-[#0f766e]"} />
+      <Icon
+        size={18}
+        className={accent === "gold" ? "text-[#b67814]" : "text-[#0f766e]"}
+      />
       {label}
     </Link>
   );
