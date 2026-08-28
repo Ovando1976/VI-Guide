@@ -81,7 +81,7 @@ export function PickupPositionControl({
       setContext(stored);
       if (hasPrecisePoint(stored)) setShowMap(true);
     }
-  }, []);
+  }, [selectedGeoid]);
 
   useEffect(() => {
     if (!context || !selectedGeoid || context.estateGeoid === selectedGeoid) return;

@@ -15,6 +15,7 @@ const tripConciergeLink = source(
   "components/trips/trip-aware-concierge-link.tsx",
 );
 const appNavigation = source("components/app-navigation.tsx");
+const pickupPositionControl = source("components/pickup-position-control.tsx");
 const riderTripHistory = source("components/rider-trip-history.tsx");
 const riderTripScopeBridge = source(
   "components/mobility/rider-trip-subscription-scope.tsx",
@@ -68,6 +69,17 @@ assert.match(
   "the mobile Concierge nav target must preserve active trip identity and island",
 );
 assert.match(appNavigation, /contextualHref\(base, activeIsland, tripContext\)/);
+
+assert.match(
+  pickupPositionControl,
+  /const stored = readPickupCookie\(\);[\s\S]*?\}, \[selectedGeoid\]\);/,
+  "persisted exact-pickup context must be rechecked when the selected fare area hydrates or changes",
+);
+assert.match(
+  pickupPositionControl,
+  /context\.estateGeoid === selectedGeoid[\s\S]*?\}, \[context, selectedGeoid\]\);/,
+  "changing fare areas must still clear stale precise-pickup context fail-closed",
+);
 
 assert.match(riderTripHistory, /Live ride card/);
 assert.match(riderTripHistory, /Verified pickup identity/);
