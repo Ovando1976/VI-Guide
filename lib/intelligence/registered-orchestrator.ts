@@ -4,7 +4,8 @@ import {
   buildAgentContext,
   publicAgentContext,
 } from "@/lib/intelligence/context-engine";
-import { planBoundedAgentCollective } from "@/lib/intelligence/coordination-runtime";
+import { runAgentWorkerShadow } from "@/lib/intelligence/agent-worker-runtime";
+import { createConfiguredAdvisoryAgentWorker } from "@/lib/intelligence/agent-worker";
 import {
   publishIntelligenceEvent,
   type IntelligenceEventType,
@@ -59,13 +60,15 @@ export async function runRegisteredIntelligenceOrchestrator(
   const requiredCapabilities = (
     result.orchestration?.requiredCapabilities ?? []
   ).filter((capability) => context.authorizedCapabilities.includes(capability));
-  const coordination = result.orchestration
-    ? planBoundedAgentCollective({
+  const coordinationRun = result.orchestration
+    ? await runAgentWorkerShadow({
         request: context.request,
         requiredCapabilities,
         tools: context.tools,
+        worker: createConfiguredAdvisoryAgentWorker(),
       })
     : undefined;
+  const coordination = coordinationRun?.coordination;
 
   const registryWarning = context.unavailableCapabilities.length
     ? `The tool registry disabled unavailable capabilities: ${context.unavailableCapabilities.join(", ")}.`
@@ -120,6 +123,7 @@ export async function runRegisteredIntelligenceOrchestrator(
           safeAutonomousTools: coordination.safeAutonomousTools,
           blockedAutonomousTools: coordination.blockedAutonomousTools,
           missingCapabilities: coordination.missingCapabilities,
+          workerShadow: coordinationRun?.workerShadow ?? null,
         }
       : null,
   };
