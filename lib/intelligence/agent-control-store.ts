@@ -1,4 +1,4 @@
-import { Timestamp } from "firebase-admin/firestore";
+import { FieldValue, Timestamp } from "firebase-admin/firestore";
 
 import {
   sanitizeAgentControlTelemetry,
@@ -10,12 +10,160 @@ import {
 } from "@/lib/firebase-admin";
 
 const EVENT_COLLECTION = "intelligence_events";
+const OPERATOR_CANARY_COLLECTION = "agent_operator_canary_runs";
+
+export type OperatorCanaryRunStatus = "running" | "completed" | "failed";
+
+export type OperatorCanarySafeRecord = Readonly<{
+  version: 1;
+  environment: "preview";
+  worker: Readonly<{
+    status: "disabled" | "completed" | "partial" | "failed";
+    workerId: string | null;
+    model: string | null;
+    attemptedTasks: number;
+    completedTasks: number;
+    failedTasks: number;
+    modelCalls: number;
+    acceptedDelegations: number;
+    rejectedDelegations: number;
+    brokerCalls: number;
+    brokerCompleted: number;
+    brokerRejected: number;
+    brokerFailed: number;
+  }>;
+  agentIds: readonly string[];
+  taskCount: number;
+  messageCount: number;
+  missingCapabilities: readonly string[];
+}>;
+
+export type OperatorCanaryClaim = Readonly<{
+  claimed: boolean;
+  status: OperatorCanaryRunStatus | null;
+}>;
+
+export type OperatorCanaryRunStore = Readonly<{
+  claim(runKey: string): Promise<OperatorCanaryClaim>;
+  complete(runKey: string, record: OperatorCanarySafeRecord): Promise<void>;
+  fail(runKey: string): Promise<void>;
+}>;
 
 function timestampToIso(value: unknown) {
   if (value instanceof Timestamp) return value.toDate().toISOString();
   if (value instanceof Date) return value.toISOString();
   if (typeof value === "string") return value;
   return new Date().toISOString();
+}
+
+function safeRunKey(runKey: string) {
+  const normalized = runKey.trim().toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(normalized)) {
+    throw new Error("Invalid operator canary run key.");
+  }
+  return normalized;
+}
+
+function storedStatus(value: unknown): OperatorCanaryRunStatus | null {
+  return value === "running" || value === "completed" || value === "failed"
+    ? value
+    : null;
+}
+
+function telemetryPayload(record: OperatorCanarySafeRecord) {
+  return {
+    shadowCanary: {
+      selected: true,
+      reason: "operator_selected",
+      environment: record.environment,
+      sampleRateBps: 0,
+      sampleBucket: null,
+      explicitCohort: false,
+      maxWorkerTasks: 1,
+    },
+    collective: {
+      status: record.worker.status,
+      agents: [...record.agentIds].slice(0, 8),
+      taskCount: record.taskCount,
+      messageCount: record.messageCount,
+      missingCapabilities: [...record.missingCapabilities].slice(0, 8),
+      workerShadow: { ...record.worker },
+    },
+  };
+}
+
+export function createFirestoreOperatorCanaryRunStore(): OperatorCanaryRunStore | null {
+  if (!hasFirebaseAdminConfiguration()) return null;
+  const db = getAdminDb();
+
+  return Object.freeze({
+    async claim(runKey: string) {
+      const key = safeRunKey(runKey);
+      const ref = db.collection(OPERATOR_CANARY_COLLECTION).doc(key);
+      return db.runTransaction(async (transaction) => {
+        const snapshot = await transaction.get(ref);
+        if (snapshot.exists) {
+          return Object.freeze({
+            claimed: false,
+            status: storedStatus(snapshot.data()?.status),
+          });
+        }
+        transaction.create(ref, {
+          version: 1,
+          status: "running",
+          createdAt: FieldValue.serverTimestamp(),
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        return Object.freeze({ claimed: true, status: "running" as const });
+      });
+    },
+
+    async complete(runKey: string, record: OperatorCanarySafeRecord) {
+      const key = safeRunKey(runKey);
+      const runRef = db.collection(OPERATOR_CANARY_COLLECTION).doc(key);
+      const eventRef = db.collection(EVENT_COLLECTION).doc(`operator-canary-${key}`);
+      const batch = db.batch();
+      batch.set(
+        runRef,
+        {
+          version: 1,
+          status: "completed",
+          result: record,
+          updatedAt: FieldValue.serverTimestamp(),
+          completedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+      batch.set(eventRef, {
+        id: `operator-canary-${key}`,
+        type: "agent.operator_canary",
+        ownerKey: "system:operator-canary",
+        runId: `operator-canary-${key.slice(0, 16)}`,
+        island: "stt",
+        intent: "operator_preview_canary",
+        payload: telemetryPayload(record),
+        status: "completed",
+        agentResults: [],
+        createdAt: FieldValue.serverTimestamp(),
+        processedAt: FieldValue.serverTimestamp(),
+      });
+      await batch.commit();
+    },
+
+    async fail(runKey: string) {
+      const key = safeRunKey(runKey);
+      await db.collection(OPERATOR_CANARY_COLLECTION).doc(key).set(
+        {
+          version: 1,
+          status: "failed",
+          failureReason: "execution_failed",
+          updatedAt: FieldValue.serverTimestamp(),
+          completedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+    },
+  });
 }
 
 export async function listRecentAgentControlEvents(limit = 100) {
