@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Map, Route, Sparkles } from "lucide-react";
@@ -6,12 +5,7 @@ import { ISLAND_META, normalizeEstateCollection } from "@/lib/usvi";
 import { queryTerritoryMapPlaces } from "@/lib/territory/catalog";
 import { getNearbyEstates, getNearbyPlaces } from "@/lib/geo";
 import type { EstateCollection } from "@/types/usvi";
-
-const EstateDetailMap = dynamic(
-  () =>
-    import("@/components/estate-detail-map").then((mod) => mod.EstateDetailMap),
-  { ssr: false },
-);
+import { EstateDetailMapLoader } from "@/components/estate-detail-map-loader";
 
 const ESTATES_URL =
   "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer/0/query?" +
@@ -116,7 +110,7 @@ export default async function EstatePage({
       <section className="mx-auto max-w-7xl px-6 py-10">
         <div className="grid gap-8 xl:grid-cols-[1.35fr_0.8fr]">
           <div className="space-y-8">
-            <EstateDetailMap estate={estate} />
+            <EstateDetailMapLoader estate={estate} />
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <Metric label="GEOID" value={estate.geoid} />
               <Metric label="Estate Code" value={estate.estateCode || "—"} />
