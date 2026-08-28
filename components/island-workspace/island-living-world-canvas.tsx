@@ -288,7 +288,7 @@ export function IslandLivingWorldCanvas({
       ) : (
         <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/8 bg-[#061d26] px-4 py-3 sm:px-5">
           <p className="text-[10px] font-semibold text-white/35">
-            Tap a mapped place to make it the next Island request's selected-place context.
+            Tap a mapped place to make it the next Island request&apos;s selected-place context.
           </p>
           <span className="text-[9px] font-black uppercase tracking-[.12em] text-cyan-100/45">
             {places.length} positioned records · {activeLens}
