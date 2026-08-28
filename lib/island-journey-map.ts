@@ -4,7 +4,7 @@ import { FERRY_ROUTES } from "@/lib/ferry-planner";
 import { FERRY_TERMINAL_COORDS } from "@/lib/smart-island-journey";
 import type { SmartJourneyPlan } from "@/lib/smart-island-journey";
 import type { IntelligencePlanStop } from "@/types/intelligence";
-import type { JourneyPlan } from "@/lib/journey-planner";
+import { buildJourneyMapHref, type JourneyPlan } from "@/lib/journey-planner";
 
 export function buildIslandJourneyMapStops(
   plan: SmartJourneyPlan,
@@ -93,9 +93,10 @@ export function isIslandJourneyPlan(plan: JourneyPlan | null | undefined) {
 }
 
 export function mapHrefForJourneyPlan(plan: JourneyPlan | null | undefined) {
+  if (!plan) return "/map";
   return isIslandJourneyPlan(plan)
-    ? `/map/journey?trip=${encodeURIComponent(plan!.id)}`
-    : "/map";
+    ? `/map/journey?trip=${encodeURIComponent(plan.id)}`
+    : buildJourneyMapHref(plan);
 }
 
 export function positionedJourneyStops(plan: JourneyPlan) {
