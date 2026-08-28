@@ -34,8 +34,14 @@ assert(
 );
 assert(
   page.includes("pb-[env(safe-area-inset-bottom)]") &&
-    page.includes("bottom: max(.5rem, env(safe-area-inset-bottom))"),
-  "Island must preserve iOS bottom-safe-area space for the sticky mission command surface.",
+    page.includes("bottom: max(.5rem, env(safe-area-inset-bottom))") &&
+    page.includes("bottom: calc(82px + env(safe-area-inset-bottom))"),
+  "Island must preserve iOS safe-area space and keep the sticky mission command surface above the global mobile navigation.",
+);
+assert(
+  page.includes("@media (max-width: 700px)") &&
+    page.includes("@media (min-width: 701px) and (max-width: 1023px)"),
+  "Island must separate phone bottom-nav clearance from tablet safe-area behavior.",
 );
 assert(
   page.includes("isolation: isolate") &&
@@ -59,5 +65,5 @@ assert(
 );
 
 console.log(
-  "Island mobile-shell contract passed: all eight lenses remain reachable, iOS safe-area spacing is preserved, the header clears mobile navigation, and Leaflet stays inside the workspace stacking boundary.",
+  "Island mobile-shell contract passed: all eight lenses remain reachable, the command dock clears the global phone navigation and iOS safe area, the header clears mobile navigation, and Leaflet stays inside the workspace stacking boundary.",
 );
