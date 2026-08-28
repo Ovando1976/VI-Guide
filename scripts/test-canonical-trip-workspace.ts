@@ -23,6 +23,11 @@ const riderTripScopeBridge = source(
 const riderSubscriptionScope = source("lib/rider-booking-subscription-scope.ts");
 const firestoreTrips = source("lib/firestore-trips.ts");
 const bookingReadRoute = source("app/api/bookings/[bookingId]/route.ts");
+const adminPage = source("app/admin/page.tsx");
+const authenticatedTravelerQaPage = source("app/admin/traveler-qa/page.tsx");
+const authenticatedTravelerQa = source(
+  "components/admin/authenticated-traveler-qa.tsx",
+);
 
 assert.match(legacyWorkspace, /redirect\("\/trips"\)/);
 assert.doesNotMatch(legacyWorkspace, /ReservationEnabledWorkspace/);
@@ -114,6 +119,26 @@ assert.match(firestoreTrips, /scopeRiderBookingSubscription\(latestBookings\)/);
 assert.match(firestoreTrips, /subscribeToRiderBookingScopeUpdates/);
 assert.match(bookingReadRoute, /rideIdentity/);
 assert.match(bookingReadRoute, /booking\.riderId === session\.uid/);
+
+assert.match(adminPage, /href: "\/admin\/traveler-qa"/);
+assert.match(authenticatedTravelerQaPage, /session\.role !== "admin"/);
+assert.match(authenticatedTravelerQaPage, /AuthenticatedTravelerQa/);
+assert.match(authenticatedTravelerQa, /useAuth\(\)/);
+assert.match(authenticatedTravelerQa, /readJourneyPlans\(\)/);
+assert.match(authenticatedTravelerQa, /readSelectedTravelerTripPlanId\(\)/);
+assert.match(authenticatedTravelerQa, /buildJourneyMobilityHref\(plan\)/);
+assert.match(authenticatedTravelerQa, /\/trips\?trip=\$\{trip\}/);
+assert.match(authenticatedTravelerQa, /\/map\?island=\$\{plan\.island\}&trip=\$\{trip\}/);
+assert.match(authenticatedTravelerQa, /\/concierge\?island=\$\{plan\.island\}&trip=\$\{trip\}/);
+assert.match(authenticatedTravelerQa, /viewport-fit=cover/);
+assert.match(authenticatedTravelerQa, /Stripe test\/sandbox flow/);
+assert.match(authenticatedTravelerQa, /4242 4242 4242 4242/);
+assert.match(authenticatedTravelerQa, /Side-effect safety/);
+assert.doesNotMatch(
+  authenticatedTravelerQa,
+  /createSessionCookie|createUserWithEmailAndPassword|signInWithEmailAndPassword/,
+  "QA must use the operator's real authenticated browser session and never add a login bypass",
+);
 
 const riderBookings = [
   { id: "ride-day-one", journeyPlanId: "plan_day_1" },

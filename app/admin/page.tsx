@@ -86,6 +86,14 @@ const SHARED_ACTIONS: AdminActionDefinition[] = [
 
 const ADMIN_ONLY_ACTIONS: AdminActionDefinition[] = [
   {
+    href: "/admin/traveler-qa",
+    icon: Compass,
+    eyebrow: "Authenticated traveler QA",
+    detail:
+      "Run the real signed-in My Trip, Living Map, Concierge, Mobility, checkout-return, and ride-cancellation journey on iPhone or iPad without adding an auth bypass.",
+    action: "Run traveler QA",
+  },
+  {
     href: "/admin/readiness",
     icon: Rocket,
     eyebrow: "Public beta launch",
