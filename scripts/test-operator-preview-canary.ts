@@ -51,7 +51,7 @@ const missingCommit = evaluateOperatorPreviewCanary({
 assert.equal(missingCommit.reason, "missing_deployment_sha");
 
 let status: OperatorCanaryRunStatus | null = null;
-let storedRecord: OperatorCanarySafeRecord | null = null;
+const storedRecords: OperatorCanarySafeRecord[] = [];
 let claimCalls = 0;
 const store: OperatorCanaryRunStore = {
   async claim() {
@@ -61,7 +61,7 @@ const store: OperatorCanaryRunStore = {
     return { claimed: true, status };
   },
   async complete(_runKey, record) {
-    storedRecord = record;
+    storedRecords.push(record);
     status = "completed";
   },
   async fail() {
@@ -117,10 +117,13 @@ assert.equal(completed.worker?.brokerCalls, 1);
 assert.equal(completed.worker?.brokerCompleted, 1);
 assert.equal(completed.worker?.brokerRejected, 0);
 assert.equal(completed.worker?.brokerFailed, 0);
-assert.equal(storedRecord?.taskCount, 1);
-assert.equal(storedRecord?.worker.brokerCompleted, 1);
 
-const serializedSafeRecord = JSON.stringify(storedRecord);
+const persistedRecord = storedRecords[0];
+assert.ok(persistedRecord);
+assert.equal(persistedRecord.taskCount, 1);
+assert.equal(persistedRecord.worker.brokerCompleted, 1);
+
+const serializedSafeRecord = JSON.stringify(persistedRecord);
 assert.equal(serializedSafeRecord.includes(OPERATOR_CANARY_FIXED_MESSAGE), false);
 assert.equal(serializedSafeRecord.includes("Magens Bay beach"), false);
 assert.equal(serializedSafeRecord.includes("operator-canary-"), false);
