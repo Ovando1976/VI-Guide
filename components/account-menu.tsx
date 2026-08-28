@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import {
   BellRing,
   CalendarDays,
@@ -42,7 +42,6 @@ const ACCOUNT_ROUTES = ["/profile", "/notifications", "/plus"] as const;
 export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const { user, loading } = useAuth();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const root = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -136,15 +135,26 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
     }
   }
 
-  const serializedSearchParams = searchParams.toString();
-  const currentDestination = serializedSearchParams
-    ? `${pathname}?${serializedSearchParams}`
-    : pathname;
+  function preserveSignInDestination(event: MouseEvent<HTMLAnchorElement>) {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    event.preventDefault();
+    const destination = `${window.location.pathname}${window.location.search}`;
+    router.push(`/login?next=${encodeURIComponent(destination)}`);
+  }
 
   if (!user) {
     return (
       <Link
-        href={`/login?next=${encodeURIComponent(currentDestination)}`}
+        href={`/login?next=${encodeURIComponent(pathname)}`}
+        onClick={preserveSignInDestination}
         className={
           embedded
             ? "app-nav__account app-nav__item shrink-0"
