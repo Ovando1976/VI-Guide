@@ -61,6 +61,15 @@ Before setting `USVI_AGENT_WORKERS_SHADOW=1` in preview or production, capture e
 
 `scripts/test-agent-coordination.ts` continues to cover immutable root intent, recruitment, dependencies, concurrency, and tool safety.
 
+## Promotion sequence
+
+1. Merge only after the repository test gates above are green.
+2. Keep `USVI_AGENT_WORKERS_SHADOW=0` in production after merge.
+3. Enable shadow workers in a controlled preview first and measure latency, model-call count, failure rate, delegation rejection rate, and cost.
+4. Review admin telemetry for at least several representative traveler flows: simple recommendation, multi-island itinerary, mobility planning, and booking intent.
+5. Only then consider a small production shadow cohort. Shadow output still must not influence the traveler-facing answer.
+6. Do not proceed to callable tools until the read-only tool broker has its own reviewed threat model and tests.
+
 ## Not authorized by this milestone
 
 Do **not** enable any of the following yet:
