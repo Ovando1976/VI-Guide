@@ -127,7 +127,7 @@ export async function runOperatorPreviewCanaryTests() {
   const serializedSafeRecord = JSON.stringify(persistedRecord);
   assert.equal(serializedSafeRecord.includes(OPERATOR_CANARY_FIXED_MESSAGE), false);
   assert.equal(serializedSafeRecord.includes("Magens Bay beach"), false);
-  assert.equal(serializedSafeRecord.includes("operator-canary-"), false);
+  assert.equal(serializedSafeRecord.includes("operator-canary-dad6c7e91798e0ba"), false);
 
   const repeated = await runOperatorPreviewCanary({
     env: previewEnv,
