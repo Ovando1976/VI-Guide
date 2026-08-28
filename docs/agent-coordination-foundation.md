@@ -32,7 +32,7 @@ Existing deterministic intelligence orchestrator
     |        |
     |        +--> optional advisory AgentWorker
     |               - structured output only
-    |               - no OpenAI tool calls
+    |               - no model tool-calling surface
     |               - minimized traveler context
     |               - runtime revalidates delegation
     |               - max two worker tasks by default
