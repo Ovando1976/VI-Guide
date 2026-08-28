@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 
 import { buildDiscoveryMapHref } from "../lib/discovery/map-links";
+import { mapHrefForJourneyPlan } from "../lib/island-journey-map";
 import { buildJourneyMobilityHref } from "../lib/mobility/ride-links";
 
 function parseInternalHref(href: string) {
@@ -22,6 +23,61 @@ const mappedPlace = parseInternalHref(
 assert.equal(mappedPlace.pathname, "/map");
 assert.equal(mappedPlace.searchParams.get("place"), "beach:magens-bay");
 assert.equal(mappedPlace.searchParams.get("estate"), "7803086200");
+
+const standardTripMap = parseInternalHref(
+  mapHrefForJourneyPlan({
+    id: "plan_map",
+    title: "Magens Bay day",
+    island: "stt",
+    date: "2026-08-28",
+    createdAt: "2026-08-28T12:00:00.000Z",
+    updatedAt: "2026-08-28T12:00:00.000Z",
+    status: "ready",
+    notes: "",
+    plan: [
+      {
+        id: "stop_magens_map",
+        placeId: "beach:magens-bay",
+        title: "Magens Bay",
+        island: "stt",
+        kind: "beach",
+        summary: "Beach stop",
+        lat: 18.3623,
+        lng: -64.9236,
+        mapHref: mappedPlace.pathname + mappedPlace.search,
+      },
+    ],
+  }),
+);
+assert.equal(standardTripMap.pathname, "/map");
+assert.equal(standardTripMap.searchParams.get("trip"), "plan_map");
+assert.equal(standardTripMap.searchParams.get("island"), "stt");
+assert.equal(standardTripMap.searchParams.get("place"), "beach:magens-bay");
+assert.equal(standardTripMap.searchParams.get("placeName"), "Magens Bay");
+
+const ferryTripMap = parseInternalHref(
+  mapHrefForJourneyPlan({
+    id: "plan_ferry",
+    title: "Red Hook to Cruz Bay",
+    island: "stt",
+    date: "2026-08-28",
+    createdAt: "2026-08-28T12:00:00.000Z",
+    updatedAt: "2026-08-28T12:00:00.000Z",
+    status: "ready",
+    notes: "",
+    plan: [
+      {
+        id: "stop_ferry",
+        title: "Red Hook → Cruz Bay",
+        island: "stt",
+        kind: "ferry",
+        summary: "Ferry leg",
+      },
+    ],
+  }),
+);
+assert.equal(ferryTripMap.pathname, "/map/journey");
+assert.equal(ferryTripMap.searchParams.get("trip"), "plan_ferry");
 
 const singleStop = parseInternalHref(
   buildJourneyMobilityHref({
