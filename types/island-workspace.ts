@@ -21,13 +21,28 @@ export type IslandTrustedImage = Readonly<{
 }>;
 
 export type IslandDataProvenance = Readonly<{
-  sourceSystem: "travel-knowledge" | "heritage-knowledge" | "response-fallback";
+  sourceSystem:
+    | "travel-knowledge"
+    | "heritage-knowledge"
+    | "response-fallback"
+    | "experience-catalog"
+    | "event-catalog"
+    | "car-rental-catalog"
+    | "ferry-schedule"
+    | "dining-directory";
   sourceId: string;
   reviewStatus: string;
   sourceLabel?: string;
   sourceUrls: readonly string[];
   verifiedAt?: string;
 }>;
+
+export type IslandCatalogKind =
+  | "experience"
+  | "event"
+  | "car_rental"
+  | "ferry"
+  | "dining";
 
 export type IslandMissionStep = Readonly<{
   id: string;
@@ -53,6 +68,20 @@ export type IslandWorkspaceRecommendation = Readonly<{
   mapHref?: string;
 }>;
 
+export type IslandWorkspaceCatalogItem = Readonly<{
+  id: string;
+  title: string;
+  kind: IslandCatalogKind;
+  island: IntelligenceIsland;
+  summary: string;
+  image: IslandTrustedImage;
+  provenance: IslandDataProvenance;
+  meta: readonly string[];
+  status?: string;
+  href?: string;
+  mapHref?: string;
+}>;
+
 export type IslandEvidenceItem = Readonly<{
   id: string;
   label: string;
@@ -71,6 +100,7 @@ export type IslandUIComponent =
   | "WorldCanvas"
   | "MissionTimeline"
   | "RecommendationDeck"
+  | "CatalogDeck"
   | "EvidenceStrip"
   | "AgentActivity"
   | "WarningPanel"
@@ -81,6 +111,7 @@ export type IslandUISource =
   | "workspace"
   | "plan"
   | "recommendations"
+  | "catalog"
   | "evidence"
   | "agents"
   | "warnings"
@@ -117,6 +148,8 @@ export type IslandTrustedBinding = Readonly<{
   summary: string;
   image: IslandTrustedImage;
   provenance: IslandDataProvenance;
+  meta?: readonly string[];
+  status?: string;
   href?: string;
   mapHref?: string;
 }>;
@@ -125,6 +158,7 @@ export type IslandUIEnvelope = Readonly<{
   version: 1;
   presentation: IslandUIPresentationPlan;
   bindings: Readonly<Record<string, IslandTrustedBinding>>;
+  catalogBindingIds: readonly string[];
 }>;
 
 export type IslandWorkspaceProjection = Readonly<{
@@ -138,6 +172,7 @@ export type IslandWorkspaceProjection = Readonly<{
   presentation: IslandUIPresentationPlan;
   mission: readonly IslandMissionStep[];
   recommendations: readonly IslandWorkspaceRecommendation[];
+  catalog: readonly IslandWorkspaceCatalogItem[];
   actions: readonly IntelligenceAction[];
   evidence: readonly IslandEvidenceItem[];
   agentActivity: readonly IslandAgentActivity[];

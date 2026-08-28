@@ -3,23 +3,29 @@ import { buildDefaultIslandPresentationPlan } from "@/lib/intelligence/island-ui
 import type { IntelligenceResponse } from "@/types/intelligence";
 import type {
   IslandAgentActivity,
+  IslandCatalogKind,
   IslandEvidenceItem,
   IslandMissionStep,
   IslandTrustedBinding,
   IslandUIEnvelope,
+  IslandWorkspaceCatalogItem,
   IslandWorkspaceProjection,
   IslandWorkspaceRecommendation,
 } from "@/types/island-workspace";
 
 function islandUIEnvelope(response: IntelligenceResponse): IslandUIEnvelope | null {
-  const candidate = (response as IntelligenceResponse & { islandUI?: IslandUIEnvelope }).islandUI;
+  const candidate = (
+    response as IntelligenceResponse & { islandUI?: IslandUIEnvelope }
+  ).islandUI;
   return candidate?.version === 1 ? candidate : null;
 }
 
 function missionStatus(
   response: IntelligenceResponse,
 ): IslandMissionStep["status"] {
-  if (response.orchestration?.status === "waiting_for_user") return "needs_input";
+  if (response.orchestration?.status === "waiting_for_user") {
+    return "needs_input";
+  }
   return response.actions.some((action) => action.requiresConfirmation)
     ? "requires_confirmation"
     : "ready";
@@ -48,22 +54,25 @@ function projectMission(
       status,
       image: binding?.image ?? getIslandContextImage(stop.island),
       ...(bindingId ? { bindingId } : {}),
-      ...(stop.href || stop.mapHref ? { href: stop.href ?? stop.mapHref } : {}),
+      ...(stop.href || stop.mapHref
+        ? { href: stop.href ?? stop.mapHref }
+        : {}),
     } satisfies IslandMissionStep;
   });
 
   if (planned.length) return planned;
 
-  return (response.orchestration?.missingInformation ?? []).slice(0, 6).map(
-    (field, index) => ({
+  return (response.orchestration?.missingInformation ?? [])
+    .slice(0, 6)
+    .map((field, index) => ({
       id: `missing-${index}-${field}`,
       title: `Confirm ${field}`,
-      detail: "Island needs this detail before the governed workflow can continue.",
+      detail:
+        "Island needs this detail before the governed workflow can continue.",
       meta: "Waiting for you",
       status: "needs_input" as const,
       image: getIslandContextImage(response.context.island),
-    }),
-  );
+    }));
 }
 
 function projectEvidence(response: IntelligenceResponse): IslandEvidenceItem[] {
@@ -105,7 +114,9 @@ function projectAgentActivity(
   if (!coordination) return [];
 
   return coordination.team.slice(0, 6).map((member) => {
-    const task = coordination.tasks.find((candidate) => candidate.claimedBy === member.agentId);
+    const task = coordination.tasks.find(
+      (candidate) => candidate.claimedBy === member.agentId,
+    );
     const status: IslandAgentActivity["status"] =
       task?.status === "completed"
         ? "completed"
@@ -125,7 +136,6 @@ function projectAgentActivity(
 }
 
 function fallbackBinding(
-  response: IntelligenceResponse,
   item: IntelligenceResponse["recommendations"][number],
 ): IslandTrustedBinding {
   return Object.freeze({
@@ -151,7 +161,7 @@ function projectRecommendations(
   bindings: Readonly<Record<string, IslandTrustedBinding>>,
 ): IslandWorkspaceRecommendation[] {
   return response.recommendations.slice(0, 8).map((item) => {
-    const binding = bindings[item.id] ?? fallbackBinding(response, item);
+    const binding = bindings[item.id] ?? fallbackBinding(item);
     return Object.freeze({
       id: item.id,
       title: binding.title,
@@ -165,6 +175,42 @@ function projectRecommendations(
       ...(binding.mapHref ? { mapHref: binding.mapHref } : {}),
     });
   });
+}
+
+const CATALOG_KINDS = new Set<IslandCatalogKind>([
+  "experience",
+  "event",
+  "car_rental",
+  "ferry",
+  "dining",
+]);
+
+function projectCatalog(
+  envelope: IslandUIEnvelope | null,
+): IslandWorkspaceCatalogItem[] {
+  if (!envelope) return [];
+  return envelope.catalogBindingIds
+    .slice(0, 8)
+    .map((id) => envelope.bindings[id])
+    .filter(
+      (binding): binding is IslandTrustedBinding =>
+        Boolean(binding && CATALOG_KINDS.has(binding.kind as IslandCatalogKind)),
+    )
+    .map((binding) =>
+      Object.freeze({
+        id: binding.id,
+        title: binding.title,
+        kind: binding.kind as IslandCatalogKind,
+        island: binding.island,
+        summary: binding.summary,
+        image: binding.image,
+        provenance: binding.provenance,
+        meta: Object.freeze([...(binding.meta ?? [])]),
+        ...(binding.status ? { status: binding.status } : {}),
+        ...(binding.href ? { href: binding.href } : {}),
+        ...(binding.mapHref ? { mapHref: binding.mapHref } : {}),
+      }),
+    );
 }
 
 /**
@@ -182,6 +228,7 @@ export function projectIntelligenceToIslandWorkspace(
   const bindings = envelope?.bindings ?? Object.freeze({});
   const mission = projectMission(response, bindings);
   const recommendations = projectRecommendations(response, bindings);
+  const catalog = projectCatalog(envelope);
   const recommendationCount = recommendations.length;
   const headline = mission.length
     ? `${mission.length} connected ${mission.length === 1 ? "step" : "steps"} for your island mission`
@@ -197,9 +244,11 @@ export function projectIntelligenceToIslandWorkspace(
     summary: response.answer,
     intent: response.intent,
     confidence: response.confidence,
-    presentation: envelope?.presentation ?? buildDefaultIslandPresentationPlan(response),
+    presentation:
+      envelope?.presentation ?? buildDefaultIslandPresentationPlan(response),
     mission: Object.freeze(mission),
     recommendations: Object.freeze(recommendations),
+    catalog: Object.freeze(catalog),
     actions: Object.freeze([...response.actions]),
     evidence: Object.freeze(projectEvidence(response)),
     agentActivity: Object.freeze(projectAgentActivity(response)),

@@ -6,11 +6,22 @@ import {
   attachIslandUIEnvelope,
   resolveTrustedDirectoryImage,
 } from "../lib/intelligence/island-ui-bindings";
+import {
+  buildAllIslandModuleBindings,
+  buildIslandModuleBindings,
+} from "../lib/intelligence/island-module-bindings";
 import { normalizeIslandPresentationPlan } from "../lib/intelligence/island-ui-plan";
 import { projectIntelligenceToIslandWorkspace } from "../lib/intelligence/island-workspace-projector";
 import { runIntelligenceEngine } from "../lib/intelligence/engine";
-import { ALL_PUBLIC_TRAVEL_KNOWLEDGE, getTravelKnowledge } from "../lib/travel-knowledge";
-import type { IntelligenceContext, IntelligenceResponse } from "../types/intelligence";
+import {
+  ALL_PUBLIC_TRAVEL_KNOWLEDGE,
+  getTravelKnowledge,
+} from "../lib/travel-knowledge";
+import type {
+  IntelligenceContext,
+  IntelligenceRequest,
+  IntelligenceResponse,
+} from "../types/intelligence";
 
 const privateRootIntentId = "private-root-intent-must-not-project";
 const privateSessionId = "workspace-private-session";
@@ -160,24 +171,56 @@ const maliciousPresentation = {
   ],
 };
 
-const normalized = normalizeIslandPresentationPlan(maliciousPresentation, response);
+const normalized = normalizeIslandPresentationPlan(
+  maliciousPresentation,
+  response,
+);
 const components = normalized.blocks.map((block) => block.component);
 assert.ok(components.includes("WorldCanvas"), "WorldCanvas must be mandatory.");
-assert.ok(components.includes("MissionTimeline"), "MissionTimeline must be mandatory for a plan.");
-assert.ok(components.includes("WarningPanel"), "Warnings cannot be hidden by generated UI.");
-assert.ok(components.includes("ConfirmationCard"), "Confirmations cannot be hidden by generated UI.");
-assert.ok(components.includes("ActionDock"), "Server actions cannot be hidden by generated UI.");
-assert.equal(components.includes("RawHtml" as never), false, "Unknown UI components must be rejected.");
-const actionDock = normalized.blocks.find((block) => block.component === "ActionDock");
-assert.deepEqual(actionDock?.bindingIds, ["booking-review"], "Generated UI must not mint action IDs.");
-const recommendationDeck = normalized.blocks.find((block) => block.component === "RecommendationDeck");
-assert.deepEqual(recommendationDeck?.bindingIds, ["beach-magens"], "Unknown recommendation bindings must fall back to grounded records.");
+assert.ok(
+  components.includes("MissionTimeline"),
+  "MissionTimeline must be mandatory for a plan.",
+);
+assert.ok(
+  components.includes("WarningPanel"),
+  "Warnings cannot be hidden by generated UI.",
+);
+assert.ok(
+  components.includes("ConfirmationCard"),
+  "Confirmations cannot be hidden by generated UI.",
+);
+assert.ok(
+  components.includes("ActionDock"),
+  "Server actions cannot be hidden by generated UI.",
+);
+assert.equal(
+  components.includes("RawHtml" as never),
+  false,
+  "Unknown UI components must be rejected.",
+);
+const actionDock = normalized.blocks.find(
+  (block) => block.component === "ActionDock",
+);
+assert.deepEqual(
+  actionDock?.bindingIds,
+  ["booking-review"],
+  "Generated UI must not mint action IDs.",
+);
+const recommendationDeck = normalized.blocks.find(
+  (block) => block.component === "RecommendationDeck",
+);
+assert.deepEqual(
+  recommendationDeck?.bindingIds,
+  ["beach-magens"],
+  "Unknown recommendation bindings must fall back to grounded records.",
+);
 
 const projection = projectIntelligenceToIslandWorkspace(response);
 assert.equal(projection.version, 1);
 assert.equal(projection.island, "stt");
 assert.equal(projection.mission.length, 1);
 assert.equal(projection.recommendations.length, 1);
+assert.equal(projection.catalog.length, 0);
 assert.equal(projection.actions.length, 1);
 assert.equal(projection.actions[0]?.id, response.actions[0]?.id);
 assert.equal(projection.actions[0]?.href, response.actions[0]?.href);
@@ -208,7 +251,13 @@ const context: IntelligenceContext = {
   now: "2026-08-28T16:50:00.000Z",
   timezone: "America/St_Thomas",
   party: { adults: 2, children: 0, accessibilityNeeds: [] },
-  preferences: { interests: ["beaches"], pace: "balanced", budget: "moderate", food: [], avoid: [] },
+  preferences: {
+    interests: ["beaches"],
+    pace: "balanced",
+    budget: "moderate",
+    food: [],
+    avoid: [],
+  },
   memory: {},
 };
 const grounded = runIntelligenceEngine({
@@ -220,49 +269,238 @@ const boundProjection = projectIntelligenceToIslandWorkspace(withEnvelope);
 assert.ok(boundProjection.recommendations.length > 0);
 
 for (const recommendation of boundProjection.recommendations) {
-  assert.ok(recommendation.image.src.startsWith("/images/"), `${recommendation.title} must resolve to a local image or context fallback.`);
-  assert.ok(recommendation.image.alt.trim().length > 0, `${recommendation.title} must have truthful alt text.`);
-  assert.ok(recommendation.provenance.sourceId.length > 0, `${recommendation.title} must have source identity.`);
-  const imagePath = resolve(process.cwd(), "public", recommendation.image.src.replace(/^\//, ""));
-  assert.ok(existsSync(imagePath), `Resolved Island image is missing: ${recommendation.image.src}`);
-  assert.ok(statSync(imagePath).size > 512, `Resolved Island image is suspiciously small: ${recommendation.image.src}`);
+  assert.ok(
+    recommendation.image.src.startsWith("/images/"),
+    `${recommendation.title} must resolve to a local image or context fallback.`,
+  );
+  assert.ok(
+    recommendation.image.alt.trim().length > 0,
+    `${recommendation.title} must have truthful alt text.`,
+  );
+  assert.ok(
+    recommendation.provenance.sourceId.length > 0,
+    `${recommendation.title} must have source identity.`,
+  );
+  const imagePath = resolve(
+    process.cwd(),
+    "public",
+    recommendation.image.src.replace(/^\//, ""),
+  );
+  assert.ok(
+    existsSync(imagePath),
+    `Resolved Island image is missing: ${recommendation.image.src}`,
+  );
+  assert.ok(
+    statSync(imagePath).size > 512,
+    `Resolved Island image is suspiciously small: ${recommendation.image.src}`,
+  );
 }
 
-const canonicalByRecommendation = new Map<string, ReturnType<typeof getTravelKnowledge>[number]>();
+const canonicalByRecommendation = new Map<
+  string,
+  ReturnType<typeof getTravelKnowledge>[number]
+>();
 for (const kind of ["places", "beaches", "historic", "stays"] as const) {
-  for (const item of getTravelKnowledge(kind)) canonicalByRecommendation.set(`${kind}:${item.id}`, item);
+  for (const item of getTravelKnowledge(kind)) {
+    canonicalByRecommendation.set(`${kind}:${item.id}`, item);
+  }
 }
 for (const recommendation of boundProjection.recommendations) {
   const canonical = canonicalByRecommendation.get(recommendation.id);
   if (!canonical) continue;
-  assert.equal(recommendation.title, canonical.name, "Rendered title must come from canonical travel knowledge.");
-  assert.equal(recommendation.summary, canonical.description, "Rendered summary must come from canonical travel knowledge.");
-  assert.equal(recommendation.island, canonical.island, "Rendered island must come from canonical travel knowledge.");
+  assert.equal(
+    recommendation.title,
+    canonical.name,
+    "Rendered title must come from canonical travel knowledge.",
+  );
+  assert.equal(
+    recommendation.summary,
+    canonical.description,
+    "Rendered summary must come from canonical travel knowledge.",
+  );
+  assert.equal(
+    recommendation.island,
+    canonical.island,
+    "Rendered island must come from canonical travel knowledge.",
+  );
 }
 
 for (const item of ALL_PUBLIC_TRAVEL_KNOWLEDGE) {
   const image = resolveTrustedDirectoryImage(item);
-  assert.ok(image.src.startsWith("/images/"), `${item.name} must resolve to local trusted imagery.`);
-  assert.ok(image.alt.trim().length > 0, `${item.name} must have image alt text.`);
-  const imagePath = resolve(process.cwd(), "public", image.src.replace(/^\//, ""));
-  assert.ok(existsSync(imagePath), `Catalog image/fallback missing for ${item.name}: ${image.src}`);
-  assert.ok(statSync(imagePath).size > 512, `Catalog image/fallback too small for ${item.name}: ${image.src}`);
+  assert.ok(
+    image.src.startsWith("/images/"),
+    `${item.name} must resolve to local trusted imagery.`,
+  );
+  assert.ok(
+    image.alt.trim().length > 0,
+    `${item.name} must have image alt text.`,
+  );
+  const imagePath = resolve(
+    process.cwd(),
+    "public",
+    image.src.replace(/^\//, ""),
+  );
+  assert.ok(
+    existsSync(imagePath),
+    `Catalog image/fallback missing for ${item.name}: ${image.src}`,
+  );
+  assert.ok(
+    statSync(imagePath).size > 512,
+    `Catalog image/fallback too small for ${item.name}: ${image.src}`,
+  );
   if (image.status === "context") {
-    assert.match(image.alt, /context image/i, `Fallback image for ${item.name} must clearly identify itself as context.`);
+    assert.match(
+      image.alt,
+      /context image/i,
+      `Fallback image for ${item.name} must clearly identify itself as context.`,
+    );
+  }
+}
+
+const catalogRequest: IntelligenceRequest = {
+  message:
+    "Show me snorkeling activities, upcoming events, dinner, a car rental or Jeep, and ferry options on St. Thomas.",
+  context,
+  capabilities: ["recommend", "plan", "map", "mobility", "booking", "knowledge"],
+};
+const selectedCatalogBindings = buildIslandModuleBindings(
+  catalogRequest,
+  response,
+);
+const selectedCatalogIds = Object.keys(selectedCatalogBindings);
+assert.ok(selectedCatalogIds.length > 0, "Relevant catalog bindings must be selected.");
+const selectedKinds = new Set(
+  Object.values(selectedCatalogBindings).map((binding) => binding.kind),
+);
+for (const kind of ["experience", "event", "dining", "car_rental", "ferry"]) {
+  assert.ok(selectedKinds.has(kind), `Relevant catalog selection must include ${kind}.`);
+}
+
+const maliciousCatalogPresentation = {
+  ...maliciousPresentation,
+  blocks: [
+    ...maliciousPresentation.blocks,
+    {
+      component: "CatalogDeck",
+      source: "catalog",
+      bindingIds: ["catalog:event:invented-event"],
+      variant: "expanded",
+      priority: 95,
+    },
+  ],
+};
+const normalizedCatalogPresentation = normalizeIslandPresentationPlan(
+  maliciousCatalogPresentation,
+  response,
+  selectedCatalogIds,
+);
+const catalogDeck = normalizedCatalogPresentation.blocks.find(
+  (block) => block.component === "CatalogDeck",
+);
+assert.ok(catalogDeck, "CatalogDeck must be restored when trusted catalog bindings exist.");
+assert.deepEqual(
+  catalogDeck?.bindingIds,
+  selectedCatalogIds.slice(0, 8),
+  "Generated UI must not mint catalog IDs.",
+);
+
+const catalogEnvelope = attachIslandUIEnvelope(
+  response,
+  maliciousCatalogPresentation,
+  catalogRequest,
+);
+const catalogProjection = projectIntelligenceToIslandWorkspace(catalogEnvelope);
+assert.ok(catalogProjection.catalog.length > 0);
+assert.deepEqual(
+  new Set(catalogProjection.catalog.map((item) => item.kind)),
+  selectedKinds,
+  "Projected catalog must preserve the server-selected catalog kinds.",
+);
+assert.equal(
+  JSON.stringify(catalogProjection).includes("catalog:event:invented-event"),
+  false,
+  "Invented catalog binding IDs must not project.",
+);
+
+const allModuleBindings = buildAllIslandModuleBindings();
+assert.ok(allModuleBindings.length > 0, "Public traveler module catalog must not be empty.");
+const allModuleKinds = new Set(allModuleBindings.map((binding) => binding.kind));
+for (const kind of ["experience", "event", "dining", "car_rental", "ferry"]) {
+  assert.ok(allModuleKinds.has(kind), `Public module coverage must include ${kind}.`);
+}
+for (const binding of allModuleBindings) {
+  assert.ok(binding.title.trim(), `${binding.id} must have a canonical title.`);
+  assert.ok(binding.summary.trim(), `${binding.id} must have canonical summary data.`);
+  assert.ok(binding.provenance.sourceId.trim(), `${binding.id} must have source identity.`);
+  assert.ok(
+    binding.provenance.sourceUrls.length > 0,
+    `${binding.id} must retain at least one source URL.`,
+  );
+  assert.ok(
+    binding.image.src.startsWith("/images/"),
+    `${binding.id} must resolve to local imagery.`,
+  );
+  assert.ok(binding.image.alt.trim(), `${binding.id} must have truthful image alt text.`);
+  const imagePath = resolve(
+    process.cwd(),
+    "public",
+    binding.image.src.replace(/^\//, ""),
+  );
+  assert.ok(existsSync(imagePath), `Module image missing for ${binding.id}: ${binding.image.src}`);
+  assert.ok(
+    statSync(imagePath).size > 512,
+    `Module image/fallback too small for ${binding.id}: ${binding.image.src}`,
+  );
+  if (binding.image.status === "context") {
+    assert.match(
+      binding.image.alt,
+      /context image/i,
+      `Context fallback for ${binding.id} must identify itself as context.`,
+    );
+    assert.match(
+      binding.image.alt,
+      /not a .*specific photograph/i,
+      `Context fallback for ${binding.id} must not imply a place/operator-specific photograph.`,
+    );
+  }
+  if (binding.kind === "experience") {
+    assert.ok(
+      ["operator-listed", "seasonal", "request-only"].includes(binding.status ?? ""),
+      `${binding.id} must preserve the experience catalog status rather than claim live inventory.`,
+    );
+  }
+  if (binding.kind === "ferry") {
+    assert.ok(
+      [
+        "verified-current",
+        "temporary-override",
+        "operator-dependent",
+        "verify-current",
+      ].includes(binding.status ?? ""),
+      `${binding.id} must preserve governed ferry schedule status.`,
+    );
   }
 }
 
 const generativeWorkspaceSource = readFileSync(
-  resolve(process.cwd(), "components/island-workspace/island-generative-workspace.tsx"),
+  resolve(
+    process.cwd(),
+    "components/island-workspace/island-generative-workspace.tsx",
+  ),
   "utf8",
 );
 const livingWorldSource = readFileSync(
-  resolve(process.cwd(), "components/island-workspace/island-living-world-canvas.tsx"),
+  resolve(
+    process.cwd(),
+    "components/island-workspace/island-living-world-canvas.tsx",
+  ),
   "utf8",
 );
 assert.match(generativeWorkspaceSource, /IslandLivingWorldCanvas/);
+assert.match(generativeWorkspaceSource, /CatalogDeck/);
 assert.match(generativeWorkspaceSource, /selectedPlace:\s*\{/);
 assert.match(generativeWorkspaceSource, /kind:\s*selectedPlace\.type/);
+assert.match(generativeWorkspaceSource, /Operator-listed does not mean live inventory/);
 assert.match(livingWorldSource, /queryTerritoryMapPlaces/);
 assert.match(livingWorldSource, /fetch\("\/api\/estates"/);
 assert.match(livingWorldSource, /workspace\.selectPlace\(selection\)/);
@@ -272,5 +510,5 @@ assert.doesNotMatch(livingWorldSource, /TRIP_STORAGE_KEY|savePlaceToTrip/);
 assert.doesNotMatch(livingWorldSource, /booking\.review|payment|checkout/i);
 
 console.log(
-  `Island workspace + generative UI tests passed: privacy, mandatory safety blocks, binding integrity, governed actions, canonical data, synchronized Living Map context, and trusted image coverage for ${ALL_PUBLIC_TRAVEL_KNOWLEDGE.length} public records.`,
+  `Island workspace + generative UI tests passed: privacy, mandatory safety blocks, binding integrity, governed actions, canonical data, synchronized Living Map context, trusted image coverage for ${ALL_PUBLIC_TRAVEL_KNOWLEDGE.length} public travel records, and ${allModuleBindings.length} source-bound traveler-module entries.`,
 );

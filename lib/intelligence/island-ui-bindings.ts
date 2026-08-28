@@ -4,7 +4,11 @@ import {
   getIslandContextImage,
   isLocalIslandImage,
 } from "@/lib/intelligence/island-ui-images";
-import { buildDefaultIslandPresentationPlan, normalizeIslandPresentationPlan } from "@/lib/intelligence/island-ui-plan";
+import { buildIslandModuleBindings } from "@/lib/intelligence/island-module-bindings";
+import {
+  buildDefaultIslandPresentationPlan,
+  normalizeIslandPresentationPlan,
+} from "@/lib/intelligence/island-ui-plan";
 import {
   getTravelKnowledge,
   type TravelKnowledgeKind,
@@ -13,6 +17,7 @@ import type { DirectoryItem } from "@/types/directory";
 import type {
   IntelligenceIsland,
   IntelligenceRecommendation,
+  IntelligenceRequest,
   IntelligenceResponse,
 } from "@/types/intelligence";
 import type {
@@ -31,7 +36,9 @@ const DIRECTORY_KINDS = new Set<TravelKnowledgeKind>([
 ]);
 
 function compact(values: Array<string | undefined>) {
-  return Array.from(new Set(values.map((value) => value?.trim()).filter(Boolean))) as string[];
+  return Array.from(
+    new Set(values.map((value) => value?.trim()).filter(Boolean)),
+  ) as string[];
 }
 
 function directoryRecordForRecommendation(
@@ -42,18 +49,27 @@ function directoryRecordForRecommendation(
   const kind = recommendation.id.slice(0, separator) as TravelKnowledgeKind;
   const sourceId = recommendation.id.slice(separator + 1);
   if (!DIRECTORY_KINDS.has(kind) || !sourceId) return null;
-  const item = getTravelKnowledge(kind).find((candidate) => candidate.id === sourceId);
+  const item = getTravelKnowledge(kind).find(
+    (candidate) => candidate.id === sourceId,
+  );
   return item ? { kind, item } : null;
 }
 
-export function resolveTrustedDirectoryImage(item: DirectoryItem): IslandTrustedImage {
-  const local = isLocalIslandImage(item.heroImage) && !GENERIC_DIRECTORY_IMAGES.has(item.heroImage);
+export function resolveTrustedDirectoryImage(
+  item: DirectoryItem,
+): IslandTrustedImage {
+  const local =
+    isLocalIslandImage(item.heroImage) &&
+    !GENERIC_DIRECTORY_IMAGES.has(item.heroImage);
   const hasSource = Boolean(item.imageSourceUrl?.trim());
   if (local && (item.imageStatus === "verified" || hasSource)) {
     return Object.freeze({
       src: item.heroImage,
       alt: `${item.name} in the U.S. Virgin Islands`,
-      status: item.imageStatus === "verified" ? ("verified" as const) : ("sourced" as const),
+      status:
+        item.imageStatus === "verified"
+          ? ("verified" as const)
+          : ("sourced" as const),
       ...(hasSource ? { sourceUrl: item.imageSourceUrl } : {}),
     });
   }
@@ -66,7 +82,9 @@ function directoryProvenance(item: DirectoryItem): IslandDataProvenance {
     sourceId: item.id,
     reviewStatus: item.verifiedAt ? "verified-record" : "catalog-record",
     ...(item.sourceLabel ? { sourceLabel: item.sourceLabel } : {}),
-    sourceUrls: Object.freeze(compact([...(item.sourceUrls ?? []), item.sourceUrl])),
+    sourceUrls: Object.freeze(
+      compact([...(item.sourceUrls ?? []), item.sourceUrl]),
+    ),
     ...(item.verifiedAt ? { verifiedAt: item.verifiedAt } : {}),
   });
 }
@@ -100,19 +118,26 @@ function directoryBinding(
 function heritageBinding(
   recommendation: IntelligenceRecommendation,
 ): IslandTrustedBinding | null {
-  const record = getAllHeritageRecords().find((candidate) => candidate.id === recommendation.id);
+  const record = getAllHeritageRecords().find(
+    (candidate) => candidate.id === recommendation.id,
+  );
   if (!record) return null;
   const island = (record.island ?? recommendation.island) as IntelligenceIsland;
-  const localHero = record.heroImage && isLocalIslandImage(record.heroImage)
-    ? record.heroImage
-    : record.images.find((image) => isLocalIslandImage(image));
-  const image: IslandTrustedImage = localHero && record.provenance.reviewStatus !== "needs-review"
-    ? Object.freeze({
-        src: localHero,
-        alt: `${record.title} — USVI Explorer heritage image`,
-        status: record.provenance.reviewStatus === "canonical" ? ("verified" as const) : ("sourced" as const),
-      })
-    : getIslandContextImage(island);
+  const localHero =
+    record.heroImage && isLocalIslandImage(record.heroImage)
+      ? record.heroImage
+      : record.images.find((image) => isLocalIslandImage(image));
+  const image: IslandTrustedImage =
+    localHero && record.provenance.reviewStatus !== "needs-review"
+      ? Object.freeze({
+          src: localHero,
+          alt: `${record.title} — USVI Explorer heritage image`,
+          status:
+            record.provenance.reviewStatus === "canonical"
+              ? ("verified" as const)
+              : ("sourced" as const),
+        })
+      : getIslandContextImage(island);
   const sourceUrls = compact(record.sources.map((source) => source.url));
   return Object.freeze({
     id: recommendation.id,
@@ -127,7 +152,11 @@ function heritageBinding(
       reviewStatus: record.provenance.reviewStatus,
       sourceUrls: Object.freeze(sourceUrls),
     }),
-    ...(record.href ? { href: record.href } : recommendation.href ? { href: recommendation.href } : {}),
+    ...(record.href
+      ? { href: record.href }
+      : recommendation.href
+        ? { href: recommendation.href }
+        : {}),
     ...(recommendation.mapHref ? { mapHref: recommendation.mapHref } : {}),
   });
 }
@@ -157,18 +186,28 @@ export function resolveIslandRecommendationBinding(
   recommendation: IntelligenceRecommendation,
 ): IslandTrustedBinding {
   const directory = directoryRecordForRecommendation(recommendation);
-  if (directory) return directoryBinding(recommendation, directory.kind, directory.item);
+  if (directory) {
+    return directoryBinding(recommendation, directory.kind, directory.item);
+  }
   return heritageBinding(recommendation) ?? fallbackBinding(recommendation);
 }
 
 export function buildIslandUIBindings(
   response: IntelligenceResponse,
+  moduleBindings: Readonly<Record<string, IslandTrustedBinding>> = {},
 ): Readonly<Record<string, IslandTrustedBinding>> {
-  const entries = response.recommendations.map((recommendation) => {
-    const binding = resolveIslandRecommendationBinding(recommendation);
-    return [recommendation.id, binding] as const;
-  });
-  return Object.freeze(Object.fromEntries(entries));
+  const recommendationEntries = response.recommendations.map(
+    (recommendation) => {
+      const binding = resolveIslandRecommendationBinding(recommendation);
+      return [recommendation.id, binding] as const;
+    },
+  );
+  return Object.freeze(
+    Object.fromEntries([
+      ...recommendationEntries,
+      ...Object.entries(moduleBindings),
+    ]),
+  );
 }
 
 export type IntelligenceResponseWithIslandUI = IntelligenceResponse & {
@@ -178,14 +217,25 @@ export type IntelligenceResponseWithIslandUI = IntelligenceResponse & {
 export function attachIslandUIEnvelope(
   response: IntelligenceResponse,
   rawPresentation?: unknown,
+  request?: IntelligenceRequest,
 ): IntelligenceResponseWithIslandUI {
-  const presentation: IslandUIPresentationPlan = rawPresentation === undefined
-    ? buildDefaultIslandPresentationPlan(response)
-    : normalizeIslandPresentationPlan(rawPresentation, response);
+  const moduleBindings = request
+    ? buildIslandModuleBindings(request, response)
+    : Object.freeze({});
+  const catalogBindingIds = Object.freeze(Object.keys(moduleBindings));
+  const presentation: IslandUIPresentationPlan =
+    rawPresentation === undefined
+      ? buildDefaultIslandPresentationPlan(response, catalogBindingIds)
+      : normalizeIslandPresentationPlan(
+          rawPresentation,
+          response,
+          catalogBindingIds,
+        );
   const envelope: IslandUIEnvelope = Object.freeze({
     version: 1 as const,
     presentation,
-    bindings: buildIslandUIBindings(response),
+    bindings: buildIslandUIBindings(response, moduleBindings),
+    catalogBindingIds,
   });
   return { ...response, islandUI: envelope };
 }

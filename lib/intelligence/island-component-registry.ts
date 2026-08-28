@@ -11,6 +11,7 @@ export const ISLAND_COMPONENT_REGISTRY: Readonly<
 > = Object.freeze({
   WorldCanvas: Object.freeze({ zone: "canvas", label: "World canvas" }),
   RecommendationDeck: Object.freeze({ zone: "canvas", label: "Recommendations" }),
+  CatalogDeck: Object.freeze({ zone: "canvas", label: "Connected traveler catalog" }),
   EvidenceStrip: Object.freeze({ zone: "support", label: "Evidence" }),
   AgentActivity: Object.freeze({ zone: "support", label: "Agent activity" }),
   MissionTimeline: Object.freeze({ zone: "rail", label: "Mission timeline" }),
@@ -24,6 +25,11 @@ export function blocksForIslandZone(
   zone: IslandUIZone,
 ): readonly IslandUIPresentationBlock[] {
   return presentation.blocks
-    .filter((block) => ISLAND_COMPONENT_REGISTRY[block.component]?.zone === zone)
-    .sort((a, b) => b.priority - a.priority || a.component.localeCompare(b.component));
+    .filter(
+      (block) => ISLAND_COMPONENT_REGISTRY[block.component]?.zone === zone,
+    )
+    .sort(
+      (a, b) =>
+        b.priority - a.priority || a.component.localeCompare(b.component),
+    );
 }
