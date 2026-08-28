@@ -22,6 +22,7 @@ import { ViBrandMark } from "@/components/brand/vi-brand-mark";
 import {
   ACTIVE_ISLAND_STORAGE_KEY,
   ACTIVE_ISLAND_UPDATED_EVENT,
+  normalizeActiveIsland,
   readActiveIsland,
   type ActiveIsland,
 } from "@/lib/active-island";
@@ -29,6 +30,11 @@ import {
   JOURNEY_PLAN_UPDATED_EVENT,
   readJourneyPlans,
 } from "@/lib/journey-planner";
+import {
+  readSelectedTravelerTripPlanId,
+  TRAVELER_TRIP_SELECTION_STORAGE_KEY,
+  TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+} from "@/lib/traveler-trip-selection";
 
 const ITEMS = [
   { base: "/", label: "Home", icon: House },
@@ -75,6 +81,11 @@ type OperationsNavItem = {
   base: string;
   label: string;
   icon: typeof House;
+};
+
+type TravelerNavTripContext = {
+  planId: string;
+  island: ActiveIsland;
 };
 
 const ADMIN_OPERATIONS_ITEMS: OperationsNavItem[] = [
@@ -145,25 +156,51 @@ function isOperationsActive(pathname: string, base: string) {
   return pathname === base || pathname.startsWith(`${base}/`);
 }
 
-function contextualHref(base: (typeof ITEMS)[number]["base"], island: ActiveIsland) {
+function contextualHref(
+  base: (typeof ITEMS)[number]["base"],
+  island: ActiveIsland,
+  tripContext: TravelerNavTripContext | null,
+) {
   if (base === "/places") return `/places?island=${island}`;
-  if (base === "/map") return `/map?island=${island}`;
-  if (base === "/concierge") return `/concierge?island=${island}`;
+  if (base === "/trips" && tripContext) {
+    return `/trips?trip=${encodeURIComponent(tripContext.planId)}`;
+  }
+  if (base === "/map") {
+    if (!tripContext) return `/map?island=${island}`;
+    return `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
+  }
+  if (base === "/concierge") {
+    if (!tripContext) return `/concierge?island=${island}`;
+    return `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
+  }
   return base;
 }
 
 export function AppNavigation() {
   const pathname = usePathname();
   const [tripStopCount, setTripStopCount] = useState(0);
+  const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
 
   useEffect(() => {
-    function refreshTripStopCount() {
+    function refreshTripState() {
+      const plans = readJourneyPlans();
       setTripStopCount(
-        readJourneyPlans().reduce(
+        plans.reduce(
           (total, plan) => total + plan.plan.length,
           0,
         ),
+      );
+
+      const selectedPlanId = readSelectedTravelerTripPlanId();
+      const selectedPlan = selectedPlanId
+        ? plans.find((plan) => plan.id === selectedPlanId) ?? null
+        : null;
+      const selectedIsland = normalizeActiveIsland(selectedPlan?.island);
+      setTripContext(
+        selectedPlan && selectedIsland
+          ? { planId: selectedPlan.id, island: selectedIsland }
+          : null,
       );
     }
 
@@ -182,20 +219,29 @@ export function AppNavigation() {
 
     function handleStorage(event: StorageEvent) {
       if (!event.key || event.key === ACTIVE_ISLAND_STORAGE_KEY) refreshIsland();
-      if (!event.key || event.key === "vi-guide.intelligence.saved-plans") {
-        refreshTripStopCount();
+      if (
+        !event.key ||
+        event.key === "vi-guide.intelligence.saved-plans" ||
+        event.key === TRAVELER_TRIP_SELECTION_STORAGE_KEY
+      ) {
+        refreshTripState();
       }
     }
 
-    refreshTripStopCount();
+    refreshTripState();
     refreshIsland();
-    window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripStopCount);
+    window.addEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripState);
+    window.addEventListener(
+      TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+      refreshTripState,
+    );
     window.addEventListener(ACTIVE_ISLAND_UPDATED_EVENT, handleIslandEvent);
     window.addEventListener("storage", handleStorage);
     return () => {
+      window.removeEventListener(JOURNEY_PLAN_UPDATED_EVENT, refreshTripState);
       window.removeEventListener(
-        JOURNEY_PLAN_UPDATED_EVENT,
-        refreshTripStopCount,
+        TRAVELER_TRIP_SELECTION_UPDATED_EVENT,
+        refreshTripState,
       );
       window.removeEventListener(ACTIVE_ISLAND_UPDATED_EVENT, handleIslandEvent);
       window.removeEventListener("storage", handleStorage);
@@ -268,7 +314,7 @@ export function AppNavigation() {
         const isTrip = base === "/trips";
         const isMap = base === "/map";
         const isConcierge = base === "/concierge";
-        const href = contextualHref(base, activeIsland);
+        const href = contextualHref(base, activeIsland, tripContext);
         const accessibleLabel =
           isTrip && tripStopCount
             ? `${label}, ${tripStopCount} saved ${tripStopCount === 1 ? "stop" : "stops"}`
