@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
+import { listCollectiveAgents } from "@/lib/intelligence/agent-registry";
 import {
   listAgentEventHandlers,
   listRecentIntelligenceEvents,
@@ -22,6 +23,7 @@ export async function GET(request: NextRequest) {
       {
         events,
         subscribers: listAgentEventHandlers(),
+        collectiveAgents: listCollectiveAgents(),
         count: events.length,
         generatedAt: new Date().toISOString(),
       },

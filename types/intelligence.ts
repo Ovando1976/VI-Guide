@@ -234,6 +234,48 @@ export type IntelligenceAgentContextSummary = {
   };
 };
 
+export type IntelligenceCoordinationSummary = {
+  version: 1;
+  status: "planned" | "limited";
+  rootIntentId: string;
+  rootIntentExpiresAt: string;
+  team: Array<{
+    agentId: string;
+    name: string;
+    roles: string[];
+    capabilities: IntelligenceCapability[];
+    reason: string;
+  }>;
+  tasks: Array<{
+    id: string;
+    title: string;
+    requiredCapabilities: IntelligenceCapability[];
+    status: "pending" | "claimed" | "completed" | "failed";
+    depth: number;
+    dependsOn: string[];
+    claimedBy?: string;
+  }>;
+  messageCount: number;
+  safeAutonomousTools: string[];
+  blockedAutonomousTools: Array<{
+    toolId: string;
+    reason:
+      | "read_only_tool"
+      | "tool_disabled"
+      | "human_confirmation_required"
+      | "high_risk_tool"
+      | "mutating_tool";
+  }>;
+  missingCapabilities: IntelligenceCapability[];
+  limits: {
+    maxAgents: number;
+    maxTasks: number;
+    maxMessages: number;
+    maxDepth: number;
+    maxRuntimeMs: number;
+  };
+};
+
 export type IntelligenceOrchestration = {
   status: "ready" | "waiting_for_user";
   intent: string;
@@ -242,6 +284,7 @@ export type IntelligenceOrchestration = {
   trace: IntelligenceOrchestrationStep[];
   tools?: IntelligenceToolSummary[];
   context?: IntelligenceAgentContextSummary;
+  coordination?: IntelligenceCoordinationSummary;
 };
 
 export type IntelligenceResponse = {

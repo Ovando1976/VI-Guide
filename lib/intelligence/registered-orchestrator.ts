@@ -4,6 +4,7 @@ import {
   buildAgentContext,
   publicAgentContext,
 } from "@/lib/intelligence/context-engine";
+import { planBoundedAgentCollective } from "@/lib/intelligence/coordination-runtime";
 import {
   publishIntelligenceEvent,
   type IntelligenceEventType,
@@ -55,6 +56,17 @@ export async function runRegisteredIntelligenceOrchestrator(
     capabilities: context.authorizedCapabilities,
   });
 
+  const requiredCapabilities = (
+    result.orchestration?.requiredCapabilities ?? []
+  ).filter((capability) => context.authorizedCapabilities.includes(capability));
+  const coordination = result.orchestration
+    ? planBoundedAgentCollective({
+        request: context.request,
+        requiredCapabilities,
+        tools: context.tools,
+      })
+    : undefined;
+
   const registryWarning = context.unavailableCapabilities.length
     ? `The tool registry disabled unavailable capabilities: ${context.unavailableCapabilities.join(", ")}.`
     : null;
@@ -79,6 +91,7 @@ export async function runRegisteredIntelligenceOrchestrator(
           ...result.orchestration,
           tools: context.tools,
           context: publicAgentContext(context),
+          ...(coordination ? { coordination } : {}),
         }
       : result.orchestration,
   };
@@ -97,6 +110,18 @@ export async function runRegisteredIntelligenceOrchestrator(
     contextVersion: context.version,
     memorySource: context.memorySource,
     map: context.map,
+    collective: coordination
+      ? {
+          status: coordination.status,
+          rootIntentId: coordination.rootIntentId,
+          agents: coordination.team.map((member) => member.agentId),
+          taskCount: coordination.tasks.length,
+          messageCount: coordination.messageCount,
+          safeAutonomousTools: coordination.safeAutonomousTools,
+          blockedAutonomousTools: coordination.blockedAutonomousTools,
+          missingCapabilities: coordination.missingCapabilities,
+        }
+      : null,
   };
   const eventTypes = eventTypesForResult(
     enriched,

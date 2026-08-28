@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 
+import "./test-agent-coordination";
 import {
   normalizeActiveTrip,
   summarizeJourneyPlan,
