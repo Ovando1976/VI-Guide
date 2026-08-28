@@ -16,12 +16,12 @@ const mappedPlace = parseInternalHref(
     type: "beach",
     lat: 18.3623,
     lng: -64.9236,
-    estateGeoid: "7803099000",
+    estateGeoid: "7803086200",
   }),
 );
 assert.equal(mappedPlace.pathname, "/map");
 assert.equal(mappedPlace.searchParams.get("place"), "beach:magens-bay");
-assert.equal(mappedPlace.searchParams.get("estate"), "7803099000");
+assert.equal(mappedPlace.searchParams.get("estate"), "7803086200");
 
 const singleStop = parseInternalHref(
   buildJourneyMobilityHref({
@@ -45,7 +45,7 @@ assert.equal(singleStop.pathname, "/mobility");
 assert.equal(singleStop.hash, "#book");
 assert.equal(singleStop.searchParams.get("trip"), "plan_single");
 assert.equal(singleStop.searchParams.get("source"), "concierge");
-assert.equal(singleStop.searchParams.get("to"), "7803099000");
+assert.equal(singleStop.searchParams.get("to"), "7803086200");
 assert.equal(singleStop.searchParams.get("destinationName"), "Magens Bay");
 assert.equal(singleStop.searchParams.has("from"), false);
 
