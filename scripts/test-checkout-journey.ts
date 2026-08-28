@@ -49,6 +49,18 @@ assert.match(rideCheckout, /router\.replace/);
 assert.match(rideCheckout, /tripReturnHref/);
 assert.match(rideCheckout, /loadedBooking\.journeyPlanId \|\| readPendingMobilityTripPlanId\(\)/);
 assert.match(rideCheckout, /journeyPlanId=\{booking\?\.journeyPlanId\}/);
+assert.match(rideCheckout, /mobilityReturnHref/);
+assert.match(
+  rideCheckout,
+  /booking\?\.journeyPlanId \|\| readPendingMobilityTripPlanId\(\)/,
+);
+assert.match(rideCheckout, /new URLSearchParams\(\{ trip: normalizedJourneyPlanId \}\)/);
+assert.match(rideCheckout, /`\/mobility\?\$\{params\.toString\(\)\}#book`/);
+assert.doesNotMatch(
+  rideCheckout,
+  /router\.push\("\/mobility"\)/,
+  "checkout recovery must not discard the active JourneyPlan when returning to Mobility",
+);
 
 assert.match(checkoutForm, /stripe\.confirmPayment/);
 assert.match(checkoutForm, /returnUrl = new URL\("\/trips"/);
