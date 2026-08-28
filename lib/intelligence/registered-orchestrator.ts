@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 import "@/lib/intelligence/agent-subscribers";
 
 import {
@@ -6,6 +8,7 @@ import {
 } from "@/lib/intelligence/context-engine";
 import { runAgentWorkerShadow } from "@/lib/intelligence/agent-worker-runtime";
 import { createConfiguredAdvisoryAgentWorker } from "@/lib/intelligence/agent-worker";
+import { createConfiguredReadOnlyAgentToolBroker } from "@/lib/intelligence/agent-tool-broker";
 import {
   publishIntelligenceEvent,
   type IntelligenceEventType,
@@ -48,6 +51,10 @@ function eventTypesForResult(
   return Array.from(types);
 }
 
+function telemetryHash(value: string) {
+  return createHash("sha256").update(value).digest("hex").slice(0, 16);
+}
+
 export async function runRegisteredIntelligenceOrchestrator(
   request: IntelligenceRequest,
 ): Promise<IntelligenceResponse> {
@@ -66,6 +73,7 @@ export async function runRegisteredIntelligenceOrchestrator(
         requiredCapabilities,
         tools: context.tools,
         worker: createConfiguredAdvisoryAgentWorker(),
+        broker: createConfiguredReadOnlyAgentToolBroker(),
       })
     : undefined;
   const coordination = coordinationRun?.coordination;
@@ -101,6 +109,18 @@ export async function runRegisteredIntelligenceOrchestrator(
 
   await persistMemoryResult(context.request, memorySnapshot, enriched);
 
+  const workerShadowTelemetry = coordinationRun?.workerShadow
+    ? {
+        ...coordinationRun.workerShadow,
+        brokerAudits: coordinationRun.workerShadow.brokerAudits.map(
+          ({ rootIntentId, ...audit }) => ({
+            ...audit,
+            rootIntentHash: telemetryHash(rootIntentId),
+          }),
+        ),
+      }
+    : null;
+
   const eventPayload = {
     workflowStatus: enriched.orchestration?.status ?? "ready",
     missingInformation: enriched.orchestration?.missingInformation ?? [],
@@ -116,14 +136,14 @@ export async function runRegisteredIntelligenceOrchestrator(
     collective: coordination
       ? {
           status: coordination.status,
-          rootIntentId: coordination.rootIntentId,
+          rootIntentHash: telemetryHash(coordination.rootIntentId),
           agents: coordination.team.map((member) => member.agentId),
           taskCount: coordination.tasks.length,
           messageCount: coordination.messageCount,
           safeAutonomousTools: coordination.safeAutonomousTools,
           blockedAutonomousTools: coordination.blockedAutonomousTools,
           missingCapabilities: coordination.missingCapabilities,
-          workerShadow: coordinationRun?.workerShadow ?? null,
+          workerShadow: workerShadowTelemetry,
         }
       : null,
   };

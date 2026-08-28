@@ -1,7 +1,14 @@
+import { randomUUID } from "node:crypto";
+
 import type { CollectiveAgentRegistry } from "@/lib/intelligence/agent-registry";
 import { defaultCollectiveAgentRegistry } from "@/lib/intelligence/agent-registry";
 import type { CollectivePolicy } from "@/lib/intelligence/agent-policy";
 import { DEFAULT_COLLECTIVE_POLICY } from "@/lib/intelligence/agent-policy";
+import type {
+  AgentToolAuditRecord,
+  AgentToolEvidence,
+  ReadOnlyAgentToolBroker,
+} from "@/lib/intelligence/agent-tool-broker";
 import type { AgentWorker, AgentWorkerOutput } from "@/lib/intelligence/agent-worker";
 import { BoundedAgentCollective } from "@/lib/intelligence/coordination-runtime";
 import type { IntelligenceToolDescriptor } from "@/lib/intelligence/tool-registry";
@@ -12,6 +19,7 @@ import type {
 } from "@/types/intelligence";
 
 const DEFAULT_MAX_WORKER_TASKS = 2;
+const MAX_MODEL_CALLS = 3;
 
 export type AgentWorkerShadowReport = Readonly<{
   status: "disabled" | "completed" | "partial" | "failed";
@@ -20,8 +28,14 @@ export type AgentWorkerShadowReport = Readonly<{
   attemptedTasks: number;
   completedTasks: number;
   failedTasks: number;
+  modelCalls: number;
   acceptedDelegations: number;
   rejectedDelegations: number;
+  brokerCalls: number;
+  brokerCompleted: number;
+  brokerRejected: number;
+  brokerFailed: number;
+  brokerAudits: readonly AgentToolAuditRecord[];
 }>;
 
 export type AgentWorkerShadowResult = Readonly<{
@@ -37,7 +51,9 @@ function safeWorkerError(error: unknown) {
 }
 
 function messageTypeForOutput(output: AgentWorkerOutput) {
-  return output.kind === "delegate" ? "proposal" : output.kind;
+  if (output.kind === "delegate") return "proposal" as const;
+  if (output.kind === "tool_request") return "challenge" as const;
+  return output.kind;
 }
 
 function authorizedWorkerCapabilities(
@@ -54,11 +70,31 @@ function authorizedWorkerCapabilities(
   );
 }
 
+function syntheticChallenge(summary: string): AgentWorkerOutput {
+  return Object.freeze({
+    kind: "challenge" as const,
+    summary,
+    confidence: "low" as const,
+    requestedCapabilities: Object.freeze([]),
+    toolRequest: null,
+  });
+}
+
+function evidenceMessage(evidence: AgentToolEvidence) {
+  const header = `Read-only broker evidence from ${evidence.toolId} (${evidence.queryHash}).`;
+  const records = evidence.records.slice(0, 3).map((record) => {
+    const summary = record.summary.replace(/\s+/g, " ").trim().slice(0, 320);
+    return `[${record.sourceSystem}:${record.sourceId}] ${record.title} — ${summary}`;
+  });
+  return [header, ...records].join("\n").slice(0, 1_900);
+}
+
 export async function runAgentWorkerShadow(input: {
   request: IntelligenceRequest;
   requiredCapabilities: readonly IntelligenceCapability[];
   tools: readonly IntelligenceToolDescriptor[];
   worker: AgentWorker | null;
+  broker?: ReadOnlyAgentToolBroker | null;
   registry?: CollectiveAgentRegistry;
   policy?: CollectivePolicy;
   maxWorkerTasks?: number;
@@ -87,8 +123,14 @@ export async function runAgentWorkerShadow(input: {
         attemptedTasks: 0,
         completedTasks: 0,
         failedTasks: 0,
+        modelCalls: 0,
         acceptedDelegations: 0,
         rejectedDelegations: 0,
+        brokerCalls: 0,
+        brokerCompleted: 0,
+        brokerRejected: 0,
+        brokerFailed: 0,
+        brokerAudits: Object.freeze([]),
       }),
     };
   }
@@ -98,13 +140,19 @@ export async function runAgentWorkerShadow(input: {
     Math.min(input.maxWorkerTasks ?? DEFAULT_MAX_WORKER_TASKS, 4),
   );
   const attempted = new Set<string>();
+  const brokerAudits: AgentToolAuditRecord[] = [];
   let attemptedTasks = 0;
   let completedTasks = 0;
   let failedTasks = 0;
+  let modelCalls = 0;
   let acceptedDelegations = 0;
   let rejectedDelegations = 0;
+  let brokerCalls = 0;
+  let brokerCompleted = 0;
+  let brokerRejected = 0;
+  let brokerFailed = 0;
 
-  while (attemptedTasks < maxWorkerTasks) {
+  while (attemptedTasks < maxWorkerTasks && modelCalls < MAX_MODEL_CALLS) {
     const task = collective.board
       .listTasks()
       .find(
@@ -130,15 +178,90 @@ export async function runAgentWorkerShadow(input: {
       continue;
     }
 
+    const brokerContext = {
+      request: input.request,
+      rootIntent: collective.board.rootIntent,
+      agent,
+      task,
+      tools: input.tools,
+    };
+    const requestableToolIds =
+      input.broker?.listAvailableToolIds(brokerContext) ?? [];
+
     try {
-      const output = await input.worker.run({
+      let output = await input.worker.run({
         request: input.request,
         rootIntent: collective.board.rootIntent,
         agent,
         task,
         messages: collective.board.listMessages(),
         tools: input.tools,
+        requestableToolIds,
       });
+      modelCalls += 1;
+
+      if (output.kind === "tool_request") {
+        if (!input.broker || !output.toolRequest) {
+          brokerRejected += 1;
+          output = syntheticChallenge(
+            "The requested read-only evidence lookup is not available for this task.",
+          );
+        } else {
+          brokerCalls += 1;
+          const brokerResult = await input.broker.execute(
+            output.toolRequest,
+            brokerContext,
+          );
+          brokerAudits.push(brokerResult.audit);
+
+          if (brokerResult.status === "completed" && brokerResult.evidence) {
+            brokerCompleted += 1;
+            collective.board.postMessage({
+              id: `broker-evidence-${randomUUID()}`,
+              type: "evidence",
+              fromAgentId: "read-only-tool-broker",
+              taskId: task.id,
+              content: evidenceMessage(brokerResult.evidence),
+              requestedCapabilities: [],
+            });
+
+            if (modelCalls < MAX_MODEL_CALLS) {
+              const followUp = await input.worker.run({
+                request: input.request,
+                rootIntent: collective.board.rootIntent,
+                agent,
+                task,
+                messages: collective.board.listMessages(),
+                tools: input.tools,
+                requestableToolIds: [],
+              });
+              modelCalls += 1;
+              output =
+                followUp.kind === "tool_request"
+                  ? syntheticChallenge(
+                      "Only one read-only broker lookup is permitted per task.",
+                    )
+                  : followUp;
+              if (followUp.kind === "tool_request") brokerRejected += 1;
+            } else {
+              output = syntheticChallenge(
+                "Read-only evidence was collected, but the bounded model-call budget was exhausted before a follow-up assessment.",
+              );
+            }
+          } else if (brokerResult.status === "rejected") {
+            brokerRejected += 1;
+            output = syntheticChallenge(
+              `Read-only broker request rejected by policy (${brokerResult.audit.reason ?? "policy_denied"}).`,
+            );
+          } else {
+            brokerFailed += 1;
+            output = syntheticChallenge(
+              "The read-only evidence lookup failed safely; do not infer missing facts.",
+            );
+          }
+        }
+      }
+
       const requestedCapabilities = authorizedWorkerCapabilities(
         output,
         collective.board.rootIntent.allowedCapabilities,
@@ -211,8 +334,14 @@ export async function runAgentWorkerShadow(input: {
       attemptedTasks,
       completedTasks,
       failedTasks,
+      modelCalls,
       acceptedDelegations,
       rejectedDelegations,
+      brokerCalls,
+      brokerCompleted,
+      brokerRejected,
+      brokerFailed,
+      brokerAudits: Object.freeze([...brokerAudits]),
     }),
   };
 }
