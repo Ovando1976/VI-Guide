@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 
 import {
@@ -252,6 +252,25 @@ for (const item of ALL_PUBLIC_TRAVEL_KNOWLEDGE) {
   }
 }
 
+const generativeWorkspaceSource = readFileSync(
+  resolve(process.cwd(), "components/island-workspace/island-generative-workspace.tsx"),
+  "utf8",
+);
+const livingWorldSource = readFileSync(
+  resolve(process.cwd(), "components/island-workspace/island-living-world-canvas.tsx"),
+  "utf8",
+);
+assert.match(generativeWorkspaceSource, /IslandLivingWorldCanvas/);
+assert.match(generativeWorkspaceSource, /selectedPlace:\s*\{/);
+assert.match(generativeWorkspaceSource, /kind:\s*selectedPlace\.type/);
+assert.match(livingWorldSource, /queryTerritoryMapPlaces/);
+assert.match(livingWorldSource, /fetch\("\/api\/estates"/);
+assert.match(livingWorldSource, /workspace\.selectPlace\(selection\)/);
+assert.match(livingWorldSource, /focusedPlaceId=/);
+assert.match(livingWorldSource, /PUBLIC_LENSES/);
+assert.doesNotMatch(livingWorldSource, /TRIP_STORAGE_KEY|savePlaceToTrip/);
+assert.doesNotMatch(livingWorldSource, /booking\.review|payment|checkout/i);
+
 console.log(
-  `Island workspace + generative UI tests passed: privacy, mandatory safety blocks, binding integrity, governed actions, canonical data, and trusted image coverage for ${ALL_PUBLIC_TRAVEL_KNOWLEDGE.length} public records.`,
+  `Island workspace + generative UI tests passed: privacy, mandatory safety blocks, binding integrity, governed actions, canonical data, synchronized Living Map context, and trusted image coverage for ${ALL_PUBLIC_TRAVEL_KNOWLEDGE.length} public records.`,
 );

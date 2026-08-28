@@ -5,12 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Activity, AlertTriangle, ArrowRight, BedDouble, Bot, CheckCircle2, Compass,
-  History, Home, Layers3, Loader2, MapPinned, Navigation, Route, Search, Send,
-  ShieldCheck, Sparkles, UtensilsCrossed, Users, Waves,
+  History, Home, Loader2, MapPinned, Navigation, Route, Search, Send,
+  ShieldCheck, Sparkles, UtensilsCrossed, Users,
 } from "lucide-react";
 import { type FormEvent, type ReactNode, useMemo, useState } from "react";
 
 import { ViBrandMark } from "@/components/brand/vi-brand-mark";
+import { IslandLivingWorldCanvas } from "@/components/island-workspace/island-living-world-canvas";
 import { useUnifiedWorkspace } from "@/components/workspace/unified-workspace-controller";
 import { askViIntelligence } from "@/lib/intelligence/client";
 import { blocksForIslandZone } from "@/lib/intelligence/island-component-registry";
@@ -20,7 +21,6 @@ import {
   normalizeJourneyPlan,
   readJourneyPlans,
   upsertJourneyPlan,
-  type JourneyPlan,
 } from "@/lib/journey-planner";
 import {
   readSelectedTravelerTripPlanId,
@@ -79,10 +79,24 @@ export function IslandGenerativeWorkspace() {
     if (!message || loading) return;
     setLoading(true); setError(null); setConfirming(null);
     try {
+      const selectedPlace = workspace.state.selection;
       const result = await askViIntelligence(
         message,
         {
-          page: "concierge", island,
+          page: "concierge",
+          island,
+          ...(selectedPlace
+            ? {
+                selectedPlace: {
+                  id: selectedPlace.id,
+                  name: selectedPlace.name,
+                  island,
+                  lat: selectedPlace.lat,
+                  lng: selectedPlace.lng,
+                  kind: selectedPlace.type,
+                },
+              }
+            : {}),
           party: { adults: 1, children: 0, accessibilityNeeds: [] },
           preferences: { interests: [], pace: "balanced", budget: "moderate", food: [], avoid: [] },
         },
@@ -149,7 +163,7 @@ export function IslandGenerativeWorkspace() {
           <div className="mx-auto max-w-[1780px] px-3 pb-4 sm:px-5 lg:px-6">
             <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_390px] xl:items-start">
               <section className="min-w-0 space-y-3">
-                {!context ? <WorldCanvas island={island} projection={null} onIslandChange={workspace.setIsland} /> : canvasBlocks.map((block) => <RegistryBlock key={block.id} block={block} {...context} />)}
+                {!context ? <IslandLivingWorldCanvas island={island} projection={null} onIslandChange={workspace.setIsland} /> : canvasBlocks.map((block) => <RegistryBlock key={block.id} block={block} {...context} />)}
                 {context && supportBlocks.length ? <section className="grid gap-3 lg:grid-cols-2">{supportBlocks.map((block) => <RegistryBlock key={block.id} block={block} {...context} />)}</section> : null}
               </section>
               <aside className="space-y-3 xl:sticky xl:top-[76px]">
@@ -180,7 +194,7 @@ type RegistryContext = {
 };
 
 const REGISTRY: Readonly<Record<IslandUIPresentationBlock["component"], (ctx: RegistryContext) => ReactNode>> = {
-  WorldCanvas: ({ projection, island, onIslandChange }) => <WorldCanvas island={island} projection={projection} onIslandChange={onIslandChange} />,
+  WorldCanvas: ({ projection, island, onIslandChange }) => <IslandLivingWorldCanvas island={island} projection={projection} onIslandChange={onIslandChange} />,
   RecommendationDeck: ({ projection, block }) => <RecommendationDeck recommendations={selectRecommendations(projection, block)} variant={block.variant} />,
   EvidenceStrip: ({ projection }) => <EvidencePanel evidence={projection.evidence} />,
   AgentActivity: ({ projection }) => <AgentPanel agents={projection.agentActivity} />,
@@ -206,11 +220,6 @@ function LensRail() {
 
 function WorkspaceHeader({ island, tripItemCount, projection }: { island: IntelligenceIsland; tripItemCount: number; projection: IslandWorkspaceProjection | null }) {
   return <header className="sticky top-0 z-40 border-b border-white/8 bg-[#03141b]/88 px-3 py-3 backdrop-blur-2xl sm:px-5 lg:px-6"><div className="mx-auto flex max-w-[1780px] items-center justify-between gap-3"><div className="flex min-w-0 items-center gap-3"><Link href="/" className="lg:hidden" aria-label="USVI Explorer home"><ViBrandMark className="h-10 w-10" priority /></Link><div className="min-w-0"><div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.18em] text-cyan-200/55"><Sparkles size={12} /> Generative Island workspace</div><h1 className="truncate text-lg font-black tracking-tight sm:text-xl">{islandLabel(island)} · {projection?.presentation.mode ?? "live mission"}</h1></div></div><div className="flex items-center gap-2">{projection ? <span className="hidden rounded-full border border-emerald-200/15 bg-emerald-200/[.06] px-3 py-2 text-[9px] font-black uppercase tracking-[.12em] text-emerald-100/70 sm:inline-flex">{projection.presentation.blocks.length} trusted UI blocks</span> : null}<Link href="/trips" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 text-[10px] font-black text-white/60"><Route size={14} className="text-amber-200" /><span className="hidden sm:inline">Mission</span><span>{tripItemCount}</span></Link></div></div></header>;
-}
-
-function WorldCanvas({ island, projection, onIslandChange }: { island: IntelligenceIsland; projection: IslandWorkspaceProjection | null; onIslandChange: (island: IntelligenceIsland) => void }) {
-  const image = projection?.recommendations[0]?.image ?? { src: "/images/usvi-harbor-hero.jpg", alt: "Charlotte Amalie harbor and the hills of St. Thomas", status: "context" as const };
-  return <section className="relative isolate min-h-[560px] overflow-hidden rounded-[30px] border border-white/10 bg-[#062a35] shadow-[0_30px_90px_rgba(0,0,0,.28)] sm:min-h-[620px]"><Image src={image.src} alt={image.alt} fill priority sizes="(min-width:1280px) 70vw, 100vw" className="-z-30 object-cover object-center opacity-65 saturate-[1.08]" /><div className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(1,18,25,.62)_0%,rgba(2,28,37,.38)_40%,rgba(2,21,29,.94)_100%)]" /><div className="flex min-h-[560px] flex-col p-4 sm:min-h-[620px] sm:p-6"><div className="flex flex-wrap items-start justify-between gap-3"><div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-[#03141b]/55 px-3 py-2 text-[9px] font-black uppercase tracking-[.15em] text-white/65 backdrop-blur-xl"><Layers3 size={13} className="text-cyan-200" /> World Canvas · trusted bindings</div><div className="flex rounded-full border border-white/12 bg-[#03141b]/60 p-1 backdrop-blur-xl">{ISLANDS.map((option) => <button key={option.value} type="button" onClick={() => onIslandChange(option.value)} className={`min-h-8 rounded-full px-3 text-[9px] font-black ${island === option.value ? "bg-cyan-200 text-[#04252e]" : "text-white/48"}`}>{option.short}</button>)}</div></div><div className="mt-auto max-w-4xl"><p className="text-[10px] font-black uppercase tracking-[.18em] text-amber-200/75">{projection ? `${projection.intent.replaceAll("_", " ")} · ${projection.confidence} confidence · ${projection.presentation.focus} focus` : "Intent-first island computing"}</p><h2 className="mt-2 text-[clamp(2.25rem,5vw,4.7rem)] font-black leading-[.92] tracking-[-.055em]">{projection?.headline ?? "Tell Island what needs to happen. The interface assembles itself around the mission."}</h2><p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/68">{projection?.summary ?? "Map, local knowledge, trip state, mobility, experiences, and governed actions now operate on one synchronized mission."}</p><div className="mt-5 flex flex-wrap gap-2"><Link href={`/map?island=${island}`} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-cyan-200 px-4 text-[10px] font-black uppercase tracking-[.11em] text-[#04242d]"><MapPinned size={15} /> Live spatial layer</Link><Link href="/trips" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/14 bg-white/[.07] px-4 text-[10px] font-black uppercase tracking-[.11em] text-white/75 backdrop-blur"><Route size={15} /> Mission timeline</Link></div></div></div></section>;
 }
 
 function RecommendationDeck({ recommendations, variant }: { recommendations: readonly IslandWorkspaceRecommendation[]; variant: IslandUIPresentationBlock["variant"] }) {
