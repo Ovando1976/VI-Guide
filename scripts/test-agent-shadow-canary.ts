@@ -7,6 +7,7 @@ import {
   publicAgentShadowCanaryDecision,
 } from "../lib/intelligence/agent-shadow-canary";
 import type { IntelligenceRequest } from "../types/intelligence";
+import "./test-operator-preview-canary";
 
 const SESSION_ID = "preview-canary-session-must-not-reach-telemetry";
 
