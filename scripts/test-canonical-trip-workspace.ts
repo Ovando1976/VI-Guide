@@ -15,6 +15,7 @@ const tripConciergeLink = source(
   "components/trips/trip-aware-concierge-link.tsx",
 );
 const appNavigation = source("components/app-navigation.tsx");
+const accountMenu = source("components/account-menu.tsx");
 const pickupPositionControl = source("components/pickup-position-control.tsx");
 const riderTripHistory = source("components/rider-trip-history.tsx");
 const riderTripScopeBridge = source(
@@ -74,6 +75,32 @@ assert.match(
   "the mobile Concierge nav target must preserve active trip identity and island",
 );
 assert.match(appNavigation, /contextualHref\(base, activeIsland, tripContext\)/);
+
+assert.match(accountMenu, /useSearchParams\(\)/);
+assert.match(accountMenu, /readSelectedTravelerTripPlanId/);
+assert.match(accountMenu, /TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);
+assert.match(accountMenu, /TRAVELER_TRIP_SELECTION_STORAGE_KEY/);
+assert.match(accountMenu, /selectedPlan && selectedIsland/);
+assert.match(
+  accountMenu,
+  /\/trips\?trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the account-menu My Trip target must retain the selected JourneyPlan",
+);
+assert.match(
+  accountMenu,
+  /\/map\?island=\$\{tripContext\.island\}&trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the account-menu Living Map target must retain selected trip identity and island",
+);
+assert.match(
+  accountMenu,
+  /currentDestination = serializedSearchParams[\s\S]*\? `\$\{pathname\}\?\$\{serializedSearchParams\}`[\s\S]*: pathname/,
+  "sign-in return context must preserve the current query string",
+);
+assert.match(
+  accountMenu,
+  /href=\{`\/login\?next=\$\{encodeURIComponent\(currentDestination\)\}`\}/,
+  "sign-in must return to the exact traveler route context",
+);
 
 assert.match(
   pickupPositionControl,
