@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import { IslandWorkspaceShell } from "@/components/island-workspace/island-workspace-shell";
+import { IslandGenerativeWorkspace } from "@/components/island-workspace/island-generative-workspace";
 import { UnifiedWorkspaceProvider } from "@/components/workspace/unified-workspace-controller";
 
 const description =
-  "A single adaptive USVI workspace that connects Island intelligence, the Living Map, trip state, mobility, local knowledge, and governed actions around the traveler's mission.";
+  "A single adaptive USVI workspace that connects Island intelligence, the Living Map, trip state, mobility, local knowledge, trusted imagery, and governed actions around the traveler's mission.";
 
 export const metadata: Metadata = {
   title: "Island Workspace",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function IslandWorkspacePage() {
   return (
     <UnifiedWorkspaceProvider>
-      <IslandWorkspaceShell />
+      <IslandGenerativeWorkspace />
     </UnifiedWorkspaceProvider>
   );
 }

@@ -1,3 +1,5 @@
+import { attachIslandUIEnvelope } from "@/lib/intelligence/island-ui-bindings";
+import { normalizeIslandPresentationPlan } from "@/lib/intelligence/island-ui-plan";
 import { evaluateTripRisk } from "@/lib/intelligence/trip-risk";
 import type {
   IntelligenceAction,
@@ -7,12 +9,33 @@ import type {
 } from "@/types/intelligence";
 
 const MAX_RUNTIME_MS = 22_000;
-const MAX_OUTPUT_TOKENS = 1_500;
+const MAX_OUTPUT_TOKENS = 1_900;
+
+const UI_COMPONENTS = [
+  "WorldCanvas",
+  "MissionTimeline",
+  "RecommendationDeck",
+  "EvidenceStrip",
+  "AgentActivity",
+  "WarningPanel",
+  "ConfirmationCard",
+  "ActionDock",
+] as const;
+const UI_SOURCES = [
+  "workspace",
+  "plan",
+  "recommendations",
+  "evidence",
+  "agents",
+  "warnings",
+  "actions",
+] as const;
+const UI_VARIANTS = ["primary", "compact", "expanded", "route", "persistent"] as const;
 
 const RESPONSE_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["answer", "recommendationIds", "plan"],
+  required: ["answer", "recommendationIds", "plan", "presentation"],
   properties: {
     answer: { type: "string" },
     recommendationIds: {
@@ -35,13 +58,48 @@ const RESPONSE_SCHEMA = {
         },
       },
     },
+    presentation: {
+      type: "object",
+      additionalProperties: false,
+      required: ["mode", "focus", "blocks"],
+      properties: {
+        mode: {
+          type: "string",
+          enum: ["discovery", "journey", "mobility", "booking", "knowledge"],
+        },
+        focus: {
+          type: "string",
+          enum: ["world", "mission", "recommendations", "mobility", "knowledge"],
+        },
+        blocks: {
+          type: "array",
+          maxItems: 8,
+          items: {
+            type: "object",
+            additionalProperties: false,
+            required: ["component", "source", "bindingIds", "variant", "priority"],
+            properties: {
+              component: { type: "string", enum: UI_COMPONENTS },
+              source: { type: "string", enum: UI_SOURCES },
+              bindingIds: {
+                type: "array",
+                maxItems: 8,
+                items: { type: "string" },
+              },
+              variant: { type: "string", enum: UI_VARIANTS },
+              priority: { type: "integer", minimum: 0, maximum: 100 },
+            },
+          },
+        },
+      },
+    },
   },
 } as const;
 
 const INSTRUCTIONS = `
-You are the itinerary-planning intelligence for USVI Explorer, a U.S. Virgin Islands travel platform.
+You are the itinerary-planning and presentation-composition intelligence for USVI Explorer, a U.S. Virgin Islands travel platform.
 
-Build a practical response using only the supplied candidate recommendations. Never invent a place, business, beach, accommodation, historic site, price, schedule, availability, travel time, or booking confirmation.
+Build a practical response using only the supplied candidate recommendations. Never invent a place, business, beach, accommodation, historic site, price, schedule, availability, travel time, image URL, source URL, fare, booking confirmation, payment state, or action authority.
 
 Planning rules:
 - Respect the requested island, party, pace, budget, interests, accessibility needs, pickup, stay, cruise constraints, active saved trip, and proactive trip-risk report.
@@ -55,12 +113,21 @@ Planning rules:
 - Mention one concrete logistics consideration when relevant.
 - Lead with the useful answer. Avoid generic promotional language.
 - If the request is not an itinerary, return an empty plan and rank the most useful recommendations.
+
+Presentation rules:
+- presentation controls layout and emphasis only. It never creates facts or authority.
+- Use only the listed component names, sources, variants, and exact binding IDs supplied in availableUIBindings.
+- WorldCanvas is the spatial context surface. MissionTimeline is for plans or missing information. RecommendationDeck is for grounded recommendation IDs. ActionDock is for server-issued action IDs only.
+- Do not hide warnings, confirmation requirements, or governed actions. The server will enforce mandatory safety blocks regardless of your layout.
+- Never place raw HTML, JavaScript, CSS, URLs, image paths, prices, schedules, or prose facts inside presentation blocks.
+- Prefer a small number of high-signal blocks and assign higher priority to the user's immediate objective.
 `;
 
 type ModelPayload = {
   answer?: unknown;
   recommendationIds?: unknown;
   plan?: unknown;
+  presentation?: unknown;
 };
 
 type ModelPlanItem = {
@@ -96,7 +163,7 @@ export async function refineIntelligenceResponse(
     : base;
 
   if (!process.env.OPENAI_API_KEY || !groundedBase.recommendations.length) {
-    return groundedBase;
+    return attachIslandUIEnvelope(groundedBase);
   }
 
   const controller = new AbortController();
@@ -149,13 +216,25 @@ export async function refineIntelligenceResponse(
             summary: item.summary,
             reasons: item.reasons,
           })),
+          availableUIBindings: {
+            recommendationIds: groundedBase.recommendations.map((item) => item.id),
+            actionIds: groundedBase.actions.map((action) => ({
+              id: action.id,
+              type: action.type,
+              requiresConfirmation: action.requiresConfirmation,
+            })),
+            hasPlan: groundedBase.plan.length > 0,
+            hasWarnings: groundedBase.warnings.length > 0,
+            hasEvidence: Boolean(groundedBase.orchestration?.trace.length),
+            hasAgents: Boolean(groundedBase.orchestration?.coordination?.team.length),
+          },
         }),
         reasoning: { effort: "medium" },
         max_output_tokens: MAX_OUTPUT_TOKENS,
         text: {
           format: {
             type: "json_schema",
-            name: "vi_guide_intelligence_plan",
+            name: "vi_guide_intelligence_and_ui_plan",
             strict: true,
             schema: RESPONSE_SCHEMA,
           },
@@ -167,7 +246,7 @@ export async function refineIntelligenceResponse(
       string,
       unknown
     > | null;
-    if (!response.ok || !payload) return groundedBase;
+    if (!response.ok || !payload) return attachIslandUIEnvelope(groundedBase);
 
     const output = JSON.parse(extractOutputText(payload)) as ModelPayload;
     const answer =
@@ -187,24 +266,26 @@ export async function refineIntelligenceResponse(
     const plan = buildValidatedPlan(output.plan, candidates);
     const finalPlan =
       plan.length || groundedBase.intent !== "day_plan" ? plan : groundedBase.plan;
-
-    return {
+    const actions = synchronizeActions(
+      groundedBase.actions,
+      finalPlan,
+      request.context.island,
+    );
+    const refined: IntelligenceResponse = {
       ...groundedBase,
       answer,
       recommendations,
       plan: finalPlan,
-      actions: synchronizeActions(
-        groundedBase.actions,
-        finalPlan,
-        request.context.island,
-      ),
+      actions,
     };
+    const presentation = normalizeIslandPresentationPlan(output.presentation, refined);
+    return attachIslandUIEnvelope(refined, presentation);
   } catch (error) {
     console.warn(
       "USVI Explorer model refinement fell back to the grounded engine.",
       error,
     );
-    return groundedBase;
+    return attachIslandUIEnvelope(groundedBase);
   } finally {
     clearTimeout(timeout);
   }

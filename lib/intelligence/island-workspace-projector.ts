@@ -1,10 +1,20 @@
+import { getIslandContextImage } from "@/lib/intelligence/island-ui-images";
+import { buildDefaultIslandPresentationPlan } from "@/lib/intelligence/island-ui-plan";
 import type { IntelligenceResponse } from "@/types/intelligence";
 import type {
   IslandAgentActivity,
   IslandEvidenceItem,
   IslandMissionStep,
+  IslandTrustedBinding,
+  IslandUIEnvelope,
   IslandWorkspaceProjection,
+  IslandWorkspaceRecommendation,
 } from "@/types/island-workspace";
+
+function islandUIEnvelope(response: IntelligenceResponse): IslandUIEnvelope | null {
+  const candidate = (response as IntelligenceResponse & { islandUI?: IslandUIEnvelope }).islandUI;
+  return candidate?.version === 1 ? candidate : null;
+}
 
 function missionStatus(
   response: IntelligenceResponse,
@@ -15,24 +25,32 @@ function missionStatus(
     : "ready";
 }
 
-function projectMission(response: IntelligenceResponse): IslandMissionStep[] {
+function projectMission(
+  response: IntelligenceResponse,
+  bindings: Readonly<Record<string, IslandTrustedBinding>>,
+): IslandMissionStep[] {
   const status = missionStatus(response);
-  const planned = response.plan.slice(0, 8).map((stop, index) => ({
-    id: stop.id,
-    title: stop.title,
-    detail: stop.summary,
-    meta: [
-      stop.startTime,
-      stop.durationMinutes ? `${stop.durationMinutes} min` : null,
-      stop.mobility?.mode,
-    ]
-      .filter(Boolean)
-      .join(" · ") || `Step ${index + 1}`,
-    status,
-    ...(stop.href || stop.mapHref
-      ? { href: stop.href ?? stop.mapHref }
-      : {}),
-  }));
+  const planned = response.plan.slice(0, 8).map((stop, index) => {
+    const bindingId = stop.placeId;
+    const binding = bindingId ? bindings[bindingId] : undefined;
+    return {
+      id: stop.id,
+      title: binding?.title ?? stop.title,
+      detail: stop.summary,
+      meta:
+        [
+          stop.startTime,
+          stop.durationMinutes ? `${stop.durationMinutes} min` : null,
+          stop.mobility?.mode,
+        ]
+          .filter(Boolean)
+          .join(" · ") || `Step ${index + 1}`,
+      status,
+      image: binding?.image ?? getIslandContextImage(stop.island),
+      ...(bindingId ? { bindingId } : {}),
+      ...(stop.href || stop.mapHref ? { href: stop.href ?? stop.mapHref } : {}),
+    } satisfies IslandMissionStep;
+  });
 
   if (planned.length) return planned;
 
@@ -43,6 +61,7 @@ function projectMission(response: IntelligenceResponse): IslandMissionStep[] {
       detail: "Island needs this detail before the governed workflow can continue.",
       meta: "Waiting for you",
       status: "needs_input" as const,
+      image: getIslandContextImage(response.context.island),
     }),
   );
 }
@@ -105,6 +124,49 @@ function projectAgentActivity(
   });
 }
 
+function fallbackBinding(
+  response: IntelligenceResponse,
+  item: IntelligenceResponse["recommendations"][number],
+): IslandTrustedBinding {
+  return Object.freeze({
+    id: item.id,
+    title: item.title,
+    kind: item.kind,
+    island: item.island,
+    summary: item.summary,
+    image: getIslandContextImage(item.island),
+    provenance: Object.freeze({
+      sourceSystem: "response-fallback" as const,
+      sourceId: item.id,
+      reviewStatus: "grounded-response",
+      sourceUrls: Object.freeze([]),
+    }),
+    ...(item.href ? { href: item.href } : {}),
+    ...(item.mapHref ? { mapHref: item.mapHref } : {}),
+  });
+}
+
+function projectRecommendations(
+  response: IntelligenceResponse,
+  bindings: Readonly<Record<string, IslandTrustedBinding>>,
+): IslandWorkspaceRecommendation[] {
+  return response.recommendations.slice(0, 8).map((item) => {
+    const binding = bindings[item.id] ?? fallbackBinding(response, item);
+    return Object.freeze({
+      id: item.id,
+      title: binding.title,
+      kind: binding.kind,
+      island: binding.island,
+      summary: binding.summary,
+      score: item.score,
+      image: binding.image,
+      provenance: binding.provenance,
+      ...(binding.href ? { href: binding.href } : {}),
+      ...(binding.mapHref ? { mapHref: binding.mapHref } : {}),
+    });
+  });
+}
+
 /**
  * Presentation projection only.
  *
@@ -116,8 +178,11 @@ function projectAgentActivity(
 export function projectIntelligenceToIslandWorkspace(
   response: IntelligenceResponse,
 ): IslandWorkspaceProjection {
-  const mission = projectMission(response);
-  const recommendationCount = response.recommendations.length;
+  const envelope = islandUIEnvelope(response);
+  const bindings = envelope?.bindings ?? Object.freeze({});
+  const mission = projectMission(response, bindings);
+  const recommendations = projectRecommendations(response, bindings);
+  const recommendationCount = recommendations.length;
   const headline = mission.length
     ? `${mission.length} connected ${mission.length === 1 ? "step" : "steps"} for your island mission`
     : recommendationCount
@@ -132,21 +197,9 @@ export function projectIntelligenceToIslandWorkspace(
     summary: response.answer,
     intent: response.intent,
     confidence: response.confidence,
+    presentation: envelope?.presentation ?? buildDefaultIslandPresentationPlan(response),
     mission: Object.freeze(mission),
-    recommendations: Object.freeze(
-      response.recommendations.slice(0, 6).map((item) =>
-        Object.freeze({
-          id: item.id,
-          title: item.title,
-          kind: item.kind,
-          island: item.island,
-          summary: item.summary,
-          score: item.score,
-          ...(item.href ? { href: item.href } : {}),
-          ...(item.mapHref ? { mapHref: item.mapHref } : {}),
-        }),
-      ),
-    ),
+    recommendations: Object.freeze(recommendations),
     actions: Object.freeze([...response.actions]),
     evidence: Object.freeze(projectEvidence(response)),
     agentActivity: Object.freeze(projectAgentActivity(response)),
