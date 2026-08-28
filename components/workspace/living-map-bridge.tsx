@@ -309,9 +309,21 @@ export function LivingMapBridge() {
     const focus = state.liveFocus;
     if (!focus || !primary || lastApplied.current === focus.issuedAt) return;
 
+    const currentParams = new URLSearchParams(serialized);
+    const hasExplicitSelection = SELECTION_KEYS.some((key) =>
+      currentParams.get(key),
+    );
+    if (lastApplied.current === null && hasExplicitSelection) {
+      // A direct Living Map link is more current than a focus restored from
+      // workspace storage. Mark that restored focus as seen without allowing it
+      // to erase the explicit place and reviewed tariff-estate context.
+      lastApplied.current = focus.issuedAt;
+      return;
+    }
+
     const selection = resolveFocusItem(primary);
     const lens = lensForMapFocusItem(primary);
-    const params = new URLSearchParams(serialized);
+    const params = currentParams;
     SELECTION_KEYS.forEach((key) => params.delete(key));
     params.set("island", primary.island);
     params.set("lens", lens);
