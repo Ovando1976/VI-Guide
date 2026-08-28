@@ -74,10 +74,20 @@ export default function IslandWorkspacePage() {
           .island-workspace-page main header {
             top: 52px !important;
           }
+        }
 
+        @media (min-width: 701px) and (max-width: 1023px) {
           @supports (bottom: max(.5rem, env(safe-area-inset-bottom))) {
             .island-workspace-page main section.sticky {
               bottom: max(.5rem, env(safe-area-inset-bottom)) !important;
+            }
+          }
+        }
+
+        @media (max-width: 700px) {
+          @supports (bottom: calc(82px + env(safe-area-inset-bottom))) {
+            .island-workspace-page main section.sticky {
+              bottom: calc(82px + env(safe-area-inset-bottom)) !important;
             }
           }
         }
