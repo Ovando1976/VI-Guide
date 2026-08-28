@@ -129,12 +129,11 @@ async function runAgentWorkerTests() {
     "Blackboard text is intentionally preserved as untrusted data for the worker to inspect.",
   );
 
-  let capturedRequestBody: Record<string, unknown> | null = null;
+  const capturedRequestBodies: Record<string, unknown>[] = [];
   const fakeFetch = (async (_input: unknown, init?: RequestInit) => {
-    capturedRequestBody = JSON.parse(String(init?.body ?? "{}")) as Record<
-      string,
-      unknown
-    >;
+    capturedRequestBodies.push(
+      JSON.parse(String(init?.body ?? "{}")) as Record<string, unknown>,
+    );
     return new Response(
       JSON.stringify({
         output_text: JSON.stringify({
@@ -163,9 +162,10 @@ async function runAgentWorkerTests() {
   });
   assert.equal(modelOutput.kind, "result");
   assert.equal(modelOutput.confidence, "medium");
+  const capturedRequestBody = capturedRequestBodies[0];
   assert.ok(capturedRequestBody);
-  assert.equal(capturedRequestBody?.store, false);
-  assert.equal("tools" in (capturedRequestBody ?? {}), false);
+  assert.equal(capturedRequestBody.store, false);
+  assert.equal("tools" in capturedRequestBody, false);
   assert.equal(
     JSON.stringify(capturedRequestBody).includes("booking.review"),
     false,
