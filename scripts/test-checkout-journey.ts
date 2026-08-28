@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
+import { normalizeMobilityJourneyPlanId } from "../lib/mobility-trip-continuity";
+
 function source(path: string) {
   return readFileSync(resolve(process.cwd(), path), "utf8");
 }
@@ -10,6 +12,9 @@ const checkoutLayout = source("app/checkout/layout.tsx");
 const checkoutLanding = source("app/checkout/page.tsx");
 const rideCheckout = source("app/checkout/[bookingId]/page.tsx");
 const checkoutForm = source("components/checkout-form.tsx");
+const bookingPanel = source("components/booking-panel.tsx");
+const bookingRoute = source("app/api/bookings/route.ts");
+const serverBookings = source("lib/server-bookings.ts");
 const checkoutTripWriteback = source(
   "components/checkout/checkout-trip-writeback.tsx",
 );
@@ -41,18 +46,22 @@ assert.match(rideCheckout, /paymentStatus === "paid"/);
 assert.match(rideCheckout, /paymentIntegrityStatus === "review_required"/);
 assert.match(rideCheckout, /financialHoldStatus/);
 assert.match(rideCheckout, /router\.replace/);
-assert.match(rideCheckout, /\/trips\?booking=/);
+assert.match(rideCheckout, /tripReturnHref/);
+assert.match(rideCheckout, /loadedBooking\.journeyPlanId \|\| readPendingMobilityTripPlanId\(\)/);
+assert.match(rideCheckout, /journeyPlanId=\{booking\?\.journeyPlanId\}/);
 
 assert.match(checkoutForm, /stripe\.confirmPayment/);
 assert.match(checkoutForm, /returnUrl = new URL\("\/trips"/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("booking", bookingId\)/);
 assert.match(checkoutForm, /returnUrl\.searchParams\.set\("payment", "return"\)/);
 assert.match(checkoutForm, /readPendingMobilityTripPlanId/);
-assert.match(checkoutForm, /returnUrl\.searchParams\.set\("trip", journeyPlanId\)/);
+assert.match(checkoutForm, /normalizeMobilityJourneyPlanId\(journeyPlanId\)/);
+assert.match(checkoutForm, /returnUrl\.searchParams\.set\("trip", durableJourneyPlanId\)/);
 assert.match(checkoutForm, /clearPendingMobilityTripPlanId/);
 assert.match(checkoutForm, /Pay & start driver matching/);
 
 assert.match(checkoutTripWriteback, /readPendingMobilityTripPlanId/);
+assert.match(checkoutTripWriteback, /normalizeMobilityJourneyPlanId\(booking\.journeyPlanId\)/);
 assert.match(checkoutTripWriteback, /mobility_booking_\$\{bookingId\}/);
 assert.match(checkoutTripWriteback, /upsertJourneyPlan\(updated\)/);
 assert.doesNotMatch(
@@ -63,11 +72,19 @@ assert.doesNotMatch(
 
 assert.match(mobilityTripContinuity, /PENDING_MOBILITY_TRIP_KEY/);
 assert.match(mobilityTripContinuity, /JOURNEY_PLAN_ID_PATTERN/);
+assert.match(bookingPanel, /journeyPlanId=readPendingMobilityTripPlanId\(\)\|\|null/);
+assert.match(bookingRoute, /normalizeMobilityJourneyPlanId\(body\.journeyPlanId\)/);
+assert.match(bookingRoute, /journeyPlanId: journeyPlanId \|\| null/);
+assert.match(serverBookings, /journeyPlanId: booking\.journeyPlanId \?\? null/);
 assert.match(tripAwareMobilityHandoff, /rememberPendingMobilityTripPlanId\(tripId\)/);
 assert.match(tripAwareMobilityHandoff, /clearPendingMobilityTripPlanId\(\)/);
 assert.match(
   travelerTripCommandCenter,
   /new URLSearchParams\(window\.location\.search\)\.get\("trip"\)/,
 );
+
+assert.equal(normalizeMobilityJourneyPlanId("plan_trip-01:stt"), "plan_trip-01:stt");
+assert.equal(normalizeMobilityJourneyPlanId("../../another-trip"), "");
+assert.equal(normalizeMobilityJourneyPlanId("trip with spaces"), "");
 
 console.log("USVI Explorer checkout journey boundary contracts passed.");

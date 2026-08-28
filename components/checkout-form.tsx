@@ -6,10 +6,17 @@ import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { trackAcquisitionEvent } from "@/lib/acquisition-client";
 import {
   clearPendingMobilityTripPlanId,
+  normalizeMobilityJourneyPlanId,
   readPendingMobilityTripPlanId,
 } from "@/lib/mobility-trip-continuity";
 
-export function CheckoutForm({ bookingId }: { bookingId: string }) {
+export function CheckoutForm({
+  bookingId,
+  journeyPlanId,
+}: {
+  bookingId: string;
+  journeyPlanId?: string | null;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [submitting, setSubmitting] = useState(false);
@@ -29,8 +36,12 @@ export function CheckoutForm({ bookingId }: { bookingId: string }) {
     const returnUrl = new URL("/trips", window.location.origin);
     returnUrl.searchParams.set("booking", bookingId);
     returnUrl.searchParams.set("payment", "return");
-    const journeyPlanId = readPendingMobilityTripPlanId();
-    if (journeyPlanId) returnUrl.searchParams.set("trip", journeyPlanId);
+    const durableJourneyPlanId =
+      normalizeMobilityJourneyPlanId(journeyPlanId) ||
+      readPendingMobilityTripPlanId();
+    if (durableJourneyPlanId) {
+      returnUrl.searchParams.set("trip", durableJourneyPlanId);
+    }
 
     try {
       const { error } = await stripe.confirmPayment({

@@ -8,6 +8,7 @@ import {
   hasFirebaseAdminConfiguration,
 } from "@/lib/firebase-admin";
 import { resolveMobilityEndpoint } from "@/lib/mobility-hubs";
+import { normalizeMobilityJourneyPlanId } from "@/lib/mobility-trip-continuity";
 import {
   assertMobilityPilotActive,
   MobilityPilotUnavailableError,
@@ -186,6 +187,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json()) as BookingRequestBody;
+    const journeyPlanId = normalizeMobilityJourneyPlanId(body.journeyPlanId);
 
     if (
       body.acceptedOperatorDisclosure !== true ||
@@ -346,6 +348,7 @@ export async function POST(request: NextRequest) {
 
     const bookingId = await createServerBooking({
       riderId: session.uid,
+      journeyPlanId: journeyPlanId || null,
       status: "requested",
       paymentStatus: "unpaid",
       paymentIntentId: null,
