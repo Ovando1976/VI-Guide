@@ -41,6 +41,8 @@ const TERRITORY_QUERY_KEYS = [
   "placeLocation",
   "placeDescription",
   "placeRating",
+  "placeSlug",
+  "placeHref",
   "pickup",
   "destination",
 ] as const;
@@ -123,9 +125,6 @@ function normalizeLens(
 }
 
 function parseSelection(params: URLSearchParams): TerritorySelection | null {
-  const estate = params.get("estate")?.trim();
-  if (estate) return { kind: "estate", geoid: estate };
-
   const id = boundedText(params.get("place"), 160);
   const name = boundedText(params.get("placeName"), 200);
   const type = validPlaceType(params.get("placeType"));
@@ -133,7 +132,8 @@ function parseSelection(params: URLSearchParams): TerritorySelection | null {
   const lng = validCoordinate(params.get("placeLng"), -180, 180);
 
   if (!id || !name || !type || lat === null || lng === null) {
-    return null;
+    const estate = boundedText(params.get("estate"), 180);
+    return estate ? { kind: "estate", geoid: estate } : null;
   }
 
   const location = boundedText(params.get("placeLocation"), 300);
@@ -158,6 +158,11 @@ function parseSelection(params: URLSearchParams): TerritorySelection | null {
       rating,
     },
   };
+}
+
+function safeInternalPath(value: string | null) {
+  const path = boundedText(value, 800);
+  return path?.startsWith("/") && !path.startsWith("//") ? path : undefined;
 }
 
 function territoryStateEqual(a: TerritoryState, b: TerritoryState) {
@@ -315,6 +320,10 @@ export function useTerritoryState({
     window.localStorage.setItem("vi-guide.active-island", territory.island);
 
     const params = new URLSearchParams(searchParams.toString());
+    const sourcePlaceId = boundedText(params.get("place"), 160);
+    const contextEstate = boundedText(params.get("estate"), 180);
+    const contextPlaceSlug = boundedText(params.get("placeSlug"), 220);
+    const contextPlaceHref = safeInternalPath(params.get("placeHref"));
     TERRITORY_QUERY_KEYS.forEach((key) => params.delete(key));
 
     params.set("island", territory.island);
@@ -326,6 +335,7 @@ export function useTerritoryState({
       params.set("estate", territory.selection.geoid);
     } else if (territory.selection?.kind === "place") {
       const place = territory.selection.place;
+      const preservesIncomingContext = sourcePlaceId === place.id;
       params.set("place", place.id);
       params.set("placeName", place.name);
       params.set("placeType", place.type);
@@ -337,6 +347,21 @@ export function useTerritoryState({
         params,
         "placeRating",
         typeof place.rating === "number" ? String(place.rating) : null,
+      );
+      setOrDelete(
+        params,
+        "estate",
+        preservesIncomingContext ? (contextEstate ?? null) : null,
+      );
+      setOrDelete(
+        params,
+        "placeSlug",
+        preservesIncomingContext ? (contextPlaceSlug ?? null) : null,
+      );
+      setOrDelete(
+        params,
+        "placeHref",
+        preservesIncomingContext ? (contextPlaceHref ?? null) : null,
       );
     }
 

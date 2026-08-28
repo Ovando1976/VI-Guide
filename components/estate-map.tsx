@@ -346,10 +346,11 @@ export function EstateMap({
     if (focusedPlaceId) setSelectedPlaceId(focusedPlaceId);
   }, [focusedPlaceId]);
   useEffect(() => {
+    if (focusedPlaceId) return;
     setSelectedPlaceId(null);
     onSelectPlace?.(null);
     if (activeLens !== "places") setPlaceFilter("all");
-  }, [activeLens, island, onSelectPlace]);
+  }, [activeLens, focusedPlaceId, island, onSelectPlace]);
 
   return (
     <div className="premium-territory-map relative overflow-hidden rounded-[28px] border border-[#b9d7d2] bg-[#dcefeb] shadow-[0_24px_70px_rgba(18,49,47,.16)]">
