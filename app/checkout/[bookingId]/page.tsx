@@ -171,7 +171,13 @@ export default function CheckoutBookingPage() {
             </button>
             <button
               type="button"
-              onClick={() => router.push("/mobility")}
+              onClick={() =>
+                router.push(
+                  mobilityReturnHref(
+                    booking?.journeyPlanId || readPendingMobilityTripPlanId(),
+                  ),
+                )
+              }
               className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-xs font-black uppercase tracking-[.15em]"
             >
               <ArrowLeft size={15} /> Back to ride
@@ -251,6 +257,13 @@ function tripReturnHref(bookingId: string, journeyPlanId?: string | null) {
   const normalizedJourneyPlanId = normalizeMobilityJourneyPlanId(journeyPlanId);
   if (normalizedJourneyPlanId) params.set("trip", normalizedJourneyPlanId);
   return `/trips?${params.toString()}`;
+}
+
+function mobilityReturnHref(journeyPlanId?: string | null) {
+  const normalizedJourneyPlanId = normalizeMobilityJourneyPlanId(journeyPlanId);
+  if (!normalizedJourneyPlanId) return "/mobility";
+  const params = new URLSearchParams({ trip: normalizedJourneyPlanId });
+  return `/mobility?${params.toString()}#book`;
 }
 
 function isProtectedBooking(booking: CheckoutBooking) {
