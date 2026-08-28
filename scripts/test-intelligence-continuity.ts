@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import "./test-agent-coordination";
 import "./test-agent-worker";
 import "./test-agent-tool-broker";
+import "./test-agent-shadow-canary";
 import {
   normalizeActiveTrip,
   summarizeJourneyPlan,

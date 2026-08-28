@@ -6,6 +6,11 @@ import {
   buildAgentContext,
   publicAgentContext,
 } from "@/lib/intelligence/context-engine";
+import {
+  AGENT_SHADOW_CANARY_MAX_WORKER_TASKS,
+  evaluateAgentShadowCanary,
+  publicAgentShadowCanaryDecision,
+} from "@/lib/intelligence/agent-shadow-canary";
 import { runAgentWorkerShadow } from "@/lib/intelligence/agent-worker-runtime";
 import { createConfiguredAdvisoryAgentWorker } from "@/lib/intelligence/agent-worker";
 import { createConfiguredReadOnlyAgentToolBroker } from "@/lib/intelligence/agent-tool-broker";
@@ -67,13 +72,21 @@ export async function runRegisteredIntelligenceOrchestrator(
   const requiredCapabilities = (
     result.orchestration?.requiredCapabilities ?? []
   ).filter((capability) => context.authorizedCapabilities.includes(capability));
+  const shadowCanary = evaluateAgentShadowCanary(context.request);
   const coordinationRun = result.orchestration
     ? await runAgentWorkerShadow({
         request: context.request,
         requiredCapabilities,
         tools: context.tools,
-        worker: createConfiguredAdvisoryAgentWorker(),
-        broker: createConfiguredReadOnlyAgentToolBroker(),
+        worker: shadowCanary.selected
+          ? createConfiguredAdvisoryAgentWorker()
+          : null,
+        broker: shadowCanary.selected
+          ? createConfiguredReadOnlyAgentToolBroker()
+          : null,
+        maxWorkerTasks: shadowCanary.selected
+          ? AGENT_SHADOW_CANARY_MAX_WORKER_TASKS
+          : undefined,
       })
     : undefined;
   const coordination = coordinationRun?.coordination;
@@ -133,6 +146,7 @@ export async function runRegisteredIntelligenceOrchestrator(
     contextVersion: context.version,
     memorySource: context.memorySource,
     map: context.map,
+    shadowCanary: publicAgentShadowCanaryDecision(shadowCanary),
     collective: coordination
       ? {
           status: coordination.status,
