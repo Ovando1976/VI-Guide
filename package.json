@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf .next-dev && NEXT_DIST_DIR=.next-dev next dev",
     "postinstall": "node scripts/report-launch-lock-diff.mjs",
-    "prebuild": "TARIFF_COVERAGE_REPORT_ONLY=1 tsx scripts/audit-tariff-location-coverage.ts && tsx scripts/test-geographic-dictionary-cleaner.ts && tsx scripts/test-estate-alias-provenance.ts && tsx scripts/test-taxi-confidence.ts && tsx scripts/test-taxi-tariff-fail-closed.ts && tsx scripts/test-rider-pin-verification.ts && tsx scripts/test-firebase-admin-configuration.ts && npm run test:true-trip-price && npm run test:customer-insights && npm run test:api-contracts && npm run test:ui-consistency",
+    "prebuild": "tsx scripts/audit-next15-async-apis.ts && TARIFF_COVERAGE_REPORT_ONLY=1 tsx scripts/audit-tariff-location-coverage.ts && tsx scripts/test-geographic-dictionary-cleaner.ts && tsx scripts/test-estate-alias-provenance.ts && tsx scripts/test-taxi-confidence.ts && tsx scripts/test-taxi-tariff-fail-closed.ts && tsx scripts/test-rider-pin-verification.ts && tsx scripts/test-firebase-admin-configuration.ts && npm run test:true-trip-price && npm run test:customer-insights && npm run test:api-contracts && npm run test:ui-consistency",
     "build": "next build",
     "test:geographic-dictionary": "tsx scripts/test-geographic-dictionary-cleaner.ts && tsx scripts/test-estate-alias-provenance.ts",
     "test:true-trip-price": "node --import tsx scripts/test-true-trip-price.ts",
