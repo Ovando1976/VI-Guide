@@ -15,6 +15,7 @@ const tripConciergeLink = source(
   "components/trips/trip-aware-concierge-link.tsx",
 );
 const appNavigation = source("components/app-navigation.tsx");
+const accountMenu = source("components/account-menu.tsx");
 const pickupPositionControl = source("components/pickup-position-control.tsx");
 const riderTripHistory = source("components/rider-trip-history.tsx");
 const riderTripScopeBridge = source(
@@ -74,6 +75,36 @@ assert.match(
   "the mobile Concierge nav target must preserve active trip identity and island",
 );
 assert.match(appNavigation, /contextualHref\(base, activeIsland, tripContext\)/);
+
+assert.doesNotMatch(
+  accountMenu,
+  /useSearchParams/,
+  "the globally rendered account menu must not force a search-param prerender bailout",
+);
+assert.match(accountMenu, /readSelectedTravelerTripPlanId/);
+assert.match(accountMenu, /TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);
+assert.match(accountMenu, /TRAVELER_TRIP_SELECTION_STORAGE_KEY/);
+assert.match(accountMenu, /selectedPlan && selectedIsland/);
+assert.match(
+  accountMenu,
+  /\/trips\?trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the account-menu My Trip target must retain the selected JourneyPlan",
+);
+assert.match(
+  accountMenu,
+  /\/map\?island=\$\{tripContext\.island\}&trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the account-menu Living Map target must retain selected trip identity and island",
+);
+assert.match(
+  accountMenu,
+  /destination = `\$\{window\.location\.pathname\}\$\{window\.location\.search\}`/,
+  "sign-in return context must read the live pathname and query only when the traveler activates Sign in",
+);
+assert.match(
+  accountMenu,
+  /router\.push\(`\/login\?next=\$\{encodeURIComponent\(destination\)\}`\)/,
+  "sign-in must return to the exact traveler route context without a global search-param hook",
+);
 
 assert.match(
   pickupPositionControl,
