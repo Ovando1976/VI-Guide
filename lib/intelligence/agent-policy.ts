@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import type { IntelligenceToolDescriptor } from "@/lib/intelligence/tool-registry";
 import type { IntelligenceCapability } from "@/types/intelligence";
 
@@ -48,9 +50,12 @@ export function createCoordinationRootIntent(input: {
   const allowedCapabilities = Object.freeze([
     ...new Set(input.allowedCapabilities),
   ]);
+  const id = input.id.startsWith("collective-")
+    ? `collective-${randomUUID()}`
+    : input.id;
 
   return Object.freeze({
-    id: input.id,
+    id,
     userMessage: input.userMessage,
     allowedCapabilities,
     createdAt: createdAt.toISOString(),
