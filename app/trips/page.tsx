@@ -6,6 +6,7 @@ import { ViPublicHeader } from "@/components/brand/vi-public-header";
 import { ProactiveTripIntelligence } from "@/components/intelligence/proactive-trip-intelligence";
 import { RiderCancelRide } from "@/components/mobility/rider-cancel-ride";
 import { RiderLiveDriverMap } from "@/components/mobility/rider-live-driver-map";
+import { RiderTripSubscriptionScope } from "@/components/mobility/rider-trip-subscription-scope";
 import { RiderTripTiming } from "@/components/mobility/rider-trip-timing";
 import { TripReturnNotice } from "@/components/mobility/trip-return-notice";
 import { TripRideStatusFromUrl } from "@/components/mobility/trip-ride-status-from-url";
@@ -165,6 +166,7 @@ export default async function TripsPage() {
               </p>
             </div>
             <div className="p-4 sm:p-6">
+              <RiderTripSubscriptionScope />
               <RiderTripTiming riderId={session.uid} />
               <RiderLiveDriverMap riderId={session.uid} />
               <RiderCancelRide riderId={session.uid} />
