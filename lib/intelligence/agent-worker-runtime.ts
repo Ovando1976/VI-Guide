@@ -40,6 +40,20 @@ function messageTypeForOutput(output: AgentWorkerOutput) {
   return output.kind === "delegate" ? "proposal" : output.kind;
 }
 
+function authorizedWorkerCapabilities(
+  output: AgentWorkerOutput,
+  allowedCapabilities: readonly IntelligenceCapability[],
+) {
+  const allowed = new Set(allowedCapabilities);
+  return Array.from(
+    new Set(
+      output.requestedCapabilities.filter((capability) =>
+        allowed.has(capability),
+      ),
+    ),
+  );
+}
+
 export async function runAgentWorkerShadow(input: {
   request: IntelligenceRequest;
   requiredCapabilities: readonly IntelligenceCapability[];
@@ -125,29 +139,45 @@ export async function runAgentWorkerShadow(input: {
         messages: collective.board.listMessages(),
         tools: input.tools,
       });
+      const requestedCapabilities = authorizedWorkerCapabilities(
+        output,
+        collective.board.rootIntent.allowedCapabilities,
+      );
+      const attemptedEscalation =
+        requestedCapabilities.length !== output.requestedCapabilities.length;
 
       if (output.kind === "delegate") {
-        try {
-          collective.delegate({
-            fromAgentId: agent.id,
-            title: `Advisory follow-up for ${task.title}`,
-            description: output.summary,
-            requiredCapabilities: output.requestedCapabilities,
-            depth: task.depth + 1,
-            dependsOn: [task.id],
-          });
-          acceptedDelegations += 1;
-        } catch {
+        if (attemptedEscalation || !requestedCapabilities.length) {
           rejectedDelegations += 1;
+        } else {
+          try {
+            collective.delegate({
+              fromAgentId: agent.id,
+              title: `Advisory follow-up for ${task.title}`,
+              description: output.summary,
+              requiredCapabilities: requestedCapabilities,
+              depth: task.depth + 1,
+              dependsOn: [task.id],
+            });
+            acceptedDelegations += 1;
+          } catch {
+            rejectedDelegations += 1;
+          }
         }
       }
 
       collective.postMessage({
         fromAgentId: agent.id,
         taskId: task.id,
-        type: messageTypeForOutput(output),
-        content: `[${output.confidence}] ${output.summary}`,
-        requestedCapabilities: output.requestedCapabilities,
+        type:
+          output.kind === "delegate" && attemptedEscalation
+            ? "challenge"
+            : messageTypeForOutput(output),
+        content:
+          output.kind === "delegate" && attemptedEscalation
+            ? "Worker delegation was rejected because it exceeded the immutable root intent."
+            : `[${output.confidence}] ${output.summary}`,
+        requestedCapabilities,
       });
       collective.complete(task.id, agent.id, output.summary);
       completedTasks += 1;
