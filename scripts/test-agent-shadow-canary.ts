@@ -138,3 +138,5 @@ assert.equal(AGENT_SHADOW_CANARY_MAX_WORKER_TASKS, 1);
 console.log(
   "Agent shadow canary tests passed: production hard deny, explicit preview gate, deterministic cohorts, zero-rate default, privacy-safe telemetry, and one-task cost ceiling.",
 );
+
+await import("./test-operator-preview-canary");
