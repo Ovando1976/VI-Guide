@@ -5,9 +5,7 @@ import {
   type OperatorCanaryRunStore,
   type OperatorCanarySafeRecord,
 } from "@/lib/intelligence/agent-control-store";
-import {
-  ReadOnlyAgentToolBroker,
-} from "@/lib/intelligence/agent-tool-broker";
+import { ReadOnlyAgentToolBroker } from "@/lib/intelligence/agent-tool-broker";
 import {
   OpenAIAdvisoryAgentWorker,
   type AgentWorker,
@@ -45,7 +43,13 @@ export type OperatorPreviewCanaryDecision = Readonly<{
 }>;
 
 export type OperatorPreviewCanaryResult = Readonly<{
-  status: "completed" | "denied" | "already_running" | "already_completed" | "already_failed" | "failed";
+  status:
+    | "completed"
+    | "denied"
+    | "already_running"
+    | "already_completed"
+    | "already_failed"
+    | "failed";
   reason: OperatorPreviewCanaryReason;
   environment: OperatorPreviewCanaryDecision["environment"];
   worker: OperatorCanarySafeRecord["worker"] | null;
@@ -61,7 +65,9 @@ type RunOptions = Readonly<{
   now?: () => Date;
 }>;
 
-function resolveEnvironment(env: EnvironmentLike): OperatorPreviewCanaryDecision["environment"] {
+function resolveEnvironment(
+  env: EnvironmentLike,
+): OperatorPreviewCanaryDecision["environment"] {
   const vercel = env.VERCEL_ENV?.trim().toLowerCase();
   if (vercel === "preview") return "preview";
   if (vercel === "production") return "production";
@@ -81,25 +87,53 @@ export function evaluateOperatorPreviewCanary(
   // Production is categorically denied in code. No environment flag can
   // promote this operator canary into production authority.
   if (environment === "production") {
-    return Object.freeze({ selected: false, reason: "environment_denied", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "environment_denied",
+      environment,
+    });
   }
   if (environment !== "preview") {
-    return Object.freeze({ selected: false, reason: "preview_environment_required", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "preview_environment_required",
+      environment,
+    });
   }
   if (env.USVI_AGENT_SHADOW_CANARY !== "1") {
-    return Object.freeze({ selected: false, reason: "canary_disabled", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "canary_disabled",
+      environment,
+    });
   }
   if (env.USVI_AGENT_WORKERS_SHADOW !== "1") {
-    return Object.freeze({ selected: false, reason: "worker_disabled", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "worker_disabled",
+      environment,
+    });
   }
   if (env.USVI_AGENT_TOOL_BROKER_SHADOW !== "1") {
-    return Object.freeze({ selected: false, reason: "broker_disabled", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "broker_disabled",
+      environment,
+    });
   }
   if (!env.OPENAI_API_KEY?.trim()) {
-    return Object.freeze({ selected: false, reason: "missing_openai_key", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "missing_openai_key",
+      environment,
+    });
   }
   if (!env.VERCEL_GIT_COMMIT_SHA?.trim()) {
-    return Object.freeze({ selected: false, reason: "missing_deployment_sha", environment });
+    return Object.freeze({
+      selected: false,
+      reason: "missing_deployment_sha",
+      environment,
+    });
   }
   return Object.freeze({ selected: true, reason: "selected", environment });
 }
@@ -137,6 +171,18 @@ export function getOperatorPreviewCanaryToolIds() {
   return Object.freeze(["directory.search"] as const);
 }
 
+function conservativeModelCallAttempts(
+  worker: Awaited<ReturnType<typeof runAgentWorkerShadow>>["workerShadow"],
+) {
+  // runAgentWorkerShadow currently counts resolved model calls. A provider
+  // failure can therefore leave modelCalls at zero even though an attempt was
+  // made. For this one-task canary, record a conservative lower bound so a
+  // failed provider call never disappears from cost/control telemetry.
+  if (worker.failedTasks === 0) return worker.modelCalls;
+  const minimumAttempts = worker.brokerCompleted > 0 ? 2 : 1;
+  return Math.max(worker.modelCalls, minimumAttempts);
+}
+
 function safeRecord(
   result: Awaited<ReturnType<typeof runAgentWorkerShadow>>,
 ): OperatorCanarySafeRecord {
@@ -151,7 +197,7 @@ function safeRecord(
       attemptedTasks: worker.attemptedTasks,
       completedTasks: worker.completedTasks,
       failedTasks: worker.failedTasks,
-      modelCalls: worker.modelCalls,
+      modelCalls: conservativeModelCallAttempts(worker),
       acceptedDelegations: worker.acceptedDelegations,
       rejectedDelegations: worker.rejectedDelegations,
       brokerCalls: worker.brokerCalls,
@@ -159,10 +205,14 @@ function safeRecord(
       brokerRejected: worker.brokerRejected,
       brokerFailed: worker.brokerFailed,
     }),
-    agentIds: Object.freeze(result.coordination.team.map((member) => member.agentId).slice(0, 8)),
+    agentIds: Object.freeze(
+      result.coordination.team.map((member) => member.agentId).slice(0, 8),
+    ),
     taskCount: result.coordination.tasks.length,
     messageCount: result.coordination.messageCount,
-    missingCapabilities: Object.freeze([...result.coordination.missingCapabilities].slice(0, 8)),
+    missingCapabilities: Object.freeze(
+      [...result.coordination.missingCapabilities].slice(0, 8),
+    ),
   });
 }
 
@@ -171,12 +221,27 @@ function priorStatusResult(
   environment: OperatorPreviewCanaryDecision["environment"],
 ): OperatorPreviewCanaryResult {
   if (status === "completed") {
-    return Object.freeze({ status: "already_completed", reason: "already_completed", environment, worker: null });
+    return Object.freeze({
+      status: "already_completed",
+      reason: "already_completed",
+      environment,
+      worker: null,
+    });
   }
   if (status === "failed") {
-    return Object.freeze({ status: "already_failed", reason: "already_failed", environment, worker: null });
+    return Object.freeze({
+      status: "already_failed",
+      reason: "already_failed",
+      environment,
+      worker: null,
+    });
   }
-  return Object.freeze({ status: "already_running", reason: "already_running", environment, worker: null });
+  return Object.freeze({
+    status: "already_running",
+    reason: "already_running",
+    environment,
+    worker: null,
+  });
 }
 
 export async function runOperatorPreviewCanary(
@@ -185,34 +250,57 @@ export async function runOperatorPreviewCanary(
   const env = options.env ?? process.env;
   const decision = evaluateOperatorPreviewCanary(env);
   if (!decision.selected) {
-    return Object.freeze({ status: "denied", reason: decision.reason, environment: decision.environment, worker: null });
+    return Object.freeze({
+      status: "denied",
+      reason: decision.reason,
+      environment: decision.environment,
+      worker: null,
+    });
   }
 
-  const store = options.store === undefined
-    ? createFirestoreOperatorCanaryRunStore()
-    : options.store;
+  const store =
+    options.store === undefined
+      ? createFirestoreOperatorCanaryRunStore()
+      : options.store;
   if (!store) {
-    return Object.freeze({ status: "denied", reason: "idempotency_unavailable", environment: decision.environment, worker: null });
+    return Object.freeze({
+      status: "denied",
+      reason: "idempotency_unavailable",
+      environment: decision.environment,
+      worker: null,
+    });
   }
 
   const commitSha = env.VERCEL_GIT_COMMIT_SHA?.trim();
   if (!commitSha) {
-    return Object.freeze({ status: "denied", reason: "missing_deployment_sha", environment: decision.environment, worker: null });
+    return Object.freeze({
+      status: "denied",
+      reason: "missing_deployment_sha",
+      environment: decision.environment,
+      worker: null,
+    });
   }
   const runKey = runKeyForDeployment(commitSha);
   const claim = await store.claim(runKey);
-  if (!claim.claimed) return priorStatusResult(claim.status, decision.environment);
+  if (!claim.claimed) {
+    return priorStatusResult(claim.status, decision.environment);
+  }
 
   try {
     const directoryTool = getIntelligenceTool("directory.search");
-    if (!directoryTool) throw new Error("Operator canary read-only tool is unavailable.");
+    if (!directoryTool) {
+      throw new Error("Operator canary read-only tool is unavailable.");
+    }
 
-    const worker = options.worker ?? new OpenAIAdvisoryAgentWorker({
-      apiKey: env.OPENAI_API_KEY ?? "",
-      timeoutMs: 3_000,
-      maxOutputTokens: 300,
-    });
-    const broker = options.broker ?? new ReadOnlyAgentToolBroker({ timeoutMs: 1_000 });
+    const worker =
+      options.worker ??
+      new OpenAIAdvisoryAgentWorker({
+        apiKey: env.OPENAI_API_KEY ?? "",
+        timeoutMs: 3_000,
+        maxOutputTokens: 300,
+      });
+    const broker =
+      options.broker ?? new ReadOnlyAgentToolBroker({ timeoutMs: 1_000 });
     const result = await runAgentWorkerShadow({
       request: fixedRequest(runKey, (options.now ?? (() => new Date()))()),
       requiredCapabilities: ["recommend"],
@@ -222,6 +310,17 @@ export async function runOperatorPreviewCanary(
       maxWorkerTasks: 1,
     });
     const record = safeRecord(result);
+
+    if (record.worker.status !== "completed") {
+      await store.fail(runKey, record);
+      return Object.freeze({
+        status: "failed",
+        reason: "execution_failed",
+        environment: decision.environment,
+        worker: record.worker,
+      });
+    }
+
     await store.complete(runKey, record);
     return Object.freeze({
       status: "completed",
@@ -235,6 +334,11 @@ export async function runOperatorPreviewCanary(
     } catch {
       // The original canary failure remains authoritative; never retry here.
     }
-    return Object.freeze({ status: "failed", reason: "execution_failed", environment: decision.environment, worker: null });
+    return Object.freeze({
+      status: "failed",
+      reason: "execution_failed",
+      environment: decision.environment,
+      worker: null,
+    });
   }
 }

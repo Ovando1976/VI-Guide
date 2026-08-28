@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 
 import type {
   OperatorCanaryRunStatus,
@@ -26,6 +28,14 @@ const previewEnv = {
 } as const;
 
 export async function runOperatorPreviewCanaryTests() {
+  const routeSource = fs.readFileSync(
+    path.join(process.cwd(), "app/api/admin/agents/canary/run/route.ts"),
+    "utf8",
+  );
+  assert.equal(routeSource.includes('await requireSession(["admin"])'), true);
+  assert.equal(routeSource.includes('request.headers.get("origin")'), true);
+  assert.equal(routeSource.includes("sameOrigin(request)"), true);
+
   const production = evaluateOperatorPreviewCanary({
     ...previewEnv,
     VERCEL_ENV: "production",
@@ -65,7 +75,8 @@ export async function runOperatorPreviewCanaryTests() {
       storedRecords.push(record);
       status = "completed";
     },
-    async fail() {
+    async fail(_runKey, record) {
+      if (record) storedRecords.push(record);
       status = "failed";
     },
   };
@@ -125,9 +136,15 @@ export async function runOperatorPreviewCanaryTests() {
   assert.equal(persistedRecord.worker.brokerCompleted, 1);
 
   const serializedSafeRecord = JSON.stringify(persistedRecord);
-  assert.equal(serializedSafeRecord.includes(OPERATOR_CANARY_FIXED_MESSAGE), false);
+  assert.equal(
+    serializedSafeRecord.includes(OPERATOR_CANARY_FIXED_MESSAGE),
+    false,
+  );
   assert.equal(serializedSafeRecord.includes("Magens Bay beach"), false);
-  assert.equal(serializedSafeRecord.includes("operator-canary-dad6c7e91798e0ba"), false);
+  assert.equal(
+    serializedSafeRecord.includes("operator-canary-dad6c7e91798e0ba"),
+    false,
+  );
 
   const repeated = await runOperatorPreviewCanary({
     env: previewEnv,
@@ -138,6 +155,56 @@ export async function runOperatorPreviewCanaryTests() {
   assert.equal(repeated.status, "already_completed");
   assert.equal(workerCalls, 2);
   assert.equal(claimCalls, 2);
+
+  let failedStatus: OperatorCanaryRunStatus | null = null;
+  let failedWorkerCalls = 0;
+  const failedRecords: OperatorCanarySafeRecord[] = [];
+  const failedStore: OperatorCanaryRunStore = {
+    async claim() {
+      if (failedStatus) return { claimed: false, status: failedStatus };
+      failedStatus = "running";
+      return { claimed: true, status: failedStatus };
+    },
+    async complete() {
+      throw new Error("A failed worker must never be persisted as completed.");
+    },
+    async fail(_runKey, record) {
+      if (record) failedRecords.push(record);
+      failedStatus = "failed";
+    },
+  };
+  const failedWorker: AgentWorker = {
+    id: "operator-canary-failing-worker",
+    model: "test-model",
+    async run() {
+      failedWorkerCalls += 1;
+      throw new Error("Synthetic provider failure");
+    },
+  };
+
+  const failed = await runOperatorPreviewCanary({
+    env: { ...previewEnv, VERCEL_GIT_COMMIT_SHA: "failed-preview-commit" },
+    store: failedStore,
+    worker: failedWorker,
+    broker: new ReadOnlyAgentToolBroker({ timeoutMs: 500 }),
+  });
+  assert.equal(failed.status, "failed");
+  assert.equal(failed.reason, "execution_failed");
+  assert.equal(failed.worker?.status, "failed");
+  assert.equal(failed.worker?.attemptedTasks, 1);
+  assert.equal(failed.worker?.failedTasks, 1);
+  assert.equal(failed.worker?.modelCalls, 1);
+  assert.equal(failedRecords.length, 1);
+  assert.equal(failedRecords[0]?.worker.status, "failed");
+
+  const failedReplay = await runOperatorPreviewCanary({
+    env: { ...previewEnv, VERCEL_GIT_COMMIT_SHA: "failed-preview-commit" },
+    store: failedStore,
+    worker: failedWorker,
+    broker: new ReadOnlyAgentToolBroker({ timeoutMs: 500 }),
+  });
+  assert.equal(failedReplay.status, "already_failed");
+  assert.equal(failedWorkerCalls, 1);
 
   let productionClaims = 0;
   const productionStore: OperatorCanaryRunStore = {
@@ -168,7 +235,7 @@ export async function runOperatorPreviewCanaryTests() {
   assert.equal(workerCalls, 2);
 
   console.log(
-    "Operator preview canary tests passed: production hard deny, preview-only manual gate, zero broad sampling, one-shot idempotency, one read-only broker tool, bounded worker execution, and privacy-safe persistence.",
+    "Operator preview canary tests passed: admin/same-origin gate, production hard deny, preview-only manual gate, zero broad sampling, one-shot success and failure idempotency, one read-only broker tool, bounded worker execution, conservative failed-call accounting, and privacy-safe persistence.",
   );
 }
 

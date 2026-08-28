@@ -46,7 +46,7 @@ export type OperatorCanaryClaim = Readonly<{
 export type OperatorCanaryRunStore = Readonly<{
   claim(runKey: string): Promise<OperatorCanaryClaim>;
   complete(runKey: string, record: OperatorCanarySafeRecord): Promise<void>;
-  fail(runKey: string): Promise<void>;
+  fail(runKey: string, record?: OperatorCanarySafeRecord): Promise<void>;
 }>;
 
 function timestampToIso(value: unknown) {
@@ -92,6 +92,26 @@ function telemetryPayload(record: OperatorCanarySafeRecord) {
   };
 }
 
+function canaryEvent(
+  key: string,
+  record: OperatorCanarySafeRecord,
+  status: "completed" | "failed",
+) {
+  return {
+    id: `operator-canary-${key}`,
+    type: "agent.operator_canary",
+    ownerKey: "system:operator-canary",
+    runId: `operator-canary-${key.slice(0, 16)}`,
+    island: "stt",
+    intent: "operator_preview_canary",
+    payload: telemetryPayload(record),
+    status,
+    agentResults: [],
+    createdAt: FieldValue.serverTimestamp(),
+    processedAt: FieldValue.serverTimestamp(),
+  };
+}
+
 export function createFirestoreOperatorCanaryRunStore(): OperatorCanaryRunStore | null {
   if (!hasFirebaseAdminConfiguration()) return null;
   const db = getAdminDb();
@@ -134,34 +154,33 @@ export function createFirestoreOperatorCanaryRunStore(): OperatorCanaryRunStore 
         },
         { merge: true },
       );
-      batch.set(eventRef, {
-        id: `operator-canary-${key}`,
-        type: "agent.operator_canary",
-        ownerKey: "system:operator-canary",
-        runId: `operator-canary-${key.slice(0, 16)}`,
-        island: "stt",
-        intent: "operator_preview_canary",
-        payload: telemetryPayload(record),
-        status: "completed",
-        agentResults: [],
-        createdAt: FieldValue.serverTimestamp(),
-        processedAt: FieldValue.serverTimestamp(),
-      });
+      batch.set(eventRef, canaryEvent(key, record, "completed"));
       await batch.commit();
     },
 
-    async fail(runKey: string) {
+    async fail(runKey: string, record?: OperatorCanarySafeRecord) {
       const key = safeRunKey(runKey);
-      await db.collection(OPERATOR_CANARY_COLLECTION).doc(key).set(
+      const runRef = db.collection(OPERATOR_CANARY_COLLECTION).doc(key);
+      const batch = db.batch();
+      batch.set(
+        runRef,
         {
           version: 1,
           status: "failed",
           failureReason: "execution_failed",
+          ...(record ? { result: record } : {}),
           updatedAt: FieldValue.serverTimestamp(),
           completedAt: FieldValue.serverTimestamp(),
         },
         { merge: true },
       );
+      if (record) {
+        const eventRef = db
+          .collection(EVENT_COLLECTION)
+          .doc(`operator-canary-${key}`);
+        batch.set(eventRef, canaryEvent(key, record, "failed"));
+      }
+      await batch.commit();
     },
   });
 }
