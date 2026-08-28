@@ -104,7 +104,7 @@ Enabling the flag does **not** grant model tool execution. The worker receives a
 - `result`
 - `delegate`
 
-A `delegate` result is only a request. The runtime independently checks it against the immutable root intent and rejects any authority expansion.
+A `delegate` result is only a request. The runtime independently checks it against the immutable root intent and rejects any authority expansion. Worker results remain internal shadow telemetry and do not directly replace or rewrite the traveler-facing response.
 
 ## Verification
 
