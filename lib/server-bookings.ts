@@ -52,6 +52,7 @@ export async function createServerBooking(
   const dispatchPolicy = getUsviTaxiServicePolicy(booking.mode);
   const reference = await db.collection("bookings").add({
     riderId: booking.riderId,
+    journeyPlanId: booking.journeyPlanId ?? null,
     driverId: booking.driverId ?? null,
     associationId: booking.associationId ?? null,
     vehicleId: booking.vehicleId ?? null,

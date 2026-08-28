@@ -9,10 +9,12 @@ import {
 } from "@/lib/journey-planner";
 import {
   clearPendingMobilityTripPlanId,
+  normalizeMobilityJourneyPlanId,
   readPendingMobilityTripPlanId,
 } from "@/lib/mobility-trip-continuity";
 
 type CheckoutTripBooking = {
+  journeyPlanId?: string | null;
   island?: string;
   origin?: { estateName?: string };
   destination?: { estateName?: string };
@@ -28,7 +30,9 @@ export function CheckoutTripWriteback({ bookingId, booking }: Props) {
   useEffect(() => {
     if (!bookingId || !booking) return;
 
-    const tripId = readPendingMobilityTripPlanId();
+    const tripId =
+      normalizeMobilityJourneyPlanId(booking.journeyPlanId) ||
+      readPendingMobilityTripPlanId();
     if (!tripId) return;
 
     const plan = readJourneyPlans().find((candidate) => candidate.id === tripId);

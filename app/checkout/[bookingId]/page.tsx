@@ -8,12 +8,17 @@ import { ArrowLeft, RefreshCw, ShieldCheck } from "lucide-react";
 
 import { CheckoutForm } from "@/components/checkout-form";
 import { RideConfirmationLifecycle } from "@/components/mobility/ride-confirmation-lifecycle";
+import {
+  normalizeMobilityJourneyPlanId,
+  readPendingMobilityTripPlanId,
+} from "@/lib/mobility-trip-continuity";
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = publishableKey ? loadStripe(publishableKey) : null;
 
 type CheckoutBooking = {
   id: string;
+  journeyPlanId?: string | null;
   paymentStatus?: string;
   paymentIntegrityStatus?: string;
   financialHoldStatus?: string;
@@ -71,7 +76,10 @@ export default function CheckoutBookingPage() {
           isProtectedBooking(loadedBooking)
         ) {
           router.replace(
-            `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
+            tripReturnHref(
+              bookingId,
+              loadedBooking.journeyPlanId || readPendingMobilityTripPlanId(),
+            ),
           );
           return;
         }
@@ -94,7 +102,10 @@ export default function CheckoutBookingPage() {
           intentJson?.code === "PAYMENT_REVIEW_REQUIRED"
         ) {
           router.replace(
-            `/trips?booking=${encodeURIComponent(bookingId)}&payment=return`,
+            tripReturnHref(
+              bookingId,
+              loadedBooking.journeyPlanId || readPendingMobilityTripPlanId(),
+            ),
           );
           return;
         }
@@ -223,13 +234,23 @@ export default function CheckoutBookingPage() {
           </div>
           <div className="mt-6">
             <Elements stripe={stripePromise} options={options}>
-              <CheckoutForm bookingId={bookingId} />
+              <CheckoutForm
+                bookingId={bookingId}
+                journeyPlanId={booking?.journeyPlanId}
+              />
             </Elements>
           </div>
         </div>
       </div>
     </main>
   );
+}
+
+function tripReturnHref(bookingId: string, journeyPlanId?: string | null) {
+  const params = new URLSearchParams({ booking: bookingId, payment: "return" });
+  const normalizedJourneyPlanId = normalizeMobilityJourneyPlanId(journeyPlanId);
+  if (normalizedJourneyPlanId) params.set("trip", normalizedJourneyPlanId);
+  return `/trips?${params.toString()}`;
 }
 
 function isProtectedBooking(booking: CheckoutBooking) {

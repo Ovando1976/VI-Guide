@@ -89,6 +89,7 @@ export type FareBreakdown = {
 };
 
 export type RideBookingDraft = {
+  journeyPlanId?: string | null;
   originEstateGeoid: string;
   destinationEstateGeoid: string;
   mode: RideMode;
@@ -139,6 +140,7 @@ export type RiderAssignmentSnapshot = {
 export type RideBooking = {
   id: string;
   riderId: string;
+  journeyPlanId?: string | null;
   driverId?: string;
   associationId?: string | null;
   vehicleId?: string | null;

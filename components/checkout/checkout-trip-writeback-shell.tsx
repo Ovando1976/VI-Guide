@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { CheckoutTripWriteback } from "@/components/checkout/checkout-trip-writeback";
 
 type CheckoutTripBooking = {
+  journeyPlanId?: string | null;
   island?: string;
   origin?: { estateName?: string };
   destination?: { estateName?: string };
