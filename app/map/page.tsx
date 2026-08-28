@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { MapPinned, Navigation, Route, Sparkles } from "lucide-react";
 
 import { ViPublicHeader } from "@/components/brand/vi-public-header";
+import { ExplorerMapScreen } from "@/components/explorer/explorer-map-screen";
 import { MapIntelligenceBridge } from "@/components/intelligence/map-intelligence-bridge";
 import { MapEntityContextBar } from "@/components/map/map-entity-context-bar";
 import { TerrainDefaultController } from "@/components/map/terrain-default-controller";
@@ -34,14 +34,6 @@ export const metadata: Metadata = {
     description: mapDescription,
   },
 };
-
-const ExplorerMapScreen = dynamic(
-  () =>
-    import("@/components/explorer/explorer-map-screen").then(
-      (module) => module.ExplorerMapScreen,
-    ),
-  { ssr: false },
-);
 
 const MAP_MODES = ["Places", "Beaches", "Stays", "History", "Rides"] as const;
 
