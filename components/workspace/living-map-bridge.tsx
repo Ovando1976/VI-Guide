@@ -27,6 +27,8 @@ const SELECTION_KEYS = [
   "placeLocation",
   "placeDescription",
   "placeRating",
+  "placeSlug",
+  "placeHref",
 ] as const;
 
 type CatalogMapPlace = ReturnType<typeof queryTerritoryMapPlaces>[number];

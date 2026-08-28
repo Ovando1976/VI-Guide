@@ -42,6 +42,20 @@ const PANELS = [
   { id: "concierge", label: "Concierge", icon: Sparkles },
 ] as const;
 
+const SELECTION_QUERY_KEYS = [
+  "estate",
+  "place",
+  "placeName",
+  "placeType",
+  "placeLat",
+  "placeLng",
+  "placeLocation",
+  "placeDescription",
+  "placeRating",
+  "placeSlug",
+  "placeHref",
+] as const;
+
 function validIsland(value: string | null): IslandCode {
   return value === "stj" || value === "stx" ? value : "stt";
 }
@@ -131,12 +145,7 @@ export function UnifiedMapWorkspaceBar() {
   function changeIsland(nextIsland: IslandCode) {
     const params = new URLSearchParams(searchParams.toString());
     params.set("island", nextIsland);
-    params.delete("estate");
-    params.delete("place");
-    params.delete("placeName");
-    params.delete("placeType");
-    params.delete("placeLat");
-    params.delete("placeLng");
+    SELECTION_QUERY_KEYS.forEach((key) => params.delete(key));
     replaceParams(params);
     patch({ island: nextIsland, selection: null, lastAction: "island.changed" });
   }
