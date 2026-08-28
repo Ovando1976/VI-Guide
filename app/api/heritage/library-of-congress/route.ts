@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86400;
 
 const LOC_API_URL = "https://www.loc.gov/photos/";
 const DEFAULT_PAGE_SIZE = 100;
@@ -77,7 +77,7 @@ export async function GET(request: NextRequest) {
         Accept: "application/json",
         "User-Agent": "VI-Guide/1.0 heritage-gallery",
       },
-      next: { revalidate: 60 * 60 * 24 },
+      next: { revalidate: 86400 },
     });
 
     if (!response.ok) {
