@@ -1,12 +1,14 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { gzipSync } from "node:zlib";
 
 function stable(value) {
   return JSON.stringify(value);
 }
 
 try {
-  const current = JSON.parse(readFileSync("package-lock.json", "utf8"));
+  const currentText = readFileSync("package-lock.json", "utf8");
+  const current = JSON.parse(currentText);
   const previous = JSON.parse(
     execFileSync("git", ["show", "HEAD:package-lock.json"], {
       encoding: "utf8",
@@ -40,6 +42,18 @@ try {
     ),
   );
   console.log("LAUNCH_LOCK_DIFF_END");
+
+  const encoded = gzipSync(Buffer.from(currentText, "utf8")).toString("base64");
+  const chunkSize = 6000;
+  const chunks = [];
+  for (let index = 0; index < encoded.length; index += chunkSize) {
+    chunks.push(encoded.slice(index, index + chunkSize));
+  }
+  console.log(`LAUNCH_LOCK_B64_START:${chunks.length}`);
+  chunks.forEach((chunk, index) => {
+    console.log(`LAUNCH_LOCK_B64_${index + 1}_OF_${chunks.length}:${chunk}`);
+  });
+  console.log("LAUNCH_LOCK_B64_END");
 } catch (error) {
   console.warn(
     "Launch lock diff unavailable:",
