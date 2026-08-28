@@ -24,6 +24,7 @@ import {
   readJourneyPlans,
   type JourneyPlan,
 } from "@/lib/journey-planner";
+import { buildJourneyMobilityHref } from "@/lib/mobility/ride-links";
 import {
   TRACKED_BOOKINGS_UPDATED_EVENT,
   readTrackedBookings,
@@ -123,6 +124,10 @@ export function TravelerTripCommandCenter({
       null,
     [plans, scopedPlans, selectedPlanId, selectedScope?.primaryPlanId],
   );
+  const mobilityHref = selectedPlan
+    ? buildJourneyMobilityHref(selectedPlan)
+    : "/mobility";
+  const conciergeHref = buildTripConciergeHref(selectedPlan);
   const scoped = useMemo(
     () =>
       scopeTravelerTripRecords({
@@ -223,8 +228,8 @@ export function TravelerTripCommandCenter({
             <div className="mt-7 flex flex-wrap gap-2">
               <QuickLink href="/planner" label="Open itinerary" icon={Route} />
               <TripCommandMapLink plan={selectedPlan} label="Open map" icon={Map} variant="quick" />
-              <QuickLink href="/mobility" label="Get a ride" icon={Navigation} />
-              <QuickLink href="/concierge" label="Ask Concierge" icon={Sparkles} />
+              <QuickLink href={mobilityHref} label="Get a ride" icon={Navigation} />
+              <QuickLink href={conciergeHref} label="Ask Concierge" icon={Sparkles} />
             </div>
           </div>
 
@@ -375,8 +380,8 @@ export function TravelerTripCommandCenter({
           <ToolLink href="/places" icon={Compass} label="Explore" detail="Discover the next stop" />
           <TripCommandMapLink plan={selectedPlan} icon={Map} label="Living Map" detail="See trip context spatially" variant="tool" />
           <ToolLink href="/planner" icon={Route} label="Planner" detail="Edit the itinerary" />
-          <ToolLink href="/mobility" icon={Navigation} label="Mobility" detail="Plan or request a ride" />
-          <ToolLink href="/concierge" icon={Sparkles} label="Concierge" detail="Get local help" />
+          <ToolLink href={mobilityHref} icon={Navigation} label="Mobility" detail="Plan or request a ride" />
+          <ToolLink href={conciergeHref} icon={Sparkles} label="Concierge" detail="Get local help" />
         </div>
       </section>
     </div>
@@ -439,6 +444,25 @@ function stayStatusLabel(status: string) { if (status === "pending_property_conf
 function stayTone(status: string): "neutral" | "teal" | "amber" | "emerald" | "rose" { if (status === "pending_property_confirmation") return "amber"; if (status === "reviewing") return "teal"; if (status === "confirmed") return "emerald"; if (status === "declined") return "rose"; return "neutral"; }
 function toneClass(tone: TravelerTripActionTone) { if (tone === "amber") return "bg-amber-50 text-amber-700"; if (tone === "emerald") return "bg-emerald-50 text-emerald-700"; if (tone === "rose") return "bg-rose-50 text-rose-700"; return "bg-teal-50 text-teal-700"; }
 function metricClass(tone: "default" | "amber" | "emerald") { if (tone === "amber") return "border-amber-200 bg-amber-50 text-amber-900"; if (tone === "emerald") return "border-emerald-200 bg-emerald-50 text-emerald-900"; return "border-slate-200 bg-white text-[#043331]"; }
+function buildTripConciergeHref(plan: JourneyPlan | null) {
+  if (!plan) return "/concierge";
+  const params = new URLSearchParams({
+    island: plan.island,
+    trip: plan.id,
+  });
+  const stops = plan.plan
+    .slice(0, 8)
+    .map((stop) => stop.title)
+    .filter(Boolean)
+    .join(", ");
+  const prompt = [
+    `Help me continue my saved trip "${plan.title}".`,
+    stops ? `Current stops: ${stops}.` : "The trip does not have any stops yet.",
+    "Keep My Trip, the Living Map, and Mobility connected to this same trip.",
+  ].join(" ");
+  params.set("prompt", prompt.slice(0, 1200));
+  return `/concierge?${params.toString()}`;
+}
 function formatDate(value: string) { const date = new Date(`${value}T12:00:00`); if (!Number.isFinite(date.getTime())) return value; return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(date); }
 function formatMoney(cents: number) { return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(cents / 100); }
 function firstName(value: string) { return value.trim().split(/\s+/)[0]?.slice(0, 60) || "Traveler"; }
