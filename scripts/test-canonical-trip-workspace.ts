@@ -55,6 +55,25 @@ assert.match(riderTripHistory, /Pickup map/);
 assert.match(riderTripScopeBridge, /resolveTravelerTripScope/);
 assert.match(riderTripScopeBridge, /scope\?\.planIds/);
 assert.match(riderTripScopeBridge, /TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);
+assert.match(riderTripScopeBridge, /function handlePopState\(\)/);
+assert.match(
+  riderTripScopeBridge,
+  /plans\.some\(\(plan\) => plan\.id === queryPlanId\)/,
+);
+assert.match(
+  riderTripScopeBridge,
+  /writeSelectedTravelerTripPlanId\(queryPlanId\)/,
+  "browser history must persist a valid URL trip before ride scope refreshes",
+);
+assert.match(
+  riderTripScopeBridge,
+  /window\.addEventListener\("popstate", handlePopState\)/,
+);
+assert.doesNotMatch(
+  riderTripScopeBridge,
+  /window\.addEventListener\("popstate", refreshScope\)/,
+  "popstate must synchronize the visible trip selection, not only the ride scope",
+);
 assert.match(riderSubscriptionScope, /scopeRiderBookingsToJourneyPlans/);
 assert.match(firestoreTrips, /scopeRiderBookingSubscription\(latestBookings\)/);
 assert.match(firestoreTrips, /subscribeToRiderBookingScopeUpdates/);
