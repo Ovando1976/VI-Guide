@@ -14,6 +14,7 @@ const tripMapLink = source("components/trips/trip-aware-living-map-link.tsx");
 const tripConciergeLink = source(
   "components/trips/trip-aware-concierge-link.tsx",
 );
+const appNavigation = source("components/app-navigation.tsx");
 const riderTripHistory = source("components/rider-trip-history.tsx");
 const riderTripScopeBridge = source(
   "components/mobility/rider-trip-subscription-scope.tsx",
@@ -46,6 +47,28 @@ assert.match(tripConciergeLink, /Current stops:/);
 assert.match(tripMapLink, /Open Living Map/);
 assert.match(tripMapLink, /Open journey map/);
 assert.match(tripMapLink, /mapHrefForJourneyPlan/);
+
+assert.match(appNavigation, /readSelectedTravelerTripPlanId/);
+assert.match(appNavigation, /TRAVELER_TRIP_SELECTION_UPDATED_EVENT/);
+assert.match(appNavigation, /TRAVELER_TRIP_SELECTION_STORAGE_KEY/);
+assert.match(appNavigation, /selectedPlan && selectedIsland/);
+assert.match(
+  appNavigation,
+  /\/trips\?trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the persistent My Trip nav target must retain the active JourneyPlan",
+);
+assert.match(
+  appNavigation,
+  /\/map\?island=\$\{tripContext\.island\}&trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the mobile Live Map nav target must preserve active trip identity and island",
+);
+assert.match(
+  appNavigation,
+  /\/concierge\?island=\$\{tripContext\.island\}&trip=\$\{encodeURIComponent\(tripContext\.planId\)\}/,
+  "the mobile Concierge nav target must preserve active trip identity and island",
+);
+assert.match(appNavigation, /contextualHref\(base, activeIsland, tripContext\)/);
+
 assert.match(riderTripHistory, /Live ride card/);
 assert.match(riderTripHistory, /Verified pickup identity/);
 assert.match(riderTripHistory, /Pickup PIN/);
