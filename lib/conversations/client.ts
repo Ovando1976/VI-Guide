@@ -1,6 +1,10 @@
 "use client";
 
 import type { ConversationMessage } from "@/types/conversation";
+import type {
+  IntelligenceCapability,
+  IntelligenceContext,
+} from "@/types/intelligence";
 
 export type PublicConversationMessage = Omit<ConversationMessage, "aiRun">;
 
@@ -112,5 +116,61 @@ export class ConversationClient {
       message: PublicConversationMessage;
     };
     return Object.freeze(payload.message);
+  }
+
+  async invokeAi(
+    conversationId: string,
+    input: Readonly<{
+      assistantParticipantId: string;
+      invocation?: "mention" | "active";
+      invocationMessageId?: string;
+      context?: Partial<IntelligenceContext>;
+      capabilities?: readonly IntelligenceCapability[];
+    }>,
+  ): Promise<Readonly<{
+    message: PublicConversationMessage;
+    confidence: "low" | "medium" | "high";
+  }>> {
+    if (!validId(conversationId)) throw new Error("Invalid conversation id.");
+    if (!validId(input.assistantParticipantId)) {
+      throw new Error("Invalid assistant participant id.");
+    }
+    if (input.invocationMessageId && !validId(input.invocationMessageId)) {
+      throw new Error("Invalid invocation message id.");
+    }
+
+    const invocation = input.invocation ?? "mention";
+    if (invocation === "mention" && !input.invocationMessageId) {
+      throw new Error("Mention invocation requires a message id.");
+    }
+
+    const response = await fetch(
+      `/api/conversations/${encodeURIComponent(conversationId)}/ai`,
+      {
+        method: "POST",
+        headers: await this.headers(),
+        body: JSON.stringify({
+          assistantParticipantId: input.assistantParticipantId,
+          invocation,
+          ...(input.invocationMessageId
+            ? { invocationMessageId: input.invocationMessageId }
+            : {}),
+          context: input.context ?? {},
+          ...(input.capabilities?.length
+            ? { capabilities: [...input.capabilities] }
+            : {}),
+        }),
+      },
+    );
+    if (!response.ok) throw await responseError(response);
+
+    const payload = (await response.json()) as {
+      message: PublicConversationMessage;
+      confidence: "low" | "medium" | "high";
+    };
+    return Object.freeze({
+      message: Object.freeze(payload.message),
+      confidence: payload.confidence,
+    });
   }
 }
