@@ -47,7 +47,8 @@ function travelerContext(): IntelligenceContext {
 async function main() {
   let id = 0;
   let second = 0;
-  const engine = new ConversationEngine(new InMemoryConversationStore(), {
+  const store = new InMemoryConversationStore();
+  const engine = new ConversationEngine(store, {
     createId: () => `generated-${++id}`,
     now: () => `2026-08-29T16:00:${String(second++).padStart(2, "0")}.000Z`,
   });
@@ -114,9 +115,7 @@ async function main() {
     "knowledge",
   ]);
 
-  const messages = await (engine as unknown as {
-    store: InMemoryConversationStore;
-  }).store.listMessages("conversation-1");
+  const messages = await store.listMessages("conversation-1");
   const assistantMessage = messages.find((message) => message.id === result.messageId);
   assert.equal(assistantMessage?.senderParticipantId, "assistant-1");
   assert.equal(assistantMessage?.aiRun?.model, "fake-model");
