@@ -2,6 +2,7 @@ import type { AgentBlackboardMessage, AgentBlackboardTask } from "@/lib/intellig
 import type { CollectiveAgentDescriptor } from "@/lib/intelligence/agent-registry";
 import type { CoordinationRootIntent } from "@/lib/intelligence/agent-policy";
 import type { AgentToolRequest } from "@/lib/intelligence/agent-tool-broker";
+import { IslandIntelligenceRouterWorker } from "@/lib/intelligence/model-router";
 import type { IntelligenceToolDescriptor } from "@/lib/intelligence/tool-registry";
 import type {
   IntelligenceCapability,
@@ -445,6 +446,22 @@ export class GptOssAdvisoryAgentWorker extends ResponsesAdvisoryAgentWorker {
   }
 }
 
+function configuredOpenAIWorker() {
+  const apiKey = process.env.OPENAI_API_KEY?.trim();
+  if (!apiKey) return null;
+  return new OpenAIAdvisoryAgentWorker({ apiKey });
+}
+
+function configuredGptOssWorker() {
+  const endpoint = process.env.GPT_OSS_RESPONSES_URL?.trim();
+  if (!endpoint) return null;
+  return new GptOssAdvisoryAgentWorker({
+    endpoint,
+    apiKey: process.env.GPT_OSS_API_KEY,
+    model: process.env.GPT_OSS_MODEL?.trim() || "gpt-oss-20b",
+  });
+}
+
 export function createConfiguredAdvisoryAgentWorker() {
   if (process.env.USVI_AGENT_WORKERS_SHADOW !== "1") return null;
 
@@ -452,21 +469,19 @@ export function createConfiguredAdvisoryAgentWorker() {
     .trim()
     .toLowerCase();
 
+  if (provider === "auto" || provider === "router" || provider === "hybrid") {
+    const openai = configuredOpenAIWorker();
+    const gptOss = configuredGptOssWorker();
+    if (!openai && !gptOss) return null;
+    return new IslandIntelligenceRouterWorker({ openai, gptOss });
+  }
+
   if (provider === "gpt-oss" || provider === "gpt_oss" || provider === "oss") {
-    const endpoint = process.env.GPT_OSS_RESPONSES_URL?.trim();
-    if (!endpoint) return null;
-    return new GptOssAdvisoryAgentWorker({
-      endpoint,
-      apiKey: process.env.GPT_OSS_API_KEY,
-      model: process.env.GPT_OSS_MODEL?.trim() || "gpt-oss-20b",
-    });
+    return configuredGptOssWorker();
   }
 
   if (provider !== "openai") return null;
-
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
-  return new OpenAIAdvisoryAgentWorker({ apiKey });
+  return configuredOpenAIWorker();
 }
 
 function extractOutputText(payload: Record<string, unknown>) {
