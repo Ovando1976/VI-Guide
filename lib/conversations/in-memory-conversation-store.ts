@@ -13,6 +13,11 @@ function key(conversationId: string, id: string) {
   return `${conversationId}:${id}`;
 }
 
+function compareMessages(a: ConversationMessage, b: ConversationMessage) {
+  const byTime = a.createdAt.localeCompare(b.createdAt);
+  return byTime || a.id.localeCompare(b.id);
+}
+
 export class InMemoryConversationStore implements ConversationStore {
   private readonly conversations = new Map<string, Conversation>();
   private readonly participants = new Map<string, ConversationParticipant>();
@@ -52,22 +57,56 @@ export class InMemoryConversationStore implements ConversationStore {
     conversationId: string,
     options: ConversationMessageListOptions = {},
   ) {
-    const limit = Math.max(1, Math.min(options.limit ?? 50, 200));
-    return Array.from(this.messages.values())
-      .filter(
-        (message) =>
-          message.conversationId === conversationId &&
-          (!options.before || message.createdAt < options.before),
-      )
-      .sort((a, b) => {
-        const byTime = a.createdAt.localeCompare(b.createdAt);
-        return byTime || a.id.localeCompare(b.id);
-      })
-      .slice(-limit);
+    const limit = Math.max(1, Math.min(options.limit ?? 50, 100));
+    const sorted = Array.from(this.messages.values())
+      .filter((message) => message.conversationId === conversationId)
+      .sort(compareMessages);
+
+    let end = sorted.length;
+    if (options.before) {
+      const cursorIndex = sorted.findIndex((message) => message.id === options.before);
+      if (cursorIndex >= 0) end = cursorIndex;
+    }
+
+    return sorted.slice(Math.max(0, end - limit), end);
   }
 
   async putMessage(message: ConversationMessage) {
     this.messages.set(key(message.conversationId, message.id), message);
+  }
+
+  async commitMessage(message: ConversationMessage, conversation: Conversation) {
+    const messageKey = key(message.conversationId, message.id);
+    const existing = this.messages.get(messageKey);
+    if (existing) {
+      if (JSON.stringify(existing) === JSON.stringify(message)) return;
+      throw new Error("Conversation message id already exists with different content.");
+    }
+
+    const currentConversation = this.conversations.get(conversation.id);
+    if (!currentConversation) {
+      throw new Error("Conversation disappeared before message commit.");
+    }
+
+    this.messages.set(messageKey, message);
+
+    const currentLast = currentConversation.lastMessage
+      ? this.messages.get(
+          key(currentConversation.id, currentConversation.lastMessage.id),
+        )
+      : null;
+    const shouldAdvance = !currentLast || compareMessages(currentLast, message) <= 0;
+
+    this.conversations.set(
+      conversation.id,
+      shouldAdvance
+        ? conversation
+        : Object.freeze({
+            ...conversation,
+            updatedAt: currentConversation.updatedAt,
+            lastMessage: currentConversation.lastMessage,
+          }),
+    );
   }
 
   async getArtifact(conversationId: string, artifactId: string) {
