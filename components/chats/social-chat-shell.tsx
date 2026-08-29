@@ -67,7 +67,7 @@ function textForMessage(message: PublicConversationMessage) {
       if (part.type === "image") return part.alt ? `Image: ${part.alt}` : "Shared an image";
       if (part.type === "video") return part.alt ? `Video: ${part.alt}` : "Shared a video";
       if (part.type === "audio") return "Shared audio";
-      return part.text;
+      return "text" in part ? part.text : "Shared media";
     })
     .join("\n");
 }
@@ -145,9 +145,7 @@ export function SocialChatShell() {
             if (!cancelled) setConnection(state);
           },
           onError(streamError) {
-            if (!cancelled && connection === "offline") {
-              setError(streamError.message);
-            }
+            if (!cancelled) setError(streamError.message);
           },
         });
       } catch (cause) {
