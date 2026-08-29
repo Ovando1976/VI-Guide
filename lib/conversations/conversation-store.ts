@@ -7,6 +7,7 @@ import type {
 
 export type ConversationMessageListOptions = Readonly<{
   limit?: number;
+  /** Message id cursor. Returns messages strictly before that message. */
   before?: string;
 }>;
 
@@ -30,6 +31,10 @@ export interface ConversationStore {
     options?: ConversationMessageListOptions,
   ): Promise<readonly ConversationMessage[]>;
   putMessage(message: ConversationMessage): Promise<void>;
+  commitMessage(
+    message: ConversationMessage,
+    conversation: Conversation,
+  ): Promise<void>;
 
   getArtifact(
     conversationId: string,
